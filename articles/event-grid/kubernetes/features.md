@@ -6,15 +6,15 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2eea263517d718effc03382e3d8209a9a11f17e7
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 3e8d2259c4ae41f5f0433151cef8c6f447e49418
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112415856"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768103"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-features"></a>Features von Event Grid in Kubernetes mit Azure Arc
-Event Grid in Kubernetes bietet eine Vielzahl von Features, mit denen Sie Ihre Kubernetes-Workloads integrieren und Hybridarchitekturen umsetzen können. Die Anwendung nutzt dieselbe [REST-API](/rest/api/eventgrid/version2020-10-15-preview/topics) (ab Version 2020-10-15-preview), die [Event Grid CLI](/cli/azure/eventgrid), die Benutzeroberfläche des Azure-Portals, [Verwaltungs-SDKs](../sdk-overview.md#management-sdks) und [SDKs der Datenebene](../sdk-overview.md#data-plane-sdks) mit Azure Event Grid, der anderen Edition desselben Diensts. Wenn Sie bereit sind, Ereignisse zu veröffentlichen, können Sie die [SDK-Beispiele der Datenebene in verschiedenen Sprachen](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/) verwenden, die für beide Editionen von Event Grid funktionieren.
+Event Grid in Kubernetes bietet eine Vielzahl von Features, mit denen Sie Ihre Kubernetes-Workloads integrieren und Hybridarchitekturen umsetzen können. Die Anwendung nutzt dieselbe [REST-API](/rest/api/eventgrid/version2021-06-01-preview/topics) (ab Version 2020-10-15-preview), die [Event Grid CLI](/cli/azure/eventgrid), die Benutzeroberfläche des Azure-Portals, [Verwaltungs-SDKs](../sdk-overview.md#management-sdks) und [SDKs der Datenebene](../sdk-overview.md#data-plane-sdks) mit Azure Event Grid, der anderen Edition desselben Diensts. Wenn Sie bereit sind, Ereignisse zu veröffentlichen, können Sie die [SDK-Beispiele der Datenebene in verschiedenen Sprachen](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/) verwenden, die für beide Editionen von Event Grid funktionieren.
 
 Obwohl Event Grid in Kubernetes und Azure Event Grid viele Funktionen gemeinsam sind und das Ziel darin besteht, die gleiche Benutzererfahrung zu bieten, gibt es einige Unterschiede angesichts der einzigartigen Anforderungen, die die beiden Editionen zu erfüllen versuchen, und des Stadiums, in dem sie sich in ihrem Softwarelebenszyklus befinden. Der einzige Typ von Thema, der in Event Grid für Kubernetes verfügbar ist, sind beispielsweise Event Grid-Themen, die manchmal auch als benutzerdefinierte Themen bezeichnet werden. Andere Thementypen (siehe unten) sind entweder nicht anwendbar, oder es ist noch keine Unterstützung für sie verfügbar. Die Hauptunterschiede zwischen den beiden Editionen von Event Grid werden in der folgenden Tabelle dargestellt.
 
@@ -25,7 +25,7 @@ Obwohl Event Grid in Kubernetes und Azure Event Grid viele Funktionen gemeinsam 
 
 | Funktion | Event Grid in Kubernetes | Azure Event Grid |
 |:--|:-:|:-:|
-| [Event Grid-Themen](/rest/api/eventgrid/version2020-10-15-preview/topics) | ✔ | ✔ |
+| [Event Grid-Themen](/rest/api/eventgrid/version2021-06-01-preview/topics) | ✔ | ✔ |
 | [CNCF Cloud Events-Schema](https://github.com/cloudevents/spec/blob/master/spec.md) | ✔ | ✔ |
 | Event Grid und benutzerdefinierte Schemas | ✘* | ✔ |
 | Zuverlässige Übermittlung | ✔ | ✔ |
@@ -41,7 +41,7 @@ Obwohl Event Grid in Kubernetes und Azure Event Grid viele Funktionen gemeinsam 
 | Hybridverbindungen von Azure Relay als Ziel | ✘ | ✔ |
 | [Erweiterte Filterung](filter-events.md) | ✔*** | ✔ |
 | [Webhook AuthN/AuthZ mit AAD](../secure-webhook-delivery.md) | ✘ | ✔ |
-| [Ereignisübermittlung mit Ressourcenidentität](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#deliverywithresourceidentity) | ✘ | ✔ |
+| [Ereignisübermittlung mit Ressourcenidentität](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) | ✘ | ✔ |
 | Gleicher Satz von SDKs der Datenebene | ✔ | ✔ |
 | Gleicher Satz von Verwaltungs-SDKs | ✔ | ✔ |
 | Gleiche Event Grid CLI | ✔ | ✔ |

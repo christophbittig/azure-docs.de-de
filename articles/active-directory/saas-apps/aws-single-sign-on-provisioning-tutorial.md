@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von AWS Single Sign-On für die automatische Ben
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD für AWS Single Sign-On automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 54a9f704-7877-4ade-81af-b8d3f7fb9255
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/23/2021
-ms.author: Zhchia
-ms.openlocfilehash: 25a2a370e4a88348c2acac931e5f3e1a6f247d1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 0fa690836fb53db84263155c0a8661f7295f1c50
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599679"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327529"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von AWS Single Sign-On für die automatische Benutzerbereitstellung
 
@@ -108,7 +108,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit AWS Single Sign-On synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in AWS Single Sign-On für Updatevorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die AWS Single Sign-On-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|Typ|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -140,7 +140,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die aus Azure AD mit AWS Single Sign-On synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in AWS Single Sign-On für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|Typ|Unterstützung für das Filtern|
+      |attribute|Typ|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |externalId|String|

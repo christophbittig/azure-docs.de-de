@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Segment für die automatische Benutzerbereit
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in Segment bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 20939a92-5f48-4ef7-ab95-042e70ec1e0e
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/24/2021
-ms.author: Zhchia
-ms.openlocfilehash: 17b0359ca7d988860429f2ae77bbd0aa40347513
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.author: thwimmer
+ms.openlocfilehash: 4de9e12826e63a8acd1b6097a4a7e6939ce54991
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207661"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327476"
 ---
 # <a name="tutorial-configure-segment-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Segment für die automatische Benutzerbereitstellung
 
@@ -117,7 +117,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Segment synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Segment für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Segment-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern
+   |attribute|Typ|Unterstützung für das Filtern
    |---|---|--|
    |userName|String|&check;|
    |emails[type eq "work"].value|String|
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Segment synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Segment für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|Unterstützung für das Filtern
+      |attribute|Typ|Unterstützung für das Filtern
       |---|---|--|
       |displayName|String|&check;|
       |members|Verweis|

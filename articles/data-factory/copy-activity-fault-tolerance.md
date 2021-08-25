@@ -1,17 +1,20 @@
 ---
 title: Fehlertoleranz der Kopieraktivität in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Sie der Kopieraktivität in Azure Data Factory Fehlertoleranz hinzufügen, indem die inkompatiblen Daten übersprungen werden.
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: cb3a7b66d27fcf7669d3d2f863f104a46387e90f
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 55d8c089bd73a3e85666208ed6edc13c654c24bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640601"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

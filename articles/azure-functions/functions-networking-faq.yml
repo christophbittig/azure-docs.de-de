@@ -2,15 +2,16 @@
 metadata:
   title: Häufig gestellte Fragen zu Netzwerken in Azure Functions
   description: Hier finden Sie Antworten auf einige der häufigsten Fragen und Szenarien im Zusammenhang mit Netzwerken in Azure Functions.
-  ms.topic: troubleshooting
+  ms.topic: article
+  ms.service: azure-functions
   ms.date: 4/11/2019
   ms.reviewer: glenga
-  ms.openlocfilehash: f08e9865fdfd315a27083fec0bb01fe478d10d63
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: 2fd3a00ef0ee01c5d7f535fcdb5021f831ff20d3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112204800"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253825"
 title: Häufig gestellte Fragen zu Netzwerken in Azure Functions
 summary: >
   In diesem Artikel sind häufig gestellte Fragen zu Netzwerken in Azure Functions aufgeführt. Eine ausführlichere Übersicht finden Sie unter [Netzwerkoptionen von Azure Functions](functions-networking-options.md).

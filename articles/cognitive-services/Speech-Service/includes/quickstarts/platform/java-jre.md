@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
-ms.author: erhopf
-ms.openlocfilehash: d5780c6ad924e8a6517837dff23e3a4e7ae4d0e1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.author: lajanuar
+ms.openlocfilehash: 3ae4b6cd241e798305f2e8d1ce3acd61a32d337a
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111546193"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070052"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für 64-Bit-Java 8 JRE installieren. Wenn Sie nur den Paketnamen benötigen, um selbständig einzusteigen, ist das Java SDK im zentralen Maven-Repository nicht verfügbar. Unabhängig davon, ob Sie Gradle oder eine Abhängigkeitsdatei vom Typ `pom.xml` verwenden, müssen Sie ein benutzerdefiniertes Repository hinzufügen, das auf `https://csspeechstorage.blob.core.windows.net/maven/` verweist. (Der Paketname ist weiter unten angegeben.)
 
@@ -44,7 +44,7 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-
 
 ## <a name="gradle-config"></a>Gradle-Konfiguration
 
-Gradle-Konfigurationen erfordern sowohl ein benutzerdefiniertes Repository als auch einen expliziten Verweis auf die Abhängigkeitserweiterung `.jar`. 
+Gradle-Konfigurationen erfordern sowohl ein benutzerdefiniertes Repository als auch einen expliziten Verweis auf die Abhängigkeitserweiterung `.jar`.
 
 ```groovy
 // build.gradle
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.17.0", ext: "jar"
+    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.18.0", ext: "jar"
 }
 ```
 

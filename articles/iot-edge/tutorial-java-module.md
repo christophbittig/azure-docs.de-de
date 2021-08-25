@@ -3,7 +3,6 @@ title: 'Tutorial: Benutzerdefiniertes Java-Modul  mit Azure IoT Edge'
 description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit Java-Code erstellen und es auf einem Edge-Gerät bereitstellen.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 3c3dae7cb64dd6c2e13c77c061c770bd787e2f06
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 437cb7c751b5cbc4c7f85dc3c20da3de28f29d1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438132"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726437"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>Tutorial: Entwickeln eines Java-IoT Edge-Moduls mit Linux-Containern
 
@@ -108,7 +107,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie diese Datei.
 
 >[!NOTE]
->In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie z. B. Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Vorschauversion)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Couchbase mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jianleishen
-ms.openlocfilehash: ee4430c03929c9414de7f967db347566f75fa0ce
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 2122af325b4bac56be0af47692dc257e999b1181
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122641038"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Vorschauversion)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

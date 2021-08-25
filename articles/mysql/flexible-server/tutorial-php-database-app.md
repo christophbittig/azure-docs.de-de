@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3a2f51d0d15ebd00335f7685d3983e527a3e8b7d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770055"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643380"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Tutorial: Erstellen einer PHP- (Laravel) und flexiblen MySQL – Flexible Server-App (Vorschau) in Azure App Service
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
@@ -146,7 +148,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 ```
 
 > [!IMPORTANT]
-> - Notieren Sie sich **Servername** und **Verbindungszeichenfolge**, um sie im nächsten Schritt zur Herstellung einer Verbindung und zur Durchführung einer Laravel-Datenmigration zu verwenden.
+>- Notieren Sie sich **Servername** und **Verbindungszeichenfolge**, um sie im nächsten Schritt zur Herstellung einer Verbindung und zur Durchführung einer Laravel-Datenmigration zu verwenden.
 > - Geben Sie für das Argument **IP-Adresse** die IP-Adresse Ihres Clientcomputers an. Der Server ist nach der Erstellung gesperrt, weshalb Sie den Zugriff auf Ihren Clientcomputer erlauben müssen, um den Server lokal zu verwalten.
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Konfigurieren der Serverfirewall, damit die Web-App eine Verbindung mit dem Server herstellen kann

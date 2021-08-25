@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: fdc8c60f2c2cae7368a2e35317de2cfb8274a060
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 807d337988993c8be0fee76b9c12e1fc6dc75c7d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112414951"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770566"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Event Grid auf Kubernetes mit Azure Arc (Vorschau) - Übersicht
 Dieser Artikel vermittelt einen Überblick über Event Grid auf Kubernetes, Anwendungsfälle für dessen Einsatz, verfügbare Funktionen und wie es sich von Azure Event Grid unterscheidet.
@@ -36,7 +36,7 @@ Event Grid in Kubernetes unterstützt verschiedene Ereignis-gesteuerte Integrati
 
 „Als Eigentümer eines Systems, das in einem Kubernetes-Cluster bereitgestellt wird, möchte ich die Zustandsänderungen meines Systems mitteilen, indem ich Ereignisse veröffentliche und das Routing dieser Ereignisse so konfiguriere, dass Ereignishandler, ob unter meiner Kontrolle oder anderweitig, die Ereignisse meines Systems so verarbeiten können, wie sie es für richtig halten.“
 
-Eine **Funktion**, die Sie dabei unterstützt, die obengenannten Anforderungen zu erfüllen: [Event Grid-Themen](/rest/api/eventgrid/version2020-10-15-preview/topics).
+Eine **Funktion**, die Sie dabei unterstützt, die obengenannten Anforderungen zu erfüllen: [Event Grid-Themen](/rest/api/eventgrid/version2021-06-01-preview/topics).
 
 ### <a name="event-grid-on-kubernetes-at-a-glance"></a>Event Grid in Kubernetes auf einen Blick
 Aus Benutzersicht besteht Event Grid in Kubernetes aus den folgenden in blau angezeigten Ressourcen:
@@ -69,7 +69,7 @@ Mit Event Grid in Kubernetes können Sie Ereignisse zur weiteren Verarbeitung, S
 Ereignishandler-Ziele können beliebige HTTPS- oder HTTP-Endpunkte sein, die Event Grid über das Netzwerk erreichen kann, öffentlich oder privat, und auf die es Zugriff hat (nicht durch einen Authentifizierungsmechanismus geschützt). Sie definieren Ereignis-Lieferziele, wenn Sie ein Event-Abonnement erstellen. Weitere Informationen finden Sie unter [Ereignishandler](event-handlers.md). 
 
 ## <a name="features"></a>Funktionen
-Event Grid in Kubernetes unterstützt [Event Grid Themen.](/rest/api/eventgrid/version2020-10-15-preview/topics)Es handelt sich hierbei um eine Funktion, die auch von [Azure Event Grid](../custom-topics.md)angeboten wird. Event Grid-Themen unterstützt Sie dabei, den [primären Integrationsanwendungsfall](#use-case) zu verwirklichen, bei dem Ihre Anforderungen die Integration Ihres Systems mit einem anderen Workload erfordern, den Sie besitzen oder der auf andere Weise für Ihr System zugänglich gemacht wird.
+Event Grid in Kubernetes unterstützt [Event Grid Themen.](/rest/api/eventgrid/version2021-06-01-preview/topics)Es handelt sich hierbei um eine Funktion, die auch von [Azure Event Grid](../custom-topics.md)angeboten wird. Event Grid-Themen unterstützt Sie dabei, den [primären Integrationsanwendungsfall](#use-case) zu verwirklichen, bei dem Ihre Anforderungen die Integration Ihres Systems mit einem anderen Workload erfordern, den Sie besitzen oder der auf andere Weise für Ihr System zugänglich gemacht wird.
 
 Einige der Funktionen, die Sie mit Azure Event Grid in Kubernetes erhalten, sind wie folgt:
 

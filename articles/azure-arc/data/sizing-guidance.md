@@ -1,24 +1,23 @@
 ---
 title: Dimensionierungsleitfaden
-description: Planen Sie die Bereitstellungsgröße von Azure Arc-fähigen Datendiensten.
+description: Planen der Bereitstellungsgröße von Azure Arc-fähigen Datendiensten.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6ac2397823dffd2c31cbe534c8fea1886e84558d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077475"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355205"
 ---
 # <a name="sizing-guidance"></a>Dimensionierungsleitfaden
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-sizing-guidance"></a>Übersicht über den Dimensionierungsleitfaden
 
@@ -31,7 +30,7 @@ Bei der Planung der Bereitstellung von Azure Arc-Datendiensten sollten Sie den r
 
 Die Anzahl der Kerne muss eine ganze Zahl größer oder gleich 1 sein.
 
-Bei der Verwendung von azdata für die Bereitstellung sollten die Arbeitsspeicherwerte als Zweierpotenz angegeben werden, d. h. mit dem Suffix Ki, Mi oder Gi.
+Bei der Verwendung der Azure CLI (az) für die Bereitstellung sollten die Arbeitsspeicherwerte als Zweierpotenz angegeben werden, d. h. mit dem Suffix Ki, Mi oder Gi.
 
 Grenzwerte müssen immer größer als der Anforderungswert sein, sofern angegeben.
 
@@ -47,18 +46,16 @@ Ausführliche Informationen über die Speicherdimensionierung finden Sie im Arti
 
 Der Datencontroller ist eine Sammlung von Pods, die im Kubernetes-Cluster bereitgestellt werden, um eine API, den Controllerdienst, den Bootstrapper sowie die Überwachungsdatenbanken und -dashboards zur Verfügung zu stellen.  In dieser Tabelle werden die Standardwerte für Arbeitsspeicher- und CPU-Anforderungen sowie CPU-Limits beschrieben.
 
-|Podname|CPU-Anforderung|Arbeitsspeicheranforderung|CPU-Limit|Arbeitsspeicherlimit|Hinweise|
+|Podname|CPU-Anforderung|Arbeitsspeicheranforderung|CPU-Grenzwert|Arbeitsspeicherlimit|Hinweise|
 |---|---|---|---|---|---|
 |**bootstrapper**|100m|100Mi|200m|200Mi||
 |**control**|400m|2Gi|1800m|2Gi||
 |**controldb**|200m|3Gi|800m|6Gi||
-|**controlwd**|10m|100Mi|100m|200Mi||
 |**logsdb**|200m|1600Mi|2|1600Mi||
 |**logsui**|100m|500Mi|2|2Gi||
 |**metricsdb**|200m|800Mi|400m|2Gi||
 |**metricsdc**|100m|200Mi|200m|300Mi|„metricsdc“ ist ein daemonset, das auf jedem Kubernetes-Knoten im Cluster erstellt wird.  Die Zahlen in der Tabelle gelten _pro Knoten_. Wenn Sie in der Bereitstellungsprofildatei vor dem Erstellen des Datencontrollers „allownodemetricscollection = false“ festlegen, wird das daemonset „metricsdc“ nicht erstellt.|
 |**metricsui**|20m|200Mi|500m|200Mi||
-|**mgmtproxy**|200m|250Mi|500m|500Mi||
 
 Sie können die Standardeinstellungen für die Pods „controldb“ und „control“ in der Bereitstellungsprofildatei oder der Datencontroller-YAML-Datei überschreiben.  Beispiel:
 
@@ -84,9 +81,14 @@ Ausführliche Informationen über die Speicherdimensionierung finden Sie im Arti
 
 ## <a name="sql-managed-instance-sizing-details"></a>Dimensionierungsdetails verwalteter SQL-Instanzen
 
-Jede verwaltete SQL-Instanz muss über die folgenden Ressourcenmindestanforderungen verfügen:
-- Memory: 2Gi
-- Kerne: 1
+Jede verwaltete SQL-Instanz muss über die folgenden Ressourcenmindestanforderungen und -limits verfügen:
+
+|Dienstebene|Allgemeiner Zweck|Unternehmenskritisch (Vorschau)|
+|---|---|---|
+|CPU-Anforderung|Mindestwert: 1; Maximalwert: 24; Standardwert: 2|Mindestwert: 1; Maximalwert: unbegrenzt; Standardwert: 4|
+|CPU-Grenzwert|Mindestwert: 1; Maximalwert: 24; Standardwert: 2|Mindestwert: 1; Maximalwert: unbegrenzt; Standardwert: 4|
+|Arbeitsspeicheranforderung|Mindestwert: 2 Gi; Maximalwert: 128 Gi; Standardwert: 4 Gi|Mindestwert: 2 Gi; Maximalwert: unbegrenzt; Standardwert: 4 Gi|
+|Arbeitsspeicherlimit|Mindestwert: 2 Gi; Maximalwert: 128 Gi; Standardwert: 4 Gi|Mindestwert: 2 Gi; Maximalwert: unbegrenzt; Standardwert: 4 Gi|
 
 Jeder erstellte SQL Managed Instance-Pod umfasst drei Container:
 
@@ -146,7 +148,7 @@ Ausführliche Informationen über die Speicherdimensionierung finden Sie im Arti
 
 Beachten Sie, dass die Anforderung der Datenbankinstanzgröße für Kerne oder RAM die verfügbare Kapazität der Kubernetes-Knoten im Cluster nicht überschreiten darf.  Wenn beispielsweise der größte Kubernetes-Knoten im Kubernetes-Cluster 256 GB RAM und 24 Kerne umfasst, können Sie keine Datenbankinstanz mit einer Anforderung von 512 GB RAM und 48 Kernen erstellen.  
 
-Es empfiehlt sich, auf den Kubernetes-Knoten stets über mindestens 25 % der verfügbaren Kapazität zu verfügen. Dies ermöglicht die effiziente Planung der Erstellung von Pods sowie eine flexible Skalierung und ein langfristigeres bedarfsabhängiges Wachstum.  
+Es empfiehlt sich, auf den Kubernetes-Knoten stets über mindestens 25 % der verfügbaren Kapazität zu verfügen. Dies ermöglicht die effiziente Planung der Erstellung von Pods sowie eine flexible Skalierung und gestattet parallele Upgrades der Kubernetes-Knoten sowie ein langfristigeres bedarfsabhängiges Wachstum.
 
 Berücksichtigen Sie bei den Dimensionierungsberechnungen die Ressourcenanforderungen der Kubernetes-Systempods und andere Workloads, die möglicherweise gemeinsam mit Azure Arc-fähigen Datendiensten in demselben Kubernetes-Cluster Kapazität nutzen.
 

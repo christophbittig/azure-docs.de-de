@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Bizagi Studio for Digital Process Automation
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in Bizagi Studio for Digital Process Automation bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 2fbff65a-5345-4c08-a6c7-60b80d867a3e
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/20/2020
-ms.author: Zhchia
-ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: ac1a38662172e12cebfcab952ca076062f03f0ec
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728157"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327536"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bizagi Studio for Digital Process Automation für die automatische Benutzerbereitstellung
 
@@ -123,7 +123,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Bizagi Studio for Digital Process Automation synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Updatevorgängen für den Abgleich der Benutzerkonten in Bizagi Studio for Digital Process Automation verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern, müssen Sie sicherstellen, dass die Bizagi Studio for Digital Process Automation-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|

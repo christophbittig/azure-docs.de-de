@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5de8a9f50dd280f8eb3a52ad0bd39a00e58c789
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656888"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639680"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Konfigurieren von TLS-Einstellungen in Azure Database for MySQL mit dem Azure-Portal
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel wird beschrieben, wie Sie einen Azure Database for MySQL-Server so konfigurieren können, dass die TLS-Mindestversion erzwungen wird, bei der zulässige Verbindungen passieren können und alle Verbindungen mit einer niedrigeren TLS-Version als der konfigurierten TLS-Mindestversion abgelehnt werden, wodurch die Netzwerksicherheit erhöht wird.
 

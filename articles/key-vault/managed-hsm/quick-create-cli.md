@@ -2,19 +2,19 @@
 title: 'Schnellstart: Bereitstellen und Aktivieren eines verwalteten Azure-HSM'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein verwaltetes HSM mithilfe der Azure-Befehlszeilenschnittstelle bereitstellen und aktivieren.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 06/21/2021
 ms.author: mbaldwin
-ms.openlocfilehash: be8c28f736e58ebcbe95d4b8a4042b79fa1cf9f7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f47ce2ea3d805bfc5e5cdd4fd328195c12fe516d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443589"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821584"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -28,7 +28,6 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
 * Azure-Befehlszeilenschnittstelle ab Version 2.25.0 Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
-* Ein verwaltetes HSM in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM bereitstellen und aktivieren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

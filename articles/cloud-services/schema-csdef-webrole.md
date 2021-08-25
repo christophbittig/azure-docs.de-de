@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f90ce603f745937d4d7f6253f54228fb2a20dbff
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7b0a0a91d3251e41c9964cf43ca9a29dde77b609
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086152"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823507"
 ---
 # <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Definition für Azure Cloud Services (klassisch): WebRole-Schema
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem auf Azure Service Manager basierenden Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Die Azure-Webrolle ist eine Rolle, die für die Programmierung von Webanwendungen gemäß Unterstützung durch IIS 7 angepasst wird, z.B. ASP.NET, PHP, Windows Communication Foundation und FastCGI.
 
@@ -163,7 +162,7 @@ Das `WebRole`-Element beschreibt eine Rolle, die für die Programmierung von Web
 
 In der folgenden Tabelle werden die Attribute des Elements `WebRole` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Der Name für die Webrolle. Der Name der Rolle muss eindeutig sein.|  
 |enableNativeCodeExecution|boolean|Optional. Der Standardwert ist `true`. Die native Codeausführung und die volle Vertrauenswürdigkeit sind standardmäßig aktiviert. Legen Sie dieses Attribut auf `false` fest, um die native Codeausführung für die Webrolle zu deaktivieren und stattdessen Azure-Teilvertrauenswürdigkeit zu verwenden.|  
@@ -177,7 +176,7 @@ Das `Setting`-Element beschreibt ein Name-Wert-Paar, mit dem eine Konfigurations
 
 In der folgenden Tabelle werden die Attribute des Elements `Setting` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für die Konfigurationseinstellung.|  
 
@@ -194,7 +193,7 @@ Mit dem `LocalStorage`-Element wird eine lokale Speicherressource identifiziert,
 
 In der folgenden Tabelle werden die Attribute des Elements `LocalStorage` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den lokalen Speicher.|  
 |cleanOnRoleRecycle|boolean|Optional. Gibt an, ob der lokale Speicher bereinigt werden soll, wenn die Rolle neu gestartet wird. Der Standardwert ist `true`.|  
@@ -217,7 +216,7 @@ Sie können mehrere Endpunkte definieren, bei denen es sich um eine Kombination 
 
 In der folgenden Tabelle werden die Attribute des Elements `InputEndpoint` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den externen Endpunkt.|  
 |Protokoll|Zeichenfolge|Erforderlich. Das Transportprotokoll für den externen Endpunkt. Für eine Webrolle lauten die möglichen Werte `HTTP`, `HTTPS`, `UDP` oder `TCP`.|  
@@ -232,7 +231,7 @@ Das `InternalEndpoint`-Element beschreibt einen internen Endpunkt für eine Webr
 
 In der folgenden Tabelle werden die Attribute des Elements `InternalEndpoint` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den internen Endpunkt.|  
 |Protokoll|Zeichenfolge|Erforderlich. Das Transportprotokoll für den internen Endpunkt. Mögliche Werte sind `HTTP`, `TCP`, `UDP` oder `ANY`.<br /><br /> Mit dem Wert `ANY` wird angegeben, dass alle Protokolle und alle Ports zulässig sind.|  
@@ -245,7 +244,7 @@ Das `InstanceInputEndpoint`-Element ist nur verfügbar, wenn die Azure SDK-Versi
 
 In der folgenden Tabelle werden die Attribute des Elements `InstanceInputEndpoint` beschrieben.
   
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein eindeutiger Name für den Endpunkt.|  
 |localPort|INT|Erforderlich. Gibt den internen Port an, auf den alle Rolleninstanzen lauschen, um eingehenden Datenverkehr zu empfangen, der vom Lastenausgleich weitergeleitet wird. Mögliche Werte liegen zwischen 1 und 65.535 (einschließlich).|  
@@ -263,7 +262,7 @@ Das `FixedPort`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder 
 
 In der folgenden Tabelle werden die Attribute des Elements `FixedPort` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |port|INT|Erforderlich. Der Port für den internen Endpunkt. Dies hat die gleiche Wirkung wie das Festlegen des Minimums und Maximums von `FixedPortRange` auf denselben Port.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|  
 
@@ -277,7 +276,7 @@ Das `FixedPortRange`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 
 
 In der folgenden Tabelle werden die Attribute des Elements `FixedPortRange` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |Min|INT|Erforderlich. Der niedrigste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|  
 |max|Zeichenfolge|Erforderlich. Der höchste Port im Bereich. Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|  
@@ -290,7 +289,7 @@ Das `Certificate`-Element beschreibt ein Zertifikat, das einer Webrolle zugeordn
 
 In der folgenden Tabelle werden die Attribute des Elements `Certificate` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Ein Name für dieses Zertifikat, mit dem darauf verwiesen wird, wenn es einem `InputEndpoint`-HTTPS-Element zugeordnet ist.|  
 |storeLocation|Zeichenfolge|Erforderlich. Der Speicherort des Zertifikatspeichers, in dem sich dieses Zertifikat auf dem lokalen Computer befinden kann. Mögliche Werte sind `CurrentUser` und `LocalMachine`.|  
@@ -309,7 +308,7 @@ Das `Import`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder hö
 
 In der folgenden Tabelle werden die Attribute des Elements `Import` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |moduleName|Zeichenfolge|Erforderlich. Der Name des zu importierenden Moduls. Gültige Importmodule sind:<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> Mit den Modulen RemoteAccess und RemoteForwarder können Sie Ihre Rolleninstanz für Remotedesktopverbindungen konfigurieren. Weitere Informationen finden Sie unter [Aktivieren einer Remotedesktopverbindung](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Das Modul Diagnostics ermöglicht Ihnen das Sammeln von Diagnosedaten für eine Rolleninstanz.|  
 
@@ -320,7 +319,7 @@ Das `Runtime`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder h�
 
 In der folgenden Tabelle sind die Attribute des `Runtime`-Elements beschrieben:  
 
-| Attribut | type | Beschreibung |  
+| Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |executionContext|Zeichenfolge|Optional. Gibt den Kontext an, in dem der Rollenprozess gestartet wird. Der Standardkontext ist `limited`.<br /><br /> -   `limited`: Der Prozess wird ohne Administratorrechte gestartet.<br />-   `elevated`: Der Prozess wird mit Administratorrechten gestartet.|  
 
@@ -334,7 +333,7 @@ Das `Variable`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder h
 
 In der folgenden Tabelle sind die Attribute des `Variable`-Elements beschrieben:  
 
-| Attribut | type | BESCHREIBUNG |  
+| Attribut | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Der Name der festzulegenden Umgebungsvariablen.|  
 |value|Zeichenfolge|Optional. Der Wert, der für die Umgebungsvariable festgelegt werden soll. Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|  
@@ -344,7 +343,7 @@ Das `RoleInstanceValue`-Element gibt den xPath an, über den der Wert der Variab
 
 In der folgenden Tabelle werden die Attribute des Elements `RoleInstanceValue` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |xpath|Zeichenfolge|Optional. Pfad zum Speicherort der Bereitstellungseinstellungen für die Instanz. Weitere Informationen finden Sie unter [Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath](cloud-services-role-config-xpath.md).<br /><br /> Sie müssen entweder ein Wertattribut oder ein `RoleInstanceValue`-Element einbinden.|  
 
@@ -361,7 +360,7 @@ Das `NetFxEntryPoint`-Element gibt das Programm an, das für eine Rolle ausgefü
 
 In der folgenden Tabelle werden die Attribute des Elements `NetFxEntryPoint` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |assemblyName|Zeichenfolge|Erforderlich. Der Pfad und Dateiname der Assembly, die den Einstiegspunkt enthält. Der Pfad ist relativ zum Ordner **\\%ROLEROOT%\Approot**. (Geben Sie **\\%ROLEROOT%\Approot** in `commandLine` nicht an, da dies bereits vorausgesetzt wird.) **%ROLEROOT%** ist eine von Azure verwaltete Umgebungsvariable, die den Speicherort des Stammordners für Ihre Rolle darstellt. Der Ordner **\\%ROLEROOT%\Approot** stellt den Anwendungsordner für Ihre Rolle dar.<br /><br /> Für HWC-Rollen ist der Pfad immer relativ zum Ordner **\\%ROLEROOT%\Approot\bin**.<br /><br /> Für Webrollen der IIS-Vollversion und von IIS Express wird wie folgt vorgegangen: Wenn die Assembly relativ zum Ordner **\\%ROLEROOT%\Approot** nicht gefunden werden kann, wird **\\%ROLEROOT%\Approot\bin** durchsucht.<br /><br /> Dieses Fallback-Verhalten für die IIS-Vollversion ist keine bewährte Methode und wird in zukünftigen Versionen unter Umständen nicht mehr möglich sein.|  
 |targetFrameworkVersion|Zeichenfolge|Erforderlich. Die .NET Framework-Version, unter der die Assembly erstellt wurde. Beispiel: `targetFrameworkVersion="v4.0"`.|  
@@ -378,7 +377,7 @@ Das `Site`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höhe
 
 In der folgenden Tabelle werden die Attribute des Elements `Site` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Der Name der Website oder Anwendung.|  
 |physicalDirectory|Zeichenfolge|Der Speicherort des Inhaltsverzeichnisses für das Stammverzeichnis der Site. Der Speicherort kann als absoluter Pfad oder relativ zum CSDEF-Speicherort angegeben werden.|  
@@ -390,7 +389,7 @@ Das `VirtualApplication`-Element ist nur verfügbar, wenn die Azure SDK-Version 
 
 In der folgenden Tabelle werden die Attribute des Elements `VirtualApplication` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Gibt einen Namen zur Identifizierung der virtuellen Anwendung an.|  
 |physicalDirectory|Zeichenfolge|Erforderlich. Gibt den Pfad auf dem Entwicklungscomputer an, der die virtuelle Anwendung enthält. Im Serveremulator ist IIS so konfiguriert, dass Inhalt von diesem Speicherort abgerufen wird. Beim Bereitstellen in Azure wird der Inhalt des physischen Verzeichnisses zusammen mit dem Rest des Diensts verpackt. Wenn das Dienstpaket in Azure bereitgestellt wird, wird IIS mit dem Speicherort des entpackten Inhalts konfiguriert.|  
@@ -402,7 +401,7 @@ Das `VirtualDirectory`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.
 
 In der folgenden Tabelle werden die Attribute des Elements `VirtualDirectory` beschrieben.
 
-| Attribut | type | BESCHREIBUNG |  
+| attribute | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Gibt einen Namen zur Identifizierung des virtuellen Verzeichnisses an.|  
 |value|physicalDirectory|Erforderlich. Gibt den Pfad auf dem Entwicklungscomputer an, der die Inhalte der Website bzw. des virtuellen Verzeichnisses enthält. Im Serveremulator ist IIS so konfiguriert, dass Inhalt von diesem Speicherort abgerufen wird. Beim Bereitstellen in Azure wird der Inhalt des physischen Verzeichnisses zusammen mit dem Rest des Diensts verpackt. Wenn das Dienstpaket in Azure bereitgestellt wird, wird IIS mit dem Speicherort des entpackten Inhalts konfiguriert.|  
@@ -417,7 +416,7 @@ Das `Binding`-Element gibt Konfigurationsinformationen an, die für Anforderunge
 
 Das `Binding`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.
 
-| Attribut | type | BESCHREIBUNG |  
+| Attribut | Typ | BESCHREIBUNG |  
 | --------- | ---- | ----------- |  
 |name|Zeichenfolge|Erforderlich. Gibt einen Namen zur Identifizierung der Bindung an.|  
 |endpointName|Zeichenfolge|Erforderlich. Gibt den Endpunktnamen an, für den die Bindung erfolgen soll.|  
@@ -428,7 +427,7 @@ Das `Startup`-Element beschreibt eine Sammlung mit Aufgaben, die ausgeführt wer
 
 In der folgenden Tabelle sind die Attribute des `Startup`-Elements beschrieben.
 
-| Attribut | type | Beschreibung |  
+| Attribut | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |priority|INT|Nur zur internen Verwendung.|  
 
@@ -439,7 +438,7 @@ Das `Task`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höhe
 
 In der folgenden Tabelle werden die Attribute des Elements `Task` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |commandLine|Zeichenfolge|Erforderlich. Ein Skript, z.B. eine CMD-Datei, das die auszuführenden Befehle enthält. Startbefehls- und Batchdateien müssen im ANSI-Format gespeichert werden. Dateiformate, bei denen am Anfang der Datei eine Bytereihenfolge-Marke festgelegt wird, werden nicht richtig verarbeitet.|  
 |executionContext|Zeichenfolge|Gibt den Kontext an, in dem das Skript ausgeführt wird.<br /><br /> -   `limited` [Standard]: Die Ausführung erfolgt mit den gleichen Rechten wie für die Rolle, die den Prozess hostet.<br />-   `elevated`: Die Ausführung erfolgt mit Administratorrechten.|  
@@ -457,7 +456,7 @@ Das `Content`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5 oder h�
 
 In der folgenden Tabelle werden die Attribute des Elements `Content` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |destination|Zeichenfolge|Erforderlich. Der Speicherort des virtuellen Azure-Computers, auf dem der Inhalt angeordnet wird. Dieser Speicherort ist relativ zum Ordner **%ROLEROOT%\Approot**.|  
 
@@ -470,7 +469,7 @@ Das `SourceDirectory`-Element ist nur verfügbar, wenn die Azure SDK-Version 1.5
 
 In der folgenden Tabelle werden die Attribute des Elements `SourceDirectory` beschrieben.
 
-| Attribut | type | Beschreibung |  
+| attribute | Typ | Beschreibung |  
 | --------- | ---- | ----------- |  
 |path|Zeichenfolge|Erforderlich. Der relative oder absolute Pfad eines lokalen Verzeichnisses, dessen Inhalte auf den virtuellen Azure-Computer kopiert werden sollen. Die Erweiterung von Umgebungsvariablen im Verzeichnispfad wird unterstützt.|  
   

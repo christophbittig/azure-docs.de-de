@@ -7,13 +7,12 @@ ms.date: 5/19/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 73e7073b67916983ea7bd37cd6adad4ced5633c2
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 7f3fbec3fd393bb354f7ea5df1614cf1c53bfbe2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733432"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -80,7 +79,7 @@ So laden Sie das Zeichnungspaket hoch:
 
 12. Wählen Sie **Send** (Senden) aus.
 
-13. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus.
+13. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
 14. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Zeichnungspaketuploads zu überprüfen.
 
@@ -94,7 +93,7 @@ So überprüfen Sie den Status des Zeichnungspakets und rufen die eindeutige ID 
 
 2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
 
-3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein – beispielsweise *GET Data Upload Status*.
+3. Geben Sie einen **Request name** (Anforderungsname) für die Anforderung ein, z. B. *GET Datenuploadstatus*.
 
 4. Wählen Sie die HTTP-Methode **GET** aus.
 
@@ -106,7 +105,7 @@ So überprüfen Sie den Status des Zeichnungspakets und rufen die eindeutige ID 
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus.
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
 8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der Zeichnungspaketressource.
 
@@ -169,7 +168,7 @@ So konvertieren Sie ein Zeichnungspaket:
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
 
 8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status der Konvertierung zu überprüfen.
 
@@ -197,7 +196,7 @@ So können Sie den Status des Konvertierungsprozesses überprüfen und die Konve
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
 
 8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`conversionId`), der von anderen APIs für den Zugriff auf die konvertierten Kartendaten verwendet werden kann.
 
@@ -254,7 +253,7 @@ So erstellen Sie ein Dataset:
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
 
 8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Datasets zu überprüfen.
 
@@ -308,7 +307,7 @@ So erstellen Sie ein Kachelset:
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
 
 8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Kachelsets zu überprüfen.
 

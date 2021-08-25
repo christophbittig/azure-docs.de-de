@@ -4,15 +4,16 @@ description: Übersicht über Mapping Data Flows in Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 05/20/2021
-ms.openlocfilehash: ef0639637736b0a8b4f41d6fd038de81a8e94a69
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e10ede945f60ee693738ab7230a2c50b5bcb972
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454958"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639977"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
@@ -32,11 +33,11 @@ Datenflüsse werden über den Bereich mit Factory-Ressourcen wie Pipelines und D
 
 Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
-## <a name="authoring-data-flows&quot;></a>Erstellen von Datenflüssen
+## <a name="authoring-data-flows"></a>Erstellen von Datenflüssen
 
 Ein Zuordnungsdatenfluss verfügt über einen einzigartigen Erstellungsbereich für das vereinfachte Erstellen von Transformationslogik. Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
 
-![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas-1.png &quot;Canvas")
+![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas-1.png "Canvas")
 
 ### <a name="graph"></a>Graph
 

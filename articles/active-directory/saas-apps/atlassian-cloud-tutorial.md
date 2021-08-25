@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2021
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 06df04167cd39b8909528b600319be810e549730
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6f647e7aed23766e62546497a6065efd7bd3985
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730785"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Tutorial: Integrieren von Atlassian Cloud und Azure Active Directory
 
@@ -96,10 +96,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Navigieren Sie im **ATLASSIAN-Verwaltungsportal** zur Registerkarte **Security** (Sicherheit), wählen Sie **SAML single sign-on** (Einmaliges Anmelden für SAML) aus, und klicken Sie auf **Add SAML configuration** (SAML-Konfiguration hinzufügen).
 
    ![Sicherheit](./media/atlassian-cloud-tutorial/admin.png)
-
-1. Füllen Sie im Abschnitt **Add SAML configuration** (SAML-Konfiguration hinzufügen) die erforderlichen Felder mit den aus dem Azure-Portal kopierten Werten aus, und klicken Sie auf **Save configuration** (Konfiguration speichern).
-
-   ![Hinzufügen der SAML-Konfiguration](./media/atlassian-cloud-tutorial/configuration.png)
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Atlassian Cloud** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden einrichten** aus.
 

@@ -2,21 +2,21 @@
 title: T-SQL-Anweisungen im dedizierten SQL-Pool
 description: Links zur Dokumentation für T-SQL-Anweisungen, die für einen dedizierten SQL-Pool in Azure Synapse Analytics unterstützt werden.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 05/01/2019
-ms.author: xiaoyul
+ms.author: wiassaf
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1d565d358b055eeb01ddcbbb733c34c439353ea4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ccc53d172c7157754035d3b2f5781787c0ed8e8
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683033"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634577"
 ---
 # <a name="t-sql-statements-supported-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>T-SQL-Anweisungen, die vom dedizierten SQL-Pool in Azure Synapse Analytics unterstützt werden 
 

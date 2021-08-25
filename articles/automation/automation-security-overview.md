@@ -4,15 +4,15 @@ description: Dieser Artikel enthält eine Übersicht über die Azure Automation
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 33402eb41ed9c22cf38890229d833cd2ab00d65d
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279512"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339252"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Übersicht über die Azure Automation-Kontoauthentifizierung
 
@@ -38,7 +38,7 @@ Durch eine verwaltete Entität aus Azure Active Directory (Azure AD) kann Ihr Ru
 
 Nachstehend sind einige Vorteile der Verwendung von verwalteten Identitäten beschrieben:
 
-- Mit verwalteten Identitäten kann die Authentifizierung bei jedem Azure-Dienst erfolgen, der die Azure AD-Authentifizierung unterstützt. Sie können für Cloud- und Hybridaufträge verwendet werden. Hybridaufträge können verwaltete Identitäten verwenden, wenn sie auf einem Hybrid Runbook Worker ausgeführt werden, der auf einem virtuellen Azure-Computer oder einem virtuellen Nicht-Azure-Computer ausgeführt wird.
+- Die Verwendung einer verwalteten Identität anstelle des ausführenden Automation-Kontos vereinfacht die Verwaltung. Sie müssen das vom ausführenden Konto verwendete Zertifikat nicht erneuern.
 
 - Die Nutzung von verwalteten Identitäten verursacht keine zusätzlichen Kosten.
 
@@ -52,8 +52,8 @@ Einem Automation-Konto können zwei Arten von Identitäten gewährt werden:
 
 - Eine benutzerseitig zugewiesene Identität ist eine eigenständige Azure-Ressource, die Ihrer App zugewiesen werden kann. Eine App kann über mehrere benutzerseitig zugewiesene Identitäten verfügen.
 
->[!NOTE]
-> Vom Benutzer zugewiesene Identitäten werden noch nicht unterstützt.
+> [!NOTE]
+> Benutzerseitig zugewiesene Identitäten werden nur für Cloudaufträge unterstützt. Weitere Informationen zu den verschiedenen verwalteten Identitäten finden Sie unter [Verwalten von Identitätstypen](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 Weitere Informationen zur Verwendung verwalteter Identitäten finden Sie unter [Aktivieren der verwalteten Identität für Azure Automation (Vorschau)](enable-managed-identity-for-automation.md).
 
@@ -61,8 +61,37 @@ Weitere Informationen zur Verwendung verwalteter Identitäten finden Sie unter [
 
 Ausführende Konten in Azure Automation bieten Authentifizierung für die Verwaltung von Azure Resource Manager-Ressourcen oder von Ressourcen, die im klassischen Bereitstellungsmodell bereitgestellt wurden. In Azure Automation gibt es zwei Arten von ausführenden Konten:
 
-* Ausführendes Azure-Konto: Ermöglicht das Verwalten von Azure-Ressourcen basierend auf dem Azure Resource Manager-Bereitstellungs- und -Verwaltungsdienst für Azure.
-* Klassisches ausführendes Azure-Konto: Ermöglicht das Verwalten klassischer Azure-Ressourcen basierend auf dem klassischen Bereitstellungsmodell.
+Zum Erstellen oder Erneuern eines ausführenden Kontos sind Berechtigungen auf drei Ebenen erforderlich:
+
+- Abonnement,
+- Azure Active Directory (Azure AD) und
+- Automation-Konto
+
+### <a name="subscription-permissions"></a>Abonnementberechtigungen
+
+Sie benötigen die Berechtigung `Microsoft.Authorization/*/Write`. Diese Berechtigung erhalten Sie durch Mitgliedschaft bei einer der folgenden integrierten Azure-Rollen:
+
+- [Besitzer](../role-based-access-control/built-in-roles.md#owner)
+- [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator)
+
+Zum Konfigurieren oder Erneuern klassischer ausführender Konten benötigen Sie die Rolle „Co-Administrator“ auf Abonnementebene. Weitere Informationen zu klassischen Abonnementberechtigungen finden Sie unter [Administratoren für klassische Azure-Abonnements](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
+
+### <a name="azure-ad-permissions"></a>Azure AD-Berechtigungen
+
+Um den Dienstprinzipal erstellen oder erneuern zu können, müssen Sie Mitglied einer der folgenden integrierten Azure AD-Rollen sein:
+
+- [Anwendungsadministrator](../active-directory/roles/permissions-reference.md#application-administrator)
+- [Anwendungsentwickler](../active-directory/roles/permissions-reference.md#application-developer)
+
+Die Mitgliedschaft kann **ALLEN** Benutzern im Mandanten auf Verzeichnisebene zugewiesen werden, wobei es sich um das Standardverhalten handelt. Sie können die Mitgliedschaft bei jeder Rolle auf Verzeichnisebene gewähren. Weitere Informationen finden Sie unter [Wer hat die Berechtigung zum Hinzufügen von Anwendungen zu meiner Azure AD-Instanz?](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+
+### <a name="automation-account-permissions"></a>Berechtigungen für das Automation-Konto
+
+Um das Automation-Konto erstellen oder aktualisieren zu können, müssen Sie Mitglied einer der folgenden Automation-Kontorollen sein:
+
+- [Besitzer](./automation-role-based-access-control.md#owner)
+- [Mitwirkender](./automation-role-based-access-control.md#contributor)
+- [Benutzerdefinierter Azure Automation-Mitwirkender](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)
 
 Weitere Informationen zum Resource Manager-Bereitstellungsmodell und zum klassischen Bereitstellungsmodell finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
@@ -137,6 +166,9 @@ So überprüfen Sie, ob die Situation, die die Fehlermeldung erzeugt, behoben wu
 Die rollenbasierte Zugriffssteuerung ist für Azure Resource Manager verfügbar, um einem Azure AD-Benutzerkonto und ausführenden Konto zulässige Aktionen zu gewähren und den Dienstprinzipal zu authentifizieren. Weitere Informationen zur Entwicklung Ihres Modells zum Verwalten von Automation-Berechtigungen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md) .
 
 Wenn Sie über strikte Sicherheitskontrollen für die Zuweisung von Berechtigungen in Ressourcengruppen verfügen, müssen Sie der Rolle **Mitwirkender** in der Ressourcengruppe die Mitgliedschaft beim ausführenden Konto zuweisen.
+
+> [!NOTE]
+> Wir empfehlen, die Rolle **Log Analytics-Mitwirkender** nicht zum Ausführen von Automation-Aufträgen zu verwenden. Erstellen Sie stattdessen die benutzerdefinierte Rolle „Azure Automation-Mitwirkender“, und verwenden Sie diese für Aktionen im Zusammenhang mit dem Automation-Konto. Weitere Informationen finden Sie unter der [Rolle „Benutzerdefinierter Azure Automation-Mitwirkender“](./automation-role-based-access-control.md#custom-azure-automation-contributor-role).
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbookauthentifizierung mit Hybrid Runbook Worker
 
