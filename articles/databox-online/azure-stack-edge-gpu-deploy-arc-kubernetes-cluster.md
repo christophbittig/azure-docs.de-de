@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 9eef9a99dbf27100fdb6e1fd731ace380f7ba4fb
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1f3ecf919337c17514af7d9e0d3d83b2dc75bf1d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072845"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769255"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Arc in einem Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -145,7 +145,7 @@ Führen Sie folgende Schritte aus, um den Kubernetes-Cluster für die Azure Arc-
     Fügen Sie den Parameter `CloudEnvironment` hinzu, wenn Sie eine andere als die öffentliche Azure-Cloud verwenden. Sie können diesen Parameter auf `AZUREPUBLICCLOUD`, `AZURECHINACLOUD`, `AZUREGERMANCLOUD` und `AZUREUSGOVERNMENTCLOUD` festlegen.
 
     > [!NOTE]
-    > - Verwenden Sie zum Bereitstellen von Azure Arc auf Ihrem Gerät eine [unterstützte Region für Azure Arc](../azure-arc/kubernetes/overview.md#supported-regions). 
+    > - Verwenden Sie zum Bereitstellen von Azure Arc auf Ihrem Gerät eine [unterstützte Region für Azure Arc](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc). 
     > - Verwenden Sie den Befehl `az account list-locations`, um den genauen Standortnamen zu ermitteln, der an das Cmdlet `Set-HcsKubernetesAzureArcAgent` übergeben werden soll. Standortnamen enthalten in der Regel keine Leerzeichen.
     > - `ClientId` und `ClientSecret` sind erforderliche Parameter. `ClientSecret` ist eine Sicherheitszeichenfolge.
     

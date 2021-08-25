@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e00bfd3e5597683c99df69a3fb8140d00847e4f6
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 85708face2696ebacb199c37725ce8fd9a166dc4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572433"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639740"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zu Azure Database for MySQL mithilfe von verwalteten Identitäten
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Identität eines virtuellen Windows-Computers (Virtual Machine, VM) auf einen Azure Database for MySQL-Server zugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
 
@@ -48,9 +50,12 @@ In den folgenden Schritten werden Sie die Identität konfigurieren. Verwenden Si
 
 ```azurecli
 # Get resource ID of the user-assigned identity
+
 resourceID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query id --output tsv)
 
 # Get client ID of the user-assigned identity
+
+
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
@@ -83,9 +88,9 @@ Ihre Anwendung kann nun ein Zugriffstoken aus dem Dienst „Azure Instance Metad
 
 Dieses Token wird abgerufen, indem eine HTTP-Anforderung an `http://169.254.169.254/metadata/identity/oauth2/token` gesendet wird und die folgenden Parameter übergeben werden:
 
-* `api-version` = `2018-02-01`
-* `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID` (die Sie zuvor abgerufen haben)
+- `api-version` = `2018-02-01`
+- `resource` = `https://ossrdbms-aad.database.windows.net`
+- `client_id` = `CLIENT_ID` (die Sie zuvor abgerufen haben)
 
 Es wird ein JSON-Ergebnis zurückgegeben, das ein `access_token`-Feld enthält. Dieser lange Textwert ist das Zugriffstoken der verwalteten Identität, das bei der Verbindungsherstellung zur Datenbank als Kennwort verwenden werden soll.
 
@@ -93,9 +98,13 @@ Zu Testzwecken können Sie die folgenden Befehle in Ihrer Shell ausführen. Beac
 
 ```bash
 # Retrieve the access token
+
+
 accessToken=$(curl -s 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fossrdbms-aad.database.windows.net&client_id=CLIENT_ID' -H Metadata:true | jq -r .access_token)
 
 # Connect to the database
+
+
 mysql -h SERVER --user USER@SERVER --enable-cleartext-plugin --password=$accessToken
 ```
 
@@ -207,4 +216,4 @@ MySQL version: 5.7.27
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Überprüfen der Gesamtkonzepte für [Azure Active Directory-Authentifizierung mit Azure Database for MySQL](concepts-azure-ad-authentication.md)
+- Überprüfen der Gesamtkonzepte für [Azure Active Directory-Authentifizierung mit Azure Database for MySQL](concepts-azure-ad-authentication.md)

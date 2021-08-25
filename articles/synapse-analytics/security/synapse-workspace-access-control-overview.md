@@ -2,19 +2,19 @@
 title: Übersicht über die Zugriffssteuerung für Azure Synapse-Arbeitsbereiche
 description: In diesem Artikel werden die Mechanismen beschrieben, die zum Steuern des Zugriffs auf einen Synapse-Arbeitsbereich und die darin enthaltenen Ressourcen und Codeartefakte verwendet werden.
 services: synapse-analytics
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 574211bc426d97c5bd734dcf348b66ecce1b3ff8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: b92603e5aa9f7c42a2e4789353077058b1fc6ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217807"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730919"
 ---
 # <a name="azure-synapse-access-control"></a>Azure Synapse-Zugriffssteuerung 
 

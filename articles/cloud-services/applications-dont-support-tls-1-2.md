@@ -9,17 +9,16 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.workload: ''
 ms.date: 03/16/2020
-ms.openlocfilehash: d1228e8258984c7c20e02cb9f8c805cac0fec927
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8c7a79d791e62fe1173b945d0d2d360c595e31a6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093623"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822517"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problembehandlung für Anwendungen, die TLS 1.2 nicht unterstützen
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen.
 

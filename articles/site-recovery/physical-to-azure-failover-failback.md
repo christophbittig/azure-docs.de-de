@@ -5,12 +5,12 @@ services: site-recovery
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
-ms.openlocfilehash: 68427d264b6d2eea1a38e3b8bc5273409221c126
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 607e7e679d378992bcb25785d2a5fd6c1045a08e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579910"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346663"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 

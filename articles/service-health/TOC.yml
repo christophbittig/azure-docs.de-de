@@ -50,7 +50,7 @@
     - name: Ressourcenintegritätstypen und -überprüfungen
       href: resource-health-checks-resource-types.md
     - name: Häufig gestellte Fragen zu Resource Health
-      href: resource-health-faq.md
+      href: resource-health-faq.yml
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
