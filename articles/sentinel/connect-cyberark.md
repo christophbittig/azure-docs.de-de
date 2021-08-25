@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f18481821361feff525e3357543036784b21495
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0b8db5dfa399aaef087adb0ec5c2d67b91fceab9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351104"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694043"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>Verbinden von CyberArk EPV (Enterprise Password Vault) mit Azure Sentinel
 
@@ -42,7 +42,7 @@ CyberArk EPV-Protokolle werden vom Vault an einen Linux-basierten Protokollweite
 
 1. Befolgen Sie die [Anweisungen in CyberArk EPV](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm), um das Senden von Syslog-Daten an den Protokollweiterleitungsserver zu konfigurieren.
 
-1. Überprüfen Sie die Verbindung und die Datenerfassung mithilfe [dieser Anweisungen](connect-cef-verify.md). Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden.
+1. Überprüfen Sie die Verbindung und die Datenerfassung mithilfe [dieser Anweisungen](troubleshooting-cef-syslog.md#validate-cef-connectivity). Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden.
 
 ## <a name="find-your-data"></a>Suchen von Daten
 

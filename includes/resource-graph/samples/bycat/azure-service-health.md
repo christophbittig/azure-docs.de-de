@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 577032452a3dfe18874a85d74f7e798a1f9175aa
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 11ff9db1d9ef4a31989a2fc4bbe7734fa14721e4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457137"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861872"
 ---
-### <a name="active-service-health-event-subscription-impact"></a>Die Auswirkung von Active Service Health-Ereignisabonnements
+### <a name="active-service-health-event-subscription-impact"></a>Die Auswirkungen von Active Service Health-Ereignisabonnements
 
 Hier werden alle aktiven Service Health Ereignisse zurückgegeben, einschließlich Dienstproblemen, geplanter Wartung, Integritätsratgebern und Sicherheitsratgebern – gruppiert nach Ereignistyp und der Anzahl der betroffenen Abonnements.
 
@@ -46,9 +46,9 @@ Search-AzGraph -Query "ServiceHealthResources | where type =~ 'Microsoft.Resourc
 
 ---
 
-### <a name="all-active-health-advisory-events"></a>Alle Ereignisse zur Aktiven Integritätsempfehlung
+### <a name="all-active-health-advisory-events"></a>Alle aktiven Ereignisse zur Integritätsempfehlung
 
-Die aktiven Integritätsempfehlung der Service Health Ereignisse werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
+Die aktiven Service Health Ereignisse zur Integritätsempfehlung werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
 
 ```kusto
 ServiceHealthResources
@@ -81,7 +81,7 @@ Search-AzGraph -Query "ServiceHealthResources | where type =~ 'Microsoft.Resourc
 
 ### <a name="all-active-planned-maintenance-events"></a>Alle aktiven geplante Wartungsereignisse
 
-Die aktiven geplante Wartungen der Service Health Ereignisse werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
+Alle aktiven Service Health Ereignisse zur geplanten Wartung werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
 
 ```kusto
 ServiceHealthResources
@@ -114,7 +114,7 @@ Search-AzGraph -Query "ServiceHealthResources | where type =~ 'Microsoft.Resourc
 
 ### <a name="all-active-service-health-events"></a>Alle aktiven Service Health Ereignisse
 
-Die aktiven Service Health Ereignisse werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat, einschließlich Dienstproblemen, geplanter Wartung, Integritätsratgebern und Sicherheitsratgebern.
+Die aktiven Service Health Ereignisse werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat, einschließlich Dienstproblemen, geplanter Wartung, Integritätsempfehlungen und Sicherheitsempfehlungen.
 
 ```kusto
 ServiceHealthResources
@@ -147,7 +147,7 @@ Search-AzGraph -Query "ServiceHealthResources | where type =~ 'Microsoft.Resourc
 
 ### <a name="all-active-service-issue-events"></a>Alle aktiven Dienstproblemereignisse
 
-Die aktiven Dienstprobleme (Ausfälle) der Service Health Ereignisse werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
+Die aktiven Service Health Ereignisse zu Dienstproblemen (Ausfälle) werden an alle Abonnements zurückgegeben, auf die der Benutzer Zugriff hat.
 
 ```kusto
 ServiceHealthResources

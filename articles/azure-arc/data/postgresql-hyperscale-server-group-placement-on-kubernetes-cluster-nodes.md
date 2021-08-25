@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b03806b234e0f52453211bce0e468610c14a299
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b99df2f95838fe1913876a3e6a138935806df836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411213"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345880"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Platzieren einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -138,8 +138,8 @@ Dies bedeutet, dass an diesem Punkt jede PostgreSQL-Instanz, die Bestandteil der
 Nun wollen wir die Servergruppe mit einem dritten Workerknoten aufskalieren und beobachten, was passiert. Hiermit wird eine vierte PostgreSQL-Instanz erstellt, die auf einem vierten Pod gehostet wird.
 Zum Aufskalieren führen Sie den folgenden Befehl aus:
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 3
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace <namespace> --use-k8s
 ```
 
 Hierdurch wird folgende Ausgabe generiert:
@@ -151,8 +151,8 @@ postgres01 is Ready
 
 Listen Sie die im Azure Arc-Datencontroller bereitgestellten Servergruppen auf, und überprüfen Sie, ob die Servergruppe nun mit drei Workern ausgeführt wird. Führen Sie den folgenden Befehl aus:
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 Wie Sie sehen, ist eine Aufskalierung von zwei auf drei Worker erfolgt:
@@ -246,7 +246,7 @@ Wenn zu viele Workloads auf dem Kubernetes-Cluster gehostet werden, führt dies 
 
 ## <a name="scale-out-aks"></a>Aufskalieren des AKS
 
-Im Folgenden wird veranschaulicht, dass die horizontale Skalierung sowohl des AKS-Clusters als auch des Azure Arc-fähigen PostgreSQL Hyperscale-Servers eine Möglichkeit darstellt, um maximal von der hohen Leistung eines Azure Arc-fähigen PostgreSQL Hyperscale zu profitieren.
+Im Folgenden wird veranschaulicht, dass die horizontale Skalierung sowohl des AKS-Clusters als auch des Azure Arc-fähigen PostgreSQL Hyperscale-Servers eine Möglichkeit darstellt, um maximal von der Hochleistung eines Azure Arc-fähigen PostgreSQL Hyperscale zu profitieren.
 Fügen Sie dem AKS-Cluster einen fünften Knoten hinzu:
 
 :::row:::
@@ -286,8 +286,8 @@ Wir sehen, dass der neue physische Knoten des Kubernetes-Clusters nur den Metrik
 
 Auf dem fünften physischen Knoten wird noch keine Workload gehostet. Beim Aufskalieren des Azure Arc-fähigen PostgreSQL-Hyperscale optimiert Kubernetes die Platzierung des neuen PostgreSQL-Pods, sodass er nicht auf physischen Knoten angeordnet werden sollte, auf denen bereits andere Workloads gehostet werden. Führen Sie den folgenden Befehl aus, um den Azure Arc-fähigen PostgreSQL Hyperscale von drei auf vier Worker zu skalieren. Nach Abschluss dieses Vorgangs besteht die Servergruppe aus fünf PostgreSQL-Instanzen, über die sie verteilt ist: einen Koordinator und vier Worker.
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 4
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace <namespace> --use-k8s
 ```
 
 Hierdurch wird folgende Ausgabe generiert:
@@ -299,8 +299,8 @@ postgres01 is Ready
 
 Listen Sie die im Datencontroller bereitgestellten Servergruppen auf, und überprüfen Sie, ob die Servergruppe nun mit vier Workern ausgeführt wird:
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 Wie Sie sehen, ist eine Aufskalierung von drei auf vier Worker erfolgt. 

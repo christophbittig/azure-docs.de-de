@@ -2,19 +2,18 @@
 title: 'Tutorial: Konfigurieren eines Azure IoT Edge-Geräts: Machine Learning in IoT Edge'
 description: In diesem Tutorial konfigurieren Sie einen virtuellen Azure-Computer unter Linux als Azure IoT Edge-Gerät, das als transparentes Gateway fungiert.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: e5e1556b0b4960850c955f3d52c34396d1363b2a
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 445163b0d33f404845a66b7d885815d6336dac46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726362"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Tutorial: Konfigurieren eines Azure IoT Edge-Geräts
 
@@ -137,7 +136,7 @@ Sie können den virtuellen Computer über das Azure-Portal oder Azure CLI bereit
 
 1. Füllen Sie im neu gestarteten Fenster die verfügbaren Formularfelder aus.
 
-   | Feld | Beschreibung |
+   | Feld | BESCHREIBUNG |
    | - | - |
    | **Abonnement** | Das aktive Azure-Abonnement, in dem der virtuelle Computer bereitgestellt werden soll. |
    | **Ressourcengruppe** | Eine vorhandene oder neu erstellte Ressourcengruppe, die den virtuellen Computer und die ihm zugeordneten Ressourcen enthalten soll. |

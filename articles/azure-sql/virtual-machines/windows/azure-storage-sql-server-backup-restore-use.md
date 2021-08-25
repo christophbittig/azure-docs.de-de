@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 35fff49a53f5a0a9532fd0dff841356c5deaf3ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e9ba6dcf0a8f6f987206cac2881ada098a8bcc
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97724781"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635184"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für die Sicherung und Wiederherstellung von SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Die folgenden Azure-Komponenten werden bei einer Sicherung in Azure Blob Storage
 
 | Komponente | BESCHREIBUNG |
 | --- | --- |
-| **Speicherkonto** |Das Speicherkonto ist der Ausgangspunkt für alle Speicherdienste. Um auf Azure Blob Storage zuzugreifen, erstellen Sie zunächst ein Azure Storage-Konto. Weitere Informationen zu Azure Blob Storage finden Sie unter [Verwenden von Azure Blob Storage](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
+| **Speicherkonto** |Das Speicherkonto ist der Ausgangspunkt für alle Speicherdienste. Um auf Azure Blob Storage zuzugreifen, erstellen Sie zunächst ein Azure Storage-Konto. SQL Server ist unabhängig von der Art der verwendeten Speicherredundanz. Die Sicherung in Seitenblobs und Blockblobs wird für jede Speicherredundanz unterstützt (LRS\ZRS\GRS\RA-GRS\RA-GZRS\ usw.). Weitere Informationen zu Azure Blob Storage finden Sie unter [Verwenden von Azure Blob Storage](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Container** |Ein Container stellt einen Satz Blobs als Gruppe bereit und kann eine unbegrenzte Anzahl von Blobs enthalten. Um eine SQL Server-Sicherung in Azure Blob Storage zu speichern, muss mindestens ein Stammcontainer erstellt worden sein. |
 | **Blob** |Eine Datei eines beliebigen Typs und beliebiger Größe. Blobs können über das folgende URL-Format aufgerufen werden: `https://<storageaccount>.blob.core.windows.net/<container>/<blob>`. Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) |
 

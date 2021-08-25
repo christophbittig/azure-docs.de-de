@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie die Richtlinienunterstützung aktivieren, um 
 author: rishjai-msft
 ms.author: rishjai
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7707fb0688a10c1791556f0605b40cacc54b5a85
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1c936df9ffb467d732e0c07651e7c6fb31f28b5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346664"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>Verwendung von Policy mit Azure Site Recovery (Public Preview)
 
@@ -48,7 +48,7 @@ Zone zu Zone DR  | Unterstützt
 Interoperabilität mit anderen Richtlinien, die standardmäßig von Azure angewendet werden (sofern verfügbar) | Unterstützt
 
 >[!NOTE]
->In den folgenden Fällen wird Site Recovery für diese nicht aktiviert. Allerdings werden sie in „Ressourcencompliance“ als _Nicht konform_ angezeigt: 
+>In den folgenden Fällen wird Site Recovery für diese nicht aktiviert. Allerdings werden sie in „Ressourcencompliance“ als _Nicht konform_ angezeigt:
 >1. Wenn ein nicht unterstützter virtueller Computer innerhalb des Geltungsbereichs der Richtlinie erstellt wird.
 >1. Wenn ein virtueller Computer sowohl Teil einer Verfügbarkeitsgruppe als auch einer PPG ist.
 
@@ -77,11 +77,11 @@ Sie sind dabei, eine Policy zu erstellen, um Azure Site Recovery zu aktivieren. 
     - **Quellregion:** Die Quellregion der virtuellen Maschinen, für die die Richtlinie gilt.
     >[!NOTE]
     >Die Richtlinie gilt für alle virtuellen Maschinen, die zur Quellregion im Bereich der Policy gehören. Virtuelle Maschinen, die sich nicht in der Quellregion befinden, werden nicht im _Ressourcen-Compliance_ berücksichtigt.
-    - **Zielregion**: Der Ort, an dem die Daten Ihrer virtuellen Quellmaschine repliziert werden. Site Recovery stellt eine Liste geeigneter Zielregionen bereit, die auf dem Standort des ausgewählten Computers basiert. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
+    - **Zielregion**: Der Ort, an dem die Daten Ihrer virtuellen Quellmaschine repliziert werden. Site Recovery enthält die Liste der Zielregionen, in die der Kunde replizieren kann. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
     - **Zielressourcengruppe:** Die Ressourcengruppe, zu der alle Ihre replizierten virtuellen Maschinen gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe.
     - **Vault Resource Group**: Die Ressourcengruppe, in der Recovery Services Vault vorhanden ist.
-    - **Recovery Services Vault**: Die Vault, mit dem alle VMs des Bereichs geschützt werden.
-    - **Recovery Virtual Network**: Wählen Sie ein vorhandenes virtuelles Netzwerk in der Zielregion, das als virtuelle Maschine für die Wiederherstellung verwendet werden soll.
+    - **Recovery Services Vault**: Die Vault, mit dem alle VMs des Bereichs geschützt werden. Azure Policy kann bei Bedarf einen neuen Tresor in Ihrem Namen erstellen.
+    - **Recovery Virtual Network**: Wählen Sie ein vorhandenes virtuelles Netzwerk in der Zielregion, das als virtuelle Maschine für die Wiederherstellung verwendet werden soll. Azure Policy kann bei Bedarf auch ein neues virtuelles Netzwerk für Sie erstellen.
     - **Target Availability Zone**: Geben Sie die Verfügbarkeitszone der Zielregion ein, in der die virtuelle Maschine ausfallen werden soll.
     >[!NOTE]
     >Für das Zone-zu-Zone-Szenario wählen Sie dieselbe Zielregion wie die Quellregion und entscheiden Sie sich für eine andere Availability Zone in _Target Availability Zone_.     
