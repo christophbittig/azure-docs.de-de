@@ -2,25 +2,22 @@
 title: 'Tutorial: Konfigurieren von Parsable für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in Parsable bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 1ec33ea6-bff4-4665-bf2b-f4037ff28c09
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/18/2020
-ms.author: Zhchia
-ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 34f27efea0b97526a7dc05d086ee3854b2bf7490
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100526424"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122207324"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Parsable für die automatische Benutzerbereitstellung
 
@@ -103,7 +100,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Parsable synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Parsable bei Updatevorgängen abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Parsable-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |displayName|String|
@@ -112,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Parsable synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Parsable für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|Unterstützung für das Filtern|
+      |attribute|Typ|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |members|Verweis|

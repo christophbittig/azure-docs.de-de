@@ -1,18 +1,21 @@
 ---
 title: Aktualisieren von Azure Machine Learning Studio (Classic)-Modellen mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning Studio (Classic).
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 5eac6f939ffcc39961f508a993ca17757221503f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0afbd758022805735231b415e0e06643722488cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783097"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640573"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning Studio (Classic)-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 

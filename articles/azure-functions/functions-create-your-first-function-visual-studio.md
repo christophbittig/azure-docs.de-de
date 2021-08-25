@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459458"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "122643300"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>Schnellstart: Erstellen Ihrer ersten C#-Funktion in Azure mithilfe von Visual Studio
 
@@ -52,7 +52,7 @@ Das Methodenattribut `FunctionName` dient zum Festlegen des Namens der Funktion,
 
 1. Benennen Sie die Klasse „Function1“ im Code in `HttpExample` um.
 
-1. Benennen Sie in der `HttpTrigger`-Methode namens `Run` das Methodenattribut `FunctionName` in `HttpExample` um.
+1. Benennen Sie in der `HttpTrigger`-Methode namens `Run` das Methodenattribut `FunctionName` in `HttpExample` um. 
 
 Die Definition der Funktion sollte nun wie folgt aussehen:
 
@@ -74,7 +74,7 @@ Sie müssen in Ihrem Azure-Abonnement über eine Funktions-App verfügen, um Ihr
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="test-your-function-in-azure"></a>Testen der Funktion in Azure
+## <a name="verify-your-function-in-azure"></a>Überprüfen Ihrer Funktion in Azure
 
 1. In Cloud-Explorer sollte Ihre neue Funktions-App ausgewählt sein. Wenn nicht, erweitern Sie Ihr Abonnement > **App Services**, und wählen Sie Ihre neue Funktions-App aus.
 
@@ -88,7 +88,7 @@ Sie müssen in Ihrem Azure-Abonnement über eine Funktions-App verfügen, um Ihr
 
     `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. Wechseln Sie zu dieser URL, und im Browser wird eine von der App auf die GET-Remoteanforderung zurückgegebene Antwort angezeigt, die wie im folgenden Beispiel aussieht:
+1. Wechseln Sie zu dieser URL, und im Browser wird eine von der App auf die GET-Remoteanforderung zurückgegebene Antwort angezeigt, die wie im folgenden Beispiel aussieht:
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Funktionsantwort im Browser":::
 
@@ -98,19 +98,9 @@ Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Über
 
 *Ressourcen* bezieht sich bei Azure auf Funktions-Apps, Funktionen, Speicherkonten und Ähnliches. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch das Löschen der Gruppe gelöscht werden. 
 
-Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. Nicht mehr benötigte Ressourcen können wie folgt gelöscht werden:
+Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. 
 
-1. Erweitern Sie im Cloud-Explorer Ihr Abonnement > **App Services**, klicken Sie mit der rechten Maustaste auf ihre Funktions-App, und wählen Sie **Im Portal öffnen** aus. 
-
-1. Wählen Sie auf der Seite „Funktions-App“ die Registerkarte **Übersicht** und anschließend unter **Ressourcengruppe** den Link aus.
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Auswählen der zu löschenden Ressourcengruppe auf der Seite „Funktions-App“":::
-
-2. Prüfen Sie auf der Seite **Ressourcengruppe** die Liste mit den enthaltenen Ressourcen, und vergewissern Sie sich, dass es sich dabei um die Ressourcen handelt, die Sie löschen möchten.
- 
-3. Klicken Sie auf **Ressourcengruppe löschen**, und folgen Sie den Anweisungen.
-
-   Der Löschvorgang kann einige Minuten dauern. Nach Abschluss des Vorgangs wird kurz eine Benachrichtigung angezeigt. Sie können auch am oberen Seitenrand auf das Glockensymbol klicken, um die Benachrichtigung anzuzeigen.
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

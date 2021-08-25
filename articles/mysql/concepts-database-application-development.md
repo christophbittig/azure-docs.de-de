@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 45447a26c0455fc5945af8b8e9f7442af7facfbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73517b616ae9cf126826f034c4b90babc32518d6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99830684"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639703"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Entwicklung von Anwendungen für Azure-Datenbank für MySQL – Überblick 
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 In diesem Artikel werden Entwurfsüberlegungen besprochen, die Entwickler beim Schreiben des Anwendungscodes zum Herstellen einer Verbindung mit Azure Database for MySQL befolgen sollten. 
 
 > [!TIP]

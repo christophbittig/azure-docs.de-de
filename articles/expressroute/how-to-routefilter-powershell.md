@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 08/02/2021
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 8321e3e78702d95936fa46bdbdac4b59f17d8a84
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dca4a74ea7ba345a6ca56b72eb933563abc831bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695883"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749655"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-powershell"></a>Tutorial: Konfigurieren von Routenfiltern für Microsoft-Peering mithilfe von PowerShell
 
@@ -95,7 +95,7 @@ Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“
 1. Führen Sie den folgenden Befehl aus, um die Filterregel zum Routenfilter hinzuzufügen:
  
     ```azurepowershell-interactive
-    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+    $routefilter = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
     $routefilter.Rules.Add($rule)
     Set-AzRouteFilter -RouteFilter $routefilter
     ```
@@ -105,7 +105,7 @@ Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“
 Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenfilter anzufügen, sofern Sie nur über Microsoft-Peering verfügen:
 
 ```azurepowershell-interactive
-$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "MyResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
@@ -119,12 +119,12 @@ Um die Eigenschaften eines Routenfilters abzurufen, führen Sie die folgenden Sc
 1. Führen Sie den folgenden Befehl aus, um die Routenfilterressource abzurufen:
 
    ```azurepowershell-interactive
-   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   $routefilter = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
    ```
 2. Rufen Sie die Routenfilterregeln für die Routenfilterressource ab, indem Sie folgenden Befehl ausführen:
 
    ```azurepowershell-interactive
-   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   $routefilter = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
    $rule = $routefilter.Rules[0]
    ```
 
@@ -133,7 +133,7 @@ Um die Eigenschaften eines Routenfilters abzurufen, führen Sie die folgenden Sc
 Wenn der Routenfilter bereits an eine Leitung angefügt ist, geben Updates der BGP-Communityliste Änderungen an Präfixankündigungen automatisch über die eingerichtete BGP-Sitzung weiter. Sie können die BGP-Communityliste Ihres Routenfilters mit dem folgenden Befehl aktualisieren:
 
 ```azurepowershell-interactive
-$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzRouteFilter -RouteFilter $routefilter
 ```

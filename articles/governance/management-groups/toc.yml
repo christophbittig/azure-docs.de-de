@@ -38,7 +38,11 @@
   items:
     - name: 'Inhalt: Erstellen einer Abonnementgovernancestrategie'
       displayName: 'governance, module'
-      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-create-subscription-governance-strategy
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Anleitungen
   expanded: true
   items:

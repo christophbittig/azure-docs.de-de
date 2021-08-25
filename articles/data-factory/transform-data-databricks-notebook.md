@@ -1,17 +1,20 @@
 ---
 title: Transformieren von Daten mit einem Databricks-Notebook
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie ein Databricks-Notebook in Azure Data Factory ausführen.
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d4db58e70c31724bac3678eb0f692e13d26211c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639906"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformieren von Daten durch Ausführen eines Databricks-Notebooks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +55,7 @@ Dies ist die JSON-Beispieldefinition der Databricks-Notebook-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden:
 
-|Eigenschaft|Beschreibung|Erforderlich|
+|Eigenschaft|BESCHREIBUNG|Erforderlich|
 |---|---|---|
 |name|Der Name der Aktivität in der Pipeline.|Ja|
 |description|Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.|Nein|

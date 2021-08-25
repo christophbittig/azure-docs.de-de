@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 2d0d38dee15817e56c2784981365ea331b6a8459
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7fd6c476fd56dcece162e34d5e6bd1ba33a34f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943156"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122639677"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und Azure SQL-Datenbank mithilfe von Apache Sqoop
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 Erfahren Sie, wie Sie Apache Sqoop zum Importieren und Exportieren von Daten zwischen einem Apache Hadoop-Cluster unter Azure HDInsight und Azure SQL-Datenbank oder Microsoft SQL Server verwenden. Die Schritte in diesem Artikel verwenden den Befehl `sqoop` direkt vom Hauptknoten des Hadoop-Clusters aus. Sie können SSH verwenden, um die Verbindung zum Hauptknoten herzustellen und die Befehle in diesem Artikel auszuführen. Dieser Artikel ist eine Fortsetzung von [Verwenden von Apache Sqoop mit Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 

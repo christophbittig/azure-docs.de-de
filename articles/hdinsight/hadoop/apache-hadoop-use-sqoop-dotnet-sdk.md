@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 744025c8d74efe5e01a452853db2c854dca4a7f9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98928350"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122639662"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Ausführen von Apache Sqoop-Aufträgen mit .NET SDK für Apache Hadoop in HDInsight
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 Erfahren Sie, wie das Azure HDInsight .NET-SDK zum Ausführen von Apache Sqoop-Aufträgen in HDInsight zum Importieren und Exportieren zwischen einem HDInsight-Cluster und einer Azure SQL-Datenbank oder SQL Server-Datenbank verwendet wird.
 

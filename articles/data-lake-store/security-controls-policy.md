@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Data Lake Storage Gen1
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Data Lake Storage Gen1 verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: data-lake-store
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d553064809d3b40f6c6ab2eba58aa690d7498534
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: d000792b2c3113717bdc8a657a8b56626ccca853
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114400323"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607962"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen1"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Data Lake Storage Gen1
 

@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von getAbstract für die automatische Benutzerbe
 description: Hier erfahren Sie, wie Sie Azure Active Directory-Benutzerkonten automatisch in getAbstract bereitstellen und deren Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: bd8898f9-7a01-4e85-9dd4-61ae4b01ab5b
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/25/2021
-ms.author: Zhchia
-ms.openlocfilehash: 1d1b2417750b917f5b09bb53ee980887218a785c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 1c7278b0d8a0e9ed3d94e69d1ad5da34ab0bc854
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616127"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327198"
 ---
 # <a name="tutorial-configure-getabstract-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von getAbstract für die automatische Benutzerbereitstellung
 
@@ -126,7 +126,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit getAbstract synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählte Attribute werden für den Abgleich der Benutzerkonten in getAbstract für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern, müssen Sie sicherstellen, dass die getAbstract-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -140,7 +140,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit getAbstract synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in getAbstract für Updatevorgänge abzugleichen. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-    |Attribut|type|Unterstützung für das Filtern|
+    |Attribut|Typ|Unterstützung für das Filtern|
     |---|---|---|
     |displayName|String|&check;|
     |externalId|String|
@@ -158,9 +158,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Wählen Sie **Speichern** aus, wenn die Bereitstellung erfolgen kann.
 
-    ![Screenshot: Schaltfläche „Speichern“](common/provisioning-configuration-save.png)
+    ![Screenshot der Schaltfläche „Speichern“](common/provisioning-configuration-save.png)
 
-Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird.
+Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird.
 
 ## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
 

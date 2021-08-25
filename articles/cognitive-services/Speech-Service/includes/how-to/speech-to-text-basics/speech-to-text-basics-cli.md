@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/08/2020
-ms.author: trbye
-ms.openlocfilehash: 905eacc3751b3d5d6c66a2fdb0e1391a747ab895
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: lajanuar
+ms.openlocfilehash: 06499883236d0f893e05134441265964a76648e3
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327133"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071167"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech-CLI in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 

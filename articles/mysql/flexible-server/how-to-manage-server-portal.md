@@ -6,15 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5500a197b7cb2566b3ea78b6c2acba9403a7a8ae
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90930369"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639748"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Verwalten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau) mithilfe des Azure-Portals
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -22,6 +23,7 @@ ms.locfileid: "90930369"
 In diesem Artikel erfahren Sie, wie Sie Ihre Instanz von Azure Database for MySQL Flexible Server (Vorschau) verwalten. Zu den Verwaltungsaufgaben gehören die Skalierung von Compute und Speicher, die Wiederherstellung des Kennworts des Serveradministrators und das Löschen Ihres Servers.
 
 ## <a name="sign-in"></a>Anmelden
+
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Navigieren Sie zu Ihrer flexiblen Serverressource im Azure-Portal.
 
 ## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
@@ -35,7 +37,8 @@ Nach der Servererstellung können Sie zwischen verschiedenen [Tarifen](https://a
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/howto-manage-server-portal/scale-server.png" alt-text="Skalieren des Speichers, Flexible Server":::
 
-   > [!Important]
+   
+> [!IMPORTANT]
    > - Der Speicher kann nicht herunterskaliert werden.
    > - Das Skalieren der virtuellen Kerne löst einen Neustart des Servers aus.
 

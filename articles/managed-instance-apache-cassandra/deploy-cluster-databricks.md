@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 257055110bffac10c92d87820bcfadff2b208b3b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1e66e8a3358bdcbca3d5dea247e1e6af2000393f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538035"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735050"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>Schnellstart: Bereitstellen eines verwalteten Apache Spark-Clusters (Vorschau) mit Azure Databricks
 
@@ -82,7 +82,7 @@ Gehen Sie wie folgt vor, um einen Azure Databricks-Cluster in einem virtuellen 
    * **Clustername**: Geben Sie einen Namen für den Cluster ein.
    * **Databricks-Runtimeversion**: Es wird empfohlen, mindestens die Databricks-Runtimeversion 7.5 auszuwählen, um Spark 3.x-Unterstützung zu erhalten. 
 
-    :::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Auswählen der Databricks-Runtimeversion und des Spark-Clusters" border="true":::
+    :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Auswählen der Databricks-Runtimeversion und des Spark-Clusters" border="true":::
 
 1. Erweitern Sie **Erweiterte Optionen**, und fügen Sie die folgende Konfiguration hinzu. Ersetzen Sie dabei die IP-Adressen der Knoten sowie die Anmeldeinformationen:
 
@@ -96,7 +96,7 @@ Gehen Sie wie folgt vor, um einen Azure Databricks-Cluster in einem virtuellen 
 
 1. Fügen Sie dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzu, um eine Verbindung mit nativen Endpunkten sowie mit Azure Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster **Bibliotheken**  >  **Neue**  >  **Maven** installieren und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven-Koordinaten hinzu.
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Databricks gesucht werden.":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Databricks gesucht werden.":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 877bfc41cdff586f50244be55902967a753f1a18
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e200a809cc266b26c09a964e86f7f25cd8113be9
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092387"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823156"
 ---
 # <a name="common-cloud-service-classic-startup-tasks"></a>Allgemeine Starttasks für Cloud Services (klassisch)
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
 

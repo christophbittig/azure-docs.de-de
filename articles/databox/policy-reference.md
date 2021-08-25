@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Data Box
 description: Hier finden Sie eine Liste mit den integrierten Azure Policy-Richtliniendefinitionen für Azure Data Box. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 3c38097f67327cfe161fcd0ff7b4c5088fcbf686
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c32ba3a617f4e6c9d78b7d894ee8306bd7ee88ee
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356302"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606604"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-box"></a>Integrierte Azure Policy-Richtliniendefinitionen für Azure Data Box
 

@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 7c064a460be8bf3f15eba404a208c0cad15a282a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e6330abbe05c161672c30c3555249d37eb74060d
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956493"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634409"
 ---
 # <a name="support-and-troubleshooting-for-azure-virtual-machine-scale-sets"></a>Support und Problembehandlung für Azure-VM-Skalierungsgruppen
 
@@ -87,19 +87,6 @@ Wenn Sie Hilfe bei der Programmiersprache und den Tools zum Entwickeln und Verwa
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>Übermitteln von Featureanforderungen über Azure-Feedback
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-Neue Features können per Azure-Feedback angefordert werden. Teilen Sie uns Ihre Ideen zur Verbesserung von Azure-VM-Skalierungsgruppen mit.
-
-| Dienst                       | URL für Azure-Feedback |
-|-------------------------------|---------------|
-| Azure Virtual Machines  | https://feedback.azure.com/forums/216843-virtual-machines 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Erhalten von Informationen zu Updates und neuen Releases
 

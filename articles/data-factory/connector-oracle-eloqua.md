@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus Oracle Eloqua (Vorschauversion)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Oracle Eloqua mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2019
-ms.openlocfilehash: 05db3f636e1f0cc2568174b644c99eac8ecadace
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c7af27ade6f71438612cc3df5e19cb4660a0e375
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482901"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639862"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopieren von Daten aus Oracle Eloqua mithilfe von Azure Data Factory (Vorschauversion)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

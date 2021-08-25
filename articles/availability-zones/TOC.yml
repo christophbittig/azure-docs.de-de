@@ -3,11 +3,9 @@
     - name: Featureseite für Resilienz mit Azure
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: Entwickeln robuster Anwendungen für Azure
-      href: /azure/architecture/resiliency/
+      href: /azure/architecture/framework/resiliency/app-design
 - name: Hochverfügbarkeit
   items:
-    - name: Hochverfügbarkeit für Azure-Anwendungen
-      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: Regionen und Verfügbarkeitszonen
       href: az-overview.md
     - name: Dokumentation zu Verfügbarkeitszonen

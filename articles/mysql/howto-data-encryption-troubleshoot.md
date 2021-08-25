@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 95b5a7650e0990f13149daeed87da8e261ec37e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3697130dd0d623a71158121c572aba7a52be28c7
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241122"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639728"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Behandeln von Problemen bei der Datenverschlüsselung in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel wird beschrieben, wie Sie häufige Probleme ermitteln und beheben, die bei einer für die Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel konfigurierten Azure Database for MySQL-Instanz auftreten können.
 

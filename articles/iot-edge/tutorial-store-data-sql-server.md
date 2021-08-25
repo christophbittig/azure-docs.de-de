@@ -3,18 +3,17 @@ title: 'Tutorial: Speichern von Daten mit dem SQL-Modul in Azure IoT Edge'
 description: In diesem Tutorial erfahren Sie, wie Sie mit einem SQL Server-Modul Daten lokal auf Ihrem IoT Edge-Gerät speichern.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 50a2555bfd86e074da16daf4866d79f506ecd964
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4a45cb97d4565eac279f054bcd862329311f4d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438025"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726336"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -88,7 +87,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie diese Datei.
 
 >[!NOTE]
->In diesem Tutorial werden die Administratoranmeldeinformationen für den Azure Container Registry-Dienst verwendet, der für Entwicklungs- und Testszenarios geeignet sind. Wenn Sie für die Produktionsszenarios bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringsten Rechten wie Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

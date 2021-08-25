@@ -3,16 +3,17 @@ metadata:
   title: 'Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen: Azure'
   description: Häufig gestellte Fragen und bewährte Methoden zur Verwendung von Windows 10 Enterprise (mehrere Sitzungen) für Azure Virtual Desktop.
   author: Heidilohr
-  ms.topic: conceptual
+  ms.topic: article
+  ms.prod: windows
   ms.date: 02/19/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: a8fe71b3f89121d752f99f59755064aa6b64d4b4
-  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+  ms.openlocfilehash: e6633e117fc06e9d7e337d6bece2cc2f7c36193c
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/09/2021
-  ms.locfileid: "111907371"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253326"
 title: Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 summary: In diesem Artikel werden häufig gestellte Fragen beantwortet und bewährte Methoden für Windows 10 Enterprise mit mehreren Sitzungen behandelt.
 sections:
@@ -48,9 +49,9 @@ sections:
   - question: Wo finde ich das Image für Windows 10 Enterprise (mehrere Sitzungen)?
     answer: Windows 10 Enterprise (mehrere Sitzungen) ist über den Azure-Katalog erhältlich. Navigieren Sie zum Azure-Portal, und suchen Sie nach dem Release „Windows 10 Enterprise for Virtual Desktops“. Wenn Sie ein in Microsoft 365 Apps for Enterprise integriertes Image wünschen, wechseln Sie in das Azure-Portal, und suchen Sie nach **Microsoft Windows 10 + Microsoft 365 Apps for Enterprise**.
   - question: Welches Image für Windows 10 Enterprise (mehrere Sitzungen) sollte ich verwenden?
-    answer: Der Azure-Katalog enthält mehrere Releases, z. B. Version 1809 und Version 1903 von Windows 10 Enterprise (mehrere Sitzungen). Wir empfehlen Ihnen die Verwendung der neuesten Version, um eine höhere Leistung und Zuverlässigkeit zu erzielen.
+    answer: Der Azure-Katalog enthält mehrere Releases, z. B. Version 1909 und Version 1903 von Windows 10 Enterprise (mehrere Sitzungen). Wir empfehlen Ihnen die Verwendung der neuesten Version, um eine höhere Leistung und Zuverlässigkeit zu erzielen.
   - question: Welche Versionen von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt?
-    answer: Version 1809 und höher von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt und sind im Azure-Katalog verfügbar. Für diese Releases wird demselben Supportrichtlinienansatz wie für Windows 10 Enterprise gefolgt. Dies bedeutet, dass für das März-Release 18 Monate und für das September-Release 30 Monate lang Support geleistet wird.
+    answer: Version 1909 und höhere Versionen von Windows 10 Enterprise (mehrere Sitzungen) werden unterstützt und sind im Azure-Katalog verfügbar. Für diese Releases wird demselben Supportrichtlinienansatz wie für Windows 10 Enterprise gefolgt. Dies bedeutet, dass für das März-Release 18 Monate und für das September-Release 30 Monate lang Support geleistet wird.
   - question: Welche Profilverwaltungslösung sollte ich für Windows 10 Enterprise (mehrere Sitzungen) verwenden?
     answer: >
       Wir empfehlen Ihnen die Verwendung von FSLogix-Profilcontainern, wenn Sie Windows 10 Enterprise in nicht persistenten Umgebungen oder anderen Szenarien konfigurieren, für die ein zentral gespeichertes Profil benötigt wird. Mit FSLogix wird sichergestellt, dass das Benutzerprofil für jede Benutzersitzung verfügbar und aktuell ist. Darüber hinaus empfehlen wir Ihnen die Verwendung Ihres FSLogix-Profilcontainers zum Speichern eines Benutzerprofils auf einer SMB-Freigabe mit den passenden Berechtigungen. Sie können Benutzerprofile bei Bedarf aber auch im Azure-Seitenblobspeicher speichern. Benutzer von Azure Virtual Desktop können ohne zusätzliche Kosten FSLogix nutzen.  FSLogix ist für alle Windows 10 Enterprise-Images mit mehreren Sitzungen vorinstalliert, aber der IT-Administrator ist weiterhin für die Konfiguration des FSLogix-Profilcontainers verantwortlich.

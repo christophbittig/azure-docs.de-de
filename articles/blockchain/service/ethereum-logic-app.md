@@ -4,16 +4,20 @@ description: Es wird beschrieben, wie Sie den Ethereum-Blockchain-Connector mit 
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
-ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0eb4056567692ddb221f3207ac92b3373f6bdff2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763790"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122639657"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Verwenden des Ethereum-Blockchain-Connectors mit Azure Logic Apps
 
-Verwenden Sie den [Ethereum-Blockchain-Connector](/connectors/blockchainethereum/) mit [Azure Logic Apps](../../logic-apps/index.yml) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse. In diesem Artikel wird erläutert, wie Sie mit dem Ethereum Blockchain-Connector Blockchaininformationen an einen anderen Dienst senden oder eine Blockchainfunktion aufrufen. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
+Verwenden Sie den [Ethereum-Blockchain-Connector](/connectors/blockchainethereum/) mit [Azure Logic Apps](../../logic-apps/index.yml) zum Ausführen von Smart Contract-Funktionen sowie zum Reagieren auf Smart Contract-Ereignisse.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+In diesem Artikel wird erläutert, wie Sie mit dem Ethereum Blockchain-Connector Blockchaininformationen an einen anderen Dienst senden oder eine Blockchainfunktion aufrufen. Angenommen, Sie möchten einen REST-basierten Microservice erstellen, der Informationen von einem Blockchainledger zurückgibt. Mithilfe einer Logik-App können Sie HTTP-Anforderungen akzeptieren, die in einem Blockchainledger gespeicherte Informationen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
