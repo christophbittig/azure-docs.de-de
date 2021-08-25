@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von GitHub Enterprise Managed User für die auto
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für GitHub Enterprise Managed User automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6aee39c7-08a1-4110-b936-4c85d129743b
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: cbae87a005240c15a2c3c28dcb8ab126d9957ba6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: thwimmer
+ms.openlocfilehash: a2e42e274fb65c06744f838ba4a40b2dc6119d5d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801229"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327426"
 ---
 # <a name="tutorial-configure-github-enterprise-managed-user-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub Enterprise Managed User für die automatische Benutzerbereitstellung
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit GitHub Enterprise Managed User synchronisiert werden. Als **übereinstimmende** Eigenschaften ausgewählte Attribute werden bei Updatevorgängen für den Abgleich der Benutzerkonten in GitHub Enterprise Managed User verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern, müssen Sie sicherstellen, dass die GitHub Enterprise Managed User-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |externalId|String|&check;|
    |userName|String|
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit GitHub Enterprise Managed User synchronisiert werden. Als **übereinstimmende** Eigenschaften ausgewählte Attribute werden bei Updatevorgängen für den Abgleich der Gruppen in GitHub Enterprise Managed User verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|Unterstützung für das Filtern|
+      |attribute|type|Unterstützung für das Filtern|
       |---|---|---|
       |externalId|String|&check;|
       |displayName|String|

@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 65f4bb6f50b6c09bc570b2832aa6d3aee3ac703f
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 67f317594b257776a3a8ac8c257281352516bfee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749474"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Schnellstart: Erstellen einer Azure Managed Instance-Instanz für Apache Cassandra-Cluster im Azure-Portal (Vorschau)
  
@@ -100,7 +100,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="connecting-to-your-cluster"></a>Herstellen einer Verbindung mit Ihrem Cluster
 
-Azure Managed Instance for Apache Cassandra erstellt keine Knoten mit öffentlichen IP-Adressen. Um also eine Verbindung mit dem neu erstellten Cassandra-Cluster herzustellen, müssen Sie eine weitere Ressource im VNET erstellen. Dabei kann es sich um eine Anwendung handeln oder einen virtuellen Computer, auf dem das Open-Source-Abfragetool [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) von Apache installiert ist. Sie können eine [Vorlage](https://azure.microsoft.com/resources/templates/vm-simple-linux/) verwenden, um einen virtuellen Ubuntu-Computer bereitzustellen. Stellen Sie nach der Bereitstellung mithilfe von SSH eine Verbindung mit dem Computer her, und installieren Sie CQLSH mithilfe der folgenden Befehle:
+Azure Managed Instance for Apache Cassandra erstellt keine Knoten mit öffentlichen IP-Adressen. Um also eine Verbindung mit dem neu erstellten Cassandra-Cluster herzustellen, müssen Sie eine weitere Ressource im VNET erstellen. Dabei kann es sich um eine Anwendung handeln oder einen virtuellen Computer, auf dem das Open-Source-Abfragetool [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) von Apache installiert ist. Sie können eine [Vorlage](https://azure.microsoft.com/resources/templates/vm-simple-linux/) verwenden, um einen virtuellen Ubuntu-Computer bereitzustellen. Stellen Sie nach der Bereitstellung mithilfe von SSH eine Verbindung mit dem Computer her, und installieren Sie CQLSH mithilfe der folgenden Befehle:
 
 ```bash
 # Install default-jre and default-jdk

@@ -7,19 +7,21 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: 3d24c6443dfa4c2e4eab1f247e075b34e891c1b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f75b933769e94986b1c140fb8bcbadca44b96cf1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470250"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643372"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verbinden und Abfragen mit der Azure CLI mit Azure Database for MySQL Flexible Server
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie sich mit der Azure CLI über ```az mysql flexible-server connect``` mit einer Instanz von Azure Database for MySQL Flexible Server verbinden und mit dem Befehl ```az mysql flexible-server execute``` eine einzelne Abfrage oder SQL-Datei ausführen. Mit diesem Befehl können Sie die Konnektivität mit dem Datenbankserver testen und Abfragen ausführen. Sie können mithilfe des interaktiven Modus auch mehrere Abfragen ausführen. 
+In dieser Schnellstartanleitung wird gezeigt, wie Sie sich mit der Azure CLI über ```az mysql flexible-server connect``` mit einer Instanz von Azure Database for MySQL Flexible Server verbinden und mit dem Befehl ```az mysql flexible-server execute``` eine einzelne Abfrage oder SQL-Datei ausführen. Mit diesem Befehl können Sie die Konnektivität mit dem Datenbankserver testen und Abfragen ausführen. Sie können mithilfe des interaktiven Modus auch mehrere Abfragen ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -154,7 +156,7 @@ test   200
 ```
 
 ## <a name="run-sql-file"></a>Ausführen einer SQL-Datei
-Sie können eine SQL-Datei mit dem Befehl und dem ```--file-path```-Argument ```-q``` ausführen.
+Sie können eine SQL-Datei mit dem Befehl mit dem ```--file-path```-Argument ```-q``` ausführen.
 
 ```azurecli
 az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"

@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Ihre erste .NET Core-Abfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-NuGet-Pakets für .NET Core und zum Ausführen Ihrer ersten Abfrage aus.
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0c1b7165702d00426f3459907a5558a08b12d84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4cc21a3f73991b3f1177a9bbc16491a18be51489
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751839"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460691"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit .NET Core
 
@@ -65,8 +65,7 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
                string strTenant = args[0];
                string strClientId = args[1];
                string strClientSecret = args[2];
-               string strSubscriptionId = args[3];
-               string strQuery = args[4];
+               string strQuery = args[3];
 
                AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/" + strTenant);
                AuthenticationResult authResult = await authContext.AcquireTokenAsync("https://management.core.windows.net", new ClientCredential(strClientId, strClientSecret));
@@ -74,7 +73,6 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
 
                ResourceGraphClient argClient = new ResourceGraphClient(serviceClientCreds);
                QueryRequest request = new QueryRequest();
-               request.Subscriptions = new List<string>(){ strSubscriptionId };
                request.Query = strQuery;
 
                QueryResponse response = argClient.Resources(request);
@@ -85,6 +83,9 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
    }
    ```
 
+   > [!NOTE]
+   > Dieser Code erstellt eine mandantenbasierte Abfrage. Um die Abfrage auf eine [Verwaltungsgruppe](../management-groups/overview.md) oder ein Abonnement zu beschränken, legen Sie die `ManagementGroups`- oder `Subscriptions`-Eigenschaft für das `QueryRequest`-Objekt fest.
+
 1. Kompilieren und veröffentlichen Sie die Konsolenanwendung `argQuery`:
 
    ```dotnetcli
@@ -94,21 +95,20 @@ Erstellen Sie eine neue Konsolenanwendung, und installieren Sie die erforderlich
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem die .NET Core-Konsolenanwendung kompiliert und veröffentlicht wurde, können Sie eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem die .NET Core-Konsolenanwendung kompiliert und veröffentlicht wurde, können Sie eine einfache mandantenbasierte Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
 
 Jeder Aufruf von `argQuery` enthält Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
 - Ersetzen Sie `{tenantId}` durch Ihre Mandanten-ID.
 - `{clientId}`: Ersetzen Sie diese ID durch die Client-ID Ihres Dienstprinzipals.
 - `{clientSecret}`: Ersetzen Sie dieses Geheimnis durch den geheimen Clientschlüssel Ihres Dienstprinzipals.
-- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 1. Ändern Sie die Verzeichnisse in den `{run-folder}`, den Sie mit dem vorherigen `dotnet publish`-Befehl definiert haben.
 
 1. Führen Sie Ihre erste Azure Resource Graph-Abfrage mit der kompilierten .NET Core-Konsolenanwendung aus:
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5"
    ```
 
    > [!NOTE]
@@ -117,7 +117,7 @@ Jeder Aufruf von `argQuery` enthält Variablen, die Sie durch Ihre eigenen Werte
 1. Ändern Sie den letzten Parameter in `argQuery.exe`, und ändern Sie die Abfrage so, dass die Sortierung (`order by`) nach der Eigenschaft **Name** erfolgt:
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5 | order by name asc"
    ```
 
    > [!NOTE]
@@ -126,7 +126,7 @@ Jeder Aufruf von `argQuery` enthält Variablen, die Sie durch Ihre eigenen Werte
 1. Ändern Sie den letzten Parameter in `argQuery.exe`, und ändern Sie die Abfrage so, dass zuerst die Sortierung (`order by`) nach der Eigenschaft **Name** und dann die Begrenzung (`limit`) auf die ersten fünf Ergebnisse erfolgt:
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | order by name asc | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | order by name asc | limit 5"
    ```
 
 Wenn die letzte Abfrage mehrmals ausgeführt wird und in Ihrer Umgebung keine Änderungen vorgenommenen werden, sind die zurückgegebenen Ergebnisse konsistent und nach der Eigenschaft **Name** sortiert, aber immer noch auf die ersten fünf Ergebnisse begrenzt.

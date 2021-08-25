@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: e55b4329105230f023d890983c79aa6c5244009d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9bf2b62e59b8320135629cc9fe751d6e4ab0e437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339836"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803054"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für JavaScript. Führen Sie die hier angegebenen Schritte aus, um das Paket zu installieren und mit der Verwendung der bereitgestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -120,11 +120,11 @@ Zunächst müssen wir eine Modellanforderung erstellen. Achten Sie darauf, dass 
 
 ```javascript
 const Modelrequest = {
-      source: data_source,
-      startTime: new Date(2021,0,1,0,0,0),
-      endTime: new Date(2021,0,2,12,0,0),
-      slidingWindow:200
-    };    
+  source: data_source,
+  startTime: new Date(2021,0,1,0,0,0),
+  endTime: new Date(2021,0,2,12,0,0),
+  slidingWindow:200
+};
 ```
 
 ### <a name="train-a-new-model"></a>Trainieren eines neuen Modells
@@ -141,16 +141,23 @@ console.log("New model ID: " + model_id)
 Um zu überprüfen, ob das Training Ihres Modells abgeschlossen ist, können Sie den Status des Modells nachverfolgen:
 
 ```javascript
-let model_response = await client.getMultivariateModel(model_id)
-let model_status = model_response.modelInfo?.status
+let model_response = await client.getMultivariateModel(model_id);
+let model_status = model_response.modelInfo.status;
 
-while (model_status != 'READY'){
-    await sleep(10000).then(() => {});
-    model_response = await client.getMultivariateModel(model_id)
-    model_status = model_response.modelInfo?.status
+while (model_status != 'READY' && model_status != 'FAILED'){
+  await sleep(10000).then(() => {});
+  model_response = await client.getMultivariateModel(model_id);
+  model_status = model_response.modelInfo.status;
 }
 
-console.log("TRAINING FINISHED.")
+if (model_status == 'FAILED') {
+  console.log("Training failed.\nErrors:");
+  for (let error of model_response.modelInfo?.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message);
+  }
+}
+
+console.log("TRAINING FINISHED.");
 ```
 
 ## <a name="detect-anomalies"></a>Erkennen von Anomalien
@@ -158,22 +165,31 @@ console.log("TRAINING FINISHED.")
 Verwenden Sie die Funktionen `detectAnomaly` und `getDectectionResult`, um zu ermitteln, ob in Ihrer Datenquelle Anomalien vorhanden sind.
 
 ```javascript
-console.log("Start detecting...")
+console.log("Start detecting...");
 const detect_request = {
-    source: data_source,
-    startTime: new Date(2021,0,2,12,0,0),
-    endTime: new Date(2021,0,3,0,0,0)
+  source: data_source,
+  startTime: new Date(2021,0,2,12,0,0),
+  endTime: new Date(2021,0,3,0,0,0)
 };
-const result_header = await client.detectAnomaly(model_id, detect_request)
-const result_id = result_header.location?.split("/").pop() ?? ""
-let result = await client.getDetectionResult(result_id)
-let result_status = result.summary.status
+const result_header = await client.detectAnomaly(model_id, detect_request);
+const result_id = result_header.location?.split("/").pop() ?? "";
+let result = await client.getDetectionResult(result_id);
+let result_status = result.summary.status;
 
-while (result_status != 'READY'){
-    await sleep(2000).then(() => {});
-    result = await client.getDetectionResult(result_id)
-    result_status = result.summary.status
+while (result_status != 'READY' && result_status != 'FAILED'){
+  await sleep(2000).then(() => {});
+  result = await client.getDetectionResult(result_id);
+  result_status = result.summary.status;
 }
+
+if (result_status == 'FAILED') {
+  console.log("Detection failed.\nErrors:");
+  for (let error of result.summary.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message)
+  }
+}
+console.log("Result status: " + result_status);
+console.log("Result Id: " + result.resultId);
 ```
 
 ## <a name="export-model"></a>Exportieren des Modells

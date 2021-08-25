@@ -2,17 +2,17 @@
 title: Berichte in Azure Front Door Standard/Premium (Vorschau)
 description: Dieser Artikel erläutert die Funktionsweise der Berichterstellung in Azure Front Door.
 services: frontdoor
-author: duongau
+author: jessie-jyy
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 07/07/2021
 ms.author: yuajia
-ms.openlocfilehash: 9670d8204d04fc770bf3fe98a270a3f6ccbf234b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e43bf01be44c8d82bb8b5f9d466552fc9d7ad17
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098092"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595001"
 ---
 # <a name="azure-front-door-standardpremium-preview-reports"></a>Berichte in Azure Front Door Standard/Premium (Vorschau)
 
@@ -27,7 +27,7 @@ Analyseberichte in Azure Front Door Standard/Premium bieten eine integrierte Üb
 |---------|---------|
 | Overview of key metrics (Übersicht über Schlüsselmetriken) | Zeigt allgemeine Daten an, die von Azure Front Door-Edges an Clients gesendet wurden<br/>– Spitzenbandbreite<br/>– Anforderungen <br/>– Cachetrefferquote<br/> – Gesamtlatenz<br/>– 5xx-Fehlerrate |
 | Traffic by Domain (Datenverkehr nach Domäne) | – Bietet eine Übersicht über alle Domänen im Profil<br/>– Aufschlüsselung der Daten, die vom AFDS-Edge an den Client übertragen wurden<br/>– Anforderungen insgesamt<br/>– 3xx-/4xx-/5xx-Antwortcode nach Domäne |
-| Traffic by location (Datenverkehr nach Standort) | – Zeigt eine Kartenansicht der Anforderungen und Verwendung nach den Top-Ländern an<br/>– Trendansicht der Top-Länder/-Regionen |
+| Traffic by location (Datenverkehr nach Standort) | – Zeigt eine Kartenansicht der Anforderungen und Verwendung nach Top-Land/Region an<br/>– Trendansicht der Top-Länder/-Regionen |
 | Verwendung | – Zeigt die Datenübertragung vom Azure Front Door-Edge an Clients an<br/>– Datenübertragung vom Ursprung zum AFDS-Edge<br/>– Bandbreite von AFDS-Edge zu Clients<br/>– Bandbreite vom Ursprung zum AFDS-Edge<br/>– Anforderungen<br/>– Gesamtlatenz<br/>– Trend der Anforderungsanzahl nach HTTP-Statuscode |
 | Caching | – Zeigt die Cachetrefferquote nach Anforderungsanzahl an<br/>– Trendansicht der Anforderungen mit Cachetreffern und -fehlern |
 | Top URL (Top-URL) | – Zeigt die Anforderungsanzahl an <br/>– Übertragene Daten <br/>– Cachetrefferquote <br/>– Verteilung der Antwortstatuscodes für die 50 am häufigsten angeforderten Ressourcen |
@@ -84,7 +84,7 @@ Berichte unterstützen jeden ausgewählten Datumsbereich aus den letzten 90 Tage
 
         Sie können immer mithilfe von Aggregation die Standardgranularität der Aggregation ändern. Hinweis: „5 Minuten“ kann nicht für Datumsbereiche verwendet werden, die länger als 14 Tage sind. 
 
-    1. **Standorte**: Wählen Sie einen oder mehrere Clientstandorte nach Land/Region aus. Die Länder sind nach sechs Regionen gruppiert: Nordamerika, Asien, Europa, Afrika, Ozeanien und Südamerika. Weitere Informationen finden Sie in der [Karte der Länder/Regionen](https://en.wikipedia.org/wiki/Subregion) (in englischer Sprache). Standardmäßig sind alle Länder ausgewählt.
+    1. **Standort**: Wählen Sie einen oder mehrere Clientstandorte nach Land/Region aus. Länder/Regionen sind nach sechs Regionen gruppiert: Nordamerika, Asien, Europa, Afrika, Ozeanien und Südamerika. Ziehen Sie die [Länder/Regionen-Zuordnung](https://en.wikipedia.org/wiki/Subregion) zurate. Standardmäßig sind alle Länder ausgewählt.
     
         :::image type="content" source="../media/how-to-reports/front-door-reports-dimension-locations.png" alt-text="Screenshot der Berichte für die Dimension „Standorte“":::
    
@@ -152,15 +152,15 @@ Dieser Bericht zeigt die Trends des Datenverkehrs und der Antwortstatuscodes nac
 
 ## <a name="traffic-by-location"></a>Traffic by location (Datenverkehr nach Standort)
 
-In diesem Bericht werden die Top 50-Standorte nach Land/Region der Besucher angezeigt, die am häufigsten auf Ihre Ressource zugreifen. Der Bericht enthält auch eine Aufschlüsselung der Metriken nach Land/Region und bietet Ihnen einen Überblick über die Länder/Regionen, in denen der größte Datenverkehr generiert wird. Zudem können Sie erkennen, welches Land/welche Region eine höhere Cachetrefferquote oder eine höhere Anzahl von 4xx-/5xx-Fehlercodes aufweist.
+In diesem Bericht werden die Top 50-Standorte nach Land/Region der Besucher angezeigt, die am häufigsten auf Ihre Ressource zugreifen. Der Bericht enthält auch eine Aufschlüsselung der Metriken nach Land/Region und bietet Ihnen einen Überblick über die Länder/Regionen, in denen der größte Datenverkehr generiert wird. Zudem können Sie erkennen, welches Land bzw. welche Region eine höhere Cachetrefferquote oder eine höhere Anzahl von 4xx-/5xx-Fehlercodes aufweist.
 
 :::image type="content" source="../media/how-to-reports/front-door-reports-by-location.png" alt-text="Screenshot der Berichte nach Standorten" lightbox="../media/how-to-reports/front-door-reports-by-location-expanded.png":::
 
 Folgendes ist in den Berichten enthalten:
 
-* Eine Weltkarte der Top 50-Länder nach gesendeten Daten oder Anforderungen Ihrer Wahl
-* Zwei Liniendiagramme mit Trendansichten der Top 5-Länder nach gesendeten Daten und Anforderungen Ihrer Wahl 
-* Ein Raster der Top-Länder/-Regionen, in dem die von AFDS an Clients gesendeten Daten, Prozentsätze der gesendeten Daten für alle Länder/Regionen, Anforderungen, Anforderungen in Prozent für alle Länder/Regionen, die Cachetrefferquote, der 4xx-Antwortcode und der 5xx-Antwortcode angezeigt werden
+* Eine Weltkarte der Top 50-Länder/-Regionen nach gesendeten Daten oder Anforderungen Ihrer Wahl.
+* Zwei Liniendiagramme mit Trendansichten der Top 5-Länder/-Regionen nach gesendeten Daten und Anforderungen Ihrer Wahl. 
+* Ein Raster der Top-Länder/-Regionen, in dem die von AFDS an Clients gesendeten Daten, Prozentsätze der gesendeten Daten für alle Länder/Regionen, Anforderungen, Anforderungen in Prozent für alle Länder/Regionen, die Cachetrefferquote, der 4xx-Antwortcode und der 5xx-Antwortcode angezeigt werden.
 
 ## <a name="caching"></a>Caching
 
@@ -259,7 +259,7 @@ Dieser Bericht bietet Ihnen eine grafische Ansicht und Statistikansicht von WAF-
 | Events by Rule Group (Ereignisse nach Regelgruppe) | Ringdiagramm der Verteilung der WAF-Anforderungen nach Regelgruppe |
 | Requests by actions (Anforderungen nach Aktion) | Eine Tabelle mit Anforderungen nach Aktion, in absteigender Reihenfolge |
 | Requests by top Rule IDs (Anforderungen nach Top-Regel-IDs) | Eine Tabelle mit Anforderungen nach Top 50-Regel-IDs, in absteigender Reihenfolge |
-| Requests by top countries (Anforderungen nach Top-Ländern) |  Eine Tabelle mit Anforderungen nach Top 50-Ländern, in absteigender Reihenfolge |
+| Anforderungen nach Top-Ländern/-Regionen |  Eine Tabelle mit Anforderungen nach Top 50-Ländern/-Regionen, in absteigender Reihenfolge. |
 | Requests by top client IPs (Anforderungen nach Top-Client-IP-Adressen) |  Eine Tabelle mit Anforderungen nach den Top 50-IP-Adressen, in absteigender Reihenfolge |
 | Requests by top Request URL (Anforderungen nach Top-Anforderungs-URL) |  Eine Tabelle mit Anforderungen nach den Top 50-URLs, in absteigender Reihenfolge |
 | Request by top Hostnames (Anforderungen nach Top-Hostnamen) | Eine Tabelle mit Anforderungen nach den Top 50-Hostnamen, in absteigender Reihenfolge |
@@ -364,7 +364,7 @@ Der Bericht enthält sieben Tabellen, die jeweils die folgenden Felder aufweisen
 * CustomRuleRequests 
 * BotRequests 
 
-Die sieben Tabellen enthalten Daten für Zeit, Regel-ID, Land/Region, IP-Adresse, URL, Hostname und Benutzer-Agent. 
+Die sieben Tabellen enthalten Daten für Zeit, Regel-ID, Länder/Regionen, IP-Adresse, URL, Hostname und Benutzer-Agent. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

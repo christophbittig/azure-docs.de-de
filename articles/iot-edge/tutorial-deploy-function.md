@@ -2,19 +2,18 @@
 title: 'Tutorial: Bereitstellen von Azure-Funktionen als Module – Azure IoT Edge'
 description: In diesem Tutorial entwickeln Sie eine Azure-Funktion als IoT Edge-Modul und stellen sie anschließend auf einem Edgegerät bereit.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: ee3825a7c93396eca4ba6fd6a65b90eddb5b4c8c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: a98d50b1c06397db5de928f39ebff34c1fe9ddb0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438294"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726501"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 

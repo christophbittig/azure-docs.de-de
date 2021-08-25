@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f38172e82b61ce07863614857ab7ef096683f34a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3855cc3dff2d29c659c6613e1321529745239c7c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346120"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634102"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Aktivieren der Gastintegrität in VM Insights (Vorschau)
 Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -39,7 +39,6 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 - Australien (Osten)
 - Australien, Südosten
 - Brasilien Süd
-- Brasilien, Südosten
 - Kanada, Mitte
 - Indien, Mitte
 - USA (Mitte)
@@ -59,7 +58,6 @@ Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
 - Südafrika, Norden
 - Asien, Südosten
 - Schweiz, Norden
-- Schweiz, Westen
 - Vereinigte Arabische Emirate, Norden
 - UK, Süden
 - UK, Westen
@@ -74,6 +72,8 @@ Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befin
 - Australien, Mitte
 - Australien (Osten)
 - Australien, Südosten
+- Brasilien Süd
+- Brasilien, Südosten
 - Kanada, Mitte
 - Indien, Mitte
 - USA (Mitte)
@@ -83,11 +83,15 @@ Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befin
 - USA, Osten 2 (EUAP)
 - Frankreich, Mitte
 - Japan, Osten
+- Japan, Westen
 - USA Nord Mitte
 - Nordeuropa
+- Norwegen, Osten
 - USA Süd Mitte
 - Asien, Südosten
 - Schweiz, Norden
+- Schweiz, Westen
+- Vereinigte Arabische Emirate, Norden
 - UK, Süden
 - Region „Europa, Westen“
 - USA (Westen)

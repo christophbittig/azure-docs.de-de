@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e28e11c8addc83cfe913a28cb91d3bc0d4580a8e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94540062"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639691"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Protokollen für langsame Abfragen für Azure Database for MySQL – Flexible Server und Zugreifen auf diese Protokolle im Azure-Portal
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -21,9 +23,11 @@ ms.locfileid: "94540062"
 Sie können die [Protokolle für langsame Abfragen](concepts-slow-query-logs.md) für Azure Database for MySQL Flexible Server im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Die Schritte in diesem Artikel erfordern [Flexible Server](quickstart-create-server-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
+
 Konfigurieren Sie den Zugriff auf das MySQL-Protokoll für langsame Abfragen. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.

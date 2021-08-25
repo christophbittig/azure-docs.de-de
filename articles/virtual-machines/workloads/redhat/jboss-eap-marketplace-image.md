@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 05/25/2021
-ms.openlocfilehash: 5ed86f84f8b2fbe78ee53f776cb9f420e5077113
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3c819367f35cb4a8174abaac1380eb439ace206a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290624"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769705"
 ---
 # <a name="deploy-red-hat-jboss-enterprise-platform-eap-on-azure-vms-and-virtual-machine-scale-sets-using-the-azure-marketplace-offer"></a>Bereitstellen von Red Hat JBoss Enterprise Platform (EAP) in VMs und VM-Skalierungsgruppen in Azure mithilfe des Azure Marketplace-Angebots
 
@@ -29,7 +29,7 @@ Das Azure Marketplace-Angebot „JBoss EAP“ ist eine gemeinsame Lösung von Re
 
 * JBoss EAP-Installation: Sie benötigen ein Red Hat-Konto mit RHSM-Berechtigung (Red Hat Subscription Management) für JBoss EAP. Mit dieser Berechtigung können Sie die für Red Hat getestete und zertifizierte JBoss EAP-Version herunterladen.  Wenn Sie keine EAP-Berechtigung haben, registrieren Sie sich über [Red Hat Developer Subscription for Individuals](https://developers.redhat.com/register) für ein kostenloses Entwicklerabonnement. Nach der Registrierung finden Sie die erforderlichen Anmeldeinformationen (Pool-IDs) im [Red Hat-Kundenportal](https://access.redhat.com/management/).
 
-* RHEL-Optionen: Wählen Sie zwischen „Nutzungsbasierte Zahlung“ und „Bring-Your-Own-Subscription (BYOS)“. Bei BYOS müssen Sie Ihr [RHEL Gold Image](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/) für [Red Hat Cloud Access](https://access.redhat.com/) aktivieren, bevor Sie das Marketplace-Angebot mithilfe der Lösungsvorlage bereitstellen. Befolgen Sie [diese Anweisungen](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access), um RHEL Gold-Images für den Einsatz in Microsoft Azure zu aktivieren.
+* RHEL-Optionen: Wählen Sie zwischen „Nutzungsbasierte Zahlung“ und „Bring-Your-Own-Subscription (BYOS)“. Bei BYOS müssen Sie Ihr [RHEL Gold Image](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/) für [Red Hat Cloud Access](https://access.redhat.com/) aktivieren, bevor Sie das Marketplace-Angebot mithilfe der Lösungsvorlage bereitstellen. Befolgen Sie [diese Anweisungen](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index), um RHEL Gold-Images für den Einsatz in Microsoft Azure zu aktivieren.
 
 * Azure-Befehlszeilenschnittstelle (CLI).
 
@@ -59,11 +59,11 @@ Ausführliche Informationen zur nutzungsbasierten Zahlung finden Sie unter [Virt
 Um RHEL für VMs/VM-Skalierungsgruppen mit BYOS einsetzen zu können, müssen Sie über ein gültiges Red Hat-Abonnement mit Berechtigungen zur Nutzung von RHEL in Azure verfügen. Diese BYOS-Pläne für JBoss EAP unter RHEL sind als [private Azure-Angebote](../../../marketplace/private-offers.md) verfügbar. Sie müssen unbedingt die folgenden Voraussetzungen zum Bereitstellen eines BYOS-Angebotsplans für RHEL über Azure Marketplace erfüllen. 
 
 1. Stellen Sie sicher, dass Sie unter Ihrem Red Hat-Abonnement über Berechtigungen für das RHEL-Betriebssystem und für JBoss EAP verfügen.
-2. Führen Sie für Ihre Azure-Abonnement-ID die Autorisierung zur Nutzung von RHEL-Images mit BYOS durch. Halten Sie sich an die [RHSM-Dokumentation (Red Hat Subscription Management)](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access), um diesen Prozess durchzuführen. Dies umfasst die folgenden Schritte:
+2. Führen Sie für Ihre Azure-Abonnement-ID die Autorisierung zur Nutzung von RHEL-Images mit BYOS durch. Halten Sie sich an die [RHSM-Dokumentation (Red Hat Subscription Management)](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index), um diesen Prozess durchzuführen. Dies umfasst die folgenden Schritte:
     1. Aktivieren Sie Microsoft Azure in Ihrem Red Hat Cloud Access-Dashboard als Anbieter.
     2. Fügen Sie Ihre Azure-Abonnement-IDs hinzu.
     3. Aktivieren Sie neue Produkte für Cloud Access unter Microsoft Azure.
-    4. Aktivieren Sie Red Hat Gold Images für Ihr Azure-Abonnement. Ausführlichere Informationen finden Sie im Kapitel zum Thema [Aktivieren und Verwalten von Abonnements für Cloud Access](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#using-gold-images-on-azure_cloud-access). 
+    4. Aktivieren Sie Red Hat Gold Images für Ihr Azure-Abonnement. Ausführlichere Informationen finden Sie im Kapitel zum Thema [Aktivieren und Verwalten von Abonnements für Cloud Access](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#using-gold-images-on-azure_cloud-access#using-gold-images-on-azure_cloud-access). 
     5. Warten Sie ab, bis die Red Hat Gold Images in Ihrem Azure-Abonnement verfügbar sind. Diese Gold-Images sind in der Regel innerhalb von maximal 3 Stunden nach Einreichung als private Azure-Angebote verfügbar.
 
 3. Akzeptieren Sie die Azure Marketplace-Geschäftsbedingungen für RHEL-Images mit BYOS. Führen Sie dazu die [Azure CLI](/cli/azure/install-azure-cli)-Befehl wie nachstehend angegeben aus. Ausführlichere Informationen finden Sie in der Dokumentation unter [Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure](./byos.md). Es ist wichtig, dass Sie die neueste Azure CLI-Version ausführen.
@@ -215,7 +215,7 @@ Weitere Informationen zur Problembehandlung bei benutzerdefinierten Skripterweit
 
 Wenden Sie sich bei Supportfragen, Problemen oder Anpassungsanforderungen an den [Red Hat-Support](https://access.redhat.com/support) oder [Microsoft Azure-Support](https://ms.portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-* Weitere Informationen: [JBoss EAP](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform)
+* Weitere Informationen: [JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/)
 * [JBoss EAP unter Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
 * [JBoss EAP in Azure App Service](/azure/developer/java/ee/jboss-on-azure) 
 * [Azure-Hybridvorteile](../../windows/hybrid-use-benefit-licensing.md)

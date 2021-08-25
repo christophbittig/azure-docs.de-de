@@ -58,3 +58,7 @@
       items:
         - name: Abonnementzugriff
           href: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Ressourcen
+      items:
+        - name: Häufig gestellte Fragen
+          href: microsoft-customer-agreement-faq.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

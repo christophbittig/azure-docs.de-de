@@ -4,15 +4,16 @@ description: Dieses Tutorial enthält ausführliche Anleitungen für die Verwend
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/16/2021
-ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/04/2021
+ms.openlocfilehash: dff3972bfc9da83312a1fdf4fc7c6169f932c410
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565371"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639886"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformieren von Daten in einem Delta-Lake mithilfe von Zuordnungsdatenflüssen
 
@@ -53,9 +54,9 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 
 In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
-   ![Erstellen der Pipeline](./media/doc-common-process/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.

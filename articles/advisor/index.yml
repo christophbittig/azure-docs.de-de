@@ -5,15 +5,16 @@ metadata:
   title: Dokumentation zu Azure Advisor
   description: Bei Azure Advisor handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Er analysiert Ihre Ressourcenkonfiguration und Nutzungstelemetrie. Anschließend schlägt er Lösungen vor, um die Leistung, Sicherheit und Hochverfügbarkeit Ihrer Ressourcen zu verbessern, und sucht gleichzeitig nach Möglichkeiten, Ihre Azure-Gesamtausgaben zu reduzieren.
   ms.topic: landing-page
+  ms.service: advisor
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: 41198ef3e8026bd8de9e55a0e75b23f0cd357e4e
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 5bf8d8651e10ba003529d8182a3434fed9558e18
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508791"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253465"
 landingContent:
 - title: Informationen zu Azure Advisor
   linkLists:
@@ -31,7 +32,7 @@ landingContent:
     links:
     - text: Erste Schritte mit Azure Advisor
       url: advisor-get-started.md
-- title: Verweis
+- title: Referenz
   linkLists:
   - linkListType: reference
     links:

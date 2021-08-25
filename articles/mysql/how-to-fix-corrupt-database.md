@@ -6,15 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 21e4189e56f704129710da5b1d39613c4e1b1df5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9b79ba83613a854610eae8fee6392d6e12ef935
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91766894"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639722"
 ---
 # <a name="troubleshoot-database-corruption-in-azure-database-for-mysql"></a>Beheben von Datenbankbeschädigungen in Azure Database for MySQL
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Datenbankbeschädigungen können eine Downtime Ihrer Anwendung verursachen. Auch um Datenverluste zu vermeiden, ist es wichtig, Beschädigungsprobleme rechtzeitig zu beheben. Wenn eine Datenbankbeschädigung auftritt, wird der folgende Fehler in Ihren Serverprotokollen angezeigt: `InnoDB: Database page corruption on disk or a failed.`
 

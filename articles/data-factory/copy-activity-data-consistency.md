@@ -1,17 +1,20 @@
 ---
 title: Datenkonsistenzprüfung in der Kopieraktivität
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Sie die Datenkonsistenzprüfung in der Kopieraktivität in Azure Data Factory aktivieren.
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e2bcf4e267a93c9504dfc22e1308f0a4dba890d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640602"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Datenkonsistenzprüfung in der Kopieraktivität
 

@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7550fafa0a1fdf67baca4f9c777a4a064f522728
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579190"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639697"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Protokolle für langsame Abfragen für Azure Database for MySQL Flexible Server (Vorschau)
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In Azure Database for MySQL Flexible Server ist das Protokoll für langsame Abfragen für Benutzer zur Konfiguration und zum Zugriff verfügbar. Protokolle für langsame Abfragen sind standardmäßig deaktiviert und können aktiviert werden, um bei der Identifizierung von Leistungsengpässen während der Problembehandlung zu helfen.
@@ -33,7 +35,7 @@ Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Prot
 - **log_throttle_queries_not_using_indexes**: Schränkt die Anzahl der nicht indizierten Abfragen ein, die in das Protokoll für langsame Abfragen geschrieben werden können. Dieser Parameter tritt in Kraft, wenn `log_queries_not_using_indexes` auf *ON* (EIN) festgelegt ist.
 
 > [!IMPORTANT]
-> Wenn Ihre Tabellen nicht indiziert sind, kann das Festlegen der Parameter `log_queries_not_using_indexes` und `log_throttle_queries_not_using_indexes` auf **ON** (EIN) die Leistung von MySQL beeinträchtigen, da alle Anforderungen, die für diese nicht indizierten Tabellen ausgeführt werden, in das Protokoll für langsame Abfragen geschrieben werden.
+>Wenn Ihre Tabellen nicht indiziert sind, kann das Festlegen der Parameter `log_queries_not_using_indexes` und `log_throttle_queries_not_using_indexes` auf **ON** (EIN) die Leistung von MySQL beeinträchtigen, da alle Anforderungen, die für diese nicht indizierten Tabellen ausgeführt werden, in das Protokoll für langsame Abfragen geschrieben werden.
 
 Vollständige Beschreibungen der Parameter des Protokolls für langsame Abfragen finden Sie in der [MySQL-Dokumentation zum Protokoll für langsame Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 

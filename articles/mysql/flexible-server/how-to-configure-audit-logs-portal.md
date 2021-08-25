@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: ebb980aa257fc09c3d6a407febbf60f2d1a26a4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68ee7528eb7b8d91d4346b5cf7fa2f92841255b7
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94536471"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639750"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Überwachungsprotokolle für Azure Database for MySQL – Flexible Server und Zugreifen auf diese Protokolle im Azure-Portal
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -21,6 +23,7 @@ ms.locfileid: "94536471"
 Sie können im Azure-Portal die Azure Database for MySQL Flexible Server-[Überwachungsprotokolle](concepts-audit-logs.md) und -Diagnoseeinstellungen konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Die Schritte in diesem Artikel erfordern [Flexible Server](quickstart-create-server-portal.md).
 
 ## <a name="configure-audit-logging"></a>Konfigurieren der Überwachungsprotokollierung

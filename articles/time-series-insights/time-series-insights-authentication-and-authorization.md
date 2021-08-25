@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: bc479521d99111dd8cdfd36de981b83717068ed0
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 86b663bb245b31ea89c9d523ea4df6e27bbc32b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419457"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772042"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -188,7 +188,7 @@ Optionale URL-Abfragezeichenfolgen-Parameter umfassen das Festlegen eines Timeou
 
 | Optionaler Abfrageparameter | BESCHREIBUNG | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) und [Abrufen von Umgebungsaggregaten](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Gen1 |
+| `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](/rest/api/time-series-insights/dataaccessgen2/query/get-availability) und [Abrufen von Umgebungsaggregaten](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Gen1 |
 | `storeType=<storeType>` | Für Gen2-Umgebungen mit aktiviertem Warm Storage kann die Abfrage entweder für den `WarmStore` oder den `ColdStore` ausgeführt werden. Dieser Parameter in der Abfrage definiert, in welchem Speicher die Abfrage ausgeführt werden soll. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. Um den warmen Speicher abzufragen, muss **storeType** auf `WarmStore` festgelegt werden. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. | Gen2 |
 
 ## <a name="next-steps"></a>Nächste Schritte

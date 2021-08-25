@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: eaee16d865a0d208dbf0c41665d590e7ecb14e89
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 309d2cfb47c61d516be19d110cb7ade1f3c63e18
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343387"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695172"
 ---
 # <a name="connect-your-citrix-waf-to-azure-sentinel"></a>Verbinden Ihrer Citrix WAF-Instanz mit Azure Sentinel
 
@@ -42,7 +42,7 @@ Citrix WAF sendet Syslog-Nachrichten im CEF-Format an einen Linux-basierten Prot
 
 1. Befolgen Sie die Anweisungen von Citrix zum Konfigurieren der [WAF](https://support.citrix.com/article/CTX234174), der [CEF-Protokollierung](https://support.citrix.com/article/CTX136146) und der [Übermittlung der Protokolle an den Protokollweiterleitungsserver](https://docs.citrix.com/en-us/citrix-adc/13/system/audit-logging/configuring-audit-logging.html). Die Protokolle müssen über TCP-Port 514 an die IP-Adresse des Protokollweiterleitungscomputers gesendet werden.
 
-1. Überprüfen Sie die Verbindung und die Datenerfassung mithilfe [dieser Anweisungen](connect-cef-verify.md). Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden.
+1. Überprüfen Sie die Verbindung und die Datenerfassung mithilfe [dieser Anweisungen](troubleshooting-cef-syslog.md#validate-cef-connectivity). Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden.
 
 ## <a name="find-your-data"></a>Suchen von Daten
 
