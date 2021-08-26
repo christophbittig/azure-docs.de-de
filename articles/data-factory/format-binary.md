@@ -1,17 +1,20 @@
 ---
 title: Binärformat in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: In diesem Thema wird der Umgang mit dem Binärformat in Azure Data Factory beschrieben.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1fcc84f5f72bda1aa132ee054c71ad4e1cffbbd4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 32a1f7f9cc84adc3142bd7f03b399c759b01f824
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090206"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640861"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binärformat in Azure Data Factory
 
@@ -28,7 +31,7 @@ Sie können ein binäres Dataset in der [Kopieraktivität](copy-activity-overvie
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom binären Dataset unterstützt werden.
 
-| Eigenschaft         | Beschreibung                                                  | Erforderlich |
+| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die „type“-Eigenschaft des Datasets muss auf **Binär** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
@@ -72,7 +75,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die „type“-Eigenschaft der Quelle für die Kopieraktivität muss auf **BinarySource** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Leseeinstellungen für Binärdateien** finden Sie in der Tabelle unten. | Nein       |
@@ -80,7 +83,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **Leseeinstellungen für Binärdateien** unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Der Typ von „formatSettings“ muss auf **BinaryReadSettings** festgelegt werden. | Ja      |
 | compressionProperties | Eine Gruppe von Eigenschaften zur Festlegung, wie Daten bei einem bestimmten Komprimierungscodec dekomprimiert werden können. | Nein       |
@@ -119,7 +122,7 @@ Unterstützte **Leseeinstellungen für Binärdateien** unter `formatSettings`:
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die „type“-Eigenschaft der Quelle für die Kopieraktivität muss auf **BinarySink** festgelegt werden. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Schreiben von Daten in einen Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Schreibeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |

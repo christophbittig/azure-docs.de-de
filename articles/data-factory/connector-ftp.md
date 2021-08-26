@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten von einem FTP-Server mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten von einem FTP-Server mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jianleishen
-ms.openlocfilehash: 34c484bc596f9f7e5012339ea29ac70408cca402
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 37818f1335137ef35c5a86b2e8e266502968cc60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485223"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640877"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem FTP-Server mithilfe von Azure Data Factory
 

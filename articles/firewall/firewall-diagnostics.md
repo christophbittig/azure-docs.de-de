@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 05/06/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 4c3b33400340fc4dd13e74437aa9fddf6921e710
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 8a86c3d9c81d332fdd1072f937d8e222d5a6436d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804500"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340043"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -107,11 +107,11 @@ Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzei
 * **Power BI**: Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Activity Logs Content Pack for Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
 * **Azure Sentinel:** Sie können Azure Firewall-Protokolle mit Azure Sentinel verbinden, was es Ihnen ermöglicht, Protokolldaten in Arbeitsmappen anzuzeigen, sie zum Erstellen benutzerdefinierter Warnungen zu verwenden und sie zur Verbesserung Ihrer Untersuchung zu integrieren. Der Azure Firewall-Datenconnector in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zu Daten aus Azure Firewall](../sentinel/connect-azure-firewall.md).
 
+   Eine Übersicht finden Sie im folgenden Video von Mohit Kumar:
+   > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4nn]
+
+
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Anzeigen und Analysieren der Netzwerk- und Anwendungsregelprotokolle
-
-[Azure Monitor-Protokolle](../azure-monitor/insights/azure-networking-analytics.md) erfassen die Leistungsindikator- und Ereignisprotokolldateien. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
-
-Log Analytics-Beispielabfragen für Azure Firewall finden Sie unter [Log Analytics-Beispiele für Azure Firewall](./firewall-workbook.md).
 
 [Azure Firewall Workbook](firewall-workbook.md) bietet einen flexiblen Bereich für die Azure Firewall-Datenanalyse. Sie können damit umfangreiche visuelle Berichte innerhalb des Azure-Portals erstellen. Sie können mehrere in Azure bereitgestellte Firewalls nutzen und sie zu vereinheitlichten interaktiven Oberflächen kombinieren.
 

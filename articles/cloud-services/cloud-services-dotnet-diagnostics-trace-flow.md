@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f4764835eb11a8384bf0f10c01b48f1ba3afdbd3
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 027450a2e5e2a0c749c2f4b02148ffe849f2a182
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086134"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823939"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-classic-application-with-azure-diagnostics"></a>Verfolgen des Ablaufs in einer Cloud Services-Anwendung (klassisch) mit der Azure-Diagnose
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Die Ablaufverfolgung ist eine Möglichkeit, die Ausführung der Anwendung zu überwachen, während sie ausgeführt wird. Sie können die Klassen [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) und [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) verwenden, um Informationen zu Fehlern und zur Anwendungsausführung in Protokollen, Textdateien oder auf anderen Geräten zur späteren Analyse aufzuzeichnen. Weitere Informationen zur Ablaufverfolgung finden Sie unter [Ablaufverfolgung und Instrumentation von Anwendungen](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
 

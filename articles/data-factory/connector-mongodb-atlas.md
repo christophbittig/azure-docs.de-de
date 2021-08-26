@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus oder nach MongoDB Atlas
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline Daten aus MongoDB Atlas in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach MongoDB Atlas kopieren.
-author: jianleishen
-ms.author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 06/01/2021
-ms.openlocfilehash: 07e3d801f1f8d6cfebd6c31daf00d92ccc7b8444
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9e42ff971f2ea0a374fe40815ac8cf7fddb29189
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747489"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122641037"
 ---
 # <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>Kopieren von Daten aus oder nach MongoDB Atlas mithilfe von Azure Data Factory
 
@@ -40,7 +42,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit MongoDB Atlas verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MongoDbAtlas** |Ja |
 | connectionString |Geben Sie die MongoDB Atlas-Verbindungszeichenfolge an, z. B. `mongodb+srv://<username>:<password>@<clustername>.<randomString>.<hostName>/<dbname>?<otherProperties>`. <br/><br /> Sie können eine Verbindungszeichenfolge auch in Azure Key Vault speichern. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -70,7 +72,7 @@ Folgende Eigenschaften werden für den mit MongoDB Atlas verknüpften Dienst unt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md). Folgende Eigenschaften werden für das MongoDB Atlas-Dataset unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MongoDbAtlasCollection** | Ja |
 | collectionName |Der Name der Sammlung in der MongoDB Atlas-Datenbank |Ja |
@@ -102,7 +104,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MongoDbAtlasSource** | Ja |
 | filter | Gibt den Auswahlfilter mit Abfrageoperatoren an. Um alle Dokumente in einer Sammlung zurückzugeben, lassen Sie diesen Parameter aus oder übergeben Sie ein leeres Dokument ({}). | Nein |
@@ -157,7 +159,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 
 Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **MongoDbAtlasSink** festgelegt werden. |Ja |
 | writeBehavior |Beschreibt, wie Daten in MongoDB Atlas geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch einen `_id`-Typ für ein Dokument, wenn ein `_id`-Typ weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |

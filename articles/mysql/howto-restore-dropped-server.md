@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 361af28932226640db077bf4949f7bd472ceb986
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 9ddf3885931e527e4fd82037d9e82693fb6afa5f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166575"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639684"
 ---
 # <a name="restore-a-deleted-azure-database-for-mysql-server"></a>Wiederherstellen eines gelöschten Azure Database for MySQL-Servers
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Wenn ein Server gelöscht wird, kann die Datenbankserversicherung bis zu fünf Tage im Dienst aufbewahrt werden. Auf die Datenbanksicherung kann nur über das Azure-Abonnement zugegriffen werden, zu dem der Server ursprünglich gehörte. Und nur über dieses Abonnement kann die Datenbanksicherung auch wiederhergestellt werden. Die folgenden empfohlenen Schritte können ausgeführt werden, um eine gelöschte MySQL-Serverressource innerhalb von 5 Tagen ab dem Zeitpunkt wiederherzustellen, zu dem der Server gelöscht wurde. Die empfohlenen Schritte funktionieren nur, wenn die Sicherung für den Server weiterhin verfügbar ist und nicht aus dem System gelöscht wurde. 
 

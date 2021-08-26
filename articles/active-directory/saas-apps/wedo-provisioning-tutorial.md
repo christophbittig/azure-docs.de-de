@@ -2,25 +2,22 @@
 title: 'Tutorial: Konfigurieren von WEDO für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für WEDO automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 3088D3EB-CED5-45A5-BD7E-E20B1D7C40F6
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/24/2020
-ms.author: Zhchia
-ms.openlocfilehash: 05ca559478276cf64d8097c2d066054c8fa4fc9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 95cadaa71b9fc3f33ff89425cb564d08e6f0992e
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734468"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122207415"
 ---
 # <a name="tutorial-configure-wedo-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von WEDO für die automatische Benutzerbereitstellung
 
@@ -100,7 +97,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit WEDO synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in WEDO für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die WEDO-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |displayName|String|

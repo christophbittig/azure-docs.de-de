@@ -8,19 +8,19 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c8a7b357efc2e30d1ca93d0b45fd2563c980045
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 5520dbcc82dc45af987ec329a3be711fec04ee27
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735136"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Erstellen einer SAS-Definition und Abrufen von Shared Access Signature-Token im Code
 
 Sie können Ihr Speicherkonto mit den SAS-Token (Shared Access Signature) verwalten, die in Ihrem Schlüsseltresor gespeichert sind. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS](../../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
-> Es wird empfohlen, die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC](../../storage/common/storage-auth-aad.md)) zum Schutz Ihres Speicherkontos zu verwenden, um eine höhere Sicherheit und Benutzerfreundlichkeit als bei der Autorisierung mit gemeinsam verwendeten Schlüsseln zu erzielen.
+> Es wird empfohlen, die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC](../../storage/blobs/authorize-access-azure-active-directory.md)) zum Schutz Ihres Speicherkontos zu verwenden, um eine höhere Sicherheit und Benutzerfreundlichkeit als bei der Autorisierung mit gemeinsam verwendeten Schlüsseln zu erzielen.
 
 Dieser Artikel enthält Beispiele für .NET-Code, der eine SAS-Definition erstellt und SAS-Token abruft. Ausführliche Informationen, u. a. zum generierten Client für per Key Vault verwaltete Storage-Konten, finden Sie in unserem [ShareLink](/samples/azure/azure-sdk-for-net/share-link/)-Beispiel. Weitere Informationen zum Erstellen und Speichern von SAS-Token finden Sie unter [Azure-Befehlszeilenschnittstelle](overview-storage-keys.md) oder [Verwalten von Speicherkontoschlüsseln mit Azure Key Vault und Azure PowerShell](overview-storage-keys-powershell.md).
 

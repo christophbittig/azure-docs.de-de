@@ -2,25 +2,22 @@
 title: 'Tutorial: Konfigurieren von PaperCut Cloud Print Management für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Benutzerkonten automatisch aus Azure AD in PaperCut Cloud Print Management bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 7e65d727-2951-4aec-a7a3-7bde49ed09e2
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/18/2020
-ms.author: Zhchia
-ms.openlocfilehash: c0738e7033f0aa39ca5f12a44c06d086175eb8fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: d357c6f13c4b935f104e1d6d0f3c3c5e3c5bd921
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731445"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122207385"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von PaperCut Cloud Print Management für die automatische Benutzerbereitstellung
 
@@ -111,7 +108,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit PaperCut Cloud Print Management synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in PaperCut Cloud Print Management für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die PaperCut Cloud Print Management-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |displayName|String|

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f376a8e5d61b9bb3fda39184f4ff0873c48c8b43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732333"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -45,7 +45,7 @@ Im Folgenden finden Sie die allgemeinen Schritte, anhand derer Azure AD ermitte
 1. Ein Benutzer (oder Dienstprinzipal) ruft ein Token für den Microsoft Graph- oder Azure AD Graph-Endpunkt ab.
 1. Der Benutzer sendet mithilfe des ausgestellten Tokens über Microsoft Graph oder Azure AD Graph einen API-Aufruf an Azure Active Directory (Azure AD).
 1. Abhängig von der jeweiligen Situation führt Azure AD eine der folgenden Aktionen aus:
-   - Wertet die Rollenmitgliedschaften des Benutzers basierend auf dem [wids-Anspruch](../../active-directory-b2c/access-tokens.md) im Zugriffstoken des Benutzers aus.
+   - Wertet die Rollenmitgliedschaften des Benutzers basierend auf dem [wids-Anspruch](../develop/access-tokens.md) im Zugriffstoken des Benutzers aus.
    - Ruft alle für den Benutzer entweder direkt oder über eine Gruppenmitgliedschaft geltenden Rollenzuweisungen für die Ressource ab, für die die Aktion ausgeführt wird.
 1. Azure AD ermittelt, ob die Aktion im API-Aufruf in den Rollen enthalten ist, die dem Benutzer für diese Ressource zugewiesen sind.
 1. Wenn der Benutzer keine Rolle mit der Aktion als angefordertem Bereich besitzt, wird kein Zugriff gewährt. Andernfalls wird der Zugriff gewährt.

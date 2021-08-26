@@ -1,27 +1,37 @@
 ---
-title: Migrieren zur Vorschauversion von Azure Firewall Premium
-description: Erfahren Sie, wie Sie von Azure Firewall Standard zur Vorschauversion von Azure Firewall Premium migrieren.
+title: Migrieren zu Azure Firewall Premium
+description: Erfahren Sie, wie Sie von Azure Firewall Standard zu Azure Firewall Premium migrieren.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 08/16/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27125e7f635c6d8f0690ebd39fb84eb3e0fb2989
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 53587cbc54b9e59268e6ee348bb8956a0b9ca993
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700557"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343266"
 ---
-# <a name="migrate-to-azure-firewall-premium-preview"></a>Migrieren zur Vorschauversion von Azure Firewall Premium
+# <a name="migrate-to-azure-firewall-premium"></a>Migrieren zu Azure Firewall Premium
 
-Sie können Azure Firewall Standard zur Vorschauversion von Azure Firewall Premium migrieren, um von den neuen Premium-Funktionen zu profitieren. Weitere Informationen zu den Features der Vorschauversion von Azure Firewall Premium finden Sie unter [Features der Azure Firewall Premium-Vorschau](premium-features.md).
+Sie können Azure Firewall Standard zu Azure Firewall Premium migrieren, um von den neuen Premium-Funktionen zu profitieren. Weitere Informationen zu Azure Firewall Premium-Features finden Sie unter [Features von Azure Firewall Premium](premium-features.md).
 
 Die folgenden zwei Beispiele zeigen die Vorgehensweise:
 - Migrieren einer vorhandenen Standardrichtlinie mithilfe von Azure PowerShell
 - Migrieren Sie eine vorhandene Standardfirewall (mit klassischen Regeln) zu Azure Firewall Premium mit einer Premiumrichtlinie.
+
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
+
+Die Leistung ist ein Aspekt bei der Migration von der Standard-SKU. IDPS und TLS-Inspektion sind rechenintensive Vorgänge. Die Premium-SKU verwendet eine leistungsfähigere VM-SKU, die auf einen maximalen Durchsatz von 30 GBit/s skaliert wird, vergleichbar mit der Standard-SKU. Der Durchsatz von 30 GBit/s wird unterstützt, wenn er mit IDPS im Modus „Warnung“ konfiguriert ist. Werdenb IDPS im Modus „Ablehnen“ und die TLS-Inspektion verwendet, erhöht dies die CPU-Auslastung. Es kann zu einer Verschlechterung des maximalen Durchsatzes kommen. 
+
+Der Firewalldurchsatz ist möglicherweise niedriger als 30 Gbit/s, wenn mindestens eine Signatur auf **Warnung und ablehnen** festgelegt ist oder Anwendungsregeln mit aktivierter **TLS-Inspektion** vorliegen. Microsoft empfiehlt Kunden, vollständige Skalierungstests in ihrer Azure-Bereitstellung durchzuführen, um sicherzustellen, dass die Leistung des Firewalldiensts den Erwartungen entspricht.
+
+## <a name="downtime"></a>Ausfallzeit
+
+Migrieren Sie Ihre Firewall während einer geplanten Wartung, da es während der Migration zu Ausfallzeiten kommt.
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>Migrieren einer vorhandenen Richtlinie mithilfe von Azure PowerShell
 
@@ -52,7 +62,7 @@ param (
     [string]
     $PolicyId,
 
-    # #new filewallpolicy name, if not specified will be the previous name with the '_premium' suffix
+     #new firewallpolicy name, if not specified will be the previous name with the '_premium' suffix
     [Parameter(Mandatory=$false)]
     [string]
     $NewPolicyName = ""
@@ -194,7 +204,7 @@ In diesem Beispiel wird gezeigt, wie Sie über das Azure-Portal eine Standardfir
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf **Erstellen**.
 
-Wenn die Bereitstellung abgeschlossen ist, können Sie nun alle neuen Features der Vorschauversion von Azure Firewall Premium konfigurieren.
+Wenn die Bereitstellung abgeschlossen ist, können Sie nun alle neuen Features von Azure Firewall Premium konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

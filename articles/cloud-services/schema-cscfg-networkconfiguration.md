@@ -10,17 +10,16 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
 '---thor': tagore
-ms.openlocfilehash: 10ccbe04b115bef5a9ad802050bf60d89742e813
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 009e1c19cc3f4349651c5b17d99c8b94e7dfbecf
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088232"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822661"
 ---
 # <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure Cloud Services (klassisch): Netzwerkkonfigurationsschema
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem auf Azure Service Manager basierenden Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Das `NetworkConfiguration`-Element der Dienstkonfigurationsdatei gibt Werte für virtuelles Netzwerk und DNS an. Diese Einstellungen sind für Clouddienste optional.
 
