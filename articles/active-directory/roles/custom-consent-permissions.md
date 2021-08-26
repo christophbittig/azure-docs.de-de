@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0b920df34358c83fa69274f0d7b52f889cd15010
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792406"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724825"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>App-Zustimmungsberechtigungen für benutzerdefinierte Rollen in Azure Active Directory
 
@@ -34,7 +34,7 @@ Verwenden Sie die in diesem Artikel aufgeführten Berechtigungen, um App-Zustimm
 > [!NOTE]
 > Im Admin-Portal von Azure AD wird das Hinzufügen der in diesem Artikel aufgeführten Berechtigungen zu einer benutzerdefinierten Verzeichnisrolle noch nicht unterstützt. Sie müssen [Azure AD PowerShell](custom-create.md#create-a-role-using-powershell) verwenden, um eine benutzerdefinierte Verzeichnisrolle mit den in diesem Artikel aufgeführten Berechtigungen zu erstellen.
 
-### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>Erteilen von delegierten Berechtigungen für Apps im eigenen Namen (Benutzerzustimmung)
+#### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>Erteilen von delegierten Berechtigungen für Apps im eigenen Namen (Benutzerzustimmung)
 
 Ermöglicht Benutzern das Erteilen einer Zustimmung für Anwendungen im eigenen Namen (Benutzerzustimmung) gemäß einer App-Zustimmungsrichtlinie.
 
@@ -44,7 +44,7 @@ Dabei wird `{id}` durch die ID einer [App-Zustimmungsrichtlinie](../manage-apps/
 
 Wenn Sie den Benutzern beispielsweise erlauben möchten, Zustimmung im eigenen Namen gemäß der integrierten App-Zustimmungsrichtlinie mit der ID `microsoft-user-default-low` zu erteilen, würden Sie die Berechtigung `...managePermissionGrantsForSelf.microsoft-user-default-low` verwenden.
 
-### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>Erteilen von Berechtigungen für Apps in aller Namen (Administratorzustimmung)
+#### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>Erteilen von Berechtigungen für Apps in aller Namen (Administratorzustimmung)
 
 Delegiert sowohl für delegierte Berechtigungen als auch für Anwendungsberechtigungen (App-Rollen) die mandantenweite Administratorzustimmung für Apps:
 
@@ -54,7 +54,7 @@ Dabei wird `{id}` durch die ID einer [App-Zustimmungsrichtlinie](../manage-apps/
 
 Wenn Sie beispielsweise Rolleninhabern erlauben möchten, eine mandantenweite Administratorzustimmung für Apps gemäß der benutzerdefinierten [App-Zustimmungsrichtlinie](../manage-apps/manage-app-consent-policies.md) mit der ID `low-risk-any-app` zu erteilen, würden Sie die Berechtigung `microsoft.directory/servicePrincipals/managePermissionGrantsForAll.low-risk-any-app` verwenden.
 
-### <a name="managing-app-consent-policies"></a>Verwalten von App-Zustimmungsrichtlinien
+#### <a name="managing-app-consent-policies"></a>Verwalten von App-Zustimmungsrichtlinien
 
 Delegieren von Erstellung, Aktualisierung und Löschung von [App-Zustimmungsrichtlinien](../manage-apps/manage-app-consent-policies.md).
 

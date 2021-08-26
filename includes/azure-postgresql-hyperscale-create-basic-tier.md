@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 08/03/2021
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: 09eb6d9483268314febd9478a551595a059d973b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3f0468a55c897559a2dab3eb2f29855129fcff2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023876"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728710"
 ---
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -29,7 +29,6 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
 4. Geben Sie im Formular für den neuen Server folgende Informationen an:
    - Ressourcengruppe: Klicken Sie auf den Link **Neue erstellen** unterhalb des Textfelds für dieses Feld. Geben Sie einen Namen ein, z.B. **myresourcegroup**.
    - Servergruppenname: Geben Sie einen eindeutigen Namen für die neue Servergruppe ein, der ebenfalls für eine Serverunterdomäne verwendet wird.
-   - Aktivieren Sie das Kontrollkästchen **Enable preview features** (Previewfunktionen aktivieren).
    - Administratorbenutzername: muss derzeit **citus** lauten und kann nicht geändert werden.
    - Kennwort: muss mindestens 8 Zeichen lang sein und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben des englischen Alphabets, Kleinbuchstaben des englischen Alphabets, Ziffern (0–9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
    - Standort: Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist, damit sie möglichst schnell auf die Daten zugreifen können.

@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentation zum plastischen Reader in Azure
+summary: Der plastische Reader ist ein Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden zu verbessern. Implementieren Sie den plastischen Reader in Ihrer Webanwendung mithilfe des Immersive Reader SDK.
+metadata:
+  title: Dokumentation zum plastischen Reader in Azure
+  description: Der plastische Reader ist ein Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden zu verbessern. Implementieren Sie den plastischen Reader in Ihrer Webanwendung mithilfe des Immersive Reader SDK.
+  services: service
+  ms.service: applied-ai-services
+  ms.subservice: immersive-reader
+  ms.topic: landing-page
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 01/23/2020
+  ms.openlocfilehash: 9e18f2754fe67ac7f4d087d63d72451eec8f7ede
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121777567"
+landingContent:
+- title: Informationen zum plastischen Reader
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich beim plastischen Reader?
+      url: overview.md
+    - text: Was ist Azure Applied AI Services?
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
+  - linkListType: video
+    links:
+    - text: 'Erste Schritte: kurze technische Videos'
+      url: https://aka.ms/ImmersiveReaderSDKVideos
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden von C# (ASP.NET Core)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Verwenden von Node.js
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: Verwenden von Java (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-java-android
+    - text: Verwenden von Kotlin (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
+    - text: Verwenden von Swift (iOS)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
+- title: Erkunden des plastischen Readers
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Ressource für den plastischen Reader
+      url: how-to-create-immersive-reader.md
+    - text: Verwenden mehrerer Ressourcen für den plastischen Reader
+      url: how-to-multiple-resources.md
+    - text: Starten des plastischen Readers
+      url: how-to-launch-immersive-reader.md
+    - text: Festlegen der Cookie-Richtlinie
+      url: how-to/set-cookie-policy.md
+    - text: Anzeigemathematik
+      url: how-to/display-math.md
+    - text: Schaltfläche zum Anpassen des plastischen Readers
+      url: how-to-customize-launch-button.md
+    - text: Zwischenspeichern des Authentifizierungstokens
+      url: how-to-cache-token.md
+    - text: Konfigurieren des lauten Vorlesens
+      url: how-to-configure-read-aloud.md
+    - text: Konfigurieren der Übersetzung
+      url: how-to-configure-translation.md
+    - text: Speichern der Benutzereinstellungen
+      url: how-to-store-user-preferences.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md
+    - text: Versionshinweise
+      url: release-notes.md
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Support- und Hilfeoptionen
+      url: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/immersive-reader/context/context

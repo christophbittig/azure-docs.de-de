@@ -3,20 +3,20 @@ title: 'Azure CLI: Wiederherstellen einer Sicherung'
 description: Azure CLI-Beispielskript zum Wiederherstellen eines früheren Zustands einer Datenbank in Azure SQL-Datenbank aus automatischen Sicherungen
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
+author: SQLSourabh
+ms.author: sourabha
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: f4054d19ccf4d136e30896bc066e51c92a4a4ad9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5dc1516595aa74d12cbcb55a1a19b34cf952f86d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783465"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748048"
 ---
 # <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Einzeldatenbank in Azure SQL-Datenbank mit der CLI
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 |---|---|
 | [az sql db restore](/cli/azure/sql/db#az_sql_db_restore) | Befehl zum Wiederherstellen einer Datenbank |
 

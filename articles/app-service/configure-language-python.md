@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 99985e3ff0f6c856b04fff4a0b4d31d2c5b7af2a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752456"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -431,13 +431,9 @@ Tritt dieser Fehler im Zusammenhang mit dem Beispiel unter [Tutorial: Bereitstel
 
 - **Die Meldung „Schwerwiegende SSL-Verbindung ist erforderlich“ wird angezeigt**: Überprüfen Sie alle Benutzernamen und Kennwörter, die für den Zugriff auf Ressourcen (wie Datenbanken) aus der App heraus verwendet werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="more-resources"></a>Weitere Ressourcen:
 
-> [!div class="nextstepaction"]
-> [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)
-
-> [!div class="nextstepaction"]
-> [Tutorial: Bereitstellen aus privatem Containerrepository](tutorial-custom-container.md?pivots=container-linux)
-
-> [!div class="nextstepaction"]
-> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)
+- [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)
+- [Tutorial: Bereitstellen aus privatem Containerrepository](tutorial-custom-container.md?pivots=container-linux)
+- [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

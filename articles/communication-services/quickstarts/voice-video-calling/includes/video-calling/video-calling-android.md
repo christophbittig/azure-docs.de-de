@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8f8849d61a814903d1b5bb9d971196af3f87ca28
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: be7eee7c8de5cae201660b4d165ca51bb40b3c19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560682"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339708"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek für Telefonie nutzen, um Ihrer App 1:1-Videoanrufe hinzuzufügen. Hier erfahren Sie, wie Sie einen Videoanruf mithilfe des Calling SDK von Azure Communication Services für Android beginnen und beantworten.
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart).
+## <a name="sample-code"></a>Beispielcode
+
+Wenn Sie direkt zum Ende springen möchten, können Sie die Beispiel-App auf [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -228,6 +229,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -298,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
         startVideo.setOnClickListener(l -> turnOnLocalVideo());
         Button stopVideo = findViewById(R.id.hide_preview);
         stopVideo.setOnClickListener(l -> turnOffLocalVideo());
+        
+        setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
     }
 
     /**
@@ -385,7 +389,9 @@ Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigst
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Erstellen eines Agents aus dem Benutzerzugriffstoken
 
-Mit dem Benutzertoken kann ein authentifizierter Anruf-Agent instanziiert werden. In der Regel wird dieses Token von einem Dienst mit einer für die Anwendung spezifischen Authentifizierung generiert. Weitere Informationen zu Benutzerzugriffstoken finden Sie im Handbuch zu [Benutzerzugriffstoken](../../../access-tokens.md). Ersetzen Sie für den Schnellstart `<User_Access_Token>` durch ein Benutzerzugriffstoken, das für Ihre Azure Communication Service-Ressource generiert wurde.
+Sie benötigen ein Benutzertoken, um einen authentifizierten Aufruf-Agent zu erstellen. In der Regel wird dieses Token von einem Dienst mit einer für die Anwendung spezifischen Authentifizierung generiert. Weitere Informationen zu Benutzerzugriffstoken finden Sie im Handbuch zu [Benutzerzugriffstoken](../../../access-tokens.md). 
+
+Ersetzen Sie für den Schnellstart `<User_Access_Token>` durch ein Benutzerzugriffstoken, das für Ihre Azure Communication Service-Ressource generiert wurde.
 
 ```java
 /**
@@ -641,7 +647,3 @@ private void hangUp() {
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Die App kann jetzt mithilfe der Schaltfläche `Run 'App'` auf der Symbolleiste von Android Studio gestartet werden. 
-
-## <a name="sample-code"></a>Beispielcode
-
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) herunterladen.

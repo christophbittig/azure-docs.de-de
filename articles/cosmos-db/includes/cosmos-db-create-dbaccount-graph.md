@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: d1fd9daa32f37f586832932b67a0363f85f07e72
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 2f055d8fe6608d328421e1916c5855d300c49dcc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223474"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725492"
 ---
 1. Melden Sie sich in einem neuen Browserfenster beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -27,7 +27,7 @@ ms.locfileid: "113223474"
 
 3. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für das neue Azure Cosmos DB-Konto ein: 
  
-   |Einstellung|Wert|Beschreibung |
+   |Einstellung|Wert|BESCHREIBUNG |
    |---|---|---|
    |Subscription|Abonnementname|Wählen Sie das Azure-Abonnement aus, das Sie für dieses Azure Cosmos-Konto verwenden möchten. |
    |Ressourcengruppe|Ressourcengruppenname|Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
@@ -58,7 +58,7 @@ ms.locfileid: "113223474"
 1. Optional können Sie auf den folgenden Registerkarten zusätzliche Details konfigurieren:
 
    * **Netzwerk**: Konfigurieren Sie den [Zugriff über ein virtuelles Netzwerk](../how-to-configure-vnet-service-endpoint.md).
-   * **Sicherungsrichtlinie**: Konfigurieren Sie eine Richtlinie für [regelmäßige](../configure-periodic-backup-restore.md) oder [fortlaufende](../continuous-backup-restore-portal.md) Sicherungen.
+   * **Sicherungsrichtlinie**: Konfigurieren Sie eine Richtlinie für [regelmäßige](../configure-periodic-backup-restore.md) oder [fortlaufende](../provision-account-continuous-backup.md) Sicherungen.
    * **Verschlüsselung**: Verwenden Sie entweder einen vom Dienst verwalteten Schlüssel oder einen [kundenseitig verwalteten Schlüssel](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account).
    * **Tags**: Tags sind Name-Wert-Paare, mit denen Sie Ressourcen kategorisieren und eine konsolidierte Abrechnung anzeigen können, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden.
 

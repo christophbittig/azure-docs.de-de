@@ -3,18 +3,17 @@ title: 'Tutorial: Entwickeln eines C-Moduls für Linux – Azure IoT Edge | Micr
 description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit C-Code erstellen und auf einem Linux-Gerät bereitstellen, auf dem IoT Edge ausgeführt wird.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5149d33052f3ad8783ed35d03b4f3760790f5ee5
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 26067037eabd2878971aa71f8996c24feaf3ed1f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728819"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Tutorial: Entwickeln eines C-IoT Edge-Moduls mit Linux-Containern
 

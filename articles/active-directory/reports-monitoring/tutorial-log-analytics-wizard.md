@@ -3,7 +3,7 @@ title: Konfigurieren des Protokollanalyseassistenten in Azure AD | Microsoft-Dok
 description: Erfahren Sie, wie die Protokollanalyse konfiguriert wird.
 services: active-directory
 ms.service: active-directory
-ms.subservice: devices
+ms.subservice: report-monitor
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: markvi
@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47df90a3f4948e69206a34dbeac187c2a67074f1
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574378"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514623"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Tutorial: Konfigurieren des Protokollanalyseassistenten
 
@@ -226,7 +226,7 @@ Dieses Verfahren zeigt, wie Sie Warnungen senden, wenn das BreakGlass-Konto verw
 
 8. Überprüfen Sie auf der Seite **Warnungsregel erstellen**, ob der Bereich korrekt ist.
 
-9. Klicken Sie unter **Bedingung** auf: **Immer wenn die benutzerdefinierte Protokollsuche größer als <logic undefined> ist**
+9. Klicken Sie unter **Bedingung** auf: **Immer wenn die benutzerdefinierte Protokollsuche größer als `logic undefined` ist**
 
     ![Standardbedingung](./media/tutorial-log-analytics-wizard/default-condition.png)
 

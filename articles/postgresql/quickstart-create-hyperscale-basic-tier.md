@@ -7,24 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/07/2021
-ms.openlocfilehash: 07ace217e5299662a1c3145a225abc25f4f1f337
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 88bf816ca5cad294a7ab0592c80420f20ade4ed5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023879"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728720"
 ---
 # <a name="create-a-hyperscale-citus-basic-tier-server-group-in-the-azure-portal"></a>Erstellen einer Hyperscale (Citus)-Servergruppe im Basic-Tarif im Azure-Portal
 
 Azure Database for PostgreSQL Hyperscale (Citus) ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Der [Basic-Tarif](concepts-hyperscale-tiers.md) ist eine praktische Bereitstellungsoption für die anfängliche Entwicklung sowie für Eingangstests.
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal eine Hyperscale (Citus)-Servergruppe im Basic-Tarif erstellen. Sie stellen die Servergruppe bereit und überprüfen, ob Sie eine Verbindung mit ihr herstellen können, um Abfragen auszuführen.
-
-> [!IMPORTANT]
-> Der Basic-Tarif von Hyperscale (Citus) befindet sich derzeit in der öffentlichen Vorschau.  Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Vorschaufeatures für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
 
 [!INCLUDE [azure-postgresql-hyperscale-create-basic-tier](../../includes/azure-postgresql-hyperscale-create-basic-tier.md)]
 

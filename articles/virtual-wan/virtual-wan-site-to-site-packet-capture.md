@@ -2,18 +2,18 @@
 title: 'Tutorial: Durchführen einer Paketerfassung für Site-to-Site-Verbindungen von Azure Virtual WAN'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Paketerfassung im Site-to-Site-VPN-Gateway von Virtual WAN durchführen.
 services: virtual-wan
-author: wellee
+author: wtnlee
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: wellee
 Customer intent: As someone with a networking background using Virtual WAN, I want to perform a packet capture on my Site-to-site VPN Gateway.
-ms.openlocfilehash: bb31d6d9c19df7a914593213e98af1d7a54825a4
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 765285a8b7c2434c64d1513e510f1cf06b513291
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809524"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598060"
 ---
 # <a name="perform-packet-capture-on-the-azure-virtual-wan-site-to-site-vpn-gateway"></a>Durchführen einer Paketerfassung im Site-to-Site-VPN-Gateway von Azure Virtual WAN 
 
@@ -47,15 +47,15 @@ Sie müssen ein Speicherkonto unter Ihrem Azure-Abonnement erstellen, um die Erg
 
 Führen Sie nach dem Erstellen Ihres Kontos die folgenden Befehle aus, um eine SAS-URL (Shared Access Signature) zu generieren. Die Ergebnisse Ihrer Paketerfassung werden über diese URL gespeichert.
    ```azurepowershell-interactive
-  $rgname = “<resource group name containing storage account>” 
+  $rg = “<resource group name containing storage account>” 
 $storeName = “<name of storage account> “
 $containerName = “<name of container you want to store packet capture in>
-$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeNAme
+$key = Get-AzStorageAccountKey -ResourceGroupName $rg -Name $storeName
 $context = New-AzStorageContext -StorageAccountName  $storeName -StorageAccountKey $key[0].value
 New-AzStorageContainer -Name $containerName -Context $context
 $container = Get-AzStorageContainer -Name $containerName  -Context $context
 $now = get-date
-$sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
    ```
 
 ## <a name="start-the-packet-capture"></a>Starten der Paketerfassung
@@ -122,18 +122,18 @@ Start-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name "<name of the Gatew
 ## <a name="stopping-the-packet-capture"></a>Beenden der Paketerfassung
 Es empfiehlt sich, die Paketerfassung mindestens 600 Sekunden lang laufen zu lassen. Aufgrund von Synchronisierungsproblemen zwischen mehreren Komponenten im Pfad stellen kürzere Paketerfassungen möglicherweise keine vollständigen Daten bereit. Wenn Sie die Paketerfassung beenden möchten, führen Sie den folgenden Befehl aus:
 
-Die Parameter ähneln denen aus dem Abschnitt zum Starten einer Paketerfassung. Die SAS-URL wurde im Abschnitt [Erstellen eines Speicherkontos](#createstorage) generiert.
+Die Parameter ähneln denen aus dem Abschnitt zum Starten einer Paketerfassung. Die SAS-URL wurde im Abschnitt [Erstellen eines Speicherkontos](#createstorage) generiert. Wenn der `SASurl`-Parameter nicht ordnungsgemäß konfiguriert ist, treten bei der Ablaufverfolgung möglicherweise Speicherfehler auf.
 
 ### <a name="gateway-level-packet-capture"></a>Paketerfassung auf Gatewayebene
 
    ```azurepowershell-interactive
-Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name <GatewayName> -SasUrl $sas
+Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name <GatewayName> -SasUrl $sasurl
    ```
 
 ### <a name="connection-level-packet-captures"></a>Paketerfassungen auf Verbindungsebene
 
    ```azurepowershell-interactive
-Stop-AzVpnConnectionPacketCapture -ResourceGroupName $rg -Name <name of the VPN connection> -ParentResourceName "<name of VPN Gateway>" -LinkConnectionName <comma separated list of links e.g. "link1,link2">-SasUrl $sas
+Stop-AzVpnConnectionPacketCapture -ResourceGroupName $rg -Name <name of the VPN connection> -ParentResourceName "<name of VPN Gateway>" -LinkConnectionName <comma separated list of links e.g. "link1,link2">-SasUrl $sasurl
    ```
 
 ## <a name="viewing-your-packet-capture"></a>Anzeigen Ihrer Paketerfassung

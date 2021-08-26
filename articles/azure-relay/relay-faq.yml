@@ -3,13 +3,14 @@ metadata:
   title: Azure Relay – häufig gestellte Fragen | Microsoft-Dokumentation
   description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen im Zusammenhang mit dem Azure Relay-Dienst.
   ms.topic: article
-  ms.date: 06/23/2020
-  ms.openlocfilehash: 815a6ccb835d418fc701b57135fd5c696c338961
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.service: azure
+  ms.date: 06/23/2021
+  ms.openlocfilehash: fd18d0d36cb07596ba6f8b40e699228bb95a190d
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/13/2021
-  ms.locfileid: "111907145"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253959"
 title: Azure Relay – häufig gestellte Fragen
 summary: >
   In diesem Artikel werden einige häufig gestellte Fragen zu [Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Allgemeine Informationen zu Azure-Preisen und zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).

@@ -1,0 +1,60 @@
+- name: Dokumentation zum plastischen Reader
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich beim plastischen Reader?
+      href: Overview.md
+    - name: Sprachunterstützung
+      href: language-support.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: Versionshinweise
+      href: release-notes.md
+- name: Schnellstart
+  href: ./quickstarts/client-libraries.md
+- name: Vorgehensweise
+  items:
+    - name: Erstellen einer Ressource für den plastischen Reader
+      href: how-to-create-immersive-reader.md
+    - name: Starten des plastischen Readers
+      href: how-to-launch-immersive-reader.md
+    - name: Vorbereiten von HTML-Inhalt
+      href: how-to-prepare-html.md
+    - name: Bearbeiten der Startschaltfläche für den plastischen Reader
+      href: how-to-customize-launch-button.md
+    - name: Zwischenspeichern des Authentifizierungstokens
+      href: how-to-cache-token.md
+    - name: Konfigurieren des lauten Vorlesens
+      href: how-to-configure-read-aloud.md
+    - name: Konfigurieren der Übersetzung
+      href: how-to-configure-translation.md
+    - name: Anzeigemathematik
+      href: how-to/display-math.md
+    - name: Festlegen der Cookie-Richtlinie
+      href: how-to/set-cookie-policy.md
+    - name: Speichern der Benutzereinstellungen
+      href: how-to-store-user-preferences.md
+    - name: Verwenden mehrerer Ressourcen für den plastischen Reader
+      href: how-to-multiple-resources.md
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Einrichten von virtuellen Netzwerken
+          href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/immersive-reader/context/context
+        - name: "Verwenden der Azure\_AD-Authentifizierung"
+          href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/immersive-reader/context/context
+- name: Verweis
+  items:
+    - name: JavaScript SDK
+      href: reference.md
+- name: Ressourcen
+  items:
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Unterstützung für Regionen
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Konformität und Zertifizierung
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Support- und Hilfeoptionen
+      href: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/immersive-reader/context/context
+    - name: Azure-Updates
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

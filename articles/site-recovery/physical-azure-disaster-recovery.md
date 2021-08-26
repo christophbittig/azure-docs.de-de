@@ -3,13 +3,13 @@ title: Einrichten der Notfallwiederherstellung von physischen lokalen Servern mi
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für lokale Windows- und Linux-Server mit dem Azure Site Recovery-Dienst einrichten.
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/12/2019
-ms.openlocfilehash: 0197d3f505edef0890ed076e15f89d14ad5ab5d4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/14/2021
+ms.openlocfilehash: 6811511cf45d342691a76ddb14b631601db56c36
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968696"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290262"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -19,7 +19,7 @@ In diesem Tutorial erfahren Sie, wie Sie die Notfallwiederherstellung von physis
 
 > [!div class="checklist"]
 > * Einrichten von Azure und lokale Voraussetzungen
-> * Erstellen eines Recovery Services-Tresors für Site Recovery 
+> * Erstellen eines Recovery Services-Tresors für Site Recovery
 > * Einrichten der Quell- und Zielumgebungen für die Replikation
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für einen Server
@@ -36,7 +36,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Bevor Sie beginnen, beachten Sie Folgendes:
 
-- Nach dem Failover auf Azure für physische Server kann kein Failback auf lokale physische Computer erfolgen. Es kann nur ein Failback auf VMware-VMs ausgeführt werden. 
+- Nach dem Failover auf Azure für physische Server kann kein Failback auf lokale physische Computer erfolgen. Es kann nur ein Failback auf VMware-VMs ausgeführt werden.
 - In diesem Tutorial wird die Notfallwiederherstellung physischer Computer in Azure mit den einfachsten Einstellungen eingerichtet. Wenn Sie weitere Informationen zu anderen Optionen benötigen, lesen Sie die Leitfäden:
     - Einrichten der [Replikationsquelle](physical-azure-set-up-source.md), einschließlich der Site Recovery-Konfigurationsserver
     - Einrichten des [Replikationsziels](physical-azure-set-up-target.md)
@@ -48,7 +48,7 @@ Bevor Sie beginnen, beachten Sie Folgendes:
 Erstellen Sie ein [Microsoft Azure-Konto](https://azure.microsoft.com/).
 
 - Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung.
-- Erfahren Sie mehr über [Site Recovery-Preise](/azure/site-recovery/site-recovery-faq.yml#pricing), und erhalten Sie [Preisdetails](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Erfahren Sie mehr über [Site Recovery-Preise](/azure/site-recovery/site-recovery-faq#pricing), und erhalten Sie [Preisdetails](https://azure.microsoft.com/pricing/details/site-recovery/).
 - Erfahren Sie, welche [Regionen](https://azure.microsoft.com/pricing/details/site-recovery/) für Site Recovery unterstützt werden.
 
 ### <a name="verify-azure-account-permissions"></a>Überprüfen der Azure-Kontoberechtigungen
@@ -56,7 +56,7 @@ Erstellen Sie ein [Microsoft Azure-Konto](https://azure.microsoft.com/).
 Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Replikation von virtuellen Computern in Azure verfügt.
 
 - Überprüfen Sie die [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines), die Sie für das Replizieren von Computern in Azure benötigen.
-- Überprüfen und ändern Sie Berechtigungen der [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). 
+- Überprüfen und ändern Sie Berechtigungen der [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 
 
@@ -102,24 +102,25 @@ Wählen Sie die zu replizierenden Elemente und das Replikationsziel aus.
 
 Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und ermitteln Sie die VMs.
 
-1. Klicken Sie auf **Site Recovery** > **Infrastruktur vorbereiten** > **Quelle**.
-2. Wenn Sie keinen Konfigurationsserver verwenden, klicken Sie auf **+Konfigurationsserver**.
-3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
-4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
-5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+1. Klicken Sie auf **Site Recovery** > **Infrastruktur vorbereiten**.
+2. Vergewissern Sie sich, dass Sie Ihre Bereitstellungsplanung durchgeführt haben, und führen Sie den Bereitstellungsplaner aus, um die verschiedenen Anforderungen abzuschätzen. Klicken Sie auf **Weiter**.
+3. Wählen Sie in der Option **Sind Ihre Computer virtualisiert?** aus, ob Sie über virtuelle oder physische Computer verfügen.
+4. Wenn Sie keinen Konfigurationsserver verwenden, klicken Sie auf **+Konfigurationsserver**.
+5. Wenn Sie den Schutz für virtuelle Computer aktivieren möchten, laden Sie die Vorlage für virtuelle Computer des Konfigurationsservers herunter.
+6. Wenn Sie den Schutz für physische Computer aktivieren möchten, laden Sie die Installationsdatei für ein einheitliches Site Recovery-Setup herunter. Sie müssen außerdem den Tresorregistrierungsschlüssel herunterladen. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
    ![Screenshot mit Anzeige der Optionen zum Download von Installationsdatei und Registrierungsschlüssel](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Registrieren des Konfigurationsservers im Tresor
 
-Führen Sie zunächst folgende Schritte aus: 
+Führen Sie zunächst folgende Schritte aus:
 
 #### <a name="verify-time-accuracy"></a>Überprüfen der Zeitgenauigkeit
 Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](/windows-server/networking/windows-time-service/windows-time-service-top) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
 
 #### <a name="verify-connectivity"></a>Überprüfen der Konnektivität
-Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann: 
+Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann:
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -170,12 +171,12 @@ Aktivieren Sie die Replikation für jeden Server.
 3. Wählen Sie unter **Computertyp** die Option **Physische Computer** aus.
 4. Wählen Sie den Prozessserver (Konfigurationsserver) aus. Klicken Sie dann auf **OK**.
 5. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. der Sie die virtuellen Azure-Computer erstellen möchten, für die ein Failover durchgeführt wurde. Wählen Sie das Bereitstellungsmodell aus, das in Azure verwendet werden soll (klassisch oder Resource Manager).
-6. Wählen Sie das Azure-Speicherkonto aus, das Sie für die Replikation von Daten verwenden möchten. 
+6. Wählen Sie das Azure-Speicherkonto aus, das Sie für die Replikation von Daten verwenden möchten.
 7. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer, die nach einem Failover erstellt werden, eine Verbindung herstellen.
-8. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. 
-9. Klicken Sie unter **Physische Computer** auf **+ Physischer Computer**. Geben Sie den Namen und die IP-Adresse an. Wählen Sie das Betriebssystem des Computers, den Sie replizieren möchten, aus. Es dauert einige Minuten, bis die Server ermittelt und aufgelistet werden. 
+8. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen.
+9. Klicken Sie unter **Physische Computer** auf **+ Physischer Computer**. Geben Sie den Namen und die IP-Adresse an. Wählen Sie das Betriebssystem des Computers, den Sie replizieren möchten, aus. Es dauert einige Minuten, bis die Server ermittelt und aufgelistet werden.
 10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren des Mobility Service auf dem Computer verwenden soll.
-11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist. 
+11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist.
 12. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 

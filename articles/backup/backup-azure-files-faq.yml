@@ -3,13 +3,14 @@ metadata:
   title: Häufig gestellte Fragen zum Sichern von Azure Files
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
   ms.date: 04/22/2020
-  ms.topic: conceptual
-  ms.openlocfilehash: b08af97ba2dbab60fa23e35a9865ad982b913f56
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.topic: article
+  ms.service: backup
+  ms.openlocfilehash: ac3cc6f6fc6b6896e236fd28c4808c49616cf68a
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "111907165"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252314"
 title: Fragen zum Sichern von Azure Files
 summary: >
   In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
