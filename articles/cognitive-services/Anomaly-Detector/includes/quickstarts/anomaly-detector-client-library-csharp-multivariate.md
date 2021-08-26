@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 8dc56570adf78ce208411f9f2e8f4453704d4f90
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: ea010cd348973757c5f5cc0bb705bc52f0cd9e7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339545"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801410"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für C#. Führen Sie die hier angegebenen Schritte aus, um das Paket zu installieren und mit der Verwendung der bereitgestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -136,7 +136,7 @@ AnomalyDetectorClient client = new AnomalyDetectorClient(endpointUri, credential
 Erstellen Sie wie im Anschluss beschrieben eine neue private asynchrone Aufgabe zur Behandlung des Modelltrainings. Sie verwenden `TrainMultivariateModel`, um das Modell zu trainieren, und `GetMultivariateModelAysnc`, um zu überprüfen, wann das Training abgeschlossen ist.
 
 ```csharp
-private async Task trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
+private async Task<Guid?> trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time)
 {
     try
     {
@@ -153,27 +153,23 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 
         // Wait until the model is ready. It usually takes several minutes
         Response<Model> get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-        ModelStatus? model_status = null;
-        int tryout_count = 0;
-        TimeSpan create_limit = new TimeSpan(0, 3, 0);
-        while (tryout_count < max_tryout & model_status != ModelStatus.Ready)
+        while (get_response.Value.ModelInfo.Status != ModelStatus.Ready & get_response.Value.ModelInfo.Status != ModelStatus.Failed)
         {
             System.Threading.Thread.Sleep(10000);
             get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-            ModelInfo model_info = get_response.Value.ModelInfo;
-            Console.WriteLine(String.Format("model_id: {0}, createdTime: {1}, lastUpdateTime: {2}, status: {3}.", get_response.Value.ModelId, get_response.Value.CreatedTime, get_response.Value.LastUpdatedTime, model_info.Status));
+            Console.WriteLine(String.Format("model_id: {0}, createdTime: {1}, lastUpdateTime: {2}, status: {3}.", get_response.Value.ModelId, get_response.Value.CreatedTime, get_response.Value.LastUpdatedTime, get_response.Value.ModelInfo.Status));
+        }
 
-            if (model_info != null)
-            {
-                model_status = model_info.Status;
-            }
-            tryout_count += 1;
-        };
-        get_response = await client.GetMultivariateModelAsync(trained_model_id).ConfigureAwait(false);
-
-        if (model_status != ModelStatus.Ready)
+        if (get_response.Value.ModelInfo.Status != ModelStatus.Ready)
         {
-            Console.WriteLine(String.Format("Request timeout after {0} tryouts", max_tryout));
+            Console.WriteLine(String.Format("Trainig failed."));
+            IReadOnlyList<ErrorResponse> errors = get_response.Value.ModelInfo.Errors;
+            foreach (ErrorResponse error in errors)
+            {
+                Console.WriteLine(String.Format("Error code: {0}.", error.Code));
+                Console.WriteLine(String.Format("Error message: {0}.", error.Message));
+            }
+            throw new Exception("Training failed.");
         }
 
         model_number = await getModelNumberAsync(client).ConfigureAwait(false);
@@ -193,7 +189,7 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 Um Anomalien mit dem neu trainierten Modell zu erkennen, erstellen Sie eine private asynchrone Aufgabe (`private async Task`) namens `detectAsync`. Sie erstellen eine neue Erkennungsanforderung (`DetectionRequest`) und übergeben sie als Parameter an `DetectAnomalyAsync`.
 
 ```csharp
-private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
+private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id,DateTimeOffset start_time, DateTimeOffset end_time)
 {
     try
     {
@@ -206,17 +202,21 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
         Guid result_id = Guid.Parse(result_id_path.Split('/').LastOrDefault());
         // get detection result
         Response<DetectionResult> result = await client.GetDetectionResultAsync(result_id).ConfigureAwait(false);
-        int tryout_count = 0;
-        while (result.Value.Summary.Status != DetectionStatus.Ready & tryout_count < max_tryout)
+        while (result.Value.Summary.Status != DetectionStatus.Ready & result.Value.Summary.Status != DetectionStatus.Failed)
         {
             System.Threading.Thread.Sleep(2000);
             result = await client.GetDetectionResultAsync(result_id).ConfigureAwait(false);
-            tryout_count += 1;
         }
 
         if (result.Value.Summary.Status != DetectionStatus.Ready)
         {
-            Console.WriteLine(String.Format("Request timeout after {0} tryouts", max_tryout));
+            Console.WriteLine(String.Format("Inference failed."));
+            IReadOnlyList<ErrorResponse> errors = result.Value.Summary.Errors;
+            foreach (ErrorResponse error in errors)
+            {
+                Console.WriteLine(String.Format("Error code: {0}.", error.Code));
+                Console.WriteLine(String.Format("Error message: {0}.", error.Message));
+            }
             return null;
         }
 

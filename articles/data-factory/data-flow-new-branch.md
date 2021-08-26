@@ -1,18 +1,20 @@
 ---
 title: Mehrere Verzweigungen im Zuordnungsdatenfluss
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Replizieren von Datenströmen im Zuordnungsdatenfluss mit mehreren Verzweigungen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 04/16/2021
-ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: e84b1d1a2130c2d1c621ade1b21f92c485709100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588750"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639990"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>Erstellen einer neuen Verzweigung im Zuordnungsdatenfluss
 

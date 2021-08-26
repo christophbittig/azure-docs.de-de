@@ -165,13 +165,19 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Orchestrierungsmodi (Vorschau)
-      href: virtual-machine-scale-sets-orchestration-modes.md
+      items:
+        - name: Übersicht
+          href: virtual-machine-scale-sets-orchestration-modes.md
+        - name: API-Vergleich
+          href: orchestration-modes-api-comparison.md
+        - name: Flexible Orchestrierung
+          href: ../virtual-machines/flexible-virtual-machine-scale-sets.md
     - name: Wartung und Updates
       items:
         - name: Übersicht
           href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
           maintainContext: true
-        - name: Automatisches Erweiterungsupgrade (Vorschau)
+        - name: Automatisches Erweiterungsupgrade
           href: ../virtual-machines/automatic-extension-upgrade.md
           maintainContext: true
     - name: Datenträgerspeicher
@@ -340,7 +346,7 @@
           items:
             - name: Übersicht
               href: ../virtual-machines/dedicated-hosts.md
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md

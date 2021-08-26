@@ -3,15 +3,16 @@ title: Beheben von fehlerhaften Zeilen mit Zuordnungsdatenflüssen in Azure Data
 description: Erfahren Sie, wie Sie SQL-Kürzungsfehler in Azure Data Factory mithilfe von Zuordnungsdatenflüssen beheben.
 author: kromerm
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4f4c1c334bb3720118b050947da6345116ef22f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640834"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Beheben von SQL-Kürzungsfehlern in Zeilen in Data Factory-Zuordnungsdatenflüssen
 

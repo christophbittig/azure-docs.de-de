@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a23a96c73d3ddafb1d7fff59b3dcfc40804f1e0b
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 609696d02ede75f19ea0b3bdfe349cbdf37db5bb
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388735"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605625"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Der Azure Web PubSub-Dienst muss den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf45113f-264e-4a87-88f9-29ac8a0aca6a) |Die Deaktivierung des Zugriffs über öffentliche Netzwerke erhöht die Sicherheit, da der Azure Web PubSub-Dienst nicht über das öffentliche Internet zugänglich ist. Durch das Erstellen privater Endpunkte können Sie die Offenlegung des Azure Web PubSub-Diensts einschränken. Weitere Informationen finden Sie unter [https://aka.ms/awps/networkacls](https://aka.ms/awps/networkacls). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Web%20PubSub/WebPubSub_PublicNetworkAccessDisabled_AuditDeny.json) |
 |[Der Azure Web PubSub-Dienst muss eine SKU mit Unterstützung von Private Link verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82909236-25f3-46a6-841c-fe1020f95ae1) |Bei Verwendung einer unterstützten SKU können Sie mit Azure Private Link Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne an der Quelle oder am Ziel eine öffentliche IP-Adresse zu verwenden. Die Private Link-Plattform verarbeitet die Konnektivität zwischen dem Consumer und den Diensten über das Azure-Backbone-Netzwerk. Durch das Zuordnen privater Endpunkte zum Azure Web PubSub-Dienst können Sie das Risiko von Datenlecks verringern. Weitere Informationen zu privaten Verbindungen finden Sie unter [https://aka.ms/awps/privatelink](https://aka.ms/awps/privatelink). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Web%20PubSub/WebPubSub_AllowedSKU_AuditDeny.json) |

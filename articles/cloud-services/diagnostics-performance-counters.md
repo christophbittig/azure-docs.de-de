@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f18fa4986b9a4a855af6e2b9f14c4e2367213f6e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 101a89a2fabe61d85b8a9ee099c672c881c6efd3
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113089987"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821923"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Erfassen von Leistungsindikatoren für Ihre Azure Cloud Services-Instanz (klassisch)
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Leistungsindikatoren ermöglichen es Ihnen, die Leistung Ihrer Anwendungen und Hosts nachzuverfolgen. Windows Server stellt viele unterschiedliche Leistungsindikatoren zu Hardware, Anwendungen, Betriebssystem uvm. zur Verfügung. Durch das Erfassen und Senden von Leistungsindikatoren an Azure können Sie diese Informationen analysieren, um bessere Entscheidungen zu treffen. 
 

@@ -10,20 +10,20 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: dc674a7e013ed39bd04161cb7e96dc969eaf47eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7253be0e9d7723bdb018b53e3ee655188bb3d679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802629"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 - Erstellen Sie ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie auf der [Seite zum Erstellen eines kostenloses Azure-Kontos](https://azure.microsoft.com/free/).
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install), Version 11 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für dieses Beispiel aufzeichnen.
-- Beschaffen Sie sich eine Telefonnummer für Ihre neue Azure Communication Services Ressource. Weitere Informationen finden Sie unter [Abrufen einer Telefonnummer](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/get-phone-number?pivots=platform-azp).
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../../create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für dieses Beispiel aufzeichnen.
+- Beschaffen Sie sich eine Telefonnummer für Ihre neue Azure Communication Services Ressource. Weitere Informationen finden Sie unter [Abrufen einer Telefonnummer](../../../telephony-sms/get-phone-number.md?pivots=platform-azp).
 - Laden Sie [ngrok](https://www.ngrok.com/download) herunter und installieren Sie es. Da das Beispiel lokal ausgeführt wird, ermöglicht ngrok den Empfang aller Ereignisse.
 - (Optional) Erstellen Sie eine Azure Speech-Ressource zum Erstellen benutzerdefinierter Nachrichten, die von der Anwendung abgespielt werden sollen. Zum Erstellen der Ressource befolgen Sie [diesen Leitfaden](../../../../../cognitive-services/speech-service/overview.md#try-the-speech-service-for-free).
 

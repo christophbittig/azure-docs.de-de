@@ -1,19 +1,21 @@
 ---
 title: Verwalten des Graphen des Zuordnungsdatenflusses
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie den Graphen des Zuordnungsdatenflusses effektiv verwalten und bearbeiten können.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 09/02/2020
-ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf274ce49a2b83fca49bc039c1ba3c7980531979
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97590459"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639976"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Verwalten des Graphen des Zuordnungsdatenflusses
 
@@ -25,11 +27,11 @@ Zuordnungsdatenflüsse werden mithilfe einer Entwurfsoberfläche, dem sog. Daten
 
 Wenn Ihre Datenflüsse komplexer werden, gehen Sie wie folgt vor, um den Datenflussgraphen effektiv zu nutzen und zu verwalten. 
 
-## <a name="moving-transformations"></a>Verschieben von Transformationen
+## <a name="moving-transformations&quot;></a>Verschieben von Transformationen
 
 In Zuordnungsdatenflüssen wird zusammenhängende Transformationslogik als **Datenstrom** bezeichnet. Das Feld **Eingehender Datenstrom** bestimmt, welcher Datenstrom die aktuelle Transformation mit Informationen versorgt. Jede Transformation hat je nach Aufgabe einen oder zwei eingehende Datenströme und stellt einen Ausgangsdatenstrom dar. Das Ausgabeschema der eingehenden Datenströme bestimmt, auf welche Spaltenmetadaten die aktuelle Transformation verweisen kann.
 
-![Knoten verschieben](media/data-flow/move-nodes.png "Knoten verschieben")
+![Knoten verschieben](media/data-flow/move-nodes.png &quot;Knoten verschieben")
 
 Im Gegensatz zur Canvas für Pipelines werden Datenflusstransformationen nicht mithilfe eines Drag & Drop-Modells bearbeitet. Um den eingehenden Datenstrom zu ändern oder eine Transformation zu verschieben, wählen Sie in der Dropdownliste **Eingehender Datenstrom** einen anderen Wert aus. Wenn Sie dies tun, werden alle nachgeordneten Transformationen zusammen mit der bearbeiteten Transformation verschoben. Der Graph wird automatisch entsprechend dem neuen logischen Datenfluss aktualisiert. Wenn Sie den eingehenden Datenstrom in eine Transformation ändern, die bereits eine nachgeordnete Transformation hat, wird eine neue Verzweigung oder ein paralleler Datenstrom erstellt. Erfahren Sie mehr zu [neuen Verzweigungen im Zuordnungsdatenfluss](data-flow-new-branch.md).
 
