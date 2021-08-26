@@ -4,14 +4,15 @@ description: In diesem Tutorial wird eine Azure Data Factory-Pipeline erstellt
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 927d913122203383b4279d68059040b6bf4be5e7
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: b8029f8eb78539cb49bc3d13fefe9e2bf11b9f76
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638897"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b77b242d34986e423bf87d6be0eda2074cd7df36
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 5200f9548c16dc0dc0341db84601242e84e3dcc3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638453"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Tutorial: Migrieren von SQL Server zu einer verwalteten Azure SQL-Instanz mithilfe von DMS (offline)
 
@@ -79,19 +79,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     > [!NOTE]
     > Die Verwendung eines SAS-Tokens auf Kontoebene wird beim Konfigurieren der Speicherkontoeinstellungen im Schritt [Migrationseinstellungen konfigurieren](#configure-migration-settings) nicht von Azure Database Migration Service unterstützt.
     
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-    ![Abonnements im Portal anzeigen](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-    ![Ressourcenanbieter anzeigen](media/tutorial-sql-server-to-managed-instance/portal-select-resource-provider.png)
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-sql-server-to-managed-instance/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Erstellen einer Instanz von Azure Database Migration Service
 

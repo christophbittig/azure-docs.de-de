@@ -1,37 +1,38 @@
 ---
 title: Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich
-description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Synapse-Arbeitsbereich mithilfe von Azure-Rollen, Synapse-Rollen, SQL-Berechtigungen und Git-Berechtigungen steuern.
+description: In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Azure Synapse-Arbeitsbereich mithilfe von Azure-Rollen, Synapse-Rollen, SQL-Berechtigungen und Git-Berechtigungen steuern.
 services: synapse-analytics
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
-ms.date: 12/03/2020
+ms.date: 8/05/2021
 ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 91eaf655a3259cff31767353fb2c2b7fcd787d63
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: jrasnick, wiassaf
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 6a604c4e2a3b1f12fa5d296558023be9bc31cd96
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122959"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349976"
 ---
-# <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich 
+# <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Azure Synapse-Arbeitsbereich 
 
-In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Synapse-Arbeitsbereich mithilfe von Azure-Rollen, Synapse-Rollen, SQL-Berechtigungen und Git-Berechtigungen steuern.   
+In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Microsoft Azure Synapse-Arbeitsbereich mithilfe von Azure-Rollen, Azure Synapse-Rollen, SQL-Berechtigungen und Git-Berechtigungen steuern.   
 
-In diesem Leitfaden richten Sie einen Arbeitsbereich ein und konfigurieren ein grundlegendes Zugriffssteuerungssystem, das für viele Synapse-Projekte geeignet ist.  Außerdem werden erweiterte Optionen für eine präzisere Steuerung beschrieben, die Sie eventuell benötigen.  
+In diesem Leitfaden richten Sie einen Arbeitsbereich ein und konfigurieren ein grundlegendes Zugriffssteuerungssystem, das für viele Azure Synapse-Projekte geeignet ist.  Außerdem werden erweiterte Optionen für eine präzisere Steuerung beschrieben, die Sie eventuell benötigen.  
 
-Die Synapse-Zugriffssteuerung kann mithilfe von Sicherheitsgruppen vereinfacht werden, die an den Rollen und Personas in Ihrer Organisation ausgerichtet sind.  Um den Zugriff zu verwalten, müssen Sie lediglich den Sicherheitsgruppen Benutzer hinzufügen bzw. Benutzer aus ihnen entfernen.
+Die Azure Synapse-Zugriffssteuerung kann mithilfe von Sicherheitsgruppen vereinfacht werden, die an den Rollen und Personas in Ihrer Organisation ausgerichtet sind.  Um den Zugriff zu verwalten, müssen Sie lediglich den Sicherheitsgruppen Benutzer hinzufügen bzw. Benutzer aus ihnen entfernen.
 
-Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, sollten Sie die [Übersicht über die Synapse-Zugriffssteuerung](./synapse-workspace-access-control-overview.md) lesen, um sich mit den von Synapse verwendeten Zugriffssteuerungsmechanismen vertraut zu machen.   
+Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, sollten Sie die [Übersicht über die Azure Synapse-Zugriffssteuerung](./synapse-workspace-access-control-overview.md) lesen, um sich mit den von Azure Synapse Analytics verwendeten Zugriffssteuerungsmechanismen vertraut zu machen.   
 
 ## <a name="access-control-mechanisms"></a>Zugriffssteuerungsmechanismen
 
 > [!NOTE]
 > In diesem Leitfaden wird der Ansatz verfolgt, mehrere Sicherheitsgruppen zu erstellen und diesen dann Rollen zuzuweisen. Nach dem Einrichten der Gruppen müssen Sie nur noch die Mitgliedschaft in den Sicherheitsgruppen verwalten, um den Zugriff auf den Arbeitsbereich zu steuern.
 
-Um einen Synapse-Arbeitsbereich zu schützen, befolgen Sie ein Muster zur Konfiguration der folgenden Elemente:
+Um einen Azure Synapse-Arbeitsbereich zu schützen, befolgen Sie ein Muster zur Konfiguration der folgenden Elemente:
 
 - **Sicherheitsgruppen**, um Benutzer mit ähnlichen Zugriffsanforderungen zusammenzufassen
 - **Azure-Rollen**, um zu steuern, wer SQL-Pools, Apache Spark-Pools und Integration Runtimes erstellen und verwalten kann und wer Zugriff auf ADLS Gen2-Speicher hat
@@ -39,13 +40,13 @@ Um einen Synapse-Arbeitsbereich zu schützen, befolgen Sie ein Muster zur Konfig
 - **SQL-Berechtigungen**, um den Zugriff auf Verwaltungs- und Datenebene auf SQL-Pools zu steuern 
 - **Git-Berechtigungen**, um den Zugriff auf Codeartefakte in der Quellcodeverwaltung zu steuern, wenn Sie Git-Unterstützung für den Arbeitsbereich konfigurieren 
  
-## <a name="steps-to-secure-a-synapse-workspace"></a>Schritte zur Sicherung eines Synapse-Arbeitsbereichs
+## <a name="steps-to-secure-an-azure-synapse-workspace"></a>Schritte zur Sicherung eines Azure Synapse-Arbeitsbereichs
 
 In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinfachen. Ersetzen Sie sie durch Namen Ihrer Wahl.
 
 |Einstellung | Standardname | BESCHREIBUNG |
 | :------ | :-------------- | :---------- |
-| **Synapse-Arbeitsbereich** | `workspace1` |  Der Name, den der Synapse-Arbeitsbereich erhält. |
+| **Synapse-Arbeitsbereich** | `workspace1` |  Der Name, den der Azure Synapse-Arbeitsbereich erhält. |
 | **ADLSGEN2-Konto** | `storage1` | Das ADLS-Konto, das mit Ihrem Arbeitsbereich verwendet werden soll. |
 | **Container** | `container1` | Der Container in STG1, der vom Arbeitsbereich standardmäßig verwendet wird. |
 | **Active Directory-Mandant** | `contoso` | Der Name des Active Directory-Mandanten.|
@@ -54,7 +55,7 @@ In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinf
 ## <a name="step-1-set-up-security-groups"></a>SCHRITT 1: Einrichten von Sicherheitsgruppen
 
 >[!Note] 
->Während der Vorschauphase wurde empfohlen, Sicherheitsgruppen zu erstellen, die den Synapse-Rollen **Synapse SQL-Administrator** und **Synapse-Apache Spark-Administrator** zugeordnet sind.  Aufgrund der Einführung neuer, differenzierterer Synapse RBAC-Rollen und -Bereiche wird jetzt empfohlen, den Zugriff auf Ihren Arbeitsbereich über diese neuen Funktionen zu steuern.  Diese neuen Rollen und Bereiche bieten mehr Flexibilität bei der Konfiguration. Außerdem berücksichtigen sie, dass Entwickler häufig SQL und Spark zusammen nutzen, um Analyseanwendungen zu erstellen, und möglicherweise eher Zugriff auf bestimmte Ressourcen anstatt auf den gesamten Arbeitsbereich benötigen. Erfahren Sie mehr über [Synapse RBAC](./synapse-workspace-synapse-rbac.md).
+>Während der Vorschauphase wurde empfohlen, Sicherheitsgruppen zu erstellen, die den Azure Synapse-Rollen **Synapse SQL-Administrator** und **Synapse-Apache Spark-Administrator** zugeordnet sind.  Aufgrund der Einführung neuer, differenzierterer Synapse RBAC-Rollen und -Bereiche wird jetzt empfohlen, den Zugriff auf Ihren Arbeitsbereich über diese neuen Funktionen zu steuern.  Diese neuen Rollen und Bereiche bieten mehr Flexibilität bei der Konfiguration. Außerdem berücksichtigen sie, dass Entwickler häufig SQL und Spark zusammen nutzen, um Analyseanwendungen zu erstellen, und möglicherweise eher Zugriff auf bestimmte Ressourcen anstatt auf den gesamten Arbeitsbereich benötigen. Erfahren Sie mehr über [Synapse RBAC](./synapse-workspace-synapse-rbac.md).
 
 Erstellen Sie die folgenden Sicherheitsgruppen für Ihren Arbeitsbereich:
 
@@ -81,7 +82,7 @@ Für eine grundlegende Einrichtung sind diese fünf Gruppen bereits ausreichend.
 
 ## <a name="step-2-prepare-your-adls-gen2-storage-account"></a>SCHRITT 2: Vorbereiten Ihres ADLS Gen2-Speicherkontos
 
-Synapse-Arbeitsbereiche verwenden Standardspeichercontainer für Folgendes:
+Ein Azure Synapse-Arbeitsbereich verwendet Standardspeichercontainer für Folgendes:
   - Speichern der Unterstützungsdatendateien für Spark-Tabellen
   - Ausführungsprotokolle für Spark-Aufträge
   - Verwalten von Bibliotheken, die Sie für die Installation auswählen
@@ -90,23 +91,37 @@ Ermitteln Sie diese Informationen zu Ihrem Speicher:
 
 - Das ADLS Gen2-Konto, das mit Ihrem Arbeitsbereich verwendet werden soll. In diesem Dokument ist dies `storage1`. `storage1` wird als „primäres“ Speicherkonto für Ihren Arbeitsbereich betrachtet.
 - Der Container innerhalb von `workspace1`, der von Ihrem Arbeitsbereich standardmäßig verwendet wird. In diesem Dokument ist dies `container1`. 
+ 
+- Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 
-- Weisen Sie den Sicherheitsgruppen über das Azure-Portal die folgenden Azure-Rollen für `container1` zu. 
+- Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-  - Weisen Sie `workspace1_SynapseAdmins` die Rolle **Mitwirkender an Storage-Blobdaten** zu. 
-  - Weisen Sie `workspace1_SynapseContributors` die Rolle **Mitwirkender an Storage-Blobdaten** zu.
-  - Weisen Sie `workspace1_SynapseComputeOperators` die Rolle **Mitwirkender an Storage-Blobdaten** zu.
+- Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blobdaten |
+    | Zugriff zuweisen zu |SERVICEPRINCIPAL |
+    | Member |workspace1_SynapseAdmins, workspace1_SynapseContributors und workspace1_SynapseComputeOperators|
 
-## <a name="step-3-create-and-configure-your-synapse-workspace"></a>SCHRITT 3: Erstellen und Konfigurieren Ihres Synapse-Arbeitsbereichs
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
+## <a name="step-3-create-and-configure-your-azure-synapse-workspace"></a>SCHRITT 3: Erstellen und Konfigurieren Ihres Azure Synapse-Arbeitsbereichs
+
+Erstellen Sie im Azure-Portal einen Azure Synapse-Arbeitsbereich:
 
 - Wählen Sie Ihr Abonnement aus.
+
 - Wählen Sie eine Ressourcengruppe aus, für die Sie über die Azure-Rolle **Besitzer** verfügen, oder erstellen Sie sie.
+
 - Geben Sie dem Arbeitsbereich den Namen `workspace1`.
+
 - Wählen Sie `storage1` als Speicherkonto aus.
+
 - Wählen Sie `container1` als den Container aus, der als „Dateisystem“ verwendet wird.
+
 - Öffnen Sie WS1 in Synapse Studio.
+
 - Wählen Sie **Verwalten** > **Zugriffssteuerung** aus, und weisen Sie den Sicherheitsgruppen die folgenden Synapse-Rollen auf *Arbeitsbereichsebene* zu:
   - Weisen Sie `workspace1_SynapseAdministrators` die Rolle **Synapse-Administrator** zu. 
   - Weisen Sie `workspace1_SynapseContributors` die Rolle **Synapse-Mitwirkender** zu. 
@@ -114,13 +129,25 @@ Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>SCHRITT 4: Gewähren von Zugriff auf den Standardspeichercontainer für die Arbeitsbereichs-MSI
 
-Zum Ausführen von Pipelines und Systemaufgaben in Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben.
+Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben. Weitere Informationen finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](synapse-workspace-managed-identity.md).
 
 - Öffnen Sie das Azure-Portal.
 - Suchen Sie das Speicherkonto `storage1` und dann `container1`.
-- Stellen Sie mithilfe von **Zugriffssteuerung (IAM)** sicher, dass der Arbeitsbereichs-MSI die Rolle **Mitwirkender an Storage-Blobdaten** zugewiesen ist.
-  - Wenn sie nicht zugewiesen ist, weisen Sie sie zu.
-  - Der MSI trägt denselben Namen wie der Arbeitsbereich. In diesem Artikel ist dies `workspace1`.
+- Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+- Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+- Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blob |
+    | Zugriff zuweisen zu | MANAGEDIDENTITY |
+    | Member | Name der verwalteten Identität  |
+
+    > [!NOTE]
+    > Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs.
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>SCHRITT 5: Gewähren der Azure-Rolle „Mitwirkender“ im Arbeitsbereich für Synapse-Administratoren 
 
@@ -128,7 +155,17 @@ Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes be
 
 - Öffnen Sie das Azure-Portal.
 - Suchen Sie den Arbeitsbereich `workspace1`.
-- Weisen Sie `workspace1_SynapseAdministrators` die Azure-Rolle **Mitwirkender** für `workspace1` zu. 
+- Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+- Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+- Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Beitragender |
+    | Zugriff zuweisen zu | SERVICEPRINCIPAL |
+    | Member | workspace1_SynapseAdministrators  |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png) 
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>SCHRITT 6: Zuweisen der Rolle „SQL-Active Directory-Administrator“
 
@@ -209,7 +246,7 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 ### <a name="step-72-dedicated-sql-pools"></a>SCHRITT 7.2: Dedizierte SQL-Pools
 
-Um Zugriff auf eine **einzelne** Datenbank im dedizierten SQL-Pool zu gewähren, führen Sie die folgenden Schritte im Synapse SQL-Skript-Editor aus:
+Um Zugriff auf eine **einzelne** Datenbank im dedizierten SQL-Pool zu gewähren, führen Sie die folgenden Schritte im Azure Synapse SQL-Skript-Editor aus:
 
 1. Erstellen Sie den Benutzer in der-Datenbank, indem Sie den folgenden Befehl für die Zieldatenbank ausführen, die Sie mithilfe der Dropdownliste *Verbinden mit*  ausgewählt haben:
 
@@ -231,17 +268,17 @@ Um Zugriff auf eine **einzelne** Datenbank im dedizierten SQL-Pool zu gewähren,
 
 Führen Sie im Anschluss an die Benutzererstellung Abfragen aus, um zu überprüfen, ob das Speicherkonto von einem serverlosen SQL-Pool abgefragt werden kann.
 
-### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>SCHRITT 7.3: SQL-Zugriffssteuerung für Synapse-Pipelineausführungen
+### <a name="step-73-sql-access-control-for-azure-synapse-pipeline-runs"></a>SCHRITT 7.3: SQL-Zugriffssteuerung für Azure Synapse-Pipelineausführungen
 
 ### <a name="workspace-managed-identity"></a>Vom Arbeitsbereich verwaltete Identität
 
 > [!IMPORTANT]
 > Zur erfolgreichen Ausführung von Pipelines mit Datasets oder Aktivitäten, die auf einen SQL-Pool verweisen, muss der Arbeitsbereichsidentität Zugriff auf den SQL-Pool gewährt werden.
 
-Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Systemidentität das Ausführen von Pipelines für die SQL-Pooldatenbanken zu ermöglichen:  
+Weitere Informationen zur vom Arbeitsbereich verwalteten Identität finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](synapse-workspace-managed-identity.md). Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Systemidentität das Ausführen von Pipelines für die SQL-Pooldatenbanken zu ermöglichen:  
 
 >[!note]
->In den folgenden Skripts ist der Datenbankname für die Datenbank im dedizierten SQL-Pool mit dem Poolnamen identisch.  Für eine Datenbank im serverlosen SQL-Pool „Built-in“ lautet der Name der Datenbank „databasename“.
+>In den folgenden Skripts ist der `<databasename>` für eine dedizierte SQL-Pooldatenbank mit dem Poolnamen identisch.  Für eine Datenbank im serverlosen SQL-Pool „Built-in“ lautet der Name der Datenbank `<databasename>`.
 
 ```sql
 --Create a SQL user for the workspace MSI in database
@@ -265,15 +302,15 @@ DROP USER [<workspacename>];
 
 Die anfängliche Konfiguration für Ihr Zugriffssteuerungssystem ist nun abgeschlossen.
 
-Um den Zugriff zu verwalten, können Sie in den eingerichteten Sicherheitsgruppen Benutzer hinzufügen und entfernen.  Obwohl Sie Benutzer manuell den Synapse-Rollen zuweisen können, werden deren Berechtigungen in diesem Fall nicht konsistent konfiguriert. Fügen Sie stattdessen Benutzer nur den Sicherheitsgruppen hinzu, oder entfernen Sie sie daraus.
+Um den Zugriff zu verwalten, können Sie in den eingerichteten Sicherheitsgruppen Benutzer hinzufügen und entfernen.  Obwohl Sie Benutzer manuell den Azure Synapse-Rollen zuweisen können, werden deren Berechtigungen in diesem Fall nicht konsistent konfiguriert. Fügen Sie stattdessen Benutzer nur den Sicherheitsgruppen hinzu, oder entfernen Sie sie daraus.
 
 ## <a name="step-9-network-security"></a>SCHRITT 9: Netzwerksicherheit
 
-Als letzten Schritt sollten Sie zum Schützen Ihres Arbeitsbereichs den Netzwerkzugriff durch Folgendes absichern:
-- [Firewall für den Arbeitsbereichs](./synapse-workspace-ip-firewall.md)
-- [Verwaltetes virtuelles Netzwerk](./synapse-workspace-managed-vnet.md) 
-- [Private Endpunkte](./synapse-workspace-managed-private-endpoints.md)
-- [Private Link](../../azure-sql/database/private-endpoint-overview.md)
+Als letzten Schritt sollten Sie zum Schützen Ihres Arbeitsbereichs den Netzwerkzugriff mithilfe der [Arbeitsbereichsfirewall](./synapse-workspace-ip-firewall.md) absichern.
+
+- Sowohl mit als auch ohne ein [verwaltetes virtuelles Netzwerk](./synapse-workspace-managed-vnet.md) können Sie aus öffentlichen Netzwerken eine Verbindung mit Ihrem Arbeitsbereich herstellen. Weitere Informationen finden Sie unter [Konnektivitätseinstellungen](connectivity-settings.md).
+- Der Zugriff aus öffentlichen Netzwerken lässt sich kontrollieren, indem Sie das [Feature für den Zugriff auf öffentliche Netzwerke](connectivity-settings.md#public-network-access) oder die [Arbeitsbereichsfirewall](./synapse-workspace-ip-firewall.md) aktivieren.
+- Alternativ können Sie auch über einen [verwalteten privaten Endpunkt](synapse-workspace-managed-private-endpoints.md) und [Private Link](../../azure-sql/database/private-endpoint-overview.md) eine Verbindung mit Ihrem Arbeitsbereich herstellen. Azure Synapse Arbeitsbereiche ohne das [verwaltete virtuelle Netzwerk von Azure Synapse Analytics](synapse-workspace-managed-vnet.md) können keine Verbindung über verwaltete private Endpunkte herstellen.
 
 ## <a name="step-10-completion"></a>SCHRITT 10: Completion
 
@@ -285,10 +322,11 @@ In diesem Leitfaden ging es um die Einrichtung eines grundlegenden Zugriffssteue
 
 **Aktivieren der Git-Unterstützung** für den Arbeitsbereich für erweiterte Entwicklungsszenarien, einschließlich CI/CD.  Im Git-Modus bestimmen Git-Berechtigungen, ob Benutzer Änderungen an ihren Arbeitsbranches committen können.  Die Veröffentlichung im Dienst erfolgt nur über den Kollaborationsbranch.  Erstellen Sie ggf. eine Sicherheitsgruppe für Entwickler, die Updates in einem Arbeitsbranch entwickeln und debuggen müssen, aber keine Änderungen am Livedienst veröffentlichen müssen.
 
-**Einschränken des Entwicklerzugriffs** auf bestimmte Ressourcen.  Erstellen Sie zusätzliche differenziertere Sicherheitsgruppen für Entwickler, die nur auf bestimmte Ressourcen Zugriff benötigen.  Weisen Sie diesen Gruppen geeignete Synapse-Rollen zu, die nur für bestimmte Spark-Pools, Integration Runtimes oder Anmeldeinformationen gelten.
+**Einschränken des Entwicklerzugriffs** auf bestimmte Ressourcen.  Erstellen Sie zusätzliche differenziertere Sicherheitsgruppen für Entwickler, die nur auf bestimmte Ressourcen Zugriff benötigen.  Weisen Sie diesen Gruppen geeignete Azure Synapse-Rollen zu, die nur für bestimmte Spark-Pools, Integration Runtimes oder Anmeldeinformationen gelten.
 
 **Beschränken des Operatorzugriffs auf Codeartefakte**.  Erstellen Sie Sicherheitsgruppen für Operatoren, die den Betriebsstatus von Synapse-Computeressourcen überwachen und Protokolle anzeigen müssen, jedoch keinen Zugriff auf den Code benötigen und keine Updates am Dienst veröffentlichen müssen. Weisen Sie diese Gruppen der Rolle „Operator von Synapse-Computeressourcen“ zu, die auf bestimmte Spark-Pools und Integration Runtimes beschränkt ist.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das [Verwalten von Synapse RBAC-Rollenzuweisungen](./how-to-manage-synapse-rbac-role-assignments.md) und das Erstellen eines [Synapse-Arbeitsbereichs](../quickstart-create-workspace.md).
+ - Weitere Informationen finden Sie unter [Verwalten von Azure Synapse RBAC-Rollenzuweisungen](./how-to-manage-synapse-rbac-role-assignments.md).
+ - Erstellen eines [Synapse-Arbeitsbereichs](../quickstart-create-workspace.md)

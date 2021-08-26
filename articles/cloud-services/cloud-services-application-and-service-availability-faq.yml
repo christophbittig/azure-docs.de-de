@@ -9,17 +9,15 @@ metadata:
   ms.author: hirshah
   ms.reviewer: mimckitt
   ms.custom: 
-  ms.openlocfilehash: 44c75c50faf305b9a2eccd546007c04f1c4fa7fc
-  ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+  ms.openlocfilehash: 7f55bcdf76c6615bfd80a522271fb21711117dfd
+  ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113129316"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122822595"
 title: 'Probleme mit der Anwendung und Dienstverfügbarkeit von Azure Cloud Services (klassisch): Häufig gestellte Fragen (FAQs)'
 summary: >
-  > [!IMPORTANT]
-
-  > [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+  [!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 
   Dieser Artikel enthält häufig gestellte Fragen zu Problemen mit der Anwendung und Dienstverfügbarkeit von [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .

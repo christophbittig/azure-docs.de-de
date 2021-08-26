@@ -13,17 +13,21 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9f818aecf7020d742c54f7018305c20b584763f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96007030"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823354"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](../cloud-services/includes/deprecation-announcement.md)]
+
+
 Dieser Artikel beschreibt die ersten Schritte mit Azure Blob Storage, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem Visual Studio Clouddienstprojekt ein Azure Storage-Konto erstellt oder auf ein solches Konto verwiesen haben. Wir zeigen Ihnen, wie der Zugriff auf Blob-Container und deren Erstellung funktioniert, und wie Sie allgemeine Aufgaben wie das Hochladen, Auflisten und Herunterladen von Blobs durchführen. Die Beispiele sind in C\# geschrieben und greifen auf die [Microsoft Azure Storage-Clientbibliothek für .NET](/previous-versions/azure/dn261237(v=azure.100)) zurück.
 
 Azure Blob Storage ist ein Dienst zum Speichern großer Mengen unstrukturierter Daten, auf die von überall weltweit über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten.
