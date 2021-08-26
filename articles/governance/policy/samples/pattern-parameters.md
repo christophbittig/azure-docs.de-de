@@ -1,14 +1,14 @@
 ---
 title: 'Muster: Parameter in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung von Zeichenfolgen- und Arrayparametern in einer Richtliniendefinition sowie für das Parametrisieren des Effekts.
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: 07e5f05a556c30e6a9e464509006140a02a1dcc7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d2cddd0d86a5ecc44ef39bec989db2a7700c878a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752289"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324126"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy-Muster: Parameter
 

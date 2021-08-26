@@ -4,15 +4,15 @@ description: In diesem Schnellstart wird beschrieben, wie Sie eine HoloLens-Unit
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 2c96f1392228c4fcce65e05711b70a6ce689592a
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: cb9b1d5aa489950e86bc2f1575d44fd78919359e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006891"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254330"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in Unity
 
@@ -27,7 +27,11 @@ Sie lernen Folgendes:
 
 [!INCLUDE [Unity quickstart prerequisites](../../../includes/object-anchors-quickstart-unity-prerequisites.md)]
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 [!INCLUDE [Unity device setup](../../../includes/object-anchors-quickstart-unity-device-setup.md)]
+
+[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>Öffnen des Beispielprojekts
 
@@ -39,19 +43,15 @@ Sie lernen Folgendes:
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
 
+[!INCLUDE [Configure Account](../../../includes/object-anchors-get-started-configure-account.md)]
+
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 
 [!INCLUDE [Unity build sample scene 2](../../../includes/object-anchors-quickstart-unity-build-sample-scene-2.md)]
 
 [!INCLUDE [Unity build and deploy](../../../includes/object-anchors-quickstart-unity-build-deploy.md)]
 
-### <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
-
-Schalten Sie das Gerät ein, wählen Sie **Alle Apps** aus, suchen Sie nach der App, und starten Sie sie dann. Nach dem Unity-Begrüßungsbildschirm wird eine Meldung angezeigt, die besagt, dass Object Observer initialisiert wurde. Allerdings müssen Sie der App Ihr Modell hinzufügen.
-
-[!INCLUDE [Unity setup Windows Device Portal](../../../includes/object-anchors-quickstart-unity-setup-device-portal.md)]
-
-[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
+Nach dem Unity-Begrüßungsbildschirm wird eine Meldung angezeigt, die besagt, dass Object Observer initialisiert wurde.
 
 Die App sucht nach Objekten im aktuellen Feld der Ansicht und verfolgt sie nach der Erkennung nach. Eine Instanz wird entfernt, wenn sie sechs Meter vom Standort des Benutzers entfernt ist. Der Debugtext zeigt Details zu einer Instanz an, z. B. die ID, den aktualisierten Zeitstempel und die Oberflächenabdeckung.
 

@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4356a4f432572920bd07fd8d7ea8c7e5f6663e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718742"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639755"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Überwachen der Datenbankaktivität mit Überwachungsprotokolle in Azure Database for MySQL – Flexible Server
 
-> [!IMPORTANT] 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Azure Database for MySQL – Flexible Server bietet Benutzern die Möglichkeit, Überwachungsprotokolle zu konfigurieren. Überwachungsprotokolle können dazu verwendet werden, die Aktivität auf Datenbankebene zu überwachen, einschließlich Verbindungs-, Administrator-, DDL- und DML-Ereignisse. Diese Arten von Protokollen werden häufig zu Compliancezwecken verwendet.

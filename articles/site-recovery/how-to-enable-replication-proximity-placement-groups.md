@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 4c37aab00f838de24e96e6f509ae8484df2c6715
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904962"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339798"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>Replizieren von virtuellen Computern, die in einer Näherungsplatzierungsgruppe ausgeführt werden, in eine andere Region
 
@@ -28,7 +28,7 @@ Site Recovery repliziert die Daten aus einer Azure-Region in eine andere Region.
 
 ## <a name="considerations"></a>Überlegungen
 
-- Der beste Ansatz ist ein Failover und Failback der virtuellen Computer in eine Näherungsplatzierungsgruppe. Wenn Sie die VMs nicht innerhalb einer Näherungsplatzierungsgruppe einrichten können, werden das Failover und das Failback weiterhin durchgeführt, aber VMs werden außerhalb dieser Gruppe erstellt.
+- Der beste Ansatz ist ein Failover und Failback der virtuellen Computer in eine Näherungsplatzierungsgruppe. Wenn Kapazitätszuordnungseinschränkungen existieren, aufgrund derer wir die VMs nicht innerhalb einer Näherungsplatzierungsgruppe öffnen können, werden das Failover und das Failback weiterhin ausgeführt, aber VMs werden außerhalb der Näherungsplatzierungsgruppe erstellt.
 - Wenn eine Verfügbarkeitsgruppe an eine Näherungsplatzierungsgruppe angeheftet ist und es bei VMs in der Verfügbarkeitsgruppe während des Failbacks oder Failovers eine Zuordnungseinschränkung gibt, werden die VMs außerhalb der Verfügbarkeitsgruppe und der Näherungsplatzierungsgruppe erstellt.
 - Site Recovery für Näherungsplatzierungsgruppen wird bei nicht verwalteten Datenträgern nicht unterstützt.
 

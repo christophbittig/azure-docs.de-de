@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44a3577fede7985dcc073a73ea6ad76eba381987
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 5d8d39b0e023d2ffa7bf186d9cc106b9c2152e56
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113279818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071193"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -36,7 +36,7 @@ Plattformspezifische Installationsanweisungen finden Sie unter den folgenden Lin
 
 ## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
 
-Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprachkonfiguration ([`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)) erstellt werden. Diese Klasse enthält Informationen zu Ihrem Abonnement. Hierzu zählen etwa Ihr Schlüssel und der zugeordnete Standort bzw. die zugeordnete Region, der Endpunkt, der Host oder das Autorisierungstoken. Erstellen Sie mithilfe Ihres Schlüssels und dem Standort bzw. der Region eine [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig). Ihre Schlüssel-Region bzw. ihr Standort-Paar finden Sie auf der Seite [Ermitteln von den Schlüsseln und der Region bzw. dem Standort](../../../overview.md#find-keys-and-locationregion).
+Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprachkonfiguration ([`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)) erstellt werden. Diese Klasse enthält Informationen zu Ihrem Abonnement. Hierzu zählen etwa Ihr Schlüssel und der zugeordnete Standort bzw. die zugeordnete Region, der Endpunkt, der Host oder das Autorisierungstoken. Erstellen Sie mithilfe Ihres Schlüssels und dem Standort bzw. der Region eine [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig). Ihr Schlüssel-Region/Standort-Paar finden Sie auf der Seite [Ermitteln von Schlüsseln und Region/Standort](../../../overview.md#find-keys-and-locationregion).
 
 ```csharp
 using System;
@@ -311,7 +311,7 @@ Einer Begriffsliste können einzelne Wörter oder ganze Phrasen hinzugefügt wer
 > [!IMPORTANT]
 > Das Begriffslistenfeature steht für folgende Sprachen zur Verfügung: de-DE, en-US, en-AU, en-CA, en-GB, en-IN, es-ES, fr-FR, it-IT, ja-JP, pt-BR, zh-CN
 >
-> Das Begriffslistenfunktion sollte maximal mit ein paar hundert Begriffen verwendet werden. Wenn Sie über eine größere Liste verfügen oder Sprachen benötigen, die derzeit nicht unterstützt werden, ist die Funktion [Trainieren eines benutzerdefinierten Modells](../../../custom-speech-overview.md) wahrscheinlich die bessere Wahl, um die Genauigkeit zu verbessern.
+> Das Begriffslistenfeature sollte maximal mit ein paar hundert Begriffen verwendet werden. Wenn Sie über eine größere Liste verfügen oder Sprachen benötigen, die derzeit nicht unterstützt werden, ist das [Trainieren eines benutzerdefinierten Modells](../../../custom-speech-overview.md) wahrscheinlich die bessere Wahl, um die Genauigkeit zu verbessern.
 >
 > Verwenden Sie das Feature „Begriffsliste“ nicht mit benutzerdefinierten Endpunkten. Trainieren Sie stattdessen ein benutzerdefiniertes Modell, das die Begriffe enthält.
 

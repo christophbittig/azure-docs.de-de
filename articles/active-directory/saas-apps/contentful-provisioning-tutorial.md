@@ -3,7 +3,7 @@ title: 'Tutorial: Konfigurieren von Contentful für die automatische Benutzerber
 description: Erfahren Sie, wie Sie Benutzerkonten von Azure Active Directory (Azure AD) automatisch in Contentful bereitstellen und deren Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: zchia
+author: twimmers
 manager: beatrizd
 ms.assetid: 3b761984-a9a0-4519-b23e-563438978de5
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/11/2020
-ms.author: zhchia
-ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: bb87222737e4c85eebb2869a812f44d9e703c8d4
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516336"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327313"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Contentful für die automatische Benutzerbereitstellung
 
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Einrichten des Azure AD-Bereitstell
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Contentful synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Updatevorgängen für den Abgleich der Benutzerkonten in Contentful verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Contentful-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |name.givenName|String|
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Einrichten des Azure AD-Bereitstell
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Contentful synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Updatevorgängen für den Abgleich der Gruppen in Contentful verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    |Attribut|type|Unterstützung für das Filtern|
+    |attribute|Typ|Unterstützung für das Filtern|
     |---|---|---|
     |displayName|String|&check;|
     |members|Verweis|

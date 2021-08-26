@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline aus und in IBM Informix kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jianleishen
-ms.openlocfilehash: c992140863649752a9c964424923c917462f16f7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 3ed6aa2a3c99e3de116a43197afb087bc5850190
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639866"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopieren von Daten aus und in IBM Informix mithilfe von Azure Data Factory
 

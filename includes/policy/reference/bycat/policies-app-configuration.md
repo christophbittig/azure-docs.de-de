@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c9e6741a663d474ceedb7920f539e770f44541df
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: bd3df1155966bdf24e9bbe7a6c5c1262fbf71b52
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388441"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605472"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[App Configuration muss den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d9f5e4c-9947-4579-9539-2a7695fbc187) |Die Deaktivierung des Zugriffs über öffentliche Netzwerke erhöht die Sicherheit, da die Ressource nicht über das öffentliche Internet zugänglich ist. Sie können die Offenlegung von Ressourcen einschränken, indem Sie stattdessen private Endpunkte erstellen. Weitere Informationen finden Sie unter [https://aka.ms/appconfig/private-endpoint](../../../../articles/azure-app-configuration/concept-private-endpoint.md). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Audit.json) |
 |[App Configuration sollte einen kundenseitig verwalteten Schlüssel verwenden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F967a4b4b-2da9-43c1-b7d0-f98d0d74d0b1) |Kundenseitig verwaltete Schlüssel bieten einen verbesserten Datenschutz, da Sie so Ihre Verschlüsselungsschlüssel verwalten können. Dies ist häufig zur Einhaltung von Compliancevorgaben erforderlich. |Audit, Deny, Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/CustomerManagedKey_Audit.json) |

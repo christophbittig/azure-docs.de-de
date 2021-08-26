@@ -1,0 +1,114 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Automatische Azure-Verwaltung für virtuelle Computer: Häufig gestellte Fragen'
+  description: Antworten auf häufig gestellte Fragen zur automatischen Azure-Verwaltung für virtuelle Computer.
+  author: deanwe
+  ms.service: virtual-machines
+  ms.subservice: automanage
+  ms.workload: infrastructure
+  ms.topic: troubleshooting
+  ms.date: 02/22/2021
+  ms.author: deanwe
+  ms.openlocfilehash: b1cc973af2c4e50ea0f50698f6628bac77c1dfeb
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114481537"
+title: Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
+summary: >
+  Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur [automatischen Azure-Verwaltung für virtuelle Computer](automanage-virtual-machines.md).
+
+
+  Suchen Sie in den Azure-Foren bei [MSDN und Stack Overflow](https://azure.microsoft.com/support/forums/), falls Sie Ihr Azure-Problem mit diesem Artikel nicht beheben konnten. Sie können Ihr Problem in diesen Foren veröffentlichen oder [auf Twitter an @AzureSupport senden](https://twitter.com/AzureSupport). Sie können auch eine Azure-Supportanfrage senden. Um eine Supportanfrage zu senden, wählen Sie auf der [Azure-Supportseite](https://azure.microsoft.com/support/options/) die Option **Support erhalten** aus.
+sections:
+- name: Automatische Azure-Verwaltung für virtuelle Computer
+  questions:
+  - question: >
+      Welche Voraussetzungen müssen erfüllt sein, um die automatische Azure-Verwaltung zu aktivieren?
+    answer: >
+      Die folgenden Voraussetzungen müssen für die Aktivierung der automatischen Azure-Verwaltung erfüllt sein:
+
+      - Unterstützte [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions) und [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions)
+
+      - VMs müssen sich in einer unterstützten Region befinden
+
+      - Benutzer muss über die richtigen Berechtigungen verfügen
+
+      - Nur VMs, die keiner Skalierungsgruppe angehören
+
+      - Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
+  - question: >
+      Welche Azure RBAC-Berechtigung ist erforderlich, um die automatische Azure-Verwaltung zu aktivieren?
+    answer: >
+      Wenn Sie Automanage auf einem virtuellen Computer mit einem vorhandenen Automanage-Konto aktivieren, benötigen Sie die Rolle „Mitwirkender“ für die Ressourcengruppe, in der sich der virtuelle Computer befindet.
+
+
+      Wenn Sie beim Aktivieren ein neues Automanage-Konto verwenden, müssen Sie entweder über die Rolle „Besitzer“ oder über die Rollen „Mitwirkender“ und „Benutzerzugriffsadministrator“ für das Abonnement verfügen.
+  - question: >
+      Welche Regionen werden unterstützt?
+    answer: >
+      Die vollständige Liste der unterstützten Regionen finden Sie [hier](./automanage-virtual-machines.md#supported-regions).
+  - question: >
+      Welche Funktionen automatisiert die automatische Azure-Verwaltung?
+    answer: >
+      Die automatische Azure-Verwaltung registriert, konfiguriert und überwacht während des gesamten Lebenszyklus der VM die [hier](automanage-virtual-machines.md) aufgeführten Dienste.
+  - question: >
+      Funktioniert Azure Automanage mit Azure Arc-fähigen VMs?
+    answer: >
+      Automanage unterstützt zurzeit keine Arc-fähigen VMs.
+  - question: >
+      Kann ich Konfigurationen für die automatische Azure-Verwaltung anpassen?
+    answer: >
+      Kunden können die Einstellungen für bestimmte Dienste, z. B. die Datenaufbewahrung von Azure Backup, durch Konfigurationseinstellungen anpassen. Eine vollständige Liste der Einstellungen, die geändert werden können, finden Sie [hier](automanage-virtual-machines.md#customizing-an-environment-using-preferences) in der Dokumentation.
+  - question: >
+      Funktioniert die automatische Azure-Verwaltung sowohl mit Linux- als auch mit Windows-VMs?
+    answer: >
+      Ja, schauen Sie sich die unterstützten [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions) und [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions) an.
+  - question: >
+      Kann ich die automatische Verwaltung selektiv nur auf eine Reihe von VMs anwenden?
+    answer: >
+      Die automatische Verwaltung kann durch einfaches Klicken und Zeigen auf ausgewählte neue und vorhandene VMs aktiviert werden. Die automatische Verwaltung kann auch jederzeit deaktiviert werden.
+  - question: >
+      Unterstützt die automatische Azure-Verwaltung VMs in einer VM-Skalierungsgruppe?
+    answer: >
+      Nein, die automatische Azure-Verwaltung unterstützt derzeit keine VMs in einer VM-Skalierungsgruppe.
+  - question: >
+      Wie viel kostet die automatische Azure-Verwaltung?
+    answer: >
+      Die automatische Azure-Verwaltung ist ohne zusätzliche Kosten in der öffentlichen Vorschauversion erhältlich. Angefügte Azure-Ressourcen, z. B. Azure Backup, werden Kosten verursachen.
+  - question: >
+      Kann ich die automatische Azure-Verwaltung über Azure Policy anwenden?
+    answer: >
+      Ja, wir haben eine integrierte Richtlinie erstellt, die die automatische Verwaltung auf alle VMs innerhalb des von Ihnen definierten Bereichs automatisch anwendet. Außerdem geben Sie die Umgebungskonfiguration (Dev/Test oder Produktion) zusammen mit Ihrem Automanage-Konto an. Weitere Informationen über die Aktivierung der automatischen Verwaltung über Azure Policy finden Sie [hier](virtual-machines-policy-enable.md).
+  - question: >
+      Was ist ein Konto für die automatische Verwaltung?
+    answer: >
+      Das Konto für die automatische Verwaltung ist eine verwaltete Dienstidentität (Managed Service Identity, MSI), die den Sicherheitskontext oder die Identität bereitstellt, unter der die automatisierten Vorgänge erfolgen.
+  - question: >
+      Wirkt sich die Aktivierung von Automanage auf zusätzliche VMs außer den von mir ausgewählten VMs aus?
+    answer: >
+      Wenn Ihre VM mit einem vorhandenen Log Analytics-Arbeitsbereich verknüpft ist, verwenden wir diesen Arbeitsbereich, um diese Lösungen anzuwenden: Änderungsnachverfolgung, Bestand und Updateverwaltung. Auf allen mit diesem Arbeitsbereich verbundenen VMs werden diese Lösungen aktiviert.
+  - question: >
+      Kann ich die Umgebung meiner VM ändern?
+    answer: >
+      Sie müssen derzeit Automanage für diese VM deaktivieren und dann mit der gewünschten Umgebung und den gewünschten Voreinstellungen erneut aktivieren.
+  - question: >
+      Wenn meine VM bereits für einen Dienst wie die Updateverwaltung konfiguriert ist, wird sie von Automanage neu konfiguriert?
+    answer: >
+      Nein, die automatische Verwaltung wird sie nicht erneut konfigurieren. Wir werden damit beginnen, die mit diesem Dienst verbundenen Ressourcen auf Datendrifts zu überwachen.
+  - question: >
+      Warum weist meine VM im Portal für die automatische Verwaltung den Status „Fehler“ auf?
+    answer: >
+      Wenn der Status *Fehler* angezeigt wird, können Sie die Problembehandlung für die Bereitstellung auf verschiedene Arten durchführen:
+
+      * Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+
+      * Wechseln Sie zu **Abonnements**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und prüfen Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+
+      * Sie können auch das Aktivitätsprotokoll einer VM besuchen. Dort werden Sie einen Eintrag für „Create or Update Configuration Profile Assignments“ (Konfigurationsprofilzuweisungen erstellen oder aktualisieren) finden. Vielleicht sind auch weitere Einzelheiten zu Ihrer Bereitstellung enthalten.
+  - question: >
+      Wie erhalte ich Unterstützung bei der Problembehandlung für die automatische Verwaltung?
+    answer: >
+      Sie können ein [Ticket für den technischen Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) einreichen. Für die Option **Dienst** suchen und wählen Sie *Automatische Verwaltung* unter dem Abschnitt *Überwachung und Verwaltung* aus.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nVersuchen Sie, die automatische Verwaltung für virtuelle Computer im Azure-Portal zu aktivieren.\n\n> [!div class=\"nextstepaction\"]\n> [Aktivieren der automatischen Verwaltung für virtuelle Computer im Azure-Portal](quick-create-virtual-machines-portal.md)"

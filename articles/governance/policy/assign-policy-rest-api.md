@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit der REST-API'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe der REST-API eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7c7657143673e773e1c4108ecb8d86ddc8d1c559
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4650a213777e30ddffb7604ab94c11fe0fd85ee7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763107"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323499"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit der REST-API
 
@@ -36,7 +36,7 @@ Führen Sie den folgenden Befehl aus, um eine Richtlinienzuweisung zu erstellen:
    - REST-API-URI
 
      ```http
-     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
      ```
 
    - Anforderungstext
@@ -113,7 +113,7 @@ Die Ergebnisse sind vergleichbar mit dem, was üblicherweise in der Azure-Portal
 Führen Sie den folgenden Befehl aus, um die Richtlinienzuweisung zu entfernen:
 
 ```http
-DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
 ```
 
 Ersetzen Sie `{scope}` durch den Bereich, den Sie bei der ersten Erstellung der Richtlinienzuweisung verwendet haben.

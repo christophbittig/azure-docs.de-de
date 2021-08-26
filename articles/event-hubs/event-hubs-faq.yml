@@ -3,13 +3,14 @@ metadata:
   title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumentation
   description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
   ms.topic: article
+  ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: 75179e8ab3b418de773ceac5dbd35c446421a790
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 57f2f7c6cbb1cb502339d7fa87509672cef69e41
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114286130"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252635"
 title: Häufig gestellte Fragen zu Event Hubs
 summary: ''
 sections:
@@ -225,7 +226,7 @@ sections:
   - question: >
       Diagnoseprotokolle
     answer: >
-      Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnostic-logs.md): Erfassungsfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
+      Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](monitor-event-hubs-reference.md#resource-logs): Erfassungsfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
   - question: >
       Support und SLA
     answer: >

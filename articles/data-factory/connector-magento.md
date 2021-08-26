@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus Magento mithilfe von Azure Data Factory (Vorschau)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Magento mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jianleishen
-ms.openlocfilehash: 1272509b6d5da156ce6c5fcd5d0eb6411e083b4c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 67f9290cc4b54ec1024d4b3e626c92ebf1e1c44a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640806"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopieren von Daten aus Magento mithilfe von Azure Data Factory (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -2,19 +2,19 @@
 title: 'Aufzeichnen und Herunterladen von Anrufen mit Event Grid: ein Azure Communication Services-Schnellstart'
 titleSuffix: An Azure Communication Services quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Anrufe mithilfe von Event Grid aufzeichnen und herunterladen.
-author: joseys
+author: GrantMeStrength
 manager: anvalent
 services: azure-communication-services
-ms.author: joseys
+ms.author: jken
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 303e6363d7a7abbf933e4a49428158118712aa3e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: a80badb155238847bebf6810188a4f1675cb012f
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707605"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253970"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Aufzeichnen und Herunterladen von Anrufen mit Event Grid
 

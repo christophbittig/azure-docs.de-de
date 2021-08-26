@@ -8,14 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cfe19f71af5f8ac876ca7d57dc2ad3328c766eb4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: c858675686815d65ef619e27bdfdac2687817d13
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987018"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643348"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 > [!IMPORTANT]
 > Der Befehl [az mysql up](/cli/azure/mysql#az_mysql_up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.

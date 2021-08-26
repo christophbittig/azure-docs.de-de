@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: a0f3e5f707600933ce68e51634145cd3515c5d6a
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209535"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343026"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Abfragen von Azure Cosmos DB-Daten mit serverlosem SQL-Pool in Azure Synapse Link
 
@@ -23,7 +23,19 @@ Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Contai
 
 Zum Abfragen von Azure Cosmos DB wird die gesamte [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) können Sie die Ergebnisse der Abfrage, die Daten aus Azure Cosmos DB liest, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern der Abfrageergebnisse aus einem serverlosen SQL-Pool in Azure Cosmos DB mithilfe von CETAS ist derzeit nicht möglich.
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage für einen serverlosen SQL-Pool erstellen, die Daten aus für Azure Synapse Link aktivierten Azure Cosmos DB-Containern abfragt. Danach können Sie sich in [diesem Tutorial](./tutorial-data-analyst.md) darüber informieren, wie Sie Sichten serverloser SQL-Pools über Azure Cosmos DB-Container erstellen und diese Sichten mit Power BI-Modellen verbinden. In diesem Tutorial wird ein Container mit einem [genau definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage für einen serverlosen SQL-Pool erstellen, die Daten aus für Azure Synapse Link aktivierten Azure Cosmos DB-Containern abfragt. Danach können Sie sich in [diesem Tutorial](./tutorial-data-analyst.md) darüber informieren, wie Sie Sichten serverloser SQL-Pools über Azure Cosmos DB-Container erstellen und diese Sichten mit Power BI-Modellen verbinden. In diesem Tutorial wird ein Container mit einem [genau definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet. Sie können sich auch das Learn-Modul zum [Abfragen von Azure Cosmos DB mit serverlosem SQL für Azure Synapse Analytics](/learn/modules/query-azure-cosmos-db-with-sql-serverless-for-azure-synapse-analytics/) ansehen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Stellen Sie sicher, dass Sie den Analysespeicher vorbereitet haben:
+  - Aktivieren Sie den Analysespeicher für [Ihre Cosmos DB-Container](../quickstart-connect-synapse-link-cosmos-db.md#enable-azure-cosmos-db-analytical-store).
+  - Rufen Sie die Verbindungszeichenfolge mit einem schreibgeschützten Schlüssel ab, den Sie zum Abfragen des Analysespeichers verwenden werden. 
+  - Rufen Sie den schreibgeschützten [Schlüssel ab, der für den Zugriff auf den Cosmos DB-Container verwendet wird](../../cosmos-db/database-security.md#primary-keys).
+- Stellen Sie sicher, dass Sie alle [bewährten Methoden](best-practices-serverless-sql-pool.md) angewendet haben, z. B.:
+  - Stellen Sie sicher, dass sich Ihr Cosmos DB-Analysespeicher in derselben Region wie der serverlose SQL-Pool befindet.
+  - Stellen Sie sicher, dass sich die Clientanwendung (Power BI, Analysedienst) in derselben Region wie der serverlose SQL-Pool befindet.
+  - Wenn Sie eine große Datenmenge (mehr als 80 GB) zurückgeben, sollten Sie die Verwendung einer Zwischenspeicherungsebene wie Analysis Services erwägen und die Partitionen, die kleiner als 80 GB sind, in das Analysis Services-Modell laden.
+  - Wenn Sie Daten mithilfe von Zeichenfolgenspalten filtern, stellen Sie sicher, dass Sie die `OPENROWSET`-Funktion mit der expliziten `WITH`-Klausel verwenden, die über die kleinsten möglichen Typen verfügt (verwenden Sie z. B. nicht „VARCHAR(1000)“, wenn Sie wissen, dass die Eigenschaft höchstens 5 Zeichen enthält).
 
 ## <a name="overview"></a>Übersicht
 
@@ -94,7 +106,7 @@ Der Hauptschlüssel des Datenbankkontos wird in Anmeldeinformationen auf Servere
 
 ## <a name="sample-dataset"></a>Beispieldataset
 
-Die Beispiele in diesem Artikel basieren auf Daten aus den Datasets [European Centre for Disease Prevention and Control (ECDC) COVID-19 Cases](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) und [COVID-19 Open Research Dataset (CORD-19), doi:10.5281/zenodo.3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
+Die Beispiele in diesem Artikel basieren auf Daten aus den Datasets [European Centre for Disease Prevention and Control (ECDC) COVID-19 Cases](../../open-datasets/dataset-ecdc-covid-cases.md) und [COVID-19 Open Research Dataset (CORD-19), doi:10.5281/zenodo.3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
 Auf diesen Seiten finden Sie die Lizenz und die Datenstruktur. Sie können auch Beispieldaten für die Datasets [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) und [CORD-19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) herunterladen.
 
@@ -164,7 +176,7 @@ Der automatische Schemarückschluss in `OPENROWSET` ermöglicht zwar einfache un
 
 In der `OPENROWSET`-Funktion können Sie die Eigenschaften, die aus den Daten im Container gelesen werden sollen, sowie deren Datentypen explizit angeben.
 
-Angenommen, Sie haben einige Daten aus dem [ECDC-COVID-Dataset](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) mit der folgenden Struktur in Azure Cosmos DB importiert:
+Angenommen, Sie haben einige Daten aus dem [ECDC-COVID-Dataset](../../open-datasets/dataset-ecdc-covid-cases.md) mit der folgenden Struktur in Azure Cosmos DB importiert:
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -426,22 +438,9 @@ GROUP BY geo_id
 
 In diesem Fall wird die Anzahl der Fälle als `int32`-, `int64`- oder `float64`-Wert gespeichert. Alle Werte müssen extrahiert werden, damit die Anzahl von Fällen pro Land berechnet werden kann.
 
-## <a name="known-issues"></a>Bekannte Probleme
+## <a name="troubleshooting"></a>Problembehandlung
 
-- Ein serverloser SQL-Pool gibt eine Kompilierzeitwarnung zurück, wenn die `OPENROWSET`-Spaltensortierung keine UTF-8-Codierung aufweist. Sie können die Standardsortierung für alle `OPENROWSET`-Funktionen, die in der aktuellen Datenbank ausgeführt werden, ganz einfach mit der T-SQL-Anweisung `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` ändern.
-
-In der folgenden Tabelle werden mögliche Fehler und entsprechende Problembehebungsmaßnahmen aufgelistet.
-
-| Fehler | Grundursache |
-| --- | --- |
-| Syntaxfehler:<br/> – Falsche Syntax in der Nähe von `Openrowset`.<br/> - `...` wird nicht als `BULK OPENROWSET`-Anbieteroption erkannt.<br/> – Falsche Syntax in der Nähe von `...`. | Mögliche Grundursachen:<br/> – „CosmosDB“ wird nicht als erster Parameter verwendet.<br/> – Verwendung eines Zeichenfolgenliterals anstelle eines Bezeichners im dritten Parameter.<br/> – Fehlende Angabe des dritten Parameters (Containername). |
-| Fehler in der CosmosDB-Verbindungszeichenfolge. | – Keine Angabe von Konto, Datenbank oder Schlüssel. <br/> – Eine Verbindungszeichenfolge enthält eine nicht erkannte Option.<br/> – Am Ende einer Verbindungszeichenfolge befindet sich ein Semikolon (`;`). |
-| Beim Auflösen des CosmosDB-Pfads ist der Fehler „Falscher Kontoname“ oder „Falscher Datenbankname“ aufgetreten. | Der angegebene Kontoname, Datenbankname oder Container wurde nicht gefunden, oder der Analysespeicher wurde nicht für die angegebene Sammlung aktiviert.|
-| Beim Auflösen des CosmosDB-Pfads ist der Fehler „Falscher Geheimniswert“ oder „Geheimnis ist NULL oder leer“ aufgetreten. | Der Kontoschlüssel ist nicht gültig oder fehlt. |
-| Die Spalte `column name` des Typs `type name` ist mit dem externen Datentyp `type name` nicht kompatibel. | Der in der `WITH`-Klausel angegebene Spaltentyp stimmt nicht mit dem Typ im Azure Cosmos DB-Container überein. Versuchen Sie, den Spaltentyp zu ändern, so wie im Abschnitt [Zuordnung von SQL-Typen zu Azure Cosmos DB](#azure-cosmos-db-to-sql-type-mappings) beschrieben, oder verwenden Sie den Typ `VARCHAR`. |
-| Die Spalte enthält `NULL`-Werte in allen Zellen. | Möglicherweise falscher Spaltenname oder Pfadausdruck in der `WITH`-Klausel. Der Spaltenname (oder der Pfadausdruck nach dem Spaltentyp) in der `WITH`-Klausel muss mit einem Eigenschaftsnamen in der Azure Cosmos DB-Sammlung übereinstimmen. Beim Vergleich *wird die Groß-/Kleinschreibung beachtet*. Beispielsweise sind `productCode` und `ProductCode` unterschiedliche Eigenschaften. |
-
-Auf der [Azure Synapse Analytics-Feedbackseite](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862) können Sie Vorschläge übermitteln und Probleme melden.
+Lesen Sie die Seite der [Selbsthilfe](resources-self-help-sql-on-demand.md#cosmos-db), um die bekannten Probleme oder Schritte zur Problembehandlung zu finden, die Ihnen helfen können, potenzielle Probleme mit Cosmos DB-Abfragen zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -450,3 +449,5 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau)](../../cosmos-db/synapse-link-power-bi.md)
 - [Erstellen und Verwenden von Sichten in einem serverlosen SQL-Pool](create-use-views.md)
 - [Tutorial: Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio mithilfe von SQL On-Demand](./tutorial-data-analyst.md)
+- Besuchen Sie den [Synapse-Link zur Selbsthilfeseite für Cosmos DB](resources-self-help-sql-on-demand.md#cosmos-db), wenn Fehler oder Leistungsprobleme auftreten.
+- Sehen Sie sich das Learn-Modul zum [Abfragen von Azure Cosmos DB mit serverlosem SQL für Azure Synapse Analytics](/learn/modules/query-azure-cosmos-db-with-sql-serverless-for-azure-synapse-analytics/) an.

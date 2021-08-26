@@ -20,15 +20,24 @@
           href: get-started-cli.md
 - name: Konzepte
   items:
-    - name: API-Unterstützung mit Azure Functions
-      href: apis.md
+    - name: APIs
+      items:
+        - name: API-Unterstützung mit Azure Functions
+          href: apis.md
+        - name: Hinzufügen einer API
+          href: add-api.md
+        - name: Nutzung eigener Funktionen
+          href: functions-bring-your-own.md
     - name: Konfiguration
       items:
         - name: Anwendungskonfiguration
           href: configuration.md
           displayName: 'routing, routes'
-        - name: Build- und Workflowkonfiguration
+        - name: Buildkonfiguration
           href: github-actions-workflow.md
+        - name: App-Einstellungen
+          href: application-settings.md
+          displayName: environment variables
     - name: Sicherheit
       items:
         - name: Authentifizierung und Autorisierung
@@ -43,14 +52,22 @@
       href: custom-domain.md
 - name: Anleitungen
   items:
+    - name: APIs
+      items:
+        - name: Hinzufügen einer API
+          href: add-api.md
+        - name: Nutzung eigener Funktionen
+          href: functions-bring-your-own.md
+    - name: Sicherheit
+      items:
+        - name: Einrichten eines privaten Endpunkts
+          href: private-endpoint.md
+        - name: Sichere Authentifizierungsgeheimnisse
+          href: key-vault-secrets.md
     - name: Einrichten der lokalen Entwicklung
       href: local-development.md
-    - name: Hinzufügen einer API
-      href: add-api.md
     - name: Konfigurieren von App-Einstellungen
       href: application-settings.md
-    - name: Veröffentlichen mit Azure DevOps
-      href: publish-devops.md
     - name: Konfigurieren von Front-End-Frameworks und -Bibliotheken
       href: front-end-frameworks.md
     - name: Aktivieren der Überwachung
@@ -61,10 +78,6 @@
     - name: Fehlerbehandlung
       href: troubleshooting.md
       displayName: 'deployment, runtime, errors'
-    - name: Nutzung eigener Funktionen
-      href: functions-bring-your-own.md
-    - name: Sichere Authentifizierungsgeheimnisse
-      href: key-vault-secrets.md
 - name: Tutorials
   items:
     - name: Veröffentlichen über einen Generator für statische Websites

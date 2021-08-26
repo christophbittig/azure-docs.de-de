@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54e619491a52828475143fbe5656736063e84c9d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630498"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639705"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Überwachungsprotokolle in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In Azure Database for MySQL ist das Überwachungsprotokoll für Benutzer verfügbar. Das Überwachungsprotokoll dient zum Nachverfolgen von Aktivitäten auf Datenbankebene und häufig zu Konformitätszwecken.
 

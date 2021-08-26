@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung über das Portal'
 description: In dieser Schnellstartanleitung erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: b8b45e0cd2aea1417118f7c485fef2b54d757217
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8407005f54f940885e47671d97425395bcc3ba70
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772475"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323230"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 

@@ -7,14 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e1e76d9afad049d79c68db93c08c935d190fbb6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98567796"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643356"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In diesem Schnellstart wird veranschaulicht, wie Sie einen Azure Database for MySQL-Einzelserver über das Azure-Portal erstellen. Außerdem erfahren Sie, wie Sie eine Verbindung mit dem Server herstellen.
 

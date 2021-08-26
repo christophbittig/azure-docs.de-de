@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen in Ressourcengruppen mithilfe von Bicep
 description: Hier wird erläutert, wie Ressourcen in einer Bicep-Datei bereitgestellt werden. Es wird gezeigt, wie Sie mehrere Ressourcengruppen als Ziel festlegen.
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: f32ee9ce08b447a776ae74d19c0edabba233f345
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 4d68d0d28763c21574a3fd4f2f4c57561759e51e
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026175"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634476"
 ---
 # <a name="resource-group-deployments-with-bicep-files"></a>Bereitstellung von Ressourcengruppen mit Bicep-Dateien
 
@@ -87,16 +87,16 @@ Um Ressourcen für die Zielressourcengruppe bereitzustellen, fügen Sie diese Re
 // resource deployed to target resource group
 resource exampleResource 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   ...
-} 
+}
 ```
 
 Eine Beispielvorlage finden Sie unter [Bereitstellen in der Zielressourcengruppe](#deploy-to-target-resource-group).
 
 ### <a name="scope-to-different-resource-group"></a>Bereich: andere Ressourcengruppe
 
-Wenn Sie Ressourcen in einer anderen Ressourcengruppe als der Zielressourcengruppe bereitstellen möchten, fügen Sie ein [Modul](modules.md) hinzu. Verwenden Sie die [resourceGroup-Funktion](bicep-functions-scope.md#resourcegroup), um die Eigenschaft `scope` für dieses Modul festzulegen. 
+Wenn Sie Ressourcen in einer anderen Ressourcengruppe als der Zielressourcengruppe bereitstellen möchten, fügen Sie ein [Modul](modules.md) hinzu. Verwenden Sie die [resourceGroup-Funktion](bicep-functions-scope.md#resourcegroup), um die Eigenschaft `scope` für dieses Modul festzulegen.
 
-Wenn sich die Ressourcengruppe in einem anderen Abonnement befindet, geben Sie die Abonnement-ID und den Namen der Ressourcengruppe an. Wenn sich die Ressourcengruppe im selben Abonnement wie die aktuelle Bereitstellung befindet, geben Sie nur den Namen der Ressourcengruppe an. Wenn Sie kein Abonnement in der [resourceGroup-Funktion](bicep-functions-scope.md#resourcegroup) angeben, wird das aktuelle Abonnement verwendet. 
+Wenn sich die Ressourcengruppe in einem anderen Abonnement befindet, geben Sie die Abonnement-ID und den Namen der Ressourcengruppe an. Wenn sich die Ressourcengruppe im selben Abonnement wie die aktuelle Bereitstellung befindet, geben Sie nur den Namen der Ressourcengruppe an. Wenn Sie kein Abonnement in der [resourceGroup-Funktion](bicep-functions-scope.md#resourcegroup) angeben, wird das aktuelle Abonnement verwendet.
 
 Das folgende Beispiel zeigt ein Modul, das auf eine Ressourcengruppe in einem anderen Abonnement ausgerichtet ist.
 
@@ -127,9 +127,9 @@ Eine Beispielvorlage finden Sie unter [Bereitstellen in mehreren Ressourcengrupp
 
 ### <a name="scope-to-subscription"></a>Bereich: Abonnement
 
-Fügen Sie zum Bereitstellen von Ressourcen zu einem Abonnement ein Modul hinzu. Verwenden Sie die [subscription-Funktion](bicep-functions-scope.md#subscription), um die Eigenschaft `scope` festzulegen. 
+Fügen Sie zum Bereitstellen von Ressourcen zu einem Abonnement ein Modul hinzu. Verwenden Sie die [subscription-Funktion](bicep-functions-scope.md#subscription), um die Eigenschaft `scope` festzulegen.
 
-Verwenden Sie zum Bereitstellen im aktuellen Abonnement die subscription-Funktion ohne Parameter. 
+Verwenden Sie zum Bereitstellen im aktuellen Abonnement die subscription-Funktion ohne Parameter.
 
 ```bicep
 
@@ -191,7 +191,7 @@ Weitere Informationen finden Sie unter [Verwaltungsgruppe](deploy-to-management-
 
 Zum Bereitstellen von Ressourcen in der Zielressourcengruppe definieren Sie die Ressourcen im Abschnitt `resources` der Vorlage. Mit der folgenden Vorlage wird ein Speicherkonto in der Ressourcengruppe erstellt, die im Bereitstellungsvorgang angegeben ist.
 
-:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/get-started-with-bicep-files/add-output/azuredeploy.bicep":::
 
 ## <a name="deploy-to-multiple-resource-groups"></a>Bereitstellen in mehreren Ressourcengruppen
 

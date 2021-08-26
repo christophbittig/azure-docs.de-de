@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4ef1408d5f7afc3b78ab021cdd25eedd75110849
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2c55f2fa9bed7290d77baafd6adcc08d0f2875c0
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776930"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639749"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Verwalten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau) mithilfe der Azure CLI
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -21,6 +23,7 @@ ms.locfileid: "107776930"
 In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten Flexible Server-Instanzen (Vorschau) verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az_login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
@@ -35,8 +38,8 @@ Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonne
 az account set --subscription <subscription id>
 ```
 
-> [!Important]
-> Wenn Sie noch keinen flexiblen Server erstellt haben, erstellen Sie nun einen, um mit dieser exemplarischen Vorgehensweise zu beginnen.
+> [!IMPORTANT]
+>Wenn Sie noch keinen flexiblen Server erstellt haben, erstellen Sie nun einen, um mit dieser exemplarischen Vorgehensweise zu beginnen.
 
 ## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
 
@@ -55,8 +58,8 @@ resource-group | myresourcegroup | Geben Sie den Namen der Azure-Ressourcengrupp
 sku-name|Standard_D4ds_v4|Geben Sie den Namen des Computetarifs und der Computegröße ein. Unterliegt der Konvention Standard_{VM size} (Kurzform) Weitere Informationen finden Sie unter [Azure Database for MySQL – Tarife](../concepts-pricing-tiers.md).
 storage-size | 6.144 | Die Speicherkapazität des Servers (Einheit: MB). Mindestens 5.120 und erhöht sich in Inkrementen von 1.024.
 
-> [!Important]
-> - Der Speicher kann hochskaliert werden (ein Herunterskalieren ist jedoch nicht möglich).
+> [!IMPORTANT]
+>- Der Speicher kann hochskaliert werden (ein Herunterskalieren ist jedoch nicht möglich).
 
 
 ## <a name="manage-mysql-databases-on-a-server"></a>Verwalten von MySQL-Datenbanken auf einem Server
@@ -75,8 +78,8 @@ Mit diesem Befehl können Sie das Kennwort für die Administratorrolle ändern.
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
-> [!Important]
->  Stellen Sie sicher, dass das Kennwort aus mindestens 8 Zeichen und maximal 128 Zeichen besteht.
+> [!IMPORTANT]
+> Stellen Sie sicher, dass das Kennwort aus mindestens 8 Zeichen und maximal 128 Zeichen besteht.
 > Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.
 
 ## <a name="delete-a-server"></a>Löschen eines Servers

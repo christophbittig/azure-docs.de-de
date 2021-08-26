@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: troubleshooting
 ms.date: 03/13/2021
 ms.author: banders
-ms.openlocfilehash: 965e90eed0690d57b6ad3cf3a1543b1329c0fe74
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: baf7fe1968f2ba2a72e27f1caf85d02c65a3e93f
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773370"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514754"
 ---
 # <a name="find-a-reservation-purchaser-from-azure-logs"></a>Ermitteln eines Reservierungskäufers über Azure-Protokolle
 
@@ -33,4 +33,4 @@ In diesem Artikel wird erläutert, wie Sie mit Informationen aus den Verzeichnis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Bei Bedarf können Abrechnungsadministratoren [den Besitz einer Reservierung übernehmen](view-reservations.md#how-billing-administrators-can-view-or-manage-reservations).
+- Bei Bedarf können Abrechnungsadministratoren [den Besitz einer Reservierung übernehmen](view-reservations.md#view-and-manage-reservations).

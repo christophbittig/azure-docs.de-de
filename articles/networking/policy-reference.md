@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure-Netzwerkdienste
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure-Netzwerkdienste. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 992295004dd9c922562651baeb60d22ff19beaea
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c5269daa84f1a85965e4c84860e26f90896a3da7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343007"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603684"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Integrierte Azure Policy-Definitionen für Azure-Netzwerkdienste
 

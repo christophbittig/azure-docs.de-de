@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d4315ff04235e4b555a201e9da7287339b0de125
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450734"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461982"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>Schnellstart: Erste Schritte mit einem Beispielszenario in Azure Digital Twins-Explorer
 
@@ -43,23 +43,36 @@ Sie müssen auch die Materialien für den im Schnellstart verwendeten Beispielgr
 
     :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="Screenshot der Datei „digital-twins-explorer/client/examples/buildingScenario.xlsx“ in GitHub. Die Schaltfläche „Herunterladen“ ist hervorgehoben." lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
-## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>Einrichten von Azure Digital Twins und Azure Digital Twins-Explorer
+## <a name="set-up-azure-digital-twins"></a>Einrichten von Azure Digital Twins
 
-Für die Verwendung von Azure Digital Twins muss zunächst eine Azure Digital Twins-Instanz eingerichtet werden. Nachdem Sie eine Instanz des Diensts erstellt haben, können Sie in Azure Digital Twins-Explorer eine Verbindung mit der Instanz herstellen und diese zu einem späteren Zeitpunkt im Schnellstart mit den Beispieldaten auffüllen.
+Für die Verwendung von Azure Digital Twins muss zunächst eine Azure Digital Twins-Instanz erstellt werden. Nachdem Sie eine Instanz des Diensts erstellt haben, können Sie in Azure Digital Twins-Explorer eine Verbindung mit der Instanz herstellen, die Sie während des Schnellstarts für die Arbeit mit der Instanz verwenden werden.
 
 Im restlichen Teil dieses Abschnitts werden diese Schritte beschrieben.
 
-### <a name="set-up-an-azure-digital-twins-instance"></a>Einrichten einer Azure Digital Twins-Instanz
+### <a name="create-an-azure-digital-twins-instance"></a>Erstellen einer Azure Digital Twins-Instanz
 
-Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst *eine Azure Digital Twins-Instanz einrichten*. Außerdem benötigen Sie die erforderlichen Berechtigungen für ihre Verwendung.
+[!INCLUDE [digital-twins-setup-portal.md](../../includes/digital-twins-setup-portal.md)]
 
-Befolgen Sie die Anweisungen unter [Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md). Die Anweisungen enthalten Informationen, mit denen Sie überprüfen können, ob jeder Schritt erfolgreich abgeschlossen wurde.
+3. Füllen Sie die Felder auf der Setup-Registerkarte **Grundlagen** aus. Diese umfassen u. a. Ihr Abonnement, Ihre Ressourcengruppe, den Speicherort und einen Ressourcennamen für Ihre neue Instanz. Aktivieren Sie das Kontrollkästchen **Azure Digital Twins-Datenbesitzerrolle zuweisen**, um sich selbst Berechtigungen für das Verwalten von Daten in der Instanz zu erteilen.
+
+    >[!NOTE]
+    > Wenn das Kontrollkästchen „Azure Digital Twins-Datenbesitzerrolle zuweisen“ ausgegraut ist, bedeutet dies, dass Sie in Ihrem Azure-Abonnement nicht über die erforderlichen Berechtigungen für das Verwalten des Benutzerzugriffs auf Ressourcen verfügen. Sie können die Instanz wie in diesem Abschnitt beschrieben weiter erstellen. Anschließend sollte Ihnen eine Person mit den erforderlichen Berechtigungen [diese Rolle für die Instanz zuweisen](how-to-set-up-instance-portal.md#assign-the-role-using-azure-identity-management-iam), bevor Sie den Rest des Schnellstarts abschließen.
+    >
+    > Allgemeine Rollen, die diese Anforderung erfüllen, heißen **Besitzer** oder **Kontoadministrator**. Ebenso können die beiden Rollen **Benutzerzugriffsadministrator** und **Mitwirkender** kombiniert werden.  
+
+4. Wählen Sie **Überprüfen + Erstellen** aus, um das Erstellen der Instanz abzuschließen.
+
+    :::image type="content" source= "media/quickstart-azure-digital-twins-explorer/create-azure-digital-twins-basics.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Die beschriebenen Werte sind eingetragen.":::
+    
+5. Es wird eine Zusammenfassungsseite mit den eingegebenen Details angezeigt. Bestätigen und erstellen Sie die Instanz, indem Sie **Erstellen** auswählen.
+
+Dadurch werden Sie zur Seite „Übersicht“ weitergeleitet, auf der der Bereitstellungsstatus der Instanz nachverfolgt wird.
 
 ### <a name="open-instance-in-azure-digital-twins-explorer"></a>Öffnen der Instanz im Azure Digital Twins-Explorer
 
-Öffnen Sie als Nächstes im [Azure-Portal](https://portal.azure.com) den Azure Digital Twins-Explorer für Ihre Instanz. 
+Wenn die Bereitstellung der Instanz abgeschlossen ist, verwenden Sie die Schaltfläche **Zu Ressource wechseln**, um zur Übersichtsseite der Instanz im Portal zu navigieren.
 
-Rufen Sie dazu das Azure-Portal auf, und navigieren Sie zu Ihrer neuen Azure Digital Twins-Instanz, indem Sie in der Suchleiste des Portals ihren Namen eingeben.
+:::image type="content" source= "media/quickstart-azure-digital-twins-explorer/deployment-complete.png" alt-text="Screenshot der Bereitstellungsseite für Azure Digital Twins im Azure-Portal. Auf der Seite wird angegeben, dass die Bereitstellung abgeschlossen ist.":::
 
 Wählen Sie als Nächstes die Schaltfläche **Azure Digital Twins-Explorer (Vorschau) öffnen** aus.
 
@@ -288,4 +301,4 @@ Möglicherweise möchten Sie auch den Ordner des Beispielprojekts von Ihrem loka
 Fahren Sie mit den Tutorials für Azure Digital Twins fort, um Ihr eigenes Azure Digital Twins-Szenario und Ihre eigenen Interaktionstools zu erstellen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Codieren einer Client-App](tutorial-code.md)
+> [Codieren einer Client-App](tutorial-code.md)
