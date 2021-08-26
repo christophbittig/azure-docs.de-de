@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 06/04/2021
-ms.openlocfilehash: 3681164f1b7415679ed599a70faf6453ab0a5c87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c55b2e5fbaadec239c1818d1bbe47443e797ddf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967997"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725452"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -79,10 +79,10 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 
 - [Auswählen einer API in Azure Cosmos DB](choose-api.md)
 - [Erste Schritte mit der SQL-API von Azure Cosmos DB](create-sql-api-dotnet.md)
-- [Erste Schritte mit der Azure Cosmos DB-API für MongoDB](create-mongodb-nodejs.md)
-- [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](create-cassandra-dotnet.md)
+- [Erste Schritte mit der Azure Cosmos DB-API für MongoDB](mongodb/create-mongodb-nodejs.md)
+- [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](cassandra/manage-data-dotnet.md)
 - [Erste Schritte mit der Gremlin-API von Azure Cosmos DB](create-graph-dotnet.md)
-- [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](create-table-dotnet.md)
+- [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](table/create-table-dotnet.md)
 - [Whitepaper zur Entwicklung von Apps der nächsten Generation mit Azure Cosmos DB](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
 
 > [!div class="nextstepaction"]

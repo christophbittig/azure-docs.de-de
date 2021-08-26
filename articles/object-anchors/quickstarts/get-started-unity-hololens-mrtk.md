@@ -5,15 +5,15 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5cccfb2b750e9ea1a167f8bbbddcb2621bd19b5b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: b047c293a14dcfde5c8de2f56fb5c2abeab61c69
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008082"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254333"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>Schnellstart: Erstellen einer HoloLens-App mit Azure Object Anchors in Unity mit MRTK
 
@@ -28,7 +28,11 @@ Sie lernen Folgendes:
 
 [!INCLUDE [Unity quickstart prerequisites](../../../includes/object-anchors-quickstart-unity-prerequisites.md)]
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 [!INCLUDE [Unity device setup](../../../includes/object-anchors-quickstart-unity-device-setup.md)]
+
+[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>Öffnen des Beispielprojekts
 
@@ -40,6 +44,8 @@ Sie lernen Folgendes:
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
 
+[!INCLUDE [Configure Account](../../../includes/object-anchors-get-started-configure-account.md)]
+
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 
 Wenn Sie durch ein Dialogfeld „TMP Importer“ zum Importieren von TextMesh Pro-Ressourcen aufgefordert werden, wählen Sie „Import TMP Essentials“ (TMP Essentials importieren) aus.
@@ -49,9 +55,7 @@ Wenn Sie durch ein Dialogfeld „TMP Importer“ zum Importieren von TextMesh Pr
 
 [!INCLUDE [Unity build and deploy](../../../includes/object-anchors-quickstart-unity-build-deploy.md)]
 
-### <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
-
-Schalten Sie das Gerät ein, wählen Sie **Alle Apps** aus, suchen Sie nach der App, und starten Sie sie dann. Nach dem Unity-Begrüßungsbildschirm sollte ein weißer Begrenzungsrahmen angezeigt werden. Sie können Ihre Hand verwenden, um den Begrenzungsrahmen zu verschieben, zu skalieren oder zu drehen. Platzieren Sie den Rahmen so, dass das Objekt bedeckt ist, das Sie erkennen möchten.
+ Nach dem Unity-Begrüßungsbildschirm sollte ein weißer Begrenzungsrahmen angezeigt werden. Sie können Ihre Hand verwenden, um den Begrenzungsrahmen zu verschieben, zu skalieren oder zu drehen. Platzieren Sie den Rahmen so, dass das Objekt bedeckt ist, das Sie erkennen möchten.
 
 Öffnen Sie das <a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">Handmenü</a>, und wählen Sie **Lock SearchArea** (SearchArea sperren) aus, um jede weitere Bewegung des Begrenzungsrahmens zu verhindern. Wählen Sie **Start Search** (Suche starten) aus, um die Objekterkennung zu starten. Wenn das Objekt erkannt wird, wird ein Gittermodell für das Objekt gerendert. Details zu einer erkannten Instanz werden auf dem Bildschirm angezeigt, z. B. der aktualisierte Zeitstempel und das Verhältnis der Oberflächenbedeckung. Wählen Sie **Stop Search** (Suche beenden) aus, um die Nachverfolgen zu beenden. Alle erkannten Instanzen werden entfernt.
 
@@ -66,7 +70,7 @@ Sie können mit dem <a href="https://microsoft.github.io/MixedRealityToolkit-Uni
 * **Tracker Settings (Einstellungen für die Nachverfolgung)** : Schaltet die Aktivierung des Menüs mit den Einstellungen für die Nachverfolgung um.
 * **Search Area Settings (Einstellungen für den Suchbereich)** : Schaltet die Aktivierung des Menüs mit den Einstellungen für den Suchbereich um.
 * **Start Tracing (Ablaufverfolgung starten)** : Erfassen von Diagnosedaten und Speichern dieser Daten auf dem Gerät. Weitere Informationen finden Sie im Abschnitt **Debuggen von Erkennungsproblemen und Erfassen von Diagnosen**.
-* **Upload Tracing (Ablaufverfolgung hochladen)** : Hochladen von Diagnosedaten in den Object Anchors-Dienst. Ein Benutzer muss sein Abonnementkonto in `subscription.json` angeben und in den Ordner `LocalState` hochladen. Eine Beispieldatei `subscription.json` finden Sie unten.
+* **Upload Tracing (Ablaufverfolgung hochladen)** : Hochladen von Diagnosedaten in den Object Anchors-Dienst.    
 
     :::image type="content" source="./media/mrtk-hand-menu-primary.png" alt-text="Primäres Unity-Handmenü":::
 
@@ -87,23 +91,12 @@ Sie können mit dem <a href="https://microsoft.github.io/MixedRealityToolkit-Uni
 
     :::image type="content" source="./media/mrtk-hand-menu-search-area.png" alt-text="Unity-Handmenü für Suchbereich":::
 
-Beispiel für `subscription.json`:
-
-```json
-{
-  "AccountId": "<your account id>",
-  "AccountKey": "<your account key>",
-  "AccountDomain": "<your account domain>"
-}
-```
-
-[!INCLUDE [Unity setup Windows Device Portal](../../../includes/object-anchors-quickstart-unity-setup-device-portal.md)]
-
-[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
-
 [!INCLUDE [Unity troubleshooting](../../../includes/object-anchors-quickstart-unity-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Schnellstart: Ausführliche exemplarische Vorgehensweise zum MRTK](in-depth-mrtk-walkthrough.md)
 
 > [!div class="nextstepaction"]
 > [Konzepte: SDK-Übersicht](../concepts/sdk-overview.md)

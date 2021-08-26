@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fc8c1db006ddd8b1ca455d7e47be0d8fa8381f1c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754513"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181395"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -23,7 +23,7 @@ Log Analytics-Dashboards können alle Ihre gespeicherten Protokollabfragen visua
 > * Hinzufügen einer Protokollabfrage zu einem freigegebenen Dashboard 
 > * Anpassen einer Kachel in einem freigegebenen Dashboard
 
-Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](../vm/quick-collect-azurevm.md) ist.  
+Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](../vm/monitor-virtual-machine.md) ist.  
  
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 

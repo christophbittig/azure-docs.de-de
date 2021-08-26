@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 306a8d78caf36291573d021ed1d814aa4f7a2164
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af829349ba5fe4b6ad2bf9e443eb780e926da565
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642770"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751279"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -206,7 +206,7 @@ So fügen Sie einen Benutzer mit Azure AD-Authentifizierung hinzu:
 1. Geben Sie im Abfragefenster den folgenden Befehl ein, und ändern Sie `<Azure_AD_principal_name>` in den Prinzipalnamen des Azure AD-Benutzers oder in den Anzeigenamen der Azure AD-Gruppe:
 
    ```sql
-   CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+   CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
    ```
 
 > [!NOTE]

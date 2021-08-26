@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 0ccd7886007177e32506ce0c3db489826a8a708d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4fdaad6d828ec83f40b6fb632d3d9738a7b72dc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479922"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750405"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub Enterprise Cloud - Enterprise Account
 
@@ -76,13 +76,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://github.com/orgs/<ENTERPRISE-SLUG>`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTERPRISE-SLUG>`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://github.com/orgs/<ENTERPRISE-SLUG>/saml/consume`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTERPRISE-SLUG>/saml/consume`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/orgs/<ENTERPRISE-SLUG>/sso`.
+     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/enterprises/<ENTERPRISE-SLUG>/sso`.
 
     > [!NOTE]
     > Ersetzen Sie `<ENTERPRISE-SLUG>` durch den tatsächlichen Namen Ihres GitHub Enterprise Account.
@@ -138,7 +138,7 @@ Nachdem Sie das einmalige Anmelden per SAML (SAML SSO) für Ihr GitHub Enterpris
 
 ## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>Testen des einmaligen Anmeldens mit einem anderen Enterprise Account-Besitzer oder Konto eines Mitglieds der Organisation
 
-Nachdem die SAML-Integration für das GitHub Enterprise Account eingerichtet wurde (gilt auch für die GitHub-Organisationen unter dem Enterprise Account), sollten auch andere Enterprise Account-Besitzer, die der App in Azure AD zugewiesen sind, zur GitHub Enterprise Account-URL (`https://github.com/orgs/<enterprise account>`) navigieren können. Sie können dann die Authentifizierung per SAML durchführen und auf die Richtlinien und Einstellungen unter dem GitHub Enterprise Account zugreifen. 
+Nachdem die SAML-Integration für das GitHub Enterprise Account eingerichtet wurde (gilt auch für die GitHub-Organisationen unter dem Enterprise Account), sollten auch andere Enterprise Account-Besitzer, die der App in Azure AD zugewiesen sind, zur GitHub Enterprise Account-URL (`https://github.com/enterprises/<enterprise account>`) navigieren können. Sie können dann die Authentifizierung per SAML durchführen und auf die Richtlinien und Einstellungen unter dem GitHub Enterprise Account zugreifen. 
 
 Ein Organisationsbesitzer einer Organisation unter einem Enterprise Account sollte [einen Benutzer zum Beitreten zu seiner GitHub-Organisation einladen](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization) können. Melden Sie sich bei „GitHub.com“ mit einem Konto eines Organisationsbesitzers an, und führen Sie die im Artikel angegebenen Schritte zum Einladen von `B.Simon` aus. Für `B.Simon` muss ein GitHub-Benutzerkonto erstellt werden, falls es noch nicht vorhanden ist. 
 

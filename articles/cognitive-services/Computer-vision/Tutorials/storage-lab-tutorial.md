@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 441bbfcbb4f864ab8f82bb1216b9860dcfbf254c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 35e98fcbd1be87e471152d0760ca375e46770a81
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747641"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
@@ -197,7 +197,7 @@ In diesem Abschnitt erstellen Sie eine neue Web-App in Visual Studio und fügen 
     }
     ```
 
-    Die neue **Index**-Methode führt die Blobs im `"photos"`Container auf und übergibt ein Array von **BlobInfo**-Objekten, die diese Blobs darstellen, über die **ViewBag**-Eigenschaft von ASP.NET MVC an die Ansicht. Später ändern Sie die Ansicht, um diese Objekte aufzuführen und eine Auflistung von Fotominiaturansichten anzuzeigen. Die Klassen, die Sie verwenden, um auf Ihr Speicherkonto zuzugreifen und die Blobs&mdash; **[CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?WT.mc_id=academiccontent-github-cxa)** , **[CloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?WT.mc_id=academiccontent-github-cxa)** und **[CloudBlobContainer](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?WT.mc_id=academiccontent-github-cxa)** aufzuführen, stammen aus dem &mdash;**WindowsAzure.Storage**-Paket, das Sie über NuGet installiert haben.
+    Die neue **Index**-Methode führt die Blobs im `"photos"`Container auf und übergibt ein Array von **BlobInfo**-Objekten, die diese Blobs darstellen, über die **ViewBag**-Eigenschaft von ASP.NET MVC an die Ansicht. Später ändern Sie die Ansicht, um diese Objekte aufzuführen und eine Auflistung von Fotominiaturansichten anzuzeigen. Die Klassen, die Sie verwenden, um auf Ihr Speicherkonto zuzugreifen und die Blobs&mdash; **[CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet)** , **[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient?view=azure-dotnet-legacy)** und **[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer?view=azure-dotnet-legacy)** aufzuführen, stammen aus dem &mdash;**WindowsAzure.Storage**-Paket, das Sie über NuGet installiert haben.
 
 1. Fügen Sie der **HomeController**-Klasse in *HomeController.cs* die folgende Methode hinzu:
 

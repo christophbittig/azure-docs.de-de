@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/19/2018
-ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a74c6851c8dc3e2c2e4808f324fe711e31fd603
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96487302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741198"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,11 +45,11 @@ In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufga
 
 * Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
-  
+
   * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](single-database-create-quickstart.md).
 * SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion.
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
-  
+
   * Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
   * [Über diesen direkten Link zum Herunterladen.](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -226,7 +226,7 @@ Der folgende Block zeigt die Ausgabe. Wenngleich die Ausgabe lang erscheint, umf
 
 &nbsp;
 
-```
+```xml
 <RingBufferTarget truncated="0" processingTime="0" totalEventsProcessed="2" eventCount="2" droppedCount="0" memoryUsed="1728">
   <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T15:29:31.317Z">
     <data name="state">

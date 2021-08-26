@@ -2,16 +2,17 @@
 metadata:
   title: Häufig gestellte Fragen zu VM Insights in der allgemein verfügbaren Version (GA) | Microsoft-Dokumentation
   description: VM Insights ist eine Lösung in Azure, die Integritäts- und Leistungsüberwachung des Azure VM-Betriebssystems mit der automatischen Erkennung von Anwendungskomponenten und Abhängigkeiten mit anderen Ressourcen kombiniert und die Kommunikation unter ihnen als Zuordnung darstellt. In diesem Artikel werden häufig gestellte Fragen zum allgemein verfügbaren Release beantwortet.
-  ms.topic: conceptual
+  ms.topic: article
   author: bwren
   ms.author: bwren
   ms.date: 01/31/2020
-  ms.openlocfilehash: 930a51c83767a14c1547e2ed6330fbd134afbaae
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.service: azure-monitor
+  ms.openlocfilehash: 230bac590e4506593cc0cb6cce0aba89ed289ad3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112306053"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253864"
 title: Häufig gestellte Fragen zu VM Insights in der allgemein verfügbaren Version (GA)
 summary: Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im vierten Quartal 2019 und im ersten Quartal 2020 vorgenommen wurden.
 sections:

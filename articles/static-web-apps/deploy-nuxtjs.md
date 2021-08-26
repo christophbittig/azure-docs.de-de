@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: a413b5e59ff5d44f9227f5a546232984a7db1ab9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 615bba10b410ec054227e1f2d45d2fdfde7b225d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748020"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps"></a>Bereitstellen von per Server gerenderten Nuxt.js-Websites in Azure Static Web Apps
 
@@ -73,7 +73,7 @@ Beim Erstellen einer Nuxt.js-Website mit `npm run build` wird die App als herkö
     ```json
     "scripts": {
       "dev": "nuxt dev",
-      "build": "nuxt generate",
+      "build": "nuxt generate"
     },
     ```
 

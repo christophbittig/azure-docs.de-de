@@ -3,20 +3,20 @@ title: Erstellen eines Mandantenmodells (Vorschau) – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Generieren Sie automatisch ein sicheres, konformes Mandantenmodell (Custom Speech mit Microsoft 365-Daten), das Ihre Microsoft 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen.
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0076364d0075573571e76cf230b4920763bb6e2c
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013713"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072548"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Tutorial: Erstellen eines Mandantenmodells (Vorschau)
 
