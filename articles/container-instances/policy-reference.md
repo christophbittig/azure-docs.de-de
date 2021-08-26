@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Container Instances
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Container Instances. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c1f8a846d4e01d2882af2366355984270b781eb3
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 96468f37fe734a44ee0f06fe39bbade949d52ce9
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343047"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607772"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>Integrierte Azure Policy-Definitionen für Azure Container Instances
 

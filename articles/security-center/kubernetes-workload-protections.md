@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 3dbf8b3e15380b1e267be4f1b4af382aa9097a48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062296"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355706"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -39,7 +39,7 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 | Preise:                        | Kostenlos                                                                                                                                         |
 | Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Sicherheitsadministrator** zum Bearbeiten einer Zuweisung<br>**Leser** zum Anzeigen der Empfehlungen                                              |
 | Umgebungsanforderungen:       | Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt. |
-| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov) |
+| Clouds:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet) |
 |                                 |                                                                                                                                              |
 
 
@@ -80,20 +80,24 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
     | Name der Empfehlung                                                         | Sicherheitskontrolle                         | Konfiguration erforderlich |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |
-    | Privilegierte Container müssen vermieden werden                                     | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen     | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Das Ausführen von Containern als Root-Benutzer muss vermieden werden                           | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Container mit Freigabe sensibler Hostnamespaces vermeiden              | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen       | Zugriff und Berechtigungen verwalten            | **Ja**                |
-    | Verwendung von HostPath-Volumeeinbindungen von Pods auf eine bekannte Liste beschränken    | Zugriff und Berechtigungen verwalten            | **Ja**                |
     | Container dürfen nur an zulässigen Ports lauschen                              | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
     | Dienste dürfen nur an zulässigen Ports lauschen                                | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
     | Verwendung von Hostnetzwerken und -ports einschränken                     | Nicht autorisierten Netzwerkzugriff einschränken     | **Ja**                |
     | Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken | Optimieren von Sicherheitskonfigurationen        | **Ja**                |
     | Containerimages sollten nur von vertrauenswürdigen Registrierungen bereitgestellt werden            | Sicherheitsrisiken beheben                | **Ja**                |
-    |||
+    | Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen       | Zugriff und Berechtigungen verwalten            | **Ja**                |
+    | Verwendung von HostPath-Volumeeinbindungen von Pods auf eine bekannte Liste beschränken    | Zugriff und Berechtigungen verwalten            | **Ja**                |
+    | Privilegierte Container müssen vermieden werden                                     | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Für Kubernetes-Cluster muss die automatische Bereitstellung von API-Anmeldeinformationen deaktiviert werden             | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen     | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Das Ausführen von Containern als Root-Benutzer muss vermieden werden                           | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Freigabe sensibler Hostnamespaces vermeiden              | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |
+    | Auf Kubernetes-Cluster sollte nur über HTTPS zugegriffen werden können                    | Verschlüsseln von Daten während der Übertragung                  | Nein                     |
+    | Kubernetes-Cluster dürfen nicht den Standardnamespace verwenden                    | Bewährte Sicherheitsmethoden implementieren        | Nein                     |
+    ||||
 
 
 1. Passen Sie bei Empfehlungen, die dies erfordern, die Parameter an:
@@ -101,8 +105,11 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
     1. Wählen Sie im Menü von Security Center **Sicherheitsrichtlinie** aus.
     1. Wählen Sie das relevante Abonnement aus.
     1. Wählen Sie im Abschnitt **Security Center-Standardrichtlinie** die Option **Effektive Richtlinie anzeigen** aus.
-    1. Wählen Sie „ASC-Standard“ aus.
+    1. Wählen Sie die Standardrichtlinie für den Bereich aus, den Sie aktualisieren.
     1. Öffnen Sie die Registerkarte **Parameter**, und ändern Sie die Werte nach Bedarf.
+
+        :::image type="content" source="media/kubernetes-workload-protections/containers-parameter-requires-configuration.png" alt-text="Ändern der Parameter für eine der Empfehlungen im Kubernetes-Workloadschutzpaket.":::
+
     1. Klicken Sie auf **Überprüfen + speichern**.
     1. Wählen Sie **Speichern** aus.
 
@@ -111,7 +118,7 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
     1. Öffnen Sie die Seite mit den Details zur Empfehlung, und wählen Sie **Ablehnen** aus:
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Option „Ablehnen“ für Azure Policy-Parameter":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Option „Ablehnen“ für Azure Policy-Parameter.":::
 
         Dadurch wird das Fenster geöffnet, in dem Sie den Bereich festlegen. 
 
@@ -125,7 +132,7 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
 1. Wenn Sie eine Empfehlung für den Workloadschutz anzeigen, sehen Sie neben dem Cluster auch die Anzahl der betroffenen Pods („Kubernetes-Komponenten“). Wählen Sie den Cluster und dann **Aktion ausführen** aus, um eine Liste mit den jeweiligen Pods auszuwählen.
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Anzeigen der betroffenen Pods für eine K8s-Empfehlung"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Anzeigen der betroffenen Pods für eine K8s-Empfehlung."::: 
 
 1. Um die Erzwingung zu testen, verwenden Sie die folgenden beiden Kubernetes-Bereitstellungen:
 
@@ -158,7 +165,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: healthyClusterRegistry.azurecr.io/redis:latest
+        image: <customer-registry>.azurecr.io/redis:latest
         ports:
         - containerPort: 80
         resources:
@@ -191,25 +198,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-unhealthy-deployment
+  name: redis-unhealthy-deployment
   labels:
-    app: nginx
+    app: redis
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: redis
   template:
     metadata:      
       labels:
-        app: nginx
+        app: redis
     spec:
       hostNetwork: true
       hostPID: true 
       hostIPC: true
       containers:
-      - name: nginx
-        image: nginx:1.15.2
+      - name: redis
+        image: redis:latest
         ports:
         - containerPort: 9001
           hostPort: 9001
@@ -234,11 +241,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-unhealthy-service
+  name: redis-unhealthy-service
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: redis
   ports:
   - port: 6001
     targetPort: 9001

@@ -6,36 +6,36 @@
       href: introduction.md
     - name: Plattformupdates
       href: azure-vmware-solution-platform-updates.md
-- name: Schnellstart
+- name: Erste Schritte
   items:
     - name: 1. Planen der Bereitstellung
-      href: production-ready-deployment-steps.md
+      href: plan-private-cloud-deployment.md
     - name: 2. Bereitstellen von Azure VMware Solution
       href: deploy-azure-vmware-solution.md
-    - name: 3. Herstellen einer Verbindung mit lokalen Ressourcen
+    - name: 3. Herstellen einer Verbindung mit einer lokalen Umgebung
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: "4. Bereitstellen und Konfigurieren von VMware\_HCX"
-      href: tutorial-deploy-vmware-hcx.md
+    - name: 4. Installieren des VMware HCX-Connectors
+      href: install-vmware-hcx.md
+    - name: 5. Konfigurieren des lokalen VMware HCX-Connectors
+      href: configure-vmware-hcx.md
 - name: Tutorials
   items:
-    - name: Zugreifen auf eine private Cloud
-      href: tutorial-access-private-cloud.md
-    - name: Konfigurieren der Netzwerkeinstellungen
-      href: tutorial-configure-networking.md
-    - name: Erstellen einer privaten Cloud
-      href: tutorial-create-private-cloud.md
-    - name: Erstellen eines NSX-T-Netzwerksegments
-      href: tutorial-nsx-t-network-segment.md
-    - name: Löschen einer privaten Cloud
-      href: tutorial-delete-private-cloud.md
-    - name: "Bereitstellen und Konfigurieren von VMware\_HCX"
-      href: tutorial-deploy-vmware-hcx.md
-    - name: Vergrößern oder Verkleinern von Clustern in einer privaten Cloud
-      href: tutorial-scale-private-cloud.md
-    - name: Checkliste für die Netzwerkplanung
+    - name: 1. Checkliste für die Netzwerkplanung
       href: tutorial-network-checklist.md
-    - name: Peering zwischen lokaler Umgebung und privater Cloud
+    - name: 2. Erstellen einer privaten Cloud
+      href: tutorial-create-private-cloud.md
+    - name: 3. Zugreifen auf eine private Cloud
+      href: tutorial-access-private-cloud.md
+    - name: 4. Konfigurieren des Netzwerks
+      href: tutorial-configure-networking.md
+    - name: 5. Erstellen eines NSX-T-Netzwerksegments
+      href: tutorial-nsx-t-network-segment.md
+    - name: 6. Peering zwischen lokaler Umgebung und privater Cloud
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7. Skalieren in einer privaten Cloud
+      href: tutorial-scale-private-cloud.md
+    - name: 8. Löschen einer privaten Cloud
+      href: tutorial-delete-private-cloud.md
 - name: Konzepte
   items:
     - name: Zugriff und Identität
@@ -44,8 +44,6 @@
       href: concepts-api-management.md
     - name: Hub-and-Spoke-Modell
       href: concepts-hub-and-spoke.md
-    - name: Überwachung und Schutz
-      href: concepts-monitor-protection.md
     - name: Netzwerk und Interkonnektivität
       href: concepts-networking.md
     - name: Private Clouds und Cluster
@@ -60,26 +58,30 @@
       href: request-host-quota-azure-vmware-solution.md
     - name: Einsparen von Kosten mit einer reservierten Instanz
       href: reserved-instance.md
+    - name: Erstellen einer Platzierungsrichtlinie
+      href: create-placement-policy.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
-        - name: Konfigurieren von DHCP
+        - name: Konfigurieren des DHCP-Servers oder -Relays
           href: configure-dhcp-azure-vmware-solution.md
-        - name: "Konfigurieren von DHCP in VMware\_HCX-Netzwerken mit L2-Stretching"
+        - name: Konfigurieren von DHCP in Netzwerken mit L2-Stretching
           href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: Konfigurieren von NSX-Komponenten mithilfe von Azure
-          href: configure-nsx-network-components-azure-portal.md
-        - name: "Konfigurieren des GitHub\_Enterprise-Servers"
-          href: ./configure-github-enterprise-server.md
+        - name: Konfigurieren der DNS-Weiterleitung
+          href: configure-dns-azure-vmware-solution.md
+        - name: Konfigurieren der Portspiegelung
+          href: configure-port-mirroring-azure-vmware-solution.md
         - name: Ermöglichen von öffentlichem Internetzugriff
           href: enable-public-internet-access.md
         - name: Konfigurieren eines Site-to-Site-VPN in einem vWAN
           href: configure-site-to-site-vpn-gateway.md
+    - name: Verbinden mehrerer privater Clouds in der gleichen Region
+      href: connect-multiple-private-clouds-same-region.md
+    - name: "Konfigurieren des GitHub\_Enterprise-Servers"
+      href: configure-github-enterprise-server.md
     - name: Konfigurieren von Windows Server-Failoverclustern
       href: configure-windows-server-failover-cluster.md
     - name: Rotieren von CloudAdmin-Anmeldeinformationen
       href: rotate-cloudadmin-credentials.md
-    - name: Verbinden mehrerer privater Clouds in der gleichen Region
-      href: connect-multiple-private-clouds-same-region.md
     - name: Verschieben von Ressourcen
       items:
         - name: "Verschieben von Azure\_VMware\_Solution-Abonnements"
@@ -100,6 +102,8 @@
           href: deploy-traffic-manager-balance-workloads.md
         - name: Konfigurieren von Warnungen und Verwenden von Metriken
           href: configure-alerts-for-azure-vmware-solution.md
+        - name: Anfügen von Datenträgerpools an Azure VMware Solution-Hosts
+          href: attach-disk-pools-to-azure-vmware-solution-hosts.md
         - name: Sichern mit Azure Backup Server
           items:
             - name: Einrichten von Backup Server
@@ -130,13 +134,17 @@
           href: azure-vmware-solution-horizon.md
         - name: Bereitstellen virtueller Computer aus der Inhaltsbibliothek
           href: deploy-vm-content-library.md
-        - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware HCX
-          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: Notfallwiederherstellung
+          items:
+            - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware SRM
+              href: disaster-recovery-using-vmware-site-recovery-manager.md
+            - name: Bereitstellen der Notfallwiederherstellung mithilfe von VMware HCX
+              href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: "Upgraden der VMware\_HCX-Appliance"
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware-Ökosystem
       items:
-        - name: Sicherungslösungen für virtuelle Computer
+        - name: Sichern von Lösungen für VMs
           href: ecosystem-back-up-vms.md
         - name: Migrationslösungen für virtuelle Computer
           href: ecosystem-migration-vms.md
@@ -149,7 +157,7 @@
     - name: Problembehandlung
       items:
         - name: Öffnen einer Supportanfrage für Bereitstellungsfehler
-          href: fix-deployment-provisioning-failures.md
+          href: fix-deployment-failures.md
         - name: "VMware-Tools: VIX-Fehlercode\_21009"
           href: 'https://kb.vmware.com/s/article/2129927'
     - name: Häufig gestellte Fragen

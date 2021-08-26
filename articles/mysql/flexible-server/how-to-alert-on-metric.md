@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110150"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639752"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL – Flexible Server 
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure Database for MySQL-Warnungen einrichten können. Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services eine Warnung empfangen.
@@ -23,16 +25,19 @@ In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure Database for 
 Die Warnung wird ausgelöst, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung wird sowohl ausgelöst, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
 
 Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgeführt werden, wenn sie ausgelöst wird:
+
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
 * Senden von E-Mails an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
+
 * [Azure portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
+
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) den zu überwachenden Azure Database for MySQL Flexible Server aus.
 2. Wählen Sie auf der Seitenleiste im Abschnitt **Überwachung** die Option **Warnungen** aus.
 3. Wählen Sie **+ Neue Warnungsregel** aus.

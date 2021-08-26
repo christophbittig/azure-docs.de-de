@@ -88,8 +88,12 @@
               href: container-registry-import-images.md
             - name: Übertragen von Artefakten (Vorschau)
               href: container-registry-transfer-images.md
-            - name: Sperren von Containerimages
-              href: container-registry-image-lock.md
+            - name: Schützen von Registrierungsdaten
+              items:
+                - name: Sperren von Containerimages
+                  href: container-registry-image-lock.md
+                - name: Deaktivieren des Exports
+                  href: data-loss-prevention.md
             - name: Löschen von Containerimages
               items:
                 - name: 'Löschen von Imagedaten: CLI'

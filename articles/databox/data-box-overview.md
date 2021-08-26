@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 07/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6da5dfcded067420fd6d43f4a5b2841da060898a
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7ecd8cf1330cec20131e5015a62691d7cf704f03
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738120"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688532"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -71,7 +71,7 @@ Das Data Box-Gerät weist in dieser Version folgende Merkmale auf.
 | Weight                                                  | Weniger als 23 kg                |
 | Dimensionen                                              | Gerät: Breite: 309,0 mm Höhe: 430,4 mm Tiefe: 502,0 mm |            
 | Platzbedarf im Rack                                              | 7 HE bei seitlicher Platzierung im Rack (kann nicht im Rack montiert werden)|
-| Erforderliche Kabel                                         | 1 Netzkabel (inbegriffen) <br> 2 RJ45-Kabel <br> 2 SFP+-Twinax-Kupferkabel|
+| Erforderliche Kabel                                         | 1 Netzkabel (inbegriffen) <br> 2 RJ45-Kabel (nicht inbegriffen)<br> 2 SFP+ Twinax-Kupferkabel (nicht inbegriffen)|
 | Speicherkapazität                                        | Das Gerät mit 100 TB hat nach der Aktivierung von RAID-5-Schutz 80 TB nutzbare Kapazität.|
 | Nennleistung                                            | Das Netzteil ist für 700 W ausgelegt. <br> Die Leistungsaufnahme liegt in der Regel bei 375 W.|
 | Netzwerkschnittstellen                                      | 2 1-GbE-Schnittstellen: MGMT, DATA 3. <br> MGMT: Zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung <br> DATA3: Für Daten, vom Benutzer konfigurierbar und standardmäßig dynamisch <br> MGMT und DATA 3 sind auch in der 10-GbE-Ausführung möglich <br> 2 10-GbE-Schnittstellen: DATA 1, DATA 2 <br> Beide für Daten vorgesehen, als dynamisch (Standard) oder statisch konfigurierbar |
@@ -119,7 +119,7 @@ Der Importworkflow umfasst üblicherweise die folgenden Schritte:
 
 1. **Auftrag**: Erstellen Sie im Azure-Portal einen Auftrag, und geben Sie die Versandinformationen und das Azure-Zielspeicherkonto für Ihre Daten an. Wenn das Gerät verfügbar ist, wird es von Azure vorbereitet und mit einer Sendungsverfolgungs-ID versendet.
 
-2. **Empfang**: Nach Erhalt des Geräts verbinden Sie es mit den vorgesehenen Kabeln mit dem Netzwerk und der Stromversorgung. Schalten Sie das Gerät ein, und verbinden Sie sich damit. Konfigurieren Sie die Netzwerk- und Bereitstellungsfreigaben auf dem Hostcomputer, von dem aus Sie die Daten kopieren möchten.
+2. **Empfang**: Nach Erhalt des Geräts verbinden Sie es mit den vorgesehenen Kabeln mit dem Netzwerk und der Stromversorgung. (Das Netzkabel ist im Lieferumfang des Geräts enthalten. Sie müssen die Datenkabel beschaffen.) Schalten Sie das Gerät ein und stellen Sie eine Verbindung her. Konfigurieren Sie die Netzwerk- und Bereitstellungsfreigaben auf dem Hostcomputer, von dem aus Sie die Daten kopieren möchten.
 
 3. **Kopieren von Daten**: Kopieren Sie Daten auf die Data Box-Freigaben.
 
@@ -134,7 +134,7 @@ Der Exportworkflow umfasst üblicherweise die folgenden Schritte:
 
 1. **Auftrag**: Erstellen Sie im Azure-Portal einen Exportauftrag, und geben Sie Versandinformationen sowie das Azure Storage-Quellkonto für Ihre Daten an. Wenn das Gerät verfügbar ist, bereitet Azure ein Gerät vor. Daten werden aus Ihrem Azure Storage-Konto in Data Box kopiert. Nachdem der Datenkopiervorgang abgeschlossen wurde, wird das Gerät von Microsoft mit einer Sendungsnachverfolgungs-ID ausgeliefert.
 
-2. **Empfang**: Nach Erhalt des Geräts verbinden Sie es mit den vorgesehenen Kabeln mit dem Netzwerk und der Stromversorgung. Schalten Sie das Gerät ein, und verbinden Sie sich damit. Konfigurieren Sie die Netzwerk- und Bereitstellungsfreigaben auf dem Hostcomputer, auf den Sie die Daten kopieren möchten.
+2. **Empfang**: Nach Erhalt des Geräts verbinden Sie es mit den vorgesehenen Kabeln mit dem Netzwerk und der Stromversorgung. (Das Netzkabel ist im Lieferumfang des Geräts enthalten. Sie müssen die Datenkabel beschaffen.) Schalten Sie das Gerät ein und stellen Sie eine Verbindung her. Konfigurieren Sie die Netzwerk- und Bereitstellungsfreigaben auf dem Hostcomputer, auf den Sie die Daten kopieren möchten.
 
 3. **Kopieren der Daten**: Kopieren Sie Daten aus Data Box-Freigaben auf die lokalen Datenserver.
 

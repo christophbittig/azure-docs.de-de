@@ -5,26 +5,26 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/19/2020
+ms.date: 08/13/2021
 ms.author: victorh
-ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3d52451713c8fc504487aa293d566264f4eadb6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88612593"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343035"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Firewall-Tunnelerzwingung
 
-Wenn Sie eine neue Azure Firewall konfigurieren, können Sie den gesamten Internetdatenverkehr an den festgelegten nächsten Hop weiterleiten, statt dass er direkt ins Internet verläuft. So verfügen Sie vielleicht beispielsweise über eine lokale Edgefirewall oder ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA), die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können jedoch eine vorhandene Firewall nicht für die Tunnelerzwingung konfigurieren.
-
-Standardmäßig ist die Tunnelerzwingung in Azure Firewall nicht zulässig, um sicherzustellen, dass alle ausgehenden Azure-Abhängigkeiten erfüllt werden. Benutzerdefinierte Routenkonfigurationen (User Defined Route, UDR) im Subnetz *AzureFirewallSubnet* mit einer Standardroute, die nicht direkt ins Internet verläuft, werden deaktiviert.
+Wenn Sie eine neue Azure Firewall konfigurieren, können Sie den gesamten Internetdatenverkehr an den festgelegten nächsten Hop weiterleiten, statt dass er direkt ins Internet verläuft. Sie können beispielsweise eine über BGP angekündigte Standardroute oder eine benutzerdefinierte Route (User Defined Route, UDR) verwenden, um zu erzwingen, dass der Datenverkehr zu einer lokalen Edgefirewall oder einer anderen virtuellen Netzwerkappliance (NVA) geleitet wird, um den Netzwerkverkehr zu verarbeiten, bevor er an das Internet weitergeleitet wird. Um diese Konfiguration zu unterstützen, müssen Sie Azure Firewall mit aktivierter Konfiguration für Tunnelerzwingung erstellen. Dies ist eine obligatorische Anforderung, um Dienstunterbrechungen zu vermeiden. Wenn es sich um eine bereits vorhandene Firewall handelt, müssen Sie die Firewall im Modus „Tunnelerzwingung“ neu erstellen, damit diese Konfiguration unterstützt wird. Weitere Informationen dazu, wie Sie eine Firewall im Modus „Tunnelerzwingung“ beenden und neu starten, finden Sie in den [häufig gestellten Fragen zu Azure Firewall](firewall-faq.yml#how-can-i-stop-and-start-azure-firewall).
 
 ## <a name="forced-tunneling-configuration"></a>Konfiguration der Tunnelerzwingung
 
-Zur Unterstützung der Tunnelerzwingung wird der Datenverkehr der Dienstverwaltung vom Kundendatenverkehr getrennt. Ein zusätzliches dediziertes Subnetz namens *AzureFirewallManagementSubnet* (Mindestsubnetz-Größe / 26) mit einer eigenen zugeordneten öffentlichen IP-Adresse ist erforderlich. Die einzige in diesem Subnetz zulässige Route ist eine Standardroute zum Internet, und die BGP-Routenverteilung muss deaktiviert sein.
+Sie können die Tunnelerzwingung während der Firewallerstellung konfigurieren, indem Sie den Modus „Tunnelerzwingung“ wie unten gezeigt aktivieren. Zur Unterstützung der Tunnelerzwingung wird der Datenverkehr der Dienstverwaltung vom Kundendatenverkehr getrennt. Ein zusätzliches dediziertes Subnetz namens **AzureFirewallManagementSubnet** (Mindestsubnetz-Größe / 26) mit einer eigenen zugeordneten öffentlichen IP-Adresse ist erforderlich. 
 
-Wenn Sie über BGP eine Standardroute aufgerufen haben, um den Datenverkehr an eine lokale Umgebung zu erzwingen, müssen Sie die Subnetze *AzureFirewallSubnet* und *AzureFirewallManagementSubnet* erstellen, bevor Sie Ihre Firewall bereitstellen, und Sie müssen über eine UDR mit einer Standardroute zum Internet verfügen sowie **Gatewayrouten verteilen** deaktiviert haben.
+Im Modus „Tunnelerzwingung“ wird das Verwaltungssubnetz (AzureFirewallManagementSubnet) zu *operativen* Zwecken im Azure Firewall-Dienst integriert. Standardmäßig ordnet der Dienst dem Verwaltungssubnetz eine vom System bereitgestellte Routingtabelle zu. Die einzige in diesem Subnetz zulässige Route ist eine Standardroute zum Internet, und *Gatewayrouten verteilen* muss deaktiviert sein. Vermeiden Sie es, Kundenroutentabellen zum Verwaltungssubnetz zuzuordnen, wenn Sie die Firewall erstellen. 
+
+:::image type="content" source="media/forced-tunneling/forced-tunneling-configuration.png" alt-text="Konfigurieren der Tunnelerzwingung":::
 
 Innerhalb dieser Konfiguration kann das Subnetz *AzureFirewallSubnet* jetzt Routen zu jeder beliebigen lokalen Firewall oder jedem NVA enthalten, die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können diese Routen auch über BGP an *AzureFirewallSubnet* veröffentlichen, wenn **Gatewayrouten verteilen** in diesem Subnetz aktiviert ist.
 

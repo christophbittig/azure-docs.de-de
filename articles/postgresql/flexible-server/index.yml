@@ -9,12 +9,12 @@ metadata:
   ms.date: 09/22/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 612ef6ffa35988a69e6755a38e88a083d533827c
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: 4ab2a940f0fdb18b60d626cb96813b708860f8ae
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114726648"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779685"
 landingContent:
 - title: Informationen zu Flexible Server (Vorschau)
   linkLists:
@@ -22,6 +22,8 @@ landingContent:
     links:
     - text: Was ist Flexible Server?
       url: overview.md
+    - text: Kostenloses Testen des flexiblen Servers
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: Erstellen eines flexiblen Servers
@@ -54,6 +56,8 @@ landingContent:
       url: concepts-monitoring.md
     - text: Logische Replikation
       url: concepts-logical.md
+    - text: Intelligente Optimierung
+      url: concepts-intelligent-tuning.md
   - linkListType: how-to-guide
     links:
     - text: Verwalten des Servers
@@ -64,6 +68,10 @@ landingContent:
       url: how-to-scale-compute-storage-portal.md
     - text: Neustarten eines Servers
       url: how-to-restart-server-portal.md
+    - text: Einrichten eines privaten Netzwerks
+      url: how-to-manage-virtual-network-portal.md
+    - text: Sicheres Herstellen einer Verbindung per TLS
+      url: how-to-connect-tls-ssl.md
     - text: Konfigurieren von und Zugreifen auf Protokolle
       url: howto-configure-and-access-logs.md
     - text: Planen der Wartung

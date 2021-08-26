@@ -3,12 +3,12 @@ title: Verbinden von ExpressRoute mit dem Gateway für virtuelle Netzwerke
 description: Schritte zum Verbinden von ExpressRoute mit dem Gateway für virtuelle Netzwerke
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 115e8829723c25fb1644f3f5652fbace529a05cb
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a3e759c12496613848f6f0bc8de596a5099b904b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945675"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438219"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -30,8 +30,8 @@ ms.locfileid: "107945675"
    | **Autorisierungsschlüssel**  | Fügen Sie den zuvor kopierten Autorisierungsschlüssel ein. |
    | **Peerleitungs-URI**  | Fügen Sie die zuvor kopierte ExpressRoute-ID ein.  |
 
-   :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="Screenshot: Seite „Verbindung hinzufügen“ zum Verbinden von ExpressRoute mit dem VNET-Gateway":::
+   :::image type="content" source="../media/tutorial-configure-networking/add-connection.png" alt-text="Ein Screenshot, der die Seite „Hinzufügen einer Verbindung“ zum Verbinden von ExpressRoute mit dem virtuellen Netzwerkgateway zeigt":::.
 
 Die Verbindung zwischen Ihrer ExpressRoute-Leitung und Ihrem virtuellen Netzwerk wird erstellt.
 
-:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="Screenshot: VNET-Gatewayverbindungen":::
+:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="Ein Screenshot, der eine erfolgreiche Verbindung mit dem virtuellen Netzwerkgateway zeigt.":::

@@ -10,12 +10,16 @@ items:
     items:
       - name: 'Purview-Konto erstellen: Azure-Portal'
         href: create-catalog-portal.md
+      - name: 'Erstellen einer Sammlung: Azure-Portal'
+        href: quickstart-create-collection.md
       - name: 'Purview-Konto erstellen: Azure PowerShell'
         href: create-catalog-powershell.md
       - name: "Erstellen eines Purview-Kontos: .NET\_SDK"
         href: create-purview-dotnet.md
       - name: 'Erstellen eines Purview-Kontos: Python'
         href: create-purview-python.md
+      - name: 'Erstellen eines Purview-Kontos: Azure-Portal – Häufig gestellte Fragen'
+        href: create-purview-portal-faq.md
       - name: 'Verwalten von Kafka-Benachrichtigungen: .NET'
         href: manage-kafka-dotnet.md
   - name: Tutorials
@@ -50,8 +54,10 @@ items:
         href: deployment-best-practices.md
       - name: Azure Purview-Grenzwerte
         href: how-to-manage-quotas.md
-      - name: So werden gelöschte Ressourcen bei Scans erkannt
-        href: concept-detect-deleted-assets.md
+      - name: Überprüfungen und Erfassung
+        href: concept-scans-and-ingestion.md
+      - name: Elastische Data Map
+        href: concept-elastic-data-map.md
       - name: Grundlegendes zu Ressourcensätzen
         href: concept-resource-sets.md
       - name: Datenherkunft
@@ -71,9 +77,11 @@ items:
       - name: Ressourcennormalisierung
         href: concept-asset-normalization.md
       - name: Häufig gestellte Fragen
-        href: frequently-asked-questions.md
+        href: ./frequently-asked-questions.yml
   - name: Anleitungen
     items:
+      - name: Erstellen und Verwalten von Sammlungen
+        href: how-to-create-and-manage-collections.md
       - name: Registrieren und scannen
         items:
           - name: Anmeldeinformationen verwalten
@@ -129,6 +137,8 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: "Dedizierter Azure-SQL-Pool (vormals SQL\_DW)"
                 href: register-scan-azure-synapse-analytics.md
+              - name: Cassandra
+                href: register-scan-cassandra-source.md
               - name: Erwin
                 href: register-scan-erwin-source.md
               - name: Google BigQuery
@@ -175,6 +185,8 @@ items:
             href: how-to-browse-catalog.md
           - name: Data Catalog suchen
             href: how-to-search-catalog.md
+          - name: 'Anzeigen, Bearbeiten und Löschen von Katalogressourcen'
+            href: catalog-asset-details.md
       - name: Herkunft
         items:
           - name: Benutzerhandbuch zur Datenherkunft
@@ -183,12 +195,30 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share-Datenherkunft
             href: how-to-link-azure-data-share.md
+          - name: Azure Synapse Analytics-Datenherkunft
+            href: how-to-lineage-azure-synapse-analytics.md
+          - name: Cassandra-Datenherkunft
+            href: how-to-lineage-cassandra.md
+          - name: Erwin-Datenherkunft
+            href: how-to-lineage-erwin.md
+          - name: Looker-Datenherkunft
+            href: how-to-lineage-looker.md
+          - name: Google BigQuery-Datenherkunft
+            href: how-to-lineage-google-bigquery.md
+          - name: Oracle-Datenherkunft
+            href: how-to-lineage-oracle.md
           - name: "Power\_BI-Datenherkunft"
             href: how-to-lineage-powerbi.md
+          - name: "SAP\_S/4HANA-Datenherkunft"
+            href: how-to-lineage-saps4hana.md
+          - name: "SAP\_ECC-Datenherkunft"
+            href: how-to-lineage-sapecc.md
           - name: Spark-Datenherkunft
             href: how-to-lineage-spark-atlas-connector.md
           - name: "SQL\_Server Integration Services-Datenherkunft"
             href: how-to-lineage-sql-server-integration-services.md
+          - name: Teradata-Datenherkunft
+            href: how-to-lineage-teradata.md
       - name: Überwachen
         items:
           - name: Überwachung mit Azure Monitor
@@ -209,8 +239,18 @@ items:
             href: file-extension-insights.md
       - name: Sicherheit + Netzwerkbetrieb
         items:
-          - name: Verwalten von privaten Endpunkten
+          - name: "Private Azure\_Purview-Endpunkte: Übersicht"
             href: catalog-private-link.md
+          - name: Privates und sicheres Herstellen einer Verbindung mit Ihrem Purview-Konto
+            href: catalog-private-link-account-portal.md
+          - name: Privates und sicheres Überprüfen Ihrer Datenquellen
+            href: catalog-private-link-ingestion.md
+          - name: Privates und sicheres Herstellen einer Verbindung mit Azure Purview und Überprüfen von Datenquellen
+            href: catalog-private-link-end-to-end.md
+          - name: 'Private Azure Purview-Endpunkte: DNS-Konfiguration'
+            href: catalog-private-link-name-resolution.md
+          - name: 'Private Azure Purview-Endpunkte: Leitfaden zur Problembehandlung'
+            href: catalog-private-link-troubleshoot.md
           - name: "Häufig gestellte Fragen zu privaten Azure\_Purview-Endpunkten"
             href: catalog-private-link-faqs.md
       - name: Notfallwiederherstellung

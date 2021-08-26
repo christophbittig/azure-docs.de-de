@@ -8,19 +8,19 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 15e6c2383539a1b7c119346ea0624a01964f2364
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 27b1b08196ef76bba92bf1f2ff518585c896178a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762763"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743533"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>Unterstützte Sitzungsgrenzcontroller (SBCs) und Sprachrouting
 Mit dem Azure Communication Services direktem Routing können Sie Ihre vorhandene Infrastruktur der Telefonie mit Azure verbinden. In diesem Artikel werden die Schritte aufgeführt, die auf hoher Ebene zum Verbinden eines unterstützten Session Border Controller (SBC) zum direkten Routing erforderlich sind. Außerdem wird erläutert, wie das Sprachrouting für die aktivierte Communication-Ressource funktioniert. 
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
  
-Informationen dazu, ob Azure Communication Services direktes Routing die richtige Lösung für Ihr Unternehmen ist, finden Sie unter [Azure-Telefoniekonzepte](./telephony-concept.md). Informationen zu den Voraussetzungen und zur Planung Ihrer Bereitstellung finden Sie unter [Anforderungen an die Infrastruktur für das direkte Routing in Communication Services](./sip-interface-infrastructure.md).
+Informationen dazu, ob Azure Communication Services direktes Routing die richtige Lösung für Ihr Unternehmen ist, finden Sie unter [Azure-Telefoniekonzepte](./telephony-concept.md). Informationen zu den Voraussetzungen und zur Planung Ihrer Bereitstellung finden Sie unter [Anforderungen an die Infrastruktur für das direkte Routing in Communication Services](./direct-routing-infrastructure.md).
 
 ## <a name="connect-the-sbc-with-azure-communication-services"></a>Verbinden von SBC mit Azure Communication Services
 
@@ -32,7 +32,7 @@ Wenn Sie Office 365 verwenden, stellen Sie sicher, dass sich der Domänenteil de
 - Wenn beispielsweise `contoso.com` eine registrierte Domäne in O365 ist, können Sie `sbc.contoso.com` nicht für Communication Services verwenden. Sie können jedoch eine Domäne der obersten Ebene verwenden, wenn sie in O365 nicht vorhanden ist: Sie können eine `acs.contoso.com`-Domäne erstellen und den FQDN `sbc.acs.contoso.com` als SBC-Namen verwenden.
 - Das SBC-Zertifikat muss mit dem Namen übereinstimmen. Platzhalterzertifikate werden unterstützt.
 - Die Domäne *.onmicrosoft.com kann nicht für den FQDN des SBC verwendet werden.
-Die vollständige Liste der Anforderungen finden Sie unter [Infrastruktur für das direkte Routing in Azure](./sip-interface-infrastructure.md).
+Die vollständige Liste der Anforderungen finden Sie unter [Infrastruktur für das direkte Routing in Azure](./direct-routing-infrastructure.md).
 
    :::image type="content" source="../media/direct-routing-provisioning/add-session-border-controller.png" alt-text="Hinzufügen eines Session Border Controllers":::.
 - Klicken Sie abschließend auf Weiter.

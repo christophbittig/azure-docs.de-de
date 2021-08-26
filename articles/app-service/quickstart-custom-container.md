@@ -7,12 +7,12 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2d4e22c58fd45edc4beb58b4b1b9ae7c835e8fa9
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: e6c2a452441b268adc52ef3d9337aa5e604fe1e6
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215449"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729863"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
@@ -208,7 +208,7 @@ Verwenden Sie für das Erstellen einer Containerregistrierung die Anweisungen un
 
     ![Anmelden bei Azure](./media/quickstart-docker/sign-in.png)
 
-1. Überprüfen Sie unten auf der [Statusleiste](https://code.visualstudio.com/docs/getstarted/userinterface), ob die E-Mail-Adresse Ihres Azure-Kontos angezeigt wird. Im **APP SERVICE**-Explorer sollte Ihr Abonnement angezeigt werden.
+1. Überprüfen Sie unten auf der [Statusleiste](https://code.visualstudio.com/docs/getstarted/userinterface), die E-Mail-Adresse Ihres Azure-Kontos. Im **APP SERVICE**-Explorer sollte Ihr Abonnement angezeigt werden.
 
 1. Wählen Sie auf der Aktivitätsleiste das **Docker**-Logo aus. Überprüfen Sie im **REGISTRIERUNGS**-Explorer, ob die von Ihnen erstellte Containerregistrierung angezeigt wird.
 
@@ -291,7 +291,7 @@ In diesem Dockerfile ist das übergeordnete Image einer der integrierten Java-Co
 
 3. Geben Sie im Feld „Imagetag“ das gewünschte Tag im Format `<acr-name>.azurecr.io/<image-name>/<tag>` an. Dabei ist `<acr-name>` der Name der von Ihnen erstellten Containerregistrierung. Drücken Sie die **EINGABETASTE**.
 
-4. Klicken Sie nach Abschluss der Imageerstellung oben im **IMAGES**-Explorer auf **Aktualisieren**, und überprüfen Sie, ob das Image erfolgreich erstellt wurde.
+4. Klicken Sie nach Abschluss der Imageerstellung oben im **IMAGES**-Explorer auf **Aktualisieren** und überprüfen Sie, ob das Image erfolgreich erstellt wurde.
 
     ![Screenshot des erstellten Images mit Tag](./media/quickstart-docker/built-image.png)
 
@@ -300,7 +300,7 @@ In diesem Dockerfile ist das übergeordnete Image einer der integrierten Java-Co
 1. Klicken Sie auf der Aktivitätsleiste auf das Symbol **Docker**. Suchen Sie im **IMAGES**-Explorer nach dem Image, das Sie gerade erstellt haben.
 1. Erweitern Sie das Image, klicken Sie mit der rechten Maustaste auf das gewünschte Tag, und klicken Sie auf **Pushen**.
 1. Achten Sie darauf, dass das Imagetag mit `<acr-name>.azurecr.io` beginnt, und drücken Sie die **EINGABETASTE**.
-1. Wenn Visual Studio Code das Pushen des Images in Ihre Containerregistrierung abgeschlossen hat, klicken Sie oben im **REGISTRIERUNGS**-Explorer auf **Aktualisieren**, und vergewissern Sie sich, dass das Image erfolgreich gepusht wurde.
+1. Wenn Visual Studio Code das Pushen des Images in Ihre Containerregistrierung abgeschlossen hat, klicken Sie oben im **REGISTRIERUNGS**-Explorer auf **Aktualisieren** und vergewissern Sie sich, dass das Image erfolgreich gepusht wurde.
 
     ![Screenshot des in Azure Container Registry bereitgestellten Images](./media/quickstart-docker/image-in-registry.png)
 

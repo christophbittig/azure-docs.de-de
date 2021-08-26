@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Tutorial zum Schreiben des Minimalcodes für eine Client-App mit dem .NET (C#) SDK.
 author: baanders
 ms.author: baanders
-ms.date: 11/02/2020
+ms.date: 04/28/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: be0502f61105b88e5a751dde88e4828722c866af
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 48d1fd6797dee7f73c2af6b7455b9d58de04f237
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446818"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429589"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -147,7 +147,7 @@ Als Nächstes folgt ein Codeabschnitt, der mit dem Azure Digital Twins-Dienst in
 
 Fügen Sie den folgenden Code unterhalb des Autorisierungscodes ein, den Sie zuvor erstellt haben.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs" id="ClientExcerptModel":::
 
 Führen Sie in Ihrem Befehlsfenster das Programm mit diesem Befehl aus: 
 

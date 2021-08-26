@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f7a35faa75af5a6205609e7afd40225d960d132
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cff544e3d9ba2851db02e0e4440ba9f97b240e68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964617"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580834"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub
 
@@ -59,13 +59,19 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 7. Klicken Sie auf **OK**, um die Event Hub-Konfiguration zu beenden.
 
-8. Führen Sie einen oder beide der folgenden Schritte aus:
-    * Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Event Hub zu senden. 
-    * Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an den Event Hub zu senden.
+8. Führen Sie eine beliebige Kombination der folgenden Möglichkeiten durch:
+    - Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an den Event Hub zu senden. 
+    - Aktivieren Sie das Kontrollkästchen **SignInLogs**, um die Anmeldeprotokolle der interaktiven Benutzer an den Event Hub zu senden.
+    - Aktivieren Sie das Kontrollkästchen **NonInteractiveUserSignInLogs**, um die Anmeldeprotokolle der nicht interaktiven Benutzer an den Event Hub zu senden. 
+    - Aktivieren Sie das Kontrollkästchen **ServicePrincipalSignInLogs,** um die Dienstprinzipal-Anmeldeprotokolle an den Event Hub zu senden.
+    - Aktivieren Sie das Kontrollkästchen **ManagedIdentitySignInLogs,** um die Anmeldeprotokolle für verwaltete Identitäten an den Event Hub zu senden.
+    - Aktivieren Sie das Kontrollkästchen **ProvisioningLogs**, um die Bereitstellungsprotokolle an den Event Hub zu senden.
+    - Aktivieren Sie das Kontrollkästchen **ADFSSignInLogs**, um Anmeldungen zu senden, die von einem AD FS Connect Health-Agenten an Azure AD gesendet wurden.
+
+    >[!Note]
+    >Einige Anmeldekategorien enthalten abhängig von der Konfiguration Ihres Mandanten große Mengen an Protokolldaten. Im Allgemeinen können die nicht interaktiven Benutzer- und Dienstprinzipal-Anmeldungen fünf- bis zehnmal größer sein als die interaktiven Benutzeranmeldeinformationen.
 
 9. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
-
-    ![Diagnoseeinstellungen](./media/quickstart-azure-monitor-stream-logs-to-event-hub/DiagnosticSettings.png)
 
 10. Überprüfen Sie nach ungefähr 15 Minuten, ob Ereignisse in Ihrem Event Hub angezeigt werden. Navigieren Sie hierzu im Portal zum Event Hub, und vergewissern Sie sich, dass die Anzahl von **eingehenden Nachrichten** größer als Null ist. 
 

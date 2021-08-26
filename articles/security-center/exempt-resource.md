@@ -7,12 +7,12 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339960"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
@@ -36,7 +36,7 @@ In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 | Preise:                        | Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.                                                                                                                                                                 |
 | Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Mitwirkender bei Ressourcenrichtlinien** zum Erstellen einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
 | Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
-| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)                                                                                                                                                                                         |
+| Clouds:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definieren einer Ausnahme
@@ -88,11 +88,11 @@ So erstellen Sie eine Ausnahmeregel:
 
     - In der Informationsleiste am oberen Rand der Seite mit den Empfehlungsdetails wird die Anzahl von ausgeschlossenen Ressourcen aktualisiert:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Anzahl von ausgeschlossenen Ressourcen":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Anzahl von ausgeschlossenen Ressourcen.":::
 
 1. Öffnen Sie die Registerkarte **Nicht anwendbar**, um Ihre ausgeschlossenen Ressourcen anzuzeigen:
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändern einer Ausnahme":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändern einer Ausnahme.":::
 
     Der Grund für die einzelnen Ausnahmen ist jeweils in der Tabelle angegeben (1).
 

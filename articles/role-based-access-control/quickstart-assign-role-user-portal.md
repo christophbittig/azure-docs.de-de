@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/22/2019
+ms.date: 06/07/2021
 ms.author: rolyon
-ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 5df6b591cc7ba3795104957b9cd11de814e2472a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559316"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591870"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit dem Azure-Portal
 
@@ -40,55 +41,54 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 1. Klicken Sie in der Navigationsliste auf **Ressourcengruppen**.
 
-1. Klicken Sie auf **Hinzufügen**, um das Blatt **Ressourcengruppe** zu öffnen.
+1. Klicken Sie auf **Neu**, um die Seite **Erstellen einer Ressourcengruppe** zu öffnen.
 
-   ![Hinzufügen einer neuen Ressourcengruppe](./media/quickstart-assign-role-user-portal/resource-group.png)
+   ![Erstellen Sie eine neue Ressourcengruppe.](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. Geben Sie für **Ressourcengruppenname** die Zeichenfolge **rbac-resource-group** ein.
+1. Wählen Sie ein Abonnement aus.
 
-1. Wählen Sie ein Abonnement und einen Standort aus.
+1. Geben Sie für den **Ressourcengruppenname** den Namen **Beispielgruppe** oder einen anderen Namen ein.
 
-1. Klicken Sie auf **Erstellen** , um die Ressourcengruppe zu erstellen.
+1. Klicken Sie auf **Überprüfen + Erstellen** und anschließend auf **Erstellen**, um die Ressourcengruppe zu erstellen.
 
 1. Klicken Sie auf **Aktualisieren**, um die Liste der Ressourcengruppen zu aktualisieren.
 
    Die neue Ressourcengruppe wird in der Liste Ihrer Ressourcengruppen angezeigt.
 
-   ![Ressourcengruppenliste](./media/quickstart-assign-role-user-portal/resource-group-list.png)
-
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
 In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Azure-Rolle zu.
 
-1. Klicken Sie in der Liste der **Ressourcengruppen** auf die neue Ressourcengruppe **rbac-resource-group**.
+1. Öffnen Sie in der Liste der **Ressourcengruppen** die neue Ressourcengruppe **Beispielgruppe**.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+1. Klicken Sie in dem Navigationsmenü auf **Zugriffssteuerung (IAM)** .
 
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die aktuelle Liste mit den Rollenzuweisungen anzuzeigen.
 
-   ![Blatt „Zugriffssteuerung (IAM)“ für Ressourcengruppe](./media/quickstart-assign-role-user-portal/access-control.png)
+   ![Wählen Sie auf der Seite „Zugriffssteuerung (IAM)“ eine Ressourcengruppe aus.](./media/shared/rg-role-assignments.png)
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-   ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+   ![Wählen Sie auf der Seite „Zugriffssteuerung (IAM)“ auf der Registerkarte „Add“ die Option „Hinzufügen von Rollenzuweisung“ aus.](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
 
-    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
+1. Wählen Sie auf der Registerkarte **Rollen** die Rolle **Mitwirkender für virtuelle Computer** aus.
 
-   ![Bereich „Rollenzuweisung hinzufügen“](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+    ![Wählen Sie auf der Seite „Hinzufügen von Rollenzuweisung“ die Registerkarte „Rolle“ aus.](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
 
-1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Mitwirkender für virtuelle Computer** aus.
+1. Wählen Sie auf der Registerkarte **Mitglieder** sich selbst oder einen anderen Benutzer aus.
 
-1. Wählen Sie in der Liste **Auswählen** sich selbst oder einen anderen Benutzer aus.
+1. Überprüfen Sie auf der Registerkarte **Überprüfen und zuweisen** die Einstellungen für die Rollenzuweisung.
 
-1. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen.
+1. Klicken Sie auf **Überprüfen und zuweisen**, um die Rolle zuzuweisen.
 
-   Nach einigen Augenblicken wird dem Benutzer die Rolle „Mitwirkender für virtuelle Computer“ im Bereich der Ressourcengruppe „rbac-resource-group“ zugewiesen.
+   Nach einigen Augenblicken wird dem Benutzer die Rolle „Mitwirkender für virtuelle Computer“ im Ressourcengruppenbereich „Beispielgruppe“ zugewiesen.
 
-   ![Rollenzuweisung: Mitwirkender von virtuellen Computern](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
+   ![Rollenzuweisung: Mitwirkender von virtuellen Computern.](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
-## <a name="remove-access"></a>Zugriff entfernen
+## <a name="remove-access"></a>Entfernen des Zugriffs
 
 In Azure RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
@@ -96,7 +96,7 @@ In Azure RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
 1. Klicken Sie auf **Entfernen**.
 
-   ![Nachricht zum Entfernen der Rollenzuweisung](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
+   ![Meldung zum Entfernen der Rollenzuweisung.](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 
@@ -104,15 +104,11 @@ In Azure RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
 1. Klicken Sie in der Navigationsliste auf **Ressourcengruppen**.
 
-1. Klicken Sie auf **rbac-resource-group**, um die Ressourcengruppe zu öffnen.
+1. Klicken Sie auf **Beispielgruppe**, um die Ressourcengruppe zu öffnen.
 
 1. Klicken Sie auf **Ressourcengruppe löschen**, um die Ressourcengruppe zu löschen.
 
-   ![Ressourcengruppe löschen](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
-
-1. Geben Sie auf dem Blatt **Löschvorgang bestätigen**  den Namen der Ressourcengruppe ein: **rbac-resource-group**.
-
-1. Klicken Sie auf **Löschen**, um die Ressourcengruppe zu löschen.
+1. Geben Sie auf dem Blatt **Wollen Sie wirklich löschen** den Namen der Ressourcengruppe ein und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

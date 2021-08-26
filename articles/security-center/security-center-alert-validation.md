@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602382"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355279"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -33,12 +33,12 @@ Verwenden Sie Beispielwarnungen für Folgendes:
 
 So erstellen Sie Beispielwarnungen:
 
-1. Wählen Sie als Benutzer mit der Rolle **Sicherheitsadministrator** oder **Abonnementmitwirkender** auf der Symbolleiste auf der Seite „Warnungen“ die Option **Create sample alerts** (Beispielwarnungen erstellen) aus.
+1. Wählen Sie als Benutzer mit der Rolle **Abonnementmitwirkender** auf der Symbolleiste auf der Seite „W **Beispielwarnungen erstellen** aus.
 1. Wählen Sie das Abonnement aus.
 1. Wählen Sie den entsprechenden Azure Defender-Plan aus, für den Sie Warnungen anzeigen möchten. 
 1. Klicken Sie auf **Beispielwarnungen erstellen**.
 
-    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Schritte zum Erstellen von Warnungen in Azure Security Center":::
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Schritte zum Erstellen von Warnungen in Azure Security Center.":::
     
     In einer Benachrichtigung werden Sie darüber informiert, dass die Beispielwarnungen erstellt werden:
 
@@ -46,7 +46,7 @@ So erstellen Sie Beispielwarnungen:
 
     Nach einigen Minuten werden die Warnungen auf der Seite mit Sicherheitswarnungen angezeigt. Sie werden auch an anderen Stellen angezeigt, die Sie für den Empfang von Azure Security Center-Sicherheitswarnungen konfiguriert haben (verbundene SIEM-Lösungen, E-Mail-Benachrichtigungen usw.).
 
-    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="Beispielwarnungen in der Liste der Sicherheitswarnungen":::
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="Beispielwarnungen in der Liste der Sicherheitswarnungen.":::
 
     > [!TIP]
     > Die Warnungen gelten für simulierte Ressourcen.

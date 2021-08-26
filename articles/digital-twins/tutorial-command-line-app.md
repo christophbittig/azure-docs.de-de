@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: Tutorial zum Erstellen eines Azure Digital Twins-Szenarios unter Verwendung einer Beispielbefehlszeilenanwendung
 author: baanders
 ms.author: baanders
-ms.date: 5/8/2020
+ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1cee1a33f74b11793d9b12db0b8bc6f65fda29a3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: e795b8d34b46fc3df0e31e12a1de0bccdab74e6a
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787676"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252706"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung Beispielclient-App
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial eine **exemplarische Befehlszeilenclientanwendung** für die Interaktion mit einer Azure Digital Twins-Instanz verwendet. Die Client-App ähnelt der unter [Tutorial: Codieren einer Client-App](tutorial-code.md) geschriebenen App.
+In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial eine **exemplarische Befehlszeilenclientanwendung** für die Interaktion mit einer Azure Digital Twins-Instanz verwendet. Die Client-App ähnelt der App die in [Kodieren einer Client-App](tutorial-code.md)geschrieben wurde.
 
 Sie können dieses Beispiel verwenden, um grundlegende Azure Digital Twins-Aktionen auszuführen, etwa Hochladen von Modellen, Erstellen und Ändern von Zwillingen und Erstellen von Beziehungen. Sie können sich auch den [Code des Beispiels](https://github.com/Azure-Samples/digital-twins-samples/tree/master/) ansehen, um mehr über die Azure Digital Twins-APIs zu erfahren, und die Implementierung eigener Befehle üben, indem Sie das Beispielprojekt wunschgemäß anpassen.
 
@@ -40,7 +40,6 @@ Nach Einrichtung der App und der Authentifizierung kann das Projekt über die fo
 :::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Screenshot: Visual Studio-Startschaltfläche (Projekt „SampleClientApp“)" lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 Ein Konsolenfenster wird geöffnet, führt die Authentifizierung durch und wartet auf einen Befehl. 
-* Die Authentifizierung erfolgt über den Browser: Ihr Standardwebbrowser wird mit einer Authentifizierungsaufforderung geöffnet. Melden Sie sich über diese Aufforderung mit Ihren Azure-Anmeldeinformationen an. Sie können dann die Browserregisterkarte oder das Browserfenster schließen.
 
 Hier sehen Sie einen Screenshot der Projektkonsole:
 
@@ -49,7 +48,7 @@ Hier sehen Sie einen Screenshot der Projektkonsole:
 > [!TIP]
 > Geben Sie zum Abrufen einer Liste mit allen möglichen Befehlen, die Sie mit diesem Projekt verwenden können, `help` in der Projektkonsole ein, und drücken Sie die EINGABETASTE.
 
-Führen Sie die Projektkonsole für die restlichen Schritte in diesem Tutorial weiter aus.
+Nachdem Sie sich vergewissert haben, dass die App erfolgreich ausgeführt wird, schließen Sie das Konsolenfenster, um die Ausführung der App vorerst zu beenden. Sie werden die App später in diesem Artikel erneut ausführen.
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>Modellieren einer physischen Umgebung mit DTDL
 
@@ -71,6 +70,8 @@ Wählen Sie die Datei *Room.json* aus, um sie im Bearbeitungsfenster zu öffnen,
 ### <a name="upload-models-to-azure-digital-twins"></a>Hochladen von Modellen in Azure Digital Twins
 
 Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-Instanz hochladen. Dadurch wird die Azure Digital Twins-Dienstinstanz mit Ihrem eigenen benutzerdefinierten Domänenvokabular konfiguriert. Nach dem Hochladen der Modelle können Sie Zwillingsinstanzen erstellen, die diese verwenden.
+
+1. Nachdem Sie die Room.js Datei im vorherigen Abschnitt bearbeitet haben, starten Sie jetzt die Ausführung der Konsolen-App erneut.
 
 1. Führen Sie im Projektkonsolenfenster den folgenden Befehl aus, um das aktualisierte Room-Modell sowie ein Floor-Modell hochzuladen, das Sie auch im nächsten Abschnitt verwenden, um unterschiedliche Arten von Zwillingen zu erstellen.
 
@@ -95,7 +96,7 @@ CreateModels Room
 ```
 
 Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben.
-Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Anleitungen: Verwalten von DTDL-Modellen](how-to-manage-model.md).
+Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Verwalten von DTDL-Modellen](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -214,12 +215,12 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query
     ```
 
-    Auf diese Weise können Sie schnell eine Bestandsaufnahme Ihrer Umgebung machen und sicherstellen, dass in Azure Digital Twins alles wunschgemäß dargestellt wird. Das Ergebnis ist eine Ausgabe, die jeden digitalen Zwilling mit seinen Details enthält. Hier sehen Sie einen Auszug:
+    Auf diese Weise können Sie schnell eine Bestandsaufnahme Ihrer Umgebung machen und sicherstellen, dass in Azure Digital Twins alles nach Ihren Wünschen dargestellt wird. Das Ergebnis ist eine Ausgabe, die jeden digitalen Zwilling mit seinen Details enthält. Hier sehen Sie einen Auszug:
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Screenshot: Teilergebnis der Zwillingsabfrage mit „room0“ und „floor1“":::
 
     >[!NOTE]
-    >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder der [CLI-Befehle](concepts-cli.md) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
+    >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder der [CLI-Befehle](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
 
 1. **Welche Räume sind in meiner Umgebung vorhanden?** (Abfrage nach Modell)
 
@@ -279,4 +280,4 @@ In diesem Tutorial haben Sie die ersten Schritte mit Azure Digital Twins durchge
 
 Im nächsten Tutorial wird eine Kombination aus Azure Digital Twins und anderen Azure-Diensten in einem datengesteuerten End-to-End-Szenario verwendet:
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md)
+> [Verbinden einer End-to-End-Lösung](tutorial-end-to-end.md)

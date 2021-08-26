@@ -59,6 +59,8 @@ items:
             displayName: 'Transparency note for Text Analytics Key Phrase Analysis, Text Analytics Transparency for Key Phrase Analysis, Responsible AI, Responsible use of AI, Text Analytics Key Phrase Analysis, Key Phrase Analysis Transparency Note'
           - name: Für die Sprachenerkennung
             href: /legal/cognitive-services/text-analytics/transparency-note-language-detection?context=/azure/cognitive-services/text-analytics/context/context
+          - name: Für Textzusammenfassung
+            href: /legal/cognitive-services/text-analytics/transparency-note-extractive-summarization?context=/azure/cognitive-services/text-analytics/context/context
             displayName: 'Transparency note for Text Analytics Language Detection, Text Analytics Transparency for Language Detection, Responsible AI, Responsible use of AI, Text Analytics Language Detection, Language Detection Transparency Note'
       - name: Integration und verantwortungsvolle Verwendung
         href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
@@ -81,6 +83,8 @@ items:
         displayName: 'NER, Named entity recognition, PII, redaction'
       - name: Textanalyse für Gesundheit
         href: How-tos/text-analytics-for-health.md
+      - name: Zusammenfassung
+        href: How-tos/extractive-summarization.md
       - name: Verwenden von Containern
         items:
           - name: Installieren und Ausführen von Containern
@@ -133,6 +137,8 @@ items:
     items:
       - name: Textanalyse-API
         items:
+          - name: v3.2-preview.1
+            href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-1'
           - name: v3.1
             href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1'
           - name: v3.0

@@ -2,20 +2,20 @@
 title: 'Schnellstart: Anrufautomatisierungs-API von Azure Communication Services'
 titleSuffix: An Azure Communication Services quickstart document
 description: Enthält ein Schnellstartbeispiel für die Anfrufautomatisierungs-APIs.
-author: joseys
+author: GrantMeStrength
 manager: anvalent
 services: azure-communication-services
-ms.author: joseys
+ms.author: jken
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 94adf38e2fac5a57f26d6a3a88c5c4b2f71cc995
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4acc1ba17dd10b70a7873aa06626d410a3426c87
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473189"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252518"
 ---
 # <a name="quickstart-use-the-call-automation-apis"></a>Ein Schnellstart für das Verwenden der Anrufautomatisierung-APIs
 

@@ -2,18 +2,20 @@
 title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure'
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
-ms.custom: contperf-fy21q4
+ms.custom: contperf-fy22q1
 ms.date: 04/23/2021
-ms.openlocfilehash: 13f74c6120bd78127a2989218b3d535989bb7861
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 10326a07e5838dd5fe2264029c857f5ad49f5811
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945676"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442018"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
-Eine private Azure VMware Solution-Cloud erfordert ein virtuelles Azure-Netzwerk. Da Azure VMware Solution Ihre lokale vCenter-Instanz nicht unterstützt, müssen Sie zusätzliche Schritte für die Integration in Ihre lokale Umgebung durchführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für virtuelle Netzwerke ist ebenfalls erforderlich.
+Eine private Azure VMware Solution-Cloud erfordert ein virtuelles Azure-Netzwerk. Da Azure VMware Solution Ihre lokale vCenter-Instanz nicht unterstützt, sind zusätzliche Schritte erforderlich, um die Integration in Ihre lokale Umgebung durchführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für virtuelle Netzwerke ist ebenfalls erforderlich.
+
+[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)]
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -46,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Auswählen von „Überprüfen + erstellen“" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Ein Screenshot, der die Einstellungen für das neue virtuelle Netzwerk zeigt" border="true":::.
 
 1. Überprüfen Sie die Angaben, und wählen Sie dann **Erstellen** aus. Nach Abschluss der Bereitstellung wird Ihr virtuelles Netzwerk in der Ressourcengruppe angezeigt.
 
@@ -74,7 +76,7 @@ Sie haben ein virtuelles Netzwerk erstellt und erstellen nun ein Gateway für da
    | **Adressbereich für Gatewaysubnetz** | Dieser Wert wird aufgefüllt, wenn Sie das virtuelle Netzwerk auswählen. Lassen Sie den Standardwert unverändert. |
    | **Öffentliche IP-Adresse** | Wählen Sie **Neu erstellen**. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Geben Sie Werte für die Felder an, und wählen Sie anschließend „Überprüfen und erstellen“ aus." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Ein Screenshot, der die Details für das Gateway für virtuelle Netzwerke zeigt" border="true":::.
 
 1. Überprüfen Sie die Details auf ihre Richtigkeit, und wählen Sie dann **Erstellen** aus, um die Bereitstellung des Gateways für virtuelle Netzwerke zu starten. 
 1. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort, um Ihre ExpressRoute-Verbindung mit dem Gateway für virtuelle Netzwerke zu verbinden, das Ihre private Azure VMware Solution-Cloud enthält.
@@ -88,7 +90,7 @@ Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Netzwerks
@@ -99,4 +101,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erfahren Sie, wie Sie die NSX-T-Netzwerksegmente erstellen, die für virtuelle Computer in vCenter verwendet werden.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution](tutorial-nsx-t-network-segment.md)
+> [Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution](./tutorial-nsx-t-network-segment.md)

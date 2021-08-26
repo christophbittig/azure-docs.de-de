@@ -5,25 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 07/01/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ddda3abea3eab3e959494475ebdef4270ea9a98
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 357049d855aacbacb4b1455304e4fb84565bfb27
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213757"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759820"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
-Die B2B-Zusammenarbeit (Business-to-Business) von Azure Active Directory (Azure AD) ist ein Feature im Rahmen von externen Identitäten, mit dem Sie Gastbenutzer zur Zusammenarbeit mit Ihrer Organisation einladen können. Mithilfe der B2B-Zusammenarbeit können Sie Anwendungen und Dienste Ihres Unternehmens auf sichere Weise für Gastbenutzer aus anderen Organisationen freigeben und gleichzeitig die Kontrolle über Ihre eigenen Unternehmensdaten behalten. Arbeiten Sie sicher und geschützt mit externen Partnern zusammen, ob groß oder klein, auch wenn sie keine Azure AD oder eine IT-Abteilung haben. Ein einfacher Prozess zum Senden und Einlösen von Einladungen ermöglicht es Partnern, ihre eigenen Zugangsdaten für den Zugriff auf die Ressourcen Ihres Unternehmens zu verwenden. Entwickler können Azure AD Business-to-Business-APIs verwenden, um den Einladungsprozess anzupassen oder Anwendungen wie Self-Service-Anmeldeportale zu schreiben. Lizenz- und Preisinformationen zu Gastbenutzern finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).  
+Die B2B-Zusammenarbeit (Business-to-Business) von Azure Active Directory (Azure AD) ist ein Feature im Rahmen von externen Identitäten, mit dem Sie Gastbenutzer zur Zusammenarbeit mit Ihrer Organisation einladen können. Mithilfe der B2B-Zusammenarbeit können Sie Anwendungen und Dienste Ihres Unternehmens auf sichere Weise für Gastbenutzer aus anderen Organisationen freigeben und gleichzeitig die Kontrolle über Ihre eigenen Unternehmensdaten behalten. Arbeiten Sie sicher und geschützt mit externen Partnern zusammen, ob groß oder klein, auch wenn sie keine Azure AD oder eine IT-Abteilung haben. Ein einfacher Prozess zum Senden und Einlösen von Einladungen ermöglicht es Partnern, ihre eigenen Zugangsdaten für den Zugriff auf die Ressourcen Ihres Unternehmens zu verwenden. Entwickler können Azure AD Business-to-Business-APIs verwenden, um den Einladungsprozess anzupassen oder Anwendungen wie Self-Service-Anmeldeportale zu schreiben. Lizenz- und Preisinformationen in Verbindung mit Gastbenutzern finden Sie unter [Azure Active Directory for External Identities – Preise](https://azure.microsoft.com/pricing/details/active-directory/external-identities/).  
 
 > [!IMPORTANT]
-> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+>
+> - Wenn Azure AD B2B-Kunden ab dem **12. Juli 2021** neue Google-Integrationen für die Self-Service-Registrierung für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, funktioniert die Authentifizierung mit Google-Identitäten erst, wenn Authentifizierungen in die Systemwebansichten verschoben werden. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
 > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf wird Kunden die allgemein verfügbare [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) empfohlen.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Zusammenarbeit mit jedem Partner über seine Identitäten

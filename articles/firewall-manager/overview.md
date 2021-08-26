@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 06/21/2021
 ms.author: victorh
-ms.openlocfilehash: a9f63b41afebc12566c8cc2e04664850203f1e5a
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279926"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595325"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -82,7 +82,6 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Ein geschützter virtueller Hub pro Region|Sie können nicht mehr als einen geschützten virtuellen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
 |Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Wird untersucht|
 |Filtern von Datenverkehr zwischen Hubs in Bereitstellungen mit geschützten Hubs|Das Filtern der Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt. Die Kommunikation zwischen Hubs funktioniert jedoch weiterhin, wenn die Filterung von privatem Datenverkehr per Azure Firewall nicht aktiviert ist.|Wird untersucht|
-|Spokes in einer anderen Region als der virtuelle Hub|Spokes in einer anderen Region als der virtuelle Hub werden nicht unterstützt.|Wird untersucht<br><br>Erstellen Sie einen Hub pro Region, und verknüpfen Sie VNETs, die sich in der gleichen Region befinden wie der Hub, mittels Peering.|
 |Branch-to-Branch-Datenverkehr mit aktivierter Filterung von privatem Datenverkehr|Branch-to-Branch-Datenverkehr wird nicht unterstützt, wenn die Filterung von privatem Datenverkehr aktiviert ist. |Wird untersucht<br><br>Schützen Sie privaten Datenverkehr nicht, wenn die Branch-to-Branch-Konnektivität wichtig ist.|
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
@@ -91,5 +90,6 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Lern-Modul: Einführung in den Azure Firewall Manager](/learn/modules/intro-to-azure-firewall-manager/).
 - Lesen Sie [Übersicht über die Bereitstellung mit Azure Firewall Manager](deployment-overview.md)
 - Weitere Informationen über [geschützte virtuelle Hubs](secured-virtual-hub.md)

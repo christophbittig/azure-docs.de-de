@@ -7,12 +7,12 @@ ms.author: jastenze
 ms.date: 04/20/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 747551dcc400f399e5c36e6a851fdb0f25aaf65b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: e47e4e9f784e51c646da22063ee954d9b60a4e11
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109755080"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202669"
 ---
 # <a name="model-conversion-error-codes"></a>Fehlercodes bei der Modellkonvertierung
 
@@ -34,3 +34,10 @@ Bei gängigen Modi des Modellkonvertierungsfehlers enthält das aus dem `Value`-
 | ASSET_CANNOT_BE_CONVERTED | Das bereitgestellte Objekt wurde beschädigt, falsch formatiert oder kann auf andere Weise nicht im angegebenen Format konvertiert werden. | Stellen Sie sicher, dass es sich bei dem Objekt um eine gültig konstruierte Datei des angegebenen Typs handelt, und lesen Sie die Richtlinien für die Objektgröße, bevor Sie eine Ressource zur Konvertierung übermitteln, um die Konformität sicherzustellen: aka.ms/aoa/faq |
 
 Alle Fehler, die außerhalb der tatsächlichen Objektkonvertierungsaufträge auftreten, werden als Ausnahmen ausgelöst. Insbesondere kann `Azure.RequestFailedException` für Dienstaufrufe ausgelöst werden, die einen nicht erfolgreichen (4xx oder 5xx) oder unerwarteten HTTP-Antwortcode empfangen. Weitere Informationen zu diesen Ausnahmen finden Sie in den `Status`, `ErrorCode` oder `Message`-Feldern für die Ausnahme.
+
+| Ausnahme                  | Ursache                       |
+| ---                      | ---                               |
+| ArgumentException |  <ul><li>Diese Ausnahme tritt auf, wenn eine ungültig konstruierte oder mit Null bezifferte Konto-IDs verwendet werden, um eine Anforderung mit dem ObjectAnchorsConversionClient zu erstellen.</li><li>Diese Ausnahme tritt auf, wenn versucht wird, den ObjectAnchorsConversionClient mithilfe einer ungültigen Leerraumkontodomäne zu initialisieren.</li><li>Diese Ausnahme tritt auf, wenn dem ObjectAnchorsConversionClient über die ObjectAnchorsConversionClientOptions eine nicht unterstützte Dienstversion bereitgestellt wird.</li></ul> |
+| ArgumentNullException | <ul><li>Diese Ausnahme tritt auf, wenn versucht wird, den ObjectAnchorsConversionClient mithilfe einer ungültigen Leerraumkontodomäne zu initialisieren.</li><li>Diese Ausnahme tritt auf, wenn versucht wird, den ObjectAnchorsConversionClient mithilfe einer ungültigen mit Null bezifferten Anmeldeinformation zu benutzen.</li></ul> |
+| RequestFailedException | <ul><li>Die Ausnahme tritt für alle anderen Probleme auf, die auf einen fehlerhaften HTTP-Statuscode zurückzuführen sind (unabhängig vom Status eines Auftrags, der ausgeführt wird oder wurde), z. B. wenn ein Konto nicht gefunden wurde, eine ungültige Upload-URI vom Frontend erkannt wurde, ein Fehler im Frontend-Dienst vorliegt usw.</li></ul> |
+| UnsupportedAssetFileTypeException | <ul><li>Dies Ausnahme tritt auf, wenn versucht wird, einen Auftrag mit einem Objekt mit einer Erweiterung oder einem angegebenen Dateityp zu übermitteln, der nicht vom Konvertierungsdienst Azure Object Anchors unterstützt wird.</li></ul> |

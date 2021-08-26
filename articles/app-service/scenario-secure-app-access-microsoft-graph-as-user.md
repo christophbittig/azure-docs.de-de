@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 06/21/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff35dc6211992bd3d89161dede2745c2e366ee8f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063382"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463817"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Tutorial: Zugreifen auf Microsoft Graph über eine geschützte App als Benutzer
 
@@ -58,19 +58,76 @@ Die Web-App verfügt nun über die erforderlichen Berechtigungen für den Zugrif
 > [!IMPORTANT]
 > Wenn Sie App Service nicht so konfigurieren, dass ein verwendbares Zugriffstoken zurückgegeben wird, erhalten Sie beim Aufrufen von Microsoft Graph-APIs in Ihrem Code den Fehler ```CompactToken parsing failed with error code: 80049217```.
 
-Navigieren Sie zu [Azure-Ressourcen-Explorer](https://resources.azure.com/), und suchen Sie in der Ressourcenstruktur nach Ihrer Web-App. Die Ressourcen-URL sollte in etwa wie folgt lauten: `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`.
+# <a name="azure-resource-explorer"></a>[Azure-Ressourcen-Explorer](#tab/azure-resource-explorer)
+Navigieren Sie zu [Azure-Ressourcen-Explorer](https://resources.azure.com/), und suchen Sie in der Ressourcenstruktur nach Ihrer Web-App. Die Ressourcen-URL sollte in etwa wie folgt lauten: `https://resources.azure.com/subscriptions/subscriptionId/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`.
 
 Der Azure-Ressourcen-Explorer wird nun mit der in der Ressourcenstruktur ausgewählten Web-App geöffnet. Wählen Sie am oberen Rand der Seite die Option **Lesen/Schreiben** aus, um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
 
-Führen Sie im Browser links einen Drilldown für **config** > **authsettings** aus.
+Führen Sie im Browser links einen Drilldown für **config** > **authsettingsV2** aus.
 
-Wählen Sie in der Ansicht **authsettings** die Option **Bearbeiten** aus. Legen Sie ```additionalLoginParams``` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Client-ID verwenden.
+Wählen Sie in der Ansicht **authsettingsV2** die Option **Bearbeiten** aus. Suchen Sie den Abschnitt **login** von **identityProviders** ->  **azureActiveDirectory** und fügen Sie die folgenden **loginParameter**-Einstellungen hinzu: `"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`.
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=00000003-0000-0000-c000-000000000000"],
+"identityProviders": {
+    "azureActiveDirectory": {
+      "enabled": true,
+      "login": {
+        "loginParameters":[
+          "response_type=code id_token",
+          "resource=00000003-0000-0000-c000-000000000000"
+        ]
+      }
+    }
+  }
+},
 ```
 
 Speichern Sie Ihre Einstellungen, indem Sie **PUT** auswählen. Es kann mehrere Minuten dauern, bis die Einstellung wirksam wird. Ihre Web-App ist jetzt so konfiguriert, dass auf Microsoft Graph mit einem richtigen Zugriffstoken zugegriffen wird. Wenn nicht, wird von Microsoft Graph ein Fehler mit dem Hinweis zurückgegeben, dass das Format des kompakten Tokens fehlerhaft ist.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI), um die Service Web App REST APIs aufzurufen, um die Authentifizierungskonfigurationseinstellungen [abzurufen](/rest/api/appservice/web-apps/get-auth-settings) und zu [aktualisieren](/rest/api/appservice/web-apps/update-auth-settings), damit Ihre Webanwendung Microsoft Graph aufrufen kann. Öffnen Sie ein Befehlsfenster, und melden Sie sich bei Azure CLI an:
+
+```azurecli
+az login
+```
+
+Rufen Sie Ihre bestehenden „config/authsettingsv2“-Einstellungen ab und speichern Sie sie in einer lokalen *authsettings.json*-Datei.
+
+```azurecli
+az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2/list?api-version=2020-06-01' > authsettings.json
+```
+
+Öffnen Sie die authsettings.jsin- Datei mit Ihrem bevorzugten Text-Editor. Suchen Sie den Abschnitt **login** von **identityProviders** ->  **azureActiveDirectory** und fügen Sie die folgenden **loginParameter**-Einstellungen hinzu: `"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`.
+
+```json
+"identityProviders": {
+    "azureActiveDirectory": {
+      "enabled": true,
+      "login": {
+        "loginParameters":[
+          "response_type=code id_token",
+          "resource=00000003-0000-0000-c000-000000000000"
+        ]
+      }
+    }
+  }
+},
+```
+
+Speichern Sie Ihre Änderungen in der *authsettings.json*-Datei und laden Sie die lokalen Einstellungen in Ihre Webanwendung hoch:
+
+```azurecli
+az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2?api-version=2020-06-01' --body @./authsettings.json
+```
+---
+
+## <a name="update-the-issuer-url"></a>Aktualisieren Sie die Aussteller-URL
+Kehren Sie zurück zum [Azure-Portal](https://portal.azure.com) und navigieren Sie zu Ihrer App Service und dann zu dem Blatt **Authentifizierung**.
+
+Klicken Sie auf den **Bearbeiten** Link neben dem Microsoft Identitätsanbieter.
+
+Überprüfen Sie die **Aussteller-URL** auf der Registerkarte **Basics**. Wenn die **Aussteller-URL** am Ende „/v2.0“ enthält, entfernen Sie es und klicken Sie dann auf **Speichern**. Wenn Sie „/v2.0“ nicht entfernen, erhalten Sie die Meldung *AADSTS901002: Der Anforderungsparameter „Ressource“ wird nicht unterstützt*, wenn Sie sich bei Web-App anmelden.
 
 ## <a name="call-microsoft-graph-net"></a>Aufrufen von Microsoft Graph (.NET)
 

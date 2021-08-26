@@ -3,14 +3,14 @@ title: 'Tutorial zu Kubernetes in Azure: Erstellen einer Containerregistrierung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erstellen Sie eine Azure Container Registry-Instanz und laden das Containerimage einer Beispielanwendung hoch.
 services: container-service
 ms.topic: tutorial
-ms.date: 01/31/2021
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fd53fab577797ad8bfdbf29b4a6d219e61ee3ef4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/20/2021
+ms.custom: mvc, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 157aae551f4fa77c4739670081804af1b8dbf16b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764259"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697769"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Tutorial: Bereitstellen und Verwenden von Azure Container Registry
 
@@ -28,11 +28,21 @@ In nachfolgenden Tutorials wird diese ACR-Instanz in einen Kubernetes-Cluster in
 
 Im [vorherigen Tutorial][aks-tutorial-prepare-app] wurde ein Containerimage für eine einfache Azure Voting-App erstellt. Wenn Sie das Image der Azure Voting-App noch nicht erstellt haben, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Für dieses Tutorial müssen Sie mindestens die Azure PowerShell-Version 5.9.0 ausführen. Führen Sie `Get-InstalledModule -Name Az` aus, um die Version zu ermitteln. Falls Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure PowerShell][azure-powershell-install] weitere Informationen.
+
+---
 
 ## <a name="create-an-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
 
 Zum Erstellen einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
 
@@ -46,13 +56,41 @@ Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Containe
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Erstellen Sie eine Ressourcengruppe mit dem[New-AzResourceGroup][new-azresourcegroup]Cmdlet. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location eastus
+```
+
+Erstellen Sie mit dem [New-AzContainerRegistry][new-azcontainerregistry] Cmdlet eine Azure Container Registry-Instanz, und geben Sie einen eigenen Registrierungsnamen an. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im weiteren Verlauf dieses Tutorials wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet. Geben Sie Ihren eigenen eindeutigen Registrierungsnamen an. Die *Basic*-SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
+
+```azurepowershell
+New-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrname> -Sku Basic
+```
+
+---
+
 ## <a name="log-in-to-the-container-registry"></a>Anmelden bei der Containerregistrierung
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Zur Verwendung der ACR-Instanz müssen Sie sich zunächst anmelden. Führen Sie den Befehl [az acr login][az-acr-login] aus, und geben Sie den eindeutigen Namen der Containerregistrierung aus dem vorherigen Schritt an.
 
 ```azurecli
 az acr login --name <acrName>
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Zur Verwendung der ACR-Instanz müssen Sie sich zunächst anmelden. Verwenden Sie das [Connect-AzContainerRegistry][connect-azcontainerregistry] Cmdlet und geben Sie der Containerregistrierung aus dem vorherigen Schritt einen eindeutigen Namen.
+
+```azurepowershell
+Connect-AzContainerRegistry -Name <acrName>
+```
+
+---
 
 Nach Abschluss des Vorgangs wird eine *Erfolgsmeldung* zurückgegeben.
 
@@ -74,11 +112,22 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 Zur Verwendung des Containerimages *azure-vote-front* mit ACR muss das Image mit der Anmeldeserveradresse Ihrer Registrierung markiert werden. Dieses Tag wird beim Übertragen von Containerimages per Push in eine Imageregistrierung für das Routing verwendet.
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Führen Sie den Befehl [az acr list][az-acr-list] aus, um die Anmeldeserveradresse abzurufen, und fragen Sie die *loginServer*-Adresse wie folgt ab:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Führen Sie das [Get-AzContainerRegistry][get-azcontainerregistry] Cmdlet aus, um die Anmeldeserveradresse abzurufen, und fragen Sie den *loginServer* wie folgt ab:
+
+```azurepowershell
+(Get-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrName>).LoginServer
+```
+
+---
 
 Markieren Sie jetzt Ihr lokales Image *azure-vote-front* mit der *acrLoginServer*-Adresse der Containerregistrierung. Fügen Sie am Ende des Imagenamens *:v1* hinzu, um die Imageversion anzugeben:
 
@@ -114,6 +163,8 @@ Die Pushübertragung des Images an ACR kann einige Minuten dauern.
 
 ## <a name="list-images-in-registry"></a>Auflisten von Images in der Registrierung
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Führen Sie den Befehl [az acr repository list][az-acr-repository-list] aus, um eine Liste der Images zurückzugeben, die per Push an Ihre ACR-Instanz übertragen wurden. Geben Sie Ihren eigenen `<acrName>`-Wert wie folgt an:
 
 ```azurecli
@@ -141,6 +192,38 @@ Result
 --------
 v1
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Führen Sie das [Get-AzContainerRegistryManifest][get-azcontainerregistrymanifest] Cmdlet aus, um eine Liste der Images zurückzugeben, die an Ihre ACR-Instanz übertragen wurden. Geben Sie Ihren eigenen `<acrName>`-Wert wie folgt an:
+
+```azurepowershell
+Get-AzContainerRegistryManifest -RegistryName <acrName> -RepositoryName azure-vote-front
+```
+
+Die folgende Beispielausgabe listet das Image *azure-vote-front* in der Registrierung als verfügbar auf:
+
+```output
+Registry  ImageName        ManifestsAttributes
+--------  ---------        -------------------
+<acrName> azure-vote-front {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase}
+```
+
+Um die Tags für ein bestimmtes Image anzuzeigen, verwenden Sie das [Get-AzContainerRegistryTag][get-azcontainerregistrytag] Cmdlet wie folgt:
+
+```azurepowershell
+Get-AzContainerRegistryTag -RegistryName <acrName> -RepositoryName azure-vote-front
+```
+
+Die folgende Beispielausgabe zeigt das in einem vorherigen Schritt markierte *v1*-Image:
+
+```output
+Registry  ImageName        Tags
+--------  ---------        ----
+<acrName> azure-vote-front {v1}
+```
+
+---
 
 Sie verfügen jetzt über ein Containerimage, das in einer privaten Azure Container Registry-Instanz gespeichert ist. Dieses Image wird im nächsten Tutorial aus ACR in einem Kubernetes-Cluster bereitgestellt.
 
@@ -174,3 +257,10 @@ Im nächsten Tutorial erfahren Sie, wie Sie einen Kubernetes-Cluster in Azure be
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
+[new-azcontainerregistry]: /powershell/module/az.containerregistry/new-azcontainerregistry
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry
+[get-azcontainerregistry]: /powershell/module/az.containerregistry/get-azcontainerregistry
+[get-azcontainerregistrymanifest]: /powershell/module/az.containerregistry/get-azcontainerregistrymanifest
+[get-azcontainerregistrytag]: /powershell/module/az.containerregistry/get-azcontainerregistrytag

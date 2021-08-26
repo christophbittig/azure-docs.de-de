@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 3dbb6ca64451cb60d5a8ec67ecdc528865a4438c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff3486ae1ff34485dbae47d33d089367515664f8
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719082"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964300"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung
 
@@ -57,7 +57,7 @@ Nach erfolgreicher Bereitstellung der App-Vorlage ist das Standarddashboard ein 
 Das Dashboard ist logisch in zwei verschiedene Gateway-Geräteverwaltungsvorgänge unterteilt. 
    * Das Lager wird mit einem festen BLE-Gateway und BLE-Tags auf den Paletten bereitgestellt, um den Bestand in einer größeren Einrichtung nachverfolgen zu können.
    * Die Einzelhandelsfiliale wird mit einem festen RFID-Gateway und RFID-Tags auf Ebene der einzelnen Posten implementiert, um den Bestand in einem Outlet nachzuverfolgen.
-   * Anzeigen von Gatewaystandort, Status und zugehörigen Details 
+   * Anzeigen von dem [Gatewaystandort](../core/howto-use-location-data.md), dem Status und den zugehörigen Details 
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot: obere Hälfte des Dashboards für die intelligente Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e88d322bd4d2b174d7a52e4892970caf5b1a5e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833302"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963237"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Tutorial: Erstellen und Durchlaufen der App-Vorlage für die intelligente Zählerüberwachung 
 
@@ -63,7 +63,7 @@ Wechseln Sie zum Überprüfen der App-Erstellung und der Datensimulation zum **D
 Nachdem Sie die App-Vorlage erfolgreich bereitgestellt haben, enthält sie ein4n intelligentes BeispielZähler, ein Gerätemodell und ein Dashboard. 
 
 Adatum ist ein fiktives Energieversorgungsunternehmen, das intelligente Zähler überwacht und verwaltet. Im Dashboard für die Überwachung von intelligenten Zählern werden die entsprechenden Eigenschaften, Daten und Beispielbefehle angezeigt. In diesem Dashboard können Bediener und Supportteams proaktiv die folgenden Aktivitäten durchführen, bevor daraus Supportfälle werden: 
-* Überprüfen der aktuellen Informationen zum intelligenten Zähler und dessen Installationsposition auf der Karte
+* Überprüfen der aktuellen Informationen zum Zähler und dessen [Installationsort](../core/howto-use-location-data.md) auf der Karte
 * Proaktives Überprüfen des Status des intelligenten Zählers und des Verbindungsstatus 
 * Überwachen der minimalen und maximalen Spannungswerte für die Netzwerkintegrität 
 * Überprüfen der Energie-, Leistung- und Spannungstrends zur Erfassung anomaler Muster 

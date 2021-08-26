@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572956"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343191"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamen von Warnungen in eine SIEM-, SOAR- oder IT Service Management-Lösung
 
@@ -41,6 +41,15 @@ Azure Sentinel umfasst integrierte Connectors für Azure Security Center auf Abo
 
 - [Streamen von Warnungen in Azure Sentinel auf Abonnementebene](../sentinel/connect-azure-security-center.md)
 - [Verbinden aller Abonnements im Mandanten mit Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-security-center-auto-connect-to-sentinel/ba-p/1387539) 
+
+Wenn Sie Azure Defender mit Azure Sentinel verbinden, wird der Status der in den Azure Sentinel-Dienst übernommenen Azure Defender-Warnungen zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in einem Azure Defender geschlossen wird, wird diese Warnung auch in Azure Sentinel als geschlossen angezeigt. Das Ändern des Status einer Warnung in Azure Defender wirkt sich „nicht“ auf den Status von Azure Sentinel-**Incidents** aus, die die synchronisierte Azure Sentinel-Warnung enthalten, sondern nur auf den Status der synchronisierten Warnung selbst.
+
+Wenn Sie die Previewfunktion **bidirektionale Warnungssynchronisierung** aktivieren, wird der Status der ursprünglichen Azure Defender-Warnungen automatisch mit Azure Sentinel-Incidents synchronisiert, die die Kopien dieser Azure Defender-Warnungen enthalten. Wenn also beispielsweise ein Azure Sentinel-Incident, der eine Azure Defender-Warnung enthält, geschlossen wird, schließt Azure Defender automatisch die entsprechende ursprüngliche Warnung.
+
+Weitere Informationen finden Sie unter [Verbinden von Azure Defender-Benachrichtigungen aus Azure Security Center](../sentinel/connect-azure-security-center.md).
+
+> [!NOTE]
+> Das Feature der bidirektionalen Warnungssynchronisierung ist in der Azure Government-Cloud nicht verfügbar. 
 
 ### <a name="configure-ingestion-of-all-audit-logs-into-azure-sentinel"></a>Konfigurieren der Erfassung aller Überwachungsprotokolle in Azure Sentinel 
 

@@ -34,14 +34,6 @@
               href: service-bus-python-how-to-use-queues.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-queues.md
-        - name: Senden und Empfangen von Nachrichten (alte Versionen/Pakete)
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-get-started-with-queues-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-queues-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-queues.md
     - name: Service Bus-Themen und -Abonnements
       items:
         - name: Erstellen von Themen und Abonnements
@@ -62,14 +54,6 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-        - name: Veröffentlichen und Abonnieren von Nachrichten (alte Versionen/Pakete)
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-topics-subscriptions.md
 - name: Tutorials
   items:
     - name: Aktualisieren des Bestands
@@ -80,6 +64,8 @@
           href: service-bus-to-event-grid-integration-example.md
         - name: Azure-Funktionen
           href: service-bus-to-event-grid-integration-function.md
+    - name: Erstellen von nachrichtengesteuerten Geschäftsanwendungen mit NServiceBus
+      href: build-message-driven-apps-nservicebus.md
 - name: Beispiele
   items:
     - name: 'Service Bus-Beispiele:'
@@ -172,6 +158,22 @@
       items:
         - name: Erstellen eines Namespace
           href: service-bus-create-namespace-portal.md
+        - name: Senden und Empfangen von Nachrichten (alte Versionen/Pakete)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-queues.md
+        - name: Veröffentlichen und Abonnieren von Nachrichten (alte Versionen/Pakete)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-topics-subscriptions.md
         - name: Festlegen von Abonnementfiltern und -aktionen
           href: service-bus-filter-examples.md
         - name: Behandlung von Nachrichten
@@ -216,8 +218,6 @@
       items:
         - name: End-to-End-Ablaufverfolgung und Diagnose
           href: service-bus-end-to-end-tracing.md
-        - name: Diagnoseprotokolle
-          href: service-bus-diagnostic-logs.md
         - name: Überwachen von Azure Service Bus
           href: monitor-service-bus.md
     - name: Integrieren
@@ -267,7 +267,7 @@
           href: service-bus-service-endpoints.md
         - name: Zulassen des Zugriffs über private Endpunkte
           href: private-link-service.md
-        - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
+        - name: Verschlüsseln von Daten mit kundenseitig verwalteten Schlüsseln
           href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:

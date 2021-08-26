@@ -10,6 +10,10 @@
       href: whats-new-azure-monitor.md
     - name: Dokumentation zu Azure Virtual Desktop (klassisch)
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+- name: Schnellstarts
+  items:
+    - name: Erste Schritte mit Azure Virtual Desktop
+      href: getting-started-feature.md
 - name: Tutorials
   items:
     - name: 1. Erstellen eines Hostpools mit dem Azure-Portal
@@ -48,6 +52,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: "Bereitstellen eines in Azure\_AD eingebundenen Sitzungshosts"
+          href: deploy-azure-ad-joined-vm.md
         - name: "Bereitstellen eines virtuellen Windows\_7-Computers"
           href: deploy-windows-7-virtual-machine.md
         - name: Bereitstellen eines GPU-basierten Sitzungshosts
@@ -64,12 +70,16 @@
           href: create-host-pools-user-profile.md
         - name: Verwenden von Azure NetApp Files
           href: create-fslogix-profile-container.md
+        - name: Verwenden von Azure NetApp Files und des MSIX-Features zum Anfügen von Apps
+          href: create-netapp-files.md
         - name: Verwenden von Azure Files und Azure AD DS
           href: create-profile-container-adds.md
         - name: Verwenden von Azure Files und AD DS
           href: create-file-share.md
         - name: Installieren von Office mit FSLogix-App-Containern
           href: fslogix-office-app-rule-editor.md
+        - name: Autorisieren eines Kontos für die Verwendung von Azure Files
+          href: azure-files-authorization.md
     - name: Konfigurieren von Hostpooleinstellungen
       items:
         - name: RDP-Eigenschaften
@@ -112,12 +122,14 @@
           href: app-attach-msixmgr.md
     - name: Verwenden von Microsoft Teams
       href: teams-on-avd.md
-    - name: Einrichten von Azure AD Multi-Factor Authentication
+    - name: "Einrichten der Azure\_AD Multifactor Authentication"
       href: set-up-mfa.md
     - name: "Konfigurieren des einmaligen Anmeldens für AD\_FS"
       href: configure-adfs-sso.md
     - name: Konfigurieren automatischer Updates
       href: configure-automatic-updates.md
+    - name: Einrichten der Multimediaumleitung (Vorschau)
+      href: multimedia-redirection.md
     - name: Installieren von Sprachpaketen
       href: language-packs.md
     - name: Verwenden von Azure Advisor
@@ -175,7 +187,7 @@
     - name: Speicheroptionen für FSLogix-Profilcontainer
       href: store-fslogix-profile.md
     - name: Häufig gestellte Fragen zu Azure Virtual Desktop
-      href: faq.md
+      href: faq.yml
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.yml
     - name: MSIX-Feature zum Anfügen von Apps
@@ -185,7 +197,7 @@
         - name: Glossar
           href: app-attach-glossary.md
         - name: Häufig gestellte Fragen
-          href: app-attach-faq.md
+          href: app-attach-faq.yml
     - name: Azure Monitor-Glossar
       href: azure-monitor-glossary.md
     - name: Datenspeicherorte
@@ -200,24 +212,30 @@
       href: troubleshoot-set-up-overview.md
     - name: Identifizieren und Diagnostizieren von Problemen
       href: diagnostics-role-service.md
+    - name: Feature „Erste Schritte“
+      href: troubleshoot-getting-started.md
     - name: Hostpoolerstellung
       href: troubleshoot-set-up-issues.md
     - name: Konfiguration des virtuellen Sitzungshostcomputers
       href: troubleshoot-vm-configuration.md
-    - name: Verbindungen des Remotedesktopdiensts
-      href: troubleshoot-service-connection.md
-    - name: Azure Virtual Desktop-Agent
-      href: troubleshoot-agent.md
-    - name: Probleme des Remotedesktopclients
-      href: troubleshoot-client.md
-    - name: 'Azure Virtual Desktop: PowerShell'
-      href: troubleshoot-powershell.md
-    - name: Diagnostizieren von Problemen mit der Grafikleistung
-      href: remotefx-graphics-performance-counters.md
-    - name: Azure Monitor
-      href: troubleshoot-azure-monitor.md
     - name: Verwaltungsprobleme
       href: troubleshoot-management-issues.md
+    - name: Azure Virtual Desktop PowerShell
+      href: troubleshoot-powershell.md
+    - name: Azure Virtual Desktop-Agent
+      href: troubleshoot-agent.md
+    - name: Verbindungen des Remotedesktopdiensts
+      href: troubleshoot-service-connection.md
+    - name: Probleme des Remotedesktopclients
+      href: troubleshoot-client.md
+    - name: Diagnostizieren von Problemen mit der Grafikleistung
+      href: remotefx-graphics-performance-counters.md
+    - name: Verbindungen mit in Azure AD eingebundenen virtuellen Computern
+      href: troubleshoot-azure-ad-connections.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
+    - name: Azure Files-Autorisierung
+      href: troubleshoot-authorization.md
 - name: Verweis
   items:
     - name: Bewährte Sicherheitsmethoden

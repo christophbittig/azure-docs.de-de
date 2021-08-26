@@ -15,6 +15,8 @@
       href: quickstart.md
 - name: Tutorials
   items:
+    - name: Überwachen von Geräten und Modulen
+      href: tutorial-monitor-with-workbooks.md
     - name: Einrichten der Entwicklungsumgebung
       items:
         - name: Entwickeln mit Linux-Containern
@@ -131,6 +133,8 @@
           href: how-to-manage-device-certificates.md
         - name: Konfigurieren der geschachtelten Virtualisierung für virtuelle Windows-Computer
           href: nested-virtualization.md
+        - name: Erstellen eines virtuellen Switches für Linux unter Windows
+          href: how-to-create-virtual-switch.md
         - name: Konfigurieren der GPU-Beschleunigung für Linux unter Windows
           href: gpu-acceleration.md
     - name: Alternative Geräteszenarien
@@ -292,7 +296,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

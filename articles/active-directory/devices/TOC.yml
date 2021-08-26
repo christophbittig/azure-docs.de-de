@@ -6,7 +6,7 @@
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: false
   items:
     - name: Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen
@@ -26,6 +26,8 @@
       href: concept-azure-ad-join.md
     - name: In Azure AD eingebundene Hybridgeräte
       href: concept-azure-ad-join-hybrid.md
+    - name: Geräteregistrierungsflows
+      href: device-registration-how-it-works.md
     - name: Einmaliges Anmelden bei lokalen Ressourcen
       href: azuread-join-sso.md
     - name: Primäre Aktualisierungstoken

@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic) – Tutorial: Vorhersagen des Kreditrisikos – Azure'
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch) Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Machine Learning Studio (Classic).
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -9,24 +9,24 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 571925586bf3b70c38260392bae49c5352f10194
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ced97fb81ed1d9f5ea2f50e334aba31178df82d8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517517"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688438"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio (klassisch)
+# <a name="tutorial-1-predict-credit-risk---machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Das ist ein X, d. h., dass sich dieser Artikel nicht auf Azure Machine Learning bezieht.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Stellen Sie das Model anschließend als Machine Learning-Webdienst bereit.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden Azure Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Machine Learning Studio (Classic) erstellen können. Für diese Lösung werden Sie Machine Learning Studio (Classic) und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -43,7 +43,7 @@ Sie können dieses Experiment dann nutzen, um [in Teil 2 Modelle zu trainieren]
 
 In diesem Tutorial wird vorausgesetzt, dass Sie Machine Learning Studio (klassisch) bereits mindestens einmal verwendet haben und über Grundkenntnisse in Bezug auf Machine Learning-Konzepte verfügen. Es wird aber nicht davon ausgegangen, dass Sie Experte in diesen Bereichen sind.
 
-Wenn Sie **Azure Machine Learning Studio (klassisch)** noch nicht verwendet haben, sollten Sie mit der Schnellstartanleitung [Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio (klassisch)](create-experiment.md) beginnen. In dieser Schnellstartanleitung wird die erstmalige Verwendung von Machine Learning Studio (klassisch) Schritt für Schritt beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen.
+Wenn Sie **Machine Learning Studio (Classic)** zuvor noch nicht verwendet haben, sollten Sie mit der Schnellstartanleitung [Erstellen Ihres ersten Data Science-Experiments in Machine Learning Studio (Classic)](create-experiment.md) beginnen. In dieser Schnellstartanleitung wird die erstmalige Verwendung von Machine Learning Studio (klassisch) Schritt für Schritt beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen.
 
 
 > [!TIP] 
@@ -53,9 +53,9 @@ Wenn Sie **Azure Machine Learning Studio (klassisch)** noch nicht verwendet habe
 
 ## <a name="create-a-machine-learning-studio-classic-workspace"></a>Erstellen eines (klassischen) Machine Learning Studio-Arbeitsbereichs
 
-Um Machine Learning Studio (klassisch) verwenden zu können, benötigen Sie einen (klassischen) Microsoft Azure Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
+Um Machine Learning Studio (klassisch) verwenden zu können, benötigen Sie einen (klassisch) Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
 
-Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs (klassisch)](create-workspace.md).
+Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Machine Learning Studio-Arbeitsbereichs (Classic)](create-workspace.md).
 
 Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (klassisch) unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home). Wenn Sie über mehrere Arbeitsbereiche verfügen, können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
 
@@ -146,7 +146,7 @@ Zum Verwalten von Datasets, die Sie in Studio (klassisch) hochgeladen haben, kli
 
 ![Verwalten von Datasets](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Weitere Informationen zum Importieren anderer Datentypen in einem Experiment finden Sie unter [Importieren von Trainingsdaten in Azure Machine Learning Studio (klassisch)](import-data.md).
+Weitere Informationen zum Importieren anderer Datentypen in ein Experiment finden Sie unter [Importieren von Trainingsdaten in Machine Learning Studio (Classic)](import-data.md).
 
 ## <a name="create-an-experiment"></a>Erstellen eines Experiments
 

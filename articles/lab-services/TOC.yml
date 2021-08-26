@@ -106,12 +106,24 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Erstellen eines Labs mit einer freigegebenen Ressource
           href: how-to-create-a-lab-with-shared-resource.md
-        - name: Verwenden von Shared Image Gallery
+        - name: Verwenden der Shared Image Gallery für benutzerdefinierte Images
           items:
             - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
               href: how-to-attach-detach-shared-image-gallery.md
-            - name: Hochladen eines benutzerdefinierten Windows-Images in Shared Image Gallery
-              href: upload-custom-image-shared-image-gallery.md
+            - name: Erstellen von benutzerdefinierten Images für Labs
+              href: approaches-for-custom-image-creation.md
+            - name: Windows
+              items:
+                - name: Verwenden eines benutzerdefinierten Images von einer Azure-VM
+                  href: how-to-bring-custom-windows-image-azure-vm.md
+                - name: Verwenden eines benutzerdefinierten Images aus einer physischen Umgebung
+                  href: upload-custom-image-shared-image-gallery.md
+            - name: Linux
+              items:
+                - name: Verwenden eines benutzerdefinierten Images von einer Azure-VM
+                  href: how-to-bring-custom-linux-image-azure-vm.md
+                - name: Verwenden eines benutzerdefinierten Images aus einer physischen Umgebung
+                  href: how-to-bring-custom-linux-image-vhd.md
         - name: Hinzufügen zusätzlicher Besitzer zu einem Classroom-Lab
           href: how-to-add-user-lab-owner.md
         - name: Konfigurieren der Firewalleinstellungen
@@ -195,7 +207,7 @@
     - name: PowerShell-Modul „Az.LabServices“ (Vorschauversion)
       href: reference-powershell-module.md
     - name: Azure CLI
-      href: /cli/azure/hack
+      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
 - name: Ressourcen
   items:
     - name: Blog zu Azure Lab Services

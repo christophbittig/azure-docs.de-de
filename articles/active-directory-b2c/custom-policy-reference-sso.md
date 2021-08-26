@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: fcde9659f71dc1fb834b21feefdf02bea2739a74
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075133"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "122639649"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sitzungsverwaltung für einmaliges Anmelden in Azure Active Directory B2C
 
@@ -55,7 +55,7 @@ Ansprüche, die an die Anwendung zurückgegeben oder von Vorbedingungen in nachf
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unterdrücken des SSO-Verhaltens für ein bestimmtes technisches Profil verwendet werden. Das folgende technische `SM-Noop`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
+Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unterdrücken des SSO-Verhaltens für ein bestimmtes technisches Profil verwendet werden. Das folgende technische `SM-Noop`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) enthalten.
 
 ```xml
 <TechnicalProfile Id="SM-Noop">
@@ -66,7 +66,7 @@ Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unte
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet werden. Auf diesen Anbieter wird in der Regel in einem technischen Profil verwiesen, über das lokale und Verbundkonten verwaltet werden. Das folgende technische `SM-AAD`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
+Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet werden. Auf diesen Anbieter wird in der Regel in einem technischen Profil verwiesen, über das lokale und Verbundkonten verwaltet werden. Das folgende technische `SM-AAD`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) enthalten.
 
 ```xml
 <TechnicalProfile Id="SM-AAD">
@@ -87,7 +87,7 @@ Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet we
 ```
 
 
-Das folgende technische `SM-MFA`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`enthalten. Dieses technische Profil verwaltet die Multi-Factor Authentication-Sitzung.
+Das folgende technische `SM-MFA`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`enthalten. Dieses technische Profil verwaltet die Multi-Factor Authentication-Sitzung.
 
 ```xml
 <TechnicalProfile Id="SM-MFA">
@@ -104,7 +104,7 @@ Das folgende technische `SM-MFA`-Profil ist im [Starter Pack für benutzerdefini
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Dieser Anbieter wird verwendet, um den Bildschirm „Identitätsanbieter auswählen“ und die Abmeldung bei einem Verbundidentitätsanbieter zu unterdrücken. Er wird in der Regel in einem technischen Profil referenziert, das für einen Verbundidentitätsanbieter wie Facebook oder Azure Active Directory konfiguriert wurde. Das folgende technische `SM-SocialLogin`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten.
+Dieser Anbieter wird verwendet, um den Bildschirm „Identitätsanbieter auswählen“ und die Abmeldung bei einem Verbundidentitätsanbieter zu unterdrücken. Er wird in der Regel in einem technischen Profil referenziert, das für einen Verbundidentitätsanbieter wie Facebook oder Azure Active Directory konfiguriert wurde. Das folgende technische `SM-SocialLogin`-Profil ist im [Starter Pack für benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) enthalten.
 
 ```xml
 <TechnicalProfile Id="SM-SocialLogin">
