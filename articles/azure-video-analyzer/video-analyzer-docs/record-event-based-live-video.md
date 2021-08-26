@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 9b5935b9b06a1e48ac106c7736390e39612b0af4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 018e01e781e67ebe58d1337443813e1ca973a9e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733307"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>Tutorial: Ereignisbasierte Videoaufzeichnung und -wiedergabe
 
@@ -61,9 +61,9 @@ Alternativ können Sie die Aufzeichnung nur dann auslösen, wenn ein Rückschlü
 Das Diagramm ist die bildliche Darstellung einer [Pipeline](pipeline.md) und weiterer Module, mit denen das gewünschte Szenario realisiert wird. Vier IoT Edge-Module sind beteiligt:
 
 * Video Analyzer in einem IoT Edge-Modul.
-* Ein Edge-Modul, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. Dieses KI-Modul verwendet das [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)-Modell, das viele Objekttypen erkennen kann.
+* Ein Edge-Modul, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. Dieses KI-Modul verwendet das [YOLO v3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3)-Modell, das viele Objekttypen erkennen kann.
 * Ein benutzerdefiniertes Modul zum Zählen und Filtern von Objekten, das im Diagramm als Objektzähler bezeichnet wird. Sie erstellen einen Objektzähler und stellen ihn in diesem Tutorial bereit.
-* Ein [RTSP-Simulatormodul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) zum Simulieren einer RTSP-Kamera.
+* Ein [RTSP-Simulatormodul](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) zum Simulieren einer RTSP-Kamera.
     
 Wie das Diagramm zeigt, verwenden Sie einen [RTSP-Quellknoten](pipeline.md#rtsp-source) in der Pipeline zum Erfassen des simulierten Livevideos von Verkehr auf einer Schnellstraße und senden dieses Video an zwei Pfade:
 
@@ -164,7 +164,7 @@ Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Be
     
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
-    `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
+    `"pipelineTopologyName" : "EVRtoVideoSinkOnObjDetect"`
 1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-evr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.
 1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
 1. Die Datei „operations.json“ beginnt mit Aufrufen von „pipelineTopologyList“ und „livePipelineList“. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, und die Ausführung wird angehalten, bis Sie die **EINGABETASTE** drücken, wie hier zu sehen:
@@ -192,7 +192,7 @@ Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Be
           "@apiVersion": "1.0",
           "name": "Sample-Pipeline-1",
           "properties": {
-            "topologyName": "EVRtoVideosOnObjDetect",
+            "topologyName": "EVRtoVideoSinkOnObjDetect",
             "description": "Sample topology description",
             "parameters": [
               {

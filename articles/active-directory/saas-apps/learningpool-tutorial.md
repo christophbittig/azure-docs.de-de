@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Learningpool Act | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Learningpool Act konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Learning Pool LMS | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Learning Pool LMS konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,123 +9,93 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/25/2019
+ms.date: 03/06/2021
 ms.author: jeedes
-ms.openlocfilehash: eb8d0c229ed5f41dcb5999243a57ee19c2b67f74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8829da481abbddc61c1cc90da0984742775059ae
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458726"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556512"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory-Integration mit Learningpool Act
+# <a name="tutorial-azure-active-directory-integration-with-learning-pool-lms"></a>Tutorial: Azure Active Directory-Integration mit Learning Pool LMS
 
-In diesem Tutorial erfahren Sie, wie Sie Learningpool Act in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Learningpool Act in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Learning Pool LMS in Azure Active Directory (Azure AD) integrieren. Die Integration von Learning Pool LMS in Azure AD ermöglicht Ihnen Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Learningpool Act haben soll.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Learningpool Act anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Sie können in Azure AD steuern, wer Zugriff auf Learning Pool LMS hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Learning Pool LMS anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Learningpool Act konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Learningpool Act-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Learning Pool LMS-Abonnement, für das das einmaligem Anmelden (SSO) aktiviert ist.
+
+> [!NOTE]
+> Wenn Sie ein Projekt für das einmalige Anmelden starten, führt Sie ein Mitglied des Learning Pool LMS Delivery-Teams durch diesen Prozess. Wenn Sie keinen Kontakt mit einem Mitglied des Learning Pool LMS Delivery-Teams haben, wenden Sie sich an Ihren Learning Pool LMS-Konto-Manager.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Learningpool Act unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Learning Pool LMS unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-learningpool-act-from-the-gallery"></a>Hinzufügen von Learningpool Act aus dem Katalog
+## <a name="adding-learning-pool-lms-from-the-gallery"></a>Hinzufügen von Learning Pool LMS aus dem Katalog
 
-Zum Konfigurieren der Integration von Learningpool Act in Azure AD müssen Sie Learningpool Act über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Learning Pool LMS in Azure AD müssen Sie die Learning Pool LMS-App aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Learningpool Act aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus dem Katalog hinzufügen** den Suchbegriff **Learning Pool LMS** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Learning Pool LMS** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso-for-learning-pool-lms"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Learning Pool LMS
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Learning Pool LMS mit einem vorhandenen Azure-Benutzer. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Learning Pool LMS eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Learning Pool LMS die folgenden Schritte aus:
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+1. **[Zuweisen eines Azure AD-Benutzers](#assign-an-azure-ad-user)** , um dem Benutzer die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Learning Pool LMS](#configure-learning-pool-lms-sso)** , um die Einstellungen für das einmalige Anmelden auf der Anwendungsseite zu konfigurieren.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-4. Geben Sie im Suchfeld **Learningpool Act** ein, wählen Sie im Ergebnisbereich die Option **Learningpool Act**, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
-
-     ![Learningpool Act in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-Dieser Abschnitt veranschaulicht anhand einer Testbenutzerin namens **Britta Simon**, wie das einmalige Anmelden von Azure AD in Learningpool Act konfiguriert und getestet wird.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Learningpool Act eingerichtet werden.
-
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Learningpool Act müssen Sie die folgenden Bausteine ausführen:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Learningpool Act](#configure-learningpool-act-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Learningpool Act-Testbenutzers](#create-learningpool-act-test-user)**, um in Learningpool Act eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Learningpool Act die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Learningpool Act** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Learning Pool LMS** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Learningpool Act](common/sp-identifier.png)
+    a. Klicken Sie auf **Metadatendatei hochladen**.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`.
+    ![Metadatendatei hochladen](common/upload-metadata.png)
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
-    
-    ```http
-    https://<subdomain>.Learningpool.com/shibboleth
-    https://<subdomain>.preview.Learningpool.com/shibboleth
-    ```
+    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
-    > [!NOTE]
-    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von Learningpool Act](https://www.learningpool.com/support), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    ![Metadatendatei auswählen](common/browse-upload-metadata.png)
 
-5. Die Learningpool Act-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+    c. Nach dem erfolgreichen Upload der Metadatendatei wird der Wert **Bezeichner** automatisch im Abschnitt „Grundlegende SAML-Konfiguration“ eingefügt.
 
-    ![Screenshot der Benutzerattribute mit ausgewähltem Symbol „Bearbeiten“](common/edit-attribute.png)
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`.
+
+    > [!Note]
+    > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den erforderlichen Wert manuell ein.
+
+5. Sie müssen mindestens ein Attribut senden, das verwendet wird, um Ihre Azure-Benutzer mit den Benutzern in Learning Pool LMS abzugleichen. Normalerweise sind die Standardattribute ausreichend, aber in einigen Fällen müssen Sie möglicherweise einige benutzerdefinierte Attribute senden. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen falls das erforderlich ist.
+
+    ![Screenshot: Benutzerattribute mit ausgewähltem Bearbeitungssymbol](common/edit-attribute.png)
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
-
-    | Name | Quellattribut|
-    | ------------------- | -------------------- |
-    | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
-    | urn:oid:2.5.4.42 | user.givenname |
-    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
-    | urn:oid:2.5.4.4 | user.surname |
-    | | |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
@@ -145,95 +115,30 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Learningp
 
     g. Klicken Sie auf **Speichern**.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“ bei der **App-Verbundmetadaten-URL** und geben Sie diese URL zurück an das Learning Pool LMS Delivery.
 
-    ![Downloadlink für das Zertifikat](common/metadataxml.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
-8. Kopieren Sie im Abschnitt **Learningpool Act einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+### <a name="assign-an-azure-ad-user"></a>Zuweisen eines Azure AD-Benutzers
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+In diesem Abschnitt ermöglichen Sie einem vorhandenen Azure AD Benutzer die Verwendung des einmaligen Anmeldens von Azure, indem Sie dem Benutzer den Zugriff auf Learning Pool LMS gewähren.
 
-    a. Anmelde-URL
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Learning Pool LMS** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ einen geeigneten Benutzer aus und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    b. Azure AD-Bezeichner
+## <a name="configure-learning-pool-lms-sso"></a>Konfigurieren des einmaligen Anmeldens für Learning Pool LMS
 
-    c. Abmelde-URL
+Das Learning Pool Delivery-Team verwendet die **App-Verbundmetadaten-URL** um das LMS so zu konfigurieren, dass SAML2-Verbindungen akzeptiert werden. Sie werden aufgefordert, einige Testschritte auszuführen, um zu überprüfen, ob die Verbindung ordnungsgemäß konfiguriert ist, und das Learning Pool Delivery-Team führt Sie durch diesen Prozess.
 
-### <a name="configure-learningpool-act-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Learningpool Act
+### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Learningpool Act** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Learningpool Act](https://www.learningpool.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Sie werden von dem Learning Pool Delivery-Team durch den Testprozess geführt.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+## <a name="next-steps"></a>Nächste Schritte
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Learningpool Act gewähren.
-
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Learningpool Act**.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-2. Wählen Sie in der Liste mit den Anwendungen die Option **Learningpool Act** aus.
-
-    ![Learningpool Act-Link in der Anwendungsliste](common/all-applications.png)
-
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
-
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
-
-### <a name="create-learningpool-act-test-user"></a>Erstellen eines Learningpool Act-Testbenutzers
-
-Damit sich Azure AD-Benutzer bei Learningpool Act anmelden können, müssen sie in Learningpool Act bereitgestellt werden.
-
-Für das Konfigurieren der Benutzerbereitstellung in Learningpool Act steht kein Aktionselement zur Verfügung.  
-Benutzer müssen vom [Learningpool Act-Supportteam](https://www.Learningpool.com/support) erstellt werden.
-
-> [!NOTE]
-> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Learningpool Act-Benutzerkonten oder mit den APIs von Learningpool Act bereitstellen.
-
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
-
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-
-Wenn Sie im Zugriffsbereich auf die Kachel „Learningpool Act“ klicken, sollten Sie automatisch bei der Learningpool Act-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>Weitere Ressourcen
-
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+Nach dem Konfigurieren von Learning Pool LMS können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

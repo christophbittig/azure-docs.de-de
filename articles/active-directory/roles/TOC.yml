@@ -40,12 +40,16 @@
       items:
         - name: Auflisten der Rollenzuweisungen
           href: view-assignments.md
-        - name: Auflisten von Rollenzuweisungen für Gruppen
+        - name: Liste von Rollenzuweisungen für einen Benutzer
+          href: list-role-assignments-users.md
+        - name: Auflisten von Rollenzuweisungen für eine Gruppe
           href: groups-view-assignments.md
     - name: Zuweisen von Rollen
       items:
         - name: Zuweisen von Rollen zu Benutzern
           href: manage-roles-portal.md
+        - name: Zuweisen von Rollen zu einem Benutzer in verschiedenen Bereichen
+          href: assign-roles-different-scopes.md
         - name: 'Erstellen einer Gruppe, der Rollen zugeordnet werden können'
           href: groups-create-eligible.md
         - name: Zuweisen von Rollen zu Gruppen
@@ -80,7 +84,7 @@
           href: admin-units-assign-roles.md
     - name: Delegat
       items:
-        - name: Delegieren einer App-Administratorrolle
+        - name: Delegieren einer Administratorrolle
           href: delegate-app-roles.md
         - name: Delegierung für „Meine Mitarbeiter“
           href: my-staff-configure.md

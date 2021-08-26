@@ -129,22 +129,24 @@
           href: ./security-controls-policy.md
         - name: Sicherheitsübersicht
           href: overview-security.md
-    - name: Netzwerkfeatures
+    - name: Netzwerk
       items:
         - name: Übersicht
           href: networking-features.md
-        - name: Application Gateway mit Dienstendpunkten
-          href: networking/app-gateway-with-service-endpoints.md
+        - name: Eingehende und ausgehende IPs
+          href: overview-inbound-outbound-ips.md
         - name: Privater Endpunkt
           href: networking/private-endpoint.md
-    - name: Eingehende und ausgehende IPs
-      href: overview-inbound-outbound-ips.md
-    - name: Virtual Network-Integration
-      href: web-sites-integrate-with-vnet.md
-    - name: Hybridverbindungen
-      href: app-service-hybrid-connections.md
-    - name: Traffic Manager-Integration
-      href: web-sites-traffic-manager.md
+        - name: Hybridverbindungen
+          href: app-service-hybrid-connections.md
+        - name: Virtual Network-Integration
+          href: web-sites-integrate-with-vnet.md
+        - name: Application Gateway-Integration
+          href: networking/app-gateway-with-service-endpoints.md
+        - name: NAT-Gatewayintegration
+          href: networking/nat-gateway-integration.md
+        - name: Traffic Manager-Integration
+          href: web-sites-traffic-manager.md
     - name: Lokaler Cache
       href: overview-local-cache.md
     - name: Diagnose

@@ -98,9 +98,9 @@
               href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
         - name: Windows- und SQL-Kosten nicht inbegriffen
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
-        - name: Nutzungsdaten für einzelne Abonnements
+        - name: Daten zur Reservierungsnutzung für einzelne Abonnements
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Nutzungsdaten für Enterprise und Microsoft-Kundenvereinbarung
+        - name: Daten zur Reservierungsnutzung für EA und Microsoft-Kundenvereinbarung
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Abrechnung
       items:
@@ -114,8 +114,6 @@
           href: understand/mca-understand-your-invoice.md
         - name: 'Microsoft-Kundenvereinbarung: Preisblattbedingungen'
           href: manage/mca-understand-pricesheet.md
-        - name: Häufig gestellte Fragen zur Microsoft-Kundenvereinbarung
-          href: understand/mca-faq.md
         - name: "Microsoft\_Partner-Vereinbarung: Rechnungsbedingungen"
           href: understand/mpa-invoice-terms.md
         - name: Änderungen an Ihrem aktualisierten Abrechnungskonto mit nutzungsbasierter Zahlung
@@ -258,7 +256,7 @@
               href: understand/download-azure-invoice.md
             - name: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
               href: understand/download-azure-daily-usage.md
-            - name: Herunterladen Ihrer Rechnung und der täglichen Nutzungsdaten
+            - name: Herunterladen der Rechnung
               href: manage/download-azure-invoice-daily-usage-date.md
             - name: Anzeigen und Herunterladen von Steuerdokumenten
               href: understand/mca-download-tax-document.md

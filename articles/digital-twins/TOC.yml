@@ -103,8 +103,8 @@
           href: how-to-manage-twin.md
         - name: Verwalten des Zwillingsgraphen und der Beziehungen
           href: how-to-manage-graph.md
-        - name: Einrichten einer Azure-Funktion zum Verarbeiten von Daten
-          href: how-to-create-azure-function.md
+        - name: Einrichten der Verarbeitung von Ereignissen zwischen Zwillingen
+          href: how-to-send-twin-to-twin-events.md
         - name: Abfragen des Zwillingsgraphen
           href: how-to-query-graph.md
     - name: Entwickeln von Client-Apps

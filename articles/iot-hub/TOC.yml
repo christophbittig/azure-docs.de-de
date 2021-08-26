@@ -4,6 +4,8 @@
   items:
     - name: Was ist Azure IoT Hub?
       href: about-iot-hub.md
+    - name: IoT-Konzepte
+      href: iot-concepts.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -12,17 +14,7 @@
     - name: Senden von Telemetriedaten per SDK
       href: ../iot-develop/quickstart-send-telemetry-iot-hub.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: Steuern eines Geräts
-      items:
-        - name: Node.js
-          href: quickstart-control-device-node.md
-        - name: .NET
-          href: quickstart-control-device-dotnet.md
-        - name: Java
-          href: quickstart-control-device-java.md
-        - name: Python
-          href: quickstart-control-device-python.md
-        - name: Android
-          href: quickstart-control-device-android.md
+      href: quickstart-control-device.md
     - name: Automatisches Weiterleiten von Nachrichten mithilfe einer ARM-Vorlage
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -54,6 +46,8 @@
       href: tutorial-firmware-update.md
     - name: Testen der Gerätekonnektivität
       href: tutorial-connectivity.md
+    - name: Datenvisualisierung in Power BI
+      href: iot-hub-live-data-visualization-in-power-bi.md
     - name: Verwenden von X.509-Zertifikaten
       items:
         - name: Einführung
@@ -72,8 +66,6 @@
           href: tutorial-x509-test-certificate.md
 - name: Konzepte
   items:
-    - name: Unterstützung für verwaltete Identitäten
-      href: iot-hub-managed-identity.md
     - name: TLS-Unterstützung
       href: iot-hub-tls-support.md
     - name: VNET-Unterstützung
@@ -110,21 +102,21 @@
         - name: Senden und Empfangen von Nachrichten
           href: iot-hub-devguide-messaging.md
           items:
+            - name: Erstellen und Lesen von IoT Hub-Nachrichten
+              href: iot-hub-devguide-messages-construct.md
+            - name: Auswählen eines Protokolls für die Gerätekommunikation
+              href: iot-hub-devguide-protocols.md
+            - name: 'Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt'
+              href: iot-hub-devguide-messages-read-builtin.md
             - name: Verwenden der Nachrichtenweiterleitung zum Senden von D2C-Nachrichten
               href: iot-hub-devguide-messages-d2c.md
               items:
-                - name: Erstellen und Lesen von IoT Hub-Nachrichten
-                  href: iot-hub-devguide-messages-construct.md
-                - name: 'Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt'
-                  href: iot-hub-devguide-messages-read-builtin.md
                 - name: Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten
                   href: iot-hub-devguide-messages-read-custom.md
                 - name: Hinzufügen von Abfragen zu Nachrichtenrouten
                   href: iot-hub-devguide-routing-query-syntax.md
             - name: Senden von C2D-Nachrichten von IoT Hub
               href: iot-hub-devguide-messages-c2d.md
-            - name: Auswählen eines Kommunikationsprotokolls
-              href: iot-hub-devguide-protocols.md
         - name: Reagieren auf IoT Hub-Ereignisse mit Event Grid
           href: iot-hub-event-grid.md
         - name: Hochladen von Dateien von einem Gerät
@@ -207,8 +199,6 @@
               items:
                 - name: Verwenden von IoTHubClient
                   href: iot-hub-device-sdk-c-iothubclient.md
-                - name: Verwenden des Serialisierungsprogramms
-                  href: iot-hub-device-sdk-c-serializer.md
             - name: Ressourceninformationen zu Azure IoT C SDK
               href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
             - name: Entwickeln für eingeschränkte Geräte
@@ -217,6 +207,8 @@
               href: iot-hub-how-to-develop-for-mobile-devices.md
             - name: Entwickeln für die Android Things-Plattform
               href: iot-hub-how-to-android-things.md
+        - name: Steuern eines Geräts in Android
+          href: quickstart-control-device-android.md
         - name: Abfragen von Avro-Daten aus einer Hubroute
           href: iot-hub-query-avro-data.md
         - name: Senden von C2D-Nachrichten.
@@ -302,6 +294,8 @@
               href: iot-hub-rm-template-powershell.md
             - name: Verwenden einer Vorlage aus .NET
               href: iot-hub-rm-template.md
+        - name: Konfigurieren von verwalteten Identitäten
+          href: iot-hub-managed-identity.md
         - name: Konfigurieren des Dateiuploads
           items:
             - name: Verwenden des Azure-Portals
@@ -363,8 +357,6 @@
           href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
         - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit dem Cloud-Explorer für Visual Studio
           href: iot-hub-visual-studio-cloud-device-messaging.md
-        - name: Datenvisualisierung in Power BI
-          href: iot-hub-live-data-visualization-in-power-bi.md
         - name: Datenvisualisierung in einer Web-App
           href: iot-hub-live-data-visualization-in-web-apps.md
         - name: Wettervorhersage mit Azure Machine Learning
@@ -485,7 +477,7 @@
         - name: IoT Edge
           href: ../iot-edge/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: Azure Maps

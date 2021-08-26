@@ -96,6 +96,8 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Problembehandlung
       items:
+        - name: Behandeln von Problemen bei Richtlinienänderungen
+          href: troubleshoot-policy-changes-audit-log.md
         - name: Beheben von Problemen bei der Anmeldung
           href: troubleshoot-conditional-access.md
         - name: Troubleshooting mithilfe des What If-Tools

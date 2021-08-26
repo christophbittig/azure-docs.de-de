@@ -1,26 +1,26 @@
 ### YamlMime:Landing
-title: Server mit Azure Arc-Unterstützung
-summary: Server mit Azure Arc-Unterstützung
+title: Server mit Azure Arc-Unterstützung
+summary: Server mit Azure Arc-Unterstützung
 metadata:
-  title: Server mit Azure Arc-Unterstützung
+  title: Server mit Azure Arc-Unterstützung
   description: Informationen zur Verwaltung lokaler Computer in Azure
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 02/26/2020
+  ms.date: 08/17/2021
   ms.author: magoedte
-  ms.openlocfilehash: 08bd1d0db152105b69ba578e366a37832974802a
-  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+  ms.openlocfilehash: 1af908e1c778a9e390ef644cf1e3d211af335c88
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109480777"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122322057"
 landingContent:
-- title: Verbinden von Computern mit Azure mithilfe von Servern mit Azure Arc-Aktivierung
+- title: Verbinden von Computern mit Azure über Server mit Azure Arc-Unterstützung
   linkLists:
   - linkListType: overview
     links:
-    - text: Was sind Server mit Azure Arc-Aktivierung?
+    - text: Was sind Server mit Azure Arc-Unterstützung?
       url: overview.md
   - linkListType: deploy
     links:
@@ -38,7 +38,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Bereitstellen von Server-Agents mit Arc-Unterstützung
+    - text: Bereitstellen eines Agents für Server mit Arc-Unterstützung
       url: ./learn/quick-enable-hybrid-vm.md
 - title: Proof of Concept
   linkLists:

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 156764372d530935332d4343dfdfcb48fd1ebe3a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831619"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964318"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Tutorial: Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik
 
@@ -41,7 +41,7 @@ Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="Vorlage für vernetzte Logistik":::
 
-1. Wählen Sie unter **Connected Logistics-Anwendung** die Option **App erstellen** aus.
+1. Wählen Sie unter **Connected Logistics** die Option **Erstellen einer App** aus.
 
 1. Durch Auswählen von **App erstellen** wird das Formular **Neue Anwendung** geöffnet. Geben Sie die folgenden Details ein:
 
@@ -57,37 +57,26 @@ Gehen Sie wie folgt vor, um die Anwendung zu erstellen:
 
 ## <a name="walk-through-the-application"></a>Einführung in die Anwendung
 
-Der folgende Screenshot zeigt das Auswählen der Anwendungsvorlage für vernetzte Logistik:
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Auswählen der Anwendungsvorlage für vernetzte Logistik](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
-
 In den nächsten Abschnitten werden die wichtigsten Features der Anwendung behandelt:
 
 ### <a name="dashboard"></a>Dashboard
 
 Nach Bereitstellung der Anwendung ist Ihr Standarddashboard ein Operatorportal mit Schwerpunkt auf vernetzter Logistik. Northwind Trader ist ein fiktiver Logistikanbieter, der eine Frachtflotte zu Wasser und zu Lande verwaltet. Auf diesem Dashboard werden zwei verschiedene Gateways mit Telemetriedaten von Transporten sowie mit zugeordneten Befehlen, Aufträgen und Aktionen angezeigt.
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für vernetzte Logistik](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
-
 Dieses Dashboard ist vorkonfiguriert, um die Aktivität von kritischen Vorgängen bei Logistikgeräten zu veranschaulichen.
 
 Das Dashboard ermöglicht zwei verschiedene Gateway-Geräteverwaltungsvorgänge:
 
-* Anzeigen von Logistikrouten für Transporte per LKW und von Standortdetails für Schiffstransporte
+* Anzeigen von Logistikrouten für Transporte per LKW und von [Standort](../core/howto-use-location-data.md)details für Schiffstransporte.
 * Anzeigen des Gatewaystatus und anderer relevanter Informationen
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Dashboard für vernetzte Logistik":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-1.png" alt-text="Dashboard für vernetzte Logistik":::
 
 * Sie können die Gesamtanzahl von Gateways sowie von aktiven und unbekannten Tags nachverfolgen.
 * Sie können Geräteverwaltungsvorgänge durchführen, beispielsweise Firmwareupdates, Deaktivieren und Aktivieren von Sensoren sowie Aktualisieren von Sensorschwellenwerten, Telemetrieintervallen und Geräteserviceverträgen.
 * Anzeigen des Geräteakkuverbrauchs
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Dashboard für vernetzte Logistik: Status":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-2.png" alt-text="Dashboard für vernetzte Logistik: Status":::
 
 #### <a name="device-template"></a>Gerätevorlage
 
@@ -95,11 +84,11 @@ Wählen Sie **Gerätevorlagen** aus, um das Gatewayfunktionsmodell anzuzeigen. E
 
 **Gatewaytelemetrie und -eigenschaften:** Diese Schnittstelle definiert die gesamte Telemetrie im Zusammenhang mit Sensor-, Standort- und Geräteinformationen. Außerdem definiert sie Funktionen von Gerätezwillingseigenschaften wie Gatewayschwellenwerte und Aktualisierungsintervalle.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Schnittstelle für Telemetriedaten und Eigenschaften":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-1.png" alt-text="Schnittstelle für Telemetriedaten und Eigenschaften":::
 
 **Gatewaybefehle:** Diese Schnittstelle dient zur Strukturierung aller Gatewaybefehlsfunktionen:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Schnittstelle für Gatewaybefehle":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-2.png" alt-text="Schnittstelle für Gatewaybefehle":::
 
 ### <a name="rules"></a>Regeln
 
@@ -107,13 +96,13 @@ Wählen Sie die Registerkarte **Regeln** aus, um die Regeln dieser Anwendungsvor
 
 **Gateway-Diebstahlwarnung**: Diese Regel wird ausgelöst, wenn von den Sensoren während des Transports unerwarteter Lichteinfall erkannt wird. Operatoren müssen umgehend benachrichtigt werden, um einen möglichen Diebstahl zu untersuchen.
 
-**Nicht reagierendes Gateway**: Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkustands, eines Verbindungsabbruchs oder einer Beschädigung nicht.
+**Verlust des Gateways Warnung**: Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkustands, eines Verbindungsabbruchs oder einer Beschädigung nicht.
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Regeldefinitionen":::
 
 ### <a name="jobs"></a>Aufträge
 
-Wählen Sie die Registerkarte **Aufträge** aus, um die Aufträge in dieser Anwendung anzuzeigen:
+Wählen Sie die Registerkarte **Aufträge** aus, um die Aufträge in dieser Anwendung zu erstellen. Der folgende Screenshot zeigt ein Beispiel für den erstellten Auftrag.
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Auszuführende Aufträge":::
 

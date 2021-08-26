@@ -24,9 +24,9 @@
   items:
     - name: Entdecken
       items:
-        - name: Ermitteln von virtuellen VMware-Computern
+        - name: Ermitteln von Servern in einer VMware-Umgebung
           href: tutorial-discover-vmware.md
-        - name: Ermitteln von virtuellen Hyper-V-Computern
+        - name: Ermitteln von Servern in einer Hyper-V-Umgebung
           href: tutorial-discover-hyper-v.md
         - name: Ermitteln von physischen Servern
           href: tutorial-discover-physical.md
@@ -36,15 +36,17 @@
           href: tutorial-discover-gcp.md
     - name: Bewerten
       items:
-        - name: Migrieren von VMware-VMs zu Azure (ohne Agent)
+        - name: Zugreifen auf Server in einer VMware-Umgebung
           items:
-            - name: Bewerten von virtuellen VMware-Computern für die Migration zu virtuellen Azure-Computern
+            - name: Bewerten von Servern für die Migration zu Azure-VMs
               href: tutorial-assess-vmware-azure-vm.md
             - name: Bewerten von SQL-Instanzen für die Migration zu Azure SQL
               href: tutorial-assess-sql.md
-            - name: Bewerten von virtuellen VMware-Computern für die Migration zu AVS
+            - name: Bewerten von ASP.NET-Web-Apps für die Migration zu App Service
+              href: tutorial-assess-webapps.md
+            - name: Bewerten von Servern für die Migration zu AVS
               href: tutorial-assess-vmware-azure-vmware-solution.md
-        - name: Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure
+        - name: Bewerten von Servern in der Hyper-V-Umgebung für die Migration zu Azure-VMs
           href: tutorial-assess-hyper-v.md
         - name: Bewerten von physischen Servern für die Migration zu Azure
           href: tutorial-assess-physical.md
@@ -56,9 +58,9 @@
           href: tutorial-discover-import.md
     - name: Migrate
       items:
-        - name: Migrieren von virtuellen VMware-Computern
+        - name: Migrieren von Servern in einer VMware-Umgebung
           items:
-            - name: Migrationsoptionen für virtuelle VMware-Computer
+            - name: Migrationsoptionen für Server in einer VMware-Umgebung
               href: server-migrate-overview.md
             - name: Migrieren ohne Agent (Portal)
               href: tutorial-migrate-vmware.md
@@ -66,7 +68,7 @@
               href: tutorial-migrate-vmware-agent.md
             - name: Migrieren ohne Agent (PowerShell)
               href: tutorial-migrate-vmware-powershell.md
-        - name: Migrieren von virtuellen Hyper-V-Computern
+        - name: Migrieren von Servern in einer Hyper-V-Umgebung
           href: tutorial-migrate-hyper-v.md
         - name: Migrieren physischer Server
           href: tutorial-migrate-physical-virtual-machines.md
@@ -114,6 +116,8 @@
           href: concepts-assessment-calculation.md
         - name: Bewertungsübersicht (Migration zu Azure SQL)
           href: concepts-azure-sql-assessment-calculation.md
+        - name: Bewertungsübersicht (Migration zu App Service)
+          href: concepts-azure-webapps-assessment-calculation.md
         - name: Bewertungsübersicht (Migration zu AVS)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: Bewährte Methoden für die Bewertung
@@ -164,13 +168,13 @@
               href: how-to-set-up-appliance-physical.md
             - name: Bereitstellen einer Appliance in Azure Government
               href: deploy-appliance-script-government.md
-        - name: Begrenzen des Ermittlungsbereichs für VMware-VMS
+        - name: Einschränken des Suchbereichs für Server in der VMware-Umgebung
           href: set-discovery-scope.md
         - name: Hinzufügen von Serveranmeldeinformationen
           href: add-server-credentials.md
         - name: Erkunden von Anwendungen/Rollen/Features
           href: how-to-discover-applications.md
-        - name: Ermitteln von SQL-Instanzen in einem vorhandenen Projekt
+        - name: Ermitteln von SQL-Instanzen und ASP.NET-Web-Apps in einem vorhandenen Projekt
           href: how-to-discover-sql-existing-project.md
         - name: Analysieren von Computerabhängigkeiten (Agent-basiert)
           href: how-to-create-group-machine-dependencies.md
@@ -186,6 +190,8 @@
           href: how-to-create-assessment.md
         - name: "Erstellen einer Azure\_SQL-Bewertung"
           href: how-to-create-azure-sql-assessment.md
+        - name: Erstellen einer Azure App Service-Bewertung
+          href: how-to-create-azure-app-service-assessment.md
         - name: Erstellen einer AVS-Bewertung
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: "Bewerten einer SQL\_Server-Datenbank"
@@ -194,9 +200,9 @@
           href: how-to-modify-assessment.md
         - name: Skalieren der Bewertung
           items:
-            - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
+            - name: Bewerten einer großen Zahl von Servern in einer VMware-Umgebung
               href: scale-vmware-assessment.md
-            - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
+            - name: Bewerten einer großen Zahl von Servern in einer Hyper-V-Umgebung
               href: scale-hyper-v-assessment.md
             - name: Bewerten einer großen Anzahl physischer Server
               href: scale-physical-assessment.md
@@ -244,6 +250,8 @@
       items:
         - name: "Behandeln von Problemen mit der Azure\_Migrate-Appliance"
           href: troubleshoot-appliance.md
+        - name: Problembehandlung bei der Appliancediagnose
+          href: troubleshoot-appliance-diagnostic.md
         - name: Behandeln von Problemen bei der Erkennung
           href: troubleshoot-discovery.md
         - name: Behandeln von Problemen bei der Abhängigkeitsvisualisierung

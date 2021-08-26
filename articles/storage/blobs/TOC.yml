@@ -188,26 +188,32 @@ items:
                 href: snapshots-overview.md
               - name: Änderungsfeed
                 href: storage-blob-change-feed.md
-              - name: Unveränderliche Blobs
-                href: storage-blob-immutable-storage.md
+              - name: Unveränderlicher Speicher für Blobs
+                items:
+                  - name: Übersicht
+                    href: immutable-storage-overview.md
+                  - name: Zeitbasierte Aufbewahrungsrichtlinien
+                    href: immutable-time-based-retention-policy-overview.md
+                  - name: Gesetzliche Aufbewahrungspflichten
+                    href: immutable-legal-hold-overview.md
           - name: Redundanz und Notfallwiederherstellung
             items:
               - name: Datenredundanz
                 href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Kundenseitig verwaltetes Failover für die Notfallwiederherstellung
                 href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: Objektreplikation
-            href: object-replication-overview.md
           - name: Zugriffsebenen und Leistungsstufen
             items:
               - name: Zugriffsebenen
                 href: storage-blob-storage-tiers.md
               - name: Aktivieren von Daten aus der Archivebene
-                href: storage-blob-rehydration.md
+                href: archive-rehydrate-overview.md
               - name: Leistungsstufen
                 href: storage-blob-performance-tiers.md
-              - name: Automatisieren des Lebenszyklus von Zugriffsebenen
-                href: storage-lifecycle-management-concepts.md
+              - name: Richtlinien für die Lebenszyklusverwaltung
+                href: lifecycle-management-overview.md
+          - name: Objektreplikation
+            href: object-replication-overview.md
           - name: 'Leistungs-, Skalierungs- und Kostenoptimierung'
             items:
               - name: Checkliste zu Leistung und Skalierbarkeit
@@ -442,8 +448,12 @@ items:
                 href: snapshots-manage-dotnet.md
               - name: Verarbeiten von Änderungsfeedprotokollen
                 href: storage-blob-change-feed-how-to.md
-              - name: Festlegen und Verwalten von Unveränderlichkeitsrichtlinien
-                href: storage-blob-immutability-policies-manage.md
+              - name: Konfigurieren einer Unveränderlichkeitsrichtlinie
+                items:
+                  - name: Konfigurieren von Unveränderlichkeitsrichtlinien auf Versionsebene
+                    href: immutable-policy-configure-version-scope.md
+                  - name: Konfigurieren von Unveränderlichkeitsrichtlinien auf Containerebene
+                    href: immutable-policy-configure-container-scope.md
           - name: Verwalten von Redundanz und Failover
             items:
               - name: Ändern der Redundanzkonfiguration
@@ -454,6 +464,16 @@ items:
                 href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Initiieren eines Kontofailovers
                 href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          - name: Verwalten von Blobtiering und Lebenszyklus
+            items:
+              - name: Konfigurieren der Richtlinien für die Lebenszyklusverwaltung
+                href: lifecycle-management-policy-configure.md
+              - name: Verwalten von Daten auf der Archivebene
+                items:
+                  - name: Aktivieren eines archivierten Blobs
+                    href: archive-rehydrate-to-online-tier.md
+                  - name: Behandeln eines Ereignisses bei der Blobaktivierung
+                    href: archive-rehydrate-handle-event.md
           - name: Konfigurieren der Objektreplikation
             href: object-replication-configure.md
           - name: Verwalten der Parallelität
@@ -512,8 +532,6 @@ items:
                 href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Entwickeln mit Blobs
             items:
-              - name: C++
-                href: storage-c-plus-plus-how-to-use-blobs.md
               - name: iOS
                 href: storage-ios-how-to-use-blob-storage.md
               - name: Java
@@ -524,6 +542,8 @@ items:
             href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Monitor
             items:
+              - name: Szenarios und bewährte Methoden
+                href: blob-storage-monitoring-scenarios.md
               - name: Verwenden von Storage-Erkenntnissen
                 href: ../common/storage-insights-overview.md
               - name: Überwachen (klassisch)
@@ -538,7 +558,7 @@ items:
                 href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Verweis
         items:
-          - name: Azure Blob Storage-Referenz
+          - name: 'Blob Storage: API-Referenz'
             href: ../blobs/reference.md
           - name: AzCopy v10
             items:

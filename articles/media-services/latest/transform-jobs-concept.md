@@ -96,7 +96,7 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Fehlercodes](/rest/api/media/jobs/get#joberrorcode)
-* [Filterung, Sortierung und Paginierung von Media Services-Entitäten](filter-order-page-entitites-how-to.md)
+* [Filterung, Sortierung und Paginierung von Media Services-Entitäten](filter-order-page-entities-how-to.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

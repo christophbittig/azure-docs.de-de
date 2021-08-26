@@ -8,6 +8,10 @@
   items:
     - name: Lizenzanforderungen
       href: subscription-requirements.md
+    - name: Gruppen mit privilegiertem Zugriff
+      href: groups-features.md
+    - name: 'Vergleich: Gruppen mit Rollenzuweisung und Gruppen mit privilegiertem Zugriff'
+      href: concept-privileged-access-versus-role-assignable.md
     - name: 'Rollen, die nicht mit PIM verwaltet werden können'
       href: pim-roles.md
     - name: "Schützen des privilegierten Zugriffs in Azure\_AD"
@@ -41,6 +45,8 @@
           href: pim-how-to-activate-role.md
         - name: Azure-Rollen
           href: pim-resource-roles-activate-your-roles.md
+        - name: Gruppen mit privilegiertem Zugriff
+          href: groups-activate-roles.md
     - name: Genehmigen
       items:
         - name: Azure AD-Rollen
@@ -57,11 +63,13 @@
           href: groups-discover-groups.md
     - name: Erweitern oder Verlängern
       items:
+        - name: Azure AD-Rollen
+          href: pim-how-to-renew-extend.md
         - name: Azure-Rollen
           href: pim-resource-roles-renew-extend.md
         - name: Gruppen mit privilegiertem Zugriff
           href: groups-renew-extend.md
-    - name: Einstellungen
+    - name: Festlegen von Standardeinstellungen für Rollen
       items:
         - name: Azure AD-Rollen
           href: pim-how-to-change-default-settings.md
@@ -69,13 +77,13 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Gruppen mit privilegiertem Zugriff
           href: groups-role-settings.md
-    - name: Alerts
+    - name: Einrichten von Warnungen
       items:
         - name: Azure AD-Rollen
           href: pim-how-to-configure-security-alerts.md
         - name: Azure-Rollen
           href: pim-resource-roles-configure-alerts.md
-    - name: Überwachungsprotokolle
+    - name: Überwachungen
       items:
         - name: Azure AD-Rollen
           href: pim-how-to-use-audit-log.md
@@ -83,7 +91,7 @@
           href: azure-pim-resource-rbac.md
         - name: Gruppen mit privilegiertem Zugriff
           href: groups-audit.md
-    - name: Zugriffsüberprüfungen
+    - name: Überprüfen des Zugriffs
       items:
         - name: Azure AD-Rollen
           items:

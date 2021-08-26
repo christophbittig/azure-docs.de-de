@@ -19,15 +19,15 @@ items:
       - name: Erkennen und Analysieren von Gesichtern
         href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
       - name: Angeben einer Gesichtserkennungsmodellversion
-        href: Face-API-How-to-Topics/specify-recognition-model.md
-      - name: Angeben einer Gesichtserkennungsmodellversion
         href: Face-API-How-to-Topics/specify-detection-model.md
+      - name: Angeben einer Gesichtserkennungsmodellversion
+        href: Face-API-How-to-Topics/specify-recognition-model.md
       - name: Hinzufügen von Gesichtern zu einer Gruppe
         href: Face-API-How-to-Topics/how-to-add-faces.md
-      - name: Verwenden der PersonDirectory-Struktur
-        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: Verwenden des Features für die Verarbeitung in großem Umfang
         href: Face-API-How-to-Topics/how-to-use-large-scale.md
+      - name: Verwenden der PersonDirectory-Struktur
+        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: Verwenden des HeadPose-Attributs
         href: Face-API-How-to-Topics/how-to-use-headpose.md
       - name: Verringern der Wartezeit bei Verwendung des Gesichtserkennungsdiensts
@@ -59,7 +59,7 @@ items:
             href: ../authentication.md?context=/azure/cognitive-services/face/context/context
   - name: Konzepte
     items:
-      - name: Gesichtserkennung
+      - name: Gesichtserkennung und Analyse
         href: concepts/face-detection.md
       - name: Gesichtserkennung
         href: concepts/face-recognition.md
@@ -67,9 +67,9 @@ items:
     items:
       - name: Hinzufügen von Benutzern zu einem Gesichtserkennungsdienst
         items:
-          - name: Best Practices für das Hinzufügen von Benutzern
+          - name: Bewährte Methoden für die Registrierung von Benutzern
             href: enrollment-overview.md
-          - name: Erstellen einer React-App zum Hinzufügen von Benutzern
+          - name: Erstellen einer React-App zum Registrieren von Benutzern
             href: build-enrollment-app.md
   - name: Verweis
     items:

@@ -64,8 +64,6 @@
           href: azure-stack-edge-pro-r-system-requirements.md
         - name: Grundlegendes zu den Beschränkungen
           href: azure-stack-edge-pro-r-limits.md
-        - name: Sicherheitsübersicht
-          href: azure-stack-edge-pro-r-security.md
         - name: Spezifikationen für die Überprüfung
           href: azure-stack-edge-pro-r-technical-specifications-compliance.md
     - name: Tutorials
@@ -111,8 +109,6 @@
           href: azure-stack-edge-mini-r-system-requirements.md
         - name: Grundlegendes zu den Beschränkungen
           href: azure-stack-edge-mini-r-limits.md
-        - name: Sicherheitsübersicht
-          href: azure-stack-edge-pro-r-security.md
         - name: Spezifikationen für die Überprüfung
           href: azure-stack-edge-mini-r-technical-specifications-compliance.md
     - name: Tutorials
@@ -148,42 +144,126 @@
           href: azure-stack-edge-mini-r-manage-wifi.md
         - name: Verwenden von WLAN-Profilen
           href: azure-stack-edge-mini-r-use-wifi-profiles.md
-- name: 'Pro GPU, Pro R, Mini R freigegeben'
+- name: "Freigegebene Funktionen: Pro\_GPU, Pro\_R, Mini\_R"
   items:
-    - name: Freigegebene Konzepte
+    - name: Lokale Azure Resource Manager-Instanz (Vorschau)
       items:
-        - name: Grundlegendes zu Kubernetes
-          items:
-            - name: Was ist Kubernetes?
-              href: azure-stack-edge-gpu-kubernetes-overview.md
-            - name: Kubernetes-Speicher
-              href: azure-stack-edge-gpu-kubernetes-storage.md
-            - name: Kubernetes-Netzwerke
-              href: azure-stack-edge-gpu-kubernetes-networking.md
-            - name: RBAC in Kubernetes
-              href: azure-stack-edge-gpu-kubernetes-rbac.md
-            - name: Kubernetes-Workloads
-              href: azure-stack-edge-gpu-kubernetes-workload-management.md
-        - name: Worum handelt es sich bei der GPU-Freigabe?
-          href: azure-stack-edge-gpu-sharing.md
-        - name: "Anzeigen der Key\_Vault-Integration"
-          href: azure-stack-edge-gpu-activation-key-vault.md
-        - name: Aktivieren der proaktiven Protokollierung
-          href: azure-stack-edge-gpu-proactive-log-collection.md
-    - name: Freigegebene Anleitungen
+        - name: "Was ist die lokale Azure\_Resource\_Manager-Instanz?"
+          href: azure-stack-edge-gpu-local-resource-manager-overview.md
+        - name: Herstellen einer Verbindung über Azure PowerShell
+          href: azure-stack-edge-gpu-connect-resource-manager.md
+        - name: Festlegen des Azure Resource Manager-Kennworts
+          href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
+        - name: Konfigurieren von TLS-Clienteinstellungen
+          href: azure-stack-edge-gpu-configure-tls-settings.md
+        - name: Problembehandlung für Azure Resource Manager
+          href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
+    - name: Zertifikate
       items:
-        - name: "Bereitstellen von IoT\_Edge-Beispielen"
+        - name: Was sind Zertifikate?
+          href: azure-stack-edge-gpu-certificates-overview.md
+        - name: Anzeigen der Anforderungen
+          href: azure-stack-edge-gpu-certificate-requirements.md
+        - name: Erstellen von Zertifikaten
           items:
-            - name: Modul aus dem NVIDIA-Katalog
-              href: azure-stack-edge-gpu-configure-gpu-modules.md
-            - name: GPU-Modul aus dem Git-Repository
-              href: azure-stack-edge-gpu-deploy-sample-module.md
-            - name: GPU-Modul über den Marketplace
-              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-            - name: Module von FPGA-Geräten
-              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
-            - name: Modul über das Azure-Portal
-              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
+            - name: Über Azure PowerShell
+              href: azure-stack-edge-gpu-create-certificates-powershell.md
+            - name: Über das Azure Stack Readiness Checker-Tool
+              href: azure-stack-edge-gpu-create-certificates-tool.md
+        - name: Vorbereiten des Hochladens von Zertifikaten auf ein Gerät
+          href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
+        - name: 'Hochladen, Importieren, Anzeigen des Ablaufs'
+          href: azure-stack-edge-gpu-manage-certificates.md
+        - name: Beheben von Zertifikatfehlern
+          href: azure-stack-edge-gpu-certificate-troubleshooting.md
+    - name: Virtuelle Computer
+      items:
+        - name: Was sind virtuelle Computer?
+          href: azure-stack-edge-gpu-virtual-machine-overview.md
+        - name: Anzeigen unterstützter virtueller Computer
+          href: azure-stack-edge-gpu-virtual-machine-sizes.md
+        - name: Anzeigen unterstützter API-Profile
+          href: azure-stack-edge-profiles-azure-resource-manager-versions.md
+        - name: Was sind GPU-VMs?
+          href: azure-stack-edge-gpu-overview-gpu-virtual-machines.md
+        - name: Erstellen des VM-Image
+          items:
+            - name: Benutzerdefiniertes Image von einem virtuellen Azure-Computer
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Generalisiertes Windows-Image von VHD
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: Generalisiertes Image von ISO
+              href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+            - name: Verwenden eines spezialisierten Images
+              href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
+            - name: "Verwenden eines Azure\_Marketplace-Images"
+              href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
+        - name: Bereitstellen
+          items:
+            - name: 'VMs: Azure-Portal'
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+            - name: 'VMs: Vorlagen'
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: 'VMs: GPU'
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+            - name: "VMs: Azure\_PowerShell-Cmdlets"
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
+            - name: "VMs: Azure\_PowerShell-Skript"
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
+            - name: "VMs: Azure\_CLI/Python"
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
+        - name: Installieren von Erweiterungen
+          items:
+            - name: Benutzerdefinierte Skripterweiterung
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+            - name: GPU-Erweiterung
+              href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
+        - name: Verwalten
+          items:
+            - name: Netzwerkschnittstellen
+              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+            - name: Datenträger
+              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+            - name: Edgeressourcengruppen
+              href: azure-stack-edge-gpu-manage-edge-resource-groups-portal.md
+            - name: VM-Größen
+              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: Virtuelle Switches
+              href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+            - name: VM-Tags
+              href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+        - name: Sichern von VM-Datenträgern
+          href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
+        - name: Überwachen
+          items:
+            - name: VM-Metriken
+              href: azure-stack-edge-gpu-monitor-virtual-machine-metrics.md
+            - name: VM-Aktivität
+              href: azure-stack-edge-gpu-monitor-virtual-machine-activity.md
+        - name: Problembehandlung
+          items:
+            - name: Verbinden mit der VM-Konsole
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+            - name: Sammeln von VM-Gastprotokollen
+              href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
+            - name: VM-Imageupload
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
+            - name: VM-Bereitstellung
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
+            - name: Probleme mit einer GPU-Erweiterung
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
+    - name: Kubernetes
+      items:
+        - name: Was ist Kubernetes?
+          href: azure-stack-edge-gpu-kubernetes-overview.md
+        - name: Kubernetes-Speicher
+          href: azure-stack-edge-gpu-kubernetes-storage.md
+        - name: Kubernetes-Netzwerke
+          href: azure-stack-edge-gpu-kubernetes-networking.md
+        - name: RBAC in Kubernetes
+          href: azure-stack-edge-gpu-kubernetes-rbac.md
+        - name: Kubernetes-Workloads
+          href: azure-stack-edge-gpu-kubernetes-workload-management.md
         - name: Bereitstellen von Kubernetes-Workloads
           items:
             - name: Über kubectl
@@ -216,116 +296,64 @@
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
                 - name: "Bereitstellen eines Azure\_Arc-Datencontrollers"
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
-        - name: Konfigurieren von Azure Resource Manager (Vorschau)
+    - name: IoT Edge
+      items:
+        - name: "Bereitstellen von IoT\_Edge-Beispielen"
           items:
-            - name: "Was ist die lokale Azure\_Resource\_Manager-Instanz?"
-              href: azure-stack-edge-gpu-local-resource-manager-overview.md
-            - name: Herstellen einer Verbindung über Azure PowerShell
-              href: azure-stack-edge-gpu-connect-resource-manager.md
-            - name: Festlegen des Azure Resource Manager-Kennworts
-              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
-            - name: Konfigurieren von TLS-Clienteinstellungen
-              href: azure-stack-edge-gpu-configure-tls-settings.md
-        - name: Informationen zu virtuellen Computern (Vorschau)
-          items:
-            - name: Was sind virtuelle Computer?
-              href: azure-stack-edge-gpu-virtual-machine-overview.md
-            - name: Anzeigen unterstützter virtueller Computer
-              href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: Anzeigen unterstützter API-Profile
-              href: azure-stack-edge-profiles-azure-resource-manager-versions.md
-            - name: Erstellen des VM-Image
-              items:
-                - name: Benutzerdefiniertes Image von einem virtuellen Azure-Computer
-                  href: azure-stack-edge-gpu-create-virtual-machine-image.md
-                - name: Generalisiertes Windows-Image von VHD
-                  href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-                - name: Generalisiertes Image von ISO
-                  href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
-                - name: Verwenden eines spezialisierten Images
-                  href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
-                - name: "Verwenden eines Azure\_Marketplace-Images"
-                  href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
-            - name: Bereitstellen von virtuellen Computern
-              items:
-                - name: Verwenden des Azure-Portals
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
-                - name: Über Vorlagen
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
-                - name: Mit GPU
-                  href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
-                - name: "Über Azure\_PowerShell-Cmdlets"
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
-                - name: "Per Azure\_PowerShell-Skript"
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
-                - name: "Per Azure\_CLI/Python"
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
-            - name: Gewusst wie
-              items:
-                - name: Verwalten von Netzwerkschnittstellen
-                  href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
-                - name: Verwalten von Datenträgern
-                  href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
-                - name: Verwalten von VM-Größen
-                  href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
-                - name: Verwalten von VM-Tags
-                  href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
-                - name: Verwalten virtueller Switches
-                  href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
-                - name: Installieren benutzerdefinierter Skripterweiterung
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
-                - name: Installieren der GPU-Erweiterung
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
-                - name: Sichern von VM-Datenträgern
-                  href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
-                - name: Problembehandlung
-                  items:
-                    - name: Verbinden mit der VM-Konsole
-                      href: azure-stack-edge-gpu-connect-virtual-machine-console.md
-                    - name: Sammeln von VM-Gastprotokollen
-                      href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
-                    - name: VM-Imageupload
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
-                    - name: VM-Bereitstellung
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
-                    - name: Probleme mit einer GPU-Erweiterung
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
-        - name: Informationen zu Zertifikaten
-          items:
-            - name: Was sind Zertifikate?
-              href: azure-stack-edge-gpu-certificates-overview.md
-            - name: Anzeigen der Anforderungen
-              href: azure-stack-edge-gpu-certificate-requirements.md
-            - name: Erstellen von Zertifikaten
-              items:
-                - name: Über Azure PowerShell
-                  href: azure-stack-edge-gpu-create-certificates-powershell.md
-                - name: Über das Azure Stack Readiness Checker-Tool
-                  href: azure-stack-edge-gpu-create-certificates-tool.md
-            - name: Vorbereiten des Hochladens von Zertifikaten auf ein Gerät
-              href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
-            - name: 'Hochladen, Importieren, Anzeigen des Ablaufs'
-              href: azure-stack-edge-gpu-manage-certificates.md
-            - name: Beheben von Zertifikatfehlern
-              href: azure-stack-edge-gpu-certificate-troubleshooting.md
+            - name: Modul aus dem NVIDIA-Katalog
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
+            - name: GPU-Modul aus dem Git-Repository
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: GPU-Modul über den Marketplace
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: Module von FPGA-Geräten
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: Modul über das Azure-Portal
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
+        - name: "Behandeln von IoT\_Edge-Problemen"
+          href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
+    - name: Cloudspeichergateway
+      items:
+        - name: 'Hinzufügen, Herstellen einer Verbindung mit einer Freigabe'
+          href: azure-stack-edge-gpu-deploy-add-shares.md
+        - name: 'Hinzufügen, Herstellen einer Verbindung mit Speicherkonten'
+          href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
+        - name: Freigaben
+          href: azure-stack-edge-gpu-manage-shares.md
+        - name: Benutzer
+          href: azure-stack-edge-gpu-manage-users.md
+        - name: Speicherkonten
+          href: azure-stack-edge-gpu-manage-storage-accounts.md
+        - name: Bandbreitenzeitpläne
+          href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
+        - name: Behandeln von Blobspeicherproblemen
+          href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
+- name: "Freigegebenes Gerät: Pro\_GPU, Pro\_R, Mini\_R"
+  items:
+    - name: Freigegebene Konzepte
+      items:
+        - name: Grundlegendes zur Regionsauswahl
+          href: azure-stack-edge-gpu-regions.md
+        - name: Worum handelt es sich bei der GPU-Freigabe?
+          href: azure-stack-edge-gpu-sharing.md
+        - name: Grundlegendes zur Datenresidenz
+          href: azure-stack-edge-gpu-data-residency.md
+        - name: Anzeigen der Schlüsseltresorintegration
+          href: azure-stack-edge-gpu-activation-key-vault.md
+        - name: Aktivieren der proaktiven Protokollierung
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: Gemeinsame Sicherheit
+      items:
+        - name: Sicherheitsübersicht
+          href: azure-stack-edge-pro-r-security.md
+        - name: Sicherheitsbaseline
+          href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
+    - name: Freigegebene Anleitungen
+      items:
         - name: Verwalten von Edgecomputing
           href: azure-stack-edge-gpu-manage-compute.md
         - name: Verwalten der Edge-Containerregistrierung
           href: azure-stack-edge-gpu-edge-container-registry.md
-        - name: Verwalten von Speichergateways
-          items:
-            - name: 'Hinzufügen, Herstellen einer Verbindung mit einer Freigabe'
-              href: azure-stack-edge-gpu-deploy-add-shares.md
-            - name: 'Hinzufügen, Herstellen einer Verbindung mit Speicherkonten'
-              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
-            - name: Freigaben
-              href: azure-stack-edge-gpu-manage-shares.md
-            - name: Benutzer
-              href: azure-stack-edge-gpu-manage-users.md
-            - name: Speicherkonten
-              href: azure-stack-edge-gpu-manage-storage-accounts.md
-            - name: Bandbreitenzeitpläne
-              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: Verwalten des Geräts
           items:
             - name: 'Stromversorgung, Zugriff, Konnektivität'
@@ -362,17 +390,13 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Geräteprotokolle und -diagnose
               href: azure-stack-edge-gpu-troubleshoot.md
-            - name: Azure Resource Manager-Probleme
-              href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
-            - name: Blobprobleme
-              href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
-            - name: "IoT\_Edge-Probleme"
-              href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
             - name: Microsoft-Support kontaktieren
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Freigegebene Versionshinweise
       items:
-        - name: '2105: Aktuell'
+        - name: '2106: Aktuell'
+          href: azure-stack-edge-gpu-2106-release-notes.md
+        - name: 2105
           href: azure-stack-edge-gpu-2105-release-notes.md
         - name: 2103
           href: azure-stack-edge-gpu-2103-release-notes.md
@@ -390,6 +414,8 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Azure CLI
+          href: /cli/azure/databoxedge
         - name: Integrierte Azure Policy-Aktionen
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -480,19 +506,11 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-- name: Sicherheit
-  items:
-    - name: Sicherheitsbaseline
-      href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
-- name: Verweis
-  items:
-    - name: Azure CLI
-      href: /cli/azure/databoxedge
 - name: Ressourcen
   items:
     - name: "Beispiele für ein Azure Stack\_Edge Pro-C#-Modul (.NET)"
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: "Azure Stack\_Edge Pro-/Data\_Box\_Gateway-Produkt"
+    - name: Azure Stack Edge-Produkt
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Worum handelt es sich bei Translator?
-      href: translator-info-overview.md
+      href: translator-overview.md
     - name: Sprachunterstützung
       href: language-support.md
     - name: Preise
@@ -16,6 +16,8 @@
 - name: Textübersetzung
   expanded: true
   items:
+    - name: Was ist „Textübersetzung“?
+      href: text-translation-overview.md
     - name: Schnellstart
       href: quickstart-translator.md
     - name: Beispiele
@@ -68,12 +70,12 @@
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: Verweis
       items:
+        - name: REST-APIs für Textübersetzung
+          href: reference/rest-api-guide.md
         - name: "Referenz zu Version\_3 von Translator"
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: Anforderungsgrenzwerte
-          href: request-limits.md
         - name: Translate
           href: reference/v3-0-translate.md
         - name: Transliterate
@@ -86,11 +88,13 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: Wörterbuchbeispiele
           href: reference/v3-0-dictionary-examples.md
+        - name: Anforderungsgrenzwerte
+          href: request-limits.md
 - name: Dokumentübersetzung
   items:
     - name: Was ist die Dokumentübersetzung?
       href: document-translation/overview.md
-    - name: Clientbibliotheken und SDKs
+    - name: SDKs für Clientbibliothek
       href: document-translation/client-sdks.md
     - name: Schnellstart
       href: document-translation/get-started-with-document-translation.md
@@ -102,7 +106,7 @@
           href: document-translation/managed-identity.md
     - name: Verweis
       items:
-        - name: Referenzhandbuch für die REST-API
+        - name: REST-APIs für Dokumentübersetzung
           href: document-translation/reference/rest-api-guide.md
         - name: Abrufen unterstützter Dokumentformate
           href: document-translation/reference/get-supported-document-formats.md

@@ -42,12 +42,20 @@
           href: tutorial-prepare-azure.md
         - name: Lokales Vorbereiten von VMware
           href: vmware-azure-tutorial-prepare-on-premises.md
-        - name: Einrichten der Replikation
+    - name: Einrichten der Replikation
+      items:
+        - name: Klassisch
           href: vmware-azure-tutorial.md
+        - name: Vorschau
+          href: vmware-azure-set-up-replication-tutorial-preview.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens
           href: tutorial-dr-drill-azure.md
-        - name: Failover in Azure
+    - name: Ausführen eines VMware-VM-Failovers zu Azure
+      items:
+        - name: Klassisch
           href: vmware-azure-tutorial-failover-failback.md
+        - name: Vorschau
+          href: vmware-azure-tutorial-failover-failback-preview.md
     - name: Notfallwiederherstellung von Azure VMware Solution in Azure
       items:
         - name: Vorbereiten von Azure
@@ -122,14 +130,22 @@
           href: vmware-physical-azure-config-process-server-overview.md
         - name: Supportanforderungen für Konfigurations- und Prozessserver
           href: vmware-azure-configuration-server-requirements.md
-        - name: VMware-zu-Azure-Architektur
+        - name: Bereitstellen der Azure Site Recovery-Replikationsappliance (Vorschau)
+          href: deploy-vmware-azure-replication-appliance-preview.md
+        - name: Wechseln der Replikationsappliance (Vorschau)
+          href: switch-replication-appliance-preview.md
+    - name: VMware-zu-Azure-Architektur
+      items:
+        - name: Klassisch
           href: vmware-azure-architecture.md
-        - name: Informationen zum Ausschließen von Datenträgern von der Replikation
-          href: exclude-disks-replication.md
-        - name: Standortoptionen für Failbacks von Azure auf VMware
-          href: concepts-types-of-failback.md
-        - name: Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung
-          href: vmware-azure-multi-tenant-overview.md
+        - name: Vorschau
+          href: vmware-azure-architecture-preview.md
+    - name: Informationen zum Ausschließen von Datenträgern von der Replikation
+      href: exclude-disks-replication.md
+    - name: Standortoptionen für Failbacks von Azure auf VMware
+      href: concepts-types-of-failback.md
+    - name: Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung
+      href: vmware-azure-multi-tenant-overview.md
     - name: Informationen zur Notfallwiederherstellung von virtuellen Hyper-V-Computern
       items:
         - name: Häufig gestellte Fragen
@@ -159,7 +175,11 @@
         - name: Verwenden von öffentlichen IP-Adressen mit Site Recovery
           href: concepts-public-ip-address-with-site-recovery.md
     - name: Informationen zu Failover und Failback
-      href: failover-failback-overview.md
+      items:
+        - name: Klassisch
+          href: failover-failback-overview.md
+        - name: Vorschau
+          href: failover-failback-overview-preview.md
     - name: Informationen zu Wiederherstellungsplänen
       href: recovery-plan-overview.md
     - name: Informationen zur Migration zu Azure
@@ -200,6 +220,8 @@
           items:
             - name: Ermöglichen der Replikation von Azure zu Azure
               href: azure-to-azure-how-to-enable-replication.md
+            - name: Ermöglichen einer globalen Notfallwiederherstellung
+              href: azure-to-azure-enable-global-disaster-recovery.md
             - name: Ermöglichen der Replikation von Azure zu Azure mittels Richtlinie
               href: azure-to-azure-how-to-enable-policy.md
             - name: Ermöglichen der Replikation von Azure zu Azure für verschlüsselte virtuelle Computer
@@ -286,7 +308,7 @@
               href: vmware-azure-enable-replication.md
             - name: Ausschließen von Datenträgern von der Replikation
               href: vmware-azure-exclude-disk.md
-            - name: 'Exemplarische Vorgehensweise: Einrichten der Replikation mit Mehrinstanzenfähigkeit und CSP für virtuelle VMWare-Computer'
+            - name: 'Exemplarische Vorgehensweise: Einrichten der Replikation mit Mehrinstanzenfähigkeit und CSP für virtuelle VMware-Computer'
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Ausführen von Failover und Failback
           items:
@@ -310,6 +332,8 @@
           items:
             - name: Verwalten des Mobilitäts-Agent
               href: vmware-physical-manage-mobility-service.md
+            - name: Aktualisieren des Mobilitäts-Agents (Vorschau)
+              href: upgrade-mobility-service-preview.md
             - name: Verwalten des Konfigurationsservers für VMware
               href: vmware-azure-manage-configuration-server.md
             - name: Verwalten von Prozessservern

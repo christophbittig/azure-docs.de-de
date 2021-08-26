@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: a66b036bde5f25873e9d4a371faf249deadd69dc
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 4635848032d60c056b525d4ece0d50ad2eaf6039
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736896"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396764"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse-Notebooks in Azure Synapse Analytics
 
@@ -150,9 +150,10 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET für Spark (C#)|Ja|-|-|-|-|-|-|-|
+|.NET für Spark (C#)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 
-
+>[!Note]
+> Eine aktive Spark-Sitzung ist erforderlich, um von der Codevervollständigung für Variablen, der Codevervollständigung für Systemfunktionen, der Codevervollständigung für Benutzerfunktionen für .NET für Spark (C#) zu profitieren.
 
 ### <a name="code-snippets"></a>Codeausschnitte
 
@@ -337,13 +338,14 @@ Wird nicht unterstützt.
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als fünf ist. Der Befehl ```%run``` unterstützt derzeit nur die Übergabe eines Notebookpfads als Parameter. 
+Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als fünf ist.  Der Befehl ```%run``` unterstützt derzeit nur die Übergabe eines Notebookpfads als Parameter. 
 
 Beispiel: ``` %run /path/notebookA ```.
 
+Notebookverweise funktionieren sowohl im interaktiven Modus als auch in der Synapse-Pipeline.
+
 > [!NOTE]
-> Notebookverweise werden in einer Synapse-Pipeline nicht unterstützt.
->
+> Die Notebooks, auf die verwiesen wird, müssen veröffentlicht werden. Sie müssen die Notebooks veröffentlichen, um darauf verweisen zu können. Synapse Studio erkennt die nicht veröffentlichten Notebooks aus dem Git-Repository nicht. 
 >
 
 ---
@@ -388,10 +390,10 @@ Sie können in **Sitzung konfigurieren** die Timeoutdauer sowie die Anzahl und G
 #### <a name="spark-session-config-magic-command"></a>Magic-Befehl config für Spark-Sitzung
 Sie können auch Spark-Sitzungseinstellungen über einen **%%configure**-Magic-Befehl angeben. Die Spark-Sitzung muss neu gestartet werden, damit die Einstellungen wirksam werden. Wir empfehlen Ihnen, **%%configure** am Anfang Ihres Notebooks auszuführen. Hier ist ein Beispiel. Die vollständige Liste der gültigen Parameter finden Sie unter https://github.com/cloudera/livy#request-body. 
 
-```
-%%configure -f
+```json
+%%configure
 {
-    to config the session.
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
     "driverMemory":"2g",
     "driverCores":3,
     "executorMemory":"2g",
@@ -403,8 +405,8 @@ Sie können auch Spark-Sitzungseinstellungen über einen **%%configure**-Magic-B
 }
 ```
 > [!NOTE]
-> Der Magic-Befehl für die Konfiguration der Spark-Sitzung wird in einer Synapse-Pipeline nicht unterstützt.
->
+> - Sie können den Magic-Befehl für die Konfiguration der Spark-Sitzung in Synapse-Pipelines verwenden. Er wird nur wirksam, wenn er auf der obersten Ebene aufgerufen wird. Die im Notebook, auf das verwiesen wird, verwendete „%%configure“-Eigenschaft wird ignoriert.
+> - Die Spark-Konfigurationseigenschaften müssen im „conf“-Textkörper verwendet werden. Wir unterstützen keine Verweise auf oberster Ebene für die Spark-Konfigurationseigenschaften.
 >
 
 ## <a name="bring-data-to-a-notebook"></a>Einfügen von Daten in ein Notebook
@@ -459,6 +461,83 @@ df = spark.read.option("header", "true") \
 Sie können auf Daten im primären Speicherkonto direkt zugreifen. Es besteht keine Notwendigkeit, die geheimen Schlüssel bereitzustellen. Klicken Sie im Daten-Explorer mit der rechten Maustaste auf eine Datei, und wählen Sie **Neues Notebook** aus, um ein neues Notebook mit einem automatisch generierten Datenextraktor anzuzeigen.
 
 ![Daten-in-Zelle](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+
+## <a name="ipython-widgets"></a>IPython-Widgets
+
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
+
+Wird nicht unterstützt.
+
+# <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
+
+Widgets sind ereignisbehaftete Python-Objekte, die eine Darstellung im Browser besitzen – häufig als Steuerelement wie ein Schieberegler, ein Textfeld usw. IPython-Widgets funktionieren nur in der Python-Umgebung und werden in anderen Sprachen (z. B. Scala, SQL, C#) noch nicht unterstützt. 
+
+### <a name="to-use-ipython-widget"></a>So verwenden Sie das IPython-Widget
+1. Sie müssen zuerst das Modul `ipywidgets` importieren, um das Jupyter Widget-Framework zu verwenden.
+   ```python
+   import ipywidgets as widgets
+   ```
+2. Sie können die Funktion `display` der obersten Ebene verwenden, um ein Widget zu rendern, oder einen Ausdruck vom Typ **widget** in der letzten Zeile der Codezelle belassen.
+   ```python
+   slider = widgets.IntSlider()
+   display(slider)
+   ```
+
+   ```python
+   slider = widgets.IntSlider()
+   slider
+   ```
+   
+3. Führen Sie die Zelle aus, und das Widget wird im Ausgabebereich angezeigt.
+
+   ![ipython-Widgets-Schieberegler](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
+
+4. Sie können mehrere `display()`-Aufrufe verwenden, um dieselbe Widgetinstanz mehrmals zu rendern, wobei diese aber miteinander synchronisiert bleiben.
+
+   ```python
+   slider = widgets.IntSlider()
+   display(slider)
+   display(slider)
+   ```
+
+   ![ipython-Widgets-Schieberegler](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
+
+5. Um zwei Widgets unabhängig voneinander zu rendern, erstellen Sie zwei Widgetinstanzen:
+
+   ```python
+   slider1 = widgets.IntSlider()
+   slider2 = widgets.IntSlider()
+   display(slider1)
+   display(slider2)
+   ```
+
+
+### <a name="supported-widgets"></a>Unterstützte Widgets
+
+|Widgettyp|Widgets|
+|--|--|
+|Numerische Widgets|IntSlider, FloatSlider, FloatLogSlider, IntRangeSlider, FloatRangeSlider, IntProgress, FloatProgress, BoundedIntText, BoundedFloatText, IntText, FloatText|
+|Boolesche Widgets|ToggleButton, Checkbox, Valid|
+|Auswahlwidgets|Dropdown, RadioButtons, Select, SelectionSlider, SelectionRangeSlider, ToggleButtons, SelectMultiple|
+|Zeichenfolgenwidgets|Text, Text area, Combobox, Password, Label, HTML, HTML Math, Image, Button|
+|Wiedergabewidgets (Animation)|Date picker, Color picker, Controller (Datumsauswahl, Farbauswahl, Controller)|
+|Container-/Layoutwidgets|Box, HBox, VBox, GridBox, Accordion, Tabs, Stacked|
+
+
+### <a name="know-issue"></a>Bekanntes Problem
+
+Die folgenden Widgets werden noch nicht unterstützt. Sie können aber wie folgt eine Problemumgehung befolgen:
+
+|Funktionalität|Problemumgehung|
+|--|--|
+|`Output`-Widget|Sie können stattdessen die `print()`-Funktion verwenden, um Text in stdout zu schreiben.|
+|`widgets.jslink()`|Sie können die `widgets.link()`-Funktion verwenden, um zwei ähnliche Widgets zu verknüpfen.|
+|`FileUpload`-Widget| Noch nicht unterstützt.|
+
+
+---
+
 
 ## <a name="save-notebooks"></a>Speichern von Notebooks
 

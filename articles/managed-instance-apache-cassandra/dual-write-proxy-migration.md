@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: e5e202d12beb93bc6970593f327400917a4b7ef5
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516735"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749459"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>Livemigration zu Azure Managed Instance for Apache Cassandra mithilfe eines Proxys für duales Schreiben
 
@@ -45,13 +45,13 @@ Die Vorgehensweise ist in der folgenden Abbildung dargestellt.
 
 Es wird empfohlen, Version 7.5 der Azure Databricks-Runtime auszuwählen, die Spark 3.0 unterstützt.
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Screenshot, der die Suche nach der Azure Databricks-Laufzeitversion zeigt.":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Screenshot, der die Suche nach der Azure Databricks-Laufzeitversion zeigt.":::
 
 ## <a name="add-spark-dependencies"></a>Hinzufügen von Spark-Abhängigkeiten
 
 Sie müssen dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzufügen, um eine Verbindung mit nativen und Azure Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster **Bibliotheken**  >  **Neue**  >  **Maven** installieren und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven-Koordinaten hinzu.
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Azure Databricks gesucht werden.":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Azure Databricks gesucht werden.":::
 
 Wählen Sie **Installieren** aus, und starten Sie den Cluster nach Abschluss der Installation neu.
 
@@ -148,7 +148,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 > [!NOTE]
-> Für die Installation des Proxys auf den Clusterknoten ist kein Neustart der Knoten erforderlich. Wenn Sie jedoch über viele Anwendungsclients verfügen und den Proxy auf dem Cassandra-Standardport 9042 ausführen, müssen Sie, um Codeänderungen auf Anwendungsebene zu vermeiden, den [Apache Cassandra-Standardport](https://cassandra.apache.org/doc/latest/faq/#what-ports-does-cassandra-use) ändern. Anschließend müssen Sie die Knoten in Ihrem Cluster neu starten und den Quellport als den neuen Port konfigurieren, den Sie für Ihren Cassandra-Quellcluster festgelegt haben. 
+> Für die Installation des Proxys auf den Clusterknoten ist kein Neustart der Knoten erforderlich. Wenn Sie jedoch über viele Anwendungsclients verfügen und den Proxy auf dem Cassandra-Standardport 9042 ausführen, müssen Sie, um Codeänderungen auf Anwendungsebene zu vermeiden, den [Apache Cassandra-Standardport](https://cassandra.apache.org/doc/latest/cassandra/faq/#what-ports-does-cassandra-use) ändern. Anschließend müssen Sie die Knoten in Ihrem Cluster neu starten und den Quellport als den neuen Port konfigurieren, den Sie für Ihren Cassandra-Quellcluster festgelegt haben. 
 >
 > Im folgenden Beispiel ändern wir den Cassandra-Quellcluster so, dass er auf dem Port 3074 ausgeführt wird, und wir starten den Cluster auf Port 9042:
 >

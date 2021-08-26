@@ -45,7 +45,7 @@ items:
         href: connected-cache-configure.md
       - name: Importieren von Geräteupdates
         href: import-concepts.md
-      - name: Importbezogenes Schema
+      - name: Details zu importbezogenen Schemas und zur API
         href: import-schema.md
       - name: Grenzwerte für Geräteupdates
         href: device-update-limits.md

@@ -2,13 +2,13 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Servern mit Azure Arc-Aktivierung
+    - name: Informationen zu Servern mit Azure Arc-Unterstützung
       href: overview.md
     - name: Neuerungen beim Connected Machine-Agent
       href: agent-release-notes.md
 - name: Schnellstarts
   items:
-    - name: Server-Agents mit Azure Arc-Unterstützung
+    - name: Aktivieren eines Agents für Server mit Arc-Unterstützung
       href: ./learn/quick-enable-hybrid-vm.md
 - name: Tutorials
   items:
@@ -16,6 +16,10 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Überwachen des Computers
       href: ./learn/tutorial-enable-vm-insights.md
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Sicherheit

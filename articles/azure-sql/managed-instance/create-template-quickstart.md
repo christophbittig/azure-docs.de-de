@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma
 ms.date: 06/22/2020
-ms.openlocfilehash: b4b19be4215f8a5bfa0b1f4eb42607c51bfe1d16
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 882613ef5b27b7021c61cabfabe3f37c3c842bd6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889029"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722821"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure SQL Managed Instance mit einer ARM-Vorlage
 
@@ -52,7 +52,7 @@ Weitere Vorlagenbeispiele finden Sie in den [Azure-Schnellstartvorlagen](https:/
 Wählen Sie **Ausprobieren** aus dem folgenden PowerShell-Codeblock, um die Azure Cloud Shell zu öffnen.
 
 > [!IMPORTANT]
-> Die Bereitstellung einer verwalteten Instanz ist ein Vorgang mit langer Ausführungsdauer. Die Bereitstellung der ersten Instanz im Subnetz dauert normalerweise deutlich länger als die Bereitstellung in einem Subnetz, das bereits verwaltete Instanzen enthält. Informationen zur durchschnittlichen Bereitstellungsdauer finden Sie unter [Verwaltungsvorgänge für verwaltete SQL-Instanzen](sql-managed-instance-paas-overview.md#management-operations).
+> Die Bereitstellung einer verwalteten Instanz ist ein Vorgang mit langer Ausführungsdauer. Die Bereitstellung der ersten Instanz im Subnetz dauert normalerweise deutlich länger als die Bereitstellung in einem Subnetz, das bereits verwaltete Instanzen enthält. Informationen zur durchschnittlichen Bereitstellungsdauer finden Sie unter [Verwaltungsvorgänge für verwaltete SQL-Instanzen](management-operations-overview.md#duration).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -3,19 +3,18 @@ title: 'Tutorial: Entwickeln von C-Modulen für Windows mit Azure IoT Edge'
 description: In diesem Tutorial wird gezeigt, wie Sie IoT Edge-Module mit C-Code erstellen und auf Windows-Geräten bereitstellen, auf denen IoT Edge ausgeführt wird.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a67bf92dbee9bf3d444add3be32544e4c3eba4f3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1c01488f23b67d3aad54986fa73c4567a6f28365
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221601"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749561"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Tutorial: Entwickeln von C-IoT Edge-Modulen mit Windows-Containern
 

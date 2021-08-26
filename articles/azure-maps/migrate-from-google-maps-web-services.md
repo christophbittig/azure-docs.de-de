@@ -3,18 +3,18 @@ title: 'Tutorial: Migrieren von Webdiensten aus Google Maps | Microsoft Azure Ma
 description: Tutorial zum Migrieren von Webdiensten aus Google Maps zu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/19/2020
+ms.date: 06/23/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: caed40f91ef6a6c1e8bdb353c6548aee699dbc07
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: f1220d7368eb0bca48364dc239944a95d29be276
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795426"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578881"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Tutorial: Migrieren von Webdiensten aus Google Maps
 
@@ -60,7 +60,7 @@ Die folgenden Dienst-APIs stehen in Azure Maps derzeit nicht zur Verfügung:
 - Nächstgelegene Straßen: Diese Information kann wie [hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic) beschrieben über das Web-SDK ermittelt werden, sie steht aktuell jedoch nicht als Dienst zur Verfügung.
 - Statische Straßenansicht
 
-Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse sind:
+Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse für Sie sind:
 
 - [Räumliche Vorgänge:](/rest/api/maps/spatial) Lagern Sie komplexe räumliche Berechnungen und Vorgänge, wie z. B. Geofencing, in einen Dienst aus.
 - [Datenverkehr:](/rest/api/maps/traffic) Greifen Sie in Echtzeit auf den Datenverkehrsfluss und die Vorfallsdaten zu.
@@ -121,7 +121,7 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 
 Machen Sie sich mit den [bewährten Methoden für die Suche](how-to-use-best-practices-for-search.md) vertraut.
 
-Die Azure Maps-API für die umgekehrte Geocodierung bietet einige zusätzliche Features, die in Google Maps nicht verfügbar sind. Es empfiehlt sich ggf., diese Features im Zuge der App-Migration in Ihre Anwendung zu integrieren:
+Die Azure Maps-API für die umgekehrte Geocodierung bietet einige andere Funktionen, die in Google Maps nicht verfügbar sind. Es empfiehlt sich ggf., diese Features im Zuge der App-Migration in Ihre Anwendung zu integrieren:
 
 * Abrufen von Daten zu Geschwindigkeitsbegrenzungen
 * Abrufen von Informationen zur Straßennutzung: lokale Straße, Umgehungsstraße, eingeschränkte Zufahrt, Auffahrt und Ähnliches
@@ -203,7 +203,6 @@ Der Routenplanungsdienst von Azure Maps stellt die folgenden APIs zum Berechnen 
 
 - [**Berechnen der Route:**](/rest/api/maps/route/getroutedirections) Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. POST-Anforderungen werden empfohlen, wenn eine große Anzahl von Wegpunkten angegeben wird oder wenn viele der Routenoptionen verwendet werden, um sicherzustellen, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht. Für die POST-Anforderung im Zusammenhang mit der Routenbeschreibung in Azure Maps steht eine Option zur Verfügung, die Tausende unterstützende Punkte ([SupportingPoints](/rest/api/maps/route/postroutedirections#supportingpoints)) akzeptiert und diese verwendet, um eine logische Route zwischen ihnen zu erstellen (Ausrichtung an Straße). 
 - [**Batchroute:**](/rest/api/maps/route/postroutedirectionsbatchpreview) Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
-- [**Mobilitätsdienste (Vorschauversion)** ](/rest/api/maps/mobility): Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
 
 In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichbaren API-Parametern in Azure Maps gegenübergestellt:
 
@@ -221,28 +220,26 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 | `origin`                       | `query`                            |
 | `region`                       | *Nicht verfügbar:* Dieses Feature hängt mit der Geocodierung zusammen. Verwenden Sie den Parameter *countrySet*, wenn Sie die Geocodierung-API von Azure Maps verwenden.  |
 | `traffic_model`               | *Nicht verfügbar:* Es kann nur angegeben werden, ob Verkehrsinfos mit dem Parameter *traffic* verwendet werden sollen. |
-| `transit_mode`                | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten (Vorschauversion)](/rest/api/maps/mobility). |
-| `transit_routing_preference` | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten (Vorschauversion)](/rest/api/maps/mobility). |
 | `units`                        | *Nicht verfügbar:* Bei Azure Maps wird ausschließlich das metrische System verwendet.  |
 | `waypoints`                    | `query`                            |
 
 > [!TIP]
 > Von der Routen-API von Azure Maps wird gibt standardmäßig nur eine Zusammenfassung zurückgegeben. Sie gibt die Entfernung und Zeiten sowie die Koordinaten für die Route zurück. Verwenden Sie den Parameter `instructionsType`, um ausführliche Anweisungen abzurufen. Verwenden Sie außerdem den Parameter `routeRepresentation`, um die Zusammenfassung und die Route herauszufiltern.
 
-Die Routen-API von Azure Maps verfügt über zusätzliche Features, die in Google Maps nicht verfügbar sind. Wenn Sie Ihre App migrieren, empfiehlt es sich ggf., diese Features zu verwenden, da sie unter Umständen hilfreich sind.
+Die Routen-API von Azure Maps verfügt über andere Funktionen, die in Google Maps nicht verfügbar sind. Wenn Sie Ihre App migrieren, empfiehlt es sich ggf., diese Features zu verwenden, da sie unter Umständen hilfreich sind.
 
 * Unterstützung für den Routentyp: kürzeste, schnellste, attraktivste und kraftstoffeffizienteste
-* Unterstützung für zusätzliche Reisemodi: Bus, Motorrad, Taxi, Lkw und Kleinbus
+* Die Unterstützung für andere Reisemodi: Bus, Motorrad, Taxi, LKW und Kleinbus.
 * Unterstützung für 150 Wegpunkte
 * Berechnung mehrerer Fahrzeiten in einer einzelnen Anforderung: bisheriger Verkehr, aktueller Verkehr, kein Verkehr
-* Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen
+* Die Vermeidung zusätzlicher Straßentypen: Straßen von Fahrgemeinschaften, ungepflasterte Straßen, bereits verwendete Straßen.
 * Eigene Angabe zu vermeidender Bereiche
 * Höhenbegrenzung für die Route
 * Auf Motorangaben basierende Route: Berechnen Sie Routen für Fahrzeuge mit Verbrennungs- oder Elektromotor basierend auf Motorangaben und dem verbleibenden Kraftstoff bzw. Ladestand.
 * Unterstützung von Routenparametern für Nutzfahrzeuge (Fahrzeugabmessungen, Gewicht, Anzahl der Achsen, Art der Ladung und Ähnliches)
 * Angabe der maximale Fahrzeuggeschwindigkeit
 
-Darüber hinaus unterstützt der Routendienst in Azure Maps auch die [Berechnung von Bereichen für Routen](/rest/api/maps/route/getrouterange). Diese werden auch als Isochrone bezeichnet. Hierzu wird ein Polygon für einen Bereich generiert, der von einem Ausgangspunkt aus in beliebiger Richtung zu erreichen ist (innerhalb eines bestimmten Zeitraums oder mit einer bestimmten Kraftstoffmenge bzw. einer bestimmten Akkuladung).
+Darüber hinaus unterstützt der Routendienst in Azure Maps auch die [Berechnung von routingfähigen Bereichen](/rest/api/maps/route/getrouterange). Diese werden auch als Isochrone bezeichnet. Hierzu wird ein Polygon für einen Bereich generiert, der von einem Ausgangspunkt aus in beliebiger Richtung zu erreichen ist (innerhalb eines bestimmten Zeitraums oder mit einer bestimmten Kraftstoffmenge bzw. einer bestimmten Akkuladung).
 
 Lesen Sie die Dokumentation mit [bewährten Methoden für die Routenplanung](how-to-use-best-practices-for-routing.md).
 
@@ -294,7 +291,7 @@ Fügen Sie Marker mithilfe des Parameters `markers` in der URL hinzu. Der Parame
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
-Wenn Sie weitere Stile hinzufügen möchten, fügen Sie der URL Parameter vom Typ `markers` mit einem anderen Stil und einem anderen Satz von Positionen hinzu.
+Wenn Sie andere Stile hinzufügen möchten, verwenden Sie die URL der `markers` Parameter mit einem anderen Stil und einer anderen Anzahl von Standorten.
 
 Geben Sie Markerpositionen im Format „Breitengrad,Längengrad“ an.
 
@@ -325,7 +322,7 @@ Geben Sie in der URL den Parameter `pins` an, um einem statischen Kartenbild Mar
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
-Wenn Sie weitere Stile verwenden möchten, fügen Sie der URL zusätzliche Parameter vom Typ `pins` mit einem anderen Stil und einem anderen Satz von Positionen hinzu.
+Wenn Sie andere Stile hinzufügen möchten, fügen Sie der URL zusätzliche `pins` Parameter mit einem anderen Stil und einer anderen Anzahl von Standorten hinzu.
 
 In Azure Maps muss die Stecknadelposition im Format „Längengrad Breitengrad“ angegeben werden. Von Google Maps wird das Format „Breitengrad,Längengrad“ verwendet. Im Azure Maps-Format sind Längen- und Breitengrad nicht durch ein Komma, sondern durch ein Leerzeichen getrennt.
 
@@ -375,7 +372,7 @@ Fügen Sie einem statischen Kartenbild mithilfe des Parameters `path` in der URL
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
-Verwenden Sie weitere Stile, indem Sie der URL zusätzliche Parameter vom Typ `path` mit einem anderen Stil und einem anderen Satz von Positionen hinzufügen.
+Verwenden Sie andere Stile, indem Sie der URL zusätzliche `path` Parameter mit einem anderen Stil und einer anderen Anzahl von Standorten hinzufügen.
 
 Pfadpositionen werden im Format `latitude1,longitude1|latitude2,longitude2|…`angegeben. Pfade können codiert werden oder Adressen für Punkte enthalten.
 
@@ -402,7 +399,7 @@ Geben Sie in der URL den Parameter `path` an, um einem statischen Kartenbild Lin
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
-Bei Azure Maps müssen die Koordinaten für Pfadpositionen im Format „Längengrad Breitengrad“ angegeben werden. Von Google Maps wird das Format „Breitengrad,Längengrad“ verwendet. Im Azure Maps-Format sind Längen- und Breitengrad nicht durch ein Komma, sondern durch ein Leerzeichen getrennt. Azure Maps unterstützt keine codierten Pfade oder Adressen für Punkte. Laden Sie größere Datasets als GeoJSON-Dateien in die Datenspeicher-API von Azure Maps hoch, wie [hier](how-to-render-custom-data.md#get-data-from-azure-maps-data-storage) dokumentiert.
+Bei Azure Maps müssen die Koordinaten für Pfadpositionen im Format „Längengrad Breitengrad“ angegeben werden. Von Google Maps wird das Format „Breitengrad,Längengrad“ verwendet. Im Azure Maps-Format sind Längen- und Breitengrad nicht durch ein Komma, sondern durch ein Leerzeichen getrennt. Azure Maps unterstützt keine codierten Pfade oder Adressen für Punkte. Laden Sie größere Datasets als GeoJSON-Dateien in die Datenspeicher-API von Azure Maps hoch, wie [hier](how-to-render-custom-data.md#upload-pins-and-path-data) dokumentiert.
 
 Fügen Sie Pfadstile mit dem Format `optionNameValue` hinzu. Trennen Sie mehrere Stile jeweils durch einen senkrechten Strich (\|): `optionName1Value1|optionName2Value2`. Optionsname und -wert werden nicht voneinander getrennt. Verwenden Sie die folgenden Stiloptionsnamen für die Gestaltung von Pfaden in Azure Maps:
 
@@ -468,7 +465,7 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 | `location`                  | `query`             |
 | `timestamp`                 | `timeStamp`         |
 
-Zusätzlich zu diesem API bietet Azure Maps eine Reihe von Zeitzonen-APIs. Diese APIs konvertieren die Zeit basierend auf den Namen oder IDs der Zeitzone:
+Zusätzlich zu dieser API bietet Azure Maps eine Reihe von Zeitzonen-APIs. Diese APIs konvertieren die Zeit basierend auf den Namen oder IDs der Zeitzone:
 
 - [**Zeitzone nach ID:**](/rest/api/maps/timezone/gettimezonebyid) Gibt aktuelle, historische und zukünftige Zeitzoneninformationen für die angegebene IANA-Zeitzonen-ID zurück.
 - [**Zeitzonenenumeration für IANA:**](/rest/api/maps/timezone/gettimezoneenumiana) Gibt eine vollständige Liste der IANA-Zeitzonen-IDs zurück. Updates für den IANA-Dienst werden innerhalb eines Tages im System übernommen.

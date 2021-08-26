@@ -15,10 +15,10 @@ audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
 ms.openlocfilehash: f851579712a9549c88f1ca652aea4f31457da132
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77201897"
 ---
 # <a name="reset-azure-kinect-dk"></a>Zurücksetzen von Azure Kinect DK
@@ -41,11 +41,11 @@ Es kann vorkommen, dass Ihr Azure Kinect DK-Gerät auf das Werksimage zurückg
 
 Achten Sie darauf, dass auf dem Gerät immer die neueste Firmware installiert ist. Die aktuelle Firmwareversion kann mithilfe des Azure Kinect-Firmwaretools abgerufen werden. Weitere Informationen zum Überprüfen des Firmwarestatus finden Sie unter [Überprüfen der Firmwareversion des Geräts](azure-kinect-firmware-tool.md#check-device-firmware-version).
 
-## <a name="related-topics"></a>Verwandte Themen
+## <a name="related-topics"></a>Zugehörige Themen
 
 - [Informationen zu Azure Kinect DK](about-azure-kinect-dk.md)
 - [Schnellstart: Einrichten Ihres Azure Kinect DK-Geräts](set-up-azure-kinect-dk.md)
-- [Hardwarespezifikationen für Azure Kinect DK: Betriebsumgebung](hardware-specification.md#operating-environment)
+- [Hardwarespezifikationen Kinect Azure Kinect DK: Betriebsumgebung](hardware-specification.md#operating-environment)
 - [Azure Kinect DK-Firmwaretool](azure-kinect-firmware-tool.md)
 - [Azure Kinect Viewer](azure-kinect-viewer.md)
 - [Geräteübergreifende Synchronisierung für Azure Kinect DK](multi-camera-sync.md)

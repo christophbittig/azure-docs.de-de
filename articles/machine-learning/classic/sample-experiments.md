@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Starten von Experimenten über Beispiele – Azure'
-description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Azure Machine Learning Studio (klassisch) neue Experimente zu erstellen.
+description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Machine Learning Studio (Classic) neue Experimente zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,14 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 40306973dde989862f8dfe9df5c9d873ac18fdd0
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: fbb9787ce6641e379c3f43f0725d28dbd51fc962
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517500"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579556"
 ---
-# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von (klassischen) Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen im Azure KI-Katalog
+# <a name="create-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Machine Learning Studio-Experimenten (Classic) aus funktionierenden Beispielen im Azure KI-Katalog
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -25,7 +25,7 @@ ms.locfileid: "100517500"
 
 Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure KI-Katalog](https://gallery.azure.ai/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
 
-Der Katalog enthält Beispielexperimente des Teams für Microsoft Azure Machine Learning Studio (klassisch) und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
+Der Katalog enthält Beispielexperimente des Teams für Machine Learning Studio (Classic) und Beispiele die von der Machine Learning-Community freigegeben sind. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
 Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) der Reihe [Data Science für Einsteiger](data-science-for-beginners-the-5-questions-data-science-answers.md) veranschaulicht.
 

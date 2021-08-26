@@ -2,14 +2,14 @@
 title: 'Tutorial: Einrichten der Azure-VM-Notfallwiederherstellung mit Azure Site Recovery'
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Site Recovery-Dienst die Notfallwiederherstellung für Azure-VMs in einer anderen Region einrichten.
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 07/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67dcbaf555de14c445f041b200ead48c4deac5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656868"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742982"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Tutorial: Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Stellen Sie Folgendes sicher, bevor Sie mit diesem Tutorial beginnen:
 
-- [Überprüfen Sie die unterstützten Regionen](azure-to-azure-support-matrix.md#region-support). Sie können die Notfallwiederherstellung für Azure-VMs zwischen zwei beliebigen Regionen innerhalb desselben geografischen Gebiets einrichten.
+- [Überprüfen Sie die unterstützten Regionen](azure-to-azure-support-matrix.md#region-support). 
 - Sie benötigen mindestens eine Azure-VM. Vergewissern Sie sich, dass [Windows](azure-to-azure-support-matrix.md#windows)- oder [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage)-VMs unterstützt werden.
 - Überprüfen Sie die VM-Anforderungen in Bezug auf [Compute](azure-to-azure-support-matrix.md#replicated-machines---compute-settings), [Speicher](azure-to-azure-support-matrix.md#replicated-machines---storage) und [Netzwerk](azure-to-azure-support-matrix.md#replicated-machines---networking).
 - In diesem Tutorial wird davon ausgegangen, dass VMs nicht verschlüsselt sind. Falls Sie die Notfallwiederherstellung für verschlüsselte VMs einrichten möchten, folgen Sie den Anweisungen in [diesem Artikel](azure-to-azure-how-to-enable-replication-ade-vms.md).
@@ -47,7 +47,7 @@ Ihr Azure-Konto muss über Berechtigungen zum Erstellen eines Recovery Services
 
 - Wenn Sie gerade ein kostenloses Azure-Abonnement erstellt haben, sind Sie der Kontoadministrator, und es ist keine weitere Aktion erforderlich.
 - Sollten Sie nicht der Administrator sein, wenden Sie sich an den Administrator, damit dieser Ihnen die erforderlichen Berechtigungen zuweist.
-    - **Erstellen eines Tresors**: Administrator- oder Besitzerberechtigungen für das Abonnement 
+    - **Erstellen eines Tresors**: Administrator- oder Besitzerberechtigungen für das Abonnement
     - **Verwalten von Site Recovery-Vorgängen im Tresor**: Integrierte Azure-Rolle *Site Recovery-Mitwirkender*
     - **Erstellen von Azure-VMs in der Zielregion**: Integrierte Rolle *Mitwirkender für virtuelle Computer* oder spezifische Berechtigungen für folgende Aktionen:
         - Erstellen einer VM im ausgewählten virtuellen Netzwerk
@@ -56,14 +56,14 @@ Ihr Azure-Konto muss über Berechtigungen zum Erstellen eines Recovery Services
 
 ### <a name="verify-target-settings"></a>Überprüfen der Zieleinstellungen
 
-Wenn Sie während der Notfallwiederherstellung ein Failover von der Quellregion ausführen, werden VMs in der Zielregion erstellt. 
+Wenn Sie während der Notfallwiederherstellung ein Failover von der Quellregion ausführen, werden VMs in der Zielregion erstellt.
 
 Überprüfen Sie, ob Ihr Abonnement über ausreichende Ressourcen in der Zielregion verfügt. Sie müssen in der Lage sein, VMs mit Größen zu erstellen, die den VMs in der Quellregion entsprechen. Wenn Sie die Notfallwiederherstellung einrichten, wählt Site Recovery dieselbe (oder eine möglichst ähnliche) Größe für die Ziel-VM aus.
 
 
 ## <a name="prepare-vms"></a>Vorbereiten der VMs
 
-Stellen Sie sicher, dass die VMs über ausgehende Konnektivität und die aktuellen Stammzertifikate verfügen. 
+Stellen Sie sicher, dass die VMs über ausgehende Konnektivität und die aktuellen Stammzertifikate verfügen.
 
 
 ### <a name="set-up-vm-connectivity"></a>Einrichten der VM-Konnektivität
@@ -88,12 +88,12 @@ Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten F
 
 Wenn Sie Netzwerksicherheitsgruppen (NSGs) zum Steuern der Konnektivität verwenden, erstellen Sie auf dem Diensttag basierende NSG-Regeln, die ausgehende HTTPS-Verbindungen mit Port 443 für folgende [Diensttags](../virtual-network/service-tags-overview.md#available-service-tags) (Gruppen von IP-Adressen) zulassen:
 
-**Tag** | **Zulassen** 
+**Tag** | **Zulassen**
 --- | ---
-Storage-Tag  |Ermöglicht das Schreiben von Daten von der VM in das Cachespeicherkonto.   
-Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.   
-EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.  
-AzureSiteRecovery-Tag | Ermöglicht den Zugriff auf den Site Recovery-Dienst in beliebigen Regionen.   
+Storage-Tag  |Ermöglicht das Schreiben von Daten von der VM in das Cachespeicherkonto.
+Azure AD-Tag | Ermöglicht den Zugriff auf alle IP-Adressen, die zu Azure AD gehören.
+EventsHub-Tag | Ermöglicht den Zugriff auf die Site Recovery-Überwachung.
+AzureSiteRecovery-Tag | Ermöglicht den Zugriff auf den Site Recovery-Dienst in beliebigen Regionen.
 GuestAndHybridManagement-Tag | Ermöglicht die Durchführung von automatischen Upgrades des Mobilitäts-Agents von Site Recovery, der auf VMs mit Aktivierung für die Replikation ausgeführt wird.
 
 [Weitere Informationen](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) zu erforderlichen Tags und Beispiele für das Tagging.
@@ -126,8 +126,8 @@ Erstellen Sie einen Recovery Services-Tresor in einer beliebigen Region, jedoch
 9. Wählen Sie unter **Überprüfen + erstellen** die Option **Erstellen** aus.
 
 10. Die Bereitstellung des Tresors wird gestartet. Überwachen Sie den Fortschritt in den Benachrichtigungen.
-11. Wählen Sie nach der Bereitstellung des Tresors **An Dashboard anheften** aus, um ihn für die Kurzübersicht zu speichern. Wählen Sie **Zu Ressource wechseln** aus, um den neuen Tresor zu öffnen. 
-    
+11. Wählen Sie nach der Bereitstellung des Tresors **An Dashboard anheften** aus, um ihn für die Kurzübersicht zu speichern. Wählen Sie **Zu Ressource wechseln** aus, um den neuen Tresor zu öffnen.
+
     ![Schaltflächen zum Öffnen des Tresors nach der Bereitstellung und Anheften an das Dashboard](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
 ### <a name="enable-site-recovery"></a>Aktivieren von Site Recovery
@@ -138,7 +138,7 @@ Wählen Sie in den Tresoreinstellungen **Site Recovery aktivieren** aus.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
-Wählen Sie die Quelleinstellungen aus, und aktivieren Sie die VM-Replikation. 
+Wählen Sie die Quelleinstellungen aus, und aktivieren Sie die VM-Replikation.
 
 ### <a name="select-source-settings"></a>Auswählen der Quelleinstellungen
 

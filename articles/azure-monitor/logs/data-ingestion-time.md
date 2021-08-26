@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: dea5a005815e551edfe5fbea8f65c7b3a23171e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a6e63a1c5bbcf8c44f46cd87463fecb5d8b82f62
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346481"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515021"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolldatenerfassungszeit in Azure Monitor
 Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Protokolldaten bis zu ihrer Verfügbarkeit zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -80,7 +80,7 @@ Die Erfassungszeit kann für verschiedene Ressourcen unter verschiedenen Umstän
 
 | Schritt | Eigenschaft oder Funktion | Kommentare |
 |:---|:---|:---|
-| Erstellung des Datensatzes in der Datenquelle | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Falls die Datenquelle diesen Wert nicht festgelegt, wird er auf die gleiche Zeit festgelegt wie „_TimeReceived“. |
+| Erstellung des Datensatzes in der Datenquelle | [TimeGenerated](./log-standard-columns.md#timegenerated) <br>Falls die Datenquelle diesen Wert nicht festgelegt, wird er auf die gleiche Zeit festgelegt wie „_TimeReceived“. |
 | Eingang des Datensatzes beim Azure Monitor-Erfassungsendpunkt | [_TimeReceived](./log-standard-columns.md#_timereceived) | Dieses Feld ist nicht für die Massenverarbeitung optimiert und sollte nicht zum Filtern großer Datasets verwendet werden. |
 | Speicherung des Datensatzes im Arbeitsbereich, sodass er für Abfragen zur Verfügung steht | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | Es wird empfohlen, ingestion_time () zu verwenden, wenn nur Datensätze gefiltert werden müssen, die in einem bestimmten Zeitfenster erfasst wurden. In diesem Fall empfiehlt es sich, einen TimeGenerated-Filter mit einem größeren Bereich hinzuzufügen. |
 

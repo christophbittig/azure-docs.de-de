@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit JavaScript'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von JavaScript eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c0ff6ec2457c0669d055ef2da50032a99b0029c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4b64d33bf0b48d0584f818b212e524e3f9676edc
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772565"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323733"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von JavaScript
 

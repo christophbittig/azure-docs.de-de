@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 509e31919dd974da253cd0478a70f889cc060fae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 369195e8dfce2440c2e34151e7de6b2d23edbad1
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831789"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963255"
 ---
 # <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>Tutorial: Erstellen und Erkunden der App-Vorlage für die Überwachung von Solarpaneln 
 
@@ -64,7 +64,7 @@ Wechseln Sie zum Überprüfen der App-Erstellung und der Datensimulation zum **D
 Nach erfolgreicher Bereitstellung der App-Vorlage empfiehlt es sich, die App etwas genauer in Augenschein zu nehmen. Wie Sie sehen, beinhaltet sie ein exemplarisches intelligentes Zählergerät, ein Gerätemodell und ein Dashboard.
 
 Adatum ist ein fiktives Energieversorgungsunternehmen, das Solarpanel überwacht und verwaltet. Im Dashboard für die Überwachung von Solarpanels werden die entsprechenden Eigenschaften, Daten und Beispielbefehle angezeigt. Dieses Dashboard ermöglicht es Ihnen oder Ihrem Supportteam, folgende Aktivitäten proaktiv durchzuführen, bevor Probleme mit zusätzlichem Supportaufwand auftreten:
-* Überprüfen der aktuellen Panelinformationen und des Installationsorts auf der Karte
+* Überprüfen der aktuellen Bereichsinformationen und des [ Installationsorts](../core/howto-use-location-data.md) auf der Karte.
 * Überprüfen von Panel- und Verbindungsstatus
 * Überprüfen der Trends bei Energieerzeugung und Temperatur, um Anomalien zu erkennen
 * Nachverfolgen der gesamten Energieerzeugung zu Planungs- und Abrechnungszwecken

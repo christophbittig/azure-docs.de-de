@@ -2,19 +2,18 @@
 title: 'Tutorial: Erstellen und Bereitstellen benutzerdefinierter Module: Machine Learning in Azure IoT Edge'
 description: In diesem Tutorial wird gezeigt, wie Sie IoT Edge-Module erstellen und bereitstellen, die Daten von Blattgeräten durch ein Machine Learning-Modell verarbeiten und die Erkenntnisse dann an IoT Hub senden.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65daa2cd4681a50179ef1447ce9e4ebe6f7db717
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e045f1bfe3be8bc34a6d1705d7e2e4ec39dd4197
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740557"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -150,7 +149,7 @@ In diesem Schritt erstellen wir eine Azure IoT Edge-Projektmappe mit dem Modul �
       ```
 
       >[!NOTE]
-      >In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie z. B. Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
+      >In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
 
 1. Klicken Sie mit der rechten Maustaste auf die Datei „deployment.template.json“, und wählen Sie anschließend **IoT Edge-Projektmappe erstellen** aus.
 

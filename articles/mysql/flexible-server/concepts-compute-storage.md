@@ -6,16 +6,18 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 7165cdc072ffaa5b0d862e1fe17f94e35c35aeec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9b8699598a9bac4781346ff939736b2bd6ee72f2
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034536"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113429942"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server (Vorschau)
 
-> [!IMPORTANT] 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Sie können eine Azure Database for MySQL Flexible Server-Instanz basierend auf drei unterschiedlichen Computeebenen erstellen: „Burstfähig“, „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“. Die Computeebenen werden durch die zugrunde liegende VM-SKU unterschieden, die die B-Serie, die D-Serie und die E-Serie verwendet. Die Auswahl von Computeebene und -größe bestimmt den auf dem Server verfügbaren Arbeitsspeicher und die Anzahl der virtuellen Kerne (vCores). Über sämtliche Computeebenen hinweg wird dieselbe Speichertechnologie verwendet. Alle Ressourcen werden auf der MySQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
@@ -25,7 +27,7 @@ Sie können eine Azure Database for MySQL Flexible Server-Instanz basierend auf 
 | VM-Serie| B-Serie | Ddsv4-Serie | Edsv4-Serie|
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64 |
 | Arbeitsspeicher pro V-Kern | Variable | 4 GiB | 8 GiB * |
-| Speichergröße | 5 GiB bis 16 TiB | 5 GiB bis 16 TiB | 5 GiB bis 16 TiB |
+| Speichergröße | 20 GiB bis 16 TiB | 20 GiB bis 16 TiB | 20 GiB bis 16 TiB |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 1 bis 35 Tage | 1 bis 35 Tage | 1 bis 35 Tage |
 
 \* Mit Ausnahme der E64ds_v4-SKU (Arbeitsspeicheroptimiert), die 504 GB Arbeitsspeicher aufweist
@@ -46,28 +48,28 @@ Computeressourcen können basierend auf Ebene und Größe ausgewählt werden. Di
 
 Die detaillierten Spezifikationen der verfügbaren Servertypen lauten wie folgt:
 
-| Computegröße         | V-Kerne | Arbeitsspeichergröße (GiB) | Maximal unterstützte IOPS | Maximal unterstützte E/A-Bandbreite (MBit/s)|
-|----------------------|--------|-------------------| ------------------ |-----------------------------------|
+| Computegröße         | V-Kerne | Arbeitsspeichergröße (GiB) | Maximal unterstützte IOPS | Maximal unterstützte E/A-Bandbreite (MBit/s)| Max. Anzahl von Verbindungen
+|----------------------|--------|-------------------| ------------------ |-----------------------------------|------------------
 | **Burstfähig**        |        |                   | 
-| Standard_B1s         | 1      | 1                 | 320                | 10                                | 
-| Standard_B1ms        | 1      | 2                 | 640                | 10                                |
-| Standard_B2s         | 2      | 4                 | 1280               | 15                                |
-| **Allgemeiner Zweck**  |        |                   |                    |                                   |
-| Standard_D2ds_v4     | 2      | 8                 | 3200               | 48                                |
-| Standard_D4ds_v4     | 4      | 16                | 6400               | 96                                |
-| Standard_D8ds_v4     | 8      | 32                | 12800              | 192                               |
-| Standard_D16ds_v4    | 16     | 64                | 20000              | 384                               |
-| Standard_D32ds_v4    | 32     | 128               | 20000              | 768                               |
-| Standard_D48ds_v4    | 48     | 192               | 20000              | 1152                              |
-| Standard_D64ds_v4    | 64     | 256               | 20000              | 1200                              |
+| Standard_B1s         | 1      | 1                 | 320                | 10                                | 171
+| Standard_B1ms        | 1      | 2                 | 640                | 10                                | 341
+| Standard_B2s         | 2      | 4                 | 1280               | 15                                | 683
+| **Allgemeiner Zweck**  |        |                   |                    |                                   | 
+| Standard_D2ds_v4     | 2      | 8                 | 3200               | 48                                | 1365
+| Standard_D4ds_v4     | 4      | 16                | 6400               | 96                                | 2731
+| Standard_D8ds_v4     | 8      | 32                | 12800              | 192                               | 5461
+| Standard_D16ds_v4    | 16     | 64                | 20000              | 384                               | 10923
+| Standard_D32ds_v4    | 32     | 128               | 20000              | 768                               | 21845
+| Standard_D48ds_v4    | 48     | 192               | 20000              | 1152                              | 32768
+| Standard_D64ds_v4    | 64     | 256               | 20000              | 1200                              | 43691
 | **Arbeitsspeicheroptimiert** |        |                   |                    |                                   |
-| Standard_E2ds_v4     | 2      | 16                | 3200               | 48                                |
-| Standard_E4ds_v4     | 4      | 32                | 6400               | 96                                |
-| Standard_E8ds_v4     | 8      | 64                | 12800              | 192                               |
-| Standard_E16ds_v4    | 16     | 128               | 20000              | 384                               |
-| Standard_E32ds_v4    | 32     | 256               | 20000              | 768                               |
-| Standard_E48ds_v4    | 48     | 384               | 20000              | 1152                              |
-| Standard_E64ds_v4    | 64     | 504               | 20000              | 1200                              |
+| Standard_E2ds_v4     | 2      | 16                | 3200               | 48                                | 2731
+| Standard_E4ds_v4     | 4      | 32                | 6400               | 96                                | 5461
+| Standard_E8ds_v4     | 8      | 64                | 12800              | 192                               | 10923
+| Standard_E16ds_v4    | 16     | 128               | 20000              | 384                               | 21845
+| Standard_E32ds_v4    | 32     | 256               | 20000              | 768                               | 43691
+| Standard_E48ds_v4    | 48     | 384               | 20000              | 1152                              | 65536
+| Standard_E64ds_v4    | 64     | 504               | 20000              | 1200                              | 86016
 
 Weitere Informationen zu den verfügbaren Computeserien finden Sie in der Azure VM-Dokumentation für [Burstfähig (B-Serie)](../../virtual-machines/sizes-b-series-burstable.md), [Allgemeiner Zweck (Ddsv4-Serie)](../../virtual-machines/ddv4-ddsv4-series.md) und [Arbeitsspeicheroptimiert (Edsv4-Serie)](../../virtual-machines/edv4-edsv4-series.md).
 
@@ -76,7 +78,7 @@ Weitere Informationen zu den verfügbaren Computeserien finden Sie in der Azure 
 
 ## <a name="storage"></a>Storage
 
-Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren flexiblen Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MySQL-Serverprotokolle verwendet. Auf allen Computeebenen werden mindestens 5 GiB und maximal 16 TiB Speicherplatz unterstützt. Der Speicher wird in Schritten von 1 GiB skaliert und kann nach der Erstellung des Servers hochskaliert werden.
+Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren flexiblen Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MySQL-Serverprotokolle verwendet. Auf allen Computeebenen werden mindestens 20 GiB und maximal 16 TiB Speicherplatz unterstützt. Der Speicher wird in Schritten von 1 GiB skaliert und kann nach der Erstellung des Servers hochskaliert werden.
 
 >[!NOTE]
 > Der Speicher kann nur zentral hochskaliert und nicht herunterskaliert werden.
@@ -99,13 +101,17 @@ Wir empfehlen Folgendes: <!--turn on storage auto-grow or to--> Sie sollten eine
 
 ### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
 
-Die automatische Speichervergrößerung ist für Azure Database for MySQL Flexible Server noch nicht verfügbar.
+Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Die automatische Speichervergrößerung ist standardmäßig für alle neuen Servererstellungen aktiviert. Bei Servern mit 100 GB oder weniger bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter 10 GB der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
+
+Wenn Sie also beispielsweise 1000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 990 GB überschreitet, wird die Speichergröße des Servers auf 1050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
+
+Beachten Sie, dass der Speicher nur hochskaliert und nicht herunterskaliert werden kann.
 
 ## <a name="iops"></a>IOPS
 
 Flexible Azure Database for MySQL-Server unterstützen die Bereitstellung zusätzlicher IOPS. Diese Funktion ermöglicht Ihnen, zusätzlich zum kostenlosen IOPS-Limit weitere IOPS bereitzustellen. Mit dieser Funktion können Sie die Anzahl der IOPS basierend auf Ihren Workloadanforderungen jederzeit erhöhen oder verringern. 
 
-Der minimale IOPS-Wert beträgt für alle Computegrößen 100, und der maximale IOPS-Wert wird durch die ausgewählte Computegröße bestimmt. In der Vorschauversion beträgt die maximale Anzahl unterstützter IOPS 20.000.
+Der minimale IOPS-Wert beträgt für alle Computegrößen 360, und der maximale IOPS-Wert wird durch die ausgewählte Computegröße bestimmt. In der Vorschauversion beträgt die maximale Anzahl unterstützter IOPS 20.000.
 
 Weitere Informationen zum maximalen IOPS-Wert pro Computegröße finden Sie weiter unten: 
 
@@ -135,8 +141,8 @@ Weitere Informationen zum maximalen IOPS-Wert pro Computegröße finden Sie weit
 Die maximale Anzahl von IOPS ist abhängig von den maximal verfügbaren IOPS pro Computegröße. Weitere Informationen finden Sie in der Spalte *Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s* in der Dokumentation zur [B-Serie](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Serie](../../virtual-machines/ddv4-ddsv4-series.md) und [Edsv4-Serie](../../virtual-machines/edv4-edsv4-series.md).
 
 > [!Important]
-> Die **zusätzlichen IOPS** werden wie folgt berechnen: MINIMUM(„Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s“ laut Computegröße, bereitgestellter Speicher in GiB × 3)<br>
-> Der **minimale IOPS-Wert** ist für alle Computegrößen 100.<br>
+> Die **zusätzlichen IOPS** werden wie folgt berechnet: MINIMUM(„Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s“ von Computegröße, 300 + bereitgestellter Speicher in GiB * 3).<br>
+> Der **minimale IOPS-Wert** ist für alle Computegrößen 360.<br>
 > Der **maximale IOPS-Wert** wird durch die ausgewählte Computegröße bestimmt. In der Vorschauversion beträgt die maximale Anzahl unterstützter IOPS 20.000.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal (mit Azure Monitor) mit der Metrik [E/A in Prozent](./concepts-monitoring.md) überwachen. Wenn Sie mehr IOPS benötigen, müssen Sie Ihre Computegröße skalieren, da der maximale IOPS-Wert auf der Computegröße basiert.

@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic) – Tutorial 3: Bereitstellen von Kreditrisikomodellen – Azure'
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch) Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe. Hier erfahren Sie, wie Sie ein Modell als Webdienst bereitstellen.
+description: Dieses Tutorial ist der dritte Teil einer dreiteiligen Tutorialreihe für Machine Learning Studio (klassisch). Hier erfahren Sie, wie Sie ein Modell als Webdienst bereitstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung, bereitstellen, Webdienst
 author: likebupt
 ms.author: keli19
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c60c511840d6591009064ba6b3f27cd6cdb89856
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517381"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580708"
 ---
-# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio (klassisch)
+# <a name="tutorial-3-deploy-credit-risk-model---machine-learning-studio-classic"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells in Azure Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Das ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Stellen Sie das Model anschließend als Machine Learning-Webdienst bereit.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden Azure Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet. 
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Machine Learning Studio (Classic) erstellen können. Für diese Lösung werden Sie Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet. 
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -90,7 +90,7 @@ Um dieses Modell auf die Bereitstellung vorzubereiten, muss das Trainingsexperim
 Dieser Prozess könnte zwar auch manuell ausgeführt werden, glücklicherweise können Sie aber alle drei Schritte ausführen, indem Sie einfach unten im Experimentbereich auf **Set Up Web Service** (Webdienst einrichten) klicken und die Option **Predictive Web Service** (Vorhersagewebdienst) auswählen.
 
 > [!TIP]
-> Wenn Sie weitere Details dazu erhalten möchten, was geschieht, wenn Sie ein Trainingsexperiment in ein Vorhersageexperiment konvertieren, lesen Sie [Vorbereiten der Bereitstellung Ihres Modells in Azure Machine Learning Studio (klassisch)](deploy-a-machine-learning-web-service.md).
+> Wenn Sie weitere Details dazu erhalten möchten, was geschieht, wenn Sie ein Trainingsexperiment in ein Vorhersageexperiment konvertieren, lesen Sie [Gewusst wie: Das Vorbereiten der Bereitstellung Ihres Modells in Machine Learning Studio (Classic)](deploy-a-machine-learning-web-service.md).
 
 Beim Klicken auf **Set Up Web Service** geschehen mehrere Dinge:
 
@@ -142,11 +142,11 @@ Sie können den Dienst konfigurieren, indem Sie auf die Registerkarte **KONFIGUR
 ### <a name="deploy-as-a-new-web-service"></a>Bereitstellen als neuer Webdienst
 
 > [!NOTE] 
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, im dem Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, im dem Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Machine Learning Web Services-Portal](manage-new-webservice.md). 
 
 So stellen wir einen aus unserem Experiment abgeleiteten neuen Webdienst bereit
 
-1. Klicken Sie unter dem Experimentbereich auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]** . Machine Learning Studio (klassisch) leitet Sie zur Seite **Deploy Experiment** (Experiment bereitstellen) von Azure Machine Learning-Webdienste weiter.
+1. Klicken Sie unter dem Experimentbereich auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]** . Machine Learning Studio (Classic) leitet Sie zu der Seite **Ein Experiment bereitstellen** von Machine Learning-Webdienste weiter.
 
 1. Geben Sie einen Namen für den Webdienst ein. 
 
@@ -179,7 +179,7 @@ Sie können einen klassischen Webdienst entweder in **Machine Learning Studio (k
 Einen neuen Webdienst können Sie nur im **Machine Learning Web Services**-Portal testen.
 
 > [!TIP]
-> Beim Testen im Azure Machine Learning Web Services-Portal können Sie das Portal Beispieldaten erstellen lassen, mit deren Hilfe Sie den Request-Response-Dienst testen können. Wählen Sie auf der Seite **Configure** „Yes“ für **Sample Data Enabled?** aus. Beim Öffnen der Registerkarte „Request-Response“ auf der Seite **Test** füllt das Portal die Beispieldaten aus, die dem ursprünglichen Dataset „Credit Risk“ entnommen wurden.
+> Beim Testen im Machine Learning Web Services-Portal können Sie das Portal Beispieldaten erstellen lassen, mit deren Hilfe Sie den Anforderung/Antwort-Dienst testen können. Wählen Sie auf der Seite **Configure** „Yes“ für **Sample Data Enabled?** aus. Beim Öffnen der Registerkarte „Request-Response“ auf der Seite **Test** füllt das Portal die Beispieldaten aus, die dem ursprünglichen Dataset „Credit Risk“ entnommen wurden.
 
 ### <a name="test-a-classic-web-service"></a>Testen eines klassischen Webdiensts
 
@@ -193,7 +193,7 @@ Sie können einen klassischen Webdienst in Machine Learning Studio (klassisch) o
 
 #### <a name="test-in-the-machine-learning-web-services-portal"></a>Testen im Machine Learning Web Services-Portal
 
-1. Klicken Sie auf der Seite **DASHBOARD** des Webdiensts unter **Default Endpoint** auf den Link **Test preview**. Die Testseite im Azure Machine Learning Web Services-Portal für den Webdienstendpunkt wird geöffnet und fordert Sie zur Angabe der Eingabedaten für den Dienst auf. Dies sind die gleichen Spalten, die im Originaldataset „Credit Risk“ angezeigt wurden.
+1. Klicken Sie auf der Seite **DASHBOARD** des Webdiensts unter **Default Endpoint** auf den Link **Test preview**. Die Testseite im Machine Learning Web Services-Portal für den Webdienstendpunkt wird geöffnet und fordert Sie zur Angabe der Eingabedaten für den Dienst auf. Dies sind die gleichen Spalten, die im Originaldataset „Credit Risk“ angezeigt wurden.
 
 2. Klicken Sie auf **Test Request-Response**. 
 
@@ -201,7 +201,7 @@ Sie können einen klassischen Webdienst in Machine Learning Studio (klassisch) o
 
 Einen neuen Webdienst können Sie nur im Machine Learning Web Services-Portal testen.
 
-1. Klicken Sie im [Azure Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal oben auf der Seite auf **Test**. Die Seite **Test** wird geöffnet, auf der Sie Daten für den Dienst eingeben können. Die angezeigten Eingabefelder entsprechen den Spalten im Originaldataset „Credit Risk“. 
+1. Klicken Sie im [Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal oben auf der Seite auf die Option **Test**. Die Seite **Test** wird geöffnet, auf der Sie Daten für den Dienst eingeben können. Die angezeigten Eingabefelder entsprechen den Spalten im Originaldataset „Credit Risk“. 
 
 1. Geben Sie eine Reihe von Daten ein, und klicken Sie auf **Test Request-Response**.
 
@@ -210,11 +210,11 @@ Die Ergebnisse des Tests werden rechts auf der Seite in der Ausgabespalte angeze
 
 ## <a name="manage-the-web-service"></a>Verwalten des Webdiensts
 
-Nachdem Sie Ihren neuen oder klassischen Webdienst bereitgestellt haben, können Sie ihn im [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal verwalten.
+Nachdem Sie Ihren neuen oder klassischen Webdienst bereitgestellt haben, können Sie ihn im [Machine Learning Web Services-Portal](https://services.azureml.net/quickstart) verwalten.
 
 So überwachen Sie die Leistung des Webdiensts
 
-1. Melden Sie sich beim [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal an.
+1. Melden Sie sich beim [Machine Learning-Webdienstportal](https://services.azureml.net/quickstart) an
 1. Klicken Sie auf **Web Services**.
 1. Klicken Sie auf Ihren Webdienst.
 1. Klicken Sie auf das **Dashboard**.
@@ -231,7 +231,7 @@ Der Webdienst ist ein Azure-Webdienst, der Daten auf eine von zwei Arten über R
 > [!NOTE]
 > Featurespaltennamen in Studio (Classic) berücksichtigen die **Groß-/Kleinschreibung**. Stellen Sie sicher, dass Ihre Eingabedaten für den Aufruf des Webdiensts dieselben Spaltennamen wie im Trainingsdataset aufweisen.
 
-Weitere Informationen zum Zugriff auf den Webdienst und zu seiner Nutzung finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](./consume-web-services.md).
+Weitere Informationen zum Zugriff auf den Webdienst und zu seiner Nutzung finden Sie unter [Verwenden eines Machine Learning-Webdiensts mit einer Web-App-Vorlage](./consume-web-services.md).
 
 
 
@@ -253,7 +253,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 Sie können auch eine benutzerdefinierte Anwendung entwickeln, die mithilfe von in den Programmiersprachen R, C# und Python bereitgestelltem Startcode auf den Webdienst zugreift.
 
 > [!div class="nextstepaction"]
-> [Nutzen eines Azure Machine Learning Studio-Webdiensts](consume-web-services.md)
+> [Nutzen eines Machine Learning-Webdiensts](consume-web-services.md)
 
 <!-- Module References -->
 [evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model

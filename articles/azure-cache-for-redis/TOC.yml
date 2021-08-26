@@ -110,6 +110,8 @@
           href: cache-reserved-pricing.md
         - name: Migrieren zu Azure Cache for Redis
           href: cache-migration-guide.md
+        - name: Migrieren von der VNET-Einschleusung zu Private Link
+          href: cache-vnet-migration.md
         - name: Häufig gestellte Fragen zur Planung
           href: cache-planning-faq.yml
     - name: Erstellen

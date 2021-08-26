@@ -1,4 +1,5 @@
 - name: Azure Defender für IoT für Gerätehersteller
+  href: index.yml
   items: null
 - name: Übersicht
   displayName: 'IoT, OT, getting started'
@@ -10,7 +11,7 @@
     - name: Was ist die Agent-basierte Lösungsarchitektur?
       href: architecture-agent-based.md
 - name: Schnellstarts
-  expanded: false
+  expanded: true
   items:
     - name: Durchführen des Onboardings für eine Agent-basierte Lösung für Azure Defender für IoT
       displayName: 'IoT Hub, existing, enable'
@@ -20,9 +21,6 @@
       href: quickstart-standalone-agent-binary-installation.md
     - name: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
       href: quickstart-create-micro-agent-module-twin.md
-    - name: Erstellen eines Micro-Agents für Defender für IoT aus dem Quellcode (Vorschau)
-      displayName: 'baseline, configuration, customize, distribution'
-      href: quickstart-building-the-defender-micro-agent-from-source.md
     - name: "Konfigurieren des Defender-IoT-Micro-Agents für Azure\_RTOS"
       href: quickstart-azure-rtos-security-module.md
     - name: Hinzufügen von Azure-Ressourcen zu Ihrer IoT-Lösung
@@ -53,6 +51,9 @@
       href: concept-security-agent-authentication.md
     - name: 'Sicherheitsstatus: CIS-Benchmark'
       href: concept-security-posture.md
+    - name: Micro-Agent-Konfigurationen (Vorschau)
+      displayNAme: 'collectors, configuration, configurations, event-based, trigger, general'
+      href: concept-micro-agent-configuration.md
     - name: Micro-Agent-Ereigniserfassung (Vorschau)
       displayName: 'process events, network connection'
       href: concept-event-aggregation.md

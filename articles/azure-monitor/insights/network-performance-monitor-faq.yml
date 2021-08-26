@@ -2,16 +2,17 @@
 metadata:
   title: 'Netzwerkleistungsmonitor-Lösung in Azure: häufig gestellte Fragen | Microsoft-Dokumentation'
   description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren.
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure-monitor
   author: vinynigam
   ms.author: vinigam
   ms.date: 10/12/2018
-  ms.openlocfilehash: e899e68d631dfd41ffac3fd111c3ceca86f4cb93
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: dcf032b47396f8e952d38ab9e2c82c8552952da6
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112034902"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253836"
 title: 'Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen'
 summary: "\n![Symbol des Netzwerkleistungsmonitors](media/network-performance-monitor-faq/npm-symbol.png)\n\n> [!IMPORTANT]\n> Ab dem 1. Juli 2021 ist es nicht mehr möglich, neue Tests in einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich im Netzwerkleistungsmonitor zu aktivieren. Sie können weiterhin die Tests verwenden, die vor dem 1. Juli 2021 erstellt wurden. [Migrieren Sie Ihre Tests vor dem 29. Februar 2024 aus dem Netzwerkleistungsmonitor zum neuen Verbindungsmonitor](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) in Azure Network Watcher, um die Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.\n\nDieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.\n\nDer [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](./network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](./network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](./network-performance-monitor-expressroute.md) überwachen. \n\nDer Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. \n\nWeitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](../../networking/network-monitoring-overview.md) unterstützten Funktionen sind online verfügbar.\n"
 sections:

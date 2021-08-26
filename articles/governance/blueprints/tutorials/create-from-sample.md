@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Blaupausenbeispiel für neue Umgebung'
 description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, mit der zwei Ressourcengruppen eingerichtet werden und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert wird.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 809f29e603d82467a5188a94d4517b48fa825a37
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9da94dc699f71d54f8fb738c527d02018d44a9ac
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733911"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322119"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 

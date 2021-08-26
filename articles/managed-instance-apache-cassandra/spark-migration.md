@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: b49e1c42b3b81a548a1860a4e4e4ee1ea97a7f4c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731211"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Migrieren zu Azure Managed Instance for Apache Cassandra mit Apache Spark
 
@@ -26,9 +26,9 @@ In diesem Artikel wird beschrieben, wie Sie Daten mithilfe des Cassandra Spark-C
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Stellen Sie einen Azure Managed Instance for Apache Cassandra-Cluster über das [Azure-Portal](create-cluster-portal.md) oder die [Azure CLI](create-cluster-cli.md) bereit, und stellen Sie sicher, dass Sie mit [CQLSH eine Verbindung mit Ihrem Cluster herstellen können](./create-cluster-portal.md#connecting-to-your-cluster).
+* Stellen Sie über das [Azure-Portal](create-cluster-portal.md) oder die [Azure CLI](create-cluster-cli.md) einen Cluster für Azure Managed Instance for Apache Cassandra bereit, und stellen Sie sicher, dass Sie mit [CQLSH eine Verbindung mit Ihrem Cluster herstellen können](./create-cluster-portal.md#connecting-to-your-cluster).
 
-* [Bereitstellen eines Azure Databricks-Kontos in Ihrem verwalteten Cassandra-VNet](deploy-cluster-databricks.md). Stellen Sie sicher, dass es auch Netzwerkzugriff auf Ihren Cassandra-Quellcluster hat.
+* [Stellen Sie in Ihrem verwalteten Cassandra-VNET ein Azure Databricks-Konto bereit](deploy-cluster-databricks.md). Stellen Sie sicher, dass es auch Netzwerkzugriff auf Ihren Cassandra-Quellcluster hat.
 
 * Vergewissern Sie sich, dass Sie das Keyspace-/Tabellenschema bereits von Ihrer Cassandra-Quelldatenbank in Ihre Zieldatenbank der verwalteten Cassandra-Instanz migriert haben.
 
@@ -37,13 +37,13 @@ In diesem Artikel wird beschrieben, wie Sie Daten mithilfe des Cassandra Spark-C
 
 Wir empfehlen die Auswahl der Version 7.5 der Databricks-Runtime, die Spark 3.0 unterstützt.
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Screenshot, der die Suche nach der Databricks-Laufzeitversion zeigt.":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Screenshot, der die Suche nach der Databricks-Laufzeitversion zeigt.":::
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 
 Fügen Sie dem Cluster die Apache Spark-Cassandra-Connectorbibliothek hinzu, um eine Verbindung mit nativen und Azure Cosmos DB-Cassandra-Endpunkten herzustellen. Wählen Sie in Ihrem Cluster **Bibliotheken**  >  **Neue**  >  **Maven** installieren und fügen Sie dann `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven-Koordinaten hinzu.
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Databricks gesucht werden.":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Screenshot, der zeigt, wie Maven-Pakete in Databricks gesucht werden.":::
 
 Wählen Sie **Installieren** aus, und starten Sie den Cluster nach Abschluss der Installation neu.
 

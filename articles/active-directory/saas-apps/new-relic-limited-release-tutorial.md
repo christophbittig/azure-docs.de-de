@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: ba6a06b51a9fd3a4efec98d5a713d1a791e9a321
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 96794d2ab07f9fe352f611c7d0cf511067928bee
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136911"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413191"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit New Relic
 
@@ -31,7 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie New Relic in Azure Active Directory (Az
 Zunächst benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein New Relic-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
+* Ein New Relic-Unternehmen mit dem [New Relic One Konto-/Benutzermodell](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models) entweder als Pro oder Enterprise Edition. Weitere Informationen hierzu finden Sie unter [New Relic-Anforderungen](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -76,11 +76,8 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für **Bezeichner** und **Antwort-URL** ein.
 
-   * Rufen Sie diese Werte mit der Anwendung **My Organization** von New Relic ab. Gehen Sie wie folgt vor, um diese Anwendung zu verwenden:
-      1. [Melden Sie sich bei New Relic an](https://login.newrelic.com/).
-      1. Wählen Sie im obersten Menü die Option **Apps** aus.
-      1. Wählen Sie im Abschnitt **Ihre Apps** die Optionen **My Organization** > **Authentifizierungsdomänen** aus.
-      1. Wählen Sie die Authentifizierungsdomäne aus, mit der Sie für das einmalige Anmelden von Azure AD eine Verbindung herstellen möchten (falls Sie über mehr als eine Authentifizierungsdomäne verfügen). Die meisten Unternehmen verfügen nur über eine Authentifizierungsdomäne mit dem Namen **Default**. Wenn nur eine Authentifizierungsdomäne vorhanden ist, müssen Sie nichts auswählen.
+   * Rufen Sie diese Werte von der Benutzeroberfläche der [New Relic Authentifizierungsdomäne](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui) ab. Von dort aus: 
+      1. Falls Sie über mehr als eine Authentifizierungsdomäne verfügen, wählen Sie die aus, mit der Sie für das einmalige Anmelden von Azure AD eine Verbindung herstellen möchten. Die meisten Unternehmen verfügen nur über eine Authentifizierungsdomäne mit dem Namen **Default**. Wenn nur eine Authentifizierungsdomäne vorhanden ist, müssen Sie nichts auswählen.
       1. Im Abschnitt **Authentication** (Authentifizierung) enthält das Feld **Assertion consumer URL** (Assertionsverbraucher-URL) den Wert, der für die **Antwort-URL** verwendet wird.
       1. Im Abschnitt **Authentication** (Authentifizierung) enthält das Feld **Our entity ID** (Unsere Entitäts-ID) den Wert, der als **Bezeichner** verwendet wird.
 
@@ -119,13 +116,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-new-relic-sso"></a>Konfigurieren des einmaligen Anmeldens für New Relic
 
-Führen Sie die folgenden Schritte aus, um einmaliges Anmelden für New Relic zu konfigurieren.
+Führen Sie die folgenden Schritte aus, um einmaliges Anmelden für New Relic zu konfigurieren. 
 
 1. [Melden Sie sich bei New Relic an](https://login.newrelic.com/).
 
-1. Wählen Sie im obersten Menü die Option **Apps** aus.
-
-1. Wählen Sie im Abschnitt **Ihre Apps** die Optionen **My Organization** > **Authentifizierungsdomänen** aus.
+1. Navigieren Sie zu der Benutzeroberfläche der [Authentifizierungsdomäne](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui). 
 
 1. Wählen Sie die Authentifizierungsdomäne aus, mit der Sie für das einmalige Anmelden von Azure AD eine Verbindung herstellen möchten (falls Sie über mehr als eine Authentifizierungsdomäne verfügen). Die meisten Unternehmen verfügen nur über eine Authentifizierungsdomäne mit dem Namen **Default**. Wenn nur eine Authentifizierungsdomäne vorhanden ist, müssen Sie nichts auswählen.
 
@@ -143,9 +138,7 @@ In diesem Abschnitt erstellen Sie in New Relic einen Benutzer namens „B. Simo
 
 1. [Melden Sie sich bei New Relic an](https://login.newrelic.com/).
 
-1. Wählen Sie im obersten Menü die Option **Apps** aus.
-
-1. Wählen Sie im Abschnitt **Your apps** (Ihre Apps) die Option **Benutzerverwaltung** aus.
+1. Navigieren Sie zu der [**Benutzerverwaltungsoberfläche**](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where).
 
 1. Klicken Sie auf **Benutzer hinzufügen**.
 
@@ -153,7 +146,7 @@ In diesem Abschnitt erstellen Sie in New Relic einen Benutzer namens „B. Simo
    
    1. Geben Sie im Feld **E-Mail** den Wert ein, der beim einmaligen Anmelden von Azure AD gesendet wird.
    
-   1. Wählen Sie den **Typ** und die **Gruppe** für den Benutzer aus. Für einen Testbenutzer sind **Basic User** (Basisbenutzer) als Typ und **User** (Benutzer) als Gruppe eine gute Wahl.
+   1. Wählen Sie den **Typ** und die **Gruppe** für den Benutzer aus. Für einen Testbenutzer sind **Basisbenutzer** als Typ und **Benutzer** als Gruppe eine gute Wahl.
    
    1. Wählen Sie zum Speichern des Benutzers die Option **Benutzer hinzufügen** aus.
 
@@ -175,4 +168,8 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von New Relic können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Anschließend können Sie überprüfen, ob Ihre Benutzer in New Relic hinzugefügt wurden, indem Sie die [**Benutzerverwaltungsoberfläche**](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where) aufrufen und sehen, ob sie dort vorhanden sind. 
+
+Als Nächstes möchten Sie Ihre Benutzer wahrscheinlich bestimmten New Relic Konten oder Rollen zuweisen. Weitere Informationen hierzu finden Sie in der Dokumentation [Konzepte der Benutzerverwaltung](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts). 
+
+In der Benutzeroberfläche der Authentifizierungsdomäne von New Relic können Sie [weitere Einstellungen](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt) konfigurieren, wie z. B. die Sitzungssteuerung, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

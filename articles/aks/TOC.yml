@@ -61,7 +61,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Storage
+    - name: Speicher
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -205,11 +205,11 @@
           href: use-ultra-disks.md
         - name: CSI-Speichertreiber
           items:
-            - name: Aktivieren von CSI-Speichertreibern (Vorschau)
+            - name: Aktivieren von CSI-Speichertreibern
               href: csi-storage-drivers.md
-            - name: Azure Disk-CSI-Treiber (Vorschau)
+            - name: Azure Disk-CSI-Treiber
               href: azure-disk-csi.md
-            - name: Azure Files-CSI-Treiber (Vorschau)
+            - name: Azure Files-CSI-Treiber
               href: azure-files-csi.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
@@ -223,7 +223,7 @@
           href: internal-lb.md
         - name: Verwenden einer Load Balancer Standard-Instanz
           href: load-balancer-standard.md
-        - name: Verwenden einer statischen IP-Adresse
+        - name: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung
           href: static-ip.md
         - name: Eingehende Daten
           items:
@@ -299,13 +299,10 @@
           href: csi-secrets-store-driver.md
     - name: Überwachung und Protokollierung
       items:
-        - name: Anzeigen von Clustermetriken
-          href: view-metrics.md
-        - name: Container Insights
-          href: ../azure-monitor/containers/container-insights-overview.md
-          maintainContext: true
-        - name: Anzeigen der Komponentenprotokolle auf Steuerungsebene
-          href: view-control-plane-logs.md
+        - name: Überwachen von AKS
+          href: monitor-aks.md
+        - name: 'Überwachung: Referenz'
+          href: monitor-aks-reference.md
         - name: Anzeigen der Kubelet-Protokolle
           href: kubelet-logs.md
         - name: Anzeigen von Containerdaten in Echtzeit
@@ -351,32 +348,12 @@
         - name: Verwenden von Azure API Management
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true
-    - name: Auswählen und Bereitstellen eines Dienstnetzes
+    - name: Bereitstellen eines Dienstnetzes
       items:
         - name: Informationen zu Dienstnetzen
           href: servicemesh-about.md
         - name: Open Service Mesh AKS-Zusatzmodul (Vorschau)
           href: servicemesh-osm-about.md
-        - name: Verwenden von Istio
-          items:
-            - name: Informationen zu Istio
-              href: servicemesh-istio-about.md
-            - name: Installieren und konfigurieren
-              href: servicemesh-istio-install.md
-            - name: 'Szenario: Intelligentes Routing und Canary-Releases'
-              href: servicemesh-istio-scenario-routing.md
-        - name: Verwenden von Linkerd
-          items:
-            - name: Informationen zu Linkerd
-              href: servicemesh-linkerd-about.md
-            - name: Installieren und konfigurieren
-              href: servicemesh-linkerd-install.md
-        - name: Verwenden von Consul
-          items:
-            - name: Informationen zu Consul
-              href: servicemesh-consul-about.md
-            - name: Installieren und konfigurieren
-              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Erstellen von AKS-Clustern mithilfe von Ansible

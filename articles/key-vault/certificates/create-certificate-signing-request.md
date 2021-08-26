@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a4d079855e5aa05adb84b62d686d9f386608f7bb
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 77a46beceda451d456dfc4f576f855ebf7312e50
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752136"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463511"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
@@ -140,6 +140,8 @@ Beispiel
 
      Dieser Fehler kann auftreten, wenn **SubjectName** Sonderzeichen enthält. Weitere Informationen finden Sie in den Hinweisen in den Anweisungen zum Azure-Portal und zu PowerShell.
 
+- Fehlertyp  **Die zum Abrufen Ihres Zertifikats verwendete CSR wurde bereits verwendet. Versuchen Sie, ein neues Zertifikat mit einer neuen CSR zu generieren**.
+     Navigieren Sie zum Abschnitt „Erweiterte Richtlinie“ des Zertifikats, und überprüfen Sie, ob die Option Schlüssel beim Erneuern wiederverwenden? deaktiviert ist.
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte

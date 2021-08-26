@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Purview
-summary: Hier erfahren Sie, wie Sie Azure Purview verwenden, damit Ihre Organisation Datenquellen suchen, verstehen und nutzen kann.
+summary: Es wird beschrieben, wie Sie Azure Purview verwenden, damit Ihre Organisation Datenquellen finden, verstehen, steuern und nutzen kann.
 metadata:
   title: Dokumentation zu Azure Purview
   description: Hier erfahren Sie, wie Sie Azure Purview verwenden, damit Ihre Organisation Datenquellen suchen, verstehen und nutzen kann. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Datenrepository planen und konfigurieren, in dem Datenconsumer verfügbare Datenquellen finden und sich mit Informationen von Experten vertraut machen können.
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: whhender
   ms.author: whhender
-  ms.date: 06/09/2021
-  ms.openlocfilehash: 8db36ffb5f1d081e0e4dbb2cd6dbca02c7ddf726
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.date: 08/19/2021
+  ms.openlocfilehash: e2949948c7635c241ce52aac42860af92175cdd3
+  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111904011"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122515573"
 landingContent:
 - title: Informationen zu Azure Purview
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: use-purview-studio.md
     - text: Best Practices für die Bereitstellung
       url: deployment-best-practices.md
-    - text: Data Catalog-Berechtigungen
+    - text: Zugriffssteuerung in Purview
       url: catalog-permissions.md
     - text: Unterstützte Datenquellen und Dateitypen
       url: sources-and-scans.md
@@ -42,6 +42,8 @@ landingContent:
       url: create-catalog-portal.md
     - text: 'Purview-Konto erstellen: PowerShell/CLI'
       url: create-catalog-powershell.md
+    - text: Erstellen einer Auflistung
+      url: quickstart-create-collection.md
   - linkListType: tutorial
     links:
     - text: Starter Kit ausführen und Daten scannen
@@ -112,6 +114,8 @@ landingContent:
     links:
     - text: Lokalen SQL-Server scannen
       url: register-scan-on-premises-sql-server.md
+    - text: Überprüfen von Google BigQuery
+      url: register-scan-google-bigquery-source.md
     - text: Überprüfen von Amazon S3
       url: register-scan-amazon-s3.md
     - text: Überprüfen von Oracle

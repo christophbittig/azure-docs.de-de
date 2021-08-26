@@ -5,20 +5,20 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464937"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721967"
 ---
-# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit der Ermittlung und Bewertung von Azure Migrate
+# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit Azure Migrate
 
 Im Rahmen der Migration zu Azure ermitteln Sie den lokalen Bestand und die lokalen Workloads.
 
-In diesem Tutorial wird gezeigt, wie Sie die in Ihrer VMware-Umgebung ausgeführten Server unter Verwendung des Azure Migrate-Tools zur Ermittlung und Bewertung und einer schlanken Azure Migrate-Appliance ermitteln. Sie stellen die Appliance als Server bereit, der in Ihrer vCenter Server-Instanz läuft, um Server und deren Leistungsmetadaten, auf Servern laufende Anwendungen, Serverabhängigkeiten und SQL Server-Instanzen und -Datenbanken kontinuierlich zu ermitteln.
+In diesem Tutorial wird gezeigt, wie Sie die in Ihrer VMware-Umgebung ausgeführten Server unter Verwendung des Azure Migrate-Tools zur Ermittlung und Bewertung und einer schlanken Azure Migrate-Appliance ermitteln. Sie stellen die Appliance als Server bereit, der in Ihrer vCenter Server-Instanz ausgeführt wird, um Server und deren Leistungsmetadaten, auf Servern ausgeführte Anwendungen, Serverabhängigkeiten, ASP.NET-Web-Apps und SQL Server-Instanzen und -Datenbanken kontinuierlich zu ermitteln.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,7 +42,7 @@ Anforderung | Details
 --- | ---
 **vCenter Server-/ESXi-Host** | Sie benötigen eine Instanz mit der vCenter Server-Version 6.7, 6.5, 6.0 oder 5.5.<br /><br /> Server müssen auf einem ESXi-Host mit einer Version ab 5.5 gehostet werden.<br /><br /> Lassen Sie in der vCenter Server-Instanz eingehende Verbindungen über den TCP-Port 443 zu, damit die Appliance Konfigurations- und Leistungsmetadaten sammeln kann.<br /><br /> Die Appliance stellt standardmäßig an Port 443 eine Verbindung mit vCenter Server her. Wenn der Server mit vCenter Server an einem anderen Port lauscht, können Sie den Port beim Angeben der vCenter Server-Details im Appliance-Konfigurations-Manager ändern.<br /><br /> Stellen Sie auf den ESXi-Hosts sicher, dass der eingehende Zugriff an TCP-Port 443 erlaubt ist, um die Ermittlung installierter Anwendungen und die Abhängigkeitsanalyse ohne Agent auf Servern durchzuführen.
 **Azure Migrate-Appliance** | vCenter Server müssen über diese Ressourcen verfügen, um die Zuordnung zu einem Server zu ermöglichen, der die Azure Migrate hostet:<br /><br /> - 32 GB RAM, 8 vCPUs und etwa 80 GB Speicherplatz auf dem Datenträger.<br /><br /> - Einen externen virtuellen Switch und Internetzugriff für den Server auf der Appliance (direkt oder über einen Proxy).
-**Server** | Für die Ermittlung von Konfigurations- und Leistungsmetadaten werden alle Windows- und Linux-Betriebssystemversionen unterstützt. <br /><br /> Zur Anwendungsermittlung auf Servern werden alle Windows- und Linux-Betriebssystemversionen unterstützt. Überprüfen Sie die [Betriebssystemversionen, die für die Abhängigkeitsanalyse ohne Agent unterstützt werden](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).<br /><br /> Für die Ermittlung installierter Anwendungen und Abhängigkeitsanalyse ohne Agent müssen VMware Tools (ab 10.2.1) auf den Servern installiert sein und ausgeführt werden. Auf Windows-Servern muss PowerShell ab Version 2.0 installiert sein.<br /><br /> Um SQL Server-Instanzen und -Datenbanken zu ermitteln, überprüfen Sie die [unterstützten SQL Server- und Windows-Betriebssystem-Versionen und -Editionen](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements) und Windows-Authentifizierungsmechanismen.
+**Server** | Für die Ermittlung von Konfigurations- und Leistungsmetadaten werden alle Windows- und Linux-Betriebssystemversionen unterstützt. <br /><br /> Zur Anwendungsermittlung auf Servern werden alle Windows- und Linux-Betriebssystemversionen unterstützt. Überprüfen Sie die [Betriebssystemversionen, die für die Abhängigkeitsanalyse ohne Agent unterstützt werden](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).<br /><br /> Für die Ermittlung installierter Anwendungen und Abhängigkeitsanalyse ohne Agent müssen VMware Tools (ab 10.2.1) auf den Servern installiert sein und ausgeführt werden. Auf Windows-Servern muss PowerShell ab Version 2.0 installiert sein.<br /><br /> Um SQL Server-Instanzen und -Datenbanken zu ermitteln, überprüfen Sie die [unterstützten SQL Server- und Windows-Betriebssystem-Versionen und -Editionen](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements) und Windows-Authentifizierungsmechanismen.<br /><br /> Informationen zum Ermitteln von ASP.NET-Web-Apps, die auf einem IIS-Webserver ausgeführt werden, finden Sie unter [Unterstützungsmatrix für die VMware-Bewertung](migrate-support-matrix-vmware.md#aspnet-web-apps-discovery-requirements).
 
 ## <a name="prepare-an-azure-user-account"></a>Vorbereiten eines Azure-Benutzerkontos
 
@@ -105,13 +105,13 @@ Richten Sie im VMware vSphere-Webclient ein schreibgeschütztes Konto ein, das f
 
 ### <a name="create-an-account-to-access-servers"></a>Erstellen eines Kontos für den Zugriff auf Server
 
-Ihr Benutzerkonto auf Ihren Servern muss über die erforderlichen Berechtigungen verfügen, um die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent und die Ermittlung von SQL Server-Instanzen und Datenbanken zu initiieren. Sie können die Benutzerkontoinformationen im Appliance-Konfigurations-Manager angeben. Die Appliance installiert keine Agents auf den Servern.
+Ihr Benutzerkonto auf Ihren Servern muss über die erforderlichen Berechtigungen verfügen, um die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent sowie die Ermittlung von Web-Apps und SQL Server-Instanzen und -Datenbanken zu initiieren. Sie können die Benutzerkontoinformationen im Appliance-Konfigurations-Manager angeben. Die Appliance installiert keine Agents auf den Servern.
 
-* Erstellen Sie für Server unter Windows ein Konto (lokales Konto oder Domänenkonto) mit Administratorberechtigungen für die Server. Um SQL Server Instanzen und -Datenbanken zu ermitteln, muss das Windows- oder SQL Server-Konto Mitglied der Serverrolle sysadmin sein. Erfahren Sie mehr darüber, wie Sie dem [Benutzerkonto die erforderliche Rolle zuweisen](/sql/relational-databases/security/authentication-access/server-level-roles).
+* Erstellen Sie für die Ermittlung von Servern unter Windows und Web-Apps ein Konto (lokales Konto oder Domänenkonto) mit Administratorberechtigungen für die Server. Um SQL Server Instanzen und -Datenbanken zu ermitteln, muss das Windows- oder SQL Server-Konto Mitglied der Serverrolle sysadmin sein. Erfahren Sie mehr darüber, wie Sie dem [Benutzerkonto die erforderliche Rolle zuweisen](/sql/relational-databases/security/authentication-access/server-level-roles).
 * Erstellen Sie für Server unter Linux ein Konto, das über Root-Berechtigungen verfügt. Sie können auch ein Konto erstellen, das über die Berechtigungen CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE für /bin/netstat and /bin/ls-Dateien verfügt.
 
 > [!NOTE]
-> Sie können dem Konfigurations-Manager in der Azure Migrate-App mehrere Anmeldeinformationen hinzufügen, um die Initiierung installierter Anwendungen, Abhängigkeitsanalyse ohne Agent und Ermittlung von SQL Server-Instanzen und -Datenbanken durchzuführen. Sie können Anmeldeinformationen für die Authentifizierung für mehrere Domänen, Windows (ohne Domäne), Linux (ohne Domäne) oder SQL Server angeben. Erfahren Sie mehr über das [Hinzufügen von Serveranmeldeinformationen](add-server-credentials.md).
+> Sie können dem Konfigurations-Manager in der Azure Migrate-Appliance mehrere Serveranmeldeinformationen hinzufügen, um die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent sowie die Ermittlung von Web-Apps und SQL Server-Instanzen und -Datenbanken zu initiieren. Sie können Anmeldeinformationen für die Authentifizierung für mehrere Domänen, Windows (ohne Domäne), Linux (ohne Domäne) oder SQL Server angeben. Erfahren Sie mehr über das [Hinzufügen von Serveranmeldeinformationen](add-server-credentials.md).
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
 
@@ -119,7 +119,7 @@ Ein neues Projekt einrichten:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste** und suchen Sie nach **Azure Migrate**.
 1. Wählen Sie unter **Dienste** die Option **Azure Migrate** aus.
-1. Wählen Sie unter **Übersicht** basierend auf Ihren Migrationszielen eine der folgenden Optionen aus: **Windows, Linux und SQL Server** oder **SQL Server (ausschließlich)** . Wählen Sie alternativ **Weitere Szenarios erkunden**. 
+1. Wählen Sie unter **Übersicht** basierend auf Ihren Migrationszielen eine der folgenden Optionen aus: **Server, Datenbanken und Web-Apps**, **SQL Server (ausschließlich)** oder **Weitere Szenarios erkunden**.
 1. Wählen Sie **Projekt erstellen** aus.
 1. Wählen Sie unter **Create project** (Projekt erstellen) Ihr Azure-Abonnement und die Ressourcengruppe aus. Falls noch keine vorhanden ist, erstellen Sie eine Ressourcengruppe.
 1. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und die [unterstützten geografischen Regionen Government Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
@@ -151,7 +151,7 @@ Um die Appliance mithilfe einer OVA-Vorlage einzurichten, führen Sie die folgen
 
 #### <a name="generate-the-project-key"></a>Generieren des Projektschlüssels
 
-1. Wählen Sie unter **Migrationsziele** **Windows, Linux und SQL Server** > **Azure Migrate: Ermittlung und Bewertung** >  die Option **Ermitteln** aus.
+1. Wählen Sie unter **Migrationsziele** die Option **Server, Datenbanken und Web-Apps** > **Azure Migrate: Ermittlung und Bewertung** > **Ermitteln** aus.
 1. Wählen Sie unter **Server ermitteln** die Option **Sind Ihre Server virtualisiert?** aus > **Ja, mit VMware vSphere-Hypervisor**.
 1. Geben Sie unter **1: Projektschlüssel generieren** einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung von Servern in der VMware-Umgebung einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Um mit dem Erstellen der erforderlichen Azure-Ressourcen zu beginnen, wählen Sie **Schlüssel generieren** aus. Schließen Sie den Bereich **Entdecken** nicht, während die Ressourcen erstellt werden.
@@ -269,7 +269,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="provide-server-credentials"></a>Angeben von Serveranmeldeinformation
 
-Unter **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agents und eine Ermittlung von SQL Server-Instanzen und -Datenbanken** können Sie eine Vielzahl an Server-Anmeldeinformationen angeben. Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
+Unter folgendem Schritt können Sie mehrere Serveranmeldeinformationen angeben: **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps in Ihrer VMware-Umgebung durchzuführen.** Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Screenshot: Bereitstellen von Anmeldeinformationen für die Softwareinventur, Abhängigkeitsanalyse und s q l Serverermittlung.":::
 
@@ -288,7 +288,7 @@ Hinzufügen von Serveranmeldeinformationen:
     Wählen Sie **Speichern** aus.
 
     Wenn Sie Domänenanmeldeinformationen zu Verwendung wählen, müssen Sie auch den FQDN für die Domäne eingeben. Der FQDN wird benötigt, um die Echtheit der Anmeldeinformationen mithilfe der Active Directory-Instanz der jeweiligen Domäne zu bestätigen.
-1. Überprüfen Sie die [erforderlichen Berechtigungen](add-server-credentials.md#required-permissions) des Kontos für die Ermittlung installierter Anwendungen, Abhängigkeitsanalyse ohne Agent und für Ermittlung von SQL Server-Instanzen und -Datenbanken.
+1. Überprüfen Sie die [erforderlichen Berechtigungen](add-server-credentials.md#required-permissions) des Kontos für die Ermittlung installierter Anwendungen, die Abhängigkeitsanalyse ohne Agent sowie für die Ermittlung von Web-Apps und SQL Server-Instanzen und -Datenbanken.
 1. Um mehrere Anmeldeinformationen gleichzeitig hinzuzufügen, wählen Sie **Weitere hinzufügen**, um die Anmeldeinformationen zu speichern und dann weitere Anmeldeinformationen hinzuzufügen.
     Wenn Sie **Speichern** oder **Weitere hinzufügen** auswählen, überprüft die Appliance die Domänenanmeldeinformationen mit dem Active Directory-Instanz der Domäne auf Authentifizierung. Die Überprüfung erfolgt nach jeder Addition, um Kontosperren zu vermeiden, während die Appliance die Zuordnung von Anmeldeinformationen zu den jeweiligen Servern durchlauft.
 
@@ -311,14 +311,24 @@ Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu star
 * [Die Softwareinventur](how-to-discover-applications.md) identifiziert SQL Server-Instanzen, die auf den Servern ausgeführt werden. Anhand dieser gesammelten Informationen versucht die Appliance, mithilfe der in der Appliance angegebenen Anmeldeinformationen für Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Anschließend werden Daten zu SQL Server-Datenbanken und deren Eigenschaften erfasst. Die SQL Server-Ermittlung erfolgt einmal alle 24 Stunden.
 * Die Appliance kann nur mit den SQL Server-Instanzen verbunden werden, mit denen sie über eine direkte Verbindung verfügt. Für die Softwareinventur selbst ist möglicherweise keine direkte Netzwerkverbindung erforderlich.
 * Die Ermittlung installierter Anwendungen kann länger als 15 Minuten dauern. Die Dauer hängt von der Anzahl der ermittelten Server ab. Bei 500 Servern dauert es ungefähr ein Stunde, bis der ermittelte Bestand im Azure Migrate-Portal angezeigt wird.
+* Bei der [Softwareinventur](how-to-discover-applications.md) wird die auf ermittelten Servern vorhandene Webserverrolle identifiziert. Wenn für einen Server die Webserverrolle aktiviert ist, führt Azure Migrate die Ermittlung von Web-Apps auf dem Server durch. Konfigurationsdaten von Web-Apps werden alle 24 Stunden aktualisiert.
 * Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die [Abhängigkeitsanalyse ohne Agent](how-to-create-group-machine-dependencies-agentless.md) zu aktivieren.
-* SQL Server-Instanzen und die Daten der Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
+* Die Daten von ASP.NET-Web-Apps und SQL Server-Instanzen und -Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
 * Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](https://go.microsoft.com/fwlink/?linkid=2158046) darüber, was Sie auswählen sollten.
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="Screenshot der Bearbeitung der SQL Server-Verbindungseigenschaften":::
+
+Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse oder FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
+
+### <a name="view-discovered-data"></a>Anzeigen der ermittelten Daten
+
+1. Wechseln Sie zurück zum Azure Migrate-Portal.
+1. Klicken Sie wie im folgenden Screenshot gezeigt auf „Aktualisieren“, um die ermittelten Daten anzuzeigen.
+    :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="Screenshot: Aktualisieren von Daten auf der Kachel für Ermittlung und Bewertung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie [Server für die Migration zu Azure-VMs bewerten.](./tutorial-assess-vmware-azure-vm.md)
 - Erfahren Sie, wie Sie [Server bewerten, auf denen SQL Server für die Migration zu Azure SQL ausgeführt wird.](./tutorial-assess-sql.md)
+- Erfahren Sie, wie Sie [Web-Apps für die Migration zu Azure App Service bewerten](./tutorial-assess-webapps.md).
 - Überprüfen Sie die [Daten, die Azure Migrate während der Ermittlung und Bewertung sammelt](migrate-appliance.md#collected-data---vmware).

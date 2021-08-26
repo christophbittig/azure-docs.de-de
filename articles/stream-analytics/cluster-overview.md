@@ -6,13 +6,13 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2021
-ms.openlocfilehash: e14c900d8acdd88191fde268fe832034f8dad2cf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/22/2021
+ms.openlocfilehash: 7223d497a6bd1f91bcf5f313d793184026b9fe0c
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454259"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540490"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster"></a>Übersicht über Azure Stream Analytics-Cluster
 
@@ -68,7 +68,7 @@ Ihre Stream Analytics-Cluster werden basierend auf der ausgewählten Kapazität 
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>Mit welchen Ein- und Ausgaben kann ich über meinen Stream Analytics-Cluster eine private Verbindung herstellen?
 
-Stream Analytics unterstützt verschiedene Eingabe- und Ausgabetypen. In Ihrem Cluster können Sie [private Endpunkte erstellen](private-endpoints.md), die Aufträgen den Zugriff auf Eingabe- und Ausgaberessourcen ermöglichen. Derzeit werden Azure SQL-Datenbank, Azure Synapse Analytics, Azure Cosmos DB, Azure Storage, Azure Data Lake Storage Gen2, Azure Event Hub, Azure IoT Hub, Azure Functions und Azure Service Bus unterstützt, für die Sie verwaltete private Endpunkte erstellen können. 
+Stream Analytics unterstützt verschiedene Eingabe- und Ausgabetypen. In Ihrem Cluster können Sie [private Endpunkte erstellen](private-endpoints.md), die Aufträgen den Zugriff auf Eingabe- und Ausgaberessourcen ermöglichen. Derzeit werden die Azure SQL-Datenbank, Azure Cosmos DB, Azure Storage, Azure Data Lake Storage Gen2, Azure Event Hub, Azure IoT Hub, Azure Functions und Azure Service Bus unterstützt, für die Sie verwaltete private Endpunkte erstellen können. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

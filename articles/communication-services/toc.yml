@@ -100,7 +100,7 @@ items:
           - name: Telefonnummerntypen
             href: concepts/telephony-sms/plan-solution.md
           - name: Anforderungen an die Infrastruktur für direktes Azure-Routing
-            href: concepts/telephony-sms/sip-interface-infrastructure.md
+            href: concepts/telephony-sms/direct-routing-infrastructure.md
           - name: Für direktes Azure-Routing zertifizierte Session Border Controller
             href: concepts/telephony-sms/certified-session-border-controllers.md
           - name: Koppeln des Session Border Controllers und Konfigurieren des Sprachroutings

@@ -3,15 +3,16 @@ title: Erstellen einer Azure Data Factory-Instanz über die Azure Data Factory-B
 description: Erstellen Sie eine Data Factory-Instanz mit einer Pipeline, die Daten von einem Speicherort im Azure Blob-Speicher an einen anderen Speicherort kopiert.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: quickstart
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9d8bf0d62518c94458a5b989c040f8eaefea11cd
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: ad2e2edf916b5b2c4309ed18c5a3349e67adfc33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436998"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749894"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche 
 

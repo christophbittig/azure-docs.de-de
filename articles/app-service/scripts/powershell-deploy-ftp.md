@@ -4,18 +4,18 @@ description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung 
 tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
-ms.date: 03/20/2017
+ms.date: 06/23/2021
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 90c4a30243569c07e1a70ad46c8b2f7e70d493b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83ec2fad8d4f3ec6efb1b88e1e765ebcfa0d260d
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005578"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575260"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Hochladen von Dateien in eine Web-App mithilfe von FTP
 
-Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und stellt dann Ihren Web-App-Code über FTP (mit [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile)) bereit.
+Dieses Beispielskript erstellt eine Web-App mit den verwandten Ressourcen in App Service. Es stellt dann Datei für die Verwendung der Web-App über FTP (via [System.Net.FtpWebRequest](/dotnet/api/system.net.ftpwebrequest)) bereit.
 
 Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 

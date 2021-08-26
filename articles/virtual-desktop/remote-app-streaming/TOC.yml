@@ -24,6 +24,8 @@
   items:
     - name: Grundlagen für Remote-App-Streaming
       items:
+        - name: Einrichten von verwalteten Identitäten
+          href: identities.md
         - name: Bereitstellen von Apps mit dem MSIX-Feature zum Anfügen von Apps
           href: msix-app-attach.md
         - name: Hosten benutzerdefinierter Apps
@@ -46,6 +48,12 @@
           href: ../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Aktivieren des universellen Druckens
           href: /universal-print/fundamentals/universal-print-getting-started?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Starten von virtuellen Computern bei der Verbindungsherstellung
+          items:
+            - name: Einrichten des Startens von virtuellen Computern bei der Verbindungsherstellung
+              href: ../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Häufig gestellte Fragen zum Starten von virtuellen Computern bei der Verbindungsherstellung
+              href: ../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: Andere Themen
       items:
         - name: Herstellen einer Verbindung mit Azure Virtual Desktop-Ressourcen
@@ -124,12 +132,6 @@
           href: ../azure-monitor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Einrichten eines Notfallwiederherstellungsplans
           href: ../disaster-recovery.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
-        - name: Starten von virtuellen Computern bei der Verbindungsherstellung
-          items:
-            - name: Einrichten des Startens von virtuellen Computern bei der Verbindungsherstellung
-              href: ../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
-            - name: Häufig gestellte Fragen zum Starten von virtuellen Computern bei der Verbindungsherstellung
-              href: ../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Festlegen des Ausgleichsmodus
           href: ../drain-mode.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
 - name: Konzepte
@@ -202,6 +204,8 @@
       href: ../troubleshoot-set-up-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: Identifizieren und Diagnostizieren von Problemen
       href: ../diagnostics-role-service.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: Feature „Erste Schritte“
+      href: ../troubleshoot-getting-started.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: Hostpoolerstellung
       href: ../troubleshoot-set-up-issues.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: Konfiguration des virtuellen Sitzungshostcomputers
