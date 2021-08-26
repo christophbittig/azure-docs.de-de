@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee8d0554b9c3349c7efc88c10e9eee8b185acb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e4374e564ea2fb8a5cc3f8bada6eb3ff27663912
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773277"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634276"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
@@ -85,7 +85,7 @@ Lesen Sie [Filter: Zuordnen mit Streaminglocators](filters-concept.md#associatin
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtern, Sortieren, Paginieren von Streaminglocatorentitäten
 
-Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](filter-order-page-entitites-how-to.md).
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](filter-order-page-entities-how-to.md).
 
 ## <a name="list-streaming-locators-by-asset-name"></a>Auflisten von Streaminglocators nach Medienobjektname
 

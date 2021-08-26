@@ -5,14 +5,14 @@ services: static-web-apps
 author: petender
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 07/13/2021
 ms.author: petender
-ms.openlocfilehash: 95b2bd71b59a8ef14274928428624fe52e923fe1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b7b75fcf6f7ef1d6f2444a8fe59421bdb64c1890
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968893"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765858"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-using-an-arm-template"></a>Tutorial: Veröffentlichen von Azure Static Web Apps mithilfe einer ARM-Vorlage
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-a-github-personal-access-token"></a>Erstellen eines persönlichen GitHub-Zugriffstokens
 
-Einer der erforderlichen Parameter in der ARM-Vorlage ist `repositoryToken`. Dadurch kann der ARM-Bereitstellungsprozess mit dem GitHub-Repository interagieren, das den Quellcode der statischen Website enthält. 
+Einer der Parameter in der ARM-Vorlage ist `repositoryToken`. Dadurch kann der ARM-Bereitstellungsprozess mit dem GitHub-Repository interagieren, das den Quellcode der statischen Website enthält. 
 
 1. Wählen Sie in Ihrem GitHub-Kontoprofil (in der oberen rechten Ecke) die Option **Settings** (Einstellungen) aus.
 
@@ -57,7 +57,7 @@ Einer der erforderlichen Parameter in der ARM-Vorlage ist `repositoryToken`. Dad
 1. Kopieren Sie den Tokenwert, und fügen Sie ihn zur späteren Verwendung in einen Text-Editor ein.
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie dieses Token kopieren und an einem sicheren Ort speichern. Speichern Sie dieses Token in [Azure KeyVault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md), und greifen Sie in Ihrer ARM-Vorlage darauf zu.
+> Stellen Sie sicher, dass Sie dieses Token kopieren und an einem sicheren Ort speichern. Speichern Sie dieses Token in [Azure Key Vault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md), und greifen Sie in Ihrer ARM-Vorlage darauf zu.
 
 ## <a name="create-a-github-repo"></a>Erstellen eines GitHub-Repositorys
 
@@ -122,11 +122,14 @@ Wenn die Voraussetzungen erfüllt sind, besteht der nächste Schritt darin, die 
                 },
                 "resourceTags": {
                     "type": "object"
+                },
+                "appSettings": {
+                    "type": "object"
                 }
             },
             "resources": [
                 {
-                    "apiVersion": "2019-12-01-preview",
+                    "apiVersion": "2021-01-15",
                     "name": "[parameters('name')]",
                     "type": "Microsoft.Web/staticSites",
                     "location": "[parameters('location')]",
@@ -144,7 +147,19 @@ Wenn die Voraussetzungen erfüllt sind, besteht der nächste Schritt darin, die 
                     "sku": {
                         "Tier": "[parameters('sku')]",
                         "Name": "[parameters('skuCode')]"
-                    }
+                    },
+                    "resources":[
+                        {
+                            "apiVersion": "2021-01-15",
+                            "name": "appsettings",
+                            "type": "config",
+                            "location": "[parameters('location')]",
+                            "properties": "[parameters('appSettings')]",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Web/staticSites', parameters('name'))]"
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -163,9 +178,8 @@ Wenn die Voraussetzungen erfüllt sind, besteht der nächste Schritt darin, die 
                 "name": {
                     "value": "myfirstswadeployment"
                 },
-                "location": {
-                "type": "string",
-                "defaultValue": "Central US"
+                "location": { 
+                    "value": "Central US"
                 },   
                 "sku": {
                     "value": "Free"
@@ -196,6 +210,12 @@ Wenn die Voraussetzungen erfüllt sind, besteht der nächste Schritt darin, die 
                         "Environment": "Development",
                         "Project": "Testing SWA with ARM",
                         "ApplicationName": "myfirstswadeployment"
+                    }
+                },
+                "appSettings": {
+                    "value": {
+                        "MY_APP_SETTING1": "value 1",
+                        "MY_APP_SETTING2": "value 2"
                     }
                 }
             }

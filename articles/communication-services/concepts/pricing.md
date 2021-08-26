@@ -6,15 +6,15 @@ author: nmurav
 manager: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 038b4df78ca7f10b0ec0e9dfe224f6aca2430e82
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: ba47fd528882e1d7de45470f00316c57b966ddb5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986298"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762887"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -26,7 +26,7 @@ Azure Communication Services ermöglicht das Hinzufügen von Sprach-/Videoanrufe
 
 ### <a name="pricing"></a>Preise
 
-Für die Dienste für Anrufe und die Bildschirmfreigabe werden die Gebühren pro Minute und Teilnehmer berechnet (0,004 US-Dollar pro Teilnehmer pro Minute für Gruppenanrufe). Grundlegende Informationen zu den unterschiedlichen Anrufabläufen, die möglich sind, finden Sie auf [dieser Seite](./call-flows.md).
+Für die Dienste für Anrufe und die Bildschirmfreigabe werden die Gebühren pro Minute und Teilnehmer berechnet (0,004 US-Dollar pro Teilnehmer pro Minute für Gruppenanrufe). Bei Azure Communication Services werden keine Gebühren für ausgehende Daten berechnet. Grundlegende Informationen zu den unterschiedlichen Anrufabläufen, die möglich sind, finden Sie auf [dieser Seite](./call-flows.md).
 
 Bei der Abrechnung zählt jeder Teilnehmer des Anrufs für jede Minute, in der für ihn eine Anrufverbindung bestanden hat. Dies gilt unabhängig davon, ob der Benutzer einen Videoanruf, Sprachanruf oder die Bildschirmfreigabe genutzt hat.
 
@@ -58,12 +58,31 @@ Alice verwendet eine App, um über das Festnetz Bob in den USA anzurufen. Bobs T
 - 1 Teilnehmer für den VoIP-Abschnitt (Alice) von der App zu Communication Services-Servern · 10 Minuten · 0,004 USD pro Teilnehmerabschnitt pro Minute = 0,04 USD
 - 1 Teilnehmer für den ausgehenden Festnetzabschnitt (Bob) von Communication Services-Servern zu einer US-Telefonnummer · 10 Minuten · 0,013 USD pro Teilnehmerabschnitt pro Minute = 0,13 USD.
 
-Hinweis: Die gemischten US-Tarife für `+1-425` liegen bei 0,013 USD. Details finden Sie unter dem folgenden Link: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv).
+> [!Note]
+> Die gemischten US-Tarife für `+1-425` liegen bei 0,013 USD. Details finden Sie unter dem folgenden Link: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv).
+
 
 **Gesamtkosten für den Anruf**: 0,04 USD + 0,13 USD = 0,17 USD
 
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-via-azure-communication-services-direct-routing"></a>Preisbeispiel: Ausgehender Aufruf von einer App unter Verwendung des SDK für JS über die Azure Communication Services mit Direct Routing
 
-### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>Preisbeispiel: Audiogruppenanruf mit SDK für JS und einem Festnetzabschnitt
+Alice führt einen ausgehenden Anruf von einer Azure Communication Services-App an eine Telefonnummer (Bob) über Azure Communication Services mit Direct Routing aus.
+- Alice hat die App unter Verwendung des SDK für JS erstellt.
+- Der Aufruf erfolgt an einen SBC (Session Border Controller), der über die Communication Services mit Direct Routing verbunden ist
+- Der Anruf dauert insgesamt zehn Minuten. 
+
+**Berechnung der Kosten**
+
+- 1 Teilnehmer für den VoIP-Abschnitt (Alice) von der App zu Communication Services-Servern · 10 Minuten · 0,004 USD pro Teilnehmerabschnitt pro Minute = 0,04 USD
+- 1 Teilnehmer für den ausgehenden Abschnitt (Bob) von Communication Services mit Direct Routing zu einem SBC  · 10 Minuten · 0,004 USD pro Teilnehmerabschnitt pro Minute = 0,04 USD.
+
+Die **Gesamtkosten für den Anruf**: 0,04 USD + 0,04 USD = 0,08 USD
+
+> [!Note]
+> Die Kosten für die Azure Communication Services mit dem Direct Routing-Abschnitt werden erst am 01.08.2021 in Rechnung gestellt.
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>Ein Preisbeispiel für einen Audiogruppenanruf mit SDK für JS und einem Festnetzabschnitt
 
 Alice und Bob führen ein VoIP-Telefonat. Bob hat den Anruf an die Festnetznummer von Charlie eskaliert. Dabei handelt es sich um eine US-Telefonnummer, die mit beginnt `+1-425`.
 

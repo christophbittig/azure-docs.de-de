@@ -1,28 +1,29 @@
 ---
-title: 'Tutorial: Vorhersagen von Autopreisen mit dem Designer'
+title: 'Tutorial: Designer – Trainieren eines Regressionsmodells ohne Code'
 titleSuffix: Azure Machine Learning
-description: Trainieren Sie ein Machine Learning-Modell, um Automobilpreise mithilfe der linearen Regression vorherzusagen. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
+description: Trainieren Sie ein Regressionsmodell, das die Autopreise mithilfe des Azure Machine Learning Designers vorhersagt.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.custom: designer
-ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: f8e544681f940e649e1d04d148caafb875c69952
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660983"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472918"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer
+# <a name="tutorial-designer---train-a-no-code-regression-model"></a>Tutorial: Designer – Trainieren eines Regressionsmodells ohne Code
 
+Trainieren Sie ein lineares Regressionsmodell, das die Autopreise mithilfe des Azure Machine Learning Designers vorhersagt. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 
-In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mithilfe des Designers von Azure Machine Learning ein Machine Learning-Modell trainieren und bereitstellen, das den Preis eines beliebigen Autos prognostiziert. Bei dem Designer handelt es sich um ein Drag & Drop-Tool, mit dem Sie ganz ohne Programmieraufwand Machine Learning-Modelle erstellen können.
+In diesem Tutorial wird der Azure Machine Learning Designer verwendet. Weitere Informationen dazu finden Sie unter [Was ist Azure Machine Learning Designer](concept-designer.md).
 
-Im ersten Teil des Tutorials lernen Sie Folgendes:
+In dem ersten Teil des Tutorials lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer neuen Pipeline
@@ -31,7 +32,7 @@ Im ersten Teil des Tutorials lernen Sie Folgendes:
 > * Trainieren eines Machine Learning-Modells
 > * Auswerten eines Machine Learning-Modells
 
-Im [zweiten Teil](tutorial-designer-automobile-price-deploy.md) des Tutorials stellen Sie Ihr Modell als Echtzeit-Rückschlussendpunkt bereit, um damit den Preis eines beliebigen Autos basierend auf den von Ihnen an die Lösung gesendeten technischen Spezifikationen zu prognostizieren. 
+In dem [zweiten Teil](tutorial-designer-automobile-price-deploy.md) des Tutorials stellen Sie Ihr Modell als Echtzeit-Rückschlussendpunkt bereit. Damit können Sie den Preis eines beliebigen Autos basierend auf den von Ihnen eingesendeten technischen Spezifikationen zu prognostizieren. 
 
 > [!NOTE]
 >Eine fertige Version dieses Tutorials ist als Beispielpipeline verfügbar.

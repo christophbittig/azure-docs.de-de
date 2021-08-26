@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: 49a2d242ef5cdb9304a9b94d29328c8379a05f46
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: adb139c7a94c9c915ae1d05f67f22fe720f6c940
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755619"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441407"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter
 
@@ -52,12 +52,20 @@ Sie müssen auch eine neue Klasse erstellen, um Ihre benutzerdefinierte Ressourc
 
 ```csharp
 // Custom Resource Table Entity
-public class CustomResource : TableEntity
+public class CustomResource : ITableEntity
 {
     public string Data { get; set; }
+
+    public string PartitionKey { get; set; }
+
+    public string RowKey { get; set; }
+
+    public DateTimeOffset? Timestamp { get; set; }
+
+    public ETag ETag { get; set; }
 }
 ```
-**CustomResource** ist eine einfache generische Klasse, die beliebige Eingabedaten akzeptiert. Sie basiert auf **TableEntity** (dient zum Speichern von Daten). Die Klasse **CustomResource** erbt zwei Eigenschaften von **TableEntity**: **partitionKey** und **rowKey**.
+**CustomResource** ist eine einfache generische Klasse, die beliebige Eingabedaten akzeptiert. Sie basiert auf **ITableEntity** (dient zum Speichern von Daten). Die Klasse **CustomResource** implementiert alle Eigenschaften der Schnittstelle **ITableEntity**: **timestamp**, **eTag**, **partitionKey**, und **rowKey**.
 
 ## <a name="support-custom-provider-restful-methods"></a>Ermöglichen der Unterstützung von RESTful-Methoden für benutzerdefinierte Anbieter
 
@@ -103,12 +111,12 @@ Fügen Sie die folgende Methode vom Typ **CreateCustomResource** hinzu, um neue 
 /// Creates a custom resource and saves it to table storage.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
-/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="tableClient">The client that allows you to interact with Azure Tables hosted in either Azure storage accounts or Azure Cosmos DB table API.</param>
 /// <param name="azureResourceId">The parsed Azure resource ID.</param>
 /// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
 /// <returns>The HTTP response containing the created custom resource.</returns>
-public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, ResourceId azureResourceId, string partitionKey, string rowKey)
+public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMessage requestMessage, TableClient tableClient, ResourceId azureResourceId, string partitionKey, string rowKey)
 {
     // Adds the Azure top-level properties.
     var myCustomResource = JObject.Parse(await requestMessage.Content.ReadAsStringAsync());
@@ -117,14 +125,13 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
     myCustomResource["id"] = azureResourceId.Id;
 
     // Save the resource into storage.
-    var insertOperation = TableOperation.InsertOrReplace(
-        new CustomResource
-        {
-            PartitionKey = partitionKey,
-            RowKey = rowKey,
-            Data = myCustomResource.ToString(),
-        });
-    await tableStorage.ExecuteAsync(insertOperation);
+    var customEntity =  new CustomResource
+    {
+        PartitionKey = partitionKey,
+        RowKey = rowKey,
+        Data = myCustomResource.ToString(),
+    });
+    await tableClient.AddEntity(customEntity);
 
     var createResponse = requestMessage.CreateResponse(HttpStatusCode.OK);
     createResponse.Content = new StringContent(myCustomResource.ToString(), System.Text.Encoding.UTF8, "application/json");
@@ -153,15 +160,15 @@ Fügen Sie die folgende Methode vom Typ **RetrieveCustomResource** hinzu, um vor
 /// Retrieves a custom resource.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
-/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="tableClient">The client that allows you to interact with Azure Tables hosted in either Azure storage accounts or Azure Cosmos DB table API.</param>
 /// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
 /// <returns>The HTTP response containing the existing custom resource.</returns>
-public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
+public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequestMessage requestMessage, TableClient tableClient, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
-    var tableQuery = TableOperation.Retrieve<CustomResource>(partitionKey, rowKey);
-    var existingCustomResource = (CustomResource)(await tableStorage.ExecuteAsync(tableQuery)).Result;
+    var queryResult = tableClient.GetEntityAsync<CustomResource>(partitionKey, rowKey);
+    var existingCustomResource = (CustomResource)queryResult.Result;
 
     var retrieveResponse = requestMessage.CreateResponse(
         existingCustomResource != null ? HttpStatusCode.OK : HttpStatusCode.NotFound);
@@ -186,19 +193,18 @@ Fügen Sie die folgende Methode vom Typ **RemoveCustomResource** hinzu, um vorha
 /// Removes an existing custom resource.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
-/// <param name="tableStorage">The Azure storage account table.</param>
+/// <param name="tableClient">The client that allows you to interact with Azure Tables hosted in either Azure storage accounts or Azure Cosmos DB table API.</param>
 /// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
 /// <returns>The HTTP response containing the result of the deletion.</returns>
-public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
+public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMessage requestMessage, TableClient tableClient, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
-    var tableQuery = TableOperation.Retrieve<CustomResource>(partitionKey, rowKey);
-    var existingCustomResource = (CustomResource)(await tableStorage.ExecuteAsync(tableQuery)).Result;
+    var queryResult = tableClient.GetEntityAsync<CustomResource>(partitionKey, rowKey);
+    var existingCustomResource = (CustomResource)queryResult.Result;
 
     if (existingCustomResource != null) {
-        var deleteOperation = TableOperation.Delete(existingCustomResource);
-        await tableStorage.ExecuteAsync(deleteOperation);
+        await tableClient.DeleteEntity(deleteEntity.PartitionKey, deleteEntity.RowKey);
     }
 
     return requestMessage.CreateResponse(
@@ -219,28 +225,20 @@ Fügen Sie die folgende Methode vom Typ **EnumerateAllCustomResources** hinzu, u
 /// Enumerates all the stored custom resources for a given type.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
-/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="tableClient">The client that allows you to interact with Azure Tables hosted in either Azure storage accounts or Azure Cosmos DB table API.</param>
 /// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="resourceType">The resource type of the enumeration.</param>
 /// <returns>The HTTP response containing a list of resources stored under 'value'.</returns>
-public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string resourceType)
+public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRequestMessage requestMessage, TableClient tableClient, string partitionKey, string resourceType)
 {
     // Generate upper bound of the query.
     var rowKeyUpperBound = new StringBuilder(resourceType);
     rowKeyUpperBound[rowKeyUpperBound.Length - 1]++;
 
     // Create the enumeration query.
-    var enumerationQuery = new TableQuery<CustomResource>().Where(
-        TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey),
-            TableOperators.And,
-            TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, resourceType),
-                TableOperators.And,
-                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, rowKeyUpperBound.ToString()))));
+    var queryResultsFilter = tableClient.Query<CustomResource>(filter: $"PartitionKey eq '{partitionKey}' and RowKey lt '{rowKeyUpperBound.ToString()}' and RowKey ge '{resourceType}'")
     
-    var customResources = (await tableStorage.ExecuteQuerySegmentedAsync(enumerationQuery, null))
-        .ToList().Select(customResource => JToken.Parse(customResource.Data));
+    var customResources = await queryResultsFilter.ToList().Select(customResource => JToken.Parse(customResource.Data));
 
     var enumerationResponse = requestMessage.CreateResponse(HttpStatusCode.OK);
     enumerationResponse.Content = new StringContent(new JObject(new JProperty("value", customResources)).ToString(), System.Text.Encoding.UTF8, "application/json");
@@ -263,9 +261,9 @@ Nachdem der Funktion alle RESTful-Methoden hinzugefügt wurden, aktualisieren Si
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>
-/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="tableClient">The client that allows you to interact with Azure Tables hosted in either Azure storage accounts or Azure Cosmos DB table API.</param>
 /// <returns>The HTTP response for the custom Azure API.</returns>
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log, CloudTable tableStorage)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log, TableClient tableClient)
 {
     // Get the unique Azure request path from request headers.
     var requestPath = req.Headers.GetValues("x-ms-customproviders-requestpath").FirstOrDefault();
@@ -302,7 +300,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
         case HttpMethod m when m == HttpMethod.Get && !isResourceRequest:
             return await EnumerateAllCustomResources(
                 requestMessage: req,
-                tableStorage: tableStorage,
+                tableClient: tableClient,
                 partitionKey: partitionKey,
                 resourceType: rowKey);
 
@@ -310,7 +308,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
         case HttpMethod m when m == HttpMethod.Get && isResourceRequest:
             return await RetrieveCustomResource(
                 requestMessage: req,
-                tableStorage: tableStorage,
+                tableClient: tableClient,
                 partitionKey: partitionKey,
                 rowKey: rowKey);
 
@@ -318,7 +316,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
         case HttpMethod m when m == HttpMethod.Put && isResourceRequest:
             return await CreateCustomResource(
                 requestMessage: req,
-                tableStorage: tableStorage,
+                tableClient: tableClient,
                 azureResourceId: azureResourceId,
                 partitionKey: partitionKey,
                 rowKey: rowKey);
@@ -327,7 +325,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
         case HttpMethod m when m == HttpMethod.Delete && isResourceRequest:
             return await RemoveCustomResource(
                 requestMessage: req,
-                tableStorage: tableStorage,
+                tableClient: tableClient,
                 partitionKey: partitionKey,
                 rowKey: rowKey);
 
@@ -338,7 +336,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 }
 ```
 
-Die aktualisierte Methode vom Typ **Run** enthält nun die Eingabebindung *tableStorage*, die Sie für den Azure-Tabellenspeicher hinzugefügt haben. Im ersten Teil der Methode wird der Header `x-ms-customproviders-requestpath` gelesen und die Bibliothek `Microsoft.Azure.Management.ResourceManager.Fluent` verwendet, um den Wert als Ressourcen-ID zu analysieren. Der Header `x-ms-customproviders-requestpath` wird vom benutzerdefinierten Anbieter gesendet und gibt den Pfad der eingehenden Anforderung an.
+Die aktualisierte Methode vom Typ **Run** enthält nun die Eingabebindung *tableClient*, die Sie für den Azure-Tabellenspeicher hinzugefügt haben. Im ersten Teil der Methode wird der Header `x-ms-customproviders-requestpath` gelesen und die Bibliothek `Microsoft.Azure.Management.ResourceManager.Fluent` verwendet, um den Wert als Ressourcen-ID zu analysieren. Der Header `x-ms-customproviders-requestpath` wird vom benutzerdefinierten Anbieter gesendet und gibt den Pfad der eingehenden Anforderung an.
 
 Mithilfe der analysierten Ressourcen-ID können Sie die Werte **partitionKey** und **rowKey** für die Daten generieren, um nach benutzerdefinierten Ressourcen zu suchen oder diese zu speichern.
 
@@ -360,7 +358,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
-using Microsoft.WindowsAzure.Storage.Table;
+using Azure.Data.Table;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

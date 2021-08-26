@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic) – Tutorial 2: Trainieren von Kreditrisikomodellen – Azure'
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch). Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
+description: Dieses Tutorial ist der zweite Teil einer dreiteiligen Tutorialreihe für Machine Learning Studio (Classic). Es zeigt, wie Sie Modelle trainieren und auswerten.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 677c5b791f475468fbcf15c81fbabdcdbb1972de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0d0cdab6529f95de2936b32dda590f1f0f75e53c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517449"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580744"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio (klassisch)
+# <a name="tutorial-2-train-credit-risk-models---machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Das ist ein X, d. h., dass sich dieser Artikel nicht auf Azure Machine Learning bezieht.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Stellen Sie das Model anschließend als Machine Learning-Webdienst bereit.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden Azure Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Machine Learning Studio (Classic) erstellen können. Für diese Lösung werden Sie Machine Learning Studio (Classic) und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -45,16 +45,12 @@ Schließen Sie den [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) ab
 
 ## <a name="train-multiple-models"></a><a name="train"></a>Trainieren mehrerer Modelle
 
-Einer der Vorteile von Azure Machine Learning Studio (klassisch) zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehr als einen Typ von Modell gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
+Einer der Vorteile von Azure Machine Learning Studio (Classic) zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehr als einen Typ von Modell gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
 
 In dem Experiment, das wir in diesem Tutorial entwickeln, werden zwei verschiedene Modelltypen erstellt und anschließend deren Bewertungsergebnisse verglichen, um zu entscheiden, welcher Algorithmus im endgültigen Experiment verwendet werden soll.  
 
 Es stehen verschiedene Modelle zur Auswahl. Um die verfügbaren Modelle anzuzeigen, erweitern Sie den Knoten **Machine Learning** in der Modulpalette, und erweitern Sie dann **Initialize Model** und die darunter liegenden Knoten. Für dieses Experiment werden die Module [Two-Class Support Vector Machine][two-class-support-vector-machine] (SVM) und [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] verwendet.
 
-> [!TIP]
-> Hilfe für die Entscheidung, welcher Machine Learning-Algorithmus für das Lösen des jeweiligen Problems am besten geeignet ist, finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning Studio (klassisch)](../how-to-select-algorithms.md).
-> 
-> 
 
 Diesem Experiment werden sowohl das Modul [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] als auch das Modul [Two-Class Support Vector Machine][two-class-support-vector-machine] hinzugefügt.
 
@@ -189,9 +185,9 @@ Klicken Sie rechts neben dem Graph auf **Scored dataset** oder auf **Scored data
 Wenn Sie diese Werte prüfen, können Sie entscheiden, welches Modell am ehesten den gewünschten Ergebnissen entspricht. Sie können zurückgehen und das Experiment erneut ausführen, indem Sie Parameterwerte in den verschiedenen Modellen ändern. 
 
 Die wissenschaftliche Vorgehensweise und Kunst der Interpretation dieser Ergebnisse und das Optimieren der Modellleistung werden in diesem Tutorial nicht behandelt. Weitere Hilfe erhalten Sie in den folgenden Artikeln:
-- [Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)](evaluate-model-performance.md)
-- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)](algorithm-parameters-optimize.md)
-- [Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)](interpret-model-results.md)
+- [Gewusst wie: Auswerten der Modellleistung in Azure Machine Learning Studio (Classic)](evaluate-model-performance.md)
+- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (Classic)](algorithm-parameters-optimize.md)
+- [Interpretieren von Modellergebnissen in Machine Learning Studio (Classic)](interpret-model-results.md)
 
 > [!TIP]
 > Jedes Mal, wenn Sie das Experiment ausführen, wird im Ausführungsverlauf ein Dataset für diese Iteration aufbewahrt. Sie können die Iterationen anzeigen und zu jeder von ihnen zurückkehren, indem Sie unter dem Bereich auf **VIEW RUN HISTORY** klicken. Sie können auch im Fenster **Properties** auf **Prior Run** klicken, um zur Iteration unmittelbar vor der geöffneten Iteration zurückzukehren.
@@ -199,7 +195,7 @@ Die wissenschaftliche Vorgehensweise und Kunst der Interpretation dieser Ergebni
 > Sie können eine Kopie jeder Iteration des Experiments anfertigen, indem Sie unter dem Bereich auf **SAVE AS** klicken. 
 > Verwenden Sie die Eigenschaften **Summary** und **Description** des Experiments, um nachzuhalten, was Sie in den Iterationen Ihres Experiments versucht haben.
 > 
-> Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio (klassisch)](manage-experiment-iterations.md).  
+> Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Machine Learning-Studio (Classic)](manage-experiment-iterations.md).  
 > 
 > 
 

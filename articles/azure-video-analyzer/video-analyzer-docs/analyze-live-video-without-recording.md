@@ -3,12 +3,12 @@ title: Analysieren von Livevideos ohne Aufzeichnung - Azure
 description: Eine Pipelinetopologie kann auch nur verwendet werden, um Analysen aus einem Livevideostream zu extrahieren, ohne dass dieser am Edge oder in der Cloud aufgezeichnet werden muss. Dieses Konzept wird in diesem Artikel erläutert.
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: da9134d3fd86185c9606b297de48e843c76d4909
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 8444759d231153419873679624645a96e07058ce
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604128"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515701"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>Analysieren von Livevideos ohne Aufzeichnung
 
@@ -27,7 +27,7 @@ Sie können eine Pipelinetopologie verwenden, um Livevideos zu analysieren, ohne
 Die unten gezeigte Pipelinetopologie besteht aus einem [RTSP-Quellen](pipeline.md#rtsp-source)-Knoten, einem Knoten für den [Bewegungserkennungsprozessor](pipeline.md#motion-detection-processor) und einem Knoten für die [IoT Hub-Nachrichtensenke](pipeline.md#iot-hub-message-sink) - Sie können die Einstellungen sehen, die in der [JSON-Darstellung](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/motion-detection/topology.json) verwendet werden. Diese Topologie ermöglicht Ihnen das Erkennen von Bewegung im eingehenden Livevideostream und das Weiterleiten der Bewegungsereignisse an andere Apps und Dienste über den Senkenknoten für IoT Hub-Meldungen. Die externen Apps oder Dienste können eine Warnung auslösen oder eine Benachrichtigung an die entsprechenden Personen senden.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video-without-recording/motion-detection.svg" alt-text="Erkennen von Bewegungen in Livevideos":::
+> :::image type="content" source="./media/get-started-detect-motion-emit-events/motion-detection.svg" alt-text="Erkennen von Bewegungen in Livevideos":::
 
 ### <a name="analyzing-video-using-a-custom-vision-model"></a>Analysieren von Videos mit einem benutzerdefinierten Custom Vision-Modell 
 

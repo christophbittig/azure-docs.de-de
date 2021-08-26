@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6588ee515d46f3f300bf3c486f0d528c6f31df98
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 146c1f78ffe0b8a4061417086cf66d96d2317890
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032085"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285369"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -271,8 +271,8 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 
 **Suchen nach**
 
-- Welche Hosts, Subnetze und virtuellen Netzwerke senden oder empfangen den meisten Datenverkehr, lassen den meisten bösartigen Datenverkehr durch und blockieren wichtige Datenströme?
-    - Sehen Sie sich vergleichende Diagramme für Host, Subnetz und virtuelles Netzwerk an. Wenn Sie wissen, welche Host, Subnetze und virtuelle Netzwerke den meisten Datenverkehr senden oder empfangen, können Sie die Hosts identifizieren, die den meisten Datenverkehr verarbeiten. Zudem können Sie feststellen, ob die Verteilung des Datenverkehrs ordnungsgemäß funktioniert.
+- Welche Hosts, Subnetze, virtuellen Netzwerke und VM-Skalierungsgruppen senden oder empfangen den meisten Datenverkehr, lassen den meisten bösartigen Datenverkehr durch und blockieren wichtige Datenströme?
+    - Überprüfen Sie die Vergleichstabelle für Hosts, Subnetze, virtuelle Netzwerke und VM-Skalierungsgruppen. Wenn Sie wissen, welche Hosts, Subnetze, virtuellen Netzwerke und VM-Skalierungsgruppen den meisten Datenverkehr senden oder empfangen, können Sie die Hosts identifizieren, die den meisten Datenverkehr verarbeiten. Zudem können Sie feststellen, ob die Verteilung des Datenverkehrs ordnungsgemäß funktioniert.
     - Sie können dann prüfen, ob die Menge an Datenverkehr für einen Host angemessen ist. Stellt der Netzwerkverkehr ein normales Verhalten dar, oder bedürfen die Werte einer weiteren Untersuchung?
 - Wie viel ein-/ausgehenden Datenverkehr gibt es?
     -   Kann bei dem Host davon ausgegangen werden, dass er mehr eingehenden als ausgehenden Datenverkehr (oder umgekehrt) empfängt?
@@ -281,13 +281,16 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 - Statistik des bösartigen zugelassenen/blockierten Datenverkehrs
   - Warum empfängt ein Host bösartigen Datenverkehr, und warum ist der Datenfluss aus bösartigen Quellen zugelassen? Dieses Verhalten erfordert weitere Untersuchungen und wahrscheinlich eine Optimierung der Konfiguration.
 
-    Wählen Sie unter **Host** die Option **Alle anzeigen**, wie in der folgenden Abbildung gezeigt:
+    Wählen Sie wie in der folgenden Abbildung zu sehen unter **IP** die Option **Alle anzeigen**:
 
     ![Dashboard mit Details zum Host mit dem meisten Datenverkehr](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
-- Das folgende Bild zeigt Zeittrends für die fünf Hosts mit der meisten Kommunikation und die zugehörigen Details zum Datenfluss (zugelassene und blockierte Datenflüsse – jeweils ein- und ausgehend) für einen Host:
+    Das folgende Bild zeigt Zeittrends für die fünf Hosts mit der meisten Kommunikation und die zugehörigen Details zum Datenfluss (zugelassene und blockierte Datenflüsse – jeweils ein- und ausgehend) für einen Host:
+
+    Wählen Sie unter **Details der 5 gesprächigsten IPs** die Option **Mehr anzeigen**, um mehr über alle Hosts zu erfahren. Siehe dazu auch die nachfolgende Abbildung:
 
     ![Trend der fünf Hosts mit der meisten Kommunikation](media/traffic-analytics/top-five-most-talking-host-trend.png)
+    
 
 **Suchen nach**
 
@@ -354,6 +357,10 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
     ![Geomap mit Verteilung des Datenverkehrs auf Länder/Regionen und Kontinente](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![Details zum Datenfluss für die Verteilung des Datenverkehrs in der Protokollsuche](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+    
+- Auf  dem Blatt **Weitere Einblicke** einer Azure-Region wird auch der gesamte Datenverkehr angezeigt, der innerhalb dieser Region verbleibt (d. h. Quelle und Ziel in derselben Region). Darüber hinaus erhalten Sie Einblicke in den Datenverkehr, der zwischen Verfügbarkeitszonen eines Rechenzentrums ausgetauscht wird. 
+
+    ![Zonenübergreifender und regionsinterner Datenverkehr](./media/traffic-analytics/inter-zone-and-intra-region-traffic.png)
 
 ### <a name="visualize-traffic-distribution-by-virtual-networks"></a>Visualisieren der Verteilung des Datenverkehrs nach virtuellen Netzwerken
 
@@ -413,6 +420,22 @@ Tritt in Ihrer Umgebung bösartiger Datenverkehr auf? Wo stammt dieser her? Wohi
 
 ![Details zum Datenfluss bei bösartigem Datenverkehr in der Protokollsuche](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
 
+### <a name="view-information-about-public-ips-interacting-with-your-deployment"></a>Anzeigen von Informationen zu öffentlichen IPs, die mit Ihrer Bereitstellung interagieren
+
+**Suchen nach**
+
+- Welche öffentlichen IPs kontaktieren mein Netzwerk? Wie lauten die WHOIS-Daten und der geografische Standort aller öffentlichen IPs?
+- Welche schädlichen IPs senden Datenverkehr an meine Bereitstellungen? Wie sieht der Bedrohungstyp und die Bedrohungsbeschreibung für schädliche IPs aus?
+    - Der Abschnitt Informationen zu öffentlichen IP-Adressen enthält eine Zusammenfassung aller Arten von öffentlichen IP-Adressen, die in Ihrem Netzwerkdatenverkehr vorhanden sind. 
+      Wählen Sie den für Sie interessanten öffentlichen IP-Adresstyp aus, um Details anzuzeigen. Dieses [Schema-Dokument](./traffic-analytics-schema.md#public-ip-details-schema) definiert die angezeigten Datenfelder.
+      
+      :::image type="content" source="./media/traffic-analytics/public-ip-information.png" alt-text="Öffentliche IP-Adressinformationen" lightbox="./media/traffic-analytics/public-ip-information.png":::
+      
+    - Klicken Sie auf dem Dashboard für die Datenverkehrsanalyse auf eine beliebige IP-Adresse, um die zugehörigen Informationen anzuzeigen.   
+    
+      :::image type="content" source="./media/traffic-analytics/external-public-ip-details.png" alt-text="Externe IP-Adressinformationen im Tooltip" lightbox="./media/traffic-analytics/external-public-ip-details.png":::
+      
+      :::image type="content" source="./media/traffic-analytics/malicious-ip-details.png" alt-text="Schädliche IP-Adressinformationen im Tooltip" lightbox="./media/traffic-analytics/malicious-ip-details.png":::
 
 ### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>Visualisieren von Trends in NSG/NSG-Regeltreffer
 

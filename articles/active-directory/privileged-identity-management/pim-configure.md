@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 06/25/2021
 ms.author: curtand
-ms.custom: pim ; azuread-video-2020
+ms.custom: pim,azuread-video-2020,contperf-fy21q3-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 225abadef26388f3befce0c1a683898d3c2d7818
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802164"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963472"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -30,7 +30,18 @@ ms.locfileid: "104802164"
 
 ## <a name="reasons-to-use"></a>Argumente für die Verwendung
 
-Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Akteur Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert. Benutzer müssen jedoch in Azure AD, Azure, Microsoft 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten Just-In-Time-Zugriff auf Azure-Ressourcen und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen.
+Unternehmen möchten die Anzahl der Personen minimieren, die auf sichere Informationen oder Ressourcen zugreifen können. Dadurch wird Risiko reduziert, dass
+
+- ein böswilliger Akteur Zugriff erlangt
+- ein autorisierter Benutzer, der versehentlich eine sensible Ressource beeinträchtigt
+
+Benutzer müssen jedoch in Azure AD, Azure, Microsoft 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Unternehmen können Benutzern Just-in-Time privilegierten Zugriff auf Azure und Azure AD gewähren und überwachen, was diese Benutzer mit ihrem privilegierten Zugriff tun.
+
+## <a name="license-requirements"></a>Lizenzanforderungen
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von PIM](subscription-requirements.md).
 
 ## <a name="what-does-it-do"></a>Behandelte Themen
 
@@ -44,6 +55,7 @@ Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollen
 - Erhalten von **Benachrichtigungen**, wenn privilegierte Rollen aktiviert werden
 - Durchführen von **Zugriffsüberprüfungen**, um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
 - Herunterladen eines **Überwachungsverlaufs** zur internen oder externen Überwachung
+- Diese Überwachung verhindert das Entfernen der **letzten aktiven globalen Administrator**-Rollenzuweisung
 
 ## <a name="what-can-i-do-with-it"></a>Verwendungsmöglichkeiten
 
@@ -53,9 +65,36 @@ Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken 
 
 ## <a name="who-can-do-what"></a>Berechtigungen und Rollen
 
-Für Azure AD-Rollen in Privileged Identity Management gilt: Nur Benutzer mit der Rolle „Administrator für privilegierte Rollen“ oder der Rolle „Globaler Administrator“ können Zuweisungen für andere Administratoren verwalten. Sie können [anderen Administratoren Zugriff für die Verwaltung von Privileged Identity Management gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren, globale Leser und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können auch Azure AD-Rollenzuweisungen in Privileged Identity Management anzeigen.
+Für Azure AD-Rollen in Privileged Identity Management gilt: Nur die Benutzer mit der Rolle „Administrator für privilegierte Rollen“ oder der Rolle „Globaler Administrator“ können Zuweisungen für andere Administratoren verwalten. Globale Administratoren, Sicherheitsadministratoren, globale Leser und Benutzer mit Leseberechtigung für die Sicherheitsfunktionen können auch die Azure AD-Rollen in Privileged Identity Management anzeigen.
 
 Bei Azure-Ressourcenrollen in Privileged Identity Management können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben standardmäßig keinen Zugriff auf Azure-Ressourcenrollenzuweisungen in Privileged Identity Management.
+
+## <a name="terminology"></a>Begriff
+
+Machen Sie sich zum besseren Verständnis von Privileged Identity Management und der zugehörigen Dokumentation mit den folgenden Begriffen vertraut:
+
+| Begriff oder Konzept | Rollenzuweisungskategorie | BESCHREIBUNG |
+| --- | --- | --- |
+| Berechtigt | type | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
+| aktiv | type | Eine Rollenzuweisung, bei der ein Benutzer keine Aktion ausführen muss, um die Rolle nutzen zu können. Bei als aktiv zugewiesenen Benutzern sind die Berechtigungen der Rolle zugewiesen. |
+| aktivieren |  | Das Ausführen mindestens einer Aktion zum Verwenden einer Rolle, zu der der Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
+| zugewiesen | State | Ein Benutzer mit einer Rollenzuweisung vom Typ „aktiv“. |
+| aktiviert | State | Ein Benutzer mit einer Rollenzuweisung vom Typ „berechtigt“, der die Aktionen zum Aktivieren der Rolle ausgeführt hat und nun aktiv ist. Nach der Aktivierung kann der Benutzer die Rolle für einen vorkonfigurierten Zeitraum nutzen. Danach muss sie erneut aktiviert werden. |
+| dauerhaft berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
+| dauerhaft aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
+| zeitgebunden berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer nur innerhalb eines Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
+| zeitgebunden aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle nur innerhalb eines Zeitraums (Start- und Enddatum) verwenden kann |
+| Just-in-Time-Zugriff (JIT) |  | Ein Modell, bei dem Benutzer temporäre Berechtigungen zum Ausführen privilegierter Aufgaben erhalten. Dieses Modell verhindert, dass böswillige oder nicht autorisierte Benutzer nach dem Ablauf der Berechtigungen Zugriff erhalten. Der Zugriff wird nur gewährt, wenn Benutzer ihn benötigen. |
+| Prinzip des Zugriffs mit den geringsten Rechten |  | Eine empfohlene Sicherheitsmethode, bei der alle Benutzer nur die zum Ausführen der Aufgaben, für die sie autorisiert sind, mindestens erforderlichen Berechtigungen erhalten. Diese Methode minimiert die Anzahl von globalen Administratoren, indem stattdessen spezifische Administratorrollen für bestimmte Szenarien verwendet werden. |
+
+## <a name="extend-and-renew-assignments"></a>Verlängern und Erneuern von Zuweisungen
+
+Nach der Einrichtung Ihrer zeitgebundenen Besitzer- oder Mitgliederzuweisungen fragen Sie sich vielleicht, was passiert, wenn eine Zuweisung abläuft. In dieser neuen Version bieten wir zwei Optionen für dieses Szenario:
+
+- Verlängern: Wenn eine Rollenzuweisung demnächst abläuft, kann der Benutzer über Privileged Identity Management eine Verlängerung für die Rollenzuweisung anfordern.
+- Erneuern: Wenn eine Rollenzuweisung bereits abgelaufen ist, kann der Benutzer über Privileged Identity Management eine Erneuerung für die Rollenzuweisung anfordern.
+
+Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen. Administratoren müssen sich nicht mit der Verwaltung von ablaufenden Zuweisungen befassen. Sie können einfach warten, bis die Erweiterungs- oder Verlängerungsanforderungen für eine einfache Genehmigung oder Verweigerung eintreffen.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -79,29 +118,38 @@ Privileged Identity Management unterstützt folgende Szenarien:
 - Anzeigen des Status Ihrer Aktivierungsanforderung
 - Fertigstellen Ihrer Aufgabe in Azure AD, wenn die Aktivierung genehmigt wurde
 
-## <a name="terminology"></a>Begriff
+## <a name="managing-privileged-access-azure-ad-groups-preview"></a>Verwalten für privilegierte Azure AD-Zugriffsgruppen (Vorschau)
 
-Machen Sie sich zum besseren Verständnis von Privileged Identity Management und der zugehörigen Dokumentation mit den folgenden Begriffen vertraut:
+In Privileged Identity Management (PIM) kann nun die Berechtigung zur Mitgliedschaft in privilegierten Zugriffsgruppen oder zum Besitz privilegierter Zugriffsgruppen zugewiesen werden. Ab dieser Vorschauversion können Sie Cloudgruppen integrierte Azure AD-Rollen (Azure Active Directory) zuweisen und die Berechtigung und Aktivierung von Gruppenmitgliedern und -besitzern mithilfe von PIM verwalten. Weitere Informationen zu Gruppen, die in Azure AD Rollen zugewiesen werden können, finden Sie unter [Verwalten von Rollenzuweisungen in Azure Active Directory mithilfe von Cloudgruppen (Vorschau)](../roles/groups-concept.md).
 
-| Begriff oder Konzept | Rollenzuweisungskategorie | BESCHREIBUNG |
-| --- | --- | --- |
-| Berechtigt | type | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
-| aktiv | type | Eine Rollenzuweisung, bei der ein Benutzer keine Aktion ausführen muss, um die Rolle nutzen zu können. Bei als aktiv zugewiesenen Benutzern sind die Berechtigungen der Rolle zugewiesen. |
-| aktivieren |  | Das Ausführen mindestens einer Aktion zum Verwenden einer Rolle, zu der der Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
-| zugewiesen | State | Ein Benutzer mit einer Rollenzuweisung vom Typ „aktiv“. |
-| aktiviert | State | Ein Benutzer mit einer Rollenzuweisung vom Typ „berechtigt“, der die Aktionen zum Aktivieren der Rolle ausgeführt hat und nun aktiv ist.  Nach der Aktivierung kann der Benutzer die Rolle für einen vorkonfigurierten Zeitraum nutzen. Danach muss sie erneut aktiviert werden. |
-| dauerhaft berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
-| dauerhaft aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
-| zeitgebunden berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer nur innerhalb eines Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
-| zeitgebunden aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle nur innerhalb eines Zeitraums (Start- und Enddatum) verwenden kann |
-| Just-in-Time-Zugriff (JIT) |  | Ein Modell, bei dem Benutzer temporäre Berechtigungen zum Ausführen privilegierter Aufgaben erhalten. Dieses Modell verhindert, dass böswillige oder nicht autorisierte Benutzer nach dem Ablauf der Berechtigungen Zugriff erhalten. Der Zugriff wird nur gewährt, wenn Benutzer ihn benötigen. |
-| Prinzip des Zugriffs mit den geringsten Rechten |  | Eine empfohlene Sicherheitsmethode, bei der alle Benutzer nur die zum Ausführen der Aufgaben, für die sie autorisiert sind, mindestens erforderlichen Berechtigungen erhalten. Diese Methode minimiert die Anzahl von globalen Administratoren, indem stattdessen spezifische Administratorrollen für bestimmte Szenarien verwendet werden. |
+>[!Important]
+> Verwenden Sie zum Zuweisen einer privilegierten Zugriffsgruppe zu einer Rolle für den Administratorzugriff auf Exchange, Security & Compliance Center oder SharePoint die Funktion **Rollen und Administratoren** im Azure AD-Portal und nicht die Funktion für Gruppen mit privilegiertem Zugriff, um den Benutzer oder die Gruppe als berechtigt für die Aktivierung in der Gruppe festzulegen.
 
-## <a name="license-requirements"></a>Lizenzanforderungen
+### <a name="different-just-in-time-policies-for-each-group"></a>Unterschiedliche Just-in-Time-Richtlinien für jede Gruppe
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+Einige Organisationen verwenden Tools wie Azure AD B2B-Zusammenarbeit (Business-to-Business), um ihre Partner als Gäste in Ihre Azure AD-Organisation einzuladen. Anstelle einer einzelnen Just-In-Time-Richtlinie für alle Zuweisungen zu einer privilegierten Rolle können Sie zwei unterschiedliche privilegierte Zugriffsgruppen mit jeweils eigenen Richtlinien erstellen. So können Sie weniger strenge Anforderungen für Ihre vertrauenswürdigen Mitarbeiter und strengere Anforderungen wie etwa einen Genehmigungsworkflow für Ihre Partner erzwingen, wenn diese eine Aktivierung in der zugewiesenen Gruppe anfordern.
 
-Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [Lizenzanforderungen für die Verwendung von PIM](subscription-requirements.md).
+### <a name="activate-multiple-role-assignments-in-one-request"></a>Aktivieren mehrerer Rollenzuweisungen in einer Anforderung
+
+Mit der Vorschauversion privilegierter Zugriffsgruppen können Sie workloadspezifischen Administratoren mit einer einzelnen Just-In-Time-Anforderung schnell Zugriff auf mehrere Rollen gewähren. Ein Beispiel: Ihre Office-Administratoren der Ebene 3 benötigen ggf. täglich Just-In-Time-Zugriff auf die Rollen „Exchange-Administrator“, „Administrator für Office-Apps“, „Teams-Administrator“ und „Suchadministrator“, um Vorfälle sorgfältig untersuchen zu können. Früher war dies mit einem gewissen Zeitaufwand verbunden, da hierzu vier aufeinanderfolgende Anforderungen erforderlich waren. Nun können Sie stattdessen eine Gruppe namens „Office-Administratoren der Ebene 3“ erstellen, die Rollen zugewiesen werden kann. Diese Gruppe können Sie dann jeder der vier zuvor genannten Rollen (oder anderen integrierten Azure AD-Rollen) zuweisen und im Aktivitätsabschnitt der Gruppe für privilegierten Zugriff aktivieren. Nach der Aktivierung für privilegierten Zugriff können Sie die Just-In-Time-Einstellungen für Mitglieder der Gruppe konfigurieren und ihre Administratoren und Besitzer als berechtigt zuweisen. Wenn die Administratoren in die Gruppe aufsteigen, werden Sie zu Mitgliedern aller vier Azure AD-Rollen.
+
+## <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Laden Sie Gastbenutzer ein, und weisen Sie ihnen Azure-Ressourcenrollen in Privileged Identity Management zu.
+
+Azure Active Directory (Azure AD)-Gastbenutzer sind Teil der Business-to-Business (B2B)-Zusammenarbeitsfunktionen innerhalb von Azure AD, sodass Sie externe Gastbenutzer und Anbieter als Gäste in Azure AD verwalten können. Beispielsweise können Sie diese Privileged Identity Management-Funktionen für Azure-Identitätsaufgaben mit Gästen verwenden. Das gilt z. B. für das Zuweisen des Zugriffs auf bestimmte Azure-Ressourcen, das Angeben der Zuweisungsdauer und des Enddatums oder das Erfordern einer zweistufigen Überprüfung bei aktiver Zuweisung oder Aktivierung. Weitere Informationen zum Einladen eines Gasts in Ihr Unternehmen und zum Verwalten des Zugriffs finden Sie unter [Hinzufügen von B2B-Zusammenarbeitsbenutzern im Azure AD-Portal](../external-identities/add-users-administrator.md).
+
+### <a name="when-would-you-invite-guests"></a>Wann laden Sie Gäste ein?
+
+Einige Beispiele für Situationen, in denen Sie möglicherweise Gäste in Ihre Organisation einladen:
+
+- Zugriff für einen externen selbstständigen Anbieter, der nur über ein E-Mail-Konto verfügt, auf Ihre Azure-Ressourcen für ein Projekt
+- Zugriff für einen externen Partner in einer großen Organisation, die lokale Active Directory-Verbunddienste (AD FS) verwendet, auf Ihre Kostenmanagementanwendung
+- Temporärer Zugriff für Supporttechniker außerhalb Ihrer Organisation (z.B. Microsoft-Support) auf Ihre Azure-Ressource zur Behebung von Problemen
+
+### <a name="how-does-collaboration-using-b2b-guests-work"></a>Wie funktioniert Kollaboration mit B2B-Gästen?
+
+Wenn Sie B2B Collaboration verwenden, können Sie einen externen Benutzer als Gast in Ihre Organisation einladen. Der Gast kann als Benutzer in Ihrer Organisation verwaltet werden, aber ein Gast muss in seiner eigenen Organisation authentifiziert sein, und nicht in Ihrer Azure AD-Organisation. Dies bedeutet, dass ein Gast, der keinen Zugriff mehr auf seine eigene Organisation hat, auch den Zugriff auf Ihre Organisation verlieren wird. Wenn der Gast beispielsweise seine Organisation verlässt, verliert er automatisch den Zugriff auf alle Ressourcen, die Sie in Azure AD für ihn freigegeben haben, ohne dass Sie etwas tun müssen. Weitere Informationen zur B2B-Zusammenarbeit finden Sie unter [Was ist der Gastbenutzerzugriff in Azure Active Directory-B2B?](../external-identities/what-is-b2b.md).
+
+![Diagramm, das zeigt, wie ein Gastbenutzer in seinem eigenen Heimatverzeichnis authentifiziert wird](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

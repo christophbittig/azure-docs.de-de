@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/15/2021
 ms.author: aahi
-ms.openlocfilehash: c66a17c1591f9a0070af1f6fc6b0ec6127292f6b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6ece1121244341acb8f81d11491acf27f4c9fec8
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593160"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442500"
 ---
 <a name="HOLTop"></a>
 
@@ -28,6 +28,7 @@ ms.locfileid: "114593160"
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Sobald Sie über Ihr Azure-Abonnement verfügen, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Textanalyseressource"  target="_blank"> erstellen Sie eine Textanalyseressource </a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und den Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Textanalyse-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
@@ -91,6 +92,8 @@ Bei der Batchverarbeitung wird Text als Liste vom Typ `documents` an die API ges
 Das Antwortobjekt ist eine Liste mit den analysierten Informationen für jedes Dokument. 
 
 ---
+
+[!INCLUDE [text-analytics-character-limits](../character-limits.md)]
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -812,7 +815,7 @@ key_phrase_extraction_example(client)
 
 ## <a name="extract-health-entities"></a>Extrahieren von Integritätsentitäten
 
-Sie können Textanalyse verwenden, um eine asynchrone Anforderung zum Extrahieren von Integritätsentitäten aus Text durchzuführen. Nachfolgend sehen Sie ein einfaches Beispiel für diesen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_healthcare_entities.py) finden.
+Sie können Textanalyse verwenden, um eine asynchrone Anforderung zum Extrahieren von Integritätsentitäten aus Text auszuführen. Nachfolgend sehen Sie ein einfaches Beispiel für diesen Vorgang. Ein komplexeres Beispiel können Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_healthcare_entities.py) finden.
 
 [!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 

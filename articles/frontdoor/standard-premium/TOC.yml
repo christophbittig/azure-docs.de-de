@@ -89,6 +89,8 @@
           href: troubleshoot-compression.md
         - name: Cross-Origin Resource Sharing
           href: troubleshoot-cross-origin-resources.md
+        - name: Abonnementangebote und Bandbreiteneinschränkung
+          href: subscription-offers.md
         - name: Zulässige Zertifizierungsstellen
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Verweis

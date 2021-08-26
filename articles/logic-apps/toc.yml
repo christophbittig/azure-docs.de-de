@@ -18,6 +18,8 @@
       href: quickstart-create-deploy-azure-resource-manager-template.md
     - name: 'Erstellen und Verwalten von Logik-Apps: Azure CLI'
       href: quickstart-logic-apps-azure-cli.md
+    - name: 'Erstellen und Verwalten von Logik-Apps: Azure PowerShell'
+      href: quickstart-logic-apps-azure-powershell.md
 - name: Tutorials
   items:
     - name: Erstellen zeitplanbasierter Workflows
@@ -179,57 +181,74 @@
           href: logic-apps-gateway-connection.md
     - name: Entwickeln für B2B-Szenarien
       items:
-        - name: Integrationskonto erstellen
-          href: logic-apps-enterprise-integration-create-integration-account.md
-          displayName: 'Azure CLI, az logic integration-account create, integration-account'
-        - name: Parteien
-          href: logic-apps-enterprise-integration-partners.md
-        - name: Vereinbarungen
-          href: logic-apps-enterprise-integration-agreements.md
-        - name: Schemas für die XML-Überprüfung
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: Zuordnungen für die XML-Transformation
-          href: logic-apps-enterprise-integration-maps.md
-        - name: Zertifikate
-          href: logic-apps-enterprise-integration-certificates.md
-        - name: Artefaktmetadaten
-          href: logic-apps-enterprise-integration-metadata.md
+        - name: Integrationskonto und -artefakte
+          items:
+            - name: Integrationskonto erstellen
+              href: logic-apps-enterprise-integration-create-integration-account.md
+            - name: Parteien
+              href: logic-apps-enterprise-integration-partners.md
+            - name: Vereinbarungen
+              href: logic-apps-enterprise-integration-agreements.md
+            - name: Schemas für die XML-Überprüfung
+              href: logic-apps-enterprise-integration-schemas.md
+            - name: Zuordnungen für die XML-Transformation
+              href: logic-apps-enterprise-integration-maps.md
+            - name: Zertifikate
+              href: logic-apps-enterprise-integration-certificates.md
+            - name: Artefaktmetadaten
+              href: logic-apps-enterprise-integration-metadata.md
         - name: Empfangen und Senden von B2B-Nachrichten
           href: logic-apps-enterprise-integration-b2b.md
-        - name: Austauschen von AS2-Nachrichten
-          href: logic-apps-enterprise-integration-as2.md
-        - name: AS2-Nachrichteneinstellungen
-          href: logic-apps-enterprise-integration-as2-message-settings.md
-        - name: Austauschen von EDIFACT-Nachrichten
-          href: logic-apps-enterprise-integration-edifact.md
+        - name: AS2-Messaging
           items:
+            - name: Austauschen von AS2-Nachrichten
+              href: logic-apps-enterprise-integration-as2.md
+            - name: AS2-Nachrichteneinstellungen
+              href: logic-apps-enterprise-integration-as2-message-settings.md
+            - name: AS2-MDN-Bestätigungen
+              href: logic-apps-enterprise-integration-as2-mdn-acknowledgment.md
+        - name: EDIFACT-Messaging
+          items:
+            - name: Austauschen von EDIFACT-Nachrichten
+              href: logic-apps-enterprise-integration-edifact.md
             - name: EDIFACT-Codierung
               href: logic-apps-enterprise-integration-edifact-encode.md
             - name: EDIFACT-Decodierung
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: Verarbeiten von EDIFACT-Dateien mit UNH2.5-Segmenten
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: Austauschen von RosettaNet-Nachrichten
-          href: logic-apps-enterprise-integration-rosettanet.md
-        - name: Austauschen von X12-Nachrichten
-          href: logic-apps-enterprise-integration-x12.md
+            - name: 'EDIFACT CONTRL: Bestätigungen und Fehlercodes'
+              href: logic-apps-enterprise-integration-edifact-contrl-acknowledgment.md
+        - name: RosettaNet-Messaging
           items:
+            - name: Austauschen von RosettaNet-Nachrichten
+              href: logic-apps-enterprise-integration-rosettanet.md
+        - name: X12-Messaging
+          items:
+            - name: Austauschen von X12-Nachrichten
+              href: logic-apps-enterprise-integration-x12.md
             - name: X12-Codierung
               href: logic-apps-enterprise-integration-x12-encode.md
             - name: X12-Decodierung
               href: logic-apps-enterprise-integration-x12-decode.md
+            - name: X12 TA1-Bestätigung
+              href: logic-apps-enterprise-integration-x12-ta1-acknowledgment.md
+            - name: X12 997-Bestätigung
+              href: logic-apps-enterprise-integration-x12-997-acknowledgment.md
         - name: Zusammenfassen und Senden von EDI-Nachrichten als Batch
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: Verarbeiten von Flatfiles
           href: logic-apps-enterprise-integration-flatfile.md
-        - name: Transformieren von XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Verarbeiten von XML
-          href: logic-apps-enterprise-integration-xml.md
-        - name: Validieren von XML
-          href: logic-apps-enterprise-integration-xml-validation.md
-        - name: Transformieren von JSON
-          href: logic-apps-enterprise-integration-liquid-transform.md
+        - name: XML- und JSON-Transformationen
+          items:
+            - name: Transformieren von XML
+              href: logic-apps-enterprise-integration-transform.md
+            - name: Verarbeiten von XML
+              href: logic-apps-enterprise-integration-xml.md
+            - name: Validieren von XML
+              href: logic-apps-enterprise-integration-xml-validation.md
+            - name: Transformieren von JSON
+              href: logic-apps-enterprise-integration-liquid-transform.md
         - name: Problembehandlung für B2B-Fehler
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Erstellen eines Notfallwiederherstellungsplans
@@ -312,7 +331,7 @@
           href: logic-apps-enterprise-integration-rosettanet.md
         - name: Salesforce
           href: ../connectors/connectors-create-api-salesforce.md
-        - name: SAP (Neu)
+        - name: SAP
           href: logic-apps-using-sap-connector.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
@@ -393,14 +412,16 @@
           href: logic-apps-data-operations-code-samples.md
         - name: Überwachen sozialer Medien
           href: logic-apps-scenario-social-serverless.md
-        - name: Erstellen einer serverlosen App – Visual Studio
-          href: logic-apps-serverless-get-started-vs.md
+        - name: 'Erstellen einer serverlosen App: Visual Studio'
+          href: create-serverless-apps-visual-studio.md
         - name: Hinzufügen der Fehler- und Ausnahmebehandlung
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B-Verarbeitung
           href: logic-apps-enterprise-integration-b2b.md
 - name: Verweis
   items:
+    - name: Abrechnungs- und Preismodelle
+      href: logic-apps-pricing.md
     - name: Architekturmuster
       items:
         - name: Einfache Unternehmensintegration
@@ -411,8 +432,6 @@
       href: /connectors/
     - name: Diensteinschränkungen und -konfiguration
       href: logic-apps-limits-and-config.md
-    - name: Preismodell und Verwendungsmessung
-      href: logic-apps-pricing.md
     - name: Azure CLI
       href: /cli/azure/logic
     - name: Azure PowerShell
@@ -449,7 +468,7 @@
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Preise
+    - name: Preise für Azure Logic Apps
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'

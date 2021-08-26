@@ -1,0 +1,154 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
+  description: Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
+  ms.topic: conceptual
+  ms.service: cloud-services-extended-support
+  author: gachandw
+  ms.author: gachandw
+  ms.reviewer: mimckitt
+  ms.date: 10/13/2020
+  ms.custom: references_regions
+  ms.openlocfilehash: 4b8cd236bad28c93949610dd26f45042bc0debc7
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114481436"
+title: Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
+summary: In diesem Artikel werden häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support) behandelt.
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Wie lautet der Ressourcenname für Cloud Services (klassisch) und Cloud Services (erweiterter Support)?
+    answer: >
+      - Cloud Services (klassisch): `microsoft.classiccompute/domainnames`
+
+      - Cloud Services (erweiterter Support): `microsoft.compute/cloudservices`
+  - question: >
+      Welche Standorte sind zum Bereitstellen von Cloud Services (erweiterter Support) verfügbar?
+    answer: >
+      Cloud Services (erweiterter Support) ist in allen Public Cloud-Regionen verfügbar.
+  - question: "Wie ändert sich mein Kontingent? \n"
+    answer: >
+      Kunden müssen ein Kontingent mit denselben Prozessen wie jedes andere Azure Resource Manager-Produkt anfordern. Das Kontingent in Azure Resource Manager ist regional, und für jede Region wird eine separate Kontingentanforderung benötigt.
+  - question: >
+      Warum wird kein Produktions- und Stagingslot mehr angezeigt?
+    answer: >
+      Cloud Services (erweiterter Support) unterstützt nicht das logische Konzept eines gehosteten Diensts, der zwei Slots enthält (Produktion und Staging). Jede Bereitstellung ist eine unabhängige Bereitstellung des Clouddiensts (erweiterter Support). Um eine neue Version eines Clouddiensts zu testen und bereitzustellen, stellen Sie einen Clouddienst (erweiterter Support) bereit und markieren ihn als VIP-austauschbar mit einem anderen Clouddienst (erweiterter Support).
+  - question: >
+      Warum kann ich keinen leeren Clouddienst mehr erstellen?
+    answer: >
+      Das Konzept der Namen von gehosteten Diensten ist nicht mehr vorhanden. Sie können keinen leeren Clouddienst (erweiterter Support) erstellen.
+  - question: >
+      Unterstützt Cloud Services (erweiterter Support) Resource Health Check (RHC)?
+    answer: >
+      Nein, Cloud Services (erweiterter Support) unterstützt Resource Health Check (RHC) nicht.
+  - question: >
+      Wie ändern sich Rolleninstanzmetriken?
+    answer: "Es gibt keine Änderungen bei den Rolleninstanzmetriken. \n"
+  - question: >
+      Wie ändern sich Web- und Workerrollen?
+    answer: "Es gibt keine Änderungen am Entwurf, an der Architektur oder den Komponenten von Web- und Workerrollen. \n"
+  - question: >
+      Wie ändern sich Rolleninstanzen?
+    answer: "Es gibt keine Änderungen am Entwurf, an der Architektur oder den Komponenten der Rolleninstanzen. \n"
+  - question: >
+      Wie ändern sich Updates von Gastbetriebssystemen?
+    answer: Es gibt keine Änderungen bei der Rolloutmethode. Cloud Services (klassisch) und Cloud Services (erweiterter Support) erhalten dieselben Updates.
+  - question: >
+      Unterstützt Cloud Services (erweiterter Support) die Status „stopped-allocated“ (beendet zugewiesen) und „stopped-deallocated“ (beendet Zuordnung aufgehoben)?
+    answer: "Die Bereitstellung von Cloud Services (erweiterter Support) unterstützt nur den Status „stopped-allocated“, der im Azure-Portal als „Beendet“ angezeigt wird. Der Status „stopped-deallocated“ wird nicht unterstützt. \n"
+  - question: >
+      Unterstützen Bereitstellungen von Cloud Services (erweiterter Support) die Skalierung über Cluster, Verfügbarkeitszonen und Regionen hinweg?
+    answer: "Bereitstellungen von Cloud Services (erweiterter Support) können nicht über mehrere Cluster, Verfügbarkeitszonen und Regionen hinweg skaliert werden. \n"
+  - question: >
+      Wie kann ich die Bereitstellungs-ID für meinen Clouddienst erhalten (erweiterter Support)?
+    answer: >
+      Auf die Bereitstellungs-ID, die als private ID bezeichnet wird, können Sie mit der [CloudServiceInstanceView](/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) -API zugreifen. Sie ist auch auf dem Azure-Portal auf dem Blatt „Rollen und Instanzen“ des Clouddienstes verfügbar (erweiterter Support).
+  - question: >
+      Gibt es Preisunterschiede zwischen Cloud Services (klassisch) und Cloud Services (erweiterter Support)?
+    answer: "Cloud Services (erweiterter Support) verwendet Azure Key Vault und öffentliche Basic-IP-Adressen (ARM). Kunden, die Zertifikate benötigen, müssen Azure Key Vault für die Zertifikatverwaltung verwenden ([weitere Informationen](https://azure.microsoft.com/pricing/details/key-vault/) zu Azure Key Vault-Preisen).  Jede öffentliche IP-Adresse für Cloud Services (erweiterter Support) wird separat abgerechnet ([weitere Informationen](https://azure.microsoft.com/pricing/details/ip-addresses/) zu Preisen für öffentliche IP-Adressen). \n"
+- name: Ressourcen
+  questions:
+  - question: >
+      Welche Ressourcen, die mit einer Cloud Services-Bereitstellung (erweiterter Support) verknüpft sind, müssen sich in derselben Ressourcengruppe befinden?
+    answer: "Load Balancer, Netzwerksicherheitsgruppen und Routingtabellen müssen sich in der gleichen Region und Ressourcengruppe befinden. \n"
+  - question: >
+      Welche Ressourcen, die mit einer Cloud Services-Bereitstellung (erweiterter Support) verknüpft sind, müssen sich in derselben Region befinden?
+    answer: >
+      Key Vault, das virtuelle Netzwerk, öffentliche IP-Adressen, Netzwerksicherheitsgruppen und Routingtabellen müssen sich in der gleichen Region befinden.
+  - question: >
+      Welche Ressourcen, die mit einer Cloud Services-Bereitstellung (erweiterter Support) verknüpft sind, müssen sich in derselben virtuellen Netzwerk befinden?
+    answer: "Öffentliche IP-Adressen, Load Balancer, Netzwerksicherheitsgruppen und Routingtabellen müssen sich im gleichen virtuellen Netzwerk befinden. \n"
+- name: Bereitstellungsdateien
+  questions:
+  - question: >
+      Wie kann ich eine Vorlage verwenden, um meine Bereitstellung bereitzustellen oder zu verwalten?
+    answer: "Vorlagen- und Parameterdateien können mithilfe von REST, PowerShell und der CLI als Parameter übergeben werden. Sie können auch über das Azure-Portal hochgeladen werden.  \n"
+  - question: >
+      Muss ich jetzt vier Dateien verwalten? (Vorlagendatei, Parameterdatei, CSDEF-Datei, CSCFG-Datei)
+    answer: >
+      Vorlagen- und Parameterdateien werden nur für die Bereitstellungsautomatisierung verwendet. Wie in Cloud Services (klassisch) können Sie zunächst manuell abhängige Ressourcen und dann eine Bereitstellung von Cloud Services (erweiterter Support) mithilfe von PowerShell, CLI-Befehlen oder über das Portal mit vorhandenen CSDEF- und CSCFG-Dateien erstellen.
+  - question: >
+      Wie ändert sich mein Anwendungscode für Cloud Services (erweiterter Support)?
+    answer: "Für den in einer CSPKG-Datei enthaltenen Anwendungscode sind keine Änderungen erforderlich. Ihre vorhandenen Anwendungen funktionieren auch weiterhin wie zuvor. \n"
+  - question: >
+      Lassen die Clouddienste (erweiterter Support) das CTP (Community Technology Preview)-Paketformat zu?
+    answer: >
+      Das CTP-Paketformat wird in Clouddiensten (erweiterter Support) nicht unterstützt. Die Paketgrößenbeschränkung wurde aber auf 800 MB erweitert.
+- name: Migration
+  questions:
+  - question: >
+      Werden Fehler aufgrund von Zuordnungsfehlern durch Cloud Services (erweiterter Support) verringert?
+    answer: "Nein, Bereitstellungen von Cloud Services (erweiterter Support) sind wie Cloud Services (klassisch) an einen Cluster gebunden. Daher treten Zuordnungsfehler weiterhin auf, wenn der Cluster voll ist. \n"
+  - question: "Wann muss ich eine Migration durchführen? \n"
+    answer: >
+      Das Einschätzen der erforderlichen Zeit und der Komplexität der Migration hängt von mehreren Variablen ab. Planung ist der effektivste Schritt, um den Umfang der Arbeiten, mögliche Hindernisse und die Komplexität der Migration nachzuvollziehen.
+- name: Netzwerk
+  questions:
+  - question: >
+      Warum kann ich keine Bereitstellung ohne ein virtuelles Netzwerk erstellen?
+    answer: "Virtuelle Netzwerke sind eine erforderliche Ressource für jede Bereitstellung unter Azure Resource Manager. Die Bereitstellung von Cloud Services (erweiterter Support) muss sich in einem virtuellen Netzwerk befinden. \n"
+  - question: "Warum werden jetzt so viele Netzwerkressourcen angezeigt? \n"
+    answer: >
+      In Azure Resource Manager werden Komponenten Ihrer Bereitstellung von Cloud Services (erweiterter Support) als Ressource zur besseren Sichtbarkeit und optimierten Kontrolle zur Verfügung gestellt. Der gleiche Typ von Ressourcen wurde in Cloud Services (klassisch) verwendet, diese Ressourcen waren jedoch ausgeblendet. Ein Beispiel für eine solche Ressource ist die öffentliche Load Balancer, bei der es sich nun um eine explizite „schreibgeschützte“ Ressource handelt, die automatisch von der Plattform erstellt wird.
+  - question: >
+      Welche Einschränkungen gelten für ein Subnetz bezüglich Cloud Services (erweiterter Support)?
+    answer: >
+      Ein Subnetz mit Bereitstellungen von Cloud Services (erweiterter Support) kann nicht für Bereitstellungen aus anderen Computeprodukten wie Virtual Machines, Virtual Machines-Skalierungsgruppen, Service Fabric usw. freigegeben werden.
+  - question: >
+      Welche IP-Zuordnungsmethoden werden für Cloud Services (erweiterter Support) unterstützt?
+    answer: >
+      Cloud Services (erweiterter Support) unterstützt dynamische und statische IP-Zuordnungsmethoden. Auf statische IP-Adressen wird in der CSCFG-Datei als reservierte IP-Adressen verwiesen.
+  - question: >
+      Warum werden mir IP-Adressen in Rechnung gestellt?
+    answer: "Die Nutzung von IP-Adressen für Cloud Services (erweiterter Support) wird Kunden in Rechnung gestellt, genauso wie Benutzern IP-Adressen für virtuelle Computer in Rechnung gestellt werden. \n"
+  - question: >
+      Kann die reservierte IP-Adresse nach einer erfolgreichen Bereitstellung aktualisiert werden?
+    answer: >
+      Eine reservierte IP-Adresse kann während der Bereitstellungsaktualisierung oder des Upgrades nicht hinzugefügt, entfernt oder geändert werden. Wenn die IP-Adressen geändert werden müssen, verwenden Sie bitte einen austauschbaren Clouddienst, oder stellen Sie zwei Cloud Services mit einem CName in Azure DNS\Traffic Manager zur Verfügung, damit die IP-Adresse auf beide der Dienste verweisen kann.
+  - question: "Kann ich einen DNS-Namen mit Cloud Services (erweiterter Support) verwenden? \n"
+    answer: >
+      Ja. Cloud Services (erweiterter Support) kann auch ein DNS-Name zugewiesen werden. Bei Azure Resource Manager ist die DNS-Bezeichnung eine optionale Eigenschaft der öffentlichen IP-Adresse, die dem Clouddienst zugewiesen wird. Das Format des DNS-Namens für auf Azure Resource Manager basierende Bereitstellungen ist `<userlabel>.<region>.cloudapp.azure.com`.
+  - question: "Kann ich den Verweis auf ein virtuelles Netzwerk für einen vorhandenen Clouddienst (erweiterter Support) aktualisieren oder ändern? \n"
+    answer: "Nein. Der Verweis auf ein virtuelles Netzwerk ist bei der Erstellung eines Clouddienstes obligatorisch. Für einen vorhandenen Clouddienst kann der Verweis auf ein virtuelles Netzwerk nicht geändert werden. Der Adressbereich des virtuellen Netzwerks selbst kann mithilfe von VNet-APIs geändert werden. \n"
+- name: Zertifikate und Key Vault
+  questions:
+  - question: >
+      Warum muss ich meine Zertifikate unter Cloud Services (erweiterter Support) verwalten?
+    answer: "Cloud Services (erweiterter Support) hat den gleichen Prozess wie andere Computeangebote übernommen, bei denen die Zertifikate in vom Kunden verwalteten Key Vaults gespeichert werden. Dadurch haben Kunden umfassende Kontrolle über Ihre Geheimnisse und Zertifikate. \n"
+  - question: >
+      Kann ich einen Key Vault für alle meine Bereitstellungen in allen Regionen verwenden?
+    answer: >
+      Nein. Key Vault ist eine regionale Ressource, und Kunden benötigen einen Key Vault in jeder Region. Allerdings kann ein Key Vault für alle Bereitstellungen innerhalb einer bestimmten Region verwendet werden.
+  - question: >
+      Muss sich die KeyVault-Ressource beim Angeben von Geheimnissen/Zertifikaten, die in einem Clouddienst installiert werden sollen, im selben Azure-Abonnement wie die Clouddienst-Ressource befinden?
+    answer: >
+      Ja. Abonnementübergreifenden Verweise auf Schlüsseltresore in Microsoft Azure Cloud Services werden nicht zugelassen, um Angriffe auf die Ausweitung von Privilegien über CS-ES zu verhindern. Das Abonnement ist keine Grenze, die CS-ES für Verweise auf Geheimnisse überschreitet.  Der Grund, warum abonnementübergreifende Verweise nicht zugelassen werden, ist ein wichtiger letzter Schritt, um zu verhindern, dass böswillige Benutzer die CS-ES als Mechanismus zur Rechteausweitung verwenden, um auf Geheimnisse anderer Benutzer zuzugreifen. Ein Abonnement ist keine Sicherheitsgrenze, aber tiefgehende Verteidigung ist eine Anforderung. Sie können jedoch die Key Vault-Erweiterung verwenden, um abonnement- und regionsübergreifende Unterstützung für Ihre Zertifikate zu erhalten. Weitere Informationen finden Sie in der Dokumentation [hier](./enable-key-vault-virtual-machine.md)
+  - question: >
+      Muss sich die KeyVault-Ressource beim Angeben von Geheimnissen/Zertifikaten, die in einem Clouddienst installiert werden sollen, in derselben Region wie die Clouddienst-Ressource befinden?
+    answer: >
+      Ja. Der Grund, warum Regionsgrenzen erzwungen werden, besteht darin, zu verhindern, dass Benutzer Architekturen erstellen, die regionsübergreifende Abhängigkeiten aufweisen. Die regionale Isolation ist ein wichtiges Entwurfsprinzip von cloudbasierten Anwendungen. Sie können jedoch die Key Vault-Erweiterung verwenden, um abonnement- und regionsübergreifende Unterstützung für Ihre Zertifikate zu erhalten. Weitere Informationen finden Sie in der Dokumentation [hier](./enable-key-vault-virtual-machine.md)
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zum Einstieg in Cloud Services (erweiterter Support) finden Sie unter [Bereitstellen einer Cloud Services-Instanz (erweiterter Support) mithilfe von PowerShell](deploy-powershell.md)."

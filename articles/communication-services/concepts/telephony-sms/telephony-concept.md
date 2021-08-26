@@ -1,32 +1,32 @@
 ---
-title: Konzepte für die Integration von Festnetztelefonie für Azure Communication Services
+title: Konzepte für die Integration von Public Switched Telephone Network (PSTN) für Azure Communication Services
 description: Hier erfahren Sie, wie Sie Festnetztelefoniefunktionen in Ihre Azure Communication Services-Anwendung integrieren.
 author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5fba53125e22eed6797db7ada6b99e679e136ea8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ef77648a87a22eda950704a6d86b2e699dc61ebe
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092402"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762747"
 ---
 # <a name="telephony-concepts"></a>Telefoniekonzepte
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Mithilfe der Azure Communication Services Calling SDKs können Sie Ihren Anwendungen Telefonie- und Festnetzfunktionen hinzufügen. Auf dieser Seite werden wichtige Telefoniekonzepte und -funktionen zusammengefasst. Weitere Informationen zu bestimmten SDK-Sprachen und -Funktionen finden Sie [hier](../../quickstarts/voice-video-calling/calling-client-samples.md).
+Mithilfe der Azure Communication Services Calling SDKs können Sie Ihren Anwendungen Telefonie- und Public Switched Telephone Network-Zugriff hinzufügen. Auf dieser Seite werden wichtige Telefoniekonzepte und -funktionen zusammengefasst. Weitere Informationen zu bestimmten SDK-Sprachen und -Funktionen finden Sie [hier](../../quickstarts/voice-video-calling/calling-client-samples.md).
 
 ## <a name="overview-of-telephony"></a>Übersicht über Telefonie
 Wenn Ihre Benutzer mit einer herkömmlichen Telefonnummer interagieren, werden Anrufe als Sprachanrufe über das Telefonfestnetz (Public Switched Telephone Network, PSTN) abgewickelt. Für aus- und eingehende PSTN-Anrufe müssen Ihrer Azure Communication Services-Ressource Telefoniefunktionen hinzugefügt werden. In diesem Fall wird für Signale und Medien eine Kombination aus IP- und PSTN-basierten Technologien verwendet, um die Verbindung zwischen den Benutzern herzustellen. Communication Services bietet zwei Möglichkeiten, um das Telefonfestnetz zu erreichen: Sprachanrufe (Festnetz) und direktes Azure-Routing.
 
 ### <a name="voice-calling-pstn"></a>Sprachanrufe (Festnetz)
 
-Eine einfache Möglichkeit, um PSTN-Konnektivität für Ihre App oder Ihren Dienst bereitzustellen. In diesem Fall fungiert Microsoft als Ihr Telekommunikationsanbieter. Nummern können direkt von Microsoft erworben werden. Azure Cloud Calling ist eine reine Cloudtelefonielösung für Communication Services. Mithilfe dieser Lösung können Sie besonders einfach eine Verbindung zwischen ACS und dem Telefonfestnetz (Public Switched Telephone Network, PSTN) herstellen und Anrufe bei Festnetz- und Mobiltelefonnummern auf der ganzen Welt ermöglichen. Bei dieser Option fungiert Microsoft als Ihr Festnetzbetreiber, wie in der folgenden Abbildung zu sehen:
+Es gibt eine einfache Möglichkeit, um PSTN-Konnektivität für Ihre App oder Ihren Dienst bereitzustellen. In diesem Fall fungiert Microsoft als Ihr Telekommunikationsanbieter. Nummern können direkt von Microsoft erworben werden. Azure Cloud Calling ist eine reine Cloudtelefonielösung für Communication Services. Es ist die einfachste Möglichkeit eine Verbindung zwischen Communication Services und dem Public Switched Telephone Network (PSTN) herzustellen um Anrufe auf Festnetz- und Mobiltelefonnummern auf der ganzen Welt zu ermöglichen. Microsoft fungiert somit als Ihr Festnetzbetreiber, wie in der folgenden Abbildung zu sehen ist:
 
 ![Diagramm: Sprachanrufe (Festnetz)](../media/telephony-concept/azure-calling-diagram.png)
 
@@ -46,27 +46,27 @@ Bei Cloudanrufen werden ausgehende Anrufe je nach Zielland nach Minutentarifen a
 
 ### <a name="azure-direct-routing"></a>Direktes Azure-Routing
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
-Mit dieser Option können Sie Ihre lokale Legacytelefonie und den Betreiber Ihrer Wahl mit Azure Communication Services verbinden. Sie bietet Festnetztelefoniefunktionen für Ihre ACS-Anwendungen, auch wenn Sprachanrufe (Festnetz) in Ihrem Land/Ihrer Region nicht verfügbar sind. 
+Mit dieser Option können Sie Ihre lokale Legacy-Telefonie und den Netzbetreiber Ihrer Wahl mit Azure Communication Services verbinden. Diese Funktion bietet Festnetztelefoniefunktionen für Ihre Communication Services-Anwendungen, auch wenn Sprachanrufe (PSTN) in Ihrem Land/Ihrer Region nicht verfügbar sind. 
 
 ![Diagramm: Direktes Azure-Routing](../media/telephony-concept/sip-interface-diagram.png)
 
 Direktes Azure-Routing ist die richtige Lösung für Sie, wenn eine der folgenden Bedingungen erfüllt ist:
 
-- Sie möchten ACS mit Festnetztelefoniefunktionen verwenden.
+- Sie möchten Communication Services mit Festnetztelefoniefunktionen verwenden.
 - Sie möchten bei Ihrem aktuellen Festnetzbetreiber bleiben.
 - Sie möchten gemischtes Routing verwenden, bei dem einige Anrufe über Sprachanrufe (Festnetz) und einige über Ihren Betreiber abgewickelt werden.
 - Sie müssen mit Nebenstellenanlagen und/oder Geräten von Drittanbietern interagieren (beispielsweise mit Pagern oder analogen Geräte).
 
 Merkmale dieser Option:
 
-- Sie verbinden Ihren eigenen unterstützten SBC ohne zusätzliche lokale Software mit Azure Communication Services.
-- Sie können einen beliebigen Telefoniebetreiber mit ACS verwenden.
+- Sie verbinden Ihren eigenen unterstützten SBC ohne eine zusätzliche lokale Software mit Azure Communication Services.
+- Sie können einen beliebigen Telefoniebetreiber mit Communication Services verwenden.
 - Sie können diese Option bei Bedarf selbst konfigurieren und verwalten oder die Konfiguration und Verwaltung Ihrem Netzbetreiber oder Partner überlassen, sofern dieser eine solche Option anbietet.
 - Sie können die Interoperabilität zwischen Ihren Telefoniegeräten (beispielsweise Nebenstellenanlagen von Drittanbietern oder analoge Geräte) und ACS konfigurieren.
 
-Voraussetzungen für diese Option:
+Diese Option erfordert:
 
 - Ununterbrochene Verbindung mit Azure
 - Bereitstellen und Pflegen eines unterstützten SBC
@@ -78,6 +78,7 @@ Voraussetzungen für diese Option:
 
 - [Telefonnummerntypen in Azure Communication Services](./plan-solution.md)
 - [Planen des direkten Azure-Routings](./sip-interface-infrastructure.md)
+- [Für das direkte Routing von Azure Communication Services zertifizierte Session Border Controller](./certified-session-border-controllers.md)
 - [Preise](../pricing.md)
 
 ### <a name="quickstarts"></a>Schnellstarts

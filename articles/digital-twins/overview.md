@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8213bd8e819e3a6c4a84a95f7c996912ac28ec2b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 519a64ac9e921624f4e8c03fc91f842eacd2672c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539431"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472953"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
@@ -40,7 +40,7 @@ Modelle werden mit der JSON-ähnlichen Sprache [Digital Twins Definition Languag
 * Darüber hinaus werden mit Modellen semantische **Beziehungen** zwischen ihren Entitäten definiert. Mit diesen Beziehungen lassen sich Zwillinge in einem Graphen verbinden, der Aufschluss über die Interaktionen der Zwillinge gibt. In einer Beschreibung Ihrer Umgebung können Modelle als Nomen und die Beziehungen als Verben betrachtet werden.
 * Außerdem lassen sich Zwillinge mithilfe der Modellvererbung spezialisieren. Ein Modell kann Informationen von einem anderen Modell erben.
 
-DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu zählen u. a. [IoT Plug & Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) und [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Dadurch wird sichergestellt, dass Ihre Azure Digital Twins-Lösung mit anderen Bereichen des Azure-Ökosystems verbunden werden kann und kompatibel ist.
+DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu zählen u. a. [IoT Plug & Play (PnP)](../iot-develop/overview-iot-plug-and-play.md) und [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Dadurch wird sichergestellt, dass Ihre Azure Digital Twins-Lösung mit anderen Bereichen des Azure-Ökosystems verbunden werden kann und kompatibel ist.
 
 ### <a name="live-execution-environment"></a>Liveausführungsumgebung
 
@@ -101,6 +101,6 @@ Eine Liste **allgemeiner IoT-Begriffe** und ihrer Verwendung in den Azure IoT-D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit der Arbeit mit Azure Digital Twins in folgendem Schnellstart vertraut: [Schnellstart: Erste Schritte mit dem Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md).
+* Machen Sie sich mit der Arbeit mit Azure Digital Twins in der folgenden Schnellstartanleitung vertraut: [Erste Schritte mit dem Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md).
 
-* Informieren Sie sich über Konzepte für Azure Digital Twins: [Grundlegendes zu Zwillingsmodellen in Azure Digital Twins](concepts-models.md).
+* Oder, Informieren Sie sich über Konzepte für Azure Digital Twins mit den [Benutzerdefinierten Modellen](concepts-models.md).

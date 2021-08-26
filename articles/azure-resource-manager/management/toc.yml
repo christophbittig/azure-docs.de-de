@@ -63,7 +63,7 @@
                   href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure App Service
                   href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure Automation
+                - name: Azure-Automatisierung
                   href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
                 - name: Azure Batch
                   href: ../../batch/account-move.md?toc=/azure/azure-resource-manager/management/toc.json
@@ -79,8 +79,10 @@
                   href: microsoft-resources-move-regions.md
                 - name: Azure Storage
                   href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure SQL
+                - name: Azure SQL-Datenbank und Managed Instance
                   href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: SQL Server auf Azure-VMs
+                  href: ../../azure-sql/virtual-machines/windows/move-sql-vm-different-region.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Virtuelle Azure-Computer
                   href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Logik-Apps
@@ -141,6 +143,8 @@
           href: manage-resources-powershell.md
     - name: Ressourcenanbieter und -typen
       href: resource-providers-and-types.md
+    - name: Previewfunktionen
+      href: preview-features.md
     - name: Löschen von Ressourcengruppen und Ressourcen
       href: delete-resource-group.md
     - name: Sperren von Ressourcen

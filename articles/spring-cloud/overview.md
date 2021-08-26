@@ -1,19 +1,19 @@
 ---
 title: Einführung in Azure Spring Cloud
 description: Lernen Sie die Features und Vorteile von Azure Spring Cloud zur Bereitstellung und Verwaltung von Java Spring-Anwendungen in Azure kennen.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: overview
-ms.date: 12/02/2020
-ms.author: brendm
+ms.date: 03/09/2021
+ms.author: karler
 ms.custom: devx-track-java, contperf-fy21q2
 customer intent: As an Azure Cloud user, I want to deploy, run, and monitor Spring Boot microservices.
-ms.openlocfilehash: 119128fcc2b2f08ba101c5c44768281cf7e6e600
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dd6ade0e3cd1ff442ec6f5f46a28b35a6b6cb108
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132807"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473556"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Was ist Azure Spring Cloud?
 
@@ -28,7 +28,7 @@ Die Bereitstellung von Anwendungen in Azure Spring Cloud hat zahlreiche Vorteile
 * Schnelles Entwickeln und Bereitstellen ohne Containerisierungsabhängigkeiten
 * Effizientes und müheloses Überwachen von Produktionsworkloads
 
-Azure Spring Cloud unterstützt sowohl Java [Spring Boot](https://spring.io/projects/spring-boot)- als auch ASP.NET Core-[Steeltoe](https://steeltoe.io/)-Apps. Steeltoe-Unterstützung wird zurzeit als öffentliche Vorschauversion angeboten. Angebote der Public Preview ermöglichen Ihnen das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung. Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt. Weitere Informationen finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md) einreichen.
+Azure Spring Cloud unterstützt sowohl Java [Spring Boot](https://spring.io/projects/spring-boot)- als auch ASP.NET Core-[Steeltoe](https://steeltoe.io/)-Apps. Steeltoe-Unterstützung wird zurzeit als öffentliche Vorschauversion angeboten. Angebote der Public Preview ermöglichen Ihnen das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.
 
 ## <a name="service-overview"></a>Übersicht über die Dienste
 
@@ -38,7 +38,7 @@ Als Teil des Azure-Ökosystems ermöglicht Azure Spring Cloud eine einfache Anbi
 
 * Azure Spring Cloud ist ein vollständig verwalteter Dienst für Spring Boot-Apps, der es Ihnen ermöglicht, sich ganz auf die Erstellung und Ausführung von Apps zu konzentrieren, ohne sich um die Verwaltung der Infrastruktur kümmern zu müssen.
 
-* Stellen Sie einfach Ihre JAR-Dateien oder Ihren Code bereit, und Azure Spring Cloud verknüpft Ihre Apps automatisch mit der Runtime des Spring-Diensts sowie mit dem integrierten App-Lebenszyklus.
+* Stellen Sie einfach Ihre JAR-Dateien oder Ihren Code für Ihre Spring Boot-App oder ZIP für Ihre Steeltoe-App bereit, und Azure Spring Cloud verknüpft Ihre Apps automatisch mit der Runtime des Spring-Diensts sowie mit dem integrierten App-Lebenszyklus.
 
 * Die Überwachung ist ganz einfach. Nach der Bereitstellung können Sie die App-Leistung überwachen, Fehler beheben und Anwendungen im Handumdrehen verbessern. 
 

@@ -1,23 +1,23 @@
 ---
 title: Erstellen eines Dashboards für die Gesundheitsdatenselektierung mit Azure IoT Central | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Azure IoT Central-Anwendungsvorlagen ein Dashboard für die Gesundheitsdatenselektierung erstellen.
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: d227d934eedd31342ce419576fffe7cea17efb1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8fee85dfab72594f7a00f985d7d095b96d693e6
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101742834"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597238"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
 
-Im Rahmen einer Lösung für die kontinuierliche Patientenüberwachung können Sie auch ein Dashboard erstellen, mit dem das Pflegepersonal im Krankenhaus Patientendaten visualisieren kann. In diesem Tutorial erfahren Sie, wie Sie aus Ihrer IoT Central-Vorlage für eine Anwendung zur kontinuierlichen Patientenüberwachung ein Power BI-Dashboard mit Echtzeitstreaming erstellen. Wenn für Ihren Anwendungsfall kein Zugriff auf Echtzeitdaten erforderlich ist, können Sie das [IoT Central-Power BI-Dashboard](../core/howto-connect-powerbi.md) verwenden, das einen vereinfachten Bereitstellungsprozess ermöglicht. 
+Im Rahmen einer Lösung für die kontinuierliche Patientenüberwachung können Sie auch ein Dashboard erstellen, mit dem das Pflegepersonal im Krankenhaus Patientendaten visualisieren kann. In diesem Tutorial erfahren Sie, wie Sie aus Ihrer IoT Central-Vorlage für eine Anwendung zur kontinuierlichen Patientenüberwachung ein Power BI-Dashboard mit Echtzeitstreaming erstellen.
 
 :::image type="content" source="media/dashboard-gif-3.gif" alt-text="GIF-Abbildung des Dashboards":::
 
@@ -27,12 +27,11 @@ Die Basisarchitektur weist die folgende Struktur auf:
 
 In diesem Tutorial lernen Sie Folgendes:
 
-> [!div class="checklist"]
-> * Exportieren von Daten aus Azure IoT Central nach Azure Event Hubs
-> * Einrichten eines Power BI-Streamingdatasets
-> * Herstellen einer Verbindung zwischen Ihrer Logik-App und Azure Event Hubs
-> * Streamen von Daten aus Ihrer Logik-App nach Power BI
-> * Erstellen eines Echtzeitdashboards für die Vitalfunktionen von Patienten
+- Exportieren von Daten aus Azure IoT Central nach Azure Event Hubs
+- Einrichten eines Power BI-Streamingdatasets
+- Herstellen einer Verbindung zwischen Ihrer Logik-App und Azure Event Hubs
+- Streamen von Daten aus Ihrer Logik-App nach Power BI
+- Erstellen eines Echtzeitdashboards für die Vitalfunktionen von Patienten
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -49,6 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Einrichten eines kontinuierlichen Datenexports nach Azure Event Hubs
+
 Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Central-App-Vorlage an die Azure Event Hub-Instanz in Ihrem Abonnement einrichten. Befolgen Sie dazu die Schritte zum [Exportieren nach Event Hubs](../core/howto-export-data.md) im vorliegenden Azure IoT Central-Tutorial. Für dieses Tutorial müssen Sie nur die Telemetriedaten exportieren.
 
 
@@ -206,8 +206,3 @@ Falls Sie diese Anwendung nicht weiterverwenden möchten, löschen Sie Ihre Ress
 
 1. Wechseln Sie in Ihrer IoT Central-Anwendung zur Registerkarte „Verwaltung“, und klicken Sie auf **Löschen**.
 
-
-## <a name="next-steps"></a>Nächste Schritte
-
-> [!div class="nextstepaction"]
-> [Leitfaden für die Architektur zur ständigen Überwachung von Patienten](concept-continuous-patient-monitoring-architecture.md)

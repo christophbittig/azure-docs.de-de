@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 393b8857b3602d914143787cc9ea46074ff59c05
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 17a41bd64f1bba4a5ae4d6d9d497c03afae037e7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813900"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444224"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>Tutorial: Veröffentlichen von Azure Static Web Apps mit Azure DevOps
 
@@ -21,20 +21,21 @@ In diesem Artikel erfahren Sie, wie Sie [Azure DevOps](https://dev.azure.com/) f
 In diesem Tutorial lernen Sie Folgendes:
 
 - Einrichten einer Azure Static Web Apps-Website
-- Erstellen einer Azure DevOps-Pipeline zum Erstellen und Veröffentlichen einer statischen Web-App
+- Erstellen einer Azure-Pipeline zum Erstellen und Veröffentlichen einer statischen Web-App
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **Aktives Azure-Konto:** Sollten Sie über kein Konto verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 - **Azure DevOps-Projekt:** Sollten Sie über kein Projekt verfügen, können Sie ein [kostenloses Projekt erstellen](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/).
-- **Azure DevOps-Pipeline:** Informationen zu den ersten Schritten finden Sie bei Bedarf unter [Erstellen Ihrer ersten Pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops).
+  - Azure DevOps beinhaltet **Azure-Pipelines**. Informationen zu den ersten Schritten mit Azure-Pipelines, finden Sie bei Bedarf unter [Erstellen Ihrer ersten Pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops).
+  - Die Static Web-App Pipeline-Task funktioniert derzeit nur auf **Linux**-Computern. Stellen Sie beim Ausführen der unten genannten Pipeline sicher, dass sie auf einem virtuellen Linux-Computer ausgeführt wird.
 
-## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Erstellen einer statischen Web-App in einem Azure DevOps-Repository
+## <a name="create-a-static-web-app-in-an-azure-devops"></a>Erstellen einer statischen Web-App in Azure DevOps
 
   > [!NOTE]
   > Wenn Sie bereits über eine App in Ihrem Repository verfügen, können Sie direkt mit dem nächsten Abschnitt fortfahren.
 
-1. Navigieren Sie zu Ihrem Azure DevOps-Repository.
+1. Navigieren Sie zu Ihrem Repository in Azure Repos.
 
 1. Wählen Sie **Importieren** aus, um mit dem Importieren einer Beispielanwendung zu beginnen.
   
@@ -56,7 +57,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Wählen Sie unter _Bereitstellungsdetails_ die Option **Andere** aus. Dadurch können Sie den Code in Ihrem Azure DevOps-Repository verwenden.
+1. Wählen Sie unter _Bereitstellungsdetails_ die Option **Andere** aus. Dadurch können Sie den Code innerhalb von Azure Repos verwenden.
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="Bereitstellungsdetails: Option „Andere“":::
 
@@ -73,7 +74,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>Erstellen der Pipelineaufgabe in Azure DevOps
 
-1. Navigieren Sie zu dem zuvor erstellten Azure DevOps-Repository.
+1. Navigieren Sie zu dem zuvor erstellten Repository in Azure Repos.
 
 1. Wählen Sie **Build einrichten** aus.
 
@@ -87,7 +88,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
     ```yaml
     trigger:
-    - main
+      - main
 
     pool:
       vmImage: ubuntu-latest
@@ -100,7 +101,6 @@ In diesem Tutorial lernen Sie Folgendes:
           app_location: '/'
           api_location: 'api'
           output_location: ''
-        env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 

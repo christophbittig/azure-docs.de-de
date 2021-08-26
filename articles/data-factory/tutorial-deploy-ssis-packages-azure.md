@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie zur Bereitstellung und Ausführung von S
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/02/2021
+ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6b2f1f796c7a3c41aa28040e023be6cc86bc21f8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256370"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447795"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory
 
@@ -53,7 +53,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
   - Fügen Sie der Client-IP-Adressenliste in den Firewalleinstellungen für den Datenbankserver die IP-Adresse des Clientcomputers oder einen IP-Adressbereich hinzu, der die IP-Adresse des Clientcomputers enthält. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](../azure-sql/database/firewall-configure.md).
 
-  - Sie können eine Verbindung mit dem Datenbankserver herstellen, indem Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure AD-Authentifizierung mit der verwalteten Identität für Ihre Data Factory-Instanz verwenden. Im letzteren Fall müssen Sie die verwaltete Identität für Ihre Data Factory-Instanz einer Azure AD-Gruppe mit Zugriffsberechtigungen für den Datenbankserver hinzufügen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](./create-azure-ssis-integration-runtime.md).
+  - Sie können eine Verbindung mit dem Datenbankserver herstellen. Hierzu verwenden Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure AD (Azure Active Directory)-Authentifizierung mit dem angegebenen System/der verwalteten Identität für Ihre Data Factory. Im letzteren Fall müssen Sie das angegebenen System/die verwalteten Identität Ihrer Data Factory-Instanz einer Azure AD-Gruppe mit den Zugriffsberechtigungen für den Datenbankserver hinzufügen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](./create-azure-ssis-integration-runtime.md).
 
   - Vergewissern Sie sich, dass Ihr Datenbankserver noch nicht über eine SSISDB-Instanz verfügt. Für die Bereitstellung einer Azure-SSIS IR wird die Verwendung einer vorhandenen SSISDB-Instanz nicht unterstützt.
 
@@ -70,9 +70,9 @@ Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen einer Data Fact
 
 ### <a name="from-the-data-factory-overview"></a>Über die Seite mit der Übersicht über Data Factory
 
-1. Wählen Sie auf der Seite **Let's get started** (Erste Schritte) die Kachel **Configure SSIS Integration Runtime** (SSIS Integration Runtime konfigurieren) aus. 
+1. Wählen Sie auf der Startseite die Kachel **Konfigurieren eines SSIS** aus. 
 
-   ![Kachel „Configure SSIS Integration Runtime“ (SSIS Integration Runtime konfigurieren)](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+   ![Screenshot der Azure Data Factory-Homepage](./media/doc-common-process/get-started-page.png)
 
 1. Die übrigen Schritte zum Einrichten einer Azure-SSIS IR finden Sie im Abschnitt [Bereitstellen einer Azure-SSIS Integration Runtime](#provision-an-azure-ssis-integration-runtime). 
 
@@ -142,13 +142,13 @@ Wenn Sie das Kontrollkästchen aktivieren, führen Sie die folgenden Schritte au
 
       Wenn Sie einen Azure SQL-Datenbankserver mit IP-Firewallregeln/VNET-Dienstendpunkten oder eine verwaltete Instanz mit privatem Endpunkt zum Hosten der SSISDB auswählen oder Zugriff auf lokale Daten ohne Konfiguration einer selbstgehosteten IR benötigen, müssen Sie Ihre Azure-SSIS IR-Instanz einem virtuellen Netzwerk hinzufügen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](./create-azure-ssis-integration-runtime.md).
 
-   1. Aktivieren Sie das Kontrollkästchen **Use Azure AD authentication with the managed identity for your ADF** (Azure AD-Authentifizierung mit der verwalteten Identität für Ihre ADF verwenden), um die Authentifizierungsmethode für Ihren Datenbankserver zum Hosten der SSISDB auszuwählen. Sie wählen entweder die SQL-Authentifizierung oder die Azure AD-Authentifizierung mit der verwalteten Identität für Ihre Data Factory-Instanz aus.
+   1. Aktivieren Sie entweder das Kontrollkästchen **AAD-Authentifizierung mit der vom System verwalteten Identität für Data Factory** oder das Kontrollkästchen **Verwenden der AAD-Authentifizierung mit einer vom Benutzer zugewiesenen verwalteten Identität für Data Factory**, um die Azure AD-Authentifizierungsmethode für Azure-SSIS IR zu wählen, um auf Ihren Datenbankserver zuzugreifen, der SSISDB hostet. Aktivieren Sie keines der Kontrollkästchen, um stattdessen die SQL Authentifizierungsmethode auszuwählen.
 
-      Wenn Sie das Kontrollkästchen aktivieren, müssen Sie die verwaltete Identität für Ihre Data Factory-Instanz einer Azure AD-Gruppe mit Zugriffsberechtigungen für Ihren Datenbankserver hinzufügen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](./create-azure-ssis-integration-runtime.md).
-   
-   1. Geben Sie unter **Administratorbenutzername** den Benutzernamen für die SQL-Authentifizierung für den Datenbankserver zum Hosten der SSISDB an. 
+      Wenn Sie eines der Kontrollkästchen aktivieren, müssen Sie das angegebene System/die verwaltete Identität für Ihre Data Factory-Instanz einer Azure AD-Gruppe mit den Zugriffsberechtigungen für Ihren Datenbankserver hinzufügen. Wenn Sie das Kontrollkästchen **Verwenden der AAD-Authentifizierung mit einer vom Benutzer zugewiesenen verwalteten Identität für Data Factory** aktivieren, dann können Sie alle vorhandenen Anmeldeinformationen auswählen, die mit den von Ihnen angegebenen benutzerseitig zugeordneten verwalteten Identitäten erstellt wurden, oder neue erstellen. Weitere Informationen finden Sie unter [Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory](./create-azure-ssis-integration-runtime.md).
 
-   1. Geben Sie unter **Administratorbenutzerkennwort** das Kennwort für die SQL-Authentifizierung für den Datenbankserver zum Hosten der SSISDB an. 
+   1. Geben Sie unter **Administratorbenutzername** den Benutzernamen für die SQL-Authentifizierung für den Datenbankserver an, der die SSISDB hostet. 
+
+   1. Geben Sie unter **Administratorbenutzerkennwort** das Kennwort für die SQL-Authentifizierung für den Datenbankserver an, der die SSISDB hostet. 
 
    1. Aktivieren Sie das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden**, um ein Dual Standby-Azure SSIS IR-Paar zu konfigurieren, das synchron mit der Failovergruppe für verwaltete Azure SQL-Datenbank-Instanzen für Geschäftskontinuität und Notfallwiederherstellung (BCDR, Business Continuity and Disaster Recovery) funktioniert.
    
@@ -202,18 +202,20 @@ Führen Sie im Bereich **Paketspeicher hinzufügen** die folgenden Schritte aus.
          1. Wählen Sie **Verbindungszeichenfolge** oder Ihre **Azure Key Vault**-Instanz aus, in der sie als Geheimnis gespeichert ist.
          
          1. Wenn Sie **Verbindungszeichenfolge** auswählen, führen Sie die folgenden Schritte aus. 
-             1. Wählen Sie bei Auswahl von **Aus Azure-Abonnement** unter **Methode für Kontoauswahl** das entsprechende **Azure-Abonnement**, den **Servernamen**, den **Endpunkttyp** und den **Datenbanknamen** aus. Führen Sie bei Auswahl von **Manuell eingeben** die folgenden Schritte aus: 
+             1. Wählen Sie bei Auswahl von **Aus Azure-Abonnement** unter **Methode für Kontoauswahl** das entsprechende **Azure-Abonnement**, den **Servernamen**, den **Endpunkttyp** und den **Datenbanknamen** aus. Führen Sie bei Auswahl von **Manuell eingeben** die folgenden Schritte aus. 
                 1.  Geben Sie unter **Vollqualifizierter Domänenname** `<server name>.<dns prefix>.database.windows.net` oder `<server name>.public.<dns prefix>.database.windows.net,3342` als privaten bzw. öffentlichen Endpunkt Ihrer verwalteten Azure SQL-Instanz ein. Wenn Sie den privaten Endpunkt eingeben, kann **Verbindung testen** nicht angewendet werden, da dieser Endpunkt über die ADF-Benutzeroberfläche nicht erreicht werden kann.
 
                 1. Geben Sie unter **Datenbankname** `msdb` ein.
                
-            1. Wählen Sie unter **Authentifizierungstyp** einen der Typen **SQL-Authentifizierung**, **Verwaltete Identität** oder **Dienstprinzipal** aus.
+            1. Wählen Sie unter **Authentifizierungstyp** einen der folgenden Typen aus: **SQL-Authentifizierung**, **Verwaltete Identität**, **Dienstprinzipal**, oder **Benutzerseitig zugewiesene verwaltete Identität**.
 
                 - Wenn Sie **SQL-Authentifizierung** auswählen, geben Sie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 
-                -  Wenn Sie **Verwaltete Identität** auswählen, gewähren Sie Ihrer verwalteten ADF-Identität Zugriff auf Ihre verwaltete Azure SQL-Instanz.
+                -  Wenn Sie **Verwaltete Identität** auswählen, gewähren Sie Ihrer verwalteten ADF-Identität den Zugriff auf Ihre verwaltete Azure SQL Managed Instance.
 
                 - Wenn Sie **Dienstprinzipal** auswählen, geben Sie die entsprechenden Werte für **Dienstprinzipal-ID** und **Dienstprinzipalschlüssel** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
+                
+                -  Wenn Sie **Benutzerseitig zugewiesene verwaltete Identität** auswählen, gewähren Sie der angegebenen benutzerseitig zugewiesene verwaltete ADF-Identität den Zugriff auf Ihre Azure SQL Managed Instance. Sie können dann alle vorhandenen Anmeldeinformationen auswählen, die mit ihren angegebenen vom Benutzer zugewiesenen verwalteten Identitäten erstellt wurden, oder neue erstellen.
 
       1. Wenn Sie **Dateisystem** auswählen, geben Sie den UNC-Pfad des Ordners, in dem Ihre Pakete für **Host** bereitgestellt werden, sowie die entsprechenden Werte für **Benutzername** und **Kennwort** ein, oder wählen Sie Ihren **Azure Key Vault** aus, in dem diese Werte als Geheimnis gespeichert sind.
 

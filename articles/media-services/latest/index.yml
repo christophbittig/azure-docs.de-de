@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zur cloudbasierten Azure Media Services v3-Plattform
-summary: Hier erfahren Sie, wie Sie mit Media Services Videos v3 Inhalte codieren und packen sowie Videos on Demand streamen, live übertragen und analysieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
+title: Dokumentation zu Azure Media Services (v3)
+summary: Es wird beschrieben, wie Sie Liveereignisse übertragen, codieren, Pakete erstellen und On-Demand-Videos mit Media Services streamen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 metadata:
-  title: Dokumentation zur cloudbasierten Azure Media Services v3-Plattform
-  description: Hier erfahren Sie, wie Sie mit Media Services Videos v3 Inhalte codieren und packen sowie Videos on Demand streamen, live übertragen und analysieren.
+  title: Dokumentation zu Azure Media Services (v3)
+  description: Es wird beschrieben, wie Sie Liveereignisse übertragen, codieren, Pakete erstellen und On-Demand-Videos mit Media Services streamen.
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: IngridAtMicrosoft
   ms.author: inhenkel
-  ms.date: 03/25/2021
-  ms.openlocfilehash: fb85f973a8a20340768249a6dc2d04a360c9e587
-  ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+  ms.date: 08/18/2021
+  ms.openlocfilehash: 7e249a36b629c2c91acf67a26294fef50f1f0197
+  ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/03/2021
-  ms.locfileid: "106277486"
+  ms.lasthandoff: 08/21/2021
+  ms.locfileid: "122635039"
 landingContent:
 - title: Informationen zu Media Services
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: media-services-overview.md
     - text: Neuerungen in Media Services
       url: release-notes.md
+    - text: Häufig gestellte Fragen
+      url: frequently-asked-questions.yml
   - linkListType: concept
     links:
     - text: Media Services-Konten
@@ -41,6 +43,8 @@ landingContent:
       url: player-use-azure-media-player-how-to.md
     - text: Leitfaden zur Entwicklung mit v3-APIs
       url: media-services-apis-overview.md
+    - text: Migrieren aus v2
+      url: migrate-v-2-v-3-migration-introduction.md
 - title: Erste Schritte
   linkLists:
   - linkListType: how-to-guide
@@ -51,6 +55,8 @@ landingContent:
       url: ./access-api-howto.md
   - linkListType: download
     links:
+    - text: Alle GitHub-Codebeispiele
+      url: samples-overview.md
     - text: .NET SDK-Beispiele
       url: https://github.com/Azure-Samples/media-services-v3-dotnet
     - text: Java SDK-Beispiele
@@ -111,6 +117,8 @@ landingContent:
       url: analyze-video-audio-files-concept.md
     - text: Compliance, Datenschutz und Sicherheit
       url: analyze-video-audio-files-concept.md#compliance-privacy-and-security
+    - text: Dokumentation zu Azure Video Analyzer (Vorschauversion)
+      url: ../../azure-video-analyzer/video-analyzer-docs/overview.md
   - linkListType: tutorial
     links:
     - text: Analysieren von Videos

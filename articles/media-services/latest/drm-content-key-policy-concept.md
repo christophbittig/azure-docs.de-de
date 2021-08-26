@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d8bff86065e4849723ab4001bd19218b89a2c8a2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277684"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633730"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -53,7 +53,7 @@ Verwenden Sie `GetPolicyPropertiesWithSecretsAsync`, um den Schlüssel abzurufen
 
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
-Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](filter-order-page-entitites-how-to.md).
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](filter-order-page-entities-how-to.md).
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 

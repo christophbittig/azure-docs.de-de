@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 68afdb1c0ab74f5d05fd13a9fe8868cb9e2ac4aa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: be0502f61105b88e5a751dde88e4828722c866af
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460256"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446818"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
-Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Clientanwendung, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure Digital Twins-SDK für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
+Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel Clientanwendungen, um mit ihrer Azure Digital Twins-Dienstinstanz zu interagieren. Dieses Tutorial für Entwickler bietet eine Einführung in die Programmierung für den Azure Digital Twins-Dienst unter Verwendung der [Azure Digital Twins-SDK für .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Sie werden Schritt für Schritt und von Grund auf durch die Entwicklung einer Client-App für die C#-Konsole geleitet.
 
 > [!div class="checklist"]
 > * Einrichten des Projekts
@@ -27,7 +27,7 @@ Entwickler, die mit Azure Digital Twins arbeiten, schreiben in der Regel eine Cl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial verwendet die Befehlszeile für Setup und Projektarbeit. Deshalb können Sie einen beliebigen Code-Editor verwenden, um die Übungen zu durchlaufen.
+Dieses Tutorial verwendet die Befehlszeile für Setup und Projektarbeit. Sie können also jeden beliebigen Code-Editor verwenden, um die Übungen zu durchlaufen.
 
 Zum Einstieg benötigen Sie Folgendes:
 * Einen beliebigen Code-Editor
@@ -41,7 +41,7 @@ Zum Einstieg benötigen Sie Folgendes:
 
 ## <a name="set-up-project"></a>Einrichten des Projekts
 
-Sobald Ihre Azure Digital Twins-Instanz bereit ist, können Sie mit der Einrichtung des Client-App-Projekts beginnen. 
+Sobald Sie mit Ihrer Azure Digital Twins-Instanz startklar sind, beginnen Sie mit dem Einrichten des Client-App-Projekts. 
 
 Öffnen Sie eine Eingabeaufforderung oder ein anderes Konsolenfenster auf Ihrem Computer, und erstellen Sie ein leeres Projektverzeichnis, in dem Sie Ihre Arbeit während dieses Tutorials speichern möchten. Geben Sie dem Verzeichnis einen beliebigen Namen (z. B. *DigitalTwinsCodeTutorial*).
 
@@ -53,7 +53,7 @@ Navigieren Sie zum neuen Verzeichnis.
 dotnet new console
 ```
 
-Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs*, in der Sie den Großteil Ihres Codes schreiben werden.
+Dieser Befehl erstellt mehrere Dateien in Ihrem Verzeichnis, darunter eine Datei mit dem Namen *Program.cs*, in der Sie den Großteil Ihres Codes schreiben werden.
 
 Lassen Sie das Befehlsfenster geöffnet, da Sie es während des gesamten Tutorials weiter verwenden werden.
 
@@ -66,7 +66,7 @@ dotnet add package Azure.Identity
 
 ## <a name="get-started-with-project-code"></a>Erste Schritte mit dem Projektcode
 
-In diesem Abschnitt beginnen Sie damit, den Code für Ihr neues App-Projekt zur Arbeit mit Azure Digital Twins zu schreiben. Folgende Aufgaben werden behandelt:
+In diesem Abschnitt beginnen Sie damit, den Code für Ihr neues App-Projekt für die Arbeit mit Azure Digital Twins zu schreiben. Folgende Aufgaben werden behandelt:
 * Authentifizierung beim Dienst
 * Hochladen eines Modells
 * Abfangen von Fehlern
@@ -74,9 +74,9 @@ In diesem Abschnitt beginnen Sie damit, den Code für Ihr neues App-Projekt zur 
 * Erstellen von Beziehungen
 * Abfragen von digitalen Zwillingen
 
-Es ist auch ein Abschnitt vorhanden, der den vollständigen Code am Ende des Tutorials zeigt. Sie können diesen als Referenz zur Überprüfung Ihres Programms verwenden.
+Es ist auch ein Abschnitt vorhanden, der den vollständigen Code am Ende des Tutorials zeigt. Sie können diesen Abschnitt als eine Referenz zur Überprüfung Ihres Programms während der Bearbeitung verwenden.
 
-Öffnen Sie zunächst die Datei *Program.cs* in einem beliebigen Code-Editor. Es wird eine Minimalcodevorlage angezeigt, die in etwa so aussieht:
+Öffnen Sie zunächst die Datei *Program.cs* in einem beliebigen Code-Editor. Es wird Ihnen eine Minimalcodevorlage angezeigt, die in etwa so aussieht:
 
 :::row:::
     :::column:::
@@ -96,7 +96,7 @@ Anschließend fügen Sie Code in diese Datei ein, um etwas Funktionalität hinzu
 
 Als Erstes muss sich Ihre App beim Azure Digital Twins-Dienst authentifizieren. Anschließend können Sie eine Dienstclientklasse für den Zugriff auf die SDK-Funktionen erstellen.
 
-Für die Authentifizierung benötigen Sie den *Hostnamen* Ihrer Azure Digital Twins-Instanz.
+Zur Authentifizierung benötigen Sie den *Hostnamen* Ihrer Azure Digital Twins-Instanz.
 
 Fügen Sie in *Program.cs* den folgenden Code unterhalb der Ausgabezeile „Hello, World!“ in der `Main`-Methode ein. Legen Sie den Wert von `adtInstanceUrl` auf den *Hostnamen* Ihrer Azure Digital Twins-Instanz fest.
 
@@ -110,7 +110,7 @@ Führen Sie in Ihrem Befehlsfenster den Code mit diesem Befehl aus:
 dotnet run
 ```
 
-Auf diese Weise werden die Abhängigkeiten bei der ersten Ausführung wiederhergestellt, und anschließend wird das Programm ausgeführt. 
+Dieser Befehl stellt die Abhängigkeiten beim ersten Start wieder her und führt dann das Programm aus. 
 * Falls keine Fehler auftreten, gibt das Programm die folgende Meldung aus: *Service client created - ready to go*.
 * Weil in diesem Projekt noch keine Fehlerbehandlung stattfindet, löst der Code bei Problemen eine Ausnahme aus.
 
@@ -128,7 +128,7 @@ Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine ne
 > Wenn Sie für dieses Tutorial Visual Studio verwenden, können Sie die neu erstellte JSON-Datei auswählen und im Eigenschaften-Inspektor die Eigenschaft *In Ausgabeverzeichnis kopieren* auf *Kopieren, falls aktueller* oder *Immer kopieren* festlegen. So kann Visual Studio die JSON-Datei mit dem Standardpfad finden, wenn Sie das Programm im weiteren Verlauf des Tutorials mit **F5** ausführen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie in [Gewusst wie: Analysieren und Validieren von Modellen](how-to-parse-models.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Das Beispiel basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [Analysieren und Überprüfen von Modellen](how-to-parse-models.md).
 
 Als Nächstes fügen Sie *Program.cs* weiteren Code hinzu, um das soeben erstellte Modell in Ihre Azure Digital Twins-Instanz hochzuladen.
 
@@ -160,7 +160,7 @@ Fügen Sie den folgenden Code direkt nach dem vorherigen Abschnitt ein, um eine 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Print_model":::
 
-Bedenken Sie **vor der Ausführung des Programms zum Testen dieses neuen Codes**, dass Sie Ihr Modell bei der letzten Programmausführung bereits hochgeladen haben. Mit Azure Digital Twins ist es nicht möglich, das gleiche Modell zweimal hochzuladen. Wenn Sie also versuchen, das gleiche Modell erneut hochzuladen, wird voraussichtlich eine Ausnahme ausgelöst.
+Bedenken Sie **vor der Ausführung des Programms zum Testen dieses neuen Codes**, dass Sie Ihr Modell bei der letzten Programmausführung bereits hochgeladen haben. Mit Azure Digital Twins ist es nicht möglich, das gleiche Modell zweimal hochzuladen. Wenn Sie also versuchen, das gleiche Modell erneut hochzuladen, wird voraussichtlich eine Ausnahme von dem Programm ausgelöst.
 
 Führen Sie das Programm mit diesem Wissen in Ihrem Befehlsfenster jetzt mit diesem Befehl erneut aus:
 
@@ -178,7 +178,7 @@ Um zu verhindern, dass das Programm abstürzt, können Sie Ausnahmecode um den C
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_try_catch":::
 
-Wenn Sie das Programm jetzt mit `dotnet run` in Ihrem Befehlsfenster ausführen, wird ein Fehlercode zurückgegeben. In der Ausgabe des Codes für die Modellerstellung wird der folgende Fehler angezeigt:
+Wenn Sie das Programm jetzt mit `dotnet run` in Ihrem Befehlsfenster ausführen, werden Sie einen Fehlercode zurückerhalten. In der Ausgabe des Codes für die Modellerstellung wird der folgende Fehler angezeigt:
 
 :::image type="content" source= "media/tutorial-code/model-error.png" alt-text="Screenshot einer Konsole mit der Programmausgabe, die zu folgendem Fehler führt: „409: Fehler bei der Dienstanforderung. Status: 409 (Konflikt)“":::
 
@@ -212,7 +212,7 @@ Fügen Sie als Nächstes den folgenden Code am Ende der Methode `Main` hinzu, um
 
 Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Suchen Sie in der Ausgabe nach Ausgabeanweisungen mit der Meldung, dass die Erstellung der beiden Beziehungen erfolgreich war.
 
-Beachten Sie, dass Azure Digital Twins das Erstellen einer Beziehung nicht zulässt, falls bereits eine andere Beziehung mit der gleichen ID vorhanden ist. Wenn Sie das Programm mehrfach ausführen, werden beim Erstellen von Beziehungen also Ausnahmen angezeigt. Mit diesem Code werden die Ausnahmen abgefangen und ignoriert. 
+Azure Digital Twins wird das Erstellen einer Beziehung nicht zulassen, falls bereits eine andere Beziehung mit der gleichen ID vorhanden ist. Wenn Sie das Programm mehrfach ausführen, werden beim Erstellen von Beziehungen Ausnahmen angezeigt. Mit diesem Code werden die Ausnahmen abgefangen und ignoriert. 
 
 ### <a name="list-relationships"></a>Auflisten von Beziehungen
 
@@ -248,7 +248,7 @@ Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. In der Au
 
 ## <a name="complete-code-example"></a>Vollständiges Codebeispiel
 
-An dieser Stelle des Tutorials verfügen Sie über eine vollständige Client-App, die in der Lage ist, grundlegende Aktionen in Azure Digital Twins auszuführen. Zu Ihrer Referenz wird nachfolgend der vollständige Code des Programms in *Program.cs* aufgeführt:
+An dieser Stelle des Tutorials verfügen Sie über eine vollständige Client-App, die in der Lage ist, die grundlegenden Aktionen in Azure Digital Twins auszuführen. Zu Ihrer Referenz wird nachfolgend der vollständige Code des Programms in *Program.cs* aufgeführt:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
@@ -271,4 +271,4 @@ In diesem Tutorial haben Sie eine Clientanwendung für die .NET-Konsole von Grun
 Fahren Sie mit dem nächsten Tutorial fort, um zu untersuchen, welche Möglichkeiten eine solche Beispiel-Client-App bietet: 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md)
+> [Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md)

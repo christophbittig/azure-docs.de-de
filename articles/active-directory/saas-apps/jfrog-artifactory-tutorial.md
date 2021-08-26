@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b943be684d84e1e193d9318e9f1c6423dcd38795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fb9d5be9068731607550eb904a8bf3d43044510
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648917"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469545"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Tutorial: Integrieren von JFrog Artifactory in Azure Active Directory
 
@@ -76,29 +76,29 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `<servername>.jfrog.io`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein, die die Artifactory-URL widerspiegelt.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
     
-    - Für Artifactory 6.x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
-    - Für Artifactory 7.x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    - Für selbstgehostete Artifactory-Anwendungen: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - Für Artifactory-SaaS: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
-    - Für Artifactory 6.x: `https://<servername>.jfrog.io/<servername>/webapp/`
-    - Für Artifactory 7.x: `https://<servername>.jfrog.io/ui/login`
+    - Für selbstgehostete Artifactory-Anwendungen: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - Für Artifactory-SaaS: `https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den JFrog Artifactory-Client](https://support.jfrog.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Die JFrog Artifactory-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
+1. Die JFrog Artifactory-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute & Ansprüche“ zu öffnen.
 
     ![Screenshot der Benutzerattribute, auf dem das Bearbeitungssteuerelement hervorgehoben ist](common/edit-attribute.png)
 
-1. Darüber hinaus wird von der JFrog Artifactory-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
+1. Darüber hinaus wird von der JFrog Artifactory-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Klicken Sie im Abschnitt **Benutzerattribute und Ansprüche** auf **Gruppenanspruch hinzufügen** und führen Sie die folgenden Schritte aus:
 
-    a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen**.
+    a. Klicken Sie auf **Öffnen** neben **Im Anspruch zurückgegebene Gruppen**.
 
     ![Screenshot: „User Attributes & Claims“ (Benutzerattribute und -ansprüche) mit ausgewähltem Symbol „Bearbeiten“](./media/jfrog-artifactory-tutorial/configuration-4.png)
 
@@ -114,8 +114,8 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 6. Konfigurieren Sie die Artifactory-Instanz (SAML-Dienstanbietername) mit dem Feld „Bezeichner“ (siehe Schritt 4). Kopieren Sie im Abschnitt **JFrog Artifactory einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-   - Für Artifactory 6.x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
-   - Für Artifactory 7.x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+   - Für selbstgehostete Artifactory-Anwendungen: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - Für Artifactory-SaaS: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 

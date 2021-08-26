@@ -4,13 +4,13 @@ description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum 
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 6d76631313f425785b692c34629a6d408278e76b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/12/2021
+ms.openlocfilehash: 0da91eedca9bbe1d44e129bf3d3e9574524b8f65
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949442"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687531"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Protokollwarnungsregeln in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Erstellen und Konfigurieren von Protokollabfragewarnungen in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -204,7 +204,7 @@ Im folgenden Beispiel wird eine [Warnungsregel des Typs „Metrische Maßeinheit
 }
 ```
 
-## <a name="template-for-all-resource-types-from-version-2020-05-01-preview"></a>Vorlage für alle Ressourcentypen (ab Version 2020-05-01-preview)
+## <a name="template-for-all-resource-types-from-version-2021-02-01-preview"></a>Eine Vorlage für alle Ressourcentypen (ab Version 2021-02-01-Vorschau)
 Im folgenden Beispiel wird eine Regel erstellt, die eine beliebige Ressource als Ziel haben kann:
 
 ```json
@@ -252,6 +252,20 @@ Im folgenden Beispiel wird eine Regel erstellt, die eine beliebige Ressource als
             "defaultValue": true,
             "metadata": {
                 "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "autoMitigate": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert will automatically resolve"
+            }
+        },
+        "checkWorkspaceAlertsStorageConfigured": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Specifies whether to check linked storage and fail creation if the storage was not found"
             }
         },
         "resourceId": {
@@ -332,7 +346,7 @@ Im folgenden Beispiel wird eine Regel erstellt, die eine beliebige Ressource als
         },
         "windowSize": {
             "type": "string",
-            "defaultValue": "PT5M",
+            "defaultValue": null,
             "allowedValues": [
                 "PT1M",
                 "PT5M",
@@ -390,7 +404,7 @@ Im folgenden Beispiel wird eine Regel erstellt, die eine beliebige Ressource als
             "name": "[parameters('alertName')]",
             "type": "Microsoft.Insights/scheduledQueryRules",
             "location": "[parameters('location')]",
-            "apiVersion": "2020-05-01-preview",
+            "apiVersion": "2021-02-01-preview",
             "tags": {},
             "properties": {
                 "description": "[parameters('alertDescription')]",
@@ -417,11 +431,15 @@ Im folgenden Beispiel wird eine Regel erstellt, die eine beliebige Ressource als
                     ]
                 },
                 "muteActionsDuration": "[parameters('muteActionsDuration')]",
-                "actions": [
-                    {
-                        "actionGroupId": "[parameters('actionGroupId')]"
+                "autoMitigate": "[parameters('autoMitigate')]",
+                "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "actions": {
+                    "actionGroups": "[parameters('actionGroupId')]",
+                    "customProperties": {
+                        "key1": "value1",
+                        "key2": "value2"
                     }
-                ]
+                }
             }
         }
     ]
