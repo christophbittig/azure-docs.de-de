@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 07/26/2021
-ms.openlocfilehash: 489ae3e9593ed5fa0865fb6f3fbe2eb617113d71
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 79e308605a0d6262e95dc6ff673d74a5a1eaaec7
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181492"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114732073"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sicherheit in Azure Database for PostgreSQL – Flexible Server
 
@@ -43,7 +43,7 @@ IP-Firewallregeln gewähren Serverzugriff auf der Grundlage der Ursprungs-IP-Adr
 Sie können Ihren flexiblen Server in Ihrer Azure Virtual Network-Instanz bereitstellen. Virtuelle Azure-Netzwerke ermöglichen eine private und sichere Netzwerkkommunikation. Weitere Informationen finden Sie unter [flexibler Server](concepts-networking.md)
 
 ### <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen (NSGs)
-Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern.  Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)
+Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern.  Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 
@@ -54,7 +54,7 @@ Mithilfe von [Azure Active Directory (AAD)-Authentifizierung](../concepts-aad-au
 
 ### <a name="azure-defender-protection"></a>Azure Defender-Datenschutz
 
- Azure Database for PostgreSQL -Flexible unterstützt derzeit die [Azure Defender Protection](../../security-center/azure-defender.md) nicht. 
+ Azure Database for PostgreSQL -Flexible unterstützt derzeit die [Azure Defender Protection](https://docs.microsoft.com/azure/security-center/azure-defender) nicht. 
 
 
 Aktivitäten in Ihren Datenbanken können mithilfe der [Überwachungsprotokollierung](../concepts-audit.md) nachverfolgt werden. 

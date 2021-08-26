@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 74d6981c0465a1960e920313c1f960f0d781692b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921e4cd8885dcbad5cd477e7f2283c9b11c445fc
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092965"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639701"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Hochverfügbarkeit in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Der Dienst Azure Database for MySQL bietet eine garantierte hohe Verfügbarkeit mit der finanziell abgesicherten Vereinbarung zum Servicelevel (Service Level Agreement, SLA) über eine Uptime von [99,99 %](https://azure.microsoft.com/support/legal/sla/mysql). Azure Database for MySQL bietet Hochverfügbarkeit sowohl bei geplanten Ereignissen wie benutzerseitig initiierten Skalierungscomputevorgängen als auch bei ungeplanten Ereignissen wie Ausfällen von zugrunde liegender Hardware oder Software oder Netzwerkausfällen. Der Dienst kann auch nach höchst kritischen Situationen schnell wiederhergestellt werden – so ist gewährleistet, dass für Anwendungen so gut wie keine Downtime auftritt.
 
 Azure Database for MySQL eignet sich zum Ausführen von unternehmenskritischen Datenbanken, die eine hohe Uptime erfordern. Der Dienst basiert auf der Azure-Architektur und verfügt über inhärente Hochverfügbarkeit, Redundanz und Resilienz, um die Datenbankdowntime aufgrund von geplanten und ungeplanten Ausfällen zu minimieren, ohne dass Sie zusätzliche Komponenten konfigurieren müssen. 

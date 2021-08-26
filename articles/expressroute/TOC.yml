@@ -144,16 +144,16 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: Überwachung
       items:
-        - name: Netzwerkerkenntnisse
-          href: expressroute-network-insights.md
-        - name: 'ExpressRoute-Überwachung, Metriken und Warnungen'
-          href: expressroute-monitoring-metrics-alerts.md
         - name: Überwachen von ExpressRoute
           href: monitor-expressroute.md
+        - name: Netzwerkerkenntnisse
+          href: expressroute-network-insights.md
+        - name: Konfigurieren der Verbindungsüberwachung für ExpressRoute
+          href: how-to-configure-connection-monitor.md
+        - name: 'ExpressRoute-Überwachung, Metriken und Warnungen'
+          href: expressroute-monitoring-metrics-alerts.md
         - name: Anzeigen und Konfigurieren von Wartungswarnungen
           href: maintenance-alerts.md
-        - name: Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
-          href: how-to-npm.md
         - name: Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
           href: how-to-custom-route-alert.md
     - name: Verwalten von Peerings
@@ -296,3 +296,5 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Erstellen und Ändern des öffentlichen Peerings
           href: about-public-peering.md
+        - name: Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute (veraltet)
+          href: how-to-npm.md

@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Marketo mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
-author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.author: jianleishen
-ms.openlocfilehash: beb1f0a05e8a505e49efe517c970e49ddab6be02
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: chez
+author: chez-charlie
+ms.openlocfilehash: 9583a4ac0cb4150d7896a0c11696aeb2a8f4c328
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485781"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639865"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopieren von Daten aus Marketo mithilfe von Azure Data Factory (Vorschau)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: fad0da60ab19a8614e25a56701c5ee2d1a80548c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410511"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860538"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -49,7 +49,7 @@ Externe Tabellen können für Folgendes verwendet werden:
 - Importieren von Daten aus Azure Blob Storage und Azure Data Lake Storage und Speichern der Daten in einem dedizierten SQL-Pool (nur Hadoop-Tabellen in einem dedizierten Pool)
 
 > [!NOTE]
-> In Verbindung mit der Anweisung [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) werden in einer externen Tabelle ausgewählte Daten in eine Tabelle innerhalb des **dedizierten** SQL-Pools importiert. Zusätzlich zur [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) sind externe Tabellen hilfreich beim Laden von Daten. 
+> In Verbindung mit der Anweisung [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) werden in einer externen Tabelle ausgewählte Daten in eine Tabelle innerhalb des **dedizierten** SQL-Pools importiert. Zusätzlich zur [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) sind externe Tabellen hilfreich beim Laden von Daten. 
 > 
 > Ein Tutorial zum Laden finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 

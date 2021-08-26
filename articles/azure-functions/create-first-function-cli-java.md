@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 8f52ba7008b2a7b3f7734f652c92014e110e3df4
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: f9b4d079b359524faac8b594c653b7aebcac2676
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730524"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -103,7 +103,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     cd fabrikam-functions
     ```
 
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
 ### <a name="optional-examine-the-file-contents"></a>(Optional) Untersuchen des Dateiinhalts
 

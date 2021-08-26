@@ -2,24 +2,19 @@
 title: Tutorial zur Zugriffs- und Anwendungssteuerung in Azure Security Center
 description: Dieses Tutorial zeigt, wie Sie eine Richtlinie für den Just-in-Time-VM-Zugriff und eine Anwendungssteuerungsrichtlinie konfigurieren.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: cc88561f8882b1712648a261d1f0208a18bab26d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 399fa371de57bbd8899a7c22686196a0a54be0ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095475"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726112"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Tutorial: Schützen Ihrer Ressourcen mit Azure Security Center
 Security Center verringert Ihre Gefährdung durch Bedrohungen, indem mithilfe von Zugriffs- und Anwendungssteuerungen böswillige Aktivitäten blockiert werden. Durch den JIT-Zugriff (Just-in-Time) auf einen virtuellen Computer wird die Anfälligkeit für Angriffe verringert, da Sie den dauerhaften Zugriff auf virtuelle Computer verweigern können. Stattdessen bieten Sie einen gesteuerten und überwachten Zugriff auf VMs nur bei Bedarf. Adaptive Anwendungssteuerungen helfen dabei, VMs gegen Schadsoftware abzusichern, indem sie steuern, welche Anwendungen auf Ihren VMs ausgeführt werden können. Security Center nutzt maschinelles Lernen, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Positivlistenregeln unter Verwendung dieser Daten.
@@ -56,9 +51,3 @@ Im nächsten Tutorial erfahren Sie, wie Sie auf Sicherheitsvorfälle reagieren.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Reagieren auf Sicherheitsvorfälle](tutorial-security-incident.md)
-
-<!--Image references-->
-[1]: ./media/tutorial-protect-resources/just-in-time-vm-access.png
-[2]: ./media/tutorial-protect-resources/add-port.png
-[3]: ./media/tutorial-protect-resources/adaptive-application-control-options.png
-[4]: ./media/tutorial-protect-resources/recommended-resource-groups.png

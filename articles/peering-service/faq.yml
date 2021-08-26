@@ -1,0 +1,50 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Peering Service – häufig gestellte Fragen (FAQ)
+  description: Erfahren Sie etwas über häufig gestellte Fragen zu Microsoft Azure Peering Service.
+  services: peering-service
+  author: derekolo
+  ms.service: peering-service
+  ms.devlang: na
+  ms.topic: article
+  ms.tgt_pltfrm: na
+  ms.workload: Infrastructure-services
+  ms.date: 05/18/2020
+  ms.author: derekol
+  ms.openlocfilehash: 19c4ebdeb0919177c27cd173609d62bc8721d3ff
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114481472"
+title: Peering Service – häufig gestellte Fragen (FAQ)
+summary: In diesem Artikel werden die am häufigsten gestellten Fragen zu Azure Peering Service-Verbindungen erläutert.
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Wer sind die Zielkunden?
+    answer: >
+      Zielkunden sind Unternehmen, die über das Internet als Transportstrecke eine Verbindung mit der Microsoft-Cloud herstellen.
+  - question: >
+      Können sich Kunden bei mehreren Anbietern für den Peering Service registrieren?
+    answer: >
+      Ja, Kunden können sich bei mehreren Anbietern in derselben Region oder in verschiedenen Regionen für Peering Service registrieren, jedoch nicht für dasselbe Präfix.
+  - question: >
+      Können Kunden pro geografischer Region einen anderen ISP für ihre Standorte auswählen?
+    answer: >
+      Ja, dies ist Kunden möglich. Wählen Sie den Partner-ISP pro Region aus, der Ihren geschäftlichen und betrieblichen Anforderungen am besten entspricht.
+  - question: >
+      Was ist ein Microsoft Edge-PoP?
+    answer: >
+      Es handelt sich dabei um einen physischen Standort, an dem Microsoft mit anderen Netzwerken Verbindungen herstellt. Am Microsoft Edge-PoP-Speicherort werden Dienste wie Azure Front Door und Azure CDN gehostet. Weitere Informationen finden Sie unter [Azure CDN](../cdn/cdn-features.md).
+- name: 'Peering Service: Alleinstellungsmerkmale'
+  questions:
+  - question: >
+      Wie unterscheidet sich der Peering Service vom normalen Internetzugang?
+    answer: "Partner, die sich bei Microsoft Peering Service registriert haben, arbeiten mit Microsoft zusammen, um optimiertes Routing und zuverlässige Konnektivität mit Microsoft-Diensten zu bieten.  \n"
+  - question: >
+      Wie unterscheidet sich der Peering Service von der ExpressRoute?
+    answer: >
+      Azure ExpressRoute ist eine private, dedizierte Verbindung von einem oder mehreren Kundenstandorten. Peering Service bietet optimierte öffentliche Konnektivität und unterstützt keine privaten Verbindungen, bietet jedoch auch optimierte Konnektivität für lokale Internetabzweige.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- Informationen zu Peering Service finden Sie unter [Übersicht über Peering Service](about.md).\n- Einen Dienstanbieter können Sie unter [Peering Service: Partner und Standorte](location-partners.md) finden.\n- Informationen zum Onboarding einer Peering Service-Verbindung finden Sie unter [Onboarding von Peering Service](onboarding-model.md).\n- Informationen zum Registrieren einer Peering -Verbindung finden Sie unter [Registrieren einer Peering Service-Verbindung – Azure-Portal](azure-portal.md).\n- Informationen zum Messen der Telemetrie finden Sie unter [Messen der Verbindungstelemetrie](measure-connection-telemetry.md)."

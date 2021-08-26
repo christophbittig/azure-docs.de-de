@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: ebe95bbd0b00ace152587604fb9f7543b24188e2
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 7e168c650361bf0579b5e718a71243ee485ba9dd
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429810"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824686"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -109,39 +109,54 @@ Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Ger
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Aktivieren von MPS auf Azure Stack Edge 
 
-1. Führen Sie eine Windows PowerShell-Sitzung als Administrator aus. 
+Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-Client aus herzustellen.
 
-2. Stellen Sie sicher, dass der Dienst Windows-Remoteverwaltung auf dem Client ausgeführt wird. Verwenden Sie im PowerShell-Terminal den folgenden Befehl: 
-    
+1. Führen Sie eine Windows PowerShell-Sitzung als Administrator aus.
+2. Stellen Sie sicher, dass der Dienst Windows-Remoteverwaltung auf dem Client ausgeführt wird. Geben Sie an der Eingabeaufforderung Folgendes ein:
+
     ```powershell
     winrm quickconfig
     ```
-    
-    Falls Warnungen zu einer Firewallausnahme angezeigt werden, sollten Sie Ihren Netzwerkverbindungstyp überprüfen und in der Dokumentation zur [Windows-Remoteverwaltung](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) nachsehen.
 
-3. Weisen Sie der IP-Adresse des Geräts eine Variable zu. 
-    
-    ```powershell
-    $ip = "<device-IP-address>" 
-    ```
-    
-4. Verwenden Sie den folgenden Befehl, um der Liste mit den vertrauenswürdigen Hosts des Clients die IP-Adresse Ihres Geräts hinzuzufügen: 
-    
-    ```powershell
-    Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
-    ```
+    Weitere Informationen finden Sie unter [Installation und Konfiguration für die Windows-Remoteverwaltung](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
-5. Starten Sie eine Windows PowerShell-Sitzung auf dem Gerät. 
+3. Weisen Sie der in der Datei `hosts` verwendeten Verbindungszeichenfolge eine Variable zu.
 
     ```powershell
-    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell 
+    $Name = "<Node serial number>.<DNS domain of the device>"
+    ``` 
+
+    Ersetzen Sie `<Node serial number>` und `<DNS domain of the device>` durch die Seriennummer des Knotens und die DNS-Domäne Ihres Geräts. Sie können die Werte für die Seriennummer des Knotens von der Seite **Zertifikate** und die DNS-Domäne von der Seite **Gerät** in der lokalen Webbenutzeroberfläche Ihres Geräts abrufen.
+
+4. Geben Sie den folgenden Befehl ein, um der Liste der vertrauenswürdigen Hosts des Clients die Verbindungszeichenfolge für Ihr Gerät hinzuzufügen:
+
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
     ```
 
-6. Geben Sie das Kennwort an, wenn Sie dazu aufgefordert werden. Verwenden Sie dasselbe Kennwort wie für die Anmeldung bei der lokalen Webbenutzeroberfläche. Das Standardkennwort für die lokale Webbenutzeroberfläche lautet `Password1`.
+5. Starten Sie eine Windows PowerShell-Sitzung auf dem Gerät:
 
-Geben Sie `Start-HcsGpuMPS` ein, um den MPS-Dienst auf dem Gerät zu starten. 
+    ```powershell
+    Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+    ```
 
-Informationen zur Problembehandlung für das Azure Stack Edge-Gerät finden Sie unter [Problembehandlung beim Azure Stack Edge-Gerät](spatial-analysis-logging.md#troubleshooting-the-azure-stack-edge-device). 
+    Wenn ein Fehler im Zusammenhang mit der Vertrauensstellung auftritt, überprüfen Sie, ob die Signaturkette des Knotenzertifikats, das auf Ihr Gerät hochgeladen wurde, auch auf dem Client installiert ist, der auf Ihr Gerät zugreift.
+
+6. Geben Sie das Kennwort an, wenn Sie dazu aufgefordert werden. Verwenden Sie dasselbe Kennwort wie für die Anmeldung bei der lokalen Webbenutzeroberfläche. Das Standardkennwort für die lokale Webbenutzeroberfläche lautet *Password1*. Wenn Sie mithilfe von PowerShell eine Verbindung mit dem Gerät herstellen konnten, wird die folgende Beispielausgabe angezeigt:  
+
+    ```
+    Windows PowerShell
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    
+    PS C:\WINDOWS\system32> winrm quickconfig
+    WinRM service is already running on this machine.
+    PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+
+    WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
+    [1HXQG13.wdshcsso.com]: PS>
+    ```
 
 #### <a name="desktop-machine"></a>[Desktopcomputer](#tab/desktop-machine)
 

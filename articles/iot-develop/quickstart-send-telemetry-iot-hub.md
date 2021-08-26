@@ -5,15 +5,15 @@ author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: quickstart
-ms.date: 05/04/2021
+ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744296"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Hub
 
@@ -48,18 +48,6 @@ ms.locfileid: "114730800"
 [!INCLUDE [iot-develop-send-telemetry-iot-hub-python](../../includes/iot-develop-send-telemetry-iot-hub-python.md)]
 
 :::zone-end
-
-## <a name="view-telemetry"></a>Anzeigen von Telemetriedaten
-Nachdem das simulierte Gerät eine Verbindung mit IoT Hub hergestellt hat, beginnt es mit dem Senden von Telemetriedaten. Sie können die Telemetriemetriken und andere Details zum IoT-Hub und zu Ihren Geräten im Azure-Portal anzeigen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Klicken Sie auf Ihren IoT-Hub, um ihn zu öffnen.  Sie finden Ihren IoT-Hub unter **Zuletzt verwendete Ressourcen** oder im linken Navigationsbereich unter **Alle Ressourcen**.
-
-1. Scrollen Sie auf der Seite **Übersicht**, um die Übersichtsmetriken für Ihren Hub anzuzeigen.
-    :::image type="content" source="media/quickstart-send-telemetry-iot-hub/iot-hub-metrics.png" alt-text="Übersicht über IoT Hub-Gerätemetriken":::
-
-1. Wählen Sie optional im linken Navigationsbereich unter **Überwachung** die Option **Metriken** aus, um weitere Metriken zu überprüfen und benutzerdefinierte Ansichten zu erstellen.
     
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Falls Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen nicht mehr benötigen, können Sie sie mit der Azure CLI löschen.
