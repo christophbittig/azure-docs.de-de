@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von SecureLogin für die automatische Benutzerbe
 description: Es wird beschrieben, wie Sie Benutzerkonten aus Azure AD für SecureLogin automatisch bereitstellen bzw. die Bereitstellung aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: f37882fb-80fa-446c-8f56-d13fd905fe54
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/22/2021
-ms.author: Zhchia
-ms.openlocfilehash: 8c75c0638365caf885900e2f26742e5fc5aab78b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 107211b71189b99991e517184e5cac781590b213
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953186"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327388"
 ---
 # <a name="tutorial-configure-securelogin-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SecureLogin für die automatische Benutzerbereitstellung
 
@@ -103,7 +103,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit SecureLogin synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in SecureLogin für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die SecureLogin-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|Typ|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -118,7 +118,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit SecureLogin synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in SecureLogin für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|Typ|Unterstützung für das Filtern|
+      |attribute|Typ|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |externalId|String|

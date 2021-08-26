@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Proware für die automatische Benutzerbereit
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in Proware bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 8887932e-e27e-419b-aa85-a0cda428d525
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/30/2021
-ms.author: Zhchia
-ms.openlocfilehash: 559b385636dc76eecdba10901179c394a0cae906
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.author: thwimmer
+ms.openlocfilehash: 1b7f487835288f603aac83eb90f470590a6eff90
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207679"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327331"
 ---
 # <a name="tutorial-configure-proware-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Proware für die automatische Benutzerbereitstellung
 
@@ -105,7 +105,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Proware synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Proware für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Proware-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|--|
    |userName|String|&check;|
    |aktiv|Boolean|

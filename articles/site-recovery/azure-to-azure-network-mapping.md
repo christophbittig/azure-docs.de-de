@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7c4b0f75dd94a5aa61b75b99bbb553c98090aac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95811625"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339073"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -20,9 +20,11 @@ In diesem Artikel wird beschrieben, wie Sie zwei Instanzen von virtuellen Azure-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie Netzwerke zuordnen, müssen [Azure-VNETs](../virtual-network/virtual-networks-overview.md) in der Azure-Quell- und -Zielregion vorhanden sein. 
+Bevor Sie Netzwerke zuordnen, müssen [Azure-VNETs](../virtual-network/virtual-networks-overview.md) in der Azure-Quell- und -Zielregion vorhanden sein.
 
 ## <a name="set-up-network-mapping-manually-optional"></a>Manuelles Einrichten der Netzwerkzuordnung (optional)
+
+>[!HINWEIS: Die Replikation kann nun zwischen zwei beliebigen Azure-Regionen auf der ganzen Welt durchgeführt werden. Kunden sind nicht mehr darauf beschränkt, die Replikation innerhalb des ihres Kontinents zu aktivieren.
 
 Ordnen Sie Netzwerke wie folgt zu:
 
@@ -44,12 +46,12 @@ Wenn Sie die Netzwerkzuordnung nicht vorbereitet haben, bevor Sie die Notfallwie
 
 - Basierend auf dem von Ihnen ausgewählten Ziel erstellt Site Recovery automatisch Netzwerkzuordnungen von der Quellregion zur Zielregion und von der Zielregion zur Quellregion.
 - Site Recovery erstellt standardmäßig ein Netzwerk in der Zielregion, das identisch mit dem Quellnetzwerk ist. Site Recovery fügt den Suffix **-asr** an den Namen des Quellnetzwerks an. Sie können das Zielnetzwerk anpassen.
-- Wenn die Netzwerkzuordnung für ein Quellnetzwerk bereits vorgenommen wurde, ist das zugeordnete Zielnetzwerk immer das Standardnetzwerk zum Zeitpunkt der Aktivierung von Replikationen weiterer virtueller Computer. Sie können das virtuelle Zielnetzwerk ändern, indem Sie in der Dropdownliste andere verfügbare Optionen auswählen. 
+- Wenn die Netzwerkzuordnung für ein Quellnetzwerk bereits vorgenommen wurde, ist das zugeordnete Zielnetzwerk immer das Standardnetzwerk zum Zeitpunkt der Aktivierung von Replikationen weiterer virtueller Computer. Sie können das virtuelle Zielnetzwerk ändern, indem Sie in der Dropdownliste andere verfügbare Optionen auswählen.
 - Zum Ändern des virtuellen Standard-Zielnetzwerks müssen Sie die vorhandene Netzwerkzuordnung ändern.
 - Wenn Sie eine Netzwerkzuordnung von Region A nach Region B ändern möchten, löschen Sie zunächst die Netzwerkzuordnung von Region B nach Region A. Ändern Sie nach dem Löschen der umgekehrten Zuordnung die Netzwerkzuordnung von Region A nach Region B, und erstellen Sie dann die gewünschte umgekehrte Zuordnung.
 
 >[!NOTE]
->* Das Ändern der Netzwerkzuordnung ändert nur die Standardwerte für neue VM-Replikationen. Der Vorgang wirkt sich nicht auf die Auswahl des virtuellen Zielnetzwerks für vorhandene Replikationen aus. 
+>* Das Ändern der Netzwerkzuordnung ändert nur die Standardwerte für neue VM-Replikationen. Der Vorgang wirkt sich nicht auf die Auswahl des virtuellen Zielnetzwerks für vorhandene Replikationen aus.
 >* Wenn Sie das Zielnetzwerk für eine vorhandene Replikation ändern möchten, verwenden Sie die Einstellungen unter „Compute und Netzwerk“ für das replizierte Element.
 
 ## <a name="specify-a-subnet"></a>Angeben eines Subnetzes
