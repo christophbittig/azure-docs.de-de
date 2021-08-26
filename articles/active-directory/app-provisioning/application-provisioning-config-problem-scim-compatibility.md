@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: f74e9a4f99523e26feb703f5ed2bedf33366f8d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb154e6c3551bdf51a0920b3a94a53deede8b637
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355486"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822301"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -275,7 +275,7 @@ Durch die folgenden Schritte wird Ihr vorhandener customappsso-Auftrag gelöscht
 10. Führen Sie den folgenden Befehl aus, um einen neuen Bereitstellungsauftrag zu erstellen, der über die neuesten Fehlerbehebungen für den Dienst verfügt.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "scim"   }`
+ `{   "templateId": "scim"   }`
    
 11. Kopieren Sie in den Ergebnissen des letzten Schritts die vollständige „ID“-Zeichenfolge, die mit „scim“ beginnt. Sie können optional auch Ihre alten Attributzuordnungen erneut anwenden. Führen Sie dazu den Befehl unten aus, und ersetzen Sie „[new-job-id]“ durch die neue Auftrags-ID, die Sie kopiert haben. Geben Sie außerdem die JSON-Ausgabe aus Schritt 7 als Anforderungstext ein.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 07/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b5abb26a5a96b73f06f25661c62061f664069ee3
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 06be68fb1de224bbbcad13e71e7f4069e44f8309
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354876"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -31,6 +31,7 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 
 |  Resource  |  Standardlimit  |  Über Supportanfrage anpassbar  |
 |----------------|---------------------|--------------------------------------|
+|  [Regionales Kapazitätskontingent pro Abonnement](#regional-capacity-quota)   |  25 TiB  |  Ja  |
 |  Anzahl von NetApp-Konten pro Azure-Region und Abonnement  |  10    |  Ja   |
 |  Anzahl der Kapazitätspools pro NetApp-Konto   |    25     |   Ja   |
 |  Anzahl von Volumes pro Abonnement   |    500     |   Ja   |
@@ -93,9 +94,39 @@ Wenn Sie für ein Volume bereits ein Kontingent von mindestens 4 TiB zugeordnet
 
 Sie können das maxfiles-Limit auf 500 Millionen erhöhen, wenn das Volumenkontingent mindestens 20 TiB beträgt. <!-- ANF-11854 --> 
 
+## <a name="regional-capacity-quota"></a>Regionales Kapazitätskontingent
+
+Azure NetApp Files verfügt über ein regionales Limit, basierend auf der Kapazität. Das Standardkapazitätslimit für jedes Abonnement beträgt 25 TiB pro Region auf allen Servicelevels.   
+
+Sie können eine Kapazitätserhöhung anfordern, indem Sie wie folgt ein spezifisches Supportticket für **Dienst- und Abonnementlimits (Kontingente)** übermitteln:
+
+1. Wechseln Sie im Portal zu **Support und Problembehandlung**, um den Supportanfrageprozess zu starten:  
+
+    ![Screenshot mit dem Menü „Support und Problembehandlung“.](../media/azure-netapp-files/support-troubleshoot-menu.png)   
+
+2.  Wählen Sie den Problemtyp **Dienst- und Abonnementlimits (Kontingente)** aus, und geben Sie alle relevanten Details ein:
+
+    ![Screenshot mit dem Menü „Dienst- und Abonnementlimits“.](../media/azure-netapp-files/service-subscription-limits-menu.png)   
+
+3. Klicken Sie auf der Registerkarte „Details“ auf den Link **Details eingeben**, und wählen Sie dann den Kontingenttyp **TiBs pro Abonnement** aus:   
+
+    ![Screenshot mit dem Link „Details eingeben“ auf der Registerkarte „Details“.](../media/azure-netapp-files/support-details.png)   
+
+    ![Screenshot mit dem Fenster „Kontingentdetails“.](../media/azure-netapp-files/support-quota-details.png)   
+
+4.  Wählen Sie auf der Seite „Supportmethode“ die Option **Schweregrad B – Mittlere Auswirkung** aus:  
+
+    ![Screenshot mit dem Fenster „Supportmethode“.](../media/azure-netapp-files/support-method-severity.png)   
+
+5. Schließen Sie den Anforderungsprozess ab, um die Anfrage abzusenden. 
+ 
+Nachdem das Ticket übermittelt wurde, wird die Anforderung zur Verarbeitung an das Azure-Kapazitätsverwaltungsteam gesendet. Sie erhalten in der Regel innerhalb von zwei Arbeitstagen eine Antwort. Bei der Bearbeitung großer Anforderungen wendet sich das Azure-Kapazitätsverwaltungsteam möglicherweise an Sie.
+ 
+Eine Erhöhung des regionalen Kapazitätskontingents führt nicht zu einer Erhöhung der Abrechnung. Die Abrechnung basiert weiterhin auf den bereitgestellten Kapazitätspools.
+
 ## <a name="request-limit-increase"></a>Anfordern einer Limiterhöhung <a name="limit_increase"></a> 
 
-Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren Grenzwerte aus der obigen Tabelle zu erhöhen. 
+Sie können eine Supportanfrage an den Azure-Support stellen, um die anpassbaren Grenzwerte aus der Tabelle [Ressourcenlimits](#resource-limits) zu erhöhen. 
 
 Über den Navigationsbereich im Azure-Portal: 
 

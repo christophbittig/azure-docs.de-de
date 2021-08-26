@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Kubernetes-Ressourcen interagieren, um ei
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: ce5dc74dc3625b2b1fed447c4e6480308267d32a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d48a11a3897a4de8f613e015ffc87c84bea08950
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578686"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779097"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal
 
@@ -81,7 +81,7 @@ Bei vorhandenen Clustern müssen Sie möglicherweise die Kubernetes-Ressourcenan
 > Das AKS-Feature für [**vom API-Server autorisierte IP-Adressbereiche**](api-server-authorized-ip-ranges.md) kann hinzugefügt werden, um den Zugriff des API-Servers auf den öffentlichen Endpunkt der Firewall zu beschränken. Eine weitere Option für solche Cluster stellt das Aktualisieren von `--api-server-authorized-ip-ranges` dar, um den Zugriff für einen lokalen Clientcomputer oder einen IP-Adressbereich (aus dem das Portal aufgerufen wird) einzubeziehen. Um diesen Zugriff zuzulassen, benötigen Sie die öffentliche IPv4-Adresse des Computers. Sie finden diese Adresse mithilfe des Befehls unten, oder indem Sie in einem Internetbrowser nach „Wie lautet meine IP-Adresse“ suchen.
 ```bash
 # Retrieve your IP address
-CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+CURRENT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32

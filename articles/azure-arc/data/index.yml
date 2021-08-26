@@ -1,63 +1,69 @@
 ### YamlMime:Landing
-title: "Azure\_Arc-fähige Datendienste"
-summary: 'Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.'
+title: Azure Arc-fähige Datendienste
+summary: Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.
 metadata:
-  title: "Datendienste mit Azure\_Arc-Unterstützung (Vorschauversion)"
-  description: 'Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.'
+  title: Azure Arc-fähige Datendienste
+  description: Führen Sie Azure-Datendienste lokal, im Edgebereich und in Multi-Cloud-Umgebungen unter Verwendung von Kubernetes in der Infrastruktur Ihrer Wahl aus.
   ms.service: azure-arc
   ms.subservice: azure-arc-data
   ms.topic: landing-page
   author: MikeRayMSFT
   ms.author: mikeray
   ms.date: 12/16/2020
+  ms.openlocfilehash: d65aa597cb3bd9d2f8abdb22a6f60d0a6af9418a
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121750305"
 landingContent:
-  - title: Info
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: "Was sind Datendienste mit Azure\_Arc-Unterstützung?"
-            url: overview.md
-      - linkListType: concept
-        links:
-          - text: Konnektivitätsmodi und -anforderungen
-            url: connectivity.md
-          - text: Speicherkonfiguration
-            url: storage-configuration.md
-  - title: Erste Schritte
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Erstellen eines Datencontrollers
-            url: create-data-controller.md
-          - text: Installieren der Clienttools
-            url: install-client-tools.md
-  - title: PostgreSQL Hyperscale mit Azure Arc-Unterstützung (Vorschauversion)
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Erstellen
-            url: create-postgresql-hyperscale-server-group.md
-          - text: Verbinden
-            url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
-          - text: Migrieren
-            url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-          - text: Restore
-            url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
-  - title: SQL Managed Instance mit Azure Arc-Unterstützung (Vorschauversion)
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: Erstellen
-            url: create-sql-managed-instance.md
-          - text: Verbinden
-            url: connect-managed-instance.md
-          - text: Migrieren
-            url: migrate-to-managed-instance.md
-          - text: Restore
-            url: restore-adventureworks-sample-db.md
-  - title: Proof of Concept
-    linkLists:
-      - linkListType: sample
-        links:
-          - text: Schnelleinstieg
-            url: 'https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/'
+- title: Info
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Datendienste mit Azure Arc-Unterstützung?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Konnektivitätsmodi und -anforderungen
+      url: connectivity.md
+    - text: Speicherkonfiguration
+      url: storage-configuration.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Datencontrollers
+      url: create-data-controller.md
+    - text: Installieren der Clienttools
+      url: install-client-tools.md
+- title: PostgreSQL Hyperscale mit Azure Arc-Unterstützung (Vorschauversion)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen
+      url: create-postgresql-hyperscale-server-group.md
+    - text: Verbinden
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migrieren
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: Restore
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: SQL Managed Instance mit Azure Arc-Unterstützung
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen
+      url: create-sql-managed-instance.md
+    - text: Verbinden
+      url: connect-managed-instance.md
+    - text: Migrieren
+      url: migrate-to-managed-instance.md
+    - text: Restore
+      url: restore-adventureworks-sample-db.md
+- title: Proof of Concept
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Schnelleinstieg
+      url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/

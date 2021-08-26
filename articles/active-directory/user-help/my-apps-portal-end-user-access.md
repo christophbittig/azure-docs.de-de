@@ -12,12 +12,12 @@ ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d65daffab7522c1ececb3383d1cf5184f906d8f9
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 54a609cb73dcbf70afa5e20c41fa734080b89cc1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893010"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770689"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -85,7 +85,7 @@ Laden Sie die Erweiterung in Ihrem Browser herunter, und installieren Sie sie.
 
 - **Google Chrome**: Wechseln Sie im Chrome Web Store zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl), und klicken Sie dann auf **Zu Chrome hinzufügen**.
 
-- **Mozilla Firefox**: Wechseln Sie auf der Seite **Firefox-Add-Ons** zum Feature [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://addons.mozilla.org/firefox/addon/access-panel-extension/), und klicken Sie dann auf **Zu Firefox hinzufügen**.
+- **Mozilla Firefox**: Wechseln Sie auf der Seite **Firefox-Add-Ons** zum Feature Erweiterung zur sicheren Anmeldung bei „Meine Apps“, und klicken Sie dann auf **Zu Firefox hinzufügen**.
 
 Rechts neben der **Adressleiste** wird ein Symbol hinzugefügt, über das Sie sich anmelden und die Erweiterung anpassen können.
 

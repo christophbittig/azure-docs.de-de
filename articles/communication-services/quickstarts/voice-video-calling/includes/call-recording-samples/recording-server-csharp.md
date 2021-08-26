@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: 17363ba1c41c7c5046b769c7a03b3e05b97a08e6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f025f33a041dd40970b3ea34ff723e1270d16ea6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121800902"
 ---
 ## <a name="sample-code"></a>Beispielcode
 Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/ServerRecording).
@@ -26,15 +26,15 @@ Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https
 - [Node.js (12.18.4 und höher)](https://nodejs.org/en/download/).
 - [Visual Studio (2019 und höher)](https://visualstudio.microsoft.com/vs/).
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Stellen Sie sicher, dass Sie die Version installieren, die Ihrer Visual Studio-Instanz entspricht (32 oder 64 Bit)).
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
-- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** Ihres Speichers und den **Containernamen** für diese Schnellstartanleitung notieren.
-- Ein [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) Webhook.
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../../create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
+- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](../../../../../storage/common/storage-account-create.md?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** Ihres Speichers und den **Containernamen** für diese Schnellstartanleitung notieren.
+- Ein [Azure Event Grid](../../../../../event-grid/overview.md) Webhook.
 
 ## <a name="object-model"></a>Objektmodell
 
 Mit den folgenden Klassen werden einige Hauptfunktionen der aufzeichnenden Server-Apps von C# verarbeitet.
 
-| Name                                  | Beschreibung                                                  |
+| Name                                  | BESCHREIBUNG                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallingServerClient | Diese Klasse wird für die Aufzeichnungsfunktionalität benötigt. Sie erstellen eine Instanz des CallingServerClient mithilfe der ACS-Ressourcenverbindungszeichenfolge und verwenden sie zum Starten/Beenden und Anhalten/Fortsetzen einer Aufrufaufzeichnung. |
 

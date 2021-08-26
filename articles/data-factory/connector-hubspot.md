@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus HubSpot mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jianleishen
-ms.openlocfilehash: ff50962baf4337f977406739da16876ab878a2d7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e0c5ad1ce0f17c6dd2ce7126d0c853d4d2dfd773
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484935"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640020"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -6,12 +6,12 @@ ms.author: v-hhunter
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: 71abc9acdcf8796591e7241a7fcfeded1cd3139a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: aad3015ed129b438e9f359d7cb3fc89b6658e5c9
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283121"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768319"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>Bereitstellen eines Azure API Management-Gateways auf Azure Arc (Vorschau)
 
@@ -26,7 +26,7 @@ Der Einsatz des API Management-Gateways auf einem Arc-fähigen Kubernetes-Cluste
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Verbinden Sie Ihren Kubernetes-Cluster](../azure-arc/kubernetes/quickstart-connect-cluster.md) innerhalb [einer unterstützten Azure Arc Region](../azure-arc/kubernetes/overview.md#supported-regions).
+* [Verbinden Sie Ihren Kubernetes-Cluster](../azure-arc/kubernetes/quickstart-connect-cluster.md) innerhalb [einer unterstützten Azure Arc Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
 * Installieren der `k8s-extension`-Azure CLI-Erweiterung:
 
     ```azurecli

@@ -9,17 +9,15 @@ metadata:
   ms.author: hirshah
   ms.reviewer: mimckitt
   ms.custom: 
-  ms.openlocfilehash: f9c453ffafddf2864eaf866b8739586b0bbe50df
-  ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+  ms.openlocfilehash: cdb0c407db3405b9ced14ca22b221b5ef120d81e
+  ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113129310"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122823222"
 title: 'Probleme mit Konnektivität und Netzwerken in Azure Cloud Services (klassisch): Häufig gestellte Fragen (FAQs)'
 summary: >
-  > [!IMPORTANT]
-
-  > [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+  [!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 
   Dieser Artikel enthält häufig gestellte Fragen zu Konnektivität und Netzwerkproblemen in [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
