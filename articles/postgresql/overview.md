@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d80aba60c4e3662e0a1b3d5d8ed8f2ab6c135a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92491324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725255"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure Database for PostgreSQL?
 
@@ -80,4 +80,4 @@ Erfahren Sie mehr über die drei Bereitstellungsmodi für Azure Database for Pos
 
 - [Single Server](./overview-single-server.md)
 - [Flexible Server](./flexible-server/overview.md)
-- Hyperscale (Citus)
+- [Hyperscale (Citus)](./hyperscale-overview.md)

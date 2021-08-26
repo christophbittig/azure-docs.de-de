@@ -828,6 +828,10 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: Gewähren des Zugriffs auf andere Azure-Ressourcen
           href: how-to-grant-access-other-resources.md
+    - name: Migrieren Ihres Clusters zu einer neuen Region
+      items:
+        - name: Verschieben Ihres Azure Service Fabric-Clusters in eine neue Region
+          href: service-fabric-cluster-region-move.md
     - name: Migrieren aus Cloud Services
       items:
         - name: Unterschiede zwischen Cloud Services und Service Fabric

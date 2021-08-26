@@ -120,9 +120,11 @@
 - name: Konzepte
   expanded: true
   items:
-    - name: Authentifizierungsgrundlagen
-      displayName: Auth basics
+    - name: 'Authentifizierung und Autorisierung: Grundlagen'
+      displayName: AuthN and AuthZ basics
       items:
+        - name: Grundlagen der Autorisierung
+          href: authorization-basics.md
         - name: Authentifizierung im Vergleich zu Autorisierung
           href: authentication-vs-authorization.md
         - name: Sicherheitstoken
@@ -137,9 +139,16 @@
         - name: Microsoft Identity Web-Bibliothek
           href: microsoft-identity-web.md
           displayName: 'auth, library, .NET Core, msal'
-    - name: Grundlagen der Autorisierung
-      displayName: AuthZ basics
+    - name: Berechtigungen und Zugriffssteuerung
+      displayName: Access control
       items:
+        - name: Berechtigungen und Zustimmung
+          displayName: Scopes
+          href: v2-permissions-and-consent.md
+        - name: Bedingter Zugriff
+          href: v2-conditional-access-dev-guide.md
+        - name: 'Authentifizierungskontext für bedingten Zugriff: Leitfaden'
+          href: developer-guide-conditional-access-authentication-context.md
         - name: RBAC für App-Entwickler
           href: custom-rbac-for-developers.md
     - name: App-Szenarien und Authentifizierungsflows
@@ -156,13 +165,6 @@
           href: secure-least-privileged-access.md
         - name: "Best Practices für die Sicherheit bei der Azure\_AD-Anwendungsregistrierung"
           href: security-best-practices-for-app-registration.md
-        - name: Bedingter Zugriff
-          href: v2-conditional-access-dev-guide.md
-        - name: Authentifizierungskontext
-          href: developer-guide-conditional-access-authentication-context.md
-    - name: Berechtigungen und Zustimmung
-      displayName: Scopes
-      href: v2-permissions-and-consent.md
     - name: Automatische Benutzerbereitstellung (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: Vorgehensweise
@@ -515,6 +517,8 @@
           href: support-fido2-authentication.md
     - name: Authentifizieren von Apps und Diensten
       items:
+        - name: Erstellen eines selbstsignierten Zertifikats für die Authentifizierung Ihrer App
+          href: howto-create-self-signed-certificate.md
         - name: Erstellen eines Dienstprinzipals mit Azure PowerShell
           href: howto-authenticate-service-principal-powershell.md
         - name: Erstellen eines Dienstprinzipals mit dem Azure-Portal
@@ -654,6 +658,8 @@
               href: reference-saml-tokens.md
     - name: Azure CLI
       href: /cli/azure/identity
+    - name: Azure PowerShell
+      href: /powershell/module/az.managedserviceidentity
     - name: "Anwendungstypen und OAuth\_2.0"
       displayName: 'App types, OAuth'
       href: v2-app-types.md

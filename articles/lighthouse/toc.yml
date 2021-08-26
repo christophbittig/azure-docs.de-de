@@ -73,6 +73,9 @@
         - name: Überwachen von Delegierungsänderungen
           displayName: activity log
           href: ./how-to/monitor-delegation-changes.md
+        - name: Durchführen des Onboardings für Abonnements in einer Verwaltungsgruppe
+          displayName: 'mg, policy, logic app'
+          href: ./how-to/onboard-management-group.md
     - name: Kunden anzeigen und verwalten
       displayName: my customers
       href: ./how-to/view-manage-customers.md

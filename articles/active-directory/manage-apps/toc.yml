@@ -92,7 +92,9 @@
 - name: Anleitungen
   expanded: false
   items:
-    - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
+    - name: Zuweisen von Besitzern
+      href: assign-app-owners.md
+    - name: Verwalten des Zugriffs
       items:
         - name: Einwilligung und Berechtigungen
           items:
@@ -112,25 +114,25 @@
               href: grant-admin-consent.md
             - name: 'Überprüfen von Berechtigungen, die Apps erteilt wurden'
               href: manage-application-permissions.md
-        - name: Verwalten der Benutzerzuweisung für eine App
+        - name: Verwalten der Benutzerzuweisung
           href: assign-user-or-group-access-portal.md
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
         - name: Verwenden des Self-Service-App-Zugriffs
           href: access-panel-manage-self-service-access.md
-        - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
+        - name: Entfernen des Benutzerzugriffs
           href: methods-for-removing-user-access.md
-        - name: Ausblenden einer App für einen Benutzer
+        - name: Ausblenden einer App
           href: hide-application-from-user-portal.md
         - name: Deaktivieren der Benutzeranmeldung
           href: disable-user-sign-in-portal.md
-        - name: Konfigurieren der Self-Service-App-Zuweisung
+        - name: Konfigurieren der Self-Service-Zuweisung
           href: manage-self-service-access.md
-        - name: Erzwingen der automatischen Beschleunigung mithilfe der Richtlinie für die Startbereichsermittlung
+        - name: Erzwingen der automatischen Beschleunigung
           href: configure-authentication-for-federated-users-portal.md
-        - name: 'Verhindern der automatischen Anmeldebeschleunigung mit der Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HRD)'
+        - name: Verhindern der automatischen Beschleunigung bei der Anmeldung
           href: prevent-domain-hints-with-home-realm-discovery.md
-    - name: "Migrieren der Identitätsverwaltung zu Azure\_AD"
+    - name: Migrieren von Anwendungen
       items:
         - name: Migrationsressourcen
           href: migration-resources.md

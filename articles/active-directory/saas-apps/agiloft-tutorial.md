@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Agiloft | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Agiloft konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Agiloft Contract Management Suite | Microsoft Dokumentation'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Agiloft Contract Management Suite konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/25/2021
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 227b24cd5d3171f22442ecc6f8077f9cfc1655fb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 25bea4a80a33d520683ec56ee4b40dd54b9652c9
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478784"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527026"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Tutorial: Azure Active Directory-Integration mit Agiloft
+# <a name="tutorial-azure-active-directory-integration-with-agiloft-contract-management-suite"></a>Tutorial: Azure Active Directory-Integration mit Agiloft Contract Management Suite | Microsoft Dokumentation
 
-In diesem Tutorial erfahren Sie, wie Sie Agiloft in Azure Active Directory (Azure AD) integrieren. Die Integration von Agiloft in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Agiloft Contract Management Suite in Azure Active Directory (Azure AD) integrieren. Die Integration von Agiloft Contract Management Suite in Azure AD ermöglicht Ihnen Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Agiloft besitzt.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Agiloft anzumelden.
+* Sie können in Azure AD steuern, wer Zugriff auf Agiloft Contract Management Suite hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Agiloft Contract Management Suite anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,44 +31,44 @@ In diesem Tutorial erfahren Sie, wie Sie Agiloft in Azure Active Directory (Azur
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Agiloft-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
+* Ein für das einmaliges Anmelden (SSO) aktivierte Agiloft Contract Management Suite-Abonnement.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Agiloft unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Agiloft unterstützt **Just-in-Time**-Benutzerbereitstellung.
+* Agiloft Contract Management Suite unterstützt das **SP- und IDP**-initiierte einmalige Anmelden.
+* Agiloft Contract Management Suite unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="add-agiloft-from-the-gallery"></a>Hinzufügen von Agiloft aus dem Katalog
+## <a name="add-agiloft-contract-management-suite-from-the-gallery"></a>Hinzufügen von „Agiloft Contract Management Suite“ aus dem Katalog
 
-Zum Konfigurieren der Integration von Agiloft in Azure AD müssen Sie Agiloft aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+Um die Integration von Agiloft Contract Management Suite in Azure AD zu konfigurieren, müssen Sie die Agiloft Contract Management Suite-App über den Katalog zu Ihrer Liste mit verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Agiloft** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Agiloft** aus, und fügen Sie die App dann hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Agiloft Contract Management Suite** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Agiloft Contract Management Suite** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso-for-agiloft"></a>Konfigurieren und Testen von Azure AD-SSO für Agiloft
+## <a name="configure-and-test-azure-ad-sso-for-agiloft-contract-management-suite"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Agiloft Contract Management Suite
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Agiloft mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Agiloft eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Agiloft Contract Management Suite mithilfe eines Testbenutzers namens **B. Simon**. Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Agiloft Contract Management Suite eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Agiloft die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Agiloft Contract Management Suite zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren von Agiloft-SSO](#configure-agiloft-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen eines Agiloft-Testbenutzers](#create-agiloft-test-user)** , um in Agiloft ein Pendant von B. Simon zu erhalten, das mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+1. **[Konfigurieren des einmaligen Anmeldens für Agiloft Contract Management Suite](#configure-agiloft-contract-management-suite-sso)** , um die Einstellungen für das einmalige Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Agiloft Contract Management Suite-Testbenutzers](#create-agiloft-contract-management-suite-test-user)** , um eine Entsprechung von B. Simon in Agiloft Contract Management Suite zu erhalten, das mit der entsprechenden Darstellung des Benutzers in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Agiloft** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Agiloft Contract Management Suite** zum Abschnitt **Verwalten** und wählen Sie **Einmaliges Anmelden aus**.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -85,13 +85,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Agiloft-Client](https://www.agiloft.com/support-login.htm), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Clientsupport-Team von Agiloft Contract Management Suite](https://www.agiloft.com/support-login.htm) um diese Werte zu beziehen. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-7. Kopieren Sie im Abschnitt **Agiloft einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+7. Kopieren Sie im Abschnitt **Agiloft Contract Management Suite** die entsprechende/n URL(s) gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -109,19 +109,19 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Agiloft gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie den Zugriff auf Agiloft Contract Management Suite gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **Agiloft** aus.
+1. Wählen Sie in der Anwendungsliste die Option **Agiloft Contract Management Suite** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-agiloft-sso"></a>Konfigurieren von Agiloft-SSO
+## <a name="configure-agiloft-contract-management-suite-sso"></a>Konfigurieren einer einmaligen Anmeldung für Agiloft Contract Management Suite
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Agiloft-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Agiloft Contract Management Suite-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie (im linken Bereich) auf **Setup**, und wählen Sie anschließend **Access** (Zugriff) aus.
 
@@ -133,7 +133,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Ein Dialogfeld für einen Assistenten wird angezeigt. Klicken Sie im Dialogfeld auf **Identity Provider Details** (Details des Identitätsanbieters), und füllen Sie die folgenden Felder aus:  
 
-    ![Agiloft-Konfiguration](./media/agiloft-tutorial/details.png)
+    ![Konfigurieren von Agiloft Contract Management Suite](./media/agiloft-tutorial/details.png)
 
     a. Fügen Sie in das Textfeld **IdP-Entitäts-ID/Zertifikataussteller** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -145,9 +145,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     e. Klicken Sie auf **Fertig stellen**.
 
-### <a name="create-agiloft-test-user"></a>Erstellen eines Agiloft-Testbenutzers
+### <a name="create-agiloft-contract-management-suite-test-user"></a>Erstellen eines Agiloft Contract Management Suite-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen „Britta Simon“ in Agiloft erstellt. Agiloft unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Agiloft vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird ein Benutzer mit dem namens „Britta Simon“ in Agiloft Contract Management Suite erstellt. Agiloft Contract Management Suite unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Agiloft Contract Management Suite vorhanden, wird nach der Authentifizierung ein neuer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -155,16 +155,16 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Agiloft weitergeleitet. Dort können Sie den Anmeldeflow initiieren.  
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL von Agiloft Contract Management Suite weitergeleitet, wo Sie den Anmeldeablauf initiieren können.  
 
-* Rufen Sie die Agiloft-Anmelde-URL direkt auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Agiloft Contract Management Suite-Anmelde-URL auf, und initiieren Sie von dort den Anmeldeablauf.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Agiloft-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Agiloft Contract Management Suite-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Agiloft“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Agiloft-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Agiloft“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Agiloft Contract Management Suite-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Agiloft können Sie Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Agiloft Contract Management Suite können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
