@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Event Grid
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Event Grid. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5e34640e1c8bc37e1617d9b023543f76efafced0
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0d21f6bc87e242f5311453fbef4f484a3b2a7cc7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350332"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609339"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Integrierte Azure Policy-Definitionen für Azure Event Grid
 

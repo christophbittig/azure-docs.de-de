@@ -10,12 +10,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
-ms.openlocfilehash: 109e6f9a1cbc39e1382d73acacfb163940e72a0f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6f59bc46ee5b8fb8f14693a0c30350213641be1e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962451"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691703"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>Veraltet: Anmeldung bei einem virtuellen Linux-Computer in Azure mit Azure Active Directory mithilfe der Gerätecode-Flussauthentifizierung
 

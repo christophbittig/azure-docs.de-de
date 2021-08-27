@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/04/2021
 ms.author: apimpm
-ms.openlocfilehash: f67da2c2090dd99730324512248854d5e2fee259
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c3c3647831e871e886f44c74d91f1f2827ac26f4
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342979"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662209"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -42,7 +42,7 @@ Bevor Sie Application Insights verwenden können, müssen Sie zunächst eine Ins
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-2.png" alt-text="Screenshot, der zeigt, wo die neu erstellte Application Insights-Protokollierung mit Instrumentierungsschlüssel angezeigt wird":::
 
 > [!NOTE]
-> Im Hintergrund wird eine [Protokollierungsentität](/rest/api/apimanagement/2019-12-01/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
+> Im Hintergrund wird eine [Protokollierungsentität](/rest/api/apimanagement/2020-12-01/logger/create-or-update) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Aktivieren der Application Insights-Protokollierung für Ihre API
 
@@ -61,7 +61,7 @@ Bevor Sie Application Insights verwenden können, müssen Sie zunächst eine Ins
 > Überschreiben des Standardwerts **0** in der Einstellung **Anzahl der zu protokollierenden Nutzlastbytes** kann die Leistung Ihrer APIs erheblich beeinträchtigen.
 
 > [!NOTE]
-> Im Hintergrund wird eine [Diagnose](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate)entität namens „applicationinsights“ auf API-Ebene erstellt.
+> Im Hintergrund wird eine [Diagnose](/rest/api/apimanagement/2020-12-01/diagnostic/create-or-update)entität namens „applicationinsights“ auf API-Ebene erstellt.
 
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

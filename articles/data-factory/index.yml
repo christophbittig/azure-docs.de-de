@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Data Factory-Dokumentation
-summary: "Azure Data Factory ist der ETL-Clouddienst von Azure für die serverlose Datenintegration und Datentransformation mit horizontaler Skalierung.  Der Dienst bietet eine Benutzeroberfläche ohne Code für die intuitive Erstellung sowie Überwachung und Verwaltung über eine zentrale Konsole. Sie können vorhandene SSIS-Pakete auch per Lift\_&\_Shift in Azure übertragen und bei voller Kompatibilität in ADF ausführen. SSIS Integration Runtime bietet einen vollständig verwalteten Dienst, sodass Sie sich keine Gedanken über die Infrastrukturverwaltung machen müssen."
+summary: Azure Data Factory ist der ETL-Clouddienst von Azure für die serverlose Datenintegration und Datentransformation mit horizontaler Skalierung.  Der Dienst bietet eine Benutzeroberfläche ohne Code für die intuitive Erstellung sowie Überwachung und Verwaltung über eine zentrale Konsole. Sie können vorhandene SSIS-Pakete auch per Lift & Shift in Azure übertragen und bei voller Kompatibilität in ADF ausführen. SSIS Integration Runtime bietet einen vollständig verwalteten Dienst, sodass Sie sich keine Gedanken über die Infrastrukturverwaltung machen müssen.
 metadata:
   title: Azure Data Factory-Dokumentation
-  description: 'Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.'
+  description: Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.
   services: data-factory
   ms.service: data-factory
   ms.topic: landing-page
@@ -12,144 +12,150 @@ metadata:
   ms.author: jburchel
   ms.date: 06/14/2021
   ms.custom: contperf-fy21q4
+  ms.openlocfilehash: 74703d21a5066f224da06d1afffdd2a5ecabd4c9
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122867150"
 landingContent:
-  - title: Informationen zu Azure Data Factory
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Einführung in Azure Data Factory
-            url: ./introduction.md
-          - text: Neues in Azure Data Factory
-            url: ./whats-new.md
-      - linkListType: reference
-        links:
-          - text: Whitepaper
-            url: ./whitepapers.md
-          - text: Preise
-            url: 'https://azure.microsoft.com/pricing/details/data-factory/'
-          - text: Grundlegendes zu Preisen anhand von Beispielen
-            url: ./pricing-concepts.md
-          - text: Aktuelle Featureupdates
-            url: 'https://azure.microsoft.com/updates/?tag=data-factory'
-          - text: ADF-Blog
-            url: 'https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog'
-          - text: Anfordern eines Features
-            url: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-  - title: Erste Schritte
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Pipelines und Aktivitäten in Azure Data Factory
-            url: ./concepts-pipelines-activities.md
-      - linkListType: quickstart
-        links:
-          - text: Azure Data Factory-Benutzeroberfläche
-            url: ./quickstart-create-data-factory-portal.md
-          - text: Tool zum Kopieren von Daten
-            url: ./quickstart-create-data-factory-copy-data-tool.md
-          - text: Azure PowerShell
-            url: ./quickstart-create-data-factory-powershell.md
-          - text: .NET
-            url: ./quickstart-create-data-factory-dot-net.md
-          - text: Python
-            url: ./quickstart-create-data-factory-python.md
-          - text: REST
-            url: ./quickstart-create-data-factory-rest-api.md
-          - text: Resource Manager-Vorlage
-            url: ./quickstart-create-data-factory-resource-manager-template.md
-      - linkListType: how-to-guide
-        links:
-          - text: Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
-            url: ./control-flow-expression-language-functions.md
-      - linkListType: learn
-        links:
-          - text: Einführung in Azure Data Factory
-            url: /learn/modules/intro-to-azure-data-factory/
-  - title: Datenverschiebung
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Data Lake- und Data Warehouse-Migration
-            url: ./data-migration-guidance-overview.md
-      - linkListType: concept
-        links:
-          - text: Kopieraktivität in Azure Data Factory
-            url: ./copy-activity-overview.md
-          - text: Leistungsoptimierung beim Kopieren
-            url: ./copy-activity-performance.md
-      - linkListType: tutorial
-        links:
-          - text: Kopieren von Daten in die Cloud
-            url: ./tutorial-copy-data-tool.md
-          - text: Kopieren von lokalen Daten in die Cloud
-            url: ./tutorial-hybrid-copy-data-tool.md
-          - text: Massenkopieren von Daten
-            url: ./tutorial-bulk-copy-portal.md
-          - text: Inkrementelles Kopieren von Daten
-            url: ./tutorial-incremental-copy-overview.md
-          - text: Laden von ADLS Gen2
-            url: ./load-azure-data-lake-storage-gen2.md
-          - text: Laden von Azure Synapse Analytics
-            url: ./load-azure-sql-data-warehouse.md
-          - text: Laden von SAP BW
-            url: ./load-sap-bw-data.md
-  - title: Datentransformation
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Erstellen eines Datenflusses
-            url: ./data-flow-create.md
-          - text: Ausdruckssprache für Datenflüsse
-            url: ./data-flow-expression-functions.md
-          - text: Debuggen eines Datenflusses
-            url: ./concepts-data-flow-debug-mode.md
-          - text: Ausführen der Datenflussaktivität innerhalb einer Pipeline
-            url: ./control-flow-execute-data-flow-activity.md
-          - text: Überwachen des Datenflusses
-            url: ./concepts-data-flow-monitoring.md
-          - text: Datenflussleistung
-            url: ./concepts-data-flow-performance.md
-      - linkListType: concept
-        links:
-          - text: Was sind Zuordnungsdatenflüsse?
-            url: ./concepts-data-flow-overview.md
-          - text: Datentransformationsausdrücke in Mapping Data Flow
-            url: ./data-flow-expression-functions.md
-  - title: Übertragen von SSIS-Paketen per Lift & Shift
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Migrieren von SSIS-Paketen zu Azure SQL Managed Instance
-            url: ./scenario-ssis-migration-ssisdb-mi.md
-      - linkListType: concept
-        links:
-          - text: Integrationslaufzeit in Azure Data Factory
-            url: ./concepts-integration-runtime.md
-      - linkListType: tutorial
-        links:
-          - text: Ausführen von SSIS-Paketen in Azure
-            url: ./tutorial-deploy-ssis-packages-azure.md
-      - linkListType: how-to-guide
-        links:
-          - text: Bereitstellen von SSIS Integration Runtime
-            url: ./create-azure-ssis-integration-runtime.md
-          - text: Hinzufügen von SSIS IR zu einem virtuellen Netzwerk.
-            url: ./join-azure-ssis-integration-runtime-virtual-network.md
-          - text: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
-            url: ./how-to-invoke-ssis-package-ssis-activity.md
-          - text: Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
-            url: ./create-self-hosted-integration-runtime.md
-  - title: 'Erstellen, Überwachen und Verwalten'
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Visuelles Überwachen von Azure Data Factory
-            url: ./author-visually.md
-          - text: Problembehandlung für Azure Data Factory-Connectors
-            url: ./connector-troubleshoot-guide.md
-          - text: Quellcodeverwaltung
-            url: ./source-control.md
-          - text: Continuous Integration und Continuous Delivery
-            url: ./continuous-integration-deployment.md
-          - text: Überwachung mit Azure Monitor
-            url: ./monitor-using-azure-monitor.md
+- title: Informationen zu Azure Data Factory
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Einführung in Azure Data Factory
+      url: ./introduction.md
+    - text: Neues in Azure Data Factory
+      url: ./whats-new.md
+  - linkListType: reference
+    links:
+    - text: Whitepaper
+      url: ./whitepapers.md
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/data-factory/
+    - text: Grundlegendes zu Preisen anhand von Beispielen
+      url: ./pricing-concepts.md
+    - text: Aktuelle Featureupdates
+      url: https://azure.microsoft.com/updates/?tag=data-factory
+    - text: ADF-Blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog
+    - text: Anfordern eines Features
+      url: /answers/topics/azure-data-factory.html
+- title: Erste Schritte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Pipelines und Aktivitäten in Azure Data Factory
+      url: ./concepts-pipelines-activities.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Data Factory-Benutzeroberfläche
+      url: ./quickstart-create-data-factory-portal.md
+    - text: Tool zum Kopieren von Daten
+      url: ./quickstart-create-data-factory-copy-data-tool.md
+    - text: Azure PowerShell
+      url: ./quickstart-create-data-factory-powershell.md
+    - text: .NET
+      url: ./quickstart-create-data-factory-dot-net.md
+    - text: Python
+      url: ./quickstart-create-data-factory-python.md
+    - text: REST
+      url: ./quickstart-create-data-factory-rest-api.md
+    - text: Resource Manager-Vorlage
+      url: ./quickstart-create-data-factory-resource-manager-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
+      url: ./control-flow-expression-language-functions.md
+  - linkListType: learn
+    links:
+    - text: Einführung in Azure Data Factory
+      url: /learn/modules/intro-to-azure-data-factory/
+- title: Datenverschiebung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Lake- und Data Warehouse-Migration
+      url: ./data-migration-guidance-overview.md
+  - linkListType: concept
+    links:
+    - text: Kopieraktivität in Azure Data Factory
+      url: ./copy-activity-overview.md
+    - text: Leistungsoptimierung beim Kopieren
+      url: ./copy-activity-performance.md
+  - linkListType: tutorial
+    links:
+    - text: Kopieren von Daten in die Cloud
+      url: ./tutorial-copy-data-tool.md
+    - text: Kopieren von lokalen Daten in die Cloud
+      url: ./tutorial-hybrid-copy-data-tool.md
+    - text: Massenkopieren von Daten
+      url: ./tutorial-bulk-copy-portal.md
+    - text: Inkrementelles Kopieren von Daten
+      url: ./tutorial-incremental-copy-overview.md
+    - text: Laden von ADLS Gen2
+      url: ./load-azure-data-lake-storage-gen2.md
+    - text: Laden von Azure Synapse Analytics
+      url: ./load-azure-sql-data-warehouse.md
+    - text: Laden von SAP BW
+      url: ./load-sap-bw-data.md
+- title: Datentransformation
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Datenflusses
+      url: ./data-flow-create.md
+    - text: Ausdruckssprache für Datenflüsse
+      url: ./data-flow-expression-functions.md
+    - text: Debuggen eines Datenflusses
+      url: ./concepts-data-flow-debug-mode.md
+    - text: Ausführen der Datenflussaktivität innerhalb einer Pipeline
+      url: ./control-flow-execute-data-flow-activity.md
+    - text: Überwachen des Datenflusses
+      url: ./concepts-data-flow-monitoring.md
+    - text: Datenflussleistung
+      url: ./concepts-data-flow-performance.md
+  - linkListType: concept
+    links:
+    - text: Was sind Zuordnungsdatenflüsse?
+      url: ./concepts-data-flow-overview.md
+    - text: Datentransformationsausdrücke in Mapping Data Flow
+      url: ./data-flow-expression-functions.md
+- title: Übertragen von SSIS-Paketen per Lift & Shift
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Migrieren von SSIS-Paketen zu Azure SQL Managed Instance
+      url: ./scenario-ssis-migration-ssisdb-mi.md
+  - linkListType: concept
+    links:
+    - text: Integrationslaufzeit in Azure Data Factory
+      url: ./concepts-integration-runtime.md
+  - linkListType: tutorial
+    links:
+    - text: Ausführen von SSIS-Paketen in Azure
+      url: ./tutorial-deploy-ssis-packages-azure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen von SSIS Integration Runtime
+      url: ./create-azure-ssis-integration-runtime.md
+    - text: Hinzufügen von SSIS IR zu einem virtuellen Netzwerk.
+      url: ./join-azure-ssis-integration-runtime-virtual-network.md
+    - text: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
+      url: ./how-to-invoke-ssis-package-ssis-activity.md
+    - text: Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
+      url: ./create-self-hosted-integration-runtime.md
+- title: Erstellen, Überwachen und Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visuelles Überwachen von Azure Data Factory
+      url: ./author-visually.md
+    - text: Problembehandlung für Azure Data Factory-Connectors
+      url: ./connector-troubleshoot-guide.md
+    - text: Quellcodeverwaltung
+      url: ./source-control.md
+    - text: Continuous Integration und Continuous Delivery
+      url: ./continuous-integration-deployment.md
+    - text: Überwachung mit Azure Monitor
+      url: ./monitor-using-azure-monitor.md

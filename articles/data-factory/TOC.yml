@@ -932,7 +932,7 @@ items:
       - name: 'Stellen Sie eine Frage: Stack Overflow'
         href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
       - name: Anfordern eines Features
-        href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+        href: /answers/topics/azure-data-factory.html
       - name: Preise
         href: 'https://azure.microsoft.com/pricing/details/data-factory/'
       - name: Verfügbarkeit nach Region
