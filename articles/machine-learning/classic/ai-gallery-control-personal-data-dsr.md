@@ -10,16 +10,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: mldocs
-ms.openlocfilehash: 3461b8026079d089bacca9f12aa94e13f5cb2874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a43ed8e9800876d6fdb25743d19f2e7113b589e5
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519234"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695940"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog
 
-
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Sie können Ihre im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog über die Benutzeroberfläche oder die Azure KI-Katalog-API anzeigen und löschen. In diesem Artikel erfahren Sie, wie das geht.
 
