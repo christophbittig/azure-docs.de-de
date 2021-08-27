@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 26a16259c80d472ac0067b670722e02767df5f7f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b31b0a1699d4de01f3f09f7689dec380458ee649
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457112"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860636"
 ---
-### <a name="compliance-by-policy-assignment"></a>Konformität nach Richtlinienzuweisung
+### <a name="compliance-by-policy-assignment"></a>Die Konformität nach Richtlinienzuweisung sortiert
 
-Stellt den Konformitätszustand, den Konformitätsprozentsatz und die Anzahl der Ressourcen für jede Azure Policy-Zuweisung zur Verfügung.
+Hier werden der Konformitätszustand, der Konformitätsprozentsatz und die Anzahl der Ressourcen für jede Azure Policy-Zuweisung zur Verfügung gestellt.
 
 ```kusto
 PolicyResources
@@ -68,9 +68,9 @@ Search-AzGraph -Query "PolicyResources | where type =~ 'Microsoft.PolicyInsights
 
 ---
 
-### <a name="compliance-by-resource-type"></a>Konformität nach Ressourcentyp
+### <a name="compliance-by-resource-type"></a>Die Konformität nach Ressourcentyp
 
-Stellt den Konformitätszustand, den Konformitätsprozentsatz und die Anzahl der Ressourcen für jeden Ressourcentyp zur Verfügung.
+Hier werden der Konformitätszustand, der Konformitätsprozentsatz und die Anzahl der Ressourcen für jeden Ressourcentyp zur Verfügung gestellt.
 
 ```kusto
 PolicyResources
@@ -125,7 +125,7 @@ Search-AzGraph -Query "PolicyResources | where type =~ 'Microsoft.PolicyInsights
 
 ### <a name="list-all-non-compliant-resources"></a>Auflisten aller nicht konformen Ressourcen
 
-Stellt den Konformitätszustand, den Konformitätsprozentsatz und die Anzahl der Ressourcen für jeden Ressourcentyp zur Verfügung.
+Hier werden der Konformitätszustand, der Konformitätsprozentsatz und die Anzahl der Ressourcen für jeden Ressourcentyp zur Verfügung gestellt.
 
 ```kusto
 PolicyResources
@@ -155,9 +155,9 @@ Search-AzGraph -Query "PolicyResources | where type == 'microsoft.policy
 
 ---
 
-### <a name="summarize-resource-compliance-by-state"></a>Zusammenfassen der Ressourcenkonformität nach Zustand
+### <a name="summarize-resource-compliance-by-state"></a>Das Zusammenfassen der Ressourcenkonformität nach Zustand
 
-Gibt die Anzahl der Ressourcen jedes einzelnen Konformitätszustands an.
+Hier wird die Anzahl der Ressourcen jedes einzelnen Konformitätszustands detailliert aufgelistet.
 
 ```kusto
 PolicyResources
@@ -188,7 +188,7 @@ Search-AzGraph -Query "PolicyResources | where type == 'microsoft.policy
 
 ---
 
-### <a name="summarize-resource-compliance-by-state-per-location"></a>Zusammenfassen der Ressourcenkonformität nach Zustand pro Speicherort
+### <a name="summarize-resource-compliance-by-state-per-location"></a>Das Zusammenfassen der Ressourcenkonformität nach Zustand pro Speicherort
 
 Hier wird die Anzahl der Ressourcen jedes Konformitätszustands pro Speicherort detailliert aufgelistet.
 

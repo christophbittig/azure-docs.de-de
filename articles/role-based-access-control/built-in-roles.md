@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/20/2021
+ms.date: 08/04/2021
 ms.custom: generated
-ms.openlocfilehash: 989724452f57b5b44954f739eae6bff1da61263f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 39eb5b5787cb26fffa168479d34bac58ba5f9b3d
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470128"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356431"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -74,21 +74,25 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Verarbeiter von Speicherwarteschlangen-Datennachrichten](#storage-queue-data-message-processor) | Einsehen, Abrufen und Löschen einer Nachricht aus einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [Absender der Speicherwarteschlangen-Datennachricht](#storage-queue-data-message-sender) | Hinzufügen von Nachrichten zu einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Storage-Warteschlangendatenleser](#storage-queue-data-reader) | Lesen und Auflisten von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [Mitwirkender an Storage-Tabellendaten](#storage-table-data-contributor) | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Azure Storage-Tabellen und -Entitäten. | 0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3 |
+> | [Storage-Tabellendatenleser](#storage-table-data-reader) | Ermöglicht den Lesezugriff auf Azure Storage-Tabellen und -Entitäten. | 76199698-9eea-4c19-bc75-cec21354c6b6 |
 > | **Web** |  |  |
 > | [Azure Maps-Datenmitwirkender](#azure-maps-data-contributor) | Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Azure Maps-Konto. | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps-Datenleser](#azure-maps-data-reader) | Gewährt Lesezugriff auf kartenbezogene Daten von einem Azure Maps-Konto. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud-Datenleser](#azure-spring-cloud-data-reader) | Gewährt Lesezugriff auf Azure Spring Cloud-Daten. | b5537268-8956-4941-a8f0-646150406f0c |
-> | [Media Services-Kontoadministrator](#media-services-account-administrator) | Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
-> | [Media Services-Administrator für Liveereignisse](#media-services-live-events-administrator) | Erstellen, Lesen und Ändern von Liveereignissen, Medienobjekten, Medienobjektfiltern und Streaminglocators; schreibgeschützter Zugriff auf andere Media Services-Ressourcen | 532bc159-b25e-42c0-969e-a1d439f60d77 |
-> | [Media Services-Medienoperator](#media-services-media-operator) | Erstellen, Lesen, Ändern und Löschen von Medienobjekten, Medienobjektfiltern, Streaminglocators und Aufträgen; schreibgeschützter Zugriff auf andere Media Services-Ressourcen | e4395492-1534-4db2-bedf-88c14621589c |
+> | [Media Services-Kontoadministrator](#media-services-account-administrator) | Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen. | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
+> | [Media Services-Administrator für Liveereignisse](#media-services-live-events-administrator) | Erstellen, Lesen, Ändern und Löschen von Liveereignissen, Medienobjekten, Medienobjektfiltern und Streaminglocators; schreibgeschützter Zugriff auf andere Media Services-Ressourcen. | 532bc159-b25e-42c0-969e-a1d439f60d77 |
+> | [Media Services-Medienoperator](#media-services-media-operator) | Erstellen, Lesen, Ändern und Löschen von Medienobjekten, Medienobjektfiltern, Streaminglocators und Aufträgen; schreibgeschützter Zugriff auf andere Media Services-Ressourcen. | e4395492-1534-4db2-bedf-88c14621589c |
 > | [Media Services-Richtlinienadministrator](#media-services-policy-administrator) | Erstellen, Lesen, Ändern und Löschen von Kontofiltern, Streamingrichtlinien, Richtlinien für symmetrische Schlüssel und Transformationen; schreibgeschützter Zugriff auf andere Media Services-Ressourcen. Aufträge, Medienobjekte oder Streamingressourcen können nicht erstellt werden. | c4bba371-dacd-4a26-b320-7250bca963ae |
-> | [Media Services-Administrator für Streamingendpunkte](#media-services-streaming-endpoints-administrator) | Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen | 99dba123-b5fe-44d5-874c-ced7199a5804 |
+> | [Media Services-Administrator für Streamingendpunkte](#media-services-streaming-endpoints-administrator) | Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen. | 99dba123-b5fe-44d5-874c-ced7199a5804 |
+> | [Mitwirkender an Suchindexdaten](#search-index-data-contributor) | Gewährt Vollzugriff auf Azure Cognitive Search-Indexdaten. | 8ebe5a00-799e-43f5-93ac-243d3dce84a7 |
+> | [Suchindexdatenleser](#search-index-data-reader) | Gewährt Lesezugriff auf Azure Cognitive Search-Indexdaten. | 1407120a-92aa-4202-b7e9-c0e197c71c8f |
 > | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR-AccessKey-Leser](#signalr-accesskey-reader) | Ermöglicht das Lesen von SignalR Service-Zugriffsschlüsseln. | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR-App-Server (Vorschau)](#signalr-app-server-preview) | Ermöglicht Ihrem App-Server den Zugriff auf SignalR Service mit AAD-Authentifizierungsoptionen. | 420fcaa2-552c-430f-98ca-3264be4806c7 |
 > | [SignalR-Mitwirkender](#signalr-contributor) | Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von SignalR Service-Ressourcen. | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
 > | [SignalR Serverless-Mitwirkender (Vorschau)](#signalr-serverless-contributor-preview) | Ermöglicht Ihrer App den Zugriff auf den Dienst im serverlosen Modus mit AAD-Authentifizierungsoptionen. | fd53cd77-2268-407a-8f46-7e7863d0f521 |
-> | [SignalR Service-Besitzer (Vorschau)](#signalr-service-owner-preview) | Bietet Vollzugriff auf Azure SignalR Service-REST-APIs. | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
+> | [SignalR Service-Besitzer](#signalr-service-owner) | Bietet Vollzugriff auf Azure SignalR Service-REST-APIs. | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR Service-Leser (Vorschau)](#signalr-service-reader-preview) | Bietet schreibgeschützten Zugriff auf Azure SignalR Service-REST-APIs. | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Mitwirkender von Webplan](#web-plan-contributor) | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -135,6 +139,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Blockchain** |  |  |
 > | [Zugriff auf Blockchainmitgliedsknoten (Vorschauversion)](#blockchain-member-node-access-preview) | Ermöglicht den Zugriff auf Blockchainmitgliedsknoten. | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **KI und Machine Learning** |  |  |
+> | [AzureML Data Scientist](#azureml-data-scientist) | Kann alle Aktionen innerhalb eines Azure Machine Learning-Arbeitsbereichs ausführen, mit Ausnahme des Erstellens oder Löschens von Computeressourcen und des Änderns des Arbeitsbereichs selbst. | f6c7c914-8db3-469d-8ca1-694a8f32e121 |
 > | [Mitwirkender für Cognitive Services](#cognitive-services-contributor) | Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services: Custom Vision-Mitwirkender](#cognitive-services-custom-vision-contributor) | Vollzugriff auf Projekte, einschließlich der Möglichkeit zum Anzeigen, Erstellen, Bearbeiten oder Löschen von Projekten | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
 > | [Cognitive Services: Custom Vision-Bereitstellung](#cognitive-services-custom-vision-deployment) | Veröffentlichen, Aufheben der Veröffentlichung oder Exportieren von Modellen. Mit der Bereitstellungsrolle kann das Projekt angezeigt, aber nicht aktualisiert werden. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
@@ -148,16 +153,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Cognitive Services QnA Maker-Leseberechtigter](#cognitive-services-qna-maker-reader) | Sie können Wissensdatenbanken nur lesen und testen. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services-Benutzer](#cognitive-services-user) | Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Internet der Dinge (IoT)** |  |  |
-> | [Mitwirkender an IoT Hub-Daten](#iot-hub-data-contributor) | Ermöglicht Vollzugriff für Vorgänge auf der IoT Hub-Datenebene | 4fc6c259-987e-4a07-842e-c321cc9d413f |
-> | [IoT Hub-Datenleser](#iot-hub-data-reader) | Ermöglicht vollständigen Lesezugriff auf Eigenschaften auf der IoT Hub-Datenebene | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
-> | [Mitwirkender an IoT Hub-Registrierung](#iot-hub-registry-contributor) | Ermöglicht Vollzugriff auf die IoT Hub-Geräteregistrierung | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
-> | [Mitwirkender an IoT Hub-Zwillingen](#iot-hub-twin-contributor) | Ermöglicht Lese- und Schreibzugriff auf alle IoT Hub-Geräte- und -Modulzwillinge. | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | [Device Update-Administrator](#device-update-administrator) | Mit dieser Rolle erhalten Sie Vollzugriff auf Verwaltungs- und Inhaltsvorgänge. | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [Device Update-Inhaltsadministrator](#device-update-content-administrator) | Mit dieser Rolle erhalten Sie Vollzugriff auf Inhaltsvorgänge. | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [Device Update-Inhaltsleser](#device-update-content-reader) | Mit dieser Rolle erhalten Sie Lesezugriff auf Inhaltsvorgänge, können jedoch keine Änderungen vornehmen. | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
 > | [Device Update-Bereitstellungsadministrator](#device-update-deployments-administrator) | Mit dieser Rolle erhalten Sie Vollzugriff auf Verwaltungsvorgänge. | e4237640-0e3d-4a46-8fda-70bc94856432 |
 > | [Device Update-Bereitstellungsleser](#device-update-deployments-reader) | Mit dieser Rolle erhalten Sie Lesezugriff auf Verwaltungsvorgänge, können jedoch keine Änderungen vornehmen. | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
 > | [Device Update-Leser](#device-update-reader) | Mit dieser Rolle erhalten Sie Lesezugriff auf Verwaltungs- und Inhaltsvorgänge, können jedoch keine Änderungen vornehmen. | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
+> | [Mitwirkender an IoT Hub-Daten](#iot-hub-data-contributor) | Ermöglicht Vollzugriff für Vorgänge auf der IoT Hub-Datenebene | 4fc6c259-987e-4a07-842e-c321cc9d413f |
+> | [IoT Hub-Datenleser](#iot-hub-data-reader) | Ermöglicht vollständigen Lesezugriff auf Eigenschaften auf der IoT Hub-Datenebene | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
+> | [Mitwirkender an IoT Hub-Registrierung](#iot-hub-registry-contributor) | Ermöglicht Vollzugriff auf die IoT Hub-Geräteregistrierung | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
+> | [Mitwirkender an IoT Hub-Zwillingen](#iot-hub-twin-contributor) | Ermöglicht Lese- und Schreibzugriff auf alle IoT Hub-Geräte- und -Modulzwillinge. | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | **Mixed Reality** |  |  |
 > | [Remote Rendering-Administrator](#remote-rendering-administrator) | Bietet dem Benutzer Konvertierungs-, Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Remote Rendering-Client](#remote-rendering-client) | Bietet dem Benutzer Sitzungsverwaltungs-, Rendering- und Diagnosefunktionen für Azure Remote Rendering. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -170,11 +175,15 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Leserrolle des API Management-Diensts](#api-management-service-reader-role) | Schreibgeschützter Zugriff auf Dienst und APIs | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | [App Configuration-Datenbesitzer](#app-configuration-data-owner) | Ermöglicht den Vollzugriff auf App Configuration-Daten. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
 > | [App Configuration-Datenleser](#app-configuration-data-reader) | Ermöglicht den Lesezugriff auf App Configuration-Daten. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | [Azure Relay-Listener](#azure-relay-listener) | Ermöglicht Lauschzugriff auf Azure Relay-Ressourcen. | 26e0b698-aa6d-4085-9386-aadae190014d |
+> | [Azure Relay-Besitzer](#azure-relay-owner) | Ermöglicht Vollzugriff auf Azure Relay-Ressourcen. | 2787bf04-f1f5-4bfe-8383-c8a24483ee38 |
+> | [Azure Relay-Absender](#azure-relay-sender) | Ermöglicht Sendezugriff auf Azure Relay-Ressourcen. | 26baccc8-eea7-41f1-98f4-1762cc7f685d |
 > | [Azure Service Bus-Datenbesitzer](#azure-service-bus-data-owner) | Ermöglicht den uneingeschränkten Zugriff auf die Azure Service Bus-Ressourcen. | 090c5cfd-751d-490a-894a-3ce6f1109419 |
 > | [Azure Service Bus-Datenempfänger](#azure-service-bus-data-receiver) | Ermöglicht Empfängern den Zugriff auf die Azure Service Bus-Ressourcen. | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Azure Service Bus-Datensender](#azure-service-bus-data-sender) | Ermöglicht Absendern den Zugriff auf die Azure Service Bus-Ressourcen. | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Besitzer der Azure Stack-Registrierung](#azure-stack-registration-owner) | Ermöglicht Ihnen die Verwaltung von Azure Stack-Registrierungen. | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid Contributor](#eventgrid-contributor) | Ermöglicht die Verwaltung von EventGrid-Vorgängen. | 1e241071-0855-49ea-94dc-649edcd759de |
+> | [EventGrid-Datenabsender](#eventgrid-data-sender) | Ermöglicht Sendezugriff auf Event Grid-Ereignisse. | d5a91429-5739-47e2-a06b-3470a27159e7 |
 > | [EventGrid EventSubscription-Mitwirkender](#eventgrid-eventsubscription-contributor) | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription-Leser](#eventgrid-eventsubscription-reader) | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [Mitwirkender an FHIR-Daten](#fhir-data-contributor) | Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten. | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -538,11 +547,14 @@ Anzeigen von virtuellen Computern im Portal und Anmelden als Administrator [Weit
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | Hiermit melden Sie sich bei einem virtuellen Computer mit Windows-Administrator- oder Linux-Root-Benutzerrechten an. |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | Hiermit melden Sie sich bei einem Azure Arc-Computer als normaler Benutzer an. |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/loginAsAdmin/action | Hiermit melden Sie sich bei einem Azure Arc-Computer mit Windows-Administrator- oder Linux-Root-Benutzerrechten an. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -561,12 +573,15 @@ Anzeigen von virtuellen Computern im Portal und Anmelden als Administrator [Weit
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
         "Microsoft.Compute/virtualMachines/login/action",
-        "Microsoft.Compute/virtualMachines/loginAsAdmin/action"
+        "Microsoft.Compute/virtualMachines/loginAsAdmin/action",
+        "Microsoft.HybridCompute/machines/login/action",
+        "Microsoft.HybridCompute/machines/loginAsAdmin/action"
       ],
       "notDataActions": []
     }
@@ -708,10 +723,12 @@ Anzeigen von virtuellen Computern im Portal und Anmelden als regulärer Benutzer
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | Hiermit melden Sie sich bei einem Azure Arc-Computer als normaler Benutzer an. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -730,11 +747,13 @@ Anzeigen von virtuellen Computern im Portal und Anmelden als regulärer Benutzer
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Compute/virtualMachines/login/action"
+        "Microsoft.Compute/virtualMachines/login/action",
+        "Microsoft.HybridCompute/machines/login/action"
       ],
       "notDataActions": []
     }
@@ -1420,6 +1439,31 @@ Ermöglicht Ihnen die Verwaltung des Sicherungsdiensts. Sie können jedoch keine
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | Überprüft den Sicherungsstatus für Recovery Services-Tresore. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | Erstellt eine Sicherungsinstanz. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/delete | Löscht die Sicherungsinstanz. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | Führt die Sicherung für die Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | Führt eine Überprüfung auf eine Wiederherstellung der Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | Löst die Wiederherstellung auf der Sicherungsinstanz aus. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/write | Erstellt eine Sicherungsrichtlinie. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/delete | Löscht die Sicherungsrichtlinie. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | Sucht nach wiederherstellbaren Zeitbereichen. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/write | Mit dem Vorgang „Sicherungstresor erstellen“ wird eine Azure-Ressource vom Typ „Sicherungstresor“ erstellt. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | Ruft das Vorgangsergebnis eines Patchvorgangs für einen Sicherungstresor ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/checkNameAvailability/action | Überprüft, ob der angeforderte BackupVault-Name verfügbar ist. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | Gibt den Status eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | Führt eine Überprüfung auf eine Sicherung der Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | Der Vorgang gibt die Liste der Vorgänge für einen Ressourcenanbieter zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1478,7 +1522,32 @@ Ermöglicht Ihnen die Verwaltung des Sicherungsdiensts. Sie können jedoch keine
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/delete",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/write",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/delete",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/write",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/locations/checkNameAvailability/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1561,6 +1630,20 @@ Ermöglicht Ihnen das Verwalten von Sicherungsdiensten, jedoch nicht das Entfern
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | Sucht nach wiederherstellbaren Zeitbereichen. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | Ruft das Vorgangsergebnis eines Patchvorgangs für einen Sicherungstresor ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | Gibt den Status eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | Der Vorgang gibt die Liste der Vorgänge für einen Ressourcenanbieter zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1641,7 +1724,21 @@ Ermöglicht Ihnen das Verwalten von Sicherungsdiensten, jedoch nicht das Entfern
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1699,6 +1796,30 @@ Kann Sicherungsdienste anzeigen, aber keine Änderungen vornehmen. [Weitere Info
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | Überprüft Features. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJobs/action | Listet Aufträge der regionsübergreifenden Wiederherstellung in der sekundären Region für den Recovery Services-Tresor auf. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJob/action | Ruft Auftragsdetails der regionsübergreifenden Wiederherstellung in der sekundären Region für den Recovery Services-Tresor ab. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationResults/read | Gibt das Ergebnis eines CRR-Vorgangs für einen Recovery Services-Tresor zurück. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationsStatus/read | Gibt den Status des CRR-Vorgangs für den Recovery Services-Tresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | Überprüft den Sicherungsstatus für Recovery Services-Tresore. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | Erstellt eine Sicherungsinstanz. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | Gibt alle Sicherungsinstanzen zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | Führt die Sicherung für die Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | Führt eine Überprüfung auf eine Wiederherstellung der Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | Löst die Wiederherstellung auf der Sicherungsinstanz aus. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | Gibt alle Sicherungsrichtlinien zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | Gibt alle Wiederherstellungspunkte zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | Sucht nach wiederherstellbaren Zeitbereichen. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | Ruft das Vorgangsergebnis eines Patchvorgangs für einen Sicherungstresor ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | Ruft die Liste mit den Sicherungstresoren in einem Abonnement ab. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | Gibt den Status eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für einen Sicherungstresor zurück. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | Führt eine Überprüfung auf eine Sicherung der Sicherungsinstanz durch. |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | Der Vorgang gibt die Liste der Vorgänge für einen Ressourcenanbieter zurück. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1754,7 +1875,31 @@ Kann Sicherungsdienste anzeigen, aber keine Änderungen vornehmen. [Weitere Info
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
-        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJobs/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJob/action",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -2497,7 +2642,7 @@ Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. D
 Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Weitere Informationen](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
@@ -2664,6 +2809,100 @@ Lesen und Auflisten von Azure Storage-Warteschlangen und -Warteschlangennachrich
 }
 ```
 
+### <a name="storage-table-data-contributor"></a>Mitwirkender an Storage-Tabellendaten
+
+Ermöglicht den Lese-, Schreib- und Löschzugriff auf Azure Storage-Tabellen und -Entitäten.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | Abfragen von Tabellen |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/write | Erstellen von Tabellen |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/delete | Zum Löschen von Tabellen |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | Zum Abfragen von Tabellenentitäten |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/write | Zum Einfügen, Zusammenführen oder Ersetzen von Tabellenentitäten |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/delete | Löschen von Tabellenentitäten |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/add/action | Zum Einfügen von Tabellenentitäten |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/update/action | Zum Zusammenführen oder Aktualisieren von Tabellenentitäten |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read, write and delete access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "name": "0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/delete"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/delete",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/add/action",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/update/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="storage-table-data-reader"></a>Storage-Tabellendatenleser
+
+Ermöglicht den Lesezugriff auf Azure Storage-Tabellen und -Entitäten.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | Abfragen von Tabellen |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | Zum Abfragen von Tabellenentitäten |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/76199698-9eea-4c19-bc75-cec21354c6b6",
+  "name": "76199698-9eea-4c19-bc75-cec21354c6b6",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="web"></a>Web
 
 
@@ -2790,7 +3029,7 @@ Gewährt Lesezugriff auf Azure Spring Cloud-Daten. [Weitere Informationen](../sp
 
 ### <a name="media-services-account-administrator"></a>Media Services-Kontoadministrator
 
-Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen
+Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -2821,7 +3060,7 @@ Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschü
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Media Services accounts; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Media Services accounts; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "name": "054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "permissions": [
@@ -2855,7 +3094,7 @@ Erstellen, Lesen, Ändern und Löschen von Media Services Konten; schreibgeschü
 
 ### <a name="media-services-live-events-administrator"></a>Media Services-Administrator für Liveereignisse
 
-Erstellen, Lesen und Ändern von Liveereignissen, Medienobjekten, Medienobjektfiltern und Streaminglocators; schreibgeschützter Zugriff auf andere Media Services-Ressourcen
+Erstellen, Lesen, Ändern und Löschen von Liveereignissen, Medienobjekten, Medienobjektfiltern und Streaminglocators; schreibgeschützter Zugriff auf andere Media Services-Ressourcen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -2885,7 +3124,7 @@ Erstellen, Lesen und Ändern von Liveereignissen, Medienobjekten, Medienobjektfi
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read and modify Live Events, Assets, Asset Filters and Streaming Locators; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Live Events, Assets, Asset Filters, and Streaming Locators; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/532bc159-b25e-42c0-969e-a1d439f60d77",
   "name": "532bc159-b25e-42c0-969e-a1d439f60d77",
   "permissions": [
@@ -2920,7 +3159,7 @@ Erstellen, Lesen und Ändern von Liveereignissen, Medienobjekten, Medienobjektfi
 
 ### <a name="media-services-media-operator"></a>Media Services-Medienoperator
 
-Erstellen, Lesen, Ändern und Löschen von Medienobjekten, Medienobjektfiltern, Streaminglocators und Aufträgen; schreibgeschützter Zugriff auf andere Media Services-Ressourcen
+Erstellen, Lesen, Ändern und Löschen von Medienobjekten, Medienobjektfiltern, Streaminglocators und Aufträgen; schreibgeschützter Zugriff auf andere Media Services-Ressourcen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -2950,7 +3189,7 @@ Erstellen, Lesen, Ändern und Löschen von Medienobjekten, Medienobjektfiltern, 
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete of Assets, Asset Filters, Streaming Locators and Jobs; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Assets, Asset Filters, Streaming Locators, and Jobs; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4395492-1534-4db2-bedf-88c14621589c",
   "name": "e4395492-1534-4db2-bedf-88c14621589c",
   "permissions": [
@@ -3016,7 +3255,7 @@ Erstellen, Lesen, Ändern und Löschen von Kontofiltern, Streamingrichtlinien, R
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
+  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies, and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c4bba371-dacd-4a26-b320-7250bca963ae",
   "name": "c4bba371-dacd-4a26-b320-7250bca963ae",
   "permissions": [
@@ -3052,7 +3291,7 @@ Erstellen, Lesen, Ändern und Löschen von Kontofiltern, Streamingrichtlinien, R
 
 ### <a name="media-services-streaming-endpoints-administrator"></a>Media Services-Administrator für Streamingendpunkte
 
-Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen
+Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschützter Zugriff auf andere Media Services-Ressourcen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -3080,7 +3319,7 @@ Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschütz
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Streaming Endpoints; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Streaming Endpoints; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/99dba123-b5fe-44d5-874c-ced7199a5804",
   "name": "99dba123-b5fe-44d5-874c-ced7199a5804",
   "permissions": [
@@ -3104,6 +3343,84 @@ Erstellen, Lesen, Ändern und Löschen von Streamingendpunkten; schreibgeschütz
     }
   ],
   "roleName": "Media Services Streaming Endpoints Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-contributor"></a>Mitwirkender an Suchindexdaten
+
+Gewährt Vollzugriff auf Azure Cognitive Search-Indexdaten.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants full access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "name": "8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-reader"></a>Suchindexdatenleser
+
+Gewährt Lesezugriff auf Azure Cognitive Search-Indexdaten.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/read | Liest Dokumente oder vorgeschlagene Abfragebegriffe aus einem Index. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants read access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "name": "1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3336,7 +3653,7 @@ Ermöglicht Ihrer App den Zugriff auf den Dienst im serverlosen Modus mit AAD-Au
 }
 ```
 
-### <a name="signalr-service-owner-preview"></a>SignalR Service-Besitzer (Vorschau)
+### <a name="signalr-service-owner"></a>SignalR Service-Besitzer
 
 Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
 
@@ -3356,6 +3673,7 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | Sendet Nachrichten direkt an eine Clientverbindung. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | Überprüft, ob eine Clientverbindung vorhanden ist. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | Schließt die Clientverbindung. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | Startet eine Serververbindung. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | Sendet Nachrichten an einen Benutzer (umfasst möglicherweise mehrere Clientverbindungen). |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | Überprüft, ob Benutzer vorhanden sind. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | Dient zum Ändern eines Benutzers. |
@@ -3384,6 +3702,7 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
         "Microsoft.SignalRService/SignalR/clientConnection/send/action",
         "Microsoft.SignalRService/SignalR/clientConnection/read",
         "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/serverConnection/write",
         "Microsoft.SignalRService/SignalR/user/send/action",
         "Microsoft.SignalRService/SignalR/user/read",
         "Microsoft.SignalRService/SignalR/user/write"
@@ -3391,7 +3710,7 @@ Bietet Vollzugriff auf Azure SignalR Service-REST-APIs.
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Service Owner (Preview)",
+  "roleName": "SignalR Service Owner",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3607,7 +3926,7 @@ Pushen oder Pullen vertrauenswürdiger Images in einer Containerregistrierung, d
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/trustedCollections/write | Ermöglicht das Pushen oder Veröffentlichen von vertrauenswürdigen Sammlungen mit Containerregistrierungsinhalten. Dies ähnelt der Aktion „Microsoft.ContainerRegistry/registries/sign/write“, aber es handelt sich um eine Datenaktion. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -3625,7 +3944,9 @@ Pushen oder Pullen vertrauenswürdiger Images in einer Containerregistrierung, d
         "Microsoft.ContainerRegistry/registries/sign/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/trustedCollections/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -3726,7 +4047,7 @@ Pullen von Images in Quarantäne aus einer Containerregistrierung [Weitere Infor
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | Ermöglicht das Pullen oder Abrufen der unter Quarantäne gestellten Artefakte aus der Containerregistrierung. Dies ähnelt „Microsoft.ContainerRegistry/registries/quarantine/read“, aber es handelt sich um eine Datenaktion. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -3744,7 +4065,9 @@ Pullen von Images in Quarantäne aus einer Containerregistrierung [Weitere Infor
         "Microsoft.ContainerRegistry/registries/quarantine/read"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read"
+      ],
       "notDataActions": []
     }
   ],
@@ -3766,7 +4089,8 @@ Pushen oder Pullen von Images in Quarantäne in einer Containerregistrierung [We
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | Ermöglicht das Pullen oder Abrufen der unter Quarantäne gestellten Artefakte aus der Containerregistrierung. Dies ähnelt „Microsoft.ContainerRegistry/registries/quarantine/read“, aber es handelt sich um eine Datenaktion. |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/write | Ermöglicht das Schreiben oder Aktualisieren des Quarantänezustands von unter Quarantäne gestellten Artefakten. Dies ähnelt der Aktion „Microsoft.ContainerRegistry/registries/quarantine/write“, aber es handelt sich um eine Datenaktion. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -3785,7 +4109,10 @@ Pushen oder Pullen von Images in Quarantäne in einer Containerregistrierung [We
         "Microsoft.ContainerRegistry/registries/quarantine/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read",
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -4592,6 +4919,8 @@ Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff dara
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Dient zum Lesen von Metriken. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | Dient zum Lesen von Metrikdefinitionen. |
 > | **NotActions** |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/write | Zum Aktivieren des Hochladens von Ledgerdigests  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/disable/action | Zum Deaktivieren des Hochladens von Ledgerdigests |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -4643,6 +4972,8 @@ Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff dara
         "Microsoft.Insights/metricDefinitions/read"
       ],
       "notActions": [
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/write",
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/disable/action",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -5561,7 +5892,7 @@ Der Datenquellenadministrator für Microsoft Purview kann Datenquellen und -übe
 Lesen, Schreiben und Löschen von Schemaregistrierungsgruppen und Schemas.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
 > | **NotActions** |  |
@@ -5685,6 +6016,63 @@ Ermöglicht den Zugriff auf Blockchainmitgliedsknoten. [Weitere Informationen](.
 ## <a name="ai--machine-learning"></a>KI und Machine Learning
 
 
+### <a name="azureml-data-scientist"></a>AzureML Data Scientist
+
+Kann alle Aktionen innerhalb eines Azure Machine Learning-Arbeitsbereichs ausführen, mit Ausnahme des Erstellens oder Löschens von Computeressourcen und des Änderns des Arbeitsbereichs selbst.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/read |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/action |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/write |  |
+> | **NotActions** |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/delete | Löscht die Machine Learning Services-Arbeitsbereiche. |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/write | Erstellt oder aktualisiert die Machine Learning Services-Arbeitsbereiche. |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/write |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/listKeys/action | Führt geheime Schlüssel für die Computeressourcen in Machine Learning Services-Arbeitsbereichen auf. |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/listKeys/action | Führt die geheimen Schlüssel für einen Machine Learning Services-Arbeitsbereich auf. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform all actions within an Azure Machine Learning workspace, except for creating or deleting compute resources and modifying the workspace itself.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "name": "f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/*/action",
+        "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/*/write"
+      ],
+      "notActions": [
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "AzureML Data Scientist",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-contributor"></a>Mitwirkender für Cognitive Services
 
 Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. [Weitere Informationen](../cognitive-services/cognitive-services-virtual-networks.md)
@@ -5696,6 +6084,7 @@ Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten vo
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/features/read | Ruft die Features eines Abonnements ab. |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/read | Ruft das Feature eines Abonnements in einem angegebenen Ressourcenanbieter ab. |
+> | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/register/action | Registriert das Feature für ein Abonnement in einem angegebenen Ressourcenanbieter. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Erstellt, aktualisiert oder liest die Diagnoseeinstellung für den Analysis-Server. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | Dient zum Lesen von Protokolldefinitionen. |
@@ -5731,6 +6120,7 @@ Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten vo
         "Microsoft.CognitiveServices/*",
         "Microsoft.Features/features/read",
         "Microsoft.Features/providers/features/read",
+        "Microsoft.Features/providers/features/register/action",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.Insights/logDefinitions/read",
@@ -6087,7 +6477,7 @@ Ermöglicht Ihnen das Ausführen von Vorgängen zum Erkennen, Überprüfen, Iden
 
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>Cognitive Services Metrics Advisor-Administrator
 
-Vollzugriff auf das Projekt, einschließlich der Konfiguration auf Systemebene. [Weitere Informationen](../cognitive-services/metrics-advisor/how-tos/alerts.md)
+Vollzugriff auf das Projekt, einschließlich der Konfiguration auf Systemebene. [Weitere Informationen](../applied-ai-services/metrics-advisor/how-tos/alerts.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -6334,7 +6724,7 @@ Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. [W
 > | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | Dient zum Auflisten von Schlüsseln. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | Auflisten von Schlüsseln |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | Liest eine klassische Metrikwarnung. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/read | Liest eine Diagnoseeinstellung für eine Ressource. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | Dient zum Lesen von Protokolldefinitionen. |
@@ -6393,163 +6783,6 @@ Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. [W
 
 ## <a name="internet-of-things"></a>Internet der Dinge (IoT)
 
-### <a name="iot-hub-data-contributor"></a>Mitwirkender an IoT Hub-Daten
-
-Ermöglicht Vollzugriff für Vorgänge auf der IoT Hub-Datenebene
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | *keine* |  |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub data plane operations.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-data-reader"></a>IoT Hub-Datenleser
-
-Ermöglicht vollständigen Lesezugriff auf Eigenschaften auf der IoT Hub-Datenebene
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | *keine* |  |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | Empfangen, Abschließen oder Abbrechen von Dateiuploadbenachrichtigungen. |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full read access to IoT Hub data-plane properties",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*/read",
-        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Reader",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-registry-contributor"></a>Mitwirkender an IoT Hub-Registrierung
-
-Ermöglicht Vollzugriff auf die IoT Hub-Geräteregistrierung
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | *keine* |  |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub device registry.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/devices/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Registry Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-twin-contributor"></a>Mitwirkender an IoT Hub-Zwillingen
-
-Ermöglicht Lese- und Schreibzugriff auf alle IoT Hub-Geräte- und -Modulzwillinge.
-
-> [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
-> | --- | --- |
-> | *keine* |  |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for read and write access to all IoT Hub device and module twins.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/twins/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Twin Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
 
 ### <a name="device-update-administrator"></a>Device Update-Administrator
 
@@ -6860,6 +7093,164 @@ Mit dieser Rolle erhalten Sie Lesezugriff auf Verwaltungs- und Inhaltsvorgänge,
     }
   ],
   "roleName": "Device Update Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-contributor"></a>Mitwirkender an IoT Hub-Daten
+
+Ermöglicht Vollzugriff für Vorgänge auf der IoT Hub-Datenebene [Weitere Informationen](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub data plane operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-reader"></a>IoT Hub-Datenleser
+
+Ermöglicht vollständigen Lesezugriff auf Eigenschaften der IoT Hub-Datenebene [Weitere Informationen](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | Empfangen, Abschließen oder Abbrechen von Dateiuploadbenachrichtigungen. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full read access to IoT Hub data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*/read",
+        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-registry-contributor"></a>Mitwirkender an IoT Hub-Registrierung
+
+Ermöglicht Vollzugriff auf die IoT Hub-Geräteregistrierung [Weitere Informationen](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub device registry.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/devices/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-twin-contributor"></a>Mitwirkender an IoT Hub-Zwillingen
+
+Ermöglicht Lese- und Schreibzugriff auf alle IoT Hub-Geräte- und -Modulzwillinge. [Weitere Informationen](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | *keine* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read and write access to all IoT Hub device and module twins.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/twins/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Twin Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7373,6 +7764,133 @@ Ermöglicht den Lesezugriff auf App Configuration-Daten. [Weitere Informationen]
 }
 ```
 
+### <a name="azure-relay-listener"></a>Azure Relay-Listener
+
+Ermöglicht Lauschzugriff auf Azure Relay-Ressourcen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/listen/action |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for listen access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26e0b698-aa6d-4085-9386-aadae190014d",
+  "name": "26e0b698-aa6d-4085-9386-aadae190014d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/listen/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Listener",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-owner"></a>Azure Relay-Besitzer
+
+Ermöglicht Vollzugriff auf Azure Relay-Ressourcen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "name": "2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-sender"></a>Azure Relay-Absender
+
+Ermöglicht Sendezugriff auf Azure Relay-Ressourcen.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/send/action |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for send access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "name": "26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-service-bus-data-owner"></a>Azure Service Bus-Datenbesitzer
 
 Ermöglicht den uneingeschränkten Zugriff auf die Azure Service Bus-Ressourcen. [Weitere Informationen](../service-bus-messaging/authenticate-application.md)
@@ -7598,6 +8116,55 @@ Ermöglicht die Verwaltung von EventGrid-Vorgängen.
 }
 ```
 
+### <a name="eventgrid-data-sender"></a>EventGrid-Datenabsender
+
+Ermöglicht Sendezugriff auf Event Grid-Ereignisse.
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topics/read | Liest ein Thema. |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/domains/read | Liest eine Domäne. |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/partnerNamespaces/read | Liest einen Partnernamespace |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/events/send/action | Sendet Ereignisse an Themen. |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows send access to event grid events.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d5a91429-5739-47e2-a06b-3470a27159e7",
+  "name": "d5a91429-5739-47e2-a06b-3470a27159e7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/topics/read",
+        "Microsoft.EventGrid/domains/read",
+        "Microsoft.EventGrid/partnerNamespaces/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventGrid/events/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Data Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-Mitwirkender
 
 Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. [Weitere Informationen](../event-grid/security-authorization.md)
@@ -7704,7 +8271,7 @@ Ermöglicht das Lesen von EventGrid-Ereignisabonnements. [Weitere Informationen]
 
 ### <a name="fhir-data-contributor"></a>Mitwirkender an FHIR-Daten
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten. [Weitere Informationen](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -7714,6 +8281,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten.
 > | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -7730,7 +8298,8 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten.
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": []
     }
@@ -7743,7 +8312,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal vollen Zugriff auf FHIR-Daten.
 
 ### <a name="fhir-data-exporter"></a>FHIR-Datenexportierer
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von FHIR-Daten. [Weitere Informationen](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -7754,6 +8323,8 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von 
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | Liest FHIR-Ressourcen (einschließlich Suche und Verlauf mit Versionsangabe).  |
 > | Microsoft.HealthcareApis/services/fhir/resources/export/action | Exportvorgang ($export). |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | Liest FHIR-Ressourcen (einschließlich Suche und Verlauf mit Versionsangabe).  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action | Exportvorgang ($export). |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -7771,7 +8342,9 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von 
       "notActions": [],
       "dataActions": [
         "Microsoft.HealthcareApis/services/fhir/resources/read",
-        "Microsoft.HealthcareApis/services/fhir/resources/export/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/export/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action"
       ],
       "notDataActions": []
     }
@@ -7784,7 +8357,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Exportieren von 
 
 ### <a name="fhir-data-reader"></a>FHIR-Datenleser
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Weitere Informationen](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -7794,6 +8367,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Wei
 > | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | Liest FHIR-Ressourcen (einschließlich Suche und Verlauf mit Versionsangabe).  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | Liest FHIR-Ressourcen (einschließlich Suche und Verlauf mit Versionsangabe).  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -7810,7 +8384,8 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Wei
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/read"
+        "Microsoft.HealthcareApis/services/fhir/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read"
       ],
       "notDataActions": []
     }
@@ -7823,7 +8398,7 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen von FHIR-Daten. [Wei
 
 ### <a name="fhir-data-writer"></a>FHIR-Datenschreiber
 
-Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FHIR-Daten. [Weitere Informationen](../healthcare-apis/fhir/configure-azure-rbac.md)
+Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FHIR-Daten. [Weitere Informationen](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -7833,8 +8408,10 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FH
 > | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action | Endgültiger Löschvorgang (einschließlich Versionsverlauf). |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action | Endgültiger Löschvorgang (einschließlich Versionsverlauf). |
 
 ```json
 {
@@ -7849,10 +8426,12 @@ Die Rolle ermöglicht dem Benutzer oder Prinzipal das Lesen und Schreiben von FH
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action"
       ]
     }
   ],
@@ -8625,7 +9204,7 @@ Azure Sentinel-Antwortender [Weitere Informationen](../sentinel/roles.md)
 
 ### <a name="key-vault-administrator"></a>Key Vault-Administrator
 
-Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und alle darin enthaltenen Objekte (einschließlich Zertifikate, Schlüssel und Geheimnisse). Kann keine Key Vault-Ressourcen oder Rollenzuweisungen verwalten. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8684,7 +9263,7 @@ Ausführen beliebiger Vorgänge auf Datenebene für einen Schlüsseltresor und a
 
 ### <a name="key-vault-certificates-officer"></a>Key Vault-Zertifikatbeauftragter
 
-Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Ausführen beliebiger Aktionen für die Zertifikate eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8800,7 +9379,7 @@ Verwalten von Schlüsseltresoren, gestattet Ihnen jedoch nicht, Rollen in Azure 
 
 ### <a name="key-vault-crypto-officer"></a>Key Vault-Kryptografiebeauftragter
 
-Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8859,7 +9438,7 @@ Ausführen beliebiger Aktionen für die Schlüssel eines Schlüsseltresors mit A
 
 ### <a name="key-vault-crypto-service-encryption-user"></a>Key Vault Crypto Service Encryption-Benutzer
 
-Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Entpacken. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | Beschreibung |
@@ -8908,7 +9487,7 @@ Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Ent
 
 ### <a name="key-vault-crypto-user"></a>Key Vault-Kryptografiebenutzer
 
-Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -8963,7 +9542,7 @@ Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur
 
 ### <a name="key-vault-reader"></a>Key Vault-Leser
 
-Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln und Geheimnissen. Sensible Werte, z. B. der Inhalt von Geheimnissen oder Schlüsselmaterial, können nicht gelesen werden. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -9024,7 +9603,7 @@ Lesen von Metadaten von Schlüsseltresoren und deren Zertifikaten, Schlüsseln u
 
 ### <a name="key-vault-secrets-officer"></a>Key Vault-Geheimnisbeauftragter
 
-Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit Ausnahme der Verwaltung von Berechtigungen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -9083,7 +9662,7 @@ Ausführen beliebiger Aktionen für die Geheimnisse eines Schlüsseltresors mit 
 
 ### <a name="key-vault-secrets-user"></a>Key Vault-Geheimnisbenutzer
 
-Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden.
+Lesen der Inhalte von Geheimnissen. Funktioniert nur für Schlüsseltresore, die das Berechtigungsmodell „Rollenbasierte Azure-Zugriffssteuerung“ verwenden. [Weitere Informationen](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -9179,6 +9758,7 @@ Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rech
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/* | Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -9209,6 +9789,7 @@ Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rech
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*",
+        "Microsoft.IoTSecurity/*",
         "Microsoft.Support/*"
       ],
       "notActions": [],
@@ -9331,10 +9912,15 @@ Anzeigen von Berechtigungen für Security Center. Kann Empfehlungen, Warnungen, 
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/*/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/*/read | Lesen von Sicherheitskomponenten und -richtlinien |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/*/read |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | Ruft Informationen zu herunterladbaren IoT Defender-Paketen ab. |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | Lädt die Manager-Aktivierungsdatei mit Daten zum Abonnementkontingent herunter. |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | Lädt die Dateien zum Zurücksetzen des Kennworts für IoT-Sensoren herunter. |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/packageDownloads/action | Ruft Informationen zu herunterladbaren IoT Defender-Paketen ab. |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/downloadManagerActivation/action | Lädt die Manager-Aktivierungsdatei herunter. |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/sensors/* |  |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/onPremiseSensors/* |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -9360,10 +9946,15 @@ Anzeigen von Berechtigungen für Security Center. Kann Empfehlungen, Warnungen, 
         "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
+        "Microsoft.IoTSecurity/*/read",
         "Microsoft.Support/*/read",
         "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
         "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
         "Microsoft.Security/iotSensors/downloadResetPassword/action",
+        "Microsoft.IoTSecurity/defenderSettings/packageDownloads/action",
+        "Microsoft.IoTSecurity/defenderSettings/downloadManagerActivation/action",
+        "Microsoft.IoTSecurity/sensors/*",
+        "Microsoft.IoTSecurity/onPremiseSensors/*",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -10119,7 +10710,7 @@ Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. [We
 Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | Erstellt oder aktualisiert eine Bereitstellung. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Dient zum Abrufen der Ergebnisse des Abonnementvorgangs. |
@@ -10612,6 +11203,7 @@ Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren.
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Liest einen beliebigen Azure Arc-Computer. |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schreibt auf einem Azure Arc-Computer |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Löscht einen Azure Arc-Computer |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/UpgradeExtensions/action | Aktualisiert Erweiterungen auf Azure Arc-Computern. |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/read | Liest alle Azure Arc-Erweiterungen |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Installiert oder aktualisiert eine Azure Arc-Erweiterung |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/delete | Löscht eine Azure Arc-Erweiterung |
@@ -10638,6 +11230,7 @@ Kann Azure Connected Machines lesen, schreiben, löschen und erneut integrieren.
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/machines/UpgradeExtensions/action",
         "Microsoft.HybridCompute/machines/extensions/read",
         "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.HybridCompute/machines/extensions/delete",

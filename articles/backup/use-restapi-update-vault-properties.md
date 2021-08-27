@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dfa05a3bc26c21da95d60374582f10a1a0b84d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91567824"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458845"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -25,7 +25,7 @@ Sie müssen sich je nach Szenario genau überlegen, ob Sie das vorläufige Lösc
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Abrufen des Zustands des vorläufigen Löschens mithilfe der REST-API
 
-Das vorläufige Löschen ist für neu erstellte Recovery Services-Tresore standardmäßig aktiviert. Informationen zum Abrufen/Aktualisieren des Zustands des vorläufigen Löschens für einen Tresor finden Sie in der konfigurationsbezogenen [REST-API-Dokumentation](/rest/api/backup/backupresourcevaultconfigs) des Sicherungstresors.
+Das vorläufige Löschen ist für neu erstellte Recovery Services-Tresore standardmäßig aktiviert. Informationen zum Abrufen/Aktualisieren des Zustands des vorläufigen Löschens für einen Tresor finden Sie in der konfigurationsbezogenen [REST-API-Dokumentation](/rest/api/backup/backup-resource-vault-configs) des Sicherungstresors.
 
 Verwenden Sie den folgenden *GET*-Vorgang, um den aktuellen Zustand des vorläufigen Löschens für einen Tresor abzurufen:
 
@@ -45,7 +45,7 @@ Die erfolgreiche Antwort für den GET-Vorgang sieht wie folgt aus:
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backup-resource-vault-configs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Beispielantwort
 
@@ -81,7 +81,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-Ausführlichere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/backup/backupresourcevaultconfigs/update#request-body).
+Ausführlichere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/backup/backup-resource-vault-configs/update#request-body).
 
 |Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
@@ -109,7 +109,7 @@ Die erfolgreiche Antwort für den PATCH-Vorgang sieht wie folgt aus:
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 – OK     |   [BackupResourceVaultConfig](/rest/api/backup/backup-resource-vault-configs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response-for-the-patch-operation"></a>Beispielantwort für den PATCH-Vorgang
 

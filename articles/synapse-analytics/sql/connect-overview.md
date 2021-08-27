@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba85f51e821faf1c4704d7295dd6ddfcb977c3c9
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 5cd8666f1dd76c3edc729aae8d237e42d0b27637
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860249"
 ---
 # <a name="connect-to-synapse-sql"></a>Herstellen einer Verbindung mit Synapse SQL
 Stellen Sie eine Verbindung mit der Synapse SQL-Funktion in Azure Synapse Analytics her.
@@ -94,4 +94,4 @@ Bei der Verbindungs- und Objekterstellung werden von Synapse SQL einige Einstel
 Für die Ausführung von Abfragen eines **serverlosen SQL-Pools** werden [Azure Data Studio](get-started-azure-data-studio.md) und Azure Synapse Studio empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizieren bei Azure Synapse Analytics](sql-authentication.md?tabs=provisioned).
+Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?context=/azure/synapse-analytics/context/context). Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizieren bei Azure Synapse Analytics](sql-authentication.md?tabs=provisioned).

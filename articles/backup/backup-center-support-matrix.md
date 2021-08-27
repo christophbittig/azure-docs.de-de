@@ -3,12 +3,12 @@ title: Supportmatrix für Backup Center
 description: Dieser Artikel enthält eine Zusammenfassung der Szenarien, die Backup Center für jeden Workloadtyp unterstützt.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b922f2e320f9b41186f5a6397af5cd5f4b3f7750
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504506"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356333"
 ---
 # <a name="support-matrix-for-backup-center"></a>Supportmatrix für Backup Center
 
@@ -31,14 +31,15 @@ Backup Center bietet eine zentralisierte Benutzeroberfläche, mit der Unternehme
 | Einblicke | Anzeigen von Sicherungsberichten | <li> Virtueller Azure-Computer <br><br> <li> SQL in Azure Virtual Machine <br><br> <li> SAP HANA in Azure Virtual Machine <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup-Agent (MARS) <br><br> <li> Azure Backup Server (MABS) | Weitere Informationen finden Sie in den [unterstützten Szenarien für Sicherungsberichte](./configure-reports.md#supported-scenarios) |
 | Governance | Anzeigen und Zuweisen integrierter und benutzerdefinierter Azure-Richtlinien unter der Kategorie „Sicherung“ | – | – |
 | Governance | Anzeigen von Datenquellen, die nicht für die Sicherung konfiguriert sind | <li> Virtueller Azure-Computer <br><br> <li> Azure Database for PostgreSQL-Server | – |
+| Überwachung | Anzeigen von Azure Monitor-Warnungen im großen Stil | <li> Virtueller Azure-Computer <br><br> <li> Azure Database for PostgreSQL-Server <br><br> <li> SQL Server in Azure-VM <br><br> <li> SAP HANA in Azure-VM <br><br> <li> Azure Files<br/><br/> <li>Azure-Blobs<br/><br/> <li>Azure Managed Disks | Ziehen Sie die Dokumentation zu [Warnungen](./backup-azure-monitoring-built-in-monitor.md#azure-monitor-alerts-for-azure-backup-preview) zurate. |
+| Aktionen | Ausführen eines regionsübergreifenden Wiederherstellungsauftrags von Backup Center aus | <li> Virtueller Azure-Computer <br><br> <li> SQL Server in Azure-VM <br><br> <li> SAP HANA in Azure-VM | Ziehen Sie die Dokumentation zur [regionsübergreifenden Wiederherstellung](./backup-create-rs-vault.md#set-cross-region-restore) zurate. |
 
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 
 | **Kategorie** | **Szenario**  |
 |--------------|---------------|
-| Überwachung | Anzeigen von Warnungen im großen Stil |
-| Aktionen | Konfigurieren von Tresoreinstellungen im großen Stil |
-| Aktionen | Ausführen eines regionsübergreifenden Wiederherstellungsauftrags von Backup Center aus |
+| Aktionen | Das Konfigurieren von Tresoreinstellungen im großen Stil wird vom Azure Backup Center derzeit nicht unterstützt. |
+| Verfügbarkeit | Azure Backup Center ist in nationalen Clouds zurzeit nicht verfügbar. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

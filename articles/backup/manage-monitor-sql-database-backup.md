@@ -2,13 +2,13 @@
 title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 3938e26e134f7d823d8a6f6fac631ebf4442e6ab
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/27/2021
+ms.openlocfilehash: e768eae283aaf113d68f425cb306860411a9bcd9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519135"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339606"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -123,6 +123,9 @@ Navigieren Sie im Tresordashboard zu **Verwalten** > **Sicherungsrichtlinien**, 
   ![Ändern der Sicherungsrichtlinie](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
 Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus.
+
+>[!Note]
+>Eine Änderung der Richtlinie wirkt sich auch auf vorhandene Wiederherstellungspunkte aus. <br><br> Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Zugriffsebene „Archiv“ befunden haben, verursacht das Löschen dieser Wiederherstellungspunkte Kosten für vorzeitiges Löschen. [Weitere Informationen](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)
 
 ### <a name="inconsistent-policy"></a>Inkonsistente Richtlinie
 

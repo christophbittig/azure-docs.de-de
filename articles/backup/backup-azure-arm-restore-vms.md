@@ -3,13 +3,13 @@ title: Wiederherstellen von VMs über das Azure-Portal
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal, einschließlich des Features zur regionsübergreifenden Wiederherstellung
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 05/01/2021
-ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/06/2021
+ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339608"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -120,6 +120,9 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 1. Klicken Sie unter **Wiederherstellen** auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren.
 
     ![Drilldown des Wiederherstellungsauftrags](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
+   
+   >[!Note]
+   >Bei einer Shared Access Signature (SAS), bei der **Zugriff auf Speicherkontoschlüssel erlauben** auf „deaktiviert“ festgelegt ist, wird die Vorlage nicht bereitgestellt, wenn Sie **Vorlage bereitstellen** auswählen.
 
 1. Um die in der Vorlage angegebene VM-Einstellung anzupassen, wählen Sie **Vorlage bearbeiten** aus. Wenn Sie weitere Anpassungen hinzufügen möchten, wählen Sie **Parameter bearbeiten** aus.
     - [Erfahren Sie mehr](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) zum Bereitstellen von Ressourcen aus einer benutzerdefinierten Vorlage.
@@ -227,6 +230,51 @@ Es gibt eine Reihe gängiger Szenarien, in denen Sie VMs möglicherweise wiederh
 **Wiederherstellen mehrerer Domänen in einer Gesamtstruktur** | Wir empfehlen eine [Wiederherstellung der Gesamtstruktur](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 
 Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von Active Directory-Domänencontrollern](active-directory-backup-restore.md).
+
+## <a name="restore-vms-with-managed-identities"></a>Wiederherstellen von virtuellen Computern mit verwalteten Identitäten
+
+Durch verwaltete Identitäten braucht der Benutzer die Anmeldeinformationen nicht mehr zu verwalten. Verwaltete Identitäten stellen eine Identität bereit, die Anwendungen beim Herstellen einer Verbindung mit Ressourcen verwenden, die Azure Active Directory-Authentifizierung (Azure AD) unterstützen.  
+
+Azure Backup bietet die Flexibilität, die verwaltete Azure-VM mit [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) wiederherzustellen. Sie können [systemseitig verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) oder benutzerseitig verwalteten Identitäten auswählen, wie in der folgenden Abbildung dargestellt. Diese Option ist einer der Eingabeparameter auf dem Blatt [**Konfiguration wiederherstellen**](#create-a-vm) der Azure-VM. Verwaltete Identitäten, die als einer der Eingabeparameter verwendet werden, werden nur für den Zugriff auf die Speicherkonten verwendet, die während der Wiederherstellung als Stagingspeicherort verwendet werden, nicht aber für sonstige Azure-Ressourcensteuerung. Diese verwalteten Identitäten müssen dem Tresor zugeordnet werden.
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-system-managed-identities-or-user-managed-identities.png" alt-text="Screenshot: Auswahl von systemseitig oder benutzerseitig verwalteten Identitäten.":::
+
+Wenn Sie systemseitig zugewiesene oder benutzerseitig zugewiesene verwaltete Identitäten auswählen, überprüfen Sie, ob die folgenden Aktionen für die verwaltete Identität im Zielprofilsequenz-Speicherkonto vorliegen.
+
+```json
+"permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/write"
+                ],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
+                ],
+                "notDataActions": []
+            }
+```
+
+Oder fügen Sie die Rollenzuweisung für den Stagingspeicherort (Speicherkonto) hinzu, um über einen [Mitwirkenden für Sicherungen des Speicherkontos](./blob-backup-configure-manage.md#grant-permissions-to-the-backup-vault-on-storage-accounts) und einen [Mitwirkenden an Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) für die erfolgreiche Wiederherstellung zu verfügen.
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/add-role-assignment-on-staging-location.png" alt-text="Screenshot: Hinzufügen der Rollenzuweisung am Stagingspeicherort.":::
+
+Sie können auch die [benutzerseitig verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) auswählen, indem Sie die Eingabe als MSI-Ressourcen-ID bereitstellen, wie in der folgenden Abbildung gezeigt.   
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-user-managed-identity-by-providing-input-as-msi-resource-id.png" alt-text="Screenshot: Auswählen der benutzerseitig verwalteten Identität durch Bereitstellen der Eingabe als MSI-Ressourcen-ID.":::
+
+>[!Note]
+>Unterstützung ist nur für verwaltete VMs und nicht für klassische und nicht verwaltete VMs verfügbar. Für die [Speicherkonten, die mit Firewalls eingeschränkt sind](../storage/common/storage-network-security.md?tabs=azure-portal), wird nur die System-MSI unterstützt.
+>
+>Die regionsübergreifende Wiederherstellung (Cross Region Restore, CRR) wird bei verwalteten Identitäten nicht unterstützt.
+>
+>Derzeit ist dies in allen öffentlichen und nationalen Azure-Cloudregionen verfügbar.
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
 

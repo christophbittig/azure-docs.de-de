@@ -2,14 +2,15 @@
 metadata:
   title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
-  ms.topic: conceptual
-  ms.date: 11/7/2019
-  ms.openlocfilehash: 4a0212e204278214273f49e64b5db1da29da9fad
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.topic: article
+  ms.service: backup
+  ms.date: 06/23/2021
+  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "111907153"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122351128"
 title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 sections:
@@ -18,15 +19,24 @@ sections:
   - question: >
       Wie viele vollständige Sicherungen werden pro Tag unterstützt?
     answer: >
-      Wir unterstützen nur eine vollständige Sicherung pro Tag. Es ist nicht möglich, am selben Tag eine differenzielle Sicherung und eine vollständige Sicherung auszulösen.
+      Sie können eine vollständige Sicherung und mehrere bedarfsgesteuerte Sicherungen pro Tag planen.
+
+
+      | Sicherungstypen | Geplante Sicherung | Bedarfsgesteuerte Sicherungen |
+
+      | --- | --- | --- |
+
+      | Vollständig | Pro Tag nur eine unterstützt. | Mehrmals pro Tag unterstützt. |
+
+      | Delta (differenziell/inkrementell) | Pro Tag nur eine unterstützt. <br><br> **Hinweis** <br> Deltasicherungen können nur geplant werden, wenn für den jeweiligen Tag keine vollständige Sicherung geplant ist. Außerdem kann in einer Sicherungsrichtlinie nur ein Deltasicherungstyp (differenziell/inkrementell) geplant werden. | Mehrmals pro Tag unterstützt. |
   - question: >
-      Erstellen erfolgreiche Sicherungsaufträge Warnungen?
+      Wo finde ich Warnungen, die sich auf Sicherungen beziehen?
     answer: >
-      Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist. Ausführliche Informationen zum Verhalten von Portalwarnungen finden Sie [hier](./backup-azure-monitoring-built-in-monitor.md). Falls Sie aber daran interessiert sind, Benachrichtigungen auch für erfolgreiche Aufträge zu erhalten, können Sie [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) verwenden.
+      Erfolgreiche Sicherungsaufträge generieren heute keine Warnungen. Warnungen werden nur für Sicherungsaufträge generiert, bei denen ein Fehler aufgetreten ist. [Erfahren Sie](backup-azure-monitoring-built-in-monitor.md), wie Sie das Azure-Portal verwenden, um Azure Backup-Warnungen anzuzeigen.
   - question: >
       Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
     answer: >
-      Im Menü Sicherungsauftrag werden nur bedarfsgesteuerte Sicherungsaufträge angezeigt. Verwenden Sie für geplante Aufträge [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
+      Im Menü „Sicherungsauftrag“ werden nur bedarfsgesteuerte Sicherungsaufträge angezeigt, die entweder in Bearbeitung, erfolgreich oder fehlgeschlagen sind. Verwenden Sie für geplante Aufträge [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
   - question: >
       Werden zukünftige Datenbanken für die Durchführung von Sicherungen automatisch hinzugefügt?
     answer: >
@@ -42,25 +52,25 @@ sections:
     answer: >
       Eine umbenannte Datenbank wird wie eine neue Datenbank behandelt. Diese Situation wird daher vom Dienst so behandelt, als wäre die Datenbank nicht gefunden worden, und für die Sicherungen tritt ein Fehler auf. Die umbenannte Datenbank wird als neue Datenbank angezeigt und muss für Schutz konfiguriert werden.
   - question: >
-      Was sind die Voraussetzungen für die Sicherung von SAP HANA-Datenbanken auf einer Azure-VM?
+      Wie beginne ich mit dem Sichern meiner SAP HANA-Datenbanken mit Azure Backup?
     answer: >
-      Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und den [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
+      Im [Tutorial](./tutorial-backup-sap-hana-db.md) finden Sie eine Schritt-für-Schritt-Anleitung für den Einstieg in Azure Backup für SAP HANA-Datenbanken. Sie können auch die [Befehlszeilenschnittstelle (CLI)](./tutorial-sap-hana-backup-cli.md) verwenden, um Sicherungen zu konfigurieren und zu verwalten.
   - question: >
-      Welche Berechtigungen sollten festgelegt werden, damit SAP HANA-Datenbanken von Azure gesichert werden können?
+      Gibt es Voraussetzungen für das Sichern von SAP HANA-Datenbanken mit Azure Backup?
     answer: >
-      Wenn Sie das Skript vor der Registrierung ausführen, werden die erforderlichen Berechtigungen festgelegt, damit Azure SAP HANA-Datenbanken sichern kann. Weitere Informationen zu den Aufgaben des Vorregistrierungsskripts finden Sie [hier](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
+      Lesen Sie die [Voraussetzungen](./tutorial-backup-sap-hana-db.md#prerequisites) für die Verwendung von Azure Backup mit SAP HANA.
   - question: >
       Funktionieren Sicherungen nach der Migration von SAP HANA von SDC auf MDC?
     answer: >
       Weitere Informationen finden Sie in [diesem Abschnitt](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) des Leitfadens zur Problembehandlung.
   - question: >
-      Was soll beim Upgrade innerhalb der gleichen Version durchgeführt werden?
+      Wie stelle ich sicher, dass Sicherungen nach dem Upgrade meiner HANA-Instanz innerhalb derselben HANA-Version fortgesetzt werden?
     answer: >
       Weitere Informationen finden Sie in [diesem Abschnitt](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) des Leitfadens zur Problembehandlung.
   - question: >
       Kann die HANA-Sicherung in Azure für eine virtuelle IP-Adresse (Lastenausgleich) und nicht einen virtuellen Computer eingerichtet werden?
     answer: >
-      Derzeit besteht keine Möglichkeit, die Lösung nur für eine virtuelle IP-Adresse einzurichten. Es wird ein virtueller Computer zum Ausführen der Lösung benötigt.
+      Derzeit besteht keine Möglichkeit, die Lösung nur für eine virtuelle IP-Adresse oder einen Proxy einzurichten. Es wird ein virtueller Computer zum Ausführen der Lösung benötigt.
   - question: >
       Wie kann ich eine bedarfsgesteuerte Sicherung in das lokale Dateisystem anstatt in den Azure-Tresor verschieben?
     answer: >

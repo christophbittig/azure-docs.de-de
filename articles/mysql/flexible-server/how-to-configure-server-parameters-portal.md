@@ -6,17 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 618862e12bd62fbe37ef5e621c89babd7942c04b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2d02a4e0e63bd0861c0a414f3d56e9c62e19dc8a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106954"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639693"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Serverparametern auf flexiblen Azure Database for MySQL-Servern über das Azure-Portal
 
-> [!IMPORTANT] 
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
+> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Sie können die Konfiguration flexibler Azure Database for MySQL-Server über Serverparameter verwalten. Die Serverparameter werden beim Erstellen des Servers mit einem Standardwert und einem empfohlenen Wert konfiguriert.  
 
@@ -67,7 +69,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden.<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
+>Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden.<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
 
 Um die verfügbaren Zeitzonenwerte anzuzeigen, führen Sie den folgenden Befehl aus:
 

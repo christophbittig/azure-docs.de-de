@@ -6,17 +6,17 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0306002ea8a77e82e0247353489761a24654e0e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: b1052b996fd9da8452d0f23d60fc7ea53676f713
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417359"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769822"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Ereignishandler und Ziele in Event Grid in Kubernetes
 Ein Ereignishandler ist ein beliebiges System, das einen Endpunkt verfügbar macht und das Ziel für Ereignisse ist, die von Event Grid gesendet werden. Ein Ereignishandler, der ein Ereignis empfängt, reagiert darauf und verwendet die Ereignisnutzdaten, um Logik auszuführen, was zum Auftreten neuer Ereignisse führen kann.
 
-Die Methode zum Konfigurieren Event Grid zum Senden von Ereignissen an ein Ziel besteht in der Erstellung eines Ereignisabonnements. Dies kann über die [Azure CLI](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create), das [Verwaltungs-SDK](../sdk-overview.md#management-sdks) oder direkte HTTP(s)-Aufrufe mithilfe der API-Version [2020-10-15-preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate) erfolgen.
+Die Methode zum Konfigurieren Event Grid zum Senden von Ereignissen an ein Ziel besteht in der Erstellung eines Ereignisabonnements. Dies kann über die [Azure CLI](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create), das [Verwaltungs-SDK](../sdk-overview.md#management-sdks) oder direkte HTTP(s)-Aufrufe mithilfe der API-Version [2020-10-15-preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) erfolgen.
 
 Im Allgemeinen kann Event Grid in Kubernetes Ereignisse über **Webhooks** an beliebige Ziele senden. Webhooks sind HTTP(s)-Endpunkte, die von einem Dienst oder einer Workload verfügbar gemacht werden, auf den bzw. die Event Grid Zugriff besitzt. Der Webhook kann eine Workload sein, die im gleichen Cluster, im gleichen Netzwerkbereich, in der Cloud, lokal oder an einem beliebigen Ort gehostet wird, den Event Grid erreichen kann. 
 
@@ -39,15 +39,15 @@ Zusätzlich zu Webhooks kann Event Grid in Kubernetes Ereignisse an die folgende
 
 
 ## <a name="feature-parity"></a>Featureparität
-Event Grid in Kubernetes bietet ein gutes Maß an Featureparität durch Azure Event Grid-Unterstützung für Ereignisabonnements. In der folgenden Liste werden die wichtigsten Unterschiede bei der Ereignisabonnementfunktionalität aufgeführt. Abgesehen von diesen Unterschieden können Sie die [REST-API-Version 2020-10-15-preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions) von Azure Event Grid als Referenz für die Verwaltung von Ereignisabonnements für Event Grid in Kubernetes verwenden.
+Event Grid in Kubernetes bietet ein gutes Maß an Featureparität durch Azure Event Grid-Unterstützung für Ereignisabonnements. In der folgenden Liste werden die wichtigsten Unterschiede bei der Ereignisabonnementfunktionalität aufgeführt. Abgesehen von diesen Unterschieden können Sie die [REST-API-Version 2020-10-15-preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions) von Azure Event Grid als Referenz für die Verwaltung von Ereignisabonnements für Event Grid in Kubernetes verwenden.
 
-1. Verwenden Sie die [REST-API-Version 2020-10-15-Preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions).
+1. Verwenden Sie die [REST-API-Version 2020-10-15-Preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions).
 2. Der [Azure Event Grid-Trigger für Azure Functions](../../azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp%2Cconsole) wird nicht unterstützt. Sie können einen WebHook-Zieltyp verwenden, um Ereignisse an Azure Functions zu übermitteln.
 3. Es gibt keine Unterstützung für den [Speicherort für unzustellbare Nachrichten](../manage-event-delivery.md#set-dead-letter-location). Dies bedeutet, dass Sie ``properties.deadLetterDestination`` nicht in Ihren Ereignisabonnementnutzdaten verwenden können.
 4. Hybridverbindungen von Azure Relay als Ziel werden noch nicht unterstützt.
-5. Es wird nur das CloudEvents-Schema unterstützt. Der unterstützte Schemawert ist „[CloudEventSchemaV1_0](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#eventdeliveryschema)“. Das CloudEvents-Schema ist erweiterbar und basiert auf offenen Standards.  
-6. Bezeichnungen ([properties.labels](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#request-body)) gelten nicht für Event Grid in Kubernetes. Daher sind sie nicht verfügbar.
-7. [Übermittlung mit Ressourcenidentität](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#deliverywithresourceidentity) wird nicht unterstützt. Daher werden alle Eigenschaften für [Ereignisabonnementidentität](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#eventsubscriptionidentity) nicht unterstützt.
+5. Es wird nur das CloudEvents-Schema unterstützt. Der unterstützte Schemawert ist „[CloudEventSchemaV1_0](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#eventdeliveryschema)“. Das CloudEvents-Schema ist erweiterbar und basiert auf offenen Standards.  
+6. Bezeichnungen ([properties.labels](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#request-body)) gelten nicht für Event Grid in Kubernetes. Daher sind sie nicht verfügbar.
+7. [Übermittlung mit Ressourcenidentität](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#deliverywithresourceidentity) wird nicht unterstützt. Daher werden alle Eigenschaften für [Ereignisabonnementidentität](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#eventsubscriptionidentity) nicht unterstützt.
 8. Die [Überprüfung des Zielendpunkts](../webhook-event-delivery.md#endpoint-validation-with-event-grid-events) wird noch nicht unterstützt.
 
 ## <a name="event-filtering-in-event-subscriptions"></a>Ereignisfilterung in Ereignisabonnements

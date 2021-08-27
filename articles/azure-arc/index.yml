@@ -25,10 +25,10 @@ highlightedContent:
     - title: Azure Arc-fähiges Kubernetes
       itemType: overview
       url: ./kubernetes/overview.md
-    - title: "Datendienste mit Azure\_Arc-Unterstützung (Vorschauversion)"
+    - title: "Azure\_Arc-fähige Datendienste"
       itemType: overview
       url: ./data/overview.md
-    - title: SQL Server auf Azure Arc-fähigen Servern (Vorschau)
+    - title: SQL Server auf Azure Arc-fähigen Servern
       itemType: overview
       url: /sql/sql-server/azure-arc/overview
 conceptualContent:
@@ -43,10 +43,10 @@ conceptualContent:
           text: Sicherheitsübersicht
         - url: ./servers/policy-reference.md
           itemType: learn
-          text: Zugangskontrollrichtlinien mit Azure Policy
+          text: Definitionen für Zugangskontrollrichtlinien mit Azure Policy
         - url: /sql/sql-server/azure-arc/overview
           itemType: overview
-          text: "Aktivieren einer SQL\_Server-Instanz mit Azure\_Arc-Unterstützung (Vorschauversion)"
+          text: "Herstellen einer Verbindung für SQL\_Server"
       footerLink:
         url: ./servers/index.yml
         text: Weitere Informationen
@@ -67,7 +67,7 @@ conceptualContent:
       footerLink:
         url: ./kubernetes/index.yml
         text: Weitere Informationen
-    - title: "Datendienste mit Azure\_Arc-Unterstützung (Vorschauversion)"
+    - title: "Azure\_Arc-fähige Datendienste"
       links:
         - url: ./data/install-client-tools.md
           itemType: deploy
@@ -100,11 +100,11 @@ conceptualContent:
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Azure Automation – Übersicht
-    - title: SQL Server auf Azure Arc-fähigen Servern (Vorschau)
+    - title: SQL Server auf Azure Arc-fähigen Servern
       links:
         - url: /sql/sql-server/azure-arc/assess
           itemType: how-to-guide
-          text: Bewerten einer Instanz mit Arc-Unterstützung
+          text: Bewerten der Instanz
         - url: /sql/sql-server/azure-arc/configure-advanced-data-security
           itemType: how-to-guide
           text: Konfigurieren von Advanced Data Security

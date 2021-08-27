@@ -4,15 +4,15 @@ description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Instanz mi
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 9dbeeaa10fc755b978a1819a0af181da47149921
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 7d2f32b4bb730d0c698950ecdf82283d1bf88274
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436836"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638915"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung und dem Azure-Portal
 

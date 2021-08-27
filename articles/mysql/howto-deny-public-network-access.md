@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: b6fd5b5f70eb813792be003836790752db1d071f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9dad137791da3d90fda14382b14d6efbed7ba609
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732818"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639725"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Verweigern des öffentlichen Netzwerkzugriff in Azure Database for MySQL im Azure-Portal
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure Database for MySQL-Instanz so konfigurieren können, dass alle öffentlichen Konfigurationen verweigert und nur Verbindungen über private Endpunkte zugelassen werden, um die Netzwerksicherheit weiter zu erhöhen.
 

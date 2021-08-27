@@ -1,19 +1,21 @@
 ---
 title: Until-Aktivität in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Die Until-Aktivität führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird oder ein Timeout auftritt.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b69910daab3172a6c7ba2cd134cb9ed41ebaaa79
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: 2191dd75f2dbf24a59dbb7c43f8ef9ec62705aee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110674980"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640621"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,9 +58,9 @@ name | Der Name der `Until`-Aktivität. | String | Ja
 type | Muss auf **Until** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
 timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein
-activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
+Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
 
-## <a name="example-1"></a>Beispiel 1
+## <a name="example-1"></a>Beispiel 1
 
 > [!NOTE]
 > Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).

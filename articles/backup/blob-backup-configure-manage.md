@@ -2,13 +2,13 @@
 title: Konfigurieren der operativen Sicherung für Azure-Blobs
 description: Informationen zum Konfigurieren und Verwalten der operativen Sicherung für Azure-Blobs
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: cb2bc525018b33eb3441a8ed949d3e808c5051d8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/06/2021
+ms.openlocfilehash: b437aa0df073267b07b3e74bc3a778e7aa274031
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767408"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353672"
 ---
 # <a name="configure-operational-backup-for-azure-blobs"></a>Konfigurieren der operativen Sicherung für Azure-Blobs
 
@@ -27,6 +27,7 @@ Mit Azure Backup können Sie die operative Sicherung zum Schutz von Blockblobs i
 - Mit dieser Lösung können Sie Ihre Daten bis zu 360 Tage lang für die Wiederherstellung aufbewahren. Lange Aufbewahrungszeiträume können jedoch zu einer längeren Dauer des Wiederherstellungsvorgangs führen.
 - Die Lösung kann nur für Wiederherstellungen im Quellspeicherkonto verwendet werden und kann dazu führen, dass Daten überschrieben werden.
 - Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang Container löschen aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten. Außerdem empfiehlt Microsoft, zusätzlich zur operativen Sicherung das vorläufige Löschen für Container zu aktivieren, um ein versehentliches Löschen von Containern zu verhindern.
+- Vergewissern Sie sich, dass der Anbieter **Microsoft.DataProtection** für Ihr Abonnement registriert ist.
 - Unter [Unterstützungsmatrix](blob-backup-support-matrix.md) erfahren Sie mehr über unterstützte Szenarien, Einschränkungen und Verfügbarkeit.
 
 ## <a name="create-a-backup-vault"></a>Erstellen eines Sicherungstresors

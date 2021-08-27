@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: d37276d842c6cce0e033a22e5c97ba777f504041
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: b147e0b2a096107b848ac3e33ce544d5559ab56c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638502"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration/Onlineupgrade von einer Azure Database for PostgreSQL – Einzelserver-Instanz zu einer anderen Azure Database for PostgreSQL – Einzelserver-Instanz mithilfe von DMS über das Azure-Portal
 
@@ -160,19 +160,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
     FROM information_schema.triggers
     ```
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-   ![Abonnements im Portal anzeigen](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-    ![Ressourcenanbieter anzeigen](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-dms-instance"></a>Erstellen einer DMS-Instanz
 

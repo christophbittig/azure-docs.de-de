@@ -1,23 +1,23 @@
 ---
-title: Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
+title: Unterstützung für Archivspeicherebene
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410097"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353675"
 ---
-# <a name="archive-tier-support-preview"></a>Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
+# <a name="archive-tier-support"></a>Unterstützung für Archivspeicherebene
 
 Kunden setzen zum Speichern von Sicherungsdaten, darunter auch Sicherungsdaten für die langfristige Aufbewahrung, auf Azure Backup. Die Anforderungen an die Aufbewahrungsdauer sind dabei in den Konformitätsregeln des jeweiligen Unternehmens definiert. In den meisten Fällen erfolgt nur selten ein Zugriff auf die älteren Sicherungsdaten, die ausschließlich zu Konformitätszwecken gespeichert werden.
 
 Azure Backup unterstützt neben Momentaufnahmen und der Standardzugriffsebene auch die Sicherung von Wiederherstellungspunkten für die langfristige Aufbewahrung auf der Zugriffsebene „Archiv“.
 
-## <a name="scope-for-preview"></a>Umfang der Vorschau
+## <a name="scope"></a>`Scope`
 
 Unterstützte Workloads:
 
@@ -36,8 +36,8 @@ Unterstützte Clients:
 
 - Die Funktion wird mithilfe von PowerShell bereitgestellt.
 
->[!NOTE]
->Die Unterstützung der Zugriffsebene „Archiv“ für Azure VMs und SQL Server-Instanzen auf Azure-VMs befindet sich in einer eingeschränkten öffentlichen Vorschau mit begrenzten Anmeldungen. Um sich für die Archiv-Unterstützung anzumelden, verwenden Sie diesen [Link](https://aka.ms/ArchivePreviewInterestForm).
+>[!Note]
+>Die Unterstützung der Zugriffsebene „Archiv“ für SQL Server auf Azure-VMs ist jetzt allgemein verfügbar in „Europa, Norden“, „Indien, Mitte“, „Asien, Südosten“ und „Australien, Osten“. Eine ausführliche Liste der unterstützten Regionen finden Sie in der [Supportmatrix](#support-matrix).    <br><br>    Für die verbleibenden Regionen für SQL Server in Azure-VMs befindet sich die Unterstützung der Zugriffsebene „Archiv“ in der eingeschränkten öffentlichen Vorschau. Die Unterstützung der Zugriffsebene „Archiv“ für Azure Virtual Machines befindet sich ebenfalls in der eingeschränkten öffentlichen Vorschau. Verwenden Sie diesen [Link](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u), um sich für die eingeschränkte öffentliche Vorschauversion zu registrieren.
 
 ## <a name="get-started-with-powershell"></a>Erste Schritte mit PowerShell
 
@@ -46,7 +46,7 @@ Unterstützte Clients:
 1. Führen Sie in PowerShell den folgenden Befehl aus:
   
     ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
+    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
     ```
 
 1. Stellen Sie mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her.
@@ -86,7 +86,7 @@ Unterstützte Clients:
 
     ```
     >[!NOTE]
-    >Die Spanne zwischen Start- und Enddatum darf nicht mehr als 30 Tage betragen.<br><br>Um Wiederherstellungspunkte für einen anderen Zeitraum anzuzeigen, ändern Sie Start- und Enddatum entsprechend.
+    >Um Wiederherstellungspunkte für einen anderen Zeitraum anzuzeigen, ändern Sie Start- und Enddatum entsprechend.
 ## <a name="use-powershell"></a>Verwenden von PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>Überprüfen von archivierbaren Wiederherstellungspunkten
@@ -207,6 +207,13 @@ Für Wiederherstellungspunkte, die sich nicht mindestens sechs Monate im Archiv 
 
 Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederherstellungspunkte gelöscht. Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Archivebene befunden haben, verursacht ein Löschvorgang Kosten für vorzeitiges Löschen.
 
+## <a name="support-matrix"></a>Unterstützungsmatrix
+
+| Arbeitsauslastungen | Vorschau | Allgemein verfügbar |
+| --- | --- | --- |
+| SQL Server auf Azure-VM | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“ |
+| Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“ | Keine |
+
 ## <a name="error-codes-and-troubleshooting-steps"></a>Fehlercodes und Schritte zur Problembehandlung
 
 Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nicht in das Archiv verschoben werden kann.
@@ -217,7 +224,7 @@ Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nic
 
 **Beschreibung**: Dieser Fehlercode wird angezeigt, wenn der ausgewählte Typ des Wiederherstellungspunkts nicht berechtigt ist, in das Archiv verschoben zu werden.
 
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope-for-preview) die Berechtigung des Wiederherstellungspunkts.
+**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
 
 ### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
 
@@ -225,7 +232,7 @@ Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nic
 
 **Beschreibung**: Der ausgewählte Wiederherstellungspunkt enthält aktive Abhängigkeiten und kann daher nicht in das Archiv verschoben werden.
 
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope-for-preview) die Berechtigung des Wiederherstellungspunkts.
+**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
 
 ### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
 
@@ -233,7 +240,7 @@ Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nic
 
 **Beschreibung**: Der Wiederherstellungspunkt muss bei virtuellen Azure-Computern mindestens drei Monate und bei SQL Server mindestens 45 Tage auf der Standardzugriffsebene gespeichert gewesen sein.
 
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope-for-preview) die Berechtigung des Wiederherstellungspunkts.
+**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
 
 ### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
 
@@ -241,7 +248,7 @@ Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nic
 
 **Beschreibung**:Die erforderliche Mindestlebensdauer für einen Wiederherstellungspunkt, die zum Verschieben in das Archiv berechtigt, beträgt sechs Monate.
 
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope-for-preview) die Berechtigung des Wiederherstellungspunkts.
+**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
 
 ### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
 

@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Cisco Umbrella User Management für die auto
 description: Hier erfahren Sie, wie Sie Benutzerkonten automatisch aus Azure AD in Cisco Umbrella User Management bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 1aa20f40-19ec-4213-9a3b-5eb2bcdd9bbd
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/20/2021
-ms.author: Zhchia
-ms.openlocfilehash: becc5010908c810688cfbd969bb12f236b2f127f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.author: thwimmer
+ms.openlocfilehash: 38b4c7cc04e5a9cc0d3dd35875ed94af804ca383
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896088"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327619"
 ---
 # <a name="tutorial-configure-cisco-umbrella-user-management-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cisco Umbrella User Management für die automatische Benutzerbereitstellung
 

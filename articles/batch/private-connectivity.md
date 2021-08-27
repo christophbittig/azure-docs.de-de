@@ -2,14 +2,14 @@
 title: Verwenden privater Endpunkte mit Azure Batch-Konten
 description: Erfahren Sie, wie Sie eine private Verbindung mit einem Azure Batch-Konto mithilfe privater Endpunkte herstellen.
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 08/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad3a869f2eee259133c6ab5dd18e1e615825a718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920002"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354870"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Verwenden privater Endpunkte mit Azure Batch-Konten
 
@@ -20,7 +20,7 @@ Durch Verwendung von [Azure Private Link](../private-link/private-link-overview.
 Private Link ermöglicht Benutzern den Zugriff auf ein Azure Batch-Konto innerhalb des virtuellen Netzwerks oder über ein mittels Peering verbundenes Netzwerk. Auf Ressourcen, die Private Link zugeordnet sind, kann auch lokal über privates Peering über VPN oder [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zugegriffen werden. Mithilfe der [automatischen oder manuellen Genehmigungsmethode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) können Sie eine Verbindung mit einem Azure Batch-Konto herstellen, das über Private Link konfiguriert wurde.
 
 > [!IMPORTANT]
-> Private Verbindungen in Azure Batch sind derzeit mit Ausnahme von „Deutschland, Mitte“, „Deutschland, Nordosten“, „China, Osten“, „China, Osten 2“, „China, Norden“ und „China, Norden 2“ für alle öffentlichen Regionen verfügbar.
+> Private Verbindungen in Azure Batch sind derzeit mit Ausnahme von Deutschland, Mitte und Deutschland, Nordosten für alle Regionen verfügbar.
 
 In diesem Artikel werden die Schritte zum Erstellen eines privaten Batch-Kontos und für den Zugriff darauf mithilfe eines privaten Endpunkts beschrieben.
 

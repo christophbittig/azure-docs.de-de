@@ -1,14 +1,14 @@
 ---
 title: Erstellen und Verwenden von Ressourcendateien
 description: Erfahren Sie, wie Sie Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen. Dieser Artikel behandelt einige gängige Methoden, wie Ressourcendateien erstellt und auf einer VM platziert werden.
-ms.date: 05/25/2021
+ms.date: 08/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 1ef8cde8c345cebeb166cddd67a1951d71eea810
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a4939cc6c60d226d8b75569ab08447973968735a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467691"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446569"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
@@ -33,7 +33,9 @@ Es gibt einige verschiedene Optionen zum Generieren von Ressourcendateien, wobei
 
 Die Verwendung einer Speichercontainer-URL bedeutet, dass Sie mit den richtigen Berechtigungen auf Dateien in jedem Speichercontainer in Azure zugreifen können.
 
-In diesem C#-Beispiel wurden die Dateien bereits als Blobspeicher in einen Azure-Speichercontainer hochgeladen. Um auf die Daten zuzugreifen, die für die Erstellung einer Ressourcendatei benötigt werden, müssen wir zunächst Zugriff auf den Speichercontainer erhalten.
+In diesem C#-Beispiel wurden die Dateien bereits als Blobspeicher in einen Azure-Speichercontainer hochgeladen. Um auf die Daten zuzugreifen, die für die Erstellung einer Ressourcendatei benötigt werden, müssen wir zunächst Zugriff auf den Speichercontainer erhalten. Dies kann auf verschiedene Arten erfolgen.
+
+#### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 
 Erstellen Sie eine URI für Shared Access Signatures (SAS) mit den richtigen Berechtigungen für den Zugriff auf den Speichercontainer. Legen Sie die Ablaufzeit und die Berechtigungen für die SAS fest. In diesem Fall wird keine Startzeit angegeben, sodass die SAS sofort gültig wird und zwei Stunden nach ihrer Generierung abläuft.
 
@@ -65,7 +67,19 @@ Sie können bei Bedarf die Eigenschaft [blobPrefix](/dotnet/api/microsoft.azure.
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl, blobPrefix = yourPrefix);
 ```
 
-Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Lesezugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie den Artikel [Anonymer Zugriff auf Blobs](../storage/blobs/anonymous-read-access-configure.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
+#### <a name="managed-identity"></a>Verwaltete Identität
+
+Erstellen Sie eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity), und weisen Sie ihr die `Storage Blob Data Reader`-Rolle für Ihren Azure Storage-Container zu. Als Nächstes [weisen Sie die verwaltete Identität Ihrem Pool zu](managed-identity-pools.md), damit Ihre VMs auf die Identität zugreifen können. Schließlich können Sie auf die Dateien in Ihrem Container zugreifen, indem Sie die Identität angeben, die von Azure Batch verwendet werden soll.
+
+```csharp
+CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+
+ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(container.Uri, identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name" });
+```
+
+#### <a name="public-access"></a>Öffentlicher Zugriff
+
+Eine Alternative zum Generieren einer SAS-URL oder zur Verwendung einer verwalteten Identität ist die Aktivierung eines anonymen öffentlichen Lesezugriffs auf einen Container und dessen Blobs in Azure Blob Storage. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine SAS zu erfordern. Öffentlicher Zugriff wird in der Regel für Szenarien verwendet, in denen bestimmte Blobs stets für anonymen Lesezugriff zur Verfügung stehen sollen. Wenn dieses Szenario zu Ihrer Lösung passt, lesen Sie [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](../storage/blobs/anonymous-read-access-configure.md), um mehr über die Verwaltung des Zugriffs auf Ihre Blobdaten zu erfahren.
 
 ### <a name="storage-container-name-autostorage"></a>Speichercontainername (Autostorage)
 
@@ -100,6 +114,18 @@ Sie können auch eine Zeichenfolge verwenden, die Sie als URL definieren (oder e
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl(yourDomain + yourFile, filePath);
 ```
+
+Wenn sich Ihre Datei in Azure Storage befindet, können Sie eine verwaltete Identität verwenden, anstatt eine Shared Access Signature für die Ressourcendatei zu generieren.
+
+```csharp
+ResourceFile inputFile = ResourceFile.FromUrl(yourURLFromAzureStorage, 
+    identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name"},
+    filePath: filepath
+);
+```
+
+> [!Note]
+> Die Authentifizierung der verwalteten Identität funktioniert nur mit Dateien in Azure Storage. Die verwaltete Identität benötigt die `Storage Blob Data Reader`-Rollenzuweisung für den Container, in dem sich die Datei befindet, und muss auch [dem Azure Batch-Pool zugewiesen werden](managed-identity-pools.md).
 
 ## <a name="tips-and-suggestions"></a>Tipps und Vorschläge
 

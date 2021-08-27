@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: e58508e561a33a73e6f6752fc12bc5938b8d7488
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a02457c177e509280a93d7e6939143da3f7e9a84
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309780"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639772"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MySQL – Single Server
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Dieser Artikel beschreibt die Funktionen, die Azure Database for MySQL für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 

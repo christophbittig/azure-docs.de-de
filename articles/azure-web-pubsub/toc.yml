@@ -1,25 +1,52 @@
 - name: Dokumentation zum Azure Web PubSub-Dienst
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Informationen zum Azure Web PubSub-Dienst
       href: overview.md
+    - name: 'Informationen zu Hubs, Gruppen und Verbindungen'
+      href: key-concepts.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Ausprobieren der Chatroom-Livedemo
-      href: quickstart-live-demo.md
-    - name: Beginnen Sie mit einer einfachen serverlosen Chatroomanwendung.
-      href: quickstart-serverless.md
+    - name: Erstellen einer Instanz
+      expanded: true
+      items:
+        - name: Portal
+          href: howto-develop-create-instance.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: quickstart-cli-create.md
+    - name: Herstellen einer Verbindung mit der Instanz
+      expanded: true
+      items:
+        - name: Veröffentlichen/Abonnieren über den Browser
+          href: quickstart-live-demo.md
+        - name: Veröffentlichen/Abonnieren über die CLI
+          href: quickstart-cli-try.md
+        - name: Veröffentlichen/Abonnieren per Dienst-SDK
+          href: quickstart-use-sdk.md
+- name: Tutorials
+  expanded: true
+  items:
+    - name: Serverlose Entwicklung
+      expanded: true
+      items:
+        - name: Erstellen eines serverlosen Chats mit Azure Functions
+          href: quickstart-serverless.md
+    - name: Veröffentlichen und Abonnieren von Nachrichten
+      href: tutorial-pub-sub-messages.md
+    - name: Entwickeln einer Chat-App
+      href: tutorial-build-chat.md
+    - name: Clientstreaming mit vom Dienst unterstütztem Unterprotokoll
+      href: tutorial-subprotocol.md
+    - name: Authentifizierung und Berechtigungen
+      href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
 - name: Anleitungen
   expanded: true
   items:
     - name: Entwickeln
       items:
-        - name: Erstellen einer Instanz
-          href: howto-develop-create-instance.md
-        - name: Veröffentlichen und Abonnieren von Nachrichten
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message'
         - name: Verwenden von Unterprotokollen
           href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
         - name: Authentifizierung und Berechtigungen
@@ -28,6 +55,12 @@
       items:
         - name: Schützen des Zugriffsschlüssels
           href: howto-secure-rotate-access-key.md
+        - name: Verwenden von privaten Azure-Endpunkten
+          href: howto-secure-private-endpoints.md
+        - name: Verwalten der Netzwerkzugriffssteuerung
+          href: howto-secure-network-access-control.md
+        - name: Schützen von ausgehendem Datenverkehr über freigegebene private Endpunkte
+          href: howto-secure-shared-private-endpoints.md
     - name: Problembehandlung
       items:
         - name: Erfassen einer Netzwerkablaufverfolgung
@@ -35,23 +68,35 @@
         - name: Erfassen von Diagnoseprotokollen
           href: howto-troubleshoot-diagnostic-logs.md
 - name: Konzepte
+  expanded: true
   items:
-    - name: Ausführliche Informationen zum Azure Web PubSub-Dienst
-      href: 'https://azure.github.io/azure-webpubsub/concepts/service-internals'
+    - name: Ausführliche Informationen zum Dienst
+      href: concept-service-internals.md
+    - name: 'Clientprotokoll: Übersicht'
+      href: concept-client-protocols.md
+    - name: Überlegungen zur Leistung
+      href: concept-performance.md
     - name: Abrechnungsmodell
       href: concept-billing-model.md
 - name: Verweis
   items:
-    - name: REST-API
-      href: /rest/api/webpubsub
-    - name: PubSub-WebSocket-Unterprotokoll
-      href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
-    - name: "Web\_PubSub: CloudEvents"
-      href: 'https://azure.github.io/azure-webpubsub/references/protocol-cloudevents'
+    - name: WebSocket-Unterprotokolle
+      expanded: true
+      items:
+        - name: JSON-WebSocket-Unterprotokoll
+          href: reference-json-webpubsub-subprotocol.md
+    - name: CloudEvents-Erweiterung für Azure Web PubSub
+      href: reference-cloud-events.md
+    - name: Functions-Trigger und -Bindungen
+      href: reference-functions-bindings.md
     - name: Server-SDKs
       href: choose-server-sdks.md
+    - name: REST-API
+      href: /rest/api/webpubsub
 - name: Ressourcen
   items:
+    - name: Beispiele
+      href: 'https://aka.ms/awps/samples'
     - name: Lösungen
       href: /azure/architecture/
     - name: Regionale Verfügbarkeit

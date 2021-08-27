@@ -2,14 +2,14 @@
 title: Erstellen und Konfigurieren von Recovery Services-Tresoren
 description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern von Sicherungen und Wiederherstellungspunkten erstellen und konfigurieren. Erfahren Sie, wie Sie die regionsübergreifende Wiederherstellung zur Wiederherstellung in einer sekundären Region verwenden.
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: b301ce0ab2f4b57a03e3ba24d672bb4102a1a997
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: cbb1280b1ed78d82c312169f99a0d46f312fbd9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794220"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345795"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -46,14 +46,14 @@ Die Wiederherstellungsoption **Regionsübergreifende Wiederherstellung** ermögl
 
 Sie unterstützt die folgenden Datenquellen:
 
-- Azure Virtual Machines (allgemeine Verfügbarkeit)
-- Auf Azure-VMs gehostete SQL-Datenbanken (Vorschau)
-- Auf Azure-VMs gehostete SAP HANA-Datenbanken (Vorschau)
+- Virtuelle Azure-Computer
+- Auf Azure-VMs gehostete SQL-Datenbanken
+- Auf Azure-VMs gehostete SAP HANA-Datenbanken
 
 Die regionsübergreifende Wiederherstellung bietet folgende Möglichkeiten:
 
 - Durchführen von Übungen für Audit- oder Complianceanforderungen
-- Wiederherstellen der Daten bei einer Katastrophe in der primären Region
+- Wiederherstellen der Daten im Falle eines Notfalls in der primären Region
 
 Beim Wiederherstellen einer VM können Sie die VM oder den zugehörigen Datenträger wiederherstellen. Wenn Sie die Wiederherstellung von SQL-/SAP HANA-Datenbanken auf Azure-VMs durchführen, können Sie die Datenbanken oder deren Dateien wiederherstellen.
 
@@ -65,8 +65,7 @@ Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis]
 >Vorbereitungen
 >
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
->- Die Funktion für die regionsübergreifende Wiederherstellung (Cross Region Restore, CRR) für Azure-VMs ist jetzt in allen öffentlichen Azure-Regionen öffentlich verfügbar.
->- Die regionsübergreifende Wiederherstellung für SQL- und SAP HANA-Datenbanken befindet sich für alle öffentlichen Azure-Regionen in der Vorschauphase.
+>- Das Feature für die regionsübergreifende Wiederherstellung (Cross Region Restore, CRR) für Azure-VMs, SQL- und SAP HANA-Datenbanken ist jetzt in allen öffentlichen und unabhängigen Azure-Regionen allgemein verfügbar. Informationen zur regionalen Verfügbarkeit finden Sie in der [Supportmatrix](backup-support-matrix.md#cross-region-restore).
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
 >- Derzeit wird CRR für Azure-VMs für Azure Resource Manager und verschlüsselte Azure-VMs unterstützt. Klassische Azure-VMs werden nicht unterstützt. Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
@@ -78,6 +77,9 @@ Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis]
 Bei einem mit GRS-Redundanz erstellten Tresor kann die bereichsübergreifende Wiederherstellung konfiguriert werden. Jeder GRS-Tresor verfügt über ein Banner, das mit der Dokumentation verknüpft ist. Wenn Sie CRR für den Tresor konfigurieren möchten, navigieren Sie zum Bereich mit der Sicherungskonfiguration. Dort befindet sich die Option zum Aktivieren dieses Features.
 
  ![Banner für die Sicherungskonfiguration](./media/backup-azure-arm-restore-vms/banner.png)
+
+>[!Note]
+>Wenn Sie Zugriff auf eingeschränkte Regionspaare haben und weiterhin keine CRR-Einstellungen auf dem Blatt **Sicherungskonfiguration** anzeigen können, registrieren Sie den Recovery Services-Ressourcenanbieter erneut. <br><br> Um den Anbieter erneut zu registrieren, wechseln Sie im Azure-Portal zu Ihrem Abonnement, navigieren Sie in der linken Navigationsleiste zu **Ressourcenanbieter** und wählen Sie **Microsoft.RecoveryServices** und dann **Erneut registrieren** aus.
 
 1. Navigieren Sie im Portal zu Ihrem Recovery Services-Tresor > **Eigenschaften** (unter **Einstellungen**).
 1. Wählen Sie unter **Sicherungskonfiguration** die Option **Aktualisieren** aus.

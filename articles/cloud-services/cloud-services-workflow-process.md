@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 5e4725cf756435ac50eeafdd70b87c83e4b0a867
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: aeaf371782f725265433f587809d363d932fc189
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091049"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821761"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Workflow der klassischen Windows-Azure-VM-Architektur 
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Dieser Artikel bietet eine Übersicht über die Workflowprozesse, die beim Bereitstellen oder Aktualisieren einer Azure-Ressource (z. B. einer VM) stattfinden. 
 
