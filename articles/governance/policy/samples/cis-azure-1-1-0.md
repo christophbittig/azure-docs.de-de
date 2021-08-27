@@ -1,15 +1,15 @@
 ---
 title: Details der Einhaltung gesetzlicher Bestimmungen für CIS Microsoft Azure Foundations Benchmark 1.1.0
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0 Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a0fd7ea4b015c04bf2bd108a13cb06dc5b4d0dde
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 16ac3cd8724645e440e1758d1e08d237cbcfc42d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114401853"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604780"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0
 
@@ -174,7 +174,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Transparent Data Encryption für SQL-Datenbanken aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |TDE (Transparent Data Encryption) sollte aktiviert werden, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|[Transparent Data Encryption für SQL-Datenbanken aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |TDE (Transparent Data Encryption) sollte aktiviert werden, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 
 ### <a name="ensure-that-security-contact-emails-is-set"></a>Sicherstellen, dass „E-Mail-Adressen für Sicherheitskontakt“ festgelegt ist
 
@@ -283,7 +283,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Transparent Data Encryption für SQL-Datenbanken aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |TDE (Transparent Data Encryption) sollte aktiviert werden, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|[Transparent Data Encryption für SQL-Datenbanken aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |TDE (Transparent Data Encryption) sollte aktiviert werden, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 
 ### <a name="ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>Sicherstellen, dass die TDE-Schutzvorrichtung der SQL Server-Instanz mit BYOK (also unter Verwendung eines eigenen Schlüssels) verschlüsselt ist
 
@@ -672,9 +672,6 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 |[Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |Für HTTP werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Verwenden Sie die aktuelle HTTP-Version für Web-Apps, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
 |[Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |Für HTTP werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Verwenden Sie die aktuelle HTTP-Version für Web-Apps, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
 |[Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |Für HTTP werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Verwenden Sie die aktuelle HTTP-Version für Web-Apps, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
-
-> [!NOTE]
-> Die Verfügbarkeit spezifischer Azure Policy-Definitionen kann in Azure Government und anderen nationalen Clouds variieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
 description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
-ms.date: 03/08/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: abb880923da71c437507245917c8e8fddb92b2fa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e1c82c3a3a10076c41aa0c65e0565d9727f3444c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733857"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324948"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 

@@ -8,6 +8,10 @@
       href: core/overview-iot-central-tour.md
     - name: Neueste Updates
       items:
+        - name: "Juli\_2021: neue und aktualisierte Features"
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-july-2021/'
+        - name: 'Juni 2021: neue und aktualisierte Features'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: "Mai\_2021: neue und aktualisierte Features"
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: "April\_2021: neue und aktualisierte Features"
@@ -143,48 +147,6 @@
       href: core/overview-iot-central-operator.md
     - name: Was sind Anwendungsvorlagen?
       href: core/concepts-app-templates.md
-    - name: Branchenspezifische Anwendungsvorlagen
-      items:
-        - name: Einzelhandel
-          items:
-            - name: Übersicht
-              href: retail/overview-iot-central-retail.md
-            - name: Auftragsabschlussarchitektur für In-Store Analytics
-              href: retail/store-analytics-architecture.md
-            - name: Architektur für intelligente Bestandsverwaltung
-              href: retail/architecture-smart-inventory-management.md
-            - name: Architektur für vernetzte Logistik
-              href: retail/architecture-connected-logistics.md
-            - name: Digitales Verteilzentrum
-              href: retail/architecture-digital-distribution-center.md
-            - name: Micro-Fulfillment-Center-Architektur
-              href: retail/architecture-micro-fulfillment-center.md
-            - name: 'Videoanalyse: Objekt- und Bewegungserkennung'
-              href: retail/architecture-video-analytics.md
-        - name: Energieversorgung
-          items:
-            - name: Übersicht
-              href: energy/overview-iot-central-energy.md
-            - name: App-Architektur für intelligente Stromzähler
-              href: energy/concept-iot-central-smart-meter-app.md
-            - name: App-Architektur für Solarelemente
-              href: energy/concept-iot-central-solar-panel-app.md
-        - name: Regierung
-          items:
-            - name: Übersicht
-              href: government/overview-iot-central-government.md
-            - name: Architektur zur Überwachung der vernetzten Abfallwirtschaft
-              href: government/concepts-connectedwastemanagement-architecture.md
-            - name: Architektur zur Überwachung des Wasserverbrauchs
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: Architektur zur Überwachung der Wasserqualität
-              href: government/concepts-waterqualitymonitoring-architecture.md
-        - name: Gesundheitswesen
-          items:
-            - name: Übersicht
-              href: healthcare/overview-iot-central-healthcare.md
-            - name: Architektur für die ständige Überwachung von Patienten
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: Was sind Gerätevorlagen?
       href: core/concepts-device-templates.md
     - name: Gerätekonnektivität
@@ -243,12 +205,8 @@
           href: core/howto-create-custom-rules.md
         - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
           href: core/howto-create-custom-analytics.md
-        - name: Visualisieren Ihrer Daten in Power BI
-          href: core/howto-connect-powerbi.md
         - name: Herstellen einer Verbindung mit anderen IoT-Clouds
           href: core/howto-build-iotc-device-bridge.md
-        - name: "Verbinden Ihrer Anwendung mit Dynamics\_365 Field Services"
-          href: government/how-to-configure-connected-field-services.md
     - name: Verwenden der REST-API
       items:
         - name: Authentifizieren und Autorisieren von REST-API-Aufrufen
@@ -288,7 +246,7 @@
         - name: Geräteverbindungen
           href: core/troubleshoot-connection.md
     - name: Häufig gestellte Fragen
-      href: core/howto-faq.md
+      href: core/howto-faq.yml
     - name: Verwalten Ihrer persönlichen Einstellungen
       href: core/howto-manage-preferences.md
     - name: Ein-/Ausschalten des Livechats
@@ -318,7 +276,7 @@
         - name: IoT Solution Accelerators
           href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

@@ -26,7 +26,7 @@
       href: storage-import-export-encryption-key-portal.md
     - name: Monitor
       items:
-        - name: Anzeigen des Laufwerkstatus
+        - name: Anzeigen von Auftrags- und Laufwerksstatus
           href: storage-import-export-view-drive-status.md
         - name: Überprüfen des Auftragsstatus
           href: storage-import-export-tool-reviewing-job-status-v1.md

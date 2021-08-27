@@ -310,6 +310,8 @@
           href: iot-hub-ip-filtering.md
         - name: Verwalten des öffentlichen Netzwerkzugriffs
           href: iot-hub-public-network-access.md
+        - name: Beschränken des ausgehenden Netzwerkzugriffs
+          href: iot-hub-restrict-outbound-network-access.md
         - name: Automatische Geräteverwaltung im gewünschten Umfang
           items:
             - name: Verwenden des Azure-Portals

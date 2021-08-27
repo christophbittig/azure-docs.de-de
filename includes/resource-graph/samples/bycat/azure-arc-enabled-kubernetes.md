@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 824916f3e9de2007e683ae572ccfad9401f0f50d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: eb76af4eb2721390832dd2f26d4220ddba7618c2
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457122"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861420"
 ---
 ### <a name="list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension"></a>Auflisten aller Azure Arc-fähigen Kubernetes-Cluster mit der Azure Monitor-Erweiterung
 
@@ -48,7 +48,7 @@ Search-AzGraph -Query "KubernetesConfigurationResources | where type == 'microso
 
 ### <a name="list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension"></a>Auflisten aller Azure Arc-fähigen Kubernetes-Cluster ohne Azure Monitor-Erweiterung
 
-Gibt die verbundene Cluster-ID jedes Azure Arc-fähigen Kubernetes-Clusters zurück, in dem die Azure Monitor-Erweiterung nicht vorhanden ist
+Gibt die verbundene Cluster-ID jedes Azure Arc-fähigen Kubernetes-Clusters zurück, in dem die Azure Monitor-Erweiterung nicht vorhanden ist.
 
 ```kusto
 Resources
@@ -88,7 +88,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Kubernetes/connected
 
 ### <a name="list-all-azure-arc-enabled-kubernetes-resources"></a>Auflisten aller Azure Arc-fähigen Kubernetes-Ressourcen
 
-Gibt eine Liste der einzelnen Azure Arc-fähigen Kubernetes-Cluster sowie relevante Metadaten zu den einzelnen Clustern zurück
+Gibt eine Liste der einzelnen Azure Arc-fähigen Kubernetes-Cluster sowie relevante Metadaten zu den einzelnen Clustern zurück.
 
 ```kusto
 Resources

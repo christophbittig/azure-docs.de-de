@@ -3,16 +3,17 @@ title: Erstellen einer Azure Data Factory-Pipeline mithilfe von privaten Endpunk
 description: Dieses Tutorial enthält detaillierte Anweisungen zur Erstellung einer Data Factory mit Pipeline mithilfe des Azure-Portals. Die Pipeline verwendet die Kopieraktivität, um Daten aus Azure Blob Storage in eine Azure SQL-Datenbank zu kopieren.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 0159226abb904d73262011e16fbc52fe760be123
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 227bbaf2faa845d269d8326883c3e63c4572fdab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637745"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten
 
@@ -120,7 +121,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Copy-Aktivität in der D
 
 In diesem Tutorial beginnen Sie mit dem Erstellen einer Pipeline. Verknüpfte Dienste und Datasets erstellen Sie, wenn Sie sie zum Konfigurieren der Pipeline benötigen.
 
-1. Wählen Sie auf der Homepage die Option **Orchestrate** (Orchestrieren) aus.
+1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
    ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 1. Geben Sie im Eigenschaftenbereich der Pipeline als Name der Pipeline **CopyPipeline** ein.

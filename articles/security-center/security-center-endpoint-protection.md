@@ -2,36 +2,31 @@
 title: Endpoint Protection-Empfehlungen in Azure Security Center
 description: Erläutert, wie die Endpoint Protection-Lösungen ermittelt und als fehlerfrei identifiziert werden.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2730a2f5-20bc-4027-a1c2-db9ed0539532
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/29/2019
+ms.date: 07/21/2021
 ms.author: memildin
-ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 841d52b53fd492f1b9f6760deba438f68a47d004
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561227"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470710"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
 Azure Security Center bietet Integritätsbewertungen von [unterstützten](security-center-services.md#endpoint-supported) Versionen von Endpoint Protection-Lösungen. In diesem Artikel werden die Szenarien erläutert, die dazu führen, dass Security Center die folgenden beiden Empfehlungen generiert:
 
-* **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren**
-* **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben**
+- [Endpoint Protection sollte auf Ihren Computern installiert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439)
+- [Endpoint Protection-Integritätsprobleme sollten auf Ihren Computern gelöst werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000)
 
-## <a name="windows-defender"></a>Windows Defender
+## <a name="windows-defender"></a>Windows Defender
 
-* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
+- Security Center empfiehlt, **Endpoint Protection auf Ihren Computern zu installieren**, wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und zum Ergebnis **AMServiceEnabled: False** führt.
 
-* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und eine der folgenden Situationen eintritt:
+- Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Eine der folgenden Eigenschaften ist FALSE:
 
@@ -49,9 +44,9 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center empfiehlt, **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren**, wenn das Importieren von **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** und Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
+* Security Center empfiehlt, **Endpoint Protection auf Ihren Computern zu installieren**, wenn **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** importiert wird und das Ausführen von **Get-MProtComputerStatus** zum Ergebnis **AMServiceEnabled = false** führt.
 
-* Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn **Get-MprotComputerStatus** ausgeführt wird und eine der folgenden Situationen eintritt:
+* Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn **Get-MprotComputerStatus** ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Mindestens eine der folgenden Eigenschaften ist „False“:
 
@@ -69,14 +64,14 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](securi
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+* Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
     - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** ist vorhanden
     - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** ist vorhanden
     - Die Datei **dsq_query.cmd** befindet sich im Installationsordner.
     - Das Ausführen von **dsa_query.cmd** führt zum Ergebnis **Component.AM.mode: on – Trend Micro Deep Security-Agent erkannt**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
@@ -86,7 +81,7 @@ oder
 - **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - Überprüfen: Symantec-Version >= 12: Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
 - Echtzeitschutzstatus überprüfen: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
@@ -101,12 +96,12 @@ Registrierungspfade:
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection für Windows
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** ist vorhanden
 - **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - McAfee-Version: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 - Signaturversion suchen: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
@@ -115,12 +110,12 @@ Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme a
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security für Linux-Bedrohungsschutz 
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - Datei **/opt/isec/ens/threatprevention/bin/isecav** ist vorhanden
 - Ausgabe von **"/opt/isec/ens/threatprevention/bin/isecav --version"** lautet: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **Quick scan, Full scan** zurück, und für beide Scans gilt „<= 7 Tage“
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** gibt **DAT and engine Update time** zurück, und für beide gilt „<= 7 Tage“
@@ -128,11 +123,11 @@ Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme a
 
 ## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus für Linux 
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 - Datei **/opt/sophos-av/bin/savdstatus** wird beendet, oder Suche nach benutzerdefiniertem Ort **"readlink $(which savscan)"** wird durchgeführt
 - **"/opt/sophos-av/bin/savdstatus --version"** gibt **Sophos name = Sophos Anti-Virus and Sophos version >= 9** zurück
 
-Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
+Security Center empfiehlt, **Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben**, wenn eine der folgenden Überprüfungen nicht bestanden wird:
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück
 - **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück. Der Wert sollte kleiner oder gleich 7 Tage sein 

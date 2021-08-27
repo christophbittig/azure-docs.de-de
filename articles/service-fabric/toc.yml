@@ -404,7 +404,7 @@
           href: how-to-managed-cluster-configuration.md
         - name: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Clusterknotentyp
           href: how-to-managed-cluster-vmss-extension.md
-        - name: Hinzufügen von NSG-Regeln und anderen Netzwerkoptionen für den verwalteten Cluster
+        - name: Konfigurieren der Netzwerkeinstellungen für verwaltete Cluster
           href: how-to-managed-cluster-networking.md
         - name: Konfigurieren des Verfügbarkeitszonenumfangs für verwaltete Cluster
           href: how-to-managed-cluster-availability-zones.md
@@ -414,14 +414,16 @@
           href: how-to-managed-cluster-managed-disk.md
         - name: Konfigurieren von Upgradeoptionen für verwaltete Cluster
           href: how-to-managed-cluster-upgrades.md
-        - name: Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster
+        - name: Bereitstellen von Anwendungsgeheimnissen in einem verwalteten Cluster
           href: how-to-managed-cluster-application-secrets.md
-        - name: Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage
+        - name: Bereitstellen einer Anwendung in einem verwalteten Cluster mithilfe von Azure Resource Manager
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Bereitstellen verwalteter Clusteranwendungen mit verwalteter Identität
+        - name: Bereitstellen einer Anwendung mit verwalteter Identität in einem verwalteten Cluster
           href: how-to-managed-cluster-application-managed-identity.md
         - name: Bereitstellen ausschließlich zustandsloser Knotentypen in einem verwalteten Cluster
           href: how-to-managed-cluster-stateless-node-type.md
+        - name: Konfigurieren des sekundären Knotentyps für umfassende Skalierung in einem verwalteten Cluster
+          href: how-to-managed-cluster-large-virtual-machine-scale-sets.md
         - name: Verwenden einer verwalteten Identität für verwaltete Clusterknoten
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Einrichten der Entwicklungsumgebung

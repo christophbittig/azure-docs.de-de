@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d1b7f941fbd7d9c6a6b654992e86ab0379e11e28
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 01a48da50391c6d3e826b81c4174936c95f64462
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303812"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597215"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -121,8 +121,6 @@ Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der m
 
 > [!div class="mx-imgBorder"]
 >![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
-
-Verwenden Sie die `WITH`-Klausel nicht in der Funktion `OPENROWSET`, wenn Sie partitionierte Delta Lake-Daten abfragen. Aufgrund eines bekannten Problems in der Vorschauversion werden von der `WITH`-Klausel [die Werte aus den zugrunde liegenden Partitionierungsspalten nicht richtig zurückgegeben](resources-self-help-sql-on-demand.md#partitioning-column-returns-null-values). Die Partitionsentfernung funktioniert problemlos, wenn Sie die Funktion `OPENROWSET` direkt mit der `WITH`-Klausel (ohne Sichten) verwenden.  
 
 Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
 

@@ -6,26 +6,26 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b6f53a7c67ac9eeaf103541c471741f24f0302ce
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 63653bb72c278a330101503dbaf2959b7e0eb39f
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593539"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201114"
 ---
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat).
+## <a name="sample-code"></a>Beispielcode
+Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 - Erstellen Sie ein Azure-Konto mit einem aktiven Abonnement. Details finden Sie auf der [Seite zum Erstellen eines kostenloses Azure-Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Installieren Sie die Active LTS- und Maintenance LTS-Versionen von [Node.js](https://nodejs.org/en/download/).
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../../create-communication-resource.md). Für diese Schnellstartanleitung müssen Sie den **Endpunkt** Ihrer Ressource aufzeichnen.
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../create-communication-resource.md). Für diese Schnellstartanleitung müssen Sie den **Endpunkt** Ihrer Ressource aufzeichnen.
 - Erstellen Sie *drei* ACS-Benutzer, und stellen Sie ein [Benutzerzugriffstoken](../../access-tokens.md) für sie aus. Legen Sie den Bereich auf **Chat** fest, und **notieren Sie sich die Tokenzeichenfolge und die userId-Zeichenfolge**. In der vollständigen Demo wird ein Thread mit zwei Teilnehmern erstellt und dann ein dritter Teilnehmer hinzugefügt.
 
 ## <a name="setting-up"></a>Einrichten
@@ -129,7 +129,7 @@ let userAccessToken = '<USER_ACCESS_TOKEN>';
 let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-- Ersetzen Sie **endpointUrl** durch den Communication Services-Ressourcenendpunkt. Informationen zum Erstellen einer Azure Communication Services-Ressource finden Sie bei Bedarf [hier](../../create-communication-resource.md).
+- Ersetzen Sie die **endpointUrl** durch den Communication Azure Services-Ressourcenendpunkt. Informationen zum [Erstellen einer Azure Communication Services-Ressource finden Sie bei Bedarf hier](../../create-communication-resource.md).
 - Ersetzen Sie **userAccessToken** durch das von Ihnen ausgestellte Token.
 
 
@@ -151,8 +151,8 @@ Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Feat
 
 | name                                   | Beschreibung                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Diese Klasse wird für die Chatfunktionalität benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Erstellen, Abrufen und Löschen von Threads. |
-| ChatThreadClient | Diese Klasse wird für die Chatthreadfunktionalität benötigt. Sie rufen eine Instanz über den ChatClient ab und verwenden sie zum Senden/Empfangen/Aktualisieren/Löschen von Nachrichten, Hinzufügen/Entfernen/Abrufen von Benutzern, Senden von Eingabebenachrichtigungen und Lesebestätigungen und Abonnieren von Chatereignissen. |
+| ChatClient | Diese Klasse wird für die Chatfunktionalität benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Erstellen, Abrufen und Löschen von Threads sowie zum Abonnieren von Chatereignissen. |
+| ChatThreadClient | Diese Klasse wird für die Chatthreadfunktionalität benötigt. Sie rufen eine Instanz über den ChatClient ab und verwenden sie zum Senden/Empfangen/Aktualisieren/Löschen von Nachrichten, Hinzufügen/Entfernen/Abrufen von Benutzern und Senden von Eingabebenachrichtigungen und Lesebestätigungen. |
 
 
 ## <a name="start-a-chat-thread"></a>Starten eines Chatthreads

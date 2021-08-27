@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark-Aktivität
           href: data-factory-spark.md
-        - name: Batchausführungsaktivität für Azure Machine Learning Studio (Classic)
+        - name: "Batch Execution-Aktivität für ML\_Studio (klassisch)"
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (Classic)
+        - name: Ressourcenaktualisierungsaktivität für ML Studio (klassisch)
           href: data-factory-azure-ml-update-resource-activity.md
         - name: Aktivität „Gespeicherte Prozedur“
           href: data-factory-stored-proc-activity.md
@@ -208,7 +208,7 @@
     - name: Versionshinweise für Datenverwaltungsgateway
       href: data-factory-gateway-release-notes.md
     - name: Anfordern eines Features
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+      href: /answers/topics/azure-data-factory.html
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: Stack Overflow

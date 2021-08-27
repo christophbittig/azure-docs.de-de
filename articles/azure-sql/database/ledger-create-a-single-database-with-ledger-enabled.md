@@ -8,20 +8,21 @@ ms.topic: quickstart
 author: JasonMAnderson
 ms.author: janders
 ms.reviewer: vanto
-ms.date: 05/25/2021
-ms.openlocfilehash: d000ec621dcf840c9f18269a2046b682b6d11b56
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 07/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: ffde0d192888aea852eb4de73e24ce678c4a677a
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292949"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666672"
 ---
 # <a name="quickstart-create-a-database-in-azure-sql-database-with-ledger-enabled"></a>Schnellstart: Erstellen einer Datenbank in Azure SQL-Datenbank mit aktiviertem Ledger
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 In diesem Schnellstart erstellen Sie eine [Ledgerdatenbank](ledger-overview.md#ledger-database) in Azure SQL-Datenbank und konfigurieren den [automatischen Digestspeicher mit Azure Blob Storage](ledger-digest-management-and-database-verification.md#automatic-generation-and-storage-of-database-digests) über das Azure-Portal. Weitere Informationen zum Ledger finden Sie unter [Azure SQL-Datenbank-Ledger.](ledger-overview.md)
 

@@ -2,25 +2,22 @@
 title: 'Tutorial: Konfigurieren von Iris Intranet für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Iris Intranet automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 38db8479-6d33-43de-9f71-1f1bd184fe69
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/15/2021
-ms.author: Zhchia
-ms.openlocfilehash: 8acf65f1614c286e0996d1430c65d6c2d1e67618
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: b03e173dca962b1758670f37bb9a463d16fcc875
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645601"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122207373"
 ---
 # <a name="tutorial-configure-iris-intranet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Iris Intranet für die automatische Benutzerbereitstellung
 
@@ -101,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Iris Intranet synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Iris Intranet für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Iris Intranet-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
