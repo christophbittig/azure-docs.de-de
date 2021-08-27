@@ -1,17 +1,20 @@
 ---
 title: Avro-Format in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: In diesem Thema wird der Umgang mit dem Avro-Format in Azure Data Factory beschrieben.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jianleishen
-ms.openlocfilehash: 0efd4ed26f5057df2cc045940553b29c362513ff
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3ec0382328ad8a0651a1a5d5f291ad1f932a3af5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090220"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639835"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro-Format in Azure Data Factory
 
@@ -25,7 +28,7 @@ Das Avro-Format wird für die folgenden Connectors unterstützt: [Amazon S3](co
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Avro-Dataset unterstützt werden.
 
-| Eigenschaft         | Beschreibung                                                  | Erforderlich |
+| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Avro** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
@@ -66,7 +69,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AvroSource** festgelegt werden. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
@@ -75,7 +78,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AvroSink** festgelegt werden. | Ja      |
 | formatSettings          | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Avro-Schreibeinstellungen** finden Sie in der Tabelle unten.| Nein      |
@@ -83,7 +86,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **Avro-Schreibeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | Typ          | Der Typ von „formatSettings“ muss auf **AvroWriteSettings** festgelegt werden. | Ja                                                   |
 | maxRowsPerFile | Wenn Sie Daten in einen Ordner schreiben, können Sie in mehrere Dateien zu schreiben und die maximale Anzahl von Zeilen pro Datei angeben.  | Nein |
@@ -97,7 +100,7 @@ Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das Avro
 
 In der folgenden Tabelle sind die von einer Avro-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
@@ -111,7 +114,7 @@ In der folgenden Tabelle sind die von einer Avro-Quelle unterstützten Eigenscha
 
 In der folgenden Tabelle sind die von einer Avro-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
 | Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

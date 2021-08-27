@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 589c0a4ab358bb1b25fa58c2083dd82b13315d64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94536131"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639679"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MySQL-Verwaltung
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Gespeicherte Prozeduren sind auf Azure Database for MySQL-Servern verfügbar, um die Verwaltung Ihres MySQL-Servers zu erleichtern. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten von Datenreplikation ein.  
 

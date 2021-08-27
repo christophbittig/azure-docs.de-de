@@ -1,19 +1,21 @@
 ---
 title: Konfigurieren von Azure Blockchain-Transaktionsknoten
 description: Erfahren Sie, wie Sie Azure Blockchain-Transaktionsknoten konfigurieren.
-ms.date: 11/20/2019
+ms.date: 05/11/2021
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 436c7721bac29e8a18a333e385f12a70e0701ba5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091259"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122639661"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurieren von Azure Blockchain-Transaktionsknoten
 
 Transaktionsknoten werden zum Senden von Blockchaintransaktionen an den Azure Blockchain-Dienst über einen öffentlichen Endpunkt verwendet. Der Standardtransaktionsknoten enthält den privaten Schlüssel des in der Blockchain registrierten Ethereum-Kontos und kann deshalb nicht gelöscht werden.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 So zeigen Sie die Details zum Standardtransaktionsknoten an:
 
@@ -99,7 +101,7 @@ Sie können die Informationen zum Zugriffsschlüssel eines Transaktionsknotens a
 
 ### <a name="firewall-rules"></a>Firewallregeln
 
-Mithilfe von Firewallregeln können Sie die IP-Adressen einschränken, die versuchen können, sich für Ihren Transaktionsknoten zu authentifizieren.  Wenn keine Firewallregeln für Ihren Transaktionsknoten konfiguriert sind, kann niemand auf diesen zugreifen.  
+Mithilfe von Firewallregeln können Sie die IP-Adressen einschränken, die versuchen können, sich für Ihren Transaktionsknoten zu authentifizieren.  Wenn keine Firewallregeln für Ihren Transaktionsknoten konfiguriert sind, kann niemand auf diesen zugreifen.
 
 Navigieren Sie zu einem Ihrer Transaktionsknoten Ihres Azure Blockchain-Mitglieds, und klicken Sie in den Einstellungen auf **Firewallregeln**, um die Firewallregeln eines Transaktionsknotens anzuzeigen.
 

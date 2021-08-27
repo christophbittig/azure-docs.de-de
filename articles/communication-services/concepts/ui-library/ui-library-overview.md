@@ -6,15 +6,15 @@ author: ddematheu2
 manager: chrispalm
 services: azure-communication-services
 ms.author: dademath
-ms.date: 05/11/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4176bdf61cafdf50aef71e76b832a0e669f1535c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 86ef660c5d4b0f0132218df1df37c8934f27ec08
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468802"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639775"
 ---
 # <a name="ui-library-overview"></a>Übersicht über die UI-Bibliothek
 
@@ -53,8 +53,8 @@ Entwickler können die Zusammensetzung ganz einfach mithilfe eines Azure Communi
 
 | Composite    | Anwendungsfälle  | 
 | ------------ | ---------- |
-| [CallComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-callcomposite--basic-example) | Anrufbenutzeroberfläche, mit der Benutzer einen Anruf starten oder ihm beitreten können. Innerhalb der Benutzeroberfläche können Benutzer ihre Geräte konfigurieren, am Anruf mit Video teilnehmen und andere Teilnehmer sehen, einschließlich der Teilnehmer mit aktivierten Videofunktionen. Für Teams Interop ist eine Wartebereichfunktion enthalten, mit der Benutzer auf ihre Zulassung warten können. |
-| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-chatcomposite--basic-example)    | Chatbenutzeroberfläche, mit der Benutzer Nachrichten senden und empfangen können. Threadereignisse wie Eingaben, Lesevorgänge und Teilnehmer, die dem Chat beitreten oder ihn verlassen, werden dem Benutzer als Teil des Chatthreads angezeigt.                                                                                                                          |
+| [CallComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-call--basic-example) | Anrufbenutzeroberfläche, mit der Benutzer einen Anruf starten oder ihm beitreten können. Innerhalb der Benutzeroberfläche können Benutzer ihre Geräte konfigurieren, am Anruf mit Video teilnehmen und andere Teilnehmer sehen, einschließlich der Teilnehmer mit aktivierten Videofunktionen. Für Teams Interop ist eine Wartebereichfunktion enthalten, mit der Benutzer auf ihre Zulassung warten können. |
+| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-chat--basic-example)    | Chatbenutzeroberfläche, mit der Benutzer Nachrichten senden und empfangen können. Threadereignisse wie Eingaben, Lesevorgänge und Teilnehmer, die dem Chat beitreten oder ihn verlassen, werden dem Benutzer als Teil des Chatthreads angezeigt.                                                                                                                          |
 
 ## <a name="ui-component-overview"></a>Übersicht über die UI-Komponenten
 
@@ -63,17 +63,16 @@ UI-Komponenten unterstützen Anpassung, um den Komponenten das richtige Erschein
 
 | Bereich    | Komponente    | Beschreibung       |
 | ------- | ------------ | ----------------- |
-| Aufrufen | [Rasterlayout](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout-component)                | Rasterkomponente zum Organisieren von Videokacheln in einem NxN-Raster                                            |
-|         | [Videokachel](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile-component)                   | Komponente, die den Videodatenstrom anzeigt, wenn verfügbar, und eine statische Standardkomponente, wenn dies nicht möglich ist.        |
-|         | [Steuerleiste](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar-component)                | Container zum Organisieren von DefaultButtons, um bestimmte Anrufaktionen wie Stummschaltung oder Bildschirmfreigabe zu ermöglichen. |
+| Aufrufen | [Rasterlayout](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout)                | Rasterkomponente zum Organisieren von Videokacheln in einem NxN-Raster                                            |
+|         | [Videokachel](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile)                   | Komponente, die den Videodatenstrom anzeigt, wenn verfügbar, und eine statische Standardkomponente, wenn dies nicht möglich ist.        |
+|         | [Steuerleiste](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar)                | Container zum Organisieren von DefaultButtons, um bestimmte Anrufaktionen wie Stummschaltung oder Bildschirmfreigabe zu ermöglichen. |
 |         | [VideoGallery](https://azure.github.io/communication-ui-library/?path=/story/ui-components-video-gallery--video-gallery)                                           | Schlüsselfertige Videokatalogkomponente, die sich dynamisch ändert, wenn Teilnehmer hinzugefügt werden.               |
-| Chat    | [Nachrichtenthread](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread-component)       | Container zum Rendern von Chatnachrichten, Systemnachrichten und benutzerdefinierten Nachrichten.                          |
-|         | [Sendefeld](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box-component)                         | Texteingabekomponente mit eigenständigen Sendeschaltfläche.                                                   |
-|         | [Nachrichtenstatusanzeige](https://azure.github.io/communication-ui-library/?path=/story/ui-components-message-status-indicator--message-status-indicator)        | Lesebestätigungskomponente mit mehreren Zuständen zum Anzeigen des Status der gesendeten Nachricht.                                   |
-|         | [Eingabeindikator](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator-component) | Textkomponente zum Rendern der Teilnehmer, die aktiv Eingaben in einem Thread vornehmen.                      |
-| Allgemein  | [Teilnehmerelement](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item-component) | Allgemeine Komponente zum Rendern eines Anruf- oder Chatteilnehmers, einschließlich Avatar und Anzeigename.            |
-|         | [Teilnehmerliste](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participant-list--participant-list)                                 | Allgemeine Komponente zum Rendern einer Anrufer- oder Chatteilnehmerliste, einschließlich Avatar und Anzeigename.       |
-
+| Chat    | [Nachrichtenthread](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread)       | Container zum Rendern von Chatnachrichten, Systemnachrichten und benutzerdefinierten Nachrichten.                          |
+|         | [Sendefeld](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box)                         | Texteingabekomponente mit eigenständigen Sendeschaltfläche.                                                   |
+|         | [Nachrichtenstatusanzeige](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagestatusindicator--message-status-indicator)        | Lesebestätigungskomponente mit mehreren Zuständen zum Anzeigen des Status der gesendeten Nachricht.                                   |
+|         | [Eingabeindikator](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator) | Textkomponente zum Rendern der Teilnehmer, die aktiv Eingaben in einem Thread vornehmen.                      |
+| Allgemein  | [Teilnehmerelement](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item) | Allgemeine Komponente zum Rendern eines Anruf- oder Chatteilnehmers, einschließlich Avatar und Anzeigename.            |
+|         | [Teilnehmerliste](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantlist--participant-list)                                 | Allgemeine Komponente zum Rendern einer Anrufer- oder Chatteilnehmerliste, einschließlich Avatar und Anzeigename.       |
 
 ## <a name="what-ui-artifact-is-best-for-my-project"></a>Welches UI-Artefakt ist für mein Projekt am besten geeignet?
 

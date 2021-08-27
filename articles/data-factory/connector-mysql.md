@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie mehr über den MySQL-Connector in Azure Data Factory, mit dem Sie Daten von einer MySQL-Datenbank in einem als Senke unterstützten Datenspeicher kopieren können.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jianleishen
-ms.openlocfilehash: 628e30fe3e835becee78666fec2ec18d643c0bc6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5ca59632e63f60b05f59f1a5d857425a036cbc7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640802"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 

@@ -2,10 +2,8 @@
 title: Anfordern von Unterstützung und Öffnen eines Supporttickets – Azure Active Directory | Microsoft-Dokumentation
 description: Anleitung zum Anfordern von Hilfe und zum Öffnen eines Supporttickets für Azure Active Directory.
 services: active-directory
-documentationcenter: na
 author: ajburnle
 manager: daveba
-editor: ''
 ms.service: active-directory
 ms.topic: troubleshooting
 ms.subservice: fundamentals
@@ -15,15 +13,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 057265ca91bdfe0e3b73eea012736e65920e62c2
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257405"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768931"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Anfordern von Unterstützung und Öffnen eines Supporttickets für Azure Active Directory
-Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvorbereitenden, Abrechnungs- und Abonnementsupport. Für gebührenpflichtige und Testabonnements von Microsoft Azure steht Support online und telefonisch zur Verfügung. Abrechnungssupport ist online und telefonisch in weiteren Sprachen verfügbar. 
+
+Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvorbereitenden, Abrechnungs- und Abonnementsupport. Für gebührenpflichtige und Testabonnements von Microsoft Azure steht Support online und telefonisch zur Verfügung. Abrechnungssupport ist online und telefonisch in weiteren Sprachen verfügbar.
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Finden von Hilfe ohne Öffnen eines Supporttickets
 
@@ -32,7 +31,6 @@ Prüfen Sie vor dem Erstellen eines Supporttickets die folgenden Ressourcen auf 
 * Inhalte wie Anweisungsinformationen oder Codebeispiele für IT-Experten und Entwickler sind in der [technischen Dokumentation auf docs.microsoft.com](../index.yml) zu finden.
 
 * In der [Microsoft Technical Community](https://techcommunity.microsoft.com/) können unsere IT Pro-Partner und Kunden zusammenarbeiten, sich austauschen und dazulernen. Das [Microsoft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) wird u.a. für Ankündigungen, Blogbeiträge und die Interaktion mit Experten genutzt. Sie können auch [Mitglied der Community werden, um Ihre Ideen einzubringen](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
-
 
 ## <a name="open-a-support-ticket"></a>Öffnen eines Supporttickets
 

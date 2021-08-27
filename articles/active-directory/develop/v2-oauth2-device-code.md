@@ -9,22 +9,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 06/25/2021
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 053f56f56c28560b700122a99fc2d97f4c8e0279
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88272449"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "122639781"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
 
 Microsoft Identity Platform unterstützt die [Geräteautorisierungsgenehmigung](https://tools.ietf.org/html/rfc8628), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.
 
 In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -36,10 +38,6 @@ Der gesamte Gerätecodeflow sieht ähnlich wie im nächsten Diagramm aus. Wir be
 
 Der Client muss zuerst den Authentifizierungsserver auf einen Geräte- und Benutzercode überprüfen, die zum Initiieren der Authentifizierung verwendet werden. Der Client sammelt diese Anforderung vom `/devicecode`-Endpunkt. In diese Anforderung sollte der Client außerdem die Berechtigungen aufnehmen, die er vom Benutzer erhalten muss. Ab dem Zeitpunkt des Absendens dieser Anforderung hat der Benutzer nur 15 Minuten, um sich anzumelden (der übliche Wert für `expires_in`), weshalb Sie diese Anforderung nur stellen sollten, wenn der Benutzer angezeigt hat, dass er zur Anmeldung bereit ist.
 
-> [!TIP]
-> Führen Sie diese Anforderung in Postman aus.
-> [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ```HTTP
 // Line breaks are for legibility only.
 
@@ -47,7 +45,7 @@ POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-scope=user.read%20openid%20profile
+&scope=user.read%20openid%20profile
 
 ```
 
@@ -85,9 +83,9 @@ Während sich der Benutzer bei dem `verification_uri` authentifiziert, sollte de
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type: urn:ietf:params:oauth:grant-type:device_code
-client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
-device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
+grant_type=urn:ietf:params:oauth:grant-type:device_code
+&client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&device_code=GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG|
@@ -133,3 +131,5 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat.  |
 
 Sie können mit dem Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken abrufen. Verwenden Sie dazu den in der [Dokumentation für den OAuth-Codeflow](v2-oauth2-auth-code-flow.md#refresh-the-access-token) beschriebenen Flow.
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]

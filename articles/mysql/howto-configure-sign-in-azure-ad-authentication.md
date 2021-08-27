@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27a6c07fd43fc167efb32369e6269206c9462e51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 152dfc877ad96d2b002fed43eea92a0b607e8bd2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570500"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639743"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Zugriffs auf Azure Active Directory mit Azure Database for MySQL sowie zum Herstellen einer Verbindung mit einem Azure AD-Token.
 

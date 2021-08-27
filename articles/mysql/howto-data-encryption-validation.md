@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 1f47b3d5679b70461eaba64b5815770162cb6fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36cdf60dd318250efbfe7386fa9eb172091afde3
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241071"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639726"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Überprüfen der Datenverschlüsselung für Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Dieser Artikel hilft Ihnen, zu überprüfen, ob die Datenverschlüsselung mit kundenseitig verwaltetem Schlüssel für Azure Database for MySQL erwartungsgemäß funktioniert.
 

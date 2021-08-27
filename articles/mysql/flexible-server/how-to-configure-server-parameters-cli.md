@@ -8,17 +8,19 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 21f9b3dcb94be105c8b7279e6ac447540da65447
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd1be8c63e295aedead72fdd5c6ce407179dc660
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110099"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639694"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Konfigurieren von Serverparametern für Azure Database for MySQL: Flexible Server mit der Azure CLI
 
-> [!IMPORTANT] 
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
+> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Sie können Konfigurationsparameter für eine Instanz von Azure Database for MySQL: Flexible Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Die Serverparameter werden beim Erstellen des Servers mit einem Standardwert und einem empfohlenen Wert konfiguriert.  
 
@@ -28,11 +30,14 @@ In diesem Artikel wird beschrieben, wie Serverparameter mithilfe der Azure CLI a
 > Serverparameter können mithilfe der [Azure CLI](./how-to-configure-server-parameters-cli.md) oder des [Azure-Portals](./how-to-configure-server-parameters-portal.md) auf Serverebene global aktualisiert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
+
 - [Eine Azure Database for MySQL: Flexible Server-Instanz](quickstart-create-server-cli.md)
 - Das Befehlszeilenprogramm [Azure CLI](/cli/azure/install-azure-cli) oder Azure Cloud Shell im Browser
 
 ## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>Auflisten von Serverparametern für Azure Database for MySQL: Flexible Server
+
 Um alle Parameter in einem Server mit ihren Werten aufzulisten, führen Sie den Befehl [az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter) aus.
 
 Sie können die Serverparameter für den Server **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup** auflisten.
@@ -42,6 +47,7 @@ az mysql flexible-server parameter list --resource-group myresourcegroup --serve
 Die Definition der einzelnen aufgeführten Parameter finden Sie in der MySQL-Referenz im Abschnitt [Server System Variables](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html).
 
 ## <a name="show-server-parameter-details"></a>Anzeigen von Serverparameterdetails
+
 Um Details zu einem bestimmten Parameter für einen Server anzuzeigen, führen Sie den Befehl [az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter) aus.
 
 Dieses Beispiel zeigt Details des Serverparameters **slow\_query\_log** für den Server **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**.
@@ -49,6 +55,7 @@ Dieses Beispiel zeigt Details des Serverparameters **slow\_query\_log** für den
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## <a name="modify-a-server-parameter-value"></a>Ändern eines Serverparameterwerts
+
 Sie können auch den Wert eines bestimmten Serverparameters ändern und dadurch den zugrunde liegenden Konfigurationswert für die MySQL-Server-Engine aktualisieren. Um den Serverparameter zu aktualisieren, verwenden Sie den Befehl [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter). 
 
 So aktualisieren Sie den Serverparameter **slow\_query\_log** für den Server **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**
@@ -63,7 +70,7 @@ Dieser Code setzt **slow\_query\_log** auf den Standardwert **OFF** zurück.
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Festlegen nicht änderbarer Serverparameter
 
-Wenn der Serverparameter, den Sie aktualisieren möchten, nicht geändert werden kann, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client, der mit dem Server verbinden wird, festgelegt. 
+Wenn der Serverparameter, den Sie aktualisieren möchten, nicht geändert werden kann, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client, der mit dem Server verbinden wird, festgelegt.
 
 Aktualisieren Sie den Serverparameter **init\_connect** des Servers **mydemoserver.mysql.database.azure.com** in der Ressourcengruppe **myresourcegroup**, um Werte wie den Zeichensatz festzulegen.
 ```azurecli-interactive
@@ -86,7 +93,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden.<!-- fIX me To restart the server, use the [Azure portal](howto-restart-server-portal.md) or [CLI](howto-restart-server-cli.md). -->
+>Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden.<!-- fIX me To restart the server, use the [Azure portal](howto-restart-server-portal.md) or [CLI](howto-restart-server-cli.md). -->
 
 Um die verfügbaren Zeitzonenwerte anzuzeigen, führen Sie den folgenden Befehl aus:
 

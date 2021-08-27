@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus Presto mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Presto mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1759649f7e705d4fe68e156b324280c5bfd3c316
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 4fe458ce4f358e81c115761b571874a955ededc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485673"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640666"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

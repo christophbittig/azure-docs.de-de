@@ -1,17 +1,19 @@
 ---
 title: Kopieren von Daten aus Oracle Cloud Storage mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Es wird beschrieben, wie Sie mithilfe von Azure Data Factory Daten aus Oracle Cloud Storage in unterstützte Senkendatenspeicher kopieren.
 author: jianleishen
 ms.service: data-factory
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: jianleishen
-ms.openlocfilehash: 47f6897f6cd7a62da9edc9984f71f1c23e411194
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 817b1a8c1b98f5eae3277f906cbd970e7ccebb9f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103932"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639863"
 ---
 # <a name="copy-data-from-oracle-cloud-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Oracle Cloud Storage mithilfe von Azure Data Factory
 
@@ -45,7 +47,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für mit Oracle Cloud Storage verknüpfte Dienste unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft muss auf **OracleCloudStorage** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. Informationen zum Ermitteln des Zugriffsschlüssels und des Geheimnisses finden Sie unter [Voraussetzungen](#prerequisites). |Ja |
@@ -82,7 +84,7 @@ Hier sehen Sie ein Beispiel:
 
 Folgende Eigenschaften werden für Oracle Cloud Storage unter `location`-Einstellungen in einem formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | Typ       | Die **type**-Eigenschaft unter `location` im Dataset muss auf **OracleCloudStorageLocation** festgelegt werden. | Ja      |
 | bucketName | Der Name des Oracle Cloud Storage-Buckets.                                          | Ja      |
@@ -126,7 +128,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Oracle Cloud Storage unter `storeSettings`-Einstellungen in einer formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | Typ                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **OracleCloudStorageReadSettings** festgelegt werden. | Ja                                                         |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |

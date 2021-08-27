@@ -1,18 +1,21 @@
 ---
 title: Aktivität „Variable anfügen“ in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie die Aktivität „Variable anfügen“ so festlegen, dass ein Wert einer vorhandenen Arrayvariablen hinzugefügt wird, die in einer Data Factory-Pipeline definiert ist.
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.date: 10/09/2018
-ms.openlocfilehash: 5739be457f824fd523e26171de59439da314dd31
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 4157ad2fc1cf3619b1fa4c55709f8828415f0dca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640634"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Aktivität „Variable anfügen“ in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,7 +23,7 @@ Verwenden Sie die Aktivität „Variable anfügen“ zum Hinzufügen eines Werts
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Eigenschaft | Beschreibung | Erforderlich
+Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Der Name der Aktivität in der Pipeline. | Ja
 description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | nein

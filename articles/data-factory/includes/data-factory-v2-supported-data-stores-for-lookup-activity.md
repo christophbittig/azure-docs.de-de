@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c49406780c6e9f35aadfdfc5fad11d69949aeaf0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: eeed8efc6c3c18955223ffb073be5714f616a0b4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163186"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639840"
 ---
 | Category | Datenspeicher |
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL-API)](../connector-azure-cosmos-db.md) |
-| &nbsp; |[Azure Data Explorer](../connector-azure-data-explorer.md) |
+| &nbsp; |[Azure Data Explorer (Kusto)](../connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Data Lake Storage Gen2](../connector-azure-data-lake-storage.md) |
 | &nbsp; |[Azure Database for MariaDB](../connector-azure-database-for-mariadb.md) |
@@ -32,13 +32,15 @@ ms.locfileid: "110163186"
 | &nbsp; |[Azure Synapse Analytics](../connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../connector-azure-table-storage.md) |
 | **Datenbank** |[Amazon Redshift](../connector-amazon-redshift.md) |
+| &nbsp; |[Apache Impala](../connector-impala.md) |
+| &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../connector-azure-sql-managed-instance.md) |
 | &nbsp; |[DB2](../connector-db2.md) |
 | &nbsp; |[Drill](../connector-drill.md) |
+| &nbsp; |[Google AdWords](../connector-google-adwords.md) |
 | &nbsp; |[Google BigQuery](../connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../connector-greenplum.md) |
 | &nbsp; |[HBase](../connector-hbase.md) |
 | &nbsp; |[Hive](../connector-hive.md) |
-| &nbsp; |[Apache Impala](../connector-impala.md) |
 | &nbsp; |[Informix](../connector-informix.md) 
 | &nbsp; |[MariaDB](../connector-mariadb.md) |
 | &nbsp; |[Microsoft Access](../connector-microsoft-access.md) |
@@ -52,9 +54,8 @@ ms.locfileid: "110163186"
 | &nbsp; |[SAP Business Warehouse über MDX](../connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../connector-sap-hana.md) |
 | &nbsp; |[SAP-Tabelle](../connector-sap-table.md) |
-| &nbsp; |[Snowflake](../connector-snowflake.md) |
-| &nbsp; |[Spark](../connector-spark.md) |
 | &nbsp; |[SQL Server](../connector-sql-server.md) |
+| &nbsp; |[Spark](../connector-spark.md) |
 | &nbsp; |[Sybase](../connector-sybase.md) |
 | &nbsp; |[Teradata](../connector-teradata.md) |
 | &nbsp; |[Vertica](../connector-vertica.md) |
@@ -66,35 +67,39 @@ ms.locfileid: "110163186"
 | &nbsp; |[FTP](../connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../connector-hdfs.md) |
+| &nbsp; |[Generisches HTTP](../connector-http.md)|
 | &nbsp; |[Oracle Cloud Storage](../connector-oracle-cloud-storage.md) |
 | &nbsp; |[SFTP](../connector-sftp.md) |
-| **Generisches Protokoll** |[Generisches HTTP](../connector-http.md) |
-| &nbsp; |[Generisches OData](../connector-odata.md) |
+| **Generisches Protokoll** |[Generisches OData](../connector-odata.md) |
 | &nbsp; |[Generische ODBC](../connector-odbc.md) |
+| &nbsp; |[REST](../connector-rest.md) |
+| &nbsp; |[SharePoint Online-Liste](../connector-sharepoint-online-list.md) |
 | **Dienste und Apps** |[Amazon Marketplace Web Service](../connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Concur (Vorschauversion)](../connector-concur.md) |
 | &nbsp; |[Dataverse](../connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Dynamics 365](../connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Azure IoT Hub](../connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Google AdWords](../connector-google-adwords.md) |
 | &nbsp; |[HubSpot](../connector-hubspot.md) |
 | &nbsp; |[Jira](../connector-jira.md) |
+| &nbsp; |[Azure Data Explorer (Kusto)](../connector-azure-data-explorer.md) |
 | &nbsp; |[Magento (Vorschauversion)](../connector-magento.md) |
 | &nbsp; |[Marketo (Vorschauversion)](../connector-marketo.md) |
+| &nbsp; |[Office 365](../connector-office-365.md) |
 | &nbsp; |[Oracle Eloqua (Vorschauversion)](../connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Vorschauversion)](../connector-oracle-responsys.md) |
 | &nbsp; |[Oracle Service Cloud (Vorschau)](../connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Vorschauversion)](../connector-paypal.md) |
 | &nbsp; |[QuickBooks (Vorschauversion)](../connector-quickbooks.md) |
-| &nbsp; |[Salesforce](../connector-salesforce.md) |
-| &nbsp; |[Salesforce Service Cloud](../connector-salesforce-service-cloud.md) |
-| &nbsp; |[Salesforce Marketing Cloud](../connector-salesforce-marketing-cloud.md) |
+| &nbsp; |[REST](../connector-rest.md) |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../connector-sap-cloud-for-customer.md) |
 | &nbsp; |[SAP ECC](../connector-sap-ecc.md) |
+| &nbsp; |[Salesforce](../connector-salesforce.md) |
+| &nbsp; |[Salesforce Marketing Cloud](../connector-salesforce-marketing-cloud.md) |
+| &nbsp; |[Salesforce Service Cloud](../connector-salesforce-service-cloud.md) |
 | &nbsp; |[ServiceNow](../connector-servicenow.md) |
 | &nbsp; |[Shopify (V)](../connector-shopify.md) |
-| &nbsp; |[SharePoint Online-Liste](../connector-sharepoint-online-list.md) |
+| &nbsp; |[Snowflake](../connector-snowflake.md) |
 | &nbsp; |[Square (Vorschauversion)](../connector-square.md) |
 | &nbsp; |[Webtabelle (HTML-Tabelle)](../connector-web-table.md) 
 | &nbsp; |[Xero](../connector-xero.md) |

@@ -1,17 +1,20 @@
 ---
 title: Kopieren von Daten aus Phoenix mithilfe von Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus Phoenix mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jianleishen
-ms.openlocfilehash: f6d1a388404e1087bbf90e285ad22a9fd759f0e4
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 82f2e7062dbd2523f2d7f90063074a12fe8ae274
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640674"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopieren von Daten aus Phoenix mithilfe von Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

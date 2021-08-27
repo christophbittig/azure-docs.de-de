@@ -5,21 +5,23 @@ author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 06/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cf2a5bcc511b0401ff1be3630e0388b43eaeb78d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 19dd17afc7114d739e1faa043a40962ce601d253
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110674971"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640625"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Switch-Aktivität in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Switch-Aktivität bietet die gleiche Funktionalität wie eine Switch-Anweisung in Programmiersprachen. Sie wertet einen Satz von Aktivitäten entsprechend einem Fall aus, der mit der Bedingungsauswertung übereinstimmt.
+
 
 ## <a name="syntax"></a>Syntax
 

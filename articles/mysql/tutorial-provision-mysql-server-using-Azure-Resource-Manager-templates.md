@@ -4,18 +4,19 @@ description: In diesem Tutorial wird erläutert, wie Sie Azure Database for MySQ
 author: savjani
 ms.author: pariks
 ms.service: mysql
-ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2219e7b31e4c6594fc5f98022151f6094853a1b1
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 81d2dc2da69f050333223dc09434b9ef82e3c9f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121783983"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Tutorial: Bereitstellen eines Azure Database for MySQL-Servers mithilfe von Azure Resource Manager-Vorlagen
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Mit der [Azure Database for MySQL-REST-API](/rest/api/mysql/) können DevOps-Techniker Bereitstellung, Konfiguration und Prozesse für verwaltete MySQL-Server und -Datenbanken in Azure automatisieren und integrieren.  Die API ermöglicht Erstellung, Enumeration, Verwaltung und Löschung von MySQL-Servern und -Datenbanken im Azure Database for MySQL-Dienst.
 

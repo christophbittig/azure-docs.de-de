@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93837c33d905ad3db1b5906e096165db938c0ae9
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241921"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639745"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Anhalten/Starten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau)
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.

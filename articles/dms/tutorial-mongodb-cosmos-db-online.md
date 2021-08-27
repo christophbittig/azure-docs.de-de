@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 05/19/2021
-ms.openlocfilehash: b8ffe57b2244ff3f9e7df94665d7801d3231d9aa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d469f44277b31209c012f7d28649692cfa7e89cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638522"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Tutorial: Onlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB mit DMS
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "110467636"
 
 Dieser MongoDB-Migrationsleitfaden ist Teil der Reihe zur MongoDB-Migration. Die wichtigen MongoDB-Migrationsschritte umfassen die [Migrationsvorbereitung](../cosmos-db/mongodb-pre-migration.md), die Migration selbst und die [Schritte nach der Migration](../cosmos-db/mongodb-post-migration.md), wie nachfolgend dargestellt.
 
-![Diagramm der Migrationsschritte](../cosmos-db/media/mongodb-pre-migration/overall-migration-steps.png)
+![Diagramm der Migrationsschritte](../cosmos-db/mongodb/media/pre-migration-steps/overall-migration-steps.png)
 
 ## <a name="overview-of-online-data-migration-from-mongodb-to-azure-cosmos-db-using-dms"></a>Übersicht über die Onlinedatenmigration von MongoDB zu Azure Cosmos DB mit DMS
 
@@ -64,7 +64,7 @@ In diesem Artikel wird eine Onlinemigration von MongoDB zur Azure Cosmos DB-API 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Führen Sie die Schritte zur Migrationsvorbereitung](../cosmos-db/mongodb-pre-migration.md) aus. Schätzen Sie beispielsweise den Durchsatz, und wählen Sie einen Partitionsschlüssel und die Indizierungsrichtlinie aus.
-* [Erstellen Sie eine Azure Cosmos DB-API für das MongoDB-Konto](https://ms.portal.azure.com/#create/Microsoft.DocumentDB), und stellen Sie sicher, dass [SSR](../cosmos-db/prevent-rate-limiting-errors.md) (Server-Side Retry, serverseitige Wiederholung) aktiviert ist.
+* [Erstellen Sie eine Azure Cosmos DB-API für das MongoDB-Konto](https://ms.portal.azure.com/#create/Microsoft.DocumentDB), und stellen Sie sicher, dass [SSR](../cosmos-db/mongodb/prevent-rate-limiting-errors.md) (Server-Side Retry, serverseitige Wiederholung) aktiviert ist.
 * Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) bereitstellt.
 
     > [!NOTE]
@@ -92,19 +92,7 @@ Ist das Feature *deaktiviert*, wird empfohlen, es wie im Anschluss gezeigt zu ak
 
 ![Screenshot: Aktivieren der serverseitigen Wiederholung von MongoDB](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-   ![Abonnements im Portal anzeigen](media/tutorial-mongodb-to-cosmosdb-online/portal-select-subscription1.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-    ![Ressourcenanbieter anzeigen](media/tutorial-mongodb-to-cosmosdb-online/portal-select-resource-provider.png)
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)] 
 
 ## <a name="create-an-instance"></a>Erstellen einer Instanz
 
