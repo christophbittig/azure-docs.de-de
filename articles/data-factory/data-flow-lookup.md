@@ -1,19 +1,21 @@
 ---
 title: Suchtransformation in einem Zuordnungsdatenfluss
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Verweisen Sie mithilfe der Suchtransformation in einem Zuordnungsdatenfluss auf Daten aus einer anderen Quelle.
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 02/19/2021
-ms.openlocfilehash: 129b8460d22de6f03a136dcb30b8f686738a9bdd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: f6250b15f854870d14d9977c8eebd7c71e565635
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734196"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639994"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 

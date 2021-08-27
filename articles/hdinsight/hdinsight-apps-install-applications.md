@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: c8fde4c233907a8ed1493d7fa8d8c7faee03941d
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: bb057f6328c0a678f1fbc7bfed57f1fa8dc13bfc
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402352"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681635"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -20,7 +20,7 @@ Eine HDInsight-Anwendung kann von Benutzern in einem HDInsight-Cluster installie
 
 Die folgende Liste zeigt die veröffentlichten Anwendungen:
 
-|Application |Clustertyp(en) | BESCHREIBUNG |
+|Application |Clustertyp(en) | Beschreibung |
 |---|---|---|
 |[AtScale Intelligence-Plattform](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale wandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Skalierung um, wodurch Sie vertraute Business Intelligence-Tools (von Microsoft Excel, Power BI und Tableau Software bis hin zu Qlikview), die Sie bereits besitzen und zu schätzen wissen, interaktiv zum Abfragen von Milliarden von Zeilen von Daten verwenden können. |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |Die skalierbare Self-Service-Plattform von Datameer zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können. |
@@ -29,7 +29,7 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 |[H2O SparklingWater für HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep Learning, k-Means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoder. |
 |[Striim für Echtzeitdatenintegration in HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |Striim (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht. |
 |[Jumbune – BigData-Analyse für Unternehmensbeschleunigung](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune unterstützt Unternehmen im Allgemeinen wie folgt: 1. Beschleunigt die Workloadleistung von Tez, MapReduce & Spark-basiertes Hive, Java, und Scala. 2. Überwacht Hadoop-Cluster proaktiv. 3. Richtet Datenqualitätsverwaltung für verteilte Dateisysteme ein. |
-|[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Unterstützt von Apache Kylin ermöglicht Kyligence Enterprise Business Intelligence für Big Data. Kyligence Enterprise ist eine professionelle OLAP-Engine für Hadoop, mit der Business Analysten Business Intelligence für Hadoop mit Data Warehouse- und BI-Methoden entwerfen können, die dem Industriestandard entsprechen. |
+|[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence-cloud-saas) |Hadoop, HBase, Spark |Unterstützt von Apache Kylin ermöglicht Kyligence Enterprise Business Intelligence für Big Data. Kyligence Enterprise ist eine professionelle OLAP-Engine für Hadoop, mit der Business Analysten Business Intelligence für Hadoop mit Data Warehouse- und BI-Methoden entwerfen können, die dem Industriestandard entsprechen. |
 |[Starburst Presto für Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1582306810515.starburst-enterprise-presto?tab=Overview) |Hadoop |Presto ist eine schnelle und skalierbare verteilte SQL-Abfrage-Engine. Dank der architekturbedingten Trennung der Speicher- und Computekomponenten eignet sich Presto perfekt zum Abfragen von Daten in Azure Data Lake Storage, Azure Blob Storage, SQL- und NoSQL-Datenbanken sowie in anderen Datenquellen. |
 |[StreamSets Data Collector für HDInsight Cloud](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector ist eine einfache, leistungsstarke Engine, die Daten in Echtzeit übermittelt. Mit Data Collector können Sie Daten in Ihren Datenströmen weiterleiten und verarbeiten. Eine kostenlose 30-tägige Testlizenz steht zur Verfügung. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise für HDInsight unterstützt unternehmensweites Data Wrangling für Daten bei jeder Skalierung. Beim Ausführen von Trifacta in Azure entstehen die Kosten aus den Kosten für das Trifacta-Abonnement und den Kosten Azure-Infrastrukturkosten für die virtuellen Computer. |

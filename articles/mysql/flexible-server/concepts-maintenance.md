@@ -6,14 +6,16 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 424402db1933c0a20ddd25a6e5af11d84d0775a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 0da77cb5291022357384fdf2e14e90fe76850f4f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481156"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639753"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Geplante Wartung in Azure Database for MySQL: Flexible Server
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In Azure Database for MySQL – Flexible Server werden regelmäßige Wartungen durchgeführt, um die Sicherheit, Stabilität und Aktualität Ihrer verwalteten Datenbank sicherzustellen. Während der Wartung erhält der Server neue Features, Updates und Patches.
 

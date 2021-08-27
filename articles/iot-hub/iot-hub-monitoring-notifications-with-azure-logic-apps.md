@@ -6,15 +6,14 @@ keywords: IoT-Überwachung, IoT-Benachrichtigungen, IoT-Temperaturüberwachung
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 74724357dea9cd6c8c89a11a9eeb3d1b2933b790
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a3a4aa719f4a9c2c7ebc527e0da3eb81307cbe1c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564936"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "122639782"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
 
@@ -48,7 +47,7 @@ In diesem Artikel haben Sie das Routing Ihres IoT-Hubs zum Senden von Nachrichte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
+* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
 
   * Ein aktives Azure-Abonnement.
   * Ein Azure IoT Hub in Ihrem Abonnement.

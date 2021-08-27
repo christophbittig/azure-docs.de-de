@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4faa7e68b50b83368837b75cd04be566d816f6d3
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 0854150e4299e7f2bf02750d66bdd7ba459ce584
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119806"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "122639651"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -73,8 +73,8 @@ Das CryptographicKeys-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| issuer_secret | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Signieren des JWT-Tokens. Dies ist der `B2C_1A_TokenSigningKeyContainer`-Schlüssel, den Sie in [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) konfigurieren. |
-| issuer_refresh_token_key | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Verschlüsseln des Aktualisierungstokens. Sie haben den `B2C_1A_TokenEncryptionKeyContainer`-Schlüssel in [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) konfiguriert. |
+| issuer_secret | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Signieren des JWT-Tokens. Dies ist der `B2C_1A_TokenSigningKeyContainer`-Schlüssel, den Sie in [Erste Schritte mit benutzerdefinierten Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy) konfigurieren. |
+| issuer_refresh_token_key | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Verschlüsseln des Aktualisierungstokens. Sie haben den `B2C_1A_TokenEncryptionKeyContainer`-Schlüssel in [Erste Schritte mit benutzerdefinierten Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy) konfiguriert. |
 
 ## <a name="session-management"></a>Sitzungsverwaltung
 

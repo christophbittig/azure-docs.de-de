@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus und in Salesforce Service Cloud
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Data Factory-Pipeline Daten aus Salesforce Service Cloud in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in Salesforce Service Cloud kopieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: f61b5ab4a77372071658f18e81fce8ed2c3a7c51
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d4b619476908ad6799b5060cfedf7f55a566afea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640650"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Salesforce Service Cloud mit Azure Data Factory
 

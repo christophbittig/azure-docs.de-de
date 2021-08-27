@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten in den Suchindex
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten mit der Kopieraktivität in einer Azure Data Factory-Pipeline mithilfe von Push auf einen Azure Search-Index übertragen oder in einen Azure Search-Index kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: 7820232bc5f91d85ce24c9df8ebaa0a0bbc52342
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9ff0cdf1e54bb1ae943408eacfd92ed9f49f2be2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480208"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640710"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 
@@ -38,7 +40,7 @@ Die nachfolgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definie
 
 Die folgenden Eigenschaften werden für den mit Azure Cognitive Search verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
 | url | URL für den Suchdienst | Ja |
@@ -76,7 +78,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten in Azure Cognitive Search werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft des Datasets muss auf **AzureSearchIndex** festgelegt werden. | Ja |
 | indexName | Name des Suchindex. Data Factory erstellt den Index nicht. Der Index muss in Azure Cognitive Search vorhanden sein. | Ja |
@@ -108,7 +110,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten in Azure Cognitive Search den Quelltyp in der Copy-Aktivität auf **AzureSearchIndexSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureSearchIndexSink** festgelegt werden. | Ja |
 | writeBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).<br/><br/>Zulässige Werte sind **Merge** (Standard) und **Upload**. | Nein |
