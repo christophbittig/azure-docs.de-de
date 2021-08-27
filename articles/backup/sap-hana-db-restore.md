@@ -2,13 +2,13 @@
 title: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 description: In diesem Artikel erfahren Sie, wie Sie SAP HANA-Datenbanken wiederherstellen, die in Azure Virtual Machines ausgeführt werden. Zum Wiederherstellen von Datenbanken in einer sekundären Region können Sie auch die regionsübergreifende Wiederherstellung verwenden.
 ms.topic: conceptual
-ms.date: 11/7/2019
-ms.openlocfilehash: d0b1af610ffa19f2a7708ee6f96de335a1886f78
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.date: 08/06/2021
+ms.openlocfilehash: c6ad108cc0377411c144fade97b3fec2c5a8b633
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279980"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346002"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -254,7 +254,7 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
 
 Als eine der Wiederherstellungsoptionen ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von auf virtuellen Azure-Computern gehosteten SAP HANA-Datenbanken in einer sekundären Region, bei der es sich um eine gekoppelte Azure-Region handelt.
 
-Informationen zum Integrieren des Features während der Vorschau finden Sie im Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore).
+Lesen Sie den Abschnitt [Bevor Sie beginnen](./backup-create-rs-vault.md#set-cross-region-restore), um das Onboarding durchzuführen.
 
 Um festzustellen, ob CRR aktiviert ist, befolgen Sie die Anweisungen unter [Konfigurieren der regionsübergreifenden Wiederherstellung](backup-create-rs-vault.md#configure-cross-region-restore).
 
@@ -274,19 +274,15 @@ Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Re
 
 ### <a name="restore-in-secondary-region"></a>Wiederherstellen in der sekundären Region
 
-Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben.
+Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt der Benutzerumgebung für die Wiederherstellung in der primären Region. Wenn Sie Details im Bereich „Wiederherstellungskonfiguration“ festlegen, um Ihre Wiederherstellung zu konfigurieren, werden Sie aufgefordert, nur die Parameter der sekundären Region anzugeben. In der sekundären Region sollte ein Tresor vorhanden sein, und der SAP HANA-Server sollte beim Tresor in der sekundären Region registriert werden.
 
 ![Ziel und Art der Wiederherstellung](./media/sap-hana-db-restore/restore-secondary-region.png)
-
->[!NOTE]
->Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
 
 ![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 >[!NOTE]
->
 >* Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
->* Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
+>* Für die übergreifende Durchführung von Wiederherstellungsvorgängen sind folgende Rolle und Zugriffsebene erforderliche: die Rolle _Sicherungsoperator_ im Abonnement und _Mitwirkender(Schreib)_ -Zugriff auf den virtuellen Quell- und Zielcomputern. Zum Anzeigen von Sicherungsaufträgen ist „Sicherungsleseberechtigter“ die minimale Berechtigung, die im Abonnement erforderlich ist.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
 
