@@ -193,10 +193,6 @@
               href: storage-files-migration-storsimple-8000.md
             - name: Migrationshandbuch zu StorSimple 1200
               href: storage-files-migration-storsimple-1200.md
-    - name: Leistung
-      items:
-        - name: Aktivieren von SMB Multichannel
-          href: storage-files-enable-smb-multichannel.md
     - name: Entwickeln
       items:
         - name: Konfigurieren von Verbindungszeichenfolgen
