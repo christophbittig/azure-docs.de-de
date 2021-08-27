@@ -3,12 +3,12 @@ title: Hochverfügbarkeit und Notfallwiederherstellung
 description: Enthält Informationen zum Entwerfen Ihrer Batch-Anwendung für einen regionalen Ausfall.
 ms.topic: how-to
 ms.date: 12/30/2020
-ms.openlocfilehash: 51bcb0cfa35aacd24c0f79082491ef1fc7040889
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb3d0cb218e607e38b7478b7cc7956963e450f46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97831005"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339235"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>Entwerfen Ihrer Batch-Anwendung für Hochverfügbarkeit
 
@@ -30,8 +30,8 @@ Bei der Bereitstellung einer Option für ein Failover auf eine alternative Regio
 
 Beim Entwerfen einer Failoverlösung sollten Sie folgende Punkte berücksichtigen:
 
-- Erstellen Sie vorab alle erforderlichen Konten in jeder Region, z.B. das Batch-Konto und das Speicherkonto. Für das Erstellen von Konten fallen oft keine Gebühren an. Es fallen lediglich Gebühren an, wenn das Konto verwendet wird oder Daten gespeichert werden.
-- Stellen Sie sicher, dass die entsprechenden [Kontingente](batch-quota-limit.md) für alle Konten vorab festgelegt werden, damit Sie die erforderliche Anzahl der Kerne mithilfe des Batch-Kontos zuordnen können.
+- Erstellen Sie vorab alle erforderlichen Dienste in jeder Region, z. B. das Azure Batch-Konto und das Speicherkonto. Für das Erstellen von Konten fallen oft keine Gebühren an. Es fallen lediglich Gebühren an, wenn das Konto verwendet wird oder Daten gespeichert werden.
+- Stellen Sie sicher, dass die entsprechenden [Kontingente](batch-quota-limit.md) für alle Abonnements vorab festgelegt werden, damit Sie die erforderliche Anzahl der Kerne mithilfe des Azure Batch-Kontos zuordnen können.
 - Verwenden Sie Vorlagen und/oder Skripte zum Automatisieren der Bereitstellung der Anwendung in einer Region.
 - Halten Sie Binärdateien und Verweisdaten der Anwendung in allen Regionen auf dem neuesten Stand. Wenn die Region auf dem neuesten Stand bleibt, ist sichergestellt, dass sie ohne Warten auf das Hochladen und die Bereitstellung von Dateien schnell online geschaltet werden kann. Wird beispielsweise eine benutzerdefinierte Anwendung, die auf Poolknoten installiert werden soll, mit Batch-Anwendungspaketen gespeichert und referenziert, sollte sie, wenn eine neue Version der Anwendung erstellt wird, auf jedes Batch-Konto hochgeladen und von der Poolkonfiguration referenziert werden (oder machen Sie die neue Version zur Standardversion).
 - Vereinfachen Sie den Wechsel von Clients oder das Laden in andere Regionen in der Anwendung, die Azure Batch, den Speicher und andere Dienste aufruft.

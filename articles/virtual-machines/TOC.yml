@@ -94,7 +94,7 @@
         - name: Go SDK
           href: 'https://github.com/Azure/azure-sdk-for-go'
         - name: Referenz
-          href: /developer/go/azure-sdk-qs-vm?context=/azure/virtual-machines/context/context
+          href: /azure/developer/go/azure-sdk-qs-vm
     - name: "Repository für Azure\_CLI-Beispiele"
       href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
     - name: Repository für PowerShell-Beispiele
@@ -150,22 +150,13 @@
         - name: Übersicht
           displayName: 'Sizes, sizing, resize, ACU, compute'
           href: sizes.md
-        - name: Ändern der VM-Größe
-          items:
-            - name: Befehlszeilenschnittstelle (CLI)
-              displayName: 'Change, resize, update size'
-              href: ./linux/change-vm-size.md
-            - name: Portal oder PowerShell
-              displayName: 'Change, resize, update size'
-              href: ./windows/resize-vm.md
-        - name: Virtuelle Computer der 2. Generation
-          displayName: 'Gen2, generation, gen1'
-          href: generation-2.md
         - name: Allgemeiner Zweck
           items:
             - name: Übersicht
               displayName: 'General purpose, sizes, size, vm size'
               href: sizes-general.md
+            - name: Ausmusterung der Av1-Serie
+              href: av1-series-retirement.md
             - name: Av2-Serie
               href: av2-series.md
             - name: Burstable-Computer der B-Serie
@@ -265,6 +256,13 @@
             - name: Einrichten von AMD GPU-Treibern
               displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
+            - name: 'GPU-Compute: Migrationsleitfaden'
+              displayName: GPU compute migration guide
+              href: ./n-series-migration.md
+            - name: Ausmusterung der NV-Serie
+              href: nv-series-retirement.md
+            - name: 'NV-Serie: Migrationsleitfaden'
+              href: nv-series-migration-guide.md
         - name: 'FPGA: beschleunigte Computevorgänge'
           items:
             - name: Übersicht
@@ -289,6 +287,10 @@
               href: hbv3-series.md
             - name: HC-Serie
               href: hc-series.md
+            - name: Ausmusterung der H-Serie
+              href: h-series-retirement.md
+            - name: Ausmusterung der HB-Serie
+              href: hb-series-retirement.md
         - name: Zustandswerte und Abrechnung
           href: states-billing.md
         - name: vCPU-Kontingente
@@ -306,9 +308,15 @@
         - name: Vorherige Generationen
           displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
+        - name: Virtuelle Computer der 2. Generation
+          displayName: 'Gen2, generation, gen1'
+          href: generation-2.md
         - name: Isolierte Größen
           displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
+        - name: Vorherige Generationen
+          displayName: 'older, retired, expired, deprecated'
+          href: sizes-previous-gen.md
         - name: Azure-Computeeinheiten (ACU)
           href: acu.md
         - name: Benchmarkergebnisse
@@ -318,6 +326,30 @@
               href: ./linux/compute-benchmark-scores.md
             - name: Windows
               href: ./windows/compute-benchmark-scores.md
+        - name: vCPU-Kontingente
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              displayName: 'vCPU, quota, limit'
+              href: ./linux/quotas.md
+            - name: PowerShell
+              displayName: 'vCPU, quota, limit'
+              href: ./windows/quotas.md
+        - name: Auswahltool für virtuelle Computer
+          href: 'https://aka.ms/vm-selector'
+        - name: Ändern der VM-Größe
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              displayName: 'Change, resize, update size'
+              href: ./linux/change-vm-size.md
+            - name: Portal oder PowerShell
+              displayName: 'Change, resize, update size'
+              href: ./windows/resize-vm.md
+        - name: Zustandswerte und Abrechnung
+          href: states-billing.md
+        - name: Virtuelle Azure-Computer ohne temporären Datenträger
+          href: azure-vms-no-temp-disk.yml
+        - name: Benennungskonventionen für Azure-VM-Größen
+          href: vm-naming-conventions.md
     - name: Dedizierte Hosts
       displayName: 'sole-tenant, sole tenant, isolated, isolation'
       items:
@@ -490,7 +522,7 @@
             - name: Windows
               displayName: 'Azure Key Vault, key vault, encryption'
               href: ./extensions/key-vault-windows.md
-        - name: "Azure\_Policy-Gastkonfiguration"
+        - name: Azure Policy-Gastkonfiguration
           href: ./extensions/guest-configuration.md
         - name: Custom Script
           items:
@@ -599,7 +631,7 @@
           href: ./extensions/update-linux-agent.md
         - name: Exportieren von Erweiterungen
           href: ./extensions/export-templates.md
-        - name: Problembehandlung
+        - name: Allgemeine Schritte zur Problembehandlung
           href: ./extensions/troubleshoot.md
         - name: "Probleme mit Python\_3-fähigen Linux-Systemen"
           href: ./extensions/issues-using-vm-extensions-python-3.md
@@ -936,7 +968,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -950,7 +982,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
@@ -964,7 +996,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -973,16 +1005,31 @@
         - name: Portal
           displayName: 'proximity placement groups, ppg'
           href: ./windows/proximity-placement-groups-portal.md
-    - name: Virtual Machine Scale Sets
+    - name: VM-Skalierungsgruppen
       items:
-        - name: Übersicht
-          displayName: 'virtual machine scale sets, VMSS, VM scale set, scale set'
-          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: 'Flexible VM-Skalierungsgruppen: Übersicht (Vorschau)'
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets.md
+        - name: Portal (Vorschau)
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-portal.md
+        - name: CLI (Vorschau)
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-cli.md
+        - name: PowerShell (Vorschau)
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-powershell.md
+        - name: ARM-Vorlage (Vorschau)
+          displayName: Flexible orchestration mode for virtual machine scale sets
+          href: flexible-virtual-machine-scale-sets-rest-api.md
         - name: Autoscale
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-        - name: Orchestrierungsmodi
+        - name: Orchestrierungsmodi (Vorschau)
           displayName: 'VMSS, flex, scale set, scale, virtual machine sacle set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+        - name: 'Einheitliche VM-Skalierungsgruppen: Übersicht'
+          displayName: 'virtual machine scale sets, VMSS, VM scale set, scale set'
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
     - name: Grundlegendes zu VM-Neustarts
       href: understand-vm-reboots.md
     - name: Azure-Regionen
@@ -1353,7 +1400,7 @@
   items:
     - name: Übersicht
       displayName: Networking Overview
-      href: network-overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-network/network-overview.md?context=/azure/virtual-machines/context/context
     - name: Optimieren des Netzwerkdurchsatzes
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: Bewährte Methoden
@@ -1611,7 +1658,7 @@
         - name: Hotpatch
           displayName: 'patching, patch, update'
           href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
-    - name: Automatisches Erweiterungsupgrade (Vorschau)
+    - name: Automatisches Erweiterungsupgrade
       href: automatic-extension-upgrade.md
     - name: Updateverwaltung in Azure Automation
       href: ../automation/update-management/overview.md?context=/azure/virtual-machines/context/context
@@ -1639,7 +1686,7 @@
             - name: Übersicht
               displayName: Maintenance control
               href: maintenance-control.md
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell
@@ -1839,40 +1886,40 @@
     - name: Sichern virtueller Computer
       items:
         - name: Übersicht
-          href: ../backup/backup-azure-vms-introduction.md
+          href: ../backup/backup-azure-vms-introduction.md?context=/azure/virtual-machines/context/context
           dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Schnellstarts
           items:
             - name: Befehlszeilenschnittstelle (CLI)
-              href: ../backup/quick-backup-vm-cli.md
+              href: ../backup/quick-backup-vm-cli.md?context=/azure/virtual-machines/context/context
               dispayName: 'backup VMs, Azure Backup, recovery'
             - name: PowerShell
-              href: ../backup/quick-backup-vm-powershell.md
+              href: ../backup/quick-backup-vm-powershell.md?context=/azure/virtual-machines/context/context
               dispayName: 'backup VMs, Azure Backup, recovery'
             - name: Portal
-              href: ../backup/quick-backup-vm-portal.md
+              href: ../backup/quick-backup-vm-portal.md?context=/azure/virtual-machines/context/context
               dispayName: 'backup VMs, Azure Backup, recovery'
             - name: Vorlage
-              href: ../backup/quick-backup-vm-template.md
+              href: ../backup/quick-backup-vm-template.md?context=/azure/virtual-machines/context/context
               dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Sichern von mehreren virtuellen Computern
-          href: ../backup/tutorial-backup-vm-at-scale.md
+          href: ../backup/tutorial-backup-vm-at-scale.md?context=/azure/virtual-machines/context/context
         - name: Wiederherstellungsoptionen
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md?context=/azure/virtual-machines/context/context
         - name: Unterstützungsmatrix
-          href: ../backup/backup-support-matrix-iaas.md
+          href: ../backup/backup-support-matrix-iaas.md?context=/azure/virtual-machines/context/context
           dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Preise
-          href: ../backup/azure-backup-pricing.md
+          href: ../backup/azure-backup-pricing.md?context=/azure/virtual-machines/context/context
           dispayName: 'backup VMs, Azure Backup, recovery'
         - name: Häufig gestellte Fragen
-          href: ../backup/backup-azure-vm-backup-faq.yml
+          href: ../backup/backup-azure-vm-backup-faq.yml?context=/azure/virtual-machines/context/context
           dispayName: 'backup VMs, Azure Backup, recovery'
     - name: Notfallwiederherstellung
       items:
         - name: Übersicht
           displayName: Disaster Recovery Overview
-          href: ../site-recovery/site-recovery-overview.md
+          href: ../site-recovery/site-recovery-overview.md?context=/azure/virtual-machines/context/context
         - name: Aktivieren der Notfallwiederherstellung
           items:
             - name: Linux
@@ -1882,9 +1929,9 @@
               displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
         - name: Ausführen eines Failovers für einen virtuellen Computers auf eine andere Region
-          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md?context=/azure/virtual-machines/context/context
         - name: Ausführen eines Failbacks auf die primäre Region für einen virtuellen Azure-Computer
-          href: ../site-recovery/azure-to-azure-tutorial-failback.md
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md?context=/azure/virtual-machines/context/context
     - name: Verschieben und Migrieren virtueller Computer
       items:
         - name: Ändern des Abonnements oder der Ressourcengruppe
@@ -1899,9 +1946,9 @@
               displayName: Change subscription or resource group
               href: azure-cli-change-subscription-marketplace.md
         - name: Verschieben von virtuellen Computern in eine andere Region
-          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md?context=/azure/virtual-machines/context/context
         - name: Verschieben in eine Verfügbarkeitszone
-          href: ../site-recovery/move-azure-vms-avset-azone.md
+          href: ../site-recovery/move-azure-vms-avset-azone.md?context=/azure/virtual-machines/context/context
         - name: Verschieben von Wartungssteuerungskonfigurationen in eine andere Region
           href: move-region-maintenance-configuration.md
         - name: Verschieben von Ressourcen einer Wartungssteuerungskonfiguration in eine andere Region

@@ -116,6 +116,8 @@
                   href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: Problembehandlung
               items:
+                - name: 'Data Box: Zugriff auf Freigaben'
+                  href: data-box-troubleshoot-share-access.md
                 - name: 'Data Box: Probleme beim Kopieren'
                   href: data-box-troubleshoot.md
                 - name: 'Data Box: Probleme beim Hochladen'
