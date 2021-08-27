@@ -3,13 +3,13 @@ title: Erstellen eines Windows Server-Containers in einem AKS-Cluster mithilfe 
 description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle schnell einen Kubernetes-Cluster erstellen und eine Anwendung in einem Windows Server-Container in Azure Kubernetes Service (AKS) bereitstellen.
 services: container-service
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 50b5d0a46c97cfd816b80c3fb7c8f8667e3e89d7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/06/2021
+ms.openlocfilehash: 29f010bd9067236e1e07ab79f7a8fbec436ffd85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346376"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -93,7 +93,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.7 \
     --network-plugin azure
 ```
 
@@ -121,13 +121,13 @@ az aks nodepool add \
 
 Der obige Befehl erstellt einen neuen Knotenpool namens *npwin* und fügt ihn dem *myAKSCluster* hinzu. Der obige Befehl verwendet auch das Standardsubnetz im Standard-Vnet, das beim Ausführen von `az aks create` erstellt wurde.
 
-### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>Hinzufügen eines Windows Server-Knotenpools mit `containerd` (Vorschau)
+## <a name="optional-using-containerd-with-windows-server-node-pools-preview"></a>Optional: Verwenden von `containerd` mit Windows Server-Knotenpools (Vorschau)
 
 Ab Kubernetes Version 1.20 und höher können Sie `containerd` als Containerruntime für Windows Server 2019-Knotenpools angeben.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-Sie benötigen die Azure CLI-Erweiterung *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
+Sie benötigen mindestens Version 0.5.24 der Azure CLI-Erweiterung *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -136,6 +136,12 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
+> [!IMPORTANT]
+> Bei Verwendung von `containerd` mit Windows Server 2019-Knotenpools gilt Folgendes:
+> - Sowohl die Steuerungsebene als auch die Windows Server 2019-Knotenpools müssen Kubernetes Version 1.20 oder höher verwenden.
+> - Beim Erstellen oder Aktualisieren eines Knotenpools zum Ausführen von Windows Server-Containern ist *Standard_D2s_v3* der Standardwert für *node-vm-size*. Das entspricht der vor Kubernetes 1.20 empfohlenen Mindestgröße für Windows Server 2019-Knotenpools. Die empfohlene Mindestgröße für Windows Server 2019-Knotenpools mit `containerd` ist *Standard_D4s_v3*. Wenn Sie den Parameter *node-vm-size* festlegen, sollten Sie die Liste mit den [eingeschränkten VM-Größen][restricted-vm-sizes] überprüfen.
+> - Es wird dringend empfohlen, [Taints oder Bezeichnungen][aks-taints] mit Ihren Windows Server 2019-Knotenpools zu verwenden, die mit `containerd` ausgeführt werden. Außerdem sollten Sie mit Ihren Bereitstellungen Toleranzen oder Knotenselektoren verwenden, um eine ordnungsgemäße Planung Ihrer Workloads zu gewährleisten.
 
 Registrieren Sie das `UseCustomizedWindowsContainerRuntime`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
@@ -155,6 +161,8 @@ Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider regis
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>Hinzufügen eines Windows Server-Knotenpools mit `containerd` (Vorschau)
+
 Verwenden Sie den Befehl `az aks nodepool add`, um einen zusätzlichen Knotenpool hinzuzufügen, der Windows Server-Container mit der Runtime `containerd` ausführen kann.
 
 > [!NOTE]
@@ -167,19 +175,42 @@ az aks nodepool add \
     --os-type Windows \
     --name npwcd \
     --node-vm-size Standard_D4s_v3 \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.5 \
     --aks-custom-headers WindowsContainerRuntime=containerd \
     --node-count 1
 ```
 
 Mit dem obigen Befehl wird mithilfe von `containerd` als Runtime ein neuer Windows Server-Knotenpool namens *npwcd* erstellt und dem Cluster *myAKSCluster* hinzugefügt. Der obige Befehl verwendet auch das Standardsubnetz im Standard-Vnet, das beim Ausführen von `az aks create` erstellt wurde.
 
-> [!IMPORTANT]
-> Bei Verwendung von `containerd` mit Windows Server 2019-Knotenpools gilt Folgendes:
-> - Sowohl die Steuerungsebene als auch die Windows Server 2019-Knotenpools müssen Kubernetes Version 1.20 oder höher verwenden.
-> - Vorhandene Windows Server 2019-Knotenpools, die Docker als Containerruntime verwenden, können nicht für die Verwendung von `containerd` aktualisiert werden. Sie müssen einen neuen Knotenpool erstellen.
-> - Beim Erstellen eines Knotenpools zum Ausführen von Windows Server-Containern ist *Standard_D2s_v3* der Standardwert für *node-vm-size*. Das entspricht der vor Kubernetes 1.20 empfohlenen Mindestgröße für Windows Server 2019-Knotenpools. Die empfohlene Mindestgröße für Windows Server 2019-Knotenpools mit `containerd` ist *Standard_D4s_v3*. Wenn Sie den Parameter *node-vm-size* festlegen, sollten Sie die Liste mit den [eingeschränkten VM-Größen][restricted-vm-sizes] überprüfen.
-> - Es wird dringend empfohlen, [Taints oder Bezeichnungen][aks-taints] mit Ihren Windows Server 2019-Knotenpools zu verwenden, die mit `containerd` ausgeführt werden. Außerdem sollten Sie mit Ihren Bereitstellungen Toleranzen oder Knotenselektoren verwenden, um eine ordnungsgemäße Planung Ihrer Workloads zu gewährleisten.
+### <a name="upgrade-an-existing-windows-server-node-pool-to-containerd-preview"></a>Upgrade eines vorhandenen Windows Server-Knotenpools auf `containerd` (Vorschau)
+
+Verwenden Sie den Befehl `az aks nodepool upgrade`, um einen bestimmten Knotenpool von Docker auf `containerd` upzugraden.
+
+```azurecli
+az aks nodepool upgrade \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name npwd \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+Mit dem obigen Befehl führen Sie das Upgrade eines Knotenpools namens *npwd* auf die `containerd`-Runtime durch.
+
+So führen Sie ein Upgrade aller vorhandenen Knotenpools in einem Cluster auf die Verwendung der `containerd`-Runtime für alle Windows Server-Knotenpools durch:
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+Mit dem obigen Befehl werden alle Windows Server-Knotenpools im *myAKSCluster* auf die Verwendung der `containerd`-Runtime aktualisiert.
+
+> [!NOTE]
+> Nach dem Upgrade aller vorhandenen Windows Server-Knotenpools auf die Verwendung der `containerd`-Runtime ist Docker weiterhin die Standardruntime, wenn neue Windows Server-Knotenpools hinzugefügt werden. 
 
 ## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
@@ -205,10 +236,10 @@ Die folgende Beispielausgabe zeigt alle Knoten im Cluster. Vergewissern Sie sich
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
-aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.2   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.2   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aksnpwcd123456                      Ready    agent   9m6s   v1.20.2   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
-aksnpwin987654                      Ready    agent   25m    v1.20.2   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.7   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.7   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aksnpwcd123456                      Ready    agent   9m6s   v1.20.7   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
+aksnpwin987654                      Ready    agent   25m    v1.20.7   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
 ```
 
 > [!NOTE]
@@ -238,7 +269,7 @@ spec:
         app: sample
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": windows
+        "kubernetes.io/os": windows
       containers:
       - name: sample
         image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp

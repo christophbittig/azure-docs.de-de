@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: b856c68d9393b08fd6e17e48fc77026faf9c4ab2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 601982058a333f23cf5895351db7bc6475617256
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457405"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346820"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -18,7 +18,7 @@ Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithi
 Für Python-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 | Erste Schritte | Konzepte| Szenarien/Beispiele |
-| -- | -- | -- | 
+|--|--|--|
 | <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
@@ -96,7 +96,7 @@ Die empfohlene Ordnerstruktur für ein Python Functions-Projekt sieht wie im fol
 ```
 Der Hauptprojektordner (<project_root>) kann die folgenden Dateien enthalten:
 
-* *local.settings.json*: Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-run-local.md#local-settings-file).
+* *local.settings.json*: Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-develop-local.md#local-settings-file).
 * *requirements.txt*: Diese Datei enthält die Liste der bei der Veröffentlichung in Azure vom System installierten Python-Pakete.
 * *host.json*: Enthält globale Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
 * *.vscode/:* (optional) Diese Datei enthält die VSCode-Konfiguration des Speichers. Weitere Informationen finden Sie unter [VSCode-Einstellung](https://code.visualstudio.com/docs/getstarted/settings).
@@ -140,7 +140,7 @@ from ..shared_code import my_first_helper_function #(deprecated beyond top-level
 
 ## <a name="triggers-and-inputs"></a>Trigger und Eingaben
 
-Eingaben werden in Azure Functions in zwei Kategorien unterteilt: Triggereingaben und zusätzliche Eingaben. Obwohl sie sich in der Datei `function.json` unterscheiden, ist ihre Verwendung im Python-Code identisch.  Verbindungszeichenfolgen oder Geheimnisse für Trigger- und Eingabequellen werden bei lokaler Ausführung Werten in der Datei `local.settings.json` und bei der Ausführung in Azure den Anwendungseinstellungen zugeordnet.
+Eingaben werden in Azure Functions in zwei Kategorien unterteilt: Triggereingaben und andere Eingaben. Obwohl sie sich in der Datei `function.json` unterscheiden, ist ihre Verwendung im Python-Code identisch.  Verbindungszeichenfolgen oder Geheimnisse für Trigger- und Eingabequellen werden bei lokaler Ausführung Werten in der Datei `local.settings.json` und bei der Ausführung in Azure den Anwendungseinstellungen zugeordnet.
 
 Im folgenden Code wird beispielsweise der Unterschied zwischen beiden dargestellt:
 
@@ -253,7 +253,7 @@ def main(req):
     logging.info('Python HTTP trigger function processed a request.')
 ```
 
-Es sind zusätzliche Protokollierungsmethoden verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in die Konsole schreiben können:
+Es sind mehr Protokollierungsmethoden verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in die Konsole schreiben können:
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
@@ -264,6 +264,51 @@ Es sind zusätzliche Protokollierungsmethoden verfügbar, mit denen Sie auf ande
 | **`debug(_message_)`** | Schreibt eine Meldung mit der Stufe DEBUG in die Stammprotokollierung.  |
 
 Weitere Informationen über Protokollierung finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
+
+### <a name="log-custom-telemetry"></a>Protokollieren benutzerdefinierter Telemetriedaten
+
+Ausgaben werden von Functions standardmäßig als Ablaufverfolgungen in Application Insights geschrieben. Sollten Sie mehr Steuerungsmöglichkeiten benötigen, können Sie stattdessen die [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure) verwenden, um benutzerdefinierte Telemetriedaten an Ihre Application Insights-Instanz zu senden. 
+
+>[!NOTE]
+> Um die OpenCensus Python Extensions zu verwenden, müssen Sie die [Python Extensions](#python-worker-extensions) aktivieren, indem Sie in `local.settings.json` und den Anwendungseinstellungen `PYTHON_ENABLE_WORKER_EXTENSIONS` auf `1` festlegen.
+>
+
+```
+// requirements.txt
+...
+opencensus-extension-azure-functions
+opencensus-ext-requests
+```
+
+```python
+import json
+import logging
+
+import requests
+from opencensus.extension.azure.functions import OpenCensusExtension
+from opencensus.trace import config_integration
+
+config_integration.trace_integrations(['requests'])
+
+OpenCensusExtension.configure()
+
+def main(req, context):
+    logging.info('Executing HttpTrigger with OpenCensus extension')
+
+    # You must use context.tracer to create spans
+    with context.tracer.span("parent"):
+        response = requests.get(url='http://example.com')
+
+    return json.dumps({
+        'method': req.method,
+        'response': response.status_code,
+        'ctx_func_name': context.function_name,
+        'ctx_func_dir': context.function_directory,
+        'ctx_invocation_id': context.invocation_id,
+        'ctx_trace_context_Traceparent': context.trace_context.Traceparent,
+        'ctx_trace_context_Tracestate': context.trace_context.Tracestate,
+    })
+```
 
 ## <a name="http-trigger-and-bindings"></a>HTTP-Trigger und -Bindungen
 
@@ -361,7 +406,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Für die lokale Entwicklung werden Anwendungseinstellungen [in der Datei „local.settings.json“ verwaltet](functions-run-local.md#local-settings-file).
+Für die lokale Entwicklung werden Anwendungseinstellungen [in der Datei „local.settings.json“ verwaltet](functions-develop-local.md#local-settings-file).
 
 ## <a name="python-version"></a>Python-Version
 
@@ -377,6 +422,62 @@ Azure Functions unterstützt die folgenden Python-Versionen:
 Wenn Sie beim Erstellen der Funktions-App in Azure eine bestimmte Python-Version anfordern möchten, verwenden Sie die `--runtime-version`-Option des Befehls [`az functionapp create`](/cli/azure/functionapp#az_functionapp_create). Die Functions-Runtimeversion wird mit der Option `--functions-version` festgelegt. Die Python-Version wird bei der Erstellung der Funktions-App festgelegt und kann nicht geändert werden.
 
 Bei lokaler Ausführung verwendet die Runtime die verfügbare Python-Version.
+
+### <a name="changing-python-version"></a>Ändern der Python-Version
+
+Um eine Python-Funktions-App auf eine bestimmte Sprachversion festzulegen, müssen Sie die Sprache sowie die Version der Sprache im Feld `LinuxFxVersion` in der Standortkonfiguration angeben. Um beispielsweise die Python-App so zu ändern, dass Python 3.8 verwendet wird, legen Sie `linuxFxVersion` auf `python|3.8` fest.
+
+Weitere Informationen zur Azure Functions Runtime-Supportrichtlinie finden Sie in diesem [Artikel](./language-support-policy.md).
+
+Die vollständige Liste der unterstützten Funktionen-Apps für Python-Versionen finden Sie in diesem [Artikel](./supported-languages.md).
+
+
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-linux)
+
+Sie können die `linuxFxVersion` über die Azure CLI anzeigen und festlegen.  
+
+Zeigen Sie in der Azure CLI die aktuelle `linuxFxVersion` mit dem Befehl [az functionapp config show](/cli/azure/functionapp/config) an.
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. 
+
+Sie sehen `linuxFxVersion` in der folgenden Ausgabe, die zur besseren Lesbarkeit beschnitten wurde:
+
+```output
+{
+  ...
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+Sie können die Einstellung `linuxFxVersion` in der Funktions-App mit dem Befehl [az functionapp config set](/cli/azure/functionapp/config) aktualisieren.
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+Ersetzen Sie `<FUNCTION_APP>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<RESOURCE_GROUP>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. Ersetzen Sie zudem `<LINUX_FX_VERSION>` durch die Python-Version, die Sie nutzen möchten, mit dem Präfix `python|`  z. B. `python|3.9`
+
+Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure/reference-index#az-login) angemeldet haben.
+
+Die Funktions-App wird neu gestartet, nachdem die Änderung der Sitekonfiguration vorgenommen wurde.
+
+--- 
+
 
 ## <a name="package-management"></a>Paketverwaltung
 
@@ -406,7 +507,7 @@ Sie können auch Azure Pipelines verwenden, um Ihre Abhängigkeiten zu erstellen
 
 Bei Verwendung des Remotebuilds stimmen die auf dem Server wiederhergestellten Abhängigkeiten und die nativen Abhängigkeiten mit der Produktionsumgebung überein. Dies führt zu einem kleineren Bereitstellungspaket, das hochgeladen werden muss. Verwenden Sie den Remotebuild, wenn Sie Python-Apps unter Windows entwickeln. Wenn Ihr Projekt über benutzerdefinierte Abhängigkeiten verfügt, können Sie den [Remotebuild mit einer zusätzlichen Index-URL verwenden](#remote-build-with-extra-index-url).
 
-Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ remote abgerufen. [Remotebuild](functions-deployment-technologies.md#remote-build) ist die empfohlene Buildmethode. Standardmäßig fordert Azure Functions Core Tools einen Remotebuild an, wenn Sie den folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl zum Veröffentlichen Ihres Python-Projekts in Azure verwenden.
+Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ remote abgerufen. [Remotebuild](functions-deployment-technologies.md#remote-build) ist die empfohlene Buildmethode. Standardmäßig fordert Azure Functions Core Tools einen Remotebuild an, wenn Sie den folgenden [`func azure functionapp publish`](functions-run-local.md#publish)-Befehl zum Veröffentlichen Ihres Python-Projekts in Azure verwenden.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -418,7 +519,7 @@ Die [Azure Functions-Erweiterung für Visual Studio Code](./create-first-functio
 
 ### <a name="local-build"></a>Lokaler Build
 
-Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ lokal abgerufen. Sie können das Ausführen eines Remotebuilds verhindern, indem Sie mit dem folgenden [func azure functionapp publish](functions-run-local.md#publish)-Befehl mit einem lokalen Build veröffentlichen.
+Abhängigkeiten werden entsprechend dem Inhalt der Datei „requirements.txt“ lokal abgerufen. Sie können das Ausführen eines Remotebuilds verhindern, indem Sie mit dem folgenden [`func azure functionapp publish`](functions-run-local.md#publish)-Befehl mit einem lokalen Build veröffentlichen.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -552,7 +653,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-Installieren Sie in der virtuellen Python-Umgebung `.venv` Ihr bevorzugtes Python-Testframework (z. B. `pip install pytest`). Führen Sie einfach `pytest tests` aus, um das Testergebnis zu überprüfen.
+Installieren Sie in der virtuellen Python-Umgebung `.venv` Ihr bevorzugtes Python-Testframework, z. B. `pip install pytest`. Führen Sie dann `pytest tests` aus, um das Testergebnis zu überprüfen.
 
 ## <a name="temporary-files"></a>Temporäre Dateien
 
@@ -623,6 +724,106 @@ Eine Liste mit den vorinstallierten Systembibliotheken in Docker-Images von Pyth
 |------------|------------|------------|
 | Version 2.x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
 | Version 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3.9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
+
+## <a name="python-worker-extensions"></a>Python-Workererweiterungen  
+
+Mit dem Python-Workerprozess, der in Azure Functions ausgeführt wird, können Sie Bibliotheken von Drittanbietern in Ihre Funktions-App integrieren. Diese Erweiterungsbibliotheken fungieren als Middleware, die während des Lebenszyklus der Ausführung Ihrer Funktion bestimmte Vorgänge einfügen kann. 
+
+Erweiterungen werden ähnlich wie ein Python-Standardbibliotheksmodul in Ihren Funktionscode importiert. Erweiterungen werden basierend auf den folgenden Bereichen ausgeführt: 
+
+| `Scope` | BESCHREIBUNG |
+| --- | --- |
+| **Anwendungsebene** | Beim Importieren in einen beliebigen Funktionsauslöser gilt die Erweiterung für jede Funktionsausführung in der App. |
+| **Funktionsebene** | Die Ausführung ist nur auf den entsprechenden Funktionsauslöser beschränkt, in den sie importiert wird. |
+
+Überprüfen Sie die Informationen für eine bestimmte Erweiterung, um mehr über den Bereich zu erfahren, in dem die Erweiterung ausgeführt wird. 
+
+Erweiterungen implementieren eine Python-Workererweiterungsschnittstelle, mit der der Python-Workerprozess den Erweiterungscode während des Funktionsausführungslebenszyklus aufrufen kann. Weitere Informationen finden Sie unter [Erstellen von Erweiterungen](#creating-extensions).
+
+### <a name="using-extensions"></a>Verwenden von Erweiterungen 
+
+Sie können eine Python-Workererweiterungsbibliothek in Ihren Python-Funktionen verwenden, indem Sie die folgenden grundlegenden Schritte ausführen:
+
+1. Fügen Sie das Erweiterungspaket in der Datei „requirements.txt“ für Ihr Projekt hinzu.
+1. Installieren Sie die Bibliothek in Ihrer App.
+1. Fügen Sie die Anwendungseinstellung `PYTHON_ENABLE_WORKER_EXTENSIONS` hinzu:
+    + Lokal: Fügen Sie im Bereich `Values` Ihrer [local.settings.json-Datei](functions-develop-local.md#local-settings-file) `"PYTHON_ENABLE_WORKER_EXTENSIONS": "1"` hinzu
+    + Azure: Fügen Sie `PYTHON_ENABLE_WORKER_EXTENSIONS=1` zu Ihren [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings) hinzu.
+1. Importieren Sie das Erweiterungsmodul in Ihren Funktionsauslöser. 
+1. Konfigurieren Sie bei Bedarf die Erweiterungsinstanz. Die Konfigurationsanforderungen sollten in der Dokumentation der Erweiterung aufgeführt sein. 
+
+> [!IMPORTANT]
+> Python-Workererweiterungsbibliotheken von Drittanbietern werden von Microsoft nicht unterstützt bzw. Microsoft übernimmt dahingehend keine Gewährleistungen. Sie müssen sicherstellen, dass alle Erweiterungen, die Sie in Ihrer Funktions-App verwenden, vertrauenswürdig sind, d. h. Sie tragen das volle Risiko im Hinblick auf die Verwendung einer schädlichen oder schlecht geschriebenen Erweiterung. 
+
+Drittanbieter sollten die entsprechende Dokumentation zur Installation und Verwendung ihrer jeweiligen Erweiterung in Ihrer Funktions-App bereitstellen. Ein einfaches Beispiel für die Verwendung einer Erweiterung finden Sie unter [Nutzen Ihrer Erweiterung](develop-python-worker-extensions.md#consume-your-extension-locally). 
+
+Im Folgenden finden Sie Beispiele für die Verwendung von Erweiterungen in einer Funktions-App nach Bereichen geordnet:
+
+# <a name="application-level"></a>[Anwendungsebene](#tab/application-level)
+
+```python
+# <project_root>/requirements.txt
+application-level-extension==1.0.0
+```
+
+```python
+# <project_root>/Trigger/__init__.py
+
+from application_level_extension import AppExtension
+AppExtension.configure(key=value)
+
+def main(req, context):
+  # Use context.app_ext_attributes here
+```
+# <a name="function-level"></a>[Funktionsebene](#tab/function-level)
+```python
+# <project_root>/requirements.txt
+function-level-extension==1.0.0
+```
+
+```python
+# <project_root>/Trigger/__init__.py
+
+from function_level_extension import FuncExtension
+func_ext_instance = FuncExtension(__file__)
+
+def main(req, context):
+  # Use func_ext_instance.attributes here
+```
+---
+
+### <a name="creating-extensions"></a>Erstellen von Erweiterungen 
+
+Erweiterungen werden von Bibliotheksentwicklern von Drittanbietern erstellt, die Funktionen erstellt haben, die in Azure Functions integriert werden können.  Ein Erweiterungsentwickler entwirft, implementiert und veröffentlicht Python-Pakete, die eine benutzerdefinierte Logik enthalten, die speziell für den Kontext der Funktionsausführung entwickelt wurde. Diese Erweiterungen können entweder in der PyPI-Registrierung oder in GitHub-Repositorys veröffentlicht werden.
+
+Informationen zum Erstellen, Packen, Veröffentlichen und Verwenden eines Python-Workererweiterungspakets finden Sie unter [Entwickeln von Python-Workererweiterungen für Azure Functions](develop-python-worker-extensions.md).
+
+#### <a name="application-level-extensions"></a>Erweiterungen auf Anwendungsebene
+
+Eine von [`AppExtensionBase`](https://github.com/Azure/azure-functions-python-library/blob/dev/azure/functions/extension/app_extension_base.py) geerbte Erweiterung wird in einem _App_-Bereich ausgeführt. 
+
+`AppExtensionBase` macht die folgenden abstrakten Klassenmethoden verfügbar, die Sie implementieren können:
+
+| Methode | BESCHREIBUNG |
+| --- | --- |
+| **`init`** | Wird aufgerufen, nachdem die Erweiterung importiert wurde. |
+| **`configure`** | Wird bei Bedarf vom Funktionscode aufgerufen, um die Erweiterung zu konfigurieren. |
+| **`post_function_load_app_level`** | Wird direkt nach dem Laden der Funktion aufgerufen. Der Funktionsname und das Funktionsverzeichnis werden an die Erweiterung übergeben. Beachten Sie, dass das Funktionsverzeichnis schreibgeschützt ist, und jeder Versuch, in die lokale Datei in diesem Verzeichnis zu schreiben, fehlschlägt. |
+| **`pre_invocation_app_level`** | Wird direkt vor dem Auslösen der Funktion aufgerufen. Die Funktionskontext und Funktionsaufrufargumente werden an die Erweiterung übergeben. Sie können in der Regel andere Attribute im Kontextobjekt übergeben, damit der Funktionscode verwendet werden kann. |
+| **`post_invocation_app_level`** | Wird direkt nach Abschluss der Funktionsausführung aufgerufen. Der Funktionskontext, Funktionsaufrufargumente und das Aufruf-Rückgabeobjekt werden an die Erweiterung übergeben. Diese Implementierung ist ein guter Ort, um zu überprüfen, ob die Ausführung der Lebenszyklushooks erfolgreich war. |
+
+#### <a name="function-level-extensions"></a>Erweiterungen auf Funktionsebene
+
+Eine Erweiterung, die von [FuncExtensionBase](https://github.com/Azure/azure-functions-python-library/blob/dev/azure/functions/extension/func_extension_base.py) geerbt wird, wird in einem spezifischen Funktionsauslöser ausgeführt. 
+
+`FuncExtensionBase` macht die folgenden abstrakten Klassenmethoden zur Implementierung verfügbar:
+
+| Methode | BESCHREIBUNG |
+| --- | --- |
+| **`__init__`** | Diese Methode ist der Konstruktor der Erweiterung. Sie wird aufgerufen, wenn eine Erweiterungsinstanz in einer bestimmten Funktion initialisiert wird. Wenn Sie diese abstrakte Methode implementieren, sollten Sie einen `filename`-Parameter akzeptieren und an die `super().__init__(filename)`-Methode des übergeordneten Elements übergeben, um eine ordnungsgemäße Erweiterungsregistrierung zu erhalten. |
+| **`post_function_load`** | Wird direkt nach dem Laden der Funktion aufgerufen. Der Funktionsname und das Funktionsverzeichnis werden an die Erweiterung übergeben. Beachten Sie, dass das Funktionsverzeichnis schreibgeschützt ist, und jeder Versuch, in die lokale Datei in diesem Verzeichnis zu schreiben, fehlschlägt. |
+| **`pre_invocation`** | Wird direkt vor dem Auslösen der Funktion aufgerufen. Die Funktionskontext und Funktionsaufrufargumente werden an die Erweiterung übergeben. Sie können in der Regel andere Attribute im Kontextobjekt übergeben, damit der Funktionscode verwendet werden kann. |
+| **`post_invocation`** | Wird direkt nach Abschluss der Funktionsausführung aufgerufen. Der Funktionskontext, Funktionsaufrufargumente und das Aufruf-Rückgabeobjekt werden an die Erweiterung übergeben. Diese Implementierung ist ein guter Ort, um zu überprüfen, ob die Ausführung der Lebenszyklushooks erfolgreich war. |
 
 ## <a name="cross-origin-resource-sharing"></a>Cross-Origin Resource Sharing
 

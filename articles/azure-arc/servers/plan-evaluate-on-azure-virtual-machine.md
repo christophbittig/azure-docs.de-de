@@ -1,14 +1,14 @@
 ---
 title: Auswerten von Servern mit Azure Arc-Unterstützung mit einem virtuellen Azure-Computer
 description: Erfahren Sie, wie Sie Server mit Azure Arc-Unterstützung mithilfe eines virtuellen Azure-Computers auswerten.
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1e49b2d29b21f6ded72d1b22e946743f27e7d160
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 2c981bad00d286860c3759e8266011c6685ff994
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109837833"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392814"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>Auswerten von Servern mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer
 

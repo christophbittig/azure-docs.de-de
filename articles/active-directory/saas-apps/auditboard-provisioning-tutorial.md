@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren Sie die AuditBoard für die automatische Benutze
 description: Erfahren Sie, wie Sie Benutzerkonten automatisch aus Azure AD für AuditBoard bereitstellen und die Bereitstellung aufheben können.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: e6ab736b-2bb7-4a5a-9f01-67c33f0ff97d
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/21/2021
-ms.author: Zhchia
-ms.openlocfilehash: a5b31646044f61029f15a2636dd918aaaf4e67ea
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.author: thwimmer
+ms.openlocfilehash: 8050b5352658412aaa156b1e48290810e45a5894
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956658"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327438"
 ---
 # <a name="tutorial-configure-auditboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren Sie den AuditBoard für die automatische Benutzerbereitstellung
 

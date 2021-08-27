@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/25/2021
 ms.author: mayg
-ms.openlocfilehash: 9f9052f51c5bab0ea738e9fd15d8f62f45ff0c9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0e7696cb631bee8b114cf2277a277b9c81cbd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146534"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339330"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replizieren von Computern mit Datenträgern, die für kundenseitig verwaltete Schlüssel (CMK) aktiviert sind
 
@@ -37,7 +37,7 @@ In Beispiel ist die primäre Azure-Region „Asien, Osten“, und die sekundäre
 
 4. Unter **Einstellungen** können Sie die folgenden Einstellungen für den Zielstandort konfigurieren.
 
-    - **Zielspeicherort**: Der Standort, an den die Daten Ihrer virtuellen Quellcomputer repliziert werden. Site Recovery stellt eine Liste geeigneter Zielregionen bereit, die auf dem Standort des ausgewählten Computers basiert. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
+    - **Zielstandort:** Der Standort, an dem die Daten der virtuellen Quellcomputer repliziert werden. Es empfiehlt sich, denselben Standort wie für den Recovery Services-Tresor zu verwenden.
     - **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch.
     - **Zielressourcengruppe**: Die Ressourcengruppe, der all Ihre replizierten virtuellen Computer angehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe. Der Name erhält das Suffix `asr`. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im folgenden Abschnitt gezeigt. Der Speicherort der Zielressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
     - **Virtuelles Zielnetzwerk**: Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk. Der Name erhält das Suffix `asr`. Es wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet. Informationen zur Netzwerkzuordnung finden Sie [hier](./azure-to-azure-network-mapping.md).
@@ -85,4 +85,3 @@ Führen Sie die folgenden Schritte aus, um die Site Recovery-Standardzieleinstel
 * Ich habe sowohl plattform- als auch kundenseitig verwaltete Schlüssel aktiviert. Wie kann ich meine Datenträger schützen?
 
     Die Aktivierung einer doppelten Verschlüsselung sowohl mit plattformseitig als auch mit kundenseitig verwalteten Schlüsseln wird von Site Recovery unterstützt. Befolgen Sie die Anweisungen in diesem Artikel, um Ihren Computer zu schützen. Sie müssen im Voraus einen für die doppelte Verschlüsselung aktivierten DES in der Zielregion erstellen. Diesen DES stellen Sie in dem Moment für Site Recovery bereit, in dem Sie die Replikation für eine solche VM aktivieren.
-

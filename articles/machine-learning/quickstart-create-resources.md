@@ -1,25 +1,26 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Azure Machine Learning'
+title: 'Schnellstart: Erstellen von Arbeitsbereichsressourcen'
 titleSuffix: Azure Machine Learning
-description: Enthält eine Beschreibung der ersten Schritte mit Azure Machine Learning.  Richten Sie einen Arbeitsbereich ein, und fügen Sie Computeressourcen hinzu, um Ihre Entwicklungsumgebung zu erstellen.
+description: Erstellen Sie einen Azure Machine Learning Arbeitsbereich und Cloudressourcen, die für das Training von Machine Learning-Modellen verwendet werden können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/26/2021
+ms.date: 06/10/2021
 adobe-target: true
-ms.openlocfilehash: 596c6252b1ed7a0aa4d6f9554e6b417ccf131755
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785310"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760152"
 ---
-# <a name="quickstart-create-resources-youll-need-to-get-started-with-azure-machine-learning"></a>Schnellstart: Erstellen von Ressourcen, die Sie für die ersten Schritte mit Azure Machine Learning benötigen
+# <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>Schnellstart: So erstellen Sie Arbeitsbereichsressourcen, die Sie für die ersten Schritte mit Azure Machine Learning benötigen
 
-In diesem Schnellstart erstellen Sie einen Arbeitsbereich und fügen dem Arbeitsbereich dann Computeressourcen hinzu. Anschließend verfügen Sie über alles, was Sie für die ersten Schritte mit Azure Machine Learning benötigen.  
+In dieser Schnellstartanleitung erstellen Sie einen Arbeitsbereich und fügen dem Arbeitsbereich dann die Computeressourcen hinzu. Anschließend verfügen Sie über alles, was Sie für die ersten Schritte mit Azure Machine Learning benötigen.  
 
 Der Arbeitsbereich ist die Ressource der obersten Ebene für Ihre Aktivitäten des maschinellen Lernens und ein zentraler Ort für das Anzeigen und Verwalten der Artefakte, die Sie während der Nutzung von Azure Machine Learning erstellen. Die Computeressourcen bieten eine vorkonfigurierte cloudbasierte Umgebung, die Ihnen das Trainieren, Bereitstellen, Automatisieren, Verwalten und Nachverfolgen von Machine Learning-Modellen ermöglicht.
 
@@ -36,10 +37,6 @@ Wenn Sie noch keinen Arbeitsbereich haben, erstellen Sie jetzt einen Arbeitsbere
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
-> [!div class="nextstepaction"]
-> [Ich habe einen Arbeitsbereich erstellt.](?success=create-workspace#instance) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
-
-
 ## <a name="create-compute-instance"></a><a name="instance"></a> Erstellen einer Compute-Instanz
 
 Sie können Azure Machine Learning auf Ihrem eigenen Computer installieren.  In diesem Schnellstart erstellen Sie jedoch eine Onlinecomputeressource, auf der bereits eine Entwicklungsumgebung installiert ist und die einsatzbereit ist.  Sie verwenden diesen Onlinecomputer (eine *Compute-Instanz*) für Ihre Entwicklungsumgebung, um Code in Python-Skripts und Jupyter Notebook-Instanzen zu schreiben und auszuführen.
@@ -53,9 +50,6 @@ Erstellen Sie eine *Compute-Instanz*, um diese Entwicklungsumgebung für die res
 1. Geben Sie einen Namen an, und wählen Sie **Erstellen** aus.
  
 In etwa zwei Minuten sehen Sie, dass sich der **Status** der Compute-Instanz von *Erstellen...* in *Wird ausgeführt.* ändert.  Sie kann nun verwendet werden.  
-
-> [!div class="nextstepaction"]
-> [Ich habe eine Compute-Instanz erstellt.](?success=create-instance#cluster) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C8Z3DN?issue=create-instance)
 
 ## <a name="create-compute-clusters"></a><a name="cluster"></a> Erstellen von Computeclustern
 
@@ -76,9 +70,6 @@ In weniger als einer Minute ändert sich der **Status** des Clusters von *Erstel
 
 > [!NOTE]
 > Nachdem der Cluster erstellt wurde, weist er keine bereitgestellten Knoten auf. Der Cluster verursacht *keine* Kosten, bis Sie dafür einen Auftrag übermitteln. Der Cluster wird herunterskaliert, nachdem er sich 2.400 Sekunden (40 Minuten) im Leerlauf befunden hat.  Dies gibt Ihnen Zeit, ihn ggf. in einigen Tutorials zu verwenden, ohne darauf warten zu müssen, dass er wieder hochskaliert wird.
-
-> [!div class="nextstepaction"]
-> [Ich habe einen Computecluster erstellt.](?success=create-compute-cluster#clean-up) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="quick-tour-of-the-studio"></a><a name="studio"></a> Überblick über Studio
 

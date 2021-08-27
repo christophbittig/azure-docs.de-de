@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66f2091087ed3602e929b584f7a311f4ebb05f88
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d8e3dbc012e49b69e766d0551c0a91dcbb92660b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739588"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
@@ -181,7 +181,7 @@ Die Azure Communication Services Calling SDKs verwenden die folgenden Fehlercode
 
 | Fehlercode | BESCHREIBUNG | Auszuführende Aktion |
 | -------- | ---------------| ---------------|
-| 403 | Unzulässig/Authentifizierungsfehler. | Stellen Sie sicher, dass Ihr Communication Services-Token gültig und nicht abgelaufen ist. Wenn Sie Teams-Interoperabilität verwenden, stellen Sie sicher, dass Ihr Teams-Mandant der Positivliste für den Vorschauzugriff hinzugefügt wurde. Um die [Interoperabilität von Teams-Mandanten](./teams-interop.md) zu aktivieren/deaktivieren, füllen Sie [dieses Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u) aus.|
+| 403 | Unzulässig/Authentifizierungsfehler. | Stellen Sie sicher, dass Ihr Communication Services-Token gültig und nicht abgelaufen ist. |
 | 404 | Anruf nicht gefunden. | Stellen Sie sicher, dass die Telefonnummer, die Sie anrufen (oder die Telefonkonferenz, der Sie beitreten möchten), vorhanden ist. |
 | 408 | Timeout des Anrufcontrollers. | Timeout des Anrufcontrollers beim Warten auf Protokollmeldungen von Benutzerendpunkten. Stellen Sie sicher, dass die Clients verbunden und verfügbar sind. |
 | 410 | Fehler des lokalen Medienstapels oder der Medieninfrastruktur. | Stellen Sie sicher, dass Sie das neueste SDK in einer unterstützten Umgebung verwenden. |
