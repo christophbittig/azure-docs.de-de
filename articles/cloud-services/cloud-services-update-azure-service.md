@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 520f3ba65a7e4bddfd52e303179ed925417537e3
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 16942b91ea999c3da84ecbc784a96575045049d1
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090131"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824056"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>Aktualisieren einer Azure Cloud Service-Instanz (erweiterter Support)
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssysteme besteht aus drei Schritten. Zuerst müssen die Binär- und Konfigurationsdateien für den neuen Clouddienst oder die Version des Betriebssystems hochgeladen werden. Dann reserviert Azure Compute- und Netzwerkressourcen für den Clouddienst je nach den Erfordernissen der neuen der Clouddienstversion. Und zuletzt führt Azure ein paralleles Update aus, um den Mandanten inkrementell auf die neue Version oder das Gastbetriebssystem zu aktualisieren und Ihre Verfügbarkeit dabei beizubehalten. Dieser Artikel behandelt diesen letzten Schritt – das parallele Upgrade.
 
