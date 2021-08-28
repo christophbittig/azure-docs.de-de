@@ -2,19 +2,18 @@
 title: Offlinesicherung mit Azure Data Box für DPM und MABS
 description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdaten offline von DPM und MABS zu erstellen.
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 568baf7351555511b58dba59bec404688a646126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96752548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339237"
 ---
-# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
+# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs"></a>Offlineseeding mit Azure Data Box für DPM und MABS
 
 > [!NOTE]
-> Diese Funktion gilt für Data Protection Manager (DPM) 2019 UR2 und höher.<br><br>
-> Diese Funktion befindet sich derzeit in der Vorschauphase für Microsoft Azure Backup Server (MABS). Falls Sie an der Verwendung von Azure Data Box für das Offlineseeding mit MABS interessiert sind, wenden Sie sich unter [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) an uns.
+> Diese Funktion gilt für Data Protection Manager (DPM) 2019 UR2 und höher sowie MABS v3 UR2 und höher.
 
 In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für Erstsicherungsdaten von DPM und MABS in einen Recovery Services-Tresor von Azure auszuführen.
 
@@ -217,11 +216,17 @@ Führen Sie einen der folgenden Schritte aus, um sicherzustellen, dass der Fehle
 
 #### <a name="step-1"></a>Schritt 1
 
-Überprüfen Sie, ob die folgende Fehlermeldung in der DPM/MAB-Konsole angezeigt wird, wenn Sie die Offlinesicherung konfigurieren:
+Überprüfen Sie, ob eine der folgenden Fehlermeldungen in der DPM/MABS-Konsole angezeigt wird, wenn Sie die Offlinesicherung konfigurieren:
 
-![Azure Recovery Services-Agent](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
+**Die Richtlinie zur Offlinesicherung für das aktuelle Azure-Konto konnte nicht erstellt werden, weil die Authentifizierungsinformationen für diesen Server nicht nach Azure hochgeladen werden konnten. (ID: 100242)**
 
-#### <a name="step-2"></a>Schritt 2
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png" alt-text="Azure Recovery Services-Agent.":::
+
+**Es können keine Dienstaufrufe für Azure durchgeführt werden, die für die Abfrage des Importauftragsstatus und für das Verschieben von Sicherungsdaten in den Recovery Services-Tresor erforderlich sind. (ID:100230)**
+
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent-error-screen.png" alt-text="Screenshot des Fehlerbildschirms für den Azure Recovery Services-Agent.":::
+
+#### <a name="step-2"></a>Schritt 2
 
 1. Öffnen Sie im Installationspfad den Ordner **Temp** (der Standardpfad des Ordners „Temp“ ist *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*). Suchen Sie nach der Datei *CBUICurr*, und öffnen Sie die Datei.
 2. Scrollen Sie in der Datei *CBUICurr* zur letzten Zeile, und überprüfen Sie, ob der Fehler auf „Anmeldeinformationen für Azure AD-Anwendung können nicht im Kundenkonto erstellt werden. Ausnahme: Aktualisieren auf vorhandene Anmeldeinformationen mit KeyId \<some guid> ist nicht zulässig“ zurückzuführen ist.
