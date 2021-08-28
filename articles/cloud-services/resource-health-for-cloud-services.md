@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7f7089ea405ea74c298b93aeb69777f62b6828e3
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 6ea4875ecfa70c6c3ff07e3dc31ef71b023b44ce
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092831"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823543"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Unterstützung der Ressourcenintegritätsprüfung (RHC) für Azure Cloud Services (Classic)
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 In diesem Artikel wird die Unterstützung der Ressourcenintegritätsprüfung (Resource Health Check, RHC) für [Microsoft Azure Cloud Services (Classic)](https://azure.microsoft.com/services/cloud-services) beschrieben.
 
