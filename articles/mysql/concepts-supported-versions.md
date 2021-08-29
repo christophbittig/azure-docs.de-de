@@ -5,19 +5,20 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
+ms.custom: ''
 ms.date: 6/3/2020
-ms.openlocfilehash: 1804cef5baf70fad303c2813286e2bad500e63d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2c212922ebf550b75ee140637717a48beec9de02
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073376"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639757"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mit der InnoDB-Speicher-Engine entwickelt. Dieser Dienst unterstützt alle aktuellen Hauptversionen, die von der Community unterstützt werden, und zwar MySQL 5.6, 5.7 und 8.0. Für MySQL wird das Benennungsschema „X.Y.Z“ verwendet. „X“ steht dabei für die Hauptversion, „Y“ für die Nebenversion und „Z“ für das Programmfehlerbehebungs-Release. Weitere Informationen zum Schema finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
-
-
 
 ## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>Stellen Sie eine Verbindung zu einem Gateway-Knoten her, auf dem eine bestimmte MySQL-Version läuft
 
@@ -34,7 +35,6 @@ Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 330
 
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenversionen von MySQL:
 
-
 | Version | [Single Server](overview.md) <br/> Aktuelle Nebenversion |[Flexible Server (Vorschau)](./flexible-server/overview.md) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
@@ -44,6 +44,7 @@ Im Azure Database für den MySQL-Dienst lauschen die Gateway-Knoten auf Port 330
 Lesen Sie die Richtlinie zur Versionsunterstützung für eingestellte Versionen in der [Dokumentation zur Richtlinie für die Versionsunterstützung](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql).
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
+
 Das Patchen von Versionsupdates zur Fehlerbehebung wird vom Dienst automatisch verwaltet. Beispiel: 5.7.20 bis 5.7.21.  
 
 Ein Upgrade der Hauptversion wird zurzeit vom Dienst für Upgrades von MySQL v5.6 auf v5.7 unterstützt. Weitere Einzelheiten finden Sie unter [Upgraden von Hauptversionen](how-to-major-version-upgrade.md). Wenn Sie von 5.7 auf 8.0 upgraden möchten, sollten Sie eine [Sicherung und dann die Wiederherstellung](./concepts-migrate-dump-restore.md) auf einem Server ausführen, der mit der neuen Engine-Version erstellt wurde.

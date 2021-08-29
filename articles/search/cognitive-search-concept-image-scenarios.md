@@ -2,23 +2,22 @@
 title: Extrahieren von Text aus Bildern
 titleSuffix: Azure Cognitive Search
 description: Verarbeiten und Extrahieren von Text und anderen Informationen aus Bildern in Pipelines der kognitiven Azure-Suche.
-manager: nitinme
-author: LuisCabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68186c5294c0a3a2f376a93ef1902307780f48bb
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 2591e3468999bfb48fc125bd6edfe17da8eecefd
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538293"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728142"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 
-Die kognitive Azure-Suche umfasst mehrere Funktionen für die Verarbeitung von Bildern und Bilddateien. Im Rahmen der Dokumentaufschlüsselung können Sie den Parameter *imageAction* verwenden, um alphanumerischen Text (beispielsweise das Wort „Stopp“ eines Stopp-Schilds) aus Fotos oder Bildern zu extrahieren. Ein anderes Szenario wäre etwa die Generierung einer Textdarstellung eines Bilds – etwa „Löwenzahn“ (oder die Farbe „Gelb“) für ein Foto eines Löwenzahns. Des Weiteren können Sie Metadaten des Bilds extrahieren (beispielsweise die Größe).
+Die kognitive Azure-Suche umfasst mehrere Funktionen für die Verarbeitung von Bildern und Bilddateien. Im Rahmen der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking) können Sie den Parameter *imageAction* verwenden, um alphanumerischen Text (beispielsweise das Wort „Stopp“ eines Stopp-Schilds) aus Fotos oder Bildern zu extrahieren. Ein anderes Szenario wäre etwa die Generierung einer Textdarstellung eines Bilds – etwa „Löwenzahn“ (oder die Farbe „Gelb“) für ein Foto eines Löwenzahns. Des Weiteren können Sie Metadaten des Bilds extrahieren (beispielsweise die Größe).
 
 Dieser Artikel geht ausführlicher auf die Bildverarbeitung ein und enthält eine Anleitung für die Verwendung von Bildern in einer KI-Anreicherungspipeline.
 

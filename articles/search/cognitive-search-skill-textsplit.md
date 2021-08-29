@@ -2,25 +2,24 @@
 title: Der Skill „Text teilen“
 titleSuffix: Azure Cognitive Search
 description: Teilen Sie Text in mehrere Blöcke oder Seiten anhand der Länge in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche auf.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: e5b907b89491721d2529f2caa303fc9e77d47169
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84981947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356134"
 ---
 # <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
 
 Der Skill **Text teilen** unterteilt den Text in Blöcke. Sie können festlegen, ob Sie den Text in Sätze oder in Seiten einer bestimmten Länge aufteilen möchten. Dieser Skill ist besonders nützlich, wenn Sie eine maximale Textlänge in nachfolgenden Skills einhalten müssen. 
 
 > [!NOTE]
-> Dieser Skill ist nicht an eine Cognitive Services-API gebunden, und Ihnen entstehen für seine Nutzung keine Kosten. Es wird jedoch empfohlen, dennoch eine [Cognitive Services-Ressource anzufügen](cognitive-search-attach-cognitive-services.md), um die Ressourcenoption **Free** außer Kraft zu setzen, durch die Sie auf eine geringe Anzahl von Anreicherungen pro Tag beschränkt werden.
+> Dieser Skill ist nicht an Cognitive Services gebunden. Er ist nicht gebührenpflichtig und weist keine Cognitive Services-Schlüsselanforderungen auf.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -31,9 +30,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| `textSplitMode`    | Entweder „Seiten“ oder „Sätze“ | 
-| `maximumPageLength` | Wenn „textSplitMode“ auf „Seiten“ gesetzt ist, bezieht sich dies auf die maximale Seitenlänge, gemessen durch `String.Length`. Der Mindestwert ist „300“.  Wenn textSplitMode auf „pages“ festgelegt ist, versucht der Algorithmus, den Text in Blöcke aufzuteilen, deren Größe höchstens „maximumPageLenth“ beträgt. Dabei versucht der Algorithmus, Sätze an Satzgrenzen zu teilen, sodass die Größe der Blöcke etwas kleiner als „maximumPageLength“ sein kann. | 
-| `defaultLanguageCode` | (Optional) Einer der folgenden Sprachcodes: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (en). Zu beachtende Aspekte:<ul><li>Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.</li><li>Ist die Sprache nicht in der obigen Liste aufgeführt, wird der Text durch der Skill „Text teilen“ an Zeichengrenzen getrennt.</li><li>Die Angabe eines Sprachcodes ist sinnvoll, um bei Sprachen ohne Leerzeichen wie Chinesisch, Japanisch oder Koreanisch zu vermeiden, dass ein Wort in der Mitte getrennt wird.</li><li>Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), sollte der Standardwert „English (en)“ ausreichen. </li></ul>  |
+| `textSplitMode`    | Entweder `pages` oder `sentences` | 
+| `maximumPageLength` | Gilt nur, wenn `textSplitMode` auf `pages` festgelegt ist. Dies bezieht sich auf die von `String.Length` gemessene maximale Seitenlänge in Zeichen. Der Mindestwert ist 300, der Höchstwert ist 100.000; der Standardwert ist 10.000.  Der Algorithmus versucht immer, den Text an den Satzgrenzen zu trennen, sodass die Größe der einzelnen Teile etwas geringer sein kann als `maximumPageLength`. | 
+| `defaultLanguageCode` | (Optional) Einer der folgenden Sprachcodes: `am, bs, cs, da, de, en, es, et, fr, he, hi, hr, hu, fi, id, is, it, ja, ko, lv, no, nl, pl, pt-PT, pt-BR, ru, sk, sl, sr, sv, tr, ur, zh-Hans`. Die Standardsprache ist Englisch (en). Zu beachtende Aspekte:<ul><li>Die Angabe eines Sprachcodes ist sinnvoll, um bei Sprachen ohne Leerzeichen wie Chinesisch, Japanisch oder Koreanisch zu vermeiden, dass ein Wort in der Mitte getrennt wird.</li><li>Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), sollte der Standardwert „English (en)“ ausreichen. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
@@ -41,7 +40,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Parametername       | BESCHREIBUNG      |
 |----------------------|------------------|
 | `text`    | Der Text, der in Teilzeichenfolgen aufgeteilt werden soll. |
-| `languageCode`    | (Optional) Der Sprachcode für das Dokument. Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), können Sie diese Eingabe sicher entfernen.  |
+| `languageCode`    | (Optional) Der Sprachcode für das Dokument. Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), können Sie diese Eingabe sicher entfernen. Wenn die Sprache nicht in der Liste der unterstützten Sprachen für den Parameter `defaultLanguageCode` oben enthalten ist, wird eine Warnung ausgegeben, und der Text wird nicht aufgeteilt.  |
 
 ## <a name="skill-outputs"></a>Skillausgaben 
 
@@ -128,7 +127,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 ```
 
 ## <a name="error-cases"></a>Auftretende Fehler
-Wird eine Sprache nicht unterstützt, wird eine Warnung generiert und der Text an den Zeichengrenzen geteilt.
+Wird eine Sprache nicht unterstützt, wird eine Warnung generiert.
 
 ## <a name="see-also"></a>Weitere Informationen
 

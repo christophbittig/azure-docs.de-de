@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 05/24/2021
+  ms.date: 08/09/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -42,6 +42,12 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: cognitive-services/anomaly-detector/index.yml
+    - title: "Azure Applied\_AI Services"
+      summary: 'Spezielle Dienste, mit denen Organisationen beim Anwenden von KI zur Behebung häufiger Probleme eine schnellere Amortisierung erzielen können'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./applied-ai-services/index.yml
     - title: Azure Bot Service
       summary: 'Intelligenter, serverloser Botdienst mit bedarfsgesteuerter Skalierung'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/bot-service.svg'
@@ -96,60 +102,6 @@ productDirectory:
       azureCategories:
         - iot
       url: /azure/rtos/
-    - title: Bing-Vorschlagssuche
-      summary: Erweitern Ihrer App um intelligente Optionen für Vorschläge bei Suchvorgängen
-      imageSrc: ./media/index/API_Bing_AutoSuggest.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
-    - title: Benutzerdefinierte Bing-Suche
-      summary: 'Benutzerfreundliches, werbefreies Suchtool für kommerzielle Zwecke zur Bereitstellung der gewünschten Ergebnisse'
-      imageSrc: ./media/index/API_Bing_Custom_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-custom-search/overview.md
-    - title: Bing-Entitätssuche
-      summary: Verbessern Ihrer Umgebungen durch das Identifizieren und Erweitern von Entitätsinformationen aus dem Web
-      imageSrc: ./media/index/API_Bing_Entity_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-entities-search/overview.md
-    - title: Bing-Bildersuche
-      summary: Suchen nach Bildern und Erhalten von umfassenden Ergebnissen
-      imageSrc: ./media/index/API_Bing_Image_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-image-search/overview.md
-    - title: Bing News-Suche
-      summary: Suchen nach News und Erhalten von umfassenden Ergebnissen
-      imageSrc: ./media/index/API_Bing_News_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-news-search/search-the-web.md
-    - title: Bing-Rechtschreibprüfung
-      summary: Ermitteln und Korrigieren von Rechtschreibfehlern in Ihrer App
-      imageSrc: ./media/index/API_Bing_Spell_Check.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-spell-check/overview.md
-    - title: Bing-Videosuche
-      summary: Suchen nach Videos und Erhalten von umfassenden Ergebnissen
-      imageSrc: ./media/index/API_Bing_Video_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-video-search/overview.md
-    - title: Visuelle Bing-Suche
-      summary: Gewinnen von umfassenden Erkenntnissen für die Entwicklung von beeindruckenden Bildanwendungen auf dem Gerät Ihrer Wahl
-      imageSrc: ./media/index/API_Bing_Visual_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-visual-search/overview.md
-    - title: Bing-Websuche
-      summary: Erhalten von umfassenden Suchergebnissen aus Milliarden von Webdokumenten
-      imageSrc: ./media/index/API_Bing_Web_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-web-search/overview.md
     - title: Azure Communication Services
       summary: 'Erstellen umfassender Kommunikationsfunktionen mit der gleichen sicheren Plattform, die auch von Microsoft Teams verwendet wird'
       imageSrc: ./media/index/communication-services.svg
@@ -198,13 +150,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/immersive-reader/index.yml
-    - title: Freihanderkennung (Vorschauversion)
-      summary: "KI-Dienst zur Erkennung von Freihandeingaben, z.\_B. handschriftlicher Text, Formen und Freihand-Dokumentlayout"
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
-      azureCategories:
-        - ai-machine-learning
-      url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
+      url: ./applied-ai-services/immersive-reader/index.yml
     - title: Kinect DK
       summary: Entwickeln von Modellen für maschinelles Sehen und Sprache per Developer Kit mit erweiterten KI-Sensoren
       imageSrc: ./media/index/kinect-viewer.svg
@@ -225,7 +171,7 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: genomics/index.yml
-    - title: Metrics Advisor (Vorschauversion)
+    - title: Metrics Advisor
       summary: 'Ein KI-Dienst, der Metriken überwacht und Probleme diagnostiziert'
       imageSrc: ./media/index/metrics-advisor.svg
       azureCategories:
@@ -983,7 +929,7 @@ productDirectory:
       azureCategories:
         - management-and-governance
       url: azure-resource-manager/index.yml
-    - title: Azure Resource Mover (Vorschauversion)
+    - title: Azure Resource Mover
       summary: Vereinfachen des Verschiebens mehrerer Ressourcen zwischen Azure-Regionen
       imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-mover.svg'
       azureCategories:

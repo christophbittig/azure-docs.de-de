@@ -1,20 +1,23 @@
 ---
 title: Iteratives Entwickeln und Debuggen in Azure Data Factory
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie Data Factory-Pipelines auf der Benutzeroberfläche von Azure Data Factory iterativ entwickeln und debuggen.
 ms.date: 04/21/2021
 ms.topic: conceptual
 ms.service: data-factory
+ms.subservice: authoring
+ms.custom: synapse
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 author: kromerm
 ms.author: makromer
-ms.openlocfilehash: 8f233609bb6c25aaea158420ea92c67db0a2db90
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 39cce38b9b00201ae6fc3e24eff9d5816b69ed69
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639825"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratives Entwickeln und Debuggen mit Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

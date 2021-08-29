@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339800"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
@@ -65,7 +65,7 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
     > [!TIP]
     > Es wird empfohlen, den höchsten Bereich auszuwählen, für den der Standard gilt, damit Compliancedaten für alle geschachtelten Ressourcen aggregiert und nachverfolgt werden. 
 
-1. Wenn Sie die für Ihre Organisation relevanten Standards hinzufügen möchten, klicken Sie auf **Weitere Standards hinzufügen**. 
+1. Um die für Ihre Organisation relevanten Standards hinzuzufügen, erweitern Sie den Abschnitt **Branchen- und gesetzliche Standards**, und wählen Sie **Weitere Standards hinzufügen** aus.
 
 1. Auf der Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** können Sie nach verfügbaren Standards suchen, z. B.:
 
@@ -79,7 +79,7 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
     - **CMMC Level 3**
     - **Durch New Zealand ISM eingeschränkt**
     
-    ![Hinzufügen von Compliancestandards zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Hinzufügen von gesetzlichen Standards zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center.](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. Klicken Sie auf **Hinzufügen**, und geben Sie alle notwendigen Details für die jeweilige Initiative ein, z. B. Bereich, Parameter und Wartung.
 
@@ -90,7 +90,7 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
     > [!NOTE]
     > Es kann einige Stunden dauern, bis ein neu hinzugefügter Standard im Compliance-Dashboard angezeigt wird.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen." lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>Entfernen eines Standards aus Ihrem Dashboard
 
@@ -107,13 +107,13 @@ Entfernen Sie einen Standard wie folgt:
 
     Die Seite mit der Sicherheitsrichtlinie wird geöffnet. Für das ausgewählte Abonnement werden die Standardrichtlinie, die Branchen- und gesetzlichen Standards sowie alle von Ihnen erstellten benutzerdefinierten Initiativen angezeigt.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Entfernen eines gesetzlichen Standards aus Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Entfernen eines gesetzlichen Standards aus Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center.":::
 
 1. Wählen Sie für den Standard, den Sie entfernen möchten, die Option **Deaktivieren** aus. Ein Bestätigungsfenster wird angezeigt.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Vergewissern, dass der ausgewählte gesetzliche Standard wirklich entfernt werden soll":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Vergewissern, dass der ausgewählte gesetzliche Standard wirklich entfernt werden soll.":::
 
-1. Wählen Sie **Ja** aus. Der Standard wird entfernt. 
+1. Wählen Sie **Ja**. Der Standard wird entfernt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -20,6 +20,8 @@
       href: multi-factor-authentication-end-user-signin.md
     - name: Hier erhalten Sie Hilfe
       href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: Empfangener Code in Fehler
+      href: multi-factor-authentication-change-sms-phone.md
 - name: Hilfe zur Kennwortzurücksetzung
   items:
     - name: Registrieren für die Kennwortzurücksetzung

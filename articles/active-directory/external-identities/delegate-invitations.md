@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/04/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd3ef3ed0ad072bb0e9284892fa5455660d1c40
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c6dbac365b10b7abaeea6c4ae600cef24fcd1d2
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963605"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821796"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
@@ -62,20 +62,7 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
      > [!NOTE]
      > Wenn **Mitglieder können einladen** auf **Nein** festgelegt ist und **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist, können Benutzer mit der Rolle **Gasteinladender** weiterhin Gäste einladen.
 
-6. Wählen Sie unter **E-Mail-Einmalkennung für Gäste** die entsprechenden Einstellungen aus (weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)):
-
-   - **Einmalkennung per E-Mail für Gastbenutzer im Oktober 2021 automatisch aktivieren**. (Standardeinstellung) Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie im Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
-
-   - **Einmalkennung per E-Mail für Gastbenutzer sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
-
-   - **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im Oktober 2021 aktiviert wird.
-
-   > [!NOTE]
-   > Anstelle der oben aufgeführten Optionen wird die folgende Umschaltfläche angezeigt, wenn Sie diese Funktion aktiviert bzw. deaktiviert oder zuvor die Vorschauversion genutzt haben:
-   >
-   >![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/delegate-invitations/enable-email-otp-opted-in.png)
-
-7. Wählen Sie unter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren** die Option **Ja** aus, wenn Sie Benutzerflows erstellen möchten, über die sich Benutzer für Apps registrieren können. Weitere Informationen zu dieser Einstellung finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App](self-service-sign-up-user-flow.md).
+6. Wählen Sie unter **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren** die Option **Ja** aus, wenn Sie Benutzerflows erstellen möchten, über die sich Benutzer für Apps registrieren können. Weitere Informationen zu dieser Einstellung finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App](self-service-sign-up-user-flow.md).
 
     ![Einstellung „Self-Service-Registrierung über Benutzerflow“](./media/delegate-invitations/self-service-sign-up-setting.png)
 

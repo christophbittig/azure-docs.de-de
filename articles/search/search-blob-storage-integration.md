@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 6646a2e5a074219df13f3bf373edfc53310c8104
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 07f208753265e35bbc51c74f74a87a1742fa52ff
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556602"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727477"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>Durchsuchen von Azure Blob Storage-Inhalten
 
@@ -38,7 +38,7 @@ Nach Erstellen und Auffüllen des Indexes existiert er unabhängig von Ihrem Blo
 
 Sie benötigen sowohl Azure Cognitive Search als auch Azure Blob Storage. In Azure Blob Storage benötigen Sie einen Container, der Quellinhalte bereitstellt.
 
-Sie können direkt auf der Portalseite des Speicherkontos beginnen. Klicken Sie auf der linken Navigationsseite unter **Blob-Dienst** auf **Azure Cognitive Search hinzufügen**, um einen neuen Dienst zu erstellen oder einen bestehenden auszuwählen. 
+Sie können direkt auf der Portalseite des Speicherkontos beginnen. Wählen Sie auf der linken Navigationsseite unter **Blob-Dienst** die Option **Azure Cognitive Search hinzufügen** aus, um einen neuen Dienst zu erstellen oder einen bestehenden auszuwählen. 
 
 Nachdem Sie Ihrem Speicherkonto Azure Cognitive Search hinzugefügt haben, können Sie den Standardprozess zum Indizieren von Blobdaten befolgen. Wir empfehlen für eine einfache erste Eingabe von Daten den Assistenten **Daten importieren** in Azure Cognitive Search. Oder rufen Sie die REST-APIs mit einem Tool wie Postman auf. Dieses Tutorial führt Sie durch die Schritte zum Aufrufen der Rest-API in Postman: [Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Cognitive Search](search-semi-structured-data.md). 
 
@@ -48,7 +48,7 @@ Ein *Indexer* ist ein datenquellenabhängiger Subdienst in Cognitive Search, der
 
 Blobs in Azure Storage werden mithilfe des [Blob Storage-Indexers von Azure Cognitive Search](search-howto-indexing-azure-blob-storage.md) indiziert. Sie können diesen Indexer mit dem Assistenten **Daten importieren**, mit einer REST-API oder dem .NET SDK aufrufen. Im Code verwenden Sie diesen Indexer, indem Sie den Typ festlegen und Verbindungsinformationen bereitstellen, die ein Azure-Speicherkonto zusammen mit einem Blobcontainer enthalten. Sie können Ihre Blobs unterteilen, indem Sie ein virtuelles Verzeichnis erstellen, das Sie dann als Parameter übergeben können, oder indem Sie nach einer Dateityperweiterung filtern.
 
-Ein Indexer übernimmt die Dokumententschlüsselung und öffnet ein Blob, um den Inhalt zu inspizieren. Nach dem Herstellen einer Verbindung mit der Datenquelle ist dies der erste Schritt in der Pipeline. Bei Blobdaten werden an dieser Stelle PDF-Dateien, Office-Dokumente und andere Inhaltstypen erkannt. Die Dokumententschlüsselung mit Textextraktion erfolgt gebührenfrei. Wenn Ihre Blobs Bildinhalte enthalten, werden Bilder ignoriert, es sei denn, Sie fügen [KI-Erweiterungen](search-blob-ai-integration.md) hinzu. Die Standardindizierung gilt nur für Textinhalte.
+Ein Indexer [„entschlüsselt das Dokument“](search-indexer-overview.md#document-cracking) und öffnet ein Blob, um den Inhalt zu untersuchen. Nach dem Herstellen einer Verbindung mit der Datenquelle ist dies der erste Schritt in der Pipeline. Bei Blobdaten werden an dieser Stelle PDF-Dateien, Office-Dokumente und andere Inhaltstypen erkannt. Die Dokumententschlüsselung mit Textextraktion erfolgt gebührenfrei. Wenn Ihre Blobs Bildinhalte enthalten, werden Bilder ignoriert, es sei denn, Sie fügen [KI-Erweiterungen](search-blob-ai-integration.md) hinzu. Die Standardindizierung gilt nur für Textinhalte.
 
 Der Blobindexer verfügt über Konfigurationsparameter und unterstützt die Nachverfolgung von Änderungen, wenn die zugrunde liegenden Daten genügend Informationen liefern. Weitere Informationen zur Kernfunktionalität finden Sie unter [Blob Storage-Indexer in Azure Cognitive Search](search-howto-indexing-azure-blob-storage.md).
 

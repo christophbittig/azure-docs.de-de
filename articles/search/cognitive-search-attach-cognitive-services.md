@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 0fe9a87e82ab391fc0e1ccfca95ad48a0ef5dc61
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c5f29cb909dae7b8e362cdf37481111dbf75c8d9
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772465"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343159"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Anfügen einer Cognitive Services-Ressource an ein Skillset in der kognitiven Azure-Suche
 
@@ -47,7 +47,7 @@ Sie können den Schlüssel und den Cognitive Services-Abschnitt für Skillsets w
   Wie bereits erwähnt, ist die [benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) ein Sonderfall, da sie einen Schlüssel erfordert, aber von [Cognitive Search berechnet](https://azure.microsoft.com/pricing/details/search/#pricing) wird.
 
 > [!TIP]
-> Um die Kosten für die Skillsetverarbeitung zu senken, aktivieren Sie die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md), um Anreicherungen zwischenzuspeichern und wiederzuverwenden, die von Änderungen an einem Skillset nicht betroffen sind. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](https://azure.microsoft.com/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können, insbesondere für Skillsets, die Bildextraktion und -analyse verwenden).
+> Um die Kosten für die Skillsetverarbeitung zu senken, aktivieren Sie die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md), um Anreicherungen zwischenzuspeichern und wiederzuverwenden, die von Änderungen an einem Skillset nicht betroffen sind. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können, insbesondere für Skillsets, die Bildextraktion und -analyse verwenden).
 
 ## <a name="same-region-requirement"></a>Anforderung derselben Region
 

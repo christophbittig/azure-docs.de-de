@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von LogicGate für die automatische Benutzerbere
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in LogicGate bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: eea988ef-b0f1-4d22-b867-310f167540c3
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/17/2021
-ms.author: Zhchia
-ms.openlocfilehash: 850e2f9e58c5e9d0c6d7bc2b5c15aa291d3c8e42
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: c3de4133e8cb3d769918cf98525a7090d4b30e28
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125371"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122326897"
 ---
 # <a name="tutorial-configure-logicgate-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LogicGate für die automatische Benutzerbereitstellung
 
@@ -111,7 +111,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit LogicGate synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in LogicGate für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die LogicGate-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |emails[type eq "work"].value|String|
