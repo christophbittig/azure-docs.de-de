@@ -7,13 +7,12 @@ ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 46b8cdc7fa33c8ddd382decb49eaa148093c99fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728390"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355614"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -52,7 +51,8 @@ IoT Central bietet die folgenden Funktionen für IoT Edge-Geräte:
   - Die Befehle, auf die jedes Modul reagiert
   - Die Beziehungen zwischen einem IoT Edge-Gatewaygerät und dem nachgeschalteten Gerät
   - Cloudeigenschaften, die auf dem IoT Edge-Gerät nicht gespeichert werden
-  - Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
+  - Anpassungen, die ändern, wie Gerätefunktionen auf der Benutzeroberfläche angezeigt werden.
+  - Geräteansichten und Formulare.
 
   Weitere Informationen finden Sie im Artikel [Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung](./concepts-iot-edge.md).
 
@@ -69,6 +69,9 @@ IoT Central klassifiziert IoT Edge-Gerätetypen folgendermaßen:
 - Gatewaygeräte mit nachgeschalteten Geräten. Sowohl das Gatewaygerät als auch nachgeschaltete Geräte werden in IoT Central bereitgestellt.
 
 ![Übersicht über IoT Central mit IoT Edge](./media/concepts-architecture/gatewayedge.png)
+
+> [!NOTE]
+> IoT Central unterstützt zurzeit nicht das Verbinden eines IoT Edge Geräts als nachgeschaltetes Gerät mit einem IoT Edge-Gateway. Der Grund: Alle Geräte, die eine Verbindung mit IoT Central herstellen, werden mit dem Device Provisioning Service (DPS) bereitgestellt, und DPS unterstützt keine geschachtelten IoT Edge-Szenarios.
 
 ### <a name="iot-edge-patterns"></a>IoT Edge-Muster
 
@@ -121,7 +124,7 @@ In einer Azure IoT Central-Anwendung können Sie einen [fortlaufenden Export Ihr
 
 ## <a name="batch-device-updates"></a>Geräteupdates als Batchvorgang
 
-In einer Azure IoT Central-Anwendung können Sie [Aufträge erstellen und ausführen](howto-run-a-job.md), um verbundene Geräte zu verwalten. Mit diesen Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften oder -einstellungen vornehmen oder Befehle ausführen. Sie können beispielsweise einen Auftrag erstellen, um die Lüfterdrehzahl für mehrere Verkaufsautomaten mit Kühlung zu erhöhen.
+In einer Azure IoT Central-Anwendung können Sie [Aufträge erstellen und ausführen](howto-manage-devices-in-bulk.md), um verbundene Geräte zu verwalten. Mit diesen Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften oder -einstellungen vornehmen oder Befehle ausführen. Sie können beispielsweise einen Auftrag erstellen, um die Lüfterdrehzahl für mehrere Verkaufsautomaten mit Kühlung zu erhöhen.
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
