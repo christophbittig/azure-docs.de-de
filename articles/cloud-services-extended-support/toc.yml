@@ -108,7 +108,7 @@
     - name: Beispielbereitstellungsdateien
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Modul „Az.CloudService“
-      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.5.0'
     - name: PowerShell-Cmdlets
       href: /powershell/module/az.cloudservice/#cloudservice
     - name: ARM-Vorlagenreferenz

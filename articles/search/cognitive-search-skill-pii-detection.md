@@ -1,31 +1,27 @@
 ---
-title: Die kognitive Qualifikation „PII-Erkennung“ (Vorschau)
+title: Die kognitive Qualifikation „PII-Erkennung“
 titleSuffix: Azure Cognitive Search
-description: Extrahieren und maskieren Sie persönliche Informationen aus Text in einer Anreicherungspipeline in Azure Cognitive Search. Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar.
+description: Extrahieren und maskieren Sie persönliche Informationen aus Text in einer Anreicherungspipeline in Azure Cognitive Search.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 448784987f3304303a1bd47c2038440db5cdd194
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 08/12/2021
+ms.openlocfilehash: 71bd45fae729efed6d76ab65fc4ea45944998f45
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063232"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350000"
 ---
 # <a name="pii-detection-cognitive-skill"></a>Die kognitive Qualifikation „PII-Erkennung“
-
-> [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 Die Qualifikation **PII-Erkennung** extrahiert persönliche Informationen aus einem Eingabetext und bietet Ihnen die Möglichkeit, sie zu maskieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
 ## <a name="odatatype"></a>@odata.type
 
@@ -41,17 +37,19 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| `defaultLanguageCode` | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md). |
+| `defaultLanguageCode` | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md?tabs=pii). |
 | `minimumPrecision` | Ein Wert zwischen 0,0 und 1,0. Wenn die Zuverlässigkeitsbewertung (in der `piiEntities`-Ausgabe) unter dem festgelegten `minimumPrecision`-Wert liegt, wird die Entität nicht zurückgegeben oder maskiert. Der Standard ist 0,0. |
 | `maskingMode` | Ein Parameter, der verschiedene Methoden bereitstellt, um die persönlichen Informationen zu maskieren, die im Eingabetext erkannt wurden. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Es erfolgt keine Maskierung, und die `maskedText`-Ausgabe wird nicht zurückgegeben. </li><li> `replace`: Ersetzt die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen. Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> <br/> Während der PIIDetectionSkill-Vorschau wurde die `maskingMode`-Option `redact` ebenfalls unterstützt, wodurch die erkannten Entitäten vollständig ohne Ersetzung entfernt werden konnten. Die `redact`-Option ist mittlerweile veraltet und wird in Zukunft im Skill nicht mehr unterstützt. |
 | `maskingCharacter` | Das Zeichen, das zum Maskieren des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgende Option wird unterstützt: `*` (Standard). Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. <br/><br/> Während der PiIDetectionSkill-Vorschau wurden die zusätzlichen `maskingCharacter`-Optionen `X` und `#` unterstützt. Die Option `X` und `#` sind mittlerweile veraltet und werden in Zukunft im Skill nicht mehr unterstützt. |
+| `domain`   | (Optional) Wird ein Zeichenfolgenwert angegeben, wird die PII-Domäne so festgelegt, dass nur eine Teilmenge der Entitätskategorien enthalten ist. Mögliche Werte sind: `phi` (nur vertrauliche Informationen zur Gesundheit erkennen), `none`. |
+| `piiCategories`   | (Optional) Wenn Sie angeben möchten, welche Entitäten erkannt und zurückgegeben werden sollen, verwenden Sie den optionalen Parameter `piiCategories` (definiert als Liste von Zeichenfolgen) mit den entsprechenden Entitätskategorien. Mit diesem Parameter lassen sich auch Entitäten erkennen, die für Ihre Dokumentsprache standardmäßig nicht aktiviert sind. Eine Liste der verfügbaren Kategorien finden Sie in der [TextAnalytics-Dokumentation](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal).  |
 | `modelVersion`   | (Optional) Die Version des Modells, die beim Aufruf des Textanalysediensts verwendet werden soll. Wenn nichts angegeben ist, wird standardmäßig die neueste Version verwendet. Es empfiehlt sich, diesen Wert nur anzugeben, wenn es unbedingt notwendig ist. Weitere Einzelheiten finden Sie unter [Versionsverwaltung der Modelle in der Textanalyse-API](../cognitive-services/text-analytics/concepts/model-versioning.md). |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| `languageCode`    | Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md).  |
+| `languageCode`    | Eine Zeichenfolge, die die Sprache der Datensätze angibt. Wenn dieser Parameter nicht angegeben ist, wird der Standardsprachcode zur Analyse der Datensätze verwendet. <br/>Siehe die [vollständige Liste der unterstützten Sprachen](../cognitive-services/text-analytics/language-support.md?tabs=pii).  |
 | `text`          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben

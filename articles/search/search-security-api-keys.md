@@ -7,19 +7,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/25/2021
+ms.openlocfilehash: f452aa6ababd338ccc86b7c7c40854367ed46e41
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310664"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460622"
 ---
-# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>Erstellen und Verwalten von API-Schlüsseln zur Authentifizierung bei Azure Cognitive Search
+# <a name="use-api-keys-for-azure-cognitive-search-authentication"></a>Verwenden von API-Schlüsseln zur Authentifizierung bei Azure Cognitive Search
 
-Bei der Verbindung mit einem Suchdienst müssen alle Anforderungen einen schreibgeschützten API-Schlüssel enthalten, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für auf Ihren Suchdienstendpunkt eingehende Anforderungen und ist für jede Anforderung erforderlich. 
+Cognitive Search verwendet API-Schlüssel als primäre Authentifizierungsmethode. Für eingehende Anforderungen an die Suchdienste, z. B. Anforderungen, die einen Index erstellen oder abfragen, sind API-Schlüssel die einzige Authentifizierungsoption, die Sie haben. In einigen Szenarien für ausgehende Anforderungen, insbesondere in solchen, die Indexer betreffen, können Azure Active Directory-Identitäten und -Rollen verwendet werden.
 
-+ In [REST-Lösungen](search-get-started-rest.md) wird der `api-key` in der Regel im Anforderungsheader angegeben.
+API-Schlüssel werden bei der Erstellung des Diensts generiert. Die Übergabe eines gültigen API-Schlüssels bei der Anforderung gilt als Nachweis dafür, dass die Anforderung von einem autorisierten Client stammt. Es gibt zwei Typen von Schlüsseln. *Administratorschlüssel* übertragen Schreibrechte für den Dienst und gewähren auch Rechte zur Abfrage von Systeminformationen. *Abfrageschlüssel* übertragen Leserechte und können von Apps verwendet werden, um einen bestimmten Index abzufragen. 
+
+> [!NOTE]
+> Die Autorisierung für Vorgänge auf der Datenebene mithilfe der rollenbasierten Zugriffssteuerung (RBAC) von Azure ist jetzt in der Vorschau. Sie können diese Vorschaufunktion nutzen, um API-Schlüssel durch [Azure-Rollen für Search](search-security-rbac.md) zu ergänzen oder zu ersetzen. 
+
+## <a name="using-api-keys-in-search"></a>Verwenden von API-Schlüsseln in der Suche
+
+Bei der Verbindung mit einem Suchdienst müssen alle Anforderungen einen API-Schlüssel enthalten, der speziell für Ihren Dienst generiert wurde.
+
++ In [REST-Lösungen](search-get-started-rest.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben.
 
 + In [.NET-Lösungen](search-howto-dotnet-sdk.md) wird ein Schlüssel oft als Konfigurationseinstellung angegeben und dann als [AzureKeyCredential](/dotnet/api/azure.azurekeycredential)-Objekt übergeben.
 
@@ -29,7 +38,7 @@ Sie können API-Schlüssel im [Azure-Portal](https://portal.azure.com) oder übe
 
 ## <a name="what-is-an-api-key"></a>Was ist ein API-Schlüssel?
 
-Ein API-Schlüssel ist eine eindeutige Zeichenfolge aus zufällig generierten Ziffern und Buchstaben, die bei jeder Anforderung an den Suchdienst übergeben wird. Der Dienst akzeptiert die Anforderung, wenn sowohl die Anforderung selbst als auch der Schlüssel gültig sind. 
+Ein API-Schlüssel ist eine eindeutige Zeichenfolge aus zufällig generierten Ziffern und Buchstaben, die bei jeder Anforderung an den Suchdienst übergeben werden. Der Dienst akzeptiert die Anforderung, wenn sowohl die Anforderung selbst als auch der Schlüssel gültig sind. 
 
 Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwendet: Administrator (Lesen/Schreiben) und Abfrage (schreibgeschützt).
 
@@ -89,13 +98,13 @@ Nach der Erstellung neuer Schlüssel über das Portal oder die Verwaltungsebene 
 
 ## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
 
-Durch [rollenbasierte Berechtigungen](search-security-rbac.md) können Sie die Schlüssel löschen oder lesen, aber Sie können einen Schlüssel nicht durch ein benutzerdefiniertes Kennwort ersetzen oder Active Directory als primäre Authentifizierungsmethode für den Zugriff auf Suchvorgänge verwenden. 
+Durch [Rollenzuweisungen](search-security-rbac.md) wird festgelegt, wer Schlüssel lesen und verwalten darf. Mitglieder der folgenden Rollen können Schlüssel anzeigen und neu generieren: „Besitzer“, „Mitwirkender“, [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor). Die Rolle „Leser“ hat keinen Zugriff auf API-Schlüssel.
 
-Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
+Abonnementadministratoren können alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.
 
-+ Klicken Sie im Dashboard für den Dienst auf **Zugriffssteuerung (IAM)** und anschließend auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für Ihren Dienst anzuzeigen.
-
-Mitglieder der folgenden Rollen können Schlüssel anzeigen und neu generieren: Besitzer, Mitwirkender, [Suchdienstmitwirkender](../role-based-access-control/built-in-roles.md#search-service-contributor)
+1. Navigieren Sie im Azure-Portal zur Seite Ihres Suchdiensts.
+1. Wählen Sie im linken Navigationsbereich **Zugriffssteuerung (IAM)** und anschließend die Registerkarte **Rollenzuweisungen** aus.
+1. Legen Sie **Bereich** auf **Diese Ressource**, um Rollenzuweisungen für Ihren Dienst anzuzeigen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

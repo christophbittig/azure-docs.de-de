@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: e1af69db6f70d5a6a977c6e3fa715e84cbc2673b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339454"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -28,8 +28,10 @@ Feldzuordnungen sind beispielsweise in folgenden Situationen hilfreich:
 * Sie möchten ein Indexfeld mit Daten aus mehreren Datenquellen auffüllen, und in den einzelnen Datenquellen werden unterschiedliche Feldnamen verwendet.
 * Sie müssen Ihre Daten mit Base64 codieren oder decodieren. Feldzuordnungen unterstützen mehrere **Zuordnungsfunktionen**, einschließlich Funktionen für die Base64-Codierung und -Decodierung.
 
+Feldzuordnungen in Indexern sind eine einfache Möglichkeit, um Datenfelder Indexfeldern zuzuordnen, wobei in gewissem Umfang eine einfache Datenkonvertierung möglich ist. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine für die Indizierung geeignete Form umzuwandeln. Eine Option, die Sie ggf. in Betracht ziehen sollten, ist [Azure Data Factory](../data-factory/index.yml).
+
 > [!NOTE]
-> Feldzuordnungen in Indexern sind eine einfache Möglichkeit, um Datenfelder Indexfeldern zuzuordnen, wobei in gewissem Umfang eine einfache Datenkonvertierung möglich ist. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine für die Indizierung geeignete Form umzuwandeln. Eine Option, die Sie ggf. in Betracht ziehen sollten, ist [Azure Data Factory](../data-factory/index.yml).
+> Feldzuordnungen gelten nur für Suchindizes. Für Indexer, die [Wissensspeicher](knowledge-store-concept-intro.md) erstellen, werden Feldzuordnungen ignoriert.
 
 ## <a name="set-up-field-mappings"></a>Einrichten von Feldzuordnungen
 

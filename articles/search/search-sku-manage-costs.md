@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 6a371d3a9edf537e78f5a889139a053cb925518f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1e46601858ece67efa2bca9543083da8a0e2cc79
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770833"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356120"
 ---
 # <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kosten eines Azure Cognitive Search-Diensts
 
@@ -93,7 +93,7 @@ Für die [KI-Anreicherung](cognitive-search-concept-intro.md), die gebührenpfli
 | [Benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) | Berechnet durch Azure Cognitive Search. Ausführlichere Informationen finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/#pricing). |
 
 > [!TIP]
-> Die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) senkt die Kosten für die Skillsetverarbeitung, indem Anreicherungen, die von Änderungen an einem Skillset nicht betroffen sind, zwischengespeichert und wiederverwendet werden. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](https://azure.microsoft.com/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können).
+> Die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) senkt die Kosten für die Skillsetverarbeitung, indem Anreicherungen, die von Änderungen an einem Skillset nicht betroffen sind, zwischengespeichert und wiederverwendet werden. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können).
 
 ## <a name="tips-for-managing-costs"></a>Tipps zum Verwalten von Kosten
 
@@ -115,7 +115,7 @@ Im Hinblick auf den Dienst selbst besteht die einzige Möglichkeit zur Kostenred
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
+Möchten Sie Ihre Cloudausgaben optimieren und somit Geld sparen?
 
 > [!div class="nextstepaction"]
 > [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

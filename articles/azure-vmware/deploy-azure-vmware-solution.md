@@ -2,14 +2,14 @@
 title: Bereitstellen und Konfigurieren von Azure VMware Solution
 description: Hier erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen und zu konfigurieren.
 ms.topic: tutorial
-ms.custom: contperf-fy21q4, devx-track-azurecli
-ms.date: 05/19/2021
-ms.openlocfilehash: 824ab46b81a913bc7b1768e56e05025ee8208d17
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: contperf-fy22q1, devx-track-azurecli
+ms.date: 07/09/2021
+ms.openlocfilehash: 30c6360e49da2574edd87c639811aac4b66d5e9e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473766"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438199"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
@@ -33,7 +33,12 @@ Das Diagramm zeigt den Bereitstellungsworkflow von Azure VMware Solution.
 
 ## <a name="step-3-connect-to-azure-virtual-network-with-expressroute"></a>Schritt 3: Herstellen einer Verbindung mit Azure Virtual Network über ExpressRoute
 
-In der Planungsphase haben Sie definiert, ob Sie ein *vorhandenes* oder *neues* ExpressRoute-VNET-Gateway verwenden möchten.  
+In der Planungsphase haben Sie definiert, ob ein *vorhandenes* oder *neues* ExpressRoute-VNET-Gateway verwendet wird.  
+
+Das :::image type="content" source="media/connect-expressroute-vnet-workflow.png" alt-text="Diagramm, zeigt den Workflow zum Verbinden von Azure Virtual Network mit ExpressRoute in Azure VMware Solution." border="false":::
+
+>[!IMPORTANT]
+>[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)] 
 
 ### <a name="use-a-new-expressroute-virtual-network-gateway"></a>Verwenden eines neuen ExpressRoute-VNET-Gateways
 
@@ -42,9 +47,9 @@ In der Planungsphase haben Sie definiert, ob Sie ein *vorhandenes* oder *neues* 
 
 | Wenn | Then  |
 | --- | --- |
-| Sie noch kein virtuelles Netzwerk besitzen...     |  Erstellen Sie Folgendes:<ul><li><a href="tutorial-configure-networking.md#create-a-virtual-network">Virtuelles Netzwerk</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">Gateway für virtuelle Netzwerke</a></li></ul>        |
-| Sie bereits ein virtuelles Netzwerk **ohne** Gatewaysubnetz besitzen...   | Erstellen Sie Folgendes: <ul><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">Gateway für virtuelle Netzwerke</a></li></ul>          |
-| Sie bereits ein virtuelles Netzwerk **mit** Gatewaysubnetz besitzen... | [Erstellen eines Gateways für das virtuelle Netzwerk](tutorial-configure-networking.md#create-a-virtual-network-gateway)   |
+| Sie noch kein virtuelles Netzwerk besitzen...     |  Erstellen Sie Folgendes:<ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network">Virtuelles Netzwerk</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">Gateway für virtuelle Netzwerke</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">Verbinden von ExpressRoute zum Gateway</a></li></ol>        |
+| Sie bereits ein virtuelles Netzwerk **ohne** Gatewaysubnetz besitzen...   | Erstellen Sie Folgendes: <ol><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">Gateway für virtuelle Netzwerke</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">Verbinden von ExpressRoute zum Gateway</a></li></ol>          |
+| Sie bereits ein virtuelles Netzwerk **mit** Gatewaysubnetz besitzen... | Erstellen Sie Folgendes: <ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">Gateway für virtuelle Netzwerke</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">Verbinden von ExpressRoute zum Gateway</a></li></ol>    |
 
 
 ### <a name="use-an-existing-virtual-network-gateway"></a>Verwenden eines vorhandenen VNET-Gateways
@@ -59,15 +64,18 @@ Zwischen der Azure Virtual Network-Instanz, in der die ExpressRoute-Leitung ende
 1. Verwenden Sie einen [virtuellen Computer](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) in der Azure Virtual Network-Instanz, in der die ExpressRoute-Leitung von Azure VMware Solution endet (siehe [Schritt 3: Herstellen einer Verbindung mit Azure Virtual Network über ExpressRoute](#step-3-connect-to-azure-virtual-network-with-expressroute)).  
 
    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-   2. Navigieren Sie zu einem ausgeführten virtuellen Computer, und wählen Sie unter **Einstellungen** die Option **Netzwerk** und dann die Netzwerkschnittstellenressource aus.
-      ![Anzeigen von Netzwerkschnittstellen](../virtual-network/media/diagnose-network-routing-problem/view-nics.png)
-   4. Wählen Sie auf der linken Seite **Effektive Routen** aus. Eine Liste der Adresspräfixe wird angezeigt, die in dem CIDR-Block vom Typ `/22` enthalten sind, den Sie während der Bereitstellungsphase eingegeben haben.
+
+   1. Navigieren Sie zu einem ausgeführten virtuellen Computer, und wählen Sie unter **Einstellungen** die Option **Netzwerk** und dann die Netzwerkschnittstellenressource aus.
+
+      :::image type="content" source="../virtual-network/media/diagnose-network-routing-problem/view-nics.png" alt-text="Ein Screenshot, der die Einstellungen für virtuelle Netzwerkschnittstellen zeigt":::.
+
+   1. Wählen Sie auf der linken Seite **Effektive Routen** aus. Eine Liste der Adresspräfixe wird angezeigt, die in dem CIDR-Block vom Typ `/22` enthalten sind, den Sie während der Bereitstellungsphase eingegeben haben.
 
 1. Wenn Sie sich sowohl bei vCenter als auch bei NSX-T Manager anmelden möchten, öffnen Sie einen Webbrowser, und melden Sie sich bei demselben virtuellen Computer an, der auch für die Netzwerkroutenüberprüfung verwendet wird.  
 
    Sie können die IP-Adressen und Anmeldeinformationen von vCenter und NSX-T Manager im Azure-Portal ermitteln.  Wählen Sie Ihre private Cloud und dann **Verwalten** > **Identität** aus.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Screenshot: URLs und Anmeldeinformationen für vCenter und NSX Manager der privaten Cloud" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Ein Screenshot, der die URLs und Anmeldeinformationen für vCenter und NSX Manager in der privaten Cloud zeigt" border="true":::.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

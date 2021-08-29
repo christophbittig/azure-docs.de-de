@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: fac3ad13f34620bb2ec817601041001ccf393d4e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: acd1c61a145067d66f7c1921da108a794bd1faee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369060"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752294"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Erstellen Ihrer ersten dauerhaften Funktion in PowerShell
 
@@ -53,7 +53,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
     | Auswählen einer Vorlage für die erste Funktion Ihres Projekts | Vorerst überspringen | |
     | Auswählen, wie Sie Ihr Projekt öffnen möchten | Im aktuellen Fenster | Öffnet VS Code wieder im ausgewählten Ordner. |
 
-Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem Ordner erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-run-local.md#local-settings-file).
+Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem Ordner erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-develop-local.md#local-settings-file).
 
 Und es wird die Datei „package.json“ im Stammordner erstellt.
 

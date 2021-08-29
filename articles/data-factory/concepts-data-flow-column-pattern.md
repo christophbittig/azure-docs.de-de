@@ -1,18 +1,21 @@
 ---
 title: Spaltenmuster in Azure Data Factory-Mappingdatenflüssen
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erstellen generalisierter Datentransformationsmuster unter Verwendung von Spaltenmustern in Azure Data Factory-Mappingdatenflüssen
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.openlocfilehash: aca49982cf6e25e95002c1fab40b46ef05c842e2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0b99e1cc31464aabe2519da172f250dc7a6f7c8d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454941"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640721"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 

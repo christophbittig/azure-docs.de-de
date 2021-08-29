@@ -2,19 +2,18 @@
 title: 'Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte – Azure IoT Edge'
 description: In diesem Tutorial wird veranschaulicht, wie Sie eine hierarchische Struktur für IoT Edge-Geräte mit Gateways erstellen.
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 7362c134ce25341a9ce53659c3a1f7ff2889e7fa
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 983844a824f4aac6bfe21f06b8fab591c99e1bf1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083582"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740543"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte
 
