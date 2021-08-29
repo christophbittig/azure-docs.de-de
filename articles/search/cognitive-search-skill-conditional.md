@@ -2,18 +2,17 @@
 title: Kognitiver Skill „Bedingt“
 titleSuffix: Azure Cognitive Search
 description: Der Skill „Bedingt“ in der kognitiven Azure-Suche ermöglicht Filtern, Erstellen von Standardwerten und Zusammenführen von Werten in einer Skillsetdefinition.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: acd3a42051fa42821013424ab0410814968b6131
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666364"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349848"
 ---
 # <a name="conditional-cognitive-skill"></a>Kognitiver Skill „Bedingt“
 
@@ -29,7 +28,7 @@ else
 ```
 
 > [!NOTE]
-> Diese Funktion ist nicht an eine Azure Cognitive Services-API gebunden, und es fallen keine Kosten für die Nutzung an. Es wird jedoch empfohlen, dennoch eine [Cognitive Services-Ressource anzufügen](cognitive-search-attach-cognitive-services.md), um die Ressourcenoption „Free“ außer Kraft zu setzen, durch die Sie auf eine geringe Anzahl von Anreicherungen pro Tag beschränkt werden.
+> Dieser Skill ist nicht an Cognitive Services gebunden. Er ist nicht gebührenpflichtig und weist keine Cognitive Services-Schlüsselanforderungen auf.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill

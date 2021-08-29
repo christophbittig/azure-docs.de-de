@@ -1,27 +1,34 @@
 ---
-title: Verbinden und Indizieren von Azure MySQL-Inhalten mithilfe eines Azure Cognitive Search-Indexers (Preview)
+title: Indizieren von Daten aus Azure MySQL (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Importieren Sie Daten aus Azure MySQL in einen durchsuchbaren Index in Azure Cognitive Search. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure MySQL.
+description: Richten Sie einen Suchindexer ein, um in Azure MySQL gespeicherte Daten für die Volltextsuche in Azure Cognitive Search zu indizieren.
 author: markheff
-manager: luisca
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/17/2021
-ms.openlocfilehash: 4dee2250d49d437d47148b873cfe8c7ce1e8f5ea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: c4ac7266f61596490805c00af079dfe7bdee76aa
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754437"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342971"
 ---
-# <a name="connect-to-and-index-azure-mysql-content-using-an-azure-cognitive-search-indexer-preview"></a>Verbinden und Indizieren von Azure MySQL-Inhalten mithilfe eines Azure Cognitive Search-Indexers (Preview)
+# <a name="index-data-from-azure-mysql"></a>Indizieren von Daten aus Azure MySQL
 
 > [!IMPORTANT] 
-> Die MySQL-Unterstützung befindet sich derzeit in der Public Preview-Phase. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) bereitgestellt. Unterstützung für SDK und Portal ist derzeit nicht vorhanden.
+> Die Unterstützung für MySQL befindet sich derzeit in der öffentlichen Vorschauphase unter [Zusätzliche Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Fordern Sie [Zugriff](https://aka.ms/azure-cognitive-search/indexer-preview) auf dieses Feature an, und verwenden Sie, nachdem der Zugriff aktiviert wurde, eine [Vorschau-REST-API (2020-06-30-preview oder höher)](search-api-preview.md), um Ihre Inhalte zu indizieren. Unterstützung für SDK und Portal ist derzeit nicht vorhanden.
 
-Der Azure Cognitive Search-Indexer für MySQL durchforscht Ihre MySQL-Datenbank in Azure, extrahiert durchsuchbare Daten und indiziert sie in Azure Cognitive Search. Der Indexer nimmt alle Änderungen, Uploads und Löschungen für Ihre MySQL-Datenbank vor und übernimmt diese Änderungen in Azure Cognitive Search.
+Der Azure Cognitive Search-Indexer für MySQL durchforscht Ihre MySQL-Datenbank in Azure, extrahiert durchsuchbare Daten und indiziert sie in Azure Cognitive Search. Der Indexer nimmt alle Änderungen, Uploads und Löschungen für Ihre MySQL-Datenbank vor und übernimmt diese Änderungen in Ihrem Suchindex.
+
+Sie können einen Azure MySQL-Indexer mit einem der folgenden Clients einrichten:
+
+* [Azure portal](https://ms.portal.azure.com)
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) für die kognitive Azure-Suche
+
+In diesem Artikel werden die REST-APIs verwendet. 
 
 ## <a name="create-an-azure-mysql-indexer"></a>Erstellen eines Azure MySQL-Indexers
 

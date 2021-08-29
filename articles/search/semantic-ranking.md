@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: bf311eb2b2d0ff7a9c17380d2e384bc05c6f05f3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 61fb6de73567b7a83e2c4db2010c717a160aebe0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562034"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473986"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Semantische Rangfolge in Azure Cognitive Search
 
 > [!IMPORTANT]
-> Semantische Suchfunktionen sind in der öffentlichen Vorschau, verfügbar über die Vorschau-REST-API und das Portal. Previewfunktionen werden im Ist-Zustand gemäß den [ergänzenden Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) angeboten, und es ist nicht garantiert, dass dieselbe Implementierung bei allgemeiner Verfügbarkeit verwendet wird. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
 Das semantische Ranking ist eine Erweiterung der Abfrageausführungspipeline, welche die Präzision verbessert, indem sie die Top-Treffer eines anfänglichen Ergebnissatzes neu ordnet. Das semantische Ranking wird von großen transformatorbasierten Netzwerken unterstützt, die für die Erfassung der semantischen Bedeutung von Abfragebegriffen trainiert wurden, im Gegensatz zum linguistischen Abgleich auf Schlüsselwörter. Im Gegensatz zum [Standardalgorithmus zum Priorisieren nach Ähnlichkeit](index-ranking-similarity.md) werden für die semantische Rangfolge der Kontext und die Bedeutung von Wörtern herangezogen, um die Relevanz zu bestimmen.
 
@@ -40,8 +40,10 @@ Vor der Bewertung der Relevanz muss der Inhalt auf eine überschaubare Anzahl vo
 
 Jedes der 50 Dokumente wird nun durch eine einzelne lange Zeichenkette dargestellt.
 
+Die Zeichenkette besteht aus Token, nicht aus Zeichen oder Wörtern. Die maximale Tokenanzahl beträgt 128 eindeutige Token. Zu Schätzungszwecken können Sie davon ausgehen, dass 128 Token ungefähr einer Zeichenfolge mit einer Länge von 128 Wörtern entsprechen. 
+
 > [!NOTE]
-> Die Zeichenkette besteht aus Token, nicht aus Zeichen oder Wörtern. Die Tokenisierung wird teilweise von der Analyzer-Zuweisung für durchsuchbare Felder bestimmt. Wenn Sie spezialisierte Analysetools verwenden, z. b. nGram oder EdgeNGramm, sollten Sie dieses Feld aus den Suchfeldern ausschließen. Für Einblicke in die Tokenisierung von Zeichenketten, können Sie die Tokenausgabe eines Analyzers mithilfe der [Test Analyzer-REST-API](/rest/api/searchservice/test-analyzer)überprüfen.
+>Die Tokenisierung wird teilweise von der Analyzer-Zuweisung für durchsuchbare Felder bestimmt. Wenn Sie spezialisierte Analysetools verwenden, z. b. nGram oder EdgeNGramm, sollten Sie dieses Feld aus den Suchfeldern ausschließen. Für Einblicke in die Tokenisierung von Zeichenketten, können Sie die Tokenausgabe eines Analyzers mithilfe der [Test Analyzer-REST-API](/rest/api/searchservice/test-analyzer)überprüfen.
 
 ## <a name="extraction"></a>Extraktion
 

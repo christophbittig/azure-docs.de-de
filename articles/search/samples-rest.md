@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 7a903b63ad1da2dbb029fdbeba1106d3090ba3ef
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 8e25c921b390211f159e7f845dca9c7cbc9168c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554820"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339650"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>REST-Codebeispiele für Azure Cognitive Search
 
@@ -37,7 +37,7 @@ Die Codebeispiele vom Cognitive Search-Team veranschaulichen die Funktionen und 
 | [Debugsitzungen](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) | Quellcode für [Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset](cognitive-search-tutorial-debug-sessions.md). In diesem Artikel wird gezeigt, wie Sie eine Skillset-Debugsitzung im Azure-Portal verwenden. REST wird zum Erstellen der während des Debuggens verwendeten Objekte verwendet.|
 | [Benutzerdefinierte Analysetools](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/custom-analyzers) | Quellcode für [Tutorial: Erstellen eines benutzerdefinierten Analysetools für Telefonnummern](tutorial-create-custom-analyzer.md). In diesem Artikel wird erläutert, wie Analysen verwendet werden, um Muster und Sonderzeichen in durchsuchbarem Inhalt beizubehalten.|
 | [Wissensspeicher](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) | Quellcode für [Erstellen eines Wissensspeichers mithilfe von REST und Postman](knowledge-store-create-rest.md). In diesem Artikel werden die erforderlichen Schritte zum Auffüllen eines Wissensspeichers erläutert, der für Wissensgewinnungsworkflows (Knowledge Mining) verwendet wird. |
-| [Projektionen](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | Quellcode für [Strukturieren und Exportieren von Anreicherungen](knowledge-store-projections-examples.md). In diesem Artikel wird erläutert, wie die physischen Datenstrukturen in einem Wissensspeicher festgelegt werden.|
+| [Projektionen](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | Sicherer Code zum [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md). In diesem Artikel wird erläutert, wie die physischen Datenstrukturen in einem Wissensspeicher festgelegt werden.|
 | [Indizieren verschlüsselter Blobs](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | Quellcode für [Indizieren verschlüsselter Blobs mithilfe von Blobindexern und Skillsets](search-howto-index-encrypted-blobs.md). In diesem Artikel wird beschrieben, wie Dokumente in Azure Blob Storage indiziert werden, die zuvor mit Azure Key Vault verschlüsselt wurden. |
 
 > [!Tip]

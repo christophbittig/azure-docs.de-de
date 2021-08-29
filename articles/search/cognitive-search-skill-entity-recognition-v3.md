@@ -7,26 +7,21 @@ author: ayokande
 ms.author: aakande
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2021
-ms.openlocfilehash: 9edb5a194f79d7b3fff1caf1672a656a85bd4766
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 08/12/2021
+ms.openlocfilehash: 14811591feea9df735bf41e23a81e3a96faa2662
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528743"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349996"
 ---
-#    <a name="entity-recognition-cognitive-skill-v3"></a>Der kognitive Skill „Entitätserkennung“ (V3)
-
-> [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+# <a name="entity-recognition-cognitive-skill-v3"></a>Der kognitive Skill „Entitätserkennung“ (V3)
 
 Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Diese Entitäten sind in 14 verschiedene Kategorien unterteilt: von Personen und Organisationen bis hin zu URLs und Telefonnummern. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
-
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.V3.EntityRecognitionSkill

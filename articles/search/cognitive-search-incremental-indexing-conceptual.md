@@ -2,24 +2,22 @@
 title: Konzepte zur inkrementellen Anreicherung (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Sie können Zwischeninhalte und inkrementelle Änderungen aus der KI-Anreicherungspipeline in Azure Storage zwischenspeichern, um Investitionen in vorhandene verarbeitete Dokumente zu erhalten. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
-manager: nitinme
-author: Vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 7b3d0fc85afbff58641edea332576f921c96b672
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539828"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727784"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Die inkrementelle Anreicherung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> Dieses Feature wird von den [Vorschauversionen der REST-API](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Dieses Feature befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt dieses Feature.
 
 *Inkrementelle Anreicherung* ist ein Features, das sich auf [Skillsets](cognitive-search-working-with-skillsets.md) richtet. Es nutzt Azure Storage, um die von einer Anreicherungspipeline ausgegebene Prozessausgabe für die Wiederverwendung in künftigen Indexerläufen zu speichern. Nach Möglichkeit verwendet der Indexer jede zwischengespeicherte Ausgabe, die noch gültig ist. 
 
@@ -37,12 +35,12 @@ Weitere Informationen zu Schritten und Überlegungen beim Arbeiten mit einem vor
 
 ## <a name="indexer-cache"></a>Indexercache
 
-Die inkrementelle Anreicherung ergänzt die Anreicherungspipeline um einen Zwischenspeicher. Der Indexer speichert die Ergebnisse der Dokumententschlüsselung sowie die Ausgaben der einzelnen Qualifikationen für jedes Dokument zwischen. Wenn ein Skillset aktualisiert wird, werden lediglich die geänderten Qualifikationen (oder die Downstreamqualifikationen) erneut ausgeführt. Die aktualisierten Ergebnisse werden in den Zwischenspeicher geschrieben, und das Dokument wird im Suchindex oder im Wissensspeicher aktualisiert.
+Die inkrementelle Anreicherung ergänzt die Anreicherungspipeline um einen Zwischenspeicher. Der Indexer speichert die Ergebnisse der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking) sowie die Ausgaben der einzelnen Qualifikationen für jedes Dokument zwischen. Wenn ein Skillset aktualisiert wird, werden lediglich die geänderten Qualifikationen (oder die Downstreamqualifikationen) erneut ausgeführt. Die aktualisierten Ergebnisse werden in den Zwischenspeicher geschrieben, und das Dokument wird im Suchindex oder im Wissensspeicher aktualisiert.
 
 Der Zwischenspeicher wird physisch in einem Blobcontainer in Ihrem Azure Storage-Konto gespeichert. Der Cache verwendet auch Table Storage für die interne Aufzeichnung der Verarbeitung von Updates. Alle Indizes in einem Suchdienst können für den Indexercache das gleiche Speicherkonto verwenden. Jedem Indexer wird ein eindeutiger und unveränderlicher Cachebezeichner zum Container zugewiesen, der ihn verwendet.
 
 > [!NOTE]
-> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](/storage/common/storage-account-overview#types-of-storage-accounts).
+> Der Indexercache erfordert ein Speicherkonto vom Typ „Universell“. Weitere Informationen finden Sie im Thema zu den [verschiedenen Typen von Speicherkonten](../storage/common/storage-account-overview.md#types-of-storage-accounts).
 
 ## <a name="cache-configuration"></a>Cachekonfiguration
 

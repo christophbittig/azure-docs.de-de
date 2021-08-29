@@ -324,7 +324,7 @@
       items:
         - name: Schutzmatrizen
           items:
-            - name: MABS V3 UR1-Schutzmatrix
+            - name: Schutzmatrix für MABS V3 UR1 (und höher)
               href: backup-mabs-protection-matrix.md
             - name: MABS V3 RTM-Schutzmatrix
               href: microsoft-azure-backup-server-protection-v3.md
@@ -338,12 +338,16 @@
               href: backup-mabs-whats-new-mabs.md
             - name: Versionshinweise für MABS
               href: backup-mabs-release-notes-v3.md
+            - name: Einstellungen zum Aktivieren bzw. Deaktivieren der Telemetrie
+              href: manage-telemetry.md
             - name: Unbeaufsichtigte Installation
               href: backup-mabs-unattended-install.md
         - name: Schützen von Workloads
           items:
             - name: Sichern von virtuellen Hyper-V-Computern
               href: back-up-hyper-v-virtual-machines-mabs.md
+            - name: Sichern von virtuellen Azure Stack HCI-Computern
+              href: back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md
             - name: VMware-Server
               href: backup-azure-backup-server-vmware.md
             - name: Exchange
@@ -356,6 +360,8 @@
               href: backup-mabs-system-state-and-bmr.md
             - name: Verwenden von vor der Sicherung und nach der Sicherung auszuführenden Skripts
               href: pre-backup-post-backup-scripts.md
+            - name: Sichern von Dateidaten mit MABS
+              href: back-up-file-data.md
         - name: Wiederherstellen von Daten von Azure Backup Server
           href: backup-azure-alternate-dpm-server.md
         - name: Wiederherstellen von VMware-VMs mit Azure Backup Server
@@ -487,7 +493,11 @@
         - name: Sicherheit für Hybrid-Sicherungen
           href: backup-azure-security-feature.md
         - name: Private Endpunkte
-          href: private-endpoints.md
+          items:
+            - name: Übersicht
+              href: private-endpoints-overview.md
+            - name: Erstellen und Verwenden
+              href: private-endpoints.md
         - name: Verschlüsselung in Azure Backup
           href: backup-encryption.md
         - name: Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
@@ -535,10 +545,16 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup
+    - name: 'Schutz von Daten in Azure: CLI'
+      href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: 'Schutz von Daten in Azure: PowerShell'
+      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
     - name: 'PowerShell: Azure Backup-Agent'
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
+    - name: REST – Schutz von Daten in Azure
+      href: /rest/api/dataprotection/
     - name: REST – Sicherung
       href: /rest/api/backup/
     - name: REST – Recovery Services-Tresors

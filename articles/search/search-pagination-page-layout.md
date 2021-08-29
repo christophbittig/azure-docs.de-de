@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e810a5d3a94ad4e356d0b44a422b757b5710a781
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504225"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342986"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -157,4 +157,4 @@ Wenn Sie schnell eine Suchseite für Ihren Client erstellen möchten, probieren 
 + Mit dem [Anwendungsgenerator](search-create-app-portal.md) im Portal können Sie eine HTML-Seite mit einer Suchleiste, einer Facettennavigation und einem Ergebnisbereich erstellen.
 + [Erstellen der ersten App in C#](tutorial-csharp-create-first-app.md) ist ein Tutorial, mit dem Sie einen funktionalen Client erstellen können. Der Beispielcode veranschaulicht paginierte Abfragen, Treffermarkierung und Sortierung.
 
-Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Jobs in New York City (Demo-App)](https://aka.ms/azjobsdemo), [JavaScript-Beispielcode mit einer Livedemo-Website](https://github.com/liamca/azure-search-javascript-samples) und [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Jobs in New York City (Demo-App)](https://aka.ms/azjobsdemo) oder [JavaScript-Beispielcode mit einer Livedemo-Website](https://github.com/liamca/azure-search-javascript-samples).

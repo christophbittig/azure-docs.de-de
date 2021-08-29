@@ -10,15 +10,12 @@
       href: whats-new.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Automation-Kontos
+    - name: 'Erstellen eines Automation-Kontos: Portal'
       href: automation-quickstart-create-account.md
     - name: Erstellen eines PowerShell-Runbooks
       href: automation-quickstart-create-runbook.md
     - name: Aktivieren von Desired State Configuration für einen Computer
       href: automation-quickstart-dsc-configuration.md
-    - name: 'Erstellen eines Automation-Kontos: ARM-Vorlage'
-      displayName: Resource Manager
-      href: quickstart-create-automation-account-template.md
 - name: Tutorials
   items:
     - name: Erstellen eines grafischen Runbooks
@@ -31,6 +28,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
     - name: "Erstellen eines Python\_3-Runbooks"
       href: learn/automation-tutorial-runbook-textual-python-3.md
+    - name: Verwenden einer verwalteten Identität mit PowerShell-Runbook
+      href: learn/powershell-runbook-managed-identity.md
 - name: Konzepte
   items:
     - name: Übersicht über die Automation-Kontoauthentifizierung

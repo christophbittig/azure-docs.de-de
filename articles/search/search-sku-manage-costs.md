@@ -7,15 +7,15 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2021
-ms.openlocfilehash: a0d28be0bc9754ab678792f2dca294b4fb185bf0
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 08/12/2021
+ms.openlocfilehash: 6a371d3a9edf537e78f5a889139a053cb925518f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018637"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770833"
 ---
-# <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kosten eines Azure Cognitive Search-Diensts
+# <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kosten eines Azure Cognitive Search-Diensts
 
 In diesem Artikel erfahren Sie mehr über das Preismodell, fakturierbare Ereignisse und erhalten Tipps zur Verwaltung der Kosten der Ausführung eines Azure Cognitive Search-Diensts.
 
@@ -48,13 +48,14 @@ Für eine auf der kognitiven Azure-Suche basierende Lösung können folgende Kos
 
 + Bandbreitengebühren (ausgehende Datenübertragung)
 
-+ Für bestimmte Funktionen oder Features erforderliche Add-On-Dienste:
++ Für bestimmte Premium-Funktionen oder Features erforderliche Add-On-Dienste:
 
-  + KI-Anreicherung (erfordert [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
+  + KI-Anreicherung mit gebührenpflichtigen Skills (erfordert [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)). Die Bildextraktion ist auch gebührenpflichtig.
   + Wissensspeicher (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/))
   + Inkrementelle Anreicherung (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), gilt für KI-Anreicherung)
   + Kundenseitig verwaltete Schlüssel und doppelte Verschlüsselung (erfordert [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
   + Private Endpunkte für ein Zugriffsmodell ohne Internet (erfordert [Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/))
+  + Die semantische Suche ist ein Premium-Feature im Tarif „Standard“ (Kosten finden Sie auf der [Seite mit der Preisübersicht für Cognitive Search](https://azure.microsoft.com/pricing/details/search/)). Sie können die [semantische Suche deaktivieren](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch), um eine versehentliche Verwendung zu verhindern.
 
 ### <a name="service-costs"></a>Dienstkosten
 
@@ -80,16 +81,19 @@ Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>KI-Anreicherung mit Cognitive Services
 
-Für die [KI-Anreicherung](cognitive-search-concept-intro.md) sollten Sie eine [abrechenbare Azure Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) in derselben Region wie die kognitive Azure-Suche im S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
+Für die [KI-Anreicherung](cognitive-search-concept-intro.md), die gebührenpflichtige Skills verwenden, sollten Sie eine [abrechenbare Azure Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) in derselben Region wie Azure Cognitive Search im Tarif „S0“ für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
 
 | Vorgang | Auswirkungen auf die Abrechnung |
 |-----------|----------------|
 | Dokumententschlüsselung, Textextraktion | Kostenlos |
-| Dokumententschlüsselung, Bildextraktion | Die Abrechnung erfolgt entsprechend der Anzahl von Bildern, die aus den Dokumenten extrahiert werden. In einer [Indexerkonfiguration](/rest/api/searchservice/create-indexer#indexer-parameters) löst der Parameter **imageAction** die Bildextraktion aus. Ist **imageAction** auf „None“ festgelegt (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an. Die Preise für die Bildextraktion sind auf der Seite mit [Preisdetails](https://azure.microsoft.com/pricing/details/search/) für die kognitive Azure-Suche dokumentiert.|
-| [Integrierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) | Wird zum gleichen Preis abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten. |
-| Benutzerdefinierte Qualifikationen | Bei einer benutzerdefinierten Qualifikation handelt es sich um die von Ihnen bereitgestellte Funktionalität. Die Kosten für die Verwendung einer benutzerdefinierten Qualifikation hängen ganz davon ab, ob mit dem benutzerdefinierten Code andere gebührenpflichtige Dienste aufgerufen werden. |
+| Dokumententschlüsselung, Bildextraktion | Die Abrechnung erfolgt entsprechend der Anzahl von Bildern, die aus den Dokumenten extrahiert werden. In einer [Indexerkonfiguration](/rest/api/searchservice/create-indexer#indexer-parameters) löst der Parameter **imageAction** die Bildextraktion aus. Ist **imageAction** auf „None“ festgelegt (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an. Informationen zu den Gebühren für die Bildextraktion finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/). |
+| [Integrierte Skills](cognitive-search-predefined-skills.md), die auf Cognitive Services basieren | Wird zum gleichen Preis abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten. Sie können 20 Dokumente pro Indexer und Tag kostenlos verarbeiten. Größere oder häufigere Workloads erfordern einen Schlüssel. |
+| [Integrierte Skills](cognitive-search-predefined-skills.md), die keine Anreicherungen hinzufügen | Keine. Zu den nicht gebührenpflichtigen Hilfsprogrammskills zählen „Bedingt“, „Shaper“, „Textzusammenführung“, „Textaufteilung“. Hat keine Auswirkungen auf die Abrechnung, weist keine Cognitive Services-Schlüsselanforderungen auf, und es gilt keine Begrenzung auf 20 Dokumente. |
+| Benutzerdefinierte Qualifikationen | Bei einer benutzerdefinierten Qualifikation handelt es sich um die von Ihnen bereitgestellte Funktionalität. Die Kosten für die Verwendung einer benutzerdefinierten Qualifikation hängen ganz davon ab, ob mit dem benutzerdefinierten Code andere gebührenpflichtige Dienste aufgerufen werden.  Weist keine Cognitive Services-Schlüsselanforderungen auf, und es gilt keine Begrenzung auf 20 Dokumente für benutzerdefinierte Skills.|
+| [Benutzerdefinierte Entitätssuche](cognitive-search-skill-custom-entity-lookup.md) | Berechnet durch Azure Cognitive Search. Ausführlichere Informationen finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/#pricing). |
 
-Mit dem Feature [Inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) können Sie einen Cache bereitstellen, durch den der Indexer beim Ausführen nur der kognitiven Fähigkeiten, die beim zukünftigen Ändern Ihres Skillsets notwendig sind, effizienter arbeiten kann. Das spart Zeit und Geld.
+> [!TIP]
+> Die [inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) senkt die Kosten für die Skillsetverarbeitung, indem Anreicherungen, die von Änderungen an einem Skillset nicht betroffen sind, zwischengespeichert und wiederverwendet werden. Die Zwischenspeicherung erfordert Azure Storage (siehe [Preise](https://azure.microsoft.com/pricing/details/storage/blobs/), aber die kumulativen Kosten für die Ausführung von Skillsets sind niedriger, wenn vorhandene Anreicherungen wiederverwendet werden können).
 
 ## <a name="tips-for-managing-costs"></a>Tipps zum Verwalten von Kosten
 

@@ -12,10 +12,6 @@
           href: concepts-certificate-rotation.md
 - name: Verfügbare Dokumentation
   items:
-    - name: Datenbankbereitstellung
-      items:
-        - name: GitHub-Aktionen
-          href: how-to-deploy-github-action.md
     - name: Migration
       items:
         - name: Migrieren von Daten mit „pg_dump“ und „pg_restore“
@@ -405,6 +401,14 @@
           items:
             - name: Azure-Portal
               href: howto-move-regions-portal.md
+        - name: Upgrades und Migration
+          items:
+            - name: Methoden für die Aktualisierung von Hauptversionen
+              href: how-to-upgrade-using-dump-and-restore.md
+            - name: Aktualisieren/Migrieren von Daten mit „pg_dump“ und „pg_restore“
+              href: howto-migrate-using-dump-and-restore.md
+            - name: Aktualisieren/Migrieren von Daten mit „pg_dump“ und psql
+              href: howto-migrate-using-export-and-import.md
 - name: Flexible Server (Vorschau)
   expanded: true
   items:
@@ -414,6 +418,10 @@
       href: flexible-server/overview.md
     - name: Versionshinweise
       href: flexible-server/release-notes.md
+    - name: Vergleich von „Einzelner Server“ und „Flexibler Server“
+      href: flexible-server/concepts-compare-single-server-flexible-server.md
+    - name: Kostenloses Testen des flexiblen Servers
+      href: flexible-server/how-to-deploy-on-azure-free-account.md
     - name: Schnellstarts
       expanded: true
       items:
@@ -428,6 +436,8 @@
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: Herstellen einer Verbindung und Ausführen von Abfragen
           items:
+            - name: Herstellen einer Verbindung mit einem Server im VNET
+              href: flexible-server/quickstart-create-connect-server-vnet.md
             - name: Azure CLI
               href: flexible-server/connect-azure-cli.md
             - name: Python
@@ -459,6 +469,10 @@
         - name: Netzwerk
           href: flexible-server/concepts-networking.md
           displayName: 'virtual networks, vnet, IP address, public access'
+        - name: Firewallregeln
+          href: flexible-server/concepts-firewall-rules.md
+        - name: Sicherheit
+          href: flexible-server/concepts-security.md
         - name: Einschränkungen
           href: flexible-server/concepts-limits.md
         - name: Erweiterungen
@@ -497,6 +511,8 @@
                   displayName: 'query store, performance, optimize'
                 - name: Bewährte Methoden für den Abfragespeicher
                   href: flexible-server/concepts-query-store-best-practices.md
+                - name: Intelligente Optimierung
+                  href: flexible-server/concepts-intelligent-tuning.md
         - name: Replication
           href: flexible-server/concepts-logical.md
           displayName: logical decoding
@@ -510,6 +526,12 @@
               href: flexible-server/how-to-manage-server-cli.md
             - name: Anleitung zur Verbindungsherstellung und zu Abfragen
               href: flexible-server/how-to-connect-query-guide.md
+        - name: Datenbankbereitstellung
+          items:
+            - name: GitHub-Aktionen
+              href: how-to-deploy-github-action.md
+            - name: Azure Pipelines
+              href: flexible-server/azure-pipelines-deploy-database-task.md
         - name: Geplante Wartung
           items:
             - name: Azure-Portal
@@ -590,7 +612,7 @@
       items:
         - name: Erstellen einer Servergruppe
           items:
-            - name: Basic-Tarif (Vorschau)
+            - name: Basic-Tarif
               href: quickstart-create-hyperscale-basic-tier.md
             - name: Standard-Tarif
               href: quickstart-create-hyperscale-portal.md
@@ -645,6 +667,8 @@
               href: concepts-hyperscale-high-availability.md
         - name: Replikation
           href: concepts-hyperscale-read-replicas.md
+        - name: Verbindungspooling
+          href: concepts-hyperscale-connection-pool.md
         - name: Überwachen und Optimieren
           items:
             - name: Überwachen und Optimieren

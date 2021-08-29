@@ -1,21 +1,20 @@
 ---
-title: Zuordnen von Eingaben zu Ausgabefeldern
+title: Zuordnen von Skillausgabefeldern
 titleSuffix: Azure Cognitive Search
-description: Extrahieren Sie Quelldatenfelder, und reichern Sie diese mit Daten an, um sie Ausgabefeldern in einem Index der kognitiven Azure-Suche zuzuordnen.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: Exportieren Sie die angereicherten Inhalte, die von einem Skillset erstellt wurden, indem Sie die Ausgabefelder den Feldern in einem Suchindex zuordnen.
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 0e1db5f12e83a88697db38a6ddd77edab445f6c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001302"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350771"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index
+# <a name="map-enrichment-output-to-fields-in-a-search-index"></a>Zuordnen der Anreicherungsausgabe zu Feldern in einem Suchindex
 
 ![Indexerphasen](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "Indexerphasen")
 
@@ -32,7 +31,7 @@ Beispiele für Ausgabefeldzuordnungen:
 * Sie verfügen nicht über ein Skillset, sondern indizieren einen komplexen Typ über eine Cosmos DB-Datenbank. Sie möchten einen Knoten mit diesem komplexen Typ erreichen und ihn einem Feld in Ihrem Index zuordnen.
 
 > [!NOTE]
-> Vor kurzem haben wir die Funktionalität von Zuordnungsfunktionen für Ausgabefeldzuordnungen aktiviert. Weitere Informationen zu Zuordnungsfunktionen finden Sie unter [Feldzuordnungsfunktionen](./search-indexer-field-mappings.md#field-mapping-functions).
+> Ausgabefeldzuordnungen gelten nur für Suchindizes. Für Indexer, die [Wissensspeicher](knowledge-store-concept-intro.md) erstellen, werden Ausgabefeldzuordnungen ignoriert.
 
 ## <a name="use-outputfieldmappings"></a>Verwenden von „outputFieldMappings“
 
@@ -81,7 +80,7 @@ Der Text der Anforderung ist wie folgt strukturiert:
 }
 ```
 
-Legen Sie für jede Ausgabefeldzuordnung den Speicherort der Daten der angereicherten Dokumentstruktur (sourceFieldName) und den Namen des im Index referenzierten Feldes (targetFieldName) fest.
+Legen Sie für jede Ausgabefeldzuordnung den Speicherort der Daten der angereicherten Dokumentstruktur (sourceFieldName) und den Namen des im Index referenzierten Feldes (targetFieldName) fest. Weisen Sie alle [Zuordnungsfunktionen](search-indexer-field-mappings.md#field-mapping-functions) zu, die Sie benötigen, um den Inhalt eines Felds zu transformieren, bevor es im Index gespeichert wird.
 
 ## <a name="flattening-information-from-complex-types"></a>Vereinfachen von Informationen komplexer Typen 
 
