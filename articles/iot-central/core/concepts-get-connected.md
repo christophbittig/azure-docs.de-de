@@ -7,17 +7,16 @@ ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791109"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340540"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -30,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Geräte die Verbindung mit einer Azure I
 IoT Central unterstützt die folgenden zwei Geräteregistrierungsszenarien:
 
 - *Automatische Registrierung*. Das Gerät wird beim ersten Herstellen der Verbindung automatisch registriert. Dieses Szenario ermöglicht OEMs außerdem die Massenfertigung von Geräten, die eine Verbindung herstellen können, ohne zuvor registriert zu werden. Ein OEM generiert geeignete Anmeldeinformationen und konfiguriert die Geräte im Werk. Optional können Sie festlegen, dass ein Operator das Gerät genehmigen muss, bevor es mit dem Senden von Daten beginnt. In diesem Szenario müssen Sie eine X.509- oder SAS-_Gruppenregistrierung_ in der Anwendung konfigurieren.
-- *Manuelle Registrierung*. Operator registrieren einzelne Geräte auf der Seite **Geräte** oder [importieren eine CSV-Datei](howto-manage-devices.md#import-devices) zur Massenregistrierung von Geräten. In diesem Szenario können Sie eine X.509- oder SAS-_Gruppenregistrierung_ oder _individuelle X.509- oder SAS-Registrierung_ verwenden.
+- *Manuelle Registrierung*. Operator registrieren einzelne Geräte auf der Seite **Geräte** oder [importieren eine CSV-Datei](howto-manage-devices-in-bulk.md#import-devices) zur Massenregistrierung von Geräten. In diesem Szenario können Sie eine X.509- oder SAS-_Gruppenregistrierung_ oder _individuelle X.509- oder SAS-Registrierung_ verwenden.
 
 Geräte, die eine Verbindung mit IoT Central herstellen, sollten die *IoT Plug & Play-Konventionen* befolgen. Eine dieser Konventionen ist, dass ein Gerät die _Modell-ID_ des Gerätemodells senden soll, das beim Herstellen der Verbindung implementiert wird. Die Modell-ID ermöglicht der IoT Central-Anwendung, das Gerät der richtigen Gerätevorlage zuzuordnen.
 
@@ -157,9 +156,9 @@ Die IoT Central-Anwendung verwendet die vom Gerät gesendete Modell-ID, um [das
 
 ### <a name="bulk-register-devices-in-advance"></a>Registrieren einer großen Zahl von Geräten im voraus
 
-Um eine große Anzahl von Geräten bei Ihrer IoT Central-Anwendung zu registrieren, verwenden Sie eine CSV-Datei zum [Importieren der Geräte-IDs und Gerätenamen](howto-manage-devices.md#import-devices).
+Um eine große Anzahl von Geräten bei Ihrer IoT Central-Anwendung zu registrieren, verwenden Sie eine CSV-Datei zum [Importieren der Geräte-IDs und Gerätenamen](howto-manage-devices-in-bulk.md#import-devices).
 
-Wenn Ihre Geräte SAS-Token für die Authentifizierung verwenden, [exportieren Sie eine CSV-Datei aus Ihrer IoT Central-Anwendung](howto-manage-devices.md#export-devices). Die exportierte CSV-Datei enthält die Geräte-IDs und die SAS-Schlüssel.
+Wenn Ihre Geräte SAS-Token für die Authentifizierung verwenden, [exportieren Sie eine CSV-Datei aus Ihrer IoT Central-Anwendung](howto-manage-devices-in-bulk.md#export-devices). Die exportierte CSV-Datei enthält die Geräte-IDs und die SAS-Schlüssel.
 
 Wenn Ihre Geräte X.509-Zertifikate für die Authentifizierung verwenden, generieren Sie untergeordnete X.509-Zertifikate für Ihre Geräte mit dem Stamm- oder Zwischenzertifikat, das Sie in Ihre X.509-Registrierungsgruppe hochgeladen haben. Verwenden Sie die Geräte-IDs, die Sie als `CNAME`-Wert in die untergeordneten Zertifikate importiert haben.
 
@@ -180,7 +179,7 @@ Wenn das Gerät eine Verbindung herstellt, ordnet IoT Central automatisch einem
 
 1. Wenn die Gerätevorlage bereits in der IoT Central-Anwendung veröffentlicht ist, ist das Gerät der Gerätevorlage zugeordnet.
 1. Wenn die Gerätevorlage nicht bereits in der IoT Central-Anwendung veröffentlicht ist, sucht IoT Central im [öffentlichen Modellrepository](https://github.com/Azure/iot-plugandplay-models) nach dem Gerätemodell. Wenn IoT Central das Modell findet, wird es verwendet, um eine einfache Gerätevorlage zu generieren.
-1. Wenn IoT Central das Modell nicht im öffentlichen Modellrepository findet, wird das Gerät als **Nicht zugeordnet** gekennzeichnet. Ein Operator kann eine Gerätevorlage für das Gerät erstellen und dann das nicht zugeordnete Gerät zur neuen Gerätevorlage migrieren.
+1. Wenn IoT Central das Modell nicht im öffentlichen Modellrepository findet, wird das Gerät als **Nicht zugeordnet** gekennzeichnet. Ein Bediener kann entweder eine Gerätevorlage für das Gerät erstellen und dann das nicht zugeordnete Gerät zur neuen Gerätevorlage migrieren oder basierend auf den vom Gerät gesendeten Daten [eine Gerätevorlage automatisch generieren lassen](howto-set-up-template.md#autogenerate-a-device-template).
 
 Der folgende Screenshot zeigt, wie Sie die Modell-ID einer Gerätevorlage in IoT Central anzeigen. Wählen Sie in einer Gerätevorlage eine Komponente und dann **Identität bearbeiten** aus:
 
@@ -214,11 +213,14 @@ Wenn ein echtes Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt
     Ein Operator kann auf der Seite **Geräte** über die Schaltfläche **Migrieren** einem Gerät eine Gerätevorlage zuordnen.
 
 ## <a name="device-connection-status"></a>Geräteverbindungsstatus
-Wenn ein Gerät oder Edgegerät eine Verbindung mithilfe des MQTT-Protokolls herstellt, werden _verbundene_ und _getrennte_ Ereignisse für das Gerät angezeigt. Diese Ereignisse werden nicht vom Gerät gesendet, sondern intern von IoT Central generiert.
+
+Wenn ein Gerät oder Edgegerät eine Verbindung mithilfe des MQTT-Protokolls herstellt, werden _verbundene_ und _getrennte_ Ereignisse für das Gerät generiert. Diese Ereignisse werden nicht vom Gerät gesendet, sondern von IoT Central intern generiert.
 
 Das folgende Diagramm zeigt, wie die Verbindung beim Herstellen einer Verbindung mit einem Gerät am Ende eines Zeitfensters registriert wird. Wenn mehrere Verbindungs- und Trennungsereignisse eintreten, registriert IoT Central das Ereignis, das dem Ende des Zeitfensters am nächsten ist. Wenn beispielsweise ein Gerät die Verbindung trennt und innerhalb des Zeitfensters wieder herstellt, registriert IoT Central das Verbindungsereignis. Zurzeit beträgt das Zeitfenster ungefähr eine Minute.
 
 :::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="Diagramm des Ereignisfensters für verbundene und getrennte Ereignisse" border="false":::
+
+Sie können die verbundenen und getrennten Ereignisse in der Ansicht **Rohdaten** für ein Gerät anzeigen: :::image type="content" source="media/concepts-get-connected/device-connectivity-events.png" alt-text="Screenshot: Gefilterte Rohdatenansicht zum Anzeigen von Ereignissen, die mit dem Gerät verbunden sind":::.
 
 Sie können Verbindungs- und Trennungsereignisse in [Exporte aus IoT Central](howto-export-data.md#set-up-data-export) einbeziehen. Weitere Informationen finden Sie unter [Reagieren auf IoT Hub-Ereignisse > Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events).
 
