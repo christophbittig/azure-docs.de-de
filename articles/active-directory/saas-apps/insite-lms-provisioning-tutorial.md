@@ -2,25 +2,22 @@
 title: 'Tutorial: Konfigurieren von Insite LMS für automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Insite LMS automatisch bereitstellen bzw. deren Bereitstellung aufheben.
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: c4dbe83d-b5b4-4089-be89-b357e8d6f359
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2021
-ms.author: Zhchia
-ms.openlocfilehash: 31af7a6e3743272db629820f9130559f77bb6932
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: thwimmer
+ms.openlocfilehash: b8286c4b452496eb9f0dac829fe16b247fe7eaa0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103999"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122207265"
 ---
 # <a name="tutorial-configure-insite-lms-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Insite LMS für automatische Benutzerbereitstellung
 

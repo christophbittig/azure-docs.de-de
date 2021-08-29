@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von TravelPerk für die automatische Benutzerber
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in TravelPerk bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 3e40f87d-8624-4b14-b098-80ff916103c3
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/22/2021
-ms.author: Zhchia
-ms.openlocfilehash: 19436b7faef081757e4500c76e7537ee78081bfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 44fb6342a8910a1edb27ea8e3a9f0ff12415ea2b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950379"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327601"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TravelPerk für die automatische Benutzerbereitstellung
 
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit TravelPerk synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden zum Abgleichen der Benutzerkonten in TravelPerk für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die TravelPerk-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   | Attribut                                                                         | type      | Unterstützung für das Filtern |
+   | attribute                                                                         | type      | Unterstützung für das Filtern |
    | --------------------------------------------------------------------------------- | --------- | ----------------------- |
    | userName                                                                          | String    | &check;                 |
    | externalId                                                                        | String    |

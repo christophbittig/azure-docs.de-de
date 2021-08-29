@@ -213,7 +213,13 @@
         - name: Authentifizieren der Ereignisübermittlung an Ereignishandler
           href: security-authentication.md
         - name: Authentifizieren von Veröffentlichungsclients
-          href: security-authenticate-publishing-clients.md
+          items:
+            - name: Übersicht
+              href: authentication-overview.md
+            - name: Authentifizieren mit Azure Active Directory
+              href: authenticate-with-active-directory.md
+            - name: Authentifizieren mit Zugriffsschlüssel oder Shared Access Signatures
+              href: authenticate-with-access-keys-shared-access-signatures.md
         - name: Autorisieren des Zugriffs auf Event Grid-Ressourcen
           href: security-authorization.md
         - name: Netzwerksicherheit
@@ -246,7 +252,7 @@
           href: auth0-how-to.md
     - name: Abrufen von Zugriffsschlüsseln für Themen oder Domänen
       href: get-access-keys.md
-    - name: Posten eines Beitrags in einem benutzerdefinierten Thema
+    - name: Posten für benutzerdefinierte Themen mit Zugriffsschlüsseln
       href: post-to-custom-topic.md
     - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md

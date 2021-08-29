@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 6a6f97f56e396cb36d6468a6fe04a300273b69d4
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: 14f44504e48279d0a8bd8f8e95e98113a4647023
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455894"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515252"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps"></a>Zugreifen auf Benutzerinformationen in Azure Static Web Apps
 
@@ -130,7 +130,7 @@ public static class StaticWebAppsAuth
       {
           var data = header[0];
           var decoded = Convert.FromBase64String(data);
-          var json = Encoding.ASCII.GetString(decoded);
+          var json = Encoding.UTF8.GetString(decoded);
           principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
       }
 
