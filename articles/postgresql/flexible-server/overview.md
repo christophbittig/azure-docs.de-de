@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/14/2021
+ms.date: 08/24/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 25b2788591c44cb4b75c89ca020825d16884224b
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ae7ef0d0ff3cb946bc8c900517a8975bb618ad3c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116168"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768142"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>Übersicht: Azure Database for PostgreSQL – Flexible Server
 
@@ -100,19 +100,26 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | Australien, Südosten | :heavy_check_mark: | :x: | 
 | Brasilien Süd | :heavy_check_mark: | :x: |
 | Kanada, Mitte | :heavy_check_mark: | :heavy_check_mark: | 
+| Indien, Mitte | :heavy_check_mark: | :x: |
 | USA (Mitte) | :heavy_check_mark: | :heavy_check_mark: | 
+| Asien, Osten | :heavy_check_mark: | :x: |
 | East US | :heavy_check_mark: | :heavy_check_mark: | 
 | USA (Ost) 2 | :heavy_check_mark: | :heavy_check_mark: |
 | Frankreich, Mitte | :heavy_check_mark: | :heavy_check_mark: | 
+| Deutschland, Westen-Mitte | :heavy_check_mark: | :heavy_check_mark: |
 | Japan, Osten | :heavy_check_mark: | :heavy_check_mark: | 
+| Japan, Westen | :heavy_check_mark: | :x: |
 | Korea, Mitte | :heavy_check_mark: | :x: | 
+| Korea, Süden | :heavy_check_mark: | :x: | 
 | Nordeuropa | :heavy_check_mark: | :heavy_check_mark: |
 | Norwegen, Osten | :heavy_check_mark: | :x: |
 | Südafrika, Norden | :heavy_check_mark: | :x: |
+| USA Süd Mitte | :heavy_check_mark: | :heavy_check_mark: | 
 | Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: |
 | Schweiz, Norden | :heavy_check_mark: | :x: |
 | Vereinigte Arabische Emirate, Norden | :heavy_check_mark: | :x: |
 | UK, Süden | :heavy_check_mark: | :heavy_check_mark: | 
+| UK, Westen | :heavy_check_mark: | :x: | 
 | Europa, Westen | :heavy_check_mark: | :heavy_check_mark: |
 | USA (Westen) | :heavy_check_mark: | :x: |
 | USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: |

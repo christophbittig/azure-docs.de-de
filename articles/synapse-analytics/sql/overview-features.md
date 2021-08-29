@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 73f1eaebb60d02e27be5585a0287a702abf6df2a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569708"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860962"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>In Azure Synapse SQL unterstützte Transact-SQL-Funktionen
 
@@ -31,18 +31,18 @@ Verbrauchsmodelle in Synapse SQL ermöglichen die Verwendung verschiedener Date
 | **Tabellen** | [Ja](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Nein. Im Rahmen des serverlosen Modells können nur externe Daten in [Azure Storage](#storage-options) abgefragt werden. |
 | **Ansichten** | [Ja](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true). Von Sichten können [Abfragesprachelemente](#query-language) verwendet werden, die im dedizierten Modell verfügbar sind. | [Ja](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true). Von Sichten können [Abfragesprachelemente](#query-language) verwendet werden, die im serverlosen Modell verfügbar sind. |
 | **Schemas** | [Ja](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) | [Ja](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
-| **Temporäre Tabellen** | [Ja](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nein |
+| **Temporäre Tabellen** | [Ja](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?context=/azure/synapse-analytics/context/context) | Nein |
 | **Vorgehensweisen** | [Ja](/sql/t-sql/statements/create-procedure-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Ja |
 | **Funktionen** | [Ja](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Ja, nur Inline-Tabellenwertfunktionen |
 | **Trigger** | Nein | Nein |
 | **Externe Tabellen** | [Ja](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true). Weitere Informationen finden Sie in den unterstützten [Datenformaten](#data-formats). | [Ja](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true). Weitere Informationen finden Sie in den unterstützten [Datenformaten](#data-formats). |
 | **Zwischenspeichern von Abfragen** | Ja, mehrere Varianten (SSD-basierte Zwischenspeicherung, In-Memory, Resultset-Zwischenspeicherung). Außerdem wird die materialisierte Sicht unterstützt. | Nein |
 | **Tabellenvariablen** | [Nein](/sql/t-sql/data-types/table-transact-sql?view=azure-sqldw-latest&preserve-view=true). Verwenden Sie temporäre Tabellen. | Nein |
-| **[Tabellenverteilung](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Ja | Nein |
-| **[Tabellenindizes](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Ja | Nein |
-| **[Tabellenpartitionen](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Ja | Nein |
+| **[Tabellenverteilung](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)**               | Ja | Nein |
+| **[Tabellenindizes](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)**                           | Ja | Nein |
+| **[Tabellenpartitionen](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)**                     | Ja | Nein |
 | **[Statistik](develop-tables-statistics.md)**            | Ja | Ja |
-| **[Workloadverwaltung, Ressourcenklassen und Gleichzeitigkeitssteuerung](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Ja    | Nein |
+| **[Workloadverwaltung, Ressourcenklassen und Gleichzeitigkeitssteuerung](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)** | Ja    | Nein |
 | **Kostenkontrolle** | Ja, mithilfe von Aktionen zum Hochskalieren und Herunterskalieren | Ja, mithilfe des [Azure-Portals oder der T-SQL-Prozedur](./data-processed.md#cost-control) |
 
 ## <a name="query-language"></a>Abfragesprache

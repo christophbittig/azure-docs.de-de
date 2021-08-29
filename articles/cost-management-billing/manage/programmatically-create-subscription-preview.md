@@ -9,12 +9,12 @@ ms.date: 06/09/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: edf57ec72d056f58eaca624b4c91b27a82ad9daf
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5ef00531c4f13ecd43cb7bd1d691f67d996c5f73
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902049"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769651"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-legacy-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements mit Legacy-APIs
 
@@ -192,7 +192,6 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Nein       | String | Die E-Mail-Adresse eines Benutzers, den Sie als Azure RBAC-Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können den Parameter anstelle von `OwnerObjectId` verwenden.|
 | `OwnerApplicationId` | Nein       | String | Die Anwendungs-ID eines Dienstprinzipals, den Sie als Azure RBAC-Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können den Parameter anstelle von `OwnerObjectId` verwenden. Wenn Sie den Parameter verwenden, benötigt der Dienstprinzipal [Lesezugriff auf das Verzeichnis](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
-Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

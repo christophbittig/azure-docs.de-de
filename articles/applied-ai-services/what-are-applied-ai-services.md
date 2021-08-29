@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: b4ec1ea076994622e4e687c3f6f4a4f3826ad385
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: fadfffadd0d7c2e642825fa8134906e6c3697014
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745925"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>Was sind Azure Applied AI Services?
 
@@ -45,7 +45,7 @@ Entsperren Sie wertvolle Informationen, die latent in all Ihren Inhalten enthalt
 
 Verbessern Sie Leseverständnis und -erfolge mit KI. Azure Plastischer Reader ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Mit der Clientbibliothek für Plastischer Reader können Sie Ihre Webanwendungen mit der gleichen Technologie verbessern, die auch in Microsoft Word und Microsoft OneNote zum Einsatz kommt. Azure Plastischer Reader wird mithilfe von Übersetzung und Text-to-Speech aus Azure Cognitive Services erstellt.
 
-Weitere Informationen zu [Azure Plastischer Reader](../cognitive-services/immersive-reader/index.yml)
+Weitere Informationen zu [Azure Plastischer Reader](./immersive-reader/index.yml)
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
 

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/30/2021
-ms.openlocfilehash: 82a5135f23293d0fe9bbaaf0eeb0543b4fdb598f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 81bae18cdc4a977ef03ddf807f9277037d939bd0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744771"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356437"
 ---
 # <a name="troubleshooting-common-issues-with-shared-private-link-resources"></a>Behandlung von häufigen Problemen freigegebener Private Link-Ressourcen
 
@@ -23,7 +23,7 @@ Freigegebene Private Link-Ressourcen ermöglichen es Azure Cognitive Search, sic
 
 Beim Erstellen einer freigegebenen privaten Link-Ressource sind vier verschiedene Schritte erforderlich:
 
-1. Der Kunde ruft die [CreateOrUpdate-API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) der Verwaltungsebene für den Suchressourcenanbieter (Search Resource Provider, RP) mit Details zur freigegebenen Private Link-Ressource auf, die erstellt werden soll.
+1. Der Kunde ruft die [CreateOrUpdate-API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update) der Verwaltungsebene für den Suchressourcenanbieter (Search Resource Provider, RP) mit Details zur freigegebenen Private Link-Ressource auf, die erstellt werden soll.
 
 2. Der Such-RP überprüft die Anforderung und startet bei Erfolg einen asynchronen Azure Resource Manager-Vorgang (dessen Status vom Kunden abgefragt werden kann).
 
@@ -70,15 +70,15 @@ Ressourcen, die mit „(preview)“ gekennzeichnet sind, sind nur in API-Vorscha
 | Azure-Schlüsseltresor | `Microsoft.KeyVault/vaults` | `2020-08-01` |
 | Azure Functions (Vorschau) | `Microsoft.Web/sites` | `2020-08-01-Preview` |
 
-Darüber hinaus muss die angegebene `groupId` für den angegebenen Ressourcentyp gültig sein. Beispielsweise ist `groupId` „blob“ für den Typ „Microsoft.Storage/storageAccounts“ gültig, kann aber nicht mit einem anderen Ressourcentyp verwendet werden. Für eine bestimmte Version der Suchverwaltungs-API können Kunden die unterstützte `groupId` und Ressourcentypdetails herausfinden, indem sie die [Liste der unterstützten APIs](/rest/api/searchmanagement/privatelinkresources/listsupported) verwenden.
+Darüber hinaus muss die angegebene `groupId` für den angegebenen Ressourcentyp gültig sein. Beispielsweise ist `groupId` „blob“ für den Typ „Microsoft.Storage/storageAccounts“ gültig, kann aber nicht mit einem anderen Ressourcentyp verwendet werden. Für eine bestimmte Version der Suchverwaltungs-API können Kunden die unterstützte `groupId` und Ressourcentypdetails herausfinden, indem sie die [Liste der unterstützten APIs](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported) verwenden.
 
 + Erzwingung der Kontingentgrenze: Für Suchdienste gelten Kontingente für die unterschiedliche Anzahl von freigegebenen Private Link-Ressourcen, die erstellt werden können, und für die Anzahl der verschiedenen verwendeten Zielressourcentypen (basierend auf `groupId`). Diese sind im Abschnitt [Ressourcenlimits für freigegebene Private Link-Ressourcen](search-limits-quotas-capacity.md#shared-private-link-resource-limits) auf der Seite zu den Azure Cognitive Search Services-Grenzwerten dokumentiert.
 
 ### <a name="azure-resource-manager-deployment-failures"></a>Azure Resource Manager-Bereitstellungsfehler
 
-Sobald die Suche die Anforderung zum Erstellen einer freigegebenen privaten Link-Ressource akzeptiert hat, kann die von ihr angestoßene Azure Resource Manager-Bereitstellung ebenfalls aus einer Reihe von Gründen fehlschlagen. Wenn Kunden den Status des asynchronen Vorgangs abfragen ([hier](search-indexer-howto-access-private.md#step-1-create-a-shared-private-link-resource-to-the-storage-account) beschrieben), werden in jedem Fall eine entsprechende Fehlermeldung und alle verfügbaren Details angezeigt.
+Ein Suchdienst initiiert die Anforderung zum Erstellen eines freigegebenen Private Link, aber Azure Resource Manager übernimmt die eigentliche Arbeit. Sie können [den Status der Bereitstellung im Portal oder per Abfrage überprüfen](search-indexer-howto-access-private.md#step-3-check-the-status-of-the-private-endpoint-creation) und etwaige Fehler beheben.
 
-Freigegebene Private Link-Ressourcen, bei denen die Azure Resource Manager-Bereitstellung fehlgeschlagen ist, werden in [List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice)- und [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get)-API-Aufrufen angezeigt, weisen jedoch den „Bereitstellungsstatus“ `Failed` auf. Sobald der Grund für den Azure Resource Manager-Bereitstellungsfehler festgestellt wurde, löschen Sie die Ressource `Failed`, und erstellen Sie sie neu, nachdem Sie die entsprechende Auflösung aus der folgenden Tabelle angewendet haben.
+Freigegebene Private Link-Ressourcen, bei denen die Azure Resource Manager-Bereitstellung fehlgeschlagen ist, werden in [List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service)- und [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get)-API-Aufrufen angezeigt, weisen jedoch den „Bereitstellungsstatus“ `Failed` auf. Sobald der Grund für den Azure Resource Manager-Bereitstellungsfehler festgestellt wurde, löschen Sie die Ressource `Failed`, und erstellen Sie sie neu, nachdem Sie die entsprechende Auflösung aus der folgenden Tabelle angewendet haben.
 
 | Grund für den Bereitstellungsfehler | BESCHREIBUNG | Lösung |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ Wenn Sie feststellen, dass die freigegebene Private Link-Ressource nicht in eine
 
 ## <a name="updating-a-shared-private-link-resource"></a>Aktualisieren einer freigegebenen Private Link-Ressource
 
-Eine vorhandene freigegebene Private Link-Ressource kann mithilfe der [API zum Erstellen oder Aktualisieren](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) aktualisiert werden. Der Suchressourcenanbieter ermöglicht nur eingeschränkte Aktualisierungen der freigegebenen Private Link-Ressource. Nur die Anforderungsnachricht kann über diese API geändert werden.
+Eine vorhandene freigegebene Private Link-Ressource kann mithilfe der [API zum Erstellen oder Aktualisieren](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update) aktualisiert werden. Der Suchressourcenanbieter ermöglicht nur eingeschränkte Aktualisierungen der freigegebenen Private Link-Ressource. Nur die Anforderungsnachricht kann über diese API geändert werden.
 
 + Es ist nicht möglich, die „Kerneigenschaften“ einer vorhandenen freigegebenen Private Link-Ressource (z. B. `privateLinkResourceId` oder `groupId`) zu aktualisieren. Dies wird niemals unterstützt. Wenn eine andere Eigenschaft außer der Anforderungsnachricht geändert werden muss, empfehlen wir Kunden, die freigegebene Private Link-Ressource zu löschen und dann neu zu erstellen.
 
@@ -105,7 +105,7 @@ Eine vorhandene freigegebene Private Link-Ressource kann mithilfe der [API zum E
 
 ## <a name="deleting-a-shared-private-link-resource"></a>Löschen einer freigegebenen Private Link-Ressource
 
-Kunden können eine vorhandene freigegebene Private Link-Ressource über die [Lösch-API](/rest/api/searchmanagement/sharedprivatelinkresources/delete) löschen. Ähnlich wie bei der Erstellung (oder Aktualisierung) ist auch dies ein asynchroner Vorgang mit vier Schritten:
+Kunden können eine vorhandene freigegebene Private Link-Ressource über die [Lösch-API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/delete) löschen. Ähnlich wie bei der Erstellung (oder Aktualisierung) ist auch dies ein asynchroner Vorgang mit vier Schritten:
 
 1. Der Kunde fordert den Suchressourcenanbieter auf, die freigegebene Private Link-Ressource zu löschen.
 
@@ -113,7 +113,7 @@ Kunden können eine vorhandene freigegebene Private Link-Ressource über die [L�
 
 3. Die Suche fragt den Abschluss des Vorgangs ab (was in der Regel einige Minuten dauert). An diesem Punkt weist die freigegebene Private Link-Ressource den Bereitstellungsstatus „Deleting“ (Wird gelöscht) auf.
 
-4. Nachdem der Vorgang erfolgreich abgeschlossen wurde, werden der unterstützende private Endpunkt und alle zugehörigen DNS-Zuordnungen entfernt. Die Ressource wird nicht als Teil des [List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice)-Vorgangs angezeigt, und der Versuch, einen [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get)-Vorgang für diese Ressource auszuführen, führt zu 404 Not Found (Nicht gefunden).
+4. Nachdem der Vorgang erfolgreich abgeschlossen wurde, werden der unterstützende private Endpunkt und alle zugehörigen DNS-Zuordnungen entfernt. Die Ressource wird nicht als Teil des [List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service)-Vorgangs angezeigt, und der Versuch, einen [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get)-Vorgang für diese Ressource auszuführen, führt zu 404 Not Found (Nicht gefunden).
 
 ![Schritte beim Löschen freigegebener Private Link-Ressourcen ](media\troubleshoot-shared-private-link-resources\shared-private-link-delete-states.png)
 
@@ -131,4 +131,4 @@ Einige häufige Fehler, die während der Löschphase auftreten können, werden u
 Erfahren Sie mehr über freigegebene Private Link-Ressourcen und deren Verwendung für sicheren Zugriff auf geschützte Inhalte.
 
 + [Zugreifen auf geschützte Inhalte über Indexer](search-indexer-howto-access-private.md)
-+ [REST-API-Referenz](/rest/api/searchmanagement/sharedprivatelinkresources)
++ [REST-API-Referenz](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources)

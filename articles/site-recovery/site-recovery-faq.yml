@@ -2,14 +2,15 @@
 metadata:
   title: Allgemeine Fragen zum Azure Site Recovery-Dienst
   description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azure Site Recovery behandelt.
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure
   ms.date: 05/27/2021
-  ms.openlocfilehash: e652f3f293d793cdf1d10d7f3b9ceee84f60f4c7
-  ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+  ms.openlocfilehash: 82d4003e13cf68d9777e2bcdfd57551d9ef478f4
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/27/2021
-  ms.locfileid: "111907295"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254119"
 title: Allgemeine Fragen zu Azure Site Recovery
 summary: >
   Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. In den folgenden Artikeln werden spezielle Szenarien behandelt:
@@ -342,7 +343,7 @@ sections:
       Sehen Sie sich das folgende Beispiel für eine Replikationsrichtlinie an, um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert. Diese Replikationsrichtlinie verfügt über einen Wiederherstellungspunkt mit einem Aufbewahrungszeitfenster von 24 Stunden und einem Intervall von 1 Stunde für anwendungskonsistente Momentaufnahmen.
 
 
-      Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Der Benutzer kann diese Häufigkeit nicht ändern. Für die letzte Stunde können Sie zwischen 12 absturzkonsistenten und einem App-konsistenten Punkt wählen. Im Lauf der Zeit löscht Site Recovery alle Wiederherstellungspunkte, die älter als 1 Stunde sind, und speichert nur einen Wiederherstellungspunkt pro Stunde.
+      Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Der Benutzer kann diese Häufigkeit nicht ändern. Für die letzte Stunde können Sie zwischen zwölf absturzkonsistenten und einem App-konsistenten Punkt wählen. Im Lauf der Zeit löscht Site Recovery alle Wiederherstellungspunkte, die älter als eine Stunde sind, und speichert nur einen Wiederherstellungspunkt pro Stunde bis zu 24 Stunden und nur einen Wiederherstellungspunkt alle zwei Stunden bis zu 72 Stunden.
 
 
       Der folgende Screenshot veranschaulicht dieses Beispiel. Im Screenshot:

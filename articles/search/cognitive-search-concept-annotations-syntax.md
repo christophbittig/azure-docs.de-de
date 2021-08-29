@@ -2,24 +2,23 @@
 title: Verweisen auf Eingaben und Ausgaben in Skillsets
 titleSuffix: Azure Cognitive Search
 description: Erläutert die Anmerkungssyntax und wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche verwiesen wird.
-manager: nitinme
-author: LuisCabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26f8f5a4688eb5ccd472d7f402e6a543e318a7e2
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 6eb82e509d2e8c521438aedefd89977033967abf
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559849"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343179"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
+# <a name="reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Azure Cognitive Search-Skillset
 
 In diesem Artikel erfahren Sie, wie Sie auf Anmerkungen in Skilldefinitionen verweisen und verschiedene Szenarien anhand von Beispielen veranschaulichen können. Während der Inhalt eines Dokuments eine Reihe von Skills durchläuft, wird er mit Anmerkungen angereichert. Anmerkungen können als Eingaben für die nachfolgende Anreicherung verwendet oder einem Ausgabefeld in einem Index zugeordnet werden. 
  
-Die Beispiele in diesem Artikel basieren auf dem *content*-Feld, das automatisch von [Azure Blob-Indexern](search-howto-indexing-azure-blob-storage.md) während der Dokumententschlüsselung generiert wird. Wenn Sie sich auf Dokumente aus einem Blobcontainer beziehen, verwenden Sie ein Format wie `"/document/content"`, wobei das *content*-Feld Teil von *document* ist. 
+Die Beispiele in diesem Artikel basieren auf dem *content*-Feld, das automatisch von [Azure Blob-Indexern](search-howto-indexing-azure-blob-storage.md) während der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking) generiert wird. Wenn Sie sich auf Dokumente aus einem Blobcontainer beziehen, verwenden Sie ein Format wie `"/document/content"`, wobei das *content*-Feld Teil von *document* ist. 
 
 ## <a name="background-concepts"></a>Hintergrundkonzepte
 
@@ -39,7 +38,7 @@ Da der Standardkontext `"/document"` ist, kann auf die Liste der Personen nun al
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [

@@ -5,12 +5,12 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: c2456fcfffd9645f94856998142f262298b5eef9
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 250396771733d13732d1ac02ef1e57a15d6ca3b8
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581468"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343246"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Einrichten der Notfallwiederherstellung für lokale virtuelle VMware-Computer oder physische Server an einem sekundären Standort
 
@@ -257,7 +257,7 @@ Scout Update 4 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
     * Red Hat Enterprise Linux (RHEL) 6.x
     * Oracle Linux (OL) 6.x
 * Für Linux sind alle Berechtigungen für den Ordnerzugriff bei der Installation des vereinheitlichten Agents jetzt ausschließlich auf den lokalen Benutzer beschränkt.
-* Ein Fix für ein Zeitüberschreitungsproblem unter Windows, das beim Ausgeben von gängigen Lesezeichen für verteilte Konsistenz in stark ausgelasteten verteilten Anwendungen wie SQL Server und Share Point-Cluster aufgetreten ist.
+* Ein Fix für ein Zeitüberschreitungsproblem unter Windows, das beim Ausgeben von gängigen Lesezeichen für verteilte Konsistenz in stark ausgelasteten verteilten Anwendungen wie SQL Server und SharePoint-Cluster aufgetreten ist.
 * Ein protokollbezogener Fix im Base Installer des Konfigurationsservers.
 * Ein Downloadlink für VMware vCLI 6.0 wurde dem Windows-Masterziel-Base Installer hinzugefügt.
 * Zusätzliche Prüfungen und Protokolle wurden für Netzwerkkonfigurationsänderungen während Failover und Notfallwiederherstellung hinzugefügt.

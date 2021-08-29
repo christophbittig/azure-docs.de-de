@@ -2,30 +2,36 @@
 title: Bildanalyse – kognitiver Skill
 titleSuffix: Azure Cognitive Search
 description: Extrahieren Sie semantischen Text durch Bildanalyse mithilfe des kognitiven Skills „Bildanalyse“ in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: d6b32dfedcb5ad5322a32c519084eac3858225ba
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91948934"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349936"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
 Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](../cognitive-services/computer-vision/overview.md) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
 
+Die **Bildanalyse** kann Bilder analysieren, die folgende Anforderungen erfüllen:
+
++ Das Bild muss im JPEG-, PNG-, GIF- oder BMP-Format vorliegen.
++ Die Dateigröße muss weniger als 4 MB betragen.
++ Das Bild muss größer als 50 x 50 Pixel sein.
+
 > [!NOTE]
-> Kleine Volumen (unter 20 Transaktionen) können in der kognitiven Azure-Suche kostenlos ausgeführt werden, größere Workloads erfordern jedoch das [Anfügen einer abrechnungsfähigen Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
+> 
+> Darüber hinaus wird die Bildextraktion [durch Azure Cognitive Search abgerechnet](https://azure.microsoft.com/pricing/details/search/).
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
 
+## <a name="odatatype"></a>@odata.type 
 
-## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Skillparameter
@@ -43,8 +49,6 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Eingabename      | BESCHREIBUNG                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf einen anderen Wert als ```none``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
-
-
 
 ##  <a name="sample-skill-definition"></a>Beispieldefinition einer Qualifikation
 
@@ -86,7 +90,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
             ]
         }
 ```
+
 ### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>Beispielindex (nur für die Felder „Kategorien“, „Beschreibung „, „Gesichter“ und „Tags“)
+
 ```json
 {
     "fields": [
@@ -298,7 +304,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 }
 
 ```
+
 ### <a name="sample-output-field-mapping-for-the-above-index"></a>Beispielausgabefeldzuordnung (für den oben genannten Index)
+
 ```json
     "outputFieldMappings": [
         {
@@ -322,6 +330,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
             "targetFieldName": "brands"
         }
 ```
+
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>Variation von Ausgabefeldzuordnungen (verschachtelte Eigenschaften)
 
 Sie können Ausgabefeldzuordnungen zu Eigenschaften niedrigerer Ebenen definieren, z. B. als einfache Wahrzeichen oder Prominente. Stellen Sie in diesem Fall sicher, dass Ihr Indexschema ein spezifisches Feld für Wahrzeichen aufweist.
@@ -333,6 +342,7 @@ Sie können Ausgabefeldzuordnungen zu Eigenschaften niedrigerer Ebenen definiere
             "targetFieldName": "celebrities"
         }
 ```
+
 ##  <a name="sample-input"></a>Beispieleingabe
 
 ```json
@@ -540,6 +550,7 @@ Wenn Sie eine Fehlermeldung ähnlich `"One or more skills are invalid. Details: 
 
 ## <a name="see-also"></a>Weitere Informationen
 
++ [Was ist eine Bildanalyse?](../cognitive-services/computer-vision/overview-image-analysis.md)
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Erstellen eines Indexers (REST)](/rest/api/searchservice/create-indexer)
