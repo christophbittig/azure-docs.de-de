@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7afa48d5632a194daa7463a544fb28310ea89379
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 62d3f26ab53148d02320443db61318315e870cc7
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093713"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823633"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services (klassisch)
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen sollte [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet werden.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
 Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express](https://github.com/expressjs/express), das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.

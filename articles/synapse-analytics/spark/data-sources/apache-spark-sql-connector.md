@@ -8,12 +8,13 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
 ms.date: 05/19/2020
-ms.openlocfilehash: 82518e6c8f4901ffe6c5503d902359a79c12e0b0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: has-adal-ref
+ms.openlocfilehash: da64e27b5ae4675b313007c9b185db9194607f2c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081674"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428828"
 ---
 # <a name="azure-sql-database-and-sql-server-connector-for-apache-spark"></a>Azure SQL-Datenbank und SQL Server-Connector für Apache Spark
 Der Apache Spark-Connector für Azure SQL-Datenbank und SQL Server ermöglicht es diesen Datenbanken, als Eingabedatenquellen und Ausgabedatensenken für Apache Spark-Aufträge zu fungieren. So können Echtzeittransaktionsdaten in der Big Data-Analyse genutzt und Ergebnisse für Ad-hoc-Abfragen oder Berichterstellung dauerhaft gespeichert werden.

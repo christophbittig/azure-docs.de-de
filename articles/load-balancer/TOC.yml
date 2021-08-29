@@ -115,6 +115,8 @@
       href: instance-metadata-service-load-balancer.md
 - name: Vorgehensweise
   items:
+    - name: Verwalten von Lastenausgleichsregeln
+      href: manage-rules-how-to.md
     - name: VM-Skalierungsgruppen
       items:
         - name: 'Aktualisieren oder Löschen einer vorhandenen Azure Load Balancer-Instanz, die von einer VM-Skalierungsgruppe verwendet wird'

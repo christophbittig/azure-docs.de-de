@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 5f0e888d1eaa31e106610fcbba11b47905aa1b05
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 27d42bcf4d91cebc4679f71fce90111862172051
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086404"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824470"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurieren von TLS für eine Anwendung in Azure
 
-> [!IMPORTANT]
-> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Transport Layer Security (TLS), zuvor als „Secure Socket Layer-Verschlüsselung“ (SSL) bezeichnet, ist die am häufigsten verwendete Methode zum Sichern von Daten, die über das Internet gesendet werden. Im Folgenden erfahren Sie, wie Sie einen HTTPS-Endpunkt für eine Webrolle angeben und ein TLS/SSL-Zertifikat zum Sichern Ihrer Anwendung hochladen können.
 

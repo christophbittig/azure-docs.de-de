@@ -77,6 +77,8 @@
       href: pipeline-extension.md
     - name: Videoaufzeichnung
       href: video-recording.md
+    - name: 'KI-Komposition: Übersicht'
+      href: ai-composition-overview.md
     - name: Szenarien
       items:
         - name: Ereignisbasierte Videoaufzeichnung
@@ -121,6 +123,8 @@
       items:
         - name: Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
           href: develop-deploy-grpc-inference-srv.md
+        - name: Analysieren per KI-Komposition
+          href: analyze-ai-composition.md
     - name: Portal
       items:
         - name: Aufrufen direkter Methoden über das Portal
@@ -129,12 +133,14 @@
       items:
         - name: Überwachen und Protokollieren
           href: monitor-log-edge.md
+    - name: Visualisieren
+      items:
+        - name: "Einbetten des Player-Widgets in Power\_BI"
+          href: embed-player-in-power-bi.md
     - name: Problembehandlung
       href: troubleshoot.md
 - name: Verweis
   items:
-    - name: Zugriffsrichtlinien
-      href: access-policies.md
     - name: Entwickler-SDKs
       href: sdk.md
     - name: Direkte Methoden
