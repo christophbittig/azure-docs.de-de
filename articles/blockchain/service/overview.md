@@ -4,16 +4,20 @@ description: Übersicht über Azure Blockchain Service
 ms.date: 03/15/2021
 ms.topic: overview
 ms.reviewer: patricka
-ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cef30858b23f4c5e87f756e830defa3b2522add
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573624"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643276"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Was ist der Azure Blockchain-Dienst?
 
-Der Azure Blockchain-Dienst ist ein vollständig verwalteter Ledger-Dienst, der es Benutzern ermöglicht, Blockchainnetzwerke in Azure in ihrer Größe zu erweitern und zu betreiben. Durch die Bereitstellung einer einheitlichen Steuerung sowohl für die Infrastrukturverwaltung als auch für die Steuerung des Blockchainnetzwerks bietet der Azure Blockchain-Dienst:
+Der Azure Blockchain-Dienst ist ein vollständig verwalteter Ledger-Dienst, der es Benutzern ermöglicht, Blockchainnetzwerke in Azure in ihrer Größe zu erweitern und zu betreiben.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+Durch die Bereitstellung einer einheitlichen Steuerung sowohl für die Infrastrukturverwaltung als auch für die Steuerung des Blockchainnetzwerks bietet der Azure Blockchain-Dienst:
 
 * Einfache Netzwerkbereitstellung und einfacher Betrieb
 * Integrierte Konsortiumsverwaltung
@@ -29,7 +33,7 @@ Die Bereitstellung von Azure Blockchain Service kann über das Azure-Portal, die
 
 ### <a name="performance-and-service-tiers"></a>Leistungs- und Dienstebenen
 
-Azure Blockchain Service bietet zwei Dienstebenen: *Basic* und *Standard*. Jede Ebene bietet unterschiedliche Leistungen und Funktionen zur Unterstützung von kompakten Entwicklungs- und Testworkloads bis hin zu massiv skalierten Produktions-Blockchainbereitstellungen. Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Beide Ebenen beinhalten mindestens einen Transaktionsknoten und einen Validierungsknoten (Basic) oder zwei Validierungsknoten (Standard). 
+Azure Blockchain Service bietet zwei Dienstebenen: *Basic* und *Standard*. Jede Ebene bietet unterschiedliche Leistungen und Funktionen zur Unterstützung von kompakten Entwicklungs- und Testworkloads bis hin zu massiv skalierten Produktions-Blockchainbereitstellungen. Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Beide Ebenen beinhalten mindestens einen Transaktionsknoten und einen Validierungsknoten (Basic) oder zwei Validierungsknoten (Standard).
 
 ![Tarife](./media/overview/pricing-tiers.png)
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a1894fe63bcf24e19671a146cd16bb6fe59b0b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97508100"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "122639650"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Azure A
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` enthalten.
 
-Entsprechend dem [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten alle technischen Azure AD-Profile das technische Profil **AAD-Common**. Die folgenden technischen Azure AD-Profile geben das Protokoll nicht an, da es im technischen Profil **AAD-Common** konfiguriert ist:
+Entsprechend dem [Starter Pack für benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) enthalten alle technischen Azure AD-Profile das technische Profil **AAD-Common**. Die folgenden technischen Azure AD-Profile geben das Protokoll nicht an, da es im technischen Profil **AAD-Common** konfiguriert ist:
  
 - **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserReadUsingAlternativeSecurityId-NoError**: Suchen eines Social Media-Kontos im Verzeichnis.
 - **AAD-UserWriteUsingAlternativeSecurityId:** Erstellen eines neuen Social Media-Kontos.

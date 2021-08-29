@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von BrowserStack Single Sign-On für die automat
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD für BrowserStack Single Sign-On automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 39999abc-e4a2-4058-81e0-bf88182f8864
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/22/2021
-ms.author: Zhchia
-ms.openlocfilehash: 200338ac50bceae6c3bf9730ee92a16c04a84b69
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: 5e3d33775fbf342f328cb4260607a540930ff22d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141449"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327294"
 ---
 # <a name="tutorial-configure-browserstack-single-sign-on-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BrowserStack Single Sign-On für die automatische Benutzerbereitstellung
 
@@ -120,7 +120,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit BrowserStack Single Sign-On synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BrowserStack Single Sign-On für Updatevorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die BrowserStack Single Sign-On-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern|
+   |attribute|Typ|Unterstützung für das Filtern|
    |---|---|--|
    |userName|String|&check;|
    |name.givenName|String|

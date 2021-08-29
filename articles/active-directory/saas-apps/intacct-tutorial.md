@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652126519dc5f9b30c9ff94a28b3e6ee78e95f64
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736956"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463709"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Tutorial: Integrieren von Sage Intacct in Azure Active Directory
 
@@ -75,7 +75,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://www.intacct.com/ia/acct/sso_response.phtml`.
+    Geben Sie im Textfeld **Antwort-URL** die folgenden URLs ein:  
+    `https://www.intacct.com/ia/acct/sso_response.phtml` (Wählen Sie diese Einstellung als Standard aus.)  
+    `https://www.p-02.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-03.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-04.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-05.intacct.com/ia/acct/sso_response.phtml`  
 
 1. Die Sage Intacct-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 

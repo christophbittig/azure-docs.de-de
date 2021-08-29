@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Serv
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 567bf62d2f78074cef331aeedcfd29bc382e79c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290702"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752433"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
@@ -319,3 +319,4 @@ Wenn Sie diesen Code für die Beispiel-App aus [Erstellen einer Ruby- und Postgr
 [Tutorial: Hosten einer RESTful-API mit CORS in Azure App Service](app-service-web-tutorial-rest-api.md)  
 [Referenz zu HTTP-Anforderung/-Antwort für Logic Apps](../connectors/connectors-native-reqres.md)  
 [Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

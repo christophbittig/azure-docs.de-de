@@ -4,16 +4,20 @@ description: Hier erfahren Sie, wie Sie die Mitglieder des Azure Blockchain Serv
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72f8e1fc5de0b48b23627f8590a08e06865cac12
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85211339"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122639659"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Verwalten der Konsortiumsmitglieder in Azure Blockchain mithilfe von PowerShell
 
-Sie können PowerShell dazu verwenden, Blockchainkonsortiumsmitglieder Ihres Azure Blockchain-Diensts zu verwalten. Mitglieder mit Administratorrechten können alle Teilnehmer des Blockchainkonsortiums einladen, hinzufügen, entfernen und deren Rollen ändern. Mitglieder mit Benutzerberechtigungen können alle Teilnehmer des Blockchainkonsortiums anzeigen und ihren Mitgliedsanzeigenamen ändern.
+Sie können PowerShell dazu verwenden, Blockchainkonsortiumsmitglieder Ihres Azure Blockchain-Diensts zu verwalten.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+Mitglieder mit Administratorrechten können alle Teilnehmer des Blockchainkonsortiums einladen, hinzufügen, entfernen und deren Rollen ändern. Mitglieder mit Benutzerberechtigungen können alle Teilnehmer des Blockchainkonsortiums anzeigen und ihren Mitgliedsanzeigenamen ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

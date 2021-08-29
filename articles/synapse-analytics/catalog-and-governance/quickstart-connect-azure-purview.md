@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0af3b571b1a6d793668c33d0c76e19a3d0c9e62
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 827f1a4cd518d33ea67749482349cad9d4540c82
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716058"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117385"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Schnellstart: Herstellen einer Verbindung zwischen einem Azure Purview-Konto und einem Synapse-Arbeitsbereich 
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung registrieren Sie ein Azure Purview-Konto in ein
 
 Sie können die folgenden Aufgaben in Synapse ausführen: 
 - Suchen von Purview-Objekten anhand von Schlüsselwörtern mithilfe des Suchfelds im oberen Bereich 
-- Verstehen der Daten auf der Grundlage von Metadaten, Herkunft und Anmerkungen 
+- Verstehen der Daten basierend auf den Metadaten, der [Herkunft](../../purview/catalog-lineage-user-guide.md) und den Anmerkungen 
 - Verbinden dieser Daten mit Ihrem Arbeitsbereich mit verknüpften Diensten oder Integrationsdatasets 
 - Analysieren dieser Datasets mit Synapse Apache Spark, Synapse SQL und Datenflüssen 
 
@@ -50,3 +50,9 @@ Navigieren Sie zu  [https://web.azuresynapse.net](https://web.azuresynapse.net
 [Registrieren und Überprüfen von Azure Synapse Analytics](../../purview/register-scan-azure-synapse-analytics.md)
 
 [Entdecken, Verbinden und Untersuchen von Daten in Synapse mithilfe von Azure Purview](how-to-discover-connect-analyze-azure-purview.md)   
+
+[Verbinden von Azure Data Factory und Azure Purview](../../purview/how-to-link-azure-data-factory.md)
+
+[Verbinden von Azure Data Share und Azure Purview](../../purview/how-to-link-azure-data-share.md)
+
+[Die Herkunft von Power BI in Azure Purview übernehmen](../../purview/how-to-lineage-powerbi.md)

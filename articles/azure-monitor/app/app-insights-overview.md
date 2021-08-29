@@ -4,12 +4,12 @@ description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer a
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 1da89ea574c34e457b18c39cdad32061c85f1a14
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: a22bbad35fad5c5c4b231636fa2ac434b186a660
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289403"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616485"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js, Java und Python (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
@@ -95,7 +95,7 @@ Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, d
 * **Zur Laufzeit: Instrumentieren Sie Ihre Web-App auf dem Server.** Ideal für Anwendungen, die bereits bereitgestellt werden. Bei dieser Vorgehensweise sind keine Codeaktualisierungen erforderlich.
   * [**ASP.NET- oder ASP.NET Core-Anwendungen, die in Azure-Web-Apps gehostet werden**](./azure-web-apps.md)
   * [**Auf IIS gehostete ASP.NET-Anwendungen auf virtuellem Azure-Computer oder in Azure-VM-Skalierungsgruppe**](./azure-vm-vmss-apps.md)
-  * [**ASP.NET-Anwendungen, die auf IIS auf einem lokalen virtuellen Computer gehostet werden**](./monitor-performance-live-website-now.md)
+  * [**ASP.NET-Anwendungen, die auf IIS auf einem lokalen Server gehostet werden**](./status-monitor-v2-overview.md)
 * **Bei der Entwicklung: Fügen Sie Ihrem Code Application Insights hinzu.** Ermöglicht Ihnen das Anpassen der Telemetriedatenerfassung und das Senden zusätzlicher Telemetriedaten.
   * [ASP.NET-Anwendungen](./asp-net.md)
   * [ASP.NET Core-Anwendungen](./asp-net-core.md)
@@ -112,7 +112,7 @@ Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, d
 Beginnen mit der Laufzeitmethode mit:
 
 * [Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe – Auf IIS gehostete Apps](./azure-vm-vmss-apps.md)
-* [IIS-Server](./monitor-performance-live-website-now.md)
+* [IIS-Server](./status-monitor-v2-overview.md)
 * [Azure-Web-Apps](./azure-web-apps.md)
 
 Beginnen mit der Entwicklungszeitmethode mit:
@@ -148,5 +148,5 @@ Beginnen mit der Entwicklungszeitmethode mit:
 [platforms]: ./platforms.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.yml
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 

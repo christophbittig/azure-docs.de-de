@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: d36f400e18566abf0631b5bec24fbfe6801fd299
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 66a00319d2223879c693f8a670ca15808838459c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575134"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861734"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>Schnellstart: Verbinden eines MXCHIP AZ3166-DevKit mit IoT Central
 
@@ -137,7 +137,7 @@ Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen u
 
 1. Starten Sie **Termite**.
     > [!TIP]
-    > Falls Sie für Termite keine Verbindung mit Ihrem DevKit herstellen können, sollten Sie den [ST-LINK-Treiber](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip) installieren und es anschließend erneut versuchen. Weitere Schritte finden Sie auf der Seite zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
+    > Falls Sie für Termite keine Verbindung mit Ihrem DevKit herstellen können, sollten Sie den [ST-LINK-Treiber](https://www.st.com/en/development-tools/stsw-link009.html) installieren und es anschließend erneut versuchen. Weitere Schritte finden Sie auf der Seite zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 1. Wählen Sie **Settings** aus.
 1. Überprüfen Sie im Dialogfeld **Serial port settings** (Einstellungen für den seriellen Anschluss) die folgenden Einstellungen, und ändern Sie sie bei Bedarf:
     * **Baud rate** (Baudrate): 115.200

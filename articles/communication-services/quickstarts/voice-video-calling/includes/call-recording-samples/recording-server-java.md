@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: e29973b55d3f74942f6d85fa28209b73773ad717
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7208519302ea9c12a9a0db7c3cee7032eab85d64
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802078"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339730"
 ---
 ## <a name="sample-code"></a>Beispielcode
 Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/ServerRecording).
@@ -27,9 +27,9 @@ Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install), Version 11 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 - [Spring Boot Framework v- 2.5.0](https://spring.io/projects/spring-boot)
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../../create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
-- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](../../../../../storage/common/storage-account-create.md?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** und den **Containernamen** für diese Schnellstartanleitung aufzeichnen.
-- Ein [Azure Event Grid](../../../../../event-grid/overview.md) Webhook.
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
+- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** und den **Containernamen** für diese Schnellstartanleitung aufzeichnen.
+- Ein [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) Webhook.
 
 ## <a name="object-model"></a>Objektmodell
 

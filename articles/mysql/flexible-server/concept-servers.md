@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0ce6658168bd86188875d9d89f218ee26ef7941
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869377"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122639756"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Serverkonzepte in Azure Database for MySQL Flexible Server (Vorschau)
+
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT] 
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.

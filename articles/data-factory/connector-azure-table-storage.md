@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten nach und aus Azure Table Storage
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quellspeichern in Azure Table Storage oder aus Table Storage in unterstützte Senkenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: 557d8755131bcc60dfe07e3d068ac37d0a5d6f44
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 366feb50ef79fc2061f589c3a227c780df258344
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675122"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122640554"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 
@@ -49,7 +51,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften Dienst erstellen. Dadurch hat die Data Factory weltweiten Zugriff auf Storage. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureTableStorage** festgelegt werden. |Ja |
 | connectionString | Geben Sie für die connectionString-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/>Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -118,7 +120,7 @@ Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Spei
 
 Für die Verwendung der SAS-Authentifizierung werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureTableStorage** festgelegt werden. |Ja |
 | sasUri | Geben Sie den SAS-URI des Shared Access Signature-URI für die Tabelle an. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -189,7 +191,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus und nach Azure Table Storage die type-Eigenschaft des Datasets auf **AzureTable** fest. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AzureTable** festgelegt werden. |Ja |
 | tableName |Der Name der Tabelle in der Table Storage-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
@@ -229,7 +231,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus der Azure-Tabelle den Quelltyp in der Kopieraktivität auf **AzureTableSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureTableSource** festgelegt werden. |Ja |
 | azureTableSourceQuery |Verwendet die benutzerdefinierte Table Storage-Abfrage zum Lesen von Daten.<br/>Bei der Quellabfrage handelt es sich um eine direkte Zuordnung von der Abfrageoption `$filter`, die von Azure Table Storage unterstützt wird. Weitere Informationen zur Syntax finden Sie in [diesem Dokument](/rest/api/storageservices/querying-tables-and-entities#supported-query-options), und sehen Sie sich den folgenden [Abschnitt mit Beispielen für azureTableSourceQuery](#azuretablesourcequery-examples) an. |Nein |
@@ -258,7 +260,7 @@ Wenn Sie den pipeline-Parameter verwenden, wandeln Sie den datetime-Wert gemäß
 
 Legen Sie zum Kopieren von Daten in die Azure-Tabelle den Senkentyp in der Kopieraktivität auf **AzureTableSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **AzureTableSink** festgelegt werden. |Ja |
 | azureTableDefaultPartitionKeyValue |Der standardmäßige Partitionsschlüsselwert, der von der Senke verwendet werden kann. |Nein |

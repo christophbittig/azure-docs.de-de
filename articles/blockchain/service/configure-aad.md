@@ -1,19 +1,21 @@
 ---
 title: 'Azure Blockchain Service: Konfigurieren des Azure Active Directory-Zugriffs'
 description: Konfigurieren des Azure Blockchain Service mit Azure Active Directory-Zugriff
-ms.date: 11/22/2019
+ms.date: 05/11/2021
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea08a6cb59bdf5f8a18b05b897b8e6161c86f337
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85208772"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122639658"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Konfigurieren des Azure Active Directory-Zugriffs für Azure Blockchain Service
 
 In diesem Artikel erfahren Sie, wie Sie mit Hilfe von Azure Active Directory (Azure AD) Benutzer-, Gruppen- oder Anwendungs-IDs Zugriff gewähren und eine Verbindung zu Azure Blockchain-Dienstknoten herstellen.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 Azure AD bietet eine cloudbasierte Identitätsverwaltung und ermöglicht Ihnen das Verwenden einer einzigen Identität für ein gesamtes Unternehmen und den Zugriff auf Aufwendungen in Azure. Der Azure Blockchain-Dienst ist in Azure AD integriert und bietet verschiedene Vorteile, wie ID-Verbund, das einmalige Anmelden und die mehrstufige Authentifizierung.
 
@@ -66,7 +68,7 @@ Folgen Sie dann den Anweisungen im Abschnitt „Schnellstart“ in der **readme*
 1. Führen Sie den folgenden Befehl aus, um die Authentifizierung mit einem Azure AD-Benutzerkonto durchzuführen. Ersetzen Sie \<myAADDirectory\> durch eine Azure AD-Domäne. Beispiel: `yourdomain.onmicrosoft.com`.
 
     ```
-    connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
+    connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory>
     ```
 
 1. Azure AD fordert Sie zur Eingabe von Anmeldeinformationen auf.

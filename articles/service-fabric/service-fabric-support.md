@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 5/17/2021
 ms.author: edoyle
 ms.custom: support-help-page
-ms.openlocfilehash: a4f83d6ddf09ca449da74f163a82baf2b12adc91
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3b84f85a01ebaff9c3901672d31a135586280e13
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950076"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633541"
 ---
 # <a name="azure-service-fabric-support-options"></a>Supportoptionen für Azure Service Fabric
 
@@ -81,20 +81,6 @@ Melden Sie Azure Service Fabric-Probleme in [Service Fabric GitHub](https://gith
 </div>
 
 Das Tag `azure-service-fabric` für [StackOverflow][stackoverflow] eignet sich für allgemeine Fragen zur Funktionsweise der Plattform und zur Durchführung bestimmter Aufgaben.
-
-## <a name="submit-feedback-on-azure-feedback"></a>Übermitteln von Azure-Feedback
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-Das [Azure-Feedbackforum für Service Fabric][uservoice-forum] ist der beste Ort für die Übermittlung wichtiger Ideen für Produktfunktionen. Wir überprüfen die beliebtesten Anforderungen und berücksichtigen diese für unsere mittel- bis langfristige Planung. Wir empfehlen Ihnen, in der Community Unterstützung für Ihre Vorschläge zu gewinnen.
-
-
-> [!Note]
-> **Service Fabric-Vorschauversionen werden nicht für den Einsatz in Produktionsumgebungen unterstützt.** Gelegentlich werden spezielle Vorschauversionen mit erheblichen Funktionsänderungen bereitgestellt, für die wir frühes Feedback untersuchen möchten. Sie sollten Vorschauversionen nur in isolierten Testumgebungen verwenden, die keine Produktionsworkloads bereitstellen. Ihr Produktionscluster muss immer als unterstütze stabile Service Fabric-Version ausgeführt werden. Wir bieten keine kostenpflichtige Supportoption für diese Vorschauversionen.
->
-> Eine Vorschauversion beginnt immer mit einer großen und kleinen Versionsnummer von 255. Wenn Sie z. B. eine Service Fabric-Version 255.255.5703.949 vor sich haben, befindet sich diese Version in der Vorschau und darf nur in Testclustern verwendet werden. Diese Produktversionen werden auch im [Service Fabric-Teamblog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) bekannt gegeben und besitzen Details zu den enthaltenen Features. Verwenden Sie eine der oben aufgeführten Optionen, um Feedback bereitzustellen.
-
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Erhalten von Informationen zu Updates und neuen Releases
 

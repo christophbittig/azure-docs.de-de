@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Adobe Identity Management für die automatis
 description: Hier erfahren Sie, wie Sie Benutzerkonten automatisch aus Azure AD in Adobe Identity Management bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6ae05dc7-1265-44b4-a20c-512b5218b9d1
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2021
-ms.author: Zhchia
-ms.openlocfilehash: f9608a3a9e086cc6c03dc80f0666becbcbc06290
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.author: thwimmer
+ms.openlocfilehash: 504b0c40a2cf0b4daf8af95c6564168dd2867bd5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688402"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327376"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Adobe Identity Management für die automatische Benutzerbereitstellung
 

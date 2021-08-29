@@ -6,19 +6,21 @@
     - name: Machine Learning Studio (klassisch)
       displayName: overview
       href: studio-classic-overview.md
-- name: Schnellstarts
+    - name: Migrieren zu Azure Machine Learning
+      href: ../migrate-overview.md
+- name: Tutorials
   items:
     - name: Erstellen Ihres ersten Experiments
       displayName: quickstart
       href: create-experiment.md
-- name: Tutorials
-  items:
-    - name: '1: Erstellen eines Vorhersageexperiments'
-      href: tutorial-part1-credit-risk.md
-    - name: '2: Trainieren und Auswerten einer Lösung'
-      href: tutorial-part2-credit-risk-train.md
-    - name: '3: Bereitstellen des Webdiensts'
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: Trainieren und Bereitstellen eines Vorhersagemodells
+      items:
+        - name: '1: Erstellen eines Vorhersageexperiments'
+          href: tutorial-part1-credit-risk.md
+        - name: '2: Trainieren und Auswerten einer Lösung'
+          href: tutorial-part2-credit-risk-train.md
+        - name: '3: Bereitstellen des Webdiensts'
+          href: tutorial-part3-credit-risk-deploy.md
 - name: Beispiele
   items:
     - name: Verfügbare Datasets
@@ -138,20 +140,6 @@
         - name: Katalogdaten
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-    - name: Migrieren zu Azure Machine Learning
-      items:
-        - name: Übersicht zur Migration
-          href: migrate-overview.md
-        - name: Migrieren von Datasets
-          href: migrate-register-dataset.md
-        - name: Neuerstellen von Experimenten
-          href: migrate-rebuild-experiment.md
-        - name: Neuerstellen von Webdiensten
-          href: migrate-rebuild-web-service.md
-        - name: Migrieren von Clientanwendungen
-          href: migrate-rebuild-integrate-with-client-app.md
-        - name: Neuerstellen von Execute R Script-Modulen
-          href: migrate-execute-r-script.md
 - name: Verweis
   items:
     - name: 'Algorithmen und Module: Referenz'
@@ -164,12 +152,8 @@
       href: /rest/api/machinelearning
 - name: Ressourcen
   items:
-    - name: Dienstupdates
-      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
-    - name: Support
+    - name: Support aufrufen
       href: support-aml-studio.md
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Preise

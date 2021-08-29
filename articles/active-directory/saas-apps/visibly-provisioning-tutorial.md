@@ -3,8 +3,8 @@ title: 'Tutorial: Konfigurieren von Visibly für die automatische Benutzerbereit
 description: Hier erfahren Sie, wie Sie Benutzerkonten aus Azure AD automatisch in Visibly bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 9c658962-8a11-47ca-86ee-34872a39813a
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/30/2020
-ms.author: Zhchia
-ms.openlocfilehash: c2feae18c4b32e1a1a87d153219aff0bfee3b756
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: f0eb78d42feb7a176aae54aef263c19fa302ba21
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182188"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122327506"
 ---
 # <a name="tutorial-configure-visibly-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Visibly für die automatische Benutzerbereitstellung
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Visibly synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Benutzerkonten in Visibly für Aktualisierungsvorgänge abzugleichen. Wenn Sie sich dafür entscheiden, das Zielattribut [für die Übereinstimmung](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Visibly-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |aktiv|Boolean|
@@ -115,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Visibly synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Visibly für Aktualisierungsvorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|
+      |attribute|type|
       |---|---|
       |displayName|String|
       |externalId|String|

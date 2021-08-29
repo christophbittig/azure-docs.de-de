@@ -3,15 +3,16 @@ title: Deltaformat in Azure Data Factory
 description: Transformieren und Verschieben von Daten aus einer Delta Lake-Instanz unter Verwendung des Deltaformats
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: makromer
-ms.openlocfilehash: 38138be8ddd6babd9740a81ffcbedb9088a412f4
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b5f344d97813e5f8bc7099631b56760ca2115f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122639834"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
 
@@ -29,7 +30,7 @@ Dieser Connector ist als [Inlinedataset](data-flow-source.md#inline-datasets) in
 
 Die folgende Tabelle enthält die von einer Deltaquelle unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |
@@ -66,7 +67,7 @@ source(output(movieId as integer,
 
 Die folgende Tabelle enthält die von einer Deltasenke unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `delta` sein | ja | `delta` | format |
 | Dateisystem | Der Container bzw. das Dateisystem der Delta Lake-Instanz. | ja | String | fileSystem |
