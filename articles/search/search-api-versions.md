@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/19/2021
+ms.openlocfilehash: efb6431805d6f1e648ffad2e30087d7ab8f77d78
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100518945"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437466"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-Versionen in der kognitiven Azure-Suche
 
@@ -21,65 +21,27 @@ Für die kognitive Azure-Suche sind regelmäßig Featureupdates verfügbar. Manc
 
 In der Regel versucht das Team für die kognitive Azure-Suche, neue Versionen nur im Bedarfsfall zu veröffentlichen, da es einen gewissen Aufwand erfordern kann, wenn Sie Ihren Code aktualisieren, um eine neue API-Version zu verwenden. Eine neue Version ist nur dann erforderlich, wenn sich ein Aspekt der API in einer Weise geändert hat, die die Abwärtskompatibilität beeinträchtigt. Ursache für solche Änderungen können Fehlerbehebungen bei vorhandenen Funktionen sein oder neue Funktionen, die vorhandene API-Oberflächenbereiche ändern.
 
-Die gleiche Regel gilt bei SDK-Updates. Das SDK für die kognitive Azure-Suche folgt den Regeln der [semantischen Versionierung](https://semver.org/), d.h., dass seine Version aus drei Teilen besteht: Haupt-, Neben- und Buildnummer (z.B. 1.1.0). Eine neue Hauptversion des SDK wird nur dann veröffentlicht, wenn Änderungen die Abwärtskompatibilität beeinträchtigen. Bei Funktionsupdates ohne Beeinträchtigung der Abwärtskompatibilität wird die Nebenversion, bei Fehlerbehebungen nur die Buildversion heraufgesetzt.
-
-> [!Important]
-> Die Azure-SDKs für .NET, Java, Python und JavaScript führen neue Clientbibliotheken für Azure Cognitive Search ein. Zurzeit unterstützt keine der Azure-SDK-Bibliotheken die neuesten REST-APIs für die Suche (2020-06-30) oder die Verwaltung (2020-03-13) vollständig, dies ändert sich jedoch im Laufe der Zeit. Sie können diese Seite oder die [Neuerungen](whats-new.md) in regelmäßigen Abständen überprüfen, um Ankündigungen zu funktionalen Erweiterungen zu erhalten.
-
 <a name="unsupported-versions"></a>
 
 ## <a name="unsupported-versions"></a>Nicht unterstützte Versionen
 
-Führen Sie bis zum 15. Oktober 2020 ein Upgrade der vorhandenen Suchlösungen auf die aktuelle Version der REST-API aus. Zu diesem Zeitpunkt werden die folgenden Versionen der Azure Cognitive Search-REST-API und deren Support eingestellt:
+Einige API-Versionen werden nicht mehr unterstützt und von einem Suchdienst abgelehnt:
 
 + **2015-02-28**
 + **2015-02-28-Preview**
 + **2014-07-31-Preview**
 + **2014-10-20-Preview**
 
-Darüber hinaus werden Versionen des Azure Cognitive Search .NET SDK vor [**3.0.0-rc**](https://www.nuget.org/packages/Microsoft.Azure.Search/3.0.0-rc), ebenfalls eingestellt, da sie auf eine dieser REST-API-Versionen ausgerichtet sind. 
+Darüber hinaus werden Versionen des Azure Cognitive Search .NET SDK vor [**3.0.0-rc**](https://www.nuget.org/packages/Microsoft.Azure.Search/3.0.0-rc), ebenfalls eingestellt, da sie auf eine dieser REST-API-Versionen ausgerichtet sind.
 
-Nach diesem Datum können Anwendungen, die eine der veralteten REST-API- oder SDK-Versionen verwenden, nicht mehr verwendet werden und müssen aktualisiert werden. Wie bei jeder Änderung dieser Art kündigen wir diese 12 Monate im Voraus an, sodass Sie ausreichend Zeit haben, sich darauf einzustellen.
-
-Für die Weiterverwendung von Azure Cognitive Search muss vorhandener Code, der auf die [REST-API](search-api-migration.md) ausgerichtet ist, bis zum 15. Oktober 2020 zur [REST-API-Version 2020-06-30](/rest/api/searchservice/) oder zu einem neueren SDK migriert werden.  Wenn Sie Fragen zur Aktualisierung auf die neueste Version haben, senden Sie bitte bis zum 15. Mai 2020 eine E-Mail an azuresearch_contact@microsoft.com, um sicherzustellen, dass genügend Zeit für die Aktualisierung Ihres Codes bleibt.
+Die Unterstützung für die oben aufgeführten Versionen werden am 15. Oktober 2020 eingestellt. Wenn Sie über Code verfügen, der eine Version verwendet, deren Unterstützung eingestellt wurde, können Sie vorhandenen Code zu einer [neueren REST-API-Version](/rest/api/searchservice/) oder einem neueren Azure-SDK [migrieren](search-api-migration.md).
 
 ## <a name="rest-apis"></a>REST-APIs
 
-Eine Instanz des Azure Cognitive Search-Diensts unterstützt mehrere REST-API-Versionen, einschließlich der neuesten. Sie können auch ältere Versionen weiterhin verwenden, aber es wird empfohlen, den Code zur neuesten Version zu [migrieren](search-api-migration.md). Wenn Sie die REST-API verwenden, müssen Sie die API-Version bei jeder Anforderung über den api-version-Parameter angeben. Wenn Sie das .NET SDK verwenden, legt die Version des verwendeten SDK die Version der REST-API fest. Wenn Sie ein älteres SDK verwenden, können Sie diesen Code weiterhin ohne Änderungen ausführen, selbst wenn der Dienst aktualisiert wird, um eine neuere Version der API zu unterstützen.
-
-Die folgende Tabelle zeigt die Versionsgeschichte der aktuellen und zuvor veröffentlichter Versionen der REST-API für den Suchdienst. Die Dokumentation wird nur für die aktuellste stabile Version und die Vorschauversionen veröffentlicht.
-
-### <a name="search-service-apis"></a>Suchdienst-APIs
-
-Erstellen und verwalten Sie Inhalte in einem Suchdienst.
-
-| Version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Beschreibung |
-|-------------------------|--------|------------------------------|
-| [Search 2020-06-30](/rest/api/searchservice/index)| Stable | Das neueste stabile Release der Such-REST-APIs mit Verbesserungen bei der Relevanzbewertung und der allgemeinen Verfügbarkeit des Wissensspeichers.|
-| [Search 2020-06-30-Preview](/rest/api/searchservice/index-preview)| Vorschau | Mit der stabilen Version verknüpfte Vorschauversion. Umfasst mehrere [Previewfunktionen](search-api-preview.md). |
-| Search 2019-05-06 | Stable  | Fügt [komplexe Typen](search-howto-complex-data-types.md) hinzu. |
-| Search 2019-05-06-Preview | Vorschau | Mit der stabilen Version verknüpfte Vorschauversion. |
-| Search 2017-11-11 | Stable | Fügt Skillsets und [KI-Anreicherung](cognitive-search-concept-intro.md) hinzu. |
-| Search 2017-11-11-Preview | Vorschau | Mit der stabilen Version verknüpfte Vorschauversion. |
-| Search 2016-09-01 |Stable | Fügt [Indexer](search-indexer-overview.md) hinzu. |
-| Search 2016-09-01-Preview | Vorschau | Mit der stabilen Version verknüpfte Vorschauversion.|
-| Search 2015-02-28 | Nicht mehr unterstützt ab dem 10. 10. 2020   | Erstes allgemein verfügbares Release.  |
-| Search 2015-02-28-Preview | Nicht mehr unterstützt ab dem 10. 10. 2020  | Mit der stabilen Version verknüpfte Vorschauversion. |
-| Search 2014-10-20-Preview | Nicht mehr unterstützt ab dem 10. 10. 2020 | Zweite öffentliche Vorschauversion. |
-| Search 2014-07-31-Preview | Nicht mehr unterstützt ab dem 10. 10. 2020  | Erste öffentliche Vorschauversion. |
-
-### <a name="management-rest-apis"></a>REST-APIs für die Verwaltung
-
-Erstellen und verwalten Sie einen Suchdienst, und verwalten Sie API-Schlüssel.
-
-| Version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Beschreibung |
-|-------------------------|--------|------------------------------|
-| [Management 2020-08-01](/rest/api/searchmanagement/) | Stable | Neuestes stabiles Release der Verwaltungs-REST-APIs. Es fügt allgemein verfügbare Unterstützung für freigegebene Private Link-Ressourcen für alle Ressourcen hinzu, auf die extern zugegriffen wird, mit Ausnahme der in der Vorschauversion genannten Ressourcen. |
-| [Management 2020-08-01-Preview](/rest/api/searchmanagement/index-preview) | Vorschau  | Derzeit als Vorschauversion: fügt Unterstützung für freigegebene Private Link-Ressourcen für Azure Functions und Azure Database for MySQL hinzu. |
-| Management 2020-03-13  | Stable | Fügt einen [privaten Endpunkt](service-create-private-endpoint.md) über Private Link sowie [Netzwerk-IP-Regeln](service-configure-firewall.md) für neue Dienste hinzu. Weitere Informationen finden Sie in der [Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
-| Management 2019-10-01-Preview | Vorschau  | In diese Liste wurden keine Previewfunktionen aufgenommen. Diese Vorschauversion ist funktionell äquivalent zu 2020-03-13. Weitere Informationen finden Sie in der [Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
-| Management 2015-08-19  | Stable | Die erste allgemein verfügbare Version der Management-REST-APIs. Bietet Dienstbereitstellung, Hochskalierung und API-Schlüsselverwaltung. Weitere Informationen finden Sie in der [Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
-| Management 2015-08-19-Preview  | Vorschau | Die erste Vorschauversion der Management-REST-APIs. Weitere Informationen finden Sie in der [Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
+| REST-API | Link |
+|----------|------|
+| Suchdienst (Datenebene) | [API-Versionen](/rest/api/searchservice/search-service-api-versions) |
+| Verwaltung (Steuerungsebene) | [API-Versionen](/rest/api/searchmanagement/management-api-versions) |
 
 ## <a name="azure-sdk-for-net"></a>Azure SDK für .NET
 
@@ -87,8 +49,8 @@ In der folgenden Tabelle finden Sie Links zu neueren SDK-Versionen.
 
 | SDK-Version | Status | BESCHREIBUNG |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, veröffentlicht im Juli 2020. Ist für die REST-API für die Suche (Version 2020-06-30) vorgesehen, bietet jedoch noch keine native Unterstützung für Geofilter. Wir empfehlen für geografische Vorgänge das Paket [Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/). Beispiele sind für [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) und [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) verfügbar. |
-| [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Veröffentlichung: Mai 2019 Gilt für die Such-REST-API, api-version=2019-05-06.|
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Neue Clientbibliothek aus dem Azure .NET SDK, erstmalig veröffentlicht im Juli 2020. |
+| [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Veröffentlichung: Mai 2019 Dies ist die letzte Version des Microsoft.Azure.Search-Pakets. Sie wird von Azure.Search.Documents abgelöst. |
 | [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Gilt für die Verwaltungs-REST-API-Version 2020-08-01.  |
 | Microsoft.Azure.Management.Search 3.0.0 | Stable | Gilt für die Management REST-API, api-version=2015-08-19.  |
 
