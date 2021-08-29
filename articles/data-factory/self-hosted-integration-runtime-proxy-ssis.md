@@ -2,23 +2,24 @@
 title: Konfigurieren einer selbstgehosteten Integration Runtime als Proxy für SSIS
 description: Hier erfahren Sie, wie Sie eine selbstgehostete Integration Runtime als Proxy für eine Azure-SSIS Integration Runtime konfigurieren.
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 05/19/2021
-ms.openlocfilehash: dde4c234a6a0459441a601813f4f4a42dfbbff1c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/19/2021
+ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340081"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration Services) in einer Azure-SSIS Integration Runtime (Azure-SSIS IR) in Azure Data Factory mit einer selbstgehosteten Integration Runtime (selbstgehostete IR) ausführen, die als Proxy konfiguriert wurde. 
+In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration Services) in einer Azure-SSIS Integration Runtime (Azure-SSIS IR) in Azure Data Factory (ADF) mit einer selbstgehosteten Integration Runtime (selbstgehostete IR) ausführen, die als Proxy konfiguriert wurde. 
 
 Mit diesem Feature können Sie lokal auf Daten zugreifen und Tasks ausführen, ohne [Ihre Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen](./join-azure-ssis-integration-runtime-virtual-network.md) zu müssen. Dieses Feature ist nützlich, wenn Ihr Unternehmensnetzwerk eine zu komplexe Konfiguration aufweist oder wenn eine Richtlinie zu restriktiv für Sie ist, um Ihre Azure-SSIS IR darin einfügen zu können.
 
@@ -50,7 +51,7 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
   
   Wenn Sie OLEDB-, ODBC- oder ADO.NET-Treiber für andere Datenbanksysteme wie PostgreSQL, MySQL, Oracle usw. verwenden, können Sie die 64-Bit-Version von der jeweiligen Website herunterladen.
 - Wenn Sie Datenflusskomponenten aus dem Azure Feature Pack in Ihren Paketen verwenden, [laden Sie Azure Feature Pack for SQL Server 2017 herunter und installieren Sie es](https://www.microsoft.com/download/details.aspx?id=54798) auf demselben Computer, auf dem Ihre selbstgehostete IR installiert ist, sofern sie dies noch nicht getan haben.
-- Falls nicht bereits geschehen, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://www.microsoft.com/download/details.aspx?id=40784) auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde.
+- Falls nicht bereits geschehen, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde.
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>Aktivieren der Windows-Authentifizierung für lokale Tasks
 
@@ -67,10 +68,10 @@ Ihre lokalen Stagingtasks und „SQL ausführen/verarbeiten“-Tasks werden mit 
 Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen Data Factory, in der auch Ihre Azure-SSIS IR eingerichtet wurde (sofern noch nicht geschehen). Informationen dazu finden Sie unter [Erstellen eines mit Azure Data Factory verknüpften Diensts](./quickstart-create-data-factory-portal.md#create-a-linked-service). Führen Sie unbedingt die folgenden Schritte aus:
 - Wählen Sie **Azure Blob Storage** als **Datenspeicher** aus.  
 - Wählen Sie für **Über Integration Runtime verbinden** die Option **AutoResolveIntegrationRuntime** (nicht Ihre selbstgehostete IR) aus, damit diese ignoriert und stattdessen Ihre Azure-SSIS IR zum Abrufen von Zugriffsanmeldeinformationen für Ihre Azure Blob Storage-Instanz verwendet werden kann.
-- Wählen Sie unter **Authentifizierungsmethode** die Option **Kontoschlüssel**, **SAS-URI**, **Dienstprinzipal** oder **Verwaltete Identität** aus.  
+- Wählen Sie für **Authentifizierungsmethode** eine der Optionen **Kontoschlüssel**, **SAS-URI**, **Dienstprinzipal**, **Verwaltete Identität** oder **Benutzerseitig zugewiesene verwaltete Identität** aus.  
 
 >[!TIP]
->Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität eine geeignete Rolle für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
+>Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität**/**Benutzerseitig zugewiesene verwaltete Identität** auswählen, gewähren Sie der angegebenen systemseitig/benutzerseitig zugewiesenen verwalteten Identität für Ihre ADF eine geeignete Rolle für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Access Azure Blob Storage using Azure Active Directory (Azure AD) authentication with the specified system/user-assigned managed identity for your ADF](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication) (Zugreifen auf Azure Blob Storage mithilfe von Azure Active Directory (Azure AD)-Authentifizierung mit der angegebenen systemseitig/benutzerseitig zugewiesenen verwalteten Identität für Ihre ADF).
 
 ![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -105,7 +106,7 @@ $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-pre
 $DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
 $DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 
-# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
 if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
 {
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

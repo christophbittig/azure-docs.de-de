@@ -2,19 +2,18 @@
 title: Erhalten von Benachrichtigungen über Probleme mithilfe von Warnungen – Azure IoT Edge
 description: Verwenden von Azure Monitor-Warnungsregeln zur Überwachung im großen Stil
 author: veyalla
-manager: philmea
 ms.author: veyalla
 ms.date: 06/08/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 14deb9a8a8ecaf67306ab8e29b2dfea7fa130c00
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1de507f113f5bf457a4394be9e5fb86c37291e95
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904386"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350060"
 ---
 # <a name="get-notified-about-issues-using-alerts-preview"></a>Erhalten von Benachrichtigungen über Probleme mithilfe von Warnungen (Vorschau)
 
@@ -22,11 +21,14 @@ ms.locfileid: "111904386"
 
 Anhand von [Azure Monitor-Protokollwarnungen](../azure-monitor/alerts/alerts-unified-log.md) können Sie IoT Edge-Geräte im großen Stil überwachen. Wie in der [Lösungsarchitektur](how-to-collect-and-transport-metrics.md#architecture) hervorgehoben, wird Azure Monitor Log Analytics als Metrikdatenbank verwendet. Diese Integration bietet leistungsstarke und flexible Warnungsfunktionen mithilfe von ressourcenzentrierten Protokollwarnungen.
 
+> [!IMPORTANT]
+> Dieses Feature steht zurzeit nur für IoT Hub und nicht für IoT Central zur Verfügung.
+
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 
 Sie können [eine Protokollwarnungsregel erstellen](../azure-monitor/alerts/alerts-log.md), um ein breites Spektrum an Bedingungen für Ihre Geräteflotte zu überwachen.
 
-[KQL](https://aka.ms/kql)-Beispielwarnungsabfragen werden unter der IoT Hub-Ressource bereitgestellt. Abfragen, die Metrikdaten aus Edgegeräten verarbeiten, wird im Titel *IoT Edge:* vorangestellt. Verwenden Sie diese Beispiele unverändert, oder ändern Sie sie nach Bedarf, um eine Abfrage für genau Ihre Anforderungen zu erstellen.
+[KQL](/azure/data-explorer/kusto/query/)-Beispielwarnungsabfragen werden unter der IoT Hub-Ressource bereitgestellt. Abfragen, die Metrikdaten aus Edgegeräten verarbeiten, wird im Titel *IoT Edge:* vorangestellt. Verwenden Sie diese Beispiele unverändert, oder ändern Sie sie nach Bedarf, um eine Abfrage für genau Ihre Anforderungen zu erstellen.
 
 Führen Sie zum Zugreifen auf die Beispielwarnungsabfragen die folgenden Schritte aus:
 
@@ -66,4 +68,4 @@ Klicken Sie auf den Namen der Warnungsregel, um mehr Kontext zur Warnung anzuzei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erweitern Sie Ihre Überwachungslösung mit [Metriken aus benutzerdefinierten Modulen](how-to-add-custom-metrics.md). 
+Erweitern Sie Ihre Überwachungslösung mit [Metriken aus benutzerdefinierten Modulen](how-to-add-custom-metrics.md).

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 174fde5e067f55ea75664084b0bc548fcedec346
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d9d0078c552a464c1f18cee8b4748c35837f013c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388512"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605519"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Cache for Redis muss den Zugriff über öffentliche Netzwerke deaktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F470baccb-7e51-4549-8b1a-3e5be069f663) |Die Deaktivierung des Zugriffs über öffentliche Netzwerke erhöht die Sicherheit, indem sichergestellt wird, dass Azure Cache for Redis nicht über das öffentliche Internet zugänglich ist. Sie können die Offenlegung von Azure Cache for Redis einschränken, indem Sie stattdessen private Endpunkte erstellen. Weitere Informationen finden Sie unter [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](../../../../articles/azure-cache-for-redis/cache-private-link.md). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_AuditDeny.json) |
 |[Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d092e0a-7acd-40d2-a975-dca21cae48c4) |Die Azure Virtual Network-Bereitstellung bietet erweiterte Sicherheit und Isolierung für Ihre Azure Cache for Redis-Instanz sowie Subnetze, Zugriffssteuerungsrichtlinien und andere Features zur weiteren Einschränkung des Zugriffs. Wenn eine Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann sie nicht öffentlich adressiert, sondern nur von virtuellen Computern und Anwendungen innerhalb des virtuellen Netzwerks aufgerufen werden. |Audit, Deny, Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_CacheInVnet_Audit.json) |

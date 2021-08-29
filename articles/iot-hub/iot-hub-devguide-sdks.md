@@ -2,7 +2,6 @@
 title: Azure IoT Hub-SDKs | Microsoft-Dokumentation
 description: Links zu den Azure IoT Hub-SDKs, die Sie zum Erstellen von Geräte-Apps und Back-End-Apps verwenden können.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 67c9bd6c4f8779340a847815da8692e12e3ee1ac
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 823cb1ae9afb6af8b8ed0446e58930fa62ee7f07
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537051"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346776"
 ---
 # <a name="azure-iot-hub-sdks"></a>Azure IoT Hub-SDKs
 
@@ -25,7 +24,7 @@ Es gibt zwei Kategorien von Software Development Kits (SDKs) für die Arbeit mit
 
 * [**Mit IoT Hub-Dienst-SDKs**](#azure-iot-hub-service-sdks) können Sie Back-End-Anwendungen zum Verwalten Ihrer IoT-Hub-Instanz erstellen und optional Nachrichten senden, Aufträge planen, direkte Methoden aufrufen oder gewünschte Eigenschaftsupdates an Ihre IoT-Geräte oder -Module senden.
 
-* [**IoT Hub-Geräte-SDKs**](../iot-develop/about-iot-sdks.md) ermöglichen das Erstellen von Apps, die auf Ihren IoT-Geräten ausgeführt werden, mit dem Geräteclient oder Modulclient. Mit diesen Apps werden Telemetriedaten an die IoT Hub-Instanz gesendet und optional Nachrichten oder Updates für Aufträge, Methoden oder Gerätezwillingen von der IoT Hub-Instanz empfangen. Sie können mithilfe dieser SDKs Geräte-Apps erstellen, die[Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)-Konventionen und -Modelle verwenden, um ihre Funktionen für IoT Plug & Play-fähige Anwendungen anzukündigen. Sie können mit dem Modulclient auch [Module](../iot-edge/iot-edge-modules.md) für [Azure IoT Edge-Runtime](../iot-edge/about-iot-edge.md) erstellen.
+* [**IoT Hub-Geräte-SDKs**](../iot-develop/about-iot-sdks.md) ermöglichen das Erstellen von Apps, die auf Ihren IoT-Geräten ausgeführt werden, mit dem Geräteclient oder Modulclient. Mit diesen Apps werden Telemetriedaten an die IoT Hub-Instanz gesendet und optional Nachrichten oder Updates für Aufträge, Methoden oder Gerätezwillingen von der IoT Hub-Instanz empfangen. Sie können mithilfe dieser SDKs Geräte-Apps erstellen, die[Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md)-Konventionen und -Modelle verwenden, um ihre Funktionen für IoT Plug & Play-fähige Anwendungen anzukündigen. Sie können mit dem Modulclient auch [Module](../iot-edge/iot-edge-modules.md) für [Azure IoT Edge-Runtime](../iot-edge/about-iot-edge.md) erstellen.
 
 Darüber hinaus bieten wir auch ein Spektrum an SDKs zum Arbeiten mit dem [Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
@@ -70,9 +69,9 @@ Die Microsoft Azure IoT-Geräte-SDKs enthalten Code, der das Erstellen von Anwen
 
 Weitere Informationen zu den IoT Hub-Geräte-SDKs finden Sie in der [Dokumentation zur IoT-Geräteentwicklung.](../iot-develop/about-iot-sdks.md)
 
-## <a name="os-platform-and-hardware-compatibility"></a>Betriebssystemplattformen und Hardwarekompatibilität
+## <a name="sdk-and-hardware-compatibility"></a>SDK- und Hardwarekompatibilität
 
-Unterstützte Plattformen für die SDKs sind in [Azure IoT-SDKs – Plattformunterstützung](iot-hub-device-sdk-platform-support.md) aufgeführt.
+Weitere Informationen zum Auswählen eines Geräte-SDKs finden Sie unter [Übersicht über Azure IoT-Geräte-SDKs](../iot-develop/about-iot-sdks.md).
 
 Weitere Informationen zur Kompatibilität von SDKs mit bestimmten Hardwaregeräten finden Sie im [Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com/) oder im jeweiligen Repository.
 
@@ -84,7 +83,7 @@ Relevante Dokumentation, die im Zusammenhang mit der Entwicklung mithilfe der Az
 
 * Informieren Sie sich über das [Verwalten von Konnektivität und zuverlässigem Messaging](iot-hub-reliability-features-in-sdks.md) mithilfe von IoT Hub-SDKs.
 * Informieren Sie sich über das [Entwickeln für mobile Plattformen](iot-hub-how-to-develop-for-mobile-devices.md) wie etwa iOS und Android.
-* [Azure IoT SDK – Plattformunterstützung](iot-hub-device-sdk-platform-support.md)
+* [Dokumentation zur IoT-Geräteentwicklung](../iot-develop/about-iot-sdks.md)
 
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 

@@ -2,7 +2,6 @@
 title: Planen von Aufträgen mit Azure IoT Hub (Node) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 7812e06b445bba77d8ebd4ff5bf86662ef81ddc9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 591e7c43b26bbd8668bbe50bc78965f04f194c36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339230"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Planen und Übertragen von Aufträgen (Node.js)
 
@@ -33,7 +32,7 @@ Weitere Informationen zu diesen Funktionen finden Sie in den folgenden Artikeln:
 
 * Gerätezwillinge und Eigenschaften: [Erste Schritte mit Gerätezwillingen](iot-hub-node-node-twin-getstarted.md) und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
 
-* Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub](iot-hub-devguide-direct-methods.md) und [Verwenden direkter Methoden auf Ihrem IoT-Gerät mit Node.js](quickstart-control-device-node.md)
+* Direkte Methoden: [IoT Hub-Entwicklerhandbuch – direkte Methoden](iot-hub-devguide-direct-methods.md) und [Schnellstart: direkte Methoden](./quickstart-control-device.md?pivots=programming-language-nodejs)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

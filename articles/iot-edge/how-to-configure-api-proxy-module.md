@@ -2,7 +2,6 @@
 title: Konfigurieren des API-Proxymoduls – Azure IoT Edge | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie das API-Proxymodul für IoT Edge-Gatewayhierarchien anpassen.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 11/10/2020
 ms.topic: conceptual
@@ -12,25 +11,24 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 100d67f30066b74fdcd6e70cfc714be7f7ee5ccd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307315"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349611"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Konfigurieren des API-Proxymoduls für Ihr Gatewayhierarchieszenario (Vorschau)
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
-Das API-Proxymodul ermöglicht IoT Edge-Geräten das Senden von HTTP-Anforderungen über Gateways, statt direkte Verbindungen mit Clouddiensten herstellen zu müssen. In diesem Artikel werden die Konfigurationsoptionen erörtert, damit Sie das Modul anpassen können, um die Anforderungen Ihrer Gatewayhierarchie zu unterstützen.
+In diesem Artikel werden die Konfigurationsoptionen für das API-Proxymodul beschrieben, damit Sie es zur Unterstützung der Anforderungen Ihrer Gatewayhierarchie anpassen können.
 
->[!NOTE]
->Dieses Feature erfordert die IoT Edge-Version 1.2, die sich in der öffentlichen Vorschau befindet und Linux-Container ausführt.
+Das API-Proxymodul vereinfacht die Kommunikation für IoT Edge-Geräte, wenn mehrere Dienste bereitgestellt werden, die alle das HTTPS-Protokoll unterstützen und an Port 443 gebunden werden. Dies ist besonders relevant in hierarchischen Bereitstellungen von IoT Edge-Geräten in ISA-95-basierten, vom Netzwerk isolierten Architekturen wie die in [Isolieren von nachgeschalteten Geräten im Netzwerk](how-to-connect-downstream-iot-edge-device.md#network-isolate-downstream-devices) beschriebenen, weil die Clients auf den untergeordneten Geräten keine direkte Verbindung mit der Cloud herstellen können.
 
-In einigen Netzwerkarchitekturen verfügen IoT Edge-Geräte hinter Gateways nicht über direkten Zugriff auf die Cloud. Alle Module, die versuchen, eine Verbindung mit Clouddiensten herzustellen, können nicht ausgeführt werden. Das API-Proxymodul unterstützt nachgeschaltete IoT Edge-Geräte in dieser Konfiguration, indem die Modulverbindungen stattdessen so weitergeleitet werden, dass sie die Ebenen einer Gatewayhierarchie durchlaufen. Es ermöglicht Clients die sichere Kommunikation mit mehreren Diensten über HTTPS ohne Tunnelung, sondern durch Beenden der Verbindungen auf jeder Ebene. Das API-Proxymodul fungiert als Proxymodul zwischen den IoT Edge-Geräten in einer Gatewayhierarchie, bis sie das IoT Edge-Gerät der obersten Ebene erreichen. An diesem Punkt werden diese Anforderungen von auf dem IoT Edge-Gerät der obersten Ebene ausgeführten Diensten verarbeitet, und das API-Proxymodul sendet den gesamten HTTP-Datenverkehr von lokalen Diensten über einen einzigen Port an die Cloud.
+Um beispielsweise untergeordneten IoT Edge-Geräten das Pullen von Docker-Images zu ermöglichen, muss ein Docker-Registrierungsmodul bereitgestellt werden. Um das Hochladen von Blobs zu ermöglichen, muss ein Azure Blob Storage-Modul auf demselben IoT Edge-Gerät bereitgestellt werden. Diese beiden Dienste verwenden HTTPS für die Kommunikation. Der API-Proxy aktiviert solche Bereitstellungen auf einem IoT Edge-Gerät. Statt jedes Diensts wird das API-Proxymodul an Port 443 auf dem Hostgerät gebunden und leitet die Anforderung – entsprechend vom Benutzer konfigurierbaren Regeln – an das richtige Dienstmodul weiter, das auf diesem Gerät ausgeführt wird. Die einzelnen Dienste sind weiterhin für die Verarbeitung der Anforderungen zuständig, einschließlich Authentifizierung und Autorisierung der Clients.
 
-Das API-Proxymodul kann viele Szenarien für Gatewayhierarchien unterstützen und beispielsweise Geräten niedrigerer Ebenen das Pullen von Containerimages oder das Pushen von Blobs in den Speicher ermöglichen. Die Konfiguration der Proxyregeln definiert, wie Daten weitergeleitet werden. In diesem Artikel werden mehrere gängige Konfigurationsoptionen erläutert.
+Ohne den API-Proxy müsste jedes Dienstmodul an einen separaten Port auf dem Hostgerät gebunden werden. Dies erfordert eine mühsame und fehleranfällige Konfigurationsänderung auf jedem untergeordneten Gerät, das eine Verbindung mit dem übergeordneten IoT Edge-Gerät herstellt.
 
 ## <a name="deploy-the-proxy-module"></a>Bereitstellen des Proxymoduls
 

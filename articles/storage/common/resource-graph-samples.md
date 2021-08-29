@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Storage
 description: Azure Resource Graph-Beispielabfragen für Azure Storage, die die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf Azure Storage in Zusammenhang mit den Ressourcen und Eigenschaften veranschaulichen.
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 01c85d667ae8ded081c6a71028fd1506047fbdab
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 081158350909e7dbf63cb2e6827eca4726331b5a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862080"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-storage"></a>Azure Resource Graph-Beispielabfragen für Azure Storage
 
@@ -26,5 +26,5 @@ Diese Seite zeigt eine Sammlung von [Azure Resource Graph](../../governance/reso
 
 - Erfahren Sie mehr über die [Abfragesprache](../../governance/resource-graph/concepts/query-language.md).
 - Erfahren Sie mehr über das [Erkunden von Ressourcen](../../governance/resource-graph/concepts/explore-resources.md).
-- Hier finden Sie Beispiele für [einfache Sprachabfragen](../../governance/resource-graph/samples/starter.md) an.
-- Hier finden Sie Beispiele für [erweiterte Sprachabfragen](../../governance/resource-graph/samples/advanced.md) an.
+- Sehen Sie sich Beispiele für [einfache Sprachabfragen](../../governance/resource-graph/samples/starter.md) an.
+- Sehen Sie sich Beispiele für [erweiterte Sprachabfragen](../../governance/resource-graph/samples/advanced.md) an.

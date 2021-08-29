@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b086e92f36873c28f4e1d88c9a73f54fd4b20d3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92151631"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287798"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Entwicklung für mobile Geräte mithilfe von Azure IoT Hub SDKs | Microsoft-Dokumentation
 
@@ -23,13 +23,13 @@ ms.locfileid: "92151631"
 Azure IoT Hub SDKs unterstützen über das IoT Azure Hub C SDK die native iOS-Plattform.  Sie können es sich als ein iOS SDK vorstellen, das Sie in Ihr XCode-Projekt des Typs Swift oder Objective C einbinden können.  Es gibt zwei Möglichkeiten, das C SDK unter iOS zu verwenden:
 
 * Die CocoaPod-Bibliotheken direkt im XCode-Projekt verwenden.  
-* Den Quellcode für das C SDK herunterladen und gemäß der [Buildanweisung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) für macOS Builds für die iOS-Plattform erstellen  
+* Den Quellcode für das C SDK herunterladen und entsprechend der [Buildanweisung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) für macOS Builds für die iOS-Plattform erstellen.  
 
 Das Azure IoT Hub C SDK ist zur maximalen Portabilität auf verschiedene Plattformen in C99 geschrieben.  Der Portierungsprozess umfasst das Schreiben einer schlanken Adaptionsschicht für die plattformspezifischen Komponenten, die hier für [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx) zu finden ist.  Die Funktionen des C SDK können auf der iOS-Plattform genutzt werden, einschließlich der unterstützten Azure IoT Hub-Primitiven und SDK-spezifischen Funktionen, wie z.B. Wiederholungsrichtlinien für die Netzwerkstabilität.  Die Schnittstelle für das iOS SDK ähnelt auch der Schnittstelle für das Azure IoT Hub C SDK.  
 
 In diesen Dokumentationen erfahren Sie, wie Sie eine Geräte- oder Dienstanwendung auf einem iOS-Gerät entwickeln:
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-ios.md)  
+* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](../iot-develop/quickstart-send-telemetry-iot-hub.md)  
 * [Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Entwickeln mit CocoaPod-Bibliotheken für Azure IoT Hub
@@ -43,11 +43,11 @@ Die Azure IoT Hub SDKs bieten für die iOS-Entwicklung eine Gruppe von Objective
     * Fügen Sie Ihrer Abhängigkeit die Headerdatei hinzu.  Ein Beispiel einer Headerdatei ist im [Beispielrepository](https://github.com/Azure-Samples/azure-iot-samples-ios) enthalten. Weitere Informationen finden Sie auf der Apple-Dokumentationsseite für [Objective-C](https://developer.apple.com/documentation/objectivec).
 
 ## <a name="develop-for-android-platform"></a>Entwickeln für die Android-Plattform
-Das Azure IoT Hub Java SDK unterstützt die Android-Plattform.  Aktuelle Informationen zur spezifischen getesteten API-Version finden Sie auf unserer [Seite zur Plattformunterstützung](iot-hub-device-sdk-platform-support.md).
+Das Azure IoT Hub Java SDK unterstützt die Android-Plattform.
 
 In diesen Dokumentationen erfahren Sie, wie Sie eine Geräte- oder Dienstanwendung auf einem Android-Gerät mit Gradle und Android Studio entwickeln:
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-android.md)  
+* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](../iot-develop/quickstart-send-telemetry-iot-hub.md)  
 * [Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>Nächste Schritte

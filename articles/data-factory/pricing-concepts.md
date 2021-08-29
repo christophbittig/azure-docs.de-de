@@ -5,14 +5,15 @@ author: shirleywangmsft
 ms.author: shwang
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 48c0f47b3b8ca5eddef76c66ad220a18018dc321
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a5032ce26fcce2dbee2a95385292c5b455904586
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904890"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355955"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
@@ -184,22 +185,22 @@ In diesem Szenario möchten Sie die ursprünglichen Dateien in Azure Blob Storag
 | Erstellen der Pipeline | 6 Lese-/Schreibzugriffentitäten (2 für Pipelineerstellung, 4 für Datasetverweise) |
 | Abrufen der Pipeline | 2 Lese-/Schreibzugriffentitäten |
 | Ausführen der Pipeline | 6 Aktivitätsausführungen (2 für Triggerausführung, 4 für die Aktivität) |
-| Ausführen der Löschaktivität: jede Ausführungszeit = 5 min. Die Ausführung der Löschaktivität in der ersten Pipeline liegt zwischen 10:00 Uhr UTC und 10:05 Uhr UTC. Die Ausführung der Löschaktivität in der zweiten Pipeline liegt zwischen 10:02 Uhr UTC und 10:07 Uhr UTC.|Insgesamt eine 7-minütige Ausführung der Pipelineaktivitäten im verwalteten VNET. Die Pipelineaktivität unterstützt eine Parallelität von bis zu 50 im verwalteten VNET. |
-| Annahme für die Kopieraktivität: jede Ausführungszeit = 10 min. Die Ausführung der Kopieraktivität in der ersten Pipeline liegt zwischen 10:06 Uhr UTC und 10:15 Uhr UTC. Die Ausführung der Löschaktivität in der zweiten Pipeline liegt zwischen 10:08 Uhr UTC und 10:17 Uhr UTC. | 10 × 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md). |
+| Ausführen der Löschaktivität: jede Ausführungszeit = 5 min. Die Ausführung der Löschaktivität in der ersten Pipeline liegt zwischen 10:00 Uhr UTC und 10:05 Uhr UTC. Die Ausführung der Löschaktivität in der zweiten Pipeline liegt zwischen 10:02 Uhr UTC und 10:07 Uhr UTC.|Insgesamt eine 7-minütige Ausführung der Pipelineaktivitäten im verwalteten VNET. Die Pipelineaktivität unterstützt eine Parallelität von bis zu 50 im verwalteten VNET. Es gibt eine Gültigkeitsdauer (Time To Live, TTL) von 60 Minuten für Pipelineaktivitäten.|
+| Annahme für die Kopieraktivität: jede Ausführungszeit = 10 min. Die Ausführung der Kopieraktivität in der ersten Pipeline liegt zwischen 10:06 Uhr UTC und 10:15 Uhr UTC. Die Ausführung der Kopieraktivität in der zweiten Pipeline liegt zwischen 10:08 Uhr UTC und 10:17 Uhr UTC. | 10 × 4 Azure Integration Runtime (Standard-DIU-Einstellung = 4) Weitere Informationen zu Datenintegrationseinheiten und Optimieren der Kopierleistung finden Sie in [diesem Artikel](copy-activity-performance.md). |
 | Annahme für Überwachung der Pipeline: Nur 2 Ausführungen aufgetreten | 6 abgerufene Überwachungsausführungsaufzeichnungen (2 für Pipelineausführung, 4 für Aktivitätsausführung) |
 
 
-**Preis für gesamtes Szenario: 0,45523 USD**
+**Preis für gesamtes Szenario: 1,45523 USD**
 
 - Data Factory-Vorgänge = 0,00023 USD
   - Lesen/Schreiben = 20 × 0,00001 = 0,0002 USD [1 R/W = 0,50 USD/50.000 = 0,00001]
   - Überwachung = 6 × 0,000005 = 0,00003 USD [1 Überwachung = 0,25 USD/50.000 = 0,000005]
-- Pipelineorchestrierung und -ausführung = 0,455 USD
+- Pipelineorchestrierung und -ausführung = 1,455 USD
   - Aktivitätsausführungen = 0,001 × 6 = 0,006 [1 Ausführung = 1 USD/1.000 = 0,001]
   - Datenverschiebungsaktivitäten = 0,333 USD (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
-  - Pipelineaktivität = 0,116 USD (anteilig für die Ausführungszeit von 7 Minuten. 1 USD/Stunde auf Azure Integration Runtime)
+  - Pipelineaktivität = 1,116 USD (anteilig für die Ausführungszeit von 7 Minuten plus 60 Minuten TTL. 1 USD/Stunde auf Azure Integration Runtime)
 
-> [!NOTE]
+> [!NOTE] 
 > Diese Preise dienen nur als Beispiel.
 
 **Häufig gestellte Fragen**

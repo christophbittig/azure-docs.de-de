@@ -6,15 +6,15 @@ author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 08/19/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df9df0db6c93241d47baae9b33927f9a96a66eda
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461607"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597364"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Schnellstart: Erstellen eines neuen serverlosen Apache Spark-Pools über das Azure-Portal
 
@@ -38,9 +38,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigieren zum Synapse-Arbeitsbereich 
 1. Navigieren Sie zum Synapse-Arbeitsbereich, 0in dem der Apache Spark-Pool erstellt werden soll, indem Sie den Dienstnamen (oder direkt den Ressourcennamen) in die Suchleiste eingeben.
-![Suchleiste im Azure-Portal mit der Eingabe „Synapse-Arbeitsbereiche“.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. Geben Sie in der Liste der Arbeitsbereiche den Namen (oder einen Teil des Namens) des zu öffnenden Arbeitsbereichs ein. In diesem Beispiel verwenden wir einen Arbeitsbereich namens **contosoanalytics**.
-![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen angezeigt werden, die den Namen „Contoso“ enthalten.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
+
+    ![Suchleiste im Azure-Portal mit der Eingabe „Synapse-Arbeitsbereiche“.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
+
+2. Geben Sie in der Liste der Arbeitsbereiche den Namen (oder einen Teil des Namens) des zu öffnenden Arbeitsbereichs ein. In diesem Beispiel verwenden wir einen Arbeitsbereich namens **contosoanalytics**.
+    ![Auflistung von Synapse-Arbeitsbereichen, die so gefiltert wurden, dass diejenigen angezeigt werden, die den Namen „Contoso“ enthalten.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 
 ## <a name="create-new-apache-spark-pool"></a>Erstellen eines neuen Apache Spark-Pools
@@ -58,6 +60,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 
     ![Flow für die Apache Spark-Poolerstellung: Registerkarte „Grundeinstellungen“](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-02.png)
+
     > [!IMPORTANT]
     > Beachten Sie, dass für die Namen, die von Apache Spark-Pools verwendet werden können, bestimmte Einschränkungen gelten. Namen dürfen nur Buchstaben oder Ziffern enthalten und höchstens 15 Zeichen lang sein, müssen mit einem Buchstaben beginnen, dürfen keine reservierten Wörter enthalten und müssen im Arbeitsbereich eindeutig sein.
 

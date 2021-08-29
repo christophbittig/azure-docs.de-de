@@ -13,16 +13,17 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23e87c1b91de60f300adf7aa027ba1bd9704251f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95519845"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823705"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Erstellen von PHP-Web- und Workerrollen
-
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](cloud-services/includes/deprecation-announcement.md)]
 
 In diesem Leitfaden erfahren Sie, wie Sie PHP-Web- oder Workerrollen in einer Windows-Entwicklungsumgebung erstellen, eine bestimmte Version von PHP aus den "integrierten" verfügbaren Versionen auswählen, die PHP-Konfiguration ändern, Erweiterungen aktivieren und diese schließlich in Azure bereitstellen. Es wird zudem beschrieben, wie Sie eine Web- oder Workerrolle für die Nutzung einer PHP-Laufzeit konfigurieren (mit benutzerdefinierter Konfiguration und Erweiterungen), die Sie bereitstellen.
 

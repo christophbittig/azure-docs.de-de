@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1084951d63d8d7766dcf275336340e7ec93a7e9d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bdc1822422f3e8ff7a9ca63b7bcf4627cd0e8470
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890616"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346170"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Erste Schritte mit Gerätezwillingen (Node.js)
 
@@ -233,8 +233,8 @@ In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert un
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Senden von Telemetriedaten von Geräten: [Tutorial: Erste Schritte mit IoT Hub](quickstart-send-telemetry-node.md),
+* Senden von Telemetriedaten von Geräten: [Tutorial: Erste Schritte mit IoT Hub](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs),
 
 * Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings: [Tutorial: Konfigurieren Ihrer Geräte über einen Back-End-Dienst](tutorial-device-twins.md)
 
-* Interaktives Steuern von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App): [Tutorial: Verwenden von direkten Methoden](quickstart-control-device-node.md).
+* Interaktives Steuern von Geräten (z. B. Einschalten eines Lüfters über eine benutzergesteuerte App): [Schnellstart: Verwenden von direkten Methoden](./quickstart-control-device.md?pivots=programming-language-nodejs).

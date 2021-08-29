@@ -3,17 +3,18 @@ title: 'Ausführen eines SSIS-Pakets mit der Aktivität „Gespeicherte Prozedur
 description: In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer Azure Data Factory-Pipeline mithilfe der Aktivität einer gespeicherten Prozedur beschrieben.
 author: swinarko
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 06/04/2021
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08c0e844b941a8b8bc9ed110300b6bc3e5c1474c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391506"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345994"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität einer gespeicherten Prozedur in Azure Data Factory
 
@@ -69,9 +70,10 @@ Der erste Schritt besteht darin, eine Data Factory mit dem Azure-Portal zu erste
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Erstellen einer Pipeline mit einer Aktivität einer gespeicherten Prozedur
 In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche eine Pipeline. Sie fügen eine Aktivität einer gespeicherten Prozedur zur Pipeline hinzu und konfigurieren diese mit der gespeicherten Prozedur „sp_executesql“ für die Ausführung des SSIS-Pakets. 
 
-1. Klicken Sie auf der Seite „Erste Schritte“ auf **Pipeline erstellen**. 
+1. Klicken Sie auf der Startseite auf **Orchestrieren**: 
 
-    ![Seite für die ersten Schritte](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+    ![Screenshot der ADF-Startseite](./media/doc-common-process/get-started-page.png)
+
 2. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, ziehen Sie die Aktivität **Gespeicherte Prozedur** auf die Oberfläche des Pipeline-Designers, und legen Sie sie dort ab. 
 
     ![Drag & Drop-Aktivität „Gespeicherte Prozedur“](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)

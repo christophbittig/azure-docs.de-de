@@ -1,18 +1,20 @@
 ---
 title: Quelltransformation in einem Zuordnungsdatenfluss
-description: Erfahren Sie, wie Sie eine Quelltransformation in Mapping Data Flow einrichten.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Hier erfahren Sie, wie Sie eine Quelltransformation in einem Zuordnungsdatenfluss in Azure Data Factory- oder Azure Synapse Analytics-Pipelines einrichten können.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 1001ef2e76d2d7c68d709cee52ecf75278766fe4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/27/2021
+ms.openlocfilehash: ef2db7e11666c104215b29f298882cfe77631310
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340463"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Quelltransformation in einem Zuordnungsdatenfluss
 
@@ -36,28 +38,37 @@ Um ein Inline-Dataset zu verwenden, wählen Sie das gewünschte Format im Selekt
 
 ![Screenshot mit hervorgehobener Auswahl von „Inline“.](media/data-flow/inline-selector.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
 
+## <a name="workspace-db-synapse-workspaces-only"></a>Workspace DB (nur Synapse-Arbeitsbereiche)
+
+In Azure Synapse-Arbeitsbereichen gibt es in Quelltransformationen von Datenflüssen die zusätzliche Option ```Workspace DB```. Sie ermöglicht es Ihnen, eine Arbeitsbereichsdatenbank jedes verfügbaren Typs als Ihre Quelldaten auszuwählen, ohne dass zusätzliche verknüpfte Dienste oder Datasets erforderlich sind.
+
+> [!NOTE]
+> Der Workspace DB-Connector von Azure Synapse befindet sich zurzeit in der öffentlichen Vorschau und funktioniert nur bei Spark Lake-Datenbanken.
+
+![Screenshot mit hervorgehobener Auswahl „workspacedb“](media/data-flow/syms-source.png "Screenshot mit hervorgehobener Auswahl von „workspace DB“")
+
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> Unterstützte Quelltypen
 
 Der Zuordnungsdatenfluss folgt einem Ansatz zum Extrahieren, Laden und Transformieren (ELT) und funktioniert mit *Stagingdatasets* in Azure. Derzeit können die folgenden Datasets in einer Quelltransformation verwendet werden.
 
 | Connector | Format | Dataset/Inline |
 | --------- | ------ | -------------- |
-| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Cosmos DB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common Data Model](format-common-data-model.md#source-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/-<br/>✓/✓<br/>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common Data Model](format-common-data-model.md#source-properties)<br>[Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure-Datenbank für PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
 | [Azure SQL-Datenbank](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/✓ |
-| [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/✓ |
 | [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 | [SQL Server](connector-sql-server.md) | | ✓/✓ |
 
 Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Quelloptionen**. Informationen und Beispiele zu Datenflussskripts zu diesen Einstellungen finden Sie in der Connectordokumentation.
 
-Azure Data Factory hat Zugriff auf mehr als [90 native Connectors](connector-overview.md). Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um die Daten in einen der unterstützten Stagingbereiche zu laden.
+Azure Data Factory- und Synapse-Pipelines haben Zugriff auf mehr als [90 native Connectors](connector-overview.md). Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um die Daten in einen der unterstützten Stagingbereiche zu laden.
 
 ## <a name="source-settings"></a>Quelleinstellungen
 
@@ -73,11 +84,11 @@ Entwicklungswerte für Datasetparameter können in [Debugeinstellungen](concepts
 
 **Verbindung testen:** Testen Sie, ob der Spark-Dienst des Datenflusses erfolgreich eine Verbindung mit dem verknüpften Dienst herstellen kann, der in Ihrem Quelldataset verwendet wird. Damit diese Funktion aktiviert werden kann, muss der Debugmodus aktiviert sein.
 
-**Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von Data Factory, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne Spaltenänderungen explizit definieren zu müssen.
+**Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit des Diensts, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne Spaltenänderungen explizit definieren zu müssen.
 
 * Aktivieren Sie das Kontrollkästchen **Schemaabweichung zulassen**, wenn die Quellspalten sich häufig ändern. Diese Einstellung ermöglicht es, dass alle eingehenden Quellfelder durch die Transformationen zur Senke fließen.
 
-* Aktivieren Sie **Abweichende Spaltentypen ableiten**, um Data Factory anzuweisen, Datentypen für jede neue erkannte Spalte zu ermitteln und zu definieren. Wenn dieses Feature deaktiviert ist, weisen alle abweichende Spalten den Typ „String“ auf.
+* Durch Aktivieren von **Abweichende Spaltentypen ableiten** wird der Dienst angewiesen, Datentypen für jede neue erkannte Spalte zu ermitteln und zu definieren. Wenn dieses Feature deaktiviert ist, weisen alle abweichende Spalten den Typ „String“ auf.
 
 **Schema überprüfen**: Wenn **Schema überprüfen** aktiviert ist, führt das Ausführen des Datenflusses zu einem Fehler, wenn die eingehenden Daten nicht mit dem definierten Schema des Datasets übereinstimmen.
 
@@ -100,7 +111,7 @@ Wie Schemas in Datasets definiert die Projektion in einer Quelle die Datenspalte
 
 ![Screenshot der Einstellungen auf der Registerkarte „Projektion“.](media/data-flow/source3.png "Screenshot der Einstellungen auf der Registerkarte „Projektion“.")
 
-Wenn in Ihrer Textdatei kein Schema definiert ist, wählen Sie **Datentyp erkennen** aus, damit Data Factory Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln.
+Wenn in Ihrer Textdatei kein Schema definiert wurde, wählen Sie **Datentyp erkennen** aus, damit der Dienst Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln.
 
 **Schema zurücksetzen** setzt die Projektion auf die Vorgaben im referenzierten Dataset zurück.
 
@@ -116,7 +127,7 @@ Das Importieren des Schemas ist insbesondere bei Datasets wie Avro und Azure Cos
 
 Die Registerkarte **Optimieren** ermöglicht die Bearbeitung von Partitionsinformationen bei jedem Transformationsschritt. In den meisten Fällen führt **Aktuelle Partitionierung verwenden** eine Optimierung durch, um die ideale Partitionsstruktur für eine Quelle zu erreichen.
 
-Wenn Sie Daten aus einer Azure SQL-Datenbank-Quelle lesen, liest die benutzerdefinierte **Quellpartition** die Daten wahrscheinlich am schnellsten. Data Factory liest große Abfragen, indem Verbindungen mit Ihrer Datenbank parallel hergestellt werden. Diese Quellpartitionierung kann für eine Spalte oder über eine Abfrage erfolgen.
+Wenn Sie Daten aus einer Azure SQL-Datenbank-Quelle lesen, liest die benutzerdefinierte **Quellpartition** die Daten wahrscheinlich am schnellsten. Der Dienst liest große Abfragen, indem er Verbindungen mit Ihrer Datenbank parallel herstellt. Diese Quellpartitionierung kann für eine Spalte oder über eine Abfrage erfolgen.
 
 ![Screenshot der Einstellungen für die Quellpartition](media/data-flow/sourcepart3.png "Screenshot der Einstellungen der Quellpartition.")
 

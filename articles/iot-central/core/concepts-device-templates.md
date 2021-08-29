@@ -1,6 +1,6 @@
 ---
 title: Gerätevorlagen in Azure IoT Central | Microsoft-Dokumentation
-description: Mit Azure IoT Central-Gerätevorlagen können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte festlegen. Eine Gerätevorlage legt die Telemetrie, Eigenschaften und Befehle fest, die das Gerät implementieren muss. Außerdem definiert eine Gerätevorlage die Benutzeroberfläche für das Gerät in IoT Central, z. B. die von einem Operator verwendeten Formulare und Dashboards.
+description: Mit Azure IoT Central-Gerätevorlagen können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte festlegen. Eine Gerätevorlage legt die Telemetrie, Eigenschaften und Befehle fest, die das Gerät implementieren muss. Außerdem definiert eine Gerätevorlage die Benutzeroberfläche für das Gerät in IoT Central, z. B. die von einem Bediener verwendeten Formulare und Ansichten.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/19/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: ab209cd3fb598c0c9ad4df359578d956aca7077b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b2122dc50b265c31c1c21c2758e343ec88384a8b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088730"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474054"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 
@@ -24,9 +24,9 @@ Ein Lösungsgenerator fügt einer IoT Central-Anwendung Gerätevorlagen hinzu. E
 Eine Gerätevorlage enthält die folgenden Abschnitte:
 
 - _Ein Gerätemodell_. In diesem Teil der Gerätevorlage wird definiert, wie das Gerät mit Ihrer Anwendung interagiert. Ein Geräteentwickler setzt die im Modell definierten Verhalten um.
-    - _Standardkomponente_. Jedes Gerätemodell hat eine Standardkomponente. Die Schnittstelle der Standardkomponente beschreibt die spezifischen Funktionen des Gerätemodells.
-    - _Komponenten_. Ein Gerätemodell kann neben der Standardkomponente auch Komponenten enthalten, um Gerätefunktionen zu beschreiben. Jede Komponente verfügt über eine Schnittstelle, mit der die Funktionen der Komponente beschrieben werden. Komponentenschnittstellen können in anderen Gerätemodellen wiederverwendet werden. Beispielsweise können mehrere Telefongerätemodelle dieselbe Kameraschnittstelle verwenden.
-    - _Geerbte Schnittstellen_. Ein Gerätemodell enthält eine oder mehrere Schnittstellen, mit denen die Funktionen der Standardkomponente erweitert werden.
+    - _Stammkomponente_. Jedes Gerätemodell hat eine Stammkomponente. Die Schnittstelle der Stammkomponente beschreibt die spezifischen Funktionen des Gerätemodells.
+    - _Komponenten_. Ein Gerätemodell kann zusätzlich zur Stammkomponente auch Komponenten enthalten, um Gerätefunktionen zu beschreiben. Jede Komponente verfügt über eine Schnittstelle, mit der die Funktionen der Komponente beschrieben werden. Komponentenschnittstellen können in anderen Gerätemodellen wiederverwendet werden. Beispielsweise können mehrere Telefongerätemodelle dieselbe Kameraschnittstelle verwenden.
+    - _Geerbte Schnittstellen_. Ein Gerätemodell enthält eine oder mehrere Schnittstellen, mit denen die Funktionen der Stammkomponente erweitert werden.
 - _Cloudeigenschaften_. In diesem Teil der Gerätevorlage kann der Entwickler der Lösung alle zu speichernden Gerätemetadaten angeben. Cloudeigenschaften werden nicht mit Geräten synchronisiert und sind ausschließlich in der Anwendung vorhanden. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
 - _Anpassungen_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler einige der Definitionen im Gerätemodell überschreiben. Anpassungen sind nützlich, wenn der Lösungsentwickler präzisieren möchte, wie die Anwendung mit einem Wert umgeht, z. B. wenn der Anzeigename für eine Eigenschaft oder die zur Anzeige eines Telemetriewerts verwendete Farbe geändert werden soll. Anpassungen wirken sich nicht auf den Code aus, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
 - _Ansichten_. In diesem Teil der Gerätevorlage kann der Lösungsentwickler Visualisierungen zum Anzeigen von Daten aus dem Gerät und Formulare zur Verwaltung und Steuerung eines Geräts definieren. Die Ansichten enthalten das Gerätemodell, Cloudeigenschaften und Anpassungen. Ansichten haben keinen Einfluss auf den Code, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
@@ -39,7 +39,7 @@ Weitere Informationen zum Bearbeiten eines Gerätemodells finden Sie unter [Bear
 
 Ein Lösungsentwickler kann auch eine JSON-Datei exportieren, die das Gerätemodell enthält. Ein Geräteentwickler kann anhand dieses JSON-Dokuments verstehen, wie das Gerät mit der IoT Central-Anwendung kommunizieren soll.
 
-Die JSON-Datei mit der Definition des Gerätemodells verwendet [Digital Twin Definition Language (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central erwartet, dass die JSON-Datei das Gerätemodell mit inline und nicht in separaten Dateien definierten Schnittstellen enthält. Weitere Informationen finden Sie im [Modellhandbuch für IoT Plug & Play](../../iot-pnp/concepts-modeling-guide.md).
+Die JSON-Datei mit der Definition des Gerätemodells verwendet [Digital Twin Definition Language (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central erwartet, dass die JSON-Datei das Gerätemodell mit inline und nicht in separaten Dateien definierten Schnittstellen enthält. Weitere Informationen finden Sie im [Modellhandbuch für IoT Plug & Play](../../iot-develop/concepts-modeling-guide.md).
 
 Ein typisches IoT-Gerät besteht aus folgenden Komponenten:
 
@@ -48,7 +48,7 @@ Ein typisches IoT-Gerät besteht aus folgenden Komponenten:
 
 Diese Komponenten werden in einem Gerätemodell als _Schnittstellen_ bezeichnet. Schnittstellen definieren die Details der einzelnen mit Ihrem Gerät implementierten Komponenten. Schnittstellen lassen sich in mehreren Gerätemodellen wiederverwenden. In DTDL verweist eine Komponente auf eine andere Schnittstelle, die in einer separaten DTDL-Datei oder in einem separaten Abschnitt der Datei definiert werden kann.
 
-Das folgende Beispiel zeigt die Gliederung des Gerätemodells für ein [Temperatursteuerungsgerät](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json). Die Standardkomponente enthält Definitionen für `workingSet`, `serialNumber`und `reboot`. Das Gerätemodell umfasst auch zwei `thermostat`-Komponenten und eine `deviceInformation`-Komponente. Der Inhalt der drei Komponenten wurde der Prägnanz halber entfernt:
+Das folgende Beispiel zeigt die Gliederung des Gerätemodells für ein [Temperatursteuerungsgerät](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json). Die Stammkomponente enthält Definitionen für `workingSet`, `serialNumber` und `reboot`. Das Gerätemodell umfasst auch zwei `thermostat`-Komponenten und eine `deviceInformation`-Komponente. Der Inhalt der drei Komponenten wurde der Prägnanz halber entfernt:
 
 ```json
 [
@@ -295,7 +295,7 @@ Bei beschreibbaren Eigenschaften gibt die Geräteanwendung den Statuscode, die V
 
 ## <a name="telemetry"></a>Telemetrie
 
-Mit IoT Central können Sie Telemetrie auf Dashboards und in Diagrammen anzeigen und Regeln verwenden, um Aktionen auszulösen, wenn Schwellenwerte erreicht werden. IoT Central verwendet die Informationen im Gerätemodell wie Datentypen, Einheiten und Anzeigenamen, um zu bestimmen, wie Telemetriewerte angezeigt werden sollen.
+Mit IoT Central können Sie Telemetrie in Geräteansichten und Diagrammen anzeigen sowie Regeln zum Auslösen von Aktionen verwenden, wenn Schwellenwerte erreicht werden. IoT Central verwendet die Informationen im Gerätemodell wie Datentypen, Einheiten und Anzeigenamen, um zu bestimmen, wie Telemetriewerte angezeigt werden sollen. Sie können Telemetriewerte auch auf Anwendungsdashboards und persönlichen Dashboards anzeigen.
 
 Sie können die Datenexportfunktion von IoT Central nutzen, um Telemetrie an andere Ziele wie Azure Storage oder Event Hubs zu streamen.
 
@@ -318,7 +318,7 @@ Offlinebefehle sind unidirektionale Benachrichtigungen aus Ihrer Lösung an das 
 
 Cloudeigenschaften sind Teil der Gerätevorlage, aber nicht des Gerätemodells. Mit Cloudeigenschaften kann der Lösungsentwickler Gerätemetadaten angeben, die in der IoT Central-Anwendung gespeichert werden sollen. Cloudeigenschaften haben keinen Einfluss auf den Code, den ein Geräteentwickler zum Implementieren des Gerätemodells schreibt.
 
-Ein Lösungsentwickler kann neben den Geräteeigenschaften auch Cloudeigenschaften zu Dashboards und Ansichten hinzufügen, um einen Bediener in die Lage zu versetzen, die mit der Anwendung verbundenen Geräte zu verwalten. Ein Lösungsentwickler kann Cloudeigenschaften auch als Teil einer Regeldefinition verwenden, damit ein Schwellenwert von einem Bediener bearbeitet werden kann.
+Ein Lösungsentwickler kann neben Geräteeigenschaften auch Cloudeigenschaften zu Geräteansichten und Formularen hinzufügen, um es einem Bediener zu ermöglichen, die mit der Anwendung verbundenen Geräte zu verwalten. Ein Lösungsentwickler kann Cloudeigenschaften auch als Teil einer Regeldefinition verwenden, damit ein Schwellenwert von einem Bediener bearbeitet werden kann.
 
 ## <a name="customizations"></a>Anpassungen
 

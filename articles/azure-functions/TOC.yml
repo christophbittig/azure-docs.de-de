@@ -290,8 +290,6 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
-                - name: C# isoliert (.NET 5)
-                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Java mit Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java mit Eclipse
@@ -461,7 +459,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Überblick
+            - name: Übersicht
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -517,6 +515,8 @@
           href: /python/api/azure-functions/azure.functions
     - name: Referenz zu App-Einstellungen
       href: functions-app-settings.md
+    - name: Azure Functions Core Tools
+      href: functions-core-tools-reference.md
     - name: Trigger und Bindungen
       items:
         - name: Blob Storage

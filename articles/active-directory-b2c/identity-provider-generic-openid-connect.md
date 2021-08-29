@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 51639df9115032beefd04e6eb114c0d62e61ed88
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382928"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "122639652"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit OpenID Connect mithilfe von Azure Active Directory B2C
 
-[OpenID Connect](openid-connect.md) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, das für die sichere Anmeldung von Benutzern verwendet werden kann. Die meisten Identitätsanbieter, die dieses Protokoll verwenden, werden in Azure AD B2C unterstützt. In diesem Artikel wird erläutert, wie Sie benutzerdefinierte OpenID Connect-Identitätsanbieter zu Ihren Benutzerflows hinzufügen können.
+[OpenID Connect](openid-connect.md) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, das für die sichere Anmeldung von Benutzern verwendet werden kann. Die meisten Identitätsanbieter, die dieses Protokoll verwenden, werden in Azure AD B2C unterstützt. 
+
+In diesem Artikel wird erläutert, wie Sie benutzerdefinierte OpenID Connect-Identitätsanbieter zu Ihren Benutzerflows hinzufügen können.
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="add-the-identity-provider"></a>Hinzufügen des Identitätsanbieters
 

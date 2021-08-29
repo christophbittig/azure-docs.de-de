@@ -1,20 +1,20 @@
 ---
 title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Factory
-description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory v1 und Azure Machine Learning Studio (klassisch).
+description: Informationen zum Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory v1 und ML Studio (klassisch)
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 2d9156bfcc11817a647c33053a2d04c653c0a706
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 42a1318ffb4c0063875939c8d3633ea513818ba4
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785494"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397072"
 ---
-# <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning Studio (klassisch)-Modellen mithilfe der Ressourcenaktualisierungsaktivität
+# <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>Aktualisieren von Modellen für ML Studio (klassisch) mithilfe der Ressourcenaktualisierungsaktivität
 
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
 > * [Hive-Aktivität](data-factory-hive-activity.md) 
@@ -22,8 +22,8 @@ ms.locfileid: "104785494"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
+> * [Batch Execution-Aktivität für ML Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für ML Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -32,26 +32,26 @@ ms.locfileid: "104785494"
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [update machine learning models in Data Factory](../update-machine-learning-models.md) (Aktualisieren von Machine Learning-Modellen in Data Factory).
 
-Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Integration von Azure Machine Learning Studio (Classic): [Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
+Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory – Integration von ML Studio (klassisch): [Erstellen von Vorhersagepipelines mithilfe von ML Studio (klassisch) und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
 
 ## <a name="overview"></a>Übersicht
-Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten für Azure Machine Learning Studio (klassisch) mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Modellen für Studio (klassisch) über Webdienste zu ermöglichen:
+Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten zu ML Studio (klassisch) mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Modellen für Studio (klassisch) über Webdienste zu ermöglichen:
 
-1. Erstellen Sie ein Experiment in [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net).
-2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie Azure Machine Learning Studio (klassisch), um Webdienste für das **Trainingsexperiment** und das Bewertungs-/**Vorhersageexperiment** zu veröffentlichen.
+1. Erstellen Sie ein Experiment in [ML Studio (klassisch)](https://studio.azureml.net).
+2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie ML Studio (klassisch) zum Veröffentlichen von Webdiensten für das **Trainingsexperiment** und das **Bewertungs-/Vorhersageexperiment**.
 
-In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste beschrieben.  Details finden Sie unter [Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells](../../machine-learning/classic/retrain-machine-learning-model.md).
+In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste beschrieben.  Ausführliche Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren von Modellen für ML Studio (klassisch)](../../machine-learning/classic/retrain-machine-learning-model.md).
 
 - **Trainingswebdienst**: Empfängt Trainingsdaten und erzeugt trainierte Modelle. Die Ausgabe des erneuten Trainierens ist eine ILEARNER-Datei in Azure Blob Storage. Der **Standardendpunkt** wird automatisch erstellt, wenn Sie das Trainingsexperiment als Webdienst veröffentlichen. Sie können weitere Endpunkte erstellen, aber im Beispiel wird nur der Standardendpunkt verwendet.
 - **Bewertungswebdienst**: Empfängt Datenbeispiele ohne Bezeichnung und macht Vorhersagen. Die Ausgabe der Vorhersage kann verschiedene Formen aufweisen, z. B. eine CSV-Datei oder Zeilen in Azure SQL-Datenbank. Dies ist abhängig von der Konfiguration des Experiments. Der Standardendpunkt wird automatisch erstellt, wenn Sie das Vorhersageexperiment als Webdienst veröffentlichen. 
 
-Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Bewertungsendpunkten in Azure Machine Learning Studio (klassisch):
+Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Bewertungsendpunkten in ML Studio (klassisch).
 
-![WEB SERVICES](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+![Webdienste](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-Sie können den **Trainingswebdienst** mithilfe der **Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)** aufrufen. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Webdiensts für Azure Machine Learning Studio (klassisch) (Bewertungswebdienst) für Bewertungsdaten. In den oben aufgeführten Abschnitten wird detailliert beschrieben, wie ein Webdienst für Azure Machine Learning Studio (klassisch) über eine Azure Data Factory-Pipeline aufgerufen wird. 
+Sie können mithilfe der **Batch Execution-Aktivität für ML Studio (klassisch)** den **Trainingswebdienst** aufrufen. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Webdiensts für ML Studio (klassisch) (Bewertungswebdienst) für Bewertungsdaten. In den vorstehenden Abschnitten wurde detailliert beschrieben, wie ein Webdienst für ML Studio (klassisch) über eine Azure Data Factory-Pipeline aufgerufen wird. 
 
-Sie können den **Bewertungswebdienst** aufrufen, indem Sie die **Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)** verwenden, um den Webdienst mit dem neu trainierten Modell zu aktualisieren. Die folgenden Beispiele enthalten Definitionen von verknüpften Diensten: 
+Sie können den **Bewertungswebdienst** aufrufen, indem Sie ihn mithilfe der **Ressourcenaktualisierungsaktivität für ML Studio (klassisch)** mit dem neu trainierten Modell aktualisieren. Die folgenden Beispiele enthalten Definitionen von verknüpften Diensten: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Der Bewertungswebdienst ist ein klassischer Webdienst.
 Wenn der Bewertungswebdienst ein **klassischer Webdienst** ist, erstellen Sie den zweiten **nicht standardmäßigen und aktualisierbaren Endpunkt** mithilfe des Azure-Portals. Die erforderlichen Schritte finden Sie im Artikel [Erstellen von Endpunkten](../../machine-learning/classic/create-endpoint.md). Führen Sie folgende Schritte aus, nachdem Sie den nicht standardmäßigen aktualisierbaren Endpunkt erstellt haben:
@@ -84,7 +84,7 @@ Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-E
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Beim Abfragen des Webdiensts im [Azure Machine Learning Studio (Classic) Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen. Der neue Typ der Ressourcenendpunktaktualisierung erfordert ein AAD (Azure Active Directory)-Token. Geben Sie im mit Studio (klassisch) verknüpften Dienst **servicePrincipalId** und **servicePrincipalKey** an. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../../active-directory/develop/howto-create-service-principal-portal.md). Hier sehen Sie ein Beispiel für eine Definition des verknüpften AzureML-Diensts: 
+Beim Abfragen des Webdiensts im [Web Services-Portal für ML Studio (klassisch)](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen. Der neue Typ der Ressourcenendpunktaktualisierung erfordert ein AAD (Azure Active Directory)-Token. Geben Sie im mit Studio (klassisch) verknüpften Dienst **servicePrincipalId** und **servicePrincipalKey** an. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../../active-directory/develop/howto-create-service-principal-portal.md). Hier sehen Sie ein Beispiel für eine Definition des verknüpften AzureML-Diensts: 
 
 ```json
 {
@@ -107,7 +107,7 @@ Beim Abfragen des Webdiensts im [Azure Machine Learning Studio (Classic) Web Ser
 Das folgende Szenario enthält weitere Details hierzu. Es enthält ein Beispiel für das erneute Trainieren und das Aktualisieren von Modellen für Studio (klassisch) über eine Azure Data Factory-Pipeline.
 
 ## <a name="scenario-retraining-and-updating-a-studio-classic-model"></a>Szenario: Erneutes Trainieren und Aktualisieren eines Modells für Studio (klassisch)
-Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Batchausführungsaktivität von Azure Machine Learning Studio (Classic)** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Aktivität zur Ressourcenaktualisierung von Azure Machine Learning Studio (Classic)** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
+Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Batch Execution-Aktivität für ML Studio (klassisch)** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Ressourcenaktualisierungsaktivität für ML Studio (klassisch)** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
 
 Im Folgenden ist die Diagrammansicht der Beispielpipeline dargestellt. Wie Sie sehen können, übernimmt die Batchausführungsaktivität für Studio (klassisch) die Trainingseingabe und erzeugt eine Trainingsausgabe (iLearner-Datei). Die Ressourcenaktualisierungsaktivität für Studio (klassisch) verwendet diese Trainingsausgabe und aktualisiert das Modell im Bewertungswebdienst-Endpunkt. Die Ressourcenaktualisierungsaktivität erzeugt keine Ausgabe. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
@@ -165,7 +165,7 @@ Das folgende Dataset stellt die Trainingseingabedaten für den Trainingswebdiens
 ```
 
 ### <a name="training-output-dataset"></a>Trainingsausgabedataset:
-Das folgende Dataset stellt die iLearner-Ausgabedatei des Trainingswebdiensts für Azure Machine Learning Studio (klassisch) dar. Die Batchausführungsaktivität für Azure Machine Learning Studio (Classic) generiert dieses Dataset. Dieses Dataset ist darüber hinaus die Eingabe für die Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch).
+Das folgende Dataset stellt die iLearner-Ausgabedatei aus dem Trainingswebdienst für ML Studio (klassisch) dar. Die Batchausführungsaktivität (Batch Execution-Aktivität) für ML Studio (klassisch) generiert dieses Dataset. Dieses Dataset ist auch die Eingabe für die Ressourcenaktualisierungsaktivität für ML Studio (klassisch).
 
 ```JSON
 {
@@ -204,12 +204,12 @@ Der folgende JSON-Codeausschnitt definiert einen mit Studio (klassisch) verknüp
 }
 ```
 
-Führen Sie in **Azure Machine Learning Studio (klassisch)** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
+Führen Sie in **ML Studio (klassisch)** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
 
 1. Klicken Sie im linken Menü auf **WEB SERVICES** .
 2. Klicken Sie in der Liste der Webdienste auf den **Trainingswebdienst** .
 3. Klicken Sie neben dem Textfeld **API-Schlüssel** auf „Kopieren“. Fügen Sie den Schlüssel aus der Zwischenablage in den Data Factory-JSON-Editor ein.
-4. Klicken Sie in **Azure Machine Learning Studio (klassisch)** auf den Link **BATCHAUSFÜHRUNG**.
+4. Klicken Sie in **ML Studio (klassisch)** auf den Link **BATCHAUSFÜHRUNG**.
 5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.   
 
 ### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Bewertungsendpunkt von Studio (klassisch):
@@ -256,7 +256,7 @@ Die Ressourcenaktualisierungsaktivität für Studio (klassisch) generiert keine 
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität für Azure Machine Learning Studio (klassisch) verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
+Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität (Batch Execution-Aktivität) für ML Studio (klassisch) verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
 ![Pipelinediagramm](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

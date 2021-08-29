@@ -7,18 +7,18 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0868720668f5db09748e6976327f1500bc8a4781
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8d85f5f18ad21b5a27a7fdb48e9ee14ab751f5d5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733353"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757898"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>Migrieren Ihrer V2-IoT Central-Anwendung zu V3
 
 Wenn Sie zurzeit eine neue IoT Central-Anwendung erstellen, ist dies eine V3-Anwendung. Wenn Sie früher eine Anwendung erstellt haben, ist sie – je nach dem Zeitpunkt ihrer Erstellung – möglicherweise V2. In diesem Artikel wird beschrieben, wie Sie eine V2- zu einer V3-Anwendung migrieren, um sicherzustellen, dass Sie die neuesten IoT Central-Features verwenden.
 
-Wenn Sie erfahren möchten, wie die Version einer IoT Central-Anwendung identifiziert werden kann, lesen Sie [About your application](howto-get-app-info.md) (Informationen zu Ihrer Anwendung).
+Wenn Sie erfahren möchten, wie Sie die Version einer IoT Central-Anwendung identifizieren können, lesen Sie [Wie kann ich Informationen zu meiner Anwendung erhalten?](howto-faq.yml#how-do-i-get-information-about-my-application-).
 
 Führen Sie zum Migrieren einer Anwendung von V2 zu V3 folgende Schritte aus:
 
@@ -72,7 +72,7 @@ Nachdem Ihre neue V3-Anwendung erstellt wurde, nehmen Sie alle Konfigurationsän
 
 Hier sind einige empfohlene Konfigurationsschritte, die zu beachten sind:
 
-- [Konfigurieren von Dashboards](howto-add-tiles-to-your-dashboard.md)
+- [Konfigurieren von Dashboards](howto-manage-dashboards.md)
 - [Konfigurieren des Datenexports](howto-export-data.md)
 - [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central (Previewfunktionen)](quick-configure-rules.md)
 - [Anpassen der Anwendungsbenutzeroberfläche](howto-customize-ui.md)

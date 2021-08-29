@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 08/07/2019
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 496a1225d5e9554fc661e0c93ce82a13f6aa11d5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: cb0c6bd32c2bb1087635ee9ae61c0c569d3575f2
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356124"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -53,7 +53,7 @@ Ferner müssen Sie einige zusätzliche, sprachspezifische Tools installieren, um
 
 - Node.js: [Node.js](https://nodejs.org). Sie sollten außerdem [Yeoman](https://www.npmjs.com/package/yo) und den [Azure IoT Edge Node.js-Modulgenerator](https://www.npmjs.com/package/generator-azure-iot-edge-module) installieren.
 
-- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) und [Maven](https://maven.apache.org/). Sie müssen [die `JAVA_HOME`-Umgebungsvariable so festlegen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), dass sie auf Ihre JDK-Installation verweist.
+- Java: [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-support-on-azure) und [Maven](https://maven.apache.org/). Sie müssen [die `JAVA_HOME`-Umgebungsvariable so festlegen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), dass sie auf Ihre JDK-Installation verweist.
 
 Um Ihr Modulimage zu erstellen und bereitzustellen, müssen Sie Docker das Modulimage erstellen lassen und benötigen eine Containerregistrierung, die das Modulimage aufnimmt:
 
@@ -69,7 +69,7 @@ Sofern Sie Ihr Modul nicht in C entwickeln, benötigen Sie außerdem das Python-
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
-   
+
 > [!NOTE]
 > „iotedgehubdev“ verwendet derzeit eine docker-py-Bibliothek, die nicht mit Python 3.8 kompatibel ist.
 >
@@ -109,6 +109,8 @@ Es gibt vier Elemente in der Projektmappe:
 
 - Eine **.env**-Datei, in der Ihre Umgebungsvariablen aufgeführt werden. Wenn Azure Container Registry Ihre Registrierung ist, enthält sie einen Azure Container Registry-Benutzernamen und ein Kennwort.
 
+  In Produktionsszenarien empfehlen wir die Verwendung von Dienstprinzipalen, um Zugriff auf Ihre Containerregistrierung statt der ENV-Datei zu ermöglichen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
+
   > [!NOTE]
   > Die Umgebungsdatei wird nur erstellt, wenn Sie ein Imagerepository für das Modul angeben. Wenn Sie die „localhost“-Standardeinstellungen zum lokalen Testen und Debuggen akzeptiert haben, müssen Sie keine Umgebungsvariablen deklarieren.
 
@@ -139,16 +141,20 @@ Wenn Sie bereit sind, die Vorlage mit Ihrem eigenen Code anzupassen, erstellen S
 
 Wenn Sie in C#, Node.js oder Java entwickeln, ist für Ihr Modul die Verwendung eines **ModuleClient**-Objekts im Standardcode des Moduls erforderlich, damit es gestartet und ausgeführt werden und Nachrichten weiterleiten kann. Sie verwenden außerdem den Standardeingabekanal **input1** für Aktionen, wenn das Modul Nachrichten empfängt.
 
-### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>Einrichten des IoT Edge-Simulators für eine IoT Edge-Projektmappe
+### <a name="set-up-iot-edge-simulator"></a>Einrichten des IoT Edge-Simulators
 
-Auf dem Entwicklungscomputer müssen Sie zum Ausführen der IoT Edge-Projektmappe nicht den IoT Edge-Sicherheits-Daemon installieren, sondern können den IoT Edge-Simulator starten.
+IoT Edge-Module benötigen eine IoT Edge-Umgebung zum Ausführen und Debuggen. Sie können auf Ihrem Entwicklungscomputer einen IoT Edge-Simulator verwenden, statt den vollständigen IoT Edge-Sicherheitsdaemon und die IoT Edge-Runtime auszuführen. Sie können entweder ein Gerät simulieren, um Lösungen mit mehreren Modulen zu debuggen, oder eine einzelne Modulanwendung simulieren.
+
+Option 1: Simulieren einer IoT Edge-Lösung:
 
 1. Erweitern Sie in der Registerkarte **Explorer** auf der linken Seite den Abschnitt **Azure IoT Hub**. Klicken Sie mit der rechten Maustaste auf Ihre IoT Edge-Geräte-ID, und wählen Sie dann **IoT Edge Simulator einrichten** aus, um den Simulator ohne die Geräteverbindungszeichenfolge zu starten.
 1. Sie können sehen, dass der IoT Edge-Simulator erfolgreich eingerichtet wurde, indem Sie die Verlaufsdetails im integrierten Terminal lesen.
 
-### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>Einrichten des IoT Edge-Simulators für die Einzelmodul-App
+Option 2: Simulieren eines einzelnen IoT Edge-Moduls:
 
-Um den Simulator einzurichten und zu starten, führen Sie den Befehl **Azure IoT Edge: Edge Hub-Simulator für Einzelmodul starten** in der Visual Studio Code-Befehlspalette aus. Wenn Sie aufgefordert werden, verwenden Sie den Wert **input1** aus dem Modulstandardcode (oder den entsprechenden Wert aus Ihrem Code) als Eingabenamen für Ihre Anwendung. Der Befehl öffnet das **iotedgehubdev**-CLI und startet anschließend den IoT Edge-Simulator und einen Modulcontainer eines Testhilfsprogramms. Die Ausgaben werden unten im integrierten Terminal angezeigt, wenn der Simulator im Einzelmodulmodus erfolgreich gestartet wurde. Angezeigt wird auch ein `curl`-Befehl, über den das Senden von Nachrichten erfolgen kann. Er wird später noch benötigt.
+1. Führen Sie in der Visual Studio Code-Befehlspalette den Befehl **Azure IoT Edge: Edge Hub-Simulator für Einzelmodul starten** aus.
+1. Geben Sie die Namen aller Eingaben an, die Sie mit Ihrem Modul testen möchten. Wenn Sie den Standardbeispielcode verwenden, geben Sie den Wert **input1** an.
+1. Der Befehl öffnet das **iotedgehubdev**-CLI und startet anschließend den IoT Edge-Simulator und einen Modulcontainer eines Testhilfsprogramms. Die Ausgaben werden unten im integrierten Terminal angezeigt, wenn der Simulator im Einzelmodulmodus erfolgreich gestartet wurde. Angezeigt wird auch ein `curl`-Befehl, über den das Senden von Nachrichten erfolgen kann. Er wird später noch benötigt.
 
    ![Einrichten des IoT Edge-Simulators für die Einzelmodul-App](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -160,6 +166,8 @@ Um den Simulator einzurichten und zu starten, führen Sie den Befehl **Azure IoT
 
 ### <a name="debug-module-in-launch-mode"></a>Modul im Startmodus debuggen
 
+Nachdem der Simulator erfolgreich gestartet wurde, können Sie Ihren Modulcode debuggen.
+
 1. Bereiten Sie Ihre Umgebung entsprechend den Anforderungen Ihrer Entwicklungssprache für das Debuggen vor, legen Sie einen Haltepunkt in Ihrem Modul fest, und wählen Sie die zu verwendende Debugkonfiguration aus:
    - **C#**
      - Führen Sie im integrierten Terminal von Visual Studio Code einen Verzeichniswechsel zum Ordner ***&lt;Name Ihres Moduls&gt;*** durch, und führen Sie dann den folgenden Befehl aus, um die .NET Core-Anwendung zu erstellen.
@@ -170,7 +178,7 @@ Um den Simulator einzurichten und zu starten, führen Sie den Befehl **Azure IoT
 
      - Öffnen Sie die Datei `Program.cs`, und fügen Sie einen Haltepunkt hinzu.
 
-     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie **Ansicht > Debuggen** auswählen. Wählen Sie in der Dropdownliste die Debugkonfiguration **_&lt;Name Ihres Moduls&gt;_ Local Debug (.NET Core)** aus.
+     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie im Menü auf der linken Seite das Debugsymbol auswählen oder `Ctrl+Shift+D` eingeben. Wählen Sie in der Dropdownliste die Debugkonfiguration ***&lt;Name Ihres Moduls&gt;* Local Debug (.NET Core)** aus.
 
         > [!NOTE]
         > Wenn Ihr .NET Core-`TargetFramework` nicht mit Ihrem Programmpfad in `launch.json` übereinstimmt, müssen Sie den Programmpfad in `launch.json` manuell aktualisieren, damit er zum `TargetFramework` in Ihrer CSPROJ-Datei passt, so dass Visual Studio Code dieses Programm erfolgreich starten kann.
@@ -184,11 +192,11 @@ Um den Simulator einzurichten und zu starten, führen Sie den Befehl **Azure IoT
 
      - Öffnen Sie die Datei `app.js`, und fügen Sie einen Haltepunkt hinzu.
 
-     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie **Ansicht > Debuggen** auswählen. Wählen Sie aus der Dropdownliste die Debugkonfiguration **_&lt;Name Ihres Moduls&gt;_ Local Debug (Node.js)** aus.
+     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie im Menü auf der linken Seite das Debugsymbol auswählen oder `Ctrl+Shift+D` eingeben. Wählen Sie aus der Dropdownliste die Debugkonfiguration ***&lt;Name Ihres Moduls&gt;* Local Debug (Node.js)** aus.
    - **Java**
      - Öffnen Sie die Datei `App.java`, und fügen Sie einen Haltepunkt hinzu.
 
-     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie **Ansicht > Debuggen** auswählen. Wählen Sie aus der Dropdownliste die Debugkonfiguration **_&lt;Name Ihres Moduls&gt;_ Local Debug (Java)** aus.
+     - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie im Menü auf der linken Seite das Debugsymbol auswählen oder `Ctrl+Shift+D` eingeben. Wählen Sie aus der Dropdownliste die Debugkonfiguration ***&lt;Name Ihres Moduls&gt;* Local Debug (Java)** aus.
 
 1. Klicken Sie auf **Debuggen starten**, oder drücken Sie **F5**, um die Debugsitzung zu starten.
 

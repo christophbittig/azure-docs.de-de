@@ -2,17 +2,18 @@
 title: Übersicht über Vorlagen
 description: Erfahren Sie, wie Sie mithilfe einer vordefinierten Vorlage schnell den Einstieg in Azure Data Factory finden.
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 01/04/2019
-ms.openlocfilehash: a95ef6e04f7a49f33f2bb0551110d7aa0f9bd581
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: bfd63e048d2783d84dbc37710851492134b6d0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905610"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355396"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -24,9 +25,9 @@ Vorlagen sind vordefinierte Azure Data Factory-Pipelines, die Ihnen den schnelle
 
 Sie können mit dem Erstellen einer Data Factory-Pipeline aus einer Vorlage beginnen. Dabei haben Sie die folgenden zwei Möglichkeiten:
 
-1.  Wählen Sie auf der Seite „Übersicht“ die Option **Pipeline aus Vorlage erstellen** aus, um den Vorlagenkatalog zu öffnen.
+1.  Wählen Sie auf der Startseite von Data Factory im Abschnitt **Weitere Informationen** die Option **Pipelinevorlagen** aus, um den Vorlagenkatalog zu öffnen.
 
-    ![Vorlagenkatalog über die Seite „Übersicht“ öffnen](media/solution-templates-introduction/templates-intro-image1.png)
+    ![Vorlagenkatalog über die Seite „Übersicht“ öffnen](media/doc-common-process/home-page-pipeline-templates-tile.png)
 
 1.  Wählen Sie im Ressourcen-Explorer auf der Registerkarte „Autor“ das Pluszeichen ( **+** ) aus, und wählen Sie dann **Pipeline aus Vorlage** aus, um den Vorlagenkatalog zu öffnen.
 

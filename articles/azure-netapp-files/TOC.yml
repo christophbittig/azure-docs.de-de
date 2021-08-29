@@ -75,7 +75,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Vorteile der Verwendung von Azure NetApp Files für die elektronische Entwurfsautomatisierung
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: Vorteile der Verwendung von Azure NetApp Files mit Windows Virtual Desktop
+            - name: Vorteile der Verwendung von Azure NetApp Files mit Azure Virtual Desktop
               href: solutions-windows-virtual-desktop.md
             - name: "Vorteile der Verwendung von Azure NetApp Files für die SQL\_Server-Bereitstellung"
               href: solutions-benefits-azure-netapp-files-sql-server.md
@@ -119,8 +119,8 @@
       items:
         - name: Erstellen eines SMB-Volumes
           href: azure-netapp-files-create-volumes-smb.md
-        - name: Konvertieren vorhandener SMB-Volumes zur Verwendung von fortlaufender Verfügbarkeit
-          href: convert-smb-continuous-availability.md
+        - name: Aktivieren der fortlaufenden Verfügbarkeit auf vorhandenen SMB-Volumes
+          href: enable-continuous-availability-existing-SMB.md
     - name: Erstellen eines Dual-Protokoll-Volumes
       href: create-volumes-dual-protocol.md
     - name: "Konfigurieren von ADDS\_LDAP über TLS"
@@ -129,6 +129,8 @@
       href: azure-netapp-files-configure-export-policy.md
     - name: Mounten oder unmounten eines Volumes
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+    - name: Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers
+      href: configure-unix-permissions-change-ownership-mode.md
     - name: Verwalten von Momentaufnahmen
       href: azure-netapp-files-manage-snapshots.md
     - name: Ändern der Größe eines Kapazitätspools oder Volumes

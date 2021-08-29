@@ -2,20 +2,18 @@
 title: Automatische Bereitstellung von Geräten mit DPS mithilfe von X.509-Zertifikaten – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden von X.509-Zertifikaten zum Testen der automatischen Gerätebereitstellung für Azure IoT Edge mithilfe des Device Provisioning-Diensts
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.reviewer: kevindaw
-ms.date: 03/01/2021
+ms.date: 06/18/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 180226741d77defb0a9f0d00165cf858cb65ecbb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 4095207fbc4fbbf4cb3f6463e3091717fcd3921a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346782"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe von X.509-Zertifikaten
 
@@ -216,7 +214,28 @@ Nachdem nun eine Registrierung für dieses Gerät vorhanden ist, kann die IoT Ed
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Die Komponenten werden in Containern ausgeführt, und Sie können weitere Container auf dem Gerät bereitstellen, um Code im Edge-Bereich auszuführen.
 
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
+
+Führen Sie die entsprechenden Schritte aus, um Azure IoT Edge basierend auf Ihrem Betriebssystem zu installieren:
+
+* [Installieren von IoT Edge für Linux](how-to-install-iot-edge.md)
+* [Installieren von IoT Edge für Linux auf Windows-Geräten](how-to-install-iot-edge-on-windows.md)
+  * Dieses Szenario ist die empfohlene Methode zum Ausführen von IoT Edge auf Windows-Geräten.
+* [Installieren von IoT Edge mit Windows-Containern](how-to-install-iot-edge-windows-on-windows.md)
+
+Sobald IoT Edge auf Ihrem Gerät installiert wurde, kehren Sie zu diesem Artikel zurück, um das Gerät zu bereitstellen.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 Führen Sie die Schritte in [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md) aus, und kehren Sie dann zu diesem Artikel zurück, um das Gerät bereitzustellen.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Die X.509-Bereitstellung mit DPS wird in IoT Edge erst ab Version 1.0.9 unterstützt.
 
@@ -230,7 +249,7 @@ Halten Sie die folgenden Informationen bereit:
 * Die Kettendatei für das Geräteidentitätszertifikat auf dem Gerät.
 * Die Schlüsseldatei für die Geräteidentität auf dem Gerät.
 
-### <a name="linux-device"></a>Linux-Gerät
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -338,7 +357,57 @@ Halten Sie die folgenden Informationen bereit:
 :::moniker-end
 <!-- end 1.2 -->
 
-### <a name="windows-device"></a>Windows-Gerät
+# <a name="linux-on-windows"></a>[Linux unter Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+Sie können Ihr IoT Edge-Gerät mithilfe von PowerShell oder Windows Admin Center bereitstellen.
+
+### <a name="powershell"></a>PowerShell
+
+Führen Sie für PowerShell den folgenden Befehl mit den Platzhalterwerten aus, die mit Ihren eigenen Werten aktualisiert wurden:
+
+```powershell
+Provision-EflowVm -provisioningType DPSX509 -scopeId <ID_SCOPE_HERE> -identityCertPath <ABSOLUTE_CERT_DEST_PATH_ON_WINDOWS_HOST> -identityPrivKeyPath <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_WINDOWS_HOST>
+```
+
+### <a name="windows-admin-center"></a>Windows Admin Center
+
+Führen Sie für Windows Admin Center die folgenden Schritte aus:
+
+1. Wählen Sie im Bereich **Azure IoT Edge-Gerätebereitstellung** in der Dropdownliste mit den Bereitstellungsmethoden **X.509-Zertifikat (DPS)** aus.
+
+1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/) zu Ihrer DPS-Instanz.
+
+1. Kopieren Sie auf der Registerkarte **Übersicht** den Wert **ID-Bereich**. Fügen Sie ihn in Windows Admin Center in das Feld mit der Bereichs-ID ein.
+
+1. Geben Sie die Registrierungs-ID Ihres Geräts in das Feld „Registrierungs-ID“ in Windows Admin Center ein.
+
+1. Laden Sie die Dateien mit Ihrem Zertifikat und dem privaten Schlüssel hoch.
+
+1. Wählen Sie **Provisioning with the selected method** (Mit der ausgewählten Methode bereitstellen) aus.
+
+   ![Auswählen von „Provisioning with the selected method“ (Mit der ausgewählten Methode bereitstellen) nach dem Ausfüllen der erforderlichen Felder für die Bereitstellung mit X.509-Zertifikaten](./media/how-to-install-iot-edge-on-windows/provisioning-with-selected-method-x509-certs.png)
+
+1. Nachdem die Bereitstellung abgeschlossen ist, wählen Sie **Fertig stellen** aus. Daraufhin gelangen Sie wieder zum Hauptdashboard. Nun sollte ein neues Gerät mit dem Typ `IoT Edge Devices` aufgeführt werden. Sie können das IoT Edge-Gerät auswählen, um eine Verbindung damit herzustellen. Auf der zugehörigen Seite **Übersicht** können Sie die **Liste der IoT Edge-Module** und den **IoT Edge-Status** Ihres Geräts anzeigen.
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Zurzeit wird die Ausführung von IoT Edge, Version 1.2, unter IoT Edge für Linux für Windows nicht unterstützt.
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. Öffnen Sie ein PowerShell-Fenster im Administratormodus. Bei der Installation von IoT Edge müssen Sie eine AMD64-Sitzung von PowerShell – nicht PowerShell (x86) – verwenden.
 
@@ -358,15 +427,29 @@ Halten Sie die folgenden Informationen bereit:
    >[!TIP]
    >In der Konfigurationsdatei werden Ihre Zertifikat- und Schlüsselinformationen als Datei-URIs gespeichert. Weil aber der Befehl „Initialize-IoTEdge“ diesen Formatierungsschritt automatisch verarbeitet, können Sie den absoluten Pfad zu den Zertifikats- und Schlüsseldateien auf Ihrem Gerät bereitstellen.
 
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Zurzeit wird die Ausführung von IoT Edge, Version 1.2, unter Windows nicht unterstützt.
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
+
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
 Wenn die Runtime erfolgreich gestartet wurde, können Sie zu Ihrem IoT Hub navigieren und mit dem Bereitstellen von IoT Edge-Modulen auf Ihrem Gerät beginnen.
 
 Sie können überprüfen, ob die individuelle Registrierung, die Sie im Device Provisioning Service erstellt haben, verwendet wurde. Navigieren Sie zu Ihrer Device Provisioning Service-Instanz im Azure-Portal. Öffnen Sie die Registrierungsdetails für die von Ihnen erstellte individuelle Registrierung. Beachten Sie, dass der Status der Registrierung **Zugewiesen** lautet und die Geräte-ID aufgeführt ist.
 
-Verwenden Sie die folgenden Befehle auf Ihrem Gerät, um zu überprüfen, ob das Installieren und Starten der Runtime erfolgreich war.
+Mit den folgenden Befehlen können Sie auf Ihrem Gerät überprüfen, ob IoT Edge erfolgreich installiert und gestartet wurde.
 
-### <a name="linux-device"></a>Linux-Gerät
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -388,6 +471,7 @@ Führen Sie ausgeführte Module auf.
 ```cmd/sh
 iotedge list
 ```
+
 :::moniker-end
 
 <!-- 1.2 -->
@@ -410,9 +494,53 @@ Führen Sie ausgeführte Module auf.
 ```cmd/sh
 sudo iotedge list
 ```
+
 :::moniker-end
 
-### <a name="windows-device"></a>Windows-Gerät
+# <a name="linux-on-windows"></a>[Linux unter Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+Stellen Sie auf dem virtuellen Windows-Computer eine Verbindung mit IoT Edge für Linux her.
+
+```powershell
+Connect-EflowVM
+```
+
+Überprüfen Sie den Status des IoT Edge-Diensts.
+
+```cmd/sh
+sudo systemctl status iotedge
+```
+
+Untersuchen Sie die Dienstprotokolle.
+
+```cmd/sh
+sudo journalctl -u iotedge --no-pager --no-full
+```
+
+Führen Sie ausgeführte Module auf.
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Zurzeit wird die Ausführung von IoT Edge, Version 1.2, unter IoT Edge für Linux für Windows nicht unterstützt.
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
 
 Überprüfen Sie den Status des IoT Edge-Diensts.
 
@@ -431,6 +559,19 @@ Führen Sie ausgeführte Module auf.
 ```powershell
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Zurzeit wird die Ausführung von IoT Edge, Version 1.2, unter Windows nicht unterstützt.
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 644a0d645abb186731ddb1f408cd36e5b9ba3c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73e20cfcdd0c56f2136b4ce658f7d2d2bed53022
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780020"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397314"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -22,8 +22,8 @@ ms.locfileid: "104780020"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
+> * [Batch Execution-Aktivität für ML Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für ML Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -321,7 +321,7 @@ Dies ist eine JSON-Beispieldefinition einer Pipeline mit einer Spark-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Der Name der Aktivität in der Pipeline. | Ja |
 | description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
@@ -341,7 +341,7 @@ Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten kei
 
 Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der durch **entryFilePath** dargestellt wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und JAR-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur im Blobspeicher:
 
-| `Path` | Beschreibung | Erforderlich | type |
+| `Path` | BESCHREIBUNG | Erforderlich | type |
 | ---- | ----------- | -------- | ---- |
 | . | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |

@@ -7,12 +7,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a4281d564b7061e831a66b35e768e6377a0115
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368760"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397308"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -21,8 +21,8 @@ ms.locfileid: "100368760"
 > * [MapReduce-Aktivität](data-factory-map-reduce.md)
 > * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 > * [Spark-Aktivität](data-factory-spark.md)
-> * [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Ressourcenaktualisierungsaktivität für Azure Machine Learning Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
+> * [Batch Execution-Aktivität für ML Studio (klassisch)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Ressourcenaktualisierungsaktivität für ML Studio (klassisch)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -48,6 +48,7 @@ In der folgenden exemplarischen Vorgehensweise wird die Aktivität einer gespeic
 
 ## <a name="walkthrough"></a>Exemplarische Vorgehensweise
 ### <a name="sample-table-and-stored-procedure"></a>Beispiel für eine Tabelle und eine gespeicherte Prozedur
+
 1. Erstellen Sie die folgende **Tabelle** in der Azure SQL-Datenbank mithilfe von SQL Server Management Studio oder anderen Tools, mit denen Sie vertraut sind. Die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird.
 
     ```SQL
@@ -61,11 +62,12 @@ In der folgenden exemplarischen Vorgehensweise wird die Aktivität einer gespeic
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    "Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird.
+    `Id` ist der eindeutige Bezeichner, und die Spalte `datetimestamp` enthält das Datum und die Uhrzeit, an dem bzw. zu der die entsprechende ID generiert wird.
     
     ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
 
     In diesem Beispiel befindet sich die gespeicherte Prozedur in einer Azure SQL-Datenbank. Bei einer gespeicherten Prozedur in Azure Synapse Analytics und SQL Server-Datenbank ist der Ansatz ähnlich. Für eine SQL Server-Datenbank müssen Sie ein [Datenverwaltungsgateway](data-factory-data-management-gateway.md) installieren.
+    
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, die Daten in **sampletable** einfügt.
 
     ```SQL

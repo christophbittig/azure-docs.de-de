@@ -2,18 +2,17 @@
 title: Unterstützte Betriebssysteme, Container-Engines (Azure IoT Edge)
 description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT Edge-Daemon und -Runtime verwendet werden können, und welche Containerengines für Ihre Produktionsgeräte unterstützt werden.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 06/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2701a04c1e8ea631bdbf37470608cf66b8d242e
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 7dd2a6a064b039ebcfe7f17dec9c4a4a915b4c20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985362"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355148"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
@@ -87,16 +86,16 @@ Die Ausführung von IoT Edge-Version 1.2 auf Windows-Geräten wird derzeit nic
 :::moniker range="iotedge-2018-06"
 Module, die als Linux-Container erstellt wurden, können auf Linux- oder Windows-Geräten bereitgestellt werden. Bei Linux-Geräten wird die IoT Edge-Runtime direkt auf dem Hostgerät installiert. Bei Windows-Geräten wird ein virtueller, mit der IoT Edge-Runtime vordefinierter Linux-Computer auf dem Hostgerät ausgeführt.
 
-[IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) befindet sich zurzeit in der öffentlichen Vorschau, wird aber zur Ausführung von IoT Edge auf Windows-Geräten empfohlen.
+Für die Ausführung von IoT Edge auf Windows-Geräten wird die Verwendung von [IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) empfohlen.
 
 | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Public Preview |
-| Windows 10 Pro | Public Preview |  |  |
-| Windows 10 Enterprise | Public Preview |  |  |
-| Windows 10 IoT Enterprise | Public Preview |  |  |
-| Windows Server 2019 | Public Preview |  |  |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/support/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/support/green-check.png) |  | Public Preview |
+| Windows 10 Pro | ![Windows 10 Pro + AMD64](./media/support/green-check.png) |  |  |
+| Windows 10 Enterprise | ![Windows 10 Enterprise + AMD64](./media/support/green-check.png) |  |  |
+| Windows 10 IoT Enterprise | ![Windows 10 IoT Enterprise + AMD64](./media/support/green-check.png) |  |  |
+| Windows Server 2019 | ![Windows Server 2019 + AMD64](./media/support/green-check.png) |  |  |
 
 Es kommen nur Windows-Betriebssysteme ab Version 1809 (Build 17763) infrage.
 :::moniker-end
@@ -107,8 +106,8 @@ Es kommen nur Windows-Betriebssysteme ab Version 1809 (Build 17763) infrage.
 
 | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Public Preview |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/support/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/support/green-check.png) |  | Public Preview |
 
 :::moniker-end
 <!-- end 1.2 -->
@@ -127,9 +126,9 @@ Als Windows-Container entwickelte Module können nur auf Windows-Geräten bereit
 
 | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server IoT 2019 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Enterprise | ![check1](./media/support/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/support/green-check.png) |  |  |
+| Windows Server IoT 2019 | ![check1](./media/support/green-check.png) |  |  |
 
 Es kommen nur Windows-Betriebssysteme mit Version 1809 (Build 17763) infrage. Der spezifische Build von Windows ist für IoT Edge unter Windows erforderlich, da die Version der Windows-Container genau mit der Version des Windows-Hostgeräts übereinstimmen muss. Windows-Container verwenden zurzeit nur Build 17763.
 
@@ -153,17 +152,17 @@ Die in der folgenden Tabelle aufgeführten Systeme gelten als kompatibel mit Azu
 
 | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| [CentOS-7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 20.04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7) | ![RHEL 7 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
-| Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| [CentOS-7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7) | ![CentOS + AMD64](./media/support/green-check.png) | ![CentOS + ARM32v7](./media/support/green-check.png) | ![CentOS + ARM64](./media/support/green-check.png) |
+| [Ubuntu 20.04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/support/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/support/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/support/green-check.png) |
+| [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/support/green-check.png) | ![Debian 9 + ARM32v7](./media/support/green-check.png) | ![Debian 9 + ARM64](./media/support/green-check.png) |
+| [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/support/green-check.png) | ![Debian 10 + ARM32v7](./media/support/green-check.png) | ![Debian 10 + ARM64](./media/support/green-check.png) |
+| [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/support/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/support/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/support/green-check.png) |
+| [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/support/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/support/green-check.png) |
+| [RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7) | ![RHEL 7 + AMD64](./media/support/green-check.png) | ![RHEL 7 + ARM32v7](./media/support/green-check.png) | ![RHEL 7 + ARM64](./media/support/green-check.png) |
+| [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/support/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/support/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/support/green-check.png) |
+| [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/support/green-check.png) |  |  |
+| [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/support/green-check.png) | ![Yocto + ARM32v7](./media/support/green-check.png) | ![Yocto + ARM64](./media/support/green-check.png) |
+| Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/support/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/support/green-check.png) |
 
 <sup>1</sup> Die Installationsschritte für Ubuntu Server 18.04 in [Installieren oder Deinstallieren von Azure IoT Edge für Linux](how-to-install-iot-edge.md) sollten ohne irgendwelche Änderungen unter Ubuntu 20.04 funktionieren.
 

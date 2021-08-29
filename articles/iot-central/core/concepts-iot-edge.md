@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077192"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340441"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
 
@@ -48,6 +48,9 @@ Ein IoT Edge-Gerät kann als Gateway fungieren, das eine Verbindung zwischen and
 Es gibt zwei Gatewaymuster:
 
 * Bei *transparenten Gateways* verhält sich das IoT Edge-Hub-Modul wie IoT Central und ist für Verbindungen mit Geräten zuständig, die bei IoT Central registriert sind. Nachrichten werden von untergeordneten Geräten an IoT Central übergeben, als wäre dazwischen kein Gateway.
+
+    > [!NOTE]
+    > IoT Central unterstützt zurzeit nicht das Verbinden eines IoT Edge Geräts als nachgeschaltetes Gerät mit einem transparenten IoT Edge-Gateway. Der Grund: Alle Geräte, die eine Verbindung mit IoT Central herstellen, werden mit dem Device Provisioning Service (DPS) bereitgestellt, und DPS unterstützt keine geschachtelten IoT Edge-Szenarios.
 
 * Bei *Übersetzungsgateways* hingegen verbinden sich Geräte, die selbst keine Verbindung mit IoT Central herstellen können, stattdessen mit einem benutzerdefinierten IoT Edge-Modul. Das Modul im IoT Edge-Gerät verarbeitet eingehende Nachrichten von untergeordneten Geräten, und leitet sie dann an IoT Central weiter.
 
@@ -281,6 +284,10 @@ Sie können die IoT Edge-Runtime auch in den folgenden Umgebungen installieren:
 Wenn Sie ausgewählt haben, dass das IoT Edge-Gerät ein Gatewaygerät ist, können Sie für Geräte, die eine Verbindung mit dem Gatewaygerät herstellen sollen, Downstreambeziehungen mit Gerätemodellen hinzufügen.
 
 Weitere Informationen finden Sie unter [Verbinden von Geräten über ein transparentes IoT Edge-Gateway](how-to-connect-iot-edge-transparent-gateway.md).
+
+## <a name="monitor-your-iot-edge-devices"></a>Überwachen Ihrer IoT Edge-Geräte
+
+Wenn Sie erfahren möchten, wie Sie Ihre IoT Edge-Flotte mithilfe von Azure Monitor und integrierten Metriken überwachen können, lesen Sie [Sammeln und Transportieren von Metriken](../../iot-edge/how-to-collect-and-transport-metrics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

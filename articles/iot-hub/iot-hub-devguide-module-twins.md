@@ -10,12 +10,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e38fb4068b695eebe78c7e9b8709862aca07531
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91996466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338948"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -225,13 +225,13 @@ Zusätzlich zu diesen Vorgängen kann das Lösungs-Back-End die Modulzwillinge �
 
 Die Modul-App führt mithilfe folgender atomarer Vorgänge Aktionen für den Modulzwilling aus:
 
-* **Abrufen des Modulzwillings:** Dieser Vorgang gibt das Dokument für den Modulzwilling für das derzeit verbundene Modul zurück (einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften).
+* **Abrufen des Modulzwillings:** Dieser Vorgang gibt das Dokument zum Modulzwilling (einschließlich gewünschter und gemeldeter Systemeigenschaften) für das zurzeit verbundene Modul zurück.
 
 * **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
 
 * **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
-Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
+Alle oben beschriebenen Vorgänge erfordern die Berechtigung **DeviceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
 Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendung der oben beschriebenen Vorgänge, die mit vielen Sprachen und Plattformen erstellt wurden.
 

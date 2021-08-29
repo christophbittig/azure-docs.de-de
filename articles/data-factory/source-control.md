@@ -2,17 +2,18 @@
 title: Quellcodeverwaltung
 description: Erfahren Sie, wie Sie die Quellcodeverwaltung in Azure Data Factory konfigurieren
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2021
-ms.openlocfilehash: 77f5d940c06ef5a2a504033225b42b7ddd2c17c1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: 1dc73117d1d9fc470ae284461e520c9d45358e87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346185"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -55,9 +56,9 @@ Es gibt vier verschiedene Möglichkeiten, eine Verbindung zwischen einem Git-Rep
 
 ### <a name="configuration-method-1-home-page"></a>Konfigurationsmethode 1: Startseite
 
-Wählen Sie auf der Homepage von Azure Data Factory **Coderepository einrichten** aus.
+Wählen Sie auf der Homepage von Azure Data Factory oben **Coderepository einrichten** aus.
 
-![Konfigurieren eines Coderepositorys auf der Homepage](media/author-visually/configure-repo.png)
+![Konfigurieren eines Coderepositorys auf der Homepage](media/doc-common-process/set-up-code-repository.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>Konfigurationsmethode 2: Erstellungsbereich
 
@@ -93,7 +94,7 @@ Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quel
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | Beschreibung | Wert |
+| Einstellung | BESCHREIBUNG | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
