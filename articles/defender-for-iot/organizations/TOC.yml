@@ -175,8 +175,6 @@
       displayName: health
     - name: Integrieren von Partnern
       items:
-        - name: Cisco ISE pxGrid-Integration
-          href: integration-cisco-ise-pxgrid.md
         - name: Forescout-Integration
           href: integration-forescout.md
         - name: Fortinet-Integration
