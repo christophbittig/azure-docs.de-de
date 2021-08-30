@@ -134,7 +134,7 @@
           href: structured-app-log.md
         - name: "Prozessinterner New\_Relic-Java-Agent"
           href: how-to-new-relic-monitor.md
-        - name: Azure-Aktivitätsprotokoll und Azure Service Health
+        - name: Überwachen von App-Lebenszyklusereignissen
           href: monitor-app-lifecycle-events.md
     - name: Netzwerk
       items:

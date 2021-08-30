@@ -3,13 +3,12 @@ title: Application Insights-Protokollierung mit .NET
 description: Erfahren Sie, wie Sie Application Insights mit der ILogger-Schnittstelle in .NET verwenden.
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 6b0c746ffda97c22dc42a4c2016413a80552d28d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0457656ae06d4a86c8a4151ce8b89d3e42978d74
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461515"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342866"
 ---
 # <a name="application-insights-logging-with-net"></a>Application Insights-Protokollierung mit .NET
 
@@ -29,13 +28,13 @@ In diesem Artikel erfahren Sie, wie Sie Protokolle mit Application Insights in .
 > [!TIP]
 > Das [`Microsoft.ApplicationInsights.WorkerService`][nuget-ai-ws] NuGet-Paket geht über den Rahmen dieses Artikels hinaus. Es kann verwendet werden, um Application Insights für Hintergrunddienste zu aktivieren. Weitere Informationen finden Sie unter [Application Insights für Workerdienst-Apps](./worker-service.md).
 
-Abhängig vom Application Insights-Protokollierungspaket, das Sie verwenden, gibt es verschiedene Möglichkeiten zum Registrieren von `ApplicationInsightsLoggerProvider`. Der `ApplicationInsightsLoggerProvider` ist eine Implementierung des <xref:Microsoft.Extensions.Logging.ILoggerProvider>, der für die Bereitstellung der <xref:Microsoft.Extensions.Logging.ILogger>- und <xref:Microsoft.Extensions.Logging.ILogger%601>-Implementierungen verantwortlich ist.
+Abhängig vom Application Insights-Protokollierungspaket, das Sie verwenden, gibt es verschiedene Möglichkeiten zum Registrieren von `ApplicationInsightsLoggerProvider`. `ApplicationInsightsLoggerProvider` ist eine Implementierung des <xref:Microsoft.Extensions.Logging.ILoggerProvider>, der für die Bereitstellung der <xref:Microsoft.Extensions.Logging.ILogger>- und <xref:Microsoft.Extensions.Logging.ILogger%601>-Implementierungen verantwortlich ist.
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core-Anwendungen
 
-Verwenden Sie das `Microsoft.ApplicationInsights.AspNetCore` NuGet-Paket, um ASP.NET Core-Anwendungen Telemetriedaten hinzuzufügen. Dies kann über [Visual Studio als verbundener Dienst](/visualstudio/azure/azure-app-insights-add-connected-service) oder manuell konfiguriert werden.
+Verwenden Sie das `Microsoft.ApplicationInsights.AspNetCore` NuGet-Paket, um ASP.NET Core-Anwendungen Telemetriedaten hinzuzufügen. Dies können Sie über [Visual Studio als verbundener Dienst](/visualstudio/azure/azure-app-insights-add-connected-service) oder manuell konfigurieren.
 
-Standardmäßig haben ASP.NET Core-Anwendungen Application Insights-Protokollierungsanbieter registriert, wenn sie mit [Code](./asp-net-core.md) oder mithilfe eines [codelosen](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring) Ansatzes konfiguriert wurden. Der registrierte Anbieter ist so konfiguriert, dass Protokollereignisse mit einem Schweregrad von <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> oder höher automatisch erfasst werden. Schweregrad und Kategorien können angepasst werden. Weitere Informationen finden Sie unter [Steuern des Protokolliergrads](#control-logging-level).
+Standardmäßig ist für ASP.NET Core-Anwendungen ein Application Insights-Protokollierungsanbieter registriert, wenn sie mit [Code](./asp-net-core.md) oder mithilfe eines [codelosen](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring) Ansatzes konfiguriert wurden. Der registrierte Anbieter ist so konfiguriert, dass Protokollereignisse mit einem Schweregrad von <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> oder höher automatisch erfasst werden. Sie können Schweregrad und Kategorien anpassen. Weitere Informationen finden Sie unter [Protokolliergrad](#logging-level).
 
 1. Vergewissern Sie sich, dass das NuGet-Paket installiert ist:
 
@@ -83,7 +82,9 @@ Standardmäßig haben ASP.NET Core-Anwendungen Application Insights-Protokollier
     }
     ```
 
-Wenn das NuGet-Paket installiert ist und der Anbieter mit Abhängigkeitsinjektion registriert wird, kann die App Protokollierungen vornehmen. Erfordern Sie bei der Konstruktorinjektion entweder <xref:Microsoft.Extensions.Logging.ILogger> oder die generische Alternative <xref:Microsoft.Extensions.Logging.ILogger%601>. Wenn diese Implementierungen aufgelöst werden, stellt `ApplicationInsightsLoggerProvider` diese zur Verfügung. Protokollierte Meldungen oder Ausnahmen werden an Application Insights gesendet. Betrachten Sie den folgenden Beispielcontroller:
+Wenn das NuGet-Paket installiert ist und der Anbieter mit Abhängigkeitsinjektion registriert wird, kann die App Protokollierungen vornehmen. Bei Konstruktorinjektion ist entweder <xref:Microsoft.Extensions.Logging.ILogger> oder die generische Alternative <xref:Microsoft.Extensions.Logging.ILogger%601> erforderlich. Wenn diese Implementierungen aufgelöst werden, stellt `ApplicationInsightsLoggerProvider` diese zur Verfügung. Protokollierte Meldungen oder Ausnahmen werden an Application Insights gesendet. 
+
+Betrachten Sie den folgenden Beispielcontroller:
 
 ```csharp
 public class ValuesController : ControllerBase
@@ -110,7 +111,7 @@ Weitere Informationen finden Sie unter [Logging in ASP.NET Core](/aspnet/core/fu
 
 ### <a name="capture-logs-within-aspnet-core-startup-code"></a>Erfassen von Protokollen im ASP.NET Core-Startcode
 
-In einigen Szenarien müssen Protokolle als Teil der App-Startroutine erfasst werden, bevor die Anforderung/Antwort-Pipeline bereit ist, Anforderungen zu akzeptieren. `ILogger`-Implementierungen sind jedoch nicht einfach über die Abhängigkeitsinjektion in *Program.cs* und *Startup.cs* verfügbar. Weitere Informationen finden Sie unter [Protokollierung in .NET: Erstellen von Protokollen in `Main`](/dotnet/core/extensions/logging?tabs=command-line#create-logs-in-main).
+In einigen Szenarien müssen Protokolle als Teil der App-Startroutine erfasst werden, bevor die Anforderung/Antwort-Pipeline bereit ist, Anforderungen zu akzeptieren. `ILogger`-Implementierungen sind jedoch nicht einfach über die Abhängigkeitsinjektion in *Program.cs* und *Startup.cs* verfügbar. Weitere Informationen finden Sie unter [Protokollierung in .NET: Erstellen von Protokollen in Main](/dotnet/core/extensions/logging?tabs=command-line#create-logs-in-main).
 
 Bei der Protokollierung über *Program.cs* und *Startup.cs* gelten mehrere Einschränkungen:
 
@@ -118,7 +119,7 @@ Bei der Protokollierung über *Program.cs* und *Startup.cs* gelten mehrere Einsc
 * Auf Telemetriedaten wird keine [Stichprobenentnahme](./sampling.md) angewendet.
 * Standard-[Telemetrieinitialisierer oder -Telemetrieprozessoren](./api-filtering-sampling.md) sind nicht verfügbar.
 
-Die folgenden Beispiele veranschaulichen dies, indem *Program.cs* und *Startup.cs* explizit instanziiert und konfiguriert werden:
+Die folgenden Beispiele veranschaulichen dies, indem *Program.cs* und *Startup.cs* explizit instanziiert und konfiguriert werden.
 
 #### <a name="example-programcs"></a>Beispiel für „Program.cs“
 
@@ -153,8 +154,8 @@ namespace WebApplication
                 {
                     // Providing an instrumentation key is required if you're using the
                     // standalone Microsoft.Extensions.Logging.ApplicationInsights package,
-                    // or when you need to capture logs during application startup, for example
-                    // in the Program.cs or Startup.cs itself.
+                    // or when you need to capture logs during application startup, such as
+                    // in Program.cs or Startup.cs itself.
                     builder.AddApplicationInsights(
                         context.Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
 
@@ -170,10 +171,12 @@ namespace WebApplication
 }
 ```
 
-Im vorangehenden Code wird `ApplicationInsightsLoggerProvider` mit Ihrer `"APPINSIGHTS_CONNECTIONSTRING"`-Verbindungszeichenfolge konfiguriert, und es werden Filter angewendet, die die Protokollebene auf <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> festlegen.
+Im vorangehenden Code wird `ApplicationInsightsLoggerProvider` mit Ihrer `"APPINSIGHTS_CONNECTIONSTRING"`-Verbindungszeichenfolge konfiguriert. Filter werden angewendet, wodurch der Protokolliergrad auf <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> festgelegt wird.
 
 > [!IMPORTANT]
-> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) werden gegenüber Instrumentierungsschlüsseln empfohlen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> Wir empfehlen, [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) gegenüber Instrumentierungsschlüsseln zu bevorzugen. Neue Azure-Regionen *erfordern* die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. 
+>
+> Eine Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 #### <a name="example-startupcs"></a>Beispiel für „Startup.cs“
 
@@ -232,7 +235,7 @@ namespace WebApplication
 
 ## <a name="console-application"></a>Konsolenanwendung
 
-Installierte Pakete:
+Dies sind die installierten Pakete:
 
 ```xml
 <ItemGroup>
@@ -275,8 +278,8 @@ namespace ConsoleApp
             }
             finally
             {
-                // Explicitly call Flush() followed by delay is required in Console Apps.
-                // This is to ensure that even if application terminates, telemetry is sent to the back-end.
+                // Explicitly call Flush() followed by Delay, as required in console apps.
+                // This ensures that even if the application terminates, telemetry is sent to the back end.
                 channel.Flush();
 
                 await Task.Delay(TimeSpan.FromMilliseconds(1000));
@@ -287,7 +290,7 @@ namespace ConsoleApp
 
 ```
 
-Im vorherigen Beispiel wird das `Microsoft.Extensions.Logging.ApplicationInsights`-Paket verwendet. Standardmäßig verwendet diese Konfiguration für `TelemetryConfiguration` das absolute Minimum zum Senden von Daten an Application Insights. Absolutes Minimum bedeutet, dass als Kanal `InMemoryChannel` verwendet wird. Es erfolgt keine Stichprobenentnahme, und es gibt keinen Standard-`TelemetryInitializer`. Dieses Verhalten kann für eine Konsolenanwendung außer Kraft gesetzt werden. Dies wird im folgenden Beispiel gezeigt.
+Im vorangehenden Beispiel wird das Paket `Microsoft.Extensions.Logging.ApplicationInsights` verwendet. Standardmäßig verwendet diese Konfiguration das „absolute Minimum“ `TelemetryConfiguration`-Setup zum Senden von Daten an Application Insights: den j`InMemoryChannel`-Kanal. Es erfolgt keine Stichprobenentnahme, und es gibt keinen `TelemetryInitializer`-Standardinstanz. Sie können dieses Verhalten für eine Konsolenanwendung außer Kraft setzen, wie das folgende Beispiel zeigt.
 
 Installieren Sie dieses zusätzliche Paket:
 
@@ -295,7 +298,7 @@ Installieren Sie dieses zusätzliche Paket:
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.17.0" />
 ```
 
-Im folgenden Abschnitt wird gezeigt, wie die Standard-`TelemetryConfiguration` mithilfe der Methode <xref:Microsoft.Extensions.Options.ConfigureOptions%601.Configure(%600)> außer Kraft gesetzt werden kann. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Der TelemetryConfiguration wird ein benutzerdefinierter ITelemetryInitializer hinzugefügt.
+Im folgenden Abschnitt wird gezeigt, wie das `TelemetryConfiguration`-Standardsetup mithilfe der Methode <xref:Microsoft.Extensions.Options.ConfigureOptions%601.Configure(%600)> außer Kraft gesetzt werden kann. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Es fügt eine benutzerdefinierte `TelemetryInitializer`-Instanz zu `TelemetryConfiguration` hinzu.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -322,7 +325,7 @@ namespace ConsoleApp
                     {
                         config.TelemetryChannel = channel;
 
-                        // Optional: implement your own TelemetryInitializer and configure it here
+                        // Optional: implement your own TelemetryInitializer instance and configure it here
                         // config.TelemetryInitializers.Add(new MyTelemetryInitializer());
 
                         config.DefaultTelemetrySink.TelemetryProcessorChainBuilder.UseSampling(5);
@@ -342,8 +345,8 @@ namespace ConsoleApp
             }
             finally
             {
-                // Explicitly call Flush() followed by delay is required in Console Apps.
-                // This is to ensure that even if application terminates, telemetry is sent to the back-end.
+                // Explicitly call Flush() followed by Delay, as required in console apps.
+                // This ensures that even if the application terminates, telemetry is sent to the back end.
                 channel.Flush();
 
                 await Task.Delay(TimeSpan.FromMilliseconds(1000));
@@ -353,15 +356,15 @@ namespace ConsoleApp
 }
 ```
 
-## <a name="control-logging-level"></a>Steuern des Protokolliergrads
+## <a name="logging-level"></a>Protokolliergrad
 
-`ILogger`-Implementierungen verfügen über einen integrierten Mechanismus zum Anwenden der [Protokollfilterung](/dotnet/core/extensions/logging#how-filtering-rules-are-applied). Damit können Sie die Protokolle steuern, die an jeden registrierten Anwender gesendet werden, einschließlich des Application Insights-Anbieters. Die Filterung kann entweder in der Konfiguration, normalerweise mit einer Datei *appsettings.json*, oder im Code erfolgen.
+`ILogger`-Implementierungen verfügen über einen integrierten Mechanismus zum Anwenden der [Protokollfilterung](/dotnet/core/extensions/logging#how-filtering-rules-are-applied). Mit dieser Filterung können Sie die Protokolle steuern, die an jeden registrierten Anwender gesendet werden, einschließlich des Application Insights-Anbieters. Sie können die Filterung entweder in der Konfiguration (z. B. mittels einer *appsettings.json*-Datei) oder im Code verwenden.
 
 In den folgenden Beispielen wird die Anwendung von Filterregeln auf `ApplicationInsightsLoggerProvider` veranschaulicht.
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>Erstellen von Filterregeln in der Konfiguration mit „appsettings.json“
 
-Der Alias von `ApplicationInsightsLoggerProvider` lautet "ApplicationInsights". Im folgenden Abschnitt von *appsettings.json* wird die Standardprotokollebene <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> von Application Insights überschrieben, um Kategorien zu protokollieren, die mit "Microsoft" auf der Ebene <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> und höher beginnen.
+Der Alias von `ApplicationInsightsLoggerProvider` lautet „ApplicationInsights“. Im folgenden Abschnitt von *appsettings.json* wird die Standardprotokollebene <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> von Application Insights überschrieben, um Kategorien zu protokollieren, die mit "Microsoft" auf der Ebene <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> und höher beginnen.
 
 ```json
 {
@@ -380,7 +383,10 @@ Der Alias von `ApplicationInsightsLoggerProvider` lautet "ApplicationInsights". 
 
 ### <a name="create-filter-rules-in-code"></a>Erstellen von Filterregeln im Code
 
-Der folgende Codeausschnitt konfiguriert, dass Protokolle für <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> und höher aus allen Kategorien und für <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> und höher aus Kategorien, die mit „Microsoft“ beginnen, an `ApplicationInsightsLoggerProvider` gesendet werden.
+Der folgende Codeausschnitt konfiguriert Protokolle, die für diese Elemente an `ApplicationInsightsLoggerProvider` gesendet werden sollen:
+
+- <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> und höher aus allen Kategorien
+- <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> und höher aus Kategorien, die mit „Microsoft“ beginnen
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -392,11 +398,12 @@ Host.CreateDefaultBuilder(args)
     });
 ```
 
-Dieser vorangehende Code entspricht funktional dem vorherigen Abschnitt in *appsettings.json*. Weitere Informationen finden Sie unter [Konfiguration in .NET](/dotnet/core/extensions/configuration).
 
 ## <a name="logging-scopes"></a>Protokollierungsbereiche
 
-Der `ApplicationInsightsLoggingProvider` unterstützt [Protokollbereiche](/dotnet/core/extensions/logging#log-scopes), und Bereiche sind standardmäßig aktiviert. Bei einem Bereich vom Typ `IReadOnlyCollection<KeyValuePair<string,object>>` wird jedes Schlüssel-Wert-Paar in der Sammlung als benutzerdefinierte Eigenschaft zur Application Insights-Telemetrie hinzugefügt. Im folgenden Beispiel werden Protokolle als `TraceTelemetry` aufgezeichnet und enthalten `("MyKey", "MyValue")` in den Eigenschaften.
+`ApplicationInsightsLoggingProvider` unterstützt [Protokollbereiche](/dotnet/core/extensions/logging#log-scopes). Bereiche sind standardmäßig aktiviert. 
+
+Bei einem Bereich vom Typ `IReadOnlyCollection<KeyValuePair<string,object>>` wird jedes Schlüssel-Wert-Paar in der Sammlung als benutzerdefinierte Eigenschaft zur Application Insights-Telemetrie hinzugefügt. Im folgenden Beispiel werden Protokolle als `TraceTelemetry` aufgezeichnet und enthalten `("MyKey", "MyValue")` in den Eigenschaften.
 
 ```csharp
 using (_logger.BeginScope(new Dictionary<string, object> { ["MyKey"] = "MyValue" }))
@@ -405,7 +412,7 @@ using (_logger.BeginScope(new Dictionary<string, object> { ["MyKey"] = "MyValue"
 }
 ```
 
-Wenn ein anderer Typ als Bereich verwendet wird, wird dieser unter der Eigenschaft „Scope“ in der Application Insights-Telemetrie gespeichert. Im folgenden Beispiel verfügt `TraceTelemetry` über eine Eigenschaft namens "Scope", die den Bereich enthält.
+Wenn ein anderer Typ als Bereich verwendet wird, wird er unter der Eigenschaft `Scope` in der Application Insights-Telemetrie gespeichert. Im folgenden Beispiel verfügt `TraceTelemetry` über eine Eigenschaft namens `Scope`, die den Bereich enthält.
 
 ```csharp
     using (_logger.BeginScope("hello scope"))
@@ -418,15 +425,17 @@ Wenn ein anderer Typ als Bereich verwendet wird, wird dieser unter der Eigenscha
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>Welche ist die alte und welche die neue Version von ApplicationInsightsLoggerProvider?
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) enthielt einen integrierten ApplicationInsightsLoggerProvider (Microsoft.ApplicationInsights.AspNetCore.Logging.ApplicationInsightsLoggerProvider), der über **ILoggerFactory**-Erweiterungsmethoden aktiviert wurde. Dieser Anbieter ist seit Version 2.7.1 als veraltet markiert. Er wird mit der Umstellung auf die nächste Hauptversion komplett entfernt. Das Paket [Microsoft.ApplicationInsights.AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) selbst ist nicht veraltet. Es wird benötigt zum Überwachen von Anforderungen, Abhängigkeiten usw.
+Das [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) enthielt eine integrierte `ApplicationInsightsLoggerProvider`-Instanz (`Microsoft.ApplicationInsights.AspNetCore.Logging.ApplicationInsightsLoggerProvider`), die über `ILoggerFactory`-Erweiterungsmethoden aktiviert wurde. Dieser Anbieter ist seit Version 2.7.1 als veraltet markiert. Er ist für die vollständige Entfernung in der nächsten Hauptversionsänderung vorgesehen. 
 
-Die empfohlene Alternative ist das neue eigenständige Paket [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), das einen verbesserten ApplicationInsightsLoggerProvider (Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider) und Erweiterungsmethoden in ILoggerBuilder für dessen Aktivierung enthält.
+Das Paket [Microsoft.ApplicationInsights.AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) selbst ist nicht veraltet. Es ist erforderlich, die Überwachung von Elementen wie Anforderungen und Abhängigkeiten zu aktivieren.
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 ist vom neuen Paket abhängig und aktiviert die ILogger-Erfassung automatisch.
+Die empfohlene Alternative ist das neue eigenständige Paket [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), das eine verbesserte `ApplicationInsightsLoggerProvider`-Instanz (`Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider`) sowie Erweiterungsmethoden in `ILoggerBuilder` für dessen Aktivierung enthält.
+
+[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore), Version 2.7.1, ist vom neuen Paket abhängig und aktiviert die `ILogger`-Erfassung automatisch.
 
 ### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>Warum werden einige ILogger-Protokolle in Application Insights zweimal angezeigt?
 
-Duplizierung kann auftreten, wenn die ältere (nun veraltete) Version von ApplicationInsightsLoggerProvider durch Aufrufen von `AddApplicationInsights` für `ILoggerFactory` aktiviert wurde. Überprüfen Sie, ob Ihre **Configure**-Methode Folgendes enthält, und entfernen Sie den Eintrag:
+Es kann zu Duplizierungen kommen, wenn Sie die ältere (jetzt veraltete) Version von `ApplicationInsightsLoggerProvider` durch Aufruf von `AddApplicationInsights` für `ILoggerFactory` aktiviert haben. Überprüfen Sie, ob Ihre `Configure`-Methode folgenden Code enthält, und entfernen sie den Eintrag:
 
 ```csharp
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -436,7 +445,7 @@ Duplizierung kann auftreten, wenn die ältere (nun veraltete) Version von Applic
  }
 ```
 
-Wenn Sie beim Debuggen aus Visual Studio doppelte Protokollierung feststellen, legen Sie im Code, der Application Insights aktiviert, `EnableDebugLogger` wie folgt auf `false` fest. Diese Duplizierung und die Behebung des Problems betreffen nur das Debuggen der Anwendung.
+Wenn Sie beim Debuggen aus Visual Studio doppelte Protokollierung feststellen, legen Sie im Code, der Application Insights aktiviert, `EnableDebugLogger` wie folgt auf `false` fest. Diese Duplizierung und Behebung des Problems betreffen nur das Debuggen der Anwendung.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -450,17 +459,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Ich habe ein Update auf [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 durchgeführt, und Protokolle aus ILogger werden automatisch erfasst. Wie kann ich dieses Feature vollständig deaktivieren?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Ich habe ein Update auf Microsoft.ApplicationInsights.AspNet SDK Version 2.7.1 durchgeführt, und Protokolle aus ILogger werden automatisch erfasst. Wie kann ich dieses Feature vollständig deaktivieren?
 
-Allgemeine Informationen zum Filtern von Protokollen finden Sie im Abschnitt [Steuern des Protokolliergrads](#control-logging-level). Zum Deaktivieren von ApplicationInsightsLoggerProvider verwenden Sie `LogLevel.None`:
-
-In Ihrem Aufruf zur Konfiguration der Protokollierung, wobei `builder` ein <xref:Microsoft.Extensions.Logging.ILoggingBuilder> ist:
+Allgemeine Informationen zum Filtern von Protokollen finden Sie im Abschnitt [Protokolliergrad](#logging-level). Um `ApplicationInsightsLoggerProvider` zu deaktivieren, verwenden Sie `LogLevel.None` in Ihrem Aufruf zum Konfigurieren der Protokollierung. Im folgenden Befehl hat `builder` den Wert <xref:Microsoft.Extensions.Logging.ILoggingBuilder>.
 
 ```csharp
 builder.AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.None);
 ```
 
-Über die Datei *appsettings.json*:
+Hier sehen Sie die Änderung in der Datei *appsettings.json*:
 
 ```json
 {
@@ -476,16 +483,16 @@ builder.AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.None);
 
 ### <a name="why-do-some-ilogger-logs-not-have-the-same-properties-as-others"></a>Warum weisen einige ILogger-Protokolle nicht dieselben Eigenschaften wie andere auf?
 
-Application Insights erfasst und sendet ILogger-Protokolle mit derselben TelemetryConfiguration, die auch für andere Telemetriedaten verwendet wird. Es gibt jedoch eine Ausnahme. In der Standardeinstellung ist TelemetryConfiguration nicht vollständig eingerichtet, wenn Sie aus *Program.cs* oder *Startup.cs* protokollieren. Protokolle aus diesen Quellen weisen nicht die Standardkonfiguration auf, daher führen sie nicht alle TelemetryInitializers und TelemetryProcessors aus.
+Application Insights erfasst und sendet `ILogger`-Protokolle mithilfe derselben `TelemetryConfiguration`-Informationen, die auch für andere Telemetriedaten verwendet werden. Es gibt jedoch eine Ausnahme. Standardmäßig ist die `TelemetryConfiguration` nicht vollständig eingerichtet, wenn Sie aus *Program.cs* oder *Startup.cs* protokollieren. Protokolle aus diesen Quellen weisen nicht die Standardkonfiguration auf, daher führen sie nicht alle `TelemetryInitializer`- und `TelemetryProcessor`-Instanzen aus.
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>Ich verwende das eigenständige Paket „Microsoft.Extensions.Logging.ApplicationInsights“ und möchte einige zusätzliche benutzerdefinierte Telemetriedaten manuell protokollieren. Wie sollte ich dazu vorgehen?
 
-Bei Verwendung des eigenständigen Pakets wird `TelemetryClient` nicht in den DI-Container eingefügt. Deshalb müssen Sie eine neue Instanz von `TelemetryClient` erstellen und die gleiche Konfiguration wie der Protokollanbieter verwenden. Dies wird im folgenden Code veranschaulicht. So wird sichergestellt, dass dieselbe Konfiguration für alle benutzerdefinierten Telemetriedaten sowie für die Telemetriedaten von ILogger verwendet wird.
+Wenn Sie das eigenständige Paket verwenden, wird `TelemetryClient` nicht in den Abhängigkeitseinschleusungscontainer (Dependency Injection, DI) eingeschleust. Sie müssen eine neue Instanz von `TelemetryClient` erstellen und dieselbe Konfiguration verwenden, die der Protokollierungsanbieter verwendet, wie im folgenden Code gezeigt. So wird sichergestellt, dass dieselbe Konfiguration für alle benutzerdefinierten Telemetriedaten sowie für die Telemetriedaten von `ILogger` verwendet wird.
 
 ```csharp
 public class MyController : ApiController
 {
-   // This TelemetryClient can be used to track additional telemetry using TrackXXX() api.
+   // This TelemetryClient instance can be used to track additional telemetry through the TrackXXX() API.
    private readonly TelemetryClient _telemetryClient;
    private readonly ILogger _logger;
 
@@ -500,9 +507,11 @@ public class MyController : ApiController
 > [!NOTE]
 > Wenn Sie Application Insights mit dem Paket `Microsoft.ApplicationInsights.AspNetCore` aktivieren, ändern Sie diesen Code, um `TelemetryClient` direkt in den Konstruktor abzurufen. Ein Beispiel finden Sie in diesen [häufig gestellten Fragen](./asp-net-core.md#frequently-asked-questions).
 
-### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>Welcher Typ von Application Insights-Telemetriedaten wird anhand von ILogger-Protokollen erstellt? Wo kann ich ILogger-Protokolle in Application Insights einsehen?
+### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-where-can-i-see-ilogger-logs-in-application-insights"></a>Welcher Typ von Application Insights-Telemetriedaten wird anhand von ILogger-Protokollen erstellt? Wo kann ich ILogger-Protokolle in Application Insights einsehen?
 
-ApplicationInsightsLoggerProvider erfasst ILogger-Protokolle und erstellt daraus TraceTelemetry. Wenn ein Ausnahmeobjekt an die `Log`-Methode in `ILogger` übergeben wird, wird anstelle von TraceTelemetry *ExceptionTelemetry* erstellt. Diese Telemetrieelemente sind an denselben Orten wie jede andere TraceTelemetry oder ExceptionTelemetry für Application Insights zu finden, einschließlich Portal, Analysen oder lokalem Visual Studio-Debugger.
+`ApplicationInsightsLoggerProvider` erfasst `ILogger`-Protokolle und erstellt `TraceTelemetry` daraus. Wenn ein `Exception`-Objekt an die `Log`-Methode in `ILogger` übergeben wird, wird anstelle von `TraceTelemetry` `ExceptionTelemetry` erstellt. 
+
+Diese Telemetrieelemente sind an denselben Orten wie alle anderen `TraceTelemetry`- oder `ExceptionTelemetry`-Elemente für Application Insights zu finden, einschließlich des Azure-Portals, Analysen oder des lokalen Visual Studio-Debuggers.
 
 Wenn Sie immer `TraceTelemetry` senden möchten, verwenden Sie diesen Codeausschnitt:
 

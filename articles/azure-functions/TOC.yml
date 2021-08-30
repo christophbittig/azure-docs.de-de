@@ -459,7 +459,7 @@
               href: functions-add-output-binding-storage-queue-vs.md
         - name: Starten/Beenden von virtuellen Computern
           items:
-            - name: Übersicht
+            - name: Überblick
               href: start-stop-vms/overview.md
             - name: Bereitstellen und konfigurieren
               href: start-stop-vms/deploy.md
@@ -489,8 +489,12 @@
           href: functions-hybrid-powershell.md
     - name: Problembehandlung
       items:
-        - name: Beheben von Problemen mit dem Speicher
+        - name: Speicherverbindungen
           href: functions-recover-storage-account.md
+          displayName: troubleshoot
+        - name: Azure Cosmos DB-Bindungen
+          href: ../cosmos-db/troubleshoot-changefeed-functions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          displayName: troubleshoot
         - name: Python-Funktionen
           items:
             - name: Allgemeine Problembehandlung

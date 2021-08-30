@@ -8,20 +8,20 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
-      - name: 'Purview-Konto erstellen: Azure-Portal'
-        href: create-catalog-portal.md
-      - name: 'Erstellen einer Sammlung: Azure-Portal'
+      - name: Erstellen eines Purview-Kontos
+        items:
+          - name: 'Purview-Konto erstellen: Azure-Portal'
+            href: create-catalog-portal.md
+          - name: 'Purview-Konto erstellen: Azure PowerShell'
+            href: create-catalog-powershell.md
+          - name: "Erstellen eines Purview-Kontos: .NET\_SDK"
+            href: create-purview-dotnet.md
+          - name: 'Erstellen eines Purview-Kontos: Python'
+            href: create-purview-python.md
+          - name: 'Erstellen eines Purview-Kontos: Azure-Portal – Häufig gestellte Fragen'
+            href: create-purview-portal-faq.md
+      - name: 'Erstellen einer Sammlung: Azure Purview Studio'
         href: quickstart-create-collection.md
-      - name: 'Purview-Konto erstellen: Azure PowerShell'
-        href: create-catalog-powershell.md
-      - name: "Erstellen eines Purview-Kontos: .NET\_SDK"
-        href: create-purview-dotnet.md
-      - name: 'Erstellen eines Purview-Kontos: Python'
-        href: create-purview-python.md
-      - name: 'Erstellen eines Purview-Kontos: Azure-Portal – Häufig gestellte Fragen'
-        href: create-purview-portal-faq.md
-      - name: 'Verwalten von Kafka-Benachrichtigungen: .NET'
-        href: manage-kafka-dotnet.md
   - name: Tutorials
     items:
       - name: Durchführen des Onboardings von Azure-Datenquellen im großen Stil
@@ -257,8 +257,18 @@ items:
         items:
           - name: Notfallwiederherstellung
             href: disaster-recovery.md
+      - name: 'Verwalten von Kafka-Benachrichtigungen: .NET'
+        href: manage-kafka-dotnet.md
   - name: Verweis
     items:
+      - name: Java
+        href: /samples/browse/?products=azure&languages=java&terms=purview
+      - name: .NET
+        href: /dotnet/api/overview/azure/purviewresourceprovider
+      - name: Python
+        href: /python/api/azure-mgmt-purview/
+      - name: REST
+        href: /rest/api/purview/
       - name: Unterstützte Klassifizierungen
         href: supported-classifications.md
       - name: Azure Purview-Produktglossar
@@ -267,8 +277,6 @@ items:
         href: abap-functions-deployment-guide.md
   - name: Ressourcen
     items:
-      - name: Featurefeedback (UserVoice)
-        href: 'https://feedback.azure.com/forums/932437-azure-purview'
       - name: Preisrechner
         href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
       - name: "Microsoft\_Q&A-Forum"

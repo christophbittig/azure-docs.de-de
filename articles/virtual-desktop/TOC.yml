@@ -16,7 +16,7 @@
       href: getting-started-feature.md
 - name: Tutorials
   items:
-    - name: 1. Erstellen eines Hostpools mit dem Azure-Portal
+    - name: 1. Erstellen eines Hostpools
       href: create-host-pools-azure-marketplace.md
     - name: 2. Verwalten von App-Gruppen
       href: manage-app-groups.md
@@ -50,7 +50,7 @@
       href: powershell-module.md
     - name: Einen Hostpool und Sitzungshosts erstellen
       items:
-        - name: PowerShell
+        - name: Erstellen eines Hostpools mithilfe von PowerShell oder der Azure CLI
           href: create-host-pools-powershell.md
         - name: "Bereitstellen eines in Azure\_AD eingebundenen Sitzungshosts"
           href: deploy-azure-ad-joined-vm.md
@@ -60,7 +60,7 @@
           href: configure-vm-gpu.md
         - name: Erweitern eines vorhandenen Hostpools
           href: expand-existing-host-pool.md
-        - name: Verwalten von App-Gruppen mit PowerShell
+        - name: Verwalten von App-Gruppen mithilfe von PowerShell oder der Azure CLI
           href: manage-app-groups-powershell.md
     - name: Löschen eines Hostpools
       href: delete-host-pool.md

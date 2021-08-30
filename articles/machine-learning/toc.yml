@@ -259,8 +259,9 @@
             - name: Konfigurieren von sicheren Webdiensten
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
-            - name: Firewall konfigurieren
+            - name: Konfigurieren des erforderlichen Netzwerkdatenverkehrs
               href: how-to-access-azureml-behind-firewall.md
+              displayName: 'firewall, user-defined route, udr'
         - name: Schutz von Daten
           items:
             - name: Failover und Notfallwiederherstellung

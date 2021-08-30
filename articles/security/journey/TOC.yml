@@ -210,6 +210,8 @@
                   href: ../fundamentals/operational-checklist.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Erkennen und Behandeln von Bedrohungen
   items:
+    - name: Sicherungs- und Wiederherstellungsplan für Ransomware
+      href: ../fundamentals/backup-plan-to-protect-against-ransomware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Bedrohungsschutz
       href: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Bedrohungsanalyse

@@ -146,11 +146,13 @@
       items:
         - name: Sichern des Hybridzugriffs mit Azure AD
           href: secure-hybrid-access.md
-        - name: Integration von F5 und Azure AD
+        - name: Datawiza
+          href: datawiza-with-azure-ad.md
+        - name: F5
           href: f5-aad-integration.md
         - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
           href: f5-bigip-deployment-guide.md
-        - name: F5 Big-IP mit Azure AD für kennwortloses VPN
+        - name: F5 BIG-IP-VPN ohne Kennwort
           href: f5-aad-password-less-vpn.md
     - name: Problembehandlung
       items:

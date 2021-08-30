@@ -197,6 +197,8 @@ items:
                 href: troubleshoot/workspaces-created-by-sdk.md
               - name: Problembehandlung beim Lesen von UTF-8-Text
                 href: troubleshoot/reading-utf8-text.md
+          - name: Verschieben eines Arbeitsbereichs in eine neue Region
+            href: how-to-move-workspace-from-one-region-to-another.md
   - name: Migrationsleitfäden
     items:
       - name: Migrieren zu einem dedizierten SQL-Pool

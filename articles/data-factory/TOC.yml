@@ -212,6 +212,8 @@ items:
               - name: Datenflussleistung
                 href: concepts-data-flow-performance.md
                 displayName: 'merge, timeout'
+              - name: Leistung der Integration Runtime
+                href: concepts-integration-runtime-performance.md
               - name: Verwalten der Datenflusscanvas
                 href: concepts-data-flow-manage-graph.md
               - name: Ausdrucks-Generator

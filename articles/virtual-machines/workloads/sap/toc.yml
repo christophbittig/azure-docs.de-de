@@ -142,6 +142,8 @@
       href: dbms_guide_sapase.md
     - name: 'SAP MaxDB, SAP liveCache und SAP Content Server in Azure'
       href: dbms_guide_maxdb.md
+    - name: "SAP\_IQ auf Azure-VMs"
+      href: sap-iq-deployment-guide.md
     - name: HANA
       items:
         - name: Installieren von SAP HANA auf virtuellen Azure-Computern
@@ -270,8 +272,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
 - name: Azure Monitor für SAP-Lösungen
   items:
-    - name: Übersicht über AMS
-      href: azure-monitor-overview.md
+    - name: Überwachen von SAP in Azure
+      href: monitor-sap-on-azure.md
     - name: AMS-Anbieter
       href: azure-monitor-providers.md
     - name: 'Konfigurieren von AMS: Portal'
@@ -280,6 +282,8 @@
       href: azure-monitor-alerts-portal.md
     - name: 'Konfigurieren von AMS: Azure PowerShell'
       href: azure-monitor-sap-quickstart-powershell.md
+    - name: Überwachen von Datenverweisen
+      href: monitor-sap-on-azure-reference.md
     - name: Häufig gestellte Fragen zu AMS
       href: azure-monitor-faq.yml
 - name: Verweis

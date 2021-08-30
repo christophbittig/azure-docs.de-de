@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: d6a3179e21d9e0c4bf4cbb83410af9945bbb46c0
-  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.openlocfilehash: c46932ac1a2237801453da4b02333a0d5d403813
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113109447"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123109314"
 landingContent:
 - title: Informationen zu Azure Cache for Redis
   linkLists:
@@ -36,8 +36,6 @@ landingContent:
     links:
     - text: Erstellen eines Caches mit Enterprise-Tarif
       url: quickstart-create-redis-enterprise.md
-    - text: Bewährte Methoden für Azure Cache for Redis
-      url: cache-best-practices.md
     - text: Häufig gestellte Fragen
       url: cache-faq.yml
 - title: 'Schnellstartanleitungen: Azure Cache for Redis'
@@ -86,8 +84,26 @@ landingContent:
     links:
     - text: Azure PowerShell
       url: /powershell/module/az.rediscache
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: /cli/azure/redis
+- title: Empfehlungen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Verbindungsresilienz
+      url: cache-best-practices-connection.md
+    - text: Verwaltung der Serverauslastung
+      url: cache-best-practices-server-load.md
+    - text: Speicherverwaltung
+      url: cache-best-practices-memory-management.md
+    - text: Entwicklung
+      url: cache-best-practices-development.md
+    - text: Skalierung
+      url: cache-best-practices-scale.md
+    - text: Von Kubernetes gehostete Clientanwendungen
+      url: cache-best-practices-kubernetes.md
+    - text: Leistungstests
+      url: cache-best-practices-performance.md
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide

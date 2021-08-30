@@ -101,6 +101,8 @@
       href: powershell-samples.md
     - name: Azure Resource Graph-Abfragen
       href: ./resource-graph-samples.md
+    - name: "Azure\_CLI-Metrikwarnungen"
+      href: azure-cli-metrics-alert-sample.md
 - name: Konzepte
   items:
     - name: Was können Sie überwachen?
@@ -133,7 +135,7 @@
           href: logs/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: alerts/alerts-overview.md
@@ -763,7 +765,7 @@
                           href: app/java-standalone-sampling-overrides.md
                         - name: Telemetrieprozessoren
                           items:
-                            - name: Übersicht
+                            - name: Überblick
                               href: app/java-standalone-telemetry-processors.md
                             - name: Beispiele
                               href: app/java-standalone-telemetry-processors-examples.md

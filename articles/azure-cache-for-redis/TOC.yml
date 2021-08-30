@@ -70,7 +70,21 @@
     - name: Failover und Patching
       href: cache-failover.md
     - name: Bewährte Methoden
-      href: cache-best-practices.md
+      items:
+        - name: Verbindungsresilienz
+          href: cache-best-practices-connection.md
+        - name: Verwaltung der Serverauslastung
+          href: cache-best-practices-server-load.md
+        - name: Speicherverwaltung
+          href: cache-best-practices-memory-management.md
+        - name: Entwicklung
+          href: cache-best-practices-development.md
+        - name: Skalierung
+          href: cache-best-practices-scale.md
+        - name: Von Kubernetes gehostete Clientanwendungen
+          href: cache-best-practices-kubernetes.md
+        - name: Leistungstests
+          href: cache-best-practices-performance.md
     - name: Sicherheit
       items:
         - name: Optionen für die Netzwerkisolation

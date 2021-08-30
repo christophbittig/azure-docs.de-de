@@ -1,7 +1,5 @@
 - name: Dokumentation mit grundlegenden Informationen
   href: index.yml
-- name: Wiederherstellen nach kompromittierter Systemidentität
-  href: recover-from-identity-compromise.md
 - name: Übersicht
   items:
     - name: Einführung in die Azure-Sicherheit
@@ -10,6 +8,14 @@
       href: end-to-end.md
     - name: Gemeinsame Verantwortung in der Cloud
       href: shared-responsibility.md
+- name: Erkennen und Behandeln von Bedrohungen
+  items:
+    - name: Sicherungs- und Wiederherstellungsplan für Ransomware
+      href: backup-plan-to-protect-against-ransomware.md
+    - name: Wiederherstellen nach kompromittierter Systemidentität
+      href: recover-from-identity-compromise.md
+    - name: Bedrohungsschutz
+      href: threat-detection.md
 - name: Schützen von Workloads in Azure
   items:
     - name: Technische Sicherheitsfunktionen
@@ -144,8 +150,6 @@
       href: service-fabric-best-practices.md
 - name: 'Überwachung, Überprüfung und Vorgänge'
   items:
-    - name: Bedrohungsschutz
-      href: threat-detection.md
     - name: Azure-Protokollierung und -Überwachung
       href: log-audit.md
     - name: Sicherheitsverwaltung und -überwachung

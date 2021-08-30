@@ -184,6 +184,8 @@
           items:
             - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
               href: backup-sql-server-database-azure-vms.md
+            - name: Sicherung von SQL-Verfügbarkeitsgruppen
+              href: backup-sql-server-on-availability-groups.md
             - name: Sichern einer SQL Server-VM über den VM-Bereich
               href: backup-sql-server-vm-from-vm-pane.md
         - name: Restore
