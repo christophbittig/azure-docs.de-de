@@ -145,26 +145,26 @@
         - name: Erstellen von Cosmos DB-Ressourcen
           items:
             - name: Azure-Portal
-              href: create-cosmosdb-resources-portal.md
+              href: sql/create-cosmosdb-resources-portal.md
             - name: ARM-Vorlage
               displayName: Resource Manager
-              href: quick-create-template.md
+              href: sql/quick-create-template.md
             - name: ".NET-App: V4\_SDK"
-              href: create-sql-api-dotnet-v4.md
+              href: sql/create-sql-api-dotnet-v4.md
             - name: ".NET-App: V3\_SDK"
-              href: create-sql-api-dotnet.md
+              href: sql/create-sql-api-dotnet.md
             - name: Java-App
-              href: create-sql-api-java.md
+              href: sql/create-sql-api-java.md
             - name: Spring Data-App
-              href: create-sql-api-spring-data.md
+              href: sql/create-sql-api-spring-data.md
             - name: "Spark\_v3-App"
-              href: create-sql-api-spark.md
+              href: sql/create-sql-api-spark.md
             - name: Node.js-App
-              href: create-sql-api-nodejs.md
+              href: sql/create-sql-api-nodejs.md
             - name: Python-App
-              href: create-sql-api-python.md
+              href: sql/create-sql-api-python.md
             - name: Xamarin-App
-              href: create-sql-api-xamarin-dotnet.md
+              href: sql/create-sql-api-xamarin-dotnet.md
     - name: Tutorials
       items:
         - name: 1. Erstellen und Verwalten von Daten
@@ -172,69 +172,69 @@
             - name: Erstellen einer Konsolen-App
               items:
                 - name: .NET
-                  href: sql-api-get-started.md
+                  href: sql/sql-api-get-started.md
                 - name: Java
-                  href: ./create-sql-api-java.md
+                  href: sql/create-sql-api-java.md
                 - name: Async Java
-                  href: ./create-sql-api-java.md
+                  href: sql/create-sql-api-java.md
                 - name: Node.js
-                  href: sql-api-nodejs-get-started.md
+                  href: sql/sql-api-nodejs-get-started.md
             - name: Erstellen einer Web-App
               items:
                 - name: .NET
-                  href: sql-api-dotnet-application.md
+                  href: sql/sql-api-dotnet-application.md
                 - name: Java
-                  href: sql-api-java-application.md
+                  href: sql/sql-api-java-application.md
                 - name: Node.js
-                  href: sql-api-nodejs-application.md
+                  href: sql/sql-api-nodejs-application.md
             - name: Erstellen einer mobilen App
               items:
                 - name: Xamarin
-                  href: mobile-apps-with-xamarin.md
+                  href: sql/mobile-apps-with-xamarin.md
         - name: 2. Migrieren von Daten
           items:
             - name: Verwenden des Datenmigrationstools
               href: import-data.md
             - name: Unter Verwendung der .NET-Unterstützung für Massenvorgänge
-              href: tutorial-sql-api-dotnet-bulk-import.md
+              href: sql/tutorial-sql-api-dotnet-bulk-import.md
         - name: 3. Abfragen von Daten
-          href: tutorial-query-sql-api.md
+          href: sql/tutorial-query-sql-api.md
         - name: 4. Erstellen eines Notebooks
-          href: create-notebook-visualize-data.md
+          href: sql/create-notebook-visualize-data.md
         - name: 5. Globale Datenverteilung
-          href: tutorial-global-distribution-sql-api.md
+          href: sql/tutorial-global-distribution-sql-api.md
     - name: Beispiele
       items:
         - name: .NET V2 SDK-Beispiele
-          href: sql-api-dotnet-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: .NET V3 SDK-Beispiele
-          href: sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-v3sdk-samples.md
         - name: Java SDK v4-Beispiele
-          href: sql-api-java-sdk-samples.md
+          href: sql/sql-api-java-sdk-samples.md
         - name: Spring Data v3-Beispiele
-          href: sql-api-spring-data-sdk-samples.md
+          href: sql/sql-api-spring-data-sdk-samples.md
         - name: Beispiele für Node.js
-          href: sql-api-nodejs-samples.md
+          href: sql/sql-api-nodejs-samples.md
         - name: Python-Beispiele
-          href: sql-api-python-samples.md
+          href: sql/sql-api-python-samples.md
         - name: PowerShell
-          href: powershell-samples.md
+          href: sql/powershell-samples.md
         - name: Azure CLI
-          href: cli-samples.md
+          href: sql/cli-samples.md
         - name: Azure Resource Manager
-          href: templates-samples-sql.md
+          href: sql/templates-samples-sql.md
     - name: Konzepte
       items:
         - name: Modellierung und Partitionierung
           items:
             - name: Modelldokumentdaten
               displayName: document
-              href: modeling-data.md
+              href: sql/modeling-data.md
             - name: 'Modellierung und Partitionierung: praktisches Beispiel'
               displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
+              href: sql/how-to-model-partition-example.md
             - name: Synthetischer Partitionsschlüssel
-              href: synthetic-partition-keys.md
+              href: sql/synthetic-partition-keys.md
         - name: SQL-Abfrage (SQL query)
           items:
             - name: Erste Schritte
@@ -588,7 +588,7 @@
                   href: sql/sql-query-geospatial-index.md
             - name: Datetime
               displayName: 'datetime, date, time'
-              href: working-with-dates.md
+              href: sql/working-with-dates.md
             - name: Parametrisierte Abfrage
               displayName: 'parameterized query, parameterized, parameter, parameters'
               href: sql/sql-query-parameterized-queries.md
@@ -605,32 +605,32 @@
               href: index-overview.md
             - name: Gültigkeitsdauer
               displayName: 'delete, delete data, ttl'
-              href: time-to-live.md
+              href: sql/time-to-live.md
             - name: Einschränkungen für eindeutige Schlüssel
               href: unique-keys.md
             - name: Transaktionen und Steuerung für optimistische Nebenläufigkeit
-              href: database-transactions-optimistic-concurrency.md
+              href: sql/database-transactions-optimistic-concurrency.md
             - name: Attachments
               href: attachments.md
         - name: Änderungsfeed
           items:
             - name: Entwurfsmuster für den Änderungsfeed
-              href: change-feed-design-patterns.md
+              href: sql/change-feed-design-patterns.md
             - name: Lesen des Änderungsfeeds
-              href: read-change-feed.md
-            - name: Change Feed Processor
-              href: change-feed-processor.md
+              href: sql/read-change-feed.md
+            - name: SQL/Änderungsfeedprozessor
+              href: sql/change-feed-processor.md
             - name: Auslösen von Azure Functions
               displayName: change feed
-              href: change-feed-functions.md
+              href: sql/change-feed-functions.md
             - name: Pullmodell für Änderungsfeed
-              href: change-feed-pull-model.md
+              href: sql/change-feed-pull-model.md
         - name: Serverseitige Programmierung
           items:
             - name: 'Gespeicherte Prozeduren, Trigger und UDFs'
-              href: stored-procedures-triggers-udfs.md
+              href: sql/stored-procedures-triggers-udfs.md
             - name: JavaScript-Abfrage-API
-              href: javascript-query-api.md
+              href: sql/javascript-query-api.md
         - name: Integrierter Cache
           items:
             - name: Übersicht über dedizierte Gateways
@@ -645,208 +645,208 @@
               displayName: 'primary key, resource token, users, roles'
               href: secure-access-to-data.md
             - name: Erweiterter Schutz vor Bedrohungen
-              href: cosmos-db-advanced-threat-protection.md
+              href: sql/advanced-threat-protection.md
         - name: Konnektivitätsmodi
-          href: sql-sdk-connection-modes.md
+          href: sql/sql-sdk-connection-modes.md
     - name: Anleitungen
       items:
         - name: Globale Verteilung
           items:
             - name: Konfigurieren von Schreibvorgängen in mehreren Regionen
-              href: how-to-multi-master.md
+              href: sql/how-to-multi-master.md
             - name: Verwalten von Konsistenzebenen
               displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-              href: how-to-manage-consistency.md
+              href: sql/how-to-manage-consistency.md
             - name: Konfigurieren von Richtlinien für die Konfliktlösung
-              href: how-to-manage-conflicts.md
+              href: sql/how-to-manage-conflicts.md
             - name: Konvertieren des Sitzungstokenformats
-              href: how-to-convert-session-token.md
+              href: sql/how-to-convert-session-token.md
         - name: Capacity
           items:
             - name: Bereitgestellter Durchsatz
               items:
                 - name: 'Bereitstellen von Standarddurchsatz (manuell): Container'
                   displayName: 'request units, RUs, RU, collection level'
-                  href: how-to-provision-container-throughput.md
+                  href: sql/how-to-provision-container-throughput.md
                 - name: 'Bereitstellen von Standarddurchsatz (manuell): Datenbank'
                   displayName: 'request units, RUs, RU, shared throughput, database level'
-                  href: how-to-provision-database-throughput.md
+                  href: sql/how-to-provision-database-throughput.md
                 - name: 'Bereitstellen von automatisch skaliertem Durchsatz: Datenbank oder Container'
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-                  href: how-to-provision-autoscale-throughput.md
+                  href: sql/how-to-provision-autoscale-throughput.md
                 - name: Schätzen von RU/s mit dem Kapazitätsplaner
                   displayName: 'request units, RUs, RU, capacity'
-                  href: estimate-ru-with-capacity-planner.md
+                  href: sql/estimate-ru-with-capacity-planner.md
                 - name: Skalieren mithilfe eines Azure Functions-Timers
                   displayName: 'request units, RUs, RU, timer'
-                  href: scale-on-schedule.md
+                  href: sql/scale-on-schedule.md
             - name: Ermitteln der Gebühr für Anforderungseinheiten
               displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge.md
+              href: sql/find-request-unit-charge.md
         - name: Vorgänge für Container und Elemente
           items:
             - name: 'Erstellen eines Containers: SQL-API'
-              href: how-to-create-container.md
+              href: sql/how-to-create-container.md
             - name: Erstellen eines Containers mit umfangreichem Partitionsschlüssel
               href: large-partition-keys.md
             - name: Abfragen eines Containers
-              href: how-to-query-container.md
+              href: sql/how-to-query-container.md
             - name: Migrieren zu partitionierten Containern
-              href: migrate-containers-partitioned-to-nonpartitioned.md
+              href: sql/migrate-containers-partitioned-to-nonpartitioned.md
             - name: Konfigurieren der Gültigkeitsdauer (TTL)
               displayName: 'delete, delete data, ttl'
-              href: how-to-time-to-live.md
+              href: sql/how-to-time-to-live.md
             - name: Definieren eindeutiger Schlüssel
               href: how-to-define-unique-keys.md
             - name: Ausführen von transaktionalen Batchvorgängen
-              href: transactional-batch.md
+              href: sql/transactional-batch.md
         - name: Empfehlungen
           items:
             - name: .NET
-              href: best-practice-dotnet.md
+              href: sql/best-practice-dotnet.md
         - name: Leistung
           items:
             - name: Abfrage
               items:
                 - name: Abrufen von Abfrageausführungsmetriken
-                  href: profile-sql-api-query.md
+                  href: sql/profile-sql-api-query.md
                 - name: Optimieren der Abfrageleistung
-                  href: sql-api-query-metrics.md
+                  href: sql/sql-api-query-metrics.md
             - name: Indizierung
               items:
                 - name: Indizierungsrichtlinien
                   displayName: 'consistent, none, indexing, policy'
                   href: index-policy.md
                 - name: Verwalten von Indizierungsrichtlinien
-                  href: how-to-manage-indexing-policy.md
+                  href: sql/how-to-manage-indexing-policy.md
             - name: .NET
               items:
                 - name: Tipps zur Leistungssteigerung für .NET SDK v3
-                  href: performance-tips-dotnet-sdk-v3-sql.md
+                  href: sql/performance-tips-dotnet-sdk-v3-sql.md
                 - name: Tipps zur Leistungssteigerung für .NET SDK v2
-                  href: performance-tips.md
+                  href: sql/performance-tips.md
             - name: Java
               items:
                 - name: Tipps zur Leistungssteigerung für das Java SDK v4
-                  href: performance-tips-java-sdk-v4-sql.md
+                  href: sql/performance-tips-java-sdk-v4-sql.md
                 - name: Async Java SDK v2
-                  href: performance-tips-async-java.md
+                  href: sql/performance-tips-async-java.md
                 - name: Sync Java SDK v2
-                  href: performance-tips-java.md
+                  href: sql/performance-tips-java.md
             - name: Konfigurieren des integrierten Caches
               href: how-to-configure-integrated-cache.md
             - name: 'Leistungstest: Beispiel-App'
-              href: performance-testing.md
+              href: sql/performance-testing.md
             - name: Kostengünstige Lese- und Schreibvorgänge
               href: key-value-store-cost.md
         - name: Migrieren zu neueren SDKs
           items:
             - name: Migrieren zum Java V4 SDK
-              href: migrate-java-v4-sdk.md
+              href: sql/migrate-java-v4-sdk.md
             - name: Migrieren zu .NET V3 SDK
-              href: migrate-dotnet-v3.md
+              href: sql/migrate-dotnet-v3.md
             - name: Migrieren zum .NET V2 SDK
-              href: migrate-dotnet-v2.md
+              href: sql/migrate-dotnet-v2.md
         - name: Connectors
           items:
             - name: Kafka Connect
-              href: kafka-connector.md
+              href: sql/kafka-connector.md
             - name: 'Kafka Connect: Quelle'
-              href: kafka-connector-source.md
+              href: sql/kafka-connector-source.md
             - name: 'Kafka Connect: Senke'
-              href: kafka-connector-sink.md
+              href: sql/kafka-connector-sink.md
         - name: Problembehandlung
           items:
             - name: Häufige Fehler
               items:
                 - name: Problembehandlung der Abfrageleistung
-                  href: troubleshoot-query-performance.md
+                  href: sql/troubleshoot-query-performance.md
                 - name: Problembehandlung beim Timeout einer Dienstanforderung
-                  href: troubleshoot-request-timeout.md
+                  href: sql/troubleshoot-request-timeout.md
                 - name: Problembehandlung bei zu hoher Anforderungsrate
-                  href: troubleshoot-request-rate-too-large.md
+                  href: sql/troubleshoot-request-rate-too-large.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht gefunden“
-                  href: troubleshoot-not-found.md
+                  href: sql/troubleshoot-not-found.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht autorisiert“
-                  href: troubleshoot-unauthorized.md
+                  href: sql/troubleshoot-unauthorized.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Unzulässig“
-                  href: troubleshoot-forbidden.md
+                  href: sql/troubleshoot-forbidden.md
                 - name: Problembehandlung bei ungültiger Anforderung
-                  href: troubleshoot-bad-request.md
+                  href: sql/troubleshoot-bad-request.md
                 - name: Verfügbarkeitsprobleme in Umgebungen mit mehreren Regionen
-                  href: troubleshoot-sdk-availability.md
+                  href: sql/troubleshoot-sdk-availability.md
             - name: .NET
               items:
                 - name: 'Allgemeine Problembehandlung: .NET SDK'
-                  href: troubleshoot-dot-net-sdk.md
+                  href: sql/troubleshoot-dot-net-sdk.md
                 - name: Problembehandlung bei zu großen Anforderungsheadern
-                  href: troubleshoot-dot-net-sdk-request-header-too-large.md
+                  href: sql/troubleshoot-dot-net-sdk-request-header-too-large.md
                 - name: Problembehandlung bei einem Anforderungstimeout
-                  href: troubleshoot-dot-net-sdk-request-timeout.md
+                  href: sql/troubleshoot-dot-net-sdk-request-timeout.md
                 - name: Problembehandlung bei langsamen Anforderungen
-                  href: troubleshoot-dot-net-sdk-slow-request.md
+                  href: sql/troubleshoot-dot-net-sdk-slow-request.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht verfügbar“
                   href: troubleshoot-service-unavailable.md
             - name: .Java
               items:
                 - name: Problembehandlung für das Java SDK v4
-                  href: troubleshoot-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-java-sdk-v4-sql.md
                 - name: Problembehandlung bei einem Anforderungstimeout
-                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-request-timeout-java-sdk-v4-sql.md
                 - name: Problembehandlung bei einem Fehler vom Typ „Nicht verfügbar“
-                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: 'Problembehandlung: Async Java SDK v2'
-                  href: troubleshoot-java-async-sdk.md
+                  href: sql/troubleshoot-java-async-sdk.md
         - name: Änderungsfeed
           items:
             - name: Erweiterte Konfiguration von Azure Cosmos DB-Triggern
-              href: how-to-configure-cosmos-db-trigger.md
+              href: sql/how-to-configure-cosmos-db-trigger.md
             - name: Mehrere Azure Cosmos DB-Trigger
-              href: how-to-create-multiple-cosmos-db-triggers.md
+              href: sql/how-to-create-multiple-cosmos-db-triggers.md
             - name: Problembehandlung für Azure Cosmos DB-Trigger
-              href: troubleshoot-changefeed-functions.md
+              href: sql/troubleshoot-changefeed-functions.md
             - name: Verwenden des Änderungsfeed-Estimators
-              href: how-to-use-change-feed-estimator.md
+              href: sql/how-to-use-change-feed-estimator.md
             - name: Migrieren von der Änderungsfeed-Verarbeitungsbibliothek
-              href: how-to-migrate-from-change-feed-library.md
+              href: sql/how-to-migrate-from-change-feed-library.md
             - name: "Änderungsfeed: Async\_Java-Beispiel"
-              href: create-sql-api-java-changefeed.md
+              href: sql/create-sql-api-java-changefeed.md
         - name: Serverseitige Programmierung
           items:
             - name: 'Schreiben von gespeicherten Prozeduren, Triggern und UDFs'
-              href: how-to-write-stored-procedures-triggers-udfs.md
+              href: sql/how-to-write-stored-procedures-triggers-udfs.md
             - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
-              href: how-to-write-javascript-query-api.md
+              href: sql/how-to-write-javascript-query-api.md
             - name: 'Verwenden von gespeicherten Prozeduren, Triggern und UDFs'
-              href: how-to-use-stored-procedures-triggers-udfs.md
+              href: sql/how-to-use-stored-procedures-triggers-udfs.md
         - name: "Integrierte Jupyter\_Notebook-Instanzen"
           items:
             - name: Aktivieren von Notebooks
-              href: enable-notebooks.md
+              href: sql/enable-notebooks.md
             - name: Importieren von Notebooks aus GitHub
-              href: import-github-notebooks.md
+              href: sql/import-github-notebooks.md
             - name: Veröffentlichen von Notebooks im Katalog
-              href: publish-notebook-gallery.md
+              href: sql/publish-notebook-gallery.md
             - name: Verwenden integrierter Python-Notebookbefehle
-              href: use-python-notebook-features-and-commands.md
+              href: sql/use-python-notebook-features-and-commands.md
             - name: Verwenden integrierter C#-Notebookbefehle
-              href: use-csharp-notebook-features-and-commands.md
+              href: sql/use-csharp-notebook-features-and-commands.md
         - name: BulkExecutor-Bibliothek
           items:
             - name: Informationen zur BulkExecutor-Bibliothek
               href: bulk-executor-overview.md
             - name: 'BulkExecutor: .NET-Bibliothek'
-              href: bulk-executor-dot-net.md
+              href: sql/bulk-executor-dot-net.md
             - name: Migrieren von Bulk Executor zu .NET SDK
-              href: how-to-migrate-from-bulk-executor-library.md
+              href: sql/how-to-migrate-from-bulk-executor-library.md
             - name: 'BulkExecutor: Java-Bibliothek'
-              href: bulk-executor-java.md
+              href: sql/bulk-executor-java.md
         - name: Visualisieren von Cosmos DB-Daten
           items:
             - name: Verwenden von Power BI
-              href: powerbi-visualize.md
+              href: sql/powerbi-visualize.md
             - name: Erstellen eines Dashboards mit Live-Wetterdaten
-              href: create-real-time-weather-dashboard-powerbi.md
+              href: sql/create-real-time-weather-dashboard-powerbi.md
             - name: Verwenden von Qlik Sense
               href: visualize-qlik-sense.md
         - name: Integrierte Analysen mit Apache Spark
@@ -856,17 +856,17 @@
         - name: Migrieren von Daten zu Cosmos DB
           items:
             - name: Migrieren zur SQL-API mithilfe von Striim
-              href: cosmosdb-sql-api-migrate-data-striim.md
+              href: sql/migrate-data-striim.md
             - name: 'Migrieren von relationalen Daten mit 1:n-Beziehungen'
-              href: migrate-relational-to-cosmos-db-sql-api.md
+              href: sql/migrate-relational-to-cosmos-db-sql-api.md
             - name: 'Migrieren: Couchbase zur SQL-API'
-              href: couchbase-cosmos-migration.md
+              href: sql/couchbase-cosmos-migration.md
             - name: 'Migrieren: DynamoDB zur SQL-API'
-              href: dynamo-to-cosmos.md
+              href: sql/dynamo-to-cosmos.md
         - name: Sicherheit
           items:
             - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
-              href: how-to-configure-cross-origin-resource-sharing.md
+              href: sql/how-to-configure-cross-origin-resource-sharing.md
             - name: Konfigurieren der rollenbasierten Zugriffssteuerung
               href: how-to-setup-rbac.md
               displayName: 'aad, active directory, rbac'
@@ -874,25 +874,25 @@
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
             - name: Verwenden von Zertifikaten für den Datenzugriff
-              href: certificate-based-authentication.md
+              href: sql/certificate-based-authentication.md
             - name: Verwenden von Always Encrypted
               href: how-to-always-encrypted.md
         - name: Clientseitige Entwicklung
           items:
             - name: Sitzungszustand und Cacheanbieter
-              href: session-state-and-caching-provider.md
+              href: sql/session-state-and-caching-provider.md
         - name: Integrieren in andere Azure-Dienste
           items:
             - name: 'Änderungsfeed: E-Commerce-Lösung'
               href: changefeed-ecommerce-solution.md
             - name: Azure App Service
-              href: create-website.md
+              href: sql/create-website.md
             - name: Azure Cognitive Search-Indexer
               href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure-Funktionen
               items:
                 - name: Serverloses Computing
-                  href: serverless-computing-database.md
+                  href: sql/serverless-computing-database.md
                 - name: Azure Functions-Bindungen
                   href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Data Factory
@@ -908,45 +908,45 @@
             - name: "Spring\_Data-Entwicklerhandbuch"
               href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: ODBC-Treiber
-              href: odbc-driver.md
+              href: sql/odbc-driver.md
     - name: Verweis
       items:
         - name: .NET SDKs
           items:
             - name: .NET SDK v3
-              href: sql-api-sdk-dotnet-standard.md
+              href: sql/sql-api-sdk-dotnet-standard.md
             - name: .NET SDK v2
-              href: sql-api-sdk-dotnet.md
+              href: sql/sql-api-sdk-dotnet.md
             - name: .NET Core SDK v2
-              href: sql-api-sdk-dotnet-core.md
+              href: sql/sql-api-sdk-dotnet-core.md
             - name: .NET-Änderungsfeedbibliothek v2
-              href: sql-api-sdk-dotnet-changefeed.md
+              href: sql/sql-api-sdk-dotnet-changefeed.md
             - name: ".NET-Bulk\_Executor-Bibliothek v2"
-              href: sql-api-sdk-bulk-executor-dot-net.md
+              href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Java SDKs und Connectors
           items:
             - name: Java SDK v4
-              href: sql-api-sdk-java-v4.md
+              href: sql/sql-api-sdk-java-v4.md
             - name: Async Java SDK v2
-              href: sql-api-sdk-async-java.md
+              href: sql/sql-api-sdk-async-java.md
             - name: Sync Java SDK v2
-              href: sql-api-sdk-java.md
+              href: sql/sql-api-sdk-java.md
             - name: Spring Data-Connector v2
-              href: sql-api-sdk-java-spring-v2.md
+              href: sql/sql-api-sdk-java-spring-v2.md
             - name: Spring Data-Connector v3
-              href: sql-api-sdk-java-spring-v3.md
+              href: sql/sql-api-sdk-java-spring-v3.md
             - name: "Spark\_3-OLTP-Connector"
-              href: sql-api-sdk-java-spark-v3.md
+              href: sql/sql-api-sdk-java-spark-v3.md
             - name: "Spark\_2-OLTP-Connector"
-              href: sql-api-sdk-java-spark.md
+              href: sql/sql-api-sdk-java-spark.md
             - name: "Java-Bulk\_Executor-Bibliothek v2"
-              href: sql-api-sdk-bulk-executor-java.md
+              href: sql/sql-api-sdk-bulk-executor-java.md
         - name: Azure CLI
           href: /cli/azure/azure-cli-reference-for-cosmos-db
         - name: Node.js
-          href: sql-api-sdk-node.md
+          href: sql/sql-api-sdk-node.md
         - name: Python
-          href: sql-api-sdk-python.md
+          href: sql/sql-api-sdk-python.md
         - name: REST (Datenebene)
           href: /rest/api/cosmos-db/
         - name: REST (Verwaltungsebene)
@@ -1401,11 +1401,11 @@
         - name: Verwalten eines Azure Cosmos-Kontos
           href: how-to-manage-database-account.md
         - name: PowerShell
-          href: manage-with-powershell.md
+          href: sql/manage-with-powershell.md
         - name: Verwenden der Azure-Befehlszeilenschnittstelle
-          href: manage-with-cli.md
+          href: sql/manage-with-cli.md
         - name: Verwenden von Resource Manager-Vorlagen
-          href: manage-with-templates.md
+          href: sql/manage-with-templates.md
           displayName: ARM
         - name: Verschieben zwischen Regionen
           href: how-to-move-regions.md
@@ -1447,7 +1447,9 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Analysespeicher und private Endpunkte
           href: analytical-store-private-endpoints.md
-        - name: Abfragen mit Azure Synapse Spark
+        - name: Abfragen mit Azure Synapse Spark 3
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Abfragen mit Azure Synapse Spark 2
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Abfragen mit einem serverlosen SQL-Pool
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -1489,7 +1491,7 @@
     - name: Unternehmensfähigkeit
       items:
         - name: Kontingenterhöhung anfordern
-          href: create-support-request-quota-increase.md
+          href: sql/create-support-request-quota-increase.md
     - name: Überwachen
       items:
         - name: Überwachen von Cosmos DB
@@ -1535,7 +1537,7 @@
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
       href: /learn/browse/?products=azure-cosmos-db
     - name: Cheat Sheet für die Abfrage
-      href: query-cheat-sheet.md
+      href: sql/query-cheat-sheet.md
     - name: Häufig gestellte Fragen
       href: faq.yml
     - name: Whitepaper

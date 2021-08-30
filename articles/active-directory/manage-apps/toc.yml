@@ -81,6 +81,8 @@
           href: certificate-signing-options.md
         - name: Verwalten von Zertifikaten
           href: manage-certificates-for-federated-single-sign-on.md
+        - name: Schutz vor Einwilligungsphishing
+          href: protect-against-consent-phishing.md
         - name: Mandanteneinschränkungen
           href: tenant-restrictions.md
         - name: Konfigurieren der SAML-Tokenverschlüsselung
