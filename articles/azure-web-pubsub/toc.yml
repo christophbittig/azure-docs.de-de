@@ -32,7 +32,9 @@
     - name: Serverlose Entwicklung
       expanded: true
       items:
-        - name: Erstellen eines serverlosen Chats mit Azure Functions
+        - name: Erstellen einer Benachrichtigungs-App mit Azure-Funktion
+          href: tutorial-serverless-notification.md
+        - name: Erstellen einer Chat-App mit Azure-Funktion
           href: quickstart-serverless.md
     - name: Veröffentlichen und Abonnieren von Nachrichten
       href: tutorial-pub-sub-messages.md
