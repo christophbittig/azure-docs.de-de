@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd740c773998450ef6e8bb95c4df3a1abadaceed
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ba54fa398d42aea43a93d3b3369f21f4d2168ec
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796009"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350607"
 ---
 # <a name="how-to-manage-tiered-files"></a>Verwalten von mehrstufigen Dateien
 
@@ -63,11 +63,15 @@ Es gibt mehrere Möglichkeiten, um zu überprüfen, ob eine Datei per Tiering au
 
 ## <a name="how-to-exclude-applications-from-cloud-tiering-last-access-time-tracking"></a>Ausschließen von Anwendungen von der Nachverfolgung der letzten Zugriffszeit des Cloudtierings
 
-Ab Version 11.1 des Azure-Dateisynchronisierungs-Agents können Sie jetzt Anwendungen von der Nachverfolgung der letzten Zugriffszeit ausschließen. Wenn eine Anwendung auf eine Datei zugreift, wird die Uhrzeit des letzten Zugriffs auf die Datei in der Cloudtiering-Datenbank aktualisiert. Anwendungen, die das Dateisystem überprüfen (z. B. der Virenschutz), führen dazu, dass der Zeitpunkt des letzten Zugriffs für alle Dateien gleich ist. Dies wirkt sich auf den Zeitpunkt der Auslagerung von Dateien aus.
+Wenn eine Anwendung auf eine Datei zugreift, wird die Uhrzeit des letzten Zugriffs auf die Datei in der Cloudtiering-Datenbank aktualisiert. Anwendungen, die das Dateisystem überprüfen (z. B. der Virenschutz), führen dazu, dass der Zeitpunkt des letzten Zugriffs für alle Dateien gleich ist. Dies wirkt sich auf den Zeitpunkt der Auslagerung von Dateien aus.
 
-Um Anwendungen von der Nachverfolgung der letzten Zugriffszeit auszuschließen, fügen Sie der Registrierungseinstellung „HeatTrackingProcessNameExclusionList“ unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync“ den Prozessnamen hinzu.
+Um Anwendungen von der Nachverfolgung der letzten Zugriffszeit auszuschließen, fügen Sie der entsprechenden Registrierungseinstellung unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync“ den Prozessnamen hinzu.
 
+Fügen Sie die Prozessausschlüsse für die Releases v11 und v12 der Registrierungseinstellung „HeatTrackingProcessNameExclusionList“ hinzu.
 Beispiel: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNameExclusionList /t REG_MULTI_SZ /d "SampleApp.exe\0AnotherApp.exe" /f
+
+Fügen Sie die Prozessausschlüsse für das Release v13 und höher der Registrierungseinstellung „HeatTrackingProcessNamesExclusionList“ hinzu.
+Beispiel: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNamesExclusionList /t REG_SZ /d "SampleApp.exe,AnotherApp.exe" /f
 
 > [!NOTE]
 > Prozesse der Datendeduplizierung und des Ressourcen-Managers für Dateiserver (File Server Resource Manager, FSRM) sind standardmäßig ausgeschlossen. Änderungen an der Prozessausschlussliste werden vom System alle fünf Minuten berücksichtigt.

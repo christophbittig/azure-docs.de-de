@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe851cc39ab8856133a5ac24508bc9b6df53a8f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 00b0585e19a4a081502a6b93b79be7ed293a4b1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782329"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355988"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -76,7 +76,7 @@ Ein Benutzer kann Mitglied mehrerer Gruppen mit Lizenzen sein. Folgende Punkte s
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>Gleichzeitig bestehende direkte Lizenzen und Gruppenlizenzen
 
-Wenn ein Benutzer eine Lizenz von einer Gruppe erbt, können Sie diese Lizenzzuweisung in den Eigenschaften des Benutzers nicht direkt entfernen oder ändern. Sie können die Lizenzzuweisung nur in der Gruppe ändern, die Änderungen werden dann an alle Benutzer propagiert. Es ist jedoch möglich, dem Benutzer die gleiche Produktlizenz direkt und durch eine Gruppenlizenzzuweisung zuzuweisen. Auf diese Weise können Sie zusätzliche Dienste aus dem Produkt ohne Auswirkungen auf andere Benutzer nur für einen Benutzer aktivieren.
+Wenn ein Benutzer eine Lizenz von einer Gruppe erbt, können Sie diese Lizenzzuweisung in den Eigenschaften des Benutzers nicht direkt entfernen oder ändern. Sie können die Lizenzzuweisung nur in der Gruppe ändern, die Änderungen werden dann an alle Benutzer propagiert. Wenn Sie einem Benutzer, der über eine Lizenz aus einer Gruppenlizenzzuweisung verfügt, zusätzliche Features zuweisen müssen, müssen Sie eine weitere Gruppe erstellen, um dem Benutzer die zusätzlichen Features zuzuweisen.
 
 Direkt zugewiesene Lizenzen können entfernt werden und wirken sich nicht auf geerbte Lizenzen des Benutzers aus. Angenommen, ein Benutzer erbt eine Office 365 Enterprise E3-Lizenz von einer Gruppe.
 

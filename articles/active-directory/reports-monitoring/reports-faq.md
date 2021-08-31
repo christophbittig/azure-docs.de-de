@@ -3,8 +3,7 @@ title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-
 description: Hier finden Sie häufig gestellte Fragen zu Azure Active Directory-Berichten.
 services: active-directory
 documentationcenter: ''
-author: cawrites
-manager: MarkusVi
+author: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -12,22 +11,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 05/12/2020
+ms.date: 07/28/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da0083a236900037b388798d825515e94613c20
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b64c33619eae16cb08b9ccdc1b4fd5265813d9ed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346738"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](overview-reports.md). 
 
 ## <a name="getting-started"></a>Erste Schritte 
+
+**F: Wie funktioniert die Lizenzierung für die Berichterstellung?**
+
+**A:** Mit allen Azure AD-Lizenzen können Sie Aktivitätsprotokolle im Azure-Portal anzeigen. 
+
+Wenn Ihr Mandant über eine
+
+- Azure AD Free-Lizenz verfügt, können Sie im Portal bis zu sieben Tage alte Aktivitätsprotokolldaten anzeigen. 
+- Azure AD Premium-Lizenz verfügt, können Sie im Azure-Portal bis zu 30 Tage alte Daten anzeigen. 
+
+Sie können diese Protokolldaten auch in Azure Monitor, Azure Event Hubs und Azure Storage exportieren oder Aktivitätsdaten über die Microsoft Graph-API abfragen. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Wenn Sie vor dem Upgrade über keine Datenaktivitäten verfügten, dauert es ein paar Tage, bis die Daten in den Protokollen angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
+
 
 **F: Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und der integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 

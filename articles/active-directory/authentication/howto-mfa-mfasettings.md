@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 45efa0e955040931516924a1a8a8576a1a8bf12f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356156"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -98,7 +98,11 @@ Führen Sie die folgenden Schritte aus, um Betrugswarnungen zu aktivieren und zu
 
 ### <a name="view-fraud-reports"></a>Anzeigen von Betrugsberichten
 
-Klicken Sie auf **Azure Active Directory** > **Anmeldungen** > **Details zur Authentifizierung**. Der Betrugsbericht ist nun Bestandteil des Azure AD-Standardanmeldungsberichts und wird unter **Ergebnisdetails** angezeigt, da die mehrstufige Authentifizierung verweigert und Betrugscode eingegeben wurde.
+Wenn ein Benutzer einen Betrug meldet, wird das Ereignis im Bericht zu Anmeldeaktivitäten (als Anmeldung, die vom Benutzer abgelehnt wurde) und in den Überwachungsprotokollen angezeigt.
+
+- Um Betrugsberichte im Bericht zu Anmeldeaktivitäten anzuzeigen, klicken Sie auf **Azure Active Directory** > **Anmeldedaten** > **Authentifizierungsdetails**. Der Betrugsbericht ist Bestandteil des Azure AD-Standardberichts für Anmeldeaktivitäten und wird in den **Ergebnisdetails** als **MFA verweigert, Betrugscode eingegeben** angezeigt.
+
+- Klicken Sie zum Anzeigen von Betrugsberichten in den Überwachungsprotokollen auf **Azure Active Directory** > **Überwachungsprotokolle**. Der Betrugsbericht wird abhängig von den Einstellungen auf Mandantenebene für den Betrugsberichte unter dem Aktivitätstyp **Betrug gemeldet - Benutzer für MFA gesperrt** oder **Betrug gemeldet - keine Aktion ausgeführt** angezeigt.
  
 ## <a name="notifications"></a>Benachrichtigungen
 

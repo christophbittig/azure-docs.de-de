@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4642b8f9f1ede65766a0026940c0af0f01ec2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 48d424a64df215a7506130a44d57fc45d638255d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111088"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355544"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Bewährte Methoden für Azure AD-Rollen
 
@@ -32,7 +32,9 @@ Beim Planen Ihrer Zugriffs Steuerungsstrategie ist es eine bewährte Vorgehenswe
 
 Führen Sie die folgenden Schritte aus, um die richtige Rolle zu finden.
 
-1. Öffnen Sie im Azure-Portal [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators), um die Liste der Azure AD Rollen anzuzeigen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus, um die Liste der Azure AD-Rollen anzuzeigen.
 
 1. Verwenden Sie den **Dienst** Filter, um die Liste der Rollen einzugrenzen.
 
@@ -44,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um die richtige Rolle zu finden.
 
 ## <a name="2-use-privileged-identity-management-to-grant-just-in-time-access"></a>2. Verwenden Sie Privileged Identity Management, um Just-in-Time-Zugriff zu gewähren
 
-Eines der Prinzipien der geringsten Berechtigung ist, dass der Zugriff nur für einen bestimmten Zeitraum gewährt werden sollte. Mit [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) können Sie Ihren Administratoren Just-in-Time-Zugriff gewähren. Microsoft empfiehlt, PIM in Azure AD zu aktivieren. Mit PIM kann ein Benutzer zu einem berechtigten Mitglied einer Azure AD-Rolle gemacht werden. Der kann dann seine Rolle jedes Mal für einen begrenzten Zeitraum aktivieren, wenn der sie benötigt. Der privilegierte Zugriff wird automatisch entfernt, wenn das Zeitfenster abläuft. Sie können [PIM-Einstellungen](../privileged-identity-management/pim-how-to-change-default-settings.md) auch so konfigurieren, dass eine Genehmigung erforderlich ist oder e-Mail-Benachrichtigungen erhalten, wenn jemand Ihre Rollenzuweisung aktiviert. Benachrichtigungen liefern eine Warnung, wenn neue Benutzer zu hoch privilegierten Rollen hinzugefügt werden. 
+Eines der Prinzipien der geringsten Berechtigung ist, dass der Zugriff nur für einen bestimmten Zeitraum gewährt werden sollte. Mit [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) können Sie Ihren Administratoren Just-in-Time-Zugriff gewähren. Microsoft empfiehlt, PIM in Azure AD zu aktivieren. Mit PIM kann ein Benutzer zu einem berechtigten Mitglied einer Azure AD-Rolle gemacht werden. Dort kann die Rolle bei Bedarf für einen begrenzten Zeitraum aktiviert werden. Der privilegierte Zugriff wird automatisch entfernt, wenn das Zeitfenster abläuft. Sie können [PIM-Einstellungen](../privileged-identity-management/pim-how-to-change-default-settings.md) auch so konfigurieren, dass eine Genehmigung erforderlich ist oder e-Mail-Benachrichtigungen erhalten, wenn jemand Ihre Rollenzuweisung aktiviert. Benachrichtigungen liefern eine Warnung, wenn neue Benutzer zu hoch privilegierten Rollen hinzugefügt werden. 
 
 ## <a name="3-turn-on-multi-factor-authentication-for-all-your-administrator-accounts"></a>3. Aktivieren Sie die mehrstufige Authentifizierung für alle Ihre Administratorkonten
 
@@ -74,7 +76,7 @@ Microsoft empfiehlt Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die
 
 Wenn Sie über ein externes Governancesystem verfügen, das Gruppen nutzt, sollten Sie Azure AD-Gruppen anstelle einzelner Benutzerrollen zuweisen. Mit wenigen Ausnahmen können globale Administratoren auch alle Konfigurationseinstellungen in Ihrer Microsoft 365-Organisation lesen und ändern.Sie können auch rollenzuweisbare Gruppen in PIM verwalten, um sicherzustellen, dass es keine ständigen Besitzer oder Mitglieder in diesen privilegierten Gruppen gibt. [Weitere Informationen finden Sie unter Verwaltungsfunktionen für Azure AD-Gruppen mit privilegiertem Zugriff](../privileged-identity-management/groups-features.md).
 
-Sie können rollenzuweisbaren Gruppen einen Besitzer zuweisen. Der Besitzer entscheidet, wer zur Gruppe hinzugefügt oder aus ihr entfernt wird, und damit indirekt auch, wer die Rollenzuweisung erhält. Auf diese Weise kann ein globaler Administrator oder ein Administrator für privilegierte Rollen die Rollenverwaltung mit Hilfe von Gruppen auf einer rollenspezifischen Grundlage delegieren. Weitere Informationen finden Sie unter [Verwenden von Cloud-Gruppen zur Verwaltung von Rollenzuweisungen in Azure Active Directory](groups-concept.md).
+Sie können rollenzuweisbaren Gruppen einen Besitzer zuweisen. Der Besitzer entscheidet, wer zur Gruppe hinzugefügt oder aus ihr entfernt wird, und damit indirekt auch, wer die Rollenzuweisung erhält. Auf diese Weise kann ein globaler Administrator oder ein Administrator für privilegierte Rollen die Rollenverwaltung mit Hilfe von Gruppen auf einer rollenspezifischen Grundlage delegieren. Weitere Informationen finden Sie unter [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](groups-concept.md).
 
 ## <a name="7-activate-multiple-roles-at-once-using-privileged-access-groups"></a>7. Aktivieren Sie mehrere Rollen auf einmal mit privilegierten Zugriffsgruppen
 

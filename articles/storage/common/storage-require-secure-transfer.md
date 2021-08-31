@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b45af43c9a5c76169deaef08c91ea7a9e8670c1
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: c44336e41c173cffad28a52bed3c29ec13df497f
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371702"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323158"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
@@ -29,7 +29,9 @@ Azure Policy bietet eine integrierte Richtlinie, um sicherzustellen, dass für I
 Das Herstellen einer Verbindung mit einer Azure-Dateifreigabe über SMB ohne Verschlüsselung führt zu einem Fehler, wenn für das Speicherkonto eine sichere Übertragung erforderlich ist. Beispiele für unsichere Verbindungen sind Verbindungen, die über SMB 2.1 oder SMB 3.x ohne Verschlüsselung hergestellt werden.
 
 > [!NOTE]
-> Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird. Zudem werden klassische Speicherkonten nicht unterstützt.
+> Da Azure Storage keine Unterstützung von HTTPS für benutzerdefinierte Domänennamen bietet, wird diese Option nicht angewendet, wenn ein benutzerdefinierter Domänenname verwendet wird.
+> 
+> Diese Einstellung für eine sichere Übertragung gilt nicht für TCP. Ungeschützte Verbindungen über NFS 3.0-Protokollunterstützung in Azure Blob Storage mit TCP werden erfolgreich erstellt.  
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Erzwingen einer sicheren Übertragung im Azure-Portal
 

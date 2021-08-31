@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: fauhse
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 532ac3b60f90a3d587a57ad8ea9663a6cfad3d90
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: c1fda4eb853e97b7a5b85beebe162ab3869e4a68
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109645371"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "113798908"
 ---
 Eine Azure-Dateifreigabe wird in der Cloud in einem Azure-Speicherkonto gespeichert.
 Im Hinblick auf die Leistung sollten dabei einige wichtige Aspekte berücksichtigt werden.
@@ -34,7 +34,7 @@ Stellen Sie sicher, dass die Region der einzelnen Speicherkonten identisch ist u
 > [!CAUTION]
 > Wenn Sie eine Azure-Dateifreigabe mit maximal 100 TiB erstellen, kann diese Freigabe als Redundanzoptionen nur lokal redundanten Speicher oder zonenredundanten Speicher verwenden. Daher sollten Sie Ihre Speicherredundanzanforderungen berücksichtigen, bevor Sie Dateifreigabe mit 100 TiB verwenden.
 
-Azure-Dateifreigaben werden standardmäßig weiterhin mit einem Grenzwert von 5 TiB erstellt. Stellen Sie beim Erstellen neuer Speicherkonten sicher, dass Sie die [Anweisungen zum Erstellen von Speicherkonten befolgen, für die Azure-Dateifreigaben mit einer maximalen Größe von 100 TiB zulässig sind](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+Azure-Dateifreigaben werden standardmäßig weiterhin mit einem Grenzwert von 5 TiB erstellt. Führen Sie die unter [Erstellen einer Azure-Dateifreigabe](../articles/storage/files/storage-how-to-create-file-share.md) beschriebenen Schritte aus, um eine große Dateifreigabe zu erstellen.
 
 Ein weiterer Aspekt, den Sie bei der Bereitstellung eines Speicherkontos berücksichtigen sollten, ist die Redundanz von Azure Storage. Weitere Informationen finden Sie unter [Redundanzoptionen von Azure Storage](../articles/storage/common/storage-redundancy.md).
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 07/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e2eafae185551c79d651ec6dcf39ad11eb8534
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a945afeedbd57f33163489a149c8d7da9c3925
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355677"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integration der RADIUS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 
@@ -83,7 +83,7 @@ Verwenden Sie die folgenden Richtlinien, um den RADIUS-Client zu konfigurieren:
 
 * Konfigurieren Sie Ihre Appliance/Ihren Server zur Authentifizierung über RADIUS mit der IP-Adresse des Azure Multi-Factor Authentication-Servers, der als RADIUS-Server fungiert.
 * Verwenden Sie das gleiche gemeinsame Geheimnis, das weiter oben konfiguriert wurde.
-* Konfigurieren Sie den RADIUS-Timeout auf 30 bis 60 Sekunden, damit genug Zeit ist, die Anmeldeinformationen des Benutzers zu überprüfen, die zweistufige Überprüfung durchzuführen, die Antwort zu empfangen und dann auf die RADIUS-Zugriffsanforderung zu reagieren.
+* Konfigurieren Sie den RADIUS-Timeout auf 60 Sekunden, damit genug Zeit ist, die Anmeldeinformationen des Benutzers zu überprüfen, die zweistufige Überprüfung durchzuführen, die Antwort zu empfangen und dann auf die RADIUS-Zugriffsanforderung zu reagieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

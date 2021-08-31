@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b35706c48ff78e81ef339ee838cc4259090e56c
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 8fb21f3173225d36fcdb2290c74a2c7805455342
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987630"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340027"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -70,7 +70,7 @@ Betrachten Sie das folgende Beispiel. Einem Benutzer ist eine Lizenz für Office
 
 - Exchange Online (Plan 2) steht in Konflikt mit Exchange Online (Plan 1).
 
-Zur Behebung dieses Konflikts müssen zwei der Pläne deaktiviert werden. Sie können die dem Benutzer direkt zugewiesene E1-Lizenz deaktivieren. Eine andere Möglichkeit besteht darin, die gesamte Gruppenlizenzzuweisung zu ändern und die Pläne für die E3-Lizenz zu deaktivieren. Alternativ können Sie dem Benutzer auch die E1-Lizenz entziehen, falls sie im Kontext der E3-Lizenz redundant ist.
+Zur Behebung dieses Konflikts müssen Sie einen der Pläne deaktivieren. Sie können die dem Benutzer direkt zugewiesene E1-Lizenz deaktivieren. Eine andere Möglichkeit besteht darin, die gesamte Gruppenlizenzzuweisung zu ändern und die Pläne für die E3-Lizenz zu deaktivieren. Alternativ können Sie dem Benutzer auch die E1-Lizenz entziehen, falls sie im Kontext der E3-Lizenz redundant ist.
 
 Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim Administrator. Azure AD löst Lizenzkonflikte nicht automatisch.
 

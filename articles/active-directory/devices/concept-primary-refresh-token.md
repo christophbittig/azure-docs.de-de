@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c2a687dc1165b2eca52213811721b35e998a6d9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87fd2189222828eef2ff03a82125e0b6dcf7111e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033282"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342843"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -29,7 +29,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den verschiedenen
 Die folgenden Windows-Komponenten spielen beim Anfordern und Verwenden eines PRT eine wichtige Rolle:
 
 * **Cloud-Authentifizierungsanbieter** (CloudAP): CloudAP ist der moderne Authentifizierungsanbieter für die Windows-Anmeldung, mit dem Benutzer überprüft werden, die sich an einem Windows 10-Gerät anmelden. CloudAP verfügt über ein Plug-In-Framework, das von Identitätsanbietern als Grundlage für die Ermöglichung der Windows-Authentifizierung mit den Anmeldeinformationen des jeweiligen Identitätsanbieters genutzt werden kann.
-* **Web Account Manager** (WAM): WAM ist der Standardtokenbroker auf Windows 10-Geräten. WAM verfügt auch über ein Plug-In-Framework, das Identitätsanbieter als Grundlage verwenden können, um einmaliges Anmelden (SSO) für ihre Anwendungen über den jeweiligen Identitätsanbieter zu ermöglichen.
+* **Web Account Manager** (WAM): WAM ist der Standardtokenbroker auf Windows 10-Geräten. WAM verfügt auch über ein Plug-In-Framework, das Identitätsanbieter als Grundlage verwenden können, um einmaliges Anmelden (SSO) für ihre Anwendungen über den jeweiligen Identitätsanbieter zu ermöglichen. (Nicht in Windows Server 2016 LTSC-Builds enthalten)
 * **Azure AD-CloudAP-Plug-In**: Ein Azure AD-spezifisches Plug-In, das auf dem CloudAP-Framework basiert und mit dem die Anmeldeinformationen von Benutzern für Azure AD während der Windows-Anmeldung überprüft werden.
 * **Azure AD-WAM-Plug-In**: Ein Azure AD-spezifisches Plug-In, das auf dem WAM-Framework basiert und mit dem SSO für Anwendungen ermöglicht wird, für die Azure AD für die Authentifizierung genutzt wird.
 * **Dsreg**: Eine Azure AD-spezifische Komponente unter Windows 10, mit der der Prozess der Geräteregistrierung für alle Gerätezustände verarbeitet wird.
@@ -59,7 +59,7 @@ Das PRT wird während der Benutzerauthentifizierung auf einem Windows 10-Gerät
 
 * **In Azure AD eingebunden** oder **Hybrid in Azure AD eingebunden**: Ein PRT wird während der Windows-Anmeldung ausgestellt, wenn sich ein Benutzer mit seinen Anmeldeinformationen der Organisation anmeldet. Ein PRT wird mit allen von Windows 10 unterstützten Anmeldeinformationen ausgestellt, z. B. Kennwort und Windows Hello for Business. In diesem Szenario ist das Azure AD-CloudAP-Plug-In die primäre Autorität für das PRT.
 * **In Azure AD registriertes Gerät**: Ein PRT wird ausgestellt, wenn ein Benutzer seinem Windows 10-Gerät ein sekundäres Geschäftskonto hinzufügt. Benutzer haben zwei Möglichkeiten, um Windows 10 ein Konto hinzuzufügen:  
-   * Hinzufügen eines Kontos über die Eingabeaufforderung **Dieses Konto überall auf Ihrem Gerät verwenden** nach dem Anmelden an einer App (z. B. Outlook)
+   * Hinzufügen eines Kontos über die Eingabeaufforderung **Verwaltung meines Geräts durch meine Organisation zulassen** nach der Anmeldung bei einer App (z. B. Outlook)
    * Hinzufügen eines Kontos über **Einstellungen** > **Konten** > **Auf Arbeits- oder Schulkonto zugreifen** > **Verbinden**
 
 In Szenarien für in Azure AD registrierte Geräte ist das Azure AD-WAM-Plug-In die primäre Autorität für das PRT, da die Windows-Anmeldung mit diesem Azure AD-Konto nicht durchgeführt wird.
@@ -122,8 +122,6 @@ Ein PRT kann in bestimmten Szenarien einen MFA-Anspruch (Multi-Factor Authentica
 * **MFA während der interaktiven WAM-Anmeldung**: Für eine Tokenanforderung per WAM gilt Folgendes: Wenn ein Benutzer einen MFA-Vorgang durchführen muss, um auf die App zuzugreifen, wird das PRT, das während dieser Interaktion verlängert wird, mit einem MFA-Anspruch versehen.
    * In diesem Fall wird der MFA-Anspruch nicht fortlaufend aktualisiert, und die MFA-Dauer basiert auf der Lebensdauer, die für das Verzeichnis festgelegt ist.
    * Wenn ein vorheriges vorhandenes primäres Aktualisierungstoken (Primary Refresh Token, PRT) und Aktualisierungstoken (Refresh Token, RT) für den Zugriff auf eine App verwendet werden, werden das PRT und RT als erster Authentifizierungsnachweis angesehen. Ein neues Authentifizierungstoken wird mit einem zweiten Nachweis und gedruckten MFA-Anspruch benötigt. Hierdurch werden auch ein neues PRT und RT ausgestellt.
-* **MFA während der Geräteregistrierung**: Wenn ein Administrator seine Geräteeinstellungen in Azure AD so konfiguriert hat, dass [zum Registrieren von Geräten ein MFA-Vorgang erforderlich ist](device-management-azure-portal.md#configure-device-settings), muss der Benutzer diesen MFA-Vorgang durchführen, um die Registrierung abzuschließen. Während dieses Prozesses erhält das PRT, das für den Benutzer ausgestellt wird, den MFA-Anspruch, der während der Registrierung beschafft wird. Diese Funktion gilt nur für den registrierten Benutzer des Geräts und nicht für andere Benutzer, die sich bei diesem Gerät anmelden.
-   * Ähnlich wie bei der interaktiven WAM-Anmeldung wird der MFA-Anspruch nicht fortlaufend aktualisiert, sodass die MFA-Dauer auf der Lebensdauer basiert, die für das Verzeichnis festgelegt ist.
 
 Unter Windows 10 wird für jeden Satz von Anmeldeinformationen eine partitionierte Liste mit PRTs geführt. Es ist also ein PRT für jede Windows Hello for Business-Instanz, jedes Kennwort bzw. jede Smartcard vorhanden. Mit dieser Partitionierung wird sichergestellt, dass MFA-Ansprüche anhand der verwendeten Anmeldeinformationen isoliert und bei Tokenanforderungen nicht verwechselt werden.
 

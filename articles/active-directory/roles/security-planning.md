@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8024650909ef3f48057c572fba2a70f2d611e2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0e45240d9d1a957765dfd362bf612ae2ea93919c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796391"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355670"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -66,13 +66,13 @@ Phase 1 der Roadmap konzentriert sich auf wichtige Aufgaben, die schnell und ein
 
 ### <a name="general-preparation"></a>Allgemeine Vorbereitung
 
-#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Aktivieren von Azure AD Privileged Identity Management
+#### <a name="use-azure-ad-privileged-identity-management"></a>Verwenden von Azure AD Privileged Identity Management
 
-Wir empfehlen, Azure AD Privileged Identity Management (PIM) in Ihrer Azure AD-Produktionsumgebung zu aktivieren. Nach der Aktivierung von PIM erhalten Sie bei Änderungen an privilegierten Zugriffsrollen eine Benachrichtigung per E-Mail. Benachrichtigungen stellen ein Frühwarnsystem dar, wenn zusätzliche Benutzer zu Rollen mit hohen Zugriffsrechten hinzugefügt werden.
+Wir empfehlen, Azure AD Privileged Identity Management (PIM) in Ihrer Azure AD-Produktionsumgebung zu verwenden. Bei Verwendung von PIM erhalten Sie bei Änderungen an privilegierten Zugriffsrollen eine Benachrichtigung per E-Mail. Benachrichtigungen stellen ein Frühwarnsystem dar, wenn zusätzliche Benutzer zu Rollen mit hohen Zugriffsrechten hinzugefügt werden.
 
 Azure AD Privileged Identity Management ist in Azure AD Premium P2 oder EMS E5 enthalten. Um den Zugriff auf lokale und in der Cloud verfügbare Anwendungen und Ressourcen besser zu schützen, registrieren Sie sich für die [kostenlose 90-Tage-Testversion von Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Azure AD Privileged Identity Management und Azure AD Identity Protection überwachen mithilfe von Berichterstattung, Überwachung und Warnungen von Azure AD die Sicherheitsaktivitäten.
 
-Gehen Sie nach dem Aktivieren von Azure AD Privileged Identity Management wie folgt vor:
+Führen Sie nach dem Beginn der Verwendung von Azure AD Privileged Identity Management folgende Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Konto an, das als globaler Administrator Ihrer Azure AD-Produktionsorganisation konfiguriert ist.
 
@@ -86,7 +86,7 @@ Stellen Sie sicher, dass der Person in Ihrer Organisation, die PIM zum ersten Ma
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifizieren und Kategorisieren von Konten in stark privilegierten Rollen
 
-Nachdem Sie Azure AD Privileged Identity Management aktiviert haben, können Sie Benutzer mit den folgenden Azure AD-Rollen anzeigen:
+Zeigen Sie nach dem Beginn der Verwendung von Azure AD Privileged Identity Management die Benutzer mit den folgenden Azure AD-Rollen an:
 
 * Globaler Administrator
 * Administrator für privilegierte Rollen
@@ -425,7 +425,7 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 8. Stellen Sie sicher, dass Sie Sicherungen der relevanten Protokolle für potenzielle forensische und rechtliche Untersuchungen speichern.
 
-Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft Office 365 finden Sie unter [Sicherheitsvorfallmanagement in Microsoft Office 365](https://aka.ms/Office365SIM).
+Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft Office 365 finden Sie unter [Sicherheitsvorfallmanagement in Microsoft Office 365](/compliance/assurance/assurance-security-incident-management).
 
 ## <a name="faq-answers-for-securing-privileged-access"></a>Häufig gestellte Fragen: Antworten zum Sichern des privilegierten Zugriffs  
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 08/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03b93c09ebe1c8361379dba018d7c756f409d4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a96181c86faf983abd349dcb9b287e2f3ac344de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745149"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347223"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Problembehandlung beim Rückschreiben der Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -49,6 +49,18 @@ Für Azure AD Connect, Version *1.1.443.0* und höher, ist *ausgehender HTTPS-Zu
 * *\*.servicebus.usgovcloudapi.net*
 
 Wenn Sie eine höhere Granularität benötigen, konsultieren Sie die [Liste der IP-Bereiche der Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653). Diese Liste wird jeden Mittwoch aktualisiert und tritt am jeweils nächsten Montag in Kraft.
+
+Führen Sie das folgende Cmdlet aus, um festzustellen, ob der Zugriff auf eine URL und einen Port in einer Umgebung eingeschränkt ist:
+
+```powershell
+Test-NetConnection -ComputerName https://ssprdedicatedsbprodncu.servicebus.windows.net -Port 443
+```
+
+Oder führen Sie Folgendes aus:
+
+```powershell
+Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.windows.net -Verbose
+```
 
 Weitere Informationen finden Sie unter [Voraussetzungen für Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md).
 
@@ -185,6 +197,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 | 31017| AuthTokenSuccess| Dieses Ereignis weist darauf hin, dass für den globalen Administrator, der während der Azure AD Connect-Einrichtung angegeben wurde, erfolgreich ein Autorisierungstoken abgerufen wurde, um den Vorgang zur Integration oder zum Entfernen zu starten.|
 | 31018| KeyPairCreationSuccess| Dieses Ereignis gibt an, dass der Kennwortverschlüsselungsschlüssel erfolgreich erstellt wurde. Der Schlüssel dient zum Verschlüsseln von Kennwörtern aus der Cloud, die an Ihre lokale Umgebung gesendet werden.|
 | 31034| ServiceBusListenerError| Dieses Ereignis gibt an, dass beim Herstellen einer Verbindung mit dem Service Bus-Listener Ihres Mandanten ein Fehler aufgetreten ist. Wenn die Fehlermeldung „Das Remotezertifikat ist laut Validierungsverfahren ungültig“ enthält, stellen Sie sicher, dass der Azure AD Connect-Server wie unter [TLS-Zertifikatänderungen für Azure](../../security/fundamentals/tls-certificate-changes.md) beschrieben über alle erforderlichen Stammzertifizierungsstellen verfügt. |
+| 31044| PasswordResetService| Dieses Ereignis gibt an, dass das Kennwortrückschreiben nicht funktioniert. Der Service Bus lauscht aus Redundanzgründen auf zwei separaten Relays auf Anforderungen. Jede Relayverbindung wird von einem eindeutigen Diensthost verwaltet. Der Rückschreibeclient gibt einen Fehler zurück, wenn einer der Diensthosts nicht ausgeführt wird.|
 | 32000| UnknownError| Dieses Ereignis gibt an, dass während eines Kennwortverwaltungsvorgangs ein unbekannter Fehler aufgetreten ist. Lesen Sie den Ausnahmetext im Ereignis, um weitere Informationen zu erhalten. Deaktivieren Sie bei Problemen das Kennwortrückschreiben, und aktivieren Sie es anschließend wieder. Sollte das Problem weiterhin auftreten, senden Sie eine Kopie des Ereignisprotokolls zusammen mit der angegebenen Nachverfolgungs-ID, wenn Sie eine Supportanfrage öffnen.|
 | 32001| ServiceError| Dieses Ereignis gibt an, dass beim Herstellen einer Verbindung mit dem Kennwortzurücksetzungsdienst ein Fehler aufgetreten ist. Dieser Fehler tritt in der Regel auf, wenn der lokale Dienst keine Verbindung mit dem Webdienst für die Kennwortzurücksetzung herstellen konnte.|
 | 32002| ServiceBusError| Dieses Ereignis gibt an, dass beim Herstellen einer Verbindung mit der Service Bus-Instanz Ihres Mandanten ein Fehler aufgetreten ist. Dieser Fall kann eintreten, wenn Sie in Ihrer lokalen Umgebung ausgehende Verbindungen blockieren. Prüfen Sie Ihre Firewall, und vergewissern Sie sich, dass Verbindungen über TCP 443 und mit https://ssprdedicatedsbprodncu.servicebus.windows.net möglich sind. Versuchen Sie es anschließend erneut. Sollten weiterhin Probleme auftreten, deaktivieren Sie das Kennwortrückschreiben, und aktivieren Sie es anschließend wieder.|

@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/23/2020
+ms.date: 7/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a66b53cbcc8a072dce6b4f5f2f1f0cf1dc6322f
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: af0269d2ae698a025682929818b601cdebec06ad
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714330"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286528"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
-Standardmäßig können globale Administratoren und Benutzeradministratoren alle Aspekte der Azure AD-Berechtigungsverwaltung erstellen und verwalten. Die Benutzer in diesen Rollen kennen jedoch möglicherweise nicht alle Situationen, in denen Zugriffspakete erforderlich sind. In der Regel handelt es sich um Benutzer in den entsprechenden Abteilungen, Teams oder Projekten, die wissen, mit wem sie zusammenarbeiten, welche Ressourcen sie verwenden und wie lange. Anstatt Nicht-Administratoren uneingeschränkte Berechtigungen zu gewähren, können Sie Benutzern die Mindestberechtigungen erteilen, die sie für die Ausführung ihrer Arbeit benötigen, und vermeiden, widersprüchliche oder unangemessene Zugriffsrechte zu erstellen.
+Standardmäßig können globale Administratoren und Identity Governance-Administratoren alle Aspekte der Azure AD-Berechtigungsverwaltung erstellen und verwalten. Die Benutzer in diesen Rollen kennen jedoch möglicherweise nicht alle Situationen, in denen Zugriffspakete erforderlich sind. In der Regel handelt es sich um Benutzer in den entsprechenden Abteilungen, Teams oder Projekten, die wissen, mit wem sie zusammenarbeiten, welche Ressourcen sie verwenden und wie lange. Anstatt Nicht-Administratoren uneingeschränkte Berechtigungen zu gewähren, können Sie Benutzern die Mindestberechtigungen erteilen, die sie für die Ausführung ihrer Arbeit benötigen, und vermeiden, widersprüchliche oder unangemessene Zugriffsrechte zu erstellen.
 
 Dieses Video bietet eine Übersicht darüber, wie die Zugriffskontrolle von IT-Administratoren an Benutzer delegiert wird, die keine Administratoren sind.
 
@@ -65,7 +65,7 @@ Nach der Delegierung verfügt die Marketingabteilung möglicherweise über ähnl
 
 | Benutzer | Aufgabengebiet | Azure AD-Rolle | Berechtigungsverwaltungsrolle |
 | --- | --- | --- | --- |
-| Hana | IT-Administrator | Globaler Administrator, Identity Governance-Administrator oder Benutzeradministrator |  |
+| Hana | IT-Administrator | Globaler Administrator oder Identity Governance-Administrator  |  |
 | Mamta | Marketing Managerin | Benutzer | Katalogersteller und Katalogbesitzer |
 | Bernd | Marketingleiter | Benutzer | Katalogbesitzer |
 | Jessica | Projektmanagerin Marketing | Benutzer | Zugriffspaketmanager |
@@ -74,12 +74,13 @@ Nach der Delegierung verfügt die Marketingabteilung möglicherweise über ähnl
 
 Die Berechtigungsverwaltung hat die folgenden Rollen, die für die Berechtigungsverwaltung spezifisch sind.
 
-| Berechtigungsverwaltungsrolle | BESCHREIBUNG |
-| --- | --- |
-| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann weitere Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
-| Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer ausgewählt hat. |
-| Zugriffspaketmanager | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
-| Zugriffspaketzuweisungsmanager | Bearbeiten und Verwalten aller vorhandenen Zugriffspaketzuweisungen. |
+| Berechtigungsverwaltungsrolle | Rollendefinitions-ID | BESCHREIBUNG |
+| --- | --- | -- |
+| Katalogersteller | `ba92d953-d8e0-4e39-a797-0cbedb0a89e8` | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann weitere Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
+| Katalogbesitzer | `ae79f266-94d4-4dab-b730-feca7e132178` | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer ausgewählt hat. |
+| Katalogleser | `44272f93-9762-48e8-af59-1b5351b1d6b3` | Anzeigen der in einem Katalog vorhandenen Zugriffspakete. |
+| Zugriffspaketmanager | `7f480852-ebdc-47d4-87de-0d8498384a83` | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
+| Zugriffspaketzuweisungsmanager | `e2182095-804a-4656-ae11-64734e9b7ae5` | Bearbeiten und Verwalten aller vorhandenen Zugriffspaketzuweisungen. |
 
 Außerdem verfügen die gewählte genehmigende Person und ein Anforderer eines Zugriffspakets über Rechte, obwohl es sich bei ihnen nicht um Rollen handelt.
 
@@ -116,9 +117,12 @@ In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigung
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen
 
-Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Microsoft 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können). Beachten Sie, dass ein Benutzeradministrator Zugriffspakete in einem Katalog mit Gruppen verwalten kann, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können.  Weitere Informationen zu Gruppen, denen Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
+Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Microsoft 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können).  Weitere Informationen zu Gruppen, denen Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
 
-Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator ist, Gruppen, Anwendungen oder SharePoint-Online-Websites einem Katalog hinzufügen kann, muss dieser Benutzer über die erforderliche Azure AD-Verzeichnisrolle *und* die Berechtigungsverwaltungsrolle für Katalogbesitzer verfügen. Die folgende Tabelle enthält die Rollenkombinationen, die erforderlich sind, um einem Katalog Ressourcen hinzuzufügen. Um Ressourcen aus einem Katalog zu entfernen, müssen Sie über die gleichen Rollen verfügen.
+> [!NOTE]
+> Benutzer mit zugewiesener Rolle „Benutzeradministrator“ können keine Kataloge mehr erstellen oder Zugriffspakete in einem Katalog verwalten, dessen Besitzer sie nicht sind. Wenn Benutzern in Ihrer Organisation die Rolle „Benutzeradministrator“ zugewiesen wurde, um in „Berechtigungsverwaltung“ Kataloge, Zugriffspakete oder Richtlinien zu konfigurieren, sollten Sie diesen Benutzern stattdessen die Rolle **Identity Governance-Administrator** zuweisen.
+
+Damit ein Benutzer, der kein globaler Administrator ist, Gruppen, Anwendungen oder SharePoint-Online-Websites einem Katalog hinzufügen kann, muss dieser Benutzer über die erforderliche Azure AD-Verzeichnisrolle verfügen oder Besitzer der Ressource sein *und* für den Katalog über die Berechtigungsverwaltungsrolle für Katalogbesitzer verfügen. Die folgende Tabelle enthält die Rollenkombinationen, die erforderlich sind, um einem Katalog Ressourcen hinzuzufügen. Um Ressourcen aus einem Katalog zu entfernen, müssen Sie über die gleichen Rollen verfügen.
 
 | Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen | Kann Microsoft 365-Gruppe hinzufügen | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -134,7 +138,21 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 
 Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../roles/delegate-by-task.md#entitlement-management) zurate ziehen.
 
+## <a name="manage-role-assignments-programmatically-preview"></a>Programmgesteuertes Verwalten von Rollenzuweisungen (Vorschau)
+
+Sie können Katalogersteller und katalogspezifische Rollenzuweisungen für die Berechtigungsverwaltung auch mithilfe von Microsoft Graph anzeigen und aktualisieren.  Ein Benutzer in einer entsprechenden Rolle mit einer Anwendung, die über die delegierte Berechtigung `EntitlementManagement.ReadWrite.All` verfügt, kann die Graph-API aufrufen, um [die Rollendefinitionen](/graph/api/rbacapplication-list-roledefinitions?view=graph-rest-beta&preserve-view=true) der Berechtigungsverwaltung sowie die [Rollenzuweisungen](/graph/api/rbacapplication-list-roleassignments?view=graph-rest-beta&preserve-view=true) für die betreffenden Rollendefinitionen aufzulisten.
+
+Um beispielsweise die berechtigungsverwaltungsspezifischen Rollen anzuzeigen, die einem bestimmten Benutzer oder einer bestimmten Gruppe zugewiesen wurden, verwenden Sie die Graph-Abfrage zum Auflisten der Rollenzuweisungen. Geben Sie dazu die Benutzer- oder Gruppen-ID als Wert des `principalId`-Abfragefilters ein, wie in
+
+```http
+GET https://graph.microsoft.com/beta/roleManagement/entitlementManagement/roleAssignments?$filter=principalId eq '10850a21-5283-41a6-9df3-3d90051dd111'&$expand=roleDefinition&$select=id,appScopeId,roleDefinition
+```
+
+Für eine katalogspezifische Rolle gibt `appScopeId` in der Antwort den Katalog an, in dem der Benutzer eine Rolle zugewiesen ist.  Beachten Sie, dass diese Antwort lediglich explizite Zuweisungen des betreffenden Prinzipals zur Rolle in der Berechtigungsverwaltung abruft. Es werden keine Ergebnisse für einen Benutzer zurückgegeben, der Zugriffsrechte über eine Verzeichnisrolle oder durch Mitgliedschaft in einer Gruppe, die einer Rolle zugewiesen wurde, erhalten hat.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Delegieren der Zugriffskontrolle an Katalogersteller](entitlement-management-delegate-catalog.md)
+- [Delegieren der Zugriffssteuerung an Zugriffspaket-Manager](entitlement-management-delegate-managers.md)
 - [Erstellen und Verwalten eines Katalogs von Ressourcen](entitlement-management-catalog-create.md)

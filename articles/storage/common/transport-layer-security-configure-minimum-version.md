@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 07/07/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91fd04f24989df64aa294690fdedfd472c79f379
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c69e8a5030717dd76a887968f40034595b9cd939
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677247"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346661"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto
 
@@ -24,7 +24,7 @@ Die Kommunikation zwischen einer Clientanwendung und einem Azure Storage-Konto w
 
 Azure Storage unterstützt derzeit drei Versionen des TLS-Protokolls: 1.0, 1.1 und 1.2. In Azure Storage wird TLS 1.2 für öffentliche HTTPS-Endpunkte verwendet, aber TLS 1.0 und TLS 1.1 werden aus Gründen der Abwärtskompatibilität weiterhin unterstützt.
 
-Standardmäßig ermöglichen Azure Storage-Konten Clients das Senden und Empfangen von Daten mit der ältesten TLS-Version, TLS 1.0, und höheren Versionen. Wenn Sie strengere Sicherheitsmaßnahmen durchsetzen möchten, können Sie Ihr Speicherkonto so konfigurieren, dass Clients Daten mit einer neueren TLS-Version senden und empfangen müssen. Wenn für ein Speicherkonto eine TLS-Mindestversion erforderlich ist, verursachen alle Anforderungen mit einer älteren Version einen Fehler.
+Azure Storage-Konten ermöglichen Clients das Senden und Empfangen von Daten mit der ältesten TLS-Version, TLS 1.0, und höheren Versionen. Wenn Sie strengere Sicherheitsmaßnahmen durchsetzen möchten, können Sie Ihr Speicherkonto so konfigurieren, dass Clients Daten mit einer neueren TLS-Version senden und empfangen müssen. Wenn für ein Speicherkonto eine TLS-Mindestversion erforderlich ist, verursachen alle Anforderungen mit einer älteren Version einen Fehler.
 
 In diesem Artikel wird beschrieben, wie Sie ein DRAG-Framework (Detection-Remediation-Audit-Governance) zur kontinuierlichen Verwaltung einer sicheren TLS für Ihre Speicherkonten verwenden können.
 
@@ -94,7 +94,9 @@ Wenn Sie sicher sind, dass der Datenverkehr von Clients, die ältere Versionen v
 
 Legen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto die **MinimumTlsVersion**-Version für das Konto fest. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
 
-Die Eigenschaft **MinimumTlsVersion** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, nachdem Sie sie explizit festgelegt haben.  Wenn der Eigenschaftswert **NULL** ist, lässt das Speicherkonto Anforderungen zu, die mit TLS Version 1.0 oder höher gesendet werden.
+Der Standardwert der **MinimumTlsVersion**-Eigenschaft hängt von der jeweils vorgenommenen Einstellung ab. Wenn Sie ein Speicherkonto über das Azure-Portal erstellen, wird standardmäßig die TLS-Mindestversion auf 1.2 festgelegt. Wenn Sie ein Speicherkonto mit PowerShell, Azure CLI oder einer Azure Resource Manager Vorlage erstellen, wird die **MinimumTlsVersion**-Eigenschaft nicht standardmäßig festgelegt und es wird erst dann ein Wert zurückgegeben, wenn sie explizit festgelegt wurde.
+
+Wenn die **MinimumTlsVersion**-Eigenschaft nicht festgelegt ist, kann ihr Wert je nach Kontext entweder als **NULL** oder als leere Zeichenfolge angezeigt werden. Wenn die Eigenschaft nicht festgelegt ist, lässt das Speicherkonto Anforderungen zu, die mit TLS-Version 1.0 oder höher gesendet werden.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -103,7 +105,7 @@ Wenn Sie ein Speicherkonto über das Azure-Portal erstellen, wird standardmäßi
 Führen Sie die folgenden Schritte aus, um die TLS-Mindestversion für ein bestehendes Speicherkonto im Azure-Portal zu konfigurieren:
 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
-1. Wählen Sie unter **Einstellungen** die Option **Konfiguration** aus.
+1. Klicken Sie unter **Einstellungen** auf **Konfiguration**.
 1. Wählen Sie unter **TLS-Mindestversion** in der Dropdownliste die erforderliche TLS-Mindestversion für den Zugriff auf Daten in diesem Speicherkonto aus.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Screenshot: Konfigurieren der TLS-Mindestversion im Azure-Portal" lightbox="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png":::
@@ -121,7 +123,7 @@ $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
 New-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -Location $location `
     -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
@@ -131,7 +133,7 @@ New-AzStorageAccount -ResourceGroupName $rgName `
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
 Set-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.

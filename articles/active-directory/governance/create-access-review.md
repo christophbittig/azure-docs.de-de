@@ -15,12 +15,12 @@ ms.date: 5/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf1bd295528792ebc181027af7d5dfb21583bd4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3b4426f10ced8d8cda294c3a80923712f59e8466
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410205"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356428"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -127,7 +127,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 15. Sie können im Abschnitt **Erweiterte Einstellungen** Folgendes auswählen:
     - Legen Sie **Begründung erforderlich** auf **Aktivieren** fest, damit Prüfer einen Grund für die Genehmigung angeben müssen.
     - Legen Sie **E-Mail-Benachrichtigungen** auf **Aktivieren** fest, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
-    - Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an Prüfer sendet, die ihre Überprüfung noch nicht abgeschlossen haben. Diese Erinnerungen erfolgen nach Ablauf der Hälfte der Überprüfungsdauer automatisch.
+    - Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an alle Prüfer sendet. Prüfer erhalten die Erinnerungen unabhängig davon, ob die Überprüfung zu diesem Zeitpunkt bereits abgeschlossen wurde, in der Mitte des Überprüfungszeitraums.
     - Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen im Abschnitt **E-Mail mit zusätzlichen Inhalten für Prüfer** angeben. Die eingegebenen Informationen werden in die Einladungs- und Erinnerungs-E-Mails an die zugewiesenen Prüfer eingefügt. Der in der Abbildung unten hervorgehobene Abschnitt zeigt, wo diese Informationen angezeigt werden.
 
       ![Zusätzliche Inhalte für Prüfer](./media/create-access-review/additional-content-reviewer.png)
@@ -183,7 +183,7 @@ Wenn Sie Gäste als Prüfer zugewiesen haben, diese die Einladung aber nicht ang
 ## <a name="create-reviews-via-apis"></a>Erstellen von Überprüfungen über APIs
 
 Zugriffsüberprüfungen können auch unter Verwendung von APIs erstellt werden. Die Aktionen, die Sie zur Verwaltung von Zugriffsüberprüfungen für Gruppen und Anwendungsbenutzer im Azure-Portal ausführen, können auch über Microsoft Graph-APIs ausgeführt werden. 
-+ Weitere Informationen finden Sie unter [Azure AD-Zugriffsüberprüfungen](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true).
++ Weitere Informationen finden Sie unter [Azure AD-Zugriffsüberprüfungen](/graph/api/resources/accessreviewsv2-root).
 + Ein Tutorial finden Sie unter [Verwenden der Zugriffsüberprüfungs-API zum Überprüfen des Gastzugriffs auf Ihre Microsoft 365-Gruppen](/graph/tutorial-accessreviews-m365group).
 + Ein Codebeispiel finden Sie unter [Beispiel für das Abrufen von Azure AD-Zugriffsüberprüfungen über Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 

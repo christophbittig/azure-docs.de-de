@@ -1,34 +1,66 @@
 ---
 title: Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 description: Der Azurite-Open-Source-Emulator bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure Storage-Anwendungen.
-author: twooley
-ms.author: twooley
-ms.date: 07/15/2020
+author: normesta
+ms.author: normesta
+ms.date: 08/02/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a921de0d976b9c92ca7978feb7caf69484ba9379
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e01957c04e422f26601eab6f4e53694e317e22a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277124"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355600"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 
-Der Azurite-Open-Source-Emulator bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifende Unterstützung unter Windows, Linux und macOS.
+Der Azurite-Open-Source-Emulator bietet eine kostenlose lokale Umgebung zum Testen Ihrer Blob-, Warteschlangenspeicher- und Tabellenspeicheranwendungen in Azure. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifende Unterstützung unter Windows, Linux und macOS.
 
 Azurite ist die Speicheremulatorplattform der Zukunft. Azurite ersetzt den [Azure-Speicheremulator](storage-use-emulator.md). Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen.
 
-Es gibt verschiedene Möglichkeiten, Azurite auf Ihrem lokalen System zu installieren und auszuführen:
+Es gibt verschiedene Möglichkeiten, Azurite auf Ihrem lokalen System zu installieren und auszuführen. Wählen Sie eine dieser Registerkarten aus.
 
-  1. [Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension)
-  1. [Installieren und Ausführen von Azurite mit NPM](#install-and-run-azurite-by-using-npm)
-  1. [Installieren und Ausführen des Azurite-Docker-Images](#install-and-run-the-azurite-docker-image)
-  1. [Klonen, Erstellen und Ausführen von Azurite aus dem GitHub-Repository](#clone-build-and-run-azurite-from-the-github-repository)
+## <a name="install-and-run-azurite"></a>Installieren und Ausführen von Azurite
 
-## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Erstellen Sie in Visual Studio ein Azure-Projekt, z. B. ein **Azure Functions**-Projekt.
+
+![Neues Azure-Funktionsprojekt](media/storage-use-azurite/visual-studio-azure-function-project.png)
+
+Ausgehend davon, dass Sie ein **Azure Functions**-Projekt erstellen, müssen Sie **HTTP-Trigger** auswählen. Wählen Sie dann in der Dropdownliste **Autorisierungsstufe** die Option **Anonym** aus.
+
+![Funktionsprojekteinstellungen](media/storage-use-azurite/visual-studio-azure-function-project-settings.png)
+
+Installieren Sie [Node.js-Version 8.0 oder höher](https://nodejs.org). Node Package Manager (npm) ist das Paketverwaltungstool, das in jeder Installation von Node.js enthalten ist. Führen Sie nach der Installation von Node.js den folgenden `npm`-Befehl aus, um Azurite zu installieren.
+
+```console
+npm install -g azurite
+```
+
+Starten Sie Azurite in der Befehlszeile mit dem folgenden Befehl:
+
+```console
+azurite
+```
+
+Daraufhin werden in der Konsole ähnliche Ausgabeinformationen wie folgende angezeigt.
+
+![Befehlszeilenausgabe](media/storage-use-azurite/azurite-command-line-output.png)
+
+Wechseln Sie zur [Release-Buildkonfiguration](/visualstudio/debugger/how-to-set-debug-and-release-configurations#change-the-build-configuration), und führen Sie dann das Projekt aus.
+
+>[!NOTE]
+> Wenn Sie das Projekt mit der Debug-Buildkonfiguration starten, erhalten Sie möglicherweise einen Fehler. Das liegt daran, Visual Studio versucht, den Legacyspeicheremulator zu starten, der in Visual Studio integriert ist. Jeder Versuch, den Legacyemulator zu starten, wird blockiert, da Azurite die Lauschports verwendet, die vom Legacyspeicheremulator benötigt werden.
+
+Die folgende Abbildung zeigt die Befehlszeilenausgabe, die angezeigt wird, wenn Sie ein Azure-Funktionsprojekt ausführen.
+
+![Befehlszeilenausgabe nach Ausführen des Projekts](media/storage-use-azurite/azurite-command-line-output-2.png)
+
+### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Wählen Sie in Visual Studio Code den Bereich **EXTENSIONS** aus, und suchen Sie dann unter **EXTENSIONS:MARKETPLACE** nach *Azurite*.
 
@@ -41,12 +73,15 @@ Die Erweiterung unterstützt die folgenden Visual Studio Code-Befehle. Drücken 
    - **Azurite: Bereinigen** – dauerhafte Daten aller Azurite-Dienste zurücksetzen
    - **Azurite: Blob-Dienst bereinigen** – Blob-Dienst bereinigen
    - **Azurite: Warteschlangendienst bereinigen** – Warteschlangendienst bereinigen
+   - **Azurite: Tabellendienst bereinigen** – Tabellendienst bereinigen
    - **Azurite: Schließen** – alle Azurite-Dienste schließen
    - **Azurite: Blob-Dienst schließen** – Blob-Dienst schließen
    - **Azurite: Warteschlangendienst schließen** – Warteschlangendienst schließen
+   - **Azurite: Tabellendienst schließen** – Tabellendienst schließen
    - **Azurite: Starten** – alle Azurite-Dienste starten
    - **Azurite: Blob-Dienst starten** – Blob-Dienst starten
    - **Azurite: Warteschlangendienst starten** – Warteschlangendienst starten
+   - **Azurite: Tabellendienst starten** – Tabellendienst starten
 
 Um Azurite in Visual Studio Code zu konfigurieren, wählen Sie den Erweiterungsbereich aus. Wählen Sie das Symbol **Verwalten** (Zahnrad) für **Azurite** aus. Wählen Sie **Erweiterungseinstellungen** aus.
 
@@ -67,8 +102,10 @@ Die folgenden Einstellungen werden unterstützt:
    - **Azurite: Warteschlangenport** – der Lauschport des Warteschlangendiensts. Der Standardport ist 10001.
    - **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false**.
    - **Azurite: API-Versionsüberprüfung überspringen** – Versionsüberprüfung der angeforderten API überspringen. Der Standardwert ist **false**.
+   - **Azurite: Tabellenhost** – der Lauschendpunkt des Tabellendiensts, die Standardeinstellung ist 127.0.0.1.
+   - **Azurite: Tabellenport** – der Lauschport des Tabellendiensts, standardmäßig 10002.
 
-## <a name="install-and-run-azurite-by-using-npm"></a>Installieren und Ausführen von Azurite mit NPM
+### <a name="npm"></a>[npm](#tab/npm)
 
 Diese Installationsmethode setzt voraus, dass Sie [mindestens Version 8.0 von Node.js](https://nodejs.org) installiert haben. Node Package Manager (npm) ist das Paketverwaltungstool, das in jeder Installation von Node.js enthalten ist. Führen Sie nach der Installation von Node.js den folgenden `npm`-Befehl aus, um Azurite zu installieren.
 
@@ -78,7 +115,7 @@ npm install -g azurite
 
 Nachdem Sie Azurite installiert haben, finden Sie weitere Informationen unter [Ausführen von Azurite über die Befehlszeile](#run-azurite-from-a-command-line).
 
-## <a name="install-and-run-the-azurite-docker-image"></a>Installieren und Ausführen des Azurite-Docker-Images
+### <a name="docker-hub"></a>[Docker Hub](#tab/docker-hub)
 
 Verwenden Sie [DockerHub](https://hub.docker.com/), um das [neueste Azurite-Image](https://hub.docker.com/_/microsoft-azure-storage-azurite) mit dem folgenden Befehl zu laden:
 
@@ -91,7 +128,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Der folgende Befehl führt das Azurite-Docker-Image aus. Der Parameter `-p 10000:10000` leitet Anforderungen von Port 10000 des Hostcomputers an die Docker-Instanz weiter.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -100,7 +137,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 Im folgenden Beispiel ist im Parameter `-v c:/azurite:/data` der persistente Datenspeicherort *c:/azurite* für Azurite angegeben. Vor dem Ausführen des Docker-Befehls muss das Verzeichnis *c:/azurite* erstellt werden.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -113,7 +150,7 @@ docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
 
 Weitere Informationen zum Konfigurieren von Azurite beim Start finden Sie unter [Befehlszeilenoptionen](#command-line-options).
 
-## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Klonen, Erstellen und Ausführen von Azurite aus dem GitHub-Repository
+### <a name="github"></a>[GitHub](#tab/github)
 
 Diese Installationsmethode setzt voraus, dass Sie [Git](https://git-scm.com/) installiert haben. Klonen Sie das [GitHub-Repository](https://github.com/azure/azurite) für das Azurite-Projekt mit dem folgenden Konsolenbefehl.
 
@@ -131,10 +168,12 @@ npm install -g
 
 Nachdem Sie Azurite installiert und erstellt haben, finden Sie weitere Informationen unter [Ausführen von Azurite über die Befehlszeile](#run-azurite-from-a-command-line).
 
+---
+
 ## <a name="run-azurite-from-a-command-line"></a>Ausführen von Azurite über die Befehlszeile
 
 > [!NOTE]
-> Azurite kann nicht über die Befehlszeile ausgeführt werden, wenn Sie nur die Visual Studio Code-Erweiterung installiert haben. Verwenden Sie stattdessen die Visual Studio Code-Befehlspalette. Weitere Informationen finden Sie unter [Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
+> Azurite kann nicht über die Befehlszeile ausgeführt werden, wenn Sie nur die Visual Studio Code-Erweiterung installiert haben. Verwenden Sie stattdessen die Visual Studio Code-Befehlspalette. 
 
 Um sofort mit der Befehlszeile zu beginnen, erstellen Sie das Verzeichnis *C:\azurite*, und starten Sie dann Azurite mit dem folgenden Befehl:
 
@@ -233,6 +272,46 @@ Automatische Auswahl eines verfügbaren Ports durch das System:
 
 ```console
 azurite --queuePort 0
+```
+
+Der verwendete Port wird beim Start von Azurite angezeigt.
+
+### <a name="table-listening-host"></a>Tabellenlauschhost
+
+**Optional** – Standardmäßig lauscht Azurite an 127.0.0.1 als lokaler Server. Verwenden Sie die Option `--tableHost`, um die Adresse entsprechend Ihren Anforderungen festzulegen.
+
+Nur Anforderungen auf dem lokalen Computer annehmen:
+
+```console
+azurite --tableHost 127.0.0.1
+```
+
+Remoteanforderungen annehmen:
+
+```console
+azurite --tableHost 0.0.0.0
+```
+
+> [!CAUTION]
+> Wenn Sie Remoteanforderungen zulassen, wird Ihr System eventuell anfälliger für externe Bedrohungen.
+
+### <a name="table-listening-port-configuration"></a>Konfiguration des Tabellenlauschports
+
+**Optional** – Standardmäßig lauscht Azurite an Port 10002 für den Tabellendienst. Verwenden Sie die Option `--tablePort`, um den erforderlichen Lauschport anzugeben.
+
+> [!NOTE]
+> Nachdem Sie einen benutzerdefinierten Port verwendet haben, müssen Sie die Verbindungszeichenfolge oder die entsprechende Konfiguration in Ihren Azure Storage-Tools oder -SDKs aktualisieren.
+
+Lauschport für den Tabellendienst anpassen:
+
+```console
+azurite --tablePort 11111
+```
+
+Automatische Auswahl eines verfügbaren Ports durch das System:
+
+```console
+azurite --tablePort 0
 ```
 
 Der verwendete Port wird beim Start von Azurite angezeigt.
@@ -558,9 +637,13 @@ Azurite unterstützt die georedundante Replikation mit Lesezugriff (Read-Access 
 
 ### <a name="table-support"></a>Tabellenunterstützung
 
-Die Unterstützung für Tabellen in Azurite wird derzeit entwickelt und ist offen für Beiträge! Die neuesten Fortschritte finden Sie im Projekt [Azurite V3-Tabelle](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table).
+Die Unterstützung für Tabellen in Azurite befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie im [Azurite V3 Table](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table)-Projekt.
 
 Für die Unterstützung langlebiger Funktionen sind Tabellen erforderlich.
+
+> [!IMPORTANT]
+>
+> Die Azurite-Unterstützung für Table Storage befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="azurite-is-open-source"></a>Azurite ist Open Source.
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71a3b38da6a63824a42f64052bf16a5fe0e25483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7aac30ec8cb5aa2707217183a7612f4eb5b27c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102525422"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343531"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
@@ -43,6 +43,7 @@ Azure AD B2C nutzt die vom Benutzer eingegebenen Informationen, um zu ermitteln,
 
 Um die Altersbeschränkung in einem Benutzerflow zu verwenden, müssen Sie für Ihren Mandanten zusätzliche Eigenschaften konfigurieren.
 
+1. Über [diesen Link](https://portal.azure.com/?Microsoft_AAD_B2CAdmin_agegatingenabled=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementMenuBlade/overview) können Sie die Vorschauversion der Altersbeschränkung ausprobieren.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen. Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie diesen Eintrag aus.
 1. Wählen Sie für Ihren Mandanten im Menü auf der linken Seite die Option **Eigenschaften**.
@@ -82,7 +83,7 @@ Wenn Sie sich als Minderjähriger anmelden, sollte die folgende Fehlermeldung an
 
 ## <a name="enable-age-gating-in-your-custom-policy"></a>Aktivieren der Altersbeschränkung in der benutzerdefinierten Richtlinie
 
-1. Rufen Sie das Beispiel für eine Altersbeschränkungsrichtlinie auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/age-gating) ab.
+1. Rufen Sie das Beispiel für eine Altersbeschränkungsrichtlinie auf [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies) ab.
 1. Ersetzen Sie in jeder Datei die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten. Wenn der Name des B2C-Mandanten z.B. *contosob2c* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` zu `contosob2c.onmicrosoft.com`.
 1. Laden Sie die Richtliniendateien hoch.
 
@@ -91,4 +92,3 @@ Wenn Sie sich als Minderjähriger anmelden, sollte die folgende Fehlermeldung an
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen finden Sie unter [Verwalten des Benutzerzugriffs in Azure AD B2C](manage-user-access.md).
-

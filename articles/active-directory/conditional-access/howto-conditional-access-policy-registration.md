@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 07/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05aca853e2eba98d224131c98751b4e2f4200024
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa38195c836c77e9f0fd621776e997d4b7fff7bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765645"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346963"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Bedingter Zugriff: Sichere Registrierung von Sicherheitsinformationen
 
-Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure AD Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Dieses Feature ist für Organisationen verfügbar, die die [kombinierte Registrierung](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktion ermöglicht es Organisationen, den Registrierungsprozess wie jede beliebige Anwendung in einer Richtlinie für bedingten Zugriff zu behandeln und die volle Leistungsfähigkeit bedingter Zugriffe zu nutzen, um die Funktionalität zu schützen. 
+Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure AD Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Dieses Feature ist für Organisationen verfügbar, die die [kombinierte Registrierung](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktion ermöglicht es Organisationen, den Registrierungsprozess wie jede beliebige Anwendung in einer Richtlinie für bedingten Zugriff zu behandeln und die volle Leistungsfähigkeit bedingter Zugriffe zu nutzen, um die Funktionalität zu schützen. Benutzer, die sich bei der Microsoft Authenticator-App anmelden oder die kennwortlose Anmeldung per Telefon aktivieren, unterliegen dieser Richtlinie.
 
 Einige Organisationen haben in der Vergangenheit möglicherweise vertrauenswürdige Netzwerkadressen oder Gerätekonformität zum Schützen der Registrierung verwendet. Durch das Hinzufügen eines [befristeten Zugriffspasses](../authentication/howto-authentication-temporary-access-pass.md) in Azure AD können Administratoren zeitlich begrenzte Anmeldeinformationen für Benutzer bereitstellen, damit diese sich an jedem Gerät oder Standort registrieren können. Die Anmeldeinformationen eines befristeten Zugriffspasses erfüllen die Anforderungen für bedingte Zugriffe für eine mehrstufige Authentifizierung.
 

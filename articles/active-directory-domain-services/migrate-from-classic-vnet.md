@@ -7,15 +7,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 08/11/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93ad9fc33f3faf599d442a922f18d76e838f82c0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 4492824c77a8a97810c5849c221c400560db4bad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346266"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 
@@ -229,7 +229,7 @@ Führen Sie die folgenden Schritte aus, um die verwaltete Domäne für die Migra
 
 Nachdem die verwaltete Domäne vorbereitet und gesichert wurde, kann sie migriert werden. In diesem Schritt werden die Domänencontroller-VMs von Azure AD DS basierend auf dem Resource Manager-Bereitstellungsmodell neu erstellt. Es kann ein bis drei Stunden dauern, bis dieser Schritt abgeschlossen ist.
 
-Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Commit* aus. Geben Sie den *-ManagedDomainFqdn* für Ihre eigene im vorherigen Abschnitt vorbereitete verwaltete Domäne (z. B. *aaddscontoso.com*) an:
+Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Commit* aus. Geben Sie den *-ManagedDomainFqdn* für Ihre eigene im vorherigen Abschnitt vorbereitete verwaltete Domäne (z. B. *aaddscontoso.com*) an.
 
 Geben Sie die Zielressourcengruppe an, in der das virtuelle Netzwerk enthalten ist, zu dem Azure AD DS migriert werden soll, z. B. *myResourceGroup*. Geben Sie das virtuelle Zielnetzwerk, z. B. *myVnet*, und das Subnetz, z. B. *DomainServices*, an.
 

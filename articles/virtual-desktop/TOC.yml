@@ -206,6 +206,8 @@
       items:
         - name: Sicherheitsbaseline
           href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
+        - name: Schutz von Bildschirmaufnahmen
+          href: screen-capture-protection.md
 - name: Problembehandlung
   items:
     - name: 'Problembehandlung: Übersicht, Feedback und Support'

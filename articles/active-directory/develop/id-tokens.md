@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom:
 - aaddev
 - identityplatformtop40
 - fasttrack-edit
-ms.openlocfilehash: 920589c3c0582387a83d5f7d85c660f0692a761b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c1e125127cf4376eb96e267c11e35085a4a27f18
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471277"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458897"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -36,7 +36,7 @@ Bevor Sie diesen Artikel durchgehen, wird Ihnen der folgende Artikel von Nutzen 
 
 ## <a name="claims-in-an-id-token"></a>Die Ansprüche in einem ID-Token
 
-Die ID-Token sind [JSON-Webtoken (JWT)](https://jwt.io/introduction/). Diese ID-Token bestehen aus einem Header, einer Nutzlast und einer Signatur. Der Header und die Signatur werden verwendet, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen über den von Ihrem Client angeforderten Benutzer enthält. Die ID-Token v1.0 und v2.0 tragen unterschiedliche Informationen. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl die vorhandenen Anwendungen wahrscheinlich den Azure AD-Endpunkt (v1.0) verwenden, sollten die neuen Anwendungen den „Microsoft Identity Platform“ Endpunkt (v2.0) verwenden.
+Die ID-Token sind [JSON-Webtoken (JWT)](https://wikipedia.org/wiki/JSON_Web_Token). Diese ID-Token bestehen aus einem Header, einer Nutzlast und einer Signatur. Der Header und die Signatur werden verwendet, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen über den von Ihrem Client angeforderten Benutzer enthält. Die ID-Token v1.0 und v2.0 tragen unterschiedliche Informationen. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl die vorhandenen Anwendungen wahrscheinlich den Azure AD-Endpunkt (v1.0) verwenden, sollten die neuen Anwendungen den „Microsoft Identity Platform“ Endpunkt (v2.0) verwenden.
 
 * v1.0: Der Azure AD-Endpunkt: `https://login.microsoftonline.com/common/oauth2/authorize`
 * v2.0: Der Microsoft Identity Platform-Endpunkt: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
@@ -67,8 +67,8 @@ Die folgende Tabelle zeigt die Header-Ansprüche, die in den ID-Token vorhanden 
 |-----|--------|-------------|
 |`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT-Token ist.|
 |`alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
-|`kid` | String | Der Fingerabdruck des öffentlichen Schlüssels, der zum Überprüfen dieses Tokens verwendet wird. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
-|`x5t` | String | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
+| `kid` | String | Gibt den Fingerabdruck für den öffentlichen Schlüssel an, mit dem die Signatur dieses Tokens überprüft werden kann. Wird in v1.0- und v2.0-ID-Token ausgegeben. |
+| `x5t` | String | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. `x5t` ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-ID-Token ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
@@ -93,7 +93,7 @@ Die nachfolgende Liste zeigt die Ansprüche, die (sofern nichts anderes angegebe
 |`roles`| Array von Zeichenfolgen | Die Rollen, die dem sich anmeldenden Benutzer zugewiesen wurden. |
 |`rh` | Nicht transparente Zeichenfolge |Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`sub` | String | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Der Antragsteller ist ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann – abhängig von den Architektur- und Datenschutzanforderungen – wünschenswert sein oder nicht. |
-|`tid` | Zeichenfolge, eine GUID | Eine GUID, die den Azure AD-Mandanten darstellt, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+|`tid` | Zeichenfolge, eine GUID | Stellt den Mandanten dar, bei dem sich der Benutzer anmeldet. Bei Geschäfts-, Schul- oder Unikonten ist die GUID die unveränderliche Mandanten-ID der Organisation, bei der sich der Benutzer anmeldet. Für Anmeldungen beim persönlichen Microsoft-Konto Mandanten (Dienste wie Xbox, Teams for Life oder Outlook) ist der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Um diesen Anspruch zu erhalten, muss Ihre App den `profile`-Bereich anfordern. |
 |`unique_name` | String | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Dieser Wert ist immer eindeutig. Da aber E-Mails und andere Bezeichner wiederverwendet werden können, kann dieser Wert in anderen Konten erneut auftreten. Daher sollte der Wert nur zu Anzeigezwecken verwendet werden. Wird nur in v1.0-`id_tokens` ausgegeben. |
 |`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |
@@ -104,12 +104,12 @@ Die nachfolgende Liste zeigt die Ansprüche, die (sofern nichts anderes angegebe
 
 Wenn Sie einen Benutzer identifizieren (wenn Sie ihn z. B. in einer Datenbank suchen oder entscheiden, welche Berechtigungen er erhält), ist es wichtig, Informationen zu verwenden, die im Lauf der Zeit unverändert und eindeutig bleiben. Ältere Anwendungen verwenden manchmal Felder wie die E-Mail-Adresse, eine Telefonnummer oder den UPN.  All diese Änderungen können sich im Laufe der Zeit ändern und sie können auch im Laufe der Zeit wiederverwendet werden. Das kann z. B. vorkommen, wenn ein Mitarbeiter seinen Namen ändert oder wenn ein Mitarbeiter die E-Mail-Adresse eines früheren Mitarbeiters erhält, der nicht mehr im Unternehmen tätig ist. Daher ist es **sehr wichtig**, dass Ihre Anwendung keine für Menschen lesbaren Daten verwendet, um einen Benutzer zu identifizieren. Für Menschen lesbar bedeutet ganz allgemein, dass jemand diese Informationen lesen und ändern wollen wird. Verwenden Sie stattdessen die Ansprüche, die vom OIDC-Standard bereitgestellt werden, oder die von Microsoft bereitgestellten Erweiterungsansprüche `sub` und `oid`.
 
-Verwenden Sie zum ordnungsgemäßen Speichern von Informationen pro Benutzer nur `sub` oder `oid` (die als GUIDs eindeutig sind) und bei Bedarf `tid` für das Routing oder Sharding.  Wenn Sie Daten dienstübergreifend freigeben müssen, eignet sich `oid`+`tid` am besten, da alle Apps dieselben Ansprüche `oid` und `tid` für einen bestimmten Benutzer erhalten.  Der `sub`-Anspruch in der Microsoft Identity-Plattform wird „paarweise“ festgelegt, d. h., er basiert auf einer Kombination aus dem Tokenempfänger, dem Mandanten und dem Benutzer und ist damit eindeutig.  Daher erhalten zwei Apps, die ID-Token für einen bestimmten Benutzer anfordern, unterschiedliche `sub`-Ansprüche, aber dieselben `oid`-Ansprüche für diesen Benutzer.
+Verwenden Sie zum ordnungsgemäßen Speichern von Informationen pro Benutzer nur `sub` oder `oid` (die als GUIDs eindeutig sind) und bei Bedarf `tid` für das Routing oder Sharding.  Wenn Sie Daten dienstübergreifend freigeben müssen, eignet sich `oid`+`tid` am besten, da alle Apps dieselben Ansprüche `oid` und `tid` für einen bestimmten Benutzer erhalten, der in einem bestimmten Mandanten agiert.  Der `sub`-Anspruch in der Microsoft Identity-Plattform wird „paarweise“ festgelegt, d. h., er basiert auf einer Kombination aus dem Tokenempfänger, dem Mandanten und dem Benutzer und ist damit eindeutig.  Daher erhalten zwei Apps, die ID-Token für einen bestimmten Benutzer anfordern, unterschiedliche `sub`-Ansprüche, aber dieselben `oid`-Ansprüche für diesen Benutzer.
 
 >[!NOTE]
 > Verwenden Sie den `idp`-Anspruch nicht zum Speichern von Informationen zu einem Benutzer, um Benutzer über Mandanten hinweg zu korrelieren.  Dies funktioniert nicht, da die Ansprüche `oid` und `sub` für einen Benutzer in verschiedenen Mandanten unterschiedlich sind. Dies ist so konzipiert, um sicherzustellen, dass Anwendungen Benutzer nicht mandantenübergreifend nachverfolgen können.  
 >
-> Gastszenarien, in denen ein Benutzer einem Mandanten angehört und sich in einem anderen authentifiziert, sollten den Benutzer wie einen neuen Benutzer des Diensts behandeln.  Ihre Dokumente und Berechtigungen im Mandanten Contoso dürfen nicht im Mandanten Fabrikam angewandt werden. Dies ist wichtig, um versehentliche Datenlecks zwischen Mandanten zu vermeiden.
+> Gastszenarien, in denen ein Benutzer einem Mandanten angehört und sich in einem anderen authentifiziert, sollten den Benutzer wie einen neuen Benutzer des Diensts behandeln.  Ihre Dokumente und Berechtigungen im Mandanten Contoso dürfen nicht im Mandanten Fabrikam angewandt werden. Dies ist wichtig, um versehentliche Datenlecks zwischen Mandanten und die Erzwingung von Datenlebenszyklen zu verhindern.  Beim Entfernen eines Gasts aus einem Mandanten sollte auch dessen Zugriff auf die Daten entfernt werden, die er in diesem Mandanten erstellt hat. 
 
 ### <a name="groups-overage-claim"></a>Gruppenüberschreitungsanspruch
 Um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht überschreitet, schränkt Azure AD die Anzahl der im `groups`-Anspruch enthaltenen Objekt-IDs ein. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Microsoft Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
@@ -149,5 +149,6 @@ Um das Token manuell zu überprüfen, beachten Sie die Details der Schritte unte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Schauen Sie sich den [OpenID Connect](v2-protocols-oidc.md)-Flow an, der die Protokolle definiert, die ein ID-Token ausgeben. 
 * Informationen zu [Zugriffstoken](access-tokens.md)
 * Passen Sie die JWT-Ansprüche in Ihrem ID-Token mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) an.

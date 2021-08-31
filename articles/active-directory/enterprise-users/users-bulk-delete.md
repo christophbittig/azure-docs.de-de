@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 07/09/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,50 +13,40 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b57d675003c1ebeb29927b86338f95cf7dd68090
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdaa91a5ffed9e75666602490b4829a3a95e2782
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96574462"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113597827"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Massenlöschung von Benutzern in Azure Active Directory
 
 Über das Azure Active Directory-Portal (Azure AD-Portal) können Sie eine große Anzahl von Mitgliedern aus einer Gruppe entfernen, indem Sie mithilfe einer CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) eine Massenlöschung von Benutzern ausführen.
 
-## <a name="understand-the-csv-template"></a>Grundlegendes zur CSV-Vorlage
+## <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
 
-Laden Sie die CSV-Vorlage herunter, und füllen Sie sie aus, um mehrere Azure AD-Benutzer gleichzeitig zu löschen. Die heruntergeladene CSV-Vorlage ähnelt möglicherweise dem folgenden Beispiel:
-
-![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/users-bulk-delete/understand-template.png)
-
-### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
+![Die CSV-Datei enthält Namen und IDs der zu löschenden Benutzer.](./media/users-bulk-delete/delete-csv-file.png)
 
 Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 - **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
-- **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `User name [userPrincipalName] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
-- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+- **Spaltenüberschriften**: `User name [userPrincipalName] Required`. Ältere Versionen der Vorlage können Abweichungen aufweisen.
+- **Beispielzeile**: Wir haben in die Vorlage ein Beispiel für einen zulässigen Wert aufgenommen. `Example: chris@contoso.com` Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
 
 ### <a name="additional-guidance"></a>Zusätzliche Anleitungen
 
-- Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
+- Die ersten beiden Zeilen der Vorlage dürfen nicht entfernt oder geändert werden, da die Vorlage dann nicht verarbeitet werden kann.
 - Die erforderlichen Spalten werden zuerst aufgelistet.
-- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
-- Es wird empfohlen, dass Sie möglichst häufig die neueste Version der CSV-Vorlage herunterladen.
+- Fügen Sie der Vorlage keine neuen Spalten hinzu. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Laden Sie die neueste Version der CSV-Vorlage herunter, bevor Sie neue Änderungen vornehmen.
 
 ## <a name="to-bulk-delete-users"></a>So löschen Sie Benutzer in einem Massenvorgang
 
 1. [Melden Sie sich bei ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
-1. Wählen Sie in Azure AD **Benutzer** > **Massenlöschung** aus.
-1. Wählen Sie auf der Seite **Massenlöschung von Benutzern** die Option **Download** aus, um eine gültige CSV-Datei mit Benutzereigenschaften herunterzuladen.
-
-   ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie löschen möchten.](./media/users-bulk-delete/bulk-delete.png)
-
-1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie löschen möchten. Der einzige erforderliche Wert ist **Benutzerprinzipalname**. Speichern Sie dann die Datei.
-
-   ![Die CSV-Datei enthält Namen und IDs der zu löschenden Benutzer.](./media/users-bulk-delete/delete-csv-file.png)
-
+1. Wählen Sie in Azure AD **Benutzer** > **Massenvorgänge** > **Massenlöschung** aus.
+1. Wählen Sie auf der Seite zum **Massenlöschen von Benutzern** die Option **Download** aus, um die neueste Version der CSV-Vorlage herunterzuladen.
+1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie löschen möchten. Der einzige erforderliche Wert ist **Benutzerprinzipalname**. Speichern Sie die Datei .
 1. Navigieren Sie auf der Seite **Massenlöschung von Benutzern** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf „Senden“ klicken, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
 1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Löschen der Benutzer zu starten.

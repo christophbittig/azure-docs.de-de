@@ -7,17 +7,24 @@ ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 78ecf275a9c607273aef16e6351224709f230959
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 32ec83fb1c8de16f589d6a172a7612e5e5866647
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690527"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768217"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
 
 Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckt, können jedoch von anderen Variablen in Ihrer Bereitstellung beeinflusst werden. Beispielsweise kann der Durchsatz für eine Datei auch durch die verfügbare Netzwerkbandbreite und nicht nur durch die Server begrenzt sein, die Ihre Azure-Dateifreigaben hosten. Wir empfehlen Ihnen ausdrücklich, Ihr Nutzungsverhalten zu testen, um festzustellen, ob Skalierbarkeit und Leistung von Azure Files Ihren Anforderungen entspricht. Wir verpflichten uns auch, diese Grenzwerte mit der Zeit zu erhöhen. 
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
 Azure-Dateifreigaben werden in Speicherkonten bereitgestellt, bei denen es sich um Objekte der obersten Ebene handelt, die einen freigegebenen Speicherpool darstellen. Dieser Speicherpool kann verwendet werden, um mehrere Dateifreigaben bereitzustellen. Es gibt also drei Kategorien zu beachten: Speicherkonten, Azure-Dateifreigaben und Dateien.
@@ -52,7 +59,7 @@ Azure unterstützt mehrere Arten von Speicherkonten für unterschiedliche Kunden
 | Einheit für Erhöhung/Verringerung der bereitgestellten Größe | Nicht zutreffend | 1 GiB |
 | Maximale Größe einer Dateifreigabe | <ul><li>100 TiB, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>5 TiB, Standard</li></ul> | ca. 100 TiB |
 | Maximale Anzahl an Dateien in einer Dateifreigabe | Keine Begrenzung | Keine Begrenzung |
-| Maximale Anforderungsrate (max. IOPS) | <ul><li>10.000 TiB, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>1\.000 oder 100 Anforderungen pro 100 ms, Standard</li></ul> | <ul><li>IOPS-Grundwert 400 + 1 IOPS pro GiB, bis zu 100.000</li><li>IOPS-Bursting: Max. (4.000, 3 × IOPS pro GiB), bis zu 100.000</li></ul> |
+| Maximale Anforderungsrate (max. IOPS) | <ul><li>20.000 bei aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>1\.000 oder 100 Anforderungen pro 100 ms, Standard</li></ul> | <ul><li>IOPS-Grundwert 400 + 1 IOPS pro GiB, bis zu 100.000</li><li>IOPS-Bursting: Max. (4.000, 3 × IOPS pro GiB), bis zu 100.000</li></ul> |
 | Maximaler Eingang für eine einzelne Dateifreigabe | <ul><li>Bis zu 300 MiB/s, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>Bis zu 60 MiB/s, Standard</li></ul> | 40 MiB/s + 0,04 * bereitgestelltes GiB |
 | Maximaler Ausgang für eine einzelne Dateifreigabe | <ul><li>Bis zu 300 MiB/s, mit aktiviertem Feature für große Dateifreigaben<sup>2</sup></li><li>Bis zu 60 MiB/s, Standard</li></ul> | 60 MiB/s + 0,06 * bereitgestelltes GiB |
 | Maximale Anzahl von Freigabemomentaufnahmen | 200 Momentaufnahmen | 200 Momentaufnahmen |
@@ -64,7 +71,7 @@ Azure unterstützt mehrere Arten von Speicherkonten für unterschiedliche Kunden
 
 <sup>1</sup> Die Grenzwerte für Standarddateifreigaben gelten für alle drei Dienstebenen, die für Standarddateifreigaben verfügbar sind: transaktionsoptimiert, heiß und kalt.
 
-<sup>2</sup> Der Standardwert für Standarddateifreigaben beträgt 5 TiB. Ausführliche Informationen zum Hochskalieren von Standarddateifreigaben auf bis zu 100 TiB finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](./storage-files-how-to-create-large-file-share.md).
+<sup>2</sup> Der Standardwert für Standarddateifreigaben ist 5 TiB. Einzelheiten zum Erstellen von Dateifreigaben mit einer Größe von 100 TiB und zum Vergrößern von Standarddateifreigaben auf bis zu 100 TiB finden Sie unter [Erstellen einer Azure-Dateifreigabe](./storage-how-to-create-file-share.md).
 
 ### <a name="file-scale-targets"></a>Dateiskalierbarkeitsziele
 | attribute | Dateien in Standard-Dateifreigaben  | Dateien in Premium-Dateifreigaben  |
@@ -90,7 +97,7 @@ Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und
 | Serverendpunkte pro Synchronisierungsgruppe | 100 Serverendpunkte | Ja |
 | Serverendpunkte pro Server | 30 Serverendpunkte | Ja |
 | Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 100 Millionen Objekte | Nein |
-| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 5 Millionen Objekte | Ja |
+| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis **(nicht rekursiv)** | 5 Millionen Objekte | Ja |
 | Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 64 KiB | Ja |
 | Dateigröße | 100 GB | Nein |
 | Minimale Dateigröße für die Unterteilung einer Datei | V9 und höher: Basiert auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KiB beträgt, ist die minimale Dateigröße 8 KiB.<br> V8 und älter: 64 KiB  | Ja |

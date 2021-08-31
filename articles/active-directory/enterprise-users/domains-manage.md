@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 07/30/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be724b8eea03704c07f00758f37965c844d81299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355482"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
-Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Azure Active Directory-Ressourcen (Azure AD): Er ist Teil eines Benutzernamens oder einer E-Mail-Adresse für einen Benutzer, Teil der Adresse für eine Gruppe und manchmal Teil des App-ID-URI für eine Anwendung. Eine Ressource in Azure AD kann einen Domänennamen umfassen, der zu der Organisation gehört, die die Ressource enthält. Nur ein globaler Administrator kann Domänen in Azure AD verwalten.
+Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Azure Active Directory-Ressourcen (Azure AD): Er ist Teil eines Benutzernamens oder einer E-Mail-Adresse für einen Benutzer, Teil der Adresse für eine Gruppe und manchmal Teil des App-ID-URI für eine Anwendung. Eine Ressource in Azure AD kann einen Domänennamen umfassen, der zu der Azure AD-Organisation (bisweilen Mandant genannt) gehört, die die Ressource enthält. Nur ein globaler Administrator kann Domänen in Azure AD verwalten.
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>Festlegen des primären Domänennamens für Ihre Azure AD-Organisation
 
@@ -51,15 +51,13 @@ Wenn Sie Ihrer Organisation einen Domänennamen wie beispielsweise „europe.con
 
 Wenn Sie einer Azure AD-Organisation bereits die Domäne contoso.com hinzugefügt haben, können Sie die Unterdomäne europe.contoso.com auch in einer anderen Azure AD-Organisation überprüfen. Wenn Sie die Unterdomäne hinzufügen, werden Sie aufgefordert, einen TXT-Eintrag im DNS-Hostinganbieter hinzuzufügen.
 
-
-
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Vorgehensweise beim Ändern der DNS-Registrierungsstelle für Ihren benutzerdefinierten Domänennamen
 
 Wenn Sie die DNS-Registrierungsstellen ändern, sind keine weiteren Konfigurationsaufgaben in Azure AD auszuführen. Sie können den Domänennamen in Azure AD ohne jede Unterbrechung weiterverwenden. Wenn Sie Ihren benutzerdefinierten Domänennamen mit Microsoft 365, Intune oder anderen Diensten verwenden, die benutzerdefinierte Domänennamen in Azure AD verwenden, lesen Sie die Dokumentation zu diesen Diensten.
 
 ## <a name="delete-a-custom-domain-name"></a>Löschen eines benutzerdefinierten Domänennamens
 
-Sie können einen benutzerdefinierten Domänennamen aus Azure AD löschen, wenn dieser von Ihrem Unternehmen nicht mehr verwendet wird oder wenn Sie den Domänennamen für eine andere Azure AD-Instanz verwenden möchten.
+Sie können einen benutzerdefinierten Domänennamen aus Azure AD löschen, wenn dieser von Ihrem Unternehmen nicht mehr verwendet wird oder wenn Sie den Domänennamen für eine andere Azure AD-Organisation verwenden möchten.
 
 Um einen benutzerdefinierten Domänennamen zu löschen, müssen Sie zunächst sicherstellen, dass dieser Name für keine Ressourcen in Ihrer Organisation verwendet wird. In folgenden Fällen können Sie einen Domänennamen nicht aus Ihrer Organisation löschen:
 
@@ -67,13 +65,16 @@ Um einen benutzerdefinierten Domänennamen zu löschen, müssen Sie zunächst si
 * Eine Gruppe verwendet eine E-Mail-Adresse oder Proxyadresse mit dem Domänennamen.
 * Eine Anwendung in Ihrem Azure AD-Verzeichnis besitzt eine App-ID-URI mit dem Domänennamen.
 
-Solche Ressourcen müssen Sie in Ihrer Azure AD-Organisation ändern oder löschen, bevor Sie den benutzerdefinierten Domänennamen löschen können.
+Solche Ressourcen müssen Sie in Ihrer Azure AD-Organisation ändern oder löschen, bevor Sie den benutzerdefinierten Domänennamen löschen können. 
+
+> [!Note]
+> Um die benutzerdefinierte Domäne zu löschen, verwenden Sie ein globales Administratorkonto, das entweder auf der Standarddomäne (onmicrosoft.com) oder einer anderen benutzerdefinierten Domäne (mydomainname.com) basiert.
 
 ### <a name="forcedelete-option"></a>ForceDelete-Option
 
 Sie können das Löschen eines Domänennamens im [Azure AD Admin Center](https://aad.portal.azure.com) oder mithilfe der [Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true) per **ForceDelete** erzwingen. Diese Optionen verwenden einen asynchronen Vorgang und aktualisieren alle Verweise vom benutzerdefinierten Domänenamen wie „user@contoso.com“ auf den anfänglichen Standarddomänennamen wie „user@contoso.onmicrosoft.com“.
 
-Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dazu gehören E-Mail-aktivierte Exchange-Sicherheitsgruppen und verteilte Listen. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
+Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dies schließt auch die E-Mail-aktivierten Sicherheits- und Verteilerlisten in Exchange ein. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
 
 * Sie haben eine Domäne über Microsoft 365-Domänenabonnementdienste erworben.
 * Sie sind Partner und führen die Verwaltung im Auftrag einer anderen Organisation des Kunden aus.

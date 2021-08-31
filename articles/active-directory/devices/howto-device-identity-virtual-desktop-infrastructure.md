@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a122c5dc10600b612c20d3a742f3500944562357
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e4eac73f756268af21cbb97c8c5c2bf53c2322bc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346380"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -54,9 +54,9 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 |   | Verwaltet<sup>4</sup> | Aktuelle Windows-Geräte und kompatible Windows-Geräte | Beständig | Ja |
 |   |   | Aktuelle Windows-Geräte | Nicht beständig | Nein |
 |   |   | Kompatible Windows-Geräte | Nicht beständig | Ja<sup>6</sup> |
-| In Azure AD eingebunden | Im Verbund | Aktuelle Windows-Geräte | Beständig | Nein |
+| In Azure AD eingebunden | Im Verbund | Aktuelle Windows-Geräte | Beständig | Begrenzt<sup>7</sup> |
 |   |   |   | Nicht beständig | Nein |
-|   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Nein |
+|   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Begrenzt<sup>7</sup> |
 |   |   |   | Nicht beständig | Nein |
 | Bei Azure AD registriert | Im Verbund/verwaltet | Aktuelle Windows-Geräte/kompatible Windows-Geräte | Beständig/nicht beständig | Nicht zutreffend |
 
@@ -71,6 +71,7 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 
 <sup>6</sup> **Die Unterstützung nicht beständiger Versionen für kompatible Windows-Geräte** erfordert zusätzliche Überlegungen, wie unten im Leitfaden beschrieben.
 
+<sup>7</sup> **Azure AD Join-Unterstützung** ist nur mit Azure Virtual Desktop und Windows 365 verfügbar.
 
 ## <a name="microsofts-guidance"></a>Leitfaden von Microsoft
 
@@ -96,7 +97,7 @@ Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementiere
    - Für nicht beständige VDI-Bereitstellungen von aktuellen und kompatiblen Windows-Geräten sollten Sie Geräte löschen, deren **ApproximateLastLogonTimestamp** älter als 15 Tage ist.
 
 > [!NOTE]
-> Wenn Sie eine nicht-persistente VDI verwenden und einen Geräteverbindungsstatus verhindern möchten, stellen Sie sicher, dass der folgende Registrierungsschlüssel gesetzt ist:  
+> Wenn Sie eine nicht-persistente VDI verwenden und das Hinzufügen eines Geschäfts-, Schul- oder Unikontos verhindern möchten, muss der folgende Registrierungsschlüssel festgelegt sein:  
 > `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
 >
 > Stellen Sie sicher, dass Sie Windows 10, Version 1803 oder höher, verwenden.  
@@ -109,7 +110,9 @@ Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementiere
 > * `%localappdata%\Microsoft\TokenBroker`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WorkplaceJoin`
 >
+> Ein Roaming des Gerätezertifikats des Geschäftskontos wird nicht unterstützt. Das von "MS-Organization-Access" ausgestellte Zertifikat wird im persönlichen Zertifikatspeicher des aktuellen Benutzers und auf dem lokalen Computer gespeichert.
 
 
 ### <a name="persistent-vdi"></a>Dauerhafte VDI

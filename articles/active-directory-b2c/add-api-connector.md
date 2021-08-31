@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von API-Connectors zu Benutzerflows (Vorschauversion)
-description: Konfigurieren Sie einen API-Connector, der in einem Benutzerflow verwendet werden soll.
+title: Hinzufügen von API-Connectors zu Benutzerflows für die Registrierung
+description: Konfigurieren Sie einen API-Connector, der in einem Benutzerflow für die Registrierung verwendet werden soll.
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
@@ -11,31 +11,26 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1913b6cf14aaf31d610adcf446dbe91326e02ff1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 62a88350e0bb1fceba635c651f8b831cba30cfce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346272"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung
 
-Als Entwickler oder IT-Administrator können Sie API-Connectors verwenden, um Ihre Flows zur Benutzerregistrierung mit REST-APIs zu integrieren, um die Registrierungsumgebung anzupassen und in externe Systemen zu integrieren. Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, einen Azure AD B2C-Benutzerflow zu erstellen, der mit [REST-API-Diensten](api-connectors-overview.md) interagiert. 
+Als Entwickler oder IT-Administrator können Sie API-Connectors verwenden, um Ihre Flows zur Benutzerregistrierung mit REST-APIs zu integrieren, um die Registrierungsumgebung anzupassen und in externe Systemen zu integrieren. Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, einen Azure AD B2C-Benutzerflow zu erstellen, der mit [REST-API-Diensten](api-connectors-overview.md) interagiert, um die Registrierungsfunktionalität zu ändern. 
 
 ::: zone pivot="b2c-user-flow"
-
-In diesem Szenario überprüft die REST-API, ob die Domäne der E-Mail-Adresse „fabrikam.com“ oder „fabricam.com“ lautet. Der vom Benutzer angegebene Anzeigename umfasst mehr als fünf Zeichen. Anschließend wird die Auftragsbezeichnung mit einem statischen Wert zurückgegeben. 
-
-> [!IMPORTANT]
-> API-Connectors für die Registrierung sind ein Feature der öffentlichen Vorschauversion von Azure AD B2C. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+Sie können anhand unserer [Beispiele](api-connector-samples.md#api-connector-rest-api-samples) einen API-Endpunkt erstellen.
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 In diesem Szenario fügen wir die Möglichkeit für Benutzer hinzu, auf der Azure AD B2C-Registrierungsseite eine Treuebonusnummer einzugeben. Die REST-API überprüft, ob die Kombination aus E-Mail-Adresse und Treuebonusnummer einem Aktionscode zugeordnet ist. Wenn die REST-API einen Aktionscode für diesen Benutzer findet, wird dieser an Azure AD B2C zurückgegeben. Schließlich wird der Aktionscode in die Tokenansprüche so eingefügt, dass er von der Anwendung genutzt werden kann.
 
-Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Dies bietet sich an, wenn die REST-API die Daten auf dem Bildschirm nicht überprüft und stets Ansprüche zurückgibt. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](custom-policy-rest-api-claims-exchange.md)
+Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Dies bietet sich an, wenn die REST-API die Daten auf dem Bildschirm nicht überprüft und stets Ansprüche zurückgibt. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](add-api-connector-token-enrichment.md)
 
 ::: zone-end
 
@@ -51,53 +46,17 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
-4. Wählen Sie **API-Connectors (Vorschau)** und dann **Neuer API-Connector** aus.
+4. Wählen Sie **API-Connectors** und dann **Neuer API-Connector** aus.
 
-   ![Hinzufügen eines neuen API-Connectors](./media/add-api-connector/api-connector-new.png)
+   ![Screenshot der grundlegenden Konfiguration für einen API-Connector](media/add-api-connector/api-connector-new.png)
 
 5. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen**.
 6. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
-7. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Weitere Informationen zum Schützen Ihrer API finden Sie weiter unten in diesem Artikel.
+7. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Erfahren Sie mehr über das [Schützen Ihres API-Connectors](secure-rest-api.md).
 
-    ![Konfigurieren eines API-Connectors](./media/add-api-connector/api-connector-config.png)
+   ![Screenshot der Authentifizierungskonfiguration für einen API-Connector](media/add-api-connector/api-connector-config.png)
 
 8. Wählen Sie **Speichern** aus.
-
-## <a name="securing-the-api-endpoint"></a>Schützen des API-Endpunkts
-Sie können Ihren API-Endpunkt entweder mithilfe der HTTP-Standardauthentifizierung oder mithilfe der HTTPS-Clientzertifikatauthentifizierung (Vorschau) schützen. In beiden Fällen müssen Sie die Anmeldeinformationen angeben, die Azure AD B2C beim Aufrufen Ihres API-Endpunkts verwenden wird. Der API-Endpunkt überprüft dann die Anmeldeinformationen und führt Autorisierungsentscheidungen aus.
-
-### <a name="http-basic-authentication"></a>HTTP-Standardauthentifizierung
-Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Azure AD B2C sendet eine HTTP-Anforderung mit den Clientanmeldeinformationen (`username` und `password`) im Header `Authorization`. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format `username:password` angegeben. Die API überprüft dann diese Werte, um zu bestimmen, ob ein API-Aufruf abgelehnt werden soll oder nicht.
-
-### <a name="https-client-certificate-authentication-preview"></a>HTTPS-Clientzertifikatauthentifizierung (Vorschau)
-
-> [!IMPORTANT]
-> Diese Funktion befindet sich in der Vorschauhase und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Bei der Client-Zertifikat-Authentifizierung handelt es sich um eine auf gegenseitigen Zertifikaten basierende Authentifizierungsmethode, bei welcher der Client dem Server ein Client-Zertifikat zur Verfügung stellt, um seine Identität zu beweisen. In diesem Fall verwendet Azure AD B2C das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des TLS-/SSL-Handshakes. Ihr API-Dienst kann dann den Zugriff nur auf Dienste beschränken, die über ordnungsgemäße Zertifikate verfügen. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat im Format PKCS12 (PFX). In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
-
-Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Empfohlene Einstellungen umfassen:
-- **Betreff**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
-- **Inhaltstyp**: `PKCS #12`
-- **Gültigkeitsdauer Aktionstyp**: `Email all contacts at a given percentage lifetime` oder `Email all contacts a given number of days before expiry`
-- **Schlüsseltyp**: `RSA`
-- **Schlüsselgröße**: `2048`
-- **Exportierbarer privater Schlüssel**: `Yes` (um die pfx-Datei exportieren zu können)
-
-Sie können dann [das Zertifikat exportieren](../key-vault/certificates/how-to-export-certificate.md). Sie können alternativ das Cmdlet [New-SelfSignedCertificate](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) von PowerShell verwenden, um ein selbstsigniertes Zertifikat zu generieren.
-
-Nachdem Sie ein Zertifikat haben, können Sie es als Teil der Konfiguration des API-Connectors hochladen. Beachten Sie, dass das Kennwort nur für kennwortgeschützte Zertifikatdateien erforderlich ist.
-
-Ihre API muss die Autorisierung basierend auf gesendeten Client-Zertifikaten implementieren, um die API-Endpunkte zu schützen. Für den Azure App Service und die Azure Funktionen finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md) Informationen zum Aktivieren und *Validieren des Zertifikats über Ihren API-Code*.  Sie können auch das Azure API Management verwenden, um die [Eigenschaften](
-../api-management/api-management-howto-mutual-certificates-for-clients.md) von Client-Zertifikaten mithilfe von Richtlinienbegriffen auf die gewünschten Werte zu prüfen.
-
-Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Sie müssen ein neues Zertifikat erstellen und die obigen Schritte wiederholen. Ihr API-Dienst kann vorübergehend weiterhin alte und neue Zertifikate akzeptieren, während das neue Zertifikat bereitgestellt wird. Um ein neues Zertifikat in einen bestehenden API-Anschluss hochzuladen, wählen Sie den API-Anschluss unter **API-Anschlüsse** aus und klicken Sie auf **Neues Zertifikat hochladen**. Azure Active Directory verwendet automatisch das zuletzt hochgeladene Zertifikat, das nicht abgelaufen ist und nach dem Startdatum erstellt wurde.
-
-### <a name="api-key"></a>API-Schlüssel
-
-Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
-
-Hierbei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
 Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
@@ -127,6 +86,8 @@ Content-type: application/json
  "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "step": "<step-name>",
+ "client_id":"93fd07aa-333c-409d-955d-96008fd08dd9",
  "ui_locales":"en-US"
 }
 ```
@@ -135,13 +96,17 @@ Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter **Azure A
 
 Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensions-app-id>_CustomAttribute** vorhanden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure AD B2C](user-flow-custom-attributes.md).
 
-Außerdem wird der Anspruch **Gebietsschema der Benutzeroberfläche („ui_locales“)** standardmäßig in allen Anforderungen gesendet. Er gibt das Gebietsschema (oder auch mehrere Gebietsschemas) eines Benutzers an, wie es auf seinem Gerät konfiguriert ist. Dieses kann von der API verwendet werden, um internationalisierte Antworten zurückzugeben.
-
+Darüber hinaus werden in der Regel die folgenden Ansprüche in allen Anforderungen gesendet:
+- **UI-Gebietsschemas ('ui_locales')** : Die auf dem Gerät konfigurierten Gebietsschemas eines Endbenutzers. Kann von Ihrer API verwendet werden, um internationalisierte Antworten zurückzugeben.
+- **Schritt ('step')** : Der Schritt oder Punkt im Benutzerflow, für den der API-Connector aufgerufen wurde. Mögliche Werte:
+  - `PostFederationSignup` – entspricht "Nach dem Verbund mit einem Identitätsanbieter während der Registrierung".
+  - `PostAttributeCollection` – entspricht "Vor dem Erstellen des Benutzers".
+  - `PreTokenIssuance` – entspricht "Vor dem Senden des Tokens (Vorschauversion)". [Weitere Informationen zu diesem Schritt](add-api-connector-token-enrichment.md)
+- **Client-ID ('client_id')** : Der `appId`-Wert der Anwendung, der für die Authentifizierung des Endbenutzers in einem Benutzerflow verwendet wird. Dabei handelt es sich *nicht* um den `appId`-Wert der Ressourcenanwendung in Zugriffstoken.
+- **E-Mail-Adresse ('email')** oder [**Identitäten ('identities')** ](/graph/api/resources/objectidentity): Diese Ansprüche können von Ihrer API zum Identifizieren des Endbenutzers verwendet werden, der sich bei der Anwendung authentifiziert.
+  
 > [!IMPORTANT]
 > Wenn ein Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird der Anspruch nicht an die API gesendet. Ihre API sollte so entworfen sein, dass explizit geprüft wird, ob ein Anspruch in der Anforderung enthalten ist. Fehlt der Anspruch, sollte eine entsprechende Verarbeitung erfolgen.
-
-> [!TIP] 
-> Mit den Ansprüchen [**Identitäten („identities“)**](/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Aktivieren des API-Connectors in einem Benutzerflow
 
@@ -152,14 +117,17 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Registrie
 4. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, dem Sie den API-Connector hinzufügen möchten.
 5. Wählen Sie **API-Connectors** und dann die API-Endpunkte aus, die bei den folgenden Schritten im Benutzerflow aufgerufen werden sollen:
 
-   - **Nach Anmeldung bei einem Identitätsanbieter**
+   - **Nach dem Verbund mit einem Identitätsanbieter während der Registrierung**
    - **Vor dem Erstellen des Benutzers**
+   - **Vor dem Senden des Tokens (Vorschau)**
 
-   ![Hinzufügen von APIs zum Benutzerflow](./media/add-api-connector/api-connectors-user-flow-select.png)
+   ![Auswählen eines API-Connectors für einen Schritt im Benutzerflow](media/add-api-connector/api-connectors-user-flow-select.png)
 
 6. Wählen Sie **Speichern** aus.
 
-## <a name="after-signing-in-with-an-identity-provider"></a>Nach Anmeldung bei einem Identitätsanbieter
+Diese Schritte sind nur für **Registrieren und Anmelden (empfohlen)** und **Registrieren (empfohlen)** vorhanden, gelten aber nur für den Registrierungsteil der Benutzerfunktionalität.
+
+## <a name="after-federating-with-an-identity-provider-during-sign-up"></a>Nach dem Verbund mit einem Identitätsanbieter während der Registrierung
 
 Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der ***Seite zur Attributsammlung***  voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert.
 
@@ -180,6 +148,8 @@ Content-type: application/json
  "displayName": "John Smith",
  "givenName":"John",
  "lastName":"Smith",
+ "step": "PostFederationSignup",
+ "client_id":"<guid>",
  "ui_locales":"en-US"
 }
 ```
@@ -239,11 +209,13 @@ Content-type: application/json
  "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "step": "PostAttributeCollection",
+ "client_id":"93fd07aa-333c-409d-955d-96008fd08dd9",
  "ui_locales":"en-US"
 }
 ```
 
-Die Ansprüche, die an die API gesendet werden, hängen von den Informationen ab, die vom Benutzer gesammelt oder vom Identitätsanbieter bereitgestellt werden.
+Die Ansprüche, die an die API gesendet werden, hängen von den Informationen ab, die vom Benutzer erfasst oder vom Identitätsanbieter bereitgestellt werden.
 
 ### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Von der Web-API in diesem Schritt erwartete Antworttypen
 
@@ -259,7 +231,9 @@ Eine Fortsetzungsantwort gibt an, dass der Benutzerflow mit dem nächsten Schrit
 
 In einer Fortsetzungsantwort kann die API Ansprüche zurückgeben. Wenn ein Anspruch von der API zurückgegeben wird, passiert mit dem Anspruch Folgendes:
 
-- Alle Werte, die dem Anspruch über die Attributerfassungsseite bereits zugewiesen wurden, werden überschrieben.
+- Überschreibt alle Werte, die bereits von einem Benutzer auf der Attributerfassungsseite bereitgestellt wurden.
+
+Zum Schreiben von Ansprüchen in das Verzeichnis bei der Registrierung, die nicht vom Benutzer erfasst werden sollen, sollten Sie die Ansprüche weiterhin unter **Benutzerattribute** des Benutzerflows auswählen, sodass der Benutzer standardmäßig nach Werten gefragt wird. Sie können jedoch [benutzerdefiniertes JavaScript oder CSS](customize-ui-with-html.md) verwenden, um die Eingabefelder für einen Endbenutzer auszublenden.
 
 Sehen Sie sich ein Beispiel für eine [Fortsetzungsantwort](#example-of-a-continuation-response) an.
 
@@ -272,6 +246,58 @@ Sehen Sie sich ein Beispiel für eine [Blockierungsantwort](#example-of-a-blocki
  Wenn die API eine Validierungsfehlerantwort ausgibt, wird der Benutzerflow auf der Attributsammlungsseite angehalten, und dem Benutzer wird eine `userMessage` angezeigt. Der Benutzer kann dann das Formular bearbeiten und erneut senden. Diese Antwort kann für die Eingabevalidierung verwendet werden.
 
 Sehen Sie sich ein Beispiel für eine [Validierungsfehlerantwort](#example-of-a-validation-error-response) an.
+
+## <a name="before-sending-the-token-preview"></a>Vor dem Senden des Tokens (Vorschau)
+
+> [!IMPORTANT]
+> Die API-Connectors, die in diesem Schritt verwendet werden, befinden sich in der Vorschau. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+In diesem Schritt wird ein API-Connector bei Anmeldungen und Registrierungen unmittelbar vor dem Ausstellen eines Tokens aufgerufen. Ein API-Connector für diesen Schritt kann verwendet werden, um das Token mit Anspruchswerten aus externen Quellen anzureichern.
+
+### <a name="example-request-sent-to-the-api-at-this-step"></a>In diesem Schritt an die API gesendete Beispielanforderung
+
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "clientId": "231c70e8-8424-48ac-9b5d-5623b9e4ccf3",
+ "step": "PreTokenApplicationClaims",
+ "ui_locales":"en-US"
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+}
+```
+
+Die Ansprüche, die an die API gesendet werden, hängen von den für den Benutzer definierten Informationen ab.
+
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Von der Web-API in diesem Schritt erwartete Antworttypen
+
+Wenn die Web-API während eines Benutzerflows eine HTTP-Anforderung von Azure AD empfängt, kann sie folgende Antworten zurückgeben:
+
+- Fortsetzungsantwort
+
+#### <a name="continuation-response"></a>Fortsetzungsantwort
+
+Eine Fortsetzungsantwort gibt an, dass der Benutzerflow mit dem nächsten Schritt, Ausstellen des Tokens, fortgesetzt werden soll.
+
+In einer Fortsetzungsantwort kann die API weitere Ansprüche zurückgeben. Ein von der API zurückgegebener Anspruch, der im Token zurückgegeben werden soll, muss ein vordefinierter Anspruch oder [als benutzerdefiniertes Attribut definiert](user-flow-custom-attributes.md) sein und muss in der Konfiguration der **Anwendungsansprüche** des Benutzerflows ausgewählt werden. 
+
+Der Anspruchswert im Token ist der von der API zurückgegebene Wert, nicht der Wert im Verzeichnis. Einige Anspruchswerte können nicht von der API-Antwort überschrieben werden. Ansprüche, die von der API zurückgegeben werden können, entsprechen den Ansprüchen unter **Benutzerattribute** (mit Ausnahme von `email`).
+
+Sehen Sie sich ein Beispiel für eine [Fortsetzungsantwort](#example-of-a-continuation-response) an.
+
+> [!NOTE]
+> Die API wird nur während einer ersten Authentifizierung aufgerufen. Wenn Aktualisierungstoken verwendet werden, um automatisch neue Zugriffs- oder ID-Token zu erhalten, enthält das Token die Werte, die bei der ersten Authentifizierung ermittelt wurden. 
 
 ## <a name="example-responses"></a>Beispielantworten
 
@@ -291,9 +317,10 @@ Content-type: application/json
 
 | Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| version     | String | Ja      | Die Version Ihrer API                                                    |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der Anspruch muss `_<extensions-app-id>_` nicht enthalten. Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.  |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden.                    |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der Anspruch muss `_<extensions-app-id>_` nicht enthalten, dies ist *optional*. Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. |
 
 ### <a name="example-of-a-blocking-response"></a>Beispiel für eine Blockierungsantwort
 
@@ -311,13 +338,13 @@ Content-type: application/json
 
 | Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| version     | String | Ja      | Die Version der API.                                                    |
+| version     | String | Ja      | Die Version Ihrer API                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
 | userMessage | String | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
 
 **Anzeige einer Blockierungsantwort für den Endbenutzer**
 
-![Beispiel für eine Blockierungsseite](./media/add-api-connector/blocking-page-response.png)
+![Beispiel für eine Blockierungsantwort](media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>Beispiel für eine Validierungsfehlerantwort
 
@@ -345,8 +372,7 @@ Content-type: application/json
 
 **Anzeige einer Validierungsfehlerantwort für den Endbenutzer**
 
-![Beispiel für eine Validierungsseite](./media/add-api-connector/validation-error-postal-code.png)
-
+![Beispiel für eine Validierungsfehlerantwort](media/add-api-connector/validation-error-postal-code.png)
 
 ::: zone-end
 
@@ -589,17 +615,60 @@ Um den Anspruch „Aktionscode“ an die Anwendung der vertrauenden Seite zurüc
 
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Bewährte Methoden und Problembehandlungen
 
+::: zone pivot="b2c-user-flow"
+
 ### <a name="using-serverless-cloud-functions"></a>Verwenden von serverlosen Cloudfunktionen
 
-Serverlose Funktionen (z. B. HTTP-Trigger in Azure Functions) bieten eine Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen [beispielsweise](code-samples.md#api-connectors) verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte E-Mail-Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Benutzerspeicher und weitere Clouddienste für komplexere Szenarien aufgerufen werden.
+Serverlose Funktionen (z. B. [HTTP-Trigger in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md)) bieten eine Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen [beispielsweise](api-connector-samples.md#api-connector-rest-api-samples) verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte E-Mail-Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Datenspeicher und andere Clouddienste für komplexere Szenarien aufgerufen werden.
 
 ### <a name="best-practices"></a>Bewährte Methoden
 Stellen Sie Folgendes sicher:
 * Ihre API entspricht den API-Anforderungs- und -Antwortverträgen, wie dies weiter oben beschrieben ist. 
 * Die **Endpunkt-URL** des API-Connectors verweist auf den richtigen API-Endpunkt.
-* In Ihrer API wird explizit auf NULL-Werte der empfangenen Ansprüche geprüft.
+* In Ihrer API wird explizit auf NULL-Werte der empfangenen notwendigen Ansprüche geprüft.
+* Ihre API implementiert eine Authentifizierungsmethode, die unter [Schützen Ihres API-Connectors](secure-rest-api.md) beschrieben ist.
 * Ihre API antwortet so schnell wie möglich, um eine flüssige Darstellung für den Benutzer zu gewährleisten.
-    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) gehalten wird. Für Azure Functions wird die Verwendung des [Premium-Plans](../azure-functions/functions-scale.md) empfohlen.
+    * Azure AD B2C wartet maximal *20 Sekunden* auf den Empfang einer Antwort. Wird keine empfangen, wird *ein weiterer Versuch (Wiederholung)* unternommen, die API aufzurufen.
+    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, der die API in der Produktion aktiv („wach“ oder „warm“) hält. Für Azure Functions wird in der Produktion zumindest die Verwendung des [Premium-Plans](../azure-functions/functions-scale.md) empfohlen.
+* Stellen Sie die Hochverfügbarkeit Ihrer API sicher.
+* Überwachen und optimieren Sie die Leistung von nachgelagerten APIs, Datenbanken oder anderen Abhängigkeiten Ihrer API.
+  
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
+
+### <a name="use-logging"></a>Verwenden von Protokollierung
+
+Üblicherweise ist es nützlich, die von Ihrem Web-API-Dienst aktivierten Protokollierungstools, etwa [Application Insights](../azure-functions/functions-monitoring.md), zu verwenden, um Ihre API auf unerwartete Fehlercodes, Ausnahmen und schlechte Leistung zu überwachen.
+* Überwachen Sie auf HTTP-Statuscodes, die weder HTTP 200 noch 400 sind.
+* Der HTTP-Statuscode 401 oder 403 kennzeichnet in der Regel, dass ein Problem mit Ihrer Authentifizierung vorliegt. Überprüfen Sie die Authentifizierungsschicht Ihrer API und die entsprechende Konfiguration im API-Connector.
+* Verwenden Sie in der Entwicklung ggf. höhere Protokolliergrade (z. B. „trace“ oder „debug“).
+* Überwachen Sie Ihre API hinsichtlich langer Antwortzeiten. 
+
+Darüber hinaus protokolliert Azure AD B2C Metadaten für API-Transaktionen, die während der Benutzerauthentifizierung über einen Benutzerflow stattfinden. So finden Sie diese:
+1. Wechseln Sie zu **Azure AD B2C**.
+2. Wählen Sie unter **Aktivitäten** die Option **Überwachungsprotokolle** aus.
+3. Filtern Sie die Listenansicht: Wählen Sie für **Datum** das gewünschte Zeitintervall und für **Aktivität** die Option **Im Rahmen eines Benutzerflows wurde eine API aufgerufen** aus.
+4. Überprüfen Sie die einzelnen Protokolle. Jede Zeile stellt einen API-Connector dar, der während eines Benutzerflows aufgerufen werden soll. Wenn ein API-Aufruf fehlschlägt und eine Wiederholung erfolgt, wird er weiterhin als einzelne Zeile dargestellt. `numberOfAttempts` gibt an, wie oft Ihre API aufgerufen wurde. Mögliche Werte sind `1` oder `2`. Weitere Informationen zum API-Aufruf finden Sie in den Protokollen.
+
+![Beispiel für eine API-Connectortransaktion während der Benutzerauthentifizierung](media/add-api-connector/example-anonymized-audit-log.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+### <a name="using-serverless-cloud-functions"></a>Verwenden von serverlosen Cloudfunktionen
+
+Serverlose Cloudfunktionen wie [HTTP-Trigger in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md) bieten eine einfache, hoch verfügbare und leistungsstarke Möglichkeit, API-Endpunkte zu erstellen, die als API-Connectors verwendet werden.
+
+### <a name="best-practices"></a>Bewährte Methoden
+Stellen Sie Folgendes sicher:
+* In Ihrer API wird explizit auf NULL-Werte der empfangenen notwendigen Ansprüche geprüft.
+* Ihre API implementiert eine Authentifizierungsmethode, die unter [Schützen Ihres API-Connectors](secure-rest-api.md) beschrieben ist.
+* Ihre API antwortet so schnell wie möglich, um eine flüssige Darstellung für den Benutzer zu gewährleisten. 
+    * Verwenden Sie in der Produktion einen Hostingplan, der dafür sorgt, dass die API aktiv bleibt, wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden. Für Azure Functions wird zumindest die Verwendung des [Premium-Plans](../azure-functions/functions-scale.md) empfohlen.
+* Stellen Sie die Hochverfügbarkeit Ihrer API sicher.
+* Überwachen und optimieren Sie die Leistung von nachgelagerten APIs, Datenbanken oder anderen Abhängigkeiten Ihrer API.
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
  
 ### <a name="use-logging"></a>Verwenden von Protokollierung
 
@@ -609,18 +678,20 @@ Stellen Sie Folgendes sicher:
 * Verwenden Sie in der Entwicklung ggf. höhere Protokolliergrade (z. B. „trace“ oder „debug“).
 * Überwachen Sie Ihre API hinsichtlich langer Antwortzeiten.
 
+::: zone-end
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 ::: zone pivot="b2c-user-flow"
 
-- Erste Schritte mit den [Beispielen](code-samples.md#api-connectors)
+- Erste Schritte mit den [Beispielen](api-connector-samples.md#api-connector-rest-api-samples)
 - [Schützen Ihres API-Connectors](secure-rest-api.md)
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](custom-policy-rest-api-claims-exchange.md)
+- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](add-api-connector-token-enrichment.md)
 - [Schützen Ihres API-Connectors](secure-rest-api.md)
 - [Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
 

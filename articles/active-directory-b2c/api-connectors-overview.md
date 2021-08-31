@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a9eeb7ed664f67e1273a7dfff701a18970cd91fd
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174522"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338919"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>Verwenden von API-Connectors zum Anpassen und Erweitern von Flows zur Benutzerregistrierung
 
@@ -24,32 +24,28 @@ ms.locfileid: "108174522"
 
 ::: zone pivot="b2c-user-flow"
 
-> [!IMPORTANT]
-> API-Connectors für die Registrierung sind ein Feature der öffentlichen Vorschauversion von Azure AD B2C. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="overview"></a>Übersicht 
 
 Mithilfe von API-Konnektoren können Sie als Entwickler oder IT-Administrator Ihre Anmelde-Benutzerströme mit REST-APIs integrieren, um das Anmeldeverfahren anzupassen und mit externen Systemen zu integrieren. API-Connectors bieten beispielsweise folgende Möglichkeiten:
 
 - **Überprüfen von Benutzereingabedaten**. Überprüfen Sie auf fehlerhafte oder ungültige Benutzerdaten. Beispielsweise können Sie vom Benutzer bereitgestellte Daten im Vergleich mit vorhandenen Daten in einem externen Datenspeicher oder einer Liste zulässiger Werte überprüfen. Falls ungültig, können Sie einen Benutzer auffordern, gültige Daten anzugeben, oder den Benutzer daran hindern, den Registrierungsflow fortzusetzen.
-- **Integrieren in einen benutzerdefinierten Genehmigungsworkflow**. Verbinden mit einem benutzerdefinierten Genehmigungssystem zum Verwalten und Einschränken der Kontoerstellung.
-- **Überschreiben von Benutzerattributen**. Sie können ein vom Benutzer erfasstes Attribut neu formatieren oder ihm einen Wert zuweisen. Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird. 
 - **Benutzeridentität verifizieren**. Verwenden Sie einen Identitätsüberprüfungsdienst, um Entscheidungen bei der Kontoerstellung eine zusätzliche Sicherheitsstufe hinzuzufügen.
+- **Integrieren in einen benutzerdefinierten Genehmigungsworkflow**. Verbinden mit einem benutzerdefinierten Genehmigungssystem zum Verwalten und Einschränken der Kontoerstellung.
+- **Erweitern Sie Token mit Attributen aus externen Quellen**. Reichern Sie Token mit Attributen für den Benutzer aus Quellen außerhalb von Azure AD B2C an, z. B. Cloudsystemen, benutzerdefinierten Benutzerspeichern, benutzerdefinierten Berechtigungssystemen, Legacyidentitätsdiensten usw.
+- **Überschreiben von Benutzerattributen**. Sie können ein vom Benutzer erfasstes Attribut neu formatieren oder ihm einen Wert zuweisen. Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird. 
 - **Ausführen von benutzerdefinierter Geschäftslogik**. Sie können nachgelagerte Ereignisse in Ihren Cloudsystemen auslösen, um Pushbenachrichtigungen zu senden, Unternehmensdatenbanken zu aktualisieren, Berechtigungen zu verwalten, Datenbanken zu überwachen und andere benutzerdefinierte Aktionen auszuführen.
 
-Ein API-Konnektor versorgt Azure AD B2C mit den Informationen, die für den Aufruf des API-Endpunkts erforderlich sind, indem er die HTTP-Endpunkt-URL und die Authentifizierung für den API-Aufruf definiert. Sobald Sie einen API-Connector konfiguriert haben, können Sie ihn für einen bestimmten Schritt in einem Benutzerflow aktivieren. Wenn ein Benutzer diesen Schritt im Registrierungsflow erreicht, wird der API-Connector aufgerufen und als HTTP-POST-Anforderung an Ihre API materialisiert, wobei Benutzerinformationen („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text gesendet werden. Die API-Antwort kann die Ausführung des Benutzerflows beeinträchtigen. Beispielsweise kann die API-Antwort einen Benutzer für die Anmeldung sperren, den Benutzer auffordern, Informationen erneut einzugeben, oder Benutzerattribute überschreiben und anhängen.
+Ein API-Konnektor versorgt Azure AD B2C mit den Informationen, die für den Aufruf des API-Endpunkts erforderlich sind, indem er die HTTP-Endpunkt-URL und die Authentifizierung für den API-Aufruf definiert. Sobald Sie einen API-Connector konfiguriert haben, können Sie ihn für einen bestimmten Schritt in einem Benutzerflow aktivieren. Wenn ein Benutzer diesen Schritt im Registrierungsflow erreicht, wird der API-Connector aufgerufen und als HTTP-POST-Anforderung an Ihre API materialisiert, wobei Benutzerinformationen („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text gesendet werden. Die API-Antwort kann die Ausführung des Benutzerflows beeinträchtigen. Beispielsweise kann die API-Antwort einen Benutzer für die Anmeldung sperren, den Benutzer auffordern, Informationen erneut einzugeben, oder Benutzerattribute überschreiben.
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>Wann ein API-Connector in einem Benutzerflow aktiviert werden kann
 
-Es gibt zwei Punkte in einem Benutzerflow, an denen Sie einen API-Connector aktivieren können:
+Es gibt drei Stellen in einem Benutzerflow, an denen Sie einen API-Connector aktivieren können:
 
-- Nach Anmeldung bei einem Identitätsanbieter
-- Vor dem Erstellen des Benutzers
+- **Nach dem Verbund mit einem Identitätsanbieter während der Registrierung** (gilt nur für Registrierungen)
+- **Vor dem Erstellen des Benutzers** (gilt nur für Registrierungen)
+- **Vor dem Senden des Tokens (Vorschau)** (gilt für Registrierungen und Anmeldungen)
 
-> [!IMPORTANT]
-> In beiden Fällen werden die API-Connectors bei der **Registrierung** und nicht bei der Anmeldung eines Benutzer aufgerufen.
-
-### <a name="after-signing-in-with-an-identity-provider"></a>Nach Anmeldung bei einem Identitätsanbieter
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>Nach dem Verbund mit einem Identitätsanbieter während der Registrierung
 
 Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der ***Seite zur Attributsammlung***  voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert. Im Folgenden finden Sie Beispiele für Szenarien mit API-Connectors, die Sie in diesem Schritt aktivieren können:
 
@@ -64,6 +60,15 @@ Ein API-Connector in diesem Schritt des Registrierungsprozesses wird nach der Se
 - Sperren einer Benutzerregistrierung auf Grundlage der vom Benutzer eingegebenen Daten
 - Verifizieren Sie die Benutzeridentität.
 - Abfragen externer Systeme nach vorhandenen Daten zum Benutzer, um diese im Anwendungstoken zurückzugeben oder in Azure AD zu speichern
+
+### <a name="before-sending-the-token-preview"></a>Vor dem Senden des Tokens (Vorschau)
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
+In diesem Schritt wird ein API-Connector im Registrierungs- oder Anmeldeprozess aufgerufen, bevor ein Token ausgestellt wird. Im Folgenden finden Sie Beispiele für Szenarien, die Sie in diesem Schritt aktivieren können:
+- Anreicherung des Tokens mit Attributen für den Benutzer aus anderen Quellen als dem Verzeichnis, z. B. Legacyidentitätssystemen, Systemen für das Personalwesen, externen Benutzerspeichern usw.
+- Anreicherung des Tokens mit Gruppen- oder Rollenattributen, die Sie in Ihrem eigenen Berechtigungssystem speichern und verwalten. 
+- Anwenden von Anspruchstransformationen oder -manipulationen auf Werte von Ansprüchen im Verzeichnis.
 
 ::: zone-end
 
@@ -146,6 +151,34 @@ Die ausgegebenen Ansprüche sollten wie das folgende xml-Snippet aussehen:
 </OutputClaims>
 ```
 
+### <a name="handling-null-values"></a>Behandlung von NULL-Werten 
+
+Ein NULL-Wert wird in einer Datenbank verwendet, wenn der Wert in einer Spalte unbekannt ist oder fehlt.  Fügen Sie keine JSON-Schlüssel mit einem `null`-Wert ein. Im folgenden Beispiel gibt die E-Mail einen `null`-Wert zurück:
+
+```json
+{
+  "name": "Emily Smith",
+  "email": null,
+  "loyaltyNumber":  1234
+}
+```
+
+Wenn ein Element NULL ist, haben Sie folgende Möglichkeiten:
+
+- Lassen Sie das Schlüssel-Wert-Paar im JSON-Code aus.
+- Geben einen Wert zurück, der dem Azure AD B2C-Anspruchsdatentyp entspricht. Geben Sie beispielsweise für einen `string`-Datentyp eine leere Zeichenfolge, `""`, zurück. Geben Sie für einen `integer`-Datentyp einen Nullwert, `0`, zurück. Geben Sie für einen `dateTime`-Datentyp einen Mindestwert, `1970-00-00T00:00:00.0000000Z`, zurück.
+
+Das folgende Beispiel zeigt, wie ein NULL-Wert verarbeitet wird. Die E-Mail wird im JSON ausgelassen:
+
+```json
+{
+  "name": "Emily Smith",
+  "loyaltyNumber":  1234
+}
+```
+
+### <a name="parse-a-nested-json-body"></a>Analysieren eines geschachtelten JSON-Textkörpers
+
 Zum Analysieren einer geschachtelten JSON-Textantwort müssen Sie die Metadaten „ResolveJsonPathsInJsonTokens“ auf „true“ festlegen. Legen Sie im Ausgabeanspruch den Wert für „PartnerClaimType“ auf das auszugebende JSON-Pfadelement fest.
 
 ```json
@@ -210,71 +243,26 @@ Wenn Sie direkt aus einer User Journey auf ein technisches REST-API-Profil verwe
 
 ::: zone-end
 
-## <a name="security-considerations"></a>Sicherheitshinweise
+## <a name="development-of-your-rest-api"></a>Entwicklung Ihrer REST-API 
 
-Sie müssen ihren REST-API-Endpunkt schützen, damit nur authentifizierte Clients mit ihm kommunizieren können. Die REST-API muss einen HTTPS-Endpunkt verwenden. Bestimmen Sie den Authentifizierungstyp auf eine der folgenden Authentifizierungsmethoden.
-
-### <a name="api-key"></a>API-Schlüssel
-
-Ein API-Schlüssel ist ein eindeutiger Bezeichner, der zum Authentifizieren eines Benutzers für den Zugriff auf einen Rest-API-Endpunkt verwendet wird. Beispielsweise enthält [Azure Functions HTTP-Trigger](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) als `code` Abfrageparameter in der Endpunkt-URL.
-
-::: zone pivot="b2c-user-flow"
-
-```http
-https://contoso.azurewebsites.net/api/endpoint?code=0123456789 
-```
-
-Die API-Schlüsselauthentifizierung sollte nicht allein in der Produktion verwendet werden. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-Der API-Schlüssel kann als benutzerdefinierter HTTP-Header gesendet werden. Der [HTTP-Trigger in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) beispielsweise verwendet `x-functions-key` im HTTP-Header, um den Anforderer zu identifizieren.  
-
-::: zone-end
-
-### <a name="client-certificate"></a>Clientzertifikat
-
-Die Client-Zertifikat-Authentifizierung ist ein Verfahren zur gegenseitigen zertifikatsbasierten Authentifizierung, bei dem der Client dem Server ein Client-Zertifikat zur Verfügung stellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure AD B2C das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen.  Dies erfolgt im Rahmen des SSL-Handshakes. 
-
-Ihr API-Dienst kann dann den Zugriff nur auf Dienste beschränken, die über ordnungsgemäße Zertifikate verfügen. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat im Format PKCS12 (PFX). In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden.
-
-### <a name="http-basic-authentication"></a>HTTP-Standardauthentifizierung
-
-Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Azure AD B2C sendet eine HTTP-Anforderung mit den Clientanmeldeinformationen (`username` und `password`) im Header `Authorization`. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format `username:password` angegeben. Die API überprüft dann diese Werte, um zu bestimmen, ob ein API-Aufruf abgelehnt werden soll oder nicht.
-
-::: zone pivot="b2c-custom-policy"
-
-### <a name="bearer-token"></a>Bearertoken
-
-Die Definition der Bearertokenauthentifizierung finden Sie unter [OAuth2.0 Authorization Framework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). Bei der Bearertokenauthentifizierung sendet Azure AD B2C eine HTTP-Anforderung mit einem Token im Autorisierungsheader.
-
-```http
-Authorization: Bearer <token>
-```
-
-Ein Bearertoken ist eine nicht transparente Zeichenfolge. Dabei kann es sich um ein JWT-Zugriffstoken oder eine beliebige Zeichenfolge handeln, von dem/der die REST-API erwartet, dass es/sie von Azure AD B2C im Autorisierungsheader gesendet wird. 
- 
-::: zone-end
-
-## <a name="rest-api-platform"></a>REST-API-Plattform
-
-Ihre REST-API kann auf beliebigen Plattformen basieren und in beliebigen Programmiersprachen geschrieben sein, solange sie sicher ist und Forderungen im JSON-Format senden und empfangen kann.
+Ihre REST-API kann auf beliebigen Plattformen entwickelt werden und in beliebigen Programmiersprachen geschrieben sein, solange sie sicher ist und Forderungen im JSON-Format senden und empfangen kann.
 
 Die Anforderung an Ihren REST-API-Dienst kommt von Azure AD B2C-Servern. Der REST-API-Dienst muss auf einem öffentlich zugänglichen HTTPS-Endpunkt veröffentlicht werden. Die REST-API-Aufrufe gehen von der IP-Adresse eines Azure-Rechenzentrums ein.
 
-Achten Sie beim Entwurf Ihres REST-API-Diensts und der zugrundeliegenden Komponenten (z. B. Datenbank und Dateisystem) auf Hochverfügbarkeit.
+Sie können serverlose Cloudfunktionen wie [HTTP-Trigger in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md) verwenden, um die Entwicklung zu vereinfachen.
 
+Sie sollten beim Entwurf Ihres REST-API-Diensts und der zugrundeliegenden Komponenten (z. B. Datenbank und Dateisystem) auf Hochverfügbarkeit achten.
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-
-
 ::: zone pivot="b2c-user-flow"
 
-- Erfahren Sie, wie Sie [einen API-Connector zu einem Benutzerflow hinzufügen](add-api-connector.md).
-- Erste Schritte mit den [Beispielen](code-samples.md#api-connectors)
+- Erfahren Sie, wie Sie [einen API-Connector zum Ändern der Registrierung hinzufügen](add-api-connector.md).
+- Erfahren Sie, wie Sie [einen API-Connector hinzufügen, um Token mit externen Ansprüchen anzureichern](add-api-connector-token-enrichment.md).
+- Erfahren Sie mehr über das [Schützen Ihres API-Connectors](secure-rest-api.md).
+- Erste Schritte mit den [Beispielen](api-connector-samples.md#api-connector-rest-api-samples)
 
 ::: zone-end
 
@@ -283,7 +271,7 @@ Achten Sie beim Entwurf Ihres REST-API-Diensts und der zugrundeliegenden Kompone
 In den folgenden Artikeln finden Sie Beispiele für die Verwendung eines technischen RESTful-Profils:
 
 - [Exemplarische Vorgehensweise: Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung](add-api-connector.md)
-- [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-rest-api-claims-exchange.md)
+- [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](add-api-connector-token-enrichment.md)
 - [Sichern von REST-API-Diensten](secure-rest-api.md)
 - [Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
 

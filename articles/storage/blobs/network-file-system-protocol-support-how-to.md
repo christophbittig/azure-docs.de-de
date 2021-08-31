@@ -1,124 +1,43 @@
 ---
-title: Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau) | Microsoft-Dokumentation
+title: Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Container über eine Azure-VM (virtueller Computer) oder einen lokal ausgeführten Client in Blob Storage mithilfe des NFS 3.0-Protokolls einbinden.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: d184569fd28e23b14ff3cb24a0c8e68477b9842d
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7173477e01faddb3c8aa3c18dc2781ef21dee012
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888732"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346755"
 ---
-# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Network File System)
 
-Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob Storage finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
+Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob Storage finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage](network-file-system-protocol-support.md).
 
-## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Schritt 1: Registrieren des NFS 3.0-Protokollfeatures in Ihrem Abonnement
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-1. Öffnen Sie ein PowerShell-Befehlsfenster. 
-
-2. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-3. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
-
-   ```powershell
-   $context = Get-AzSubscription -SubscriptionId <subscription-id>
-   Set-AzContext $context
-   ```
-   
-   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
-
-4. Registrieren Sie die `AllowNFSV3`-Funktion mit dem folgenden Befehl.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
-   ```
-
-5. Registrieren Sie den Ressourcenanbieter, indem Sie den folgenden Befehl verwenden.
-    
-   ```powershell
-   Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
-   ```
-   
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-1. Öffnen Sie ein Terminalfenster.
-
-2. Melden Sie sich mit dem Befehl `az login` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
-
-   ```azurecli-interactive
-   az login
-   ```
-   
-3. Registrieren Sie die `AllowNFSV3`-Funktion mit dem folgenden Befehl.
-
-   ```azurecli-interactive
-   az feature register --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
-   ```
-
-   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
-
-4. Registrieren Sie den Ressourcenanbieter, indem Sie den folgenden Befehl verwenden.
-    
-   ```azurecli-interactive
-   az provider register -n Microsoft.Storage --subscription <subscription-id>
-   ```
-
-   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
-
----
-
-## <a name="step-2-verify-that-the-feature-is-registered"></a>Schritt 2: Überprüfen, ob das Feature registriert ist 
-
-Die Registrierungsgenehmigung kann bis zu einer Stunde dauern. Um zu überprüfen, ob die Registrierung abgeschlossen wurde, verwenden Sie die folgenden Befehle.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
-```
-
-Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
-
----
-
-## <a name="step-3-create-an-azure-virtual-network-vnet"></a>Schritt 3: Erstellen eines virtuellen Azure-Netzwerks (VNet)
+## <a name="step-1-create-an-azure-virtual-network-vnet"></a>Schritt 1: Erstellen eines virtuellen Azure-Netzwerks (VNet)
 
 Ihr Speicherkonto muss in einem VNet sein. Ein VNet ermöglicht Clients eine sichere Verbindung mit Ihrem Speicherkonto. Weitere Informationen zum VNet und wie Sie eins erstellen, finden Sie in der [Dokumentation zu virtuellen Netzwerken](../../virtual-network/index.yml).
 
 > [!NOTE]
 > Clients im selben VNet können Container in Ihr Konto einbinden. Sie können auch einen Container von einem Client aus einbinden, der in einem lokalen Netzwerk ausgeführt wird, doch Sie müssen zunächst Ihr lokales Netzwerk mit Ihrem VNet verbinden. Siehe [Unterstützte Netzwerkverbindungen](network-file-system-protocol-support.md#supported-network-connections).
 
-## <a name="step-4-configure-network-security"></a>Schritt 4: Konfigurieren der Netzwerksicherheit
+## <a name="step-2-configure-network-security"></a>Schritt 2: Konfigurieren der Netzwerksicherheit
 
 Die einzige Möglichkeit zum Sichern der Daten in Ihrem Konto besteht darin, ein VNet und andere Netzwerksicherheitseinstellungen zu verwenden. Alle anderen Tools, die zum Sichern von Daten verwendet werden, wie Kontoschlüsselautorisierung, Azure Active Directory (AD) und Zugriffssteuerungslisten (Access Control Lists, ACLs), werden in Konten, für die die Unterstützung des NFS 3.0-Protokolls aktiviert ist, noch nicht unterstützt.
 
 Informationen zum Sichern der Daten in Ihrem Konto finden Sie in den folgenden Empfehlungen: [Netzwerksicherheitsempfehlungen für Blob Storage](security-recommendations.md#networking).
 
-## <a name="step-5-create-and-configure-a-storage-account"></a>Schritt 5: Erstellen und Konfigurieren eines Speicherkontos
+## <a name="step-3-create-and-configure-a-storage-account"></a>Schritt 3: Erstellen und Konfigurieren eines Speicherkontos
 
-Um einen Container mithilfe von NFS 3.0 einzubinden, müssen Sie ein Speicherkonto erstellen, **nachdem** Sie die Funktion in Ihrem Abonnement registriert haben. Sie können keine Konten aktivieren, die vor der Registrierung der Funktion bereits vorhanden waren.
+Um einen Container mithilfe von NFS 3.0 einzubinden, müssen Sie ein Speicherkonto erstellen. Sie können vorhandene Konten nicht aktivieren.
 
-In der Vorschauversion dieses Features wird das NFS 3.0-Protokoll für Standardspeicherkonten vom Typ „Universell V2“ und für Blockblobspeicherkonten vom Typ „Premium“ unterstützt. Weitere Informationen zu diesen Speicherkontotypen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
+Das NFS 3.0-Protokoll wird für Standardspeicherkonten vom Typ „Universell V2“ und für Blockblobspeicherkonten vom Typ „Premium“ unterstützt. Weitere Informationen zu diesen Speicherkontotypen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 
@@ -127,15 +46,14 @@ Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 |Ort|Alle verfügbaren Regionen |Alle verfügbaren Regionen    
 |Leistung|Premium| Standard
 |Kontoart|BlockBlobStorage| Allgemein v2
-|Replikation|Lokal redundanter Speicher (LRS)| Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)
+|Replikation|Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)| Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)
 |Konnektivitätsmethode|Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt |Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt
-|Sichere Übertragung erforderlich|Disabled|Disabled
 |Hierarchischer Namespace|Aktiviert|Aktiviert
 |NFS V3|Aktiviert |Aktiviert 
 
 Sie können die Standardwerte für alle anderen Einstellungen übernehmen. 
 
-## <a name="step-6-create-a-container"></a>Schritt 6: Erstellen eines Containers
+## <a name="step-4-create-a-container"></a>Schritt 4: Erstellen eines Containers
 
 Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tools oder SDKs verwenden:
 
@@ -147,7 +65,15 @@ Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tool
 |[Azure-Befehlszeilenschnittstelle](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
 ||[REST](/rest/api/storageservices/create-container)|
 
-## <a name="step-7-mount-the-container"></a>Schritt 7: Einbinden des Containers
+> [!NOTE]
+> Standardmäßig ist die Root-Squashoption eines neuen Containers `no root squash`. Sie können diese Option jedoch in `root squash` oder `all squash` ändern. Weitere Informationen zu diesen Squashoptionen finden Sie in der Dokumentation Ihres Betriebssystems.
+
+Die folgende Abbildung zeigt die Squashoptionen, wie sie im Azure-Portal angezeigt werden.
+
+> [!div class="mx-imgBorder"]
+> ![Squashoptionen im Azure-Portal](./media/network-file-system-protocol-how-to/squash-options-azure-portal.png)
+
+## <a name="step-5-mount-the-container"></a>Schritt 5: Einbinden des Containers
 
 Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen Container in das Speicherkonto ein.
 
@@ -169,13 +95,19 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
 
 ---
 
-## <a name="resolve-common-issues"></a>Beheben allgemeiner Probleme
+## <a name="resolve-common-errors"></a>Beheben allgemeiner Fehler
 
-|Problem/Fehler | Lösung|
+|Fehler | Ursache/Lösung|
 |---|---|
 |`Access denied by server while mounting`|Stellen Sie sicher, dass der Client in einem unterstützten Subnetz ausgeführt wird. Siehe [Unterstützte Netzwerkadressen](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Stellen Sie sicher, dass der Container, den Sie einbinden, erstellt wurde, nachdem Sie überprüft haben, ob die Funktion registriert wurde. Anweisungen zum Wechseln in den Wartungsmodus finden Sie im Abschnitt [Schritt 2: Überprüfen, ob das Feature registriert ist](#step-2-verify-that-the-feature-is-registered). Achten Sie außerdem darauf, den Befehl zum Einbinden und die zugehörigen Parameter direkt im Terminal einzugeben. Wenn Sie diesen Befehl oder einen Teil davon aus einer anderen Anwendung kopieren und in das Terminal einfügen, kann dies dazu führen, dass ausgeblendete Zeichen in den eingefügten Informationen diesen Fehler verursachen.|
+|`No such file or directory`| Sie müssen den Befehl zum Einbinden und die zugehörigen Parameter direkt im Terminal eingeben. Wenn Sie diesen Befehl oder einen Teil davon aus einer anderen Anwendung kopieren und in das Terminal einfügen, kann dies dazu führen, dass ausgeblendete Zeichen in den eingefügten Informationen diesen Fehler verursachen.|
+|`Permision denied`| Der Standardmodus eines neu erstellten NFS v3-Containers ist 0750. Nicht-Root-Benutzer haben keinen Zugriff auf das Volume. Wenn ein Zugriff von Nicht-Root-Benutzern erforderlich ist, muss der Root-Benutzer den Modus in 0755 ändern. Beispiel für einen Befehl: `sudo chmod 0755 /mnt/<newcontainer>`|
+|`EINVAL ("Invalid argument"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob, das von einem Blobendpunkt erstellt wurde.<li>Löschen eines Blobs, das über eine Momentaufnahme verfügt oder sich in einem Container befindet, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist.|
+|`EROFS ("Read-only file system"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob oder Löschen ein Blobs, das über eine aktive Lease verfügt.<li>Schreiben in ein Blob oder Löschen eines Blobs in einem Container, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist. |
+|`NFS3ERR_IO/EIO ("Input/output error"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, Attribute für Blobs zu lesen, zu schreiben oder zu festlegen, die in der Archivzugriffsebene gespeichert sind. |
+|`OperationNotSupportedOnSymLink` Fehler| Dieser Fehler kann bei einem Schreibvorgang über eine Blob- oder Azure Data Lake Storage Gen2-API zurückgegeben werden. Die Verwendung dieser APIs zum Schreiben oder Löschen symbolischer Verknüpfungen, die mit NFS 3.0 erstellt werden, ist nicht zulässig. Sie müssen den NFS v3-Endpunkt verwenden, um mit symbolischen Verknüpfungen zu arbeiten. |
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Unterstützung für das Network File System (NFS) 3.0-Protokoll in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md)
+- [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage](network-file-system-protocol-support.md)
+- [Bekannte Probleme bei der Unterstützung des Network File System 3.0-Protokolls (NFS) in Azure Blob Storage](network-file-system-protocol-known-issues.md)

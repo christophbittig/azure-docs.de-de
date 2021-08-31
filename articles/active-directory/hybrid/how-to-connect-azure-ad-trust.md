@@ -1,7 +1,6 @@
 ---
 title: Azure AD Connect – Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect | Microsoft-Dokumentation
 description: Funktionsdetails zur Verarbeitung der Azure AD-Vertrauensstellung durch Azure AD Connect.
-keywords: AD FS, ADFS, AD FS-Verwaltung, AAD Connect, Connect, Azure AD, Vertrauensstellung, AAD, Anspruch, Anspruchsregeln, Ausstellung, Transformation, Regeln, Sicherung, Wiederherstellung
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
@@ -18,22 +17,23 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8fea0133b7aa93b16a7e65e9e573723e7e21bae
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85360094"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460286"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
 
 ## <a name="overview"></a>Übersicht
 
-Azure AD Connect kann den Verbund zwischen einem lokalen Active Directory-Verbunddienst (AD FS) und Azure AD verwalten. Dieser Artikel enthält eine Übersicht über Folgendes:
+Wenn Sie Ihre lokale Umgebung mit Azure AD verbinden, wird eine Vertrauensstellung zwischen dem lokalen Identitätsanbieter und Azure AD erstellt.  Azure AD Connect kann den Verbund zwischen einem lokalen Active Directory-Verbunddienst (AD FS) und Azure AD verwalten. Dieser Artikel enthält eine Übersicht über Folgendes:
 
 * Die verschiedenen Einstellungen, die für die Vertrauensstellung von Azure AD Connect konfiguriert werden
 * Die Ausstellungstransformationsregeln (Anspruchsregeln), die von Azure AD Connect festgelegt werden
 * Das Sichern und Wiederherstellen Ihrer Anspruchsregeln zwischen Upgrades und Konfigurationsupdates 
+* Bewährte Methode zum Sichern und Überwachen der AD FS-Vertrauensstellung mit Azure AD
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Von Azure AD Connect gesteuerte Einstellungen
 
@@ -118,6 +118,11 @@ Sie können die Ausstellungstransformationsregeln mithilfe der folgenden empfohl
 
 > [!NOTE]
 > Stellen Sie sicher, dass die zusätzlichen Regeln nicht in Konflikt mit den Regeln stehen, die von Azure AD Connect konfiguriert wurden.
+
+## <a name="best-practice-for-securing-and-monitoring-the-ad-fs-trust-with-azure-ad"></a>Bewährte Methode zum Sichern und Überwachen der AD FS-Vertrauensstellung mit Azure AD
+Wenn Sie AD FS und Azure AD verbinden, muss die Verbundkonfiguration (die konfigurierte Vertrauensstellung zwischen AD FS und Azure AD) eng überwacht werden, um alle ungewöhnlichen oder verdächtigen Aktivitäten zu erfassen. Dazu wird empfohlen, entsprechende Benachrichtigungen zu einrichten, damit Sie benachrichtigt werden, wenn Änderungen an der Verbundkonfiguration vorgenommen werden. Informationen zum Einrichten von Warnungen finden Sie unter [Überwachen von Änderungen an der Verbundkonfiguration](how-to-connect-monitor-federation-changes.md). 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect](how-to-connect-fed-management.md)

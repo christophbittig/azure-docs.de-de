@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/11/2021
+ms.date: 08/06/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc67b0b038abda37c591162caad9b3b94e6c440
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 58884d2905feda1f3827ae72866c1c69384178ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027477"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355989"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -28,9 +28,9 @@ Wenn Sie einheitliche Benennungskonventionen für Microsoft 365-Gruppen erzwing
 > [!IMPORTANT]
 > Zur Verwendung der Azure AD-Benennungsrichtlinie für Microsoft 365-Gruppen müssen Sie für jeden einzelnen Benutzer, der Mitglied einer oder mehrerer Ihrer Microsoft 365-Gruppen ist, über eine Azure Active Directory Premium P1-Lizenz oder eine Azure AD Basic EDU-Lizenz verfügen. Sie müssen diese Lizenzen aber nicht unbedingt zuweisen.
 
-Die Benennungsrichtlinie wird bei der Erstellung oder Bearbeitung von Gruppen aller Workloads (z.B. Outlook, Microsoft Teams, SharePoint, Exchange oder Planner) angewendet. Sie wird sowohl auf Gruppennamen als auch auf Gruppenaliase angewendet. Wenn Sie Ihre Benennungsrichtlinie in Azure AD einrichten und bereits über eine Benennungsrichtlinie für Exchange-Gruppen verfügen, wird die Azure AD-Benennungsrichtlinie für Ihr gesamtes Unternehmen erzwungen.
+Die Benennungsrichtlinie wird bei der Erstellung oder Bearbeitung von Gruppen aller Workloads (z. B. Outlook, Microsoft Teams, SharePoint, Exchange oder Planner) angewendet (auch dann, wenn keine Änderungen bei der Bearbeitung vorgenommen wurden). Sie wird sowohl auf Gruppennamen als auch auf Gruppenaliase angewendet. Wenn Sie Ihre Benennungsrichtlinie in Azure AD einrichten und bereits über eine Benennungsrichtlinie für Exchange-Gruppen verfügen, wird die Azure AD-Benennungsrichtlinie für Ihr gesamtes Unternehmen erzwungen.
 
-Nachdem die Benennungsrichtlinie für Gruppen konfiguriert wurde, wird sie auf neue Microsoft 365-Gruppen angewendet, die von Endbenutzern erstellt wurden. Eine Benennungsrichtlinie gilt nicht für bestimmte Verzeichnisrollen, z. B. „Globaler Administrator“ oder „Benutzeradministrator“. (Eine vollständige Liste der Rollen, die von der Benennungsrichtlinie für Gruppen ausgeschlossen sind, finden Sie weiter unten.) Die Richtlinie wird nicht direkt zum Zeitpunkt der Konfiguration auf vorhandene Microsoft 365-Gruppen angewendet. Nachdem der Gruppenbesitzer den Gruppennamen für diese Gruppen bearbeitet hat, wird die Benennungsrichtlinie erzwungen.
+Nachdem die Benennungsrichtlinie für Gruppen konfiguriert wurde, wird sie auf neue Microsoft 365-Gruppen angewendet, die von Endbenutzern erstellt wurden. Eine Benennungsrichtlinie gilt nicht für bestimmte Verzeichnisrollen, z. B. „Globaler Administrator“ oder „Benutzeradministrator“. (Eine vollständige Liste der Rollen, die von der Benennungsrichtlinie für Gruppen ausgeschlossen sind, finden Sie weiter unten.) Die Richtlinie wird nicht direkt zum Zeitpunkt der Konfiguration auf vorhandene Microsoft 365-Gruppen angewendet. Nachdem der Gruppenbesitzer den Gruppennamen für diese Gruppen bearbeitet hat, wird die Benennungsrichtlinie erzwungen (auch dann, wenn keine Änderungen vorgenommen wurden).
 
 ## <a name="naming-policy-features"></a>Features für Benennungsrichtlinien
 
@@ -42,9 +42,9 @@ Sie können Benennungsrichtlinien für Gruppen auf zwei unterschiedliche Arten e
 
 ### <a name="prefix-suffix-naming-policy"></a>Präfix-Suffix-Benennungsrichtlinie
 
-Die allgemeine Struktur der Namenskonvention lautet: „Präfix[Gruppenname]Suffix“. Sie können zwar mehrere Präfixe und Suffixe definieren, es darf jedoch nur eine Instanz von [Gruppenname] in der Einstellung geben. Die Präfixe und Suffixe können feste Zeichenfolgen oder Benutzerattribute wie z.B. \[Abteilung\] sein, die basierend auf dem Benutzer, der die Gruppe erstellt, ersetzt werden. Die zulässige Gesamtanzahl von Zeichen für die Präfix- und Suffixzeichenfolgen beträgt inklusive Gruppenname 53 Zeichen. 
+Die allgemeine Struktur der Namenskonvention lautet: „Präfix[Gruppenname]Suffix“. Sie können zwar mehrere Präfixe und Suffixe definieren, es darf jedoch nur eine Instanz von [Gruppenname] in der Einstellung geben. Die Präfixe und Suffixe können feste Zeichenfolgen oder Benutzerattribute wie z.B. \[Abteilung\] sein, die basierend auf dem Benutzer, der die Gruppe erstellt, ersetzt werden. Die zulässige Gesamtanzahl von Zeichen für die Präfix- und Suffixzeichenfolgen beträgt inklusive Gruppenname 53 Zeichen.
 
-Präfixe und Suffixe können alle Sonderzeichen enthalten, die bei Gruppennamen und Gruppenaliasen unterstützt werden. Alle Zeichen im Präfix oder Suffix, die beim Gruppenalias nicht unterstützt werden, werden zwar weiterhin auf den Gruppennamen angewendet, aber aus dem Gruppenalias entfernt. Aufgrund dieser Einschränkung können sich die Präfixe und Suffixe, die auf den Gruppennamen angewendet werden, von den auf den Gruppenalias angewendeten unterscheiden. 
+Präfixe und Suffixe können alle Sonderzeichen enthalten, die bei Gruppennamen und Gruppenaliasen unterstützt werden. Alle Zeichen im Präfix oder Suffix, die beim Gruppenalias nicht unterstützt werden, werden zwar weiterhin auf den Gruppennamen angewendet, aber aus dem Gruppenalias entfernt. Aufgrund dieser Einschränkung können sich die Präfixe und Suffixe, die auf den Gruppennamen angewendet werden, von den auf den Gruppenalias angewendeten unterscheiden.
 
 #### <a name="fixed-strings"></a>Feste Zeichenfolgen
 
@@ -100,7 +100,7 @@ Einige Administratorrollen können von diesen Richtlinien für alle Gruppenworkl
 
     ![Bearbeiten und Hochladen der Liste der blockierten Wörter für die Benennungsrichtlinie](./media/groups-naming-policy/blockedwords.png)
 
-1. Wählen Sie **Herunterladen** aus, um die aktuelle Liste der benutzerdefinierten blockierten Wörter anzuzeigen oder zu bearbeiten.
+1. Wählen Sie **Herunterladen** aus, um die aktuelle Liste der benutzerdefinierten blockierten Wörter anzuzeigen oder zu bearbeiten. Neue Einträge müssen den vorhandenen Einträgen hinzugefügt werden.
 1. Laden Sie die neue Liste der benutzerdefinierten blockierten Wörter durch Auswählen des Dateisymbols hoch.
 1. Speichern Sie Ihre Änderungen für die neue Richtlinie, damit diese wirksam werden, indem Sie auf **Speichern** klicken.
 
@@ -248,7 +248,7 @@ Planner | Planner ist mit der Benennungsrichtlinie konform. Planner zeigt bei de
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement ist mit der Benennungsrichtlinie konform. Dynamics 365 zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder den E-Mail-Alias einer Gruppe eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 School Data Sync (SDS) | Gruppen, die mit SDS erstellt werden, sind mit der Benennungsrichtlinie konform, die Benennungsrichtlinie wird jedoch nicht automatisch angewendet. SDS-Administratoren müssen die Präfixe und Suffixe an Klassennamen, für die Gruppen erstellt und hochgeladen werden müssen, anfügen. Das Erstellen oder Bearbeiten der Gruppe würde andernfalls zu einem Fehler führen.
 Classroom-App | Die in der Classroom-App erstellten Gruppen sind mit der Benennungsrichtlinie konform, die jedoch nicht automatisch angewendet wird. Den Benutzern wird während der Eingabe des Classroom-Gruppennamens auch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Namens angezeigt. Die Benutzer müssen den erzwungenen Classroom-Gruppennamen inklusive Präfixen und Suffixen eingeben. Andernfalls tritt beim Erstellen oder Bearbeiten der Classroom-Gruppe ein Fehler auf.
-Power BI | Power BI-Arbeitsbereiche sind mit der Benennungsrichtlinie konform.    
+Power BI | Power BI-Arbeitsbereiche sind mit der Benennungsrichtlinie konform.
 Yammer | Wenn ein Benutzer, der sich mit seinem Azure Active Directory-Konto bei Yammer angemeldet hat, eine Gruppe erstellt oder einen Gruppennamen bearbeitet, entspricht der Gruppenname der Benennungsrichtlinie. Dies gilt sowohl für mit Microsoft 365 verbundene Gruppen als auch für alle anderen Yammer-Gruppen.<br>Wenn eine mit Microsoft 365 verbundene Gruppe erstellt wurde, bevor die Benennungsrichtlinie vorhanden war, entspricht der Gruppenname nicht automatisch den Benennungsrichtlinien. Wenn ein Benutzer den Gruppennamen bearbeitet, wird er aufgefordert, das Präfix und das Suffix hinzuzufügen.
 StaffHub  | StaffHub-Teams unterliegen nicht der Benennungsrichtlinie, die zugrunde liegende Microsoft 365-Gruppe aber schon. Auf StaffHub-Teamnamen werden nicht die Präfixe und Suffixe angewendet, und es erfolgt keine Prüfung auf benutzerdefinierte blockierte Wörter. StaffHub wendet die Präfixe und Suffixe allerdings auf die zugrunde liegende Microsoft 365-Gruppe an und entfernt dort blockierte Wörter.
 Exchange PowerShell | Exchange PowerShell-Cmdlets sind mit der Benennungsrichtlinie konform. Benutzer erhalten entsprechende Fehlermeldungen mit Vorschlägen für Präfixe und Suffixe und den benutzerdefinierten blockierten Wörtern, wenn sie die Benennungsrichtlinie beim Gruppennamen oder -alias (mailNickname) nicht einhalten.

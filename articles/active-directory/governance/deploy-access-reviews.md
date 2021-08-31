@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9acbe5d7b57906c894021ec4e4f83633433b3c3b
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970896"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343215"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -82,7 +82,7 @@ Die folgenden Videos können nützlich sein, während Sie sich über Zugriffsüb
 
 Sie benötigen eine gültige Azure AD Premium-Lizenz (P2) für jede Person, die kein globaler Administrator oder Benutzeradministrator ist und Zugriffsüberprüfungen erstellen oder ausführen soll. Weitere Informationen finden Sie unter [Lizenzanforderungen für Zugriffsüberprüfungen](access-reviews-overview.md).
 
-Möglicherweise benötigen Sie auch andere Identity Governance-Features, wie [Entitlement Lifecycle Management](entitlement-management-overview.md) oder Privileged Identity Managements. In diesem Fall benötigen Sie möglicherweise auch zugehörige Lizenzen. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Möglicherweise benötigen Sie auch andere Identity Governance-Features, wie [Entitlement Lifecycle Management](entitlement-management-overview.md) oder Privileged Identity Managements. In diesem Fall benötigen Sie möglicherweise auch zugehörige Lizenzen. Weitere Informationen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ## <a name="plan-the-access-reviews-deployment-project"></a>Planen des Bereitstellungsprojekts für Zugriffsüberprüfungen
 
@@ -336,7 +336,7 @@ Gehen Sie zu [Azure AD-Zugriffsüberprüfungen verwenden, um Benutzer zu verwalt
 
 ### <a name="review-guest-users-group-memberships"></a>Überprüfen Sie die Gruppenmitgliedschaften von Gastbenutzern
 
-Gehen Sie zu [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](./manage-guest-access-with-access-reviews.md), um zu erfahren, wie Sie den Zugriff von Gastbenutzern auf Gruppenmitgliedschaften überprüfen.
+Unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](./manage-guest-access-with-access-reviews.md) erfahren Sie, wie Sie den Zugriff von Gastbenutzern auf Gruppenmitgliedschaften überprüfen.
 
 ### <a name="review-access-to-on-premises-groups"></a>Überprüfen des Zugriffs auf lokale Gruppen
 

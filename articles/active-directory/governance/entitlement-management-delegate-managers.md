@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 95c875c1a4ded86686120bb4de67904ef69a53c6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714294"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286560"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Zugriffspaket-Manager in der Azure AD-Berechtigungsverwaltung
 
@@ -35,6 +35,8 @@ Um die Erstellung und Verwaltung von Zugriffspaketen in einem Katalog zu delegie
 Dieses Video bietet eine Übersicht darüber, wie Sie die Zugriffssteuerung vom Katalogbesitzer an den Zugriffspaket-Manager delegieren.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
+
+Zusätzlich zu den Rollen „Katalogbesitzer“ und „Zugriffspaket-Manager“ können Sie auch Benutzer zur Rolle „Katalogleser“, die schreibgeschützten Zugriff auf den Katalog bietet, oder zur Rolle „Zugriffspaketzuweisungs-Manager“ hinzufügen, die Benutzern die Möglichkeit bietet, Zuweisungen zu ändern, aber keinen Zugriff auf Pakete oder Richtlinien ermöglicht.
 
 ## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Delegieren an den Zugriffspaket-Manager als Katalogbesitzer
 

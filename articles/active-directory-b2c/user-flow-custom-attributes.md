@@ -7,27 +7,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 836802e65c8eb76f17bbf053e54ed9dbedf54049
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346748"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Im Artikel [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mithilfe benutzerdefinierter Richtlinien](configure-user-input.md) erfahren Sie, wie Sie integrierte [Benutzerprofilattribute](user-profile-attributes.md) verwenden können. In diesem Artikel aktivieren Sie in Ihrem Azure Active Directory B2C-Verzeichnis (Azure AD B2C) ein benutzerdefiniertes Attribut. Später können Sie das neue Attribut als benutzerdefinierten Anspruch gleichzeitig in [Benutzerflows](user-flow-overview.md) oder [benutzerdefinierten Richtlinien](custom-policy-get-started.md) verwenden.
+Im Artikel [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mithilfe benutzerdefinierter Richtlinien](configure-user-input.md) erfahren Sie, wie Sie integrierte [Benutzerprofilattribute](user-profile-attributes.md) verwenden können. In diesem Artikel aktivieren Sie in Ihrem Azure Active Directory B2C-Verzeichnis (Azure AD B2C) ein benutzerdefiniertes Attribut. Später können Sie das neue Attribut als benutzerdefinierten Anspruch gleichzeitig in [Benutzerflows](user-flow-overview.md) oder [benutzerdefinierten Richtlinien](user-flow-overview.md) verwenden.
 
 Ihr Azure AD B2C-Verzeichnis verfügt über [mehrere integrierte Attribute](user-profile-attributes.md). Sie müssen jedoch oftmals für die Verwaltung Ihres spezifischen Szenarios eigene Attribute erstellen, z. B. in den folgenden Fällen:
 
-* Für eine Kundenanwendung muss ein Attribut wie **LoyaltyNumber** persistent gespeichert werden.
+* Für eine Kundenanwendung muss ein Attribut wie **loyaltyId** persistent gespeichert werden.
 * Ein Identitätsanbieter hat eine eindeutige Benutzer-ID, die persistent gespeichert werden muss, z. B. **uniqueUserGUID**.
 * Für eine benutzerdefinierte User Journey muss der Status eines Benutzers persistent gespeichert werden, z. B. **migrationStatus**.
 
@@ -68,7 +68,24 @@ Nach dem Erstellen eines neuen Benutzers über einen Benutzerflow, der das neu e
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Erweiterungs-App für Azure AD B2C
 
-Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens `b2c-extensions-app` angefügt. Ändern Sie diese Anwendung nicht, da sie von Azure AD B2C zum Speichern von Benutzerdaten genutzt wird. Sie finden diese Anwendung unter Azure AD B2C, App-Registrierungen. Rufen Sie die Anwendungseigenschaften ab:
+Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens `b2c-extensions-app` angefügt. Ändern Sie diese Anwendung nicht, da sie von Azure AD B2C zum Speichern von Benutzerdaten genutzt wird. Sie finden diese Anwendung unter Azure AD B2C, App-Registrierungen. 
+
+::: zone pivot="b2c-user-flow"
+
+So rufen Sie die Anwendungs-ID ab:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie **App-Registrierungen** und dann **Alle Anwendungen** aus.
+1. Wählen Sie die Anwendung `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` aus.
+1. Kopieren Sie die **Anwendungs-ID**. Beispiel: `11111111-1111-1111-1111-111111111111`.
+ 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Rufen Sie die Anwendungseigenschaften ab:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
@@ -78,8 +95,6 @@ Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, 
 1. Kopieren Sie die folgenden Bezeichner in die Zwischenablage, und speichern Sie sie:
     * **Anwendungs-ID**. Beispiel: `11111111-1111-1111-1111-111111111111`.
     * **Objekt-ID** Beispiel: `22222222-2222-2222-2222-222222222222`.
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="modify-your-custom-policy"></a>Ändern der benutzerdefinierten Richtlinie
 

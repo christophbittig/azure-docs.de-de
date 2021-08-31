@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/13/2021
+ms.date: 06/18/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 55e63e232a804519baeeeeee3ebef84777ee1d38
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 902d9251c7393d3f6e693ba37c587398136493e6
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060776"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112368946"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für den bedingten Zugriff in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -73,8 +73,8 @@ Das Element **OutputClaims** enthält eine Liste der Ansprüche, die von Conditi
 
 | ClaimReferenceId | Erforderlich | Datentyp | BESCHREIBUNG |
 | --------- | -------- | ----------- |----------- |
-| Herausforderungen | Ja |stringCollection | Liste der Aktionen zum Korrigieren der ermittelten Bedrohung. Möglicher Wert: `block` |
-| MultiConditionalAccessStatus | Ja | stringCollection |  |
+| Herausforderungen | Ja |stringCollection | Liste der Aktionen zum Korrigieren der ermittelten Bedrohung. Mögliche Werte: `block`, `mfa` und `chg_pwd`. |
+| MultiConditionalAccessStatus | Ja | stringCollection | Der Status der Auswertung des bedingten Zugriffs.  |
 
 Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9eeed96b87aa5c115994ee73d1985526b26af11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339411"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Bedingter Zugriff: Vorschreiben der MFA für die Azure-Verwaltung
 
@@ -26,7 +26,7 @@ Organisationen verwenden verschiedenste Azure-Dienste und verwalten diese mit Az
 * Azure PowerShell
 * Azure CLI
 
-Diese Tools bieten Zugriff mit umfassenden Berechtigungen auf Ressourcen, die die abonnementweiten Konfigurationen, Diensteinstellungen und die Abonnementabrechnung ändern können. Um diese Ressourcen mit umfassenden Berechtigungen zu schützen, empfiehlt Microsoft, die mehrstufige Authentifizierung für jeden Benutzer zu erfordern, der auf diese Ressourcen zugreift.
+Diese Tools bieten Zugriff mit umfassenden Berechtigungen auf Ressourcen, die die abonnementweiten Konfigurationen, Diensteinstellungen und die Abonnementabrechnung ändern können. Um diese Ressourcen mit umfassenden Berechtigungen zu schützen, empfiehlt Microsoft, die mehrstufige Authentifizierung für jeden Benutzer zu erfordern, der auf diese Ressourcen zugreift. In Azure AD sind diese Tools in einer Suite namens [Microsoft Azure-Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) gruppiert. Für Azure Government sollte die Azure Government Cloud Management-API verwendet werden. 
 
 ## <a name="user-exclusions"></a>Ausschluss von Benutzern
 
@@ -39,7 +39,7 @@ Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfoh
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der Benutzer mit Zugriff auf die [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management)-App mehrstufige Authentifizierung durchführen müssen.
+Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, damit Benutzer, die auf die [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management)-Suite zugreifen, eine mehrstufige Authentifizierung durchführen müssen.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
@@ -50,7 +50,6 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Apps auswählen** aus. Wählen Sie dann **Microsoft Azure-Verwaltung** und anschließend **Auswählen** sowie **Fertig** aus.
-1. Lassen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** unter der Option **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird.** alle Standardwerte aktiviert, und klicken Sie auf **Fertig**.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.

@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 07/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b66ef767795b320368224e5ef855332a735b210
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 5afa05b8a529d8a9e9fceeb4a113f0b743acfc05
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714312"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286571"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Katalogersteller in der Azure AD-Berechtigungsverwaltung
 
-Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen einen Katalog, wenn Sie zugehörige Ressourcen und Zugriffspakete gruppieren möchten. Standardmäßig kann ein globaler Administrator oder ein Benutzeradministrator [einen Katalog erstellen](entitlement-management-catalog-create.md) und zusätzliche Benutzer als Katalogbesitzer hinzufügen.
+Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen einen Katalog, wenn Sie zugehörige Ressourcen und Zugriffspakete gruppieren möchten. Standardmäßig kann ein globaler Administrator oder ein Identity Governance-Administrator [einen Katalog erstellen](entitlement-management-catalog-create.md) und zusätzliche Benutzer als Katalogbesitzer hinzufügen.
 
 Wenn Sie an Benutzer delegieren möchten, die keine Administratoren sind, damit sie ihre eigenen Kataloge erstellen können, fügen Sie diese Benutzer der in der Azure AD-Berechtigungsverwaltung definierten Rolle Katalogersteller hinzu. Sie können einzelne Benutzer oder eine ganze Gruppe hinzufügen, deren Mitglieder dann Kataloge erstellen können.  Nach dem Erstellen eines Katalogs können sie ihrem Katalog dann die Ressourcen hinzufügen, die sie besitzen.
 
@@ -63,8 +63,20 @@ Wenn Sie delegierten Rollen wie (z. B. Katalogerstellern und Zugriffspaket-Mana
 
     ![Azure AD-Benutzereinstellungen – Verwaltungsportal](./media/entitlement-management-delegate-catalog/user-settings.png)
 
+## <a name="manage-role-assignments-programmatically-preview"></a>Programmgesteuertes Verwalten von Rollenzuweisungen (Vorschau)
+
+Sie können Katalogersteller und katalogspezifische Rollenzuweisungen für die Berechtigungsverwaltung auch mithilfe von Microsoft Graph anzeigen und aktualisieren.  Ein Benutzer in einer entsprechenden Rolle mit einer Anwendung, die über die delegierte Berechtigung `EntitlementManagement.ReadWrite.All` verfügt, kann die Graph-API aufrufen, um [die Rollendefinitionen](/graph/api/rbacapplication-list-roledefinitions?view=graph-rest-beta&preserve-view=true) der Berechtigungsverwaltung sowie die [Rollenzuweisungen](/graph/api/rbacapplication-list-roleassignments?view=graph-rest-beta&preserve-view=true) für die betreffenden Rollendefinitionen aufzulisten.
+
+Verwenden Sie zum Abrufen einer Liste der Benutzer und Gruppen, die der Rolle „Katalogersteller“ zugewiesen sind (der Rolle mit der Definitions-ID `ba92d953-d8e0-4e39-a797-0cbedb0a89e8`) die folgende Graph-Abfrage:
+
+```http
+GET https://graph.microsoft.com/beta/roleManagement/entitlementManagement/roleAssignments?$filter=roleDefinitionId eq 'ba92d953-d8e0-4e39-a797-0cbedb0a89e8'&$expand=principal
+```
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen und Verwalten eines Katalogs von Ressourcen](entitlement-management-catalog-create.md)
 - [Delegieren der Zugriffssteuerung an Zugriffspaket-Manager](entitlement-management-delegate-managers.md)
+- [Delegieren der Zugriffskontrolle an Ressourcenbesitzer](entitlement-management-delegate.md)
 

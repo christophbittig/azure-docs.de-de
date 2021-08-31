@@ -165,7 +165,7 @@
             - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
               href: backup-azure-restore-files-from-vm.md
             - name: Wiederherstellen verschlüsselter virtueller Computer
-              href: backup-azure-vms-encryption.md
+              href: restore-azure-encrypted-virtual-machines.md
             - name: Wiederherstellen von Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer
               href: backup-azure-restore-key-secret.md
         - name: Verwalten
@@ -568,7 +568,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

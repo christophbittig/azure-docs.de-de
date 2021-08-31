@@ -8,12 +8,12 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccaa432de640e7d4bf89675c750e965e0058f847
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b1541acc9ab6871418d1cb750d74d285f3228f92
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676108"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340437"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
@@ -21,6 +21,13 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 
 > [!IMPORTANT]
 > Der Inhalt dieses Artikels gilt nur für SMB-Freigaben. Weitere Informationen zu NFS-Freigaben finden Sie unter [Behandeln von Problemen mit Azure NFS-Dateifreigaben](storage-troubleshooting-files-nfs.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fehler 5 beim Bereitstellen einer Azure-Dateifreigabe
@@ -175,6 +182,49 @@ Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speiche
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
 Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Schützen Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (Azure RBAC)](../blobs/security-recommendations.md#data-protection).
+
+## <a name="unable-to-modify-or-delete-an-azure-file-share-or-share-snapshots-because-of-locks-or-leases"></a>Azure-Dateifreigabe (oder Freigabemomentaufnahme) kann aufgrund von Sperren oder Leases nicht geändert oder gelöscht werden
+Azure Files bietet zwei Möglichkeiten, um ein versehentliches Ändern oder Löschen von Azure-Dateifreigaben und -Freigabemomentaufnahmen zu verhindern: 
+
+- **Speicherkonto-Ressourcensperren**: Alle Azure-Ressourcen, einschließlich des Speicherkontos, unterstützen [Ressourcensperren](../../azure-resource-manager/management/lock-resources.md). Sperren für das Speicherkonto können von einem Administrator oder von Mehrwertdiensten wie Azure Backup eingerichtet werden. Es gibt zwei Varianten von Ressourcensperren: Ändern (verhindert alle Änderungen am Speicherkonto und seinen Ressourcen), und Löschen (verhindert nur das Löschen des Speicherkontos und seiner Ressourcen). Beim Ändern oder Löschen von Freigaben über den Ressourcenanbieter `Microsoft.Storage` werden Ressourcensperren für Azure-Dateifreigaben und -Freigabemomentaufnahmen erzwungen. Die meisten Portalvorgänge, die Azure PowerShell-Cmdlets für Azure Files mit `Rm` im Namen (z. B. `Get-AzRmStorageShare`) und die Azure CLI Befehle in der Befehlsgruppe `share-rm` (z. B. `az storage share-rm list`) verwenden den Ressourcenanbieter `Microsoft.Storage`. Einige Tools und Hilfsprogramme wie Storage-Explorer, ältere Azure Files PowerShell-Verwaltungs-Cmdlets ohne `Rm` im Namen (z. B. `Get-AzStorageShare`) und ältere Azure Files CLI-Befehle in der Befehlsgruppe `share` (z. B. `az storage share list`) verwenden Legacy-APIs in der FileREST-API, die den Ressourcenanbieter `Microsoft.Storage` und Ressourcensperren umgehen. Weitere Informationen zu älteren Verwaltungs-APIs, die in der FileREST-API verfügbar gemacht werden, finden Sie unter [Steuerungsebene in Azure Files](/rest/api/storageservices/file-service-rest-api#control-plane).
+
+- **Freigabe-/Freigabemomentaufnahme-Leases**: Freigabeleases sind eine Art proprietäre Sperre für Azure-Dateifreigaben und -Dateifreigabemomentaufnahmen. Leases können für einzelne Azure-Dateifreigaben oder -Dateifreigabemomentaufnahmen von Administratoren durch Aufrufen der API über ein Skript oder von Mehrwertdiensten wie Azure Backup erstellt werden. Wenn eine Lease für eine Azure-Dateifreigabe oder eine -Dateifreigabemomentaufnahme erstellt wurde, ist das Ändern oder Löschen der Dateifreigabe/Freigabemomentaufnahme mit der *Lease-ID* möglich. Benutzer können die Lease auch vor Änderungsvorgängen freigeben (dafür ist die Lease-ID erforderlich) oder die Lease unterbrechen (dafür ist die Lease-ID nicht erforderlich). Weitere Informationen zu Freigabeleases finden Sie unter [Leasefreigabe](/rest/api/storageservices/lease-share).
+
+Da Ressourcensperren und -leases beabsichtigte Administratorvorgänge für Ihr Speicherkonto/Ihre Azure-Dateifreigaben beeinträchtigen können, sollten Sie ggf. alle Ressourcensperren/-leases entfernen, die manuell oder automatisch von Mehrwertdiensten wie Azure Backup für Ihre Ressourcen eingerichtet wurden. Mit dem folgenden Skript werden alle Ressourcensperren und -leases entfernt. Denken Sie daran, `<resource-group>` und `<storage-account>` durch die entsprechenden Werte für Ihre Umgebung zu ersetzen.
+
+Um das folgende Skript auszuführen, müssen Sie die [3.10.1-Vorschauversion](https://www.powershellgallery.com/packages/Az.Storage/3.10.1-preview) des Azure Storage PowerShell-Moduls installieren.
+
+> [!Important]  
+> Mehrwertdienste, die Ressourcensperren und Freigabe-/Freigabemomentaufnahmeleases für Ihre Azure Files-Ressourcen verwenden, können Sperren und Leases zeitweise erneut anwenden. Das Ändern oder Löschen gesperrter Ressourcen durch Mehrwertdienste kann sich auf den regulären Betrieb dieser Dienste auswirken, z. B. das Löschen von Freigabemomentaufnahmen, die von Azure Backup verwaltet wurden.
+
+```PowerShell
+# Parameters for storage account resource
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName
+
+# Remove resource locks
+Get-AzResourceLock `
+        -ResourceType "Microsoft.Storage/storageAccounts" `
+        -ResourceGroupName $storageAccount.ResourceGroupName `
+        -ResourceName $storageAccount.StorageAccountName | `
+    Remove-AzResourceLock -Force | `
+    Out-Null
+
+# Remove share and share snapshot leases
+Get-AzStorageShare -Context $storageAccount.Context | `
+    Where-Object { $_.Name -eq $fileShareName } | `
+    ForEach-Object {
+        try {
+            $leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($_.ShareClient)
+            $leaseClient.Break() | Out-Null
+        } catch { }
+    }
+```
 
 <a id="open-handles"></a>
 ## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>Datei oder Verzeichnis kann nicht geändert, verschoben/umbenannt oder gelöscht werden
@@ -442,7 +492,6 @@ $StorageAccountName = "<storage-account-name-here>"
 
 Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 ```
-
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

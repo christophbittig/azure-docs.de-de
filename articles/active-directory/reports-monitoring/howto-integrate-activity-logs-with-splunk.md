@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/10/2021
+ms.date: 08/05/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ff9a6c989446c2cee074485ba02fddd40cbfc83
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a91a5df939ee55b37369b73e02fa0921a9e4688c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953319"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355125"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Gewusst wie: Integrieren von Azure Active Directory-Protokollen in Splunk mit Azure Monitor
 
@@ -42,16 +42,16 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
     ![Die Schaltfläche für die Datenzusammenfassung](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Wählen Sie die Registerkarte **Sourcetypes** (Quelltypen) und dann **amal: aadal:audit** aus.
+2. Wählen Sie die Registerkarte **Sourcetypes** (Quelltypen) und dann **mscs:azure:eventhub** aus.
 
-    ![Die Registerkarte mit Quelltypen der Datenzusammenfassung](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Die Registerkarte mit Quelltypen der Datenzusammenfassung](./media/howto-integrate-activity-logs-with-splunk/source-eventhub.png)
 
-    Die Azure AD-Aktivitätsprotokolle werden wie in der folgenden Abbildung angezeigt:
+Fügen Sie **body.records.category=AuditLogs** an die Suche an. Die Azure AD-Aktivitätsprotokolle werden wie in der folgenden Abbildung angezeigt:
 
-    ![Aktivitätsprotokolle](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
+   ![Aktivitätsprotokolle](./media/howto-integrate-activity-logs-with-splunk/activity-logs.png)
 
 > [!NOTE]
-> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z.B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu diese [Azure-Funktion](https://github.com/Microsoft/AzureFunctionforSplunkVS), die durch neue Nachrichten in Event Hub ausgelöst wird. 
+> Falls Sie kein Add-On in Ihrer Splunk-Instanz installieren können, z.B. bei Verwendung eines Proxys oder bei Ausführung in Splunk Cloud, können Sie diese Ereignisse an die HTTP-Ereignissammlung von Splunk weiterleiten. Verwenden Sie dazu diese [Azure-Funktion](https://github.com/splunk/azure-functions-splunk), die durch neue Nachrichten in Event Hub ausgelöst wird. 
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

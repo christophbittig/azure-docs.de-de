@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457491"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346267"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Beheben von Problemen mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -31,7 +31,7 @@ Die Korrelations-ID von Azure AD B2C ist ein eindeutiger Bezeichnerwert, der A
 - Suchen Sie nach den Azure Application Insights-Protokollen für die Anmeldeanforderungen.
 - Übergeben Sie die Korrelations-ID an Ihre REST-API, und identifizieren Sie mit ihrer Hilfe den Anmeldeflow. 
 
-Die Korrelations-ID ändert sich jedes Mal, wenn eine neue Sitzung eingerichtet wird. Stellen Sie beim Debuggen Ihrer Richtlinien sicher, dass die Registerkarten im vorhandenen Browser geschlossen sind. Oder öffnen Sie einen neuen Browser im privaten Modus.
+Die Korrelations-ID ändert sich jedes Mal, wenn eine neue Sitzung eingerichtet wird. Achten Sie beim Debuggen Ihrer Richtlinien darauf, dass Sie vorhandene Browserregisterkarten schließen oder einen neuen Browser im privaten Modus öffnen.
 
 ### <a name="get-the-azure-ad-b2c-correlation-id"></a>Abrufen der Korrelations-ID von Azure AD B2C
 

@@ -1,43 +1,42 @@
 ---
-title: Azure Files-Verweis
+title: 'Azure Files: API-Referenz'
 description: Hier finden Sie die Referenz zur Azure Files-API, Infodateien und Clientbibliothekspakete.
 author: twooley
 ms.author: twooley
-ms.date: 07/14/2020
+ms.date: 08/05/2021
 ms.service: storage
-ms.topic: conceptual
-ms.reviewer: ripohane
-ms.openlocfilehash: be50c60893b9767e7db2c5af0e43ed380a51ecab
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.topic: reference
+ms.openlocfilehash: d98d100261d91f46b9e9de57c8e2a1f478d73888
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280002"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347225"
 ---
-# <a name="azure-files-reference"></a>Azure Files-Verweis
+# <a name="azure-files-api-reference"></a>Azure Files: API-Referenz
 
 Hier finden Sie die Referenz zur Azure Files-API, Bibliothekspakete, Infodateien und Artikel zu den ersten Schritten.
 
 ## <a name="net-client-libraries"></a>.NET-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu .NET-APIs für Azure Files.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für Azure Files.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Files-Clientbibliothek v12 für .NET](/dotnet/api/overview/azure/storage.files.shares-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11.x | [Microsoft.Azure.Storage.File-Namespace](/dotnet/api/microsoft.azure.storage.file) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Entwickeln für Azure Files mit .NET](./storage-dotnet-how-to-use-files.md) |
 
-### <a name="storage-management"></a>Speicherverwaltung
+### <a name="storage-management-net-apis"></a>.NET-APIs für die Speicherverwaltung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Verwaltung.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für die Azure Storage-Verwaltung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
 | 16.x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
 
-### <a name="data-movement"></a>Datenverschiebung
+### <a name="data-movement-net-apis"></a>.NET APIs für die Datenverschiebung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Datenverschiebung.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für die Azure Storage-Datenverschiebung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
@@ -45,16 +44,16 @@ Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Az
 
 ## <a name="java-client-libraries"></a>Java-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Java-APIs für Azure Files.
+Die folgende Tabelle enthält Referenzinformationen zu den Java-APIs für Azure Files.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Files-Clientbibliothek für Java](/java/api/overview/azure/storage-file-share-readme) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Entwickeln für Azure Files mit Java](./storage-java-how-to-use-file-storage.md) |
 
-### <a name="storage-management"></a>Speicherverwaltung
+### <a name="storage-management-java-apis"></a>Java-APIs für die Speicherverwaltung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu Java-APIs für die Azure Storage-Verwaltung.
+Die folgende Tabelle enthält Referenzinformationen zu den Java-APIs für die Azure Storage-Verwaltung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
@@ -62,7 +61,7 @@ Die folgende Tabelle enthält die Referenzdokumentation zu Java-APIs für die Az
 
 ## <a name="python-client-libraries"></a>Python-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-APIs für Azure Files.
+Die folgende Tabelle enthält Referenzinformationen zu den Python-APIs für Azure Files.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -71,16 +70,24 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-
 
 ## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu JavaScript-APIs für Azure Files.
+Die folgende Tabelle enthält Referenzinformationen zu den JavaScript-APIs für Azure Files.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Files-Clientbibliothek für JavaScript](/javascript/api/overview/azure/storage-file-share-readme) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [Beispiele](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10.x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
 
+## <a name="c-client-libraries"></a>C++-Clientbibliotheken
+
+Die folgende Tabelle enthält Referenzinformationen zu den C++-APIs für Azure Files.
+
+|  Version  | Referenzdokumentation | Quellcode/Infodatei | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure SDK für C++-APIs](https://azure.github.io/azure-sdk-for-cpp/index.html) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage) | [Entwickeln für Azure Files mit C++](./storage-c-plus-plus-how-to-use-files.md) |
+
 ## <a name="rest-apis"></a>REST-APIs
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-APIs für Azure Files.
+Die folgende Tabelle enthält Referenzinformationen zu den REST-APIs für Azure Files.
 
 | Referenzdokumentation | Übersicht |
 | ----------------------- | -------- |
@@ -88,28 +95,21 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-AP
 
 ### <a name="other-rest-reference"></a>Sonstige REST-Referenz
 
-- Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Dateien in und aus dem Blobspeicher importieren und exportieren.
+Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Daten in und aus Blob Storage importieren und exportieren.
 
 ## <a name="other-languages-and-platforms"></a>Andere Sprachen und Plattformen
 
 Die folgende Liste enthält Links zu Bibliotheken für andere Programmiersprachen und Plattformen.
 
-- [C++](https://azure.github.io/azure-storage-cpp)
 - [Ruby](https://azure.github.io/azure-storage-ruby)
 - [PHP](https://azure.github.io/azure-storage-php/)
 - [iOS](https://azure.github.io/azure-storage-ios/)
 - [Android](https://azure.github.io/azure-storage-android)
 
-## <a name="powershell"></a>PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
-Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
-
-| Version | Plattform |
-| ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
-|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
-|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
+[Azure PowerShell-Referenz](/powershell/module/az.storage/)
 
 ## <a name="azure-cli"></a>Azure CLI
 
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/storage)
+[Azure CLI-Referenz](/cli/azure/storage)

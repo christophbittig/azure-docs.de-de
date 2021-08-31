@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/26/2021
+ms.date: 08/03/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590178"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355219"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
@@ -26,17 +26,39 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 > Azure Active Directory B2C veröffentlicht Verbesserungen und Fehlerbehebungen für jede neue Seitenlayoutversion. Es wird dringend empfohlen, Ihre Seitenlayoutversionen auf dem neuesten Stand zu halten, damit alle Seitenelemente die neuesten Sicherheitserweiterungen, Standards der Barrierefreiheit und Ihr Feedback widerspiegeln.
 >
 
-## <a name="jquery-version"></a>jQuery-Version
+## <a name="jquery-and-handlebars-versions"></a>jQuery- und Handlebars-Versionen
 
-Das Azure AD B2C-Seitenlayout verwendet die folgende Version der [jQuery-Bibliothek](https://jquery.com/):
+Das Azure AD B2C-Seitenlayout verwendet die folgende Versionen der [jQuery-Bibliothek](https://jquery.com/) und der [Handlebars-Vorlagen](https://handlebarsjs.com/):
 
-|Von Seitenlayoutversion  |jQuery-Version  |
-|---------|---------|
-|2.1.4 | 3.5.1 |
-|1.2.0 | 3.4.1 |
-|1.1.0 | 1.10.2 |
+|Element |Bereich der Seitenlayoutversion |jQuery-Version  |Handlebars Runtime-Version |Handlebars Compliler-Version |
+|---------|---------|------|--------|----------|
+|multifactor |>= 1.2.4 | 3.5.1 | 4.7.6 |4.7.7 |
+|            |< 1.2.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|selfasserted |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssp |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|globalexception |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|providerselection |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|claimsconsent |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssd |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
 
 ## <a name="self-asserted-page-selfasserted"></a>Selbstbestätigte Seite (selbstbestätigt)
+
+**2.1.7**
+- Sprachcodierungsproblem, das dazu führt, dass die Anforderung fehlschlägt, wurde behoben.
+- Fehler in der Barrierefreiheit, bei dem Inlinefehlermeldungen nur bei der Formularübermittlung angezeigt wurden, wurde behoben.
 
 **2.1.6**
 - Kennwortfehler bei zu schneller Eingabe in ein anderes Feld wurde behoben.
@@ -154,6 +176,9 @@ Das Azure AD B2C-Seitenlayout verwendet die folgende Version der [jQuery-Bibliot
 - Erste Veröffentlichung
 
 ## <a name="mfa-page-multifactor"></a>MFA-Seite (Multi-Factor)
+
+**1.2.5**
+- Sprachcodierungsproblem, das dazu führt, dass die Anforderung fehlschlägt, wurde behoben.
 
 **1.2.4**
 - JQuery auf Version 3.5.1 aktualisiert

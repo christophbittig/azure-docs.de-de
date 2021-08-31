@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c0d0fa394c8b962206879a80d600987753f2f6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db8be2618ee4bdeab517242870d593e88f631cfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346746"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -36,6 +36,14 @@ Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteidentitäts
 
 > [!NOTE]
 > Die mindestens erforderliche Version des Domänencontrollers für die Azure AD-Hybrideinbindung unter Windows 10 ist Windows Server 2008 R2.
+
+In Azure AD eingebundene Hybridgeräte benötigen regelmäßig eine Netzwerk-Sichtverbindung mit Ihren Domänencontrollern. Ohne diese Verbindung werden Geräte unbrauchbar.
+
+Szenarien, die ohne Sichtverbindung zu Ihren Domänencontrollern nicht funktionieren:
+
+- Ändern des Gerätekennworts
+- Änderung des Benutzerkennworts (zwischengespeicherte Anmeldeinformationen)
+- TPM-Zurücksetzung
 
 ## <a name="plan-your-implementation"></a>Planen Ihrer Implementierung
 
@@ -93,7 +101,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Behandeln von Geräten mit registriertem Azure AD-Status
 
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](concept-azure-ad-register.md) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Jeder vorhandene Azure AD-Registrierungsstatus für einen Benutzer wird nach der <i>Azure AD-Hybrideinbindung des Geräts und der Anmeldung desselben Benutzers</i> automatisch entfernt. Wenn Benutzer A beispielsweise einen Azure AD-Registrierungsstatus auf dem Gerät hat, wird der Doppelstatus für Benutzer A nur dann bereinigt, wenn sich Benutzer A beim Gerät anmeldet. Bei mehreren Benutzern auf demselben Gerät wird der Doppelstatus individuell bei der Anmeldung der jeweiligen Benutzer bereinigt. Windows 10 entfernt die Registrierung bei Azure AD und hebt darüber hinaus auch die Registrierung des Geräts bei Intune oder einer anderen mobilen Geräteverwaltung auf, wenn die Registrierung im Rahmen der Azure AD-Registrierung über die automatische Registrierung erfolgt ist.
 - Der Azure AD-Registrierungsstatus für lokale Konten auf dem Gerät ist von dieser Änderung nicht betroffen. Sie gilt nur für Domänenkonten. Daher wird der Azure AD-Registrierungsstatus für lokale Konten auch nach der Benutzeranmeldung nicht automatisch entfernt, da der Benutzer kein Domänenbenutzer ist. 
