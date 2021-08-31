@@ -11,19 +11,16 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 03c66f9610ab8dc309098e1eee695ded477938bc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d56ffff1538e068e80195972315f261d09a53d88
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768445"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122420640"
 ---
 # <a name="tutorial-configure-azure-web-application-firewall-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Azure Active Directory B2C mit Azure Web Application Firewall
 
 In diesem Beispieltutorial erfahren Sie, wie Sie die Lösung [Azure Web Application Firewall (WAF)](https://azure.microsoft.com/services/web-application-firewall/#overview) für einen Azure Active Directory (AD) B2C-Mandanten mit einer benutzerdefinierten Domäne aktivieren. Azure WAF bietet zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken.
-
->[!NOTE]
->Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +48,7 @@ Um Azure WAF zu aktivieren, konfigurieren Sie eine WAF-Richtlinie, und ordnen Si
 
 Erstellen Sie im [Azure-Portal](https://portal.azure.com) mithilfe des verwalteten Standardregelsatzes (DRS, Default Rule Set) eine einfache WAF-Richtlinie.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie **Ressource erstellen** aus, und suchen Sie dann nach Azure WAF. Wählen Sie **Azure Web Application Firewall (WAF)**  > **Erstellen**.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Ressource erstellen** aus, und suchen Sie dann nach Azure WAF. Wählen Sie **Azure Web Application Firewall (WAF)**  > **Erstellen**.
 
 2. Rufen Sie die Seite **WAF-Richtlinie erstellen** auf und wählen Sie die Registerkarte **Grundlagen** aus. Geben Sie folgende Informationen ein und übernehmen Sie die Standardwerte für die übrigen Einstellungen.
 
