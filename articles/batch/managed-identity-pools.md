@@ -2,13 +2,13 @@
 title: Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 description: Erfahren Sie, wie Sie benutzerseitig zugewiesene verwaltete Identitäten auf Azure Batch-Pools aktivieren und verwaltete Identitäten innerhalb der Knoten verwenden.
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 243cf375b3ebf8bd64d73022ba44c3224b58872d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/18/2021
+ms.openlocfilehash: 903e173a6028e6bb574dfba618661da802702c2d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457768"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444804"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 
@@ -53,10 +53,10 @@ var poolParameters = new Pool(name: "yourPoolName")
         Identity = new BatchPoolIdentity
         {
             Type = PoolIdentityType.UserAssigned,
-            UserAssignedIdentities = new Dictionary<string, BatchPoolIdentityUserAssignedIdentitiesValue>
+            UserAssignedIdentities = new Dictionary<string, UserAssignedIdentities>
             {
                 ["Your Identity Resource Id"] =
-                    new BatchPoolIdentityUserAssignedIdentitiesValue()
+                    new UserAssignedIdentities()
             }
         }
     };
@@ -71,7 +71,14 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
 
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>Verwenden benutzerseitig zugeordneter verwalteter Identitäten in Azure Batch-Knoten
 
-Nachdem Sie Ihre Pools erstellt haben, können Ihre benutzerseitig zugeordneten verwalteten Identitäten über Secure Shell (SSH) oder Remote Desktop (RDP) auf die Pool-Knoten zugreifen. Sie können Ihre Tasks auch so konfigurieren, dass die verwalteten Identitäten direkt auf [Azure-Ressourcen, die verwaltete Identitäten unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) zugreifen können.
+Viele Azure Batch-Technologien, die auf andere Azure-Ressourcen zugreifen, z. B. Azure Storage oder Azure Container Registry, unterstützen verwaltete Identitäten. Weitere Informationen zur Nutzung verwalteter Identitäten mit Azure Batch finden Sie unter folgenden Links:
+
+- [Ressourcendateien](resource-files.md)
+- [Ausgabedateien](batch-task-output-files.md#specify-output-files-using-managed-identity)
+- [Azure Container Registry](batch-docker-container-workloads.md#managed-identity-support-for-acr)
+- [Azure Blob-Containerdateisystem](virtual-file-mount.md#azure-blob-container)
+
+Sie können Ihre Tasks auch manuell so konfigurieren, dass die verwalteten Identitäten direkt auf [Azure-Ressourcen, die verwaltete Identitäten unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) zugreifen können.
 
 Innerhalb der Azure Batch-Knoten können Sie Token der verwalteten Identität abrufen und zur Authentifizierung durch Azure AD-Authentifizierung über den [Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) verwenden.
 

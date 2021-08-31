@@ -3,12 +3,12 @@ title: Schützen von Web-Apps in Azure VMware Solution mit Azure Application Gat
 description: Konfigurieren Sie Azure Application Gateway, um Ihre in Azure VMware Solution ausgeführten Web-Apps sicher verfügbar zu machen.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 4d31eb24f1cb4ec1e2ead789174189dc99d5310f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 407dd74b708006ffe2fb125a16cff4e220efc1fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771683"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356614"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>Schützen von Web-Apps in Azure VMware Solution mit Azure Application Gateway
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie Application Gateway vor einer Webserverf
 ## <a name="topology"></a>Topologie
 Das Diagramm zeigt, wie Application Gateway verwendet wird, um virtuelle Azure-IaaS-Computer (VMs), Azure-VM-Skalierungsgruppen oder lokale Server zu schützen. Application Gateway behandelt Azure VMware Solution-VMs als lokale Server. 
 
-![Diagramm, das zeigt, wie Application Gateway virtuelle Azure-IaaS-Computer (VMs), Azure-VM-Skalierungsgruppen oder lokale Server schützt.](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
+:::image type="content" source="media/application-gateway/app-gateway-protects.png" alt-text="Diagramm, das zeigt, wie Application Gateway virtuelle Azure-IaaS-Computer (VMs), Azure-VM-Skalierungsgruppen oder lokale Server schützt." border="false":::
 
 > [!IMPORTANT]
 > Azure Application Gateway ist derzeit die einzige unterstützte Methode, um Web-Apps verfügbar zu machen, die auf Azure VMware Solution-VMs ausgeführt werden.
@@ -35,7 +35,7 @@ Das Diagramm zeigt das Testszenario zum Überprüfen von Application Gateway mit
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagramm mit dem Testszenario zum Überprüfen von Application Gateway mit Azure VMware Solution-Webanwendungen." border="false":::
 
-Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz bereitgestellt. Sie hat eine öffentliche Azure-IP-Adresse. Es wird empfohlen, [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) für das virtuelle Netzwerk zu aktivieren. Der Webserver wird in einer privaten Azure VMware Solution-Cloud hinter NSX T0- und T1-Gateways gehostet. Azure VMware Solution aktiviert die Kommunikation mit dem Hub und den lokalen Systemen mit [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md).
+Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz mit einer öffentlichen Azure-IP-Adresse bereitgestellt. Es wird empfohlen, den [Azure DDoS Protection-Standard](../ddos-protection/ddos-protection-overview.md) für das virtuelle Netzwerk zu aktivieren. Der Webserver wird in einer privaten Azure VMware Solution-Cloud hinter NSX T0- und T1-Gateways gehostet. Außerdem ermöglicht Azure VMware Solution die Kommunikation mit dem Hub und den lokalen Systemen mithilfe von [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz be
 
 2. Geben Sie die grundlegenden Details wie in der folgenden Abbildung an, und wählen Sie dann **Weiter: Front-Ends>** . 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="Screenshot der Seite „Application Gateway erstellen“ im Azure-Portal.":::
+    :::image type="content" source="media/application-gateway/create-app-gateway.png" alt-text="Screenshot der Seite „Application Gateway erstellen“ im Azure-Portal.":::
 
 3. Wählen Sie den IP-Adresstyp für das Front-End aus. Wählen Sie für den Typ „Öffentlich“ eine vorhandene öffentliche IP-Adresse aus, oder erstellen Sie eine neue. Klicken Sie auf **Weiter: Back-Ends>** .
 
@@ -73,11 +73,11 @@ Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz be
 
 12. Fügen Sie Tags hinzu, und wählen Sie **Weiter: Überprüfen und erstellen>** aus.
 
-13. Auf der Application Gateway-Instanz wird eine Überprüfung ausgeführt. Wenn sie erfolgreich ist, wählen Sie **Erstellen** zum Bereitstellen aus.
+13. Eine Validierung wird auf Ihrem Application Gateway ausgeführt. Wenn Sie erfolgreich ist, wählen Sie **Erstellen** zum Bereitstellen.
 
 ## <a name="configuration-examples"></a>Konfigurationsbeispiele
 
-In diesem Abschnitt erfahren Sie, wie Sie Application Gateway mit Azure VMware Solution-VMs als Back-End-Pools für diese Anwendungsfälle konfigurieren: 
+Nun konfigurieren Sie Application Gateway mit Azure VMware Solution-VMs als Back-End-Pools für folgende Anwendungsfälle: 
 
 - [Hosten mehrerer Websites](#hosting-multiple-sites)
 - [Routing per URL](#routing-by-url)
@@ -92,7 +92,7 @@ Hier lernen Sie die Vorgehensweise zum Definieren von Back-End-Adresspools mithi
 
 1. Erstellen Sie in Ihrer privaten Cloud zwei unterschiedliche VM-Pools. Einer stellt Contoso und der zweite Fabrikam dar. 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="Screenshot, der die Zusammenfassung der Details eines Webservers im vSphere-Client anzeigt.":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool.png" alt-text="Screenshot, der die Zusammenfassung der Details eines Webservers im vSphere-Client anzeigt.":::
 
     Hier wurde Windows Server 2016 mit installierter IIS-Rolle (Internetinformationsdienste) verwendet. Nachdem die virtuellen Computer installiert wurden, führen Sie die folgenden PowerShell-Befehle aus, um IIS auf den einzelnen VMs zu konfigurieren. 
 
@@ -103,13 +103,13 @@ Hier lernen Sie die Vorgehensweise zum Definieren von Back-End-Adresspools mithi
 
 2. Wählen Sie in einer vorhandenen Application Gateway-Instanz im Menü links **Back-End-Pools** aus, wählen Sie **Hinzufügen** aus, und geben Sie die Details der neuen Pools ein. Wählen Sie im rechten Bereich **Hinzufügen** aus.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="Screenshot der Seite „Back-End-Pools“ zum Hinzufügen von Back-End-Pools." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="Screenshot der Seite „Back-End-Pools“ zum Hinzufügen von Back-End-Pools." lightbox="media/application-gateway/app-gateway-multi-backend-pool-02.png":::
 
 3. Erstellen Sie im Abschnitt **Listener** einen neuen Listener für jede Website. Geben Sie die Details für jeden Listener ein, und wählen Sie **Hinzufügen** aus.
 
 4. Wählen Sie links **HTTP-Einstellungen** aus, und wählen Sie im linken Bereich **Hinzufügen** aus. Geben Sie die Details ein, um eine neue HTTP-Einstellung zu erstellen, und wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="Screenshot der Seite „HTTP-Einstellungen“ zum Erstellen einer neuen HTTP-Einstellung." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="Screenshot der Seite „HTTP-Einstellungen“ zum Erstellen einer neuen HTTP-Einstellung." lightbox="media/application-gateway/app-gateway-multi-backend-pool-03.png":::
 
 5. Erstellen Sie die Regeln im linken Menü im Abschnitt **Regeln**. Ordnen Sie jede Regel dem entsprechenden Listener zu. Wählen Sie **Hinzufügen**.
 
@@ -117,7 +117,7 @@ Hier lernen Sie die Vorgehensweise zum Definieren von Back-End-Adresspools mithi
 
 7. Testen Sie die Verbindung. Öffnen Sie Ihren bevorzugten Browser, und browsen Sie zu den verschiedenen Websites, die in Ihrer Azure VMware Solution-Umgebung gehostet werden, z. B. http://www.fabrikam.com.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="Screenshot der Browserseite, auf der der erfolgreiche Test der Verbindung angezeigt wird.":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="Screenshot der Browserseite, auf der der erfolgreiche Test der Verbindung angezeigt wird.":::
 
 ### <a name="routing-by-url"></a>Routing per URL
 
@@ -125,18 +125,18 @@ In den folgenden Schritten werden Back-End-Adresspools mit VMs definiert, die in
 
 1. Erstellen Sie in Ihrer privaten Cloud einen VM-Pool, um die Webfarm darzustellen. 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool.png" alt-text="Screenshot der Seite im vSphere-Client, die die Zusammenfassung eines anderen virtuellen Computers anzeigt.":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool.png" alt-text="Screenshot der Seite im vSphere-Client, die die Zusammenfassung eines anderen virtuellen Computers anzeigt.":::
 
     Zur Veranschaulichung wurde in diesem Tutorial Windows Server 2016 mit installierter IIS-Rolle verwendet. Nachdem die virtuellen Computer installiert wurden, führen Sie die folgenden PowerShell-Befehle aus, um IIS für jedes VM-Tutorial zu konfigurieren. 
 
-    Auf dem ersten virtuellen Computer (contoso-web-01) wird die Hauptwebsite gehostet.
+    Die erste VM (contoso-web-01) hostet die Hauptwebsite.
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-    Auf dem zweiten virtuellen Computer (contoso-web-02) wird die Website für die Bilder gehostet.
+    Die zweite VM (contoso-web-02) hostet die Website für die Bilder.
  
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -144,7 +144,7 @@ In den folgenden Schritten werden Back-End-Adresspools mit VMs definiert, die in
     Add-Content -Path C:\inetpub\wwwroot\images\test.htm -Value $($env:computername)
     ```
 
-    Auf dem dritten virtuellen Computer (contoso-web-03) wird die Website für die Videos gehostet.
+    Die dritte VM (contoso-web-03) hostet die Website für die Videos.
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -160,31 +160,31 @@ In den folgenden Schritten werden Back-End-Adresspools mit VMs definiert, die in
    1. Wählen Sie **Hinzufügen**. 
    1. Wiederholen Sie diesen Vorgang für **contoso-images** und **contoso-video**, wobei Sie jeweils eine andere VM als Ziel hinzufügen. 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="Screenshot der Seite „Back-End-Pools“ mit der Addition von drei neuen Back-End-Pools." lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="Screenshot der Seite „Back-End-Pools“ mit der Addition von drei neuen Back-End-Pools." lightbox="media/application-gateway/app-gateway-url-route-backend-pool-02.png":::
 
 3. Erstellen Sie im Abschnitt **Listener** einen neuen Listener vom Typ Basic an Port 8080.
 
 4. Wählen Sie im linken Navigationsbereich **HTTP-Einstellungen** aus, und wählen Sie im linken Bereich **Hinzufügen** aus. Geben Sie die Details ein, um eine neue HTTP-Einstellung zu erstellen, und wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="Screenshot der Seite „HTTP-Einstellung hinzufügen“ mit der Konfiguration der HTTP-Einstellungen.":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="Screenshot der Seite „HTTP-Einstellung hinzufügen“ mit der Konfiguration der HTTP-Einstellungen.":::
 
-5. Erstellen Sie die Regeln im linken Menü im Abschnitt **Regeln**. Ordnen Sie jede Regel dem zuvor erstellten Listener zu. Konfigurieren Sie dann den Haupt-Back-End-Pool und die HTTP-Einstellungen. Wählen Sie **Hinzufügen**.
+5. Erstellen Sie die Regeln im Abschnitt **Regeln** des linken Menüs, und ordnen Sie jede Regel dem zuvor erstellten Listener zu. Konfigurieren Sie anschließend den Haupt-Back-End-Pool sowie die HTTP-Einstellungen und wählen Sie dann **Hinzufügen**.
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="Screenshot der Seite „Hinzufügen einer Routingregel“ zum Konfigurieren von Routingregeln für ein Back-End-Ziel.":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="Screenshot der Seite „Hinzufügen einer Routingregel“ zum Konfigurieren von Routingregeln für ein Back-End-Ziel.":::
 
 6. Testen Sie die Konfiguration. Greifen Sie im Azure-Portal auf das Anwendungsgateway zu, und kopieren Sie die öffentliche IP-Adresse im Abschnitt **Übersicht**. 
 
    1. Öffnen Sie ein neues Browserfenster, und geben Sie die URL `http://<app-gw-ip-address>:8080` ein. 
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="Screenshot der Browserseite, auf der der erfolgreiche Test der Konfiguration angezeigt wird.":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="Screenshot der Browserseite, auf der der erfolgreiche Test der Konfiguration angezeigt wird.":::
 
    1. Ändern Sie die URL in `http://<app-gw-ip-address>:8080/images/test.htm`.
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="Screenshot eines anderen erfolgreichen Tests mit der neuen URL.":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="Screenshot eines anderen erfolgreichen Tests mit der neuen URL.":::
 
    1. Ändern Sie die URL erneut in `http://<app-gw-ip-address>:8080/video/test.htm`.
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="Screenshot eines erfolgreichen Tests mit der endgültigen URL.":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="Screenshot eines erfolgreichen Tests mit der endgültigen URL.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

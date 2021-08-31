@@ -7,20 +7,20 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 60e2044bc837c986701ec7be048fde04cf6a529a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355828"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien
 
 Es gibt mehrere Möglichkeiten, wie Sie die Szenen- und Medienobjektdateien für die Renderinganwendungen auf den VMs des Pools bereitstellen können:
 
-* [Einführung in Objektspeicher in Azure](../storage/blobs/storage-blobs-introduction.md):
+* [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md):
   * Szenen- und Medienobjektdateien werden aus einem lokalen Dateisystem in Blobspeicher hochgeladen. Wenn die Anwendung von einer Aufgabe ausgeführt wird, werden die erforderlichen Dateien aus dem Blobspeicher auf die VM kopiert, damit von der Renderinganwendung darauf zugegriffen werden kann. Die Ausgabedateien werden von der Renderinganwendung auf den VM-Datenträger geschrieben und dann in den Blobspeicher kopiert.  Falls erforderlich, können die Ausgabedateien aus dem Blobspeicher in ein lokales Dateisystem heruntergeladen werden.
-  * Azure-Blobspeicher ist eine einfache und kostengünstige Option für kleinere Projekte.  Da auf jeder Pool-VM alle Medienobjektdateien benötigt werden, muss bei steigender Zahl und Größe von Medienobjektdateien sorgfältig sichergestellt werden, dass die Dateiübertragungen so effizient wie möglich durchgeführt werden.  
+  * Azure Blob Storage ist eine einfache und kostengünstige Option für kleinere Projekte.  Da auf jeder Pool-VM alle Medienobjektdateien benötigt werden, muss bei steigender Zahl und Größe von Medienobjektdateien sorgfältig sichergestellt werden, dass die Dateiübertragungen so effizient wie möglich durchgeführt werden.  
 * Azure-Speicher als Dateisystem mit [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md):
   * Für Linux-VMs kann ein Speicherkonto verfügbar gemacht und als Dateisystem verwendet werden, wenn der virtuelle Dateisystemtreiber „blobfuse“ genutzt wird.
   * Diese Option hat den Vorteil, dass sie sehr kostengünstig ist, weil für das Dateisystem keine VMs benötigt werden. Außerdem werden durch die blobfuse-Zwischenspeicherung auf den VMs mehrfache Downloads derselben Dateien für Aufträge und Aufgaben vermieden.  Auch die Datenverschiebung ist einfach, da die Dateien lediglich Blobs und Standard-APIs und -tools sind. Beispielsweise kann azcopy verwendet werden, um eine Datei zwischen einem lokalen Dateisystem und Azure-Speicher zu kopieren.
@@ -30,7 +30,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Szenen- und Medienobjektdateien für
   * Mit einem Dateisystem können Dateien gelesen bzw. direkt in das Dateisystem geschrieben oder zwischen dem Dateisystem und den VMs des Pools kopiert werden.
   * Mit einem gemeinsam genutzten Dateisystem kann eine große Zahl von Medienobjekten für mehrere Projekte und Aufträge verwendet werden, und bei den Renderingaufgaben wird nur auf die erforderlichen Komponenten zugegriffen.
 
-## <a name="using-azure-blob-storage"></a>Verwenden von Azure-Blobspeicher
+## <a name="using-azure-blob-storage"></a>Verwenden von Azure Blob Storage
 
 Es sollte ein Blobspeicherkonto oder ein Speicherkonto vom Typ „Allgemein v2“ verwendet werden.  Diese beiden Typen von Speicherkonten können gegenüber einem Speicherkonto vom Typ „Allgemein v1“ mit deutlich höheren Grenzwerten konfiguriert werden, wie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) beschrieben.  Wenn sie konfiguriert wurden, ermöglichen die höheren Grenzwerte eine viel bessere Leistung und Skalierbarkeit. Dies gilt besonders, wenn viele Pool-VMs auf das Speicherkonto zugreifen.
 
@@ -85,7 +85,7 @@ Da es sich bei den Dateien einfach um Blobs in Azure Storage handelt, können st
 
 ## <a name="using-azure-files-with-windows-vms"></a>Verwenden von Azure Files mit Windows-VMs
 
-[Azure Files](../storage/files/storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das SMB-Protokoll zugegriffen werden kann.  Azure Files basiert auf Azure-Blobspeicher, ist [kostengünstig](https://azure.microsoft.com/pricing/details/storage/files/) und kann für die Datenreplikation in einer anderen Region konfiguriert werden, um globale Redundanz zu erzielen.  Die [Skalierbarkeitsziele](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) sollten überprüft werden, um zu ermitteln, ob die Verwendung von Azure Files sinnvoll ist. Dies richtet sich nach der prognostizierten Poolgröße und der Anzahl von Medienobjektdateien.
+[Azure Files](../storage/files/storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das SMB-Protokoll zugegriffen werden kann.  Azure Files basiert auf Azure Blob Storage, ist [kostengünstig](https://azure.microsoft.com/pricing/details/storage/files/) und kann für die Datenreplikation in einer anderen Region konfiguriert werden, um globale Redundanz zu erzielen.  Die [Skalierbarkeitsziele](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) sollten überprüft werden, um zu ermitteln, ob die Verwendung von Azure Files sinnvoll ist. Dies richtet sich nach der prognostizierten Poolgröße und der Anzahl von Medienobjektdateien.
 
 Die Einbindung einer Azure Files-Freigabe wird in [dieser Dokumentation](../storage/files/storage-how-to-use-files-windows.md) beschrieben.
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b0daecadd3af5f1322afc97f91706098aade768
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9163e3dcd30cc5e47ababd929961975ac70cb243
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080486"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824695"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -87,6 +87,11 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
                 "messageWaitTimeout": "00:00:30",
                 "maxAutoRenewDuration": "00:55:00",
                 "maxConcurrentSessions": 16
+            },
+            "batchOptions": {
+                "maxMessageCount": 1000,
+                "operationTimeout": "00:01:00",
+                "autoComplete": true
             }
         }
     }
@@ -98,10 +103,13 @@ Wenn Sie `isSessionsEnabled` auf `true` festgelegt haben, werden die `sessionHan
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |prefetchCount|0|Ruft die Anzahl der Nachrichten ab, die der Nachrichtenempfänger gleichzeitig anfordern kann, oder legt sie fest.|
-|maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
-|autoComplete|true|Gibt an, ob der Trigger nach der Verarbeitung automatisch „complete“ aufrufen soll oder ob der Funktionscode „complete“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. |
-|maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem pro skalierter Instanz initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig.|
-|maxConcurrentSessions|2000|Die maximale Anzahl von Sitzungen, die parallel pro skalierter Instanz verarbeitet werden können.|
+|messageHandlerOptions.maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
+|messageHandlerOptions.autoComplete|true|Gibt an, ob der Trigger nach der Verarbeitung automatisch „complete“ aufrufen soll oder ob der Funktionscode „complete“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. |
+|messageHandlerOptions.maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem pro skalierter Instanz initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig.|
+|sessionHandlerOptions.maxConcurrentSessions|2000|Die maximale Anzahl von Sitzungen, die parallel pro skalierter Instanz verarbeitet werden können.|
+|batchOptions.maxMessageCount|1000| Die maximale Anzahl von Nachrichten, die beim Auslösen an die Funktion gesendet werden. |
+|batchOptions.operationTimeout|00:01:00| Ein In `hh:mm:ss` ausgedrückter Zeitraumwert. |
+|batchOptions.autoComplete|true| Siehe die obige Beschreibung für `messageHandlerOptions.autoComplete`. |
 
 ### <a name="additional-settings-for-version-5x"></a>Zusätzliche Einstellungen für Version 5.x und höher
 
@@ -112,22 +120,20 @@ Das Beispieldatei host.json unten enthält nur die Einstellungen für Version 5.
     "version": "2.0",
     "extensions": {
         "serviceBus": {
-            "serviceBusOptions": {
-                "retryOptions":{
-                    "mode": "exponential",
-                    "tryTimeout": "00:00:10",
-                    "delay": "00:00:00.80",
-                    "maxDelay": "00:01:00",
-                    "maxRetries": 4
-                },
-                "prefetchCount": 100,
-                "autoCompleteMessages": true,
-                "maxAutoLockRenewalDuration": "00:05:00",
-                "maxConcurrentCalls": 32,
-                "maxConcurrentSessions": 10,
-                "maxMessages": 2000,
-                "sessionIdleTimeout": "00:01:00"
-            }
+            "clientRetryOptions":{
+                "mode": "exponential",
+                "tryTimeout": "00:01:00",
+                "delay": "00:00:00.80",
+                "maxDelay": "00:01:00",
+                "maxRetries": 3
+            },
+            "prefetchCount": 0,
+            "autoCompleteMessages": true,
+            "maxAutoLockRenewalDuration": "00:05:00",
+            "maxConcurrentCalls": 16,
+            "maxConcurrentSessions": 8,
+            "maxMessages": 1000,
+            "sessionIdleTimeout": "00:01:00"
         }
     }
 }
@@ -152,7 +158,7 @@ Zusätzlich zu den oben genannten Konfigurationseigenschaften können Sie bei Ve
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |Modus|Exponentiell|Die Methode, die zum Berechnen von Wiederholungsverzögerungen verwendet werden soll Im standardmäßigen exponentiellen Modus werden Wiederholungsversuche mit einer Verzögerung basierend auf einer Wartezeitstrategie ausgeführt, bei der jeder Versuch die Wartezeit erhöht, bevor ein neuer Versuch beginnt. Im Modus `Fixed` werden Versuche in festen Abständen wiederholt, und jede Verzögerung hat die gleiche Dauer.|
-|tryTimeout|00:00:10|Die maximale Dauer, die pro Versuch auf einen Vorgang gewartet werden soll|
+|tryTimeout|00:01:00|Die maximale Dauer, die pro Versuch auf einen Vorgang gewartet werden soll|
 |delay|00:00:00.80|Der Verzögerungs- oder Wartezeitfaktor, der zwischen Wiederholungsversuchen angewendet werden soll|
 |maxDelay|00:01:00|Die maximale zugelassene Verzögerung zwischen Wiederholungsversuchen|
 |maxRetries|3|Die maximale Anzahl von Wiederholungsversuchen, bevor der zugeordnete Vorgang als fehlgeschlagen angesehen wird|

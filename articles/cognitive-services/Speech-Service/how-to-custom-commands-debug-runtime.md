@@ -1,5 +1,5 @@
 ---
-title: Debuggen von Fehlern beim Ausführen einer Anwendung für benutzerdefinierte Befehle
+title: Leitfaden zur Problembehandlung bei Benutzerdefinierte Befehle-Anwendungen zur Laufzeit
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie Laufzeitfehler in einer Anwendung für benutzerdefinierte Befehle debuggen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7577a1c2666c8b5d34920e3827a9f4549b69edd2
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196911"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455806"
 ---
-# <a name="debug-errors-when-running-a-custom-commands-application"></a>Debuggen von Fehlern beim Ausführen einer Anwendung für benutzerdefinierte Befehle
+# <a name="troubleshoot-a-custom-commands-application-at-runtime"></a>Problembehandlung bei Benutzerdefinierte Befehle-Anwendungen zur Laufzeit
 
 Dieser Artikel beschreibt, wie Sie debuggen können, wenn beim Ausführen der Anwendung für benutzerdefinierte Befehle entsprechende Fehler auftreten. 
 

@@ -8,19 +8,19 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: how-to
-ms.custom: how-to
-ms.openlocfilehash: 93365304e958bfabaf3067ab58312a9b78745edb
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: 5fe647fba68150f45c450d71f208cf6a53dd0b98
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854664"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419275"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>Sicherer Rollout für Onlineendpunkte (Vorschau)
 
-Sie verfügen über ein vorhandenes Modell, das in der Produktion bereitgestellt wurde, und möchten eine neue Version des Modells bereitstellen. Wie führen Sie den Rollout Ihres neuen ML-Modells durch, ohne dass es zu Unterbrechungen kommt? Eine gute Möglichkeit ist die Blau-Grün-Bereitstellung. Bei diesem Ansatz wird eine neue Version eines Webdiensts in die Produktion eingeführt, indem der Rollout zunächst nur für einen kleinen Teil der Benutzer bzw. Anforderungen durchgeführt wird, bevor der vollständige Rollout erfolgt. 
+Sie verfügen über ein vorhandenes Modell, das in der Produktion bereitgestellt wurde, und möchten eine neue Version des Modells bereitstellen. Wie führen Sie den Rollout Ihres neuen ML-Modells durch, ohne dass es zu Unterbrechungen kommt? Eine gute Möglichkeit ist die Blau-Grün-Bereitstellung. Bei diesem Ansatz wird eine neue Version eines Webdiensts in die Produktion eingeführt, indem der Rollout zunächst nur für einen kleinen Teil der Benutzer bzw. Anforderungen durchgeführt wird, bevor der vollständige Rollout erfolgt. In diesem Artikel wird davon ausgegangen, dass Sie Onlineendpunkte verwenden. Weitere Informationen finden Sie unter [Was sind Azure Machine Learning-Endpunkte (Vorschauversion)?](concept-endpoints.md).
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -37,9 +37,9 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Verwendung von Azure Machine Learning ist ein Azure-Abonnement erforderlich. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Für die Verwendung von Azure Machine Learning ist ein Azure-Abonnement erforderlich. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
-* Sie müssen die Azure CLI und die ML-Erweiterung installieren und konfigurieren. Weitere Informationen finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md). 
+* Sie müssen die Azure CLI und die ML-Erweiterung installieren und konfigurieren. Weitere Informationen finden Sie unter [Installieren, Einrichten und Verwenden der CLI (v2) (Vorschauversion)](how-to-configure-cli.md). 
 
 * Sie müssen über eine Azure-Ressourcengruppe verfügen, für die Ihnen (oder dem von Ihnen genutzten Dienstprinzipal) die Zugriffsberechtigung `Contributor` (Mitwirkender) zugeordnet ist. Sie verfügen über eine Ressourcengruppe dieser Art, wenn Sie Ihre ML-Erweiterung gemäß dem obigen Artikel konfiguriert haben. 
 
@@ -145,3 +145,15 @@ Aktualisieren Sie die Bereitstellung wie folgt:
 Falls Sie die Bereitstellung nicht weiter nutzen möchten, sollten Sie sie wie folgt löschen:
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Bereitstellen von Modellen per REST (Vorschau)](how-to-deploy-with-rest.md)
+- [Erstellen und Verwenden von verwalteten Onlineendpunkten (Vorschau) in Studio](how-to-use-managed-online-endpoint-studio.md)
+- [Tutorial: Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
+- [Überwachen verwalteter Onlineendpunkte (Vorschau)](how-to-monitor-online-endpoints.md)
+- [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)
+- [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
+- [SKU-Liste für verwaltete Onlineendpunkte (Vorschau)](reference-managed-online-endpoints-vm-sku-list.md)
+- [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md)
+- [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-yaml-endpoint-managed-online.md)

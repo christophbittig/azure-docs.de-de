@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev
-ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494610"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418528"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
@@ -118,23 +118,91 @@ Ihre Organisation verwendet die Authenticator-App wahrscheinlich für Szenarien 
 
 Konfigurieren Sie mithilfe der folgenden Parameter das Microsoft Enterprise SSO-Plug-In für Apps, die keine Microsoft Identity Platform-Bibliothek verwenden.
 
-Stellen Sie eine Liste bestimmter Anwendungen mithilfe dieser Parameter bereit:
+#### <a name="enable-sso-for-all-managed-apps"></a>Aktivieren von SSO für alle verwalteten Apps
+
+- **Schlüssel**: `Enable_SSO_On_All_ManagedApps`
+- **Typ:** `Integer`
+- **Wert**: 1 oder 0 .
+
+Wenn dieses Flag eingeschaltet ist (sein Wert ist auf `1` festgelegt), können alle MDM-verwalteten Apps, die nicht im `AppBlockList` enthalten sind, am SSO teilnehmen.
+
+#### <a name="enable-sso-for-specific-apps"></a>Aktivieren von SSO für bestimmte Apps
 
 - **Schlüssel**: `AppAllowList`
 - **Typ:** `String`
 - **Wert**: Durch Komma getrennte Liste mit den Bundle-IDs der Anwendungen, die für einmaliges Anmelden (SSO) zugelassen sind.
 - **Beispiel**: `com.contoso.workapp, com.contoso.travelapp`
 
-Stellen Sie mithilfe dieser Parameter eine Liste von Präfixen bereit:
+>[!NOTE]
+> Safari und Safari View Service dürfen standardmäßig an SSO teilnehmen. Sie können SSO so konfigurieren, dass diese Apps *nicht* daran teilnehmen, indem Sie die Bundle-IDs von Safari und Safari View Service in AppBlockList hinzufügen. iOS Bundle-IDs : [com.apple.mobilesafari, com.apple.SafariViewService] , macOS BundleID : com.apple.Safari
+
+#### <a name="enable-sso-for-all-apps-with-a-specific-bundle-id-prefix"></a>Aktivieren von SSO für alle Apps mit einem bestimmten Bundle-ID-Präfix
 - **Schlüssel**: `AppPrefixAllowList`
 - **Typ:** `String`
 - **Wert**: Durch Komma getrennte Liste mit den Bundle-ID-Präfixen der Anwendungen, die für einmaliges Anmelden (SSO) zugelassen sind. Dieser Parameter ermöglicht allen Anwendungen, die mit einem bestimmten Präfix beginnen, einmaliges Anmelden.
 - **Beispiel**: `com.contoso., com.fabrikam.`
 
-[Mit Einwilligung versehene Apps](./application-consent-experience.md), denen der MDM-Administrator einmaliges Anmelden erlaubt hat, können automatisch ein Token für den Endbenutzer erhalten. Fügen Sie der Positivliste daher nur vertrauenswürdige Anwendungen hinzu. 
+#### <a name="disable-sso-for-specific-apps"></a>Deaktivieren von SSO für bestimmte Apps
 
->[!NOTE]
-> Sie müssen Anwendungen, die mit MSAL oder ASWebAuthenticationSession arbeiten, nicht zur Liste der Anwendungen hinzufügen, für die einmaliges Anmelden aktiviert ist. Diese Anwendungen sind standardmäßig aktiviert. 
+- **Schlüssel**: `AppBlockList`
+- **Typ:** `String`
+- **Wert**: Durch Kommata getrennte Liste mit den Bundle-IDs der Anwendungen, die nicht für einmaliges Anmelden (SSO) zugelassen sind.
+- **Beispiel**: `com.contoso.studyapp, com.contoso.travelapp`
+
+Um SSO für Safari oder Safari View Service zu *deaktivieren*, müssen Sie dies explizit durch Hizufügen ihrer Bundle-IDs zur `AppBlockList` tun: 
+
+- iOS: `com.apple.mobilesafari`, `com.apple.SafariViewService`
+- macOS: `com.apple.Safari`
+
+#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>Aktivieren von SSO über Cookies für eine bestimmte Anwendung
+
+Bei einigen Apps mit erweiterten Netzwerkeinstellungen können unerwartete Probleme auftreten, wenn sie für SSO zugelassen werden. Es kann z. B. der Fehler gemeldet werden, dass eine Netzwerkanforderung abgebrochen oder unterbrochen wurde.
+
+Wenn Ihre Benutzer Probleme beim Anmelden bei einer Anwendung haben, auch wenn Sie diese über die anderen Einstellungen zugelassen haben, versuchen Sie, die Anwendung der `AppCookieSSOAllowList` hinzuzufügen, um die Probleme zu beheben.
+
+- **Schlüssel**: `AppCookieSSOAllowList`
+- **Typ:** `String`
+- **Value**: Kommagetrennte Liste mit den Paket-IDs (Präfixen) der Anwendungen, die für einmaliges Anmelden (SSO) zugelassen sind. Alle Apps, die mit den aufgeführten Präfixen beginnen, sind für einmaliges Anmelden aktiviert.
+- **Beispiel**: `com.contoso.myapp1, com.fabrikam.myapp2`
+
+**Weitere Anforderungen**: Um SSO für Anwendungen mithilfe der `AppCookieSSOAllowList` zu aktivieren, müssen Sie auch deren Bundle-ID-Präfixe zur `AppPrefixAllowList` hinzufügen.
+
+Probieren Sie diese Konfiguration nur für Anwendungen aus, bei denen es zu unerwarteten Anmeldefehlern kommt. 
+
+#### <a name="summary-of-keys"></a>Übersicht über die Schlüssel
+
+| Schlüssel | type | Wert |
+|--|--|--|
+| `Enable_SSO_On_All_ManagedApps` | Integer | `1`, um SSO für alle verwalteten Apps zu aktivieren, `0`, um SSO für alle verwalteten Apps zu deaktivieren. |
+| `AppAllowList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-IDs von Anwendungen, die am SSO teilnehmen dürfen. |
+| `AppBlockList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-IDs von Anwendungen, die nicht am SSO teilnehmen dürfen. |
+| `AppPrefixAllowList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-ID-Präfixe von Anwendungen, die am SSO teilnehmen dürfen. |
+| `AppCookieSSOAllowList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-ID-Präfixe von Anwendungen, die am SSO teilnehmen dürfen, aber spezielle Netzwerkeinstellungen verwenden und Probleme mit SSO haben, wenn die anderen Einstellungen verwendet werden. Zur `AppCookieSSOAllowList` hinzugefügte Apps müssen auch zur `AppPrefixAllowList` hinzugefügt werden. |
+
+#### <a name="settings-for-common-scenarios"></a>Einstellungen für häufige Szenarios
+
+- *Szenario*: Ich möchte SSO für die meisten verwalteten Anwendungen aktivieren, aber nicht für alle.
+
+    | Key | Wert |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | Die Bundle-IDs (als durch Kommata getrennte Liste) der Apps, die Sie vom SSO ausschließen möchten. |
+
+- *Szenario*: Ich möchte das (standardmäßig aktivierte) SSO für Safari deaktivieren, aber SSO für alle verwalteten Apps aktivieren.
+
+    | Key | Wert |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | Die Bundle-IDs (als durch Kommata getrennte Liste) der Safari-Apps, die Sie am SSO hindern möchten.<br/><li>Für iOS: `com.apple.mobilesafari`, `com.apple.SafariViewService`<br/><li>Für macOS: `com.apple.Safari` |
+
+- *Szenario*: Ich möchte SSO für alle verwalteten Apps und einige nicht verwaltete Apps aktivieren, aber für einige andere Apps deaktivieren.
+
+    | Key | Wert |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppAllowList` | Die Bundle-IDs (durch Kommata getrennte Liste) der Apps, die Sie für SSO zulassen möchten. |
+    | `AppBlockList` | Die Bundle-IDs (als durch Kommata getrennte Liste) der Apps, die Sie vom SSO ausschließen möchten. |
+
 
 ##### <a name="find-app-bundle-identifiers-on-ios-devices"></a>Ermitteln der App Bundle-IDs auf iOS-Geräten
 
@@ -192,21 +260,6 @@ Durch Aktivieren des Flags `disable_explicit_app_prompt` wird die Fähigkeit sow
 - **Value**: 1 oder 0
 
 Wir empfehlen, dieses Flag zu aktivieren, um in allen Apps eine einheitliche Benutzererfahrung zu erzielen. Standardmäßig ist es deaktiviert. 
-
-#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>Aktivieren von SSO über Cookies für eine bestimmte Anwendung
-
-Einige wenige Apps sind möglicherweise nicht mit der SSO-Erweiterung kompatibel. Insbesondere bei Apps mit erweiterten Netzwerkeinstellungen können unerwartete Probleme auftreten, wenn sie für einmaliges Anmelden aktiviert werden. Es kann z. B. der Fehler gemeldet werden, dass die Netzwerkanforderung abgebrochen oder unterbrochen wurde. 
-
-Wenn Sie Probleme haben, sich mit der im Abschnitt [Anwendungen, die MSAL nicht verwenden](#applications-that-dont-use-msal) beschriebenen Methode anzumelden, probieren Sie es mit einer anderen Konfiguration. Konfigurieren Sie das Plug-In mit diesen Parametern:
-
-- **Schlüssel**: `AppCookieSSOAllowList`
-- **Typ:** `String`
-- **Value**: Kommagetrennte Liste mit den Paket-IDs (Präfixen) der Anwendungen, die für einmaliges Anmelden (SSO) zugelassen sind. Alle Apps, die mit den aufgeführten Präfixen beginnen, sind für einmaliges Anmelden aktiviert.
-- **Beispiel**: `com.contoso.myapp1, com.fabrikam.myapp2`
-
-Anwendungen, die mithilfe dieser Einrichtung für einmaliges Anmelden aktiviert werden, müssen sowohl `AppCookieSSOAllowList` als auch `AppPrefixAllowList` hinzugefügt werden.
-
-Probieren Sie diese Konfiguration nur für Anwendungen aus, bei denen es zu unerwarteten Anmeldefehlern kommt. 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Verwenden von Intune zum Vereinfachen der Konfiguration
 

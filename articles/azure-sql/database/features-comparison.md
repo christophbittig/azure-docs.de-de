@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 05/18/2021
-ms.openlocfilehash: 1f645b8d62bc3e0acdbdd12a21b335deea3cd53e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 08/12/2021
+ms.openlocfilehash: 302b6e6cdce7fb95962b66a593ae02b9fe3922a1
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690020"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455911"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Operatoren](/sql/t-sql/language-elements/operators-transact-sql) | Die meisten (siehe einzelne Operatoren) |Ja – siehe [T-SQL-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Polybase](/sql/relational-databases/polybase/polybase-guide) | Nein. Sie können Daten in Dateien, die in Azure Blob Storage gespeichert sind, mithilfe der `OPENROWSET`-Funktion abfragen oder [eine externe Tabelle verwenden, die auf einen serverlosen SQL-Pool in Synapse Analytics verweist](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/). | Nein. Sie können Daten in Dateien, die in Azure Blob Storage gespeichert sind, mit der `OPENROWSET`-Funktion, [einem Verbindungsserver, der auf einen serverlosen SQL-Pool in Synapse Analytics verweist](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/), oder einer externen Tabelle (in der öffentlichen Vorschau) abfragen, die auf [einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) oder SQL Server verweist. |
 | [Abfragebenachrichtigungen](/sql/relational-databases/native-client/features/working-with-query-notifications) | Nein | Ja |
-| [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_früher R Services_)| Ja, in der [Public Preview](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein |
+| [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_früher R Services_)| Nein | Ja, siehe [Machine Learning Services in Azure SQL Managed Instance](../managed-instance/machine-learning-services-overview.md) |
 | [Wiederherstellungsmodelle](/sql/relational-databases/backup-restore/recovery-models-sql-server) | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. | Nur die vollständige Wiederherstellung, die hohe Verfügbarkeit garantiert, wird unterstützt. Einfache und massenprotokollierte Wiederherstellungsmodelle sind nicht verfügbar. |
 | [Ressourcenkontrolle](/sql/relational-databases/resource-governor/resource-governor) | Nein | Ja |
 | [RESTORE-Anweisungen](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nein | Ja, mit den obligatorischen `FROM URL`-Optionen für die Sicherungsdateien in Azure Blob Storage. Siehe [Unterschiede bei der Wiederherstellung](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
@@ -137,14 +137,14 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | Dateisystemzugriff | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. | Nein. Verwenden Sie [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. |
 | [Geowiederherstellung](recovery-using-backups.md#geo-restore) | Ja | Ja |
 | [Hyperscale-Architektur](service-tier-hyperscale.md) | Ja | Nein |
-| [Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen](long-term-retention-overview.md) | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. | Bisher nicht. Verwenden Sie [manuelle Sicherungen](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup) mit `COPY_ONLY` als vorübergehende Problemumgehung. |
+| [Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen](long-term-retention-overview.md) | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. |
 | Anhalten/Fortsetzen | Ja, im [serverlosen Modell](serverless-tier-overview.md) | Nein |
 | [Richtlinienbasierte Verwaltung](/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nein | Nein |
 | Öffentliche IP-Adresse | Ja. Der Zugriff kann durch die Firewall oder Dienstendpunkte beschränkt werden.  | Ja. Muss explizit aktiviert sein, außerdem muss Port 3342 in NSG-Regeln aktiviert sein. Öffentliche IP-Adresse kann bei Bedarf deaktiviert werden. Für weitere Details siehe [öffentlicher Endpunkt](../managed-instance/public-endpoint-overview.md). |
 | [Point-in-Time-Wiederherstellung einer Datenbank](/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja – alle Dienstebenen außer Hyperscale – siehe [Point-in-Time-Wiederherstellung](recovery-using-backups.md#point-in-time-restore) | Ja: siehe [Wiederherstellung der SQL-Datenbank](recovery-using-backups.md#point-in-time-restore) |
 | Ressourcenpools | Ja, als [Pools für elastische Datenbanken](elastic-pool-overview.md) | Ja. Eine einzelne Instanz von SQL Managed Instance kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. Darüber hinaus können Sie mehrere Instanzen von SQL Managed Instance in [Instanzpools (Vorschauversion)](../managed-instance/instance-pools-overview.md) bereitstellen, die sich die Ressourcen teilen können. |
 | Zentrales Hoch- oder Herunterskalieren (online) | Ja, Sie können bei minimaler Downtime entweder die DTU, die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. | Ja, Sie können bei minimaler Downtime die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. |
-| [SQL-Alias](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nein, verwenden Sie einen [DNS-Alias](dns-alias-overview.md) | Nein, verwenden Sie [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022), um einen Alias auf den Clientcomputern einzurichten. |
+| [SQL-Alias](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nein, verwenden Sie einen [DNS-Alias](dns-alias-overview.md) | Nein, verwenden Sie [Cliconfg](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022), um einen Alias auf den Clientcomputern einzurichten. |
 | [Azure SQL-Analyse](../../azure-monitor/insights/azure-sql.md) | Ja | Ja |
 | [SQL-Datensynchronisierung](sql-data-sync-sql-server-configure.md) | Ja | Nein |
 | [SQL Server Analysis Services (SSAS)](/sql/analysis-services/analysis-services) | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. |
@@ -154,7 +154,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [VNET](../../virtual-network/virtual-networks-overview.md) | Teilweise, eingeschränkter Zugriff über [VNET-Endpunkte](vnet-service-endpoint-rule-overview.md) ist möglich | Ja, die SQL Managed Instance wird in das VNET des Kunden eingeschleust. Siehe [Subnetz](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) und [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNET-Dienstendpunkt | [Ja](vnet-service-endpoint-rule-overview.md) | Nein |
 | Globales VNet-Peering | Ja, mithilfe von [privater IP und Dienstendpunkten](vnet-service-endpoint-rule-overview.md) | Ja, mit [Peering virtueller Netzwerke](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913). |
-| [Private Konnektivität](../../private-link/private-link-overview.md) | Ja, mit [Private Link](/database/private-endpoint-overview.md) | Ja, mit VNet | 
+| [Private Konnektivität](../../private-link/private-link-overview.md) | Ja, mit [Private Link](../../private-link/private-endpoint-overview.md) | Ja, mit VNet | 
 
 ## <a name="tools"></a>Tools
 

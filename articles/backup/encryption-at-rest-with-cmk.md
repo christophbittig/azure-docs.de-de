@@ -2,14 +2,14 @@
 title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48268af7ec4874d0e5c9ad3bb79a95307aba15b7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b952cf75776536652f96132049d8cef59c963e17
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672165"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445399"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -37,6 +37,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 - Der Recovery Services-Tresor kann nur mit Schlüsseln verschlüsselt werden, die in einem Azure Key Vault gespeichert sind, der sich in der **gleichen Region** befindet. Außerdem dürfen nur **RSA-Schlüssel** im Zustand **Aktiviert** als Schlüssel verwendet werden.
 
 - Das Verschieben eines mit CMK verschlüsselten Recovery Services-Tresors in andere Ressourcengruppen und Abonnements wird derzeit nicht unterstützt.
+- Recovery Services-Tresore, die mit kundenseitig verwalteten Schlüsseln verschlüsselt sind, unterstützen keine regionsübergreifende Wiederherstellung gesicherter Instanzen.
 - Wenn Sie einen Recovery Services-Tresor, der bereits mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt ist, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors und die CMK (die sich auf dem neuen Mandanten befinden sollen) neu zu erstellen und zu konfigurieren. Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle innerhalb des Abonnements eingerichteten Berechtigungen der rollenbasierten Zugriffssteuerung (RBAC) neu konfiguriert werden.
 
 - Diese Funktion kann über das Azure-Portal und PowerShell konfiguriert werden.
@@ -286,11 +287,11 @@ Bevor Sie mit der Konfiguration des Schutzes fortfahren, sollten Sie unbedingt d
 >[!IMPORTANT]
 > Bevor Sie mit dem Konfigurieren des Schutzes fortfahren, müssen Sie die folgenden Schritte **erfolgreich** ausgeführt haben:
 >
->1. Ihr Sicherungstresor wurde erstellt.
+>1. Ihr Recovery Services-Tresor wurde erstellt.
 >1. Die vom System zugewiesene verwaltete Identität des Recovery Services Tresors wurde aktiviert, oder dem Tresor wurde eine vom Benutzer zugewiesene verwaltete Identität zugewiesen.
->1. Zugewiesene Berechtigungen für Ihren Backup Vault (oder die dem Benutzer zugewiesene verwaltete Identität) für den Zugriff auf Verschlüsselungsschlüssel aus Ihrem Key Vault
+>1. Die Berechtigungen für Ihren Recovery Services-Tresor (oder die dem Benutzer zugewiesene verwaltete Identität) für den Zugriff auf Verschlüsselungsschlüssel aus Ihrem Key Vault wurden erteilt.
 >1. Vorläufiges Löschen und Löschschutz wurden für Ihren Key Vault aktiviert.
->1. Dem Sicherungstresor wurde ein gültiger Verschlüsselungsschlüssel zugewiesen.
+>1. Dem Recovery Services-Tresor wurde ein gültiger Verschlüsselungsschlüssel zugewiesen.
 >
 >Wenn alle oben genannten Schritte bestätigt wurden, fahren Sie mit dem Konfigurieren der Sicherung fort.
 

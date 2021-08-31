@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 08/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a6952679ad2497a059b6ad043ef5e1e23fea0236
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7a213198421597e444a55c53d85cdb6e427425a3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744069"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350248"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -35,6 +35,14 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer einer bestim
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+### <a name="verify-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzer-Zustimmungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../active-directory/develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../active-directory/develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD B2C Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD](../active-directory-b2c/identity-provider-microsoft-account.md)-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+
+1. [Überprüfen Sie Ihre Unternehmensidentität mit ihrem Microsoft Partner Network -Konto (MPN)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie die Herausgeberüberprüfung ab, um mithilfe einer der folgenden Optionen Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn die App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD-Mandanten ist, [überprüfen Sie Ihre App im App-Registrierungsportal.](../active-directory/develop/mark-app-as-publisher-verified.md)
+   - Wenn sich Ihre App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe von Microsoft Graph-APIs als vom Herausgeber verifiziert](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph Explorer). Die Benutzeroberfläche zum Festlegen des verifizierten Herausgebers einer App ist derzeit für Azure AD B2C-Mandanten deaktiviert.
 
 ## <a name="register-an-azure-ad-app"></a>Registrieren einer Azure AD-App
 
@@ -72,6 +80,10 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 1. Wählen Sie als **Tokentyp** die Option **ID** aus.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche (`family_name` und `given_name`) aus.
 1. Klicken Sie auf **Hinzufügen**.
+
+## <a name="optional-verify-your-app-authenticity"></a>[Optional] Überprüfen der Authentizität Ihrer App
+
+Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-verification-overview.md) können Ihre Benutzer die Authentizität der von Ihnen [registrierten](#register-an-azure-ad-app) App überprüfen. „Überprüfte App“ bedeutet, dass die Identität des Herausgebers der App über das Microsoft Partner Network (MPN) [überprüft](/partner-center/verification-responses) wurde. Informieren Sie sich darüber, wie Sie [Ihre App als vom Herausgeber verifiziert markieren](../active-directory/develop/mark-app-as-publisher-verified.md). 
 
 ::: zone pivot="b2c-user-flow"
 
@@ -236,10 +248,8 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 
 Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
+::: zone-end
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beim Arbeiten mit benutzerdefinierten Richtlinien benötigen Sie möglicherweise manchmal zusätzliche Informationen, wenn Sie Probleme mit einer Richtlinie während der Entwicklung beheben.
-
-Um das Diagnostizieren von Problemen zu erleichtern, können Sie die Richtlinie vorübergehend in den „Entwicklermodus“ versetzen und Protokolle mit Azure Application Insights erfassen. Informationen hierzu finden Sie unter [Azure Active Directory B2C: mithilfe von Application Insights](troubleshoot-with-application-insights.md).
-
-::: zone-end
+Informieren Sie sich darüber, wie Sie [das Azure AD-Token an Ihre Anwendung übergeben](idp-pass-through-user-flow.md).

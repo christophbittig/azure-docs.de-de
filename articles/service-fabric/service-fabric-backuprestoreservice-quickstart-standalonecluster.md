@@ -3,12 +3,12 @@ title: Regelmäßiges Sichern/Wiederherstellen in eigenständigem Azure Service 
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen eines eigenständigen Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a906e1e2261b0d117c7042b1ac387e2e98f045
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198710"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444568"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in einer eigenständigen Service Fabric-Umgebung
 > [!div class="op_single_selector"]
@@ -112,7 +112,9 @@ Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihre
         ...
     }
     ```
-
+    > [!NOTE]
+    > \[Fingerabdruck\] muss durch einen gültigen Zertifikatfingerabdruck ersetzt werden, der für die Verschlüsselung verwendet werden soll.
+    >
 4. Wenn Sie die Clusterkonfigurationsdatei mit den vorstehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an, und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
 
 

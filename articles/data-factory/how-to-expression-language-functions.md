@@ -5,14 +5,15 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 41689a842bff067fb36dd97f980c10b71e533f8d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566658"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446860"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Verwenden von Parametern, Ausdrücken und Funktionen in Azure Data Factory
 
@@ -23,9 +24,9 @@ ms.locfileid: "105566658"
 
 In diesem Dokument konzentrieren wir uns in erster Linie auf das Erlernen grundlegender Konzepte mit verschiedenen Beispielen, um die Möglichkeit zum Erstellen von parametrisierten Datenpipelines in Azure Data Factory zu untersuchen. Parametrisierung und dynamische Ausdrücke sind solche bedeutenden Ergänzungen von ADF, da sie sehr viel Zeit sparen können und eine viel flexiblere Lösung zum Extrahieren, Transformieren und Laden (Extract, Transform, Load, ETL) oder Extrahieren, Laden und Transformieren (Extract, Load, Transform, ELT) ermöglichen, wodurch die Kosten für die Wartung der Lösung drastisch gesenkt werden und die Implementierung neuer Features in vorhandene Pipelines beschleunigt wird. Diese Vorteile basieren darauf, dass die Parametrisierung die Hartcodierung minimiert und die Anzahl der wiederverwendbaren Objekte und Prozesse in einer Lösung erhöht.
 
-## <a name="azure-data-factory-ui-and-parameters"></a>Benutzeroberfläche und Parameter in Azure Data Factory
+## <a name="azure-data-factory-ui-and-parameters"></a>Benutzeroberfläche und Parameter von Azure Data Factory
 
-Wenn Sie noch nicht mit der Verwendung von Azure Data Factory-Parametern in der ADF-Benutzeroberfläche vertraut sind, nutzen Sie die visuelle Erläuterung in den Artikeln zur [Data Factory-Benutzeroberfläche für verknüpfte Dienste mit Parametern](./parameterize-linked-services.md#data-factory-ui) und [Data Factory-Benutzeroberfläche für metadatengesteuerte Pipelines mit Parametern](./how-to-use-trigger-parameterization.md#data-factory-ui).
+Wenn Sie noch nicht mit der Verwendung von Azure Data Factory-Parametern in der ADF-Benutzeroberfläche vertraut sind, nutzen Sie die visuelle Erläuterung in den Artikeln zur [Data Factory-Benutzeroberfläche für verknüpfte Dienste mit Parametern](./parameterize-linked-services.md#ui-experience) und [Data Factory-Benutzeroberfläche für metadatengesteuerte Pipelines mit Parametern](./how-to-use-trigger-parameterization.md#data-factory-ui).
 
 ## <a name="parameter-and-expression-concepts"></a>Parameter- und Ausdruckskonzepte 
 

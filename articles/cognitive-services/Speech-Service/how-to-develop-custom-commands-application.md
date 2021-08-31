@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: lajanuar
-ms.openlocfilehash: cb97e41740997e35445cdf6dfb7281e54c3a5c16
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 62f8c726a4ba8cec07ef2898d132f9aa3d526785
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350167"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455822"
 ---
 # <a name="develop-custom-commands-applications"></a>Entwickeln von Anwendungen mit benutzerdefinierten Befehlen
 
@@ -97,7 +97,7 @@ Weitere Informationen über Regeln und Vervollständigungsregeln finden Sie unte
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name**       | `ConfirmationResponse`                  | Ein Name, der den Zweck der Regel beschreibt.          |
     | **Bedingungen** | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
-    | **Aktionen**    | **Sprachantwort senden** > **Einfacher Editor** > **Erste Variation** > `Ok, turning the tv on` | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+    | **Aktionen**    | **Sprachantwort senden** > **Einfacher Editor** > `Ok, turning the tv on` | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
 
    > [!div class="mx-imgBorder"]
    > ![Screenshot der zeigt, wo eine Sprachressource erstellt werden soll.](media/custom-commands/create-speech-response-action.png)
@@ -167,9 +167,9 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihren Befehlen Parameter hinzufügen. 
 Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalten mehrerer Geräte.
 
 1. Da der Befehl jetzt die Szenarien zum Ein- und Ausschalten behandelt, benennen Sie den Befehl in *TurnOnOff* um.
-   1. Wählen Sie den Befehl **TurnOn** im linken Bereich aus. Wählen Sie dann neben dem **Neu-Befehl** oben im Bereich die Schaltfläche mit den Auslassungspunkten ( **...** ) aus.
+   1. Wählen Sie den Befehl **TurnOn** im linken Bereich aus. Wählen Sie dann neben dem **Neu-Befehl** oben im Bereich die Schaltfläche „Bearbeiten“ aus.
 
-   1. Wählen Sie **Umbenennen** aus. Ändern Sie im Fenster **Befehl umbenennen** den Namen in *TurnOnOff*.
+   1. Ändern Sie im Fenster **Befehl umbenennen** den Namen in *TurnOnOff*.
 
 1. Fügen Sie dem Befehl einen neuen Parameter hinzu. Der Parameter gibt an, ob der Benutzer das Gerät ein- oder ausschalten möchte.
    1. Wählen Sie oben im mittleren Bereich **Hinzufügen** aus. Wählen Sie im Dropdownmenü **Parameter** aus.
@@ -186,7 +186,6 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
        | Konfiguration      | Vorgeschlagener Wert     | BESCHREIBUNG                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **Name**               | `OnOff`           | Ein aussagekräftiger Name für den Parameter                                                                           |
-       | **Is Global**          | Nicht markiert       | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle in der Anwendung angewendet wird.|
        | **Erforderlich**           | Aktiviert         | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist. |
        | **Antwort auf erforderlichen Parameter**      |**Einfacher Editor** > `On or Off?`      | Eine Aufforderung, die nach dem Wert dieses Parameters fragt, wenn er nicht bekannt ist. |
        | **Typ**               | **String**          | Parametertyp, z. B. Zahl, Zeichenfolge, Datum/Uhrzeit oder Geografie.   |
@@ -209,7 +208,6 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
     | Einstellung            | Vorgeschlagener Wert       |
     | ------------------ | --------------------- |
     | **Name**               | `SubjectDevice`         |
-    | **Is Global**          | Nicht markiert             |
     | **Erforderlich**           | Aktiviert               |
     | **Antwort auf erforderlichen Parameter**     | **Einfacher Editor** > `Which device do you want to control?`    | 
     | **Typ**               | **String**                |     
@@ -276,11 +274,11 @@ Wenn das Training abgeschlossen ist, wählen Sie **Testen** aus. Es wird ein Fen
 
 Ändern Sie den Befehl `SetTemperature` so, dass er die Temperatur nach den Anweisungen des Benutzers einstellt.
 
-Fügen Sie einen `Temperature`-Parameter hinzu. Verwenden Sie die folgende Konfiguration:
+Fügen Sie einen `TemperatureValue`-Parameter hinzu. Verwenden Sie die folgende Konfiguration:
 
 | Konfiguration      | Vorgeschlagener Wert     |
 | ------------------ | ----------------|
-| **Name**               | `Temperature`           |
+| **Name**               | `TemperatureValue`           |
 | **Erforderlich**           | Aktiviert         |
 | **Antwort auf erforderlichen Parameter**      | **Einfacher Editor** > `What temperature would you like?`
 | **Type**               | `Number`          |
@@ -289,8 +287,8 @@ Fügen Sie einen `Temperature`-Parameter hinzu. Verwenden Sie die folgende Konfi
 Ändern Sie die Beispieläußerungen so, dass sie die folgenden Werte verwenden.
 
 ```
-set the temperature to {Temperature} degrees
-change the temperature to {Temperature}
+set the temperature to {TemperatureValue} degrees
+change the temperature to {TemperatureValue}
 set the temperature
 change the temperature
 ```
@@ -299,8 +297,8 @@ Bearbeiten Sie die vorhandenen Vervollständigungsregeln. Verwenden Sie die folg
 
 | Konfiguration      | Vorgeschlagener Wert     |
 | ------------------ | ----------------|
-| **Bedingungen**         | **Erforderlicher Parameter** > **Temperatur**           |
-| **Aktionen**           | **Sprachantwort senden** > `Ok, setting temperature to {Temperature} degrees` |
+| **Bedingungen**         | **Erforderlicher Parameter** > **TemperatureValue**           |
+| **Aktionen**           | **Sprachantwort senden** > `Ok, setting temperature to {TemperatureValue} degrees` |
 
 ### <a name="configure-parameters-for-a-setalarm-command"></a>Konfigurieren von Parametern für einen SetAlarm-Befehl
 
@@ -462,26 +460,26 @@ Zum Hinzufügen einer Bestätigung verwenden Sie den `SetTemperature`-Befehl. Um
 
     1. Ändern Sie die Interaktionsregel **Befehl bestätigen** mithilfe der folgenden Konfiguration:
         1. Ändern Sie den Namen in **Temperatur bestätigen**.
-        1. Fügen Sie eine neue Bedingung hinzu: **Erforderliche Parameter** > **Temperatur**.
-        1. Fügen Sie eine neue Aktion hinzu: **Typ** > **Sprachantwort senden** > **Möchten Sie die Temperatur wirklich auf {Temperature} Grad festlegen?**
+        1. Die Bedingung **Alle erforderlichen Parameter** wurde bereits hinzugefügt.
+        1. Fügen Sie eine neue Aktion hinzu: **Typ** > **Sprachantwort senden** > **Möchten Sie die Temperatur wirklich auf {TemperatureValue} Grad festlegen?**
         1. Behalten Sie im Abschnitt **Erwartungen** den Standardwert **Bestätigung vom Benutzer erwarten** bei.
 
          > [!div class="mx-imgBorder"]
-         > ![Screenshot, der das Erstellen der erforderlichen Parameterantwort zeigt.](media/custom-speech-commands/add-validation-set-temperature.png)
+         > ![Screenshot, der das Erstellen der erforderlichen Parameterantwort zeigt.](media/custom-speech-commands/add-confirmation-set-temperature.png)
 
 
     1. Ändern Sie die Interaktionsregel **Bestätigung erfolgreich**, um eine erfolgreiche Bestätigung zu behandeln (der Benutzer hat mit „Ja“ geantwortet).
 
           1. Ändern Sie den Namen in **Temperaturbestätigung erfolgreich**.
           1. Belassen Sie die bestehende Bedingung **Bestätigung war erfolgreich**.
-          1. Fügen Sie eine neue Bedingung hinzu: **Typ** > **Erforderliche Parameter** > **Temperatur**.
+          1. Fügen Sie eine neue Bedingung hinzu: **Typ** > **Erforderliche Parameter** > **TemperatureValue**.
           1. Belassen Sie den Standardwert **Status nach der Ausführung** als **Vervollständigungsregeln ausführen**.
 
     1. Ändern Sie die Interaktionsregel **Bestätigung verweigert** so, dass sie Szenarien verarbeitet, in denen die Bestätigung verweigert wird (der Benutzer hat mit „Nein“ geantwortet).
 
           1. Ändern Sie den Namen in **Temperaturbestätigung verweigert**.
           1. Belassen Sie die bestehende Bedingung **Bestätigung wurde verweigert**.
-          1. Fügen Sie eine neue Bedingung hinzu: **Typ** > **Erforderliche Parameter** > **Temperatur**.
+          1. Fügen Sie eine neue Bedingung hinzu: **Typ** > **Erforderliche Parameter** > **TemperatureValue**.
           1. Fügen Sie eine neue Aktion hinzu: **Typ** > **Sprachantwort senden** > **Kein Problem. Welche Temperatur dann?** .
           1. Ändern Sie den Standardwert **Status nach der Ausführung** als **Auf Benutzereingabe warten**.
 
@@ -587,7 +585,6 @@ Standardmäßig unterstützt das Feature Benutzerdefinierte Befehle alle Funktio
 | Einstellung            | Vorgeschlagener Wert       |
 | ------------------ | --------------------- |
 | **Name**               | `SubjectContext`         |
-| **Is Global**          | Nicht markiert             |
 | **Erforderlich**           | Nicht markiert               |
 | **Typ**               | **String**                |
 | **Standardwert**      | `all` |

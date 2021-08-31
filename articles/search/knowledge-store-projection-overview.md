@@ -3,194 +3,246 @@ title: Projektionskonzepte
 titleSuffix: Azure Cognitive Search
 description: Speichern und formen Sie Ihre angereicherten Daten aus der Indizierungspipeline mit KI-Anreicherung in einem Wissensspeicher zur Verwendung in von der Volltextsuche abweichenden Szenarien.
 manager: nitinme
-author: vkurpad
-ms.author: vikurpad
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f2fa631e8ad3da1d40f68c9887b84e4ebd532240
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/10/2021
+ms.openlocfilehash: 5b28540f30c23abc4ba1d58f6984524984f2c001
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559068"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339712"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projektionen eines Wissensspeichers in Azure Cognitive Search
 
-Die kognitive Azure-Suche ermöglicht eine Inhaltsanreicherung über integrierte kognitive Qualifikationen und benutzerdefinierte Qualifikationen als Teil der Indizierung. Anreicherungen erstellen neue Informationen, wo bisher keine vorhanden waren: Extrahieren von Informationen aus Bildern, Erkennen von Stimmungen, Schlüsselausdrücke und Entitäten aus Text, um nur einige zu nennen. Anreicherungen fügen auch Struktur zu undifferenziertem Text hinzu. Alle diese Prozesse führen zu Dokumenten, die die Volltextsuche effektiver machen. In vielen Fällen sind angereicherte Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
+Projektionen als Elemente des [Wissensspeichers](knowledge-store-concept-intro.md) sind Ansichten von angereicherten Dokumenten, die für das Knowledge Mining in physischen Speichern gespeichert werden können. Mit einer Projektion können Sie Ihre Daten in einer Form „projizieren“, die Ihren Anforderungen entspricht, und Beziehungen beibehalten, sodass die Daten in Tools wie Power BI ohne zusätzlichen Aufwand gelesen werden können.
 
-Projektionen als Komponente des [Wissensspeichers](knowledge-store-concept-intro.md) sind Ansichten von angereicherten Dokumenten, die für das Knowledge Mining in physischen Speichern gespeichert werden können. Mit einer Projektion können Sie Ihre Daten in einer Form „projizieren“, die Ihren Anforderungen entspricht, und Beziehungen beibehalten, sodass die Daten in Tools wie Power BI ohne zusätzlichen Aufwand gelesen werden können.
-
-Projektionen können tabellarisch sein, wobei die Daten in Zeilen und Spalten in Azure Table Storage oder als JSON-Objekte in Azure Blob Storage gespeichert werden. Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
+Projektionen können tabellarisch sein, wobei die Datenartikulation in Zeilen und Spalten in Azure Table Storage oder als in Azure Blob Storage gespeicherte JSON-Objekte oder binäre Bilder erfolgt. Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
 
 Im Wissensspeicher werden drei Arten von Projektionen unterstützt:
 
-+ **Tabellen**: Für Daten, die am besten als Zeilen und Spalten dargestellt werden, können Sie mit Tabellenprojektionen eine schematisierte Form oder Projektion in Table Storage definieren. Nur gültige JSON-Objekte können als Tabellen projiziert werden. Das erweiterte Dokument kann jedoch Knoten enthalten, die keine bezeichneten JSON-Objekte sind. Wenn Sie diese Objekte projizieren möchten, erstellen Sie ein gültiges JSON-Objekt mit einer Shaperqualifikation oder Inlinestrukturierung.
++ **Tabellen**: Für Daten, die am besten als Zeilen und Spalten dargestellt werden, können Sie mit Tabellenprojektionen eine schematisierte Form oder Projektion in Table Storage definieren. Nur gültige JSON-Objekte können als Tabellen projiziert werden. Da ein angereichertes Dokument Knoten enthalten kann, die keine benannten JSON-Objekte sind, [fügen Sie einen Shaper-Skill hinzu oder verwenden Inlineformen](knowledge-store-projection-shape.md) innerhalb eines Skills, um gültigen JSON-Code zu erstellen. 
 
-+ **Objekte:** Wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen, werden Objektprojektionen als Blobs gespeichert. Nur gültige JSON-Objekte können als Objekte projiziert werden. Das erweiterte Dokument kann jedoch Knoten enthalten, die keine bezeichneten JSON-Objekte sind. Wenn Sie diese Objekte projizieren möchten, erstellen Sie ein gültiges JSON-Objekt mit einer Shaperqualifikation oder Inlinestrukturierung.
++ **Objekte**: Wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen, verwenden Sie Objektprojektionen, um die Ausgaben als Blobs zu speichern. Wie bei Tabellenprojektionen können nur gültige JSON-Objekte als Objekte projiziert werden, und die Strukturierung kann Ihnen dabei helfen.
 
 + **Dateien**: Wenn Sie die aus den Dokumenten extrahierten Bilder speichern müssen, können Sie mithilfe von Dateiprojektionen die normalisierten Bilder in Blob Storage speichern.
 
 Im Kontext definierte Projektionen finden Sie unter [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
 
-## <a name="projection-groups"></a>Projektionsgruppen
+## <a name="basic-pattern"></a>Grundlegendes Muster
 
-In einigen Fällen müssen Sie die angereicherten Daten in verschiedenen Formen projizieren, um unterschiedliche Ziele zu erreichen. Im Wissensspeicher können Sie mehrere Gruppen von Projektionen definieren. Projektionsgruppen weisen die folgenden Hauptmerkmale für gegenseitige Ausschließlichkeit und Verbundenheit auf.
+Projektionen sind ein Array komplexer Sammlungen unter einer `knowledgeStore`-Definition in einem Skillsetobjekt. Jeder Satz von Tabellen, Objekten und Dateien ist eine *Projektgruppe*, und Sie können über mehrere Gruppen verfügen, wenn die Speicheranforderungen die Unterstützung verschiedener Tools und Szenarien umfassen. Innerhalb einer einzelnen Gruppe können mehrere Tabellen, Objekte und Dateien enthalten sein. 
 
-### <a name="mutual-exclusivity"></a>Gegenseitige Ausschließlichkeit
+In der Regel wird nur eine Gruppe verwendet, aber das folgende Beispiel enthält zwei Gruppen, um das Muster zu veranschaulichen, wenn mehrere Gruppen vorhanden sind.
 
-Alle Inhalte, die in einer einzelnen Gruppe projiziert werden, sind unabhängig von in anderen Projektionsgruppen projizierten Daten.
-Diese Unabhängigkeit bedeutet, dass die gleichen Daten unterschiedlich geformt, aber in jeder Projektionsgruppe wiederholt vorhanden sein können.
+```json
+"knowledgeStore" : {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
+    "projections": [
+        {
+            "tables": [],
+            "objects": [],
+            "files": []
+        }, 
+        {
+            "tables": [],
+            "objects": [],
+            "files": []
+        }
+    ]
+}
+```
 
-### <a name="relatedness"></a>Verbundenheit
+### <a name="projection-groups"></a>Projektionsgruppen
 
-Projektionsgruppen ermöglichen es Ihnen jetzt, Ihre Dokumente übergreifend für alle Projektionstypen zu projizieren und gleichzeitig die Beziehungen zwischen den Projektionstypen zu erhalten. Alle Inhalte, die in einer einzelnen Projektionsgruppe projiziert werden, behalten die Beziehungen innerhalb der Daten für alle Projektionstypen bei. Innerhalb von Tabellen basieren Beziehungen auf einem generierten Schlüssel, und jeder untergeordnete Knoten behält einen Verweis auf den übergeordneten Knoten bei. Zwischen Typen (Tabellen, Objekte und Dateien) werden Beziehungen beibehalten, wenn ein einzelner Knoten typübergreifend projiziert wird. Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie über ein Dokument mit Bildern und Text verfügen. Sie können den Text in Tabellen oder Objekten und die Bilder in Dateien projizieren, wobei die Tabellen oder Objekte über eine Spalte/Eigenschaft verfügen, die die Datei-URL enthält.
+Die Verwendung mehrerer Sätze von Tabellen-Objekt-Datei-Kombinationen ist zur Unterstützung verschiedener Szenarien nützlich. Sie können einen Satz für den Entwurf und das Debuggen eines Skillsets verwenden, um die Ausgabe zur weiteren Untersuchung zu erfassen, während ein zweiter Satz Ausgaben für eine Online-App sammelt und ein dritter Satz für Data Science-Workloads verwendet wird.
 
-## <a name="input-shaping"></a>Eingabestrukturierung
+Projektionsgruppen weisen die folgenden Hauptmerkmale für gegenseitige Ausschließlichkeit und Verbundenheit auf. 
 
-Die richtige Form oder Struktur Ihrer Daten ist ausschlaggebend für eine effektive Verwendung, egal ob in Tabellen oder Objekten. Die Möglichkeit, Ihre Daten basierend darauf, wie Sie den Zugriff und die Verwendung planen, zu formen oder zu strukturieren, ist ein entscheidendes Merkmal, das als Qualifikation **Shaper** in der Qualifikationsgruppe verfügbar gemacht wird.  
+| Prinzip | BESCHREIBUNG |
+|-----------|-------------|
+| Gegenseitige Ausschließlichkeit | Alle Inhalte, die in einer einzelnen Gruppe projiziert werden, sind unabhängig von in anderen Projektionsgruppen projizierten Daten. Diese Unabhängigkeit bedeutet, dass die gleichen Daten unterschiedlich geformt, aber in jeder Projektionsgruppe wiederholt vorhanden sein können. Jede Gruppe erhält Daten aus derselben Quelle (Anreicherungsstruktur), ist jedoch vollständig von der Tabelle-Objekt-Datei-Kombination aller anderen Peerprojektionsgruppen isoliert.|
+| Verbundenheit | Projektionen unterstützen Zusammenhängende innerhalb der Gruppe. Innerhalb einer Gruppe ist der Inhalt einer Tabelle mit Inhalten in einem Objekt oder einer Datei verknüpft. Typenübergreifend (Tabellen, Objekte und Dateien) in derselben Gruppe werden Beziehungen beibehalten, wenn ein einzelner Knoten einer Anreicherungsstruktur (z. B. `/document/translated_text`) über verschiedene Tabellen und Objekte projiziert wird. Innerhalb von Tabellen basieren Beziehungen auf einem generierten Schlüssel, und jeder untergeordnete Knoten behält einen Verweis auf den übergeordneten Knoten bei. Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie über ein Dokument mit Bildern und Text verfügen. Sie können den Text in Tabellen oder Objekten und die Bilder in Dateien projizieren, wobei die Tabellen oder Objekte über eine Spalte/Eigenschaft verfügen, die die Datei-URL enthält.|
 
-Projektionen lassen sich einfacher definieren, wenn die Anreicherungsstruktur ein Objekt enthält, das dem Schema der Projektion entspricht. Mit der aktualisierten [Qualifikation „Shaper“](cognitive-search-skill-shaper.md) können Sie ein Objekt aus verschiedenen Knoten der Anreicherungsstruktur erstellen und übergeordnet unter einem neuen Knoten festlegen. Mit der Qualifikation **Shaper** können Sie komplexe Typen mit geschachtelten Objekten definieren.
+Die Entscheidung, zusätzliche Projektionsgruppen zu erstellen, basiert häufig auf den Anforderungen für die Datendarstellung. Dies können Sie tun, wenn Sie unterschiedliche Datenbeziehungen wünschen. Zwischen den Daten innerhalb eines Satzes bestehen Beziehungen – vorausgesetzt, diese Beziehungen existieren und können erkannt werden. Wenn Sie zusätzliche Sätze erstellen, besteht zwischen den Dokumenten in den einzelnen Gruppen niemals eine Beziehung. Beispiel für die Verwendung mehrerer Projektionsgruppen: Sie möchten dieselbe Datenprojektion für Ihr Onlinesystem verwenden, und die Daten müssen auf eine bestimmte Art und Weise dargestellt werden. Außerdem möchten Sie dieselbe Datenprojektion in einer Data Science-Pipeline verwenden, wobei die Daten auf andere Weise dargestellt werden.
 
-Wenn Sie eine neue Form definiert haben, die alle für die Projektion benötigten Elemente enthält, können Sie diese Form nun als Quelle für die Projektionen oder als Eingabe für eine andere Qualifikation verwenden.
+<!-- ## Knowledge Store composition
 
-## <a name="projection-slicing"></a>Projektionsslicing
+The knowledge store consists of an annotation cache and projections. The *cache* is used by the service internally to cache the results from skills and track changes. A *projection* defines the schema and structure of the enrichments that match your intended use.
 
-Wenn Sie eine Projektionsgruppe definieren, kann ein einzelner Knoten in der Anreicherungsstruktur per Slicing in mehrere verknüpfte Tabellen oder Objekte aufgeteilt werden. Wenn eine Projektion mit einem Quellpfad hinzugefügt wird, der einer vorhandenen Projektion untergeordnet ist, führt dies dazu, dass der untergeordnete Knoten aus dem übergeordneten Knoten herausgeschnitten und in die neue, noch verknüpfte Tabelle bzw. das Objekt projiziert wird. Mit dieser Methode können Sie einen einzelnen Knoten in einer Qualifikation „Shaper“ als Quelle für all Ihre Projektionen definieren.
+Within Azure Storage, projections can be articulated as tables, objects, or files.
+
++ As an object, the projection maps to Blob storage, where the projection is saved to a container, within which are the objects or hierarchical representations in JSON for scenarios like a data science pipeline.
+
++ As a table, the projection maps to Table storage. A tabular representation preserves relationships for scenarios like data analysis or export as data frames for machine learning. The enriched projections can then be easily imported into other data stores. 
+
+You can create multiple projections in a knowledge store to accommodate various constituencies in your organization. A developer might need access to the full JSON representation of an enriched document, while data scientists or analysts might want granular or modular data structures shaped by your skillset.
+
+For instance, if one of the goals of the enrichment process is to also create a dataset used to train a model, projecting the data into the object store would be one way to use the data in your data science pipelines. Alternatively, if you want to create a quick Power BI dashboard based on the enriched documents the tabular projection would work well. -->
 
 ## <a name="table-projections"></a>Tabellenprojektionen
 
-Da dies den Import vereinfacht, werden Tabellenprojektionen für die Datenuntersuchung mit Power BI empfohlen. Zudem ermöglichen Tabellenprojektionen die Änderung der Kardinalität zwischen Tabellenbeziehungen. 
+Tabellenprojektionen werden für Szenarien empfohlen, für die eine Untersuchung von Daten erforderlich ist, z. B. die Analyse mit Power BI. Die Tabellendefinition ist eine Liste der Tabellen, die projiziert werden sollen. Für jede Tabelle müssen drei Eigenschaften angegeben werden:
 
-Sie können ein einzelnes Dokument im Index in mehreren Tabellen projizieren und die Beziehungen beibehalten. Beim Projizieren in mehreren Tabellen wird die komplette Form in jeder Tabelle projiziert, es sei denn, ein untergeordneter Knoten ist die Quelle einer anderen Tabelle innerhalb derselben Gruppe.
-
-### <a name="defining-a-table-projection"></a>Definieren einer Tabellenprojektion
-
-Beim Definieren einer Tabellenprojektion im Element `knowledgeStore` der Qualifikationsgruppe ordnen Sie zunächst der Tabellenquelle einen Knoten in der Anreicherungsstruktur zu. Dieser Knoten ist normalerweise die Ausgabe einer **Shaper**-Qualifikation, die Sie der Liste der Qualifikationen hinzugefügt haben, um eine bestimmte Form zu generieren, die in Tabellen projiziert werden soll. Der Knoten, der projiziert werden soll, kann so segmentiert werden, dass er in mehreren Tabellen projiziert wird. Die Tabellendefinition ist eine Liste der Tabellen, die projiziert werden sollen.
-
-Für jede Tabelle müssen drei Eigenschaften angegeben werden:
-
-+ tableName: Der Name der Tabelle in Azure Storage.
++ tableName: Der Name der Tabelle in Azure Table Storage.
 
 + generatedKeyName: Der Spaltenname für den Schlüssel, mit dem die Zeile eindeutig identifiziert wird.
 
-+ source: Der Knoten in der Anreicherungsstruktur, aus der Sie die Anreicherungen erstellen. Dieser Knoten ist normalerweise die Ausgabe eines Shapers, es kann jedoch auch die Ausgabe aller anderen Qualifikationen sein.
++ source: Der Knoten in der Anreicherungsstruktur, aus der Sie die Anreicherungen erstellen. Dieser Knoten ist normalerweise die Ausgabe eines Shaper-Skills, der die Form der Tabelle definiert. Tabellen verfügen über Zeilen und Spalten, und die Strukturierung ist der Mechanismus, mit dem Zeilen und Spalten angegeben werden. Sie können einen [Shaper-Skill oder Inlineformen](knowledge-store-projection-shape.md) verwenden. Der Skill „Shaper“ erzeugt gültigen JSON-Code, kann aber die Ausgabe eines beliebigen Skills sein, sofern der JSON-Code gültig ist. 
 
-Es folgt ein Beispiel für Tabellenprojektionen.
+Wie in diesem Beispiel veranschaulicht, werden die Schlüsselbegriffe und Entitäten in verschiedenen Tabellen modelliert und behalten einen Verweis auf das übergeordnete Element (MainTable) für jede Zeile bei. 
 
 ```json
-{
-    "name": "your-skillset",
-    "skills": [
-      …your skills
-    ],
-"cognitiveServices": {
-… your cognitive services key info
-    },
-
-    "knowledgeStore": {
-      "storageConnectionString": "an Azure storage connection string",
-      "projections" : [
-        {
-          "tables": [
-            { "tableName": "MainTable", "generatedKeyName": "SomeId", "source": "/document/EnrichedShape" },
-            { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
-            { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
-          ]
-        },
-        {
-          "objects": [ ]
-        },
-        {
-            "files": [ ]
-        }
+"knowledgeStore": {
+  "storageConnectionString": "an Azure storage connection string",
+  "projections" : [
+    {
+      "tables": [
+        { "tableName": "MainTable", "generatedKeyName": "SomeId", "source": "/document/EnrichedShape" },
+        { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
+        { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
       ]
+    },
+    {
+      "objects": [ ]
+    },
+    {
+      "files": [ ]
     }
+  ]
 }
 ```
 
-Wie in diesem Beispiel veranschaulicht, werden die Schlüsselbegriffe und Entitäten in verschiedenen Tabellen modelliert und behalten einen Verweis auf das übergeordnete Element (MainTable) für jede Zeile bei.
+Der in „source“ angegebene Anreicherungsknoten kann in mehrere Tabellen segmentiert werden. Der Verweis auf „EnrichedShape“ ist die Ausgabe eines Shaper-Skills (nicht dargestellt). Die Eingaben der Skills bestimmen die Tabellenkomposition und die Zeilen, die diese füllen. Generierte Schlüssel und gemeinsame Felder innerhalb jeder Tabelle bilden die Grundlage für Tabellenbeziehungen.
 
 ## <a name="object-projections"></a>Objektprojektionen
 
-Objektprojektionen sind JSON-Darstellungen der Anreicherungsstruktur, die aus beliebigen Knoten erstellt werden können. In vielen Fällen kann über die Qualifikation **Shaper**, mit der eine Tabellenprojektion erstellt wird, auch eine Objektprojektion generiert werden. 
-
-```json
-{
-    "name": "your-skillset",
-    "skills": [
-      …your skills
-    ],
-"cognitiveServices": {
-… your cognitive services key info
-    },
-
-    "knowledgeStore": {
-      "storageConnectionString": "an Azure storage connection string",
-      "projections" : [
-        {
-          "tables": [ ]
-        },
-        {
-          "objects": [
-            {
-              "storageContainer": "hotelreviews", 
-              "source": "/document/hotel"
-            }
-          ]
-        },
-        {
-            "files": [ ]
-        }
-      ]
-    }
-}
-```
+Objektprojektionen sind JSON-Darstellungen der Anreicherungsstruktur, die aus beliebigen Knoten erstellt werden können. In vielen Fällen kann über die Qualifikation Shaper, mit der eine Tabellenprojektion erstellt wird, auch eine Objektprojektion generiert werden. 
 
 Zum Generieren einer Objektprojektion sind einige objektspezifische Attribute erforderlich:
 
 + storageContainer: Der Blobcontainer, in dem die Objekte gespeichert werden
+
 + source: Der Pfad zum Knoten der Anreicherungsstruktur, der als Stamm der Projektion dient.
 
-## <a name="file-projection"></a>Dateiprojektion
-
-Dateiprojektionen ähneln Objektprojektionen und werden nur für die Sammlung `normalized_images` durchgeführt. Ähnlich wie Objektprojektionen werden Dateiprojektionen im Blobcontainer mit dem Ordnerpräfix des Base64-codierten Werts der Dokument-ID gespeichert. Dateiprojektionen können nicht denselben Container wie Objektprojektionen verwenden und müssen in einen anderen Container projiziert werden.
-
 ```json
-{
-    "name": "your-skillset",
-    "skills": [
-      …your skills
-    ],
-"cognitiveServices": {
-… your cognitive services key info
+"knowledgeStore": {
+  "storageConnectionString": "an Azure storage connection string",
+  "projections" : [
+    {
+      "tables": [ ]
     },
-
-    "knowledgeStore": {
-      "storageConnectionString": "an Azure storage connection string",
-      "projections" : [
+    {
+      "objects": [
         {
-          "tables": [ ]
-        },
-        {
-          "objects": [ ]
-        },
-        {
-            "files": [
-                 {
-                  "storageContainer": "ReviewImages",
-                  "source": "/document/normalized_images/*"
-                }
-            ]
+          "storageContainer": "hotelreviews", 
+          "source": "/document/hotel"
         }
       ]
+    },
+    {
+        "files": [ ]
     }
+  ]
 }
 ```
 
+## <a name="file-projections"></a>Dateiprojektionen
+
+Dateiprojektionen wirken sich nur auf die `normalized_images`-Sammlung aus, ähneln aber ansonsten Objektprojektionen darin, dass sie in einem Blobcontainer mit einem Ordnerpräfix des Base64-codierten Werts der Dokument-ID gespeichert werden. 
+
+Dateiprojektionen können nicht denselben Container wie Objektprojektionen verwenden und müssen in einen anderen Container projiziert werden. Dateiprojektionen weisen die gleichen Eigenschaften wie Objektprojektionen auf:
+
++ storageContainer: Der Blobcontainer, in dem die Objekte gespeichert werden
+
++ source: Der Pfad zum Knoten der Anreicherungsstruktur, der als Stamm der Projektion dient.
+
+```json
+"knowledgeStore": {
+  "storageConnectionString": "an Azure storage connection string",
+  "projections" : [
+    {
+      "tables": [ ]
+    },
+    {
+      "objects": [ ]
+    },
+    {
+        "files": [
+              {
+              "storageContainer": "ReviewImages",
+              "source": "/document/normalized_images/*"
+            }
+        ]
+    }
+  ]
+}
+```
+
+## <a name="projection-shaping"></a>Projektionsstrukturierung
+
+Projektionen lassen sich einfacher definieren, wenn die Anreicherungsstruktur ein Objekt enthält, das dem Schema der Projektion entspricht, seien es Tabellen oder Objekte. Die Möglichkeit, Ihre Daten basierend auf der geplanten Nutzung zu formen oder zu strukturieren, wird in der Regel durch Hinzufügen eines [Shaper-Skills](cognitive-search-skill-shaper.md) zu Ihrem Skillset erreicht. Von einem Shaper-Skill erzeugte Formen werden als `source` für eine Projektion verwendet, können aber auch als Eingabe für einen anderen Skill verwendet werden.
+
+Einfach ausgedrückt: Bei Tabellenprojektionen bestimmt der Skill „Shaper“ die Spalten oder Felder in Ihren Tabellen. Eingaben für den Skill „Shaper“ bestehen aus Knoten in einer Anreicherungsstruktur. Die Ausgabe ist eine Struktur, die Sie in der Tabellenprojektion angeben. Im folgenden Beispiel besteht eine Tabellenprojektion namens „mytableprojection“ aus den vom Skill „Shaper“ angegebenen Eingaben.
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+    "name": "ShaperForTables",
+    "description": null,
+    "context": "/document",
+    "inputs": [
+        {
+            "name": "metadata_storage_path",
+            "source": "/document/metadata_storage_path",
+            "sourceContext": null,
+            "inputs": []
+        },
+        {
+          "name": "reviews_text",
+          "source": "/document/reviews_text"
+        }, 
+        {
+          "name": "reviews_title",
+          "source": "/document/reviews_title"
+        },
+        {
+          "name": "reviews_username",
+          "source": "/document/reviews_username"
+        },
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "targetName": "mytableprojection"
+      }
+    ]
+}
+```
+
+Mit dem aktualisierten Skill „Shaper“ können Sie ein Objekt aus verschiedenen Knoten der Anreicherungsstruktur erstellen und unter einem neuen übergeordneten Knoten festlegen. Mit diesem Skill können Sie zudem komplexe Typen mit geschachtelten Objekten definieren. Beispiele finden Sie in der [Dokumentation zum Skill „Shaper“](cognitive-search-skill-shaper.md).
+
+## <a name="projection-slicing"></a>Projektionsslicing
+
+Innerhalb einer Tabellenprojektionsgruppe kann ein einzelner Knoten in der Anreicherungsstruktur in mehrere verknüpfte Tabellen segmentiert werden, sodass jede Tabelle eine Kategorie von Daten enthält. Dies kann für die Analyse nützlich sein, um zu steuern, ob und wie verknüpfte Daten aggregiert werden.
+
+Um mehrere untergeordnete Tabellen zu erstellen, beginnen Sie mit der übergeordneten Tabelle, und erstellen Sie dann zusätzliche Tabellen, die auf der Quelle des übergeordneten Elements aufbauen. In diesem Beispiel enthalten „KeyPhrases“ und „Entities“ Segmente (Slices) von „/document/EnrichedShape“.
+
+```json
+"tables": [
+  { "tableName": "MainTable", "generatedKeyName": "SomeId", "source": "/document/EnrichedShape" },
+  { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
+  { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
+]
+```
+
+Beim Projizieren in mehreren Tabellen wird die komplette Form in jeder Tabelle projiziert, es sei denn, ein untergeordneter Knoten ist die Quelle einer anderen Tabelle innerhalb derselben Gruppe. Wenn eine Projektion mit einem Quellpfad hinzugefügt wird, der einer vorhandenen Projektion untergeordnet ist, führt dies dazu, dass der untergeordnete Knoten aus dem übergeordneten Knoten herausgeschnitten und in die neue, noch verknüpfte Tabelle bzw. das Objekt projiziert wird. Mit dieser Methode können Sie einen einzelnen Knoten in einem Shaper-Skill als Quelle für all Ihre Projektionen definieren.
+
 ## <a name="projection-lifecycle"></a>Lebenszyklus von Projektionen
 
-Der Lebenszyklus der Projektionen ist an die Quelldaten in der Datenquelle gebunden. Wenn die Daten aktualisiert und neu indiziert werden, werden die Projektionen mit den Ergebnissen der Anreicherungen aktualisiert. So wird sichergestellt, dass die Projektionen konsistent mit den Daten in der Datenquelle sind. Die Projektionen erben die Löschrichtlinie, die Sie für den Index konfiguriert haben. Projektionen werden nicht gelöscht, wenn der Indexer oder der Suchdienst selbst gelöscht wird.
+Der Lebenszyklus Ihrer Projektionen ist an die Quelldaten in der Datenquelle gebunden. Wenn Quelldaten aktualisiert und neu indiziert werden, werden die Projektionen mit den Ergebnissen der Anreicherungen aktualisiert. So wird sichergestellt, dass die Projektionen konsistent mit den Daten in der Datenquelle sind. Projektionen werden jedoch auch unabhängig in Azure Storage gespeichert. Sie werden nicht gelöscht, wenn der Indexer oder der Suchdienst selbst gelöscht wird. 
 
 ## <a name="using-projections"></a>Verwenden von Projektionen
 
@@ -198,7 +250,7 @@ Nach dem Ausführen des Indexers können Sie die projizierten Daten in den Conta
 
 Für die Analyse erfolgt die Untersuchung in Power BI einfach durch das Festlegen von Azure Table Storage als Datenquelle. Sie können auf einfache Weise eine Reihe von Visualisierungen für Ihre Daten erstellen, indem Sie die darin enthaltenen Beziehungen verwenden.
 
-Wenn Sie die angereicherten Daten in einer Data Science-Pipeline verwenden möchten, können Sie alternativ [die Daten aus Blobs in einen Pandas-Datenrahmen laden](../machine-learning/team-data-science-process/explore-data-blob.md).
+Wenn Sie die angereicherten Daten in einer Data Science-Pipeline verwenden möchten, können Sie alternativ [die Daten aus Blobs in einen Pandas-Datenrahmen laden](/azure/architecture/data-science-process/explore-data-blob).
 
 Wenn Sie Ihre Daten schließlich aus dem Wissensspeicher exportieren möchten, enthält Azure Data Factory Connectors zum Exportieren der Daten in die gewünschte Datenbank. 
 
@@ -209,7 +261,4 @@ Erstellen Sie als nächsten Schritt entsprechend den Anweisungen Ihren ersten Wi
 > [!div class="nextstepaction"]
 > [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
 
-Für ein Tutorial zu erweiterten Projektionskonzepten wie Aufteilen in Slices, Inlinestrukturierung und Beziehungen behandelt beginnen Sie mit [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md).
-
-> [!div class="nextstepaction"]
-> [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md)
+Erweiterte Konzepte, wie Aufteilen in Slices, Inlinestrukturierung und Beziehungen, finden Sie unter [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md).

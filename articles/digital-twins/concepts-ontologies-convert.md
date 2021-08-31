@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ebe6a96c88d061138eb629f50aa37ea90fe40eb4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 45df0eb8bfc6ab5b181b8bc103c4a4a47f3196f6
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475877"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428447"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>Konvertieren von Branchenstandardontologien in DTDL für Azure Digital Twins
 
@@ -37,7 +37,7 @@ In der folgenden Tabelle sind Beispiele dafür aufgeführt, wie RDFS- und OWL-Ko
 
 Im folgenden C#-Codeausschnitt wird eine RDF-Modelldatei unter Verwendung der [dotNetRDF](https://www.dotnetrdf.org/)-Bibliothek in ein Diagramm geladen und in DTDL konvertiert. 
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/other/csharp/convertRDF.cs":::
 
 ## <a name="converter-samples"></a>Konverterbeispiele
 
@@ -61,6 +61,6 @@ Dieser Konverter wurde verwendet, um die [RealEstateCore-Ontologie](https://doc.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [Konzepte: Erweitern von Branchenontologien](concepts-ontologies-extend.md).
+* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [Erweitern von Branchenontologien](concepts-ontologies-extend.md).
 
 * Oder fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [Verwenden von Ontologiestrategien in einem Modellentwicklungspfad](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).

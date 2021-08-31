@@ -4,17 +4,20 @@ description: Informationen zum Erstellen, Veröffentlichen und Skalieren von App
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da32a2bbd4824e589a6673b043551dce67c32e70
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594049"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446317"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 Eine App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service in einem Subnetz in der Azure Virtual Network-Instanz eines Kunden. Eine ASE besteht aus den folgenden Komponenten:
 
@@ -88,9 +91,9 @@ In einer ASE können Sie einen App Service-Plan auf bis zu 100 Instanzen zentra
 
 ## <a name="ip-addresses"></a>IP-Adressen
 
-App Service kann eine dedizierte IP-Adresse an eine App vergeben. Diese Funktion ist nach dem Konfigurieren von IP-basiertem SSL verfügbar, wie unter [Binden eines vorhandenen benutzerdefinierten TLS/SSL-Zertifikats an Azure App Service][ConfigureSSL] beschrieben. In einer ILB-ASE können Sie keine weiteren IP-Adressen hinzufügen, die für IP-basiertes SSL verwendet werden sollen.
+App Service kann eine dedizierte IP-Adresse an eine App vergeben. Diese Funktion ist nach dem Konfigurieren einer IP-basiertem TLS/SSL-Bindung verfügbar, wie unter [Binden eines vorhandenen benutzerdefinierten TLS/SSL-Zertifikats an Azure App Service][ConfigureSSL] beschrieben. In einer ILB-ASE können Sie keine weiteren IP-Adressen hinzufügen, die für die IP-basierte TLS/SSL-Bindung verwendet werden sollen.
 
-Bei einer externen ASE können Sie IP-basiertes SSL für Ihre App genauso wie für eine mehrinstanzenfähige App Service-Instanz konfigurieren. In der ASE ist immer eine freie Adresse vorhanden (bis zu 30 IP-Adressen). Bei jeder Verwendung einer IP-Adresse wird eine weitere hinzugefügt, sodass immer sofort eine Adresse zur Verfügung steht. Bei der Vergabe einer weiteren IP-Adresse ist eine zeitliche Verzögerung erforderlich. Diese Verzögerung verhindert das Hinzufügen von IP-Adressen in schneller Abfolge.
+Bei einer externen ASE können Sie eine IP-basierte TLS/SSL-Bindung für Ihre App genauso wie für den mehrinstanzenfähigen App Service konfigurieren. In der ASE ist immer eine freie Adresse vorhanden (bis zu 30 IP-Adressen). Bei jeder Verwendung einer IP-Adresse wird eine weitere hinzugefügt, sodass immer sofort eine Adresse zur Verfügung steht. Bei der Vergabe einer weiteren IP-Adresse ist eine zeitliche Verzögerung erforderlich. Diese Verzögerung verhindert das Hinzufügen von IP-Adressen in schneller Abfolge.
 
 ## <a name="front-end-scaling"></a>Front-End-Skalierung
 
@@ -141,7 +144,7 @@ So konfigurieren Sie DNS in privaten Azure DNS-Zonen
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ILB-ASE festlegen. Wenn Sie dann eine Zone namens *contoso.net* erstellen möchten, können Sie dies tun und die Zone auf die ILB-IP-Adresse verweisen lassen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* verfügbar. 
 
-Die Zone namens *.&lt;asename&gt;.appserviceenvironment.net* ist global eindeutig. Vor Mai 2019 konnten Kunden das Domänensuffix der ILB-ASE angeben. Wenn Sie *.contoso.com* als Domänensuffix verwenden wollten, konnten Sie dies tun, wobei dies dann die SCM-Site einschloss. Dieses Modell bot Herausforderungen, einschließlich: Verwalten des SSL-Standardzertifikats, fehlendes einmaliges Anmelden (Single Sign-On) bei der SCM-Site und die Anforderung, ein Platzhalterzertifikat zu verwenden. Der Upgradeprozess für das ILB-ASE-Standardzertifikat war außerdem führte außerdem zu Unterbrechungen und Neustarts von Anwendungen. Um diese Probleme zu beheben, wurde das ILB-ASE-Verhalten dahingehend geändert, dass ein Domänensuffix, das auf dem Namen der ASE basiert, zusammen mit einem Suffix, das Microsoft gehört, verwendet wird. Die Änderung des ILB-ASE-Verhaltens wirkt sich nur auf ILB-ASEs aus, die nach Mai 2019 erstellt wurden. Davor vorhandene ILB-ASEs müssen weiterhin das Standardzertifikat der ASE und seine DNS-Konfiguration verwalten.
+Die Zone namens *.&lt;asename&gt;.appserviceenvironment.net* ist global eindeutig. Vor Mai 2019 konnten Kunden das Domänensuffix der ILB-ASE angeben. Wenn Sie *.contoso.com* als Domänensuffix verwenden wollten, konnten Sie dies tun, wobei dies dann die SCM-Site einschloss. Dieses Modell ging mit Herausforderungen einher. Dazu zählten u. a. das Verwalten des TLS/SSL-Standardzertifikats, fehlendes einmaliges Anmelden (Single Sign-On) bei der SCM-Site und die Anforderung, ein Platzhalterzertifikat zu verwenden. Der Upgradeprozess für das ILB-ASE-Standardzertifikat war außerdem führte außerdem zu Unterbrechungen und Neustarts von Anwendungen. Um diese Probleme zu beheben, wurde das ILB-ASE-Verhalten dahingehend geändert, dass ein Domänensuffix, das auf dem Namen der ASE basiert, zusammen mit einem Suffix, das Microsoft gehört, verwendet wird. Die Änderung des ILB-ASE-Verhaltens wirkt sich nur auf ILB-ASEs aus, die nach Mai 2019 erstellt wurden. Davor vorhandene ILB-ASEs müssen weiterhin das Standardzertifikat der ASE und seine DNS-Konfiguration verwalten.
 
 ## <a name="publishing"></a>Veröffentlichung
 
@@ -207,22 +210,15 @@ Anleitungen zum Erstellen einer Warnung für Ihre Protokolle befolgen Sie die An
 
 ## <a name="upgrade-preference"></a>Upgradeeinstellung
 
-Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Im **Resource Manager-Objekt „HostingEnvironment“** der ASE können Sie einen Wert für **upgradePreference** festlegen. Die Einstellung **upgradePreference** kann mithilfe einer Vorlage, mit ARMClient oder per https://resources.azure.com konfiguriert werden. Es gibt drei mögliche Werte:
+Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Dieses Verhalten kann in Ihrem ASE-Portal aktiviert werden.  Unter **Konfiguration** können Sie eine Option für die **Upgradepriorität** festlegen. Es gibt drei mögliche Werte:
 
 - **Keine:** Azure führt das Upgrade Ihrer ASE in keinem bestimmten Batch durch. Dies ist der Standardwert.
 - **Early**: Ihre ASE wird in der ersten Hälfte der App Service-Upgrades aktualisiert.
 - **Late**: Ihre ASE wird in der zweiten Hälfte der App Service-Upgrades aktualisiert.
 
-Bei Verwendung von https://resources.azure.com führen Sie die folgenden Schritte aus, um den Wert für **upgradePreferences** festzulegen:
+Wählen Sie den gewünschten Wert und wählen Sie **Speichern**.  Der Standardwert aller ASEs ist **Keine**.
 
-1. Wechseln Sie zu „resources.azure.com“, und melden Sie sich mit Ihrem Azure-Konto an.
-1. Gehen Sie die Ressourcen durch bis zu „subscriptions\/\[Abonnementname\]\/resourceGroups\/\[Ressourcengruppenname\]\/providers\/Microsoft.Web\/hostingEnvironments\/\[ASE-Name\]“.
-1. Wählen Sie ganz oben **Lesen/Schreiben** aus.
-1. Wählen Sie **Bearbeiten** aus.
-1. Legen Sie **upgradePreference** auf den gewünschten der drei Werte fest.
-1. Wählen Sie **Patch** aus.
-
-![Ressourcenanzeige auf „azure.com“][5]
+![ASE-Konfigurationsportal][5]
 
 Die Verwendung der Funktion **upgradePreferences** ist am sinnvollsten, wenn Sie mehrere ASEs besitzen, weil Ihre als „Early“ gekennzeichneten ASEs vor den mit „Late“ gekennzeichneten ASEs aktualisiert werden. Bei Verwendung von mehreren ASEs sollten Sie für Ihre Entwicklungs- und Test-ASEs die Option „Early“ und für Ihre Produktions-ASEs die Option „Late“ festlegen.
 

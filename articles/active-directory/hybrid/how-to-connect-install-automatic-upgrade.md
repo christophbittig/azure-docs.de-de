@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 08/11/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7a3cf21ef2493ef6a93397e6d6601e326d0ef0d3
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059240"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122350972"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
 Das automatische Upgrade von Azure AD Connect ist ein Feature, das regelmäßig überprüft, ob neuere Versionen von Azure AD Connect vorhanden sind. Wenn Ihr Server für automatische Upgrades aktiviert ist und eine neuere Version gefunden wird, für die der Server berechtigt ist, wird ein automatisches Upgrade auf diese neuere Version durchgeführt.
@@ -50,6 +50,22 @@ Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastru
 
 
 Wenn auf dem Server die **Synchronization Service Manager** -Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
+
+>[!NOTE]
+> Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar ist. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist und **Ihre Konfiguration für das automatische Upgrade [berechtigt](#auto-upgrade-eligibility) ist**, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Weitere Informationen zu diesem Update finden Sie unter [Azure AD Connect: Verlauf der Versionsveröffentlichungen](reference-connect-version-history.md).
+
+## <a name="auto-upgrade-eligibility"></a>Berechtigung für das automatische Upgrade
+Um für das automatisches Upgrade berechtigt zu sein, dürfen Sie keine der folgenden Bedingungen erfüllen:
+
+| Ergebnismeldung | BESCHREIBUNG |
+| --- | --- |
+|UpgradeNotSupportedCustomizedSyncRules|Sie haben der Konfiguration eigene benutzerdefinierte Regeln hinzugefügt.|
+|UpgradeNotSupportedInvalidPersistedState|Die Installation ist keine Express-Einstellung und kein DirSync-Upgrade.|
+|UpgradeNotSupportedNonLocalDbInstall|Sie verwenden keine SQL Server Express LocalDB-Datenbank.|
+|UpgradeNotSupportedLocalDbSizeExceeded|Lokale Datenbank ist größer als oder gleich 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|Uploads von Integritätsdaten wurden im Portal deaktiviert|
+
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn das automatische Upgrade Ihrer Connect-Installation nicht wie erwartet funktioniert, befolgen Sie diese Schritte, um herauszufinden, wo der Fehler liegen könnte.

@@ -7,18 +7,18 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/18/2021
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6385f03556d155941139b77333d6f4a25081fe67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fa12eca00bca011107f48c6f1b282dded4f3b5a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103157"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444550"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrieren mobiler Apps, die Web-APIs aufrufen
 
@@ -34,7 +34,7 @@ Die meisten mobilen Anwendungen verwenden die interaktive Authentifizierung. Wen
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Zielgruppe für die integrierte Windows-Authentifizierung, Benutzername/Kennwort und B2C
 
-Wenn Sie über eine UWP-App (Universelle Windows-Plattform) verfügen, können Sie zum Anmelden von Benutzern die integrierte Windows-Authentifizierung verwenden. Um die integrierte Windows-Authentifizierung oder eine Authentifizierung mit Benutzername und Kennwort verwenden zu können, muss Ihre Anwendung Benutzer bei Ihrem eigenen LOB-Entwicklermandanten (Line of Business) anmelden. In einem Szenario mit einem unabhängigen Softwareanbieter (ISV) kann Ihre Anwendung Benutzer bei Azure Active Directory-Organisationen anmelden. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
+Wenn Sie über eine UWP-App (Universelle Windows-Plattform) verfügen, können Sie zum Anmelden von Benutzern die integrierte Windows-Authentifizierung (IWA) verwenden. Um die IWA oder eine Authentifizierung mit Benutzername und Kennwort verwenden zu können, muss Ihre Anwendung Benutzer bei Ihrem eigenen Line of Business(LOB)-Entwicklermandanten anmelden. In einem Szenario mit einem unabhängigen Softwareanbieter (ISV) kann Ihre Anwendung Benutzer bei Azure Active Directory-Organisationen anmelden. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
 
 Sie können Benutzer außerdem mithilfe von Identitäten aus sozialen Netzwerken anmelden, die eine B2C-Autorität und eine Richtlinie übergeben. Beim Verwenden dieser Methode stehen nur die interaktive Authentifizierung und die Authentifizierung mithilfe von Benutzername und Kennwort zur Verfügung. Die Authentifizierung über Benutzername und Kennwort wird derzeit nur für Xamarin.iOS, Xamarin.Android und UWP unterstützt.
 
@@ -90,7 +90,7 @@ Identifizieren Sie Ihre Anwendung als öffentliche Clientanwendung. Gehen Sie fo
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 
-Mobile Anwendungen rufen APIs für angemeldete Benutzer auf. Ihre Anwendung muss delegierte Berechtigungen anfordern. Diese Berechtigungen werden auch als Bereiche bezeichnet. Je nach der gewünschten Erfahrung können Sie delegierte Berechtigung statisch über das Azure-Portal anfordern. Alternativ können Sie sie auch dynamisch zur Laufzeit anfordern.
+Mobile Anwendungen rufen APIs für den angemeldeten Benutzer auf. Ihre Anwendung muss delegierte Berechtigungen anfordern. Diese Berechtigungen werden auch als Bereiche bezeichnet. Je nach der gewünschten Erfahrung können Sie delegierte Berechtigung statisch über das Azure-Portal anfordern. Alternativ können Sie sie auch dynamisch zur Laufzeit anfordern.
 
 Wenn Sie Berechtigungen statisch registrieren, sind sie für Administratoren leicht zu genehmigen. Die statische Registrierung stellt das empfohlene Verfahren dar.
 

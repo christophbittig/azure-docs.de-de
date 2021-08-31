@@ -1,18 +1,20 @@
 ---
-title: Informationen zu Failover und Failback in Azure Site Recovery
-description: Erfahren Sie mehr über Failover und Failback in Azure Site Recovery.
+title: Informationen zu Failover und Failback in Azure Site – Klassisch
+description: Informationen zu Failover und Failback in Azure Site Recovery – Klassisch
 ms.topic: conceptual
-ms.date: 12/24/2019
-ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/30/2021
+ms.openlocfilehash: 97465622afb1a8b59601799ed14a625f49073a43
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070742"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446552"
 ---
-# <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Informationen zum lokalen Failover und Failback bei der Notfallwiederherstellung
+# <a name="about-on-premises-disaster-recovery-failoverfailback---classic"></a>Informationen zum lokalen Failover und Failback bei der Notfallwiederherstellung – Klassisch
 
-Dieser Artikel bietet eine Übersicht über Failover- und Failbackvorgänge bei der Notfallwiederherstellung von lokalen Computern in Azure mit [Azure Site Recovery](site-recovery-overview.md).
+Dieser Artikel bietet eine Übersicht über Failover- und Failbackvorgänge bei der Notfallwiederherstellung von lokalen Computern in Azure mit [Azure Site Recovery](site-recovery-overview.md) – Klassisch.
+
+Informationen zu Failover und Failback im Azure Site Recovery Vorschau-Release finden Sie [in diesem Artikel](failover-failback-overview-preview.md).
 
 ## <a name="recovery-stages"></a>Wiederherstellungsphasen
 

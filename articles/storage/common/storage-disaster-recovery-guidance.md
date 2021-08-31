@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/09/2021
+ms.date: 07/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2fdbdcfd847c33bc6d948d12b14f468233b4cf19
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 383757cf20c7ac508aa396b947640c3a1221052d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901491"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355934"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Notfallwiederherstellung und Speicherkontofailover
 
@@ -97,7 +97,9 @@ Der Schreibzugriff für georedundante Konten wird wiederhergestellt, sobald der 
 
 Da Daten asynchron von der primären Region in die sekundäre Region geschrieben werden, kommt es immer zu einer Verzögerung, bevor ein Schreibvorgang, der in die primäre Region erfolgt, in die sekundäre Region kopiert wird. Wenn die primäre Region nicht verfügbar ist, wurden die letzten Schreibvorgänge unter Umständen noch nicht in die sekundäre Region kopiert.
 
-Wenn Sie ein Failover erzwingen, gehen alle Daten in der primären Region verloren, da die sekundäre Region zur neuen primären Region wird und das Speicherkonto als lokal redundant konfiguriert ist. Alle bereits in die sekundäre Region kopierten Daten werden beibehalten, wenn das Failover durchgeführt wird. Alle Daten, die in die primäre Region geschrieben und nicht zusätzlich in die sekundäre Region kopiert wurden, gehen aber dauerhaft verloren.
+Wenn Sie ein Failover erzwingen, gehen alle Daten in der primären Region verloren, da die sekundäre Region zur neuen primären Region wird. Die neue primäre Region ist nach dem Failover als lokal redundant konfiguriert.
+
+Alle bereits in die sekundäre Region kopierten Daten werden beibehalten, wenn das Failover durchgeführt wird. Alle Daten, die in die primäre Region geschrieben und nicht zusätzlich in die sekundäre Region kopiert wurden, gehen aber dauerhaft verloren.
 
 Die Eigenschaft **Letzte Synchronisierung** gibt an, wann die Daten aus der primären Region garantiert in die sekundäre Region geschrieben wurden. Alle Daten, die vor der letzte Synchronisierung geschrieben wurden, sind in der sekundären Region verfügbar, während Daten, die nach der letzten Synchronisierung geschrieben wurden, möglicherweise nicht in die sekundären Region geschrieben wurden und verloren gehen können. Verwenden Sie diese Eigenschaft im Falle eines Ausfalls, um die Höhe des Datenverlustes abzuschätzen, der Ihnen durch die Einleitung eines Kontofailovers entstehen kann.
 
@@ -107,11 +109,13 @@ Weitere Informationen zum Überprüfen der Eigenschaft **Letzte Synchronisierung
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Seien Sie vorsichtig, wenn Sie ein Failover zur ursprünglichen primären Region durchführen.
 
-Nachdem Sie das Failover von der primären zur sekundären Region durchgeführt haben, ist Ihr Speicherkonto so konfiguriert, dass es in der neuen primären Region lokal redundant ist. Anschließend können Sie das Konto erneut für Georedundanz konfigurieren. Wenn das Konto nach einem Failover wieder für Georedundanz konfiguriert ist, beginnt die neue primäre Region sofort mit dem Kopieren der Daten in die neue sekundäre Region, die vor dem ursprünglichen Failover die primäre war. Es kann aber einige Zeit dauern, bis bestehende Daten in der primären Region vollständig in die neue sekundäre Region kopiert wurden.
+Nachdem Sie das Failover von der primären zur sekundären Region durchgeführt haben, ist Ihr Speicherkonto so konfiguriert, dass es in der neuen primären Region lokal redundant ist. Anschließend können Sie das Konto in der neuen primären Region für Georedundanz konfigurieren. Wenn das Konto nach einem Failover für Georedundanz konfiguriert ist, beginnt die neue primäre Region sofort mit dem Kopieren der Daten in die neue sekundäre Region, die vor dem ursprünglichen Failover die primäre war. Es kann aber einige Zeit dauern, bis bestehende Daten in der neuen primären Region vollständig in die neue sekundäre Region kopiert wurden.
 
-Nachdem das Speicherkonto für die Georedundanz neu konfiguriert wurde, ist es möglich, ein weiteres Failover von der neuen primären Region zurück zur neuen sekundären Region zu initiieren. In diesem Fall wird die ursprüngliche primäre Region vor dem Failover wieder zur primären Region und ist so konfiguriert, dass sie lokal redundant ist. Alle Daten in der primären Region nach dem Failover (die ursprüngliche sekundäre Region) gehen dann verloren. Wenn die meisten Daten im Speicherkonto vor dem Failover nicht in die neue sekundäre Region kopiert wurden, kann es zu einem größeren Datenverlust kommen.
+Nachdem das Speicherkonto für die Georedundanz neu konfiguriert wurde, ist es möglich, ein Failback von der neuen primären Region zurück zur neuen sekundären Region zu initiieren. In diesem Fall wird die ursprüngliche primäre Region vor dem Failover wieder zur primären Region und ist so konfiguriert, dass sie entweder lokal redundant oder zonenredundant ist, je nachdem, ob die ursprüngliche primäre Konfiguration GRS/RA-GRS oder GZRS/RA-GZRS war. Alle Daten in der primären Region nach dem Failover (die ursprüngliche sekundäre Region) gehen beim Failback verloren. Wenn die meisten Daten im Speicherkonto vor dem Failover nicht in die neue sekundäre Region kopiert wurden, kann es zu einem größeren Datenverlust kommen.
 
-Um einen größeren Datenverlust zu vermeiden, überprüfen Sie vorher den Wert der Eigenschaft **Letzte Synchronisierung**. Vergleichen Sie die letzte Synchronisierung mit dem Zeitpunkt, an dem die Daten in die neue primäre Region geschrieben wurden, um den erwarteten Datenverlust zu bewerten. 
+Um einen größeren Datenverlust zu vermeiden, überprüfen Sie vorher den Wert der Eigenschaft **Letzte Synchronisierung**. Vergleichen Sie die letzte Synchronisierung mit dem Zeitpunkt, an dem die Daten in die neue primäre Region geschrieben wurden, um den erwarteten Datenverlust zu bewerten.
+
+Nach einem Failbackvorgang können Sie die neue primäre Region erneut als georedundant konfigurieren. Wenn der ursprüngliche primäre Server für LRS konfiguriert wurde, können Sie ihn als GRS oder RA-GRS konfigurieren. Wenn der ursprüngliche primäre Server für ZRS konfiguriert wurde, können Sie ihn als GZRS oder RA-GZRS konfigurieren. Weitere Optionen finden Sie unter [Ändern der Replikationsweise von Speicherkonten](redundancy-migration.md).
 
 ## <a name="initiate-an-account-failover"></a>Initiieren eines Kontofailovers
 
@@ -159,7 +163,7 @@ Die folgenden Funktionen und Dienste werden für Kontofailover nicht unterstütz
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.
 - Speicherkonten mit aktiviertem hierarchischem Namespace (z. B. für Data Lake Storage Gen2) werden zurzeit nicht unterstützt.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
-- Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
+- Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/immutable-storage-overview.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopieren von Daten als Alternative zum Failover
 

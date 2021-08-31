@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: e6bc27674cadc8798afa3f9f9297b0d573d7ce64
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071052"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397693"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Erstellen und Verwalten von Active Directory-Verbindungen für Azure NetApp Files
 
@@ -30,7 +30,7 @@ Für einige Features von Azure NetApp Files ist eine Active Directory-Verbindun
 * Sie müssen bereits einen Kapazitätspool eingerichtet haben. Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
 * Ein Subnetz muss an Azure NetApp Files delegiert werden. Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
-## <a name="requirements-for-active-directory-connections"></a>Anforderungen an Active Directory-Verbindungen
+## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Anforderungen und Überlegungen zu Active Directory-Verbindungen
 
 * Sie können nur eine Active Directory-Verbindung (AD) pro Abonnement und pro Region konfigurieren.   
 
@@ -39,6 +39,8 @@ Für einige Features von Azure NetApp Files ist eine Active Directory-Verbindun
     Die AD-Verbindung ist nur über das NetApp-Konto sichtbar, in dem sie erstellt wird. Sie können jedoch das Shared AD-Feature (Freigegebenes AD) aktivieren, um NetApp-Konten, die sich unter demselben Abonnement und in derselben Region befinden, die Verwendung eines AD-Servers zu gestatten, der in einem der NetApp-Konten erstellt wurde. Weitere Informationen finden Sie unter [Zuordnen mehrerer NetApp-Konten im selben Abonnement und derselben Region zu einer AD-Verbindung](#shared_ad). Wenn Sie dieses Feature aktivieren, wird die AD-Verbindung in allen zu einem Abonnement und einer Region gehörenden NetApp-Konten sichtbar. 
 
 * Es muss mit dem verwendeten Administratorkonto möglich sein, Computerkonten im angegebenen Pfad der Organisationseinheit (OU) zu erstellen.  
+
+* Wenn Sie das Kennwort des Active Directory-Benutzerkontos ändern, das in Azure NetApp Files verwendet wird, müssen Sie das in [den Active Directory-Verbindungen](#create-an-active-directory-connection) konfigurierte Kennwort aktualisieren. Andernfalls können Sie keine neuen Volumes erstellen, und der Zugriff auf vorhandene Volumes kann abhängig von der Konfiguration ebenfalls beeinträchtigt werden.  
 
 * Auf dem entsprechenden Windows Active Directory-Server (AD) müssen die richtigen Ports geöffnet sein.  
     Die erforderlichen Ports lauten wie folgt: 
@@ -118,7 +120,6 @@ Weitere Überlegungen zu Azure NetApp Files im Hinblick auf AADDS:
 * Azure NetApp Files unterstützt die Typen `user` und `resource forest`.
 * Für den Synchronisierungstyp können Sie `All` oder `Scoped` auswählen.   
     Wenn Sie `Scoped` auswählen, stellen Sie sicher, dass die richtige Azure AD-Gruppe für den Zugriff auf SMB-Freigaben ausgewählt ist.  Wenn Sie unsicher sind, können Sie den Synchronisierungstyp `All` verwenden.
-* Es muss die Enterprise- oder Premium-SKU verwendet werden. Die Standard-SKU wird nicht unterstützt.
 
 Beachten Sie beim Erstellen einer Active Directory-Verbindung die folgenden Besonderheiten für AADDS:
 

@@ -1,15 +1,15 @@
 ---
 title: Informationen zu Azure Policy für Kubernetes
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten.
-ms.date: 05/13/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a479c6f6bf22f416b3508c08dff5d60a8297d1a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 20b3362823644ab478e2069fbc610079820302c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985020"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351324"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -71,8 +71,8 @@ Im folgenden finden Sie allgemeine Empfehlungen für die Verwendung des Azure Po
 
 - Zur Verwendung des Azure Policy-Add-Ons müssen drei Gatekeeper-Komponenten ausgeführt werden: ein Überwachungspod und zwei Webhook-Podreplikate. Diese Komponenten nutzen umso mehr Ressourcen, je stärker die Anzahl der Kubernetes-Ressourcen und Richtlinienzuweisungen im Cluster zunimmt. Dadurch werden entsprechende Überwachungs- und Erzwingungsvorgänge erforderlich.
 
-  - Bei weniger als 500 Pods in einem Cluster mit maximal 20 Einschränkungen sind 2 vCPUs und 350 MB Arbeitsspeicher pro Komponente erforderlich.
-  - Bei mehr als 500 Pods in einem Cluster mit maximal 40 Einschränkungen gilt Folgendes: 3 vCPUs und 600 MB Arbeitsspeicher pro Komponente
+  - Bei weniger als 500 Pods in einem Cluster mit maximal 20 Einschränkungen sind zwei vCPUs und 350 MB Arbeitsspeicher pro Komponente erforderlich.
+  - Bei mehr als 500 Pods in einem Cluster mit maximal 40 Einschränkungen gilt Folgendes: drei vCPUs und 600 MB Arbeitsspeicher pro Komponente.
 
 - Windows-Pods [unterstützen keine Sicherheitskontexte](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
   Daher können einige Azure Policy-Richtlinien wie das Sperren von Stammberechtigungen in Windows-Pods nicht eskaliert und nur auf Linux-Pods angewendet werden.
@@ -196,8 +196,8 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
    |Domain |Port |
    |---|---|
-   |`gov-prod-policy-data.trafficmanager.net` |`443` |
-   |`raw.githubusercontent.com` |`443` |
+   |`data.policy.core.windows.net` |`443` |
+   |`store.policy.core.windows.net` |`443` |
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 

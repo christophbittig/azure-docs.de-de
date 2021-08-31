@@ -1,19 +1,19 @@
 ---
-title: Skalieren von Clustergrößen – Azure HDInsight
-description: Flexibles Skalieren eines Apache Hadoop-Clusters zur Anpassung an Ihre Workload in Azure HDInsight
+title: Manuelles Skalieren eines Clusters – Azure HDInsight
+description: Manuelles elastisches Skalieren eines Apache Hadoop-Clusters zur Anpassung an Ihre Workload in Azure HDInsight
 ms.author: ashish
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 1c388cb070c66fc3a2322c358bc4113ed2106c77
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 86759dacfc4412fff1d100f5f6808aa7269575e1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761847"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444410"
 ---
-# <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
+# <a name="manually-scale-azure-hdinsight-clusters"></a>Manuelles Skalieren von Azure HDInsight-Clustern
 
 Mit der Option, die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren zu können, ermöglicht Ihnen HDInsight ein hohes Maß an Flexibilität. Dadurch können Sie etwa einen Cluster nach den Geschäftszeiten oder am Wochenende verkleinern. In Zeiten von Spitzenbelastungen können Sie ihn hingegen erweitern.
 

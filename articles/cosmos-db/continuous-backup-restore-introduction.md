@@ -4,26 +4,21 @@ description: Das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB h
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8862f0b71a6b3f8bba21bdd4ab40290a00d0959
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393138"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356619"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Fortlaufende Sicherung mit dem Feature „Zeitpunktwiederherstellung“ (Vorschau) von Azure Cosmos DB
+# <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>Fortlaufende Sicherung mit der Zeitpunktwiederherstellung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Das Feature „Zeitpunktwiederherstellung“ (fortlaufender Sicherungsmodus) für Azure Cosmos DB befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Das Feature „Zeitpunktwiederherstellung“ (Vorschau) von Azure Cosmos DB unterstützt verschiedene Szenarien wie die folgenden:
+Das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB unterstützt verschiedene Szenarien wie die folgenden:
 
 * Wiederherstellung nach einem versehentlichen Schreib- oder Löschvorgang in einem Container
 * Wiederherstellung eines gelöschten Kontos, einer Datenbank oder eines Containers
@@ -35,7 +30,11 @@ Azure Cosmos DB erstellt die Datensicherung im Hintergrund, ohne zusätzlichen 
 
 Das verfügbare Zeitfenster für die Wiederherstellung (auch Aufbewahrungszeitraum genannt) ist der niedrigere der beiden folgenden Werte: *30 Tage zurück in der Vergangenheit* oder *bis zum Zeitpunkt der Ressourcenerstellung*. Der Zeitpunkt für die Wiederherstellung kann ein beliebiger Zeitstempel innerhalb des Aufbewahrungszeitraums sein.
 
-In der öffentlichen Vorschau können Sie das Azure Cosmos DB-Konto für einen Zeitpunkt der SQL-API oder MongoDB-Inhalte in einem anderen Konto mithilfe des [Azure-Portals](continuous-backup-restore-portal.md), der [Azure-Befehlszeilenschnittstelle](continuous-backup-restore-command-line.md) (Azure CLI), [Azure PowerShell](continuous-backup-restore-powershell.md) oder [Azure Resource Manager](continuous-backup-restore-template.md) wiederherstellen.
+Derzeit können Sie das Azure Cosmos DB-Konto für einen Zeitpunkt der SQL-API oder MongoDB-Inhalte in einem anderen Konto mithilfe des [Azure-Portals](restore-account-continuous-backup.md#restore-account-portal), der [Azure-Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) (Azure CLI), [Azure PowerShell](restore-account-continuous-backup.md#restore-account-powershell) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) wiederherstellen.
+
+## <a name="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
+
+Standardmäßig speichert Azure Cosmos DB Sicherungsdaten im kontinuierlichen Modus in lokal redundanten Speicherblobs. In Regionen, in denen Zonenredundanz konfiguriert ist, wird die Sicherung in zonenredundanten Speicherblobs gespeichert. Im fortlaufenden Sicherungsmodus können Sie die Art der Sicherungsspeicherredundanz nicht ändern.
 
 ## <a name="what-is-restored"></a>Was wird wiederhergestellt?
 
@@ -64,17 +63,17 @@ Es kann jedoch Szenarien geben, in denen der genaue Zeitpunkt der versehentliche
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Lebenszyklusereignisse mit Zeitstempeln für ein wiederherstellbares Konto" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Wiederherstellen eines gelöschten Kontos**: Alle gelöschten Konten, die wiederhergestellt werden können, werden im Bereich **Wiederherstellen** angezeigt. Angenommen, *Konto A* wird bei Zeitstempel T3 gelöscht. In diesem Fall reichen der Zeitstempel direkt vor T3, Speicherort, Ressourcengruppe und Zielkontoname für die Wiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) aus.  
+1. **Wiederherstellen eines gelöschten Kontos**: Alle gelöschten Konten, die wiederhergestellt werden können, werden im Bereich **Wiederherstellen** angezeigt. Angenommen, *Konto A* wird bei Zeitstempel T3 gelöscht. In diesem Fall reichen der Zeitstempel direkt vor T3, Speicherort, Ressourcengruppe und Zielkontoname für die Wiederherstellung über das [Azure-Portal](restore-account-continuous-backup.md#restore-deleted-account), [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) oder die [CLI](restore-account-continuous-backup.md#trigger-restore-cli) aus.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Lebenszyklusereignisse mit Zeitstempeln für eine wiederherstellbare Datenbank und einen wiederherstellbaren Container" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Wiederherstellen von Daten eines Kontos in einer bestimmten Region**: Angenommen, *Konto A* ist bei Zeitstempel T3 in den beiden Regionen *USA, Osten* und *USA, Westen* vorhanden. Falls Sie eine Kopie von Konto A in *USA, Westen* benötigen, können Sie über das [Azure-Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) eine Zeitpunktwiederherstellung mit der Region „USA, Westen“ als Zielspeicherort durchführen.
+2. **Wiederherstellen von Daten eines Kontos in einer bestimmten Region**: Angenommen, *Konto A* ist bei Zeitstempel T3 in den beiden Regionen *USA, Osten* und *USA, Westen* vorhanden. Falls Sie eine Kopie von Konto A in *USA, Westen* benötigen, können Sie über das [Azure-Portal](restore-account-continuous-backup.md#restore-deleted-account), [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) oder die [CLI](restore-account-continuous-backup.md#trigger-restore-cli) eine Zeitpunktwiederherstellung mit der Region „USA, Westen“ als Zielspeicherort durchführen.
 
-c. **Wiederherstellen nach einem versehentlichen Schreib- oder Löschvorgang in einem Container mit einem bekannten Zeitstempel für die Wiederherstellung**: Angenommen, Sie **wissen**, dass der Inhalt von *Container 1* in *Datenbank 1* bei Zeitstempel T3 versehentlich geändert wurde. In diesem Fall können Sie eine Zeitpunktwiederherstellung über das [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) oder die [CLI](continuous-backup-restore-command-line.md#trigger-restore) in ein anderes Konto bei Zeitstempel T3 durchführen, um den gewünschten Containerzustand wiederherzustellen.
+3. **Wiederherstellen nach einem versehentlichen Schreib- oder Löschvorgang in einem Container mit einem bekannten Zeitstempel für die Wiederherstellung**: Angenommen, Sie **wissen**, dass der Inhalt von *Container 1* in *Datenbank 1* bei Zeitstempel T3 versehentlich geändert wurde. In diesem Fall können Sie eine Zeitpunktwiederherstellung über das [Azure-Portal](restore-account-continuous-backup.md#restore-live-account), [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) oder die [CLI](restore-account-continuous-backup.md#trigger-restore-cli) in ein anderes Konto bei Zeitstempel T3 durchführen, um den gewünschten Containerzustand wiederherzustellen.
 
-d. **Wiederherstellen eines Kontos zu einem früheren Zeitpunkt vor dem versehentlichen Löschen der Datenbank**: Im [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account) können Sie mithilfe des Bereichs für Ereignisfeeds feststellen, wann eine Datenbank gelöscht wurde, und den Zeitpunkt für die Wiederherstellung ermitteln. Ebenso können Sie mithilfe der [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) und [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) das Datenbanklöschungsereignis ermitteln, indem Sie den Ereignisfeed der Datenbank auflisten und dann den Wiederherstellungsbefehl mit den erforderlichen Parametern auslösen.
+4. **Wiederherstellen eines Kontos zu einem früheren Zeitpunkt vor dem versehentlichen Löschen der Datenbank**: Im [Azure-Portal](restore-account-continuous-backup.md#restore-live-account) können Sie mithilfe des Bereichs für Ereignisfeeds feststellen, wann eine Datenbank gelöscht wurde, und den Zeitpunkt für die Wiederherstellung ermitteln. Ebenso können Sie mithilfe der [Azure CLI](restore-account-continuous-backup.md#trigger-restore-cli) und [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) das Datenbanklöschungsereignis ermitteln, indem Sie den Ereignisfeed der Datenbank auflisten und dann den Wiederherstellungsbefehl mit den erforderlichen Parametern auslösen.
 
-e. **Wiederherstellen eines Kontos zu einem früheren Zeitpunkt vor dem versehentlichen Löschen oder Ändern der Containereigenschaften**: Im [Azure-Portal](continuous-backup-restore-portal.md#restore-live-account) können Sie mithilfe des Bereichs für Ereignisfeeds feststellen, wann ein Container erstellt, geändert oder gelöscht wurde, um so den Zeitpunkt für die Wiederherstellung zu ermitteln. Ebenso können Sie mithilfe der [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) und [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) alle Containerereignisse ermitteln, indem Sie den Ereignisfeed des Containers auflisten und dann den Wiederherstellungsbefehl mit den erforderlichen Parametern auslösen.
+5. **Wiederherstellen eines Kontos zu einem früheren Zeitpunkt vor dem versehentlichen Löschen oder Ändern der Containereigenschaften**: Im [Azure-Portal](restore-account-continuous-backup.md#restore-live-account) können Sie mithilfe des Bereichs für Ereignisfeeds feststellen, wann ein Container erstellt, geändert oder gelöscht wurde, um so den Zeitpunkt für die Wiederherstellung zu ermitteln. Ebenso können Sie mithilfe der [Azure CLI](restore-account-continuous-backup.md#trigger-restore-cli) und [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) alle Containerereignisse ermitteln, indem Sie den Ereignisfeed des Containers auflisten und dann den Wiederherstellungsbefehl mit den erforderlichen Parametern auslösen.
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -100,13 +99,11 @@ Wenn Sie beispielsweise über 1 TB Daten in zwei Regionen verfügen, sieht die 
 
 * Die Kosten für die Wiederherstellung werden als (1000 * 0,15) = 150 USD pro Wiederherstellung berechnet.
 
-## <a name="current-limitations-public-preview"></a>Aktuelle Einschränkungen (öffentliche Vorschau)
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-Die Funktionen für die Zeitpunktwiederherstellung befinden sich derzeit in der öffentlichen Vorschauphase, und es gelten die folgenden Einschränkungen:
+Für die Zeitpunktwiederherstellungsfunktion gelten derzeit die folgenden Einschränkungen:
 
-* Für die fortlaufende Sicherung werden nur Azure Cosmos DB-APIs für SQL und MongoDB unterstützt. Cassandra-, Table- und Gremlin-APIs werden noch nicht unterstützt.
-
-* Ein vorhandenes Konto mit einer Standardrichtlinie für regelmäßige Sicherungen kann nicht auf die Verwendung des Modus „Fortlaufende Sicherung“ umgestellt werden.
+* Für die fortlaufende Sicherung werden nur Azure Cosmos DB-APIs für SQL und MongoDB unterstützt. Cassandra-, Table- und Gremlin-APIs werden noch nicht unterstützt.
 
 * Azure Sovereign- und Azure Government-Cloudregionen werden noch nicht unterstützt.
 
@@ -114,7 +111,7 @@ Die Funktionen für die Zeitpunktwiederherstellung befinden sich derzeit in der 
 
 * Konten für Schreibvorgänge in mehreren Regionen werden nicht unterstützt.
 
-* Konten mit Synapse Link-Aktivierung werden nicht unterstützt.
+* Bei Konten mit aktiviertem Azure Synapse Link sind Analysespeicherdaten nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher. Die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher wird derzeit nicht unterstützt.
 
 * Das wiederhergestellte Konto wird in derselben Region erstellt, in der sich Ihr Quellkonto befindet. Es ist für Sie nicht möglich, ein Konto in einer Region wiederherzustellen, in der das Quellkonto nicht vorhanden war.
 
@@ -124,18 +121,20 @@ Die Funktionen für die Zeitpunktwiederherstellung befinden sich derzeit in der 
 
 * Während ein Wiederherstellungsvorgang läuft, sollten Sie die Richtlinien für Identity & Access Management (IAM), über die die Berechtigungen für das Konto gewährt werden, nicht ändern oder löschen und auch die VNET- oder Firewallkonfiguration nicht ändern.
 
-* Die Azure Cosmos DB-API für SQL oder MongoDB-Konten, für die nach der Erstellung des Containers ein eindeutiger Index erstellt wird, werden in Bezug auf die fortlaufende Sicherung nicht unterstützt. Es werden nur Container unterstützt, bei denen der eindeutige Index während der anfänglichen Containererstellung erstellt wird. Für MongoDB-Konten erstellen Sie den eindeutigen Index mit [Erweiterungsbefehlen](mongodb-custom-commands.md).
+* Die Azure Cosmos DB-API für SQL oder MongoDB-Konten, für die nach der Erstellung des Containers ein eindeutiger Index erstellt wird, werden in Bezug auf die fortlaufende Sicherung nicht unterstützt. Es werden nur Container unterstützt, bei denen der eindeutige Index während der anfänglichen Containererstellung erstellt wird. Für MongoDB-Konten erstellen Sie den eindeutigen Index mit [Erweiterungsbefehlen](mongodb/custom-commands.md).
 
-* Bei der Zeitpunktwiederherstellung erfolgt die Wiederherstellung immer in einem neuen Azure Cosmos-Konto. Die Wiederherstellung für ein vorhandenes Konto wird derzeit nicht unterstützt. Falls Sie uns Feedback zur direkten Wiederherstellung zukommen lassen möchten, können Sie sich über Ihren Kundenberater oder per [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) an das Azure Cosmos DB-Team wenden.
-
-* Alle neuen APIs, die zum Auflisten von `RestorableDatabaseAccount`, `RestorableSqlDatabases`, `RestorableSqlContainer`, `RestorableMongodbDatabase` und `RestorableMongodbCollection` verfügbar gemacht werden, können in der Vorschauphase des Features Änderungen unterliegen.
+* Bei der Zeitpunktwiederherstellung erfolgt die Wiederherstellung immer in einem neuen Azure Cosmos-Konto. Die Wiederherstellung für ein vorhandenes Konto wird derzeit nicht unterstützt. Falls Sie uns Feedback zur direkten Wiederherstellung zukommen lassen möchten, können Sie sich über Ihren Kundenberater an das Azure Cosmos DB-Team wenden.
 
 * Nach der Wiederherstellung ist es möglich, dass der konsistente Index für bestimmte Sammlungen ggf. neu erstellt wird. Sie können den Status des Vorgangs für die Neuerstellung über die Eigenschaft [IndexTransformationProgress](how-to-manage-indexing-policy.md) verfolgen.
 
 * Beim Wiederherstellungsvorgang werden alle Eigenschaften eines Containers, einschließlich TTL-Konfiguration, wiederhergestellt. Daher ist es möglich, dass die wiederhergestellten Daten sofort gelöscht werden, wenn Sie dies konfiguriert haben. Um dies zu verhindern, muss der Zeitstempel vor dem Zeitpunkt liegen, zu dem die TTL-Eigenschaften dem Container hinzugefügt wurden.
 
+* Eindeutige Indizes können in der API für MongoDB nicht hinzugefügt oder aktualisiert werden, wenn Sie ein Konto im fortlaufenden Sicherungsmodus erstellen oder ein Konto vom periodischen in den fortlaufenden Modus migrieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren und verwalten Sie die fortlaufende Sicherung über das [Azure-Portal](continuous-backup-restore-portal.md) oder aber mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).
+* Bereitstellen der fortlaufenden Sicherung über das [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), die [Befehlszeilenschnittstelle](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
+* Wiederherstellen des Kontos für die fortlaufende Sicherung über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), die [Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+* [Migrieren eines Kontos von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
 * [Verwalten Sie Berechtigungen](continuous-backup-restore-permissions.md), die zum Wiederherstellen von Daten mit dem fortlaufenden Sicherungsmodus erforderlich sind.
 * [Ressourcenmodell des fortlaufenden Sicherungsmodus](continuous-backup-restore-resource-model.md)

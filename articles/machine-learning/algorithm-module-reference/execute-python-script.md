@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.custom: devx-track-python
+ms.custom: devx-track-python, has-adal-ref
 author: likebupt
 ms.author: keli19
-ms.date: 01/02/2021
-ms.openlocfilehash: 6003ca9156d8553604d7ebbf94c5c3373d077f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: d4ac33619d653b99de32dcd86cf226f217382f43
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500698"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429764"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -162,8 +162,8 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
     
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten.
  
-    > [!WARNING]
-    > Verwenden Sie **nicht** **app** als Namen des Ordners oder Ihres Skripts, da **app** ein reserviertes Wort für integrierte Dienste ist. Sie können jedoch andere Namespaces wie `app123` verwenden.
+    > [!IMPORTANT]
+    > Verwenden Sie einen eindeutigen und aussagekräftigen Namen für Dateien im Skriptpaket, da einige gängige Wörter (z. B. `test`, `app` usw.) für integrierte Dienste reserviert sind.
    
     Im Folgenden finden Sie ein Beispiel für ein Skriptbundle, das eine Python-Skriptdatei und eine TXT-Datei enthält:
       

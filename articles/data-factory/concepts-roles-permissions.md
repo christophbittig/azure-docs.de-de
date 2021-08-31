@@ -4,14 +4,15 @@ description: Dieser Artikel beschreibt die Rollen und Berechtigungen, die erford
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
+ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 7bc386e17cef3bfc6b2c4db83c1edcb04d2d9178
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 285b4c4fb9fae46ed7549352a93553b15a518e36
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906762"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419304"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -22,7 +23,7 @@ Dieser Artikel beschreibt die Rollen, die zum Erstellen und Verwalten von Azure 
 
 ## <a name="roles-and-requirements"></a>Rollen und Anforderungen
 
-Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender*, *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
+Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender*, *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Meine Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
 
 Für das Erstellen und Verwalten von untergeordneten Ressourcen für Data Factory – z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes – gelten die folgenden Anforderungen:
 - Für das Erstellen und Verwalten von untergeordneten Ressourcen im Azure-Portal müssen Sie auf **Ressourcengruppenebene** oder höher Mitglied der Rolle **Mitwirkender von Data Factory** sein.

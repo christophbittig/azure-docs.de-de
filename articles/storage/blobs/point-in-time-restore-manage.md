@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd58ae6aa0083b0f2a02ef1c008e76f92f39b766
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7e2d71c1f388786c05052e773ea621caab92185e
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676299"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445875"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Durchführen einer Point-in-Time-Wiederherstellung von Blockblobdaten
 
@@ -24,7 +24,7 @@ Sie können die Point-in-Time-Wiederherstellung verwenden, um Blockblobs in eine
 Weitere Informationen zur Point-in-Time-Wiederherstellung finden Sie unter [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten. Außerdem empfiehlt Microsoft das Aktivieren des vorläufigen Löschens für Container und Blobs zum Schutz vor versehentlichem Löschen. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md) und [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md).
+> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten. Außerdem empfiehlt Microsoft das Aktivieren des vorläufigen Löschens für Container und Blobs zum Schutz vor versehentlichem Löschen. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container ](soft-delete-container-overview.md) und [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivieren und Konfigurieren von Point-in-Time-Wiederherstellung
 
@@ -128,7 +128,7 @@ Es werden nur Blockblobs wiederhergestellt. Seitenblobs und Anfügeblobs sind in
 >
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 >
-> Die erforderliche Zeit zum Wiederherstellen mehrerer Datensätze ist von der Anzahl der Schreib- und Löschvorgänge abhängig, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem 30 Tage in der Vergangenheit liegenden Zeitpunkt ungefähr zwei Stunden. Bei einem Konto mit einer solchen Änderungsrate wird davon abgeraten, einen Aufbewahrungszeitraum mit einer Wiederherstellung, die mehr als 90 Tage in der Vergangenheit liegt, anzuwenden.
+> Die erforderliche Zeit zum Wiederherstellen einer Gruppe von Daten hängt von der Anzahl der Schreib- und Löschvorgänge ab, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem 30 Tage in der Vergangenheit liegenden Zeitpunkt ungefähr zwei bis drei Stunden. Eine Wiederherstellung mit einer kleinen Anzahl von Änderungen würde bis zu einer Stunde dauern. Bei einem Konto mit einer solchen Änderungsrate wird davon abgeraten, einen Aufbewahrungszeitraum mit einer Wiederherstellung, die mehr als 90 Tage in der Vergangenheit liegt, anzuwenden.
 
 ### <a name="restore-all-containers-in-the-account"></a>Wiederherstellen aller Container im Konto
 
