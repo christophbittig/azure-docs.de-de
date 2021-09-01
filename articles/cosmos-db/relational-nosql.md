@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7926994766646f89a2ea853df3cc60715005b814
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93088470"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097787"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Verstehen der Unterschiede zwischen NoSQL- und relationalen Datenbanken
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Wenn Sie Daten verwalten, deren Strukturen ständig sehr schnell geändert werde
 Das [Microservice](https://en.wikipedia.org/wiki/Microservices)-Muster hat sich in den letzten Jahren deutlich entwickelt. Dieses Muster hat seine Wurzeln in der [dienstorientierten Architektur](https://en.wikipedia.org/wiki/Service-oriented_architecture). Der De-Facto-Standard für die Datenübertragung in diesen modernen Microservice-Architekturen ist [JSON](https://en.wikipedia.org/wiki/JSON), bei dem es sich auch um das Speichermedium für die große Mehrheit der dokumentenorientierten NoSQL-Datenbanken handelt. Dadurch werden NoSQL-Dokumentspeicher zu einer viel nahtloseren Lösung für die Persistenz und Synchronisierung (unter Verwendung von [Ereignissourcingmustern](https://en.wikipedia.org/wiki/Event-driven_architecture)) in komplexen Microservice-Implementierungen. Die Wartung von herkömmlichen relationalen Datenbanken kann in diesen Architekturen sehr viel komplexer sein. Dies liegt an dem größeren Transformationsaufwand, der sowohl für den Status als auch für die Synchronisierung über APIs erforderlich ist. Insbesondere verfügt Azure Cosmos DB über zahlreiche Features, durch die der Dienst zu einer noch nahtloseren Lösung für JSON-basierte Microservice-Architekturen wird als viele NoSQL-Datenbanken:
 
 * Eine Auswahl reiner JSON-Datentypen
-* Eine JavaScript-Engine und [Abfrage-API](./javascript-query-api.md), die in die Datenbank integriert sind.
+* Eine JavaScript-Engine und [Abfrage-API](sql/javascript-query-api.md), die in die Datenbank integriert sind.
 * Ein hochmoderner [Änderungsfeed](./change-feed.md), den Clients abonnieren können, um über Änderungen an einem Container benachrichtigt zu werden.
 
 ## <a name="some-challenges-with-nosql-databases"></a>Einige Herausforderungen bei NoSQL-Datenbanken

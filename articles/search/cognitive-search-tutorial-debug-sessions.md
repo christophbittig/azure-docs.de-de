@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ab1be78570ef784da6a51eb27d9d18d5c902f092
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559245"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221660"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Tutorial: Debuggen eines Skillsets mithilfe von Debugsitzungen
 
@@ -39,7 +39,7 @@ Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werde
 
 + [Postman-Desktop-App](https://www.getpostman.com/) und eine [Postman-Sammlung](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) zum Erstellen von Objekten mithilfe der REST-APIs
 
-+ [Beispieldaten (klinische Studien)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)
++ [Beispieldaten (klinische Studien)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19)
 
 > [!NOTE]
 > In diesem Schnellstart wird außerdem [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) für die KI verwendet. Aufgrund der geringen Workloadgröße wird Cognitive Services im Hintergrund für die kostenlose Verarbeitung von bis zu 20 Transaktionen genutzt. Das bedeutet, dass Sie diese Übung durchführen können, ohne eine zusätzliche Cognitive Services-Ressource erstellen zu müssen.
@@ -48,7 +48,7 @@ Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werde
 
 In diesem Abschnitt wird das Beispieldataset in Azure Blob Storage erstellt, sodass Indexer und Skillset Inhalte aufweisen, mit denen Sie arbeiten können.
 
-1. [Laden Sie Beispieldaten (clinical-trials-pdf-19) herunter](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19), die aus 19 Dateien bestehen.
+1. [Laden Sie Beispieldaten (clinical-trials-pdf-19) herunter](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19), die aus 19 Dateien bestehen.
 
 1. [Erstellen Sie ein Azure Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-portal), oder [suchen Sie nach einem vorhandenen Konto](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 

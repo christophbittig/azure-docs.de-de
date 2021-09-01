@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: c23028e4cbbeb7e92fd8b0a7fb6b6b81a54a0806
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2d49a112413c482751f51d67f2fb3990dcfe52c2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132231"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219974"
 ---
 # <a name="saml-token-claims-reference"></a>Referenz zu Ansprüchen in SAML-Token
 
@@ -154,7 +154,7 @@ Dies ist ein Beispiel eines typischen SAML-Tokens.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wenn Sie mehr über die Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Microsoft Graph-API erfahren möchten, lesen Sie die [Übersicht über die Azure AD-Richtlinienressource](/graph/api/resources/policy).
+* Wenn Sie mehr über die Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Microsoft Graph-API erfahren möchten, lesen Sie die [Übersicht über die Azure AD-Richtlinienressource](/graph/api/resources/policy-overview).
 * Fügen Sie den Token für Ihre Anwendung [benutzerdefinierte und optionale](active-directory-optional-claims.md) Ansprüche hinzu.
 * Verwenden Sie [einmaliges Anmelden (SSO) mit SAML](single-sign-on-saml-protocol.md).
 * Verwenden Sie das [Azure-SAML-Protokoll für einmaliges Abmelden](single-sign-out-saml-protocol.md).

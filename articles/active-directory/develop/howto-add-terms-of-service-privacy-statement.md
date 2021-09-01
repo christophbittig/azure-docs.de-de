@@ -12,14 +12,14 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8ca10c54cff14bd9301e06a891bcb1f7013959f9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ff363550b44286cb7140f533981229565fdf795f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176466"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032234"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
+# <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
 Entwickler, die mehrinstanzenfähige Apps erstellen und verwalten, die in Azure Active Directory (Azure AD) und Microsoft-Konten integriert werden können, sollten Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der Apps einfügen. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Auf diese Weise wissen Benutzer, dass sie Ihren Apps vertrauen können. Die Nutzungsbedingungen und Datenschutzbestimmungen sind besonders wichtig für benutzerseitige mehrinstanzenfähige Apps, d.h. Apps, die in mehreren Verzeichnissen verwendet werden oder für alle Microsoft-Konten verfügbar sind.
 

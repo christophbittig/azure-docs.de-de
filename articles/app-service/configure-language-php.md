@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7d663345a5980d32a59d3185226e48dc75ef96c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5857ba3543cabd2dc80831b51b256a139f43e8b6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339559"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221133"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -119,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Committen Sie alle Änderungen, und stellen Sie Ihren Code mithilfe der Git- oder ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereit. Composer sollte jetzt als Teil der Bereitstellungsautomatisierung ausgeführt werden.
+Committen Sie alle Änderungen, und stellen Sie Ihren Code mithilfe der Git- oder ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereit. Composer sollte jetzt als Teil der Bereitstellungsautomatisierung ausgeführt werden.
 
 ## <a name="run-gruntbowergulp"></a>Run Grunt/Bower/Gulp
 
-Wenn App Service zum Bereitstellungszeitpunkt eines der beliebten Automationstools wie Grunt, Bower oder Gulp ausführen soll, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) angeben. App Service führt dieses Skript bei der Git- oder [ZIP-Bereitstellung](deploy-zip.md) mit [aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) aus. 
+Wenn App Service zum Bereitstellungszeitpunkt eines der beliebten Automationstools wie Grunt, Bower oder Gulp ausführen soll, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) angeben. App Service führt dieses Skript bei der Git- oder [ZIP-Bereitstellung](deploy-zip.md) mit [aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) aus. 
 
 Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
@@ -206,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausführen eines benutzerdefinierten Skripts, falls durch `PRE_BUILD_SCRIPT_PATH` angegeben
 1. Führen Sie `php composer.phar install` aus.

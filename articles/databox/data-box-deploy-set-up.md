@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 08/23/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: a82dc471e8b92fb936750a05c515b4701a135344
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335467"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221331"
 ---
 ::: zone target="docs"
 
@@ -116,22 +116,19 @@ Nachdem Sie das Gerät erhalten haben, müssen Sie es verkabeln und eine Verbind
 Führen Sie die folgenden Schritte aus, um Ihr Gerät über die lokale Webbenutzeroberfläche und die Benutzeroberfläche des Portals einzurichten.
 
 1. Konfigurieren Sie den Ethernet-Adapter auf dem Laptop, über den Sie eine Verbindung mit dem Gerät herstellen, mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0. 
-2. Stellen Sie eine Verbindung mit dem MGMT-Port des Geräts her, und greifen Sie über „https\://192.168.100.10“ auf die lokale Webbenutzeroberfläche des Geräts zu. Dies kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
-3. Klicken Sie auf **Details** und anschließend auf **Webseite trotzdem laden**.
+1. Stellen Sie eine Verbindung mit dem MGMT-Port des Geräts her, und greifen Sie über „https\://192.168.100.10“ auf die lokale Webbenutzeroberfläche des Geräts zu. Dies kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
+1. Klicken Sie auf **Details** und anschließend auf **Webseite trotzdem laden**.
 
    ![Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
-4. Eine Seite **Anmelden** für die lokale Webbenutzeroberfläche wird angezeigt. Stellen Sie sicher, dass die Seriennummer des Geräts in der Benutzeroberfläche des Portals und der lokalen Webbenutzeroberfläche übereinstimmt. Das Gerät ist zu diesem Zeitpunkt gesperrt.
-5. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-6. Laden Sie die Anmeldeinformationen für das Gerät aus dem Portal herunter. Navigieren Sie zu **Allgemein > Gerätedetails**. Kopieren Sie das **Gerätekennwort**. Das Gerätekennwort ist mit einer bestimmten Bestellung im Portal verknüpft. 
+1. Eine Seite **Anmelden** für die lokale Webbenutzeroberfläche wird angezeigt. Stellen Sie sicher, dass die Seriennummer des Geräts in der Benutzeroberfläche des Portals und der lokalen Webbenutzeroberfläche übereinstimmt. Das Gerät ist zu diesem Zeitpunkt gesperrt.
 
-    ![Abrufen der Geräteanmeldeinformationen](media/data-box-deploy-set-up/data-box-device-credentials.png)
+1. [!INCLUDE [data-box-get-device-password](../../includes/data-box-get-device-password.md)]
     
-    
-7. Geben Sie das Gerätekennwort an, das Sie im vorherigen Schritt aus dem Azure-Portal kopiert haben, um sich bei der lokalen Webbenutzeroberfläche des Geräts anzumelden. Klicken Sie auf **Anmelden**.
-8. Überprüfen Sie im **Dashboard** , ob die Netzwerkschnittstellen konfiguriert sind. 
+1. Geben Sie das Gerätekennwort an, das Sie im vorherigen Schritt aus dem Azure-Portal kopiert haben, um sich bei der lokalen Webbenutzeroberfläche des Geräts anzumelden. Klicken Sie auf **Anmelden**.
+1. Überprüfen Sie im **Dashboard**, ob die Netzwerkschnittstellen konfiguriert sind. 
    - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. 
-   - Wenn DHCP nicht aktiviert ist, wechseln Sie zu **Netzwerkschnittstellen festlegen** , und weisen Sie ggf. statische IP-Adressen zu.
+   - Wenn DHCP nicht aktiviert ist, wechseln Sie zu **Netzwerkschnittstellen festlegen**, und weisen Sie ggf. statische IP-Adressen zu.
 
      ![Gerätedashboard](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
@@ -146,9 +143,9 @@ Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindun
 ## <a name="connect-your-device"></a>Verbinden Ihres Geräts
 
 1. Zum Abrufen des Gerätekennworts wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Allgemein > Gerätedetails**.
-2. Weisen Sie dem Ethernet-Adapter auf dem Computer, mit dem Sie sich mit der Data Box verbinden, die statische IP-Adresse 192.168.100.5 und das Subnetz 255.255.255.255.0 zu. Greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu. Der Verbindungsaufbau kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern. 
-3. Melden Sie sich mit dem aus dem Azure-Portal abgerufenen Kennwort an. Sie sehen eine Fehlermeldung, die auf ein Problem mit dem Sicherheitszertifikat der Website hinweist. Befolgen Sie die browserspezifischen Anweisungen, um zur Webseite zu gelangen.
-4. Standardmäßig werden die Netzwerkeinstellungen für die Datenschnittstelle mit 10 Gbit/s (oder 1 Gbit/s) als DHCP konfiguriert. Bei Bedarf können Sie diese Schnittstelle als statisch konfigurieren und eine IP-Adresse angeben. 
+1. Weisen Sie dem Ethernet-Adapter auf dem Computer, mit dem Sie sich mit der Data Box verbinden, die statische IP-Adresse 192.168.100.5 und das Subnetz 255.255.255.255.0 zu. Greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu. Der Verbindungsaufbau kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern. 
+1. Melden Sie sich mit dem aus dem Azure-Portal abgerufenen Kennwort an. Sie sehen eine Fehlermeldung, die auf ein Problem mit dem Sicherheitszertifikat der Website hinweist. Befolgen Sie die browserspezifischen Anweisungen, um zur Webseite zu gelangen.
+1. Standardmäßig werden die Netzwerkeinstellungen für die Datenschnittstelle mit 10 Gbit/s (oder 1 Gbit/s) als DHCP konfiguriert. Bei Bedarf können Sie diese Schnittstelle als statisch konfigurieren und eine IP-Adresse angeben. 
 
 ::: zone-end
 

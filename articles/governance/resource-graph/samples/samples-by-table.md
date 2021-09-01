@@ -1,15 +1,15 @@
 ---
 title: Eine Liste der Azure Resource Graph-Beispielabfragen nach Tabellen sortiert
 description: Eine Liste von Beispielabfragen für Azure Resource Graph. Die Tabellen umfassen Ressourcen, ResourceContainers, PolicyResources und vieles mehr.
-ms.date: 08/13/2021
+ms.date: 08/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 11973c177f7a5b96c7d8d1544c88004d02d7aa57
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c2feedbedc68293ae68a78360eb81c25124386d9
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067627"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308859"
 ---
 # <a name="azure-resource-graph-sample-queries-by-table"></a>Azure Resource Graph-Beispielabfragen nach Kategorien sortiert
 

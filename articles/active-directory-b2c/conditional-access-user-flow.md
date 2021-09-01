@@ -11,12 +11,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 200fa1b225e4f0f8c4dc2a11c3da2a02227c778e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 96e402a46d931223832295ccbd892eb38b909c59
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960700"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220798"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -187,7 +187,7 @@ Mit der folgenden Vorlage kann eine Richtlinie für bedingten Zugriff mit dem An
 
 Identity Protection kann das erwartete „normale“ Verhalten eines Benutzers berechnen, und Entscheidungen bezüglich des Risikos darauf basieren. Das Benutzerrisiko ist eine Berechnung der Wahrscheinlichkeit, dass eine Identität kompromittiert wurde. B2C-Mandanten mit P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die das Benutzerrisiko enthalten. Wenn ein Benutzer als riskant eingestuft wird, können Sie verlangen, dass er sein Kennwort sicher ändert, um das Risiko zu minimieren, bevor er Zugriff auf sein Konto erhält. Es wird dringend empfohlen, eine Benutzerrisiko-Richtlinie zu erstellen, um eine sichere Kennwortänderung zu erfordern, damit Benutzer selbstständig eine Behebung vornehmen können.
 
-Erfahren Sie mehr über das [Benutzerrisiko bei Identity Protection](../active-directory/identity-protection/concept-identity-protection-risks.md#user-risk) unter Berücksichtigung der [Einschränkungen bei Identity Protection-Erkennungen für B2C](identity-protection-investigate-risk.md#service-limitations-and-considerations).
+Erfahren Sie mehr über das [Benutzerrisiko bei Identity Protection](../active-directory/identity-protection/concept-identity-protection-risks.md#user-linked-detections) unter Berücksichtigung der [Einschränkungen bei Identity Protection-Erkennungen für B2C](identity-protection-investigate-risk.md#service-limitations-and-considerations).
 
 Konfigurieren Sie den bedingten Zugriff über das Azure-Portal oder Microsoft Graph-APIs, um eine auf das Benutzerrisiko basierende Richtlinie für bedingten Zugriff zu aktivieren, die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) und Kennwortänderungen erfordert, wenn das Benutzerrisiko mittel oder hoch ist.
 
