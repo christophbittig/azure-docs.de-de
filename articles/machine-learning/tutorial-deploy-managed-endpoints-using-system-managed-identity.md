@@ -7,15 +7,15 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 681d78d07ac27cb8796f4dad5920d91d9efcb94a
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448834"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418879"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>Tutorial: Zugreifen auf Ressourcen mit verwalteten Onlineendpunkten und Identität (Vorschau)
 
@@ -37,7 +37,7 @@ Es wird gezeigt, wie Sie die folgenden Aktionen mit der Azure CLI und der zugeh
 
 * Für die Verwendung von Azure Machine Learning ist ein Azure-Abonnement erforderlich. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
-* Sie müssen die Azure CLI und die ML-Erweiterung installieren und konfigurieren. Weitere Informationen finden Sie unter [Installieren, Einrichten und Verwenden der 2.0 CLI (Vorschau)](how-to-configure-cli.md). 
+* Sie müssen die Azure CLI und die ML-Erweiterung installieren und konfigurieren. Weitere Informationen finden Sie unter [Installieren, Einrichten und Verwenden der CLI (v2) (Vorschauversion)](how-to-configure-cli.md). 
 
 * Sie müssen über eine Azure-Ressourcengruppe verfügen, für die Ihnen (oder dem von Ihnen genutzten Dienstprinzipal) die Zugriffsberechtigung `Contributor` (Mitwirkender) zugeordnet ist. Sie verfügen über eine Ressourcengruppe dieser Art, wenn Sie Ihre ML-Erweiterung gemäß dem obigen Artikel konfiguriert haben. 
 
@@ -72,7 +72,7 @@ Im folgenden Codebeispiel wird ein verwalteter Endpunkt mit folgenden Eigenschaf
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
-Informationen zu YAML finden Sie in der [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-online-endpoint-yaml.md).
+Informationen zu YAML finden Sie in der [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-yaml-endpoint-managed-online.md).
 
 ## <a name="configure-variables-for-your-deployment"></a>Konfigurieren von Variablen für Ihre Bereitstellung
 
@@ -193,7 +193,7 @@ In diesem Azure Machine Learning-Tutorial haben Sie die Machine Learning-CLI fü
 
 * Weitere Informationen zum Verwenden der Befehlszeilenschnittstelle (CLI) finden Sie unter [Verwenden der CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Informationen zum Einschränken von JSON-Abfragen, sodass nur bestimmte Daten zurückgegeben werden, finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
-* Weitere Informationen zum YAML-Schema finden Sie im Dokument [YAML-Referenz für verwalteten Onlineendpunkt](reference-online-endpoint-yaml.md).
+* Weitere Informationen zum YAML-Schema finden Sie im Dokument [YAML-Referenz für verwalteten Onlineendpunkt](reference-yaml-endpoint-managed-online.md).
 * Informationen dazu, welche Computeressourcen Sie verwenden können, finden Sie unter [SKU-Liste für verwaltete Onlineendpunkte (Vorschau)](reference-managed-online-endpoints-vm-sku-list.md).
 * Weitere Informationen zu Kosten finden Sie unter [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md).
 * Weitere Informationen zur Bereitstellung finden Sie unter [Sicherer Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).

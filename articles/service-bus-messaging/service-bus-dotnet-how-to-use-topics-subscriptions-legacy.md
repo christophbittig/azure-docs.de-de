@@ -1,29 +1,29 @@
 ---
-title: Erste Schritte mit Azure Service Bus-Themen und -Abonnements | Microsoft-Dokumentation
+title: Verwenden von Azure Service Bus-Themen und -Abonnements mit .NET (alte Version)
 description: Schreiben Sie eine .NET Core-Konsolenanwendung in C#, die Service Bus Messaging-Themen und -Abonnements verwendet.
-ms.topic: quickstart
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/02/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4644cc6ed4c3f668c7a53ad963e7779740f0b771
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868157"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736264"
 ---
-# <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
-Dieses Tutorial enthält die folgenden Schritte:
+# <a name="use-service-bus-topics-and-subscriptions-with-net-old-package"></a>Verwenden von Service Bus-Themen und -Abonnements mit .NET (altes Paket)
+In diesem Artikel werden die folgenden Schritte behandelt:
 
 1. Schreiben einer .NET Core-Konsolenanwendung, die eine Gruppe von Nachrichten an das Thema sendet
 2. Schreiben einer .NET Core-Konsolenanwendung, die diese Nachrichten aus dem Abonnement empfängt
 
 > [!WARNING]
-> In dieser Schnellstartanleitung wird das alte Microsoft.Azure.ServiceBus-Paket verwendet. Eine Schnellstartanleitung, in der das neueste Azure.Messaging.ServiceBus-Paket verwendet wird, finden Sie unter [Senden und Empfangen von Nachrichten mit einem Azure.Messaging.ServiceBus-Paket](service-bus-dotnet-how-to-use-topics-subscriptions.md). Informationen dazu, wie Sie Ihre Anwendung so einrichten, dass sie nicht die alte, sondern die neue Bibliothek verwendet, finden Sie unter [Guide for migrating to Azure.Messaging.ServiceBus from Microsoft.Azure.ServiceBus](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md) (Handbuch für die Migration von Microsoft.Azure.ServiceBus zu Azure.Messaging.ServiceBus). 
+> In diesem Artikel wird das alte Microsoft.Azure.ServiceBus-Paket verwendet. Einen Artikel, in dem das neueste Azure.Messaging.ServiceBus-Paket verwendet wird, finden Sie unter [Senden und Empfangen von Nachrichten mit einem Azure.Messaging.ServiceBus-Paket](service-bus-dotnet-how-to-use-topics-subscriptions.md). Informationen dazu, wie Sie Ihre Anwendung so einrichten, dass sie nicht die alte, sondern die neue Bibliothek verwendet, finden Sie unter [Guide for migrating to Azure.Messaging.ServiceBus from Microsoft.Azure.ServiceBus](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md) (Handbuch für die Migration von Microsoft.Azure.ServiceBus zu Azure.Messaging.ServiceBus). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Ein Azure-Abonnement. Die Durchführung der in diesem Artikel aufgeführten Schritte setzt ein Azure-Konto voraus. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Befolgen Sie die Schritte im [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md), um folgende Aufgaben durchzuführen:
     1. Erstellen Sie einen Service Bus-**Namespace**.
     2. Rufen Sie die **Verbindungszeichenfolge** ab.

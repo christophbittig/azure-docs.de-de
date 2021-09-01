@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/4/2021
 ms.author: damaerte
-ms.openlocfilehash: 250e4bc171950bb643a75bdc9d80bdb2941cb97a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: f380db2502a34115b071c3aa3e70f18a67d2ca6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539296"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355905"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 
@@ -113,7 +113,7 @@ Erfahren Sie mehr darüber, wie Sie ein [neues oder vorhandenes Speicherkonto](p
 
 Weitere Informationen erhalten Sie unter [Bash in Cloud Shell](features.md) und [PowerShell in Cloud Shell](./features.md).
 
-## <a name="complaince"></a>Compliance
+## <a name="compliance"></a>Compliance
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Die gesamte Cloud Shell-Infrastruktur ist standardmäßig mit der Mehrfachverschlüsselung ruhender Daten kompatibel. Auf Benutzerseite ist keine Aktion erforderlich.
 

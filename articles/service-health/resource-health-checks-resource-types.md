@@ -2,13 +2,13 @@
 title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dokumentation
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b3c2944cff20db2feb3236ca7381107f3db6061
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97883366"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339799"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -264,7 +264,13 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Wir der Internet Information Server ausgeführt?</li><li>Wird der Load Balancer ausgeführt?</li><li>Kann die Web-App vom Rechenzentrum aus erreicht werden?</li><li>Ist das Speicherkonto verfügbar, das den Inhalt der Website hostet?</li></ul>|
 
+## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/vaults
+
+| Ausgeführte Überprüfungen |
+| --- |
+|<ul><li>Sind Sicherungsvorgänge für Sicherungselemente, die in diesem Tresor konfiguriert sind, aufgrund von Ursachen, die nicht vom Benutzer kontrolliert werden können, fehlgeschlagen?</li><li>Sind Wiederherstellungsvorgänge für Sicherungselemente, die in diesem Tresor konfiguriert sind, aufgrund von Ursachen, die nicht vom Benutzer kontrolliert werden können, fehlgeschlagen?</li></ul> |
+
 ## <a name="next-steps"></a>Nächste Schritte
 -  Weitere Informationen finden Sie unter [Dienstintegrität](service-health-overview.md) und [Übersicht über Azure Resource Health](resource-health-overview.md). 
--  [Azure Resource Health – FAQ](resource-health-faq.md)
+-  [Azure Resource Health – FAQ](resource-health-faq.yml)
 - Richten Sie Warnungen ein, damit Sie über Integritätsprobleme benachrichtigt werden. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md).

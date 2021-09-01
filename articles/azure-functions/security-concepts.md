@@ -3,12 +3,12 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: c8649c342b237a321c3c47510644451ceb3581fe
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467921"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340054"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
@@ -78,9 +78,9 @@ Standardmäßig werden Schlüssel in einem Blob Storage-Container in dem Konto g
 
 |Standort  |Einstellung | Wert | BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|Anderes Speicherkonto     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Speichert Schlüssel in Blob-Speicher eines zweiten Speicherkontos, basierend auf der angegebenen SAS-URL. Schlüssel werden vor der Speicherung mit einem Geheimnis verschlüsselt, das für Ihre Funktions-App eindeutig ist. |
+|Anderes Speicherkonto     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL>` | Speichert Schlüssel in Blob-Speicher eines zweiten Speicherkontos, basierend auf der angegebenen SAS-URL. Schlüssel werden vor der Speicherung mit einem Geheimnis verschlüsselt, das für Ihre Funktions-App eindeutig ist. |
 |Dateisystem   | `AzureWebJobsSecretStorageType`   |  `files`       | Schlüssel werden dauerhaft im Dateisystem gespeichert, wobei sie vor dem Speichern mit einem Geheimnis verschlüsselt werden, das für Ihre Funktions-App eindeutig ist. |
-|Azure-Schlüsseltresor  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Der Tresor muss über eine Zugriffsrichtlinie verfügen, die der systemseitig zugewiesenen verwalteten Identität der Hostingressource entspricht. Die Zugriffsrichtlinie sollte der Identität die folgenden Geheimnisberechtigungen gewähren: `Get`, `Set`, `List` und `Delete`. <br/>Bei lokaler Ausführung wird die Entwickleridentität verwendet, und Einstellungen müssen sich in der [local.settings.json](functions-run-local.md#local-settings-file)-Datei befinden. | 
+|Azure-Schlüsseltresor  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Der Tresor muss über eine Zugriffsrichtlinie verfügen, die der systemseitig zugewiesenen verwalteten Identität der Hostingressource entspricht. Die Zugriffsrichtlinie sollte der Identität die folgenden Geheimnisberechtigungen gewähren: `Get`, `Set`, `List` und `Delete`. <br/>Bei lokaler Ausführung wird die Entwickleridentität verwendet, und Einstellungen müssen sich in der [local.settings.json](functions-develop-local.md#local-settings-file)-Datei befinden. | 
 |Kubernetes-Geheimnisse  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (optional) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Nur unterstützt, wenn die Functions-Laufzeit in Kubernetes ausgeführt wird. Wenn `AzureWebJobsKubernetesSecretName` nicht festgelegt ist, wird das Repository als schreibgeschützt betrachtet. In diesem Fall müssen die Werte vor der Bereitstellung generiert werden. Die Azure Functions Core Tools generieren die Werte automatisch bei der Bereitstellung auf Kubernetes.|
 
 ### <a name="authenticationauthorization"></a>Authentifizierung/Autorisierung
@@ -131,7 +131,7 @@ Beispielsweise benötigt jede Funktions-App ein zugehöriges Speicherkonto, das 
 
 App-Einstellungen und Verbindungszeichenfolgen werden verschlüsselt in Azure gespeichert. Diese Angaben werden erst entschlüsselt, wenn sie beim Start der App in deren Prozessspeicher eingefügt werden. Die Verschlüsselungsschlüssel werden regelmäßig rotiert. Wenn Sie es stattdessen vorziehen, die sichere Speicherung Ihrer Geheimnisse zu verwalten, sollte die Anwendungseinstellung stattdessen aus Verweisen auf Azure Key Vault bestehen. 
 
-Sie können Einstellungen in der Datei „local.settings.json“ auch standardmäßig verschlüsseln, wenn Sie Funktionen auf dem lokalen Computer entwickeln. Wenn Sie mehr erfahren möchten, sehen Sie sich die `IsEncrypted`-Eigenschaft unter [Datei für lokale Einstellungen](functions-run-local.md#local-settings-file) an.  
+Sie können Einstellungen in der Datei „local.settings.json“ auch standardmäßig verschlüsseln, wenn Sie Funktionen auf dem lokalen Computer entwickeln. Wenn Sie mehr erfahren möchten, sehen Sie sich die `IsEncrypted`-Eigenschaft unter [Datei für lokale Einstellungen](functions-develop-local.md#local-settings-file) an.  
 
 #### <a name="key-vault-references"></a>Key Vault-Verweise
 

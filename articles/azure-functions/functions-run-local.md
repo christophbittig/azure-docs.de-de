@@ -3,14 +3,14 @@ title: Arbeiten mit Azure Functions Core Tools
 description: Erfahren Sie, wie Sie Azure Functions über die Eingabeaufforderung oder das Terminal auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 6ed1bb0a91504c871cd82777f1759d6dca95f1ab
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 04e6f9ab74ab30b73f323e5796c159e07655f836
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903363"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349947"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -24,7 +24,7 @@ Beim Entwickeln von Funktionen auf Ihrem lokalen Computer und der anschließende
 > * [Installieren Sie die Core-Tools und Abhängigkeiten.](#v2)
 > * [Erstellen Sie ein Projekt für eine Funktions-App aus einer sprachspezifischen Vorlage.](#create-a-local-functions-project)
 > * [Registrieren Sie die Trigger- und Bindungserweiterungen.](#register-extensions)
-> * [Definieren Sie Speicher- und andere Verbindungen.](#local-settings-file)
+> * [Definieren Sie Speicher- und andere Verbindungen.](#local-settings)
 > * [Erstellen Sie eine Funktion aus einem Trigger und einer sprachspezifischen Vorlage.](#create-func)
 > * [Lokales Ausführen der Funktion](#start)
 > * [Veröffentlichen des Projekts in Azure](#publish)
@@ -155,11 +155,22 @@ Die folgenden Schritte verwenden [APT](https://wiki.debian.org/Apt) zum Installi
 
 ---
 
+### <a name="version-1x"></a>Version 1.x
+
+Wenn Sie Version 1.x der Core Tools installieren müssen, die nur unter Windows ausgeführt wird, finden Sie weitere Informationen im [GitHub-Repository](https://github.com/Azure/azure-functions-core-tools/blob/v1.x/README.md#installing).
+
 ## <a name="create-a-local-functions-project"></a>Erstellen eines lokalen Functions-Projekts
 
-Ein Functions-Projektverzeichnis enthält die Dateien [host.json](functions-host-json.md) und [local.settings.json](#local-settings-file) sowie Unterordner, die den Code für einzelne Funktionen enthalten. Dieses Verzeichnis ist das Äquivalent zu einer Funktions-App in Azure. Weitere Informationen zur Azure Functions-Ordnerstruktur finden Sie unter [Azure Functions: Entwicklerhandbuch](functions-reference.md#folder-structure).
+Ein Functions-Projektverzeichnis enthält unabhängig von der Sprache die folgenden Dateien und Ordner: 
 
-In Version 3.x/2.x müssen Sie eine Standardsprache für das Projekt auswählen, wenn es initialisiert wird. In Version 3.x/2.x werden für alle hinzugefügten Funktionen Vorlagen mit der Standardsprache verwendet. In Version 1.x geben Sie die Sprache bei jedem Erstellen einer Funktion an.
+| Dateiname | BESCHREIBUNG |
+| --- | --- |
+| host.json | Weitere Informationen finden Sie in der [Referenz zu „host.json“](functions-host-json.md). |
+| local.settings.json | Einstellungen, die bei lokaler Ausführung von Core Tools verwendet werden, einschließlich App-Einstellungen. Weitere Informationen finden Sie unter [lokale Einstellungen](#local-settings). |
+| .gitignore | Verhindert, dass die Datei „local.settings.json“ versehentlich in einem Git-Repository veröffentlicht wird. Weitere Informationen finden Sie unter [lokale Einstellungen](#local-settings).|
+| .vscode\extensions.json | Datei mit Einstellungen, die beim Öffnen des Projektordners in Visual Studio Code verwendet wird.  |
+
+Weitere Informationen zum Functions-Projektordner finden Sie unter [Azure Functions-Entwicklerhandbuch](functions-reference.md#folder-structure).
 
 Führen Sie im Terminalfenster oder über eine Eingabeaufforderung den folgenden Befehl aus, um das Projekt und ein lokales Git-Repository zu erstellen:
 
@@ -167,70 +178,69 @@ Führen Sie im Terminalfenster oder über eine Eingabeaufforderung den folgenden
 func init MyFunctionProj
 ```
 
->[!IMPORTANT]
-> Java verwendet einen Maven-Archetyp, um das lokale Functions-Projekt zusammen mit der ersten durch HTTP ausgelösten Funktion zu erstellen. Verwenden Sie den folgenden Befehl, um das Java-Projekt zu erstellen: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype`. Ein Beispiel für die Verwendung des Maven-Archetyps finden Sie im [Befehlszeilen-Schnellstart](./create-first-function-cli-java.md).  
+In diesem Beispiel wird ein Functions-Projekt in einem neuen `MyFunctionProj`-Ordner erstellt. Sie werden aufgefordert, eine Standardsprache für Ihr Projekt auszuwählen. 
 
-Wenn Sie einen Projektnamen angeben, wird ein neuer Ordner mit diesem Namen erstellt und initialisiert. Andernfalls wird der aktuelle Ordner initialisiert.  
-In Version 3.x/2.x müssen Sie beim Ausführen des Befehls eine Runtime für das Projekt auswählen. 
+Die folgenden Überlegungen gelten für die Projektinitialisierung:
 
-<pre>
-Select a worker runtime:
-dotnet
-node
-python 
-powershell
-</pre>
++ Wenn Sie die `--worker-runtime`-Option im Befehl nicht angeben, werden Sie aufgefordert, Ihre Sprache auszuwählen. Weitere Informationen finden Sie in der [Referenz zu func init](functions-core-tools-reference.md#func-init).
 
-Verwenden Sie die NACH-OBEN- oder NACH-UNTEN-TASTE, um eine Sprache auszuwählen, und drücken Sie dann die EINGABETASTE. Wenn Sie JavaScript- oder TypeScript-Funktionen entwickeln möchten, wählen Sie **node** und dann die Sprache aus. Für TypeScript gelten [einige zusätzliche Anforderungen](functions-reference-node.md#typescript). 
++ Wenn Sie keinen Projektnamen angeben, wird der aktuelle Ordner initialisiert. 
 
-Die Ausgabe ähnelt dem folgenden Beispiel für ein JavaScript-Projekt:
++ Wenn Sie ihr Projekt in einem benutzerdefinierten Linux-Container veröffentlichen möchten, verwenden Sie die `--dockerfile`-Option, um sicherzustellen, dass eine Dockerfile-Datei für Ihr Projekt generiert wird. Weitere Informationen finden Sie unter [Erstellen einer Funktion unter Linux mithilfe eines benutzerdefinierten Images](functions-create-function-linux-custom-image.md). 
 
-<pre>
-Select a worker runtime: node
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
-Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-</pre>
+Für bestimmte Sprachen können zusätzliche Überlegungen erforderlich sein:
 
-`func init` unterstützt die folgenden Optionen, die nur unter Version 3.x/2.x verfügbar sind, sofern nicht anders angegeben:
+# <a name="c"></a>[C\#](#tab/csharp)
 
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--csx`** | Erstellt .NET-Funktionen als C#-Skript, dies entspricht dem Verhalten in Version 1.x. Nur mit `--worker-runtime dotnet` gültig. |
-| **`--docker`** | Erstellt ein Dockerfile für einen Container mithilfe eines Basisimages, das auf dem ausgewählten Wert für `--worker-runtime` basiert. Verwenden Sie diese Option, wenn Sie die Veröffentlichung in einem benutzerdefinierten Linux-Container planen. |
-| **`--docker-only`** |  Fügt einem vorhandenen Projekt eine Dockerfile hinzu. Fordert die Worker-Runtime an, wenn sie nicht angegeben oder in „local.settings.json“ festgelegt wurde. Verwenden Sie diese Option, wenn Sie die Veröffentlichung eines vorhandenen Projekts in einem benutzerdefinierten Linux-Container planen. |
-| **`--force`** | Initialisiert das Projekt, auch wenn es bereits Dateien enthält. Diese Einstellung überschreibt vorhandene Dateien mit dem gleichen Namen. Andere Dateien im Projektordner sind nicht betroffen. |
-| **`--language`** | Initialisiert ein sprachspezifisches Projekt. Wird derzeit unterstützt, wenn `--worker-runtime` auf `node` festgelegt ist. Die Optionen sind `typescript` und `javascript`. Sie können auch `--worker-runtime javascript` oder `--worker-runtime typescript` verwenden.  |
-| **`--managed-dependencies`**  | Installiert verwaltete Abhängigkeiten. Derzeit unterstützt nur die PowerShell-Workerruntime diese Funktion. |
-| **`--source-control`** | Steuert, ob ein Git-Repository erstellt wird. Standardmäßig wird kein Repository erstellt. Im Fall von `true` wird ein Repository erstellt. |
-| **`--worker-runtime`** | Legt die Runtime der Sprache für das Projekt fest. Unterstützte Werte sind: `csharp`, `dotnet`, `javascript`,`node` (JavaScript), `powershell`, `python` und `typescript`. Für Java verwenden Sie [Maven](functions-reference-java.md#create-java-functions). Wird kein Wert festgelegt, werden Sie während der Initialisierung zur Auswahl der Runtime aufgefordert. |
-|
-> [!IMPORTANT]
-> Ab Version 2.x der Core-Tools werden Funktions-App-Projekte für die .NET-Runtime als [C#-Klassenprojekte](functions-dotnet-class-library.md) (.csproj) erstellt. Diese C#-Projekte, die mit Visual Studio oder Visual Studio Code verwendet werden können, werden während der Tests und beim Veröffentlichen in Azure kompiliert. Wenn Sie stattdessen dieselben C#-Skriptdateien (.csx) erstellen und verwenden möchten, die in Version 1.x und im Portal erstellt wurden, müssen Sie die `--csx`-Parameter beim Erstellen und Bereitstellen von Funktionen einschließen.
++ Ab Version 2.x der Core-Tools werden Funktions-App-Projekte für die .NET-Runtime als [C#-Klassenprojekte](functions-dotnet-class-library.md) (.csproj) erstellt. Version 3.x unterstützt auch das Erstellen von Funktionen, die [unter .NET 5.0 in einem isolierten Prozess ausgeführt werden](dotnet-isolated-process-guide.md). Diese C#-Projekte, die mit Visual Studio oder Visual Studio Code verwendet werden können, werden während des Debuggens und beim Veröffentlichen in Azure kompiliert. 
+
++ Verwenden Sie den `--csx`-Parameter, wenn Sie lokal mit C#-Skriptdateien (CSX-Dateien) arbeiten möchten. Dies sind die gleichen Dateien, die Sie beim Erstellen von Funktionen im Azure-Portal und bei Verwendung von Version 1.x der Core Tools erhalten. Weitere Informationen finden Sie in der [Referenz zu func init](functions-core-tools-reference.md#func-init).
+
+# <a name="java"></a>[Java](#tab/java)
+
++ Java verwendet einen Maven-Archetyp, um das lokale Functions-Projekt zusammen mit der ersten durch HTTP ausgelösten Funktion zu erstellen. Anstatt `func init` und `func new`zu verwenden, sollten Sie die Schritte im [Befehlszeilen-Schnellstart](./create-first-function-cli-java.md) ausführen.  
+
+# <a name="javascript"></a>[JavaScript](#tab/node)
+
++ Um einen `--worker-runtime`-Wert von `node` zu verwenden, geben Sie `--language` als `javascript` an. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Es gibt keine zusätzlichen Überlegungen für PowerShell.
+
+# <a name="python"></a>[Python](#tab/python)
+
++ Sie sollten alle Befehle (einschließlich `func init`) innerhalb einer virtuellen Umgebung ausführen. Weitere Informationen finden Sie unter [Erstellen und Aktivieren einer virtuellen Umgebung](create-first-function-cli-python.md#create-venv).
+
+# <a name="typescript"></a>[TypeScript](#tab/ts)
+
++ Um einen `--worker-runtime`-Wert von `node` zu verwenden, geben Sie `--language` als `javascript` an.
+
++ Informationen zu `func init`- Verhalten, das für TypeScript spezifisch ist, finden Sie im [Abschnitt „TypeScript“ in der JavaScript-Entwicklerreferenz](functions-reference-node.md#typescript). 
+
+--- 
 
 ## <a name="register-extensions"></a>Registrieren von Erweiterungen
 
-Mit Ausnahme von HTTP- und Zeitgebertriggern werden Functions-Bindungen in der Runtimeversion 2.x und höher als Erweiterungspakete implementiert. Für HTTP-Bindungen und Zeitgebertrigger sind keine Erweiterungen erforderlich. 
+Ab Runtimeversion 2.x werden Functions-Bindungen als .NET-Erweiterungspakete (NuGet) implementiert. Bei kompilierten C#-Projekten verweisen Sie einfach auf die NuGet-Erweiterungspakete für die spezifischen Trigger und Bindungen, die Sie verwenden. Für HTTP-Bindungen und Zeitgebertrigger sind keine Erweiterungen erforderlich. 
 
-Um Inkompatibilitäten zwischen den verschiedenen Erweiterungspaketen zu reduzieren, können Sie mit Functions auf ein Erweiterungsbündel in der host.json-Projektdatei verweisen. Wenn Sie keine Erweiterungsbündel verwenden möchten, müssen Sie auch das .NET Core 2.x SDK lokal installieren und die Erweiterung CSPROJ mit Ihrem Functions-Projekt verwalten.  
+Um die Entwicklungserfahrung für Nicht-C#-Projekte zu verbessern, können Sie mit Functions auf ein Erweiterungsbundle mit Versionsangabe in Ihrer Projektdatei „host.json“ verweisen. [Erweiterungsbundles](functions-bindings-register.md#extension-bundles) machen alle Erweiterungen für Ihre App verfügbar und beseitigen die Wahrscheinlichkeit von Paketkompatibilitätsproblemen zwischen Erweiterungen. Erweiterungsbundles entfernen auch die Notwendigkeit, das .NET Core 2.x SDK zu installieren und sich mit der Datei „extensions.csproj“ zu befassen.
 
-In Version 2.x und höheren Versionen der Azure Functions-Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Sie können auch Bindungserweiterungen einzeln installieren, oder Sie können einen Erweiterungsbündelverweis in der Datei „host.json“ hinzufügen. Erweiterungsbündel wirken eventuellen Kompatibilitätsproblemen bei Paketen entgegen, wenn mehrere Bindungstypen verwendet werden. Es handelt sich hierbei um den empfohlenen Ansatz zum Registrieren von Bindungserweiterungen. Erweiterungsbündel beseitigen außerdem die Notwendigkeit der Installation des .NET Core 2.x SDK. 
+Erweiterungsbundles sind der empfohlene Ansatz für andere Funktionsprojekte als kompilierte C#-Projekte. Für diese Projekte wird die Erweiterungsbundleeinstellung während der Initialisierung in der Datei _host.json_ generiert. Wenn dies für Sie funktioniert, können Sie diesen Abschnitt überspringen.  
 
 ### <a name="use-extension-bundles"></a>Verwenden von Erweiterungsbündeln
 
 [!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
 
-Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen von Azure Functions](functions-bindings-register.md#extension-bundles). Sie sollten Erweiterungsbündel in de Datei „host.json“ hinzufügen, bevor Sie der Datei „function.json“ Bindungen hinzufügen.
+ Wenn sie von Ihrer Sprache unterstützt werden, sollten Erweiterungsbundles bereits aktiviert sein, nachdem Sie `func init` aufgerufen haben. Sie sollten Erweiterungsbündel in de Datei „host.json“ hinzufügen, bevor Sie der Datei „function.json“ Bindungen hinzufügen. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen von Azure Functions](functions-bindings-register.md#extension-bundles). 
 
 ### <a name="explicitly-install-extensions"></a>Explizites Installieren von Erweiterungen
 
-[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
+In einem Nicht-.NET Projekt kann es vorkommen, dass Sie keine Erweiterungsbundles verwenden können, z. B. wenn Sie eine bestimmte Version einer Erweiterung als Ziel verwenden müssen, die nicht im Paket enthalten ist. In diesen seltenen Fällen können Sie die Core Tools verwenden, um die spezifischen Erweiterungspakete lokal zu installieren, die für Ihr Projekt erforderlich sind. Weitere Informationen finden Sie unter [Explizites Installieren von Erweiterungen](functions-bindings-register.md#explicitly-install-extensions).
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Standardmäßig werden diese Einstellungen nicht automatisch migriert, wenn das Projekt in Azure veröffentlicht wird. Verwenden Sie den Switch `--publish-local-settings`[bei der Veröffentlichung](#publish), um sicherzustellen, dass diese Einstellungen zur Funktionen-App in Azure hinzugefügt werden. Beachten Sie, dass Werte in **ConnectionStrings** niemals veröffentlicht werden.
+Standardmäßig werden diese Einstellungen nicht automatisch migriert, wenn das Projekt in Azure veröffentlicht wird. Verwenden Sie die [`--publish-local-settings`-Option][func azure functionapp publish] bei der Veröffentlichung, um sicherzustellen, dass diese Einstellungen zur Funktions-App in Azure hinzugefügt werden. Werte im Abschnitt `ConnectionStrings` werden nie veröffentlicht.
 
 Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvariablen gelesen werden. Weitere Informationen finden Sie im Abschnitt „Umgebungsvariablen“ dieser sprachspezifischen Referenzthemen:
 
@@ -247,19 +257,21 @@ Wenn keine gültige Speicherverbindungszeichenfolge für [`AzureWebJobsStorage`]
 
 ### <a name="get-your-storage-connection-strings"></a>Abrufen der Speicherverbindungszeichenfolgen
 
-Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wird, empfiehlt es sich, einen Test mit einer tatsächlichen Speicherverbindung durchzuführen. Wenn Sie bereits [ein Speicherkonto erstellt haben](../storage/common/storage-account-create.md), können Sie eine gültige Speicherverbindungszeichenfolge anhand einer der folgenden Methoden abrufen:
+Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wird, empfiehlt es sich, eine tatsächliche Speicherverbindung lokal auszuführen. Wenn Sie bereits ein [Speicherkonto erstellt](../storage/common/storage-account-create.md) haben, können Sie eine gültige Speicherverbindungszeichenfolge mit einer der folgenden Methoden abrufen:
 
-- Suchen Sie im [Azure portal] nach **Speicherkonten**, und wählen Sie diese Option aus. 
-  ![Auswählen von Speicherkonten im Azure-Portal](./media/functions-run-local/select-storage-accounts.png)
+# <a name="portal"></a>[Portal](#tab/portal)
+
+1. Suchen Sie im [Azure portal] nach **Speicherkonten**, und wählen Sie diese Option aus. 
+
+    ![Auswählen von Speicherkonten im Azure-Portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
-  ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
+1.  Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
 
-- Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement und anschließend **Speicherkonten**, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
+    ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
+# <a name="core-tools"></a>[Kerntools](#tab/azurecli)
 
-+ Verwenden Sie Core Tools im Projektstamm, um mit einem der folgenden Befehle die Verbindungszeichenfolge von Azure herunterzuladen:
+Verwenden Sie im Stammverzeichnis des Projekts einen der folgenden Befehle, um die Verbindungszeichenfolge aus Azure herunterzuladen:
 
   + Herunterladen aller Einstellungen aus einer vorhandenen Funktions-App:
 
@@ -273,67 +285,47 @@ Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wi
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Wenn Sie noch nicht in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden. Diese Befehle überschreiben alle vorhandenen Einstellungen in der Datei „local.settings.json“. 
+    Wenn Sie noch nicht in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden. Diese Befehle überschreiben alle vorhandenen Einstellungen in der Datei „local.settings.json“. Weitere Informationen finden Sie unter den Befehlen [`func azure functionapp fetch-app-settings`](functions-core-tools-reference.md#func-azure-functionapp-fetch-app-settings) und [`func azure storage fetch-connection-string`](functions-core-tools-reference.md#func-azure-storage-fetch-connection-string).
+
+# <a name="storage-explorer"></a>[Storage-Explorer](#tab/storageexplorer)
+
+1. Führen Sie [Azure Storage-Explorer](https://storageexplorer.com/) aus. 
+
+1. Erweitern Sie im **Explorer** Ihr Abonnement, und erweitern Sie dann **Speicherkonten**.
+
+1. Wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
+
+    ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
+
+---
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Erstellen einer Funktion
 
-Um eine Funktion zu erstellen, führen Sie den folgenden Befehl aus:
+Führen Sie den folgenden Befehl aus, um eine Funktion in einem vorhandenen Projekt zu erstellen:
 
 ```
 func new
 ```
 
-In Version 3.x/2.x werden Sie beim Ausführen von `func new` aufgefordert, eine Vorlage in der Standardsprache der Funktions-App auszuwählen. Sie werden außerdem aufgefordert, einen Namen für die Funktion auszuwählen. Auch in Version 1.x werden Sie aufgefordert, die Sprache auszuwählen.
+In Version 3.x/2.x werden Sie bei der Ausführung von `func new` aufgefordert, eine Vorlage in der Standardsprache Ihrer Funktions-App auszuwählen. Anschließend werden Sie aufgefordert, einen Namen für Ihre Funktion auszuwählen. Auch in Version 1.x müssen Sie auch die Sprache auswählen. 
 
-<pre>
-Select a language: Select a template:
-Blob trigger
-Cosmos DB trigger
-Event Grid trigger
-HTTP trigger
-Queue trigger
-SendGrid
-Service Bus Queue trigger
-Service Bus Topic trigger
-Timer trigger
-</pre>
-
-Der Funktionscode wird mit dem angegebenen Funktionsnamen in einem Unterordner generiert, wie dies in der folgenden Warteschlangentriggerausgabe zu sehen ist:
-
-<pre>
-Select a language: Select a template: Queue trigger
-Function name: [QueueTriggerJS] MyQueueTrigger
-Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
-Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
-Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
-Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-</pre>
-
-Sie können diese Optionen im Befehl auch mit folgenden Argumenten angeben:
-
-| Argument     | BESCHREIBUNG                            |
-| ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Version 2.x und höher) Generiert dieselben C#-Skriptvorlagen (.csx), die in Version 1.x und im Portal verwendet wurden. |
-| **`--language`**, **`-l`**| Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. Diese Option ist in Version 1.x erforderlich. Verwenden Sie diese Option nicht ab Version 2.x, oder wählen Sie die der Workerruntime entsprechende Sprache. |
-| **`--name`**, **`-n`** | Der Funktionsname. |
-| **`--template`**, **`-t`** | Mit dem Befehl `func templates list` können Sie sich die vollständige Liste der verfügbaren Vorlagen für jede unterstützte Sprache anzeigen lassen.   |
-
-
-Führen Sie z.B. zum Erstellen eines JavaScript-HTTP-Triggers in einem einzelnen Befehl Folgendes aus:
+Sie können auch den Funktionsnamen und die Vorlage im `func new`-Befehl angeben. Im folgenden Beispiel wird die `--template`-Option verwendet, um einen HTTP-Trigger namens `MyHttpTrigger` zu erstellen:
 
 ```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Führen Sie zum Erstellen einer durch die Warteschlange ausgelösten Funktion in einem einzelnen Befehl Folgendes aus:
+In diesem Beispiel wird ein Queue Storage-Trigger mit dem Namen `MyQueueTrigger` erstellt:
 
 ```
-func new --template "Queue Trigger" --name QueueTriggerJS
+func new --template "Queue Trigger" --name MyQueueTrigger
 ```
+
+Weitere Informationen finden Sie unter dem [`func new`-Befehl](functions-core-tools-reference.md#func-new).
 
 ## <a name="run-functions-locally"></a><a name="start"></a>Lokales Ausführen von Funktionen
 
-Um ein Functions-Projekt auszuführen, führen Sie den Functions-Host aus. Der Host aktiviert Trigger für alle Funktionen im Projekt. Der Startbefehl variiert abhängig von der Projektsprache.
+Um ein Functions-Projekt auszuführen, führen Sie den Functions-Host aus dem Stammverzeichnis Ihres Projekts aus. Der Host aktiviert Trigger für alle Funktionen im Projekt. Der [`start`-Befehl](functions-core-tools-reference.md#func-start) variiert je nach Projektsprache.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
@@ -349,6 +341,13 @@ mvn azure-functions:run
 ```
 
 # <a name="javascript"></a>[JavaScript](#tab/node)
+
+```
+func start
+```
+
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```
 func start
@@ -371,25 +370,9 @@ npm start
 ---
 
 >[!NOTE]  
-> Version 1.x der Functions-Runtime erfordert stattdessen `func host start`. 
+> Version 1.x der Functions-Runtime erfordert stattdessen `func host start`. Weitere Informationen finden Sie in der[Referenz zu Azure Functions Core Tools](functions-core-tools-reference.md?tabs=v1#func-start). 
 
-`func start` unterstützt die folgenden Optionen:
-
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--no-build`** | Das aktuelle Projekt wird vor der Ausführung nicht erstellt. Nur für dotnet-Projekte. Standardmäßig ist „false“ festgelegt. Wird für Version 1.x nicht unterstützt. |
-| **`--cors-credentials`** | Lässt ursprungsübergreifende authentifizierte Anforderungen (d. h. Cookies und Authentifizierungsheader) zu. Wird für Version 1.x nicht unterstützt. |
-| **`--cors`** | Eine durch Trennzeichen getrennte Liste der CORS-Ursprünge ohne Leerzeichen. |
-| **`--language-worker`** | Argumente zum Konfigurieren des Spracharbeitsthreads. Beispielsweise können Sie das Debuggen für den Spracharbeiter aktivieren, indem Sie den [Debugport und andere erforderliche Argumente](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers) bereitstellen. Wird für Version 1.x nicht unterstützt. |
-| **`--cert`** | Der Pfad zu einer PFX-Datei, die einen privaten Schlüssel enthält. Nur mit `--useHttps` verwendet. Wird für Version 1.x nicht unterstützt. |
-| **`--password`** | Entweder das Kennwort oder eine Datei, die das Kennwort für eine PFX-Datei enthält. Nur mit `--cert` verwendet. Wird für Version 1.x nicht unterstützt. |
-| **`--port`**, **`-p`** | Der lokale Port, auf dem gelauscht werden soll. Standardwert: 7071. |
-| **`--pause-on-error`** | Vor Beenden des Prozesses für zusätzliche Eingabe anhalten. Wird nur beim Starten von Core Tools in einer integrierten Entwicklungsumgebung (IDE) verwendet.|
-| **`--script-root`**, **`--prefix`** | Wird zum Angeben des Pfads zum Stamm der Funktions-App verwendet, die ausgeführt oder bereitgestellt werden soll. Diese Option wird für kompilierte Projekte verwendet, die Projektdateien in einem Unterordner generieren. Beispiel: Wenn Sie ein C#-Klassenbibliotheksprojekt erstellen, werden die Dateien „host.json“, „local.settings.json“ und „function.json“ in einem Unterordner des *Stammverzeichnisses* mit einem Pfad wie etwa dem folgenden generiert: `MyProject/bin/Debug/netstandard2.0`. Legen Sie in diesem Fall als Präfix `--script-root MyProject/bin/Debug/netstandard2.0` fest. Dies ist bei der Ausführung in Azure der Stamm der Funktions-App. |
-| **`--timeout`**, **`-t`** | Das Timeout für den zu startenden Functions-Host in Sekunden. Standardwert: 20 Sekunden.|
-| **`--useHttps`** | Erstellen Sie eine Bindung an `https://localhost:{port}` statt an `http://localhost:{port}`. Standardmäßig erstellt diese Option ein vertrauenswürdiges Zertifikat auf Ihrem Computer.|
-
-Wenn der Functions-Host startet, gibt er die URL der HTTP-ausgelösten Funktionen aus:
+Wenn der Functions-Host startet, gibt er wie im folgenden Beispiel gezeigt die URL der HTTP-ausgelösten Funktionen aus:
 
 <pre>
 Found the following functions:
@@ -439,11 +422,11 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azu
 ```
 ---
 
-Sie können GET-Anforderungen über einen Browser ausführen, indem Sie Daten in der Abfragezeichenfolge übergeben. Für alle anderen HTTP-Methoden müssen Sie cURL, Fiddler, Postman oder ein ähnliches HTTP-Testtool verwenden.
+Sie können GET-Anforderungen über einen Browser ausführen, indem Sie Daten in der Abfragezeichenfolge übergeben. Für alle anderen HTTP-Methoden müssen Sie cURL, Fiddler, Postman oder ein ähnliches HTTP-Testtool verwenden, das POST-Anforderungen unterstützt.
 
 #### <a name="non-http-triggered-functions"></a>Nicht über HTTP ausgelöste Funktionen
 
-Für alle Arten von Funktionen mit Ausnahme von HTTP-Triggern, Webhooks und Event Grid-Triggern können Sie Funktionen lokal testen, indem Sie einen Verwaltungsendpunkt aufrufen. Wenn Sie diesen Endpunkt mit einer HTTP POST-Anforderung auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. 
+Für alle Funktionen mit Ausnahme von HTTP- und Event Grid-Triggern können Sie Ihre Funktionen lokal mit REST testen, indem Sie einen speziellen Endpunkt aufrufen, der als _Administrationsendpunkt_ bezeichnet wird. Wenn Sie diesen Endpunkt mit einer HTTP POST-Anforderung auf dem lokalen Server aufrufen, wird die Funktion ausgelöst. 
 
 Informationen zum lokalen Testen der durch Event Grid ausgelösten Funktionen finden Sie unter [Lokales Testen mit Viewer-Web-App](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app).
 
@@ -475,37 +458,33 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 ```
 ---
 
-#### <a name="using-the-func-run-command-version-1x-only"></a>Verwenden des Befehls `func run` (nur Version 1.x)
-
->[!IMPORTANT]
-> Der Befehl `func run` wird nur in Version 1.x der Tools unterstützt. Weitere Informationen finden Sie im Thema [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
-
-In Version 1.x können sie eine Funktion mithilfe von `func run <FunctionName>` auch direkt aufrufen und Eingabedaten für die Funktion bereitstellen. Dieser Befehl ähnelt der Ausführung einer Funktion mithilfe der Registerkarte **Test** im Azure-Portal.
-
-`func run` unterstützt die folgenden Optionen:
-
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--content`**, **`-c`** | Inlineinhalt. |
-| **`--debug`**, **`-d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
-| **`--timeout`**, **`-t`** | Wartezeit (in Sekunden), bis der lokale Functions-Host bereit ist.|
-| **`--file`**, **`-f`** | Der als Inhalt zu verwendende Dateiname.|
-| **`--no-interactive`** | Fordert keine Eingabe an. Für Automatisierungsszenarien nützlich.|
-
-Um z.B. eine HTTP-ausgelöste Funktion aufzurufen und Inhaltstext zu übergeben, führen Sie folgenden Befehl aus:
-
-```
-func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
-```
+Wenn Sie einen Administratorendpunkt in Ihrer Funktions-App in Azure aufrufen, müssen Sie einen Zugriffsschlüssel angeben. Weitere Informationen finden Sie unter [Funktionszugriffsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ## <a name="publish-to-azure"></a><a name="publish"></a>Veröffentlichen in Azure
 
-Azure Functions Core Tools unterstützt zwei Arten von Bereitstellungen: die Bereitstellung der Funktionsprojektdateien direkt in Ihrer Funktions-App über [ZIP-Bereitstellung](functions-deployment-technologies.md#zip-deploy) und die [Bereitstellung eines benutzerdefinierten Docker-Containers](functions-deployment-technologies.md#docker-container). Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create), für die Sie den Code bereitstellen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
+Die Azure Functions Core Tools unterstützen drei Bereitstellungstypen:
+
+| Bereitstellungstyp | Befehl | BESCHREIBUNG |
+| ----- | ----- | ----- |
+| Projektdateien | [`func azure functionapp publish`](functions-core-tools-reference.md#func-azure-functionapp-publish) | Stellt Funktionsprojektdateien mithilfe der [ZIP-Bereitstellung](functions-deployment-technologies.md#zip-deploy) direkt in Ihrer Funktions-App bereit. |
+| Benutzerdefinierter Container | `func deploy` | Stellt Ihr Projekt in einer Linux-Funktions-App als benutzerdefinierten Docker-Container bereit.  |
+| Kubernetes-Cluster | `func kubernetes deploy` | Stellt Ihre Linux-Funktions-App als benutzerdefinierten Docker-Kundencontainer in einem Kubernetes-Cluster bereit. | 
+
+### <a name="before-you-publish"></a>Vor dem Veröffentlichen 
 
 >[!IMPORTANT]
 >Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) oder [Azure PowerShell](/powershell/azure/install-az-ps) muss lokal installiert sein, um von Core Tools aus Veröffentlichungsvorgänge in Azure durchführen zu können.  
 
-Ein Projektordner kann sprachspezifische Dateien und Verzeichnisse enthalten, die nicht veröffentlicht werden sollen. Ausgeschlossene Elemente werden in einer .funcignore-Datei im Stammprojektordner aufgelistet.     
+Ein Projektordner kann sprachspezifische Dateien und Verzeichnisse enthalten, die nicht veröffentlicht werden sollen. Ausgeschlossene Elemente werden in einer .funcignore-Datei im Stammprojektordner aufgelistet.  
+
+Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create), für die Sie den Code bereitstellen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
+
+Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle oder Azure PowerShell finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). 
+
+>[!IMPORTANT]
+> Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie automatisch Version 3.x der Functions-Runtime. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).
+> Sie können die Runtimeversion für eine Funktions-App, die über Funktionen verfügt, nicht ändern.
+
 
 ### <a name="deploy-project-files"></a><a name="project-file-deployment"></a>Bereitstellen von Projektdateien
 
@@ -515,56 +494,49 @@ Um Ihren lokalen Code in einer Funktions-App in Azure zu veröffentlichen, verwe
 func azure functionapp publish <FunctionAppName>
 ```
 
->[!IMPORTANT]
-> Java verwendet Maven, um das lokale Projekt in Azure zu veröffentlichen. Verwenden Sie den folgenden Befehl zum Veröffentlichen in Azure: `mvn azure-functions:deploy`. Azure-Ressourcen werden während der ersten Bereitstellung erstellt.
+Die folgenden Überlegungen gelten für diese Art von Bereitstellung:
 
-Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle oder Azure PowerShell finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). Dieser Befehl verwendet standardmäßig die [Remotebuildfunktion](functions-deployment-technologies.md#remote-build) und stellt Ihre App für die [Ausführung über das Bereitstellungspaket](run-functions-from-deployment-package.md) bereit. Dieser empfohlene Bereitstellungsmodus kann auf Wunsch mithilfe der Option `--nozip` deaktiviert werden.
++ Bei der Veröffentlichung werden vorhandene Dateien in der Funktions-App überschrieben.
 
->[!IMPORTANT]
-> Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie automatisch Version 3.x der Functions-Runtime. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).
-> Sie können die Runtimeversion für eine Funktions-App, die über Funktionen verfügt, nicht ändern.
++ Verwenden Sie die [`--publish-local-settings`-Option][func azure functionapp publish] zum automatischen Erstellen von App-Einstellungen in Ihrer Funktions-App basierend auf Werten in der Datei „local.settings.json“.  
 
-Die folgenden Veröffentlichungsoptionen gelten für alle Versionen:
++ Ein [Remotebuild](functions-deployment-technologies.md#remote-build) wird für kompilierte Projekte ausgeführt. Dies kann mithilfe der [`--no-build`-Option][func azure functionapp publish] gesteuert werden.  
 
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Einstellungen zur Veröffentlichung in Azure in „local.settings.json“. Wenn die Einstellung bereits vorhanden ist, werden Sie gefragt, ob sie überschrieben werden soll. Wenn Sie den Microsoft Azure-Speicheremulator verwenden, ändern Sie zunächst die App-Einstellung in eine [tatsächliche Speicherverbindung](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | Unterdrückt die Aufforderung zum Überschreiben von App-Einstellungen bei Verwendung von `--publish-local-settings -i`.|
++ Ihr Projekt wird so bereitgestellt, dass es [aus dem Bereitstellungspaket ausgeführt wird](run-functions-from-deployment-package.md). Dieser empfohlene Bereitstellungsmodus kann mithilfe der [`--nozip`-Option][func azure functionapp publish] deaktiviert werden.
 
-Die folgenden Veröffentlichungsoptionen werden nur ab Version 2.x unterstützt:
++ Java verwendet Maven, um das lokale Projekt in Azure zu veröffentlichen. Verwenden Sie stattdessen den folgenden Befehl zum Veröffentlichen in Azure: `mvn azure-functions:deploy`. Azure-Ressourcen werden während der ersten Bereitstellung erstellt.
 
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--publish-settings-only`**, **`-o`** |  Veröffentlicht nur die Einstellungen, der Inhalt wird übersprungen. Standard ist die Eingabeaufforderung. |
-|**`--list-ignored-files`** | Zeigt eine Liste mit Dateien an, die bei der Veröffentlichung ignoriert werden (basierend auf der Datei vom Typ „.funcignore“). |
-| **`--list-included-files`** | Zeigt eine Liste mit Dateien an, die veröffentlicht werden (basierend auf der Datei vom Typ „.funcignore“). |
-| **`--nozip`** | Deaktiviert den Standardmodus `Run-From-Package`. |
-| **`--build-native-deps`** | Überspringt das Generieren des Ordners „.wheels“ beim Veröffentlichen von Python-Funktions-Apps. |
-| **`--build`**, **`-b`** | Führt beim Bereitstellen in einer Linux-Funktions-App eine Buildaktion durch. Akzeptiert: `remote` und `local`. |
-| **`--additional-packages`** | Liste der zu installierenden Pakete beim Erstellen nativer Abhängigkeiten. Beispiel: `python3-dev libevent-dev`. |
-| **`--force`** | In bestimmten Szenarien wird die Überprüfung vor der Veröffentlichung ignoriert. |
-| **`--csx`** | Veröffentlicht ein C#-Skriptprojekt (.csx). |
-| **`--no-build`** | Das Projekt wird während der Veröffentlichung nicht erstellt. Für Python wird `pip install` nicht ausgeführt. |
-| **`--dotnet-cli-params`** | Beim Veröffentlichen kompilierter C#-Funktionen (.csproj) rufen die Core Tools „dotnet build --output bin/publish“ auf. Alle daran übergebenen Parameter werden an die Befehlszeile angefügt. |
++ Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. 
 
-### <a name="deploy-custom-container"></a>Bereitstellen benutzerdefinierter Container
+### <a name="kubernetes-cluster"></a>Kubernetes-Cluster
 
-Mit Azure Functions können Sie Ihr Funktionsprojekt in einem [benutzerdefinierten Docker-Container](functions-deployment-technologies.md#docker-container) bereitstellen. Weitere Informationen finden Sie unter [Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)](functions-create-function-linux-custom-image.md). Benutzerdefinierte Container müssen ein Dockerfile enthalten. Um eine App mit einer Docker-Datei zu erstellen, verwenden Sie die Option „--dockerfile“ für `func init`.
+Mit Functions können Sie Ihr Functions-Projekt auch für die Ausführung in einem Docker-Container definieren. Verwenden Sie die [`--docker`-Option][func init] von `func init`, um eine Dockerfile-Datei für Ihre spezifische Sprache zu generieren. Diese Datei wird dann beim Erstellen eines bereitzustellenden Containers verwendet. 
 
-```
-func deploy
+Core Tools können verwendet werden, um Ihr Projekt als benutzerdefiniertes Containerimage in einem Kubernetes-Cluster bereitzustellen. Der von Ihnen verwendete Befehl hängt vom Typ des im Cluster verwendeten Scalers ab.  
+
+Der folgende Befehl verwendet die Dockerfile-Datei, um einen Container zu generieren und in einem Kubernetes-Cluster bereitzustellen. 
+
+# <a name="keda"></a>[KEDA](#tab/keda)
+
+```command
+func kubernetes deploy --name <DEPLOYMENT_NAME> --registry <REGISTRY_USERNAME> 
 ```
 
-Die folgenden Optionen für die Bereitstellung benutzerdefinierter Container sind verfügbar:
+Weitere Informationen finden Sie unter [Bereitstellen einer Funktions-App in Kubernetes](functions-kubernetes-keda.md#deploying-a-function-app-to-kubernetes). 
 
-| Option     | BESCHREIBUNG                            |
-| ------------ | -------------------------------------- |
-| **`--registry`** | Der Name einer Docker-Registrierung, bei der der aktuelle Benutzer angemeldet ist |
-| **`--platform`** | Hostingplattform für die Funktions-App Gültige Optionen: `kubernetes` |
-| **`--name`** | Name der Funktions-App |
-| **`--max`**  | Legt optional die maximale Anzahl von Funktions-App-Instanzen fest, in denen die Bereitstellung erfolgen soll. |
-| **`--min`**  | Legt optional die Mindestanzahl von Funktions-App-Instanzen fest, in denen die Bereitstellung erfolgen soll. |
-| **`--config`** | Legt eine optionale Bereitstellungskonfigurationsdatei fest. |
+# <a name="defaultknative"></a>[Standard/KNative](#tab/default)
+
+```command
+func deploy --name <FUNCTION_APP> --platform kubernetes --registry <REGISTRY_USERNAME> 
+```
+
+Ersetzen Sie im Beispiel oben `<FUNCTION_APP>` durch den Namen der Funktions-App in Azure und `<REGISTRY_USERNAME>` durch den Namen Ihres Registrierungskontos, z. B. durch den Docker-Benutzernamen. Der Container wird lokal erstellt und mit einem Imagenamen, der auf `<FUNCTION_APP>` basiert, in Ihr Docker-Registrierungskonto gepusht. Die Docker-Befehlszeilentools müssen installiert sein.
+
+Weitere Informationen finden Sie unter dem [`func deploy`-Befehl](functions-core-tools-reference.md#func-deploy).
+
+---
+
+Informationen zum Veröffentlichen eines benutzerdefinierten Containers in Azure ohne Kubernetes finden Sie unter [Erstellen einer Funktion unter Linux mithilfe eines benutzerdefinierten Containers](functions-create-function-linux-custom-image.md).
 
 ## <a name="monitoring-functions"></a>Überwachen von Funktionen
 
@@ -596,3 +568,5 @@ Um einen Fehler zu melden oder ein Feature anzufordern, [öffnen Sie ein GitHub-
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [Erweiterungsbundles]: functions-bindings-register.md#extension-bundles
+[func azure functionapp publish]: functions-core-tools-reference.md?tabs=v2#func-azure-functionapp-publish
+[func init]: functions-core-tools-reference.md?tabs=v2#func-init
