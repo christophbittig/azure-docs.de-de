@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 01/27/2020
+ms.date: 07/12/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4c8e18979ff1575e1a050244a96e7858cdce46b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9afabe40426a5e86fdd3c6ef76969e1392a9b051
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530241"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649580"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -57,7 +57,7 @@ Richtlinien für Azure AD-Nutzungsbedingungen bieten folgende Funktionen:
 Um die Azure AD-Richtlinien für Nutzungsbedingungen verwenden und konfigurieren zu können, benötigen Sie Folgendes:
 
 - Eines der folgenden Abonnements: Azure AD Premium P1, P2, EMS E3 oder EMS E5.
-   - Sollten Sie über keines dieser Abonnements verfügen, können Sie [Azure AD Premium beziehen](../fundamentals/active-directory-get-started-premium.md) oder [die Azure AD Premium-Testversion aktivieren](https://azure.microsoft.com/trial/get-started-active-directory/).
+   - Wenn Sie keines dieser Abonnements haben, können Sie [Azure AD Premium erwerben](../fundamentals/active-directory-get-started-premium.md) oder die [Azure AD Premium-Testversion aktivieren](https://azure.microsoft.com/trial/get-started-active-directory/).
 - Eines der folgenden Administratorkonten für das Verzeichnis, das Sie konfigurieren möchten:
    - Globaler Administrator
    - Sicherheitsadministrator
@@ -201,16 +201,10 @@ Benutzer müssen die Richtlinie für Nutzungsbedingungen nur einmal akzeptieren.
 
 Benutzer können die Richtlinien für Nutzungsbedingungen, die sie akzeptiert haben, wie folgt lesen und anzeigen:
 
-1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
-1. Klicken Sie in der rechten oberen Ecke auf Ihren Namen, und wählen Sie **Profil** aus.
-
-    ![MyApps-Website mit dem geöffneten Bereich des Benutzers](./media/terms-of-use/tou14.png)
-
-1. Klicken Sie in Ihrem Profil auf **Nutzungsbedingungen lesen**.
-
-    ![Profilseite für einen Benutzer mit dem Link „Nutzungsbedingungen lesen“](./media/terms-of-use/tou13a.png)
-
-1. Hier können Sie sich die akzeptierten Richtlinien für Nutzungsbedingungen überprüfen.
+1. Melden Sie sich bei [https://myaccount.microsoft.com/](https://myaccount.microsoft.com/) an.
+1. Wählen Sie **Einstellungen & Datenschutz** aus.
+1. Wählen Sie **Datenschutz** aus.
+1. Wählen Sie unter **Hinweis der Organisation** neben den Nutzungsbedingungen, die Sie überprüfen möchten, **Ansicht** aus.
 
 ## <a name="edit-terms-of-use-details"></a>Bearbeiten der Details der Nutzungsbedingungen
 
@@ -222,7 +216,7 @@ Sie können einige Details der Richtlinien für Nutzungsbedingungen bearbeiten, 
 1. Sie können im Bereich „Nutzungsbedingungen bearbeiten“ Folgendes ändern:
     - **Name:** der interne Name der Nutzungsbedingungen, der nicht für Endbenutzer freigegeben wird
     - **Anzeigename:** der Name, den Endbenutzer beim Anzeigen der Nutzungsbedingungen sehen
-    - **Benutzer müssen die Nutzungsbedingungen erweitern:** Durch Festlegen dieser Option auf **Ein** erzwingen Sie, dass der Endbenutzer das Dokument mit der Richtlinie für Nutzungsbedingungen erweitert muss, bevor er es akzeptieren kann.
+    - **Benutzer müssen die Nutzungsbedingungen erweitern**: Durch Festlegen dieser Option auf **Ein** erzwingen Sie, dass der Endbenutzer das Dokument mit der Richtlinie für Nutzungsbedingungen erweitern muss, bevor er es akzeptieren kann.
     - (Vorschau:) Sie können ein vorhandenes Dokument mit **Nutzungsbedingungen aktualisieren**.
     - Sie können vorhandenen Nutzungsbedingungen eine Sprache hinzufügen.
 
@@ -242,7 +236,7 @@ Sie können einige Details der Richtlinien für Nutzungsbedingungen bearbeiten, 
     ![Bereich „Nutzungsbedingungen bearbeiten“ mit Optionen für den Namen und zum Erweitern der Nutzungsbedingungen](./media/terms-of-use/edit-terms-use.png)
 
 5.  Laden Sie im rechten Bereich die PDF-Datei für die neue Version hoch.
-6.  Dort ist auch die Umschaltoption **Erneute Annahme erforderlich** verfügbar, mit der Sie erzwingen können, dass Benutzer diese neue Version bei der nächsten Anmeldung akzeptieren müssen. Wenn Sie die erneute Annahme durch Ihre Benutzer erzwingen, müssen diese beim nächsten Versuch, auf die in der Richtlinie für den bedingten Zugriff definierte Ressource zuzugreifen, die neue Version akzeptieren. Wenn die erneute Annahme durch die Benutzer nicht erzwingen, gilt die vorherige Einwilligung weiter. Die neue Version wird nur neuen Benutzern angezeigt, die noch nicht zugestimmt haben, oder Benutzern, deren Zustimmung abläuft.
+6.  Dort ist auch die Umschaltoption **Erneute Annahme erforderlich** verfügbar, mit der Sie erzwingen können, dass Benutzer diese neue Version bei der nächsten Anmeldung akzeptieren müssen. Wenn Sie die erneute Annahme durch Ihre Benutzer erzwingen, müssen diese beim nächsten Versuch, auf die in der Richtlinie für den bedingten Zugriff definierte Ressource zuzugreifen, die neue Version akzeptieren. Wenn die erneute Annahme durch die Benutzer nicht erzwingen, gilt die vorherige Einwilligung weiter. Die neue Version wird nur neuen Benutzern angezeigt, die noch nicht zugestimmt haben, oder Benutzern, deren Zustimmung abläuft. Bis zum Sitzungsablauf wird mit **Require reaccept** (Erneute Zustimmung anfordern) von Benutzern nicht gefordert, die neuen Nutzungsbedingungen zu akzeptieren. Wenn Sie eine erneute Zustimmung sicherstellen möchten, löschen Sie die Nutzungsbedingungen, und erstellen Sie sie erneut, oder erstellen Sie neue Nutzungsbedingungen für diesen Fall.
 
     ![„Nutzungsbedingungen bearbeiten“: Option zum erneuten Annehmen hervorgehoben](./media/terms-of-use/re-accept.png)
 
@@ -403,12 +397,6 @@ A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, we
 **F: Warum sehe ich eine andere Anzahl von Zustimmungen im Bericht zu den Nutzungsbedingungen als in den Azure AD-Überwachungsprotokollen?**<br />
 A: Der Bericht zu den Nutzungsbedingungen wird für die Lebensdauer dieser Richtlinie für Nutzungsbedingungen gespeichert, während die Azure AD-Überwachungsprotokolle (nur) 30 Tage lang gespeichert werden. Darüber hinaus wird im Bericht zu den Nutzungsbedingungen nur der aktuelle Zustimmungsstatus der Benutzer angezeigt. Lehnt ein Benutzer z.B. die Nutzungsbedingungen ab und akzeptiert sie aber später, enthält der Bericht zu den Nutzungsbedingungen nur die Zustimmung. Wenn Sie den Verlauf anzeigen möchten, können Sie in den Azure AD-Überwachungsprotokollen nachsehen.
 
-**F: Müssen Benutzer der Richtlinie für Nutzungsbedingungen erneut zustimmen, wenn ich die zugehörigen Details bearbeite?**<br />
-A: Nein. Wenn ein Administrator die Details einer Richtlinie für Nutzungsbedingungen (den Namen, den Anzeigenamen, die Option „Benutzer müssen die Nutzungsbedingungen erweitern“ oder „Sprache hinzufügen“) bearbeitet, müssen die Benutzer den neuen Bedingungen nicht erneut zustimmen.
-
-**F: Kann ich ein vorhandenes Dokument mit einer Richtlinie für Nutzungsbedingungen aktualisieren?**<br />
-A: Derzeit können Sie ein vorhandenes Dokument mit einer Richtlinie für Nutzungsbedingungen nicht aktualisieren. Um ein Dokument mit einer Richtlinie für Nutzungsbedingungen zu ändern, müssen Sie eine neue Instanz der Richtlinie für Nutzungsbedingungen erstellen.
-
 **F: Wenn das PDF-Dokument mit der Richtlinie für Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**<br />
 A: Ja, Endbenutzer können Links zu weiteren Seiten auswählen. Links zu Abschnitten innerhalb des Dokuments werden hingegen nicht unterstützt. Außerdem funktionieren Links im PDF-Dokument mit der Richtlinie für Nutzungsbedingungen nicht, wenn Sie aus dem Azure AD-Portal „Meine Apps“/„Mein Konto“ darauf zugreifen.
 
@@ -434,7 +422,7 @@ A: Sie können [zuvor akzeptierte Richtlinien für Nutzungsbedingungen überprü
 A: Wenn Sie sowohl Azure AD-Nutzungsbedingungen als auch [Intune-Nutzungsbedingungen](/intune/terms-and-conditions-create) konfiguriert haben, muss der Benutzer beide akzeptieren. Weitere Informationen finden Sie im Blogbeitrag [Choosing the right Terms solution for your organization](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) (Auswählen der richtigen Lösung für Bestimmungen für Ihre Organisation).
 
 **F: Welche Endpunkte werden vom Dienst für die Nutzungsbedingungen zur Authentifizierung verwendet?**<br />
-A: Der Dienst für die Nutzungsbedingungen verwendet die folgenden Endpunkte zur Authentifizierung: https://tokenprovider.termsofuse.identitygovernance.azure.com und https://account.activedirectory.windowsazure.com. Wenn Ihre Organisation über eine Liste zulässiger Registrierungs-URLs verfügt, müssen Sie dieser Liste die Endpunkte zusammen mit den Azure AD-Endpunkten für die Anmeldung hinzufügen.
+A: Der Dienst für die Nutzungsbedingungen verwendet die folgenden Endpunkte zur Authentifizierung: https://tokenprovider.termsofuse.identitygovernance.azure.com und https://account.activedirectory.windowsazure.com. Wenn es in Ihrer Organisation eine Positivliste von Registrierungs-URLs gibt, müssen Sie Ihrer Liste diese Endpunkte zusammen mit den Azure AD-Endpunkten für die Anmeldung hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
