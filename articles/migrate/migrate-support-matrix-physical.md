@@ -1,17 +1,17 @@
 ---
 title: Unterstützung der physischen Ermittlung und Bewertung in Azure Migrate
 description: 'Informationen zur Unterstützung der physischen Ermittlung und Bewertung mit „Azure Migrate: Ermittlung und Bewertung“'
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: aad800a710a1bc3942efc128f8350044a513d44f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472022"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345970"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Unterstützungsmatrix für die Ermittlung und Bewertung physischer Server 
 
@@ -38,10 +38,44 @@ Zum Bewerten physischer Server erstellen Sie ein Projekt und fügen dem Projekt 
 
 **Berechtigungen:**
 
-- Verwenden Sie für Windows-Server ein Domänenkonto für in die Domäne eingebundene Server und ein lokales Konto für nicht in die Domäne eingebundene Server. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
+Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physischen Server verwendet werden kann.
+
+**Windows-Server**
+
+- Verwenden Sie für Windows-Server ein Domänenkonto für in die Domäne eingebundene Server und ein lokales Konto für nicht in die Domäne eingebundene Server. 
+- Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. 
+- Wenn die Gruppe „Remoteverwaltungsbenutzer“ nicht vorhanden ist, fügen Sie der Gruppe ein Benutzerkonto hinzu: **WinRMRemoteWMIUsers_** .
+- Das Konto benötigt diese Berechtigungen, damit die Appliance eine CIM-Verbindung mit dem Server herstellen und die erforderlichen Konfigurations- und Leistungsmetadaten aus den [hier](migrate-appliance.md#collected-data---physical) aufgeführten WMI-Klassen pullen kann.
+- In einigen Fällen werden durch das Hinzufügen des Kontos zu diesen Gruppen unter Umständen nicht die erforderlichen Daten aus WMI-Klassen zurückgegeben, da das Konto möglicherweise nach [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) gefiltert ist. Um die UAC-Filterung außer Kraft zu setzen, muss das Benutzerkonto über die erforderlichen Berechtigungen für den CIMV2-Namespace und die untergeordneten Namespaces auf dem Zielserver verfügen. Sie können die [hier](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation) beschriebenen Schritte ausführen, um die erforderlichen Berechtigungen zu aktivieren.
+
     > [!Note]
-    > Stellen Sie bei Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist und dass das Domänenkonto/das lokale Konto, das für den Serverzugriff verwendet wird, den folgenden Gruppen hinzugefügt wird: „Systemmonitorbenutzer“, „Leistungsprotokollbenutzer“ und „WinRMRemoteWMIUsers“.
-- Linux-Server: Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ dazu können Sie auch mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen festlegen, bei dem es sich nicht um das root-Konto handelt:
+    > Stellen Sie unter Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist.
+
+**Linux-Server**
+
+- Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ können Sie ein Benutzerkonto mit sudo-Berechtigungen bereitstellen.
+- Die Unterstützung zum Hinzufügen eines Benutzerkontos mit sudo-Zugriff wird standardmäßig mit dem neuen Installationsskript für die Appliance bereitgestellt, das seit dem 20. Juli 2021 aus dem Portal heruntergeladen werden kann.
+- Für ältere Appliances können Sie die Funktion anhand der folgenden Schritte aktivieren:
+    1. Öffnen Sie auf dem Server, auf dem die Appliance ausgeführt wird, den Registrierungs-Editor.
+    1. Navigieren Sie zu HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
+    1. Erstellen Sie den Registrierungsschlüssel „isSudo“ mit dem DWORD-Wert 1.
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="Screenshot: Aktivieren der sudo-Unterstützung.":::
+
+- Wenn Sie die Konfigurations- und Leistungsmetadaten vom Zielserver ermitteln möchten, müssen Sie sudo-Zugriff für die [hier](migrate-appliance.md#linux-server-metadata) aufgeführten Befehle aktivieren. Stellen Sie sicher, dass Sie „NOPASSWD“ für das Konto aktiviert haben, um die erforderlichen Befehle auszuführen, ohne bei jedem Aufruf des sudo-Befehls ein Kennwort eingeben zu müssen.
+- Die folgenden Linux-Betriebssystemdistributionen werden für die Ermittlung durch Azure Migrate mit einem Konto mit sudo-Zugriff unterstützt:
+
+    Betriebssystem | Versionen 
+    --- | ---
+    Red Hat Enterprise Linux | 6, 7, 8
+    Cent OS | 6.6, 8.2
+    Ubuntu | 14.04, 16.04, 18.04
+    SUSE Linux | 11.4, 12.4
+    Debian | 7, 10
+    Amazon Linux | 2.0.2021
+    CoreOS-Container | 2345.3.0
+
+- Wenn Sie kein root-Konto oder Benutzerkonto mit sudo-Zugriff bereitstellen können, können Sie den Registrierungsschlüssel „isSudo“ in der Registrierung „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“ auf den Wert „0“ festlegen und mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen angeben, bei dem es sich nicht um das root-Konto handelt:
 
 **Befehl** | **Zweck**
 --- | --- |

@@ -3,12 +3,12 @@ title: Azure Media Services als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Media Services-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c3b40f1a40cd0a5ee611a00f2f0361a8a522d3ad
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120111"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340427"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid-Quelle
 
@@ -28,8 +28,9 @@ Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange
 | Microsoft.Media.JobScheduled| Rufen Sie ein Ereignis ab, wenn der Auftrag in den geplanten Zustand übergeht. |
 | Microsoft.Media.JobProcessing| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Verarbeitungszustand übergeht. |
 | Microsoft.Media.JobCanceling| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Abbrechen“ übergeht. |
+| Microsoft.Media.JobFinished| Rufen Sie ein Ereignis ab, wenn der Auftrag in den abgeschlossenen Zustand übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 | Microsoft.Media.JobCanceled| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Abgebrochen“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
-| Microsoft.Media.JobErrored | Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Fehler“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
+| Microsoft.Media.JobErrored| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Fehler“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 
 Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
 
@@ -285,8 +286,6 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-# <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
-
 Das folgende Beispiel zeigt das Schema des **JobOutputStateChange**-Ereignisses:
 
 ```json
@@ -394,115 +393,6 @@ Das folgende Beispiel zeigt das Schema des **LiveEventConnectionRejected**-Ereig
   }
 ]
 ```
-
-# <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
-
-Das folgende Beispiel zeigt das Schema des **JobOutputStateChange**-Ereignisses:
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputStateChange",
-  "time": "2018-10-12T16:25:56.0242854",
-  "id": "dde85f46-b459-4775-b5c7-befe8e32cf90",
-  "data": {
-    "previousState": "Processing",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 100,
-      "state": "Finished"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
-
-Für jede Zustandsänderung von „JobOutput“ sieht das Beispielschema etwa wie folgt aus:
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputProcessing",
-  "time": "2018-10-12T16:12:18.0061141",
-  "id": "f1fd5338-1b6c-4e31-83c9-cd7c88d2aedb",
-  "data": {
-    "previousState": "Scheduled",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 0,
-      "state": "Processing"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-### <a name="joboutputprogress"></a>JobOutputProgress
-
-Das Beispielschema ähnelt Folgendem:
-
- ```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
-  "type": "Microsoft.Media.JobOutputProgress",
-  "time": "2018-12-10T18:20:12.1514867",
-  "id": "00000000-0000-0000-0000-000000000000",
-  "data": {
-    "jobCorrelationData": {
-      "TestKey1": "TestValue1",
-      "testKey2": "testValue2"
-    },
-    "label": "VideoAnalyzerPreset_0",
-    "progress": 86
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
-
-Das folgende Beispiel zeigt das Schema des **LiveEventConnectionRejected**-Ereignisses: 
-
-```json
-[
-  {
-    "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaServices/<account-name>",
-    "subject": "/LiveEvents/MyLiveEvent1",
-    "type": "Microsoft.Media.LiveEventConnectionRejected",
-    "time": "2018-01-16T01:57:26.005121Z",
-    "id": "b303db59-d5c1-47eb-927a-3650875fded1",
-    "data": { 
-      "streamId":"Mystream1",
-      "ingestUrl": "http://abc.ingest.isml",
-      "encoderIp": "118.238.251.xxx",
-      "encoderPort": 52859,
-      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
-    },
-    "specversion": "1.0"
-  }
-]
-```
-
----
-
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
@@ -934,21 +824,25 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIngestHeartbeat**-Ereignis
     "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
     "subject": "liveEvent/mle1",
     "eventType": "Microsoft.Media.LiveEventIngestHeartbeat",
-    "eventTime": "2018-08-07T23:17:57.4610506",
+    "eventTime": "2021-05-14T23:50:00.324",
     "id": "7f450938-491f-41e1-b06f-c6cd3965d786",
     "data": {
-      "trackType": "audio",
-      "trackName": "audio",
-      "bitrate": 160000,
-      "incomingBitrate": 155903,
-      "lastTimestamp": "15336837535253637",
-      "timescale": "10000000",
-      "overlapCount": 0,
-      "discontinuityCount": 0,
-      "nonincreasingCount": 0,
-      "unexpectedBitrate": false,
-      "state": "Running",
-      "healthy": true
+      "trackType":"video",
+      "trackName":"video",
+      "bitrate":2500000,
+      "incomingBitrate":2462597,
+      "lastTimestamp":"106999",
+      "timescale":"1000",
+      "overlapCount":0,
+      "discontinuityCount":0,
+      "nonincreasingCount":0,
+      "unexpectedBitrate":false,
+      "state":"Running",
+      "healthy":true,
+      "lastFragmentArrivalTime":"2021-05-14T23:50:00.324",
+      "ingestDriftValue":"0",
+      "transcriptionState":"",
+      "transcriptionLanguage":""
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -1006,6 +900,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | `unexpectedBitrate` | bool | Die erwarteten und tatsächlichen Bitraten in den letzten 20 Sekunden unterscheiden sich um mehr als das maximal zulässige Limit. TRUE, wenn (und nur wenn) incomingBitrate >= 2 * Bitrate OR incomingBitrate <= Bitrate / 2 OR IncomingBitrate = 0 gilt. |
 | `state` | Zeichenfolge | Zustand des Liveereignisses. |
 | `healthy` | bool | Gibt an, ob die Erfassung hinsichtlich Anzahl und Flags fehlerfrei ist. Healthy ist TRUE, wenn overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false gilt. |
+| `lastFragmentArrivalTime` | Zeichenfolge |Der letzte Zeitstempel in UTC, zu dem ein Fragment am Erfassungsendpunkt eingetroffen ist. Beispiel für das Datumsformat: „2020-11-11 12:12:12:888999“ |
+| `ingestDriftValue` | Zeichenfolge | Gibt die Geschwindigkeit der Verzögerung der eingehenden Audio- oder Videodaten während der letzten Minute in Sekunden pro Minute an. Der Wert ist größer als null, wenn Daten in der letzten Minute langsamer als erwartet beim Liveereignis eintreffen. null, wenn Daten ohne Verzögerung eingetroffen sind; und „n/a“ (n/v), wenn keine Audio- oder Videodaten empfangen wurden. Wenn Sie beispielsweise über einen Beitragsencoder verfügen, der Liveinhalte sendet und aufgrund von Verarbeitungsproblemen oder Netzwerklatenz verlangsamt wird, kann er möglicherweise nur insgesamt 58 Sekunden Audio oder Video in einem Zeitraum von einer Minute liefern. Dies wird als Abweichung von 2 Sekunden pro Minute gemeldet. Wenn der Encoder aufholen und alle 60 Sekunden oder mehr Daten pro Minute und senden kann, wird dieser Wert als 0 gemeldet. Wenn eine Trennung oder Diskontinuität vom Encoder vorgelegen hat, wird dieser Wert möglicherweise trotzdem als 0 angezeigt, da er keine Unterbrechungen der Daten berücksichtigt, sondern nur Daten, die in Zeitstempeln verzögert sind.|
+| `transcriptionState` | Zeichenfolge | Dieser Wert ist für Audiospurheartbeats aktiviert, wenn Livetranskription aktiviert ist. Andernfalls wird eine leere Zeichenfolge verwendet. Dieser Status gilt nur für den Tracktyp „audio“ für Livetranskription. Alle anderen Spuren haben einen leeren Wert.|
+| `transcriptionLanguage` | Zeichenfolge  | Der Sprachcode (im BCP-47-Format) der Transkriptionssprache. „de-de“ gibt beispielsweise Deutsch (Deutschland) an. Der Wert ist für die Videospurheartbeats oder bei deaktivierter Livetranskription leer. |
+
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 

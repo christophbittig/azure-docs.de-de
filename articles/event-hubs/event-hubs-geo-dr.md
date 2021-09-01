@@ -2,13 +2,13 @@
 title: 'Georedundante Notfallwiederherstellung: Azure Event Hubs | Microsoft-Dokumentation'
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Event Hubs
 ms.topic: article
-ms.date: 04/14/2021
-ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 06/21/2021
+ms.openlocfilehash: 42057f88d76fb0822207ecaf0ece340101c6ec6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739240"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346388"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -23,7 +23,8 @@ Die georedundante Notfallwiederherstellung von Event Hubs erleichtert die Wieder
 Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Event Hubs, Consumergruppen und Einstellungen) ständig von einem primären Namespace in einem sekundären Namespace repliziert wird, wenn diese gekoppelt sind. Außerdem können Sie jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, und die Kopplung wird dann aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
 
 > [!IMPORTANT]
-> Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit derselben Konfiguration, **repliziert aber keine Ereignisdaten**. Sofern der Notfall nicht zum Verlust sämtlicher Zonen geführt hat, können die nach dem Failover im primären Event Hub erhalten gebliebenen Ereignisdaten wiederhergestellt und die bisherigen Ereignisse von dort abgerufen werden, sobald der Zugriff wiederhergestellt wurde. Verwenden Sie zum Replizieren von Ereignisdaten und zum Betreiben der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](event-hubs-federation-overview.md).  
+> - Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit derselben Konfiguration, **repliziert aber keine Ereignisdaten**. Sofern der Notfall nicht zum Verlust sämtlicher Zonen geführt hat, können die nach dem Failover im primären Event Hub erhalten gebliebenen Ereignisdaten wiederhergestellt und die bisherigen Ereignisse von dort abgerufen werden, sobald der Zugriff wiederhergestellt wurde. Verwenden Sie zum Replizieren von Ereignisdaten und zum Betreiben der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](event-hubs-federation-overview.md).  
+> - Rollenbasierte Azure Active Directory-Zugriffssteuerungszuweisungen (Azure AD) (Role-Based Access Control, RBAC) für Entitäten im primären Namespace werden nicht in den sekundären Namespace repliziert. Erstellen Sie Rollenzuweisungen manuell im sekundären Namespace, um den Zugriff darauf zu schützen. 
 
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
@@ -37,7 +38,7 @@ Das Feature der georedundanten Notfallwiederherstellung von Azure Event Hubs ist
 
 Bei der Funktion zur Notfallwiederherstellung wird die Notfallwiederherstellung von Metadaten implementiert, und sie basiert auf speziellen primären und sekundären Namespaces. 
 
-Das Feature zur georedundanten Notfallwiederherstellung ist ausschließlich für die [Tarife „Standard“ und „Dediziert“](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
+Das Feature zur georedundanten Notfallwiederherstellung ist ausschließlich für die [Tarife „Standard“, „Premium“ und „Dediziert“](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
 
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
@@ -50,12 +51,11 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 ## <a name="supported-namespace-pairs"></a>Unterstützte Namespacepaare
 Die folgenden Kombinationen von primären und sekundären Namespaces werden unterstützt:  
 
-| Primärer Namespace | Sekundärer Namespace | Unterstützt | 
-| ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ja | 
-| Standard | Dediziert | Ja | 
-| Dediziert | Dediziert | Ja | 
-| Dediziert | Standard | Nein | 
+| Primäre Namespaceebene | Zulässige sekundäre Namespaceebene |
+| ----------------- | -------------------- |
+| Standard | Standard, Dediziert | 
+| Premium | Premium | 
+| Dediziert | Dediziert | 
 
 > [!NOTE]
 > Namespaces, die sich im selben dedizierten Cluster befinden, können nicht paarweise gekoppelt werden. Namespaces, die sich in unterschiedlichen Clustern befinden, können paarweise gekoppelt werden. 
@@ -64,7 +64,8 @@ Die folgenden Kombinationen von primären und sekundären Namespaces werden unte
 
 Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und erfahren, wie Sie das erste Failover einrichten. 
 
-![1][]
+:::image type="content" source="./media/event-hubs-geo-dr/geo1.png" alt-text="Abbildung: Übersicht über den Failoverprozess":::
+
 
 ### <a name="setup"></a>Einrichten
 
@@ -112,7 +113,7 @@ Im Zuge der Initiierung des Failovers müssen zwei Schritte ausgeführt werden:
 > [!NOTE]
 > Es wird nur die Semantik für „Fail Forward“ unterstützt. In diesem Szenario führen Sie das Failover und anschließend die Reparatur mit einem neuen Namespace durch. Ein Failback wird nicht unterstützt, z.B. in einem SQL-Cluster. 
 
-![2][]
+:::image type="content" source="./media/event-hubs-geo-dr/geo2.png" alt-text="Abbildung des Failoverflows":::
 
 ## <a name="management"></a>Verwaltung
 
@@ -137,17 +138,11 @@ Beachten Sie Folgendes:
 5. Das Synchronisieren von Entitäten kann einige Zeit dauern (etwa eine Minute pro 50 bis 100 Entitäten).
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen 
+Event Hubs unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. Unterstützung für Verfügbarkeitszonen ist nur in [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones) verfügbar. Sowohl Metadaten als auch Daten (Ereignisse) werden zwischen Rechenzentren in der Verfügbarkeitszone repliziert. 
 
-Die Event Hubs-Standard-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. 
+Wenn Sie einen Namespace erstellen, wird die folgende hervorgehobene Meldung angezeigt, wenn Sie eine Region mit Verfügbarkeitszonen auswählen. 
 
-> [!NOTE]
-> Die Unterstützung für Verfügbarkeitszonen für Azure Event Hubs Standard ist nur in [Azure-Regionen](../availability-zones/az-region.md) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
-
-Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. In Event Hubs wird die Migration vorhandener Namespaces nicht unterstützt. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
-
-Wenn Sie Verfügbarkeitszonen verwenden, werden sowohl Metadaten als auch Daten (Ereignisse) zwischen Rechenzentren in der Verfügbarkeitszone repliziert. 
-
-![3][]
+:::image type="content" source="./media/event-hubs-geo-dr/eh-az.png" alt-text="Abbildung: Seite „Namespace erstellen“ mit einer Region mit Verfügbarkeitszonen":::
 
 ## <a name="private-endpoints"></a>Private Endpunkte
 In diesem Abschnitt finden Sie weitere Überlegungen zur Verwendung der georedundanten Notfallwiederherstellung mit Namespaces, die private Endpunkte verwenden. Informationen zur Verwendung privater Endpunkte mit Event Hubs im Allgemeinen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md).
@@ -184,6 +179,9 @@ Der Vorteil dieses Ansatzes besteht darin, dass ein Failover auf Anwendungsebene
 
 > [!NOTE]
 > Eine Anleitung zur georedundanten Notfallwiederherstellung eines virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk: Geschäftskontinuität](../virtual-network/virtual-network-disaster-recovery-guidance.md).
+
+## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+Rollenbasierte Azure Active Directory-Zugriffssteuerungszuweisungen (Azure AD) (Role-Based Access Control, RBAC) für Entitäten im primären Namespace werden nicht in den sekundären Namespace repliziert. Erstellen Sie Rollenzuweisungen manuell im sekundären Namespace, um den Zugriff darauf zu schützen.
  
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Beispiele oder die Referenzdokumentation an: 
@@ -194,10 +192,8 @@ Sehen Sie sich die folgenden Beispiele oder die Referenzdokumentation an:
 - [Java: azure-messaging-eventhubs – Beispiele](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Java: azure-eventhubs – Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
 - [Python-Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
-- [JavaScript samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript) (JavaScript-Beispiele)
-- [TypeScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [JavaScript samples](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript) (JavaScript-Beispiele)
+- [TypeScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)
 - [REST-API-Referenz](/rest/api/eventhub/)
 
-[1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
-[3]: ./media/event-hubs-geo-dr/eh-az.png

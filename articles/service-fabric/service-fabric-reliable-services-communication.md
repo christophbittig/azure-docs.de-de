@@ -4,12 +4,12 @@ description: Übersicht über das Reliable Services-Kommunikationsmodell, einsch
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d6f9d3ca44161674a829c4839e0a889c227b6f2
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97912613"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113597845"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
 Azure Service Fabric ist als Plattform vollständig unabhängig von der Kommunikation zwischen Diensten. Alle Protokolle und Stapel von UDP bis HTTP sind zulässig. Es liegt in der Entscheidung des Entwicklers, wie Dienste kommunizieren sollen. Das Reliable Services-Anwendungsframework stellt integrierte Kommunikationsstapel und APIs bereit, die Sie zum Erstellen Ihrer benutzerdefinierten Kommunikationskomponenten verwenden können.
@@ -86,7 +86,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-In beiden Fällen geben Sie eine Sammlung von Listenern zurück. Dies ermöglicht dem Dienst durch Verwendung mehrerer Listener das Lauschen auf mehrere Endpunkte, die eventuell unterschiedliche Protokolle verwenden. Sie besitzen beispielsweise einen HTTP-Listener und einen separaten WebSocket-Listener. Jeder Listener erhält einen Namen, und die resultierende Sammlung von *name : address*-Paaren wird als JSON-Objekt dargestellt, wenn ein Client die Listeneradressen für eine Dienstinstanz oder eine Partition anfordert.
+In beiden Fällen geben Sie eine Sammlung von Listenern zurück. Dies ermöglicht dem Dienst durch Verwendung mehrerer Listener das Lauschen auf mehrere Endpunkte, die eventuell unterschiedliche Protokolle verwenden. Sie besitzen beispielsweise einen HTTP-Listener und einen separaten WebSocket-Listener. Sie können von unsicherem zu sicherem Remoting migrieren, indem Sie zunächst beide Szenarien aktivieren, indem Sie sowohl einen nicht sicheren Listener als auch einen sicheren Listener verwenden. Jeder Listener erhält einen Namen, und die resultierende Sammlung von *name : address*-Paaren wird als JSON-Objekt dargestellt, wenn ein Client die Listeneradressen für eine Dienstinstanz oder eine Partition anfordert.
 
 Bei einem zustandslosen Dienst gibt die Überschreibung eine Sammlung von ServiceInstanceListeners zurück. Ein `ServiceInstanceListener` enthält eine Funktion für die `ICommunicationListener(C#) / CommunicationListener(Java)`-Erstellung und weist diesem Listener einen Namen zu. Bei statusbehafteten Diensten gibt die Überschreibung eine ServiceReplicaListener-Sammlung zurück. Dies unterscheidet sich leicht von zustandslosen Diensten, da ein `ServiceReplicaListener` über eine Option zum Öffnen eines `ICommunicationListener` auf sekundären Replikaten verfügt. Sie können nicht nur mehrere Kommunikationslistener in einem Dienst verwenden, sondern auch angeben, welche Listener auf sekundären Replikaten Anforderungen akzeptieren und welche nur auf primären Replikaten ausgeführt werden.
 

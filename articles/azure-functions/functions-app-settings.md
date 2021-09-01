@@ -2,21 +2,21 @@
 title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/27/2021
+ms.openlocfilehash: 7275d81401444dffbe0917bdb72ba79100880749
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356138"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
-App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktionen-App auswirken. Bei der lokalen Ausführung wird auf diese Einstellungen als lokale [Umgebungsvariablen](functions-run-local.md#local-settings-file) zugegriffen. In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
+App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktionen-App auswirken. Bei der lokalen Ausführung wird auf diese Einstellungen als lokale [Umgebungsvariablen](functions-develop-local.md#local-settings-file) zugegriffen. In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
+Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-develop-local.md#local-settings-file).
 
 > [!NOTE]
 > Sie können Anwendungseinstellungen verwenden, um host.json-Einstellungswerte zu überschreiben, ohne die Datei „host.json“ ändern zu müssen. Dies ist hilfreich für Szenarien, in denen bestimmte host.json-Einstellungen für eine bestimmte Umgebung konfiguriert oder geändert werden müssen. So können Sie auch host.json-Einstellungen ändern, ohne das Projekt erneut veröffentlichen zu müssen. Weitere Informationen finden Sie im [Referenzartikel zu „host.json“](functions-host-json.md#override-hostjson-values). Zur Durchführung von Änderungen an den Funktions-App-Einstellungen muss Ihre Funktions-App neu gestartet werden.
@@ -294,6 +294,16 @@ Der Wert für diesen Schlüssel wird im Format `<DESTINATION>:<VERBOSITY>` berei
 
 [!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
+## <a name="scm_logstream_timeout"></a>SCM\_LOGSTREAM\_TIMEOUT
+
+Steuert das Timeout in Sekunden, wenn eine Verbindung mit Streamingprotokollen vorhanden ist. Der Standardwert beträgt 7.200 Sekunden (2 Stunden). 
+
+|Schlüssel|Beispielwert|
+|-|-|
+|SCM_LOGSTREAM_TIMEOUT|1800|
+
+Der Beispielwert von `1800` oben legt ein Timeout von 30 Minuten fest. Weitere Informationen finden Sie unter [Aktivieren von Streamingprotokollen](functions-run-local.md#enable-streaming-logs).
+
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
 Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktions-App und die Konfiguration in ereignisgesteuerten, unter Windows ausgeführten Skalierungsplänen gespeichert werden. Weitere Informationen finden Sie unter [Erstellen einer Funktions-App](functions-infrastructure-as-code.md#windows).
@@ -306,11 +316,13 @@ Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verw
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-Nur für Premium-Pläne. Der Wert `1` ermöglicht die Skalierung Ihrer Funktions-App, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk beschränken. Sie sollten diese Einstellung aktivieren, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk einschränken. Weitere Informationen finden Sie unter [Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
+Der Wert `1` ermöglicht die Skalierung Ihrer Funktions-App, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk beschränken. Sie sollten diese Einstellung aktivieren, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk einschränken. Weitere Informationen finden Sie unter [Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
 
 |Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE_CONTENTOVERVNET|1|
+
+Wird mit den Plänen [Premium](functions-premium-plan.md) und [Dedicated (App Service)](dedicated-plan.md) (Standard oder höher) unter Windows unterstützt. Wird derzeit nicht für Verbrauchs- und Premium-Pläne unter Linux unterstützt. 
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 

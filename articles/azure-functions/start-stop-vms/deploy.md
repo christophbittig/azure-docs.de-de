@@ -3,19 +3,27 @@ title: Bereitstellen von „VMs starten/beenden v2 (Vorschau)“
 description: In diesem Artikel erfahren Sie, wie Sie das Feature „VMs starten/beenden v2 (Vorschau)“ für Ihre Azure-VMs in Ihrem Azure-Abonnement bereitstellen.
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/29/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 726af0d36c543936076d1fa529e5527d166d5bbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c0b3984629376f11692b727bb28b34c15708c596
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073232"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339388"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Bereitstellen von „VMs starten/beenden v2 (Vorschau)“
 
 Führen Sie die Schritte in diesem Thema nacheinander aus, um das Feature „VMs starten/beenden v2 (Vorschau)“ zu installieren. Nachdem Sie den Installationsprozess abgeschlossen haben, konfigurieren Sie die Zeitpläne, um sie an Ihre Anforderungen anzupassen.
 
+> [!NOTE]
+> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
+
+## <a name="permissions-considerations"></a>Überlegungen zu Berechtigungen
+Beachten Sie folgende Punkte vor und während der Bereitstellung:
++   Mit der Lösung können Personen mit entsprechenden RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung) für die Bereitstellung „VMs starten/beenden v2“ Zeitpläne für virtuelle Computer im Bereich von „VMs starten/beenden v2“ hinzufügen, entfernen und verwalten. Dieses Verhalten ist beabsichtigt. In der Praxis bedeutet dies, dass ein Benutzer ohne direkte RBAC-Berechtigung für einen virtuellen Computer weiterhin Vorgänge zum Starten, Beenden und automatischen Beenden auf diesem virtuellen Computer erstellen kann, wenn er über die RBAC-Berechtigung zum Ändern der Lösung „VMs starten/beenden v2“ verfügt, die ihn verwaltet.
++ Alle Benutzer mit Zugriff auf die Lösung „VMs starten/beenden v2“ können Kosten, Einsparungen, den Vorgangsverlauf und andere Daten aufdecken, die in der Application Insights-Instanz gespeichert sind, die von der Anwendung „VMs starten/beenden v2“ verwendet wird.
++ Beim Verwalten einer Lösung „VMs starten/beenden v2“ sollten Sie die Berechtigungen von Benutzern für die Lösung „VMs starten/beenden v2“ berücksichtigen, insbesondere wenn die Benutzer nicht über die Berechtigung zum direkten Ändern der virtuellen Zielcomputer verfügen.
 ## <a name="deploy-feature"></a>Bereitstellen des Features
 
 Die Bereitstellung wird von der GitHub-Organisation „VMs v2“ [hier](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md) initiiert. Diese Funktion ist zwar für die Verwaltung aller Ihrer virtuellen Computer in Ihrem Abonnement in allen Ressourcengruppen aus einer einzelnen Bereitstellung innerhalb des Abonnements heraus gedacht, doch Sie können auch eine weitere Instanz davon auf Grundlage des Betriebsmodells oder der Anforderungen Ihrer Organisation installieren. Außerdem kann sie so konfiguriert werden, dass VMs aus mehreren Abonnements zentral verwaltet werden können.
@@ -49,6 +57,12 @@ Zur Vereinfachung der Verwaltung und Entfernung empfiehlt es sich, „VMs starte
 1. Wählen Sie im Benachrichtigungsbereich die Option **Zu Ressourcengruppe wechseln** aus. Ein Bildschirm wird angezeigt, der etwa wie folgt aussieht:
 
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Ressourcenliste der Vorlagenbereitstellung von „VMs starten/beenden“.":::
+
+> [!NOTE]
+> Das Benennungsformat für die Funktions-App und das Speicherkonto hat sich geändert. Um globale Eindeutigkeit zu gewährleisten, wird jetzt eine zufällige und eindeutige Zeichenfolge an die Namen dieser Ressource angefügt.
+
+> [!NOTE]
+> Wir erfassen Vorgangs- und Heartbeattelemetriedaten, um Sie bei der Problembehandlung besser unterstützen zu können, wenn Sie sich an das Supportteam wenden. Wir erfassen auch den Ereignisverlauf virtueller Computer, um zu überprüfen, wann der Dienst auf einem virtuellen Computer agiert hat und wie lange für einen virtuellen Computer der Standbymodus aktiviert war, um die Effizienz des Diensts zu bestimmen.
 
 ## <a name="enable-multiple-subscriptions"></a>Aktivieren mehrerer Abonnements
 

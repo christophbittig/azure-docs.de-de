@@ -6,77 +6,90 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: edc74f0379a15c9119d2e3ed4f207832c367866b
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 20b4a76756a70660ff638207fa20b5a4801e783d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346768"
 ---
-# <a name="set-up-an-appliance-in-azure-government"></a>Einrichten einer Appliance in Azure Government 
+# <a name="set-up-an-appliance-for-azure-government-cloud"></a>Einrichten einer Appliance für Azure Government Cloud
 
-In diesem Artikel finden Sie Informationen zum Bereitstellen einer [Azure Migrate-Appliance](./migrate-appliance-architecture.md) für Server in einer VMware-Umgebung, Server unter Hyper-V und physische Server in einer Azure Government-Cloud. Sie führen ein Skript aus, um die Appliance zu erstellen und zu überprüfen, ob sie eine Verbindung mit Azure herstellen kann. Wenn Sie eine Appliance in der öffentlichen Cloud einrichten möchten, lesen Sie [diesen Artikel](deploy-appliance-script.md).
+Befolgen Sie die Anleitungen in diesem Artikel, um eine [Azure Migrate-Appliance](./migrate-appliance-architecture.md) für Azure Government Cloud bereitzustellen, die Folgendes ausführt:
 
+- Ermittlung, Bewertung und Replikation ohne Agent von Servern, die in einer VMware-Umgebung ausgeführt werden
+- Ermittlung und Bewertung von Servern, die in einer Hyper-V-Umgebung ausgeführt werden
+- Ermittlung und Bewertung von physischen Servern oder Servern, die in anderen Clouds wie AWS, GCP, Xen usw. ausgeführt werden
+
+Wenn Sie eine Appliance in der öffentlichen Cloud einrichten möchten, lesen Sie [diesen Artikel](deploy-appliance-script.md).
 
 > [!NOTE]
-> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage (für Server in einer VMware- und Hyper-V-Umgebung) wird in Azure Government nicht unterstützt.
-
+> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage (für Server, die in einer VMware- oder Hyper-V-Umgebung ausgeführt werden) wird in Azure Government nicht unterstützt. Sie können nur das Installationsskript verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das Skript richtet die Azure Migrate-Appliance auf einem vorhandenen physischen Server oder einem virtualisierten Server ein.
+Sie können das Skript verwenden, um die Azure Migrate-Appliance auf einem vorhandenen physischen oder virtualisierten Server bereitzustellen.
 
-- Auf dem Server, der als Appliance fungieren soll, müssen Windows Server 2016 mit 32 GB Arbeitsspeicher, acht vCPUs, ca. 80 GB Festplattenspeicher und ein externer virtueller Switch ausgeführt werden. Er benötigt eine statische oder dynamische IP-Adresse. 
-- Überprüfen Sie vor der Bereitstellung der Appliance ihre detaillierten Anforderungen für [Server unter VMware](migrate-appliance.md#appliance---vmware), [unter Hyper-V](migrate-appliance.md#appliance---hyper-v) und [physische Server](migrate-appliance.md#appliance---physical).
-- Führen Sie das Skript nicht auf einer vorhandenen Azure Migrate-Appliance aus.
+- Der Server, der als Appliance fungiert, muss Windows Server 2016 ausführen und weitere Anforderungen für [VMware](migrate-appliance.md#appliance---vmware), [Hyper-V](migrate-appliance.md#appliance---hyper-v) und [physische Server](migrate-appliance.md#appliance---physical) erfüllen.
+- Wenn Sie das Skript auf einem Server ausführen, auf dem die Azure Migrate-Appliance bereits eingerichtet ist, können Sie die vorhandene Konfiguration bereinigen und eine neue Appliance mit der gewünschten Konfiguration einrichten. Wenn Sie das Skript ausführen, erhalten Sie eine Benachrichtigung wie unten gezeigt:
+  
+    :::image type="content" source="./media/deploy-appliance-script/script-reconfigure-appliance.png" alt-text="Screenshot: Neukonfigurieren einer Appliance.":::
 
 ## <a name="set-up-the-appliance-for-vmware"></a>Einrichten der Appliance für VMware
 
-Um die Appliance für VMware einzurichten, laden Sie eine ZIP-Datei aus dem Azure-Portal herunter und extrahieren den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Projekt.
+1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
+1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
 
 1. Klicken Sie unter **Migrationsziele** > **Windows-/Linux-Server und SQL Server-Instanzen** > **Azure Migrate: Ermittlung und Bewertung** auf **Ermitteln**.
 2. Wählen Sie unter **Server ermitteln** > **Sind Ihre Server virtualisiert?** die Option **Ja, mit VMware vSphere-Hypervisor** aus.
+3. Geben Sie einen Appliancenamen ein, und generieren Sie einen Projektschlüssel im Portal.
 3. Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen.
 
-### <a name="verify-file-security"></a>Überprüfen der Dateisicherheit
+### <a name="verify-security"></a>Überprüfen der Sicherheit
 
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
 1. Öffnen Sie auf dem Server, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
+    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
-
-    **Algorithmus** | **Download** | **SHA256**
-    --- | --- | ---
-    VMware (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
+    **Download** | **Hashwert**
+    --- | ---
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
 
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
-Funktion des Skripts:
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
+
+    
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+
+5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Die unten gezeigte Auswahl richtet beispielsweise eine Appliance für die Ermittlung, Bewertung und Migration von **Servern in Ihrer VMware-Umgebung** für ein Azure Migrate-Projekt mit **Standardkonnektivität _(öffentlicher Endpunkt)_** in **Azure Government Cloud** ein.
+
+    :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration für VMware." lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
+
+6. Das Installationsskript führt folgende Schritte aus:
 
 - Installation von Agents und einer Webanwendung.
 - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
 - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
-- Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
-    - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
-    - **Protokolldateien**: %ProgramData%\Microsoft Azure\Logs
+- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
+- Erstellung der folgenden Dateien in diesem Pfad:
+    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
+    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
 
-So führen Sie das Skript aus
+Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet. Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
-2. Starten Sie PowerShell auf dem Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner mit den Inhalten, die aus der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript **AzureMigrateInstaller.ps1** wie folgt aus:
-    
-    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
-1. Nachdem das Skript erfolgreich ausgeführt wurde, wird die Appliancewebanwendung gestartet, damit Sie das Gerät einrichten können. Bei Problemen sehen Sie sich die Skriptprotokolle in diesem Pfad an: C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log.
 
 ### <a name="verify-access"></a>Überprüfen des Zugriffs
 
@@ -85,53 +98,57 @@ Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [Azur
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Einrichten der Appliance für Hyper-V
 
-Um die Appliance für Hyper-V einzurichten, laden Sie eine ZIP-Datei aus dem Azure-Portal herunter und extrahieren den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Projekt.
+1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
+1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
 
 1.  Klicken Sie unter **Migrationsziele** > **Windows-/Linux-Server und SQL Server-Instanzen** > **Azure Migrate: Ermittlung und Bewertung** auf **Ermitteln**.
 2.  Wählen Sie unter **Server ermitteln** > **Sind Ihre Server virtualisiert?** die Option **Ja, mit Hyper-V** aus.
-3.  Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen. 
+3. Geben Sie einen Appliancenamen ein, und generieren Sie einen Projektschlüssel im Portal.
+3. Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen. 
 
-
-### <a name="verify-file-security"></a>Überprüfen der Dateisicherheit
+### <a name="verify-security"></a>Überprüfen der Sicherheit
 
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
 1. Öffnen Sie auf dem Server, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
+    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
-
-    **Szenario** | **Download** | **SHA256**
-    --- | --- | ---
-    Hyper-V (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
-
-          
+    **Download** | **Hashwert**
+    --- | ---
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
-Funktion des Skripts:
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-- Installation von Agents und einer Webanwendung.
-- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
-- Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
-    - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
-    - **Protokolldateien**: %ProgramData%\Microsoft Azure\Logs
+    
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-So führen Sie das Skript aus
+5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Die unten gezeigte Auswahl richtet beispielsweise eine Appliance für die Ermittlung und Bewertung von **Servern in Ihrer Hyper-V-Umgebung** für ein Azure Migrate-Projekt mit **Standardkonnektivität _(öffentlicher Endpunkt)_** in **Azure Government Cloud** ein.
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet. Führen Sie das Skript nicht auf einem Server aus, auf dem eine vorhandene Azure Migrate-Appliance ausgeführt wird.
-2. Starten Sie PowerShell auf dem Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner mit den Inhalten, die aus der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript **AzureMigrateInstaller.ps1** wie folgt aus: 
+    :::image type="content" source="./media/deploy-appliance-script-government/script-hyperv-gov-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration für Hyper-V." lightbox="./media/deploy-appliance-script-government/script-hyperv-gov-expanded.png":::
 
-    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>.\AzureMigrateInstaller.ps1 ``` 
-1. Nachdem das Skript erfolgreich ausgeführt wurde, wird die Appliancewebanwendung gestartet, damit Sie das Gerät einrichten können. Bei Problemen sehen Sie sich die Skriptprotokolle in diesem Pfad an: C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log.
+6. Das Installationsskript führt folgende Schritte aus:
+
+    - Installation von Agents und einer Webanwendung.
+    - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
+    - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
+    - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
+    - Erstellung der folgenden Dateien in diesem Pfad:
+    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
+    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
+
+Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
 
 ### <a name="verify-access"></a>Überprüfen des Zugriffs
 
@@ -140,51 +157,62 @@ Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [Azur
 
 ## <a name="set-up-the-appliance-for-physical-servers"></a>Einrichten der Appliance für physische Server
 
-Um die Appliance für VMware einzurichten, laden Sie eine ZIP-Datei aus dem Azure-Portal herunter und extrahieren den Inhalt. Zum Starten der Appliance-Web-App führen Sie das PowerShell-Skript aus. Dann richten Sie die Appliance ein und führen die Erstkonfiguration aus. Anschließend registrieren Sie die Appliance beim Projekt.
+1. Um die Appliance einzurichten, laden Sie die ZIP-Datei namens „AzureMigrateInstaller.zip“ entweder aus dem Portal oder von [hier](https://go.microsoft.com/fwlink/?linkid=2140334) herunter.
+1. Extrahieren Sie den Inhalt auf dem Server, auf dem Sie die Appliance bereitstellen möchten.
+1. Führen Sie das PowerShell-Skript zum Starten des Appliancekonfigurations-Managers aus.
+1. Richten Sie die Appliance ein, und führen die Erstkonfiguration aus.
 
 ### <a name="download-the-script"></a>Herunterladen des Skripts
 
 1. Klicken Sie unter **Migrationsziele** > **Windows-/Linux-Server und SQL Server-Instanzen** > **Azure Migrate: Ermittlung und Bewertung** auf **Ermitteln**.
-2. Wählen Sie unter **Server ermitteln** > **Sind Ihre Server virtualisiert?** die Option **Nicht virtualisiert/andere** aus.
+2. Wählen Sie unter **Server ermitteln** > **Sind Ihre Server virtualisiert?** die Option **Physische oder andere (AWS, GCP, Xen usw.)** aus.
 3. Klicken Sie auf **Herunterladen**, um die ZIP-Datei herunterzuladen.
 
-### <a name="verify-file-security"></a>Überprüfen der Dateisicherheit
+### <a name="verify-security"></a>Überprüfen der Sicherheit
 
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
-1. Öffnen Sie auf den Servern, auf denen Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
+1. Öffnen Sie auf dem Server, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispiel: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
+    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
 
-3. Überprüfen Sie die aktuelle Applianceversion und die Hashwerte:
+    **Download** | **Hashwert**
+    --- | ---
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
 
-    **Szenario** | **Herunterladen** _ | _ *Hashwert**
-    --- | --- | ---
-    Physisch (85 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
-          
+> [!NOTE]
+> Das gleiche Skript kann verwendet werden, um eine physische Appliance für Azure Government Cloud mit Konnektivität für öffentliche oder private Endpunkte einzurichten.
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
-Funktion des Skripts:
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-- Installation von Agents und einer Webanwendung.
-- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls.
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungen für Azure Migrate.
-- Erstellen von Protokoll- und Konfigurationsdateien wie folgt:
-    - **Konfigurationsdateien**: %ProgramData%\Microsoft Azure\Config
-    - **Protokolldateien**: %ProgramData%\Microsoft Azure\Logs
+    
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-So führen Sie das Skript aus
+5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Mit der nachfolgend gezeigten Auswahl richten Sie beispielsweise eine Appliance zum Ermitteln und Bewerten **physischer Server** _(oder in anderen Clouds wie AWS, GCP, Xen, usw. ausgeführter Server)_ für ein Azure Migrate-Projekt mit **Standardkonnektivität** _(öffentlicher Endpunkt)_ in **Azure Government Cloud** ein.
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet. Führen Sie das Skript nicht auf einem Server aus, auf dem eine vorhandene Azure Migrate-Appliance ausgeführt wird.
-2. Starten Sie PowerShell auf dem Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner mit den Inhalten, die aus der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript **AzureMigrateInstaller.ps1** wie folgt aus:
+    :::image type="content" source="./media/deploy-appliance-script-government/script-physical-gov-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration für physische Server." lightbox="./media/deploy-appliance-script-government/script-physical-gov-expanded.png":::
 
-    ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
-1. Nachdem das Skript erfolgreich ausgeführt wurde, wird die Appliancewebanwendung gestartet, damit Sie das Gerät einrichten können. Bei Problemen sehen Sie sich die Skriptprotokolle in diesem Pfad an: C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log.
+6. Das Installationsskript führt folgende Schritte aus:
+
+    - Installation von Agents und einer Webanwendung.
+    - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
+    - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
+    - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
+    - Erstellung der folgenden Dateien in diesem Pfad:
+        - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
+        - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
+
+Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+
+> [!NOTE]
+> Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
 
 ### <a name="verify-access"></a>Überprüfen des Zugriffs
 

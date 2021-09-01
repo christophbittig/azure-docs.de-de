@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4145ae79f1d25b80852c5c54fcc02044391f602f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 04c3e9f1a5c5a1a23a618f3274057a5e03a9f0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376863"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356075"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -148,7 +148,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können eine Instanz auch direkt mit dem Befehl `durable start-new` von [Azure Functions Core Tools](../functions-run-local.md) starten. Hierfür werden die folgenden Parameter verwendet:
+Sie können eine Instanz auch direkt starten, indem Sie den [`func durable start-new`-Befehl](../functions-core-tools-reference.md#func-durable-start-new) in den Core Tools verwenden, der die folgenden Parameter annimmt:
 
 * **`function-name` (erforderlich)** : Der Name der zu startenden Funktion.
 * **`input` (optional)** : Die Eingabe für die Funktion, entweder inline oder über eine JSON-Datei. Fügen Sie bei Dateien dem Pfad zur Datei mit `@` ein Präfix hinzu, z.B. `@path/to/file.json`.
@@ -253,10 +253,10 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Es ist auch möglich, den Status der Orchestrierung direkt über den Befehl `durable get-runtime-status` von [Azure Functions Core Tools](../functions-run-local.md) abzurufen.
+Es ist auch möglich, den Status der Orchestrierung direkt über den [`func durable get-runtime-status`-Befehl](../functions-core-tools-reference.md#func-durable-get-runtime-status) in den Core Tools abzurufen.
 
 > [!NOTE]
-> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
+> Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum persistenten Speichern des Runtimestatus verwendet wird.
 
 Für den Befehl `durable get-runtime-status` werden die folgenden Parameter verwendet:
 
@@ -352,7 +352,7 @@ Die „function.json“-Konfiguration finden Sie unter [Starten von Instanzen](#
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Es ist auch möglich, Instanzen direkt über den Befehl `durable get-instances` von [Azure Functions Core Tools](../functions-run-local.md) abzufragen.
+Es ist auch möglich, Instanzen direkt abzufragen, indem Sie den [`func durable get-instances`-Befehl](../functions-core-tools-reference.md#func-durable-get-instances) in den Core Tools verwenden.
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
@@ -543,7 +543,7 @@ Eine beendete Instanz wechselt schließlich in den Zustand `Terminated`. Dieser 
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable terminate` von [Azure Functions Core Tools](../functions-run-local.md) beenden.
+Sie können eine Orchestrierungsinstanz auch direkt mit dem [`func durable terminate`-Befehl](../functions-core-tools-reference.md#func-durable-terminate) der Core Tools beenden.
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
@@ -624,7 +624,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können ein Ereignis für eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable raise-event` von [Azure Functions Core Tools](../functions-run-local.md) auslösen.
+Sie können ein Ereignis für eine Orchestrierungsinstanz auch direkt mit dem [`func durable raise-event`-Befehl](../functions-core-tools-reference.md#func-durable-raise-event) der Azure Core Tools auslösen.
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
@@ -885,7 +885,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können eine Orchestrierungsinstanz auch direkt mit dem Befehl `durable rewind` von [Azure Functions Core Tools](../functions-run-local.md) zurückspulen.
+Sie können eine Orchestrierungsinstanz auch direkt mit dem [`func durable rewind`-Befehl](../functions-core-tools-reference.md#func-durable-rewind) der Core Tools zurückspulen.
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
@@ -1034,7 +1034,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Sie können den Verlauf einer Orchestrierungsinstanz mit dem Befehl `durable purge-history` von [Azure Functions Core Tools](../functions-run-local.md) löschen. Ähnlich wie im zweiten C#-Beispiel im vorherigen Abschnitt wird der Verlauf für alle Orchestrierungsinstanzen gelöscht, die während eines angegebenen Zeitintervalls erstellt wurden. Sie können gelöschte Instanzen weiter nach dem Laufzeitstatus filtern.
+Sie können den Verlauf einer Orchestrierungsinstanz mit dem [`func durable purge-history`-Befehl](../functions-core-tools-reference.md#func-durable-purge-history) der Core Tools bereinigen. Ähnlich wie im zweiten C#-Beispiel im vorherigen Abschnitt wird der Verlauf für alle Orchestrierungsinstanzen gelöscht, die während eines angegebenen Zeitintervalls erstellt wurden. Sie können gelöschte Instanzen weiter nach dem Laufzeitstatus filtern.
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.
@@ -1055,7 +1055,7 @@ func durable purge-history --created-before 2021-11-14T19:35:00.0000000Z --runti
 
 ## <a name="delete-a-task-hub"></a>Löschen eines Aufgabenhubs
 
-Mithilfe des Befehls `durable delete-task-hub` von [Azure Functions Core Tools](../functions-run-local.md) können Sie alle Speicherartefakte löschen, die einem bestimmten Aufgabenhub zugeordnet sind, einschließlich Azure Storage-Tabellen. -Abfragen und -Blobs. 
+Mithilfe des [`func durable delete-task-hub`-Befehls](../functions-core-tools-reference.md#func-durable-delete-task-hub) in den Core Tools können Sie alle Speicherartefakte löschen, die einem bestimmten Aufgabenhub zugeordnet sind, einschließlich Azure Storage-Tabellen, -Abfragen und -Blobs. 
 
 > [!NOTE]
 > Core Tools-Befehle werden derzeit nur unterstützt, wenn der [Azure Storage-Standardanbieter](durable-functions-storage-providers.md) zum Beibehalten des Runtimestatus verwendet wird.

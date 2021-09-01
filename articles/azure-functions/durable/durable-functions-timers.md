@@ -4,25 +4,25 @@ description: Es wird beschrieben, wie Sie permanente Timer in der Erweiterung Du
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d96afbad061071bfc80a69764b577032fdcb95c0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: aac9e0b562f765a1b0e3d6b0f04bc609dc230492
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375739"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259720"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timer in Durable Functions (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) bieten *permanente Timer* für die Verwendung in Orchestratorfunktionen zum Implementieren von Verzögerungen oder zum Einrichten von Timeouts für asynchrone Aktionen. Permanente Timer sollten in Orchestratorfunktionen anstelle von `Thread.Sleep` und `Task.Delay` (C#) bzw. `setTimeout()` und `setInterval()` (JavaScript) oder `time.sleep()` (Python) verwendet werden.
 
-Sie erstellen einen dauerhaften Timer, indem Sie die Methode `CreateTimer` (.NET) oder `createTimer` (JavaScript) der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) aufrufen. Die Methode gibt einen Task zurück, der an einem bestimmten Datum zu einer bestimmten Zeit abgeschlossen wird.
+Sie erstellen einen dauerhaften Timer, indem Sie die [`CreateTimer`- (.NET)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.createtimer), die [`createTimer`- (JavaScript)](/javascript/api/durable-functions/durableorchestrationcontext#createTimer_Date_) oder die [`create_timer`- Methode (Python)](/python/api/azure-functions-durable/azure.durable_functions.durableorchestrationcontext#create-timer-fire-at--datetime-datetime-----azure-durable-functions-models-task-task) der [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) aufrufen. Die Methode gibt einen Task zurück, der an einem bestimmten Datum zu einer bestimmten Zeit abgeschlossen wird.
 
 ## <a name="timer-limitations"></a>Timereinschränkungen
 
 Wenn Sie einen Timer erstellen, der um 16:30 Uhr abläuft, stellt das zugrunde liegende Durable Task Framework eine Nachricht in die Warteschlange, die nur um 16:30 Uhr sichtbar ist. Bei Ausführung im Verbrauchstarif von Azure Functions stellt der neu sichtbare Timer sicher, dass die Funktions-App auf einem entsprechenden virtuellen Computer aktiviert wird.
 
 > [!NOTE]
-> * Ab [Version 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) der Durable-Erweiterung sind permanente Timer unbegrenzt. In früheren Versionen der Erweiterung sind permanente Timer auf sieben Tage beschränkt. Wenn Sie eine frühere Version verwenden und eine Verzögerung von mehr als sieben Tagen benötigen, verwenden Sie die Timer-APIs in einer `while`-Schleife, um diese Verzögerung zu simulieren.
+> * Ab [Version 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) von Durable Extension sind dauerhafte Timer für .NET-Apps unbegrenzt. Für JavaScript-, Python- und PowerShell-Apps sowie für .NET-Apps, die frühere Versionen der Erweiterung verwenden, sind dauerhafte Timer auf sieben Tage beschränkt. Wenn Sie eine ältere Erweiterungsversion oder eine Nicht-.NET Language Runtime verwenden und eine Verzögerung von mehr als sieben Tagen benötigen, verwenden Sie die Timer-APIs in einer `while`-Schleife, um eine längere Verzögerung zu simulieren.
 > * Verwenden Sie beim Berechnen der Startzeit für dauerhafte Timer immer `CurrentUtcDateTime` anstelle von `DateTime.UtcNow` in .NET oder `currentUtcDateTime` anstelle von `Date.now` oder `Date.UTC` in JavaScript. Weitere Informationen finden Sie im Artikel [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md).
 
 ## <a name="usage-for-delay"></a>Verwendung für Verzögerung
@@ -52,12 +52,12 @@ public static async Task Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
-        const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
-        yield context.df.createTimer(deadline.toDate());
+        const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ days: 1 });
+        yield context.df.createTimer(deadline.toJSDate());
         yield context.df.callActivity("SendBillingEvent");
     }
 });
@@ -136,13 +136,13 @@ public static async Task<bool> Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
-    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
+    const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ seconds: 30 });
 
     const activityTask = context.df.callActivity("GetQuote");
-    const timeoutTask = context.df.createTimer(deadline.toDate());
+    const timeoutTask = context.df.createTimer(deadline.toJSDate());
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);
     if (winner === activityTask) {
@@ -192,7 +192,7 @@ $timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
 $winner = Wait-DurableTask -Task @($activityTask, $timerTask) -Any
 
 if ($winner -eq $activityTask) {
-    Stop-DurableTaskTimer -Task $timerTask
+    Stop-DurableTimerTask -Task $timerTask
     return $True
 }
 else {

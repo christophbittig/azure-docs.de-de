@@ -9,12 +9,12 @@ metadata:
   author: yjin81
   ms.author: yajin1
   ms.date: 01/27/2021
-  ms.openlocfilehash: e983c957135f247276d87de749dc13a6a05ed9a7
-  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+  ms.openlocfilehash: b04fedf6e0eb1840ea6b86956fe979e675c6b927
+  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113217015"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123185523"
 landingContent:
 - title: Informationen zum Azure Web PubSub-Dienst
   linkLists:
@@ -22,21 +22,33 @@ landingContent:
     links:
     - text: Worum handelt es sich beim Azure Web PubSub-Dienst?
       url: overview.md
+    - text: Schlüsselkonzepte im Azure Web PubSub-Dienst
+      url: key-concepts.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erste Schritte mit einer Chatroom-Livedemo
-      url: quickstart-live-demo.md
+    - text: Herstellen einer Verbindung mit der Instanz
+      url: quickstart-cli-try.md
     - text: Beginnen Sie mit einer einfachen serverlosen Chatroomanwendung.
       url: quickstart-serverless.md
+    - text: Serverlose Entwicklung mit Azure Functions
+      url: tutorial-serverless-notification.md
   - linkListType: how-to-guide
     links:
-    - text: Erstellen einer Web PubSub-Instanz
-      url: howto-develop-create-instance.md
-    - text: Veröffentlichen und Abonnieren von Nachrichten
-      url: https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message
-    - text: Verwenden von Unterprotokollen
-      url: https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols
+    - text: Entwickeln einer Chat-App
+      url: tutorial-build-chat.md
+    - text: Clientstreaming mit vom Dienst unterstütztem Unterprotokoll
+      url: tutorial-subprotocol.md
     - text: Authentifizierung und Berechtigungen
-      url: https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions
+      url: tutorial-permission.md
+- title: Livedemos
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Whiteboard
+      url: https://azure.github.io/azure-webpubsub/demos/whiteboard
+    - text: Einfacher Chat
+      url: https://azure.github.io/azure-webpubsub/demos/chat
+    - text: Codestreaming
+      url: https://azure.github.io/azure-webpubsub/demos/code-streaming

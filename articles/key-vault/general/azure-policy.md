@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dcbbe63754bdcfc4ded249720b58940e0c219bf9
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749274"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340377"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrieren von Azure Key Vault in Azure Policy
 
@@ -35,7 +35,7 @@ Beispiele für Nutzungsszenarien:
 
 ## <a name="available-built-in-policy-definitions"></a>Verfügbare integrierte Richtliniendefinitionen
 
-Für Key Vault wurden einige Richtlinien erstellt, die zum Verwalten von Schlüssel-, Zertifikat- und Geheimnisobjekten verwendet werden können. Diese Richtlinien sind integriert. Das bedeutet, dass Sie keinen benutzerdefinierten JSON-Code schreiben müssen, um sie zu aktivieren, und sie sind im Azure-Portal für die Zuweisung verfügbar. Sie können aber weiterhin bestimmte Parameter an die Anforderungen Ihrer Organisation anpassen.
+Für Key Vault wurden einige Richtlinien erstellt, die zum Verwalten von Schlüsseltresoren und ihren Schlüssel-, Zertifikat- und Geheimnisobjekten verwendet werden können. Diese Richtlinien sind integriert. Das bedeutet, dass Sie keinen benutzerdefinierten JSON-Code schreiben müssen, um sie zu aktivieren, und sie sind im Azure-Portal für die Zuweisung verfügbar. Sie können aber weiterhin bestimmte Parameter an die Anforderungen Ihrer Organisation anpassen.
 
 # <a name="certificate-policies"></a>[Zertifikatrichtlinien](#tab/certificates)
 
@@ -58,7 +58,7 @@ Diese Richtlinie ermöglicht Ihnen die Verwaltung der Lebensdaueraktion, die fü
 
 ### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>Zertifikate müssen von der angegebenen integrierten Zertifizierungsstelle ausgestellt werden (Vorschauversion)
 
-Wenn Sie eine in Key Vault integrierte Zertifizierungsstelle (Digicert oder GlobalSign) verwenden und möchten, dass Benutzer einen oder beide Anbieter verwenden, können Sie diese Richtlinie verwenden, um Ihre Auswahl zu überwachen oder zu erzwingen. Diese Richtlinie kann auch verwendet werden, um die Erstellung von selbstsignierten Zertifikaten im Schlüsseltresor zu überwachen oder zu verweigern.
+Wenn Sie eine in Key Vault integrierte Zertifizierungsstelle (Digicert oder GlobalSign) verwenden und möchten, dass Benutzer einen oder beide Anbieter verwenden, können Sie diese Richtlinie verwenden, um Ihre Auswahl zu überwachen oder zu erzwingen. Diese Richtlinie wertet die in der Ausstellungsrichtlinie des Zertifikats ausgewählte Zertifizierungsstelle und den im Schlüsseltresor definierten Zertifizierungsstellenanbieter aus. Diese Richtlinie kann auch verwendet werden, um die Erstellung von selbstsignierten Zertifikaten im Schlüsseltresor zu überwachen oder zu verweigern.
 
 ### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>Zertifikate müssen von der angegebenen nicht integrierten Zertifizierungsstelle ausgestellt werden (Vorschauversion)
 
@@ -159,6 +159,20 @@ Wenn sich ein Geheimnis zu nah an seinem Ablaufdatum befindet, kann es bei einer
 
 Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, indem die maximale Zeitspanne in Tagen angegeben wird, für die ein Geheimnis innerhalb Ihres Schlüsseltresors gültig sein darf. Geheimnisse, deren Gültigkeitsdauer den von Ihnen festgelegten Schwellenwert überschreitet, werden als nicht konform gekennzeichnet. Sie können diese Richtlinie auch verwenden, um die Erstellung neuer Geheimnisse zu blockieren, deren Ablaufdatum die von Ihnen angegebene maximale Gültigkeitsdauer überschreitet.
 
+# <a name="key-vault-policies"></a>[Key Vault-Richtlinien](#tab/keyvault)
+
+### <a name="key-vault-should-use-a-virtual-network-service-endpoint"></a>Key Vault sollte einen VNET-Dienstendpunkt verwenden.
+
+Diese Richtlinie überwacht alle Key Vault-Instanzen, die nicht für die Verwendung eines VNET-Dienstendpunkts konfiguriert sind.
+
+### <a name="resource-logs-in-key-vault-should-be-enabled"></a>In Key Vault müssen Ressourcenprotokolle aktiviert sein
+
+Hiermit wird die Aktivierung von Ressourcenprotokollen überwacht. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn es zu einem Sicherheitsincident kommt oder Ihr Netzwerk gefährdet ist.
+
+### <a name="key-vaults-should-have-purge-protection-enabled"></a>Für Schlüsseltresore sollte der Löschschutz aktiviert sein.
+
+Das böswillige Löschen eines Schlüsseltresors kann zu dauerhaftem Datenverlust führen. Ein böswilliger Insider in Ihrer Organisation kann möglicherweise Schlüsseltresore löschen oder bereinigen. Der Löschschutz schützt Sie vor Insiderangriffen, indem ein verbindlicher Aufbewahrungszeitraum für vorläufig gelöschte Schlüsseltresore durchgesetzt wird. Niemand innerhalb Ihrer Organisation oder von Microsoft kann Ihre Schlüsseltresore während des Aufbewahrungszeitraums für vorläufiges Löschen löschen.
+
 ---
 
 ## <a name="example-scenario"></a>Beispielszenario
@@ -240,3 +254,4 @@ Beim Zuweisen einer Richtlinie mit der Auswirkung „Verweigern“ kann es im Du
 
 - Weitere Informationen zu [Azure Policy](../../governance/policy/overview.md)
 - Key Vault-Beispiele: [Integrierte Azure Policy-Richtliniendefinitionen: Key Vault](../../governance/policy/samples/built-in-policies.md#key-vault)
+- Erfahren Sie mehr über den [Azure-Sicherheitsbenchmarkleitfaden zu Key Vault](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)
