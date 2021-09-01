@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c16b4a91f297621fa96e0e18f816d77e9f3b4e2a
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792236"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322402"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
 
@@ -170,48 +170,67 @@ Führen Sie bei einer nicht korrekten DNS-Auflösung die folgenden Schritte aus:
 - Wenn Sie ein benutzerdefiniertes DNS verwenden, überprüfen Sie dessen Einstellungen und vergewissern sich, dass die DNS-Konfiguration korrekt ist. Einen entsprechenden Leitfaden finden Sie unter [Was ist privater Endpunkt in Azure? – DNS-Konfiguration](../private-link/private-endpoint-overview.md#dns-configuration). 
 - Wenn Sie von Azure bereitgestellte DNS-Server verwenden, verwenden Sie diesen Leitfaden als Referenz [für die weitere Problembehandlung](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone).   
 
+### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-expressroute-private-peering-connectivity"></a>Konfigurieren von Proxyumgehungsregeln auf der Azure Migrate-Appliance (für private ExpressRoute-Peeringkonnektivität) 
+Für Proxyumgehung können Sie wie folgt eine Proxyumgehungsregel für das Cachespeicherkonto hinzufügen: 
+- _speicherkontoname_.blob.core.windows.net.
+
+> [!Important]
+>  Umgehen Sie *.blob.core.windows.net nicht, da Azure Migrate ein anderes Speicherkonto verwendet, das Internetzugriff benötigt. Dieses Speicherkonto (Gatewayspeicherkonto) wird nur verwendet, um Statusinformationen zu den replizierten VMs zu speichern. Sie können das Gatewayspeicherkonto ermitteln, indem Sie das Präfix _**gwsa**_ im Speicherkontonamen in der Azure Migrate-Projektressourcengruppe identifizieren. 
+
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
 
 Sie können das Microsoft-Peering oder eine vorhandene öffentliche Peeringdomäne verwenden (für neue ExpressRoute-Verbindungen veraltet), um den Replikationsdatenverkehr über eine ExpressRoute-Verbindung weiterzuleiten.
 
 ![Abbildung: Replikation mit Microsoft-Peering.](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Auch wenn Replikationsdaten über die Microsoft-Peeringverbindung weitergeleitet werden, benötigen Sie für die Kommunikation (Steuerungsebene) mit Azure Migrate weiterhin eine Internetverbindung vom lokalen Standort aus. Einige andere URLs sind über ExpressRoute nicht erreichbar. Die Replikationsappliance oder der Hyper-V-Host benötigt Zugriff auf die URLs, um den Replikationsprozess zu orchestrieren. Überprüfen Sie die auf den Migrationsszenarien [VMware-Migrationen ohne Agent](./migrate-appliance.md#public-cloud-urls) und [Agent-basierte Replikation](./migrate-replication-appliance.md) basierenden URL-Anforderungen.
+Auch wenn Replikationsdaten über die Peeringverbindung von Microsoft übertragen werden, benötigen Sie trotzdem Internetkonnektivität vom lokalen Standort für Datenverkehr auf Steuerungsebene und andere URLs, die über ExpressRoute nicht erreichbar sind. Die Replikationsappliance oder der Hyper-V-Host benötigt Zugriff auf die URLs, um den Replikationsprozess zu orchestrieren. Überprüfen Sie die auf den Migrationsszenarien [VMware-Migrationen ohne Agent](./migrate-appliance.md#public-cloud-urls) und [Agent-basierte Replikation](./migrate-replication-appliance.md) basierenden URL-Anforderungen. 
 
-Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, konfigurieren Sie eine Proxyumgehung für relevante URLs auf der lokalen Appliance.
-
-### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>Konfigurieren von Proxyumgehungsregeln auf der Azure Migrate-Appliance (für VMware-Migrationen ohne Agent)
-
-1. Melden Sie sich über Remotedesktop bei der Azure Migrate-Appliance an.
-1. Öffnen Sie mithilfe von Editor die Datei *C:/ProgramData/MicrosoftAzure/Config/appliance.json*.
-1. Ändern Sie in der Datei die Zeile `"EnableProxyBypassList": "false"` in `"EnableProxyBypassList": "true"`. Speichern Sie die Änderungen, und starten Sie die Appliance neu.
-1. Wenn Sie nach dem Neustart den Konfigurations-Manager der Appliance öffnen, werden in der Benutzeroberfläche der Web-App die Proxyumgehungsoptionen angezeigt. Fügen Sie der Proxyumgehungsliste die folgenden URLs hinzu:
-
-    - .*.vault.azure.net
-    - .*.servicebus.windows.net
-    - .*.discoverysrv.windowsazure.com
-    - .*.migration.windowsazure.com
-    - .*.hypervrecoverymanager.windowsazure.com
-    - .*.blob.core.windows.net
-
-### <a name="configure-proxy-bypass-rules-on-the-replication-appliance-for-agent-based-migrations"></a>Konfigurieren von Proxyumgehungsregeln auf der Replikationsappliance (für Migrationen mit Agent)
-
-Führen Sie die folgenden Schritte aus, um die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern zu konfigurieren:
-
-1. Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter, um auf Systembenutzerkontext zuzugreifen.
-1. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie den folgenden Befehl in einer Eingabeaufforderung ausführen: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`.
-1. Fügen Sie Proxyeinstellungen in Internet Explorer hinzu.
-1. Fügen Sie der Umgehungsliste die URLs *.blob.core.windows.net, *.hypervrecoverymanager.windowsazure.com und *.backup.windowsazure.com hinzu. 
-
-Mit den oben genannten Umgehungsregeln wird sichergestellt, dass der Replikationsdatenverkehr über ExpressRoute weitergeleitet werden kann, während die Verwaltungskommunikation über den Proxyserver für das Internet erfolgt.
-
-Außerdem müssen Sie Routen im Routenfilter für die folgenden BGP-Communitys ankündigen, damit der Azure Migrate-Replikationsdatenverkehr eine ExpressRoute-Verbindung und nicht das Internet durchläuft:
+ Konfigurieren Sie für die Replikationsdatenübertragung über Microsoft-Peering, und konfigurieren Sie Routenfilter, um Routen für die Azure Storage-Endpunkte anzukündigen. Dies sind die regionalen BGP-Communitys für die Azure-Zielregion (Region für die Migration). Konfigurieren Sie Routenfilter zum Ankündigen von Routen für andere öffentliche Endpunkte nach Bedarf, um Datenverkehr auf Steuerungsebene über Microsoft-Peering weiterzuleiten.  
 
 - Regionale BGP-Community für die Azure-Quellregion (Azure Migrate-Projektbereich)
 - Regionale BGP-Community für die Azure-Zielregion (Region für die Migration)
 - BGP-Community für Azure Active Directory (12076:5060)
 
 Informieren Sie sich weiter über [Routenfilter](../expressroute/how-to-routefilter-portal.md), und sehen Sie sich die Liste der [BGP-Communitys für ExpressRoute](../expressroute/expressroute-routing.md#bgp) an.
+
+### <a name="proxy-configuration-for-expressroute-microsoft-peering"></a>Proxykonfiguration für ExpressRoute-Microsoft-Peering
+
+Wenn die Appliance einen Proxy für Internetkonnektivität verwendet, müssen Sie möglicherweise Proxyumgehung für bestimmte URLs konfigurieren, um sie über die Microsoft-Peeringverbindung weiterzuleiten. 
+
+#### <a name="configure-proxy-bypass-rules-for-expressroute-microsoft-peering-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>Konfigurieren von Proxyumgehungsregeln für ExpressRoute-Microsoft-Peering auf der Azure Migrate-Appliance (für VMware-Migrationen ohne Agent)
+
+1. Melden Sie sich über Remotedesktop bei der Azure Migrate-Appliance an.
+2.  Öffnen Sie mithilfe von Editor die Datei *C:/ProgramData/MicrosoftAzure/Config/appliance.json*.
+3. Ändern Sie in der Datei die Zeile `"EnableProxyBypassList": "false"` in `"EnableProxyBypassList": "true"`. Speichern Sie die Änderungen, und starten Sie die Appliance neu.
+4. Wenn Sie nach dem Neustart den Konfigurations-Manager der Appliance öffnen, werden in der Benutzeroberfläche der Web-App die Proxyumgehungsoptionen angezeigt. 
+5. Für Replikationsdatenverkehr können Sie eine Proxyumgehungsregel für „.*.blob.core.windows.net“ konfigurieren. Sie können Proxyumgehungsregeln für andere Endpunkte auf Steuerungsebene nach Bedarf konfigurieren. Zu diesen Endpunkten gehören: 
+
+    - .*.vault.azure.net
+    - .*.servicebus.windows.net
+    - .*.discoverysrv.windowsazure.com
+    - .*.migration.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+> [!Note]
+> Auf die folgenden URLs kann nicht über ExpressRoute zugegriffen werden, und sie erfordern Internetverbindung: *.portal.azure.com, *.windows.net, *.msftauth.net, *.msauth.net, *.microsoft.com, *.live.com, *.office.com, *.microsoftonline.com, *.microsoftonline-p.com, *.microsoftazuread-sso.com, management.azure.com, *.services.visualstudio.com (optional), aka.ms/* (optional), download.microsoft.com/download.
+
+
+#### <a name="configure-proxy-bypass-rules-expressroute-microsoft-peering-on-the-replication-appliance-for-agent-based-migrations"></a>Konfigurieren von Proxyumgehungsregeln für ExpressRoute-Microsoft-Peering auf der Replikationsappliance (für Migrationen mit Agent)
+
+Führen Sie die folgenden Schritte aus, um die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern zu konfigurieren:
+
+1. Laden Sie das [PsExec-Tool](/sysinternals/downloads/psexec) herunter, um auf Systembenutzerkontext zuzugreifen.
+2. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie den folgenden Befehl in einer Eingabeaufforderung ausführen: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`.
+3. Fügen Sie Proxyeinstellungen in Internet Explorer hinzu.
+4. Für Replikationsdatenverkehr können Sie eine Proxyumgehungsregel für „.*.blob.core.windows.net“ konfigurieren. Sie können Proxyumgehungsregeln für andere Endpunkte auf Steuerungsebene nach Bedarf konfigurieren. Zu diesen Endpunkten gehören: 
+
+    - .*.backup.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+Mit den Umgehungsregeln für den Azure Storage-Endpunkt wird sichergestellt, dass der Replikationsdatenverkehr über ExpressRoute weitergeleitet werden kann, während die Kommunikation auf Steuerungsebene über den Proxyserver für das Internet erfolgt. 
+
+> [!Note]
+> Auf die folgenden URLs kann nicht über ExpressRoute zugegriffen werden, und sie erfordern Internetverbindung: *.portal.azure.com, *.windows.net, *.msftauth.net, *.msauth.net, *.microsoft.com, *.live.com, *.office.com, *.microsoftonline.com, *.microsoftonline-p.com, *.microsoftazuread-sso.com, management.azure.com, *.services.visualstudio.com (optional), aka.ms/* (optional), download.microsoft.com/download, dev.mysql.com.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

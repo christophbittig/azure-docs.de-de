@@ -4,16 +4,16 @@ ms.author: glenga
 ms.date: 7/24/2019
 ms.topic: include
 ms.service: azure-functions
-ms.openlocfilehash: 0159ceb6e5d6d64a7a9bda383396607e4ce05b84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c16fc8a6f497a05294a9b7357b8ffc4dab285f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020349"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801863"
 ---
 #### <a name="built-in-log-streaming"></a>Integriertes Protokollstreaming
 
-Verwenden Sie die Option `logstream`, um den Empfang von Streamingprotokollen einer bestimmten in Azure ausgeführten Funktions-App zu starten (siehe folgendes Beispiel):
+Verwenden Sie den[`func azure functionapp logstream`-Befehl](../articles/azure-functions/functions-core-tools-reference.md#func-azure-functionapp-list-functions), um den Empfang von Streamingprotokollen einer bestimmten in Azure ausgeführten Funktions-App wie im folgenden Beispiel gezeigt zu starten:
 
 ```bash
 func azure functionapp logstream <FunctionAppName>

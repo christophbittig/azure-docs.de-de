@@ -6,21 +6,19 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f4066f466b6dd9e8cb41bf68592aa88c192c44d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786582"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346928"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>Analysieren von Serverabhängigkeiten (ohne Agent)
 
 In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent mithilfe des Azure Migrate-Tools zur Ermittlung und Bewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Servern im Hinblick auf die Bewertung und Migration zu Azure besser identifizieren und verstehen.
 
 > [!IMPORTANT]
-> Die Abhängigkeitsanalyse ohne Agent ist derzeit als Vorschauversion für Server in der VMware-Umgebung verfügbar, die mithilfe des Azure Migrate-Tools zur Ermittlung und Bewertung ermittelt wurden.
-> Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Die Abhängigkeitsanalyse ohne Agent ist derzeit nur für Server in der VMware-Umgebung verfügbar, die mithilfe des Tools Azure Migrate: Ermittlung und Bewertung ermittelt wurden.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

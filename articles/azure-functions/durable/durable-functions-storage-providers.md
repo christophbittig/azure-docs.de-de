@@ -5,21 +5,23 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbeb730b0e22bd555f06514870448a229fccfbc6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465798"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438099"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions-Speicheranbieter
 
 Durable Functions behält Funktionsparameter, Rückgabewerte und andere Zustände automatisch in einem dauerhaften Speicher bei, um eine zuverlässige Ausführung zu garantieren. Die Standardkonfiguration für Durable Functions speichert diesen Laufzeitstatus in einem Azure Storage-Konto (klassisch). Es ist jedoch möglich, Durable Functions v2.0 und höher so zu konfigurieren, dass ein alternativer dauerhafter Speicheranbieter verwendet wird.
 
-Die Durable Functions-Erweiterung besteht aus Azure Functions-Triggern und -Bindungen, die intern vom [Durable Task-Framework](https://github.com/Azure/durabletask) unterstützt werden. DTFx unterstützt verschiedene Back-End-Speicheranbieter, einschließlich des Azure Storage-Anbieters, der von Durable Functions verwendet wird. Ab der Durable Functions-Version **v2.4.3** können Benutzer ihre Funktions-Apps so konfigurieren, um andere DTFx-Speicheranbieter als den Azure Storage-Anbieter zu verwenden.
+Die Durable Functions-Erweiterung besteht aus Azure Functions-Triggern und -Bindungen, die intern vom [Durable Task-Framework](https://github.com/Azure/durabletask) unterstützt werden. DTFx unterstützt verschiedene Back-End-Speicheranbieter, einschließlich des Azure Storage-Anbieters, der von Durable Functions verwendet wird. Ab der Durable Functions-Version **v2.5.0** können Benutzer ihre Funktions-Apps so konfigurieren, dass ein anderer DTFx-Speicheranbieter als der Azure Storage-Anbieter verwendet wird.
 
 > [!NOTE]
 > Die Entscheidung, andere Speicheranbieter als Azure Storage zu verwenden, sollte sorgfältig bedacht werden. Die meisten Funktions-Apps, die in Azure ausgeführt werden, sollten den Azure Storage-Standardanbieter für Durable Functions verwenden. Bei der Entscheidung, ob ein alternativer Speicheranbieter verwendet werden soll, müssen jedoch wichtige Kompromisse bei den Kosten, der Skalierbarkeit und der Datenverwaltung abgewägt werden. In diesem Artikel werden viele dieser Kompromissen ausführlich beschrieben.
+>
+> Beachten Sie außerdem, dass es derzeit nicht möglich ist, Daten von einem Speicheranbieter zu einem anderen zu migrieren. Wenn Sie einen neuen Speicheranbieter verwenden möchten, sollten Sie eine neue App erstellen, die mit dem neuen Speicheranbieter konfiguriert ist.
 
 Zwei alternative DTFx-Speicheranbieter wurden für die Verwendung mit Durable Functions entwickelt, und zwar der _Netherite_-Speicheranbieter und der _Microsoft SQL Server_-Speicheranbieter (MSSQL). Dieser Artikel beschreibt alle drei unterstützten Anbieter, vergleicht sie miteinander und stellt grundlegende Informationen zu den ersten Schritten bei der Verwendung bereit.
 

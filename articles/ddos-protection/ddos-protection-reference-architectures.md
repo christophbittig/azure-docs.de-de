@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: ddb42dde242bb9c3f33a6dc3f8f52a147367f295
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e3710613b0a2622b20329ed383d5f818b01f6fee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139109"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339936"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection – Referenzarchitekturen
 
@@ -66,7 +66,7 @@ Sie können die Skalierung, Kapazität und Effizienz von Azure DDoS Protection S
 
 ![Schützen lokaler Ressourcen](./media/reference-architectures/ddos-on-prem.png)
 
-Wenn Sie über eine Webanwendung verfügen, die Datenverkehr aus dem Internet empfängt, können Sie die Webanwendung hinter Application Gateway hosten und dann mit WAF gegen Layer 7-Webangriffe wie Einschleusung von SQL-Befehlen und Slowloris schützen. Die Back-End-Ursprünge Ihrer Anwendung befinden sich in Ihrer lokalen Umgebung, die über das VPN verbunden ist. 
+Wenn Sie über eine Webanwendung verfügen, die Datenverkehr aus dem Internet empfängt, können Sie die Webanwendung hinter Application Gateway hosten und dann mit WAF gegen Layer 7-Webangriffe wie Einschleusung von SQL-Befehlen schützen. Die Back-End-Ursprünge Ihrer Anwendung befinden sich in Ihrer lokalen Umgebung, die über das VPN verbunden ist. 
 
 Die Back-End-Ressourcen in der lokalen Umgebung werden nicht über das öffentliche Internet verfügbar gemacht. Nur die öffentliche AppGW/WAF-IP-Adresse ist für das Internet verfügbar, und der DNS-Name Ihrer Anwendung wird dieser öffentlichen IP-Adresse zugeordnet. 
 

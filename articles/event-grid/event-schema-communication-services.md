@@ -2,14 +2,14 @@
 title: Azure Communication Services als Event Grid-Quelle
 description: In diesem Artikel wird beschrieben, wie Azure Communication Services als Event Grid-Ereignisquelle verwendet wird.
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: 72941faf122be50d2c721fd4c8421ae4339d5d2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656242"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340173"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Ereignisbehandlung in Azure Communication Services
 
@@ -17,7 +17,7 @@ Azure Communication Services ist in [Azure Event Grid](https://azure.microsoft.c
 
 Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über eine integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../azure-functions/functions-overview.md). Mithilfe von Webhooks können Ereigniswarnungen an Azure-fremde Dienste übertragen werden. Eine vollständige Liste der Ereignishandler, die Event Grid unterstützt, finden Sie unter [Einführung in Azure Event Grid](overview.md).
 
-:::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Diagramm: Ereignismodell von Azure Event Grid":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="Diagramm: Ereignismodell von Azure Event Grid":::
 
 > [!NOTE]
 > Weitere Informationen zur Datenresidenz in Bezug auf die Ereignisbehandlung finden Sie in der [konzeptionellen Dokumentation zu Datenresidenz](../communication-services/concepts/privacy.md).
@@ -50,6 +50,7 @@ Von Azure Communication Services werden folgende Ereignistypen ausgegeben:
 | Microsoft.Communication.ChatThreadPropertiesUpdated| Wird veröffentlicht, wenn die Eigenschaften eines Chatthreads (etwa das Thema) aktualisiert werden.|    
 | Microsoft.Communication.ChatMessageEditedInThread | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread bearbeitet wird. |  
 | Microsoft.Communication.ChatMessageDeletedInThread | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread gelöscht wird.  |  
+| Microsoft.Communication.RecordingFileStatusUpdated | Veröffentlicht, wenn die Aufzeichnungsdatei verfügbar ist |
 
 Sie können das Azure-Portal oder die Azure CLI verwenden, um Ereignisse zu abonnieren, die von Ihrer Communication Services-Ressource ausgegeben werden. Informationen zu den ersten Schritten für die Behandlung von Ereignissen finden Sie unter [Behandeln von SMS-Ereignissen in Communication Services](../communication-services/quickstarts/telephony-sms/handle-sms-events.md).
 
@@ -141,6 +142,10 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
     "data": {
       "messageBody": "Welcome to Azure Communication Services",
       "messageId": "1613694358927",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -181,6 +186,10 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
       "editTime": "2021-02-19T00:28:20.784Z",
       "messageBody": "Let's Chat about new communication services.",
       "messageId": "1613694357917",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -730,6 +739,10 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
     "data": {
       "messageBody": "Talk about new Thread Events in commuication services",
       "messageId": "1613783230064",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613783230064",
       "senderDisplayName": "Bob",
@@ -762,6 +775,10 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
       "editTime": "2021-02-20T00:59:10.464+00:00",
       "messageBody": "8effb181-1eb2-4a58-9d03-ed48a461b19b",
       "messageId": "1613782685964",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613782750464",
       "senderDisplayName": "Scott",
@@ -814,7 +831,40 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
   }
 ]
 ```
+> [!IMPORTANT]
+> Das Anrufaufzeichnungsfeature befindet sich noch in der öffentlichen Vorschau
 
+### <a name="microsoftcommunicationrecordingfilestatusupdated"></a>Microsoft.Communication.RecordingFileStatusUpdated
+
+```json
+[
+ {
+  "id": "7283825e-f8f1-4c61-a9ea-752c56890500",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "/recording/call/{call-id}/recordingId/{recording-id}",
+  "data": {
+    "recordingStorageInfo": {
+      "recordingChunks": [
+        {
+          "documentId": "0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8",
+          "index": 0,
+          "endReason": "SessionEnded",
+          "contentLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/video",
+          "metadataLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/acsmetadata"
+        }
+      ]
+    },
+    "recordingStartTime": "2021-07-27T15:20:23.6089755Z",
+    "recordingDurationMs": 6620,
+    "sessionEndReason": "CallEnded"
+  },
+  "eventType": "Microsoft.Communication.RecordingFileStatusUpdated",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
 
 ## <a name="quickstarts-and-how-tos"></a>Schnellstarts und Anleitungen
 

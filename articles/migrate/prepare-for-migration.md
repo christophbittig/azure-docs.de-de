@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: f434d20a79baf7c0b0210e3eb790b50a153d2d7a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d88c02f261052f0cf3e29ef210d8a8af15733d7f
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969034"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720270"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -82,20 +82,21 @@ Ermitteln Sie anhand der Tabellen, welche Änderungen erforderlich sind.
 
 Die erforderlichen Änderungen sind in der Tabelle zusammengefasst.
 
-**Aktion** | **VMware (Migration ohne Agent)** | **VMware (Agent-basiert)/physische Computer** | **Windows mit Hyper-V** 
+**Aktion** | **VMware (Migration ohne Agent)** | **VMware (Agent-basiert)/physische Computer** | **Windows mit Hyper-V**
 --- | --- | --- | ---
 **Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Muss manuell konfiguriert werden.
 **Installieren der Hyper-V-Gastintegration** | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) werden.
 **Aktivieren der seriellen Azure-Konsole**<br/><br/>[Aktivieren Sie die Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
 **Herstellen der Verbindung nach der Migration**<br/><br/> Für die Verbindungsherstellung nach der Migration müssen vor der Migration mehrere Schritte ausgeführt werden. | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich
 
+ [Erfahren Sie mehr](./prepare-for-agentless-migration.md#changes-performed-on-windows-servers) über auf Windows-Servern vorgenommene Änderungen.
 
 #### <a name="configure-san-policy"></a>Konfigurieren der SAN-Richtlinie
 
 Standardmäßig wird virtuellen Azure-Computern das Laufwerk D als temporärer Speicher zugewiesen.
 
 - Diese Laufwerkzuweisung führt dazu, dass alle anderen angefügten Zuweisungen von Speicherlaufwerken um einen Buchstaben inkrementiert werden.
-- Wenn für Ihre lokale Installation beispielsweise ein Datenträger genutzt wird, dem der Laufwerkbuchstabe D für Anwendungsinstallationen zugewiesen ist, wird die Zuweisung für dieses Laufwerk auf Laufwerk E inkrementiert, nachdem Sie die VM zu Azure migriert haben. 
+- Wenn für Ihre lokale Installation beispielsweise ein Datenträger genutzt wird, dem der Laufwerkbuchstabe D für Anwendungsinstallationen zugewiesen ist, wird die Zuweisung für dieses Laufwerk auf Laufwerk E inkrementiert, nachdem Sie die VM zu Azure migriert haben.
 - Legen Sie die SAN-Richtlinie (Storage Area Network) auf **OnlineAll** fest, um diese automatische Zuweisung zu verhindern und sicherzustellen, dass Azure dem temporären Volume den nächsten freien Laufwerkbuchstaben zuweist:
 
 Konfigurieren Sie diese Einstellung manuell wie folgt:
@@ -114,9 +115,9 @@ Für folgende Versionen werden diese Aktionen von Azure Migrate automatisch ausg
 - Red Hat Enterprise Linux 8, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x (Der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
 - Cent OS 8, 7.7, 7.6, 7.5, 7.4, 6.x (Der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
 - SUSE Linux Enterprise Server 15 SP0, 15 SP1, 12, 11
-- Ubuntu 19.04, 19.10, 18.04LTS, 16.04LTS, 14.04LTS (Der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
+- Ubuntu 20.04, 19.04, 19.10, 18.04LTS, 16.04LTS, 14.04LTS (der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
 - Debian 9, 8, 7
-- Oracle Linux 6, 7.7, 7.7-CI 
+- Oracle Linux 6, 7.7, 7.7-CI
 
 Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Tabelle vorbereitet werden.  
 
@@ -130,6 +131,8 @@ Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Ta
 **Entfernen der udev-Regel** | Entfernen Sie alle udev-Regeln, mit denen Schnittstellennamen basierend auf der MAC-Adresse usw. reserviert werden. | Führen Sie die Entfernung für alle oben nicht angegebenen Versionen manuell durch.
 **Aktualisieren von Netzwerkschnittstellen** | Aktualisieren Sie die Netzwerkschnittstellen so, dass IP-Adressen basierend auf DHCP.nst empfangen werden. | Führen Sie die Aktualisierung für alle oben nicht angegebenen Versionen manuell durch.
 **Aktivieren von SSH** | Stellen Sie sicher, dass SSH aktiviert und für den SSHD-Dienst das Starten während des Neustartvorgangs festgelegt ist.<br/><br/> Stellen Sie sicher, dass eingehende SSH-Verbindungsanforderungen nicht durch die Firewall des Betriebssystems oder skriptfähige Regeln blockiert werden.| Führen Sie die Aktivierung für alle oben nicht angegebenen Versionen manuell durch.
+
+[Erfahren Sie mehr](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers) über auf Linux-Servern vorgenommene Änderungen
 
 In der folgenden Tabelle sind die Schritte zusammengefasst, die automatisch für die oben aufgeführten Betriebssysteme ausgeführt werden:
 
@@ -146,7 +149,7 @@ In der folgenden Tabelle sind die Schritte zusammengefasst, die automatisch für
 
 Machen Sie sich ausführlicher mit [Schritten zum Ausführen eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/create-upload-generic.md) vertraut, und sehen Sie sich die Anleitungen für einige gängige Linux-Distributionen an.
 
-Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) zum Installieren des Linux-VM-Agents an. Azure Migrate installiert den Linux-VM-Agent automatisch für RHEL6, RHEL7, CentOS7 (die Unterstützung für 6 sollte der für RHEL ähneln), Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04 bei Verwendung der Methode ohne Agent für die VMware-Migration.
+Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) zum Installieren des Linux-VM-Agents an. Azure Migrate installiert den Linux-VM-Agent automatisch für RHEL6, RHEL7, CentOS7 (die Unterstützung für Version 6 sollte der Unterstützung für RHEL ähneln), Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04, Ubuntu 19.04, Ubuntu 19.10 und Ubuntu 20.04 bei Verwendung der Methode ohne Agent für die VMware-Migration.
 
 ## <a name="check-azure-vm-requirements"></a>Überprüfen der Anforderungen von Azure-VMs
 
@@ -168,7 +171,7 @@ Vorgehensweise für lokale Windows-Computer:
 2. Vergewissern Sie sich, dass die [erforderlichen Dienste](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) ausgeführt werden.
 3. Aktivieren Sie den Remotedesktop (RDP), um Remoteverbindungen mit dem lokalen Computer zuzulassen. Informationen zum Aktivieren von RDP mithilfe von PowerShell finden Sie [hier](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings).
 4. Wenn Sie nach der Migration über das Internet auf eine Azure-VM zugreifen möchten, lassen Sie in der Windows-Firewall auf dem lokalen Computer TCP und UDP im öffentlichen Profil zu, und legen Sie RDP als zulässige App für alle Profile fest.
-5. Wenn Sie nach der Migration auf eine Azure-VM über ein Site-to-Site-VPN zugreifen möchten, lassen Sie in der Windows-Firewall auf dem lokalen Computer RDP für das Domänenprofil und private Profile zu. Informationen zum Zulassen von RDP-Datenverkehr finden Sie [hier](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules). 
+5. Wenn Sie nach der Migration auf eine Azure-VM über ein Site-to-Site-VPN zugreifen möchten, lassen Sie in der Windows-Firewall auf dem lokalen Computer RDP für das Domänenprofil und private Profile zu. Informationen zum Zulassen von RDP-Datenverkehr finden Sie [hier](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules).
 6. Vergewissern Sie sich, dass auf dem lokalen virtuellen Computer keine ausstehenden Windows-Updates vorhanden sind, wenn Sie die Migration durchführen. Sollte dies nämlich der Fall sein, werden nach der Migration auf dem virtuellen Azure-Computer ggf. Updates installiert, und Sie können sich dann erst bei der VM anmelden, nachdem die Updates abgeschlossen sind.
 
 
@@ -192,6 +195,7 @@ Führen Sie nach der Migration auf den erstellten virtuellen Azure-Computern die
 
 Entscheiden Sie, welche Methode Sie für die [Migration virtueller VMware-Computer](server-migrate-overview.md) zu Azure verwenden möchten, oder beginnen Sie mit der Migration von [virtuellen Hyper-V-Computern](tutorial-migrate-hyper-v.md) oder [physischen Servern oder virtualisierten oder cloudbasierten virtuellen Computern](tutorial-migrate-physical-virtual-machines.md).
 
+
 ## <a name="see-whats-supported"></a>Überprüfen der Unterstützung
 
 Für VMware-VMs wird bei der Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt.
@@ -199,3 +203,7 @@ Für VMware-VMs wird bei der Servermigration die [Migration mit oder ohne Agent]
 - **VMware-VMs:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware-migration.md) für virtuelle VMware-Computer.
 - **Virtuelle Hyper-V-Computer:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v-migration.md) in Bezug auf Hyper-V-VMs.
 - **Physische Computer:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical-migration.md) für lokale physische Computer und andere virtualisierte Server.
+
+## <a name="learn-more"></a>Erfahren Sie mehr
+
+- [Vorbereiten der Migration ohne VMware-Agent mit Azure Migrate.](./prepare-for-agentless-migration.md)

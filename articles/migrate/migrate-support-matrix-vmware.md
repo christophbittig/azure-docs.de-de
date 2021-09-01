@@ -1,19 +1,19 @@
 ---
-title: Unterstützung der VMware-Serverbewertung in Azure Migrate
+title: Unterstützung der VMware-Serverermittlung in Azure Migrate
 description: Erfahren Sie mehr über die Azure Migrate-Unterstützung für Ermittlung und Bewertung von Servern in einer VMware-Umgebung.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: de4d66f3ef8195e13ff8b67538901d1ebc7d88aa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dedb05df1713238a6271af4dfd7b9cf1695d0bc7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971055"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356378"
 ---
-# <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
+# <a name="support-matrix-for-vmware-discovery"></a>Unterstützungsmatrix für VMware-Ermittlung 
 
 Dieser Artikel fasst die Voraussetzungen und Supportanforderungen für die Verwendung des Tools [Azure Migrate: Ermittlung und Bewertung](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) zum Ermitteln und Bewerten von Servern in einer VMware-Umgebung für die Migration zu Azure zusammen.
 
@@ -35,7 +35,7 @@ Lesen Sie die weiteren Informationen zu [Bewertungen](concepts-assessment-calcul
 
 VMware | Details
 --- | ---
-**vCenter Server** | Server, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 7.0, 6.7, 6.5, 6.0 oder 5.5 verwaltet werden.<br /><br /> Die Ermittlung von Servern durch Bereitstellen von ESXi-Hostdetails in der Appliance wird derzeit nicht unterstützt.
+**vCenter Server** | Server, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 7.0, 6.7, 6.5, 6.0 oder 5.5 verwaltet werden.<br /><br /> Die Ermittlung von Servern durch Bereitstellen von ESXi-Hostdetails in der Appliance wird derzeit nicht unterstützt. <br /><br /> IPv6-Adressen werden für vCenter-Server (für Ermittlung und Bewertung von Servern) und ESXi-Hosts (für Replikation von Servern) nicht unterstützt.
 **Berechtigungen** | Das Azure Migrate-Tool für Ermittlung und Bewertung erfordert ein schreibgeschütztes vCenter Server-Konto.<br /><br /> Wenn Sie das Tool für ein Softwareinventar und Abhängigkeitsanalyse ohne Agent verwenden möchten, muss das Konto über Berechtigungen für Gastvorgänge auf VMware-VMs verfügen.
 
 ## <a name="server-requirements"></a>Serveranforderungen
@@ -62,23 +62,25 @@ Sicherungsmedium | Verbindung
 **vCenter Server** | Eingehende Verbindungen an TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann <br /><br /> Die Appliance stellt standardmäßig über Port 443 eine Verbindung mit vCenter her. Wenn vCenter Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
 **ESXi-Hosts** | Wenn eine [Ermittlung von Softwareinventar](how-to-discover-applications.md) oder [Abhängigkeitsanalyse ohne Agent](concepts-dependency-visualization.md#agentless-analysis) erfolgen soll, stellt die Appliance eine Verbindung mit ESXi-Hosts an TCP-Port 443 her, um Softwareinventar bzw. Abhängigkeiten auf den Servern zu ermitteln.
 
-## <a name="application-discovery-requirements"></a>Anforderungen für die Anwendungsermittlung
+## <a name="software-inventory-requirements"></a>Softwareinventarisierungsanforderungen
 
-Neben der Ermittlung von Servern kann die Azure Migrate-Ermittlung und -Bewertung ein Inventar der Software erstellen, die auf den Servern ausgeführt wird. Durch die Anwendungsermittlung können Sie einen maßgeschneiderten Migrationspfad für Ihre lokalen Workloads festlegen und planen.
+Zusätzlich zur Ermittlung von Servern kann die Azure Migrate-Ermittlung und -Bewertung Softwareinventarisierung für Server ausführen. Durch Softwareinventarisierung können Sie einen maßgeschneiderten Migrationspfad für Ihre lokalen Workloads festlegen und planen.
 
 Support | Details
 --- | ---
-**Unterstützte Server** | Wird derzeit nur für Server in einer VMware-Umgebung unterstützt. Sie können die Anwendungsermittlung auf bis zu 10.000 Servern durchführen, und zwar über jede Azure Migrate-Appliance.
+**Unterstützte Server** | Wird derzeit nur für Server in einer VMware-Umgebung unterstützt. Sie können Softwareinventarisierung auf bis zu 10.000 Servern durchführen, und zwar über jede Azure Migrate Appliance.
 **Betriebssysteme** | Alle auf Servern ausgeführten Windows- und Linux-Versionen werden unterstützt.
-**VM-Anforderungen** | Für die Ermittlung von Softwareinventar müssen VMware-Tools installiert sein und auf Ihren Servern ausgeführt werden. <br /><br /> Die Version der VMware-Tools muss Version 10.2.1 oder höher sein.<br /><br /> Auf Windows-Servern muss PowerShell ab Version 2.0 installiert sein.
-**Ermittlung** | Anwendungsermittlung auf Servern wird aus vCenter Server mit den auf den Servern installierten VMware-Tools ausgeführt. Die Appliance sammelt die Informationen zum Softwareinventar von dem Server, auf dem vCenter Server ausgeführt wird, über vSphere-APIs. Die Anwendungsermittlung erfolgt ohne Agents. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI und SSH müssen auf Windows- bzw. Linux-Servern aktiviert und verfügbar sein.
-**vCenter Server-Benutzerkonto** | Um mit den Servern für die Anwendungsermittlung zu interagieren, muss das für die Bewertung verwendete schreibgeschützte vCenter Server-Konto über Berechtigungen für Gastvorgänge auf VMware-VMs verfügen.
-**Serverzugriff** | Sie können mehrere Domänen- und Nicht-Domänen-Anmeldeinformationen (Windows/Linux) im Appliance-Konfigurations-Manager für die Anwendungsermittlung hinzufügen.<br /><br /> Sie müssen über ein Gastbenutzerkonto für Windows-Server und ein Standardbenutzerkonto (ohne `sudo`-Zugriff) für alle Linux-Server verfügen.
-**Portzugriff** | Auf ESXi-Hosts, auf denen Server ausgeführt werden, auf denen Sie die Anwendungsermittlung durchführen möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. Der Server, auf dem vCenter Server ausgeführt wird, gibt eine ESXi-Hostverbindung zurück, um die Datei mit den Details zum Softwareinventar herunterzuladen.
+**VM-Anforderungen** | Für Softwareinventarisierung müssen VMware-Tools installiert sein und auf Ihren Servern ausgeführt werden. <br /><br /> Die Version der VMware-Tools muss Version 10.2.1 oder höher sein.<br /><br /> Auf Windows-Servern muss PowerShell ab Version 2.0 installiert sein.
+**Ermittlung** | Softewareinventarisierung wird aus vCenter Server mit den auf den Servern installierten VMware-Tools ausgeführt. Die Appliance sammelt die Informationen zum Softwareinventar von dem Server, auf dem vCenter Server ausgeführt wird, über vSphere-APIs. Softwareinventarisierung erfolgt ohne Agent. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI muss aktiviert und auf Windows-Servern verfügbar sein, um die Details der auf den Servern installierten Rollen und Features zu erfassen.
+**vCenter Server-Benutzerkonto** | Um mit den Servern für Softwareinventarisierung zu interagieren, muss das für die Bewertung verwendete schreibgeschützte vCenter Server-Konto über Berechtigungen für Gastvorgänge auf VMware-VMs verfügen.
+**Serverzugriff** | Sie können mehrere Domänen- und Nicht-Domänen-Anmeldeinformationen (Windows/Linux) im Appliancekonfigurations-Manager für Softwareinventarisierung hinzufügen.<br /><br /> Sie müssen über ein Gastbenutzerkonto für Windows-Server und ein Standardbenutzerkonto (ohne `sudo`-Zugriff) für alle Linux-Server verfügen.
+**Portzugriff** | Auf ESXi-Hosts, auf denen Server ausgeführt werden, auf denen Sie Softwareinventarisierung durchführen möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. Der Server, auf dem vCenter Server ausgeführt wird, gibt eine ESXi-Hostverbindung zurück, um die Datei mit den Details zum Softwareinventar herunterzuladen.
 
 ## <a name="sql-server-instance-and-database-discovery-requirements"></a>SQL Server-Instanz- und -Datenbank-Ermittlungsanforderungen
 
-Bei der [Anwendungsermittlung](how-to-discover-applications.md) werden SQL Server-Instanzen identifiziert. Anhand dieser Informationen versucht die Appliance, mithilfe der im Konfigurations-Manager der Appliance angegebenen Anmeldeinformationen für Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Sobald die Appliance verbunden ist, sammelt sie Konfigurations- und Leistungsdaten für SQL Server-Instanzen und -Datenbanken. SQL Server-Konfigurationsdaten werden ein Mal alle 24 Stunden aktualisiert. Leistungsdaten werden alle 30 Sekunden erfasst.
+Bei der [Softwareinventarisierung](how-to-discover-applications.md) werden SQL Server-Instanzen identifiziert. Anhand dieser Informationen versucht die Appliance, mithilfe der im Konfigurations-Manager der Appliance angegebenen Anmeldeinformationen für Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Die Appliance kann nur mit den SQL Server-Instanzen verbunden werden, mit denen sie über eine direkte Verbindung verfügt. Für die Softwareinventarisierung selbst ist möglicherweise keine direkte Netzwerkverbindung erforderlich.
+
+Sobald die Appliance verbunden ist, sammelt sie Konfigurations- und Leistungsdaten für SQL Server-Instanzen und -Datenbanken. SQL Server-Konfigurationsdaten werden ein Mal alle 24 Stunden aktualisiert. Leistungsdaten werden alle 30 Sekunden erfasst.
 
 Support | Details
 --- | ---
@@ -93,22 +95,38 @@ Support | Details
 **Unterstützte SQL-Dienste** | Nur die SQL Server-Datenbank-Engine wird unterstützt. <br /><br /> Die Ermittlung von SQL Server Reporting Services (SSRS), SQL Server Integration Services (SSIS) und SQL Server Analysis Services (SSAS) wird nicht unterstützt.
 
 > [!NOTE]
-> Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, wenn die Eigenschaft [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) auf `true` festgelegt ist. Die Transportschicht verwendet TLS/SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Der Server der Appliance muss so eingerichtet sein, dass er die [Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+> Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. 
 >
-> Wenn auf dem Server kein Zertifikat bereitgestellt wurde, erstellt SQL Server beim Starten ein selbst signiertes Zertifikat zum Verschlüsseln von Anmeldepaketen. [Weitere Informationen](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
->
+> Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) darüber, was Sie auswählen sollten.
+
+## <a name="aspnet-web-apps-discovery-requirements"></a>Anforderungen an die Ermittlung von ASP.NET-Web-Apps
+
+Bei der [Softwareinventarisierung](how-to-discover-applications.md) wird die auf ermittelten Servern vorhandene Webserverrolle identifiziert. Wenn für einen Server die Webserverrolle aktiviert ist, führt Azure Migrate die Ermittlung von Web-Apps auf dem Server durch.
+Der Benutzer kann sowohl Domänenanmeldeinformationen als auch Nicht-Domänenanmeldeinformationen auf der Appliance hinzufügen. Stellen Sie sicher, dass das verwendete Konto über lokale Administratorrechte auf Quellservern verfügt. Azure Migrate ordnet Anmeldeinformationen automatisch den jeweiligen Servern zu, sodass sie nicht manuell zugeordnet werden müssen. Vor allem werden diese Anmeldeinformationen nie an Microsoft gesendet und verbleiben auf der Appliance, die in der Quellumgebung ausgeführt wird.
+Nachdem die Appliance verbunden wurde, sammelt sie Konfigurationsdaten für den IIS-Webserver und ASP.NET-Web-Apps. Konfigurationsdaten von Web-Apps werden alle 24 Stunden aktualisiert.
+
+Support | Details
+--- | ---
+**Unterstützte Server** | Wird derzeit nur für Windows-Server unterstützt, die IIS in Ihrer VMware-Umgebung ausführen.
+**Windows-Server** | Windows Server 2008 R2 oder höher wird unterstützt.
+**Linux-Server** | Wird derzeit nicht unterstützt.
+**IIS-Zugriff** | Für die Ermittlung von Web-Apps ist ein lokales Administratorbenutzerkonto erforderlich.
+**IIS-Versionen** | IIS 7.5 oder höher wird unterstützt.
+
+> [!NOTE]
+> Daten werden im Ruhezustand und während der Übertragung immer verschlüsselt.
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Anforderungen der Abhängigkeitsanalyse (ohne Agent)
 
 Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Servern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der folgenden Tabelle werden die Anforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent zusammengefasst:
 
 Support | Details
---- | --- 
+--- | ---
 **Unterstützte Server** | Wird derzeit nur für Server in einer VMware-Umgebung unterstützt.
-**Windows-Server** | Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2 (64-Bit)<br />Microsoft Windows Server 2008 (32-Bit)
+**Windows-Server** | Windows Server 2019<br />Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2 (64-Bit)<br />Microsoft Windows Server 2008 (32-Bit)
 **Linux-Server** | Red Hat Enterprise Linux 7, 6, 5<br /> Ubuntu Linux 16.04, 14.04<br /> Debian 8, 7<br /> Oracle Linux 7, 6 oder höher<br /> CentOS 7, 6, 5<br /> SUSE Linux Enterprise Server 11 und höher
 **Serveranforderungen** | Auf Servern, die Sie analysieren möchten, muss VMware Tools (10.2.1 oder höher) installiert sein und ausgeführt werden.<br /><br /> Auf den Servern muss PowerShell, Version 2.0 oder höher, installiert sein.
-**Ermittlungsmethode** |  Abhängigkeitsinformationen zwischen Servern werden mithilfe der VMware-Tools erfasst, die auf dem Server installiert sind, auf dem vCenter Server ausgeführt wird. Die Appliance sammelt die Informationen vom Server mithilfe von vSphere-APIs. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI oder SSH sollte auf Windows- bzw. Linux-Servern aktiviert und verfügbar sein.
+**Ermittlungsmethode** |  Abhängigkeitsinformationen zwischen Servern werden mithilfe der VMware-Tools erfasst, die auf dem Server installiert sind, auf dem vCenter Server ausgeführt wird. Die Appliance sammelt die Informationen vom Server mithilfe von vSphere-APIs. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI muss auf Windows-Servern aktiviert und verfügbar sein.
 **vCenter-Konto** | Das schreibgeschützte Konto, das von Azure Migrate für die Bewertung verwendet wird, muss über Berechtigungen für Gastvorgänge auf VMware-VMs verfügen.
 **Windows Server-Berechtigungen** |  Ein Benutzerkonto (lokal oder Domänenkonto) mit Administratorberechtigungen für Server.
 **Linux-Konto** | Ein root-Benutzerkonto oder ein Konto mit den folgenden Berechtigungen für Dateien in „/bin/netstat“ und „/bin/ls“: <br />CAP_DAC_READ_SEARCH<br /> CAP_SYS_PTRACE<br /><br /> Legen Sie diese Funktionen mithilfe der folgenden Befehle fest:<br /><code>sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br /> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat</code>

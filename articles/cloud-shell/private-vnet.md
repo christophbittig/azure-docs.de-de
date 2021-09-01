@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 86ffc0b0b8369fb82177912cccfdf582cfe1e536
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2ce108b7f36b7f7d4caf5133aafe99eb837df1ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696068"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346895"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Bereitstellen von Cloud Shell in einem Azure Virtual Network
 
@@ -90,7 +90,7 @@ Wenn Sie bereits über ein gewünschtes VNET verfügen, das Sie verbinden möcht
 Erstellen Sie im Azure-Portal oder mithilfe von Azure CLI, Azure PowerShell usw. eine Ressourcengruppe und ein virtuelles Netzwerk in der neuen Ressourcengruppe, wobei sich **die Ressourcengruppe und das virtuelle Netzwerk in derselben Region befinden müssen**.
 
 ### <a name="arm-templates"></a>ARM-Vorlagen
-Nutzen Sie die [Azure-Schnellstartvorlage](https://aka.ms/cloudshell/docs/vnet/template) zum Erstellen von Cloud Shell-Ressourcen in einem virtuellen Netzwerk und die [Azure-Schnellstartvorlage](https://aka.ms/cloudshell/docs/vnet/template/storage), um den erforderlichen Speicher zu erstellen. Notieren Sie sich Ihre Ressourcennamen, insbesondere den Namen Ihrer Dateifreigabe.
+Nutzen Sie die [Azure-Schnellstartvorlage](https://aka.ms/cloudshell/docs/vnet/template) zum Erstellen von Cloud Shell-Ressourcen in einem virtuellen Netzwerk und die [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/cloud-shell-vnet-storage/), um den erforderlichen Speicher zu erstellen. Notieren Sie sich Ihre Ressourcennamen, insbesondere den Namen Ihrer Dateifreigabe.
 
 ### <a name="open-relay-firewall"></a>Öffnen der Relayfirewall
 Navigieren Sie zu dem Relay, das Sie mithilfe der obigen Vorlage erstellt haben, wählen Sie in den Einstellungen „Netzwerk“ aus, und lassen Sie den Zugriff von Ihrem Browsernetzwerk auf das Relay zu. Standardmäßig ist das Relay nur über das virtuelle Netzwerk zugänglich, in dem es erstellt wurde. 

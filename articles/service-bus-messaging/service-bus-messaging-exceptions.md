@@ -2,13 +2,13 @@
 title: Messagingausnahmen von Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel stellt eine Liste von Azure Service Bus-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung, wenn eine Ausnahme auftritt.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 6c980b81d18dbbcb5764b3d8c4ed040f930bce4f
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 08/04/2021
+ms.openlocfilehash: 1535ae6e125ee11d30fab1aeaa12afe57a66b0e5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108160977"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339515"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus-Messagingausnahmen
 
@@ -48,7 +48,7 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen 
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |Es wurde ein Laufzeitvorgang für eine deaktivierte Entität angefordert. |Aktivieren Sie die Entität. |Eine Wiederholung kann helfen, wenn die Entität in der Zwischenzeit aktiviert wurde. |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |Service Bus gibt diese Ausnahme zurück, wenn Sie eine Nachricht zu einem Thema senden, für das eine Vorfilterung aktiviert wurde. |Stellen Sie sicher, dass mindestens ein Filter übereinstimmt. |Der Wiederholungsversuch ist nicht hilfreich. |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Eine Nachrichtennutzlast überschreitet den Grenzwert von 256 KB. Der Grenzwert von 256 KB gilt für die Gesamtgröße der Nachricht, zu der auch Systemeigenschaften und .NET-Mehraufwand gehören. |Reduzieren Sie die Größe der Nachrichtennutzlast, und wiederholen Sie den Vorgang. |Der Wiederholungsversuch ist nicht hilfreich. |
-| [TransactionException](/dotnet/api/system.transactions.transactionexception) |Die Ambient-Transaktion (*Transaction.Current*) ist ungültig. Sie wurde möglicherweise abgeschlossen oder abgebrochen. Unter Umständen enthält die innere Ausnahme weitere Informationen. | |Der Wiederholungsversuch ist nicht hilfreich. |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception) |Die Ambient-Transaktion (`Transaction.Current`) ist ungültig. Sie wurde möglicherweise abgeschlossen oder abgebrochen. Unter Umständen enthält die innere Ausnahme weitere Informationen. | |Der Wiederholungsversuch ist nicht hilfreich. |
 | [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception) |Es wurde versucht, einen Vorgang für eine unsichere Transaktion auszuführen, oder es wurde versucht, ein Commit für die Transaktion auszuführen, und die Transaktion wurde unsicher. |Die Anwendung muss diese Ausnahme (als Sonderfall) behandeln, da für die Transaktion u. U. bereits ein Commit ausgeführt wurde. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
@@ -189,6 +189,17 @@ Die Lösungsschritte hängen davon ab, wodurch die Ausnahme **MessagingException
 
    * Bei **vorübergehenden Problemen** (bei denen **_isTransient_*auf*_true_*festgelegt ist) oder* Drosselungsproblemen** lässt sich das Problem manchmal durch Wiederholen des Vorgangs lösen. Die Standardwiederholungsrichtlinie für das SDK kann hierfür verwendet werden.
    * Bei anderen Problemen geben die in der Ausnahme angegebenen Details Informationen zum Problem und den Lösungsschritten an.
+
+## <a name="storagequotaexceededexception"></a>StorageQuotaExceededException
+
+### <a name="cause"></a>Ursache
+
+**StorageQuotaExceededException** wird generiert, wenn die Gesamtgröße der Entitäten in einem Premium-Namespace den Grenzwert von 1 TB pro [Messagingeinheit](service-bus-premium-messaging.md) überschreitet.
+
+### <a name="resolution"></a>Lösung
+
+- Erhöhen Sie die Anzahl der Messagingeinheiten, die dem Premium-Namespace zugewiesen sind.
+- Wenn Sie bereits die maximal zulässige Anzahl von Messagingeinheiten für einen Namespace verwenden, erstellen Sie einen separaten Namespace. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

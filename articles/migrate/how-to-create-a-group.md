@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/17/2019
-ms.openlocfilehash: 0570ed73b86223025b250e269d7e2f358473f004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ffa031a9058eb6864298c5c9387402955a84968
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780853"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355810"
 ---
 # <a name="create-a-group-for-assessment"></a>Erstellen einer Gruppe für die Bewertung
 
 In diesem Artikel wird beschrieben, wie Sie Server mit Computern für die Bewertung mit „Azure Migrate: Ermittlung und Bewertung“ erstellen.
 
-[Azure Migrate](migrate-services-overview.md) hilft Ihnen bei der Migration zu Azure. Azure Migrate bietet einen zentralisierten Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration lokaler Infrastruktur, Anwendungen und Daten zu Azure. Der Hub stellt Azure-Tools für die Bewertung und Migration sowie Drittanbietertools von unabhängigen Softwareanbietern (ISVs) bereit. 
+[Azure Migrate](migrate-services-overview.md) hilft Ihnen bei der Migration zu Azure. Azure Migrate bietet einen zentralisierten Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration lokaler Infrastruktur, Anwendungen und Daten zu Azure. Der Hub stellt Azure-Tools für die Bewertung und Migration sowie Drittanbietertools von unabhängigen Softwareanbietern (ISVs) bereit.
 
 ## <a name="grouping-servers"></a>Gruppieren von Servern
 
@@ -47,12 +47,13 @@ Gehen Sie wie folgt vor, wenn Sie eine Gruppe unabhängig von der Erstellung ein
 
     ![Erstellen einer Gruppe](./media/how-to-create-a-group/create-group.png)
 
-Sie können diese Gruppe jetzt verwenden, wenn Sie eine [Azure VM-Bewertung](how-to-create-assessment.md), eine [Bewertung der VMware-Lösung in Azure (AVS)](how-to-create-azure-vmware-solution-assessment.md) oder eine [Azure SQL-Bewertung](how-to-create-azure-sql-assessment.md) erstellen.
+Sie können diese Gruppe jetzt verwenden, wenn Sie eine [Azure VM-Bewertung](how-to-create-assessment.md), eine [Bewertung der VMware-Lösung in Azure (AVS)](how-to-create-azure-vmware-solution-assessment.md) oder eine [Azure SQL-Bewertung](how-to-create-azure-sql-assessment.md) bzw. eine [Azure App Service-Bewertung](how-to-create-azure-app-service-assessment.md) erstellen.
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Optimieren einer Gruppe mit Abhängigkeitszuordnung
 
 Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten serverübergreifend visualisieren. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Servergruppen mit höheren Zuverlässigkeitsgraden zugreifen möchten.
-- Es ist hilfreich, die Abhängigkeiten zwischen Servern zu überprüfen, bevor Sie eine Bewertung durchführen. 
+
+- Es ist hilfreich, die Abhängigkeiten zwischen Servern zu überprüfen, bevor Sie eine Bewertung durchführen.
 - Außerdem ist es hilfreich, Ihre Migration zu Azure effektiv zu planen. Stellen Sie hierfür sicher, dass keine Restbestände vorhanden sind, um zu vermeiden, dass es während der Migration zu überraschenden Ausfällen kommt.
 - Sie können voneinander abhängige Systeme ermitteln, die gemeinsam migriert werden müssen, und bestimmen, ob ein ausgeführtes System noch benötigt wird oder eher außer Betrieb gesetzt als migriert werden sollte.
 
@@ -84,7 +85,6 @@ Gehen Sie wie folgt vor, falls Sie die [Abhängigkeitszuordnung bereits eingeric
     - Sie können nur Server hinzufügen, die ermittelt wurden.
     - Wenn Sie Server hinzufügen und entfernen, werden die vorherigen Bewertungen für eine Gruppe dafür ungültig.
     - Sie können optional eine neue Bewertung erstellen, wenn Sie die Gruppe ändern.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

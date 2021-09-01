@@ -1,28 +1,28 @@
 ---
-title: Erste Schritte mit Azure Service Bus-Warteschlangen | Microsoft-Dokumentation
-description: In diesem Tutorial erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
-ms.topic: quickstart
+title: Verwenden von Azure Service Bus-Warteschlangen mit .NET (alte Version)
+description: In diesem Artikel erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Nachrichten zu empfangen.
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/01/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d92a5e0b0d1a6953d0043f85ff98f6740aaacebb
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 86ff3608a0575413b6c5c30eec05ec0bb898247e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748060"
 ---
-# <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
-In diesem Tutorial erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
+# <a name="send-and-receive-messages-from-azure-service-bus-queues-using-net-old-package"></a>Senden und Empfangen von Nachrichten aus Azure Service Bus-Warteschlangen mithilfe von .NET (altes Paket)
+In diesem Artikel erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Nachrichten zu empfangen.
 
 > [!WARNING]
-> In dieser Schnellstartanleitung wird das alte Microsoft.Azure.ServiceBus-Paket verwendet. Eine Schnellstartanleitung, in der das neueste Azure.Messaging.ServiceBus-Paket verwendet wird, finden Sie unter [Senden und Empfangen von Ereignissen mit einem Azure.Messaging.ServiceBus-Paket](service-bus-dotnet-get-started-with-queues.md). 
+> In diesem Artikel wird das alte Microsoft.Azure.ServiceBus-Paket verwendet. Einen Artikel, in dem das neueste Azure.Messaging.ServiceBus-Paket verwendet wird, finden Sie unter [Senden und Empfangen von Ereignissen mit einem Azure.Messaging.ServiceBus-Paket](service-bus-dotnet-get-started-with-queues.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://dotnet.microsoft.com/download) ab Version 2.0
-- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+- Ein Azure-Abonnement. Die Durchführung der in diesem Artikel aufgeführten Schritte setzt ein Azure-Konto voraus. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 - Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
 
   - Lesen Sie die kurze Übersicht über Service Bus-Warteschlangen.

@@ -1,82 +1,82 @@
 ---
 title: Vorläufiges Löschen in einem verwalteten Azure Key Vault-HSM | Microsoft-Dokumentation
-description: Mit dem vorläufigen Löschen in einem verwalteten HSM können Sie gelöschte HSM-Instanzen und -Schlüssel wiederherstellen.
+description: Mit dem vorläufigen Löschen in einem verwalteten HSM können Sie gelöschte HSM-Instanzen und -Schlüssel wiederherstellen. Dieser Artikel bietet eine Übersicht über diese Funktion.
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-author: amitbapat
-ms.author: ambapat
+author: mbaldwin
+ms.author: mbaldwin
 ms.date: 06/01/2021
-ms.openlocfilehash: 673260fb8b78cb08ccd8581862238dc2e0341362
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b832aa066e1d31bfc064f988c722d2503ff96507
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415145"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343139"
 ---
 # <a name="managed-hsm-soft-delete-overview"></a>Übersicht über vorläufiges Löschen von verwaltetem HSM
 
 > [!IMPORTANT]
-> Das vorläufige Löschen ist für verwaltete HSM-Ressourcen standardmäßig aktiviert. Es kann nicht deaktiviert werden.
+> Das vorläufige Löschen kann für verwaltete HSM-Ressourcen nicht deaktiviert werden.
 
 > [!IMPORTANT]
-> Vorläufig gelöschte verwaltete HSM-Ressourcen werden weiterhin zum vollen Stundensatz abgerechnet, bis sie endgültig gelöscht werden.
+> Vorläufig gelöschte verwaltete HSM-Ressourcen werden weiterhin zum vollen Stundensatz abgerechnet, bis sie bereinigt werden.
 
-Das Feature für das vorläufige Löschen von verwaltetem HSM ermöglicht die Wiederherstellung der gelöschten HSMs und Schlüssel. Diese Schutzmaßnahme bietet insbesondere folgende Sicherheiten:
+Das Feature für vorläufiges Löschen von verwaltetem HSM ermöglicht die Wiederherstellung gelöschter HSMs und Schlüssel. Dieses Feature bietet insbesondere die folgenden Sicherheitsmaßnahmen:
 
-- Wurde ein HSM oder Schlüssel gelöscht, kann er während eines konfigurierbaren Zeitraums von 7 bis 90 Kalendertagen wiederhergestellt werden. Der Aufbewahrungszeitraum kann während der Erstellung des HSM festgelegt werden. Wird kein Wert angegeben wird, wird der Standardaufbewahrungszeitraum von 90 Tagen festgelegt. So haben Benutzer ausreichend Zeit, ein versehentliches Löschen eines Schlüssels oder HSM zu erkennen und darauf zu reagieren.
-- Zwei Vorgänge müssen durchgeführt werden, um einen Schlüssel dauerhaft zu löschen. Zuerst muss ein Benutzer den Schlüssel löschen. Dadurch geht er in den Zustand der vorläufigen Löschung über. Anschließend muss ein Benutzer den Schlüssel im Zustand der vorläufigen Löschung endgültig löschen. Für den Vorgang zum endgültigen Löschen muss dem Benutzer die Rolle „Managed HSM Crypto Officer“ (Kryptoverantwortlicher für verwaltete HSMs) zugewiesen sein. Diese zusätzlichen Schutzmaßnahmen verringern das Risiko, dass ein Benutzer versehentlich oder böswillig einen Schlüssel oder ein HSM löscht.
+- Wurde ein HSM oder Schlüssel gelöscht, kann er während eines konfigurierbaren Zeitraums von 7 bis 90 Kalendertagen wiederhergestellt werden. Sie können die Beibehaltungsdauer festlegen, wenn Sie ein HSM erstellen. Wenn Sie keinen Wert angeben, wird der Standardaufbewahrungszeitraum von 90 Tagen verwendet. Dieser Zeitraum gibt den Benutzern genügend Zeit, eine versehentliche Löschung von Schlüsseln oder HSMs zu bemerken und darauf zu reagieren.
+- Um einen Schlüssel dauerhaft zu löschen, müssen Benutzer zwei Aktionen ausführen. Zuerst müssen sie den Schlüssel löschen. Dadurch geht er in den Zustand der vorläufigen Löschung über. Anschließend muss ein Benutzer den Schlüssel im Zustand der vorläufigen Löschung bereinigen. Für den Bereinigungsvorgang ist die Rolle „Managed HSM Crypto Officer“ (Crypto Officer des verwalteten HSM) erforderlich. Diese zusätzlichen Schutzmaßnahmen verringern das Risiko, dass ein Benutzer versehentlich oder böswillig einen Schlüssel oder ein HSM löscht.
 
 
 ## <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
-Für verwaltetes HSM ist vorläufiges Löschen standardmäßig aktiviert. Sie können keine verwaltete HSM-Ressource mit deaktivierter Funktion für vorläufiges Löschen erstellen.
+Vorläufiges Löschen kann für verwaltete HSM-Ressourcen nicht deaktiviert werden.
 
-Wenn vorläufiges Löschen aktiviert ist, werden als gelöscht gekennzeichnete Ressourcen für einen bestimmten Zeitraum (standardmäßig 90 Tage) aufbewahrt. Darüber hinaus bietet der Dienst einen Mechanismus zum Wiederherstellen der gelöschten HSMs oder Schlüssel, sodass der Löschvorgang rückgängig gemacht werden kann.
+Als gelöscht markierte Ressourcen werden für einen angegebenen Zeitraum aufbewahrt. Es gibt auch einen Mechanismus zum Wiederherstellen gelöschter HSMs oder Schlüssel, damit Sie Löschungen rückgängig machen können.
 
-Der Standardaufbewahrungszeitraum beträgt 90 Tage. Das Intervall der Aufbewahrungsrichtlinie kann jedoch während der Erstellung der HSM-Ressource auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nach der Festlegung kann das Intervall für die Aufbewahrungsrichtlinie nicht mehr geändert werden.
+Der Standardaufbewahrungszeitraum beträgt 90 Tage. Wenn Sie eine HSM-Ressource erstellen, können Sie das Aufbewahrungsrichtlinienintervall auf einen Wert zwischen 7 und 90 Tagen festlegen. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nachdem Sie die Aufbewahrungsrichtlinie festgelegt haben, können Sie sie nicht mehr ändern.
 
-Sie können den Namen einer HSM-Ressource, die vorläufig gelöscht wurde, erst wiederverwenden, wenn der Aufbewahrungszeitraum verstrichen ist und die HSM-Ressource endgültig gelöscht wurde.
+Sie können den Namen einer HSM-Ressource, die vorläufig gelöscht wurde, erst wiederverwenden, wenn der Aufbewahrungszeitraum verstrichen ist und die HSM-Ressource bereinigt (endgültig gelöscht) wurde.
 
 ## <a name="purge-protection"></a>Bereinigungsschutz
 
-Der Löschschutz ist ein optionales Verhalten und ist **nicht standardmäßig aktiviert**. Es kann über die [Befehlszeilenschnittstelle](./recovery.md?tabs=azure-cli) oder [PowerShell](./recovery.md?tabs=azure-powershell) aktiviert werden.
+Bereinigungsschutz ist ein optionales Verhalten. Er ist nicht standardmäßig aktiviert. Sie können ihn mit der [Azure CLI](./recovery.md?tabs=azure-cli) oder [PowerShell](./recovery.md?tabs=azure-powershell) aktivieren.
 
-Bei aktiviertem Löschschutz kann ein HSM oder ein Schlüssel im gelöschten Zustand erst nach Ablauf des Aufbewahrungszeitraums endgültig gelöscht werden. Vorläufig gelöschte HSMs und Schlüssel können unter Einhaltung der Aufbewahrungsrichtlinie weiterhin wiederhergestellt werden.
+Bei aktiviertem Bereinigungsschutz kann ein HSM oder ein Schlüssel im gelöschten Zustand erst nach Ablauf des Aufbewahrungszeitraums endgültig gelöscht werden. Vorläufig gelöschte HSMs und Schlüssel können immer noch wiederhergestellt werden, wodurch sichergestellt wird, dass die Aufbewahrungsrichtlinie wirksam ist.
 
-Der Standardaufbewahrungszeitraum beträgt 90 Tage. Bei der Erstellung eines HSM kann das Intervall der Aufbewahrungsrichtlinie jedoch auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Das Intervall der Aufbewahrungsrichtlinie kann nur zum Zeitpunkt der Erstellung eines HSM festgelegt werden. Es kann später nicht geändert werden.
+Der Standardaufbewahrungszeitraum beträgt 90 Tage. Wenn Sie eine HSM-Ressource erstellen, können Sie das Aufbewahrungsrichtlinienintervall auf einen Wert zwischen 7 und 90 Tagen festlegen. Das Aufbewahrungsrichtlinienintervall kann nur festgelegt werden, wenn Sie ein HSM erstellen. Diese Einstellung kann später nicht mehr geändert werden.
 
-Informationen finden Sie unter [Verwenden des vorläufigen Löschens von verwalteten HSMs mit der Befehlszeilenschnittstelle](./recovery.md?tabs=azure-cli#managed-hsm-cli) oder [Verwenden des vorläufigen Löschens von verwalteten HSMs mit PowerShell](./recovery.md?tabs=azure-powershell#managed-hsm-powershell).
+Informationen finden Sie unter [Verwenden des vorläufigen Löschens von verwalteten HSMs mit der Befehlszeilenschnittstelle](./recovery.md?tabs=azure-cli#managed-hsms-cli) oder [Verwenden des vorläufigen Löschens von verwalteten HSMs mit PowerShell](./recovery.md?tabs=azure-powershell#managed-hsms-powershell).
 
 ## <a name="managed-hsm-recovery"></a>Wiederherstellung von verwalteten HSMs
 
-Beim Löschen eines HSM erstellt der Dienst eine Proxyressource unter dem Abonnement, wobei genügend Metadaten für die Wiederherstellung hinzugefügt werden. Die Proxyressource ist ein gespeichertes Objekt, das am gleichen Speicherort wie das gelöschte HSM verfügbar ist. 
+Wenn Sie ein HSM löschen, erstellt der Dienst eine Proxyressource im Abonnement und fügt genügend Metadaten hinzu, um eine Wiederherstellung zu ermöglichen. Die Proxyressource ist ein gespeichertes Objekt. Es ist am gleichen Speicherort verfügbar wie das gelöschte HSM. 
 
 ## <a name="key-recovery"></a>Schlüsselwiederherstellung
 
-Beim Löschen eines Schlüssels versetzt der Dienst ihn in einen gelöschten Zustand, sodass keine Vorgänge mehr darauf zugreifen können. In diesem Zustand können die Schlüssel aufgelistet, wiederhergestellt oder bereinigt (endgültig gelöscht) werden. Verwenden Sie zum Anzeigen der Objekte den Azure CLI-Befehl `az keyvault key list-deleted` (wie unter [Vorläufiges Löschen und Löschschutz für verwaltete HSMs mit der CLI](./recovery.md?tabs=azure-cli#keys-cli) dokumentiert) oder den Azure PowerShell-Parameter `-InRemovedState` (wie unter [Vorläufiges Löschen und Löschschutz für verwaltete HSMs mit PowerShell](./recovery.md?tabs=azure-powershell#keys-powershell) beschrieben).  
+Beim Löschen eines Schlüssels versetzt der Dienst ihn in einen gelöschten Zustand, sodass keine Vorgänge mehr darauf zugreifen können. In diesem Zustand können die Schlüssel aufgelistet, wiederhergestellt oder bereinigt werden. Verwenden Sie zum Anzeigen der Objekte den Azure CLI-Befehl `az keyvault key list-deleted` (unter [Vorläufiges Löschen und Löschschutz für verwaltete HSMs mit der CLI](./recovery.md?tabs=azure-cli#keys-cli) beschrieben) oder den Azure PowerShell-Parameter `-InRemovedState` (unter [Vorläufiges Löschen und Löschschutz für verwaltete HSMs mit PowerShell](./recovery.md?tabs=azure-powershell#keys-powershell) beschrieben).  
 
-Gleichzeitig plant das verwaltete HSM die Ausführung des Löschens der zugrunde liegenden Daten, die dem gelöschten HSM oder Schlüssel entsprechen, nach einem zuvor festgelegten Aufbewahrungsintervall. Der dem HSM entsprechende DNS-Eintrag wird ebenfalls während des Aufbewahrungsintervalls beibehalten.
+Wenn Sie den Schlüssel löschen, plant das verwaltete HSM die Löschung der zugrunde liegenden Daten, die dem gelöschten HSM oder Schlüssel entsprechen, nach einem vorgegebenen Aufbewahrungsintervall. Der dem HSM entsprechende DNS-Eintrag wird während des Aufbewahrungsintervalls ebenfalls beibehalten.
 
 ## <a name="soft-delete-retention-period"></a>Aufbewahrungszeitraum für vorläufig gelöschte Ressourcen
 
-Vorläufig gelöschte Ressourcen werden für einen festgelegten Zeitraum von 90 Tagen beibehalten. Während des Aufbewahrungsintervalls für vorläufig gelöschte Ressourcen gilt Folgendes:
+Vorläufig gelöschte Ressourcen werden für einen festgelegten Zeitraum von 90 Tagen beibehalten. Während des Aufbewahrungsintervalls für vorläufig gelöschte Ressourcen gelten die folgenden Bedingungen:
 
-- Sie können alle im vorläufig gelöschten Zustand befindlichen HSMs und Schlüssel für Ihr Abonnement auflisten sowie auf die entsprechenden Löschungs- und Wiederherstellungsinformationen zugreifen.
-  - Nur Benutzer mit der Rolle „Mitwirkender für verwaltetes HSM“ können gelöschte HSMs auflisten. Wir empfehlen unseren Benutzern das Erstellen einer benutzerdefinierten Rolle mit diesen speziellen Berechtigungen für den Umgang mit gelöschten Tresoren.
-- Es kann kein verwaltetes HSM mit demselben Namen am gleichen Speicherort erstellt werden. Dementsprechend kann auch kein Schlüssel in einem bestimmten HSM erstellt werden, wenn dieses HSM einen Schlüssel mit demselben Namen im gelöschten Zustand enthält.
-- Nur Benutzer mit der Rolle „Mitwirkender für verwaltetes HSM“ können verwaltete HSMs auflisten, anzeigen, wiederherstellen und endgültig löschen.
+- Sie können alle HSMs und Schlüssel auflisten, die sich für Ihr Abonnement im vorläufig gelöschten Zustand befinden. Sie können auch auf Lösch- und Wiederherstellungsinformationen zu diesen zugreifen.
+- Nur Benutzer mit der Rolle „Mitwirkender für verwaltetes HSM“ können gelöschte HSMs auflisten. Es wird empfohlen, eine benutzerdefinierte Rolle mit diesen speziellen Berechtigungen für den Umgang mit gelöschten Tresoren zu erstellen.
+- Die Namen verwalteter HSMs müssen an einem bestimmten Speicherort eindeutig sein. Wenn Sie einen Schlüssel erstellen, können Sie keinen Namen verwenden, wenn das HSM einen Schlüssel mit diesem Namen in einem gelöschten Zustand enthält.
+- Nur Benutzer mit der Rolle „Mitwirkender für verwaltetes HSM“ können verwaltete HSMs auflisten, anzeigen, wiederherstellen und bereinigen.
 - Nur Benutzer mit der Rolle „Managed HSM Crypto Officer“ (Kryptoverantwortlicher für verwaltete HSMs) können Schlüssel auflisten, anzeigen, wiederherstellen und endgültig löschen.
   
-Wenn ein verwaltetes HSM oder ein Schlüssel nicht wiederhergestellt wird, wird das vorläufig gelöschte HSM bzw. der vorläufig gelöschte Schlüssel vom Dienst am Ende des Aufbewahrungsintervalls endgültig gelöscht. Das Löschen von Ressourcen kann nicht neu geplant werden.
+Wenn ein verwaltetes HSM oder ein Schlüssel nicht wiederhergestellt wird, wird das vorläufig gelöschte HSM bzw. der vorläufig gelöschte Schlüssel vom Dienst am Ende des Aufbewahrungsintervalls endgültig gelöscht. Sie können das Löschen von Ressourcen nicht neu planen.
 
 ### <a name="billing-implications"></a>Hinweise zur Gebührenberechnung
 
-Verwaltetes HSM ist ein Einzelmandantendienst. Wenn Sie ein verwaltetes HSM erstellen, reserviert der Dienst zugrunde liegende Ressourcen, die Ihrem HSM zugeordnet sind. Diese Ressourcen bleiben auch dann zugeordnet, wenn sich das HSM im gelöschten Zustand befindet. Daher wird ihnen das HSM in Rechnung gestellt, während es sich im gelöschten Zustand befindet.
+Verwaltetes HSM ist ein Einzelmandantendienst. Wenn Sie ein verwaltetes HSM erstellen, reserviert der Dienst zugrunde liegende Ressourcen, die Ihrem HSM zugeordnet sind. Diese Ressourcen bleiben auch dann zugeordnet, wenn sich das HSM in einem gelöschten Zustand befindet. Ihnen wird das HSM in Rechnung gestellt, während es sich in einem gelöschten Zustand befindet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden zwei Handbücher stellen die primären Verwendungsszenarien für vorläufiges Löschen vor.
+In diesen Artikeln werden die wichtigsten Szenarien für die Verwendung von vorläufigem Löschen beschrieben:
 
 - [Verwenden des vorläufigen Löschens von verwalteten HSMs mit PowerShell](./recovery.md?tabs=azure-powershell) 
-- [Verwenden des vorläufigen Löschens von verwalteten HSMs mit der Befehlszeilenschnittstelle](./recovery.md?tabs=azure-cli)
+- [Verwenden des vorläufigen Löschens von verwalteten HSMs mit der Azure CLI](./recovery.md?tabs=azure-cli)

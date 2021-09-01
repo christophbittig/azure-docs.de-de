@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fade080e631385acec46fc59c41e6624280ae9e7
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726409"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340529"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Codeeinschränkungen für Orchestratorfunktionen
 
@@ -30,7 +30,7 @@ Die folgende Tabelle zeigt einige Beispiele für APIs, die *nicht* deterministis
 
 | API-Kategorie | `Reason` | Problemumgehung |
 | ------------ | ------ | ---------- |
-| Datums- und Zeitangaben  | APIs, die das aktuelle Datum oder die aktuelle Uhrzeit zurückgeben, sind nicht deterministisch, da der Rückgabewert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie die [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime)-Eigenschaft in .NET, die `currentUtcDateTime`-API in JavaScript oder die `current_utc_datetime`-API in Python, die für die Wiedergabe sicher sind. |
+| Datums- und Zeitangaben  | APIs, die das aktuelle Datum oder die aktuelle Uhrzeit zurückgeben, sind nicht deterministisch, da der Rückgabewert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie die [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime)-Eigenschaft in .NET, die `currentUtcDateTime`-API in JavaScript oder die `current_utc_datetime`-API in Python, die für die Wiedergabe sicher sind. Vermeiden Sie auf ähnliche Weise Objekte des „Stopwatch“-Typs (z. B. die [Stopwatch-Klasse in .NET](/dotnet/api/system.diagnostics.stopwatch)). Wenn Sie die verstrichene Zeit messen müssen, speichern Sie den Wert von `CurrentUtcDateTime` zu Beginn der Ausführung, und subtrahieren Sie diesen Wert von `CurrentUtcDateTime`, wenn die Ausführung abgeschlossen wird. |
 | GUIDs und UUIDs  | APIs, die eine zufällige GUID oder UUID zurückgeben, sind nicht deterministisch, da der generierte Wert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) in .NET, `newGuid` in JavaScript und `new_guid` in Python zum sicheren Generieren von Zufalls-GUIDs. |
 | Zufallszahlen | APIs, die eine zufällige Zahlen zurückgeben, sind nicht deterministisch, da der generierte Wert bei jeder Wiedergabe unterschiedlich ist. | Verwenden Sie eine Aktivitätsfunktion, um Zufallszahlen an eine Orchestrierung zurückzugeben. Die Rückgabewerte von Aktivitätsfunktionen können immer für die Wiedergabe verwendet werden. |
 | Bindungen | Eingabe- und Ausgabebindungen werden in der Regel für Eingaben/Ausgaben genutzt und sind nicht deterministisch. Eine Orchestratorfunktion darf nicht einmal die Bindungen [Orchestrierungsclient](durable-functions-bindings.md#orchestration-client) und [Entitätsclient](durable-functions-bindings.md#entity-client) direkt verwenden. | Verwenden Sie Eingabe- und Ausgabebindungen innerhalb von Client- oder Aktivitätsfunktionen. |

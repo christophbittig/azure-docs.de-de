@@ -1,0 +1,86 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
+  description: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern, z. B. in Bezug auf Funktionen, Anwendungsfälle und gängige Szenarien.
+  ms.topic: article
+  ms.author: micraft
+  author: craftyhouse
+  ms.service: service-fabric
+  ms.date: 7/14/2021
+  ms.custom: references_regions
+  ms.openlocfilehash: 6b77924cd499eec27175eba1f690c2429420c625
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122351092"
+title: Häufig gestellte Fragen zu verwalteten Service Fabric-Clustern
+summary: Hier finden Sie einige häufig gestellte Fragen (FAQs) und Antworten für verwaltete Service Fabric-Cluster.
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Was sind verwaltete Service Fabric-Cluster?
+    answer: >
+      Bei verwalteten Service Fabric-Clustern handelt es sich um eine Weiterentwicklung des Service Fabric-Clusterressourcenmodells, das Ihnen die Bereitstellung und Verwaltung von Clustern vereinfachen soll. Für einen verwalteten Service Fabric-Cluster wird das Azure Resource Manager-Kapselungsmodell verwendet, damit ein Benutzer nur eine Clusterressource definieren und bereitstellen muss – verglichen mit den vielen unabhängigen Ressourcen, die derzeit bereitgestellt werden müssen (VM-Skalierungsgruppe, Load Balancer, IP-Adresse und mehr).
+  - question: >
+      Welche Regionen werden unterstützt?
+    answer: >
+      Verwaltete Service Fabric-Cluster werden in allen Cloudregionen unterstützt.
+  - question: >
+      Kann ich eine direkte Migration meines vorhandenen Service Fabric-Clusters zu einer Ressource vom Typ „Verwalteter Cluster“ durchführen?
+    answer: >
+      Nein. Sie müssen eine neue Service Fabric-Clusterressource erstellen, um den neuen Ressourcentyp „Verwalteter Service Fabric-Cluster“ zu verwenden.
+  - question: >
+      Fallen für verwaltete Service Fabric-Cluster zusätzliche Kosten an?
+    answer: >
+      Nein. Für einen verwalteten Service Fabric-Cluster fallen keine zusätzlichen Kosten an, sondern nur die Kosten für die zugrunde liegenden Compute-, Speicher- und Netzwerkressourcen, die für den Cluster benötigt werden.
+  - question: >
+      Wird für die Ressource vom Typ „Verwalteter Service Fabric-Cluster“ eine neue SLA eingeführt?
+    answer: >
+      Die SLA ändert sich gegenüber dem aktuellen Service Fabric-Ressourcenmodell nicht.
+  - question: >
+      Worin besteht der Unterschied zwischen einem Cluster mit der SKU „Basic“ und der SKU „Standard“?
+    answer: >
+      Ein Cluster mit der SKU „Basic“ bedeutet, dass die meisten Konfigurationen vom Service Fabric-Ressourcenanbieter bereitgestellt werden. Cluster mit der SKU „Basic“ sind für die Verwendung mit Test- und Präproduktionsumgebungen vorgesehen. Ein Cluster mit der SKU „Standard“ kann von einem Benutzer so konfiguriert werden, dass seine spezifischen Anforderungen erfüllt werden. Weitere Informationen finden Sie unter [SKUs für verwaltete Service Fabric-Cluster](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
+  - question: >
+      Wo kann ich geplante Features anzeigen oder vorschlagen?
+    answer: "Beachten Sie unser GitHub-Projekt für [verwaltete Cluster](https://github.com/microsoft/service-fabric/projects/17)      \n"
+- name: Clusterbereitstellung und -verwaltung
+  questions:
+  - question: >
+      Ich führe benutzerdefinierte Skripterweiterungen in meiner VM-Skalierungsgruppe aus. Ist dies auch mit einer verwalteten Service Fabric-Ressource weiter möglich?
+    answer: >
+      Ja. Sie können VM-Erweiterungen für verwaltete Clusterknotentypen angeben. Weitere Informationen finden Sie unter [Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Service Fabric-Clusterknotentyp (Vorschau)](./how-to-managed-cluster-vmss-extension.md).
+  - question: >
+      Ich möchte nur einen rein internen Lastenausgleich nutzen. Ist das möglich?
+    answer: >
+      Derzeit ist es nicht möglich, einen rein internen Lastenausgleich zu nutzen. Wir empfehlen Ihnen, die Netzwerksicherheitsgruppen-Regeln (NSG) zu sperren, um unerwünschten eingehenden bzw. ausgehenden Datenverkehr zu blockieren.
+  - question: >
+      Kann ich für meinen Cluster die Autoskalierung nutzen?
+    answer: >
+      Automatische Skalierung wird derzeit nicht unterstützt.
+  - question: >
+      Kann ich meinen Cluster über Verfügbarkeitszonen hinweg bereitstellen?
+    answer: >
+      Ja, verwaltete Service Fabric-Cluster, die verfügbarkeitszonenübergreifend sind, werden in Azure-Regionen unterstützt, die Verfügbarkeitszonen unterstützen. Weitere Informationen finden Sie unter [Verfügbarkeitszonenübergreifende verwaltete Service Fabric-Cluster](./how-to-managed-cluster-availability-zones.md).
+  - question: "Kann ich zustandslose Knotentypen auf einem verwalteten Service Fabric-Cluster bereitstellen? \n"
+    answer: >
+      Ja, verwaltete Service Fabric-Cluster unterstützen zustandslose Knotentypen für alle sekundären Knotentypen. Weitere Informationen finden Sie unter [Zustandslose Knotentypen für verwaltete Service Fabric-Cluster](./how-to-managed-cluster-stateless-node-type.md).
+  - question: >
+      Kann ich für meine Clusterruntime zwischen automatischen und manuellen Upgrades wählen?
+    answer: >
+      Ja, Sie können zwischen automatischen und manuellen Upgrades wählen. Weitere Informationen finden Sie unter [Clusterupgrades](./how-to-managed-cluster-upgrades.md).
+- name: Anwendungen
+  questions:
+  - question: >
+      Ist eine lokale Entwicklungsumgebung für verwaltete Service Fabric-Cluster vorhanden?
+    answer: >
+      Die lokale Entwicklungsumgebung bleibt gegenüber den vorhandenen Service Fabric-Clustern unverändert. Weitere Informationen zur lokalen Entwicklungsumgebung finden Sie unter [Einrichten Ihrer Entwicklungsumgebung](./service-fabric-get-started.md).
+  - question: >
+      Kann ich meine Anwendungen als Azure Resource Manager-Ressource bereitstellen?
+    answer: >
+      Ja. Die Bereitstellung von Anwendungen als Azure Resource Manager-Ressource wird jetzt unterstützt (zusätzlich zur Bereitstellung mithilfe von PowerShell und der CLI). Informationen zu den ersten Schritten finden Sie unter [Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster (Vorschau) mithilfe einer ARM-Vorlage](./how-to-managed-cluster-app-deployment-template.md).
+  - question: >
+      Kann ich Anwendungen mit verwalteten Identitäten bereitstellen?
+    answer: Ja, Anwendungen mit verwalteten Identitäten können in einem verwalteten Service Fabric-Cluster bereitgestellt werden. Weitere Informationen finden Sie unter [Verwaltete Anwendungsidentitäten](./concepts-managed-identity.md).

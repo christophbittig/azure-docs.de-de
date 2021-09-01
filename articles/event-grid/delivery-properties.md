@@ -2,13 +2,13 @@
 title: 'Azure Event Grid: Festlegen benutzerdefinierter Header für übermittelte Ereignisse'
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Header (oder Übermittlungseigenschaften) für übermittelte Ereignisse festlegen.
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 08/13/2021
+ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340525"
 ---
 # <a name="custom-delivery-properties"></a>Benutzerdefinierte Übermittlungseigenschaften
 Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Beim Erstellen eines Ereignisabonnements können bis zu zehn Header festgelegt werden. Die einzelnen Headerwert dürfen nicht größer als 4.096 Bytes (4K) sein.
@@ -33,6 +33,20 @@ Bei Angabe vertraulicher Daten empfiehlt es sich gegebenenfalls, das Kontrollkä
 Sie können den Wert eines Headers auf der Grundlage einer Eigenschaft in einem eingehenden Ereignis festlegen. Verwenden Sie die JsonPath-Syntax, um auf den Eigenschaftswert eines eingehenden Ereignisses zu verweisen, der als Wert für einen Header in ausgehenden Anforderungen verwendet werden soll. Wenn Sie beispielsweise in den Ereignisdaten den Wert eines Headers namens **Channel** mit dem Wert der Eigenschaft **system** eines eingehenden Ereignisses festlegen möchten, können Sie Ihr Ereignisabonnement wie folgt konfigurieren:
 
 :::image type="content" source="./media/delivery-properties/dynamic-header-property.png" alt-text="Übermittlungseigenschaften: dynamisch":::
+
+## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+Verwenden Sie den `--delivery-attribute-mapping`-Parameter, wenn Sie ein Abonnement mit dem `az eventgrid event-subscription create`-Befehl erstellen. Hier sehen Sie ein Beispiel:
+
+```azurecli
+az eventgrid event-subscription create -n es1 \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1
+    --endpoint-type storagequeue \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/sa1/queueservices/default/queues/q1 \
+    --enable-advanced-filtering-on-arrays true
+    --delivery-attribute-mapping staticproperty1 static somestaticvalue2 true 
+    --delivery-attribute-mapping staticproperty2 static somestaticvalue3 false 
+    --delivery-attribute-mapping dynamicproperty1 dynamic data.key1
+```
 
 ## <a name="examples"></a>Beispiele
 Dieser Abschnitt enthält ein paar Beispiele für die Verwendung von Übermittlungseigenschaften.
