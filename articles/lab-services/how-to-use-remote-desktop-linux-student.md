@@ -3,12 +3,12 @@ title: Herstellen einer Verbindung zu einer Linux-VM in Azure Lab Services | Mic
 description: Erfahren Sie, wie Sie Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services verwenden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a86ba98df3e1600ac95d19e690815515eb4c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85443416"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346165"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Herstellen einer Verbindung zu virtuellen Linux-Computern in einem Unterrichts-Lab in Azure Lab Services
 In diesem Artikel erfahren Sie, wie Kursteilnehmer in einem Lab eine Verbindung zu einem virtuellen Linux-Computer (Virtual Machine, VM) herstellen können. Dazu werden folgende Mittel verwendet:
@@ -41,8 +41,11 @@ In diesem Artikel erfahren Sie, wie Kursteilnehmer in einem Lab eine Verbindung 
 ## <a name="connect-to-the-student-vm-using-gui-remote-desktop"></a>Herstellen einer Verbindung zu einer Kursteilnehmer-VM über die GUI eines Remotedesktops
 Der Dozent kann VMs so konfigurieren, dass die Kursteilnehmer auch über die GUI eines Remotedesktops eine Verbindung herstellen können.  In diesem Fall müssen Kursteilnehmer bei ihrem Dozenten erfragen, ob sie den **Microsoft-Remotedesktop (RDP)** oder die Clientanwendung **X2Go** für die Verbindung mit ihrer VM verwenden sollen.  Mit beiden Anwendungen können Kursteilnehmer eine Remoteverbindung mit ihrer VM herstellen und den grafischen Linux-Desktop auf ihrem lokalen Computer aufrufen.
 
+> [!WARNING]
+>  Es wird empfohlen, eine andere grafische Desktopumgebung als [GNOME](https://www.gnome.org/) zu verwenden.  Sie sollten die Installation von GNOME auf Lab-VMs vermeiden, da GNOME einen Konflikt mit dem Azure Linux-Agent aufweist, der erforderlich ist, damit die VMs in Azure Lab Services ordnungsgemäß funktionieren.  Es wird beispielsweise empfohlen, eine grafische Desktopumgebung wie XFCE zu verwenden.
+
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>Herstellen einer Verbindung zu einer Kursteilnehmer-VM über den Microsoft-Remotedesktop
-Kursteilnehmer können mit dem Microsoft-Remotedesktop eine Verbindung zu ihren Linux-VMs herstellen, nachdem der Dozent das Lab mit RDP- und GUI-Paketen für eine grafische Linux-Desktopumgebung eingerichtet hat (z. B. MATE, XFCE usw.). So wird eine Verbindung hergestellt: 
+Kursteilnehmer können mit dem Microsoft-Remotedesktop eine Verbindung mit ihren Linux-VMs herstellen, nachdem der Dozent das Lab mit RDP- und GUI-Paketen für eine grafische Linux-Desktopumgebung eingerichtet hat (z. B. XFCE, MATE usw.). So wird eine Verbindung hergestellt: 
 
 1. Vergewissern Sie sich auf der Kachel Ihrer VM, dass diese ausgeführt wird, und klicken Sie auf **Verbinden**. Es werden zwei Optionen für die Verbindungsherstellung mit dem virtuellen Computer angezeigt: **SSH** und **RDP**.
 
@@ -53,10 +56,10 @@ Kursteilnehmer können mit dem Microsoft-Remotedesktop eine Verbindung zu ihren 
 
     Falls Sie die Verbindung von einem Mac oder einem Chromebook aus herstellen, verwenden Sie stattdessen die folgenden Anleitungen:
    - [Herstellen einer Verbindung zu einer VM mithilfe des Remotedesktopprotokolls auf einem Mac](connect-virtual-machine-mac-remote-desktop.md)
-   - [Herstellen einer Verbindung zu einer VM mithilfe des Remotedesktopprotokolls auf einem Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)  
+   - [Herstellen einer Verbindung zu einer VM mithilfe des Remotedesktopprotokolls auf einem Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)
 
 ### <a name="connect-to-the-student-vm-using-x2go"></a>Herstellen einer Verbindung zu einer Kursteilnehmer-VM über X2Go
-Kursteilnehmer können mit X2Go eine Verbindung zu ihren Linux-VMs herstellen, nachdem der Dozent das Lab mit X2Go und den GUI-Paketen für eine grafische Linux-Desktopumgebung eingerichtet hat (z. B. MATE, XFCE usw.).
+Kursteilnehmer können mit X2Go eine Verbindung mit ihren Linux-VMs herstellen, nachdem der Dozent das Lab mit X2Go und den GUI-Paketen für eine grafische Linux-Desktopumgebung eingerichtet hat (z. B. XFCE, MATE usw.).
 
 Kursteilnehmer müssen bei ihrem Dozenten erfragen, welche grafische Linux-Desktopumgebung er installiert hat.  Diese Information wird in den nächsten Schritten benötigt, um die Verbindung mithilfe des X2Go-Clients herzustellen.
 

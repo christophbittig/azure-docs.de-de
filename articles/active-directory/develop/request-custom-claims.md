@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70a883fc1c2cd78124c9efe44a54cc528ee5426c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85477191"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039917"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Anfordern benutzerdefinierter Ansprüche mithilfe von MSAL für iOS und macOS
+# <a name="request-custom-claims-using-msal-for-ios-and-macos"></a>Anfordern benutzerdefinierter Ansprüche mithilfe von MSAL für iOS und macOS
 
 Mit OpenID Connect können Sie optional die Rückgabe einzelner Ansprüche vom UserInfo-Endpunkt und/oder im ID-Token anfordern. Eine claims-Anforderung wird als JSON-Objekt dargestellt, das eine Liste der angeforderten Ansprüche enthält. Weitere Informationen finden Sie unter [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter).
 

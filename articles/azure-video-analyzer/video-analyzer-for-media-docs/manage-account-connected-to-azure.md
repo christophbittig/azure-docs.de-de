@@ -9,12 +9,12 @@ ms.topic: article
 ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 25d4b5a918fbb307698910f0184231689cb84a75
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 836cff6a8b55378089a6215b9d0c25e3fcac76c4
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119395"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305173"
 ---
 # <a name="manage-a-video-analyzer-for-media-account-connected-to-azure"></a>Verwalten eines mit Azure verbundenen Video Analyzer for Media-Kontos
 
@@ -59,14 +59,6 @@ Im Dialogfeld **Verbindung mit Azure Media Services aktualisieren** Ihrer [Video
 |Name der Azure Media Services-Ressourcengruppen|Der Name der Ressourcengruppe, in der Sie das Media Services-Konto erstellt haben.|
 |Anwendungs-ID|Die Azure AD-Anwendungs-ID (mit Berechtigungen für das angegebene Media Services-Konto), die Sie für dieses Video Analyzer for Media-Konto erstellt haben. <br/><br/>Um die App-ID abzurufen, navigieren Sie zum Azure-Portal. Wählen Sie unter dem Media Services-Konto Ihr Konto aus, und wechseln Sie zu **API-Zugriff**. Wählen Sie **Verbindung mit Azure Media Services-API über Dienstprinzipal herstellen** -> **Azure AD-App** aus. Kopieren Sie die relevanten Parameter.|
 |Anwendungsschlüssel|Der Ihrem oben angegebenen Media Services-Konto zugeordnete Azure AD-Anwendungsschlüssel. <br/><br/>Um den App-Schlüssel zu erhalten, navigieren Sie zum Azure-Portal. Wählen Sie unter dem Media Services-Konto Ihr Konto aus, und wechseln Sie zu **API-Zugriff**. Wählen Sie **Verbindung mit Media Services-API über Dienstprinzipal herstellen** -> **Anwendung verwalten** -> **Zertifikate und Geheimnisse** aus. Kopieren Sie die relevanten Parameter.|
-
-## <a name="autoscale-reserved-units"></a>Automatische Skalierung reservierter Einheiten
-
-Auf der Seite **Einstellungen** können Sie die automatische Skalierung von reservierten Einheiten (RU) für Medien festlegen. Wenn die Option **Ein** lautet, können Sie die maximale Anzahl der RUs zuweisen und sicherstellen, dass Video Analyzer for Media die RUs automatisch stoppt/startet. Mit dieser Option zahlen Sie nicht zusätzlich für Leerlaufzeiten, aber warten auch nicht darauf, dass die Indizierungsaufträge über einen längeren Zeitraum ausgeführt werden, wenn die Indizierungslast hoch ist.
-
-Bei der automatischen Skalierung ist keine Skalierung unter 1 RU oder über dem Standardlimit das Media Services-Konto möglich. Erstellen Sie einen Service Request, um dieses Limit zu erhöhen. Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Supporttickets finden Sie unter [Kontingente und Einschränkungen](../../media-services/previous/media-services-quotas-and-limitations.md).
-
-![Automatische Skalierung reservierter Einheiten in Video Analyzer for Media](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Fehler und Warnungen
 

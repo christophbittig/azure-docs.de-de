@@ -3,12 +3,12 @@ title: Authentifizieren von Event Grid-Veröffentlichungsclients mit Azure Activ
 description: In diesem Artikel wird beschrieben, wie ein Azure Event Grid-Veröffentlichungsclient mithilfe von Azure Active Directory authentifiziert wird.
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: b15febf10316406489d3f5bad7fc1085624ee96a
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: c34ce75d02d4e3044819e5e310bdb9e74c1b0004
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355618"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>Authentifizierung und Autorisierung mit Azure Active Directory (Vorschau)
 In diesem Artikel wird beschrieben, wie Azure Event Grid-Veröffentlichungsclients mithilfe von Azure Active Directory (Azure AD) authentifiziert werden.
@@ -77,7 +77,7 @@ Im Folgenden finden Sie die Voraussetzungen für die Authentifizierung bei Event
 - Installieren Sie das SDK für Ihre Anwendung.
    - [Java](/java/api/overview/azure/messaging-eventgrid-readme#include-the-package)
    - [.NET](/dotnet/api/overview/azure/messaging.eventgrid-readme-pre#install-the-package)
-   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid#install-the-azureeventgrid-package)
+   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid.md#install-the-azureeventgrid-package)
    - [Python](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/eventgrid/azure-eventgrid#install-the-package)
 - Installieren Sie die Azure Identity-Clientbibliothek. Das Event Grid-SDK ist für Authentifizierung von der Azure Identity-Clientbibliothek abhängig. 
    - [Azure Identity-Clientbibliothek für Java](/java/api/overview/azure/identity-readme)
@@ -148,7 +148,7 @@ New-AzResource -ResourceGroupName <ResourceGroupName> -ResourceType Microsoft.Ev
     - Java-SDK: [github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid) | [samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid/src/samples/java/com/azure/messaging/eventgrid) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventgrid/azure-messaging-eventgrid/migration-guide.md)
     - .NET-SDK: [github](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid) | [samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/MigrationGuide.md)
     - Python-SDK: [github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid) | [samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventgrid/azure-eventgrid/migration_guide.md)
-    - JavaScript-SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [samples](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventgrid/eventgrid/MIGRATION.md)
+    - JavaScript-SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [samples](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [migration guide from previous SDK version](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/migration.md)
 - [Blog zum Event Grid-SDK](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)
 - Azure Identity-Clientbibliothek
    - [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/identity/azure-identity/README.md)

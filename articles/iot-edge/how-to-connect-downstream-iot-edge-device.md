@@ -2,7 +2,6 @@
 title: Verbinden nachgeschalteter IoT Edge-Geräte – Azure IoT Edge | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie IoT Edge-Geräte für eine Verbindung mit Azure IoT Edge-Gatewaygeräten konfigurieren.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: cdc7ce9fbb24dc593ebd4dedc7c2c4ce82afa3f0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2fbb03ae08d1146b51a4a73f1b2260443c1609d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345779"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway
 
@@ -148,7 +147,11 @@ Stellen Sie sicher, dass der Benutzer **iotedge** Leseberechtigungen für das Ve
    ```
 
    >[!TIP]
-   >Wenn die Konfigurationsdatei auf Ihrem Gerät noch nicht vorhanden ist, verwenden Sie `/etc/aziot/config.toml.edge.template` als Vorlage zum Erstellen einer Datei.
+   >Wenn die Konfigurationsdatei auf Ihrem Gerät noch nicht vorhanden ist, erstellen Sie sie mit dem folgenden Befehl basierend auf der Vorlagendatei:
+   >
+   >```bash
+   >sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   >```
 
 1. Suchen Sie in der Konfigurationsdatei den Abschnitt **Hostname**. Heben Sie die Auskommentierung der Zeile mit dem Parameter `hostname` auf, und aktualisieren Sie den Wert auf den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) oder die IP-Adresse des IoT Edge-Geräts.
 
@@ -385,7 +388,7 @@ Das API-Proxymodul wurde so entworfen, dass es angepasst werden kann, um die hä
                        "edgeAgent": {
                            "settings": {
                                "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
-                               "createOptions": ""
+                               "createOptions": "{}"
                            },
                            "type": "docker"
                        },

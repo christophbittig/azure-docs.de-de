@@ -5,23 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b1bb9c2ad21469ad6b658795f29361760d4bcf13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346561"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
 Informationen zur direkten Authentifizierung mit Textnachrichten finden Sie unter [Konfigurieren und Aktivieren der SMS-basierten Authentifizierung von Benutzern](howto-authentication-sms-signin.md). Die SMS-basierte Anmeldung eignet sich hervorragend für Außendienstmitarbeiter. Bei der SMS-basierten Anmeldung brauchen sich Benutzer keine Benutzernamen und Kennwörter zu merken, um auf Anwendungen und Dienste zuzugreifen. Der Benutzer gibt stattdessen seine registrierte Mobiltelefonnummer ein, empfängt eine Textnachricht mit einem Prüfcode und gibt diesen Code im Anmeldebildschirm ein.
 
-Benutzer können bei Azure AD Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung (SSPR) als zweite Authentifizierungsmethode auch eine Mobiltelefonnummer oder eine geschäftliche Telefonnummer verwenden.
+Benutzer können bei Azure AD Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung (SSPR) als zweite Authentifizierungsmethode auch eine Mobiltelefonnummer oder eine geschäftliche Telefonnummer verwenden. 
+
+> [!NOTE]
+> Die Überprüfung mit Telefonanruf steht für Azure AD-Mandanten mit Testabonnements nicht zur Verfügung.  Wenn Sie sich beispielsweise für eine EMS-Testlizenz anmelden, wird die Funktion für die Überprüfung mit Telefonanruf nicht bereitgestellt.
 
 Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: *+1 4251234567*).
 
@@ -50,7 +53,7 @@ Bei der Überprüfung mit Telefonanruf erfolgt bei Azure AD Multi-Factor Authen
 
 ## <a name="office-phone-verification"></a>Überprüfung mit geschäftlicher Rufnummer
 
-Bei der Überprüfung mit Telefonanruf erfolgt bei Azure AD Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, die Taste „#“ auf der Tastatur zu drücken.
+Bei der Überprüfung mit Telefonanruf erfolgt bei Azure AD Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, die Taste „#“ auf der Tastatur zu drücken. 
 
 ## <a name="troubleshooting-phone-options"></a>Problembehandlung bei Telefonoptionen
 

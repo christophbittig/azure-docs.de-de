@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 8713cd25f30ed4a09a92dffacc5ec3e8d1cb424a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9395f0446680135bde99193609bde82385f64b0b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340385"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038780"
 ---
 # <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
@@ -35,7 +35,6 @@ Stellen Sie sich ein Szenario vor, in dem Sie eine Struktur namens *analyzedText
 Einen anderen Ansatz für das Erstellen komplexer Typen stellt die Qualifikation **Shaper** dar. Durch das Einschließen dieser Qualifikation in eine Qualifikationsgruppe können die speicherinternen Vorgänge während der Verarbeitung von Qualifikationsgruppen Datenformen mit geschachtelten Strukturen ausgeben, die dann einem komplexen Typ in Ihrem Index zugeordnet werden können. 
 
 Die folgende Beispieldefinition für eine Qualifikation stellt die Elementnamen als Eingabe bereit. 
-
 
 ```json
 {
@@ -65,26 +64,26 @@ Die folgende Beispieldefinition für eine Qualifikation stellt die Elementnamen 
 Eine Qualifikationsgruppe wird von einem Indexer aufgerufen, der wiederum einen Index erfordert. Die Darstellung eines komplexen Felds in Ihrem Index kann wie im folgenden Beispiel aussehen. 
 
 ```json
-
-    "name": "my-index",
-    "fields": [
-        {   "name": "myId", "type": "Edm.String", "key": true, "filterable": true   },
-        {   "name": "analyzedText", "type": "Edm.ComplexType",
-            "fields": [{
-                    "name": "text",
-                    "type": "Edm.String",
-                    "filterable": false,
-                    "sortable": false,
-                    "facetable": false,
-                    "searchable": true  },
-          {
-                    "name": "sentiment",
-                    "type": "Edm.Double",
-                    "searchable": true,
-                    "filterable": true,
-                    "sortable": true,
-                    "facetable": true
-                },
+"name":"my-index",
+"fields":[
+   { "name":"myId", "type":"Edm.String", "key":true, "filterable":true  },
+   { "name":"analyzedText", "type":"Edm.ComplexType",
+      "fields":[
+         {
+            "name":"text",
+            "type":"Edm.String",
+            "facetable":false,
+            "filterable":false,
+            "searchable":true,
+            "sortable":false  },
+         {
+            "name":"sentiment",
+            "type":"Edm.Double",
+            "facetable":true,
+            "filterable":true,
+            "searchable":true,
+            "sortable":true }
+      }
 ```
 
 ### <a name="skill-input"></a>Qualifikationseingaben

@@ -13,14 +13,14 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94174eeb943f4016fde8baf329fa6ba27768e486
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80881247"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039932"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Vorgehensweise: Konfigurieren von SSO unter macOS und iOS
+# <a name="configure-sso-on-macos-and-ios"></a>Konfigurieren von SSO unter macOS und iOS
 
 Die Microsoft Authentication Library (MSAL) für macOS und iOS unterstützt einmaliges Anmelden (Single Sign-On, SSO) zwischen macOS/iOS-Apps und Browsern. In diesem Artikel werden die folgenden SSO-Szenarien beschrieben:
 

@@ -2,14 +2,14 @@
 title: Bindungen für Durable Functions – Azure
 description: Erfahren Sie, wie Sie Trigger und Bindungen für die Durable Functions-Erweiterung für Azure Functions verwenden.
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 08/03/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a07748f996788825b21b5c23a117954085dadcbf
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 097527dbbf4363365e609a1f5aac1d851eb5dc60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656936"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355630"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindungen für Durable Functions (Azure Functions)
 
@@ -397,6 +397,21 @@ Entitätstrigger ermöglichen es Ihnen, [Entitätsfunktionen](durable-functions-
 > Entitätstrigger sind ab Durable Functions 2.x verfügbar.
 
 Intern werden mit dieser Triggerbindung neue Entitätsvorgänge, die ausgeführt werden müssen, vom konfigurierten permanenten Speicher abgefragt.
+
+Wenn Sie Funktionen in .NET erstellen, wird der Entitätstrigger mit dem .NET-Attribut [EntityTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.entitytriggerattribute) konfiguriert.
+
+Wenn Sie JavaScript, Python oder PowerShell verwenden, wird der Entitätstrigger mit dem folgenden JSON-Objekt im `bindings`-Array der Datei *function.json* definiert:
+
+```json
+{
+    "name": "<Name of input parameter in function signature>",
+    "entityName": "<Optional - name of the entity>",
+    "type": "entityTrigger",
+    "direction": "in"
+}
+```
+
+Standardmäßig ist der Name einer Entität der Name der Funktion.
 
 ### <a name="trigger-behavior"></a>Triggerverhalten
 

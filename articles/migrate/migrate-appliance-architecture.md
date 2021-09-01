@@ -1,17 +1,17 @@
 ---
 title: Architektur der Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverermittlung, -bewertung und -migration verwendet wird.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 88ed92f4db7037753e93386eea329ab560f0847b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 78b62c91148fc7a2c202cbf6792c1de442c142cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464214"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355605"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -23,7 +23,7 @@ Die Azure Migrate-Appliance wird in den folgenden Szenarien verwendet.
 
 **Szenario** | **Tool** | **Verwendung für**
 --- | --- | ---
-**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Führen Sie die Ermittlung des installierten Softwareinventars und die Abhängigkeitsanalyse ohne Agent aus, und ermitteln Sie SQL Server-Instanzen und -Datenbanken.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
+**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Ermitteln Sie das installierte Softwareinventar, ASP.NET-Webanwendungen, SQL Server-Instanzen und -Datenbanken und Abhängigkeitsanalyse ohne Agent.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 **Migration ohne Agent von Servern, die in VMware-Umgebungen ausgeführt werden** | Azure Migrate-Servermigration | Ermitteln Sie Server, die in Ihrer VMware-Umgebung ausgeführt werden.<br/><br/> Replizieren Sie Server ohne Installation von Agents.
 **Ermittlung und Bewertung von Servern, die in einer Hyper-V-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln Sie Server, die in Ihrer Hyper-V-Umgebung ausgeführt werden.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 **Ermittlung und Bewertung lokaler physischer oder virtualisierter Server** |  Azure Migrate: Ermittlung und Bewertung |  Erkennen Sie lokale physische oder virtualisierte Server.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
@@ -42,16 +42,17 @@ Die Appliance kann mithilfe verschiedener Methoden bereitgestellt werden:
 
 Die Appliance verfügt über die folgenden Dienste:
 
-- **Appliance-Konfigurations-Manager**: Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten. 
+- **Appliance-Konfigurations-Manager**: Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.
 - **Ermittlungsagent**: Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.
 - **Bewertungsagent**: Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.
 - **Dienst für automatische Aktualisierungen**: Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.
 - **DRA-Agent**: Orchestriert die Serverreplikation und koordiniert die Kommunikation zwischen replizierten Servern und Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.
 - **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.
 - **SQL Discovery and Assessment Agent**: Sendet die Konfigurations- und Leistungsmetadaten von SQL Server-Instanzen und -Datenbanken an Azure.
+- **Ermittlungs- und Bewertungs-Agent für Web-Apps**: Sendet die Konfigurationsdaten der Web-Apps an Azure.
 
 > [!Note]
-> Die letzten drei Dienste sind nur auf der Appliance verfügbar, die für die Ermittlung und Bewertung von in Ihrer VMware-Umgebung ausgeführten Servern verwendet wird.
+> Die letzten vier Dienste sind nur auf der Appliance verfügbar, die für die Ermittlung und Bewertung von in Ihrer VMware-Umgebung ausgeführten Servern verwendet wird.
 
 ## <a name="discovery-and-collection-process"></a>Ermittlungs- und Sammlungsprozess
 
@@ -64,7 +65,7 @@ Die Appliance kommuniziert über den folgenden Prozess mit den Ermittlungsquelle
 **Ermittlung starten** | Die Appliance kommuniziert standardmäßig über TCP-Port 443 mit dem vCenter-Server. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie ihn im Konfigurations-Manager der Appliance konfigurieren. | Die Appliance kommuniziert über WinRM-Port 5985 (HTTP) mit den Hyper-V-Hosts. | Die Appliance kommuniziert über WinRM-Port 5985 (HTTP) mit Windows-Servern und über Port 22 (TCP) mit Linux-Servern.
 **Konfigurations- und Leistungsmetadaten sammeln** | Die Appliance sammelt die Metadaten von Servern, die über vSphere-APIs auf vCenter Server ausgeführt werden, indem sie über Port 443 (Standardport) oder einen anderen Port, an dem vCenter Server lauscht, eine Verbindung herstellt. | Die Appliance sammelt die Metadaten von Servern, die über eine CIM-Sitzung (Common Information Model) auf Hyper-V-Hosts ausgeführt werden, indem sie über Port 5985 eine Verbindung mit den Hosts herstellt.| Die Appliance sammelt Metadaten von Windows-Servern, die eine CIM-Sitzung (Common Information Model) und Port 5985 verwenden, und von Linux-Servern, die über SSH und Port 22 eine Verbindung herstellen.
 **Ermittlungsdaten senden** | Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Ermittlung und -Bewertung sowie an die Azure Migrate-Servermigration.<br/><br/>  Die Verbindung der Appliance mit Azure kann über das Internet oder über Leitungen für das private ExpressRoute-Peering oder Microsoft-Peering erfolgen. | Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Ermittlung und -Bewertung.<br/><br/> Die Verbindung der Appliance mit Azure kann über das Internet oder über Leitungen für das private ExpressRoute-Peering oder Microsoft-Peering erfolgen. | Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Ermittlung und -Bewertung.<br/><br/> Die Verbindung der Appliance mit Azure kann über das Internet oder über Leitungen für das private ExpressRoute-Peering oder Microsoft-Peering erfolgen. 
-**Häufigkeit der Datensammlung** | Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 20 Sekunden erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird. <br/><br/> Softwarebestandsdaten werden alle 12 Stunden an Azure gesendet. <br/><br/> Abhängigkeitsdaten ohne Agent werden alle 5 Minuten gesammelt, auf der Appliance aggregiert und alle 6 Stunden an Azure gesendet. <br/><br/> Die SQL Server-Konfigurationsdaten werden alle 24 Stunden aktualisiert, und die Leistungsdaten werden alle 30 Sekunden aufgezeichnet.| Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 30 Sekunden erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird.|  Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 5 Minuten erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird.
+**Häufigkeit der Datensammlung** | Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 20 Sekunden erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird. <br/><br/> Softwarebestandsdaten werden alle 12 Stunden an Azure gesendet. <br/><br/> Abhängigkeitsdaten ohne Agent werden alle 5 Minuten gesammelt, auf der Appliance aggregiert und alle 6 Stunden an Azure gesendet. <br/><br/> Die SQL Server-Konfigurationsdaten werden alle 24 Stunden aktualisiert, und die Leistungsdaten werden alle 30 Sekunden aufgezeichnet. <br/><br/> Die Konfigurationsdaten von Web-Apps werden alle 24 Stunden aktualisiert. Leistungsdaten werden für Web-Apps nicht erfasst.| Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 30 Sekunden erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird.|  Konfigurationsmetadaten werden alle 30 Minuten erfasst und gesendet. <br/><br/> Leistungsmetadaten werden alle 5 Minuten erfasst und so aggregiert, dass alle 10 Minuten ein Datenpunkt an Azure gesendet wird.
 **Bewerten und Migrieren** | Sie können mithilfe des Azure Migrate-Tools zur Ermittlung und Bewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen.<br/><br/>Darüber hinaus können Sie mithilfe der Azure Migrate-Serverbewertung jetzt auch mit der Migration von Servern beginnen, die in Ihrer VMware-Umgebung ausgeführt werden, um die Serverreplikation ohne Agent zu orchestrieren.| Sie können mithilfe des Azure Migrate-Tools zur Ermittlung und Bewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen. | Sie können mithilfe des Azure Migrate-Tools zur Ermittlung und Bewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
