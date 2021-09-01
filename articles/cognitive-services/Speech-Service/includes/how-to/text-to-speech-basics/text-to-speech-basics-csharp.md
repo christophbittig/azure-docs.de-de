@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae5c25eec6440a02d173c2f0dcc51a750d128796
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 1a82c1dbad0ec34aaf4dededc7aa5fddca151207
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113280017"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423318"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -189,7 +189,7 @@ Erstellen Sie zuerst in Ihrem Stammverzeichnis des Projekts eine neue XML-Datei 
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -215,7 +215,7 @@ public static async Task SynthesizeAudioAsync()
 ```
 
 > [!NOTE]
-> Wenn Sie die Stimme ohne SSML ändern möchten, können Sie die Eigenschaft für `SpeechConfig` mithilfe von `SpeechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";` festlegen.
+> Wenn Sie die Stimme ohne SSML ändern möchten, können Sie die Eigenschaft für `SpeechConfig` mithilfe von `SpeechConfig.SpeechSynthesisVoiceName = "en-US-ChristopherNeural";` festlegen.
 
 ## <a name="get-facial-pose-events"></a>Abrufen von Gesichtsausdrucksereignissen
 
