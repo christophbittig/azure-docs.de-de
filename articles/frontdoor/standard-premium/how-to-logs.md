@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5446c240d1d07b5b99fe6f91a031617756a6018c
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573896"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967590"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Protokollierung in Azure Front Door Standard/Premium (Vorschau)
 
@@ -83,7 +83,7 @@ Azure Front Door bietet derzeit einzelne API-Anforderungen, wobei jeder Eintrag 
 | UserAgent | Der vom Client verwendete Browsertyp |
 | ClientIp | Die IP-Adresse des Clients, der die ursprüngliche Anforderung gestellt hat. Wenn in der Anforderung ein X-Forwarded-For-Header vorhanden ist, wird die Client-IP daraus ausgewählt. |
 | SocketIp | Die IP-Adresse der direkten Verbindung mit dem AFD-Edge. Wenn der Client einen HTTP-Proxy oder einen Lastenausgleich zum Senden der Anforderung verwendet hat, ist der Wert von „SocketIp“ die IP-Adresse des Proxys oder Lastenausgleichs. |
-| Latency | Die Zeitspanne in Millisekunden zwischen dem Empfang einer Clientanforderung auf dem AFD-Edgeserver und dem Senden des letzten Bytes der Antwort an den Client durch AFD. In diesem Feld werden Netzwerklatenz und TCP-Pufferung nicht berücksichtigt. |
+| timeTaken | Die Zeitspanne in Millisekunden zwischen dem Empfang einer Clientanforderung auf dem AFD-Edgeserver und dem Senden des letzten Bytes der Antwort an den Client durch AFD. In diesem Feld werden Netzwerklatenz und TCP-Pufferung nicht berücksichtigt. |
 | RequestProtocol | Das Protokoll, das der Client in der Anforderung angegeben hat: HTTP oder HTTPS. |
 | SecurityProtocol | Die TLS-/SSL-Protokollversion, die von der Anforderung verwendet wird, oder NULL, wenn keine Verschlüsselung verwendet wird. Mögliche Werte: SSLv3, TLSv1, TLSv1.1, TLSv1.2 |
 | SecurityCipher | Wenn der Wert für „RequestProtocol“ HTTPS lautet, gibt dieses Feld das vom Client und der AFD ausgehandelte TLS/SSL-Verschlüsselungsverfahren an. |

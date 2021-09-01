@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 5/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: db195f845a9e2f19108b0e40d569d76939dd6b6b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: b191bdb1303ae0210573d295ffb5b371cc81ddfb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111373045"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355903"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>Erfassen von OPC UA-Daten mit Azure Digital Twins
 
@@ -63,7 +63,7 @@ Ausführlichere Informationen zum Installieren der einzelnen Komponenten finden 
 * [Schritt-für-Schritt-Anleitung zum Installieren von OPC Publisher auf Azure IoT Edge](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md) 
 * [OPC Publisher auf GitHub](https://github.com/Azure/iot-edge-opc-publisher)
-* [Konfigurieren von OPC Publisher](../iot-accelerators/howto-opc-publisher-configure.md)
+* [Konfigurieren von OPC Publisher](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 
 ### <a name="set-up-opc-ua-server"></a>Einrichten des OPC UA-Servers
 
@@ -163,7 +163,7 @@ Erstellen Sie mithilfe des [Azure-Portals](https://portal.azure.com) eine Ubuntu
 
 #### <a name="install-iot-edge-container"></a>Installieren des IoT Edge-Containers
 
-Befolgen Sie die Anweisungen zum [Installieren von IoT Edge unter Linux](../virtual-machines/linux/use-remote-desktop.md).
+Befolgen Sie die Anweisungen zum [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md).
 
 Führen Sie nach Abschluss der Installation den folgenden Befehl aus, um den Status Ihrer Installation zu überprüfen:
 
@@ -263,7 +263,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 ```
 
 > [!TIP]
-> Verwenden Sie [Azure IoT Explorer,](../iot-pnp/howto-use-iot-explorer.md) um IoT Hub-Nachrichten zu überwachen.
+> Verwenden Sie [Azure IoT Explorer,](../iot-fundamentals/howto-use-iot-explorer.md) um IoT Hub-Nachrichten zu überwachen.
 
 #### <a name="verify-completion"></a>Überprüfen der abgeschlossenen Schritte
 
@@ -288,7 +288,7 @@ In diesem Beispiel verwenden Sie ein einzelnes Modell und eine einzelne Zwilling
 
 ### <a name="create-azure-digital-twins-instance"></a>Erstellen einer Azure Digital Twins-Instanz
 
-Stellen Sie zunächst eine neue Azure Digital Twins-Instanz bereit, indem Sie die Anleitung unter [Vorgehensweise: Einrichten einer Instanz und von Authentifizierung](how-to-set-up-instance-portal.md) verwenden.
+Stellen Sie zunächst eine neue Azure Digital Twins-Instanz bereit, indem Sie die Anleitung unter [Einrichten einer Instanz und von Authentifizierung](how-to-set-up-instance-portal.md) verwenden.
 
 ### <a name="upload-model-and-create-twin"></a>Hochladen des Modells und Erstellen eines Zwillings
 
@@ -358,23 +358,18 @@ Erstellen Sie als nun eine [Shared Access Signature (SAS) für den Container](..
 
 In diesem Abschnitt veröffentlichen Sie eine Azure-Funktion, die Sie unter [Voraussetzungen](#prerequisites) heruntergeladen haben, die die OPC UA-Daten verarbeitet und Azure Digital Twins aktualisiert.
 
-#### <a name="step-1-open-the-function-in-visual-studio"></a>Schritt 1: Öffnen der Funktion in Visual Studio
+1. Navigieren Sie zum heruntergeladenen Projekt [OPC UA to Azure Digital Twins](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) auf Ihrem lokalen Computer und dann zum Ordner *Azure Functions/OPCUAFunctions*. Öffnen Sie die Projektmappe **OPCUAFunctions.sln** in Visual Studio.
+2. Veröffentlichen Sie das Projekt in einer Funktions-App in Azure. Anweisungen dazu finden Sie unter [Entwickeln von Azure Functions mit Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
-Navigieren Sie zum heruntergeladenen Projekt [OPC UA to Azure Digital Twins](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) auf Ihrem lokalen Computer und dann zum Ordner *Azure Functions/OPCUAFunctions*. Öffnen Sie die Projektmappe **OPCUAFunctions.sln** in Visual Studio.
+#### <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
 
-#### <a name="step-2-publish-the-function"></a>Schritt 2: Veröffentlicht der Funktion
+**Weisen Sie dann eine Zugriffsrolle** für die Funktion zu, und **Konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann.
 
-Veröffentlichen Sie das Funktionsprojekt in einer Funktions-App in Azure.
+[!INCLUDE [digital-twins-configure-function-app.md](../../includes/digital-twins-configure-function-app.md)]
 
-Anweisungen hierzu finden Sie im Abschnitt [Veröffentlichen der Funktions-App in Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
+#### <a name="add-application-settings"></a>Hinzufügen von Anwendungseinstellungen
 
-#### <a name="step-3-configure-the-function-app"></a>Schritt 3: Konfigurieren der Funktions-App
-
-**Weisen Sie eine Zugriffsrolle** für die Funktion zu, und **konfigurieren Sie die Anwendungseinstellungen**, damit sie auf Ihre Azure Digital Twins-Instanz zugreifen kann. Anweisungen hierzu finden Sie im Abschnitt [Einrichten des Sicherheitszugriff für die Funktions-App](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) des Artikels *Vorgehensweise: Einrichten einer Funktion zur Verarbeitung von Daten*.
-
-#### <a name="step-4-add-application-settings"></a>Schritt 4: Hinzufügen von Anwendungseinstellungen
-
-Sie müssen auch einige Anwendungseinstellungen hinzufügen, um Ihre Umgebung vollständig einzurichten. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer neu erstellten Azure-Funktion, indem Sie in der Suchleiste des Portals nach ihrem Namen suchen.
+Sie müssen auch einige Anwendungseinstellungen hinzufügen, um Ihre Umgebung und die Azure-Funktion vollständig einzurichten. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer neu erstellten Azure-Funktion, indem Sie in der Suchleiste des Portals nach ihrem Namen suchen.
 
 Wählen Sie im linken Navigationsmenü der Funktion die Option „Konfiguration“ aus. Verwenden Sie die Schaltfläche **+ Neue Anwendungseinstellung**, um mit dem Erstellen neuer Einstellungen zu beginnen.
 
@@ -395,7 +390,7 @@ Es gibt drei Anwendungseinstellungen, die Sie erstellen müssen:
 
 ### <a name="create-event-subscription"></a>Erstellen eines Ereignisabonnements
 
-Erstellen Sie abschließend ein Ereignisabonnement, um Ihre Funktions-App und die ProcessOPCPublisherEventsToADT-Funktion mit Ihrer IoT Hub-Instanz zu verbinden. Das Ereignisabonnement ist erforderlich, damit Daten vom Gatewaygerät über die Funktion in IoT Hub übertragen werden können, die dann Azure Digital Twins aktualisiert.
+Erstellen Sie abschließend ein Ereignisabonnement, um Ihre Funktions-App und die *ProcessOPCPublisherEventsToADT*-Funktion mit Ihrer IoT Hub-Instanz zu verbinden. Das Ereignisabonnement ist erforderlich, damit Daten vom Gatewaygerät über die Funktion in IoT Hub übertragen werden können, die dann Azure Digital Twins aktualisiert.
 
 Befolgen Sie die Anweisungen unter [Verbinden der IoT Hub-Instanz mit der Azure-Funktion](tutorial-end-to-end.md#connect-the-iot-hub-to-the-azure-function) aus dem Azure Digital Twins-*Tutorial: Verbinden einer End-to-End-Lösung*.
 
@@ -405,9 +400,18 @@ Das Ereignisabonnement weist den Endpunkttyp **Azure-Funktion** und den Endpunkt
 
 Nach diesem Schritt sollten alle erforderlichen Komponenten installiert sein und ausgeführt werden. Daten sollten von Ihrem OPC UA-Simulationsserver über Azure IoT Hub in Ihre Azure Digital Twins-Instanz übertragen werden. 
 
+### <a name="verify-completion"></a>Überprüfen der abgeschlossenen Schritte
+
+In diesem Abschnitt richten Sie eine Azure-Funktion ein, um die OPC UA-Daten mit Azure Digital Twins zu verbinden. Überprüfen Sie, ob Sie die folgende Prüfliste abgearbeitet haben:
+> [!div class="checklist"]
+> * Erstellen und Importieren der Datei *opcua-mapping.json* in einen Blobspeichercontainer. 
+> * Veröffentlichen der Beispielfunktion *ProcessOPCPublisherEventsToADT* in einer Funktions-App in Azure.
+> * Hinzufügen von drei neuen Anwendungseinstellungen zur Azure Functions-App.
+> * Erstellen eines Ereignisabonnements zum Senden von IoT Hub-Ereignissen an die Funktions-App.
+
 Der nächste Abschnitt enthält einige Azure CLI-Befehle, die Sie ausführen können, um die Ereignisse zu überwachen und zu überprüfen, ob alles erfolgreich funktioniert.
 
-### <a name="verify-and-monitor"></a>Überprüfen und überwachen
+## <a name="verify-and-monitor"></a>Überprüfen und überwachen
 
 Die Befehle in diesem Abschnitt können in [Azure Cloud Shell](https://shell.azure.com)oder in einem [lokalen Azure CLI-Fenster](/cli/azure/install-azure-cli) ausgeführt werden.
 
@@ -425,16 +429,6 @@ Schließlich können Sie den Azure Digital Twins-Explorer verwenden, um Aktualis
 
 :::image type="content" source="media/how-to-ingest-opcua-data/adt-explorer-2.png" alt-text="Screenshot: Verwenden des Azure Digital Twins-Explorers, um Aktualisierungen von Zwillingseigenschaften zu überwachen.":::
 
-### <a name="verify-completion"></a>Überprüfen der abgeschlossenen Schritte
-
-In diesem Abschnitt richten Sie eine Azure-Funktion ein, um die OPC UA-Daten mit Azure Digital Twins zu verbinden. Überprüfen Sie, ob Sie die folgende Prüfliste abgearbeitet haben:
-> [!div class="checklist"]
-> * Erstellen und Importieren der Datei *opcua-mapping.json* in einen Blobspeichercontainer. 
-> * Veröffentlichen der Beispielfunktion ProcessOPCPublisherEventsToADT in einer Funktions-App in Azure.
-> * Hinzufügen von drei neuen Anwendungseinstellungen zur Azure Functions-App.
-> * Erstellen eines Ereignisabonnements zum Senden von IoT Hub-Ereignissen an die Funktions-App.
-> * Verwenden von Azure CLI-Befehlen, um den endgültigen Datenfluss zu überprüfen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie einen vollständigen Datenfluss eingerichtet, um simulierte OPC UA-Serverdaten in Azure Digital Twins zu übertragen, wo eine Eigenschaft für einen digitalen Zwilling aktualisiert wird.
@@ -444,6 +438,6 @@ Verwenden Sie nun die folgenden Ressourcen, um mehr über die unterstützenden T
 * [Schritt-für-Schritt-Anleitung zum Installieren von OPC Publisher auf Azure IoT Edge](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md) 
 * [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
-* [Konfigurieren von OPC Publisher](../iot-accelerators/howto-opc-publisher-configure.md)
+* [Konfigurieren von OPC Publisher](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 * [UANodeSetWebViewer](https://github.com/barnstee/UANodesetWebViewer) 
 * [OPCUA2DTDL](https://github.com/khilscher/OPCUA2DTDL)

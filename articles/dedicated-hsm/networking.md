@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: cd87d2261ab89b521829d1049a0c17db125a14f3
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: cc38ad6ee6dfc958be405db2969bd5c083e1c5c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063412"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343155"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure-Dienst für dedizierte HSMs – Netzwerke
 
@@ -39,7 +39,7 @@ Vor der Bereitstellung eines dedizierten HSM-Geräts müssen Kunden zunächst ei
 
 ### <a name="subnets"></a>Subnetze
 
-Subnetze unterteilen das virtuelle Netzwerk in getrennte Adressräume, die von den Azure-Ressourcen, die Sie darin platzieren, verwendet werden können. Dedizierte HSMs werden in einem Subnetz des virtuellen Netzwerks bereitgestellt. Jedes dedizierte HSM-Gerät, das im Subnetz des Kunden bereitgestellt wird, erhält eine private IP-Adresse aus diesem Subnetz. Das Subnetz, in dem das HSM-Gerät bereitgestellt wird, muss explizit an den Dienst delegiert werden: Microsoft.HardwareSecurityModules/dedicatedHSMs. Dadurch werden bestimmte Berechtigungen für den HSM-Dienst für die Bereitstellung im Subnetz gewährt. Die Delegierung an dedizierte HSMs erzwingt bestimmte Richtlinieneinschränkungen im Subnetz. Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen (User-Defined Routes, UDRs) werden in delegierten Subnetzen derzeit nicht unterstützt. Daher kann ein Subnetz, sobald es an dedizierte HSMs delegiert wird, nur zum Bereitstellen von HSM-Ressourcen verwendet werden. Bei der Bereitstellung anderer Kundenressourcen im Subnetz tritt ein Fehler auf.
+Subnetze unterteilen das virtuelle Netzwerk in getrennte Adressräume, die von den Azure-Ressourcen, die Sie darin platzieren, verwendet werden können. Dedizierte HSMs werden in einem Subnetz des virtuellen Netzwerks bereitgestellt. Jedes dedizierte HSM-Gerät, das im Subnetz des Kunden bereitgestellt wird, erhält eine private IP-Adresse aus diesem Subnetz. Das Subnetz, in dem das HSM-Gerät bereitgestellt wird, muss explizit an den Dienst delegiert werden: Microsoft.HardwareSecurityModules/dedicatedHSMs. Dadurch werden bestimmte Berechtigungen für den HSM-Dienst für die Bereitstellung im Subnetz gewährt. Die Delegierung an dedizierte HSMs erzwingt bestimmte Richtlinieneinschränkungen im Subnetz. Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen (User-Defined Routes, UDRs) werden in delegierten Subnetzen derzeit nicht unterstützt. Daher kann ein Subnetz, sobald es an dedizierte HSMs delegiert wird, nur zum Bereitstellen von HSM-Ressourcen verwendet werden. Bei der Bereitstellung anderer Kundenressourcen im Subnetz tritt ein Fehler auf.  Es gibt keine Anforderung, wie groß oder klein das Subnetz für Dedicated HSM sein sollte, jedoch nutzt jedes HSM-Gerät eine private IP-Adresse, sodass sichergestellt werden sollte, dass das Subnetz groß genug ist, um so viele HSM-Geräte aufzunehmen, wie für die Bereitstellung erforderlich sind.
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-Gateway
 

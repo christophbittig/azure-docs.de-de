@@ -13,14 +13,14 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45e3489416a68b23d89a3966fe8515713d834a5b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581719"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030423"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
+# <a name="sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
 Wenn Sie vielen Organisationen eine Software-as-a-Service-Anwendung (SaaS) anbieten, können Sie Ihre Anwendung so konfigurieren, dass Anmeldungen von beliebigen Azure Active Directory-Mandanten (Azure AD) akzeptiert werden. Diese Konfiguration wird als *mehrinstanzenfähige Anwendung* bezeichnet. Benutzer eines Azure AD-Mandanten können sich bei Ihrer Anwendung anmelden, nachdem sie zugestimmt haben, ihr Konto mit Ihrer Anwendung zu verwenden.
 

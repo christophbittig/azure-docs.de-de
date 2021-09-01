@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f21dc3251a64a3a432320e1d7a1f64abc124b61e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384975"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349783"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Voraussetzungen für die Bereitstellung von Azure Cloud Services (erweiterter Support)
 
@@ -35,6 +35,7 @@ Bei virtuellen Netzwerken, die derselben Ressourcengruppe wie der Clouddienst an
        <Subnet name="<subnet-name>"/> 
      </Subnets> 
     </InstanceAddress> 
+  </AddressAssignments> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>Virtuelles Netzwerk in einer anderen Ressourcengruppe
@@ -46,6 +47,7 @@ Bei virtuellen Netzwerken, die derselben Ressourcengruppe wie der Clouddienst an
         <Subnet name="<subnet-name>"/> 
        </Subnets> 
      </InstanceAddress> 
+   </AddressAssignments>
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) Entfernen der alten Plug-Ins
 
@@ -110,6 +112,9 @@ Für Bereitstellungen, die die alten Diagnose-Plug-Ins verwendet haben, müssen 
 ```xml
 <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
+## <a name="access-control"></a>Zugriffssteuerung
+
+Das Abonnement, das Netzwerkressourcen enthält, muss über Zugriff des Typs [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) oder höher für Cloud Services (erweiterter Support) verfügen. Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md).
 
 ## <a name="key-vault-creation"></a>Erstellen einer Key Vault-Instanz 
 
@@ -118,5 +123,5 @@ Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erw
 ## <a name="next-steps"></a>Nächste Schritte 
 - Überprüfen Sie die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support).
 - Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Besuchen Sie das [Beispielrepository zu Cloud Services (erweiterter Support)](https://github.com/Azure-Samples/cloud-services-extended-support).

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: c0abbf8dc928dc20778d748e16eea5ae8b775282
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ba6df6b29c9d7b9b388b34dab163a132272c6200
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557088"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223904"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
 
@@ -75,7 +75,7 @@ api-key: [admin key]
 
 ### <a name="json-example-single-hotel-json-files"></a>json-Beispiel (JSON-Dateien für einzelne Hotels)
 
-Das Dataset [hotel-json-documents](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotel-json-documents) auf GitHub ist hilfreich beim Testen der JSON-Analyse, wobei jedes Blob eine strukturierte JSON-Datei darstellt. Sie können die Datendateien in Blob Storage hochladen und den **Datenimport-Assistenten** verwenden, um schnell auszuwerten, wie dieser Inhalt in einzelne Suchdokumente aufgelöst wird. 
+Das Dataset [hotel-json-documents](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels/hotel-json-documents) auf GitHub ist hilfreich beim Testen der JSON-Analyse, wobei jedes Blob eine strukturierte JSON-Datei darstellt. Sie können die Datendateien in Blob Storage hochladen und den **Datenimport-Assistenten** verwenden, um schnell auszuwerten, wie dieser Inhalt in einzelne Suchdokumente aufgelöst wird. 
 
 Das Dataset besteht aus fünf Blobs, die jeweils ein „Hotel“-Dokument mit einer „Adressen“-Sammlung und einer „Zimmer“-Sammlung enthalten. Der Blobindexer erkennt beide Sammlungen und gibt die Struktur der Eingabedokumente im Indexschema wieder.
 
@@ -110,7 +110,7 @@ api-key: [admin key]
 
 ### <a name="jsonarrays-example-clinical-trials-sample-data"></a>jsonArrays-Beispiel (Beispieldaten für klinische Studien)
 
-Das Dataset [clinical-trials-json](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-json) auf GitHub ist hilfreich beim Testen der Analyse von JSON-Arrays. Sie können die Datendateien in Blob Storage hochladen und den **Datenimport-Assistenten** verwenden, um schnell auszuwerten, wie dieser Inhalt in einzelne Suchdokumente aufgelöst wird. 
+Das Dataset [clinical-trials-json](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-json) auf GitHub ist hilfreich beim Testen der Analyse von JSON-Arrays. Sie können die Datendateien in Blob Storage hochladen und den **Datenimport-Assistenten** verwenden, um schnell auszuwerten, wie dieser Inhalt in einzelne Suchdokumente aufgelöst wird. 
 
 Das Dataset besteht aus acht Blobs, die jeweils ein JSON-Array von Entitäten enthalten, mit insgesamt 100 Entitäten. Die Entitäten unterscheiden sich darin, welche Felder gefüllt werden, das Endergebnis ist jedoch ein Suchdokument pro Entität aus allen Arrays in allen Blobs.
 
@@ -166,12 +166,6 @@ api-key: [admin key]
     "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
 }
 ```
-
-### <a name="jsonlines-example-caselaw-sample-data"></a>jsonLines-Beispiel (Beispieldaten für Fallrechtsammlung)
-
-Das Dataset [caselaw](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) auf GitHub ist hilfreich beim Testen der Analyse von JSON-Entitäten, die durch Zeilenvorschübe getrennt sind. Wie bei den anderen Beispieldaten können Sie diese Daten in Blob Storage hochladen und den **Datenimport-Assistenten** verwenden, um schnell die Auswirkungen des Analysemodus auf einzelne Blobs auszuwerten.
-
-Das Dataset besteht aus einem Blob mit 10 JSON-Entitäten, die durch einen Zeilenvorschub getrennt sind, wobei jede Entität einen einzelnen Rechtsfall beschreibt. Das Endergebnis ist ein Suchdokument pro Entität.
 
 ## <a name="map-json-fields-to-search-fields"></a>Zuordnen von JSON-Feldern zu Suchfeldern
 
