@@ -3,12 +3,12 @@ title: Anwendungsszenarien und -entwurf
 description: Übersicht über die Kategorien von Cloudanwendungen in Service Fabric. Informationen zum Anwendungsentwurf mit zustandsbehafteten und zustandslosen Diensten
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 703adde38d195395ae07dea022da873754e1d2f1
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045755"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867138"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric-Anwendungsszenarien
 
@@ -46,7 +46,7 @@ Ein Verwenden der Service Fabric-Plattform bietet sich für die folgenden Typen 
 
 ## <a name="application-design-case-studies"></a>Fallstudien zum Anwendungsentwurf
 
-Fallstudien, die zeigen, wie Service Fabric zum Entwerfen von Anwendungen verwendet wird, sind auf den Websites [Kundenstimmen](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) und [Microservices in Azure](https://azure.microsoft.com/solutions/microservice-applications/) veröffentlicht.
+Fallstudien, die zeigen, wie Service Fabric zum Entwerfen von Anwendungen verwendet wird, sind auf den Websites [Kundenstimmen](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) und [Microservices in Azure](https://azure.microsoft.com/solutions/microservice-applications/) veröffentlicht.
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Entwerfen von Anwendungen, die aus zustandslosen und zustandsbehafteten Microservices bestehen
 

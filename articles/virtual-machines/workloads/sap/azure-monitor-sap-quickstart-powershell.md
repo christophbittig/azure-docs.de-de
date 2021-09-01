@@ -9,12 +9,12 @@ ms.subservice: baremetal-sap
 ms.date: 07/08/2021
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 62f1cdcc51779351d743c5e3be5b8405a0bee2d1
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 572c2f76e315baf916adaab8cc31d154bce32ff0
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567648"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969748"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>Schnellstart: Bereitstellen von Azure Monitor für SAP-Lösungen mit Azure PowerShell
 
@@ -144,4 +144,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 Weitere Informationen zu Azure Monitor für SAP-Lösungen:
 
 > [!div class="nextstepaction"]
-> [Azure Monitor für SAP-Lösungen](azure-monitor-overview.md)
+> [Überwachen von SAP in Azure](monitor-sap-on-azure.md)

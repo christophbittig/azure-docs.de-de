@@ -8,12 +8,12 @@ ms.subservice: troubleshooting
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 29aff19ee900c8683249241725904e5509eced8b
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: aed6df814ddfb240093aad8ff981e9b89a6f2f52
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446489"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867570"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in Azure Data Factory
 
@@ -160,7 +160,7 @@ Bekannte Fakten zu *ForEach*
 * **Parallelitätsgrenze:** Wenn Ihre Pipeline über eine Parallelitätsrichtlinie verfügt, stellen Sie sicher, dass keine alten aktiven Pipelineausführungen vorhanden sind. 
 * **Überwachen von Grenzwerten**: Navigieren Sie zum ADF-Erstellungsbereich, wählen Sie Ihre Pipeline aus, und ermitteln Sie, ob ihr eine Parallelitätseigenschaft zugewiesen ist. Falls ja, navigieren Sie zur Überwachungsansicht. Vergewissern Sie sich, dass für die letzten 45 Tage keine aktiven Vorgänge vorhanden sind. Falls aktive Vorgänge vorhanden sind, können Sie sie stornieren. Daraufhin sollte die neue Pipelineausführung gestartet werden.
 
-* **Vorübergehende Probleme:** Es ist möglich, dass Ihre Ausführung durch ein vorübergehendes Netzwerkproblem, fehlerhafte Anmeldeinformationen, Dienstausfälle usw. beeinträchtigt wurde. Für solche Fälle verfügt Azure Data Factory über einen internen Wiederherstellungsprozess, der alle Ausführungen überwacht und sie startet, wenn ein Fehler aufgetreten ist. Sie können Pipelines und Aktivitäten wie [hier](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities) beschrieben erneut ausführen. Wenn eine Aktivität fehlschlägt oder abgebrochen wird, können Sie sie erneut ausführen wie unter [Erneutes Ausführen fehlgeschlagener Aktivitäten](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity) beschrieben. Dieser Prozess wird stündlich ausgeführt. Sollte Ihre Ausführung länger als eine Stunde hängen bleiben, erstellen Sie eine entsprechende Supportanfrage.
+* **Vorübergehende Probleme:** Es ist möglich, dass Ihre Ausführung durch ein vorübergehendes Netzwerkproblem, fehlerhafte Anmeldeinformationen, Dienstausfälle usw. beeinträchtigt wurde. Für solche Fälle verfügt Azure Data Factory über einen internen Wiederherstellungsprozess, der alle Ausführungen überwacht und sie startet, wenn ein Fehler aufgetreten ist. Sie können Pipelines und Aktivitäten wie [hier](monitor-visually.md#rerun-pipelines-and-activities) beschrieben erneut ausführen. Wenn eine Aktivität fehlschlägt oder abgebrochen wird, können Sie sie erneut ausführen wie unter [Erneutes Ausführen fehlgeschlagener Aktivitäten](monitor-visually.md#rerun-from-failed-activity) beschrieben. Dieser Prozess wird stündlich ausgeführt. Sollte Ihre Ausführung länger als eine Stunde hängen bleiben, erstellen Sie eine entsprechende Supportanfrage.
 
 
  
@@ -268,7 +268,7 @@ Sie haben den Zuordnungsdatenfluss nicht optimiert.
 Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
 
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-data-factory.html)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)

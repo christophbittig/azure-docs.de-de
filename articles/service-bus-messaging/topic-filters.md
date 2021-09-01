@@ -3,12 +3,12 @@ title: Azure Service Bus-Themenfilter | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Abonnenten definieren können, welche Nachrichten von einem Thema empfangen werden sollen, indem Filter angegeben werden.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: f813c9a635fde70e2f72ab3dab0d2e01197c6fff
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 310393456b21c43fe6d0665fad9e2f505045253c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448660"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867084"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -73,8 +73,14 @@ Beispiele finden Sie unter [Festlegen von Abonnementfiltern (Azure Service Bus)]
 > Da das Azure-Portal jetzt die Service Bus Explorer-Funktionen unterstützt, können Abonnementfilter über das Portal erstellt oder bearbeitet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich die folgenden Beispiele an: 
+Sehen Sie sich die Beispiele in der Sprache Ihrer Wahl an, um Azure Service Bus-Features zu untersuchen. 
 
-- [.NET – Grundlegendes Tutorial zum Senden und Empfangen mit Filtern](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
-- [.NET – Themenfilter](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager-Vorlage](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (neueste Version)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (neueste Version)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus-Clientbibliothekbeispiele für JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus-Clientbibliothekbeispiele für TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+
+Hier finden Sie Beispiele für die älteren .NET- und Java-Clientbibliotheken:
+- [Azure Service Bus-Clientbibliothekbeispiele für .NET (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Azure Service Bus-Clientbibliothekbeispiele für Java (Legacy)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)

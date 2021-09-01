@@ -3,20 +3,20 @@ title: Kontingente und Grenzwerte für Azure Media Services
 description: In diesem Thema werden die Kontingente und Grenzwerte für Microsoft Azure Media Services beschrieben.
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b1e43968569fb7c185043e1dd249c65fcadddfb
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278659"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866931"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services-Kontingente und -Grenzwerte
@@ -48,14 +48,6 @@ In diesem Artikel sind einige der gängigsten Limits in Microsoft Azure Media Se
 | [Speicherkonten](storage-account-concept.md) | 100<sup>(2)</sup> (feststehend) |
 
 <sup>1</sup> In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die Größenbeschränkung gilt sowohl für die von Ihnen hochgeladenen Dateien als auch für Dateien, die in Folge der Verarbeitung durch Media Services (Codierung oder Analyse) generiert werden. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. 
-
-Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten für Medien (S1, S2 und S3). Übersteigt die Größe Ihrer Quelldatei die in der Tabelle definierten Grenzwerte, ist Ihr Codierungsauftrag nicht erfolgreich. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erhalten. Sollten Sie über 4K-Inhalte verfügen, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ übersteigen, öffnen Sie ein Supportticket.
-
-|Reservierte Einheiten für Medien (Typ)|Maximale Eingabegröße (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|
 
 <sup>2</sup> Die Speicherkonten müssen aus demselben Azure-Abonnement stammen.
 
