@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 05/03/2021
+ms.date: 08/26/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7fb92bf8e741da59f4dbc5255811eb7f67497fe9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4c9472b419fd796ae53383f73c168e6ac43342bb
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768857"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965863"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall und einer Richtlinie über das Azure-Portal
 
@@ -137,7 +137,7 @@ Stellen Sie die Firewall im VNET bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Abonnement     |\<your subscription\>|
+   |Subscription     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |
    |Name     |**Test-FW01**|
    |Region     |Wählen Sie den gleichen Standort aus wie zuvor.|
@@ -281,4 +281,4 @@ Sie können die Firewallressourcen für das nächste Tutorial behalten oder die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md)
+> [Bereitstellen und Konfigurieren von Azure Firewall Premium](premium-deploy.md)

@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
 ms.custom: devx-track-java
-ms.author: trbye
-ms.openlocfilehash: f5f5ab8d353e0f20405a6cc4dccda38dbb0625a8
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.author: lajanuar
+ms.openlocfilehash: f773bf4b9266f5110e2c4ce855a274e8b88e091b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113280166"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423357"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -60,8 +60,8 @@ Um den Speech-Dienst über das Speech SDK aufrufen zu können, muss eine Sprach
 Eine Sprachkonfiguration ([`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig)) kann auf unterschiedliche Weise initialisiert werden:
 
 * Mit einem Abonnement: Übergeben Sie einen Schlüssel für die Spracheingabe und den zugeordneten Standort bzw. die zugeordnete Region.
-* Mit einem Endpunkt: Übergeben Sie einen Endpunkt für den Speech-Dienst. Ein Schlüssel für die Spracheingabe oder ein Autorisierungstoken sind optional.
-* Mit einem Host: Übergeben Sie eine Hostadresse. Ein Schlüssel für die Spracheingabe oder ein Autorisierungstoken sind optional.
+* Mit einem Endpunkt: Übergeben Sie einen Endpunkt für den Speech-Dienst. Ein Schlüssel für die Spracheingabe und ein Autorisierungstoken sind optional.
+* Mit einem Host: Übergeben Sie eine Hostadresse. Ein Schlüssel für die Spracheingabe und ein Autorisierungstoken sind optional.
 * Mit einem Autorisierungstoken: Übergeben Sie ein Autorisierungstoken und den zugeordneten Standort bzw. die zugeordnete Region.
 
 In diesem Beispiel erstellen Sie ein [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig)-Objekt mit einem Schlüssel für die Spracheingabe und einem Standort bzw. einer Region. Diese Anmeldeinformationen können Sie mithilfe der Schritte unter [Kostenloses Testen des Speech-Diensts](../../../overview.md#try-the-speech-service-for-free) abrufen. Sie können für den restlichen Teil dieses Artikels auch einfache Codebausteine erstellen, an denen Sie dann jeweils die entsprechenden Anpassungen vornehmen.
@@ -183,7 +183,7 @@ Erstellen Sie zuerst in Ihrem Stammverzeichnis des Projekts eine neue XML-Datei 
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -222,7 +222,7 @@ public static void main(String[] args) {
 ```
 
 > [!NOTE]
-> Wenn Sie die Stimme ohne SSML ändern möchten, können Sie die Eigenschaft für `SpeechConfig` mithilfe von `SpeechConfig.setSpeechSynthesisVoiceName("en-US-AriaNeural");` festlegen.
+> Wenn Sie die Stimme ohne SSML ändern möchten, können Sie die Eigenschaft für `SpeechConfig` mithilfe von `SpeechConfig.setSpeechSynthesisVoiceName("en-US-ChristopherNeural");` festlegen.
 
 ## <a name="get-facial-pose-events"></a>Abrufen von Gesichtsausdrucksereignissen
 

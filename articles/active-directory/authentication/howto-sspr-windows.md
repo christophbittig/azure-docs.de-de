@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3defd1bf3e3052f45f00eeeec0078ce0f6bbde
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338896"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Aktivieren der Self-Service-Kennwortzurücksetzung für Azure Active Directory auf dem Windows-Anmeldebildschirm
 
@@ -45,6 +45,7 @@ Die folgenden Einschränkungen gelten für die Verwendung der SSPR auf dem Windo
     - *HideFastUserSwitching* ist auf „Aktiviert“ oder „1“ festgelegt.
     - *DontDisplayLastUserName* ist auf „Aktiviert“ oder auf „1“ festgelegt.
     - *NoLockScreen* ist auf „Aktiviert“ oder „1“ festgelegt.
+    - *BlockNonAdminUserInstall* ist auf „Aktiviert“ oder „1“ festgelegt.
     - *EnableLostMode* ist auf dem Gerät festgelegt.
     - „Explorer.exe“ wird durch eine benutzerdefinierte Shell ersetzt.
 - Die Kombination der folgenden drei Einstellungen kann dazu führen, dass dieses Feature fehlschlägt.

@@ -2,13 +2,13 @@
 title: Informationen zu Labs in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie schnell eine Umgebung für Classroom-Labs in der Cloud einrichten. Konfigurieren Sie ein Lab mit einer Vorlagen-VM mit der für die Klasse erforderlichen Software, und erstellen Sie eine Kopie der VM, die für jeden Kursteilnehmer verfügbar ist.
 ms.topic: overview
-ms.date: 06/26/2020
-ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/26/2021
+ms.openlocfilehash: 6e91d833a86f2f326ca966b36679946ed1455f6e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434803"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965044"
 ---
 # <a name="introduction-to-labs"></a>Einführung in Labs
 Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung in der Cloud einrichten. Ein Lehrer/Dozent erstellt ein Classroom-Lab, stellt virtuelle Windows- oder Linux-Computer bereit, installiert die erforderlichen Programm- und Tool-Labs in der Klasse und macht sie für Schüler/Studenten verfügbar. Die Schüler/Studenten stellen eine Verbindung mit virtuellen Computern (virtual machines, VMs) im Lab her und nutzen sie für ihre Projekte, Aufgaben oder Classroom-Übungen. 

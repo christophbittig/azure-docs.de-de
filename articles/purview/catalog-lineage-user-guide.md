@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: 4708cdc0a7937749e0df9a65267067f5dc31198d
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/25/2021
+ms.openlocfilehash: 38f150a99b2145968569e986ea158b1aa552593a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343198"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968601"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -31,7 +31,7 @@ Datenintegrations- und ETL-Tools können die Herkunftsinformationen zur Ausführ
 | Datenverarbeitungssystem | Unterstützter Bereich |
 | ---------------------- | ------------|
 | Azure Data Factory | [Kopieraktivität](how-to-link-azure-data-factory.md#copy-activity-support) <br> [Datenflussaktivität](how-to-link-azure-data-factory.md#data-flow-support) <br> [Aktivität „SSIS-Paket ausführen“](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
-| Azure Synapse Analytics | [Kopieraktivität](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) |
+| Azure Synapse Analytics | [Kopieraktivität](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) <br> [Datenflussaktivität](how-to-lineage-azure-synapse-analytics.md#data-flow-support) |
 | Azure Data Share | [Momentaufnahme freigeben](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>Datenspeichersysteme

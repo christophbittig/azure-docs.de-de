@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: e134173fdcd72c637be990b92a278d848ce6527b
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.author: rifox
+ms.openlocfilehash: c2d280de30997996902def6f04eb1d35c956999a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535687"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965993"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Communication Services-SDK „Calling“ nutzen, um Ihrer App 1:1-Videoanrufe hinzuzufügen. Hier erfahren Sie, wie Sie einen Videoanruf mithilfe des Calling SDK von Azure Communication Services für iOS beginnen und beantworten.
 
@@ -20,7 +20,7 @@ Wenn Sie direkt zum Ende springen möchten, können Sie diese Schnellstartanleit
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Einen Mac mit [Xcode](https://developer.apple.com/xcode/) zusammen mit einem gültigen in Ihrer Keychain installierten Entwicklerzertifikat.
-- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../../create-communication-resource.md?tabs=windows&pivots=platform-azp).
+- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../../create-communication-resource.md?tabs=windows&pivots=platform-azp).
 - Erstellen Sie ein Benutzerzugriffstoken, um den Anrufclient zu instanziieren. Lernen Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../../../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Einrichten

@@ -2,19 +2,18 @@
 title: Hinzufügen von benutzerdefinierten Metriken – Azure IoT Edge
 description: Verbessern integrierter Metriken mithilfe von szenariospezifischen Metriken aus benutzerdefinierten Modulen
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12defc783be6fb1a87b815284b1fbf019d8c8817
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8e9c5b74b19af00228f03b26450b987d87283376
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340457"
 ---
 # <a name="add-custom-metrics-preview"></a>Hinzufügen von benutzerdefinierten Metriken (Vorschau)
 
@@ -32,7 +31,7 @@ Allgemeine Informationen finden Sie in den [Best Practices](https://prometheus.i
 
 * Fügen Sie den Modulnamen am Anfang des Metriknamens ein, um deutlich zu machen, welches Modul die Metrik ausgegeben hat.
 
-* Integrieren Sie den IoT Hub-Namen, die IoT Edge-Geräte-ID und die Modul-ID als Bezeichnungen (auch als *tags*/*dimensions* bezeichnet) in jede Metrik. Diese Informationen sind als Umgebungsvariablen für jedes Modul verfügbar, das vom IoT Edge-Agent gestartet wird. Der Ansatz wird durch das Beispiel im Beispiel-Repository [demonstriert](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49). Ohne diese Zusatzinformationen ist es unmöglich, einen bestimmten Metrikwert dem entsprechenden Gerät zuzuordnen.
+* Beziehen Sie den IoT Hub-Namen oder den Namen der IoT Central-Anwendung, die IoT Edge-Geräte-ID und die Modul-ID als Bezeichnungen (auch als *tags*/*dimensions* bezeichnet) in jede Metrik mit ein. Diese Informationen sind als Umgebungsvariablen für jedes Modul verfügbar, das vom IoT Edge-Agent gestartet wird. Der Ansatz wird durch das Beispiel im Beispiel-Repository [demonstriert](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49). Ohne diese Zusatzinformationen ist es unmöglich, einen bestimmten Metrikwert dem entsprechenden Gerät zuzuordnen.
 
 * Fügen Sie eine Instanz-ID in die Bezeichnungen ein. Eine Instanz-ID kann eine beliebige eindeutige ID wie z. B. eine [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) sein, die während des Modulstarts generiert wird. Instanz-ID-Informationen können bei der Abstimmung von Modulneustarts helfen, während die Metriken eines Moduls im Back-End verarbeitet werden.
 
@@ -57,7 +56,7 @@ sudo docker exec replace-with-metrics-collector-module-name curl http://replace-
 
 Sobald Sie benutzerdefinierte Metriken in Log Analytics erhalten, können Sie benutzerdefinierte Visualisierungen und Warnungen erstellen. Die Überwachungsarbeitsmappen können durch das Hinzufügen von abfragebasierte Visualisierungen erweitert werden.
 
-Jede Metrik ist der Ressourcen-ID des IoT Hubs zugeordnet. Auf diese Weise können Sie über die Seite **Protokolle** des zugeordneten IoT Hubs überprüfen, ob Ihre benutzerdefinierten Metriken ordnungsgemäß erfasst wurden, anstatt dafür den unterstützenden Log Analytics-Arbeitsbereich zu verwenden. Verwenden Sie diese einfache KQL-Abfrage für die Überprüfung:
+Jeder Metrik wird die Ressourcen-ID des IoT-Hubs oder der IoT Central-Anwendung zugeordnet. Deshalb können Sie über die Seite **Protokolle** des zugeordneten IoT Hubs oder der IoT Central-Anwendung überprüfen, ob Ihre benutzerdefinierten Metriken ordnungsgemäß erfasst wurden, statt dafür den unterstützenden Log Analytics-Arbeitsbereich zu nutzen. Verwenden Sie diese einfache KQL-Abfrage für die Überprüfung:
 
 ```KQL
 InsightsMetrics
