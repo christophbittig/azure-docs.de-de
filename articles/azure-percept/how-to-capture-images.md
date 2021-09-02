@@ -1,20 +1,20 @@
 ---
-title: Erstellen von Bildern für eine codelose Lösung für maschinelles Sehen in Azure Percept Studio
+title: Erfassen von Bildern in Azure Percept Studio
 description: Erfassen von Bildern mit Ihrem Azure Percept DK-Gerät in Azure Percept Studio
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2c7116d7e62afe6a59ad48bbb28dabf3c05bc311
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b724e18d8f9119ac33d878cfbf4393c4712d003f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754395"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219674"
 ---
-# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Erstellen von Bildern für ein Projekt für maschinelles Sehen in Azure Percept Studio
+# <a name="capture-images-in-azure-percept-studio"></a>Erfassen von Bildern in Azure Percept Studio
 
 In dieser Anleitung erfahren Sie, wie Sie Bilder mit Azure Percept DK für ein bereits vorhandenes Vision-Projekt erfassen. Falls Sie noch kein Vision-Projekt erstellt haben, sehen Sie sich das [Vision-Tutorial ohne Code](./tutorial-nocode-vision.md) an.
 

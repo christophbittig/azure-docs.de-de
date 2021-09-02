@@ -2,14 +2,14 @@
 title: Service Bus-Warteschlangen für unzustellbare Nachrichten | Microsoft Docs
 description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in Azure Service Bus Service Bus-Warteschlangen und -Themenabonnements verfügen über eine sekundäre Unterwarteschlange, die als „Warteschlange für unzustellbare Nachrichten“ bezeichnet wird.
 ms.topic: article
-ms.date: 04/08/2021
+ms.date: 08/30/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 9a7eaf3cee7af4ba0f0049ee8b7a8dd0b271a94a
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: b64500b6fefd8da7fe2b6dda4719e7ed6ae81b94
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804464"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258333"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 

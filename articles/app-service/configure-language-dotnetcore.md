@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ee726074de4e4c8163c741ebd549636afaaef752
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e02e49b781d19e115ca2c39eead3aa7c693aef7
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355984"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223048"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer ASP.NET Core-App für Azure App Service
 
@@ -74,7 +74,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
 1. Ausführen von `dotnet restore`, um NuGet-Abhängigkeiten wiederherzustellen.
@@ -136,7 +136,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="deploy-multi-project-solutions"></a>Bereitstellen von Projektmappen mit mehreren Projekten
 
-Wenn eine Visual Studio-Projektmappe mehrere Projekte enthält, umfasst der Veröffentlichungsprozess von Visual Studio bereits das Auswählen des bereitzustellenden Projekts. Wenn Sie für die App Service-Bereitstellungs-Engine bereitstellen, z. B. mit Git oder einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung ](deploy-zip.md#enable-build-automation), wählt die App Service-Bereitstellungs-Engine das erste Website- oder Webanwendungsprojekt aus, das als App Service-App gefunden wird. Sie können angeben, welches Projekt App Service verwenden soll, indem Sie die App-Einstellung `PROJECT` angeben. Führen Sie beispielsweise Folgendes in der [Cloud Shell](https://shell.azure.com) aus:
+Wenn eine Visual Studio-Projektmappe mehrere Projekte enthält, umfasst der Veröffentlichungsprozess von Visual Studio bereits das Auswählen des bereitzustellenden Projekts. Wenn Sie für die App Service-Bereitstellungs-Engine bereitstellen, z. B. mit Git oder einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung ](deploy-zip.md#enable-build-automation-for-zip-deploy), wählt die App Service-Bereitstellungs-Engine das erste Website- oder Webanwendungsprojekt aus, das als App Service-App gefunden wird. Sie können angeben, welches Projekt App Service verwenden soll, indem Sie die App-Einstellung `PROJECT` angeben. Führen Sie beispielsweise Folgendes in der [Cloud Shell](https://shell.azure.com) aus:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"

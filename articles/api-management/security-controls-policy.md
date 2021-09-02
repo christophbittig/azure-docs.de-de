@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure API Management
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure API Management verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: dlepow
 ms.author: apimpm
 ms.service: api-management
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1c504f9a0b6f70db6abd867a1f15a3645315039e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e3308359ffb130bbf52248fbebee64ed302d1472
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608935"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111568"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-management"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure API Management
 

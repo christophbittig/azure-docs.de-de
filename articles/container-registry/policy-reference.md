@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Container Registry
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Container Registry. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b0b160cc132f282e61fe5b6d403aad7ed325be61
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: a08fb563645033e66b90a8c886a24a20471b34f1
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603761"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110486"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Integrierte Azure Policy-Definitionen für Azure Container Registry
 

@@ -5,14 +5,14 @@ author: miag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 05/11/2021
 ms.author: miag
-ms.openlocfilehash: 4d5a518bc517b950f5366ba53eadb7284121a5e3
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 34b83376a555b5fd06947049f959badc9a1aed67
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866408"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731076"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub-Unterstützung für verwaltete Identitäten 
 
@@ -273,7 +273,7 @@ Das IoT Hub-Feature [Dateiupload](iot-hub-devguide-file-upload.md) ermöglicht G
     > Sie müssen die vorstehenden Schritte ausführen, um der verwalteten Identität den richtigen Zugriff zuzuweisen, bevor Sie das Speicherkonto in IoT Hub für einen Dateiupload mithilfe der verwalteten Identität speichern. Bitte warten Sie einige Minuten, bis die Rollenzuweisung weitergegeben wurde. 
  
 5. Navigieren Sie auf der Seite für Ihre IoT Hub-Ressource zur Registerkarte **Dateiupload**.
-6. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Ihrem Blobspeicher verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen, SAS TTL, Standard-TTL und Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie den bevorzugten Authentifizierungstyp aus, und klicken Sie auf **Speichern**. Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
+6. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Ihrem Blobspeicher verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen, SAS TTL, Standard-TTL und Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie den bevorzugten Authentifizierungstyp aus, und klicken Sie auf **Speichern**.
 
     :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="IoT Hub-Dateiupload mit msi":::
 

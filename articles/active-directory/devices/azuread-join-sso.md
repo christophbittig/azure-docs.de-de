@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da22a4e5e9ab13ec18347e58bea6cfc5f45333de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05df955e85bf5de12e3cc8892b1a2323947dd66f
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630699"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227860"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten
 
@@ -41,6 +41,8 @@ Bei Verwendung einer sowohl aus Azure AD als auch lokalem AD bestehenden Hybridu
 
 >[!NOTE]
 > Für Windows Hello for Business ist eine zusätzliche Konfiguration erforderlich, um lokales einmaliges Anmelden über ein in Azure AD eingebundenes Gerät zu ermöglichen. Weitere Informationen finden Sie unter [Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base) (Konfigurieren von in Azure AD eingebundenen Geräten für lokales einmaliges Anmelden mit Windows Hello for Business). 
+>
+> Die kennwortlose Authentifizierung mit FIDO2-Sicherheitsschlüsseln bei Windows 10 erfordert eine zusätzliche Konfiguration zum Aktivieren von lokalem einmaligem Anmelden über ein mit Azure AD verbundenes Gerät. Weitere Informationen finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory](../authentication/howto-authentication-passwordless-security-key-on-premises.md). 
 
 Bei einem Zugriffsversuch auf eine Ressource, die Kerberos oder NTLM in der lokalen Umgebung des Benutzers anfordert, geschieht auf dem Gerät Folgendes:
 
@@ -73,4 +75,4 @@ Es ist nicht möglich, Dateien auf einem in Azure AD eingebundenen Gerät für a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?](overview.md). 
+Weitere Informationen finden Sie unter [Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?](overview.md).

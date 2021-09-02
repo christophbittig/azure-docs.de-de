@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure RBAC
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure RBAC. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e92ad12511f34a06ecd54fb90665cceedeae5f3e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: cb2e916bd678c78c09391b4c781a4e69ed3f6a48
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607033"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105203"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Integrierte Azure Policy-Definitionen für Azure RBAC
 
