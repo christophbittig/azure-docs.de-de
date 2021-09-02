@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42b756e96829a19ddd25258087a8537c9a747b10
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895816"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668855"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interaktionsarten und Tastenkombinationen für Zeichentools im Zeichentools-Modul
 
@@ -140,6 +140,7 @@ Die Zeichnungstools unterstützen Tastenkombinationen. Diese Tastenkombinationen
 | `C` | Beendet alle aktuell ausgeführten Zeichenvorgänge und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |
 | `Escape` | Bricht alle aktuell ausgeführten Zeichenvorgänge ab und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |
 | `F` | Fügt einem Punkt, einer Linie oder einem Polygon eine Koordinate hinzu, wenn sich der Mauszeiger über der Karte befindet. Äquivalente Aktion zum Klicken auf die Karte im Klick- oder Hybridmodus. Diese Tastenkombination ermöglicht präziseres und schnelleres Zeichnen. Sie können eine Hand zum Positionieren der Maus verwenden und mit der anderen die Taste drücken, ohne dass die Maus durch das Drücken bewegt wird. |
+| `Delete` oder `Backspace` | Wenn Formen während des Bearbeitungsmodus ausgewählt sind, löschen Sie sie.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

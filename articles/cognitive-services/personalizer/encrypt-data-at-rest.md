@@ -2,19 +2,19 @@
 title: Verschlüsselung für ruhende Daten des Personalisierungdiensts
 titleSuffix: Azure Cognitive Services
 description: Microsoft bietet von Microsoft verwaltete Verschlüsselungsschlüssel an und ermöglicht Ihnen auch die Verwaltung Ihrer Cognitive Services-Abonnements mit Ihren eigenen Schlüsseln, den so genannten kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMK). In diesem Artikel erfahren Sie mehr über die Datenverschlüsselung im Ruhezustand für die Personalisierung und wie Sie CMK aktivieren und verwalten können.
-author: erindormier
+author: jeffmend
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: egeaney
-ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jeffme
+ms.openlocfilehash: d6d4aaa9b6a04614fdae4f794da9153a03031727
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524049"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829757"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Personalisierungdiensts
 

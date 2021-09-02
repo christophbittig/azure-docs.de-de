@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ed2d48288bf97fe3ebaa1e8ffc1336d8a82d940e
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e6b55782c7bdb8404bb19e4b7d58faf62178f73d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719023"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220797"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (erweiterter Support):Konfigurieren des networkConfiguration-Schemas
 
@@ -67,9 +67,9 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfigu
 | Regel | Optional. Gibt die Aktion an, die für einen angegebenen Subnetzbereich von IP-Adressen ausgeführt werden soll. Die Reihenfolge der Regel wird durch einen Zeichenfolgenwert für das `order`-Attribut definiert. Je niedriger die Regelzahl, desto höher die Priorität. Beispielsweise können Regeln mit den Ordnungszahlen 100, 200 und 300 angegeben werden. Die Regel mit der Ordnungszahl 100 hat Vorrang vor der Regel mit der Ordnungszahl 200.<br /><br /> Die Aktion für die Regel wird durch eine Zeichenfolge für das `action`-Attribut definiert. Mögliche Werte:<br /><br /> -   `permit` – Gibt an, dass nur Pakete aus dem angegebenen Subnetzbereich mit dem Endpunkt kommunizieren können.<br />-   `deny` – Gibt an, dass der Zugriff auf die Endpunkte im angegebenen Subnetzbereich verweigert wird.<br /><br /> Der Subnetzbereich der IP-Adressen, die von der Regel betroffen sind, wird durch eine Zeichenfolge für das `remoteSubnet`-Attribut definiert. Die Beschreibung für die Regel wird durch eine Zeichenfolge für das `description`-Attribut definiert.|
 | EndpointAcl | Optional. Gibt die Zuweisung von Regeln zur Steuerung des Zugriffs auf einen Endpunkt an. Der Name der Rolle, der den Endpunkt enthält, wird durch eine Zeichenfolge für das `role`-Attribut definiert. Der Name des Endpunkts wird durch eine Zeichenfolge für das `endpoint`-Attribut definiert. Der Name des Satzes von `AccessControl`-Regeln, die auf den Endpunkt angewendet werden sollen, wird durch eine Zeichenfolge für das `accessControl`-Attribut definiert. Mehrere `EndpointAcl`-Elemente können definiert werden kann.|
 | DnsServer | Optional. Gibt die Einstellungen für einen DNS-Server an. Sie können Einstellungen für DNS-Server ohne virtuelles Netzwerk angeben. Der Name des DNS-Servers wird durch eine Zeichenfolge für das `name`-Attribut definiert. Die IP-Adresse des DNS-Servers wird durch eine Zeichenfolge für das `IPAddress`-Attribut definiert. Die IP-Adresse muss eine gültige IPv4-Adresse sein.|
-| VirtualNetworkSite | Optional. Gibt den Namen der Website im virtuellen Netzwerk an, auf der Sie Ihren Clouddienst bereitstellen möchten. Mit dieser Einstellung wird kein virtuelles Netzwerk erstellt. Sie verweist auf eine Website, die zuvor in der Netzwerkdatei für Ihr virtuelles Netzwerk definiert wurde. Ein Clouddienst kann nur Mitglied eines einzelnen virtuellen Netzwerks sein. Wenn Sie diese Einstellung nicht angeben, wird der Clouddienst nicht in einem virtuellen Netzwerk bereitgestellt. Der Name des virtuellen Netzwerks wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
-| InstanceAddress | Optional. Gibt die Zuordnung einer Rolle zu einem Subnetz oder eine Gruppe von Subnetzen im virtuellen Netzwerk an. Wenn Sie einen Rollennamen einer Instanzadresse zuordnen, können Sie die Subnetze angeben, denen diese Rolle zugeordnet werden soll. Die `InstanceAddress` enthält ein Subnets-Element. Der Name der Rolle, die dem Subnetz oder den Subnetzen zugeordnet ist, wird durch eine Zeichenfolge für das `roleName`-Attribut definiert.|
-| Subnet | Optional. Gibt das Subnetz an, das dem Subnetznamen in der Netzwerkkonfigurationsdatei entspricht. Der Name des Subnetzes wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
+| VirtualNetworkSite | Erforderlich. Gibt den Namen der Website im virtuellen Netzwerk an, auf der Sie Ihren Clouddienst bereitstellen möchten. Mit dieser Einstellung wird kein virtuelles Netzwerk erstellt. Sie verweist auf eine Website, die zuvor in der Netzwerkdatei für Ihr virtuelles Netzwerk definiert wurde. Ein Clouddienst (erweiterter Support) kann nur Mitglied eines einzelnen virtuellen Netzwerks sein. Der Name des virtuellen Netzwerks wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
+| InstanceAddress | Erforderlich. Gibt die Zuordnung einer Rolle zu einem Subnetz oder eine Gruppe von Subnetzen im virtuellen Netzwerk an. Wenn Sie einen Rollennamen einer Instanzadresse zuordnen, können Sie die Subnetze angeben, denen diese Rolle zugeordnet werden soll. Die `InstanceAddress` enthält ein Subnets-Element. Der Name der Rolle, die dem Subnetz oder den Subnetzen zugeordnet ist, wird durch eine Zeichenfolge für das Attribut `roleName` definiert. Sie müssen für jede Rolle, die für Ihren Clouddienst definiert ist, eine Instanzadresse angeben.|
+| Subnet | Erforderlich. Gibt das Subnetz an, das dem Subnetznamen in der Netzwerkkonfigurationsdatei entspricht. Der Name des Subnetzes wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 | ReservedIP | Optional. Gibt die reservierte IP-Adresse an, die der Bereitstellung zugeordnet werden soll. Die Zuweisungsmethode für eine reservierte IP-Adresse muss für Vorlagen- und PowerShell-Bereitstellungen als `Static` angegeben werden. Jede Bereitstellung in einem Clouddienst kann nur einer reservierten IP-Adresse zugeordnet werden. Der Name der reservierten IP-Adresse wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 
 ## <a name="see-also"></a>Siehe auch

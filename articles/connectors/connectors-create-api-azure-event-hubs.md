@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit Azure Event Hubs
 description: Stellen Sie eine Verbindung mit Ihrem Event Hub her, und fügen Sie Ihrem Workflow in Azure Logic Apps einen Trigger oder eine Aktion hinzu.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 05/03/2021
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 07/16/2021
 tags: connectors
-ms.openlocfilehash: 7f82debf0cc09d032b00de8197cf873c01801353
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 079d131cac55c6d7a54547a3720546ab6422f7d5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755583"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473074"
 ---
 # <a name="connect-to-an-event-hub-from-workflows-in-azure-logic-apps"></a>Herstellen einer Verbindung mit einem Event Hub über Workflows in Azure Logic Apps
 
@@ -135,10 +135,12 @@ Die folgenden Schritte beschreiben die allgemeine Methode zum Hinzufügen eines 
 
 ## <a name="trigger-polling-behavior"></a>Triggerabrufverhalten
 
-Alle Event Hubs-Trigger sind Trigger mit *langer Abrufzeit*. Das bedeutet, dass ein Trigger alle Ereignisse verarbeitet und dann pro Partition 30 Sekunden lang auf weitere im Event Hub eingehende Ereignisse wartet. 
+Alle Event Hub-Trigger sind Trigger mit langer Abrufdauer. Dieses Verhalten bedeutet, dass ein Trigger bei seiner Auslösung alle Ereignisse verarbeitet und dann 30 Sekunden lang auf weitere im Event Hub eingehende Ereignisse wartet. Entwurfsgemäß wird der Trigger übersprungen, wenn innerhalb von 30 Sekunden keine Ereignisse angezeigt werden. Andernfalls setzt der Trigger das Lesen von Ereignissen fort, bis Ihr Event Hub leer ist. Der nächste Triggerabruf erfolgt basierend auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
 
 Wenn der Trigger z. B. mit vier Partitionen eingerichtet ist, kann es bis zu zwei Minuten dauern, bis der Trigger alle Partitionen abgerufen hat. Werden innerhalb dieser Verzögerung keine Ereignisse empfangen, wird die Triggerausführung übersprungen. Andernfalls setzt der Trigger das Lesen von Ereignissen fort, bis Ihr Event Hub leer ist. Der nächste Triggerabruf erfolgt basierend auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
 
+Wenn Sie die spezifischen Partitionen kennen, in denen die Meldungen vorkommen, können Sie den Trigger so aktualisieren, dass nur Ereignisse aus diesen Partitionen gelesen werden, indem Sie den maximalen und minimalen Partitionsschlüssel des Triggers festlegen. Weitere Informationen finden Sie im Abschnitt [Hinzufügen von Event Hub-Triggern](#add-trigger).
+     
 ## <a name="trigger-checkpoint-behavior"></a>Triggerprüfpunktverhalten
 
 Wenn ein Event Hubs-Trigger Ereignisse aus jeder Partition in einem Event Hub liest, verwendet der Trigger seinen eigenen Zustand, um Informationen zum Datenstromoffset (die Ereignisposition in einer Partition) und den Partitionen zu verwalten, aus denen der Trigger Ereignisse liest.

@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 07/26/2021
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 36bc5a283665abb03bd1c49a0a067b551bcc979d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120758"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720948"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App
-
-> [!NOTE]
-> Einige der in diesem Artikel erwähnten Features sind öffentliche Previewfunktionen von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Für selbst erstellte Anwendungen können Sie Benutzerflows erstellen, die es einem Benutzer ermöglichen, sich für eine App zu registrieren und ein neues Gastkonto zu erstellen. In einem Benutzerflow für die Self-Service-Registrierung werden die Schritte, die der Benutzer im Rahmen der Registrierung ausführen muss, sowie die zulässigen Identitätsanbieter und die zu erfassenden Benutzerattribute definiert. Einem Benutzerflow können eine oder mehrere Anwendungen zugeordnet werden.
 
@@ -32,9 +29,9 @@ Für selbst erstellte Anwendungen können Sie Benutzerflows erstellen, die es ei
 
 ### <a name="add-identity-providers-optional"></a>Hinzufügen von Identitätsanbietern (optional)
 
-Azure AD ist der Standardidentitätsanbieter für die Self-Service-Registrierung. Das bedeutet, dass Benutzer sich standardmäßig mit einem Azure AD-Konto anmelden können. In Ihren Benutzerflows für die Self-Service-Registrierung können Sie auch soziale Netzwerke wie Google und Facebook sowie Microsoft-Konto (Vorschau) und Einmalkennung per E-Mail (Vorschau) einschließen.
+Azure AD ist der Standardidentitätsanbieter für die Self-Service-Registrierung. Das bedeutet, dass Benutzer sich standardmäßig mit einem Azure AD-Konto anmelden können. In Ihre Benutzerflows für die Self-Service-Registrierung können Sie auch soziale Netzwerke wie Google und Facebook sowie Microsoft-Konto und Einmalkennung per E-Mail einbeziehen. Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
-- [Identitätsanbieter: Microsoft-Konto (Vorschau)](microsoft-account.md)
+- [Microsoft-Konto-Identitätsanbieter](microsoft-account.md)
 - [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)
 - [Hinzufügen von Facebook zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](facebook-federation.md)
 - [Hinzufügen von Google zu Ihrer Liste der sozialen Netzwerke als Identitätsanbieter](google-federation.md)

@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7598b2908365061ae789ce2ffafb6088dc5c2a68
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f6319369a03de754b1ce016fb20aa99e5ab466e1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733356"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223421"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Schnellstart: Konfigurieren von Azure Bastion über VM-Einstellungen
 
@@ -73,9 +73,7 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 
 Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den folgenden Schritten erstellen Sie direkt über Ihre VM einen Bastionhost im Azure-Portal. Wenn Sie einen Host über eine VM erstellen, werden verschiedene Einstellungen automatisch entsprechend Ihres virtuellen Computers und/oder Ihres virtuellen Netzwerks ausgefüllt.
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-1. Melden Sie sich beim Azure-Portal an.
+1. Melden Sie sich am [Azure-Portal](https://ms.portal.azure.com) an.
 1. Navigieren Sie zur VM, mit der Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**.
 
    :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="Screenshot der VM-Einstellungen" lightbox="./media/quickstart-host-portal/vm-connect.png":::
@@ -97,7 +95,7 @@ Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den 
 1. Nach dem Erstellen des Subnetzes geht die Seite automatisch zu **Schritt 3** über. Verwenden Sie für Schritt 3 die folgenden Werte:
 
    * **Name**: Name des Bastionhosts.
-   * **Ebene:** Die Ebene ist die SKU. Wählen Sie für diese Übung in der Dropdown-Liste **Standard** aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
+   * **Ebene:** Die Ebene ist die SKU. Wählen Sie für diese Übung in der Dropdown-Liste **Standard** aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
    * **Anzahl der Instanzen:** Dies ist die Einstellung für die Hostskalierung. Verwenden Sie den Schieberegler für die Konfiguration. Mit der Basic-Tarif-SKU sind Sie auf zwei Instanzen beschränkt und können diese Einstellung nicht konfigurieren. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - Hostskalierung](configuration-settings.md#instance). Die Anzahl der Instanzen befindet sich in der Vorschauversion und basiert auf der Standard-SKU. In dieser Schnellstartanleitung können Sie die gewünschte Anzahl der Instanzen auswählen. Berücksichtigen Sie dabei jedoch die [Preis](https://azure.microsoft.com/pricing/details/azure-bastion)-Überlegungen für Skalierungseinheiten.
    * **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen**.
    * **Name der öffentlichen IP-Adresse**: Der Name der öffentlichen IP-Adressressource.

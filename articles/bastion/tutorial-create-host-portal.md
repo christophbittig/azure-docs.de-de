@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: bdaad591effc2ef9e5d682dd9a80d994a9e1c34d
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: cd6f2de9d440309662ef47a950f6c1331e30d5fb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733404"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221094"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>Tutorial: Konfigurieren von Bastion und Herstellen einer Verbindung mit einer Windows-VM
 
@@ -72,16 +72,11 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 | SKU der öffentlichen IP-Adresse |  Standard  |
 | Zuweisung  | statischen |
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-Melden Sie sich beim Azure-Portal an.
-
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Erstellen eines Bastion-Hosts
 
 In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET erstellen. Dies ist erforderlich, um eine sichere Verbindung mit einem virtuellen Computer im VNET zu erstellen.
 
+1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com) an.
 1. Geben Sie **Bastion** in die Suche ein.
 1. Klicken Sie unter „Dienste“ auf **Bastions**.
 1. Klicken Sie auf der Seite Bastions auf **+ Erstellen**, um die Seite **Bastion-Instanz erstellen** zu öffnen.

@@ -2,18 +2,19 @@
 title: 'Merkmalsauswertung: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie über das Azure-Portal eine Auswertung in Ihrer Personalisierungsressource ausführen, liefert die Personalisierung Informationen dazu, welche Kontext- und Aktionsmerkmale das Modell beeinflussen.
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c0e47a2943cf8c934d201f76aefc41868adf0b25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d504293da96ea6f0c22c2a54563b39b92e4485e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87127722"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831017"
 ---
 # <a name="feature-evaluation"></a>Featureauswertung
 

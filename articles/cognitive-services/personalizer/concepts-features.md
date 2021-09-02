@@ -2,18 +2,19 @@
 title: 'Features: Merkmale: Aktion und Kontext – Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Die Personalisierung verwendet Merkmale, Informationen über Aktionen und Kontext, um bessere Rangfolgenvorschläge zu machen. Merkmale können sehr allgemein oder spezifisch für ein Element sein.
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef7d0146d1636a863941f4deb317149aeb48faf
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100380541"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830936"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 

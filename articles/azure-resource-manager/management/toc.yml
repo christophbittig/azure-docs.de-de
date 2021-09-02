@@ -123,6 +123,14 @@
           href: tag-support.md
         - name: Azure Resource Graph-Abfragen
           href: ./resource-graph-samples.md
+    - name: Private Link-Zugriff
+      items:
+        - name: Erstellen – Portal
+          href: create-private-link-access-portal.md
+        - name: 'Erstellen: REST'
+          href: create-private-link-access-rest.md
+        - name: 'Verwalten: REST'
+          href: manage-private-link-access-rest.md
     - name: Verwalten von Ressourcengruppen
       items:
         - name: Azure-Portal

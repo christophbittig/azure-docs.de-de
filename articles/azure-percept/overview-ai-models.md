@@ -1,20 +1,20 @@
 ---
-title: Azure Percept-KI-Modelle
+title: Azure Percept-KI-Beispielmodelle
 description: Weitere Informationen zu den für die Prototypenerstellung und Bereitstellung verfügbaren KI-Modellen
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f10a330de52d40f728cd628a1d7cb83b54ad1ff6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78eb20b0229faef9c067b4bab475759badccd19e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557359"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221278"
 ---
-# <a name="azure-percept-ai-models"></a>Azure Percept-KI-Modelle
+# <a name="azure-percept-sample-ai-models"></a>Azure Percept-KI-Beispielmodelle
 
 Azure Percept ermöglicht Ihnen das Entwickeln und Bereitstellen von KI-Modellen direkt in Ihrer [Azure Percept DK](./overview-azure-percept-dk.md)-Instanz aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819). Die Modellimplementierung verwendet [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview).
 

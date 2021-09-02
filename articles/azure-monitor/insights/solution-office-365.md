@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 674e8036463a317d6e578750bc7ed3802ae776e4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5aca623f9292a1e34eacd209b204436dc7fbdcea
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356357"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220853"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -91,10 +91,10 @@ ms.locfileid: "122356357"
 > ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>F: Wie kann ich die standardmäßig verfügbaren, sicherheitsorientierten Inhalte in Azure Sentinel verwenden?
 > Azure Sentinel bietet standardmäßig verfügbare, sicherheitsorientierte Dashboards, benutzerdefinierte Warnungsabfragen, Hunting-Abfragen, Untersuchungen und Funktionen für automatisierte Antworten, die auf den Office 365- und Azure AD-Protokollen basieren. Weitere Informationen finden Sie auf dem Azure Sentinel-GitHub und in den entsprechenden Tutorials:
 >
-> - [Standardmäßig verfügbare Erkennung von Bedrohungen](/azure/azure-monitor/insights/articles/sentinel/detect-threats-built-in.md)
-> - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von verdächtigen Bedrohungen](/azure/azure-monitor/insights/articles/sentinel/detect-threats-custom.md)
-> - [Überwachen Ihrer Daten](/azure/azure-monitor/insights/articles/sentinel/monitor-your-data.md)
-> - Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](/azure/azure-monitor/insights/articles/sentinel/investigate-cases.md).
+> - [Standardmäßig verfügbare Erkennung von Bedrohungen](/azure/sentinel/detect-threats-built-in)
+> - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von verdächtigen Bedrohungen](/azure/sentinel/detect-threats-custom)
+> - [Überwachen Ihrer Daten](/azure/sentinel/monitor-your-data)
+> - Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](/azure/sentinel/investigate-cases).
 > - Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md) vertraut.
 > - [Azure Sentinel-GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 

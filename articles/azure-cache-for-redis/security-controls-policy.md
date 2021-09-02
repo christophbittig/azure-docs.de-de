@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Cache for Redis
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Cache for Redis verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a267222433ff3650d6a0f945d2f9c94eca81c6ca
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 1ada215111ce1e4d91f1ec6d6809cceaae4a4991
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605056"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111603"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Cache for Redis
 

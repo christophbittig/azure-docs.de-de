@@ -1,15 +1,15 @@
 ---
 title: Informationen zur Einhaltung der gesetzlichen Bestimmungen für Canada Federal PBMM
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Canada Federal PBMM Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ed606f6f0b9435f36cbc253fe0599c8c7c997c96
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: bf393f082d08da17b8fb986b16dc5a139f3317f6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606547"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110112"
 ---
 # <a name="details-of-the-canada-federal-pbmm-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß Canada Federal PBMM
 

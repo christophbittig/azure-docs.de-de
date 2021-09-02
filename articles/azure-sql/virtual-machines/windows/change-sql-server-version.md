@@ -15,12 +15,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb8d0150bafe795f2b23fa18581adc60d091aaf2
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8428f9ce69bc58a206eb5c60b3602ffbb17f7c19
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078831"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225670"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Direktes Ändern der SQL Server-Version auf Azure-VMs
 
@@ -108,7 +108,7 @@ Nachdem Sie die Version von SQL Server geändert haben, registrieren Sie Ihre S
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Überprüfen der Version":::
 
 > [!NOTE]
-> Wenn Sie die VM bereits mit der SQL-IaaS-Agent-Erweiterung registriert haben, [heben Sie die Registrierung auf](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension), und [registrieren Sie dann die SQL Server-VM-Ressource erneut](sql-agent-extension-manually-register-single-vm.md#register-with-extension), damit sie die richtige Version und Edition von SQL Server erkennt, die auf der VM installiert ist. Dadurch werden die mit dieser VM verbundenen Meta- und Abrechnungsdaten aktualisiert.
+> Wenn Sie die VM bereits mit der SQL-IaaS-Agent-Erweiterung registriert haben, [heben Sie die Registrierung auf](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension), und [registrieren Sie dann die SQL Server-VM-Ressource erneut](sql-agent-extension-manually-register-single-vm.md#full-mode), damit sie die richtige Version und Edition von SQL Server erkennt, die auf der VM installiert ist. Dadurch werden die mit dieser VM verbundenen Meta- und Abrechnungsdaten aktualisiert.
 
 ## <a name="remarks"></a>Bemerkungen
 

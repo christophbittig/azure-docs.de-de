@@ -2,7 +2,7 @@
 Titel: Hochladen, Codieren und Streamen mit Media Services v3 : Azure Media Services description: Tutorial zum Hochladen einer Datei, Codieren eines Videos und Streamen von Inhalten mit Media Services v3
 services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 05/25/2021 ms.author: inhenkel
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 07/23/2021 ms.author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit Media Services v3
@@ -29,11 +29,12 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunterladen.
-- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- Installieren Sie [Visual Studio Code für Windows/macOS/Linux](https://code.visualstudio.com/) oder [Visual Studio 2019 für Windows oder Mac](https://visualstudio.microsoft.com/).
+- Installieren Sie das [.NET 5.0 SDK](https://dotnet.microsoft.com/download).
+- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md) Wichtig: Kopieren Sie die Details für den **API-Zugriff** im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im *ENV*-Dateiformat (wie in diesem Beispiel).
+- Führen Sie die Schritte unter [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie müssen die Anmeldeinformationen für den Zugriff auf die API in diesem Beispiel verwenden oder im *ENV*-Dateiformat eingeben.
 
-## <a name="download-and-set-up-the-sample"></a>Herunterladen und Einrichten des Beispiels
+## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
 Klonen Sie ein GitHub-Repository mit dem Beispiel zum .NET-Streaming auf Ihren Computer, indem Sie den folgenden Befehl verwenden:  
 
@@ -43,7 +44,7 @@ Klonen Sie ein GitHub-Repository mit dem Beispiel zum .NET-Streaming auf Ihren C
 
 Das Beispiel befindet sich im Ordner [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/UploadEncodeAndStreamFiles).
 
-Öffnen Sie in Ihrem heruntergeladenen Projekt die Datei [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json). Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](./access-api-howto.md) abgerufen haben.
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>Überprüfen des Codes, mit dem hochgeladen, codiert und gestreamt wird
 
@@ -61,7 +62,7 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>Beginnen mit der Verwendung von Media Services-APIs mit dem .NET SDK
 
-Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein `AzureMediaServicesClient`-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Eine weitere Option ist die Verwendung der interaktiven Authentifizierung. Diese wird in `GetCredentialsInteractiveAuthAsync` implementiert.
+Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie ein `AzureMediaServicesClient`-Objekt erstellen. Zum Erstellen des Objekts müssen Sie Anmeldeinformationen für den Client bereitstellen, damit dieser per Azure Active Directory eine Verbindung mit Azure herstellen kann. Eine weitere Option ist die interaktive Authentifizierung, die in `GetCredentialsInteractiveAuthAsync` implementiert ist.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
 
@@ -69,7 +70,7 @@ Im Code, den Sie am Anfang des Artikels geklont haben, wird mit der Funktion `Ge
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsAsync)]
 
-Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt – basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei (ENV-Datei) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind „AADCLIENTID“ und „AADSECRET“ in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
+Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt, und zwar basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei ( *.env*) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind AADCLIENTID und AADSECRET in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 

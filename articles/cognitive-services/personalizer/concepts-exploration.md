@@ -2,18 +2,19 @@
 title: 'Sondieren: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Durch das Sondieren kann die Personalisierung auch dann weiterhin gute Ergebnisse liefern, wenn sich das Benutzerverhalten ändert. Die Auswahl der Einstellung für das Sondieren ist eine geschäftliche Entscheidung über den Anteil der Benutzerinteraktionen für die Untersuchung, um das Modell zu verbessern.
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c2d09d259133e8881da6b9a4383f5ada7a85c9e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87128147"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830999"
 ---
 # <a name="exploration-and-exploitation"></a>Sondieren und Einsetzen
 

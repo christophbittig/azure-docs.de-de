@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 825fb15d9c3a0a0a44a77d3feec767adc0368add
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: a2906145e135f1b2e683ed757efde07ce1d5dd65
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279188"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296538"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -80,9 +80,6 @@ Wenn Sie bereits über einen Schlüsseltresor verfügen, können Sie wie folgt e
     ![Screenshot: Registerkarte „Grundlagen“ auf der Seite „Privaten Endpunkt erstellen (Vorschau)“.](../media/private-link-service-4.png)
 
 Auf diesem Blatt können Sie einen privaten Endpunkt für eine beliebige Azure-Ressource erstellen. Sie können die Dropdownmenüs verwenden, um einen Ressourcentyp und eine Ressource in Ihrem Verzeichnis auszuwählen. Alternativ können Sie unter Verwendung einer Ressourcen-ID eine Verbindung mit einer beliebigen Azure-Ressource herstellen. Lassen Sie die Option „In private DNS-Zone integrieren“ unverändert.  
-
-![Screenshot: Hinzufügen eines privaten Endpunkts mithilfe des aktuellen Blatts.](../media/private-link-service-3.png)
-![Screenshot: Beispiel für die Seite „Privaten Endpunkt erstellen (Vorschau)“.](../media/private-link-service-4.png)
 
 Wenn Sie einen privaten Endpunkt erstellen, muss die Verbindung genehmigt werden. Wenn sich die Ressource, für die Sie einen privaten Endpunkt erstellen, in Ihrem Verzeichnis befindet, können Sie die Verbindungsanforderung selbst genehmigen (vorausgesetzt, Sie verfügen über entsprechende Berechtigungen). Wenn Sie eine Verbindung mit einer Azure-Ressource in einem anderen Verzeichnis herstellen, müssen Sie warten, bis der Besitzer dieser Ressource Ihre Verbindungsanforderung genehmigt hat.
 
@@ -243,7 +240,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 * Vergewissern Sie sich, dass in der privaten DNS-Zone kein A-Eintrag für den Schlüsseltresor fehlt. 
     1. Navigieren Sie zur Seite „Private DNS-Zone“. 
     2. Klicken Sie auf „Übersicht“, und vergewissern Sie sich, dass ein A-Eintrag mit dem einfachen Namen Ihres Schlüsseltresors (fabrikam) vorhanden ist. Geben Sie kein Suffix an.
-    3. Überprüfen Sie die Schreibweise, und erstellen oder korrigieren Sie den A-Eintrag. Die Gültigkeitsdauer kann auf „3600“ (eine Stunde) festgelegt werden. 
+    3. Überprüfen Sie die Schreibweise, und erstellen oder korrigieren Sie den A-Eintrag. Die Gültigkeitsdauer (TTL) kann auf „600“ (10 Minuten) festgelegt werden.
     4. Achten Sie darauf, die richtige private IP-Adresse anzugeben. 
     
 * Vergewissern Sie sich, dass der A-Eintrag über die richtige IP-Adresse verfügt. 

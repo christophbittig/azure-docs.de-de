@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2021
-ms.openlocfilehash: 0a9b1a746a5228ba958b9c1c0cca38b088ca1176
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: bcd0819ce2720597c6e9f2435d37fe9276d595cd
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222231"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222263"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -24,7 +24,7 @@ Komplexe Felder stellen je nach Datentyp entweder ein einzelnes Objekt im Dokume
 
 In der kognitiven Azure-Suche werden komplexe Typen und Sammlungen nativ unterstützt. Mit diesen Typen können Sie nahezu jede JSON-Struktur in einem Index der kognitiven Azure-Suche modellieren. In früheren Versionen von APIs der kognitiven Azure-Suche konnten nur vereinfachte Rowsets importiert werden. In der neuesten Version kann der Index nun genauer den Quelldaten entsprechen. Mit anderen Worten: Wenn die Quelldaten komplexe Typen enthalten, kann auch der Index komplexe Typen enthalten.
 
-Zum Einstieg empfiehlt sich das [Dataset „Hotels“](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), das Sie im Assistenten **Daten importieren** im Azure-Portal laden können. Im Assistenten werden komplexe Typen in der Quelle erkannt, und es wird basierend auf den erkannten Strukturen ein Indexschema vorgeschlagen.
+Zum Einstieg empfiehlt sich das [Dataset „Hotels“](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels), das Sie im Assistenten **Daten importieren** im Azure-Portal laden können. Im Assistenten werden komplexe Typen in der Quelle erkannt, und es wird basierend auf den erkannten Strukturen ein Indexschema vorgeschlagen.
 
 > [!Note]
 > Die Unterstützung für komplexe Typen ist seit `api-version=2019-05-06` allgemein verfügbar. 
@@ -162,7 +162,7 @@ Wie schon bei einfachen Feldern der obersten Ebene können auch einfache unterge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie das [Dataset „Hotels“](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) im Assistenten **Daten importieren**. Für den Zugriff auf die Daten benötigen Sie die in der Infodatei angegebenen Cosmos DB-Verbindungsinformationen.
+Testen Sie das [Dataset „Hotels“](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels) im Assistenten **Daten importieren**. Für den Zugriff auf die Daten benötigen Sie die in der Infodatei angegebenen Cosmos DB-Verbindungsinformationen.
 
 Mit diesen Informationen erstellen Sie im ersten Schritt im Assistenten eine neue Azure Cosmos DB-Datenquelle. Später im Assistenten, wird auf der Seite für den Zielindex ein Index mit komplexen Typen angezeigt. Erstellen und laden Sie diesen Index, und führen Sie dann Abfragen aus, um sich mit der neuen Struktur vertraut zu machen.
 

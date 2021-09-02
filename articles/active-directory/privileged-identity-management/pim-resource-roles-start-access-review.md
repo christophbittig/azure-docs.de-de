@@ -15,12 +15,12 @@ ms.date: 04/27/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cf140468aa0743ab93eaa2fe2d1c35f5fa64b37
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f676ca94b6e1e6333a4cc4f862b60a02e71d24e9
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084817"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356424"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -31,7 +31,7 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] Weitere Informationen zu Lizenzen für PIM finden Sie unter [Lizenzanforderungen für die Verwendung von Privileged Identity Management](subscription-requirements.md).
 
 > [!Note]
->  Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
+> Derzeit können Sie eine Zugriffsüberprüfung auf Dienstprinzipale mit Zugriff auf Azure AD und Azure-Ressourcenrollen (Vorschau) mit einer in Ihrem Anker aktiven Azure Active Directory Premium P2-Edition durchführen. Das Lizenzierungsmodell für Dienstprinzipale wird für die allgemeine Verfügbarkeit dieses Features fertig gestellt, und es sind möglicherweise zusätzliche Lizenzen erforderlich.
 
 ## <a name="prerequisite-role"></a>Erforderliche Rolle
 
@@ -42,10 +42,12 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer an, der einer der erforderlichen Rollen zugewiesen ist.
 
 1. Wählen Sie **Identitätsmanagement** aus
- 
+
 1. Wählen Sie im linken Menü **Azure-Ressourcen** unter **Azure AD Privileged Identity Management** aus.
 
 1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z. B. ein Abonnement.
+
+    ![Azure-Ressourcen – Auswählen einer Ressource, um eine Zugriffsüberprüfung zu erstellen](./media/pim-resource-roles-start-access-review/access-review-select-resource.png)
 
 1. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** aus.
 
@@ -65,7 +67,9 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
 1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
-1. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Um Benutzer zu überprüfen, wählen Sie **Benutzer oder wählen Sie (Vorschau) Dienstprinzipale**, um die Maschinenkonten mit Zugriff auf die Azure-Rolle zu überprüfen.   
+1. Wählen Sie im **Benutzerbereich** den Bereich der Bewertung aus. Um Benutzer zu überprüfen, wählen Sie **Benutzer oder wählen Sie (Vorschau) Dienstprinzipale**, um die Maschinenkonten mit Zugriff auf die Azure-Rolle zu überprüfen.
+
+    Wenn **Benutzer** ausgewählt ist, wird die Mitgliedschaft von Gruppen, die der Rolle zugewiesen sind, auf die einzelnen Mitglieder der Gruppe erweitert. Wenn **Dienstprinzipale** ausgewählt sind, werden nur diejenigen überprüft, die direkt (nicht über geschachtelte Gruppen) Mitglieder sind.  
 
     ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/pim-resource-roles-start-access-review/users.png)
 
@@ -76,7 +80,7 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
     > Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
     Wenn Sie eine Zugriffsüberprüfung für **Azure AD-Rollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus.
 
-1. Schränken Sie unter **Zuweisungstyp** den Bereich für die Überprüfung nach Art der Zuweisung des Prinzipals zur Rolle ein. Wählen Sie **(Vorschau) Nur berechtigte Zuweisungen** aus, um berechtigte Zuweisungen (unabhängig vom Aktivierungsstatus beim Erstellen der Überprüfung) zu überprüfen, oder wählen Sie **(Vorschau) Nur aktive Zuweisungen** aus, um aktive Zuweisungen zu überprüfen. Wählen Sie **alle aktiven und berechtigten Zuweisungen** aus, um alle Zuweisungen unabhängig vom Typ zu überprüfen.
+1. Schränken Sie unter **Zuweisungstyp** den Bereich für die Überprüfung nach Art der Zuweisung des Prinzipals zur Rolle ein. Wählen Sie **Nur berechtigte Zuweisungen** aus, um berechtigte Zuweisungen (unabhängig vom Aktivierungsstatus beim Erstellen der Überprüfung) zu überprüfen, oder wählen Sie **Nur aktive Zuweisungen** aus, um aktive Zuweisungen zu überprüfen. Wählen Sie **alle aktiven und berechtigten Zuweisungen** aus, um alle Zuweisungen unabhängig vom Typ zu überprüfen.
 
     ![Liste der Prüfer für Zuweisungstypen](./media/pim-resource-roles-start-access-review/assignment-type-select.png)
 
@@ -119,7 +123,7 @@ Die Notwendigkeit, auf privilegierte Ressourcenrollen zugreifen zu müssen, kann
 
 1. Legen Sie **E-Mail-Benachrichtigungen** auf **Aktivieren** fest, damit Azure AD beim Start einer Zugriffsüberprüfung E-Mail-Benachrichtigungen an die Prüfer und beim Abschluss einer Überprüfung Benachrichtigungen an Administratoren sendet.
 
-1. Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an Prüfer sendet, die ihre Überprüfung noch nicht abgeschlossen haben.
+1. Legen Sie **Erinnerungen** auf **Aktivieren** fest, damit Azure AD Erinnerungen zu laufenden Zugriffsüberprüfungen an alle Prüfer sendet. Prüfer erhalten die Erinnerungen unabhängig davon, ob die Überprüfung zu diesem Zeitpunkt bereits abgeschlossen wurde, in der Mitte des Überprüfungszeitraums.
 1. Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen in die **E-Mail mit zusätzlichen Inhalten für Prüfer** einfügen. Diese E-Mail wird in die Einladung sowie in Erinnerungs-E-Mails an die zugewiesenen Prüfer einbezogen. Diese Informationen werden in der folgenden Abbildung im hervorgehobenen Abschnitt angezeigt.
 
     ![Inhalt der an Prüfer gesendeten E-Mail mit Hervorhebungen](./media/pim-resource-roles-start-access-review/email-info.png)

@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/19/2021
-ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d015c5182b51c655d45365a2f45a9f9d08db582b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340081"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835628"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -51,7 +51,7 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
   
   Wenn Sie OLEDB-, ODBC- oder ADO.NET-Treiber für andere Datenbanksysteme wie PostgreSQL, MySQL, Oracle usw. verwenden, können Sie die 64-Bit-Version von der jeweiligen Website herunterladen.
 - Wenn Sie Datenflusskomponenten aus dem Azure Feature Pack in Ihren Paketen verwenden, [laden Sie Azure Feature Pack for SQL Server 2017 herunter und installieren Sie es](https://www.microsoft.com/download/details.aspx?id=54798) auf demselben Computer, auf dem Ihre selbstgehostete IR installiert ist, sofern sie dies noch nicht getan haben.
-- Falls nicht bereits geschehen, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde.
+- Falls nicht bereits geschehen, [laden Sie die 64-Bit-Version von Visual C++ (VC) Runtime herunter, und installieren Sie sie](https://www.microsoft.com/en-us/download/details.aspx?id=40784) auf dem Computer, auf dem Ihre selbstgehostete IR installiert wurde.
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>Aktivieren der Windows-Authentifizierung für lokale Tasks
 

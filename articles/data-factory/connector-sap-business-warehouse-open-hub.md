@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus SAP Business Warehouse mithilfe von Open Hub
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Daten aus SAP Business Warehouse (BW) über Open Hub mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/02/2021
-ms.openlocfilehash: a45de693f6818966eaf79fc8f636b27e8cb0c1da
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: c2d28438595ac46471b68724b46498fd2ef1e124
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788281"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257406"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
 
@@ -102,7 +104,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SAP Business Warehouse Open Hub verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapOpenHub** | Ja |
 | server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |
@@ -148,7 +150,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus und nach SAP BW Open Hub die type-Eigenschaft des Datasets auf **SapOpenHubTable** fest. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **SapOpenHubTable** festgelegt werden.  | Ja |
 | openHubDestinationName | Der Name des Open Hub-Ziels, aus dem Daten kopiert werden. | Ja |
@@ -182,12 +184,13 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SapOpenHubSource** festgelegt werden. | Ja |
 | excludeLastRequest | Damit entscheiden Sie, ob die Datensätze der letzten Anforderung ausgeschlossen werden. | Nein (Standardwert ist **true**). |
 | baseRequestId | Die ID der Anforderung für das Deltaladen. Sobald sie festgelegt ist, werden nur noch Daten mit requestId **größer als** der Wert dieser Eigenschaft abgerufen.  | Nein |
 | customRfcReadTableFunctionModule | Ein benutzerdefiniertes RFC-Funktionsmodul, das zum Lesen von Daten aus einer SAP-Tabelle verwendet werden kann. <br/> Mit einem benutzerdefinierten RFC-Funktionsmodul können Sie festlegen, wie die Daten aus Ihrem SAP-System abgerufen und an Data Factory zurückgegeben werden sollen. Beim benutzerdefinierten Funktionsmodul muss eine Schnittstelle (für Import, Export, Tabellen) implementiert worden sein, die mit `/SAPDS/RFC_READ_TABLE2` vergleichbar ist. Dabei handelt es sich um die von Data Factory verwendete Standardschnittstelle. | Nein |
+| sapDataColumnDelimiter | Das als Trennzeichen verwendete einzelne Zeichen, das an SAP RFC übergeben wird, um die Ausgabedaten aufzuteilen. | Nein |
 
 >[!TIP]
 >Wenn Ihre Open Hub-Tabelle z.B. nur die Daten enthält, die durch eine einzige Anforderungs-ID generiert wurden, Sie immer eine vollständige Ladung durchführen und die vorhandenen Daten in der Tabelle überschreiben, oder Sie den DTP nur einmal zum Testen ausführen, denken Sie daran, die Option „excludeLastRequest“ zu deaktivieren, um die Daten zu kopieren.

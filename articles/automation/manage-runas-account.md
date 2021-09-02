@@ -3,15 +3,15 @@ title: Verwalten eines ausführenden Azure Automation-Kontos
 description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Azure-Portal ein ausführendes Azure Automation-Konto verwalten.
 services: automation
 ms.subservice: ''
-ms.date: 05/17/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2d615df07e89e1fc2d4e63066d320002718d200
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b6248ee0815d90be83030931c011bb2e8208eeaa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059678"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345808"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
@@ -23,7 +23,7 @@ In diesem Artikel werden unter anderem folgende Aspekte der Verwaltung von ausf�
    * Erneuern eines Zertifikats von der Zertifizierungsstelle eines Unternehmens oder Drittanbieters
    * Verwalten von Berechtigungen für das ausführende Konto
 
-Weitere Informationen zur Azure Automation-Kontoauthentifizierung sowie zu Szenarien der Prozessautomatisierung finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung](automation-security-overview.md).
+Weitere Informationen zur Azure Automation-Kontoauthentifizierung, für die Verwaltung des ausführenden Kontos erforderlichen Berechtigungen sowie Anleitungen zu Szenarien der Prozessautomatisierung finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung](automation-security-overview.md).
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Verlängern eines selbstsignierten Zertifikats
 

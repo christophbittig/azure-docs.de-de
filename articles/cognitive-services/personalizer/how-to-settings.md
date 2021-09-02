@@ -1,16 +1,19 @@
 ---
 title: Konfigurieren der Personalisierung
 description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, wie oft der Dienst Untersuchungen durchführt, wie oft das Modell neu trainiert wird und wie viele Daten gespeichert werden.
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c868004bcf8ec23eb6607d791f4e9762ad20eca0
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91292607"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829937"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Konfigurieren der Lernschleife der Personalisierung
 
