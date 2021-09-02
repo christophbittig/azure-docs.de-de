@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: c136f0f2a946eca0d89c04734c9f351d4e6c79d6
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 8a66e42466f6b7ed85a330bb3bf3f1dda422e0d5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113601135"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867543"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -59,7 +59,7 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(Optional) Verwenden von Power Automate zum Abrufen von Leadbenachrichtigungen
 
-Mit [Power Automate](/flow/) können Sie immer dann automatisch eine Benachrichtigung senden lassen, wenn einer Azure Storage-Tabelle ein Lead hinzugefügt wird. Wenn Sie kein Konto besitzen, können Sie sich [für ein kostenloses Konto registrieren](https://flow.microsoft.com/).
+Mit [Power Automate](/power-automate/) können Sie immer dann automatisch eine Benachrichtigung senden lassen, wenn einer Azure Storage-Tabelle ein Lead hinzugefügt wird. Wenn Sie kein Konto besitzen, können Sie sich [für ein kostenloses Konto registrieren](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Beispiel zu Leadbenachrichtigung
 

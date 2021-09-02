@@ -4,20 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0c60b111483d896ad2beb008d165b9fb84160b35
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106072859"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835560"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
 
 | Resource | Begrenzung | 
 | --- | --- | 
-| Azure Media Services-Konten in einem Einzelabonnement | 25 (feststehend) |
-| Reservierte Einheiten für Medien pro Media Services-Konto |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Azure Media Services-Konten in einem Einzelabonnement | 25 (feststehend) | 
 | Aufträge pro Media Services-Konto | 50.000<sup>2</sup> |
 | Verkettete Aufgaben pro Auftrag | 30 (feststehend) |
 | Medienobjekte pro Media Services-Konto | 1\.000.000|

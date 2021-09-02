@@ -1,16 +1,19 @@
 ---
 title: Lernrichtlinie – Personalisierung
 description: Die Lerneinstellungen legen die *Hyperparameter* des Modelltrainings fest. Zwei Modelle, die anhand der gleichen Daten mit unterschiedlichen Einstellungen trainiert werden, sind im Ergebnis verschieden.
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 1d2038e3796df843736eb80f7e5645f4141c82f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aad256981001d3b115570ddac0c3cf4993bc2da1
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91253631"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830738"
 ---
 # <a name="learning-policy-and-settings"></a>Lernrichtlinie und -einstellungen
 

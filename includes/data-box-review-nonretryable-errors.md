@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 05/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 6ccf37d96da5b52111fd08a51de4949185891193
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: c8a749a1b0e14859b0eb2c81b4bfeafd1dba0913
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736120"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122868124"
 ---
 Gehen Sie wie folgt vor, um nicht rückgängig zu machende Fehler zu überprüfen und mit Ihrem Auftrag fortzufahren:
 
@@ -21,6 +21,9 @@ Gehen Sie wie folgt vor, um nicht rückgängig zu machende Fehler zu überprüfe
    ![Benachrichtigung bei Kopierfehlern während eines Uploads in Azure-Portal](media/data-box-review-nonretryable-errors/copy-errors-in-upload-01.png)
 
    Notieren Sie sich den **COPY LOG PATH** in **DATA COPY DETAILS**. Sie überprüfen die Fehler im Datenkopierprotokoll.
+
+   > [!NOTE]
+   > [!INCLUDE [data-box-copy-logs-behind-firewall](data-box-copy-logs-behind-firewall.md)]
 
 2. Wählen Sie **Gerätelöschung bestätigen** aus, um einen Überprüfungsbereich zu öffnen.
 

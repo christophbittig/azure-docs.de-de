@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de315722641248a2a577c97403da400a6de67e6c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98127837"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867075"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory
 
@@ -70,7 +70,6 @@ Die folgenden Benutzereigenschaften werden auf der Seite **Alle Benutzer** angez
 - Name des Unternehmens: Der Name des Unternehmens, dem der Benutzer zugeordnet ist.
 - Einladungsstatus: Der Status der Einladung für einen Gastbenutzer.
 - E-Mail-Adresse: Die E-Mail-Adresse des Benutzers.
-- Letzte Anmeldung: das Datum, an dem sich der Benutzer zuletzt angemeldet hat. Diese Eigenschaft ist nur für Benutzer mit der Berechtigung zum Lesen von Überwachungsprotokollen (Reporting_ApplicationAuditLogs_Read) sichtbar.
 
 ![Neue Benutzereigenschaften auf den Seiten „Alle Benutzer“ und „Gelöschte Benutzer“](./media/users-search-enhanced/user-properties.png)
 

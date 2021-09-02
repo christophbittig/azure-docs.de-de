@@ -1,21 +1,19 @@
 ---
 title: Mandantenübergreifendes Freigeben von Katalogimages
 description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images und der Azure-Befehlszeilenschnittstelle über Azure-Mandanten hinweg freigeben.
-author: axayjo
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2019
-ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ef788659c871a9bcef6f519664689eacda94daa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78944d14a2d1555c76468b5b9915b07cf55e9d3f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552880"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223783"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg mithilfe der Azure-Befehlszeilenschnittstelle
 

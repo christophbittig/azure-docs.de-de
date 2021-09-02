@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e43944b803f798c3bd741903f1ee0732bcb93d4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346415"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864533"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -126,7 +126,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Karten  | Nein | Nein | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
 |Microsoft Managed Desktop | Nein | Nein | Nein |  |
-|Microsoft PowerApps | Nein | Nein | Nein |  |
+|Microsoft Power Apps | Nein | Nein | Nein |  |
 |Microsoft Social Engagement | Nein | Nein | Nein |  |
 |Microsoft Stream | Ja | Ja | Nein |  |
 |Migrieren | Nein | Nein | Nein |  |

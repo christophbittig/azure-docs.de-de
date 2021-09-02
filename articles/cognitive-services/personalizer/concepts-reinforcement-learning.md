@@ -2,18 +2,19 @@
 title: Vertiefendes Lernen – Personalisierung
 titleSuffix: Azure Cognitive Services
 description: Die Personalisierung verwendet Informationen über Aktionen und den aktuellen Kontext, um bessere Rangfolgevorschläge zu machen. Die Informationen zu diesen Aktionen und zum Kontext sind die Attribute oder Eigenschaften, die als Features bezeichnet werden.
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad6414060bc744a85aaecfc8b9ceeac8dd57d30
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87132737"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830756"
 ---
 # <a name="what-is-reinforcement-learning"></a>Was ist vertiefendes Lernen?
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: multiple
 ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9bc9830566b8814719faa416240a31a9b7184342
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688534"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030434"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
+# <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
 
 Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine Identität für die App einrichten und sie mit ihren eigenen Anmeldeinformationen authentifizieren. Diese Identität wird als Dienstprinzipal bezeichnet. Dieser Ansatz ermöglicht Ihnen Folgendes:
 

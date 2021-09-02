@@ -7,14 +7,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: ba47fd528882e1d7de45470f00316c57b966ddb5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762887"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259069"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -77,10 +77,6 @@ Alice führt einen ausgehenden Anruf von einer Azure Communication Services-App 
 - 1 Teilnehmer für den ausgehenden Abschnitt (Bob) von Communication Services mit Direct Routing zu einem SBC  · 10 Minuten · 0,004 USD pro Teilnehmerabschnitt pro Minute = 0,04 USD.
 
 Die **Gesamtkosten für den Anruf**: 0,04 USD + 0,04 USD = 0,08 USD
-
-> [!Note]
-> Die Kosten für die Azure Communication Services mit dem Direct Routing-Abschnitt werden erst am 01.08.2021 in Rechnung gestellt.
-
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>Ein Preisbeispiel für einen Audiogruppenanruf mit SDK für JS und einem Festnetzabschnitt
 

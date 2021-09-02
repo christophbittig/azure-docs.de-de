@@ -5,66 +5,72 @@ services: storsimple
 author: alkohli
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 07/30/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 03d953bd534595e47702642403626a05b7f67aba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 7b0153f56efa4a78f06d2b8182c64b1c5316fc20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98706028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346172"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Öffnen eines Supporttickets für einen Import/Export-Auftrag
 
-Wenn Probleme mit Ihrem Import/Export-Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
+Wenn Probleme mit Ihrem Import/Export-Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen.  
 
-* Erstellen einer Supportanfrage
+In diesem Artikel wird Folgendes beschrieben:
+
+* Erstellen einer Supportanfrage 
 * Verwalten des Lebenszyklus einer Supportanfrage innerhalb des Portals
 
 ## <a name="create-a-support-request"></a>Erstellen einer Supportanfrage
 
-Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
+Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen:
 
-1. Navigieren Sie zu Ihrem Import/Export-Auftrag. Navigieren Sie zum Abschnitt **SUPPORT + PROBLEMBEHANDLUNG**, und wählen Sie anschließend **Neue Supportanfrage** aus.
+1. Wechseln Sie zu Ihrem Import/Export-Auftrag. Wählen Sie unter **Support + Problembehandlung** die Option **Neue Supportanfrage** aus.
      
-    ![Grundlagen](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Grundeinstellungen](./media/storage-import-export-contact-microsoft-support/import-export-support-01.png)
    
-2. Wählen Sie unter **Neue Supportanfrage** die Option **Grundlagen** aus. Führen Sie unter **Grundlagen** folgende Schritte aus:
-    
-    1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus.
-    2. Wählen Sie Ihr **Abonnement** aus.
-    3. Überprüfen Sie unter **Dienst** die Option **Meine Dienste**. In der Dropdownliste können Sie eine der folgenden Optionen auswählen: **Speicherkontoverwaltung**, **Blob** oder **Datei**. 
-        - Wenn Sie **Speicherkontoverwaltung** wählen, wählen Sie **Ressource** und **Supportplan** aus.
-            ![Auswählen der Option „Speicherkontoverwaltung“](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Wenn Sie **Blob** wählen, wählen Sie **Ressource**, **Containernamen** (optional) und **Supportplan** aus.
-            ![Auswählen der Option „Blob“](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Wenn Sie **Datei** auswählen, wählen Sie **Ressource**, **Dateifreigabenamen** (optional) und **Supportplan** aus. ![Auswählen der Option „Datei“](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Wählen Sie **Weiter** aus.
+1. Geben Sie auf der Registerkarte **Grundeinstellungen** die erforderlichen grundlegenden Informationen ein. Grundlegende Informationen zu Ihrem Import/Export-Auftrag sind bereits ausgefüllt.
 
-3. Wählen Sie unter **Neue Supportanfrage** Schritt 2 **Problem** aus. Führen Sie unter **Problem** folgende Schritte aus:
-    
-    1. Wählen Sie für **Schweregrad** die Option **C – Minimale Auswirkungen**. Diese Auswahl wird bei Bedarf vom Support aktualisiert.
-    2. Wählen Sie für **Problemtyp** die Option **Datenmigration** aus.
-    3. Wählen Sie für **Kategorie** die Option **Import – Export** aus.
-    4. Geben Sie einen **Titel** für das Problem und weitere **Details** an.
-    5. Geben Sie Startdatum und -uhrzeit des Problems an.
-    6. Wählen Sie unter **Dateiupload** das Ordnersymbol aus, um zu weiteren Dateien zu navigieren, die hochgeladen werden sollen.
-    7. Aktivieren Sie **Diagnoseinformationen freigeben**.
-    8. Wählen Sie **Weiter** aus.
+     |Option|BESCHREIBUNG|
+     |------|-----------|
+     |**Zusammenfassung** | Beschreiben Sie kurz das Problem.|
+     |**Problemtyp**|Wählen Sie **Technisch** aus.|
+     |**Abonnement**|Wählen Sie das Abonnement für den Import/Export-Auftrag aus. |
+     |**Service**|Wählen Sie **Eigene Dienste** aus.|
+     | **Diensttyp**| Wählen Sie **Azure Import/Export-Dienst** aus.|
+     |**Ressource**|Wählen Sie den Import/Export-Auftrag aus.|
+     |**Problemtyp**|Wählen Sie unter den Problemtypen für Import/Export-Aufträge einen Problemtyp aus.|
+     |**Problemuntertyp**|Wählen Sie den entsprechenden Untertyp für den Problemtyp aus.|
+ 
+     ![Screenshot mit Informationen auf dem Bildschirm „Grundlegendes“ für eine Supportanfrage zum Import/Export-Dienst. Die Schaltfläche, mit der die Registerkarte „Lösungen“ geöffnet wird, ist hervorgehoben.](./media/storage-import-export-contact-microsoft-support/import-export-support-02.png)
 
-       ![Problem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
+   Wählen Sie **Weiter: Lösungen>>** aus, um fortzufahren.
 
-4. Wählen Sie in **Neue Supportanfrage** die Option **Schritt 3: Kontaktinformationen** aus. Führen Sie unter **Kontaktinformationen** folgende Schritte aus:
+1. Auf der Registerkarte **Lösungen** werden Expertenlösungen für das von Ihnen beschriebene Problem angezeigt. Wenn Sie die Lösung für Ihr Problem nicht finden, wählen Sie **Weiter: Details>>** aus, um mit einer Supportanfrage fortzufahren.
 
-   1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
-   2. Geben Sie in den „Kontaktinformationen“ Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land/die Region ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern**.
-   3. Klicken Sie auf **Erstellen**.
-   
-       ![Kontaktinformationen](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+    ![Screenshot der Registerkarte „Lösungen“ für eine Supportanfrage zum Import/Export-Dienst. Auf der Registerkarte „Lösungen“ werden Expertenlösungen für das ausgewählte Problem angezeigt. Die Schaltfläche, mit der die Registerkarte „Lösungen“ geöffnet wird, ist hervorgehoben.](./media/storage-import-export-contact-microsoft-support/import-export-support-03.png)
 
-      Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
-      Nach dem Übermitteln Ihrer Anfrage setzt sich ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
+1. Verwenden Sie die Registerkarte **Details**, um Informationen für ein Supportticket anzugeben.
+
+    |Gruppierung|Optionen|
+    |--------|-------------------|
+    |**Problemdetails**|<ul><li>**Wann fing das Problem an?** Geben Sie unter Verwendung Ihrer Ortszeit Datum und Uhrzeit ein, wann das Problem begonnen hat.</li><li>**Details**: Beschreiben Sie das auftretende Problem.</li><li>**Dateiupload**: Sie können bei Bedarf eine oder mehrere Dateien anfügen. Wählen Sie das Ordnersymbol aus. Navigieren Sie dann zu den Dateien, die Sie hochladen möchten.</li></ul>|
+    |**Diagnoseinformationen freigeben**|<ul><li>Wählen Sie **Nein** aus. Der Azure-Support bittet Sie bei Bedarf um weitere Informationen.</li></ul>|
+    |**Supportmethode**|<ul><li>Belassen Sie den **Schweregrad** auf **C – Minimale Auswirkungen**. Der Azure-Support passt den Schweregrad auf Grundlage der von Ihnen bereitgestellten Informationen an.</li><li>Geben Sie andernfalls an, wie Sie kontaktiert werden möchten – per E-Mail oder per Telefon und in welcher Sprache.</li></ul>|
+    |**Kontaktinformationen**|<ul><li>Sie können Ihre Kontaktinformationen bei Bedarf bearbeiten.</li></ul>|
+
+    ![Screenshot der Registerkarte „Details“ für eine Supportanfrage zum Import/Export-Dienst. Die Schaltfläche, mit der die Registerkarte „Überprüfen + Erstellen“ geöffnet wird, ist hervorgehoben.](./media/storage-import-export-contact-microsoft-support/import-export-support-04.png)
+
+    Wählen Sie zum Fortfahren **Weiter: Überprüfen + Erstellen >>** aus.
+
+1. Überprüfen Sie Ihre Supportanfrage auf der Registerkarte **Überprüfen + Erstellen**. Nehmen Sie alle erforderlichen Änderungen vor. Klicken Sie anschließend auf **Erstellen**. 
+
+    ![Screenshot der Registerkarte „Überprüfen + Erstellen“ für eine neue Azure-Supportanfrage. Die Schaltfläche „Erstellen“ ist hervorgehoben.](./media/storage-import-export-contact-microsoft-support/import-export-support-05.png)
+
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 
@@ -74,15 +80,15 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 
 1. Um zur Hilfe- und Supportseite zu gelangen, navigieren Sie zu **Durchsuchen > Hilfe und Support**.
 
-    ![Der Screenshot zeigt das Dialogfeld „Hilfe“.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![Screenshot, der zeigt, wie Sie „Hilfe + Support“ auf Startseite des Azure-Portals auswählen.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-01.png)
 
 2. Die Tabelle **Kürzlich gesendete Supportanfragen** wird unter **Hilfe + Support** angezeigt.
 
-    ![Der Screenshot zeigt die Seite „Hilfe und Support“ mit Ihrer Supportanfrage in einem geöffneten Status.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![Screenshot der Azure-Seite „Hilfe + Support“ mit hervorgehobenem „Supportanfrage öffnen“.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-02.png) 
 
 3. Klicken Sie auf eine Supportanfrage. Sie können den Status und die Details dieser Anfrage anzeigen. Wählen Sie **+ Neue Nachricht** aus, wenn Sie diese Anfrage nachverfolgen möchten.
 
-    ![Der Screenshot zeigt die Option „Neue Nachricht“, die für diese Anfrage ausgewählt wurde.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![Screenshot, der eine „Neue Nachricht“ zeigt, die für eine Azure-Supportanfrage ausgewählt ist.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-03.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

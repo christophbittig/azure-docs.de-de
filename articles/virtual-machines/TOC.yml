@@ -407,6 +407,32 @@
         - name: Flexibilität bei der VM-Instanzgröße
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
+    - name: Kapazitätsreservierung (Vorschau)
+      items:
+        - name: Übersicht (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overview.md
+        - name: Erstellen einer Kapazitätsreservierung (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-create.md
+        - name: Überlasten der Kapazitätsreservierung (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overallocate.md
+        - name: Ändern einer Kapazitätsreservierung (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-modify.md
+        - name: Zuordnen eines virtuellen Computers (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-vm.md
+        - name: Entfernen eines virtuellen Computers (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-vm.md
+        - name: Zuordnen einer VM-Skalierungsgruppe (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-virtual-machine-scale-set.md
+        - name: Entfernen einer VM-Skalierungsgruppe (Vorschau)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: Erstellen von virtuellen Computern
       items:
         - name: Linux

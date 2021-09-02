@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6509c7b47a0f8c3f36df72e1d3aa16c834594f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: f2de6916a3845e0e51e810d12199d41b3cfd9319
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110612816"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225598"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Bedingter Zugriff: Auf dem Benutzerrisiko basierender bedingter Zugriff
 
-Microsoft arbeitet mit Ermittlern, Strafverfolgungsbehörden, mehreren eigenen Sicherheitsteams und anderen vertrauenswürdigen Quellen zusammen, um kompromittierte Paare aus Benutzername und Kennwort zu finden. Organisationen mit Azure AD Premium P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [das Erkennen des Benutzerrisikos mit Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md#user-risk) umfassen. 
+Microsoft arbeitet mit Ermittlern, Strafverfolgungsbehörden, mehreren eigenen Sicherheitsteams und anderen vertrauenswürdigen Quellen zusammen, um kompromittierte Paare aus Benutzername und Kennwort zu finden. Organisationen mit Azure AD Premium P2-Lizenzen können Richtlinien für bedingten Zugriff erstellen, die [das Erkennen des Benutzerrisikos mit Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md#user-linked-detections) umfassen. 
 
 Es gibt zwei Orte, an denen diese Richtlinie konfiguriert werden kann: bedingter Zugriff und Identity Protection. Die Konfiguration mithilfe einer Richtlinie für bedingten Zugriff ist die bevorzugte Methode, da sie mehr Kontext bietet, z. B. erweiterte Diagnosedaten, die Integration nur im Berichtsmodus, Graph-API-Unterstützung und die Möglichkeit, andere Attribute für bedingten Zugriff in der Richtlinie zu verwenden.
 

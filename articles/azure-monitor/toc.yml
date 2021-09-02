@@ -137,7 +137,7 @@
           href: logs/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: alerts/alerts-overview.md
@@ -233,10 +233,10 @@
               items:
                 - name: Azure-Portal
                   href: logs/quick-create-workspace.md
+                - name: Azure CLI
+                  href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: logs/powershell-workspace-configuration.md
-                - name: Resource Manager-Vorlage
-                  href: logs/resource-manager-workspace.md
             - name: Entwerfen einer Arbeitsbereichsbereitstellung
               href: logs/design-logs-deployment.md
             - name: Überwachen eines Arbeitsbereichs

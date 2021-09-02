@@ -1,45 +1,59 @@
 ---
-title: Migration eines lokalen NAS zur Azure-Dateisynchronisierung über Azure DataBox
-description: Erfahren Sie, wie Sie Dateien von einem lokalen NAS-Speicherort (Network Attached Storage) mit der Azure-Dateisynchronisierung über Azure DataBox zu einer Hybrid Cloud-Bereitstellung migrieren.
+title: Migration eines lokalen NAS zur Azure-Dateisynchronisierung über Data Box
+description: Erfahren Sie, wie Sie Dateien von einem lokalen NAS-Speicherort (Network Attached Storage) mit der Azure-Dateisynchronisierung über Azure Data Box zu einer Hybrid Cloud-Bereitstellung migrieren.
 author: fauhse
 ms.service: storage
 ms.topic: how-to
 ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 144b2f23e40f315441c3de2482ae8aeffe77ec75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f60c2e03b666c51769473120097034830f599b4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583524"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462284"
 ---
-# <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrieren Sie mit Azure DataBox von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung.
+# <a name="use-data-box-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-by-using-azure-file-sync"></a>Migrieren Sie mit Data Box von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung.
 
-Dieser Artikel zur Migration ist einer von mehreren Artikeln im Zusammenhang mit den Schlüsselwörtern NAS, der Azure-Dateisynchronisierung und Azure DataBox. Überprüfen Sie, ob dieser Artikel für Ihr Szenario zutrifft:
+Dieser Artikel zur Migration ist einer von mehreren Artikeln im Zusammenhang mit den Schlüsselwörtern NAS, der Azure-Dateisynchronisierung und Azure Data Box. Überprüfen Sie, ob dieser Artikel für Ihr Szenario zutrifft:
 
 > [!div class="checklist"]
 > * Datenquelle: Network Attached Storage (NAS)
-> * Migrationsroute: NAS &rArr; DataBox &rArr; Azure-Dateifreigabe &rArr; Synchronisierung mit Windows Server
+> * Migrationsroute: NAS &rArr; Data Box &rArr; Azure-Dateifreigabe &rArr; Synchronisierung mit Windows Server
 > * Lokales Zwischenspeichern von Dateien: Ja, das endgültige Ziel ist eine Azure-Dateisynchronisierung-Bereitstellung.
 
 Wenn Ihr Szenario anders ist, sehen Sie sich die [Tabelle mit Migrationsleitfäden](storage-files-migration-overview.md#migration-guides) an.
 
-Die Azure-Dateisynchronisierung funktioniert an Standorten mit direkt angeschlossenem Speicher (Direct Attached Storage, DAS) und unterstützt keine Synchronisierung mit Standorten mit netzwerkverbundenem Speicher (Network Attached Storage, NAS).
-Dadurch wird eine Migration Ihrer Dateien notwendig, und dieser Artikel führt Sie durch die Planung und Ausführung einer solchen Migration.
+Die Azure-Dateisynchronisierung verwendet DAS-Speicherorte (Direct Attached Storage). Die Synchronisierung mit NAS-Speicherorten (Network Attached Storage) wird nicht unterstützt.
+Daher müssen Sie Ihre Dateien migrieren. Dieser Artikel führt Sie durch die Planung und Implementierung einer solchen Migration.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel besteht darin, Freigaben auf Ihrem NAS-Gerät auf einen Windows-Server zu verschieben. Anschließend soll die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet werden. Diese Migration muss so erfolgen, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet wird. Letzteres erfordert minimale Ausfallzeiten, damit sie in normalen Wartungsfenstern stattfinden kann oder diese nur geringfügig überschreitet.
+Das Ziel besteht darin, Freigaben auf Ihrem NAS-Gerät auf Windows Server zu verschieben. Anschließend wird die Azure-Dateisynchronisierung für eine Hybrid Cloud-Bereitstellung verwendet. Diese Migration muss so erfolgen, dass die Integrität der Produktionsdaten und die Verfügbarkeit während der Migration gewährleistet wird. Letzteres erfordert minimale Ausfallzeiten, damit sie in normale Wartungsfenster passt oder diese nur geringfügig überschreitet.
 
 ## <a name="migration-overview"></a>Übersicht zur Migration
 
-Der Migrationsprozess besteht aus mehreren Phasen. Sie müssen Azure-Speicherkonten und Dateifreigaben bereitstellen, eine lokale Windows Server-Instanz bereitstellen, die Azure-Dateisynchronisierung konfigurieren, mit RoboCopy migrieren und schließlich die Übernahme durchführen. In den folgenden Abschnitten werden die Phasen des Migrationsprozesses ausführlich beschrieben.
+Der Migrationsprozess besteht aus mehreren Phasen. Folgendes ist erforderlich:
+- Stellen Sie Azure-Speicherkonten und Dateifreigaben bereit.
+- Stellen Sie einen lokalen Computer bereit, auf dem Windows Server ausgeführt wird. 
+- Konfigurieren Sie die Azure-Dateisynchronisierung.
+- Migrieren Sie die Dateien mithilfe von Robocopy.
+- Führen Sie die Übernahme durch.
+
+In den folgenden Abschnitten werden die Phasen des Migrationsprozesses ausführlich beschrieben.
 
 > [!TIP]
-> Wenn Sie zu diesem Artikel zurückkehren, wechseln Sie anhand der Navigation auf der rechten Seite zu der Migrationsphase, in der Sie aufgehört haben.
+> Wenn Sie zu diesem Artikel zurückkehren, wechseln Sie anhand der Navigation auf der rechten Seite des Bildschirms zu der Migrationsphase, in der Sie aufgehört haben.
 
-## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Phase 1: Ermitteln der Anzahl der benötigten Azure-Dateifreigaben
+## <a name="phase-1-determine-how-many-azure-file-shares-you-need"></a>Phase 1: Ermitteln der Anzahl der benötigten Azure-Dateifreigaben
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
@@ -49,70 +63,73 @@ Sehen Sie sich in dieser Phase die Zuordnungstabelle aus Phase 1 an, und verwen
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
-## <a name="phase-3-determine-how-many-azure-databox-appliances-you-need"></a>Phase 3: Bestimmen der Anzahl der benötigten Azure DataBox-Appliances
+## <a name="phase-3-determine-how-many-azure-data-box-appliances-you-need"></a>Phase 3: Bestimmen der Anzahl der benötigten Azure Data Box-Appliances
 
-Starten Sie diesen Schritt nur, wenn Sie die vorherige Phase abgeschlossen haben. Ihre Azure Storage-Ressourcen (Speicherkonten und Dateifreigaben) sollten zu diesem Zeitpunkt erstellt werden. Bei der DataBox-Bestellung müssen Sie angeben, in welche Speicherkonten die DataBox Daten verschieben soll.
+Beginnen Sie diesen Schritt erst, nachdem Sie die vorherige Phase abgeschlossen haben. Ihre Azure Storage-Ressourcen (Speicherkonten und Dateifreigaben) sollten zu diesem Zeitpunkt erstellt werden. Wenn Sie Ihre Data Box bestellen, müssen Sie die Speicherkonten angeben, in die Data Box Daten verschiebt.
 
-In dieser Phase müssen Sie die Ergebnisse des Migrationsplans aus der vorherigen Phase den Grenzwerten der verfügbaren DataBox-Optionen zuordnen. Diese Überlegungen helfen Ihnen bei der Planung, welche DataBox-Optionen Sie auswählen sollten, und wie viele sie davon benötigen, um Ihre NAS-Freigaben in Azure-Dateifreigaben zu verschieben.
+In dieser Phase müssen Sie die Ergebnisse des Migrationsplans aus der vorherigen Phase den Einschränkungen der verfügbaren Data Box-Optionen zuordnen. Diese Überlegungen helfen Ihnen bei der Planung, welche Data Box-Optionen Sie auswählen sollten, und wie viele sie davon benötigen, um Ihre NAS-Freigaben in Azure-Dateifreigaben zu verschieben.
 
-Um zu ermitteln, wie viele Geräte welchen Typs Sie benötigen, sollten Sie die folgenden wichtigen Grenzwerte beachten:
+Um die Anzahl der benötigten Geräte und deren Typ zu ermitteln, sollten Sie die folgenden wichtigen Einschränkungen beachten:
 
-* Beliebige Azure DataBox-Geräte können Daten in bis zu 10 Speicherkonten verschieben. 
-* Jede DataBox-Option verfügt über eine eigene nutzbare Kapazität. Siehe [DataBox-Optionen](#databox-options).
+* Ein Azure Data Box-Appliance kann Daten in bis zu 10 Speicherkonten verschieben. 
+* Jede Data Box-Option verfügt über eine eigene nutzbare Kapazität. Siehe [Data Box-Optionen](#data-box-options).
 
-Entnehmen Sie Ihrem Migrationsplan die Anzahl der Speicherkonten, die Sie erstellen möchten, und die Freigaben in jedem einzelnen. Sehen Sie sich dann die Größe der einzelnen Freigaben in Ihrem NAS an. Die Kombination dieser Informationen erlaubt Ihnen, zu optimieren und zu entscheiden, welche Appliance Daten an welche Speicherkonten senden soll. Sie können zwei DataBox-Geräte verwenden, um Dateien in dasselbe Speicherkonto zu verschieben, aber teilen Sie den Inhalt einer einzelnen Dateifreigabe nicht auf zwei DataBox-Geräte auf.
+Ermitteln Sie anhand Ihres Migrationsplans die Anzahl der Speicherkonten, die erstellt werden sollen, und die Freigaben im jeweiligen Speicherkonto. Sehen Sie sich dann die Größe der einzelnen Freigaben in Ihrem NAS an. Die Kombination dieser Informationen erlaubt Ihnen, zu optimieren und zu entscheiden, welche Appliance Daten an welche Speicherkonten senden soll. Zwei Data Box-Geräte können Dateien in dasselbe Speicherkonto verschieben. Verteilen Sie den Inhalt einer einzelnen Dateifreigabe aber nicht auf zwei Data Box-Geräte.
 
-### <a name="databox-options"></a>DataBox-Optionen
+### <a name="data-box-options"></a>Data Box-Optionen
 
-Für eine Standardmigration sollte eine DataBox-Option oder eine Kombination dieser drei DataBox-Optionen ausgewählt werden: 
+Wählen Sie für eine Standardmigration eine Data Box-Option oder eine Kombination dieser Data Box-Optionen aus: 
 
-* DataBox Disks Microsoft sendet Ihnen einen und bis zu fünf SSD-Datenträger mit einer Kapazität von jeweils 8 TiB (maximal 40 TiB) zu. Die nutzbare Kapazität ist aufgrund der Verschlüsselung und des Dateisystemoverheads 20 % niedriger. Weitere Informationen finden Sie unter [Was ist ein Azure DataBox-Datenträger?](../../databox/data-box-disk-overview.md).
-* DataBox: Dies ist die gängigste Option. Eine robuste DataBox-Appliance, die ähnlich wie ein NAS funktioniert, wird Ihnen geliefert. Sie verfügt über eine verwendbare Kapazität von 80 TiB. Weitere Informationen finden Sie unter [Was ist Azure DataBox?](../../databox/data-box-overview.md).
-* DataBox Heavy: Diese Option bietet eine robuste DataBox-Appliance auf Rädern, die ähnlich wie ein NAS mit einer Kapazität von 1 PiB funktioniert. Die nutzbare Kapazität ist aufgrund der Verschlüsselung und des Dateisystemoverheads 20 % niedriger. Weitere Informationen finden Sie unter [Was ist Azure Data Box Heavy?](../../databox/data-box-heavy-overview.md).
+* **Data Box Disk**.
+  Microsoft sendet Ihnen einen bis maximal fünf SSD-Datenträger mit einer Kapazität von jeweils 8 TiB (maximal 40 TiB) zu. Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Data Box Disk-Dokumentation](../../databox/data-box-disk-overview.md).
+* **Data Box**.
+  Diese Option wird am häufigsten verwendet. Microsoft sendet Ihnen eine robuste Data Box Appliance zu, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine verwendbare Kapazität von 80 TiB. Weitere Informationen finden Sie in der [Data Box-Dokumentation](../../databox/data-box-overview.md).
+* **Data Box Heavy**.
+  Diese Option umfasst eine robuste Data Box-Appliance auf Rädern, die ähnlich wie ein NAS funktioniert. Sie verfügt über eine Kapazität von 1 PiB. Die nutzbare Kapazität ist aufgrund des Verschlüsselungs- und Dateisystemoverheads ca. 20 Prozent geringer. Weitere Informationen finden Sie in der [Data Box Heavy-Dokumentation](../../databox/data-box-heavy-overview.md).
 
-## <a name="phase-4-provision-a-suitable-windows-server-on-premises"></a>Phase 4: Lokales Bereitstellen einer geeigneten Windows Server-Instanz
+## <a name="phase-4-provision-a-suitable-windows-server-instance-on-premises"></a>Phase 4: Lokales Bereitstellen einer geeigneten Windows Server-Instanz
 
-Während Sie auf das Eintreffen Ihrer Azure DataBox(en) warten, können Sie bereits mit der Überprüfung der Notwendigkeit einer oder mehrerer Windows Server-Instanzen beginnen, die Sie mit der Azure-Dateisynchronisierung verwenden werden.
+Während Sie auf das Eintreffen Ihrer Azure Data Box-Geräte warten, können Sie bereits mit der Überprüfung der Notwendigkeit einer oder mehrerer Windows Server-Instanzen beginnen, die Sie mit der Azure-Dateisynchronisierung verwenden werden.
 
-* Erstellen Sie einen Server mit Windows Server 2019 (oder mindestens 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
-* Stellen Sie direkt angeschlossenen Speicher (DAS, im Gegensatz zum nicht unterstützten NAS) bereit, oder fügen Sie ihn hinzu.
+* Erstellen Sie eine Windows Server 2019-Instanz (zumindest Windows Server 2012 R2) als virtuellen Computer oder physischen Server. Ein Windows Server-Failovercluster wird ebenfalls unterstützt.
+* Stellen Sie einen direkt angeschlossenen Speicher bereit, oder fügen Sie ihn hinzu. (DAS anstatt NAS, was nicht unterstützt wird.)
 
-Die Ressourcenkonfiguration (Compute und RAM) der von Ihnen bereitgestellten Windows Server-Instanz hängt größtenteils von der Anzahl der Elemente (Dateien und Ordner) ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, sollten Sie eine leistungsstärkere Konfiguration verwenden.
+Die Ressourcenkonfiguration (Compute und RAM) der bereitgestellten Windows Server-Instanz hängt größtenteils von der Anzahl der Dateien und Ordner ab, die synchronisiert werden sollen. Wenn Sie Bedenken haben, empfiehlt es sich, eine leistungsstärkere Konfiguration zu verwenden.
 
-[Hier erfahren Sie, wie Sie die Größe eines Windows-Servers basierend auf der Anzahl der zu synchronisierenden Elemente (Dateien und Ordner) anpassen.](storage-sync-files-planning.md#recommended-system-resources)
+[Erfahren Sie, wie Sie eine Windows Server-Instanz basierend auf der Anzahl der zu synchronisierenden Elemente dimensionieren.](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
-> Der zuvor verknüpfte Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Sie können sich an der geringeren Zahl für Ihren Server orientieren, müssen jedoch davon ausgehen, dass die anfängliche Synchronisierung wesentlich mehr Zeit in Anspruch nehmen kann.
+> Der über den obigen Link aufrufbare Artikel enthält eine Tabelle mit einem Bereich für den Serverarbeitsspeicher (RAM). Sie können die Zahlen am unteren Ende des Bereichs für Ihren Server verwenden. In diesem Fall müssen jedoch davon ausgehen, dass die erste Synchronisierung erheblich länger dauert.
 
-## <a name="phase-5-copy-files-onto-your-databox"></a>Phase 5: Kopieren von Dateien auf Ihre DataBox
+## <a name="phase-5-copy-files-onto-your-data-box"></a>Phase 5: Kopieren von Dateien auf Ihre Data Box
 
-Wenn Ihre DataBox eintrifft, müssen Sie sie in Sichtlinie mit Ihrer NAS-Appliance einrichten. Befolgen Sie die Installationsdokumentation für den DataBox-Typ, den Sie bestellt haben.
+Nachdem Ihre Data Box eingetroffen ist, müssen Sie diese mit „Sichtverbindung“ zu Ihrer NAS-Appliance einrichten. Befolgen Sie die Installationsdokumentation für den bestellten Data Box-Typ:
 
-* [Einrichten von Data Box](../../databox/data-box-quickstart-portal.md)
-* [Einrichten von Data Box Disk](../../databox/data-box-disk-quickstart-portal.md)
-* [Einrichten von Data Box Heavy](../../databox/data-box-heavy-quickstart-portal.md)
+* [Einrichten von Data Box](../../databox/data-box-quickstart-portal.md).
+* [Einrichten von Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
+* [Einrichten von Data Box Heavy](../../databox/data-box-heavy-quickstart-portal.md).
 
-Abhängig vom DataBox-Typ sind möglicherweise DataBox-Kopiertools verfügbar. An diesem Punkt werden sie nicht für Migrationen zu Azure-Dateifreigaben empfohlen, da sie Ihre Dateien nicht mit voller Genauigkeit in die DataBox kopieren. Verwenden Sie stattdessen RoboCopy.
+Abhängig vom Typ der Data Box sind möglicherweise Data Box-Kopiertools verfügbar. An dieser Stelle wird nicht empfohlen, diese für Migrationen zu Azure-Dateifreigaben zu verwenden, da sie Ihre Dateien nicht vollständig originaltreu in die Data Box kopieren. Verwenden Sie stattdessen Robocopy.
 
-Wenn Ihre DataBox eintrifft, weist sie für jedes Speicherkonto, das Sie zum Zeitpunkt der Bestellung angegeben haben, vorab bereitgestellte SMB-Freigaben auf.
+Wenn Ihre Data Box eintrifft, weist sie für jedes Speicherkonto, das Sie bei der Bestellung angegeben haben, bereits konfigurierte SMB-Freigaben auf.
 
 * Wenn Ihre Dateien in einer Azure-Premium-Dateifreigabe gespeichert werden, steht eine SMB-Freigabe pro Premium-File Storage-Speicherkonto zur Verfügung.
 * Wenn Ihre Dateien in einem Standardspeicherkonto gespeichert werden, stehen drei SMB-Freigaben pro Standardspeicherkonto (GPv1 und GPv2) bereit. Nur die Dateifreigaben, die mit `_AzFiles` enden, sind für Ihre Migration relevant. Ignorieren Sie alle Block- und Seitenblobfreigaben.
 
-Führen Sie die Schritte in der Azure DataBox-Dokumentation aus:
+Führen Sie die Schritte in der Azure Data Box-Dokumentation aus:
 
-1. [Herstellen einer Verbindung mit der Data Box](../../databox/data-box-deploy-copy-data.md)
-1. Kopieren von Daten auf die Data Box
-1. [Vorbereiten Ihrer DataBox für den Versand zu Azure](../../databox/data-box-deploy-picked-up.md)
+1. [Herstellen einer Verbindung mit der Data Box](../../databox/data-box-deploy-copy-data.md).
+1. Kopieren von Daten auf die Data Box.
+1. [Vorbereiten der Data Box für den Upload nach Azure](../../databox/data-box-deploy-picked-up.md).
 
-In der verknüpften DataBox-Dokumentation wird ein RoboCopy-Befehl angegeben. Der Befehl eignet sich jedoch nicht für die Beibehaltung der vollständigen Datei- und Ordnergenauigkeit. Verwenden Sie stattdessen diesen Befehl:
+In der über den Link aufrufbaren Data Box-Dokumentation wird ein Robocopy-Befehl angegeben. Dieser Befehl eignet sich nicht für die vollständig orignaltreue Beibehaltung von Dateien und Ordnern. Verwenden Sie stattdessen diesen Befehl:
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 
 ## <a name="phase-6-deploy-the-azure-file-sync-cloud-resource"></a>Phase 6: Bereitstellen der Azure-Dateisynchronisierung-Cloudressource
 
-Bevor Sie mit diesem Handbuch fortfahren, warten Sie, bis alle Dateien in den richtigen Azure-Dateifreigaben eingetroffen sind. Der Prozess des Versands und Erfassens von DataBox-Daten nimmt einige Zeit in Anspruch.
+Warten Sie, bis alle Dateien in den richtigen Azure-Dateifreigaben angekommen sind, bevor Sie mit dieser Anleitung fortfahren. Das Versenden und das Erfassen der Data Box-Daten nimmt einige Zeit in Anspruch.
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
@@ -120,98 +137,103 @@ Bevor Sie mit diesem Handbuch fortfahren, warten Sie, bis alle Dateien in den ri
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-## <a name="phase-8-configure-azure-file-sync-on-the-windows-server"></a>Phase 8: Konfigurieren der Azure-Dateisynchronisierung auf dem Windows-Server
+## <a name="phase-8-configure-azure-file-sync-on-the-windows-server-instance"></a>Phase 8: Konfigurieren der Azure-Dateisynchronisierung auf der Windows Server-Instanz
 
-Der registrierte lokale Windows-Server muss für diesen Prozess bereit und mit dem Internet verbunden sein.
+Die registrierte lokale Windows Server-Instanz muss für diesen Prozess vorbereitet und mit dem Internet verbunden sein.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
-Aktivieren Sie das Cloudtiering-Feature, und wählen Sie im ursprünglichen Downloadabschnitt „Nur Namespace“ aus.
+Aktivieren Sie das Cloudtiering-Feature, und wählen Sie im ursprünglichen Downloadabschnitt **Nur Namespace** aus.
 
 > [!IMPORTANT]
-> Cloudtiering ist das AFS-Feature, das es dem lokalen Server ermöglicht, weniger Speicherkapazität als in der Cloud zu haben, aber trotzdem über den vollständigen Namespace zu verfügen. Lokal interessante Daten werden zudem für eine schnelle Zugriffsleistung lokal zwischengespeichert. Cloudtiering ist ein optionales Feature pro „Serverendpunkt“ der Azure-Dateisynchronisierung. Sie müssen dieses Feature verwenden, wenn Sie nicht über genügend lokale Datenträgerkapazität auf der Windows Server-Instanz verfügen, um alle Clouddaten aufzunehmen, und wenn Sie vermeiden möchten, dass alle Daten aus der Cloud heruntergeladen werden!
+> Cloudtiering ist ein Feature der Azure-Dateisynchronisierung, das es dem lokalen Server ermöglicht, weniger Speicherkapazität als in der Cloud zu haben, aber trotzdem über den vollständigen Namespace zu verfügen. Lokal interessante Daten werden zudem für eine schnelle Zugriffsleistung lokal zwischengespeichert. Cloudtiering ist optional. Sie können Cloudtiering für jeden Serverendpunkt der Azure-Dateisynchronisierung einzeln festlegen. Sie müssen dieses Feature verwenden, wenn Sie nicht über genügend lokale Datenträgerkapazität in der Windows Server-Instanz verfügen, um alle Clouddaten aufzunehmen, und wenn Sie vermeiden möchten, dass alle Daten aus der Cloud heruntergeladen werden.
 
-Wiederholen Sie die Schritte zum Erstellen einer Synchronisierungsgruppe und zum Hinzufügen des jeweiligen Serverordners als Serverendpunkt für alle Azure-Dateifreigaben/Serverspeicherorte, die für die Synchronisierung konfiguriert werden müssen. Warten Sie, bis die Synchronisierung des Namespace abgeschlossen ist. Im folgenden Abschnitt wird ausführlich erläutert, wie Sie dies sicherstellen können.
+Wiederholen Sie für alle Azure-Dateifreigaben/Serverspeicherorte, die Sie für die Synchronisierung konfigurieren müssen, die Schritte zum Erstellen von Synchronisierungsgruppen und zum Hinzufügen der übereinstimmenden Serverordner als Serverendpunkte. Warten Sie, bis die Synchronisierung des Namespace abgeschlossen ist. Im folgenden Abschnitt wird erläutert, wie Sie sicher sein können, dass die Synchronisierung abgeschlossen wurde.
 
 > [!NOTE]
-> Nach der Erstellung eines Serverendpunkts funktioniert die Synchronisierung. Allerdings muss die Synchronisierung die Dateien und Ordner aufzählen (ermitteln), die Sie über DataBox in die Azure-Dateifreigabe verschoben haben. Abhängig von der Größe des Namespace kann dies einige Zeit in Anspruch nehmen, bis der Namespace der Cloud auf dem Server angezeigt wird.
+> Nach der Erstellung eines Serverendpunkts arbeitet die Synchronisierung. Allerdings muss die Synchronisierung die Dateien und Ordner aufzählen (ermitteln), die Sie über Data Box in die Azure-Dateifreigabe verschoben haben. Abhängig von der Größe des Namespace kann es längere Zeit dauern, bis der Namespace der Cloud auf dem Server angekommen ist.
 
 ## <a name="phase-9-wait-for-the-namespace-to-fully-appear-on-the-server"></a>Phase 9: Warten, bis der Namespace vollständig auf dem Server angezeigt wird
 
-Es ist zwingend erforderlich, dass Sie mit den nächsten Schritten der Migration warten, bis der Server den Namespace vollständig von der Cloudfreigabe heruntergeladen hat. Wenn Sie zu früh beginnen, Dateien auf den Server zu verschieben, können Sie unnötige Uploads und sogar Dateisynchronisierungskonflikte riskieren.
+Warten Sie, bis der Server den Namespace vollständig von der Cloudfreigabe heruntergeladen hat, bevor Sie mit den nächsten Schritten der Migration fortfahren. Wenn Sie zu früh beginnen, Dateien auf den Server zu verschieben, riskieren Sie unnötige Uploads und sogar Dateisynchronisierungskonflikte.
 
 Um festzustellen, ob der Server die anfängliche Downloadsynchronisierung abgeschlossen hat, öffnen Sie die Ereignisanzeige auf der synchronisierenden Windows Server-Instanz, und verwenden Sie das Telemetrieereignisprotokoll der Azure-Dateisynchronisierung.
 Das Telemetrieereignisprotokoll befindet sich in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“.
 
-Suchen Sie nach dem letzten 9102-Ereignis. Nach Abschluss einer Synchronisierungssitzung wird ein Ereignis mit der ID 9102 protokolliert. Der Ereignistext enthält ein Feld für die Downloadsynchronisierungsrichtung. (`HResult` muss 0 (null) sein, die Anzahl heruntergeladener Dateien ebenfalls.)
+Suchen Sie nach dem letzten 9102-Ereignis. Bei Abschluss einer Synchronisierungssitzung wird ein Ereignis mit der ID 9102 protokolliert. Der Ereignistext enthält ein Feld für die Downloadsynchronisierungsrichtung. (`HResult` muss null sein, und Dateien müssen heruntergeladen werden.)
  
-Sie möchten zwei aufeinander folgende Ereignisse dieses Typs und Inhalts anzeigen, um zu erkennen, ob der Server das Herunterladen des Namespace abgeschlossen hat. Es ist in Ordnung, wenn verschiedene Ereignisse zwischen zwei 9102-Ereignissen ausgelöst werden.
+Sie sollten zwei aufeinander folgende Ereignisse dieses Typs mit diesem Inhalt sehen, um sicher zu sein, dass der Server das Herunterladen des Namespace abgeschlossen hat. Es ist in Ordnung, wenn zwischen den beiden 9102-Ereignissen andere Ereignisse vorhanden sind.
 
-## <a name="phase-10-catch-up-robocopy-from-your-nas"></a>Phase 10: Aktualisierung mit NAS-Änderungen mit RoboCopy
+## <a name="phase-10-run-robocopy-from-your-nas"></a>Phase 10: Ausführen von Robocopy für Ihr NAS
 
-Nachdem der Server die anfängliche Synchronisierung des gesamten Namespace von der Cloudfreigabe abgeschlossen hat, können Sie mit diesem Schritt fortfahren. Es ist zwingend erforderlich, dass dieser Vorgang abgeschlossen ist, bevor Sie mit diesem Schritt fortfahren. Details hierzu finden Sie im vorherigen Abschnitt.
+Nachdem der Server die anfängliche Synchronisierung des gesamten Namespace von der Cloudfreigabe abgeschlossen hat, können Sie mit diesem Schritt fortfahren. Die anfängliche Synchronisierung muss abgeschlossen sein, bevor Sie mit diesem Schritt fortfahren. Details hierzu finden Sie im vorherigen Abschnitt.
 
-In diesem Schritt führen Sie RoboCopy-Aufträge aus, um Ihre Cloudfreigaben mit den neuesten Änderungen Ihres NAS, seitdem Sie Ihre Freigaben auf die DataBox verschoben haben, zu aktualisieren.
-Diese Aktualisierung mit RoboCopy kann je nach Menge der Änderungen, die auf Ihren NAS-Freigaben aufgetreten sind, schnell beendet sein oder eine Weile dauern.
+In diesem Schritt führen Sie Robocopy-Aufträge aus, um Ihre Cloudfreigaben mit den neuesten Änderungen Ihres NAS zu aktualisieren, die nach dem Kopieren Ihrer Freigaben in die Data Box aufgetreten sind.
+Diese Robocopy-Ausführung kann abhängig vom Umfang der Änderungen, die auf Ihren NAS-Freigaben aufgetreten sind, nur kurze Zeit oder länger dauern.
 
 > [!WARNING]
-> Aufgrund eines rückschrittlichen RoboCopy-Verhaltens in Windows Server 2019 ist die Befehlszeilenoption /MIR von RoboCopy nicht mit einem mehrstufigen Zielverzeichnis kompatibel. Für diese Phase der Migration dürfen Sie keinen Windows Server 2019- oder Windows 10-Client verwenden. Verwenden Sie RoboCopy auf einem mittleren Windows Server 2016-Release.
+> Aufgrund des zurückentwickelten Robocopy-Verhaltens in Windows Server 2019 ist die Robocopy-Option `/MIR` nicht mit mehrstufigen Zielverzeichnissen kompatibel. Für diese Phase der Migration können Sie keinen Windows Server 2019- oder Windows 10-Client verwenden. Verwenden Sie Robocopy auf einer temporären Windows Server 2016-Instanz.
 
-Der grundlegende Migrationsansatz besteht darin, mit RoboCopy eine Kopie Ihrer NAS-Appliance auf Ihrem Windows-Server anzulegen und diese mit der Azure-Dateisynchronisierung auf Azure-Dateifreigaben zu synchronisieren.
+Die grundlegende Migrationsansatz sieht wie folgt aus:
+ - Führen Sie Robocopy für Ihre NAS-Appliance aus, um Ihre Windows Server-Instanz zu synchronisieren. 
+ - Verwenden Sie die Azure-Dateisynchronisierung, um die Azure-Dateifreigaben von Windows Server zu synchronisieren.
 
 Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 
 1. Identifizieren Sie den ersten Speicherort auf Ihrer NAS-Appliance.
-1. Identifizieren Sie den entsprechenden Ordner auf dem Windows-Server, auf dem die Azure-Dateisynchronisierung bereits konfiguriert wurde.
-1. Starten des Kopiervorgangs mit RoboCopy
+1. Identifizieren Sie den entsprechenden Ordner auf der Windows Server-Instanz, auf der die Azure-Dateisynchronisierung bereits konfiguriert wurde.
+1. Starten Sie den Kopiervorgang mit Robocopy.
 
-Mit dem folgenden RoboCopy-Befehl werden nur die Unterschiede (aktualisierte Dateien und Ordner) aus Ihrem NAS-Speicher in den Windows Server-Zielordner kopiert. Die Windows Server-Instanz synchronisiert sie dann mit der/den Azure-Dateifreigab(en). 
+Mit dem folgenden Robocopy-Befehl werden nur die Unterschiede (aktualisierte Dateien und Ordner) aus Ihrem NAS-Speicher in den Windows Server-Zielordner kopiert. Die Windows Server-Instanz synchronisiert diese dann mit den Azure-Dateifreigaben. 
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
-Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als ihre Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll ist, beginnt das [Cloudtiering](storage-sync-cloud-tiering-overview.md) von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
-Es ist möglich, dass RoboCopy zahlreiche Dateien verschieben muss, deren Kapazität Ihren lokalen Speicher auf dem Windows-Server übersteigt. In der Regel können Sie davon ausgehen, dass RoboCopy viel schneller verschieben kann, als die Azure-Dateisynchronisierung Ihre Dateien hochladen und außerhalb Ihres lokalen Volumes ablegen kann. RoboCopy schlägt fehl. Es wird empfohlen, dass Sie die Freigaben in einer Sequenz durcharbeiten, die dies verhindert. Beispielsweise können Sie RoboCopy-Aufträge versetzt anstatt gleichzeitig für alle Freigaben starten oder nur Freigaben verschieben, die auf den aktuellen Umfang des freien Speicherplatzes auf dem Windows-Server zugeschnitten sind, um nur einige Möglichkeiten zu nennen. Die gute Nachricht ist, dass die /MIR-Befehlszeilenoption nur Deltas verschiebt, und sobald ein Delta verschoben wurde, muss ein neu gestarteter Auftrag diese Datei nicht erneut verschieben.
+Wenn Sie auf Ihrer Windows Server-Instanz weniger Speicher bereitgestellt haben, als die Daten auf der NAS-Appliance verwenden, haben Sie Cloudtiering konfiguriert. Wenn das lokale Windows Server-Volume voll wird, beginnt das [Cloudtiering](../file-sync/file-sync-cloud-tiering-overview.md) für Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der NAS-Appliance fortzufahren. Beim Cloudtiering wird einmal pro Stunde überprüft, was bereits synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 Prozent zu erreichen.
 
-### <a name="user-cut-over"></a>Benutzerübernahme
+Robocopy muss möglicherweise mehr Dateien verschieben, als lokal auf der Windows Server-Instanz gespeichert werden können. Sie können davon ausgehen, dass Robocopy Dateien viel schneller verschieben kann, als die Azure-Dateisynchronisierung Ihre Dateien hochladen und außerhalb Ihres lokalen Volumes ablegen kann. In diesem Fall schlägt Robocopy fehl. Es wird empfohlen, die Freigaben nacheinander abzuarbeiten, um dieses Szenario zu verhindern. Verschieben Sie beispielsweise nur Freigaben, die in den freien Speicherplatz passen, der auf der Windows Server-Instanz verfügbar ist. Oder vermeiden Sie, dass gleichzeitig Robocopy-Aufträge für alle Freigaben gestartet werden. Die gute Nachricht ist, dass die Option `/MIR` sicherstellt, dass nur Deltas verschoben werden. Nachdem ein Delta verschoben wurde, muss ein neu gestarteter Auftrag die Datei nicht erneut verschieben.
 
-Wenn Sie den RoboCopy-Befehl zum ersten Mal ausführen, greifen Ihre Benutzer und Anwendungen weiterhin auf Dateien auf dem NAS zu und ändern sie möglicherweise. Es kann vorkommen, dass RoboCopy ein Verzeichnis verarbeitet und mit dem nächsten fortfährt und dann ein Benutzer am Quellspeicherort (NAS) eine Datei hinzufügt, ändert oder löscht. Diese wird dann während dieser aktuellen RoboCopy-Ausführung nicht verarbeitet. Dies ist das erwartete Verhalten.
+### <a name="do-the-cutover"></a>Durchführen der Übernahme
+
+Wenn Sie den Robocopy-Befehl zum ersten Mal ausführen, greifen Ihre Benutzer und Anwendungen weiterhin auf Dateien auf dem NAS zu und ändern diese möglicherweise. Robocopy verarbeitet ein Verzeichnis und wechselt dann zum nächsten Verzeichnis. Ein NAS-Benutzer kann dann eine Datei im ersten Verzeichnis hinzufügen, ändern oder löschen, die während der aktuellen Robocopy-Ausführung nicht verarbeitet wird. Dies ist das erwartete Verhalten.
 
 Bei der ersten Ausführung geht es darum, den Großteil der abgewanderten Daten auf Ihre Windows Server-Instanz und dann über die Azure-Dateisynchronisierung in die Cloud zu verschieben. Der erste Kopiervorgang kann einige Zeit in Anspruch nehmen, die von folgenden Faktoren abhängig ist:
 
 * Uploadbandbreite
-* Geschwindigkeit des lokalen Netzwerks und Anzahl der optimalen Übereinstimmungen von RoboCopy-Threads
-* Anzahl von Elementen (Dateien und Ordner), die von RoboCopy und der Azure-Dateisynchronisierung verarbeitet werden müssen
+* Geschwindigkeit des lokalen Netzwerks und Anzahl der optimalen Übereinstimmungen von Robocopy-Threads
+* Anzahl der Elemente (Dateien und Ordner), die von Robocopy und der Azure-Dateisynchronisierung verarbeitet werden müssen
 
 Nachdem die erste Ausführung beendet wurde, führen Sie den Befehl erneut aus.
 
-Wenn Sie RoboCopy zum zweiten Mal für dieselbe Freigabe ausführen, wird der Vorgang schneller abgeschlossen, da nur Änderungen, die seit der letzten Ausführung aufgetreten sind, übertragen werden müssen. Sie können wiederholte Aufträge für dieselbe Freigabe ausführen.
+Robocopy wird schneller beendet, wenn Sie es zum zweiten Mal für eine Freigabe ausführen. Dies liegt daran, dass nur Änderungen, die seit der letzten Ausführung aufgetreten sind, übertragen werden müssen. Sie können wiederholte Aufträge für dieselbe Freigabe ausführen.
 
-Wenn die Ausfallzeit für Sie akzeptabel ist, müssen Sie den Benutzerzugriff auf Ihre NAS-basierten Freigaben aufheben. Dazu können Sie jeden beliebigen Schritt ausführen, mit dem Benutzer daran gehindert werden, die Datei- und Ordnerstruktur sowie den Inhalt zu ändern. Ein Beispiel hierfür: Ihr DFS-Namespace verweist auf einen nicht vorhandenen Speicherort, oder Sie ändern die Stamm-ACLs auf der Freigabe.
+Wenn die Ausfallzeit für Sie akzeptabel ist, müssen Sie den Benutzerzugriff auf Ihre NAS-basierten Freigaben aufheben. Dazu können Sie jede beliebige Maßnahme ausführen, mit der Benutzer daran gehindert werden, die Datei- und Ordnerstruktur sowie den Inhalt zu ändern. Sie können beispielsweise Ihren DFS-Namespace auf einen Speicherort verweisen, der nicht vorhanden ist, oder die Stamm-ACLs für die Freigabe ändern.
 
-Führen Sie einen letzten RoboCopy-Durchgang aus. Dadurch werden alle Änderungen übernommen, die möglicherweise ausgelassen wurden.
-Wie lange dieser letzte Schritt dauert, hängt von der Geschwindigkeit des RoboCopy-Scans ab. Sie können die Zeit (gleich der Ausfallzeit) schätzen, indem Sie messen, wie lange die vorherige Ausführung gedauert hat.
+Führen Sie Robocopy ein letztes Mal aus. Dadurch werden alle Änderungen übernommen, die zuvor ausgelassen wurden.
+Wie lange dieser letzte Schritt dauert, hängt von der Geschwindigkeit des Robocopy-Scans ab. Sie können die Zeit (die der Ausfallzeit entspricht) abschätzen, indem Sie die Dauer der vorherigen Ausführung messen.
 
-Erstellen Sie eine Freigabe für den Windows Server-Ordner, und passen Sie Ihre DFS-N-Bereitstellung ggf. so an, dass sie auf diese zeigt. Stellen Sie sicher, dass Sie die gleichen Berechtigungen auf Freigabeebene wie auf Ihrer NAS-SMB-Freigabe festlegen. Wenn Sie einen NAS hatten, der in eine Domäne eingebunden war, stimmen die Benutzer-SIDs automatisch überein, da die Benutzer in Active Directory vorhanden sind und RoboCopy Dateien und Metadaten in voller Genauigkeit kopiert. Wenn Sie lokale Benutzer in Ihrem NAS verwendet haben, müssen Sie diese Benutzer als lokale Windows Server-Benutzer erstellen und die vorhandenen SIDs, die RoboCopy auf Ihre Windows Server-Instanz verschoben hat, den SIDs der neuen lokalen Benutzer von Windows Server zuordnen.
+Erstellen Sie eine Freigabe für den Windows Server-Ordner, und passen Sie Ihre DFS-N-Bereitstellung ggf. so an, dass sie auf diese zeigt. Stellen Sie sicher, dass Sie die gleichen Berechtigungen auf Freigabeebene wie für Ihre NAS-SMB-Freigabe festlegen. Wenn Sie einen unternehmensweiten NAS hatten, der in eine Domäne eingebunden war, stimmen die Benutzer-SIDs automatisch überein, da die Benutzer in Active Directory vorhanden sind und Robocopy Dateien und Metadaten originaltreu kopiert. Wenn lokale NAS-Benutzer verwendet wurden, müssen Sie folgende Schritte durchführen: 
+- Erstellen Sie diese Benutzer erneut als lokale Windows Server-Benutzer. 
+- Ordnen Sie die vorhandenen SIDs, die Robocopy auf Ihre Windows Server-Instanz verschoben hat, den SIDs der neuen lokalen Windows Server-Benutzer zu.
 
-Sie haben die Migration einer Freigabe/Gruppe von Freigaben zu einem gemeinsamen Stamm oder Volume abgeschlossen. (Abhängig von der Zuordnung in Phase 1)
+Sie haben die Migration einer Freigabe oder einer Gruppe von Freigaben zu einem gemeinsamen Stamm oder Volume (je nach Zuordnung aus Phase 1) abgeschlossen.
 
 Sie können einige dieser Kopiervorgänge parallel ausführen. Es wird empfohlen, jeweils eine Azure-Dateifreigabe auf einmal zu verarbeiten.
 
-## <a name="troubleshoot"></a>Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 
-Das häufigste Problem, auf das Sie stoßen können, besteht darin, dass der RoboCopy-Befehl mit dem Fehler *Volume voll* auf Windows Server-Seite beendet wird. Das Cloudtiering wird einmal stündlich eingesetzt, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden. Das Ziel besteht darin, den freien Speicherplatz von 99 % auf dem Volume zu erreichen.
+Das häufigste Problem besteht darin, dass der Robocopy-Befehl mit der Fehlermeldung, dass das Volume auf der Windows Server-Seite voll ist, beendet wird. Das Cloudtiering erfolgt einmal stündlich, um Inhalte vom lokalen Windows Server-Datenträger abzurufen, die bereits synchronisiert wurden. Das Ziel besteht darin, 99 Prozent freien Speicherplatz auf dem Volume zu erreichen.
 
-Warten Sie, bis durch den Synchronisierungsvorgang und das Cloudtiering Speicherplatz freigegeben wurde. Sie können dies im Datei-Explorer auf Ihrem Windows-Server beobachten.
+Warten Sie, bis durch den Synchronisierungsvorgang und das Cloudtiering Speicherplatz freigegeben wurde. Sie können dies im Datei-Explorer auf Ihrer Windows Server-Instanz beobachten.
 
-Wenn Ihr Windows-Server ausreichende Kapazität aufweist, wird das Problem durch erneutes Ausführen des Befehls behoben. Falls Sie auf diese Situation stoßen, treten keine Schäden auf, und Sie können einfach fortfahren. Der zusätzliche Aufwand durch das erneute Ausführen des Befehls ist die einzige Folge.
+Wenn auf Ihrer Windows Server-Instanz ausreichende Kapazität verfügbar ist, kann das Problem durch erneutes Ausführen des Befehls behoben werden. Diese Situation ist völlig unproblematisch. Sie können bedenkenlos weiter machen. Der zusätzliche Aufwand durch das erneute Ausführen des Befehls ist die einzige Folge.
 
-Unter dem Link im folgenden Abschnitt finden Sie Informationen zur Problembehandlung der Azure-Dateisynchronisierung.
+Informationen zur Behebung von Problemen bei der Azure-Dateisynchronisierung finden Sie in den im nächsten Abschnitt aufgelisteten Artikeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und auch Ansätze zur Problembehandlung erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
+Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen und bewährte Methoden behandelt. Sie bieten auch Hilfestellung bei der Problembehandlung. Diese Artikel enthalten gegebenenfalls Links zur [Dokumentation für Azure-Dateifreigaben](storage-files-introduction.md).
 
 * [Migration overview (Übersicht über die Migration)](storage-files-migration-overview.md)
-* [AFS-Übersicht](./storage-sync-files-planning.md)
-* [AFS-Bereitstellungshandbuch](./storage-how-to-create-file-share.md)
-* [AFS-Problembehandlung](storage-sync-files-troubleshoot.md)
+* [Planung für die Bereitstellung der Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md)
+* [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md)
+* [Problembehandlung für die Azure-Dateisynchronisierung](../file-sync/file-sync-troubleshoot.md)
