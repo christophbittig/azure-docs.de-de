@@ -12,14 +12,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 002304f06e97aa04b3c15548e524c931c69ec6d6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648814"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031733"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
 Mit Azure Active Directory (Azure AD) können Sie den Anspruchstyp für den Rollenanspruch in dem Antworttoken anpassen, das Sie nach dem Autorisieren der App erhalten.
 

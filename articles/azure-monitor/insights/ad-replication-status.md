@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c99ad16e119c4262aa6d9d645b2457cdd46061b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7e5690e95bdc3f55a108fdc7c09e4d6e21b9c2b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700676"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968067"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Überwachen des Active Directory-Replikationsstatus mit Azure Monitor
 
@@ -23,6 +23,7 @@ Mit der AD-Replikationsstatusmonitor-Lösung wird die Active Directory-Umgebung 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
+
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -33,9 +34,11 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Installieren von Agents auf Domänencontrollern
+
 Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Azure Monitor konfigurieren. Informationen zur Verbindung von Windows-Computern mit Azure Monitor finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../agents/agent-windows.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Azure Monitor verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](../agents/om-agents.md) weiter.
 
 ### <a name="enable-non-domain-controller"></a>Aktivieren eines Nichtdomänencontrollers
+
 Wenn Sie Ihre Domänencontroller nicht direkt mit Azure Monitor verbinden möchten, können Sie einen beliebigen anderen Computer mit Azure Monitor-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatusmonitor-Lösungspaket zu sammeln und die Daten zu senden.
 
 1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.

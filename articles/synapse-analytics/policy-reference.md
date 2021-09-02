@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen
 description: Hier werden die integrierten Azure Policy-Richtliniendefinitionen für Azure Synapse Analytics aufgelistet. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0b54f9268ac7fb0d81bafa1734d8a584b9fe8705
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: f19a6b3eb29b0d7741347a91191a0478068374bb
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609048"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101849"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Integrierte Azure Policy-Definitionen für Azure Synapse Analytics 
 

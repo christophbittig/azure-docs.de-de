@@ -4,12 +4,12 @@ description: In diesem Tutorial stellen Sie eine Verbindung mit einem verwaltete
 ms.topic: tutorial
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f9ee801bdddd43563794aee7420ee8ba54f4d1d7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b1228deaf5627c8a367a9b0927320f93d98a50e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672407"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867438"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>Tutorial: Bereitstellen einer App in einem verwalteten Service Fabric-Cluster
 
@@ -96,9 +96,10 @@ Remove-ServiceFabricApplication fabric:/Voting
 
 In diesem Schritt haben wir eine Anwendung in einem verwalteten Service Fabric-Cluster bereitgestellt. Weitere Informationen zu den Optionen für die Anwendungsbereitstellung finden Sie unter:
 
-* [Bereitstellen von Anwendungsgeheimnissen für verwaltete Cluster](how-to-managed-cluster-application-secrets.md)
-* [Bereitstellen von verwalteten Clusteranwendungen mithilfe einer ARM-Vorlage](how-to-managed-cluster-app-deployment-template.md)
-* [Bereitstellen verwalteter Clusteranwendungen mit verwalteter Identität](how-to-managed-cluster-application-managed-identity.md)
+* [Bereitstellen von Anwendungsgeheimnissen in einem verwalteten Cluster](how-to-managed-cluster-application-secrets.md)
+* [Bereitstellen einer Anwendung in einem verwalteten Cluster mithilfe von Azure Resource Manager](how-to-managed-cluster-app-deployment-template.md)
+* [Bereitstellen einer Anwendung mit verwalteter Identität in einem verwalteten Cluster](how-to-managed-cluster-application-managed-identity.md)
+
 
 Weitere Informationen zu Konfigurationsoptionen für verwaltete Cluster finden Sie unter:
 

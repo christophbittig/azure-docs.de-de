@@ -2,14 +2,14 @@
 title: Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 description: Lernen Sie, effizient eine sehr große Anzahl von Aufgaben in einem einzigen Azure Batch-Auftrag zu übermitteln.
 ms.topic: how-to
-ms.date: 12/30/2020
+ms.date: 08/25/2021
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 825bee374ec006708b4b0b38e7d101554b3a9c25
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: c3b9612dd485c531c3a25bfe80758cf73c17123d
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340443"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965241"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 

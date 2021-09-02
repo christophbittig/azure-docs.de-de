@@ -1,20 +1,20 @@
 ---
 title: Übersicht über Azure Percept
 description: Weitere Informieren zur Azure Percept-Plattform
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0a5dfd39fd6047256d951fe33c10167e4f4c21b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567660"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221251"
 ---
-# <a name="introduction-to-azure-percept"></a>Einführung in Azure Percept
+# <a name="azure-percept-overview"></a>Übersicht über Azure Percept
 
 Azure Percept ist eine Familie aus Hardware, Software und Diensten, die entwickelt wurden, um die Geschäftstransformation mittels IoT und KI an vorderster Entwicklungsfront zu beschleunigen. Azure Percept deckt den vollständigen Stack vom Chip bis zu Diensten ab, um die Herausforderungen der Integration bahnbrechender KI im großen Stil zu meistern.  
 

@@ -1,20 +1,20 @@
 ---
-title: Starten des Azure Percept DK-Einrichtungsassistenten über Ethernet
+title: Herstellen einer Verbindung mit Azure Percept DK über Ethernet
 description: Dieser Leitfaden beschreibt, wie Sie eine Verbindung mit dem Azure Percept DK-Einrichtungsassistenten herstellen, wenn Sie über eine Ethernet-Verbindung verbunden sind.
-author: mimcco
-ms.author: mimcco
+author: WendyAnn0079
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01a1c2fcb5981681c504e3e61fc68a10922e15d5
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6ffc2a2d55bdad670c8323dfc57efad17dec1930
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441982"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227093"
 ---
-# <a name="how-to-launch-the-azure-percept-dk-setup-experience-over-ethernet"></a>Starten des Azure Percept DK-Einrichtungsassistenten über Ethernet
+# <a name="connect-to-azure-percept-dk-over-ethernet"></a>Herstellen einer Verbindung mit Azure Percept DK über Ethernet
 
 In dieser Anleitung erfahren Sie, wie Sie den Einrichtungsassistenten für Azure Percept DK über eine Ethernetverbindung starten. Sie ist eine Begleitanleitung für [Schnellstart: Einrichten Ihres Azure Percept DK und Bereitstellen Ihres ersten KI-Modells zur Anwendung](./quickstart-percept-dk-set-up.md). Sehen Sie sich die unten beschriebenen Optionen an und wählen Sie die für Ihre Umgebung am besten geeignete.
 

@@ -2,59 +2,21 @@
 title: Azure Event Grid – Übermittlung und Wiederholung
 description: Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: e24b7540ea1ac41774e2c23781265f9a61940cb1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 07/27/2021
+ms.openlocfilehash: a6055a99e717dd379dc6bd43411c73456bdaede8
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276738"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730329"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
-
-In diesem Artikel wird beschrieben, wie Azure Event Grid Ereignisse verarbeitet, wenn die Übermittlung nicht bestätigt wird.
-
-Event Grid bietet permanente Übermittlung. Jede Nachricht wird für jedes Abonnement **mindestens einmal** übermittelt. Ereignisse werden sofort an den registrierten Endpunkt des jeweiligen Abonnements gesendet. Wenn ein Endpunkt den Eingang eines Ereignisses nicht bestätigt, wiederholt Event Grid die Übermittlung des Ereignisses.
+Event Grid bietet permanente Übermittlung. Die Anwendung versucht, für jedes übereinstimmende Abonnement jede Nachricht **mindestens ein Mal** sofort zu übermitteln. Wenn der Endpunkt eines Abonnenten den Empfang eines Ereignisses nicht bestätigt, oder wenn ein Fehler auftritt, versucht Event Grid die Übermittlung erneut auf Grundlage eines festen [Wiederholungszeitplans](#retry-schedule) und einer festen [Wiederholungsrichtlinie](#retry-policy). Standardmäßig übermittelt das Event Grid-Modul immer nur ein Ereignis gleichzeitig an den Abonnenten. Die Nutzlast ist jedoch ein Array mit einem einzelnen Ereignis.
 
 > [!NOTE]
 > Bei der Ereignisübermittlung durch Event Grid wird unter Umständen die Reihenfolge nicht eingehalten, sodass Abonnenten die Ereignisse ggf. nicht in der richtigen Reihenfolge erhalten. 
 
-## <a name="batched-event-delivery"></a>Batchübermittlung von Ereignissen
-
-Event Grid sendet jedes Ereignis standardmäßig einzeln an Abonnenten. Der Abonnent empfängt ein Array mit einem einzelnen Ereignis. Sie können Event Grid zum Zusammenstellen von Ereignissen für die Übermittlung konfigurieren, um die HTTP-Leistung in Szenarios mit hohen Durchsätzen zu verbessern.
-
-Es gibt zwei Einstellungen für die Batchübermittlung:
-
-* **Maximale Anzahl von Ereignissen pro Batch** bezeichnet die maximale Anzahl der Ereignisse, die Event Grid pro Batch übermittelt. Diese Zahl wird nie überschritten, jedoch können weniger Ereignisse übermittelt werden, wenn keine anderen Ereignisse zum Zeitpunkt der Veröffentlichung verfügbar sind. Event Grid verzögert Ereignisse nicht, um einen Batch zu erstellen, wenn weniger Ereignisse verfügbar sind. Der Wert muss zwischen 1 und 5.000 liegen.
-* **Bevorzugte Batchgröße in KB** bezeichnet die Obergrenze für die Batchgröße in Kilobyte. Ähnlich wie bei der maximalen Anzahl von Ereignissen kann die Batchgröße kleiner sein, wenn nicht mehr Ereignisse zum Zeitpunkt der Veröffentlichung vorhanden sind. Es ist möglich, dass ein Batch die bevorzugte Batchgröße überschreitet, *wenn* ein einzelnes Ereignis größer als die bevorzugte Batchgröße ist. Wenn die bevorzugte Größe beispielsweise 4 KB ist und ein Ereignis mit 10 KB an Event Grid gepusht wird, wird das Ereignis mit 10 KB dennoch in einem eigenen Batch übermittelt, anstatt gelöscht zu werden.
-
-Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehlszeilenschnittstelle, PowerShell oder über SDKs konfiguriert.
-
-### <a name="azure-portal"></a>Azure-Portal: 
-![Einstellungen der Batchübermittlung](./media/delivery-and-retry/batch-settings.png)
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Wenn Sie ein Ereignisabonnement erstellen, verwenden Sie die folgenden Parameter: 
-
-- **max-events-per-batch**: maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
-- **preferred-batch-size-in-kilobytes**: bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
-
-```azurecli
-storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
-endpoint=https://$sitename.azurewebsites.net/api/updates
-
-az eventgrid event-subscription create \
-  --resource-id $storageid \
-  --name <event_subscription_name> \
-  --endpoint $endpoint \
-  --max-events-per-batch 1000 \
-  --preferred-batch-size-in-kilobytes 512
-```
-
-Weitere Informationen zur Verwendung von Azure CLI mit Event Grid finden Sie unter [Weiterleiten von Speicherereignissen an den Webendpunkt mit Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
-
-## <a name="retry-schedule-and-duration"></a>Wiederholungszeitplan und Dauer
-
+## <a name="retry-schedule"></a>Wiederholungszeitplan
 Wenn EventGrid einen Fehler für einen Ereignisbereitstellungsversuch erhält, entscheidet EventGrid je nach Art des Fehlers, ob die Bereitstellung erneut versucht oder ob das Ereignis als unzustellbar markiert oder gelöscht werden soll. 
 
 Wenn es sich bei dem vom abonnierten Endpunkt zurückgegebenen Fehler um einen konfigurationsbedingten Fehler handelt, der nicht durch Wiederholungsversuche behoben werden kann (z. B. wenn der Endpunkt gelöscht wird), markiert EventGrid das Ereignis als unzustellbare Nachricht oder löscht das Ereignis, wenn die Warteschlange für unzustellbare Nachrichten nicht konfiguriert ist.
@@ -89,12 +51,68 @@ Wenn der Endpunkt innerhalb von 3 Minuten antwortet, versucht Event Grid, das Er
 
 Event Grid fügt allen Wiederholungsschritten eine geringfügige Randomisierung hinzu und kann opportunistisch bestimmte Wiederholungen überspringen, wenn ein Endpunkt konsistent fehlerhaft ist, für einen längeren Zeitraum ausgefallen ist oder überlastet zu sein scheint.
 
-Um deterministisches Verhalten zu erreichen, legen Sie die Gültigkeitsdauer des Ereignisses und die maximale Zahl der Zustellversuche in den [Richtlinien für unzustellbare Nachrichten und Wiederholungen](manage-event-delivery.md) fest.
+## <a name="retry-policy"></a>Wiederholungsrichtlinie
+Sie können die Wiederholungsrichtlinie beim Erstellen eines Ereignisabonnements anpassen, indem Sie die folgenden beiden Konfigurationen verwenden. Ein Ereignis wird gelöscht, wenn eins dieser Limits der Wiederholungsrichtlinie erreicht wird. 
 
-Event Grid markiert alle Ereignisse standardmäßig als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden. Bei der Erstellung von Ereignisabonnements können Sie die [Wiederholungsrichtlinie anpassen](manage-event-delivery.md). Sie geben die maximale Anzahl von Zustellversuchen (Standardwert 30) und die Gültigkeitsdauer des Ereignisses (Standardwert 1.440 Minuten) ein.
+- **Maximale Anzahl von Versuchen**: Der Wert muss eine ganze Zahl zwischen 1 und 30 sein. Der Standardwert ist 30.
+- **TTL des Ereignisses**: Der Wert muss eine ganze Zahl zwischen 1 und 1.440 sein. Der Standardwert beträgt 1.440 Minuten.
+
+Beispiele für CLI- und PowerShell-Befehle zum Konfigurieren dieser Einstellungen finden Sie unter [Festlegen der Wiederholungsrichtlinie](manage-event-delivery.md#set-retry-policy).
+
+## <a name="output-batching"></a>Ausgabebatches 
+Event Grid sendet jedes Ereignis standardmäßig einzeln an Abonnenten. Der Abonnent empfängt ein Array mit einem einzelnen Ereignis. Sie können Event Grid zum Zusammenstellen von Ereignissen für die Übermittlung konfigurieren, um die HTTP-Leistung in Szenarios mit hohen Durchsätzen zu verbessern. Die Batchverarbeitung ist standardmäßig deaktiviert und kann für einzelne Abonnements aktiviert werden.
+
+### <a name="batching-policy"></a>Richtlinie für die Batchverarbeitung
+Es gibt zwei Einstellungen für die Batchübermittlung:
+
+* **Maximale Anzahl von Ereignissen pro Batch** bezeichnet die maximale Anzahl der Ereignisse, die Event Grid pro Batch übermittelt. Diese Zahl wird nie überschritten, jedoch können weniger Ereignisse übermittelt werden, wenn keine anderen Ereignisse zum Zeitpunkt der Veröffentlichung verfügbar sind. Event Grid verzögert Ereignisse nicht, um einen Batch zu erstellen, wenn weniger Ereignisse verfügbar sind. Der Wert muss zwischen 1 und 5.000 liegen.
+* **Bevorzugte Batchgröße in KB** bezeichnet die Obergrenze für die Batchgröße in Kilobyte. Ähnlich wie bei der maximalen Anzahl von Ereignissen kann die Batchgröße kleiner sein, wenn nicht mehr Ereignisse zum Zeitpunkt der Veröffentlichung vorhanden sind. Es ist möglich, dass ein Batch die bevorzugte Batchgröße überschreitet, *wenn* ein einzelnes Ereignis größer als die bevorzugte Batchgröße ist. Wenn die bevorzugte Größe beispielsweise 4 KB ist und ein Ereignis mit 10 KB an Event Grid gepusht wird, wird das Ereignis mit 10 KB dennoch in einem eigenen Batch übermittelt, anstatt gelöscht zu werden.
+
+Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehlszeilenschnittstelle, PowerShell oder über SDKs konfiguriert.
+
+### <a name="batching-behavior"></a>Verhalten der Batchverarbeitung
+
+* Alle oder keine
+
+  Event Grid baut auf einer Alle-oder-keine-Semantik auf. Ein teilweiser Erfolg einer Übermittlung im Batch wird nicht unterstützt. Abonnenten sollten darauf achten, nur so viele Ereignisse pro Batch anzufordern, wie Sie nach sinnvollem Ermessen in 60 Sekunden tatsächlich verarbeiten können.
+
+* Optimistische Batchverarbeitung
+
+  Die Richtlinieneinstellungen für die Batchverarbeitung sind keine strengen Vorgaben für das Batchverarbeitungsverhalten, sie werden jeweils im Hinblick auf bestmögliche Leistung eingehalten. Bei niedrigen Ereignisraten stellen Sie häufig fest, dass die Batchgröße unter der angeforderten maximalen Anzahl von Ereignissen pro Batch liegt.
+
+* Standardwert ist AUS
+
+  Standardmäßig fügt Event Grid jeder Übermittlungsanforderung nur ein Ereignis hinzu. Zum Aktivieren der Batchverarbeitung müssen Sie eine der zuvor in diesem Artikel beschriebenen Einstellungen im JSON-Code des Ereignisabonnements festlegen.
+
+* Standardwerte
+
+  Beim Erstellen eines Ereignisabonnements müssen nicht beide Einstellungen („Maximale Anzahl von Ereignissen pro Batch“ und „Bevorzugte Batchgröße in KB“) angegeben werden. Wenn nur eine Einstellung festgelegt ist, verwendet Event Grid (konfigurierbare) Standardwerte. In den folgenden Abschnitten finden Sie die Standardwerte und es wird beschrieben, wie dieser außer Kraft gesetzt werden können.
+
+### <a name="azure-portal"></a>Azure-Portal: 
+![Einstellungen der Batchübermittlung](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+Wenn Sie ein Ereignisabonnement erstellen, verwenden Sie die folgenden Parameter: 
+
+- **max-events-per-batch**: maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
+- **preferred-batch-size-in-kilobytes**: bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Weitere Informationen zur Verwendung von Azure CLI mit Event Grid finden Sie unter [Weiterleiten von Speicherereignissen an den Webendpunkt mit Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
+
 
 ## <a name="delayed-delivery"></a>Verzögerte Übermittlung
-
 Wenn bei einem Endpunkt Übermittlungsfehler auftreten, beginnt Event Grid, die Übermittlung von Ereignissen an diesen Endpunkt und erneute Versuche zu verzögern. Wenn beispielsweise bei den ersten zehn an einem Endpunkt veröffentlichten Ereignissen Fehler auftreten, geht Event Grid davon aus, dass am Endpunkt Probleme auftreten, und verzögert alle nachfolgenden Wiederholungsversuche *und neuen* Übermittlungen für einige Zeit – in einigen Fällen bis zu mehreren Stunden.
 
 Der funktionale Zweck der verzögerten Übermittlung besteht darin, sowohl fehlerhafte Endpunkte als auch das Event Grid-System zu schützen. Ohne Backoff und Verzögerung der Übermittlung an fehlerhafte Endpunkte können die Wiederholungsrichtlinie und Volumefunktionen von Event Grid ein System leicht überfordern.
@@ -289,7 +307,7 @@ Alle anderen Codes, die nicht zur obigen Gruppe (200-204) gehören, werden als F
 | Alle anderen | Wiederholen Sie den Vorgang nach mindestens 10 Sekunden. |
 
 ## <a name="custom-delivery-properties"></a>Benutzerdefinierte Übermittlungseigenschaften
-Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in den übermittelten Ereignissen enthalten sind. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Sie können bis zu zehn Header festlegen, wenn Sie ein Ereignisabonnement erstellen. Die einzelnen Headerwert dürfen nicht größer als 4.096 Bytes (4K) sein. Sie können benutzerdefinierte Header für die Ereignisse festlegen, die an die folgenden Ziele übermittelt werden:
+Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Beim Erstellen eines Ereignisabonnements können bis zu zehn Header festgelegt werden. Die einzelnen Headerwert dürfen nicht größer als 4.096 Bytes (4K) sein. Sie können benutzerdefinierte Header für die Ereignisse festlegen, die an die folgenden Ziele übermittelt werden:
 
 - webhooks
 - Azure Service Bus-Themen und -Warteschlangen

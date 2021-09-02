@@ -6,21 +6,21 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: ece547ac7032e4629a2df48c34b0412ecdc15f54
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/07/2021
+ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072116"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515587"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Verwalten des Zugriffs über öffentliche Netzwerke für Ihren IoT-Hub
 
-Deaktivieren Sie den Zugriff über öffentliche Netzwerke, um den Zugriff auf den [privaten Endpunkt für Ihren IoT-Hub in Ihrem VNet](virtual-network-support.md) einzuschränken. Verwenden Sie hierzu das Azure-Portal oder die `publicNetworkAccess`-API. Sie können den öffentlichen Zugriff auch über das Portal oder die `publicNetworkAccess`-API zulassen.
+Wenn Sie den Zugriff auf nur [einen privaten Endpunkt für einen IoT-Hub in Ihrem VNet](virtual-network-support.md) einschränken möchten, deaktivieren Sie den Zugriff über öffentliche Netzwerke. Verwenden Sie hierzu das Azure-Portal oder die `publicNetworkAccess`-API. Sie können den öffentlichen Zugriff auch über das Portal oder die `publicNetworkAccess`-API zulassen.
 
-## <a name="turn-off-public-network-access-using-azure-portal"></a>Deaktivieren des Zugriffs über öffentliche Netzwerke im Azure-Portal
+## <a name="turn-off-public-network-access-using-the-azure-portal"></a>Deaktivieren des Zugriffs über öffentliche Netzwerke im Azure-Portal
 
-1. Besuchen Sie das [Azure-Portal](https://portal.azure.com).
+1. [Navigieren Sie zum Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zu Ihrem IoT Hub. Wechseln Sie zu **Ressourcengruppen**, und wählen Sie die entsprechende Gruppe und dann Ihren IoT-Hub aus.
 3. Wählen Sie im linken Menü die Option **Netzwerk** aus.
 4. Wählen Sie unter „Zugriff über öffentliche Netzwerke zulassen auf“ die Option **Deaktiviert** aus.
@@ -30,13 +30,13 @@ Deaktivieren Sie den Zugriff über öffentliche Netzwerke, um den Zugriff auf de
 
 Wenn Sie den Zugriff über öffentliche Netzwerke aktivieren möchten, wählen Sie **Alle Netzwerke** und dann **Speichern** aus.
 
-### <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>Zugreifen auf den IoT Hub nach dem Deaktivieren des Zugriffs auf das öffentliche Netzwerk
+### <a name="accessing-the-iot-hub-after-disabling-the-public-network-access"></a>Zugreifen auf den IoT Hub nach Deaktivierung des Zugriffs auf das öffentliche Netzwerk
 
-Nachdem der Zugriff auf das öffentliche Netzwerk deaktiviert wurde, ist der IoT Hub nur über den [privaten VNet-Endpunkt über Azure Private Link](virtual-network-support.md) zu erreichen. Diese Einschränkung schließt den Zugriff über das Azure-Portal mit ein, da API-Aufrufe an den IoT Hub-Dienst direkt über Ihren Browser mit Ihren Anmeldeinformationen erfolgen.
+Nachdem der Zugriff auf das öffentliche Netzwerk deaktiviert wurde, ist der IoT Hub nur über den [privaten VNet-Endpunkt über Azure Private Link](virtual-network-support.md) zu erreichen. Diese Einschränkung schließt den Zugriff über das Azure-Portal mit ein, weil API-Aufrufe an den IoT Hub-Dienst direkt über Ihren Browser mit Ihren Anmeldeinformationen erfolgen.
 
 ### <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>IoT Hub-Endpunkt, IP-Adresse und Ports nach Deaktivierung des Zugriffs auf öffentliche Netzwerke
 
-Weil IoT Hub ist eine mehrinstanzenfähige Platform-as-a-Service-Instanz (PaaS) ist, können verschiedene Kunden denselben Pool an Compute-, Netzwerk- und Speicherhardwareressourcen gemeinsam nutzen. IoT Hub-Hostnamen werden einem öffentlichen Endpunkt mit einer öffentlich routingfähigen IP-Adresse über das Internet zugeordnet. Dieser öffentliche IoT Hub-Endpunkt wird von mehreren Kunden gemeinsam genutzt, und sämtliche IoT-Geräte in WANs und lokalen Netzwerken können darauf zugreifen. 
+Weil IoT Hub ist eine mehrinstanzenfähige Platform-as-a-Service-Instanz (PaaS) ist, können verschiedene Kunden denselben Pool an Compute-, Netzwerk- und Speicherhardwareressourcen gemeinsam nutzen. IoT Hub-Hostnamen werden einem öffentlichen Endpunkt mit einer öffentlich routingfähigen IP-Adresse über das Internet zugeordnet. Dieser öffentliche IoT Hub-Endpunkt wird von verschiedenen Kunden gemeinsam genutzt, und alle IoT-Geräte in WANs und lokalen Netzwerken können darauf zugreifen. 
 
 Die Deaktivierung des Zugriffs auf öffentliche Netzwerke wird für eine bestimmte IoT Hub-Ressource erzwungen und so die Isolation sichergestellt. Um den Dienst für andere Kundenressourcen über den öffentlichen Pfad aktiv zu halten, bleibt der öffentliche Endpunkt auflösbar, IP-Adressen bleiben erkennbar, und die Ports bleiben offen. Dies ist kein Problem, da Microsoft mehrere Sicherheitsebenen integriert, um eine vollständige Isolation zwischen Mandanten sicherzustellen. Weitere Informationen hierzu finden Sie unter [Isolation in der öffentlichen Azure-Cloud](../security/fundamentals/isolation-choices.md#tenant-level-isolation).
 
@@ -50,7 +50,7 @@ Es gibt einen IoT Hub-Fehler, bei dem der Zugriff auf den [integrierten Event Hu
 
 ## <a name="turn-on-network-access-using-azure-portal"></a>Aktivieren des Netzwerkzugriffs über das Azure-Portal
 
-1. Besuchen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zu Ihrem IoT Hub. Wechseln Sie zu **Ressourcengruppen**, und wählen Sie die entsprechende Gruppe und dann Ihren Hub aus.
 3. Wählen Sie im linken Menü die Option **Netzwerk** aus.
 4. Wählen Sie unter „Zugriff über öffentliche Netzwerke zulassen auf“ die Option **Ausgewählte IP-Adressbereiche** aus.
@@ -87,6 +87,6 @@ Wenn Sie Probleme mit dem Zugriff auf Ihren IoT-Hub haben, ist möglicherweise I
   Unable to retrieve devices. Please ensure that your network connection is online and network settings allow connections from your IP address.
 ```
 
-Um Zugriff auf den IoT-Hub zu erhalten, bitten Sie Ihren IT-Administrator, Ihre IP-Adresse dem IP-Adressbereich hinzuzufügen oder den Zugriff auf alle Netzwerke aus öffentlichen Netzwerken zu ermöglichen. Wenn das Problem dadurch nicht behoben werden kann, überprüfen Sie die Einstellungen Ihres lokalen Netzwerks, oder wenden Sie sich an Ihren lokalen Netzwerkadministrator, um die Konnektivität mit IoT Hub zu korrigieren. Manchmal kann beispielsweise ein Proxy im lokalen Netzwerk den Zugriff auf IoT Hub beeinträchtigen.
+Um Zugriff auf den IoT-Hub zu erhalten, bitten Sie Ihren IT-Administrator, Ihre IP-Adresse dem IP-Adressbereich hinzuzufügen oder den Zugriff auf alle Netzwerke aus öffentlichen Netzwerken zu ermöglichen. Wenn das Problem dadurch nicht behoben werden kann, überprüfen Sie die Einstellungen Ihres lokalen Netzwerks, oder wenden Sie sich an Ihren lokalen Netzwerkadministrator, um die Konnektivität mit dem IoT Hub zu korrigieren. Manchmal kann beispielsweise ein Proxy im lokalen Netzwerk den Zugriff auf IoT Hub beeinträchtigen.
 
 Wenn die obigen Befehle nicht funktionieren oder Sie nicht alle Netzwerkbereiche aktivieren können, wenden Sie sich an den Microsoft-Support.

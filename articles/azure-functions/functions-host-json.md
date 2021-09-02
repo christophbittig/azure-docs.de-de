@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9424162e847a9d92019efe907ce74f21c55cdb23
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226244"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346899"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -21,7 +21,7 @@ Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich
 > [!NOTE]
 > Dieser Artikel gilt für Azure Functions 2.x oder höher.  Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
 
-Andere Konfigurationsoptionen für Funktions-Apps werden in den [App-Einstellungen](functions-app-settings.md) (für bereitgestellte Apps) oder in der Datei [local.settings.json](functions-run-local.md#local-settings-file) (für die lokale Entwicklung) verwaltet.
+Andere Konfigurationsoptionen für Funktions-Apps werden in den [App-Einstellungen](functions-app-settings.md) (für bereitgestellte Apps) oder in der Datei [local.settings.json](functions-develop-local.md#local-settings-file) (für die lokale Entwicklung) verwaltet.
 
 Konfigurationen in „host.json“, die mit Bindungen im Zusammenhang stehen, werden gleichmäßig auf alle Funktionen in der Funktions-App angewendet. 
 
@@ -221,6 +221,28 @@ Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen 
 
 Die Konfigurationseinstellungen finden Sie in [Storage-Blobtrigger und Bindungen](functions-bindings-storage-blob.md#hostjson-settings).  
 
+## <a name="console"></a>console
+
+Diese Einstellung ist ein untergeordnetes Element von [logging](#logging). Sie steuert die Konsolenprotokollierung, wenn nicht im Debugmodus.
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": false,
+          "DisableColors": true
+        },
+    ...
+    }
+}
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------| 
+|DisableColors|false| Unterdrücken der Protokollformatierung in den Containerprotokollen unter Linux. Legen Sie diese Einstellung auf TRUE fest, wenn bei der Ausführung unter Linux unerwünschte ANSI-Steuerzeichen in den Containerprotokollen angezeigt werden. |
+|isEnabled|false|Aktiviert oder deaktiviert die Konsolenprotokollierung.| 
+
 ## <a name="cosmosdb"></a>cosmosDb
 
 Die Konfigurationseinstellung finden Sie in [Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb-v2-output.md#host-json).
@@ -348,26 +370,6 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 |logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Konfigurieren von Protokollierungsgraden](configure-monitoring.md#configure-log-levels). |
 |console|–| Die [Konsolen](#console)protokollierungseinstellung. |
 |applicationInsights|–| Die [applicationInsights](#applicationinsights)-Einstellung. |
-
-## <a name="console"></a>console
-
-Diese Einstellung ist ein untergeordnetes Element von [logging](#logging). Sie steuert die Konsolenprotokollierung, wenn nicht im Debugmodus.
-
-```json
-{
-    "logging": {
-    ...
-        "console": {
-          "isEnabled": "false"
-        },
-    ...
-    }
-}
-```
-
-|Eigenschaft  |Standard | BESCHREIBUNG |
-|---------|---------|---------| 
-|isEnabled|false|Aktiviert oder deaktiviert die Konsolenprotokollierung.| 
 
 ## <a name="manageddependency"></a>managedDependency
 

@@ -4,18 +4,18 @@ titleSuffix: Microsoft Genomics
 description: Diese Übersicht beschreibt die Funktionen, die Microsoft Genomics für Geschäftskontinuität und Notfallwiederherstellung bereitstellt.
 keywords: Geschäftskontinuität, Notfallwiederherstellung
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0684f8ed53c850ea3fe8adda33aa06e3a90b184c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93395749"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255799"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Übersicht über Geschäftskontinuität bei Verwenden von Microsoft Genomics
 Diese Übersicht beschreibt die Funktionen, die Microsoft Genomics für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie mehr über Optionen zur Wiederherstellung nach Störfällen, wie z. B. Ausfall einer Azure-Region, die zu Datenverlust führen können. 
