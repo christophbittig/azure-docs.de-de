@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 525f5930f82c0a595c4f1070a7714c45445a9f14
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: fbcf185aa48e7fc4333b128f21b4664106043064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356158"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256421"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET
 
@@ -42,7 +42,7 @@ Unten ist eine Liste mit den Ressourcenanforderungen für Azure Spring Cloud-Die
 | *:9000 *oder* [Diensttag](../virtual-network/service-tags-overview.md#available-service-tags): AzureCloud:9000 | TCP:9000         | Verwaltung des zugrunde liegenden Kubernetes-Clusters |                                                              |
 | *:123 *oder* ntp.ubuntu.com:123                                | UDP:123          | NTP-Zeitsynchronisierung auf Linux-Knoten  |                                                              |
 | *.azure.io:443 *oder* [Diensttag](../virtual-network/service-tags-overview.md#available-service-tags): AzureContainerRegistry:443 | TCP:443          | Azure Container Registry.                 | Kann ersetzt werden, indem der *Azure Container Registry*-[Dienstendpunkt im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird. |
-| *.core.windows.net:443 und *.core.windows.net:445 *oder* [Diensttag](../virtual-network/service-tags-overview.md#available-service-tags): Storage:443 und Storage:445 | TCP:443, TCP:445 | Azure File Storage                        | Kann ersetzt werden, indem der *Azure Storage*-[Dienstendpunkt im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird. |
+| *.core.windows.net:443 und *.core.windows.net:445 *oder* [Diensttag](../virtual-network/service-tags-overview.md#available-service-tags): Storage:443 und Storage:445 | TCP:443, TCP:445 | Azure Files                        | Kann ersetzt werden, indem der *Azure Storage*-[Dienstendpunkt im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird. |
 | *.servicebus.windows.net:443 *oder* [Diensttag](../virtual-network/service-tags-overview.md#available-service-tags): EventHub:443 | TCP:443          | Azure Event Hub                          | Kann ersetzt werden, indem der *Azure Event Hubs*-[Dienstendpunkt im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird. |
 
 

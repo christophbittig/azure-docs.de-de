@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 450a00a4ddfe7bfcae7d6c265addab5dd672ee64
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369797"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105006"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrierte Unterstützung von Jupyter Notebooks in Azure Cosmos DB (Vorschau)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,4 +64,4 @@ Informationen zu den ersten Schritten mit integrierten Jupyter Notebooks in Azur
 * [Erkunden des Katalogs mit Notebookbeispielen](https://cosmos.azure.com/gallery.html)
 * [Verwenden von Python-Notebookfunktionen und -befehlen](use-python-notebook-features-and-commands.md)
 * [Verwenden von C#-Notebookfunktionen und -befehlen](use-csharp-notebook-features-and-commands.md)
-* [Importieren von Notebooks aus einem GitHub-Repository](import-github-notebooks.md)
+* [Importieren von Notebooks aus einem GitHub-Repository](sql/import-github-notebooks.md)

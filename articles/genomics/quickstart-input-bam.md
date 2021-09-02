@@ -3,18 +3,18 @@ title: Übermitteln eines Workflows mit einer BAM-Eingabedatei
 titleSuffix: Microsoft Genomics
 description: In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn es sich bei Ihrer Eingabedatei um eine einzelne BAM-Datei handelt.
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: d9d8a10d4adcad2072282f59641b157364fecad2
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 09e06e528f2e47338871d7a564b763534a363766
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551900"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255760"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Übermitteln eines Workflows mit einer BAM-Eingabedatei
 

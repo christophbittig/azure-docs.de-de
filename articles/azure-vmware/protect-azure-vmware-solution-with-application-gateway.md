@@ -3,12 +3,12 @@ title: Schützen von Web-Apps in Azure VMware Solution mit Azure Application Gat
 description: Konfigurieren Sie Azure Application Gateway, um Ihre in Azure VMware Solution ausgeführten Web-Apps sicher verfügbar zu machen.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 407dd74b708006ffe2fb125a16cff4e220efc1fe
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 897b5788d3bb4cb76fee44cb29e8c73d5f7f34c7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356614"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257019"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>Schützen von Web-Apps in Azure VMware Solution mit Azure Application Gateway
 
@@ -39,7 +39,7 @@ Die Application Gateway-Instanz wird auf dem Hub in einem dedizierten Subnetz mi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto mit einem aktiven Abonnement.
+- Ein Azure-Konto mit einem aktiven Abonnement.    
 - Eine bereitgestellte und ausgeführte private Azure VMware Solution-Cloud.
 
 ## <a name="deployment-and-configuration"></a>Bereitstellung und Konfiguration
