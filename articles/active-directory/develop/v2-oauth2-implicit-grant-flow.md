@@ -12,12 +12,12 @@ ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 62bb4c7e0b8417b497795530065bb8a42865d837
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8c8c6fd5662637161f98f062234686ec77b92c76
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464180"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105665"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der Flow für die implizite Genehmigung
 
@@ -76,7 +76,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `state` | empfohlen |Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `nonce` | required |Ein in der Anforderung enthaltener, von der App generierter Wert, der in das resultierende id_token als Anspruch einbezogen wird. Die App kann diesen Wert dann verifizieren, um Tokenwiederholungsangriffe abzuwehren. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die zur Identifizierung des Ursprungs der Anforderung verwendet werden kann. Nur erforderlich, wenn ein „id_token“ angefordert wird. |
 | `prompt` | optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“, „select_account“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt Microsoft Identity Platform einen Fehler zurück. `prompt=select_account` sendet den Benutzer an eine Kontoauswahl, in der alle in der Sitzung gespeicherten Konten angezeigt werden. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |
-| `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter oft während der erneuten Authentifizierung, nachdem sie den [optionalen Anspruch](active-directory-optional-claims.md) `login_hint`bereits aus einer vorherigen Anmeldung extrahiert haben. |
+| `login_hint` | optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter oft während der erneuten Authentifizierung, nachdem sie den [optionalen Anspruch](active-directory-optional-claims.md) `login_hint`bereits aus einer vorherigen Anmeldung extrahiert haben. |
 | `domain_hint` | optional |Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, und so die Benutzerfreundlichkeit verbessert. Dieser Parameter wird häufig für branchenspezifische Apps verwendet, die mit nur einem Mandanten betrieben werden. Hierbei wird in einem bestimmten Mandanten ein Domänenname angegeben, und der Benutzer wird an den Verbundanbieter für diesen Mandanten weitergeleitet.  Beachten Sie, dass sich Gäste hierbei nicht bei der Anwendung anmelden können und die Nutzung von Cloudanmeldeinformationen wie FIDO eingeschränkt wird.  |
 
 Zu diesem Zeitpunkt wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Microsoft Identity Platform stellt auch sicher, dass der Benutzer den Berechtigungen zugestimmt hat, die im `scope`-Abfrageparameter angegeben sind. Wenn der Benutzer **keiner** Berechtigung zugestimmt hat, wird er dazu aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Weitere Informationen finden Sie unter [Berechtigungen, Zustimmung und mehrinstanzenfähigen Apps](v2-permissions-and-consent.md).

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: mjsantani
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d8599554918af41ead7c862ee2c84f2afd4b18a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c83c4c60028c77033227411d68aeb576a9b43a46
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786237"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707873"
 ---
 # <a name="how-to-nudge-users-to-set-up-microsoft-authenticator-preview---microsoft-authenticator-app"></a>Auffordern von Benutzern zur Einrichtung von Microsoft Authenticator (Vorschauversion): Microsoft Authenticator-App
 
@@ -70,7 +70,7 @@ Sie können nicht nur auswählen, wer aufgefordert werden soll, sondern auch def
 
 ## <a name="enable-the-nudge-policy"></a>Aktivieren der Aufforderungsrichtlinie
 
-Wenn Sie die Aufforderung aktivieren möchten, müssen Sie die Authentifizierungsmethodenrichtlinie über Graph-APIs oder PowerShell-Befehle verwenden. Die Richtlinie kann von **globalen Administratoren** oder von Administratoren für die **Authentifizierungsmethodenrichtlinie** aktualisiert werden. 
+Wenn Sie die Aufforderung aktivieren möchten, müssen Sie dazu die Authentifizierungsmethodenrichtlinie über Graph-APIs verwenden. Die Richtlinie kann von **globalen Administratoren** oder von Administratoren für die **Authentifizierungsmethodenrichtlinie** aktualisiert werden. 
 
 So konfigurieren Sie die Richtlinie mithilfe von Graph-Tester:
 
@@ -101,7 +101,7 @@ Die folgende Tabelle enthält Eigenschaften für **includeTargets**:
 
 | Name | Mögliche Werte | BESCHREIBUNG |
 |------|-----------------|-------------|
-| targetType| "user"<br>„group“ | Die Art der Zielentität. |
+| targetType| "user"<br>„Gruppe“ | Die Art der Zielentität. |
 | Id | Ein GUID-Bezeichner | Die ID des Zielbenutzers oder der Zielgruppe. |
 | targetedAuthenticationMethod | "microsoftAuthenticator" | Der Benutzer der Authentifizierungsmethode wird zur Registrierung aufgefordert. Der einzige zulässige Wert ist „microsoftAuthenticator“. |
 

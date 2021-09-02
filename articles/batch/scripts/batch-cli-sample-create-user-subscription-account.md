@@ -2,18 +2,18 @@
 title: 'Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos – Benutzerabonnement'
 description: Dieses Skript erstellt ein Azure Batch-Konto im Modus „Benutzerabonnement“. Dieses Konto ordnet Computeknoten in Ihrem Abonnement zu.
 ms.topic: sample
-ms.date: 01/29/2018
+ms.date: 08/31/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bd7b7ac3dbb52ebafa00499e64ec3cff0969a13
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7758707d8825e297e6bb90e51ab402d815d9e8cb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768331"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256038"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI-Beispiel: Erstellen eines Batch-Kontos im Modus „Benutzerabonnement“
 
-Dieses Skript erstellt ein Azure Batch-Konto im Modus „Benutzerabonnement“. Ein Konto, das Ihrem Abonnement Computeknoten zuordnet, muss über ein Azure Active Directory-Token authentifiziert werden. Die zugeordneten Computeknoten zählen zum vCPU-Kontingent (Kernkontingent) Ihres Abonnements. 
+Dieses Skript erstellt ein Azure Batch-Konto im Modus „Benutzerabonnement“. Ein Konto, das Ihrem Abonnement Computeknoten zuordnet, muss über ein Azure Active Directory-Token authentifiziert werden. Die zugeordneten Computeknoten zählen zum vCPU-Kontingent (Kernkontingent) Ihres Abonnements.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 

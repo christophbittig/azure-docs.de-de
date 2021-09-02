@@ -5,13 +5,13 @@ author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 07/28/2021
+ms.openlocfilehash: 852bbd93fe7ac1524201db1f96a6a43c7ff60bdb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078705"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355367"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Bewertungsübersicht (Migration zu Azure-VMs)
 
@@ -29,9 +29,10 @@ Bei einer Bewertung mit dem Serverermittlungs- und -bewertungstool wird gemessen
 Sie können drei Arten von Bewertungen mit der Azure Migrate-Ermittlung und -Bewertung erstellen.
 
 ***Bewertungstyp** | **Details**
---- | --- 
+--- | ---
 **Azure-VM** | Bewertungen zum Migrieren Ihrer lokalen Server zu virtuellen Azure-Computern. Sie können Ihre lokalen Server in der [VMware](how-to-set-up-appliance-vmware.md)- und [Hyper-V](how-to-set-up-appliance-hyper-v.md)-Umgebung und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu Azure-VMs mit diesem Bewertungstyp bewerten.
 **Azure SQL** | Bewertungen zum Migrieren Ihrer lokalen SQL Server-Instanzen aus Ihrer VMware-Umgebung zu Azure SQL-Datenbank oder Azure SQL Managed Instance.
+**Azure App Service** | Bewertungen zum Migrieren lokaler Web-Apps aus Ihrer VMware-Umgebung zu Azure App Service.
 **Azure VMware Solution (AVS)** | Bewertungen zum Migrieren Ihrer lokalen Server zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md) für die Migration zu Azure VMware Solution (AVS) bewerten, indem Sie diesen Bewertungstyp verwenden. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
@@ -41,7 +42,7 @@ Bewertungen, die Sie mit Azure Migrate erstellen, sind Momentaufnahmen von Daten
 
 **Bewertungstyp** | **Details** | **Daten**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen, die Empfehlungen auf der Grundlage der erfassten Leistungsdaten aussprechen | Die Empfehlung zur VM-Größe basiert auf CPU- und RAM-Auslastungsdaten.<br/><br/> Die Empfehlung zum Datenträgertyp basiert auf den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz der lokalen Datenträger. Mögliche Datenträgertypen sind Azure HDD Standard-, Azure SSD Standard- und Azure Premium-Datenträger.
+**Leistungsbasiert** | Bewertungen, die Empfehlungen auf der Grundlage der erfassten Leistungsdaten aussprechen | Die Empfehlung zur VM-Größe basiert auf CPU- und RAM-Auslastungsdaten.<br/><br/> Die Empfehlung zum Datenträgertyp basiert auf den Eingabe-/Ausgabevorgängen pro Sekunde (IOPS) und dem Durchsatz der lokalen Datenträger. Mögliche Datenträgertypen sind Azure HDD Standard, Azure SSD Standard, Azure Premium-Datenträger und Azure Ultra-Datenträger.
 **Aktuelle lokale Umgebung** | Bewertungen, bei denen keine Leistungsdaten verwendet werden, um Empfehlungen auszusprechen | Die Empfehlung zur VM-Größe basiert auf der lokalen Servergröße.<br/><br> Der empfohlene Datenträgertyp basiert auf dem ausgewählten Speichertyp für die Bewertung.
 
 ## <a name="how-do-i-run-an-assessment"></a>Ausführen einer Bewertung
@@ -122,8 +123,8 @@ Eine Azure VM-Bewertung umfasst Folgendes:
 **Eigenschaft** | **Details**
 --- | ---
 **Zielstandort** | Der Standort, zu dem die Migration durchgeführt werden soll. Die Bewertung unterstützt derzeit die folgenden Azure-Zielregionen:<br/><br/> „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“„Deutschland, Mitte“, „Deutschland, Nordosten“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
-**Zielspeicherdatenträger (übernommene Größe)** | Der Typ der Datenträger, die für die Speicherung in Azure verwendet werden sollen. <br/><br/> Geben Sie den Zielspeicherdatenträger als verwalteten Premium-, verwalteten SSD Standard- oder verwalteten HDD Standard-Datenträger an.
-**Zielspeicherdatenträger (leistungsbasierte Größenanpassung)** | Geben Sie den Zielspeicherdatenträger als automatischen, verwalteten Premium-, verwalteten HDD Standard- oder verwalteten SSD Standard-Datenträger an.<br/><br/> **Automatisch**: Die Datenträgerempfehlung erfolgt basierend auf den Leistungsdaten der Datenträger (IOPS und Durchsatz).<br/><br/>**Premium oder Standard**:  Für die Bewertung wird eine Datenträger-SKU innerhalb des ausgewählten Speichertyps empfohlen.<br/><br/> Wenn Sie eine Einzelinstanz-VM-SLA (Vereinbarung zum Servicelevel) von 99,9 % erreichen möchten, sollten Sie verwaltete Premium-Datenträger in Betracht ziehen. Dadurch wird sichergestellt, dass für alle Datenträger in der Bewertung verwaltete Premium-Datenträger empfohlen werden.<br/><br/> Azure Migrate unterstützt für die Migrationsbewertung ausschließlich verwaltete Datenträger.
+**Zielspeicherdatenträger (übernommene Größe)** | Der Typ der Datenträger, die für die Speicherung in Azure verwendet werden sollen. <br/><br/> Geben Sie den Zielspeicherdatenträger als verwalteten Premium-, verwalteten SSD Standard- oder verwalteten HDD Standard- oder Ultra-Datenträger an.
+**Zielspeicherdatenträger (leistungsbasierte Größenanpassung)** | Geben Sie den Zielspeicherdatenträger als automatischen, verwalteten Premium-, verwalteten HDD Standard-, verwalteten SSD Standard-Datenträger oder Ultra-Datenträger an.<br/><br/> **Automatisch**: Die Datenträgerempfehlung erfolgt basierend auf den Leistungsdaten der Datenträger (IOPS und Durchsatz).<br/><br/>**Premium-, Standard- oder Ultra-Datenträger**: Für die Bewertung wird eine Datenträger-SKU innerhalb des ausgewählten Speichertyps empfohlen.<br/><br/> Wenn Sie eine Einzelinstanz-VM-SLA (Vereinbarung zum Servicelevel) von 99,9 % erreichen möchten, sollten Sie verwaltete Premium-Datenträger in Betracht ziehen. Dadurch wird sichergestellt, dass für alle Datenträger in der Bewertung verwaltete Premium-Datenträger empfohlen werden.<br/><br/> Wenn Sie datenintensive Workloads ausführen möchten, die hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit geringer Latenz benötigen, sollten Sie die Verwendung von Ultra-Datenträgern in Betracht ziehen.<br/><br/> Azure Migrate unterstützt für die Migrationsbewertung ausschließlich verwaltete Datenträger.
 **Azure Reserved VM Instances** | Geben Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) an, damit diese bei Kostenschätzungen in der Bewertung berücksichtigt werden.<br/><br/> Wenn Sie „Reservierte Instanzen“ auswählen, sind die „Rabatt (%)“- und „VM-Betriebszeit“-Eigenschaften nicht anwendbar.<br/><br/> Azure Migrate unterstützt Azure Reserved VM Instances derzeit nur bei Angeboten mit nutzungsbasierter Bezahlung.
 **Größenkriterien** | Für die Anpassung der Azure-VM-Größe.<br/><br/> Sie können die Größe übernehmen oder die leistungsbasierte Größenanpassung verwenden.
 **Leistungsverlauf** | Wird bei der leistungsbasierten Größenanpassung verwendet. Der Leistungsverlauf gibt den Zeitraum für die Bewertung von Leistungsdaten an.
@@ -160,7 +161,7 @@ Eigenschaft | Details | Azure-Bereitschaftsstatus
 **Starttyp** | Azure unterstützt virtuelle Computer mit dem Starttyp BIOS, jedoch nicht UEFI. | Bedingt bereit, wenn der Starttyp UEFI ist
 **Kerne** | Pro Server sind maximal 128 Kerne zulässig. Dies ist die maximale Anzahl, die von einer Azure-VM unterstützt wird.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl von genutzten Kernen mit diesem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne zur Anwendung des Komfortfaktors. | Bereit, wenn die Anzahl von Kernen innerhalb des Limits liegt
 **RAM** | Pro Server sind maximal 3.892 GB RAM zulässig. Dies ist die maximale Größe, die von einer Azure-VM der M-Serie vom Typ Standard_M128m&nbsp;<sup>2</sup> unterstützt wird. [Weitere Informationen](../virtual-machines/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten RAM zum Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte RAM mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete RAM verwendet, um einen Komfortfaktor anzuwenden.<br/><br/> | Bereit, wenn die RAM-Größe innerhalb des Limits liegt
-**Speicherdatenträger** | Die zugeordnete Größe eines Datenträgers darf maximal 32 TB betragen. Wenngleich in Azure 64-TB-Datenträger mit Azure SSD Ultra-Datenträgern unterstützt werden, überprüft die Bewertung derzeit die Datenträgergröße auf Überschreitung von 32 TB, da sie SSD Ultra aktuell noch nicht unterstützt. <br/><br/> Pro Server dürfen einschließlich des Betriebssystemdatenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn die Größe und Anzahl von Datenträgern innerhalb der Limits liegen
+**Speicherdatenträger** | Die zugeordnete Größe eines Datenträgers darf maximal 64 TB betragen.<br/><br/> Pro Server dürfen einschließlich des Betriebssystemdatenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn die Größe und Anzahl von Datenträgern innerhalb der Limits liegen
 **Netzwerk** | Pro Server dürfen maximal 32 Netzwerkschnittstellen (NICs) angefügt sein. | Bereit, wenn die Anzahl von NICs innerhalb des Limits liegt
 
 ### <a name="guest-operating-system"></a>Gastbetriebssystem
@@ -199,7 +200,7 @@ Nachdem ein Server als bereit für Azure markiert wurde, werden bei der Bewertun
  Wenn Sie die lokale Größe übernehmen, wird der Leistungsverlauf der VMs und Datenträger bei der Bewertung in der Azure VM-Bewertung nicht berücksichtigt.
 
 - **Computegröße**: Das Bewertungstool weist basierend auf der lokal zugeordneten Größe eine Azure-VM-SKU zu.
-- **Speicher-/Datenträgergröße**: Bei der Bewertung wird der Speichertyp berücksichtigt, der in den Bewertungseigenschaften angegeben wurde, und ein entsprechender Datenträgertyp empfohlen. Mögliche Speichertypen sind HDD Standard, SSD Standard und Premium. Der Standardspeichertyp ist „Premium“.
+- **Speicher-/Datenträgergröße**: Bei der Bewertung wird der Speichertyp berücksichtigt, der in den Bewertungseigenschaften angegeben wurde, und ein entsprechender Datenträgertyp empfohlen. Mögliche Speichertypen sind HDD Standard-, SSD Standard-, Premium- und Ultra-Datenträger. Der Standardspeichertyp ist „Premium“.
 - **Netzwerkgröße**: Bei der Bewertung wird der Netzwerkadapter auf dem lokalen Server berücksichtigt.
 
 ### <a name="calculate-sizing-performance-based"></a>Berechnen der Größe (leistungsbasierte Anpassung)
@@ -216,12 +217,27 @@ Bei der Speichergröße in einer Azure VM-Bewertung versucht Azure Migrate, jede
 
 1. Die Bewertung addiert die Lese- und Schreib-IOPS eines Datenträgers, um die gesamten benötigten IOPS zu ermitteln. Ebenso werden die Werte für Lese- und Schreibdurchsatz addiert, um den gesamten Durchsatz jedes Datenträgers zu erhalten. Bei importbasierten Bewertungen haben Sie die Möglichkeit, die gesamten IOPS, den Gesamtdurchsatz und die Gesamtanzahl von Datenträgern in der importierten Datei ohne Angabe einzelner Datenträgereinstellungen anzugeben. In diesem Fall wird die individuelle Datenträgergrößenanpassung übersprungen und die gelieferten Daten werden direkt zur Berechnung der Größenanpassung und zur Auswahl einer geeigneten VM-SKU verwendet.
 
-1. Wenn Sie für den Speichertyp die Option „Automatisch“ festgelegt haben, basiert der ausgewählte Typ auf den effektiven IOPS- und Durchsatzwerten. Die Bewertung bestimmt, ob der Datenträger einem HDD Standard-, SSD Standard- oder Premium-Datenträger in Azure zugeordnet werden soll. Wenn der Speichertyp auf einen dieser Datenträgertypen festgelegt wurde, wird versucht, eine Datenträger-SKU innerhalb des ausgewählten Speichertyps zu finden.
+1. Wenn Sie für den Speichertyp die Option „Automatisch“ festgelegt haben, basiert der ausgewählte Typ auf den effektiven IOPS- und Durchsatzwerten. Die Bewertung bestimmt, ob der Datenträger einem HDD Standard-, SSD Standard-, Premium- oder Ultra-Datenträger in Azure zugeordnet werden soll. Wenn der Speichertyp auf einen dieser Datenträgertypen festgelegt wurde, wird versucht, eine Datenträger-SKU innerhalb des ausgewählten Speichertyps zu finden.
 1. Die Datenträger werden wie folgt ausgewählt:
     - Wenn die Bewertung keinen Datenträger mit den erforderlichen IOPS- und Durchsatzwerten finden kann, wird der Server als ungeeignet für Azure gekennzeichnet.
     - Wenn die Bewertung mehrere geeignete Datenträger findet, wählt sie diejenigen aus, die den in den Bewertungseinstellungen angegebenen Speicherort unterstützen.
     - Falls mehrere geeignete Datenträger vorhanden sind, wählt die Bewertung den mit den geringsten Kosten aus.
     - Wenn für einen Datenträger keine Leistungsdaten verfügbar sind, wird anhand der Datenträgergröße innerhalb der Konfiguration nach einem SSD Standard-Datenträger in Azure gesucht.
+
+##### <a name="ultra-disk-sizing"></a>Größen für Ultra-Datenträger
+
+Für Ultra-Datenträger gibt es einen Bereich von IOPS und Durchsatz, der für eine bestimmte Datenträgergröße zulässig ist, und daher unterscheidet sich die Logik für die Dimensionierung von Standard- und Premium-Datenträgern:
+1. Es werden drei Ultra-Datenträgergrößen berechnet: 
+    - Es wurde ein Datenträger (Datenträger 1) gefunden, der die Anforderungen an die Datenträgergröße erfüllen kann.
+    - Es wurde ein Datenträger (Datenträger 2) gefunden, der die Gesamtanforderungen an IOPS erfüllen kann.
+        - Bereitzustellende IOPS = (Quelldatenträgerdurchsatz) *1024/256
+    - Es wurde ein Datenträger (Datenträger 3) gefunden, der die Gesamtanforderungen an den Durchsatz erfüllen kann.
+1. Von den drei Datenträgern wird einer mit der maximalen Datenträgergröße gefunden und auf das nächste verfügbare [Angebot für Ultra-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-types#disk-size) aufgerundet. Dies ist die bereitgestellte Ultra-Datenträgergröße.
+1. Bereitgestellte IOPS werden mit der folgenden Logik berechnet:
+    - Wenn der gefundene Quelldurchsatz im zulässigen Bereich für die Ultra-Datenträgergröße liegt, entspricht der bereitgestellte IOPS-Wert dem IOPS-Wert des Quelldatenträgers.
+    - Der bereitgestellte IOPS-Wert wird andernfalls mithilfe der bereitzustellenden IOPS berechnet = (Quelldatenträgerdurchsatz) *1024/256
+1. Der bereitgestellte Durchsatzbereich hängt von den bereitgestellten IOPS ab.
+
 
 #### <a name="calculate-network-sizing"></a>Berechnen der Netzwerkgröße
 
@@ -288,21 +304,36 @@ Einige mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertu
 
 Nachdem die Größenempfehlungen ermittelt wurden, berechnet eine Azure VM-Bewertung in Azure Migrate die Compute- und Speicherkosten nach der Migration.
 
-- **Computekosten**: Azure Migrate berechnet anhand der empfohlenen Azure-VM-Größe und mithilfe der Azure-Abrechnungs-API die monatlichen Kosten für den Server.
+### <a name="compute-cost"></a>Computekosten
+Azure Migrate berechnet anhand der empfohlenen Azure-VM-Größe und mithilfe der Azure-Abrechnungs-API die monatlichen Kosten für den Server.
 
-    Bei dieser Berechnung wird Folgendes berücksichtigt:
-    - Betriebssystem
-    - Software Assurance
-    - Reservierte Instanzen
-    - VM-Betriebszeit
-    - Standort
-    - Währungseinstellungen
+Bei dieser Berechnung wird Folgendes berücksichtigt:
+- Betriebssystem
+- Software Assurance
+- Reservierte Instanzen
+- VM-Betriebszeit
+- Standort
+- Währungseinstellungen
 
-    Die Bewertung fasst die Kosten aller Server zusammen, um die monatlichen Gesamtcomputekosten zu berechnen.
+Die Bewertung fasst die Kosten aller Server zusammen, um die monatlichen Gesamtcomputekosten zu berechnen.
 
-- **Speicherkosten**: Die monatlichen Speicherkosten für einen Server werden berechnet, indem die monatlichen Kosten aller an den Server angefügten Datenträger zusammengefasst werden.
+### <a name="storage-cost"></a>Speicherkosten
+Die monatlichen Speicherkosten für einen Server werden berechnet, indem die monatlichen Kosten aller an den Server angefügten Datenträger zusammengefasst werden.
 
-    Die Bewertung berechnet die gesamten monatlichen Speicherkosten durch Aggregieren der Speicherkosten aller Server. Derzeit werden bei der Berechnung keine Angebote berücksichtigt, die in den Bewertungseinstellungen angegeben sind.
+#### <a name="standard-and-premium-disk"></a>Standard- und Premium-Datenträger
+Die Kosten für Standard- oder Premium-Datenträger werden basierend auf der ausgewählten/empfohlenen Datenträgergröße berechnet. 
+
+#### <a name="ultra-disk"></a>Ultra-Datenträger 
+
+Die Kosten für Ultra-Datenträger werden basierend auf der bereitgestellten Größe, den bereitgestellten IOPS und dem bereitgestellten Durchsatz berechnet. [Weitere Informationen](https://azure.microsoft.com/pricing/details/managed-disks/)
+
+Die Kosten werden mithilfe der folgenden Logik berechnet: 
+- Die Kosten für die Datenträgergröße werden berechnet, indem die Größe des bereitgestellten Datenträgers mit dem Stundenpreis der Datenträgerkapazität multipliziert wird.
+- Die Kosten für bereitgestellte IOPS werden berechnet, indem bereitgestellte IOPS mit dem stündlich bereitgestellten IOPS-Preis multipliziert werden.
+- Die Kosten für bereitgestellten Durchsatz werden berechnet, indem der bereitgestellte Durchsatz mit dem stündlich bereitgestellten Durchsatzpreis multipliziert wird.
+- Die Reservierungsgebühr für Ultra-Datenträger-VMs wird nicht in den Gesamtkosten hinzugefügt. [Weitere Informationen](https://azure.microsoft.com/pricing/details/managed-disks/)
+
+Die Bewertung berechnet die gesamten monatlichen Speicherkosten durch Aggregieren der Speicherkosten aller Server. Derzeit werden bei der Berechnung keine Angebote berücksichtigt, die in den Bewertungseinstellungen angegeben sind.
 
 Kosten werden in der Währung angezeigt, die in den Bewertungseinstellungen festgelegt ist.
 

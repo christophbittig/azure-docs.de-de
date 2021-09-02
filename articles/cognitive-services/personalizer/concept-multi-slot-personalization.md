@@ -2,18 +2,19 @@
 title: Personalisierung mit mehreren Slots
 description: Erfahren Sie mit den Personalizer Rang- und Belohnungs-APIs, wo und wann die Personalisierung mit einem Slot und mehreren Slots verwendet werden soll.
 services: cognitive-services
-ms.author: edjez
+author: jeffmend
+ms.author: jeffme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 05/24/2021
-ms.openlocfilehash: 042bce09afeabb10b20d8dfcb575040ccf5e1c03
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 38e94b4e7527fa32b24773e5120d60d6d039f169
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382312"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829427"
 ---
 # <a name="multi-slot-personalization-preview"></a>Personalisierung mit mehreren Slots (Vorschau)
 
