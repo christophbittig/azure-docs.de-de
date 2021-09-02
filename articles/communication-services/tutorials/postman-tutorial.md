@@ -6,14 +6,14 @@ author: ProbablePrime
 services: azure-communication-services
 ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: 7691bb6ffd93c3c87872659417f91de1599a81e8
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1b4998be1b49e58c7e2d22749ee46e1f8d754ecd
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767154"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255271"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Tutorial: Signieren und Senden von Anforderungen mit Postman
 In diesem Tutorial wird Postman eingerichtet und dazu verwendet, eine HTTP-Anforderung an Azure Communication Services zu senden. Am Ende dieses Tutorials werden Sie erfolgreich eine SMS-Nachricht mit Communication Services und Postman gesendet haben. Sie können dann mit Postman andere APIs in Azure Communication Services untersuchen.

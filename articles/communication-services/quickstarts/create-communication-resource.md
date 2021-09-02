@@ -2,20 +2,20 @@
 title: 'Schnellstart: Erstellen und Verwalten von Ressourcen in Azure Communication Services'
 titleSuffix: An Azure Communication Services quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre erste Azure Communication Services-Ressource erstellen und verwalten.
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: c4a8a58cde2e8fabe1dda374c8942607992c216c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 4516e753248b133ef0a48ab12ffe032ef7a7809e
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762352"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253574"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
 

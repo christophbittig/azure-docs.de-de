@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91ca96e69ae5408a3232513eea3ba1443c97064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462631"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253596"
 ---
 # <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
@@ -26,7 +26,7 @@ Der serverlose SQL-Pool unterstützt das Lesen mehrerer Dateien/Ordner durch die
 
 Im ersten Schritt **erstellen Sie eine Datenbank**, in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
-Sie verwenden den Ordner *csv/taxi*, um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_<year>-<month>.csv.
+Sie verwenden den Ordner *csv/taxi*, um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_\<year>-\<month>.csv.
 
 ## <a name="read-all-files-in-folder"></a>Lesen aller Dateien im Ordner
 

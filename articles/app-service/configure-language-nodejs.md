@@ -6,16 +6,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: da7d617ab92ed0e9c7564813006e3a0c044a48b6
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 14ac7953654941de176bf74bd38787b33b9c864c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343175"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225765"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Node.js-App für Azure App Service
 
-Node.js-Apps müssen mit allen erforderlichen NPM-Abhängigkeiten bereitgestellt werden. Die App Service-Bereitstellungs-Engine führt automatisch `npm install --production` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen. Wenn Sie Ihre Dateien jedoch mit [FTP/S](deploy-ftp.md) bereitstellen, müssen Sie die erforderlichen Pakete manuell hochladen.
+Node.js-Apps müssen mit allen erforderlichen NPM-Abhängigkeiten bereitgestellt werden. Die App Service-Bereitstellungs-Engine führt automatisch `npm install --production` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitstellen. Wenn Sie Ihre Dateien jedoch mit [FTP/S](deploy-ftp.md) bereitstellen, müssen Sie die erforderlichen Pakete manuell hochladen.
 
 Diese Anleitung enthält die wichtigsten Konzepte und Anweisungen für Node.js-Entwickler, die in App Service bereitstellen. Wenn Sie Azure App Service noch nie verwendet haben, befolgen Sie zunächst den [Node.js-Schnellstart](quickstart-nodejs.md) und das Tutorial [Node.js mit dem MongoDB](tutorial-nodejs-mongodb-app.md).
 
@@ -119,7 +119,7 @@ app.listen(port, () => {
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
 1. Ausführen von `npm install` ohne Flags, was npm `preinstall` und `postinstall`-Skripts einschließt und auch `devDependencies` installiert.
@@ -241,7 +241,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>Run Grunt/Bower/Gulp
 
-Standardmäßig führt die App Service-Buildautomatisierung `npm install --production` aus, wenn sie erkennt, dass eine Node.js-App über Git oder mit einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitgestellt wird. Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
+Standardmäßig führt die App Service-Buildautomatisierung `npm install --production` aus, wenn sie erkennt, dass eine Node.js-App über Git oder mit einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitgestellt wird. Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
 
 Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
@@ -387,3 +387,7 @@ Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder F
 > [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)
 
 ::: zone-end
+
+Oder siehe in zusätzlichen Ressourcen:
+
+[Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 73ef942b42858a3219502fe09c3b9281be81f964
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776551"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461228"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>Wie Sie IoT Central-REST-API-Aufrufe authentifizieren und autorisieren
 
@@ -24,9 +24,11 @@ In diesem Artikel werden die Tokentypen beschrieben, die Sie im Autorisierungshe
 
 ## <a name="token-types"></a>Tokentypen
 
+Sie sollten das Benutzer-Bearertoken verwenden, wenn Sie einige Automatisierungs-/Test-/API-Aufrufe selbst durchführen. Das SPN-Bearertoken sollten Sie verwenden, wenn Sie Ihre Entwicklungsumgebung (d. h. DevOps) automatisieren/Skripts dafür erstellen. Das API-Token kann in beiden Fällen verwendet werden, birgt aber das Risiko von Ablauf und Verlusten. Deshalb empfehlen wir, nach Möglichkeit Bearer zu verwenden. Ist das sinnvoll? 
+
 Um mithilfe IoT Central REST-API auf eine Anwendung zuzugreifen, können Sie eine der folgenden Funktionen verwenden:
 
-- _Azure Active Directory OAuth-Bearertoken_. Ein Bearertoken ist mit einem Azure Active Directory-Benutzerkonto verknüpft. Das Token gewährt dem Aufrufer die gleichen Berechtigungen wie der Benutzer in der IoT Central-Anwendung.
+- _Azure Active Directory OAuth-Bearertoken_. Ein Bearertoken ist einem Azure Active Directory-Benutzerkonto oder -Dienstprinzipal zugeordnet. Das Token gewährt dem Aufrufer die gleichen Berechtigungen wie dem Benutzer oder Dienstprinzipal in der IoT Central-Anwendung.
 - IoT Central-API-Token. Ein API-Token ist einer Rolle in Ihrer IoT Central-Anwendung zugeordnet.
 
 Weitere Informationen zu Benutzern und Rollen in IoT Central finden Sie unter [Verwalten von Benutzern und Rollen in Ihrer IoT Central Anwendung](howto-manage-users-roles.md).
@@ -56,6 +58,8 @@ Die JSON-Ausgabe des vorherigen Befehls sieht wie im folgenden Beispiel aus:
 ```
 
 Das Bearertoken ist ungefähr eine Stunde lang gültig, dann müssen Sie ein neues erstellen.
+
+Informationen zum Abrufen eines Bearertokens für einen Dienstprinzipal finden Sie unter [Dienstprinzipalauthentifizierung](/rest/api/iotcentral/authentication#service-principal-authentication).
 
 ## <a name="get-an-api-token"></a>Abrufen eines API-Tokens
 

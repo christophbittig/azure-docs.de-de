@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: article
 ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: 8deecdc043a7a39f77e96e8be5eb8bb8ef4f6191
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f76c996f75dce0ea1f6aae8dc8c86ac80f6006a5
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343567"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253862"
 ---
 # <a name="azure-route-server-preview-faq"></a>Häufig gestellte Fragen zu Azure Route Server (Vorschau)
 
@@ -24,10 +24,6 @@ ms.locfileid: "122343567"
 ## <a name="what-is-azure-route-server"></a>Was ist Azure Route Server?
 
 Azure Route Server ist ein vollständig verwalteter Dienst, mit dem Sie das Routing zwischen Ihrem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) und Ihrem virtuellen Netzwerk auf einfache Weise verwalten können.
-
-## <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Warum erfordert Azure Route Server eine öffentliche IP-Adresse?
-
-Azure Route Server muss die Konnektivität mit dem Back-End-Dienst sicherstellen, der die Route Server-Konfiguration verwaltet, da eine solche öffentliche IP-Adresse erforderlich ist. 
 
 ### <a name="is-azure-route-server-just-a-vm"></a>Ist Azure Route Server einfach nur ein virtueller Computer?
 
@@ -52,6 +48,10 @@ Nein. Azure Route Server tauscht nur BGP-Routen mit Ihrem NVA aus. Der Datenverk
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Speichert Azure Route Server Kundendaten?
 Nein. Azure Route Server tauscht nur BGP-Routen mit Ihrem virtuellen Netzwerkgerät aus und überträgt Sie dann an Ihr virtuelles Netzwerk.
+
+### <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Warum erfordert Azure Route Server eine öffentliche IP-Adresse?
+
+Azure Route Server muss die Konnektivität mit dem Back-End-Dienst sicherstellen, der die Route Server-Konfiguration verwaltet, da eine solche öffentliche IP-Adresse erforderlich ist. 
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Was passiert, wenn Azure Route Server die gleiche Route von mehreren NVAs empfängt?
 

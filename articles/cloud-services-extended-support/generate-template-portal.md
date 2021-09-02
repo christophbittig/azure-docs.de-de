@@ -8,16 +8,16 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: a4f206d68df3cd8dd4dd5b1b411d316e7aacde92
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6654d1e167eefea1544262dab279b15b87b6b2ba
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077102"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460293"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>Generieren der ARM-Vorlage für Cloud Services (erweiterter Support) mithilfe des Azure-Portals
 
-Dieser Artikel erklärt, wie Sie die ARM-Vorlage und die Parameterdatei aus dem [Azure-Portal](https://portal.azure.com) für Ihren Cloud-Dienst herunterladen. Die ARM-Vorlage und die Parameterdatei können in Bereitstellungen über Powershell verwendet werden, um einen Cloud-Dienst zu erstellen oder zu aktualisieren
+Dieser Artikel erklärt, wie Sie die ARM-Vorlage und die Parameterdatei aus dem [Azure-Portal](https://portal.azure.com) für Ihren Cloud-Dienst herunterladen. Die ARM-Vorlage und die Parameterdatei können in Bereitstellungen über PowerShell verwendet werden, um einen Clouddienst zu erstellen oder zu aktualisieren
 
 ## <a name="get-arm-template-via-portal"></a>Abrufen der ARM-Vorlage über das Portal
 
@@ -34,6 +34,6 @@ Dieser Artikel erklärt, wie Sie die ARM-Vorlage und die Parameterdatei aus dem 
     :::image type="content" source="media/download-template-portal-2.png" alt-text="Die Abbildung zeigt den SAS-URI des Pakets und die SAS-URI-Parameter der Konfiguration im Azure-Portal an.":::
   
 ## <a name="next-steps"></a>Nächste Schritte 
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Bereitstellen eines Clouddiensts (erweiterter Support) über das [Azure-Portal](deploy-portal.md)
   
