@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 06d72e0a8953e6f22faebb6da2bc607fe5ebfad0
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 124c5fba529d39a675f92642413d4305c58debda
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112239541"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101453"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt die Verwaltung verschiedener Aufgaben für ein Azure C
 
 ### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#create-an-azure-cosmos-db-account).
+Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#create-an-azure-cosmos-db-account).
 
 ### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
@@ -62,7 +62,7 @@ Im Schreibmodus mit mehreren Regionen können Sie beliebige Regionen hinzufügen
 
 ### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#add-or-remove-regions).
+Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#add-or-remove-regions).
 
 ### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
@@ -78,7 +78,7 @@ Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen 
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#enable-multiple-write-regions).
+Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#enable-multiple-write-regions).
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
@@ -164,7 +164,7 @@ Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover 
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Aktivieren automatischer Failover mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#enable-automatic-failover).
+Weitere Informationen finden Sie unter [Aktivieren automatischer Failover mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#enable-automatic-failover).
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
@@ -195,7 +195,7 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#set-failover-priority).
+Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#set-failover-priority).
 
 ### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
@@ -227,7 +227,7 @@ Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der 
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Weitere Informationen finden Sie unter [Auslösen eines manuellen Failovers mit der Azure-Befehlszeilenschnittstelle](manage-with-cli.md#trigger-manual-failover).
+Weitere Informationen finden Sie unter [Auslösen eines manuellen Failovers mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#trigger-manual-failover).
 
 ### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
@@ -238,4 +238,4 @@ Weitere Informationen finden Sie unter [Auslösen eines manuellen Failovers mit 
 Weitere Informationen und Beispiele zum Verwalten von Azure-Cosmos-Konto sowie Datenbank und Containern finden Sie in den folgenden Artikeln:
 
 * [Verwalten von Azure Cosmos DB mithilfe von Azure PowerShell](manage-with-powershell.md)
-* [Verwalten von Azure Cosmos DB mithilfe der Azure-Befehlszeilenschnittstelle](manage-with-cli.md)
+* [Verwalten von Azure Cosmos DB mithilfe der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md)

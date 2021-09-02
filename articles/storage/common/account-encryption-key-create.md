@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf646fe61e3fa00407cf2ff3f47f872167c00aa9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9ab311c8e348c6e0cbb703a73562770a2f4f963f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903896"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251739"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt
 
@@ -160,8 +160,8 @@ $account.Encryption.Services.Table
 Wenn Sie mit der Azure CLI überprüfen möchten, ob ein Dienst in einem Speicherkonto den Kontoverschlüsselungsschlüssel verwendet, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf. Dieser Befehl gibt einen Satz von Speicherkontoeigenschaften und deren Werte zurück. Suchen Sie in der Eigenschaft „Encryption“ bei jedem Dienst nach dem Feld `keyType`, und überprüfen Sie, ob dessen Wert auf `Account` festgelegt ist.
 
 ```azurecli
-az storage account show /
-    --name <storage-account> /
+az storage account show \
+    --name <storage-account> \
     --resource-group <resource-group>
 ```
 

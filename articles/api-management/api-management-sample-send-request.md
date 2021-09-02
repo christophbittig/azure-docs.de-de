@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83f3264ca3dd8460f44695acbef281c99286f2f8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92742387"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252314"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -69,7 +69,7 @@ Es gibt einige Nachteile bei einer Anforderung im Fire-and-Forget-Stil. Wenn die
 Die `send-request` -Richtlinie ermöglicht die Nutzung eines externen Diensts zum Durchführen komplexer Verarbeitungsfunktionen und zum Zurückgeben von Daten an den API Management-Dienst, der für die weitere Richtlinienverarbeitung verwendet werden kann.
 
 ### <a name="authorizing-reference-tokens"></a>Autorisieren von Verweistoken
-Eine wichtige Funktion von API Management ist der Schutz der Back-End-Ressourcen. Wenn der von Ihrer API verwendete Autorisierungsserver [JWT-Token](https://jwt.io/) als Teil des OAuth2-Ablaufs erstellt, wie dies bei [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) der Fall ist, dann können Sie mithilfe der `validate-jwt`-Richtlinie die Gültigkeit des Tokens überprüfen. Einige Autorisierungsserver erstellen sogenannte [Verweistoken](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/), die nicht ohne Rückruf des Autorisierungsservers überprüft werden können.
+Eine wichtige Funktion von API Management ist der Schutz der Back-End-Ressourcen. Wenn der von Ihrer API verwendete Autorisierungsserver [JWT-Token](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) als Teil des OAuth2-Ablaufs erstellt, wie dies bei [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) der Fall ist, dann können Sie mithilfe der `validate-jwt`-Richtlinie die Gültigkeit des Tokens überprüfen. Einige Autorisierungsserver erstellen sogenannte [Verweistoken](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/), die nicht ohne Rückruf des Autorisierungsservers überprüft werden können.
 
 ### <a name="standardized-introspection"></a>Standardisierte Introspection
 In der Vergangenheit gab es keine standardisierte Methode zur Überprüfung eines Verweistokens mit einem Autorisierungsserver. Die IETF hat jedoch den vor kurzem vorgeschlagenen Standard [RFC 7662](https://tools.ietf.org/html/rfc7662) veröffentlicht, der definiert, wie ein Ressourcenserver die Gültigkeit eines Tokens überprüfen kann.
@@ -105,7 +105,10 @@ Aus dem Antwortobjekt können Sie den Textkörper abrufen. RFC 7622 weist API M
 
 Alternativ können Sie, wenn der Autorisierungsserver das Feld „aktiv“ nicht enthält, um anzugeben, ob das Token gültig ist, ein Tool wie Postman verwenden, um zu bestimmen, welche Eigenschaften in einem gültigen Token festgelegt sind. Wenn z. B. eine gültige Tokenantwort eine Eigenschaft namens „expires_in“ enthält, überprüfen Sie, ob dieser Eigenschaftsname in der Autorisierungsserverantwort vorhanden ist, auf diese Weise:
 
+```xml
 <when condition="@(((IResponse)context.Variables["tokenstate"]).Body.As<JObject>().Property("expires_in") == null)">
+```
+
 
 ### <a name="reporting-failure"></a>Melden eines Fehlers
 Sie können mithilfe einer `<choose>`-Richtlinie ermitteln, ob das Token ungültig ist. Wenn dies der Fall ist, wird eine 401-Antwort zurückgegeben.

@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435cc7c94b3445e22b6890f326bbead504c67826
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745732"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226799"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -298,7 +298,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    Wenn Sie hier nur eine Hostschnittstelle und zwei Pfade sehen, müssen Sie beide Schnittstellen auf dem Host für iSCSI aktivieren. Folgen Sie den [detaillierten Anweisungen in der Linux-Dokumentation](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
+    Wenn Sie hier nur eine Hostschnittstelle und zwei Pfade sehen, müssen Sie beide Schnittstellen auf dem Host für iSCSI aktivieren. Folgen Sie den [detaillierten Anweisungen in der Linux-Dokumentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/online_storage_reconfiguration_guide/ifacesetup-iscsioffload).
 
 1. Das StorSimple-Gerät macht ein Volume für den CentOS-Server verfügbar. Weitere Informationen finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) über das Azure-Portal auf Ihrem StorSimple-Gerät.
 

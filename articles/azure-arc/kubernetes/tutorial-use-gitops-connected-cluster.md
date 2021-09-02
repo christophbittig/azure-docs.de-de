@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 1c639c323fcd0dd0ed9f417070d679defeb4cf1e
-ms.sourcegitcommit: 20abee54e48f9b40b83d39c5b970bd0193812cb6
+ms.openlocfilehash: c98a912394bf660f7a2f09c25c10629fd9810434
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113632428"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098301"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Aktivierung 
 
@@ -95,7 +95,8 @@ Verwenden Sie die Azure CLI-Erweiterung für `k8s-configuration`, um einen verbu
         "lastModifiedByType": null
       },
       "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
-      ```
+    }
+    ```
 
 ### <a name="use-a-public-git-repository"></a>Verwenden eines öffentlichen Git-Repositorys
 
@@ -151,7 +152,7 @@ Wie private Schlüssel können Sie Ihren known_hosts-Inhalt (bekannte Hosts) dir
 >[!NOTE]
 >* Die Chartversion 1.2.0+ des Helm-Operators unterstützt die private Authentifizierung von HTTPS Helm Release.
 >* HTTPS Helm Release wird für verwaltete AKS-Cluster nicht unterstützt.
->* Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. Informationen finden Sie unter [Herstellen einer Verbindung mithilfe eines ausgehenden Proxyservers](./quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server).
+>* Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. Informationen finden Sie unter [Herstellen einer Verbindung mithilfe eines ausgehenden Proxyservers](./quickstart-connect-cluster.md#4a-connect-using-an-outbound-proxy-server).
 
 
 ## <a name="additional-parameters"></a>Zusätzliche Parameter

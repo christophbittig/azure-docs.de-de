@@ -1,22 +1,22 @@
 ---
 title: Übersicht über Azure DDoS Protection Standard
 description: Erfahren Sie, wie der Azure DDoS Protection-Standard in Verbindung mit bewährten Anwendungsentwurfsmethoden einen Schutz vor DDoS-Angriffen darstellt.
-services: virtual-network
+services: ddos-protection
 documentationcenter: na
 author: aletheatoh
-ms.service: virtual-network
+ms.service: ddos-protection
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c8b3b0227e293c42ac9db8f888bc863e073ff6f5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2cee2aed6922a5a5d3f457c9f14fb54c07b18cd3
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103333"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310496"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 

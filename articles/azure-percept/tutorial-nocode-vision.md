@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer Vision-Lösung ohne Code in Azure Percept Studio
 description: Es wird beschrieben, wie Sie in Azure Percept Studio eine Vision-Lösung ohne Code erstellen und in Ihrem Azure Percept DK bereitstellen.
-author: philmea
-ms.author: philmea
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 35d39fabedb71e27e54d72fd8f5031bcd9510b7b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a8d1ce721c1bd67895661be25ac0bab3c230839b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746025"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227193"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Erstellen einer Vision-Lösung ohne Code in Azure Percept Studio
 

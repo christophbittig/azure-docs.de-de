@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 04/07/2021
-ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 65288730cafaa39507eeab4ed2e3d29267080262
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011149"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310472"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funktionen in der SQL-API für Hyperscale (Citus)
 
@@ -657,61 +657,6 @@ SELECT * from citus_remote_connection_stats();
  citus_worker_1 | 5432 | postgres      |                        3
 (1 row)
 ```
-
-### <a name="master_drain_node"></a>master\_drain\_node
-
-Mit der master\_drain\_node()-Funktion werden Shards aus dem angegebenen Knoten und auf andere Knoten verschoben, für die `shouldhaveshards` in [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table) auf TRUE festgelegt ist. Rufen Sie die Funktion auf, bevor Sie einen Knoten aus der Servergruppe entfernen und den physischen Server des Knotens deaktivieren.
-
-#### <a name="arguments"></a>Argumente
-
-**nodename:** Der hostname-Name des auszugleichenden Knotens.
-
-**nodeport:** Die Portnummer des auszugleichenden Knotens.
-
-**shard\_transfer\_mode:** (Optional) Geben Sie die Replikationsmethode an: logische PostgreSQL-Replikation oder einen workerübergreifenden COPY-Befehl. Mögliche Werte sind:
-
-> -   `auto`: Erfordert Replikatidentität, wenn logische Replikation möglich ist, andernfalls wird das Legacyverhalten (für Shardreparatur z. B. PostgreSQL 9.6) verwendet. Dies ist der Standardwert.
-> -   `force_logical`: Verwendet logische Replikation auch dann, wenn die Tabelle keine Replikatidentität besitzt. Alle gleichzeitigen update/delete-Anweisungen für die Tabelle schlagen während der Replikation fehl.
-> -   `block_writes`: Verwenden Sie COPY (blockierende Schreibvorgänge) für Tabellen, die keinen Primärschlüssel oder keine Replikatidentität aufweisen.
-
-**rebalance\_strategy:** (Optional) Der Name einer Strategie in [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table).
-Wenn dieses Argument ausgelassen wird, wählt die Funktion die Standardstrategie (wie in der Tabelle angegeben) aus.
-
-#### <a name="return-value"></a>Rückgabewert
-
-Nicht zutreffend
-
-#### <a name="example"></a>Beispiel
-
-Dies sind die typischen Schritte zum Entfernen eines einzelnen Knotens (z. B. „10.0.0.1“ an einem PostgreSQL-Standardport):
-
-1.  Entfernen Sie den Knoten.
-
-    ```postgresql
-    SELECT * from master_drain_node('10.0.0.1', 5432);
-    ```
-
-2.  Warten Sie, bis der Befehl abgeschlossen wurde.
-
-3.  Entfernen Sie den Knoten.
-
-Beim Ausgleichen mehrerer Knoten empfiehlt es sich, stattdessen [rebalance_table_shards](#rebalance_table_shards) zu verwenden. Auf diese Weise kann Hyperscale (Citus) vorausplanen und Shards so wenig wie möglich verschieben.
-
-1.  Führen Sie Folgendes für jeden Knoten aus, den Sie entfernen möchten:
-
-    ```postgresql
-    SELECT * FROM master_set_node_property(node_hostname, node_port, 'shouldhaveshards', false);
-    ```
-
-2.  Gleichen Sie alle Knoten gleichzeitig mit [rebalance_table_shards](#rebalance_table_shards) aus.
-
-    ```postgresql
-    SELECT * FROM rebalance_table_shards(drain_only := true);
-    ```
-
-3.  Warten Sie, bis der Ausgleich abgeschlossen ist.
-
-4.  Entfernen Sie die Knoten.
 
 ### <a name="replicate_table_shards"></a>replicate\_table\_shards
 
