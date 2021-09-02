@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93394729"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355914"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
@@ -54,7 +54,7 @@ Wer diese E-Mails für Azure AD-Rollen erhält, hängt von der Rolle, dem Ereign
 | Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
 | Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
 
-\* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md#notifications) auf **Aktivieren** festgelegt ist.
+\* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md) auf **Aktivieren** festgelegt ist.
 
 Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn ein Benutzer eine Azure AD-Rolle für die fiktive Organisation Contoso aktiviert.
 
@@ -66,16 +66,16 @@ Eine wöchentliche Privileged Identity Management-Zusammenfassung für Azure AD-
 
 ![Wöchentliche Privileged Identity Management-Zusammenfassungs-E-Mail für Azure AD-Rollen](./media/pim-email-notifications/email-directory-weekly.png)
 
-Die E-Mail enthält vier Kacheln:
+Die E-Mail enthält:
 
 | Kachel | BESCHREIBUNG |
 | --- | --- |
 | **Users activated** (Benutzer aktiviert) | Zeigt an, wie oft Benutzer ihre berechtigte Rolle in der Organisation aktiviert haben. |
 | **Users made permanent** (Benutzer als permanent festgelegt) | Zeigt an, wie oft Benutzer mit einer berechtigten Zuweisung als permanent festgelegt werden. |
 | **Rollenzuweisungen in Privileged Identity Management** | Zeigt an, wie oft Benutzern eine berechtigte Rolle in Privileged Identity Management zugewiesen wird. |
-| **Role assignments outside of PIM** (Rollenzuweisungen außerhalb von PIM) | Zeigt an, wie oft Benutzern eine permanente Rolle außerhalb von Privileged Identity Management (in Azure AD) zugewiesen wird. |
+| **Role assignments outside of PIM** (Rollenzuweisungen außerhalb von PIM) | Zeigt an, wie oft Benutzern eine permanente Rolle außerhalb von Privileged Identity Management (in Azure AD) zugewiesen wird. Diese Warnung und die zugehörige E-Mail können in den Warnungseinstellungen aktiviert oder deaktiviert werden. |
 
-Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrer Organisation basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird der [PIM-Assistent](pim-security-wizard.md) geöffnet, in dem Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
+Im Abschnitt **Overview of your top roles** (Übersicht über Ihre wichtigsten Rollen) sind die fünf wichtigsten Rollen in Ihrer Organisation basierend auf der Gesamtzahl der permanenten und berechtigten Administratoren für jede Rolle aufgeführt. Über den Link **Aktion ausführen** wird [Ermittlung und Erkenntnisse](pim-security-wizard.md) geöffnet, wo Sie permanente Administratoren in Batches in berechtigte Administratoren umwandeln können.
 
 ## <a name="email-timing-for-activation-approvals"></a>E-Mail-Timing für Aktivierungsgenehmigungen
 

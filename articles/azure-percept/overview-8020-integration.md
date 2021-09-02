@@ -1,20 +1,20 @@
 ---
 title: Azure Percept DK 80/20-Integration
 description: Erfahren Sie mehr darüber, wie das Azure Percept DK in das 80/20-Schienensystem integriert wird.
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 32254b1ca094ee3e34ca95088210bb7c2e7bc0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eafd3e24fad7549c68908deb4632053fdfc994e4
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562748"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222007"
 ---
-# <a name="azure-percept-dk-8020-integration-overview"></a>Azure Percept DK 80/20-Integrationsübersicht
+# <a name="azure-percept-dk-8020-integration"></a>Azure Percept DK 80/20-Integration
 
 Das Azure Percept DK und das Audio-Zubehör wurden für die Integration in das [80/20 T-Nut-Aluminiumbausystem](https://8020.net/) entwickelt.
 

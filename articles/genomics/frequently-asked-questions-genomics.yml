@@ -4,18 +4,18 @@ metadata:
   titleSuffix: Microsoft Genomics
   description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung des Microsoft Genomics-Diensts, einschließlich Informationen zu technischen Fragen, zu SLAs und zur Abrechnung.
   services: genomics
-  author: grhuynh
+  author: vigunase
   manager: cgronlun
-  ms.author: grhuynh
+  ms.author: vigunase
   ms.service: genomics
   ms.topic: troubleshooting
   ms.date: 12/07/2017
-  ms.openlocfilehash: 0060ebfc207c6f0027e1387f859c71a917bf7b1b
-  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.openlocfilehash: 053835683a94f20a8d91cce969fe94f7e66e5556
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113559063"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258605"
 title: 'Microsoft Genomics: Häufig gestellte Fragen'
 summary: "In diesem Artikel finden Sie die wichtigsten Fragen im Zusammenhang mit Microsoft Genomics. Weitere Informationen zum Microsoft Genomics-Dienst finden Sie unter [Was ist Microsoft Genomics?](overview-what-is-genomics.md) Weitere Informationen zur Problembehandlung finden Sie in unserem [Leitfaden zur Problembehandlung](troubleshooting-guide-genomics.md). \n"
 sections:

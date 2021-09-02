@@ -3,15 +3,15 @@ title: 'Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps'
 description: Erfahren Sie mehr über Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ac2746c963c00ffd12a272b0c41322b0f9b9b24e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 538ee3d5dec64e2558297005a600cfd1662a322a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961631"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223887"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -328,7 +328,7 @@ Die [Workflowressourcendefinition Ihrer Logik-App in einer Vorlage](/azure/templ
 
 Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-App:
 
-| attribute | Erforderlich | Typ | Beschreibung |
+| attribute | Erforderlich | type | BESCHREIBUNG |
 |-----------|----------|------|-------------|
 | `state` | Ja | String | Der Zustand Ihrer Logik-App bei der Bereitstellung, wobei `Enabled` bedeutet, dass Ihre Logik-App aktiv ist, und `Disabled` bedeutet, dass Ihre Logik-App inaktiv ist. Die Option `Disabled` können Sie beispielsweise verwenden, wenn Ihre Logik-App noch nicht aktiviert, aber bereits als Entwurfsversion bereitgestellt werden soll. |
 | `integrationAccount` | Nein | Object | Wird in Ihrer Logik-App ein Integrationskonto verwendet, das Artefakte für B2B-Szenarien (Business-to-Business) speichert, enthält dieses Objekt das `id`-Attribut, das die ID für das Integrationskonto angibt. |
@@ -534,9 +534,15 @@ In dieser Beispielvorlage ist gezeigt, wie Sie diese Aufgaben durchführen könn
             // End workflow definition
             // Start workflow definition parameter values
             "parameters": {
-               "authenticationType": "[parameters('TemplateAuthenticationType')]", // Template parameter reference
-               "fabrikamPassword": "[parameters('TemplateFabrikamPassword')]", // Template parameter reference
-               "fabrikamUserName": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               "authenticationType": {
+                  "value": "[parameters('TemplateAuthenticationType')]" // Template parameter reference
+               },
+               "fabrikamPassword": {                  
+                  "value": "[parameters('TemplateFabrikamPassword')]" // Template parameter reference
+               },
+               "fabrikamUserName": {
+                  "value": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               }
             },
             "accessControl": {}
          },

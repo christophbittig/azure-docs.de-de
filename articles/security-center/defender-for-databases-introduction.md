@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: aa02c405a3d94426e54ed7e3499f6ae79ec635e5
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 209fdfd71b4e2c0a5d1d5ede3f411b6476c19570
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732571"
 ---
 # <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>Einführung in Azure Defender für relationale Open-Source-Datenbanken
 
@@ -33,7 +33,7 @@ Azure Defender erkennt anomale Aktivitäten, die auf ungewöhnliche und potenzie
 | Geschützte Versionen von PostgreSQL:  | Einzelserver: „Universell“ und „Arbeitsspeicheroptimiert“. Weitere Informationen finden Sie in der Übersicht über die [PostgreSQL-Tarife](../postgresql/concepts-pricing-tiers.md).   |
 | Geschützte Versionen von MySQL:       | Einzelserver: „Universell“ und „Arbeitsspeicheroptimiert“. Weitere Informationen finden Sie in der Übersicht über die [MySQL-Tarife](../mysql/concepts-pricing-tiers.md).                        |
 | Geschützte Versionen von MariaDB:     | „Universell“ und „Arbeitsspeicheroptimiert“. Weitere Informationen finden Sie in der Übersicht über die [MariaDB-Tarife](../mariadb/concepts-pricing-tiers.md).                      |
-| Clouds:                            | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov, Azure China) |
+| Clouds:                            | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet) |
 |                                    |                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>Welche Vorteile bietet Azure Defender für relationale Open-Source-Datenbanken?

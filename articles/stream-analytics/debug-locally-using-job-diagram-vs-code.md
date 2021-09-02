@@ -6,14 +6,14 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa3e378e9627652810eb6ac1feaeb7b74522539
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019498"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340230"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio Code
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code-preview"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio Code (Vorschau)
 
 Streamingaufträge, die kein Ergebnis oder unerwartete Ergebnisse ausgeben, benötigen häufig eine Problembehandlung. Mit der Visual Studio Code-Erweiterung für Azure Stream Analytics werden Auftragsdiagramme, Metriken, Diagnoseprotokolle und Zwischenergebnisse integriert, damit Sie die Quelle eines Problems schnell isolieren können. Sie können das Auftragsdiagramm verwenden, während Sie Ihre Abfrage lokal testen, um das Zwischenresultset und die Zwischenmetriken für jeden Schritt zu überprüfen.
 

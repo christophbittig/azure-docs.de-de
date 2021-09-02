@@ -3,12 +3,12 @@ title: Empfohlene Sicherheitsmaßnahmen
 description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
 ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 897f09c41d550d6200cc3d78743bb3b010f2c402
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419302"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768251"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
@@ -19,7 +19,7 @@ Beim Verwenden von [Azure Lighthouse](../overview.md) müssen Sicherheit und Zug
 
 ## <a name="require-azure-ad-multi-factor-authentication"></a>Anfordern von Azure AD Multi-Factor Authentication
 
-[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (auch als zweistufige Überprüfung bezeichnet) trägt dazu bei, Angreifer daran zu hindern, Zugriff auf ein Konto zu erlangen, indem mehrere Authentifizierungsschritte erforderlich sind. Sie sollten Multi-Factor Authentication für alle Benutzer in Ihrem Verwaltungsmandanten anfordern, einschließlich Benutzer, die Zugriff auf delegierte Kundenressourcen haben werden.
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (auch als zweistufige Überprüfung bezeichnet) trägt dazu bei, Angreifer daran zu hindern, Zugriff auf ein Konto zu erlangen, indem mehrere Authentifizierungsschritte erforderlich sind. Sie sollten Azure AD Multi-Factor Authentication für alle Benutzer in Ihrem Verwaltungsmandanten anfordern, einschließlich Benutzer, die Zugriff auf delegierte Kundenressourcen haben werden.
 
 Es wird empfohlen, dass Sie Ihre Kunden auffordern, Azure AD Multi-Factor Authentication auch in ihren Mandanten zu implementieren.
 

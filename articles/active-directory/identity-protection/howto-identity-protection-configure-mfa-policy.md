@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d2bfaef8f00f6246dfef17145666c817ed26d9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835865"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355861"
 ---
 # <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>Anleitung: Konfigurieren der Registrierungsrichtlinie für Azure AD Multi-Factor Authentication
 
@@ -40,14 +40,12 @@ Weitere Informationen zu Azure AD Multi-Factor Authentication finden Sie unter 
    1. Unter **Zuweisungen**
       1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
          1. Optional können Sie Benutzer aus der Richtlinie ausschließen.
-   1. Unter **Steuerelemente**
-      1. Vergewissern Sie sich, dass das Kontrollkästchen **Azure AD-MFA-Registrierung als erforderlich festlegen** aktiviert ist, und wählen Sie **Auswählen** aus.
    1. **Richtlinie erzwingen** - **Ein**
    1. **Speichern**
 
 ## <a name="user-experience"></a>Benutzererfahrung
 
-Azure Active Directory Identity Protection fordert Ihre Benutzer auf, sich bei der nächsten interaktiven Anmeldung zu registrieren, und gibt ihnen 14 Tage Zeit, um die Registrierung vorzunehmen. Während dieses Zeitraums von 14 Tagen kann die Registrierung umgangen werden, aber am Ende des Zeitraums müssen die Benutzer sich registrieren, um den Anmeldevorgang abschließen zu können.
+Azure Active Directory Identity Protection fordert Ihre Benutzer auf, sich bei der nächsten interaktiven Anmeldung zu registrieren, und gibt ihnen 14 Tage Zeit, um die Registrierung vorzunehmen. Während dieses Zeitraums von 14 Tagen kann die Registrierung umgangen werden, Wenn MFA nicht als Bedingung vorausgesetzt wird, aber am Ende des Zeitraums müssen die Benutzer sich registrieren, um den Anmeldevorgang abschließen zu können.
 
 Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 

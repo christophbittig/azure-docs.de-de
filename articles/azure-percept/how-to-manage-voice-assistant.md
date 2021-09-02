@@ -1,20 +1,20 @@
 ---
-title: Konfigurieren eines Sprach-Assistenten in Azure Percept Studio
+title: Verwalten Ihrer Sprach-Assistent-Anwendung für Azure Percept
 description: Konfigurieren eines Sprach-Assistenten in Azure Percept Studio
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 764ca28ec6e66d63ffeb98399f654b14eb9b6715
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d66ee6e8e277585061448ecc23e4195c72c04bb6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754287"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225246"
 ---
-# <a name="managing-your-voice-assistant"></a>Verwalten Ihres Sprach-Assistenten
+# <a name="manage-your-azure-percept-voice-assistant-application"></a>Verwalten Ihrer Sprach-Assistent-Anwendung für Azure Percept
 
 In diesem Artikel wird beschrieben, wie Sie das Schlüsselwort und die Befehle Ihres Sprach-Assistenten in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) konfigurieren. Eine Anleitung zum Konfigurieren des Schlüsselworts in IoT Hub und nicht im Portal finden Sie in [diesem Artikel](./how-to-configure-voice-assistant.md).
 

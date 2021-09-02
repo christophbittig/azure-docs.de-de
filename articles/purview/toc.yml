@@ -239,19 +239,19 @@ items:
         items:
           - name: Private Endpunkte
             items:
-              - name: "Private Azure\_Purview-Endpunkte: Übersicht"
+              - name: Übersicht über private Endpunkte
                 href: catalog-private-link.md
-              - name: Privates und sicheres Herstellen einer Verbindung mit Ihrem Purview-Konto
+              - name: Isolieren des Netzwerks für das Purview-Konto und das Portal
                 href: catalog-private-link-account-portal.md
-              - name: Privates und sicheres Überprüfen Ihrer Datenquellen
+              - name: Isolieren des Netzwerks für Überprüfungen
                 href: catalog-private-link-ingestion.md
-              - name: Privates und sicheres Herstellen einer Verbindung mit Azure Purview und Überprüfen von Datenquellen
+              - name: End-to-End-Netzwerkisolation
                 href: catalog-private-link-end-to-end.md
-              - name: 'Private Azure Purview-Endpunkte: DNS-Konfiguration'
+              - name: Konfigurieren von DNS für den privaten Endpunkt
                 href: catalog-private-link-name-resolution.md
-              - name: 'Private Azure Purview-Endpunkte: Leitfaden zur Problembehandlung'
+              - name: Problembehandlung bei privaten Endpunkten
                 href: catalog-private-link-troubleshoot.md
-              - name: "Häufig gestellte Fragen zu privaten Azure\_Purview-Endpunkten"
+              - name: Häufig gestellte Fragen zu privaten Endpunkten
                 href: catalog-private-link-faqs.md
           - name: Azure-Richtlinienausnahmen
             href: create-purview-portal-faq.md

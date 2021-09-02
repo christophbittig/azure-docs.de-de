@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit Ihrem Azure Percept DK über SSH
+title: Herstellen einer Verbindung mit Azure Percept DK über SSH
 description: Erfahren Sie, wie Sie mithilfe von PuTTY eine SSH-Verbindung mit Ihrem Azure Percept DK herstellen.
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4ee194e6d501d967d37453763c9cd4b25d1bedbe
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b22a359e112d7d0d3caae76acd20a7e3fd3ada01
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754197"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226232"
 ---
-# <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Herstellen einer Verbindung mit Ihrem Azure Percept DK über SSH
+# <a name="connect-to-azure-percept-dk-over-ssh"></a>Herstellen einer Verbindung mit Azure Percept DK über SSH
 
 Führen Sie die folgenden Schritte aus, um über OpenSSH oder [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) eine SSH-Verbindung mit Ihrem Azure Percept DK einzurichten.
 

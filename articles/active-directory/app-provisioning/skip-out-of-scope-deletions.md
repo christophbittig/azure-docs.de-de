@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 37196dafd094f997bc5fe2ea165cefb9099562a0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6d9483ee7d6d131b28f58ce559f0313f3eddbb34
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784879"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231798"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>Überspringen des Löschvorgangs von Benutzerkonten außerhalb des Gültigkeitsbereichs in Azure Active Directory
 
@@ -76,7 +76,7 @@ Ersetzen Sie in der folgenden URL den Platzhalter „[servicePrincipalId]“ dur
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
-Kopieren Sie den aktualisierten Text aus Schritt 3 in den Anforderungstext („Request Body“), und legen Sie den Header „Content-Type“ in „Request Headers“ auf „application/json“ fest. 
+Kopieren Sie den aktualisierten Text aus Schritt 3 in den „Anforderungstext“. 
 
    ![PUT-Anforderung](./media/skip-out-of-scope-deletions/skip-05.png)
 

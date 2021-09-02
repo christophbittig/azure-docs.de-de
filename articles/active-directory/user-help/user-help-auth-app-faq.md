@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/30/2021
+ms.date: 06/21/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 6cc64c9b3ad3f177d50f3e659e8ea628ba485159
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f593141d425573888458b4b00858b17888c28e52
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349820"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -50,6 +50,12 @@ Unter Android empfiehlt Microsoft, der App immer den Zugriff auf den Standort zu
 **F:** Wie werden meine Standortinformationen verwendet und gespeichert?
 
 **A:** Die Authenticator-App erfasst Ihre GPS-Informationen, um zu bestimmen, in welchem Land Sie sich befinden. Der Name des Landes und die Standortkoordinaten werden zurück an das System gesendet, um zu ermitteln, ob Sie auf die geschützte Ressource zugreifen dürfen. Der Name des Landes wird gespeichert und an Ihren IT-Administrator gemeldet. Ihre tatsächlichen Koordinaten werden jedoch nie auf Microsoft-Servern gespeichert.
+
+### <a name="notification-blocks-sign-in"></a>Benachrichtigung blockiert Anmeldung
+
+**F**: Ich versuche, mich zu anmelden, und muss die Zahl in meiner App auswählen, die auf dem Anmeldebildschirm angezeigt wird. Die Benachrichtigungsaufforderung von Authenticator blockiert jedoch den Anmeldebildschirm. Wie gehe ich vor?  
+
+**A**: Wählen Sie die Option „Ausblenden“ in der Benachrichtigung aus, damit der Anmeldebildschirm und die Zahl, die Sie auswählen müssen, angezeigt werden. Die Eingabeaufforderung wird nach 5 Sekunden erneut angezeigt, und Sie können dann die richtige Zahl auswählen.
 
 ### <a name="registering-a-device"></a>Registrieren eines Geräts
 
@@ -93,7 +99,7 @@ Unter Android empfiehlt Microsoft, der App immer den Zugriff auf den Standort zu
 
 **A:** Die Authenticator-App erfasst drei Arten von Informationen:
 
-- Kontoinformationen, die Sie beim Hinzufügen Ihres Kontos angeben. Diese Daten können durch Entfernen Ihres Kontos entfernt werden.
+- Kontoinformationen, die Sie beim Hinzufügen Ihres Kontos angeben. Nach dem Hinzufügen Ihres Kontos werden Ihre Kontodaten abhängig von den Features, die Sie für das Konto aktivieren, möglicherweise mit der App synchronisiert. Diese Daten können durch Entfernen Ihres Kontos entfernt werden.
 - Diagnoseprotokolldaten, die sich nur in der App befinden, bis Sie die Option **Feedback senden** im oberen Menü der App auswählen, um die Protokolle an Microsoft zu senden. Diese Protokolle können personenbezogene Daten wie E-Mail-Adressen, Serveradressen oder IP-Adressen sowie Gerätedaten enthalten. Dazu zählen z. B. der Gerätename und die Betriebssystemversion. Personenbezogene Daten werden nur in soweit erfasst, wie es für die Behebung von App-Problemen erforderlich ist. Sie können diese Protokolldateien in der App jederzeit durchsuchen, um die erfassten Informationen anzuzeigen. Wenn Sie Ihre Protokolldateien senden, werden die Techniker der Authenticator-App diese ausschließlich zur Behebung von durch Kunden gemeldeten Problemen verwenden.
 - Nicht personenbezogene Verwendungsdaten, z. B. „Ablauf zum Hinzufügen des Kontos gestartet/Konto erfolgreich hinzugefügt“ oder „Benachrichtigung genehmigt“. Diese Daten sind ein wesentlicher Faktor bei unseren Technikentscheidungen. Anhand Ihrer Nutzungsdaten erfahren wir, wie wir unsere Apps auf für unsere Kunden relevante Weise verbessern können. Sie werden über diese Datensammlung informiert, wenn Sie die App zum ersten Mal benutzen. In diesem Zusammenhang werden Sie darauf hingewiesen, dass die Datensammlung auf der App-Seite  **Einstellungen** deaktiviert werden kann. Sie können die Einstellung jederzeit aktivieren oder deaktivieren.
 

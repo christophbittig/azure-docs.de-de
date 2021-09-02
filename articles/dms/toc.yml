@@ -18,6 +18,8 @@
           href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Konzepte
   items:
+    - name: Migration mithilfe von Azure Data Studio
+      href: migration-using-azure-data-studio.md
     - name: Voraussetzungen
       href: pre-reqs.md
     - name: Status des Datenbankmigrationsszenarios

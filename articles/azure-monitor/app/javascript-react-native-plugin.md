@@ -6,14 +6,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b407fdc0614d94862257ce3bebc0f58f971f9d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593594"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339502"
 ---
-# <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>React Native-Plug-In für das Application Insights JavaScript SDK
+# <a name="react-native-plugin-for-application-insights-javascript-sdk"></a>React Native-Plug-In für das Application Insights JavaScript SDK
 
 Das React Native-Plug-In für das Application Insights JavaScript SDK sammelt Geräteinformationen. Standardmäßig werden die folgenden Informationen automatisch von diesem Plug-In gesammelt:
 

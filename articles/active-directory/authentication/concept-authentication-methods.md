@@ -5,26 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b6071370d510881d06c5b81f8660781169596a72
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5adc3bd8ef03b2613198518fc22284686c2bfee9
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764410"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730749"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
-Bei der Anmeldung bei Konten in Azure Active Directory (Azure AD) hat ein Benutzer verschiedene Möglichkeiten, sich zu authentifizieren. Benutzername und Kennwort sind die gängigste Art und Weise, in der ein Benutzer bisher seine Anmeldeinformationen bereitgestellt hat. Dank moderner Authentifizierungs- und Sicherheitsfunktionen in Azure AD sollte dieses Basiskennwort durch sicherere Authentifizierungsmethoden ergänzt oder ersetzt werden.
+Microsoft empfiehlt kennwortlose Authentifizierungsmethoden wie Windows Hello, FIDO2-Sicherheitsschlüssel und die Microsoft Authenticator-App, weil sie die sicherste Umgebung für Anmeldungen bieten. Obwohl sich ein Benutzer mit anderen gängigen Methoden wie „Benutzername“ und „Kennwort“ anmelden kann, sollten Kennwörter durch sicherere Authentifizierungsmethoden ersetzt werden.
 
 ![Tabelle mit den bevorzugten Authentifizierungsmethoden in Azure AD und deren Stärken](media/concept-authentication-methods/authentication-methods.png)
-
-Die sichersten Anmeldeereignisse erzielen Sie mit kennwortlosen Authentifizierungsmethoden wie Windows Hello, FIDO2-Sicherheitsschlüssel und Microsoft Authenticator-App.
 
 Bei der Benutzeranmeldung bietet Azure AD Multi-Factor Authentication (MFA) zusätzliche Sicherheit im Vergleich zur alleinigen Verwendung eines Kennworts. Der Benutzer kann aufgefordert werden, sich zusätzlich in einer anderen Form zu authentifizieren, z. B. durch die Antwort auf eine Pushbenachrichtigung, die Eingabe eines Codes von einem Software- oder Hardwaretoken oder die Beantwortung einer SMS oder eines Telefonanrufs.
 
@@ -68,8 +66,8 @@ Aus der folgenden Tabelle geht hervor, wann eine Authentifizierungsmethode bei e
 | Windows Hello for Business     | Ja                    | MFA                       |
 | Microsoft Authenticator-App    | Ja                    | MFA und SSPR              |
 | FIDO2-Sicherheitsschlüssel             | Ja                    | MFA                       |
-| OATH-Hardwaretoken (Vorschau) | Nein                     | MFA                       |
-| OATH-Softwaretoken           | Nein                     | MFA                       |
+| OATH-Hardwaretoken (Vorschau) | Nein                     | MFA und SSPR              |
+| OATH-Softwaretoken           | Nein                     | MFA und SSPR              |
 | SMS                            | Ja                    | MFA und SSPR              |
 | Anruf                     | Nein                     | MFA und SSPR              |
 | Kennwort                       | Ja                    |                           |
@@ -89,9 +87,6 @@ Weitere Informationen zur Funktionsweise der einzelnen Authentifizierungsmethode
 
 > [!NOTE]
 > In Azure AD wird häufig ein Kennwort als primäre Authentifizierungsmethode verwendet. Die Authentifizierungsmethode über Kennwort kann nicht deaktiviert werden. Wenn Sie ein Kennwort als primären Authentifizierungsfaktor verwenden, sollten Sie die Sicherheit von Anmeldeereignissen mithilfe von Azure AD Multi-Factor Authentication erhöhen.
-
-> [!IMPORTANT]
-> Fido2 erfüllt zwar die erforderlichen Anforderungen, um als Form der MFA zu dienen, FIDO2 kann jedoch nur als kennwortlose Form der Authentifizierung verwendet werden.
 
 In bestimmten Szenarien können die folgenden zusätzlichen Überprüfungsmethoden verwendet werden:
 
