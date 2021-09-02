@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a1205647f4895407bff9301415249a055990f6e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c1ab7e4f30fbd297bc5aad79a8d250ec55684ddb
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339573"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215328"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Herstellen einer Verbindung mit Ihrem Azure Synapse-Arbeitsbereich mit privaten Links
 
@@ -44,6 +44,9 @@ Private Endpunkte werden in einem Subnetz erstellt. Durch die Auswahl des Abonne
 Wählen Sie auf der Registerkarte **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus. Wählen Sie das **Abonnement** aus, das Ihren Azure Synapse-Arbeitsbereich enthält. Der **Ressourcentyp** zum Erstellen privater Endpunkte in einem Azure Synapse-Arbeitsbereich ist *Microsoft.synapse/workspaces*.
 
 Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen**, für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
+- Sql gilt für die Ausführung von SQL-Abfragen im SQL-Pool.
+- SqlOnDemand gilt für die in SQL integrierte Abfrageausführung.
+- Dev gilt für den Zugriff auf alles andere innerhalb der Azure Synapse Analytics Studio-Arbeitsbereiche.
 
 Klicken Sie auf **Weiter: Konfiguration>** , um mit dem nächsten Teil der Einrichtung fortzufahren.
 ![Auswählen von Abonnement und Regionsdetails 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)

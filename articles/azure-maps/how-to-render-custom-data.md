@@ -1,26 +1,30 @@
 ---
-title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte | Microsoft Azure Maps
+title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte in Microsoft Azure Maps
 description: Hier erfahren Sie, wie Sie Ortsmarken, Bezeichnungen und geometrische Formen zu einer Rasterkarte hinzufügen. Informieren Sie sich zu diesem Zweck über die Verwendung des statischen Bilddiensts in Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/26/2021
+ms.date: 07/02/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f5c9bf695dc9eb11f1d44857783a727d7afafe03
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e02da9993804ec170ba89b08ee1b46e01a1adac4
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029709"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232356"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
-In diesem Artikel wird erläutert, wie Sie den [statischen Bilddienst](/rest/api/maps/render/getmapimage) mit der Bildzusammensetzungsfunktionalität verwenden können, um Überlagerungen auf einer Rasterkarte zu ermöglichen. Die Bildzusammensetzung beinhaltet die Möglichkeit, eine Rasterkachel mit zusätzlichen Daten wie benutzerdefinierten Ortsmarken, Bezeichnungen und Geometrieüberlagerungen abzurufen.
+In diesem Artikel wird beschrieben, wie Sie den [statischen Bilddienst](/rest/api/maps/render/getmapimage) mit der Bildzusammensetzungsfunktionalität verwenden. Die Bildzusammensetzungsfunktion unterstützt das Abrufen einer statischen Rasterkachel, die benutzerdefinierte Daten enthält.
 
-Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, Bezeichnungen und Geometrieüberlagerungen zu rendern. Sie können die [Datendienst-APIs](/rest/api/maps/data) von Azure Maps verwenden, um Überlagerungen zu speichern und zu rendern.
+Nachfolgend finden Sie Beispiele für benutzerdefinierte Daten:
+
+- Benutzerdefinierte Ortsmarken
+- Bezeichnungen
+- Geometrieüberlagerungen
 
 > [!Tip]
 > Häufig ist die Nutzung des Azure Maps Web SDK zum Anzeigen einer einfachen Karte auf einer Webseite kostengünstiger als die Verwendung des statischen Bilddiensts. Das Web SDK verwendet Kartenkacheln. Sofern der Benutzer in der Karte nicht schwenkt und zoomt, wird oftmals nur der Bruchteil einer Transaktion pro Kartenladevorgang generiert. Das Azure Maps Web SDK verfügt über Optionen zum Deaktivieren von Schwenken und Zoomen. Außerdem bietet das Azure Maps Web SDK umfassendere Optionen für die Datenvisualisierung als ein statischer Kartenwebdienst.  
@@ -30,53 +34,71 @@ Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, B
 1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können jedoch auch eine andere API-Entwicklungsumgebung verwenden.
+In diesem Artikel wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
+
+Wir verwenden die [Data Service-APIs](/rest/api/maps/data) von Azure Maps zum Speichern und Rendern von Überlagerungen.
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Rendern von Ortsmarken mit Bezeichnungen und benutzerdefinierten Bildern
 
 > [!Note]
-> Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 oder Gen 2.
-
+> Das Verfahren in diesem Abschnitt erfordert ein Azure Maps-Konto im Tarif „Gen 1“ oder „Gen 2“.
 Azure Maps-Konten im Tarif „Gen1 Standard S0“ unterstützen nur eine einzelne Instanz des Parameters `pins`. Sie können bis zu fünf Ortsmarken rendern, die in der URL-Anforderung mit einem benutzerdefinierten Bild festgelegt werden.
 
-Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und einem benutzerdefinierten Bild zu rendern:
+### <a name="get-static-image-with-custom-pins-and-labels"></a>Abrufen eines statischen Bilds mit benutzerdefinierten Ortsmarken und Bezeichnungen
 
-1. Erstellen Sie eine Sammlung, in der die Anforderungen gespeichert werden. Klicken Sie in der Postman-App auf **New** (Neu). Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). 
+So rufen Sie ein statisches Bild mit benutzerdefinierten Ortsmarken und Bezeichnungen ab
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
-    
-    ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
+1. Klicken Sie in der Postman-App auf **New** (Neu).
 
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu erstellen.
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen Anforderungsnamen (**Request name**) für die Anforderung ein, beispielsweise *GET Static Image* (Statisches Bild ABRUFEN).
+
+
+4. Wählen Sie als HTTP-Methode **GET** aus.
+
+
+5. Geben Sie die folgende URL ein (ersetzen `{subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
 
-    Das Ergebnis ist das folgende Bild:
+6. Wählen Sie **Send** (Senden) aus.
 
-    ![Eine benutzerdefinierte Ortsmarke mit einer Bezeichnung](./media/how-to-render-custom-data/render-pins.png)
+7. Der Dienst gibt das folgende Bild zurück:
 
+    :::image type="content" source="./media/how-to-render-custom-data/render-pins.png" alt-text="Eine benutzerdefinierte Ortsmarke mit einer Bezeichnung.":::
 
-## <a name="get-data-from-azure-maps-data-storage"></a>Abrufen von Daten aus dem Azure Maps-Datenspeicher
+## <a name="upload-pins-and-path-data"></a>Hochladen von Ortsmarken- und Pfaddaten
 
 > [!Note]
 > Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
-Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe der [Datenupload-API](/rest/api/maps/data-v2/upload-preview) abrufen. Gehen Sie folgendermaßen vor, um die Daten zu Pfaden und Ortsmarken hochladen.
+In diesem Abschnitt laden wir Pfad- und Ortsmarkendaten in den Azure Map-Datenspeicher hoch.
 
-1. Öffnen Sie in der Postman-App eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „POST“ aus, und geben Sie die folgende URL ein, um eine POST-Anforderung zu erstellen:
+So laden Sie Ortsmarken- und Pfaddaten hoch
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen **Request name** (Anforderungsnamen) für die Anforderung ein, z. B. *POST Path and Pin Data*.
+
+4. Wählen Sie als HTTP-Methode **POST** aus.
+
+5. Geben Sie die folgende URL ein (ersetzen `{subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
     ```HTTP
     https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
-2. Geben Sie die folgenden Schlüssel-Wert-Paare auf der Registerkarte **Params** (Parameter) ein, die für die URL der POST-Anforderung verwendet werden. Ersetzen Sie den Wert `subscription-key` durch Ihren Azure Maps-Abonnementschlüssel.
+6. Wählen Sie die Registerkarte **Body** (Text) aus.
 
-    ![Schlüssel-Wert-Parameter in Postman](./media/how-to-render-custom-data/postman-key-vals.png)
+7. Wählen Sie in den Dropdownlisten **raw** und **JSON** aus.
 
-3. Klicken Sie auf der Registerkarte **Body** (Text) auf „raw input format“ (Rohdaten-Eingabeformat), und wählen Sie JSON aus der Dropdownliste als Eingabeformat aus. Geben Sie den folgenden JSON-Code als hochzuladende Daten ein:
-    
+8. Kopieren Sie die folgenden JSON-Daten als hochzuladende Daten, und fügen Sie sie dann in das Fenster **Body** (Text) ein:
+  
     ```JSON
     {
       "type": "FeatureCollection",
@@ -137,86 +159,135 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
     }
     ```
 
-4. Klicken Sie auf **Send** (Senden), und überprüfen Sie den Antwortheader. Bei einer erfolgreichen Anforderung enthält der Header *Operation-Location* den `status URL`, um den aktuellen Status der Uploadanforderung zu überprüfen. `status URL` weist das folgende Format auf:
+9. Wählen Sie **Send** (Senden) aus.
+
+10. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
+
+11. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Wir verwenden die `status URL`, um den Status der Uploadanforderung im nächsten Abschnitt zu überprüfen. `status URL` weist das folgende Format auf:
 
    ```HTTP
-   https://us.atlas.microsoft.com/mapData/operations/{statusUrl}?api-version=2.0
+   https://us.atlas.microsoft.com/mapData/operations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?api-version=2.0
    ```
 
-5. Kopieren Sie Ihren Status-URI, und fügen Sie den subscription-key-Parameter mit dem Wert des Abonnementschlüssels Ihres Azure Maps-Kontos an diesen an. Verwenden Sie den gleichen Kontoabonnementschlüssel, den Sie zum Hochladen der Daten verwendet haben. Das Format des Status-URI sollte wie folgt aussehen:
+>[!TIP]
+>Verwenden Sie die [API zum Hochladen von Daten](/rest/api/maps/data-v2/upload-preview), um Ihre eigenen Pfad- und Ortsmarken-Positionsinformationen zu erhalten.
+
+### <a name="check-pins-and-path-data-upload-status"></a>Überprüfen des Uploadstatus von Ortsmarken- und Pfaddaten
+
+So überprüfen Sie den Status des Datenuploads und rufen seine eindeutige ID (`udid`) ab
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen **Request name** (Anforderungsname) für die Anforderung ein, z. B. *GET Datenuploadstatus*.
+
+4. Wählen Sie als HTTP-Methode **GET** aus.
+
+5. Geben Sie die `status URL` ein, die Sie im Schritt [Hochladen von Ortsmarken- und Pfaddaten](#upload-pins-and-path-data) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen (ersetzen `{subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
    ```HTTP
-     https://us.atlas.microsoft.com/mapData/operations/{statusUrl}?api-version=2.0&subscription-key={Subscription-key}
+     https://us.atlas.microsoft.com/mapData/operations/{statusUrl}?api-version=2.0&subscription-key={subscription-key}
    ```
 
-6. Öffnen Sie zum Abrufen des Werts für `udid` eine neue Registerkarte in der Postman-App. Wählen Sie auf der Registerkarte „Generator“ die Methode GET HTTP aus. Senden Sie eine GET-Anforderung an `status URL`. Wenn der Datenupload erfolgreich ausgeführt wurde, erhalten Sie im Antworttext einen Wert für `udid`. Kopieren Sie die Kachelset-ID (`udid`).
+6. Wählen Sie **Send** (Senden) aus.
 
-   ```JSON
-   {
-      "udid" : "{udId}"
-   }
-   ```
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
-7. Verwenden Sie den von der Data Upload-API empfangenen Wert `udid`, um Merkmale auf der Karte zu rendern. Öffnen Sie hierzu eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie die GET HTTP-Methode auf der Registerkarte „Builder“ aus, ersetzen Sie {subscription-key} und {udId} durch Ihre Werte, und geben Sie diese URL ein, um eine GET-Anforderung zu stellen:
+8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der Zeichnungspaketressource.
+
+    :::image type="content" source="./media/how-to-render-custom-data/resource-location-url.png" alt-text="Kopieren Sie die URL des Ressourcenspeicherorts.":::
+
+### <a name="render-uploaded-features-on-the-map"></a>Rendern hochgeladener Features auf der Karte
+
+So rendern Sie die hochgeladenen Ortsmarken- und Pfaddaten auf der Karte
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen **Request name** (Anforderungsname) für die Anforderung ein, z. B. *GET Datenuploadstatus*.
+
+4. Wählen Sie als HTTP-Methode **GET** aus.
+
+5. Geben Sie die folgende URL für den [Renderdienst](/rest/api/maps/render/get-map-image) ein. Ersetzen Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel und `udid` durch den `udid`-Wert der hochgeladenen Daten:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-    Hier sehen Sie das Antwortbild:
+6. Der Dienst gibt das folgende Bild zurück:
 
-    ![Abrufen von Daten aus dem Azure Maps-Datenspeicher](./media/how-to-render-custom-data/uploaded-path.png)
+    :::image type="content" source="./media/how-to-render-custom-data/uploaded-path.png" alt-text="Rendern von hochgeladenen Daten in einem statischen Kartenbild.":::
 
 ## <a name="render-a-polygon-with-color-and-opacity"></a>Rendern eines Polygons mit Farbe und Transparenz
 
 > [!Note]
 > Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
-
 Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit dem Parameter [path](/rest/api/maps/render/getmapimage#uri-parameters) verwenden.
 
-1. Öffnen Sie in der Postman-App eine neue Registerkarte in der zuvor erstellten Sammlung. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zum Rendern eines Polygons mit Farbe und Transparenz zu konfigurieren:
-    
+So rendern Sie ein Polygon mit Farbe und Deckkraft
+
+1. Klicken Sie in der Postman-App auf **New** (Neu).
+
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen **Request name** (Anforderungsname) für die Anforderung ein, z. B. *GET Polygon*.
+
+4. Wählen Sie als HTTP-Methode **GET** aus.
+
+5. Geben Sie die folgende URL für den [Renderdienst](/rest/api/maps/render/get-map-image) ein. Ersetzen Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel:
+  
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
     &subscription-key={subscription-key}
     ```
 
-    Hier sehen Sie das Antwortbild:
+6. Der Dienst gibt das folgende Bild zurück:
 
-    ![Rendern eines durchsichtigen Polygons](./media/how-to-render-custom-data/opaque-polygon.png)
-
+    :::image type="content" source="./media/how-to-render-custom-data/opaque-polygon.png" alt-text="Rendern eines undurchsichtigen (opaken) Polygons.":::
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Rendern von Kreisen und Ortsmarken mit benutzerdefinierten Bezeichnungen
 
 > [!Note]
 > Der Vorgang in diesem Abschnitt erfordert ein Azure Maps-Konto in der Preisstufe Gen 1 (S1) oder Gen 2.
 
-
 Sie können die Darstellung der Ortsmarken durch Hinzufügen von Stilmodifizierern ändern. Sie können Ortsmarken und ihre Bezeichnungen beispielsweise vergrößern oder verkleinern, indem Sie den „Skalierungsstil“-Modifizierer `sc` verwenden. Dieser Modifizierer akzeptiert Werte über 0 (null). Der Wert 1 ist die Standardskalierung. Werte größer als 1 machen die Ortsmarken größer, und Werte kleiner als 1 machen sie kleiner. Weitere Informationen zu den Modifizierern finden Sie unter [static image service path parameters (Parameter für statische Bilddienstpfade)](/rest/api/maps/render/getmapimage#uri-parameters).
 
+So rendern Sie einen Kreis und Ortsmarken mit benutzerdefinierten Bezeichnungen
 
-Führen Sie die folgenden Schritte aus, um einen Kreis und Ortsmarken mit benutzerdefinierten Bezeichnungen zu rendern:
+1. Klicken Sie in der Postman-App auf **New** (Neu).
 
-1. Öffnen Sie in der Postman-App eine neue Registerkarte in der zuvor erstellten Sammlung. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu senden:
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
+
+3. Geben Sie einen **Request name** (Anforderungsname) für die Anforderung ein, z. B. *GET Polygon*.
+
+4. Wählen Sie als HTTP-Methode **GET** aus.
+
+5. Geben Sie die folgende URL für den [Renderdienst](/rest/api/maps/render/get-map-image) ein. Ersetzen Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-    Hier sehen Sie das Antwortbild:
+6. Wählen Sie **Send** (Senden) aus.
 
-    ![Rendern eines Kreises mit benutzerdefinierten Ortsmarken](./media/how-to-render-custom-data/circle-custom-pins.png)
+7. Der Dienst gibt das folgende Bild zurück:
 
-2. Zum Ändern der Farbe der Ortsmarken aus dem letzten Schritt ändern Sie den „Co“-Stilmodifizierer. Betrachten Sie `pins=default|la15+50|al0.66|lc003C62|co002D62|`, wird die aktuelle Farbe als „#002D62“ in CSS angegeben. Angenommen, Sie möchten den Wert in „#41d42a“ ändern. Schreiben Sie den neuen Farbwert nach dem „Co“-Spezifizierer wie folgt: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Stellen einer neuen GET-Anforderung:
+    :::image type="content" source="./media/how-to-render-custom-data/circle-custom-pins.png" alt-text="Rendern eines Kreises mit benutzerdefinierten Ortsmarken.":::
+
+8. Nun ändern wir die Farbe der Ortsmarken, indem wir den Stilmodifizierer `co` ändern. Wenn Sie den Wert des `pins`-Parameters (`pins=default|la15+50|al0.66|lc003C62|co002D62|`) betrachten, sehen Sie, dass die aktuelle Farbe `#002D62` ist. Um die Farbe in `#41d42a` zu ändern, ersetzen wir `#002D62` durch `#41d42a`.  Der Parameter `pins` lautet nun `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Die Anforderung sieht wie die folgende URL aus:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-    Im folgenden sehen Sie das Antwortbild nach dem Ändern der Farben der Ortsmarken:
+9. Wählen Sie **Send** (Senden) aus.
 
-    ![Rendern eines Kreises mit aktualisierten Ortsmarken](./media/how-to-render-custom-data/circle-updated-pins.png)
+10. Der Dienst gibt das folgende Bild zurück:
+
+    :::image type="content" source="./media/how-to-render-custom-data/circle-updated-pins.png" alt-text="Rendern eines Kreises mit aktualisierten Ortsmarken.":::
 
 Auf ähnliche Weise können Sie andere Stilmodifiziererer ändern, hinzufügen und entfernen.
 

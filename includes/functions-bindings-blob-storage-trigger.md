@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: functions
 author: craigshoemaker
@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 16ab569428510b3b423d6727fd31ee450a8d197e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0eaf21a20c41952a78e37b5139adb9a993513b2d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381602"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803069"
 ---
 ### <a name="default"></a>Standard
 
@@ -47,4 +47,4 @@ Apps, die die [Version 5.0.0 oder höher der Storage-Erweiterung](../articles/a
 
 <sup>1</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
 
-Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples).
+Beispiele für die Verwendung dieser Typen finden Sie im [GitHub-Repository für die jeweilige Erweiterung](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples). Erfahren Sie im [Azure.Storage.Blobs- Migrationshandbuch](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md) mehr über diese neuen Typen, wie sie sich unterscheiden und wie zu ihnen migrieren.

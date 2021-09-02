@@ -2,16 +2,16 @@
 title: Schnellstart – Hinzufügen von VoIP-Telefonie zu einer Android-App mithilfe von Azure Communication Services
 description: In diesem Tutorial erfahren Sie, wie Sie das Calling SDK von Azure Communication Services für Android verwenden
 author: chpalm
-ms.author: mikben
+ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 18ac7ba882f82e1c5de29367e3cd27f0f5a260c0
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3953bdeaed6a20417b321ce89cd6b72ee052058a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339686"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970242"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Android beginnen.
 

@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5c10490437fb12b3f1bf5cc105a3a6e8fcf00430
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a4523634daee427fb86ef288ab68cdc158cfeb0f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419095"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039962"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Gewusst wie: Anpassen von Browsern und Webansichten für iOS/macOS
+# <a name="customize-browsers-and-webviews-for-iosmacos"></a>Anpassen von Browsern und Webansichten für iOS/macOS
 
 Ein Webbrowser ist Voraussetzung für die interaktive Authentifizierung. Unter iOS und macOS 10.15 (und höher) verwendet die Microsoft Authentication Library (MSAL) standardmäßig den Systemwebbrowser (der möglicherweise oben in der App angezeigt wird) für die interaktive Authentifizierung bei der Anmeldung von Benutzern. Die Nutzung des Systembrowsers hat den Vorteil, dass der SSO-Status (Single Sign-On, einmaliges Anmelden) für andere Anwendungen und Webanwendungen freigegeben wird.
 

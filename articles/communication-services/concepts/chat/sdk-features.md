@@ -3,23 +3,23 @@ title: Übersicht über das Chat SDK für Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
 description: Hier finden Sie Informationen zum Chat SDK von Azure Communication Services.
 author: knvsl
-manager: jken
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 540457d554ad2124b3fdd9557833bce8319df8d7
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2279761beffa9724a56fe9a4af54787d15a3705a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252403"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258270"
 ---
 # <a name="chat-sdk-overview"></a>Übersicht über das Chat SDK 
 
 Die Chat SDKs von Azure Communication Services können verwendet werden, um Ihren Anwendungen umfassende Echtzeitchatfunktionen hinzuzufügen.
-    
+
 ## <a name="chat-sdk-capabilities"></a>Funktionen der Chat SDKs    
 
 Die folgende Liste enthält die Features, die aktuell in den Chat SDKs von Communication Services verfügbar sind:  
