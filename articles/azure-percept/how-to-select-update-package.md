@@ -1,18 +1,18 @@
 ---
-title: Auswählen des besten Updatepaket für Ihr Azure Percept DK
+title: Auswählen des Updatepakets für Azure Percept DK
 description: Vorgehensweise zum Identifizieren Ihrer Azure Percept DK-Version und zum Auswählen des entsprechend besten Updatepakets
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 05/04/2021
+ms.date: 07/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7528e11e24485fecc3e83773d98e119d98ca63cf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e2256ba6ad1f2f125b21e7cb59ab74b44864bce6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968766"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340536"
 ---
 # <a name="how-to-determine-and-download-the-best-update-package-for-ota-and-usb-updates"></a>Vorgehensweise zum Ermitteln und Herunterladen des besten Updatepakets für OTA- und USB-Updates
 
@@ -50,9 +50,9 @@ Ermitteln Sie anhand der im vorherigen Abschnitt angegebenen **model**- und **sw
 
 |model  |swVersion  |Updatemethode  |Downloadlinks  |Hinweis  |
 |---------|---------|---------|---------|---------|
-|PE-101     |2020.108.101.105, <br>2020.108.114.120, <br>2020.109.101.122, <br>2020.109.116.120, <br>2021.101.106.118        |**Nur USB**         |[USB-Updatepaket 2021.105.111.112](https://go.microsoft.com/fwlink/?linkid=2155734)         |Release von Mai (2105)         |
-|PE-101     |2021.102.108.112, <br>         |OTA oder USB        |[OTA-Manifest 2021.105.111.112 (PE-101)](https://go.microsoft.com/fwlink/?linkid=2155625)<br>[OTA-Updatepaket 2021.105.111.112](https://go.microsoft.com/fwlink/?linkid=2161538)<br>[USB-Updatepaket 2021.105.111.112](https://go.microsoft.com/fwlink/?linkid=2155734)          |Release von Mai (2105)         |
-|APDK-101     |Alle swVersions        |OTA oder USB       | [OTA-Manifest 2021.105.111.112 (APDK-101)](https://go.microsoft.com/fwlink/?linkid=2163554)<br>[OTA-Updatepaket 2021.105.111.112](https://go.microsoft.com/fwlink/?linkid=2163456)<br>[USB-Updatepaket 2021.105.111.112](https://go.microsoft.com/fwlink/?linkid=2163555)        |Release von Mai (2105)         |
+|PE-101     |Alle swVersions       |**Nur USB**         |[USB-Updatepaket 2021.107.129.116](https://go.microsoft.com/fwlink/?linkid=2169086)         |Juli-Release (2107)         |
+|APDK-101     |Agent-swVersion vor 2021.106.111.115 |**Nur USB**         |[USB-Updatepaket 2021.107.129.116](https://go.microsoft.com/fwlink/?linkid=2169086)         |Juli-Release (2107)         |
+|APDK-101     |2021.106.111.115        |OTA oder USB       |[OTA-Updatepaket 2021.107.129.116](https://go.microsoft.com/fwlink/?linkid=2169245)<br>[USB-Updatepaket 2021.107.129.116](https://go.microsoft.com/fwlink/?linkid=2169086)        |Juli-Release (2107)         |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

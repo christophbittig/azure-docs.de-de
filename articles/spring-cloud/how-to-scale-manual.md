@@ -3,16 +3,16 @@ title: Skalieren einer Anwendung in Azure Spring Cloud | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie im Azure-Portal eine Anwendung mit Azure Spring Cloud skalieren.
 ms.service: spring-cloud
 ms.topic: how-to
-ms.author: brendm
-author: bmitchell287
+ms.author: karler
+author: karlerickson
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 97261755f55f9193d0169e91597318928bb45b97
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 22bae9cd5a626f6a90427bd7522f2b99fa08ca0c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340453"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Skalieren einer Anwendung in Azure Spring Cloud
 
@@ -28,7 +28,7 @@ Anschließend wissen Sie, wie jede Anwendung in Ihrem Dienst schnell manuell ge�
 
 Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 * Eine bereitgestellte Azure Spring Cloud-Dienstinstanz.  Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI](./quickstart.md).
 * Mindestens eine bereits in Ihrer Dienstinstanz erstellte Anwendung.
 
@@ -63,7 +63,8 @@ Wählen Sie unbedingt **Speichern** aus, um Ihre Skalierungseinstellungen zu üb
 Nach wenigen Sekunden werden die von Ihnen vorgenommenen Änderungen auf der Seite **Übersicht** angezeigt. Weitere Details können Sie auf der Registerkarte **Anwendungsinstanzen** einsehen. Für die Skalierung sind weder Codeänderungen noch eine erneute Bereitstellung erforderlich.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
-Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [Limits](./quotas.md) eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü „Preise“, indem Sie zuerst die Tarifspalte „Standard“ auswählen und dann auf die Schaltfläche **Upgrade** klicken.
+
+Wenn Sie sich im Tarif „Basic“ befinden und durch eins oder mehrere dieser [Limits](./quotas.md) eingeschränkt sind, können Sie ein Upgrade auf den Tarif „Standard“ durchführen. Wechseln Sie zu diesem Zweck zum Menü „Preise“, indem Sie zuerst die Spalte **Standardtarif** auswählen und dann die Schaltfläche **Upgrade**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

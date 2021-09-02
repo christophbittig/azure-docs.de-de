@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fcdca5aaedb9d3b0e86e02e931eb7e38c16cc25
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100583806"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731854"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Bereitstellen des Azure Monitor Application Insights-Agents für lokale Server
 
@@ -18,11 +18,11 @@ ms.locfileid: "100583806"
 > Diese Anleitung wird für lokale Bereitstellungen von Application Insights-Agent und Bereitstellungen in einer anderen Cloud als Azure empfohlen. Die empfohlene Vorgehensweise für Bereitstellungen auf Azure-VMs und in VM-Skalierungsgruppen finden Sie [hier](./azure-vm-vmss-apps.md).
 
 Application Insights-Agent (früher Statusmonitor V2) ist ein im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.ApplicationMonitor) veröffentlichtes PowerShell-Modul.
-Es ersetzt den [Statusmonitor](./monitor-performance-live-website-now.md).
+Es ersetzt den Statusmonitor.
 Telemetriedaten werden an das Azure-Portal gesendet, wo Sie Ihre App [überwachen](./app-insights-overview.md) können.
 
 > [!NOTE]
-> Das Modul unterstützt derzeit nur die codefreie Instrumentierung von mit IIS gehosteten .NET-Web-Apps. Verwenden Sie ein SDK zum Instrumentieren von ASP.NET Core-, Java- und Node.js-Anwendungen.
+> Das Modul unterstützt derzeit nur die codelose Instrumentierung von mit IIS gehosteten .NET- und .NET Core-Web-Apps. Verwenden Sie ein SDK zum Instrumentieren von Java- und Node.js-Anwendungen.
 
 ## <a name="powershell-gallery"></a>PowerShell-Katalog
 
@@ -60,7 +60,7 @@ Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-
 
 - Werden ASP.NET Core-Anwendungen von Version 2 des Statusmonitors unterstützt?
 
-  *Nein*. Anweisungen zum Aktivieren der Überwachung von ASP.NET Core-Anwendungen finden Sie unter [Application Insights für ASP.NET Core-Anwendungen.](./asp-net-core.md) Es ist nicht erforderlich, den Statusmonitor für eine ASP.NET Core-Anwendung zu installieren. Dies gilt auch, wenn die ASP.NET Core-Anwendung in IIS gehostet wird.
+  *Ja*. Ab [Application Insights-Agent 2.0.0-beta1](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/2.0.0-beta1) werden in IIS gehostete ASP.NET Core-Anwendungen unterstützt.
 
 - Wie überprüfe ich, ob die Aktivierung erfolgreich war?
 

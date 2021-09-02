@@ -3,15 +3,17 @@ title: 'Erfassen von Streamingereignissen: Azure Event Hubs | Microsoft-Dokument
 description: Dieser Artikel gibt einen Überblick über die Capture-Funktion, mit der Sie Ereignisse erfassen können, die Azure Event Hubs durchlaufen.
 ms.topic: article
 ms.date: 02/16/2021
-ms.openlocfilehash: d3153c4d82cfbdf232d1834db8f26462f893961b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fbc151b7dafe5c2f29f0101122b3936ae162a734
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339479"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage
 Azure Event Hubs ermöglicht Ihnen die automatische Erfassung von Streamingdaten in Event Hubs in einem [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)- oder [Azure Data Lake Store Gen 1 oder Gen 2](https://azure.microsoft.com/services/data-lake-store/)-Konto Ihrer Wahl. Um für mehr Flexibilität zu sorgen, ist dabei die Angabe eines Zeit- oder Größenintervalls möglich. Capture lässt sich schnell einrichten, es fallen keine Verwaltungskosten zur Ausführung an, und es wird automatisch mit Event Hubs-[Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) im Standard-Tarif oder [Verarbeitungseinheiten](event-hubs-scalability.md#processing-units) im Premium-Tarif skaliert. Event Hubs Capture ist die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht es Ihnen, sich auf die Datenverarbeitung anstatt auf die Datenerfassung zu konzentrieren.
+
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="Abbildung: Erfassung von Event Hubs-Daten in Azure Storage oder Azure Data Lake Storage":::
 
 > [!NOTE]
 > Die Konfiguration von Event Hubs Capture für die Verwendung von Azure Data Lake Storage **Gen 2** ist identisch mit der Konfiguration von Event Hubs Capture für die Verwendung einer Azure Blob Storage-Instanz. Weitere Informationen finden Sie unter [Konfigurieren von Event Hubs Capture](event-hubs-capture-enable-through-portal.md). 
@@ -79,7 +81,7 @@ Native Unterstützung für Azure Blob Storage ist verfügbar, damit Sie Daten in
 
 [Apache Drill: Azure Blob Storage-Plug-In][Apache Drill: Azure Blob Storage Plugin]
 
-Zum einfachen Abfragen von erfassten Dateien können Sie eine VM erstellen und ausführen, für die Apache Drill über einen Container für den Zugriff auf Azure Blob Storage aktiviert ist. Weitere Informationen finden Sie im folgenden Beispiel: [Streaming at Scale with Event Hubs Capture](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture) (Bedarfsorientiertes Streaming mit Event Hubs Capture, in englischer Sprache)
+Zum einfachen Abfragen von erfassten Dateien können Sie eine VM erstellen und ausführen, für die Apache Drill über einen Container für den Zugriff auf Azure Blob Storage aktiviert ist. Weitere Informationen finden Sie im folgenden Beispiel: [Streaming at Scale with Event Hubs Capture](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture-databricks-delta) (Bedarfsorientiertes Streaming mit Event Hubs Capture, in englischer Sprache)
 
 ### <a name="use-apache-spark"></a>Verwenden von Apache Spark
 

@@ -2,18 +2,19 @@
 title: Ethik und verantwortungsvolle Verwendung – Personalisierung
 titleSuffix: Azure Cognitive Services
 description: Diese Richtlinien sollen Ihnen dabei helfen, die Personalisierung auf eine Weise zu implementieren, die Ihnen dabei hilft, Vertrauen in Ihr Unternehmen und Ihren Dienst aufzubauen. Achten Sie darauf, dass Sie sich Zeit nehmen, zu forschen, zu lernen und sich mit den Auswirkungen der Personalisierung auf das Leben der Benutzer auseinanderzusetzen. Lassen Sie sich im Zweifelsfall beraten.
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fb950fb0a589d4ac9dc6554b95a8f72fa8ca7b3
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96005978"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831566"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlinien für die verantwortungsvolle Implementierung der Personalisierung
 

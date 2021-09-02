@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 92805b4f6c46a32718d755d19c9053705112fa48
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5192a740667217741b20d6bd335ca5662f3fc6aa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321337"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690599"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -137,7 +137,7 @@ In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, um Server für den B
 3. Geben Sie in das Suchfeld *Skalierungsgruppe* ein, und drücken Sie die EINGABETASTE.
 4. Wählen Sie **VM-Skalierungsgruppe** und dann **Erstellen** aus.
 5. Geben Sie für **Name der VM-Skalierungsgruppe** den Wert *myvmss* ein.
-6. Stellen Sie bei „Betriebssystem-Datenträgerimage“ sicher, dass **Windows Server 2016 Datacenter** ausgewählt ist.
+6. Stellen Sie für das **Betriebssystem-Datenträgerimage** sicher, dass **Windows Server 2016 Datacenter** ausgewählt ist.
 7. Wählen Sie für **Ressourcengruppe** den Wert **myResourceGroupAG** aus.
 8. Geben Sie für *Benutzername* den Wert **azureuser** ein.
 9. Geben Sie für **Kennwort** den Wert *Azure123456!* ein, und bestätigen Sie das Kennwort.

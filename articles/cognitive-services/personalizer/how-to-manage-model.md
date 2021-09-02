@@ -1,16 +1,19 @@
 ---
 title: Verwalten von Modell- und Lerneinstellungen – Personalisierung
 description: Die maschinell erlernten Modell- und Lerneinstellungen können zur Sicherung in Ihre eigene Quellcodeverwaltung exportiert werden.
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e1e5dd9c21b89aba4c905656dd79c7934f8b061
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97797246"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831602"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Verwalten von Modell- und Lerneinstellungen
 

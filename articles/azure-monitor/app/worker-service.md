@@ -4,12 +4,12 @@ description: Überwachen von .NET Core- und .NET Framework-Apps ohne HTTP mit Az
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: c1ca594626d4384c9dfb62990ee2017d2094fca4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ed4670c1eda0a6a6b1b32ca69cc8a2010ae486e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371854"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339692"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
@@ -44,7 +44,7 @@ Spezielle Anweisungen für die einzelnen Anwendungstypen finden Sie in den folge
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3.0-Workerdienstanwendung
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerService).
 
 1. Laden Sie [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) herunter, und installieren Sie es.
 2. Erstellen Sie mit einer Visual Studio-Projektvorlage oder mit der Befehlszeile `dotnet new worker` ein neues Workerdienstprojekt.
@@ -136,7 +136,7 @@ In der Regel wird mit `APPINSIGHTS_INSTRUMENTATIONKEY` der Instrumentierungsschl
 
 In [diesem Dokument](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio) wird das Erstellen von Hintergrundaufgaben in einer ASP.NET Core 2.1/2.2-Anwendung beschrieben.
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/BackgroundTasksWithHostedService).
 
 1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 2. Fügen Sie wie im folgenden Beispiel dargestellt `services.AddApplicationInsightsTelemetryWorkerService();` der `ConfigureServices()`-Methode hinzu:
@@ -223,7 +223,7 @@ Im folgenden Code für `TimedHostedService` befindet sich die Hintergrundaufgabe
 
 Wie am Anfang dieses Artikels erwähnt, kann das neue Paket verwendet werden, um Application Insights-Telemetrie sogar aus einer regulären Konsolenanwendung zu aktivieren. Dieses Paket ist für [`NetStandard2.0`](/dotnet/standard/net-standard) vorgesehen und kann daher für Konsolenanwendungen in .NET Core 2.0 oder höher und .NET Framework 4.7.2 oder höher verwendet werden.
 
-Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights).
+Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ConsoleApp).
 
 1. Installieren Sie das Paket [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) für die Anwendung.
 
@@ -305,7 +305,7 @@ Mit [Livemetriken](./live-stream.md) kann schnell überprüft werden, ob die App
 
 ### <a name="ilogger-logs"></a>ILogger-Protokolle
 
-Protokolle, die über `ILogger` mit dem Schweregrad `Warning` oder höher ausgegeben werden, werden automatisch erfasst. Informationen zur Anpassung der in Application Insights erfassten Protokollebenen finden Sie in der [Dokumentation zu ILogger](ilogger.md#control-logging-level).
+Protokolle, die über `ILogger` mit dem Schweregrad `Warning` oder höher ausgegeben werden, werden automatisch erfasst. Informationen zur Anpassung der in Application Insights erfassten Protokollebenen finden Sie in der [Dokumentation zu ILogger](ilogger.md#logging-level).
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
@@ -532,9 +532,9 @@ Rufen Sie eine Instanz von `TelemetryClient` ab, indem Sie die Abhängigkeit üb
 
 Das Onboarding mit der Visual Studio-IDE wird derzeit nur für ASP.NET-/ASP.NET Core-Anwendungen unterstützt. Dieses Dokument wird aktualisiert, wenn Visual Studio das Onboarding von Workerdienstanwendungen unterstützt.
 
-### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Kann ich die Application Insights-Überwachung mit Tools wie dem Statusmonitor aktivieren?
+### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-azure-monitor-application-insights-agent-formerly-status-monitor-v2"></a>Kann ich die Application Insights-Überwachung mithilfe von Tools wie Azure Monitor Application Insights-Agent (früher Statusmonitor v2) aktivieren?
 
-Nein. Der [Statusmonitor](./monitor-performance-live-website-now.md) und der [Statusmonitor v2](./status-monitor-v2-overview.md) unterstützen aktuell ausschließlich ASP.NET 4.x.
+Nein, [Azure Monitor Application Insights-Agent](./status-monitor-v2-overview.md) unterstützt derzeit nur ASP.NET 4.x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Werden alle Features unterstützt, wenn ich meine Anwendung unter Linux ausführe?
 
@@ -561,11 +561,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>Beispielanwendungen
 
-[.NET Core-Konsolenanwendung](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie eine Konsolenanwendung verwenden, die in .NET Core (2.0 oder höher) oder .NET Framework (4.7.2 oder höher) geschrieben ist.
+[.NET Core-Konsolenanwendung](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ConsoleApp) Nutzen Sie dieses Beispiel, wenn Sie eine Konsolenanwendung verwenden, die in .NET Core (2.0 oder höher) oder .NET Framework (4.7.2 oder höher) geschrieben ist.
 
-[ASP .NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier) ](/aspnet/core/fundamentals/host/hosted-services) erstellen.
+[ASP.NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier)](/aspnet/core/fundamentals/host/hosted-services) erstellen.
 
-[.NET Core 3.0-Workerdienst](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template) verfügen.
+[.NET Core 3.0-Workerdienst](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerService) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template) verfügen.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: b56313183ba3bf39313ec06ddb9cdb36ac445aee
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4d15aa4801e55f583d8c77199105c207f1af8fe7
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204511"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224401"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Konfigurieren einer ASP.NET-App für Azure App Service
 
@@ -75,7 +75,7 @@ Wenn Sie eine App-Einstellung mit demselben Namen in App Service und in *web.con
 
 ## <a name="deploy-multi-project-solutions"></a>Bereitstellen von Projektmappen mit mehreren Projekten
 
-Wenn eine Visual Studio-Projektmappe mehrere Projekte enthält, umfasst der Veröffentlichungsprozess von Visual Studio bereits das Auswählen des bereitzustellenden Projekts. Wenn Sie für die App Service-Bereitstellungs-Engine bereitstellen, z. B. mit Git oder einer ZIP-Bereitstellung, und dabei die Buildautomatisierung aktiviert ist, wählt die App Service-Bereitstellungs-Engine das erste Website- oder Webanwendungsprojekt aus, das als App Service-App gefunden wird. Sie können angeben, welches Projekt App Service verwenden soll, indem Sie die App-Einstellung `PROJECT` angeben. Führen Sie beispielsweise Folgendes in der [Cloud Shell](https://shell.azure.com) aus:
+Wenn eine Visual Studio-Projektmappe mehrere Projekte enthält, umfasst der Veröffentlichungsprozess von Visual Studio bereits das Auswählen des bereitzustellenden Projekts. Wenn Sie für die App Service-Bereitstellungs-Engine bereitstellen, z. B. mit Git oder einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung ](deploy-zip.md#enable-build-automation-for-zip-deploy), wählt die App Service-Bereitstellungs-Engine das erste Website- oder Webanwendungsprojekt aus, das als App Service-App gefunden wird. Sie können angeben, welches Projekt App Service verwenden soll, indem Sie die App-Einstellung `PROJECT` angeben. Führen Sie beispielsweise Folgendes in der [Cloud Shell](https://shell.azure.com) aus:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -105,7 +105,7 @@ Trace.TraceInformation("GET /Home/Index"); // Information trace
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="more-resources"></a>Weitere Ressourcen
 
-> [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [Tutorial: Build an ASP.NET app in Azure with SQL Database (Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank)](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

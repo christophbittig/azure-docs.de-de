@@ -3,12 +3,12 @@ title: Azure Service Fabric-Versionen
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric und aktiv unterstützte Plattformversionen.
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: f8979d83934234379a61cb8fab606cf5f37cf7e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4eb08bb2ce94612ee81b9cdf19a1b3cd2e2d6b00
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080685"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339216"
 ---
 # <a name="service-fabric-supported-versions"></a>Unterstützte Service Fabric-Versionen
 In den Tabellen in diesem Artikel werden die Service Fabric- und Plattformversionen beschrieben, die aktiv unterstützt werden.
@@ -17,8 +17,12 @@ In den Tabellen in diesem Artikel werden die Service Fabric- und Plattformversio
 
 | Service Fabric-Runtime |Direktes Upgrade möglich von|Downgrade möglich auf|Kompatible SDK- oder NuGet-Paket-Version|Unterstützte .NET-Runtimes** |Betriebssystemversion |Ende des Supports |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | Aktuelle Version |
-| 8.0 RTO | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | Aktuelle Version |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | Alle Versionen bis einschließlich Version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | Aktuelle Version |
+| 8.1 RTO | 7.2 CU7 | 8.0 | Alle Versionen bis einschließlich Version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | Aktuelle Version |
+| 8.0 CU3 | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | 28. Februar 2022 |
+| 8.0 CU2 | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | 28. Februar 2022 |
+| 8.0 CU1 | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | 28. Februar 2022 |
+| 8.0 RTO | 7.1 CU10 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | 28. Februar 2022 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | Alle Versionen bis einschließlich Version 4.2 | .NET 5.0 (Vorschauunterstützung), >= .NET Core 2.1,<br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date) | 30. November 2021 |
 | 7.2 CU6 | 7.0 CU4 |7.1 | Alle Versionen bis einschließlich Version 4.2 | .NET 5.0 (Vorschauunterstützung), >= .NET Core 2.1,<br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date)| 30. November 2021 |
 | 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |Alle Versionen bis einschließlich Version 4.2 | >= .NET Core 2.1,<br>Alle >= .NET Framework 4.5 | [Unterstützte Betriebssystemversionen](#supported-windows-versions-and-support-end-date)| 30. November 2021 |
@@ -47,7 +51,7 @@ Die Unterstützung für Service Fabric auf bestimmten Betriebssystemen endet, we
 
 | Betriebssystemversion | Enddatum für die Service Fabric-Unterstützung | Link zum Betriebssystemlebenszyklus |
 | --- | --- | --- |
-| Windows 10 2019 LTSC | 09.01.2029 | <a href="/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC – Microsoft-Lebenszyklus</a> |
+| Windows 10 2019 LTSC | 09.01.2029 | <a href="/lifecycle/products/windows-10-ltsc-2019">Windows 10 2019 LTSC – Microsoft-Lebenszyklus</a> |
 | Version 20H2 | 09.05.2023 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise und Education – Microsoft-Lebenszyklus</a> |
 | Version 2004 | 14.12.2021| <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise und Education – Microsoft-Lebenszyklus</a> |
 | Version 1909 | 10.05.2022 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise und Education – Microsoft-Lebenszyklus</a> |
@@ -58,8 +62,11 @@ Die Unterstützung für Service Fabric auf bestimmten Betriebssystemen endet, we
 
 | Service Fabric-Runtime | Direktes Upgrade möglich von |Downgrade möglich auf |Kompatible SDK- oder NuGet-Paket-Version | Unterstützte .NET-Runtimes** | Betriebssystemversion | Ende des Supports |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU8 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | Aktuelle Version |
-| 8.0 RTO | 7.1 CU8 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | Aktuelle Version |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | Alle Versionen bis einschließlich Version 5.1 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | Aktuelle Version |
+| 8.1 RTO | 7.2 CU7 | 8.0 | Alle Versionen bis einschließlich Version 5.1 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | Aktuelle Version |
+| 8.0 CU3 | 7.1 CU8 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 28. Februar 2022 |
+| 8.0 CU1 | 7.1 CU8 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 28. Februar 2022 |
+| 8.0 RTO | 7.1 CU8 | 7.2 | Alle Versionen bis einschließlich Version 5.0 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 28. Februar 2022 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | Alle Versionen bis einschließlich Version 4.2 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 30. November 2021 |
 | 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | Alle Versionen bis einschließlich Version 4.2 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 30. November 2021 |
 | 7.1 | 7.0 CU3 | – | Alle Versionen bis einschließlich Version 4.1 | >= .NET Core 2.1 | [Unterstützte Betriebssystemversionen](#supported-linux-versions-and-support-end-date) | 31. Juli 2021 |
@@ -75,20 +82,15 @@ Die Unterstützung für Service Fabric auf bestimmten Betriebssystemen endet, we
 | Ubuntu 18.04 | April 2028 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu-Lebenszyklus</a>|
 | Ubuntu 16.04 | April 2024 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu-Lebenszyklus</a>|
 
-## <a name="supported-net-runtimes"></a>Unterstützte .NET-Runtimes
-
-In der folgenden Tabelle werden die .NET-Runtimes aufgeführt, die von Service Fabric unterstützt werden:
-
-| Service Fabric-Runtime | Unterstützte .NET-Runtimes für Windows |Unterstützte .NET-Runtimes für Linux |
-| --- | --- | --- |
-| 8.0 CU1 | .NET 5.0, >= .NET Core 2.1, Alle >= .NET Framework 4.5 | >= .NET Core 2.1|
-| 8.0 RTO | .NET 5.0, >= .NET Core 2.1, Alle >= .NET Framework 4.5 | >= .NET Core 2.1|
-
 ## <a name="service-fabric-version-name-and-number-reference"></a>Referenz zu Service Fabric-Versionsnamen und -nummern
 In der folgende Tabelle werden die Versionsnamen von Service Fabric und die zugehörigen Versionsnummern aufgeführt.
 
 | Versionsname | Windows-Versionsnummer | Linux-Versionsnummer |
 | --- | --- | --- |
+| 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |
+| 8.1 RTO | 8.1.316.9590 | 8.1.320.1 |
+| 8.0 CU3 | 8.0.536.9590 | 8.0.527.1 |
+| 8.0 CU2 | 8.0.521.9590 | Nicht verfügbar |
 | 8.0 CU1 | 8.0.516.9590 | 8.0.515.1 | 
 | 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |

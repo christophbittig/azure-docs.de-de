@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0145460746665756f007c50845a279743dc60ae1
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680150"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666318"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
-Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen und die „Hotspots“ der Daten auf einer Karte zu zeigen. Wärmebilder sind eine hervorragende Möglichkeit, Datensätze mit einer großen Anzahl von Punkten zu rendern. 
+Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen und die „Hotspots“ der Daten auf einer Karte zu zeigen. Wärmebilder sind eine hervorragende Möglichkeit, Datensätze mit einer großen Anzahl von Punkten zu rendern.
 
 Das Rendering von Zehntausenden von Punkten als Symbole kann den größten Teil des Kartenbereichs abdecken. Dieser Fall führt wahrscheinlich zu vielen überlappenden Symbolen. Das gestaltet es schwierig, ein besseres Verständnis der Daten zu erlangen. Wenn Sie dasselbe Dataset jedoch als Wärmebild visualisieren, können Sie einfach die Dichte und die relative Dichte der einzelnen Datenpunkte erkennen.
 
@@ -68,19 +68,19 @@ Hier finden Sie das vollständige, ausführbare Codebeispiel für den oben erlä
 Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die Deckkraft angepasst wurden. Auf der Wärmebildebene können verschiedene Optionen angepasst werden, z. B.:
 
 * `radius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Der Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Mithilfe eines Ausdrucks können Sie den Radius auf der Grundlage des Zoomfaktors skalieren. Er stellt dann ein zusammenhängendes räumliches Gebiet auf der Karte dar (beispielsweise einen 5-Meilen-Radius).
-* `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Ein Farbverlauf ist ein häufiges Merkmal von Wärmebildern. Sie können den Effekt mit einem `interpolate`-Ausdruck erreichen. Sie können auch einen `step`-Ausdruck für die farbige Darstellung des Wärmebilds verwenden. In diesem Fall wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert. 
+* `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Ein Farbverlauf ist ein häufiges Merkmal von Wärmebildern. Sie können den Effekt mit einem `interpolate`-Ausdruck erreichen. Sie können auch einen `step`-Ausdruck für die farbige Darstellung des Wärmebilds verwenden. In diesem Fall wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert.
 
-  Sie geben die Farbwerte für Wärmebilder als Ausdruck im `heatmap-density`-Wert an. Die Farbe des Bereichs, in dem keine Daten vorhanden sind, wird bei Index 0 des „Interpolation“-Ausdrucks oder der Standardfarbe eines „abgestuften“ Ausdrucks definiert. Sie können diesen Wert verwenden, um eine Hintergrundfarbe zu definieren. Häufig wird hierfür ein transparenter Wert oder ein halbtransparentes Schwarz festgelegt. 
-   
+  Sie geben die Farbwerte für Wärmebilder als Ausdruck im `heatmap-density`-Wert an. Die Farbe des Bereichs, in dem keine Daten vorhanden sind, wird bei Index 0 des „Interpolation“-Ausdrucks oder der Standardfarbe eines „abgestuften“ Ausdrucks definiert. Sie können diesen Wert verwenden, um eine Hintergrundfarbe zu definieren. Häufig wird hierfür ein transparenter Wert oder ein halbtransparentes Schwarz festgelegt.
+
   Nachfolgend finden Sie Beispiele für Farbausdrücke:
 
   | Ausdruck für Farbinterpolation | Ausdruck für eine abgestufte Farbpalette | 
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |
 
 - `opacity`: Gibt an, wie undurchsichtig oder transparent die Wärmebildebene ist.
 - `intensity`: Wendet einen Multiplikator auf die Gewichtung jedes Datenpunkts an, um die Gesamtintensität des Wärmebilds zu erhöhen. Dies verändert die Gewichtung der Datenpunkte, was die Visualisierung erleichtert.
-- `weight`: Standardmäßig weisen alle Datenpunkte eine Gewichtung von 1 auf, sodass alle Datenpunkte gleichmäßig gewichtet werden. Die Option „weight“ fungiert als Multiplikator und kann als Zahl oder als Ausdruck festgelegt werden. Wenn eine Zahl als Gewichtung festgelegt wird, entspricht das der zweifachen Platzierung jedes Datenpunkts auf der Karte. Wenn die Gewichtung z. B. 2 beträgt, dann verdoppelt sich die Dichte. Wenn Sie die Option „weight“ auf eine Zahl festlegen, wird das Wärmebild ähnlich wie mit der Option „intensity“ gerendert. 
+- `weight`: Standardmäßig weisen alle Datenpunkte eine Gewichtung von 1 auf, sodass alle Datenpunkte gleichmäßig gewichtet werden. Die Option „weight“ fungiert als Multiplikator und kann als Zahl oder als Ausdruck festgelegt werden. Wenn eine Zahl als Gewichtung festgelegt wird, entspricht das der zweifachen Platzierung jedes Datenpunkts auf der Karte. Wenn die Gewichtung z. B. 2 beträgt, dann verdoppelt sich die Dichte. Wenn Sie die Option „weight“ auf eine Zahl festlegen, wird das Wärmebild ähnlich wie mit der Option „intensity“ gerendert.
 
   Wenn Sie jedoch einen Ausdruck verwenden, kann die Gewichtung der einzelnen Datenpunkte auf den Eigenschaften der einzelnen Datenpunkte basieren. Gehen Sie beispielsweise davon aus, dass jeder Datenpunkt ein Erdbeben darstellt. Der Magnitudenwert ist für jeden Erdbeben-Datenpunkt eine wichtige Metrik gewesen. Es kommt ständig zu Erdbeben. Die meisten weisen jedoch eine so geringe Stärke auf, dass sie nicht bemerkt werden. Verwenden Sie den Magnitudenwert in einem Ausdruck, um jedem Datenpunkt die Gewichtung zuzuweisen. Das Verwenden des Magnitudenwerts, um die Gewichtung zuzuweisen, ermöglicht eine bessere Darstellung der Bedeutung von Erdbeben im Wärmebild.
 - `source` und `source-layer`: Ermöglicht Ihnen das Aktualisieren der Datenquelle.
@@ -94,9 +94,9 @@ Mit diesem Tool können Sie die verschiedenen Optionen für Wärmebildebenen tes
 
 ## <a name="consistent-zoomable-heat-map"></a>Konsistentes zoombares Wärmebild
 
-Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn Sie die Karte zoomen, werden die Daten aggregiert und die Wärmebildebene ändert sich. 
+Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn Sie die Karte zoomen, werden die Daten aggregiert und die Wärmebildebene ändert sich.
 
-Zum Skalieren des Radius für jede Zoomebene können Sie einen `zoom`-Ausdruck verwenden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Durch diesen Ausdruck sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene. 
+Zum Skalieren des Radius für jede Zoomebene können Sie einen `zoom`-Ausdruck verwenden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Durch diesen Ausdruck sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene.
 
 Wenn der Radius so skaliert wird, dass er sich mit jeder Zoomebene verdoppelt, wird ein Wärmebild erstellt, das auf allen Zoomebenen einheitlich aussieht. Verwenden Sie zum Anwenden dieser Skalierung Folgendes (wie im folgenden Beispiel veranschaulicht): `zoom` mit dem Basis-2-Ausdruck `exponential interpolation`, einen festgelegten Pixelradius für den minimalen Zoomfaktor und einen skalierten Radius für den maximalen Zoomfaktor mit der Berechnung `2 * Math.pow(2, minZoom - maxZoom)`. Zoomen Sie die Karte, um zu sehen, wie das Wärmebild mit der Zoomebene skaliert wird.
 
@@ -106,8 +106,20 @@ Wenn der Radius so skaliert wird, dass er sich mit jeder Zoomebene verdoppelt, w
 Anzeigen des <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>konsistenten zoombaren Wärmebilds</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) in <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet werden. Der folgende Ausdruck kann verwendet werden, um einen Radius in Metern anzunähern. Dieser Ausdruck verwendet einen Platzhalter `radiusMeters`, den Sie durch den gewünschten Radius ersetzen sollten. Dieser Ausdruck berechnet den ungefähren Pixelradius für einen Zoomfaktor am Äquator für die Zoomfaktoren 0 und 24 und verwendet einen `exponential interpolation`-Ausdruck, um auf dieselbe Weise zwischen diesen Werten zu skalieren, wie das Kachelsystem in der Karte funktioniert.
+
+```json
+[
+    `'interpolate', 
+    ['exponential', 2],
+    ['zoom'],
+    0, ['*', radiusMeters, 0.000012776039596366526],
+    24, [`'*', radiusMeters, 214.34637593279402]
+]
+```
+
 > [!TIP]
-> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nah beieinander liegen, zu einem Punkt gruppiert. Sie können die Punktzahl der einzelnen Cluster als Gewichtungsausdruck für das Wärmebild verwenden. Dadurch kann die Anzahl der zu rendernden Punkte erheblich reduziert werden. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in einer `point_count`-Eigenschaft der point-Funktion gespeichert. 
+> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nah beieinander liegen, zu einem Punkt gruppiert. Sie können die Punktzahl der einzelnen Cluster als Gewichtungsausdruck für das Wärmebild verwenden. Dadurch kann die Anzahl der zu rendernden Punkte erheblich reduziert werden. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in einer `point_count`-Eigenschaft der point-Funktion gespeichert.
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']

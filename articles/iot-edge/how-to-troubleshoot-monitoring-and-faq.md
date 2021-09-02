@@ -2,7 +2,6 @@
 title: Problembehandlung bei der Überwachung und häufig gestellte Fragen – Azure IoT Edge
 description: Problembehandlung – Azure Monitor-Integration und häufig gestellte Fragen
 author: veyalla
-manager: philmea
 ms.author: veyalla
 ms.date: 06/09/2021
 ms.topic: conceptual
@@ -10,12 +9,12 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 zone_pivot_groups: how-to-troubleshoot-monitoring-and-faq-zpg
-ms.openlocfilehash: 09475cf4ee2c78596e3c93f408fc88c16e1a751e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9d3e89ee74dd1f0274ad742cae4a9706f54b7780
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350048"
 ---
 # <a name="faq-and-troubleshooting"></a>FAQ und Fehlerbehebung
 
@@ -31,22 +30,26 @@ Wenn Module nicht in demselben Netzwerk-Namespace ausgeführt werden, schlägt d
 
 ### <a name="verify-that-httpsettings__enabled-environment-variable-isnt-set-to-false"></a>Überprüfen Sie, ob die Umgebungsvariable *httpSettings__enabled* auf *false* festgelegt wurde.
 
-Die integrierten Metrikendpunkte verwenden das HTTP-Protokoll. Sie sind sogar innerhalb des Modulnetzwerks nicht verfügbar, wenn HTTP über die Umgebungsvariableneinstellung explizit deaktiviert wird.
+Die von IoT Edge-Systemmodulen verfügbar gemachten integrierten Metrikendpunkte verwenden das HTTP-Protokoll. Sie stehen sogar innerhalb des Modulnetzwerks nicht zur Verfügung, wenn HTTP über die Umgebungsvariableneinstellung in Edge Hub- oder Edge Agent-Modulen explizit deaktiviert wird.
 
 ### <a name="set-no_proxy-environment-variable-if-using-http-proxy-server"></a>Festlegen der Umgebungsvariablen *NO_PROXY* bei Verwendung des HTTP-Proxyservers
 
 Weitere Informationen finden Sie unter [Proxy-Aspekte](how-to-collect-and-transport-metrics.md#proxy-considerations).
 
+### <a name="update-moby-engine"></a>Aktualisieren der Moby-Engine
+
+Sorgen Sie auf Linux-Hosts dafür, dass Sie eine aktuelle Version der Container-Engine verwenden. Wir empfehlen eine Aktualisierung auf die neueste Version anhand der [Installationsanleitungen](how-to-install-iot-edge.md#install-a-container-engine).
+
 ## <a name="how-do-i-collect-logs-along-with-metrics"></a>Wie sammle ich von Protokolle zusammen mit Metriken?
 
-Sie könnten [integrierte Protokoll-Pullfeatures](how-to-retrieve-iot-edge-logs.md) verwenden. Eine Beispiellösung, bei der die integrierten Protokollabruffunktionen verwendet werden, steht unter [ **https://aka.ms/iot-elms** ](https://aka.ms/iot-elms) zur Verfügung.
+Sie könnten [integrierte Protokoll-Pullfeatures](how-to-retrieve-iot-edge-logs.md) verwenden. Eine Beispiellösung, bei der die integrierten Protokollabruffunktionen verwendet werden, steht unter [ **https://aka.ms/iot-elms**](https://aka.ms/iot-elms) zur Verfügung.
 
 ## <a name="why-cant-i-see-device-metrics-in-the-metrics-page-in-azure-portal"></a>Warum werden im Azure-Portal auf der Seite „Metriken“ keine Gerätemetriken angezeigt?
 
 Die Azure Monitor-Technologie [native Metriken](../azure-monitor/essentials/data-platform-metrics.md) unterstützt das Prometheus-Datenformat noch nicht direkt. Protokollbasierte Metriken eignen sich aufgrund von Folgendem zurzeit besser für IoT Edge-Metriken:
 
 * Native Unterstützung für das Prometheus-Metrikformat über die Standardtabelle *InsightsMetrics*.
-* Erweiterte Datenverarbeitung über [KQL](https://aka.ms/kql) für Visualisierungen und Warnungen.
+* Erweiterte Datenverarbeitung über [KQL](/azure/data-explorer/kusto/query/) für Visualisierungen und Warnungen.
 
 Die Verwendung von Log Analytics als Metrikdatenbank ist der Grund, weshalb Metriken im Azure-Portal auf der Seite **Protokolle** statt in **Metriken** angezeigt werden.
 
@@ -86,7 +89,7 @@ Wenn Sie das Problem nicht finden können, erstellen Sie einen [technischen Supp
 
 ## <a name="my-device-isnt-showing-up-in-the-monitoring-workbook"></a>Mein Gerät wird in der Überwachungsarbeitsmappe nicht angezeigt
 
-Die Arbeitsmappe basiert auf Gerätemetriken, die mithilfe der *ResourceId* mit dem richtigen IoT-Hub verknüpft werden. Vergewissern Sie sich, dass der Metriksammler mit der richtigen *ResourceId* [konfiguriert](how-to-collect-and-transport-metrics.md#metrics-collector-configuration) wurde.
+Die Arbeitsmappe basiert auf Gerätemetriken, die über die *ResourceId* mit der richtigen IoT-Hub- oder IoT Central-Anwendung verknüpft werden. Vergewissern Sie sich, dass der Metriksammler mit der richtigen *ResourceId* [konfiguriert](how-to-collect-and-transport-metrics.md#metrics-collector-configuration) wurde.
 
 Vergewissern Sie sich anhand von Protokollen des Metriksammlermoduls, dass das Gerät während des ausgewählten Zeitbereichs Metriken gesendet hat.
 
@@ -100,7 +103,7 @@ Die Vorlage für die Arbeitsmappen [steht auf GitHub öffentlich zur Verfügung]
 
 ## <a name="i-cannot-see-the-workbooks-in-the-public-templates"></a>In den öffentlichen Vorlagen werden keine Arbeitsmappen angezeigt
 
-Vergewissern Sie sich, dass Sie die Seite **Arbeitsmappen** auf Ihrer IoT-Hub-Seite im Portal und nicht in Ihrem Log Analytics-Arbeitsbereich anzeigen.
+Stellen Sie sicher, dass Sie die Seite **Arbeitsmappen** auf Ihrer IoT-Hub- oder IoT Central-Anwendungsseite im Portal (und nicht in Ihrem Log Analytics-Arbeitsbereich) anzeigen.
 
 Wenn die Arbeitsmappen immer noch nicht angezeigt werden, versuchen Sie, die Präproduktionsumgebung des Azure-Portals zu verwenden: [`https://ms.portal.azure.com`](https://ms.portal.azure.com). Manchmal dauert es längere Zeit, bis Arbeitsmappenupdates in der Produktionsumgebung angezeigt werden. In der Präproduktion stehen sie aber zur Verfügung.
 

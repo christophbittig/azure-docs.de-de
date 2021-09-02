@@ -7,13 +7,12 @@ ms.date: 05/20/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 85b64f52fc1832ec1d25767c1cdfef8977d96fe8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05e169667067033428d5fc995af4d866dc46d20b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030321"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340286"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementieren dynamischer Stile für Gebäudepläne von Ersteller
 
@@ -68,33 +67,27 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 
 1. Klicken Sie in der Postman-App auf **New** (Neu).
 
-2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.
+2. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus.
 
-3. Wählen Sie wieder **Neu** aus.
+3. Geben Sie einen **Request name** (Anforderungsnamen) für die Anforderung ein, z. B. *POST Data Upload*.
 
-4. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus.
-
-5. Geben Sie einen **Request name** (Anforderungsnamen) für die Anforderung ein, z. B. *POST Data Upload*.
-
-6. Wählen Sie die bereits erstellte Sammlung und anschließend **Save** (Speichern) aus.
-
-7. Geben Sie die folgende URL in die [Featureupdatezustände-API](/rest/api/maps/v2/feature-state/update-states) ein (ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `statesetId` durch `statesetId`):
+4. Geben Sie die folgende URL in die [Featureupdatezustände-API](/rest/api/maps/v2/feature-state/update-states) ein (ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `statesetId` durch `statesetId`):
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-8. Wählen Sie die Registerkarte **Headers** (Header) aus.
+5. Wählen Sie die Registerkarte **Headers** (Header) aus.
 
-9. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. Wählen Sie im Feld **VALUE** (WERT) die Option `application/json` aus.
+6. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. Wählen Sie im Feld **VALUE** (WERT) die Option `application/json` aus.
 
      :::image type="content" source="./media/indoor-map-dynamic-styling/stateset-header.png"alt-text="Informationen zur Header-Registerkarte für die Erstellung von Zustandssets.":::
 
-10. Wählen Sie die Registerkarte **Body** (Text) aus.
+7. Wählen Sie die Registerkarte **Body** (Text) aus.
 
-11. Wählen Sie in den Dropdownlisten **raw** und **JSON** aus.
+8. Wählen Sie in den Dropdownlisten **raw** und **JSON** aus.
 
-12. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
+9. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
 
     ```json
     {
@@ -111,13 +104,13 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
     >[!IMPORTANT]
     >Das Update wird nur gespeichert, wenn der gepostete Zeitstempel nach dem Zeitstempel liegt, der in früheren Featurezustandsaktualisierungs-Anforderungen für dieselbe `ID` des Features verwendet wurde.
 
-13. Ändern Sie die URL, die Sie in Schritt 7 verwendet haben, indem Sie `UNIT26` durch `UNIT27` ersetzen:
+10. Ändern Sie die URL, die Sie in Schritt 7 verwendet haben, indem Sie `UNIT26` durch `UNIT27` ersetzen:
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-14. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
+11. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
 
     ``` json
     {

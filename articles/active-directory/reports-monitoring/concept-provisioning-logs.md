@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Protokollen im Azure Active Directory (Vorschau) | Microsoft Docs
+title: Bereitstellungsprotokolle in Azure Active Directory | Microsoft-Dokumentation
 description: Übersicht über die Bereitstellungsprotokolle in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a1ea52c9de3332c2b73b5c03e203f6d6694c49
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: d110abaf9621b638d698bef08d579a5ab2c4285f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017389"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362069"
 ---
-# <a name="provisioning-logs-in-azure-active-directory-preview"></a>Bereitstellen von Protokollen im Azure Active Directory (Vorschau)
+# <a name="provisioning-logs-in-azure-active-directory"></a>Bereitstellungsprotokolle in Azure Active Directory
 
 Als IT-Administrator müssen Sie wissen, wie Ihre IT-Umgebung funktioniert. Anhand der Informationen zur Integrität Ihres Systems können Sie bewerten, ob und wie Sie auf potenzielle Probleme reagieren müssen. 
 

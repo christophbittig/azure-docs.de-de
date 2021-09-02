@@ -1,20 +1,20 @@
 ---
-title: Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
+title: Erstellen eines Sprach-Assistenten ohne Code in Azure Percept Studio
 description: Es wird beschrieben, wie Sie ohne Code eine Sprachlösung erstellen und für Ihr Azure Percept DK bereitstellen.
-author: philmea
-ms.author: philmea
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 441d0b4b76e0c543bd82c5546e0ca89250e418e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ceb71b5caaf17c485d4f4bd649e6b68d7c72a5d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748167"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224043"
 ---
-# <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
+# <a name="create-a-no-code-voice-assistant-in-azure-percept-studio"></a>Erstellen eines Sprach-Assistenten ohne Code in Azure Percept Studio
 
 In diesem Tutorial erstellen Sie einen Sprach-Assistenten aus einer Vorlage, den Sie für Ihr Azure Percept DK und für Azure Percept-Audio verwenden können. Die Demo für den Sprach-Assistenten wird in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) ausgeführt und enthält eine Auswahl virtueller Objekte, die per Sprache gesteuert werden. Sagen Sie Ihr Schlüsselwort, um ein Objekt zu steuern. Beim Schlüsselwort handelt es sich um ein Wort oder einen kurzen Ausdruck, mit dem Sie Ihr Gerät aufwecken, gefolgt von einem Befehl. Jede Vorlage reagiert auf verschiedene spezifische Befehle.
 

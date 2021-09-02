@@ -45,8 +45,9 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 * Installieren Sie Visual Studio Code oder Visual Studio.
 * [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)
 * Rufen Sie die zur Verwendung von Media Services-APIs erforderlichen Anmeldeinformationen ab (siehe [Zugreifen auf APIs](./access-api-howto.md)).
+* Legen Sie die entsprechenden Werte in der App-Konfigurationsdatei („appsettings.json“ oder ENV-Datei) fest.
 
-## <a name="download-code"></a>Code herunterladen
+## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
 Klonen Sie ein GitHub-Repository, das das vollständige in diesem Artikel beschriebene .NET-Beispiel enthält, mit dem folgenden Befehl auf Ihrem Computer:
 
@@ -55,6 +56,8 @@ Klonen Sie ein GitHub-Repository, das das vollständige in diesem Artikel beschr
  ```
 
 Das Beispiel „Encrypt with AES-128“ befindet sich im Ordner [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES).
+
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!NOTE]
 > Mit dem Beispiel werden bei jeder Ausführung der App eindeutige Ressourcen erstellt. Normalerweise verwenden Sie vorhandene Ressourcen wie Transformationen und Richtlinien nochmal (wenn vorhandene Ressourcen über erforderliche Konfigurationen verfügen).

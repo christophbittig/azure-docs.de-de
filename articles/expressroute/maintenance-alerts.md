@@ -7,16 +7,21 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/10/2021
 ms.author: mialdrid
-ms.openlocfilehash: 43e30ddd601640b61c42c5ba5d6bb2aaf41eb73d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 93335c6f163e016c619fd4803a595ffcc3418a9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109739017"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339478"
 ---
 # <a name="how-to-view-and-configure-alerts-for-azure-expressroute-circuit-maintenance"></a>Anzeigen und Konfigurieren von Warnungen für die Azure ExpressRoute-Leitungswartung
 
 ExpressRoute verwendet Azure Service Health, um Sie über geplante und bevorstehende Wartungen von ExpressRoute-Leitungen zu informieren. Mit Service Health können Sie geplante und vergangene Wartungen im Azure-Portal anzeigen und Warnungen und Benachrichtigungen so konfigurieren, dass sie Ihren Anforderungen am besten entsprechen. Weitere Informationen zu Azure Service Health finden Sie unter [Was ist Azure Service Health?](../service-health/overview.md)
+
+> [!NOTE]
+> * Während einer Wartungsaktivität oder bei ungeplanten Ereignissen, die sich auf eine der Verbindungen auswirken, bevorzugt Microsoft die AS-Pfadpräfigierung, um Datenverkehr zum Ausgleich auf die fehlerfreie Verbindung umzuleiten. Sie müssen sicherstellen, dass der Datenverkehr zum fehlerfreien Pfad umgeleitet werden kann, wenn Microsoft die Pfadpräfigierung konfiguriert hat, und dass erforderliche Umleitungsankündigungen entsprechend konfiguriert sind, um Dienstunterbrechungen zu vermeiden. 
+> * Das Beenden von ExpressRoute-BGP-Verbindungen auf zustandsbehafteten Geräten kann bei geplanten oder ungeplanten Wartungen durch Microsoft oder Ihren ExpressRoute-Anbieter zu Problemen beim Failover führen. Sie sollten Ihre Einrichtung testen, um das ordnungsgemäße Failover Ihres Datenverkehrs sicherzustellen, und nach Möglichkeit BGP-Sitzungen auf zustandslosen Geräten beenden.
+>
 
 ## <a name="view-planned-maintenance"></a>Anzeigen einer geplanten Wartung
 
@@ -32,7 +37,7 @@ ExpressRoute verwendet Azure Service Health, um Sie über geplante und bevorsteh
 
 1. Wählen Sie in der Dropdownliste *Dienste* die Option **ExpressRoute** aus, um nur ExpressRoute-bezogene Wartungen anzuzeigen. Wählen Sie dann ein Problem aus der Liste aus, um die Ereigniszusammenfassung anzuzeigen. Klicken Sie auf die Registerkarte **Problemupdates** aus, um weitere Details zu einer laufenden Wartung anzuzeigen.
 
-    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="Screenshot: ExpressRoute-Wartungszusammenfassung" lightbox="./media/maintenance-alerts/summary-expanded.png"::: 
+    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="Screenshot: ExpressRoute-Wartungszusammenfassung" lightbox="./media/maintenance-alerts/summary-expanded.png":::
 
 ## <a name="view-past-maintenance"></a>Anzeigen einer vergangenen Wartung
 

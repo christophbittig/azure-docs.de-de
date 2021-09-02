@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: a3eb35ada01612d3a3298b1899d3e9fb7101684b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809398"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339503"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Behandeln von serverseitigen Problemen bei Azure Cache for Redis
 
@@ -42,6 +42,7 @@ Sie können mehrere Änderungen vornehmen, um die Speicherauslastung in einem ge
 - Teilen Sie große zwischengespeicherte Objekte in kleinere verknüpfte Objekte auf.
 - [Erstellen von Warnungen](cache-how-to-monitor.md#alerts) bei Metriken wie „verwendeter Arbeitsspeicher“, um frühzeitig über mögliche Beeinträchtigungen benachrichtigt zu werden.
 - [Skalieren](cache-how-to-scale.md) Sie Ihr System auf einen größeren Cache mit größerer Arbeitsspeicherkapazität hoch.
+- [Skalieren](cache-how-to-scale.md) Sie Ihr System auf einen größeren Cache mit größerer Arbeitsspeicherkapazität hoch. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Planung für Azure Cache for Redis](./cache-planning-faq.yml).
 
 ## <a name="high-cpu-usage-or-server-load"></a>Hohe CPU-Auslastung oder hohe Serverauslastung
 
@@ -53,11 +54,11 @@ Sie können mehrere Änderungen vornehmen, um hohe Serverauslastung zu mindern:
 
 - Untersuchen Sie, was CPU-Spitzen verursacht, z. B. [Befehle mit langer Ausführungsdauer](#long-running-commands) oder Seitenfehler aufgrund hoher Arbeitsspeicherauslastung.
 - [Erstellen Sie Warnungen](cache-how-to-monitor.md#alerts) bei Metriken wie CPU- oder Serverauslastung, um frühzeitig über mögliche Beeinträchtigungen benachrichtigt zu werden.
-- [Skalieren](cache-how-to-scale.md) Sie Ihr System auf einen größeren Cache mit größerer CPU-Kapazität hoch.
+- [Skalieren](cache-how-to-scale.md) Sie auf mehr Shards auf, um die Last auf mehrere Redis-Prozesse zu verteilen, oder skalieren Sie auf einen größeren Cache mit mehr CPU-Kernen hoch. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Planung für Azure Cache for Redis](./cache-planning-faq.yml).
 
 ## <a name="long-running-commands"></a>Befehle mit langer Ausführungsdauer
 
-Einige Redis-Befehle sind aufwendiger auszuführen als andere. In der [Dokumentation zu den Redis-Befehlen](https://redis.io/commands) wird die Zeitkomplexität jedes einzelnen Befehls angegeben. Da Redis-Befehle in einem Singlethread verarbeitet werden, blockiert ein Befehl, dessen Ausführung eine Weile dauert, alle Folgebefehle. Sie sollten die Befehle, die Sie an Ihren Redis-Server ausgeben, überprüfen, um die Auswirkungen auf die Leistung besser zu verstehen. Beispielsweise wird der Befehl [KEYS](https://redis.io/commands/keys) häufig verwendet, ohne zu wissen, dass es sich um einen O(N)-Vorgang handelt. Sie können KEYSA vermeiden, indem Sie [SCAN](https://redis.io/commands/scan) verwenden, um CPU-Spitzen zu verringern.
+Einige Redis-Befehle sind aufwendiger auszuführen als andere. In der [Dokumentation zu den Redis-Befehlen](https://redis.io/commands) wird die Zeitkomplexität jedes einzelnen Befehls angegeben. Da Redis-Befehle in einem Singlethread verarbeitet werden, blockiert ein Befehl, dessen Ausführung eine Weile dauert, alle Folgebefehle. Überprüfen Sie die Befehle, die Sie an Ihren Redis-Server ausgeben, um die Auswirkungen auf die Leistung besser zu verstehen. Beispielsweise wird der Befehl [KEYS](https://redis.io/commands/keys) häufig verwendet, ohne zu wissen, dass es sich um einen O(N)-Vorgang handelt. Sie können KEYSA vermeiden, indem Sie [SCAN](https://redis.io/commands/scan) verwenden, um CPU-Spitzen zu verringern.
 
 Mithilfe des Befehls[SLOWLOG](https://redis.io/commands/slowlog) können Sie speicherintensive Befehle messen, die auf dem Server ausgeführt werden.
 
@@ -71,12 +72,12 @@ So mindern Sie Situationen, in denen der Netzwerkbandbreitenverbrauch am Rande d
 
 - Ändern Sie das Aufrufverhalten des Clients, um die Beanspruchung des Netzwerks zu reduzieren.
 - [Erstellen Sie Warnungen](cache-how-to-monitor.md#alerts) bei Metriken wie „Cache Read“ oder „Cache Write“, um frühzeitig über mögliche Beeinträchtigungen benachrichtigt zu werden.
-- [Skalieren](cache-how-to-scale.md) Sie Ihr System auf einen größeren Cache mit größerer Netzwerkbandbreite hoch.
+- [Skalieren](cache-how-to-scale.md) Sie Ihr System auf einen größeren Cache mit größerer Netzwerkbandbreite hoch. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Planung für Azure Cache for Redis](./cache-planning-faq.yml).
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
 - [Behandeln von clientseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-client.md)
 - [Auswählen der richtigen Ebene](cache-overview.md#choosing-the-right-tier)
-- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md)
-- [Wie führe ich Redis-Befehle aus?](cache-development-faq.md#how-can-i-run-redis-commands)
+- [Wie führe ich Redis-Befehle aus?](cache-development-faq.yml#how-can-i-run-redis-commands-)
