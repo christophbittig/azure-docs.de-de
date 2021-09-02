@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/16/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 866eb949d124e8d705785c6552672730fe67ece1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174579"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464163"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -27,14 +27,17 @@ Die Microsoft Identity Platform unterstützt die [Gewährung für OAuth 2.0-Kenn
 > [!WARNING]
 > Microsoft empfiehlt, dass Sie _nicht_ den ROPC-Flow verwenden. In den meisten Szenarien sind sicherere Alternativen verfügbar und werden daher empfohlen. Dieser Flow erfordert ein sehr hohes Maß an Vertrauen in die Anwendung und birgt Risiken, die in anderen Flows nicht vorhanden sind. Verwenden Sie diesen Flow nur, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet.
 
+
 > [!IMPORTANT]
 >
 > * Die Microsoft Identity Platform unterstützt nur ROPC für Azure AD-Mandanten – nicht für persönliche Konten. Das bedeutet, Sie müssen einen mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) oder den Endpunkt `organizations` verwenden.
 > * Persönliche Konten, die zu einem Mandanten von Azure AD eingeladen werden, können ROPC nicht verwenden.
-> * Konten ohne Kennwörter können sich nicht über ROPC anmelden. Für dieses Szenario wird empfohlen, für Ihre App einen anderen Flow zu verwenden.
+> * Konten ohne Kennwörter können sich nicht mit ROPC anmelden. Dies bedeutet, dass Features wie SMS-Anmeldung, FIDO und die Authenticator-App bei diesem Flow nicht funktionieren. Verwenden Sie einen anderen Flow als ROPC, wenn diese Features für Ihre App oder Benutzer erforderlich sind.
 > * Wenn Benutzer die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) verwenden müssen, um sich bei der Anwendung anzumelden, werden Sie stattdessen blockiert.
 > * ROPC wird in Szenarien mit [Hybrididentitätsverbund](../hybrid/whatis-fed.md) (also beispielsweise bei Verwendung von Azure AD und AD FS für die Authentifizierung lokaler Konten) nicht unterstützt. Wenn Benutzer vollständig auf eine Seite eines lokalen Identitätsanbieters weitergeleitet werden, kann Azure AD den Benutzernamen und das Kennwort nicht anhand dieses Identitätsanbieters testen. Die [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) wird mit ROPC allerdings unterstützt.
 > * Eine Ausnahme für ein Szenario mit Hybrididentitätsverbund wäre: Durch Festlegen von „AllowCloudPasswordValidation“ auf „TRUE“ für die Richtlinie zur Startbereichsermittlung kann der ROPC-Flow für Verbundbenutzer verwendet werden, wenn das lokale Kennwort mit der Cloud synchronisiert wird. Weitere Informationen finden Sie unter [Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -44,12 +47,7 @@ Dieses Diagramm zeigt den ROPC-Flow:
 
 ## <a name="authorization-request"></a>Authorization request (Autorisierungsanforderung)
 
-Der ROPC-Flow ist eine einzelne Anforderung: Er sendet die Client-ID und die Anmeldeinformationen des Benutzers an den ausstellenden Verteilungspunkt und empfängt im Gegenzug ein Token. Zuvor muss der Client die E-Mail-Adresse des Benutzers und das Kennwort anfordern. Unmittelbar nach einer erfolgreichen Anforderung muss der Client die Anmeldeinformationen des Benutzers sicher aus dem Arbeitsspeicher freigeben. Er muss sie nie speichern.
-
-> [!TIP]
-> Führen Sie diese Anforderung in Postman aus.
-> [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
+Der ROPC-Flow ist eine einzelne Anforderung: Er sendet die Client-ID und die Anmeldeinformationen des Benutzers an den ausstellenden Verteilungspunkt und empfängt im Gegenzug ein Token. Zuvor muss der Client die E-Mail-Adresse des Benutzers und das Kennwort anfordern. Unmittelbar nach einer erfolgreichen Anforderung muss der Client die Anmeldeinformationen des Benutzers sicher aus dem Arbeitsspeicher freigeben. Er darf sie niemals speichern.
 
 ```HTTP
 // Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
@@ -73,8 +71,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `username` | Erforderlich | Die E-Mail-Adresse des Benutzers. |
 | `password` | Erforderlich | Das Kennwort des Benutzers. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste von [Bereichen](v2-permissions-and-consent.md) oder Berechtigungen, die die App benötigt. In einem interaktiven Flow müssen der Administrator oder der Benutzer diesen Bereichen vorab zustimmen. |
-| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden. |
+| `client_secret`| Manchmal erforderlich | Wenn es sich bei Ihrer App um einen öffentlichen Client handelt, kann `client_secret` oder `client_assertion` nicht eingeschlossen werden.  Wenn es sich bei der App um einen vertraulichen Client handelt, muss es eingeschlossen werden.|
 | `client_assertion` | Manchmal erforderlich | Eine andere Form von `client_secret`, die unter Verwendung eines Zertifikats generiert wird.  Ausführlichere Informationen finden Sie unter [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). |
+
+> [!WARNING]
+> Im Rahmen der Nichtempfehlung dieses Flows zur Nutzung unterstützen die offiziellen SDKs diesen Flow nicht bei vertraulichen Clients, die ein Geheimnis oder eine Assertion verwenden. Möglicherweise stellen Sie fest, dass das SDK, das Sie verwenden möchten, Ihnen nicht erlaubt, ein Geheimnis hinzuzufügen, während Sie ROPC verwenden. 
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort
 
@@ -101,6 +102,8 @@ Das folgende Beispiel stellt eine erfolgreiche Tokenantwort dar:
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat. |
 
 Sie können mit Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken abrufen. Verwenden Sie den in der [Dokumentation für den OAuth-Code](v2-oauth2-auth-code-flow.md#refresh-the-access-token) beschriebenen Flow.
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response"></a>Fehlerantwort
 

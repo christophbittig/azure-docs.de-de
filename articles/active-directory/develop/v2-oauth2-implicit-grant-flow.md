@@ -8,22 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3598c6f072d09d7e427db66dcfbf8721b92a3a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62bb4c7e0b8417b497795530065bb8a42865d837
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226487"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464180"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der Flow für die implizite Genehmigung
 
 Microsoft Identity Platform unterstützt den Flow für die implizite Genehmigung von OAuth 2.0, der in der [OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-4.2) beschrieben ist. Das definierende Merkmal der impliziten Genehmigung ist, dass Token (ID-Token oder Zugriffstoken) nicht über den Tokenendpunkt, sondern direkt über den Autorisierungsendpunkt zurückgegeben werden. Dies wird häufig im Rahmen des [Autorisierungscodeflows](v2-oauth2-auth-code-flow.md) genutzt und als „hybrider Flow“ bezeichnet. Hierbei wird das ID-Token bei der Autorisierungsanforderung zusammen mit einem Autorisierungscode abgerufen.
 
 [!INCLUDE [suggest-msal-from-protocols](includes/suggest-msal-from-protocols.md)]
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="prefer-the-auth-code-flow"></a>Empfohlene Verwendung des Autorisierungscodeflows
 
@@ -65,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
-| `tenant` | required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
+| `tenant` | required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). Wichtig: In Gastszenarien, in denen Sie einen Benutzer aus einem Mandanten bei einem anderen Mandanten anmelden, *müssen* Sie die Mandanten-ID angeben, um ihn beim Ressourcenmandanten ordnungsgemäß anmelden zu können.|
 | `client_id` | required | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `response_type` | required |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Kann auch den Antworttyp `token` enthalten. Mithilfe von `token` kann Ihre App ein Zugriffstoken direkt vom Autorisierungsendpunkt abrufen, ohne dass eine zweite Anforderung an den Autorisierungsendpunkt erforderlich ist. Wenn Sie den Antworttyp `token` verwenden, muss der `scope`-Parameter einen Bereich enthalten, der angibt, für welche Ressource das Token ausgestellt wird (z. B. „user.read“ in Microsoft Graph). Er kann anstelle von `token` auch `code` enthalten, damit ein Autorisierungscode für die Verwendung im [Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) bereitgestellt wird. Diese Antwort vom Typ „ID-Token plus Code“ wird auch als hybrider Flow bezeichnet.  |
 | `redirect_uri` | empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
@@ -74,7 +76,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `state` | empfohlen |Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `nonce` | required |Ein in der Anforderung enthaltener, von der App generierter Wert, der in das resultierende id_token als Anspruch einbezogen wird. Die App kann diesen Wert dann verifizieren, um Tokenwiederholungsangriffe abzuwehren. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die zur Identifizierung des Ursprungs der Anforderung verwendet werden kann. Nur erforderlich, wenn ein „id_token“ angefordert wird. |
 | `prompt` | optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“, „select_account“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt Microsoft Identity Platform einen Fehler zurück. `prompt=select_account` sendet den Benutzer an eine Kontoauswahl, in der alle in der Sitzung gespeicherten Konten angezeigt werden. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |
-| `login_hint`  |optional |Kann verwendet werden, um das Feld für Benutzername/E-Mail-Adresse der Anmeldeseite für den Benutzer vorab auszufüllen, wenn du seinen Benutzernamen vorab kennst. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen über den Anspruch `preferred_username` aus einer vorherigen Anmeldung extrahiert haben.|
+| `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter oft während der erneuten Authentifizierung, nachdem sie den [optionalen Anspruch](active-directory-optional-claims.md) `login_hint`bereits aus einer vorherigen Anmeldung extrahiert haben. |
 | `domain_hint` | optional |Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, und so die Benutzerfreundlichkeit verbessert. Dieser Parameter wird häufig für branchenspezifische Apps verwendet, die mit nur einem Mandanten betrieben werden. Hierbei wird in einem bestimmten Mandanten ein Domänenname angegeben, und der Benutzer wird an den Verbundanbieter für diesen Mandanten weitergeleitet.  Beachten Sie, dass sich Gäste hierbei nicht bei der Anwendung anmelden können und die Nutzung von Cloudanmeldeinformationen wie FIDO eingeschränkt wird.  |
 
 Zu diesem Zeitpunkt wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Microsoft Identity Platform stellt auch sicher, dass der Benutzer den Berechtigungen zugestimmt hat, die im `scope`-Abfrageparameter angegeben sind. Wenn der Benutzer **keiner** Berechtigung zugestimmt hat, wird er dazu aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Weitere Informationen finden Sie unter [Berechtigungen, Zustimmung und mehrinstanzenfähigen Apps](v2-permissions-and-consent.md).
@@ -101,6 +103,8 @@ code=0.AgAAktYV-sfpYESnQynylW_UKZmH-C9y_G1A
 | `scope` |Ist enthalten, wenn `token` in `response_type` enthalten ist. Gibt die Bereiche an, für die das Zugriffstoken gültig ist. Umfasst eventuell nicht alle angeforderten Bereiche, wenn sie nicht auf den Benutzer anwendbar sind (im Fall von reinen Azure AD-Bereichen, die angefordert werden, wenn ein persönliches Konto für die Anmeldung verwendet wird). |
 | `id_token` | Ein signiertes JSON Web Token (JWT). Die App kann die Segmente dieses Tokens decodieren, um Informationen zum angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich in Bezug auf Autorisierungs- und Sicherheitsgrenzen aber nicht darauf verlassen. Weitere Informationen zu ID-Token finden Sie unter [`id_token reference`](id-tokens.md). <br> **Hinweis:** Wird nur bei Anforderung des Bereichs `openid` und bei Auswahl von `id_tokens` für `response_type` bereitgestellt. |
 | `state` |Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 #### <a name="error-response"></a>Fehlerantwort
 

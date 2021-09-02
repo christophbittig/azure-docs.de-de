@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1d2c2f3131c8ee8fb73dfd52df3d7545b52b0044
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0042d12941107c4704364dc261f95d3521b8208f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075149"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464146"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -27,6 +27,8 @@ Der OAuth 2.0-Autorisierungcodefluss kann in Apps verwendet werden, die auf ein
 In diesem Artikel wird beschrieben, wie Sie direkt für das Protokoll in Ihrer Anwendung in einer beliebigen Sprache programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
 Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Er wird zum Ausführen der Authentifizierung und Autorisierung in den meisten App-Typen einschließlich [Single-Page-Webanwendungen](v2-app-types.md#single-page-apps-javascript), [Web-Apps](v2-app-types.md#web-apps) und [nativ installierten Apps](v2-app-types.md#mobile-and-native-apps) verwendet. Der Flow ermöglicht Apps das sichere Abrufen von Zugriffstoken, die für den Zugriff auf durch Microsoft Identity Platform geschützte Ressourcen verwendet werden können, sowie von Aktualisierungstoken, um zusätzliche Zugriffstoken und ID-Token für den angemeldeten Benutzer abzurufen.
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -46,7 +48,7 @@ Wenn Sie versuchen, den Autorisierungscodeflow zu verwenden, und der folgende Fe
 
 Rufen Sie dann Ihre App-Registrierung auf, und ändern Sie den Umleitungs-URI für Ihre App in den Typ `spa`.
 
-Anwendung können keinen `spa`-Umleitungs-URI mit Nicht-SPA-Flows verwenden, zum Beispiel native Anwendungen oder Flows von Clientanmeldeinformationen. Wenn Sie versuchen, einen `spa`-Umleitungs-URI in diesen Szenarios zu verwenden, also über eine native App, die keinen `Origin`-Header sendet, bit Azure AD einen Fehler aus, um die Sicherheit zu gewährleisten. 
+Anwendung können keinen `spa`-Umleitungs-URI mit Nicht-SPA-Flows verwenden, zum Beispiel native Anwendungen oder Flows von Clientanmeldeinformationen. Zur Gewährleistung von Sicherheit und bewährten Methoden gibt die Microsoft Identity Platform einen Fehler zurück, wenn Sie versuchen, einen `spa`-Umleitungs-URI ohne `Origin`-Header zu verwenden. Auf ähnliche Weise verhindert die Microsoft Identity Platform auch die Verwendung von Clientanmeldeinformationen (im OBO-Fluss, Flow der Clientanmeldeinformationen und Authentifizierungscodefluss) bei Vorhandensein eines `Origin`-Headers, um sicherzustellen, dass Geheimnisse aus dem Browser nicht verwendet werden. 
 
 ## <a name="request-an-authorization-code"></a>Anfordern eines Autorisierungscodes
 
@@ -72,7 +74,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter    | Erforderlich/optional | BESCHREIBUNG |
 |--------------|-------------|--------------|
-| `tenant`    | required    | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
+| `tenant`    | required    | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). Wichtig: In Gastszenarien, in denen Sie einen Benutzer aus einem Mandanten bei einem anderen Mandanten anmelden, *müssen* Sie die Mandanten-ID angeben, um ihn beim Ressourcenmandanten ordnungsgemäß anmelden zu können.|
 | `client_id`   | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde.  |
 | `response_type` | required    | Muss `code` für den Autorisierungscodefluss enthalten. Kann auch `id_token` oder `token` enthalten, wenn der [Hybridflow](#request-an-id-token-as-well-hybrid-flow) verwendet wird. |
 | `redirect_uri`  | Erforderlich | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie einen der empfohlenen Werte verwenden – `https://login.microsoftonline.com/common/oauth2/nativeclient` (für Apps mit eingebettetem Browser) oder `http://localhost` (für Apps, die einen Systembrowser verwenden). |
@@ -80,8 +82,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode`   | empfohlen | Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Dabei kann es sich um eine der folgenden Methoden handeln:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. |
 | `state`                 | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Wert kann ebenfalls Informationen über den Status des Benutzers in der App codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `prompt`  | optional    | Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none`, `consent` und `select_account`.<br/><br/>- `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich.<br/>- `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt Microsoft Identity Platform den Fehler `interaction_required` zurück.<br/>- `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu erteilen.<br/>- `prompt=select_account` unterbricht beim einmaligen Anmelden die Kontoauswahlumgebung, in der entweder alle Konten in der Sitzung, alle gespeicherten Konten oder eine Option zur Verwendung eines ganz anderen Kontos aufgelistet werden.<br/> |
-| `login_hint`  | optional    | Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben.   |
-| `domain_hint`  | optional    | Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft. Dadurch wird die Benutzerfreundlichkeit verbessert, und der Benutzer wird beispielsweise an seinen Verbundidentitätsanbieter weitergeleitet. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren. Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat. Verwenden Sie andernfalls `domain_hint=organizations`.  |
+| `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter oft während der erneuten Authentifizierung, nachdem sie den [optionalen Anspruch](active-directory-optional-claims.md) `login_hint`bereits aus einer vorherigen Anmeldung extrahiert haben. |
+| `domain_hint`  | optional    | Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft. Dadurch wird die Benutzerfreundlichkeit verbessert, und der Benutzer wird beispielsweise an seinen Verbundidentitätsanbieter weitergeleitet. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren.  |
 | `code_challenge`  | Empfohlen/erforderlich | Wird verwendet, um die Gewährung von Autorisierungscodes über Proof Key for Code Exchange (PKCE) zu sichern. Erforderlich, wenn `code_challenge_method` enthalten ist. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies wird jetzt für alle Anwendungstypen empfohlen – sowohl für öffentliche als auch für vertrauliche Clients – und ist in Microsoft Identity Platform für [Single-Page-Apps, die den Autorisierungscodeflow verwenden](reference-third-party-cookies-spas.md), erforderlich. |
 | `code_challenge_method` | Empfohlen/erforderlich | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Dieser *SOLLTE* `S256` lauten, die Spezifikation ermöglicht jedoch die Verwendung von `plain`, wenn der Client aus irgendeinem Grund SHA256 nicht unterstützt. <br/><br/>Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist. Microsoft Identity Platform unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies ist für [Single-Page-Webanwendungen erforderlich, die den Autorisierungscodeflow verwenden](reference-third-party-cookies-spas.md).|
 
@@ -209,9 +211,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
-> [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `code` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://www.getpostman.com/collections/dba7e9c2e0870702dfc6)
-
 | Parameter  | Erforderlich/optional | BESCHREIBUNG     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
@@ -271,7 +270,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 
 | Parameter     | BESCHREIBUNG   |
 |---------------|------------------------------|
-| `access_token`  | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen verwenden, wie z.B. eine Web-API.  |
+| `access_token`  | Das angeforderte Zugriffstoken. Die App kann dieses Token für die Authentifizierung mit der gesicherten Ressource (z. B. einer Web-API) verwenden. |
 | `token_type`    | Gibt den Wert des Tokentyps an. Der Bearertyp ist der einzige Typ, den Azure AD unterstützt. |
 | `expires_in`    | Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
 | `scope`         | Die Bereiche, für die das Zugriffstoken gültig ist. Optional: Dies ist keine Standardangabe, und wenn hier kein Wert angegeben ist, gilt das Token für die Bereiche, die im ersten Abschnitt des Flows angefordert wurden. |
@@ -326,9 +325,6 @@ Fehlerantworten sehen wie folgt aus:
 
 Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einschließen:
 
-> [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Ersetzen Sie zunächst den `Authorization`-Header) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
@@ -354,18 +350,14 @@ POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps. This secret needs to be URL-Encoded
+&client_secret=sampleCredentia1s    // NOTE: Only required for web apps. This secret needs to be URL-Encoded
 ```
 
-> [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `refresh_token` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
->
-
-| Parameter     | Typ           | BESCHREIBUNG        |
+| Parameter     | type           | BESCHREIBUNG        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -397,6 +389,8 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | `scope`         | Die Bereiche, für die das Zugriffstoken gültig ist.    |
 | `refresh_token` | Ein neues Aktualisierungstoken von OAuth 2.0. Ersetzen Sie das alte Aktualisierungstoken durch das neu erworbene, um sicherzustellen, dass Ihre Aktualisierungstoken so lange wie möglich gültig bleiben. <br> **Hinweis:** Wird nur bei Anforderung des `offline_access`-Bereichs bereitgestellt.|
 | `id_token`      | Ein unsigniertes JSON-Webtoken (JWT). Die App kann die Segmente dieses Tokens decodieren, um Informationen zum angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich in Bezug auf Autorisierungs- und Sicherheitsgrenzen aber nicht darauf verlassen. Weitere Informationen zu ID-Token finden Sie unter [`id_token reference`](id-tokens.md). <br> **Hinweis:** Wird nur bei Anforderung des `openid`-Bereichs bereitgestellt. |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 #### <a name="error-response"></a>Fehlerantwort
 

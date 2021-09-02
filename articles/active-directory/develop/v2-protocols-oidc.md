@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a01566341a1c5aa1700b68938410ee0c08c17ddd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a23fd4f764773dfa29e1abd20f4952cc86049c42
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747543"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464076"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
@@ -26,6 +26,7 @@ OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAut
 
 Mit [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) wird das OAuth 2.0-*Autorisierungsprotokoll* auf die Nutzung als *Authentifizierungsprotokoll* erweitert, damit einmaliges Anmelden per OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Darüber hinaus wird der [UserInfo-Endpunkt](userinfo.md) eingeführt. Hierbei handelt es sich um eine API, die Informationen zum Benutzer zurückgibt. 
 
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram-sign-in"></a>Protokolldiagramm: Anmeldung
 
@@ -116,9 +117,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
-| `tenant` | Erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Protokollgrundlagen](active-directory-v2-protocols.md#endpoints). |
+| `tenant` | Erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Protokollgrundlagen](active-directory-v2-protocols.md#endpoints). Wichtig: In Gastszenarien, in denen Sie einen Benutzer aus einem Mandanten bei einem anderen Mandanten anmelden, *müssen* Sie die Mandanten-ID angeben, um ihn beim Ressourcenmandanten ordnungsgemäß anmelden zu können.|
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `response_type` | Erforderlich | Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es kann auch andere `response_type`-Werte enthalten, z.B. `code`. |
 | `redirect_uri` | Empfohlen | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben – mit dem Unterschied, dass er URL-codiert sein muss. Wenn dieser Parameter nicht vorhanden ist, wählt der Endpunkt nach dem Zufallsprinzip einen registrierten Umleitungs-URI aus, der an den Benutzer zurückgesendet wird. |
@@ -127,7 +128,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | Empfohlen | Gibt die Methode an, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet werden soll. Kann `form_post` oder `fragment` sein. Bei Webanwendungen empfiehlt sich die Verwendung von `response_mode=form_post`, um eine möglichst sichere Tokenübertragung an die Anwendung zu gewährleisten. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `prompt` | Optional | Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none`, `consent` und `select_account`. Der Anspruch `prompt=login` zwingt den Benutzer, seine Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. Der Parameter `prompt=none` ist das Gegenstück, und ihm sollte `login_hint` zugeordnet werden, um anzugeben, welcher Benutzer angemeldet werden muss. Diese Parameter stellen sicher, dass dem Benutzer überhaupt keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht automatisch über einmaliges Anmelden abgeschlossen werden kann (da kein Benutzer angemeldet ist, der Benutzer aus dem Hinweis nicht angemeldet ist oder mehrere Benutzer angemeldet sind und kein Hinweis bereitgestellt wird), gibt Microsoft Identity Platform einen Fehler zurück. Der Anspruch `prompt=consent` löst das OAuth-Zustimmungsdialogfeld aus, sobald sich der Benutzer angemeldet hat. Das Dialogfeld fordert den Benutzer zum Erteilen von Berechtigungen für die App auf. Schließlich zeigt `select_account` dem Benutzer eine Kontoauswahl an, die das automatische SSO negiert, dem Benutzer jedoch ermöglicht, das Konto auszuwählen, mit dem er sich anmelden möchte, ohne dass Anmeldeinformationen eingegeben werden müssen. Sie können `login_hint` und `select_account` nicht zusammen verwenden.|
-| `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die erneute Authentifizierung, nachdem sie den Benutzernamen bereits aus einer vorherigen Anmeldung mithilfe des `preferred_username`-Anspruchs extrahiert haben. |
+| `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter oft während der erneuten Authentifizierung, nachdem sie den [optionalen Anspruch](active-directory-optional-claims.md) `login_hint`bereits aus einer vorherigen Anmeldung extrahiert haben. |
 | `domain_hint` | Optional | Der Bereich des Benutzers in einem Verbundverzeichnis.  Mit diesem Parameter wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, was die Benutzerfreundlichkeit verbessert. Für Mandanten, die über ein lokales Verzeichnis wie z. B. AD FS verbunden sind, führt dies wegen der vorhandenen Anmeldesitzung häufig zu einer nahtlosen Anmeldung. |
 
 An dieser Stelle wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Microsoft Identity Platform überprüft, ob der Benutzer den Berechtigungen zugestimmt hat, die im Abfrageparameter `scope` angegeben sind. Wenn der Benutzer keiner dieser Berechtigungen zugestimmt hat, wird er von Microsoft Identity Platform aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Lesen Sie mehr über [Berechtigungen, die Zustimmung und mehrinstanzenfähige Apps](v2-permissions-and-consent.md).
@@ -255,6 +256,8 @@ Unabhängig vom Datenfluss beim Abrufen haben Antwortparameter immer die gleiche
 | `scope` | Die Berechtigungen, die für das Zugriffstoken gewährt wurden.  Beachten Sie Folgendes: Da der UserInfo-Endpunkt unter MS Graph gehostet wird, sind hier ggf. weitere Graph-Bereiche aufgelistet (z. B. „user.read“), falls diese für die App zuvor gewährt wurden.  Der Grund ist, dass ein Token für eine bestimmte Ressource immer alle gewährten Berechtigungen umfasst, über die der Client derzeit verfügt.  |
 | `id_token` | Das ID-Token, das die App angefordert hat. Sie können mit dem ID-Token die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [`id_tokens`-Referenz](id-tokens.md). |
 | `state` | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response"></a>Fehlerantwort
 
