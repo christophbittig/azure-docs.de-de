@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.openlocfilehash: aa4fb6b7870831d0f24b0a7071cbf0dfd2431c14
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2bdcdf79ee28bf6a3c233decd6dceafce74276ef
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294544"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258364"
 ---
 # <a name="how-to-get-lineage-from-sql-server-integration-services-ssis-into-azure-purview"></a>Abrufen der Datenherkunft aus SQL Server Integration Services (SSIS) in Azure Purview
 
@@ -35,7 +35,7 @@ Die lokale Extrahierung der Datenherkunft von SSIS wird noch nicht unterstützt.
 | Azure Blob Storage | Ja |
 | Azure Data Lake Storage Gen1 | Ja |
 | Azure Data Lake Storage Gen2 | Ja |
-| Azure File Storage | Ja |
+| Azure Files | Ja |
 | Azure SQL-Datenbank \* | Ja |
 | Azure SQL Managed Instance \*| Ja |
 | Azure Synapse Analytics \* | Ja |
@@ -48,14 +48,14 @@ Die lokale Extrahierung der Datenherkunft von SSIS wird noch nicht unterstützt.
 
 ### <a name="step-1-connect-a-data-factory-to-azure-purview"></a>Schritt 1: [Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview](how-to-link-azure-data-factory.md)
 
-### <a name="step-2-trigger-ssis-activity-execution-in-azure-data-factory"></a>Schritt 2: Auslösen der Ausführung von SSIS-Aktivitäten in Azure Data Factory
+### <a name="step-2-trigger-ssis-activity-execution-in-azure-data-factory"></a>Schritt 2: Auslösen der Ausführung von SSIS-Aktivitäten in Azure Data Factory
 
 Sie können [das SSIS-Paket mit der Aktivität „SSIS-Paket ausführen“](../data-factory/how-to-invoke-ssis-package-ssis-activity.md) oder das [SSIS-Paket mit Transact-SQL in ADF SSIS Integration Runtime ausführen](../data-factory/how-to-invoke-ssis-package-stored-procedure-activity.md).  
 
 Sobald die Aktivität „SSIS-Paket ausführen“ abgeschlossen ist, können Sie den Status des Datenherkunftsberichts in der Aktivitätsausgabe im [Data Factory-Aktivitätsmonitor](../data-factory/monitor-visually.md#monitor-activity-runs) überprüfen.
 :::image type="content" source="media/how-to-lineage-sql-server-integration-services/activity-report-lineage-status.png" alt-text="ssis-status":::
 
-### <a name="step-3-browse-lineage-information-in-your-azure-purview-account"></a>Schritt 3: Durchsuchen von Herkunftsinformationen in Ihrem Azure Purview-Konto
+### <a name="step-3-browse-lineage-information-in-your-azure-purview-account"></a>Schritt 3: Durchsuchen von Herkunftsinformationen in Ihrem Azure Purview-Konto
 
 - Sie können die Data Catalog-Instanz durchsuchen, indem Sie den Ressourcentyp „SQL Server Integration Services“ auswählen.
 

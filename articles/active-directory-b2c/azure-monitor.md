@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 01/29/2021
-ms.openlocfilehash: 4ac0cc618ec03d844c73961dcdb66f7357ce60f2
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 07/19/2021
+ms.openlocfilehash: 4a7fdf12ecf123c1fb741dcbd2706f7ca9a1d5c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783781"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339320"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -24,9 +24,9 @@ Verwenden Sie Azure Monitor, um Azure AD B2C-Protokolle (Azure Active Directory 
 
 Sie können Protokollereignisse an folgende Komponenten weiterleiten:
 
-* Ein Azure-[Speicherkonto](../storage/blobs/storage-blobs-introduction.md).
-* Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
-* Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
+- Ein Azure-[Speicherkonto](../storage/blobs/storage-blobs-introduction.md).
+- Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
+- Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -35,18 +35,25 @@ In diesem Artikel erfahren Sie, wie Sie Protokolle in einen Azure Log Analytics-
 > [!IMPORTANT]
 > Wenn Sie Azure AD B2C-Protokolle in andere Überwachungslösungen oder in ein Repository übertragen möchten, berücksichtigen Sie Folgendes: Azure AD B2C-Protokolle enthalten personenbezogene Daten. Diese Daten müssen mithilfe geeigneter technischer oder organisatorischer Maßnahmen so verarbeitet werden, dass die Sicherheit der personenbezogenen Daten gewährleistet ist – einschließlich Schutz vor nicht autorisierter oder gesetzeswidriger Verarbeitung.
 
-
 ## <a name="deployment-overview"></a>Übersicht über die Bereitstellung
 
-Für Azure AD B2C wird die [Azure Active Directory-Überwachung](../active-directory/reports-monitoring/overview-monitoring.md) genutzt. Damit Sie in Ihrem Azure AD B2C-Mandanten die *Diagnoseeinstellungen* von Azure Active Directory aktivieren können, verwenden Sie [Azure Lighthouse](../lighthouse/overview.md), um [eine Ressource zu delegieren](../lighthouse/concepts/architecture.md). Dadurch kann Azure AD B2C (**Dienstanbieter**) eine Azure AD-Ressource (**Kunde**) verwalten. Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, haben Sie in Ihrem **Azure AD B2C**-Portal Zugriff auf die Ressourcengruppe *azure-ad-b2c-monitor*, die den [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md) enthält. Sie können die Protokolle auch von Azure AD B2C in den Log Analytics-Arbeitsbereich übertragen.
+Für Azure AD B2C wird die [Azure Active Directory-Überwachung](../active-directory/reports-monitoring/overview-monitoring.md) genutzt. Da einem Azure AD B2C-Mandanten im Gegensatz zu Azure AD-Mandanten kein Abonnement zugeordnet werden kann, sind einige zusätzliche Schritte erforderlich, um die Integration zwischen Azure AD B2C und Log Analytics zu ermöglichen, an das wir die Protokolle senden.
+Damit Sie in Ihrem Azure AD B2C-Mandanten die _Diagnoseeinstellungen_ von Azure Active Directory aktivieren können, verwenden Sie [Azure Lighthouse](../lighthouse/overview.md), um [eine Ressource zu delegieren](../lighthouse/concepts/architecture.md). Dadurch kann Azure AD B2C (**Dienstanbieter**) eine Azure AD-Ressource (**Kunde**) verwalten.
 
-Bei der Bereitstellung autorisieren Sie in Ihrem Azure AD B2C-Verzeichnis einen Benutzer oder eine Gruppe zum Konfigurieren der Instanz des Log Analytics-Arbeitsbereichs in dem Mandanten, der Ihr Azure-Abonnement enthält. Zum Erstellen der Autorisierung stellen Sie eine [Azure Resource Manager](../azure-resource-manager/index.yml)-Vorlage auf Ihrem Azure AD-Mandanten bereit, der das Abonnement enthält.
+> [!TIP]
+> Azure Lighthouse wird in der Regel verwendet, um Ressourcen mehrerer Kunden zu verwalten. Es kann jedoch auch zur Verwaltung von Ressourcen **innerhalb eines Unternehmens mit mehreren eigenen Azure AD-Mandanten genutzt werden**, was wir hier tun, mit dem Unterschied, dass wir nur die Verwaltung einer einzelnen Ressourcengruppe delegieren.
+
+Nachdem Sie die Schritte in diesem Artikel ausgeführt haben, haben Sie eine neue Ressourcengruppe (hier _azure-ad-b2c-monitor_ genannt) erstellt und Zugriff auf dieselbe Ressourcengruppe, die den [Log Analytics-Arbeitsbereich](../azure-monitor/logs/quick-create-workspace.md) in Ihrem **Azure AD B2C**-Portal enthält. Sie können die Protokolle auch von Azure AD B2C in den Log Analytics-Arbeitsbereich übertragen.
+
+Bei der Bereitstellung autorisieren Sie in Ihrem Azure AD B2C-Verzeichnis einen Benutzer oder eine Gruppe zum Konfigurieren der Instanz des Log Analytics-Arbeitsbereichs in dem Mandanten, der Ihr Azure-Abonnement enthält. Um die Autorisierung zu erstellen, stellen Sie eine [Azure Resource Manager](../azure-resource-manager/index.yml)-Vorlage für das Abonnement mit dem Log Analytics-Arbeitsbereich bereit.
 
 Im folgenden Diagramm sind die Komponenten dargestellt, die Sie in Ihrem Azure AD- und Azure AD B2C-Mandanten konfigurieren.
 
 ![Ressourcengruppenprojektion](./media/azure-monitor/resource-group-projection.png)
 
-Bei dieser Bereitstellung konfigurieren Sie sowohl Ihren Azure AD B2C-Mandanten als auch Ihren Azure AD-Mandanten, auf dem der Log Analytics-Arbeitsbereich gehostet wird. Dem Azure AD B2C-Konto sollte die Rolle [Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator) für den Azure AD B2C-Mandanten zugewiesen werden. Dem Azure AD-Konto, das zum Ausführen der Bereitstellung verwendet wird, muss die Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner) im Azure AD-Abonnement zugewiesen werden. Außerdem ist es wichtig, sicherzustellen, dass Sie beim Ausführen der beschrieben Schritte im richtigen Verzeichnis angemeldet sind.
+Bei dieser Bereitstellung konfigurieren Sie sowohl Ihren Azure AD B2C-Mandanten als auch Ihren Azure AD-Mandanten, auf dem der Log Analytics-Arbeitsbereich gehostet wird. Den verwendeten Azure AD B2C-Konten (wie Ihrem Administratorkonto) muss die Rolle [Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator) für den Azure AD B2C-Mandanten zugewiesen werden. Dem Azure AD-Konto, das für die Bereitstellung verwendet wird, muss die Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner) im Azure AD-Abonnement zugewiesen sein. Es ist auch wichtig sicherzustellen, dass Sie beim richtigen Verzeichnis angemeldet sind, wenn Sie die einzelnen Schritte wie beschrieben ausführen.
+
+Zusammenfassend lässt sich sagen, dass Sie Azure Lighthouse einsetzen, um einem Benutzer oder einer Gruppe in Ihrem Azure AD B2C-Mandanten zu ermöglichen, eine Ressourcengruppe in einem Abonnement zu verwalten, das mit einem anderen Mandanten (dem Azure AD-Mandanten) verbunden ist. Nachdem diese Autorisierung erfolgt ist, können das der Abonnement und der Log Analytics-Arbeitsbereich in den Diagnoseeinstellungen in Azure AD B2C als Ziel ausgewählt werden.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. Erstellen oder Auswählen einer Ressourcengruppe
 
@@ -54,7 +61,7 @@ Erstellen Sie zuerst eine Ressourcengruppe (oder wählen Sie eine Ressourcengrup
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD-Mandanten** enthält.
-1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups), oder wählen Sie eine vorhandene Ressourcengruppe aus. In diesem Beispiel wird eine Ressourcengruppe namens *azure-ad-b2c-monitor* verwendet.
+1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups), oder wählen Sie eine vorhandene Ressourcengruppe aus. In diesem Beispiel wird eine Ressourcengruppe namens _azure-ad-b2c-monitor_ verwendet.
 
 ## <a name="2-create-a-log-analytics-workspace"></a>2. Erstellen eines Log Analytics-Arbeitsbereichs
 
@@ -62,7 +69,7 @@ Ein **Log Analytics-Arbeitsbereich** ist eine spezielle Umgebung für Azure Moni
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD-Mandanten** enthält.
-1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md) In diesem Beispiel wird in der Ressourcengruppe namens *azure-ad-b2c-monitor* ein Log Analytics Arbeitsbereich namens *AzureAdB2C* verwendet.
+1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md) In diesem Beispiel wird in der Ressourcengruppe namens _azure-ad-b2c-monitor_ ein Log Analytics Arbeitsbereich namens _AzureAdB2C_ verwendet.
 
 ## <a name="3-delegate-resource-management"></a>3. Delegieren der Ressourcenverwaltung
 
@@ -79,47 +86,47 @@ Rufen Sie zuerst die **Mandanten-ID** (auch Verzeichnis-ID genannt) Ihres Azure�
 
 ### <a name="32-select-a-security-group"></a>3.2 Auswählen einer Sicherheitsgruppe
 
-Jetzt wählen Sie eine Azure AD B2C-Gruppe bzw. einen Benutzer aus, der oder dem Sie die Berechtigung für die Ressourcengruppe erteilen möchten, die Sie zuvor im Verzeichnis mit Ihrem Abonnement erstellt haben.  
+Jetzt wählen Sie eine Azure AD B2C-Gruppe bzw. einen Benutzer aus, der oder dem Sie die Berechtigung für die Ressourcengruppe erteilen möchten, die Sie zuvor im Verzeichnis mit Ihrem Abonnement erstellt haben.
 
-Um die Verwaltung zu vereinfachen, empfiehlt es sich, für jede Rolle Azure AD-*Benutzergruppen* zu verwenden. Dies ermöglicht es Ihnen, der Gruppe einzelne Benutzer hinzuzufügen oder daraus zu entfernen, anstatt einem Benutzer Berechtigungen direkt zuzuweisen. In dieser exemplarischen Vorgehensweise wird eine Sicherheitsgruppe hinzugefügt.
+Um die Verwaltung zu vereinfachen, empfiehlt es sich, für jede Rolle Azure AD-_Benutzergruppen_ zu verwenden. Dies ermöglicht es Ihnen, der Gruppe einzelne Benutzer hinzuzufügen oder daraus zu entfernen, anstatt einem Benutzer Berechtigungen direkt zuzuweisen. In dieser exemplarischen Vorgehensweise wird eine Sicherheitsgruppe hinzugefügt.
 
 > [!IMPORTANT]
 > Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** auf **Sicherheit** festgelegt werden. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-1. Achten Sie darauf, dass im **Azure AD B2C**-Verzeichnis noch der Eintrag **Azure Active Directory** ausgewählt ist. Wählen Sie anschließend **Gruppen** und danach eine Gruppe aus. Wenn keine Gruppe vorhanden ist, erstellen Sie eine **Sicherheitsgruppe**, und fügen Sie dann Mitglieder hinzu. Weitere Informationen sind im Verfahren [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) beschrieben. 
+1. Achten Sie darauf, dass im **Azure AD B2C**-Verzeichnis noch der Eintrag **Azure Active Directory** ausgewählt ist. Wählen Sie anschließend **Gruppen** und danach eine Gruppe aus. Wenn keine Gruppe vorhanden ist, erstellen Sie eine **Sicherheitsgruppe**, und fügen Sie dann Mitglieder hinzu. Weitere Informationen sind im Verfahren [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) beschrieben.
 1. Wählen Sie **Übersicht** aus, und notieren Sie sich die **Objekt-ID** der Gruppe.
 
 ### <a name="33-create-an-azure-resource-manager-template"></a>3.3 Erstellen einer Azure Resource Manager-Vorlage
 
-Als Nächstes erstellen Sie eine Azure Resource Manager-Vorlage, die Azure AD B2C Zugriff auf die Azure AD-Ressourcengruppe gewährt, die Sie zuvor erstellt haben (z. B. *azure-ad-b2c-monitor*). Stellen Sie die Vorlage aus dem GitHub-Beispiel bereit, indem Sie die Schaltfläche **In Azure bereitstellen** verwenden. Dadurch wird das Azure-Portal geöffnet, und Sie können die Vorlage direkt im Portal konfigurieren und bereitstellen. Stellen Sie bei diesen Schritten sicher, dass Sie bei Ihrem Azure AD-Mandanten (nicht dem Azure AD B2C-Mandanten) angemeldet sind.
+Zum Einrichten der benutzerdefinierten Autorisierung und Delegierung in Azure Lighthouse erstellen Sie eine Azure Resource Manager-Vorlage, die Azure AD B2C Zugriff auf die Azure AD-Ressourcengruppe gewährt, die Sie zuvor erstellt haben (z. B. _azure-ad-b2c-monitor_). Stellen Sie die Vorlage aus dem GitHub-Beispiel bereit, indem Sie die Schaltfläche **In Azure bereitstellen** verwenden. Dadurch wird das Azure-Portal geöffnet, und Sie können die Vorlage direkt im Portal konfigurieren und bereitstellen. Stellen Sie bei diesen Schritten sicher, dass Sie bei Ihrem Azure AD-Mandanten (nicht dem Azure AD B2C-Mandanten) angemeldet sind.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD**-Mandanten enthält.
 3. Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um das Azure-Portal zu öffnen und die Vorlage direkt im Portal bereitzustellen. Weitere Informationen finden Sie unter [Erstellen einer Azure Resource Manager-Vorlage](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
+   [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
-5. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein:
+4. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein:
 
-   | Feld   | Definition |
-   |---------|------------|
-   | Subscription |  Wählen Sie das Verzeichnis aus, welches das Azure-Abonnement enthält, in dem die Ressourcengruppe *azure-ad-b2c-monitor* erstellt wurde. |
-   | Region| Wählen Sie die Region aus, in der die Ressource bereitgestellt wird.  | 
-   | MSP-Angebotsname| Ein Name, der diese Definition beschreibt. Beispiel: *Azure-AD-B2C-Monitoring*.  |
-   | MSP-Angebotsbeschreibung| Eine kurze Beschreibung Ihres Angebots. Beispiel: *Ermöglicht Azure Monitor in Azure AD B2C*.|
-   | Verwaltet durch Mandanten-ID| Die **Mandanten-ID** Ihres Azure AD B2C-Mandanten (auch als Verzeichnis-ID bezeichnet). |
-   |Authorizations|Geben Sie ein JSON-Array von Objekten an, das die `principalId` und den `principalIdDisplayName` von Azure AD und die `roleDefinitionId` von Azure enthält. `principalId` ist die **Objekt-ID** der B2C-Gruppe bzw. des Benutzers, die oder der Zugriff auf die Ressourcen in diesem Azure-Abonnement haben soll. Geben Sie für diese exemplarische Vorgehensweise die Objekt-ID der Gruppe an, die Sie zuvor notiert haben. Verwenden Sie als `roleDefinitionId` den Wert der [integrierten Rolle](../role-based-access-control/built-in-roles.md) für die *Rolle „Mitwirkender“* : `b24988ac-6180-42a0-ab88-20f7382dd24c`.|
-   | Ressourcengruppenname | Der Name der Ressourcengruppe, die Sie zuvor auf Ihrem Azure AD-Mandanten erstellt haben. Beispiel: *azure-ad-b2c-monitor*. |
+   | Feld                 | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Subscription          | Wählen Sie das Verzeichnis aus, welches das Azure-Abonnement enthält, in dem die Ressourcengruppe _azure-ad-b2c-monitor_ erstellt wurde.                                                                                                                                                                                                                                                                                                                                                                                                       |
+   | Region                | Wählen Sie die Region aus, in der die Ressource bereitgestellt wird.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   | MSP-Angebotsname        | Ein Name, der diese Definition beschreibt. Beispiel: _Azure-AD-B2C-Monitoring_. Dies ist der Name, der in Azure Lighthouse angezeigt wird.                                                                                                                                                                                                                                                                                                                                                                                          |
+   | MSP-Angebotsbeschreibung | Eine kurze Beschreibung Ihres Angebots. Beispiel: _Ermöglicht Azure Monitor in Azure AD B2C_.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+   | Verwaltet durch Mandanten-ID  | Die **Mandanten-ID** Ihres Azure AD B2C-Mandanten (auch als Verzeichnis-ID bezeichnet).                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+   | Authorizations        | Geben Sie ein JSON-Array von Objekten an, das die `principalId` und den `principalIdDisplayName` von Azure AD und die `roleDefinitionId` von Azure enthält. `principalId` ist die **Objekt-ID** der B2C-Gruppe bzw. des Benutzers, die oder der Zugriff auf die Ressourcen in diesem Azure-Abonnement haben soll. Geben Sie für diese exemplarische Vorgehensweise die Objekt-ID der Gruppe an, die Sie zuvor notiert haben. Verwenden Sie als `roleDefinitionId` den Wert der [integrierten Rolle](../role-based-access-control/built-in-roles.md) für die _Rolle „Mitwirkender“_ : `b24988ac-6180-42a0-ab88-20f7382dd24c`. |
+   | Ressourcengruppenname               | Der Name der Ressourcengruppe, die Sie zuvor auf Ihrem Azure AD-Mandanten erstellt haben. Beispiel: _azure-ad-b2c-monitor_.                                                                                                                                                                                                                                                                                                                                                                                                              |
 
    Im folgenden Beispiel wird ein Autorisierungs-Array mit einer Sicherheitsgruppe veranschaulicht.
 
    ```json
    [
-       {
-           "principalId": "<Replace with group's OBJECT ID>",
-           "principalIdDisplayName": "Azure AD B2C tenant administrators",
-           "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
-       }
+     {
+       "principalId": "<Replace with group's OBJECT ID>",
+       "principalIdDisplayName": "Azure AD B2C tenant administrators",
+       "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+     }
    ]
    ```
 
@@ -132,13 +139,13 @@ Nachdem Sie die Vorlage bereitgestellt und einige Minuten auf den Abschluss der 
 1. Melden Sie sich vom Azure-Portal ab, wenn Sie aktuell angemeldet sind. (So können im nächsten Schritt Ihre Sitzungsanmeldeinformationen aktualisiert werden.)
 2. Melden Sie sich mit Ihrem **Azure AD B2C**-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an. Dieses Konto muss ein Mitglied der Sicherheitsgruppe sein, die Sie im Schritt [Delegieren der Ressourcenverwaltung](#3-delegate-resource-management) angegeben haben.
 3. Wählen Sie auf der Symbolleiste im Portal das Symbol **Verzeichnis + Abonnement** aus.
-4. Wählen Sie das Azure AD-Verzeichnis aus, welches das Azure-Abonnement und die erstellte Ressourcengruppe *azure-ad-b2c-monitor* enthält.
+4. Wählen Sie das Azure AD-Verzeichnis aus, welches das Azure-Abonnement und die erstellte Ressourcengruppe _azure-ad-b2c-monitor_ enthält.
 
-    ![Wechseln des Verzeichnisses](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
+   ![Wechseln des Verzeichnisses](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
 
-1. Vergewissern Sie sich, dass Sie das richtige Verzeichnis und Abonnement ausgewählt haben. In diesem Beispiel werden alle Verzeichnisse und Abonnements ausgewählt.
+5. Vergewissern Sie sich, dass Sie das richtige Verzeichnis und Abonnement ausgewählt haben. In diesem Beispiel werden alle Verzeichnisse und Abonnements ausgewählt.
 
-    ![Auswahl aller Verzeichnisse im Verzeichnis- und Abonnementfilter](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+   ![Auswahl aller Verzeichnisse im Verzeichnis- und Abonnementfilter](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
 
 ## <a name="5-configure-diagnostic-settings"></a>5. Konfigurieren von Diagnoseeinstellungen
 
@@ -162,7 +169,7 @@ Konfigurieren Sie die Überwachungseinstellungen für Azure AD B2C-Aktivitätspr
 1. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 1. Wenn Einstellungen für die Ressource vorhanden sind, wird eine Liste der bereits konfigurierten Einstellungen angezeigt. Wählen Sie entweder **Diagnoseeinstellung hinzufügen** aus, um eine neue Einstellung hinzuzufügen, oder wählen Sie **Bearbeiten** aus, um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann höchstens einen der Zieltypen aufweisen.
 
-    ![Bereich „Diagnoseeinstellungen“ im Azure-Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
+   ![Bereich „Diagnoseeinstellungen“ im Azure-Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
 1. Wenn noch kein Name für die Einstellung vorhanden ist, geben Sie ihr einen Namen.
 1. Aktivieren Sie das Kontrollkästchen für jedes Ziel, um die Protokolle zu senden. Wählen Sie **Konfigurieren** aus, um die **in der folgenden Tabelle beschriebenen** Einstellungen anzugeben.
@@ -186,15 +193,15 @@ Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Proto
 1. Wählen Sie im **Log Analytics-Arbeitsbereich** die Option **Protokolle** aus.
 1. Fügen Sie im Abfrage-Editor die folgende Abfrage in der [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/) ein. Mit dieser Abfrage wird die Richtlinienverwendung in den letzten x Tagen nach Vorgang angezeigt. Der Standardzeitraum ist auf 90 Tage (90T) festgelegt. Beachten Sie, dass die Abfrage nur auf den Vorgang fokussiert ist, bei dem von der Richtlinie ein Token bzw. ein Code ausgegeben wird.
 
-    ```kusto
-    AuditLogs
-    | where TimeGenerated  > ago(90d)
-    | where OperationName contains "issue"
-    | extend  UserId=extractjson("$.[0].id",tostring(TargetResources))
-    | extend Policy=extractjson("$.[1].value",tostring(AdditionalDetails))
-    | summarize SignInCount = count() by Policy, OperationName
-    | order by SignInCount desc  nulls last
-    ```
+   ```kusto
+   AuditLogs
+   | where TimeGenerated  > ago(90d)
+   | where OperationName contains "issue"
+   | extend  UserId=extractjson("$.[0].id",tostring(TargetResources))
+   | extend Policy=extractjson("$.[1].value",tostring(AdditionalDetails))
+   | summarize SignInCount = count() by Policy, OperationName
+   | order by SignInCount desc  nulls last
+   ```
 
 1. Klicken Sie auf **Run** (Ausführen). Die Abfrageergebnisse werden unten im Bildschirm angezeigt.
 1. Wenn Sie die Abfrage zur späteren Verwendung speichern möchten, wählen Sie **Speichern** aus.
@@ -203,9 +210,9 @@ Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Proto
 
 1. Geben Sie die folgenden Details an:
 
-    - **Name**: Geben Sie den Namen Ihrer Abfrage ein.
-    - **Speichern unter**: Wählen Sie `query` aus.
-    - **Kategorie**: Wählen Sie `Log` aus.
+   - **Name**: Geben Sie den Namen Ihrer Abfrage ein.
+   - **Speichern unter**: Wählen Sie `query` aus.
+   - **Kategorie**: Wählen Sie `Log` aus.
 
 1. Wählen Sie **Speichern** aus.
 
@@ -236,17 +243,17 @@ Befolgen Sie die nachfolgenden Anweisungen, um mithilfe einer JSON-Katalogvorlag
 1. Wählen Sie auf der Symbolleiste die Option **+ Neu** aus, um eine neue Arbeitsmappe zu erstellen.
 1. Wählen Sie auf der Seite **Neue Arbeitsmappe** mithilfe der Option **</>** auf der Symbolleiste den **Erweiterten Editor** aus.
 
-     ![Katalogvorlage](./media/azure-monitor/wrkb-adv-editor.png)
+   ![Katalogvorlage](./media/azure-monitor/wrkb-adv-editor.png)
 
 1. Wählen Sie **Katalogvorlage** aus.
-1. Ersetzen Sie den JSON-Code in der **Katalogvorlage** durch den Inhalt aus der [grundlegenden Azure AD B2C-Arbeitsmappe](https://raw.githubusercontent.com/azure-ad-b2c/siem/master/workbooks/dashboard.json):
+1. Ersetzen Sie den JSON-Code in der **Katalogvorlage** durch den Inhalt der [grundlegenden Azure AD B2C-Arbeitsmappe](https://raw.githubusercontent.com/azure-ad-b2c/siem/master/workbooks/dashboard.json):
 1. Wenden Sie mithilfe der Schaltfläche **Anwenden** die Vorlage an.
 1. Wählen Sie auf der Symbolleiste die Schaltfläche **Bearbeitung abgeschlossen** aus, um die Bearbeitung der Arbeitsmappe abzuschließen.
 1. Speichern Sie abschließend die Arbeitsmappe mithilfe der Schaltfläche **Speichern** auf der Symbolleiste.
-1. Geben Sie einen **Titel** an, z. B. *Azure AD B2C-Dashboard*.
+1. Geben Sie einen **Titel** an, z. B. _Azure AD B2C-Dashboard_.
 1. Wählen Sie **Speichern** aus.
 
-    ![Speichern der Arbeitsmappe](./media/azure-monitor/wrkb-title.png)
+   ![Speichern der Arbeitsmappe](./media/azure-monitor/wrkb-title.png)
 
 In der Arbeitsmappe werden Berichte in Form eines Dashboards angezeigt.
 
@@ -256,51 +263,48 @@ In der Arbeitsmappe werden Berichte in Form eines Dashboards angezeigt.
 
 ![Drittes Dashboard in der Arbeitsmappe](./media/azure-monitor/wrkb-dashboard-3.png)
 
-
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 
 Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen. Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen. Warnungen können beispielsweise zur Benachrichtigung verwendet werden, wenn die durchschnittliche Anzahl von Anmeldungen einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Warnungen erstellen](../azure-monitor/alerts/alerts-log.md).
 
+Verwenden Sie die folgenden Anweisungen, um eine neue Azure-Warnung zu erstellen, die eine [E-Mail-Benachrichtigung](../azure-monitor/alerts/action-groups.md#configure-notifications) sendet, wenn die **Gesamtzahl der Anforderungen** im Vergleich zum vorherigen Zeitraum um 25 % zurückgegangen ist. Die Warnung erfolgt alle 5 Minuten und sucht nach dem Rückgang in der letzten Stunde im Vergleich zur Stunde davor. Die Warnungen werden in der Kusto-Abfragesprache erstellt.
 
-Verwenden Sie die folgenden Anweisungen, um eine neue Azure-Warnung zu erstellen, die eine [E-Mail-Benachrichtigung](../azure-monitor/alerts/action-groups.md#configure-notifications) sendet, wenn die **Gesamtzahl der Anforderungen** im Vergleich zum vorherigen Zeitraum um 25 % zurückgegangen ist. Die Warnung wird alle fünf Minuten ausgeführt und sucht innerhalb des letzten 24-Stunden-Fensters nach einem derartigen Rückgang. Die Warnungen werden in der Kusto-Abfragesprache erstellt.
-
-
-1. Wählen Sie im **Log Analytics-Arbeitsbereich** die Option **Protokolle** aus. 
+1. Wählen Sie im **Log Analytics-Arbeitsbereich** die Option **Protokolle** aus.
 1. Erstellen Sie mithilfe der folgenden Abfrage eine neue **Kusto-Abfrage**.
 
-    ```kusto
-    let start = ago(24h);
-    let end = now();
-    let threshold = -25; //25% decrease in total requests.
-    AuditLogs
-    | serialize TimeGenerated, CorrelationId, Result
-    | make-series TotalRequests=dcount(CorrelationId) on TimeGenerated in range(start, end, 1h)
-    | mvexpand TimeGenerated, TotalRequests
-    | where TotalRequests > 0
-    | serialize TotalRequests, TimeGenerated, TimeGeneratedFormatted=format_datetime(todatetime(TimeGenerated), 'yyyy-M-dd [hh:mm:ss tt]')
-    | project   TimeGeneratedFormatted, TotalRequests, PercentageChange= ((toreal(TotalRequests) - toreal(prev(TotalRequests,1)))/toreal(prev(TotalRequests,1)))*100
-    | order by TimeGeneratedFormatted
-    | where PercentageChange <= threshold   //Trigger's alert rule if matched.
-    ```
+   ```kusto
+   let start = ago(2h);
+   let end = now();
+   let threshold = -25; //25% decrease in total requests.
+   AuditLogs
+   | serialize TimeGenerated, CorrelationId, Result
+   | make-series TotalRequests=dcount(CorrelationId) on TimeGenerated from start to end step 1h
+   | mvexpand TimeGenerated, TotalRequests
+   | serialize TotalRequests, TimeGenerated, TimeGeneratedFormatted=format_datetime(todatetime(TimeGenerated), 'yyyy-MM-dd [HH:mm:ss]')
+   | project   TimeGeneratedFormatted, TotalRequests, PercentageChange= ((toreal(TotalRequests) - toreal(prev(TotalRequests,1)))/toreal(prev(TotalRequests,1)))*100
+   | order by TimeGeneratedFormatted desc
+   | where PercentageChange <= threshold   //Trigger's alert rule if matched.
+   ```
 
-1. Wählen Sie **Ausführen** aus, um die Abfrage zu testen. Die Ergebnisse sollten angezeigt werden, wenn die Gesamtzahl der Anforderungen innerhalb der letzten 24 Stunden um mindestens 25 % zurückgegangen ist.
+1. Wählen Sie **Ausführen** aus, um die Abfrage zu testen. Die Ergebnisse sollten angezeigt werden, wenn die Gesamtanzahl der Anforderungen innerhalb der letzten Stunde um mindestens 25 % zurückgegangen ist.
 1. Um eine auf der Grundlage der obigen Abfrage eine Warnungsregel zu erstellen, verwenden Sie die Option **+ Neue Warnungsregel** auf der Symbolleiste.
-1. Wählen Sie auf der Seite **Warnungsregel erstellen** die Option **Bedingungsname** aus. 
+1. Wählen Sie auf der Seite **Warnungsregel erstellen** die Option **Bedingungsname** aus.
 1. Legen Sie auf der Seite **Signallogik konfigurieren** die folgenden Werte fest, und speichern Sie dann mit der Schaltfläche **Fertig** die Änderungen.
-    * Warnungslogik: Legen Sie die **Anzahl der Ergebnisse** auf **größer als** **0** fest.
-    * Auswertung basiert auf: Wählen Sie **1440** als Dauer (in Minuten) und **5** als Häufigkeit (in Minuten) aus. 
 
-    ![Erstellen einer Warnungsregelbedingung](./media/azure-monitor/alert-create-rule-condition.png)
+   - Warnungslogik: Legen Sie die **Anzahl der Ergebnisse** auf **größer als** **0** fest.
+   - Auswertung basiert auf: Wählen Sie **120** als Dauer (in Minuten) und **5** als Häufigkeit (in Minuten) aus.
 
-Navigieren Sie nach dem Erstellen der Warnung zum **Log Analytics-Arbeitsbereich**, und wählen Sie **Warnungen** aus. Auf dieser Seite werden alle Warnungen angezeigt, die innerhalb des Zeitbereichs ausgelöst wurden, der mit der Option **Zeitbereich** festgelegt wurde.  
+   ![Erstellen einer Warnungsregelbedingung](./media/azure-monitor/alert-create-rule-condition.png)
+
+Navigieren Sie nach dem Erstellen der Warnung zum **Log Analytics-Arbeitsbereich**, und wählen Sie **Warnungen** aus. Auf dieser Seite werden alle Warnungen angezeigt, die innerhalb des Zeitbereichs ausgelöst wurden, der mit der Option **Zeitbereich** festgelegt wurde.
 
 ### <a name="configure-action-groups"></a>Konfigurieren von Aktionsgruppen
 
 Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Sie können das Senden eines Sprachanrufs, einer SMS oder E-Mail aufnehmen oder verschiedene Arten von automatisierten Aktionen auslösen. Entsprechende Anleitungen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 
-Hier sehen Sie ein Beispiel für eine Warnung in Form einer E-Mail-Benachrichtigung. 
+Hier sehen Sie ein Beispiel für eine Warnung in Form einer E-Mail-Benachrichtigung.
 
-   ![E-Mail-Benachrichtigung](./media/azure-monitor/alert-email-notification.png)
+![E-Mail-Benachrichtigung](./media/azure-monitor/alert-email-notification.png)
 
 ## <a name="multiple-tenants"></a>Mehrere Mandanten
 
@@ -320,8 +324,8 @@ Azure Monitor-Protokolle sind für die Skalierung und Unterstützung der täglic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Beispiele finden Sie im [SIEM-Katalog](https://aka.ms/b2csiem) von Azure AD B2C. 
+- Weitere Beispiele finden Sie im [SIEM-Katalog](https://aka.ms/b2csiem) von Azure AD B2C.
 
-* Weitere Informationen zum Hinzufügen und Konfigurieren von Diagnoseeinstellungen in Azure Monitor finden Sie im [Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../azure-monitor/essentials/monitor-azure-resource.md).
+- Weitere Informationen zum Hinzufügen und Konfigurieren von Diagnoseeinstellungen in Azure Monitor finden Sie im [Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../azure-monitor/essentials/monitor-azure-resource.md).
 
-* Informationen zum Streamen von Azure AD-Protokollen an einen Event Hub finden Sie im [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
+- Informationen zum Streamen von Azure AD-Protokollen an einen Event Hub finden Sie im [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

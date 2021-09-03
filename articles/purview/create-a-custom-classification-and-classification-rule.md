@@ -1,30 +1,33 @@
 ---
 title: Erstellen einer benutzerdefinierten Klassifizierung und Klassifizierungsregel (Vorschau)
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Klassifizierungen erstellen können, um Datentypen in ihrem Datenbestand zu definieren, die für Ihre Organisation in Azure Purview eindeutig sind.
-author: anmuk601
-ms.author: anmuk
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 3/24/2021
-ms.openlocfilehash: e54535449ddf9605bc483b9a309a717b22d8398d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: fff9f128e6a533d8a8926093ca58a79ef2e974d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071495"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349320"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Benutzerdefinierte Klassifizierungen in Azure Purview
 
 In diesem Artikel ist beschrieben, wie Sie benutzerdefinierte Klassifizierungen erstellen können, um Datentypen in ihrem Datenbestand zu definieren, die für Ihre Organisation eindeutig sind. Außerdem wird die Erstellung von benutzerdefinierten Klassifizierungsregeln beschrieben, mit denen Sie bestimmte Daten im gesamten Datenbestand finden können.
 
-## <a name="default-classifications"></a>Standardklassifizierungen
+## <a name="default-system-classifications"></a>Standardsystemklassifizierungen
 
-Der Azure Purview Data Catalog bietet einen umfangreichen Satz von Standardklassifizierungen, die typische persönliche Datentypen darstellen, die es möglicherweise in ihrem Datenbestand gibt.
+Der Data Catalog von Azure Purview bietet einen umfangreichen Satz von Standardklassifizierungen, die typische Typen personenbezogener Daten darstellen, die es möglicherweise in ihrem Datenbestand gibt. Die gesamte Liste der verfügbaren Systemklassifizierungen finden Sie unter [Unterstützte Klassifizierungen in Azure Purview](supported-classifications.md).
 
 :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification.png" alt-text="Klassifizierung auswählen" border="true":::
 
 Sie haben auch die Möglichkeit, benutzerdefinierte Klassifizierungen zu erstellen, wenn keine der Standardklassifizierungen Ihren Anforderungen entspricht.
+
+> [!Note]
+> Unsere [Datenstichprobenregeln](sources-and-scans.md#sampling-within-a-file) werden sowohl auf System- als auch auf benutzerdefinierte Klassifizierungen angewendet.  
 
 ## <a name="steps-to-create-a-custom-classification"></a>Schritte zum Erstellen einer benutzerdefinierten Klassifizierung
 
@@ -118,16 +121,12 @@ So erstellen Sie eine benutzerdefinierte Klassifizierungsregel:
    |Datenmuster    |Optional. Ein regulärer Ausdruck, der den Daten entspricht, die im Datenfeld gespeichert sind. Der Grenzwert ist sehr groß. Im vorherigen Beispiel bewirkt das Datenmuster, dass auf eine Personal-ID geprüft wird, die förmlich dem Wort `Employee{GUID}` entspricht.  |
    |Spaltenmuster    |Optional. Ein regulärer Ausdruck, der den Spaltennamen entspricht, die Sie abgleichen möchten. Der Grenzwert ist sehr groß. |
 
-1. Unter **Datenmuster** können zwei Schwellenwerte festgelegt werden:
+1. Unter **Datenmuster** können Sie den **Schwellenwert für Mindestübereinstimmung** wählen, um den Mindestprozentsatz für die individuellen Datenwertübereinstimmungen in einer Spalte festlegen, die bei der Überprüfung gefunden werden müssen, damit die Klassifizierung angewendet wird. Der vorgeschlagene Wert ist „60 %“. Wenn Sie mehrere Datenmuster angeben, ist diese Einstellung deaktiviert, und der Wert ist auf „60 %“ fixiert.
 
-   - **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Der vorgeschlagene Wert ist „8“. Dieser Wert kann im Bereich von 2 bis 32 manuell angepasst werden. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
-
-   - **Schwellenwert für Mindestübereinstimmung**: Mit dieser Einstellung können Sie den Mindestprozentsatz für die individuellen Datenwertübereinstimmungen in einer Spalte festlegen, die vom Scanner gefunden werden müssen, damit die Klassifizierung angewendet wird. Der vorgeschlagene Wert ist „60 %“. Sie müssen mit dieser Einstellung vorsichtig sein. Wenn Sie die Schwelle unter 60 % verringern, kann es sein, dass Sie falsch positive Klassifizierungen in Ihren Katalog einbringen. Wenn Sie mehrere Datenmuster angeben, ist diese Einstellung deaktiviert, und der Wert ist auf „60 %“ fixiert.
+   > [!Note]
+   > Der Schwellenwert für Mindestübereinstimmung muss mindestens 1 % sein.
 
 1. Nun können Sie Ihre Regel überprüfen und **erstellen**.
-
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Überprüfen der Regel vor der Erstellung" border="true":::
-
 1. Testen Sie die Klassifizierungsregel, bevor Sie den Erstellungsprozess abschließen, um zu überprüfen, ob sie Tags auf Ihre Assets anwendet. Die Klassifizierungen in der Regel werden wie bei einer Überprüfung auf die hochgeladenen Beispieldaten angewendet. Dies bedeutet, dass alle Systemklassifizierungen und Ihre benutzerdefinierte Klassifizierung mit den Daten in der Datei übereinstimmen.
 
    Eingabedateien können Dateien mit Trennzeichen (CSV, PSV, SSV, TSV), JSON oder XML enthalten. Der Inhalt wird basierend auf der Dateierweiterung der Eingabedatei analysiert. Begrenzungsdaten können eine Dateierweiterung aufweisen, die mit einem der erwähnten Typen übereinstimmt. Beispielsweise können TSV-Daten in einer Datei mit dem Namen MySampleData.csv vorhanden sein. Der durch Trennzeichen getrennte Inhalt muss auch mindestens 3 Spalten aufweisen.
@@ -142,9 +141,7 @@ So erstellen Sie eine benutzerdefinierte Klassifizierungsregel:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Erstellen einer Wörterbuchregel" border="true":::
 
-1. Nach Generierung des Wörterbuchs können Sie die Schwellenwerte für Datenunterschiede und Mindestübereinstimmung anpassen und die Regel übermitteln.
-
-- **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Der unterschiedliche Übereinstimmungsschwellenwert hat nichts mit dem Musterabgleich zu tun, aber er ist eine Voraussetzung für den Musterabgleich. Der vorgeschlagene Wert ist „8“. Dieser Wert kann im Bereich von 2 bis 32 manuell angepasst werden. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
+1. Nach Generierung des Wörterbuchs können Sie den Schwellenwert für Mindestübereinstimmung anpassen und die Regel übermitteln.
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Erstellen der Wörterbuchregel mit dem Häkchen für ein generiertes Wörterbuch." border="true":::
 

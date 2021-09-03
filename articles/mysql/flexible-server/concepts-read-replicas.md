@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/14/2021
-ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: c83e8a93d41cde3c7a3debbbcfa9d3522ffe2939
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109657"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396960"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Lesereplikate auf flexiblen Azure Database for MySQL-Servern befinden sich in der Vorschauphase.
@@ -30,7 +32,6 @@ Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie
 
 > [!NOTE]
 > Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
->
 
 ## <a name="common-use-cases-for-read-replica"></a>Allgemeine Anwendungsfälle für Lesereplikate
 
@@ -84,7 +85,7 @@ Sie können die Replikation zwischen einer Quelle und einem Replikat beenden. So
 Wenn Sie die Replikation zu einem Replikat stoppen, gehen alle Links zu seiner vorherigen Quelle und zu anderen Replikaten verloren. Zwischen einer Quelle und seinem Replikat gibt es kein automatisiertes Failover.
 
 > [!IMPORTANT]
-> Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
+>Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 > Stellen Sie vor dem Beenden der Replikation auf einem Lesereplikat sicher, dass das Replikat alle erforderlichen Daten enthält.
 
 Erfahren Sie, wie Sie die [Replikation auf ein Replikat beenden](how-to-read-replicas-portal.md).
@@ -110,6 +111,32 @@ Gehen Sie folgendermaßen vor, nachdem Sie sich für ein Failover auf ein Replik
 
 Wenn Ihre Anwendung Lese- und Schreibvorgänge erfolgreich verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
 
+## <a name="global-transaction-identifier-gtid"></a>Globaler Transaktionsbezeichner (GTID)
+
+Der globale Transaktionsbezeichner (GTID) ist ein eindeutiger Bezeichner, der mit jeder Transaktion auf einem Quellserver, für die ein Commit erfolgt, erstellt wird. Er ist für den flexiblen Azure Database for MySQL-Server standardmäßig deaktiviert. GTID wird von den Versionen 5.7 und 8.0 unterstützt. Weitere Informationen zum GTID und seiner Verwendung in der Replikation finden Sie unter [Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) in der MySQL-Dokumentation.
+
+Die folgenden Serverparameter sind für die Konfiguration des globalen Transaktionsbezeichners (GTID) verfügbar: 
+
+|**Serverparameter**|**Beschreibung**|**Standardwert**|**Werte**|
+|--|--|--|--|
+|`gtid_mode`|Gibt an, ob GTIDs zur Identifizierung von Transaktionen verwendet werden. Änderungen zwischen Modi können nur nacheinander in aufsteigender Reihenfolge durchgeführt werden (z. B. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF`: Sowohl neue als auch replizierte Transaktionen müssen anonym sein <br> `OFF_PERMISSIVE`: Neue Transaktionen sind anonym. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON_PERMISSIVE`: Neue Transaktionen sind GTID-Transaktionen. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON`: Sowohl neue als auch replizierte Transaktionen müssen GTID-Transaktionen sein.|
+|`enforce_gtid_consistency`|Erzwingt die GTID-Konsistenz, indem die Ausführung nur der Anweisungen zugelassen wird, die auf transaktionssichere Weise protokolliert werden können. Dieser Wert muss vor dem Aktivieren der GTID-Replikation auf `ON` festgelegt werden. |`OFF*`|`OFF`: Alle Transaktionen können die GTID-Konsistenz verletzen.  <br> `ON`: Keine Transaktion darf die GTID-Konsistenz verletzen. <br> `WARN`: Alle Transaktionen können gegen GTID-Konsistenz verstoßen, aber es wird eine Warnung generiert. | 
+
+**Für flexible Azure Database for MySQL-Server mit aktiviertem Feature „Hochverfügbarkeit“ ist der Standardwert auf `ON` festgelegt.*
+> [!NOTE]
+>
+> * Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+>
+> * Das Ändern von GTIDs von einem Wert in einen anderen kann nur schrittweise in aufsteigender Reihenfolge der Modi erfolgen. Wenn z. B. gtid_mode derzeit auf OFF_PERMISSIVE festgelegt ist, ist eine Änderung in ON_PERMISSIVE möglich, aber nicht in ON.
+>
+> * Um die Replikation konsistent zu halten, können Sie die Einstellung nicht für einen Master-/Replikatserver aktualisieren.
+>
+> * Es wird empfohlen, enforce_gtid_consistency auf ON festzulegen, bevor Sie gtid_mode=ON festlegen können.
+
+Um GTID zu aktivieren und das Konsistenzverhalten zu konfigurieren, aktualisieren Sie die Serverparameter `gtid_mode` und `enforce_gtid_consistency` über das [Azure-Portal](how-to-configure-server-parameters-portal.md) oder die [Azure CLI](how-to-configure-server-parameters-cli.md).
+
+Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um sicherzustellen, dass die Replikation konsistent ist, kann `gtid_mode` nicht geändert werden, nachdem der Master- oder die Replikatserver mit aktivierter GTID erstellt wurden.
+
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 
 | Szenario | Einschränkung/Überlegung |
@@ -123,7 +150,8 @@ Wenn Ihre Anwendung Lese- und Schreibvorgänge erfolgreich verarbeitet, haben Si
 | Beendete Replikate | Wenn Sie die Replikation zwischen einem Quellserver und einem Lesereplikat beenden, wird das beendete Replikat zu einem eigenständigen Server, der sowohl Lese- als auch Schreibzugriffe akzeptiert. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden. |
 | Gelöschte Quellserver und eigenständige Server | Wenn ein Quellserver gelöscht wird, wird die Replikation an alle Lesereplikate beendet. Diese Replikate werden automatisch zu eigenständigen Servern und können sowohl Lese- als auch Schreibvorgänge akzeptieren. Der Quellserver selbst wird gelöscht. |
 | Benutzerkonten | Benutzer auf dem Quellserver werden an die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Quellserver verfügbar sind. |
-| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Wenn Sie einen der oben genannten Parameter auf dem Quellserver aktualisieren möchten, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu. |
+| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu. 
+<br> Beim Konfigurieren von Parametern auf Sitzungsebene wie foreign_keys_checks für das Lesereplikat ist darauf zu achten, dass die für das Lesereplikat festgelegten Parameterwerte mit denen des Ausgangsservers übereinstimmen.|
 | Sonstige | – Die Erstellung des Replikats eines Replikats wird nicht unterstützt. <br> – In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MySQL-Replikationstechnologie. Weitere Informationen finden Sie in der [MySQL-Referenzdokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html). <br>– Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.<br>– Eine vollständige Liste aller Einschränkungen der MySQL-Replikation finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). |
 
 ## <a name="next-steps"></a>Nächste Schritte
