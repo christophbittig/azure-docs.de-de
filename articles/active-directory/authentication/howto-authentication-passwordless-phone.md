@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f741cb21f427734c49001b9c672ed3e61c43adbc
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613229"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339565"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) 
 
@@ -36,7 +36,12 @@ Personen, die die Anmeldung per Telefon über die Microsoft Authenticator-App ak
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anmeldung per Telefon mit der Microsoft Authenticator-App verwendet werden kann:
 
-- Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig.
+- Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig. Pushbenachrichtigungen an Ihr Smartphone oder Tablet tragen dazu bei, dass die Microsoft Authenticator-App nicht autorisierten Zugriff auf Konten verhindern und betrügerische Transaktionen stoppen kann. Die Authenticator-App generiert automatisch Codes, wenn sie für Pushbenachrichtigungen eingerichtet wurde. So hat der Benutzer selbst dann eine Sicherungsanmeldemethode, wenn sein Gerät keine Verbindung herstellen kann. 
+  
+  Der Azure Multi-Factor Authentication-Connector muss aktiviert sein, damit sich Benutzer für Pushbenachrichtigungen zur Anmeldung per Telefon registrieren können.
+
+  ![Screenshot: Aktivierter Azure Multi-Factor Authentication-Connector.](media/howto-authentication-passwordless-phone/connector.png)
+
 - Aktuelle Version von Microsoft Authenticator auf Geräten mit iOS 8.0 oder höher oder Android 6.0 oder höher installieren.
 - Das Gerät, auf dem die Microsoft Authenticator-App installiert ist, muss innerhalb des Azure AD-Tenants auf einen einzelnen Benutzer registriert sein. 
 
@@ -57,7 +62,7 @@ Mit Azure AD können Sie auswählen, welche Authentifizierungsmethoden während 
 
 Führen Sie die folgenden Schritte aus, um die Authentifizierungsmethode für die kennwortlose Anmeldung per Telefon zu aktivieren:
 
-1. Melden Sie sich mit einem globalen *Administratorkonto* im [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto für den *Authentifizierungsrichtlinienadministrator* an.
 1. Suchen Sie nach *Azure Active Directory*, und wählen Sie die Option aus. Navigieren Sie anschließend zu **Sicherheit** > **Authentifizierungsmethoden** > **Richtlinien**.
 1. Wählen Sie unter **Microsoft Authenticator** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
@@ -144,5 +149,5 @@ Ein Gerät kann derzeit nur bei einem einzigen Mandanten registriert werden. Die
 Weitere Informationen zur Azure AD-Authentifizierung und kennwortlosen Methoden finden Sie in den folgenden Artikeln:
 
 - [Wie funktioniert die kennwortlose Authentifizierung?](concept-authentication-passwordless.md)
-- [Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
+- [Informationen zur Geräteregistrierung](../devices/overview.md)
 - [Informationen zu Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

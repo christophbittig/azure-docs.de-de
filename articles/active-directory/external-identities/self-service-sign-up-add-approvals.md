@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203ea5bb372c3afc77eb62508d1c95dc5f00bb4b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c5d12c45554897a9acfef1d32a2216d1eb410133
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315721"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459561"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zur Self-Service-Registrierung
 
@@ -28,7 +28,9 @@ Dieser Artikel enthält ein Beispiel für die Integration in ein Genehmigungssys
 - Eine manuelle Überprüfung auslösen. Wenn die Anforderung genehmigt wird, verwendet das Genehmigungssystem Microsoft Graph zur Bereitstellung des Benutzerkontos. Das Genehmigungssystem kann den Benutzer auch darüber benachrichtigen, dass sein Konto erstellt wurde.
 
 > [!IMPORTANT]
-> **Ab der zweiten Hälfte des Jahres 2021** [stellt Google die Unterstützung für die Anmeldung in der Webansicht ein](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie den Google-Verbund für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden oder die Self-Service-Registrierung mit Gmail verwenden, können sich Google Gmail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+>
+> - Ab dem **12. Juli 2021** gilt Folgendes: Wenn Azure AD B2B-Kunden neue Google-Integrationen für die Self-Service-Registrierung für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, funktioniert die Authentifizierung mit Google-Identitäten nur, wenn Authentifizierungen in Systemwebansichten verlagert werden. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren und Sie den Google-Verbund mit [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, können sich Google Gmail-Benutzer nicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
 
 ## <a name="register-an-application-for-your-approval-system"></a>Registrieren einer Anwendung für Ihr Genehmigungssystem
 
@@ -84,7 +86,7 @@ Nun fügen Sie die API-Connectors mit folgenden Schritten einem Self-Service-Reg
 4. Wählen Sie **Benutzerflows** und dann den Benutzerflow aus, für den Sie den API-Connector aktivieren möchten.
 5. Wählen Sie mit folgenden Schritte **API-Connectors** aus und dann die API-Endpunkte, die Sie im Benutzerflow aufrufen möchten:
 
-   - **Nach der Anmeldung mit einem Identitätsanbieter**: Wählen Sie den API-Connector für den Genehmigungsstatus aus, z. B. _Genehmigungsstatus überprüfen_.
+   - **Nach dem Verbund mit einem Identitätsanbieter während der Registrierung**: Wählen Sie den API-Connector für den Genehmigungsstatus aus, z. B. _Genehmigungsstatus überprüfen_.
    - **Vor dem Erstellen des Benutzers**: Wählen Sie den API-Connector für Ihre Genehmigungsanforderung aus, z. B. _Genehmigung anfordern_.
 
    ![Hinzufügen von APIs zum Benutzerflow](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)

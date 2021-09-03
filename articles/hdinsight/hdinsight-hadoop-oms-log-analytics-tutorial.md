@@ -3,14 +3,14 @@ title: Verwenden von Azure Monitor-Protokollen zum Überwachen von Azure HDInsig
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle zum Überwachen von Aufträgen verwenden, die in einem HDInsight-Cluster ausgeführt werden.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurepowershell
-ms.date: 05/13/2020
-ms.openlocfilehash: 7f828d5c0183cedca9c763eb2368d1cb460b713e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: seoapr2020, devx-track-azurepowershell, references_regions
+ms.date: 08/02/2021
+ms.openlocfilehash: 0627cbb6c590178c5f393cfd519fb4a4504d050f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074113"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342887"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
@@ -22,9 +22,172 @@ Bei [Azure Monitor-Protokollen](../azure-monitor/logs/log-query-overview.md) han
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
+#### <a name="new-azure-monitor-experience"></a>[Neue Azure Monitor-Erfahrung](#tab/new)
+
+> [!Important]
+> Die neue Azure Monitor-Erfahrung ist nur in „USA, Osten“ und „Europa, Westen“ als Previewfunktion verfügbar.  
+>
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen Log Analytics-Arbeitsbereich Sie können sich diesen Arbeitsbereich als einzigartige Azure Monitor-Protokollumgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
+* Einen Log Analytics-Arbeitsbereich Sie können sich diesen Arbeitsbereich als einzigartige Azure Monitor-Protokollumgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../azure-monitor/vm/monitor-virtual-machine.md).
+
+* Ein Azure HDInsight-Cluster. Derzeit können Sie Azure Monitor-Protokolle mit den folgenden HDInsight-Clustertypen verwenden:
+
+  * Hadoop
+  * hbase
+  * Interactive Query
+  * Kafka
+  * Spark
+  * Storm
+
+  Anweisungen zum Erstellen von HDInsight-Clustern finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](/powershell/azure/). Stellen Sie sicher, dass Sie über die aktuelle Version verfügen. Führen Sie gegebenenfalls `Update-Module -Name Az` aus.
+
+* Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+> [!NOTE]  
+> Die neue Azure Monitor-Erfahrung ist nur in „USA, Osten“ und „Europa, Westen“ als Previewfunktion verfügbar. Es wird empfohlen, sowohl den HDInsight-Cluster als auch den Log Analytics-Arbeitsbereich in derselben Region anzuordnen, um die Leistung zu erhöhen. Azure Monitor-Protokolle sind nicht in allen Azure-Regionen verfügbar.
+>
+
+## <a name="enable-azure-monitor-using-the-portal"></a>Aktivieren von Azure Monitor über das Portal
+
+In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs, z. B. zum Überwachen von Aufträgen und Debugprotokollen.
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus. Der Cluster wird auf einer neuen Portalseite geöffnet.
+
+2. Wählen Sie links unter „Überwachung“ die  **Monitor-Integration** aus. 
+
+3. Wählen Sie in der Hauptansicht unter  **Azure Monitor für HDInsight-Clusterintegration** die Option  **Aktivieren** aus. 
+
+4. Wählen Sie in der Dropdownliste  **Arbeitsbereich auswählen**  einen vorhandenen Log Analytics-Arbeitsbereich aus. 
+
+5. Wählen Sie **Speichern** aus. Das Speichern der Einstellung dauert einige Zeit. 
+
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-azure-monitor.png" alt-text="Aktivieren der Überwachung für HDInsight-Cluster":::
+
+Wenn Sie Azure Monitor deaktivieren möchten, können Sie dies auch in diesem Portal tun. 
+
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Aktivieren von Azure Monitor mit Azure PowerShell
+
+Sie können die Azure Monitor-Protokolle im Azure PowerShell Az-Modul mit dem Cmdlet [Enable-AzHDInsightAzureMonitor](/powershell/module/az.hdinsight/enable-azhdinsightazuremonitor?view=azps-6.2.1&preserve-view=true) aktivieren.
+
+```powershell
+# Enter user information
+$resourceGroup = "<your-resource-group>"
+$cluster = "<your-cluster>"
+$LAW = "<your-Log-Analytics-workspace>"
+# End of user input
+
+# obtain workspace id for defined Log Analytics workspace
+$WorkspaceId = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW).CustomerId
+
+# obtain primary key for defined Log Analytics workspace
+$PrimaryKey = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
+
+# Enables monitoring and relevant logs will be sent to the specified workspace.
+Enable-AzHDInsightAzureMonitor `
+    -ResourceGroupName $resourceGroup `
+    -ClusterName $cluster `
+    -WorkspaceId $WorkspaceId `
+    -PrimaryKey $PrimaryKey
+
+# Gets the status of monitoring installation on the cluster.
+Get-AzHDInsightAzureMonitor `
+    -ResourceGroupName $resourceGroup `
+    -ClusterName $cluster
+```
+
+Zum Deaktivieren verwenden Sie das Cmdlet [Disable-AzHDInsightAzureMonitor](/powershell/module/az.hdinsight/disable-azhdinsightazuremonitor?view=azps-6.2.1&preserve-view=true):
+
+```powershell
+Disable-AzHDInsightAzureMonitor -ResourceGroupName $resourceGroup `
+-ClusterName $cluster
+```
+
+## <a name="enable-azure-monitor-using-azure-cli"></a>Aktivieren von Azure Monitor mit der Azure-Befehlszeilenschnittstelle
+
+Sie können Azure Monitor-Protokolle mit dem Azure CLI-Befehl [`az hdinsight azure-monitor enable`](/cli/azure/hdinsight/azure-monitor?view=azure-cli-latest&preserve-view=true) aktivieren.
+
+```azurecli
+# set variables
+export resourceGroup=RESOURCEGROUPNAME
+export cluster=CLUSTERNAME
+export LAW=LOGANALYTICSWORKSPACENAME
+
+# Enable the Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight azure-monitor enable --name $cluster --resource-group $resourceGroup --workspace $LAW
+
+# Get the status of Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight azure-monitor show --name $cluster --resource-group $resourceGroup
+```
+
+Zum Deaktivieren verwenden Sie den Befehl [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az_hdinsight_monitor_disable).
+
+```azurecli
+az hdinsight azure-monitor disable --name $cluster --resource-group $resourceGroup
+```
+
+## <a name="use-hdinsight-out-of-box-insights-to-monitor-a-single-cluster"></a>Verwenden der sofort einsatzbereiten HDInsight-Erkenntnisse zum Überwachen eines einzelnen Clusters
+
+HDInsight bietet workloadspezifische Arbeitsmappen, mit denen Sie schnell Erkenntnisse gewinnen können. Diese Arbeitsmappe erfasst wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster und stellt die Visualisierungen und Dashboards für die gängigsten Szenarien bereit. Die vordefinierten Erkenntnisse bieten eine vollständige Ansicht eines einzelnen HDInsight-Clusters, einschließlich Ressourcennutzung und Anwendungsstatus.
+
+Verfügbare HDInsight-Arbeitsmappen:
+
+- HDInsight Spark-Arbeitsmappe
+- HDInsight Kafka-Arbeitsmappe
+- HDInsight HBase-Arbeitsmappe
+- HDInsight Hive/LLAP-Arbeitsmappe
+- HDInsight Storm-Arbeitsmappe
+
+Screenshot der Spark-Arbeitsmappe :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-spark-workbook.png" alt-text="Screenshot: Arbeitsmappe „Spark“":::
+
+## <a name="use-at-scale-insights-to-monitor-multiple-clusters"></a>Verwenden von Erkenntnissen im großen Stil zur Überwachung mehrerer Cluster
+
+Sie können sich beim Azure-Portal anmelden und „Überwachung“ auswählen. Wählen Sie im Abschnitt **Insights** die Option **Insights-Hub** aus. Anschließend suchen Sie HDInsight-Cluster.
+
+In dieser Ansicht können Sie mehrere HDInsight-Cluster an einem Ort überwachen.
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-monitor-insights.png" alt-text="Screenshot: Clustermonitor-Erkenntnisse":::
+
+Sie können das Abonnement und die HDInsight-Cluster auswählen, die Sie überwachen möchten. 
+ - Unter **Überwachte Cluster** wird die Anzahl der Cluster angezeigt, für die Sie Azure Monitor-Integration aktiviert haben.
+ - Unter **Nicht überwachte Cluster** wird die Anzahl der Cluster angezeigt, für die Sie Azure Monitor-Integration nicht aktiviert haben.
+
+Die Detailclusterliste lässt sich in jedem Abschnitt anzeigen. 
+
+Auf der Registerkarte **Übersicht** unter **Überwachte Cluster** können Sie den Clustertyp, kritische Warnungen und Ressourcenauslastungen anzeigen.
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-cluster-alerts.png" alt-text="Screenshot: Warnungen des Clustermonitors":::
+
+Außerdem können Sie die Cluster in jedem Workloadtyp anzeigen, einschließlich Spark, HBase, Hive, Kafka und Storm.
+
+Die übergeordneten Metriken der einzelnen Workloadtypen werden dargestellt, einschließlich der Anzahl aktiver Knoten-Manager, der Anzahl ausgeführter Anwendungen usw.
+
+:::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/spark-metrics.png" alt-text="Clustermonitor: Spark-Metriken":::
+
+## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
+
+Azure Monitor unterstützt das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen finden Sie unter [Leistungsindikatoren von Linux](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Clusterüberwachung
+
+HDInsight unterstützt die Clusterüberwachung mit Azure Monitor-Protokollen, indem die folgenden Protokolltypen importiert werden:
+
+* `log_gateway_audit_CL`: Diese Tabelle enthält Überwachungsprotokolle von Clustergatewayknoten, in denen erfolgreiche und fehlerhafte Anmeldeversuche aufgezeichnet sind.
+* `log_auth_CL`: Diese Tabelle enthält SSH-Protokolle mit erfolgreichen und fehlerhaften Anmeldeversuchen.
+* `log_ambari_audit_CL`: Diese Tabelle enthält Überwachungsprotokolle von Ambari.
+* `log_ranger_audti_CL`: Diese Tabelle enthält Überwachungsprotokolle von Apache Ranger auf Clustern mit Enterprise-Sicherheitspaket.
+
+
+#### <a name="classic-azure-monitor-experience"></a>[Klassische Azure Monitor-Erfahrung](#tab/previous)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Einen Log Analytics-Arbeitsbereich Sie können sich diesen Arbeitsbereich als einzigartige Azure Monitor-Protokollumgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../azure-monitor/vm/monitor-virtual-machine.md).
 
 * Ein Azure HDInsight-Cluster. Derzeit können Sie Azure Monitor-Protokolle mit den folgenden HDInsight-Clustertypen verwenden:
 
@@ -125,7 +288,7 @@ az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Installieren von HDInsight-Clusterverwaltungslösungen
 
-HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Monitor-Protokollen hinzufügen können. [Verwaltungslösungen](../azure-monitor/insights/solutions.md) erweitern den Funktionsumfang von Azure Monitor-Protokollen und stellen zusätzliche Daten und Analysetools bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihren HDInsight-Clustern. Außerdem stellen sie die Tools bereit, um die Metriken durchsuchen zu können. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen.
+HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie zu Azure Monitor-Protokollen hinzufügen können. [Verwaltungslösungen](../azure-monitor/insights/solutions.md) erweitern den Funktionsumfang von Azure Monitor-Protokollen und stellen mehr Daten und Analysetools bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihren HDInsight-Clustern. Außerdem stellen sie die Tools bereit, um die Metriken durchsuchen zu können. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen.
 
 Verfügbare HDInsight-Lösungen:
 

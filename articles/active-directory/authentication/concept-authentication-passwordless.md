@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 981402a2b0558514b26b5a4240dde3db7c9c193a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 115f792c82f2e3eea42636c788c3461f7cc55f77
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350024"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -110,43 +110,58 @@ Wenn ein Benutzer sich mit einem FIDO2-Sicherheitsschlüssel anmeldet, sieht der
 
 Viele Schlüssel verfügen zwar über eine FIDO2-Zertifizierung der FIDO Alliance, Microsoft verlangt von Anbietern jedoch die Implementierung einiger optionaler Erweiterungen der FIDO2-CTAP-Spezifikation (Client-to-Authenticator Protocol), um maximale Sicherheit und ein optimales Benutzererlebnis zu gewährleisten.
 
-Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus dem FIDO2 CTAP-Protokoll implementieren, damit er mit Microsoft kompatibel ist:
+Ein Sicherheitsschlüssel MUSS die folgenden Features und Erweiterungen aus dem FIDO2-CTAP-Protokoll implementieren, damit er Microsoft-kompatibel ist. Der Authenticator-Anbieter muss sowohl die Version FIDO_2_0 als auch die Version FIDO_2_1 der Spezifikation implementieren. Weitere Informationen finden Sie im [Client to Authenticator Protocol](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html) (Client-zu-Authenticator-Protokoll).
 
 | # | Funktion/Erweiterte Vertrauenswürdigkeit | Warum ist diese Funktion oder Erweiterung erforderlich? |
 | --- | --- | --- |
-| 1 | Residenter Schlüssel | Diese Funktion ermöglicht, dass der Sicherheitsschlüssel portabel ist, wobei Ihre Anmeldeinformationen auf dem Sicherheitsschlüssel gespeichert sind. |
-| 2 | Client-PIN | Diese Funktion ermöglicht Ihnen, Ihre Anmeldeinformationen mit einem zweiten Faktor zu schützen und gilt für Sicherheitsschlüssel, die keine Benutzeroberfläche haben. |
+| 1 | Residenter/erkennbarer Schlüssel | Dieses Feature ermöglicht, dass der Sicherheitsschlüssel portabel ist, wobei Ihre Anmeldeinformationen darin gespeichert und erkennbar sind und so Flows ohne Benutzernamen möglich werden. |
+| 2 | Client-PIN | Diese Funktion ermöglicht Ihnen, Ihre Anmeldeinformationen mit einem zweiten Faktor zu schützen und gilt für Sicherheitsschlüssel, die keine Benutzeroberfläche haben.<br>Sowohl [PIN-Protokoll 1](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#pinProto1) als auch [PIN-Protokoll 2](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#pinProto2) MÜSSEN implementiert werden. |
 | 3 | hmac-secret | Diese Erweiterung stellt sicher, dass Sie sich bei Ihrem Gerät anmelden können, wenn es sich im Offline- oder Flugmodus befindet. |
 | 4 | Mehrere Konten per RP | Diese Funktion stellt sicher, dass Sie den gleichen Sicherheitsschlüssel für mehrere Dienste wie Microsoft Account und Azure Active Directory verwenden können. |
+| 5 | Verwalten von Anmeldeinformationen    | Dieses Feature ermöglicht es Benutzern, ihre Anmeldeinformationen für Sicherheitsschlüssel auf Plattformen zu verwalten. Es gilt für Sicherheitsschlüssel, bei denen diese Funktionalität nicht integriert ist.<br>Authenticator MUSS die Befehle [authenticatorCredentialManagement](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#authenticatorCredentialManagement) und [credentialMgmtPreview](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#prototypeAuthenticatorCredentialManagement) für dieses Feature implementieren.  |
+| 6 | Bio-Registrierung           | Dieses Feature ermöglicht es Benutzern, ihre biometrischen Daten für ihre Authentifikatoren zu registrieren. Es gilt für Sicherheitsschlüssel, bei denen diese Funktionalität nicht integriert ist.<br> Authenticator MUSS die Befehle [authenticatorBioEnrollment](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#authenticatorBioEnrollment) und [userVerificationMgmtPreview](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#prototypeAuthenticatorBioEnrollment) für dieses Feature implementieren. |
+| 7 | pinUvAuthToken           | Dieses Feature ermöglicht es der Plattform, Authentifizierungstoken per PIN- oder BIO-Übereinstimmung zu verwenden. Das verbessert die Benutzerfreundlichkeit, wenn mehrere Anmeldeinformationen im Authentifikator vorhanden sind.  |
+| 8 | forcePinChange           | Dieses Feature ermöglicht es Unternehmen, Benutzer zu einer Änderung ihrer PIN in Remotebereitstellungen aufzufordern.  |
+| 9 | setMinPINLength          | Dieses Feature ermöglicht es Unternehmen, eine benutzerdefinierte minimale PIN-Länge für ihre Benutzer zu verwenden. Authenticator MUSS die Erweiterung „MinPinLength“ implementieren und „maxRPIDsForSetMinPINLength“ mindestens den Wert „1“ haben.  |
+| 10 | alwaysUV                | Dieses Feature ermöglicht es Unternehmen oder Benutzern, immer eine Benutzerüberprüfung zur Verwendung dieses Sicherheitsschlüssels anzufordern. Authenticator MUSS den Unterbefehl „toggleAlwaysUv“ implementieren. Der Standardwert für „alwaysUV“ muss vom Anbieter festgelegt werden. An diesem Punkt lautet aufgrund der Art von verschiedenen RPs-Einführungs- und Betriebssystemversionen der empfohlene Wert für biometrische Authentifikatoren „true“ (wahr) und für nicht biometrische Authentifikatoren „false“ (falsch).  |
+| 11 | credBlob                | Mit dieser Erweiterung können Websites kleine Informationen im Sicherheitsschlüssel speichern. „maxCredBlobLength“ MUSS mindestens 32 Byte umfassen.  |
+| 12 | largeBlob               | Mit dieser Erweiterung können Websites umfangreichere Informationen wie Zertifikate im Sicherheitsschlüssel speichern. „maxSerializedLargeBlobArray“ MUSS mindestens 1.024 Byte umfassen.  |
+
 
 ### <a name="fido2-security-key-providers"></a>FIDO2-Sicherheitsschlüsselanbieter
 
 Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formfaktoren an, die bekanntermaßen mit der kennwortlosen Benutzererfahrung kompatibel sind. Wir empfehlen Ihnen, die Sicherheitseigenschaften dieser Schlüssel zu bewerten, indem sie sich an den Hersteller und die FIDO Alliance wenden.
 
-| Anbieter | Contact |
-| --- | --- |
-| Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
-| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
-| HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| TrustKey-Lösungen | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
-| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
-| Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
-| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
-| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
-| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
-| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
-| Token2, Schweiz | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
-| GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
-| Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
-| Nymi | [https://www.nymi.com/product](https://www.nymi.com/product) |
+| Anbieter                  |     Biometrisch     | USB | NFC | BLE | FIPS-zertifiziert | Kontakt                                                                                             |
+|---------------------------|:-----------------:|:---:|:---:|:---:|:--------------:|-----------------------------------------------------------------------------------------------------|
+| AuthenTrend               | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://authentrend.com/about-us/#pg-35-3                                                           |
+| Ensurity                  | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.ensurity.com/contact                                                                    |
+| Excelsecu                 | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://www.excelsecu.com/productdetail/esecufido2secu.html                                         |
+| Feitian                   | ![j]              | ![j]| ![j]| ![j]| ![j]           | https://shop.ftsafe.us/pages/microsoft                                                              |
+| GoTrustID Inc.            | ![n]              | ![j]| ![j]| ![j]| ![n]           | https://www.gotrustid.com/idem-key                                                                  |
+| HID                       | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://www.hidglobal.com/contact-us                                                                |
+| Hypersecu                 | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://www.hypersecu.com/hyperfido                                                                 |
+| IDmelon Technologies Inc. | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://www.idmelon.com/#idmelon                                                                    |
+| Kensington                | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
+| KONA I                    | ![j]              | ![n]| ![j]| ![j]| ![n]           | https://konai.com/business/security/fido                                                            |
+| Nymi                      | ![j]              | ![n]| ![j]| ![n]| ![n]           | https://www.nymi.com/product                                                                      | 
+| OneSpan Inc.              | ![j]              | ![n]| ![n]| ![j]| ![n]           | https://www.onespan.com/products/fido                                                               |
+| Thales-Gruppe              | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
+| Thetis                    | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://thetis.io/collections/fido2                                                                 |
+| Token2, Schweiz        | ![j]              | ![j]| ![j]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |
+| TrustKey-Lösungen        | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.trustkeysolutions.com/security-keys/                                                    |
+| VinCSS                    | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://passwordless.vincss.net                                                                     |
+| Yubico                    | ![n]              | ![j]| ![j]| ![n]| ![j]           | https://www.yubico.com/solutions/passwordless/                                                      |
+
+
+<!--Image references-->
+[y]: ./media/fido2-compatibility/yes.png
+[n]: ./media/fido2-compatibility/no.png
 
 > [!NOTE]
 > Wenn Sie NFC-basierte Sicherheitsschlüssel erwerben und sie verwenden möchten, benötigen Sie einen unterstützten NFC-Leser für den Sicherheitsschlüssel. Der NFC-Leser ist keine Azure-Anforderung oder -Einschränkung. Eine Liste der unterstützten NFC-Leser finden Sie beim Anbieter für Ihren NFC-basierten Sicherheitsschlüssel.
 
-Wenn Sie Anbieter sind und Ihr Gerät zur Liste der unterstützten Geräte hinzufügen möchten, lesen Sie die Anleitung, wie Sie [Anbieter Microsoft-kompatibler FIDO2-Sicherheitsschlüssel werden](https://docs.microsoft.com/security/zero-trust/isv/fido2-hardware-vendor).
+Wenn Sie Anbieter sind und Ihr Gerät zur Liste der unterstützten Geräte hinzufügen möchten, lesen Sie die Anleitung, wie Sie [Anbieter Microsoft-kompatibler FIDO2-Sicherheitsschlüssel werden](concept-fido2-hardware-vendor.md).
 
 Um mit FIDO2-Sicherheitsschlüsseln zu beginnen, lesen Sie folgende Anleitung:
 
@@ -167,7 +182,7 @@ Es gelten die folgenden Bedingungen:
    - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung von Windows 10 und mit integrierten mobilen Apps unter jedem Betriebssystem.
    - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge (sowohl ältere als auch neue Edge-Version).
 
-- Benutzer können kennwortlose Anmeldeinformationen für den Zugriff auf Ressourcen in Mandanten verwenden, in denen sie nur Gäste sind, müssen aber dennoch die mehrstufige Authentifizierung in diesem Ressourcenmandanten ausführen. Weitere Informationen finden Sie unter [Mögliche doppelte Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/external-identities/current-limitations#possible-double-multi-factor-authentication).  
+- Benutzer können kennwortlose Anmeldeinformationen für den Zugriff auf Ressourcen in Mandanten verwenden, in denen sie nur Gäste sind, müssen aber dennoch die mehrstufige Authentifizierung in diesem Ressourcenmandanten ausführen. Weitere Informationen finden Sie unter [Mögliche doppelte Multi-Factor Authentication](../external-identities/current-limitations.md#possible-double-multi-factor-authentication).  
 
 - Benutzer dürfen keine kennwortlosen Anmeldeinformationen innerhalb eines Mandanten registrieren, in denen sie Gäste sind. Außerdem verfügen sie über kein in diesem Mandanten verwaltetes Kennwort.  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1fa9d27bbdfe91eebb74186e69cf707166384fd
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955062"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343214"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -42,7 +42,7 @@ Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführu
 | Triage und Untersuchung von Benutzern, die von Azure AD Identity Protection für Risiko- und Sicherheitsberichte gekennzeichnet wurden | Team für Informationssicherheitvorgänge |
 
 > [!NOTE]
-> Für Azure AD Identity Protection ist eine Azure AD Premium P2-Lizenz erforderlich. Die richtige Lizenz für Ihre Anforderungen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+> Für Azure AD Identity Protection ist eine Azure AD Premium P2-Lizenz erforderlich. Die richtige Lizenz für Ihre Anforderungen finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den obigen Empfehlungen entspricht.
 
@@ -249,7 +249,7 @@ Der bedingte Zugriff ist ein wichtiges Tool zur Verbesserung der Sicherheit Ihre
 - Nutzen Sie eine kleine Gruppe wichtiger Richtlinien an, die auf mehrere Anwendungen angewendet werden können.
 - Definieren Sie leere Ausnahmegruppen, und fügen Sie diese zu den Richtlinien hinzu, um eine Ausnahmestrategie zu erhalten.
 - Planen Sie Konten ohne MFA-Kontrollen für den [Notfallzugriff](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency).
-- Stellen Sie eine konsistente Umgebung zwischen Microsoft 365-Clientanwendungen (z. B. Teams, OneDrive, Outlook usw.) sicher, indem Sie dieselben Kontrollen für Dienste wie Exchange Online und SharePoint Online implementieren.
+- Stellen Sie eine konsistente Umgebung für Microsoft 365-Clientanwendungen (z. B. Teams, OneDrive, Outlook usw.) sicher, indem Sie dieselben Kontrollen für Dienste wie Exchange Online und SharePoint Online implementieren.
 - Die Zuweisung zu Richtlinien sollte nur über Gruppen erfolgen, nicht über Einzelpersonen.
 - Führen Sie regelmäßige Überprüfungen der Ausnahmegruppen durch, die in Richtlinien verwendet werden, um die Zeit zu begrenzen, in der die Benutzer nicht durch die errichtete Sicherheit geschützt werden. Wenn Sie über Azure AD Premium P2 verfügen, können Sie Zugriffsüberprüfungen verwenden, um diesen Prozess zu automatisieren.
 
@@ -328,7 +328,7 @@ Im Folgenden sind Benutzer- und Gruppeneinstellungen aufgeführt, die gesperrt w
 
 #### <a name="user-settings"></a>Benutzereinstellungen
 
-- **Externe Benutzer:** die externe Zusammenarbeit im Unternehmen kann mithilfe von Diensten wie Teams, Power BI, Sharepoint Online und Azure Information Protection auf organische Weise erfolgen. Wenn Sie über explizite Einschränkungen bei der Überprüfung der von Benutzern initiierten externen Zusammenarbeit verfügen, wird empfohlen, dass Sie externe Benutzer mithilfe der [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md) oder einem kontrollierten Vorgang erlauben, beispielsweise über Ihren Helpdesk. Wenn Sie die organische, externe Zusammenarbeit für Dienste nicht zulassen möchten, [können Sie Mitgliedern das Einladen externer Benutzer vollständig verbieten](../external-identities/delegate-invitations.md). Alternativ können Sie [spezifische Domänen in externen Benutzereinladungen zulassen oder blockieren](../external-identities/allow-deny-list.md).
+- **Externe Benutzer**: Die externe Zusammenarbeit kann im Unternehmen mit Diensten wie Teams, Power BI, Sharepoint Online und Azure Information Protection auf organische Weise erfolgen. Wenn Sie über explizite Einschränkungen bei der Überprüfung der von Benutzern initiierten externen Zusammenarbeit verfügen, wird empfohlen, dass Sie externe Benutzer mithilfe der [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md) oder einem kontrollierten Vorgang erlauben, beispielsweise über Ihren Helpdesk. Wenn Sie die organische, externe Zusammenarbeit für Dienste nicht zulassen möchten, [können Sie Mitgliedern das Einladen externer Benutzer vollständig verbieten](../external-identities/delegate-invitations.md). Alternativ können Sie [spezifische Domänen in externen Benutzereinladungen zulassen oder blockieren](../external-identities/allow-deny-list.md).
 - **App-Registrierungen:** Wenn App-Registrierungen erlaubt sind, können Endbenutzer Anwendungen eigenständig integrieren und diesen Zugriff auf ihre Daten gewähren. Ein typisches Beispiel für App-Registrierungen sind Benutzer, die Outlook-Plug-Ins oder Sprachassistenten wie Alexa oder Siri aktivieren, die ihre E-Mails und Kalender vorlesen oder E-Mails für sie senden. Wenn der Kunde sich dazu entscheidet, die App-Registrierung zu deaktivieren, müssen die Informationssicherheits- und IAM-Teams bei der Verwaltung von Ausnahmen involviert werden (App-Registrierungen, die basierend auf Geschäftsanforderungen erforderlich sind), da die Anwendungen mithilfe eines Administratorkontos registriert werden müssen und da vermutlich ein Prozess zum Operationalisieren des Verfahrens entworfen werden muss.
 - **Verwaltungsportal:** Organisationen können das Azure AD-Blatt im Azure-Portal sperren, damit Benutzer ohne Administratorrechte nicht über das Azure-Portal auf die Azure AD-Verwaltung zugreifen können. Navigieren Sie im Azure AD-Verwaltungsportal zu den Benutzereinstellungen, um den Zugriff einzuschränken:
 

@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 389bf4438fa31b0c1174441cd62f814f18b271d2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713682"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729514"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -109,7 +109,7 @@ Weitere Informationen finden Sie unter [Vergleichen von Gruppen](/office365/admi
 
 ## <a name="add-an-application-resource-role"></a>Hinzufügen einer Ressourcenrolle für eine Anwendung
 
-Wird ein Benutzer einem Zugriffspaket zugewiesen, kann ihm mit Azure AD automatisch der Zugriff auf eine Azure AD-Unternehmensanwendung zugewiesen werden, einschließlich SaaS-Anwendungen und Verbundanwendungen Ihrer Organisation mit Azure AD. Für Anwendungen, die in Azure AD über die einmalige Verbundanmeldung integriert sind, stellt Azure AD für Benutzer, die diesen Anwendungen zugewiesen sind, Verbundtoken aus.
+Sie können Azure AD veranlassen, Benutzern automatisch Zugriff auf eine Azure AD-Unternehmensanwendung zuzuweisen, einschließlich SaaS-Anwendungen und Anwendungen Ihrer Organisation, die in Azure AD integriert sind, wenn einem Benutzer ein Zugriffspaket zugewiesen wird. Für Anwendungen, die in Azure AD über die einmalige Verbundanmeldung integriert sind, stellt Azure AD für Benutzer, die diesen Anwendungen zugewiesen sind, Verbundtoken aus.
 
 Anwendungen können über mehrere Rollen verfügen. Wenn Sie einem Zugriffspaket eine Anwendung hinzufügen, die mehr als eine Rolle besitzt, müssen Sie für diese Benutzer die entsprechende Rolle angeben. Wenn Sie Anwendungen entwickeln, finden Sie weitere Informationen zum Hinzufügen dieser Rollen zu Ihren Anwendungen unter [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](../develop/active-directory-enterprise-app-role-management.md).
 
