@@ -6,20 +6,21 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 041e6e2b3a79fa639a00506c81fc3e7ab0a98cec
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ee0bafdfe7d7caae2d4ba65e9967d9c46e6b3e3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346506"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Konfigurieren der Datenreplikation in Azure Database for MySQL Flexible Server
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die [Datenreplikation](concepts-data-in-replication.md) in Azure Database for MySQL Flexible Server einrichten, indem Sie Quell- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MySQL-Servern und -Datenbanken verfügen.
 
 > [!NOTE]
 > Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
->
 
 Die [Datenreplikationsfunktion](concepts-data-in-replication.md) synchronisiert Daten von einem lokalen MySQL-Quellserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten, um ein Replikat in Azure Database for MySQL Flexible Server zu erstellen. Die Datenreplikation basiert auf der Position der binären Protokolldatei (binlog). Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
@@ -44,7 +45,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
     * Wenn privater Zugriff verwendet wird, stellen Sie sicher, dass Konnektivität zwischen dem Quellserver und dem VNet besteht, in dem der Replikatserver gehostet wird. 
     * Stellen Sie Site-to-Site-Konnektivität zu Ihren lokalen Quellservern sicher, indem Sie entweder [ExpressRoute](../../expressroute/expressroute-introduction.md) oder [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
-    * Wenn privater Zugriff auf dem Replikatserver verwendet wird und Ihre Quelle Azure-VM ist, stellen Sie sicher, dass die VNet-zu-VNet-Konnektivität hergestellt ist. VNet-zu-VNet-Peering innerhalb von Regionen wird unterstützt. **Globales Peering wird derzeit nicht unterstützt.** Sie müssten andere Konnektivitätsmethoden (etwa eine VNet-zu-VNet-Verbindung) verwenden, um die regionsübergreifende Kommunikation zwischen VNets zu ermöglichen. Weitere Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+    * Wenn privater Zugriff auf dem Replikatserver verwendet wird und Ihre Quelle Azure-VM ist, stellen Sie sicher, dass die VNet-zu-VNet-Konnektivität hergestellt ist. VNet-Peering wird unterstützt. Sie können auch andere Konnektivitätsmethoden (etwa eine Verbindung zwischen VNets) verwenden, um die regionsübergreifende Kommunikation zwischen VNets zu ermöglichen. Weitere Informationen finden Sie unter [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
     * Vergewissern Sie sich, dass die Netzwerksicherheitsgruppen-Regeln Ihres virtuellen Netzwerks den ausgehenden Port 3306 nicht blockieren (auch nicht in eingehender Richtung, wenn MySQL auf einem virtuellen Azure-Computer ausgeführt wird). Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
     * Konfigurieren Sie die Firewallregeln Ihres Quellservers so, dass die IP-Adresse des Replikatservers zulässig ist.
 
@@ -215,16 +216,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
-
-2. Einrichten von Filtern
-
-   Wenn Sie die Replikation einiger Tabellen von Ihrem Master überspringen möchten, aktualisieren Sie den Serverparameter `replicate_wild_ignore_table` auf Ihrem Replikatserver. Mithilfe einer durch Trennzeichen getrennten Liste können Sie mehr als ein Tabellenmuster angeben.
-
-   Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table).
-
-   Sie können den Parameter über das [Azure-Portal](how-to-configure-server-parameters-portal.md) oder die [Azure-Befehlszeilenschnittstelle](how-to-configure-server-parameters-cli.md) aktualisieren.
-
-3. Starten Sie die Replikation.
+2. Starten Sie die Replikation.
 
    Rufen Sie die gespeicherte Prozedur `mysql.az_replication_start` auf, um die Replikation zu starten.
 
@@ -232,7 +224,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    CALL mysql.az_replication_start;
    ```
 
-4. Überprüfen Sie den Replikationsstatus.
+3. Überprüfen Sie den Replikationsstatus.
 
    Rufen Sie den Befehl [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) auf dem Replikatserver auf, um den Replikationsstatus anzuzeigen.
 

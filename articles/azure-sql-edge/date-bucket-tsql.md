@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c270d0541a3fda8c42ec42f48a666b3d0aff5220
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93073518"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349672"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-Diese Funktion gibt den datetime-Wert zurück, der dem Anfang jedes datetime-Buckets entspricht, beginnend beim Zeitstempel, der vom `origin`-Parameter definiert wird, oder den origin-Wert von `1900-01-01 00:00:00.000`, wenn der origin-Parameter nicht angegeben ist. 
+Diese Funktion gibt den datetime-Wert zurück, der dem Anfang jedes datetime-Buckets entspricht, beginnend beim Zeitstempel, der vom `origin`-Parameter definiert wird, oder den origin-Wert von `1900-01-01 00:00:00.000`, wenn der origin-Parameter nicht angegeben ist.
 
 Eine Übersicht über alle Datums- und Uhrzeitdatentypen und zugehörigen Funktionen (Transact-SQL) finden Sie unter [Datums- und Uhrzeitdatentypen und zugehörige Funktionen](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/).
 
@@ -26,7 +26,7 @@ Eine Übersicht über alle Datums- und Uhrzeitdatentypen und zugehörigen Funkti
 
 ## <a name="syntax"></a>Syntax
 
-```sql
+```syntaxsql
 DATE_BUCKET (datePart, number, date, origin)
 ```
 
@@ -37,23 +37,23 @@ DATE_BUCKET (datePart, number, date, origin)
 Der Teil von *date*, der mit dem Parameter „number“ verwendet wird. Ex. Jahr, Monat, Minute, Sekunde usw.
 
 > [!NOTE]
-> `DATE_BUCKET` akzeptiert keine benutzerdefinierten Variablenentsprechungen für die *datePart*-Argumente.
-  
-|*datePart*|Abkürzungen|  
+> `DATE_BUCKET` akzeptiert für die *datePart*-Argumente keine benutzerdefinierten Variablenentsprechungen.
+
+|*datePart*|Abkürzungen|
 |---|---|
-|**day**|**dd**, **d**|  
-|**week**|**wk**, **ww**| 
+|**day**|**dd**, **d**|
+|**week**|**wk**, **ww**|
 |**month**|**mm**, **m**|
-|**quarter**|**qq**, **q**|  
-|**year**|**yy**, **yyyy**|  
-|**hour**|**hh**|  
-|**minute**|**mi**, **n**|  
-|**second**|**ss**, **s**|  
-|**millisecond**|**ms**|  
+|**quarter**|**qq**, **q**|
+|**year**|**yy**, **yyyy**|
+|**hour**|**hh**|
+|**minute**|**mi**, **n**|
+|**second**|**ss**, **s**|
+|**millisecond**|**ms**|
 
 *Zahl*
 
-Der Integerwert, der die Breite des Buckets in Kombination mit dem *datePart*-Argument bestimmt. Dies stellt die Breite des datePart-Buckets ab der Ursprungszeit dar. **`This argument cannot be a negative integer value`**. 
+Der Integerwert, der die Breite des Buckets in Kombination mit dem *datePart*-Argument bestimmt. Dies stellt die Breite des datePart-Buckets ab der Ursprungszeit dar. **`This argument cannot be a negative integer value`**.
 
 *date*
 
@@ -61,25 +61,25 @@ Ein Ausdruck, der in einen der folgenden Werte aufgelöst werden kann:
 
 + **date**
 + **datetime**
-+ **datetimeoffset**
 + **datetime2**
++ **datetimeoffset**
 + **smalldatetime**
 + **time**
 
 Für *date* akzeptiert `DATE_BUCKET` einen Spaltenausdruck, einen Ausdruck oder eine benutzerdefinierte Variable, wenn diese in einen der oben genannten Datentypen aufgelöst werden.
 
-**Ursprung** 
+**Ursprung**
 
 Ein optionaler Ausdruck, der in einen der folgenden Werte aufgelöst werden kann:
 
 + **date**
 + **datetime**
-+ **datetimeoffset**
 + **datetime2**
++ **datetimeoffset**
 + **smalldatetime**
 + **time**
 
-Der Datentyp für `Origin` sollte mit dem Datentyp des `Date`-Parameters übereinstimmen. 
+Der Datentyp für `Origin` sollte mit dem Datentyp des `Date`-Parameters übereinstimmen.
 
 `DATE_BUCKET` verwendet einen origin-Standardwert für „date“ von `1900-01-01 00:00:00.000`, d. h. 12:00 Uhr am Montag, 1. Januar 1900, wenn für die Funktion kein origin-Wert angegeben ist.
 
@@ -91,7 +91,7 @@ Der Datentyp des Rückgabewerts für diese Methode ist dynamisch. Der Rückgabet
 
 ### <a name="understanding-the-output-from-date_bucket"></a>Grundlegendes zur Ausgabe von `DATE_BUCKET`
 
-`Date_Bucket` gibt den aktuellsten Datums- oder Uhrzeitwert zurück, der dem datePart- und dem number-Parameter entspricht. In den folgenden Ausdrücken gibt `Date_Bucket` z. B. den Ausgabewert `2020-04-13 00:00:00.0000000` zurück, da die Ausgabe basierend auf einwöchigen Buckets aus der Standardursprungszeit von `1900-01-01 00:00:00.000` berechnet wird. Der Wert `2020-04-13 00:00:00.0000000` ist 6.276 Wochen vom Ursprungswert `1900-01-01 00:00:00.000` entfernt. 
+`Date_Bucket` gibt den aktuellsten Datums- oder Uhrzeitwert zurück, der dem datePart- und dem number-Parameter entspricht. In den folgenden Ausdrücken gibt `Date_Bucket` z. B. den Ausgabewert `2020-04-13 00:00:00.0000000` zurück, da die Ausgabe basierend auf einwöchigen Buckets aus der Standardursprungszeit von `1900-01-01 00:00:00.000` berechnet wird. Der Wert `2020-04-13 00:00:00.0000000` ist 6.276 Wochen vom Ursprungswert `1900-01-01 00:00:00.000` entfernt.
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
@@ -126,32 +126,32 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 ## <a name="datepart-argument"></a>datepart-Argument
 
 **dayofyear**, **day** und **weekday** geben den gleichen Wert zurück. Jedes *datepart*-Argument und die jeweils zugehörigen Abkürzungen geben den gleichen Wert zurück.
-  
+
 ## <a name="number-argument"></a>number-Argument
 
 Das *number*-Argument kann den Bereich von positiven **int**-Werten nicht überschreiten. In den folgenden Anweisungen überschreitet das Argument für *number* den Bereich von **int** um 1. Die folgende Anweisung gibt folgende Fehlermeldung zurück: „`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
-  
+
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
 Select DATE_BUCKET(dd, 2147483648, @date)
-```  
+```
 
-Wenn ein negativer Wert für „number“ an die `Date_Bucket`-Funktion übergeben wird, wird der folgende Fehler zurückgegeben. 
+Wenn ein negativer Wert für „number“ an die `Date_Bucket`-Funktion übergeben wird, wird der folgende Fehler zurückgegeben.
 
-```sql
+```txt
 Msg 9834, Level 16, State 1, Line 1
 Invalid bucket width value passed to date_bucket function. Only positive values are allowed.
 ````
 
-## <a name="date-argument"></a>date-Argument  
+## <a name="date-argument"></a>date-Argument
 
-`DATE_BUCKET` gibt den Basiswert zurück, der dem Datentyp des `date`-Arguments entspricht. Im folgenden Beispiel wird ein Ausgabewert mit dem datetime2-Datentyp zurückgegeben. 
+`DATE_BUCKET` gibt den Basiswert zurück, der dem Datentyp des `date`-Arguments entspricht. Im folgenden Beispiel wird ein Ausgabewert mit dem datetime2-Datentyp zurückgegeben.
 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
 
-## <a name="origin-argument"></a>origin-Argument  
+## <a name="origin-argument"></a>origin-Argument
 
 Die Datentypen der Argumente `origin` und `date` müssen identisch sein. Wenn unterschiedliche Datentypen verwendet werden, wird ein Fehler ausgegeben.
 
@@ -186,7 +186,7 @@ Select 'Seconds',  DATE_BUCKET(ss, 1, @date)
 
 Hier ist das Resultset.
 
-```sql
+```txt
 Week    2020-04-27 00:00:00.0000000
 Day     2020-04-30 00:00:00.0000000
 Hour    2020-04-30 21:00:00.0000000
@@ -197,30 +197,30 @@ Seconds 2020-04-30 21:21:21.0000000
 ### <a name="b-using-expressions-as-arguments-for-the-number-and-date-parameters"></a>B. Verwenden von Ausdrücken als Argumente für den number-Parameter und den date-Parameter
 
 In diesen Beispielen werden verschiedene Typen von Ausdrücken als Argumente für die Parameter *number* und *date* verwendet. Diese Beispiele werden mithilfe der Datenbank „AdventureWorksDW2017“ erstellt.
-  
-#### <a name="specifying-user-defined-variables-as-number-and-date"></a>Angeben von benutzerdefinierten Variablen als Argumente für number und date  
+
+#### <a name="specifying-user-defined-variables-as-number-and-date"></a>Angeben von benutzerdefinierten Variablen als Argumente für number und date
 
 In diesem Beispiel werden benutzerdefinierte Variablen als Argumente für *number* und *date* angegeben:
-  
+
 ```sql
 DECLARE @days int = 365,
-        @datetime datetime2 = '2000-01-01 01:01:01.1110000'; /* 2000 was a leap year */;  
+        @datetime datetime2 = '2000-01-01 01:01:01.1110000'; /* 2000 was a leap year */;
 SELECT Date_Bucket(day, @days, @datetime);
 ```
 
 Hier ist das Resultset.
 
-```sql
+```txt
 ---------------------------
 1999-12-08 00:00:00.0000000
 
 (1 row affected)
-```  
+```
 
 #### <a name="specifying-a-column-as-date"></a>Angeben einer Spalte als date-Parameter
 
 Im folgenden Beispiel berechnen wir die Summe von OrderQuantity und die Summe von UnitPrice, gruppiert über wöchentliche date-Buckets.
-  
+
 ```sql
 SELECT
     Date_Bucket(week, 1 ,cast(Shipdate as datetime2)) AS ShippedDateBucket
@@ -230,11 +230,11 @@ FROM dbo.FactInternetSales FIS
 where Shipdate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 Group by Date_Bucket(week, 1 ,cast(Shipdate as datetime2))
 order by 1
-```  
+```
 
 Hier ist das Resultset.
-  
-```sql
+
+```txt
 ShippedDateBucket           SumOrderQuantity SumUnitPrice
 --------------------------- ---------------- ---------------------
 2011-01-03 00:00:00.0000000 21               65589.7546
@@ -246,38 +246,38 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 2011-02-14 00:00:00.0000000 32               107804.8964
 2011-02-21 00:00:00.0000000 37               119456.3428
 2011-02-28 00:00:00.0000000 9                28968.6982
-```  
+```
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Angeben einer skalaren Systemfunktion als Argument für date
 
 In diesem Beispiel wird `SYSDATETIME` für *date* angegeben. Welcher Wert genau zurückgegeben wird, hängt davon ab, an welchem Tag und zu welcher Uhrzeit die Anweisung ausgeführt wird:
-  
+
 ```sql
-SELECT Date_Bucket(wk, 10, SYSDATETIME());  
-```  
+SELECT Date_Bucket(wk, 10, SYSDATETIME());
+```
 
 Hier ist das Resultset.
 
-```sql
+```txt
 ---------------------------
 2020-03-02 00:00:00.0000000
 
 (1 row affected)
-```  
+```
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Angeben von skalaren Unterabfragen und skalaren Funktionen als Argumente für number und date
 
 In diesem Beispiel werden skalare Unterabfragen (`MAX(OrderDate)`) als Argumente für *number* und *date* verwendet. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` dient als Beispielargument für den Parameter „number“, das veranschaulicht, wie ein *number*-Argument aus einer Werteliste ausgewählt wird.
-  
+
 ```sql
-SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
-    (SELECT MAX(OrderDate) FROM dbo.FactInternetSales));  
-```  
-  
+SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),
+    (SELECT MAX(OrderDate) FROM dbo.FactInternetSales));
+```
+
 #### <a name="specifying-numeric-expressions-and-scalar-system-functions-as-number-and-date"></a>Angeben von numerischen Ausdrücken und skalaren Systemfunktionen als Argumente für number und date
 
 In diesem Beispiel werden ein numerischer Ausdruck ((10/2)) und Skalarsystemfunktionen (SYSDATETIME) als Argumente für number und date verwendet.
-  
+
 ```sql
 SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 ```
@@ -285,20 +285,20 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Angeben einer Aggregatfensterfunktion als Argument für number
 
 In diesem Beispiel wird eine Aggregatfensterfunktion als Argument für *number* verwendet.
-  
+
 ```sql
-Select 
+Select
     DISTINCT DATE_BUCKET(day, 30, Cast([shipdate] as datetime2)) as DateBucket,
     First_Value([SalesOrderNumber]) OVER (Order by DATE_BUCKET(day, 30, Cast([shipdate] as datetime2))) as First_Value_In_Bucket,
     Last_Value([SalesOrderNumber]) OVER (Order by DATE_BUCKET(day, 30, Cast([shipdate] as datetime2))) as Last_Value_In_Bucket
     from [dbo].[FactInternetSales]
 Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
-GO  
-``` 
-### <a name="c-using-a-non-default-origin-value"></a>C. Verwenden eines origin-Nicht-Standard-Werts
+GO
+```
+### <a name="c-using-a-non-default-origin-value"></a>C. Verwenden eines nicht standardmäßigen Ursprungswerts
 
-Bei diesem Beispiel wird ein origin-Nicht-Standard-Wert verwendet, um die date-Buckets zu erzeugen. 
+In diesem Beispiel wird ein nicht standardmäßiger Ursprungswert für date-Buckets verwendet.
 
 ```sql
 declare @date datetime2 = '2020-06-15 21:22:11'

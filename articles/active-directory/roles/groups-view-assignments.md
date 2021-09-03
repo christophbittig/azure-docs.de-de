@@ -1,6 +1,6 @@
 ---
 title: Anzeigen der zugewiesenen Rollen einer Gruppe in Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die einer Gruppe zugewiesenen Rollen im Azure AD Admin Center anzeigen können. Das Anzeigen von Gruppen und zugewiesenen Rollen gehört zu den Standardbenutzerberechtigungen.
+description: Erfahren Sie, wie die einer Gruppe zugewiesenen Rollen im Azure-Portal angezeigt werden können. Das Anzeigen von Gruppen und zugewiesenen Rollen gehört zu den Standardbenutzerberechtigungen.
 services: active-directory
 author: rolyon
 manager: daveba
@@ -13,29 +13,31 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e44dc442180631b0ebe11cae374a59fed37cc13
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 87e59c7ab9bfc5fa9211d84d2d9a855dea97ec1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085741"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346260"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Anzeigen der zugewiesenen Rollen einer Gruppe in Azure Active Directory
 
-In diesem Abschnitt wird beschrieben, wie die einer Gruppe zugewiesenen Rollen mithilfe von Azure AD Admin Center angezeigt werden können. Das Anzeigen von Gruppen und zugewiesenen Rollen gehört zu den Standardbenutzerberechtigungen.
+In diesem Abschnitt wird beschrieben, wie die einer Gruppe zugewiesenen Rollen im Azure-Portal angezeigt werden können. Das Anzeigen von Gruppen und zugewiesenen Rollen gehört zu den Standardbenutzerberechtigungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- AzureADPreview-Modul bei Verwendung von PowerShell
+- AzureAD-Modul bei Verwendung von PowerShell
 - Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
 
 Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
-1. Wählen Sie die Gruppe aus, an der Sie interessiert sind.
+1. Klicken Sie auf **Azure Active Directory** > **Gruppen**.
+
+1. Wählen Sie eine der Rolle zuweisbare Gruppe aus, an der Sie interessiert sind.
 
 1. Wählen Sie **Zugewiesene Rollen** aus. Damit werden alle Azure AD-Rollen angezeigt, die dieser Gruppe zugewiesen sind.
 
@@ -71,5 +73,5 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen](groups-concept.md)
-- [Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind](groups-faq-troubleshooting.md)
+- [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](groups-concept.md)
+- [Behandeln von Problemen bei Azure AD-Rollen mit Gruppenzuweisung](groups-faq-troubleshooting.yml)

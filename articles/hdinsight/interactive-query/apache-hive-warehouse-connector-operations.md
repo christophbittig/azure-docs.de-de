@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b876cd702a2398e8dcb0e1a0be5fffce0615e58d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871587"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340247"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Vom Hive Warehouse Connector unterstützte Apache Spark-Vorgänge in Azure HDInsight
 
@@ -74,7 +74,7 @@ Spark bietet keine native Unterstützung für das Schreiben in verwaltete ACID-T
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. Filtern Sie die Tabelle `hivesampletable`, in der die Spalte `state` den Eintrag `Colorado` enthält. Diese Hive-Abfrage gibt mithilfe der Funktion `write` einen Spark-Datenrahmen in der Hive-Tabelle `sampletable_colorado` zurück.
+1. Filtern Sie die Tabelle `hivesampletable`, in der die Spalte `state` den Eintrag `Colorado` enthält. Diese Hive-Abfrage gibt einen Spark-Datenrahmen zurück, und das Ergebnis wird mit der Funktion `write` in der Hive-Tabelle `sampletable_colorado` gespeichert.
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format("com.hortonworks.spark.sql.hive.llap.HiveWarehouseConnector").mode("append").option("table","sampletable_colorado").save()
@@ -106,7 +106,7 @@ Mithilfe der folgenden Schritte können Sie Daten aus einem Spark-Stream vom loc
 
 1. Generieren Sie Daten für den von Ihnen erstellten Spark-Stream, indem Sie die folgenden Schritte ausführen:
     1. Richten Sie im selben Spark-Cluster eine zweite SSH-Sitzung ein.
-    1. Geben Sie an der Eingabeaufforderung `nc -lk 9999` ein: Für diesen Befehl wird das Hilfsprogramm netcat verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
+    1. Geben Sie an der Eingabeaufforderung `nc -lk 9999` ein: Bei diesem Befehl wird das Hilfsprogramm `netcat` verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
 
 1. Kehren Sie zur ersten SSH-Sitzung zurück, und erstellen Sie für die Streamingdaten eine neue Hive-Tabelle. Geben Sie in spark-shell den folgenden Befehl ein:
 
@@ -137,10 +137,11 @@ Mithilfe der folgenden Schritte können Sie Daten aus einem Spark-Stream vom loc
     hive.table("stream_table").show()
     ```
 
-Drücken Sie **STRG+C**, um netcat in der zweiten SSH-Sitzung zu beenden. Verwenden Sie `:q`, um spark-shell in der ersten SSH-Sitzung zu beenden.
+Drücken Sie **STRG+C**, um `netcat` in der zweiten SSH-Sitzung zu beenden. Verwenden Sie `:q`, um spark-shell in der ersten SSH-Sitzung zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [HWC-Integration mit Apache Spark und Apache Hive](./apache-hive-warehouse-connector.md)
 * [Verwenden von Interactive Query mit HDInsight](./apache-interactive-query-get-started.md)
 * [HWC-Integration mit Apache Zeppelin](./apache-hive-warehouse-connector-zeppelin.md)
+* [APIs mit HWC-Unterstützung](./hive-warehouse-connector-apis.md)

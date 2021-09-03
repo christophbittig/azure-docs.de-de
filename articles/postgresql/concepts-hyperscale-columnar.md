@@ -1,25 +1,20 @@
 ---
-title: 'Spaltenbasierter Tabellenspeicher (Vorschau): Hyperscale (Citus): Azure Database for PostgreSQL'
-description: Komprimieren von Daten mithilfe von spaltenbasiertem Speicher (Vorschau)
+title: 'Spaltenbasierter Tabellenspeicher – Hyperscale (Citus): Azure Database for PostgreSQL'
+description: Komprimieren von Daten mithilfe von spaltenbasiertem Speicher
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/04/2021
-ms.openlocfilehash: c42cfcc35edf33cf30c4d69b4a1fb15d39dd4009
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/03/2021
+ms.openlocfilehash: 557fe7d2242b67f8fa53541aef25cfc44090e48b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773681"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347032"
 ---
-# <a name="columnar-table-storage-preview"></a>Spaltenbasierter Tabellenspeicher (Vorschau)
-
-> [!IMPORTANT]
-> Spaltenbasierter Tabellenspeicher in Hyperscale (Citus) befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
+# <a name="columnar-table-storage"></a>Spaltenbasierter Tabellenspeicher
 
 Azure Database for PostgreSQL: Spaltenbasierter Tabellenspeicher wird von Hyperscale (Citus) nur für Analyse- und Data Warehousing-Workloads unterstützt. Wenn Spalten (anstelle von Zeilen) zusammenhängend auf einem Datenträger gespeichert werden, lassen sich die Daten besser komprimieren, und bei Abfragen kann schneller eine Teilmenge von Spalten angefordert werden.
 

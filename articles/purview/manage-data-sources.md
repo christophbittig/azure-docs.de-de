@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: b8eefda763765fd17fbf86bcf3205e854459a9f6
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: c1e60ae792921ef4e218918f093001ee9947975d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656240"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345852"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Verwalten von Datenquellen in Azure Purview (Vorschau)
 
@@ -38,7 +38,7 @@ Verwenden Sie die folgenden Schritte, um eine neue Quelle zu registrieren.
 
 ## <a name="view-sources"></a>Anzeigen von Quellen
 
-Sie können alle registrierten Quellen auf der Registerkarte **Quellen** von Azure Purview Studio anzeigen. Es gibt zwei Ansichtsarten: Kartenansicht und Listenansicht.
+Sie können alle registrierten Quellen auf der Registerkarte **Data Map** von Azure Purview Studio einsehen. Es gibt zwei Ansichtsarten: Kartenansicht und Listenansicht.
 
 ### <a name="map-view"></a>Kartenansicht
 

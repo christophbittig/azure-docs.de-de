@@ -13,21 +13,18 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 06/29/2021
 ms.author: yelevin
-ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aa912e89fbbb1c219c15df8cbf3fed25868ff1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660728"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355804"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>Bessere Verwaltung von SOC mit Incidentmetriken
 
-> [!IMPORTANT]
-> Die Features für Incidentmetriken befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Features werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Als Security Operations Center-Manager benötigen Sie Metriken und Measures zur Gesamteffizienz, um die Leistung Ihres Teams messen zu können. Sie müssen Incidentvorgänge im Lauf der Zeit anhand einer Vielzahl verschiedener Kriterien anzeigen, wie z. B. Schweregrad, MITRE-Taktiken, mittlere Zeit bis zur Selektierung und mittlere Lösungszeit. Azure Sentinel stellt diese Daten jetzt mit der neuen **SecurityIncident**-Tabelle und dem entsprechenden Schema in Log Analytics und der zugehörigen Arbeitsmappe **Effizienz des Sicherheitsbetriebs** zur Verfügung. Sie können die Leistung Ihres Teams im zeitlichen Verlauf visualisieren und diese Einblicke verwenden, um die Effizienz zu verbessern. Sie können auch eigene KQL-Abfragen für die Incidenttabelle schreiben und verwenden, um benutzerdefinierte Arbeitsmappen zu erstellen, die genau Ihren speziellen Überprüfungsanforderungen und KPIs entsprechen.
 
@@ -41,12 +38,24 @@ Jedes Mal, wenn Sie einen Incident erstellen oder aktualisieren, wird der Tabell
 
 Ein Beispiel: Wenn Sie eine Liste aller Incidents sortiert nach Incidentnummer benötigen, aber für jeden Incident nur das neueste Protokoll zurückgeben möchten, können Sie dafür den [summarize-Operator](/azure/data-explorer/kusto/query/summarizeoperator) von KQL mit der [Aggregationsfunktion](/azure/data-explorer/kusto/query/arg-max-aggfunction) `arg_max()` verwenden:
 
-
 ```Kusto
 SecurityIncident
 | summarize arg_max(LastModifiedTime, *) by IncidentNumber
 ```
 ### <a name="more-sample-queries"></a>Weitere Beispielabfragen
+
+Incidentstatus: Alle Incidents nach Status und Schweregrad in einem bestimmten Zeitraum:
+
+```Kusto
+let startTime = ago(14d);
+let endTime = now();
+SecurityIncident
+| where TimeGenerated >= startTime
+| summarize arg_max(TimeGenerated, *) by IncidentNumber
+| where LastModifiedTime  between (startTime .. endTime)
+| where Status in  ('New', 'Active', 'Closed')
+| where Severity in ('High','Medium','Low', 'Informational')
+```
 
 Mittlere Zeit bis zum Abschluss:
 ```Kusto
@@ -95,4 +104,4 @@ Sie können die Vorlage verwenden, um eigene, auf Ihre Anforderungen zugeschnitt
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Für den Einstieg in Azure Sentinel benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
-- Hier erfahren Sie, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Hier erfahren Sie, wie Sie [Ihre Daten in Azure Sentinel integrieren](quickstart-onboard.md) und [Einblicke in Daten und potenzielle Bedrohungen erhalten](get-visibility.md).

@@ -7,15 +7,15 @@ ms.subservice: service-overview
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 05/02/2021
-ms.openlocfilehash: 765c6c79bf28ad01ab0253e85affd5d4cd95ed78
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/22/2021
+ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031905"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349663"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Die Funktion „Wartungsfenster“ ermöglicht Ihnen das Konfigurieren von Wartu
 
 ## <a name="overview"></a>Übersicht
 
-Azure führt regelmäßig eine [geplante Wartung](planned-maintenance.md) von Ressourcen in SQL-Datenbank und Azure SQL Managed Instance durch. Während des Azure SQL-Wartungsereignisses sind Datenbanken vollständig verfügbar, können jedoch innerhalb der entsprechenden Verfügbarkeits-SLAs für [SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database) und [Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance) kurzen Neukonfigurationen unterliegen.
+Azure führt regelmäßig eine [geplante Wartung](planned-maintenance.md) von Ressourcen in SQL-Datenbank und Azure SQL Managed Instance durch. Während des Azure SQL-Wartungsereignisses sind Datenbanken vollständig verfügbar, können jedoch innerhalb der entsprechenden Verfügbarkeits-SLAs für [SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database) und [Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance) kurzen Neukonfigurationen unterliegen.
 
 Das Wartungsfenster ist für Produktionsworkloads vorgesehen, die gegenüber Neukonfigurationen von Datenbanken oder Instanzen nicht resilient sind und keine kurzen Verbindungsunterbrechungen durch geplante Wartungsereignisse auffangen können. Durch die Auswahl eines gewünschten Wartungsfensters können Sie die Auswirkungen geplanter Wartungen minimieren, da diese außerhalb Ihrer Hauptgeschäftszeiten stattfinden. Stabile Workloads und Nicht-Produktionsworkloads sind möglicherweise von der Azure SQL-Standardwartungsrichtlinie abhängig.
 
@@ -80,21 +80,28 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 - Australien, Südosten
 - Brasilien Süd
 - Kanada, Mitte
+- Kanada, Osten
+- Indien, Mitte
 - USA (Mitte)
 - East US
 - USA (Ost 2)
 - Asien, Osten
+- Frankreich, Süden
 - Deutschland, Westen-Mitte
 - Japan, Osten
+- Südkorea, Mitte*
 - USA, Norden-Mitte
 - Nordeuropa
 - USA, Süden-Mitte
 - Asien, Südosten
 - UK, Süden
 - UK, Westen
+- USA, Westen-Mitte
 - Europa, Westen
 - USA (Westen)
 - USA, Westen 2
+
+*Nur für Azure SQL Managed Instance verfügbar
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Gatewaywartung für Azure SQL-Datenbank
 
@@ -120,7 +127,7 @@ Eine Orientierungshilfe zur Berechnung der erwarteten Dauer der Konfiguration de
 > Am Ende des Wartungsvorgangs erfolgt eine kurze Neukonfiguration, die normalerweise bis zu 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Wenn Sie die Auswirkungen der Neukonfiguration minimieren möchten, sollten Sie den Vorgang außerhalb der Spitzenzeiten planen.
 
 ### <a name="ip-address-space-requirements"></a>Anforderungen an den IP-Adressraum
-Für jeden neuen virtuellen Cluster im Subnetz sind zusätzliche IP-Adressen gemäß der [IP-Adresszuordnung des virtuellen Clusters](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size) erforderlich. Wenn Sie das Wartungsfenster für eine vorhandene verwaltete Instanz ändern möchten, ist auch [vorübergehend zusätzliche IP-Kapazität](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) erforderlich – wie im Szenario „Skalieren von virtuellen Kernen“ für die entsprechende Dienstebene.
+Für jeden neuen virtuellen Cluster im Subnetz sind zusätzliche IP-Adressen gemäß der [IP-Adresszuordnung des virtuellen Clusters](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size) erforderlich. Wenn Sie das Wartungsfenster für eine vorhandene verwaltete Instanz ändern möchten, ist auch [vorübergehend zusätzliche IP-Kapazität](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) erforderlich – wie im Szenario „Skalieren von virtuellen Kernen“ für die entsprechende Dienstebene.
 
 ### <a name="ip-address-change"></a>Änderung der IP-Adresse
 Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adresse der Instanz innerhalb des IP-Adressbereichs des Subnetzes geändert wird.

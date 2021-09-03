@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/17/2021
+ms.openlocfilehash: e4e6af7e0fd475d60c38a021d2cefec4cbc39de3
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605398"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397296"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Beschränkungen in Azure Database for PostgreSQL – Flexible Server
 
@@ -30,16 +30,16 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
 | **Allgemeiner Zweck**  |        |             |                 |                      |
-| D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
-| D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
-| D8s_v3               | 8      | 32GiB      | 859             | 856                  |
-| D16s_v3              | 16     | 64GiB      | 1718            | 1715                 |
-| D32s_v3              | 32     | 128 GB     | 3437            | 3434                 |
+| D2s_v3               | 2      | 8 GiB       | 859             | 856                  |
+| D4s_v3               | 4      | 16 GiB      | 1719            | 1716                 |
+| D8s_v3               | 8      | 32GiB      | 3438            | 3435                 |
+| D16s_v3              | 16     | 64GiB      | 5.000            | 4997                 |
+| D32s_v3              | 32     | 128 GB     | 5.000            | 4997                 |
 | D48s_v3              | 48     | 192 GiB     | 5.000            | 4997                 |
 | D64s_v3              | 64     | 256 GiB     | 5.000            | 4997                 |
 | **Arbeitsspeicheroptimiert** |        |             |                 |                      |
-| E2s_v3               | 2      | 16 GiB      | 1718            | 1715                 |
-| E4s_v3               | 4      | 32GiB      | 3437            | 3434                 |
+| E2s_v3               | 2      | 16 GiB      | 1719            | 1716                 |
+| E4s_v3               | 4      | 32GiB      | 3438            | 3433                 |
 | E8s_v3               | 8      | 64GiB      | 5.000            | 4997                 |
 | E16s_v3              | 16     | 128 GB     | 5.000            | 4997                 |
 | E32s_v3              | 32     | 256 GiB     | 5.000            | 4997                 |
@@ -96,7 +96,7 @@ Eine PostgreSQL-Verbindung kann selbst im Leerlauf ca. 10 MB Arbeitsspeicher be
 
 - Postgres 10 und niedriger werden nicht unterstützt. Die Option [Einzelserver](../overview-single-server.md) wird empfohlen, wenn Sie ältere Postgres-Versionen benötigen.
 - Die Erweiterungsunterstützung ist derzeit auf die Postgres-Erweiterungen des Typs `contrib` beschränkt.
-- Der integrierte Verbindungspooler PgBouncer ist derzeit für Datenbankserver in einem VNET oder für Server im Tarif „Burstfähig“ nicht verfügbar.
+- Der integrierte Verbindungspooler PgBouncer ist derzeit für Server im Tarif „Burstfähig“ nicht verfügbar.
 
 ### <a name="stopstart-operation"></a>Vorgang „Anhalten/Starten“
 

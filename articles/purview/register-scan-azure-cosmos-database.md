@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 23825bd3ab41891f775f26e2ee2b052e3a041401
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5cbf179cd28a36705379049a66010d02d2e7cf24
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560103"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346670"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Vorgehensweise beim Registrieren und Scannen von Azure Cosmos DB (SQL-API)
 
@@ -24,7 +24,7 @@ Für Azure Cosmos DB (SQL-API) werden vollständige und inkrementelle Überprü
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
+- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Azure Purview-Datenquellenadministrator sein.
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
@@ -52,7 +52,7 @@ Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Azure Cosmos DB-Konto (SQL-API) zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Quellen registrieren** die Option **Azure Cosmos DB (SQL-API)** aus.
 1. Wählen Sie **Weiter**.

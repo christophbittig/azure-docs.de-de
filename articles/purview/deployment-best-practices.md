@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949837"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355497"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Bewährte Methoden zur Bereitstellung von Azure Purview
 
@@ -53,7 +53,7 @@ Im allgemeinen Ansatz werden diese übergeordneten Ziele in verschiedene Kategor
 |---------|---------|
 |Ermittlung|Administratorbenutzer sollten in der Lage sein, Azure- und Nicht-Azure-Datenquellen (einschließlich lokaler Quellen) zu scannen, um automatisch Informationen zu den Datenressourcen zu erfassen.|
 |Klassifizierung|Die Plattform sollte Daten auf Basis einer Stichprobe der Daten automatisch klassifizieren und eine manuelle Außerkraftsetzung mithilfe benutzerdefinierter Klassifizierungen ermöglichen.|
-|Nutzung|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
+|Verbrauch|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
 |Herkunft|Jede Ressource muss eine grafische Ansicht der zugrunde liegenden Datasets anzeigen, damit die Benutzer die ursprünglichen Quellen und die vorgenommenen Änderungen verstehen.|
 |Zusammenarbeit|Die Plattform muss Benutzern die Zusammenarbeit ermöglichen, indem zusätzliche Informationen zu den einzelnen Datenressourcen bereitgestellt werden.|
 |Berichterstellung|Die Benutzer müssen in der Lage sein, die Berichte über die Datenumgebung einschließlich vertraulicher Daten und Daten, die eine zusätzliche Anreicherung benötigen, anzuzeigen.|
@@ -201,7 +201,7 @@ Wenn Sie zur Durchführung des Purview-Onboardings Anforderungen vereinbart und 
 |Hinzufügen von Kontakten zu Ressourcen|Für die wichtigsten Ressourcen sollten Sie einen Prozess einrichten, um entweder anderen Rollen zu erlauben, Kontakte zuzuweisen, oder Kontakte über REST-APIs zu importieren.|1 Woche|
 |Hinzufügen von Vertraulichkeitsbezeichnungen und Scannen|Dies ist möglicherweise für einige Organisationen abhängig von der Verwendung der Bezeichnung aus Microsoft 365 optional.|1-2 Wochen|
 |Abrufen von Klassifizierung und Vertraulichkeitserkenntnissen|Für Berichterstellung und Erkenntnisse in Purview können Sie auf diese Funktion zugreifen, um verschiedene Berichte zu erhalten und eine Präsentation für die Verwaltung bereitzustellen.|1 Tag|
-|Integrieren des Hinzufügens von Benutzern mit von Purview verwalteten Benutzern|Dieser Schritt erfordert, dass der Purview-Administrator mit dem Azure Active Directory-Administrator zusammenarbeitet, um neue Sicherheitsgruppen einzurichten, um den Zugriff auf Purview zu gewähren.|1 Woche|
+|Integrieren zusätzlicher Benutzern mit von Purview verwalteten Benutzern|Dieser Schritt erfordert, dass der Purview-Administrator mit dem Azure Active Directory-Administrator zusammenarbeitet, um neue Sicherheitsgruppen einzurichten, um den Zugriff auf Purview zu gewähren.|1 Woche|
 
 ### <a name="acceptance-criteria"></a>Akzeptanzkriterien
 
@@ -223,7 +223,7 @@ Nach Verstreichen der MVP-Phase ist es an der Zeit, den Meilenstein für die Vor
 |Bewerten der Verfügbarkeit der Region für die Überprüfung|Abhängig von der Region der Datenquellen und den organisatorischen Anforderungen hinsichtlich Compliance und Sicherheit sollten Sie überlegen, welche Regionen für die Überprüfung verfügbar sein müssen.|1 Tag|
 |Grundlegendes zum Firewallkonzept beim Scannen|In diesem Schritt müssen Sie untersuchen, wie die Organisation die Firewall konfiguriert, und wie sich Purview authentifizieren kann, um zum Scannen auf die Datenquellen zuzugreifen.|1 Tag|
 |Grundlegendes zum Private Link-Konzept beim Scannen|Wenn Ihre Organisation Private Link verwendet, müssen Sie das Fundament der Netzwerksicherheit planen, um Private Link in die Anforderungen einzubeziehen.|1 Tag|
-|[Registrieren und Scannen einer lokalen SQL Server-Instanz](register-scan-on-premises-sql-server.md)|Dies ist optional, wenn Sie über eine lokale SQL Server-Instanz verfügen. Für die Überprüfung muss eine [selbstgehostete Integration Runtime](manage-integration-runtimes.md) eingerichtet und SQL Server als Datenquelle hinzugefügt werden.|1-2 Wochen|
+|[Überprüfen von lokalem SQL Server](register-scan-on-premises-sql-server.md)|Dies ist optional, wenn Sie über eine lokale SQL Server-Instanz verfügen. Für die Überprüfung muss eine [selbstgehostete Integration Runtime](manage-integration-runtimes.md) eingerichtet und SQL Server als Datenquelle hinzugefügt werden.|1-2 Wochen|
 |Verwenden der Purview-REST-API für Integrationsszenarios|Bei Anforderungen, Purview in andere Technologien von Drittanbietern wie Orchestrierungs- oder Ticketingsysteme zu integrieren, können Sie den Bereich der Rest-API erkunden.|1-4 Wochen|
 |Grundlegendes zu Purview-Preisen|In diesem Schritt erhält die Organisation wichtige Finanzinformationen, um Entscheidungen treffen zu können.|1-5 Tage|
 

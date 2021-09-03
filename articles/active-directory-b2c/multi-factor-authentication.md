@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 601eec9c65ee7e9bc3c163da78a81a372f26507d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 42feac542760bbebc703cabc4ecc114b0ab4259d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061694"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345950"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C
 
@@ -29,6 +29,14 @@ Mithilfe dieses Features können Anwendungen beispielsweise diese Szenarien hand
 
 - Für den Zugriff auf eine Anwendung ist keine Multi-Factor Authentication erforderlich, jedoch für den Zugriff auf eine andere Anwendung. Beispielsweise kann sich der Kunde bei der Anwendung einer Kfz-Versicherung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden. Er muss jedoch seine Telefonnummer bestätigen, bevor er auf die Anwendung für die Hausversicherung zugreifen kann, die im selben Verzeichnis registriert ist.
 - Die Multi-Factor Authentication ist allgemein für den Zugriff auf eine Anwendung nicht erforderlich, jedoch für vertrauliche Unterbereiche dieser Anwendung. Beispielsweise kann sich der Kunde bei einer Onlinebanking-Anwendung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden, um den Kontostand abzufragen. Um eine Überweisung zu tätigen, ist jedoch die Bestätigung der Telefonnummer erforderlich.
+
+### <a name="verification-methods"></a>Überprüfungsmethoden
+
+Bei [Bedingtem Zugriff](conditional-access-identity-protection-overview.md) können Benutzer aufgrund von Konfigurationsentscheidungen, die Sie als Administrator treffen können, zur MFA aufgefordert werden oder nicht. Es folgen die Methoden zur mehrstufigen Authentifizierung:
+
+- Email
+- sms
+- Telefonanrufe
 
 ## <a name="set-multi-factor-authentication"></a>Festlegen der Multi-Factor Authentication
 
@@ -43,11 +51,11 @@ Mithilfe dieses Features können Anwendungen beispielsweise diese Szenarien hand
 1. Wählen Sie im Abschnitt **mehrstufige Authentifizierung** den gewünschten **Typ der Methode**. Wählen Sie dann unter **MFA-Erzwingung** eine Option:
 
    - **Off** - MFA wird während der Anmeldung nie erzwungen und Benutzer werden während der Registrierung oder Anmeldung nicht aufgefordert, MFA zu aktivieren.
-   - **Immer aktiviert**: MFA ist unabhängig von der Konfiguration des bedingten Zugriffs immer erforderlich. Während der Registrierung werden Benutzer aufgefordert, sich für MFA zu registrieren. Wenn Benutzer bei der Anmeldung noch nicht für MFA registriert sind, werden sie aufgefordert, sich zu registrieren.
-   - **Bedingt**: Während der Registrierung und Anmeldung werden Benutzer aufgefordert, sich für MFA zu registrieren (sowohl neue als auch vorhandene Benutzer, die nicht für MFA registriert sind). Während der Anmeldung wird MFA nur dann erzwungen, wenn die Auswertung einer aktiven Richtlinie für bedingten Zugriff dies erfordert:
+   - **Immer aktiviert:** MFA wird unabhängig von der Konfiguration des bedingten Zugriffs stets verlangt. Während der Registrierung werden Benutzer aufgefordert, sich für MFA zu registrieren. Wenn Benutzer bei der Anmeldung noch nicht für MFA registriert sind, werden sie aufgefordert, sich zu registrieren.
+   - **Bedingt:** Während der Registrierung und Anmeldung werden Benutzer aufgefordert, sich für MFA zu registrieren (sowohl neue als auch vorhandene Benutzer, die nicht für MFA registriert sind). Während der Anmeldung wird MFA nur dann erzwungen, wenn die Auswertung einer aktiven Richtlinie für bedingten Zugriff dies erfordert:
 
-      - Wenn das Ergebnis einer MFA-Abfrage ohne Risiko ist, wird MFA erzwungen. Wenn der Benutzer noch nicht für MFA registriert ist, wird er aufgefordert, sich zu registrieren.
-      - Wenn das Ergebnis eine MFA-Abfrage aufgrund eines Risikos ist *und* der Benutzer nicht für MFA registriert ist, wird die Anmeldung blockiert.
+    - Wenn das Ergebnis einer MFA-Abfrage ohne Risiko ist, wird MFA erzwungen. Wenn der Benutzer noch nicht für MFA registriert ist, wird er aufgefordert, sich zu registrieren.
+    - Wenn das Ergebnis eine MFA-Abfrage aufgrund eines Risikos ist *und* der Benutzer nicht für MFA registriert ist, wird die Anmeldung blockiert.
 
    > [!NOTE]
    >

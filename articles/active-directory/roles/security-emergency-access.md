@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b836fa0f9628fa3a7d4f6b6064091db7289bc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 4f7fb48f71a891493220440d56a50e3c72510892
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796425"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339915"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -78,7 +78,8 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Abrufen von Objekt-IDs der Konten für den Notfallzugriff
 
-1. Melden Sie sich mit einem Konto beim [Azure-Portal](https://portal.azure.com) an, das der Benutzeradministratorrolle zugewiesen ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, dem die Rolle „Benutzeradministrator“ zugewiesen ist.
+
 1. Wählen Sie **Azure Active Directory** > **Benutzer** aus.
 1. Suchen Sie nach dem Konto für den Notfallzugriff, und wählen Sie den Namen des Benutzers aus.
 1. Kopieren und speichern Sie das Objekt-ID-Attribut, damit Sie es später verwenden können.
