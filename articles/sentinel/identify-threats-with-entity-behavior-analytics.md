@@ -14,20 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: a706704365731d5f5ba157837269a90dbcb12e18
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 851b1659baf10826d98246aaf8ebd8ec138c5542
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810298"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342999"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Die Features „UEBA“ und „Entitätsseiten“ sind nun in **_allen_** Azure Sentinel-Geografien **allgemein verfügbar**.
+> - Die Features „UEBA“ und „Entitätsseiten“ sind nun in **_allen_** Azure Sentinel-Geografien **allgemein verfügbar**. 
 >
 > - Die **IP-Adressentität** befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Was ist User and Entity Behavior Analytics (UEBA)?
 
@@ -82,7 +84,7 @@ Entitätsseiten bestehen aus drei Teilen:
 - Im rechten Bereich werden Erkenntnisse über das Verhalten der Entität angezeigt. Mit diesen Erkenntnissen können Sie Anomalien und Sicherheitsbedrohungen schnell erkennen. Die Erkenntnisse werden von Microsoft-Sicherheitsexpertenteams entwickelt und basieren auf Anomalieerkennungsmodellen.
 
 > [!NOTE]
-> Die **IP-Adressentitätsseite** (jetzt in der Vorschau) enthält **Daten zum geografischen Standort (Geolocation)** , die vom **Microsoft Threat Intelligence-Dienst** bereitgestellt werden. Dieser Dienst kombiniert Geolocationdaten von Microsoft-Lösungen sowie Drittanbietern und Partnern. Die Daten stehen dann für Analyse und Untersuchung im Kontext eines Sicherheitsvorfalls zur Verfügung.
+> Die **IP-Adressentitätsseite** (jetzt in der Vorschau) enthält **Daten zum geografischen Standort (Geolocation)** , die vom **Microsoft Threat Intelligence-Dienst** bereitgestellt werden. Dieser Dienst kombiniert Geolocationdaten von Microsoft-Lösungen sowie Drittanbietern und Partnern. Die Daten stehen dann für Analyse und Untersuchung im Kontext eines Sicherheitsvorfalls zur Verfügung. Weitere Informationen finden Sie unter [Anreichern von Entitäten in Azure Sentinel mit Geolocationdaten über die REST-API (Public Preview)](geolocation-data-api.md).
 
 ### <a name="the-timeline"></a>Die Zeitachse
 
@@ -94,7 +96,7 @@ Sie können den **Zeitbereich** aus verschiedenen vordefinierten Optionen (z. B
 
 Die folgenden Elemente sind auf der Zeitachse enthalten:
 
-- Warnungen: Benachrichtigungen, in denen die Entität als **zugeordnete Entität** definiert ist. Wenn Ihre Organisation [benutzerdefinierte Warnungen mit Analyseregeln](./tutorial-detect-threats-custom.md) erstellt hat, müssen Sie darauf achten, dass die Entitätszuordnung der Regeln ordnungsgemäß vorgenommen wurde.
+- Warnungen: Benachrichtigungen, in denen die Entität als **zugeordnete Entität** definiert ist. Wenn Ihre Organisation [benutzerdefinierte Warnungen mit Analyseregeln](./detect-threats-custom.md) erstellt hat, müssen Sie darauf achten, dass die Entitätszuordnung der Regeln ordnungsgemäß vorgenommen wurde.
 
 - Lesezeichen: Lesezeichen, die eine bestimmte Entität enthalten, die auf der Seite angezeigt wird
 
@@ -163,7 +165,7 @@ Azure Sentinel stellt einsatzbereite Hunting-Abfragen, Auswertungsabfragen und d
 Weitere Informationen finden Sie unter
 
 - [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)
-- [Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md)
+- [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md)
 
 Wenn veraltete Verteidigungstools eingestellt werden, verfügen Organisationen möglicherweise über eine so große und durchlässige digitale Umgebung, dass es nicht mehr möglich ist, sich ein umfassendes Bild von Risiken und Sicherheitsstatus ihrer Umgebung zu machen. Wenn Sie sich stark auf reaktive Maßnahmen wie Analysen und Regeln verlassen, können böswillige Akteure lernen, wie diese Bemühungen umgangen werden können. Hier kommt UEBA ins Spiel, indem Methoden und Algorithmen für die Risikobewertung zur Verfügung stellt werden, um herauszufinden, was tatsächlich passiert.
 

@@ -6,29 +6,31 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 224f46f16f03f53009c3f7beb55d252c5ce5e1e7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 330f102dffb392540879d8d583e02a68fbe436c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347033"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL – Hyperscale (Citus)
 
-Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for PostgreSQL – Hyperscale (Citus) ist über die PostgreSQL-Überwachungserweiterung [pgAudit](https://www.pgaudit.org/) verfügbar. pgAudit bietet eine ausführliche Sitzungs- und/oder Objektüberwachungsprotokollierung.
-
 > [!IMPORTANT]
-> pgAudit befindet sich in Azure Database for PostgreSQL – Hyperscale (Citus) in der Vorschau.
+> Die pgAudit-Erweiterung in Hyperscale (Citus) befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+>
+> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
+
+Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for PostgreSQL – Hyperscale (Citus) ist über die PostgreSQL-Überwachungserweiterung [pgAudit](https://www.pgaudit.org/) verfügbar. pgAudit bietet eine ausführliche Sitzungs- bzw. Objektüberwachungsprotokollierung.
 
 Wenn Sie Azure-Protokolle auf Ressourcenebene für Vorgänge wie Compute- und Speicherskalierung erfassen möchten, lesen Sie den Artikel zum [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Überlegungen zur Verwendung
-Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. Sie können in Azure Database for PostgreSQL – Hyperscale (Citus) konfigurieren, dass alle Protokolle für spätere Analysen in Log Analytics an den Azure Monitor-Protokollspeicher gesendet werden. Wenn Sie die Azure Monitor-Ressourcenprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs und/oder Azure Monitor-Protokolle gesendet.
+Standardmäßig werden pgAudit-Protokollanweisungen zusammen mit ihren regulären Protokollanweisungen mithilfe der Standardprotokollierungsfunktion von Postgres ausgegeben. Sie können in Azure Database for PostgreSQL – Hyperscale (Citus) konfigurieren, dass alle Protokolle für spätere Analysen in Log Analytics an den Azure Monitor-Protokollspeicher gesendet werden. Wenn Sie die Azure Monitor-Ressourcenprotokollierung aktivieren, werden Ihre Protokolle abhängig von Ihrer Wahl automatisch (im JSON-Format) an Azure Storage, Event Hubs bzw. Azure Monitor-Protokolle gesendet.
 
 ## <a name="enabling-pgaudit"></a>Aktivieren von pgAudit
 
-Die pgAudit-Erweiterung ist auf allen Knoten der Servergruppe mit Hyperscale (Citus) vorinstalliert und aktiviert. Es ist keine Aktion Ihrerseits erforderlich.
+Die pgAudit-Erweiterung ist auf den meisten Knoten der Servergruppe mit Hyperscale (Citus) vorinstalliert und aktiviert. Wenn sie auf Ihren Knoten nicht aktiviert ist, stellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="pgaudit-settings"></a>pgAudit-Einstellungen
 

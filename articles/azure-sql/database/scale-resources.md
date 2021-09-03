@@ -7,21 +7,21 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 06/25/2019
-ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 818a783a85fd9117738f8199e612d97a0fb95b99
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035641"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355078"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamisches Skalieren von Datenbankressourcen bei minimaler Downtime
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Mit Azure SQL-Datenbank und SQL Managed Instance können Sie mit minimaler [Downtime](https://azure.microsoft.com/support/legal/sla/sql-database) zusätzliche Ressourcen dynamisch zu Ihrer Datenbank hinzufügen. Allerdings wird die Verbindung mit der Datenbank während einer Umschaltzeit kurzzeitig unterbrochen, was jedoch durch Wiederholungslogik abgeschwächt werden kann.
+Mit Azure SQL-Datenbank und SQL Managed Instance können Sie mit minimaler [Downtime](https://azure.microsoft.com/support/legal/sla/azure-sql-database) zusätzliche Ressourcen dynamisch zu Ihrer Datenbank hinzufügen. Allerdings wird die Verbindung mit der Datenbank während einer Umschaltzeit kurzzeitig unterbrochen, was jedoch durch Wiederholungslogik abgeschwächt werden kann.
 
 ## <a name="overview"></a>Übersicht
 
@@ -29,7 +29,7 @@ Wenn die Nachfrage nach Ihrer App von einigen wenigen Geräten und Kunden bis in
 
 Sie können Leistungsprobleme beheben, die aufgrund der vermehrten Nutzung Ihrer Anwendung auftreten und sich per Indizierung oder mit Methoden zum Umschreiben von Abfragen nicht beseitigen lassen. Durch das Hinzufügen von weiteren Ressourcen können Sie schnell reagieren, wenn Ihre Datenbank die derzeitigen Ressourcenlimits erreicht und eine höhere Leistung benötigt, um die eingehende Workload verarbeiten zu können. Mit Azure SQL-Datenbank können Sie die Ressourcen auch zentral herunterskalieren, wenn sie nicht benötigt werden, um die Kosten zu senken.
 
-Sie müssen sich nicht mit dem Kauf von Hardware und der Änderung der zugrunde liegenden Infrastruktur befassen. Sie können eine Datenbank einfach im Azure-Portal über einen Schieberegler skalieren.
+Sie müssen sich nicht mit dem Kaufen von Hardware und Ändern der zugrunde liegenden Infrastruktur befassen. Sie können eine Datenbank einfach im Azure-Portal über einen Schieberegler skalieren.
 
 ![Skalieren der Datenbankleistung](./media/scale-resources/scale-performance.svg)
 

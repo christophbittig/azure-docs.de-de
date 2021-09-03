@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/11/2021
 ms.author: yelevin
-ms.openlocfilehash: b64adbb63efaa4ce4781474f732bc9509d51029e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 97c35aa059f4419ee951875e769b252016578963
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338936"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -95,7 +95,7 @@ In der folgenden Tabelle sind die Azure Sentinel-Rollen und die jeweils zuläss
 
 - **Benutzerdefinierte Rollen**. Zusätzlich zu integrierten Azure-Rollen oder anstelle von diesen können Sie benutzerdefinierte Azure-Rollen für Azure Sentinel erstellen. Benutzerdefinierte Azure-Rollen für Azure Sentinel werden genauso wie andere [benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) und für [Azure Log Analytics-Ressourcen](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) erstellt.
 
-- **RBAC in Log Analytics**. Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch Azure RBAC im Ressourcenkontext. Weitere Informationen finden Sie unter
+- **RBAC in Log Analytics**. Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch Azure RBAC im Ressourcenkontext. Weitere Informationen finden Sie unter:
 
     - [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
 
@@ -103,6 +103,23 @@ In der folgenden Tabelle sind die Azure Sentinel-Rollen und die jeweils zuläss
     - [Table-level RBAC (RBAC auf Tabellenebene)](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
 
     Die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext und RBAC auf Tabellenebene sind zwei Methoden der Bereitstellung von Zugriff auf bestimmte Daten im Azure Sentinel-Arbeitsbereich, ohne Zugriff auf die gesamte Azure Sentinel-Umgebung zu gewähren.
+
+## <a name="role-recommendations"></a>Empfehlungen für Rollen
+
+Nachdem Sie verstanden haben, wie Rollen und Berechtigungen in Azure Sentinel funktionieren, empfiehlt sich die folgende Anleitung mit bewährten Methoden zur Zuweisung von Rollen zu Ihren Benutzern:
+
+|Benutzertyp  |Rolle |Resource group  |BESCHREIBUNG  |
+|---------|---------|---------|---------|
+|**Sicherheitsanalysten**     | [Azure Sentinel-Antwortender](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)        | Ressourcengruppe von Azure Sentinel        | Anzeigen von Daten, Incidents, Arbeitsmappen und anderen Azure Sentinel-Ressourcen <br><br>Verwalten von Incidents, z. B. Zuweisen oder Schließen von Incidents        |
+|     | [Logic Apps-Mitwirkender](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Ressourcengruppe von Azure Sentinel oder die Ressourcengruppe, in der Ihre Playbooks gespeichert sind        | Anfügen von Playbooks an Analyse- und Automatisierungsregeln und Ausführen von Playbooks <br><br>**Hinweis**: Mit dieser Rolle können Benutzer auch Playbooks ändern.         |
+|**Sicherheitstechniker**     | [Azure Sentinel-Mitwirkender](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)       |Ressourcengruppe von Azure Sentinel         |   Anzeigen von Daten, Incidents, Arbeitsmappen und anderen Azure Sentinel-Ressourcen <br><br>Verwalten von Incidents, z. B. Zuweisen oder Schließen von Incidents <br><br>Erstellen und Bearbeiten von Arbeitsmappen, Analyseregeln und anderen Azure Sentinel-Ressourcen      |
+|     | [Logic Apps-Mitwirkender](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Ressourcengruppe von Azure Sentinel oder die Ressourcengruppe, in der Ihre Playbooks gespeichert sind        | Anfügen von Playbooks an Analyse- und Automatisierungsregeln und Ausführen von Playbooks <br><br>**Hinweis**: Mit dieser Rolle können Benutzer auch Playbooks ändern.         |
+|  **Dienstprinzipal**   | [Azure Sentinel-Mitwirkender](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)      |  Ressourcengruppe von Azure Sentinel       | Automatisierte Konfiguration für Verwaltungsaufgaben |
+|     |         |        | |
+
+> [!TIP]
+> Abhängig von den erfassten oder überwachten Daten sind möglicherweise zusätzliche Rollen erforderlich. Beispielsweise können Azure AD-Rollen wie z  B. „Globaler Administrator“ oder „Sicherheitsadministrator“ erforderlich sein, um Datenconnectors für Dienste in anderen Microsoft-Portalen einzurichten.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

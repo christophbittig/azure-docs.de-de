@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/14/2021
-ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/09/2021
+ms.openlocfilehash: fc52bac390763418d21cb001e5ae224acbaaa906
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518880"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595523"
 ---
 # <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Point-in-Time-Wiederherstellung einer Hyperscale (Citus)-Servergruppe
 
@@ -27,7 +27,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Hyperscale (Citus)-Servergruppe
 2.  Klicken Sie im linken Bereich auf **Übersicht** und anschließend auf **Wiederherstellen**.
 
     > [!IMPORTANT]
-    > Sollte die Schaltfläche **Wiederherstellen** für Ihre Servergruppe noch nicht vorhanden sein, erstellen Sie eine Azure-Supportanfrage.
+    > Wenn die Schaltfläche **Wiederherstellen** für Ihre Servergruppe noch nicht vorhanden ist, richten Sie eine Anforderung an den Azure-Support zur Wiederherstellung Ihrer Servergruppe.
 
 3.  Auf der Wiederherstellungsseite haben Sie die Wahl zwischen zwei Optionen (**Frühester Wiederherstellungspunkt** und **Benutzerdefinierter Wiederherstellungspunkt**), und das früheste Datum wird angezeigt.
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Hyperscale (Citus)-Servergruppe
 2.  Klicken Sie im linken Bereich auf **Übersicht** und dann auf **Wiederherstellen**.
 
     > [!IMPORTANT]
-    > Sollte die Schaltfläche **Wiederherstellen** für Ihre Servergruppe noch nicht vorhanden sein, erstellen Sie eine Azure-Supportanfrage.
+    > Wenn die Schaltfläche **Wiederherstellen** für Ihre Servergruppe noch nicht vorhanden ist, richten Sie eine Anforderung an den Azure-Support zur Wiederherstellung Ihrer Servergruppe.
 
 3.  Auf der Wiederherstellungsseite haben Sie die Wahl zwischen zwei Optionen (**Frühester Wiederherstellungspunkt** und **Benutzerdefinierter Wiederherstellungspunkt**), und das früheste Datum wird angezeigt.
 

@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc47e06643f3bb4ebf986382e149e13fd9bbc968
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727157"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349340"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Best Practices für eine optimale Leistung von Azure Database for MySQL: Einzelserver
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Hier erfahren Sie, wie Sie bei der Verwendung Ihrer Azure Database for MySQL Single Server-Instanz eine optimale Leistung erzielen. Die Empfehlungen in diesem Abschnitt werden von uns aktualisiert, wenn der Plattform neue Funktionen hinzugefügt werden.
 
@@ -44,7 +46,7 @@ Das Einrichten einer neuen Verbindung ist immer eine arbeits- und zeitaufwendige
 
 ## <a name="azure-database-for-mysql-memory-recommendations"></a>Azure Database for MySQL: Arbeitsspeicherempfehlungen
 
-Eine bewährte Methode zur Verbesserung der Leistung von Azure Database for MySQL besteht darin, genügend Arbeitsspeicher (RAM) zuzuweisen, damit sich der bearbeitete Satz nahezu vollständig im Arbeitsspeicher befindet. 
+Eine bewährte Methode zur Verbesserung der Leistung von Azure Database for MySQL besteht darin, genügend Arbeitsspeicher (RAM) zuzuweisen, damit sich der Arbeitssatz nahezu vollständig im Arbeitsspeicher befindet. 
 
 - Anhand der [Metriken für den MySQL-Server](./concepts-monitoring.md) können Sie überprüfen, ob der Prozentsatz an Arbeitsspeicher die [Grenzwerte](./concepts-pricing-tiers.md) erreicht. 
 - Richten Sie Warnungen zu solchen Messwerten ein, damit Sie bei Erreichen der Servergrenzwerte Maßnahmen zur Behebung ergreifen können. Überprüfen Sie basierend auf den definierten Grenzwerten, ob das Hochskalieren der Datenbank-SKU (auf eine höhere Computegröße oder einen besseren Tarif) zu einer deutlichen Leistungssteigerung führt. 
