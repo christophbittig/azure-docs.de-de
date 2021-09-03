@@ -3,12 +3,12 @@ title: Ausführen von Init-Containern
 description: Führen Sie Init-Container in Azure Container Instances aus, um vor der Ausführung der Anwendungscontainer Einrichtungsaufgaben in einer Containergruppe auszuführen.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 9ccaf1a67d6ca3bcff422acb591b528cc72a9608
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a108e76f76fb773d0f982a38b6415f9cd9937001
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763935"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342915"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Ausführen eines Init-Containers für Einrichtungsaufgaben in einer Containergruppe
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Containergruppe in einem Init-Conta
 
 Beginnen Sie, indem Sie den folgenden JSON-Code in eine neue Datei mit dem Namen `azuredeploy.json` kopieren. Durch die Vorlage wird eine Containergruppe mit einem Init-Container und zwei Anwendungscontainern eingerichtet:
 
-* Der Container *init1* führt das Image [busybox](https://hub.docker.com/_/busybox) aus Docker Hub aus. Er wechselt 60 Sekunden lang in den Ruhezustand und schreibt dann eine Befehlszeilenzeichenfolge in eine Datei auf einem [emptyDir-Volume](container-instances-volume-emptydir.md).
+* Der Container *init1* führt das Image [busybox](https://hub.docker.com/_/busybox) aus. Er wechselt 60 Sekunden lang in den Ruhezustand und schreibt dann eine Befehlszeilenzeichenfolge in eine Datei auf einem [emptyDir-Volume](container-instances-volume-emptydir.md).
 * Beide Anwendungscontainer führen das Microsoft-Containerimage `aci-wordcount` aus:
     * Der *hamlet*-Container führt in der Standardkonfiguration die WordCount-App aus, mit der die Häufigkeit von Wörtern in Shakespeares *Hamlet* berechnet wird.
     * Der *juliet*-App-Container liest die Befehlszeilenzeichenfolge aus dem emptDir-Volume, um die WordCount-App stattdessen für Shakespeares *Romeo und Julia* auszuführen.
@@ -68,7 +68,7 @@ Weitere Informationen und Beispiele zur Verwendung des `aci-wordcount`-Image fin
                 {
                     "name": "init1",
                     "properties": {
-                        "image": "busybox",
+                        "image": "mcr.microsoft.com/aks/e2e/library-busybox:master.210714.1",
                         "environmentVariables": [],
                         "volumeMounts": [
                             {

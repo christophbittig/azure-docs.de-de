@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f218d87fe1f91e206c3b8873c9af0dddddd45b42
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: adf9f3da66908dc473388f9b3da14439de86ddcb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355556"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrieren und Überprüfen von Azure Data Explorer
 
@@ -72,7 +72,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 Gehen Sie wie folgt vor, um für Ihren Datenkatalog ein neues Azure Data Explorer-Konto (Kusto) zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Data Explorer** aus.
 1. Wählen Sie **Weiter**.
@@ -89,7 +89,35 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Data Explorer (Kusto))*
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans-azure-data-explorer.md)]
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+
+Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+
+1. Wählen Sie die von Ihnen registrierte Azure Data Explorer-Quelle aus.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus. 
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/set-up-scan-data-explorer.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Datenbanken festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/scope-your-scan-data-explorer.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/scan-rule-set-data-explorer.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

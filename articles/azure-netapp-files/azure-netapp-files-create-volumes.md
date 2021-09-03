@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d8e8daba3806ad651f66324f362eb2573111dd80
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: ed67984dac9d1beb7106c78a8ffa35d778f69d59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070901"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345935"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. 
+Azure NetApp Files unterstützt das Erstellen von Volumes unter Verwendung von NFS (NFSv3 oder NFSv4.1), SMB3 oder einem Dual-Protokoll (NFSv3 und SMB oder NFSv4.1 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. 
 
 In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Informationen zu SMB-Volumes finden Sie unter [Erstellen eines SMB-Volumes](azure-netapp-files-create-volumes-smb.md). Informationen zu Volumen mit dualem Protokoll finden Sie unter [Erstellen eines Volumes mit dualem Protokoll](create-volumes-dual-protocol.md).
 
@@ -62,7 +62,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.   
+        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen. Er darf nur Buchstaben, Zahlen, Unterstriche („_“), und Bindestriche („-“) enthalten.
 
         Sie können `default` oder `bin` nicht als Volumename verwenden.
 
@@ -109,7 +109,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
         - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
         - Er darf höchstens 80 Zeichen lang sein.
 
-    * Wählen Sie die NFS-Version (**NFSv3** oder **NFSv4.1**) für das Volume aus.  
+    * Wählen Sie die **Version** (**NFSv3** oder **NFSv4.1**) für das Volume aus.  
 
     * Geben Sie bei Verwendung von NFSv4.1 an, ob die **Kerberos**-Verschlüsselung für das Volume aktiviert werden soll.  
 
@@ -117,6 +117,9 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 
     * Wenn Sie Active Directory LDAP-Benutzern und erweiterten Gruppen (bis zu 1024 Gruppen) den Zugriff auf das Volume ermöglichen möchten, wählen Sie die Option **LDAP**. Befolgen Sie die Anweisungen unter [Konfigurieren von ADDS LDAP mit erweiterten Gruppen für den NFS-Volumenzugriff](configure-ldap-extended-groups.md), um die erforderlichen Konfigurationen abzuschließen. 
  
+    *  Passen Sie nach Bedarf die **Unix-Berechtigungen** an, um Änderungsberechtigungen für den Bereitstellungspfad anzugeben. Die Einstellung gilt nicht für die Dateien unter dem Einbindepfad. Die Standardeinstellung ist `0770`. Diese Standardeinstellung gewährt dem Besitzer und der Gruppe Lese-, Schreib- und Ausführungsberechtigungen, anderen Benutzern werden jedoch keine Berechtigungen gewährt.     
+        Für das Festlegen von **Unix-Berechtigungen** gelten Registrierungsanforderungen und -überlegungen. Befolgen Sie die Anweisungen unter [Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers](configure-unix-permissions-change-ownership-mode.md).   
+
     * Optional können Sie [die Exportrichtlinie für das NFS-Volume konfigurieren](azure-netapp-files-configure-export-policy.md).
 
     ![Angeben des NFS-Protokolls](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -135,5 +138,6 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 * [Konfigurieren Sie ADDS LDAP mit erweiterten Gruppen für den NFS-Volume-Zugriff](configure-ldap-extended-groups.md)
 * [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurieren der Exportrichtlinie für ein NFS-Volume](azure-netapp-files-configure-export-policy.md)
+* [Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers](configure-unix-permissions-change-ownership-mode.md). 
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md)

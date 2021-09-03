@@ -7,21 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64049ab544b2ec790d3625dad9137ae539f3020
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904719"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355200"
 ---
 # <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Datenstrukturen in Mobilitätsdiensten von Azure Maps (Vorschau) 
 
 > [!IMPORTANT]
-> Mobilitätsdienste von Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
+> Die Vorschauversion von Azure Maps Mobility Services wurde eingestellt. Nach dem 5. Oktober 2021 ist sie nicht mehr verfügbar und wird nicht mehr unterstützt. Alle anderen Azure Maps-APIs und -Dienste sind von dieser Einstellungsankündigung nicht betroffen.
+> Weitere Informationen finden Sie unter [Azure Maps Mobility – Einstellung der Vorschauversion](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/).
 
 In diesem Artikel wird das Konzept von Stadtbereichen in [Mobilitätsdiensten von Azure Maps](/rest/api/maps/mobility) vorgestellt. Es werden einige der üblichen Felder diskutiert, die bei der Abfrage dieses Diensts nach Haltestellen und Linien des öffentlichen Verkehrs zurückgegeben werden. Es wird empfohlen, diesen Artikel vor der Entwicklung mit den APIs für Mobilitätsdienste zu lesen.
 

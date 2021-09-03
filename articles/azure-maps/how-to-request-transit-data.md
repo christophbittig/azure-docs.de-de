@@ -3,24 +3,23 @@ title: Anfordern von Daten zu öffentlichen Verkehrsmitteln/Routen mit Microsoft
 description: Erfahren Sie, wie Sie die Azure Maps-Mobilitätsdienste (Vorschau) zum Anfordern von Daten zum öffentlichen Nahverkehr nutzen. Zu diesen Daten zählen beispielsweise Stadtbereich-IDs, Haltestellen, Routen und Routenbeschreibungen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 06/23/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a3a2ea2843b9a21c67f886b49001ebaa17fc868
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340050"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Anfordern von Daten zu öffentlichen Verkehrsmitteln/Routen mit den Azure Maps-Mobilitätsdiensten (Vorschau) 
 
 > [!IMPORTANT]
-> Mobilitätsdienste von Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die Vorschauversion von Azure Maps Mobility Services wurde eingestellt. Nach dem 5. Oktober 2021 ist sie nicht mehr verfügbar und wird nicht mehr unterstützt. Alle anderen Azure Maps-APIs und -Dienste sind von dieser Einstellungsankündigung nicht betroffen.
+> Weitere Informationen finden Sie unter [Azure Maps Mobility – Einstellung der Vorschauversion](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/).
 
 
 In diesem Artikel wird erläutert, wie Sie Azure Maps-[Mobilitätsdienste](/rest/api/maps/mobility) verwenden, um Daten zu öffentlichen Verkehrsmitteln/Routen anzufordern. Daten zu öffentlichen Verkehrsmitteln umfassen Haltestellen, Routen und geschätzte Reisezeiten.
@@ -45,19 +44,15 @@ Um detaillierte Informationen über Anbieter von öffentlichen Verkehrsmittel un
 
 Wir erstellen nun eine Anforderung zum Abrufen der Stadtbereich-ID für „Seattle-Tacoma“. Führen Sie die folgenden Schritte aus, um die ID für einen Stadtbereich anzufordern:
 
-1. Öffnen Sie die Postman-App, und erstellen Sie eine Sammlung zum Speichern der Anforderungen. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen).
-
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
+1. Öffnen Sie die Postman-App. Wählen Sie **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
   
-    ![Erstellen einer Anforderung in Postman](./media/how-to-request-transit-data/postman-new.png)
-
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu erstellen. Ersetzen Sie `{subscription-key}` durch Ihren Primärschlüssel für Azure Maps.
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu erstellen. Ersetzen Sie `{subscription-key}` durch Ihren Primärschlüssel für Azure Maps.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
     ```
 
-4. War die Anforderung erfolgreich, erhalten Sie die folgende Antwort:
+3. War die Anforderung erfolgreich, erhalten Sie die folgende Antwort:
 
     ```JSON
     {
@@ -120,7 +115,7 @@ Mit dem Azure Maps-Dienst [Get Nearby Transit](/rest/api/maps/mobility/getnearby
 
 Führen Sie die hier angegebenen Schritte aus, um eine Anforderung an [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) zu senden:
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Get Nearby stops** (Haltestellen in der Nähe abrufen).
+1. Öffnen Sie die Postman-App. Wählen Sie **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die folgende Anforderungs-URL für Ihren API-Endpunkt ein, und klicken Sie auf **Send** (Senden).
 
@@ -229,7 +224,7 @@ Zum Abrufen der Standortkoordinaten des Space Needle-Turms verwenden wir den [Di
 
 Führen Sie diese Schritte aus, um eine Anforderung an den Dienst für die Fuzzysuche zu senden:
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Get location coordinates** (Standortkoordinaten abrufen).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die folgende Anforderungs-URL ein, und klicken Sie auf **Send** (Senden).
 
@@ -336,7 +331,7 @@ Führen Sie diese Schritte aus, um eine Anforderung an den Dienst für die Fuzzy
 
 Führen Sie die folgenden Schritte aus, um eine Route anzufordern:
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Get Route info** (Routeninformationen abrufen).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die folgende Anforderungs-URL für Ihren API-Endpunkt ein, und klicken Sie auf **Send** (Senden).
 
@@ -531,7 +526,7 @@ Führen Sie die folgenden Schritte aus, um eine Route anzufordern:
 
 Mit dem Dienst [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinerarypreview) von Azure Maps können Sie Daten für eine bestimmte Route anfordern, indem Sie die **Reiserouten-ID** der Route verwenden, die von der [Get Transit Routes-API](/rest/api/maps/mobility/gettransitroutepreview) zurückgegeben wird. Führen Sie die folgenden Schritte aus, um eine Anforderung zu senden:
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Get Transit info** (Verkehrsinformationen abrufen).
+1. Wählen Sie in der Postman-App **Neu** aus, um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **HTTP Request** (HTTP-Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein.
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die **GET**-HTTP-Methode aus. Geben Sie die folgende Anforderungs-URL für Ihren API-Endpunkt ein, und klicken Sie auf **Send** (Senden).
 

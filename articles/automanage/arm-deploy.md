@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/09/2021
 ms.author: alsin
-ms.openlocfilehash: 78cf28903311c542a83c9ace4f794e1cdda9a61c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 34f20a50fc62cff98362380222822ac016b76a48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368476"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355802"
 ---
 # <a name="onboard-a-machine-to-automanage-with-an-azure-resource-manager-arm-template"></a>Integrieren eines Computers in Automanage mit einer Azure Resource Manager (ARM)-Vorlage
 
@@ -22,8 +22,9 @@ ms.locfileid: "107368476"
 Führen Sie die folgenden Schritte aus, um einen Computer in die bewährten Methoden von Automanage zu integrieren. Mit der folgenden ARM-Vorlage wird ein `configurationProfileAssignment`-Objekt erstellt, bei dem es sich um die Azure-Ressource handelt, die einen Computer darstellt, der in Automanage integriert wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Sie müssen ein vorhandenes Automanage-Konto erstellt haben. Weitere Informationen zum Automanage-Konto und zum Erstellen eines Kontos finden Sie in [diesem Dokument](./automanage-account.md).
-* Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die die Computer enthält, die Sie in Automanage integrieren möchten.
+* Sie müssen ein vorhandenes Automanage-Konto erstellt und ihm die richtigen Berechtigungen zugewiesen haben. Weitere Informationen zum Automanage-Konto, seiner Erstellung und der Zuweisung von Berechtigungen finden Sie in [diesem Dokument](./automanage-account.md).
+* Wenn Sie über ein bestehendes Automanage-Konto mit zugewiesenen Berechtigungen verfügen, müssen Sie auch über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die die Computer enthält, die Sie ein Onboarding bei Automanage durchführen möchten.
+
 
 ## <a name="arm-template-overview"></a>Übersicht über ARM-Vorlagen
 Die folgende ARM-Vorlage integriert Ihren angegebenen Computer in die bewährten Methoden von Azure Automanage. Details zur ARM-Vorlage und Schritte zur Bereitstellung finden Sie [im folgenden Abschnitt](#arm-template-deployment) zur ARM-Vorlagenbereitstellung.
@@ -64,7 +65,7 @@ Der `configurationProfileAssignment`-Wert kann einer der folgenden Werte sein:
 * "DevTest"
 
 Führen Sie diese Schritte aus, um die ARM-Vorlage bereitzustellen:
-1. Speichern Sie die folgende ARM-Vorlage unter `azuredeploy.json`.
+1. Speichern Sie die obige ARM-Vorlage unter `azuredeploy.json`.
 1. Führen Sie die ARM-Vorlagenbereitstellung mit `az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json` aus.
 1. Geben Sie die Werte für machineName, automanageAccountName und configurationProfileAssignment an, wenn Sie dazu aufgefordert werden.
 1. Fertig.

@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: f71084e9c13bd1a30f5d5f01a04172671074db03
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 5ba7559cdcfbb4f02ee99be6dce7997d7451f3e1
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525208"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674416"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
 
 ## <a name="server-parameters"></a>Serverparameter
@@ -58,7 +61,8 @@ Folgendes wird nicht unterstützt:
 - `LOAD_FILE(file_name)`: Wird im Dienst nicht unterstützt.
 
 ### <a name="supported"></a>Unterstützt
-- `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden.
+- `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden. Wenn Sie eine MySQL-Clientversion ab 8.0 verwenden, müssen Sie außerdem den Parameter `-–local-infile=1` in der Verbindungszeichenfolge angeben.
+
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
@@ -66,8 +70,8 @@ Folgendes wird nicht unterstützt:
 - Die dynamische Skalierung auf den oder vom Basic-Tarif aus wird zurzeit nicht unterstützt.
 - Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
-### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
-- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](./concepts-migrate-dump-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
+### <a name="major-version-upgrades"></a>Upgrades von Hauptversionen
+- [Ein Upgrade der Hauptversion werden nur für Upgrades von Version 5.6 auf 5.7 unterstützt](how-to-major-version-upgrade.md). Upgrades auf Version 8.0 werden noch nicht unterstützt.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 - Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
@@ -77,7 +81,7 @@ Folgendes wird nicht unterstützt:
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
 ### <a name="storage-size"></a>Speichergröße
-- Informationen zu den Beschränkungen der Speichergröße pro Tarif finden Sie unter [Tarife](concepts-pricing-tiers.md).
+- Informationen zu den Beschränkungen der Speichergröße pro Tarif finden Sie unter [Tarife](concepts-pricing-tiers.md#storage).
 
 ## <a name="current-known-issues"></a>Aktuelle bekannte Probleme
 - Die MySQL-Serverinstanz zeigt die falsche Serverversion an, nachdem die Verbindung hergestellt wurde. Um die richtige Engine-Version der Serverinstanzen abzurufen, verwenden Sie den Befehl `select version();`.

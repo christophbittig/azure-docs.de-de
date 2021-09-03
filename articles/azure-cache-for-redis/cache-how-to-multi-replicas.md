@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c9be8958dada7acc5d53e6c99c79527e10142121
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d92591e335a24aa50de081c5a001801f22c92dba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349544"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis"></a>Hinzufügen von Replikaten zu Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine Azure Cache-Instanz mit weiteren Replikaten über das Azure-Portal einrichten.
@@ -32,7 +32,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
    
 1. Konfigurieren Sie auf der Seite **Grundlagen** die Einstellungen für den neuen Cache.
    
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. | 
     | **Ressourcengruppe** | Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -43,6 +43,10 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
 1. Wählen Sie auf der Seite **Erweitert** die Option **Replikatanzahl** aus.
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Replikatanzahl.":::
+    
+    > [!NOTE]
+    > Derzeit können Sie keine AOF-Persistenz (Datei mit nur Anfügen) oder Georeplikation mit mehreren Replikaten (mehr als ein Replikat) verwenden.
+    >
 
 1. Behalten Sie bei den anderen Optionen die Standardeinstellungen bei. 
 

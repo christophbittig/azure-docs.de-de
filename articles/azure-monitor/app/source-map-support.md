@@ -2,16 +2,14 @@
 title: Unterstützung für Quellzuordnungen für JavaScript-Anwendungen – Azure Monitor Application Insights
 description: Hier erfahren Sie, wie Sie mithilfe von Application Insights Quellzuordnungen in den eigenen Speicherkonto-Blobcontainer hochladen.
 ms.topic: conceptual
-author: DavidCBerry13
-ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ca8de41c4d68ddc5ff3fc0355def975e6df30d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933946"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346248"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Unterstützung für Quellzuordnungen für JavaScript-Anwendungen
 
@@ -50,7 +48,7 @@ Wenn Sie Azure Pipelines zum kontinuierlichen Erstellen und Bereitstellen Ihrer 
 Auf der Registerkarte für End-to-End-Transaktionsdetails können Sie auf *Minimierung aufheben* klicken. Daraufhin wird eine Aufforderung zur Konfiguration angezeigt, sofern Ihre Ressource nicht konfiguriert ist.
 
 1. Zeigen Sie im Portal die Details einer Ausnahme an, die minimiert ist.
-2. Klicken auf *Minimierung aufheben*
+2. Wählen sie *Deminimieren* aus.
 3. Wenn Ihre Ressource nicht konfiguriert ist, wird eine Meldung angezeigt, in der Sie zur Konfiguration aufgefordert werden.
 
 ### <a name="from-the-properties-page"></a>Auf der Eigenschaftenseite
@@ -58,9 +56,9 @@ Auf der Registerkarte für End-to-End-Transaktionsdetails können Sie auf *Minim
 Wenn Sie das Speicherkonto oder den Blobcontainer, das bzw. der mit Ihrer Application Insights-Ressource verknüpft ist, konfigurieren oder ändern möchten, können Sie dazu die Registerkarte *Eigenschaften* der Application Insights-Ressource aufrufen.
 
 1. Navigieren Sie zur Registerkarte *Eigenschaften* Ihrer Application Insights-Ressource.
-2. Klicken Sie auf *Blobcontainer für Quellzuordnungen ändern*.
+2. Wählen Sie *Blobcontainer für Quellzuordnung ändern* aus.
 3. Wählen Sie einen anderen Blobcontainer als Container für Quellzuordnungen aus.
-4. Klicken Sie auf `Apply`.
+4. Wählen Sie `Apply` aus.
 
 > [!div class="mx-imgBorder"]
 > ![Neukonfiguration des ausgewählten Azure-Blobcontainers durch Navigieren zum Blatt „Eigenschaften“](./media/source-map-support/reconfigure.png)

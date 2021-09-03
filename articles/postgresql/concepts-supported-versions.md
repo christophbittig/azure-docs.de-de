@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 08/01/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b372c9d8be31ab6f51d737cd00c692ac9242e4db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c20eb75fbb248ff67fb244fde1355aae9c726d7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339970"
 ---
 # <a name="supported-postgresql-major-versions"></a>Unterstützte PostgreSQL-Hauptversionen
 
@@ -21,13 +21,13 @@ Weitere Informationen zur Unterstützung von Richtlinien finden Sie unter [Richt
 Azure Database for PostgreSQL unterstützt derzeit die folgenden Hauptversionen:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL Version 11
-Das aktuelle Nebenrelease ist 11.6. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-6.html).
+Das aktuelle Nebenrelease ist 11.11. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-11.html).
 
 ## <a name="postgresql-version-10"></a>PostgreSQL Version 10
-Das aktuelle Nebenrelease ist 10.11. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-11.html).
+Das aktuelle Nebenrelease ist 10.16. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-16.html).
 
 ## <a name="postgresql-version-96"></a>PostgreSQL Version 9.6
-Das aktuelle Nebenrelease ist 9.6.16. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html).
+Das aktuelle Nebenrelease ist 9.6.21. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-21.html).
 
 ## <a name="postgresql-version-95-retired"></a>PostgreSQL, Version 9.5 (eingestellt)
 Gemäß der [Versionsverwaltungsrichtlinie](https://www.postgresql.org/support/versioning/) der Postgres-Community hat Azure Database for PostgreSQL die Postgres-Version 9.5 am 11. Februar 2021 eingestellt. Weitere Informationen und Einschränkungen finden Sie unter [Richtlinien zur Azure Database for PostgreSQL-Versionsverwaltung](concepts-version-policy.md). Wenn Sie diese Hauptversion ausführen, führen Sie ein Upgrade auf eine höhere Version durch, vorzugsweise auf PostgreSQL 11.

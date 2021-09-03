@@ -4,12 +4,12 @@ description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokoll
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5277f5051e291e9058255d8920ac0be950389704
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c1cbaf09d8f0b0cfe23f7014c1b5046efc5aab9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203197"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346727"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
@@ -47,7 +47,7 @@ Sie können Echtzeitprotokolldaten anzeigen, da diese von der Container-Engine a
 4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
-    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
+    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [Abfragen von Protokollen von Container Insights](container-insights-log-query.md).
 
 Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Hier können Sie Protokolldaten in einem kontinuierlichen Stream sehen. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
 
@@ -68,7 +68,7 @@ Sie können Echtzeitereignisdaten anzeigen, wenn sie von der Container-Engine be
 4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
-    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
+    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [Abfragen von Protokollen von Container Insights](container-insights-log-query.md).
 
 Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
 
@@ -95,7 +95,7 @@ Sie können Echtzeitmetrikdaten anzeigen, da diese von der Container-Engine bei 
 4. Wählen Sie ein **Pod**-Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
-    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
+    >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter [Abfragen von Protokollen von Container Insights](container-insights-log-query.md).
 
 Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Metrikdaten werden abgerufen und zur Darstellung in den beiden Diagrammen an Ihre Konsole gestreamt. Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
 
@@ -131,4 +131,4 @@ Mithilfe der Option **Scrollen** können Sie den automatischen Bildlauf unterbre
 
 - Weitere Informationen zur Verwendung von Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
 
-- Unter [Beispielabfragen für die Protokollsuche](container-insights-log-search.md#search-logs-to-analyze-data) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.
+- Unter [Abfragen von Protokollen von Container Insights](container-insights-log-query.md) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.

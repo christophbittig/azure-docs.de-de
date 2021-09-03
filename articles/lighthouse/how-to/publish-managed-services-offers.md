@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
-ms.date: 03/31/2021
+ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 014386c6c4676abbc441cc2e23bdfcf90f3adc09
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: af5ca37d312f5bdfcfae179997b920a466f01462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965104"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346879"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -63,6 +63,9 @@ Sobald ein Kunde Ihr Angebot hinzufügt hat, kann er [ein oder mehrere spezifisc
 > Die Delegierung darf nicht über ein Gastkonto im Mandanten des Kunden durchgeführt werden. Das Konto muss über eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügen, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Wenn der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
+
+> [!NOTE]
+> Um zusätzliche Abonnements oder Ressourcengruppen zu einem späteren Zeitpunkt an dasselbe Angebot zu delegieren, muss der Kunde [den Ressourcenanbieter **Microsoft.ManagedServices** für jedes Abonnement vor der Delegierung manuell registrieren](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 Wenn Sie eine aktualisierte Version Ihres Angebots veröffentlichen, kann der Kunde [die Änderungen im Azure-Portal überprüfen und die neue Version akzeptieren](view-manage-service-providers.md#update-service-provider-offers).
 

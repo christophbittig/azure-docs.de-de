@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: references_regions
+ms.openlocfilehash: a3ef9a8f56f091e7be93e940f9e359adef15cb7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010353"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355880"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Sicherung und Wiederherstellung in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Für Azure Database for MySQL werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Sicherungen können verwendet werden, um für Ihren Server den Stand zu einem bestimmten Zeitpunkt wiederherzustellen. Sicherungen und Wiederherstellungen sind wesentliche Bestandteile jeder Strategie für Geschäftskontinuität, da Ihre Daten so vor versehentlichen Beschädigungen und Löschungen geschützt werden.
 
@@ -33,20 +36,18 @@ Der Basic-Speicherserver ist der Back-End-Speicher, der die [Server im Tarif „
 
 Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
 
-#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Universelle Speicherserver mit bis zu 4 TB Speicher
+#### <a name="general-purpose-storage-v1-servers-supports-up-to-4-tb-storage"></a>Universelle Speicherserver (v1) (unterstützen bis zu 4 TB Speicher)
 
 Der universelle Speicher ist der Back-End-Speicher, der die [Server im Tarif „Universell“](concepts-pricing-tiers.md) und [„Arbeitsspeicheroptimiert“](concepts-pricing-tiers.md) unterstützt. Bei Servern mit universellem Speicher von bis zu 4 TB erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt. Die Sicherungen in universellen Speichern mit bis zu 4 TB basieren nicht auf Momentaufnahmen und beanspruchen zum Zeitpunkt der Sicherung E/A-Bandbreite. Bei großen Datenbanken (> 1 TB) in einem 4-TB-Speicher wird Folgendes empfohlen:
 
 - Bereitstellung von mehr IOPs zum Sichern von IOs ODER
 - Alternativ können Sie zu einem universellen Speicher migrieren, der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten [Azure-Regionen](./concepts-pricing-tiers.md#storage) verfügbar ist. Für einen universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen.
 
-#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Universelle Speicherserver mit bis zu 16 TB Speicher
+#### <a name="general-purpose-storage-v2-servers-supports-up-to-16-tb-storage"></a>Universelle Speicherserver (v2) (unterstützen bis zu 16 TB Speicher)
 
-In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen.
+In einigen [Azure-Regionen](./concepts-pricing-tiers.md#storage) können alle neu bereitgestellten Server universelle Speicher bis zu 16 TB unterstützen. Das bedeutet, dass Speicher mit bis zu 16 TB der standardmäßige universelle Speicher für alle [Regionen](concepts-pricing-tiers.md#storage) ist, in denen er unterstützt wird. Die Sicherungen auf diesen 16-TB-Speicherservern basieren auf Momentaufnahmen. Die erste Momentaufnahmesicherung ist für unmittelbar nach Erstellung des Servers geplant. Momentaufnahmesicherungen werden einmal täglich erstellt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
 
-Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmesicherungen werden alle 24 Stunden ausgeführt, sofern das Transaktionsprotokoll (binlog in MySQL) seit der letzten differenziellen Sicherung den Wert von 50 GB nicht überschreitet. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig.
-
-Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
+Weitere Informationen zum Basic- und universellen Speicher finden Sie in der [Speicherdokumentation](./concepts-pricing-tiers.md#storage).
 
 ### <a name="backup-retention"></a>Sicherungsaufbewahrung
 
@@ -54,8 +55,8 @@ Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum 
 
 Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen beispielsweise auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Beispiel für Sicherungsaufbewahrungsfenster von sieben Tagen:
 
-- Bei Servern mit bis zu 4 TB Speicher werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen beibehalten, die seit der frühesten Datenbanksicherung durchgeführt wurden.
-- Bei Servern mit bis zu 16 TB Speicher werden die vollständige Datenbankmomentaufnahme, alle differenziellen Momentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage beibehalten.
+- Bei universellen Speicherservern (v1) (die bis zu 4 TB Speicher unterstützen) werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen aufbewahrt, die seit der frühesten Datenbanksicherung erfolgt sind.
+- Bei universellen Speicherservern (v2) (die bis zu 16 TB Speicher unterstützen) werden die vollständige Datenbankmomentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage aufbewahrt.
 
 #### <a name="long-term-retention"></a>Langfristige Aufbewahrung
 
@@ -64,6 +65,9 @@ Eine Langzeitaufbewahrung von Sicherungen (mehr als 35 Tage) wird vom Dienst de
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 
 Bei Azure Database for MySQL können Sie in den Tarifen „Allgemein“ und „Arbeitsspeicheroptimiert“ flexibel zwischen lokal redundantem und georedundantem Sicherungsspeicher wählen. Wenn die Sicherungen in einem georedundanten Sicherungsspeicher gespeichert werden, werden sie nicht nur in der Region vorgehalten, in der Ihr Server gehostet wird. Sie werden außerdem in einem [gekoppelten Datencenter](../best-practices-availability-paired-regions.md) repliziert. Diese Georedundanz bietet besseren Schutz und ermöglicht im Notfall die Wiederherstellung Ihres Servers in einer anderen Region. Im Tarif „Basic“ ist nur lokal redundanter Sicherungsspeicher verfügbar.
+
+> [!NOTE]
+>Für die folgenden Regionen: Indien, Mitte; Frankreich, Mitte; VAE, Norden; Südafrika, Norden. Universeller Speicher (v2) befindet sich in Public Preview. Wenn Sie einen Quellserver mit universellem Speicher (v2) (mit Unterstützung von bis zu 16 TB Speicher) in den oben genannten Regionen erstellen, wird die Aktivierung der georedundanten Sicherung nicht unterstützt. 
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Wechseln von lokal redundantem zu georedundantem Sicherungsspeicher
 
@@ -119,7 +123,9 @@ Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsiche
 
 ### <a name="geo-restore"></a>Geowiederherstellung
 
-Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Server, die bis zu 4 TB Speicherkapazität unterstützen, können in der geografisch gekoppelten Region oder in einer beliebigen Region wiederhergestellt werden, die bis zu 16 TB Speicherkapazität unterstützt. Bei Servern, die bis zu 16 TB Speicherkapazität unterstützen, können Geosicherungen in beliebigen Regionen wiederhergestellt werden, die ebenfalls Server mit 16 TB unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for MySQL-Tarife](concepts-pricing-tiers.md).
+Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. 
+- Server mit universellem Speicher (v1) (mit Unterstützung von bis zu 4 TB Speicher) können in der geografisch gekoppelten Region oder in jeder Azure-Region, die den Dienst Azure Database for MySQL Single Server unterstützt, wiederhergestellt werden.
+- Server mit universellem Speicher (v2) (mit Unterstützung von bis zu 16 TB Speicher) können nur in Azure-Regionen wiederhergestellt werden, die die Infrastruktur für Server mit universellem Speicher (v2) unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for MySQL-Tarife](./concepts-pricing-tiers.md#storage).
 
 Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 

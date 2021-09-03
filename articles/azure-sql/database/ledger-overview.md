@@ -1,27 +1,27 @@
 ---
 title: Azure SQL-Datenbank-Ledger – Übersicht
 description: Machen Sie sich mit den Grundlagen des Features Azure SQL-Datenbank Ledgers.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: bbca4e9f4ec7ccf2b1bfd2927dd0f76eb51161b7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6b8ca057d896cc7fa353e8b09b1d1667b87cc273
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077066"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339095"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL-Datenbank-Ledger
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der Public Preview-Phase und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 Das Einrichten einer Vertrauensstellung rund um die Integrität von in Datenbanksystemen gespeicherten Daten ist ein seit langem bestehendes Problem bei allen Organisationen, die Finanzdaten, Patientendaten oder andere vertrauliche Daten verwalten. Das Ledgerfeature von [Azure SQL-Datenbank](sql-database-paas-overview.md) bietet Manipulationsbeweisfunktionen in Ihrer Datenbank. Sie können kryptografisch gegenüber Dritten, (z. B. Prüfern oder anderen Geschäftspartnern) nachweisen, dass Ihre Daten nicht manipuliert wurden.
 
@@ -61,7 +61,7 @@ Typische Muster zur Lösung dieses Problems umfassen das Replizieren von Daten a
 
 Jede von der Datenbank empfangene Transaktion wird kryptografisch mit SHA-256 gehasht. Die Hashfunktion verwendet den Wert der Transaktion zusammen mit dem Hash der vorherigen Transaktion als Eingabe. (Der Wert enthält Hashes der Zeilen, die in der Transaktion enthalten sind.) Die Funktion verknüpft kryptografisch alle Transaktionen, z. B. eine Blockchain. 
 
-Kryptografische Hashes ([Datenbankhashes](#database-digests)) stellen den Status der Datenbank dar. Sie werden regelmäßig außerhalb von Azure SQL-Datenbank an einem manipulationssicheren Speicherort generiert und gespeichert. Ein Beispiel für einen Speicherort ist das [unveränderliche Speicherfeature von Azure Blob Storage](../../storage/blobs/storage-blob-immutable-storage.md) oder [Azure Confidential Ledger](../../confidential-ledger/index.yml). Datenbankhashes werden später zur Überprüfung der Datenbankintegrität verwendet, indem der Wert des Hashes im Digest mit den berechneten Hashes in der Datenbank verglichen wird. 
+Kryptografische Hashes ([Datenbankhashes](#database-digests)) stellen den Status der Datenbank dar. Sie werden regelmäßig außerhalb von Azure SQL-Datenbank an einem manipulationssicheren Speicherort generiert und gespeichert. Ein Beispiel für einen Speicherort ist das [unveränderliche Speicherfeature von Azure Blob Storage](../../storage/blobs/immutable-storage-overview.md) oder [Azure Confidential Ledger](../../confidential-ledger/index.yml). Datenbankhashes werden später zur Überprüfung der Datenbankintegrität verwendet, indem der Wert des Hashes im Digest mit den berechneten Hashes in der Datenbank verglichen wird. 
 
 Ledgerfunktionen werden in Azure SQL-Datenbank-Tabellen in zwei Formen eingeführt:
 
@@ -116,7 +116,7 @@ Bei der Bildung eines Blocks wird dessen zugeordneter Datenbankhash veröffentli
 2. Generieren der Hashes, die die Datenbank mit diesen Änderungen darstellen
 3. Ändern der Hashes, sodass sie den aktualisierten Hash der Transaktionen im Block darstellen 
 
-Ledger bietet die Möglichkeit, Hashes automatisch zu generieren und in einem [unveränderlichen Speicher](../../storage/blobs/storage-blob-immutable-storage.md) oder in [Azure Confidential Ledger](../../confidential-ledger/index.yml) zu speichern, um Manipulationen zu verhindern. Alternativ können Benutzer Datenbankhashes manuell generieren und am Speicherort ihrer Wahl speichern. Datenbankhashes werden verwendet, um später zu überprüfen, ob die in Ledgertabellen gespeicherten Daten manipuliert wurden.
+Ledger bietet die Möglichkeit, Hashes automatisch zu generieren und in einem [unveränderlichen Speicher](../../storage/blobs/immutable-storage-overview.md) oder in [Azure Confidential Ledger](../../confidential-ledger/index.yml) zu speichern, um Manipulationen zu verhindern. Alternativ können Benutzer Datenbankhashes manuell generieren und am Speicherort ihrer Wahl speichern. Datenbankhashes werden verwendet, um später zu überprüfen, ob die in Ledgertabellen gespeicherten Daten manipuliert wurden.
 
 ### <a name="ledger-verification"></a>Ledgerüberprüfung
 

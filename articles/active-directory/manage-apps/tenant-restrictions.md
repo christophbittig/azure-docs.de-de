@@ -2,22 +2,22 @@
 title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen – Azure AD
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/2/2021
-ms.author: mtillman
-ms.reviewer: hpsin
+ms.date: 7/30/2021
+ms.author: davidmu
+ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c443f3084c465e1a8f2358c1b8db365e576b04f5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d013d383192b206fdc05f36f320b01fe57526bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339562"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -53,7 +53,7 @@ Für die Verwendung von Mandanteneinschränkungen sind zunächst zwei Schritte e
 
 ### <a name="urls-and-ip-addresses"></a>URLs und IP-Adressen
 
-Um Mandanteneinschränkungen verwenden zu können, müssen Ihre Clients für die Authentifizierung eine Verbindung mit den folgenden Azure AD-URLs herstellen können: [login.microsoftonline.com](https://login.microsoftonline.com/), [login.microsoft.com](https://login.microsoft.com/) und [login.windows.net](https://login.windows.net/). Für den Zugriff auf Office 365 müssen Ihre Clients außerdem eine Verbindung mit den unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) definierten vollqualifizierten Domänennamen (FQDNs), URLs und IP-Adressen herstellen können. 
+Um Mandanteneinschränkungen verwenden zu können, müssen Ihre Clients für die Authentifizierung eine Verbindung mit den folgenden Azure AD-URLs herstellen können: [login.microsoftonline.com](https://login.microsoftonline.com/), [login.microsoft.com](https://login.microsoft.com/) und [login.windows.net](https://login.windows.net/). Für den Zugriff auf Office 365 müssen Ihre Clients außerdem eine Verbindung mit den unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) definierten vollqualifizierten Domänennamen (FQDNs), URLs und IP-Adressen herstellen können.
 
 ### <a name="proxy-configuration-and-requirements"></a>Proxykonfiguration und Anforderungen
 
@@ -81,9 +81,9 @@ Die Header müssen folgende Elemente enthalten:
 - *Restrict-Access-Context:* Verwenden Sie einen Wert für eine einzelne Verzeichnis-ID, um zu deklarieren, welcher Mandant die Mandanteneinschränkungen festlegt. Wenn Sie z. B. Contoso als den Mandanten deklarieren möchten, der die Mandanteneinschränkungsrichtlinie festlegt, sieht das Name-Wert-Paar wie folgt aus: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`.  Sie **müssen** an dieser Stelle ihre eigene Verzeichnis-ID verwenden, um Protokolle für diese Authentifizierungen zu erhalten.
 
 > [!TIP]
-> Ihre Verzeichnis-ID finden Sie im [Azure Active Directory-Portal](https://aad.portal.azure.com/). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus. 
+> Ihre Verzeichnis-ID finden Sie im [Azure Active Directory-Portal](https://aad.portal.azure.com/). Melden Sie sich als Administrator an, und wählen Sie **Azure Active Directory** und anschließend **Eigenschaften** aus.
 >
-> Zur Überprüfung, ob eine Verzeichnis-ID oder ein Domänenname sich auf denselben Mandanten beziehen, verwenden Sie diese ID oder Domäne anstelle von <tenant> in der folgenden URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration`.  Wenn die Ergebnisse mit der Domäne und der ID identisch sind, beziehen sie sich auf denselben Mandanten. 
+> Zur Überprüfung, ob eine Verzeichnis-ID oder ein Domänenname sich auf denselben Mandanten beziehen, verwenden Sie diese ID oder Domäne anstelle von <tenant> in der folgenden URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration`.  Wenn die Ergebnisse mit der Domäne und der ID identisch sind, beziehen sie sich auf denselben Mandanten.
 
 Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants*-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
 
@@ -111,11 +111,11 @@ Die Konfiguration der Mandanteneinschränkungen erfolgt zwar in der Proxyinfrast
 
 Der Administrator für den Mandanten, der als Restricted-Access-Context-Mandant angegeben ist, kann sich anhand dieses Berichts über Anmeldungen informieren, die aufgrund der Mandanteneinschränkungsrichtlinie blockiert wurden (einschließlich der jeweils verwendeten Identität und der Zielverzeichnis-ID). Anmeldungen sind enthalten, wenn es sich beim Mandanten, der die Einschränkung festlegt, entweder um den Benutzermandanten oder den Ressourcenmandanten für die Anmeldung handelt.
 
-Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Zielverzeichnis-ID), wenn sich ein Benutzer anmeldet, der sich in einem anderen Mandanten als dem Restricted-Access-Context-Mandanten befindet. In diesem Fall werden benutzerbezogene Informationen wie Name und Benutzerprinzipalname maskiert, um Benutzerdaten in anderen Mandanten zu schützen (je nachdem "{PII Removed}@domain.com" oder 00000000-0000-0000-0000-000000000000 anstelle von Benutzernamen und Objekt-IDs). 
+Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Zielverzeichnis-ID), wenn sich ein Benutzer anmeldet, der sich in einem anderen Mandanten als dem Restricted-Access-Context-Mandanten befindet. In diesem Fall werden benutzerbezogene Informationen wie Name und Benutzerprinzipalname maskiert, um Benutzerdaten in anderen Mandanten zu schützen (je nachdem "{PII Removed}@domain.com" oder 00000000-0000-0000-0000-000000000000 anstelle von Benutzernamen und Objekt-IDs).
 
 Genau wie bei anderen Berichten im Azure-Portal können Sie auch hier mithilfe von Filtern den gewünschten Umfang des Berichts angeben. Der Bericht kann nach einem bestimmten Zeitintervall, einem Benutzer, einer Anwendung, einem Client oder einem Status gefiltert werden. Wenn Sie die Schaltfläche **Spalten** auswählen, können Sie Daten mit einer beliebigen Kombination der folgenden Felder anzeigen:
 
-- **Benutzer**: In diesem Feld können personenbezogene Informationen entfernt werden, dieses wird auf `00000000-0000-0000-0000-000000000000` festgelegt. 
+- **Benutzer**: In diesem Feld können personenbezogene Informationen entfernt werden, dieses wird auf `00000000-0000-0000-0000-000000000000` festgelegt.
 - **Anwendung**
 - **Status**
 - **Date**
@@ -133,7 +133,7 @@ Zur vollständigen Unterstützung von Mandanteneinschränkungen müssen Microsof
 1. Der verwendete Client muss die moderne Authentifizierung unterstützen.
 2. Die moderne Authentifizierung muss als Standardauthentifizierungsprotokoll für den Clouddienst aktiviert sein.
 
-Aktuelle Informationen zu den Office-Clients, die die moderne Authentifizierung unterstützen, finden Sie unter [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365). Diese Seite enthält außerdem Links zu Schritten, mit denen Sie die moderne Authentifizierung für bestimmte Exchange Online- und Skype for Business Online-Mandanten aktivieren können. SharePoint Online ermöglicht bereits standardmäßig die moderne Authentifizierung.
+Aktuelle Informationen zu den Office-Clients, die die moderne Authentifizierung unterstützen, finden Sie unter [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365). Diese Seite enthält außerdem Links zu Schritten, mit denen Sie die moderne Authentifizierung für bestimmte Exchange Online- und Skype for Business Online-Mandanten aktivieren können. SharePoint Online ermöglicht bereits standardmäßig die moderne Authentifizierung. Teams unterstützt nur die moderne Autorisierung, nicht aber die Legacyautorisierung, sodass dieses Umgehungsszenario für Teams nicht zutrifft. 
 
 Browserbasierte Microsoft 365-Anwendungen (das Office-Portal, Yammer, SharePoint-Websites, Outlook im Web und andere) unterstützen derzeit Mandanteneinschränkungen. Thick Clients (Outlook, Skype for Business, Word, Excel, PowerPoint und andere) können Mandanteneinschränkungen nur bei Verwendung moderner Authentifizierung erzwingen.  
 
@@ -157,7 +157,7 @@ Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenver
 
    1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
 
-   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<List of tenant identifiers\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.  Sie **müssen** den richtigen GUID-Bezeichner einschließen, damit die Protokolle in Ihrem Mandanten angezeigt werden. 
+   2. Fügen Sie am Anfang der `OnBeforeRequest`-Funktion die folgenden Zeilen hinzu: Ersetzen Sie \<List of tenant identifiers\> durch eine bei Ihrem Mandanten registrierte Domäne (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.  Sie **müssen** den richtigen GUID-Bezeichner einschließen, damit die Protokolle in Ihrem Mandanten angezeigt werden.
 
    ```JScript.NET
     // Allows access to the listed tenants.

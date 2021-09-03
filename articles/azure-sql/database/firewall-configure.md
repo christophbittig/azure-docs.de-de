@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
-ms.date: 06/17/2020
-ms.openlocfilehash: 6367a697d33a4d658dea6e68b3a7c9d75e3d8b1a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.reviewer: mathoma
+ms.date: 07/14/2021
+ms.openlocfilehash: c1bb51ff65e7239fc758553288c84a4a52f90740
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339243"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -103,7 +103,7 @@ Wenn ein Computer versucht, über das Internet eine Verbindung mit dem Server he
 
 Wenn Sie in Azure gehosteten Anwendungen die Verbindungsherstellung mit Ihrer SQL Server-Instanz ermöglichen möchten, müssen Azure-Verbindungen aktiviert sein. Zum Aktivieren von Azure-Verbindungen ist eine Firewallregel erforderlich, deren Start- und End-IP-Adresse auf 0.0.0.0 festgelegt werden.
 
-Wenn eine Anwendung in Azure versucht, eine Verbindung mit dem Server herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind, indem sie überprüft, ob diese Firewallregel existiert. Dies kann direkt über das Azure-Portalblatt aktiviert werden, indem Sie in den Einstellungen **Firewalls und virtuelle Netzwerke** die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** festlegen. Bei Festlegung auf EIN wird eine eingehende Firewallregel für IP 0.0.0.0-0.0.0.0 mit dem Namen **AllowAllWindowsIP** erstellt. Wenn Sie das Portal nicht verwenden, erstellen Sie mit PowerShell oder der Azure CLI eine Firewallregel, wobei Start- und End-IP-Adresse auf 0.0.0.0 festgelegt sind. 
+Wenn eine Anwendung in Azure versucht, eine Verbindung mit dem Server herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind, indem sie überprüft, ob diese Firewallregel existiert. Dies kann direkt über das Azure-Portalblatt aktiviert werden, indem Sie in den Einstellungen **Firewalls und virtuelle Netzwerke** die Option **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** auf **EIN** festlegen. Bei Festlegung der Einstellung auf EIN wird eine eingehende Firewallregel für IP 0.0.0.0-0.0.0.0 mit dem Namen **AllowAllWindowsAzureIps** erstellt. Die Regel kann in Ihrer Masterdatenbank in der Sicht [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) eingesehen werden. Wenn Sie das Portal nicht verwenden, erstellen Sie mit PowerShell oder der Azure CLI eine Firewallregel, wobei Start- und End-IP-Adresse auf 0.0.0.0 festgelegt sind. 
 
 > [!IMPORTANT]
 > Diese Option konfiguriert die Firewall so, dass alle von Azure ausgehenden Verbindungen zugelassen werden (einschließlich Verbindungen von den Abonnements anderer Kunden). Stellen Sie bei Verwendung dieser Option sicher, dass Ihre Anmelde- und Benutzerberechtigungen den Zugriff auf autorisierte Benutzer beschränken.

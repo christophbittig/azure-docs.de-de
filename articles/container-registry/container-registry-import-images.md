@@ -2,13 +2,13 @@
 title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/28/2021
+ms.openlocfilehash: 04e9ead09061fad5630b883c6f5749bafc7a4a7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339846"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
@@ -32,9 +32,7 @@ Der Imageimport in eine Azure-Containerregistrierung bietet gegenüber der Verwe
 
 Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
-> [!NOTE]
-> Azure Container Registry unterstützt darüber hinaus die [Georeplikation](container-registry-geo-replication.md), falls Sie identische Containerimages auf mehrere Azure-Regionen verteilen müssen. Durch die Georeplikation einer Registrierung (Premium-Dienstebene erforderlich) können Sie in mehreren Regionen identische Image- und Tagnamen aus einer einzelnen Registrierung bereitstellen.
->
+[!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 > [!IMPORTANT]
 > Änderungen am Imageimport zwischen zwei Azure Container Registry-Instanzen zum Januar 2021:
@@ -158,7 +156,10 @@ az acr import \
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importieren von Images aus einer Azure-Containerregistrierung in einem anderen AD-Mandanten
 
-Wenn Sie Images aus einer Azure-Containerregistrierung in einem anderen Azure Active Directory-Mandanten importieren möchten, geben Sie die Quellregistrierung über den Anmeldeservernamen an sowie den Benutzernamen und das Kennwort für Pullzugriff auf die Registrierung. Verwenden Sie z. B. ein [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) und ein Kennwort oder die App-ID und das Kennwort für einen Active Directory-[Dienstprinzipal](container-registry-auth-service-principal.md), der über ACRPull-Zugriff auf die Quellregistrierung verfügt. 
+Wenn Sie Images aus einer Azure-Containerregistrierung in einem anderen Azure Active Directory-Mandanten importieren möchten, geben Sie die Quellregistrierung über den Anmeldeservernamen an sowie die Anmeldeinformationen für Pullzugriff auf die Registrierung. 
+
+### <a name="cross-tenant-import-with-username-and-password"></a>Mandantenübergreifender Import mit Benutzername und Kennwort
+Verwenden Sie z. B. ein [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) und ein Kennwort oder die App-ID und das Kennwort für einen Active Directory-[Dienstprinzipal](container-registry-auth-service-principal.md), der über ACRPull-Zugriff auf die Quellregistrierung verfügt. 
 
 ```azurecli
 az acr import \
@@ -167,6 +168,28 @@ az acr import \
   --image targetimage:tag \
   --username <SP_App_ID> \
   --password <SP_Passwd>
+```
+
+### <a name="cross-tenant-import-with-access-token"></a>Mandantenübergreifender Import mit Zugriffstoken
+
+Um mithilfe einer Identität im Quellmandanten, die über Registrierungsberechtigungen verfügt, auf die Quellregistrierung zuzugreifen, können Sie ein Zugriffstoken abrufen:
+
+```azurecli
+# Login to Azure CLI with the identity, for example a user-assigned managed identity
+az login --identity --username <identity_ID>
+
+# Get access token returned by `az account get-access-token`
+az account get-access-token 
+```
+
+Übergeben Sie im Zielmandanten das Zugriffstoken als Kennwort an den Befehl `az acr import`. Die Quellregistrierung wird über den Namen des Anmeldeservers angegeben. Beachten Sie, dass in diesem Befehl kein Benutzername erforderlich ist:
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --password <access-token>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Importieren aus einer Azure-fremden privaten Containerregistrierung
@@ -184,7 +207,13 @@ az acr import \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure-Containerregistrierung importieren. Informationen zu weiteren Optionen beim Importieren von Images finden Sie in der Befehlsreferenz für [az acr import][az-acr-import]. 
+In diesem Artikel haben Sie erfahren, wie Sie Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure-Containerregistrierung importieren. 
+
+* Informationen zu weiteren Optionen beim Importieren von Images finden Sie in der Befehlsreferenz für [az acr import][az-acr-import]. 
+
+* Der Imageimport kann Ihnen helfen, Inhalte in eine Containerregistrierung in einer anderen Azure-Region, einem anderen Abonnement oder Azure AD-Mandanten zu verschieben. Weitere Informationen finden Sie unter [Manuelles Verschieben einer Containerregistrierung in eine andere Region](manual-regional-move.md).
+
+* Erfahren Sie, wie Sie den [Export von Artefakten aus einer Containerregistrierung mit Netzwerkeinschränkungen deaktivieren](data-loss-prevention.md).
 
 
 <!-- LINKS - Internal -->
