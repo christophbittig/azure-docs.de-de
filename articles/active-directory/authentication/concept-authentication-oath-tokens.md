@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d0dd081e3e1a681ba55e3457b79a548d6b2bb7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c5d5e34ee5013a6f4ad28779e92536ff2d8ef868
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530373"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730766"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Authentifizierungsmethoden in Azure Active Directory – OATH-Token 
 
@@ -31,7 +31,7 @@ Einige OATH TOTP-Hardwaretoken sind programmierbar, d. h., sie sind nicht mit e
 
 ## <a name="oath-hardware-tokens-preview"></a>OATH-Hardwaretoken (Vorschau)
 
-Azure AD unterstützt die Verwendung von OATH TOTP SHA-1-Token, die den Code alle 30 oder 60 Sekunden aktualisieren. Kunden können diese Token beim Anbieter ihrer Wahl erwerben.
+Azure AD unterstützt die Verwendung von OATH TOTP SHA-1-Token, die den Code alle 30 oder 60 Sekunden aktualisieren. Kunden können diese Token beim Anbieter ihrer Wahl erwerben. 
 
 OATH TOTP-Hardwaretoken sind in der Regel mit einem geheimen, im Token vorprogrammierten Schlüssel oder Anfangswert versehen. Diese Schlüssel müssen entsprechend der Beschreibung in den folgenden Schritten in Azure AD eingegeben werden. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Der geheime Schlüssel darf nur die Zeichen *a-z* oder *A-Z* und die Ziffern *2-7* enthalten und muss in *Base32* codiert sein.
 
@@ -62,3 +62,4 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Im Artikel [Übersicht über die Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview) finden Sie weitere Informationen zum Konfigurieren von Authentifizierungsmethoden.
+Informieren Sie sich über [FIDO2-Sicherheitsschlüsselanbieter](concept-authentication-passwordless.md#fido2-security-key-providers), die mit der kennwortlosen Authentifizierung kompatibel sind.
