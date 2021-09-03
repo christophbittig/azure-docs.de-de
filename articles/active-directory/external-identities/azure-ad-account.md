@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/09/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d9d7a8e74767982d5089a1308ca36108eb5f106
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 00edf144e06710204bf5d6eb477187668b3e5237
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111972533"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343019"
 ---
 # <a name="azure-active-directory-azure-ad-identity-provider-for-external-identities"></a>Azure Active Directory (Azure AD)-Identitätsanbieter für External Identities
 
@@ -38,6 +38,14 @@ Wenn Sie einen [Gastbenutzer zur B2B-Zusammenarbeit einladen](add-users-administ
 „Azure AD-Konto“ ist einer der verfügbaren Identitätsanbieter für Ihre Benutzerflows für die Self-Service-Registrierung. Benutzer können sich mit ihren eigenen Azure AD-Konten für Ihre Anwendungen registrieren. Zunächst müssen Sie für Ihren Mandanten die [Self-Service-Registrierung aktivieren](self-service-sign-up-user-flow.md). Danach können Sie einen Benutzerflow für die Anwendung einrichten und „Azure Active Directory“ als eine der Anmeldeoptionen auswählen.
 
 ![„Azure AD-Konto“ in einem Benutzerflow für die Self-Service-Registrierung](media/azure-ad-account/azure-ad-account-user-flow.png)
+
+## <a name="verifying-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzereinwilligungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD-Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein [Microsoft-Konto](microsoft-account.md) oder ein anderer Azure AD-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+
+1. [Überprüfen Sie Ihre Unternehmensidentität mit Ihrem Microsoft Partner Network-Konto (MPN-Konto)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie die Herausgeberüberprüfung ab, um mithilfe einer der folgenden Optionen Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn sich die App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD-Mandanten befindet, [überprüfen Sie Ihre App im App-Registrierungsportal](../develop/mark-app-as-publisher-verified.md).
+   - Wenn sich Ihre App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe von Microsoft Graph-APIs als vom Herausgeber verifiziert](../develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mit dem Graph-Tester).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

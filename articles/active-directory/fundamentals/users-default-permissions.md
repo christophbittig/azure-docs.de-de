@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 08/04/2021
 ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: db47b66a08ebe1c8a053995d0d8d8d810ae6b564
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748770"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340022"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -43,7 +43,9 @@ Richtlinien | <ul><li>Alle Eigenschaften von Richtlinien lesen<li>Alle Eigenscha
 
 ## <a name="restrict-member-users-default-permissions"></a>Standardberechtigungen von Mitgliedsbenutzern einschränken 
 
-Die Standardberechtigungen für Mitgliedsbenutzer können auf folgende Weise eingeschränkt werden:
+Es ist möglich, die Standardberechtigungen von Benutzern weiter einzuschränken. Einige Organisationen müssen möglicherweise den Zugriff von Benutzern auf das Portal einschränken. Verwenden Sie diese Funktion, wenn nicht alle Benutzer im Verzeichnis Zugriff auf das Azure AD-Verwaltungsportal/-Verzeichnis haben sollen. 
+
+Beispiel: Das Verzeichnis einer Universität umfasst viele Benutzer, und der Administrator möchte möglicherweise nicht, dass alle Studenten im Verzeichnis das gesamte Verzeichnis anzeigen und die Privatsphäre anderer Studenten verletzen können. Die Verwendung dieser Funktion ist optional und liegt im Ermessen des Azure AD-Administrators. Die Standardberechtigungen für Mitgliedsbenutzer können auf folgende Weise eingeschränkt werden:
 
 Berechtigung | Erläuterung der Einstellung
 ---------- | ------------
@@ -51,8 +53,10 @@ Benutzer können Anwendungen registrieren | Durch das Festlegen dieser Einstellu
 Benutzern die Verbindungsherstellung mit LinkedIn über ihr Geschäfts-, Schul- oder Unikonto erlauben | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, ihr Geschäfts-, Schul- oder Unikonto mit ihrem LinkedIn-Konto zu verbinden. Weitere Informationen finden Sie unter [Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen](../enterprise-users/linkedin-user-consent.md).
 Fähigkeit zum Erstellen von Sicherheitsgruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Sicherheitsgruppen zu erstellen. Globale Administratoren und Benutzeradministratoren können weiterhin Sicherheitsgruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md).
 Möglichkeit zur Erstellung von Microsoft 365-Gruppen | Durch das Festlegen dieser Einstellung auf „Nein“ werden Benutzer daran gehindert, Microsoft 365-Gruppen zu erstellen. Durch das Festlegen dieser Option auf „Einige“ wird einem ausgewählten Benutzersatz das Erstellen von Microsoft 365-Gruppen ermöglicht. Globale Administratoren und Benutzeradministratoren können weiterhin Microsoft 365-Gruppen erstellen. Informationen zur Vorgehensweise finden Sie unter [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md).
-Zugriff auf Azure AD-Verwaltungsportal einschränken | Wenn Sie diese Option auf „Nein“ festlegen, können Nichtadministratoren das Azure AD-Verwaltungsportal zum Lesen und Verwalten von Ressourcen verwenden. Mit der Einstellung „Ja“ wird der Zugriff auf Azure AD-Daten im Verwaltungsportal für Nichtadministratoren eingeschränkt.<p>**Hinweis**: Durch diese Einstellung wird der Zugriff auf Azure AD-Daten mithilfe von PowerShell oder anderen Clients wie Visual Studio nicht eingeschränkt. Wenn diese Einstellung auf „Ja“ festgelegt ist, kann einem bestimmten Benutzer, der kein Administrator ist, die Fähigkeit erteilt werden, das Azure AD-Verwaltungsportal zu verwenden, indem ihm eine beliebige Administratorrolle zugewiesen wird, z. B. die Rolle „Verzeichnisleseberechtigte“.<p>Diese Rolle ermöglicht das Lesen grundlegender Verzeichnisinformationen und ist den Mitgliedsbenutzern (nicht aber Gästen und Dienstprinzipalen) standardmäßig zugewiesen.
+Zugriff auf Azure AD-Verwaltungsportal einschränken | <p>Wenn Sie diese Option auf „Nein“ festlegen, können Nichtadministratoren das Azure AD-Verwaltungsportal zum Lesen und Verwalten von Ressourcen verwenden. Mit der Einstellung „Ja“ wird der Zugriff auf Azure AD-Daten im Verwaltungsportal für Nichtadministratoren eingeschränkt.</p><p>**Hinweis**: Durch diese Einstellung wird der Zugriff auf Azure AD-Daten mithilfe von PowerShell oder anderen Clients wie Visual Studio nicht eingeschränkt. Wenn diese Einstellung auf „Ja“ festgelegt ist, kann einem bestimmten Benutzer, der kein Administrator ist, die Fähigkeit erteilt werden, das Azure AD-Verwaltungsportal zu verwenden, indem ihm eine beliebige Administratorrolle zugewiesen wird, z. B. die Rolle „Verzeichnisleseberechtigte“.</p><p>**Hinweis**: Durch diese Einstellung wird verhindert, dass Benutzer ohne Administratorrechte, die Besitzer von Gruppen oder Anwendungen sind, das Azure-Portal zum Verwalten ihrer eigenen Ressourcen verwenden können.</p><p>Diese Rolle ermöglicht das Lesen grundlegender Verzeichnisinformationen und ist den Mitgliedsbenutzern (nicht aber Gästen und Dienstprinzipalen) standardmäßig zugewiesen.</p>
 Fähigkeit zum Lesen anderer Benutzer | Diese Einstellung ist nur in PowerShell verfügbar. Das Festlegen dieses Flags auf „$false“ verhindert, dass Nicht-Administratoren Benutzerinformationen aus dem Verzeichnis lesen können. Durch dieses Flag wird jedoch nicht verhindert, dass Benutzerinformationen in anderen Microsoft-Diensten wie z. B. Exchange Online gelesen werden können. Diese Einstellung ist für besondere Umstände bestimmt – die Festlegung dieses Flags auf „$false“ wird nicht empfohlen.
+
+>![HINWEIS] Es wird davon ausgegangen, dass der durchschnittliche Benutzer nur das Portal für den Zugriff auf Azure AD und nicht PowerShell oder die Befehlszeilenschnittstelle für den Zugriff auf seine Ressourcen verwendet. Derzeit wird der Zugriff auf die Standardberechtigungen von Benutzern nur eingeschränkt, wenn der Benutzer versucht, im Azure-Portal auf das Verzeichnis zuzugreifen.
 
 ## <a name="restrict-guest-users-default-permissions"></a>Standardberechtigungen von Gastbenutzern einschränken
 
