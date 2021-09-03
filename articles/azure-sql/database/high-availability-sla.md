@@ -10,19 +10,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
-ms.reviewer: sstein, emlisa
+ms.reviewer: mathoma, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 21ac73b461ebcb171f48621aa27a16dfc0e8c936
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 97085073a566d525eedeb6bd2e72273dad36e1d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781713"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346006"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Die Architektur für Hochverfügbarkeit in Azure SQL-Datenbank und SQL Managed Instance sorgt dafür, dass Ihre Datenbank mindestens 99,99 Prozent der Zeit betriebsbereit ist, ohne dass Sie sich Gedanken über Auswirkungen von Wartungsarbeiten und Ausfällen machen müssen. (Weitere Informationen zur spezifischen SLA für verschiedene Tarife finden Sie unter [SLA für Azure SQL-Datenbank und SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/sql-database/)). Azure verarbeitet automatisch wichtige Wartungsaufgaben, z.B. Patches, Sicherungen, Windows- und Azure SQL-Upgrades, aber auch ungeplante Ereignisse wie Ausfälle der zugrunde liegenden Hardware oder Software oder Netzwerkfehler.  Wenn die zugrunde liegende Datenbank in Azure SQL-Datenbank gepatcht oder ein Failover ausgeführt wird, ist im Allgemeinen keine Ausfallzeit festzustellen, wenn Sie in Ihrer App [Wiederholungslogik nutzen](develop-overview.md#resiliency). SQL-Datenbank und SQL Managed Instance können auch unter den kritischsten Umständen schnell wiederhergestellt werden. So wird sichergestellt, dass Ihre Daten immer verfügbar sind.
+Die Architektur für Hochverfügbarkeit in Azure SQL-Datenbank und SQL Managed Instance sorgt dafür, dass Ihre Datenbank mindestens 99,99 Prozent der Zeit betriebsbereit ist, ohne dass Sie sich Gedanken über Auswirkungen von Wartungsarbeiten und Ausfällen machen müssen. (Weitere Informationen zur spezifischen SLA für verschiedene Tarife finden Sie unter [SLA für Azure SQL-Datenbank und SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-database)). Azure verarbeitet automatisch wichtige Wartungsaufgaben, z.B. Patches, Sicherungen, Windows- und Azure SQL-Upgrades, aber auch ungeplante Ereignisse wie Ausfälle der zugrunde liegenden Hardware oder Software oder Netzwerkfehler.  Wenn die zugrunde liegende Datenbank in Azure SQL-Datenbank gepatcht oder ein Failover ausgeführt wird, ist im Allgemeinen keine Ausfallzeit festzustellen, wenn Sie in Ihrer App [Wiederholungslogik nutzen](develop-overview.md#resiliency). SQL-Datenbank und SQL Managed Instance können auch unter den kritischsten Umständen schnell wiederhergestellt werden. So wird sichergestellt, dass Ihre Daten immer verfügbar sind.
 
 Die Hochverfügbarkeitslösung soll sicherstellen, dass Daten, für die ein Commit ausgeführt wurde, nie aufgrund von Fehlern verloren gehen, dass sich Wartungsvorgänge nicht auf Ihre Workload auswirken und dass die Datenbank keinen Single Point of Failure in der Softwarearchitektur darstellt. Es gibt keine Wartungsfenster oder Ausfallzeiten, aufgrund derer Sie die Workload während der Aktualisierung oder Wartung der Datenbank beenden müssen.
 
@@ -48,7 +48,7 @@ Bei jedem Upgrade der Datenbank-Engine oder des Betriebssystems sowie beim Erken
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Zonenredundante Verfügbarkeit der Dienstebene „Universell“ (Vorschau)
 
-Zonenredundante Konfiguration für die Dienstebene „Universell“ wird sowohl für serverlose als auch bereitgestellte Compute angeboten. Diese Konfiguration nutzt [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md)  zum Replizieren von Datenbanken über mehrere physische Standorte innerhalb einer Azure-Region hinweg.Durch die Auswahl der Zonenredundanz können Sie Ihre neuen und vorhandenen serverlosen und bereitgestellten Einzeldatenbanken vom Typ „Universell“ und Pools für elastische Datenbanken für eine viel größere Anzahl von Fehlern – einschließlich schwerwiegender Ausfälle des Rechenzentrums – resilient gestalten, ohne die Anwendungslogik ändern zu müssen.
+Zonenredundante Konfiguration für die Dienstebene „Universell“ wird sowohl für serverlose als auch bereitgestellte Compute angeboten. Diese Konfiguration nutzt [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md)  zum Replizieren von Datenbanken über mehrere physische Standorte innerhalb einer Azure-Region hinweg.Durch die Auswahl von Zonenredundanz können Sie Ihre neuen und vorhandenen serverlosen und bereitgestellten Einzeldatenbanken des Typs „Universell“ und Pools für elastische Datenbanken für eine viel größere Anzahl von Fehlern – einschließlich schwerwiegender Ausfälle des Rechenzentrums – resilient gestalten, ohne die Anwendungslogik ändern zu müssen.
 
 Die zonenredundante Konfiguration für die Dienstebene „Universell“ besitzt zwei Ebenen:  
 

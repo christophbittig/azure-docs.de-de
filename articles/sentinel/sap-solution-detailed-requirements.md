@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e616b21b1b94d141bf54a589ac134878d829ba8e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900555"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338928"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP (öffentliche Vorschau)
 
@@ -43,9 +43,9 @@ In der folgenden Tabelle wird die empfohlene Dimensionierung für Ihren virtuell
 
 Abhängig von Ihrer SAP-Basisversion sind die folgenden SAP-Protokolländerungsanforderungen für die SAP-Lösung erforderlich:
 
-- **SAP-Basisversionen 7.50 und höher**, NPLK900131 installieren
-- **SAP-Basisversion 7.40**, NPLK900132 installieren
-- **Zum Erstellen einer SAP-Rolle mit den erforderlichen Autorisierungen** installieren Sie für jede unterstützte SAP-Basisversion NPLK900114. Weitere Informationen finden Sie unter [Konfigurieren Ihres SAP-Systems](sap-deploy-solution.md#configure-your-sap-system) und [Erforderliche ABAP-Autorisierungen](#required-abap-authorizations).
+- Für **SAP-Basisversionen ab 7.50** installieren Sie NPLK900144.
+- **Für niedrigere Versionen** installieren Sie NPLK900146.
+- **Zum Erstellen einer SAP-Rolle mit den erforderlichen Autorisierungen** installieren Sie für jede unterstützte SAP-Basisversion NPLK900140. Weitere Informationen finden Sie unter [Konfigurieren Ihres SAP-Systems](sap-deploy-solution.md#configure-your-sap-system) und [Erforderliche ABAP-Autorisierungen](#required-abap-authorizations).
 
 > [!NOTE]
 > Durch die erforderlichen SAP-Protokolländerungsanforderungen werden benutzerdefinierte RFC-FMs verfügbar gemacht, die für den Connector erforderlich sind. Es werden keine Standardobjekte oder benutzerdefinierten Objekte geändert.
@@ -136,9 +136,10 @@ Die erforderlichen Autorisierungen sind nach Protokolltyp aufgelistet. Sie benö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
-- [Tutorial: Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
-- [Lokales Bereitstellen des Azure Sentinel-Datenconnectors für SAP](sap-solution-deploy-alternate.md)
+- [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
+- [Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen](sap-solution-deploy-alternate.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
 - [Azure Sentinel-Lösung für SAP: verfügbare Sicherheitsinhalte](sap-solution-security-content.md)
+- [Problembehandlung bei der Bereitstellung der Azure Sentinel-Lösung für SAP](sap-deploy-troubleshoot.md)

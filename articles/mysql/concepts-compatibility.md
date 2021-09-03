@@ -6,28 +6,30 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f6d0e9b303f12beb7cac22bf94d7ae34b36b77b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 269656068d01e2db1e222ec58e5f9b40f34f0d53
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958757"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349339"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL Single Server kompatibel sind.
 
->[!NOTE]
->Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](./flexible-server/overview.md) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
+> [!NOTE]
+> Dieser Artikel gilt nur für Azure Database for MySQL Single Server, um sicherzustellen, dass Treiber mit der [Verbindungsarchitektur](concepts-connectivity-architecture.md) des Single Server-Diensts kompatibel sind. [Azure Database for MySQL Flexible Server](./flexible-server/overview.md) ist mit allen unterstützten Treibern und Tools kompatibel und mit der MySQL Community Edition kompatibel. 
 
 ## <a name="mysql-drivers"></a>MySQL-Treiber
-Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Communityedition von MySQL-Datenbank. Daher ist es mit einer Vielzahl von Programmiersprachen und Treibern kompatibel. Das Ziel besteht darin, die drei letzten Versionen von MySQL-Treibern zu unterstützen. Außerdem soll durch einen ständigen Austausch mit den Autoren der Open-Source-Community eine kontinuierliche Verbesserung von Funktionalität und Verwendbarkeit der MySQL-Treibern erreicht werden. Eine Liste der Treiber, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:
+Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Communityedition von MySQL-Datenbank. Daher ist das Produkt mit einer Vielzahl von Programmiersprachen und Treibern kompatibel. Das Ziel besteht darin, die drei letzten Versionen von MySQL-Treibern zu unterstützen. Außerdem soll durch einen ständigen Austausch mit den Autoren der Open-Source-Community eine kontinuierliche Verbesserung von Funktionalität und Verwendbarkeit der MySQL-Treibern erreicht werden. Eine Liste der Treiber, die getestet und als mit Azure Database for MySQL 5.6 und 5.7 kompatibel eingestuft wurden, finden Sie in der folgenden Tabelle:
 
 | **Programmiersprache** | **Treiber** | **Links** | **Kompatible Versionen** | **Nicht kompatible Versionen** | **Hinweise** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
 | PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Fügen Sie für PHP-7.0-Verbindungen mit SSL MySQLi das MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT in die Verbindungszeichenfolge ein. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Für PDO legen Sie die Option ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT```auf FALSE fest.|
-| .NET | Asynchroner MySQL-Connector für .NET | https://github.com/mysql-net/MySqlConnector <br> [Installationspaket von Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0.27 und höher | 0.26.5 und früher | |
-| .NET | MySQL-Connector/NET | https://github.com/mysql/mysql-connector-net | 6.6.3 ,7.0 ,8.0 |  | Bei einigen UTF8-fremden Windows-Systemen tritt unter Umständen ein Verbindungsfehler aufgrund eines Codierungsfehlers auf. |
+| .NET | Asynchroner MySQL-Connector für .NET | https://github.com/mysql-net/MySqlConnector <br> [Installationspaket von NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0.27 und höher | 0.26.5 und früher | |
+| .NET | MySQL-Connector/NET | https://github.com/mysql/mysql-connector-net | 6.6.3, 7.0, 8.0 |  | Bei einigen UTF8-fremden Windows-Systemen tritt unter Umständen ein Verbindungsfehler aufgrund eines Codierungsfehlers auf. |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Installationspaket von NPM:<br> Führen Sie `npm install mysql` von NPM aus. | 2.15 | 2.14.1 und früher | |
 | Node.js | node-mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4+ | | |
 | Go | Go MySQL-Treiber | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 und früher | Verwenden Sie für Version 1.3 `allowNativePasswords=true` in der Verbindungszeichenfolge. Version 1.4 enthält eine Korrektur, sodass `allowNativePasswords=true` nicht mehr erforderlich ist. |
@@ -35,7 +37,7 @@ Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Commun
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3+ | 0.9.0-0.9.2 (Regression in web2py) | |
 | Java | MariaDB-Connector/J | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 und früher | | 
 | Java | MySQL-Connector/J | https://github.com/mysql/mysql-connector-j | 5.1.21+ verwendet 8.0.17+ mit MySQL 8.0 | 5.1.20 und früher | |
-| C | MySQL-Connector/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2+ | | |
+| C | MySQL-Connector/C (libmysqlclient) | https://dev.mysql.com/doc/c-api/5.7/en/c-api-implementations.html | 6.0.2+ | | |
 | C | MySQL-Connector/ODBC (myodbc) | https://github.com/mysql/mysql-connector-odbc | 3.51.29+ | | |
 | C++ | MySQL-Connector/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9+ | 1.1.3 und früher | | 
 | C++ | MySQL++| https://github.com/tangentsoft/mysqlpp | 3.2.3+ | | |
