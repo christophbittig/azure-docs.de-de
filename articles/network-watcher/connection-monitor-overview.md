@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 41c39a87375b66e9aaf916f927d09a3b6abb3b0e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470346"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340136"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -76,7 +76,7 @@ Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Ko
 
 Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern.  Dann aktivieren Sie die Netzwerkleistungsmonitor-Lösung. Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
 
-Informationen zum Installieren des Log Analytics-Agents für Windows-Computer finden Sie unter [Azure Monitor-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md).
+Informationen zum Installieren des Log Analytics-Agents für Windows finden Sie unter [Installieren des Log Analytics-Agents unter Windows](../azure-monitor/agents/agent-windows.md).
 
 Wenn der Pfad Firewalls oder virtuelle Netzwerkgeräte (NVAs) umfasst, stellen Sie sicher, dass das Ziel erreichbar ist.
 
@@ -279,9 +279,18 @@ Wenn Sie die Trends bei der Roundtripzeit und dem Prozentsatz der Überprüfunge
 
 Mit Log Analytics lassen sich benutzerdefinierte Ansichten Ihrer Überwachungsdaten erstellen. Alle auf der Benutzeroberfläche angezeigten Daten stammen aus Log Analytics. Sie können Daten im Repository interaktiv analysieren. Korrelieren Sie die Daten aus der Agent-Integritätsdiagnose oder anderen Lösungen, die auf Log Analytics basieren. Exportieren Sie die Daten nach Excel oder Power BI, oder erstellen Sie einen freigabefähigen Link.
 
+#### <a name="network-topology-in-connection-monitor"></a>Netzwerktopologie im Verbindungsmonitor 
+
+Die Verbindungsmonitortopologie wird in der Regel anhand des Ergebnisses des „trace route“-Befehls erstellt, der vom Agent ausgeführt wird und im Grunde alle Hops von der Quelle bis zum Ziel abruft.
+Falls jedoch entweder die Quelle oder das Ziel innerhalb von Azure Boundary liegt, wird die Topologie erstellt, indem die Ergebnisse von zwei gesonderten Vorgängen zusammengeführt werden.
+Der erste ist offensichtlich das Ergebnis des „trace route“-Befehls. Der zweite ist das Ergebnis eines internen Befehls (der dem Diagnosetool „Next Hop“ von NW sehr ähnlich ist), der eine logische Route auf Grundlage der Netzwerkkonfiguration (des Kunden) innerhalb von Azure Boundary identifiziert. Da letzterer logisch ist und der erste in der Regel keine Hops innerhalb von Azure Boundary identifiziert, haben ein paar Hops im zusammengeführten Ergebnis (größtenteils alle Hops in Azure Boundary) keine Latenzwerte.
+
 #### <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
 Bei den Verbindungsmonitoren, die vor der Verbindungsmonitor-Funktionalität erstellt wurden, sind alle vier Metriken verfügbar: „% Fehlerhafte Tests“, „AverageRoundtripMs“, „ChecksFailedPercent“ und „RoundTripTimeMs“. Bei den Verbindungsmonitoren, die während der Verbindungsmonitor-Funktionalität erstellt wurden, sind die Daten nur für die Metriken „ChecksFailedPercent“, „RoundTripTimeMs“ und „Testergebnis“ verfügbar.
+
+Metriken werden pro Überwachungshäufigkeit ausgegeben und beschreiben den Aspekt eines Verbindungsmonitors zu einem bestimmten Zeitpunkt. Verbindungsmonitormetriken besitzen außerdem mehrere Dimensionen wie SourceName, DestinationName, TestConfiguration, TestGroup usw. Diese Dimensionen können verwendet werden, um einen bestimmten Satz von Daten zu visualisieren und um beim Definieren von Warnungen dasselbe Ziel zu verwenden.
+Azure-Metriken ermöglichen derzeit eine Mindestgranularität von 1 Minute. Wenn die Häufigkeit kleiner als 1 Minute ist, werden aggregierte Ergebnisse angezeigt.
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Screenshot: Metriken im Verbindungsmonitor" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -365,6 +374,37 @@ Bei Netzwerken, deren Quellen sich auf Azure-VMs befinden, können die folgenden
 * BGP ist für die Gatewayverbindung nicht aktiviert.
 * Der DIP-Test ist beim Lastenausgleich nicht verfügbar.
 
+## <a name="comparision-between-azures-connectivity-monitoring-support"></a>Vergleich zwischen der Konnektivitätsüberwachungsunterstützung von Azure 
+
+Sie können Tests vom Netzwerkleistungsmonitor (NPM) und dem Verbindungsmonitor (klassisch) mit nur einem Mausklick und ohne jegliche Ausfallzeit zum neuen, verbesserten Verbindungsmonitor migrieren.
+ 
+Die Migration hilft beim Liefern der folgenden Ergebnisse:
+
+* Die Funktionen von Agents und Firewalleinstellungen bleiben unverändert erhalten. Es sind keine Änderungen erforderlich. 
+* Vorhandene Verbindungsmonitore werden „Verbindungsmonitor > Testgruppe > Testformat“ zugeordnet. Sie können **Bearbeiten** auswählen, um die Eigenschaften des neuen Verbindungsmonitors anzuzeigen und zu ändern. Laden Sie eine Vorlage herunter, um Änderungen am Verbindungsmonitor vorzunehmen und diese über Azure Resource Manager zu übermitteln. 
+* Virtuelle Azure-Computer mit der Network Watcher-Erweiterung senden Daten an den Arbeitsbereich und die Metriken. Verbindungsmonitore stellen die Daten über die neuen Metriken „ChecksFailedPercent“ und „RoundTripTimeMs“ anstatt über die veralteten Metriken „ProbesFailedPercent“ und „AverageRoundtripMs“ zur Verfügung. Die alten Metriken werden zu neuen Metriken migriert, also ProbesFailedPercent zu ChecksFailedPercent und AverageRoundtripMs zu RoundTripTimeMs.
+* Datenüberwachung:
+   * **Warnungen**: Wurden automatisch zu den neuen Metriken migriert.
+   * **Analysen und Integrationen**: Erfordern die manuelle Bearbeitung des Satzes der Metriken. 
+   
+Es gibt mehrere Gründe für die Migration vom Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) zum Verbindungsmonitor. Im Folgenden finden Sie einige der Anwendungsfälle, die zeigen, wie der Verbindungsmonitor von Azure leistungsmäßig gegenüber dem Netzwerkleistungsmonitor und dem Verbindungsmonitor (klassisch) abschneidet. 
+
+ | Komponente  | Netzwerkleistungsmonitor | Verbindungsmonitor (klassisch) | Verbindungsmonitor |
+ | -------  | --------------------------- | -------------------------- | ------------------ | 
+ | Einheitliche Erfahrung für die Azure- und Hybridüberwachung | Nicht verfügbar | Nicht verfügbar. | Verfügbar |
+ | Abonnement-, regions- und arbeitsbereichsübergreifende Überwachung | Gestattet abonnement- und regionsübergreifende Überwachung, aber keine arbeitsbereichsübergreifende Überwachung. | Nicht verfügbar | Gestattet abonnement- und arbeitsbereichsübergreifende Überwachung. Azure-Agents haben regionale Grenzen.  |
+ | Unterstützung zentralisierter Arbeitsbereiche |  Nicht verfügbar | Nicht verfügbar.   | Verfügbar |
+ | Mehrere Quellen können mehrere Ziele pingen | Die Leistungsüberwachung ermöglicht es mehreren Quellen, mehrere Ziele zu pingen, die Dienstkonnektivitätsüberwachung ermöglicht es mehreren Quellen, einen einzelnen Dienst/eine einzelne URL zu pingen, und ExpressRoute ermöglicht mehreren Quellen das Pingen mehrerer Ziele. | Nicht verfügbar | Verfügbar |
+ | Einheitliche Topologie für lokale Standorte, Internethops und Azure | Nicht verfügbar | Nicht verfügbar. | Verfügbar |
+ | HTTP-Statuscodeüberprüfungen | Nicht verfügbar  | Nicht verfügbar. | Verfügbar |
+ | Konnektivitätsdiagnose | Nicht verfügbar | Verfügbar | Verfügbar |
+ | Zusammengesetzte Ressourcen: VNETs, Subnetze und lokale benutzerdefinierte Netzwerke | Die Leistungsüberwachung unterstützt Subnetze, lokale Netzwerke und logische Netzwerkgruppen; die Dienstkonnektivitätsüberwachung und ExpressRoute unterstützen nur lokale und Azure-Agents. | Nicht verfügbar | Verfügbar |
+ | Konnektivitätsmetriken und Dimensionsmessungen |   Nicht verfügbar | Verlust, Latenz, RTT | Verfügbar |
+ | Automation – PS/CLI/Terraform | Nicht verfügbar | Verfügbar | Verfügbar |
+ | Unterstützung für Linux | Die Leistungsüberwachung unterstützt Linux, der Dienstkonnektivitätsmonitor und ExpressRoute unterstützen Linux nicht. | Verfügbar | Verfügbar |
+ | Unterstützung für Public, Government, Mooncake und Air-Gapped Cloud | Verfügbar | Verfügbar | Verfügbar|
+
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="are-classic-vms-supported"></a>Werden klassische virtuelle Computer unterstützt?
@@ -379,6 +419,9 @@ Derselbe Azure-virtuelle Computer kann nicht mit unterschiedlichen Konfiguration
 ### <a name="the-test-failure-reason-is-nothing-to-display"></a>Der Grund für das Scheitern des Tests lautet „Keine Anzeige auf dem Display“?
 Die auf dem Dashboard des Verbindungsmonitors angezeigten Probleme werden während der Topologieerkennung oder der Hopdurchsuchung gefunden. Es kann Fälle geben, in denen der eingestellte Schwellenwert für % Verlust oder RTT überschritten wird, aber keine Probleme bei den Hops gefunden werden.
 
+### <a name="while-migrating-existing-connection-monitor-classic-to-connection-monitor-the-external-endpoint-tests-are-being-migrated-with-tcp-protocol-only"></a>Wird bei der Migration der externen Endpunkttests vom vorhandenen Verbindungsmonitor (klassisch) zum Verbindungsmonitor nur das TCP-Protokoll verwendet? 
+Im Verbindungsmonitor (klassisch) gibt es keine Protokollauswahl. Somit wäre der Kunde nicht in der Lage gewesen, die Konnektivität mit externen Endpunkten mithilfe des HTTP-Protokolls im Verbindungsmonitor (klassisch) anzugeben.
+Alle Tests verfügen im Verbindungsmonitor (klassisch) nur über das TCP-Protokoll. Aus diesem Grund erstellen wir bei der Migration die TCP-Konfiguration in Tests im Verbindungsmonitor. 
 
 ## <a name="next-steps"></a>Nächste Schritte
     
