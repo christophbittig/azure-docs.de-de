@@ -5,29 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 04/12/2021
+ms.date: 07/13/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
-ms.reviewer: mal
 ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc9424af07125977bc74a62a6bca97b8c10b8da3
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7068ff38338e92843a957f50f63309412b63b31c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317395"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759794"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
 Hier finden Sie Lösungen für häufig auftretende Probleme bei der Azure Active Directory B2B-Zusammenarbeit.
 
    > [!IMPORTANT]
-   > - **Ab der zweiten Hälfte des Jahres 2021** wird Google die [Unterstützung für die Anmeldung in der Web-Anzeige einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Sie Google Federation für B2B-Einladungen oder [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) verwenden, oder wenn Sie Self-Service-Anmeldung mit Google Mail verwenden, können sich Google Mail-Benutzer nicht anmelden, wenn Ihre Apps Benutzer mit einer eingebetteten Web-Ansicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
-   > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
+   >
+   > - Ab dem **12. Juli 2021** gilt Folgendes: Wenn Azure AD B2B-Kunden neue Google-Integrationen für die Self-Service-Registrierung für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, funktioniert die Authentifizierung mit Google-Identitäten nur, wenn Authentifizierungen in Systemwebansichten verlagert werden. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+   > - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteten Webansicht authentifizieren und Sie den Google-Verbund mit [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, können sich Google Gmail-Benutzer nicht authentifizieren. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
+   > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf wird Kunden die allgemein verfügbare [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) empfohlen.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Ich habe einen externen Benutzer hinzugefügt, dieser wird aber im globalen Adressbuch oder in der Personenauswahl nicht angezeigt.
 
@@ -39,6 +40,9 @@ Die Möglichkeit, in der SharePoint Online-Personenauswahl (SPO) nach vorhandene
 
 Sie können dieses Feature mit der Einstellung „ShowPeoplePickerSuggestionsForGuestUsers“ auf Mandanten- und Websitesammlungsebene aktivieren. Sie können dieses Feature mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ festlegen, damit Mitglieder das Verzeichnis nach allen vorhandenen Gastbenutzern durchsuchen können. Änderungen im Mandantenbereich wirken sich nicht auf bereits bereitgestellte SPO-Websites aus.
 
+## <a name="my-guest-invite-settings-and-domain-restrictions-arent-being-respected-by-sharepoint-onlineonedrive"></a>Meine Gasteinladungseinstellungen und Domäneneinschränkungen werden von SharePoint Online/OneDrive nicht berücksichtigt.
+
+Standardmäßig verfügen SharePoint Online und OneDrive über einen eigenen Satz von Optionen für externe Benutzer und verwenden die Einstellungen aus Azure AD nicht.  Sie müssen die [Integration von SharePoint und OneDrive in Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview) aktivieren, um sicherzustellen, dass die Optionen zwischen diesen Anwendungen konsistent sind.
 ## <a name="invitations-have-been-disabled-for-directory"></a>Einladungen wurden für das Verzeichnis deaktiviert.
 
 Wenn Sie darüber informiert werden, dass Sie nicht über die Berechtigung verfügen, Benutzer einzuladen, überprüfen Sie unter „Azure Active Directory > Benutzereinstellungen > Externe Benutzer > Externe Einstellungen zur Zusammenarbeit verwalten“, ob Ihr Benutzerkonto für die Einladung externer Benutzer autorisiert ist:
@@ -63,6 +67,18 @@ Wenn Sie die Verbundauthentifizierung verwenden und der Benutzer noch nicht in A
 
 Um dieses Problem zu lösen, muss der Administrator des externen Benutzers das Benutzerkonto mit Azure Active Directory synchronisieren.
 
+### <a name="external-user-has-a-proxyaddress-that-conflicts-with-a-proxyaddress-of-an-existing-local-user"></a>Ein externer Benutzer verwendet eine Proxyadresse, die mit einer Proxyadresse eines vorhandenen lokalen Benutzers in Konflikt steht
+
+Bei der Überprüfung, ob ein Benutzer in Ihren Mandanten eingeladen werden kann, überprüfen wir unter anderem, ob ein Konflikt mit der Proxyadresse vorliegt. Dies schließt alle Proxyadressen für den Benutzer in dessen Stammmandanten und alle Proxyadressen für lokale Benutzer in Ihrem Mandanten ein. Für externe Benutzer fügen wir der Proxyadresse des vorhandenen B2B-Benutzers die E-Mail-Adresse hinzu. Lokale Benutzer können Sie bitten, sich mit dem Konto anzumelden, über das sie bereits verfügen.
+
+## <a name="i-cant-invite-an-email-address-because-of-a-conflict-in-proxyaddresses"></a>Ich kann aufgrund eines Konflikts in proxyAddresses keine E-Mail-Adresse einladen.
+
+Dies tritt auf, wenn ein anderes Objekt im Verzeichnis die gleiche eingeladene E-Mail-Adresse wie eine der proxyAddresses hat. Um diesen Konflikt zu beheben, entfernen Sie die E-Mail aus dem [Benutzerobjekt](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true). Löschen Sie auch das zugeordnete [Kontaktobjekt](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true), bevor Sie versuchen, diese E-Mail-Adresse erneut einzuladen.
+
+## <a name="the-guest-user-object-doesnt-have-a-proxyaddress"></a>Das Gastbenutzerobjekt hat keine Proxyadresse.
+
+Beim Einladen eines externen Gastbenutzers tritt manchmal ein Konflikt mit einem vorhandenen [Kontaktobjekt](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true) auf. In diesem Fall wird der Gastbenutzer ohne Proxyadresse erstellt. Dadurch ist der Benutzer nicht in der Lage, dieses Konto mit [Just-In-Time-Einlösung](redemption-experience.md#redemption-through-a-direct-link) oder [E-Mail-Authentifizierung per Einmalkennung](one-time-passcode.md#user-experience-for-one-time-passcode-guest-users) einzulösen.
+
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Wie wird „\#“ – normalerweise ein ungültiges Zeichen – in Azure AD synchronisiert?
 
 „\#“ ist ein reserviertes Zeichen in UPNs für Azure AD B2B-Zusammenarbeit oder externe Benutzer, da das eingeladene Konto user@contoso.com zu „user_contoso.com#EXT#@fabrikam.onmicrosoft.com“ wird. Aus diesem Grund dürfen sich lokale UPNs mit \# nicht im Azure-Portal anmelden. 
@@ -76,7 +92,9 @@ Externe Benutzer können nur zu „zugewiesenen“ Gruppen oder „Sicherheitsgr
 Der Eingeladene sollte seinen Spamfilter überprüfen oder sich mit seinem ISP in Verbindung setzen, um sicherzustellen, dass die folgende Adresse zulässig ist: Invites@microsoft.com
 
 > [!NOTE]
-> Die Absenderadresse des Azure-Diensts, der von 21Vianet in China betrieben wird, lautet Invites@oe.21vianet.com.
+>
+> - Die Absenderadresse des Azure-Diensts, der von 21Vianet in China betrieben wird, lautet Invites@oe.21vianet.com.
+> - Für die Azure AD Government-Cloud lautet die Absenderadresse invites@azuread.us.
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Die benutzerdefinierte Nachricht wird nicht immer in Einladungsnachrichten eingefügt.
 
@@ -124,6 +142,15 @@ Wenn Sie die App `aad-extensions-app` versehentlich gelöscht haben, haben Sie 3
 1. Führen Sie den PowerShell-Befehl `Restore-AzureADDeletedApplication -ObjectId {id}` aus. Ersetzen Sie den Teil `{id}` des Befehls durch die `ObjectId` aus dem vorherigen Schritt.
 
 Sie sollten jetzt die wiederhergestellte App im Azure-Portal sehen können.
+
+## <a name="a-guest-user-was-invited-successfully-but-the-email-attribute-is-not-populating"></a>Ein Gastbenutzer wurde erfolgreich eingeladen, aber das E-Mail-Attribut wird nicht aufgefüllt
+
+Angenommen, Sie laden versehentlich einen Gastbenutzer mit einer E-Mail-Adresse ein, die mit einem Benutzerobjekt übereinstimmt, das sich bereits in Ihrem Verzeichnis befindet. Das Gastbenutzerobjekt wird erstellt, aber die E-Mail-Adresse wird der Eigenschaft `otherMail` statt der Eigenschaft `mail` oder `proxyAddresses` hinzugefügt. Um dieses Problem zu vermeiden, können Sie mithilfe der folgenden PowerShell-Schritte in Ihrem Azure AD-Verzeichnis nach in Konflikt stehenden Benutzerobjekten suchen:
+
+1. Öffnen Sie das Azure AD PowerShell-Modul, und führen Sie `Connect-AzureAD` aus.
+1. Melden Sie sich als globaler Administrator für den Azure AD-Mandanten an, den Sie auf doppelte Kontaktobjekte überprüfen möchten.
+1. Führen Sie den PowerShell-Befehl `Get-AzureADContact -All $true | ? {$_.ProxyAddresses -match 'user@domain.com'}` aus.
+1. Führen Sie den PowerShell-Befehl `Get-AzureADContact -All $true | ? {$_.Mail -match 'user@domain.com'}` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

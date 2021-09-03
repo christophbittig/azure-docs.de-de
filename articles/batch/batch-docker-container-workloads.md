@@ -2,14 +2,14 @@
 title: Containerworkloads
 description: Erfahren Sie, wie Sie Apps aus Containerimages in Azure Batch ausführen und skalieren. Erstellen Sie einen Pool mit Serverknoten, der das Ausführen von Containeraufgaben unterstützt.
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8effa7daf0c30edaef9924cbefe35cdad1b20e1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91843446"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445773"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -32,14 +32,13 @@ Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -auft
   - Batch Java SDK, Version 3.0
   - Batch Node.js SDK, Version 3.0
 
-- **Konten**: Sie müssen in Ihrem Azure-Abonnement ein Batch-Konto und optional ein Azure Storage-Konto erstellen.
+- **Konten**: Sie müssen in Ihrem Azure-Abonnement ein [Batch-Konto](accounts.md) und optional ein Azure Storage-Konto erstellen.
 
-- **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ angegeben sind. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
+- **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus einem unterstützten (im folgenden Abschnitt aufgelisteten) Image erstellt wurden. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
 Beachten Sie die folgenden Einschränkungen:
 
 - Batch bietet RDMA-Unterstützung nur für Container, die in Linux-Pools ausgeführt werden.
-
 - Für Windows-Containerworkloads wird empfohlen, eine Größe für VMs mit mehreren Kernen für Ihren Pool auszuwählen.
 
 ## <a name="supported-virtual-machine-images"></a>Unterstützte Images virtueller Computer
@@ -71,10 +70,8 @@ Für Linux-Containerworkloads unterstützt Batch derzeit die folgenden von Micro
 Diese Images werden nur für die Verwendung in Azure Batch-Pools unterstützt und sind für die Docker-Containerausführung konzipiert. Sie bieten:
 
 - Eine vorinstallierte Docker-kompatible [Moby](https://github.com/moby/moby)-Container-Runtime
-
 - Vorinstallierte NVIDIA GPU-Treiber und NVIDIA-Container-Runtime zum Optimieren der Bereitstellung auf Azure-VMs der N-Serie
-
-- Vorinstalliertes/vorkonfiguriertes Image mit Unterstützung für InfiniBand RDMA-VM-Größen für Images mit dem Suffix `-rdma`. Derzeit unterstützen diese Images keine SR-IOV IB/RDMA-VM-Größen.
+- VM-Images mit dem Suffix „-rdma“ sind mit Unterstützung für InfiniBand RDMA-VM-Größen vorkonfiguriert. Diese VM-Images sollten nicht mit VM-Größen ohne InfiniBand-Unterstützung verwendet werden.
 
 Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter einer der Linux-Distributionen ausführen, die mit Batch kompatibel sind. Wenn Sie ein eigenes benutzerdefiniertes Linux-Image bereitstellen möchten, finden Sie Anleitungen dazu unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
@@ -83,7 +80,6 @@ Für Docker-Unterstützung für ein benutzerdefiniertes Image installieren Sie [
 Weitere Überlegungen zum Verwenden eines benutzerdefinierten Linux-Images:
 
 - Wenn Sie die GPU-Leistung von Azure-Größen der N-Serie bei der Verwendung eines benutzerdefinierten Images optimal nutzen möchten, installieren Sie im Voraus NVIDIA-Treiber. Außerdem müssen Sie das Docker-Engine-Hilfsprogramm für NVIDIA-GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), installieren.
-
 - Verwenden Sie für den Zugriff auf das RDMA-Netzwerk von Azure eine RDMA-fähige VM-Größe. Erforderliche RDMA-Treiber sind in den von Batch unterstützten CentOS-HPC- und Ubuntu-Images installiert. Zum Ausführen von MPI-Workloads können zusätzliche Konfigurationsschritte erforderlich sein. Informationen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).
 
 ## <a name="container-configuration-for-batch-pool"></a>Containerkonfiguration für Batch-Pool
@@ -277,6 +273,37 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 ...
 ```
 
+### <a name="managed-identity-support-for-acr"></a>Unterstützung verwalteter Identitäten für ACR
+
+Beim Zugriff auf Container, die in [Azure Container Registry](https://azure.microsoft.com/services/container-registry) gespeichert sind, kann entweder ein Benutzername/Kennwort oder eine verwaltete Identität für die Authentifizierung beim Dienst verwendet werden. Um eine verwaltete Identität zu verwenden, stellen Sie zunächst sicher, dass die Identität [dem Pool zugewiesen](managed-identity-pools.md) wurde und dass der Identität die Rolle `AcrPull` für die Containerregistrierung zugewiesen ist, auf die Sie zugreifen möchten. Teilen Sie Batch dann einfach mit, welche Identität bei der Authentifizierung bei ACR verwendet werden soll.
+
+```csharp
+ContainerRegistry containerRegistry = new ContainerRegistry(
+    registryServer: "myContainerRegistry.azurecr.io",
+    identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name" }
+);
+
+// Create container configuration, prefetching Docker images from the container registry
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+containerConfig.ContainerImageNames = new List<string> {
+        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" };
+containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry } );
+
+// VM configuration
+VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
+    imageReference: imageReference,
+    nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
+
+// Create pool
+CloudPool pool = batchClient.PoolOperations.CreatePool(
+    poolId: poolId,
+    targetDedicatedComputeNodes: 4,
+    virtualMachineSize: "Standard_NC6",
+    virtualMachineConfiguration: virtualMachineConfiguration);
+...
+```
+
 ## <a name="container-settings-for-the-task"></a>Containereinstellungen für die Aufgabe
 
 Geben Sie containerspezifische Einstellungen an, wenn Sie eine Containeraufgabe für einen containerfähigen Pool ausführen möchten. Die Einstellungen umfassen das zu verwendende Image, die Registrierung sowie Containerausführungsoptionen.
@@ -285,7 +312,7 @@ Geben Sie containerspezifische Einstellungen an, wenn Sie eine Containeraufgabe 
 
 - Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/dotnet/api/microsoft.azure.batch.cloudtask) und die [Auftrags-Manager-Aufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) Containereinstellungen erforderlich. Die [Startaufgabe](/dotnet/api/microsoft.azure.batch.starttask), die [Auftragsvorbereitungsaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask) und die [Auftragsfreigabeaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) benötigen jedoch keine Containereinstellungen (diese können in einem Containerkontext oder direkt auf dem Knoten ausgeführt werden).
 
-- Bei Windows müssen Aufgaben mit [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) als `admin` ausgeführt werden. 
+- Bei Windows müssen Aufgaben mit [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) als `admin` ausgeführt werden.
 
 - Bei Linux ordnet Batch die Benutzer-/Gruppenberechtigung dem Container zu. Wenn für den Zugriff auf einen Ordner innerhalb des Containers Administratorberechtigungen erforderlich sind, müssen Sie die Aufgabe möglicherweise als Poolbereich mit Administratorrechten ausführen. Dadurch wird sichergestellt, dass Batch den Task als Stamm im Containerkontext ausführt. Andernfalls hat ein Benutzer, der kein Administrator ist, möglicherweise keinen Zugriff auf diese Ordner.
 

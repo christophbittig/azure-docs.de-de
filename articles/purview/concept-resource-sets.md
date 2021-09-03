@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 07/23/2021
+ms.openlocfilehash: 6c51a118b0581759f456b243b6dde25890b36f39
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587900"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668474"
 ---
 # <a name="understanding-resource-sets"></a>Grundlegendes zu Ressourcensätzen
 
@@ -27,7 +27,7 @@ Um der Herausforderung zu begegnen, eine große Anzahl von Datenressourcen einer
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>So erkennt Azure Purview Ressourcensätze
 
-Azure Purview unterstützt das Erkennen von Ressourcensätzen in Azure Blob Storage, ADLS Gen1 und ADLS Gen2.
+Azure Purview unterstützt das Erkennen von Ressourcensätzen in Azure Blob Storage, ADLS Gen1, ADLS Gen2, Azure Files und Amazon S3.
 
 Azure Purview erkennt beim Scannen automatisch Ressourcensätze. Dieses Feature untersucht alle Daten, die in der Überprüfung erfasst wurden, und vergleicht sie mit einem Satz von definierten Mustern.
 

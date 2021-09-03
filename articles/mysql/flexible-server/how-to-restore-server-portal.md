@@ -6,15 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: 962a2cbdbcc238517616c9ade235eed9b8cae6f7
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 687d9386d330e5b09366e22ace8f7fd8666ee9d9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502044"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340139"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Zeitpunktwiederherstellung einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) über das Azure-Portal
 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -25,56 +26,71 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Zeitpunktwieder
 
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
--   Sie müssen über Azure Database for MySQL Flexible Server verfügen.
+- Sie müssen über Azure Database for MySQL Flexible Server verfügen.
 
 ## <a name="restore-to-the-latest-restore-point"></a>Wiederherstellen des letzten Wiederherstellungspunkts
 
 Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der frühesten vorhandenen Sicherung wiederherzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
 
-2.  Klicken Sie im linken Bereich auf **Übersicht**.
+2. Klicken Sie im linken Bereich auf **Übersicht**.
 
-3.  Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
+3. Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
 
-4.  Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen **Neuester Wiederherstellungspunkt** und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
+4. Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen **Neuester Wiederherstellungspunkt** und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
 
-5.  Wählen Sie **Neuester Wiederherstellungspunkt** aus.
+5. Wählen Sie **Neuester Wiederherstellungspunkt** aus.
 
-6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
+6. Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
 
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="Frühester Wiederherstellungszeitpunkt":::
+    :::image type="content" source="./media/how-to-restore-server-portal/point-in-time-restore-latest.png" alt-text="Frühester Wiederherstellungszeitpunkt":::
 
-8.  Klicken Sie auf **OK**.
+7. Klicken Sie auf **OK**.
 
-9.  Es wird eine Benachrichtigung angezeigt, dass der Wiederherstellungsvorgang eingeleitet wurde.
+8. Es wird eine Benachrichtigung angezeigt, dass der Wiederherstellungsvorgang eingeleitet wurde.
 
-## <a name="restoring-to-a-custom-restore-point"></a>Wiederherstellen auf einen benutzerdefinierten Wiederherstellungspunkt
+## <a name="using-restore-to-move-a-server-from-public-access-to-private-access"></a>Ändern des Zugriffs auf einen Server von „Öffentlich“ in „Privat“ mithilfe der Wiederherstellung
 
 Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der frühesten vorhandenen Sicherung wiederherzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
 
-2.  Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
+2. Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
 
-3.  Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen „Frühester Wiederherstellungspunkt“ und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
+3. Die Wiederherstellungsseite wird angezeigt, und Sie können zwischen „Frühester Wiederherstellungspunkt“ und „Benutzerdefinierter Wiederherstellungspunkt“ auswählen.
 
-4.  Wählen Sie **Benutzerdefinierter Wiederherstellungspunkt** aus.
+4. Wählen Sie entweder **Frühester Wiederherstellungspunkt** oder einen **benutzerdefinierten Wiederherstellungspunkt**.
 
-5.  Wählen Sie Datum und Uhrzeit aus.
+5. Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
 
-6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
+6. Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
 
-6.  Geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein.
+    :::image type="content" source="./media/how-to-restore-server-portal/point-in-time-restore-private-dns-zone.png" alt-text="Übersicht anzeigen":::
 
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Übersicht anzeigen":::
+7. Wechseln Sie zur Registerkarte **Netzwerk**, um Netzwerkeinstellungen festzulegen.
 
-7.  Klicken Sie auf **OK**.
+8. Wählen Sie unter **Konnektivitätsmethode** die Option **Privater Zugriff (VNET-Integration)** aus. Wechseln Sie zum Abschnitt **Virtuelles Netzwerk**. Sie können entweder ein bereits vorhandenes *virtuelles Netzwerk* und *Subnetz* auswählen, das an *Microsoft.DBforMySQL/flexibleServers* delegiert ist, oder ein neues erstellen, indem Sie auf den Link *Virtuelles Netzwerk erstellen* klicken.
+    > [!Note]
+    > In der Dropdownliste werden nur virtuelle Netze und Subnetze in derselben Region und im selben Abonnement angezeigt. </br>
+    > Das ausgewählte Subnetz wird an *Microsoft.DBforMySQL/flexibleServers* delegiert. Dies bedeutet, dass dieses Subnetz nur von flexiblen Azure Database for MySQL-Servern genutzt werden kann.</br>
 
-8.  Es wird eine Benachrichtigung angezeigt, dass der Wiederherstellungsvorgang eingeleitet wurde.
+    :::image type="content" source="./media/how-to-manage-virtual-network-portal/vnet-creation.png" alt-text="VNet-Konfiguration":::
 
+9. Erstellen Sie eine neue oder wählen Sie eine vorhandene **private DNS-Zone** aus.
+    > [!NOTE]
+    > Namen privater DNS-Zonen müssen mit `mysql.database.azure.com` enden. </br>
+    > Wenn die Option zum Erstellen einer neuen privaten DNS-Zone nicht angezeigt wird, geben Sie den Servernamen auf der Registerkarte **Grundlagen** ein.</br>
+    > Nachdem der flexible Server in einem virtuellen Netzwerk und Subnetz bereitgestellt wurde, können Sie ihn nicht mehr in „Öffentlicher Zugriff (zugelassene IP-Adressen)“ verschieben.</br>
+
+    :::image type="content" source="./media/how-to-manage-virtual-network-portal/private-dns-zone.png" alt-text="DNS-Konfiguration":::
+10. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
+11. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann einige Minuten dauern.
+
+12. Es wird eine Benachrichtigung angezeigt, dass der Wiederherstellungsvorgang eingeleitet wurde.
 
 ## <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
+
 Nachdem die Wiederherstellung abgeschlossen ist, sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in den betriebsbereiten Zustand zu versetzen:
 
 - Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll.
@@ -82,6 +98,6 @@ Nachdem die Wiederherstellung abgeschlossen ist, sollten Sie die folgenden Aufga
 - Sicherstellen, dass geeignete Anmeldungen und Berechtigungen auf Datenbankebene vorhanden sind.
 - Konfigurieren von Warnungen nach Bedarf für den neuen Wiederherstellungsserver
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur [Geschäftskontinuität](concepts-business-continuity.md)

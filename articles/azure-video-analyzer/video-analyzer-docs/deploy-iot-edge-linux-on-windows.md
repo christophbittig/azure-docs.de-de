@@ -2,13 +2,13 @@
 title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2907318f7d1c49c4aea247880a9880e724b46ca6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: e80721375cf4b0c912fe47ec76c2cebe92359f90
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385897"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346942"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
 
@@ -25,19 +25,17 @@ In diesem Artikel wird beschrieben, wie Sie Azure Video Analyzer auf einem Edgeg
 
 Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einfache Schritte ausführen, um Azure Video Analyzer auf einem Windows-Gerät mit EFLOW nutzen zu können:
 
-![Diagramm: IoT Edge für Linux unter Windows (EFLOW)](./media/deploy-iot-edge-linux-on-windows/eflow.png)
+![Diagramm von IoT Edge für Linux unter Windows (E FLOW).](./media/deploy-iot-edge-linux-on-windows/eflow.png)
 
-1. [Installieren Sie EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) auf Ihrem Windows-Gerät. 
+1. [Installieren Sie EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) mithilfe der PowerShell auf Ihrem Windows-Gerät.
 
-    1. Falls Sie Ihren Windows-PC verwenden, wird auf der Startseite von [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) unter der Liste mit den Verbindungen eine Verbindung mit dem lokalen Host angezeigt. Diese stellt den PC dar, auf dem Sie Windows Admin Center ausführen. 
-    1. Alle weiteren von Ihnen verwalteten Server, PCs oder Cluster werden hier ebenfalls aufgeführt.
-    1. Sie können Windows Admin Center verwenden, um Azure EFLOW entweder auf Ihrem lokalen Gerät oder auf verwalteten Remotegeräten zu installieren und zu verwalten. In diesem Leitfaden fungiert die Verbindung mit dem lokalen Host als Zielgerät für die Bereitstellung von Azure IoT Edge für Linux unter Windows. Aus diesem Grund ist „Localhost“ auch als IoT Edge-Gerät aufgeführt.
 
-    ![Bereitstellungsschritte: Windows Admin Center](./media/deploy-iot-edge-linux-on-windows/windows-admin-center.png) 
-1. Klicken Sie auf das IoT Edge-Gerät, um eine Verbindung damit herzustellen. Die Registerkarten „Übersicht“ und „Befehlsshell“ sollten angezeigt werden. Auf der Registerkarte „Befehlsshell“ können Sie Befehle für Ihr Edgegerät ausführen.
+1. Nachdem EFLOW eingerichtet wurde, geben Sie den Befehl `Connect-EflowVm` in PowerShell ein (mit Administratorrechten), um eine Verbindung herzustellen. Dadurch wird ein Bash-Terminal für die Steuerung des virtuellen EFLOW-Computers in PowerShell angezeigt, in dem Sie Linux-Befehle ausführen können, einschließlich Hilfsprogrammen wie Top und Nano. 
 
-    ![Bereitstellungsschritte: Azure IoT Edge-Manager](./media/deploy-iot-edge-linux-on-windows/azure-iot-edge-manager.png)
-1. Navigieren Sie zur Befehlsshell, und geben Sie den folgenden Befehl ein:
+    > [!TIP] 
+    > Geben Sie im Terminal `exit` ein, um die EFLOW-VM zu beenden.
+
+1. Melden Sie sich über PowerShell bei der EFLOW-VM an, und geben Sie den folgenden Befehl ein:
 
     `bash -c "$(curl -sL https://aka.ms/ava-edge/prep_device)"`
 
@@ -51,18 +49,22 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
     * `/var/media`
 
     Achten Sie auf die Videodateien (*.mkv) im Ordner „/home/localedgeuser/samples/input“, die als Eingabedateien für die Analyse dienen. 
-1. Nachdem Sie nun das Edgegerät eingerichtet und die Registrierung beim Hub durchgeführt haben und die Ausführung mit den richtigen erstellten Ordnerstrukturen erfolgreich ist, ist der nächste Schritt die Einrichtung der folgenden zusätzlichen Azure-Ressourcen und die Bereitstellung des AVA-Moduls. 
-
-    * Speicherkonto
-    * Azure Media Services-Konto
+1. Nachdem Sie nun das Edgegerät eingerichtet und die Registrierung beim Hub durchgeführt haben und die Ausführung mit den richtigen erstellten Ordnerstrukturen erfolgreich ist, ist der nächste Schritt die Einrichtung der folgenden zusätzlichen Azure-Ressourcen und die Bereitstellung des AVA-Moduls. Die folgende Bereitstellungsvorlage kümmert sich um die Ressourcenerstellung:
 
     [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
+    
+    Der Bereitstellungsprozess dauert ungefähr 20 Minuten. Nach Abschluss haben Sie bestimmte Azure-Ressourcen im Azure-Abonnement bereitgestellt. Hierzu zählen unter anderem:
+
+    * Video Analyzer-Konto: Dieser Clouddienst wird zum Registrieren des Video Analyzer-Edgemoduls und zur Wiedergabe aufgezeichneter Videos und Videoanalysen verwendet.
+    * Speicherkonto: Zum Speichern aufgezeichneter Videos und Videoanalysen.
+    * Verwaltete Identität: Dies ist die benutzerseitig zugewiesene verwaltete Identität, die zum Verwalten des Zugriffs auf das obige Speicherkonto verwendet wird.
+    * IoT Hub: Dient als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung, IoT Edge-Modulen und den verwalteten Geräten.
 
     Wenn Sie bei der Vorlage gefragt werden, ob Sie ein Edgegerät benötigen, wählen Sie die Option „Vorhandenes Edgegerät verwenden“ aus, da Sie zuvor sowohl das Gerät als auch den IoT Hub erstellt haben. Außerdem werden Sie in den folgenden Schritten aufgefordert, den Namen Ihres IoT Hub und die ID des IoT Edge-Geräts einzugeben.  
     
     ![Vorhandenes Gerät verwenden](./media/deploy-iot-edge-linux-on-windows/use-existing-device.png) 
 
-    Nach Abschluss des Vorgangs können Sie sich wieder bei der Befehlsshell des IoT Edge-Geräts anmelden und den folgenden Befehl ausführen.
+    Nach Abschluss des Vorgangs können Sie sich wieder bei der EFLOW-VM anmelden und den folgenden Befehl ausführen.
 
     **`sudo iotedge list`**
 

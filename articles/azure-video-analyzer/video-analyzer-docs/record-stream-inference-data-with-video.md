@@ -3,13 +3,13 @@ title: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video – Azure Vi
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um Video- und Rückschlussmetadaten in der Cloud aufzuzeichnen und die Aufzeichnung mit den visuellen Rückschlussmetadaten wiederzugeben.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 3122ea07fdab20c93ed4720d0c43f180cce5306d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355192"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
   
@@ -132,7 +132,7 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
 1. Vergewissern Sie sich anschließend unter den Knoten **livePipelineSet** und **pipelineTopologyDelete**, dass der Wert von **topologyName** dem Wert der Eigenschaft **name** in der obigen Pipelinetopologie entspricht:
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-with-inference-metadata` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
+1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-and-objectTracking/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-with-inference-metadata` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.  
 
 1. Überprüfen Sie die Einstellungen für den HTTP-Erweiterungsknoten.
 
@@ -143,7 +143,8 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
     }
   ```
 
-Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Wenn das Livevideo eine Bildfrequenz von 30 Frames/Sek. hat, sollten mindestens zwei Frames pro Sekunde zum Rückschluss an den HTTP-Server gesendet werden. Daher wird `maximumSamplesPerSecond` auf „2“ festgelegt.
+Hier wird `skipSamplesWithoutAnnotation` auf `false` festgelegt, da der Erweiterungsknoten alle Frames an den Downstream-Objektverfolgungsknoten übergeben muss – unabhängig davon, ob sie über Rückschlussergebnisse verfügen. Mit der Objektnachverfolgung können Objekte über ca. 15 Frames hinweg verfolgt werden. Ihr KI-Modell verfügt über einen maximalen FPS-Wert für die Verarbeitung. Dies ist der höchste Wert, auf den `maximumSamplesPerSecond` festgelegt werden sollte.
+
 
 ## <a name="run-the-sample-program"></a>Ausführen des Beispielprogramms
 
@@ -384,12 +385,11 @@ Sie können von der Livepipeline erstellte Video Analyzer-Ressource für Videoda
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="Screenshot: Videowiedergabe":::
 
-> [!NOTE]
-> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie die anderen Tutorials ausprobieren möchten, behalten Sie die erstellten Ressourcen. Wechseln Sie andernfalls zum Azure-Portal, navigieren Sie zu Ihren Ressourcengruppen, wählen Sie die Ressourcengruppe aus, unter der Sie dieses Tutorial durchgeführt haben, und löschen Sie die Ressourcengruppe.
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

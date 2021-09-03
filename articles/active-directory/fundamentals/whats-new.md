@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c9b954776c33fedc3a770bc0aab0185ad595aff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d723423fdb57ad60f5665be2d5fa0a760c9d770d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346914"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -240,7 +240,7 @@ In der Vergangenheit konnten Benutzer Sicherheitsgruppen und Microsoft 365-Grup
 
 ### <a name="all-apps-collection-has-been-renamed-to-apps"></a>Die Sammlung „Alle Apps“ wurde in „Apps“ umbenannt
 
-**Typ:** Geänderte Funktion  
+**Typ:** Geändertes Feature  
 **Dienstkategorie:** Meine Apps  
 **Produktfunktion:** Endbenutzerumgebungen
  
@@ -357,7 +357,7 @@ Zwei neue Rollen („Wissensadministrator“ und „Wissens-Manager“) sind jet
 ### <a name="general-availability---multi-camera-support-for-windows-hello"></a>Allgemeine Verfügbarkeit: Unterstützung mehrerer Kameras für Windows Hello
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Mit dem Windows 10 21H1-Update unterstützt Windows Hello jetzt mehrere Kameras. Das Update enthält Standardeinstellungen für die Verwendung der externen Kamera, wenn sowohl integrierte als auch externe Kameras vorhanden sind. [Weitere Informationen](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/it-tools-to-support-windows-10-version-21h1/ba-p/2365103)
@@ -418,8 +418,8 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 ### <a name="device-code-flow-now-includes-an-app-verification-prompt"></a>Der Gerätecodeflow enthält jetzt eine Aufforderung zur App-Überprüfung
 
-**Typ:** Geänderte Funktion  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Typ:** Geändertes Feature  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Der [Gerätecodeflow](../develop/v2-oauth2-device-code.md) wurde aktualisiert und umfasst jetzt eine zusätzliche Benutzereingabeaufforderung. Während der Anmeldung wird der Benutzer aufgefordert, die App zu überprüfen, bei der er sich anmeldet.  Mit der Eingabeaufforderung wird sichergestellt, dass die Benutzer keinem Phishingangriff ausgesetzt werden. [Weitere Informationen](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)
@@ -428,7 +428,7 @@ Der [Gerätecodeflow](../develop/v2-oauth2-device-code.md) wurde aktualisiert un
 
 ### <a name="user-last-sign-in-date-and-time-is-now-available-on-azure-portal"></a>Datum und Uhrzeit der letzten Benutzeranmeldung jetzt im Azure-Portal verfügbar
 
-**Typ:** Geänderte Funktion  
+**Typ:** Geändertes Feature  
 **Dienstkategorie:** Benutzerverwaltung  
 **Produktfunktion:** Benutzerverwaltung
  
@@ -584,7 +584,7 @@ Die neue vereinfachte Oberfläche für Benutzerflows bietet Featureparität mit 
 **Dienstkategorie:** Schutz der Identität (Identity Protection)  
 **Produktfunktion:** Identitätssicherheit und -schutz
  
-Diese neue Erkennung dient als Ad-hoc-Methode für unsere Sicherheitsteams, um Sie im Angriffsfall zu benachrichtigen und Ihre Benutzer zu schützen: Bei Beobachtung eines Angriffs wird das Sitzungsrisiko der Benutzer auf „Hoch“ gesetzt. Außerdem werden die betroffenen Anmeldungen als riskant gekennzeichnet. Diese Erkennung folgt auf die Azure Active Directory Threat Intelligence für Benutzerrisikoerkennung, um eine volle Abdeckung der verschiedenen von Microsoft-Sicherheitsteams beobachteten Angriffe zu ermöglichen. [Weitere Informationen](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)
+Diese neue Erkennung dient als Ad-hoc-Methode für unsere Sicherheitsteams, um Sie im Angriffsfall zu benachrichtigen und Ihre Benutzer zu schützen: Bei Beobachtung eines Angriffs wird das Sitzungsrisiko der Benutzer auf „Hoch“ gesetzt. Außerdem werden die betroffenen Anmeldungen als riskant gekennzeichnet. Diese Erkennung folgt auf die Azure Active Directory Threat Intelligence für Benutzerrisikoerkennung, um eine volle Abdeckung der verschiedenen von Microsoft-Sicherheitsteams beobachteten Angriffe zu ermöglichen. [Weitere Informationen](../identity-protection/concept-identity-protection-risks.md#user-risk)
  
 ---
 
@@ -672,7 +672,7 @@ Die Informationen unter [Registrieren Ihres Android Enterprise-Geräts](https://
 ### <a name="azure-information-protection-service-will-begin-asking-for-consent"></a>Aufforderung zur Einwilligung durch Information Protection-Dienst
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 Der Azure Information Protection-Dienst meldet Benutzer bei dem Mandanten an, der das Dokument bei Bereitstellung des Zugriffs auf das Dokument verschlüsselt hat.  Ab Juni wird der Benutzer von Azure AD aufgefordert, seine Einwilligung zu geben, wenn dieser Zugriff organisationsübergreifend gewährt wird.  Dadurch wird sichergestellt, dass der Benutzer erfährt, dass die Organisation, die das Dokument besitzt, im Rahmen des Dokumentzugriffs einige Informationen über den Benutzer erfasst. [Weitere Informationen](/azure/information-protection/known-issues#sharing-external-doc-types-across-tenants)
@@ -723,7 +723,7 @@ Vor Kurzem wurde die neue Rolle „Identity Governance-Administrator“ eingefü
 ### <a name="bug-fixed---azure-ad-will-no-longer-double-encode-the-state-parameter-in-responses"></a>Fehler behoben: Zustandsparameter in Antworten werden von Azure AD nicht mehr doppelt codiert
 
 **Typ:** Korrigiert  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
  
 In Azure AD wurde eine Fehlerbehebung für einen Fehler in der `/authorize`-Antwort auf eine Clientanwendung ermittelt, getestet und veröffentlicht.  Der `state`-Parameter wurde von Azure AD beim Senden von Antworten an den Client fälschlicherweise zweimal URL-codiert.  Dies kann dazu führen, dass eine Clientanwendung die Anforderung aufgrund eines Konflikts in den Zustandsparametern zurückweist. [Weitere Informationen](../develop/reference-breaking-changes.md#bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice) 

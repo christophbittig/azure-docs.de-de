@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 5/4/2021
-ms.openlocfilehash: c5413918923ebb4e613ecb48e86dbccfcc60889b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 8/12/2021
+ms.openlocfilehash: 56ed469843c78b299d0cec426eb490cedce1defe
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693278"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356171"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Dienstebenen beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Dienstebenen im DTU-basierten Kaufmodell bieten die Flexibilität, Computegrößen bei minimaler [Downtime](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/) zu ändern. Allerdings wird die Datenbankverbindung aufgrund einer Umschaltzeit kurzzeitig unterbrochen, was sich durch eine Wiederholungslogik reduzieren lässt. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Dienstebene und Computegröße auf Stundenbasis abgerechnet.
+Dienstebenen beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Dienstebenen im DTU-basierten Kaufmodell bieten die Flexibilität, Computegrößen bei minimaler [Downtime](https://azure.microsoft.com/support/legal/sla/azure-sql-database) zu ändern. Allerdings wird die Datenbankverbindung aufgrund einer Umschaltzeit kurzzeitig unterbrochen, was sich durch eine Wiederholungslogik reduzieren lässt. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Dienstebene und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
 > [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) unterstützt kein DTU-basiertes Kaufmodell. 
@@ -178,6 +178,9 @@ Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 | Premium |Transaktionen pro Sekunde |95. Perzentil bei 0,5 Sekunden |
 | Standard |Transaktionen pro Minute |90. Perzentil bei 1,0 Sekunden |
 | Basic |Transaktionen pro Stunde |80. Perzentil bei 2,0 Sekunden |
+
+> [!NOTE]
+> Antwortzeitmetriken sind spezifisch für die [DTU-Benchmark](#dtu-benchmark). Antwortzeiten für andere Workloads sind workloadabhängig und unterscheiden sich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

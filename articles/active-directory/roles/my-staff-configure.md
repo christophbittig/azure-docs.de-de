@@ -13,12 +13,12 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: f6e683977781b7522eb23a10fcdb997c3e65938d
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d3ec7c9786a9b5d3774c05669ae6d51ad443e71d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783319"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339916"
 ---
 # <a name="manage-your-users-with-my-staff"></a>Verwalten Ihrer Benutzer über das Portal „Meine Mitarbeiter“
 
@@ -43,17 +43,19 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Sie benötigen Berechtigungen als *globaler Administrator* in Ihrem Azure AD-Mandanten, um die SMS-basierte Authentifizierung zu aktivieren.
 * Jeder Benutzer, der sich gemäß der Richtlinie zu den Authentifizierungsmethoden per SMS authentifizieren kann, muss über eine Lizenz verfügen, selbst wenn er sie nicht nutzt. Jeder aktivierte Benutzer muss über eine der folgenden Azure AD- oder Microsoft 365-Lizenzen verfügen:
 
-  * [Azure AD Premium P1 oder P2](https://azure.microsoft.com/pricing/details/active-directory/)
-  * [Microsoft 365 (M365) F1 oder F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
-  * [Enterprise Mobility + Security (EMS) E3 oder E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) oder [Microsoft 365 (M365) E3 oder E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
+  * [Azure AD Premium P1 oder P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
+  * [Microsoft 365 F1 oder F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 oder E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) oder [Microsoft 365 E3 oder E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Aktivieren von „Meine Mitarbeiter“
 
 Nachdem Sie die Verwaltungseinheiten konfiguriert haben, können Sie diesen Bereich auf Ihre Benutzer anwenden, die auf das Portal „Meine Mitarbeiter“ zugreifen. Nur Benutzer, denen eine Administratorrolle zugewiesen ist, können auf „Meine Mitarbeiter“ zugreifen. Führen Sie die folgenden Schritte aus, um „Meine Mitarbeiter“ zu aktivieren:
 
-1. Melden Sie sich als Benutzeradministrator beim Azure-Portal an.
-2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Vorschauen für Benutzerfeatures** > **Vorschaueinstellungen für Benutzerfeatures verwalten**.
-3. Unter **Administratoren können auf „Meine Mitarbeiter“ zugreifen** können Sie dies für alle Benutzer, ausgewählte Benutzer oder keine Benutzer aktivieren.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) als Benutzeradministrator an.
+
+1. Wählen Sie **Azure Active Directory** > **Benutzereinstellungen** > **Vorschauen für Benutzerfeatures** > **Vorschaueinstellungen für Benutzerfeatures verwalten** aus.
+
+1. Unter **Administratoren können auf „Meine Mitarbeiter“ zugreifen** können Sie dies für alle Benutzer, ausgewählte Benutzer oder keine Benutzer aktivieren.
 
 > [!Note]
 > Nur Benutzer, denen eine Administratorrolle zugewiesen wurde, können auf „Meine Mitarbeiter“ zugreifen. Wenn Sie „Meine Mitarbeiter“ für einen Benutzer aktivieren, dem keine Administratorrolle zugewiesen ist, kann er nicht auf „Meine Mitarbeiter“ zugreifen.

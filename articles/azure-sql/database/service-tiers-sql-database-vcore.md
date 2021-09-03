@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 06/02/2021
+ms.date: 07/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: a78622aaccfaeb372d67ef4575e2bd923ab6cb58
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415185"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730825"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>Azure SQL-Datenbank: Übersicht über das Kaufmodell für virtuelle Kerne 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,9 +104,6 @@ To enable M-series hardware for a subscription and region, a support request mus
 -->
 
 ### <a name="dc-series"></a>DC-Serie
-
-> [!NOTE]
-> Die DC-Serie befindet sich derzeit in der **öffentlichen Vorschau**.
 
 - In Hardware der DC-Serie werden Intel-Prozessoren mit Software Guard Extensions-Technologie (Intel SGX) verwendet.
 - Die DC-Serie ist für [Always Encrypted mit Secure Enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) erforderlich. Dies wird bei anderen Hardwarekonfigurationen nicht unterstützt.
@@ -205,12 +202,16 @@ Approved support requests are typically fulfilled within 5 business days.
 
 #### <a name="dc-series"></a>DC-Serie
 
-> [!NOTE]
-> Die DC-Serie befindet sich derzeit in der **öffentlichen Vorschau**.
-
 Die DC-Serie ist in den folgenden Regionen verfügbar: Kanada, Mitte; Kanada, Osten; USA, Osten; Europa, Norden; Vereinigtes Königreich, Süden; Europa, Westen; USA, Westen.
 
-Wenn Sie die DC-Serie in einer Region benötigen, die derzeit nicht unterstützt wird, [übermitteln Sie ein Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), wie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank und SQL Managed Instance](quota-increase-request.md) beschrieben.
+Wenn Sie die DC-Serie in einer derzeit nicht unterstützten Region benötigen, [reichen Sie ein Supportticket ein](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Geben Sie unter **Grundlagen** die Folgendes an:
+
+1. Wählen Sie als **Problemtyp** die Option **Technisch** aus.
+1. Wählen Sie für **Diensttyp** den Eintrag **SQL-Datenbank** aus.
+1. Wählen Sie für **Problemtyp** den Eintrag **Sicherheit, privat und Compliance** aus.
+1. Wählen Sie für **Problemuntertyp** die Option **Always Encrypted** aus.
+
+:::image type="content" source="./media/service-tiers-vcore/request-dc-series.png" alt-text="Beantragen der DC-Serie in einer neuen Region" loc-scope="azure-portal":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

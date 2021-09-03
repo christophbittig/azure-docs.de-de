@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/11/2021
+ms.date: 08/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 471cf0ae11910b74f6aabd8fd858ed6f6dd2f31c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6eb911bb58413e6551224d98371cf56ecbd8e01f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029763"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339563"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurieren eines befristeten Zugriffspasses in Azure AD für die Registrierung von kennwortlosen Authentifizierungsmethoden (Vorschau)
 
@@ -118,6 +118,7 @@ Benutzer verwenden am häufigsten einen befristeten Zugriffspass, um bei der ers
 >Bei Verbunddomänen wird ein befristeter Zugriffspass gegenüber dem Verbund bevorzugt. Ein Benutzer mit einem befristeten Zugriffspass führt die Authentifizierung in Azure AD durch und wird nicht an den Verbundidentitätsanbieter (Identity Provider, IdP) umgeleitet.
 
 Der Benutzer ist jetzt angemeldet und kann eine Methode (z. B. den FIDO2-Sicherheitsschlüssel) aktualisieren oder registrieren. Benutzer, die ihre Authentifizierungsmethoden aktualisieren, weil Sie ihre Anmeldeinformationen oder ihr Gerät verloren haben, sollten sicherstellen, dass sie die alten Authentifizierungsmethoden entfernen.
+Benutzer können sich auch weiterhin mit ihrem Kennwort anmelden; ein TAP ersetzt nicht das Kennwort eines Benutzers.
 
 Benutzer können ihren befristeten Zugriffspass auch verwenden, um sich direkt über die Authenticator-App für die kennwortlose Anmeldung per Telefon zu registrieren. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App](../user-help/user-help-auth-app-add-work-school-account.md).
 
@@ -154,7 +155,7 @@ Beachten Sie die folgenden Einschränkungen:
 - Gastbenutzer können sich nicht mit einem befristeten Zugriffspass anmelden.
 - Der befristete Zugriffspass befindet sich in der öffentlichen Vorschau und ist derzeit nicht in Azure für die US-Regierung verfügbar.
 - Benutzer im Geltungsbereich der Richtlinie für die Self-Service-Kennwortzurücksetzung (SSPR) *oder* [MFA-Registrierungsrichtlinie für den Identitätsschutz](../identity-protection/howto-identity-protection-configure-mfa-policy.md) müssen eine der Authentifizierungsmethoden registrieren, nachdem sie sich mit einem befristeten Zugriffspass angemeldet haben. Benutzer im Gültigkeitsbereich für diese Richtlinien werden an den [Interruptmodus der kombinierten Registrierung](concept-registration-mfa-sspr-combined.md#combined-registration-modes) umgeleitet. Diese Vorgehensweise unterstützt derzeit keine FIDO2-Registrierung und keine Registrierung mit Anmeldung per Telefon. 
-- Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) oder bei Verwendung von Windows Setup/Out-of-Box-Experience (OOBE) und Autopilot verwendet werden. 
+- Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) oder aber während der Verwendung von Windows Setup/Out-of-Box-Experience (OOBE), Autopilot oder zur Bereitstellung von Windows Hello for Business verwendet werden. 
 - Wenn nahtloses einmaliges Anmelden für den Mandanten aktiviert ist, werden die Benutzer zur Eingabe eines Kennworts aufgefordert. Der Link **Verwenden Sie stattdessen Ihren befristeten Zugriffspass** ist für den Benutzer verfügbar, damit er sich mit einem befristeten Zugriffspass anmelden kann.
 
   ![Screenshot des Links „Verwenden Sie stattdessen Ihren befristeten Zugriffspass“](./media/how-to-authentication-temporary-access-pass/alternative.png)
@@ -167,6 +168,7 @@ Beachten Sie die folgenden Einschränkungen:
 - Wenn bei der Anmeldung mit einem befristeten Zugriffspass die Meldung angezeigt wird, dass die **Anmeldung mit befristetem Zugriffspass aufgrund der Richtlinie für Benutzeranmeldeinformationen blockiert wurde**, überprüfen Sie Folgendes:
   - Der Benutzer hat einen befristeten Zugriffspass für die Mehrfachverwendung, während die Authentifizierungsmethodenrichtlinie einen einmaligen befristeten Zugriffspass erfordert.
   - Ein einmaliger befristeter Zugriffspass wurde bereits verwendet.
+- Wenn die Anmeldung mit befristetem Zugriffspass aufgrund der Richtlinie für Benutzeranmeldeinformationen blockiert wurde, überprüfen Sie, ob sich der Benutzer im Bereich für die TAP-Richtlinie befindet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

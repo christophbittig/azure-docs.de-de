@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/08/2020
+ms.date: 08/09/2021
 ms.author: rolyon
-ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fc3d614ef26235325e0b9a9e8fee68d2bf919a5
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555918"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340416"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Grundlegendes zum Bereich von Azure RBAC
 
@@ -119,6 +119,18 @@ Es ist recht einfach, den Bereich für eine Verwaltungsgruppe, ein Abonnement od
         "type": "Microsoft.Authorization/roleAssignments"
       }
     ```
+
+## <a name="scope-and-arm-templates"></a>Bereich und ARM-Vorlagen
+
+Eine Rollenzuweisung ist ein spezieller Typ in Azure Resource Manager, der als *Erweiterungsressource* bezeichnet wird. Eine Erweiterungsressource ist eine Ressource, die einer anderen Ressource Funktionen hinzufügt. Sie sind immer als Erweiterung (wie ein untergeordnetes Element) einer anderen Ressource vorhanden. Beispielsweise ist eine Rollenzuweisung im Abonnementbereich eine Erweiterungsressource des Abonnements. Der Name einer Rollenzuweisung ist immer der Name der Ressource, die Sie erweitern, plus `/Microsoft.Authorization/roleAssignments/{roleAssignmentId}`. Beim Zuweisen von Rollen mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) müssen Sie den Bereich in der Regel nicht angeben. Der Grund dafür ist, dass das Bereichsfeld immer die ID der Ressource ist, die Sie erweitern. Der Bereich kann anhand der ID der Rollenzuweisung selbst bestimmt werden. Die folgende Tabelle zeigt Beispiele für eine Rollenzuweisungs-ID und den entsprechenden Bereich:
+
+> [!div class="mx-tableFixed"]
+> | Rollenzuweisungs-ID | `Scope` |
+> | --- | --- |
+> | `/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}` |
+> | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg` |
+
+Weitere Informationen zum Bereich und zu ARM-Vorlagen finden Sie unter [Zuweisen von Azure-Rollen mit Azure Resource Manager-Vorlagen](role-assignments-template.md). Eine vollständige Liste der Erweiterungsressourcentypen finden Sie unter [Ressourcentypen, die Funktionen anderer Ressourcen erweitern](../azure-resource-manager/management/extension-resource-types.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
