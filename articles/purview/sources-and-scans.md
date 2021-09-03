@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: e5b2c5eaca13b26504c4229ef990abc4adce23c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738462"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338940"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Unterstützte Datenquellen und Dateitypen in Azure Purview
 
@@ -32,7 +32,7 @@ Die folgenden Dateitypen werden für Überprüfungen, Schemaextraktion und Klass
 - Purview unterstützt auch benutzerdefinierte Dateierweiterungen und benutzerdefinierte Parser.
  
 > [!Note]
-> Jede GZIP-Datei muss einer einzelnen enthaltenen CSV-Datei zugeordnet werden. GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. Darüber hinaus unterstützt der Purview-Scanner das Scannen von mit Snappy komprimierten PARQUET- und AVRO-Dateitypen für die Schemaextraktion und -klassifizierung.
+> Jede GZIP-Datei muss einer einzelnen enthaltenen CSV-Datei zugeordnet werden. GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. Darüber hinaus unterstützt die Purview-Überprüfung das Überprüfen von mit Snappy komprimierten PARQUET-Dateitypen auf Schemaextraktion und -klassifizierung. 
 
 > [!Note]
 > Der Purview-Scanner unterstützt keine komplexen Datentypen in AVRO-, ORC- und PARQUET-Dateitypen für die Schemaextraktion.   
@@ -46,9 +46,10 @@ In der Purview-Terminologie:
 
 Bei allen strukturierten Dateiformaten werden Dateien vom Purview-Scanner auf folgende Weise überprüft:
 
-- Bei strukturierten Dateitypen überprüft der Scanner 128 Zeilen in jeder Spalte oder 1 MB, je nachdem, welcher Wert kleiner ist.
-- Bei Dokumentdateiformaten überprüft der Scanner 20 MB von jeder Datei.
+- Bei strukturierten Dateitypen werden bei der Überprüfung die obersten 128 Zeilen jeder Spalte oder die ersten 1 MB überprüft, je nachdem, welcher Wert kleiner ist.
+- Bei Dokumentdateiformaten werden die ersten 20 MB jeder Datei überprüft.
     - Ist eine Dokumentdatei größer als 20 MB, wird sie keiner tiefen Überprüfung unterzogen (sie wird nicht klassifiziert). In diesem Fall erfasst Purview nur grundlegende Metadaten, z. B. Dateiname und vollqualifizierter Name.
+- Für **tabellarische Datenquellen (SQL, Cosmos DB)** werden die obersten 128 Zeilen als Stichprobe genommen. 
 
 ## <a name="resource-set-file-sampling"></a>Ressourcensatzüberprüfung
 
@@ -64,7 +65,7 @@ Dateiüberprüfung für Ressourcensätze nach Dateitypen:
 
 ## <a name="classification"></a>Klassifizierung
 
-Alle 105 Systemklassifizierungsregeln gelten für strukturierte Dateiformate. Nur die MCE-Klassifizierungsregeln gelten für Dokumentdateitypen (nicht die nativen RegEx-Muster der Datenüberprüfung, sondern Bloomfilter-basierte Erkennung). Weitere Informationen zu den unterstützten Klassifizierungen finden Sie unter [Unterstützte Klassifizierungen in Azure Purview](supported-classifications.md).
+Alle 206 Systemklassifizierungsregeln gelten für strukturierte Dateiformate. Nur die MCE-Klassifizierungsregeln gelten für Dokumentdateitypen (nicht die nativen RegEx-Muster der Datenüberprüfung, sondern Bloomfilter-basierte Erkennung). Weitere Informationen zu den unterstützten Klassifizierungen finden Sie unter [Unterstützte Klassifizierungen in Azure Purview](supported-classifications.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

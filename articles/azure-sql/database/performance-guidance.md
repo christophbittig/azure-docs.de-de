@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.date: 07/26/2021
+ms.openlocfilehash: 6446470baf321fa46eab4a68a13cc6e09fdd2e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490600"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355540"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimieren der Leistung von Anwendungen und Datenbanken in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -264,6 +264,12 @@ Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fäll
 ### <a name="application-tier-caching"></a>Zwischenspeichern auf Anwendungsebene
 
 Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von Lesevorgängen. Cachingschichten können zu einer Reduzierung der Datenbanklast und ggf. auch der Computegröße beitragen, die zum Unterstützen einer Datenbank mit Azure SQL-Datenbank und Azure SQL Managed Instance erforderlich ist. Mit [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) können Sie die Daten leseintensiver Workloads einmalig (oder je nach der Konfiguration ggf. einmal pro Computer auf Anwendungsebene) lesen lassen und diese Daten dann außerhalb der Datenbank speichern. Dies ist eine Möglichkeit zur Reduzierung der Datenbanklast (CPU- und Lesevorgang-E/A), aber es kommt zu einer Auswirkung auf die Transaktionskonsistenz, da die aus dem Cache ausgelesenen Daten gegenüber den Daten in der Datenbank ggf. nicht mehr synchron sind. Es gibt zwar viele Anwendungen, bei denen ein gewisser Inkonsistenzgrad akzeptabel ist, aber dies gilt nicht für alle Workloads. Sie sollten sich daher vollständig mit den Anwendungsanforderungen vertraut machen, bevor Sie eine Cachingstrategie auf Anwendungsebene implementieren.
+
+## <a name="get-configuration-and-design-tips"></a>Konfigurations- und Entwurfstipps
+
+Wenn Sie Azure SQL-Datenbank verwenden, können Sie ein Open-Source-T-SQL-[Skript](https://aka.ms/sqldbtips) ausführen, um Ihre Datenbank bedarfsgesteuert zu analysieren und Tipps zur Verbesserung von Datenbankleistung und -integrität zu geben. Einige Tipps schlagen Konfigurations- und Betriebsänderungen auf Grundlage bewährter Methoden vor, während andere Entwurfsänderungen empfehlen, die für Ihre Workload geeignet sind, z. B. die Aktivierung erweiterter Features der Datenbank-Engine.
+
+Weitere Informationen zum Skript und zu den ersten Schritten finden Sie auf der [Wiki](https://aka.ms/sqldbtipswiki)-Seite.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

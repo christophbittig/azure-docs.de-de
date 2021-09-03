@@ -6,24 +6,36 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d40ea656f74df1083eadc276eea8a109abd44b0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94534329"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294577"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Verbinden von Azure Kubernetes Service und Azure Database for MySQL
+# <a name="best-practices-for-azure-kubernetes-service-and-azure-database-for-mysql"></a>Bewährte Methoden für Azure Kubernetes Service und Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Kubernetes Service (AKS) stellt einen verwalteten Kubernetes-Cluster bereit, den Sie in Azure nutzen können. Unten sind einige Optionen angegeben, die Sie berücksichtigen sollten, wenn Sie AKS und Azure Database for MySQL zusammen zum Erstellen einer Anwendung verwenden.
 
+## <a name="create-database-before-creating-the-aks-cluster"></a>Erstellen einer Datenbank vor dem Erstellen des AKS-Clusters
 
-## <a name="accelerated-networking"></a>Beschleunigte Netzwerke
+Für Azure Database for MySQL gibt es zwei Bereitstellungsoptionen:
+
+- Einzelserver
+- Flexible Server (Vorschau)
+
+Die Option „Einzelserver“ unterstützt eine einzelne Verfügbarkeitszone, die Option „Flexibler Server“ mehrere Verfügbarkeitszonen. AKS unterstützt andererseits auch die Aktivierung einzelner oder mehrerer Verfügbarkeitszonen.  Erstellen Sie zuerst den Datenbankserver, um die Verfügbarkeitszone einzusehen, in der sich der Server befindet, und dann die AKS-Cluster in derselben Verfügbarkeitszone. Dies kann die Leistung der Anwendung verbessern, da Netzwerklatenz reduziert wird.
+
+## <a name="use-accelerated-networking"></a>Verwenden des beschleunigten Netzwerkbetriebs
+
 Verwenden Sie in Ihrem AKS-Cluster zugrunde liegende virtuelle Computer, für die der beschleunigte Netzwerkbetrieb aktiviert ist. Wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, ist die Latenz geringer, Jitter reduziert und die CPU-Auslastung des virtuellen Computers niedriger. Informieren Sie sich eingehender über die Funktionsweise des beschleunigten Netzwerkbetriebs, die unterstützten Betriebssystemversionen und die unterstützten VM-Instanzen für [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 Ab November 2018 unterstützt AKS den beschleunigten Netzwerkbetrieb auf diesen unterstützen VM-Instanzen. Der beschleunigte Netzwerkbetrieb ist für neue AKS-Cluster, in denen diese virtuellen Computer verwendet werden, standardmäßig aktiviert.
 
 Sie können überprüfen, ob Ihr AKS-Cluster über den beschleunigten Netzwerkbetrieb verfügt:
+
 1. Navigieren Sie zum Azure-Portal, und wählen Sie Ihren AKS-Cluster aus.
 2. Wählen Sie die Registerkarte „Eigenschaften“.
 3. Kopieren Sie den Namen der **Infrastrukturressourcengruppe**.
@@ -33,15 +45,21 @@ Sie können überprüfen, ob Ihr AKS-Cluster über den beschleunigten Netzwerkbe
 7. Überprüfen Sie, ob die Option **Beschleunigter Netzwerkbetrieb** auf „Aktiviert“ festgelegt ist.
 
 Alternativ über die Azure-Befehlszeilenschnittstelle mithilfe der folgenden beiden Befehle:
+
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
+
 Die Ausgabe ist die von AKS erstellte generierte Ressourcengruppe, die die Netzwerkschnittstelle enthält. Verwenden Sie den Namen „nodeResourceGroup“ im nächsten Befehl. **EnableAcceleratedNetworking** ist entweder „true“ oder „false“:
+
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
+## <a name="use-azure-premium-fileshare"></a>Verwenden von Azure Premium-Dateifreigaben
+
+ [Azure Premium-Dateifreigaben](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal) bieten persistenten Speicher, der von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden kann. Azure Premium-Dateifreigaben bieten Ihrer Anwendung die beste Leistung, wenn Sie für den Dateispeicher eine große Anzahl von E/A-Vorgängen erwarten. Weitere Informationen finden Sie unter [Aktivieren von Azure Files](../aks/azure-files-dynamic-pv.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Erstellen eines Azure Kubernetes Service-Clusters](../aks/kubernetes-walkthrough.md)
-- Informieren Sie sich, wie Sie [WordPress mit OSBA und Azure Database for MySQL über ein Helm-Diagramm installieren](../aks/index.yml).

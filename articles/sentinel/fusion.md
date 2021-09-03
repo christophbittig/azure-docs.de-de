@@ -10,23 +10,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2021
+ms.date: 08/09/2021
 ms.author: yelevin
-ms.openlocfilehash: fb947b6f5930e3a0d81d53a1660885ebf1c51cca
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: b68d2a8219e7aa23aac3187333160dfd4276e7b8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810496"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356376"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 
 > [!IMPORTANT]
 > Einige Fusion-Erkennungen (weiter unten aufgeführt) befinden sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 Durch die Verwendung der auf maschinellem Lernen basierenden Fusion-Technologie kann Azure Sentinel mehrstufige Angriffe automatisch erkennen. Hierzu werden Kombinationen von anomalen Verhaltensweisen und verdächtigen Aktivitäten kombiniert, die an verschiedenen Stellen der Kill Chain beobachtet werden. Auf der Grundlage dieser Entdeckungen generiert Azure Sentinel Incidents, die auf andere Weise nur schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
 
 Diese Erkennungstechnologie ist für Ihre Umgebung angepasst und bewirkt nicht nur eine Reduzierung der [False Positive](false-positives.md)-Rate, sondern kann Angriffe auch mit eingeschränkten oder fehlenden Informationen erkennen.
+
+
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Konfiguration für die erweiterte Erkennung von mehrstufigen Angriffen
 
@@ -57,7 +61,7 @@ Diese Erkennung ist in Azure Sentinel standardmäßig aktiviert. Zum Überprüfe
 >
 > - Die auf Fusion basierende Erkennung mithilfe von Analyseregelwarnungen befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-**Fusion** kann mehrstufige Angriffe mithilfe von Warnungen erkennen, die von verschiedenen [geplanten Analyseregeln](tutorial-detect-threats-custom.md) generiert werden. Zum Konfigurieren und Aktivieren dieser Regeln empfehlen wir Ihnen die folgenden Schritte, damit Sie die Fusion-Funktionen von Azure Sentinel optimal nutzen können.
+**Fusion** kann mehrstufige Angriffe mithilfe von Warnungen erkennen, die von verschiedenen [geplanten Analyseregeln](detect-threats-custom.md) generiert werden. Zum Konfigurieren und Aktivieren dieser Regeln empfehlen wir Ihnen die folgenden Schritte, damit Sie die Fusion-Funktionen von Azure Sentinel optimal nutzen können.
 
 1. Verwenden Sie die folgenden **Vorlagen für geplante Analyseregeln**, die Sie auf der Registerkarte **Regelvorlagen** des Blatts **Analytics** finden, um neue Regeln zu erstellen. Klicken Sie im Vorlagenkatalog auf den Regelnamen und dann im Vorschaubereich auf **Regel erstellen**:
 
@@ -737,6 +741,26 @@ Dieses Szenario befindet sich derzeit in der **VORSCHAU**.
 
 - **Anmeldeereignis eines Benutzers mit kompromittierten Anmeldeinformationen, das zum Vorhandensein von Ransomware in der Cloud-App führt**
 
+### <a name="multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview"></a>Mehrere Warnungen im möglichen Zusammenhang mit Ransomware-Aktivitäten erkannt (Public Preview)
+
+Azure Sentinel generiert einen Incident, wenn mehrere Warnungen verschiedener Typen aus den folgenden Datenquellen erkannt werden, die möglicherweise mit Ransomware-Aktivitäten in Zusammenhang stehen:
+
+- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
+- [Microsoft Defender für den Endpunkt](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel-Regeln für geplante Analysen](detect-threats-built-in.md#scheduled) Fusion berücksichtigt nur Regeln für geplante Analysen mit Taktikinformationen.
+
+Solche Fusion-Incidents heißen **Mehrere Warnungen, die sich möglicherweise auf erkannte Ransomware-Aktivität beziehen**, und werden generiert, wenn relevante Warnungen in einem bestimmten Zeitrahmen erkannt werden und mit den Phasen **Ausführung** und **Umgehen von Verteidigungsmaßnahmen** eines Angriffs verknüpft sind.
+
+Beispielsweise generiert Azure Sentinel einen Incident für mögliche Ransomware-Aktivitäten, wenn die folgenden Warnungen in einem bestimmten Zeitrahmen auf demselben Host ausgelöst werden:
+
+- Geplante Azure Sentinel-Warnungen (Information): **Windows-Fehler- und -Warnungsereignisse**
+- Azure Defender (mittel): **Ransomware GandCrab verhindert**
+- Microsoft Defender für Endpunkt (Information): **Schadsoftware Emotet erkannt**
+- Azure Defender (niedrig): **Hintertür Tofsee erkannt**
+- Microsoft Defender für Endpunkt (Information): **Schadsoftware Parite erkannt**
+
 ## <a name="remote-exploitation"></a>Remoteausnutzung
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Verdacht der Nutzung eines Angriffs-Frameworks, auf den anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgt.
@@ -779,6 +803,6 @@ Die Permutationen von Warnungen zu verdächtigen Azure AD-Anmeldungen bei der Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und in potenzielle Bedrohungen erhalten: [Erste Schritte mit Azure Sentinel](quickstart-get-visibility.md).
+Nachdem Sie nun mehr über die erweiterte Erkennung von mehrstufigen Angriffen erfahren haben, ist für Sie ggf. die folgende Schnellstartanleitung interessant. Darin wird veranschaulicht, wie Sie Einblicke in Ihre Daten und in potenzielle Bedrohungen erhalten: [Erste Schritte mit Azure Sentinel](get-visibility.md).
 
-Arbeiten Sie das folgende Tutorial durch, wenn Sie bereit zum Untersuchen der Incidents sind, die für Sie erstellt wurden: [Untersuchen von Vorfällen mit Azure Sentinel](tutorial-investigate-cases.md).
+Arbeiten Sie das folgende Tutorial durch, wenn Sie bereit zum Untersuchen der Incidents sind, die für Sie erstellt wurden: [Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md).

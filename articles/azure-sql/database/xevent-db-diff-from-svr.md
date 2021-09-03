@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: reference
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 12/19/2018
-ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: ''
+ms.date: 07/23/2021
+ms.openlocfilehash: 79226ed8fa4d4e78120a0c91b672d4cfa23712fc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96501208"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675109"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Zusätzliche Informationen über erweiterte Ereignisse finden Sie unter:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Thema setzt voraus, dass Sie mit Folgendem grundlegend vertraut sind:
+Dieser Artikel setzt voraus, dass Sie mit Folgendem grundlegend vertraut sind:
 
 - [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
 - [Erweiterte Ereignisse](/sql/relational-databases/extended-events/extended-events)
@@ -49,12 +49,12 @@ Vorherige Kenntnisse in Bezug auf die folgenden Elemente ist hilfreich bei der A
 
 ## <a name="code-samples"></a>Codebeispiele
 
-In verwandten Themen werden zwei Codebeispiele geboten:
+Verwandte Artikel enthalten zwei Codebeispiele:
 
 - [Code des Ringpufferziels für erweiterte Ereignisse in Azure SQL-Datenbank](xevent-code-ring-buffer.md)
 
   - Kurzes einfaches Transact-SQL-Skript.
-  - Wir betonen im Codebeispielthema, dass Sie die Ressourcen des Ringpufferziels durch Ausführen der Anweisung „alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` “ freigeben müssen, wenn Sie damit fertig sind. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`hinzufügen.
+  - Wir betonen im Artikel mit dem Codebeispiel, dass Sie die Ressourcen des Ringpufferziels durch Ausführen der Anweisung „alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`“ freigeben müssen, wenn Sie damit fertig sind. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`hinzufügen.
 
 - [Code des Ereignisdateiziels für erweiterte Ereignisse in Azure SQL-Datenbank](xevent-code-event-file.md)
 
@@ -75,13 +75,13 @@ Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](/sql/rela
 
 | Name der<br/>Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Gibt für jede Aktion jedes Ereignisses einer Ereignissitzung eine Zeile zurück. |
-| **sys.database_event_session_events** |Gibt eine Zeile für jedes Ereignis in einer Ereignissitzung zurück. |
-| **sys.database_event_session_fields** |Gibt eine Zeile für jede anpassbare Spalte zurück, die für Ereignisse und Ziele explizit festgelegt wurde. |
-| **sys.database_event_session_targets** |Gibt für eine Ereignissitzung eine Zeile für jedes Ereignisziel zurück. |
-| **sys.database_event_sessions** |Gibt eine Zeile für jede Ereignissitzung in der Datenbank zurück. |
+| `sys.database_event_session_actions` |Gibt für jede Aktion jedes Ereignisses einer Ereignissitzung eine Zeile zurück. |
+| `sys.database_event_session_events` |Gibt eine Zeile für jedes Ereignis in einer Ereignissitzung zurück. |
+| `sys.database_event_session_fields` |Gibt eine Zeile für jede anpassbare Spalte zurück, die für Ereignisse und Ziele explizit festgelegt wurde. |
+| `sys.database_event_session_targets` |Gibt für eine Ereignissitzung eine Zeile für jedes Ereignisziel zurück. |
+| `sys.database_event_sessions` |Gibt eine Zeile für jede Ereignissitzung in der Datenbank zurück. |
 
-In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%** .
+In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster ist wie folgt: `sys.server_event_%`.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Neue dynamische Verwaltungssichten [(DMVs)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -89,30 +89,30 @@ Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](/sql/relational
 
 | DMV-Name | BESCHREIBUNG |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Gibt Informationen zu Ereignissitzungsaktionen zurück. |
-| **sys.dm_xe_database_session_events** |Gibt Informationen zu Sitzungsereignissen zurück. |
-| **sys.dm_xe_database_session_object_columns** |Zeigt die Konfigurationswerte für Objekte an, die an eine Sitzung gebunden sind. |
-| **sys.dm_xe_database_session_targets** |Gibt Informationen zu Sitzungszielen zurück. |
-| **sys.dm_xe_database_sessions** |Gibt eine Zeile für jede Ereignissitzung zurück, die auf die aktuelle Datenbank begrenzt ist. |
+| `sys.dm_xe_database_session_event_actions` |Gibt Informationen zu Ereignissitzungsaktionen zurück. |
+| `sys.dm_xe_database_session_events` |Gibt Informationen zu Sitzungsereignissen zurück. |
+| `sys.dm_xe_database_session_object_columns` |Zeigt die Konfigurationswerte für Objekte an, die an eine Sitzung gebunden sind. |
+| `sys.dm_xe_database_session_targets` |Gibt Informationen zu Sitzungszielen zurück. |
+| `sys.dm_xe_database_sessions` |Gibt eine Zeile für jede Ereignissitzung zurück, die auf die aktuelle Datenbank begrenzt ist. |
 
 In Microsoft SQL Server werden ähnliche Katalogsichten ohne den Teil *\_database* des Namens benannt, wie z.B.:
 
-- **sys.dm_xe_sessions**, anstelle von Namen<br/>**sys.dm_xe_database_sessions**.
+- `sys.dm_xe_sessions` anstelle von `sys.dm_xe_database_sessions`.
 
 ### <a name="dmvs-common-to-both"></a>DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben
 
 Für erweiterte Ereignisse gibt es zusätzliche DMVs (dynamische Verwaltungssichten), die Azure SQL-Datenbank, Azure SQL Managed Instance und Microsoft SQL Server gemeinsam haben:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- `sys.dm_xe_map_values`
+- `sys.dm_xe_object_columns`
+- `sys.dm_xe_objects`
+- `sys.dm_xe_packages`
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
 ## <a name="find-the-available-extended-events-actions-and-targets"></a>Suchen der verfügbaren erweiterten Ereignisse, Aktionen und Ziele
 
-Sie können mithilfe einer einfachen SQL **SELECT** -Anweisung eine Liste der verfügbaren Ereignisse, Aktionen und Ziele abrufen.
+Rufen Sie mithilfe der Beispielabfrage eine Liste der verfügbaren Ereignisse, Aktionen und Ziele ab:
 
 ```sql
 SELECT
@@ -140,9 +140,9 @@ SELECT
 
 Im Folgenden werden Ziele aufgeführt, die Ergebnisse aus Ihren Ereignissitzungen in Azure SQL-Datenbank erfassen können:
 
-- [Ringpuffer](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) : Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
-- [Ereigniszähler](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) : Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
-- [Ereignisdatei](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) : Schreibt vollständige Puffer in einen Azure Storage-Container.
+- [Ringpuffer](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#ring_buffer-target) : Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
+- [Ereigniszähler](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_counter-target) : Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
+- [Ereignisdatei](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target) : Schreibt vollständige Puffer in einen Azure Storage-Container.
 
 Die [ETW](/dotnet/framework/wcf/samples/etw-tracing)-API (Event Tracing for Windows) ist für erweiterte Ereignisse in Azure SQL-Datenbank nicht verfügbar.
 
@@ -151,11 +151,11 @@ Die [ETW](/dotnet/framework/wcf/samples/etw-tracing)-API (Event Tracing for Wind
 Es gibt einige sicherheitsbezogene Unterschiede, die für die Cloudumgebung von Azure SQL-Datenbank angemessen sind:
 
 - Erweiterte Ereignisse beruhen auf dem Modell der Isolation einzelner Mandanten. Eine Ereignissitzung in einer Datenbank kann nicht auf Daten oder Ereignisse in einer anderen Datenbank zugreifen.
-- Sie können keine **CREATE EVENT SESSION**-Anweisung im Kontext der **master**-Datenbank angeben.
-
+- Sie können keine `CREATE EVENT SESSION`-Anweisung im Kontext der `master`-Datenbank ausführen.
+    
 ## <a name="permission-model"></a>Berechtigungsmodell
 
-Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE EVENT SESSION**-Anweisung angeben zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control** .
+Sie benötigen die Berechtigung **Control** für die Datenbank, um eine `CREATE EVENT SESSION`-Anweisung ausführen zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control** .
 
 ### <a name="storage-container-authorizations"></a>Speichercontainerautorisierungen
 
@@ -168,6 +168,11 @@ Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
 Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Daher werden Grenzwerte für die Menge des aktiven Arbeitsspeichers dynamisch von Azure SQL-Datenbank festgelegt, der von einer Ereignissitzung angesammelt werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
+
+Für XEvent-Sitzungen in Azure SQL-Datenbank gilt eine Obergrenze für den verfügbaren Arbeitsspeicher:
+  - In einer einzelne Azure SQL-Datenbank-Instanz beim Kaufmodell „DTU“ kann jede Datenbank bis zu 128 MB belegen. Nur im Premium-Tarif ist eine Erhöhung auf 256 MB möglich.
+  - In einer einzelne Azure SQL-Datenbank-Instanz beim Kaufmodell „vCore“ kann jede Datenbank bis zu 128 MB belegen.
+  - In einem Pool für elastische Datenbanken sind die einzelnen Datenbanken durch die Grenzwerte für einzelne Datenbanken begrenzt und dürfen insgesamt 512 MB nicht überschreiten.
 
 Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
 
@@ -182,13 +187,11 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 
 ## <a name="related-links"></a>Verwandte Links
 
-- [Verwenden von Azure PowerShell mit Azure Storage](/powershell/module/az.storage/)
 - [Azure Storage-Cmdlets](/powershell/module/Azure.Storage)
 - [Verwenden von Azure PowerShell mit Azure Storage](/powershell/module/az.storage/)
 - [Verwenden des Blob-Speichers mit .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
 - [CREATE EVENT SESSION (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
-- [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - Die Webseite mit *Azure-Dienstupdates* wird mittels Parameter auf „Azure SQL-Datenbank“ festgelegt:
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 

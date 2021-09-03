@@ -10,13 +10,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: e78f6762e3eb94e010909941cc84d19a37f3afc4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/22/2021
+ms.openlocfilehash: dc246908497d8f13bddbc06498900842850397ae
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691358"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343338"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank- und Azure SQL Managed Instance-Anwendungen mithilfe der Batchverarbeitung
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -602,7 +602,7 @@ Dieses Beispiel zeigt, dass mithilfe von Tabellenwertparametern auch komplexere 
 
 ### <a name="upsert"></a>UPSERT
 
-In einem anderen Batchverarbeitungsszenario werden gleichzeitig vorhandene Zeilen aktualisiert und neue Zeilen eingefügt. Dieser Vorgang wird auch als „UPSERT“ („Update + Insert“; „Aktualisieren und Einfügen“) bezeichnet. Dabei werden aber nicht etwa INSERT und UPDATE separat aufgerufen. Stattdessen kommt die MERGE-Anweisung zum Einsatz. Die MERGE-Anweisung kann in einem einzelnen Aufruf sowohl Einfüge- als auch Aktualisierungsvorgänge ausführen.
+In einem anderen Batchverarbeitungsszenario werden gleichzeitig vorhandene Zeilen aktualisiert und neue Zeilen eingefügt. Dieser Vorgang wird auch als „UPSERT“ („Update + Insert“; „Aktualisieren und Einfügen“) bezeichnet. Anstatt INSERT und UPDATE getrennt aufzurufen, kann die MERGE-Anweisung ein geeigneter Ersatz sein. Die MERGE-Anweisung kann in einem einzelnen Aufruf sowohl Einfüge- als auch Aktualisierungsvorgänge ausführen. Die Sperrmechanismen der MERGE-Anweisung funktionieren anders als separate INSERT- und UPDATE-Anweisungen. Testen Sie Ihre spezifischen Workloads, bevor Sie sie in der Produktion bereitstellen.
 
 Tabellenwertparameter können mit der MERGE-Anweisung verwendet werden, um Aktualisierungen und Einfügevorgänge durchzuführen. Nehmen wir beispielsweise eine vereinfachte Mitarbeitertabelle mit den Spalten „EmployeeID“, „FirstName“, „LastName“ und „SocialSecurityNumber“:
 

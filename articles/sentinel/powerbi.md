@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 1e641e878bc5370c9f9d7c0cc83be79008b2ebdd
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 0e877439b18d4c7ff6c4b21baa18b3b0fd1586b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111852103"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345849"
 ---
 # <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>Tutorial: Erstellen eines Power BI-Berichts aus Azure Sentinel-Daten
 
@@ -29,6 +29,9 @@ In diesem Tutorial:
 
 Personen, denen Sie im Power BI-Dienst Zugriff gewährt haben, und Mitglieder des Teams-Kanals können den Bericht anzeigen, ohne dass sie Azure Sentinel-Berechtigungen benötigen.
 
+> [!NOTE]
+> Dieses Tutorial bietet eine szenariobasierte Vorgehensweise für einen der häufigsten Kundenwünsche: die Anzeige von Analyseberichten in Power BI für Ihre Azure Sentinel-Daten. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md) und [Visualisieren gesammelter Daten](get-visibility.md).
+>
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -203,5 +206,5 @@ Aktualisieren Sie Ihren Power BI-Bericht basierend auf einem Zeitplan, damit im
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Importieren von Azure Monitor-Protokolldaten in Power BI](/azure/azure-monitor/visualize/powerbi)
+- [Importieren von Azure Monitor-Protokolldaten in Power BI](../azure-monitor/visualize/powerbi.md)
 - [Power Query M – Formelsprache](/powerquery-m/)
