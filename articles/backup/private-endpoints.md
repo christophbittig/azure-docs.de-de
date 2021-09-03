@@ -1,43 +1,25 @@
 ---
-title: Private Endpunkte
-description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
+title: Erstellen und Verwenden privater Endpunkte für Azure Backup
+description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup, wo private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a44d6d31edb6329c11103e99f0b21aa1ea686ca3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678321"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444237"
 ---
-# <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
+# <a name="create-and-use-private-endpoints-for-azure-backup"></a>Erstellen und Verwenden privater Endpunkte für Azure Backup
 
-Azure Backup ermöglicht Ihnen die sichere Sicherung und Wiederherstellung Ihrer Daten aus Ihren Recovery Services-Tresoren unter Verwendung [privater Endpunkte](../private-link/private-endpoint-overview.md). Private Endpunkte arbeiten mit einer oder mehreren privaten IP-Adressen in Ihrem VNET, wodurch der Dienst faktisch in Ihr VNET eingebunden wird.
-
-In diesem Artikel erfahren Sie, wie private Endpunkte für Azure Backup erstellt werden und in welchen Szenarien sie dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
+Dieser Artikel enthält Informationen darüber, wie [private Endpunkte für Azure Backup](private-endpoints-overview.md) erstellt werden und in welchen Szenarien sie dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- Private Endpunkte können nur für neue Recovery Services-Tresore erstellt werden (bei denen keine Elemente im Tresor registriert sind). Daher müssen private Endpunkte erstellt werden, bevor Sie versuchen, Elemente im Tresor zu schützen.
-- Ein virtuelles Netzwerk kann private Endpunkte für mehrere Recovery Services-Tresore enthalten. Außerdem kann ein Recovery Services-Tresor über private Endpunkte in mehreren virtuellen Netzwerken verfügen. Die maximale Anzahl privater Endpunkte, die für einen Tresor erstellt werden können, ist jedoch 12.
-- Sobald ein privater Endpunkt für einen Tresor erstellt ist, wird der Tresor gesperrt. Der Zugriff (für Sicherungen und Wiederherstellungen) ist nur aus Netzwerken möglich, die einen privaten Endpunkt für den Tresor enthalten. Wenn alle privaten Endpunkte für den Tresor entfernt werden, können alle Netzwerke auf den Tresor zugreifen.
-- Eine Verbindung mit privaten Endpunkten für die Sicherung verwendet insgesamt 11 private IP-Adressen in Ihrem Subnetz einschließlich der von Azure Backup zur Sicherung verwendeten. Diese Anzahl kann für bestimmte Azure-Regionen höher sein (bis zu 25). Wir empfehlen daher, genügend private IP-Adressen verfügbar zu haben, wenn Sie versuchen, private Endpunkte für die Sicherung zu erstellen.
-- Wenngleich ein Recovery Services-Tresor von sowohl Azure Backup als auch Azure Site Recovery verwendet wird, beschränkt sich die Erörterung in diesem Artikel auf die Verwendung privater Endpunkte für Azure Backup.
-- Azure Active Directory unterstützt derzeit keine privaten Endpunkte. Daher müssen IP-Adressen und FQDNs, die für den Betrieb von Azure Active Directory in einer Region erforderlich sind, ein ausgehender Zugriff aus dem abgesicherten Netzwerk gestattet werden, wenn eine Sicherung von Datenbanken in Azure-VMs und eine Sicherung mit dem MARS-Agent erfolgt. Sie können ggf. auch NSG- und Azure Firewall-Tags verwenden, um Zugriff auf Azure AD zuzulassen.
-- Virtuelle Netzwerke mit Netzwerkrichtlinien werden für private Endpunkte nicht unterstützt. Sie müssen [Netzwerkrichtlinien deaktivieren](../private-link/disable-private-endpoint-network-policy.md), ehe Sie fortfahren können.
-- Sie müssen den Recovery Services-Ressourcenanbieter erneut mit dem Abonnement registrieren, wenn Sie ihn vor dem 1. Mai 2020 registriert haben. Um den Anbieter erneut zu registrieren, wechseln Sie im Azure-Portal zu Ihrem Abonnement, navigieren Sie in der linken Navigationsleiste zu **Ressourcenanbieter** und wählen Sie **Microsoft.RecoveryServices** und dann **Erneut registrieren** aus.
-- [Regionsübergreifende Wiederherstellungen](backup-create-rs-vault.md#set-cross-region-restore) für SQL- und SAP HANA-Datenbanksicherungen werden nicht unterstützt, wenn für den Tresor private Endpunkte aktiviert sind.
-- Wenn Sie einen Recovery Services-Tresor, der bereits private Endpunkte verwendet, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors neu zu erstellen und zu konfigurieren, und bei Bedarf neue private Endpunkte erstellen (die sich auf dem neuen Mandanten befinden sollen). Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle innerhalb des Abonnements eingerichteten Berechtigungen der rollenbasierten Zugriffssteuerung (RBAC) neu konfiguriert werden.
+Stellen Sie sicher, dass Sie die [Voraussetzungen](private-endpoints-overview.md#before-you-start) und die [unterstützten Szenarien](private-endpoints-overview.md#recommended-and-supported-scenarios) überprüft haben, bevor Sie mit der Erstellung privater Endpunkte fortfahren.
 
-## <a name="recommended-and-supported-scenarios"></a>Empfohlene und unterstützte Szenarien
-
-Solange private Endpunkte für den Tresor aktiviert sind, werden sie nur für die Sicherung und Wiederherstellung von SQL- und SAP HANA-Workloads in einer Sicherung in einer Azure-VM und mit dem MARS-Agent verwendet. Sie können den Tresor auch für die Sicherung anderer Workloads einsetzen (die allerdings keine privaten Endpunkte benötigen). Neben der Sicherung von SQL- und SAP HANA-Workloads und einer Sicherung mit dem MARS-Agent werden private Endpunkte bei einer Azure-VM-Sicherung auch für die Dateiwiederherstellung verwendet. Weitere Informationen finden Sie in der Tabelle unten:
-
-| Sicherung von Workloads in Azure-VM (SQL, SAP HANA), Sicherung mit MARS-Agent | Die Verwendung von privaten Endpunkten wird empfohlen, um die Sicherung und Wiederherstellung zu ermöglichen, ohne dass Sie IPs/FQDNs für Azure Backup oder Azure Storage aus Ihren virtuellen Netzwerken zu einer Zulassungsliste hinzufügen müssen. Stellen Sie in diesem Szenario sicher, dass VMs, die SQL-Datenbanken hosten, Azure AD-IPs oder FQDNs erreichen können. |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure-VM-Sicherung**                                         | Für die VM-Sicherung ist es nicht erforderlich, Zugriff auf IP-Adressen oder FQDNs zu gewähren. Es werden also keine privaten Endpunkte für eine Sicherung und Wiederherstellung von Datenträgern benötigt.  <br><br>   Die Dateiwiederherstellung aus einem Tresor mit privaten Endpunkten wäre jedoch auf virtuelle Netzwerke beschränkt, die einen privaten Endpunkt für den Tresor enthalten. <br><br>    Wenn Sie nicht verwaltete Datenträger mit Zugriffssteuerungslisten (ACLs) verwenden, stellen Sie sicher, dass das Speicherkonto mit den Datenträgern den Zugriff auf **vertrauenswürdige Microsoft-Dienste** erlaubt, wenn eine ACL vorhanden ist. |
-| **Azure Files-Sicherung**                                      | Azure Files-Sicherungen werden im lokalen Speicherkonto gespeichert. Es werden daher keine privaten Endpunkte für eine Sicherung und Wiederherstellung benötigt. |
+Diese Details helfen Ihnen, die Einschränkungen und Bedingungen zu verstehen, die erfüllt werden müssen, bevor Sie private Endpunkte für Ihre Tresore erstellen.
 
 ## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Erste Schritte mit dem Erstellen privater Endpunkte für die Azure Backup
 
@@ -135,6 +117,8 @@ Weitere Informationen zum Genehmigen privater Endpunkte mithilfe des Azure Resou
 ## <a name="manage-dns-records"></a>Verwalten von DNS-Einträgen
 
 Wie bereits beschrieben, müssen die erforderlichen DNS-Einträge in Ihren privaten DNS-Zonen oder -Servern vorhanden sein, um eine private Verbindung herstellen zu können. Sie können Ihren privaten Endpunkt entweder direkt in die privaten Azure-DNS-Zonen integrieren oder Ihre benutzerdefinierten DNS-Server verwenden, um dies zu erreichen, je nach Ihren Netzwerkeinstellungen. Dies muss für alle drei Dienste durchgeführt werden: Sicherungen, Blobs und Warteschlangen.
+
+Wenn Ihre DNS-Zone oder Ihr DNS-Server in einem Abonnement vorhanden ist, das sich von dem Abonnement mit dem privaten Endpunkt unterscheidet, ziehen Sie außerdem [Erstellen von DNS-Einträgen, wenn der DNS-Server bzw. die DNS-Zone sich in einem anderen Abonnement befindet](#create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription) zurate. 
 
 ### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>Bei Integration privater Endpunkte in private Azure-DNS-Zonen
 
@@ -534,28 +518,122 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     ```
 
+### <a name="set-up-proxy-server-for-recovery-services-vault-with-private-endpoint"></a>Einrichten eines Proxyservers für den Recovery Services-Tresor mit privatem Endpunkt
+
+Führen Sie die folgenden Schritte aus, um einen Proxyserver für einen virtuellen Azure-Computer oder einen lokalen Computer zu konfigurieren:
+
+1. Fügen Sie in der Ausnahme die folgenden Domänen hinzu, und umgehen Sie den Proxyserver.
+   
+   | Dienst | Domänennamen | Port |
+   | ------- | ------ | ---- |
+   | Azure Backup | *.backup.windowsazure.com | 443 |
+   | Azure Storage | *.blob.core.windows.net <br><br> *.queue.core.windows.net <br><br> *.blob.storage.azure.net | 443 |
+   | Azure Active Directory <br><br> Die in den Abschnitten 56 und 59 in [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) erwähnten Domänen-URLs wurden aktualisiert. | *.msftidentity.com, *.msidentity.com, account.activedirectory.windowsazure.com, accounts.accesscontrol.windows.net, adminwebservice.microsoftonline.com, api.passwordreset.microsoftonline.com, autologon.microsoftazuread-sso.com, becws.microsoftonline.com, clientconfig.microsoftonline-p.net, companymanager.microsoftonline.com, device.login.microsoftonline.com, graph.microsoft.com, graph.windows.net, login.microsoft.com, login.microsoftonline.com, login.microsoftonline-p.com, login.windows.net, logincert.microsoftonline.com, loginex.microsoftonline.com, login-us.microsoftonline.com, nexus.microsoftonline-p.com, passwordreset.microsoftonline.com, provisioningapi.microsoftonline.com <br><br> 20.190.128.0/18, 40.126.0.0/18, 2603:1006:2000::/48, 2603:1007:200::/48, 2603:1016:1400::/48, 2603:1017::/48, 2603:1026:3000::/48, 2603:1027:1::/48, 2603:1036:3000::/48, 2603:1037:1::/48, 2603:1046:2000::/48, 2603:1047:1::/48, 2603:1056:2000::/48, 2603:1057:2::/48 <br><br> *.hip.live.com, *.microsoftonline.com, *.microsoftonline-p.com, *.msauth.net, *.msauthimages.net, *.msecnd.net, *.msftauth.net, *.msftauthimages.net, *.phonefactor.net, enterpriseregistration.windows.net, management.azure.com, policykeyservice.dc.ad.msft.net | Wie anwendbar. |
+
+1. Erlauben Sie den Zugriff auf diese Domänen auf dem Proxyserver, und verknüpfen Sie die private DNS-Zone (`*.privatelink.<geo>.backup.windowsazure.com`, `*.privatelink.blob.core.windows.net`, `*.privatelink.queue.core.windows.net`) mit dem virtuellen Netzwerk, in dem der Proxyserver erstellt wird, oder verwenden Sie einen benutzerdefinierten DNS-Server mit den entsprechenden DNS-Einträgen. <br><br> Das virtuelle Netzwerk, in dem der Proxyserver ausgeführt wird, und das virtuelle Netzwerk, in dem die private Endpunkt-NIC erstellt wird, sollten per Peering verbunden werden, sodass der Proxyserver die Anforderungen an die private IP-Adresse umleiten kann. 
+
+Das folgende Diagramm zeigt ein Setup mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden.
+
+:::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="Diagramm eines Setups mit einem Proxyserver." lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
+
+### <a name="create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription"></a>Erstellen von DNS-Einträgen, wenn der DNS-Server bzw. die DNS-Zone sich in einem anderen Abonnement befindet
+
+In diesem Abschnitt werden die Fälle erläutert, in denen Sie eine DNS-Zone verwenden, die in einem Abonnement vorhanden ist, oder eine Ressourcengruppe, die sich von der Ressourcengruppe unterscheidet, die den privaten Endpunkt für den Recovery Services-Tresor enthält, z. B. eine Hub-and-Spoke-Topologie. Da die zum Erstellen von private Endpunkten (und der DNS-Einträge) verwendete verwaltete Identität nur über Berechtigungen für die Ressourcengruppe verfügt, in der die privaten Endpunkte erstellt werden, werden zusätzlich die erforderlichen DNS-Einträge benötigt. Verwenden Sie die folgenden PowerShell-Skripts, um DNS-Einträge zu erstellen.
+  
+>[!Note]
+>Sehen Sie sich den gesamten unten beschriebenen Prozess an, um die erforderlichen Ergebnisse zu erzielen. Der Prozess muss zweimal wiederholt werden – einmal während der ersten Ermittlung (um die für Kommunikationsspeicherkonten erforderlichen DNS-Einträge zu erstellen) und dann noch einmal während der ersten Sicherung (um die für Back-End-Speicherkonten erforderlichen DNS-Einträge zu erstellen).
+
+#### <a name="step-1-get-required-dns-entries"></a>Schritt 1: Abrufen der erforderlichen DNS-Einträge
+
+Verwenden Sie das Skript [PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1), um alle DNS-Einträge aufzulisten, die erstellt werden müssen.
+
+>[!Note]
+>In der folgenden Syntax bezieht sich `subscription` auf das Abonnement, in dem der private Endpunkt des Tresors erstellt werden soll.
+
+**Syntax für die Verwendung des Skripts**
+
+```azurepowershell
+./PrivateIP.ps1 -Subscription "<VaultPrivateEndpointSubscriptionId>" -VaultPrivateEndpointName "<vaultPrivateEndpointName>" -VaultPrivateEndpointRGName <vaultPrivateEndpointRGName> -DNSRecordListFile dnsentries.txt
+```
+
+**Beispielausgabe**
+
+```
+ResourceName                                                                 DNS                                                                       PrivateIP
+<vaultId>-ab-pod01-fc1         privatelink.eus.backup.windowsazure.com         10.12.0.15
+<vaultId>-ab-pod01-fab1        privatelink.eus.backup.windowsazure.com         10.12.0.16
+<vaultId>-ab-pod01-prot1       privatelink.eus.backup.windowsazure.com         10.12.0.17
+<vaultId>-ab-pod01-rec2        privatelink.eus.backup.windowsazure.com         10.12.0.18
+<vaultId>-ab-pod01-ecs1        privatelink.eus.backup.windowsazure.com         10.12.0.19
+<vaultId>-ab-pod01-id1         privatelink.eus.backup.windowsazure.com         10.12.0.20
+<vaultId>-ab-pod01-tel1        privatelink.eus.backup.windowsazure.com         10.12.0.21
+<vaultId>-ab-pod01-wbcm1       privatelink.eus.backup.windowsazure.com         10.12.0.22
+abcdeypod01ecs114        privatelink.blob.core.windows.net       10.12.0.23
+abcdeypod01ecs114        privatelink.queue.core.windows.net      10.12.0.24
+abcdeypod01prot120       privatelink.blob.core.windows.net       10.12.0.28
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.32
+abcdepod01prot110       privatelink.blob.core.windows.net       10.12.0.36
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.30
+abcdeypod01prot122       privatelink.blob.core.windows.net       10.12.0.34
+abcdepod01prot120       privatelink.blob.core.windows.net       10.12.0.26
+
+```
+
+#### <a name="step-2-create--dns-entries"></a>Schritt 2: Erstellen von DNS-Einträgen
+
+Erstellen Sie DNS-Einträge entsprechend den oben genannten Einträgen. Basierend auf dem verwendeten DNS-Typ gibt es zwei Alternativen zum Erstellen von DNS-Einträgen.
+
+**Fall 1**: Wenn Sie einen benutzerdefinierten DNS-Server verwenden, müssen Sie manuell Einträge für jeden Datensatz aus dem obigen Skript erstellen und überprüfen, ob der FQDN (ResourceName.DNS) in eine private IP-Adresse innerhalb des virtuellen Netzwerks aufgelöst wird.
+
+**Fall 2**: Wenn Sie Azure DNS Private Zones verwenden, können Sie das Skript [CreateDNSEntries.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/CreateDNSEntries.ps1) verwenden, um automatisch DNS-Einträge in der Zone „Privates DNS“ zu erstellen. In der folgenden Syntax ist `subscription` das in der Zone „Privates DNS“ vorhandene Abonnement.
+
+**Syntax für die Verwendung des Skripts**
+
+```azurepowershell
+/CreateDNSEntries.ps1 -Subscription <PrivateDNSZoneSubId> -DNSResourceGroup <PrivateDNSZoneRG> -DNSRecordListFile dnsentries.txt
+```
+
+#### <a name="summary-of-the-entire-process"></a>Zusammenfassung des gesamten Prozesses
+
+Um den privaten Endpunkt für RSV über diese Problemumgehung ordnungsgemäß einzurichten, müssen Sie folgende Schritte ausführen:
+
+1. Erstellen Sie einen privaten Endpunkt für den Tresor (wie weiter oben in diesem Artikel beschrieben).
+1. Lösen Sie die Ermittlung aus. Die Ermittlung für SQL/HANA schlägt mit _UserErrorVMInternetConnectivityIssue_ fehl, da DNS-Einträge für das Kommunikationsspeicherkonto fehlen.
+1. Führen Sie die Skripts aus, um DNS-Einträge abzurufen und entsprechende DNS-Einträge für das zuvor in diesem Abschnitt erwähnte Kommunikationsspeicherkonto zu erstellen.
+1. Lösen Sie die Ermittlung erneut aus. Dieses Mal sollte die Ermittlung gelingen.
+1. Lösen Sie die Sicherung aus. Die Sicherung für SQL/HANA und MARS kann fehlschlagen, da DNS-Einträge für Back-End-Speicherkonten fehlen, wie weiter oben in diesem Abschnitt erwähnt.
+1. Führen Sie die Skripts aus, um DNS-Einträge für das Back-End-Speicherkonto zu erstellen.
+1. Lösen Sie die Sicherung erneut aus. Dieses Mal sollten die Sicherungen gelingen.
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-Q. Kann ich einen privaten Endpunkt für einen vorhandenen Azure Backup-Tresor erstellen?<br>
-A. Nein, private Endpunkte können nur für neue Azure Backup-Tresore erstellt werden. Daher durfte der Tresor zu keiner Zeit Elemente enthalten, die durch ihn geschützt wurden. Vor der Einrichtung privater Endpunkte können keine Versuche erfolgen, Elemente im Tresor zu schützen.
+### <a name="can-i-create-a-private-endpoint-for-an-existing-backup-vaultbr"></a>Kann ich einen privaten Endpunkt für einen vorhandenen Azure Backup-Tresor erstellen?<br>
 
-Q. Ich habe versucht, ein Element in meinem Tresor zu schützen, was aber nicht gelang, und der Tresor enthält immer noch keine geschützten Elemente. Kann ich private Endpunkte für diesen Tresor erstellen?<br>
-A. Nein, mit dem Tresor darf in der Vergangenheit nicht versucht worden sein, Elemente darin zu schützen.
+Nein, private Endpunkte können nur für neue Azure Backup-Tresore erstellt werden. Daher durfte der Tresor zu keiner Zeit Elemente enthalten, die durch ihn geschützt wurden. Vor der Einrichtung privater Endpunkte können keine Versuche erfolgen, Elemente im Tresor zu schützen.
 
-Q. Ich habe einen Tresor, der private Endpunkte für Sicherung und Wiederherstellung nutzt. Kann ich später private Endpunkte für diesen Tresor hinzufügen oder entfernen, auch wenn ich Sicherungselemente darin geschützt habe?<br>
-A. Ja. Wenn Sie bereits private Endpunkte für einen Tresor und geschützte Sicherungselemente darin erstellt haben, können Sie später je nach Bedarf private Endpunkte hinzufügen oder entfernen.
+### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-create-private-endpoints-for-this-vaultbr"></a>Ich habe versucht, ein Element in meinem Tresor zu schützen, was aber nicht gelang, und der Tresor enthält immer noch keine geschützten Elemente. Kann ich private Endpunkte für diesen Tresor erstellen?<br>
 
-Q. Kann der private Endpunkt für Azure Backup auch für Azure Site Recovery genutzt werden?<br>
-A. Nein, der private Endpunkt für Backup kann nur für Azure Backup genutzt werden. Sie müssen einen neuen privaten Endpunkt für Azure Site Recovery erstellen, sofern vom Dienst unterstützt.
+Nein, mit dem Tresor darf in der Vergangenheit nicht versucht worden sein, Elemente darin zu schützen.
 
-Q. Ich habe einen der Schritte in diesem Artikel versäumt und das Schützen meiner Datenquelle fortgesetzt. Kann ich weiterhin private Endpunkte verwenden?<br>
-A. Wenn Sie die Schritte im Artikel nicht befolgen und Elemente weiterhin schützen, kann dies dazu führen, dass der Tresor private Endpunkte nicht nutzen kann. Es wird daher empfohlen, sich auf diese Checkliste zu beziehen, bevor Sie mit dem Schützen von Elementen fortfahren.
+### <a name="i-have-a-vault-thats-using-private-endpoints-for-backup-and-restore-can-i-later-add-or-remove-private-endpoints-for-this-vault-even-if-i-have-backup-items-protected-to-itbr"></a>Ich habe einen Tresor, der private Endpunkte für Sicherung und Wiederherstellung nutzt. Kann ich später private Endpunkte für diesen Tresor hinzufügen oder entfernen, auch wenn ich Sicherungselemente darin geschützt habe?<br>
 
-Q. Kann ich meinen eigenen DNS-Server verwenden, anstatt die private DNS-Zone in Azure oder eine integrierte private DNS-Zone zu nutzen?<br>
-A. Ja, Sie können Ihre eigenen DNS-Server verwenden. Stellen Sie jedoch sicher, dass alle erforderlichen DNS-Einträge wie in diesem Abschnitt beschrieben hinzugefügt werden.
+Ja. Wenn Sie bereits private Endpunkte für einen Tresor und geschützte Sicherungselemente darin erstellt haben, können Sie später je nach Bedarf private Endpunkte hinzufügen oder entfernen.
 
-Q. Muss ich zusätzliche Schritte auf meinem Server durchführen, nachdem ich den in diesem Artikel beschriebenen Prozess befolgt habe?<br>
-A. Nachdem Sie den in diesem Artikel beschriebenen Prozess befolgt haben, müssen Sie keine weiteren Schritte unternehmen, um private Endpunkte für Sicherung und Wiederherstellung zu nutzen.
+### <a name="can-the-private-endpoint-for-azure-backup-also-be-used-for-azure-site-recoverybr"></a>Kann der private Endpunkt für Azure Backup auch für Azure Site Recovery genutzt werden?<br>
+
+Nein, der private Endpunkt für Backup kann nur für Azure Backup genutzt werden. Sie müssen einen neuen privaten Endpunkt für Azure Site Recovery erstellen, sofern vom Dienst unterstützt.
+
+### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-private-endpointsbr"></a>Ich habe einen der Schritte in diesem Artikel versäumt und das Schützen meiner Datenquelle fortgesetzt. Kann ich weiterhin private Endpunkte verwenden?<br>
+
+Wenn Sie die Schritte im Artikel nicht befolgen und Elemente weiterhin schützen, kann dies dazu führen, dass der Tresor private Endpunkte nicht nutzen kann. Es wird daher empfohlen, sich auf diese Checkliste zu beziehen, bevor Sie mit dem Schützen von Elementen fortfahren.
+
+### <a name="can-i-use-my-own-dns-server-instead-of-using-the-azure-private-dns-zone-or-an-integrated-private-dns-zonebr"></a>Kann ich meinen eigenen DNS-Server verwenden, anstatt die private DNS-Zone in Azure oder eine integrierte private DNS-Zone zu nutzen?<br>
+
+Ja, Sie können Ihre eigenen DNS-Server verwenden. Stellen Sie jedoch sicher, dass alle erforderlichen DNS-Einträge wie in diesem Abschnitt beschrieben hinzugefügt werden.
+
+### <a name="do-i-need-to-perform-any-additional-steps-on-my-server-after-ive-followed-the-process-in-this-articlebr"></a>Muss ich zusätzliche Schritte auf meinem Server durchführen, nachdem ich den in diesem Artikel beschriebenen Prozess befolgt habe?<br>
+
+Nachdem Sie den in diesem Artikel beschriebenen Prozess befolgt haben, müssen Sie keine weiteren Schritte unternehmen, um private Endpunkte für Sicherung und Wiederherstellung zu nutzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

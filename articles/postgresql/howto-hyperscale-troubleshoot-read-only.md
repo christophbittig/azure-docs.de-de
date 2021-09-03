@@ -7,13 +7,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 6/4/2021
-ms.openlocfilehash: 13d0c630c38e71b243a32404b26e3a141a20a6b2
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/03/2021
+ms.openlocfilehash: 48ea5fbeacf1769f73b9d505e6cc8fb55e8c3a44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111561653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339803"
 ---
 # <a name="troubleshoot-read-only-access-to-azure-database-for-postgresql---hyperscale-citus"></a>Beheben von Problemen mit dem schreibgeschützten Zugriff auf Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -28,13 +28,13 @@ Genauer gesagt wird ein Hyperscale (Citus)-Knoten schreibgeschützt, wenn wenige
 ### <a name="on-the-coordinator-node"></a>Für den Koordinatorknoten
 
 * [Erhöhen der Speichergröße](howto-hyperscale-scale-grow.md#increase-storage-on-nodes) für den Koordinatorknoten und/oder
-* Verteilen lokaler Tabellen auf Workerknoten bzw. Löschen von Daten. Bei beiden Optionen müssen Sie `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE` ausführen, nachdem Sie eine Verbindung mit der Datenbank hergestellt haben und bevor Sie andere Befehle ausführen.
+* Verteilen lokaler Tabellen auf Workerknoten bzw. Löschen von Daten. Sie müssen `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE` ausführen, nachdem Sie eine Verbindung mit der Datenbank hergestellt haben und bevor Sie andere Befehle ausführen.
 
 ### <a name="on-a-worker-node"></a>Für einen Workerknoten
 
 * [Erhöhen der Speichergröße](howto-hyperscale-scale-grow.md#increase-storage-on-nodes) für die Workerknoten und/oder
 * [Ausgleichen von Daten](howto-hyperscale-scale-rebalance.md) mit anderen Knoten bzw. Löschen einiger Daten
-    * Bei beiden Optionen müssen Sie für den Workerknoten vorübergehend Lese-/Schreibzugriff festlegen. Senden Sie hierzu eine Supportanfrage. Wenn Sie eine Vorschauversion der Hyperscale (Citus)-Servergruppe ausführen, können Sie alternativ eine direkte Verbindung mit Workerknoten herstellen und `SET SESSION CHARACTERISTICS` wie oben beschrieben für den Koordinatorknoten verwenden.
+    * Sie müssen für den Workerknoten vorübergehend Lese-/Schreibzugriff festlegen. Sie können eine direkte Verbindung mit Workerknoten herstellen und wie oben beschrieben für `SET SESSION CHARACTERISTICS` den Koordinatorknoten verwenden.
 
 ## <a name="prevention"></a>Prävention
 
