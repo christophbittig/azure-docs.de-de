@@ -195,11 +195,11 @@
           href: howto-private-link.md
         - name: 'Verwalten des Zugriffs auf Ressourcen: Spoke-VNET (P2S)'
           href: manage-secure-access-resources-spoke-p2s.md
-    - name: Systemüberwachung
+    - name: Überwachung
       items:
         - name: "Überwachen von Virtual\_WAN"
           href: monitor-virtual-wan.md
-        - name: Azure Monitor-Erkenntnisse für Virtual WAN
+        - name: Azure Monitor Insights
           href: azure-monitor-insights.md
 - name: Verweis
   items:

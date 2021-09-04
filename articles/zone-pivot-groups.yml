@@ -252,6 +252,16 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-cs-cpp-py
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-twenty-three
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache oder der CLI
@@ -1216,6 +1226,18 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: iot-hub-set1
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
 - id: facility-ontology-schema
   title: 'Creator: Facility Ontology'
   prompt: Auswählen einer Facility Ontology-Version
@@ -1261,9 +1283,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: d6ef125a7b5cd8a3122e9a965eda0f71f99c0d69
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 6043c9ad329e91e258a57df19cb0a6e4ccb3ac93
+  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113594659"
+  ms.lasthandoff: 09/04/2021
+  ms.locfileid: "123471442"
