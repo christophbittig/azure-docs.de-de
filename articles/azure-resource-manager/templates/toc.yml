@@ -407,6 +407,14 @@
         - name: Übergeben vertraulicher Werte
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Exportieren von Vorlagen
+      items:
+        - name: Azure CLI
+          href: export-template-cli.md
+        - name: Portal
+          href: export-template-portal.md
+        - name: PowerShell
+          href: export-template-powershell.md
     - name: Testvorlagen
       items:
         - name: Testtoolkit
@@ -431,12 +439,6 @@
           href: add-template-to-azure-pipelines.md
         - name: 'Bereitstellen: GitHub Actions'
           href: deploy-github-actions.md
-    - name: Entdecken von Vorlageneigenschaften
-      items:
-        - name: Exportieren der Vorlage
-          href: export-template-portal.md
-        - name: Ermitteln von Ressourcen
-          href: view-resources.md
     - name: Verwenden von Erstellungstools
       items:
         - name: Visual Studio

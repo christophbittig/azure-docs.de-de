@@ -10,12 +10,12 @@ metadata:
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 01/18/2021
-  ms.openlocfilehash: 39bc78471ea363372aef1d6fad2eee3a8acbf5d6
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: 7c91c2e1b01f6ee96805ee69cc66cd8a62677905
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121749449"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123430952"
 landingContent:
 - title: Informationen zu Azure Managed Instance for Apache Cassandra
   linkLists:
@@ -27,6 +27,12 @@ landingContent:
     links:
     - text: Gegenüberstellung von Azure Managed Instance for Apache Cassandra und Cassandra-API für Azure Cosmos DB
       url: compare-cosmosdb-managed-instance.md
+  - linkListType: tutorial
+    links:
+    - text: Livemigration
+      url: dual-write-proxy-migration.md
+    - text: Offlinemigration
+      url: spark-migration.md
 - title: Erstellen und Bereitstellen eines Clusters
   linkLists:
   - linkListType: quickstart

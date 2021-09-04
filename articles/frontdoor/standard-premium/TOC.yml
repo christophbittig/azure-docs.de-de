@@ -39,6 +39,8 @@
           href: concept-rule-set-actions.md
         - name: Umleiten und Umschreiben von URLs
           href: concept-rule-set-url-redirect-and-rewrite.md
+    - name: Geofilterung
+      href: geo-filtering.md
     - name: Integritätstests
       href: concept-health-probes.md
     - name: Private Link
