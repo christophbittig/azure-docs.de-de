@@ -7,24 +7,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7170b22a0e85a0c23e49582f9cfed45128a91dd8
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ab899a58bab3c4e37b6aa66669f0e060fb7e7e28
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559194"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355431"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
-KI-Anreicherung ist Erweiterung von [Indexern](search-indexer-overview.md), die zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen verwendet wird. Durch Anreicherung und Extraktion können Ihre Inhalte in Indexer-Ausgabeobjekten – entweder einem [Suchindex](search-what-is-an-index.md) oder [Wissensspeicher](knowledge-store-concept-intro.md) – einfacher durchsucht werden. 
+In Azure Cognitive Search bezieht sich KI-Anreicherung auf integrierte kognitive und benutzerdefinierte Skills, die während der Indizierung Inhalte transformieren und generieren. Anreicherungen erstellen neue Informationen, wo bisher keine vorhanden waren: Extrahieren von Informationen aus Bildern, Erkennen von Stimmungen, Schlüsselausdrücke und Entitäten aus Text, um nur einige zu nennen. Anreicherungen fügen auch Struktur zu undifferenziertem Text hinzu. Alle diese Prozesse führen zu Dokumenten, die die Volltextsuche effektiver machen. In vielen Fällen sind angereicherte Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
 
-Extrahierung und Anreicherung werden über *kognitive Fähigkeiten* implementiert, die an die Indexer-basierte Pipeline angefügt sind. Sie können integrierte Skills von Microsoft verwenden oder externe Verarbeitung in einen [*benutzerdefinierten Skill*](cognitive-search-create-custom-skill-example.md) einbetten, den Sie erstellen. Zu Beispielen für benutzerdefinierte Skills zählen ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, wie z. B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
+Die Anreicherung wird durch ein [Skillset](cognitive-search-working-with-skillsets.md) definiert, das mit einem [Indexer](search-indexer-overview.md) verbunden ist. Der Indexer extrahiert den Inhalt und richtet ihn ein, während das Skillset neue Informationen und Strukturen aus Bildern, Blobs und anderen unstrukturierten Datenquellen identifiziert, analysiert und erstellt. Das Ergebnis einer Anreicherungspipeline ist entweder ein [Suchindex](search-what-is-an-index.md) oder ein [Wissensspeicher](knowledge-store-concept-intro.md).
 
-Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden: 
+Ein Skillset kann integrierte Skills aus Cognitive Search enthalten oder in einem [*benutzerdefinierten Skill*](cognitive-search-create-custom-skill-example.md) bereitgestellte externe Verarbeitung einbetten. Zu Beispielen für benutzerdefinierte Skills zählen ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, wie z. B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
-+ Zu den Skills in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung, [Stimmungserkennung](cognitive-search-skill-sentiment-v3.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md). Mit diesen Fähigkeiten wird unstrukturierter Text in Form von durchsuchbaren und filterbaren Feldern in einem Index zugeordnet.
+Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden:
+
++ Zu den Skills in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung, [Stimmungserkennung (einschließlich Opinion Mining)](cognitive-search-skill-sentiment-v3.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md). Mit diesen Fähigkeiten wird unstrukturierter Text in Form von durchsuchbaren und filterbaren Feldern in einem Index zugeordnet.
 
 + Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Bildausrichtung. Diese Fähigkeiten erstellen Textdarstellungen von Bildinhalt, sodass er mit den Abfragefunktionen von Azure Cognitive Search durchsucht werden kann.
 
@@ -36,7 +38,7 @@ Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase de
 
 ## <a name="feature-availability"></a>Verfügbarkeit von Funktionen
 
-KI-Anreicherung ist in Regionen verfügbar, in denen auch Azure Cognitive Services verfügbar ist.  Auf der Seite [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) können Sie die aktuelle Verfügbarkeit von KI-Anreicherung überprüfen.  KI-Anreicherung ist in allen unterstützten Regionen mit Ausnahme der folgenden verfügbar:
+KI-Anreicherung ist in Regionen verfügbar, in denen auch Azure Cognitive Services verfügbar ist. Auf der Seite [Verfügbare Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=search) können Sie die aktuelle Verfügbarkeit von KI-Anreicherung überprüfen. KI-Anreicherung ist in allen unterstützten Regionen mit Ausnahme der folgenden verfügbar:
 
 + Australien, Südosten
 + China, Norden 2
@@ -47,92 +49,99 @@ Wenn sich Ihr Suchdienst in einer dieser Regionen befindet, können Sie keine Sk
 
 ## <a name="when-to-use-ai-enrichment"></a>Einsatzgebiete der KI-Anreicherung
 
-Integrierte kognitive Qualifikationen können verwendet werden, wenn es sich bei Ihren Rohinhalten um unstrukturierten Text, um Bildinhalte oder um Inhalte handelt, für die Spracherkennung und -übersetzung benötigt werden. Die Anwendung von KI in Form der integrierten kognitiven Qualifikationen kann den Nutzen dieser Inhalte in Ihren Such- und Data Science-Apps erhöhen. 
+Sie sollten eine Anreicherung in Betracht ziehen, wenn es sich bei Ihren Rohinhalten um unstrukturierten Text, um Bildinhalte oder um Inhalte handelt, für die Spracherkennung und -übersetzung benötigt werden. Die Anwendung von KI in Form der integrierten kognitiven Qualifikationen kann den Nutzen dieser Inhalte in Ihren Such- und Data Science-Apps erhöhen. 
 
 Darüber hinaus können Sie auch eine benutzerdefinierte Qualifikation hinzufügen, wenn Sie über Open-Source-, Drittanbieter- oder Erstanbietercode verfügen, den Sie in die Pipeline integrieren möchten. Zu dieser Kategorie gehören Klassifizierungsmodelle, mit denen wichtige Merkmale verschiedener Dokumenttypen identifiziert werden. Es könnte aber jedes beliebige Paket verwendet werden, das den Nutzen Ihrer Inhalte erhöht.
 
-### <a name="more-about-built-in-skills"></a>Weitere Informationen zu integrierten Qualifikationen
+### <a name="use-cases-for-built-in-skills"></a>Anwendungsfälle für integrierte Skills
 
-Ein [Skillset](cognitive-search-defining-skillset.md) mit integrierten Fähigkeiten eignet sich sehr gut für die folgenden Anwendungsszenarien:
+Ein [Skillset](cognitive-search-defining-skillset.md) mit integrierten Skills eignet sich sehr gut für die folgenden Anwendungsszenarien:
 
-+ Gescannte Dokumente (JPEG), die für die Volltextsuche verfügbar gemacht werden sollen. Sie können eine Fähigkeit zur optischen Zeichenerkennung (Optical Character Recognition, OCR) anfügen, um Text aus JPEG-Dateien zu identifizieren, zu extrahieren und zu erfassen.
++ [Optische Zeichenerkennung (Optical Character Recognition, OCR)](cognitive-search-skill-ocr.md), die Schriftarten und handschriftlichen Text in gescannten Dokumenten (JPEG) erkennt, ist möglicherweise der am häufigsten verwendete Skill. Durch Anfügen des OCR-Skills wird Text aus JPEG-Dateien identifiziert, extrahiert und erfasst.
+
++ [Textübersetzung](cognitive-search-skill-text-translation.md) von mehrsprachigen Inhalten ist ein weiterer häufig verwendeter Skill. Die Spracherkennung ist in die Textübersetzung integriert, aber Sie können [Sprachenerkennung](cognitive-search-skill-language-detection.md) auch unabhängig ausführen, wenn Sie nur die Sprachcodes des Inhalts in Ihrem Korpus wünschen.
 
 + PDF-Dateien mit Kombinationen aus Bild und Text. Texte in PDF-Dateien können während der Indizierung extrahiert werden, ohne dass die Schritte zur Anreicherung ausgeführt werden. Beim Hinzufügen von Bildverarbeitung und natürlicher Sprachverarbeitung erzielen Sie jedoch häufig ein besseres Ergebnis als bei einer Standardindizierung.
 
-+ Mehrsprachiger Inhalt, für den Sie die Spracherkennung und möglicherweise die Textübersetzung anwenden möchten.
-
 + Unstrukturierte oder teilweise strukturierte Dokumente mit Inhalten, die eine inhärente Bedeutung oder einen Kontext haben, der im größeren Dokument ausgeblendet ist. 
 
-  Blobs enthalten häufig umfangreiche Inhalte, die in ein einzelnes „Feld“ gepackt sind. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
+  Blobs enthalten häufig umfangreiche Inhalte, die in ein einzelnes „Feld“ gepackt sind. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Skills, die hilfreich sein können: [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md) (Personen, Organisationen und Standorte, um einige zu nennen).
 
   Darüber hinaus können Sie mit integrierten Fähigkeiten Inhalte durch Textaufteilung, Textzusammenführung und Shape-Vorgänge neu strukturieren.
 
-### <a name="more-about-custom-skills"></a>Weitere Informationen zu benutzerdefinierten Qualifikationen
+### <a name="use-cases-for-custom-skills"></a>Anwendungsfälle für benutzerdefinierte Skills
 
 Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](../cognitive-services/form-recognizer/overview.md), die Integration der [Bing-Entitätssuche-API](./cognitive-search-create-custom-skill-example.md) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-## <a name="steps-in-an-enrichment-pipeline"></a>Schritte in einer Anreicherungspipeline <a name="enrichment-steps"></a>
+## <a name="enrichment-steps"></a>Anreicherungsschritte <a name="enrichment-steps"></a>
 
-Eine Anreicherungspipeline basiert auf [*Indexern*](search-indexer-overview.md). Indexer füllen einen Index auf der Grundlage von Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle für Dokumententschlüsselung auf. Die jetzt an Indexer angefügten Fähigkeiten fangen Dokumente entsprechend dem/den von Ihnen definierten Skillset(s) ab und reichern sie an. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Cognitive Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
+Eine Anreicherungspipeline besteht aus [*Indexern*](search-indexer-overview.md), die über bestimmte [*Skillsets*](cognitive-search-working-with-skillsets.md) verfügen. Ein Skillset definiert die Anreicherungsschritte, und der Indexer steuert das Skillset. Beim Konfigurieren eines Indexers können Sie Eigenschaften wie Ausgabefeldzuordnungen einbeziehen, die angereicherte Inhalte an einen [Suchindex](search-what-is-an-index.md) oder einen [Wissensspeicher](knowledge-store-concept-intro.md) senden.
+
+Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Cognitive Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.
 
 ### <a name="step-1-connection-and-document-cracking-phase"></a>Schritt 1: Phase der Entschlüsselung von Verbindung und Dokument
 
-Am Anfang der Pipeline befindet sich unstrukturierter Text oder Nicht-Text-Inhalt (z. B. Bilder, gescannte Dokumente oder JPEG-Dateien). Die Daten müssen in einem Azure-Datenspeicherdienst enthalten sein, auf den ein Indexer Zugriff hat. Indexer können Quelldokumente entschlüsseln, um Text aus Quelldaten zu extrahieren. Dokumententschlüsselung ist der Prozess des Extrahierens oder Erstellens von Textinhalt aus Nicht-Text-Quellen während der Indizierung.
+Indexer stellen mithilfe von Informationen, die in einer Indexerdatenquelle bereitgestellt werden, eine Verbindung mit externen Quellen her. Wenn sich der Indexer mit der Ressource verbindet, [„zerlegt“ er die Dokumente](search-indexer-overview.md#document-cracking), um Text und Bilder zu extrahieren. Bildinhalte können an Skills weitergeleitet werden, die die Bildverarbeitung durchführen, während Textinhalte in die Warteschlange für die Textverarbeitung gestellt werden. 
 
 ![Phase der Dokumententschlüsselung](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Dokumententschlüsselung")
 
- Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint- und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
+In diesem Schritt werden alle anfänglichen oder rohen Inhalte zusammengestellt, die eine KI-Anreicherung durchlaufen. Für jedes Dokument wird eine Anreicherungsstruktur erstellt. Anfänglich ist die Struktur nur eine Stammknotendarstellung, aber sie wächst und wird während der Ausführung des Skillsets strukturiert.
 
-### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Schritt 2: Phase der kognitiven Fähigkeiten und Anreicherung
+### <a name="step-2-skillset-enrichment-phase"></a>Schritt 2: Phase der Skillsetanreicherung
 
-Die Anreicherung erfolgt durch *kognitive Fähigkeiten*, die atomische Vorgänge durchführen. Sobald Sie eine PDF-Datei entschlüsselt haben, können Sie beispielsweise die Entitätserkennung, die Sprachenerkennung oder die Schlüsselbegriffserkennung anwenden, um neue Felder in Ihrem Index zu erstellen, die in der Quelle nativ nicht verfügbar sind. Die Auflistung der in Ihrer Pipeline verwendeten Fähigkeiten wird als *Fähigkeitengruppe* bezeichnet.  
+Ein Skillset definiert die atomaren Vorgänge, die für jedes Dokument ausgeführt werden. Für aus einer PDF-Datei extrahierten Texte und extrahierte Bilder, könnte ein Skillset beispielsweise die Entitätserkennung, die Sprachenerkennung oder die Schlüsselbegriffserkennung anwenden, um neue Felder in Ihrem Index zu erstellen, die nativ in der Quelle nicht verfügbar sind. 
 
 ![Phase der Anreicherung](./media/cognitive-search-intro/enrichment-phase-blowup.png "Phase der Anreicherung")
 
-Ein Skillset basiert auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) oder [benutzerdefinierten Fähigkeiten](cognitive-search-create-custom-skill-example.md), die von Ihnen bereitgestellt und mit dem Skillset verbunden werden. Eine Fähigkeitengruppe kann minimal oder höchst komplex sein. Sie bestimmt nicht nur den Verarbeitungstyp, sondern auch die Reihenfolge der Vorgänge. Eine Fähigkeitengruppe bietet zusammen mit den als Bestandteil eines Indexers definierten Feldzuordnungen eine umfassende Beschreibung der Anreicherungspipeline. Weitere Informationen zum Zusammensetzen all dieser Teile finden Sie unter [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md).
+ Eine Skillset kann minimal oder höchst komplex sein und bestimmt nicht nur den Verarbeitungstyp, sondern auch die Reihenfolge der Vorgänge. Die meisten Skillsets enthalten etwa drei bis fünf Skills.
+
+Ein Skillset bietet zusammen mit den als Bestandteil eines Indexers definierten [Ausgabefeldzuordnungen](cognitive-search-output-field-mapping.md) eine umfassende Beschreibung der Anreicherungspipeline. Weitere Informationen zum Zusammensetzen all dieser Teile finden Sie unter [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md).
 
 Die Pipeline generiert intern eine Sammlung angereicherter Dokumente. Sie können entscheiden, welche Teile der angereicherten Dokumente indizierbaren Feldern in Ihrem Suchindex zugeordnet werden sollen. Wenn Sie beispielsweise die Fähigkeiten „Schlüsselbegriffserkennung“ und „Entitätserkennung“ angewendet haben, würden diese neuen Felder ein Bestandteil des angereicherten Dokuments und können Feldern in Ihrem Index zugeordnet werden. Weitere Informationen zu Eingabe-/Ausgabeformationen finden Sie unter [Anmerkungen](cognitive-search-concept-annotations-syntax.md).
 
-#### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Hinzufügen eines knowledgeStore-Elements zum Speichern von Anreicherungen
+### <a name="step-3-indexing"></a>Schritt 3: Indizierung
 
-Die [REST-API-Version 2020-06-30 des Search-Diensts](/rest/api/searchservice/) erweitert Qualifikationsgruppen um eine `knowledgeStore`-Definition, die eine Azure Storage-Verbindung und Projektionen bereitstellt, die beschreiben, wie die Anreicherungen gespeichert werden. Dies geschieht zusätzlich zu Ihrem Index. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. Weitere Informationen finden Sie unter [Wissensspeicher](knowledge-store-concept-intro.md).
+Die Indizierung ist der Prozess, bei dem rohe und angereicherte Inhalte als Felder in einem Suchindex erfasst werden, bzw. als [Projektionen](knowledge-store-projection-overview.md), wenn auch ein Wissensspeicher erstellt wird. Derselbe angereicherte Inhalt kann in beiden angezeigt werden, indem er mithilfe von impliziten oder expliziten Feldzuordnungen an die richtigen Felder gesendet wird.
 
-### <a name="step-3-search-index-and-query-based-access"></a>Schritt 3: Suchindex und abfragebasierter Zugriff
+Angereicherte Inhalte werden während der Ausführung des Skillsets generiert und sind temporär, es sei denn, Sie speichern sie. Damit angereicherte Inhalte in einem Suchindex angezeigt werden, muss der Indexer über Zuordnungsinformationen verfügen, sodass er angereicherten Inhalt an ein Feld in einem Suchindex senden kann. [Ausgabefeldzuordnungen](cognitive-search-output-field-mapping.md) stellen diese Verbindungen her.
 
-Nach Abschluss der Verarbeitung verfügen Sie über einen Suchindex mit angereicherten Dokumenten, die mit Azure Cognitive Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [Abfragen des Indexes](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. 
+## <a name="saving-enriched-output"></a>Speichern der angereicherten Ausgabe
 
-![Index mit Suchsymbol](./media/cognitive-search-intro/search-phase-blowup.png "Index mit Suchsymbol")
+In Azure Cognitive Search speichert ein Indexer die von ihm erstellte Ausgabe.
 
-Der Index ist vergleichbar mit beliebigen anderen Indizes, die für Azure Cognitive Search erstellt werden können: Sie können ihn durch benutzerdefinierte Analysen ergänzen, Fuzzysuchabfragen aufrufen, gefilterte Suchvorgänge hinzufügen oder zur Umgestaltung der Suchergebnisse mit Bewertungsprofilen experimentieren.
+Ein [durchsuchbarer Index](search-what-is-an-index.md) ist ein Index der Ausgaben, der immer von einem Indexer erstellt wird. Die Spezifikation eines Indexes ist eine Indexeranforderung, und wenn Sie ein Skillset anfügen, werden die Ausgabe des Skillsets sowie alle Felder, die direkt aus der Quelle importiert werden, verwendet, um den Index zu füllen. In der Regel werden die Ergebnisse bestimmter Skills, z. B. Schlüsselbegriffe oder Stimmungswerte, im Index in zu diesem Zweck erstellten Feldern erfasst.
 
-Indizes werden über ein Indexschema generiert, das die Felder, Attribute und weitere Konstrukte definiert, die an einen bestimmten Index angefügt wurden, wie z.B. Bewertungsprofile und Synonymzuordnungen. Nachdem ein Index definiert und aufgefüllt wurde, können Sie die Indizierung inkrementell durchführen, um neue und aktualisierte Quelldokumente zu übernehmen. Für bestimmte Änderungen ist eine vollständige Neuerstellung erforderlich. Sie sollten ein kleines Dataset verwenden, bis der Schemaentwurf stabil ist. Weitere Informationen finden Sie unter [Neuerstellen eines Indexes](search-howto-reindex.md).
+Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine optionale Ausgabe, die für nachgeschaltete Apps wie Knowledge Mining verwendet wird. Ein Wissensspeicher wird durch ein Skillset definiert. Seine Definition bestimmt, ob Ihre angereicherten Dokumente als Tabellen oder Objekte (Dateien oder Blobs) projiziert werden. Tabellarische Projektionen eignen sich gut für interaktive Analysen in Tools wie Power BI, während Dateien und Blobs typischerweise in Data Science- oder ähnlichen Prozessen verwendet werden.
 
-**Prüfliste: Typischer Workflow**
+Schließlich kann ein Indexer für die potenzielle Wiederverwendung in nachfolgenden Skillsetausführungen [angereicherte Dokumente in Azure Blob Storage zwischenspeichern](cognitive-search-incremental-indexing-conceptual.md). Zwischengespeicherte Anreicherungen können von demselben Skillset verwendet werden, das Sie zu einem späteren Zeitpunkt erneut ausführen. Das Zwischenspeichern ist hilfreich, wenn Ihr Skillset Bildanalyse oder OCR umfasst und Sie Zeit und Kosten für die erneute Verarbeitung von Bilddateien vermeiden möchten.
 
-1. Fügen Sie Teilmengen Ihrer Azure-Quelldaten in eine repräsentative Stichprobe ein. Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
+Indizes und Wissensspeicher sind vollständig unabhängig voneinander. Sie müssen zwar einen Index anfügen, um die Indexeranforderungen zu erfüllen, aber wenn Ihr einziges Ziel ein Wissensspeicher ist, können Sie den Index ignorieren, nachdem er aufgefüllt wurde. Löschen Sie ihn jedoch nicht. Wenn Sie den Indexer und das Skillset erneut ausführen möchten, benötigen Sie den Index, damit der Indexer ausgeführt werden kann.
 
-1. Erstellen Sie ein [Datenquellenobjekt](/rest/api/searchservice/create-data-source) in Azure Cognitive Search, um eine Verbindungszeichenfolge für den Datenabruf bereitzustellen.
+## <a name="using-enriched-content"></a>Verwenden angereicherter Inhalte
 
-1. Erstellen Sie mithilfe von Anreicherungsschritten [Fähigkeitengruppen](/rest/api/searchservice/create-skillset).
+Nach Abschluss der Verarbeitung verfügen Sie über einen [Suchindex](search-what-is-an-index.md) mit angereicherten Dokumenten, die mit Azure Cognitive Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [Abfragen des Indexes](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. Der Index ist vergleichbar mit beliebigen anderen Indizes, die für Azure Cognitive Search erstellt werden können: Sie können Textanalyse durch benutzerdefinierte Analysen ergänzen, Fuzzysuchabfragen aufrufen, Filter hinzufügen oder zur Optimierung der Suchrelevanz mit Bewertungsprofilen experimentieren.
 
-1. Definieren Sie das [Indexschema](/rest/api/searchservice/create-index). Die *Fields*-Auflistung enthält Felder aus Quelldaten. Sie sollten zudem zusätzliche Felder durch Stubs ersetzen, um generierte Werte für Inhalte zu speichern, die während der Anreicherung erstellt werden.
+Sie könnten auch einen [Wissensspeicher](knowledge-store-concept-intro.md) verwenden. Der Wissensspeicher enthält Daten, die in Knowledge Mining-Szenarien wie Analysen oder Machine Learning genutzt werden können. Sie können [Storage Explorer](knowledge-store-view-storage-explorer.md), [Power BI](knowledge-store-connect-power-bi.md) oder jede andere Anwendung verwenden, die eine Verbindung zu Azure Storage herstellt.
 
-1. Definieren Sie den [Indexer](/rest/api/searchservice/create-indexer), der auf die Datenquelle, die Fähigkeitengruppen und den Index verweist.
+## <a name="checklist-a-typical-workflow"></a>Prüfliste: Typischer Workflow
 
-1. Fügen Sie *outputFieldMappings* innerhalb des Indexers hinzu. In diesem Abschnitt wird die Ausgabe aus der Fähigkeitengruppe (in Schritt 3) den Eingabefeldern im Indexschema (in Schritt 4) zugeordnet.
+1. Beim Starten eines Projekts ist es hilfreich, zunächst mit einer Teilmenge von Daten zu arbeiten. Der Indexer- und Skillsetentwurf ist ein iterativer Prozess, und die Iteration erfolgt schneller, wenn Sie mit einem kleinen repräsentativen Datensatz arbeiten.
 
-1. Senden Sie die gerade erstellte Anforderung *Indexer erstellen* (eine POST-Anforderung mit einer Indexerdefinition im Anforderungstext), um den Indexer in Azure Cognitive Search darzustellen. Dieser Schritt befasst sich mit der Ausführung des Indexers durch Aufrufen der Pipeline.
+1. Erstellen Sie eine [Datenquelle](/rest/api/searchservice/create-data-source), die eine Verbindung zu Ihren Daten angibt.
+
+1. Erstellen Sie ein [Skillset](/rest/api/searchservice/create-skillset) zum Hinzufügen von Anreicherungen.
+
+1. Erstellen Sie ein [Indexschema](/rest/api/searchservice/create-index), das einen Suchindex definiert.
+
+1. Erstellen Sie einen [Indexer](/rest/api/searchservice/create-indexer), der alle oben genannten Komponenten zusammenführt. Der erstellte oder ausgeführte Indexer ruft die Daten ab, führt das Skillset aus und lädt den Index.
 
 1. Führen Sie zum Auswerten von Ergebnissen und zum Ändern von Code Abfragen aus, um Fähigkeitengruppen, Schemas oder die Indexerkonfiguration zu aktualisieren.
 
-1. [Setzen Sie den Indexer zurück](search-howto-reindex.md), bevor Sie die Pipeline neu erstellen.
+Zur Iteration der oben genannten Schritte [setzen Sie den Indexer zurück](search-howto-reindex.md), bevor Sie die Pipeline neu erstellen, oder löschen Sie die Objekte bei jeder Ausführung, und erstellen Sie sie neu (empfohlen, wenn Sie den Free-Tarif verwenden). Sie sollten auch die [Zwischenspeicherung von Anreicherungen aktivieren](cognitive-search-incremental-indexing-conceptual.md), um vorhandene Anreicherungen nach Möglichkeit wiederzuverwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Dokumentation zur KI-Anreicherung](cognitive-search-resources-documentation.md)
-+ [Beispiel: Erstellen einer benutzerdefinierten Fähigkeit für die KI-Anreicherung (C#)](cognitive-search-create-custom-skill-example.md)
 + [Schnellstart: Testen der KI-Anreicherung in einer exemplarischen Vorgehensweise im Portal](cognitive-search-quickstart-blob.md)
-+ [Tutorial: Weitere Informationen zu den APIs für die KI-Anreicherung](cognitive-search-tutorial-blob.md)
++ [Tutorial: Informationen zu den REST-APIs für die KI-Anreicherung](cognitive-search-tutorial-blob.md)
 + [Wissensspeicher](knowledge-store-concept-intro.md)
 + [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md)
-+ [Tipps zur Problembehandlung](cognitive-search-concept-troubleshooting.md)

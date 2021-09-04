@@ -57,12 +57,11 @@
         - name: Konfigurieren von Containern
           href: containers/form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Containerimagetags
+          href: containers/form-recognizer-container-image-tags.md
         - name: Verwenden von Containerinstanzen
           maintainContext: true
           href: ../../cognitive-services/containers/azure-container-instance-recipe.md
-        - name: "Gesamte Dokumentation zu Cognitive\_Services-Containern"
-          href: ../../cognitive-services/containers/index.yml
-          maintainContext: true
     - name: Sichern und Wiederherstellen von Modellen
       href: disaster-recovery.md
     - name: Unternehmensfähigkeit

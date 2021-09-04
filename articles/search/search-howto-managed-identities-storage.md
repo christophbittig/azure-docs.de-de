@@ -2,23 +2,23 @@
 title: Einrichten einer Verbindung mit einem Speicherkonto mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
 description: Hier erfahren Sie, wie Sie mithilfe einer verwalteten Identität eine Indexerverbindung mit einem Azure Storage-Konto einrichten.
-manager: luisca
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 91ca017bf94f2c9a75a8016fb861cc085dc47ebe
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/02/2021
+ms.openlocfilehash: 7dd06e48d6d610b99f6c52affcd1d6101e04c9ba
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556962"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356405"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
 Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit einer Azure-Speicherkonto mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
+
+Sie können eine systemseitig zugewiesene verwaltete Identität oder eine benutzerseitig zugewiesene verwaltete Identität (Vorschau) verwenden.
 
 Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexer ist, und wie Sie einen Indexer für Ihre Datenquelle einrichten. Weitere Informationen finden Sie unter den folgenden Links:
 * [Indexer (Übersicht)](search-indexer-overview.md)
@@ -26,9 +26,11 @@ Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexe
 * [Azure Data Lake Storage Gen2-Indexer](search-howto-index-azure-data-lake-storage.md)
 * [Azure-Tabellenindexer](search-howto-indexing-azure-tables.md)
 
-## <a name="set-up-the-connection"></a>Einrichten der Verbindung
+## <a name="1---set-up-a-managed-identity"></a>1: Einrichten einer verwalteten Identität
 
-### <a name="1---turn-on-system-assigned-managed-identity"></a>1\. Aktivieren einer systemseitig zugewiesenen verwalteten Identität
+Richten Sie die [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) mit einer der folgenden Optionen ein.
+
+### <a name="option-1---turn-on-system-assigned-managed-identity"></a>Option 1: Aktivieren einer systemseitig zugewiesenen verwalteten Identität
 
 Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert ist, wird in Azure eine Identität für den Suchdienst erstellt, die für die Authentifizierung bei anderen Azure-Diensten innerhalb desselben Mandanten und desselben Abonnements verwendet werden kann. Anschließend können Sie diese Identität in Azure RBAC-Zuweisungen (rollenbasierte Zugriffssteuerung) verwenden, die den Zugriff auf Daten während der Indizierung ermöglichen.
 
@@ -38,9 +40,52 @@ Nach dem Auswählen von **Speichern** wird eine Objekt-ID angezeigt, die dem Suc
 
 ![Objekt-ID](./media/search-managed-identities/system-assigned-identity-object-id.png "ObjectID")
  
-### <a name="2---add-a-role-assignment"></a>2\. Hinzufügen einer Rollenzuweisung
+### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>Option 2: Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zum Suchdienst (Vorschau)
 
-In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigung, Daten von Ihrem Speicherkonto zu lesen.
+Wenn Sie noch keine benutzerseitig zugewiesene verwaltete Identität erstellt haben, müssen Sie sie erstellen. Eine benutzerseitig verwaltete Identität ist eine Azure-Ressource.
+
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) an.
+1. Wählen Sie **+ Ressource erstellen**.
+1. Suchen Sie in der Suchleiste „Dienste und Marketplace durchsuchen“ nach „Benutzerseitig zugewiesene verwaltete Identität“, und wählen Sie dann **Erstellen** aus.
+1. Geben Sie einen beschreibenden Namen für die Identität ein.
+
+Weisen Sie dann dem Suchdienst eine benutzerseitig zugewiesene verwaltete Identität zu. Dies kann mithilfe der [Verwaltungs-API 2021-04-01-preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) erfolgen.
+
+Die Identitätseigenschaft verwendet einen Typ und mindestens eine vollqualifizierte vom Benutzer zugewiesene Identität:
+
+* **type** ist der Typ der Identität. Gültige Werte sind „SystemAssigned“, „UserAssigned“ oder „SystemAssigned, UserAssigned“, wenn Sie beides verwenden möchten. Der Wert „None“ löscht alle zuvor zugewiesenen Identitäten aus dem Suchdienst.
+* **userAssignedIdentities** enthält die Details der benutzerseitig zugewiesenen verwalteten Identität.
+    * Format der benutzerseitig zugewiesenen verwalteten Identität: 
+        * /subscriptions/**Abonnement-ID**/resourcegroups/**Name der Ressourcengruppe**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**Name der verwalteten Identität**
+
+Beispiel für das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu einem Suchdienst:
+
+```http
+PUT https://management.azure.com/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Search/searchServices/[search service name]?api-version=2021-04-01-preview
+Content-Type: application/json
+
+{
+  "location": "[region]",
+  "sku": {
+    "name": "[sku]"
+  },
+  "properties": {
+    "replicaCount": [replica count],
+    "partitionCount": [partition count],
+    "hostingMode": "default"
+  },
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/[subscription ID]/resourcegroups/[resource group name]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[name of managed identity]": {}
+    }
+  }
+} 
+```
+
+## <a name="2---add-a-role-assignment"></a>2\. Hinzufügen einer Rollenzuweisung
+
+In diesem Schritt erteilen Sie entweder dem Azure Cognitive Search-Dienst oder der benutzerseitig zugewiesenen verwalteten Identität die Berechtigung, Daten aus Ihrem Speicherkonto zu lesen.
 
 1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem die Daten gespeichert werden, die indiziert werden sollen.
 2. Wählen Sie **Zugriffssteuerung (IAM)** aus.
@@ -53,19 +98,23 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
     1. Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
     1. Bei Azure Table Storage müssen Sie Ihren Suchdienst der Rolle **Lese- und Datenzugriff** hinzufügen.
 5.  Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
-6.  Suchen Sie nach Ihrem Suchdienst, wählen Sie ihn aus, und wählen Sie dann **Speichern** aus.
+6.  Wenn Sie eine systemseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach Ihrem Suchdienst, und wählen Sie ihn aus. Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach dem Namen der benutzerseitig zugewiesenen verwalteten Identität, und wählen Sie sie aus. Wählen Sie **Speichern** aus.
 
-    Beispiel für Azure Blob Storage und Azure Data Lake Storage Gen2:
+    Beispiel für Azure Blob Storage und Azure Data Lake Storage Gen2 unter Verwendung einer vom System zugewiesenen verwalteten Identität:
 
     ![Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“")
 
-    Beispiel für Azure Table Storage:
+    Beispiel für Azure Table Storage unter Verwendung einer vom System zugewiesenen verwalteten Identität:
 
     ![Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“")
 
-### <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
+## <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 
-Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+Erstellen Sie die Datenquelle, und stellen Sie entweder eine systemseitig zugewiesene verwaltete Identität oder eine benutzerseitig zugewiesene verwaltete Identität (Vorschau) bereit. Beachten Sie, dass Sie die Verwaltungs-REST-API in den folgenden Schritten nicht mehr verwenden.
+
+### <a name="option-1---create-the-data-source-with-a-system-assigned-managed-identity"></a>Option 1: Erstellen der Datenquelle mit einer systemseitig zugewiesenen verwalteten Identität
+
+Die Verwendung einer systemseitig zugewiesenen verwalteten Identität wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
 
 Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
 
@@ -73,7 +122,7 @@ Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folge
 * **type**
     * Azure Blob Storage: `azureblob`
     * Azure-Tabellenspeicher: `azuretable`
-    * Azure Data Lake Storage Gen2: der **Typ** wird angegeben, sobald Sie sich über [dieses Formular](https://aka.ms/azure-cognitive-search/mi-preview-request) für die Vorschauversion registrieren.
+    * Azure Data Lake Storage Gen2: `adlsgen2`
 * **credentials**
     * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format **credentials** von dem für die Authentifizierung ohne verwaltete Identität. Hier geben Sie eine Ressourcen-ID an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die Ressourcen-ID muss die Abonnement-ID des Speicherkontos, die Ressourcengruppe des Speicherkontos und den Speicherkontonamen enthalten.
     * Format für verwaltete Identitäten: 
@@ -82,7 +131,7 @@ Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folge
 
 Beispiel zum Erstellen eines Blob-Datenquellenobjekts mithilfe der [REST-API](/rest/api/searchservice/create-data-source):
 
-```
+```http
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
@@ -90,12 +139,60 @@ api-key: [admin key]
 {
     "name" : "blob-datasource",
     "type" : "azureblob",
-    "credentials" : { "connectionString" : "ResourceId=/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name/;" },
-    "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
+    "credentials" : { 
+        "connectionString" : "ResourceId=/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Storage/storageAccounts/[storage account name]/;" 
+    },
+    "container" : { 
+        "name" : "my-container", "query" : "<optional-virtual-directory-name>" 
+    }
 }   
 ```
 
-### <a name="4---create-the-index"></a>4\. Erstellen des Index
+### <a name="option-2---create-the-data-source-with-a-user-assigned-managed-identity"></a>Option 2: Erstellen der Datenquelle mit einer benutzerseitig zugewiesenen verwalteten Identität
+
+Die REST-API 2021-04-30-preview unterstützt die benutzerseitig zugewiesene verwaltete Identität. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source), einer Verbindungszeichenfolge für verwaltete Identitäten und der benutzerseitig zugewiesenen verwalteten Identität.
+
+Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
+
+* **name** ist der eindeutige Name der Datenquelle im Suchdienst.
+* **type**
+    * Azure Blob Storage: `azureblob`
+    * Azure-Tabellenspeicher: `azuretable`
+    * Azure Data Lake Storage Gen2: `adlsgen2`
+* **credentials**
+    * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format **credentials** von dem für die Authentifizierung ohne verwaltete Identität. Hier geben Sie eine Ressourcen-ID an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die Ressourcen-ID muss die Abonnement-ID des Speicherkontos, die Ressourcengruppe des Speicherkontos und den Speicherkontonamen enthalten.
+    * Format für verwaltete Identitäten: 
+        * *ResourceId=/subscriptions/**Ihre Abonnement-ID**/resourceGroups/**Ihr Ressourcengruppenname**/providers/Microsoft.Storage/storageAccounts/**Ihr Speicherkontoname**/;*
+* Mit **container** wird ein Container oder Tabellenname in Ihrem Speicherkonto festgelegt. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
+* **identity** enthält die Auflistung der benutzerseitig zugewiesenen verwalteten Identitäten. Beim Erstellen der Datenquelle sollte nur eine benutzerseitig zugewiesene verwaltete Identität bereitgestellt werden.
+    * **userAssignedIdentities** enthält die Details der benutzerseitig zugewiesenen verwalteten Identität.
+        * Format der benutzerseitig zugewiesenen verwalteten Identität: 
+            * /subscriptions/**Abonnement-ID**/resourcegroups/**Name der Ressourcengruppe**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**Name der verwalteten Identität**
+
+Beispiel zum Erstellen eines Blob-Datenquellenobjekts mithilfe der [REST-API](/rest/api/searchservice/create-data-source):
+
+```http
+POST https://[service name].search.windows.net/datasources?api-version=2021-04-30-preview
+Content-Type: application/json
+api-key: [admin key]
+
+{
+    "name" : "blob-datasource",
+    "type" : "azureblob",
+    "credentials" : { 
+        "connectionString" : "ResourceId=/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Storage/storageAccounts/[storage account name]/;" 
+    },
+    "container" : { 
+        "name" : "my-container", "query" : "<optional-virtual-directory-name>" 
+    },
+    "identity" : { 
+        "@odata.type": "#Microsoft.Azure.Search.DataUserAssignedIdentity",
+        "userAssignedIdentity" : "/subscriptions/[subscription ID]/resourcegroups/[resource group name]/providers/Microsoft.ManagedIdentity/userAssignedIdentities/[managed identity name]" 
+    }
+}   
+```
+
+## <a name="4---create-the-index"></a>4\. Erstellen des Index
 
 Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
 
@@ -117,7 +214,7 @@ Hier sehen Sie, wie Sie einen Index mit einem durchsuchbaren `content`-Feld zum 
 
 Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Index erstellen).
 
-### <a name="5---create-the-indexer"></a>5\. Erstellen des Indexers
+## <a name="5---create-the-indexer"></a>5\. Erstellen des Indexers
 
 Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit.
 
