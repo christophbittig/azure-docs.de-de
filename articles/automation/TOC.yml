@@ -6,32 +6,24 @@
       href: automation-intro.md
     - name: Häufig gestellte Fragen
       href: automation-faq.md
-    - name: Neues
+    - name: Neuigkeiten
       href: whats-new.md
     - name: Archiv für Neuerungen
       href: whats-new-archive.md
 - name: Schnellstarts
   items:
-    - name: 'Erstellen eines Automation-Kontos: Portal'
-      href: automation-quickstart-create-account.md
-    - name: Erstellen eines PowerShell-Runbooks
-      href: automation-quickstart-create-runbook.md
+    - name: 'Erstellen eines Automation-Kontos: Azure-Portal'
+      href: quickstarts/create-account-portal.md
     - name: Aktivieren von Desired State Configuration für einen Computer
-      href: automation-quickstart-dsc-configuration.md
+      href: quickstarts/dsc-configuration.md
 - name: Tutorials
   items:
-    - name: Erstellen eines grafischen Runbooks
-      href: learn/automation-tutorial-runbook-graphical.md
-    - name: Erstellen eines PowerShell-Runbooks
-      href: learn/automation-tutorial-runbook-textual-powershell.md
-    - name: Erstellen eines PowerShell-Workflow-Runbooks
-      href: learn/automation-tutorial-runbook-textual.md
-    - name: Erstellen eines Python-Runbooks
-      href: learn/automation-tutorial-runbook-textual-python2.md
-    - name: "Erstellen eines Python\_3-Runbooks"
-      href: learn/automation-tutorial-runbook-textual-python-3.md
     - name: Verwenden einer verwalteten Identität mit PowerShell-Runbook
       href: learn/powershell-runbook-managed-identity.md
+    - name: Erstellen eines PowerShell-Workflow-Runbooks
+      href: learn/automation-tutorial-runbook-textual.md
+    - name: "Erstellen eines Python\_3-Runbooks"
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: Konzepte
   items:
     - name: Übersicht über die Automation-Kontoauthentifizierung
