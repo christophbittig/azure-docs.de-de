@@ -2,22 +2,24 @@
 title: Die kognitive Qualifikation „Entitätserkennung“
 titleSuffix: Azure Cognitive Search
 description: Extrahieren verschiedener Entitätstypen aus Text in einer Anreicherungspipeline in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cf6bae3548a459a1d47dc0dcd55d28a290ca0f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547899"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355937"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
 Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
+
+> [!IMPORTANT]
+> Der Skill „Entitätserkennung“ wurde eingestellt und durch [Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md) ersetzt. Führen Sie unter Berücksichtigung der Empfehlungen unter [Veraltete Qualifikationen für die kognitive Suche](cognitive-search-skill-deprecated.md) eine Migration zu einer unterstützten Qualifikation durch.
 
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
@@ -196,3 +198,4 @@ Wird der Sprachcode für das Dokument nicht unterstützt, wird eine Warnung zur�
 
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Skill „Entitätserkennung“ (V3)](cognitive-search-skill-entity-recognition-v3.md)
