@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 06/04/2021
-ms.openlocfilehash: 6c55b2e5fbaadec239c1818d1bbe47443e797ddf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: ffd59ebcac1779c43222ea9a006888edd634bafa
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725452"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035885"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,6 +84,9 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 - [Erste Schritte mit der Gremlin-API von Azure Cosmos DB](create-graph-dotnet.md)
 - [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](table/create-table-dotnet.md)
 - [Whitepaper zur Entwicklung von Apps der nächsten Generation mit Azure Cosmos DB](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
+- Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)

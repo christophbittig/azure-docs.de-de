@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 06/30/2021
-ms.author: mikben
-ms.openlocfilehash: ead0e2f9e04c41ec729985f7c524874910aa9dc4
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: rifox
+ms.openlocfilehash: b251218593ddef69fc38520b5ff9e46ec7c8291f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339459"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078341"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Verwenden Sie die Methode `on()`, um Ereignisse von Objekten zu abonnieren, und 
 #### <a name="properties"></a>Eigenschaften
 - Sie müssen ihre Anfangswerte überprüfen und das Ereignis `'<property>Changed'` für zukünftige Wertaktualisierungen abonnieren.
 
-#### <a name="collections"></a>Auflistungen
+#### <a name="collections"></a>Sammlungen
 - Sie müssen ihre Anfangswerte überprüfen und das Ereignis `'<collection>Updated'` für zukünftige Wertaktualisierungen abonnieren.
 - Die Nutzdaten des Ereignisses `'<collection>Updated'` enthalten ein `added`-Array, das Werte enthält, die der Auflistung hinzugefügt wurden.
 - Die Nutzdaten des Ereignisses `'<collection>Updated'` enthalten auch ein `removed`-Array, das Werte enthält, die aus der Auflistung entfernt wurden.

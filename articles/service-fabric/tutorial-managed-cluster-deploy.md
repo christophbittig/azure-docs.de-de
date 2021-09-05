@@ -2,14 +2,14 @@
 title: Bereitstellen eines verwalteten Service Fabric-Clusters
 description: In diesem Tutorial stellen Sie einen verwalteten Service Fabric-Cluster zu Testzwecken bereit.
 ms.topic: tutorial
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f87e45dcaab5e42607f24decc5897471a74e90b5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3117c4c248aa073fb961dc031342d8b3d9489bbd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666927"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867402"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster"></a>Tutorial: Bereitstellen eines verwalteten Service Fabric-Clusters
 
@@ -52,9 +52,6 @@ Set-AzContext -SubscriptionId <your-subscription>
 ## <a name="create-a-new-resource-group"></a>Erstellen einer neuen Ressourcengruppe
 
 Erstellen Sie nun die Ressourcengruppe für den verwalteten Service Fabric-Cluster, und ersetzen Sie `<your-rg>` und `<location>` durch den gewünschten Gruppennamen und Speicherort.
-
-> [!NOTE]
-> Zu den unterstützten Regionen für die öffentliche Vorschau zählen `centraluseuap`, `eastus2euap`, `eastasia`, `northeurope`, `westcentralus` und `eastus2`.
 
 ```powershell
 $resourceGroup = "myResourceGroup"

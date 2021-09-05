@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine Ausgabebindung hinzufügen, um Ihre
 ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28748b7b9d0622d62baeb0de144adcd89c061a72
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9b5d6e4919db9fcf41eea8704878d10606833658
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790908"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829540"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 
@@ -49,9 +49,15 @@ Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführ
 
 1. Fügen Sie in der Konsole den folgenden Befehl [Install-Package](/nuget/tools/ps-ref-install-package) aus, um die Storage-Erweiterungen zu installieren:
 
-    ```Command
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
-    ````
+    # <a name="in-process"></a>[In-Process](#tab/in-process) 
+    ```bash
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage 
+    ```
+    # <a name="isolated-process"></a>[Isolierter Prozess](#tab/isolated-process)
+    ```bash
+    Install-Package Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues -IncludePrerelease
+    ```
+    ---
 
 Dann können Sie dem Projekt die Storage-Ausgabebindung hinzufügen.
 
