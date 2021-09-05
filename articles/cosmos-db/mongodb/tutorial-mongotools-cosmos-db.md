@@ -6,14 +6,14 @@ ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 05/19/2021
+ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7aedfa7b0a9c174e9205cb744f470574888be6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 335af910f9e62fe1bd67513f843966de3c5b381b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783508"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038316"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>Tutorial: Offlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB mithilfe nativer MongoDB-Tools
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -163,6 +163,9 @@ Nach der Migration der in einer MongoDB-Datenbank gespeicherten Daten zur Azure 
 
 * [Cosmos DB-Dienstinformationen](https://azure.microsoft.com/services/cosmos-db/)
 * [Dokumentation zu MongoDB-Datenbanktools](https://docs.mongodb.com/database-tools/)
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

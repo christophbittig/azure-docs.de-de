@@ -3,12 +3,12 @@ title: Verwaltete Service Fabric-Cluster
 description: Verwaltete Service Fabric-Cluster sind eine Weiterentwicklung des Azure Service Fabric-Clusterressourcenmodells, das die Bereitstellung und Clusterverwaltung optimiert.
 ms.topic: overview
 ms.date: 5/10/2021
-ms.openlocfilehash: a412899f4aa37ce2257a3351c3e27da4d5d3add2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 12f5c7bd16e8738aaadfb8ca9aeed491bab5b8e0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685259"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866916"
 ---
 # <a name="service-fabric-managed-clusters"></a>Verwaltete Service Fabric-Cluster
 
@@ -33,12 +33,15 @@ Im Hinblick auf Größe und Komplexität entspricht die ARM-Vorlage für einen v
 | Speicherkonten | |
 | Virtuelles Netzwerk | |
 
-Verwaltete Service Fabric-Cluster bieten im Vergleich zu herkömmlichen Clustern eine Reihe von Vorteilen:
+## <a name="service-fabric-managed-cluster-advantages"></a>Vorteile verwalteter Service Fabric-Cluster
+Verwaltete Service Fabric-Cluster bieten im Vergleich zu herkömmlichen Clustern eine Reihe von Vorteilen, darunter:
 
 **Vereinfachte Clusterbereitstellung und -verwaltung**
 - Bereitstellen und Verwalten einer einzelnen Azure-Ressource
-- Zertifikatverwaltung und automatische -rotation
+- Verwaltung von Clusterzertifikaten und automatische Rotation in 90 Tagen
 - Vereinfachte Skalierungsvorgänge
+- Unterstützung für automatisches Upgrade für Betriebssystemimages
+- In-Place-Unterstützung von Betriebssystem-SKU-Änderungen
 
 **Vermeiden von Betriebsfehlern**
 - Vermeiden von Konfigurationskonflikten mit zugrunde liegenden Ressourcen
@@ -60,7 +63,7 @@ Verwaltete Service Fabric-Cluster sind sowohl in der SKU „Basic“ als auch �
 | ------- | ----- | -------- |
 | Netzwerkressource (SKU für [Load Balancer](../load-balancer/skus.md), [Öffentliche IP-Adresse](../virtual-network/public-ip-addresses.md)) | Basic | Standard |
 | Mindestanzahl Knoten (VM-Instanz) | 3 | 5 |
-| Maximale Anzahl Knoten pro Knotentyp | 100 | 100 |
+| Maximale Anzahl Knoten pro Knotentyp | 100 | 1000 |
 | Maximale Anzahl Knotentypen | 1 | 20 |
 | Hinzufügen/Entfernen von Knotentypen | Nein | Ja |
 | Zonenredundanz | Nein | Ja |
@@ -85,6 +88,8 @@ Um erste Schritte mit verwalteten Service Fabric-Clustern auszuführen, probier
 
 > [!div class="nextstepaction"]
 > [Erstellen eines verwalteten Service Fabric-Clusters](quickstart-managed-cluster-template.md)
+
+Referenz zum [Konfigurieren verwalteter Cluster](how-to-managed-cluster-configuration.md)
 
 [sf-composition]: ./media/overview-managed-cluster/sfrp-composition-resource.png
 [sf-encapsulation]: ./media/overview-managed-cluster/sfrp-encapsulated-resource.png

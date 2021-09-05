@@ -3,25 +3,25 @@ title: Aufzeichnen benutzerdefinierter Stimmbeispiele – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: erhopf
-ms.openlocfilehash: 0c58369392940dbb34e222693cb026f4fd84c8bd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: 6384cd5a7f4fdd2441bcf14f24f8f36bd2f73d12
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350191"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
 Das Erstellen einer qualitativ hochwertig produzierten benutzerdefinierten neuronalen Stimme von Grund auf ist kein einfaches Unterfangen. Die zentrale Komponente einer benutzerdefinierten neuronalen Stimme ist eine umfangreiche Sammlung von Audiobeispielen der menschlichen Sprache. Es ist wichtig, dass diese Audioaufzeichnungen eine hohe Qualität haben. Wählen Sie einen Sprecher aus, der über Erfahrung mit dieser Art von Aufzeichnungen verfügt, und lassen Sie die Aufzeichnung von einem Tontechniker mit professioneller Ausrüstung vornehmen.
 
-Vor der Aufzeichnung benötigen Sie ein Skript: die Wörter, die von Ihrem Sprecher vorgelesen werden, um die Audiobeispiele zu erstellen. Optimale Ergebnisse erreichen Sie mit einem Skript, das eine gute phonetische Abdeckung und eine ausreichende Vielfalt aufweist, um das benutzerdefinierte neuronale Stimmmodell zu trainieren.
+Vor der Aufzeichnung benötigen Sie ein Skript: die Wörter, die von Ihrem Sprecher vorgelesen werden, um die Audiobeispiele zu erstellen.
 
 Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kleinen, jedoch wichtigen Details zusammen. Diese Anleitung ist eine Roadmap für einen Prozess, mit dem Sie gute, einheitliche Ergebnisse erzielen.
 
@@ -32,9 +32,6 @@ Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kle
 Dieser Satz wird verwendet, um zu überprüfen, ob die Trainingsdaten von derselben Person gesprochen werden, die die Zustimmung erteilt. Weitere Informationen zur [Überprüfung des Sprechers](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 
 > Die benutzerdefinierte neuronale Stimme ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) kennen, und [fordern Sie hier den Zugriff an](https://aka.ms/customneural). 
-
-> [!TIP]
-> Für Ergebnisse höchster Qualität könnten Sie Microsoft damit beauftragen, Ihre benutzerdefinierte neuronale Stimme zu entwickeln. Microsoft hat umfangreiche Erfahrungen beim Produzieren qualitativ hochwertiger Stimmen für die eigenen Produkte, einschließlich Cortana und Office.
 
 ## <a name="voice-recording-roles"></a>Rollen bei der Stimmaufzeichnung
 
@@ -51,7 +48,7 @@ Eine Person kann unter Umständen mehr als eine Rolle übernehmen. Für diese An
 
 ## <a name="choose-your-voice-talent"></a>Auswählen des Sprechers
 
-Schauspieler, die Erfahrung mit Begleitkommentaren oder Synchronisierung haben, stellen gute Sprecher für benutzerdefinierte neuronale Stimmen dar. Häufig finden Sie geeignete Talente unter Ansagern und Nachrichtensprechern. Wählen Sie einen Sprecher aus, dessen natürliche Stimme Ihnen gefällt. Es ist möglich, einzigartige Charakterstimmen zu erstellen, aber es ist für die meisten Sprecher viel schwieriger, diese konsistent beizubehalten, und die Anstrengung kann zu einer Stimmbelastung führen. Der wichtigste Faktor für die Auswahl des Sprechers ist Konsistenz. Ihr Aufzeichnungen sollten alle so klingen, als ob sie am selben Tag im selben Raum erstellt wurden. Sie können dieses Ideal über gute Aufzeichnungsverfahren und eine geeignete Technik erreichen.
+Schauspieler, die Erfahrung mit Begleitkommentaren oder Synchronisierung haben, stellen gute Sprecher für benutzerdefinierte neuronale Stimmen dar. Häufig finden Sie geeignete Talente unter Ansagern und Nachrichtensprechern. Wählen Sie einen Sprecher aus, dessen natürliche Stimme Ihnen gefällt. Es ist möglich, einzigartige Charakterstimmen zu erstellen, aber es ist für die meisten Sprecher viel schwieriger, diese konsistent beizubehalten, und die Anstrengung kann zu einer Stimmbelastung führen. Der wichtigste Faktor für die Auswahl des Sprechers ist Konsistenz. Ihr Aufzeichnungen für denselben Sprachstil sollten alle so klingen, als ob sie am selben Tag im selben Raum erstellt wurden. Sie können dieses Ideal über gute Aufzeichnungsverfahren und eine geeignete Technik erreichen.
 
 Ihr Sprecher ist die andere Hälfte der Gleichung. Sie müssen mit einheitlicher Geschwindigkeit, Lautstärke, Tonhöhe und Klangfarbe sprechen können. Eine deutliche Aussprache ist ein Muss. Die Sprecher müssen außerdem Tonhöhenabweichungen, Stimmungen und sprachliche Angewohnheiten genau kontrollieren können. Die Aufzeichnung von Stimmbeispielen kann ermüdender als andere Arten von Sprecharbeiten sein. Die meisten Sprecher können für zwei oder drei Stunden pro Tag aufzeichnen. Beschränken Sie die Sitzungen auf drei oder vier pro Woche mit möglichst einem freien Tag dazwischen.
 
@@ -68,15 +65,71 @@ Der Ausgangspunkt einer Sitzung für die Aufzeichnung einer benutzerdefinierten 
 
 Die Äußerungen in Ihrem Skript können beliebigen Ursprungs sein: Fiktion, Fakten, Redemanuskripte, Nachrichten und alles, was sonst noch in gedruckter Form zur Verfügung steht. Wenn Sie sicherstellen möchten, dass Ihre Stimme mit bestimmten Arten von Wörtern (z.B. medizinische Terminologie oder Fachausdrücke von Programmierern) gut umgehen kann, empfiehlt es sich, Sätze aus wissenschaftlichen oder technischen Dokumenten aufzunehmen. Eine kurze Erläuterung möglicher rechtlicher Fragen finden Sie im Abschnitt [Rechtsfragen](#legalities). Sie können auch einen eigenen Text schreiben.
 
-Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z.B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten neuronalen Stimme gut ausgesprochen werden. Und wenn Sie anstelle eines synthetisierten Texts eine Aufzeichnung verwenden möchten, liegt sie bereits mit der gleichen Stimme vor.
+Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z. B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten neuronalen Stimme gut ausgesprochen werden.
 
-Während Konsistenz der Schlüssel bei der Auswahl des Sprechers ist, ist Vielfalt das Kennzeichen eines guten Skripts. Das Skript sollte viele unterschiedliche Wörter und Sätze mit einer Vielzahl von Satzlängen, Strukturen und Stimmungen enthalten. Jeder Klang in der Sprache muss mehrere Male und in zahlreichen Kontexten vorhanden sein (dies wird als *phonetische Abdeckung* bezeichnet).
+Wir empfehlen, dass die Aufzeichnungsskripts sowohl allgemeine Sätze als auch Ihre domänenspezifischen Sätze enthalten. Wenn Sie z. B. 2.000 Sätze aufzeichnen möchten, könnten 1.000 davon allgemeine Sätze sein, weitere 1.000 könnten Sätze aus Ihrem Zielbereich oder dem Anwendungsfall Ihrer Anwendung sein.  
 
-Darüber hinaus sollte der Text alle Möglichkeiten enthalten, mit denen ein bestimmter Klang schriftlich dargestellt werden kann, und jeder Klang sollte an unterschiedlichen Stellen in den Sätzen vorkommen. Aussagesätze und Fragen sollten enthalten sein und mit der entsprechenden Intonation vorgelesen werden.
+Wir stellen [Beispielskripts in den Bereichen „Allgemein“, „Chat“ und „Kundendienst“ für jede Sprache zur Verfügung](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice/script), um Ihnen bei der Vorbereitung Ihrer Aufzeichnungsskripts zu helfen. Sie können diese von Microsoft freigegebenen Skripts direkt für Ihre Aufzeichnungen verwenden oder sie als Referenz für die Erstellung Ihrer eigenen Skripts nutzen. Für die Erstellung einer individuellen neuronalen Stimme werden mindestens 300 aufgezeichnete Sätze als Trainingsdaten benötigt.
 
-Es ist schwierig, ein Skript zu schreiben, das *gerade genug* Daten bietet, um Speech Studio das Erstellen einer guten Stimme zu ermöglichen. In der Praxis ist die einfachste Möglichkeit, ein Skript zu erstellen, mit dem eine zuverlässige phonetische Abdeckung erreicht wird, eine große Anzahl von Beispielen aufzunehmen. Die Standardstimmen, die von Microsoft bereitgestellt werden, wurden aus Zehntausenden von Äußerungen erstellt. Sie sollten darauf vorbereitet sein, mindestens einige bis mehrere Tausend Äußerungen aufzuzeichnen, um eine benutzerdefinierte neuronalen Stimme mit Produktionsqualität zu erstellen.
+Sie können Ihre domänenspezifischen Skripts aus den Sätzen auswählen, die von Ihrer benutzerdefinierten Stimme vorgelesen werden sollen.
 
-Überprüfen Sie das Skript sorgfältig auf Fehler. Wenn möglich, bitten Sie eine andere Person, es ebenfalls zu überprüfen. Wenn Sie mit Ihrem Sprecher das Skript durchgehen, werden Ihnen wahrscheinlich einige weitere Fehler auffallen.
+### <a name="script-selection-criteria"></a>Kriterien für die Skriptauswahl
+
+Im Folgenden finden Sie einige allgemeine Richtlinien, die Sie befolgen können, um einen geeigneten Bestand (aufgezeichnete Audiobeispiele) für das Training der benutzerdefinierten neuronalen Stimme zu erstellen.
+
+-  Stimmen Sie Ihr Skript so ab, dass es verschiedene Satzarten in Ihrem Bereich abdeckt, darunter Anweisungen, Fragen, Ausrufe, lange Sätze und kurze Sätze.
+
+   Im Allgemeinen sollte jeder Satz zwischen 4 und 30 Wörtern enthalten. Es ist erforderlich, dass Ihr Skript keine doppelten Sätze enthält.<br>
+   Wie Sie die verschiedenen Satzarten ausgleichen können, entnehmen Sie der folgenden Tabelle.
+   
+   | Satzarten | Abdeckung |
+   | :--------- | :--------------------------- |
+   | Anweisungssätze | Anweisungssätze machen den größten Teil des Skripts aus und nehmen etwa 70 % bis 80 % des gesamten Texts ein. |
+   | Fragesätze | Fragesätze sollten etwa 10 % bis 20 % Ihres Domänenskripts ausmachen, davon 5 % bis 10 % ansteigende und 5 % bis 10 % abfallende Töne. |
+   | Ausrufungssätze| Ausrufungssätze sollten ungefähr 10 % bis 20 % Ihrer Skripts ausmachen.|
+   | Kurzes Wort/Ausdruck| Skripts mit kurzen Wörtern oder Ausdrücken sollten ebenfalls etwa 10 % der gesamten Äußerungen ausmachen, mit 5 bis 7 Wörtern pro Fall. |
+
+   > [!NOTE]
+   > In Bezug auf kurze Wörter/Ausdrücke bedeutet dies, dass einzelne Wörter oder Ausdrücke enthalten und durch ein Komma getrennt sein sollten. Es hilft einem Sprecher, beim Lesen der Skripts an der Kommastelle kurz innezuhalten.
+
+   Zu den bewährten Methoden gehören:
+    - Ausgewogene Abdeckung der Satzteile, wie Verb, Substantiv, Adjektiv, usw.  
+    - Ausgewogene Abdeckung für Aussprachen. Schließen Sie alle Buchstaben von A bis Z ein, damit die TTS-Engine (Sprachsynthesemodul) lernt, jeden Buchstaben in dem von Ihnen definierten Stil auszusprechen.
+    - Lesbar, verständlich, für den Sprecher nachvollziehbar vorzulesen.
+    - Vermeiden Sie zu viele ähnliche Wort-/Satzmuster, z. B. „leicht“ und „leichter“.
+    - Geben Sie verschiedene Zahlenformate an: Adresse, Einheit, Telefon, Menge, Datum usw. in allen Satzarten.  
+    - Schließen Sie das Buchstabieren von Sätzen ein, wenn es von Ihrer TTS-Stimme vorgelesen werden muss. Beispiel: „Schreibweise von Apfel ist A P F E L“.
+
+- Fügen Sie nicht mehrere Sätze in eine Zeile/eine Äußerung ein. Trennen Sie jede Zeile nach Äußerungen.
+
+- Achten Sie darauf, dass der Satz weitgehend eindeutig ist. Schließen Sie im Allgemeinen nicht zu viele nicht standardmäßige Wörter wie Zahlen oder Abkürzungen ein, da sie in der Regel schwer zu lesen sind. Bei manchen Anwendungen müssen viele Zahlen oder Akronyme gelesen werden. In diesem Fall können Sie diese Wörter einbeziehen, sie aber in ihrer gesprochenen Form normalisieren.  
+
+   Im Folgenden finden Sie einige Beispiele für bewährte Methoden:
+    - Bei Zeilen mit Abkürzungen steht anstelle von „BTW“ entsprechend „by the way“ (übrigens).
+    - Für Zeilen mit Ziffern steht anstelle von „911“ „neun eins eins“.
+    - Bei Zeilen mit Akronymen wird statt „ABC“ entsprechend „A B C“ verwendet. Stellen Sie also sicher, dass Ihr Sprecher diese Wörter in der erwarteten Weise ausspricht. Achten Sie darauf, dass Ihr Skript und Ihre Aufzeichnungen während des Trainingsprozesses stets übereinstimmen.  
+
+   > [!NOTE]
+   > Die für Ihren Sprecher vorbereiteten Skripts müssen den muttersprachlichen Lesekonventionen entsprechen, z. B. 50 % und 45 USD, während die für das Training verwendeten Skripts normalisiert werden müssen, um sicherzustellen, dass die Skripts mit dem Audioinhalt übereinstimmen, z. B. *fünfzig Prozent* und *vierundfünfzig US-Dollar*. Überprüfen Sie die für das Training verwendeten Skripts mit den Aufzeichnungen Ihres Sprechers, um sicherzustellen, dass sie übereinstimmen.
+
+- Das Skript sollte viele unterschiedliche Wörter und Sätze mit unterschiedlichen Satzlängen, Strukturen und Stimmungen enthalten.  
+
+- Überprüfen Sie das Skript sorgfältig auf Fehler. Wenn möglich, bitten Sie eine andere Person, es ebenfalls zu überprüfen. Wenn Sie mit Ihrem Sprecher das Skript durchgehen, werden Ihnen wahrscheinlich einige weitere Fehler auffallen.
+
+### <a name="typical-defects-of-a-script"></a>Typische Fehler eines Skripts
+
+Die schlechte Qualität des Skripts kann sich negativ auf die Trainingsergebnisse auswirken. Um qualitativ hochwertige Trainingsergebnisse zu erzielen, ist es entscheidend, die Fehler zu vermeiden.
+
+Die Skriptfehler lassen sich im Allgemeinen in die folgenden Kategorien einteilen:
+
+| Category | Beispiel |
+| :--------- | :--------------------------- |
+| Verwenden Sie einen bedeutungslosen Inhalt auf eine gängige Weise. | |
+| Unvollständige Sätze. |- „Das war mein letzter Abend“ (kein Subjekt, keine bestimmte Bedeutung) <br>- „Er ist offensichtlich bereits heiter (kein Anführungszeichen am Ende, es ist kein vollständiger Satz) |
+| Tippfehler in den Sätzen. | - Kleinbuchstabe am Satzanfang<br>- Keine abschließende Interpunktion, falls erforderlich<br> - Falsche Schreibweise <br>- Fehlende Interpunktion: kein Punkt am Ende (mit Ausnahme für Nachrichtentitel)<br>- Endung mit Symbolen, mit Ausnahme von Komma, Fragezeichen, Ausrufezeichen <br>- Falsches Format, z. B.:<br>    &emsp;- 45$ (sollte $45 lauten)<br>      &emsp;- Kein Leerzeichen oder überflüssiges Leerzeichen zwischen Wort/Interpunktion |
+|Duplizierung in einem ähnlichen Format, eine pro Muster ist ausreichend. |- „Jetzt ist es 13 Uhr in New York“<br>- „Jetzt ist es 14 Uhr in New York“<br>- „Jetzt ist es 15 Uhr in New York“<br>- „Jetzt ist es 13 Uhr in Seattle“<br>- „Jetzt ist es 13 Uhr in Washington D.C.“ |
+|Ungebräuchliche Fremdwörter: Nur ein gebräuchliches Fremdwort ist in unserem Skript zulässig. |  |
+|Emoji oder andere unübliche Symbole. |  |
 
 ### <a name="script-format"></a>Skriptformat
 
@@ -84,11 +137,11 @@ Sie können das Skript in Microsoft Word schreiben. Das Skript ist für die Aufz
 
 Ein einfaches Skriptformat enthält drei Spalten:
 
-* Die Nummer der Äußerung, beginnend mit 1. Eine Nummerierung erleichtert allen im Studio die Bezugnahme auf eine bestimmte Äußerung („Wiederholen wir Nummer 356“). Sie können die Word-Funktion für die Absatznummerierung verwenden, um die Zeilen der Tabelle automatisch zu nummerieren.
-* Eine leere Spalte, in die Sie die Takenummer oder den Zeitcode für jede Äußerung eintragen können, um die fertige Aufzeichnung schneller zu finden.
-* Der Text der Äußerung selbst.
+- Die Nummer der Äußerung, beginnend mit 1. Eine Nummerierung erleichtert allen im Studio die Bezugnahme auf eine bestimmte Äußerung („Wiederholen wir Nummer 356“). Sie können die Word-Funktion für die Absatznummerierung verwenden, um die Zeilen der Tabelle automatisch zu nummerieren.
+- Eine leere Spalte, in die Sie die Takenummer oder den Zeitcode für jede Äußerung eintragen können, um die fertige Aufzeichnung schneller zu finden.
+- Der Text der Äußerung selbst.
 
-![Beispielskript](media/custom-voice/script.png)
+ ![Beispielskript](media/custom-voice/script.png)
 
 > [!NOTE]
 > Die meisten Studios zeichnen kurze Segmente auf, die als *Takes* bezeichnet werden. Jeder Take enthält in der Regel 10 bis 24 Äußerungen. Das Notieren der Takenummer reicht aus, um eine Äußerung zu einem späteren Zeitpunkt zu finden. Wenn Sie die Aufzeichnung in einem Studio durchführen, in dem eher längere Aufzeichnungen gemacht werden, sollten Sie stattdessen den Zeitcode notieren. Im Studio sollte die Zeit gut sichtbar angezeigt werden.
@@ -113,9 +166,72 @@ Glücklicherweise ist es möglich, diese Probleme vollständig zu vermeiden. Es 
 
 ## <a name="recording-your-script"></a>Aufzeichnen des Skripts
 
-Zeichnen Sie Ihr Skript in einem professionellen Tonstudio auf, das auf Sprecharbeiten spezialisiert ist. Dort gibt es eine Aufnahmekabine, die richtigen Geräte und die richtigen Personen für deren Betrieb. Es lohnt sich nicht, bei der Aufzeichnung zu sparen.
+Zeichnen Sie Ihr Skript in einem professionellen Tonstudio auf, das auf Sprecharbeiten spezialisiert ist. Dort gibt es eine Aufnahmekabine, die richtigen Geräte und die richtigen Personen für deren Betrieb. Es wird empfohlen, bei der Aufzeichnung keine Abstriche zu machen.
 
 Besprechen Sie das Projekt mit dem Tontechniker des Studios, und hören Sie sich dessen Ratschläge an. Die Aufzeichnung sollte mit wenig oder ohne dynamische Komprimierung (maximal 4:1) durchgeführt werden. Es ist wichtig, dass das Audio eine einheitliche Lautstärke und ein hohes Signal-Rausch-Verhältnis aufweist.
+
+### <a name="recording-requirements"></a>Aufzeichnungsanforderungen
+
+Um qualitativ hochwertige Trainingsergebnisse zu erzielen, befolgen Sie während der Aufzeichnung oder Datenvorbereitung die folgenden Anforderungen:
+
+- Klar und gut ausgesprochen
+
+- Natürliche Geschwindigkeit: nicht zu langsam oder zu schnell zwischen einzelnen Audiodateien.
+
+- Angemessene Lautstärke, Prosodie und Pause: beständig innerhalb eines Satzes oder zwischen Sätzen, korrekte Pause für Interpunktion.
+
+- Keine Störgeräusche während der Aufzeichnung
+
+- Anpassung an den Personaentwurf
+
+- Kein falscher Akzent: Anpassung an den Zielentwurf
+
+- Keine falsche Aussprache
+
+Eine bewährte Methode zur Vorbereitung auf die Audiobeispiele finden Sie in der unten angegebenen Spezifikation.
+
+| Eigenschaft | Wert |
+| :--------- | :--------------------------- |
+| Dateiformat | *.wav, Mono |
+| Samplingrate |  24 kHz |
+| Beispielformat | 16 Bit, PCM |
+| Spitzenlautstärkepegel | -3 dB bis -6 dB |
+| SNR |  > 35 dB |
+| Stille |  - Am Anfang und am Ende sollte etwas Stille herrschen (empfohlen werden 100 ms), aber nicht länger als 200 ms<br>- Stille zwischen Wörtern oder Ausdrücken < -30 dB<br>– Stille in der Welle, nachdem das letzte Wort gesprochen wurde < -60 dB |
+| Umgebungsgeräusche, Echo |   - Der Rauschpegel am Anfang der Welle vor dem Sprechen < -70 dB |
+
+> [!Note]
+> Sie können mit höherer Samplingrate und Bittiefe aufzeichnen, z. B. im Format 48 kHz 24-Bit-PCM. Während des benutzerdefinierten Stimmtrainings erfolgt automatisch ein Downsampling der Stimme auf 24 kHz 16-Bit-PCM.
+
+### <a name="typical-audio-errors"></a>Typische Audiofehler
+
+Für qualitativ hochwertige Trainingsergebnisse wird dringend empfohlen, Audiofehler zu vermeiden. Die Audiofehler umfassen normalerweise die folgenden Kategorien:
+
+- Der Name der Audiodatei stimmt nicht mit der Skript-ID überein.
+- Die WAV-Datei weist ein ungültiges Format auf und kann nicht gelesen werden.
+- Die Audiosamplingrate ist niedriger als 16 KHz. Zudem sollte die Samplingrate der WAV-Datei für eine hochwertige neuronale Stimme gleich oder höher als 24 kHz sein.
+- Die Lautstärkespitze liegt nicht im Bereich von -3 dB (70 % der maximalen Lautstärke) bis -6 dB (50 %).  
+- Wellenformüberlauf. Das bedeutet, die Wellenform ist an ihrem Spitzenwert abgeschnitten und somit nicht abgeschlossen.
+
+   ![Wellenformüberlauf](media/custom-voice/overflow.png)
+
+- Die Stille ist nicht bereinigt, z. B. Umgebungsgeräusche, Mundgeräusche und Echo.
+
+  Die folgenden Audiodaten enthalten z. B. die Umgebungsgeräusche zwischen den Reden.
+
+   ![Umgebungsgeräusche](media/custom-voice/environment-noise.png)
+
+   Das folgende Beispiel enthält Rauschen durch DC-Offset oder Echo.
+
+   ![DC-Offset oder Echo](media/custom-voice/dc-offset-noise.png)
+
+- Die Gesamtlautstärke ist zu niedrig. Ihre Daten werden als problematisch gekennzeichnet, wenn die Lautstärke weniger als -18 dB (10 % der maximalen Lautstärke) beträgt. Achten Sie darauf, dass alle Audiodateien die gleiche Lautstärke aufweisen.
+
+  ![Gesamtlautstärke](media/custom-voice/overall-volume.png)
+
+- Keine Stille vor dem ersten Wort oder nach dem letzten Wort. Außerdem sollte die Anfangs- oder Endstille nicht länger als 200 ms oder kürzer als 100 ms sein.
+
+  ![Keine Stille](media/custom-voice/no-silence.png)
 
 ### <a name="do-it-yourself"></a>Aufzeichnung in Eigenregie
 
@@ -178,11 +294,11 @@ Der Sprecher sollte *keine* vernehmlichen Pausen zwischen Wörtern einfügen. De
 
 Erstellen Sie am Beginn der Sitzung eine Referenzaufzeichnung oder *Vergleichsdatei* einer typischen Äußerung. Bitten Sie den Sprecher, diese Zeile beispielsweise nach jeder Seite zu wiederholen. Vergleichen Sie jedes Mal die neue Aufzeichnung mit der Referenz. Diese Verfahrensweise hilft dem Sprecher, bei Lautstärke, Geschwindigkeit, Tonhöhe und Intonation einheitlich zu bleiben. Der Techniker kann die Vergleichsdatei zudem als Referenz für Pegel und einen insgesamt konstanten Klang verwenden.
 
-Die Vergleichsdatei ist besonders wichtig, wenn die Aufzeichnung nach einer Pause oder an einem anderen Tag fortgesetzt wird. Sie sollten sie dem Sprecher mehrmals vorspielen und ihn auffordern, sie jedes Mal zu wiederholen, bis eine Übereinstimmung erreicht ist.
+Die Vergleichsdatei ist besonders wichtig, wenn die Aufzeichnung nach einer Pause oder an einem anderen Tag fortgesetzt wird. Spielen Sie sie dem Sprecher mehrmals vor und fordern Sie ihn auf, sie jedes Mal zu wiederholen, bis eine Übereinstimmung erreicht ist.
 
 Fordern Sie den Sprecher auf, vor jeder Äußerung einmal tief durchzuatmen und kurz innezuhalten. Zeichnen Sie zwischen den Äußerungen ein paar Sekunden Stille auf. Wörter sollten bei jedem Auftreten unter Berücksichtigung des Kontexts auf die gleiche Weise ausgesprochen werden. Beispielsweise wird „record“ (aufzeichnen) als Verb anders ausgesprochen als „record“ (Datensatz) als Substantiv.
 
-Zeichnen Sie vor der ersten Aufnahme ungefähr fünf Sekunden Stille auf, um den „Raumklang“ zu erfassen. Durch diese Vorgehensweise kann Speech Studio die verbleibenden Störungen in den Aufzeichnungen besser kompensieren.
+Zeichnen Sie vor der ersten Aufnahme ungefähr fünf Sekunden Stille auf, um den „Raumklang“ zu erfassen. Durch diese Vorgehensweise kann Speech Studio die Störungen in den Aufzeichnungen besser kompensieren.
 
 > [!TIP]
 > Sie müssen eigentlich nur den Sprecher aufzeichnen, damit Sie von seinen Texten eine Monoaufzeichnung (ein Kanal) erstellen können. Wenn Sie jedoch in Stereo aufzeichnen, können Sie den zweiten Kanal zum Aufzeichnen der Gespräche im Kontrollraum verwenden, um Diskussionen zu bestimmten Texten oder Takes zu erfassen. Entfernen Sie diese Spur aus der Version, die in Speech Studio hochgeladen wird.
@@ -198,7 +314,7 @@ Machen Sie regelmäßige Pausen, und bieten Sie dem Sprecher ein Getränk an, da
 
 ### <a name="after-the-session"></a>Nach der Sitzung
 
-Moderne Aufnahmestudios nutzen Computer. Am Ende der Sitzung erhalten Sie eine oder mehrere Audiodateien, kein Band. Diese Dateien weisen wahrscheinlich das WAV- oder AIFF-Format in CD-Qualität (44,1 kHz, 16 Bit) oder besser auf. 48 kHz und 24 Bit sind gängig und wünschenswert. Höhere Samplingraten, z.B. 96 kHz, sind in der Regel nicht erforderlich.
+Moderne Aufnahmestudios nutzen Computer. Am Ende der Sitzung erhalten Sie eine oder mehrere Audiodateien, kein Band. Diese Dateien haben wahrscheinlich das WAV- oder AIFF-Format in CD-Qualität (44,1 kHz, 16 Bit) oder besser. 24 kHz und 16 Bit sind gängig und wünschenswert. Die Standardsamplingrate für eine benutzerdefinierte neuronale Stimme beträgt 24 kHz.  Es wird empfohlen, eine Abtastrate von 24 kHz für Ihre Trainingsdaten zu verwenden. Höhere Samplingraten, z.B. 96 kHz, sind in der Regel nicht erforderlich.
 
 Speech Studio erfordert, dass jede bereitgestellte Äußerung in einer eigenen Datei enthalten ist. Jede vom Studio gelieferte Audiodatei enthält mehrere Äußerungen. Die Hauptaufgabe nach der Produktion ist also, die Aufzeichnungen zu unterteilen und sie für die Übermittlung vorzubereiten. Der Tontechniker hat möglicherweise Marker in der Datei platziert (oder ein separates Cuesheet bereitgestellt), um anzugeben, wo die einzelnen Äußerungen beginnen.
 

@@ -1,14 +1,14 @@
 ---
 title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
-ms.topic: article
-ms.date: 03/15/2021
-ms.openlocfilehash: e75e8fe3b405652e245119cafa828e752436095b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.topic: overview
+ms.date: 08/27/2021
+ms.openlocfilehash: b06ce04a7b2fd4fbb55cbe1b3ac8c2510305e781
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422124"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226338"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -25,7 +25,9 @@ Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](./event-h
 
 
 ## <a name="namespace"></a>Namespace
-Ein Event Hubs-Namespace verfügt über in das DNS integrierte Netzwerkendpunkte und verschiedene Verwaltungsfunktionen für die Zugriffssteuerung und Netzwerkintegration, z. B. [IP-Filterung](event-hubs-ip-filtering.md), [VNET-Dienstendpunkt](event-hubs-service-endpoints.md) und [Private Link](private-link-service.md). Darüber hinaus dient er als Verwaltungscontainer für eine von mehreren Event Hub-Instanzen (bei Kafka als „Themen“ bezeichnet).
+Ein Event Hubs-Namespace ist ein Verwaltungscontainer für Event Hubs (oder „Themen“ in Kafka-Terminologie). Er verfügt über in das DNS integrierte Netzwerkendpunkte und verschiedene Verwaltungsfunktionen für die Zugriffssteuerung und Netzwerkintegration, z. B. [IP-Filterung](event-hubs-ip-filtering.md), [VNET-Dienstendpunkt](event-hubs-service-endpoints.md) und [Private Link](private-link-service.md).
+
+:::image type="content" source="./media/event-hubs-features/namespace.png" alt-text="Abbildung eines Event Hubs-Namespace":::
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
@@ -47,7 +49,7 @@ Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlü
 
 ### <a name="event-retention"></a>Aufbewahrung von Ereignissen
 
-Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbasierten Aufbewahrungsrichtlinie von einem Event Hub entfernt. Folgende wichtige Punkte sind zu beachten:
+Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbasierten Aufbewahrungsrichtlinie aus einem Event Hub entfernt. Folgende wichtige Punkte sind zu beachten:
 
 - Der **Standardwert** und der **kürzestmögliche** Aufbewahrungszeitraum beträgt **einen Tag (24 Stunden)** .
 - Für Event Hubs **Standard** beträgt der maximale Aufbewahrungszeitraum **sieben Tage**. 
@@ -56,7 +58,7 @@ Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbas
 
 Von Event Hubs werden Ereignisse über einen konfigurierten Aufbewahrungszeitraum aufbewahrt, der für alle Partitionen gilt. Ereignisse werden automatisch entfernt, nachdem das Ende des Aufbewahrungszeitraums erreicht wurde. Wenn Sie einen Aufbewahrungszeitraum mit einer Dauer von einem Tag angeben, endet die Verfügbarkeit des Ereignisses genau 24 Stunden nach dem Akzeptierungsvorgang. Sie haben nicht die Möglichkeit, Ereignisse explizit zu löschen. 
 
-Falls Sie Ereignisse über den zulässigen Aufbewahrungszeitraum hinaus archivieren müssen, können Sie die [automatische Speicherung in Azure Storage oder Azure Data Lake nutzen, indem Sie das Feature „Event Hubs Capture“ aktivieren](event-hubs-capture-overview.md). Wenn Sie Deep Archives dieser Art durchsuchen oder analysieren müssen, können Sie sie leicht in [Azure Synapse](store-captured-data-data-warehouse.md) oder ähnliche Speicher und Analyseplattformen importieren. 
+Wenn Sie Ereignisse über die zulässige Aufbewahrungsfrist hinaus archivieren müssen, können Sie sie automatisch in Azure Storage oder Azure Data Lake speichern, indem Sie die Funktion [Event Hubs Capture](event-hubs-capture-overview.md) aktivieren. Wenn Sie solche tiefen Archive durchsuchen oder analysieren müssen, können Sie sie einfach in [Azure Synapse](store-captured-data-data-warehouse.md) oder andere ähnliche Speicher und Analyseplattformen importieren. 
 
 Durch die zeitliche Beschränkung der Datenaufbewahrung für Event Hubs soll verhindert werden, dass große Mengen von Verlaufsdaten der Kunden in einem tiefen Speicher, der nur mit einem Zeitstempel indiziert ist und für den nur der sequenzielle Zugriff zulässig ist, quasi gefangen sind. Der Grundgedanke dieser Architektur ist, dass für Verlaufsdaten eine umfassendere Indizierung und eine direktere Zugriffsoption benötigt werden, als dies über die Echtzeitoberfläche für Ereignisse von Event Hubs oder Kafka möglich ist. Ereignisdatenstrom-Engines sind nicht gut geeignet, um die Rolle von Data Lakes oder Langzeitarchiven für die Ereignisherkunftsermittlung zu übernehmen. 
  
@@ -83,10 +85,16 @@ Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit
 
 ## <a name="capture"></a>Erfassung
 
-Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest, wovon eines zum Speichern der aufgezeichneten Daten verwendet wird. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
+Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake Storage-Konto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake Storage-Konto fest, von denen eines zum Speichern der aufgezeichneten Daten verwendet wird. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
+
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="Abbildung: Erfassung von Event Hubs-Daten in Azure Storage oder Azure Data Lake Storage":::
+
+Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf:
+
+:::image type="content" source="./media/event-hubs-capture-overview/event-hubs-capture3.png" alt-text="Abbildung der Struktur der erfassten Daten":::
 
 ## <a name="partitions"></a>Partitionen
-[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
+[!INCLUDE [event-hubs-partitions](./includes/event-hubs-partitions.md)]
 
 
 ## <a name="sas-tokens"></a>SAS-Token
@@ -101,7 +109,7 @@ Eine Entität, die Ereignisdaten von einem Event Hub liest, ist ein *Ereigniscon
 
 Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch *Consumergruppen*. Eine Consumergruppe ist eine Ansicht (Status, Position oder Offset) des gesamten Event Hubs. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisdatenstroms aufweisen und den Datenstrom unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
 
-In einer Streamverarbeitungsarchitektur entspricht jede Downstreamanwendung einer Consumergruppe. Wenn Sie Ereignisdaten in den langfristigen Speicher schreiben möchten, ist die entsprechende Speicherschreibanwendung eine Consumergruppe. Komplexe Ereignisverarbeitung kann von einer anderen separaten Consumergruppe ausgeführt werden. Sie können auf Partitionen nur über eine Consumergruppe zugreifen. In einem Event Hub gibt es immer eine Standard-Consumergruppe, und Sie können eine von Ihrem Tarif abhängige [maximale Anzahl an Consumergruppen](event-hubs-quotas.md) erstellen. 
+In einer Streamverarbeitungsarchitektur entspricht jede Downstreamanwendung einer Consumergruppe. Wenn Sie Ereignisdaten in den langfristigen Speicher schreiben möchten, ist die entsprechende Speicherschreibanwendung eine Consumergruppe. Komplexe Ereignisverarbeitung kann von einer anderen separaten Consumergruppe ausgeführt werden. Sie können auf Partitionen nur über eine Consumergruppe zugreifen. In einem Event Hub gibt es immer eine Standardconsumergruppe, und Sie können eine von Ihrem Tarif abhängige [maximale Anzahl an Consumergruppen](event-hubs-quotas.md) erstellen. 
 
 Pro Consumergruppe sind maximal 5 gleichzeitige Leser in einer Partition zulässig. Jedoch **wird nur ein aktiver Empfänger in einer Partition pro Consumergruppe empfohlen**. Innerhalb einer einzelnen Partition erhält jeder Leser alle Nachrichten. Wenn Sie für die gleiche Partition über mehrere Leser verfügen, verarbeiten Sie doppelte Nachrichten. Sie müssen dies in Ihrem Code berücksichtigen, was möglicherweise nicht trivial ist. In einigen Szenarien ist dies jedoch ein gültiger Ansatz.
 
@@ -137,7 +145,7 @@ Wenn ein Leser die Verbindung zu eine Partition trennt, beginnt nach dem erneute
 > Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>Allgemeine Consumeraufgaben
