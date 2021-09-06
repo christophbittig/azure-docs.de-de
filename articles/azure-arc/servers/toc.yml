@@ -6,6 +6,8 @@
       href: overview.md
     - name: Neuerungen beim Connected Machine-Agent
       href: agent-release-notes.md
+    - name: "Archiv für Versionshinweise zum Connected\_Machine-Agent"
+      href: agent-release-notes-archive.md
 - name: Schnellstarts
   items:
     - name: Aktivieren eines Agents für Server mit Arc-Unterstützung

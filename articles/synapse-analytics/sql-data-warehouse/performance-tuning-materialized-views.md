@@ -7,15 +7,15 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 7500490115ed360e838dc30038e3e8e602b33449
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1eb42cc923ea5acd23165e9dfa778e35748e4d2e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081639"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356633"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -46,7 +46,7 @@ Eine ordnungsgemäß entworfene materialisierte Sicht bietet folgende Vorteile:
 
 - Verkürzen der Ausführungszeit für komplexe Abfragen mit JOINs und Aggregatfunktionen. Je komplexer die Abfrage ist, desto höher ist das Potenzial für Einsparungen bei der Ausführungszeit. Der größte Vorteil wird erzielt, wenn die Berechnungskosten für eine Abfrage hoch sind und das sich ergebende Dataset klein ist.  
 - Der Optimierer im dedizierten SQL-Pool kann bereitgestellte materialisierte Sichten automatisch verwenden, um Abfrageausführungspläne zu verbessern.  Dieser Prozess ist für Benutzer transparent, die eine schnellere Abfrageleistung bereitstellen, und es ist nicht erforderlich, dass Abfragen einen direkten Verweis auf die materialisierten Sichten erstellen.
-- Geringe Wartung für die Sichten erforderlich.  Alle inkrementellen Datenänderungen aus den Basistabellen werden den materialisierten Sichten automatisch synchron hinzugefügt.  Dieser Entwurf ermöglicht das Abfragen materialisierter Sichten, damit dieselben Daten wie beim direkten Abfragen der Basistabellen zurückgegeben werden.
+- Geringe Wartung für die Sichten erforderlich.  Alle inkrementellen Datenänderungen aus den Basistabellen werden den materialisierten Sichten automatisch auf synchrone Weise hinzugefügt, was bedeutet, dass sowohl die Basistabellen als auch die materialisierten Sichten in derselben Transaktion aktualisiert werden.  Dieser Entwurf ermöglicht das Abfragen materialisierter Sichten, damit dieselben Daten wie beim direkten Abfragen der Basistabellen zurückgegeben werden.  
 - Die Daten in einer materialisierten Sicht können aus den Basistabellen unterschiedlich verteilt werden.  
 - Daten in materialisierten Sichten erhalten dieselben Vorteile an hoher Verfügbarkeit und Resilienz wie Daten in regulären Tabellen.  
 
@@ -56,7 +56,7 @@ Im Vergleich zu anderen Data Warehouse-Anbietern bieten die im dedizierten SQL-P
 
 - Automatische und synchrone Datenaktualisierung bei Datenänderungen in Basistabellen. Es ist keine Benutzeraktion erforderlich.
 - Umfassende Unterstützung von Aggregatfunktionen. Lesen Sie dazu [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
-- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+- Die Unterstützung für abfragespezifische Empfehlungen von materialisierten Sichten.  Lesen Sie dazu [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Häufige Szenarios  
 

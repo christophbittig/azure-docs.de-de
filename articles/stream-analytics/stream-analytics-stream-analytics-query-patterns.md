@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18c396d753b1320cdfc3e67e6949d6feb2612074
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355419"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Allgemeine Abfragemuster in Azure Stream Analytics
 
@@ -37,27 +37,27 @@ Für die Ausgabe von Daten an unterschiedliche Ausgabesenken können mehrere **S
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make1 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:01Z |
+| Make2 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:03Z |
 
 **ArchiveOutput-Ausgabe**:
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make1 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:01Z |
+| Make2 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:03Z |
 
 **AlertOutput-Ausgabe**:
 
 | Make | Time | Anzahl |
 | --- | --- | --- |
-| Make2 |2015-01-01T00:00:10.0000000Z |3 |
+| Make2 |2015-01-01T00:00:10Z |3 |
 
 **Query** (Abfrage):
 
@@ -122,15 +122,15 @@ Eine einfache Pass-Through-Abfrage kann verwendet werden, um die Daten des Einga
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+| Make1 |2015-01-01T00:00:01Z |"1000" |
+| Make1 |2015-01-01T00:00:02Z |"2000" |
 
 **Ausgabe**:
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+| Make1 |2015-01-01T00:00:01Z |"1000" |
+| Make1 |2015-01-01T00:00:02Z |"2000" |
 
 **Query** (Abfrage):
 
@@ -147,17 +147,17 @@ Eine **SELECT** *-Abfrage projiziert alle Felder eines eingehenden Ereignisses u
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+| Make1 |2015-01-01T00:00:01Z |1000 |
+| Make1 |2015-01-01T00:00:02Z |2000 |
+| Make2 |2015-01-01T00:00:04Z |1500 |
 
 **Ausgabe**:
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:04.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make1 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:04Z |
 
 **Query** (Abfrage):
 
@@ -176,16 +176,16 @@ Mit **LIKE** und **NOT LIKE** kann verifiziert werden, ob ein Feld mit einem bes
 
 | Make | License_plate | Time |
 | --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Make1 |ABC-123 |2015-01-01T00:00:01Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03Z |
 
 **Ausgabe**:
 
 | Make | License_plate | Time |
 | --- | --- | --- |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03Z |
 
 **Query** (Abfrage):
 
@@ -208,14 +208,14 @@ Mit der **LAG**-Funktion können vergangene Ereignisse innerhalb eines Zeitfenst
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make2 |2015-01-01T00:00:02Z |
 
 **Ausgabe**:
 
 | Make | Time |
 | --- | --- |
-| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:02Z |
 
 **Query** (Abfrage):
 
@@ -241,20 +241,20 @@ Da Ereignisse vom System in Echtzeit verarbeitet werden, gibt es keine Funktion,
 
 | License_plate | Make | Time |
 | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Make1 |2015-07-27T00:00:05Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45Z |
 
 **Ausgabe**:
 
 | License_plate | Make | Time |
 | --- | --- | --- |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45Z |
 
 **Query** (Abfrage):
 
@@ -294,9 +294,9 @@ Um Informationen über ein Zeitfenster zu berechnen, können Daten zusammen aggr
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+| Make1 |2015-01-01T00:00:01Z |1000 |
+| Make1 |2015-01-01T00:00:02Z |2000 |
+| Make2 |2015-01-01T00:00:04Z |1500 |
 
 **Ausgabe**:
 
@@ -343,16 +343,16 @@ Im Falle von unregelmäßigen oder fehlenden Ereignissen kann aus einer Eingabe 
 
 | Window_end | Last_event.Time | Last_event.Value |
 | --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
-| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
-| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
-| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:00Z |2014-01-01T14:01:00Z |1 |
+| 2014-01-01T14:01:05Z |2014-01-01T14:01:05Z |2 |
+| 2014-01-01T14:01:10Z |2014-01-01T14:01:10Z |3 |
+| 2014-01-01T14:01:15Z |2014-01-01T14:01:15Z |4 |
+| 2014-01-01T14:01:20Z |2014-01-01T14:01:15Z |4 |
+| 2014-01-01T14:01:25Z |2014-01-01T14:01:15Z |4 |
+| 2014-01-01T14:01:30Z |2014-01-01T14:01:30Z |5 |
+| 2014-01-01T14:01:35Z |2014-01-01T14:01:35Z |6 |
+| 2014-01-01T14:01:40Z |2014-01-01T14:01:35Z |6 |
+| 2014-01-01T14:01:45Z |2014-01-01T14:01:35Z |6 |
 
 **Query** (Abfrage):
 
@@ -378,16 +378,16 @@ Das Korrelieren von Ereignissen im gleichen Stream kann durch die Betrachtung ve
 
 | Make | License_plate | Time |
 | --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Make1 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make2 |DEF-987 |2015-01-01T00:00:03.0000000Z |
-| Make1 |GHI-345 |2015-01-01T00:00:04.0000000Z |
+| Make1 |ABC-123 |2015-01-01T00:00:01Z |
+| Make1 |AAA-999 |2015-01-01T00:00:02Z |
+| Make2 |DEF-987 |2015-01-01T00:00:03Z |
+| Make1 |GHI-345 |2015-01-01T00:00:04Z |
 
 **Ausgabe**:
 
 | Make | Time | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
-| Make1 |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
+| Make1 |2015-01-01T00:00:02Z |AAA-999 |ABC-123 |2015-01-01T00:00:01Z |
 
 **Query** (Abfrage):
 
@@ -416,8 +416,8 @@ Die Dauer eines Ereignisses kann berechnet werden, indem das letzte Startereigni
 
 | Benutzer | Funktion | Ereignis | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Ende |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01Z |
+| user@location.com |RightMenu |Ende |2015-01-01T00:00:08Z |
 
 **Ausgabe**:  
 
@@ -450,18 +450,18 @@ Die **LAST**-Funktion kann verwendet werden, um das letzte Ereignis innerhalb ei
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make1 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:01Z |
+| Make2 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:03Z |
 
 **Ausgabe:**
 
 | Count_make | Time |
 | --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
-| 1 |2015-01-01T00:00:04.000Z |
+| 2 |2015-01-01T00:00:02Z |
+| 1 |2015-01-01T00:00:04Z |
 
 **Abfrage:**
 
@@ -485,20 +485,20 @@ Weitere Informationen finden Sie unter [**COUNT**-Aggregatfunktion](/stream-anal
 
 | License_plate | Make | Time |
 | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Make1 |2015-07-27T00:00:05Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45Z |
 
 **Ausgabe**:
 
 | License_plate | Make | Time |
 | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+| DXE 5291 |Make1 |2015-07-27T00:00:05Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02Z |
 
 **Query** (Abfrage):
 
@@ -519,11 +519,11 @@ WHERE
 
 | License_plate | Make | Time |
 | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+| DXE 5291 |Make1 |2015-07-27T00:00:05Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45Z |
 
 **Query** (Abfrage):
 
@@ -548,12 +548,12 @@ Wenn Sie einen Vorgang ausführen, wie z. B. die Berechnung von Durchschnittswe
 
 | deviceId | Time | attribute | Wert |
 | --- | --- | --- | --- |
-| 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |
-| 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |
-| 2 |2018-07-27T00:00:01.0000000Z |Temperatur |40 |
-| 1 |2018-07-27T00:00:05.0000000Z |Temperatur |60 |
-| 2 |2018-07-27T00:00:05.0000000Z |Temperatur |50 |
-| 1 |2018-07-27T00:00:10.0000000Z |Temperatur |100 |
+| 1 |2018-07-27T00:00:01Z |Temperatur |50 |
+| 1 |2018-07-27T00:00:01Z |Temperatur |50 |
+| 2 |2018-07-27T00:00:01Z |Temperatur |40 |
+| 1 |2018-07-27T00:00:05Z |Temperatur |60 |
+| 2 |2018-07-27T00:00:05Z |Temperatur |50 |
+| 1 |2018-07-27T00:00:10Z |Temperatur |100 |
 
 **Ausgabe**:  
 
@@ -597,16 +597,16 @@ Weitere Informationen finden Sie unter [COUNT (DISTINCT Time)](/stream-analytics
 
 | Make | Time |
 | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01Z |
+| Make2 |2015-01-01T00:00:02Z |
+| Make2 |2015-01-01T00:00:03Z |
 
 **Ausgabe**:
 
 | Make |Dispatch_to_lane | Time |
 | --- | --- | --- |
-| Make1 |„A“ |2015-01-01T00:00:01.0000000Z |
-| Make2 |„B“ |2015-01-01T00:00:02.0000000Z |
+| Make1 |„A“ |2015-01-01T00:00:01Z |
+| Make2 |„B“ |2015-01-01T00:00:02Z |
 
 **Lösung**:
 
@@ -634,8 +634,8 @@ Daten können mithilfe der **CAST**-Methode in Echtzeit umgewandelt werden. Beis
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+| Make1 |2015-01-01T00:00:01Z |"1000" |
+| Make1 |2015-01-01T00:00:02Z |"2000" |
 
 **Ausgabe**:
 
@@ -668,20 +668,20 @@ Für Bedingungen, die mehrere Ereignisse umfassen, kann mit der **LAG**-Funktion
 
 | Make | Time | Weight |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:02.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:03.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:05.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:06.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:07.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:08.0000000Z |2000 |
+| Make1 |2015-01-01T00:00:01Z |2000 |
+| Make2 |2015-01-01T00:00:02Z |25000 |
+| Make1 |2015-01-01T00:00:03Z |26000 |
+| Make2 |2015-01-01T00:00:04Z |25000 |
+| Make1 |2015-01-01T00:00:05Z |26000 |
+| Make2 |2015-01-01T00:00:06Z |25000 |
+| Make1 |2015-01-01T00:00:07Z |26000 |
+| Make2 |2015-01-01T00:00:08Z |2000 |
 
 **Ausgabe**:
 
 | Start_fault | End_fault |
 | --- | --- |
-| 2015-01-01T00:00:02.000Z |2015-01-01T00:00:07.000Z |
+| 2015-01-01T00:00:02Z |2015-01-01T00:00:07Z |
 
 **Query** (Abfrage):
 
@@ -716,14 +716,14 @@ Im folgenden Beispiel liegt die Geräteuhr für *TollID* 2 fünf Sekunden hinte
 
 | LicensePlate | Make | Time | TollId |
 | --- | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000Z | 1 |
-| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000Z | 1 |
-| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000Z | 2 |
-| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000Z | 2 |
-| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000Z | 1 |
-| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000Z | 3 |
-| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000Z | 2 |
-| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000Z | 3 |
+| DXE 5291 |Make1 |2015-07-27T00:00:01Z | 1 |
+| YHN 6970 |Make2 |2015-07-27T00:00:05Z | 1 |
+| QYF 9358 |Make1 |2015-07-27T00:00:01Z | 2 |
+| GXF 9462 |Make3 |2015-07-27T00:00:04Z | 2 |
+| VFE 1616 |Make2 |2015-07-27T00:00:10Z | 1 |
+| RMV 8282 |Make1 |2015-07-27T00:00:03Z | 3 |
+| MDR 6128 |Make3 |2015-07-27T00:00:11Z | 2 |
+| YZK 5704 |Make4 |2015-07-27T00:00:07Z | 3 |
 
 **Ausgabe**:
 
@@ -761,18 +761,18 @@ Wenn ein Benutzer beispielsweise mit einer Webseite interagiert, auf der die Anz
 
 | User_id | Time | URL |
 | --- | --- | --- |
-| 0 | 2017-01-26T00:00:00.0000000Z | "www.example.com/a.html" |
-| 0 | 2017-01-26T00:00:20.0000000Z | "www.example.com/b.html" |
-| 1 | 2017-01-26T00:00:55.0000000Z | "www.example.com/c.html" |
-| 0 | 2017-01-26T00:01:10.0000000Z | "www.example.com/d.html" |
-| 1 | 2017-01-26T00:01:15.0000000Z | "www.example.com/e.html" |
+| 0 | 2017-01-26T00:00:00Z | "www.example.com/a.html" |
+| 0 | 2017-01-26T00:00:20Z | "www.example.com/b.html" |
+| 1 | 2017-01-26T00:00:55Z | "www.example.com/c.html" |
+| 0 | 2017-01-26T00:01:10Z | "www.example.com/d.html" |
+| 1 | 2017-01-26T00:01:15Z | "www.example.com/e.html" |
 
 **Ausgabe**:
 
 | User_id | StartTime | EndTime | Duration_in_seconds |
 | --- | --- | --- | --- |
-| 0 | 2017-01-26T00:00:00.0000000Z | 2017-01-26T00:01:10.0000000Z | 70 |
-| 1 | 2017-01-26T00:00:55.0000000Z | 2017-01-26T00:01:15.0000000Z | 20 |
+| 0 | 2017-01-26T00:00:00Z | 2017-01-26T00:01:10Z | 70 |
+| 1 | 2017-01-26T00:00:55Z | 2017-01-26T00:01:15Z | 20 |
 
 **Query** (Abfrage):
 
@@ -847,18 +847,18 @@ Beispielsweise wird ein Geldautomat in Echtzeit auf Ausfälle überwacht. Wenn w
 
 | ATM_id | Operation_id | Return_Code | Time |
 | --- | --- | --- | --- |
-| 1 | "Entering Pin" | „Success“ | 2017-01-26T00:10:00.0000000Z |
-| 2 | "Opening Money Slot" | „Success“ | 2017-01-26T00:10:07.0000000Z |
-| 2 | "Closing Money Slot" | „Success“ | 2017-01-26T00:10:11.0000000Z |
-| 1 | "Entering Withdraw Quantity" | „Success“ | 2017-01-26T00:10:08.0000000Z |
-| 1 | "Opening Money Slot" | "Warning" | 2017-01-26T00:10:14.0000000Z |
-| 1 | "Printing Bank Balance" | "Warning" | 2017-01-26T00:10:19.0000000Z |
+| 1 | "Entering Pin" | „Success“ | 2017-01-26T00:10:00Z |
+| 2 | "Opening Money Slot" | „Success“ | 2017-01-26T00:10:07Z |
+| 2 | "Closing Money Slot" | „Success“ | 2017-01-26T00:10:11Z |
+| 1 | "Entering Withdraw Quantity" | „Success“ | 2017-01-26T00:10:08Z |
+| 1 | "Opening Money Slot" | "Warning" | 2017-01-26T00:10:14Z |
+| 1 | "Printing Bank Balance" | "Warning" | 2017-01-26T00:10:19Z |
 
 **Ausgabe**:
 
 | ATM_id | First_Warning_Operation_id | Warning_Time |
 | --- | --- | --- |
-| 1 | "Opening Money Slot" | 2017-01-26T00:10:14.0000000Z |
+| 1 | "Opening Money Slot" | 2017-01-26T00:10:14Z |
 
 ```SQL
 SELECT *
@@ -871,16 +871,16 @@ MATCH_RECOGNIZE (
         First(Warning.Operation_Id) AS First_Warning_Operation_id,
         First(Warning.Time) AS Warning_Time
     AFTER MATCH SKIP TO NEXT ROW
-    PATTERN (Success* Warning{2,})
+    PATTERN (Success+ Warning{2,})
     DEFINE
         Success AS Succes.Return_Code = 'Success',
-        Failure AS Warning.Return_Code <> 'Success'
+        Warning AS Warning.Return_Code <> 'Success'
 ) AS patternMatch
 ```
 
 Diese Abfrage gleicht mindestens zwei aufeinander folgende Fehlerereignisse ab und generiert einen Alarm, wenn die Bedingungen erfüllt sind.
-**PATTERN** definiert den regulären Ausdruck, der für den Abgleich verwendet werden soll. In diesem Fall ist das eine beliebige Anzahl von erfolgreichen Vorgängen, gefolgt von mindestens zwei aufeinanderfolgenden Fehlern.
-Erfolg und Fehler werden mit dem Wert „Return_Code“ definiert. Sobald die Bedingung erfüllt ist, wird der Wert für **MEASURES** mit *ATM_id*, der erste Warnvorgang und der Zeitpunkt der ersten Warnung, projiziert.
+**PATTERN** (MUSTER) definiert den regulären Ausdruck, der für den Abgleich verwendet werden soll. In diesem Fall ist dies mindestens ein erfolgreicher Vorgang, gefolgt von mindestens zwei aufeinander folgenden Warnungen.
+Erfolg und Warnung werden mit dem Wert „Return_Code“ definiert. Sobald die Bedingung erfüllt ist, wird der Wert für **MEASURES** mit *ATM_id*, der erste Warnvorgang und der Zeitpunkt der ersten Warnung, projiziert.
 
 Weitere Informationen finden Sie unter [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics).
 
@@ -895,10 +895,10 @@ Der Hersteller möchte den Standort dieser Maschinen im Auge behalten und benach
 
 | Equipment_id | Equipment_current_location | Time |
 | --- | --- | --- |
-| 1 | "POINT(-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000Z |
-| 1 | "POINT(-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000Z |
-| 1 | "POINT(-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000Z |
-| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000Z |
+| 1 | "POINT(-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00Z |
+| 1 | "POINT(-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00Z |
+| 1 | "POINT(-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00Z |
+| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00Z |
 
 **Verweisdateneingabe**:
 
@@ -910,7 +910,7 @@ Der Hersteller möchte den Standort dieser Maschinen im Auge behalten und benach
 
 | Equipment_id | Equipment_alert_location | Time |
 | --- | --- | --- |
-| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000Z |
+| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00Z |
 
 ```SQL
 SELECT

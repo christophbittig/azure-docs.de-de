@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie mit dem Azure-Portal oder der CLI Metrikwarnu
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: 0b2f70e2727832514f1ce92d1ce0da90f0a6a2e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/02/2021
+ms.openlocfilehash: 49e9dee0b28eb17f2a4241570a2f0752f33b9020
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355836"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -45,6 +45,9 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
     - Sie können für alle Dimensionen auch die Option **Alle aktuellen und zukünftigen Werte auswählen** aktivieren. Hierbei wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
 
     Die Metrikwarnungsregel wertet die Bedingung für alle ausgewählten Wertekombinationen aus. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](./alerts-metric-overview.md).
+    
+    > [!NOTE]
+    > Die Verwendung von „Alle“ als Dimensionswert entspricht der Auswahl von „Alle aktuellen und zukünftigen Werte“.
 
 9. Wählen Sie den Typ für **Schwellenwert**, den **Operator** und den **Aggregationstyp** aus. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll.
     - Wenn Sie einen Schwellenwert vom Typ **Statisch** verwenden, legen Sie auch einen **Schwellenwert** fest. Anhand des Metrikdiagramms können Sie einen angemessenen Schwellenwert ermitteln.
@@ -62,8 +65,6 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 15. Klicken Sie auf **Fertig**, um die Metrikwarnungsregel zu speichern.
 
-> [!NOTE]
-> Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.
 
 ## <a name="view-and-manage-with-azure-portal"></a>Anzeigen und Verwalten mit dem Azure-Portal
 
@@ -83,7 +84,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 5. Klicken Sie unter „Regel bearbeiten“ auf die **Warnungskriterien**, die Sie bearbeiten möchten. Sie können die Felder für Metrik, Schwellenwertbedingung und auch andere Felder bei Bedarf ändern.
 
     > [!NOTE]
-    > Sie können **Zielressource** und **Warnungsregelname** nicht bearbeiten, nachdem die Metrikwarnung erstellt wurde.
+    > Sie können den **Warnungsregelnamen** nicht mehr bearbeiten, nachdem die Metrikwarnungsregel erstellt wurde.
 
 6. Klicken Sie auf **Fertig**, um Ihre Änderungen zu speichern.
 
@@ -125,7 +126,7 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
 6. Sie können eine Metrikwarnungsregel mit dem folgenden Befehl deaktivieren.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --disabled false
     ```
 
 7. Sie können eine Metrikwarnungsregel mit dem folgenden Befehl löschen.

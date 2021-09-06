@@ -588,6 +588,8 @@
           items:
             - name: Beheben von Verbindungsproblemen
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+            - name: Behandeln von CLI-Fehlern
+              href: flexible-server/how-to-troubleshoot-cli-errors.md
 - name: Migration
   items:
     - name: Migrieren von lokalen MySQL-Daten zu Azure Database for MySQL >

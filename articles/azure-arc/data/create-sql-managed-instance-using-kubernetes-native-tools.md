@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 24abb1ece1d307276be736b384c3e5e3c7d40f2a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: dbc2f2efffcab9800deff27e42e4130061c531d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355583"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Erstellen einer verwalteten Azure SQL-Instanz mithilfe von Kubernetes-Tools
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +29,7 @@ Zum Erstellen einer verwalteten SQL-Instanz mithilfe von Kubernetes-Tools müsse
 
 ## <a name="overview"></a>Übersicht
 
-Zum Erstellen einer verwalteten SQL-Instanz müssen Sie ein Kubernetes-Geheimnis erstellen, um den Anmeldenamen und das Kennwort Ihres Systemadministrators sicher zu speichern, sowie eine benutzerdefinierte Ressource einer verwalteten SQL-Instanz auf Grundlage der Definition der benutzerdefinierten Ressource „sqlmanagedinstance“.
+Zum Erstellen einer verwalteten SQL-Instanz müssen Sie ein Kubernetes-Geheimnis erstellen, um den Anmeldenamen und das Kennwort Ihres Systemadministrators sicher zu speichern, sowie eine benutzerdefinierte Ressource einer verwalteten SQL-Instanz auf Grundlage der Definition der benutzerdefinierten Ressource „SqlManagedInstance“.
 
 ## <a name="create-a-yaml-file"></a>Erstellen einer YAML-Datei
 
@@ -48,8 +47,8 @@ metadata:
   name: sql1-login-secret
 type: Opaque
 ---
-apiVersion: sql.arcdata.microsoft.com/v1alpha1
-kind: sqlmanagedinstance
+apiVersion: sql.arcdata.microsoft.com/v1
+kind: SqlManagedInstance
 metadata:
   name: sql1
   annotations:
@@ -133,7 +132,7 @@ Anforderungen für Ressourcenlimits und -anforderungen:
 - Der Grenzwert für die Anzahl von Kernen ist aus Abrechnungsgründen **obligatorisch**.
 - Der Rest der Ressourcenanforderungen und -limits ist optional.
 - Das Limit und die Anforderung für Kerne müssen ein positiver ganzzahliger Wert sein, falls angegeben.
-- Für die Kerneanforderung sind mindestens 2 Kerne erforderlich, falls angegeben.
+- Für die Kerneanforderung ist mindestens 1 Kern erforderlich, falls angegeben.
 - Das Format des Arbeitsspeicherwerts folgt der Kubernetes-Notation.  
 - Für die Arbeitsspeicheranforderung sind mindestens 2 GB erforderlich, falls angegeben.
 - Als generelle Richtlinie sollten Sie 4 GB RAM für jeden Kern bei Produktionsanwendungsfällen haben.
@@ -187,4 +186,4 @@ Wenn Probleme bei der Erstellung auftreten, finden Sie weitere Informationen im 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Herstellen einer Verbindung zu Azure Arc-fähigen SQL Managed Instance-Instanzen](connect-managed-instance.md)
+[Herstellen einer Verbindung mit Azure Arc-fähigen SQL Managed Instance-Instanzen](connect-managed-instance.md)

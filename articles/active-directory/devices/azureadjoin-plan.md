@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354847"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -164,6 +164,9 @@ Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem A
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
+> [!NOTE]
+> Mit Azure AD verbundene Geräte können nahtlos sowohl auf lokale als auch auf Cloud-Anwendungen zugreifen. Weitere Informationen finden Sie unter [So funktioniert das einmalige Anmelden bei lokalen Ressourcen auf in Azure AD eingebundenen Geräten](azuread-join-sso.md).
+
 **Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](../app-proxy/application-proxy.md) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
@@ -240,7 +243,7 @@ Wählen Sie **Ausgewählte** aus, und wählen Sie die Benutzer aus, die Sie der 
 
 ### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Voraussetzen der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für das Einbinden von Geräten
 
-Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD die Multi-Factor Authentication (MFA) ausführen müssen. Für die Benutzer, die Geräte in Azure AD mit der MFA einbinden, wird das Gerät selbst zum zweiten Faktor.
+Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD die Multi-Factor Authentication (MFA) ausführen müssen.
 
 ![Multi-factor Auth zum Hinzufügen von Geräten erforderlich](./media/azureadjoin-plan/03.png)
 

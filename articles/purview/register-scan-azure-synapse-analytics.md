@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f2797af01dad10c04c8a56cf52a584ea0f04af31
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 09dc3c20ca95f32ee4c8f01d6b4986adfcd3703e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356042"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Registrieren und Überprüfen dedizierter SQL-Pools (ehemals SQL DW)
 
@@ -27,7 +27,6 @@ Für Azure Synapse Analytics (vormals SQL DW) werden vollständige und inkrement
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-> * Die Überprüfung von [Sichten](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) in Azure Synapse Analytics wird von Azure Purview nicht unterstützt.
 > * Von Azure Purview werden auf der Registerkarte „Schema“ maximal 300 Spalten unterstützt, und es wird „Additional-Columns-Truncated“ angezeigt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -57,11 +56,11 @@ SQL-Beispielsyntax für das Erstellen eines Benutzers und das Gewähren der Bere
 CREATE USER [PurviewManagedIdentity] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [PurviewManagedIdentity]
+EXEC sp_addrolemember 'db_datareader', [PurviewManagedIdentity]
 GO
 ```
 
-Die Authentifizierung muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können. Wir empfehlen Ihnen, der Identität die Berechtigung `db_owner` zuzuweisen.
+Die Authentifizierung muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können. Wir empfehlen Ihnen, der Identität die Berechtigung `db_datareader` zuzuweisen.
 
 ### <a name="service-principal"></a>Dienstprinzipal
 
@@ -97,7 +96,7 @@ Darüber hinaus müssen Sie auch in Azure Synapse Analytics einen Azure AD-Benut
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
+ALTER ROLE db_datareader ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -120,13 +119,13 @@ Wenn **SQL-Authentifizierung** als Authentifizierungsmethode ausgewählt wird, m
 
 ## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>Registrieren eines dedizierten SQL-Pools (ehemals SQL DW)
 
-Gehen Sie wie folgt vor, um einen neuen Azure Synapse Analytics-Server für Ihren Datenkatalog zu registrieren:
+Um einen neuen dedizierten SQL-Pool in Purview zu registrieren, gehen Sie wie folgt vor:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
-1. Wählen Sie **Registrieren**.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
+1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Quellen registrieren** die Option **SQL dedicated pool (formerly SQL DW)** (Dedizierter SQL-Pool (ehemals SQL DW)) aus.
-1. Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
 Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registrieren (Azure Synapse Analytics)) wie folgt vor:
 
@@ -138,7 +137,35 @@ Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registri
 
 :::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+
+Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+
+1. Wählen Sie die von Ihnen registrierte, dedizierte SQL-Poolquelle aus.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus.
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/sql-dedicated-pool-set-up-scan.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Tabellen festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/scope-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/select-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

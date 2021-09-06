@@ -153,8 +153,6 @@
                   href: database/xevent-code-ring-buffer.md
     - name: Freigegebene Anleitungen
       items:
-        - name: Anfordern der Kontingenterhöhung
-          href: database/quota-increase-request.md
         - name: Auftragsautomatisierung mit elastischen Aufträgen
           href: database/job-automation-overview.md
         - name: Auftragsautomatisierung mit SQL-Agent
@@ -479,6 +477,8 @@
               href: database/private-endpoint-overview.md
             - name: VNET-Endpunkte
               href: database/vnet-service-endpoint-rule-overview.md
+            - name: Serverrollen
+              href: database/security-server-roles.md
         - name: Datenbank-Sharding
           items:
             - name: Datenbank-Sharding
@@ -1422,6 +1422,8 @@
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: Problembehandlung
       items:
+        - name: Kapazitätsfehler während der Bereitstellung
+          href: capacity-errors-troubleshoot.md
         - name: Verbindungsfehler
           href: database/troubleshoot-common-errors-issues.md
         - name: Allgemeine Verbindungsprobleme
@@ -1430,6 +1432,8 @@
           href: database/database-import-export-hang.md
         - name: Transaktionsprotokollfehler
           href: database/troubleshoot-transaction-log-errors-issues.md
+        - name: Anfordern der Kontingenterhöhung
+          href: database/quota-increase-request.md
     - name: Dienstupdates
       items:
         - name: SSL-Stammzertifikat läuft ab.

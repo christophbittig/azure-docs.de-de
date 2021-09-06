@@ -52,6 +52,8 @@
           href: how-to-choose-offer.md
         - name: Wählen zwischen bereitgestelltem Durchsatz und serverlos
           href: throughput-serverless.md
+        - name: Best Practices für das Skalieren des bereitgestellten Durchsatzes
+          href: scaling-provisioned-throughput-best-practices.md
     - name: Sicherheit
       items:
         - name: Sicherheitsübersicht

@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Container Insights die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2751d96a0527328a78030cba618d2026059f04fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355575"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Überwachen der Leistung Ihres Kubernetes-Clusters mit Container Insights
 
@@ -141,7 +141,7 @@ Sie können eine Metrik [teilen](../essentials/metrics-charts.md#apply-splitting
 
 Wenn Sie zur Registerkarte **Knoten**, **Controller** oder **Container** wechseln, wird rechts auf der Seite automatisch ein Eigenschaftenbereich angezeigt. Dort werden die Eigenschaften des ausgewählten Elements angezeigt. Dies umfasst auch die Bezeichnungen, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Wählen Sie im Bereich den Link **>>** aus, um den Bereich ein- und auszublenden.
 
-Wenn Sie die Objekte in der Hierarchie erweitern, wird der Eigenschaftenbereich auf Basis des ausgewählten Objekts aktualisiert. In dem Bereich können Sie auch Kubernetes-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken anzeigen, indem Sie im oberen Bereich auf den Link **Livedaten anzeigen (Vorschau)** klicken. Weitere Informationen zur erforderlichen Konfiguration zum Erteilen und Steuern des Zugriffs für die Anzeige dieser Daten finden Sie unter [Einrichten der Funktion für Livedaten (Vorschau)](container-insights-livedata-setup.md). Beim Überprüfen von Clusterressourcen können Sie diese Daten aus dem Containern in Echtzeit sehen. Weitere Informationen zu dieser Funktion finden Sie unter [Anzeigen von Kubernetes-Protokollen, -Ereignissen und Podmetriken in Echtzeit](container-insights-livedata-overview.md). Zum Anzeigen von Kubernetes-Protokolldaten, die in Ihrem Arbeitsbereich basierend auf vordefinierten Protokollsuchen gespeichert wurden, wählen Sie in der Dropdownliste **In Analytics anzeigen** die Option **Containerprotokolle anzeigen** aus. Weitere Informationen zu diesem Thema finden Sie unter [Suchen von Protokollen zur Datenanalyse](container-insights-log-search.md#search-logs-to-analyze-data).
+Wenn Sie die Objekte in der Hierarchie erweitern, wird der Eigenschaftenbereich auf Basis des ausgewählten Objekts aktualisiert. In dem Bereich können Sie auch Kubernetes-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken anzeigen, indem Sie im oberen Bereich auf den Link **Livedaten anzeigen (Vorschau)** klicken. Weitere Informationen zur erforderlichen Konfiguration zum Erteilen und Steuern des Zugriffs für die Anzeige dieser Daten finden Sie unter [Einrichten der Funktion für Livedaten (Vorschau)](container-insights-livedata-setup.md). Beim Überprüfen von Clusterressourcen können Sie diese Daten aus dem Containern in Echtzeit sehen. Weitere Informationen zu dieser Funktion finden Sie unter [Anzeigen von Kubernetes-Protokollen, -Ereignissen und Podmetriken in Echtzeit](container-insights-livedata-overview.md). Zum Anzeigen von Kubernetes-Protokolldaten, die in Ihrem Arbeitsbereich basierend auf vordefinierten Protokollsuchen gespeichert wurden, wählen Sie in der Dropdownliste **In Analytics anzeigen** die Option **Containerprotokolle anzeigen** aus. Weitere Informationen zu diesem Thema finden Sie unter [Abfragen von Protokollen aus Container Insights](container-insights-log-query.md).
 
 Verwenden Sie die Option **+ Filter hinzufügen** oben auf der Seite, um die Ergebnisse für die Ansicht nach **Dienst**, **Knoten**, **Namespace** oder **Knotenpool** zu filtern. Nachdem Sie den Filterbereich ausgewählt haben, wählen Sie einen der Werte im Feld **Wert(e) auswählen** aus. Nachdem der Filter konfiguriert wurde, wird er global auf alle Perspektiven des AKS-Clusters angewendet. Die Formel unterstützt nur das Gleichheitszeichen. Sie können zusätzlich zum obersten weitere Filter hinzufügen, um Ihre Ergebnisse weiter einzugrenzen. Wenn Sie beispielsweise einen Filter nach **Knoten** angeben, können Sie für den zweiten Filter nur **Dienst** oder **Namespace** auswählen.
 
@@ -297,13 +297,13 @@ Der Azure-Netzwerkrichtlinien-Manager enthält informative Prometheus-Metriken, 
 
 ## <a name="workbooks"></a>Arbeitsmappen
 
-Arbeitsmappen kombinieren Text, Protokollabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten, mit denen Sie die Clusterleistung analysieren können. Unter [Berichte in Azure Monitor für Container](../insights/container-insights-reports.md) finden Sie eine Beschreibung der für Container Insights verfügbaren Arbeitsmappen.
+Arbeitsmappen kombinieren Text, Protokollabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten, mit denen Sie die Clusterleistung analysieren können. Unter [Berichte in Azure Monitor für Container](container-insights-reports.md) finden Sie eine Beschreibung der für Container Insights verfügbaren Arbeitsmappen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Erstellen von Warnungen für hohe CPU-Auslastung und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps-Prozesse und -Verfahren bzw. Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Container Insights](./container-insights-log-alerts.md).
 
-- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
+- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-query.md) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
 
 - Informationen zum Anzeigen des Integritätsstatus Ihres Kubernetes-Clusters finden Sie unter [Überwachen der Clusterintegrität](./container-insights-overview.md).

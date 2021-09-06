@@ -156,6 +156,8 @@
               href: backup-azure-linux-app-consistent.md
             - name: Selektive Datenträgersicherung
               href: selective-disk-backup-restore.md
+            - name: Verwenden der Azure-VM-Sicherung für datenbankkonsistente Momentaufnahmen
+              href: backup-azure-linux-database-consistent-enhanced-pre-post.md
         - name: Restore
           items:
             - name: Informationen zur Wiederherstellung von Azure-VMs

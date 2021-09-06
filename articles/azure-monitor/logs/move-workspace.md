@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752155"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418651"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -44,7 +44,7 @@ Die Quell- und Zielabonnements des Arbeitsbereichs müssen in demselben Azure Ac
 > - Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics**, und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen eine effektive Lösung sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
 > 
 > **Neuerstellen von Warnungen**
-> - Alle Warnungen müssen nach dem Verschieben eines Arbeitsbereichs oder einem Umbenennungsvorgang neu erstellt werden, da die Berechtigungen auf der Azure-Ressourcen-ID des Arbeitsbereichs basieren, die sich bei der Verschiebung des Arbeitsbereichs oder der Umbenennung einer Ressource ändert.
+> - Alle Warnungen müssen neu erstellt werden, da die Berechtigungen auf der Arbeitsbereichsressourcen-ID basieren, die sich während der Verschiebung des Arbeitsbereichs oder einer Änderung des Ressourcennamens ändert. Warnungen in Arbeitsbereichen, die nach dem 1. Juni 2019 erstellt wurden, oder in Arbeitsbereichen, die [von der Log Analytics-Warnungs-Legacy-API auf die scheduledQueryRules-API aktualisiert wurden](../alerts/alerts-log-api-switch.md), können in eine Vorlage exportiert und nach dem Verschieben bereitgestellt werden. Sie können überprüfen, [ob die scheduledQueryRules-API für Warnungen in Ihrem Arbeitsbereich verwendet wird](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace). Alternativ können Sie Warnungen manuell im Zielarbeitsbereich konfigurieren.
 >
 > **Aktualisieren von Ressourcenpfaden**
 > - Nach dem Verschieben eines Arbeitsbereichs müssen alle Azure- oder externen Ressourcen, die auf den Arbeitsbereich verweisen, überprüft und aktualisiert werden, damit sie auf den neuen Ressourcenzielpfad verweisen.

@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 1dda487d23c9f955aea8e35d16e5a560a890a173
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834478"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397795"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
@@ -51,7 +51,7 @@ Der Satz der ausgehenden IP-Adressen für Ihre Anwendung ändert sich, wenn Sie 
 
 - Sie löschen eine App und erstellen sie in einer anderen Ressourcengruppe neu (die Bereitstellungseinheit kann sich ändern).
 - Sie löschen die letzte App in einer Kombination aus Ressourcengruppe _und_ Region und erstellen sie neu (die Bereitstellungseinheit kann sich ändern).
-- Skalieren Sie die App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**) und dem Tarif **Premium V2** (IP-Adressen können dem Satz hinzugefügt oder aus ihm entfernt werden).
+- Skalieren Sie Ihre App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**), dem Tarif **PremiumV2** und dem Tarif **PremiumV3** (IP-Adressen können dem Satz hinzugefügt oder aus ihm entfernt werden).
 
 Sie finden die Sammlung aller möglichen IP-Ausgangsadressen, die von Ihrer App verwendet werden können, indem Sie nach der Eigenschaft `possibleOutboundIpAddresses` suchen, oder im Feld **Zusätzliche ausgehende IP-Adressen** auf dem Blatt **Eigenschaften** im Azure-Portal. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ips).
 
@@ -80,6 +80,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```azurepowershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
+
+## <a name="get-a-static-outbound-ip"></a>Abrufen einer statischen ausgehenden IP-Adresse
+Sie können die IP-Adresse des von Ihrer App ausgehenden Datenverkehrs steuern, indem Sie regionale VNet-Integration zusammen mit einem NAT-Gateway eines virtuellen Netzwerks verwenden, um Datenverkehr über eine statische öffentliche IP-Adresse zu leiten. [Regionale VNet-Integration](/azure/app-service/web-sites-integrate-with-vnet) ist in den App Service-Plänen **Standard**, **Premium**, **PremiumV2** und **PremiumV3** verfügbar. Weitere Informationen zu diesem Setup finden Sie unter [NAT Gateway-Integration](./networking/nat-gateway-integration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

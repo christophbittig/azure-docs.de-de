@@ -315,6 +315,10 @@
           href: webjobs-sdk-get-started.md
         - name: Verwenden des WebJobs SDK
           href: webjobs-sdk-how-to.md
+    - name: Hochverfügbarkeit
+      items:
+        - name: Konfigurieren von Hochverfügbarkeit
+          href: how-to-zone-redundancy.md
 - name: Verweis
   items:
     - name: Überwachungsdaten
@@ -376,16 +380,18 @@
           href: troubleshoot-performance-degradation.md
         - name: Behandeln von Domänen- und Zertifikatproblemen
           href: troubleshoot-domain-ssl-certificates.md
-        - name: Häufig gestellte Fragen
-          items:
-            - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
-              href: faq-availability-performance-application-issues.yml
-            - name: Häufig gestellte Fragen zur Bereitstellung
-              href: faq-deployment.yml
-            - name: Häufig gestellte Fragen zu Open-Source-Technologien
-              href: faq-open-source-technologies.yml
-            - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
-              href: faq-configuration-and-management.yml
+    - name: Häufig gestellte Fragen
+      items:
+        - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
+          href: faq-availability-performance-application-issues.yml
+        - name: Häufig gestellte Fragen zur Bereitstellung
+          href: faq-deployment.yml
+        - name: Häufig gestellte Fragen zu Open-Source-Technologien
+          href: faq-open-source-technologies.yml
+        - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
+          href: faq-configuration-and-management.yml
+        - name: App Service für Linux
+          href: faq-app-service-linux.yml
     - name: Änderung der IP-Adresse
       items:
         - name: IP-Adresse für eingehenden Datenverkehr

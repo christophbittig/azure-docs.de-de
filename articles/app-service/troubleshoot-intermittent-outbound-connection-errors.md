@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc6a56cff3492011a4717d867f08a580cf5a198c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799104"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355469"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
 
@@ -49,7 +49,7 @@ Das Vermeiden des SNAT-Portproblems bedeutet, das wiederholte Erstellen neuer Ve
 
 Wenn Ihr Ziel ein Azure-Dienst ist, der Dienstendpunkte unterstützt, können Sie Probleme durch eine Überlastung von SNAT-Ports vermeiden, indem Sie die [regionale VNET-Integration](./web-sites-integrate-with-vnet.md) und Dienstendpunkte oder private Endpunkte verwenden. Wenn Sie die regionale VNET-Integration verwenden und Endpunkte im Integrationssubnetz platzieren, gelten für den ausgehenden Datenverkehr Ihrer App an diese Dienste keine Einschränkungen für ausgehende SNAT-Ports. Ebenso treten keine Probleme bei ausgehenden SNAT-Ports an dieses Ziel auf, wenn Sie die regionale VNET-Integration und private Endpunkte verwenden. 
 
-Wenn Ihr Ziel ein externer Endpunkt außerhalb von Azure ist, erhalten Sie mithilfe eines NAT Gateways 64 KB ausgehende SNAT-Ports. Außerdem erhalten Sie eine dedizierte ausgehende Adresse, die Sie mit niemandem teilen. 
+Wenn Ihr Ziel ein externer Endpunkt außerhalb von Azure ist, erhalten Sie [mithilfe eines NAT Gateways](./networking/nat-gateway-integration.md) 64 KB ausgehende SNAT-Ports. Außerdem erhalten Sie eine dedizierte ausgehende Adresse, die Sie mit niemandem teilen. 
 
 Wenn möglich, verbessern Sie Ihren Code für die Verwendung von Verbindungspools, und vermeiden Sie die gesamte Situation. Es ist nicht immer möglich, Code schnell genug zu ändern, um diese Situation zu entschärfen. Wenn Sie den Code nicht rechtzeitig ändern können, nutzen Sie die anderen Lösungen. Die beste Lösung des Problems ist die bestmögliche Kombination aller Lösungen. Versuchen Sie, Dienstendpunkte und private Endpunkte für Azure-Dienste zu verwenden und das NAT Gateway für den Rest. 
 

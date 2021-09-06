@@ -291,6 +291,8 @@ items:
             href: storage-blob-pageblob-overview.md
           - name: Statische Websites
             href: storage-blob-static-website.md
+          - name: Unterstützung von Blob Storage
+            href: storage-feature-support-in-storage-accounts.md
       - name: Anleitung
         items:
           - name: Erstellen und Verwalten von Speicherkonten
@@ -474,8 +476,12 @@ items:
                     href: archive-rehydrate-to-online-tier.md
                   - name: Behandeln eines Ereignisses bei der Blobaktivierung
                     href: archive-rehydrate-handle-event.md
-          - name: Konfigurieren der Objektreplikation
-            href: object-replication-configure.md
+          - name: Verwalten der Objektreplikation
+            items:
+              - name: Konfigurieren von Objektreplikationsrichtlinien
+                href: object-replication-configure.md
+              - name: Verhindern der mandantenübergreifenden Objektreplikation
+                href: object-replication-prevent-cross-tenant-policies.md
           - name: Verwalten der Parallelität
             href: concurrency-manage.md
           - name: Verwenden eines Speicheremulators
@@ -634,6 +640,8 @@ items:
                 href: ../common/storage-explorer-direct-link.md
               - name: Storage-Explorer-Sicherheit
                 href: ../common/storage-explorer-security.md
+              - name: 'Storage-Explorer: Vorläufiges Löschen'
+                href: ../common/storage-explorer-soft-delete.md
               - name: Versionsverwaltung für Storage-Explorer-Blobs
                 href: ../common/storage-explorer-blob-versioning.md
               - name: "Storage-Explorer: Verwalten von Azure\_Blob-Speicher"
@@ -757,7 +765,7 @@ items:
               - name: Zugriff auf mehrere Protokolle
                 href: data-lake-storage-multi-protocol-access.md
               - name: Unterstützte Blob Storage-Features
-                href: data-lake-storage-supported-blob-storage-features.md
+                href: storage-feature-support-in-storage-accounts.md
               - name: Unterstützte Azure-Dienste
                 href: data-lake-storage-supported-azure-services.md
               - name: Unterstützte Open-Source-Plattformen

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e62e320e2fac2b34e970f983965f9809d62e2103
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355580"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -420,7 +420,7 @@ Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung d
 
 ## <a name="http-triggers-and-bindings"></a>HTTP: Trigger und Bindungen
 
-HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Response-Objekte, um das HTTP-Messaging darzustellen.  
+HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Response-Objekte, um das HTTP-Messaging darzustellen.
 
 ### <a name="request-object"></a>Anforderungsobjekt
 
@@ -491,6 +491,8 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     context.done(null, res);   
     ```  
 
+Beachten Sie, dass Anforderungs- und Antwortschlüssel in Kleinbuchstaben geschrieben sind.
+
 ## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
 
 Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Hostinstanzen für Node.js. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](event-driven-scaling.md).
@@ -522,6 +524,8 @@ Führen Sie für Linux-Funktions-Apps den folgenden Azure CLI-Befehl aus, um die
 ```bash
 az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
+
+Weitere Informationen zur Azure Functions Runtime-Supportrichtlinie finden Sie in diesem [Artikel](./language-support-policy.md).
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 Um Communitybibliotheken in Ihrem JavaScript-Code zu verwenden (wie im folgenden Beispiel gezeigt), müssen Sie sicherstellen, dass alle Abhängigkeiten für Ihre Funktions-App in Azure installiert sind.
@@ -689,7 +693,7 @@ Beachten Sie in diesem Beispiel besonders, dass es keine Garantie dafür gibt, d
 
 Wenn ein Node.js-Prozess mit dem Parameter `--inspect` gestartet wird, lauscht er auf einen Debugclient auf dem angegebenen Port. Sie können in Azure Functions 2.x Argumente angeben, die an den Node.js-Prozess übergeben werden, der Ihren Code ausführt, indem Sie die Umgebungsvariable oder die App-Einstellung `languageWorkers:node:arguments = <args>` hinzufügen. 
 
-Fügen Sie unter `Values` in der Datei [local.settings.json](./functions-run-local.md#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
+Fügen Sie unter `Values` in der Datei [local.settings.json](./functions-develop-local.md#local-settings-file)`"languageWorkers:node:arguments": "--inspect=5858"` hinzu, und fügen Sie einen Debugger an Port 5858 an, um lokal zu debuggen.
 
 Wenn Sie mit VS Code debuggen, wird der Parameter `--inspect` automatisch mit dem Wert `port` in der Datei „launch.json“ des Projekts hinzugefügt.
 

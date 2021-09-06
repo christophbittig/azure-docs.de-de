@@ -5,15 +5,15 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/14/2020
+ms.date: 07/30/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dcce15618159b9d6a06a513435f0e091e02a2b2c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ad73d319e5466bb541a99e3ef33b17cdc644dfe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411250"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355027"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
@@ -108,7 +108,7 @@ Muss derzeit **MatchRule** lauten.
 
 Muss eine der folgenden Variablen sein:
 
-- RemoteAddr: IP-Adresse/Hostname der Remotecomputerverbindung
+- RemoteAddr: IP-Adresse/-bereich der Remotecomputerverbindung
 - RequestMethod: HTTP-Anforderungsmethode (GET, POST, PUT, DELETE usw.)
 - QueryString: Variable im URI
 - PostArgs: Im POST-Text gesendete Argumente. Benutzerdefinierte Regeln mit dieser Abgleichsvariablen werden nur angewendet, wenn der Header „Content-Type“ auf „application/x-www-form-urlencoded“ und „multipart/form-data“ festgelegt ist.
@@ -135,7 +135,7 @@ Muss einer der folgenden Operatoren sein:
 - BeginsWith
 - EndsWith
 - RegEx
-- Geomatch (Vorschau)
+- Geomatch
 
 ### <a name="negate-condition-optional"></a>Negationsbedingung (optional)
 
@@ -162,9 +162,9 @@ Liste mit Werten für den Abgleich (verknüpft durch *oder*). Dabei kann es sich
 - Block: Blockiert die Transaktion auf der Grundlage von *SecDefaultAction* (Erkennungs-/Schutzmodus). Nachdem die Anforderung ausgewertet und der Blockierungsliste hinzugefügt wurde, findet keine weitere Auswertung mehr statt, und die Anforderung wird blockiert. Nachfolgende Anforderungen, die die gleichen Bedingungen erfüllen, werden nicht ausgewertet und einfach blockiert. 
 - Log: Ermöglicht der Regel das Schreiben in das Protokoll sowie die Auswertung der restlichen Regeln. Alle weiteren benutzerdefinierten Regeln werden gemäß ihrer Priorität ausgewertet – gefolgt von den verwalteten Regeln.
 
-## <a name="geomatch-custom-rules-preview"></a>Benutzerdefinierte Geomatch-Regeln (Vorschau)
+## <a name="geomatch-custom-rules"></a>Benutzerdefinierte Geomatch-Regeln
 
-Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstellen, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Sie können den Zugriff auf Ihre Webanwendungen länder-/regionsbasiert einschränken. Weitere Informationen finden Sie unter [Benutzerdefinierte Geomatch-Regeln (Vorschau)](geomatch-custom-rules.md).
+Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstellen, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Sie können den Zugriff auf Ihre Webanwendungen länder-/regionsbasiert einschränken. Weitere Informationen finden Sie unter [Benutzerdefinierte Geomatch-Regeln](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,8 +4,6 @@
   items:
     - name: Was ist eine Geräteidentität?
       href: overview.md
-    - name: Was ist Enterprise State Roaming?
-      href: enterprise-state-roaming-overview.md
 - name: Tutorials
   expanded: false
   items:
@@ -49,42 +47,44 @@
       href: device-management-azure-portal.md
     - name: Verwalten von veralteten Geräten
       href: manage-stale-devices.md
-    - name: Aktivieren von Enterprise State Roaming
-      href: enterprise-state-roaming-enable.md
     - name: "Virtuelle Azure-Linux-Computer und Azure\_AD"
       href: howto-vm-sign-in-azure-ad-linux.md
     - name: "Virtuelle Azure-Windows-Computer und Azure\_AD"
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Virtuelle Desktopinfrastruktur
       href: howto-device-identity-virtual-desktop-infrastructure.md
+    - name: Häufig gestellte Fragen
+      href: faq.yml
     - name: Problembehandlung für Geräteidentitäten
       items:
         - name: Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte
           href: troubleshoot-hybrid-join-windows-current.md
+        - name: Problembehandlung beim Gerätestatus „Ausstehend“
+          href: /troubleshoot/azure/active-directory/pending-devices
         - name: Troubleshooting mithilfe von dsregcmd
           href: troubleshoot-device-dsregcmd.md
         - name: Troubleshooting für in Azure AD eingebundene kompatible Windows-Hybridgeräte
           href: troubleshoot-hybrid-join-windows-legacy.md
-        - name: Problembehandlung für Enterprise State Roaming
-          href: enterprise-state-roaming-troubleshooting.md
-    - name: Häufig gestellte Fragen
+    - name: Enterprise State Roaming
       items:
-        - name: Häufig gestellte Fragen
-          href: faq.yml
+        - name: Was ist Enterprise State Roaming?
+          href: enterprise-state-roaming-overview.md
+        - name: Aktivieren von Enterprise State Roaming
+          href: enterprise-state-roaming-enable.md
         - name: 'Aktivieren von Enterprise State Roaming: häufig gestellte Fragen'
           href: enterprise-state-roaming-faqs.yml
+        - name: Problembehandlung für Enterprise State Roaming
+          href: enterprise-state-roaming-troubleshooting.md
+        - name: 'Enterprise State Roaming: GPO-Einstellungen'
+          href: enterprise-state-roaming-group-policy-settings.md
+        - name: 'Enterprise State Roaming: Windows-Einstellungen'
+          href: enterprise-state-roaming-windows-settings-reference.md
 - name: Verweis
   items:
     - name: "Erzwingen von TLS\_1.2"
       href: reference-device-registration-tls-1-2.md
-    - name: 'Enterprise State Roaming: GPO-Einstellungen'
-      href: enterprise-state-roaming-group-policy-settings.md
-    - name: 'Enterprise State Roaming: Windows-Einstellungen'
-      href: enterprise-state-roaming-windows-settings-reference.md
     - name: Graph-APIs
-      items:
-        - name: Geräteidentität-API
-          href: /graph/api/resources/device
+      href: /graph/api/resources/device
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum

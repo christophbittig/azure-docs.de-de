@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 05/24/2021
 ms.author: pepogors
-ms.openlocfilehash: 347fd606e1c91d583ec81f17d9203bbe46020b57
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: aaf5be101320a5b8cccb24b89908c788996fc494
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473154"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445796"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 
@@ -233,7 +233,7 @@ Der Service Fabric-Knotentyp muss aktiviert werden, um mehrere Verfügbarkeitszo
 >[!IMPORTANT]
 >Die API-Version der Service Fabric-Clusterressource sollte „2020-12-01-preview“ oder höher lauten.
 >
->Die Clustercodeversion sollte 7.2.445 oder höher sein.
+>Die Clustercodeversion sollte mindestens 8.1.321 oder höher sein.
 
 ```json
 {

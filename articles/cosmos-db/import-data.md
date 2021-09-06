@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Datenbankmigrationstool für Azure Cosmos DB'
 description: 'Tutorial: Erfahren Sie, wie Sie das Open-Source-basierte Azure Cosmos DB-Datenmigrationstool verwenden, um Daten aus verschiedenen Quellen (beispielsweise MongoDB, SQL Server, Azure Table Storage, Amazon DynamoDB, CSV- und JSON-Dateien) in Azure Cosmos DB zu importieren. CSV-zu-JSON-Konvertierung.'
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/26/2021
 ms.author: dech
-ms.openlocfilehash: 82f747f9bc484c0d113b579579bf13c98590e37c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 72843c595c8fe04bbfd82890b8974ae386b065a2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766723"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037329"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,8 +23,8 @@ In diesem Tutorial erfahren Sie, wie Sie das Azure Cosmos DB-Datenmigrationstool
 > Das Azure Cosmos DB-Datenmigrationstool ist ein Open-Source-Tool, das für kleine Migrationen konzipiert ist. Informationen zu größeren Migrationen finden Sie im [Leitfaden zum Erfassen von Daten](cosmosdb-migrationchoices.md).
 
 * **[SQL-API:](./introduction.md)** Sie können eine beliebige Quelloption des Datenmigrationstools verwenden, um Daten in kleinem Umfang zu importieren. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in großem Umfang](cosmosdb-migrationchoices.md).
-* **[Tabellen-API:](table-introduction.md)** Daten können mithilfe des Datenmigrationstools oder mithilfe von [AzCopy](table-import.md#migrate-data-by-using-azcopy) importiert werden. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md).
-* **[Azure Cosmos DB-API für MongoDB:](mongodb-introduction.md)** Das Datenmigrationstool weist keine Unterstützung der Azure Cosmos DB-API für MongoDB auf (weder als Quelle noch als Ziel). Wenn Sie die Daten in Azure Cosmos DB in oder aus Sammlungen migrieren möchten, hilft Ihnen die Anleitung unter [Migrieren von MongoDB-Daten zu einer Cosmos-Datenbank mit der Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) weiter. Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
+* **[Tabellen-API:](table/introduction.md)** Daten können mithilfe des Datenmigrationstools oder mithilfe von [AzCopy](table/table-import.md#migrate-data-by-using-azcopy) importiert werden. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table/table-import.md).
+* **[Azure Cosmos DB-API für MongoDB:](mongodb/mongodb-introduction.md)** Das Datenmigrationstool weist keine Unterstützung der Azure Cosmos DB-API für MongoDB auf (weder als Quelle noch als Ziel). Wenn Sie die Daten in Azure Cosmos DB in oder aus Sammlungen migrieren möchten, hilft Ihnen die Anleitung unter [Migrieren von MongoDB-Daten zu einer Cosmos-Datenbank mit der Azure Cosmos DB-API für MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) weiter. Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren.
 * **[Cassandra-API:](graph-introduction.md)** Das Datenmigrationstool wird nicht als Importtool für Cassandra-API-Konten unterstützt. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in die Cassandra-API](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api).
 * **[Gremlin-API:](graph-introduction.md)** Das Datenmigrationstool wird derzeit nicht als Importtool für Gremlin-API-Konten unterstützt. [Erfahren Sie mehr über Migrationsoptionen zum Importieren von Daten in die Gremlin-API](cosmosdb-migrationchoices.md#other-apis). 
 
@@ -68,10 +68,17 @@ Das Importtool verfügt zwar über eine grafische Benutzeroberfläche (dtui.exe)
 
 ## <a name="installation"></a><a id="Install"></a>Installation
 
-Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung lokal herunterladen und kompilieren und dann eine der folgenden Dateien ausführen:
+### <a name="download-executable-package"></a>Herunterladen des ausführbaren Pakets
 
-* **Dtui.exe**: GUI-Version des Tools
-* **Dt.exe**: Befehlszeilenversion des Tools
+  * Laden Sie [hier](https://github.com/Azure/azure-documentdb-datamigrationtool/releases/tag/1.8.3) eine ZIP-Datei mit den neuesten signierten Windows-Binärdateien **dt.exe** und **dtui.exe** herunter.
+  * Entzippen Sie sie in ein beliebiges Verzeichnis auf Ihrem Computer, und öffnen Sie das extrahierte Verzeichnis, um die Binärdateien zu finden.
+
+### <a name="build-from-source"></a>Erstellen aus der Quelle
+
+  Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung lokal herunterladen und kompilieren und dann eine der folgenden Dateien ausführen:
+
+  * **Dtui.exe**: GUI-Version des Tools
+  * **Dt.exe**: Befehlszeilenversion des Tools
 
 ## <a name="select-data-source"></a>Auswählen einer Datenquelle
 
@@ -237,7 +244,7 @@ dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString
 
 Mit der Importprogrammoption für Azure Table Storage-Quellen können Sie Daten aus einer einzelnen Azure Table Storage-Tabelle importieren. Optional können Sie die zu importierenden Tabellenentitäten filtern.
 
-Sie können aus Azure Table Storage importierte Daten zur Verwendung mit der Tabellen-API in Azure Cosmos DB-Tabellen und -Entitäten ausgeben. Importierte Daten können zur Verwendung mit der SQL-API auch in Sammlungen und Dokumente ausgegeben werden. Die Tabellen-API ist jedoch nur als Ziel im Befehlszeilenprogramm verfügbar. Es ist nicht möglich, Daten über die Benutzeroberfläche des Datenmigrationstools in die Tabellen-API zu exportieren. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md).
+Sie können aus Azure Table Storage importierte Daten zur Verwendung mit der Tabellen-API in Azure Cosmos DB-Tabellen und -Entitäten ausgeben. Importierte Daten können zur Verwendung mit der SQL-API auch in Sammlungen und Dokumente ausgegeben werden. Die Tabellen-API ist jedoch nur als Ziel im Befehlszeilenprogramm verfügbar. Es ist nicht möglich, Daten über die Benutzeroberfläche des Datenmigrationstools in die Tabellen-API zu exportieren. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table/table-import.md).
 
 :::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Screenshot der Optionen für Azure-Tabellenspeicherquellen":::
 
@@ -591,6 +598,10 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 > * Exportieren aus Azure Cosmos DB zu JSON
 
 Sie können nun mit dem nächsten Tutorial fortfahren und sich darüber informieren, wie Sie Daten mithilfe von Azure Cosmos DB abfragen können.
+
+Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+  * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+  * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 >[Abfragen von Daten](../cosmos-db/tutorial-query-sql-api.md)

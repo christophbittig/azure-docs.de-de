@@ -267,6 +267,8 @@
           href: troubleshoot-common-errors.md
 - name: Verweis
   items:
+    - name: Umgebungsvariablen der Runtimemodule
+      href: 'https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md'
     - name: PowerShell-Funktionen
       items:
         - name: IoT Edge für Linux unter Windows

@@ -3,15 +3,15 @@ title: Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln ru
 description: Erstellen und verwalten Sie Ihre eigenen Verschlüsselungsschlüssel in Azure Logic Apps, um ruhende Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) zu schützen.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: mijos, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3ea6476173e7be1a6239e97ef2e5fbb5257aead
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98629673"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356584"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -23,7 +23,11 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 ## <a name="considerations"></a>Überlegungen
 
-* Zum aktuellen Zeitpunkt ist die Unterstützung von kundenseitig verwalteten Schlüsseln für eine ISE nur in den folgenden Azure-Regionen verfügbar: „USA, Westen 2“, „USA, Osten“ und „USA, Süden-Mitte“
+* Zum aktuellen Zeitpunkt ist die Unterstützung von kundenseitig verwalteten Schlüsseln für eine ISE nur in den folgenden Regionen verfügbar:
+
+  * Azure: „USA, Westen 2“, „USA, Osten“ und „USA, Süden-Mitte“
+
+  * Azure Government: Arizona, Virginia und Texas.
 
 * Sie können einen vom Kunden verwalteten Schlüssel *nur beim Erstellen der ISE* angeben, nicht später. Sie können diesen Schlüssel nach dem Erstellen Ihrer ISE nicht mehr deaktivieren. Zurzeit wird das Rotieren eines vom Kunden verwalteten Schlüssels für eine ISE nicht unterstützt.
 

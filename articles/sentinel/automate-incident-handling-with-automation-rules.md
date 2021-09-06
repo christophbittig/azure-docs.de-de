@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1244959bac7a2c530444e3d4b36691d4f760529a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072671"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346216"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln
 
@@ -42,7 +42,7 @@ Automatisierungsregeln bestehen aus mehreren Komponenten:
 
 Automatisierungsregeln werden durch die Erstellung eines Incidents ausgelöst. 
 
-Zu überprüfen: Vorfälle werden durch Analyseregeln aus Alarmen erstellt, von denen es mehrere Typen gibt, wie im Tutorial [Erkennen von Bedrohungen mit integrierten Analyseregeln in Azure Sentinel](tutorial-detect-threats-built-in.md) erläutert.
+Zu überprüfen: Vorfälle werden durch Analyseregeln aus Alarmen erstellt, von denen es mehrere Typen gibt, wie im Tutorial [Erkennen von Bedrohungen mit integrierten Analyseregeln in Azure Sentinel](detect-threats-built-in.md) erläutert.
 
 ### <a name="conditions"></a>Bedingungen
 
@@ -54,7 +54,7 @@ Es können Aktionen definiert werden, die ausgeführt werden, wenn die Bedingung
 
 - Ändern des Status eines Incidents, sodass der Workflow auf dem neuesten Stand bleibt.
 
-  - Wenn Sie zu „geschlossen“ wechseln, wird der [Schließungsgrund](tutorial-investigate-cases.md#closing-an-incident) angegeben und ein Kommentar hinzugefügt. Dies hilft Ihnen dabei, ihre Leistung und Effektivität zu überwachen und eine Feinabstimmung durchführen, um [False Positives](false-positives.md) zu reduzieren.
+  - Wenn Sie zu „geschlossen“ wechseln, wird der [Schließungsgrund](investigate-cases.md#closing-an-incident) angegeben und ein Kommentar hinzugefügt. Dies hilft Ihnen dabei, ihre Leistung und Effektivität zu überwachen und eine Feinabstimmung durchführen, um [False Positives](false-positives.md) zu reduzieren.
 
 - Ändern des Schweregrades eines Incidents – basierend auf dem Vorhandensein, der Abwesenheit, den Werten oder den Attributen der am Incident beteiligten Entitäten können Sie eine Neubewertung und Neupriorisierung vornehmen.
 
@@ -122,7 +122,14 @@ Sie können automatisch Freitext-Tags zu Ereignissen hinzufügen, um sie nach be
 
 Automatisierungsregeln werden sequenziell ausgeführt, entsprechend der von Ihnen festgelegten Reihenfolge. Jede Automatisierungsregel wird ausgeführt, nachdem die vorhergehende ihre Ausführung beendet hat. Innerhalb einer Automatisierungsregel werden alle Aktionen nacheinander in der Reihenfolge ausgeführt, in der sie definiert sind.
 
-Bei Playbook-Aktionen gibt es eine Verzögerung von zwei Minuten zwischen dem Anfang der Playbook-Aktion und der nächsten Aktion in der Liste.
+Playbookaktionen innerhalb einer Automatisierungsregel können unter bestimmten Umständen gemäß den folgenden Kriterien unterschiedlich behandelt werden:
+
+| Playbooklaufzeit | Automatisierungsregel geht zur nächsten Aktion über... |
+| ----------------- | --------------------------------------------------- |
+| Weniger als eine Sekunde | Unmittelbar nach Abschluss des Playbooks |
+| Weniger als zwei Minuten | Bis zu zwei Minuten nach Beginn der Ausführung des Playbooks,<br>aber nicht mehr als 10 Sekunden nach Abschluss des Playbooks |
+| Mehr als zwei Minuten | Zwei Minuten nach Beginn der Ausführung des Playbooks,<br>unabhängig davon, ob sie abgeschlossen wurde oder nicht |
+|
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>Berechtigungen für Automatisierungsregeln zum Ausführen von Playbooks
 
