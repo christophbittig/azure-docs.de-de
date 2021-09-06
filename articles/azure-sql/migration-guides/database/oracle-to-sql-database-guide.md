@@ -9,18 +9,18 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 08/25/2020
-ms.openlocfilehash: 85f65fa17e1fac05bd9c9040e77b2fbde104b176
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0a6f7bca2e6a3a1f0ac10f868ddeffe72d082c28
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961953"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355780"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Migrationsleitfaden: Oracle zu Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemas über [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für Oracle (SSMA für Oracle) zu Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey) können.
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemas mithilfe von [SQL Server Migration Assistant](https://azure.microsoft.com/migration/sql-server/) für Oracle (SSMA für Oracle) zu Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey) können.
 
 Weitere Migrationsleitfäden finden Sie in den [Leitfäden zur Azure-Datenbankmigration](/data-migration).
 
@@ -32,7 +32,7 @@ Bevor Sie mit der Migration Ihres Oracle-Schemas zu SQL-Datenbank beginnen:
 - Laden Sie [SSMA für Oracle](https://www.microsoft.com/download/details.aspx?id=54258) herunter.
 - Sie müssen über eine [SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz verfügen.
 - Fordern Sie die [erforderlichen Berechtigungen für SSMA für Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) und den [Anbieter](/sql/ssma/oracle/connect-to-oracle-oracletosql) an.
- 
+
 ## <a name="pre-migration"></a>Vor der Migration
 
 Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihrer Umgebung ermitteln und die Durchführbarkeit Ihrer [Azure-Cloudmigration](https://azure.microsoft.com/migration) bewerten. Diese Schritte umfassen eine Bestandsaufnahme der Datenbanken, die migriert werden müssen, eine Untersuchung dieser Datenbanken auf potenzielle Migrationsprobleme oder Hindernisse sowie das Behandeln eventuell entdeckter Probleme.
@@ -55,7 +55,7 @@ So erstellen Sie eine Bewertung
 
    ![Screenshot von der Auswahl des Oracle-Schemas](./media/oracle-to-sql-database-guide/select-schema.png)
 
-1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das zu migrierende Oracle-Schema, und wählen Sie dann **Bericht erstellen** aus, um einen HTML-Bericht zu generieren. Alternativ können Sie eine Datenbank auswählen und dann auf die Registerkarte **Bericht erstellen** klicken.
+1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das zu migrierende Oracle-Schema, und wählen Sie dann **Bericht erstellen** aus, um einen HTML-Bericht zu generieren. Stattdessen können Sie eine Datenbank auswählen und dann auf die Registerkarte **Bericht erstellen** klicken.
 
    ![Screenshot von „Bericht erstellen“](./media/oracle-to-sql-database-guide/create-report.png)
 
@@ -88,7 +88,7 @@ So konvertieren Sie das Schema
 
     ![Screenshot von „Verbindung mit Azure SQL-Datenbank herstellen“](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
-1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das Oracle-Schema, und klicken Sie dann auf **Schema konvertieren**. Alternativ können Sie Ihr Schema auswählen und dann auf die Registerkarte **Schema konvertieren** klicken.
+1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das Oracle-Schema, und klicken Sie dann auf **Schema konvertieren**. Oder Sie können Ihr Schema auswählen und dann auf die Registerkarte **Schema konvertieren** klicken.
 
    ![Screenshot von „Schema konvertieren“](./media/oracle-to-sql-database-guide/convert-schema.png)
 
@@ -117,7 +117,7 @@ So veröffentlichen Sie das Schema und migrieren Ihre Daten
 
    ![Screenshot von „Mit Datenbank synchronisieren“ zur Überprüfung](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
-1. Migrieren Sie die Daten, indem Sie im **Metadaten-Explorer für Oracle** mit der rechten Maustaste auf die zu migrierende Datenbank oder das Objekt klicken und **Daten migrieren** auswählen. Alternativ können Sie die Registerkarte **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um Daten für eine gesamte Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie die Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
+1. Migrieren Sie die Daten, indem Sie im **Metadaten-Explorer für Oracle** mit der rechten Maustaste auf die zu migrierende Datenbank oder das Objekt klicken und **Daten migrieren** auswählen. Oder Sie können die Registerkarte **Daten migrieren** auswählen. Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um Daten für eine gesamte Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie die Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
    ![Screenshot von „Daten migrieren“](./media/oracle-to-sql-database-guide/migrate-data.png)
 
@@ -130,7 +130,7 @@ So veröffentlichen Sie das Schema und migrieren Ihre Daten
 
    ![Screenshot der Überprüfung in SQL Server Management Studio](./media/oracle-to-sql-database-guide/validate-data.png)
 
-Stattdessen können Sie die Migration auch über SQL Server Integration Services durchführen. Weitere Informationen finden Sie unter:
+Oder können Sie die Migration auch über SQL Server Integration Services durchführen. Weitere Informationen finden Sie unter:
 
 - [Erste Schritte mit SQL Server Integration Services](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services für Azure und die Hybriddatenverschiebung](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
@@ -154,6 +154,94 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 1. **Führen Sie die Validierungstests aus**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Ausführen von Leistungstests:** Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
+### <a name="validate-migrated-objects"></a>Überprüfen migrierter Objekte
+
+Microsoft SQL Server Migration Assistant for Oracle Tester (SSMA-Tester) ermöglicht Ihnen das Testen migrierter Datenbankobjekte. Der SSMA-Tester wird verwendet, um zu überprüfen, ob sich konvertierte Objekte auf die gleiche Weise verhalten.
+
+#### <a name="create-test-case"></a>Testfall erstellen
+
+1. Öffnen Sie SSMA für Oracle, und wählen Sie erst **Tester** und dann **Neuer Testfall** aus.
+   ![Screenshot: Erstellen eines neuen Testfalls.](./media/oracle-to-sql-database-guide/ssma-tester-new.png)
+
+1. Geben Sie die folgenden Informationen für den neuen Testfall an:
+
+   **Name:** Geben Sie den Namen ein, um den Testfall zu bestimmen.
+
+   **Erstellungsdatum:** Das Datum des heutigen Tages, das automatisch bestimmt wird.
+
+   **Datum der letzten Änderung:** Wird automatisch ausgefüllt und darf nicht geändert werden.
+
+   **Beschreibung:** Geben Sie zusätzliche Informationen ein, um den Zweck des Testfalls zu bestimmen.
+
+   ![Screenshot: Schritte zum Initialisieren eines Testfalls.](./media/oracle-to-sql-database-guide/tester-init-test-case.png)
+
+1. Wählen Sie in der Oracle-Objektstruktur auf der linken Seite die Objekte aus, die zum Testfall gehören.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-select-configure-objects.png" alt-text="Screenshot: Schritt zum Auswählen und Konfigurieren des Objekts.":::
+
+   In diesem Beispiel sind die gespeicherte Prozedur `ADD_REGION` und Tabelle `REGION` ausgewählt.
+
+     Weitere Informationen finden Sie unter [Auswählen und Konfigurieren von zu testenden Objekten](/sql/ssma/oracle/selecting-and-configuring-objects-to-test-oracletosql).
+
+1. Wählen Sie als Nächstes im linken Fenster in der Oracle-Objektstruktur die Tabellen, Fremdschlüssel und andere abhängige Objekte aus.
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-select-configure-affected.png" alt-text="Screenshot: Schritt zum Auswählen und Konfigurieren des betroffenen Objekts.":::
+
+   Weitere Informationen finden Sie unter [Auswählen und Konfigurieren von betroffenen Objekten](/sql/ssma/oracle/selecting-and-configuring-affected-objects-oracletosql).
+
+1. Überprüfen Sie die Auswertungssequenz von Objekten. Ändern Sie die Reihenfolge, indem Sie im Raster auf die Schaltflächen klicken.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/test-call-ordering.png" alt-text="Screenshot, der die einzelnen Schritte der Testobjektausführung zeigt.":::
+
+1. Schließen Sie den Testfall ab, indem Sie die in den vorherigen Schritten bereitgestellten Informationen überprüfen. Konfigurieren Sie die Testausführungsoptionen basierend auf dem Testszenario.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-finalize-case.png" alt-text="Screenshot: Schritt zum Abschließen des Objekts.":::
+
+   Weitere Informationen zu Testfalleinstellungen finden Sie unter [Beenden der Vorbereitung von Testfällen](/sql/ssma/oracle/finishing-test-case-preparation-oracletosql).
+
+1. Klicken Sie auf „Fertig stellen“, um den Testfall zu erstellen.
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-test-repo.png" alt-text="Screenshot: Schritt zum Testen des Repositorys.":::
+
+#### <a name="run-test-case"></a>Ausführen des Testfalls
+
+Wenn der SSMA-Tester einen Testfall ausführt, führt die Test-Engine die zu Testzwecken ausgewählten Objekte aus und generiert einen Überprüfungsbericht.
+
+1. Wählen Sie im Testrepository den Testfall aus, und klicken Sie dann auf „Ausführen“.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-repo-run.png" alt-text="Screenshot: Überprüfen des Testrepositorys.":::
+
+1. Überprüfen Sie den Starttestfall, und klicken Sie auf „Ausführen“.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-test-case.png" alt-text="Screenshot: Schritt zum Ausführen des Testfalls.":::
+
+1. Geben Sie als Nächstes Anmeldeinformationen für die Oracle-Quelle an. Klicken Sie nach Eingabe der Anmeldeinformationen auf „Verbinden“.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-oracle-connect.png" alt-text="Screenshot: Schritt zum Herstellen einer Verbindung mit der Oracle-Quelle":::
+
+1. Geben Sie die SQL Server-Anmeldeinformationen an, und klicken Sie auf „Verbinden“.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-sql-connect.png" alt-text="Screenshot: Schritt zum Herstellen einer Verbindung mit dem SQL Server-Ziel.":::
+
+   Bei Erfolg wechselt der Testfall in die Initialisierungsphase.
+
+1. Eine Statusleiste in Echtzeit zeigt den Ausführungsstatus des Testlaufs.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-status.png" alt-text="Screenshot: Testfortschritt des Testers":::
+
+1. Überprüfen Sie den Bericht, nachdem der Test abgeschlossen wurde. Der Bericht enthält die Statistiken, alle Fehler während des Testlaufs und einen Detailbericht.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-result.png" alt-text="Screenshot: Beispieltestbericht für Tester":::
+
+1. Klicken Sie auf „Details“, um weitere Informationen zu erhalten.
+
+   Beispiel einer erfolgreichen Datenüberprüfung.
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-success.png" alt-text="Screenshot: Erfolgsbericht eines Beispieltests.":::
+
+   Beispiel einer fehlgeschlagenen Datenüberprüfung.
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-failed.png" alt-text="Screenshot: Fehlerbericht des Testers":::
+
 ### <a name="optimize"></a>Optimieren
 
 Die Phase nach der Migration ist entscheidend für den Abgleich von Problemen mit der Datengenauigkeit, die Überprüfung der Vollständigkeit und das Beheben von Leistungsproblemen der Workload.
@@ -167,12 +255,10 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 
 | **Titel/Link**                                                                                                                                          | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Data Workload Assessment Model and Tool](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen oder Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen.                                                          |
-| [Oracle Inventory Script Artifacts](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Diese Ressource umfasst eine PL/SQL-Abfrage für Oracle-Systemtabellen, die die Anzahl von Objekten nach Schematyp, Objekttyp und Status bereitstellt. Darüber hinaus erhalten Sie eine grobe Schätzung zu den „Rohdaten“ sowie zur Größe der Tabellen in jedem Schema. Die Ergebnisse werden im CSV-Format gespeichert.                                                                                                               |
-| [Automate SSMA Oracle Assessment Collection & Consolidation](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Diese Ressourcensammlung verwendet eine CSV-Datei als Eingabe („sources.csv“ in den Projektordnern), um die XML-Dateien zu erstellen, die zum Ausführen einer SSMA-Bewertung im Konsolenmodus benötigt werden. Die Datei „source.csv“ wird vom Kunden bereitgestellt und basiert auf einer Inventarisierung vorhandener Oracle-Instanzen. Die Ausgabedateien sind „AssessmentReportGeneration_source_1.xml“, „ServersConnectionFile.xml“ und „VariableValueFile.xml“.|
-| [SSMA für Oracle: häufige Probleme und deren Behebung](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | In Oracle kann eine nicht skalare Bedingung in der WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server jedoch nicht unterstützt. SSMA für Oracle konvertiert daher keine Abfragen, die eine nicht skalare Bedingung in der WHERE-Klausel aufweisen. Stattdessen wird der Fehler O2SS0001 generiert. In diesem Whitepaper finden Sie weitere Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
-| [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server-Datenbank beschrieben. Wenn für die Migration Änderungen an Features oder Funktionen erforderlich sind, müssen die Auswirkungen dieser Änderungen auf die Anwendungen, die die Datenbank verwenden, sorgfältig abgewogen werden.                                                     |
-|[Oracle zu SQL DB – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA für Oracle Tester ist das empfohlene Tool, um automatisch die Umwandlung von Datenbankobjekten und Datenmigration zu überprüfen. Außerdem enthält es eine Obermenge der Database Compare-Funktionen.<br /><br />Wenn Sie nach einer alternativen Datenüberprüfungsoption suchen, können Sie Daten mithilfe des Hilfsprogramms „Database Compare“ in ausgewählten oder allen Tabellen, Zeilen und Spalten bis auf Zeilen- oder Spaltenebene vergleichen.|
+| [Data Workload Assessment Model and Tool](https://www.microsoft.com/download/details.aspx?id=103130) | Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen oder Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen.                                                          |
+| [Oracle Inventory Script Artifacts](https://www.microsoft.com/download/details.aspx?id=103121)                 | Diese Ressource umfasst eine PL/SQL-Abfrage für Oracle-Systemtabellen, die die Anzahl von Objekten nach Schematyp, Objekttyp und Status bereitstellt. Darüber hinaus erhalten Sie eine grobe Schätzung zu den „Rohdaten“ sowie zur Größe der Tabellen in jedem Schema. Die Ergebnisse werden im CSV-Format gespeichert.                                                                                                               |
+| [Automate SSMA Oracle Assessment Collection & Consolidation](https://www.microsoft.com/download/details.aspx?id=103120)                                             | Diese Ressourcensammlung verwendet eine CSV-Datei als Eingabe („sources.csv“ in den Projektordnern), um die XML-Dateien zu erstellen, die zum Ausführen einer SSMA-Bewertung im Konsolenmodus benötigt werden. Die Datei „source.csv“ wird vom Kunden bereitgestellt und basiert auf einer Inventarisierung vorhandener Oracle-Instanzen. Die Ausgabedateien sind „AssessmentReportGeneration_source_1.xml“, „ServersConnectionFile.xml“ und „VariableValueFile.xml“.|
+| [Oracle zu SQL DB – Hilfsprogramm „Database Compare“](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA für Oracle Tester ist das empfohlene Tool, um automatisch die Umwandlung von Datenbankobjekten und Datenmigration zu überprüfen. Außerdem enthält es eine Obermenge der Database Compare-Funktionen.<br /><br />Wenn Sie nach einer alternativen Datenüberprüfungsoption suchen, können Sie Daten mithilfe des Hilfsprogramms „Database Compare“ in ausgewählten oder allen Tabellen, Zeilen und Spalten bis auf Zeilen- oder Spaltenebene vergleichen.|
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 

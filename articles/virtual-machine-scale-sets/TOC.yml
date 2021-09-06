@@ -238,58 +238,44 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: Grundlegendes zu Instanz-IDs
           href: virtual-machine-scale-sets-instance-ids.md
-    - name: Verwenden von Images
-      displayName: 'SIG, AMI, image'
+    - name: Kataloge mit freigegebenen Images
       items:
-        - name: Kataloge mit freigegebenen Images
+        - name: Übersicht
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/shared-image-galleries.md
+        - name: Erstellen eines Katalogs
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/create-gallery.md
+        - name: Freigeben eines Katalogs
+          href: ../virtual-machines/share-gallery.md
+        - name: Erstellen eines Images
+          displayName: 'VM, image, VHD, storage account'
+          href: ../virtual-machines/image-version.md
+        - name: Erfassen eines virtuellen Computers im Portal
+          href: ../virtual-machines/capture-image-portal.md
+        - name: Erstellen einer Skalierungsgruppe
           items:
             - name: PowerShell
               items:
-                - name: Erstellen eines Katalogs
-                  href: ../virtual-machines/shared-images-powershell.md
-                - name: Erstellen eines Images
-                  items:
-                    - name: Von einem virtuellen Computer
-                      href: ../virtual-machines/image-version-vm-powershell.md
-                    - name: Migrieren von einem verwalteten Image
-                      href: ../virtual-machines/image-version-managed-image-powershell.md
-                    - name: Kopieren aus einem anderen Katalog
-                      href: ../virtual-machines/image-version-another-gallery-powershell.md
-                - name: Erstellen einer Skalierungsgruppe
-                  items:
-                    - name: Spezialisiert
-                      href: instance-specialized-image-version-powershell.md
-                    - name: Generalisiert
-                      href: instance-generalized-image-version-powershell.md
-                - name: Aktualisieren von Imageressourcen
-                  href: ../virtual-machines/update-image-resources-powershell.md
-            - name: Befehlszeilenschnittstelle (CLI)
+                - name: Spezialisiert
+                  href: instance-specialized-image-version-powershell.md
+                - name: Generalisiert
+                  href: instance-generalized-image-version-powershell.md
+            - name: CLI
               items:
-                - name: Erstellen eines Katalogs
-                  href: ../virtual-machines/shared-images-cli.md
-                - name: Erstellen eines Images
-                  items:
-                    - name: Von einem virtuellen Computer
-                      href: ../virtual-machines/image-version-vm-cli.md
-                    - name: Migrieren von einem verwalteten Image
-                      href: ../virtual-machines/image-version-managed-image-cli.md
-                    - name: Kopieren aus einem anderen Katalog
-                      href: ../virtual-machines/image-version-another-gallery-cli.md
-                - name: Erstellen einer Skalierungsgruppe
-                  items:
-                    - name: Spezialisiert
-                      href: instance-specialized-image-version-cli.md
-                    - name: Generalisiert
-                      href: instance-generalized-image-version-cli.md
-                - name: Aktualisieren von Imageressourcen
-                  href: ../virtual-machines/update-image-resources-cli.md
-            - name: Problembehandlung für freigegebene Images
-              href: ../virtual-machines/troubleshooting-shared-images.md
-            - name: Verwendung der kundenseitig verwalteten Schlüssel
-              displayName: 'SSE, CMK, encrypt'
-              href: ../virtual-machines/image-version-encryption.md
-            - name: App-Registrierung für die Freigabe
-              href: share-images-across-tenants.md
+                - name: Spezialisiert
+                  href: instance-specialized-image-version-cli.md
+                - name: Generalisiert
+                  href: instance-generalized-image-version-cli.md
+        - name: Aktualisieren von Imageressourcen
+          href: ../virtual-machines/update-image-resources.md
+        - name: Problembehandlung für freigegebene Images
+          href: ../virtual-machines/troubleshooting-shared-images.md
+        - name: Verwendung der kundenseitig verwalteten Schlüssel
+          displayName: 'SSE, CMK, encrypt'
+          href: ../virtual-machines/image-version-encryption.md
+        - name: App-Registrierung für die Freigabe
+          href: share-images-across-tenants.md
     - name: Erstellen einer Vorlage
       items:
         - name: Informationen zu Skalierungsgruppenvorlagen
@@ -343,15 +329,12 @@
         - name: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Verwenden dedizierter Hosts
+          displayName: 'sole-tenant, sole tenant, isolated, isolation'
           items:
             - name: Übersicht
               href: ../virtual-machines/dedicated-hosts.md
-            - name: CLI
-              href: ../virtual-machines/linux/dedicated-hosts-cli.md
-            - name: PowerShell
-              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
-            - name: Portal
-              href: ../virtual-machines/dedicated-hosts-portal.md
+            - name: Vorgehensweise
+              href: ../virtual-machines/dedicated-hosts.md
         - name: Azure Spot-VMs
           href: use-spot.md
         - name: Azure-Hybridvorteil für Linux

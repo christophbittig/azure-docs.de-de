@@ -34,7 +34,7 @@
       items:
         - name: Erstellen einer Benachrichtigungs-App mit Azure-Funktion
           href: tutorial-serverless-notification.md
-        - name: Erstellen einer Chat-App mit Azure-Funktion
+        - name: Erstellen einer Echtzeitchat-App mit Clientauthentifizierung
           href: quickstart-serverless.md
     - name: Veröffentlichen und Abonnieren von Nachrichten
       href: tutorial-pub-sub-messages.md
@@ -85,6 +85,8 @@
       items:
         - name: JSON-WebSocket-Unterprotokoll
           href: reference-json-webpubsub-subprotocol.md
+        - name: Protobuf-WebSocket-Unterprotokoll
+          href: reference-protobuf-webpubsub-subprotocol.md
     - name: CloudEvents-Erweiterung für Azure Web PubSub
       href: reference-cloud-events.md
     - name: Functions-Trigger und -Bindungen

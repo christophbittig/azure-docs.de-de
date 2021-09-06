@@ -1,51 +1,52 @@
 ---
-title: Konfigurieren der Authentifizierung in einer Single-Page-Beispielwebanwendung mit Azure Active Directory B2C
-description: Hier finden Sie Informationen zum Verwenden von Azure Active Directory B2C zum Anmelden und Registrieren von Benutzern in einer Single-Page-Webanwendung.
+title: Konfigurieren der Authentifizierung in einem Beispiel einer Single-Page-Webanwendung (SPA) mithilfe von Azure Active Directory B2C
+description: In diesem Artikel wird erörtert, wie Sie Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer Single-Page-Webanwendung (SPA) verwenden.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: addf3870c22105a2ff42202e768d1e8cda4ffbde
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: ffda1151054b887114523704498a97d2ab7f7c44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112073003"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339314"
 ---
-# <a name="configure-authentication-in-a-sample-single-page-application-using-azure-active-directory-b2c"></a>Konfigurieren der Authentifizierung in einer Single-Page-Beispielwebanwendung (SPA) mit Azure Active Directory B2C
+# <a name="configure-authentication-in-a-sample-single-page-application-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einem Beispiel einer Single-Page-Webanwendung (SPA) mithilfe von Azure AD B2C
 
-In diesem Artikel wird anhand einer JavaScript-Single-Page-Beispielwebanwendung veranschaulicht, wie Sie Ihren Single-Page-Webanwendungen die Authentifizierung von Azure Active Directory B2C (Azure AD B2C) hinzufügen.
+In diesem Artikel wird anhand eines Beispiels einer Single-Page-Webanwendung (SPA) für JavaScript veranschaulicht, wie Sie Ihren SPAs die Authentifizierung bei Azure Active Directory B2C (Azure AD B2C) hinzufügen.
 
 ## <a name="overview"></a>Übersicht
 
-OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei einer Anwendung angemeldet werden können. Für diese Single-Page-Beispielwebanwendung werden [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) und der OIDC PKCE-Flow verwendet. MSAL.js ist eine von Microsoft bereitgestellte Bibliothek, die das Hinzufügen von Authentifizierungs- und Autorisierungsunterstützung für Single-Page-Webanwendungen vereinfacht.
+OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll, das auf OAuth 2.0 basiert. Sie können damit einen Benutzer sicher bei einer Anwendung anmelden. Für dieses Beispiel einer Single-Page-Webanwendung werden [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) und der OIDC PKCE-Flow verwendet. „MSAL.js“ ist eine von Microsoft bereitgestellte Bibliothek, die das Hinzufügen von Authentifizierungs- und Autorisierungsunterstützung für SPAs vereinfacht.
 
-### <a name="sign-in-flow"></a>Anmeldeflow
+### <a name="sign-in-flow"></a>Anmeldefluss
+
 Der Anmeldeflow umfasst die folgenden Schritte:
 
-1. Der Benutzer navigiert zur Web-App und wählt **Anmelden** aus. 
-1. Die App initiiert eine Authentifizierungsanforderung und leitet den Benutzer zu Azure AD B2C um.
-1. Der Benutzer [registriert sich oder meldet sich an](add-sign-up-and-sign-in-policy.md), [setzt das Kennwort zurück](add-password-reset-policy.md) oder meldet sich mit einem [Social Media-Konto](add-identity-provider.md) an.
-1. Nach erfolgreicher Anmeldung gibt Azure AD B2C ein ID-Token an die App zurück.
+1. Benutzer navigieren zur Web-App und wählen **Anmelden** aus.
+1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer zu Azure AD B2C um.
+1. Benutzer [registrieren oder melden sich an](add-sign-up-and-sign-in-policy.md) und [setzen das Kennwort](add-password-reset-policy.md) zurück. Alternativ können sie sich mit einem [Social Media-Konto](add-identity-provider.md) anmelden.
+1. Nach erfolgreicher Benutzeranmeldung gibt Azure AD B2C einen Autorisierungscode an die App zurück.
 1. Die Single-Page-Webanwendung überprüft das ID-Token, liest die Ansprüche und ermöglicht es dem Benutzer wiederum, geschützte Ressourcen/APIs aufzurufen.
 
 ### <a name="app-registration-overview"></a>Übersicht über die App-Registrierung
 
-Damit sich Ihre App mit Azure AD B2C anmelden und eine Web-API aufrufen kann, müssen Sie im Azure AD B2C-Verzeichnis zwei Anwendungen registrieren.  
+Damit sich Ihre App bei Azure AD B2C anmelden und eine Web-API aufrufen kann, registrieren Sie im Azure AD B2C-Verzeichnis zwei Anwendungen.  
 
-- Durch die **Webanwendungsregistrierung** kann sich Ihre App mit Azure AD B2C anmelden. Bei der App-Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den der Benutzer umgeleitet wird, nachdem er sich mit Azure AD B2C authentifiziert hat. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert.
+- Durch die **Webanwendungsregistrierung** kann sich Ihre App bei Azure AD B2C anmelden. Bei der Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI ist der Endpunkt, an den Benutzer von Azure AD B2C umgeleitet werden, nachdem die Authentifizierung mithilfe von Azure AD B2C abgeschlossen ist. Beim App-Registrierungsprozess wird eine *Anwendungs-ID* generiert, die auch als *Client-ID* bezeichnet wird und Ihre App eindeutig identifiziert.
 
-- Durch die **Web-API**-Registrierung kann Ihre App eine sichere Web-API aufrufen. Die Registrierung umfasst die Web-API-*Bereiche*. Bereiche bieten eine Möglichkeit, Berechtigungen für geschützte Ressourcen wie Ihre Web-API zu verwalten. Sie erteilen der Webanwendung Berechtigungen für die Bereiche der Web-API. Wenn ein Zugriffstoken angefordert wird, gibt Ihre App im Bereichsparameter der Anforderung die gewünschten Berechtigungen an.  
+- Durch die **Web-API**-Registrierung kann Ihre App eine sichere Web-API aufrufen. Die Registrierung umfasst die Web-API-*Bereiche*. Die Bereiche bieten eine Möglichkeit, Berechtigungen für geschützte Ressourcen wie Ihre Web-API zu verwalten. Sie erteilen der Webanwendung Berechtigungen für die Bereiche der Web-API. Wenn ein Zugriffstoken angefordert wird, gibt Ihre App im Bereichsparameter der Anforderung die gewünschten Berechtigungen an.  
 
-In den folgenden Diagrammen werden die App-Registrierungen und die Anwendungsarchitektur veranschaulicht.
+App-Architektur und -Registrierungen sind im folgenden Diagramm dargestellt:
 
-![Web-App mit Web-API-Aufrufregistrierungen und Token](./media/configure-authentication-sample-spa-app/spa-app-with-api-architecture.png) 
+![Diagramm einer Web-App mit Web-API-Aufrufregistrierungen und Token.](./media/configure-authentication-sample-spa-app/spa-app-with-api-architecture.png) 
 
 ### <a name="call-to-a-web-api"></a>Aufrufen einer Web-API
 
@@ -70,68 +71,76 @@ Ein Computer, auf dem Folgendes ausgeführt wird:
 
 In diesem Schritt erstellen Sie die SPA- und Web-API-Anwendungsregistrierungen und geben die Bereiche Ihrer Web-API an.
 
-### <a name="21-register-the-web-api-application"></a>2.1 Registrieren der Web-API-Anwendung
+### <a name="step-21-register-the-web-api-application"></a>Schritt 2.1 Registrieren der Web-API-Anwendung
 
 [!INCLUDE [active-directory-b2c-app-integration-register-api](../../includes/active-directory-b2c-app-integration-register-api.md)]
 
-### <a name="22-configure-scopes"></a>2.2 Konfigurieren der Bereiche
+### <a name="step-22-configure-scopes"></a>Schritt 2.2: Konfigurieren von Bereichen
 
 [!INCLUDE [active-directory-b2c-app-integration-api-scopes](../../includes/active-directory-b2c-app-integration-api-scopes.md)]
 
-### <a name="23-register-the-client-app"></a>2.3 Registrieren der Client-App
+### <a name="step-23-register-the-spa"></a>Schritt 2.3: Registrieren der SPA
 
-Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
+Gehen Sie zur Erstellung der SPA-Registrierung folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *MyApp*.
+1. Geben Sie einen **Namen** für die Anwendung ein, z. B. *MyApp*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Identitätsanbieter oder Organisationsverzeichnis (zum Authentifizieren von Benutzern mit Benutzerflows)** aus. 
-1. Wählen Sie unter **Umleitungs-URI** die Option **Single-Page-Anwendung (SPA)** aus, und geben Sie `http://localhost:6420` in das URL-Textfeld ein.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Single-Page-Webanwendung (SPA)** aus, und geben Sie `http://localhost:6420` in das Feld „URL“ ein.
 1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen **Administratoreinwilligung für OpenID- und Offlinezugriffsberechtigungen erteilen**.
 1. Wählen Sie **Registrieren**.
 
+### <a name="step-24-enable-the-implicit-grant-flow"></a>Schritt 2.4 Aktivieren des Flows zur impliziten Genehmigung
+
 Aktivieren Sie als Nächstes den Flow zur impliziten Genehmigung:
 
-1. Wählen Sie unter Verwalten die Option Authentifizierung aus.
-1. Wählen Sie Neue Benutzeroberfläche ausprobieren aus (sofern die Option angezeigt wird).
-1. Aktivieren Sie unter „Implizite Genehmigung“ das Kontrollkästchen „ID-Token“.
-1. Wählen Sie „Speichern“ aus.
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 
-Notieren Sie sich die **Anwendungs-ID (Client)** , die Sie später beim Konfigurieren der Webanwendung verwenden.
-    ![Abrufen Ihrer Anwendungs-ID](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
+1. Wählen Sie **Neue Benutzeroberfläche ausprobieren** aus (sofern die Option angezeigt wird).
 
-### <a name="25-grant-permissions"></a>2.5 Erteilen von Berechtigungen
+1. Aktivieren Sie unter **Implizite Genehmigung** das Kontrollkästchen **ID-Token**.
+
+1. Wählen Sie **Speichern** aus.
+
+   Notieren Sie sich die **Anwendungs- bzw. Client-ID**, die Sie später beim Konfigurieren der Webanwendung verwenden.
+
+    ![Screenshot der Seite „Übersicht“ der Web-App zum Aufzeichnen Ihrer Webanwendungs-ID.](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
+
+### <a name="step-25-grant-permissions"></a>Schritt 2.5: Erteilen von Berechtigungen
 
 [!INCLUDE [active-directory-b2c-app-integration-grant-permissions](../../includes/active-directory-b2c-app-integration-grant-permissions.md)]
 
 ## <a name="step-3-get-the-spa-sample-code"></a>Schritt 3: Abrufen des SPA-Beispielcodes
 
-In diesem Beispiel wird veranschaulicht, wie eine Single-Page-Webanwendung Azure AD B2C für die Benutzerregistrierung und -anmeldung sowie zum Aufrufen einer geschützten Web-API verwenden kann. Laden Sie das folgende Beispiel herunter:
+In diesem Beispiel wird veranschaulicht, wie eine Single-Page-Webanwendung Azure AD B2C für die Benutzerregistrierung und -anmeldung verwenden kann. Anschließend bezieht die App ein Zugriffstoken und ruft eine geschützte Web-API auf. 
 
-  [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip), oder klonen Sie das Beispiel aus GitHub:
+Um den SPA-Beispielcode abzurufen, können Sie einen der folgenden Schritte ausführen: 
 
-  ```
-  git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
-  ```
+* [Laden Sie eine ZIP-Datei herunter.](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip) 
+* Klonen Sie das Beispiel auf GitHub, indem Sie den folgenden Befehl ausführen:
 
-### <a name="31-update-the-spa-sample"></a>3.1 Aktualisieren des SPA-Beispiels
+    ```bash
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
+    ```
 
-Nachdem Sie das Beispiel abgerufen haben, können Sie den Code mit dem Namen Ihres Azure AD B2C-Mandanten und der in Schritt 2.3 notierten Anwendungs-ID von *MyApp* aktualisieren.
+### <a name="step-31-update-the-spa-sample"></a>Schritt 3.1: Aktualisieren des SPA-Beispiels
 
-Öffnen Sie die Datei *authConfig.js* im Ordner *App*.
-1. Suchen Sie im Objekt `msalConfig` die Zuweisung für `clientId`, und ersetzen Sie diese durch die **Anwendungs-ID (Client-ID)** , die Sie sich in Schritt 2.3 notiert haben.
+Nachdem Sie das SPA-Beispiel abgerufen haben, aktualisieren Sie den Code mit Ihren Azure AD B2C- und Web-API-Werten. Öffnen Sie im Ordner des Beispiels unter dem Ordner `App` die in der folgenden Tabelle aufgeführten JavaScript-Dateien, und aktualisieren Sie sie mit den entsprechenden Werten.  
 
-Öffnen Sie die Datei `policies.js`.
-1. Suchen Sie die Einträge unter `names`, und ersetzen Sie ihre Zuweisung durch die Namen der Benutzerflows, die Sie in einem früheren Schritt erstellt haben, etwa `b2c_1_susi`.
-1. Suchen Sie die Einträge unter `authorities`, und ersetzen Sie sie nach Bedarf durch die Namen der Benutzerflows, die Sie in einem früheren Schritt erstellt haben, etwa `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`.
-1. Suchen Sie die Zuweisung für `authorityDomain`, und ersetzen Sie sie durch `<your-tenant-name>.b2clogin.com`.
 
-Öffnen Sie die Datei `apiConfig.js`.
-1. Suchen Sie die Zuweisung für `b2cScopes`, und ersetzen Sie die URL durch die Bereichs-URL, die Sie für die Web-API erstellt haben, z. B. `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`.
-1. Suchen Sie die Zuweisung für `webApi`, und ersetzen Sie die aktuelle URL durch `http://localhost:5000/tasks`.
-
+|Datei  |Key  |Wert  |
+|---------|---------|---------|
+|authConfig.js|clientId| Die SPA-ID aus [Schritt 2.3](#step-23-register-the-spa).|
+|policies.js| Namen| Die Benutzerflows oder die benutzerdefinierte Richtlinie, die Sie in [Schritt 1](#step-1-configure-your-user-flow) erstellt haben.|
+|policies.js|authorities|Der Name Ihres Azure AD B2C-[Mandanten](tenant-management.md#get-your-tenant-name) (z. B. `contoso.onmicrosoft.com`). Ersetzen Sie ihn durch die Benutzerflows oder die benutzerdefinierte Richtlinie, den/die Sie in [Schritt 1](#step-1-configure-your-user-flow) erstellt haben (z. B. `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`).|
+|policies.js|authorityDomain|Der Name Ihres Azure AD B2C-[Mandanten](tenant-management.md#get-your-tenant-name) (z. B. `contoso.onmicrosoft.com`).|
+|apiConfig.js|b2cScopes|Die Web-API-Bereiche, die Sie in [Schritt 2.2](#step-22-configure-scopes) erstellt haben (z. B. `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`).|
+|apiConfig.js|webApi|Die URL der Web-API: `http://localhost:5000/tasks`.|
+| | | |
 
 Der sich ergebende Code sollte in etwa wie das folgende Beispiel aussehen:
 
@@ -194,18 +203,24 @@ const apiConfig = {
 
 ## <a name="step-4-get-the-web-api-sample-code"></a>Schritt 4: Abrufen des Web-API-Beispielcodes
 
-Nachdem Sie die Web-API registriert und die zugehörigen Bereiche definiert haben, können Sie den Web-API-Code für die Verwendung mit Ihrem Azure AD B2C-Mandanten konfigurieren. Laden Sie das folgende Beispiel herunter:
+Nachdem Sie die Web-API registriert und die zugehörigen Bereiche definiert haben, können Sie den Web-API-Code für die Verwendung mit Ihrem Azure AD B2C-Mandanten konfigurieren. 
 
-[Laden Sie ein \*ZIP-Archiv](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) herunter, oder klonen Sie das Beispiel-Web-API-Projekt von GitHub. Sie können auch direkt zum Projekt [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) auf GitHub navigieren.
+Führen Sie einen der folgenden Schritte aus, um den Beispielcode der Web-API abzurufen:
 
-```console
-git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
-```
+* [Laden Sie ein \*ZIP-Archiv](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) herunter.
 
-### <a name="41-update-the-web-api"></a>4.1 Aktualisieren der Web-API
+* Klonen Sie das Web-API-Beispielprojekt auf GitHub, indem Sie den folgenden Befehl ausführen:
+
+    ```bash
+    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
+    ```
+
+* Sie können auch direkt zum Projekt [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) auf GitHub navigieren.
+
+### <a name="step-41-update-the-web-api"></a>Schritt 4.1 Aktualisieren der Web-API
 
 1. Öffnen Sie die Datei *config.json* in Ihrem Code-Editor.
-1. Ändern Sie die Variablenwerte gemäß der zuvor erstellten Anwendungsregistrierung. Aktualisieren Sie außerdem den Richtliniennamen (`policyName`) mit dem Benutzerablauf, den Sie im Rahmen der Voraussetzungen erstellt haben. Beispielsweise *b2c_1_susi*.
+1. Ändern Sie die Variablenwerte gemäß der zuvor erstellten Anwendungsregistrierung. Aktualisieren Sie außerdem den Richtliniennamen (`policyName`) mit dem Benutzerflow, den Sie im Rahmen der Voraussetzungen erstellt haben, z. B. *b2c_1_susi*.
     
     ```json
     "credentials": {
@@ -220,9 +235,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
     },
     ```
 
-### <a name="42-enable-cors"></a>4.2 Aktivieren von CORS
+### <a name="step-42-enable-cors"></a>Schritt 4.2 Aktivieren von CORS
 
-Damit Ihre Single-Page-Webanwendung die Node.js-Web-API aufrufen kann, müssen Sie [CORS](https://expressjs.com/en/resources/middleware/cors.html) in der Web-API aktivieren. In einer Produktionsanwendung müssen Sie sorgfältig darauf achten, von welcher Domäne die Anforderung stammt. In diesem Beispiel können Sie Anforderungen von jeder beliebigen Domäne zulassen.
+Damit Ihre Single-Page-Webanwendung die Node.js-Web-API aufrufen kann, müssen Sie in der Web-API [CORS](https://expressjs.com/en/resources/middleware/cors.html) (Cross-Origin Resource Sharing) aktivieren. Achten Sie in einer Produktionsanwendung sorgfältig darauf, von welcher Domäne die Anforderung stammt. In diesem Beispiel können Sie Anforderungen von jeder beliebigen Domäne zulassen.
 
 Verwenden Sie die folgende Middleware, um CORS zu aktivieren. In dem Node.js-Web-API-Codebeispiel, das Sie heruntergeladen haben, wurde sie bereits der Datei *index.js* hinzugefügt.
 
@@ -280,18 +295,18 @@ Nun können Sie den bereichsbezogenen API-Zugriff der Single-Page-Webanwendung t
     Listening on port 6420...
     ```
 
-1. Navigieren Sie in Ihrem Browser zu `http://localhost:6420`, um die Anwendung anzuzeigen.
+1. Um die Anwendung anzuzeigen, rufen Sie in Ihrem Browser `http://localhost:6420` auf.
 
-    ![Beispiel-App für Singe-Page-Anwendung, die im Browser angezeigt wird](./media/configure-authentication-sample-spa-app/sample-app-sign-in.png)
+    ![Screenshot der im Browserfenster angezeigten SPA-Beispiel-App](./media/configure-authentication-sample-spa-app/sample-app-sign-in.png)
 
-1. Melden Sie sich mit der E-Mail-Adresse und dem Kennwort an, die Sie im [vorherigen Tutorial](tutorial-single-page-app.md) verwendet haben. Nach erfolgreicher Anmeldung sollte die Meldung `User 'Your Username' logged-in` angezeigt werden.
-1. Wählen Sie die Schaltfläche **API aufrufen** aus. Die Single-Page-Webanwendung sendet das Zugriffstoken in einer Anforderung an die geschützte Web-API, die den Anzeigenamen des angemeldeten Benutzers zurückgibt:
+1. Schließen Sie den Registrierungs- oder Anmeldevorgang ab. Nach erfolgreicher Anmeldung sollte das Beispiel „User \<your username> logged in“ angezeigt werden.
+1. Wählen Sie die Schaltfläche **API aufrufen** aus. Die SPA sendet das Zugriffstoken in einer Anforderung an die geschützte Web-API, die den Anzeigenamen des angemeldeten Benutzers zurückgibt:
 
-    ![Single-Page-Webanwendung im Browser mit dem von der API zurückgegebenen Benutzernamen (JSON-Ergebnis)](./media/configure-authentication-sample-spa-app/sample-app-result.png)
+    ![Screenshot der SPA in einem Browserfenster mit dem JSON-Ergebnis mit dem Benutzernamen, das von der API zurückgegeben wird.](./media/configure-authentication-sample-spa-app/sample-app-result.png)
 
 ## <a name="deploy-your-application"></a>Bereitstellen der Anwendung 
 
-In einer Produktionsanwendung handelt es sich bei dem Umleitungs-URI der App-Registrierung in der Regel um einen öffentlich zugänglichen Endpunkt, an dem Ihre App ausgeführt wird, wie beispielsweise `https://contoso.com/signin-oidc`. 
+In einer Produktionsanwendung handelt es sich bei dem Umleitungs-URI der App-Registrierung in der Regel um einen öffentlich zugänglichen Endpunkt, an dem Ihre App ausgeführt wird, z. B. `https://contoso.com/signin-oidc`. 
 
 Sie können Umleitungs-URIs in Ihren registrierten Anwendungen jederzeit hinzufügen und ändern. Für Umleitungs-URIs gelten die folgenden Einschränkungen:
 
@@ -300,5 +315,8 @@ Sie können Umleitungs-URIs in Ihren registrierten Anwendungen jederzeit hinzuf�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über das [Codebeispiel](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa).
-* Erfahren Sie mehr über Authentifizierungsoptionen und das [Aktivieren der Authentifizierung in Ihrer eigenen Single-Page-Webanwendung mit Azure AD B2C](enable-authentication-spa-app-options.md).
+Weitere Informationen zu den in diesem Artikel erörterten Konzepten finden Sie hier:
+* [Weitere Informationen zum Codebeispiel](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
+* [Aktivieren der Authentifizierung in Ihrer SPA](enable-authentication-spa-app.md)
+* [Konfigurieren von Authentifizierungsoptionen in Ihrer SPA](enable-authentication-spa-app-options.md)
+* [Aktivieren der Authentifizierung in Ihrer Web-API](enable-authentication-web-api.md)

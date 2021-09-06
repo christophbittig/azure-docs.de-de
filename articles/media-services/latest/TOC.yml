@@ -2,8 +2,11 @@
   href: ./index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Media Services
+    - name: "Informationen zu Media Services\_v3"
       href: media-services-overview.md
+    - name: "Dokumentation zu Media Services\_v2"
+      href: ../previous/media-services-overview.md
+      displayName: 'media services v2, v2, version 2'
     - name: Anmerkungen zu dieser Version
       href: release-notes.md
       displayName: 'Release Notes, notes, updates, announcements, deprecations'

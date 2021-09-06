@@ -1020,6 +1020,8 @@
           href: ./domain-joined/ldap-sync.md
         - name: Doppelte Verschlüsselung während der Übertragung
           href: ./domain-joined/encryption-in-transit.md
+        - name: Verwenden von Verfügbarkeitszonen
+          href: ./hdinsight-use-availability-zones.md
     - name: Anleitungen
       items:
         - name: Verwenden des Identitätsbrokers für die Verwaltung von Anmeldeinformationen
@@ -1054,3 +1056,7 @@
               href: ./domain-joined/domain-joined-authentication-issues.md
             - name: Fehler „DomainNotFound“ bei der Clustererstellung
               href: ./domain-joined/troubleshoot-domainnotfound.md
+- name: Azure Synapse-Integration
+  items:
+    - name: Freigeben des Hive-Metastores mit Synapse Spark
+      href: share-hive-metastore-with-synapse.md

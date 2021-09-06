@@ -4,38 +4,40 @@ description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfüg
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e7cc1038e662950e8f7207d3cf4d9bf9e45f90e1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a60419e6c3ff8c4dd030e5e800edbae62a7f7787
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355199"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurieren von Application Insights für Ihre ASP.NET-Website
 
-Mit diesem Verfahren wird Ihre ASP.NET-Web-App so konfiguriert, dass sie Telemetriedaten an den [Azure Application Insights](./app-insights-overview.md)-Dienst sendet. Dies funktioniert für ASP.NET-Apps, die entweder lokal auf Ihren eigenen IIS-Servern oder in der Cloud gehostet werden. 
+Mit diesem Verfahren wird Ihre ASP.NET-Web-App so konfiguriert, dass sie Telemetriedaten an das [Application Insights](./app-insights-overview.md)-Feature des Azure Monitor-Diensts sendet. Dies funktioniert für ASP.NET-Apps, die entweder lokal auf Ihren eigenen IIS-Servern oder in der Cloud gehostet werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzufügen:
 
 - Installieren Sie die aktuelle Version von [Visual Studio 2019 für Windows](https://www.visualstudio.com/downloads/) mit den folgenden Arbeitsauslastungen:
-    - ASP.NET und Webentwicklung.
+    - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- Falls Sie noch nicht über ein Azure-Abonnement verfügen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/).
 
 - Erstellen Sie eine [arbeitsbereichsbasierte Ressource für Application Insights](create-workspace-resource.md).
 
 > [!IMPORTANT]
-> [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) sind Instrumentierungsschlüsseln vorzuziehen. Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+> Wir empfehlen, [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) gegenüber Instrumentierungsschlüsseln zu bevorzugen. Neue Azure-Regionen *erfordern* die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln.
+>
+> Eine Verbindungszeichenfolge identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 
 ## <a name="create-a-basic-aspnet-web-app"></a>Erstellen einer einfachen ASP.NET-Web-App
 
-1. Starten Sie Visual Studio 2019.
+1. Öffnen Sie Visual Studio 2019.
 2. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 3. Klicken Sie auf **ASP.NET-Webanwendung (.NET Framework) C#** .
-4. Geben Sie einen Projektnamen ein, und klicken Sie auf **Erstellen**.
+4. Geben Sie einen Projektnamen ein, und wählen Sie dann **Erstellen** aus.
 5. Klicken Sie auf **MVC** > **Erstellen**. 
 
 ## <a name="add-application-insights-automatically"></a>Automatisches Hinzufügen von Application Insights
@@ -43,18 +45,18 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das automatische Hinzufügen von Application Insights zu einer vorlagenbasierten ASP.NET-Web-App erforderlich sind. Führen Sie in Ihrem ASP.NET-Web-App-Projekt in Visual Studio die folgenden Schritte aus:
 
 1. Klicken Sie auf **Application Insights-Telemetrie hinzufügen…**  > **Application Insights SDK (lokal)**  > **Weiter** > **Fertig stellen** > **Schließen**.
-2. Öffnen Sie die Datei `ApplicationInsights.config` . 
-3. Fügen Sie vor dem schließenden `</ApplicationInsights>`-Tag eine Zeile hinzu, die den Instrumentierungsschlüssel für Ihre Application Insights-Ressource enthält.  Ihren Instrumentierungsschlüssel finden Sie auf der Übersichtsseite Ihrer neu erstellten Application Insights-Ressource, die Sie als Teil der Voraussetzungen für diesen Artikel erstellt haben.
+2. Öffnen Sie die Datei *ApplicationInsights.config*. 
+3. Fügen Sie vor dem schließenden `</ApplicationInsights>`-Tag eine Zeile hinzu, die den Instrumentierungsschlüssel für Ihre Application Insights-Ressource enthält.  Ihren Instrumentierungsschlüssel finden Sie auf der Übersichtsseite der neu erstellten Application Insights-Ressource, die Sie als Teil der Voraussetzungen für diesen Artikel erstellt haben.
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
-4. Klicken Sie auf **Projekt** > **NuGet-Pakete verwalten…**  > **Updates**, und aktualisieren Sie die einzelnen `Microsoft.ApplicationInsights`-NuGet-Pakete auf die aktuelle stabile Version.   
-5. Führen Sie Ihre Anwendung aus, indem Sie auf **IIS Express** klicken. Eine einfache ASP.NET-App wird gestartet. Wenn Sie auf den Seiten der Website navigieren, werden Telemetriedaten an Application Insights gesendet.
+4. Wählen Sie **Projekt** >  **NuGet-Pakete verwalten** > **Updates** aus. Aktualisieren Sie dann jedes `Microsoft.ApplicationInsights`-NuGet-Paket auf das neueste stabile Release.   
+5. Führen Sie Ihre Anwendung aus, indem Sie auf **IIS Express** klicken. Eine einfache ASP.NET-App wird geöffnet. Wenn Sie auf den Seiten der Website navigieren, werden Telemetriedaten an Application Insights gesendet.
 
 ## <a name="add-application-insights-manually"></a>Manuelles Hinzufügen von Application Insights
 
-In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das manuelle Hinzufügen von Application Insights zu einer vorlagenbasierten ASP.NET-Web-App erforderlich sind. Für diesen Abschnitt wird angenommen, Sie verwenden eine Web-App, die auf der MVC-Web-App-Vorlage des ASP.NET-Frameworks basiert.
+In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das manuelle Hinzufügen von Application Insights zu einer vorlagenbasierten ASP.NET-Web-App erforderlich sind. Für diesen Abschnitt wird angenommen, dass Sie eine Web-App verwenden, die auf der MVC-Web-App-Standardvorlage des ASP.NET-Frameworks basiert.
 
 1. Fügen Sie die folgenden NuGet-Pakete und ihre jeweiligen Abhängigkeiten Ihrem Projekt hinzu:
 
@@ -62,7 +64,9 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
     - [`Microsoft.ApplicationInsights.Web`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
     - [`Microsoft.AspNet.TelemetryCorrelation`](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation)
 
-2. In manchen Fällen wird die `ApplicationInsights.config`-Datei automatisch für Sie erstellt. Wenn die Datei bereits vorhanden ist, können Sie mit Schritt 4 fortfahren. Wenn die Datei nicht automatisch erstellt wird, müssen Sie sie selbst erstellen. Erstellen Sie auf derselben Projektebene wie die `Global.asax`-Datei eine neue Datei namens `ApplicationInsights.config`.
+2. In einigen Fällen wird die *ApplicationInsights.config*-Datei automatisch für Sie erstellt. Wenn die Datei bereits vorhanden ist, können Sie mit Schritt 4 fortfahren. 
+
+   Wenn die Datei nicht automatisch erstellt wird, müssen Sie sie selbst erstellen. Erstellen Sie auf derselben Projektebene wie der der Datei *Global.asax* eine neue Datei namens *ApplicationInsights.config*.
 
 3. Kopieren Sie die folgende XML-Konfiguration in Ihre neu erstellte Datei:
 
@@ -208,13 +212,13 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
     </ApplicationInsights>
      ```
 
-4. Fügen Sie vor dem schließenden `</ApplicationInsights>`-Tag Ihren Instrumentierungsschlüssel für Ihre Application Insights-Ressource hinzu.  Ihren Instrumentierungsschlüssel finden Sie auf der Übersichtsseite Ihrer neu erstellten Application Insights-Ressource, die Sie als Teil der Voraussetzungen für diesen Artikel erstellt haben.
+4. Fügen Sie vor dem schließenden `</ApplicationInsights>`-Tag Ihren Instrumentierungsschlüssel für Ihre Application Insights-Ressource hinzu.  Ihren Instrumentierungsschlüssel finden Sie auf der Übersichtsseite der neu erstellten Application Insights-Ressource, die Sie als Teil der Voraussetzungen für diesen Artikel erstellt haben.
 
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
 
-5. Erstellen Sie auf derselben Projektebene wie die `ApplicationInsights.config`-Datei einen Ordner namens `ErrorHandler` mit einer neuen C#-Datei namens `AiHandleErrorAttribute.cs`. Der Inhalt der Datei sollte nun wie folgt aussehen:
+5. Erstellen Sie auf derselben Projektebene wie der der *ApplicationInsights.config*-Datei einen Ordner namens *ErrorHandler* mit einer neuen C#-Datei namens *AiHandleErrorAttribute.cs*. Der Inhalt der Datei sieht in etwa wie folgt aus:
 
     ```csharp
     using System;
@@ -244,7 +248,7 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
     
     ```
 
-6. Öffnen Sie im `App_Start`-Ordner die `FilterConfig.cs`-Datei, und ändern Sie sie so, dass sie dem Beispiel entspricht:
+6. Öffnen Sie im Ordner *App_Start* die Datei *FilterConfig.cs*, und ändern Sie sie so, dass sie dem Beispiel entspricht:
 
     ```csharp
     using System.Web;
@@ -262,8 +266,8 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
     }
     ```
 
-7. Aktualisieren Sie die Web.config-Datei folgendermaßen:
-
+7. Wenn *Web.config* bereits aktualisiert wurde, überspringen Sie diesen Schritt. Aktualisieren Sie die Datei andernfalls wie folgt:
+    
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <!--
@@ -280,10 +284,12 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
       <system.web>
         <compilation debug="true" targetFramework="4.7.2" />
         <httpRuntime targetFramework="4.7.2" />
+        <!-- Code added for Application Insights start -->
         <httpModules>
           <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" />
           <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" />
         </httpModules>
+        <!-- Code added for Application Insights end -->
       </system.web>
       <runtime>
         <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -315,10 +321,12 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
             <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
             <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
           </dependentAssembly>
+          <!-- Code added for Application Insights start -->
           <dependentAssembly>
             <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
             <bindingRedirect oldVersion="0.0.0.0-4.0.1.1" newVersion="4.0.1.1" />
           </dependentAssembly>
+          <!-- Code added for Application Insights end -->
         </assemblyBinding>
       </runtime>
       <system.codedom>
@@ -329,12 +337,14 @@ In diesem Abschnitt erhalten Sie Informationen zu den Schritten, die für das ma
       </system.codedom>
       <system.webServer>
         <validation validateIntegratedModeConfiguration="false" />
+        <!-- Code added for Application Insights start -->
         <modules>
           <remove name="TelemetryCorrelationHttpModule" />
           <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="managedHandler" />
           <remove name="ApplicationInsightsWebTracking" />
           <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
         </modules>
+        <!-- Code added for Application Insights end -->
       </system.webServer>
     </configuration>
     
@@ -344,19 +354,19 @@ Sie haben nun erfolgreich die serverseitige Anwendungsüberwachung konfiguriert.
 
 ## <a name="add-client-side-monitoring"></a>Hinzufügen der clientseitigen Überwachung
 
-In den vorherigen Abschnitten haben Sie Anleitungen zu den Methoden erhalten, mit denen die serverseitige Überwachung automatisch und manuell konfiguriert werden kann. Wenn Sie eine clientseitige Überwachung hinzufügen möchten, müssen Sie das [clientseitige JavaScript SDK](javascript.md) verwenden. Sie können clientseitige Transaktionen einer beliebigen Webseite überwachen, indem Sie ein [JavaScript-Codeausschnitt](javascript.md#snippet-based-setup) vor dem schließenden `</head>`-Tag im HTML-Code der Seite hinzufügen. 
+In den vorherigen Abschnitten haben Sie Anleitungen zu den Methoden erhalten, mit denen die serverseitige Überwachung automatisch und manuell konfiguriert werden kann. Wenn Sie clientseitige Überwachung hinzufügen möchten, verwenden Sie das [clientseitige JavaScript SDK](javascript.md). Sie können clientseitige Transaktionen einer beliebigen Webseite überwachen, indem Sie ein [JavaScript-Codeausschnitt](javascript.md#snippet-based-setup) vor dem schließenden `</head>`-Tag im HTML-Code der Seite hinzufügen. 
 
-Es ist zwar möglich, den Codeausschnitt dem Header jeder einzelnen HTML-Seite manuell hinzuzufügen, es wird jedoch empfohlen, den Codeausschnitt stattdessen auf einer ersten Seite hinzuzufügen, die den Codeausschnitt dann in alle Seiten der Website injiziert. Für die vorlagenbasierte ASP.NET-MVC-App in diesem Artikel heißt die Datei, die Sie bearbeiten müssen, `_Layout.cshtml`. Sie befindet sich unter **Ansichten** > **Freigegeben**.
+Obwohl es möglich ist, den Codeausschnitt manuell dem Header jeder HTML-Seite hinzuzufügen, wird empfohlen, den Codeausschnitt stattdessen einer primären Seite hinzuzufügen. Diese Aktion schleust den Codeausschnitt in alle Seiten einer Website ein. 
 
-Wenn Sie clientseitige Überwachung hinzufügen möchten, öffnen Sie die `_Layout.cshtml`-Datei, und folgen Sie der [auf dem Codeausschnitt basierenden Einrichtungsanleitung](javascript.md#snippet-based-setup) aus dem Artikel für die clientseitige Konfiguration des JavaScript SDK.
+Für die vorlagenbasierte ASP.NET-MVC-App in diesem Artikel heißt die Datei, die Sie bearbeiten müssen, *_Layout.cshtml*. Sie finden sie unter **Ansichten** > **Freigegeben**. Wenn Sie clientseitige Überwachung hinzufügen möchten, öffnen Sie die Datei *_Layout.cshtml*, und befolgen Sie die [auf dem Codeausschnitt basierenden Einrichtungsanleitung](javascript.md#snippet-based-setup) aus dem Artikel zur Konfiguration des clientseitigen JavaScript SDK.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Es gibt ein bekanntes Problem bei der aktuellen Version von Visual Studio 2019, dass der Instrumentierungsschlüssel beim Speichern in einem Benutzergeheimnis für .NET Framework-basierte Apps nicht mehr verwendet werden kann. Der Schlüssel muss dann letztendlich in der applicationInsights.config-Datei hartcodiert werden, um dieses Problem zu umgehen. Dieser Artikel wurde so verfasst, dass dieses Problem komplett umgangen wird, indem keine Benutzergeheimnisse verwendet werden.  
+In der aktuellen Version von Visual Studio 2019 gibt es ein bekanntes Problem: Das Speichern des Instrumentierungsschlüssels in einem Benutzergeheimnis ist für .NET Framework-basierte Apps defekt. Der Schlüssel muss letztendlich in der Datei *applicationinsights.config* hartcodiert werden, um diesen Fehler zu umgehen. Dieser Artikel wurde so verfasst, dass dieses Problem komplett umgangen wird, indem keine Benutzergeheimnisse verwendet werden.  
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 
-* [Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet).
+[Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./release-notes.md).
 

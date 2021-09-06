@@ -356,15 +356,9 @@
         - name: Übersicht
           displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts.md
-        - name: Befehlszeilenschnittstelle (CLI)
-          displayName: 'Dedicated hosts, ADH'
-          href: ./linux/dedicated-hosts-cli.md
-        - name: Portal
-          displayName: 'Dedicated hosts, ADH'
-          href: dedicated-hosts-portal.md
-        - name: PowerShell
-          displayName: 'Dedicated hosts, ADH'
-          href: ./windows/dedicated-hosts-powershell.md
+        - name: Vorgehensweise
+          displayName: dedicated adh
+          href: dedicated-hosts-how-to.md
     - name: Azure Spot-VMs
       items:
         - name: Übersicht
@@ -776,8 +770,6 @@
           href: ./linux/no-agent.md
         - name: Deaktivieren der Linux-Agent-Bereitstellung
           href: ./linux/disable-provisioning.md
-        - name: Erfassen eines virtuellen Computers für ein verwaltetes Image
-          href: ./linux/capture-image.md
     - name: Benutzerdefinierte Windows-Images
       items:
         - name: Vorbereiten einer VHD für den Upload
@@ -801,89 +793,35 @@
         - name: Übersicht
           displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
           href: ./shared-image-galleries.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: Erstellen eines Katalogs
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: Freigeben eines Katalogs
+          href: share-gallery.md
+        - name: Erfassen eines virtuellen Computers im Portal
+          href: capture-image-portal.md
+        - name: Erstellen eines Images
+          displayName: 'VM, image, VHD, storage account'
+          href: image-version.md
+        - name: Erstellen einer VM
           items:
-            - name: Erstellen eines Katalogs
+            - name: Generalisiert
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-cli.md
-            - name: Erstellen eines Images
-              items:
-                - name: Von einem virtuellen Computer
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-vm-cli.md
-                - name: Von einem verwalteten Datenträger oder von einer Momentaufnahme
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-snapshot-cli.md
-                - name: Klonen eines verwalteten Images
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-managed-image-cli.md
-                - name: Kopieren aus einem anderen Katalog
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-another-gallery-cli.md
-            - name: Erstellen einer VM
-              items:
-                - name: Generalisiert
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-generalized-image-version-cli.md
-                - name: Spezialisiert
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-specialized-image-version-cli.md
-            - name: Aktualisieren von Imageressourcen
+              href: vm-generalized-image-version.md
+            - name: Spezialisiert
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: update-image-resources-cli.md
-            - name: App-Registrierung für die Freigabe
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./linux/share-images-across-tenants.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./windows/share-images-across-tenants.md
-        - name: PowerShell
+              href: vm-specialized-image-version.md
+        - name: Aktualisieren von Imageressourcen
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: update-image-resources.md
+        - name: App-Registrierung für die Freigabe
           items:
-            - name: Erstellen eines Katalogs
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-powershell.md
-            - name: Erstellen einer Imageversion
-              items:
-                - name: Von einem virtuellen Computer
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, version'
-                  href: image-version-vm-powershell.md
-                - name: Von einem verwalteten Datenträger oder von einer Momentaufnahme
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, managed disk, snapshot'
-                  href: image-version-snapshot-powershell.md
-                - name: Klonen eines verwalteten Images
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, clone, copy'
-                  href: image-version-managed-image-powershell.md
-                - name: Kopieren aus einem anderen Katalog
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, copy, clone'
-                  href: image-version-another-gallery-powershell.md
-            - name: Erstellen einer VM
-              items:
-                - name: Generalisiert
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, generalized'
-                  href: vm-generalized-image-version-powershell.md
-                - name: Spezialisiert
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, specialized'
-                  href: vm-specialized-image-version-powershell.md
-                - name: Aktualisieren von Imageressourcen
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: update-image-resources-powershell.md
-                - name: App-Registrierung für die Freigabe
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: windows/share-images-across-tenants.md
-        - name: Portal
-          items:
-            - name: 'Erstellen eines Katalogs, eines Images und eines virtuellen Computers'
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./linux/shared-images-portal.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./windows/shared-images-portal.md
-            - name: Erfassen eines virtuellen Computers im Portal
-              href: capture-image-portal.md
+            - name: Linux
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./linux/share-images-across-tenants.md
+            - name: Windows
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./windows/share-images-across-tenants.md
         - name: Resource Manager-Vorlagen
           items:
             - name: Erstellen einer Shared Image Gallery-Instanz
@@ -994,7 +932,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -1022,7 +960,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell

@@ -330,6 +330,8 @@
       href: keyword-recognition-guidelines.md
     - name: Unterstützung für Regionen
       href: keyword-recognition-region-support.md
+- name: Sprachenerkennung
+  href: language-identification.md
 - name: Detaillierte Informationen zu Szenarien
   items:
     - name: Konversationsszenarien
@@ -531,6 +533,8 @@
           href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
         - name: Verwenden kundenseitig verwalteter Schlüssel
           href: speech-encryption-of-data-at-rest.md
+        - name: Sichern und Wiederherstellen von Speech-Anpassungsressourcen
+          href: resiliency-and-recovery-plan.md
 - name: Geräte
   items:
     - name: Dokumentation zu Speech-Geräten

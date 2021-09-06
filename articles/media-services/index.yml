@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Dokumentation zu Azure Media Services
-summary: 'Mit Azure Media Services können Sie Medienanwendungen entwickeln, indem Sie Livestreaming mit geringer Latenz, Batchcodierung und Inhaltsschutz/DRM nutzen und Streaminginhalte für Millionen von Benutzern auf jedem Gerät bereitstellen.'
+summary: 'Mit Azure Media Services können Sie Medienanwendungen entwickeln, indem Sie latenzarmes Livestreaming, Batchcodierung und Inhaltsschutz/DRM nutzen und Streaminginhalte für Millionen von Benutzern auf jedem Gerät bereitstellen.'
 brand: azure
 metadata:
   title: Dokumentation zu Azure Media Services
-  description: 'Mit Azure Media Services können Sie Medienanwendungen entwickeln, indem Sie Livestreaming mit geringer Latenz, Batchcodierung und Inhaltsschutz/DRM nutzen und Streaminginhalte für Millionen von Benutzern auf jedem Gerät bereitstellen.'
+  description: 'Mit Azure Media Services können Sie Medienanwendungen entwickeln, indem Sie latenzarmes Livestreaming, Batchcodierung und Inhaltsschutz/DRM nutzen und Streaminginhalte für Millionen von Benutzern auf jedem Gerät bereitstellen.'
   services: media-services
   ms.service: media-services
   ms.subservice: null
@@ -18,6 +18,9 @@ highlightedContent:
     - title: Informationen zu Azure Media Services (v3)
       itemType: overview
       url: ./latest/media-services-overview.md
+    - title: Informationen zu Azure Media Services (v2)
+      itemType: overview
+      url: ./previous/media-services-overview.md
     - title: 'Azure Media Services (v3): Konzepte'
       itemType: concept
       url: ./latest/concepts-overview.md
@@ -112,13 +115,13 @@ conceptualContent:
           text: Gesichtserkennung und -bearbeitung
     - title: Protokolle und Spezifikationen
       links:
-        - url: media-services-specifications-live-timed-metadata.md
+        - url: ./previous/media-services-specifications-live-timed-metadata.md
           itemType: concept
           text: Zeitgesteuerte Metadaten in Livestreaming (RTMP und Smooth Streaming)
-        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+        - url: ./previous/media-services-specifications-ms-sstr-amendment-hevc.md
           itemType: concept
           text: Ergänzung zum Smooth Streaming-Protokoll (MS-SSTR) für HEVC
-        - url: media-services-fmp4-live-ingest-overview.md
+        - url: ./previous/media-services-fmp4-live-ingest-overview.md
           itemType: concept
           text: Protokoll zur Smooth Streaming-Erfassung
     - title: Migrieren von der v2-API

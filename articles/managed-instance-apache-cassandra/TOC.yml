@@ -17,14 +17,7 @@
       href: configure-hybrid-cluster.md
     - name: Bereitstellen eines Spark-Clusters mit Databricks
       href: deploy-cluster-databricks.md
-- name: Konzepte
-  items:
-    - name: Häufig gestellte Fragen
-      displayName: 'cost, region, monitor, backup'
-      href: faq.md
-    - name: "Gegenüberstellung von Managed Instance und Cassandra-API für Azure Cosmos\_DB"
-      href: compare-cosmosdb-managed-instance.md
-- name: Anleitungen
+- name: Tutorials
   items:
     - name: Migration
       items:
@@ -36,6 +29,15 @@
           items:
             - name: Verwenden von Apache Spark
               href: spark-migration.md
+- name: Konzepte
+  items:
+    - name: Häufig gestellte Fragen
+      displayName: 'cost, region, monitor, backup'
+      href: faq.md
+    - name: "Gegenüberstellung von Managed Instance und Cassandra-API für Azure Cosmos\_DB"
+      href: compare-cosmosdb-managed-instance.md
+- name: Anleitungen
+  items:
     - name: Verwalten mit der Azure CLI
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md

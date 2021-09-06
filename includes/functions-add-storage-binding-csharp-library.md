@@ -2,16 +2,18 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 07/05/2019
+ms.date: 08/15/2021
 ms.author: glenga
-ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f2aa82388882c192213b168faedd4f61069ae64
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78190913"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829538"
 ---
-In einem C#-Klassenbibliotheksprojekt werden die Bindungen als Bindungsattribute der Funktionsmethode definiert. Die von Functions benötigte Datei *function.json* wird basierend auf diesen Attributen automatisch generiert.
+In einem C#-Projekt werden die Bindungen als Bindungsattribute der Funktionsmethode definiert. Bestimmte Definitionen hängen davon ab, ob Ihre App In-Process (C#-Klassenbibliothek) oder in einem isolierten Prozess ausgeführt wird.  
+
+# <a name="in-process"></a>[In-Process](#tab/in-process)
 
 Öffnen Sie die Projektdatei *HttpExample.cs*, und fügen Sie der Definition der Methode `Run` den folgenden Parameter hinzu:
 
@@ -22,3 +24,15 @@ Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nac
 Die Run-Methodendefinition sollte nun wie folgt aussehen:  
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="14-18":::
+
+# <a name="isolated-process"></a>[Isolierter Prozess](#tab/isolated-process)
+
+Öffnen Sie die Projektdatei *HttpExample.cs*, und fügen Sie die folgende `MultiResponse`-Klasse hinzu:
+
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-isolated/HttpExample.cs" range="33-38":::
+
+Mit der `MultiResponse`-Klasse können Sie sowohl in eine Speicherwarteschlange mit dem Namen `outqueue` als auch in eine HTTP-Erfolgsmeldung schreiben. Da das `QueueOutput`-Attribut auf ein Zeichenfolgenarray angewendet wird, können mehrere Nachrichten an die Warteschlange gesendet werden. 
+
+Die Verbindungszeichenfolge für das Storage-Konto wird durch die `Connection`-Eigenschaft festgelegt. In diesem Fall können Sie `Connection` weglassen, da Sie bereits das Standardspeicherkonto verwenden.
+
+---

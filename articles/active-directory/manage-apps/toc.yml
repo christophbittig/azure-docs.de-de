@@ -144,6 +144,16 @@
           href: migrate-application-authentication-to-azure-active-directory.md
         - name: "Verwenden des AD\_FS-Anwendungsaktivitätsberichts"
           href: migrate-adfs-application-activity.md
+        - name: "Migrieren von Anwendungen von Okta zu Azure\_AD"
+          items:
+            - name: "Migrieren von Anwendungen von Okta zu Azure\_AD"
+              href: migrate-applications-from-okta-to-azure-active-directory.md
+            - name: "Migrieren von Okta-Anmelderichtlinien zu bedingtem Azure\_AD-Zugriff"
+              href: migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md
+            - name: Migrieren der Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung
+              href: migrate-okta-sync-provisioning-to-azure-active-directory.md
+            - name: "Migrieren des Okta-Verbunds zur verwalteten Azure\_AD-Authentifizierung"
+              href: migrate-okta-federation-to-azure-active-directory.md
     - name: Sichern von Legacy-Apps
       items:
         - name: Sichern des Hybridzugriffs mit Azure AD

@@ -26,8 +26,12 @@
       href: set-up-service-alerts.md
 - name: Vorgehensweise
   items:
-    - name: Manuelles Migrieren
-      href: manual-migration.md
+    - name: Migrieren Ihrer Bereitstellung
+      items:
+        - name: Automatisches Migrieren
+          href: automatic-migration.md
+        - name: Manuelles Migrieren
+          href: manual-migration.md
     - name: Herstellen einer Verbindung mit Azure Virtual Desktop-Ressourcen
       items:
         - name: Herstellen einer Verbindung mit dem Windows-Desktopclient

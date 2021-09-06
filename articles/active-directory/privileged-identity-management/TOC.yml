@@ -93,22 +93,14 @@
           href: groups-audit.md
     - name: Überprüfen des Zugriffs
       items:
-        - name: Azure AD-Rollen
+        - name: Azure AD-Rollen und Azure-Ressourcenrollen
           items:
             - name: Erstellen einer Zugriffsüberprüfung
-              href: pim-how-to-start-security-review.md
-            - name: Überprüfen des Zugriffs
-              href: pim-how-to-perform-security-review.md
+              href: pim-create-azure-ad-roles-and-resource-roles-review.md
+            - name: Durchführen einer Zugriffsüberprüfung
+              href: pim-perform-azure-ad-roles-and-resource-roles-review.md
             - name: Abschließen einer Zugriffsüberprüfung
-              href: pim-how-to-complete-review.md
-        - name: Azure-Rollen
-          items:
-            - name: Erstellen einer Zugriffsüberprüfung
-              href: pim-resource-roles-start-access-review.md
-            - name: Überprüfen des Zugriffs
-              href: pim-resource-roles-perform-access-review.md
-            - name: Abschließen einer Zugriffsüberprüfung
-              href: pim-resource-roles-complete-access-review.md
+              href: pim-complete-azure-ad-roles-and-resource-roles-review.md
     - name: "Ermittlung und Erkenntnisse für Azure\_AD-Rollen"
       href: pim-security-wizard.md
     - name: Erhöhen der Zugriffsrechte zum Verwalten von Azure-Abonnements
