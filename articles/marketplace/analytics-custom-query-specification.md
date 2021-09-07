@@ -4,15 +4,16 @@ description: Hier erfahren Sie, wie Sie mithilfe von benutzerdefinierten Abfrage
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 4be063342a6c46d73c86f2d9dff1da5395328389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d003980d7a8a1a5a5477a7d22ec547db13b52ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349351"
 ---
 # <a name="custom-query-specification"></a>Spezifikation für benutzerdefinierte Abfragen
 
@@ -60,10 +61,10 @@ Nachstehend sind einige Beispielabfragen aufgeführt, die zeigen, wie verschiede
 
 | Abfrage | BESCHREIBUNG |
 | ------------ | ------------- |
-| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | Diese Abfrage ruft alle eindeutigen `MarketplaceSubscriptionId`-Wert und die entsprechenden `CustomerId`-Werte des letzten Monats ab. |
+| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | Diese Abfrage ruft jede `MarketplaceSubscriptionId` und die zugehörige `CustomerId` im letzten Monat ab. |
 | **SELECT** MarketplaceSubscriptionId, EstimatedExtendedChargeCC **FROM** ISVUsage **ORDER BY** EstimatedExtendedChargeCC **LIMIT** 10 | Diese Abfrage ruft die zehn wichtigsten Abonnements in absteigender Reihenfolge nach der Anzahl der Lizenzen ab, die im Rahmen der einzelnen Abonnements verkauft wurden. |
-| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **ORDER BY** NormalizedUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | Diese Abfrage ruft NormalizedUsage und RawUsage für alle Kunden ab, deren NormalizedUsage-Wert über 100.000 liegt. |
-| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | Diese Abfrage ruft den `MarketplaceSubscriptionId`-Wert und den in den einzelnen Monaten generierten Umsatz anhand der beiden `CustomerId`-Werte ab: `2a31c234-1f4e-4c60-909e-76d234f93161` und `80780748-3f9a-11eb-b378-0242ac130002`. |
+| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | Diese Abfrage ruft NormalizedUsage und RawUsage für alle Kunden ab, deren NormalizedUsage-Wert über 100.000 liegt. |
+| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | Diese Abfrage ruft die `MarketplaceSubscriptionId` und die normalisierte Nutzung für jeden Monat anhand der beiden `CustomerId`-Werte ab: `2a31c234-1f4e-4c60-909e-76d234f93161` und `80780748-3f9a-11eb-b378-0242ac130002`. |
 |||
 
 ## <a name="query-specification"></a>Abfragespezifikation
@@ -118,10 +119,17 @@ Nachstehend werden die einzelnen Teile beschrieben.
 
 #### <a name="select"></a>SELECT
 
-Dieser Abfrageteil gibt die Spalten an, die exportiert werden. Die auswählbaren Spalten sind die Felder, die in den Abschnitten `selectableColumns` und `availableMetrics` eines Datasets aufgeführt sind. Die letztendlich exportierten Zeilen enthalten immer unterschiedliche Werte in den ausgewählten Spalten. In der exportierten Datei sind beispielsweise keine doppelten Zeilen enthalten. Metriken werden für jede eindeutige Kombination ausgewählter Spalten berechnet.
+Dieser Abfrageteil gibt die Spalten an, die exportiert werden. Die auswählbaren Spalten sind die Felder, die in den Abschnitten `selectableColumns` und `availableMetrics` eines Datasets aufgeführt sind. Wenn in der ausgewählten Feldliste eine Metrikspalte enthalten ist, werden Metriken für jede unterschiedliche Kombination der nicht metrikbezogenen Spalten berechnet. 
 
 **Beispiel:**
 - **SELECT** `OfferName`, `NormalizedUsage`
+
+#### <a name="distinct"></a>DISTINCT
+
+Durch Hinzufügen des DISTINCT-Schlüsselworts nach SELECT wird sichergestellt, dass die endgültigen exportierten Daten keine doppelten Zeilen aufweisen. Das DISTINCT-Schlüsselwort funktioniert unabhängig davon, ob eine Metrikspalte ausgewählt ist.
+
+**Beispiel:**
+- **SELECT DISTINCT** `MarketplaceSubscriptionId, OfferType`
 
 #### <a name="from"></a>FROM
 

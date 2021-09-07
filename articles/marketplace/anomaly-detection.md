@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 5/03/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 4576cad94cd26f0b2892dca5aeddd8861c5abf09
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1226a66a68c9ee8163e1a786cba8f1107c84c2b1
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540129"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414627"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center
 
@@ -29,7 +29,7 @@ Um sicherzustellen, dass Ihre Kunden eine korrekte Abrechnung erhalten, verwende
 ## <a name="view-and-manage-metered-usage-anomalies"></a>Anzeigen und Verwalten von Anomalien bei der gemessenen Nutzung
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Analysieren**.
+1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Analysieren** > **Nutzung** aus.
 1. Klicken Sie auf die Registerkarte **Metered usage anomalies** (Anomalien bei der gemessenen Nutzung).
 
     [![Screenshot der Registerkarte „Metered usage anomalies“ (Anomalien bei der gemessenen Nutzung) auf der Seite „Usage“ (Nutzung)](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)<br>

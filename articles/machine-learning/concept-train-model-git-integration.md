@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874547"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457731"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -153,7 +153,7 @@ Wenn Ihre Trainingsdateien nicht in einem Git-Repository in Ihrer Entwicklungsum
 
 ## <a name="view-the-logged-information"></a>Anzeigen der protokollierten Informationen
 
-Die Git-Informationen sind in den Eigenschaften für einen Trainingslauf gespeichert. Sie können diese Informationen mithilfe von Azure-Portal, Python SDK und CLI anzeigen. 
+Die Git-Informationen sind in den Eigenschaften für einen Trainingslauf gespeichert. Sie können diese Informationen mithilfe des Azure-Portals, des Python SDK und der Azure CLI anzeigen. 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -189,7 +189,7 @@ Nach dem Übermitteln eines Trainingslaufs wird ein [Run](/python/api/azureml-co
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Der CLI-Befehl `az ml run` kann verwendet werden, um die Eigenschaften eines Laufs abzurufen. Beispielsweise gibt der folgende Befehl die Eigenschaften für den letzten Lauf im Experiment mit dem Namen `train-on-amlcompute` zurück:
 
@@ -197,7 +197,7 @@ Der CLI-Befehl `az ml run` kann verwendet werden, um die Eigenschaften eines Lau
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ml/run).
+Weitere Informationen finden Sie in der Referenzdokumentation zu [az ml run](/cli/azure/ml(v1)/run).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

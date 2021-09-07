@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e83b7b8fd3e1667dbf6f402be2f7dd52a6381340
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142997"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965718"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -64,7 +64,7 @@ Stellen Sie die virtuellen Computer in Azure bereit, indem Sie Folgendes verwend
 - Azure PowerShell-Cmdlets
 - Die Azure-Befehlszeilenschnittstelle
 
-Sie können eine vollständig installierte SAP HANA-Plattform auch über die [SAP Cloudplattform](https://cal.sap.com/) auf den Azure Virtual Machine-Diensten bereitstellen. Der Installationsvorgang ist unter [Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure](./cal-s4h.md) beschrieben, oder nutzen Sie die [hier](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) beschriebene Automatisierung.
+Sie können eine vollständig installierte SAP HANA-Plattform auch über die [SAP Cloudplattform](https://cal.sap.com/) auf den Azure Virtual Machine-Diensten bereitstellen. Der Installationsvorgang ist unter [Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure](./cal-s4h.md) beschrieben. Alternativ können Sie die in [GitHub](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) beschriebene automatisierte Installation nutzen.
 
 >[!IMPORTANT]
 > Um M208xx_v2-VMs verwenden zu können, müssen Sie Ihr Linux-Image sorgfältig aus dem Katalog mit Azure-VM-Images auswählen. Einzelheiten finden Sie im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../mv2-series.md).
@@ -143,7 +143,7 @@ Die grundlegende Konfiguration von einem VM-Knoten für die horizontale SAP HANA
 - Alle anderen Datenträgervolumes werden nicht für die unterschiedlichen Knoten freigegeben und basieren nicht auf NFS. Installationskonfigurationen und Schritte für HANA-Installationen mit horizontaler Skalierung mit nicht freigegebenen **/hana/data**- und **/hana/log**-Volumes finden Sie im weiteren Verlauf dieses Dokuments. Informationen zu für HANA zertifiziertem Speicher, der verwendet werden kann, finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
 
 
-Informationen zum Anpassen der Größe der Volumes oder Datenträger finden Sie im Dokument [SAP HANA: TDI-Speicheranforderungen](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Es enthält Angaben zur erforderlichen Größe abhängig von der Anzahl der Workerknoten. Das Dokument enthält eine Formel, die Sie anwenden müssen, um die erforderliche Kapazität des Volumes zu erhalten.
+Informationen zum Anpassen der Größe der Volumes oder Datenträger finden Sie im Dokument [SAP HANA: TDI-Speicheranforderungen](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf). Es enthält Angaben zur erforderlichen Größe abhängig von der Anzahl der Workerknoten. Das Dokument enthält eine Formel, die Sie anwenden müssen, um die erforderliche Kapazität des Volumes zu erhalten.
 
 Die anderen Designkriterien, die in der Grafik der Einzelknotenkonfiguration für eine SAP HANA-VM mit horizontaler Skalierung dargestellt werden, beziehen sich auf das VNET (besser gesagt: die Subnetzkonfiguration). SAP empfiehlt dringend eine Trennung des client-/anwendungsbezogenen Datenverkehrs von der Kommunikation zwischen den HANA-Knoten. Wie in der Grafik dargestellt, können Sie dafür zwei verschiedene VNICs an die VM anfügen. Beide NICs befinden sich in unterschiedlichen Subnetzen und haben zwei verschiedene IP-Adressen. Anschließend steuern Sie den Datenverkehr mit Routingregeln über NSGs oder benutzerdefinierte Routen.
 
@@ -211,7 +211,7 @@ In Azure IaaS wird DT 2.0 nur auf einem dedizierten virtuellen Computer unterst�
 - M64-32ms 
 - E32sv3 
 
-Die VM-Typenbeschreibung finden Sie [hier](../../sizes-memory.md).
+Weitere Informationen zur Beschreibung des VM-Typs finden Sie unter [Azure-VM-Größen – Arbeitsspeicher](../../sizes-memory.md).
 
 Unter Berücksichtigung der Grundidee von DT 2.0 – Auslagern „warmer“ Daten, um Kosten zu sparen – ist es sinnvoll, entsprechende VM-Größen zu verwenden. Es gibt keine strenge Regel bezüglich möglicher Kombinationen. Dies hängt von der spezifischen Kundenworkload ab.
 
@@ -232,7 +232,7 @@ Alle Kombinationen aus SAP HANA-zertifizierten VMs der M-Serie und unterstützte
 
 Die Installation von DT 2.0 auf einem dedizierten virtuellen Computer erfordert einen Netzwerkdurchsatz von mindestens 10 Gb zwischen der DT-2.0- und der SAP HANA-VM. Aus diesem Grund müssen Sie alle virtuellen Computer im gleichen Azure-VNET platzieren und den beschleunigten Azure-Netzwerkbetrieb aktivieren.
 
-Weitere Informationen zum beschleunigten Azure-Netzwerkbetrieb finden Sie [hier](../../../virtual-network/create-vm-accelerated-networking-cli.md).
+Weitere Informationen zum beschleunigten Azure-Netzwerkbetrieb finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI](../../../virtual-network/create-vm-accelerated-networking-cli.md).
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>VM-Speicher für SAP HANA DT 2.0
 
@@ -243,9 +243,9 @@ Laut bewährten DT 2.0-Methoden sollte der Datenträger-E/A-Durchsatz pro physis
 
 Der DT 2.0-VM müssen mehrere Azure-Datenträger angefügt und ein Software-RAID (Striping) muss auf Betriebssystemebene erstellt werden, um den maximalen Datenträgerdurchsatz pro virtuellem Computer zu erzielen. Ein einzelner Azure-Datenträger kann nicht genügend Durchsatz bereitstellen, um die VM-Obergrenze in dieser Hinsicht zu erreichen. Azure Storage Premium ist zur Ausführung von DT 2.0 obligatorisch. 
 
-- Nähere Informationen zu den verfügbaren Azure-Datenträgertypen finden Sie [hier](../../disks-types.md).
-- Nähere Informationen zum Erstellen eines Software-RAID über mdadm finden Sie [hier](/previous-versions/azure/virtual-machines/linux/configure-raid).
-- Nähere Informationen zur LVM-Konfiguration zum Erstellen eines Stripesetvolumes für maximalen Durchsatz finden Sie [hier](/previous-versions/azure/virtual-machines/linux/configure-lvm).
+- Details zu den verfügbaren Azure-Datenträgertypen finden Sie auf der Seite [Auswählen eines Datenträgertyps für virtuelle IaaS-Computer – verwaltete Datenträger](../../disks-types.md).
+- Details zum Erstellen von Software-RAID über mdadm finden Sie auf der Seite [Konfigurieren von Software-RAID unter Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
+- Ausführliche Informationen zum Konfigurieren von LVM zum Erstellen eines Stripesetvolumes für maximalen Durchsatz finden Sie auf der Seite [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm).
 
 Je nach den Größenanforderungen stehen Ihnen verschiedene Optionen zum Erreichen des maximalen Durchsatzes eines virtuellen Computers zur Verfügung. Hier sind die möglichen Datenvolumedatenträger-Konfigurationen zum Erreichen der Obergrenze des VM-Durchsatzes für jeden DT 2.0-VM-Typ aufgeführt. Die VM E32sv3 sollte als Einstieg für kleinere Workloads angesehen werden. Falls sich herausstellen sollte, dass sie nicht schnell genug ist, muss sie möglicherweise durch die VM M64-32ms ersetzt werden.
 Weil die VM M64-32ms über viel Arbeitsspeicher verfügt, erreicht die E/A-Last möglicherweise insbesondere bei leseintensiven Workloads nicht das Limit. Aus diesem Grund können abhängig von der kundenspezifischen Workload weniger Datenträger im Stripeset ausreichend sein. Aus Sicherheitsgründen wurden jedoch die folgenden Datenträgerkonfigurationen ausgewählt, um den maximalen Durchsatz zu gewährleisten:
@@ -259,7 +259,7 @@ Weil die VM M64-32ms über viel Arbeitsspeicher verfügt, erreicht die E/A-Last 
 
 Vor allem bei leseintensiven Workloads könnte die Aktivierung des Azure-Hostcaches mit Schreibschutz – wie für die Datenvolumes von Datenbanksoftware empfohlen – die E/A-Leistung steigern. Für das Transaktionsprotokoll hingegen darf der Azure-Hostdatenträger-Cache nicht aktiviert sein. 
 
-In Bezug auf die Größe des Protokollvolumes werden 15% der Datengröße heuristisch betrachtet als Ausgangspunkt empfohlen. Zum Erstellen des Protokollvolumes sind abhängig von Kosten und Durchsatzanforderungen verschiedene Azure-Datenträgertypen geeignet. Das Protokollvolume erfordert einen hohen E/A-Durchsatz.  Bei Verwendung des VM-Typs „M64-32ms“ muss [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) aktiviert werden. Mit der Azure-Schreibbeschleunigung wird eine optimale Datenträgerschreiblatenz für das Transaktionsprotokoll erzielt (nur für die M-Serie verfügbar). Es sind einige Punkte wie die maximale Anzahl von Datenträgern pro VM-Typ zu berücksichtigen. Ausführliche Informationen zur Schreibbeschleunigung finden Sie [hier](../../how-to-enable-write-accelerator.md).
+In Bezug auf die Größe des Protokollvolumes werden 15% der Datengröße heuristisch betrachtet als Ausgangspunkt empfohlen. Zum Erstellen des Protokollvolumes sind abhängig von Kosten und Durchsatzanforderungen verschiedene Azure-Datenträgertypen geeignet. Das Protokollvolume erfordert einen hohen E/A-Durchsatz.  Bei Verwendung des VM-Typs „M64-32ms“ muss [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) aktiviert werden. Mit der Azure-Schreibbeschleunigung wird eine optimale Datenträgerschreiblatenz für das Transaktionsprotokoll erzielt (nur für die M-Serie verfügbar). Es sind einige Punkte wie die maximale Anzahl von Datenträgern pro VM-Typ zu berücksichtigen. Ausführliche Informationen zur Schreibbeschleunigung finden Sie auf der Seite [Aktivieren der Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
 
 
 Im Anschluss folgen einige Beispiele für die Dimensionierung des Protokollvolumes:

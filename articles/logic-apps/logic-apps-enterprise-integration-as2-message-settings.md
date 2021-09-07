@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/20/2021
+ms.openlocfilehash: af13306598db75e89064507b9a2fad80d8d33542
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74793029"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453169"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenz für AS2-Nachrichteneinstellungen in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -47,7 +47,7 @@ In dieser Referenz werden die Eigenschaften beschrieben, die Sie zum Angeben fes
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
 | **Nachrichtensignatur aktivieren** | Nein | Gibt an, ob alle ausgehenden Nachrichten digital signiert werden müssen. Wenn eine Signatur erforderlich sein soll, wählen Sie diese Werte aus: <p>- Wählen Sie aus der Liste **Signaturalgorithmus** den Algorithmus aus, der zum Signieren von Nachrichten verwendet werden soll. <br>- Wählen Sie zum Signieren von Nachrichten in der Liste **Zertifikat** ein vorhandenes privates Hostpartnerzertifikat aus. Erfahren Sie mehr über das [Hinzufügen von Zertifikaten](../logic-apps/logic-apps-enterprise-integration-certificates.md), wenn Sie kein Zertifikat besitzen. |
-| **Nachrichtenverschlüsselung aktivieren** | Nein | Gibt an, ob alle ausgehenden Nachrichten verschlüsselt werden müssen. Wenn eine Verschlüsselung erforderlich sein soll, wählen Sie diese Werte aus: <p>- Wählen Sie in der Liste **Verschlüsselungsalgorithmus** den Algorithmus für das öffentliche Gastpartnerzertifikat aus, der für die Verschlüsselung von Nachrichten verwendet wird. <br>- Wählen Sie zur Entschlüsselung ausgehender Nachrichten in der Liste **Zertifikat** ein vorhandenes privates Gastpartnerzertifikat aus. Erfahren Sie mehr über das [Hinzufügen von Zertifikaten](../logic-apps/logic-apps-enterprise-integration-certificates.md), wenn Sie kein Zertifikat besitzen. |
+| **Nachrichtenverschlüsselung aktivieren** | Nein | Gibt an, ob alle ausgehenden Nachrichten verschlüsselt werden müssen. Wenn eine Verschlüsselung erforderlich sein soll, wählen Sie diese Werte aus: <p>- Wählen Sie in der Liste **Verschlüsselungsalgorithmus** den Algorithmus für das öffentliche Gastpartnerzertifikat aus, der für die Verschlüsselung von Nachrichten verwendet wird. <br>- Wählen Sie zur Entschlüsselung ausgehender Nachrichten in der Liste **Zertifikat** ein vorhandenes öffentliches Gastpartnerzertifikat aus. Erfahren Sie mehr über das [Hinzufügen von Zertifikaten](../logic-apps/logic-apps-enterprise-integration-certificates.md), wenn Sie kein Zertifikat besitzen. |
 | **Nachrichtenkomprimierung aktivieren** | Nein | Gibt an, ob alle ausgehenden Nachrichten komprimiert werden müssen. |
 | **HTTP-Header erweitern** | Nein | Stellt den HTTP `content-type`-Header in eine einzelne Zeile. |
 | **Übertragen des Dateinamens in MIME-Kopfzeile** | Nein | Gibt an, ob der Dateiname in die MIME-Kopfzeile einbezogen werden soll. |

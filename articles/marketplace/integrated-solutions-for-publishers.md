@@ -4,15 +4,15 @@ description: Informieren Sie sich über die Anforderungen und Schritte zum Verö
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: vikrambmsft
-ms.author: vikramb
-ms.date: 04/16/2020
-ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.date: 06/22/2021
+ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880269"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002028"
 ---
 # <a name="publish-an-integrated-solution"></a>Veröffentlichen einer integrierten Lösung
 
@@ -81,19 +81,13 @@ Nachdem Ihre Nominierung genehmigt wurde, entwickeln Sie mithilfe der verlinkten
     * APIs
     * Einheitliches Datenrepository
 
-    Verwenden Sie die folgenden Ressourcen für den Entwicklungsprozess:
+2. Benennen Sie einen partnerübergreifenden Projektmanager zum Steuern der in den geschäftlichen und technischen Workshops erarbeiteten Projekt- und Zeitpläne.
 
-    * [Business decision workshop discussion guide](https://aka.ms/AA5qicx) (Diskussionsleitfaden für Workshop zu geschäftlichen Entscheidungen)
-    * [Technical decision workshop discussion guide](https://aka.ms/AA5qid1) (Diskussionsleitfaden für Workshop zu technischen Entscheidungen)
-    * [Quickstart video: Workshops zu integrierten Lösungen](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
+3. Entwickeln Sie die vollständige technische Integration der Lösung.
 
-1. Benennen Sie einen partnerübergreifenden Projektmanager zum Steuern der in den geschäftlichen und technischen Workshops erarbeiteten Projekt- und Zeitpläne.
+4. Legen Sie die Preise für die Lösung fest, und entscheiden Sie sich für einen einzelnen Preispunkt, der in Microsoft AppSource oder Azure Marketplace angezeigt werden soll.
 
-1. Entwickeln Sie die vollständige technische Integration der Lösung.
-
-1. Legen Sie die Preise für die Lösung fest, und entscheiden Sie sich für einen einzelnen Preispunkt, der in Microsoft AppSource oder Azure Marketplace angezeigt werden soll.
-
-1. Vervollständigen Sie das Marketingmaterial für das Microsoft AppSource- oder Azure Marketplace-Listing. Dazu gehört Folgendes:
+5. Vervollständigen Sie das Marketingmaterial für das Microsoft AppSource- oder Azure Marketplace-Listing. Dazu gehört Folgendes:
 
     * Ein Name für die kombinierte Lösung.
     * Eine Beschreibung für das Listing der integrierten Lösung. Befolgen Sie die [bewährten Methoden für Angebotslistings](./gtm-offer-listing-best-practices.md).
@@ -103,7 +97,7 @@ Nachdem Ihre Nominierung genehmigt wurde, entwickeln Sie mithilfe der verlinkten
 
 ## <a name="publish-your-integrated-solution"></a>Veröffentlichen der integrierten Lösung
 
-Wenn Sie mit der technischen Integration und dem Marketingmaterial fertig sind, sehen Sie sich im Leitfaden für Herausgeber die Informationen zum Thema [Beratungsdienste für Microsoft AppSource und Azure Marketplace](./plan-consulting-service-offer.md) an. Verwenden Sie diese Ressource, um zu bestimmen, ob Ihre Lösung in Microsoft AppSource oder Azure Marketplace veröffentlicht werden soll. Verwenden Sie außerdem das Handbuch, um Ihre Artefakte für die Veröffentlichung vorzubereiten und den Veröffentlichungsprozess abzuschließen.
+Lesen Sie nach Abschluss der technischen Integration und der Erstellung des Marketingmaterials den Herausgeberleitfaden zum Thema [Beratungsdienste für Microsoft AppSource und Azure Marketplace](./plan-consulting-service-offer.md), um zu ermitteln, ob Ihre Lösung in Microsoft AppSource oder auf dem Azure Marketplace veröffentlicht wird. Wir empfehlen Ihnen die Verwendung des Leitfadens, um Ihre Artefakte für die Veröffentlichung vorzubereiten und den Veröffentlichungsprozess abzuschließen.
 
 Es stehen zwar fünf Diensttypen für Beratungsdienst-Angebote zur Verfügung, doch muss es sich bei einer integrierten Lösung entweder um einen Proof of Concept oder eine vollständige Implementierung handeln.
 

@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5825f170a1bd14fc577284b8a512ff40aa614546
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 42ca317d4838513bb23bed9f5aa1028cb964d382
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677145"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768613"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -410,89 +410,7 @@ Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten S
 - Das Ändern des Pfads oder Laufwerkbuchstabens nachdem Sie einen Serverendpunkt auf einem Volume erstellt haben, wird nicht unterstützt. Stellen Sie sicher, dass Sie einen endgültigen Pfad auf dem registrierten Server verwenden.
 - Ein registrierter Server kann mehrere Serverendpunkte unterstützen, eine Synchronisierungsgruppe kann jedoch immer nur einen Serverendpunkt pro registriertem Server haben. Andere Serverendpunkte innerhalb der Synchronisierungsgruppe müssen sich auf unterschiedlichen registrierten Servern befinden.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-Um einen Serverendpunkt hinzuzufügen, wechseln Sie zu der neu erstellten Synchronisierungsgruppe, und wählen Sie dann **Serverendpunkt hinzufügen** aus.
-
-![Hinzufügen eines neuen Serverendpunkts im Bereich „Synchronisierungsgruppe“](media/storage-sync-files-deployment-guide/create-sync-group-part-2.png)
-
-Geben Sie im Bereich **Serverendpunkt hinzufügen** die folgenden Informationen ein, um einen Serverendpunkt zu erstellen:
-
-- **Registrierter Server**: Der Name des Servers oder Clusters, auf bzw. in dem Sie den Serverendpunkt erstellen möchten.
-- **Pfad**: Der Windows Server-Pfad, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
-- **Cloudtiering**: Ein Schalter, mit dem Cloudtiering aktiviert oder deaktiviert wird. Mit Cloudtiering kann für selten verwendete oder selten einem Zugriff ausgesetzte Dateien Tiering nach Azure Files festgelegt werden.
-- **Freier Speicherplatz auf Volume**: Die Menge an freiem Speicherplatz auf dem Volume, auf dem sich der Serverendpunkt befindet, die reserviert werden soll. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten nach Azure Files ausgelagert. Die Azure-Dateifreigabe enthält immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe, unabhängig davon, ob Cloudtiering aktiviert ist.
-- **Anfänglicher Downloadmodus**: Dies ist eine optionale Auswahl, beginnend mit der Agent-Version 11, die hilfreich sein kann, wenn Dateien in der Azure-Dateifreigabe, aber nicht auf dem Server vorhanden sind. Eine solche Situation kann beispielsweise auftreten, wenn Sie einen Serverendpunkt erstellen, um einer Synchronisierungsgruppe einen weiteren Zweigstellenserver hinzuzufügen, oder wenn Sie die Notfallwiederherstellung für einen ausgefallenen Server durchführen. Wenn das Cloudtiering aktiviert ist, wird standardmäßig nur der Namespace abgerufen, anfangs kein Dateiinhalt. Dies ist hilfreich, wenn Sie der Ansicht sind, dass eher Benutzerzugriffsanforderungen entscheiden sollen, welche Dateiinhalte auf den Server abgerufen werden. Wenn das Cloudtiering deaktiviert ist, ist der Standard, dass der Namespace zuerst heruntergeladen wird, und anschließend werden Dateien auf Grundlage des Zeitstempels der letzten Änderung abgerufen, bis die lokale Kapazität erreicht ist. Sie können den anfänglichen Downloadmodus jedoch in „Nur Namespace“ ändern. Ein dritter Modus kann nur verwendet werden, wenn das Cloudtiering für diesen Serverendpunkt deaktiviert ist. In diesem Modus wird vermieden, den Namespace zuerst abzurufen. Dateien werden nur auf dem lokalen Server angezeigt, wenn Sie vollständig heruntergeladen werden konnten. Dieser Modus ist nützlich, wenn eine Anwendung beispielsweise erfordert, dass vollständige Dateien vorhanden sind, und keine mehrstufige Dateien in ihrem Namespace tolerieren kann.
-
-Wählen Sie **Erstellen** aus, um den Serverendpunkt hinzuzufügen. Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und Windows Server synchron. 
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Führen Sie die folgenden PowerShell-Befehle aus, um den Serverendpunkt zu erstellen, und achten Sie darauf, dass Sie `<your-server-endpoint-path>` und `<your-volume-free-space>` durch die gewünschten Werte ersetzen und die optionale Einstellung für die optionale anfängliche Downloadrichtlinie überprüfen.
-
-```powershell
-$serverEndpointPath = "<your-server-endpoint-path>"
-$cloudTieringDesired = $true
-$volumeFreeSpacePercentage = <your-volume-free-space>
-# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
-$initialDownloadPolicy = NamespaceOnly
-
-if ($cloudTieringDesired) {
-    # Ensure endpoint path is not the system volume
-    $directoryRoot = [System.IO.Directory]::GetDirectoryRoot($serverEndpointPath)
-    $osVolume = "$($env:SystemDrive)\"
-    if ($directoryRoot -eq $osVolume) {
-        throw [System.Exception]::new("Cloud tiering cannot be enabled on the system volume")
-    }
-
-    # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
-        -Name $registeredServer.FriendlyName `
-        -SyncGroup $syncGroup `
-        -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
-        -InitialDownloadPolicy $initialDownloadPolicy
-} else {
-    # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
-        -Name $registeredServer.FriendlyName `
-        -SyncGroup $syncGroup `
-        -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -InitialDownloadPolicy $initialDownloadPolicy
-}
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Verwenden Sie den Befehl [az storagesync sync-group server-endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create), um einen neuen Serverendpunkt zu erstellen.
-
-```azurecli
-# Create a new sync group server endpoint 
-az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
-                                                 --server-local-path d:\myPath
-                                                 --storage-sync-service myStorageSyncServiceNAme
-                                                 --sync-group-name mySyncGroupName
-
-# Create a new sync group server endpoint with additional optional parameters
-az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --storage-sync-service myStorageSyncServiceName \
-                                                 --sync-group-name mySyncGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
-                                                 --server-local-path d:\myPath \
-                                                 --cloud-tiering on \
-                                                 --volume-free-space-percent 85 \
-                                                 --tier-files-older-than-days 15 \
-                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
-                                                 --offline-data-transfer on \
-                                                 --offline-data-transfer-share-name myfilesharename \
-
-```
-
----
+[!INCLUDE [storage-files-sync-create-server-endpoint](../../../includes/storage-files-sync-create-server-endpoint.md)]
 
 ## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurieren von Firewall- und VNET-Einstellungen
 
@@ -630,6 +548,6 @@ So migrieren eine DFS-R-Bereitstellung zur Azure-Dateisynchronisierung
 Weitere Informationen finden Sie unter [Zusammenarbeit zwischen der Azure-Dateisynchronisierung und DFS (verteiltes Dateisystem)](file-sync-planning.md#distributed-file-system-dfs).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Hinzufügen/Entfernen eines Serverendpunkts für die Azure-Dateisynchronisierung](file-sync-server-endpoint.md)
+- [Erstellen eines Serverendpunkts für die Azure-Dateisynchronisierung](file-sync-server-endpoint-create.md)
 - [Registrieren/Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung](file-sync-server-registration.md)
 - [Überwachen der Azure-Dateisynchronisierung](file-sync-monitoring.md)

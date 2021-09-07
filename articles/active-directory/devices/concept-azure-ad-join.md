@@ -1,26 +1,26 @@
 ---
 title: Was ist ein in Azure AD eingebundenes Gerät?
-description: Lernen Sie in Azure AD eingebundene Geräte kennen, und erfahren Sie, wie Sie mithilfe der Geräteidentitätsverwaltung Geräte verwalten können, die auf Ressourcen in Ihrer Umgebung zugreifen.
+description: In Azure AD eingebundene Geräte können Ihnen bei der Verwaltung von Geräten helfen, die auf Ressourcen in Ihrer Umgebung zugreifen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c39aac2abeb9d569690b056df1a2fb892b11d3c1
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90601451"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303056"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
-Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud-First- oder Cloud-Only-Strategie setzen. Jede Organisation kann unabhängig von ihrer Größe oder Branche in Azure AD eingebundene Geräte bereitstellen. Die Einbindung in Azure AD funktioniert sogar in einer Hybridumgebung und ermöglicht den Zugriff auf cloudbasierte und lokale Anwendungen und Ressourcen.
+Jede Organisation kann unabhängig von ihrer Größe oder Branche in Azure AD eingebundene Geräte bereitstellen. Die Einbindung in Azure AD funktioniert sogar in Hybridumgebungen und ermöglicht den Zugriff auf cloudbasierte und lokale Anwendungen und Ressourcen.
 
 | Azure AD Join | BESCHREIBUNG |
 | --- | --- |
@@ -30,7 +30,7 @@ Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud
 | **Gerätebesitz** | Organization |
 | **Betriebssysteme** | Alle Windows 10-Geräte mit Ausnahme von Windows 10 Home |
 |   | [Virtuelle Windows Server 2019-Computer, die in Azure ausgeführt werden](howto-vm-sign-in-azure-ad-windows.md) (Server Core wird nicht unterstützt.) |
-| **Bereitstellung** | Self-Service: Windows-Willkommensseite oder Windows-Einstellungen |
+| **Provisioning** | Self-Service: Out of Box Experience (OOBE) von Windows oder Einstellungen |
 |   | Massenregistrierung |
 |   | Windows Autopilot |
 | **Anmeldeoptionen für Gerät** | Organisationskonten mit: |
@@ -62,7 +62,7 @@ Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über kei
 - Sie möchten eine Gruppe von Benutzern in Azure AD anstatt in Active Directory verwalten. Dieses Szenario kann beispielsweise für Saisonkräfte, Auftragnehmer oder Kursteilnehmer gelten.
 - Sie möchten Beitrittsfunktionen für Mitarbeiter in entfernten Niederlassungen mit eingeschränkter lokaler Infrastruktur bereitstellen.
 
-Sie können in Azure AD eingebundene Geräte für alle Windows 10-Geräte mit Ausnahme von Windows 10 Home konfigurieren.
+Sie können in Azure AD eingebundene Geräte für alle Windows 10-Geräte (mit Ausnahme von Windows 10 Home) konfigurieren.
 
 Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elemente:
 

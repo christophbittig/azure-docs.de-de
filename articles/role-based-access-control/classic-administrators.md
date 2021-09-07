@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/20/2021
+ms.date: 07/17/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d1f997ff34703e95c498a0f3c1646bf3acb0129e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8a9ef41dcb85ddd8478078a927759190a6475840
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469989"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652101"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -64,7 +64,7 @@ Weitere Informationen zum Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis f
 
 Bei Gastbenutzern mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Nehmen Sie das folgende Szenario als Beispiel:
 
-- Benutzer A verfügt über ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) und ist Dienstadministrator für ein Azure-Abonnement.
+- Benutzer A verfügt über ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) und der Dienstadministrator für ein Azure-Abonnement.
 - Benutzer B verfügt über ein Microsoft-Konto.
 - Benutzer A weist Benutzer B die Rolle „Co-Administrator“ zu.
 - Benutzer B kann fast alle Aktionen ausführen, aber keine Anwendungen registrieren oder Benutzer im Azure AD-Verzeichnis suchen.
@@ -133,6 +133,26 @@ Pro Azure-Abonnement kann es nur einen Dienstadministrator geben. Der Dienstadmi
 Wenn der Kontoadministrator ein Azure AD-Konto ist, können Sie den Dienstadministrator in ein Azure AD-Konto in demselben Verzeichnis ändern, aber nicht in einem anderen Verzeichnis. Beispielsweise kann abby@contoso.com den Dienstadministrator in bob@contoso.com ändern, aber nicht den Dienstadministrator in john@notcontoso.com, es sei denn, john@notcontoso.com ist im Verzeichnis contoso.com vorhanden.
 
 Weitere Informationen zu Microsoft-Konten und Azure AD-Konten finden Sie unter [Was ist Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
+
+## <a name="remove-the-service-administrator"></a>Entfernen des Dienstadministrators
+
+Möglicherweise möchten Sie den Dienstadministrator entfernen, z. B. wenn dieser nicht mehr für das Unternehmen tätig ist. Wenn Sie den Dienstadministrator entfernen, müssen Sie über einen Benutzer verfügen, dem im Abonnementbereich die Rolle [Besitzer](built-in-roles.md#owner) zugewiesen ist. Auf diese Weise wird vermieden, dass das Abonnement verwaist. Ein Abonnementbesitzer hat den gleichen Zugriff wie der Dienstadministrator.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Abonnementbesitzer oder Co-Administrator an.
+
+1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+
+1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
+
+1. Fügen Sie ein Häkchen neben dem Dienstadministrator hinzu.
+
+1. Klicken Sie auf **Entfernen**.
+
+1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
+
+    ![Screenshot: Entfernen des Dienstadministrators](./media/classic-administrators/service-admin-remove.png)
 
 ## <a name="view-the-account-administrator"></a>Anzeigen des Kontoadministrators
 

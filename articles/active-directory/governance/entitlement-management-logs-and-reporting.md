@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3433031beba287d1412d0c2254941b7a3e9e118
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4970ef21be1e5c440acc871f5ca5583da1916f52
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968415"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728506"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -76,14 +76,15 @@ Gehen Sie folgendermaßen vor, um Ereignisse anzuzeigen:
 
 1. Wählen Sie die Arbeitsmappe *Zugriffspaketaktivität* aus. 
 
-1. Wählen Sie in dieser Arbeitsmappe einen Zeitbereich aus (wenn Sie nicht sicher sind, ändern Sie ihn in **Alle**), und wählen Sie in der Dropdownliste aller Zugriffspakete, die in diesem Zeitraum Aktivitäten aufwiesen, eine Zugriffspaket-ID aus. Es werden die Ereignisse im Zusammenhang mit dem Zugriffspaket angezeigt, die während des ausgewählten Zeitbereichs auftraten.  
+1. Wählen Sie in dieser Arbeitsmappe einen Zeitbereich aus (wenn Sie nicht sicher sind, ändern Sie die Einstellung in **Alle**), und wählen Sie in der Dropdownliste aller Zugriffspakete mit Aktivitäten für diesen eine Zugriffspaket-ID aus. Es werden die Ereignisse im Zusammenhang mit dem Zugriffspaket angezeigt, die während des ausgewählten Zeitbereichs auftraten.
 
     ![Anzeigen von Zugriffspaketereignissen](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
 
-    Jede Zeile enthält die Uhrzeit, die Zugriffspaket-ID, den Namen des Vorgangs, die Objekt-ID, den UPN und den Anzeigenamen des Benutzers, der den Vorgang gestartet hat.  Weitere Details sind im JSON-Code enthalten.   
+    Jede Zeile enthält die Uhrzeit, die Zugriffspaket-ID, den Namen des Vorgangs, die Objekt-ID, den UPN und den Anzeigenamen des Benutzers, der den Vorgang gestartet hat.  Weitere Details sind im JSON-Code enthalten.
 
-1. Wenn Sie überprüfen möchten, ob Änderungen an Anwendungsrollenzuweisungen für eine Anwendung vorgenommen wurden, die nicht auf Zugriffspaketzuweisungen zurückzuführen sind (z. B. wenn ein globaler Administrator einen Benutzer direkt einer Anwendungsrolle zugewiesen hat), können Sie die Arbeitsmappe mit dem Namen *Aktivität der Anwendungsrollenzuweisung* auswählen.
+1. Wenn Sie überprüfen möchten, ob Änderungen an Anwendungsrollenzuweisungen für eine Anwendung vorgenommen wurden, die nicht auf Zugriffspaketzuweisungen zurückzuführen sind (wenn z. B. ein globaler Administrator einen Benutzer direkt einer Anwendungsrolle zugewiesen hat), können Sie die Arbeitsmappe mit dem Namen *Aktivität der Anwendungsrollenzuweisung* auswählen.
 
+    ![Anzeige von App-Rollenzuweisungen](./media/entitlement-management-access-package-incompatible/workbook-ara.png)
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Erstellen von benutzerdefinierten Azure Monitor-Abfragen mit dem Azure-Portal
 Sie können eigene Abfragen für Azure AD-Überwachungsereignisse erstellen. Dazu zählen auch Ereignisse der Berechtigungsverwaltung.  

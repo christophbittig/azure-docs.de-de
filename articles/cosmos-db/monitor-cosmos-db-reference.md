@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 5f542b35110a6d967640ad91faead75f6cc0e0c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7927aa06b5aa733b134d116c8b5deec436f8a2ae
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593288"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112372091"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Referenz zur Überwachung von Daten in Azure Cosmos DB
 
@@ -104,7 +104,7 @@ Eine Liste aller Azure Monitor-Protokollkategorien und Links zu zugeordneten Sch
 
 ## <a name="azure-monitor-logs-tables"></a>Tabellen in Azure Monitor-Protokollen
 
-Azure Cosmos DB verwendet Kusto-Tabellen aus Azure Monitor-Protokollen. Sie können diese Tabellen mit Log Analytics abfragen. Eine Liste der Einsatzzwecke von Kusto-Paketen finden Sie im Artikel [Tabellenverweise für Azure Monitor-Protokolle](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db).
+Azure Cosmos DB verwendet Kusto-Tabellen aus Azure Monitor-Protokollen. Sie können diese Tabellen mit Log Analytics abfragen. Eine Liste der von Cosmos DB verwendeten Kusto-Tabellen finden Sie unter [Azure Cosmos DB](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db).
 
 ## <a name="see-also"></a>Weitere Informationen
 

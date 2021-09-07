@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: a4db444fa7f0f03e2d8ffe94d8337b8d0f76a0e5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/24/2021
+ms.openlocfilehash: 6f17f89feb3bb5e563f662160598be14528a9240
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747766"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963526"
 ---
 # <a name="partner-spotlight"></a>Partnerschwerpunktthema
 
-Holen Sie sich fachkundige Hilfe von Microsoft-Partnern, die End-to-End-Lösungen entwickeln, die Azure Cognitive Search beinhalten. Die folgenden Partner verfügen über umfassende Erfahrung bei der Nutzung von Volltextsuche und KI-Anreicherung in einer Reihe von geschäftlichen und technischen Szenarien.
+Erhalten Sie fachkundige Hilfe von Microsoft-Partnern, die umfassende Lösungen mit Azure Cognitive Search entwickeln. Die folgenden Partner verfügen über umfassende Erfahrung bei der Integration von Volltextsuche und KI-Anreicherung in einer Reihe von geschäftlichen und technischen Szenarien.
 
 | Partner | BESCHREIBUNG | Produktlink |
 |---------|-------------|----------------------|
@@ -28,4 +28,4 @@ Holen Sie sich fachkundige Hilfe von Microsoft-Partnern, die End-to-End-Lösunge
 | ![Neudesic](media/resource-partners/neudesic-logo.png "Firmenlogo von Neudesic") | [**Neudesic**](https://www.neudesic.com/) ist der vertrauenswürdige Technologiepartner im Bereich Geschäftsinnovation. Seine Kunden profitieren von herausragenden Geschäftsergebnissen, die er mit digitaler Modernisierung und Evolution erzielt. Unsere Berater bündeln Geschäfts- und Technologie-Knowhow und bieten eine Vielzahl cloud- und datengesteuerter Lösungen, darunter benutzerdefinierte Anwendungsentwicklung, Daten und künstliche Intelligenz, umfassende verwaltete Dienste und Geschäftssoftwareprodukte. Neudesic, ein Unternehmen in Privatbesitz mit Sitz in Irvine, Kalifornien, wurde 2002 gegründet. | [Produktseite](https://www.neudesic.com/services/modern-workplace/document-intelligence-platform-schedule-demo/)|
 | ![OrangeNXT](media/resource-partners/orangenxt-beldmerk-boven-160px.png "Firmenlogo von OrangeNXT") | [**OrangeNXT**](https://orangenxt.com/) bietet Fachwissen in den Bereichen Datenkonsolidierung, Datenmodellierung und Aufbau von Skillsets, die eine für spezielle Anwendungsfälle entwickelte Logik beinhalten.</br></br>digitalNXT Search ist eine OrangeNXT-Lösung, die KI, optische Zeichenerkennung (OCR) und Verarbeitung natürlicher Sprache in der Azure Cognitive Search-Pipeline kombiniert, um Sie bei der Extraktion von Suchergebnissen aus mehreren strukturierten und unstrukturierten Datenquellen zu unterstützen. Integraler Bestandteil von digitalNXT Search sind fortschrittliche benutzerdefinierte kognitive Skills zum Interpretieren und Korrelieren ausgewählter Daten.</br></br>| [Produktseite](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/)|
 | ![Plain Concepts](media/resource-partners/plain-concepts-logo.png "Unternehmenslogo von Plain Concepts") | [**Plain Concepts**](https://www.plainconcepts.com/contact/) ist ein Microsoft Partner mit mehr als 15 Jahren Cloud-, Daten- und KI-Erfahrung in Azure und mehr als 12 Microsoft MVP-Auszeichnungen. Wir sind auf die Erstellung neuer Datenbeziehungen zwischen heterogenen Informationsquellen spezialisiert, die in Kombination mit unserer Erfahrung mit künstlicher Intelligenz, maschinellem Lernen und Cognitive Services die Produktivität von Computern und menschlichen Teams exponentiell steigern. Wir unterstützen Kunden dabei, die digitale Revolution mit KI-basierten Lösungen zu bewältigen, die ihren Unternehmensanforderungen am besten entsprechen.| [Produktseite](https://www.plainconcepts.com/artificial-intelligence/) |
-
+| ![Raytion](media/resource-partners/raytion-logo-blue.png "Firmenlogo von Raytion") | [**Raytion**](https://www.raytion.com/) ist eine international tätige IT-Unternehmensberatung mit einem strategischen Schwerpunkt auf Zusammenarbeit, Suche und Cloud. Raytion bietet intelligente Suchlösungen mit umfassenden Features auf Basis von Microsoft Azure Cognitive Search und der Raytion-Produktsuite. Die Lösungen von Raytion ermöglichen eine einfache Indizierung einer breiten Palette von Unternehmensinhaltssystemen und bieten eine durchdachte Sucherfahrung, die auf individuelle Anforderungen zugeschnitten werden kann. Sie bilden die Grundlage für die Unternehmens- und Wissenssuche sowie für die Unterstützung von Service Desk-Mitarbeitern und viele weitere Anwendungen. | [Produktseite](https://www.raytion.com/connectors) |

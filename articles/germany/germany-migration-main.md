@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: f519a515b3073cec166627ad5acf45bb8a46d1d8
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 37dde9cf2f105c3e8e8c3dc86e59340c205f9254
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122867"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554271"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
@@ -22,7 +22,9 @@ Die Artikel in diesem Abschnitt wurden erstellt, um Sie beim Migrieren Ihrer Wor
 
 Die beiden Regionen in Deutschland sind vollständig getrennt von Azure weltweit. Die Clouds in Azure weltweit und in Azure Deutschland haben ihre eigenen getrennten Azure Active Directory-Instanzen. Aus diesem Grund sind Azure Deutschland-Mandanten von Azure weltweit-Mandanten getrennt. In diesem Artikel sind die Migrationstools beschrieben, die Sie verwenden können, wenn Sie zwischen *verschiedenen* Mandanten migrieren.
 
-Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure Active Directory-Mandanten (Azure AD) für Azure und Microsoft 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge, und Sie sollten sich vor der Verwendung dieses Migrationsleitfadens zunächst an Ihren Kontomanager wenden.
+Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure AD-Mandanten (Azure Active Directory) für Azure und Microsoft 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge. Machen Sie sich in diesem Fall zuerst mit den [Aktionen während der Migrationsphasen und Auswirkungen für die Migration von Microsoft Cloud Deutschland](/microsoft-365/enterprise/ms-cloud-germany-transition-phases?view=o365-worldwide) vertraut. Wenden Sie sich bei Fragen an Ihren Konto-Manager oder an den Microsoft-Support.
+
+Azure Cloud Solution Provider müssen zusätzliche Schritte ausführen, um Kunden während und nach der Umstellung auf die neue deutsche Rechenzentrumsregion zu unterstützen. Weitere Informationen zu den zusätzlichen Schritten finden Sie [hier](/microsoft-365/enterprise/ms-cloud-germany-transition-add-csp).
 
 ## <a name="migration-process"></a>Migrationsprozess
 
@@ -50,7 +52,7 @@ Am Ende dieser Phase sind Ihnen die folgenden Informationen bekannt:
 
 In der Planungsphase führen Sie die folgenden Aufgaben aus:
 
-- Verwenden Sie die Ausgabe der Abhängigkeitsanalyse, die in der Bewertungsphase ausgeführt wurde, um zusammengehörige Komponenten zu definieren. Erwägen Sie ein gemeinsames Migrieren zusammengehöriger Komponenten in einem *Migrationspaket* .
+- Verwenden Sie die Ausgabe der Abhängigkeitsanalyse, die in der Bewertungsphase ausgeführt wurde, um zusammengehörige Komponenten zu definieren. Erwägen Sie ein gemeinsames Migrieren zusammengehöriger Komponenten in einem *Migrationspaket*.
 - [Optional] Nutzen Sie die Migration als Gelegenheit, [Gartner 5-R-Kriterien](https://www.gartner.com/en/documents/3873016/evaluation-criteria-for-cloud-management-platforms-and-t) anzuwenden und Ihre Workload zu optimieren.
 - Bestimmen Sie die Zielumgebung in Azure weltweit:
   1. Bestimmen Sie den Zielmandanten in Azure weltweit (ggf müssen Sie diesen erstellen).
@@ -80,17 +82,17 @@ Diese Begriffe werden in den Azure Deutschland-Migrationsartikeln verwendet:
 
 **Quelle** beschreibt, von wo Sie Ressourcen migrieren (z. B. Azure Deutschland):
 
-- **Quellmandantenname** : Der Name des Mandanten in Azure Deutschland (alles nach dem **\@** -Zeichen im Kontonamen). Die Mandantennamen in Azure Deutschland enden alle mit **microsoftazure.de** .
-- **Quellmandanten-ID** : Die ID des Mandanten in Azure Deutschland. Die Mandanten-ID wird im Azure-Portal angezeigt, wenn Sie den Mauszeiger über den Kontonamen in der oberen rechten Ecke bewegen.
-- **Quellabonnement-ID** : Die ID des Quellabonnements in Azure Deutschland. Sie können mehrere Abonnements im selben Mandanten haben. Stellen Sie immer sicher, dass Sie das richtige Abonnement verwenden.
-- **Quellregion** : Entweder „Deutschland, Mitte“ ( **germanycentral** ) oder „Deutschland, Nordosten“ ( **germanynortheast** ), je nachdem, wo sich die zu migrierende Ressource befindet.
+- **Quellmandantenname**: Der Name des Mandanten in Azure Deutschland (alles nach dem **\@** -Zeichen im Kontonamen). Die Mandantennamen in Azure Deutschland enden alle mit **microsoftazure.de**.
+- **Quellmandanten-ID**: Die ID des Mandanten in Azure Deutschland. Die Mandanten-ID wird im Azure-Portal angezeigt, wenn Sie den Mauszeiger über den Kontonamen in der oberen rechten Ecke bewegen.
+- **Quellabonnement-ID**: Die ID des Quellabonnements in Azure Deutschland. Sie können mehrere Abonnements im selben Mandanten haben. Stellen Sie immer sicher, dass Sie das richtige Abonnement verwenden.
+- **Quellregion**: Entweder „Deutschland, Mitte“ (**germanycentral**) oder „Deutschland, Nordosten“ (**germanynortheast**), je nachdem, wo sich die zu migrierende Ressource befindet.
 
 **Ziel** oder **Zielpunkt** beschreibt, wohin Sie Ressourcen migrieren:
 
-- **Zielmandantenname** : Der Name des Mandanten in Azure weltweit.
-- **Zielmandanten-ID** : Die ID des Mandanten in Azure weltweit.
-- **Zielabonnement-ID** : Die Abonnement-ID für die Ressource in Azure weltweit.
-- **Zielregion** : Sie können fast jede Region in Azure weltweit verwenden. Es ist wahrscheinlich, dass Sie Ihre Ressourcen zu „Europa, Westen“ ( **westeurope** ) oder „Europa, Norden“ ( **northeurope** ) migrieren möchten.
+- **Zielmandantenname**: Der Name des Mandanten in Azure weltweit.
+- **Zielmandanten-ID**: Die ID des Mandanten in Azure weltweit.
+- **Zielabonnement-ID**: Die Abonnement-ID für die Ressource in Azure weltweit.
+- **Zielregion**: Sie können fast jede Region in Azure weltweit verwenden. Es ist wahrscheinlich, dass Sie Ihre Ressourcen zu „Europa, Westen“ (**westeurope**) oder „Europa, Norden“ (**northeurope**) migrieren möchten.
 
 > [!NOTE]
 > Vergewissern Sie sich, dass der Azure-Dienst, den Sie migrieren, in der Zielregion angeboten wird. Alle Azure-Dienste, die in Azure Deutschland verfügbar sind, stehen in „Europa, Westen“ zur Verfügung. Alle Azure-Dienste, die in Azure Deutschland verfügbar sind, sind in „Europa, Norden“ verfügbar, mit Ausnahme von Azure Machine Learning Studio (klassisch) und der G/GS VM-Serie in Azure Virtual Machines.

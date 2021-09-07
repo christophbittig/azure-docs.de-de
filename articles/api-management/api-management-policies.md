@@ -4,20 +4,16 @@ description: Erfahren Sie mehr über die Richtlinien, die für die Verwendung in
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 07/19/2021
 ms.author: apimpm
-ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6856226c1eda0e8d5fde7df6d2b251007a47fa2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562347"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468516"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).
@@ -36,11 +32,13 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](api-management-access-restriction-policies.md#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.
     -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.
     -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
+    -   [Überprüfen des Clientzertifikats](api-management-access-restriction-policies.md#validate-client-certificate): Erzwingt, dass ein Zertifikat, das einer API Management-Instanz von einem Client präsentiert wird, mit den angegebenen Validierungsregeln und Ansprüchen übereinstimmt.
 -   [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies)
     -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – bedingte Anwendung von Richtlinienanweisungen basierend auf der Auswertung von booleschen Ausdrücken.
     -   [Anforderung weiterleiten](api-management-advanced-policies.md#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
     -   [Parallelität einschränken:](api-management-advanced-policies.md#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
     -   [Protokoll an Event Hub](api-management-advanced-policies.md#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel.
+    -   [Metriken ausgeben](api-management-advanced-policies.md#emit-metrics) – Sendet bei Ausführung benutzerdefinierte Metriken an Application Insights.
     -   [Modellantwort](api-management-advanced-policies.md#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
     -   [Wiederholen](api-management-advanced-policies.md#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.
     -   [Zurückgegebene Antwort](api-management-advanced-policies.md#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.
@@ -85,7 +83,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     - [Validate content](validation-policies.md#validate-content) (Validieren von Inhalten): Hiermit wird die Größe oder das JSON-Schema eines Anforderungs- oder Antworttexts anhand des API-Schemas überprüft.
 . 
     - [Validate parameters](validation-policies.md#validate-parameters) (Validieren von Parametern): Hiermit können Sie den Anforderungsheader, die Abfrage oder die Pfadparameter anhand des API-Schemas überprüfen.
-    - [Validate headers](validation-policies.md#validate-headers) (Validieren von Headern): Hiermit werden die Anforderungsheader anhand des API-Schemas überprüft.
+    - [Validieren von Headern](validation-policies.md#validate-headers): Überprüft die Anforderungsheader anhand des API-Schemas.
     - [Validate status code](validation-policies.md#validate-status-code) (Validieren von Statuscodes): Hiermit werden die HTTP-Statuscodes in Antworten anhand des API-Schemas überprüft.
 
 ## <a name="next-steps"></a>Nächste Schritte

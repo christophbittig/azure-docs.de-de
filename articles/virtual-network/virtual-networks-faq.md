@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec65980e3886b62b8718799d1566a11d5c13a679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338831"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -80,10 +80,10 @@ Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x
 - x.x.x.0: Netzwerkadresse
 - x.x.x.1: Von Azure für das Standardgateway reserviert.
 - x.x.x.2, x.x.x.3: Von Azure zum Zuordnen der Azure DNS-IPs zum VNet-Adressraum reserviert.
-- x.x.x.255: Netzwerkadresse für Broadcasts
+- x.x.x.255: Netzwerkbroadcastadresse für Subnetze ab der Größe /25. In kleineren Subnetzen ist dies eine andere Adresse. 
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Wie ist die minimale und maximale Größe von VNets und Subnetzen?
-Das kleinste unterstützte IPv4-Subnetz weist die Netzmaske /29 und das größte die Netzmaske /8 (gemäß CIDR-Subnetzdefinitionen) auf.  IPv6-Subnetze müssen exakt /64 groß sein.  
+Das kleinste unterstützte IPv4-Subnetz ist /29, das größte Subnetz ist /2 (gemäß CIDR-Subnetzdefinitionen).  IPv6-Subnetze müssen exakt /64 groß sein.  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Können VLANs mithilfe von VNets in Azure integriert werden?
 Nein. VNets sind Layer-3-Overlays. Layer-2-Semantik wird in Azure nicht unterstützt.
@@ -419,7 +419,7 @@ Für die Gesamtzahl von VNET-Dienstendpunkten in einem virtuellen Netzwerk gilt 
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
-|Azure Key Vault|    127|
+|Azure Key Vault|    200 |
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure-Servicebus| 128|

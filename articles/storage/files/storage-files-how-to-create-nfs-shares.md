@@ -1,30 +1,39 @@
 ---
-title: Erstellen einer NFS-Freigabe – Azure Files (Vorschau)
+title: Erstellen einer NFS-Freigabe (Vorschau) – Azure Files
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die mithilfe des NFS-Protokolls (Network File System) eingebunden werden kann.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a4d5ff9298b8cbf4203e157bc21fae6059342130
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339151"
 ---
-# <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
-Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel geht es um das Erstellen einer Dateifreigabe, für die das NFS-Protokoll verwendet wird. Weitere Informationen zu den beiden Protokollen finden Sie unter [Protokolle für Azure-Dateifreigaben](storage-files-compare-protocols.md).
+# <a name="how-to-create-an-nfs-share-preview"></a>Erstellen einer NFS-Freigabe (Vorschau)
+Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel erfahren Sie, wie Sie eine Dateifreigabe erstellen, für die das NFS-Protokoll verwendet wird (Vorschau).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Nein](../media/icons/no-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="limitations"></a>Einschränkungen
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
+
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
+- NFS-Freigaben akzeptieren nur numerische UID/GID. Deaktivieren Sie die ID-Zuordnung, um zu vermeiden, dass Ihre Clients eine alphanumerische UID/GID senden.
 - Der Zugriff auf NFS-Freigaben ist nur über vertrauenswürdige Netzwerke möglich. Verbindungen zu Ihrer NFS-Freigabe müssen einer der folgenden Quellen entstammen:
     - Entweder [Erstellen eines privaten Endpunkts](storage-files-networking-endpoints.md#create-a-private-endpoint) (empfohlen) oder [Einschränken des Zugriffs auf den öffentlichen Endpunkt](storage-files-networking-endpoints.md#restrict-public-endpoint-access)
     - [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
@@ -34,6 +43,9 @@ Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Clo
 - Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrieren des NFS 4.1-Protokolls
+
+Sie müssen sich erst für das Feature registrieren, um NFS-basierte Azure-Dateifreigaben erstellen zu können. In Speicherkonten, die vor der Registrierung erstellt wurden, können keine NFS-Freigaben erstellt werden.
+
 Wenn Sie das Azure PowerShell-Modul oder die Azure CLI nutzen, registrieren Sie Ihr Feature mithilfe der folgenden Befehle:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -43,12 +55,10 @@ Verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle, um die
 ```azurepowershell
 # Connect your PowerShell session to your Azure account, if you have not already done so.
 Connect-AzAccount
-
 # Set the actively selected subscription, if you have not already done so.
 $subscriptionId = "<yourSubscriptionIDHere>"
 $context = Get-AzSubscription -SubscriptionId $subscriptionId
 Set-AzContext $context
-
 # Register the NFS 4.1 feature with Azure Files to enable the preview.
 Register-AzProviderFeature `
     -ProviderNamespace Microsoft.Storage `
@@ -61,16 +71,13 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```azurecli
 # Connect your Azure CLI to your Azure account, if you have not already done so.
 az login
-
 # Provide the subscription ID for the subscription where you would like to 
 # register the feature
 subscriptionId="<yourSubscriptionIDHere>"
-
 az feature register \
     --name AllowNfsFileShares \
     --namespace Microsoft.Storage \
     --subscription $subscriptionId
-
 az provider register \
     --namespace Microsoft.Storage
 ```
@@ -96,7 +103,6 @@ az feature show \
     --namespace Microsoft.Storage \
     --subscription $subscriptionId
 ```
-
 ---
 
 ## <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
@@ -170,7 +176,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
 1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie **Dateifreigaben** aus.
 1. Wählen Sie **+ Dateifreigabe** aus, um eine neue Dateifreigabe zu erstellen.
 1. Benennen Sie Ihre Dateifreigabe, und wählen Sie eine bereitgestellte Kapazität aus.
-1. Wählen Sie für **Protokoll** die Option **NFS (Vorschau)** aus.
+1. Wählen Sie unter **Protokoll** die Option **NFS** aus.
 1. Treffen Sie für **Root-Squash** eine Auswahl.
 
     - Root-Squash (Standardwert): Zugriff für den Remotesuperuser (Stamm) wird UID (65534) und GID (65534) zugeordnet.
@@ -183,32 +189,6 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Stellen Sie sicher, dass .NET Framework installiert ist. Siehe [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) (Herunterladen von .NET Framework).
- 
-1. Überprüfen Sie mit dem folgenden Befehl, ob PowerShell Version `5.1` oder höher installiert ist.    
-
-   ```powershell
-   echo $PSVersionTable.PSVersion.ToString() 
-   ```
-    
-   Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
-    
-1. Installieren Sie die aktuelle Version des PowerShellGet-Moduls.
-
-   ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force  
-   ```
-
-1. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
-
-1. Installieren Sie die Version **2.5.2-preview** des **Az.Storage**-Vorschaumoduls:
-
-   ```powershell
-   Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
-   ```
-
-   Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
-   
 1. Im Azure PowerShell-Modul verwenden Sie das Cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) zum Erstellen einer Premium-Dateifreigabe.
 
     > [!NOTE]

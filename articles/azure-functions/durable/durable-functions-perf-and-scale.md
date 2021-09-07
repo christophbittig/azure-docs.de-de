@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a91baf110e08794bcf2dedec2a61f0e6c2c734a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 179eb4c5c380a65374143cf24b2f960458fe62b5
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375875"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240450"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -234,7 +234,7 @@ Wenn die maximale Anzahl von Aktivitäten oder Orchestrierungen/Entitäten auf e
 > Diese Einstellungen sind nützlich bei der Verwaltung der Speicher- und CPU-Auslastung auf einem einzelnen virtuellen Computer. Bei der horizontalen Hochskalierung auf mehrere VMs sind jedoch für jede VM jeweils eigene Limits festgelegt. Mit diesen Einstellungen kann die Parallelität nicht auf globaler Ebene gesteuert werden.
 
 > [!NOTE]
-> Orchestrierungen und Entitäten werden nur in den Arbeitsspeicher geladen, wenn sie aktiv Ereignisse oder Vorgänge verarbeiten. Nachdem sie ihre Logik ausgeführt und abgewartet haben (d. h. eine `await` (C#)- oder `yield` (JavaScript, Python)-Anweisung im Funktionscode des Orchestrators getroffen haben), werden sie aus dem Speicher entladen. Orchestrierungen und Entitäten, die aus dem Arbeitsspeicher entladen werden, werden nicht auf die `maxConcurrentOrchestratorFunctions`-Drosselung angerechnet. Auch wenn Millionen von Orchestrierungen oder Entitäten den Status „Wird ausgeführt“ haben, zählen nur Orchestrationen oder Entitäten für die Drosselungsgrenze, sofern sie nicht in den aktiven Speicher geladen werden. Eine Orchestrierung, die eine Aktivitätsfunktion auf ähnliche Weise plant, zählt nicht zur Drosselung, wenn die Orchestrierung auf den Abschluss der Ausführung der Aktivität wartet.
+> Orchestrierungen und Entitäten werden nur in den Arbeitsspeicher geladen, wenn sie aktiv Ereignisse oder Vorgänge verarbeiten. Nachdem sie ihre Logik ausgeführt und abgewartet haben (d. h. eine `await` (C#)- oder `yield` (JavaScript, Python)-Anweisung im Funktionscode des Orchestrators getroffen haben), werden sie aus dem Speicher entladen. Orchestrierungen und Entitäten, die aus dem Arbeitsspeicher entladen werden, werden nicht auf die `maxConcurrentOrchestratorFunctions`-Drosselung angerechnet. Auch wenn Millionen von Orchestrierungen oder Entitäten den Status „Wird ausgeführt“ aufweisen, werden diese nur dann in Bezug auf die Drosselungsgrenze angerechnet, wenn sie in den aktiven Speicher geladen werden. Eine Orchestrierung, die eine Aktivitätsfunktion auf ähnliche Weise plant, zählt nicht zur Drosselung, wenn die Orchestrierung auf den Abschluss der Ausführung der Aktivität wartet.
 
 ### <a name="language-runtime-considerations"></a>Sprachlaufzeitüberlegungen
 

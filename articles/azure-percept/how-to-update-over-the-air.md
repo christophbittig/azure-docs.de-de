@@ -1,20 +1,20 @@
 ---
-title: Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)
+title: Aktualisieren von Azure Percept DK per Funk (Over-the-Air-Update)
 description: Hier erfahren Sie, wie Sie Over-the-Air-Updates (OTA) für Ihr Azure Percept DK-Gerät erhalten.
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: fc8e3e42e75eacd1c5bc3312b7adf6c8a8150f3c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0b3dd8e10379e28a7bd988ec37dcd1943fcac2d3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684341"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222258"
 ---
-# <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)
+# <a name="update-azure-percept-dk-over-the-air"></a>Aktualisieren von Azure Percept DK per Funk (Over-the-Air-Update)
 
 In dieser Anleitung erfahren Sie, wie Sie das Betriebssystem und die Firmware der Trägerplatine Ihres Azure Percept DK-Geräts per Funk (Over The Air, OTA) mit Device Update für IoT Hub aktualisieren.
 
@@ -68,12 +68,10 @@ Anforderungen für Gruppentags:
 - Ein Gerät kann nur einer einzelnen Gruppe angehören.
 
 1. Fügen Sie Ihrem Gerät bzw. Ihren Geräten ein Tag hinzu:
-
     1. Suchen Sie im linken Navigationsbereich unter **IoT Edge** nach Ihrem Azure Percept DK-Gerät, und navigieren Sie zum zugehörigen **Gerätezwilling**.
-
     1. Fügen Sie wie im Anschluss gezeigt einen neuen Tagwert vom Typ **Device Update für IoT Hub** hinzu (```<CustomTagValue>``` verweist auf Ihren Tagwert/-namen, z. B. „AzurePerceptGroup1“). Weitere Informationen zu Tags im JSON-Dokument für Gerätezwillinge finden Sie [hier](../iot-hub/iot-hub-devguide-device-twins.md#device-twins).
 
-        ```
+        ```json
         "tags": {
         "ADUGroup": "<CustomTagValue>"
         },
@@ -84,15 +82,10 @@ Anforderungen für Gruppentags:
 1. Erstellen Sie eine Gruppe, indem Sie ein vorhandenes Azure IoT Hub-Tag auswählen:
 
     1. Kehren Sie zu Ihrer Azure IoT Hub-Seite zurück.
-
     1. Wählen Sie im Menübereich auf der linken Seite unter **Automatische Geräteverwaltung** die Option **Geräteupdates** aus.
-
     1. Wählen Sie die Registerkarte **Gruppen** . Auf dieser Seite wird die Anzahl nicht gruppierter Geräte angezeigt, die mit Device Update verbunden sind.
-
     1. Wählen Sie **+ Hinzufügen** aus, um eine neue Gruppe zu erstellen.
-
     1. Wählen Sie in der Liste ein IoT Hub-Tag aus, und klicken Sie auf **Übermitteln**.
-
     1. Wenn die Gruppe erstellt wurde, werden das Updatekonformitätsdiagramm und die Gruppenliste aktualisiert. Das Diagramm gibt Aufschluss über die Anzahl von Geräten mit verschiedenen Konformitätszuständen: **Mit neuestem Update**, **Neue Updates verfügbar**, **Updates werden ausgeführt** und **Not yet grouped** (Noch nicht gruppiert).
 
 ## <a name="deploy-an-update"></a>Bereitstellen eines Updates

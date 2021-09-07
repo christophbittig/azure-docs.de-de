@@ -9,12 +9,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: ca7a6e424125980f79ccb6521df0d7b87a9ce456
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 10eb9d57b19968737077a595030bb2a986ec6c7b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694965"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564786"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -156,7 +156,7 @@ Bei einer AKS-Bereitstellung mit einem benutzerdefinierten Zertifikat oder bei e
 > Wenn Sie ein Zertifikat von Microsoft für die AKS-Bereitstellung verwenden, müssen Sie den DNS-Wert für den Cluster nicht manuell aktualisieren. Der Wert sollte automatisch festgelegt werden.
 
 Sie können die folgenden Schritte ausführen, um den DNS-Eintrag für Ihren benutzerdefinierten Domänennamen zu aktualisieren:
-1. Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format `http://104.214.29.152:80/api/v1/service/<service-name>/score` aufweist. In diesem Beispiel lautet die IP-Adresse 104.214.29.152.
+1. Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format *http://104.214.29.152:80/api/v1/service/<service-name>/score* aufweist. In diesem Beispiel lautet die IP-Adresse 104.214.29.152.
 1. Verwenden Sie die Tools von Ihrer Domänennamen-Registrierungsstelle, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Datensatz ordnet den FQDN (z. B. www\.contoso.com) der IP-Adresse zu. Der Eintrag muss auf die IP-Adresse des Bewertungsendpunkts verweisen.
 
     > [!TIP]

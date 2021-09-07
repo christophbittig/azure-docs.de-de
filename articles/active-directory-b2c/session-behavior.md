@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2e0af2e682799d4286a0d00daa2ce7e3805cf4ac
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 9259fac727287ce4d52594d146eaac96a3085433
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565246"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339643"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -114,7 +114,7 @@ Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforder
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Aktivieren von „Angemeldet bleiben“
 
-Sie können das Feature „Angemeldet bleiben“ für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis verfügen. Wenn Sie das Feature aktivieren, haben Benutzer die Möglichkeit, angemeldet zu bleiben, was dazu führt, dass die Sitzung auch nach dem Schließen des Browsers aktiv bleibt. Dadurch werden die Benutzer nach dem erneuten Öffnen des Browsers nicht erneut zur Eingabe ihres Benutzernamens und Kennworts aufgefordert. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
+Sie können das Feature „Angemeldet bleiben“ für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis verfügen. Wenn Sie das Feature aktivieren, haben Benutzer die Möglichkeit, angemeldet zu bleiben, was dazu führt, dass die Sitzung auch nach dem Schließen des Browsers aktiv bleibt. Die Sitzung wird durch Festlegen eines [persistenten Cookies](cookie-definitions.md) verwaltet. Benutzer, die die Option „Angemeldet bleiben“ auswählen, können den Browser erneut öffnen, ohne zur Eingabe ihres Benutzernamens und Kennworts aufgefordert zu werden. Dieser Zugriff (das persistente Cookie) wird widerrufen, wenn sich der Benutzer abmeldet. 
 
 ![Beispiel für eine Seite zur Registrierung/Anmeldung mit dem Kontrollkästchen „Angemeldet bleiben“](./media/session-behavior/keep-me-signed-in.png)
 
@@ -194,7 +194,7 @@ Um das Kontrollkästchen KMSI zur Registrierungs-und Anmeldeseite hinzuzufügen,
 
 ### <a name="configure-a-relying-party-file"></a>Konfigurieren einer Datei der vertrauenden Seite
 
-Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird. Mithilfe des Parameters „keepAliveInDays“ können Sie konfigurieren, wie lange das Sitzungscookie für „Angemeldet bleiben“ erhalten bleiben soll. Wenn Sie den Wert beispielsweise auf 30 festlegen, bleibt das Sitzungscookie für „Angemeldet bleiben“ 30 Tage lang erhalten. Der zulässige Bereich für diesen Wert liegt zwischen 1 und 90 Tagen.
+Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird. Mithilfe des Parameters „keepAliveInDays“ können Sie konfigurieren, wie lange das Sitzungscookie für „Angemeldet bleiben“ erhalten bleiben soll. Wenn Sie den Wert beispielsweise auf 30 festlegen, bleibt das Sitzungscookie für „Angemeldet bleiben“ 30 Tage lang erhalten. Der zulässige Bereich für diesen Wert liegt zwischen 1 und 90 Tagen. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert.
 
 1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
 1. Fügen Sie dem Knoten `<RelyingParty>` einen untergeordneten Knoten `<UserJourneyBehaviors>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="User journey Id" />` angeordnet werden. Beispiel: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.

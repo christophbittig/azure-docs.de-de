@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: c8faefa8f1793275e4c93bf772e89ebf852b33d4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633777"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283445"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
 
@@ -95,7 +95,7 @@ Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zei
 
 ## <a name="categories-and-subcategories"></a>Kategorien und Unterkategorien
 
-Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](marketplace-categories-industries.md#categories).
+Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md#categories).
 
 ## <a name="legal-contracts"></a>Verträge
 

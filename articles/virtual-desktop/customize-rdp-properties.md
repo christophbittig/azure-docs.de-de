@@ -7,19 +7,19 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750261"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287922"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
 >[!IMPORTANT]
 >Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
 
-Durch Anpassen von RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z.B. Unterstützung mehrerer Monitore und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die deren Anforderungen entspricht. Sie können RDP-Eigenschaften in Azure Virtual Desktop anpassen, indem Sie entweder das Azure-Portal oder den Parameter *-CustomRdpProperty* im Cmdlet **Update-AzWvdHostPool** verwenden.
+Durch Anpassen von RDP-Eigenschaften (Remotedesktopprotokoll) eines Hostpools, z.B. Unterstützung mehrerer Monitore und Audioumleitung, können Sie für Benutzer eine optimale Bedienumgebung bereitstellen, die deren Anforderungen entspricht. Wenn Sie die Standardeigenschaften der RDP-Datei ändern möchten, können Sie die RDP-Eigenschaften in Azure Virtual Desktop anpassen, indem Sie entweder das Azure-Portal oder den Parameter *-CustomRdpProperty* im Cmdlet **Update-AzWvdHostPool** verwenden.
 
 Eine vollständige Liste der unterstützten Eigenschaften samt deren Standardwerten finden Sie unter [Unterstützte RDP-Dateieinstellungen](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
@@ -29,14 +29,15 @@ RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
 
 |RDP-Eigenschaft|Sowohl für Desktop als auch für RemoteApp|
 |---|---|
-|Mehrfachmonitor-Modus|Disabled|
+|Mehrfachmonitor-Modus|Aktiviert|
 |Aktivierte Laufwerksumleitungen|Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, Smartcards, Geräte und USB-Geräte-Store|
 |Remoteaudio-Modus|Lokale Wiedergabe|
 |VideoPlayback|Aktiviert|
 |EnableCredssp|Aktiviert|
 
 >[!NOTE]
->Der Modus mit mehreren Monitoren gilt nur für Desktop-App-Gruppen und wird für RemoteApp-App-Gruppen ignoriert.
+>- Der Modus mit mehreren Monitoren wird nur für Desktop-App-Gruppen aktiviert und für RemoteApp-App-Gruppen ignoriert.
+>- Alle Standardeigenschaften von RDP-Dateien werden im Azure-Portal verfügbar gemacht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -132,8 +133,8 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 Nachdem Sie die RDP-Eigenschaften eines bestimmten Hostpools angepasst haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um die Einstellungen als Teil einer Benutzersitzung zu testen. In den nächsten Vorgehensweisen erfahren Sie, wie Sie mit dem Client Ihrer Wahl eine Verbindung mit einer Sitzung herstellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-10.md)
-- [Herstellen einer Verbindung mit dem Webclient](connect-web.md)
-- [Herstellen einer Verbindung mit dem Android-Client](connect-android.md)
-- [Herstellen einer Verbindung mit dem macOS-Client](connect-macos.md)
-- [Herstellen einer Verbindung mit dem iOS-Client](connect-ios.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./user-documentation/connect-windows-7-10.md)
+- [Herstellen einer Verbindung mit dem Webclient](./user-documentation/connect-web.md)
+- [Herstellen einer Verbindung mit dem Android-Client](./user-documentation/connect-android.md)
+- [Herstellen einer Verbindung mit dem macOS-Client](./user-documentation/connect-macos.md)
+- [Herstellen einer Verbindung mit dem iOS-Client](./user-documentation/connect-ios.md)

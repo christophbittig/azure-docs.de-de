@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 35f4e76a437c5ea5926a95b199e433c6e5b1eb76
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: da6dfb018885ce55323e4a05e738501692c68a58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901257"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727974"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten im Azure-Portal
 
@@ -52,7 +52,7 @@ Für den Zugriff auf Warteschlangendaten im Azure-Portal über Ihr Azure AD-Kont
 
 Die Azure Resource Manager-Rolle **Leser** ermöglicht es Benutzern, Ressourcen im Speicherkonto anzuzeigen, ohne sie zu ändern. Sie bietet keine Leseberechtigungen für Daten in Azure Storage, sondern nur für Ressourcen zur Kontoverwaltung. Die Rolle **Leser** ist erforderlich, damit Benutzer im Azure-Portal zu Warteschlangen navigieren können.
 
-Informationen zu den integrierten Rollen, die den Zugriff auf Warteschlangendaten unterstützen, finden Sie unter [Azure-Rollen für Warteschlangen](assign-azure-role-data-access.md#azure-roles-for-queues).
+Informationen zu den integrierten Rollen, die den Zugriff auf Warteschlangendaten unterstützen, finden Sie unter [Autorisieren des Zugriffs auf Warteschlangen mithilfe von Azure Active Directory](authorize-access-azure-active-directory.md).
 
 Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integrierten Rollen gebotenen Berechtigungen unterstützen. Weitere Informationen zum Erstellen benutzerdefinierter Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) und [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../../role-based-access-control/role-definitions.md).
 
@@ -93,5 +93,5 @@ Warteschlangen werden nicht im Portal aufgeführt, wenn Sie keinen Zugriff auf d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../common/storage-auth-aad.md)
+- [Autorisieren des Zugriffs auf Daten in Azure Storage](../common/authorize-data-access.md)
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md)

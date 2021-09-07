@@ -1,14 +1,14 @@
 ---
 title: Verknüpfen der Partner-ID, um die Auswirkungen auf delegierte Ressourcen nachzuverfolgen
 description: Hier erfahren Sie, wie Sie Ihre Partner-ID zuordnen, um vom Partner erworbenes Guthaben (Partner Earned Credit, PEC) für Kundenressourcen zu erhalten, die Sie über Azure Lighthouse verwalten.
-ms.date: 02/12/2021
+ms.date: 07/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e21fc641f421580e6f00de8036f88632cc860060
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 72a31da9cf9927de00f005ce374488c0de9eba47
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075617"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288723"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Verknüpfen der Partner-ID, um die Auswirkungen auf delegierte Ressourcen nachzuverfolgen 
 
@@ -24,7 +24,7 @@ Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mand
 
 1. [Erstellen Sie ein Dienstprinzipal-Benutzerkonto](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) in Ihrem Verwaltungsmandanten. In diesem Beispiel verwenden wir den Namen *Provider Automation Account* für dieses Dienstprinzipalkonto.
 1. Verwenden Sie dieses Dienstprinzipalkonto, um in Ihrem Verwaltungsmandanten eine [Verknüpfung mit Ihrer zugehörigen MPN-ID](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) zu erstellen. Dies ist nur einmal erforderlich.
-1. Schließen Sie beim Durchführen des Onboardings eines Kunden mit [ARM-Vorlagen](onboard-customer.md) oder [Angeboten verwalteter Dienste](publish-managed-services-offers.md) eine Autorisierung ein, die „Provider Automation Account“ als Benutzer mit einer [integrierten Azure-Rolle, die für PEC berechtigt ist](/partner-center/azure-roles-perms-pec), enthält.
+1. Schließen Sie beim Durchführen des Onboardings eines Kunden mit [ARM-Vorlagen](onboard-customer.md) oder [Angeboten verwalteter Dienste](publish-managed-services-offers.md) mindestens eine Autorisierung ein, die „Provider Automation Account“ als Benutzer mit einer [integrierten Azure-Rolle, die für PEC berechtigt ist](/partner-center/azure-roles-perms-pec), enthält. Diese Rolle muss als dauerhafte Zuweisung und nicht als [berechtigte Just-In-Time-Autorisierung](create-eligible-authorizations.md) erteilt werden, damit PEC angewendet werden kann.
 
 Durch diese Schritte wird jeder von Ihnen verwaltete Kundenmandant mit Ihrer Partner-ID verknüpft. „Provider Automation Account“ muss sich nicht authentifizieren oder Aktionen im Kundenmandanten ausführen.
 
@@ -32,7 +32,7 @@ Durch diese Schritte wird jeder von Ihnen verwaltete Kundenmandant mit Ihrer Par
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>Hinzufügen Ihrer Partner-ID zu Kunden, für die bereits ein Onboarding durchgeführt wurde
 
-Wenn Sie bereits ein Onboarding für einen Kunden durchgeführt haben, möchten Sie unter Umständen keine weitere Bereitstellung vornehmen, um den Dienstprinzipal „Provider Automation Account“ hinzuzufügen. Stattdessen können Sie die **zugehörige MPN-ID** einem Benutzerkonto zuordnen, das bereits Zugriff auf Arbeit im Mandanten dieses Kunden hat. Achten Sie darauf, dass dem Konto eine [integrierte Azure-Rolle, die für PEC berechtigt ist](/partner-center/azure-roles-perms-pec), zugewiesen wurde.
+Wenn Sie bereits ein Onboarding für einen Kunden durchgeführt haben, möchten Sie unter Umständen keine weitere Bereitstellung vornehmen, um den Dienstprinzipal „Provider Automation Account“ hinzuzufügen. Stattdessen können Sie die **zugehörige MPN-ID** einem Benutzerkonto zuordnen, das bereits Zugriff auf Arbeit im Mandanten dieses Kunden hat. Achten Sie darauf, dass für das Konto eine [integrierte Azure-Rolle, die für PEC berechtigt ist](/partner-center/azure-roles-perms-pec), als dauerhafte Rollenzuweisung festgelegt wurde.
 
 Nachdem das Konto in Ihrem Verwaltungsmandanten [mit Ihrer zugehörigen MPN-ID verknüpft](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) wurde, können Sie die Anerkennung für Ihre Auswirkungen auf diesen Kunden nachverfolgen.
 

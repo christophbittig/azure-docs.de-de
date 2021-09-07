@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.reviewer: sngun
-ms.openlocfilehash: eacebb55cbf4d6254d6688a95dba8ae638838cf3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d603de7ae8f011ac2ae2ed96d61efb571bdcf64
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339044"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662355"
 ---
 # <a name="third-party-data-modeling-tools-for-azure-cosmos-db-graph-data"></a>Datenmodellierungstools von Drittanbietern für Azure Cosmos DB-Graphdaten
 
@@ -40,7 +40,7 @@ Dieses Tool ermöglicht die Datenmodellierung von Vertices/Edges und deren Eigen
 
 Die Animation in Abbildung 2 zeigt Reverse-Engineering und die Extraktion von Entitäten aus einem DBMS. Hackolade findet dann Beziehungen aus Fremdschlüsselbeziehungen, und anschließend folgen Änderungen.
 
-Beispiel-DDL für eine Quelle als SQL Server finden Sie [hier](https://github.com/Azure-Samples/northwind-ddl-sample/nw.sql).   
+Beispiel-DDL für eine Quelle als SQL Server finden Sie [hier](https://github.com/Azure-Samples/northwind-ddl-sample/blob/main/nw.sql).   
 
 
 :::image type="content" source="./media/graph-modeling-tools/hackolade-screenshot.jpg" alt-text="Graphdiagramm":::
@@ -58,4 +58,4 @@ Die folgende Abbildung zeigt das Reverse-Engineering von RDBMS und Hackolade in 
 -  [Dokumentation zu Hackolade](https://hackolade.com/help/CosmosDBGremlin.html)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Visualisieren der Daten](/graph-visualization)
+- [Visualisieren der Daten](/azure/cosmos-db/graph/graph-visualization-partners)

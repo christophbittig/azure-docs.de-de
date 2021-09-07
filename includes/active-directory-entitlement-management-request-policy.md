@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: active-directory
 author: msaburnley
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105582417"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112975240"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -210,7 +210,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 1. Klicken Sie auf **Weiter**.
 
-## <a name="add-requestor-information-preview-to-an-access-package"></a>Hinzufügen von Informationen zum Anforderer (Vorschau) zu einem Zugriffspaket
+## <a name="add-requestor-information-to-an-access-package"></a>Hinzufügen von Anfordererinformationen zu einem Zugriffspaket
 
 1. Wechseln Sie zur Registerkarte **Anfordererinformationen**, und klicken Sie auf die Unterregisterkarte **Fragen**.
  
@@ -218,7 +218,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
     ![Zugriffspaket – Richtlinie – Einstellung „Anfordererinformationen aktivieren“](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. Wenn Sie Ihre eigenen Lokalisierungsoptionen hinzufügen möchten, klicken Sie auf **Lokalisierung hinzufügen**.
+1. Wenn Sie die Frage und die Antwortoptionen lokalisieren möchten, klicken Sie auf **Lokalisierung hinzufügen**.
     1. Wenn Sie sich im Bereich **Lokalisierungen für Frage hinzufügen** befinden, wählen Sie den **Sprachcode** für die Sprache aus, in die Sie die Frage lokalisieren.
     1. Geben Sie die Frage in der von Ihnen konfigurierten Sprache das Feld **Lokalisierter Text** ein.
     1. Nachdem Sie alle benötigten Lokalisierungen hinzugefügt haben, klicken Sie auf **Speichern**.
@@ -229,10 +229,13 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
  
     ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
-1. Wenn Sie „Multiple Choice“ auswählen, klicken Sie auf die Schaltfläche **Anzeigen und bearbeiten**, um die Antwortoptionen zu konfigurieren.
-    1. Nachdem Sie „Anzeigen und bearbeiten“ ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
+1. Wenn Sie „Mehrfachauswahl“ auswählen, klicken Sie auf die Schaltfläche **Edit and localize** (Bearbeiten und lokalisieren), um die Antwortoptionen zu konfigurieren.
+    1. Nachdem Sie „Edit and localize“ (Bearbeiten und lokalisieren) ausgewählt haben, wird der Bereich **Edit/localize question** (Frage bearbeiten/lokalisieren) angezeigt.
     1. Geben Sie die Antwortoptionen in die Felder **Antwortwerte** ein, die Sie dem Anforderer zur Verfügung stellen möchten, wenn dieser die Frage beantwortet.
-    1. Geben Sie so viele Antworten ein, wie Sie benötigen, und klicken Sie dann auf **Speichern**.
+    1. Geben Sie so viele Antworten ein, wie Sie benötigen.
+    1. Wenn Sie Ihre eigene Lokalisierung für die Mehrfachauswahloptionen hinzufügen möchten, wählen Sie für die Sprache, in der Sie eine bestimmte Option lokalisieren möchten, den **optionalen Sprachcode** aus.
+    1. Geben Sie die Option in der von Ihnen konfigurierten Sprache im Feld „Lokalisierter Text“ ein.
+    1. Wenn Sie alle Lokalisierungen hinzugefügt haben, die für die einzelnen Mehrfachauswahloption erforderlich sind, klicken Sie auf **Speichern**.
     
     ![Zugriffspaket – Richtlinie – Multiple Choice-Optionen eingeben](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   

@@ -3,12 +3,12 @@ title: Unterstützte Inhaltsformate
 description: Erfahren Sie mehr über die von Azure Container Registry unterstützten Inhaltsformate, einschließlich Docker-kompatibler Containerimages, Helm-Diagramme, OCI-Images und OCI-Artefakte.
 ms.topic: article
 ms.date: 03/02/2021
-ms.openlocfilehash: 218d98f3f16e8d0ca76a24692afbb2b69606564b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1203bc8cbebfd59ef28f03d19e939b73d707a3f3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223063"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438880"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>In Azure Container Registry unterstützte Inhaltsformate
 
@@ -28,7 +28,10 @@ Azure Container Registry unterstützt Images, die der [Spezifikation für das Im
 
 ## <a name="oci-artifacts"></a>OCI-Artefakte
 
-Azure Container Registry unterstützt die [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec) (OCI-Verteilungsspezifikation). Hierbei handelt es sich um eine anbieterneutrale, cloudunabhängige Spezifikation zum Speichern, Freigeben, Schützen und Bereitstellen von Containerimages und anderen Inhaltstypen (Artefakten). Die Spezifikation ermöglicht einer Registrierung das Speichern eines breiten Bereichs von Artefakten zusätzlich zu den Containerimages. Sie verwenden Tools, die für das Artefakt geeignet sind, um Push- und Pullvorgänge für Artefakte durchzuführen. Lesen Sie beispielsweise den Artikel [Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung](container-registry-oci-artifacts.md).
+Azure Container Registry unterstützt die [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec) (OCI-Verteilungsspezifikation). Hierbei handelt es sich um eine anbieterneutrale, cloudunabhängige Spezifikation zum Speichern, Freigeben, Schützen und Bereitstellen von Containerimages und anderen Inhaltstypen (Artefakten). Die Spezifikation ermöglicht einer Registrierung das Speichern eines breiten Bereichs von Artefakten zusätzlich zu den Containerimages. Sie verwenden Tools, die für das Artefakt geeignet sind, um Push- und Pullvorgänge für Artefakte durchzuführen. Beispiele finden Sie hier:
+
+* [Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung](container-registry-oci-artifacts.md)
+* [Pushen und Pullen von Helm-Charts in Azure Container Registry](container-registry-helm-repos.md)
 
 Weitere Informationen zu OCI-Artefakten finden Sie im Repository [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) (OCI-Registrierung als Speicher (ORAS)) und im Repository [OCI Artifacts](https://github.com/opencontainers/artifacts) (OCI-Artefakte) auf GitHub.
 

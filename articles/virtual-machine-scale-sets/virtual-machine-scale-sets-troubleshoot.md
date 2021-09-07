@@ -9,21 +9,21 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: cc1637524acd484536cb79c68582e961ab3a5f59
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 10bbcae3437f150ff8364abff2a500bdd39936e1
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108732777"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286523"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
-**Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
+**Problem:** Sie haben in Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 Folgende Punkte sollten berücksichtigt werden:
 
 * Über wie viele vCPUs verfügt jeder virtuelle Computer, und laden Sie jede vCPU?
-  Das vorstehende Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das eine einzelne vCPU lädt. Wenn Sie einen größeren virtuellen Computer als eine Größe mit einer vCPU wie Standard_A1 oder D1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der vCPUs Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  Das vorstehende Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das eine einzelne vCPU lädt. Wenn Sie einen virtuellen Computer verwenden, der größer ist als ein virtueller Computer mit einer vCPU (etwa Standard_A1 oder D1), müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der vCPUs Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Wie viele virtuelle Computer sind in der VM-Skalierungsgruppe enthalten? Wird auf jedem virtuellen Computer eine Last ausgeführt?
   
     Das horizontale Hochskalieren erfolgt nur, wenn die durchschnittliche CPU auf **allen** virtuellen Computer in einer Skalierungsgruppe den Schwellenwert in dem Zeitintervall überschreitet, das in den Regeln für die automatische Skalierung festgelegt ist.
@@ -40,7 +40,7 @@ Folgende Punkte sollten berücksichtigt werden:
     Fehler können ganz leicht passieren. Beginnen Sie daher mit einer Vorlage wie der obigen, die sich bewährt hat, und nehmen Sie nach und nach kleine Änderungen vor. 
 * Können Sie manuell ab- und aufskalieren?
   
-    Versuchen Sie, die VM-Skalierungsgruppenressource mit einer anderen Kapazitätseinstellung erneut bereitzustellen, um die Anzahl der virtuellen Computer manuell zu ändern. Hier finden Sie eine Beispielvorlage dafür: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing. Sie müssen die Vorlage gegebenenfalls bearbeiten, damit sie die gleiche Computergröße wie die Skalierungsgruppe verwendet. Wenn Sie die Anzahl der virtuellen Computer manuell ändern können, wissen Sie, dass das Problem nur im Zusammenhang mit der automatischen Skalierung besteht.
+    Versuchen Sie, die VM-Skalierungsgruppenressource mit einer anderen Kapazitätseinstellung erneut bereitzustellen, um die Anzahl der virtuellen Computer manuell zu ändern. Hier finden Sie eine Beispielvorlage dafür: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-scale-existing. Sie müssen die Vorlage gegebenenfalls bearbeiten, damit sie die gleiche Computergröße wie die Skalierungsgruppe verwendet. Wenn Sie die Anzahl der virtuellen Computer manuell ändern können, wissen Sie, dass das Problem nur im Zusammenhang mit der automatischen Skalierung besteht.
 * Überprüfen Sie im [Azure-Ressourcen-Explorer](https://resources.azure.com/)
   
     Der Azure-Ressourcen-Explorer ist ein unverzichtbares Tool für die Problembehandlung, das Aufschluss über den Zustand Ihrer Azure Resource Manager-Ressourcen gibt. Klicken Sie auf Ihr Abonnement, und sehen Sie sich die Ressourcengruppe an, für die Sie die Problembehandlung ausführen. Sehen Sie unter dem Compute-Ressourcenanbieter die von Ihnen erstellte VM-Skalierungsgruppe an, und überprüfen Sie die Instanzansicht, in der der Zustand einer Bereitstellung angezeigt wird. Überprüfen Sie außerdem die Instanzansicht der virtuellen Computer in der VM-Skalierungsgruppe. Wechseln Sie anschließend zum Microsoft.Insights-Ressourcenanbieter, und überprüfen Sie die Regeln für die automatische Skalierung auf ihre Richtigkeit.

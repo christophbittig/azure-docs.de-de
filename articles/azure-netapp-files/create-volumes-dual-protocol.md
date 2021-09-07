@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet.
+title: Erstellen eines Volumes mit Dual-Protokoll für Azure NetApp Files| Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein Dual-Protokoll (NFSv3 und SMB oder NFSv4.1 und SMB) mit Unterstützung der LDAP-Benutzerzuordnung verwendet.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 92ba9ea8b63671112b6f9e16a984b50439c9d45d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 33e01466a3e0629af9a691e33eb9161bf8098611
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072035"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349683"
 ---
-# <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
+# <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder dualem Protokoll. In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein duales Protokoll aus NFSv3 und SMB mit Unterstützung der LDAP-Benutzerzuordnung verwendet. 
+Azure NetApp Files unterstützt das Erstellen von Volumes unter Verwendung von NFS (NFSv3 oder NFSv4.1), SMB3 oder einem Dual-Protokoll (NFSv3 und SMB oder NFSv4.1 und SMB). In diesem Artikel wird beschrieben, wie Sie ein Volume erstellen, das ein Dual-Protokoll mit Unterstützung der LDAP-Benutzerzuordnung verwendet. 
 
 Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md). Informationen zum Erstellen von SMB-Volumes finden Sie unter [Erstellen eines SMB-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes-smb.md). 
 
@@ -43,7 +43,7 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 * Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
 * Volumes mit zwei Protokollen unterstützen sowohl Active Directory Domain Services (AD DS) als auch Azure Active Directory Domain Services (AAD DS). 
 * Volumes mit zwei Protokollen unterstützen die Verwendung von LDAP über TLS mit AAD DS nicht. Weitere Informationen finden Sie unter [Überlegungen zu LDAP über TLS](configure-ldap-over-tls.md#considerations).
-* Die von einem Doppelprotokollvolume verwendete NFS-Version ist NFSv3. Dabei gelten die folgenden Bedingungen:
+* Für ein Volume mit Dual-Protokoll kann als NFS-Version entweder NFSv3 oder NFSv4.1 verwendet werden. Es gelten die folgenden Bedingungen:
     * Das duale Protokoll unterstützt die erweiterten Attribute `set/get` von Windows-ACLs von NFS-Clients nicht.
     * NFS-Clients können keine Berechtigungen für den NTFS-Sicherheitsstil ändern, und Windows-Clients können keine Berechtigungen für Doppelprotokollvolumes im UNIX-Format ändern.   
 
@@ -51,7 +51,7 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
         
         | Sicherheitsstil    | Clients, die Berechtigungen ändern können   | Berechtigungen, die von Clients verwendet werden können  | Resultierender effektiver Sicherheitsstil    | Clients, die auf Dateien zugreifen können     |
         |-  |-  |-  |-  |-  |
-        | `Unix`    | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
+        | `Unix`    | NFS   | NFSv3- oder NFSv4.1-Modusbits    | UNIX  | NFS und Windows   |
         | `Ntfs`    | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
 
     * Die Richtung, in der die Namenszuordnung erfolgt (Windows zu UNIX oder UNIX zu Windows), hängt davon ab, welches Protokoll verwendet wird und welcher Sicherheitsstil auf ein Volume angewendet wird. Ein Windows-Client erfordert immer eine Windows-zu-UNIX-Namenszuordnung. Ob ein Benutzer zur Überprüfung von Berechtigungen zugewiesen ist, hängt vom Sicherheitsstil ab. Umgekehrt muss ein NFS-Client nur dann eine UNIX-zu-Windows-Namenszuordnung verwenden, wenn der NTFS-Sicherheitsstil verwendet wird. 
@@ -68,7 +68,6 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 * Wenn Sie über große Topologien verfügen und den `Unix`-Sicherheitsstil mit einem Doppelprotokollvolume oder LDAP mit erweiterten Gruppen verwenden, kann Azure NetApp Files möglicherweise nicht auf alle Server in Ihren Topologien zugreifen.  Wenn diese Situation eintritt, wenden Sie sich wegen Unterstützung an Ihr Kontoteam.  <!-- NFSAAS-15123 --> 
 * Sie benötigen zum Erstellen eines Volumes mit dualem Protokoll kein Serverzertifikat von einer Stammzertifizierungsstelle. Dies ist nur erforderlich, wenn LDAP über TLS aktiviert ist.
 
-
 ## <a name="create-a-dual-protocol-volume"></a>Erstellen eines Dual-Protokoll-Volumes
 
 1.  Klicken Sie auf dem Blatt „Kapazitätspools“ auf das Blatt **Volumes**. Klicken Sie auf **+ Volume hinzufügen**, um ein Volume zu erstellen. 
@@ -79,7 +78,7 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.   
+        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen. Er darf nur Buchstaben, Ziffern, Unterstriche („_“), und Bindestriche („-“) enthalten.  
 
         Sie können `default` oder `bin` nicht als Volumename verwenden.
 
@@ -117,8 +116,10 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 
         ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
-    * Wählen Sie **Dual-protocol (NFSv3 and SMB)** (Duales Protokoll (NFSv3 und SMB)) als Protokolltyp für das Volume aus.   
+3. Klicken Sie auf die Registerkarte **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
+    * Wählen Sie **Dual-Protokoll** als Protokolltyp für das Volume aus.   
+
+    * Geben Sie die zu verwendende **Active Directory**-Verbindung an.
 
     * Geben Sie einen eindeutigen **Volumepfad** an. Dieser Pfad wird verwendet, wenn Sie Einbindungsziele erstellen. Für den Pfad gelten die folgenden Anforderungen:  
 
@@ -126,6 +127,24 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
         - Er muss mit einem Buchstaben beginnen.
         - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
         - Er darf höchstens 80 Zeichen lang sein.
+
+    * Geben Sie die zu verwendenden **Versionen** für das Dual-Protokoll an: **NFSv4.1 und SMB** oder **NFSv3 und SMB**.
+
+        Das Feature zur Verwendung des Dual-Protokolls **NFSv4.1 und SMB** befindet sich derzeit in der Vorschauphase. Wenn Sie dieses Feature zum ersten Mal verwenden, müssen Sie es registrieren:  
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFDualProtocolNFSv4AndSMB
+        ```
+
+        Überprüfen Sie den Status der Funktionsregistrierung: 
+
+        > [!NOTE]
+        > Der **RegistrationState** kann bis zu 60 Minuten lang den Wert `Registering` aufweisen, bevor er sich in `Registered` ändert. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFDualProtocolNFSv4AndSMB
+        ```
+        Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
     * Geben Sie den zu verwendenden **Sicherheitsstil** an: NTFS (Standard) oder UNIX.
 
@@ -150,6 +169,13 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
         
         Sie können auch die [Azure CLI-Befehle](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen.  
 
+    * Wenn Sie NFSv4.1 und SMB als Versionen für das Volume mit Dual-Protokoll ausgewählt haben, geben Sie an, ob Sie die **Kerberos**-Verschlüsselung für das Volume aktivieren möchten.
+
+        Für Kerberos sind zusätzliche Konfigurationen erforderlich. Befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).
+
+    *  Passen Sie nach Bedarf die **Unix-Berechtigungen** an, um Änderungsberechtigungen für den Bereitstellungspfad anzugeben. Die Einstellung gilt nicht für die Dateien unter dem Bereitstellungspfad. Die Standardeinstellung ist `0770`. Diese Standardeinstellung gewährt dem Besitzer und der Gruppe Lese-, Schreib- und Ausführungsberechtigungen, anderen Benutzern werden jedoch keine Berechtigungen gewährt.     
+        Für das Festlegen von **Unix-Berechtigungen** gelten Registrierungsanforderungen und -überlegungen. Befolgen Sie die Anweisungen unter [Konfigurieren von Unix-Berechtigungen und des „Besitz ändern“-Modus](configure-unix-permissions-change-ownership-mode.md).  
+
     * Optional können Sie [die Exportrichtlinie für das Volume konfigurieren](azure-netapp-files-configure-export-policy.md).
 
     ![Angeben eines dualen Protokolls](../media/azure-netapp-files/create-volume-protocol-dual.png)
@@ -165,7 +191,8 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 Mit der Option **Lokale NFS-Benutzer mit LDAP zulassen** für Active Directory-Verbindungen können lokale NFS-Clientbenutzer, die auf dem Windows-LDAP-Server nicht vorhanden sind, auf ein Volume mit zwei Protokollen zugreifen, für das LDAP mit aktivierten erweiterten Gruppen aktiviert ist. 
 
 > [!NOTE] 
-> Bevor Sie diese Option aktivieren, sollten Sie sich diese [Überlegungen](#considerations) ansehen. 
+> Bevor Sie diese Option aktivieren, sollten Sie sich diese [Überlegungen](#considerations) ansehen.   
+> Die Option **Lokale NFS-Benutzer mit LDAP zulassen** ist Teil des Features **LDAP mit erweiterten Gruppen** und erfordert eine Registrierung. Weitere Informationen finden Sie unter [Konfigurieren von ADDS LDAP mit erweiterten Gruppen für NFS-Volume-Zugriff](configure-ldap-extended-groups.md) .
 
 1. Klicken Sie auf **Active Directory-Verbindungen**.  Klicken Sie in einer vorhandenen Active Directory-Verbindung auf das Kontextmenü (die drei Punkte `…`), und wählen Sie **Bearbeiten** aus.  
 
@@ -187,6 +214,10 @@ Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlege
     `objectClass: posixGroup`, `gidNumber: 555`
 * Alle Benutzer und Gruppen müssen über eindeutige Werte für `uidNumber` und `gidNumber` verfügen. 
 
+Azure Active Directory Domain Services (AADDS) ermöglicht es Ihnen nicht, POSIX-Attribute für Benutzer und Gruppen zu ändern, die in der Organisationseinheit AADDC-Benutzer erstellt wurden. Zur Umgehung können Sie eine benutzerdefinierte Organisationseinheit einrichten und Benutzer und Gruppen in dieser benutzerdefinierten Organisationseinheit erstellen.
+
+Wenn Sie die Benutzer und Gruppen in Ihrem Azure AD-Mandanten mit Benutzern und Gruppen in der Organisationseinheit für AADDC-Benutzer synchronisieren, können Sie Benutzer und Gruppen nicht in eine benutzerdefinierte Organisationseinheit verschieben. Benutzer und Gruppen, die in der benutzerdefinierten Organisationseinheit erstellt wurden, werden nicht mit Ihrem AD-Mandanten synchronisiert. Weitere Informationen finden Sie unter [Überlegungen und Einschränkungen zu benutzerdefinierten Organisationseinheiten](../active-directory-domain-services/create-ou.md#custom-ou-considerations-and-limitations).
+
 ### <a name="access-active-directory-attribute-editor"></a>Zugreifen auf den Active Directory-Attribut-Editor 
 
 Auf einem Windows-System können Sie wie folgt auf den Active Directory-Attribut-Editor zugreifen:  
@@ -204,7 +235,10 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure N
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md)
 * [Konfigurieren eines NFS-Clients für Azure NetApp Files](configure-nfs-clients.md)
+* [Konfigurieren von Unix-Berechtigungen und des „Besitz ändern“-Modus](configure-unix-permissions-change-ownership-mode.md) 
 * [Konfigurieren von ADDS LDAP über TLS für Azure NetApp Files](configure-ldap-over-tls.md)
+* [Konfigurieren Sie ADDS LDAP mit erweiterten Gruppen für den NFS-Volume-Zugriff](configure-ldap-extended-groups.md)
 * [Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md)
 * [Behandeln von Problemen mit LDAP-Volumes](troubleshoot-ldap-volumes.md)

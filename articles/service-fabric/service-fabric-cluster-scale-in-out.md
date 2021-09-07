@@ -4,12 +4,12 @@ description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert horizonta
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bf54e6efe6de64bc02a9ba43dfae3f91c0b4ec7b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677420"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294137"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 
@@ -65,7 +65,7 @@ Beim Aufskalieren werden der Skalierungsgruppe mehr VM-Instanzen hinzugefügt. D
 > 
 
 ### <a name="add-vms-using-a-template"></a>Hinzufügen von VMs mithilfe einer Vorlage
-Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in jedem Knotentyp zu ändern. 
+Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-scale-existing), um die Anzahl der VMs in jedem Knotentyp zu ändern. 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>Hinzufügen von virtuellen Computern mithilfe von PowerShell- oder CLI-Befehlen
 Der folgende Code ruft eine Skalierungsgruppe anhand ihres Namens ab und erhöht die **Kapazität** der Skalierungsgruppe um 1:

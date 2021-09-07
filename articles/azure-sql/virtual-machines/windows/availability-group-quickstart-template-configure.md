@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: ab57e66ff37fb31a91a1949896a4e7736669d6c6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0f9d98eb2a4fe09728a890af59b4c54afbed3737
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078921"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291653"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,8 +29,8 @@ In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verf�
 
    | Vorlage | BESCHREIBUNG |
    | --- | --- |
-   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Erstellt den Windows-Failovercluster und bindet die SQL Server-VMs in diesen Cluster ein. |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Erstellt den Verfügbarkeitsgruppenlistener und konfiguriert den internen Lastenausgleich. Diese Vorlage kann nur verwendet werden, wenn der Windows-Failovercluster mit der Vorlage **101-sql-vm-ag-setup** erstellt wurde. |
+   | [sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup) | Erstellt den Windows-Failovercluster und bindet die SQL Server-VMs in diesen Cluster ein. |
+   | [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup) | Erstellt den Verfügbarkeitsgruppenlistener und konfiguriert den internen Lastenausgleich. Diese Vorlage kann nur verwendet werden, wenn der Windows-Failovercluster mit der Vorlage **101-sql-vm-ag-setup** erstellt wurde. |
    | &nbsp; | &nbsp; |
 
 Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgeführt werden – etwa die Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Dieser Artikel enthält die Abfolge der automatisierten und manuellen Schritte.
@@ -60,7 +60,7 @@ Nachdem Sie Ihre SQL Server-VMs bei der Erweiterung für den SQL-IaaS-Agent regi
 
 Beim Hinzufügen der SQL Server-VMs zu *SqlVirtualMachineGroups* wird ein Bootstrapvorgang für den Windows-Failoverclusterdienst ausgeführt, um den Cluster zu erstellen und die SQL Server-VMs in den Cluster einzubinden. Dieser Schritt wird mit der Schnellstartvorlage  **101-sql-vm-ag-setup** automatisiert. Sie können sie mithilfe der folgenden Schritte implementieren:
 
-1. Wechseln Sie zur Schnellstartvorlage [**101-sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup). Wählen Sie dann **Bereitstellung in Azure** aus, um die Schnellstartvorlage im Azure-Portal zu öffnen.
+1. Navigieren Sie zur Schnellstartvorlage [**sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup). Wählen Sie dann **Bereitstellung in Azure** aus, um die Schnellstartvorlage im Azure-Portal zu öffnen.
 1. Füllen Sie die Pflichtfelder aus, um die Metadaten für den Windows-Failovercluster zu konfigurieren. Sie können die optionalen Felder leer lassen.
 
    Die folgende Tabelle enthält die für die Vorlage erforderlichen Werte: 
@@ -90,7 +90,7 @@ Beim Hinzufügen der SQL Server-VMs zu *SqlVirtualMachineGroups* wird ein Bootst
 
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe erzwingt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
+Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe mit sich bringt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
 
 Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
@@ -161,7 +161,7 @@ Erstellen Sie den Verfügbarkeitsgruppenlistener, und konfigurieren Sie den inte
    
    
 Gehen Sie folgendermaßen vor, um den internen Lastenausgleich zu konfigurieren und den Verfügbarkeitsgruppenlistener zu erstellen:
-1. Navigieren Sie zur Schnellstartvorlage [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup), und wählen Sie **Bereitstellung in Azure**  aus, um die Schnellstartvorlage im Azure-Portal zu starten.
+1. Navigieren Sie zur Schnellstartvorlage [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup), und wählen Sie **Deploy to Azure** (In Azure bereitstellen) aus, um die Schnellstartvorlage im Azure-Portal zu starten.
 1. Füllen Sie die Pflichtfelder aus, um den internen Lastenausgleich zu konfigurieren, und erstellen Sie den Verfügbarkeitsgruppenlistener. Sie können die optionalen Felder leer lassen. 
 
    Die folgende Tabelle enthält die für die Vorlage erforderlichen Werte: 

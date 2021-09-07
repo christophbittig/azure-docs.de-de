@@ -4,28 +4,23 @@ description: Erfahren Sie, wie Sie eine App Service-Umgebung erstellen.
 author: ccompy
 ms.assetid: 7690d846-8da3-4692-8647-0bf5adfd862a
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 021c85037ea105ff7d8ff642e3a9f28ed3ebe991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45d2c817f579cd183337a42e252dd3e606eafefa
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594108"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433200"
 ---
 # <a name="create-an-app-service-environment"></a>Erstellen einer App Service-Umgebung
-
 > [!NOTE]
-> In diesem Artikel wird die App Service-Umgebung v3 (Vorschau) behandelt.
+> In diesem Artikel wird die App Service-Umgebung V3 beschrieben, die mit App Service-Plänen vom Typ „Isoliert V2“ verwendet wird.
 > 
 
-Die [App Service-Umgebung (ASE)][Intro] ist eine Bereitstellung von App Service für einen Mandanten, die in Ihre Azure Virtual Network-Instanz (VNET) eingeschleust wird.  ASEv3 unterstützt nur die Bereitstellung von Apps über eine private Adresse in Ihrem VNET. Wenn während der Vorschau eine ASEv3-Instanz erstellt wird, werden diese Ressourcen dem Abonnement hinzugefügt.
 
-- App Service-Umgebung
-- Privater Endpunkt
-
-Für eine Bereitstellung einer ASE müssen zwei Subnetze verwendet werden.  Ein Subnetz enthält den privaten Endpunkt.  Dieses Subnetz kann für andere Zwecke wie z. B. virtuelle Computer verwendet werden.  Das andere Subnetz wird für ausgehende Aufrufe aus der ASE verwendet.  Dieses Subnetz kann für nichts anderes als die ASE verwendet werden. 
+Die [App Service-Umgebung (ASE)][Intro] ist eine Bereitstellung von App Service für einen Mandanten, die in Ihre Azure Virtual Network-Instanz (VNET) eingeschleust wird. Die Bereitstellung einer ASE erfordert die Verwendung eines einzelnen Subnetzes. Dieses Subnetz kann für nichts anderes als die ASE verwendet werden. 
 
 ## <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen
 
@@ -39,38 +34,24 @@ Nachdem die ASE erstellt wurde, können Sie Folgendes nicht mehr ändern:
 - Subnetzgröße
 - Name Ihrer ASE
 
-Das ausgehende Subnetz muss groß genug sein, um die maximale Größe zu speichern, die Sie für Ihre ASE skalieren. Wählen Sie ein ausreichend großes Subnetz zur Unterstützung ihrer maximalen Skalierungsanforderungen aus, da es nach der Erstellung nicht mehr geändert werden kann. Die empfohlene Größe ist /24 mit 256 Adressen.
-
-Nachdem die ASE erstellt wurde, können Sie ihr Apps hinzufügen. Wenn Ihre ASEv3 keine App Service-Pläne enthält, wird so abgerechnet, als hätten Sie eine Instanz eines I1v2-App Service-Plans in Ihrer ASE.  
-
-Die ASEv3 wird nur in ausgewählten Regionen angeboten. Weitere Regionen werden während des Verlaufs der Vorschau zur allgemeinen Verfügbarkeit hinzugefügt. 
+Das Subnetz muss groß genug sein, um die maximale Größe abdecken zu können, auf die Sie Ihre ASE skalieren. Wählen Sie ein ausreichend großes Subnetz zur Unterstützung ihrer maximalen Skalierungsanforderungen aus, da es nach der Erstellung nicht mehr geändert werden kann. Die empfohlene Größe ist /24 mit 256 Adressen.
 
 ## <a name="creating-an-ase-in-the-portal"></a>Erstellen einer ASE im Portal
 
-1. Um eine ASEv3 zu erstellen, suchen Sie im Marketplace nach **App Service-Umgebung (Vorschau)** .  
-2. Grundlegendes:  Wählen Sie das Abonnement aus, wählen Sie die Ressourcengruppe aus, bzw. erstellen Sie sie, und geben Sie den Namen Ihrer ASE ein.  Der ASE-Name wird auch für das Domänensuffix Ihrer ASE verwendet.  Wenn Ihr ASE-Name *contoso* ist, lautet das Domänensuffix *contoso.appserviceenvironment.net*.  Dieser Name wird automatisch in Ihrer privaten Azure DNS-Zone festgelegt, die von dem VNET verwendet wird, in dem die ASE bereitgestellt wird. 
+1. Suchen Sie zum Erstellen einer ASE im Marketplace nach **App Service-Umgebung v3**.  
+2. Grundlegendes:  Wählen Sie das Abonnement aus, wählen Sie die Ressourcengruppe aus, bzw. erstellen Sie sie, und geben Sie den Namen Ihrer ASE ein.  Wählen Sie den Typ der virtuellen IP-Adresse aus. Wenn Sie „Intern“ auswählen, wird als ASE-Adresse für eingehenden Datenverkehr eine Adresse in Ihrem ASE-Subnetz verwendet. Wenn Sie „Extern“ auswählen, wird als ASE-Adresse für eingehenden Datenverkehr eine öffentliche Adresse mit Internetzugriff verwendet. Der ASE-Name wird auch für das Domänensuffix Ihrer ASE verwendet. Wenn Ihr ASE-Name *contoso* lautet und Sie über eine ASE mit interner VIP verfügen, lautet das Domänensuffix *contoso.appserviceenvironment.net*. Wenn Ihr ASE-Name *contoso* lautet und Sie über externe VIP verfügen, lautet das Domänensuffix *contoso.p.azurewebsites.net*. 
+![App Service-Umgebung: Registerkarte „Grundlagen“ zur Erstellung](./media/creation/creation-basics.png)
+3. Hosting: Wählen Sie für die Hostgruppenbereitstellung entweder *Aktiviert* oder *Deaktiviert* aus. „Hostgruppenbereitstellung“ wird verwendet, um dedizierte Hardware auszuwählen. Wenn Sie „Aktiviert“ auswählen, wird Ihre ASE auf dedizierter Hardware bereitgestellt. Bei der Bereitstellung auf dedizierter Hardware wird Ihnen während der ASE-Erstellung der gesamte dedizierte Host und anschließend ein reduzierter Preis für Ihre App Service-Planinstanzen in Rechnung gestellt. 
+![App Service-Umgebung: Hostingauswahl](./media/creation/creation-hosting.png)
+4. Netzwerk: Hier können Sie Ihr virtuelles Netzwerk und Ihr Subnetz auswählen oder erstellen. Wenn Sie eine ASE mit interner VIP erstellen, können Sie Azure DNS Private Zones konfigurieren, um Ihr Domänensuffix auf Ihre ASE zu verweisen. Details zur manuellen DNS-Konfiguration finden Sie im DNS-Abschnitt unter [Verwenden einer App Service-Umgebung][UsingASE].
+![App Service-Umgebung: Netzwerkauswahl](./media/creation/creation-networking.png)
+5. Überprüfen und erstellen: Überprüfen Sie, ob die Konfiguration korrekt ist, und wählen Sie „Erstellen“ aus. Die Erstellung Ihrer ASE kann bis zu knapp zwei Stunden dauern. 
 
-    ![App Service-Umgebung: Registerkarte „Grundlagen“ zur Erstellung](./media/creation/creation-basics.png)
-
-3. Hosting: Wählen Sie „Betriebssystemeinstellung“ und „Hostgruppenbereitstellung“ aus. „Betriebssystemeinstellung“ gibt das Betriebssystem an, das Sie anfänglich für Ihre Apps in dieser ASE verwenden werden. Sie können nach der ASE-Erstellung Apps des anderen Betriebssystems hinzufügen. „Hostgruppenbereitstellung“ wird verwendet, um dedizierte Hardware auszuwählen. Mit ASEv3 können Sie die Option „Aktiviert“ auswählen und dann zu dedizierter Hardware gelangen. Ihnen wird der gesamte dedizierte Host mit der ASE-Erstellung und dann ein reduzierter Preis für Ihre App Service-Plan-Instanzen in Rechnung gestellt. 
-
-    ![App Service-Umgebung: Hostingauswahl](./media/creation/creation-hosting.png)
-
-4. Netzwerk:  Wählen oder erstellen Sie Ihr VNET, wählen oder erstellen Sie Ihr eingehendes Subnetz, wählen oder erstellen Sie Ihr ausgehendes Subnetz. Jedes für den Ausgang verwendete Subnetz muss leer sein und an Microsoft.Web/hostingEnvironments delegiert werden. Wenn Sie das Subnetz über das Portal erstellen, wird das Subnetz automatisch für Sie delegiert.
-
-    ![App Service-Umgebung: Netzwerkauswahl](./media/creation/creation-networking.png)
-
-5. Überprüfen und erstellen: Überprüfen Sie, ob die Konfiguration korrekt ist, und wählen Sie „Erstellen“ aus. Die Erstellung Ihrer ASE dauert ungefähr eine Stunde. 
-
-    ![App Service-Umgebung: Überprüfen und erstellen](./media/creation/creation-review.png)
-
-Nachdem die Erstellung Ihrer ASE abgeschlossen ist, können Sie sie als Speicherort auswählen, wenn Sie Ihre Apps erstellen. Weitere Informationen zum Erstellen von Apps in der neuen ASE finden Sie unter [Verwenden einer App Service-Umgebung][UsingASE].
-
-## <a name="os-preference"></a>Betriebssystemeinstellung
-In einer ASE können Sie über Windows-Apps, Linux-Apps oder beides verfügen. In ASEv2 wird für das bei der Erstellung ausgewählte anfänglich bevorzugte Betriebssystem die Hochverfügbarkeitsinfrastruktur hinzugefügt. Wenn Sie Apps des anderen Betriebssystems hinzufügen möchten, erstellen Sie die Apps einfach wie gewohnt, und wählen Sie das gewünschte Betriebssystem aus. In ASEv3 hat dies keine Auswirkung auf das Back-End-Verhalten.  
+Nachdem die Erstellung Ihrer ASE abgeschlossen ist, können Sie sie als Speicherort auswählen, wenn Sie Ihre Apps erstellen. Weitere Informationen zum Erstellen von Apps in Ihrer ASE sowie zum Verwalten Ihrer ASE finden Sie unter [Verwenden einer App Service-Umgebung][UsingASE].
 
 ## <a name="dedicated-hosts"></a>Dedizierte Hosts
-Die ASE wird normalerweise auf VMs bereitgestellt, die auf einem mehrinstanzfähigen Hypervisor bereitgestellt werden. Wenn Sie auf dedizierten Systemen (Hardware eingeschlossen) bereitstellen müssen, können Sie Ihre ASE auf dedizierten Hosts bereitstellen. In der anfänglichen ASEv3-Vorschau sind dedizierte Hosts in einem Paar enthalten. Jeder dedizierte Host befindet sich in einer separaten Verfügbarkeitszone, wenn die Region dies zulässt. Dedizierte hostbasierte ASE-Bereitstellungen werden anders berechnet als normal. Es fällt eine Gebühr für den dedizierten Host und dann für jede App Service-Plan-Instanz eine weitere Gebühr an.  
+
+Die ASE wird normalerweise auf VMs bereitgestellt, die auf einem mehrinstanzfähigen Hypervisor bereitgestellt werden. Wenn Sie auf dedizierten Systemen (Hardware eingeschlossen) bereitstellen müssen, können Sie Ihre ASE auf dedizierten Hosts bereitstellen. Dedizierte Hosts werden paarweise bereitgestellt, um Redundanz zu gewährleisten. Dedizierte hostbasierte ASE-Bereitstellungen werden anders berechnet als normal. Es fällt eine Gebühr für den dedizierten Host und dann für jede App Service-Plan-Instanz eine weitere Gebühr an. Bereitstellungen in Hostgruppen sind nicht zonenredundant. Wenn die Bereitstellung auf dedizierten Hosts erfolgen soll, wählen Sie auf der Registerkarte „Hosting“ für die Hostgruppenbereitstellung die Option **Aktivieren** aus.
 
 <!--Links-->
 [Intro]: ./overview.md

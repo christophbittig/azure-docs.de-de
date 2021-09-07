@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d115495f56a9e64672682a92d5837db48dbf052d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e167abee5bd98e5dcef702ae4629cd886cb75967
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099809"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465728"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren von Datenpersistenz für Premium-Instanzen von Azure Cache for Redis
 
@@ -73,7 +73,7 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
   
 9. Zum Aktivieren der AOF-Persistenz wählen Sie **AOF** aus, und konfigurieren Sie die Einstellungen.
 
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Dieses Speicherkonto muss aus derselben Region und demselben Abonnement wie der Cache stammen. Es wird empfohlen, ein **Storage Premium**-Konto zu verwenden, da dieser Tarif einen höheren Durchsatz aufweist. |
    | **Erster Speicherschlüssel** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. |
@@ -157,7 +157,7 @@ Das Intervall für die Sicherungshäufigkeit bei der RDB-Persistenz beginnt erst
 
 ### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Was geschieht mit den alten RDB-Sicherungen, wenn eine neue Sicherung durchgeführt wird?
 
-Alle Sicherungen, mit Ausnahme der jeweils letzten Sicherung, werden bei der RDB-Persistenz automatisch gelöscht. Dieser Löschvorgang wird möglicherweise nicht sofort durchgeführt, ältere Sicherungen werden jedoch nicht dauerhaft gespeichert.
+Alle Sicherungen, mit Ausnahme der jeweils letzten Sicherung, werden bei der RDB-Persistenz automatisch gelöscht. Dieser Löschvorgang wird möglicherweise nicht sofort durchgeführt, ältere Sicherungen werden jedoch nicht dauerhaft gespeichert. Hinweis: Wenn vorläufiges Löschen für Ihr Speicherkonto aktiviert ist, gilt die Einstellung für vorläufiges Löschen, und vorhandene Sicherungen bleiben im Zustand des vorläufigen Löschens.
 
 ### <a name="when-should-i-use-a-second-storage-account"></a>Wann sollte ich ein zweites Speicherkonto verwenden?
 
@@ -194,7 +194,7 @@ Daten, die in AOF-Dateien gespeichert sind, werden in mehrere Seitenblobs pro Kn
 
 Nach dem Aktivieren des Clusterings verfügt jeder Shard im Cache über einen eigenen Satz von Seitenblobs, wie in der Tabelle oben ersichtlich. Ein P2-Cache mit drei Shards verteilt seine AOF-Datei z.B. auf 24 Seitenblobs (8 Blobs pro Shard bei 3 Shards).
 
-Nach dem Neuschreiben sind zwei Sätze von AOF-Dateien im Speicher vorhanden. Neuschreibevorgänge werden im Hintergrund ausgeführt und fügen an den ersten Satz von Dateien an. Festlegevorgänge, die während des Neuschreibens an den Cache gesendet werden, fügen an den zweiten Satz an. Eine Sicherung wird bei einem Fehler vorübergehend während des Neuschreibens gespeichert. Die Sicherung wird sofort gelöscht, nachdem ein Neuschreibvorgang abgeschlossen wurde.
+Nach dem Neuschreiben sind zwei Sätze von AOF-Dateien im Speicher vorhanden. Neuschreibevorgänge werden im Hintergrund ausgeführt und fügen an den ersten Satz von Dateien an. Festlegevorgänge, die während des Neuschreibens an den Cache gesendet werden, fügen an den zweiten Satz an. Eine Sicherung wird bei einem Fehler vorübergehend während des Neuschreibens gespeichert. Die Sicherung wird sofort gelöscht, nachdem ein Neuschreibvorgang abgeschlossen wurde. Hinweis: Wenn vorläufiges Löschen für Ihr Speicherkonto aktiviert ist, gilt die Einstellung für vorläufiges Löschen, und vorhandene Sicherungen bleiben im Zustand des vorläufigen Löschens.
 
 ### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>Wird mir der für die Datenpersistenz verwendete Speicher in Rechnung gestellt?
 

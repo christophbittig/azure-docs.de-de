@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 04/21/2021
-ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 06/23/2021
+ms.openlocfilehash: 4bebe0ea34f9f9cc62b0ed4e96fd6fb1c7615635
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525748"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913453"
 ---
 # <a name="generate-a-sas-uri-for-a-vm-image"></a>Generieren eines SAS-URI für ein VM-Image
 
@@ -58,7 +58,7 @@ $resourceGroupName=myResourceGroupName
 $snapshotName=mySnapshot
 
 #Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+#Know more about SAS here: https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1
 $sasExpiryDuration=3600
 
 #Provide storage account name where you want to copy the underlying VHD file. Currently, only general purpose v1 storage is supported.
@@ -128,7 +128,7 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
 2. Erstellen Sie eine PowerShell-Datei (Dateierweiterung PS1), kopieren Sie den folgenden Code in die Datei, und speichern Sie sie lokal.
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <container-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <container-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
 3. Bearbeiten Sie die Datei, um die folgenden Parameterwerte zu verwenden. Verwenden Sie für Datumsangaben das UTC-Format für Datum und Uhrzeit, z. B. 2020-04-01T00:00:00Z.
@@ -141,7 +141,7 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
     Dieses Beispiel enthält richtige Parameterwerte (zum Zeitpunkt der Veröffentlichung dieses Dokuments):
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name <container-name> -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name <container-name> -- permissions rl --start '2020-04-01T00:00:00Z' --expiry '2021-04-01T00:00:00Z'
     ```
 
 1. Speichern Sie die Änderungen.
@@ -174,5 +174,5 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Bei Problemen lesen Sie die Informationen unter [SAS-Fehlermeldungen auf VMs](azure-vm-sas-failure-messages.md).
-- [Anmelden bei Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- [Anmelden bei Partner Center](https://go.microsoft.com/fwlink/?linkid=2165935)
 - [Erstellen eines VM-Angebots im Azure Marketplace](azure-vm-create.md)

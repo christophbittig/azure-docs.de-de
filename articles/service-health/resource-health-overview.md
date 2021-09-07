@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Health
 description: Erfahren Sie, wie Azure Resource Health Sie bei der Diagnose und bei Supportanfragen unterstützt, wenn Dienstprobleme Auswirkungen auf Ihre Azure-Ressourcen haben.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 903a86d216e118f783411b38ef7ad75ad004df7f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 532c7001b12efb2917c906f7607fef33bac194ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354992"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  
@@ -96,4 +96,4 @@ Sie können auch auf Resource Health zugreifen, indem Sie **Alle Dienste** ausw�
 
 Weitere Informationen zu Resource Health finden Sie in den folgenden Referenzen:
 -  [Ressourcentypen und Integritätsprüfungen in Azure Resource Health](resource-health-checks-resource-types.md)
--  [Azure Resource Health – FAQ](resource-health-faq.md)
+-  [Azure Resource Health – FAQ](resource-health-faq.yml)

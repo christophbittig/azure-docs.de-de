@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088172"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376599"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Anleitung: Verwalten inaktiver Benutzerkonten in Azure AD
 
@@ -44,7 +44,7 @@ Die letzte erfolgreiche Anmeldung liefert potenzielle Erkenntnisse dazu, ob ein 
     
 ## <a name="how-to-detect-inactive-user-accounts"></a>Erkennen von inaktiven Benutzerkonten
 
-Sie erkennen inaktive Konten, indem Sie sich die **lastSignInDateTime**-Eigenschaft des Ressourcentyps **signInActivity** der **Microsoft Graph**-API ansehen. Mit dieser Eigenschaft können Sie eine Lösung für die folgenden Szenarien implementieren:
+Sie erkennen inaktive Konten, indem Sie sich die **lastSignInDateTime**-Eigenschaft des Ressourcentyps **signInActivity** der **Microsoft Graph**-API ansehen. Die Eigenschaft **lastSignInDateTime** gibt Aufschluss darüber, wann ein Benutzer zuletzt eine erfolgreiche interaktive Anmeldung bei Azure AD durchgeführt hat. Mit dieser Eigenschaft können Sie eine Lösung für die folgenden Szenarien implementieren:
 
 - **Benutzer nach Name**: In diesem Szenario suchen Sie anhand des Namens nach einem bestimmten Benutzer, um das Datum der letzten Anmeldung (lastSignInDateTime) ermitteln zu können: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 

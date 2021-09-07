@@ -7,29 +7,27 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/08/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8d18d296a54b85cb3b571099e13f8c3e4e7a9c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104670000"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340224"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Anzeigen von Protokollen und Metriken mithilfe von Kibana und Grafana
 
-Kibana- und Grafana-Webdashboards werden bereitgestellt, um Erkenntnisse und Klarheit in Bezug auf die Kubernetes-Namespaces zu vermitteln, die von Azure Arc-fähigen Datendiensten verwendet werden.
+Kibana- und Grafana-Webdashboards werden bereitgestellt, um Erkenntnisse zu liefern und Klarheit in Bezug auf die Kubernetes-Namespaces zu vermitteln, die von Azure Arc-fähigen Datendiensten verwendet werden.
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 
 ## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Überwachen verwalteter Azure SQL-Instanzen in Azure Arc
 
 Führen Sie den folgenden `azdata`-CLI-Befehl aus, um auf die Protokolle und Überwachungsdashboards für Arc-fähige SQL Managed Instance-Instanzen zuzugreifen.
 
-```bash
-
-azdata arc sql endpoint list -n <name of SQL instance>
+```azurecl
+az sql mi-arc endpoint list -n <name of SQL instance>
 
 ```
 Diese Grafana-Dashboards sind relevant:
@@ -43,7 +41,7 @@ Diese Grafana-Dashboards sind relevant:
 >  Wenn Sie zur Eingabe eines Benutzernamens und Kennworts aufgefordert werden, geben Sie denselben Benutzernamen und dasselbe Kennwort ein wie bei der Erstellung des Azure Arc-Datencontrollers.
 
 > [!NOTE]
->  Sie werden in einer Zertifikatwarnung hierzu aufgefordert, da die in der Vorschauversion verwendeten Zertifikate selbstsignierte Zertifikate sind.
+>  Sie werden in einer Zertifikatwarnung hierzu aufgefordert, da es sich um selbstsignierte Zertifikate handelt.
 
 
 ## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Überwachen von Azure Database for PostgreSQL Hyperscale in Azure Arc
@@ -52,7 +50,7 @@ Führen Sie den folgenden `azdata`-CLI-Befehl aus, um auf die Protokolle und Üb
 
 ```bash
 
-azdata arc postgres endpoint list -n <name of postgreSQL instance>
+az postgres arc-server endpoint list -n <name of postgreSQL instance> --k8s-namespace <namespace> --use-k8s
 
 ```
 

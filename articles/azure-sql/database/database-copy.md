@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: shkale-msft
-ms.author: shkale
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694552"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339552"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -30,6 +30,14 @@ Bei einer Datenbankkopie handelt es sich um eine im Hinblick auf Transaktionen k
 
 > [!NOTE]
 > Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Brasilien, Süden“ als Public Preview und in der Region „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, wird in der Vorschauversion das Kopieren einer Datenbank auf einen Server in einer anderen Azure-Region nicht unterstützt. 
+
+## <a name="database-copy-for-azure-sql-hyperscale"></a>Datenbankkopie für Azure SQL Hyperscale
+
+Für Azure SQL Hyperscale bestimmt die Zieldatenbank, ob es sich bei der Kopie um eine schnelle Kopie oder um eine Kopie der Größe der Daten handelt.
+
+Schnelles Kopieren: Wenn der Kopiervorgang in derselben Region wie die Quelle erfolgt, wird die Kopie aus den Momentaufnahmen von Blobs erstellt. Diese Kopie ist unabhängig von der Datenbankgröße ein schneller Vorgang.
+
+Kopie der Größe der Daten: Wenn sich die Zieldatenbank in einer anderen Region befindet als die Quelldatenbank oder wenn sich die Redundanz des Datenbanksicherungsspeichers (lokal, zonenbasiert, geografisch) der Zieldatenbank von der der Quelldatenbank unterscheidet, ist der Kopiervorgang ein Vorgang der Größe der Daten. Die für das Kopieren benötigte Zeit ist nicht direkt proportional zur Größe, da Seitenserverblobs parallel kopiert werden.
 
 ## <a name="logins-in-the-database-copy"></a>Anmeldungen in der Datenbankkopie
 
@@ -86,7 +94,11 @@ Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE .
 
 > [!NOTE]
 > Durch das Beenden der T-SQL-Anweisung wird der Datenbankkopiervorgang nicht beendet. Um den Vorgang zu beenden, müssen Sie die Zieldatenbank löschen.
->
+> [!NOTE]
+> Datenbankkopien werden nicht unterstützt, wenn für die Quell- und/oder Zielserver ein privater Endpunkt konfiguriert und der Zugriff über das öffentliche Netzwerk deaktiviert ist. Wenn ein privater Endpunkt konfiguriert wurde, aber der Zugriff über das öffentliche Netzwerk zulässig ist, kann nach der Verbindungsherstellung mit dem Zielserver über eine öffentliche IP-Adresse erfolgreich eine Datenbankkopie eingeleitet werden.
+Führen Sie `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` aus, um die Quell-IP-Adresse der aktuellen Verbindung zu ermitteln.
+ 
+
 
 > [!IMPORTANT]
 > Das Auswählen einer Sicherungsspeicherredundanz bei Verwendung des Befehls „T-SQL CREATE DATABASE ... AS COPY OF“ wird noch nicht unterstützt. 

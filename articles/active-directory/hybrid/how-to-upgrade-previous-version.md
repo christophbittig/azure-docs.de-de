@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b79e8d07c2d7ed93be0a4cd77a07ae72454f78a
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729989"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652182"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren.  Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -60,7 +60,7 @@ Bei einem direkten Upgrade werden unter Umständen Änderungen eingeführt, für
 Bei Verwendung von Azure AD Connect mit nicht standardmäßigem Connector (z.B. Generic LDAP Connector und Generic SQL Connector) müssen Sie die entsprechende Connectorkonfiguration im [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) nach dem direkten Upgrade aktualisieren. Weitere Informationen zum Aktualisieren der Konfiguration des Connectors finden Sie im Artikelabschnitt [Troubleshooting](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting) (Problembehandlung). Wenn Sie die Konfiguration nicht aktualisieren, funktionieren die Import- und Exportausführungsschritte für den Connector nicht ordnungsgemäß. Sie erhalten die folgende Fehlermeldung im Ereignisprotokoll der Anwendung: *Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll.*
 
 ## <a name="swing-migration"></a>Swing-Migration
-Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.
+Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen oder ein Upgrade des Windows Server-Betriebssystems durchführen müssen, ist ein direktes Upgrade auf dem Livesystem eventuell nicht möglich. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.
 
 Die empfohlene Methode für diese Szenarien ist die Swing-Migration. Dafür benötigen Sie (mindestens) zwei Server: einen aktiven Server und einen Stagingserver. Der aktive Server (die durchgezogenen blauen Linien in der Abbildung unten) ist für die aktive Produktionslast verantwortlich. Der Stagingserver (mit violettem Strichlinien gezeigt) wird mit der neuen Version oder Konfiguration vorbereitet. Wenn er vollständig bereit ist, wird dieser Server zum aktiven Server gemacht. Der vorherige aktive Server, auf dem noch die alte Version oder Konfiguration installiert ist, wird jetzt zum Stagingserver und wird aktualisiert.
 
@@ -137,6 +137,10 @@ Manchmal sollen diese Außerkraftsetzungen aber möglicherweise nicht direkt nac
    > Die erforderlichen Synchronisierungsschritte sollten zum frühestmöglichen Zeitpunkt ausgeführt werden. Sie können die Schritte entweder manuell mit dem Synchronization Service Manager ausführen oder die Außerkraftsetzungen mithilfe des Cmdlets „Set-ADSyncSchedulerConnectorOverride“ wieder hinzufügen.
 
 Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung eines beliebigen Connectors hinzuzufügen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+
+## <a name="upgrading-the-server-operating-system"></a>Upgrade des Serverbetriebssystems
+
+Wenn ein Upgrade des Betriebssystems Ihres Azure AD Connect-Servers erforderlich ist, führen Sie kein direktes Upgrade des Betriebssystems durch. Bereiten Sie stattdessen einen neuen Server mit dem gewünschten Betriebssystem vor, und führen Sie eine [Swing-Migration](#swing-migration) durch.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Der folgende Abschnitt enthält Details zur Problembehandlung sowie Informationen, die hilfreich sind, wenn beim Upgrade von Azure AD Connect Probleme auftreten.

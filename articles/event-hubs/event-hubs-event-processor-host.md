@@ -2,14 +2,14 @@
 title: 'Empfangen von Ereignissen unter Verwendung von Event Processor Host: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt den Event Processor Host in Azure Event Hubs, der die parallele Verwaltung von Prüfpunkten, Leases und das Lesen von Ereignissen vereinfacht.
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 08/04/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0e10a472c261c14fcdd3debf1caaf9f00fdeb5e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313418"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339418"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
@@ -84,6 +84,9 @@ Anschließend wird eine [EventProcessorHost](/dotnet/api/microsoft.azure.eventhu
 - **consumerGroupName:** Event Hubs verwendet **$Default** als Namen für die Standardconsumergruppe. Es empfiehlt sich jedoch, eine Consumergruppe für den spezifischen Verarbeitungsaspekt zu erstellen.
 - **eventHubConnectionString:** Die Verbindungszeichenfolge für den Event Hub, die über das Azure-Portal abgerufen werden kann. Diese Verbindungszeichenfolge muss über Berechtigungen zum **Lauschen** für den Event Hub verfügen.
 - **storageConnectionString:** Das für die interne Ressourcenverwaltung verwendete Speicherkonto.
+
+> [!IMPORTANT]
+> Aktivieren Sie das Feature für vorläufiges Löschen nicht für das Speicherkonto, das als Prüfpunktspeicher verwendet wird. 
 
 Schließlich registrieren die Consumer die [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-Instanz bei dem Event Hubs-Dienst. Die Registrierung einer Ereignisprozessorklasse mit einer Instanz von EventProcessorHost startet die Ereignisverarbeitung. Durch die Registrierung wird der Event Hubs-Dienst angewiesen, dass eine Verarbeitung der Ereignisse aus einigen zugehörigen Partitionen durch die Consumeranwendung zu erwarten ist, uns dass der [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungscode bei jedem Übertragen von zu verarbeitenden Ereignissen aufgerufen werden soll. 
 

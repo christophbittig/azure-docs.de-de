@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f8d58388715b6bd43676ca7e98cf47901f6409a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695514"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285047"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -71,8 +71,8 @@ ms.locfileid: "101695514"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli]:/cli/azure/install-classic-cli
+[azure-cli-2]:/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -128,6 +128,8 @@ ms.locfileid: "101695514"
 [deployment-guide-5.1-new]:deployment-guide.md#7bf24f59-7347-4c7a-b094-4693e4687ee5 (Bereitschaftsprüfung für die neue Azure-Erweiterung für SAP)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Integritätsprüfung für die Azure-Erweiterung für die SAP-Konfiguration)
 [deployment-guide-5.2-new]:deployment-guide.md#464ac96d-7d3c-435d-a5ae-3faf3bfef4b3 (Integritätsprüfung für die neue Azure-Erweiterung für die SAP-Konfiguration)
+
+
 [deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Problembehandlung für die Azure-Erweiterung für SAP)
 [deployment-guide-5.3-new]:deployment-guide.md#b7afb8ef-a64c-495d-bb37-2af96688c530 (Problembehandlung für die neue Azure-Erweiterung für SAP)
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Problembehandlung für die Azure-Erweiterung für SAP – Support kontaktieren)
@@ -242,16 +244,16 @@ ms.locfileid: "101695514"
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]:https://support.sap.com/pam (SAP-Produktverfügbarkeitsmatrix [Product Availability Matrix, PAM])
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
-[sap-templates-2-tier-os-disk-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk-md%2Fazuredeploy.json
+[sap-templates-2-tier-os-disk-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-user-disk-md%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
-[sap-templates-2-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image-md%2Fazuredeploy.json
+[sap-templates-2-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-user-image-md%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-3-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json
+[sap-templates-3-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json
 [sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[sap-templates-3-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image-md%2Fazuredeploy.json
+[sap-templates-3-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-user-image-md%2Fazuredeploy.json
 [storage-azure-cli]:../../../storage/common/storage-azure-cli.md
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
@@ -262,7 +264,7 @@ ms.locfileid: "101695514"
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
+[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
 [virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
@@ -438,7 +440,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
    * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
 1. **Size**:
 
-     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure-Speichertypen für SAP-Workloads](./planning-guide-storage.md) unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
+   Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure-Speichertypen für SAP-Workloads](./planning-guide-storage.md) unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
 
 1. **Einstellungen**:
    * **Storage**
@@ -578,7 +580,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
    * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
 1. **Size**:
 
-     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure-Speichertypen für SAP-Workloads](./planning-guide-storage.md) unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
+   Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure-Speichertypen für SAP-Workloads](./planning-guide-storage.md) unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
 
 1. **Einstellungen**:
    * **Storage**
@@ -962,9 +964,8 @@ Die Skriptausgabe enthält die folgenden Informationen:
 
 #### <a name="azure-cli-for-linux-vms"></a><a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure-CLI für virtuelle Linux-Computer
 
-Gehen Sie wie folgt vor, um die Azure-Erweiterung für SAP über die Azure-Befehlszeilenschnittstelle zu installieren:
-
-   1. Installieren Sie die klassische Azure-Befehlszeilenschnittstelle (Azure CLI), wie unter [Installieren der klassischen Azure CLI][azure-cli] beschrieben.
+1. Installieren Sie die Azure-Erweiterung für SAP über die Azure-Befehlszeilenschnittstelle (Azure CLI):
+   1. Installieren Sie die [klassische Azure CLI][azure-cli].
    1. Melden Sie sich mit Ihrem Azure-Konto an:
 
       ```console
@@ -977,28 +978,27 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung für SAP über die Azure-Befeh
       azure config mode arm
       ```
 
-   1. Aktivieren Sie die Azure-Erweiterung für SAP:
+   1. Aktivieren der Erweiterung:
 
       ```console
       azure vm enable-aem <resource-group-name> <vm-name>
       ```
 
-1. So führen Sie eine Installation mit der Azure CLI 2.0 aus
-
-   1. Installieren Sie die Azure CLI 2.0 wie unter [Installieren der Azure CLI 2.0][azure-cli-2] beschrieben.
+1. Installieren Sie die Azure CLI-AEM-Erweiterung mit Azure CLI 2.0:
+   1. Installieren Sie [Azure CLI 2.0][azure-cli-2]. Stellen Sie sicher, dass Sie mindestens Version 2.19.1 oder höher verwenden (die aktuelle Version).
    1. Melden Sie sich mit Ihrem Azure-Konto an:
 
       ```azurecli
       az login
       ```
 
-   1. Installieren Sie Azure CLI-AEM-Erweiterung.
-  
+   1. Installieren Sie die Azure CLI-AEM-Erweiterung. Stellen Sie sicher, dass Sie Version 0.2.2 oder höher verwenden.
+    
       ```azurecli
       az extension add --name aem
       ```
   
-   1. Installieren Sie die Erweiterung mit diesem Befehl:
+   1. Aktivieren der Erweiterung:
   
       ```azurecli
       az vm aem set -g <resource-group-name> -n <vm name>
@@ -1021,10 +1021,10 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung für SAP über die Azure-Befeh
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-powershell"></a><a name="2ad55a0d-9937-4943-9dd2-69bc2b5d3de0"></a>Konfigurieren der neuen Azure-Erweiterung für SAP mit Azure PowerShell
 
-Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die dem virtuellen Computer zugewiesen ist, um auf Überwachungs- und Konfigurationsdaten der VM zuzugreifen. Um die neue Azure-Erweiterung für SAP mithilfe von PowerShell zu installieren, müssen Sie der VM zunächst eine solche Identität zuweisen und dieser Identität Zugriff auf alle Ressourcen gewähren, die von dieser VM verwendet werden, z. B. Datenträger und Netzwerkschnittstellen.
+Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die der VM zugewiesen ist, um auf Überwachungs- und Konfigurationsdaten der VM zuzugreifen. Um die neue Azure-Erweiterung für SAP mithilfe von PowerShell zu installieren, müssen Sie der VM zunächst eine solche Identität zuweisen und dieser Identität Zugriff auf alle Ressourcen gewähren, die von dieser VM verwendet werden (z. B. Datenträger und Netzwerkschnittstellen).
 
 > [!NOTE]
-> Die folgenden Schritte erfordern Besitzerberechtigungen für die Ressourcengruppe oder einzelne Ressourcen (virtueller Computer, Datenträger usw.).
+> Die folgenden Schritte erfordern Besitzerberechtigungen für die Ressourcengruppe oder einzelne Ressourcen (VM, Datenträger usw.).
 
 1. Stellen Sie sicher, dass Sie SAP Host Agent 7.21 PL 47 oder höher verwenden.
 1. Stellen Sie sicher, dass Sie die aktuelle Version der VM-Erweiterung für SAP deinstallieren. Die Installation beider Versionen der VM-Erweiterung für SAP auf demselben virtuellen Computer wird nicht unterstützt.
@@ -1042,28 +1042,27 @@ Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die dem v
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>Konfigurieren der neuen Azure-Erweiterung für SAP mit Azure CLI
 
-Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die dem virtuellen Computer zugewiesen ist, um auf Überwachungs- und Konfigurationsdaten der VM zuzugreifen. Um die neue Azure-Erweiterung für SAP mithilfe der Azure CLI zu installieren, müssen Sie der VM zunächst eine solche Identität zuweisen und dieser Identität Zugriff auf alle Ressourcen gewähren, die von dieser VM verwendet werden, z. B. Datenträger und Netzwerkschnittstellen.
+Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die der VM zugewiesen ist, um auf Überwachungs- und Konfigurationsdaten der VM zuzugreifen. Um die neue Azure-Erweiterung für SAP mithilfe der Azure CLI zu installieren, müssen Sie der VM zunächst eine solche Identität zuweisen und dieser Identität Zugriff auf alle Ressourcen gewähren, die von dieser VM verwendet werden (z. B. Datenträger und Netzwerkschnittstellen).
 
 > [!NOTE]
-> Die folgenden Schritte erfordern Besitzerberechtigungen für die Ressourcengruppe oder einzelne Ressourcen (virtueller Computer, Datenträger usw.).
+> Die folgenden Schritte erfordern Besitzerberechtigungen für die Ressourcengruppe oder einzelne Ressourcen (VM, Datenträger usw.).
 
-1. Stellen Sie sicher, dass Sie SAP Host Agent 7.21 PL 47 oder höher verwenden.
-1. Stellen Sie sicher, dass Sie die aktuelle Version der VM-Erweiterung für SAP deinstallieren. Die Installation beider Versionen der VM-Erweiterung für SAP auf demselben virtuellen Computer wird nicht unterstützt.
-1. Installieren Sie die Azure CLI 2.0 wie unter [Installieren der Azure CLI 2.0][azure-cli-2] beschrieben.
-
+1. Stellen Sie sicher, dass Sie Version 7.21 PL 47 oder höher des SAP-Host-Agents verwenden.
+1. Deinstallieren Sie die aktuelle Version der VM-Erweiterung für SAP. Es ist nicht möglich, beide Versionen der VM-Erweiterung für SAP auf derselben VM zu installieren. 
+1. Installieren Sie die aktuelle Version von [Azure CLI 2.0][azure-cli-2] (Version 2.19.1 oder höher).
 1. Melden Sie sich mit Ihrem Azure-Konto an:
 
    ```azurecli
    az login
    ```
 
-1. Installieren Sie Azure CLI-AEM-Erweiterung. Stellen Sie sicher, dass Sie mindestens Version 0.2.0 oder höher verwenden.
+1. Installieren Sie die Azure CLI-AEM-Erweiterung. Stellen Sie sicher, dass Sie Version 0.2.2 oder höher verwenden.
   
    ```azurecli
    az extension add --name aem
    ```
   
-1. Installieren Sie die neue Erweiterung mit
+1. Aktivieren Sie die neue Erweiterung:
   
    ```azurecli
    az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension

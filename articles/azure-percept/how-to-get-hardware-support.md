@@ -1,20 +1,20 @@
 ---
-title: Erhalten von Azure Percept-Hardwareunterstützung von ASUS
+title: Anfordern von Hardwaresupport für Azure Percept DK-Hardware von ASUS
 description: In diesem Leitfaden erfahren Sie, wie Sie ASUS kontaktieren können, um technischen Support für die Azure Percept DK-Hardware zu erhalten.
-author: juniem
-ms.author: amiyouss
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 07/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de5d55ebceb5ede8a33e73584631048ba30f27fc
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b93063660ea9be76cd862498506bef586018d3cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223365"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346013"
 ---
-# <a name="get-azure-percept-hardware-support-from-asus"></a>Erhalten von Azure Percept-Hardwareunterstützung von ASUS
+# <a name="get-support-for-your-azure-percept-dk-hardware-from-asus"></a>Anfordern von Support für Ihre Azure Percept DK-Hardware von ASUS
 
 Als OEM (Original Equipment Manufacturer) für die Azure Percept DK-Hardware bietet ASUS technischen Support für alle Kunden, die ein Gerät erworben haben, sowie Geschäftssupport für Kunden, die am Kauf von Geräten interessiert sind. In diesem Artikel erfahren Sie, wie Sie sich zur Anforderung von Support an ASUS wenden können.
 

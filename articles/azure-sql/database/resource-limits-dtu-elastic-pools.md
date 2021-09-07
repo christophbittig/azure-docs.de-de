@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 04/09/2021
-ms.openlocfilehash: fbbd345e6b2832d8b992ea42a8a2c1fb33615af7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 473aa81bf28dd867bf30acef7a5b407b0e4b67a2
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689957"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964750"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ Bei derselben Anzahl von DTUs überschreiten die für einen Pool für elastische
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Inbegriffener Speicher pro Pool (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Max. Speicherkapazität pro Pool (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | Nicht zutreffend | Nicht zutreffend | Nicht zutreffend | Nicht zutreffend | – |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Max. gleichzeitige Sitzungen pro Pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
@@ -166,14 +166,26 @@ Wenn alle DTUs eines Pools für elastische Datenbanken verwendet werden, erhält
 
 ### <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 
-Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
+Für jeden Pool für elastische Datenbanken können Sie optional pro Datenbank minimale und maximale DTUs angeben, um Ressourcenverbrauchsmuster innerhalb des Pools zu ändern. Die angegebenen Mindest- und Höchstwerte gelten für alle Datenbanken im Pool. Das Anpassen der Mindest- und Höchstanzahl von DTUs für einzelne Datenbanken im Pool wird nicht unterstützt. 
+
+Sie können auch den maximalen Speicher pro Datenbank festlegen, um beispielsweise zu verhindern, dass eine Datenbank den gesamten Poolspeicher beansprucht. Diese Einstellung kann unabhängig für jede Datenbank konfiguriert werden.
+
+In der folgenden Tabelle werden Eigenschaften für Pooldatenbanken beschrieben, die pro Datenbank festgelegt werden können: 
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Max. Anz. von eDTUs pro Datenbank |Die maximale Anzahl von eDTUs, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar. Die maximale Anzahl der eDTUs pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl der eDTUs pro Datenbank hoch genug fest, sodass Spitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. Angenommen, die Spitzenauslastung pro Datenbank beträgt 20 eDTUs und betrifft nur 20 % der 100 Datenbanken im Pool. Wenn die eDTU-Höchstanzahl pro Datenbank auf 20 eDTUs festgelegt ist, ist es sinnvoll, die fünffache Mehrlast für den Pool einzuplanen und die eDTUs pro Pool auf 400 festzulegen. |
-| Min. Anz. von eDTUs pro Datenbank |Die minimale Anzahl der eDTUs, die für jede Datenbank im Pool garantiert werden können. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl der eDTUs pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen eDTU-Nutzung pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von eDTUs pro Datenbank darf die tatsächliche Anzahl der eDTUs pro Pool nicht übersteigen. Wenn ein Pool beispielsweise 20 Datenbanken umfasst und die Mindestanzahl der eDTUs pro Datenbank auf 10 eDTUs festgelegt hat, müssen mindestens 200 eDTUs pro Pool festgelegt sein. |
-| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. Pooldatenbanken teilen sich den zugeordneten Poolspeicher. Auch wenn für die gesamte maximale Speicherkapazität *pro Datenbank* ein größerer Wert als für den gesamten verfügbaren *Speicherplatz des Pools* festgelegt wird, kann der von allen Datenbanken verwendete Gesamtspeicherplatz den verfügbaren Poolgrenzwert nicht überschreiten. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von Protokolldateien belegten Speicherplatz. |
+| Maximale Anzahl von DTUs pro Datenbank |Die maximale Anzahl von DTUs, die von einer beliebigen Datenbank im Pool verwendet werden können, sofern sie verfügbar sind (abhängig von der Nutzung durch andere Datenbanken im Pool). Die maximale Anzahl von DTUs pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Wenn für die Workload in den einzelnen Datenbanken nicht alle verfügbaren Poolressourcen benötigt werden, um eine angemessene Leistung zu erzielen, empfiehlt es sich gegebenenfalls, die maximale Anzahl von DTUs pro Datenbank festzulegen, um zu verhindern, dass eine einzelne Datenbank übermäßig viele Poolressourcen beansprucht. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. |
+| Mindestanzahl von DTUs pro Datenbank |Die Mindestanzahl von DTUs, die für jede Datenbank im Pool reserviert wird. Das Festlegen einer Mindestanzahl von DTUs pro Datenbank empfiehlt sich gegebenenfalls, wenn Sie die Ressourcenverfügbarkeit für jede Datenbank unabhängig vom Ressourcenverbrauch durch andere Datenbanken im Pool gewährleisten möchten. Die Mindestanzahl von DTUs pro Datenbank kann auf „0“ festgelegt werden. Das ist auch der Standardwert. Diese Eigenschaft wird auf einen Wert zwischen null und der durchschnittlichen DTU-Nutzung pro Datenbank festgelegt.|
+| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. Pooldatenbanken nutzen den zugeordneten Poolspeicher gemeinsam. Daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder die maximale Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von der Protokolldatei belegten Speicherplatz. |
 |||
+
+> [!IMPORTANT]
+> Da Ressourcen in einem Pool für elastische Datenbanken endlich sind, wird die Ressourcenauslastung durch die einzelnen Datenbanken implizit beschränkt, wenn Sie die Mindestanzahl von DTUs pro Datenbank auf einen Wert größer null festlegen. Falls sich zu einem bestimmten Zeitpunkt die meisten Datenbanken in einem Pool im Leerlauf befinden, stehen Ressourcen, die zur Erfüllung der Mindest-DTU-Garantie reserviert sind, für Datenbanken, die zu diesem Zeitpunkt aktiv sind, nicht zur Verfügung.
+>
+> Darüber hinaus wird die Anzahl von Datenbanken, die dem Pool hinzugefügt werden können, implizit beschränkt, wenn Sie die Mindestanzahl von DTUs pro Datenbank auf einen Wert größer null festlegen. Wenn Sie also beispielsweise in einem Pool mit 400 DTUs die Mindestanzahl von DTUs auf „100“ festlegen, können dem Pool maximal vier Datenbanken hinzugefügt werden, da für jede Datenbank 100 DTUs reserviert werden.
+> 
+
+Die Eigenschaften pro Datenbank werden zwar in DTUs ausgedrückt, steuern aber auch den Verbrauch anderer Ressourcentypen wie Daten-E/A, Protokoll-E/A und Arbeitsthreads. Wenn Sie Mindest- und Höchstwerte für DTUs pro Datenbank anpassen, werden Reservierungen und Grenzwerte für alle Ressourcentypen proportional angepasst.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

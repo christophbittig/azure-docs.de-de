@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: b1b4b9fbb3914ca3389f57d680d2298c00d64a9b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d83d6ad6834ea38b293054e59eb39a35be5c507e
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114444767"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111495"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ RBAC auf Datenebene in Azure Cosmos DB basiert auf Konzepten, die in anderen RB
 > Dieses Berechtigungsmodell deckt nur Datenbankvorgänge ab, mit denen Daten gelesen und geschrieben werden können. Es deckt **keine** Verwaltungsvorgänge ab, wie das Erstellen von Containern oder das Ändern ihres Durchsatzes. Dies bedeutet, dass Sie **kein Azure Cosmos DB-Datenebenen-SDK verwenden können**, um Verwaltungsvorgänge mit einer AAD-Identität zu authentifizieren. Stattdessen müssen Sie [Azure RBAC](role-based-access-control.md) verwenden über:
 > - [Azure Resource Manager-Vorlagen](manage-with-templates.md)
 > - [Azure PowerShell-Skripts](manage-with-powershell.md),
-> - [Azure CLI-Skripts](manage-with-cli.md),
+> - [Azure CLI-Skripts](sql/manage-with-cli.md),
 > - Azure-Verwaltungsbibliotheken, die verfügbar sind in
 >   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)

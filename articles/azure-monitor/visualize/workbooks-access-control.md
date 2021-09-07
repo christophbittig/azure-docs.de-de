@@ -5,13 +5,13 @@ services: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: e1f5b06d40ca6883092193493143f668ec999b1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710820"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452453"
 ---
 # <a name="access-control"></a>Zugriffssteuerung
 
@@ -21,8 +21,7 @@ Die Zugriffssteuerung in Arbeitsmappen bezieht sich auf zwei Dinge:
 
 * Zugriff, der zum Speichern von Arbeitsmappen erforderlich ist.
 
-    - Zum Speichern privater Arbeitsmappen `("My")` sind keine zusätzlichen Berechtigungen erforderlich. Alle Benutzer können private Arbeitsmappen speichern, und nur sie können diese Arbeitsmappen sehen.
-    - Zum Speichern freigegebener Arbeitsmappen sind Schreibberechtigungen in einer Ressourcengruppe erforderlich, um die Arbeitsmappe zu speichern. Diese Berechtigungen werden in der Regel durch die Rolle [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) festgelegt, können aber auch über die Rolle *Arbeitsmappenmitwirkender* festgelegt werden.
+    - Zum Speichern von Arbeitsmappen sind Schreibberechtigungen in einer Ressourcengruppe erforderlich. Diese Berechtigungen werden in der Regel durch die Rolle [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) festgelegt, können aber auch über die Rolle *Arbeitsmappenmitwirkender* festgelegt werden.
     
 ## <a name="standard-roles-with-workbook-related-privileges"></a>Standardrollen mit arbeitsmappenbezogenen Berechtigungen
 
@@ -30,11 +29,10 @@ Die Zugriffssteuerung in Arbeitsmappen bezieht sich auf zwei Dinge:
 
 [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) umfasst allgemeine `/write`-Berechtigungen, die von verschiedenen Überwachungstools zum Speichern von Elementen verwendet werden (einschließlich `workbooks/write`-Berechtigung zum Speichern freigegebener Arbeitsmappen).
 „Arbeitsmappenmitwirkender“ fügt einem Objekt „workbooks/write“-Berechtigungen hinzu, um freigegebene Arbeitsmappen zu speichern.
-Benutzer benötigen zum Speichern privater Arbeitsmappen, die nur ihnen angezeigt werden, keine speziellen Berechtigungen.
 
 Benutzerdefinierte Rollen:
 
-Fügen Sie `microsoft.insights/workbooks/write` zum Speichern freigegebener Arbeitsmappen hinzu. Weitere Informationen finden Sie unter der Rolle [Arbeitsmappenmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor).
+Fügen Sie `microsoft.insights/workbooks/write` hinzu, um Arbeitsmappen zu speichern. Weitere Informationen finden Sie unter der Rolle [Arbeitsmappenmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

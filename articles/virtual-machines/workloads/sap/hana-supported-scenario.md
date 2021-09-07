@@ -11,21 +11,21 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/18/2021
+ms.date: 07/19/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dfe81348b300f6b1b407898684316f668791d32
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 9ebd38cbff7d28515a7f60554a2ef755bdf6d04a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577976"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467756"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieser Artikel beschreibt die unterstützten Szenarien und Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
 
 >[!NOTE]
->Wenn das Szenario, das Sie benötigen, hier nicht beschrieben wird, wenden Sie sich an das Microsoft Service Management-Team, um Ihre Anforderungen zu bewerten.
+>Wenn Ihr Szenario hier nicht beschrieben wird, wenden Sie sich an das Microsoft Service Management-Team, um Ihre Anforderungen zu bewerten.
 Bevor Sie die HLI-Einheit einrichten, überprüfen Sie den Entwurf zusammen mit SAP oder Ihrem Dienstimplementierungspartner.
 
 ## <a name="terms-and-definitions"></a>Begriffe und Definitionen
@@ -41,7 +41,7 @@ Machen Sie sich mit den Begriffen und Definitionen vertraut, die in diesem Artik
 - **HSR**: SAP HANA-Systemreplikation.
 
 ## <a name="overview"></a>Übersicht
-Große HANA-Instanzen unterstützen eine Vielzahl von Architekturen, um Ihnen bei der Erfüllung Ihrer Geschäftsanforderungen zu helfen. In den folgenden Abschnitten werden die Architekturszenarien und die zugehörigen Konfigurationsdetails beschrieben. 
+Zum Erfüllen Ihrer Geschäftsanforderungen bieten große HANA-Instanzen Unterstützung für verschiedene Architekturen. In den folgenden Abschnitten werden die Architekturszenarien und die zugehörigen Konfigurationsdetails beschrieben. 
 
 Die abgeleiteten Architekturentwürfe sind rein infrastrukturbezogen. Wenden Sie sich an SAP oder Ihre Implementierungspartner für die Bereitstellung von HANA. Wenn Ihre Szenarien in diesem Artikel nicht aufgeführt sind, wenden Sie sich an das Microsoft-Kontoteam, um die Architektur zu überprüfen und eine Lösung für Sie abzuleiten.
 
@@ -58,7 +58,7 @@ Dieser Artikel beschreibt die Details der beiden Komponenten in jeder unterstüt
 Jeder bereitgestellte Server ist mit Gruppen von Ethernetschnittstellen vorkonfiguriert. Die auf jeder HLI-Einheit konfigurierten Ethernetschnittstellen lassen sich in vier Kategorien unterteilen:
 
 - **A:** Wird für oder durch Clientzugriff verwendet.
-- **B**: Wird für die Kommunikation zwischen Knoten verwendet. Diese Schnittstelle ist auf allen Servern konfiguriert (unabhängig von der angeforderten Topologie). Sie wird jedoch nur für Szenarien mit horizontaler Skalierung verwendet.
+- **B**: Wird für die Kommunikation zwischen Knoten verwendet. Diese Schnittstelle wird unabhängig davon, welche Topologie Sie anfordern, auf allen Servern konfiguriert. Sie wird jedoch nur für Szenarien mit horizontaler Skalierung verwendet.
 - **C**: Wird für die Konnektivität zwischen Knoten und Speicher verwendet.
 - **D**: Wird für die Konnektivität zwischen Knoten und iSCSI-Geräteverbindung für das STONITH-Setup verwendet. Diese Schnittstelle ist nur konfiguriert, wenn ein HSR-Setup angefordert wird.  
 
@@ -78,7 +78,7 @@ Sie wählen die Schnittstellen je nach der Topologie aus, die auf der HLI-Einhei
 Bei Bedarf können Sie selbst weitere Netzwerkkarten definieren. Die Konfigurationen vorhandener Netzwerkkarten *können jedoch nicht* geändert werden.
 
 >[!NOTE]
->Möglicherweise finden Sie noch weitere Schnittstellen, die physische Schnittstellen oder Verbindungen sind. Für Ihren Anwendungsfall sollten Sie nur die oben erwähnten Schnittstellen berücksichtigen. Alle anderen können ignoriert werden.
+>Möglicherweise finden Sie noch weitere Schnittstellen, die physische Schnittstellen oder Verbindungen sind. Berücksichtigen Sie für Ihren Anwendungsfall nur die oben erwähnten Schnittstellen. Ignorieren Sie alle anderen Schnittstellen.
 
 Die Verteilung für Einheiten mit zwei zugewiesenen IP-Adressen sollte wie folgt aussehen:
 
@@ -86,11 +86,11 @@ Die Verteilung für Einheiten mit zwei zugewiesenen IP-Adressen sollte wie folgt
 
 - Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS verwendet wird. Diese Adresse muss *nicht* im Verzeichnis *etc/hosts* verwaltet werden, um Datenverkehr zwischen Instanzen innerhalb des Mandanten zu ermöglichen.
 
-Für die HANA-Systemreplikation oder HANA-Bereitstellungen mit horizontaler Skalierung ist eine Bladekonfiguration mit zwei zugewiesenen IP-Adressen nicht geeignet. Wenn Sie nur über zwei zugewiesene IP-Adressen verfügen und eine solche Konfiguration bereitstellen möchten, wenden Sie sich an das zuständige Team von SAP HANA oder Azure Service Management. Das entsprechende Team kann Ihnen eine dritte IP-Adresse in einem dritten VLAN zuweisen. Für Einheiten großer HANA-Instanzen mit drei zugewiesenen IP-Adressen auf drei Netzwerkkartenports gelten die folgenden Verwendungsregeln:
+Für die HANA-Systemreplikation oder HANA-Bereitstellungen mit horizontaler Skalierung ist eine Bladekonfiguration mit zwei zugewiesenen IP-Adressen nicht geeignet. Wenn Sie nur über zwei zugewiesene IP-Adressen verfügen und eine solche Konfiguration bereitstellen möchten, wenden Sie sich an das zuständige Team von SAP HANA oder Azure Service Management. Das entsprechende Team kann Ihnen eine dritte IP-Adresse in einem dritten VLAN zuweisen. Für große HANA-Instanzen mit drei zugewiesenen IP-Adressen an drei Netzwerkkartenports gelten die folgenden Verwendungsregeln:
 
 - Ethernet „A“ muss eine zugewiesene IP-Adresse haben, die außerhalb des Adressbereichs des Server-IP-Pools liegt, den Sie an Microsoft übermittelt haben. Diese IP-Adresse darf nicht im Verzeichnis *etc/hosts* des Betriebssystems verwaltet werden.
 
-- Ethernet „B“ muss für die Kommunikation zwischen den verschiedenen Instanzen ausschließlich im Verzeichnis *etc/hosts* verwaltet werden. Diese IP-Adressen müssen in HANA-Konfigurationen mit horizontaler Skalierung als diejenigen IP-Adressen verwaltet werden, die HANA für die Konfiguration zwischen Knoten verwendet.
+- Ethernet „B“ muss für die Kommunikation zwischen den verschiedenen Instanzen ausschließlich im Verzeichnis *etc/hosts* verwaltet werden. Verwalten Sie diese IP-Adressen in HANA-Konfigurationen mit horizontaler Skalierung als diejenigen IP-Adressen, die HANA für die Konfiguration zwischen Knoten verwendet.
 
 - Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS-Speicher verwendet wird. Diese Art von Adresse darf nicht im Verzeichnis *etc/hosts* verwaltet werden.
 
@@ -200,7 +200,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Einzelner Knoten mit Notfallwiederherstellung mithilfe der Speicherreplikation
  
-Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID oder mehreren SIDs, mit speicherbasierter Replikation in den DR-Standort für eine primäre SID. Im Diagramm ist nur ein System mit einer einzigen SID dargestellt, MCOS-Systeme werden aber ebenfalls unterstützt.
+Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer oder mehreren SIDs. Die speicherbasierte Replikation am DR-Standort wird für eine primäre SID verwendet. In der Abbildung ist nur ein System mit einer einzigen SID am primären Standort dargestellt, MCOS-Systeme werden aber ebenfalls unterstützt.
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
 
@@ -241,7 +241,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>Einzelner Knoten mit Notfallwiederherstellung (Mehrzweck) unter Verwendung der Speicherreplikation
  
-Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID oder mehreren SIDs, mit speicherbasierter Replikation in den DR-Standort für eine primäre SID. Im Diagramm ist nur ein System mit einer einzigen SID dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt. Am DR-Standort wird die HLI-Einheit für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
+Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer oder mehreren SIDs. Die speicherbasierte Replikation am DR-Standort wird für eine primäre SID verwendet. 
+
+Im Diagramm ist nur ein System mit einer einzigen SID am primären Standort dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt. Am DR-Standort wird die HLI-Einheit für die QA-Instanz verwendet. Produktionsvorgänge werden vom primären Standort aus ausgeführt. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
 
@@ -290,7 +292,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="hsr-with-stonith-for-high-availability"></a>HSR mit STONITH für Hochverfügbarkeit
  
-Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation. Diese Konfiguration wird nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, dass MCOS-Szenarien *nicht* unterstützt werden.
+Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation. Diese Konfiguration wird nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. MCOS-Szenarien werden *nicht* unterstützt.
 
 > [!NOTE]
 > Ab Dezember 2019 wird diese Architektur nur für das Betriebssystem SUSE unterstützt.
@@ -340,9 +342,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="high-availability-with-hsr-and-dr-with-storage-replication"></a>Hochverfügbarkeit mit HSR und Notfallwiederherstellung mit Speicherreplikation
  
-Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation. Sowohl normale als auch Mehrzweck-DR wird unterstützt. Diese Konfigurationen werden nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, das MCOS-Szenarien mit diesen Konfigurationen *nicht* unterstützt werden.
+Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation. Sowohl normale als auch Mehrzweck-DR wird unterstützt. Diese Konfigurationen werden nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. MCOS-Szenarien werden bei diesen Konfigurationen *nicht* unterstützt.
 
-Im Diagramm ist ein Mehrzweckszenario am DR-Standort dargestellt. Die HLI-Einheit wird für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen. 
+In der Abbildung ist ein Mehrzweckszenario am DR-Standort gezeigt, bei dem die HLI-Einheit für die QA-Instanz verwendet wird. Produktionsvorgänge werden vom primären Standort aus ausgeführt. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen. 
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
 
@@ -399,7 +401,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="host-auto-failover-11"></a>Automatisches Hostfailover (1+1)
  
-Diese Topologie unterstützt zwei Knoten in einer automatischen Hostfailoverkonfiguration. Auf einem Knoten wird die Master-/Workerrolle ausgeführt, der andere fungiert als Standbyknoten. *SAP unterstützt dieses Szenario nur für S/4 HANA.* Weitere Informationen finden Sie im OSS-Hinweis [2408419 – SAP S/4HANA: Unterstützung für mehrere Knoten](https://launchpad.support.sap.com/#/notes/2408419).
+Diese Topologie unterstützt zwei Knoten in einer automatischen Hostfailoverkonfiguration. Auf einem Knoten wird die primäre Rolle/Workerrolle ausgeführt, der andere fungiert als Standbyknoten. *SAP unterstützt dieses Szenario nur für S/4 HANA.* Weitere Informationen finden Sie im OSS-Hinweis [2408419 – SAP S/4HANA: Unterstützung für mehrere Knoten](https://launchpad.support.sap.com/#/notes/2408419).
 
 
 
@@ -426,7 +428,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Mountpunkt | Anwendungsfall | 
 | --- | --- |
-|**Auf den Master- und Standbyknoten**|
+|**Auf dem primären Knoten und Standbyknoten**|
 |/hana/shared | SID der HANA-Installation für die Produktion | 
 |/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
 |/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
@@ -441,7 +443,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="scale-out-with-standby"></a>Horizontales Hochskalieren mit Standby
  
-Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration. Auf einem Knoten wird die Masterrolle ausgeführt, auf mindestens einem Knoten wird eine Workerrolle ausgeführt, und mindestens ein Knoten fungiert als Standbyknoten. Allerdings kann es zu jedem Zeitpunkt immer nur einen Masterknoten geben.
+Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration. Auf einem Knoten wird die primäre Rolle ausgeführt, auf mindestens einem Knoten wird eine Workerrolle ausgeführt, und mindestens ein Knoten fungiert als Standbyknoten. Allerdings kann es jeweils immer nur einen primären Knoten geben.
 
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
@@ -467,7 +469,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Mountpunkt | Anwendungsfall | 
 | --- | --- |
-|**Auf den Master-, Worker- und Standbyknoten**|
+|**Auf dem primären Knoten, Workerknoten und Standbyknoten**|
 |/hana/shared | SID der HANA-Installation für die Produktion | 
 |/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
 |/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
@@ -476,7 +478,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="scale-out-without-standby"></a>Horizontales Hochskalieren ohne Standby
  
-Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration. Auf einem Knoten wird die Masterrolle ausgeführt, und auf mindestens einem Knoten wird eine Workerrolle ausgeführt. Allerdings kann es zu jedem Zeitpunkt immer nur einen Masterknoten geben.
+Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration. Auf einem Knoten wird die primäre Rolle ausgeführt, und auf mindestens einem Knoten wird eine Workerrolle ausgeführt. Allerdings kann es jeweils immer nur einen primären Knoten geben.
 
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
@@ -503,7 +505,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Mountpunkt | Anwendungsfall | 
 | --- | --- |
-|**Auf den Master- und Workerknoten**|
+|**Auf dem primären Knoten und Workerknoten**|
 |/hana/shared | SID der HANA-Installation für die Produktion | 
 |/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
 |/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
@@ -515,7 +517,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="scale-out-with-dr-using-storage-replication"></a>Horizontale Skalierung mit Notfallwiederherstellung mithilfe der Speicherreplikation
  
-Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration mit einer DR. Sowohl normale als auch Mehrzweck-DR wird unterstützt. In der Abbildung wird nur eine DR mit einem einzigen Zweck dargestellt. Sie können diese Topologie mit oder ohne Standbyknoten anfordern.
+Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration mit einer DR. Sowohl normale als auch Mehrzweck-DR wird unterstützt. In der Abbildung ist lediglich eine DR mit einem einzigen Zweck dargestellt. Sie können diese Topologie mit oder ohne Standbyknoten anfordern.
 
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
@@ -562,7 +564,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="single-node-with-dr-using-hsr"></a>Einzelner Knoten mit Notfallwiederherstellung mithilfe von HSR
  
-Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID. Die HANA-Systemreplikation erfolgt zum DR-Standort für eine primäre SID. Im Diagramm ist nur ein System mit einer einzigen SID dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt.
+Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID. Die HANA-Systemreplikation erfolgt zum DR-Standort für eine primäre SID. Im Diagramm ist nur ein System mit einer einzigen SID am primären Standort dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt.
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
 
@@ -603,7 +605,7 @@ Die folgenden Bereitstellungspunkte sind auf beiden HLI-Einheiten (primär und D
 
 ## <a name="single-node-hsr-to-dr-cost-optimized"></a>HSR in einem einzelnen Knoten für Notfallwiederherstellung (kostenoptimiert) 
  
- Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID. Die HANA-Systemreplikation erfolgt zum DR-Standort für eine primäre SID. Im Diagramm ist nur ein System mit einer einzigen SID dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt. Am DR-Standort wird eine HLI-Einheit für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
+ Diese Topologie unterstützt einen Knoten in einer Konfiguration mit zentraler Skalierung und einer SID. Die HANA-Systemreplikation am DR-Standort wird für eine primäre SID verwendet. Im Diagramm ist nur ein System mit einer einzigen SID am primären Standort dargestellt, MCOS-Systeme (mit mehreren SIDs) werden aber ebenfalls unterstützt. Am DR-Standort wird eine HLI-Einheit für die QA-Instanz verwendet. Produktionsvorgänge werden vom primären Standort aus ausgeführt. Während des DR-Failovers (oder der Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
 
 ### <a name="architecture-diagram"></a>Architekturdiagramm  
 
@@ -795,7 +797,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie erhalten Informationen zu folgenden Themen:
+Erfahren Sie mehr über die Bereitstellung von großen HANA-Instanzen.
 
-- [Infrastruktur und Konnektivität](./hana-overview-infrastructure-connectivity.md) für große HANA-Instanzen
-- [Hochverfügbarkeit und Notfallwiederherstellung](./hana-overview-high-availability-disaster-recovery.md) für große HANA-Instanzen
+> [!div class="nextstepaction"]
+> [Bereitstellung von SAP HANA (große Instanzen)](./hana-overview-infrastructure-connectivity.md)

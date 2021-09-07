@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 42a9a0ea23faa481140a46ec52b2214431dd723e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c90d009aefb399e7635ec4a7cd09f884f3c51c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098040"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437646"
 ---
 # <a name="origin-and-origin-group-in-azure-front-door-standardpremium-preview"></a>Ursprung und Ursprungsgruppe in Azure Front Door Standard/Premium (Vorschau)
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die Konzepte der Webanwendungsbereitstellung mit Azure 
 
 ## <a name="origin"></a>Origin
 
-Ein Azure Front Door Standard/Premium-Ursprung ist der Hostname oder die öffentliche IP-Adresse der Anwendung, die Clientanforderungen verarbeitet. Azure Front Door Standard/Premium unterstützt sowohl Azure-Ressourcen als auch andere Ressourcen in einer Ursprungsgruppe. Die Anwendung kann zudem in Ihrem lokalen Rechenzentrum oder bei einem anderen Cloudanbieter gehostet werden. Ein Ursprung sollte nicht mit einer Datenbankebene oder Speicherebene verwechselt werden. Ein Ursprung sollte als öffentlicher Endpunkt für das Anwendungs-Back-End betrachtet werden. Wenn Sie einer Azure Front Door Standard/Premium-Ursprungsgruppe einen Ursprung hinzufügen, müssen Sie auch die folgenden Informationen hinzufügen:
+Ein Azure Front Door Standard/Premium-Ursprung ist der Hostname oder die öffentliche IP-Adresse der Anwendung, die Clientanforderungen verarbeitet. Von Azure Front Door Standard/Premium werden sowohl Azure-Ursprünge als Azure-fremde Ursprünge unterstützt – beispielsweise, wenn Ihre Anwendung in Ihrem lokalen Rechenzentrum oder bei einem anderen Cloudanbieter gehostet wird. Ein Ursprung sollte nicht mit einer Datenbankebene oder Speicherebene verwechselt werden. Ein Ursprung sollte als der Endpunkt für das Anwendungs-Back-End betrachtet werden. Wenn Sie einer Azure Front Door Standard/Premium-Ursprungsgruppe einen Ursprung hinzufügen, müssen Sie auch die folgenden Informationen hinzufügen:
 
 * **Ursprungstyp**: Der Typ der Ressource, die hinzugefügt werden soll. Front Door unterstützt die automatische Erkennung der Anwendungs-Back-Ends aus dem App-Dienst, Clouddienst oder Speicher. Wenn Sie eine andere Ressource in Azure oder sogar ein Nicht-Azure-Back-End hinzufügen möchten, wählen Sie **Benutzerdefinierter Host** aus.
 

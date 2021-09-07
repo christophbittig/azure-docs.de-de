@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 7612732f01075759d76c2bce5e8c710afc676642
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9e68df70afdc0f8e35ec862d9f9570dd13306191
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132861"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466053"
 ---
 # <a name="end-to-end-security-in-azure"></a>End-to-End-Sicherheit in Azure
 Eines der schlagkräftigsten Argumente dafür, Azure für Anwendungen und Dienste zu verwenden, ist die Vielzahl an Sicherheitstools und -funktionen. Diese Tools und Funktionen ermöglichen die Erstellung sicherer Lösungen auf der Grundlage der sicheren Azure-Plattform. Microsoft Azure bietet sowohl Vertraulichkeit, Integrität und Verfügbarkeit von Kundendaten als auch eine transparente Verantwortlichkeit.
@@ -64,7 +64,7 @@ Das Programm [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md) en
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | Ein globaler und skalierbarer Einstiegspunkt, der es ermöglicht, über das globale Microsoft Edge-Netzwerk schnelle, sichere und umfassend skalierbare Webanwendungen zu erstellen. |
 | [Azure Firewall](../../firewall/overview.md) | Ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit. |
 | [Azure Key Vault](../../key-vault/general/overview.md) | Ein sicherer Geheimnisspeicher für Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse. Key Vault kann auch zum Erstellen und Kontrollieren der Verschlüsselungsschlüssel verwendet werden, mit denen Ihre Daten verschlüsselt werden. |
-| [Verwaltetes HSM von Key Vault (Vorschauversion)](../../key-vault/managed-hsm/overview.md) | Ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert wurden. |
+| [Verwaltetes HSM von Key Vault](../../key-vault/managed-hsm/overview.md) | Ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit FIPS 140-2 Level 3 validiert wurden. |
 | [Azure Private Link](../../private-link/private-link-overview.md) | Ermöglicht Ihnen den Zugriff auf Azure-PaaS-Dienste (z. B. Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste über einen privaten Endpunkt in Ihrem virtuellen Netzwerk. |
 | [Azure Application Gateway](../../application-gateway/overview.md) | Ein erweiterter Lastenausgleich für Webdatenverkehr, mit dem Sie Datenverkehr für Ihre Webanwendungen verwalten können. Application Gateway kann Routingentscheidungen auf der Grundlage zusätzlicher Attribute einer HTTP-Anforderung treffen. Beispiele für solche Attribute wären etwa der URI-Pfad oder Hostheader. |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | Ein vollständig verwalteter Nachrichtenbroker für Unternehmen mit Nachrichtenwarteschlangen und Veröffentlichen/Abonnieren-Themen. Mithilfe von Service Bus werden Anwendungen und Dienste voneinander entkoppelt. |

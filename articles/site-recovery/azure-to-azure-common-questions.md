@@ -3,14 +3,14 @@ title: Häufige Fragen zu Notfallwiederherstellung virtueller Azure-Computer mit
 description: In diesem Artikel werden häufig gestellte Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern bei Verwendung von Azure Site Recovery beantwortet.
 author: sideeksh
 manager: rochakm
-ms.date: 11/03/2019
+ms.date: 07/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c2fb5175b077275d0c2ef5b0a37f6d4ead76b9d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952690"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339153"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -59,13 +59,13 @@ Weitere Informationen zum Aktivieren der Replikation für verschlüsselte virtue
 
 ### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Kann ich ein Automation-Konto aus einer anderen Ressourcengruppe auswählen?
 
-Wenn Sie Site Recovery das Verwalten von Updates für die auf replizierten Azure-VMs ausgeführte Mobilitätsdienst-Erweiterung gestatten, stellt der Dienst über ein Azure Automation-Konto ein globales Runbook bereit, das von Azure-Diensten verwendet wird. Sie können das von Site Recovery erstellte Automation-Konto verwenden oder ein vorhandenes Automation-Konto auswählen. 
+Wenn Sie Site Recovery das Verwalten von Updates für die auf replizierten Azure-VMs ausgeführte Mobilitätsdienst-Erweiterung gestatten, stellt der Dienst über ein Azure Automation-Konto ein globales Runbook bereit, das von Azure-Diensten verwendet wird. Sie können das von Site Recovery erstellte Automation-Konto verwenden oder ein vorhandenes Automation-Konto auswählen.
 
 Derzeit können Sie im Portal nur ein Automation-Konto in derselben Ressourcengruppe wie der Tresor auswählen. Mit PowerShell können Sie ein Automation-Konto aus einer anderen Ressourcengruppe auswählen. [Weitere Informationen](azure-to-azure-autoupdate.md#enable-automatic-updates)
 
 ### <a name="if-i-use-a-customer-automation-account-thats-not-in-the-vault-resource-group-can-i-delete-the-default-runbook"></a>Kann ich das Standardrunbook löschen, wenn ich ein Automation-Konto eines Kunden verwende, das nicht zur Ressourcengruppe des Tresors gehört?
 
-Ja, Sie können es löschen, wenn Sie es nicht benötigen. 
+Ja, Sie können es löschen, wenn Sie es nicht benötigen.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Kann ich VMs in ein anderes Abonnement replizieren?
 
@@ -73,9 +73,9 @@ Ja, Sie können Azure-VMs in ein beliebiges Abonnement im selben Azure AD-Manda
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>Kann ich VMs in einer Verfügbarkeitszone in eine andere Region replizieren?
 
-Ja, Sie können VMs in Verfügbarkeitszonen in eine andere Azure-Region replizieren. 
+Ja, Sie können VMs in Verfügbarkeitszonen in eine andere Azure-Region replizieren.
 
-### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>Kann ich VMs ohne Zone in eine Zone innerhalb derselben Region replizieren? 
+### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>Kann ich VMs ohne Zone in eine Zone innerhalb derselben Region replizieren?
 
 Dieser Vorgang wird im Portal nicht unterstützt. Sie können dazu die REST-API oder PowerShell verwenden.
 
@@ -89,7 +89,7 @@ Ja, Sie können Datenträger ausschließen, wenn Sie die Replikation mithilfe vo
 
 ### <a name="can-i-replicate-new-disks-added-to-replicated-vms"></a>Können neue Datenträger repliziert werden, die replizierten VMs hinzugefügt wurden?
 
-Bei replizierten VMs mit verwalteten Datenträgern können Sie neue Datenträger hinzufügen und für diese die Replikation aktivieren. Wenn Sie einen neuen Datenträger hinzufügen, wird auf der replizierten VM eine Warnmeldung angezeigt, dass für mindestens einen Datenträger auf der VM Schutzmaßnahmen verfügbar sind. 
+Bei replizierten VMs mit verwalteten Datenträgern können Sie neue Datenträger hinzufügen und für diese die Replikation aktivieren. Wenn Sie einen neuen Datenträger hinzufügen, wird auf der replizierten VM eine Warnmeldung angezeigt, dass für mindestens einen Datenträger auf der VM Schutzmaßnahmen verfügbar sind.
 
 - Wenn Sie die Replikation für die hinzugefügten Datenträger aktivieren, wird die Warnung nach der ersten Replikation nicht mehr angezeigt.
 - Wenn Sie die Replikation für den Datenträger nicht aktivieren möchten, können Sie die Warnung verwerfen.
@@ -101,13 +101,13 @@ Site Recovery unterstützt kein „Entfernen eines Datenträgers im laufendem Be
 
 Die Replikation ist fortlaufend, wenn Azure-VMs in eine andere Azure-Region repliziert werden. [Weitere Informationen zur Funktionsweise der Replikation](./azure-to-azure-architecture.md#replication-process)
 
-### <a name="can-i-replicate-virtual-machines-within-a-region"></a>Kann ich virtuelle Computer innerhalb einer Region replizieren? 
+### <a name="can-i-replicate-virtual-machines-within-a-region"></a>Kann ich virtuelle Computer innerhalb einer Region replizieren?
 
 Sie können Site Recovery nicht für das Replizieren von Datenträgern innerhalb einer Region verwenden.
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Kann ich VM-Instanzen in jede Azure-Region replizieren?
 
-Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren. Geografische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert. [Weitere Informationen zur regionalen Unterstützung.](./azure-to-azure-support-matrix.md#region-support)
+Sie können virtuelle Computer zwischen zwei beliebigen Regionen replizieren und wiederherstellen. 
 
 ### <a name="does-site-recovery-need-internet-connectivity"></a>Ist für Site Recovery eine Internetverbindung erforderlich?
 
@@ -162,7 +162,7 @@ Ja. Der Mobilitäts-Agent für Linux unterstützt benutzerdefinierte Skripts fü
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Wie werden Wiederherstellungspunkte generiert und gespeichert?
 
-Sehen Sie sich das folgende Beispiel an, um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert. 
+Sehen Sie sich das folgende Beispiel an, um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert.
 
 - Eine Replikationsrichtlinie bewahrt Wiederherstellungspunkte 24 Stunden lang auf und erstellt jede Stunde eine App-konsistente Momentaufnahme.
 - Site Recovery erstellt alle fünf Minuten einen absturzkonsistenten Wiederherstellungspunkt. Der Benutzer kann diese Häufigkeit nicht ändern.
@@ -176,7 +176,7 @@ Für die letzte Stunde können Sie zwischen 12 absturzkonsistenten und einem App
 
 Der älteste Wiederherstellungspunkt, den Sie verwenden können, ist 72 Stunden alt.
 
-### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>Was passiert, wenn Site Recovery für mehr als 24 Stunden keine Wiederherstellungspunkte generieren kann? 
+### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>Was passiert, wenn Site Recovery für mehr als 24 Stunden keine Wiederherstellungspunkte generieren kann?
 
 Wenn Ihre Replikationsrichtlinie 24 Stunden umfasst und Site Recovery länger als 24 Stunden keine Wiederherstellungspunkte generieren kann, bleiben die alten Wiederherstellungspunkte erhalten. Site Recovery ersetzt den ältesten Punkt nur, wenn neue Punkte generiert werden. Bis neue Wiederherstellungspunkte vorhanden sind, bleiben alle alten Punkte erhalten, auch wenn das Aufbewahrungszeitfenster abgelaufen ist.
 
@@ -198,7 +198,7 @@ Ja. Wenn Sie die Aufbewahrungsdauer z. B. von 24 auf 72 Stunden erhöhen, spei
 
 Multi-VM-Konsistenz stellt sicher, dass Wiederherstellungspunkte über alle replizierten VMs konsistent sind.
 
-- Wenn Sie die Multi-VM-Konsistenz aktivieren, erstellt Site Recovery eine Replikationsgruppe aller Computer, für die diese Option aktiviert ist. 
+- Wenn Sie die Multi-VM-Konsistenz aktivieren, erstellt Site Recovery eine Replikationsgruppe aller Computer, für die diese Option aktiviert ist.
 - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und App-konsistente Wiederherstellungspunkte.
 
 [Weitere Informationen zum Aktivieren der Multi-VM-Konsistenz](azure-to-azure-tutorial-enable-replication.md#enable-replication)
@@ -217,8 +217,8 @@ Multi-VM-Konsistenz ist CPU-intensiv und kann die Workloadleistung beeinträchti
 
 ### <a name="can-i-add-a-replicating-vm-to-a-replication-group"></a>Kann ich einer Replikationsgruppe eine replizierte VM hinzufügen?
 
-Wenn Sie die Replikation für eine VM aktivieren, können Sie diese einer vorhandenen Gruppe hinzufügen. Sie können jedoch keine VM hinzufügen, die bereits in einer Gruppe repliziert wird. 
- 
+Wenn Sie die Replikation für eine VM aktivieren, können Sie diese einer vorhandenen Gruppe hinzufügen. Sie können jedoch keine VM hinzufügen, die bereits in einer Gruppe repliziert wird.
+
 ## <a name="failover"></a>Failover
 
 ### <a name="how-do-we-ensure-capacity-in-the-target-region"></a>Wie wird die Kapazität in der Zielregion sichergestellt?
@@ -270,7 +270,7 @@ Sie können ein Failover starten. Site Recovery benötigt keine Verbindung mit d
 
 ### <a name="what-is-the-rto-of-a-vm-failover"></a>Was ist die RTO eines VM-Failovers?
 
-Für Site Recovery gilt eine RTO-SLA von [2 Stunden](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). In den meisten Fällen erfolgt ein Failover der VMs durch Site Recovery innerhalb weniger Minuten. Sie können den RTO-Wert berechnen, indem Sie den Failoverauftrag überprüfen. Dieser weist die Zeit auf, die es gedauert hat, die VM wieder verfügbar zu machen. 
+Für Site Recovery gilt eine RTO-SLA von [2 Stunden](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). In den meisten Fällen erfolgt ein Failover der VMs durch Site Recovery innerhalb weniger Minuten. Sie können den RTO-Wert berechnen, indem Sie den Failoverauftrag überprüfen. Dieser weist die Zeit auf, die es gedauert hat, die VM wieder verfügbar zu machen.
 
 ## <a name="recovery-plans"></a>Wiederherstellungspläne
 
@@ -280,7 +280,7 @@ Ein [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) in Site Rec
 
 - Definieren einer Gruppe von VMs, für die zusammen ein Failover ausgeführt wird
 - Definieren der Abhängigkeiten zwischen VMs, damit die Anwendung ordnungsgemäß verfügbar gemacht wird
-- Automatisieren der Wiederherstellung mit der Möglichkeit, benutzerdefinierte manuelle Aktionen für andere Tasks als das VM-Failover festzulegen 
+- Automatisieren der Wiederherstellung mit der Möglichkeit, benutzerdefinierte manuelle Aktionen für andere Tasks als das VM-Failover festzulegen
 
 
 ### <a name="how-does-sequencing-work"></a>Wie funktioniert die Sequenzierung?
@@ -299,11 +299,11 @@ Ja. [Weitere Informationen](site-recovery-runbook-automation.md)
 
 ## <a name="reprotection-and-failback"></a>Erneuter Schutz und Failback
 
-### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>Sind VMs in der sekundären Region nach einem Failover automatisch geschützt? 
+### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>Sind VMs in der sekundären Region nach einem Failover automatisch geschützt?
 
 Nein. Wenn Sie ein Failover für VMs von einer Region in eine andere ausführen, werden die VMs in der Zielregion für die Notfallwiederherstellung in einem ungeschützten Zustand gestartet. Um die VMs in der sekundären Region [erneut zu schützen](./azure-to-azure-how-to-reprotect.md), aktivieren Sie die Replikation zurück in die primäre Region.
 
-### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>Werden beim erneuten Schützen alle Daten aus der sekundären Region in die primäre repliziert? 
+### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>Werden beim erneuten Schützen alle Daten aus der sekundären Region in die primäre repliziert?
 
 Dies hängt von der Situation ab. Wenn die VM der Quellregion vorhanden ist, werden nur Änderungen zwischen dem Quelldatenträger und dem Zieldatenträger synchronisiert. Site Recovery berechnet die Unterschiede durch Vergleichen der Datenträger und überträgt dann die Daten. Dieser Vorgang dauert normalerweise einige Stunden. [Weitere Informationen](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)
 

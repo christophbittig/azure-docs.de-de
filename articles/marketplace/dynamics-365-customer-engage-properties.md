@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: ccb3c715cf598a72eff490d4a177063898110c69
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 155b8deb614aa2c2a85ce9b81625e3d6972ff09b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820132"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566226"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-properties"></a>Konfigurieren der Angebotseigenschaften eines Angebots für Dynamics 365 for Customer Engagement und Power Apps
 
@@ -32,7 +32,7 @@ Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Be
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-Wählen Sie die **Anwendbaren Produkte** in Dynamics 365, auf die sich dieses Angebot bezieht.
+Wählen Sie die **geeigneten Produkte** für das Angebot aus: Customer Service, Customer Voice, Project Operations, Field Service, Marketing, Mixed Reality, Power Apps, Power Automate, Power Virtual Agents, Project Service Automation oder Sales. Anhand dieser Auswahl können Kunden Ihr Angebot über die Produktfilter von AppSource Dynamics 365 finden, unter denen es angezeigt wird.
 
 Geben Sie eine **App-Version** für Ihr Angebot ein. Für Kunden wird diese Nummer auf der Detailseite des Angebots aufgeführt.
 

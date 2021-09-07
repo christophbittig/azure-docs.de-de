@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76ffc9c0c8d061e63636f40f696cc41a1238b1a
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051359"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437772"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgraden einer internen Azure Load Balancer-Instanz: Ausgehende Verbindung erforderlich
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](./skus.md#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.
@@ -58,7 +58,7 @@ Damit Sie diese Option nutzen können, dürfen keine Azure Az-Module auf Ihrem C
   
 Führen Sie das Skript mit dem folgenden Befehl aus:
 
-`Install-Script -Name AzurePublicLBUpgrade`
+`Install-Script -Name AzureLBUpgrade`
 
 Mit diesem Befehl werden auch die erforderlichen Az-Module installiert.  
 
@@ -84,18 +84,18 @@ So führen Sie das Skript aus
     **Beispiel**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
+   AzureLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
 
-Überprüfen Sie zunächst, ob durch das Skript erfolgreich eine neue öffentliche Load Balancer Standard-Instanz mit exakt der migrierten Konfiguration Ihrer öffentlichen Load Balancer Basic-Instanz erstellt wurde. Sie können dies über das Azure-Portal prüfen.
+Überprüfen Sie zunächst, ob durch das Skript erfolgreich eine neue öffentliche Load Balancer Standard-Instanz mit exakt der migrierten Konfiguration Ihrer internen Load Balancer Basic-Instanz erstellt wurde. Sie können dies über das Azure-Portal prüfen.
 
 Senden Sie zum manuellen Testen etwas Datenverkehr über die Load Balancer Standard-Instanz.
   
 In den folgenden Szenarien wird gezeigt, wie Sie virtuelle Computer zu Back-End-Pools der neu erstellten öffentlichen Load Balancer Standard-Instanz hinzufügen und sie konfigurieren (einschließlich Empfehlungen):
 
-* **Verschieben vorhandener virtueller Computer aus Back-End-Pools der alten öffentlichen Load Balancer Basic-Instanz in Back-End-Pools einer neu erstellten öffentlichen Load Balancer Standard-Instanz:**
+* **Verschieben vorhandener virtueller Computer aus Back-End-Pools der alten internen Load Balancer Basic-Instanz in Back-End-Pools einer neu erstellten öffentlichen Load Balancer Standard-Instanz:**
     1. Melden Sie sich zur Durchführung der Aufgaben dieser Schnellstartanleitung am [Azure-Portal](https://portal.azure.com) an.
  
     1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die **neu erstellte Load Balancer Standard-Instanz** aus.

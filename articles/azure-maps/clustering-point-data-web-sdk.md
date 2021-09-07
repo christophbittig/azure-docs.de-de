@@ -1,5 +1,5 @@
 ---
-title: Clustering von Punktdaten auf einer Karte | Microsoft Azure Maps
+title: Clustering von Punktdaten im Web SDK | Microsoft Azure Maps
 description: Hier wird erläutert, wie Sie Punktdaten auf Karten gruppieren. Sie erfahren, wie Sie mit dem Azure Maps Web SDK Daten gruppieren, auf Mausereignisse für den Cluster reagieren und Clusteraggregate anzeigen.
 author: rbrundritt
 ms.author: richbrun
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70b1ac01c2019b4ce74895b67cb79f5e93226b64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608356"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091859"
 ---
-# <a name="clustering-point-data"></a>Clustering von Punktdaten
+# <a name="clustering-point-data-in-the-web-sdk"></a>Clustering von Punktdaten im Web SDK
 
 Wenn auf der Karte viele Datenpunkte visualisiert werden, kann es bei diesen Datenpunkten zu gegenseitigen Überlappungen kommen. Die Überlappungen können dazu führen, dass die Karte unlesbar und schwer zu verwenden ist. Das Clustering von Punktdaten ist der Prozess, bei dem benachbarte Punktdaten kombiniert und auf der Karte als ein einzelner gruppierter Datenpunkt dargestellt werden. Wenn der Benutzer in die Karte zoomt, werden die Cluster in ihre einzelnen Datenpunkte unterteilt. Wenn Sie mit einer großen Anzahl von Datenpunkten arbeiten, verwenden Sie die Clusteringprozesse, um die Erfahrung Ihrer Benutzer zu verbessern.
 
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthält, wird der gruppierte Datenpunkt als GeoJSON-Punktfeatureobjekt an das Ereignis zurückgegeben. Dieses Punktfeature weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname             | type    | Beschreibung   |
+| Eigenschaftenname             | type    | BESCHREIBUNG   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | `cluster_id`              | Zeichenfolge  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |

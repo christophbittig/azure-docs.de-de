@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 61b7aa455cf9b782ca10d749344c26f5d15caa40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d2cf6f53b295d5ac138f86deb765892fd34d907
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072512"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234571"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -108,7 +108,7 @@ Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufg
 
 Folgende Konfigurationsoptionen stehen zur Verfügung:
  
-| Name | Typ | BESCHREIBUNG
+| Name | type | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
 | name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.
@@ -186,7 +186,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | loggingLevelTelemetry | Sendet **interne** Application Insights-Fehler als Telemetriedaten. <br>0: aus, <br>1: Nur schwerwiegende Fehler, <br>2: Alles (Fehler und Warnungen) | NUMERIC<br/> 1 |
 | diagnosticLogInterval | (intern) Abrufintervall (in ms) für interne Protokollierungswarteschlange | NUMERIC<br/> 10000 |
 | samplingPercentage | Prozentsatz der Ereignisse, die gesendet werden. Die Standardeinstellung ist „100“. Dies bedeutet, dass alle Ereignisse gesendet werden. Legen Sie diesen Wert fest, wenn Sie Ihre Datenobergrenze für umfangreiche Anwendungen beibehalten möchten. | NUMERIC<br/>100 |
-| autoTrackPageVisitTime | Bei „true“ wird in einem Seitenaufruf die vorherige Ansichtszeit der instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. | boolean<br/>false |
+| autoTrackPageVisitTime | Bei „true“ wird in einem Seitenaufruf die Ansichtszeit der _vorherigen_ instrumentierten Seite nachverfolgt und in Form von Telemetriedaten gesendet. Außerdem wird ein neuer Zeitgeber für den aktuellen Seitenaufruf gestartet. Diese Daten werden als benutzerdefinierte Metrik mit dem Namen `PageVisitTime` in `milliseconds` gesendet, und für die Berechnung wird die Funktion [Date.now()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) verwendet (falls verfügbar). Falls „now()“ nicht verfügbar ist (IE8 oder früher), wird [new Date().getTime()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime) verwendet. Der Standardwert ist "false". | boolean<br/>false |
 | disableAjaxTracking | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. | boolean<br/> false |
 | disableFetchTracking | Bei „true“ werden Anforderungen zum Abrufen nicht automatisch gesammelt.|boolean<br/>true |
 | overridePageViewDuration | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. |boolean<br/>

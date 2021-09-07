@@ -1,19 +1,20 @@
 ---
-title: Regionen, in denen Azure Video Analyzer for Media (früher Video Indexer) verfügbar ist – Azure
-titleSuffix: Azure Video Analyzer for Media (formerly Video Indexer)
+title: Regionen, in denen Azure Video Analyzer for Media (früher Video Indexer) verfügbar ist
+titleSuffix: Azure Video Analyzer for Media
 description: In diesem Artikel werden Azure-Regionen behandelt, in denen Azure Video Analyzer for Media (früher Video Indexer) verfügbar ist.
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 09/14/2020
 ms.author: juliako
-ms.openlocfilehash: 900a8b1b8fdc35997e0ad7ee09430f4eb33a4d9e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1db75ea3ba67d4e8f0551495274ec3fff38e29b4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385974"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119180"
 ---
 # <a name="azure-regions-in-which-video-analyzer-for-media-exists"></a>Azure-Regionen, in denen Video Analyzer for Media vorhanden ist
 

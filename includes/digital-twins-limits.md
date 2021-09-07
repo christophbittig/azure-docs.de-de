@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530597"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472872"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -58,4 +58,4 @@ Die folgende Tabelle gibt die Ratengrenzwerte verschiedener APIs an.
 
 Grenzwerte für Datentypen und Felder in DTDL-Dokumenten für Azure Digital Twins-Modelle finden Sie in der Dokumentation zu den entsprechenden Spezifikationen in GitHub: [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
  
-Details zur Abfragelatenz werden unter [Konzepte: Abfragesprache](../articles/digital-twins/concepts-query-language.md#considerations-for-querying) beschrieben. Einschränkungen bestimmter Funktionen der Abfragesprache finden Sie in der [Referenzdokumentation zu Abfragen](../articles/digital-twins/concepts-query-language.md#reference-documentation).
+Details zur Abfragewartezeit werden unter [Hinweise zur Abfrage](../articles/digital-twins/concepts-query-language.md#considerations-for-querying) beschrieben. Einschränkungen bestimmter Funktionen der Abfragesprache finden Sie in der [Referenzdokumentation zu Abfragen](../articles/digital-twins/concepts-query-language.md#reference-documentation).

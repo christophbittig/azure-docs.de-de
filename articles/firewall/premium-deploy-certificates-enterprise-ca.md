@@ -1,35 +1,31 @@
 ---
-title: Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für die Vorschauversion von Azure Firewall Premium
-description: Hier erfahren Sie, wie Sie Zertifikate der Unternehmenszertifizierungsstelle für die Vorschauversion von Azure Firewall Premium bereitstellen und konfigurieren können.
+title: Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für Azure Firewall Premium
+description: Hier erfahren Sie, wie Sie Zertifikate der Unternehmenszertifizierungsstelle für Azure Firewall Premium bereitstellen und konfigurieren.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/18/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 067daef5782697357d08edc0a6c09bea8af085f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590465"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441067"
 ---
-# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für die Vorschauversion von Azure Firewall Premium
-
-> [!IMPORTANT]
-> Azure Firewall Premium ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall"></a>Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für Azure Firewall
 
 
-Die Vorschauversion von Azure Firewall Premium enthält ein TLS-Überprüfungsfeature, das eine Zertifikatauthentifizierungskette erfordert. Für Produktionsbereitstellungen sollten Sie mithilfe einer Unternehmens-PKI die Zertifikate generieren, die Sie bei Azure Firewall Premium verwenden. Anhand dieses Artikels können Sie ein Zertifikat der Zwischenzertifizierungsstelle für die Vorschauversion von Azure Firewall Premium erstellen und verwalten.
+Azure Firewall Premium enthält ein TLS-Überprüfungsfeature, das eine Zertifikatauthentifizierungskette erfordert. Für Produktionsbereitstellungen sollten Sie mithilfe einer Unternehmens-PKI die Zertifikate generieren, die Sie bei Azure Firewall Premium verwenden. Anhand dieses Artikels können Sie ein Zertifikat der Zwischenzertifizierungsstelle für Azure Firewall Premium erstellen und verwalten.
 
-Weitere Informationen zu den von der Vorschauversion für Azure Firewall Premium verwendeten Zertifikaten finden Sie unter [Zertifikate der Vorschauversion von Azure Firewall Premium](premium-certificates.md).
+Weitere Informationen zu den von Azure Firewall Premium verwendeten Zertifikaten finden Sie unter [Zertifikate der Vorschauversion von Azure Firewall Premium](premium-certificates.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Wenn Sie ein Zertifikat zum Einsatz bei der Vorschauversion von Azure Firewall Premium über eine Unternehmenszertifizierungsstelle generieren möchten, müssen Sie folgende Ressourcen haben: 
+Wenn Sie ein Zertifikat zum Einsatz für Azure Firewall Premium über eine Unternehmenszertifizierungsstelle generieren möchten, benötigen Sie folgende Ressourcen: 
 
 - eine Active Directory-Gesamtstruktur 
 - eine Active Directory-Stammzertifizierungsstelle für Zertifizierungsdienste mit aktivierter Webregistrierung 
@@ -57,7 +53,7 @@ Wenn Sie ein Zertifikat zum Einsatz bei der Vorschauversion von Azure Firewall P
 
 1. Navigieren Sie im Azure-Portal zur Seite „Zertifikate“ Ihrer Key Vault, und wählen Sie **Generieren/Importieren** aus.
 1. Wählen Sie als Erstellungsmethode **Importieren** aus, benennen Sie das Zertifikat, wählen Sie die exportierte PFX-Datei aus, geben Sie das Kennwort ein, und wählen Sie **Erstellen** aus.
-1. Navigieren Sie zur Seite **TLS-Überprüfung (Vorschau)** Ihrer Firewallrichtlinie, und wählen Sie Ihre „Verwaltete Identität“, „Key Vault“ und „Zertifikat“ aus. 
+1. Navigieren Sie zur Seite **TLS-Überprüfung** Ihrer Firewallrichtlinie, und wählen Sie Werte für „Verwaltete Identität“, „Key Vault“ und „Zertifikat“ aus. 
 1. Wählen Sie **Speichern** aus.
    :::image type="content" source="media/premium-deploy-certificates-enterprise-ca/tls-inspection.png" alt-text="TLS-Überprüfung":::
 
@@ -79,4 +75,4 @@ Wenn Sie ein Zertifikat zum Einsatz bei der Vorschauversion von Azure Firewall P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Vorschauversion von Azure Firewall Premium im Azure-Portal](premium-portal.md)
+[Azure Firewall Premium im Azure-Portal](premium-portal.md)

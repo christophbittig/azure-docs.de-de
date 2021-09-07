@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sic
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 29a441db597de5d71ec71dde3f13e0630fabc05e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2ba21b9e7fd864b70ad2916de2053530677438c5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681283"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113304208"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Vorläufiges Löschen für Azure Backup
 
@@ -28,7 +28,9 @@ Im folgenden Flussdiagramm sind die unterschiedlichen Schritte und Zustände ein
 
 ## <a name="enabling-and-disabling-soft-delete"></a>Aktivieren und Deaktivieren des vorläufigen Löschens
 
-Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Nur der Tresorbesitzer kann dieses Feature deaktivieren. Wenn Sie dieses Feature deaktivieren, führen alle künftigen Löschvorgänge geschützter Elemente zu einer sofortigen Entfernung, ohne dass eine Wiederherstellung möglich ist. Sicherungsdaten, die vor der Deaktivierung dieses Features mit dem Status „Vorläufig gelöscht“ vorhanden waren, behalten 14 Tage diesen Status. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
+Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie Ihre geschützten Elemente in einen neuen Tresor verschieben möchten und nicht 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung).
+
+Um das vorläufige Löschen für einen Tresor deaktivieren zu können, müssen Sie für diesen Tresor über die Rolle „Sicherungsmitwirkender“ verfügen. (Sie benötigen Berechtigungen zum Ausführen von „Microsoft.RecoveryServices/Vaults/backupconfig/write“ für den Tresor.) Wenn Sie dieses Feature deaktivieren, führen alle künftigen Löschvorgänge geschützter Elemente zu einer sofortigen Entfernung, ohne dass eine Wiederherstellung möglich ist. Sicherungsdaten, die vor der Deaktivierung dieses Features mit dem Status „Vorläufig gelöscht“ vorhanden waren, behalten 14 Tage diesen Status. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
 
 Beachten Sie, dass die Deaktivierung des Features vorläufiges Löschen für alle Arten von Workloads gilt. So ist es beispielsweise nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, es gleichzeitig aber für virtuelle Computer in demselben Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
 

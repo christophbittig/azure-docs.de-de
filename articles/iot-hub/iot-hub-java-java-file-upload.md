@@ -2,23 +2,22 @@
 title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit Java | Microsoft-Dokumentation
 description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für Java. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 06/28/2017
+ms.date: 07/18/2021
 ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: dc87ad0af7eac71d7f2835b2b0d582fe8d1ec1b9
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a280e7b156ebb31269e4a65508596f8ba03c3caf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985380"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339110"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Java)
 
@@ -26,7 +25,7 @@ ms.locfileid: "111985380"
 
 In diesem Tutorial wird gezeigt, wie Sie die Dateihochladefunktionen von IoT Hub mit Java verwenden. Eine Übersicht über den Dateiuploadprozess finden Sie unter [Hochladen von Dateien mit IoT Hub](iot-hub-devguide-file-upload.md).
 
-Die Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-java.md) und das Tutorial [Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)](iot-hub-java-java-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Unter [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub](tutorial-routing.md) wird eine Möglichkeit für das zuverlässige Speichern von Gerät-zu-Cloud-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel:
+Die Schnellstartanleitung [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java) und das Tutorial [Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)](iot-hub-java-java-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Unter [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub](tutorial-routing.md) wird eine Möglichkeit für das zuverlässige Speichern von Gerät-zu-Cloud-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel:
 
 * Große Dateien, die Bilder enthalten
 * Videos
@@ -54,7 +53,11 @@ Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure D
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrieren eines neuen Geräts beim IoT-Hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
 ## <a name="create-a-project-using-maven"></a>Erstellen eines Projekts mithilfe von Maven
 
@@ -165,10 +168,9 @@ Ersetzen Sie mithilfe eines Text-Editors die Datei „pom.xml“ durch Folgendes
 
 ```
 
+## <a name="upload-a-file-from-a-device-app"></a>Hochladen einer Datei von einer Geräte-App
 
-## <a name="upload-a-file"></a>Hochladen einer Datei
-
-Kopieren Sie die Datei, die Sie hochladen möchten, in den Ordner `my-app` in Ihrer Projektstruktur. Ersetzen Sie mithilfe eines Text-Editors „App.java“ durch den folgenden Code. Geben Sie an den entsprechend gekennzeichneten Stellen Ihre Verbindungszeichenfolge und den Dateinamen an.
+Kopieren Sie die Datei, die Sie hochladen möchten, in den Ordner `my-app` in Ihrer Projektstruktur. Ersetzen Sie mithilfe eines Text-Editors „App.java“ durch den folgenden Code. Geben Sie an den entsprechend gekennzeichneten Stellen die Verbindungszeichenfolge für Ihr Gerät und den Dateinamen an. Sie haben die Geräteverbindungszeichenfolge beim Registrieren des Geräts kopiert.
 
 ```java
 package com.mycompany.app;
@@ -284,22 +286,7 @@ public class App
     }
 }
 ```
-## <a name="get-the-device-connection-string"></a>Abrufen der Geräte-Verbindungszeichenfolge
 
-Führen Sie den folgenden Befehl in Azure Cloud Shell aus, um die _Geräteverbindungszeichenfolge_ für Ihr Gerät abzurufen. Ersetzen Sie die folgenden Platzhalter durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben, und den Namen Ihres Geräts.
-
-```azurecli-interactive
-az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id {YourDevice} --output table
-```
-    
-Kopieren Sie die Geräteverbindungszeichenfolge, die wie folgt aussieht, und fügen Sie sie an den entsprechend gekennzeichneten Stellen in das Codebeispiel ein.
-  
-```cmd/sh
-HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}
-```
-
-Fügen Sie den Pfad zur hochzuladenden Datei an der entsprechend gekennzeichneten Stelle in das Codebeispiel ein.
-    
 ## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
 
 Führen Sie an der Eingabeaufforderung im `my-app`-Ordner folgenden Befehl aus:

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 64edffaebf5194e6e8c48466d46cbfc9fd953c92
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 93383fa4b681dd7f0768f5ea30c24e64e9dcb2b9
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798913"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036590"
 ---
 # <a name="understanding-total-azure-virtual-desktop-deployment-costs"></a>Grundlegendes zu den Gesamtkosten für die Bereitstellung von Azure Virtual Desktop
 
@@ -113,3 +113,4 @@ Die Kosten für den Benutzerzugriff treten in jedem Abrechnungszeitraum auf der 
 Wenn Sie eine genauere Vorstellung davon haben möchten, wie viel bestimmte Teile Ihrer Bereitstellung kosten werden, werfen Sie einen Blick auf diese Artikel:
 
 - [Grundlegendes zu Lizenzen und zu den Preisen für benutzerspezifischen Zugriff](licensing.md)
+- [Schätzen der App-Streamingkosten auf Benutzerebene für Azure Virtual Desktop](streaming-costs.md)

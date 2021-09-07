@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, olhuan
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: fff7512523b50c7bb0e7652832cfa27db688fff0
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 46e256aaac608d65211aa4575fc14faa9824a4bb
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570833"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574064"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
@@ -87,6 +87,9 @@ Wenn der Benutzer seinen Standort zum ersten Mal über die Microsoft Authenticat
 Wenn der Benutzer in den nächsten 24 Stunden immer noch auf die Ressource zugreift und der App die Berechtigung erteilt hat, im Hintergrund ausgeführt zu werden, wird der Standort des Geräts einmal pro Stunde automatisch übermittelt. Nach 24 Stunden muss der Benutzer die App öffnen und die Benachrichtigung genehmigen. Jedes Mal, wenn der Benutzer seinen GPS-Standort übermittelt, führt die App die Jailbreakerkennung durch (mit der gleichen Logik wie das Intune MAM SDK). Wenn das Gerät einen Jailbreak aufweist, wird der Standort nicht als gültig betrachtet, und dem Benutzer wird kein Zugriff gewährt. 
 
 Eine Richtlinie für bedingten Zugriff mit GPS-basierten benannten Standorten im Modus „Nur melden“ fordert Benutzer auf, ihren GPS-Standort zu übermitteln, auch wenn sie nicht von der Anmeldung blockiert sind.
+
+> [!IMPORTANT]
+> Benutzer erhalten in der Authenticator-App unter Umständen stündlich Aufforderungen mit dem Hinweis, dass ihr Standort von Azure AD überprüft wird. Die Vorschauversion sollte nur verwendet werden, um sehr sensible Apps zu schützen, bei denen dieses Verhalten akzeptabel ist oder der Zugriff auf ein bestimmtes Land oder eine bestimmte Region beschränkt werden muss.
 
 #### <a name="include-unknown-countriesregions"></a>Unbekannte Länder/Regionen einbeziehen
 

@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/14/2021
 ms.author: banders
-ms.openlocfilehash: 8366ba41ee302747fd5ede3cddc72814f29d30ec
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 402f2b9b8d4e7528e6578f9735e0360b4a049878
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147449"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112114512"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen
 
@@ -46,7 +46,7 @@ Ein Rechnungsadministrator für die Unternehmensregistrierung oder Microsoft-Kun
 
 ## <a name="view-reservation-transactions-in-power-bi"></a>Anzeigen von Reservierungstransaktionen in Power BI
 
-Ein Rechnungsadministrator für die Unternehmensregistrierung oder Microsoft-Kundenvereinbarung kann Reservierungstransaktionen mit der Cost Management-Power BI-App anzeigen.
+Ein Administrator für die Unternehmensregistrierung kann Reservierungstransaktionen mit der Cost Management-Power BI-App anzeigen.
 
 1. Rufen Sie die [Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) ab.
 1. Navigieren Sie zum Bericht für RI-Käufe.

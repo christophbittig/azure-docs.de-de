@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd47a623700c495a571bc4ca6b949d1a2229178a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f44390d042f12336c6556d05c4fe1332e822e068
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469159"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963760"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Genehmigen oder Ablehnen von Zugriffsanforderungen in der Azure AD-Berechtigungsverwaltung
 
@@ -49,7 +49,7 @@ Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsanforderungen
 
 1. Auf der Registerkarte **Ausstehend** können Sie die Anforderung finden.
 
-## <a name="view-requestors-answers-to-questions-preview"></a>Anzeigen der Antworten von Anforderern auf Fragen (Vorschau)
+## <a name="view-requestors-answers-to-questions"></a>Anzeigen der Antworten von Anforderern auf Fragen
 
 1. Navigieren Sie in „Mein Zugriff“ zur Registerkarte **Genehmigungen**.
 

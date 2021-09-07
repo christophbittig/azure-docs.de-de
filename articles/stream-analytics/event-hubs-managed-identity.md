@@ -1,28 +1,25 @@
 ---
-title: Verwenden von verwalteten Identitäten zum Zugriff auf Event Hubs aus einem Azure Stream Analytics-Auftrag (Vorschau)
+title: Zugreifen auf Event Hubs über einen Azure Stream Analytics-Auftrag unter Verwendung verwalteter Identitäten
 description: In diesem Artikel wird beschrieben, wie Sie verwaltete Identitäten verwenden, um Ihre Azure Stream Analytics-Aufträge für die Event Hubs-Eingabe und -Ausgabe zu authentifizieren.
-author: sidramadoss
-ms.author: sidram
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/07/2021
-ms.openlocfilehash: c0f81c5abdffe307550d2b0b3e1f86f67f867f5a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 07/07/2021
+ms.openlocfilehash: 4b470ff5336807fd92ae14af2548cd3a4305c6ed
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591294"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485903"
 ---
-# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Verwenden von verwalteten Identitäten zum Zugriff auf Event Hubs aus einem Azure Stream Analytics-Auftrag (Vorschau)
+# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job"></a>Zugreifen auf Event Hubs über einen Azure Stream Analytics-Auftrag unter Verwendung verwalteter Identitäten
 
 Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Identitäten sowohl für Eingaben als auch für Ausgaben von Event Hubs. Verwaltete Identitäten beseitigen die Einschränkungen benutzerbasierter Authentifizierungsmethoden, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Benutzertoken, die alle 90 Tage ablaufen. Wenn Sie die Notwendigkeit einer manuellen Authentifizierung aufheben, können Ihre Stream Analytics-Bereitstellungen vollständig automatisiert werden.  
 
 Bei einer verwalteten Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert. Diese verwaltete Anwendung wird zur Authentifizierung bei einer Zielressource verwendet, beispielsweise Event Hubs hinter einer Firewall oder in einem virtuellen Netzwerk. Weitere Informationen zum Umgehen von Firewalls finden Sie unter [Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte](../event-hubs/private-link-service.md#trusted-microsoft-services).
 
 Dieser Artikel veranschaulicht, wie Sie verwaltete Identitäten für die Event Hubs-Eingaben und -Ausgaben eines Stream Analytics-Auftrags über das Azure-Portal aktivieren. Bevor Sie eine verwaltete Identität aktivieren können, müssen Sie über einen Stream Analytics-Auftrag und eine Event Hub-Ressource verfügen.
-
-### <a name="limitation"></a>Einschränkung
-Während der Vorschauphase funktioniert die Stichprobenentnahme von Event Hubs im Azure-Portal nicht, wenn der Authentifizierungsmodus „Verwaltete Identität“ verwendet wird.
 
 ## <a name="create-a-managedidentity"></a>Erstellen einer verwalteten Identität  
 

@@ -7,16 +7,16 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ec2e7d2f80e19d2e001fec0a3949f469b33149d2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f527b33445ed55fbc64a08144a94ba9a05f38092
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957150"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554476"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. 
+> Dieser Artikel gilt für Version 1 von Data Factory.
 
 ## <a name="overview"></a>Übersicht
 Wenn Sie Azure Data Factory für die Integration Ihrer Daten verwenden, kann es vorkommen, dass Sie dasselbe Muster in verschiedenen Umgebungen verwenden oder dass Sie innerhalb einer Lösung wiederholt denselben Task implementieren. Diese Szenarios lassen sich mithilfe von Vorlagen einfach implementieren und verwalten. Vorlagen in Azure Data Factory sind ideal für Szenarios, bei denen Wiederverwendbarkeit und Wiederholungen möglich sind.
@@ -39,12 +39,12 @@ Schritt-für-Schritt-Anleitungen zum Erstellen von Data Factory-Entitäten mithi
 ## <a name="data-factory-templates-on-github"></a>Data Factory-Vorlagen auf GitHub
 Sehen Sie sich die folgenden Azure-Schnellstartvorlagen auf GitHub an:
 
-* [Create a Data factory to copy data from Azure Blob Storage to Azure SQL Database (Erstellen einer Data Factory für das Kopieren von Daten von Azure Blob Storage zu Azure SQL-Datenbank)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
-* [Create a Data factory with Hive activity on Azure HDInsight cluster (Erstellen einer Data Factory mit Hive-Aktivität auf einem Azure HDInsight-Cluster)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [Create a Data factory to copy data from Salesforce to Azure Blobs (englischsprachiger Artikel über das Erstellen einer Data Factory für das Kopieren von Daten von Salesforce zu Azure-Blobs)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [Create a Data factory that chains activities (Erstellen einer Data Factory, die Aktivitäten verkettet): Kopiert Daten von einem FTP-Server in Azure-Blobs, ruft ein Hive-Skript für einen bedarfsgesteuerten HDInsight-Cluster zum Transformieren der Daten auf, und kopiert das Ergebnis in Azure SQL-Datenbank.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [Create a Data factory to copy data from Azure Blob Storage to Azure SQL Database (Erstellen einer Data Factory für das Kopieren von Daten von Azure Blob Storage zu Azure SQL-Datenbank)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy)
+* [Create a Data factory with Hive activity on Azure HDInsight cluster (Erstellen einer Data Factory mit Hive-Aktivität auf einem Azure HDInsight-Cluster)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation)
+* [Create a Data factory to copy data from Salesforce to Azure Blobs (englischsprachiger Artikel über das Erstellen einer Data Factory für das Kopieren von Daten von Salesforce zu Azure-Blobs)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy)
+* [Create a Data factory that chains activities (Erstellen einer Data Factory, die Aktivitäten verkettet): Kopiert Daten von einem FTP-Server in Azure-Blobs, ruft ein Hive-Skript für einen bedarfsgesteuerten HDInsight-Cluster zum Transformieren der Daten auf, und kopiert das Ergebnis in Azure SQL-Datenbank.](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-ftp-hive-blob)
 
-Sie können Ihre Azure Data Factory-Vorlagen auch im [Verzeichnis der Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) freigeben. Bitten lesen Sie sich während der Entwicklung von Vorlagen, die über dieses Repository freigegeben werden sollen, den Abschnitt [contribution guide (Richtlinien zur Freigabe)](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) durch.
+Sie können Ihre Azure Data Factory-Vorlagen auch im [Verzeichnis der Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) freigeben. Bitten lesen Sie sich während der Entwicklung von Vorlagen, die über dieses Repository freigegeben werden sollen, den Abschnitt [contribution guide (Richtlinien zur Freigabe)](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) durch.
 
 Der nachfolgende Abschnitt enthält detaillierte Informationen zum Definieren der Data Factory-Ressourcen in einer Resource Manager-Vorlage.
 
@@ -123,7 +123,7 @@ Ausführliche Informationen zu den JSON-Eigenschaften eines spezifischen verknü
     ...
 }
 ```
-Ausführliche Informationen zu den JSON-Eigenschaften eines spezifischen Datasettyps, der bereitgestellt werden soll, finden Sie unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Bitte beachten Sie, dass der Parameter „dependsOn“ den Namen der entsprechenden Data Factory und des mit Storage verknüpften Diensts angibt. Die nachstehende JSON-Definition enthält ein Beispiel für das Definieren des Datensatztyps „Azure Blob Storage“:
+Ausführliche Informationen zu den JSON-Eigenschaften eines spezifischen Datasettyps, der bereitgestellt werden soll, finden Sie unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Beachten Sie, dass der Parameter „dependsOn“ den Namen der entsprechenden Data Factory und des mit Storage verknüpften Diensts angibt. Die nachstehende JSON-Definition enthält ein Beispiel für das Definieren des Datensatztyps „Azure Blob Storage“:
 
 ```JSON
 "type": "datasets",
@@ -169,7 +169,7 @@ Ausführliche Informationen zu den JSON-Eigenschaften eines spezifischen Dataset
 }
 ```
 
-Ausführliche Informationen zu den JSON-Eigenschaften für das Definieren einer spezifischen Pipeline und spezifischer Aktivitäten, die bereitgestellt werden sollen, finden Sie unter [Pipeline-JSON](data-factory-create-pipelines.md#pipeline-json). Bitte beachten Sie, dass der Parameter „dependsOn“ den Namen der Data Factory und aller dazugehörigen, verknüpften Dienste oder Datasets angibt. Der folgende JSON-Ausschnitt zeigt ein Beispiel für eine Pipeline, die Daten von Azure Blob Storage zu Azure SQL-Datenbank kopiert:
+Ausführliche Informationen zu den JSON-Eigenschaften für das Definieren einer spezifischen Pipeline und spezifischer Aktivitäten, die bereitgestellt werden sollen, finden Sie unter [Pipeline-JSON](data-factory-create-pipelines.md#pipeline-json). Beachten Sie, dass der Parameter „dependsOn“ den Namen der Data Factory und aller zugehörigen verknüpften Dienste oder Datasets angibt. Der folgende JSON-Ausschnitt zeigt ein Beispiel für eine Pipeline, die Daten von Azure Blob Storage zu Azure SQL-Datenbank kopiert:
 
 ```JSON
 "type": "datapipelines",

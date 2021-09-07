@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aa866706a181014e104f7f9e7f8cded520f4ac9
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152262"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711831"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -60,6 +60,8 @@ Aus Sicherheitsgründen sollte jeder Benutzer ein eigenes Speicherkonto bereitst
 In Cloud Shell wird eine Azure-Dateifreigabe in einem Speicherkonto innerhalb eines angegebenen Abonnements verwendet. Aufgrund von geerbten Berechtigungen können Benutzer mit ausreichenden Zugriffsrechten für das Abonnement auf alle Speicherkonten und Dateifreigaben zugreifen, die im Abonnement enthalten sind.
 
 Benutzer sollten den Zugriff auf ihre Dateien sperren, indem sie die Berechtigungen auf der Speicherkonto- oder Abonnementebene festlegen.
+
+Das Cloud Shell-Speicherkonto enthält Dateien, die vom Cloud Shell-Benutzer im Basisverzeichnis erstellt werden. Hierbei kann es sich auch um vertrauliche Informationen handeln, z. B. Zugriffstoken oder Anmeldeinformationen.
 
 ## <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
 Um die aktuelle Region zu suchen, können Sie `env` in Bash ausführen und die Variable `ACC_LOCATION` suchen oder in PowerShell `$env:ACC_LOCATION` ausführen. Dateifreigaben erhalten ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.

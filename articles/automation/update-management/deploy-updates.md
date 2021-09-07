@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 04/19/2021
+ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: c190af2532f28bd183a92b37b814210cb794501d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2e9b10206a28072d37668207993007dc29320f04
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748491"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679020"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -78,6 +78,11 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 
    >[!NOTE]
    > Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter RTM-Versionen von CentOS nicht. Wählen Sie zum ordnungsgemäßen Bereitstellen von Updates für CentOS alle Klassifizierungen aus, um sicherzustellen, dass die Updates angewendet werden. Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Weitere Informationen zu Updateklassifizierungen finden Sie [hier](overview.md#update-classifications).
+
+   >[!NOTE]
+   > Die Bereitstellung von Updates nach Updateklassifizierung funktioniert möglicherweise nicht ordnungsgemäß für Linux-Distributionen, die von der Updateverwaltung unterstützt werden. Dies ist das Ergebnis eines Problems mit dem Namensschema der OVAL-Datei, das verhindert, dass die Updateverwaltung Klassifizierungen basierend auf Filterregeln ordnungsgemäß abgleicht. Aufgrund der unterschiedlichen Logik, die bei Bewertungen von Sicherheitsupdates verwendet wird, können sich die Ergebnisse von den bei der Bereitstellung angewendeten Sicherheitsupdates unterscheiden. Wenn Sie die Klassifizierung als **Kritisch** und **Sicherheit** festgelegt haben, funktioniert die Updatebereitstellung wie erwartet. Nur die *Klassifizierung von Updates* während einer Bewertung ist betroffen.
+   >
+   > Die Updateverwaltung für Windows Server-Computer bleibt davon unberührt, und die Updateklassifizierung und Bereitstellungen bleiben unverändert.
 
 8. Über den Bereich **Updates ein-/ausschließen** können Sie ausgewählte Updates in die Bereitstellung einschließen oder von ihr ausschließen. Geben Sie auf der Seite **Updates ein-/ausschließen** die IDs der KB-Artikel ein, die bei Windows-Updates ein- oder ausgeschlossen werden sollen. Für unterstützte Linux-Distributionen geben Sie den Paketnamen an.
 

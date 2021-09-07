@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 08/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f4cf4c0109d524d0a8fe62ae1930165173db170
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 6d66d030514f121fabe8de36783d879afe0b5ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407055"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339013"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Versionsrichtlinie zu Azure Database for PostgreSQL
 
@@ -24,14 +24,12 @@ Azure Database for PostgreSQL unterstützt die folgenden Datenbankversionen:
 
 | Version | Einzelner Server | Flexible Server (Vorschau) | Hyperscale (Citus) |
 | ----- | :------: | :----: | :----: |
-| PostgreSQL 13 |  | X  | X\* |
-| PostgreSQL 12 |  | X  | X\* |
+| PostgreSQL 13 |  | X  | X |
+| PostgreSQL 12 |  | X  | X |
 | PostgreSQL 11 | X | X | X |
 | PostgreSQL 10 | X |  |  |
 | PostgreSQL 9.6 | X |  |  |
 | *PostgreSQL 9.5 (eingestellt)* | X |  |  |
-
-(\* PostgreSQL 12 und 13 sind als Previewfunktion in Hyperscale (Citus) verfügbar.)
 
 ## <a name="major-version-support"></a>Support für die Hauptversion
 Jede Hauptversion von PostgreSQL wird durch Azure Database for PostgreSQL ab dem Datum, an dem Azure mit dem Support für die Version beginnt, bis zu dem Datum unterstützt, an dem die Version durch die PostgreSQL-Community entsprechend der [Versionsrichtlinie für die PostgreSQL-Community](https://www.postgresql.org/support/versioning/) eingestellt wird.
@@ -55,7 +53,7 @@ Die folgende Tabelle enthält die Details zur Einstellung von PostgreSQL-Hauptve
 
 Sie können die eingestellte Version in Azure Database for PostgreSQL weiterhin ausführen. Beachten Sie jedoch die folgenden Einschränkungen nach dem Einstellungsdatum für jede PostgreSQL-Datenbankversion:
 - Da die Community keine weiteren Fehlerbehebungen oder Sicherheitskorrekturen mehr veröffentlicht, patcht Azure Database for PostgreSQL die eingestellte Datenbank-Engine nicht bei Fehlern oder Sicherheitsproblemen und ergreift keinerlei Sicherheitsmaßnahmen im Hinblick auf die eingestellte Datenbank-Engine. Dies führt möglicherweise zu Sicherheitsrisiken oder anderen Problemen. Azure führt jedoch weiterhin regelmäßige Wartung und Patchen für den Host, das Betriebssystem, die Container sowie alle anderen dienstbezogenen Komponenten durch.
-- Im Fall eines Unterstützungsproblems im Zusammenhang mit der PostgreSQL-Datenbank können wir Ihnen möglicherweise keinen Support bieten. In solchen Fällen müssen Sie Ihre Datenbank aktualisieren, damit wir Ihnen Support dafür bieten können.
+- Sollte bei Ihnen ein Supportproblem auftreten, das direkt mit der PostgreSQL-Engine zusammenhängt, da die Community die Patches nicht mehr bereitstellt, können wir Ihnen möglicherweise keinen Support bieten. In solchen Fällen müssen Sie Ihre Datenbank auf eine der unterstützten Versionen upgraden.
 - Sie können für die eingestellte Version keine neuen Datenbankserver erstellen. Sie können jedoch Zeitpunktwiederherstellungen durchführen und Lesereplikate für Ihre vorhandenen Server erstellen.
 - Die neuen von Azure Database for PostgreSQL entwickelten Dienstfunktionen stehen möglicherweise nur für unterstützte Datenbankserverversionen zur Verfügung.
 - Betriebszeit-SLAs gelten ausschließlich für dienstbezogene Probleme bei Azure Database for PostgreSQL und nicht für Ausfallzeiten, die durch Fehler im Zusammenhang mit der Datenbank-Engine verursacht werden.  

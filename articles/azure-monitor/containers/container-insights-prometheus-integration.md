@@ -3,12 +3,12 @@ title: Konfigurieren der Prometheus-Integration in Container Insights | Microsof
 description: In diesem Artikel wird beschrieben, wie Sie den Container Insights-Agent so konfigurieren können, dass Metriken aus Prometheus mit Ihrem Kubernetes-Cluster abgerufen werden.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 441b468f71f0d134a503418b3fde64b758a033a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339613"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Container Insights
 
@@ -54,10 +54,10 @@ Wenn eine URL angegeben wird, erfasst Container Insights nur den Endpunkt. Wenn 
 | | `prometheus.io/scheme` | String | HTTP oder HTTPS | Nimmt den Standardwert Abrufen über HTTP an. Legen Sie diesen Wert bei Bedarf auf `https` fest. | 
 | | `prometheus.io/path` | String | Durch Trennzeichen getrenntes Array | Der HTTP-Ressourcenpfad, aus dem Metriken abgerufen werden sollen. Wenn der Metrikpfad nicht `/metrics` lautet, definieren Sie ihn mit dieser Anmerkung. |
 | | `prometheus.io/port` | String | 9102 | Geben Sie einen Port an, von dem abgerufen werden soll. Wenn der Port nicht festgelegt ist, wird standardmäßig 9102 verwendet. |
-| | `monitor_kubernetes_pods_namespaces` | String | Durch Trennzeichen getrenntes Array | Eine Zulassungsliste von Namespaces zum Abrufen von Metriken von Kubernetes-Pods.<br> Zum Beispiel, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| | `monitor_kubernetes_pods_namespaces` | String | Durch Trennzeichen getrenntes Array | Eine Positivliste der Namespaces zum Abrufen von Metriken von Kubernetes-Pods.<br> Zum Beispiel, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
 | Knotenweit | `urls` | String | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Container Insights-Parameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
 | Knotenweit oder clusterweit | `interval` | String | 60s | Der Standardwert für das Sammlungsintervall ist eine Minute (60 Sekunden). Sie können die Sammlung entweder für *[prometheus_data_collection_settings.node]* und/oder für *[prometheus_data_collection_settings.cluster]* in Zeiteinheiten wie s, m, h ändern. |
-| Knotenweit oder clusterweit | `fieldpass`<br> `fielddrop`| String | Durch Trennzeichen getrenntes Array | Sie können bestimmte Metriken angeben, die vom Endpunkt erfasst werden sollen oder nicht, indem Sie die Zulassungs- (`fieldpass`) und Sperrauflistung (`fielddrop`) festlegen. Sie müssen die Zulassungsliste zuerst festlegen. |
+| Knotenweit oder clusterweit | `fieldpass`<br> `fielddrop`| String | Durch Trennzeichen getrenntes Array | Sie können bestimmte Metriken angeben, die vom Endpunkt erfasst werden sollen oder nicht, indem Sie die Zulassungs- (`fieldpass`) und Sperrauflistung (`fielddrop`) festlegen. Sie müssen zunächst die Positivliste festlegen. |
 
 ConfigMaps ist eine globale Liste, und es kann nur eine ConfigMap auf den Agent angewendet werden. Es kann keine andere ConfigMaps vorhanden sein, die die Sammlungen außer Kraft setzt.
 
@@ -326,7 +326,7 @@ Im Fall von Azure Red Hat OpenShift v3.x bearbeiten und speichern Sie die aktual
 
 ## <a name="query-prometheus-metrics-data"></a>Abfragen von Prometheus-Metrikdaten
 
-Weitere Informationen zum Anzeigen von Prometheus-Metriken, die von Azure Monitor abgerufen wurden, vom Agent gemeldeten Konfigurations-/Abruffehlern finden Sie unter [Abfragen von Prometheus-Metrikdaten](container-insights-log-search.md#query-prometheus-metrics-data) und [Abfragen von Konfigurations- oder Abruffehlern](container-insights-log-search.md#query-config-or-scraping-errors).
+Weitere Informationen zum Anzeigen von Prometheus-Metriken, die von Azure Monitor abgerufen wurden, vom Agent gemeldeten Konfigurations-/Abruffehlern finden Sie unter [Abfragen von Prometheus-Metrikdaten](container-insights-log-query.md#query-prometheus-metrics-data) und [Abfragen von Konfigurations- oder Abruffehlern](container-insights-log-query.md#query-config-or-scraping-errors).
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>Anzeigen von Prometheus-Metriken in Grafana
 

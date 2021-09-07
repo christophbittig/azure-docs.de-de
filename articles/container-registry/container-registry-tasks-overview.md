@@ -2,13 +2,13 @@
 title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
-ms.date: 08/12/2020
-ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/14/2021
+ms.openlocfilehash: 8a68ff312df13517bfe2b59d97dff25783da11ab
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780999"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202272"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -61,12 +61,21 @@ ACR Tasks unterstützt die folgenden Trigger, wenn Sie ein Git-Repository als T
 | Commit | Ja |
 | Pull Request | Nein |
 
-Um den Trigger für die Quellcodeaktualisierung zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im öffentlichen oder privaten GitHub- oder Azure DevOps-Repository festzulegen.
-
 > [!NOTE]
 > Derzeit unterstützt ACR Tasks keine Anforderungstrigger für Commit- oder Pullvorgänge in GitHub Enterprise-Repositorys.
 
 Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode finden Sie im zweiten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks](container-registry-tutorial-build-task.md).
+
+### <a name="personal-access-token"></a>Persönliches Zugriffstoken
+
+Um den Trigger für die Quellcodeaktualisierung zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im öffentlichen oder privaten GitHub- oder Azure DevOps-Repository festzulegen. Die erforderlichen Bereiche für das persönliche Zugriffstoken lauten:
+
+| Repositorytyp |GitHub  |DevOps  |
+|---------|---------|---------|
+|Öffentliches Repository    | repo:status<br/>public_repo        | Code (Lesen)        |
+|Privates Repository   | Repository (Vollzugriff)    | Code (Lesen)      |
+
+Informationen zum Erstellen eines persönlichen Zugriffstokens finden Sie in der Dokumentation zu [GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) oder [Azure DevOps](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
 ## <a name="automate-os-and-framework-patching"></a>Automatisierung von Betriebssystem- und Frameworkpatching
 
@@ -114,7 +123,7 @@ Die folgende Tabelle zeigt Beispiele von unterstützten Kontextspeicherorten fü
 | Artefakt in Containerregistrierung | [OCI-Artefaktdateien](container-registry-oci-artifacts.md) in einem Repository einer Containerregistrierung. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
-> Wenn Sie ein privates Git-Repository als Kontext für eine Aufgabe verwenden, müssen Sie ein persönliches Zugriffstoken (PAT) bereitstellen.
+> Bei Verwendung eines Git-Repositorys als Kontext für einen Task, der durch ein Quellcodeupdate ausgelöst wird, müssen Sie ein [persönliches Zugriffstoken (Personal Access Token, PAT)](#personal-access-token) angeben.
 
 ## <a name="image-platforms"></a>Imageplattformen
 

@@ -2,13 +2,13 @@
 title: Übersicht über Azure Disk Backup
 description: Erfahren Sie mehr über die Azure Disk Backup-Lösung.
 ms.topic: conceptual
-ms.date: 04/09/2021
-ms.openlocfilehash: 42f37c1f500be719e0bd79bad41226ab3ab2d911
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 05/27/2021
+ms.openlocfilehash: f1c27241e0b61cc4ae491f7bf4a4281d24cd09b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285138"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355013"
 ---
 # <a name="overview-of-azure-disk-backup"></a>Übersicht über Azure Disk Backup
 
@@ -48,13 +48,13 @@ Erwägen Sie Azure Disk Backup in Szenarien, in denen:
 
 ## <a name="how-the-backup-and-restore-process-works"></a>Funktionsweise des Sicherungs- und Wiederherstellungsprozesses
 
-- Der erste Schritt beim Konfigurieren der Sicherung für verwaltete Azure-Datenträger ist das Erstellen eines [Sicherungstresors](backup-vault-overview.md). Der Tresor bietet eine konsolidierte Ansicht der Sicherungen, die für unterschiedliche Workloads konfiguriert wurden.
+- Der erste Schritt beim Konfigurieren einer Sicherung für Azure Managed Disks ist das Erstellen eines [Sicherungstresors](backup-vault-overview.md). Der Tresor bietet eine konsolidierte Ansicht der Sicherungen, die für unterschiedliche Workloads konfiguriert wurden. Azure Disk Backup unterstützt nur Sicherungen auf Betriebsebene. Das Kopieren von Sicherungen auf die Tresorspeicherebene wird nicht unterstützt. Daher gilt die Speicherredundanzeinstellung des Sicherungstresors (LRS/GRS) nicht für auf Betriebsebene gespeicherte Sicherungen.
 
 - Erstellen Sie dann eine Sicherungsrichtlinie, mit der Sie die Sicherungshäufigkeit und die Aufbewahrungsdauer konfigurieren können.
 
 - Um die Sicherung zu konfigurieren, wechseln Sie zum Sicherungstresor, weisen Sie eine Sicherungsrichtlinie zu, wählen Sie den verwalteten Datenträger aus, der gesichert werden muss, und geben Sie eine Ressourcengruppe an, in der die Momentaufnahmen gespeichert und verwaltet werden sollen. Azure Backup löst automatisch geplante Sicherungsaufträge aus, die entsprechend der Sicherungshäufigkeit inkrementelle Momentaufnahmen des Datenträgers erstellen. Ältere Momentaufnahmen werden entsprechend der in der Sicherungsrichtlinie festgelegten Aufbewahrungsdauer gelöscht.
 
-- Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) des verwalteten Datenträgers. Inkrementelle Momentaufnahmen sind eine kostengünstige, zeitpunktbezogene Sicherung von verwalteten Datenträgern, bei der die Delta-Änderungen am Datenträger seit der letzten Momentaufnahme berechnet werden. Diese werden immer auf dem kostengünstigsten Speicher, dem Standard-HDD-Speicher, gespeichert, unabhängig vom Speichertyp der übergeordneten Datenträger. Die erste Momentaufnahme des Datenträgers nimmt die genutzte Größe des Datenträgers ein, und die darauf folgenden inkrementellen Momentaufnahmen speichern Delta-Änderungen des Datenträgers seit der letzten Momentaufnahme.
+- Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) des verwalteten Datenträgers. Inkrementelle Momentaufnahmen sind eine kostengünstige, zeitpunktbezogene Sicherung von verwalteten Datenträgern, bei der die Delta-Änderungen am Datenträger seit der letzten Momentaufnahme berechnet werden. Diese werden immer auf dem kostengünstigsten Speicher, dem Standard-HDD-Speicher, gespeichert, unabhängig vom Speichertyp der übergeordneten Datenträger. Die erste Momentaufnahme des Datenträgers nimmt die genutzte Größe des Datenträgers ein, und die darauf folgenden inkrementellen Momentaufnahmen speichern Delta-Änderungen des Datenträgers seit der letzten Momentaufnahme. Den von Azure Backup erstellten Momentaufnahmen wird automatisch ein Tag zugewiesen, um sie eindeutig zu identifizieren. 
 
 - Sobald Sie die Sicherung eines verwalteten Datenträgers konfigurieren, wird eine Sicherungsinstanz im Sicherungstresor erstellt. Mit der Sicherungsinstanz können Sie den Zustand von Sicherungsvorgängen feststellen, bedarfsgesteuerte Sicherungen auslösen und Wiederherstellungsvorgänge durchführen. Sie können auch die Sicherungsintegrität über mehrere Tresore und Sicherungsinstanzen hinweg mithilfe von Backup Center anzeigen, das eine Ansicht in einer zentralisierten Benutzeroberfläche bietet.
 
@@ -66,7 +66,19 @@ Erwägen Sie Azure Disk Backup in Szenarien, in denen:
 
 ## <a name="pricing"></a>Preise
 
-Azure Backup bietet eine Lösung zur Verwaltung des Lebenszyklus von Momentaufnahmen zum Schutz von Azure-Datenträgern. Die von Azure Backup erstellten Datenträger-Momentaufnahmen werden in der Ressourcengruppe innerhalb Ihres Azure-Abonnements gespeichert und verursachen Gebühren für **Momentaufnahmenspeicherung**. Weitere Details zu den Preisen für Momentaufnahmen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).<br></br>Da die Momentaufnahmen nicht in den Sicherungstresor kopiert werden, erhebt Azure Backup keine Gebühr für **geschützte Instanzen**, und es fallen keine Kosten für den **Sicherungsspeicher** an. Zusätzlich belegen inkrementelle Momentaufnahmen Delta-Änderungen als letzte Momentaufnahme und werden immer auf Standardspeicher gespeichert, unabhängig vom Speichertyp der übergeordneten verwalteten Datenträger, und werden entsprechend der Preise für Standardspeicher berechnet. Dadurch ist Azure Disk Backup eine kostengünstige Lösung.
+Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md) des verwalteten Datenträgers. Inkrementelle Momentaufnahmen werden pro GiB des Speichers abgerechnet, der von den Deltaänderungen seit der letzten Momentaufnahme beansprucht wird. Wenn Sie also beispielsweise einen verwalteten Datenträger mit einer bereitgestellten Größe von 128 GiB verwenden und 100 GiB davon nutzen, wird für die erste inkrementelle Momentaufnahme nur die genutzte Größe von 100 GiB in Rechnung gestellt. Vor der Erstellung der zweiten Momentaufnahme kommen auf dem Datenträger 20 GiB Daten hinzu. Somit werden für die zweite inkrementelle Momentaufnahme nur 20 GiB in Rechnung gestellt. 
+
+Inkrementelle Momentaufnahmen werden immer in Standardspeicher gespeichert (unabhängig vom Speichertyp der übergeordneten verwalteten Datenträger) und entsprechend der Preise für Standardspeicher abgerechnet. Inkrementelle Momentaufnahmen eines verwalteten SSD Premium-Datenträgers werden beispielsweise in Standardspeicher gespeichert. In Regionen mit ZRS-Unterstützung werden sie standardmäßig in ZRS gespeichert. Andernfalls werden sie in lokal redundantem Speicher (LRS) gespeichert. Die Preise pro GiB sind für beide Optionen (LRS und ZRS) identisch. 
+
+Die von Azure Backup erstellten Momentaufnahmen werden in der Ressourcengruppe innerhalb Ihres Azure-Abonnements gespeichert und verursachen Gebühren für die Momentaufnahmenspeicherung. Weitere Details zu den Preisen für Momentaufnahmen finden Sie unter [Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/). Da die Momentaufnahmen nicht in den Sicherungstresor kopiert werden, erhebt Azure Backup keine Gebühr für geschützte Instanzen, und es fallen keine Kosten für den Sicherungsspeicher an. 
+
+Im Rahmen eines Sicherungsvorgangs erstellt der Azure Backup-Dienst ein Speicherkonto in der Momentaufnahme-Ressourcengruppe, in der die Momentaufnahmen gespeichert werden. Inkrementelle Momentaufnahmen von verwalteten Datenträgern sind ARM-Ressourcen, die in der Ressourcengruppe und nicht in einem Speicherkonto erstellt werden. 
+
+Das Speicherkonto wird verwendet, um Metadaten für jeden Wiederherstellungspunkt zu speichern. Azure Backup Dienst erstellt einen Blobcontainer pro Datenträgersicherungsinstanz. Für jeden Wiederherstellungspunkt wird ein Blockblob erstellt, um Metadateninformationen zu speichern, die den Wiederherstellungspunkt beschreiben (z. B. Abonnement, Datenträger-ID, Datenträgerattribute usw.) und kaum Speicherplatz (wenige KiBs) belegen. 
+
+Das Speicherkonto wird als RA-GZRS erstellt, wenn die Region Zonenredundanz unterstützt. Unterstützt die Region keine Zonenredundanz, wird das Speicherkonto als RA-GRS erstellt. Falls Ihre vorhandene Richtlinie die Erstellung von Speicherkonten für das Abonnement oder die Ressourcengruppe mit GRS-Redundanz verhindert, wird das Speicherkonto als LRS erstellt. Bei dem erstellten Speicherkonto handelt es sich um ein universelles Speicherkonto (v2), bei dem Blockblobs auf der heißen Ebene im Blobcontainer gespeichert werden. Die Kosten für das Speicherkonto hängen von der Redundanz des Speicherkontos ab. Die Gebühren richten sich nach der Größe der Blockblobs. Hierbei handelt es sich allerdings um einen minimalen Betrag, da nur Metadaten (also nur wenige KiBs pro Wiederherstellungspunkt) gespeichert werden. 
+
+Die Anzahl von Wiederherstellungspunkten wird durch die Sicherungsrichtlinie bestimmt, die zum Konfigurieren von Sicherungen der Datenträgersicherungsinstanzen verwendet wird. Ältere Blockblobs werden gemäß dem Garbage Collection-Prozess gelöscht, wenn die entsprechenden älteren Wiederherstellungspunkte gelöscht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

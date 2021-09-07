@@ -1,23 +1,17 @@
 ---
 title: Erweiterte Richtlinien in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die erweiterten Richtlinien, die für die Verwendung in Azure API Management verfügbar sind. Sehen Sie sich Beispiele an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
-services: api-management
-documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 07/19/2021
+ms.service: api-management
 ms.author: apimpm
-ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 274c4d55955bb3ee7c95fc755660cb67de3bbbd3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562483"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467620"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -29,6 +23,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
 -   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
 -   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub.
+-   [Metriken ausgeben](#emit-metrics) – Sendet bei Ausführung benutzerdefinierte Metriken an Application Insights.
 -   [Modellantwort](#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
 -   [Wiederholen](#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.
 -   [Zurückgegebene Antwort](#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.
@@ -361,6 +356,80 @@ Eine beliebige Zeichenfolge kann als Wert für die Protokollierung in Event Hubs
 | logger-id     | Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist         | Ja                                                                  |
 | partition-id  | Gibt den Index der Partition an, an die Nachrichten gesendet werden.             | Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-key` verwendet wird. |
 | partition-key | Gibt den Wert an, der für die Partitionszuweisung verwendet wird, wenn Nachrichten gesendet werden. | Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-id` verwendet wird.  |
+
+### <a name="usage"></a>Verwendung
+
+Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
+
+-   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
+
+-   **Richtlinienbereiche:** alle Bereiche
+
+## <a name="emit-metrics"></a>Ausgeben von Metriken
+
+Die Richtlinie `emit-metric` sendet benutzerdefinierte Metriken im angegebenen Format an Application Insights.
+
+> [!NOTE]
+> * Benutzerdefinierte Metriken sind ein [Vorschaufeature](../azure-monitor/essentials/metrics-custom-overview.md) von Azure Monitor und unterliegen [Einschränkungen](../azure-monitor/essentials/metrics-custom-overview.md#design-limitations-and-considerations).
+> * Weitere Informationen zu den API Management-Daten, die Application Insights hinzugefügt wurden, finden Sie unter [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md#what-data-is-added-to-application-insights).
+
+### <a name="policy-statement"></a>Richtlinienanweisung
+
+```xml
+<emit-metric name="name of custom metric" value="value of custom metric" namespace="metric namespace"> 
+    <dimension name="dimension name" value="dimension value" /> 
+</emit-metric> 
+```
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel wird eine benutzerdefinierte Metrik gesendet, um die Anzahl von API-Anforderungen gemeinsam mit Benutzer-ID, Client-IP und API-ID als benutzerdefinierte Dimensionen zu bestimmen.
+
+```xml
+<policies>
+  <inbound>
+    <emit-metric name="Request" value="1" namespace="my-metrics"> 
+        <dimension name="User ID" /> 
+        <dimension name="Client IP" value="@(context.Request.IpAddress)" /> 
+        <dimension name="API ID" /> 
+    </emit-metric> 
+  </inbound>
+  <outbound>
+  </outbound>
+</policies>
+```
+
+### <a name="elements"></a>Elemente
+
+| Element     | BESCHREIBUNG                                                                       | Erforderlich |
+| ----------- | --------------------------------------------------------------------------------- | -------- |
+| emit-metric | Stammelement Der Wert dieses Elements ist die Zeichenfolge zum Ausgeben Ihrer benutzerdefinierten Metrik. | Ja      |
+| dimension   | Unterelement. Fügen Sie mindestens eines dieser Elemente für jede Dimension hinzu, die in der benutzerdefinierten Metrik enthalten ist.  | Ja      |
+
+### <a name="attributes"></a>Attributes
+
+#### <a name="emit-metric"></a>emit-metric
+| Attribut | BESCHREIBUNG                | Erforderlich | type               | Standardwert  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | Der Name der benutzerdefinierten Metrik.      | Ja      | string, expression | –            |
+| Namespace | Der Namespace der benutzerdefinierten Metrik. | Nein       | string, expression | API Management |
+| Wert     | Der Wert der benutzerdefinierten Metrik.    | Nein       | int, expression    | 1              |
+
+#### <a name="dimension"></a>dimension
+| Attribut | BESCHREIBUNG                | Erforderlich | type               | Standardwert  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | Der Name der Dimension.      | Ja      | string, expression | –            |
+| value     | Der Wert der Dimension. Kann nur ausgelassen werden, wenn `name` mit einer der Standarddimensionen übereinstimmt. In diesem Fall wird der Wert gemäß Dimensionsname bereitgestellt. | Nein       | string, expression | – |
+
+**Namen von Standarddimensionen, die ohne Wert verwendet werden können**:
+
+* API-ID
+* Vorgangs-ID
+* Product ID
+* Benutzer-ID
+* Abonnement-ID
+* Standort-ID
+* Gateway-ID
 
 ### <a name="usage"></a>Verwendung
 

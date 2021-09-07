@@ -5,13 +5,13 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/16/2020
-ms.openlocfilehash: 5b0a5d2117ea17ec003eb20084a0742e81d12ecb
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.date: 07/27/2021
+ms.openlocfilehash: b2bdd5ee189d4fe350171d37e51d0f88b3e3ac20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347179"
 ---
 # <a name="set-up-an-appliance-for-servers-in-a-vmware-environment"></a>Einrichten einer Appliance für Server in einer VMware-Umgebung
 
@@ -152,7 +152,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="provide-server-credentials"></a>Angeben von Serveranmeldeinformation
 
-Unter **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agents und eine Ermittlung von SQL Server-Instanzen und -Datenbanken** können Sie eine Vielzahl an Server-Anmeldeinformationen angeben. Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
+In diesem Schritt können Sie mehrere Serveranmeldeinformationen angeben: **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps in Ihrer VMware-Umgebung durchzuführen**. Wenn Sie keine dieser Appliancefunktionen verwenden möchten, können Sie diesen Schritt überspringen und mit der vCenter Server-Ermittlung fortfahren. Sie können diese Option jederzeit ändern.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Screenshot: Bereitstellen von Anmeldeinformationen für die Softwareinventur, Abhängigkeitsanalyse und s q l Serverermittlung.":::
 
@@ -171,7 +171,7 @@ Hinzufügen von Serveranmeldeinformationen:
     Wählen Sie **Speichern** aus.
 
     Wenn Sie Domänenanmeldeinformationen zu Verwendung wählen, müssen Sie auch den FQDN für die Domäne eingeben. Der FQDN wird benötigt, um die Echtheit der Anmeldeinformationen mithilfe der Active Directory-Instanz der jeweiligen Domäne zu bestätigen.
-1. Überprüfen Sie die [erforderlichen Berechtigungen](add-server-credentials.md#required-permissions) des Kontos für die Ermittlung installierter Anwendungen, Abhängigkeitsanalyse ohne Agent und für Ermittlung von SQL Server-Instanzen und -Datenbanken.
+1. Überprüfen Sie die für das Konto [erforderlichen Berechtigungen](add-server-credentials.md#required-permissions) für „Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps durchzuführen.“
 1. Um mehrere Anmeldeinformationen gleichzeitig hinzuzufügen, wählen Sie **Weitere hinzufügen**, um die Anmeldeinformationen zu speichern und dann weitere Anmeldeinformationen hinzuzufügen.
     Wenn Sie **Speichern** oder **Weitere hinzufügen** auswählen, überprüft die Appliance die Domänenanmeldeinformationen mit dem Active Directory-Instanz der Domäne auf Authentifizierung. Die Überprüfung erfolgt nach jeder Addition, um Kontosperren zu vermeiden, während die Appliance die Zuordnung von Anmeldeinformationen zu den jeweiligen Servern durchlauft.
 
@@ -185,16 +185,17 @@ Wenn die Überprüfung fehlschlägt, können Sie den Status **Fehler** auswähle
 
 ### <a name="start-discovery"></a>Ermittlung starten
 
-Unter **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agents und eine Ermittlung von SQL Server-Instanzen und -Datenbanken** wählen Sie **Ermittlung starten**, um die vCenter Server-Ermittlung zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse oder FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
+Zum Starten der vCenter Server-Ermittlung wählen Sie in **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agent, eine Ermittlung von SQL Server-Instanzen und -Datenbanken und eine Ermittlung von ASP.NET-Web-Apps in Ihrer VMware-Umgebung durchzuführen.** die Option **Ermittlung starten** aus. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse oder FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
 
 ## <a name="how-discovery-works"></a>Wie die Ermittlung funktioniert
 
 * Die Inventur benötigt ca. 15 Minuten, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden.
 * Wenn Sie Serveranmeldeinformationen angegeben haben, wird die Software-Inventur (Ermittlung installierter Anwendungen) automatisch eingeleitet, wenn die vCenter Server-Ermittlung abgeschlossen wurde. Die Software-Inventur erfolgt einmal alle 12 Stunden.
 * [Die Softwareinventur](how-to-discover-applications.md) identifiziert SQL Server-Instanzen, die auf den Servern ausgeführt werden. Anhand dieser gesammelten Informationen versucht die Appliance, mithilfe der in der Appliance angegebenen Anmeldeinformationen für Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Anschließend werden Daten zu SQL Server-Datenbanken und deren Eigenschaften erfasst. Die SQL Server-Ermittlung erfolgt einmal alle 24 Stunden.
+* Über [Softwareinventur](how-to-discover-applications.md) wird die Webserverrolle für die Server identifiziert. Unter Verwendung der gesammelten Informationen versucht die Appliance, über die für die Appliance angegebenen Anmeldeinformationen für die Windows-Authentifizierung eine Verbindung mit dem IIS-Webserver herzustellen. Anschließend werden Daten zu Web-Apps gesammelt. Die Web-App-Ermittlung erfolgt einmal alle 24 Stunden.
 * Die Ermittlung installierter Anwendungen kann länger als 15 Minuten dauern. Die Dauer hängt von der Anzahl der ermittelten Server ab. Bei 500 Servern dauert es ungefähr ein Stunde, bis der ermittelte Bestand im Azure Migrate-Portal angezeigt wird.
 * Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die Abhängigkeitsanalyse ohne Agent zu aktivieren.
-* SQL Server-Instanzen und die Daten der Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
+* Die Daten für SQL Server-Instanzen und -Datenbanken sowie Web-App-Daten werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

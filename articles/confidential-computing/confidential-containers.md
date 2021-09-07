@@ -8,12 +8,12 @@ ms.date: 2/11/2020
 ms.author: amgowda
 ms.service: container-service
 ms.subservice: confidential-computing
-ms.openlocfilehash: 35bf2fc96f93d1eed2b15c4ea87aa1f2a3aaa0a5
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7b225fa68b9a280ef4a1c7145ab691b82168202a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002886"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967410"
 ---
 # <a name="confidential-containers"></a>Vertrauliche Container
 
@@ -97,7 +97,7 @@ Occlum unterstützt AKS-Bereitstellungen. Befolgen Sie [hier](https://github.com
 
 Kurz gesagt, erweitert Marblerun die Vertraulichkeits-, Integritäts- und Überprüfbarkeitseigenschaften einer einzelnen Enclave auf einen Kubernetes-Cluster. 
 
-Marblerun unterstützt vertrauliche Container, die mit Graphene, Occlum und EGo erstellt wurden. Beispiele für jedes SDK finden Sie [hier](https://www.marblerun.sh/docs/examples/). Marblerun wird neben Ihren vorhandenen cloudnativen Tools auf Kubernetes ausgeführt. Es verfügt über eine benutzerfreundliche Befehlszeilenschnittstelle (Command Line Interface, CLI) sowie Helm-Diagramme und bietet erstklassige Unterstützung für Confidential Computing-Knoten in AKS. Informationen zum Bereitstellen von Marblerun in AKS finden Sie [hier](https://www.marblerun.sh/docs/deployment/cloud/).
+Marblerun unterstützt vertrauliche Container, die mit Graphene, Occlum und EGo erstellt wurden. Beispiele für jedes SDK finden Sie [hier](https://docs.edgeless.systems/marblerun/#/examples?id=examples). Marblerun wird neben Ihren vorhandenen cloudnativen Tools auf Kubernetes ausgeführt. Es verfügt über eine benutzerfreundliche Befehlszeilenschnittstelle (Command Line Interface, CLI) sowie Helm-Diagramme und bietet erstklassige Unterstützung für Confidential Computing-Knoten in AKS. Informationen zum Bereitstellen von Marblerun in AKS finden Sie [hier](https://docs.edgeless.systems/marblerun/#/deployment/cloud?id=cloud-deployment).
 
 ## <a name="confidential-containers-demo"></a>Demo zu vertraulichen Containern
 Sehen Sie sich die Demo zu vertraulichen Gesundheitsdaten in vertraulichen Containern an. Das Beispiel ist [hier](/azure/architecture/example-scenario/confidential/healthcare-inference) verfügbar. 

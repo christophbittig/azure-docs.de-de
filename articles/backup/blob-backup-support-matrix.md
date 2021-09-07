@@ -2,14 +2,14 @@
 title: Supportmatrix für Azure-Blobsicherung
 description: Dieser Artikel bietet eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-Blobs.
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 07/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba2798ff464720379326ee56098f840a06e2c042
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475099"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345794"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Supportmatrix für Azure-Blobsicherung
 
@@ -32,6 +32,7 @@ Die operative Sicherung von Blobs verwendet die Zeitpunktwiederherstellung von B
 - Ein Block, der über [Put Block](/rest/api/storageservices/put-block) oder [Put Block from URL](/rest/api/storageservices/put-block-from-url) hochgeladen, aber nicht über [Put Block List](/rest/api/storageservices/put-block-list) committet wurde, ist nicht Teil eines Blobs und wird daher nicht als Teil eines Wiederherstellungsvorgangs wiederhergestellt.
 - Ein Blob mit einer aktiven Leasedauer kann nicht wiederhergestellt werden. Wenn ein Blob mit einer aktiven Leasedauer in den Bereich der wiederherzustellenden Blobs eingeschlossen ist, schlägt der Wiederherstellungsvorgang automatisch fehl. Unterbrechen Sie alle aktiven Leases, bevor Sie den Wiederherstellungsvorgang starten.
 - Momentaufnahmen werden im Rahmen eines Wiederherstellungsvorgangs nicht erstellt oder gelöscht. Nur das Basisblob wird in seinem vorherigen Zustand wiederhergestellt.
+- Wenn die wiederhergestellten Blobs [unveränderliche Blobs](../storage/blobs/immutable-storage-overview.md#about-immutable-storage-for-blobs) enthalten, werden diese unveränderlichen Blobs nicht in ihrem Zustand gemäß dem ausgewählten Wiederherstellungspunkt wiederhergestellt. Andere Blobs, die nicht als unveränderlich konfiguriert sind, werden jedoch wie erwartet am ausgewählten Wiederherstellungspunkt wiederhergestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

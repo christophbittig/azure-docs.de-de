@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/30/2020
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: 49c8546ebe4c06135c4a7848a46385643fbfbd2e
-  ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+  ms.openlocfilehash: ce507f756b766869960a06bd00a8b6ea98711205
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "111907173"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114442922"
 title: Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -26,6 +26,10 @@ sections:
   - question: >
       Wird Azure Synapse Link für alle Azure Cosmos DB-APIs unterstützt?
     answer: "Azure Synapse Link wird für die Azure Cosmos DB SQL-API (Core-API) und für die Azure Cosmos DB-API für MongoDB unterstützt. \n"
+  - question: >
+      Wird Azure Synapse Link für Azure Cosmos DB (serverlos) unterstützt?
+    answer: >
+      Derzeit ist es nicht möglich, die Synapse Link-Funktion für ein serverloses Konto zu aktivieren.
   - question: >
       Wird Azure Synapse Link für Azure Cosmos DB-Konten in mehreren Regionen unterstützt?
     answer: >
@@ -41,9 +45,6 @@ sections:
       Wird der Analysespeicher in allen Azure Cosmos DB-Regionen unterstützt?
     answer: >
       Ja.
-  - question: >
-      Wird die Sicherung und Wiederherstellung für Konten mit aktiviertem Azure Synapse Link unterstützt?
-    answer: "Für Container mit aktiviertem Analysespeicher wird derzeit die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher nicht unterstützt. \n\nWenn Synapse Link für ein Datenbankkonto aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall [Sicherungen](./online-backup-and-restore.md) Ihrer Daten im Transaktionsspeicher (nur) von Containern. Beachten Sie dabei Folgendes: Wenn ein Container mit aktiviertem Analysespeicher in einem neuen Konto wiederhergestellt wird, ist im wiederhergestellten Container nur der Transaktionsspeicher aktiviert, nicht jedoch der Analysespeicher. \n"
   - question: >
       Kann ich die Azure Synapse Link-Funktion für mein Azure Cosmos DB-Konto deaktivieren?
     answer: >
@@ -154,6 +155,14 @@ sections:
 
 
       Wenn Sie serverlose Synapse SQL-Pools verwenden, können Sie den Azure Cosmos DB-Analysespeicher abfragen, indem Sie vorab SQL-Anmeldeinformationen zum Speichern der Kontoschlüssel erstellen und diese dann in der Funktion OPENROWSET referenzieren. Weitere Informationen finden Sie im Artikel [Abfragen mit einem serverlosen SQL-Pool in Azure Synapse Link](../synapse-analytics/sql/query-cosmos-db-analytical-store.md).
+  - question: >
+      Ist es möglich, kundenseitig verwaltete Schlüssel mit Azure Synapse Link zu verwenden?
+    answer: >
+      Ja, Azure Synapse Link unterstützt das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Weitere Informationen finden Sie unter [Verwenden einer verwalteten Identität in der Azure Key Vault-Zugriffsrichtlinie](how-to-setup-cmk.md#using-managed-identity).
+  - question: >
+      Bietet Azure Synapse Link eine Netzwerkisolation mit verwalteten virtuellen Azure Synapse-Netzwerken?
+    answer: >
+      Ja. Sie können den Netzwerkzugriff auf die Daten in den Transaktions- und Analysespeichern unabhängig voneinander steuern. Die Netzwerkisolation erfolgt über separate verwaltete private Endpunkte für jeden Speicher in verwalteten virtuellen Netzwerken in Azure Synapse-Arbeitsbereichen. Weitere Informationen finden Sie im Artikel [Konfigurieren privater Endpunkte für den Analysespeicher](analytical-store-private-endpoints.md).
 - name: Synapse-Laufzeiten
   questions:
   - question: >

@@ -8,17 +8,17 @@ ms.author: ishansri
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.openlocfilehash: 3e7a33d9213d7af44d2cfc50baa847534618f7e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9142f03f5f23e843018f7d9b702ef8da3d650758
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608558"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578682"
 ---
 # <a name="text-normalization-for-case-insensitive-filtering-faceting-and-sorting"></a>Textnormalisierung für Filter, Facetten und Sortierungen ohne Beachtung der Groß-/Kleinschreibung
 
- > [!IMPORTANT]
- > Die Normalisierungsfunktion befindet sich in der öffentlichen Vorschauphase und ist über die **REST-API 2020-06-30-preview** verfügbar. Vorschaufeatures werden wie unter Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen beschrieben im Ist-Zustand angeboten.
+> [!IMPORTANT] 
+> Dieses Feature befindet sich in der Public Preview-Phase und unterliegt [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt dieses Feature.
 
 Beim Suchen und Abrufen von Dokumenten aus einem Azure Cognitive Search-Index muss die Abfrage mit den Inhalten des Dokuments abgeglichen werden. Der Inhalt kann analysiert werden, um Tokens für den Abgleich zu erzeugen, dasselbe gilt bei Verwendung des Parameters `search`. Alternativ kann der Inhalt unverändert für den strikten Schlüsselwortabgleich verwendet werden (siehe `$filter`, `facets` und `$orderby`). Dieser Alles-oder-Nichts-Ansatz deckt die meisten Szenarios ab, er ist jedoch in Fällen unzureichend, in denen einfache Vorverarbeitungen wie Groß-/Kleinschreibung, Entfernung von diakritischen Zeichen, Asciifolding und mehr erforderlich sind, ohne die gesamte Analysekette zu durchlaufen.
 
@@ -44,7 +44,7 @@ Normalisierungsfunktionen können für Textfelder im Index festgelegt werden. Di
 
 Azure Cognitive Search unterstützt vordefinierte Normalisierungsfunktionen für gängige Anwendungsfälle sowie die Möglichkeit, diese nach Bedarf anzupassen.
 
-| Category | Beschreibung |
+| Category | BESCHREIBUNG |
 |----------|-------------|
 | [Vordefinierte Normalisierungsfunktionen](#predefined-normalizers) | Diese sind vorgefertigt verfügbar und können ohne Konfiguration verwendet werden. |
 |[Benutzerdefinierte Normalisierungsfunktionen](#add-custom-normalizers) | Diese sind für fortgeschrittene Szenarios vorgesehen. Sie erfordern eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, die aus Char- und Tokenfiltern bestehen.<sup>1</sup>|

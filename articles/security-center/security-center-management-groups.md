@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2021
 ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 14cad6e5d95492b889a4e1a09abac9bd3ee8e603
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: a4b95636052db0d5d244c5b451ec33dfa4e812f0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887292"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237379"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>Organisieren von Abonnements in Verwaltungsgruppen und Zuweisen von Rollen zu Benutzern
 
@@ -43,7 +43,7 @@ Eine ausführliche Übersicht über Verwaltungsgruppen finden Sie im Artikel [Or
 
 1. Verwenden Sie im [Azure-Portal](https://portal.azure.com) das Suchfeld in der oberen Leiste, um **Verwaltungsgruppen** zu suchen und zu öffnen.
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="Zugreifen auf Verwaltungsgruppen":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="Zugreifen auf Ihre Verwaltungsgruppen":::
 
     Die Liste Ihrer Verwaltungsgruppen wird angezeigt.
 
@@ -60,7 +60,7 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen.
 
 1. Öffnen Sie im Azure-Portal **Verwaltungsgruppen** und wählen Sie die Verwaltungsgruppe für Ihr Abonnement aus.
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="Auswählen einer Verwaltungsgruppe für das Abonnement":::
+    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="Auswählen einer Verwaltungsgruppe für Ihr Abonnement":::
 
 1. Wenn die Seite der Gruppe geöffnet wird, wählen Sie **Abonnements** aus.
 
@@ -79,7 +79,7 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen.
 
 1. Verwenden Sie im [Azure-Portal](https://portal.azure.com) das Suchfeld in der oberen Leiste, um **Verwaltungsgruppen** zu suchen und zu öffnen.
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="Zugreifen auf Verwaltungsgruppen":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="Zugreifen auf Ihre Verwaltungsgruppen":::
 
     Die Liste Ihrer Verwaltungsgruppen wird angezeigt.
 

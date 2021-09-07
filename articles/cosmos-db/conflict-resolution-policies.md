@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa21a1a6d6dfdd89f6532159a8da98fc5df08465
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93334377"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281357"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Konflikttypen und Konfliktauflösungsrichtlinien bei Verwendung mehrerer Schreibregionen
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,7 @@ Azure Cosmos DB bietet einen flexiblen, richtlinienbasierten Mechanismus zum Auf
   Wenn Sie Ihren Container mit der Option für die benutzerdefinierte Auflösung konfigurieren und keine Mergeprozedur im Container registrieren oder die Mergeprozedur zur Laufzeit eine Ausnahme auslöst, werden die Konflikte in den *Konfliktfeed* geschrieben. Ihre Anwendung muss die Konflikte im Konfliktfeed dann manuell auflösen. Weitere Informationen finden Sie unter [Anwendungsbeispiele für benutzerdefinierte Auflösungsrichtlinien und den Konfliktfeed](how-to-manage-conflicts.md).
 
   > [!NOTE]
-  > Die benutzerdefinierte Konfliktauflösungsrichtlinie ist nur für SQL-API-Konten verfügbar.
+  > Die benutzerdefinierte Konfliktlösungsrichtlinie ist nur für SQL API-Konten verfügbar und kann nur bei der Erstellung festgelegt werden. Es ist nicht möglich, eine benutzerdefinierte Lösungsrichtlinie für einen vorhandenen Container festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

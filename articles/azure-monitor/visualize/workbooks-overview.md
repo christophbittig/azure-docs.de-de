@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9a535e06278146f89f2c8f6a1844813c2417a1a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482771"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706920"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
@@ -19,6 +19,9 @@ Arbeitsmappen bieten einen flexiblen Bereich für die Datenanalyse und die Erste
 Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Arbeitsmappen.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
+
+> [!NOTE]
+> Legacyarbeitsmappen und private Arbeitsmappen wurden entfernt. Verwenden Sie das [Tool zum Abrufen von Arbeitsmappen](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/LegacyAI/DeprecatedWorkbookRetrievalTool.md), um den Inhalt Ihrer alten Arbeitsmappe abzurufen.
 
 ## <a name="data-sources"></a>Datenquellen
 
@@ -47,6 +50,8 @@ Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten
 * [Strukturen](../visualize/workbooks-tree-visualizations.md)
 * [Graphs](../visualize/workbooks-graph-visualizations.md)
 * [Gestapelte Säule](../visualize/workbooks-composite-bar.md)
+* [Wabenförmig](workbooks-honey-comb.md)
+* [Map](workbooks-map-visualizations.md)
 
 :::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Beispiele der Visualisierung von Arbeitsmappen." border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
@@ -54,7 +59,7 @@ Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten
 
 Die Schritte für Text, Abfrage und Metriken in einer Arbeitsmappe können mithilfe der Schaltfläche „Anheften“ an diese Elemente angeheftet werden, während sich die Arbeitsmappe im entsprechenden Modus befindet oder wenn der Arbeitsmappenautor Einstellungen für dieses Element aktiviert hat, damit das Symbol zum Anheften angezeigt wird.
 
-Zum Zugreifen auf den Modus für Anheften klicken Sie auf **Bearbeiten**, um in den Bearbeitungsmodus zu wechseln, und wählen Sie dann in der oberen Leiste das blaue Stecknadelsymbol aus. Daraufhin wird auf der rechten Seite des Bildschirms ein einzelnes Stecknadelsymbol oberhalb des Felds *Bearbeiten* für den entsprechenden Arbeitsmappenteil angezeigt.
+Wählen Sie zum Aktivieren des Anheftmodus **Bearbeiten** aus, um in den Bearbeitungsmodus zu wechseln, und wählen Sie dann auf der oberen Leiste das blaue Stecknadelsymbol aus. Daraufhin wird auf der rechten Seite des Bildschirms ein einzelnes Stecknadelsymbol oberhalb des Felds *Bearbeiten* für den entsprechenden Arbeitsmappenteil angezeigt.
 
 :::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Screenshot der Anheftfunktion" border="false":::
 
@@ -146,6 +151,7 @@ Wenn ein angehefteter Schritt einen explizit festgelegten Zeitbereich aufweist (
 ## <a name="sharing-workbook-templates"></a>Freigeben von Arbeitsmappenvorlagen
 
 Sobald Sie mit dem Erstellen Ihrer eigenen Arbeitsmappenvorlagen beginnen, können Sie diese für die breite Öffentlichkeit freigeben. Wenn Sie weitere Informationen wünschen und andere Vorlagen erkunden möchten, die nicht Teil der Azure Monitor-Standardkatalogansicht sind, besuchen Sie unser [GitHub-Repository](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md). Zum Durchsuchen vorhandener Arbeitsmappen besuchen Sie die [Arbeitsmappenbibliothek](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks) auf GitHub.
+
 
 ## <a name="next-step"></a>Nächster Schritt
 

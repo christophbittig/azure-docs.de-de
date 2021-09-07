@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7c8003bd40df21fb749fcb576afeaec5dacead9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459787"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236839"
 ---
 # <a name="manage-security-policies"></a>Verwalten von Sicherheitsrichtlinien
 
@@ -56,7 +56,7 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
 
     1. Zum Anzeigen und Bearbeiten der Standardinitiative wählen Sie **Effektive Richtlinie anzeigen** aus, und fahren wie unten beschrieben fort. 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Anzeige „Effektive Richtlinie“":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Bildschirm mit der effektiven Richtlinie":::
 
        Auf diesem Bildschirm **Sicherheitsrichtlinie** wird die Aktion der Richtlinien widergespiegelt, die dem von Ihnen ausgewählten Abonnement oder der Verwaltungsgruppe zugewiesen sind.
        
@@ -80,7 +80,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
 1. Wählen Sie in Security Center im Abschnitt **Richtlinie und Konformität** die Option **Sicherheitsrichtlinie** aus.
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsvorgangs in Azure Security Center":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsprozesses in Azure Security Center":::
 
 1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das/die Sie die Empfehlung (und Richtlinie) deaktivieren möchten.
 
@@ -93,7 +93,7 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
 
 1. Ändern Sie in der Dropdownliste den Wert für die entsprechende Richtlinie in **Disabled**.
 
-   ![Richtlinie deaktivieren](./media/tutorial-security-policy/disable-policy.png)
+   ![Deaktivieren der Richtlinie](./media/tutorial-security-policy/disable-policy.png)
 
 1. Wählen Sie **Speichern** aus.
 
@@ -109,7 +109,7 @@ So aktivieren Sie eine deaktivierte Richtlinie und stellen sicher, dass sie für
 
 1. Wählen Sie in Security Center im Abschnitt **Richtlinie und Konformität** die Option **Sicherheitsrichtlinie** aus.
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsvorgangs in Azure Security Center":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starten des Richtlinienverwaltungsprozesses in Azure Security Center":::
 
 1. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, für das/die Sie die Empfehlung (und Richtlinie) aktivieren möchten.
 

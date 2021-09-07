@@ -1,14 +1,14 @@
 ---
 title: 'YAML-Referenz: ACR Tasks'
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
-ms.topic: article
+ms.topic: reference
 ms.date: 07/08/2020
-ms.openlocfilehash: 126fcbce0569b2be6d9302cbbb718fa11e3e8046
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31e96c64ef8209e5e18add9508fe379f1eb0f414
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780945"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302661"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -63,12 +63,12 @@ In den folgenden Abschnitten dieses Artikels wird auf mehrere Beispielaufgabenda
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-Die Formatierung der Beispielbefehle setzt voraus, dass Sie eine Standardregistrierung in der Azure CLI konfiguriert haben, und enthalten den `--registry`-Parameter daher nicht. Verwenden Sie zum Konfigurieren einer Standardregistrierung den Befehl [az configure][az-configure] mit dem `--defaults`-Parameter, der einen `acr=REGISTRY_NAME`-Wert akzeptiert.
+Die Formatierung der Beispielbefehle setzt voraus, dass Sie eine Standardregistrierung in der Azure CLI konfiguriert haben, und enthalten den `--registry`-Parameter daher nicht. Verwenden Sie zum Konfigurieren einer Standardregistrierung den Befehl [az config][az-config] mit dem Befehl `set`, der ein Schlüssel-Wert-Paar vom Typ `defaults.acr=REGISTRY_NAME` akzeptiert.
 
 Der folgende Befehl konfiguriert die Azure CLI beispielsweise mit einer Standardregistrierung namens „myregistry“:
 
 ```azurecli
-az configure --defaults acr=myregistry
+az config set defaults.acr=myregistry
 ```
 
 ## <a name="task-properties"></a>Aufgabeneigenschaften
@@ -78,7 +78,7 @@ Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-tas
 | Eigenschaft | type | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | Zeichenfolge | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
-| `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `timeout`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft `timeout` für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | 600 (10 Minuten) |
+| `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die `stepTimeout`-Eigenschaft für eine Aufgabe angegeben wird, wird damit die Standardeigenschaft `timeout` für alle Schritte festgelegt. Wenn die `timeout`-Eigenschaft für einen Schritt angegeben wird, setzt sie die für die Aufgabe angegebene `stepTimeout`-Eigenschaft außer Kraft.<br/><br/>Die Summe der „stepTimeout“-Werte für eine Aufgabe sollte dem Wert der Ausführungseigenschaft `timeout` der Aufgabe entsprechen (z. B. Festlegung per Übergabe von `--timeout` an den Befehl `az acr task create`). Wenn der Ausführungswert `timeout` der Aufgabe kleiner ist, hat sie Priorität.  | Ja | 600 (10 Minuten) |
 | `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `c:\workspace` in Windows oder `/workspace` in Linux |
 | `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Ja | Keine |
 | `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Nein | Keine |
@@ -141,7 +141,7 @@ steps:
 
 Der Schritttyp `build` unterstützt die Parameter in der folgenden Tabelle. Darüber hinaus unterstützt der Schritttyp `build` alle Buildoptionen des Befehls [docker build](https://docs.docker.com/engine/reference/commandline/build/) (etwa `--build-arg`) zum Festlegen von Buildzeitvariablen.
 
-| Parameter | Beschreibung | Optional |
+| Parameter | BESCHREIBUNG | Optional |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | Definiert das vollständig qualifizierte `image:tag` des erstellten Images.<br /><br />Da Images für interne Aufgabenprüfungen verwendet werden können (z. B. Funktionstests), erfordern nicht alle Images einen `push` in eine Registrierung. Um ein Image innerhalb einer Aufgabenausführung anzugeben, erfordert das Image jedoch einen Namen, auf den verwiesen werden kann.<br /><br />Im Gegensatz zu `az acr build` bietet die Ausführung von ACR Tasks kein Standardverhalten für Pushvorgänge. Das Standardszenario bei ACR Tasks setzt voraus, dass ein Image erstellt, überprüft und anschließend gepusht werden kann. Informationen zum optionalen Pushen von erstellten Images finden Sie im Abschnitt zu [push](#push). | Ja |
 | `-f` &#124; `--file` | Gibt die Dockerfile-Datei an, die an `docker build` übergeben wird. Ist keine Datei angegeben, wird die Dockerfile-Standarddatei im Stamm des Kontexts verwendet. Wenn Sie ein Dockerfile angeben möchten, übergeben Sie den Dateinamen relativ zum Stamm des Kontexts. | Ja |
@@ -631,4 +631,4 @@ Informationen zu einstufigen Buildaufgaben finden Sie unter [ACR Tasks overview]
 <!-- LINKS - Internal -->
 [az-acr-run]: /cli/azure/acr#az_acr_run
 [az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
-[az-configure]: /cli/azure/reference-index#az_configure
+[az-config]: /cli/azure/reference-index#az_config
