@@ -1,20 +1,20 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 04/13/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 20ae8b6cbb29a9a0b43592c3b242707bb2d3add6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354936"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
 Erweiterungen für virtuelle Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z. B. Software auf einer VM installiert werden muss, Virenschutz oder die Ausführung eines Skripts erforderlich ist, kann eine VM-Erweiterung verwendet werden.
 
-Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in Azure gehostete Windows- und Linux-VMs bereitstellen, um die Verwaltung Ihrer Hybridcomputer über ihren gesamten Lebenszyklus zu vereinfachen. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-fähigen Servern verwaltet werden:
+Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in Azure gehostete Windows- und Linux-VMs bereitstellen, entfernen und aktualisieren, um die Verwaltung Ihrer Hybridcomputer über ihren gesamten Lebenszyklus zu vereinfachen. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-fähigen Servern verwaltet werden:
 
 - Das [Azure-Portal](manage-vm-extensions-portal.md)
 - Die [Azure CLI](manage-vm-extensions-cli.md)
@@ -22,13 +22,16 @@ Mit Azure Arc-fähigen Servern können Sie Azure-VM-Erweiterungen für nicht in 
 - [Azure Resource Manager-Vorlagen](manage-vm-extensions-template.md)
 
 > [!NOTE]
-> Server mit Azure Arc-Unterstützung unterstützen das Bereitstellen und Verwalten von VM-Erweiterungen auf virtuellen Azure-Computern nicht. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+> Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu virtuellen Azure-Computern finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
+
+> [!NOTE]
+> Derzeit können Sie Erweiterungen nur über das Azure-Portal aktualisieren. Das Ausführen dieses Vorgangs über die Azure CLI, Azure PowerShell oder mit einer Azure Resource Manager-Vorlage wird derzeit nicht unterstützt.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
 Die Unterstützung von VM-Erweiterungen durch Azure Arc-fähige Server bietet die folgenden Hauptvorteile:
 
-- Sammeln von Protokolldaten für die Analyse mit [Protokollen in Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) durch Aktivieren der Log Analytics-Agent-VM-Erweiterung. Dies ist nützlich, um komplexe Analysen über Daten aus unterschiedlichen Typen von Quellen hinweg auszuführen.
+- Sammeln von Protokolldaten für die Analyse mit [Protokollen in Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) durch Aktivieren der Log Analytics-Agent-VM-Erweiterung. Mit Log Analytics wird es nützlich, um komplexe Analysen über Protokolldaten aus unterschiedlichen Typen von Quellen hinweg auszuführen.
 
 - Der Dienst analysiert mithilfe von [VM insights](../../azure-monitor/vm/vminsights-overview.md) die Leistung Ihrer Windows- und Linux-VMs und überwacht deren Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen. Dies wird durch Aktivieren sowohl der Log Analytics-Agent- als auch der Dependency-Agent-VM-Erweiterung erreicht.
 
@@ -48,6 +51,8 @@ Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Er
 
 > [!NOTE]
 > Vor Kurzem wurde die Unterstützung für die DSC-VM-Erweiterung für Azure Arc-fähige Server entfernt. Alternativ empfiehlt es sich, die benutzerdefinierte Skripterweiterung zu verwenden, um die Konfiguration nach der Bereitstellung des Servers oder Computers zu verwalten.
+
+Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine oder mehrere VM-Erweiterungen installiert sind, zwischen Ressourcengruppen oder einem anderen Azure-Abonnement, ohne dass sich dies auf die Konfiguration auswirkt. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Weitere Informationen zum Verschieben von Ressourcen und Überlegungen vor dem Fortfahren finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="windows-extensions"></a>Windows-Erweiterungen
 
@@ -86,15 +91,15 @@ Lesen Sie unbedingt die Dokumentation zu jeder VM-Erweiterung, auf die in der vo
 
 Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein.
 
-### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault-VM-Erweiterung (Vorschau)
+### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung 
 
-Die folgenden Linux-Betriebssysteme werden von der Key Vault-VM-Erweiterung (Vorschau) nicht unterstützt:
+Die folgenden Linux-Betriebssysteme werden von der Key Vault-VM-Erweiterung nicht unterstützt:
 
 - CentOS Linux 7 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
-Die Bereitstellung der Key Vault-VM-Erweiterung (Vorschau) wird nur mit Folgendem unterstützt:
+Die Bereitstellung der Key Vault-VM-Erweiterung wird nur mit Folgendem unterstützt:
 
 - Die Azure-CLI
 - Azure PowerShell

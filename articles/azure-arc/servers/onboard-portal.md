@@ -1,14 +1,14 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
-ms.date: 11/05/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcccb9bbc4db14c2bc5553b1c88099f7b0d7f5d1
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183147"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356586"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -58,7 +58,7 @@ Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie da
 >* Zum Installieren und Deinstallieren des Agents sind *Administratorberechtigungen* erforderlich.
 >* Laden Sie zunächst das Installer-Paket herunter, und kopieren Sie es in einen Ordner auf dem Zielserver, oder verwenden Sie einen freigegebenen Netzwerkordner. Wenn Sie das Installer-Paket ohne Optionen ausführen, wird ein Setup-Assistent zur interaktiven Installation des Agents gestartet.
 
-Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in den Schritten beschriebener Befehl ausgeführt werden. Mit diesem Befehl wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt.
+Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in den Schritten beschriebener Befehl ausgeführt werden. Mit diesem Befehl wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt. Bei dieser Konfiguration kommuniziert der Agent mithilfe des HTTP-Protokolls über den Proxyserver.
 
 Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](/windows/win32/msi/command-line-options).
 
@@ -86,7 +86,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     ```
 
     >[!NOTE]
-    >Das Festlegen der Proxyauthentifizierung wird in dieser Vorschau vom Agent nicht unterstützt.
+    >Das Festlegen der Proxyauthentifizierung wird vom Agent nicht unterstützt.
     >
 
 3. Nachdem Sie den Agent installiert haben, müssen Sie ihn für die Kommunikation mit dem Azure Arc-Dienst konfigurieren, indem Sie den folgenden Befehl ausführen:
@@ -117,7 +117,7 @@ Der Linux-Agent für verbundene Computer wird im bevorzugten Paketformat für di
 
 * Installieren des Hybridressourcenanbieter-Pakets
 
-Durch Einschließen des Parameters `--proxy "{proxy-url}:{proxy-port}"` kann der Agent optional mit Ihren Proxyinformationen konfiguriert werden.
+Durch Einschließen des Parameters `--proxy "{proxy-url}:{proxy-port}"` kann der Agent optional mit Ihren Proxyinformationen konfiguriert werden. Bei dieser Konfiguration kommuniziert der Agent mithilfe des HTTP-Protokolls über den Proxyserver.
 
 Das Skript enthält auch Logik zum Identifizieren der unterstützten und nicht unterstützten Distributionen, und es überprüft die Berechtigungen, die zum Ausführen der Installation erforderlich sind.
 
@@ -131,7 +131,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-1. Wenn Sie den Agent herunterladen und installieren und dabei den Parameter `--proxy` einschließen möchten, um den Agent für die Kommunikation über Ihren Proxyserver zu konfigurieren, führen Sie die folgenden Befehle aus:
+1. Um den Agent herunterzuladen und zu installieren, führen sie die folgenden Befehle aus. Wenn Ihr Computer über einen Proxyserver kommunizieren muss, um eine Verbindung mit dem Internet herzustellen, schließen Sie den Parameter `--proxy` ein. 
 
     ```bash
     # Download the installation package.
@@ -166,6 +166,6 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 - Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
+- Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-- Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung mit Azure Monitor für VMs erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.
+- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
