@@ -2,14 +2,14 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 780957dec73177541e8677fb5f6551a6ad147797
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27ab9d607f3b8fad669682e980bc0178e8dfad42
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951433"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356447"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -43,7 +43,9 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 
 - Eine Schreibschutzsperre für ein **Speicherkonto** hindert Benutzer am Auflisten der Kontoschlüssel. Der Vorgang Azure Storage [List Keys](/rest/api/storagerp/storageaccounts/listkeys) wird durch eine Post-Anforderung verarbeitet, um den Zugriff auf die Kontoschlüssel zu schützen, die den gesamten Zugriff auf die Daten im Speicherkonto ermöglichen. Wenn eine Schreibschutzsperre für ein Speicherkonto konfiguriert ist, müssen Benutzer, die nicht über die Kontoschlüssel verfügen, Azure AD-Anmeldeinformationen verwenden, um auf Blob- oder Warteschlangendaten zuzugreifen. Eine Schreibschutzsperre verhindert auch die Zuweisung von Azure RBAC-Rollen, die auf das Speicherkonto oder einen Datencontainer (Blobcontainer oder Warteschlange) beschränkt sind.
 
-- Eine Löschschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt.
+- Eine Löschschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Diese Art von Sperre verhindert nur, dass das Konto selbst gelöscht wird. Wenn eine Anforderung [Vorgänge auf Datenebene](control-plane-and-data-plane.md#data-plane) verwendet, schützt die Sperre des Speicherkontos keine Blob-, Warteschlangen-, Tabellen- oder Dateidaten innerhalb dieses Speicherkontos. Wenn die Anforderung jedoch [Vorgänge auf Steuerungsebene](control-plane-and-data-plane.md#control-plane) verwendet, schützt die Sperre diese Ressourcen.
+
+  Wenn eine Anforderung z. B. [Dateifreigaben – Löschen](/rest/api/storagerp/file-shares/delete) verwendet, was ein Vorgang auf Steuerungsebene ist, wird der Löschvorgang verweigert. Wenn die Anforderung [Freigabe löschen](/rest/api/storageservices/delete-share) verwendet, was ein Vorgang auf Datenebene ist, ist der Löschvorgang erfolgreich. Es wird empfohlen, die Vorgänge auf Steuerungsebene zu verwenden.
 
 - Eine Schreibschutzsperre für ein **Speicherkonto** verhindert nicht, dass Daten innerhalb dieses Kontos gelöscht oder geändert werden. Durch diese Art von Schutz wird nur das Speicherkonto selbst vor dem Löschen oder Ändern geschützt. Blob-, Warteschlangen-, Tabellen- oder Dateidaten in diesem Speicherkonto werden nicht geschützt.
 
@@ -60,6 +62,10 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 - Eine Nichtlöschsperre für eine **Resourcengruppe** verhindert, dass **Azure Machine Learning** [Azure Machine Learning-Computeclusters](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed) automatisch skaliert, um nicht verwendete Knoten zu entfernen.
 
 - Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
+
+- Eine Schreibschutzsperre für ein **Application Gateway** verhindert, dass Sie die Back-End-Integrität des Anwendungsgateways abrufen können. Dieser [Vorgang verwendet POST](/rest/api/application-gateway/application-gateways/backend-health), das durch die Schreibschutzsperre blockiert wird.
+
+- Eine Schreibschutzsperre für einen **AKS-Cluster** hindert alle Benutzer daran, auf Clusterressourcen im Abschnitt **Kubernetes-Ressourcen** des linken Blatts des AKS-Clusters im Azure-Portal zuzugreifen. Diese Vorgänge erfordern eine POST-Anforderung für die Authentifizierung.
 
 ## <a name="who-can-create-or-delete-locks"></a>Voraussetzungen für das Erstellen oder Löschen von Sperren
 
