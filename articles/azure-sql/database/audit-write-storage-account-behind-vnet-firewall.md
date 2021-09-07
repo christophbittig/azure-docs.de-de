@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 2431ba1b59ae1f9891affe510e098d41fe166797
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060352"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711870"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Überwachungsprotokol
 > [!div class="checklist"]
 >
 > * Ein Speicherkonto vom Typ „Universell V2“. Wenn Sie über ein Speicherkonto vom Typ „Universell V1“ ober über ein Blob Storage-Konto verfügen, [führen Sie ein Upgrade auf ein Speicherkonto vom Typ „Universell V2“ durch](../../storage/common/storage-account-upgrade.md). Weitere Informationen finden Sie unter [Speicherkontentypen](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
-> * Das Speicherkonto muss sich im selben Abonnement und am selben Standort wie der [logische SQL-Server](logical-servers.md) befinden.
+> * Das Speicherkonto muss sich auf demselben Mandanten und an demselben Standort wie der [logische SQL-Server](logical-servers.md) befinden (unterschiedliche Abonnements sind zulässig).
 > * Das Azure Storage-Konto erfordert `Allow trusted Microsoft services to access this storage account`. Legen Sie dies im Speicherkonto unter **Firewalls und virtuelle Netzwerke** fest.
 > * Sie benötigen für das ausgewählte Speicherkonto die Berechtigung `Microsoft.Authorization/roleAssignments/write`. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 

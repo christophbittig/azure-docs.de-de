@@ -10,20 +10,20 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8945a5766865f4df6175e7330d3bf9c947e1fa0d
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96922629"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600494"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Verhindern von Überanpassung und unausgeglichenen Daten durch automatisiertes maschinelles Lernen
 
-Häufige Fehler bei der Erstellung von Machine Learning-Modellen sind Überanpassung und unausgeglichene Daten. Standardmäßig bietet das automatisierte maschinelle Lernen von Azure Machine Learning Diagramme und Metriken, die Ihnen helfen, diese Risiken zu identifizieren, und implementiert bewährte Methoden, um sie zu mindern. 
+Häufige Fehler bei der Erstellung von Machine Learning-Modellen sind Überanpassung und unausgeglichene Daten. Standardmäßig bietet das automatisierte maschinelle Lernen von Azure Machine Learning Diagramme und Metriken, die Ihnen helfen, diese Risiken zu identifizieren, und implementiert bewährte Methoden, um sie zu mindern. 
 
-## <a name="identify-over-fitting"></a>Erkennen von Überanpassung
+## <a name="identify-overfitting"></a>Erkennen von Überanpassung
 
-Überanpassung bei maschinellem Lernen tritt auf, wenn ein Modell zu gut zu den Trainingsdaten passt und daher nicht in der Lage ist, eine genaue Vorhersage für unbekannte Testdaten zu bieten. Mit anderen Worten, das Modell hat sich schlicht bestimmte Muster und bestimmtes Rauschen in den Trainingsdaten gemerkt, ist aber nicht flexibel genug, um Vorhersagen zu echten Daten zu treffen.
+Überanpassung bei maschinellem Lernen tritt auf, wenn ein Modell zu gut zu den Trainingsdaten passt und daher nicht in der Lage ist, eine genaue Vorhersage für unbekannte Testdaten zu liefern. Mit anderen Worten, das Modell hat sich schlicht bestimmte Muster und bestimmtes Rauschen in den Trainingsdaten gemerkt, ist aber nicht flexibel genug, um Vorhersagen zu echten Daten zu treffen.
 
 Sehen Sie sich die folgenden trainierten Modelle und deren entsprechende Trainings- und Testgenauigkeiten an.
 
@@ -39,11 +39,11 @@ Wenn die Modelle **A** und **B** verglichen werden, ist das Modell **A** ein bes
 
 Model **C** repräsentiert einen eindeutigen Fall von Überanpassung. Die Trainingsgenauigkeit ist sehr hoch, aber die Testgenauigkeit ist nirgends annähernd so hoch. Diese Unterscheidung ist subjektiv, aber sie ergibt sich aus dem Wissen über Ihr Problem und Ihre Daten und darüber, welches Ausmaß an Fehlern akzeptabel ist.
 
-## <a name="prevent-over-fitting"></a>Verhindern von Überanpassung
+## <a name="prevent-overfitting"></a>Verhindern der Überanpassung
 
-In den gravierendsten Fällen führt ein überangepasstes Modell zu der Annahme, dass die beim Training verwendeten Featurewertkombinationen immer die exakt selbe Ausgabe für das Ziel bringen.
+In den gravierendsten Fällen führt ein überangepasstes Modell zu der Annahme, dass die beim Training verwendeten Featurewertkombinationen immer die exakt gleiche Ausgabe für das Ziel ergeben.
 
-Die beste Möglichkeit, eine über Anpassung zu verhindern, besteht darin, die bewährten Methoden für maschinelles Lernen (ML) zu befolgen. Dazu gehören:
+Eine Überanpassung lässt sich am besten durch Anwendung der bewährten Methoden für maschinelles Lernen verhindern. Dazu gehören:
 
 * Verwenden von möglichst vielen Trainingsdaten und Eliminieren statistischer systematischer Abweichungen
 * Verhindern von Zielungenauigkeit (target leakage)
@@ -52,21 +52,33 @@ Die beste Möglichkeit, eine über Anpassung zu verhindern, besteht darin, die b
 * **Einschränkungen der Modellkomplexität**
 * **Kreuzvalidierung**
 
-Im Kontext von automatisiertem ML sind die ersten drei dieser Aspekte **bewährte Methoden, die Sie implementieren**. Die letzten drei fett formatierten Aspekte sind **bewährte Methoden, die standardmäßig von automatischem ML implementiert werden**, um Überanpassung zu vermeiden. In Konfigurationen ohne automatisiertes ML sollten alle sechs bewährten Methoden beachtet werden, um Überanpassung von Modellen zu verhindern.
+Im Kontext von automatisiertem ML sind die ersten drei dieser Aspekte **bewährte Methoden, die Sie implementieren**. Die letzten drei fett formatierten Aspekte sind **bewährte Methoden, die standardmäßig von automatischem ML implementiert werden**, um eine Überanpassung zu vermeiden. In Konfigurationen ohne automatisiertes ML sollten alle sechs bewährten Methoden beachtet werden, um eine Überanpassung von Modellen zu verhindern.
 
-### <a name="best-practices-you-implement"></a>Bewährte Methoden, die Sie implementieren
+## <a name="best-practices-you-implement"></a>Bewährte Methoden, die Sie implementieren
 
-Die Verwendung von **mehr Daten** ist die einfachste und beste Möglichkeit, eine Überanpassung zu verhindern, und erhöht als Zusatzbonus in den meisten Fällen die Genauigkeit. Wenn Sie mehr Daten verwenden, wird es für das Modell schwieriger, sich genaue Muster zu merken, und es ist gezwungen, Lösungen zu finden, die flexibler sind, um mehr Bedingungen zu erfüllen. Außerdem ist es wichtig, **statistische systematische Abweichungen** zu erkennen, um sicherzustellen, dass die Trainingsdaten keine isolierten Muster enthalten, die in echten Vorhersagedaten nicht vorhanden sind. Ein Auflösen dieses Szenarios kann schwierig sein, da möglicherweise keine Überanpassung zwischen Ihren Trainings- und Testsätzen vorliegt, beim Vergleich mit echten Testdaten aber Überanpassung vorhanden ist.
+### <a name="use-more-data"></a>Verwenden von mehr Daten
 
-**Zielungenauigkeit** (target leakage) ist ein ähnliches Problem, bei dem Sie möglicherweise keine Überanpassung zwischen den Trainings- und Testsätzen feststellen, aber Überanpassung zur Vorhersagezeit auftritt. Zielungenauigkeit tritt auf, wenn Ihr Modell während des Trainings „betrügt“, indem es Zugriff auf Daten hat, auf die es zur Vorhersagezeit normalerweise keinen Zugriff haben sollte. Angenommen, Ihr Problem darin besteht, am Montag den Preis vorherzusagen, den eine Ware am Freitag haben wird, aber eines Ihrer Features enthielt versehentlich Daten von Donnerstagen, und dies wären Daten, die das Modell zur Vorhersagezeit nicht zur Verfügung hat, weil es nicht in die Zukunft schauen kann. Zielungenauigkeit ist ein Fehler, der sich leicht übersehen lässt, ist aber häufig durch eine ungewöhnlich hohe Genauigkeit für Ihr Problem gekennzeichnet. Wenn Sie versuchen, den Aktienkurs vorherzusagen und ein Modell mit einer Genauigkeit von 95 % trainiert haben, gibt es wahrscheinlich eine Zielungenauigkeit in ihren Features.
+Die Verwendung von **mehr Daten** ist die einfachste und beste Möglichkeit, um eine Überanpassung zu verhindern, und erhöht außerdem in den meisten Fällen die Genauigkeit. Wenn Sie mehr Daten verwenden, wird es für das Modell schwieriger, sich genaue Muster zu merken, und es ist gezwungen, Lösungen zu finden, die flexibler sind, um mehr Bedingungen zu erfüllen. Außerdem ist es wichtig, **statistische systematische Abweichungen** zu erkennen, um sicherzustellen, dass die Trainingsdaten keine isolierten Muster enthalten, die in echten Vorhersagedaten nicht vorhanden sind. Dieses Szenarios lässt sich unter Umständen nicht so einfach lösen, da möglicherweise keine Überanpassung zwischen Ihren Trainings- und Testsätzen vorhanden ist, beim Vergleich mit echten Testdaten aber eine Überanpassung vorliegt.
 
-Ein **Entfernen von Features** kann ebenfalls gegen Überanpassung helfen, indem verhindert wird, dass das Modell zu viele Felder verwendet, um sich bestimmte Muster zu merken. Dies führt dazu, dass das Modell flexibler wird. Ein quantitatives Messen ist möglicherweise schwierig, aber wenn Sie Features entfernen und dieselbe Genauigkeit beibehalten können, haben Sie das Modell wahrscheinlich flexibler gestaltet und das Risiko einer Überanpassung verringert.
+### <a name="prevent-target-leakage"></a>Verhindern von Zielungenauigkeit (target leakage)
 
-### <a name="best-practices-automated-ml-implements"></a>Bewährte Methoden, die von automatisiertem ML implementiert werden
+**Zielungenauigkeit** (target leakage) ist ein ähnliches Problem, bei dem Sie möglicherweise keine Überanpassung zwischen den Trainings- und Testsätzen feststellen, aber eine Überanpassung zur Vorhersagezeit auftritt. Zielungenauigkeit tritt auf, wenn Ihr Modell während des Trainings „betrügt“, indem es Zugriff auf Daten hat, auf die es zur Vorhersagezeit normalerweise keinen Zugriff haben sollte. Angenommen, Ihr Problem darin besteht, am Montag den Preis vorherzusagen, den eine Ware am Freitag haben wird, aber eines Ihrer Features enthielt versehentlich Daten von Donnerstagen, und dies wären Daten, die das Modell zur Vorhersagezeit nicht zur Verfügung hat, weil es nicht in die Zukunft schauen kann. Zielungenauigkeit ist ein Fehler, der sich leicht übersehen lässt, ist aber häufig durch eine ungewöhnlich hohe Genauigkeit für Ihr Problem gekennzeichnet. Wenn Sie versuchen, den Aktienkurs vorherzusagen und ein Modell mit einer Genauigkeit von 95 % trainiert haben, gibt es wahrscheinlich eine Zielungenauigkeit in ihren Features.
 
-**Regularisierung** ist der Prozess, bei dem eine Kostenfunktion minimiert wird, um komplexe und überangepasste Modelle zu pönalisieren. Es gibt unterschiedliche Arten von Regularisierungsfunktionen, aber normalerweise pönalisieren diese alle die Modellkoeffizientengröße, -varianz und -komplexität. Automatisiertes ML verwendet L1 (Lasso), L2 (Ridge) und ElasticNet (L1 und L2 gleichzeitig) in verschiedenen Kombinationen mit unterschiedlichen Modellhyperparametereinstellungen, die Überanpassung steuern. In einfachen Worten, automatisiertes ML variiert, wie stark ein Modell reguliert wird, und wählt das beste Ergebnis aus.
+### <a name="use-fewer-features"></a>Verwenden von weniger Features
+
+Das **Entfernen von Features** kann ebenfalls gegen Überanpassung helfen, da es verhindert, dass das Modell zu viele Felder verwendet, um sich bestimmte Muster zu merken. Dies führt dazu, dass das Modell flexibler wird. Eine quantitative Messung ist ggf. schwierig, aber wenn Sie Features entfernen können und die gleiche Genauigkeit erhalten, haben Sie das Modell wahrscheinlich flexibler gestaltet und das Risiko einer Überanpassung verringert.
+
+## <a name="best-practices-automated-ml-implements"></a>Bewährte Methoden, die von automatisiertem ML implementiert werden
+
+### <a name="regularization-and-hyperparameter-tuning"></a>Regularisierung und Hyperparameteroptimierung
+
+**Regularisierung** ist ein Prozess, bei dem eine Kostenfunktion minimiert wird, um komplexe und überangepasste Modelle zu pönalisieren. Es gibt unterschiedliche Arten von Regularisierungsfunktionen, aber normalerweise pönalisieren diese alle die Modellkoeffizientengröße, -varianz und -komplexität. Automatisiertes ML verwendet L1 (Lasso), L2 (Ridge) und ElasticNet (L1 und L2 gleichzeitig) in verschiedenen Kombinationen mit unterschiedlichen Modellhyperparametereinstellungen, die Überanpassung steuern. In einfachen Worten, automatisiertes ML variiert, wie stark ein Modell reguliert wird, und wählt das beste Ergebnis aus.
+
+### <a name="model-complexity-limitations"></a>Einschränkungen der Modellkomplexität
 
 Automatisiertes ML implementiert auch explizite **Einschränkungen der Modellkomplexität**, um Überanpassung zu verhindern. In den meisten Fällen erfolgt diese Implementierung speziell für Entscheidungsstruktur- oder Gesamtstrukturalgorithmen, bei denen die maximale Tiefe der einzelnen Strukturen und die Gesamtzahl der in der Gesamtstruktur oder in den Kombinationstechniken verwendeten Strukturen begrenzt sind.
+
+### <a name="cross-validation"></a>Kreuzvalidierung
 
 **Kreuzvalidierung** ist der Prozess, bei dem viele Teilmengen Ihrer vollständigen Trainingsdaten erstellt werden und ein Modell mit jeder Teilmenge trainiert wird. Die Idee ist, dass ein Modell „glücklich“ werden und eine große Genauigkeit mit einer Teilmenge erzielen könnte, aber durch Verwenden vieler Teilmengen wird das Modell diese hohe Genauigkeit nicht jedes Mal erzielen. Wenn Sie eine Kreuzvalidierung vornehmen, stellen Sie ein Validierungsdataset mit zurückgehaltenen Daten bereit, und geben Sie Ihre Kreuzvalidierungsfalten (Anzahl der Teilmengen) an. Automatisiertes ML trainiert daraufhin Ihr Modell und optimiert Hyperparameter, um den Fehler für Ihren Validierungssatz zu minimieren. Eine Kreuzvalidierungsfalte könnte überangepasst sein, aber dadurch, dass viele von ihnen verwendet werden, wird die Wahrscheinlichkeit verringert, dass das endgültige Modell überangepasst ist. Der Nachteil ist, dass Kreuzvalidierung längere Trainingszeiten und somit höhere Kosten verursacht, denn anstatt ein Modell einmal zu trainieren, trainieren Sie es einmal mit jeder der *n* Kreuzvalidierungsteilmengen. 
 
@@ -112,5 +124,3 @@ Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erst
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
   + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-use-automated-ml-for-ml-models.md).
   + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
-
-

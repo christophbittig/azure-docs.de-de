@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955400"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633777"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
 
@@ -35,7 +35,7 @@ Nutzen Sie die folgenden Ressourcen, um Ihr Azure-Anwendungsangebot für den kom
 
 - [Verstehen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/syntax.md)
 - Schnellstartanleitungen:
-    - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/)
+    - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/)
     - [Leitfaden zu bewährten Methoden für Azure-Vorlagen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     - [Veröffentlichen der Anwendungsdefinition](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
     - [Bereitstellen einer Dienstkatalog-App](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
@@ -95,7 +95,7 @@ Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zei
 
 ## <a name="categories-and-subcategories"></a>Kategorien und Unterkategorien
 
-Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md#categories).
+Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](marketplace-categories-industries.md#categories).
 
 ## <a name="legal-contracts"></a>Verträge
 
@@ -148,7 +148,7 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
     Dieses Textfeld enthält Rich-Text-Editor-Steuerelemente, mit denen Sie die Beschreibung ansprechender gestalten können. Die Beschreibung kann mithilfe von HTML-Tags formatiert werden. Sie können in diesem Feld bis zu 3.000 Zeichen Text eingeben, einschließlich HTML-Markup und Leerzeichen. Weitere Tipps finden Sie unter [Erstellen einer interessanten App-Beschreibung](/windows/uwp/publish/write-a-great-app-description) und [In Angebotsbeschreibungen des kommerziellen Marketplace unterstützte HTML-Tags](supported-html-tags.md).
 
 - **Suchbegriffe** (optional): Geben Sie bis zu drei Suchschlüssel ein, mit denen Kunden in den Onlineshops nach Ihrem Angebot suchen können. Um optimale Ergebnisse zu erzielen, sollten Sie diese Schlüsselwörter auch in ihrer Beschreibung verwenden. Der **Name** und die **Beschreibung** des Angebots müssen nicht aufgenommen werden. Dieser Text wird automatisch in die Suche eingeschlossen.
-- **Link zur Datenschutzrichtlinie**: Die URL zur Datenschutzrichtlinie Ihres Unternehmens. Sie müssen eine gültige Datenschutzrichtlinie bereitstellen und sicherstellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt.
+- **Link zur Datenschutzrichtlinie**: URL zur Datenschutzrichtlinie Ihres Unternehmens. Sie müssen eine gültige Datenschutzrichtlinie bereitstellen und sicherstellen, dass die App die Datenschutzgesetze und -bestimmungen erfüllt.
 - **Nützliche Links** (optional): Sie können für Benutzer Ihres Angebots Links zu verschiedenen Ressourcen bereitstellen. Beispiele: Foren, FAQ und Versionshinweise.
 - **Kontaktinformationen**: Die folgenden Kontakte müssen in Ihrem Unternehmen festgelegt werden:
   - **Supportkontakt**: Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse für Microsoft-Partner an. Diese werden dann von Kunden bei der Eröffnung von Supporttickets verwendet. Sie müssen auch die URL für Ihre Supportwebsite einschließen.

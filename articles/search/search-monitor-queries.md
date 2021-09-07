@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/26/2021
+ms.openlocfilehash: 67ada228d3b4ed95b1247b221f0ad90bbbc74ba0
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592393"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416963"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
 In diesem Artikel erfahren Sie, wie Sie Abfrageleistung und -volumen mit Metriken und Ressourcenprotokollierung messen können. Außerdem wird erläutert, wie Sie die in Abfragen verwendeten Eingabebegriffe sammeln – notwendige Informationen, wenn Sie das den Nutzen und die Effektivität Ihres Suchkorpus beurteilen müssen.
 
-Verlaufsdaten, die in Metriken einfließen, werden 30 Tage lang aufbewahrt. Zur längeren Aufbewahrung, oder um operative Daten und Abfragezeichenfolgen zu erfassen, stellen Sie sicher, dass eine [Diagnoseeinstellung aktiviert ist](search-monitor-logs.md), die festlegt, dass protokollierte Ereignisse und Metriken beibehalten werden.
+Im Azure-Portal werden grundlegende Metriken zur Abfragelatenz, Abfragelast (Queries Per Second, QPS) und Drosselung angezeigt. Verlaufsdaten, die in diese Metriken einfließen, werden 30 Tage lang aufbewahrt. Zur längeren Aufbewahrung oder zur Erstellung von Berichten für operative Daten und Abfragezeichenfolgen müssen Sie eine [Diagnoseeinstellung](search-monitor-logs.md) aktivieren, mit der festgelegt wird, dass protokollierte Ereignisse und Metriken beibehalten werden.
 
 Zu den Bedingungen, die die Integrität der Datenmessung maximieren, gehören:
 
@@ -116,7 +116,7 @@ Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü *
 
 1. Vergrößern Sie einen relevanten Bereich im Liniendiagramm. Platzieren Sie den Mauszeiger am Anfang des Bereichs, halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste wieder los. Im Diagramm wird dieser Zeitbereich vergrößert.
 
-## <a name="identify-strings-used-in-queries"></a>Identifizieren von Zeichenfolgen in Abfragen
+## <a name="return-query-strings-entered-by-users"></a>Zurückgeben von Abfragezeichenfolgen, die von Benutzern eingegeben werden
 
 Wenn Sie die Ressourcenprotokollierung aktivieren, erfasst das System Abfrageanforderungen in der Tabelle **AzureDiagnostics**. Als Voraussetzung müssen Sie die [Ressourcenprotokollierung](search-monitor-logs.md) bereits aktiviert und einen Log Analytics-Arbeitsbereich oder eine andere Speicheroption angegeben haben.
 
@@ -124,8 +124,8 @@ Wenn Sie die Ressourcenprotokollierung aktivieren, erfasst das System Abfrageanf
 
 1. Führen Sie den folgenden Ausdruck aus, um Query.Search-Vorgänge zu suchen und ein tabellarisches Resultset zurückzugeben, das aus dem Vorgangsnamen, der Abfragezeichenfolge, dem abgefragten Index und der Anzahl der gefundenen Dokumente besteht. Die letzten beiden Anweisungen schließen aus einer leeren oder nicht angegebenen Suche bestehende Abfragezeichenfolgen über einen Beispielindex aus, wodurch unnötige Informationen in den Ergebnissen reduziert werden.
 
-   ```
-   AzureDiagnostics
+   ```kusto
+      AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
    | where Query_s != "?api-version=2020-06-30&search=*"
@@ -144,9 +144,9 @@ Fügen Sie eine Spalte für die Dauer hinzu, um die Zahlen für alle Abfragen zu
 
 1. Wählen Sie im Abschnitt „Überwachung“ die Option **Protokolle** aus, um nach Protokollinformationen abzufragen.
 
-1. Führen Sie die folgende Abfrage aus, um Abfragen, sortiert nach Dauer in Millisekunden, zurückzugeben. Die längsten Abfragen stehen oben.
+1. Führen Sie die folgende grundlegende Abfrage aus, um Abfragen sortiert nach Dauer in Millisekunden zurückzugeben. Die längsten Abfragen stehen oben.
 
-   ```
+   ```Kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search"
@@ -182,10 +182,6 @@ Wenn die Grenzen einer bestimmten Replikat-Partition-Konfiguration überschritte
    ![Warnungsdetails](./media/search-monitor-usage/alert-details.png "Warnungsdetails")
 
 Wenn Sie eine E-Mail-Benachrichtigung angegeben haben, erhalten Sie eine E-Mail von „Microsoft Azure“ mit der Betreffzeile „Azure: Aktivierter Schweregrad: 3 `<your rule name>`.
-
-<!-- ## Report query data
-
-Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

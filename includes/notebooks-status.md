@@ -4,13 +4,12 @@ ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
 ms.date: 02/08/2020
-ms.openlocfilehash: bbf834a25c65403933d7576eb059b86e6e22b94c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 646b05e6d6c633c1141745b59288b41df5f55a50
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987476"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113603638"
 ---
 > [!IMPORTANT]
-> Am 15. Januar 2021 wurde die Website von Azure Notebooks Public Preview eingestellt und durch integrierte Dienste aus Visual Studio, Azure und GitHub ersetzt. Wenn Sie neue Notebook-Inhalte erstellen oder Notebook-Inhalte ausführen möchten, finden Sie [hier](https://aka.ms/aznb-notebooks-at-msft/) Informationen zu anderen Notebook-Umgebungen von Microsoft.
-
+> Am 15. Januar 2021 wurde die Website von Azure Notebooks Public Preview eingestellt. 

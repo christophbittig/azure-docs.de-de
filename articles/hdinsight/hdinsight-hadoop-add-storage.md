@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86fa4eb83592d5c9927139c096a60c2ebc4efbc0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864311"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552080"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -124,12 +124,11 @@ Wenn Sie den Schlüssel für ein Speicherkonto ändern, kann HDInsight nicht meh
 
 Das wiederholte Ausführen der Skriptaktion aktualisiert den Schlüssel **nicht**, da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
 
-So umgehen Sie dieses Problem:  
-1. Entfernen Sie das Speicherkonto.
-1. Fügen Sie das Speicherkonto hinzu.
+So umgehen Sie dieses Problem:
 
-> [!IMPORTANT]  
-> Das Rotieren des Speicherschlüssels für das primäre Speicherkonto, das an einen Cluster gekoppelt ist, wird nicht unterstützt.
+* Informationen zur Rotation der Zugriffsschlüssel finden Sie im Artikel zum Thema [Aktualisieren von Speicherkonto-Zugriffsschlüsseln](hdinsight-rotate-storage-keys.md).
+
+* Sie können das Speicherkonto auch entfernen und dann wieder hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

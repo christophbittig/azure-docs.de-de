@@ -4,12 +4,12 @@ description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderun
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/19/2021
-ms.openlocfilehash: e992fcd16b678a89ae56ceaea4bd7d4ffb85c4fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d81881318f6bbfa5c44b9cd947cf408cefa766ae
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455079"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616242"
 ---
 # <a name="diagnose-exceptions-in-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Web-Apps mit Application Insights
 
@@ -26,7 +26,7 @@ Berücksichtigen Sie die folgenden Szenarios, damit Ausnahmen Ihrer serverseitig
   * **Azure-Web-Apps:** Fügen Sie die [Application Insights-Erweiterung](./azure-web-apps.md) hinzu.
   * **Auf Azure-VMs oder über Azure-VM-Skalierungsgruppen ausgeführte, in IIS gehostete Apps:** Fügen Sie die [Erweiterung zur Anwendungsüberwachung](./azure-vm-vmss-apps.md) hinzu.
   * Installieren Sie das [Application Insights SDK](./asp-net.md) in Ihrer App.
-  * **IIS-Webserver:** Führen Sie den [Application Insights-Agent](./monitor-performance-live-website-now.md) aus.
+  * **IIS-Webserver:** Führen Sie den [Application Insights-Agent](./status-monitor-v2-overview.md) aus.
   * **Java-Web-Apps:** Aktivieren Sie den [Java-Agent](./java-in-process-agent.md).
 
 ### <a name="client-side"></a>Clientseitig
@@ -520,7 +520,7 @@ namespace WcfService4
 
 ## <a name="exception-performance-counters"></a>Ausnahmeleistungsindikatoren
 
-Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](./monitor-performance-live-website-now.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
+Wenn Sie den [Azure Monitor Application Insights-Agent auf Ihrem Server installiert haben](./status-monitor-v2-overview.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
 
 Öffnen Sie eine Metrik-Explorer-Registerkarte, fügen Sie ein neues Diagramm hinzu, und wählen Sie in den Leistungsindikatoren **Ausnahmerate** aus.
 

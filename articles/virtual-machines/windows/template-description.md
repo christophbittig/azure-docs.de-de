@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28262d66794d573d40e4e202d8b047e1d1fbefc7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 167a92e9e9950245d58fd7497eb9df4c29f0fa7e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953804"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281627"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
 In diesem Artikel werden die Aspekte einer Azure Resource Manager-Vorlage beschrieben, die für virtuelle Computer gelten. Es wird keine vollständige Vorlage zum Erstellen eines virtuellen Computers beschrieben. Hierfür benötigen Sie Ressourcendefinitionen für Speicherkonten, Netzwerkschnittstellen, öffentliche IP-Adressen und virtuelle Netzwerke. Weitere Informationen dazu, wie diese Ressourcen zusammen definiert werden können, finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-Es sind viele [Vorlagen im Katalog](https://azure.microsoft.com/documentation/templates/?term=VM) enthalten, die eine VM-Ressource aufweisen. Hier werden nicht alle Elemente beschrieben, die in eine Vorlage eingebunden werden können.
+Es sind viele [Vorlagen im Katalog](https://azure.microsoft.com/resources/templates/?term=VM) enthalten, die eine VM-Ressource aufweisen. Hier werden nicht alle Elemente beschrieben, die in eine Vorlage eingebunden werden können.
 
  
 
@@ -33,7 +33,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop", 
+      "name": "virtualMachineLoop",  
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -217,7 +217,7 @@ Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, kön
 
 ```json
 "copy": {
-  "name": "virtualMachineLoop", 
+  "name": "virtualMachineLoop",  
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -448,7 +448,7 @@ Wenn Sie den Status der Ressourcen einer Bereitstellung anzeigen möchten, zeige
 
 ![Abrufen von Bereitstellungsinformationen](./media/template-description/virtual-machines-deployment-info.png)
     
-Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualisieren von vorhandenen Ressourcen zu nutzen. Wenn Sie Befehle zum Bereitstellen von Vorlagen verwenden, haben Sie die Möglichkeit, den gewünschten [Modus](../../azure-resource-manager/templates/deploy-powershell.md) anzugeben. Der Modus kann entweder auf **Complete** oder **Incremental** festgelegt werden. Inkrementelle Updates sind die Standardeinstellung. Gehen Sie bei der Verwendung des Modus **Complete** mit Bedacht vor, damit Sie nicht versehentlich Ressourcen löschen. Wenn Sie den Modus auf **Complete** festlegen, löscht Resource Manager alle Ressourcen in der Ressourcengruppe, die nicht in der Vorlage enthalten sind.
+Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder zum Aktualisieren von vorhandenen Ressourcen zu nutzen. Wenn Sie Befehle zum Bereitstellen von Vorlagen verwenden, haben Sie die Möglichkeit, den gewünschten [Modus](../../azure-resource-manager/templates/deploy-powershell.md) anzugeben. Der Modus kann entweder auf **Complete** oder **Incremental** festgelegt werden. Inkrementelle Updates sind die Standardeinstellung. Gehen Sie bei der Verwendung des Modus **Complete** mit Bedacht vor, damit Sie nicht versehentlich Ressourcen löschen. Wenn Sie den Modus auf **Complete** festlegen, löscht Resource Manager alle Ressourcen in der Ressourcengruppe, die nicht in der Vorlage enthalten sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

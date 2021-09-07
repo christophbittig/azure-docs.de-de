@@ -4,12 +4,12 @@ description: Informationen zur Problembehandlung in den Kubelet-Protokollen aus 
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 355c665db2627fe04595a8b519b16bd475ebcadf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20296d100d5a6bcd2cffbc93f29bfd71f56099c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735147"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355213"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 
@@ -27,11 +27,14 @@ Erstellen Sie zunächst eine SSH-Verbindung mit dem Knoten, für den Sie *Kubele
 
 ## <a name="get-kubelet-logs"></a>Abrufen von Kubelet-Protokollen
 
-Sobald Sie mit dem Knoten verbunden sind, können Sie den folgenden Befehl ausführen, um die *Kubelet*-Protokolle abzurufen.
+Sobald Sie über `kubectl debug` eine Verbindung mit dem Knoten hergestellt haben, können Sie den folgenden Befehl ausführen, um die *Kubelet*-Protokolle abzurufen:
 
 ```console
-sudo journalctl -u kubelet -o cat
+chroot /host
+journalctl -u kubelet -o cat
 ```
+> [!NOTE]
+> Eine Verwendung von `sudo journalctl` ist nicht erforderlich, weil Sie bereits als `root` auf dem Knoten agieren.
 
 > [!NOTE]
 > Bei Windows-Knoten befinden sich die Protokolldaten unter `C:\k` und können mithilfe des Befehls *more* angezeigt werden:
@@ -71,8 +74,8 @@ Wenn Sie zur Problembehandlung weitere Informationen des Kubernetes-Masters ben�
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [azure-container-logs]: ../azure-monitor/containers/container-insights-overview.md

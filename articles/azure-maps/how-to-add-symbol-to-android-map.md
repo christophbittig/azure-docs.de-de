@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f2aaf03f4314386615fabfe65ca47132543577fa
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097209"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091697"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Hinzufügen einer Symbolebene (Android SDK)
 
@@ -137,16 +137,16 @@ map.layers.add(layer)
 
 ::: zone-end
 
-Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code unter Verwendung eines Symbols und einer Beschriftung mit einer Symbolebene ein Punktfeature gerendert wird.
+Der folgende Screenshot zeigt, wie durch den oben aufgeführten Code unter Verwendung eines Symbols und einer Beschriftung mit einer Symbolebene ein Punktfeature gerendert wird.
 
 ![Karte mit gerendertem Punkt. Dabei wird eine Symbolebene zur Darstellung eines Symbols und einer Beschriftung für ein Punktfeature verwendet.](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
 > Standardmäßig optimieren Symbolebenen das Rendering von Symbolen, indem sie überlappende Symbole ausblenden. Beim Zoomen werden die ausgeblendeten Symbole angezeigt. Legen Sie die Optionen `iconAllowOverlap` und `textAllowOverlap` auf `true` fest, um dieses Feature zu deaktivieren und immer alle Symbole zu rendern.
 
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Hinzufügen eines benutzerdefinierten Zeichens zu einer Symbolebene
+## <a name="add-a-custom-icon-to-a-symbol-layer&quot;></a>Hinzufügen eines benutzerdefinierten Zeichens zu einer Symbolebene
 
-Symbolebenen werden mit WebGL gerendert. Daher müssen alle Ressourcen wie etwa Zeichenbilder in den WebGL-Kontext geladen werden. Dieses Beispiel zeigt, wie Sie ein benutzerdefiniertes Symbol zu den Kartenressourcen hinzufügen können. Dieses Symbol wird dann zum Rendern von Punktdaten mit einem benutzerdefinierten Symbol auf der Karte verwendet. Die `textField`-Eigenschaft der Symbolebene erfordert, dass ein Ausdruck angegeben wird. In diesem Fall möchten wir die temperature-Eigenschaft rendern. Da die Temperatur eine Zahl ist, muss Sie in eine Zeichenfolge konvertiert werden. Außerdem soll „°F“ angefügt werden. Diese Verkettung ist mit folgendem Ausdruck möglich: `concat(Expression.toString(get("temperature")), literal("°F"))`.
+Symbolebenen werden mit WebGL gerendert. Daher müssen alle Ressourcen wie etwa Zeichenbilder in den WebGL-Kontext geladen werden. Dieses Beispiel zeigt, wie Sie ein benutzerdefiniertes Symbol zu den Kartenressourcen hinzufügen können. Dieses Symbol wird dann zum Rendern von Punktdaten mit einem benutzerdefinierten Symbol auf der Karte verwendet. Die `textField`-Eigenschaft der Symbolebene erfordert, dass ein Ausdruck angegeben wird. In diesem Fall möchten wir die temperature-Eigenschaft rendern. Da die Temperatur eine Zahl ist, muss Sie in eine Zeichenfolge konvertiert werden. Außerdem soll „°F“ angefügt werden. Diese Verkettung ist mit folgendem Ausdruck möglich: `concat(Expression.toString(get(&quot;temperature")), literal("°F"))`.
 
 ::: zone pivot="programming-language-java-android"
 
@@ -211,28 +211,28 @@ val layer = SymbolLayer(
 
 ::: zone-end
 
-In diesem Beispiel wurde die folgende Abbildung in den Ordner „drawable“ der App geladen.
+In diesem Beispiel wird das folgende Bild in den Ordner „drawable“ der App geladen.
 
 | ![Wettersymbolbild für Regenschauer](media/how-to-add-symbol-to-android-map/showers.png)|
 |:-----------------------------------------------------------------------:|
 | showers.png                                                  |
 
-Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code unter Verwendung eines benutzerdefinierten Symbols und einer formatierten Beschriftung mit einer Symbolebene ein Punktfeature gerendert wird.
+Der folgende Screenshot zeigt, wie durch den oben aufgeführten Code ein Punktfeature unter Verwendung eines benutzerdefinierten Symbols und einer formatierten Beschriftung mit einer Symbolebene gerendert wird.
 
 ![Karte mit gerendertem Punkt. Dabei wird eine Symbolebene zur Darstellung eines benutzerdefinierten Symbols und einer formatierten Beschriftung für ein Punktfeature verwendet.](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
 
 > [!TIP]
-> Wenn Sie nur Text mit einer Symbolebene rendern möchten, können Sie das Symbol ausblenden, indem Sie die `iconImage`-Eigenschaft der Symboloptionen auf `"none"` setzen.
+> Wenn Sie nur Text mit einer Symbolebene rendern möchten, können Sie das Symbol ausblenden, indem Sie die `iconImage`-Eigenschaft der Symboloptionen auf `"none&quot;` setzen.
 
-## <a name="modify-symbol-colors"></a>Ändern von Symbolfarben
+## <a name=&quot;modify-symbol-colors&quot;></a>Ändern von Symbolfarben
 
 Das Azure Maps Android SDK enthält eine Reihe vordefinierter Farbvariationen des Standardmarkersymbols. So kann beispielsweise `marker-red` in der Option `iconImage` einer Symbolebene übergeben werden, um eine rote Version des Markersymbols auf dieser Ebene zu rendern.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
-    iconImage("marker-red")
+    iconImage(&quot;marker-red")
 );
 ```
 
@@ -248,27 +248,27 @@ val layer = SymbolLayer(source,
 
 ::: zone-end
 
-In der folgenden Tabelle sind alle verfügbaren integrierten Symbolbildnamen aufgelistet. Alle diese Marker beziehen ihre Farben von Farbressourcen, die Sie überschreiben können. Dies ist zusätzlich zum Überschreiben der Hauptfüllfarbe dieses Markers möglich. Beachten Sie jedoch, dass ein Überschreiben der Farbe eines dieser Marker auf alle Ebenen angewendet wird, die dieses Symbolbild verwenden.
+In der folgenden Tabelle sind alle verfügbaren integrierten Symbolbildnamen aufgelistet. Alle diese Marker beziehen ihre Farben von Farbressourcen, die Sie überschreiben können. Dies ist zusätzlich zum Überschreiben der Hauptfüllfarbe dieses Markers möglich. Das Überschreiben der Farbe eines dieser Marker wird allerdings auf allen Ebenen angewendet, die dieses Symbolbild verwenden.
 
 | Symbolbildname | Farbressourcenname |
 |-----------------|---------------------|
-| `marker-default` | `mapcontrol_marker_default` |
-| `marker-black` | `mapcontrol_marker_black` |
-| `marker-blue` | `mapcontrol_marker_blue` |
-| `marker-darkblue` | `mapcontrol_marker_darkblue` |
-| `marker-red` | `mapcontrol_marker_red` |
-| `marker-yellow` | `mapcontrol_marker_yellow` |
+| `marker-default` | `azure_maps_marker_default` |
+| `marker-black` | `azure_maps_marker_black` |
+| `marker-blue` | `azure_maps_marker_blue` |
+| `marker-darkblue` | `azure_maps_marker_darkblue` |
+| `marker-red` | `azure_maps_marker_red` |
+| `marker-yellow` | `azure_maps_marker_yellow` |
 
-Mit dem Farbressourcennnamen `mapcontrol_marker_border` können Sie zudem die Rahmenfarbe aller Marker überschreiben. Die Farben dieser Marker können überschrieben werden, indem eine Farbe mit demselben Namen in der Datei `colors.xml` Ihrer App hinzugefügt wird. Beispielsweise würde mit der folgenden Datei `colors.xml` die Standardmarkerfarbe auf Hellgrün festgelegt werden.
+Mit dem Farbressourcennnamen `azure_maps_marker_border` können Sie zudem die Rahmenfarbe aller Marker überschreiben. Die Farben dieser Marker können überschrieben werden, indem eine Farbe mit demselben Namen in der Datei `colors.xml` Ihrer App hinzugefügt wird. Beispielsweise würde mit der folgenden Datei `colors.xml` die Standardmarkerfarbe auf Hellgrün festgelegt werden.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="mapcontrol_marker_default">#00FF00</color>
+    <color name="azure_maps_marker_default">#00FF00</color>
 </resources>
 ```
 
-Nachfolgend sehen Sie eine geänderte Version des XML-Codes für den Standardmarkervektor, den Sie ändern können, um zusätzliche benutzerdefinierte Versionen des Standardmarkers zu erstellen. Die geänderte Version kann dem Ordner `drawable` Ihrer App hinzugefügt werden und dem Kartenbild-Sprite mithilfe von `map.images.add` hinzugefügt werden und dann mit einer Symbolebene verwendet werden.
+Bei dem folgenden Code handelt es sich um eine modifizierte Version des XML-Codes für den Standardmarkervektor, den Sie ändern können, um benutzerdefinierte Versionen des Standardmarkers zu erstellen. Die geänderte Version kann dem Ordner `drawable` Ihrer App hinzugefügt werden und dem Kartenbild-Sprite mithilfe von `map.images.add` hinzugefügt werden und dann mit einer Symbolebene verwendet werden.
 
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -279,8 +279,8 @@ Nachfolgend sehen Sie eine geänderte Version des XML-Codes für den Standardmar
     <path
         android:pathData="M12.25,0.25a12.2543,12.2543 0,0 0,-12 12.4937c0,6.4436 6.4879,12.1093 11.059,22.5641 0.5493,1.2563 1.3327,1.2563 1.882,0C17.7621,24.8529 24.25,19.1857 24.25,12.7437A12.2543,12.2543 0,0 0,12.25 0.25Z"
         android:strokeWidth="0.5"
-        android:fillColor="@color/mapcontrol_marker_default"
-        android:strokeColor="@color/mapcontrol_marker_border"/>
+        android:fillColor="@color/azure_maps_marker_default"
+        android:strokeColor="@color/azure_maps_marker_border"/>
 </vector>
 ```
 
@@ -290,6 +290,9 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Datenquelle](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Clusterpunktdaten](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Blasenebene](map-add-bubble-layer-android.md)

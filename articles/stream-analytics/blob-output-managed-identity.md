@@ -1,21 +1,21 @@
 ---
 title: Authentifizieren der Blobausgabe mit Azure Stream Analytics der verwalteten Identität
 description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe beschrieben.
-author: kim-ale
-ms.author: kimal
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 98a78d9d769300fc4963869fbc4fa2607b800fad
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 07/07/2021
+ms.openlocfilehash: 708871f620614f893a641f20098f6ed58af464f5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591114"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486101"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>Verwendung von verwalteten Identitäten (Vorschau) zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage
 
-Durch die [Authentifizierung mittels verwalteter Identität](../active-directory/managed-identities-azure-resources/overview.md) (Vorschau) für die Ausgabe an Azure Blob Storage erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
+Durch die [Authentifizierung der verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe an Azure Blob Storage erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
 
 Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blobausgabe(n) eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
 

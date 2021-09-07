@@ -7,14 +7,14 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 07/02/2021
 ms.author: nitinme
-ms.openlocfilehash: 9136db7a40958af2e6b0711595bce4d5e7988af6
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 90071be491fa16d483d1348feabb7a1180c333e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810911"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297409"
 ---
 # <a name="recover-deleted-cognitive-services-resources"></a>Wiederherstellen gelöschter Cognitive Services-Ressourcen
 
@@ -30,6 +30,8 @@ Dieser Artikel enthält Anweisungen zum Wiederherstellen einer Cognitive Service
 * Bevor Sie eine gelöschte Ressource wiederherzustellen versuchen, vergewissern Sie sich, dass die Ressourcengruppe für dieses Konto vorhanden ist. Wenn die Ressourcengruppe gelöscht wurde, müssen Sie sie neu erstellen. Eine Ressourcengruppe kann nicht wiederhergestellt werden. Weitere Informationen finden Sie unter  [Verwalten von Ressourcengruppen](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Wenn die gelöschte Ressource kundenseitig verwaltete Schlüssel mit Azure Key Vault verwendet hat und der Schlüsseltresor ebenfalls gelöscht wurde, müssen Sie ihn zuerst wiederherstellen, bevor Sie die Cognitive Services-Ressource wiederherstellen. Weitere Informationen finden Sie unter [Verwalten der Azure Key Vault-Wiederherstellung](../key-vault/general/key-vault-recovery.md).
 * Wenn die gelöschte Ressource einen kundenseitig verwalteten Speicher verwendet hat und das Speicherkonto ebenfalls gelöscht wurde, müssen Sie das Speicherkonto wiederherstellen, bevor Sie die Cognitive Services-Ressource wiederherstellen. Anweisungen finden Sie unter [Wiederherstellen eines gelöschten Speicherkontos](../storage/common/storage-account-recover.md).
+
+Ihr Abonnement muss über `Microsoft.CognitiveServices/locations/resourceGroups/deletedAccounts/delete`-Berechtigungen zum Bereinigen von Ressourcen verfügen, z. B. [Cognitive Services-Mitwirkender](../role-based-access-control/built-in-roles.md#cognitive-services-contributor) oder [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor). 
 
 ## <a name="recover-a-deleted-resource"></a>Wiederherstellen einer gelöschten Ressource 
 
@@ -73,6 +75,11 @@ Wenn Sie den Namen Ihrer gelöschten Ressourcen suchen müssen, können Sie mit 
 Get-AzResource -ResourceId /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts -ApiVersion 2021-04-30 
 ```
 
+### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+
+```azurecli-interactive
+az resource create --subscription {subscriptionID} -g {resourceGroup} -n {resourceName} --location {location} --namespace Microsoft.CognitiveServices --resource-type accounts --properties "{\"restore\": true}"
+```
 
 ## <a name="purge-a-deleted-resource"></a>Endgültiges Löschen einer gelöschten Ressource 
 
@@ -105,7 +112,7 @@ Remove-AzResource -ResourceId /subscriptions/{subscriptionID}/providers/Microsof
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
 ```azurecli-interactive
-az resource delete /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroup}/deletedAccounts/{resourceName}
+az resource delete --ids /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroup}/deletedAccounts/{resourceName}
 ```
 
 ## <a name="see-also"></a>Siehe auch

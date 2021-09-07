@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8a4a9834b35055fbd5be4fd50f1d5413d5e54a35
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 13d020ed0ea6310f49cbe37555fc2a9048b9f042
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111758225"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465383"
 ---
 # <a name="use-azure-marketplace-image-to-create-vm-image-for-your-azure-stack-edge-pro-gpu"></a>Verwenden eines Azure Marketplace-Images zum Erstellen von VM-Images für Azure Stack Edge Pro GPU-Geräte
 
@@ -36,7 +36,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von VMs auf Ihrem Azure St
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie Azure Marketplace-Images für Azure Stack Edge verwenden können, müssen Sie sicherstellen, dass Sie auf eine der folgenden Arten mit Azure verbunden sind.
+Bevor Sie Azure Marketplace-Images für Azure Stack Edge verwenden können, müssen Sie sicherstellen, dass Sie auf eine der unten angegebenen Arten mit Azure verbunden sind.
 
 [!INCLUDE [azure-cli-prepare-your-environment](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -45,7 +45,7 @@ Bevor Sie Azure Marketplace-Images für Azure Stack Edge verwenden können, müs
 
 Sie identifizieren nun ein bestimmtes Azure Marketplace-Image, das Sie verwenden möchten. Azure Marketplace hostet tausende VM-Images. 
 
-Führen Sie den folgenden Befehl aus, um nach einigen der gängigsten Marketplace-Images zu suchen, die Ihren Suchkriterien entsprechen.  
+Führen Sie den folgenden Befehl aus, um nach einigen der am häufigsten verwendeten Marketplace-Images zu suchen, die Ihren Suchkriterien entsprechen.  
 
 ```azurecli
 az vm image list --all [--publisher <Publisher>] [--offer <Offer>] [--sku <SKU>]
@@ -137,7 +137,9 @@ In diesem Beispiel wählen Sie Windows Server 2019 Datacenter Core, Version 2019
  
 :::image type="content" source="media/azure-stack-edge-create-virtual-machine-marketplace-image/marketplace-image-1.png" alt-text="Liste der Marketplace-Images":::
 
-Im Folgenden finden Sie eine Liste der URNs für einige der gängigsten Images. Wenn nur die neueste Version eines bestimmten Betriebssystems verwendet werden soll, können Sie die Versionsnummer in der URN durch „latest“ ersetzen. Beispiel: „MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest“. 
+### <a name="commonly-used-marketplace-images"></a>Häufig verwendete Marketplace-Images
+
+Im Folgenden finden Sie eine Liste mit den URNs für einige der am häufigsten verwendeten Images. Wenn nur die neueste Version eines bestimmten Betriebssystems verwendet werden soll, können Sie die Versionsnummer in der URN durch „latest“ ersetzen. Beispiel: „MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest“. 
 
 
 | OS              | SKU                                     | Version               | URN                                                                                       |

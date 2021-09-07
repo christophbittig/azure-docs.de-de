@@ -1,25 +1,24 @@
 ---
-title: Erstellen einer Azure AD-App und eines Dienstprinzipals im Portal
+title: Erstellen Sie eine Azure AD-App und Dienstprinzipal im Portal
 titleSuffix: Microsoft identity platform
-description: Erstellen Sie eine neue Azure Active Directory-App und einen Dienstprinzipal, um den Zugriff auf Ressourcen mit rollenbasierter Zugriffssteuerung in Azure Resource Manager zu verwalten.
+description: Hier erfahren Sie, wie Sie eine neue Azure Active Directory-App und einen Dienstprinzipal erstellen, um den Zugriff auf Ressourcen mit rollenbasierter Zugriffssteuerung in Azure Resource Manager zu verwalten.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
-ms.reviewer: tomfitz
-ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: b772112a238b4af4ff536a98e0a4105e7237c1af
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
+ms.openlocfilehash: 2b8e8c73286eb058f5fcd183ac43998801a0ebe8
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951944"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038429"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
+# <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
 In diesem Artikel wird beschrieben, wie Sie eine neue Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal erstellen, der mit der rollenbasierten Zugriffssteuerung verwendet werden kann. Wenn Sie über Anwendungen, gehostete Dienste oder automatische Tools verfügen, für die der Zugriff auf oder die Änderung von Ressourcen erforderlich ist, können Sie eine Identität für die App erstellen. Diese Identität wird als Dienstprinzipal bezeichnet. Der Zugriff auf Ressourcen wird durch die dem Dienstprinzipal zugewiesenen Rollen eingeschränkt. Dadurch können Sie steuern, auf welcher Ebene auf welche Ressourcen zugegriffen werden kann. Aus Sicherheitsgründen wird stets empfohlen, Dienstprinzipale mit automatisierten Tools zu verwenden, statt ihnen die Anmeldung mit einer Benutzeridentität zu erlauben.
 
@@ -29,6 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie das Portal zum Erstellen des Die
 > Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen für Ihre Anwendungsidentität erwägen. Wenn Ihr Code unter einem Dienst ausgeführt wird, der verwaltete Identitäten unterstützt und auf Ressourcen zugreift, die die Azure AD-Authentifizierung unterstützen, sind verwaltete Identitäten für Sie die besser geeignete Option. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen (z.B. auch zu den Diensten, die diese zurzeit unterstützen) finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen](../managed-identities-azure-resources/overview.md)?
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>App-Registrierung, App-Objekte und Dienstprinzipale
+
 Es gibt keine Möglichkeit, einen Dienstprinzipal direkt im Azure-Portal zu erstellen.  Wenn Sie eine Anwendung über das Azure-Portal registrieren, werden automatisch ein Anwendungsobjekt und ein Dienstprinzipal für Ihr Basisverzeichnis bzw. Ihren Mandanten erstellt.  Weitere Informationen zu den Beziehungen zwischen App-Registrierung, Anwendungsobjekten und Dienstprinzipalen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md).
 
 ## <a name="permissions-required-for-registering-an-app"></a>Erforderliche Berechtigungen zum Registrieren einer App
@@ -105,12 +105,10 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
    Falls Sie das gesuchte Abonnement nicht finden können, können Sie den **globalen Abonnementfilter** verwenden. Stellen Sie sicher, dass das gewünschte Abonnement für das Portal ausgewählt ist.
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen.
+1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus. 
 
-   ![Rolle auswählen, die der Anwendung zugewiesen werden soll](./media/howto-create-service-principal-portal/select-role.png)
-
-1. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer mit einer Rolle für diesen Bereich angezeigt.
+    Weisen Sie der Anwendung im Abonnementkontext die Rolle „Mitwirkender“ zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Ihr Dienstprinzipal wird eingerichtet. Sie können mit der Nutzung beginnen, um Ihre Skripts oder Apps auszuführen. Wechseln Sie zu **Unternehmensanwendungen**, um Ihren Dienstprinzipal zu verwalten (Berechtigungen, vom Benutzer genehmigte Berechtigungen, Anzeigen der genehmigenden Benutzer, Überprüfen von Berechtigungen, Anzeigen von Anmeldeinformationen usw.).
 

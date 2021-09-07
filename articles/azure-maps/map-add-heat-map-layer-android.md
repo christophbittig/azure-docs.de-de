@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffbda69d91a709ff5a9af66f7abe2b7734efe177
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100184"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666387"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Hinzufügen einer Wärmebildebene (Android SDK)
 
-Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen und die „Hotspots“ der Daten auf einer Karte zu zeigen. Wärmebilder sind eine hervorragende Möglichkeit, Datensätze mit einer großen Anzahl von Punkten zu rendern. 
+Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen und die „Hotspots“ der Daten auf einer Karte zu zeigen. Wärmebilder sind eine hervorragende Möglichkeit, Datensätze mit einer großen Anzahl von Punkten zu rendern.
 
 Das Rendering von Zehntausenden von Punkten als Symbole kann den größten Teil des Kartenbereichs abdecken. Dieser Fall führt wahrscheinlich zu vielen überlappenden Symbolen. Das gestaltet es schwierig, ein besseres Verständnis der Daten zu erlangen. Wenn Sie dasselbe Dataset jedoch als Wärmebild visualisieren, können Sie einfach die Dichte und die relative Dichte der einzelnen Datenpunkte erkennen.
 
@@ -50,6 +50,11 @@ Im folgenden Codebeispiel wird ein GeoJSON-Feed von Erdbeben aus der letzten Woc
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson");
+
+//Add data source to the map.
 map.sources.add(source);
 
 //Create a heat map layer.
@@ -60,27 +65,6 @@ HeatMapLayer layer = new HeatMapLayer(source,
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels");
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this,
-    (String result) -> {
-        //Parse the data as a GeoJSON Feature Collection.
-        FeatureCollection fc = FeatureCollection.fromJson(result);
-
-        //Add the feature collection to the data source.
-        source.add(fc);
-
-        //Optionally, update the maps camera to focus in on the data.
-
-        //Calculate the bounding box of all the data in the Feature Collection.
-        BoundingBox bbox = MapMath.fromData(fc);
-
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20));
-    });
 ```
 
 ::: zone-end
@@ -90,6 +74,11 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")
+
+//Add data source to the map.
 map.sources.add(source)
 
 //Create a heat map layer.
@@ -101,27 +90,6 @@ val layer = HeatMapLayer(
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels")
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this
-) { result: String? ->
-    //Parse the data as a GeoJSON Feature Collection.
-    val fc = FeatureCollection.fromJson(result!!)
-
-    //Add the feature collection to the data source.
-    source.add(fc)
-
-    //Optionally, update the maps camera to focus in on the data.
-    //Calculate the bounding box of all the data in the Feature Collection.
-    val bbox = MapMath.fromData(fc)
-
-    //Update the maps camera so it is focused on the data.
-    map.setCamera(
-        bounds(bbox),
-        padding(20)
-    )
-}
 ```
 
 ::: zone-end
@@ -137,7 +105,7 @@ Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die 
 - `heatmapRadius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Der Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Mithilfe eines Ausdrucks können Sie den Radius auf der Grundlage des Zoomfaktors skalieren. Er stellt dann ein zusammenhängendes räumliches Gebiet auf der Karte dar (beispielsweise einen 5-Meilen-Radius).
 - `heatmapColor`: Gibt an, welche Farben für das Wärmebild verwendet werden. Ein Farbverlauf ist ein häufiges Merkmal von Wärmebildern. Sie können den Effekt mit einem `interpolate`-Ausdruck erreichen. Sie können auch einen `step`-Ausdruck für die farbige Darstellung des Wärmebilds verwenden. In diesem Fall wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert.
 
-  Sie geben die Farbwerte für Wärmebilder als Ausdruck im `heatmapDensity`-Wert an. Die Farbe des Bereichs, in dem keine Daten vorhanden sind, wird bei Index 0 des „Interpolation“-Ausdrucks oder der Standardfarbe eines „abgestuften“ Ausdrucks definiert. Sie können diesen Wert verwenden, um eine Hintergrundfarbe zu definieren. Häufig wird hierfür ein transparenter Wert oder ein halbtransparentes Schwarz festgelegt. 
+  Sie geben die Farbwerte für Wärmebilder als Ausdruck im `heatmapDensity`-Wert an. Die Farbe des Bereichs, in dem keine Daten vorhanden sind, wird bei Index 0 des „Interpolation“-Ausdrucks oder der Standardfarbe eines „abgestuften“ Ausdrucks definiert. Sie können diesen Wert verwenden, um eine Hintergrundfarbe zu definieren. Häufig wird hierfür ein transparenter Wert oder ein halbtransparentes Schwarz festgelegt.
 
   Nachfolgend finden Sie Beispiele für Farbausdrücke:
 
@@ -290,6 +258,56 @@ val layer = HeatMapLayer(source,
 Das folgende Video zeigt eine Karte, die unter Verwendung des oben aufgeführten Codes ausgeführt wird. Beim Zoomen der Karte wird der Radius skaliert, damit das Wärmebild bei allen Zoomfaktoren auf konsistente Weise gerendert werden kann.
 
 ![Animation einer gezoomten Karte mit einer Wärmebildebene, die eine konsistente räumliche Größe aufweist](media/map-add-heat-map-layer-android/android-consistent-zoomable-heat-map-layer.gif)
+
+Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet werden. Der folgende Ausdruck kann für eine ungefähre Berechnung eines Radius in Metern verwendet werden. Dieser Ausdruck verwendet den Platzhalter `radiusMeters`, den Sie durch den gewünschten Radius ersetzen. Dieser Ausdruck berechnet den ungefähren Pixelradius für einen Zoomfaktor am Äquator für die Zoomfaktoren 0 und 24 und verwendet einen `exponential interpolation`-Ausdruck, um auf dieselbe Weise zwischen diesen Werten zu skalieren, wie das Kachelsystem in der Karte funktioniert.
+
+::: zone pivot="programming-language-java-android"
+
+```java
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nah beieinander liegen, zu einem Punkt gruppiert. Sie können die Punktzahl der einzelnen Cluster als Gewichtungsausdruck für das Wärmebild verwenden. Dadurch kann die Anzahl der zu rendernden Punkte erheblich reduziert werden. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in einer `point_count`-Eigenschaft der point-Funktion gespeichert.
+>
+> ```java
+> HeatMapLayer layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> );
+> ```
+>
+> Wenn der Radius für das Clustering nur wenige Pixel beträgt, gibt es beim Rendern nur geringe sichtbare Unterschiede. Bei einem größeren Radius werden mehr Punkte zusammengefasst und damit die Leistung des Wärmebilds verbessert.
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nah beieinander liegen, zu einem Punkt gruppiert. Sie können die Punktzahl der einzelnen Cluster als Gewichtungsausdruck für das Wärmebild verwenden. Dadurch kann die Anzahl der zu rendernden Punkte erheblich reduziert werden. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in einer `point_count`-Eigenschaft der point-Funktion gespeichert.
+>
+> ```kotlin
+> var layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> )
+> ```
+>
+> Wenn der Radius für das Clustering nur wenige Pixel beträgt, gibt es beim Rendern nur geringe sichtbare Unterschiede. Bei einem größeren Radius werden mehr Punkte zusammengefasst und damit die Leistung des Wärmebilds verbessert.
+
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 

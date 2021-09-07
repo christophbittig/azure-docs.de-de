@@ -3,14 +3,14 @@ title: Diagnose in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie mit der Erweiterung „Durable Functions“ für Azure Functions Probleme diagnostizieren.
 author: cgillum
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.author: azfuncdf
-ms.openlocfilehash: d1125c2de0f548f1a6086819573acf1a2ac9c3c9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf446b435bc84649d102150b8e0f092c25a85d07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370890"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087376"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -72,34 +72,12 @@ Der Ausführlichkeitsgrad der Nachverfolgungsdaten, die an Application Insights 
 }
 ```
 
-Standardmäßig werden alle ohne Wiedergabe definierten Nachverfolgungsereignisse ausgegeben. Die Datenmenge kann reduziert werden, indem `Host.Triggers.DurableTask` auf `"Warning"` oder `"Error"` festgelegt wird. In diesem Fall werden Nachverfolgungsereignisse nur für außergewöhnliche Situationen ausgegeben.
-
-Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestrierung kann `LogReplayEvents` wie im Folgenden gezeigt in der Datei `host.json` unter `durableTask` auf `true` festgelegt werden:
-
-#### <a name="functions-10"></a>Functions 1.0
-
-```json
-{
-    "durableTask": {
-        "logReplayEvents": true
-    }
-}
-```
-
-#### <a name="functions-20"></a>Functions 2.0
-
-```json
-{
-    "extensions": {
-        "durableTask": {
-            "logReplayEvents": true
-        }
-    }
-}
-```
+Standardmäßig werden alle _ohne Wiedergabe_ definierten Nachverfolgungsereignisse ausgegeben. Die Datenmenge kann reduziert werden, indem `Host.Triggers.DurableTask` auf `"Warning"` oder `"Error"` festgelegt wird. In diesem Fall werden Nachverfolgungsereignisse nur für außergewöhnliche Situationen ausgegeben. Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestrierung legen Sie `logReplayEvents` in der Konfigurationsdatei [host.json](durable-functions-bindings.md#host-json) auf `true` fest.
 
 > [!NOTE]
 > Standardmäßig werden für die Application Insights-Telemetriedaten von der Azure Functions-Laufzeit Stichproben erstellt, um zu verhindern, dass Daten zu häufig ausgegeben werden. Dies kann dazu führen, dass Nachverfolgungsinformationen verloren gehen, wenn viele Lebenszyklusereignisse in kurzer Zeit auftreten. Im [Artikel zur Azure Functions-Überwachung](../configure-monitoring.md#configure-sampling) wird beschrieben, wie Sie dieses Verhalten konfigurieren.
+
+Eingaben und Ausgaben von Orchestrator-, Aktivitäts- und Entitätsfunktionen werden standardmäßig nicht protokolliert. Dieses Standardverhalten wird empfohlen, da die Protokollierung von Eingaben und Ausgaben die Application Insights-Kosten erhöhen kann. Eingabe- und Ausgabenutzdaten von Funktionen können außerdem vertrauliche Informationen enthalten. Anstelle der tatsächlichen Nutzdaten wird stattdessen die Anzahl von Bytes für Funktionseingaben und -ausgaben protokolliert. Wenn von der Durable Functions-Erweiterung die vollständigen Eingabe- und Ausgabenutzdaten protokolliert werden sollen, legen Sie die Eigenschaft `traceInputsAndOutputs` in der Konfigurationsdatei [host.json](durable-functions-bindings.md#host-json) auf `true` fest.
 
 ### <a name="single-instance-query"></a>Abfrage für einzelne Instanzen
 

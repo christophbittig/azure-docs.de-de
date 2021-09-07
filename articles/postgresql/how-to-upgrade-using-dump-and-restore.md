@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/02/2021
-ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/23/2021
+ms.openlocfilehash: 5e568e0e41b4273b94f12006d998a711229335c5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111406875"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893508"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade einer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 
@@ -86,6 +86,9 @@ Sie können eine der in diesem Abschnitt beschriebenen Methoden für Ihre Upgrad
 - Wenn Ihr PostgreSQL-Server TLS-/SSL-Verbindungen erfordert (auf Azure Database for PostgreSQL-Servern standardmäßig aktiviert), legen Sie eine Umgebungsvariable `PGSSLMODE=require` fest, damit das pg_restore-Tool über TLS eine Verbindung herstellt. Erfolgt die Verbindung nicht über TLS, kann der Fehler möglicherweise wie folgt lauten: `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 
 - Führen Sie in der Windows-Befehlszeile den Befehl `SET PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen. Führen Sie unter Linux oder Bash den Befehl `export PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen.
+
+>[!Important]
+> Es wird empfohlen, die Befehle in einer Testumgebung zu testen und zu überprüfen, bevor Sie sie in der Produktionsumgebung verwenden.
 
 ### <a name="method-1-migrate-using-dump-file"></a>Methode 1: Migrieren mit einer Sicherungsdatei
 
@@ -171,4 +174,6 @@ Diese Methode eignet sich, wenn die Datenbank nur wenige größere Tabellen enth
 
 - Wenn Sie mit der Funktionsweise der Zieldatenbank zufrieden sind, können Sie Ihren alten Datenbankserver löschen. 
 - Nur für Azure Database for PostgreSQL – Einzelserver. Wenn Sie den gleichen Datenbankendpunkt wie der Quellserver verwenden möchten, können Sie, nachdem Sie Ihren alten Quelldatenbankserver gelöscht haben, ein Lesereplikat mit dem Namen des alten Datenbankservers erstellen. Sobald der Replikationszustand stabil ist, können Sie das Replikat beenden, wodurch der Replikatserver zu einem unabhängigen Server höher gestuft wird. Weitere Informationen finden Sie unter [Replikation](./concepts-read-replicas.md).
-- Denken Sie daran, diese Befehle in einer Testumgebung zu testen und zu überprüfen, bevor Sie sie in der Produktionsumgebung verwenden.
+
+>[!Important] 
+> Es wird dringend empfohlen, die neue aktualisierte PostgreSQL-Version zu testen, bevor Sie sie direkt für die Produktion verwenden. Dazu gehört der Vergleich von Serverparametern zwischen der älteren Quellversionsquelle und dem neueren Versionsziel. Stellen Sie sicher, dass sie identisch sind, und überprüfen Sie alle neuen Parameter, die in der neuen Version hinzugefügt wurden. Unterschiede zwischen den Versionen finden Sie [hier](https://www.postgresql.org/docs/release/).

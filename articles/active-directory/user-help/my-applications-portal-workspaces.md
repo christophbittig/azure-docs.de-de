@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 07/26/2021
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5356273bba64afb7e3e42e1daa99fd69eb0f162e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92282525"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711118"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verwenden von Sammlungen im Portal „Meine Apps“
 
@@ -30,7 +30,7 @@ Sammlungen sind unterschiedliche App-Ansichten, die im Portal **Meine Apps** ang
 
 ## <a name="access-apps-using-collections"></a>Zugreifen auf Apps mithilfe von Sammlungen
 
-In der Liste der Sammlungen im Portal **Meine Apps** wird standardmäßig ein Eintrag mit dem Namen **Alle Apps** angezeigt, der sämtliche Apps enthält, auf die Sie Zugriff haben:
+In der Liste mit den Sammlungen im Portal **Meine Apps** wird standardmäßig die Sammlung **Apps** angezeigt:
 
 ![Seite „Alle Apps“ im Portal „Meine Apps“](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 

@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355877"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Mithilfe des Lesereplikatfeatures können Sie Daten von einem Azure Database for MySQL-Server auf einen schreibgeschützten Server replizieren. Sie können vom Quellserver auf bis zu fünf Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der nativen, binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MySQL-Engine aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
@@ -48,7 +50,38 @@ Sie können einen Quellserver in jeder [Azure Database for MySQL-Region](https:/
 
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Quellserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
-Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; Kanada, Osten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2; USA, Westen-Mitte.
+| Region | Replikatverfügbarkeit | 
+| --- | --- | 
+| Australien (Osten) | :heavy_check_mark: | 
+| Australien, Südosten | :heavy_check_mark: | 
+| Brasilien Süd | :heavy_check_mark: | 
+| Kanada, Mitte | :heavy_check_mark: |
+| Kanada, Osten | :heavy_check_mark: |
+| USA (Mitte) | :heavy_check_mark: | 
+| East US | :heavy_check_mark: | 
+| USA (Ost) 2 | :heavy_check_mark: |
+| Asien, Osten | :heavy_check_mark: | 
+| Japan, Osten | :heavy_check_mark: | 
+| Japan, Westen | :heavy_check_mark: | 
+| Korea, Mitte | :heavy_check_mark: |
+| Korea, Süden | :heavy_check_mark: |
+| Nordeuropa | :heavy_check_mark: | 
+| USA Nord Mitte | :heavy_check_mark: | 
+| USA Süd Mitte | :heavy_check_mark: | 
+| Asien, Südosten | :heavy_check_mark: | 
+| UK, Süden | :heavy_check_mark: | 
+| UK, Westen | :heavy_check_mark: | 
+| USA, Westen-Mitte | :heavy_check_mark: | 
+| USA (Westen) | :heavy_check_mark: | 
+| USA, Westen 2 | :heavy_check_mark: | 
+| Europa, Westen | :heavy_check_mark: | 
+| Indien, Mitte* | :heavy_check_mark: | 
+| Frankreich, Mitte* | :heavy_check_mark: | 
+| VAE, Norden* | :heavy_check_mark: | 
+| Südafrika, Norden* | :heavy_check_mark: |
+
+> [!Note] 
+> *Regionen, in denen sich der Speichertyp „Universell V2“ für Azure Database for MySQL in der öffentlichen Vorschau befindet  <br /> *Für diese Azure-Regionen haben Sie die Möglichkeit, Server mit dem Speichertyp „Universell V1“ und „Universell V2“ zu erstellen. Für Server, die in der öffentlichen Vorschauversion mit dem Speichertyp „Universell V2“ erstellt wurden, können Sie Replikatserver nur in den Azure-Regionen erstellen, die den Speichertyp „Universell V2“ unterstützen.
 
 ### <a name="paired-regions"></a>Regionspaare
 
@@ -141,11 +174,18 @@ Die folgenden Serverparameter sind für die Konfiguration des globalen Transakti
 |`enforce_gtid_consistency`|Erzwingt die GTID-Konsistenz, indem die Ausführung nur der Anweisungen zugelassen wird, die auf transaktionssichere Weise protokolliert werden können. Dieser Wert muss vor dem Aktivieren der GTID-Replikation auf `ON` festgelegt werden. |`OFF`|`OFF`: Alle Transaktionen können die GTID-Konsistenz verletzen.  <br> `ON`: Keine Transaktion darf die GTID-Konsistenz verletzen. <br> `WARN`: Alle Transaktionen können gegen GTID-Konsistenz verstoßen, aber es wird eine Warnung generiert. | 
 
 > [!NOTE]
-> Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+> * Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+>
+> * Das Ändern der GTIDs von einem Wert in einen anderen kann nur schrittweise in aufsteigender Reihenfolge der Modi erfolgen. Wenn z. B. gtid_mode derzeit auf OFF_PERMISSIVE festgelegt ist, ist eine Änderung in ON_PERMISSIVE möglich, aber nicht in ON.
+>
+> * Um die Replikation konsistent zu halten, können Sie die Einstellung nicht für einen Master-/Replikatserver aktualisieren.
+>
+> * Es wird empfohlen, enforce_gtid_consistency auf ON festzulegen, bevor Sie gtid_mode=ON festlegen können.
+
 
 Um GTID zu aktivieren und das Konsistenzverhalten zu konfigurieren, aktualisieren Sie die Serverparameter `gtid_mode` und `enforce_gtid_consistency` über das [Azure-Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)oder [PowerShell](howto-configure-server-parameters-using-powershell.md).
 
-Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Damit die Replikation konsistent bleibt, ist eine Aktualisierung von `gtid_mode` auf den Quell- oder Replikatservern nicht möglich.
+Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Um sicherzustellen, dass die Replikation konsistent ist, kann `gtid_mode` nicht geändert werden, nachdem der Master- oder die Replikatserver mit aktivierter GTID erstellt wurde. 
 
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 

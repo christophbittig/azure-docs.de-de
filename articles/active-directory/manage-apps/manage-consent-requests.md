@@ -2,25 +2,25 @@
 title: Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
 description: Erfahren Sie, wie Sie Einwilligungsanforderungen verwalten, wenn die Benutzereinwilligung deaktiviert oder eingeschränkt ist, und wie Sie eine Anforderung für eine mandantenweite Administratoreinwilligung für eine Anwendung in Azure Active Directory auswerten.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 4b533c7e12cf62ac633b4988774d7cff71b3e677
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079263"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568512"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
-Microsoft [empfiehlt](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) das Deaktivieren der Endbenutzereinwilligung für Anwendungen. Dadurch wird der Entscheidungsfindungsprozess beim Sicherheits- und Identitätsadministratorteam Ihres Unternehmens zentralisiert.
+Microsoft empfiehlt, die [Möglichkeiten zur Benutzereinwilligung einzuschränken](../../active-directory/manage-apps/configure-user-consent.md), damit Benutzer ihre Einwilligung nur für Apps von überprüften Herausgebern und nur für von Ihnen ausgewählte Berechtigungen erteilen können. Für Apps, die diese Richtlinie nicht erfüllen, wird der Entscheidungsprozess mit dem Sicherheits- und Identitätsadministratorteam Ihrer Organisation zentralisiert.
 
 Nachdem die Endbenutzereinwilligung deaktiviert oder eingeschränkt wurde, müssen einige wichtige Überlegungen berücksichtigt werden, um sicherzustellen, dass Ihre Organisation sicher bleibt und unternehmenskritische Anwendungen weiterhin genutzt werden können. Diese Schritte sind entscheidend, um die Auswirkungen auf das Supportteam und die IT-Administratoren Ihrer Organisation zu minimieren und gleichzeitig die Verwendung nicht verwalteter Konten in Anwendungen von Drittanbietern zu verhindern.
 
@@ -94,28 +94,34 @@ Die folgende Liste enthält einige Empfehlungen, die Sie beim Auswerten einer An
 ## <a name="granting-consent-as-an-administrator"></a>Erteilen der Einwilligung als Administrator
 
 ### <a name="granting-tenant-wide-admin-consent"></a>Erteilen einer mandantenweiten Administratoreinwilligung
+
 Unter [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md) finden Sie ausführliche Anleitungen zum Erteilen einer mandantenweiten Administratoreinwilligung über das Azure-Portal, mithilfe von Azure AD PowerShell oder über die Einwilligungsaufforderung selbst.
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Erteilen einer Einwilligung im Namen eines bestimmten Benutzers
+
 Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsoft Graph-API](/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Beschränken des Benutzerzugriffs auf Anwendungen
+
 Der Zugriff von Benutzern auf Anwendungen kann auch dann noch eingeschränkt werden, wenn eine mandantenweite Administratoreinwilligung erteilt wurde. Weitere Informationen dazu, wie Sie eine Benutzerzuweisung zu einer Anwendung erzwingen, finden Sie unter [Methoden zum Zuweisen von Benutzern und Gruppen](./assign-user-or-group-access-portal.md).
 
 Eine umfassendere Übersicht, einschließlich der Behandlung weiterer komplexer Szenarien, finden Sie unter [Verwenden von Azure AD für die Anwendungszugriffsverwaltung](what-is-access-management.md).
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Deaktivieren aller zukünftigen Vorgänge für die Benutzereinwilligung für jede Anwendung
+
 Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Zustimmung zu Anwendungen sowie zum Aktivieren bzw. Deaktivieren der Zustimmung finden Sie unter [Grundlegendes zur Benutzer- und Administratorzustimmung](../develop/howto-convert-app-to-be-multi-tenant.md).
 
 Führen Sie die folgenden Schritte aus, um alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren:
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-4.  Wählen Sie im Navigationsmenü **Benutzer und Gruppen** aus.
-5.  Wählen Sie **Benutzereinstellungen** aus.
-6.  Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
+
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+4. Wählen Sie im Navigationsmenü **Benutzer und Gruppen** aus.
+5. Wählen Sie **Benutzereinstellungen** aus.
+6. Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
 * [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)

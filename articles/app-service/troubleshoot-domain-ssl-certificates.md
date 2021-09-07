@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: aca2e73b6abbdce6447034e14d0457958f1b800e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670909"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964498"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
@@ -35,14 +35,14 @@ Wenn Sie eine TLS-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
 
 #### <a name="cause"></a>Ursache
 
-Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basiertes SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die TLS-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
+Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte TLS/SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte TLS/SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basierte TLS/SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die TLS-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
 
 #### <a name="solution"></a>Lösung 
 
 Verwenden Sie zur Problembehebung eine der folgenden Methoden:
 
-- Löschen Sie die IP-basierte SSL-Bindung für die App, die das alte Zertifikat verwendet. 
-- Erstellen Sie eine neue IP-basierte SSL-Bindung, die das neue Zertifikat verwendet.
+- Löschen Sie die IP-basierte TLS/SSL-Bindung für die App, die das alte Zertifikat verwendet. 
+- Erstellen Sie eine neue IP-basierte TLS/SSL-Bindung, die das neue Zertifikat verwendet.
 
 ### <a name="you-cant-delete-a-certificate"></a>Sie können ein Zertifikat nicht löschen. 
 

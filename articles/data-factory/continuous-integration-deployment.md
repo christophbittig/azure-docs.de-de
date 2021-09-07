@@ -2,18 +2,19 @@
 title: Continuous Integration und Continuous Delivery in Azure Data Factory
 description: Erfahren Sie, wie Sie Continuous Integration und Continuous Delivery verwenden, um Data Factory-Pipelines aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu verschieben.
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d85659730ae78277056ec88c8a35c545646b38ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346607"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -97,9 +98,9 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
 
     d.  Wählen Sie in der Liste **Aktion** den Eintrag **Create or update resource group** (Ressourcengruppe erstellen oder aktualisieren) aus.
 
-    e.  Wählen Sie neben dem Feld **Vorlage** die Schaltfläche mit den Auslassungszeichen ( **…** ) aus. Suchen Sie nach der Azure Resource Manager-Vorlage, die in Ihrem Branch für die Veröffentlichung des konfigurierten Git-Repositorys generiert wird. Suchen Sie im Ordner <FactoryName> des Branches „adf_publish“ nach der Datei `ARMTemplateForFactory.json`.
+    e.  Wählen Sie neben dem Feld **Vorlage** die Schaltfläche mit den Auslassungszeichen ( **…** ) aus. Suchen Sie nach der Azure Resource Manager-Vorlage, die in Ihrem Branch für die Veröffentlichung des konfigurierten Git-Repositorys generiert wird. Suchen Sie im Ordner &lt;FactoryName&gt; von Branch „adf_publish“ nach der Datei `ARMTemplateForFactory.json`.
 
-    f.  Wählen Sie **…** neben dem Feld **Vorlagenparameter** aus, um die Parameterdatei auszuwählen. Suchen Sie im Ordner <FactoryName> des Branches „adf_publish“ nach der Datei `ARMTemplateParametersForFactory.json`.
+    f.  Wählen Sie **…** neben dem Feld **Vorlagenparameter** aus, um die Parameterdatei auszuwählen. Suchen Sie im Ordner &gt;FactoryName&lt; von Branch „adf_publish“ nach der Datei `ARMTemplateParametersForFactory.json`.
 
     g.  Wählen Sie **…** neben dem Feld **Vorlagenparameter überschreiben** aus, und geben Sie die gewünschten Parameterwerte für das Ziel „Data Factory“ ein. Geben Sie für Anmeldeinformationen aus Azure Key Vault den Namen des Geheimnisses in doppelten Anführungszeichen ein. Geben Sie als Wert hier beispielsweise Folgendes ein, wenn der Name des Geheimnisses „cred1“ lautet: **"$(cred1)"** .
 

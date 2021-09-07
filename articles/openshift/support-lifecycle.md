@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 03/06/2021
-ms.openlocfilehash: 22ae9bdbee4b9d6f66d08d0e3ffc37675bc5d3da
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/16/2021
+ms.openlocfilehash: 17cf2b839a3673477b651084f52475f9ade47b39
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143555"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289583"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Supportlebenszyklus für Azure Red Hat OpenShift 4
 
@@ -97,10 +97,10 @@ Im folgenden Leitfaden finden Sie den [bisherigen Releaseverlauf für Red Hat Op
 
 |OCP-Version|Upstreamrelease|Allgemeine Verfügbarkeit von Azure Red Hat OpenShift|Ende der Lebensdauer|
 |-|-|-|-|
-|4.3|Januar 2020|April 2020| August 2020|
 |4.4|Mai 2020|Juli 2020|4.6 GA|
 |4,5|Juli 2020| November 2020|4.7 GA
 |4.6|Oktober 2020| Februar 2021|4.8 GA|
+|4,7|Februar 2021| Juli 2021|4.9 Allgemeine Verfügbarkeit|
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

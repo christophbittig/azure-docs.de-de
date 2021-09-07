@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2021
+ms.date: 06/15/2021
 ms.author: rolyon
-ms.openlocfilehash: c9ab7faebc28354e96cf1c54332fc1d7b19ef196
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6177de5dfc89dcbc33b9ff4291bf65ea909a3b9b
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469904"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235714"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -155,7 +155,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
 In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefinierten Rollen bedeuten.
 
-| Eigenschaft | Erforderlich | Typ | Beschreibung |
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ja | String | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Verwaltungsgruppen- oder Abonnementebene handelt, kann eine solche Definition in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
 | `Id`</br>`name` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
@@ -166,6 +166,8 @@ In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefi
 | `DataActions`</br>`dataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn Sie eine benutzerdefinierte Rolle mit `DataActions`erstellen, kann diese Rolle im Verwaltungsgruppenbereich nicht zugewiesen werden. Weitere Informationen finden Sie unter [DataActions](role-definitions.md#dataactions). |
 | `NotDataActions`</br>`notDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, die von den zulässigen `DataActions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotDataActions](role-definitions.md#notdataactions). |
 | `AssignableScopes`</br>`assignableScopes` | Ja | String[] | Ein Array von Zeichenfolgen, das die Bereiche angibt, in denen die benutzerdefinierte Rolle zur Zuweisung verfügbar ist. Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine einzige Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [AssignableScopes](role-definitions.md#assignablescopes). |
+
+Bei Berechtigungszeichenfolgen wird die Groß-/Kleinschreibung nicht beachtet. Beim Erstellen Ihrer benutzerdefinierten Rollen sollten Sie sich an die vorgegebene Groß-/Kleinschreibung halten, die für Berechtigungen unter [Vorgänge für Azure-Ressourcenanbieter](resource-provider-operations.md) beschrieben ist.
 
 ## <a name="wildcard-permissions"></a>Platzhalterberechtigungen
 

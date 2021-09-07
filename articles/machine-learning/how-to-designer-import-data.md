@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 11/13/2020
+ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: fca949ae65ea046d6e65ba03da7b9b0107c37fd9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 6e0cdbb7511132d4ecd3399e0ef5be7c2541d34b
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889374"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235903"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Importieren von Daten in den Azure Machine Learning-Designer
 
@@ -64,9 +64,10 @@ Wenn Sie ein Dateidataset registrieren, ist der Ausgabeporttyp des Datasets **An
 ### <a name="limitations"></a>Einschränkungen 
 
 - Derzeit können nur tabellarische Datasets im Designer visualisiert werden. Wenn Sie ein Dateidataset außerhalb des Designers registrieren, können Sie es nicht im Designer-Zeichenbereich visualisieren.
-- Das Dataset ist im virtuellen Netzwerk (VNET) gespeichert. Zum Visualisieren müssen Sie die vom Arbeitsbereich verwaltete Identität des Datenspeichers aktivieren.
-    1. Rufen Sie den entsprechenden Datenspeicher auf, und klicken Sie auf **Anmeldeinformationen aktualisieren**
-    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Anmeldeinformationen aktualisieren":::.
+- Derzeit unterstützt der Designer nur Vorschauausgaben, die in **Azure Blob Storage** gespeichert sind. Sie können Ihren Ausgabedatenspeicher in den **Ausgabeeinstellungen** auf der Registerkarte **Parameter** im rechten Bereich des Moduls überprüfen und ändern.
+- Wenn Ihre Daten in einem virtuellen Netzwerk (VNet) gespeichert sind und Sie eine Vorschau anzeigen möchten, müssen Sie die vom Arbeitsbereich verwaltete Identität des Datenspeichers aktivieren.
+    1. Navigieren Sie zum entsprechenden Datenspeicher, und klicken Sie auf **Anmeldeinformationen aktualisieren**.
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Anmeldeinformationen aktualisieren":::
     1. Wählen Sie **Ja** aus, um die vom Arbeitsbereich verwaltete Identität zu aktivieren.
     :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Aktivieren der vom Arbeitsbereich verwalteten Identität":::
 

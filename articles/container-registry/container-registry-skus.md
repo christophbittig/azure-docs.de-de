@@ -2,13 +2,13 @@
 title: Registrierungstarife und -funktionen
 description: Erfahren Sie mehr über die Features und Beschränkungen (Kontingente) der Diensttarife (SKUs) „Basic“, „Standard“ und „Premium“ von Azure Container Registry.
 ms.topic: article
-ms.date: 05/18/2020
-ms.openlocfilehash: 323d36fe022d8b8e9618b8beb1facae93d22df4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/24/2021
+ms.openlocfilehash: 8c27426cae6d80e31aef3d7ef9b75d28a14bd923
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781251"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437538"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry-Tarife
 
@@ -27,6 +27,41 @@ Die Tarife „Basic“, „Standard“ und „Premium“ bieten alle dieselben p
 Die folgende Tabelle enthält die Features und Registrierungsgrenzwerte der Dienstebenen „Basic“, „Standard“ und „Premium“:
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
+
+## <a name="registry-throughput-and-throttling"></a>Registrierungsdurchsatz und -drosselung
+
+### <a name="throughput"></a>Throughput 
+
+Wenn Sie eine hohe Rate von Registrierungsvorgängen generieren, orientieren Sie sich beim zu erwartenden maximalen Durchsatz an den Dienstebenengrenzwerten für Lese- und Schreibvorgänge sowie für die Bandbreite. Diese Grenzwerte wirken sich auf Datenebenenvorgänge wie Auflisten, Löschen, Pushen und Pullen von Images und anderen Artefakten aus.
+
+Berücksichtigen Sie speziell bei der Schätzung des Durchsatzes von Pull- und Pushvorgängen für Images die Registrierungsgrenzwerte und die folgenden Faktoren: 
+
+* Anzahl und Größe von Imageebenen
+* Wiederverwendung von Ebenen oder Basisimages in verschiedenen Images
+* Zusätzliche API-Aufrufe, die ggf. für jeden Pull- oder Pushvorgang erforderlich sind
+
+Ausführliche Informationen finden Sie in der Dokumentation zur [Docker-HTTP-API V2](https://docs.docker.com/registry/spec/api/).
+
+Berücksichtigen Sie bei der Auswertung oder Problembehandlung im Zusammenhang mit dem Registrierungsdurchsatz auch die Konfiguration Ihrer Clientumgebung:
+
+* Ihre Docker-Daemonkonfiguration für gleichzeitige Vorgänge
+* Ihre Netzwerkverbindung mit dem Datenendpunkt der Registrierung (oder mit mehreren Endpunkten, falls Ihre Registrierung [georepliziert](container-registry-geo-replication.md) wird)
+
+Informationen zu Problemen mit dem Registrierungsdurchsatz finden Sie bei Bedarf unter [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md). 
+
+#### <a name="example"></a>Beispiel
+
+Beim Pushen eines einzelnen Images vom Typ `nginx:latest` mit 133 MB in eine Azure-Containerregistrierung sind mehrere Lese- und Schreibvorgänge für die fünf Ebenen des Images erforderlich: 
+
+* Lesevorgänge zum Lesen des Imagemanifests, sofern es in der Registrierung vorhanden ist
+* Schreibvorgänge zum Schreiben des Konfigurationsblobs des Images
+* Schreibvorgänge zum Schreiben des Imagemanifests
+
+### <a name="throttling"></a>Drosselung
+
+Pull- oder Pushvorgänge können gedrosselt werden, wenn von der Registrierung festgestellt wird, dass die Anforderungsrate die für die Dienstebene der Registrierung zulässigen Grenzwerte übersteigt. Möglicherweise wird ein HTTP 429-Fehler wie der folgende angezeigt: `Too many requests`.
+
+Eine Drosselung kann vorübergehend auftreten, wenn Sie innerhalb eines sehr kurzen Zeitraums eine große Menge von Pull- oder Pushvorgängen für Images generieren, auch wenn die durchschnittliche Rate von Lese- und Schreibvorgängen innerhalb der Registrierungsgrenzwerte liegt. Unter Umständen müssen Sie eine Wiederholungslogik mit Backoff in Ihrem Code implementieren oder die maximale Anforderungsrate für die Registrierung verringern.
 
 ## <a name="changing-tiers"></a>Wechseln von Tarifen
 

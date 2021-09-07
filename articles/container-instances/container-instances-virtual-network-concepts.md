@@ -3,12 +3,12 @@ title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 6de99c68c3f05e4734dd46a579d28a6f1a3b824e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4d56ba43480182077acc114200ebc69569835bca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346892"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -45,9 +45,9 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Sie können weder einen [Livetest](container-instances-liveness-probe.md) noch einen [Bereitschaftstest](container-instances-readiness-probe.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Aufgrund der zusätzlichen beteiligten Netzwerkressourcen erfolgen Bereitstellungen in einem virtuellen Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
+* Ausgehende Verbindungen mit Port 25 werden derzeit nicht unterstützt.
 * Wenn Sie eine Verbindung zwischen Ihrer Containergruppe und einem Azure Storage-Konto herstellen, müssen Sie dieser Ressource einen [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) hinzufügen.
-
-[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
+* [IPv6-Adressen](../virtual-network/ipv6-overview.md) werden derzeit nicht unterstützt. 
 
 ## <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
 
@@ -67,7 +67,7 @@ Das Subnetz, das Sie für Containergruppen verwenden, darf nur Containergruppen 
 
 Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie den Befehl [az container create][az-container-create] zum ersten Mal zum Bereitstellen einer Containergruppe in einem Subnetz (und somit in einem virtuellen Netzwerk) verwenden, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden. 
 
-Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil verwenden, das Sie zuvor mithilfe des Befehls [az container create][az-container-create] erstellt haben, oder ein Profil mithilfe einer Resource Manager-Vorlage erstellen (Informationen dazu finden Sie im [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) und in der [Referenz](/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
+Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil verwenden, das Sie zuvor mithilfe des Befehls [az container create][az-container-create] erstellt haben, oder ein Profil mithilfe einer Resource Manager-Vorlage erstellen (Informationen dazu finden Sie im [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet) und in der [Referenz](/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
 
 In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bereitgestellt, das an Azure Container Instances delegiert wurde. Nachdem Sie eine Containergruppe für ein Subnetz bereitgestellt haben, können Sie zusätzliche Containergruppen für dieses bereitstellen, indem Sie das gleiche Netzwerkprofil angeben.
 
@@ -76,7 +76,7 @@ In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bere
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Beispiele für die Bereitstellung mithilfe von Azure CLI finden Sie unter [Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md).
-* Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetzes, eines Netzwerkprofils und einer Containergruppe mithilfe einer Resource Manager-Vorlage finden Sie unter [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+* Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetzes, eines Netzwerkprofils und einer Containergruppe mithilfe einer Resource Manager-Vorlage finden Sie unter [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 ) (Erstellen einer Azure-Containergruppe mit einem virtuellen Netzwerk).
 * Wenn Sie das [Azure-Portal](container-instances-quickstart-portal.md) zum Erstellen einer Containerinstanz verwenden, können Sie auf der Registerkarte **Netzwerk** auch Einstellungen für ein neues oder vorhandenes virtuelles Netzwerk angeben.
 

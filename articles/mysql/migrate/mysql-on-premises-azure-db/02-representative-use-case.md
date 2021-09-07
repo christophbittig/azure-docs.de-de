@@ -1,5 +1,5 @@
 ---
-title: 'Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Repräsentativer Anwendungsfall'
+title: 'Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Repräsentativer Anwendungsfall'
 description: Der folgende Anwendungsfall basiert auf einem realen Kundenszenario eines Unternehmens, das seine MySQL-Workload zu Azure Database for MySQL migriert hat.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9d1a6b4d5e4fa9f3c05219f40b2852eed44aaa37
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 508e27006c96003bd4c2825c9987761f83358f0d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082715"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085072"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-representative-use-case"></a>Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Repräsentativer Anwendungsfall
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-representative-use-case"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Repräsentativer Anwendungsfall
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,15 +55,17 @@ Diese Phasen umfassen:
 
 | Phase | Name | activities |
 |-------|------|------------|
-| 1 | Vor der Migration  | Bewertung, Planung, Auswertung der Migrationsmethode, Auswirkungen auf Anwendungen, Testpläne, Leistungsbaselines |
-| 2 | Migration      | Ausführung der Migration, Ausführung der Testpläne                                                                          |
-| 3 | Nach der Migration | Geschäftskontinuität, Notfallwiederherstellung, Verwaltung, Sicherheit, Leistungsoptimierung, Plattformmodernisierung |
+| 1 | Vor der Migration | Bewertung, Planung, Auswertung der Migrationsmethode, Auswirkungen auf Anwendungen, Testpläne, Leistungsbaselines |
+| 2 | Migration     | Ausführung der Migration, Ausführung der Testpläne                                                                          |
+| 3 | Nach der Migration| Geschäftskontinuität, Notfallwiederherstellung, Verwaltung, Sicherheit, Leistungsoptimierung, Plattformmodernisierung |
 
 WWI verfügt über mehrere Instanzen von MySQL mit unterschiedlichen Versionen von 5.5 bis 5.7. Die Instanzen sollen so schnell wie möglich auf die neueste Version umgestellt werden. Hierbei soll aber sichergestellt sein, dass die Anwendungen bei der Umstellung auf die neueren Versionen weiterhin funktionieren. Das Unternehmen hätte kein Problem damit, in der Cloud zunächst die gleiche Version zu verwenden und das Upgrade später durchzuführen. Die bevorzugte Vorgehensweise besteht aber darin, zwei Aufgaben gleichzeitig zu erledigen.
 
 Darüber hinaus möchte das Unternehmen sicherstellen, dass die Datenworkloads bei einem Ausfall sicher und in mehreren geografischen Regionen verfügbar sind, und sich die verfügbaren Konfigurationsoptionen ansehen.
 
 WWI möchte für die erste Migration mit einer einfachen Anwendung beginnen und dann in einer späteren Phase zu unternehmenskritischen Anwendungen übergehen. Auf diese Weise kann das Team die Kenntnisse und Erfahrungswerte erlangen, die es benötigt, um zukünftige Migrationen vorbereiten und planen zu können.  
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Bewertung](./03-assessment.md)

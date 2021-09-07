@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6e78329c4f45baffd779202ebfa37da3c6cf7c9
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683741"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105433"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
 
@@ -89,7 +89,7 @@ In diesem Abschnitt erstellen Sie einen neuen Proxy, der als Front-End für Ihre
 Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](./functions-get-started.md), um eine neue Funktionen-App zu erstellen, in der Sie den Proxy erstellen. Die URL dieser neuen App dient als Front-End für unsere API, und die Funktions-App, die Sie zuvor bearbeitet haben, dient als Back-End.
 
 1. Navigieren Sie zu Ihrer neuen Front-End-Funktionen-App im Portal.
-1. Wählen Sie **Plattformfeatures** und dann **Anwendungseinstellungen** aus.
+1. Wählen Sie **Konfiguration** und anschließend **Anwendungseinstellungen** aus.
 1. Scrollen Sie nach unten zu **Anwendungseinstellungen**, wo Schlüssel/Wert-Paare gespeichert sind, und erstellen Sie eine neue Einstellung mit dem Schlüssel `HELLO_HOST`. Legen Sie deren Wert auf den Host Ihrer Back-End-Funktionen-App fest, z.B. `<YourBackendApp>.azurewebsites.net`. Dieser Wert ist Teil der URL, die Sie zuvor kopiert haben, als Sie die HTTP-Funktion getestet haben. Sie geben diese Einstellung später in der Konfiguration an.
 
     > [!NOTE] 

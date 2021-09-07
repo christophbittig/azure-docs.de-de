@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aedc6e92b02cf81003ecf4b40a5096bf80c7448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445489"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441044"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-Rewrite (benutzerdefinierter Weiterleitungspfad)
 Azure Front Door unterstützt URL-Rewrite durch Konfigurieren eines optionalen **benutzerdefinierten Weiterleitungspfads**, der beim Erstellen der Anforderung zum Weiterleiten an das Back-End verwendet werden soll. Wenn kein benutzerdefinierter Weiterleitungspfad bereitgestellt wird, kopiert Front Door standardmäßig den URL-Eingangspfad in die URL, die in der weitergeleiteten Anforderung verwendet wurde. Der in der weitergeleiteten Anforderung verwendete Hostheader wird für das ausgewählten Back-End konfiguriert. Informationen zu den Aktionen und zur Konfiguration des Hostheaders finden Sie unter [Back-End-Hostheader](front-door-backend-pool.md#hostheader).
@@ -48,6 +48,10 @@ Die zweite Zeile zeigt beispielsweise, dass der weitergeleitete Pfad für die ei
 | www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+
+> [!NOTE]
+> Azure Front Door unterstützt URL-Rewrite nur zwischen statischen Pfaden. Die Beibehaltung von nicht übereinstimmenden Pfaden wird für Azure Front Door mit Standard-/Premium-SKU unterstützt. Ausführlichere Informationen finden Sie im Abschnitt zum [Beibehalten eines nicht übereinstimmenden Pfads](standard-premium/concept-rule-set-url-redirect-and-rewrite.md#preserve-unmatched-path).
+> 
 
 ## <a name="optional-settings"></a>Optionale Einstellungen
 Es gibt zusätzliche, optionale Einstellungen, die Sie für alle Routingregeleinstellungen angeben können:

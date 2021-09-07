@@ -1,76 +1,104 @@
 ---
-title: Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
+title: Abrufen von Informationen zur Speicherkontokonfiguration
 titleSuffix: Azure Storage
-description: Hier erfahren Sie, wie Sie den Typ und den SKU-Namen eines Azure Storage-Kontos mit der .NET-Clientbibliothek abrufen.
+description: Verwenden Sie das Azure-Portal, PowerShell oder die Azure CLI, um die Eigenschaften der Speicherkontokonfiguration abzurufen, z. B. Azure Resource Manager-Ressourcen-ID, Kontospeicherort, Kontotyp oder Replikations-SKU.
 services: storage
-author: normesta
-ms.author: normesta
-ms.date: 11/12/2020
+author: tamram
+ms.author: tamram
+ms.date: 06/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 94e8a76d48b8ff45d089a9ee375b3dc4a5e5de94
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f3f94dda19f11b1a0aad9a84e7ae624e41c5015c
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653099"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573650"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
+# <a name="get-storage-account-configuration-information"></a>Abrufen von Informationen zur Speicherkontokonfiguration
 
-In diesem Artikel wird gezeigt, wie Sie mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage) den Azure Storage-Kontotyp und -SKU-Namen für einen Blob abrufen.
+In diesem Artikel wird beschrieben, wie Sie Konfigurationsinformationen und Eigenschaften für ein Azure Storage-Konto mit dem Azure-Portal, PowerShell oder der Azure CLI abrufen.
 
-## <a name="about-account-type-and-sku-name"></a>Abrufen von Kontotyp und SKU-Name
+## <a name="get-the-resource-id-for-a-storage-account"></a>Abrufen der Ressourcen-ID für ein Speicherkonto
 
-**Kontotyp:** Gültige Kontotypen sind `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage` und `StorageV2`. In der [Übersicht über Azure Storage-Konten](storage-account-overview.md) finden Sie weitere Informationen, u. a. Beschreibungen der verschiedenen Speicherkonten.
+Jede Azure Resource Manager-Ressource verfügt über eine zugeordnete Ressourcen-ID für die eindeutige Identifikation. Für bestimmte Vorgänge ist es erforderlich, dass Sie die Ressourcen-ID angeben. Sie können die Ressourcen-ID für ein Speicherkonto abrufen, indem Sie das Azure-Portal, PowerShell oder die Azure CLI verwenden.
 
-**SKU-Name:** Zu den gültigen SKU-Namen zählen `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS` und `Standard_ZRS`. Bei SKU-Namen muss die Groß-/Kleinschreibung beachtet werden, und es handelt sich dabei um Zeichenfolgenfelder in der [SkuName-Klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname).
+# <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
 
-## <a name="retrieve-account-information"></a>Abrufen von Kontoinformationen
+Führen Sie die folgenden Schritte aus, um die Azure Resource Manager-Ressourcen-ID für ein Speicherkonto im Azure-Portal anzuzeigen:
 
-Im folgenden Codebeispiel werden die schreibgeschützten Kontoeigenschaften abgerufen und angezeigt.
+1. Navigieren Sie zum Speicherkonto im Azure-Portal.
+1. Wählen Sie auf der Seite **Übersicht** im Abschnitt **Grundlegende Features** den Link **JSON-Ansicht** aus.
+1. Die Ressourcen-ID für das Speicherkonto wird oben auf der Seite angezeigt.
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+    :::image type="content" source="media/storage-account-get-info/resource-id-portal.png" alt-text="Screenshot: Kopieren der Ressourcen-ID für das Speicherkonto aus dem Portal":::
 
-Rufen Sie zum Abrufen des Speicherkontotyps und -SKU-Namens eines Blobs die Methode [GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) oder [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) auf.
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+Stellen Sie sicher, dass Sie das Modul [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) installiert haben, wenn Sie die Azure Resource Manager-Ressourcen-ID für ein Speicherkonto mit PowerShell zurückgeben möchten. Rufen Sie als Nächstes den Befehl [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) auf, um das Speicherkonto zurückzugeben und die zugehörige Ressourcen-ID abzurufen:
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+```azurepowershell
+(Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>).Id
+```
 
-Rufen Sie zum Abrufen des Speicherkontotyps und -SKU-Namens eines Blobs die Methode [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) oder [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) auf.
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-```csharp
-private static async Task GetAccountInfoAsync(CloudBlob blob)
-{
-    try
-    {
-        // Get the blob's storage account properties.
-        AccountProperties acctProps = await blob.GetAccountPropertiesAsync();
+Rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf, und fragen Sie die Ressourcen-ID ab, um die Azure Resource Manager-Ressourcen-ID für ein Speicherkonto mit der Azure CLI zurückzugeben:
 
-        // Display the properties.
-        Console.WriteLine("Account properties");
-        Console.WriteLine("  AccountKind: {0}", acctProps.AccountKind);
-        Console.WriteLine("      SkuName: {0}", acctProps.SkuName);
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine("HTTP error code {0}: {1}",
-                            e.RequestInformation.HttpStatusCode,
-                            e.RequestInformation.ErrorCode);
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-    }
-}
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query id \
+    --output tsv
 ```
 
 ---
 
-[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
+Sie können die Ressourcen-ID für ein Speicherkonto auch abrufen, indem Sie in der REST-API den Vorgang zum [Abrufen von Eigenschaften für Speicherkonten (Storage Accounts – Get Properties)](/rest/api/storagerp/storage-accounts/get-properties) aufrufen.
+
+Weitere Informationen zu den Arten von Ressourcen, die mit Azure Resource Manager verwaltet werden, finden Sie unter [Ressourcenanbieter und Ressourcentypen](../../azure-resource-manager/management/resource-providers-and-types.md).
+
+## <a name="get-the-account-type-location-or-replication-sku-for-a-storage-account"></a>Abrufen des Kontotyps, des Speicherorts oder der Replikations-SKU für ein Speicherkonto
+
+Der Kontotyp, der Speicherort und die Replikations-SKU sind einige der Eigenschaften, die für ein Speicherkonto verfügbar sind. Sie können diese Angaben im Azure-Portal, mit PowerShell oder über die Azure CLI anzeigen.
+
+# <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
+
+Führen Sie die folgenden Schritte aus, um den Kontotyp, den Speicherort oder die Replikations-SKU für ein Speicherkonto im Azure-Portal anzuzeigen:
+
+1. Navigieren Sie zum Speicherkonto im Azure-Portal.
+1. Suchen Sie nach diesen Eigenschaften auf der Seite **Übersicht** im Abschnitt **Grundlegende Features**.
+
+    :::image type="content" source="media/storage-account-get-info/account-configuration-portal.png" alt-text="Screenshot: Kontokonfiguration im Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Rufen Sie zum Anzeigen des Kontotyps, des Speicherorts oder der Replikations-SKU für ein Speicherkonto mit PowerShell den Befehl [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) auf, um das Speicherkonto zurückzugeben, und überprüfen Sie anschließend die Eigenschaften:
+
+```azurepowershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>
+$account.Location
+$account.Sku
+$account.Kind
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Rufen Sie zum Anzeigen des Kontotyps, des Speicherorts oder der Replikations-SKU für ein Speicherkonto mit PowerShell den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf, und fragen Sie die Eigenschaften ab:
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query '[location,sku,kind]' \
+    --output tsv
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über andere Vorgänge, die Sie über das [Azure-Portal](https://portal.azure.com) und die Azure-Rest-API für ein Speicherkonto ausführen können.
-
-- [Abrufen von Kontoinformationen (REST)](/rest/api/storageservices/get-account-information)
+- [Speicherkontoübersicht](storage-account-overview.md)
+- [Erstellen eines Speicherkontos](storage-account-create.md)

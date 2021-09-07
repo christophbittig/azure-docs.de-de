@@ -1,6 +1,6 @@
 ---
 title: Durchführen eines Betriebssystemupgrades für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Durchführen von Betriebssystemupgrades für SAP HANA in Azure (große Instanzen)
+description: Es wird beschrieben, wie Sie ein Betriebssystemupgrade für SAP HANA in Azure (große Instanzen) durchführen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: Ajayan1008
@@ -11,50 +11,46 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 06/24/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7be86ca3895d7ed98d676a5c9fc19c873da6d5e
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 3a7f066a350eae18b9c847d206310cfc3ab8bd57
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577222"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913381"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
-In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
+In diesem Artikel werden die Details von Betriebssystemupgrades für HANA (große Instanzen) – auch als BareMetal-Infrastruktur bezeichnet – beschrieben.
 
 >[!NOTE]
->Das Betriebssystemupgrade liegt in der Zuständigkeit des Kunden. Der Microsoft Operations-Support kann Sie dabei auf wichtige Punkte hinweisen, die beim Upgrade zu beachten sind. Bevor Sie Planungen für ein Upgrade treffen, sollten Sie auch den Hersteller Ihres Betriebssystems zurate ziehen.
+>Für die Durchführung von Upgrades für Ihr Betriebssystem sind Sie verantwortlich. Der Microsoft Operations-Support kann Sie in wichtigen Bereichen des Upgradevorgangs unterstützen. Es ist aber ratsam, dass Sie sich beim Planen eines Upgrades auch an Ihren Betriebssystemanbieter wenden.
 
-Das Microsoft Operations-Team installiert das Betriebssystem während der Bereitstellung der HLI-Einheiten.
-Im Lauf der Zeit müssen Sie Wartungsvorgänge für das Betriebssystem für die HLI-Einheit vornehmen (z.B. Patches erstellen, optimieren, Upgrades durchführen).
-
-Bevor Sie bedeutende Änderungen am Betriebssystem vornehmen (z. B. ein Upgrade von SP1 auf SP2), müssen Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket öffnen.
+Das Microsoft Operations-Team installiert das Betriebssystem während der Bereitstellung der HANA-Instanz (große Instanzen) (im weiteren Verlauf auch als „HLI“ abgekürzt“).
+Sie müssen das Betriebssystem verwalten. Beispielsweise müssen Sie für die HLI das Patchen, Optimieren, Aktualisieren usw. durchführen. Bevor Sie größere Änderungen am Betriebssystem vornehmen, z. B. ein Upgrade von SP1 auf SP2, sollten Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket erstellen. Das Team kann dann mit Ihnen Kontakt aufnehmen. Wir empfehlen Ihnen, dieses Ticket mindestens eine Woche vor dem Upgrade zu erstellen. 
 
 Geben Sie folgende Informationen in Ihrem Ticket an:
 
 * Ihre HLI-Abonnement-ID
 * Ihren Servernamen
-* Die Patchebene, die Sie anwenden möchten
-* Das Datum, an dem Sie diese Änderung planen 
-
-Es wird empfohlen, dieses Ticket mindestens eine Woche vor dem gewünschten Upgrade zu öffnen, damit das Operations-Team die gewünschte Firmwareversion kennt.
+* Patchebene, die Sie anwenden möchten
+* Datum, an dem Sie diese Änderung vornehmen möchten 
 
 Die Supportmatrix der anderen SAP HANA-Versionen mit den verschiedenen Linux-Versionen finden Sie im [SAP-Hinweis 2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-Im Folgenden werden einige bekannte Probleme bei Upgrades erläutert:
-- Bei SKUs von SKU-Typ II wird Software Foundation Software (SFS) nach der Durchführung eines Betriebssystemupgrades entfernt. Nach dem Betriebssystemupgrade müssen Sie die kompatible SFS-Version neu installieren.
-- Für Ethernet-Kartentreiber (ENIC und FNIC) wird ein Rollback auf die ältere Version ausgeführt. Nach dem Upgrade müssen Sie die kompatible Version der Treiber neu installieren.
+Für das Upgrade können einige bekannte Probleme auftreten:
+- Bei SKUs von SKU-Typ II wird Software Foundation Software (SFS) während der Durchführung eines Betriebssystemupgrades entfernt. Nach Abschluss des Betriebssystemupgrades müssen Sie die kompatible SFS-Version neu installieren.
+- Für Ethernet-Kartentreiber (ENIC und FNIC) wird ein Rollback auf eine ältere Version ausgeführt. Nach dem Upgrade müssen Sie die kompatible Version der Treiber neu installieren.
 
 ## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>Empfohlene Konfiguration für SAP HANA (große Instanzen, Typ I)
 
-Die Betriebssystemkonfiguration kann sich im Lauf der Zeit aufgrund angewendeter Patches, Systemupgrades und vom Kunden vorgenommener Änderungen von den empfohlenen Einstellungen fortbewegen. Darüber hinaus identifiziert Microsoft die erforderlichen Updates für bestehende Systeme, um sicherzustellen, dass diese optimal für die beste Leistung und Ausfallsicherheit konfiguriert sind. Die folgenden Anweisungen enthalten Empfehlungen, die sich auf die Netzwerkleistung, die Systemstabilität und die optimale HANA-Leistung beziehen.
+Die Betriebssystemkonfiguration kann im Laufe der Zeit von den empfohlenen Einstellungen abweichen. Diese Abweichung kann aufgrund von Patches, Systemupgrades und anderen Änderungen auftreten, die Sie ggf. vornehmen. Von Microsoft werden die Updates ermittelt, mit denen sichergestellt werden kann, dass HANA (große Instanzen) optimal konfiguriert ist und die beste Leistung und Resilienz erzielt wird. Die folgende Anleitung enthält Empfehlungen, die sich auf die Netzwerkleistung, die Systemstabilität und die optimale HANA-Leistung beziehen.
 
 ### <a name="compatible-enicfnic-driver-versions"></a>Kompatible eNIC/fNIC-Treiberversionen
-  Um eine ordnungsgemäße Netzwerkleistung und Systemstabilität zu gewährleisten, sollte unbedingt darauf geachtet werden, dass die betriebssystemspezifische geeignete Version der eNIC- und fNIC-Treiber installiert ist, wie in der folgenden Kompatibilitätstabelle dargestellt. Server werden mit kompatiblen Versionen an Kunden ausgeliefert. Beim Anwenden von Patches auf das Betriebssystem/den Kernel kann in manchen Fällen ein Rollback der Treiber auf die Standardtreiberversionen erfolgen. Stellen Sie sicher, dass nach Patchvorgängen an Betriebssystem/Kernel die passende Treiberversion ausgeführt wird.
+  Stellen Sie zur Erzielung einer hohen Netzwerkleistung und Systemstabilität sicher, dass die richtige betriebssystemspezifische Version der eNIC- und fNIC-Treiber installiert ist. Dies ist in der folgenden Kompatibilitätstabelle angegeben. Server werden mit kompatiblen Versionen an Kunden ausgeliefert. Es kann aber sein, dass Treiber beim Patchen von Betriebssystemen/Kerneln auf die Standardversionen zurückgesetzt werden. Stellen Sie sicher, dass nach Patchvorgängen am Betriebssystem/Kernel die passende Treiberversion ausgeführt wird.
        
       
   |  Betriebssystemhersteller    |  Betriebssystem-Paketversion     |  Firmware Version  |  eNIC-Treiber |  fNIC-Treiber | 
@@ -83,12 +79,12 @@ rpm -qa | grep enic/fnic
 ```
 rpm -e <old-rpm-package>
 ```
-#### <a name="install-the-recommended-enicfnic-driver-packages"></a>Installieren der empfohlenen eNIC-/fNIC-Treiberpakete
+#### <a name="install-recommended-enicfnic-driver-packages"></a>Installieren der empfohlenen eNIC-/fNIC-Treiberpakete
 ```
 rpm -ivh <enic/fnic.rpm> 
 ```
 
-#### <a name="commands-to-confirm-the-installation"></a>Befehle zum Bestätigen der Installation
+#### <a name="commands-to-confirm-installation"></a>Befehle zum Bestätigen der Installation
 ```
 modinfo enic
 modinfo fnic
@@ -104,35 +100,37 @@ modinfo fnic
 
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB-Updatefehler
-SAP in Azure HANA (große Instanzen, Typ I) kann sich nach dem Upgrade in einem nicht startfähigen Zustand befinden. Das Problem lässt sich mit dem unten beschriebenen Verfahren beheben.
+SAP in Azure HANA (große Instanzen, Typ I) kann sich nach dem Upgrade in einem nicht startfähigen Zustand befinden. Dieses Problem kann mit dem folgenden Verfahren behoben werden.
+
 #### <a name="execution-steps"></a>Ausführungsschritte
 
+-   Führen Sie den `multipath -ll`-Befehl aus.
+-   Rufen Sie die LUN-ID (Logische Gerätenummer) ab, oder verwenden Sie diesen Befehl: `fdisk -l | grep mapper`
+-   Aktualisieren Sie die Datei `/etc/default/grub_installdevice` mit der folgenden Zeile: `/dev/mapper/<LUN ID>`. Beispiel: /dev/mapper/3600a09803830372f483f495242534a56
 
-*   Führen Sie den `multipath -ll`-Befehl aus.
-*   Rufen Sie die LUN ID ab, deren Größe ungefähr 50G beträgt, oder verwenden Sie den Befehl: `fdisk -l | grep mapper`
-*   Aktualisieren Sie die Datei `/etc/default/grub_installdevice` mit der Zeile `/dev/mapper/<LUN ID>`. Beispiel: /dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
->Die LUN ID unterscheidet sich auf den einzelnen Servern.
+>Die LUN-ID variiert für die einzelnen Server.
 
 
-### <a name="disable-edac"></a>Deaktivieren von EDAC 
-   Das EDAC-Modul (Error Detection And Correction) unterstützt das Erkennen und Beheben von Speicherfehlern. Allerdings erfüllt die zugrundeliegende Hardware für SAP HANA in Azure (große Instanzen, Typ I) bereits die gleiche Funktion. Die Aktivierung der gleichen Funktion auf Hardware- und Betriebssystemebene kann zu Konflikten führen und gelegentliches, außerplanmäßiges Herunterfahren des Servers bewirken. Daher empfiehlt es sich, das Betriebssystemmodul zu deaktivieren.
+### <a name="disable-error-detection-and-correction"></a>Deaktivieren der Fehlererkennung und -korrektur 
+   Mit Modulen für die Fehlererkennung und -korrektur (Error Detection and Correction, EDAC) können Arbeitsspeicherfehler erkannt und korrigiert werden. Auch die zugrunde liegende Hardware mit HLI-Typ I kann Arbeitsspeicherfehler aber bereits erkennen und korrigieren. Die Aktivierung des gleichen Features auf Hardware- und Betriebssystemebene kann zu Konflikten und zum ungeplanten Herunterfahren des Servers führen. Wir empfehlen Ihnen, die EDAC-Module für das Betriebssystem zu deaktivieren.
 
 #### <a name="execution-steps"></a>Ausführungsschritte
 
-* Überprüfen Sie, ob das EDAC-Modul aktiviert ist. Wenn der Befehl unten eine Ausgabe zurückgibt, bedeutet dies, dass das Modul aktiviert ist. 
+- Überprüfen Sie, ob die EDAC-Module aktiviert sind. Wenn vom folgenden Befehl eine Ausgabe zurückgegeben wird, sind die Module aktiviert.
+
 ```
 lsmod | grep -i edac 
 ```
-* Deaktivieren Sie die Module, indem Sie der Datei `/etc/modprobe.d/blacklist.conf` die folgenden Zeilen anfügen:
+- Deaktivieren Sie die Module, indem Sie der Datei `/etc/modprobe.d/blacklist.conf` die folgenden Zeilen anfügen:
 ```
 blacklist sb_edac
 blacklist edac_core
 ```
-Ein Neustart ist erforderlich, damit die Änderungen wirksam werden. Führen Sie den `lsmod`-Befehl aus, um zu überprüfen, dass das Modul nicht in der Ausgabe vorhanden ist.
+Ein Neustart ist erforderlich, damit die Änderungen vorgenommen werden. Führen Sie nach dem Neustart den Befehl `lsmod` erneut aus, um sich zu vergewissern, dass die Module nicht mehr aktiviert sind.
 
 ### <a name="kernel-parameters"></a>Kernelparameter
-   Vergewissern Sie sich, dass die richtigen Einstellungen für `transparent_hugepage`, `numa_balancing`, `processor.max_cstate`, `ignore_ce` und `intel_idle.max_cstate` angewendet werden.
+Vergewissern Sie sich, dass die richtigen Einstellungen für `transparent_hugepage`, `numa_balancing`, `processor.max_cstate`, `ignore_ce` und `intel_idle.max_cstate` angewendet werden.
 
 * intel_idle.max_cstate=1
 * processor.max_cstate=1
@@ -142,17 +140,20 @@ Ein Neustart ist erforderlich, damit die Änderungen wirksam werden. Führen Sie
 
 #### <a name="execution-steps"></a>Ausführungsschritte
 
-* Fügen Sie diese Parameter der Zeile `GRB_CMDLINE_LINUX` in der Datei `/etc/default/grub` hinzu.
+- Fügen Sie diese Parameter der Zeile `GRB_CMDLINE_LINUX` in der Datei `/etc/default/grub` hinzu:
+
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```
-* Erstellen Sie eine neue Grub-Datei.
+- Erstellen Sie eine neue Grub-Datei.
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
-* Starten Sie das System neu.
-
+- Starten Sie Ihr System neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informationen zur SKU von Typ I für Betriebssystemsicherungen finden Sie unter [Sicherung und Wiederherstellung](hana-overview-high-availability-disaster-recovery.md).
-- Informationen zum [OS Backup](./large-instance-os-backup.md) für HLI.
+
+Informieren Sie sich über das Einrichten eines SMT-Servers für SUSE Linux.
+
+> [!div class="nextstepaction"]
+> [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md)

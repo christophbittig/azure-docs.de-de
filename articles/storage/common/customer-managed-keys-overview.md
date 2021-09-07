@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: cc0e6dc0e11809fb1e8cf046821231cc98f769f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371320"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439856"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
@@ -24,14 +24,11 @@ Sie können Ihren eigenen Verschlüsselungsschlüssel verwenden, um die Daten Ih
 Sie müssen einen der folgenden Azure-Schlüsselspeicher verwenden, um Ihre kundenseitig verwalteten Schlüssel zu speichern:
 
 - [Azure Key Vault](../../key-vault/general/overview.md)
-- [Azure Key Vault Managed HSM (Hardware Security Module) (Vorschau)](../../key-vault/managed-hsm/overview.md)
+- [Verwaltetes Azure Key Vault-Hardwaresicherheitsmodul (HSM)](../../key-vault/managed-hsm/overview.md)
 
 Sie können entweder Ihre eigenen Schlüssel erstellen und im Schlüsseltresor oder im verwalteten HSM speichern, oder Sie können mit den Azure Key Vault-APIs Schlüssel generieren. Das Speicherkonto und der Schlüsseltresor oder das verwaltete HSM müssen sich in derselben Region und im selben Azure Active Directory-Mandanten (Azure AD) befinden, aber sie können sich in verschiedenen Abonnements befinden.
 
-> [!IMPORTANT]
->
-> Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die im verwalteten Azure Key Vault-HSM gespeichert sind, befindet sich derzeit in der **Vorschau**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
->
+> [!NOTE]
 > Azure Key Vault und Azure Key Vault Managed HSM unterstützen dieselben APIs und Verwaltungsschnittstellen für die Konfiguration.
 
 ## <a name="about-customer-managed-keys"></a>Informationen zu kundenseitig verwalteten Schlüsseln
@@ -76,7 +73,7 @@ Vom Kunden verwaltete Schlüssel können nur für vorhandene Speicherkonten akti
 
 Sie können jederzeit zwischen kundenseitig verwalteten Schlüsseln und von Microsoft verwalteten Schlüsseln wechseln. Weitere Informationen zu von Microsoft verwalteten Schlüsseln finden Sie unter [Informationen zur Verwaltung von Verschlüsselungsschlüsseln](storage-service-encryption.md#about-encryption-key-management).
 
-Informationen zum Konfigurieren der Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md). Informationen zum Konfigurieren von kundenseitig verwalteten Schlüsseln in einem verwalteten HSM finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
+Informationen zum Konfigurieren der Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md). Informationen zum Konfigurieren von kundenseitig verwalteten Schlüsseln in einem verwalteten HSM finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem verwalteten Azure Key Vault-HSM gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
 
 > [!IMPORTANT]
 > Kundenseitig verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure AD. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreifenden Szenarien. Wenn Sie vom Kunden verwaltete Schlüssel im Azure-Portal konfigurieren, wird Ihrem Speicherkonto eine verwaltete Identität im Hintergrund automatisch zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder das Speicherkonto von einem Azure AD-Verzeichnis in ein anderes Verzeichnis verschieben, wird die dem Speicherkonto zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass vom Kunden verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie in [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) unter **Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen**.  
@@ -92,7 +89,7 @@ Wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln konfiguri
 - **Automatisches Update der Schlüsselversion:** Um einen kundenseitig verwalteten Schlüssel bei Verfügbarkeit einer neuen Version automatisch zu aktualisieren, lassen Sie die Schlüsselversion aus, wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto konfigurieren. Wenn die Schlüsselversion weggelassen wird, überprüft Azure Storage den Schlüsseltresor oder das verwaltete HSM täglich auf eine neue Version eines kundenseitig verwalteten Schlüssels. Azure Storage nutzt automatisch die neueste Version des Schlüssels.
 - **Manuelles Update der Schlüsselversion:** Zur Verwendung einer bestimmten Version eines Schlüssels für die Azure Storage-Verschlüsselung geben Sie diese Schlüsselversion beim Aktivieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto an. Wenn Sie die Schlüsselversion angeben, verwendet Azure Storage diese Version für die Verschlüsselung, bis Sie die Schlüsselversion manuell aktualisieren.
 
-    Wenn die Schlüsselversion direkt angegeben wird, müssen Sie das Speicherkonto manuell für die Verwendung des neuen Schlüsselversions-URI aktualisieren, nachdem eine neue Version erstellt wurde. Informationen dazu, wie Sie das Speicherkonto für die Verwendung einer neuen Version des Schlüssels aktualisieren, finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md) und [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
+    Wenn die Schlüsselversion direkt angegeben wird, müssen Sie das Speicherkonto manuell für die Verwendung des neuen Schlüsselversions-URI aktualisieren, nachdem eine neue Version erstellt wurde. Informationen dazu, wie Sie das Speicherkonto für die Verwendung einer neuen Version des Schlüssels aktualisieren, finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md) und [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem verwalteten Azure Key Vault Managed-HSM gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
 
 Wenn Sie die Schlüsselversion aktualisieren, ändert sich der Schutz des Stammverschlüsselungsschlüssels, die Daten in Ihrem Azure Storage-Konto werden jedoch nicht erneut verschlüsselt. Es ist keine weitere Aktion durch den Benutzer erforderlich.
 

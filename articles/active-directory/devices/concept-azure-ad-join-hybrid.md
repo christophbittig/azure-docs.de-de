@@ -5,29 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 083dcc0dc5d6ffdf25f6d6f631a8e6f5788ce8b1
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85554921"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303038"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>In Azure AD eingebundene Hybridgeräte
 
-Seit über zehn Jahren verwenden viele Unternehmen den Domänenbeitritt für das lokale Active Directory, um Folgendes zu ermöglichen:
+Organisationen mit vorhandenen Active Directory-Implementierungen können von einigen Funktionen profitieren, die von Azure Active Directory (Azure AD) bereitgestellt werden, indem sie in Azure AD eingebundene Hybridgeräte implementieren. Diese Geräte sind in Ihre lokale Active Directory-Instanz eingebunden und dafür registriert.
 
-- Verwaltung unternehmenseigener Geräte über einen zentralen Ort für IT-Abteilungen
-- Anmeldung von Benutzern bei Geräten mit ihrem Geschäfts-, Schul- oder Unikonto in Active Directory
-
-Unternehmen mit einem lokalen Fußabdruck nutzen normalerweise Verfahren für die Imageerstellung, um Geräte bereitzustellen, und häufig **Configuration Manager** oder **Gruppenrichtlinien** für die Verwaltung der Geräte.
-
-Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die in Ihre lokale Active Directory-Instanz eingebunden und dafür registriert sind.
+In Azure AD eingebundene Hybridgeräte benötigen regelmäßig eine Netzwerk-Sichtverbindung mit Ihren lokalen Domänencontrollern. Ohne diese Verbindung werden Geräte unbrauchbar. Wenn diese Anforderung ein Problem ist, sollten Sie die [Azure AD-Einbindung](concept-azure-ad-join.md) Ihrer Geräte in Erwägung ziehen.
 
 | Azure AD Hybrid Join | BESCHREIBUNG |
 | --- | --- |
@@ -57,10 +52,10 @@ Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die
 
 Verwenden Sie in Azure AD eingebundene Hybridgeräte in folgenden Fällen:
 
-- Auf den Geräten sind Win32-Apps bereitgestellt, die die Active Directory-Authentifizierung für Computer benötigen.
+- Sie unterstützen kompatible Geräte unter Windows 7 und 8.1.
 - Sie möchten die Gruppenrichtlinie weiterhin nutzen, um die Gerätekonfiguration zu verwalten.
 - Sie möchten weiterhin vorhandene Lösungen für die Imageerstellung verwenden, um Geräte bereitzustellen und zu konfigurieren.
-- Sie müssen zusätzlich zu Windows 10 Downlevelgeräte mit Windows 7 und 8.1 unterstützen.
+- Auf den Geräten sind Win32-Apps bereitgestellt, die die Active Directory-Authentifizierung für Computer benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

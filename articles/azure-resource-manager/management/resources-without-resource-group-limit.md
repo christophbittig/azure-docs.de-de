@@ -2,13 +2,13 @@
 title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: f77bd964003638ca33e1f30e352b1f35a866ac6a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 07/13/2021
+ms.openlocfilehash: e9145500ade55aa8cb9061b6da125e2bd8a0f5c5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060244"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769250"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -28,7 +28,6 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* edgeSubscriptions
 * linkedSubscriptions
 * registrations
 * registrations/customerSubscriptions
@@ -119,7 +118,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 ## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
-* scheduledQueryRules
+* scheduledqueryrules
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -137,6 +136,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/snapshotPolicies
 * netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -173,7 +173,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
+* publicIPAddresses
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -209,20 +209,20 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * accounts/accountQuotaPolicies
 * accounts/groupPolicies
 * accounts/jobs
+* Konten/Modelle
 * accounts/storageContainers
-
-## <a name="microsoftstorage"></a>Microsoft.Storage
-
-* storageAccounts
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 * servers/databases
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* apiManagementAccounts/apis
-* sites
+* storageAccounts
+
+## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+
+* streamingjobs: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

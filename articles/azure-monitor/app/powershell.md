@@ -4,12 +4,12 @@ description: Automatisieren Sie die Erstellung und Verwaltung von Ressourcen, Wa
 ms.topic: conceptual
 ms.date: 05/02/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d629ef1bc7d2086f85bbb08105041a0457b133c5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 99da4f3134d8e646ba8decbc986ceb082860ca57
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954891"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463745"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
@@ -246,7 +246,7 @@ $Resource | Set-AzResource -Force
 
 ### <a name="setting-data-retention-using-rest"></a>Festlegen der Datenaufbewahrung mithilfe von REST
 
-Zum Abrufen der aktuelle Datenaufbewahrung für Ihre Application Insights Ressource können Sie das OSS-Tool [ARMClient ](https://github.com/projectkudu/ARMClient) verwenden.  (Weitere Informationen zu ARMClient finden Sie in den Artikeln von [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) und [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Es folgt ein Beispiel für die Verwendung von `ARMClient` zum Abrufen der aktuellen Aufbewahrung:
+Zum Abrufen der aktuelle Datenaufbewahrung für Ihre Application Insights Ressource können Sie das OSS-Tool [ARMClient ](https://github.com/projectkudu/ARMClient) verwenden.  (Weitere Informationen zu ARMClient finden Sie in den Artikeln von [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) und Daniel Bowbyes.) Es folgt ein Beispiel für die Verwendung von `ARMClient` zum Abrufen der aktuellen Aufbewahrung:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -472,4 +472,4 @@ Andere Artikel zu Automation:
 * [Erstellen einer Application Insights-Ressource](./create-new-resource.md#creating-a-resource-automatically) : Schnellverfahren ohne Verwendung einer Vorlage.
 * [Erstellen von Webtests](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Senden von Azure-Diagnosedaten an Application Insights](powershell-azure-diagnostics.md)
-* [Erstellen von Versionsanmerkungen](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Erstellen von Versionsanmerkungen](annotations.md)

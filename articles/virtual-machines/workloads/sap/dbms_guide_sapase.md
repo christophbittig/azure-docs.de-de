@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74d5bee95ae91eb11f249518f49b711d9649db01
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675790"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467654"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -188,7 +188,7 @@ HADR Users Guide (HADR-Benutzerhandbuch, High Availability And Desaster Recovery
 > Die einzige unterstützte Konfiguration in Azure ist die Verwendung von Fehler-Manager ohne Floating IP.  Die Methode „Floating IP-Adresse“ funktioniert in Azure nicht. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Dritter Knoten für Notfallwiederherstellung
-Neben der Verwendung von SAP ASE „Always On“ für lokale Hochverfügbarkeit möchten Sie möglicherweise die Konfiguration auf einen asynchron replizierten Knoten in einer anderen Azure-Region erweitern. Die Dokumentation zu einem solchen Szenario finden Sie [hier](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
+Neben der Verwendung von SAP ASE „Always On“ für lokale Hochverfügbarkeit möchten Sie möglicherweise die Konfiguration auf einen asynchron replizierten Knoten in einer anderen Azure-Region erweitern. Weitere Informationen finden Sie unter [Installationsverfahren für Sybase 16.3 Patch Level 3 Always-on + DR unter Suse 12.3](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE-Datenbankverschlüsselung und SSL 
 Der SAP-Softwarebereitstellungs-Manager (SAP Software Provisioning Manager, SWPM) enthält eine Option zum Verschlüsseln der Datenbank während der Installation.  Wenn Sie Verschlüsselung verwenden möchten, wird die vollständige SAP-Datenbankverschlüsselung empfohlen.  Weitere Informationen finden Sie unter:
@@ -245,7 +245,6 @@ Wenn die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivit�
 > 
 > 
 
-Weitere Informationen zum DNS-Namen finden Sie [hier][virtual-machines-azurerm-versus-azuresm].
 
 Wenn Sie den SAP-Profilparameter „icm/host_name_full“ auf den DNS-Namen der Azure-VM einstellen, erhalten Sie einen Link, der ähnlich wie dieser aussieht:
 

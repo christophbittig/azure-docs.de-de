@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53b4c0250e4ceb034853ab588cfb2ef93a6ae005
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500409"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297792"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -29,11 +29,9 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
     | [Automatisiertes maschinelles Lernen](#automated-machine-learning) | Mithilfe des automatisierten maschinellen Lernens können Sie **Modelle ohne umfassende Data Science- oder Programmierkenntnisse trainieren**. Für Personen mit Data Science- und Programmierungshintergrund bietet es eine Möglichkeit, Zeit und Ressourcen zu sparen, indem die Algorithmusauswahl und die Hyperparameteroptimierung automatisiert werden. Bei der Verwendung des automatisierten maschinellen Lernens müssen Sie sich nicht um die Definition einer Laufzeitkonfiguration kümmern. |
     | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren**, die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen**, z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
 
-+ [Azure Machine Learning SDK für R (Vorschauversion)](#r-sdk-preview): Das SDK für R verwendet das Paket „reticulate“ zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
-
 + **Designer**: Azure Machine Learning-Designer bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 
-+ **CLI**: Die Befehlszeilenschnittstelle für das maschinelle Lernen stellt Befehle für häufige Aufgaben mit Azure Machine Learning bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mit der Befehlszeilenschnittstelle einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
++ **Azure CLI**: Die Machine Learning-Befehlszeilenschnittstelle stellt Befehle für gängige Machine Learning-Aufgaben bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mithilfe der Azure CLI einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
 
 Jede dieser Trainingsmethoden kann verschiedene Arten von Computeressourcen für das Training verwenden. Zusammenfassend werden diese Ressourcen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.
 
@@ -90,7 +88,7 @@ Der Azure-Trainingslebenszyklus besteht aus folgenden Schritten:
 1. Erstellen oder Herunterladen des Dockerfiles auf den Computeknoten 
     1. Das System berechnet einen Hashwert aus: 
         - Dem Basisimage 
-        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](./how-to-deploy-custom-docker-image.md))
+        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](./how-to-deploy-custom-container.md))
         - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](./how-to-use-environments.md))
     1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
     1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
@@ -103,14 +101,6 @@ Der Azure-Trainingslebenszyklus besteht aus folgenden Schritten:
 
 Wenn Sie das Training auf Ihrem lokalen Computer ausführen möchten („für lokale Ausführung konfigurieren“), ist Docker nicht notwendig. Sie können Docker aber lokal verwenden, wenn Sie dies wünschen (ein Beispiel finden Sie im Abschnitt [Konfigurieren der ML-Pipeline](./how-to-debug-pipelines.md)).
 
-## <a name="r-sdk-preview"></a>R SDK (Vorschau)
-
-Mit dem R-SDK können Sie die Programmiersprache R mit Azure Machine Learning verwenden. Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Damit erhalten Sie in jeder R-Umgebung Zugriff auf wichtige Objekte und Methoden, die im Python SDK implementiert sind.
-
-Weitere Informationen finden Sie in den folgenden Artikeln:
-
-* [Azure Machine Learning SDK für R – Referenz](https://azure.github.io/azureml-sdk-for-r/index.html)
-
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
 Mit dem Designer können Sie Modelle über eine Drag & Drop-Oberfläche in Ihrem Webbrowser trainieren.
@@ -118,19 +108,7 @@ Mit dem Designer können Sie Modelle über eine Drag & Drop-Oberfläche in Ihr
 + [Was ist der Designer?](concept-designer.md)
 + [Tutorial: Prognostizieren von Fahrzeugpreisen](tutorial-designer-automobile-price-train-score.md)
 
-## <a name="many-models-solution-accelerator"></a>Many Models Solution Accelerator (Projektmappenbeschleuniger für viele Modelle)
-
-Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
-
-Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann in den folgenden Szenarien z. B. zu verbesserten Ergebnissen führen:
-
-* Vorhersage der Umsätze für jedes einzelne Geschäft
-* Vorausschauende Wartung für Hunderte von Ölquellen
-* Anpassen einer Erfahrung für einzelne Benutzer
-
-Weitere Informationen finden Sie auf GitHub unter [Many Models Solution Accelerator](https://aka.ms/many-models) (Projektmappenbeschleuniger für viele Modelle).
-
-## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Die Machine Learning-Befehlszeilenschnittstelle ist eine Erweiterung für die Azure-Befehlszeilenschnittstelle. Es bietet plattformübergreifende CLI-Befehle für die Arbeit mit Azure Machine Learning. In der Regel verwenden Sie die Befehlszeilenschnittstelle zur Automatisierung von Aufgaben, z. B. das Training eines Machine Learning-Modells.
 

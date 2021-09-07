@@ -3,14 +3,14 @@ title: Problembehandlung von „VMs starten/beenden (Vorschau)“
 description: In diesem Artikel erfahren Sie, wie Sie Probleme behandeln, die bei der Funktion „VMs starten/beenden (Vorschau)“ für Ihre Azure-VMs auftreten.
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/31/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2908f9a8383897ae0bda162e6f980e02d6c81bc1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791688"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966987"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>Behandeln allgemeiner Probleme bei „VMs starten/beenden (Vorschau)“
 
@@ -65,3 +65,5 @@ Weitere Informationen zur Überwachung von Azure Functions und Logik-Apps:
 * [Konfigurieren der Überwachung für Azure Functions](../../azure-functions/configure-monitoring.md).
 
 * [Überwachen von Logik-Apps](../../logic-apps/monitor-logic-apps.md).
+
+* Falls bei der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ Probleme auftreten oder Sie eine Frage haben, können Sie auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) ein Problem melden. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: landing-page
 ms.workload: identity
-ms.date: 03/09/2021
+ms.date: 06/23/2021
 ms.author: jeedes
 ms.custom: contperf-fy21q3-portal
 ms.reviewer: celested
-ms.openlocfilehash: eda1ad058bf969351122cb9df1b528341067a186
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b14873d0a1a7d158d27bbd6a730d1f4f4d92d3b9
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640889"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554907"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory
 
@@ -86,6 +86,7 @@ Verwenden Sie das Inhaltsverzeichnis auf der linken Seite, um auf weitere Tutori
 | ![Logo: Evernote](./media/tutorial-list/active-directory-saas-evernote-tutorial.png)| [Evernote](evernote-tutorial.md)|
 | ![Logo: ExpenseIn](./media/tutorial-list/active-directory-saas-expensein-tutorial.png)| [ExpenseIn](expensein-tutorial.md)|
 | ![Logo: EZOfficeInventory](./media/tutorial-list/active-directory-saas-ezofficeinventory-tutorial.png)| [EZOfficeInventory](ezofficeinventory-tutorial.md)|
+| ![logo-FAX.PLUS](./media/tutorial-list/active-directory-saas-fax-plus-tutorial.png)| [FAX.PLUS](fax-plus-tutorial.md)|
 | ![Logo: Foodee](./media/tutorial-list/active-directory-saas-foodee-tutorial.png)| [Foodee](foodee-tutorial.md)|
 | ![Logo: Freedcamp](./media/tutorial-list/active-directory-saas-freedcamp-tutorial.png)| [Freedcamp](freedcamp-tutorial.md)|
 | ![Logo: Freshservice](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [FreshService](freshservice-tutorial.md)|
@@ -99,6 +100,7 @@ Verwenden Sie das Inhaltsverzeichnis auf der linken Seite, um auf weitere Tutori
 | ![Logo: Kendis – Azure AD-Integration](./media/tutorial-list/active-directory-saas-kendis-azure-ad-integration.png)| [Kendis - Azure AD Integration](kendis-scaling-agile-platform-tutorial.md)|
 | ![Logo: Knowledge Anywhere LMS](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|
 | ![Logo: Litmus](./media/tutorial-list/active-directory-saas-litmus-tutorial.png)| [Litmus](litmus-tutorial.md)|
+| ![logo-LogMeIn](./media/tutorial-list/active-directory-saas-logmein-tutorial.png)| [LogMeIn](logmein-tutorial.md)|
 | ![logo: Marketo](./media/tutorial-list/active-directory-saas-marketo-tutorial.png)| [Marketo](marketo-tutorial.md)|
 | ![Logo: Meraki Dashboard](./media/tutorial-list/active-directory-saas-meraki-dashboard-tutorial.png)| [Meraki Dashboard](meraki-dashboard-tutorial.md)|
 | ![Logo: monday.com](./media/tutorial-list/active-directory-saas-mondaycom-tutorial.png)| [monday.com](mondaycom-tutorial.md)|
@@ -111,6 +113,7 @@ Verwenden Sie das Inhaltsverzeichnis auf der linken Seite, um auf weitere Tutori
 | ![Logo: productboard](./media/tutorial-list/active-directory-saas-productboard-tutorial.png)| [productboard](productboard-tutorial.md)|
 | ![Logo: PurelyHR](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
 | ![Logo: RingCentral](./media/tutorial-list/active-directory-saas-ringcentral-tutorial.png)| [RingCentral](ringcentral-tutorial.md)|
+| ![logo-Saba Cloud](./media/tutorial-list/active-directory-saas-saba-cloud-tutorial.png)| [Saba Cloud](saba-cloud-tutorial.md)|
 | ![Logo: Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|
 | ![Logo: SAP Cloud Platform Identity Authentication](./media/tutorial-list/active-directory-saas-sap-hana-tutorial.png)| [SAP Cloud Platform Identity Authentication](sap-hana-cloud-platform-identity-authentication-tutorial.md)|
 | ![Logo: ScaleX Enterprise](./media/tutorial-list/active-directory-saas-scalex-enterprise-tutorial.png)| [ScaleX Enterprise](scalex-enterprise-tutorial.md)|
@@ -132,6 +135,7 @@ Verwenden Sie das Inhaltsverzeichnis auf der linken Seite, um auf weitere Tutori
 | ![Logo: Way We Do](./media/tutorial-list/active-directory-saas-waywedo-tutorial.png)| [Way We Do](waywedo-tutorial.md)|
 | ![Logo: Whimsical](./media/tutorial-list/active-directory-saas-whimsical-tutorial.png)| [Whimsical](whimsical-tutorial.md)|
 | ![Logo: WhosOffice](./media/tutorial-list/active-directory-saas-whosoffice-tutorial.png)| [WhosOffice](whosoffice-tutorial.md)|
+| ![logo-Wootric](./media/tutorial-list/active-directory-saas-wootric-tutorial.png)| [Wootric](wootric-tutorial.md)|
 | ![Logo: Workplace by Facebook](./media/tutorial-list/active-directory-saas-workplacebyfacebook-tutorial.png)| [Workplace by Facebook](workplacebyfacebook-tutorial.md)|
 | ![Logo: Workteam](./media/tutorial-list/active-directory-saas-workteam-tutorial.png)| [Workteam](workteam-tutorial.md)|
 | ![Logo: XaitPorter](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|

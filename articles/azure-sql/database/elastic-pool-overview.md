@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: arvindshmicrosoft
 ms.author: arvindsh
 ms.reviewer: mathoma
-ms.date: 12/9/2020
-ms.openlocfilehash: 014f3e80446e514fcce20cc0dbc82f6f1d3a063e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/23/2021
+ms.openlocfilehash: a3847bb1ac435779e50ce8cc41a3940bb6adfab7
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708794"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112965128"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,6 +101,10 @@ Die folgenden Schritte können Ihnen dabei helfen, einzuschätzen, ob ein Pool k
 
 > [!IMPORTANT]
 > Wenn sich die Anzahl von Datenbanken in einem Pool dem unterstützten Maximalwert nähert, informieren Sie sich unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md) über das mögliche weitere Vorgehen.
+
+### <a name="per-database-properties"></a>Datenbankspezifische Eigenschaften
+
+Sie können optional Eigenschaften pro Datenbank festlegen, um Ressourcenverbrauchsmuster in Pools für elastische Datenbanken zu ändern. Weitere Informationen finden Sie in der Dokumentation zu Ressourcenlimits für [DTUs](resource-limits-dtu-elastic-pools.md#database-properties-for-pooled-databases) und [virtuelle Kerne](resource-limits-vcore-elastic-pools.md#database-properties-for-pooled-databases) in Pools für elastische Datenbanken.
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Verwenden anderer SQL Datenbank-Funktionen mit Pools für elastische Datenbanken
 

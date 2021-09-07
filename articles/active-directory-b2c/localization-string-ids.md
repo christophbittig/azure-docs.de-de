@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50bf5f3188728db41f74b6fefe5946ef2127efe3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062306"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564355"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -513,11 +513,12 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 
 | id | Standardwert |
 | -- | ------------- |
-|UserMessageIfMaxRetryAttempted |Die für das Einmalkennwort bereitgestellte Überprüfung hat die maximale Anzahl von Versuchen überschritten |
-|UserMessageIfSessionDoesNotExist |Überprüfungssitzung für Einmalkennwort ist abgelaufen |
-|UserMessageIfSessionConflict |Konflikt bei der Überprüfungssitzung für Einmalkennwort |
-|UserMessageIfInvalidCode |Das Einmalkennwort für die Überprüfung ist falsch |
-|UserMessageIfVerificationFailedRetryAllowed |Dieser Code ist falsch. Wiederholen Sie den Vorgang. | 
+| UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
+| UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |
+| UserMessageIfMaxNumberOfCodeGenerated | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Codegenerierungsversuchen überschritten wurde. |
+| UserMessageIfInvalidCode | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein ungültiger Code bereitgestellt wurde. |
+| UserMessageIfVerificationFailedRetryAllowed | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein ungültiger Code bereitgestellt wurde und der Benutzer berechtigt ist, den richtigen Code bereitzustellen.  |
+|UserMessageIfSessionConflict|Nein| Die Meldung, die dem Benutzer angezeigt werden soll, wenn der Code nicht überprüft werden kann.|
 
 ### <a name="one-time-password-example"></a>Beispiel für ein Einmalkennwort
 
@@ -526,9 +527,10 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```

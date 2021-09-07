@@ -1,43 +1,69 @@
 ---
 title: Durchführen einer Überprüfung für Azure Files
 description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Files durchführen.
-author: SunetraVirdi
-ms.author: suvirdi
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: c88134e978615d53bdfbde26492096212c3f582f
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.date: 06/22/2021
+ms.openlocfilehash: 39e720f35a591ac7075b5723f3e577151e698371
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656403"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605158"
 ---
 # <a name="register-and-scan-azure-files"></a>Registrieren und Überprüfen von Azure Files
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Azure Files unterstützt vollständige und inkrementelle Überprüfungen, um die Metadaten zu erfassen und basierend auf System- und Kundenklassifizierungen entsprechende Klassifizierungen auf die Metadaten anzuwenden.
+Azure Files unterstützt vollständige und inkrementelle Überprüfungen, um die Metadaten und Klassifizierungen basierend auf standardmäßigen System- und benutzerdefinierten Klassifizierungsregeln zu erfassen.
+
+Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
+
+1. Werte in der ersten Zeile sind nicht leer.
+2. Werte in der ersten Zeile sind eindeutig.
+3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Datenquellenadministrator sein, um Überprüfungen einrichten und planen zu können. Ausführlichere Informationen hierzu finden Sie unter [Katalogberechtigungen](catalog-permissions.md).
 
+## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+
+Derzeit gibt es nur eine Möglichkeit zum Einrichten der Authentifizierung für Azure File Storage:
+
+- Kontoschlüssel
+
+### <a name="account-key"></a>Kontoschlüssel
+
+Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen Sie Ihren Zugriffsschlüssel abrufen und im Schlüsseltresor speichern:
+
+1. Navigieren Sie zu Ihrem Speicherkonto.
+1. Wählen Sie **Einstellungen > Zugriffsschlüssel** aus.
+1. Kopieren Sie Ihren *Schlüssel*, und speichern Sie ihn für die nächsten Schritte.
+1. Navigieren zum Schlüsseltresor
+1. Wählen Sie **Einstellungen > Geheimnisse** aus.
+1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie den **Namen** und **Wert** als *Schlüssel* für Ihr Speicherkonto ein.
+1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
+1. Falls Ihr Schlüsseltresor noch nicht mit Purview verbunden ist, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
+1. Zum Schluss [erstellen Sie neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
+
 ## <a name="register-an-azure-files-storage-account"></a>Registrieren eines Azure Files-Speicherkontos
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Azure Files-Konto zu registrieren:
+Gehen Sie wie folgt vor, um ein neues Azure Files-Konto in Ihrem Datenkatalog zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Datenkatalog.
-1. Wählen Sie im linken Navigationsbereich die Option **Verwaltungscenter** aus.
-1. Wählen Sie unter **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** aus.
-1. Wählen Sie **+ Neu** aus.
-1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Files** aus. Wählen Sie **Weiter**.
+1. Wählen Sie im linken Navigationsbereich die Option **Data Map** aus.
+1. Wählen Sie **Registrieren** aus.
+1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Files** aus.
+1. Wählen Sie **Weiter**.
 
-:::image type="content" source="media/register-scan-azure-files/register-new-data-source.png" alt-text="Registrieren einer neuen Datenquelle" border="true":::
+:::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="Registrieren einer neuen Datenquelle" border="true":::
 
-Gehen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen registrieren (Azure Files)) wie folgt vor:
+Führen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen registrieren (Azure Files)) die folgenden Schritte aus:
 
 1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 2. Wählen Sie Ihr Azure-Abonnement aus, um Azure Storage-Konten zu filtern.
@@ -45,19 +71,38 @@ Gehen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen registr
 4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
 5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
 
-:::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
+:::image type="content" source="media/register-scan-azure-files/azure-file-register-source.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-## <a name="set-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
 
-Gehen Sie wie folgt vor, um die Authentifizierung für Azure Files-Speicher mit einem Kontoschlüssel einzurichten:
+Gehen Sie wie folgt vor, um eine neue Überprüfung zu erstellen und auszuführen:
 
-1. Wählen Sie **Kontoschlüssel** als Authentifizierungsmethode aus.
-2. Wählen Sie die Option **Aus Azure-Abonnement** aus.
-3. Wählen Sie Ihr Azure-Abonnement aus, in dem das Azure Files-Konto enthalten ist.
-4. Wählen Sie in der Liste den Namen Ihres Speicherkontos aus.
-5. Klicken Sie auf **Fertig stellen**.
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+1. Wählen Sie die von Ihnen registrierte Azure Files-Quelle aus.
+
+1. Wählen Sie **Neue Überprüfung** aus.
+
+1. Wählen Sie die Kontoschlüssel-Anmeldeinformationen aus, um eine Verbindung mit Ihrer Datenquelle herzustellen. 
+
+   :::image type="content" source="media/register-scan-azure-files/set-up-scan-azure-file.png" alt-text="Einrichten der Überprüfung":::
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Datenbanken festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-azure-files/azure-file-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+
+1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
+
+   :::image type="content" source="media/register-scan-azure-files/azure-file-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Wiederholungszeitplan einrichten oder die Überprüfung einmalig ausführen.
+
+   :::image type="content" source="media/register-scan-azure-files/trigger-scan.png" alt-text="trigger":::
+
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+
+
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

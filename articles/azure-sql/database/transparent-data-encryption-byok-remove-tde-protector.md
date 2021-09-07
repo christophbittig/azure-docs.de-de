@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/24/2020
-ms.openlocfilehash: c1613c61143044c4fa355c6225cf0fa1d4e2e09d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: 6d3027afae6b1d4121582014bb2b525ba2fd2c44
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308386"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090257"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,10 +32,10 @@ Wenn der Verdacht besteht, dass ein Schlüssel kompromittiert ist, d.h ein Diens
 
 Beachten Sie: Sobald die TDE-Schutzvorrichtung in Key Vault gelöscht ist, beginnen alle verschlüsselten Datenbanken nach etwa 10 Minuten, mit einer entsprechenden Fehlermeldung alle Verbindungen zu verweigern und ihren Status in [Kein Zugriff](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector) zu ändern.
 
-In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten Ergebnis nach der Reaktion auf kompromittierte Vorfälle abhängen:
+In dieser Schrittanleitung wird der Ansatz zum **Verhindern des Zugriffs** auf Datenbanken nach der Reaktion auf einen Kompromittierungsvorfall beschrieben.
 
-- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics.
-- **Verhindern des Zugriffs** auf die Datenbanken in Azure SQL-Datenbank/Azure Synapse Analytics
+> [!NOTE]
+> Dieser Artikel gilt für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (dedizierte SQL-Pools (vormals SQL DW)). Die Dokumentation zu Transparent Data Encryption für dedizierte SQL-Pools in Synapse-Arbeitsbereichen finden Sie unter [Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche](../../synapse-analytics/security/workspaces-encryption.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -136,7 +136,7 @@ Der PowerShell-Befehl **az sql server key show**  stellt den Fingerabdruck der
 
 Eine Befehlsreferenz finden Sie unter [Azure CLI: keyvault](/cli/azure/keyvault/key).
 
-1. Erstellen Sie einen [neuen Schlüssel in Key Vault](/cli/azure/keyvault/key#az-keyvault-key-create). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird.
+1. Erstellen Sie einen [neuen Schlüssel in Key Vault](/cli/azure/keyvault/key#az_keyvault_key_create). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird.
 
 2. Fügen Sie den neuen Schlüssel zum Server hinzu, und aktualisieren Sie diesen als neue TDE-Schutzvorrichtung des Servers.
 

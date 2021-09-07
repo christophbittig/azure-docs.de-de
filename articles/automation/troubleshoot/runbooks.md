@@ -2,15 +2,15 @@
 title: Behandeln von Problemen mit Azure Automation-Runbooks
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks beheben.
 services: automation
-ms.date: 02/11/2021
+ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 7964bc62aefc912a0f61744841784600575c98de
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a7711d30a71cc5b637a1fc755609d3f5c48683d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831220"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339622"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -39,7 +39,7 @@ Wenn während der Ausführung von Runbooks in Azure Automation Fehler auftreten,
 1. Wenn das Runbook angehalten wurde oder ein unerwarteter Fehler aufgetreten ist:
 
     * [Erneuern Sie das Zertifikat](../manage-runas-account.md#cert-renewal), wenn das ausführende Konto abgelaufen ist.
-    * [Erneuern Sie den Webhook](../automation-webhooks.md#renew-a-webhook), wenn Sie versuchen, einen abgelaufenen Webhook zum Starten des Runbooks zu verwenden.
+    * [Erneuern Sie den Webhook](../automation-webhooks.md#update-a-webhook), wenn Sie versuchen, einen abgelaufenen Webhook zum Starten des Runbooks zu verwenden.
     * [Überprüfen Sie die Auftragsstatuswerte](../automation-runbook-execution.md#job-statuses), um den aktuellen Runbookstatus und einige mögliche Ursachen des Problems zu ermitteln.
     * [Fügen Sie dem Runbook eine zusätzliche Ausgabe hinzu](../automation-runbook-output-and-messages.md#working-with-message-streams), um zu ermitteln, was passiert, bevor das Runbook angehalten wird.
     * [Behandeln Sie alle Ausnahmen](../automation-runbook-execution.md#exceptions), die von Ihrem Auftrag ausgelöst werden.
@@ -47,6 +47,22 @@ Wenn während der Ausführung von Runbooks in Azure Automation Fehler auftreten,
 1. Führen Sie diesen Schritt aus, wenn der Runbookauftrag oder die Umgebung auf dem Hybrid Runbook Worker nicht reagiert.
 
     Wenn Sie Ihre Runbooks nicht in Azure Automation, sondern auf einem Hybrid Runbook Worker ausführen, ist möglicherweise eine [Problembehandlung für den Hybrid Worker selbst](hybrid-runbook-worker.md) erforderlich.
+
+## <a name="scenario-access-blocked-to-azure-storage-or-azure-key-vault-or-azure-sql"></a>Szenario: Zugriff auf Azure Storage, Azure Key Vault oder Azure SQL blockiert
+
+In diesem Szenario wird [Azure Storage](../../storage/common/storage-network-security.md) als Beispiel verwendet, die Informationen gelten jedoch gleichermaßen für [Azure Key Vault](../../key-vault/general/network-security.md) und [Azure SQL](../../azure-sql/database/firewall-configure.md).
+
+### <a name="issue"></a>Problem
+
+Der Versuch, über ein Runbook auf Azure Storage zuzugreifen, führt zu einem Fehler ähnlich der folgenden Meldung: `The remote server returned an error: (403) Forbidden. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation.`
+
+### <a name="cause"></a>Ursache
+
+Azure Firewall ist für Azure Storage aktiviert.
+
+### <a name="resolution"></a>Lösung
+
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../../storage/common/storage-network-security.md), [Azure Key Vault](../../key-vault/general/network-security.md) oder [Azure SQL](../../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht in der Liste der vertrauenswürdigen Dienste enthalten ist. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Szenario: Fehler beim Runbook. Fehler „Keine Berechtigung“ oder „Unzulässig 403“ wird angezeigt.
 
@@ -470,7 +486,7 @@ Der Webhook, den Sie aufrufen möchten, ist deaktiviert oder abgelaufen.
 
 ### <a name="resolution"></a>Lösung
 
-Falls der Webhook deaktiviert ist, können Sie ihn über das Azure-Portal wieder aktivieren. Wenn der Webhook abgelaufen ist, müssen Sie ihn löschen und dann erneut erstellen. Das [Verlängern eines Webhooks](../automation-webhooks.md#renew-a-webhook) ist nur möglich, solange er noch nicht abgelaufen ist. 
+Falls der Webhook deaktiviert ist, können Sie ihn über das Azure-Portal wieder aktivieren. Wenn der Webhook abgelaufen ist, müssen Sie ihn löschen und dann erneut erstellen. Das [Verlängern eines Webhooks](../automation-webhooks.md#update-a-webhook) ist nur möglich, solange er noch nicht abgelaufen ist. 
 
 ## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>Szenario: 429: The request rate is currently too large. (Die Anforderungsrate ist zurzeit zu hoch.)
 

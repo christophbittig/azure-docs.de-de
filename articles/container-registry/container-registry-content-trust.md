@@ -1,14 +1,15 @@
 ---
 title: Verwalten von signierten Images
 description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden. Das Inhaltsvertrauen implementiert Docker-Inhaltsvertrauen und ist ein Feature der Dienstebene „Premium“.
-ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 238908c0075ffa5d2193eda642175a0cfe75b839
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.date: 06/25/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784117"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983615"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -25,7 +26,7 @@ Als Imageherausgeber ermöglicht Ihnen das Inhaltsvertrauen das **Signieren** de
 
 ### <a name="trusted-images"></a>Vertrauenswürdige Images
 
-Inhaltsvertrauen arbeitet mit den **Tags** in einem Repository. Image-Repositorys können Images mit signierten und unsignierten Tags enthalten. Beispielsweise ist es möglich, nur die Images `myimage:stable` und `myimage:latest` zu signieren, `myimage:dev` jedoch nicht.
+Inhaltsvertrauen arbeitet mit den **Tags** in einem Repository. Image-Repositorys können Images mit Bilder mit signierten und unsignierten Tags enthalten. Beispielsweise ist es möglich, nur die Images `myimage:stable` und `myimage:latest` zu signieren, `myimage:dev` jedoch nicht.
 
 ### <a name="signing-keys"></a>Signaturschlüssel
 
@@ -80,11 +81,19 @@ Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 
-In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „service-principal“ (Dienstprinzipal), und einem Benutzer mit dem Namen „Azure User“ (Azure-Benutzer).
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-![Gewähren von Berechtigungen zum Signieren von ACR-Images im Azure-Portal][content-trust-02-portal]
+1. Weisen Sie die folgende Rolle zu. In diesem Beispiel wird die Rolle einem einzelnen Benutzer zugewiesen. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | AcrImageSigner |
+    | Zugriff zuweisen zu | User |
+    | Members | Alain |
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

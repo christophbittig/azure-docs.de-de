@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48888f9ca840888310aebcc82d38d2af351a8611
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277892"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452557"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -38,6 +38,9 @@ Eine Cloudsandbox unterstützt maximal 48 Systemaufrufe und schränkt alle ande
 Aufgrund der Anzahl der enthaltenen Module und Cmdlets ist es schwierig, vorab zu wissen, welche der Cmdlets nicht unterstützte Aufrufe durchführen. Im Allgemeinen treten Probleme bei Cmdlets auf, für die erhöhte Zugriffsrechte erforderlich sind oder die Anmeldeinformationen als Parameter erfordern, oder bei Cmdlets für Netzwerkfunktionen. Cmdlets, die umfassende Netzwerkvorgänge ausführen, werden in der Sandbox nicht unterstützt. Dies schließt auch [Connect-AipService](/powershell/module/aipservice/connect-aipservice) aus dem PowerShell-Modul AIPService und [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) aus dem Modul DNSClient ein.
 
 Dabei handelt es sich um bekannte Einschränkungen bei einer Sandbox. Zur Umgehung dieses Problems wird empfohlen, einen [Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) bereitzustellen oder [Azure Functions](../../azure-functions/functions-overview.md) zu verwenden.
+
+> [!IMPORTANT] 
+> Schließen Sie das Schlüsselwort „AzureRm“ in kein Skript ein, das mit dem Az-Modul ausgeführt werden soll. Die Einbeziehung des Schlüsselworts, auch in einen Kommentar, kann dazu führen, dass AzureRM geladen wird und einen Konflikt mit dem Az-Modul verursacht.
 
 ## <a name="default-modules"></a>Standardmodule
 

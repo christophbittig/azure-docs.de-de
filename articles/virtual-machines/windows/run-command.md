@@ -1,31 +1,28 @@
 ---
 title: Ausführen von PowerShell-Skripts in einer Windows-VM unter Azure
 description: In diesem Thema wird beschrieben, wie PowerShell-Skripts auf einem virtuellen Azure Windows-Computer mithilfe des Features „Befehl ausführen“ ausgeführt werden.
-services: automation
 ms.service: virtual-machines
 ms.collection: windows
 author: bobbytreed
 ms.author: robreed
-ms.date: 04/26/2019
+ms.date: 06/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: de84372a6d9e6aa2c506427cd601859bf1ac00f0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672664"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566244"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mithilfe von „Befehl ausführen“
 
 Das Feature „Befehl ausführen“ verwendet den VM-Agent, um PowerShell-Skripts innerhalb einer Azure Windows-VM auszuführen. Diese Skripts können für die allgemeine Computer- oder Anwendungsverwaltung verwendet werden. Mit ihrer Hilfe können Sie Zugriffs- und Netzwerkprobleme eines virtuellen Computers schnell diagnostizieren und beheben und den virtuellen Computer wieder in einen funktionierenden Zustand versetzen.
 
 
-
 ## <a name="benefits"></a>Vorteile
 
-Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die Skriptausführung kann Skripts remote unter Verwendung des VM-Agents auf Ihren virtuellen Computern ausführen. „Befehl ausführen“ kann für Windows-VMs über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) verwendet werden.
+Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die Skriptausführung kann Skripts remote unter Verwendung des VM-Agents auf Ihren virtuellen Computern ausführen. „Befehl ausführen“ kann für Windows-VMs über das Azure-Portal, die [REST-API](/rest/api/compute/virtual-machines-run-commands/run-command) oder [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) verwendet werden.
 
 Diese Funktion ist in allen Szenarien sinnvoll, in denen Sie ein Skript innerhalb eines virtuellen Computers ausführen möchten. Es ist eine der wenigen Möglichkeiten, Fehler auf einem virtuellen Computer zu beheben, bei dem der RDP- oder SSH-Port aufgrund einer falschen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
 
@@ -45,6 +42,8 @@ Die Verwendung der Skriptausführung unterliegt den folgenden Einschränkungen:
 
 > [!NOTE]
 > Die Skriptausführung muss über den Port 443 eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können. Wenn die Erweiterung keinen Zugriff auf diese Endpunkte hat, werden die Skripts zwar möglicherweise erfolgreich ausgeführt, geben aber keine Ergebnisse zurück. Wenn Sie Datenverkehr auf dem virtuellen Computer blockieren, können Sie [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) verwenden, um Datenverkehr mit öffentlichen Azure-IP-Adressen über das Tag `AzureCloud` zuzulassen.
+> 
+> Das Feature „Befehl ausführen“ funktioniert nicht, wenn der Status des VM-Agents „NOT READY“ (NICHT BEREIT) lautet. Überprüfen Sie den Agent-Status im Azure-Portal in den Eigenschaften des virtuellen Computers.
 
 ## <a name="available-commands"></a>Verfügbare Befehle
 
@@ -53,16 +52,21 @@ Diese Tabelle enthält die Liste der für virtuelle Windows-Computer verfügbare
 ```error
 The entity was not found in this Azure location
 ```
+<br>
 
-|**Name**|**Beschreibung**|
+| **Name** | **Beschreibung** |
 |---|---|
-|**RunPowerShellScript**|Führt ein PowerShell-Skript aus.|
-|**EnableRemotePS**|Konfiguriert den Computer für die Aktivierung von remote-PowerShell.|
-|**EnableAdminAccount**|Überprüft, ob das lokale Administratorkonto deaktiviert ist, und aktiviert es, wenn das der Fall ist.|
-|**IPConfig**| Zeigt detaillierte Informationen für die IP-Adresse, die Subnetzmaske und das Standardgateway für jeden an TCP/IP gebundenen Adapter an.|
-|**RDPSettings**|Überprüft Registrierungseinstellungen und Domänen-Richtlinieneinstellungen. Schlägt Richtlinienaktionen vor, wenn der Computer Teil einer Domäne ist, oder ändert die Einstellungen in Standardwerte.|
-|**ResetRDPCert**|Entfernt das TLS-/SSL-Zertifikat, das an den RDP-Listener gebunden ist, und stellt die Standardwerte für die Sicherheit des RDP-Listeners wieder her. Verwenden Sie dieses Skript, wenn irgendwelche Probleme in Verbindung mit dem Zertifikat auftreten.|
-|**SetRDPPort**|Legt die standardmäßige oder vom Benutzer angegebene Portnummer für Remote Desktop-Verbindungen fest. Aktiviert die Firewallregeln für eingehenden Zugriff auf den Port.|
+| **RunPowerShellScript** | Führt ein PowerShell-Skript aus. |
+| **DisableNLA** | Deaktiviert die Authentifizierung auf Netzwerkebene. |
+| **DisableWindowsUpdate** | Deaktiviert automatische Updates per Windows Update. |
+| **EnableAdminAccount** | Überprüft, ob das lokale Administratorkonto deaktiviert ist, und aktiviert es, wenn das der Fall ist. |
+| **EnableEMS** | Aktiviert EMS. |
+| **EnableRemotePS** | Konfiguriert den Computer für die Aktivierung von remote-PowerShell. |
+| **EnableWindowsUpdate** | Aktiviert automatische Updates per Windows Update. |
+| **IPConfig** | Zeigt detaillierte Informationen für die IP-Adresse, die Subnetzmaske und das Standardgateway für jeden an TCP/IP gebundenen Adapter an. |
+| **RDPSetting** | Überprüft Registrierungseinstellungen und Domänen-Richtlinieneinstellungen. Schlägt Richtlinienaktionen vor, wenn der Computer Teil einer Domäne ist, oder ändert die Einstellungen in Standardwerte. |
+| **ResetRDPCert** | Entfernt das TLS-/SSL-Zertifikat, das an den RDP-Listener gebunden ist, und stellt die Standardwerte für die Sicherheit des RDP-Listeners wieder her. Verwenden Sie dieses Skript, wenn irgendwelche Probleme in Verbindung mit dem Zertifikat auftreten. |
+| **SetRDPPort** | Legt die standardmäßige oder vom Benutzer angegebene Portnummer für Remote Desktop-Verbindungen fest. Aktiviert die Firewallregeln für eingehenden Zugriff auf den Port. |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -82,7 +86,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem virtuellen Computer, und wählen Sie unter **VORGÄNGE** die Option **Skriptausführung** aus. Daraufhin wird eine Liste mit den verfügbaren Befehlen angezeigt, die auf dem virtuellen Computer ausgeführt werden können.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem virtuellen Computer, und wählen Sie im linken Menü unter **Vorgänge** die Option **Befehl ausführen** aus. Daraufhin wird eine Liste mit den verfügbaren Befehlen angezeigt, die auf dem virtuellen Computer ausgeführt werden können.
 
 ![Befehlsliste](./media/run-command/run-command-list.png)
 

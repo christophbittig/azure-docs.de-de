@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 73144611e835ac1bea20ab92212e52941af84eef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463739"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730609"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Erstellen und Verwalten einer selbstgehosteten Integration Runtime
 
@@ -52,6 +52,38 @@ In diesem Artikel wird beschrieben, wie Sie eine selbstgehostete Integration Run
 6. Nachdem die selbstgehostete Integration Runtime erfolgreich registriert wurde, wird das folgende Fenster angezeigt:
 
    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="Erfolgreiche Registrierung":::
+
+## <a name="networking-requirements"></a>Netzwerkanforderungen
+
+Ihr selbstgehosteter Integration Runtime-Computer muss eine Verbindung mit verschiedenen Ressourcen herstellen, um ordnungsgemäß zu funktionieren:
+
+* Quellen, die Sie mithilfe der selbstgehosteten Integration Runtime überprüfen möchten
+* Alle Azure Key Vault-Instanzen, die zum Speichern von Anmeldeinformationen für die Purview-Ressource verwendet werden
+* Das verwaltete Speicherkonto und Event Hub-Ressourcen, die von Purview erstellt wurden
+
+Die verwalteten Speicher- und Event Hub-Ressourcen finden Sie in Ihrem Abonnement unterhalb einer Ressourcengruppe, die den Namen Ihrer Purview-Ressource enthält. Azure Purview verwendet diese Ressourcen unter anderem zum Erfassen der Ergebnisse der Überprüfung, sodass die selbstgehostete Integration Runtime in der Lage sein muss, eine direkte Verbindung mit diesen Ressourcen herzustellen.
+
+Nachfolgend werden die Domänen und Ports aufgeführt, die über Unternehmens- und Computerfirewalls zugelassen werden müssen.
+
+> [!NOTE]
+> Fügen Sie für aufgelistete Domänen mit der Kennzeichnung \<managed Purview storage account> den Namen des verwalteten Speicherkontos hinzu, das Ihrer Purview-Ressource zugeordnet ist. Sie finden diese Ressource im Portal. Durchsuchen Sie Ihre Ressourcengruppen nach einer Gruppe mit dem folgenden Namen: managed-rg-\<your Purview Resource name>. Beispiel: managed-rg-contosoPurview. Sie verwenden den Namen des Speicherkontos in dieser Ressourcengruppe.
+> 
+> Fügen Sie für aufgelistete Domänen mit der Kennzeichnung \<managed Event Hub resource> den Namen der verwalteten Event Hub-Instanz hinzu, die Ihrer Purview-Ressource zugeordnet ist. Diese befindet sich in derselben Ressourcengruppe wie das verwaltete Speicherkonto.
+
+| Domänennamen                  | Ausgehende Ports | BESCHREIBUNG                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `*.servicebus.windows.net` | 443            | Globale Infrastruktur, die Purview zum Ausführen der Überprüfungen verwendet. Der Platzhalter ist erforderlich, da keine dedizierte Ressource vorhanden ist. |
+| `<managed Event Hub resource>.servicebus.windows.net` | 443            | Purview verwendet diese Domäne, um eine Verbindung mit der zugeordneten Service Bus-Instanz herzustellen. Sie wird durch die Zulassung der obigen Domäne abgedeckt, aber wenn Sie private Endpunkte verwenden, müssen Sie den Zugriff auf diese einzelne Domäne testen.|
+| `*.frontend.clouddatahub.net` | 443            | Globale Infrastruktur, die Purview zum Ausführen der Überprüfungen verwendet. Der Platzhalter ist erforderlich, da keine dedizierte Ressource vorhanden ist. |
+| `<managed Purview storage account>.core.windows.net`          | 443            | Wird von der selbstgehosteten Integration Runtime verwendet, um eine Verbindung mit dem verwalteten Azure Storage-Konto herzustellen.|
+| `<managed Purview storage account>.queue.core.windows.net` | 443            | Warteschlangen, die von Purview zum Ausführen des Überprüfungsprozesses verwendet werden. |
+| `<your Key Vault Name>.vault.azure.net` | 443           | Erforderlich, wenn Anmeldeinformationen in Azure Key Vault gespeichert werden. |
+| `download.microsoft.com` | 443           | Optional, für SHIR-Updates. |
+| Verschiedene Domänen | Abhängig von Umgebung          | Domänen für weitere Quellen zur Verbindungsherstellung über SHIR. |
+  
+  
+> [!IMPORTANT]
+> In den meisten Umgebungen müssen Sie außerdem bestätigen, dass DNS ordnungsgemäß konfiguriert ist. Dient der Bestätigung, dass Sie von Ihrem SHIR-Computer aus mithilfe von **nslookup** die Konnektivität mit jeder der oben genannten Domänen überprüfen können. Jede nslookup-Abfrage sollte die IP-Adresse der Ressource zurückgeben. Wenn Sie [private Endpunkte](catalog-private-link.md) verwenden, sollte die private IP-Adresse und nicht die öffentliche IP-Adresse zurückgegeben werden. Wenn keine IP-Adresse oder bei Verwendung privater Endpunkte die öffentliche IP-Adresse zurückgegeben wird, müssen Sie Ihre DNS-/VNet-Zuordnung oder Ihr privates Endpunkt-/VNet-Peering überprüfen.
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>Verwalten einer selbstgehosteten Integration Runtime
 

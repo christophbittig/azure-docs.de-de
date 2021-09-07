@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5ba7c9505e49b8d0b35ee592bb0c3bafafad416a
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 077b247b4d8f40cc84b491ba26d78cd614ce15bf
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319393"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105415"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
@@ -24,7 +24,7 @@ Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff au
 ### <a name="monitoring-reader"></a>Überwachungsleser
 Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen, aber keine Ressourcen ändern oder Einstellungen im Zusammenhang mit der Ressourcenüberwachung bearbeiten. Diese Rolle eignet sich für Benutzer in einer Organisation, beispielsweise Support- oder Betriebstechniker, die folgende Aufgaben erfüllen müssen:
 
-* Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
+* Anzeigen von Überwachungsdashboards im Portal
 * Anzeigen von in [Azure-Warnungen](alerts/alerts-overview.md) definierten Warnungsregeln
 * Abfragen von Metriken über die [Azure Monitor-REST-API](/rest/api/monitor/metrics), [PowerShell-Cmdlets](powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
@@ -48,7 +48,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 ### <a name="monitoring-contributor"></a>Überwachungsmitwirkender
 Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen sowie Überwachungseinstellungen erstellen und ändern, aber keine weiteren Ressourcen ändern. Diese Rolle ist eine Obermenge der Überwachungsleserrolle und eignet sich für Mitglieder des Überwachungsteams einer Organisation oder für Anbieter verwalteter Dienste, die neben den oben genannten Berechtigungen auch folgende Aufgaben ausführen müssen:
 
-* Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
+* Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
 * Festlegen von [Diagnoseeinstellungen](essentials/diagnostic-settings.md) für eine Ressource.\*
 * Festlegen des [Protokollprofils](essentials/activity-log.md#legacy-collection-methods) für ein Abonnement.\*
 * Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](alerts/alerts-overview.md).

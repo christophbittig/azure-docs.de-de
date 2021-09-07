@@ -6,23 +6,25 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d8e40cf9dac496266f67ad94e1e65db01e42f9d2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 6d2fca3ed64711133f1701446ebea61c28a3dcab
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816834"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674312"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
-Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for MySQL ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
+Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for MySQL ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung sind Sie für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, erhalten auf diese Weise aber auch die vollständige Kontrolle.
 
 Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for MySQL wird auf Serverebene festgelegt. Bei einem bestimmten Server wird ein vom Kunden verwalteter Schlüssel verwendet, der als Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) bezeichnet wird, um den vom Dienst verwendeten Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) zu verschlüsseln. Der KEK ist ein asymmetrischer Schlüssel, der in einer vom Kunden verwalteten [Azure Key Vault](../key-vault/general/security-features.md)-Instanz im Besitz des Kunden gespeichert wird. Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) und der Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) werden weiter unten in diesem Artikel ausführlicher beschrieben.
 
 Key Vault ist ein cloudbasiertes, externes Schlüsselverwaltungssystem. Es bietet hochverfügbaren und skalierbaren sicheren Speicher für RSA-Kryptografieschlüssel, der optional von FIPS 140-2 Level 2-geprüften Hardwaresicherheitsmodulen (HSM) geschützt wird. Dabei wird kein direkter Zugriff auf einen gespeicherten Schlüssel zugelassen, sondern Verschlüsselung und Entschlüsselung werden für die autorisierten Entitäten bereitgestellt. Key Vault kann den Schlüssel generieren, importieren oder [von einem lokalen HSM-Gerät](../key-vault/keys/hsm-protected-keys.md) übertragen lassen.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for MySQL die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt. Weitere Einschränkungen finden Sie im Abschnitt [Einschränkungen](concepts-data-encryption-mysql.md#limitations).
+> Dieses Feature wird nur für den Speichertyp „Universell V2“ (Unterstützung von bis zu 16 TB) unterstützt, der in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar ist. Weitere Informationen finden Sie unter [Speicherkonzepte](concepts-pricing-tiers.md#storage). Weitere Einschränkungen finden Sie im Abschnitt [Einschränkungen](concepts-data-encryption-mysql.md#limitations).
 
 ## <a name="benefits"></a>Vorteile
 
@@ -70,7 +72,7 @@ Nachfolgend werden die Anforderungen für die Konfiguration des vom Kunden verwa
 * Der vom kundenseitig verwaltete Schlüssel, der zum Verschlüsseln des DEK verwendet werden soll, muss ein asymmetrischer RSA 2048-Schlüssel sein.
 * Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum ist nicht festgelegt.
 * Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
-* Für den Schlüssel muss das Feature [Vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) mit einem Aufbewahrungszeitraum von **90 Tagen** festgelegt sein. Damit wird implizit die folgende erforderliche Wiederherstellungsstufe für das Schlüsselattribut festgelegt: „Recoverable“. Wenn ein Aufbewahrungszeitraum von weniger als 90 Tagen festgelegt wird, wird die Wiederherstellungsstufe „CustomizedRecoverable“ festgelegt. Diese Stufe erfüllt die Anforderung nicht, stellen Sie daher sicher, dass der Aufbewahrungszeitraum auf **90 Tage** festgelegt ist.
+* Für den Schlüssel muss das Feature [Vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) mit einem Aufbewahrungszeitraum von **90 Tagen** festgelegt sein. Damit wird implizit die folgende erforderliche Wiederherstellungsstufe für das Schlüsselattribut festgelegt: „Recoverable“. Wenn eine Aufbewahrung von weniger als 90 Tagen festgelegt wird, ist die Wiederherstellungsstufe „CustomizedRecoverable“ angegeben. Diese Stufe erfüllt die Anforderung nicht, stellen Sie deshalb sicher, dass der Aufbewahrungszeitraum auf **90 Tage** festgelegt ist.
 * Für den Schlüssel muss der [Bereinigungsschutz aktiviert](../key-vault/general/soft-delete-overview.md#purge-protection) sein.
 * Wenn Sie [einen vorhandenen Schlüssel in Key Vault importieren](/rest/api/keyvault/ImportKey/ImportKey), müssen Sie ihn in einem der unterstützten Dateiformate (`.pfx`, `.byok`, `.backup`) bereitstellen.
 
@@ -105,7 +107,7 @@ Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Az
 
 Es kann vorkommen, dass ein Benutzer mit ausreichenden Zugriffsrechten für Key Vault den Serverzugriff auf den Schlüssel versehentlich durch eine der folgende Aktionen deaktiviert:
 
-* Widerrufen der Berechtigungen „get“, „wrapKey“ und „unwrapKey“ vom Server.
+* Widerrufen der Berechtigungen `get`, `wrapKey` und `unwrapKey` des Schlüsseltresors vom Server.
 * Löschen des Schlüssels.
 * Löschen des Schlüsseltresors.
 * Ändern der Firewallregeln des Schlüsseltresors.
@@ -132,17 +134,18 @@ Um Probleme bei der Einrichtung von kundenseitig verwalteter Datenverschlüsselu
 
 ## <a name="limitations"></a>Einschränkungen
 
-Bei Azure Database for MySQL gelten für die Unterstützung der Verschlüsselung ruhender Daten mittels kundenseitig verwaltetem Schlüssel nur wenige Einschränkungen:
+Bei Azure Database for MySQL gelten für die Unterstützung der Verschlüsselung ruhender Daten unter Verwendung eines kundenseitig verwalteten Schlüssels (CMK) nur wenige Einschränkungen:
 
 * Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
-* Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie im Abschnitt zu Speicher in der Dokumentation [hier](concepts-pricing-tiers.md#storage).
+* Dieses Feature wird nur in Regionen und für Server unterstützt, die den Speichertyp „Universell V2“ (bis zu 16 TB) unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in [diesem](concepts-pricing-tiers.md#storage) Abschnitt zum Speicher in der Dokumentation.
 
     > [!NOTE]
-    > - Für alle neuen MySQL-Server, die in den oben aufgeführten Regionen erstellt wurden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln **verfügbar**. Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
-    > - Um zu überprüfen, ob Ihr bereitgestellter Server bis zu 16 TB unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB verschieben können, unterstützt Ihr Server möglicherweise keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforMySQL@service.microsoft.com.
+    > - Für alle neuen MySQL-Server, die in **Azure-Regionen** mit Unterstützung des Speichertyps „Universell V2“ erstellt werden, ist die Unterstützung der Verschlüsselung mit kundenseitig verwalteten Schlüsseln [verfügbar](concepts-pricing-tiers.md#storage). Server für die Zeitpunktwiederherstellung oder Lesereplikate kommen nicht in Frage, obwohl sie theoretisch „neu“ sind.
+    > - Um zu überprüfen, ob Ihr bereitgestellter Server den Speichertyp „Universell V2“ unterstützt, können Sie im Portal zum Blatt „Tarif“ navigieren und die maximale Speichergröße anzeigen, die Ihr bereitgestellter Server unterstützt. Wenn Sie den Schieberegler auf bis zu 4 TB festlegen können, wird der Speichertyp „Universell V1“ verwendet, und Ihr Server unterstützt keine Verschlüsselung mit kundenseitig verwalteten Schlüsseln. Die Daten sind jedoch jederzeit mit dienstseitig verwalteten Schlüsseln verschlüsselt. Wenn Sie weitere Fragen haben, wenden Sie sich an AskAzureDBforMySQL@service.microsoft.com.
 
 * Verschlüsselung wird nur mit RSA 2048-Kryptografieschlüsseln unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel für Azure Database for MySQL über das [Azure-Portal](howto-data-encryption-portal.md) und die [Azure-Befehlszeilenschnittstelle](howto-data-encryption-cli.md) einrichten.
+* Erfahren Sie, wie Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel für Azure Database for MySQL über das [Azure-Portal](howto-data-encryption-portal.md) und die [Azure-Befehlszeilenschnittstelle](howto-data-encryption-cli.md) einrichten.
+* Weitere Informationen zur Speichertypunterstützung für [Azure Database for MySQL – Single Server](concepts-pricing-tiers.md#storage)

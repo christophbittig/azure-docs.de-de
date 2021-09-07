@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bf4598166250eb6ad7b65621e67184bfdeb839e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92173006"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465023"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -178,7 +178,7 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 Ein Dienst kann Berichte zu jeder der Metriken liefern, die für ihn bei seiner Erstellung definiert wurden. Wenn ein Dienst eine Auslastung für eine Metrik meldet, dessen Verwendung für ihn nicht konfiguriert ist, wird der betreffende Bericht von Service Fabric ignoriert. Werden gleichzeitig andere Metriken gemeldet, die gültig sind, werden diese Berichte akzeptiert. Der Dienstcode kann sämtliche ihm bekannten Metriken messen und melden, und der Bediener kann die zu verwendende Metrikkonfiguration angeben, ohne den Dienstcode zu ändern. 
 
 ## <a name="reporting-load-for-a-partition"></a>Melden der Auslastung für eine Partition
-Im vorherigen Abschnitt wird beschrieben, wie Dienstreplikate oder -instanzen selbst Auslastungen melden. Es gibt eine zusätzliche Option zum dynamischen Melden der Auslastung mit FabricClient. Wenn Sie die Auslastung für eine Partition melden, können Sie sie für mehrere Partitionen gleichzeitig melden.
+Im vorherigen Abschnitt wird beschrieben, wie Dienstreplikate oder -instanzen selbst Auslastungen melden. Es gibt eine zusätzliche Option zum dynamischen Melden der Auslastung für die Replikate oder Instanzen einer Partition über die Service Fabric-API. Wenn Sie die Auslastung für eine Partition melden, können Sie sie für mehrere Partitionen gleichzeitig melden.
 
 Diese Berichte werden auf die gleiche Weise wie Auslastungsberichte verwendet, die von den Replikaten oder Instanzen selbst stammen. Gemeldete Werte sind gültig, bis neue Auslastungswerte gemeldet werden, entweder durch das Replikat oder die Instanz oder durch das Melden eines neuen Auslastungswerts für eine Partition.
 
@@ -188,7 +188,11 @@ Mit dieser API gibt es mehrere Möglichkeiten, die Auslastung im Cluster zu aktu
   - Durch zustandslose und zustandsbehaftete Dienste kann die Auslastung aller zugehörigen sekundären Replikate oder Instanzen aktualisiert werden.
   - Durch zustandslose und zustandsbehaftete Dienste kann die Auslastung eines bestimmten Replikats oder einer bestimmten Instanz auf einem Knoten aktualisiert werden.
 
-Es ist auch möglich, jede dieser Aktualisierungen pro Partition gleichzeitig zu kombinieren.
+Es ist auch möglich, jede dieser Aktualisierungen pro Partition gleichzeitig zu kombinieren. Eine Kombination von Auslastungsaktualisierungen für eine bestimmte Partition muss über das Objekt „PartitionMetricLoadDescription“ angegeben werden. Dabei kann es sich um eine entsprechende Liste von Auslastungsaktualisierungen handeln, wie im Beispiel weiter unten zu sehen. Auslastungsaktualisierungen werden durch das Objekt „MetricLoadDescription“ dargestellt. Dieses Objekt kann einen _aktuellen_ oder _vorhergesagten_ Auslastungswert für eine Metrik enthalten, der mit einem Metriknamen angegeben wird.
+
+> [!NOTE]
+> _Vorhergesagte Metrikauslastungswerte_ sind derzeit als _Previewfunktion_ verfügbar. Sie ermöglicht es, dass vorhergesagte Auslastungswert aufseiten von Service Fabric gemeldet und verwendet werden, diese Funktion ist derzeit jedoch nicht aktiviert.
+>
 
 Das Aktualisieren von Auslastungen für mehrere Partitionen kann mit einem einzigen API-Aufruf durchführt werden. in diesem Fall enthält die Ausgabe eine Antwort pro Partition. Wenn die Partitionsaktualisierung aus irgendeinem Grund nicht erfolgreich angewendet wird, werden Aktualisierungen für diese Partition übersprungen, und der entsprechende Fehlercode für eine Zielpartition wird angegeben:
 
@@ -198,7 +202,7 @@ Das Aktualisieren von Auslastungen für mehrere Partitionen kann mit einem einzi
   - ReplicaDoesNotExist: Das sekundäre Replikat oder die Instanz für einen angegebenen Knoten ist nicht vorhanden.
   - InvalidOperation: Kann in zwei Fällen auftreten: Die Aktualisierung der Auslastung für eine Partition, die zur Systemanwendung gehört, oder die Aktualisierung der vorhergesagten Auslastung ist nicht aktiviert.
 
-Wenn einige dieser Fehler zurückgegeben werden, können Sie die Eingabe für eine bestimmte Partition aktualisieren und die Aktualisierung für eine bestimmte Partition wiederholen.
+Wenn einige dieser Fehler zurückgegeben werden, können Sie die Eingabe für eine bestimmte Partition aktualisieren und die Aktualisierung dafür wiederholen.
 
 Code:
 

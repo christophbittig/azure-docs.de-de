@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e1348040bb496448d85c8d1bec3b9621025bf22
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594012"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653591"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -19,12 +19,13 @@ In App Service (Web-Apps, API-Apps oder Mobile Apps) wird eine App immer in eine
 
 Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, Westen“) erstellen, wird für den Plan in dieser Region ein Satz mit Computeressourcen erstellt. Alle Apps, die Sie in diesen App Service-Plan einfügen, werden auf diesen Computeressourcen ausgeführt, wie in Ihrem App Service-Plan definiert. Für jeden App Service-Plan wird Folgendes definiert:
 
+- Betriebssystem (Windows, Linux)
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Anzahl von VM-Instanzen
 - Größe von VM-Instanzen (Klein, Mittel, Groß)
 - Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated)
 
-Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Es gibt verschiedene Kategorien von Tarifen:
+Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Welche Tarife für Ihren App Service-Plan verfügbar sind, hängt vom Betriebssystem ab, das bei der Erstellung ausgewählt wurde. Es gibt verschiedene Kategorien von Tarifen:
 
 - **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das Aufskalieren nicht möglich.
 - **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium**, **PremiumV2** und **PremiumV3** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.

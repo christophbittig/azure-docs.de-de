@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
-ms.date: 04/19/2021
+ms.date: 06/29/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752163"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087088"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -142,6 +142,20 @@ Die Richtliniendefinitionsregel enthält mindestens eine Bedingung, die von den 
 #### <a name="resolution"></a>Lösung
 
 Achten Sie bei Verwendung eines Alias darauf, dass der Alias nur anhand des Ressourcentyps ausgewertet wird, zu dem er gehört. Fügen Sie hierzu davor eine Typbedingung hinzu. Alternativ können Sie die Richtliniendefinition in mehrere Definitionen aufteilen, um zu vermeiden, dass mehrere Ressourcentypen als Ziel verwendet werden.
+
+### <a name="scenario-subscription-limit-exceeded"></a>Szenario: Grenzwert für Abonnements überschritten
+
+#### <a name="issue"></a>Problem
+
+Beim Abrufen der Konformitätsdaten für Richtlinienzuweisungen wird im Azure-Portal auf der Seite zur Konformität eine Fehlermeldung angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Die Anzahl von Abonnements in den ausgewählten Bereichen der Anforderung hat den Grenzwert von 5.000 Abonnements überschritten. Die Konformitätsergebnisse werden unter Umständen teilweise angezeigt.
+
+#### <a name="resolution"></a>Lösung
+
+Wählen Sie einen präziseren Bereich mit weniger untergeordneten Abonnements aus, um die vollständigen Ergebnisse anzuzeigen.
 
 ## <a name="template-errors"></a>Vorlagenfehler
 

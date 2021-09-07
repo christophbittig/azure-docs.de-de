@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 06/04/2021
-ms.openlocfilehash: 4a400417fef8ac89ccf30799f4969ba8f789e260
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/21/2021
+ms.openlocfilehash: d3980a490a5ce61d7c428f76b8503fc49a62fbb3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555306"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355455"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Singleton
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 
-Jedes schreibgeschützte Replikat hat eigene Ressourcen wie virtuelle Kerne, Arbeitsspeicher, Daten-IOPS, TempDB, Worker und Sitzungen. Jedes schreibgeschützte Replikat unterliegt den Ressourcenlimits, die weiter unten in diesem Artikel beschrieben werden.
+Jedes schreibgeschützte Replikat einer Datenbank verfügt über eigene Ressourcen wie virtuelle Kerne, Arbeitsspeicher, Daten-IOPS, TempDB, Worker und Sitzungen. Jedes schreibgeschützte Replikat unterliegt den Ressourcenlimits, die weiter unten in diesem Artikel beschrieben werden.
 
 Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge für eine Einzeldatenbank mithilfe folgender Optionen festlegen:
 
@@ -195,7 +195,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
-|Computegröße (Dienstziel)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|Computegröße (Dienstziel)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen5_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|6|8|10|12|14|
@@ -651,7 +651,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |In-Memory-OLTP-Speicher (GB)|172|216|304|704|1768|
 |Maximale Datengröße (GB)|1280|1536|2048|4096|4096|
 |Max. Protokollgröße (GB) <sup>1</sup>|427|512|683|1024|1024|
-|Max. Datengröße von TempDB (GB)|4096|2048|1024|768|640|
+|Max. Datengröße von TempDB (GB)|640|768|1024|2048|4096|
 |[Max. Größe des lokalen Speichers](resource-limits-logical-server.md#storage-space-governance) (GB)|13.836|13.836|13.836|13.836|13.836|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|

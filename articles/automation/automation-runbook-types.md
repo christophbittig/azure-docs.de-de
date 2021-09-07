@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a6005c267423787fed61f2fb9badfea5769137d2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982968"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565362"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -70,6 +70,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Können keine [parallele Verarbeitung](automation-powershell-workflow.md#use-parallel-processing) zum gleichzeitigen Ausführen mehrerer Aktionen nutzen
 * Können keine [Prüfpunkte](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) zum Fortsetzen des Runbooks bei einem Fehler nutzen
 * Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
+* Für Runbooks kann die PowerShell-Anweisung [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) nicht verwendet werden. Sie wird in der Azure-Sandbox und für Hybrid Runbook Workers nicht unterstützt und führt dazu, dass für den Auftrag ein Fehler auftritt.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 

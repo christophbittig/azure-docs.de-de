@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 06/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 474bb5582011c9e701a188f227a54238a9f19b57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982032"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285569"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für einen mehrinstanzenfähigen Azure Active Directory-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer ermöglic
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="register-an-application"></a>Registrieren einer Anwendung
+## <a name="register-an-azure-ad-app"></a>Registrieren einer Azure AD-App
 
 Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung im [Azure-Portal](https://portal.azure.com) erstellen. Weitere Informationen finden Sie unter [Registrieren einer Anwendung bei Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
 
@@ -63,7 +63,7 @@ Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto in Azure Active D
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus.
 1. Geben Sie eine **Beschreibung** für das Geheimnis ein, wählen Sie ein Ablaufdatum aus, und wählen Sie dann **Hinzufügen** aus. Notieren Sie sich den **Wert** des Geheimnisses zur Verwendung in einem späteren Schritt.
 
-## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
+### <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
 Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten möchten, können Sie optionale Ansprüche für Ihre Anwendung im Azure-Portal oder im Anwendungsmanifest konfigurieren. Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](../active-directory/develop/active-directory-optional-claims.md).
 
@@ -75,6 +75,10 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 1. Wählen Sie als **Tokentyp** die Option **ID** aus.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche `family_name` und `given_name` aus.
 1. Klicken Sie auf **Hinzufügen**.
+
+## <a name="optional-verify-your-app-authenticity"></a>[Optional] Überprüfen der Authentizität Ihrer App
+
+Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-verification-overview.md) können Ihre Benutzer die Authentizität der von Ihnen [registrierten](#register-an-azure-ad-app) App überprüfen. „Überprüfte App“ bedeutet, dass die Identität des Herausgebers der App über das Microsoft Partner Network (MPN) [überprüft](/partner-center/verification-responses) wurde. Informieren Sie sich darüber, wie Sie [Ihre App als durch den Herausgeber verifiziert markieren](../active-directory/develop/mark-app-as-publisher-verified.md). 
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
@@ -201,8 +205,6 @@ Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beim Arbeiten mit benutzerdefinierten Richtlinien benötigen Sie möglicherweise manchmal zusätzliche Informationen, wenn Sie Probleme mit einer Richtlinie während der Entwicklung beheben.
-
-Um das Diagnostizieren von Problemen zu erleichtern, können Sie die Richtlinie vorübergehend in den „Entwicklermodus“ versetzen und Protokolle mit Azure Application Insights erfassen. Informationen hierzu finden Sie unter [Azure Active Directory B2C: mithilfe von Application Insights](troubleshoot-with-application-insights.md).
+Informieren Sie sich darüber, wie Sie [das Azure AD-Token an Ihre Anwendung übergeben](idp-pass-through-user-flow.md).
 
 ::: zone-end

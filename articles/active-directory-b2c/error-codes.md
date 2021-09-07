@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/02/2020
+ms.date: 06/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c24bcf45b2440aada43af62035f0b988128c8f8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215432"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284543"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Fehlercodes: Azure Active Directory B2C
 
@@ -144,6 +144,7 @@ Die folgenden Fehler können vom Azure Active Directory B2C-Dienst zurückgegebe
 | `AADB2C90284` | Für die Anwendung mit dem Bezeichner „{0}“ wurde keine Einwilligung erteilt. Sie kann daher nicht für lokale Konten verwendet werden. |
 | `AADB2C90285` | Die Anwendung mit dem Bezeichner „{0}“ wurde nicht gefunden. |
 | `AADB2C90288` | Die im TechnicalProfile „{1}“ für die Einlösung des Aktualisierungstokens für den für Mandant „{2}“ referenzierte UserJourney mit der ID „{0}“ ist nicht in der Richtlinie „{3}“ oder einer der zugehörigen Basisrichtlinien enthalten. |
+| `AADB2C90287` | Die Anforderung enthält einen ungültigen Umleitungs-URI {0}.|
 | `AADB2C90289` | Fehler beim Herstellen einer Verbindung mit dem Identitätsanbieter. Versuchen Sie es später noch mal. |
 | `AADB2C90296` | Die Anwendung wurde nicht richtig konfiguriert. Wenden Sie sich an den Administrator der Website, auf die Sie zugreifen möchten. |
 | `AADB2C99005` | Die Anforderung enthält einen ungültigen Bereichsparameter, der das unzulässige Zeichen {0} enthält. |

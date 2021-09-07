@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98991d6cbbd827c612ca74d20dbf4e7ce6795ecc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91536969"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200832"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -68,6 +68,9 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>So binden Sie ein bereits konfiguriertes Windows 10-Gerät ein
 Wenn Sie Ihr Gerät bereits eine Weile verwenden und schon eingerichtet haben, können Sie wie folgt vorgehen, um es in das Netzwerk einzubinden.
+
+> [!NOTE]
+> Wenn Sie ein bereits konfiguriertes Windows 10-Gerät in Azure AD einbinden, müssen Sie ein Konto verwenden, bei dem es sich um ein Mitglied der Gruppe „Lokale Administratoren“ handelt.
 
 1. Öffnen Sie **Einstellungen**, und klicken Sie dann auf **Konten**.
 

@@ -6,15 +6,15 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/26/2021
-ms.topic: reference
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: cd35ccc7399580c0bc83d8668ea932c3a800f700
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: fcbff4d8f6122681e9947f83b02dff1ae6d60835
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290558"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251160"
 ---
 # <a name="sms-faq"></a>SMS FAQ
 
@@ -57,3 +57,7 @@ In Nordamerika prüft Azure Communication Services nicht auf Festnetznummern und
 
 
 Ja, Sie können eine Anfrage mit mehreren Empfängern stellen. Befolgen Sie diese [Schnellstart](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)-Anleitung, um Nachrichten an mehrere Empfänger zu senden.
+
+##  <a name="i-received-a-http-status-202-from-the-send-sms-api-but-the-sms-didnt-reach-my-phone-what-do-i-do-now"></a>Ich habe über die API zum Senden einer SMS den HTTP-Status 202 empfangen, aber keine SMS auf meinem Telefon erhalten – was kann ich tun?
+
+Der vom Dienst zurückgegebene Status 202 bedeutet, dass Ihre Nachricht zur Übermittlung in die Warteschlange eingereiht und nicht zugestellt wurde. Nutzen Sie diesen [Schnellstart](../../quickstarts/telephony-sms/handle-sms-events.md), um Ereignisse im Zusammenhang mit Zustellberichten zu abonnieren und eine Problembehandlung durchzuführen. Nach der Konfiguration der Ereignisse können Sie anhand des Felds „deliveryStatus“ Ihres Zustellberichts überprüfen, ob die Übermittlung erfolgreich war oder nicht.

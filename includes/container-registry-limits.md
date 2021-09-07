@@ -1,25 +1,26 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 06/18/2020
+ms.date: 08/12/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e633bc71da050f3d580a6f0d0a4db25102ac360
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803507"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122262963"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
 | Enthaltener Speicher<sup>1</sup> (GiB) | 10 | 100 | 500 |
 | Speicherbegrenzung (TiB) | 20| 20 | 20 |
 | Maximale Größe für Imageebenen (GiB) | 200 | 200 | 200 |
+| Maximale Manifestgröße (MiB) | 4 | 4 | 4 |
 | Lesevorgänge pro Minute<sup>2, 3</sup> | 1\.000 | 3,000 | 10.000 |
 | Schreibvorgänge pro Minute<sup>2, 4</sup> | 100 | 500 | 2\.000 |
 | Downloadbandbreite<sup>2</sup> (MBit/s) | 30 | 60 | 100 |

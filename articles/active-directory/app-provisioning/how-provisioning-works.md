@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e95359d24cda6b0d23084010d8ab19566dd2197c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409377"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964768"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>Funktionsweise der Anwendungsbereitstellung in Azure Active Directory
 
@@ -143,7 +143,7 @@ Der Bereitstellungsdienst führt aufeinander folgende inkrementelle Zyklen in be
 
 ### <a name="errors-and-retries"></a>Fehler und Wiederholungen
 
-Wenn ein einzelner Benutzer aufgrund eines Fehlers des Zielsystems nicht hinzugefügt, aktualisiert oder gelöscht werden kann, wird der jeweilige Vorgang im nächsten Synchronisierungszyklus wiederholt. Falls für den Benutzer weiterhin ein Fehler auftritt, wird die Häufigkeit der Wiederholungen allmählich verringert, bis schließlich nur noch ein Versuch pro Tag durchgeführt wird. Zum Beheben des Fehlers müssen Administratoren die [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) prüfen, um die Grundursache ermitteln und dann entsprechende Maßnahmen ergreifen zu können. Beispiele für häufig auftretende Fehler sind:
+Wenn ein einzelner Benutzer aufgrund eines Fehlers des Zielsystems nicht hinzugefügt, aktualisiert oder gelöscht werden kann, wird der jeweilige Vorgang im nächsten Synchronisierungszyklus wiederholt. Die Fehler werden kontinuierlich wiederholt. Dabei wird die Häufigkeit der Wiederholungen nach und nach herunterskaliert. Zum Beheben des Fehlers müssen Administratoren die [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) prüfen, um die Grundursache ermitteln und dann entsprechende Maßnahmen ergreifen zu können. Beispiele für häufig auftretende Fehler sind:
 
 - Für Benutzer ist auf dem Quellsystem ein bestimmtes Attribut nicht angegeben, das auf dem Zielsystem erforderlich ist.
 - Benutzer verfügen auf dem Quellsystem über einen Attributwert, für den auf dem Zielsystem eine eindeutige Einschränkung besteht, und der gleiche Wert ist auch in einem anderen Benutzerdatensatz vorhanden.

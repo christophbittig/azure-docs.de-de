@@ -4,20 +4,22 @@ description: Informationen zum Übergeben eines geheimen Schlüssels aus einem S
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: f96b9228b6ebe6ab3ca6d48dc3403bbafa6e8d55
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 06/18/2021
+ms.openlocfilehash: e940a812b4e010e9499a9a85cfd400b679d43781
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029673"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376304"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-bicep-deployment"></a>Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bicep-Bereitstellung
 
-Anstatt einen sicheren Wert (wie ein Kennwort) direkt in Ihre Bicep-Datei oder Parameterdatei einzufügen, können Sie den Wert während einer Bereitstellung aus einem [Azure Key Vault](../../key-vault/general/overview.md) abrufen. Sie rufen den Wert ab, indem Sie den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei angeben. Wenn ein [Modul](./modules.md) einen `string`-Parameter mit `secure:true`-Modifizierer erwartet, können Sie die `getSecret`-Funktion verwenden, um ein Schlüsseltresorgeheimnis abzurufen. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Der Schlüsseltresor kann in einem anderen Abonnement als die Ressourcengruppe vorhanden sein, für die Sie ihn bereitstellen.
+Anstatt einen sicheren Wert (wie ein Kennwort) direkt in Ihre Bicep-Datei oder Parameterdatei einzufügen, können Sie den Wert während einer Bereitstellung aus einem [Azure Key Vault](../../key-vault/general/overview.md) abrufen. Wenn ein [Modul](./modules.md) einen `string`-Parameter mit `secure:true`-Modifizierer erwartet, können Sie die [getSecret-Funktion](bicep-functions-resource.md#getsecret) verwenden, um ein Schlüsseltresorgeheimnis abzurufen. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen.
 
-Der Schwerpunkt dieses Artikels liegt auf der Übergabe eines sensitiven Werts als Bicep-Parameter. Der Artikel behandelt nicht, wie Sie eine Eigenschaft der virtuellen Maschine auf die URL eines Zertifikats in einem Schlüsseltresor einstellen.
-Eine Schnellstartvorlage für dieses Szenario finden Sie unter [Installieren eines Zertifikats aus Azure Key Vault auf einem virtuellen Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows).
+> [!IMPORTANT]
+> Der Schwerpunkt dieses Artikels liegt auf der Übergabe eines vertraulichen Werts als Vorlagenparameter. Wenn das Geheimnis als Parameter übergeben wird, kann sich der Schlüsseltresor in einem anderen Abonnement befinden als die Ressourcengruppe, die als Ziel für die Bereitstellung verwendet wird. 
+>
+> In diesem Artikel wird nicht erläutert, wie Sie eine VM-Eigenschaft auf die URL eines Zertifikats in einem Schlüsseltresor festlegen. Eine Schnellstartvorlage für dieses Szenario finden Sie unter [Installieren eines Zertifikats aus Azure Key Vault auf einem virtuellen Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows).
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Bereitstellen von Schlüsseltresoren und Geheimnissen
 
@@ -157,7 +159,7 @@ Wenn Sie einen Schlüsseltresor mit der Bicep-Datei für eine [verwaltete Anwend
 
 ## <a name="use-getsecret-function"></a>Verwenden der getSecret-Funktion
 
-Sie können die [`getSecret`-Funktion](./bicep-functions-resource.md#getsecret) verwenden, um ein Schlüsseltresorgeheimnis abzurufen und den Wert an einen `string`-Parameter eines Moduls zu übergeben. Die `getSecret`-Funktion kann nur für eine `Microsoft.KeyVault/vaults`-Ressource aufgerufen und nur mit einem Parameter mit dem `@secure()`-Decorator verwendet werden.
+Sie können die [getSecret-Funktion](./bicep-functions-resource.md#getsecret) verwenden, um ein Schlüsseltresorgeheimnis abzurufen und den Wert an einen `string`-Parameter eines Moduls zu übergeben. Die `getSecret`-Funktion kann nur für eine `Microsoft.KeyVault/vaults`-Ressource aufgerufen und nur mit einem Parameter mit dem `@secure()`-Decorator verwendet werden.
 
 Die folgende Bicep-Datei erstellt einen Azure SQL Server. Der `adminPassword`-Parameter verfügt über einen `@secure()`-Decorator.
 
@@ -208,7 +210,7 @@ module sql './sql.bicep' = {
 
 ## <a name="reference-secrets-in-parameter-file"></a>Verweisen auf Geheimnisse in einer Parameterdatei
 
-Bei dieser Herangehensweise verweisen Sie auf den Schlüsseltresor in der Parameterdatei, nicht in der Bicep-Datei. Die folgende Abbildung zeigt, wie die Parameterdatei auf das Geheimnis verweist und diesen Wert an die Bicep-Datei übergibt.
+Wenn Sie kein Modul verwenden möchten, können Sie direkt in der Parameterdatei auf den Schlüsseltresor verweisen. Die folgende Abbildung zeigt, wie die Parameterdatei auf das Geheimnis verweist und diesen Wert an die Bicep-Datei übergibt.
 
 ![Diagramm der Resource Manager-Schlüsseltresorintegration](./media/key-vault-parameter/statickeyvault.png)
 

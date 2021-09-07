@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
-ms.openlocfilehash: 50ab34a73a7709a47efdf6904acf005cd5db9da5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9373806b87144005407861b2043799f0c62ce982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753591"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237910"
 ---
 # <a name="access-and-track-your-secure-score"></a>Zugreifen auf Ihre Sicherheitsbewertung und Nachverfolgen dieser Bewertung
 

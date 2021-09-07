@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 795353c88853d53864edb2968c757d14f106ee3f
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 3e5aab3d38e4f981e27ceb59db1511c54ed89381
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585389"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349812"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Verwenden eines TLS-/SSL-Zertifikats in Ihrem Code in Azure App Service
 
@@ -184,4 +184,5 @@ Informationen zum Laden eines TLS-/SSL-Zertifikats aus einer Datei in Node.js, P
 * [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service](configure-ssl-bindings.md)
 * [Erzwingen von HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.md)
+* [Häufig gestellte Fragen: App Service-Zertifikate](./faq-configuration-and-management.yml)
+* [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

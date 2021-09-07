@@ -3,13 +3,13 @@ title: Warnungsschemadefinitionen in Azure Monitor
 description: Informationen zu Definitionen des allgemeinen Warnungsschemas für Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: a026fa846901d4db7cb56196de50508f077e4fc6
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.date: 07/20/2021
+ms.openlocfilehash: 165753b293d73d89865710074ad11869c6e1aa6b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018257"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440703"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
@@ -33,6 +33,9 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
       "monitoringService": "Platform",
       "alertTargetIDs": [
         "/subscriptions/<subscription ID>/resourcegroups/pipelinealertrg/providers/microsoft.compute/virtualmachines/wcus-r2-gen2"
+      ],
+      "configurationItems": [
+        "wcus-r2-gen2"
       ],
       "originAlertId": "3f2d4487-b0fc-4125-8bd5-7ad17384221e_PipeLineAlertRG_microsoft.insights_metricAlerts_WCUS-R2-Gen2_-117781227",
       "firedDateTime": "2019-03-22T13:58:24.3713213Z",
@@ -79,6 +82,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 | monitorCondition | Wenn eine Warnung ausgelöst wird, wird die Überwachungsbedingung der Warnung auf **Ausgelöst** festgelegt. Wenn die zugrunde liegende Bedingung gelöscht wurde, die die Warnung ausgelöst hat, wird die Überwachungsbedingung auf **Behoben** festgelegt.   |
 | monitoringService | Der Überwachungsdienst oder die Lösung, von dem bzw. der die Warnung generiert wurde. Die Felder für den Warnungskontext werden vom Überwachungsdienst vorgegeben. |
 | alertTargetIds | Die Liste der Azure Resource Manager-IDs, die betroffene Ziele einer Warnung sind. Für eine Protokollwarnung, die in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Instanz definiert ist, ist es der jeweilige Arbeitsbereich bzw. die jeweilige Anwendung. |
+| configurationItems | Die Liste der von einer Warnung betroffenen Ressourcen. Die Konfigurationselemente können sich mitunter von den Warnungszielen unterscheiden, z. B. bei einer Metrik für ein Protokoll oder Protokollwarnungen, die in einem Log Analytics-Arbeitsbereich definiert sind (in diesem Fall sind die tatsächlichen Ressourcen, die die Telemetriedaten senden, die Konfigurationselemente und nicht der Arbeitsbereich). Dieses Feld wird von ITSM-Systemen verwendet, um Warnungen mit Ressourcen in einer Konfigurationsverwaltungsdatenbank (Configuration Management Database, CMDB) zu korrelieren. |
 | originAlertId | Die ID der Warnungsinstanz, wie sie vom überwachenden Dienst generiert wird, der sie generiert. |
 | firedDateTime | Das Datum und die Uhrzeit, zu der die Warnungsinstanz ausgelöst wurde, in koordinierter Weltzeit (UTC). |
 | resolvedDateTime | Das Datum und die Uhrzeit, zu der die Überwachungsbedingung für die Warnungsinstanz auf **Behoben** festgelegt wurde, in UTC. Gilt derzeit nur für Metrikwarnungen.|
@@ -110,7 +114,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 ## <a name="alert-context"></a>Warnungskontext
 
-### <a name="metric-alerts-excluding-availability-tests"></a>Metrikwarnungen (ohne Verfügbarkeitstests)
+### <a name="metric-alerts---static-threshold"></a>Metrikwarnungen – statischer Schwellwert
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -145,7 +149,43 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 }
 ```
 
-### <a name="metric-alerts-availability-tests"></a>Metrikwarnungen (Verfügbarkeitstests)
+### <a name="metric-alerts---dynamic-threshold"></a>Metrikwarnungen – dynamischer Schwellwert
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**Beispielwerte**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "DynamicThresholdCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "alertSensitivity": "High",
+            "failingPeriods": {
+              "numberOfEvaluationPeriods": 1,
+              "minFailingPeriodsToAlert": 1
+            },
+            "ignoreDataBefore": null,
+            "metricName": "Egress",
+            "metricNamespace": "microsoft.storage/storageaccounts",
+            "operator": "GreaterThan",
+            "threshold": "47658",
+            "timeAggregation": "Total",
+            "dimensions": [],
+            "metricValue": 50101
+          }
+        ],
+        "windowStartTime": "2021-07-20T05:07:26.363Z",
+        "windowEndTime": "2021-07-20T05:12:26.363Z"
+      }
+    }
+}
+```
+
+### <a name="metric-alerts---availability-tests"></a>Metrikwarnungen – Verfügbarkeitstests
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -179,7 +219,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Das bedeutet: Wenn Sie eine benutzerdefinierte JSON-Nutzlast definieren möchten, kann der Webhook das allgemeine Warnungsschema nicht verwenden. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf die Suchergebnisse zugreifen.
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Das bedeutet: Wenn Sie eine benutzerdefinierte JSON-Nutzlast definieren möchten, kann der Webhook das allgemeine Warnungsschema nicht verwenden. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie unter Verwendung von `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf die Suchergebnisse zugreifen.
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -251,7 +291,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
         ]
       }
     ],
-  "IncludeSearchResults": "True",
+  "IncludedSearchResults": "True",
   "AlertType": "Metric measurement"
   }
 }
@@ -323,13 +363,16 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
         }
       ]
     },
-    "IncludeSearchResults": "True",
+    "IncludedSearchResults": "True",
     "AlertType": "Metric measurement"
   }
 }
 ```
 
 #### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
+
+> [!NOTE]
+> Protokollwarnungsregeln der API-Version 2020-05-01 verwenden diesen Nutzdatentyp, der nur allgemeine Schemas unterstützt. Bei Verwendung dieser Version werden Suchergebnisse nicht in die Nutzdaten der Protokollwarnungen eingebettet. Verwenden Sie [Dimensionen](./alerts-unified-log.md#split-by-alert-dimensions), um Kontext für ausgelöste Warnungen bereitzustellen. Sie können auch `LinkToFilteredSearchResultsAPI` oder `LinkToSearchResultsAPI` verwenden, um mit der [Log Analytics-API](/rest/api/loganalytics/dataaccess/query/get) auf Abfrageergebnisse zuzugreifen. Wenn Sie die Ergebnisse einbetten müssen, verwenden Sie eine Logik-App mit den bereitgestellten Links, die benutzerdefinierte Nutzdaten generieren.
 
 **Beispielwerte**
 ```json

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: a8356b863323511951ddd5eae463e0f07d65e61c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: f205f66adc2c875e271a85efc2e48763c260dfa0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061972"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237692"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Sicherheitswarnungen und -incidents in Azure Security Center
 
@@ -110,7 +110,7 @@ Bei der Untersuchung eines Incidents benötigen Analysten häufig zusätzlichen 
 > [!TIP]
 > Eine Liste der Warnungen für Sicherheitsvorfälle, die von Fusion-Analysen erzeugt werden, finden Sie in der [Verweistabelle zu Warnungen](alerts-reference.md#alerts-fusion).
 
-:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Screenshot des Berichts zu erkanntem Sicherheitsvorfall":::
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Screenshot: Bericht zu erkanntem Sicherheitsvorfall":::
 
 Informationen zum Verwalten Ihrer Sicherheitsincidents finden Sie unter [Verwalten von Sicherheitsincidents in Azure Security Center](security-center-incident.md).
 

@@ -1,18 +1,18 @@
 ---
 title: Leitfaden zur Problembehandlung für Azure Spring Cloud | Microsoft-Dokumentation
 description: Leitfaden zur Problembehandlung für Azure Spring Cloud
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 13f61378b16f41d80b5622a41a55c103247b381b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 98f9a87825a2eb0bbae36255111ba4b019fb4750
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356160"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
 
@@ -28,7 +28,8 @@ In Ihren Protokollen wird möglicherweise die folgende Fehlermeldung angezeigt:
 
 > „org.springframework.context.ApplicationContextException: Unable to start web server.“ (Der Webserver konnte nicht gestartet werden.)
 
-Die Meldung weist auf eines der beiden wahrscheinlichen Probleme hin: 
+Die Meldung weist auf eines der beiden wahrscheinlichen Probleme hin:
+
 * Eins der Beans oder eine seiner Abhängigkeiten fehlt.
 * Eine der Bean-Eigenschaften fehlt oder ist ungültig. In diesem Fall wird wahrscheinlich „java.lang.IllegalArgumentException“ angezeigt.
 
@@ -38,7 +39,6 @@ Dienstbindungen können auch dazu führen, dass beim Starten von Anwendungen Feh
 
 Navigieren Sie zum Beheben dieses Fehlers zum `server parameters`-Element Ihrer MySQL-Instanz, und ändern Sie den Wert `time_zone` von *SYSTEM* zu *+0:00*.
 
-
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Meine Anwendung stürzt ab oder löst einen unerwarteten Fehler aus
 
 Falls beim Debuggen die Anwendung abstürzt, sollten Sie zunächst den Ausführungsstatus und den Ermittlungsstatus der Anwendung überprüfen. Gehen Sie folgendermaßen vor: Navigieren Sie im Azure-Portal zu _App-Verwaltung_, um sicherzustellen, dass die Status für alle Anwendungen _Wird ausgeführt_ und _UP_ (AKTIV) angegeben ist.
@@ -47,30 +47,36 @@ Falls beim Debuggen die Anwendung abstürzt, sollten Sie zunächst den Ausführu
 
 * Wenn der Ermittlungsstatus _UP_ (AKTIV) lautet, können Sie zu „Metriken“ navigieren, um die Integrität der Anwendung zu überprüfen. Untersuchen Sie die folgenden Metriken:
 
+   - `TomcatErrorCount` (_tomcat.global.error_):
 
-  - `TomcatErrorCount` (_tomcat.global.error_): Alle Spring-Anwendungsausnahmen werden hier gezählt. Wenn dieser Wert hoch ist, wechseln Sie zu Azure Log Analytics, um Ihre Anwendungsprotokolle zu überprüfen.
+      Alle Spring-Anwendungsausnahmen werden hier gezählt. Wenn dieser Wert hoch ist, wechseln Sie zu Azure Log Analytics, um Ihre Anwendungsprotokolle zu überprüfen.
 
-  - `AppMemoryMax` (_jvm.memory.max_): Für die Anwendung steht die maximale Menge an Arbeitsspeicher zur Verfügung. Die Menge kann undefiniert sein oder kann sich mit der Zeit ändern, wenn diese definiert ist. Wenn diese definiert ist, ist die Menge des verwendeten und zugesicherten Speichers immer kleiner als die maximale Menge oder gleich der maximalen Menge. Eine Speicherzuteilung kann jedoch mit einer `OutOfMemoryError`-Meldung fehlschlagen, wenn die Zuteilung versucht, den verwendeten Speicher so zu erhöhen, dass *verwendet > zugesichert* ist, auch wenn *verwendet <= max* immer noch wahr ist. Versuchen Sie in einer solchen Situation, die maximale Heapgröße mithilfe des Parameters `-Xmx` zu erhöhen.
+   - `AppMemoryMax` (_jvm.memory.max_):
 
-  - `AppMemoryUsed` (_jvm.memory.used_): Die derzeit verwendete Arbeitsspeichermenge in Byte, die von der Anwendung verwendet wird. Bei einer normalen Load-Java-Anwendung ergibt diese Metrikreihe ein *Sägezahnmuster*, bei dem die Speicherauslastung in kleinen Schritten beständig zunimmt und abnimmt und plötzlich massiv abfällt. Dieses Muster wiederholt sich dann. Diese Metrikreihe erscheint aufgrund der Garbage Collection innerhalb eines virtuellen Java-Computers, bei der Sammlungsaktionen bei den „Sägezahnmustern“ einen Abfall darstellen.
-    
+      Für die Anwendung steht die maximale Menge an Arbeitsspeicher zur Verfügung. Die Menge kann undefiniert sein oder kann sich mit der Zeit ändern, wenn diese definiert ist. Wenn diese definiert ist, ist die Menge des verwendeten und zugesicherten Speichers immer kleiner als die maximale Menge oder gleich der maximalen Menge. Eine Speicherzuteilung kann jedoch mit einer `OutOfMemoryError`-Meldung fehlschlagen, wenn die Zuteilung versucht, den verwendeten Speicher so zu erhöhen, dass *verwendet > zugesichert* ist, auch wenn *verwendet <= max* immer noch wahr ist. Versuchen Sie in einer solchen Situation, die maximale Heapgröße mithilfe des Parameters `-Xmx` zu erhöhen.
+
+   - `AppMemoryUsed` (_jvm.memory.used_):
+
+      Die derzeit verwendete Arbeitsspeichermenge in Byte, die von der Anwendung verwendet wird. Bei einer normalen Load-Java-Anwendung ergibt diese Metrikreihe ein *Sägezahnmuster*, bei dem die Speicherauslastung in kleinen Schritten beständig zunimmt und abnimmt und plötzlich massiv abfällt. Dieses Muster wiederholt sich dann. Diese Metrikreihe erscheint aufgrund der Garbage Collection innerhalb eines virtuellen Java-Computers, bei der Sammlungsaktionen bei den „Sägezahnmustern“ einen Abfall darstellen.
+
     Diese Metrik ist wichtig, um Speicherprobleme zu identifizieren, wie z. B.:
+
     * eine Arbeitsspeicherexplosion direkt am Anfang
     * die Surge-Arbeitsspeicherzuordnung für einen bestimmten Logikpfad
     * allmähliche Speicherverluste
-  Weitere Informationen finden Sie unter [Metriken](./concept-metrics.md).
-  
+
+   Weitere Informationen finden Sie unter [Metriken](./concept-metrics.md).
+
 * Wenn die Anwendung nicht gestartet wird, stellen Sie sicher, dass die Anwendung über gültige JVM-Parameter verfügt. Wenn der JVM-Arbeitsspeicher zu hoch festgelegt wird, wird in Ihren Protokollen möglicherweise die folgende Fehlermeldung angezeigt:
 
-  >„required memory 2728741K is greater than 2000M available for allocation“ (erforderlicher Arbeitsspeicher 2728741K ist größer als 2000M für die Zuordnung verfügbar)
-
-
+   > „required memory 2728741K is greater than 2000M available for allocation“ (erforderlicher Arbeitsspeicher 2728741K ist größer als 2000M für die Zuordnung verfügbar)
 
 Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Meine Anwendung hat eine hohe CPU- oder Speicherauslastung.
 
 Wenn Ihre Anwendung über eine hohe CPU- oder Arbeitsspeicherauslastung verfügt, trifft einer der beiden folgenden Fälle zu:
+
 * Alle App-Instanzen haben eine hohe CPU- oder Arbeitsspeicherauslastung.
 * Einige der App-Instanzen haben eine hohe CPU- oder Arbeitsspeicherauslastung.
 
@@ -167,12 +173,13 @@ Weitere Informationen zu Azure Log Analytics finden Sie unter [Erste Schritte mi
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ich möchte die Umgebungsvariablen meiner Anwendung überprüfen.
 
-Umgebungsvariablen informieren das Azure Spring Cloud-Framework und stellen sicher, dass Azure versteht, wo und wie die Dienste konfiguriert werden, aus denen Ihre Anwendung besteht. Bei der Behebung potenzieller Probleme muss zunächst sichergestellt werden, dass Ihre Umgebungsvariablen richtig sind.  Sie können die Umgebungsvariablen mithilfe des Endpunkts für den Spring Boot-Aktor überprüfen.  
+Umgebungsvariablen informieren das Azure Spring Cloud-Framework und stellen sicher, dass Azure versteht, wo und wie die Dienste konfiguriert werden, aus denen Ihre Anwendung besteht. Bei der Behebung potenzieller Probleme muss zunächst sichergestellt werden, dass Ihre Umgebungsvariablen richtig sind.  Sie können die Umgebungsvariablen mithilfe des Endpunkts für den Spring Boot-Aktor überprüfen.
 
 > [!WARNING]
 > Mit dieser Prozedur werden die Umgebungsvariablen unter Verwendung Ihres Testendpunkts verfügbar gemacht.  Setzen Sie den Vorgang nicht fort, wenn der Testendpunkt öffentlich zugänglich ist oder Sie Ihrer Anwendung einen Domänennamen zugewiesen haben.
 
-1. Gehe zu `https://<your application test endpoint>/actuator/health`.  
+1. Gehe zu `https://<your application test endpoint>/actuator/health`.
+
     - Eine Antwort ähnlich wie `{"status":"UP"}` gibt an, dass der Endpunkt aktiviert wurde.
     - Ist die Antwort negativ, nehmen Sie die folgende Abhängigkeit in die Datei *POM.xml* auf:
 
@@ -183,7 +190,7 @@ Umgebungsvariablen informieren das Azure Spring Cloud-Framework und stellen sich
             </dependency>
         ```
 
-1. Wenn Sie den Endpunkt für den Spring Boot-Aktor aktiviert haben, navigieren Sie im Azure-Portal zur Konfigurationsseite Ihrer Anwendung.  Fügen Sie eine Umgebungsvariable mit dem Namen `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` und dem Wert `*` hinzu. 
+1. Wenn Sie den Endpunkt für den Spring Boot-Aktor aktiviert haben, navigieren Sie im Azure-Portal zur Konfigurationsseite Ihrer Anwendung.  Fügen Sie eine Umgebungsvariable mit dem Namen `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` und dem Wert `*` hinzu.
 
 1. Starten Sie Ihre Anwendung neu.
 
@@ -212,7 +219,7 @@ Suchen Sie den untergeordneten Knoten mit dem Namen `systemEnvironment`.  Dieser
 
 Navigieren Sie zu **App-Verwaltung**, um sicherzustellen, dass für die Anwendung die Status _Wird ausgeführt_ und _UP_ (AKTIV) festgelegt ist.
 
-Überprüfen Sie, ob _JMX_ in Ihrem Anwendungspaket aktiviert ist. Diese Funktion kann mit der-Konfigurationseigenschaft `spring.jmx.enabled=true` aktiviert werden.  
+Überprüfen Sie, ob _JMX_ in Ihrem Anwendungspaket aktiviert ist. Diese Funktion kann mit der-Konfigurationseigenschaft `spring.jmx.enabled=true` aktiviert werden.
 
 Überprüfen Sie, ob die Abhängigkeit `spring-boot-actuator` in Ihrem Anwendungspaket aktiviert ist und der Startvorgang erfolgreich ausgeführt werden kann.
 

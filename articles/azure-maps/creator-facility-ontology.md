@@ -7,14 +7,13 @@ ms.date: 06/14/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philMea
 zone_pivot_groups: facility-ontology-schema
-ms.openlocfilehash: 63e9702f8bebb449518002e18a824c65d81fab80
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c08faefc795fd65c71163bd9f8c24a1f8cd939f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339059"
 ---
 # <a name="facility-ontology"></a>Einrichtungsontologie
 
@@ -62,7 +61,7 @@ Die Featureklasse `unit` definiert einen physischen Bereich ohne Überlappung, d
 
 :::zone pivot="facility-ontology-v1"
 
-| Eigenschaft           | Typ                        | Erforderlich | BESCHREIBUNG                                                  |
+| Eigenschaft           | type                        | Erforderlich | BESCHREIBUNG                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -85,7 +84,7 @@ Die Featureklasse `unit` definiert einen physischen Bereich ohne Überlappung, d
 
 :::zone pivot="facility-ontology-v2"
 
-| Eigenschaft           | Typ                        | Erforderlich | BESCHREIBUNG                                                  |
+| Eigenschaft           | type                        | Erforderlich | BESCHREIBUNG                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -111,7 +110,7 @@ Die Featureklasse `structure` definiert einen physischen Bereich ohne Überlappu
 
 **Geometrietyp:** Polygon
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -130,7 +129,7 @@ Die Featureklasse `zone` definiert einen virtuellen Bereich – beispielsweise 
 
 **Geometrietyp:** Polygon
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -148,7 +147,7 @@ Das Klassenfeature `level` definiert einen Bereich eines Gebäudes in einer best
 
 **Geometrietyp:** MultiPolygon
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -168,14 +167,13 @@ Die Featureklasse `facility` definiert den Bereich des Standorts, die Gebäudegr
 
 **Geometrietyp:** MultiPolygon
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
 |`categoryId`        | [category.Id](#category)      |true      | Die ID eines Features vom Typ [`category`](#category).|
 |`occupants`         | Array mit [directoryInfo.Id](#directoryinfo) |    false |    Die IDs von Features des Typs [directoryInfo](#directoryinfo). Dient zur Darstellung einzelner oder mehrerer Gebäudenutzer im Feature. |
 |`addressId`         | [directoryInfo.Id](#directoryinfo)  | true     | Die ID eines Features vom Typ [directoryInfo](#directoryinfo). Dient zur Darstellung der Adresse des Features.|
-|`addressRoomNumber`         |  [directoryInfo.Id](#directoryinfo)| true     | Raum-/Einheiten-/Wohnungs-/Suitennummer der Einheit.|
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen. Maximal zulässige Länge: 1.000. |
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
@@ -191,7 +189,7 @@ Das Klassenfeature `verticalPenetration` definiert einen Bereich, der bei Verwen
 
 :::zone pivot="facility-ontology-v1"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -210,7 +208,7 @@ Das Klassenfeature `verticalPenetration` definiert einen Bereich, der bei Verwen
 
 :::zone pivot="facility-ontology-v2"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -233,7 +231,7 @@ Das Klassenfeature `opening` definiert eine passierbare Grenze zwischen zwei Ein
 
 :::zone pivot="facility-ontology-v1"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -250,7 +248,7 @@ Das Klassenfeature `opening` definiert eine passierbare Grenze zwischen zwei Ein
 
 :::zone pivot="facility-ontology-v2"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -266,7 +264,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 
 **Geometrietyp:** Keiner
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -278,7 +276,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen. Maximal zulässige Länge: 1.000. |
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`phoneNumber` |    Zeichenfolge |    false |    Telefonnummer |
+|`phoneNumber` |    Zeichenfolge |    false |    Telefonnummer Maximal zulässige Länge: 1.000. |
 |`website` |    Zeichenfolge |    false |  Website-URL. Maximal zulässige Länge: 1.000. |
 |`hoursOfOperation` |    Zeichenfolge |    false |   Geschäftszeiten in Textform gemäß [Open Street Map-Spezifikation](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification). Maximal zulässige Länge: 1.000. |
 
@@ -288,7 +286,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 
 **Geometrietyp:** MultiPoint
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -305,7 +303,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 
 **Geometrietyp:** LinearMultiString
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -324,7 +322,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 
 **Geometrietyp:** MultiPolygon
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die aus Clientdaten abgeleitete ID. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -345,7 +343,7 @@ Das Klassenfeature `category` definiert Kategorienamen. Beispiel: "room.conferen
 
 :::zone pivot="facility-ontology-v1"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die ursprüngliche, aus Clientdaten abgeleitete ID der Kategorie. Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um die Kategorie einer anderen Kategorie in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
@@ -357,7 +355,7 @@ Das Klassenfeature `category` definiert Kategorienamen. Beispiel: "room.conferen
 
 :::zone pivot="facility-ontology-v2"
 
-| Eigenschaft  | Typ | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`originalId`        | Zeichenfolge     |true      | Die ursprüngliche, aus Clientdaten abgeleitete ID der Kategorie.  Maximal zulässige Länge: 1.000.|
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um die Kategorie einer anderen Kategorie in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|

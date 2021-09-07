@@ -3,12 +3,12 @@ title: Gewusst wie ... in Azure Application Insights | Microsoft-Dokumentation
 description: Häufig gestellte Fragen in Application Insights
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: c889c0890f8e6d193b7e36a525470fc18bef494d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c74add1d426a6d1e383ed90388bb319a8244e05
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060830"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616314"
 ---
 # <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
@@ -160,7 +160,7 @@ Zu den Metriken, die Sie im Metrik-Explorer anzeigen können, zählt u. a. eine
 ![Öffnen Sie die Application Insights-Ressource, und klicken Sie auf "Server".](./media/how-do-i/121-servers.png)
 
 ### <a name="if-you-see-no-performance-counter-data"></a>Wenn keine Leistungsindikatordaten angezeigt werden
-* **IIS-Server** auf Ihrem eigenen oder auf einem virtuellen Computer. [Installieren Sie den Statusmonitor](./monitor-performance-live-website-now.md).
+* **IIS-Server** auf Ihrem eigenen oder auf einem virtuellen Computer. [Installieren Sie den Azure Monitor Application Insights-Agent.](./status-monitor-v2-overview.md)
 * **Azure-Website** – Leistungsindikatoren werden noch nicht unterstützt. Sie können jedoch mehrere Metriken über die Systemsteuerung der Azure-Website standardmäßig abrufen.
 * **Unix-Server** - [Installieren Sie collectd](java-2x-collectd.md)
 

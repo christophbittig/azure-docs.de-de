@@ -1,22 +1,22 @@
 ---
-title: Einschränkungen für Umleitungs-URI/Antwort-URL | Azure
+title: Einschränkungen für Umleitungs-URI/Antwort-URL | Azure AD
 titleSuffix: Microsoft identity platform
 description: Beschrieben werden die Einschränkungen, die für das Format des Umleitungs-URIs (Antwort-URL) gelten, das von der Microsoft Identity-Plattform erzwungen wird.
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 11/23/2020
+ms.date: 06/23/2021
 ms.topic: conceptual
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9484973e724246db76ccc927437fccf2c4c7be1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582807"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966462"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -27,6 +27,10 @@ Ein Umleitungs-URI oder eine Antwort-URL definiert den Ort, an den der Autorisie
 * Der Umleitungs-URI muss mit dem Schema `https` beginnen. Bei Umleitungs-URIs gibt es einige [Ausnahmen für „localhost“](#localhost-exceptions).
 
 * Beim Umleitungs-URI wird die Groß-/Kleinschreibung beachtet. Die Groß-/Kleinschreibung muss der Groß-/Kleinschreibung des URL-Pfads Ihrer ausgeführten Anwendung entsprechen. Wenn der Pfad für Ihre Anwendung z. B. `.../abc/response-oidc` als Bestandteil enthält, dürfen Sie im Umleitungs-URI nicht `.../ABC/response-oidc` angeben. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
+
+* Bei einem Umleitungs-URI ohne Pfadsegment wird in der Antwort ein nachgestellter Schrägstrich an den URI angefügt. Für URIs wie https://contoso.com und http://localhost:7071 wird beispielsweise https://contoso.com/ bzw. http://localhost:7071/ zurückgegeben. Dies gilt nur, wenn der Antwortmodus entweder „query“ (Abfrage) oder „fragment“ (Fragment) lautet.
+
+* Bei Umleitungs-URIs mit Pfadsegment wird kein nachgestellter Schrägstrich angefügt. (Beispiel: https://contoso.com/abc und https://contoso.com/abc/response-oidc werden unverändert in der Antwort verwendet.)
 
 ## <a name="maximum-number-of-redirect-uris"></a>Maximale Anzahl von Umleitungs-URIs
 
@@ -76,7 +80,7 @@ Sie können jedoch nicht das Textfeld **Umleitungs-URIs** im Azure-Portal verwen
 
 :::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Fehlerdialogfeld im Azure-Portal mit unzulässigem HTTP-basiertem Loopback-Umleitungs-URI":::
 
-Zum Hinzufügen eines Umleitungs-URI, der das `http`-Schema verwendet, mit der tatsächlichen Loopbackadresse `127.0.0.1` müssen Sie derzeit das [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)-Attribut im [Anwendungsmanifest](reference-app-manifest.md) ändern.
+Zum Hinzufügen eines Umleitungs-URI, der das `http`-Schema verwendet, mit der tatsächlichen Loopbackadresse `127.0.0.1` müssen Sie derzeit das [replyUrlsWithType-Attribut im Anwendungsmanifest](reference-app-manifest.md#replyurlswithtype-attribute) ändern.
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Einschränkungen für Platzhalter in Umleitungs-URIs
 
@@ -84,9 +88,9 @@ Platzhalter in URIs wie `https://*.contoso.com` sind möglicherweise bequem, sin
 
 URIs mit Platzhalter werden derzeit in App-Registrierungen, die für die Anmeldung von persönlichen Microsoft-Konten und von Geschäfts-, Schul- oder Unikonten konfiguriert sind, nicht unterstützt. URIs mit Platzhalter sind jedoch zulässig bei Apps, die nur für die Anmeldung von Geschäfts-, Schul- oder Unikonten bei einem Azure AD-Mandanten in einer Organisation konfiguriert sind.
 
-Verwenden Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor, um Umleitungs-URIs mit Platzhaltern zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden. Auch wenn Sie mit dem Manifest-Editor einen Umleitungs-URI mit Platzhalter festlegen können, empfehlen wir *dringend*, [RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) zu beachten und ausschließlich absolute URIs zu verwenden.
+Verwenden Sie im Azure-Portal unter **App-Registrierungen** den Anwendungsmanifest-Editor, um Umleitungs-URIs mit Platzhaltern zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden. Auch wenn Sie mit dem Manifest-Editor einen Umleitungs-URI mit Platzhalter festlegen können, empfehlen wir *dringend*, den Abschnitt 3.1.2 von RFC 6749 zu beachten und ausschließlich absolute URIs zu verwenden.
 
-Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter den [folgenden Ansatz mit Statusparameter](#use-a-state-parameter) in Betracht ziehen.
+Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter den folgenden Ansatz mit Statusparameter in Betracht ziehen.
 
 #### <a name="use-a-state-parameter"></a>Verwenden eines Statusparameters
 

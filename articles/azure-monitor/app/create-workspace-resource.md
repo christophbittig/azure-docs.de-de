@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren 
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0ae01212eaa73deeac4774f7e13f5b46976ee7e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 21cf89c7d89e310f98fea4421076d298405b6fc3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075590"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464458"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen
 
@@ -24,10 +24,10 @@ Damit ist auch eine gemeinsame rollenbasierte Zugriffssteuerung in Azure (Azure 
 
 Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor und Log Analytics nutzen, einschließlich:
 
-* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../logs/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
+* [Kundenseitig verwaltete Schlüssel](../logs/customer-managed-keys.md) (Customer-Managed Keys, CMK) ermöglichen die Verschlüsselung ruhender Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
 * Mit [Azure Private Link](../logs/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
 * [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
-* Mit [Kapazitätsreservierungsstufen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 25 % sparen. 
+* Mit [Mindestabnahmen](../logs/manage-cost-storage.md#pricing-model) können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 30 Prozent sparen. 
 * Schnellere Datenerfassung über Log Analytics-Streamingerfassung.
 
 ## <a name="create-workspace-based-resource"></a>Erstellen einer arbeitsbereichsbasierten Ressource

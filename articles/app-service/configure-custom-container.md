@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7648482fcf1d3618c02e4c8c8cf18aa521013baf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347216"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -233,7 +233,7 @@ PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-Der Wert wird in MB definiert und muss kleiner oder gleich dem gesamten physischen Arbeitsspeicher des Hosts sein. Beispielsweise darf in einem App Service-Plan mit 8 GB RAM der kumulative Gesamtwert von `WEBSITE_MEMORY_LIMIT_MB` für alle Apps 8 GB nicht überschreiten. Informationen dazu, wie viel Arbeitsspeicher für den jeweiligen Tarif verfügbar ist, finden Sie unter [App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/windows/) im Abschnitt **Windows Container Premium-Tarif**.
+Der Wert wird in MB definiert und muss kleiner oder gleich dem gesamten physischen Arbeitsspeicher des Hosts sein. Beispielsweise darf in einem App Service-Plan mit 8 GB RAM der kumulative Gesamtwert von `WEBSITE_MEMORY_LIMIT_MB` für alle Apps 8 GB nicht überschreiten. Informationen dazu, wie viel Arbeitsspeicher für jeden Tarif verfügbar ist, finden Sie in der [App Service-Preisübersicht](https://azure.microsoft.com/pricing/details/app-service/windows/) im Abschnitt **Premium V3-Serviceplan**.
 
 ## <a name="customize-the-number-of-compute-cores"></a>Anpassen der Anzahl der Compute-Kerne
 
@@ -259,7 +259,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-Bei den Prozessoren kann es sich um Mehrkern- oder Hyperthreading-Prozessoren handeln. Informationen dazu, wie viele Kerne für den jeweiligen Tarif verfügbar sind, finden Sie unter [App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/windows/) im Abschnitt **Windows Container Premium-Tarif**.
+Bei den Prozessoren kann es sich um Mehrkern- oder Hyperthreading-Prozessoren handeln. Informationen dazu, wie viele Kerne für jeden Tarif verfügbar ist, finden Sie in der [App Service-Preisübersicht](https://azure.microsoft.com/pricing/details/app-service/windows/) im Abschnitt **Premium V3-Serviceplan**.
 
 ## <a name="customize-health-ping-behavior"></a>Anpassen des Integritäts-Ping-Verhaltens
 
@@ -386,6 +386,7 @@ Apps mit mehreren Containern befinden sich derzeit in der Vorschauphase. Die fol
 - Verwaltete Identitäten
 - CORS
 - VNET-Integration wird für Docker Compose-Szenarien nicht unterstützt.
+- Docker Compose unter Azure App Service verfügt derzeit über ein Limit von 4.000 Zeichen.
 
 ### <a name="docker-compose-options"></a>Optionen von Docker Compose
 
@@ -431,4 +432,5 @@ In den folgenden Listen werden unterstützte und nicht unterstützte Docker Comp
 
 Oder siehe in zusätzlichen Ressourcen:
 
-[Laden eines Zertifikats in Windows-/Linux-Containern](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)
+- [Laden eines Zertifikats in Windows-/Linux-Containern](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

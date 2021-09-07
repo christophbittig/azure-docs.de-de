@@ -9,22 +9,31 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 services: storage
-ms.openlocfilehash: 3687eeb09473a5281ddcde98f5b9b7b11472589f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 314d1ee8ee957b21679735594ad2f7d7f50f4d38
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666756"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118324"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
+Azure Files bietet vorläufiges Löschen für Dateifreigaben, damit Sie Ihre Daten leichter wiederherstellen können, wenn diese irrtümlich von einer Anwendung oder von einem anderen Benutzer des Speicherkontos gelöscht wurden. Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern des versehentlichen Löschens von Azure-Dateifreigaben](storage-files-prevent-file-share-deletion.md).
 
-Azure Storage bietet vorläufiges Löschen für Dateifreigaben, damit Sie Ihre Daten leichter wiederherstellen können, wenn diese irrtümlich von einer Anwendung oder von einem anderen Benutzer des Speicherkontos gelöscht wurden. Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern des versehentlichen Löschens von Azure-Dateifreigaben](storage-files-prevent-file-share-deletion.md).
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
+## <a name="prerequisites"></a>Voraussetzungen
+- Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](/powershell/azure/install-az-ps).
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli).
+
+## <a name="getting-started"></a>Erste Schritte
 In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Azure-Dateifreigaben eines bereits vorhandenen Speicherkontos aktivieren und verwenden:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-
-## <a name="getting-started"></a>Erste Schritte
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie unter **Datenspeicher** die Option **Dateifreigaben** aus.
@@ -35,52 +44,54 @@ In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Az
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/files-enable-soft-delete-new-ui.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges Löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Cmdlets für vorläufiges Löschen sind ab Version 2.1.3 des [Azure CLI-Moduls](/cli/azure/install-azure-cli) verfügbar.
-
-## <a name="getting-started-with-cli"></a>Erste Schritte mit der CLI
-
-Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
-
-```azurecli
-az storage account file-service-properties update --enable-delete-retention true -n yourStorageaccount -g yourResourceGroup
-```
-
-Mit dem folgenden Befehl können Sie überprüfen, ob vorläufiges Löschen aktiviert ist, und die zugehörige Aufbewahrungsrichtlinie anzeigen:
-
-```azurecli
-az storage account file-service-properties show -n yourStorageaccount -g yourResourceGroup
-```
-
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Zum Aktivieren des vorläufigen Löschens müssen die Einstellungen für alle Azure-Dateifreigaben, auch als `FileService`-Eigenschaften bezeichnet, aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert. Denken Sie daran, `<resource-group>` und `<storage-account>` durch die entsprechenden Werte für Ihre Umgebung zu ersetzen.
 
-## <a name="prerequisite"></a>Voraussetzung
+```PowerShell
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
 
-Cmdlets für vorläufiges Löschen sind ab Version 4.8.0 des Az.Storage-Moduls verfügbar. 
-
-## <a name="getting-started-with-powershell"></a>Erste Schritte mit PowerShell
-
-Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
-
-```azurepowershell-interactive
-$rgName = "yourResourceGroupName"
-$accountName = "yourStorageAccountName"
-
-Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 7
+Update-AzStorageFileServiceProperty `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -EnableShareDeleteRetentionPolicy $true `
+    -ShareRetentionDays 7
 ```
 
 Mit dem folgenden Befehl können Sie überprüfen, ob vorläufiges Löschen aktiviert ist, und die zugehörige Aufbewahrungsrichtlinie anzeigen:
 
-```azurepowershell-interactive
-Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName
+```PowerShell
+Get-AzStorageFileServiceProperty `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert. Denken Sie daran, `<resource-group>` und `<storage-account>` durch die entsprechenden Werte für Ihre Umgebung zu ersetzen.
+
+```bash
+resourceGroupName="<resource-group>"
+storageAccountName="<storage-account>"
+
+az storage account file-service-properties update \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --enable-delete-retention true \
+    --delete-retention-days 7
+```
+
+Mit dem folgenden Befehl können Sie überprüfen, ob vorläufiges Löschen aktiviert ist, und die zugehörige Aufbewahrungsrichtlinie anzeigen:
+
+```bash
+az storage account file-service-properties show \
+    -resource-group $resourceGroupName \
+    -account-name $storageAccountName
 ```
 ---
 
 ## <a name="restore-soft-deleted-file-share"></a>Wiederherstellen einer vorläufig gelöschten Dateifreigabe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-
 So stellen Sie eine vorläufig gelöschte Dateifreigabe wieder her:
 
 1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie **Dateifreigaben** aus.
@@ -96,37 +107,44 @@ So stellen Sie eine vorläufig gelöschte Dateifreigabe wieder her:
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Ist die Statusspalte (die Spalte neben der Namensspalte) auf „Aktiv“ festgelegt, wurde Ihre Dateifreigabe wiederhergestellt.":::
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Zum Wiederherstellen einer vorläufig gelöschten Dateifreigabe müssen Sie zuerst den Wert für `-DeletedShareVersion` der Freigabe abrufen. Dazu verwenden Sie den folgenden Befehl, mit dem alle gelöschten Freigaben für Ihr Speicherkonto aufgelistet werden:
 
-Cmdlets für vorläufiges Löschen sind in der Version 2.1.3 der Azure CLI verfügbar. Zum Wiederherstellen einer vorläufig gelöschten Dateifreigabe müssen Sie zuerst den Wert für `--deleted-version` der Freigabe abrufen. Dazu verwenden Sie den folgenden Befehl, mit dem alle gelöschten Freigaben für Ihr Speicherkonto aufgelistet werden:
-
-```azurecli
-az storage share-rm list --storage-account yourStorageaccount --include-deleted
+```PowerShell
+Get-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -IncludeDeleted
 ```
 
 Nachdem Sie die Freigabe ermittelt haben, die Sie wiederherstellen möchten, können Sie sie mit dem folgenden Befehl wiederherstellen:
 
-```azurecli
+```PowerShell
+Restore-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -DeletedShareVersion 01D5E2783BDCDA97 # replace with your deleted version number
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Zum Wiederherstellen einer vorläufig gelöschten Dateifreigabe müssen Sie zuerst den Wert für `--deleted-version` der Freigabe abrufen. Dazu verwenden Sie den folgenden Befehl, mit dem alle gelöschten Freigaben für Ihr Speicherkonto aufgelistet werden:
+
+```bash
+az storage share-rm list \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --include-deleted
+```
+
+Nachdem Sie die Freigabe ermittelt haben, die Sie wiederherstellen möchten, können Sie sie mit dem folgenden Befehl wiederherstellen:
+
+```bash
 az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -g yourResourceGroup --storage-account yourStorageaccount
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-Cmdlets für vorläufiges Löschen sind ab Version 4.8.0 des Az.Storage-Moduls verfügbar. Zum Wiederherstellen einer vorläufig gelöschten Dateifreigabe müssen Sie zuerst den Wert für `-DeletedShareVersion` der Freigabe abrufen. Dazu verwenden Sie den folgenden Befehl, mit dem alle gelöschten Freigaben für Ihr Speicherkonto aufgelistet werden:
-
-```azurepowershell-interactive
-Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -IncludeDeleted
-```
-
-Nachdem Sie die Freigabe ermittelt haben, die Sie wiederherstellen möchten, können Sie sie mit dem folgenden Befehl wiederherstellen:
-
-```azurepowershell-interactive
-Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
-```
 ---
 
 ## <a name="disable-soft-delete"></a>Deaktivieren des vorläufigen Löschens
-
 Wenn Sie das vorläufige Löschen nicht mehr verwenden möchten, gehen Sie wie folgt vor: Wenn Sie eine Dateifreigabe dauerhaft löschen möchten, die vorläufig gelöscht wurde, müssen Sie sie wiederherstellen, das vorläufige Löschen deaktivieren und dann erneut löschen. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -138,22 +156,27 @@ Wenn Sie das vorläufige Löschen nicht mehr verwenden möchten, gehen Sie wie f
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/files-disable-soft-delete.png" alt-text="Wenn Sie das vorläufige Löschen deaktivieren, können Sie nach Belieben alle Dateifreigaben in Ihrem Speicherkonto sofort und endgültig löschen.":::
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Cmdlets für vorläufiges Löschen sind in der Version 2.1.3 der Azure CLI verfügbar. Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
-
-```azurecli
-az storage account file-service-properties update --enable-delete-retention false -n yourStorageaccount -g yourResourceGroup
-```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
 
-Cmdlets für vorläufiges Löschen sind ab Version 4.8.0 des Az.Storage-Moduls verfügbar. Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
-
-```azurepowershell-interactive
-Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
+```PowerShell
+Update-AzStorageFileServiceProperty `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -EnableShareDeleteRetentionPolicy $false
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Das vorläufige Löschen für Ihr Speicherkonto kann mithilfe des folgenden Befehls deaktiviert werden:
+
+```bash
+az storage account file-service-properties update \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --enable-delete-retention false
+```
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Informationen zu einer anderen Form von Datenschutz und -wiederherstellung finden Sie in unserem Artikel [Übersicht über Freigabemomentaufnahmen für Azure Files](storage-snapshots-files.md).

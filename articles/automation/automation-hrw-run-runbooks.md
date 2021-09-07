@@ -3,21 +3,25 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel wird beschrieben, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei anderen Cloudanbietern mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 05/24/2021
+ms.date: 07/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3f7afde2d681c2516d6915e4edd5c291795224d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481533"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345942"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
 
 Von Runbooks, die in einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ausgeführt werden, werden in der Regel Ressourcen auf dem lokalen Computer oder in der lokalen Umgebung verwaltet, in der der Worker bereitgestellt ist. Runbooks in Azure Automation verwalten üblicherweise Ressourcen in der Azure-Cloud. Auch wenn sie unterschiedlich verwendet werden, sind Runbooks, die in Azure Automation ausgeführt werden, und Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, von der Struktur her identisch.
 
 Wenn Sie ein Runbook zur Ausführung auf einem Hybrid Runbook Worker erstellen, sollten Sie es auf dem Computer testen, der den Worker hostet. Auf dem Hostcomputer stehen alle PowerShell-Module sowie der Netzwerkzugriff zur Verfügung, die bzw. den Sie für die Verwaltung der lokalen Ressourcen benötigen. Sobald Sie das Runbook auf dem Hybrid Runbook Worker-Computer getestet haben, können Sie es in die Azure Automation-Umgebung hochladen, wo es auf dem Worker ausgeführt werden kann.
+
+## <a name="plan-for-azure-services-protected-by-firewall"></a>Planen von Azure-Diensten mit Firewallschutz
+
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht in der Liste der vertrauenswürdigen Dienste enthalten ist. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 ## <a name="plan-runbook-job-behavior"></a>Planen des Verhaltens von Runbookaufträgen
 

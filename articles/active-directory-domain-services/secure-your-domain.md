@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/21/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: fe8f41c2ecf92034f81f2332aabee5a55df66a92
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613252"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439252"
 ---
 # <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Härten einer über Azure Active Directory Domain Services verwalteten Domäne
 
@@ -50,6 +50,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 1. Klicken Sie bei den folgenden Einstellungen auf **Aktivieren** oder **Deaktivieren**:
    - **Reiner TLS 1.2-Modus**
    - **NTLM-Authentifizierung**
+   - **Kennwortsynchronisierung aus lokaler Umgebung**
    - **NTLM-Kennwortsynchronisierung aus lokaler Umgebung**
    - **RC4-Verschlüsselung**
    - **Kerberos-Schutz**
@@ -64,6 +65,10 @@ Zusätzlich zu den **Sicherheitseinstellungen** verfügt Microsoft Azure Policy 
 - Wenn die Zuweisung **Verweigern** lautet, verhindert die Compliance, dass eine Azure AD DS-Instanz erstellt wird, wenn TLS 1.2 nicht erforderlich ist, und verhindert jegliche Aktualisierung einer Azure AD DS-Instanz, bis TLS 1.2 erforderlich ist.
 
 ![Screenshot der Compliance-Einstellungen](media/secure-your-domain/policy-tls.png)
+
+## <a name="audit-ntlm-failures"></a>Überwachen von NTLM-Fehlern
+
+Das Deaktivieren der NTLM-Kennwortsynchronisierung verbessert zwar die Sicherheit, aber viele Anwendungen und Dienste sind nicht für die Arbeit ohne sie konzipiert. Beispielsweise kann beim Herstellen einer Verbindung mit einer beliebigen Ressource über ihre IP-Adresse (z. B. DNS-Serververwaltung oder RDP) der Zugriff verweigert werden. Wenn Sie die NTLM-Kennwortsynchronisierung deaktivieren und Ihre Anwendung oder Ihr Dienst nicht wie erwartet funktioniert, können Sie eine Überprüfung auf NTLM-Authentifizierungsfehler durchführen. Aktivieren Sie zu diesem Zweck die Sicherheitsüberwachung für die Ereigniskategorie **Anmelden/Abmelden** > **Anmeldung überwachen**, wobei NTLM als **Authentifizierungspaket** in den Ereignisdetails angegeben ist. Weitere Informationen finden Sie unter [Aktivieren von Sicherheitsüberwachungen in Azure Active Directory Domain Services](security-audit-events.md).
 
 ## <a name="use-powershell-to-harden-your-domain"></a>Verwenden von PowerShell zum Härten Ihrer Domäne
 

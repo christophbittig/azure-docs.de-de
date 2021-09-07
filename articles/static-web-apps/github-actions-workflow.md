@@ -5,86 +5,39 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 06/23/2021
 ms.author: cshoe
-ms.openlocfilehash: f47ad3d63ca99ffbe095498d2db7646e8a4a3ae7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 9dc0c8a83279e3a70bceebb316536485e337c873
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072476"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346154"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps"></a>GitHub Actions-Workflows für Azure Static Web Apps
 
-Wenn Sie eine neue Azure Static Web Apps-Ressource erstellen, generiert Azure einen GitHub Actions-Workflow, um die Continuous Deployment-Vorgänge für die App zu steuern. Der Workflow basiert auf einer YAML-Datei. In diesem Artikel werden die Struktur und die Optionen der Workflowdatei ausführlich erläutert.
+Wenn Sie eine GitHub-Bereitstellung verwenden, steuert eine YAML-Datei den Erstellungsworkflow für Ihre Site. In diesem Artikel werden Struktur und Optionen der Datei erläutert.
 
-Bereitstellungen werden durch [Trigger](#triggers) initiiert, von denen [Aufträge](#jobs) ausgeführt werden, die durch einzelne [Schritte](#steps) definiert sind.
+Eine Bereitstellung wird über einen [Trigger](#triggers) gestartet, der [Aufträge](#jobs) ausführt, die aus einzelnen [Schritten](#steps) bestehen.
 
 > [!NOTE]
-> Azure Static Web Apps unterstützt auch Azure DevOps. Informationen zum Einrichten einer Pipeline finden Sie unter [Tutorial: Veröffentlichen von Azure Static Web Apps mit Azure DevOps](publish-devops.md).
+> Azure Static Web Apps unterstützt auch Azure DevOps-Workflows. Informationen zum Einrichten einer Pipeline finden Sie unter [Tutorial: Veröffentlichen von Azure Static Web Apps mit Azure DevOps](publish-devops.md).
 
-## <a name="file-location"></a>Dateispeicherort
+## <a name="file-name-and-location"></a>Dateiname und Speicherort
 
-Wenn Sie Ihr GitHub-Repository mit Azure Static Web Apps verknüpfen, wird dem Repository eine Workflowdatei hinzugefügt.
+Wenn Sie Ihr Repository verknüpfen, generiert Azure Static Web Apps eine Datei, die den Workflow steuert.
 
-Führen Sie diese Schritte aus, um die generierte Workflowdatei anzuzeigen.
+Führen Sie diese Schritte aus, um die Workflowdatei anzuzeigen.
 
 1. Öffnen Sie das Repository der App auf GitHub.
-1. Klicken Sie auf der Registerkarte _Code_ auf den Ordner `.github/workflows`.
-1. Klicken Sie auf die Datei mit einem Namen wie `azure-static-web-apps-<RANDOM_NAME>.yml`.
-
-Die YAML-Datei in Ihrem Repository ähnelt dem folgenden Beispiel:
-
-```yml
-name: Azure Static Web Apps CI/CD
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
-
-jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    name: Build and Deploy Job
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - name: Build And Deploy
-        id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-          action: 'upload'
-          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-          app_location: '/' # App source code path
-          api_location: 'api' # Api source code path - optional
-          output_location: 'dist' # Built app content directory - optional
-          ###### End of Repository/Build Configurations ######
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-          action: 'close'
-```
+1. Wählen Sie die Registerkarte **Code** aus.
+1. Wählen Sie den Ordner **.github/workflows** aus.
+1. Wählen Sie die Datei aus, die einen ähnlichen Namen wie **azure-static-web-apps-<ZUFÄLLIGER_NAME>.yml** aufweist.
 
 ## <a name="triggers"></a>Trigger
 
-Ein GitHub Actions-[Trigger](https://help.github.com/actions/reference/events-that-trigger-workflows) benachrichtigt einen GitHub Actions-Workflow darüber, dass basierend auf Ereignisauslösern ein Auftrag ausgeführt werden soll. Trigger werden mit der Eigenschaft `on` in der Workflowdatei aufgelistet.
+Ein GitHub Actions-[Trigger](https://help.github.com/actions/reference/events-that-trigger-workflows) benachrichtigt einen GitHub Actions-Workflow darüber, dass basierend auf bestimmten Ereignissen ein Auftrag ausgeführt werden soll. Trigger werden mit der Eigenschaft `on` in der Workflowdatei aufgelistet.
 
 ```yml
 on:
@@ -97,37 +50,41 @@ on:
       - main
 ```
 
-Mit Einstellungen, die der Eigenschaft `on` zugeordnet sind, können Sie definieren, welche Branches einen Auftrag auslösen. Darüber hinaus können Sie Trigger festlegen, die für unterschiedliche Pull Request-Zustände ausgelöst werden.
+In diesem Beispiel beginnt ein Workflow, wenn für den *main*-Branch einer der folgenden Pull Request-Typen ausgeführt wird:
 
-In diesem Beispiel wird ein Workflow gestartet, wenn sich der Branch _main_ ändert. Zu den Änderungen, die zum Starten des Workflows führen, gehören das Pushen von Commits und das Öffnen von Pull Requests für den ausgewählten Branch.
+- der
+- Synchronisieren
+- Erneut öffnen
+- closed
+
+Sie können diesen Teil des Workflows anpassen, um andere Branches oder Ereignisse zu verwenden.
 
 ## <a name="jobs"></a>Aufträge
 
-Für jeden Ereignisauslöser wird ein Ereignishandler benötigt. Mit [Aufträgen](https://help.github.com/actions/reference/workflow-syntax-for-github-actions#jobs) wird definiert, was passiert, wenn ein Ereignis ausgelöst wird.
+Jeder Trigger definiert eine Reihe von [Aufträgen](https://help.github.com/actions/reference/workflow-syntax-for-github-actions#jobs), die als Reaktion auf das Ereignis ausgeführt werden sollen.
 
-In der Workflowdatei für Static Web Apps sind zwei verfügbare Aufträge enthalten.
-
-| Name                     | BESCHREIBUNG                                                                                                    |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `build_and_deploy_job`   | Wird ausgeführt, wenn Sie Commits pushen oder einen Pull Request für den Branch öffnen, der in der Eigenschaft `on` aufgelistet ist.          |
-| `close_pull_request_job` | Dieser Auftrag wird NUR ausgeführt, wenn Sie einen Pull Request schließen, der die aus den Pull Requests erstellte Stagingumgebung entfernt. |
+| Name | BESCHREIBUNG |
+| --- | --- |
+| `build_and_deploy_job` | Wird ausgeführt, wenn Sie Commits pushen oder einen Pull Request für den Branch öffnen, der in der Eigenschaft `on` aufgelistet ist.          |
+| `close_pull_request_job` | Wird NUR DANN ausgeführt, wenn Sie einen Pull Request schließen, der die aus den Pull Requests erstellte Stagingumgebung entfernt. |
 
 ## <a name="steps"></a>Schritte
 
 Schritte sind sequenzielle Aufgaben für einen Auftrag. In einem Schritt werden Aktionen durchgeführt, z. B. das Installieren von Abhängigkeiten, Ausführen von Tests und Bereitstellen Ihrer Anwendung in der Produktion.
 
-Mit einer Workflowdatei werden die folgenden Schritte definiert.
-
-| Auftrag                      | Schritte                                                                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `build_and_deploy_job`   | <ol><li>Führt das Auschecken des Repositorys in der Umgebung der Aktion durch.<li>Erstellt das Repository für Azure Static Web Apps und führt die Bereitstellung dafür durch.</ol> |
-| `close_pull_request_job` | <ol><li>Benachrichtigt Azure Static Web Apps darüber, dass ein Pull Request geschlossen wurde.</ol>                                                        |
+| Auftrag | Schritte |
+| --- | --- |
+| `build_and_deploy_job` | <li>Führt zum Auschecken des Repositorys in der GitHub Actions-Umgebung.<li>Erstellt das Repository für Azure Static Web Apps und führt die Bereitstellung dafür durch. |
+| `close_pull_request_job` | <li>Benachrichtigt Azure Static Web Apps darüber, dass ein Pull Request geschlossen wurde. |
 
 ## <a name="build-and-deploy"></a>Erstellen und Bereitstellen
 
-Im Schritt mit dem Namen `Build and Deploy` wird Ihre Azure Static Web Apps-Instanz erstellt und die Bereitstellung dafür durchgeführt. Im Abschnitt `with` können Sie die folgenden Werte für Ihre Bereitstellung anpassen.
+Im Schritt mit dem Namen `build_and_deploy_job` wird Ihre Site erstellt und in Azure Static Web Apps bereitgestellt. Im Abschnitt `with` können Sie die folgenden Werte für Ihre Bereitstellung anpassen.
+
+Das folgende Beispiel zeigt, wie diese Werte in einer Workflowdatei dargestellt werden.
 
 ```yml
+...
 with:
   azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
   repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
@@ -141,24 +98,42 @@ with:
 
 [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
-Die Werte `repo_token`, `action` und `azure_static_web_apps_api_token` werden für Sie von Azure Static Web Apps festgelegt und sollten nicht manuell geändert werden.
+Ändern Sie die Werte für `repo_token`, `action` und `azure_static_web_apps_api_token` nicht, da sie von Azure Static Web Apps für Sie festgelegt werden.
 
 ## <a name="custom-build-commands"></a>Benutzerdefinierte Buildbefehle
 
-Sie können präzise steuern, welche Befehle während einer Bereitstellung ausgeführt werden. Die folgenden Befehle können im Abschnitt `with` eines Auftrags definiert werden.
+Sie können genau steuern, welche Befehle während des App- oder API-Erstellungsprozesses ausgeführt werden. Die folgenden Befehle werden unter dem Abschnitt `with` eines Auftrags angezeigt.
 
-Für die Bereitstellung wird vor einem benutzerdefinierten Befehl immer `npm install` aufgerufen.
+| Befehl | BESCHREIBUNG |
+| --- |--- |
+| `app_build_command` | Definiert einen benutzerdefinierten Befehl zum Erstellen der Anwendung mit statischem Inhalt.<br><br>Wenn Sie beispielsweise einen Produktionsbuild für eine Angular-Anwendung konfigurieren möchten, erstellen Sie ein npm-Skript mit dem Namen `build-prod`, um `ng build --prod` auszuführen, und geben Sie `npm run build-prod` als benutzerdefinierten Befehl ein. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:azure` auszuführen. |
+| `api_build_command` | Definiert einen benutzerdefinierten Befehl zum Erstellen der Azure Functions-API-Anwendung. |
 
-| Befehl             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Wenn Sie beispielsweise einen Produktionsbuild für eine Angular-Anwendung konfigurieren möchten, erstellen Sie ein npm-Skript mit dem Namen `build-prod`, um `ng build --prod` auszuführen, und geben Sie `npm run build-prod` als benutzerdefinierten Befehl ein. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:azure` auszuführen. |
-| `api_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Azure Functions-API-Anwendung ausgeführt werden soll.                                                                                                                                                                                                                                                                                                  |
+Das folgende Beispiel zeigt, wie benutzerdefinierte Buildbefehle im Abschnitt `with` eines Auftrags definiert werden.
 
-## <a name="skip-app-build"></a>Überspringen der App-Erstellung
+```yml
+...
+with:
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: '/' # App source code path
+  api_location: 'api' # Api source code path - optional
+  output_location: 'dist' # Built app content directory - optional
+  app_build_command: 'npm run build-ui-prod'
+  api_build_command: 'npm run build-api-prod'
+  ###### End of Repository/Build Configurations ######
+```
 
-Wenn Sie vollständige Kontrolle darüber benötigen, wie Ihre Front-End-Anwendung erstellt wird, können Sie ihrem Workflow benutzerdefinierte Buildschritte hinzufügen. Anschließend können Sie die Static Web Apps-Aktion so konfigurieren, dass sie den automatischen Buildprozess umgeht und einfach die App bereitstellt, die in einem vorherigen Schritt erstellt wurde.
+> [!NOTE]
+> Derzeit können Sie nur benutzerdefinierte Buildbefehle für Node.js-Builds definieren. Der Erstellungsprozess ruft immer zuerst `npm install` auf, bevor ein benutzerdefinierter Befehl aufgerufen wird.
 
-Um das Erstellen der App zu überspringen, legen Sie `skip_app_build` auf `true` und `app_location` auf den Speicherort des bereitzustellenden Ordners fest.
+## <a name="skip-building-front-end-app"></a>Überspringen des Erstellens einer Front-End-App
+
+Wenn Sie die vollständige Kontrolle über die Erstellung Ihrer Front-End-App benötigen, können Sie dem Workflow benutzerdefinierte Schritte hinzufügen. Beispielsweise können Sie die automatische Erstellung umgehen und die in einem vorherigen Schritt erstellte App bereitstellen.
+
+Um das Erstellen der Front-End-App zu überspringen, legen Sie `skip_app_build` auf `true` und `app_location` auf den Speicherort des bereitzustellenden Ordners fest.
 
 ```yml
 with:
@@ -173,12 +148,12 @@ with:
   ###### End of Repository/Build Configurations ######
 ```
 
-| Eigenschaft         | Beschreibung                                                 |
+| Eigenschaft         | BESCHREIBUNG                                                 |
 | ---------------- | ----------------------------------------------------------- |
 | `skip_app_build` | Legen Sie den Wert auf `true` fest, um das Erstellen der Front-End-App zu überspringen. |
 
 > [!NOTE]
-> Sie können das Erstellen nur für die Front-End-App überspringen. Wenn Ihre App über eine API verfügt, wird sie weiterhin von der GitHub-Aktion von Static Web Apps erstellt.
+> Sie können das Erstellen nur für die Front-End-App überspringen. Die API wird immer erstellt, wenn sie vorhanden ist.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
@@ -212,7 +187,9 @@ jobs:
 
 ## <a name="monorepo-support"></a>Unterstützung für Monorepos
 
-Ein Monorepo ist ein Repository, das Code für mehr als eine Anwendung enthält. Eine Static Web Apps-Workflowdatei verfolgt standardmäßig alle Dateien in einem Repository nach, aber Sie können sie auch so anpassen, dass sie eine einzelne App als Ziel hat. Daher verfügt jede statische App für Monorepos über eine eigene Konfigurationsdatei, die sich ebenfalls im Ordner _.github/workflows_ des Repositorys befindet.
+Ein Monorepo ist ein Repository, das Code für mehr als eine Anwendung enthält. Der Workflow verfolgt standardmäßig alle Dateien in einem Repository nach, aber Sie können die Konfiguration so anpassen, dass eine einzelne App als Ziel verwendet wird.
+
+Wenn Sie ein Einzelrepository einrichten, verfügt jede statische App über eine eigene Konfigurationsdatei, die nur für die Dateien in einer einzelnen App gilt. Die verschiedenen Workflowdateien befinden sich gemeinsam im Ordner _.github/workflows_ des Repositorys.
 
 ```files
 ├── .github

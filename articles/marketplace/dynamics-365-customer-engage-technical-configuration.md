@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/29/2021
-ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/29/2021
+ms.openlocfilehash: 6d58fbdd2f6b4b89d2584b9f82e0f0fd0417ad35
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971414"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085108"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>Einrichten der technischen Konfiguration eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -43,9 +43,9 @@ Ausführliche Informationen zum Erstellen des Pakets und zum Aktualisieren seine
 
 ## <a name="crm-package-availability"></a>Verfügbarkeit von CRM-Paketen
 
-Wählen Sie **+ Region hinzufügen** aus, um die geografischen Regionen anzugeben, in denen Ihr CRM-Paket für Kunden verfügbar sein wird. Die Bereitstellung in den folgenden unabhängigen Regionen erfordert eine spezielle Berechtigung und Überprüfung während des Zertifizierungsprozesses: [Deutschland](../germany/index.yml), [Cloud for US Government](../azure-government/documentation-government-welcome.md) und TIP.
+Wählen Sie **+ Region hinzufügen** aus, um die geografischen Regionen anzugeben, in denen Ihr CRM-Paket für Kunden verfügbar sein wird. Wählen Sie keine der folgenden unabhängigen Regionen (Sovereign Regions) aus: US Gov Cloud (Sovereign), China Cloud (Sovereign), Deutschland (Sovereign), US Gov High Cloud (Sovereign), Test in Production (Sovereign) oder US DoD Cloud (Sovereign).
 
-Standardmäßig wird die zuvor eingegebene **Anwendungskonfigurations-URL** für jede Region verwendet. Wenn Sie möchten, können Sie eine separate Anwendungskonfigurations-URL für eine oder mehrere bestimmte Regionen eingeben.
+Standardmäßig wird die zuvor eingegebene **Anwendungskonfigurations-URL** für jede Region verwendet. Lassen Sie das Feld „Anwendungskonfigurations-URL“ leer.
 
 Wählen Sie **Entwurf speichern**, und fahren Sie dann mit der nächsten Registerkarte im linken Navigationsmenü fort, **Co-Sell mit Microsoft**. Informationen zum Einrichten von Co-Selling mit Microsoft (optional) finden Sie unter [Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht](./co-sell-overview.md). Wenn Sie kein Co-Sell einrichten oder fertig sind, fahren Sie mit **Weitere Schritte** unten fort.
 

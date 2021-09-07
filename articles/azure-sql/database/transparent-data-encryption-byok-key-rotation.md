@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: 9c43cb7bb60b758230664571fd7d7e592009fff2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 06/23/2021
+ms.openlocfilehash: c14d209f5f4b846b51a99ac875e2304129b4e765
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667159"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090275"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Durchführen einer Rotation in der Transparent Data Encryption-Schutzvorrichtung (TDE)
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,6 +32,9 @@ Dieser Leitfaden erläutert zwei Optionen zum Rotieren der TDE-Schutzvorrichtung
 
 > [!IMPORTANT]
 > Löschen Sie keine vorherigen Versionen des Schlüssels nach einem Rollover. Bei einem Rollover von Schlüsseln sind einige Daten noch immer mit den vorherigen Schlüsseln verschlüsselt, z.B. ältere Datenbanksicherungen.
+
+> [!NOTE]
+> Dieser Artikel gilt für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (dedizierte SQL-Pools (vormals SQL DW)). Die Dokumentation zu Transparent Data Encryption für dedizierte SQL-Pools in Synapse-Arbeitsbereichen finden Sie unter [Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche](../../synapse-analytics/security/workspaces-encryption.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

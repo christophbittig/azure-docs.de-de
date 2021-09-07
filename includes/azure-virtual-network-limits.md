@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: d31e52763ed69303ee6ea9bf44fd85403c810179
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 8ae8608592ee540e227e0b23ef708b605647a667
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993729"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594316"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -76,8 +76,8 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln pro NIC (für alle IPs einer NIC) | 300                           |
 | Front-End-IP-Konfigurationen              | 600                           |
 | Größe des Back-End-Pools                       | 1\.000 IP-Konfigurationen, einzelnes virtuelles Netzwerk |
-| Back-End-Ressourcen pro Lastenausgleich <sup>1<sup> | 1\.200                   |
-| Hochverfügbarkeitsports                 | 1 pro internem Front-End       |
+| Back-End-Ressourcen pro Lastenausgleich <sup>1<sup> | 1\.200                 |
+| Regel für Hochverfügbarkeitsports            | 1 pro internem Front-End       |
 | Ausgangsregeln pro Lastenausgleichsmodul        | 600                           |
 | Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)   |
 

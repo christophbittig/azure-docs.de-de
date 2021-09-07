@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3f4dc33347a7e4397a2cd53ecc56d87ed155378
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100167"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093515"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>Hinzufügen einer Blasenebene zu einer Karte (Android SDK)
 
@@ -169,7 +169,7 @@ map.layers.add(
 
 ::: zone-end
 
-Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code ein Punkt in einer Blasenebene und eine Beschriftung für den Punkt in einer Symbolebene gerendert werden.
+Der folgende Screenshot veranschaulicht, wie durch den obigen Code ein Punkt in einer Blasenebene und eine Beschriftung für den Punkt in einer Symbolebene gerendert werden.
 
 ![Karte mit Punkt, der unter Verwendung einer Blasenebene gerendert wurde, und einer Beschriftung, die unter Verwendung einer Symbolebene gerendert wurde](media/map-add-bubble-layer-android/android-bubble-symbol-layer.png)
 
@@ -179,6 +179,9 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Datenquelle](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Clusterpunktdaten](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Symbolebene](how-to-add-symbol-to-android-map.md)

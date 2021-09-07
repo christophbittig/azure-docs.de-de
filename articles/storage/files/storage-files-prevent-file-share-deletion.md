@@ -8,19 +8,24 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 023320d29eac767e62e07c58de4f8fa6ac61b61f
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937293"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117840"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben
+Azure Files bietet jetzt vorläufiges Löschen für Dateifreigaben. Dadurch können Sie Ihre Dateifreigabe leichter wiederherstellen, wenn diese irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht wurden.
 
-Azure Storage bietet jetzt für Dateifreigaben vorläufiges Löschen. Dadurch können Sie Ihre Dateifreigabe leichter wiederherstellen, wenn diese irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht wurden.
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="how-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens
-
 Wenn vorläufiges Löschen für Azure-Dateifreigaben aktiviert ist und eine Dateifreigabe gelöscht wird, wechselt sie in einen vorläufig gelöschten Zustand, anstatt dauerhaft gelöscht zu werden. Sie können den Zeitraum konfigurieren, in dem vorläufig gelöschte Daten wiederhergestellt werden können, ehe sie dauerhaft gelöscht werden, und die Löschung der Freigabe während dieses Aufbewahrungszeitraums jederzeit rückgängig machen. Nachdem das Löschen rückgängig gemacht wurde, werden die Freigabe und ihr gesamter Inhalt, einschließlich der Momentaufnahmen, in dem Zustand wieder hergestellt, in dem sie sich vor dem Löschen befunden hatten. Vorläufiges Löschen funktioniert nur auf Ebene der Dateifreigabe – einzelne Dateien, die gelöscht werden, werden weiterhin endgültig gelöscht.
 
 Vorläufiges Löschen kann entweder für neue oder vorhandene Dateifreigaben aktiviert werden. Da vorläufiges Löschen auch abwärtskompatibel ist, müssen Sie keine Änderungen an Ihren Anwendungen vornehmen, um in den Genuss der Schutzvorteile dieses Features zu kommen. 

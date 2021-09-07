@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: sgilley
-ms.author: copeters
-author: lostmygithubaccount
+ms.author: wibuchan
+author: buchananwp
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: e73b14e24fffacde11e355ae5a4caf0cb76f07ba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5d4c3974bdd1ef90556d19e3ca49cc613d36923d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884874"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355063"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 
@@ -41,7 +41,7 @@ Datendriftmetriken können mit dem Python SDK oder in Azure Machine Learning St
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Datasetmonitore zu erstellen und zu nutzen, benötigen Sie Folgendes:
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 * Eine [Installation des Azure Machine Learning-SDK für Python](/python/api/overview/azure/ml/install), in dem das Paket „azureml-datasets“ enthalten ist.
 * Strukturierte (tabellarische) Daten mit einem Zeitstempel im Dateipfad, im Dateinamen oder in einer Spalte in den Daten.
@@ -102,7 +102,7 @@ Der Monitor vergleicht die Baseline- und Zieldatasets.
 
 ## <a name="create-target-dataset"></a>Erstellen des Zieldatasets
 
-Für das Zieldataset muss das Merkmal `timeseries`festgelegt sein. Hierzu muss die Zeitstempelspalte angegeben werden – entweder auf der Grundlage einer Spalte in den Daten oder auf der Grundlage einer aus dem Pfadmuster der Dateien abgeleiteten virtuellen Spalte. Erstellen Sie das Dataset mit einem Zeitstempel per [Python SDK](#sdk-dataset) oder in [Azure Machine Learning Studio](#studio-dataset). Eine Spalte, die einen Zeitstempel darstellt, muss angegeben werden, um dem Dataset das Merkmal `timeseries` hinzuzufügen. Wenn Ihre Daten in einer Ordnerstruktur mit Zeitinformationen partitioniert sind (beispielsweise „{JJJJ/MM/TT}“), können Sie über die Einstellung für das Pfadmuster eine virtuelle Spalte erstellen und als Partitionszeitstempel festlegen, um die Bedeutung der Zeitreihenfunktion zu erhöhen.
+Für das Zieldataset muss das Merkmal `timeseries`festgelegt sein. Hierzu muss die Zeitstempelspalte angegeben werden – entweder auf der Grundlage einer Spalte in den Daten oder auf der Grundlage einer aus dem Pfadmuster der Dateien abgeleiteten virtuellen Spalte. Erstellen Sie das Dataset mit einem Zeitstempel per [Python SDK](#sdk-dataset) oder in [Azure Machine Learning Studio](#studio-dataset). Eine Spalte, die einen Zeitstempel darstellt, muss angegeben werden, um dem Dataset das Merkmal `timeseries` hinzuzufügen. Wenn Ihre Daten in einer Ordnerstruktur mit Zeitinformationen partitioniert sind (beispielsweise {yyyy/MM/dd}), können Sie über die Einstellung für das Pfadmuster eine virtuelle Spalte erstellen und als Partitionszeitstempel festlegen, um die API-Funktion für Zeitreihen zu aktivieren.
 
 # <a name="python"></a>[Python](#tab/python)
 <a name="sdk-dataset"></a>
@@ -147,11 +147,11 @@ Im folgenden Beispiel werden alle Daten im Unterordner *NoaaIsdFlorida/2019* ein
 
 [![Partitionsformat](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-Geben Sie in den Einstellungen für das **Schema** die Zeitstempelspalte anhand einer virtuellen oder realen Spalte im angegebenen Dataset an:
+Geben Sie in den Einstellungen für das **Schema** die Spalte **Zeitstempel** anhand einer virtuellen oder realen Spalte im angegebenen Dataset an. Dieser Typ gibt an, dass Ihre Daten über eine Zeitkomponente verfügen. 
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="Festlegen des Zeitstempels":::
 
-Wenn Ihre Daten wie hier nach Datum partitioniert sind, können Sie auch den Zeitstempel der Partition angeben.  Dies ermöglicht eine effizientere Datumsverarbeitung.
+Wenn Ihre Daten wie hier bereits nach Datum oder Zeit partitioniert sind, können Sie auch den **Zeitstempel der Partition** angeben. Dies ermöglicht eine effizientere Verarbeitung von Datumsangaben und aktiviert Zeitreihen-APIs, die Sie während des Trainings nutzen können.
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Zeitstempel der Partition":::
 
@@ -175,7 +175,7 @@ from datetime import datetime
 ws = Workspace.from_config()
 
 # get the target dataset
-dset = Dataset.get_by_name(ws, 'target')
+target = Dataset.get_by_name(ws, 'target')
 
 # set the baseline dataset
 baseline = target.time_before(datetime(2019, 2, 1))

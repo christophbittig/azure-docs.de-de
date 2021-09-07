@@ -4,17 +4,17 @@ description: Beschreibt, wie eine Ressource in Bicep bedingt bereitgestellt werd
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 9636444af81b000443dc72cf6e3fc1d8d6da5093
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/30/2021
+ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354829"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bedingte Bereitstellung in Bicep
 
-Manchmal müssen Sie eine Ressource optional in Bicep bereitstellen. Verwenden Sie das `if`-Schlüsselwort, um anzugeben, ob die Ressource bereitgestellt wird. Der Wert für die Bedingung wird in „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource angewandt werden.
+Manchmal muss eine Ressource oder ein Modul optional in Bicep bereitgestellt werden. Verwenden Sie das Schlüsselwort `if`, um anzugeben, ob die Ressource oder das Modul bereitgestellt wird. Der Wert für die Bedingung wird in „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource bzw. auf das gesamte Modul angewendet werden.
 
 > [!NOTE]
 > Die bedingte Bereitstellung wird nicht an [untergeordnete Ressourcen](child-resource-name-type.md) weitergegeben. Wenn Sie eine Ressource und ihre untergeordneten Ressourcen bedingt bereitstellen möchten, müssen Sie dieselbe Bedingung auf jeden Ressourcentyp anwenden.
@@ -32,7 +32,17 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 }
 ```
 
-Bedingungen können mit Abhängigkeitsdeklarationen verwendet werden. Wenn der Bezeichner der bedingten Ressource in `dependsOn` einer anderen Ressource angegeben ist (explizite Abhängigkeit), wird die Abhängigkeit ignoriert, wenn die Bedingung zum Zeitpunkt der Vorlagenbereitstellung als „False“ ausgewertet wird. Wenn die Bedingung als „True“ ausgewertet wird, wird die Abhängigkeit berücksichtigt. Der Verweis auf eine Eigenschaft einer bedingten Ressource (implizite Abhängigkeit) ist zulässig, kann jedoch in einigen Fällen zu einem Laufzeitfehler führen.
+Im nächsten Beispiel wird ein Modul bedingt bereitgestellt.
+
+```bicep
+param deployZone bool
+
+module dnsZone 'dnszones.bicep' = if (deployZone) {
+  name: 'myZoneModule'
+}
+```
+
+Bedingungen können mit Abhängigkeitsdeklarationen verwendet werden. Bei [expliziten Abhängigkeiten](resource-declaration.md#set-resource-dependencies) entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten, wenn die Ressource nicht bereitgestellt wird. Bei impliziten Abhängigkeiten kann zwar auf eine Eigenschaft einer bedingten Ressource verwiesen werden, dies kann allerdings einen Bereitstellungsfehler zur Folge haben.
 
 ## <a name="new-or-existing-resource"></a>Neue oder vorhandene Ressource
 
@@ -64,8 +74,6 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 Wenn der Parameter `newOrExisting` auf **new** festgelegt ist, wird die Bedingung zu „true“ ausgewertet. Das Speicherkonto wird bereitgestellt. Ist `newOrExisting` dagegen auf **existing** festgelegt, wird die Bedingung zu „false“ ausgewertet, und das Speicherkonto wird nicht bereitgestellt.
 
-Eine vollständige Beispielvorlage, die das `condition`-Element verwendet, finden Sie unter [VM mit einem neuen oder vorhandenen virtuellen Netzwerk, Speicher und einer neuen oder vorhandenen öffentlichen IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions).
-
 ## <a name="runtime-functions"></a>Laufzeitfunktionen
 
 Bei Verwendung einer Funktion vom Typ [reference](./bicep-functions-resource.md#reference) oder [list](./bicep-functions-resource.md#list) mit einer Ressource, die bedingt bereitgestellt wird, wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die Funktion auf eine nicht vorhandene Ressource verweist.
@@ -96,8 +104,6 @@ resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017
 
 output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
 ```
-
-Sie legen eine [Ressource als abhängig](./resource-declaration.md#set-resource-dependencies) von einer bedingten Ressource fest, wie Sie auch jede andere Ressource festlegen. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

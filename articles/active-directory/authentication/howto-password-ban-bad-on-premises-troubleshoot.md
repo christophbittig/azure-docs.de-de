@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3603bd100fe5d9b471d67896c98de4c0547c8ebb
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285752"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551252"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problembehandlung: Lokaler Azure AD-Kennwortschutz
 
@@ -326,7 +326,7 @@ Das Cmdlet Test-AzureADPasswordProtectionDCAgentHealth unterstützt zwei Integri
 
 ### <a name="basic-dc-agent-health-tests"></a>Allgemeine Integritätstests des DC-Agents
 
-Die folgenden Tests können einzeln ausgeführt werden und akzeptieren nicht. Eine Kurzbeschreibung
+Die folgenden Tests können jeweils einzeln ausgeführt werden und akzeptieren keine Parameter. Eine kurze Beschreibung der einzelnen Tests ist in der folgenden Tabelle angegeben.
 
 |Integritätstest des DC-Agents|BESCHREIBUNG|
 | --- | :---: |

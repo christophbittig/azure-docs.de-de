@@ -7,20 +7,37 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
-ms.date: 10/21/2020
-ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: bf4a019c9f40475750fd508a56f7f8903e0a2876
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.author: jhirono
+author: jhirono
+ms.date: 07/13/2021
+ms.custom: contperf-fy20q4, tracking-python, security
+ms.openlocfilehash: d5c794bfc707f6429daad2e78affe592f5e3754c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538867"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709999"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
-In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning Studio in einem virtuellen Netzwerk verwenden. Studio enthält Features wie automatisiertes maschinelles Lernen, den Designer und Datenbeschriftung. Um diese Features in einem virtuellen Netzwerk verwenden zu können, müssen Sie die Schritte in diesem Artikel ausführen.
+In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning Studio in einem virtuellen Netzwerk verwenden. Studio enthält Features wie automatisiertes maschinelles Lernen, den Designer und Datenbeschriftung. 
+
+Einige der Funktionen von Studio sind in virtuellen Netzwerken standardmäßig deaktiviert. Wenn Sie diese Features aktivieren möchten, müssen Sie für Speicherkonten, die Sie in Studio verwenden möchten, die verwaltete Identität aktivieren. 
+
+Die folgenden Vorgänge sind in einem virtuellen Netzwerk standardmäßig deaktiviert:
+
+* Vorschau der Daten im Studio.
+* Visualisieren von Daten im Designer.
+* Bereitstellen eines Modells im Designer.
+* Senden eines AutoML-Experiments.
+* Starten eines Beschriftungsprojekts.
+
+Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen in einem virtuellen Netzwerk:
+
+* Azure Storage-Konto (Blob und Datei)
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
+* Azure SQL-Datenbank
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -29,15 +46,16 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > - Zugreifen auf Studio von einer Ressource innerhalb eines virtuellen Netzwerks aus
 > - Erfahren Sie, wie sich das Studio auf die Speichersicherheit auswirkt.
 
-Der Artikel ist Teil 5 einer fünfteiligen Artikelreihe, in der Sie schrittweise durch die Absicherung eines Azure Machine Learning-Workflows geführt werden. Es wird dringend empfohlen, die vorherigen Teile zum Einrichten einer VNET-Umgebung zu lesen.
+> [!TIP]
+> Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
+>
+> * [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+> * [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+> * [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+> * [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+> * [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+> * [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
 
-Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
-
-[1. Übersicht zu VNETs](how-to-network-security-overview.md) > [2. Schützen des Arbeitsbereichs](how-to-secure-workspace-vnet.md) > [3. Schützen der Trainingsumgebung](how-to-secure-training-vnet.md) > [4. Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md) > **5. Verwenden von Studio in einem virtuellen Netzwerk**
-
-
-> [!IMPORTANT]
-> Wenn sich Ihr Arbeitsbereich in einer __Sovereign Cloud__ befindet, z. B. Azure Government oder Azure China 21Vianet, wird von integrierten Notebooks die Verwendung von Speicher, der sich in einem virtuellen Netzwerk befindet, _nicht_ unterstützt. Stattdessen können Sie Jupyter-Notebooks aus einer Compute-Instanz verwenden. Weitere Informationen finden Sie im Abschnitt [Zugreifen auf Daten auf einem Compute-Instanz-Notebook](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,133 +63,113 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
 + Ein bereits vorhandenes virtuelles Netzwerk und Subnetz, das verwendet werden kann
 
-+ Ein vorhandener [Azure Machine Learning-Arbeitsbereich mit aktiviertem Private Link](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
++ Ein vorhandener [Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
 + Ein vorhandenes [Azure Storage-Konto](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints), das Ihrem virtuellen Netzwerk hinzugefügt wurde.
 
-## <a name="configure-data-access-in-the-studio"></a>Konfigurieren des Datenzugriffs in Studio
+## <a name="limitations"></a>Einschränkungen
 
-Einige der Funktionen von Studio sind in virtuellen Netzwerken standardmäßig deaktiviert. Wenn Sie diese Features aktivieren möchten, müssen Sie für Speicherkonten, die Sie in Studio verwenden möchten, die verwaltete Identität aktivieren. 
+### <a name="azure-storage-account"></a>Azure Storage-Konto
 
-Die folgenden Vorgänge sind in einem virtuellen Netzwerk standardmäßig deaktiviert:
+Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatisch den Ordner `azureml-filestore` erstellt, der zum Übermitteln von Experimenten für automatisiertes maschinelles Lernen erforderlich ist. Dieser Fehler tritt auf, wenn Benutzer einen vorhandenen Dateispeicher während der Erstellung des Arbeitsbereichs als Standarddateispeicher festlegen.
 
-* Vorschau der Daten im Studio.
-* Visualisieren von Daten im Designer.
-* Bereitstellen eines Modells im Designer ([Standardspeicherkonto](#enable-managed-identity-authentication-for-default-storage-accounts))
-* Übermitteln eines Experiments für das automatisierte maschinelle Lernen ([Standardspeicherkonto](#enable-managed-identity-authentication-for-default-storage-accounts))
-* Starten eines Beschriftungsprojekts.
+Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
 
-Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen in einem virtuellen Netzwerk:
+Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
+## <a name="datastore-azure-storage-account"></a>Datenspeicher: Azure Storage-Konto
 
-* Azure Blob
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
-* Azure SQL-Datenbank
-
-### <a name="firewall-settings"></a>Firewalleinstellungen
-
-Einige Speicherdienste, z. B. ein Azure Storage-Konto, verfügen über Firewalleinstellungen, die für den öffentlichen Endpunkt dieser speziellen Dienstinstanz gelten. In der Regel können Sie mit dieser Einstellung den Zugriff von bestimmten IP-Adressen aus dem öffentlichen Internet zulassen bzw. blockieren. Dies wird bei Verwendung von Azure Machine Learning Studio __nicht unterstützt__. Sie wird bei Verwendung des Azure Machine Learning SDK oder der Befehlszeilenschnittstelle unterstützt.
+Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Daten in Azure-Blob- und -Dateispeicher zu ermöglichen:
 
 > [!TIP]
-> Azure Machine Learning Studio wird bei Verwendung des Azure Firewall-Diensts unterstützt. Weitere Informationen finden Sie unter [Verwenden Ihres Arbeitsbereichs hinter einer Firewall](how-to-access-azureml-behind-firewall.md).
+> Der erste Schritt ist für das Standardspeicherkonto des Arbeitsbereichs nicht erforderlich. Alle anderen Schritte sind für *alle* Speicherkonten erforderlich, die sich hinter dem VNET befinden und vom Arbeitsbereich verwendet werden, einschließlich des Standardspeicherkontos.
 
-### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurieren von Datenspeichern für die Verwendung der vom Arbeitsbereich verwalteten Identität
+1. **Überspringen Sie diesen Schritt, wenn das Speicherkonto der *Standardspeicher* für Ihren Arbeitsbereich ist**. Wenn es nicht der Standardspeicher ist, müssen Sie **der verwalteten Identität des Arbeitsbereichs die Rolle „Storage-Blobdatenleser“ für das Azure-Speicherkonto gewähren**, damit die Daten aus dem Blobspeicher gelesen werden können.
 
-Nachdem Sie Ihrem virtuellen Netzwerk mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) ein Azure Storage-Konto hinzugefügt haben, müssen Sie Ihren Datenspeicher für die Verwendung der Authentifizierung anhand der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Auf diese Weise kann Studio auf Daten in Ihrem Speicherkonto zugreifen.
+    Weitere Informationen finden Sie unter der integrierten Rolle [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader).
 
-Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um eine Verbindung mit Speicherkonten herzustellen. Führen Sie die folgenden Schritte aus, um die Verwendung der verwalteten Identität in einem Datenspeicher zu konfigurieren:
+1. **Gewähren Sie der verwalteten Identität des Arbeitsbereichs die Rolle „Leser“ für private Speicherendpunkte**. Wenn für Ihren Speicherdienst ein __privater Endpunkt__ verwendet wird, müssen Sie der vom Arbeitsbereich verwalteten Identität **Lesezugriff** auf den privaten Endpunkt gewähren. Die vom Arbeitsbereich verwaltete Identität in Azure AD hat den gleichen Namen wie Ihr Azure Machine Learning-Arbeitsbereich.
 
-1. Wählen Sie __Datastores__ (Datenspeicher) im Studio aus.
+    > [!TIP]
+    > Ihr Speicherkonto kann über mehrere private Endpunkte verfügen. Beispielsweise kann ein Speicherkonto separate private Endpunkte für Blob- und Dateispeicher aufweisen. Fügen Sie die verwaltete Identität beiden Endpunkten hinzu.
 
-1. Wenn Sie einen vorhandenen Datenspeicher aktualisieren möchten, wählen Sie diesen aus, und wählen Sie __Anmeldeinformationen aktualisieren__.
+    Weitere Informationen finden Sie unter der integrierten Rolle [Leser](../role-based-access-control/built-in-roles.md#reader).
 
-    Um einen neuen Datenspeicher zu erstellen, wählen Sie __+ New datastore__ (+ Neuer Datenspeicher) aus.
+   <a id='enable-managed-identity'></a>
+1. **Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für Standardspeicherkonten**. Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicherkonten: ein Blob Storage-Standardkonto und ein Standardkonto für den Dateispeicher, die beim Erstellen des Arbeitsbereichs definiert werden. Sie können auch auf der Verwaltungsseite neue Standardeinstellungen für den **Datenspeicher** festlegen.
 
-1. Wählen Sie in den Datenspeichereinstellungen für __Use workspace managed identity for data preview and profiling in Azure Machine Learning studio__ (Vom Arbeitsbereich verwaltete Identität für Datenvorschau und Profilerstellung in Azure Machine Learning Studio verwenden) __Ja__ aus.
+    ![Screenshot der Speicherorte von Standarddatenspeichern](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
-    ![Screenshot der Aktivierung einer verwalteten Identität für einen Arbeitsbereich](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
+    In der folgenden Tabelle ist beschrieben, warum die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs genutzt wird.
 
-Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe von Azure RBAC dem Speicherdienst als __Leser__ hinzugefügt. __Lesezugriff__ erlaubt dem Arbeitsbereich das Anzeigen der Ressource, aber keine Änderungen.
+    |Speicherkonto  | Notizen  |
+    |---------|---------|
+    |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
+    |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
 
-### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Aktivieren der Authentifizierung mit verwalteten Identitäten für Standardspeicherkonten
+1. **Konfigurieren Sie Datenspeicher für die Verwendung der Authentifizierung mit verwalteten Identitäten**. Nachdem Sie Ihrem virtuellen Netzwerk mit einem [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) oder [privaten Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) ein Azure Storage-Konto hinzugefügt haben, müssen Sie Ihren Datenspeicher für die Verwendung der Authentifizierung anhand der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) konfigurieren. Auf diese Weise kann Studio auf Daten in Ihrem Speicherkonto zugreifen.
 
-Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicherkonten: ein Blob Storage-Standardkonto und ein Standardkonto für den Dateispeicher, die beim Erstellen des Arbeitsbereichs definiert werden. Sie können auch auf der Verwaltungsseite neue Standardeinstellungen für den **Datenspeicher** festlegen.
+    Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um eine Verbindung mit Speicherkonten herzustellen. Verwenden Sie beim Erstellen eines neuen Datenspeichers die folgenden Schritte, um einen Datenspeicher für die Verwendung der Authentifizierung mit verwalteten Identitäten zu konfigurieren:
 
-![Screenshot der Speicherorte von Standarddatenspeichern](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+    1. Wählen Sie __Datastores__ (Datenspeicher) im Studio aus.
 
-In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs aktivieren müssen.
+    1. Wenn Sie einen vorhandenen Datenspeicher aktualisieren möchten, wählen Sie diesen aus, und wählen Sie __Anmeldeinformationen aktualisieren__.
 
-|Speicherkonto  | Hinweise  |
-|---------|---------|
-|Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
-|Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
+        Um einen neuen Datenspeicher zu erstellen, wählen Sie __+ New datastore__ (+ Neuer Datenspeicher) aus.
 
-> [!WARNING]
-> Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatisch den Ordner `azureml-filestore` erstellt, der zum Übermitteln von Experimenten für automatisiertes maschinelles Lernen erforderlich ist. Dieser Fehler tritt auf, wenn Benutzer einen vorhandenen Dateispeicher während der Erstellung des Arbeitsbereichs als Standarddateispeicher festlegen.
-> 
-> Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
->
-> Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
+    1. Wählen Sie in den Datenspeichereinstellungen für __Use workspace managed identity for data preview and profiling in Azure Machine Learning studio__ (Vom Arbeitsbereich verwaltete Identität für Datenvorschau und Profilerstellung in Azure Machine Learning Studio verwenden) __Ja__ aus.
 
-### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Gewähren von __Lesezugriff__ auf die private Speicherverbindung für die vom Arbeitsbereich verwaltete Identität
+        ![Screenshot der Aktivierung einer verwalteten Identität für einen Arbeitsbereich](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
 
-Wenn Ihr Azure Storage-Konto einen privaten Endpunkt verwendet, müssen Sie der vom Arbeitsbereich verwalteten Identität **Lesezugriff** auf die private Verbindung erteilen. Weitere Informationen finden Sie unter der integrierten Rolle [Leser](../role-based-access-control/built-in-roles.md#reader). 
+    Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe von Azure RBAC dem neuen Speicherdienst als __Leser__ hinzugefügt. __Lesezugriff__ erlaubt dem Arbeitsbereich das Anzeigen der Ressource, aber keine Änderungen.
 
-Wenn Ihr Speicherkonto einen Dienstendpunkt verwendet, können Sie diesen Schritt überspringen.
+## <a name="datastore-azure-data-lake-storage-gen1"></a>Datenspeicher: Azure Data Lake Storage Gen1
 
+Wenn Sie Azure Data Lake Storage Gen1 als Datenspeicher verwenden, können Sie nur Zugriffssteuerungslisten im POSIX-Stil nutzen. Sie können der vom Arbeitsbereich verwalteten Identität wie jedem anderen Sicherheitsprinzipal Zugriff auf Ressourcen zuweisen. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
+
+## <a name="datastore-azure-data-lake-storage-gen2"></a>Datenspeicher: Azure Data Lake Storage Gen2
+
+Beim Verwenden von Azure Data Lake Storage Gen2 als Datenspeicher können Sie den Datenzugriff in einem virtuellen Netzwerk sowohl per Azure RBAC als auch mit POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
+
+Fügen Sie die vom Arbeitsbereich verwaltete Identität der Rolle [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hinzu, um **Azure RBAC zu verwenden**. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+
+Für die **Verwendung von ACLs** kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzipal Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
+
+## <a name="datastore-azure-sql-database"></a>Datenspeicher: Azure SQL-Datenbank
+
+Wenn Sie mit einer verwalteten Identität auf Daten zugreifen möchten, die in einer Azure SQL-Datenbank-Instanz gespeichert sind, müssen Sie einen eigenständigen SQL-Benutzer erstellen, der der verwalteten Identität zugeordnet ist. Weitere Informationen zum Erstellen eines Benutzers von einem externen Anbieter finden Sie unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
+
+Nachdem Sie einen eigenständigen SQL-Benutzer erstellt haben, erteilen Sie mithilfe des [GRANT T-SQL-Befehls](/sql/t-sql/statements/grant-object-permissions-transact-sql) Berechtigungen.
+
+## <a name="intermediate-module-output"></a>Ausgabe des Zwischenmoduls
+
+Wenn Sie die Ausgabe des Zwischenmoduls des Azure Machine Learning-Designers nutzen, können Sie den Ausgabespeicherort für alle Module im Designer angeben. Damit können Sie zwischengeschaltete Datasets zu Sicherheits-, Protokollierungs- oder Überwachungszwecken an einem separaten Ort speichern. Führen Sie die folgenden Schritte aus, um die Ausgabe anzugeben:
+
+1. Wählen Sie das Modul aus, für das Sie die Ausgabe angeben möchten.
+1. Wählen Sie im Bereich der Moduleinstellungen auf der rechten Seite die Option **Ausgabeeinstellungen** aus.
+1. Geben Sie den Datenspeicher an, den Sie für die einzelnen Modulausgaben verwenden möchten.
+
+Stellen Sie sicher, dass Sie auf die zwischengeschalteten Speicherkonten in Ihrem virtuellen Netzwerk Zugriff haben. Andernfalls verursacht die Pipeline einen Fehler.
+
+Aktivieren Sie die [Authentifizierung mit verwalteten Identitäten](#enable-managed-identity) für die zwischengeschalteten Speicherkonten, damit Ausgabedaten visualisiert werden können.
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>Zugriff auf Studio von einer Ressource innerhalb des virtuellen Netzwerks aus
 
 Wenn Sie über eine Ressource innerhalb eines virtuellen Netzwerks (z. B. eine Computeinstanz oder eine VM) auf das Studio zugreifen, müssen Sie aus dem virtuellen Netzwerk an das Studio ausgehenden Datenverkehr zulassen. 
 
 Wenn Sie z. B. ausgehenden Datenverkehr mit Netzwerksicherheitsgruppen (NSG) einschränken, fügen Sie einem __Diensttag__-Ziel von __AzureFrontDoor.Frontend__ eine Regel hinzu.
 
-## <a name="technical-notes-for-managed-identity"></a>Technische Hinweise zur verwalteten Identität
+## <a name="firewall-settings"></a>Firewalleinstellungen
 
-Die Verwendung der verwalteten Identität für den Zugriff auf Speicherdienste hat Auswirkungen auf Sicherheitsaspekte. In diesem Abschnitt werden die Änderungen für die einzelnen Speicherkontotypen beschrieben. 
+Einige Speicherdienste, z. B. ein Azure Storage-Konto, verfügen über Firewalleinstellungen, die für den öffentlichen Endpunkt dieser speziellen Dienstinstanz gelten. In der Regel können Sie mit dieser Einstellung den Zugriff von bestimmten IP-Adressen aus dem öffentlichen Internet zulassen bzw. blockieren. Dies wird bei Verwendung von Azure Machine Learning Studio __nicht unterstützt__. Sie wird bei Verwendung des Azure Machine Learning SDK oder der Befehlszeilenschnittstelle unterstützt.
 
-Diese Überlegungen gelten nur für den __Typ des Speicherkontos__, auf das Sie zugreifen.
-
-### <a name="azure-blob-storage"></a>Azure Blob Storage
-
-Für __Azure Blob Storage__ wird die vom Arbeitsbereich verwaltete Identität auch als [Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) (Blobdatenleser) hinzugefügt, sodass Daten aus Blobspeicher gelesen werden können.
-
-### <a name="azure-data-lake-storage-gen2-access-control"></a>Zugriffssteuerung von Azure Data Lake Storage Gen2
-
-Sie können den Datenzugriff innerhalb eines virtuellen Netzwerks mit Azure RBAC- und POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) steuern.
-
-Fügen Sie die vom Arbeitsbereich verwaltete Identität der Rolle [Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) hinzu, um Azure RBAC zu verwenden. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
-
-Um ACLs zu verwenden, kann der verwalteten Identität des Arbeitsbereichs wie jedem anderen Sicherheitsprinzipal Zugriff gewährt werden. Weitere Informationen finden Sie unter [Zugriffssteuerungslisten für Dateien und Verzeichnisse](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
-
-### <a name="azure-data-lake-storage-gen1-access-control"></a>Zugriffssteuerung von Azure Data Lake Storage Gen1
-
-Azure Data Lake Storage Gen1 unterstützt nur Zugriffssteuerungslisten im POSIX-Format. Sie können der vom Arbeitsbereich verwalteten Identität wie jedem anderen Sicherheitsprinzipal Zugriff auf Ressourcen zuweisen. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
-
-### <a name="azure-sql-database-contained-user"></a>Eigenständiger Benutzer in Azure SQL-Datenbank
-
-Für den Zugriff mithilfe der verwalteten Identität auf Daten, die in einer Azure SQL-Datenbank-Instanz gespeichert sind, müssen Sie einen eigenständigen SQL-Benutzer erstellen, der der verwalteten Identität zugeordnet ist. Weitere Informationen zum Erstellen eines Benutzers von einem externen Anbieter finden Sie unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
-
-Nachdem Sie einen eigenständigen SQL-Benutzer erstellt haben, erteilen Sie mithilfe des [GRANT T-SQL-Befehls](/sql/t-sql/statements/grant-object-permissions-transact-sql) Berechtigungen.
-
-### <a name="azure-machine-learning-designer-intermediate-module-output"></a>Ausgabe des Zwischenmoduls des Azure Machine Learning-Designers
-
-Sie können den Ausgabespeicherort für jedes beliebige Modul im Designer angeben. Damit können Sie zwischengeschaltete Datasets zu Sicherheits-, Protokollierungs- oder Überwachungszwecken an einem separaten Ort speichern. So geben Sie die Ausgabe an
-
-1. Wählen Sie das Modul aus, für das Sie die Ausgabe angeben möchten.
-1. Wählen Sie im Bereich der Moduleinstellungen auf der rechten Seite die Option **Ausgabeeinstellungen** aus.
-1. Geben Sie den Datenspeicher an, den Sie für die einzelnen Modulausgaben verwenden möchten.
- 
-Stellen Sie sicher, dass Sie auf die zwischengeschalteten Speicherkonten in Ihrem virtuellen Netzwerk Zugriff haben. Andernfalls verursacht die Pipeline einen Fehler.
-
-Sie sollten auch die [Authentifizierung mit verwalteten Identitäten](#configure-datastores-to-use-workspace-managed-identity) für die zwischengeschalteten Speicherkonten aktivieren, um Ausgabedaten visualisieren zu können.
-
+> [!TIP]
+> Azure Machine Learning Studio wird bei Verwendung des Azure Firewall-Diensts unterstützt. Weitere Informationen finden Sie unter [Verwenden Ihres Arbeitsbereichs hinter einer Firewall](how-to-access-azureml-behind-firewall.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist der fünfte Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
-* [Teil 1: Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
-* [Teil 2: Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
-* [Teil 3: Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
-* [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-
-Sehen Sie sich ebenso den Artikel zur Verwendung des [benutzerdefinierten DNS](how-to-custom-dns.md) für die Namensauflösung an.
+* [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+* [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+* [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+* [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+* [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+* [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)

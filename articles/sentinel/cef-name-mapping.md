@@ -7,19 +7,23 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
-ms.date: 04/12/2021
-ms.openlocfilehash: 3d30bb733245c0519b73d66653b8d09cb9a4b4b9
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 07/26/2021
+ms.openlocfilehash: f31aa44237e0312d08a43155db867192d83a57ef
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528178"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722015"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF- und CommonSecurityLog-Feldzuordnung
 
 In den folgenden Tabellen werden CEF-Feldnamen (Common Event Format) den Namen zugeordnet, die in CommonSecurityLog in Azure Sentinel verwendet werden. Sie sind möglicherweise hilfreich, wenn Sie in Azure Sentinel mit einer CEF-Datenquelle arbeiten.
 
 Weitere Informationen finden Sie unter [Verbinden der externen Lösung mithilfe von Common Event Format](connect-common-event-format.md).
+
+> [!NOTE]
+> Für das [Erfassen von CEF-Daten](connect-common-event-format.md#prerequisites) in Log Analytics wird ein Azure Sentinel-Arbeitsbereich benötigt.
+>
 
 ## <a name="a---c"></a>A–C
 
@@ -251,7 +255,7 @@ Die folgenden **CommonSecurityLog**-Felder werden von Azure Sentinel hinzugefüg
 
 ### <a name="additional-enrichment-fields"></a>Zusätzliche Anreicherungsfelder
 
-|CommonSecurityLog-Feldname  |Beschreibung  |
+|CommonSecurityLog-Feldname  |BESCHREIBUNG  |
 |---------|---------|
 |**OriginalLogSeverity**     |  Immer leer, wird für die Integration in CiscoASA unterstützt. <br>Ausführliche Informationen zu den Werten für den Protokollschweregrad siehe Feld [LogSeverity](#logseverity).       |
 |**RemoteIP**     |     Die Remote-IP-Adresse. <br>Dieser Wert basiert auf dem Feld [CommunicationDirection](#communicationdirection), wenn möglich.     |

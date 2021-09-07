@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f843f5ec593124305d978cd32559a089194ab6d
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 71b54db0df20ea1bfe630639fb5e60bea62712b2
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073339"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200274"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
@@ -71,7 +71,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 10. Klicken Sie zum Speichern der Konfiguration auf **Speichern**. 
 
 > [!NOTE]
-> Obwohl die Konfiguration für die Diagnoseerweiterung in JSON oder XML formatiert werden kann, wird jede im Azure-Portal ausgeführte Konfiguration immer als JSON gespeichert. Wenn Sie bei einer anderen Konfigurationsmethode XML verwenden und dann die Konfiguration über das Azure-Portal ändern, werden die Einstellungen in JSON geändert.
+> Obwohl die Konfiguration für die Diagnoseerweiterung in JSON oder XML formatiert werden kann, wird jede im Azure-Portal ausgeführte Konfiguration immer als JSON gespeichert. Wenn Sie bei einer anderen Konfigurationsmethode XML verwenden und dann die Konfiguration über das Azure-Portal ändern, werden die Einstellungen in JSON geändert. Außerdem gibt es keine Option zum Einrichten des Aufbewahrungszeitraums für diese Protokolle.
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
 Informationen zum Bereitstellen der Diagnoseerweiterung mit Azure Resource Manager-Vorlagen finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../../virtual-machines/extensions/diagnostics-template.md). 

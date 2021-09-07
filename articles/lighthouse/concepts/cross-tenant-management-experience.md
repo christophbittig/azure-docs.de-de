@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
-ms.date: 05/11/2021
+ms.date: 07/20/2021
 ms.topic: conceptual
-ms.openlocfilehash: f482c4738fd0bec8f32eaeb540b2d0ef2e0d4b15
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: c57afabe5f3aaf49ef1f1868c04c60af4298381d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790431"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440908"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -99,7 +99,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen und zu aktualisieren
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - [Protokollanalyse](../../azure-monitor/logs/service-providers.md): Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
-- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen](../../azure-monitor/alerts/alerts-activity-log.md) in Kundenmandanten
+- Erstellen, Anzeigen und Verwalten von [Metrikwarnungen](../../azure-monitor/alerts/alerts-metric.md), [Protokollwarnungen](../../azure-monitor/alerts/alerts-log.md) und [Aktivitätsprotokollwarnungen](../../azure-monitor/alerts/alerts-activity-log.md) in Kundenmandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
 - Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).

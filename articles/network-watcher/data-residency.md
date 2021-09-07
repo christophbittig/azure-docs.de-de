@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: b5aa8167031c3b871c6a6a4d84159c3c284bf241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 638c466e0d8573ce0b23f31188c5e952a28f74b2
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018427"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240462"
 ---
 # <a name="data-residency-for-azure-network-watcher"></a>Data Residency für Azure Network Watcher
-Mit Ausnahme des Diensts „Verbindungsmonitor“ (Vorschau) speichert Azure Network Watcher keine Kundendaten.
+Mit Ausnahme des Diensts „Verbindungsmonitor“ speichert Azure Network Watcher keine Kundendaten.
 
 
-## <a name="connection-monitor-preview-data-residency"></a>Data Residency im Verbindungsmonitor (Vorschau)
-Der Dienst „Verbindungsmonitor (Vorschau)“ speichert Kundendaten. Diese Daten werden von Network Watcher automatisch in einer einzelnen Region gespeichert. Verbindungsmonitor (Vorschau) erfüllt also automatisch die regionsspezifischen Anforderungen an die Data Residency, die unter anderem im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegeben wurden.
+## <a name="connection-monitor-data-residency"></a>Verbindungsmonitor: Datenresidenz
+Der Dienst „Verbindungsmonitor“ speichert Kundendaten. Diese Daten werden von Network Watcher automatisch in einer einzelnen Region gespeichert. Verbindungsmonitor erfüllt also automatisch die regionsspezifischen Anforderungen an die Datenresidenz, z. B. wie im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegeben.
 
 ## <a name="data-residency"></a>Datenresidenz
 Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist in Azure derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert. Weitere Informationen finden Sie im [Trust Center](https://azuredatacentermap.azurewebsites.net/).

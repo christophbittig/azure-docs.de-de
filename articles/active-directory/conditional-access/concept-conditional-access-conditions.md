@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/18/2021
+ms.date: 07/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5a332b43da59c3e7c766d8fd911f0426fa346d8b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070286"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564984"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -117,7 +117,9 @@ Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
-| macOS | Chrome, Safari |
+| macOS | Microsoft Edge, Chrome, Safari |
+
+Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird oder Cookies deaktiviert sind.
 
 > [!NOTE]
 > Bei Microsoft Edge 85+ muss der Benutzer beim Browser angemeldet sein, um die Geräteidentität ordnungsgemäß zu übergeben. Andernfalls ist das Verhalten vergleichbar mit Chrome ohne Kontoerweiterung. Diese Anmeldung erfolgt in einem Azure AD Hybrid Join-Szenario möglicherweise nicht automatisch. Safari wird für den gerätebasierten bedingten Zugriff unterstützt, kann jedoch die Bedingungen **Genehmigte Client-App erforderlich** und **App-Schutzrichtlinie erforderlich** nicht erfüllen. Ein verwalteter Browser wie Microsoft Edge erfüllt diese Anforderungen („Genehmigte Client-App erforderlich“ und „App-Schutzrichtlinie erforderlich“).
@@ -143,8 +145,6 @@ Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windo
 - Name 1
 - Type REG_SZ (Zeichenfolge)
 - Data {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
-
-Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird.
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>Unterstützte mobile Anwendungen und Desktopclients
 

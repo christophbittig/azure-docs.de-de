@@ -6,20 +6,23 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0666cce0668d315c34a9d6cade1f8d6e087f20dc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241751"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674399"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Doppelte Infrastrukturverschlüsselung für Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Erfahren Sie, wie Sie die doppelte Infrastrukturverschlüsselung für Azure Database for MySQL einrichten und verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
+* Die Azure Database for MySQL Single Server-Instanz muss den Tarif „Universell“ oder „Arbeitsspeicheroptimiert“ und den Speichertyp „Universell (V2)“ verwenden. Bevor Sie fortfahren, lesen Sie die Einschränkungen für die [Mehrfachverschlüsselung der Infrastruktur](concepts-infrastructure-double-encryption.md#limitations).
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---portal"></a>Erstellen eines Azure Database for MySQL-Servers mit doppelter Infrastrukturverschlüsselung im Portal
 

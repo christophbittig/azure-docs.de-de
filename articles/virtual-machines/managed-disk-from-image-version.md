@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines verwalteten Datenträgers aus einer Imageversion
-description: Erstellen eines verwalteten Datenträgers aus einer Imageversion in einer Shared Image Gallery.
+title: Exportieren einer Imageversion auf einen verwalteten Datenträger
+description: Exportieren Sie eine Imageversion aus einem Katalog mit freigegebenen Images auf einen verwalteten Datenträger.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,16 +10,16 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb09c3332f41f5b4fe8f02e2e38940f4085b08fd
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d4a3d1e8b1eb1c3a959e9f48e0c46379d6162644
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672817"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653042"
 ---
-# <a name="create-a-managed-disk-from-an-image-version"></a>Erstellen eines verwalteten Datenträgers aus einer Imageversion
+# <a name="export-an-image-version-to-a-managed-disk"></a>Exportieren einer Imageversion auf einen verwalteten Datenträger
 
-Falls erforderlich, können Sie das Betriebssystem oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einer Shared Image Gallery gespeichert ist.
+Sie können den Betriebssystemdatenträger oder einen einzelnen Datenträger aus einer Imageversion als verwalteten Datenträger aus einer Imageversion exportieren, die in einem Katalog mit freigegebenen Images gespeichert ist.
 
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)

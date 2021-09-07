@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 06/28/2021
 ms.author: rolyon
-ms.custom: it-pro
-ms.openlocfilehash: 469995a3211083dd592fa4b3f4ab8b145c7193a8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: it-pro,subject-rbac-steps
+ms.openlocfilehash: 175beacc486c4b59919bf20300bbd06f7b9aa1a7
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949291"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988504"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Zuweisen von Azure-Rollen zu externen Gastbenutzern über das Azure-Portal
 
@@ -29,7 +29,6 @@ Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](overview.md) ermö
 Sie benötigen Folgendes, um Azure-Rollen zuzuweisen oder zu entfernen:
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
-
 
 ## <a name="when-would-you-invite-guest-users"></a>Wann würden Sie Gastbenutzer einladen?
 
@@ -47,21 +46,23 @@ Native Mitglieder eines Verzeichnisses (Mitgliedsbenutzer) verfügen über ander
 
 Führen Sie diese Schritte aus, um einen Gastbenutzer über die Azure Active Directory-Seite zu Ihrem Verzeichnis hinzuzufügen.
 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
 1. Stellen Sie sicher, dass die Einstellungen für externe Zusammenarbeit Ihrer Organisation so konfiguriert sind, dass Sie Gäste einladen dürfen. Weitere Informationen finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../active-directory/external-identities/delegate-invitations.md).
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory** > **Benutzer** > **Neuer Gastbenutzer**.
+1. Klicken Sie auf **Azure Active Directory** > **Benutzer** > **Neuer Gastbenutzer**.
 
-    ![Neues Feature „Gastbenutzer“ im Azure-Portal](./media/role-assignments-external-users/invite-guest-user.png)
+    ![Screenshot: Feature „Neuer Gastbenutzer“ im Azure-Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
 1. Befolgen Sie die Schritte, um einen neuen Gastbenutzer hinzuzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory).
 
-Nachdem Sie dem Verzeichnis einen Gastbenutzer hinzugefügt haben, können Sie dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden, oder der Gastbenutzer kann auf die Einlösungs-URL in der Einladungs-E-Mail klicken.
+Nachdem Sie dem Verzeichnis einen Gastbenutzer hinzugefügt haben, können Sie dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden, oder der Gastbenutzer kann auf den Link „Einladung annehmen“ in der Einladungs-E-Mail klicken.
 
-![E-Mail zum Einladen von Gastbenutzern](./media/role-assignments-external-users/invite-email.png)
+![Screenshot: Einladungs-E-Mail für Gastbenutzer](./media/role-assignments-external-users/invite-email.png)
 
 Damit der Gastbenutzer auf Ihr Verzeichnis zugreifen kann, muss er den Einladungsprozess abschließen.
 
-![Berechtigungen zum Überprüfen der Gastbenutzereinladung](./media/role-assignments-external-users/invite-review-permissions.png)
+![Screenshot: Berechtigungen zum Überprüfen der Gastbenutzereinladung](./media/role-assignments-external-users/invite-review-permissions.png)
 
 Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
 
@@ -69,77 +70,99 @@ Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Direc
 
 In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einem Gastbenutzer eine Rolle zuzuweisen, befolgen Sie [dieselben Schritte](role-assignments-portal.md) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um einem Gastbenutzer eine Rolle mit verschiedenen Gültigkeitsbereichen zuzuweisen.
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1.  Wählen Sie den Satz von Ressourcen aus, für den der Zugriff gilt, der auch als „Bereich“ bezeichnet wird. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+1. Suchen Sie im oberen Suchfeld nach dem Bereich, für den Sie Zugriff gewähren möchten. Suchen Sie beispielsweise nach **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine bestimmten Ressource.
 
-1. Klicken Sie auf die gewünschte Ressource.
+1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-    Der folgende Screenshot zeigt ein Beispiel für das Blatt „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe. Wenn Sie hier Änderungen an der Zugriffssteuerung vornehmen, gelten diese nur für die Ressourcengruppe.
+    Die folgende Abbildung zeigt ein Beispiel der Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe.
 
-    ![Blatt „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe](./media/role-assignments-external-users/access-control-resource-group.png)
+    ![Screenshot: Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe in der Benutzeroberfläche der Vorschauversion.](./media/shared/rg-access-control.png)
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für diesen Bereich anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
 
     Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
 
-    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
+    Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+1. Wählen Sie auf der Registerkarte **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
-1. Wählen Sie in der Liste **Auswählen** den Gastbenutzer aus. Wird der Benutzer in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/roles.png)
 
-   ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-external-users/add-role-assignment.png)
+1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
 
-1. Klicken Sie auf **Speichern**, um die Rolle für den ausgewählten Bereich zuzuweisen.
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/members.png)
 
-    ![Rollenzuweisung für Mitwirkender von virtuellen Computern](./media/role-assignments-external-users/access-control-role-assignments.png)
+1. Klicken Sie auf **Mitglieder auswählen**.
+
+1. Suchen Sie den Gastbenutzer, und wählen Sie ihn aus. Wird der Benutzer in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Suchbegriff eingeben, um das Verzeichnis nach Anzeigename oder E-Mail-Adresse zu durchsuchen.
+
+    Sie können im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigename oder E-Mail-Adresse zu durchsuchen.
+
+    ![Screenshot: Bereich „Mitglieder auswählen“ auf der Benutzeroberfläche der Vorschauversion](./media/role-assignments-external-users/select-members.png)
+
+1. Klicken Sie auf **Auswählen**, um den Gastbenutzer der Mitgliederliste hinzuzufügen.
+
+1. Klicken Sie auf der Registerkarte **Überprüfen und zuweisen** auf **Überprüfen und zuweisen**.
+
+    Nach einigen Augenblicken wird dem Gastbenutzer die Rolle für den ausgewählten Bereich zugewiesen.
+
+    ![Screenshot: Rollenzuweisung für „Mitwirkender für virtuelle Computer“](./media/role-assignments-external-users/access-control-role-assignments.png)
 
 ## <a name="assign-a-role-to-a-guest-user-not-yet-in-your-directory"></a>Zuweisen einer Rolle zu einem Gastbenutzer, der sich noch nicht in Ihrem Verzeichnis befindet
 
 Um einem Gastbenutzer eine Rolle zuzuweisen, befolgen Sie [dieselben Schritte](role-assignments-portal.md) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität.
 
-Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie den Benutzer direkt über den Bereich „Rollenzuweisung hinzufügen“ einladen.
+Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie den Benutzer direkt über den Bereich „Mitglieder auswählen“ einladen.
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1.  Wählen Sie den Satz von Ressourcen aus, für den der Zugriff gilt, der auch als „Bereich“ bezeichnet wird. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+1. Suchen Sie im oberen Suchfeld nach dem Bereich, für den Sie Zugriff gewähren möchten. Suchen Sie beispielsweise nach **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine bestimmten Ressource.
 
-1. Klicken Sie auf die gewünschte Ressource.
+1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für diesen Bereich anzuzeigen.
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Menü „Rollenzuweisung hinzufügen“](./media/shared/add-role-assignment-menu.png)
+    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
 
-    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
+    Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+1. Wählen Sie auf der Registerkarte **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
-1. Geben Sie in der Liste **Auswählen** die E-Mail-Adresse der einzuladenden Person ein, und wählen Sie diese Person dann aus.
+1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
 
-   ![Einladen eines Gastbenutzers im Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/members.png)
 
-1. Klicken Sie auf **Speichern**, um den Gastbenutzer zu Ihrem Verzeichnis hinzuzufügen, die Rolle zuzuweisen und eine Einladung zu senden.
+1. Klicken Sie auf **Mitglieder auswählen**.
+
+1. Geben Sie im Feld **Auswählen** die E-Mail-Adresse der einzuladenden Person ein, und wählen Sie diese Person dann aus.
+
+    ![Screenshot: Einladen eines Gastbenutzers im Bereich „Mitglieder auswählen“](./media/role-assignments-external-users/select-members-new-guest.png)
+
+1. Klicken Sie auf **Auswählen**, um den Gastbenutzer der Mitgliederliste hinzuzufügen.
+
+1. Klicken Sie auf der Registerkarte **Überprüfen und zuweisen** auf **Überprüfen und zuweisen**, um den Gastbenutzer zu Ihrem Verzeichnis hinzuzufügen, die Rolle zuzuweisen und eine Einladung zu senden.
 
     Nach einigen Momenten werden eine Benachrichtigung über die Rollenzuweisung sowie Informationen zur Einladung angezeigt.
 
-    ![Rollenzuweisung und Benachrichtigung des eingeladenen Benutzers](./media/role-assignments-external-users/invited-user-notification.png)
+    ![Screenshot: Rollenzuweisung und Benachrichtigung des eingeladenen Benutzers](./media/role-assignments-external-users/invited-user-notification.png)
 
 1. Um den Gastbenutzer manuell einzuladen, klicken Sie mit der rechten Maustaste und kopieren den Link der Einladung in der Benachrichtigung. Klicken Sie nicht auf den Link zur Einladung, da dadurch der Einladungsprozess gestartet wird.
 
     Der Link zur Einladung hat das folgende Format:
 
-    `https://invitations.microsoft.com/redeem/...`
+    `https://login.microsoftonline.com/redeem?rd=https%3a%2f%2finvitations.microsoft.com%2fredeem%2f%3ftenant%3d0000...`
 
 1. Senden Sie den Einladungslink an den Gastbenutzer, um den Einladungsprozess abzuschließen.
 
@@ -155,11 +178,11 @@ Bevor Sie einen Gastbenutzer aus einem Verzeichnis entfernen, sollten Sie zunäc
 
 1. Aktivieren Sie in der Liste der Rollenzuweisungen den Gastbenutzer mit der zu entfernenden Rollenzuweisung.
 
-   ![Entfernen von Rollenzuweisungen](./media/role-assignments-external-users/remove-role-assignment-select.png)
+   ![Screenshot: Ausgewählte Rollenzuweisung, die entfernt werden soll](./media/role-assignments-external-users/remove-role-assignment-select.png)
 
 1. Klicken Sie auf **Entfernen**.
 
-   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-external-users/remove-role-assignment.png)
+   ![Screenshot: Meldung zum Entfernen der Rollenzuweisung](./media/shared/remove-role-assignment.png)
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 
@@ -169,7 +192,7 @@ Bevor Sie einen Gastbenutzer aus einem Verzeichnis entfernen, sollten Sie zunäc
 
 1. Klicken Sie auf **Löschen**.
 
-   ![Löschen eines Gastbenutzers](./media/role-assignments-external-users/delete-guest-user.png)
+   ![Screenshot: Löschen eines Gastbenutzers](./media/role-assignments-external-users/delete-guest-user.png)
 
 1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
 
@@ -179,35 +202,35 @@ Bevor Sie einen Gastbenutzer aus einem Verzeichnis entfernen, sollten Sie zunäc
 
 Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Gastbenutzer können z. B. das Verzeichnis nicht durchsuchen und nicht nach Gruppen oder Anwendungen suchen. Weitere Informationen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
-![Gastbenutzer können Benutzer in einem Verzeichnis nicht durchsuchen.](./media/role-assignments-external-users/directory-no-users.png)
+![Screenshot: Gastbenutzer können Benutzer in einem Verzeichnis nicht durchsuchen.](./media/role-assignments-external-users/directory-no-users.png)
 
-Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Verzeichnisrolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
+Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, können Sie dem Gastbenutzer eine Azure AD-Rolle zuweisen. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md#directory-readers) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md).
 
-![Zuweisen der Rolle „Verzeichnisleseberechtigte“](./media/role-assignments-external-users/directory-roles.png)
+![Screenshot: Zuweisen der Rolle „Verzeichnisleseberechtigte“](./media/role-assignments-external-users/directory-roles.png)
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gastbenutzer können keine Benutzer, Gruppen oder Dienstprinzipale durchsuchen, um Rollen zuzuweisen.
 
 Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein Gastbenutzer ein [Besitzer](built-in-roles.md#owner) in einem Bereich ist, kann er die Liste der Benutzer, Gruppen oder Dienstprinzipale nicht durchsuchen, wenn er versucht, einer anderen Person Zugriff zu erteilen.
 
-![Gastbenutzer können keine Sicherheitsprinzipale durchsuchen, um Rollen zuzuweisen.](./media/role-assignments-external-users/directory-no-browse.png)
+![Screenshot: Gastbenutzer können keine Sicherheitsprinzipale durchsuchen, um Rollen zuzuweisen.](./media/role-assignments-external-users/directory-no-browse.png)
 
-Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
+Wenn der Gastbenutzer den genauen Anmeldenamen einer Person im Verzeichnis kennt, kann er Zugriff gewähren. Wenn Sie einem Gastbenutzer tatsächlich uneingeschränkten Lesezugriff auf Ihr Verzeichnis gestatten möchten, können Sie den Gastbenutzer der Rolle [Verzeichnisleseberechtigte](../active-directory/roles/permissions-reference.md#directory-readers) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Gastbenutzer können keine Anwendungen registrieren oder Dienstprinzipale erstellen.
 
-Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten](../active-directory/external-identities/add-users-administrator.md).
+Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Wenn ein Gastbenutzer Anwendungen registrieren oder Dienstprinzipale erstellen können muss, können Sie den Gastbenutzer der Rolle [Anwendungsentwickler](../active-directory/roles/permissions-reference.md#application-developer) in Azure AD hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md).
 
-![Gastbenutzer können keine Anwendungen registrieren.](./media/role-assignments-external-users/directory-access-denied.png)
+![Screenshot: Gastbenutzer können keine Anwendungen registrieren.](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>Gastbenutzern wird das neue Verzeichnis nicht angezeigt.
 
-Wenn ein Gastbenutzer Zugriff auf ein Verzeichnis hat, aber das neue Verzeichnis nicht im Azure-Portal angezeigt wird, wenn Sie versuchen, in ihren Bereich **Verzeichnis und Abonnement** zu wechseln, stellen Sie sicher, dass der Gastbenutzer den Einladungprozess abgeschlossen hat. Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
+Wenn ein Gastbenutzer Zugriff auf ein Verzeichnis hat, aber das neue Verzeichnis nicht im Azure-Portal angezeigt wird, wenn er versucht, auf der Seite **Verzeichnisse** dorthin zu wechseln, stellen Sie sicher, dass der Gastbenutzer den Einladungprozess abgeschlossen hat. Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/external-identities/redemption-experience.md).
 
 ### <a name="guest-user-does-not-see-resources"></a>Gastbenutzern werden keine Ressourcen angezeigt.
 
-Wenn einem Gastbenutzer der Zugriff auf ein Verzeichnis gewährt wurde, er aber die Ressourcen, auf die er im Azure-Portal Zugriff erhalten hat, nicht sieht, stellen Sie sicher, dass der Gastbenutzer das richtige Verzeichnis ausgewählt hat. Ein Gastbenutzer kann Zugriff auf mehrere Verzeichnisse erhalten. Klicken Sie zum Wechseln des Verzeichnisses oben links auf **Verzeichnis und Abonnement**, und klicken Sie dann auf das entsprechende Verzeichnis.
+Wenn einem Gastbenutzer der Zugriff auf ein Verzeichnis gewährt wurde, er aber die Ressourcen, auf die er im Azure-Portal Zugriff erhalten hat, nicht sieht, stellen Sie sicher, dass der Gastbenutzer das richtige Verzeichnis ausgewählt hat. Ein Gastbenutzer kann Zugriff auf mehrere Verzeichnisse erhalten. Klicken Sie zum Wechseln des Verzeichnisses oben links auf **Einstellungen** > **Verzeichnisse**, und klicken Sie dann auf das entsprechende Verzeichnis.
 
-![Bereich „Verzeichnisse und Abonnements“ im Azure-Portal](./media/role-assignments-external-users/directory-subscription.png)
+![Screenshot: Abschnitt „Verzeichnisse“ in den Portaleinstellungen im Azure-Portal](./media/role-assignments-external-users/directory-switch.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

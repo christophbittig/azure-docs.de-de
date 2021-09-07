@@ -5,16 +5,16 @@ description: Erfahren Sie, wie Sie HTTPS mit TLS 1.2 aktivieren, um einen über
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: aashishb
-author: aashishb
-ms.date: 03/11/2021
+ms.author: jhirono
+author: jhirono
+ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9531862ffb62a92a3b9be33b38e4ecef97bf974e
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ca7a6e424125980f79ccb6521df0d7b87a9ce456
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884658"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694965"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -152,16 +152,21 @@ Weitere Informationen finden Sie unter [AciWebservice.deploy_configuration()](/p
 
 Bei einer AKS-Bereitstellung mit einem benutzerdefinierten Zertifikat oder bei einer ACI-Bereitstellung müssen Sie Ihren DNS-Eintrag so aktualisieren, dass er auf die IP-Adresse des Bewertungsendpunkts verweist.
 
-  > [!IMPORTANT]
-  > Wenn Sie ein Zertifikat von Microsoft für die AKS-Bereitstellung verwenden, müssen Sie den DNS-Wert für den Cluster nicht manuell aktualisieren. Der Wert sollte automatisch festgelegt werden.
+> [!IMPORTANT]
+> Wenn Sie ein Zertifikat von Microsoft für die AKS-Bereitstellung verwenden, müssen Sie den DNS-Wert für den Cluster nicht manuell aktualisieren. Der Wert sollte automatisch festgelegt werden.
 
 Sie können die folgenden Schritte ausführen, um den DNS-Eintrag für Ihren benutzerdefinierten Domänennamen zu aktualisieren:
-* Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format *http://104.214.29.152:80/api/v1/service/<service-name>/score* aufweist. 
-* Verwenden Sie die Tools von Ihrer Domänennamen-Registrierungsstelle, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Eintrag muss auf die IP-Adresse des Bewertungsendpunkts verweisen.
-* Nach dem Aktualisieren des DNS-Eintrags können Sie die DNS-Auflösung mit dem Befehl *nslookup custom-domain-name* überprüfen. Wenn der DNS-Eintrag ordnungsgemäß aktualisiert wurde, verweist der benutzerdefinierte Domänenname auf die IP-Adresse des Bewertungsendpunkts.
-* Abhängig von der Registrierungsstelle und dem TTL-Wert (Time-to-Live), der für den Domänennamen konfiguriert ist, kann es einige Minuten bis mehrere Stunden dauern, bevor Clients den Domänennamen auflösen können.
+1. Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format `http://104.214.29.152:80/api/v1/service/<service-name>/score` aufweist. In diesem Beispiel lautet die IP-Adresse 104.214.29.152.
+1. Verwenden Sie die Tools von Ihrer Domänennamen-Registrierungsstelle, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Datensatz ordnet den FQDN (z. B. www\.contoso.com) der IP-Adresse zu. Der Eintrag muss auf die IP-Adresse des Bewertungsendpunkts verweisen.
 
+    > [!TIP]
+    > Microsoft ist nicht für die Aktualisierung des DNS für Ihren benutzerdefinierten DNS-Namen oder Ihr Zertifikat verantwortlich. Sie müssen es mit Ihrer Domänennamenregistrierungsstelle aktualisieren.
 
+1. Nach dem Aktualisieren des DNS-Eintrags können Sie die DNS-Auflösung mit dem Befehl *nslookup custom-domain-name* überprüfen. Wenn der DNS-Eintrag ordnungsgemäß aktualisiert wurde, verweist der benutzerdefinierte Domänenname auf die IP-Adresse des Bewertungsendpunkts.
+
+    Abhängig von der Registrierungsstelle und dem TTL-Wert (Time-to-Live), der für den Domänennamen konfiguriert ist, kann es einige Minuten bis mehrere Stunden dauern, bevor Clients den Domänennamen auflösen können.
+
+Weitere Informationen zur DNS-Auflösung mit Azure Machine Learning finden Sie unter [Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server](how-to-custom-dns.md).
 ## <a name="update-the-tlsssl-certificate"></a>Aktualisieren des TSL/SSL-Zertifikats
 
 TLS/SSL-Zertifikate laufen ab und müssen erneuert werden. In der Regel erfolgt dies jedes Jahr. Verwenden Sie die Informationen in den folgenden Abschnitten, um das Zertifikat für in Azure Kubernetes Service bereitgestellte Modelle zu aktualisieren und zu erneuern:
@@ -263,3 +268,4 @@ aks_target.update(update_config)
 In diesem Artikel werden folgende Themen erläutert:
 + [Nutzen eines als Webdienst bereitgestellten Machine Learning-Modells](how-to-consume-web-service.md)
 + [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
++ [Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server](how-to-custom-dns.md)

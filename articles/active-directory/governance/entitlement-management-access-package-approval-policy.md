@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 05/16/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c857de5c9182d49e2527c9cbf416d7012c46370
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3bd7a7908b94794c60f351297a34309e94d21137
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713952"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964030"
 ---
-# <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen (Vorschau) für ein Zugriffspaket in der Azure Active Directory-Berechtigungsverwaltung.
+# <a name="change-approval-and-requestor-information-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung.
 
 Als Zugriffspaket-Manager können Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen für ein Zugriffspaket jederzeit ändern, indem Sie eine vorhandene Richtlinie bearbeiten oder eine neue Richtlinie hinzufügen.
 
@@ -34,10 +34,9 @@ In diesem Artikel wird beschrieben, wie die Einstellungen zu Genehmigungs- und A
 Im Abschnitt „Anforderung“ geben Sie an, ob eine Genehmigung erforderlich ist, wenn Benutzer dieses Zugriffspaket anfordern. Die Genehmigungseinstellungen funktionieren wie folgt:
 
 - Bei einstufiger Genehmigung muss nur eine der ausgewählten genehmigenden Personen bzw. genehmigenden Fallbackpersonen eine Anforderung genehmigen. 
-- Bei zweistufiger Genehmigung muss nur eine der ausgewählten genehmigenden Personen pro Stufe eine Anforderung genehmigen.
-- Die genehmigende Person kann ein Vorgesetzter, ein interner Sponsor oder ein externer Sponsor sein, je nachdem, bei wem die Steuerung des Zugriffs gemäß der Richtlinie liegt.
-- Weder für die einstufige noch für die zweistufige Genehmigung ist die Genehmigung durch jede ausgewählte genehmigende Person erforderlich.
-- Die Genehmigungsentscheidung basiert darauf, welche genehmigende Person die Anforderung zuerst überprüft.
+- Nur eine der ausgewählten genehmigenden Personen aus jeder Phase muss eine Anforderung für eine mehrstufige Genehmigung genehmigen, damit die Anforderung in die nächste Phase übergeht.
+- Wenn eine der ausgewählten genehmigenden Personen in einer Phase eine Anforderung ablehnt, bevor eine andere genehmigende Person in dieser Phase sie genehmigt, oder wenn niemand die Anforderung genehmigt, wird die Anforderung beendet, und der Benutzer erhält keinen Zugriff.
+- Die genehmigende Person kann ein angegebener Benutzer oder ein Mitglied einer Gruppe, der Vorgesetzte des Anforderers, der interne Sponsor oder der externe Sponsor sein – je nachdem, für wen der Zugriff in der Richtlinie gesteuert wird.
 
 Eine Demonstration, wie einer Anforderungsrichtlinie genehmigende Personen hinzugefügt werden, finden Sie im folgenden Video:
 
@@ -68,7 +67,7 @@ Führen Sie diese Schritte aus, um die Genehmigungseinstellungen für Anforderun
 
 1. Um von Benutzern eine Begründung für die Anforderung des Zugriffspakets anzufordern, legen Sie die Umschaltfläche **Begründung des Anforderers erforderlich** auf **Ja** fest.
     
-1. Bestimmen Sie jetzt, ob für Anforderungen eine einstufige oder eine zweistufige Genehmigung erforderlich ist. Stellen Sie den Umschalter **Wie viele Phasen** für einstufige Genehmigung auf **1** oder für zweistufige Genehmigung auf **2**.
+1. Bestimmen Sie jetzt, ob für Anforderungen eine einstufige oder eine mehrstufige Genehmigung erforderlich ist. Legen Sie für **Wie viele Phasen** die Anzahl der erforderlichen Genehmigungsphasen fest.
 
     ![Zugriffspaket – Anforderungen – Genehmigungseinstellungen](./media/entitlement-management-access-package-approval-policy/approval.png)
 
@@ -101,9 +100,9 @@ Verwenden Sie die folgenden Schritte, um genehmigende Personen hinzuzufügen, na
 
     Die Begründung ist für andere genehmigende Personen und den Anfordernden sichtbar.
 
-### <a name="2-stage-approval"></a>Zweistufige Genehmigung
+### <a name="multi-stage-approval"></a>Mehrstufige Genehmigung
 
-Wenn Sie eine zweistufige Genehmigung ausgewählt haben, müssen Sie eine zweite genehmigende Person hinzufügen.
+Wenn Sie eine mehrstufige Genehmigung ausgewählt haben, müssen Sie für jede weitere Phase eine genehmigende Person hinzufügen.
 
 1. Hinzufügen der **zweiten genehmigenden Person**: 
     
@@ -121,16 +120,16 @@ Wenn Sie eine zweistufige Genehmigung ausgewählt haben, müssen Sie eine zweite
 
 ### <a name="alternate-approvers"></a>Alternative genehmigende Personen
 
-Sie können neben den ersten und zweiten genehmigenden Personen alternative genehmigende Personen angeben, die Anforderungen genehmigen können. Das Festlegen alternativer genehmigender Personen trägt dazu bei, dass die Anforderungen vor ihrem Ablauf (Timeout) genehmigt oder abgelehnt werden. Beim Auflisten genehmigender Personen kann bei zweistufiger Genehmigung zwischen erster und zweiter genehmigender Person unterschieden werden. 
+Sie können alternative genehmigende Personen angeben, ähnlich wie primäre genehmigende Personen, die Anforderungen in jeder Phase genehmigen können. Das Festlegen alternativer genehmigender Personen trägt dazu bei, dass die Anforderungen vor ihrem Ablauf (Timeout) genehmigt oder abgelehnt werden. Sie können neben der primären genehmigenden Person in jeder Phase alternative genehmigende Personen aufführen.
 
-Durch das Angeben von alternativen genehmigenden Personen kann eine ausstehende Anforderung gemäß dem von Ihnen bei der Richtlinieneinrichtung angegebenen Weiterleitungsplan an die alternativen genehmigenden Personen weitergeleitet werden, wenn die ersten oder zweiten genehmigenden Personen die Anforderung nicht genehmigen oder ablehnen können. Die alternativen genehmigenden Personen erhalten eine E-Mail mit der Aufforderung, die ausstehende Anforderung zu genehmigen oder abzulehnen.
+Durch das Angeben von alternativen genehmigenden Personen in jeder Phase kann eine ausstehende Anforderung gemäß dem von Ihnen bei der Richtlinieneinrichtung angegebenen Weiterleitungsplan an die alternativen genehmigenden Personen weitergeleitet werden, wenn die primären genehmigenden Personen die Anforderung nicht genehmigen oder ablehnen können. Die alternativen genehmigenden Personen erhalten eine E-Mail mit der Aufforderung, die ausstehende Anforderung zu genehmigen oder abzulehnen.
 
-Nachdem die Anforderung an die alternativen genehmigenden Personen weitergeleitet wurde, können die ersten oder zweiten genehmigenden Personen den Antrag dennoch weiterhin genehmigen oder ablehnen. Alternative genehmigende Personen nutzen dieselbe Website „Mein Zugriff“, um die ausstehende Anforderung zu genehmigen oder abzulehnen.
+Nachdem die Anforderung an die alternativen genehmigenden Personen weitergeleitet wurde, können die primären genehmigenden Personen den Antrag dennoch weiterhin genehmigen oder ablehnen. Alternative genehmigende Personen nutzen dieselbe Website „Mein Zugriff“, um die ausstehende Anforderung zu genehmigen oder abzulehnen.
 
-Es können Personen oder Gruppen von Personen aufgelistet werden, die als genehmigende Personen und alternative genehmigende Personen fungieren sollen. Bitte achten Sie darauf, dass Sie verschiedene Gruppen von Personen auflisten, die als erste, zweite und alternative genehmigende Personen fungieren sollen.
-Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgelistet haben, führen Sie Carol und Dave als alternative genehmigende Personen auf. Führen Sie die folgenden Schritte aus, um einem Zugriffspaket alternative genehmigende Personen hinzuzufügen:
+Sie können Personen oder Gruppen von Personen auflisten, die als genehmigende Personen und alternative genehmigende Personen fungieren sollen. Bitte achten Sie darauf, dass Sie verschiedene Gruppen von Personen auflisten, die als erste, zweite und alternative genehmigende Personen fungieren sollen.
+Wenn Sie beispielsweise Alice und Bob als genehmigende Personen in der ersten Phase aufgelistet haben, führen Sie Carol und Dave als alternative genehmigende Personen auf. Führen Sie die folgenden Schritte aus, um einem Zugriffspaket alternative genehmigende Personen hinzuzufügen:
 
-1. Klicken Sie unter der ersten genehmigenden Person, der zweiten genehmigenden Person oder unter beiden auf **Erweiterte Anforderungseinstellungen anzeigen**.
+1. Klicken Sie unter der genehmigenden Person in einer Phase auf **Erweiterte Anforderungseinstellungen anzeigen**.
 
     :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="Zugriffspakete – Richtlinie – Erweiterte Anforderungseinstellungen anzeigen":::
 
@@ -158,7 +157,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 1. Klicken Sie auf **Weiter**.
 
-## <a name="collect-additional-requestor-information-for-approval-preview"></a>Sammeln zusätzlicher Anfordererinformationen für die Genehmigung (Vorschau)
+## <a name="collect-additional-requestor-information-for-approval"></a>Sammeln zusätzlicher Anfordererinformationen für die Genehmigung
 
 Damit sichergestellt ist, dass Benutzer Zugriff auf die richtigen Zugriffspakete erhalten, können Sie anfordern, dass Anforderer zum Zeitpunkt der Anforderung eine Antwort in ein benutzerdefiniertes Textfeld eingeben oder Multiple-Choice-Fragen beantworten müssen. Es besteht eine Beschränkung auf 20 Fragen pro Richtlinie und 25 Antworten auf Multiple-Choice-Fragen. Die Fragen werden dann den genehmigenden Personen angezeigt, um ihnen die Entscheidung zu erleichtern.
 
@@ -177,12 +176,15 @@ Damit sichergestellt ist, dass Benutzer Zugriff auf die richtigen Zugriffspakete
 
 1. Wählen Sie das **Antwortformat** aus, in dem Anforderer antworten sollen. Antwortformate umfassen: *Kurzer Text*, *Mehrfachauswahl* und *Langer Text*.
  
-    ![Zugriffspaket – Richtlinie – „Anzeigen und bearbeiten“ für Antwortformat von Multiple Choice auswählen](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
+    ![Zugriffspaket – Richtlinie – Auswählen von „Edit and localize“ (Bearbeiten und lokalisieren) für das Antwortformat „Mehrfachauswahl“](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
-1. Wenn Sie „Multiple Choice“ auswählen, klicken Sie auf die Schaltfläche **Anzeigen und bearbeiten**, um die Antwortoptionen zu konfigurieren.
-    1. Nachdem Sie „Anzeigen und bearbeiten“ ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
+1. Wenn Sie „Mehrfachauswahl“ auswählen, klicken Sie auf die Schaltfläche **Edit and localize** (Bearbeiten und lokalisieren), um die Antwortoptionen zu konfigurieren.
+    1. Nachdem Sie „Edit and localize“ (Bearbeiten und lokalisieren) ausgewählt haben, wird der Bereich **Frage anzeigen/bearbeiten** angezeigt.
     1. Geben Sie die Antwortoptionen in die Felder **Antwortwerte** ein, die Sie dem Anforderer zur Verfügung stellen möchten, wenn dieser die Frage beantwortet.
-    1. Geben Sie so viele Antworten ein, wie Sie benötigen, und klicken Sie dann auf **Speichern**.
+    1. Geben Sie so viele Antworten ein, wie Sie benötigen.
+    1. Wenn Sie Ihre eigene Lokalisierung für die Mehrfachauswahloptionen hinzufügen möchten, wählen Sie für die Sprache, in der Sie eine bestimmte Option lokalisieren möchten, den **optionalen Sprachcode** aus.
+    1. Geben Sie die Option in der von Ihnen konfigurierten Sprache im Feld „Lokalisierter Text“ ein.
+    1. Wenn Sie alle Lokalisierungen hinzugefügt haben, die für die einzelnen Mehrfachauswahloption erforderlich sind, klicken Sie auf **Speichern**.
     
     ![Zugriffspaket – Richtlinie – Multiple Choice-Optionen eingeben](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
   
@@ -190,7 +192,7 @@ Damit sichergestellt ist, dass Benutzer Zugriff auf die richtigen Zugriffspakete
 
 1. Füllen Sie die restlichen Registerkarten (z. B. „Lebenszyklus“) nach Bedarf aus.
 
-Nachdem Sie Anfordererinformationen in Ihrer Zugriffspaketrichtlinie konfiguriert haben, können Sie die Antworten der Anforderer auf die Fragen anzeigen. Anleitungen zum Anzeigen von Anfordererinformationen finden Sie unter [Anzeigen der Antworten des Anforderers auf Fragen (Vorschau)](entitlement-management-request-approve.md#view-requestors-answers-to-questions-preview).
+Nachdem Sie Anfordererinformationen in Ihrer Zugriffspaketrichtlinie konfiguriert haben, können Sie die Antworten der Anforderer auf die Fragen anzeigen. Anleitungen zum Anzeigen von Anfordererinformationen finden Sie unter [Anzeigen der Antworten des Anforderers auf Fragen](entitlement-management-request-approve.md#view-requestors-answers-to-questions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Ändern der Lebenszykluseinstellungen für ein Zugriffspaket](entitlement-management-access-package-lifecycle-policy.md)

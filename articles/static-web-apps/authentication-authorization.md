@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ba278b80d75e64b4394bfeb1b98cd0ec2d805a8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065996"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469956"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Authentifizierung und Autorisierung für Azure Static Web Apps
 
@@ -97,7 +97,7 @@ Wenn der Benutzer in der Einladung auf den Link klickt, wird er aufgefordert, si
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Suchen Sie in der Liste nach dem Benutzer.
 1. Aktivieren Sie das Kontrollkästchen in der Zeile des Benutzers.
-1. Klicken Sie auf die Schaltfläche **Löschen** .
+1. Klicken Sie auf die Schaltfläche **Löschen**.
 
 Beachten Sie beim Entfernen eines Benutzers Folgendes:
 
@@ -122,6 +122,8 @@ Senden Sie unter der folgenden URL eine Anfrage, um für einzelne Apps zu verhin
 ```url
 https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
+
+Hinweis: Wenn Sie Azure Active Directory verwenden, geben Sie `aad` als Wert für den `<AUTHENTICATION_PROVIDER_NAME>`-Platzhalter an.
 
 ## <a name="system-folder"></a>Systemordner
 

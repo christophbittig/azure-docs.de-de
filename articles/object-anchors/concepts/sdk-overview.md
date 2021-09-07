@@ -2,24 +2,24 @@
 title: Übersicht über das Runtime-SDK
 description: Machen Sie sich mit dem Runtime-SDK für Object Anchors vertraut.
 author: craigktreasure
-manager: vriveras
+manager: rgarcia
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 07/23/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc197af9be61a98be1cb22c7ff9fd0e97c31fcbe
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047540"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710737"
 ---
 # <a name="runtime-sdk-overview"></a>Übersicht über das Runtime-SDK
 
 Dieser Abschnitt enthält eine allgemeine Übersicht über das Runtime-SDK für Object Anchors, das zur Objekterkennung mithilfe eines Object Anchors-Modells verwendet wird. Sie erhalten einen Einblick in die Darstellung eines Objekts und die Verwendung der verschiedenen Komponenten.
 
-Die im Folgenden beschriebenen Typen finden Sie im Namespace **Microsoft.MixedReality.ObjectAnchors**.
+Alle unten beschriebenen Typen befinden sich in einem der folgenden Namespaces: **Microsoft.Azure.ObjectAnchors**, **Microsoft.Azure.ObjectAnchors.Diagnostics** oder **Microsoft.Azure.ObjectAnchors.SpatialGraph**.
 
 ## <a name="types"></a>Typen
 
@@ -30,6 +30,20 @@ Eine [ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel)-Klasse
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
 Eine [ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea)-Klasse gibt den Bereich an, in dem nach einem oder mehreren Objekten gesucht werden soll. Sie wird von der Knoten-ID eines Raumdiagramms und den räumlichen Begrenzungen in dem Koordinatensystem definiert, für das diese ID steht. Das Runtime-SDK für Object Anchors unterstützt vier Begrenzungsarten: **Sichtfeld**, **Begrenzungsrahmen**, **Kugel** und **Standort**.
+
+### <a name="accountinformation"></a>AccountInformation
+
+In einer [AccountInformation](/dotnet/api/microsoft.azure.objectanchors.accountinformation)-Klasse werden die ID, der Schlüssel und die Domäne für Ihr Azure Object Anchors-Konto gespeichert.
+
+### <a name="objectanchorssession"></a>ObjectAnchorsSession
+
+Eine [ObjectAnchorsSession](/dotnet/api/microsoft.azure.objectanchors.objectanchorssession)-Klasse steht für eine Azure Object Anchors-Sitzung, die zum Erstellen von „ObjectObserver“-Instanzen für die Erkennung von Objekten in der physischen Welt verwendet wird.
+
+### <a name="objectobserver"></a>ObjectObserver
+
+Eine [ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver)-Klasse lädt Objektmodelle, erkennt ihre Instanzen und meldet die räumliche Lage jeder Instanz im HoloLens-Koordinatensystem nach den sechs Freiheitsgraden (6-DoF, Six Degrees of Freedom).
+
+Obwohl alle Objektmodelle und Instanzen aus einem **Observer** generiert werden, ist deren Lebensdauer voneinander unabhängig. Eine Anwendung kann den Observer löschen und das Objektmodell oder die Instanz weiterhin verwenden.
 
 ### <a name="objectquery"></a>ObjectQuery
 
@@ -51,7 +65,8 @@ Die Bodenfläche ist die niedrigste horizontale Fläche im Suchbereich. Sie stel
 
 Die Eigenschaft [ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) gibt den erwarteten maximalen Winkel in Grad an, der zwischen der Aufwärtsrichtung einer Objektinstanz und der Schwerkraft erwartet wird.
 
-Dieser Parameter stellt eine weitere Einschränkung bei der Aufwärtsrichtung einer geschätzten räumlichen Lage dar. Wenn ein Objekt aufrecht steht, kann dieser Parameter beispielsweise 0 sein. Object Anchors ist nicht darauf ausgelegt, Objekte zu erkennen, die von diesem Modell abweichen. Wenn das Modell aufrecht ist, wird eine seitlich liegende Instanz nicht erkannt. Für das seitlich liegende Layout müsste ein neues Modell verwendet werden. Die gleiche Regel gilt für die Artikulation.
+Dieser Parameter stellt eine weitere Einschränkung bei der Aufwärtsrichtung einer geschätzten räumlichen Lage dar. Wenn ein Objekt aufrecht steht, kann dieser Parameter beispielsweise 0 sein. Object Anchors ist nicht darauf ausgelegt, Objekte zu erkennen, die von diesem Modell abweichen. Wenn das Modell aufrecht ist, wird eine seitlich liegende Instanz nicht erkannt. Für das seitlich liegende Layout müsste ein neues Modell verwendet werden.
+Die gleiche Regel gilt für die Artikulation.
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
@@ -69,12 +84,6 @@ Eine [ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance)-
 
 Eine Instanz wird durch einen Aufruf der Methode `ObjectObserver.DetectAsync` erstellt und dann automatisch im Hintergrund aktualisiert, solange sie aktiv ist. Eine Anwendung kann dem Ereignis für die Statusveränderung in Instanzen lauschen oder den Nachverfolgungsmodus ändern, um Updates anzuhalten oder fortzusetzen. Wenn keine Nachverfolgung möglich ist, wird eine Instanz automatisch aus dem **Observer** entfernt.
 
-### <a name="objectobserver"></a>ObjectObserver
-
-Eine [ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver)-Klasse lädt Objektmodelle, erkennt ihre Instanzen und meldet die räumliche Lage jeder Instanz im HoloLens-Koordinatensystem nach den sechs Freiheitsgraden (6-DoF, Six Degrees of Freedom).
-
-Obwohl alle Objektmodelle und Instanzen aus einem **Observer** generiert werden, ist deren Lebensdauer voneinander unabhängig. Eine Anwendung kann den Observer löschen und das Objektmodell oder die Instanz weiterhin verwenden.
-
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
 Die [ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession)-Klasse zeichnet Diagnosedaten auf und schreibt diese in ein Archiv.
@@ -90,14 +99,16 @@ In diesem Abschnitt wird die Verwendung des Runtime-SDK grundlegend erläutert. 
 Anwendungen müssen zunächst die API `ObjectObserver.IsSupported()` aufrufen, um zu bestimmen, ob Object Anchors auf dem Gerät unterstützt wird. Wenn die API `ObjectObserver.IsSupported()` den Wert `false` zurückgibt, sollten Sie überprüfen, ob die Option **spatialPerception** in der Anwendung aktiviert ist und/oder ein Upgrade auf das neueste HoloLens-Betriebssystem durchführen.
 
 ```cs
+using Microsoft.Azure.ObjectAnchors;
+
 if (!ObjectObserver.IsSupported())
 {
     // Handle the error
 }
 
 // This call should grant the access we need.
-var status = await ObjectObserver.RequestAccessAsync();
-if(status != ObjectObserverStatus.Allowed)
+ObjectObserverAccessStatus status = await ObjectObserver.RequestAccessAsync();
+if (status != ObjectObserverAccessStatus.Allowed)
 {
     // Handle the error
 }
@@ -106,69 +117,126 @@ if(status != ObjectObserverStatus.Allowed)
 Als Nächstes erstellt die Anwendung einen Objektobserver und lädt die vom [Object Anchors-Modellkonvertierungsdienst](../quickstarts/get-started-model-conversion.md) generierten erforderlichen Modelle.
 
 ```cs
-var observer = new ObjectObserver();
+using Microsoft.Azure.ObjectAnchors;
 
-byte[] modelAsBytes; // Load a model into a byte array. Model could be a file, an embedded resource, or a network stream.
-var model = await observer.LoadObjectModelAsync(modelAsBytes);
+// Note that you need to provide the Id, Key and Domain for your Azure Object
+// Anchors account.
+Guid accountId = new Guid("[your account id]");
+string accountKey = "[your account key]";
+string accountDomain = "[your account domain]";
 
-// Note that after a model is loaded, its vertices and normals are transformed into a centered coordinate system for the 
-// ease of computing the object pose. The rigid transform can be retrieved through the `OriginToCenterTransform` property.
+AccountInformation accountInformation = new AccountInformation(accountId, accountKey, accountDomain);
+ObjectAnchorsSession session = new ObjectAnchorsSession(accountInformation);
+ObjectObserver observer = session.CreateObjectObserver();
+
+// Load a model into a byte array. The model could be a file, an embedded
+// resource, or a network stream.
+byte[] modelAsBytes;
+ObjectModel model = await observer.LoadObjectModelAsync(modelAsBytes);
+
+// Note that after a model is loaded, its vertices and normals are transformed
+// into a centered coordinate system for the ease of computing the object pose.
+// The rigid transform can be retrieved through the `OriginToCenterTransform`
+// property.
 ```
 
 Die Anwendung erstellt eine Abfrage, um Instanzen dieses Modells in einem Bereich zu erkennen.
 
 ```cs
-var coordinateSystem = default(SpatialGraphCoordinateSystem);
-var searchAreaAsBox = ObjectSearchArea.FromOrientedBox(coordinateSystem, default(SpatialOrientedBox));
+using Microsoft.Azure.ObjectAnchors;
+using Microsoft.Azure.ObjectAnchors.SpatialGraph;
+using Microsoft.Azure.ObjectAnchors.Unity;
+using UnityEngine;
 
-// Optionally change the parameters, otherwise use the default values embedded in the model.
-var query = new ObjectQuery(model);
+// Get the coordinate system.
+SpatialGraphCoordinateSystem? coordinateSystem = null;
+
+#if WINDOWS_UWP
+SpatialCoordinateSystem worldOrigin = ObjectAnchorsWorldManager.WorldOrigin;
+if (worldOrigin != null)
+{
+    coordinateSystem = await Task.Run(() => worldOrigin.TryToSpatialGraph());
+}
+#endif
+
+if (!coordinateSystem.HasValue)
+{
+    Debug.LogError("no coordinate system?");
+    return;
+}
+
+// Get the search area.
+SpatialFieldOfView fieldOfView = new SpatialFieldOfView
+{
+    Position = Camera.main.transform.position.ToSystem(),
+    Orientation = Camera.main.transform.rotation.ToSystem(),
+    FarDistance = 4.0f, // Far distance in meters of object search frustum.
+    HorizontalFieldOfViewInDegrees = 75.0f, // Horizontal field of view in
+                                            // degrees of object search frustum.
+    AspectRatio = 1.0f // Aspect ratio (horizontal / vertical) of object search
+                       // frustum.
+};
+
+ObjectSearchArea searchArea = ObjectSearchArea.FromFieldOfView(coordinateSystem.Value, fieldOfView);
+
+// Optionally change the parameters, otherwise use the default values embedded
+// in the model.
+ObjectQuery query = new ObjectQuery(model);
 query.MinSurfaceCoverage = 0.2f;
 query.ExpectedMaxVerticalOrientationInDegrees = 1.5f;
 query.MaxScaleChange = 0.1f;
-query.SearchAreas.Add(searchAreaAsBox);
+query.SearchAreas.Add(searchArea);
 
-// Detection could take long, run in a background thread.
-var detectedObjects = await observer.DetectAsync(query);
+// Detection could take a while, so we run it in a background thread.
+IList<ObjectInstance> detectedObjects = await observer.DetectAsync(query);
 ```
 
 Standardmäßig wird jede erkannte Instanz vom **Observer** automatisch nachverfolgt. Bei Bedarf können Sie diese Instanzen bearbeiten, indem Sie den Nachverfolgungsmodus ändern oder dem Ereignis für die Statusveränderung lauschen.
 
 ```cs
-foreach (var instance in detectedObjects)
+using Microsoft.Azure.ObjectAnchors;
+
+foreach (ObjectInstance instance in detectedObjects)
 {
     // Supported modes:
-    // "LowLatencyCoarsePosition" - consumes less CPU cycles thus fast to update the state.
-    // "HighLatencyAccuratePosition" - (not yet implemented) consumes more CPU cycles thus potentially taking longer time to update the state.
-    // "Paused" - stops to update the state until mode changed to low or high.
+    // "LowLatencyCoarsePosition"    - Consumes less CPU cycles thus fast to
+    //                                 update the state.
+    // "HighLatencyAccuratePosition" - (Not yet implemented) Consumes more CPU
+    //                                 cycles thus potentially taking longer
+    //                                 time to update the state.
+    // "Paused"                      - Stops to update the state until mode
+    //                                 changed to low or high.
     instance.Mode = ObjectInstanceTrackingMode.LowLatencyCoarsePosition;
 
     // Listen to state changed event on this instance.
     instance.Changed += InstanceChangedHandler;
 
     // Optionally dispose an instance if not interested in it.
-    //instance.Dispose();
+    // instance.Dispose();
 }
 ```
 
 Im Ereignis für die Statusveränderung können Sie den aktuellen Status abfragen oder Instanzen löschen, wenn die Nachverfolgung nicht mehr möglich ist.
 
 ```cs
+using Microsoft.Azure.ObjectAnchors;
+
 var InstanceChangedHandler = new Windows.Foundation.TypedEventHandler<ObjectInstance, ObjectInstanceChangedEventArgs>((sender, args) =>
 {
     // Try to query the current instance state.
-    var state = sender.TryGetCurrentState();
+    ObjectInstanceState? state = sender.TryGetCurrentState();
 
     if (state.HasValue)
     {
         // Process latest state via state.Value.
-        // An object pose includes scale, rotation and translation, applied in the same order
-        // to the object model in the centered coordinate system.
+        // An object pose includes scale, rotation and translation, applied in
+        // the same order to the object model in the centered coordinate system.
     }
     else
     {
         // This object instance is lost for tracking, and will never be recovered.
-        // The caller can detach the Changed event handler from this instance and dispose it.
+        // The caller can detach the Changed event handler from this instance
+        // and dispose it.
         sender.Dispose();
     }
 });
@@ -177,15 +245,19 @@ var InstanceChangedHandler = new Windows.Foundation.TypedEventHandler<ObjectInst
 Außerdem kann eine Anwendung optional eine oder mehrere Diagnosesitzungen für das Offlinedebuggen aufzeichnen.
 
 ```cs
+using Microsoft.Azure.ObjectAnchors;
+using Microsoft.Azure.ObjectAnchors.Diagnostics;
+
 string diagnosticsFolderPath = Windows.Storage.ApplicationData.Current.TemporaryFolder.Path;
 const uint maxSessionSizeInMegaBytes = uint.MaxValue;
 
 // Recording starts on the creation of a diagnostics session.
-var diagnostics = new ObjectDiagnosticsSession(observer, maxSessionSizeInMegaBytes);
+ObjectDiagnosticsSession diagnostics = new ObjectDiagnosticsSession(observer, maxSessionSizeInMegaBytes);
 
 // Wait for the observer to do a job.
 
-// Application can report some **pseudo ground-truth** pose for an instance acquired from other means.
+// Application can report some **pseudo ground-truth** pose for an instance
+// acquired from other means.
 diagnostics.ReportActualInstanceLocation(instance, coordinateSystem, Vector3.Zero, Quaternion.Identity);
 
 // Close a session and write the diagnostics into an archive at specified location.
@@ -195,7 +267,9 @@ await diagnostics.CloseAsync(System.IO.Path.Combine(diagnosticsFolderPath, "diag
 Schließlich geben Sie die Ressourcen frei, indem alle Objekte gelöscht werden.
 
 ```cs
-foreach(var instance in activeInstances)
+using Microsoft.Azure.ObjectAnchors;
+
+foreach (ObjectInstance instance in activeInstances)
 {
     instance.Changed -= InstanceChangedHandler;
     instance.Dispose();

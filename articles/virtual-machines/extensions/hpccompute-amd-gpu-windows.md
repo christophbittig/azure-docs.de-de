@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c356ea88d23bf431df2b7785003ef23d28b5c598
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: bcf66b905b1944a160a19c35ff8d8e00c9a52e67
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572441"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446032"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD-GPU-Treibererweiterung für Windows
 
 Dieser Artikel bietet eine Übersicht über die VM-Erweiterung zur Bereitstellung von AMD-GPU-Treibern auf Windows-VMs der [NVv4-Serie](../nvv4-series.md). Bei der Installation von AMD Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [AMD-Endbenutzer-Lizenzvertrags](https://amd.com/radeonsoftwarems) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
-Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](../windows/n-series-amd-driver-setup.md) verfügbar.
+Es sind Anleitungen für die manuelle Installation der Treiber und aktuell unterstützten Versionen verfügbar. Weitere Informationen finden Sie unter [Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows](../windows/n-series-amd-driver-setup.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

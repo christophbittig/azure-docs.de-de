@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 07/26/2021
 ms.author: banders
-ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6654098b7fe2b212ac87d4ae52feaed128579dc5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088118"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711355"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement für eine Microsoft-Kundenvereinbarung
 
@@ -181,7 +181,7 @@ Azure Marketplace-Produkte werden zusammen mit den entsprechenden Abonnements �
 
 ### <a name="azure-reservations-transfer"></a>Übertragung von Azure-Reservierungen
 
-Bei der Übertragung von EA-Abonnements (Enterprise Agreement) oder Microsoft-Kundenvereinbarungen werden Azure-Reservierungen nicht automatisch mit den Abonnements verschoben. [Wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), wenn Sie Reservierungen verschieben möchten.
+Bei der Übertragung von EA-Abonnements (Enterprise Agreement) oder Microsoft-Kundenvereinbarungen werden Azure-Reservierungen automatisch mit den Abonnements verschoben.
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 

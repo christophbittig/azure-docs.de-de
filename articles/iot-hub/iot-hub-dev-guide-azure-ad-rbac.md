@@ -7,15 +7,15 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 06/24/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 196afc38c24254c4628173180205a858d1085eeb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b6ea56942580b3b8785dcf2b694b30ad64e8a258
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489932"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112894957"
 ---
 # <a name="control-access-to-iot-hub-using-azure-active-directory"></a>Steuern des Zugriffs auf IoT Hub mithilfe von Azure Active Directory
 
@@ -80,7 +80,7 @@ In den folgenden Tabellen werden die Berechtigungen beschrieben, die für Vorgä
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/send/action | Sendet Cloud-zu-Gerät-Nachrichten an ein beliebiges Gerät.  |
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/feedback/action | Empfangen, Abschließen oder Verwerfen von Feedbackbenachrichtigungen von Cloud-zu-Gerät-Nachrichten. |
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/queue/purge/action | Löscht alle ausstehenden Befehle für ein Gerät.  |
-| Microsoft.Devices/IotHubs/directMethods/invoke/action | Ruft eine direkte Methode für ein Gerät auf. |
+| Microsoft.Devices/IotHubs/directMethods/invoke/action | Ruft eine direkte Methode auf einem beliebigen Gerät oder Modul auf. |
 | Microsoft.Devices/IotHubs/fileUpload/notifications/action  | Empfangen, Abschließen oder Abbrechen von Dateiuploadbenachrichtigungen. |
 | Microsoft.Devices/IotHubs/statistics/read | Liest Geräte- und Dienststatistiken. |
 | Microsoft.Devices/IotHubs/configurations/read | Liest Geräteverwaltungskonfigurationen. |
@@ -94,6 +94,9 @@ In den folgenden Tabellen werden die Berechtigungen beschrieben, die für Vorgä
 > - Für den Vorgang [Zwillingsabfrage](/rest/api/iothub/service/query/gettwins) ist `Microsoft.Devices/IotHubs/twins/read` erforderlich.
 > - Das [Abrufen des digitalen Zwillings](/rest/api/iothub/service/digitaltwin/getdigitaltwin) erfordert `Microsoft.Devices/IotHubs/twins/read`, während das [Aktualisieren des digitalen Zwillings](/rest/api/iothub/service/digitaltwin/updatedigitaltwin) `Microsoft.Devices/IotHubs/twins/write` erfordert.
 > - Sowohl das [Aufrufen eines Komponentenbefehls](/rest/api/iothub/service/digitaltwin/invokecomponentcommand) als auch das [Aufrufen eines Befehls auf Stammebene](/rest/api/iothub/service/digitaltwin/invokerootlevelcommand) erfordern `Microsoft.Devices/IotHubs/directMethods/invoke/action`.
+
+> [!NOTE]
+> Zum Abrufen von Daten aus IoT Hub mithilfe von Azure AD müssen Sie das [Routing zu einem separaten Event Hub einrichten](iot-hub-devguide-messages-d2c.md#event-hubs-as-a-routing-endpoint). Um auf den [mit Event Hub kompatiblen integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md) zuzugreifen, verwenden Sie wie zuvor die Methode mit einer Verbindungszeichenfolge (freigegebener Zugriffsschlüssel). 
 
 ## <a name="azure-ad-access-from-azure-portal"></a>Azure AD-Zugriff über das Azure-Portal
 
@@ -109,9 +112,15 @@ Um sicherzustellen, dass ein Konto nicht über Zugriffsrechte außerhalb der zug
 
 Stellen Sie dann sicher, dass das Konto nicht über andere Rollen verfügt, die die Berechtigung **Microsoft.Devices/iotHubs/listkeys/action** einschließen, z. B. [Besitzer](../role-based-access-control/built-in-roles.md#owner) oder [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor). Weisen Sie die Rolle [Leser](../role-based-access-control/built-in-roles.md#reader) zu, damit das Konto über Ressourcenzugriff verfügt und im Portal navigieren kann.
 
-## <a name="built-in-event-hub-compatible-endpoint-doesnt-support-azure-ad-authentication"></a>Der integrierte Event Hub-kompatible Endpunkt unterstützt nicht die Azure AD-Authentifizierung.
+## <a name="azure-iot-extension-for-azure-cli"></a>Azure IoT-Erweiterung für die Azure CLI
 
-Der [integrierte Endpunkt](iot-hub-devguide-messages-read-builtin.md) unterstützt keine Azure AD-Integration. Der Zugriff darauf mit einem Sicherheitsprinzipal oder einer verwalteten Identität ist nicht möglich. Um auf den integrierten Endpunkt zuzugreifen, verwenden Sie wie zuvor die Methode mit einer Verbindungszeichenfolge (freigegebener Zugriffsschlüssel).
+Die meisten Befehle für IoT Hub unterstützen die Azure AD-Authentifizierung. Der Authentifizierungstyp, der zum Ausführen von Befehlen verwendet wird, kann mit dem Parameter `--auth-type` gesteuert werden, der die Werte „key“ oder „login“ akzeptiert. Der Wert von `key` wird standardmäßig festgelegt.
+
+- Wenn `--auth-type` den Wert `key` hat, ermittelt die CLI bei der Interaktion mit IoT Hub wie zuvor automatisch eine geeignete Richtlinie.
+
+- Wenn `--auth-type` den Wert `login` hat, wird für den Vorgang ein Zugriffstoken aus dem über die Azure CLI angemeldeten Prinzipal verwendet.
+
+Weitere Informationen finden Sie auf der [Releaseseite für die Azure IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension/releases/tag/v0.10.12).
 
 ## <a name="sdk-samples"></a>SDK-Beispiele
 

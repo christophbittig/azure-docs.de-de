@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: fa09a03a9ffda04e09bbd5708e97334304013078
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2bd5ae6696c5ce1c2d4ea3be974245fde1053b71
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006579"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416288"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -21,7 +21,7 @@ ms.locfileid: "112006579"
 - Besitzer
 - Manager
 
-Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165290) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
+Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2166002) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
 
 ## <a name="access-your-account-settings"></a>Zugreifen auf Ihre Kontoeinstellungen
 

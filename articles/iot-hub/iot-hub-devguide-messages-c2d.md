@@ -2,19 +2,18 @@
 title: Grundlegendes zum Azure IoT Hub-C2D-Messaging | Microsoft-Dokumentation
 description: In diesem Entwicklerhandbuch wird die Verwendung des C2D-Messagings mit Ihrem IoT-Hub beschrieben. Es enthält Informationen über den Lebenszyklus von Nachrichten und die Konfigurationsoptionen.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cc681d843d1fc68b3da6918724c7ad3e3ca5e37e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761779"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339111"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -76,7 +75,7 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaftswert | Verhalten |
 | ------------ | -------- |
-| none     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
+| Keine     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
 | Positiv | Wenn die C2D-Nachricht den Status *Abgeschlossen* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Negativ | Wenn die C2D-Nachricht den Status *Unzustellbar* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Voll     | Der IoT-Hub generiert in beiden Fällen eine Feedbacknachricht. |
@@ -85,7 +84,7 @@ Wenn der **Ack**-Wert auf *Voll* festgelegt ist und Sie keine Feedbacknachricht 
 
 Wie im Abschnitt [Endpunkte](iot-hub-devguide-endpoints.md) erläutert, übermittelt der IoT-Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (*/messages/servicebound/feedback*). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | Beschreibung |
+| Eigenschaft     | BESCHREIBUNG |
 | ------------ | ----------- |
 | EnqueuedTime | Ein Zeitstempel, der angibt, wann die Feedbacknachricht vom Hub empfangen wurde |
 | UserId       | `{iot hub name}` |
@@ -100,7 +99,7 @@ Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von d
 | EnqueuedTimeUtc    | Ein Zeitstempel, der angibt, wann das Ergebnis der Nachricht zustande gekommen ist (z.B. hat der Hub die Feedbacknachricht erhalten, oder die ursprüngliche Nachricht ist abgelaufen) |
 | OriginalMessageId  | Die *MessageId* der C2D-Nachricht, auf die sich das Feedback bezieht |
 | StatusCode         | Eine in Feedbacknachrichten verwendete erforderliche Zeichenfolge, die vom IoT-Hub generiert wird: <br/> *Erfolgreich* <br/> *Abgelaufen* <br/> *DeliveryCountExceeded* <br/> *Rejected (Abgelehnt)* <br/> *Gelöscht* |
-| Beschreibung        | Zeichenfolgenwerte für *StatusCode* |
+| BESCHREIBUNG        | Zeichenfolgenwerte für *StatusCode* |
 | deviceId           | Die *DeviceId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 | DeviceGenerationId | Die *DeviceGenerationId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 
@@ -141,7 +140,7 @@ Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Mess
 | maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät | 1 bis 100; Standard: 10 |
 | feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten | ISO_8601-Intervall bis zu zwei Tage (mindestens eine Minute). Standardwert: Eine Stunde |
 | feedback.maxDeliveryCount | Maximale Zustellungsanzahl für die Feedbackwarteschlange | 1 bis 100; Standard: 10 |
-| feedback.lockDurationAsIso8601 | Maximale Zustellungsanzahl für die Feedbackwarteschlange | ISO_8601-Intervall zwischen fünf und 300 Sekunden (mindestens fünf Sekunden). Standardwert: 60 Sekunden |
+| feedback.lockDurationAsIso8601 | Sperrdauer für die Feedbackwarteschlange | ISO_8601-Intervall zwischen fünf und 300 Sekunden (mindestens fünf Sekunden). Standardwert: 60 Sekunden |
 
 Sie können die Konfigurationsoptionen auf eine der folgenden Weisen festlegen:
 

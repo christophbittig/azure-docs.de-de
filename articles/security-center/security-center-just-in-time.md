@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 977284ba735eef4f02907d63ee1ae65332d7990f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916149"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778440"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -35,9 +35,9 @@ Auf dieser Seite erfahren Sie, wie Sie JIT in Ihr Sicherheitsprogramm einbinden.
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
-|Unterstützte VMs:|![Ja](./media/icons/yes-icon.png) Durch Azure Resource Manager bereitgestellte VMs.<br>![Nein](./media/icons/no-icon.png) Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>![Nein](./media/icons/no-icon.png) Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](../firewall-manager/overview.md) gesteuert werden.|
-|Erforderliche Rollen und Berechtigungen:|Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.<br>Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Unterstützte VMs:|:::image type="icon" source="./media/icons/yes-icon.png"::: Über Azure Resource Manager bereitgestellte VMs.<br>:::image type="icon" source="./media/icons/no-icon.png"::: Mithilfe von klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>:::image type="icon" source="./media/icons/no-icon.png"::: Über Azure Firewall-Instanzen geschützte VMs, die mit [Azure Firewall Manager](../firewall-manager/overview.md) gesteuert werden.|
+|Erforderliche Rollen und Berechtigungen:|Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.<br>Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 
@@ -107,7 +107,7 @@ Sie können die Just-In-Time-Konfiguration eines virtuellen Computers ändern, i
 
 So bearbeiten Sie die vorhandenen JIT-Regeln für eine VM
 
-1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
+1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **JIT-VM-Zugriff** aus.
 
 1. Klicken Sie auf der Registerkarte **Konfiguriert** mit der rechten Maustaste auf die VM, zu der Sie einen Port hinzufügen möchten, und wählen Sie „Bearbeiten“ aus. 
 
@@ -125,7 +125,7 @@ So bearbeiten Sie die vorhandenen JIT-Regeln für eine VM
 
 Sie können JIT auf einer VM von den Seiten für virtuelle Azure-Computer des Azure-Portals aus aktivieren.
 
-![Konfigurieren des JIT-VM-Zugriffs auf virtuellen Azure-Computern](./media/security-center-just-in-time/jit-config-virtual-machines.gif)
+![Konfigurieren des JIT-VM-Zugriffs in Azure-VMs](./media/security-center-just-in-time/jit-config-virtual-machines.gif)
 
 > [!TIP]
 > Wenn für einen virtuellen Computer bereits Just-In-Time aktiviert ist, können Sie auf der Konfigurationsseite sehen, dass Just-In-Time aktiviert ist. Zudem können Sie über den Link die Just-In-Time-VM-Zugriffsseite in Security Center öffnen, um die Einstellungen anzuzeigen und zu ändern.
@@ -268,7 +268,7 @@ Wenn JIT für einen virtuellen Computer aktiviert ist, müssen Sie zum Herstelle
 
 Wenn JIT für einen virtuellen Computer aktiviert ist, müssen Sie zum Herstellen der Verbindung entsprechend den Zugriff anfordern. Sie können Zugriff auf jede der unterstützten Arten anfordern, unabhängig davon, wie Sie JIT aktiviert haben.
 
-  >![JIT-Just-In-Time-Anforderung](./media/security-center-just-in-time/jit-request-vm.png)
+  >![Just-In-Time-Anforderung](./media/security-center-just-in-time/jit-request-vm.png)
 
 
 So fordern Sie den Zugriff von virtuellen Azure-Computern an
@@ -333,13 +333,6 @@ Weitere Informationen finden Sie unter [Richtlinien für den JIT-Netzwerkzugriff
 
 ---
 
-
-
-
-
-
-
-
 ## <a name="audit-jit-access-activity-in-security-center"></a>Überwachen einer JIT-Zugriffsaktivität über Security Center
 
 Mit der Protokollsuche erhalten Sie Einblicke in VM-Aktivitäten. So zeigen Sie die Protokolle an:
@@ -350,7 +343,7 @@ Mit der Protokollsuche erhalten Sie Einblicke in VM-Aktivitäten. So zeigen Sie 
  
 1. Wählen Sie im Menü **Aktivitätsprotokoll** aus.
 
-   ![Auswählen des Just-In-Time-JIT-Aktivitätsprotokolls](./media/security-center-just-in-time/jit-select-activity-log.png)
+   ![Auswählen des Just-In-Time-Aktivitätsprotokolls](./media/security-center-just-in-time/jit-select-activity-log.png)
 
    Das Aktivitätsprotokoll enthält eine gefilterte Ansicht der früheren Vorgänge für diesen virtuellen Computer zusammen mit der Uhrzeit, dem Datum und dem Abonnement.
 
@@ -358,14 +351,9 @@ Mit der Protokollsuche erhalten Sie Einblicke in VM-Aktivitäten. So zeigen Sie 
 
 
 
-
-
-
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie den Just-In-Time-VM-Zugriff einrichten und nutzen. Lesen Sie den Konzeptartikel, in dem die von JIT abgewehrten Bedrohungen erläutert werden, um die Gründe für die Verwendung von JIT zu erfahren:
+In diesem Artikel haben Sie erfahren, _wie_ Sie den Just-In-Time-VM-Zugriff einrichten und nutzen. Lesen Sie den Konzeptartikel, in dem die von JIT abgewehrten Bedrohungen erläutert werden, um die _Gründe_ für die Verwendung von JIT zu erfahren:
 
 > [!div class="nextstepaction"]
 > [Erläuterung von JIT](just-in-time-explained.md)

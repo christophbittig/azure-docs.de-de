@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da2f34014f3c789762cc2743b971aa76ad1049a9
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200727"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574432"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Datenherkunft in Azure Purview Data Catalog-Client
 
@@ -43,7 +43,7 @@ Das folgende Beispiel ist ein typischer Anwendungsfall von Daten, die über mehr
 
 ## <a name="lineage-granularity"></a>Granularität der Herkunft
 
-In diesem Abschnitt werden die Details der Granularität der Herkunft erläutert, wobei die Herkunftsinformationen von einem Datenkatalog gesammelt werden. Diese Granularität kann abhängig vom Datensystem variieren.
+Im folgenden Abschnitt werden Details zur Granularität erläutert, mit der Herkunftsinformationen von Purview gesammelt werden. Diese Granularität kann abhängig von den in Purview unterstützten Datensystemen variieren.
 
 ### <a name="entity-level-lineage-sources--process--targets"></a>Herkunft auf Entitätsebene: Quelle(n) > Prozess > Ziel(e) 
 

@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: 246f21bb0cd4718b08c8d8a872b1707a1fea5994
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b1b4b9fbb3914ca3389f57d680d2298c00d64a9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958918"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444767"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Konfigurieren der rollenbasierten Zugriffssteuerung mit Azure Active Directory für Ihr Azure Cosmos DB-Konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ RBAC auf Datenebene in Azure Cosmos DB basiert auf Konzepten, die in anderen RB
 > - [Azure PowerShell-Skripts](manage-with-powershell.md),
 > - [Azure CLI-Skripts](manage-with-cli.md),
 > - Azure-Verwaltungsbibliotheken, die verfügbar sind in
->   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
 >   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
 
@@ -114,7 +114,7 @@ Beim Erstellen einer benutzerdefinierten Rollendefinition müssen Sie Folgendes 
 
 > [!NOTE]
 > Die unten beschriebenen Vorgänge sind verfügbar in:
-> - Azure PowerShell: [Az.CosmosDB,Version 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) oder höher
+> - Azure PowerShell: [Az.CosmosDB, Version 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) oder höher
 > - [Azure CLI](/cli/azure/install-azure-cli): Version 2.24.0 oder höher
 
 ### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
@@ -278,7 +278,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 ### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
-Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroledefinition) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollendefinitionen.
+Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/create-update-sql-role-definition) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollendefinitionen.
 
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> Erstellen von Rollenzuweisungen
 
@@ -333,7 +333,7 @@ az cosmosdb sql role assignment create --account-name $accountName --resource-gr
 
 ### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
-Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroleassignment) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollenzuweisungen.
+Auf [dieser Seite](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/create-update-sql-role-assignment) finden Sie eine Referenz und Beispiele für die Verwendung Azure Resource Manager-Vorlagen zum Erstellen von Rollenzuweisungen.
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Initialisieren des SDK mit Azure AD
 
@@ -349,7 +349,7 @@ In den folgenden Beispielen wird ein Dienstprinzipal mit einer `ClientSecretCred
 
 ### <a name="in-net"></a>In .NET
 
-Azure Cosmos DB RBAC wird derzeit in der `preview`-Version des [.NET SDK V3](sql-api-sdk-dotnet-standard.md) unterstützt.
+Azure Cosmos DB RBAC wird derzeit vom [.NET SDK V3](sql-api-sdk-dotnet-standard.md) unterstützt.
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -393,7 +393,7 @@ const client = new CosmosClient({
 
 ## <a name="authenticate-requests-on-the-rest-api"></a>Authentifizieren von Anforderungen an die REST-API
 
-Die rollenbasierte Zugriffssteuerung (RBAC) von Azure Cosmos DB wird derzeit in der Version `2021-03-15` der REST-API unterstützt. Legen Sie beim Erstellen des [Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
+Legen Sie beim Erstellen des [REST-API-Autorisierungsheaders](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) den Parameter **type** auf **aad** und die Hashsignatur **(sig)** auf das **OAuth-Token** fest, wie im folgenden Beispiel gezeigt:
 
 `type=aad&ver=1.0&sig=<token-from-oauth>`
 
@@ -415,6 +415,28 @@ Diese zusätzlichen Informationen fließen in die Protokollkategorie **DataPlane
 
 - `aadPrincipalId_g` gibt die Prinzipal-ID der AAD-Identität an, die zum Authentifizieren der Anforderung verwendet wurde.
 - `aadAppliedRoleAssignmentId_g` gibt die [Rollenzuweisung](#role-assignments) an, die beim Autorisieren der Anforderung berücksichtigt wurde.
+
+## <a name="enforcing-rbac-as-the-only-authentication-method"></a><a id="disable-local-auth"></a> Erzwingen von RBAC als einzige Authentifizierungsmethode
+
+In Situationen, in denen Clients ausschließlich über RBAC eine Verbindung mit Azure Cosmos DB herstellen sollen, haben Sie die Möglichkeit, die primären/sekundären Schlüssel des Kontos zu deaktivieren. Daraufhin werden alle eingehenden Anforderungen, bei denen entweder ein primärer oder sekundärer Schlüssel oder ein Ressourcentoken verwendet wird, aktiv abgelehnt.
+
+### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+
+Legen Sie die Eigenschaft `disableLocalAuth` auf `true` fest, wenn Sie Ihr Azure Cosmos DB-Konto mithilfe von Azure Resource Manager-Vorlagen erstellen oder aktualisieren:
+
+```json
+"resources": [
+    {
+        "type": " Microsoft.DocumentDB/databaseAccounts",
+        "properties": {
+            "disableLocalAuth": true,
+            // ...
+        },
+        // ...
+    },
+    // ...
+ ]
+```
 
 ## <a name="limits"></a>Einschränkungen
 
@@ -443,7 +465,7 @@ Ja.
 
 ### <a name="is-it-possible-to-disable-the-usage-of-the-account-primarysecondary-keys-when-using-rbac"></a>Kann die Verwendung der Primär-/Sekundärschlüssel für das Konto bei Nutzung von RBAC deaktiviert werden?
 
-Das Deaktivieren der Primär-/Sekundärschlüssel für das Konto ist derzeit nicht möglich.
+Ja. Weitere Informationen finden Sie unter [Erzwingen von RBAC als einzige Authentifizierungsmethode](#disable-local-auth).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

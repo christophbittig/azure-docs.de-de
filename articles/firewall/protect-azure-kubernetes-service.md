@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b331180e40d1baf92a3c1408f3e003a257fa114a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107853"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339593"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Verwenden von Azure Firewall zum Schützen von AKS-Bereitstellungen (Azure Kubernetes Service)
 
@@ -21,6 +21,10 @@ Azure Kubernetes Service (AKS) bietet einen verwalteten Kubernetes-Cluster in Az
 Kubernetes orchestriert Cluster von virtuellen Computern und plant die Ausführung von Containern auf diesen virtuellen Computern basierend auf den verfügbaren Computeressourcen und dem Ressourcenbedarf der einzelnen Container. Container werden in Pods gruppiert, der grundlegenden Betriebseinheit für Kubernetes, und werden dann in den von Ihnen gewünschten Zustand skaliert.
 
 Zu Verwaltungs- und Betriebszwecken müssen Knoten in einem AKS-Cluster auf bestimmte Ports und vollqualifizierte Domänennamen (FQDNs) zugreifen. Mögliche Aktionen sind die Kommunikation mit dem API-Server oder das Herunterladen und anschließende Installieren von Kernkomponenten des Kubernetes-Clusters und Sicherheitsupdates für Knoten. Mithilfe von Azure Firewall können Sie Ihre Umgebung sperren und ausgehenden Datenverkehr filtern.
+
+Eine Übersicht finden Sie im folgenden Video von Jorge Cortes:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWIcAo]
 
 Beachten Sie die Richtlinien in diesem Artikel, um mithilfe von Azure Firewall zusätzlichen Schutz für Ihren Azure Kubernetes-Cluster bereitzustellen.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96835e9ef8f072046594cdbbba2b94bac9e40ac5
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696879"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566263"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
 
@@ -76,7 +76,7 @@ Die vollständige Zuordnung in Azure Load Balancer sieht jetzt wie folgt aus:
 
 Jede Regel muss einen Datenfluss mit einer eindeutigen Kombination aus IP-Zieladresse und Zielport erzeugen. Durch die Änderung des Zielports für den Datenfluss können mehrere Regeln Datenflüsse an die gleiche DIP an unterschiedlichen Ports übermitteln.
 
-Integritätstests werden immer an die DIP einer VM weitergeleitet. Sie müssen sicherstellen, dass der Test den Zustand der VM widerspiegelt.
+Integritätstests werden immer an die DIP einer VM weitergeleitet. Sie müssen sicherstellen, dass der Test die Integrität der VM widerspiegelt.
 
 ## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Regeltyp 2: Wiederverwendung von Back-End-Ports mit Floating IP
 

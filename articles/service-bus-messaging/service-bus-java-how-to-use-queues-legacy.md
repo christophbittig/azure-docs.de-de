@@ -1,8 +1,8 @@
 ---
-title: Verwenden von Azure Service Bus-Warteschlangen mit Java
-description: In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen.
-ms.date: 06/23/2020
-ms.topic: quickstart
+title: Verwenden von Azure Service Bus-Warteschlangen mit Java (alte Version)
+description: In diesem Artikel erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen.
+ms.date: 07/27/2021
+ms.topic: how-to
 ms.devlang: Java
 ms.custom:
 - seo-java-july2019
@@ -10,24 +10,24 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 38657f333fea4ca18fb76eb5832649067bfd01b4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 28b57d309c673cfe57bd6d743d876c07685b6353
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355342"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Schnellstart: Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus-Warteschlangen und Java
+# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus-Warteschlangen und Java (altes Paket)
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
+[!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
+In diesem Artikel erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrichten an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen. 
 
 > [!WARNING]
->  In diesem Schnellstart werden die alten `azure-servicebus`-Pakete verwendet. Einen Schnellstart, der das neueste `azure-messaging-servicebus`-Paket verwendet, finden Sie unter [Senden und Empfangen von Nachrichten mit `azure-messaging-servicebus`](service-bus-java-how-to-use-queues.md). 
+>  In diesem Artikel werden die alten Pakete vom Typ `azure-servicebus` verwendet. Einen Artikel, in dem das aktuelle Paket vom Typ `azure-messaging-servicebus` verwendet wird, finden Sie im [Artikel zum Senden und Empfangen von Nachrichten mit `azure-messaging-servicebus`](service-bus-java-how-to-use-queues.md). 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+1. Ein Azure-Abonnement. Für die Schritte in diesem Artikel wird ein Azure-Konto benötigt. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 2. Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
     1. Lesen Sie die kurze **Übersicht** über Service Bus-**Warteschlangen**. 
     2. Erstellen Sie einen Service Bus-**Namespace**. 

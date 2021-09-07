@@ -2,14 +2,14 @@
 title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2b5700498bd09e24adeb6d1a386e8bb8da6b92c7
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 8f953cf2bdacaa983061a04168345d1add1842f2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355014"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
-**Zonenredundanter Speicher (ZRS)** | Verfügbar in den Regionen „Vereinigtes Königreich, Süden (UKS)“ und „Asien, Südosten (SEA)“
+**Zonenredundanter Speicher (ZRS)** | Unterstützt in der Vorschauphase in „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Europa, Norden“, „USA, Mitte“ und „Japan, Osten“.
 **Private Endpunkte** | In [diesem Abschnitt](./private-endpoints.md#before-you-start) finden Sie Informationen zu den Anforderungen für die Erstellung privater Endpunkte aus einem Recovery Services-Tresor.  
 
 ## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen
@@ -155,6 +155,17 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 | SQL/SAP HANA | Verfügbar      | Verfügbar in allen öffentlichen Azure-Regionen und eigenständigen Regionen mit Ausnahme von Frankreich, Mitte, UG IOWA und UG Virginia. |
 | MARS-Agent/lokal  | Nein                                                           | –               |
 | AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |
+
+## <a name="resource-health"></a>Ressourcenintegrität
+
+Die Ressourcenintegritätsprüfung funktioniert unter folgenden Bedingungen:
+
+|     |     |
+| --- | --- |
+| **Unterstützte Ressourcen** | Recovery Services-Tresor |
+| **Unterstützte Regionen** | „USA, Osten 2“, „Asien, Osten“ und „Frankreich, Mitte“ |
+| **Nicht unterstützte Regionen** | Der Ressourcenintegritätsstatus wird als „Unbekannt“ angezeigt. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

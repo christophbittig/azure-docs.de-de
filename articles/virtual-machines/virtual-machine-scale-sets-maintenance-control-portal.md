@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6537728feb2145520ee49457b00d9944d5967c9f
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 656d72663045b4604b9a94cbc686150925caca83
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112073031"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202038"
 ---
 # <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-azure-portal"></a>Wartungssteuerung für Upgrades von Betriebssystemimages in Azure-VM-Skalierungsgruppen über das Azure-Portal
 
@@ -60,7 +60,7 @@ Wählen Sie auf der Seite „Details“ der Wartungskonfiguration **Zuweisungen*
 
 ![Screenshot des Zuweisens einer Ressource](media/virtual-machine-scale-sets-maintenance-control-portal/maintenance-configurations-add-assignment.png)
 
-Wählen Sie die Ressourcen, denen die Wartungskonfiguration zugewiesen werden soll, und dann **OK** aus. In der Spalte **Typ** wird angezeigt, ob es sich bei der Ressource um eine isolierte VM oder einen dedizierten Azure-Host handelt. Die VM muss sich im ausgeführten Zustand befinden, damit die Konfiguration zugewiesen werden kann. Wenn Sie versuchen, einer angehaltenen VM eine Konfiguration zuzuweisen, tritt ein Fehler auf. 
+Wählen Sie die Ressourcen von VM-Skalierungsgruppen, denen die Wartungskonfiguration zugewiesen werden soll, und dann **OK** aus.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

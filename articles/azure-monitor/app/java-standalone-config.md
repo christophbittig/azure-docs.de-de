@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 314e2cf6991a33fb50ee14b9e54f9d47069dc20c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027891"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298155"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -181,8 +181,6 @@ Verwenden Sie den folgenden JSON-Code, wenn Sie benutzerdefinierte Dimensionen z
 > Wenn Sie ab Version 3.0.2 eine benutzerdefinierte Dimension mit dem Namen `service.version` hinzufügen, wird der Wert in der Spalte `application_Version` in der Tabelle „Application Insights-Protokolle“ und nicht als benutzerdefinierte Dimension gespeichert.
 
 ## <a name="telemetry-processors-preview"></a>Telemetrieprozessoren (Vorschauversion)
-
-Dieses Feature befindet sich in der Vorschauphase.
 
 Mit diesem Feature können Sie Regeln konfigurieren, die auf Anforderungs-, Abhängigkeits- und Überwachungstelemetriedaten angewendet werden. Zum Beispiel:
  * Maskieren vertraulicher Daten
@@ -399,6 +397,13 @@ Diese Einstellung gilt für alle folgenden Metriken:
 [//]: # "  }"
 [//]: # "}"
 [//]: # "```"
+
+## <a name="authentication-preview"></a>Authentifizierung (Vorschau)
+> [!NOTE]
+> Das Authentifizierungsfeature ist ab Version 3.2.0-BETA verfügbar.
+
+Sie können den Agent so konfigurieren, dass [Tokenanmeldeinformationen](/java/api/overview/azure/identity-readme#credentials) generiert werden, die für die Azure Active Directory-Authentifizierung erforderlich sind.
+Weitere Informationen finden Sie in der Dokumentation zur [Authentifizierung](./azure-ad-authentication.md).
 
 ## <a name="self-diagnostics"></a>Selbstdiagnose
 

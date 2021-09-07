@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Erneutes Trainieren eines Webdiensts (Azure)'
-description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, sodass er das neu trainierte Machine Learning-Modell in Azure Machine Learning Studio (klassisch) verwendet.
+description: Hier erfahren Sie, wie Sie in Machine Learning Studio (Classic) einen Webdienst aktualisieren, sodass er das neu trainierte Machine Learning-Modell verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp, devx-track-azurepowershell
 ms.date: 02/14/2019
-ms.openlocfilehash: a1bf9582c73eb168c0f32e713f8308096edcf603
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5234611c99a58cefcb98d02c87d257055f603b4c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704793"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579628"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
@@ -51,7 +51,7 @@ Stellen Sie mit folgenden Schritten einen Webdienst zum erneuten Trainieren bere
     Stellen Sie als Nächstes das Trainingsexperiment als Webdienst zum erneuten Trainieren bereit, der ein trainiertes Modell und Modellauswertungsergebnisse ausgibt.
 
 1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service (Webdienst einrichten)** .
-1. Wählen Sie **Deploy Web Service [New] (Webdienst bereitstellen [Neu])** aus. Das Azure Machine Learning-Webdienstportal wird mit der Seite **Webdienst bereitstellen** geöffnet.
+1. Wählen Sie **Deploy Web Service [New] (Webdienst bereitstellen [Neu])** aus. Das Portal für Machine Learning-Webdienste wird mit der Seite **Deploy Web Service** (Webdienst bereitstellen) geöffnet.
 1. Geben Sie einen Namen für Ihren Webdienst ein, und wählen Sie einen Zahlungsplan aus.
 1. Klicken Sie auf **Bereitstellen**.
 
@@ -70,7 +70,7 @@ Rufen Sie mit den folgenden Schritten die APIs zum erneuten Trainieren auf:
 
 Fügen Sie das NuGet-Paket „Microsoft.AspNet.WebApi.Client“ hinzu, wie in den Kommentaren angegeben. Vor dem Hinzufügen des Verweises auf „Microsoft.WindowsAzure.Storage.dll“ müssen Sie unter Umständen die [Clientbibliothek für Azure Storage Services](https://www.nuget.org/packages/WindowsAzure.Storage) installieren.
 
-Der folgende Screenshot zeigt die Seite **Consume** im Azure Machine Learning-Webdienste-Portal.
+Der folgende Screenshot zeigt die Seite **Consume** (Verbrauchen) im Portal für Machine Learning-Webdienste.
 
 ![Seite Consume](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -161,7 +161,7 @@ Type : Microsoft.MachineLearning/webServices
 Tags : {}
 ```
 
-Alternativ können Sie sich zur Ermittlung des Ressourcengruppennamens eines vorhandenen Webdiensts beim Azure Machine Learning-Webdiensteportal anmelden. Wählen Sie den Webdienst aus. Der Ressourcengruppenname ist das fünfte Element in der Webdienst-URL (direkt nach dem *resourceGroups* -Element). Im folgenden Beispiel lautet der Name der Ressourcengruppe „Default-MachineLearning-SouthCentralUS“.
+Alternativ können Sie sich zur Ermittlung des Ressourcengruppennamens eines vorhandenen Webdiensts beim Portal für Machine Learning-Webdienste anmelden. Wählen Sie den Webdienst aus. Der Ressourcengruppenname ist das fünfte Element in der Webdienst-URL (direkt nach dem *resourceGroups* -Element). Im folgenden Beispiel lautet der Name der Ressourcengruppe „Default-MachineLearning-SouthCentralUS“.
 
 `https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 

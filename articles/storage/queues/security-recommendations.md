@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: security-recommendations
-ms.openlocfilehash: db0e033adf553c25c6b7b401f8d0df1a2cd5995f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 260f8682766187ba9cedb3b5bf951e06548c0048
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592159"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727938"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Sicherheitsempfehlungen für Queue Storage
 
@@ -37,7 +37,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 
 | Empfehlung | Kommentare | Security Center |
 |-|----|--|
-| Verwenden von Azure Active Directory (Azure AD) zum Autorisieren des Zugriffs auf Warteschlangendaten | Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit über die Autorisierung des gemeinsam verwendeten Schlüssels für die Autorisierung von Anforderungen an Queue Storage. Weitere Informationen finden Sie unter [Authorize access to Azure blobs and queues using Azure Active Directory (Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory)](../common/storage-auth-aad.md). | - |
+| Verwenden von Azure Active Directory (Azure AD) zum Autorisieren des Zugriffs auf Warteschlangendaten | Azure AD bietet überlegene Sicherheit und Benutzerfreundlichkeit über die Autorisierung des gemeinsam verwendeten Schlüssels für die Autorisierung von Anforderungen an Queue Storage. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Daten in Azure Storage](../common/authorize-data-access.md). | - |
 | Beachten Sie das Prinzip der geringsten Rechte beim Zuweisen von Berechtigungen für einen Azure AD-Sicherheitsprinzipal über Azure RBAC. | Wenn Sie einem Benutzer, einer Gruppe oder einer Anwendung eine Rolle zuweisen, erteilen Sie diesem Sicherheitsprinzipal nur die Berechtigungen, die zum Ausführen der jeweiligen Aufgaben erforderlich sind. Durch Einschränken des Zugriffs auf Ressourcen kann sowohl ein unbeabsichtigter als auch böswilliger Missbrauch Ihrer Daten verhindert werden. | - |
 | Schützen Ihrer Kontozugriffsschlüssel mit Azure Key Vault | Microsoft empfiehlt die Verwendung von Azure AD zum Autorisieren von Anforderungen an Azure Storage. Wenn jedoch eine Autorisierung mit gemeinsam verwendetem Schlüssel erforderlich ist, schützen Sie Ihre Kontoschlüssel mit Azure Key Vault. Sie können die Schlüssel zur Laufzeit aus dem Schlüsseltresor abrufen, anstatt Sie mit der Anwendung zu speichern. | - |
 | Regelmäßiges Neugenerieren der Kontoschlüssel | Durch regelmäßiges Rotieren der Kontoschlüssel verringert sich das Risiko, dass Ihre Daten für böswillige Akteure offengelegt werden. | - |

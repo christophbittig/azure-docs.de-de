@@ -7,23 +7,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 118c91ec204a2e207b28343fe0535c67b89b03b7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927446"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433344"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung
 
-Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET).
-
 > [!NOTE]
-> Jede App Service-Umgebung verfügt über eine virtuelle IP-Adresse (VIP), die für den Kontakt mit der App Service-Umgebung verwendet werden kann.
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
-Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
+Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
 
-- Mit einer VIP unter einer externen IP-Adresse, die häufig als „externe ASE“ bezeichnet wird
+- Mit einer VIP unter einer externen öffentlichen IP-Adresse (häufig „externe ASE“ genannt).
 - Mit der VIP unter einer internen IP-Adresse, die häufig als ILB-ASE bezeichnet wird, da der interne Endpunkt ein interner Load Balancer (ILB) ist.
 
 In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersicht über die ASE finden Sie unter [Einführung in die App Service-Umgebung][Intro]. Informationen zum Erstellen einer ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
@@ -33,7 +32,7 @@ In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersi
 Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 
 - Position
-- Abonnement
+- Subscription
 - Resource group
 - Verwendetes VNET
 - Verwendetes Subnetz

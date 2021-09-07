@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 07/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e46f9c5e3d59c4f30d0a9a0a9dddcf98cd636e40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339440"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Verwalten des sicheren Zugriffs auf Ressourcen in Spoke-VNETs für Benutzer-VPN-Clients
 
@@ -77,7 +77,7 @@ Verwenden Sie das heruntergeladene Profil, um die Clients für den Remotezugriff
 
 ## <a name="connect-the-spoke-vnet"></a><a name="connect-spoke"></a>Verbinden des Spoke-VNET
 
-In diesem Abschnitt fügen Sie das virtuelle Spoke-Netzwerk dem virtuellen WAN-Hub an.
+In diesem Abschnitt erstellen Sie eine Verbindung zwischen Ihrem Hub und dem Spoke-VNet.
 
 [!INCLUDE [Connect spoke virtual network](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 

@@ -3,42 +3,37 @@ title: Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure B
 description: Hier finden Sie Beispiele für die Verwendung von Blobindextags zum Kategorisieren, Verwalten und Abfragen von Daten für Blobobjekte.
 author: normesta
 ms.author: normesta
-ms.date: 03/05/2021
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 423cc6f1adffc305b5a79ecb84f4e736926ce343
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 0814f2896ec429650668a08590ffe7165fb120a3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653986"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282023"
 ---
-# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage
+# <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags zum Verwalten und Suchen von Daten in Azure Blob Storage
 
 Blobindextags kategorisieren Daten in Ihrem Speicherkonto mithilfe von Schlüssel-Wert-Tagattributen. Diese Tags werden automatisch indiziert und als durchsuchbarer mehrdimensionaler Index verfügbar gemacht, um Daten einfach finden zu können. In diesem Artikel wird erörtert, wie Sie Daten mithilfe von Blobindextags festlegen, abrufen und suchen.
 
-> [!IMPORTANT]
-> Blobindextags befinden sich momentan in der **Vorschauphase** und sind in allen öffentlichen Regionen verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
-
-Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
+Weitere Informationen zu diesem Feature sowie zu bekannten Problemen und Einschränkungen finden Sie unter [Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-- Ein Azure-Abonnement ist registriert und wurde für den Zugriff auf die Blobindex-Vorschauversion genehmigt.
+- Ein Azure-Abonnement ist registriert und wurde für den Zugriff genehmigt.
 - Zugriff auf das [Azure-Portal](https://portal.azure.com/)
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-Da sich der Blobindex in der Vorschauphase befindet, wird das .NET-Speicherpaket im NuGet-Vorschaufeed veröffentlicht. Diese Bibliothek kann während der Vorschauphase geändert werden.
-
 1. Richten Sie Ihr Visual Studio-Projekt für die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für .NET ein. Weitere Informationen finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](storage-quickstart-blobs-dotnet.md).
 
-2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs**, und installieren Sie Version **12.7.0-preview.1** oder höher in Ihrem Projekt. Sie können auch den PowerShell-Befehl `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1` ausführen.
+2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs**, und installieren Sie Version **12.7.0** oder höher in Ihrem Projekt. Sie können auch den PowerShell-Befehl `Install-Package Azure.Storage.Blobs -Version 12.7.0` ausführen.
 
    Weitere Informationen finden Sie unter [Suchen und Installieren eines Pakets](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
@@ -64,7 +59,7 @@ Diese Aufgabe kann von einem [Besitzer von Speicherblobdaten](../../role-based-a
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Datenspeicher** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie die Schaltfläche **Hochladen** aus, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie als Blockblob hochzuladen.
 
@@ -122,9 +117,9 @@ Das Festlegen und Aktualisieren von Blobindextags kann von einem [Besitzer von S
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus.
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Datenspeicher** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie das Blob aus der Liste der Blobs innerhalb des ausgewählten Containers aus.
 
@@ -203,7 +198,7 @@ Im Azure-Portal wendet der Filter für Blobindextags den `@container`-Parameter 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
 
-2. Navigieren Sie unter **Blob-Dienst** zur Option **Container**, und wählen Sie Ihren Container aus.
+2. Navigieren Sie unter **Datenspeicher** zur Option **Container**, und wählen Sie Ihren Container aus.
 
 3. Wählen Sie die Schaltfläche **Filter für Blobindextags** aus, um innerhalb des ausgewählten Containers zu filtern.
 
@@ -321,5 +316,5 @@ Richtlinien für die [Lebenszyklusverwaltung](storage-lifecycle-management-conce
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Weitere Informationen zu Blobindextags finden Sie unter [Verwalten und Suchen von Daten in Azure Blob Storage mit Blobindextags (Vorschau)](storage-manage-find-blobs.md ).
+ - Weitere Informationen zu Blobindextags finden Sie unter [Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)](storage-manage-find-blobs.md ).
  - Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).

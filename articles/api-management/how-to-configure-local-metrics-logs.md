@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/11/2021
 ms.author: apimpm
-ms.openlocfilehash: a8199f88527cfd1417997c12f9d682be1c60a810
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f17d271315bc537f916cb4d9addfa7ea1eaec995
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784537"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115828"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -190,7 +190,7 @@ Nachdem wir alles eingerichtet und konfiguriert haben, sollte das selbstgehostet
 
 Rufen Sie die API über das selbstgehostete Gateway auf. Wenn alles richtig konfiguriert ist, sollten Sie die folgenden Metriken anzeigen können:
 
-| Metrik  | Beschreibung |
+| Metrik  | BESCHREIBUNG |
 | ------------- | ------------- |
 | Requests  | Anzahl der API-Anforderungen innerhalb des Zeitraums |
 | DurationInMS | Anzahl von Millisekunden zwischen dem Zeitpunkt, zu dem das Gateway die Anforderung empfangen hat, und dem Zeitpunkt, zu dem die Antwort vollständig gesendet wurde |
@@ -212,12 +212,13 @@ Das selbstgehostete Gateway unterstützt auch eine Reihe von Protokollen, einsch
 | Feld  | Standard | Beschreibung |
 | ------------- | ------------- | ------------- |
 | telemetry.logs.std  | `text` | Ermöglicht die Protokollierung in Standarddatenströmen. Möglicher Wert: `none`, `text`, `json` |
-| telemetry.logs.local  | `none` | Aktiviert die lokale Protokollierung. Möglicher Wert: `none`, `auto`, `localsyslog`, `rfc5424`, `journal`  |
+| telemetry.logs.local  | `auto` | Aktiviert die lokale Protokollierung. Der Wert kann `none`, `auto`, `localsyslog`, `rfc5424`, `journal` oder `json` lauten.  |
 | telemetry.logs.local.localsyslog.endpoint  | – | Gibt den Endpunkt für localsyslog an.  |
 | telemetry.logs.local.localsyslog.facility  | – | Gibt den [Facilitycode](https://en.wikipedia.org/wiki/Syslog#Facility) für localsyslog an. Beispiel: `7`
 | telemetry.logs.local.rfc5424.endpoint  | – | Gibt den rfc5424-Endpunkt an.  |
 | telemetry.logs.local.rfc5424.facility  | – | Gibt den Facilitycode gemäß [rfc5424](https://tools.ietf.org/html/rfc5424) an. Beispiel: `7`  |
 | telemetry.logs.local.journal.endpoint  | – | Gibt den Endpunkt des Journals an.  |
+| telemetry.logs.local.json.endpoint | 127.0.0.1:8888 | Gibt den UDP-Endpunkt an, von dem JSON-Daten akzeptiert werden: Dateipfad, „IP:port“ oder „hostname:port“.
 
 Es folgt eine Beispielkonfiguration für die lokale Protokollierung:
 

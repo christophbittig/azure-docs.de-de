@@ -2,13 +2,13 @@
 title: Sichern einer SharePoint-Farm in Azure mit MABS
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: dd0c6ede50151114994152ed2375cf53f708c620
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 07/30/2021
+ms.openlocfilehash: 2c52ace2515fbb1423c2ca3be75dfde837e6dd5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769361"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339425"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
 
@@ -80,7 +80,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
 1. Erweitern Sie in **Gruppenmitglieder auswählen** den Server, auf dem sich die WFE-Rolle befindet. Wenn mehrere WFE-Server vorhanden sind, wählen Sie den Server aus, auf dem Sie die Datei „ConfigureSharePoint.exe“ konfiguriert haben.
 
-    Wenn Sie den Computer erweitern, auf dem SharePoint ausgeführt wird, wird VSS von MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann. Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, überprüfen Sie, ob der VSS Writer auf dem Computer ausgeführt wird, auf dem SharePoint ausgeführt wird, und auf einer beliebigen Remoteinstanz SQL Server. Stellen Sie anschließend sicher, dass der MABS-Agent sowohl auf dem Computer, auf dem SharePoint ausgeführt wird, als auch auf der Remoteinstanz von SQL Server installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
+    Wenn Sie den Coputer erweitern, auf dem SharePoint ausgeführt wird, wird VSS von MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann. Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, überprüfen Sie, ob der VSS Writer auf dem Computer ausgeführt wird, auf dem SharePoint ausgeführt wird, und auf einer beliebigen Remoteinstanz SQL Server. Stellen Sie anschließend sicher, dass der MABS-Agent sowohl auf dem Computer, auf dem SharePoint ausgeführt wird, als auch auf der Remoteinstanz von SQL Server installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
 
 1. Geben Sie unter **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in die Azure\-Cloud mit Azure Backup \(kurz\- oder langfristig\).
 
@@ -253,7 +253,26 @@ Im folgenden Verfahren wird das Beispiel für eine Serverfarm mit zwei Front-End
 
    Eine Konsistenzprüfung wird gestartet.
 
-1. Wenn Sie Schritt 6 ausgeführt haben, können Sie das Volume nun aus der Schutzgruppe entfernen.
+1. Sobald Sie Schritt 6 durchgeführt haben, können Sie das Volume aus der Schutzgruppe entfernen.
+
+## <a name="remove-a-database-from-a-sharepoint-farm"></a>Entfernen einer Datenbank aus einer SharePoint-Farm
+
+Wenn eine Datenbank aus einer SharePoint-Farm entfernt wird, überspringt MABS die Sicherung dieser Datenbank und fährt mit der Sicherung anderer Datenbanken in der SharePoint-Farm fort. Außerdem wird der Sicherungsadministrator benachrichtigt.
+
+### <a name="mabs-alert---farm-configuration-changed"></a>MABS-Warnung: Änderung der Farmkonfiguration
+
+Dies ist eine Warnung, die in Microsoft Azure Backup Server (MABS) generiert wird, wenn der automatische Schutz einer SharePoint Datenbank nicht erfolgreich ist. Weitere Informationen zur Warnungsursache finden Sie im Bereich **Warnungsdetails**.
+
+Gehen Sie folgendermaßen vor, um die Warnung aufzulösen:
+
+1. Klären Sie mit dem SharePoint-Administrator, ob die Datenbank tatsächlich aus der Farm entfernt wurde. Wenn die Datenbank aus der Farm entfernt wurde, muss anschließend der aktive Schutz für sie in MABS entfernt werden.
+1. So entfernen Sie den aktiven Schutz für die Datenbank:
+   1. Klicken Sie in der **MABS-Verwaltungskonsole** in der Navigationsleiste auf **Schutz**.
+   1. Klicken Sie im **Anzeigebereich** mit der rechten Maustaste auf die Schutzgruppe für die SharePoint-Farm, und klicken Sie dann auf **Schutz des Mitglieds beenden**.
+   1. Klicken Sie im Dialogfeld **Schutz beenden** auf **Geschützte Daten beibehalten**.
+   1. Klicken Sie auf **Schutz beenden**.
+
+Sie können die SharePoint-Farm über den Assistenten **Schutzgruppe ändern** erneut schützen. Wenn der Schutz erneut angewendet werden soll, wählen Sie den SharePoint-Front-End-Server aus, und klicken Sie auf **Aktualisieren**, um den Cache der SharePoint-Datenbank zu aktualisieren. Wählen Sie anschließend die SharePoint-Farm aus, und fahren Sie fort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,47 +1,131 @@
 ---
-title: Eine verwaltete Identität ihres Azure Automation-Kontos deaktivieren (Vorschau)
-description: In diesem Artikel wird das Deaktivieren und Entfernen einer verwalteten Identität für ein Azure Automation erläutert.
+title: Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+description: In diesem Artikel wird erläutert, wie Sie eine systemseitig zugewiesene verwaltete Identität für ein Azure Automation deaktivieren.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2021
+ms.date: 07/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: e17e1afda50d9a0263067a77bf26435f53b4f237
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 7c0d2d1f64d0d931c670b87438a032c646c45f9d
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519271"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114673918"
 ---
-# <a name="disable-your-azure-automation-account-managed-identity-preview"></a>Eine verwaltete Identität ihres Azure Automation-Kontos deaktivieren (Vorschau)
+# <a name="disable-system-assigned-managed-identity-for-azure-automation-account-preview"></a>Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
 
-Es gibt zwei Möglichkeiten, eine vom System zugewiesene Identität in einer Azure Automation zu deaktivieren. Sie können diese Aufgabe über das Azure-Portal oder mithilfe einer ARM-Vorlage (Azure Resource Manager) abschließen.
+Sie können eine systemseitig zugewiesene verwaltete Identität in Azure Automation über das Azure-Portal oder unter Verwendung der REST-API deaktivieren.
 
-## <a name="disable-managed-identity-in-the-azure-portal"></a>Deaktivieren der verwalteten Identität im Azure-Portal
+## <a name="disable-using-the-azure-portal"></a>Deaktivierung über das Azure-Portal
 
-Unabhängig davon, wie die verwaltete Identität ursprünglich eingerichtet wurde, die verwaltete Identität kann mit dem Azure-Portal deaktiviert werden.
+Unabhängig davon, wie die systemseitig zugewiesene verwaltete Identität ursprünglich eingerichtet wurde, kann die systemseitig zugewiesene verwaltete Identität mithilfe des Azure-Portals deaktiviert werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie **Identität** unter **Kontoeinstellungen** aus.
+1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Identität** aus.
 
-1. Legen Sie die Option **System zugewiesen** auf **Aus** fest und klicken Sie auf **Speichern**. Wenn Sie aufgefordert werden, die Auswahl zu bestätigen, drücken Sie auf **Ja**.
+1. Klicken Sie auf der Registerkarte **Systemseitig zugewiesen** unterhalb der Schaltfläche **Status** auf **Aus** und dann auf **Speichern**. Wenn Sie aufgefordert werden, die Auswahl zu bestätigen, klicken Sie auf **Ja**.
 
-Die verwaltete Identität wurde entfernt und hat keinen Zugriff mehr auf die Zielressource.
+Die systemseitig zugewiesene verwaltete Identität ist jetzt deaktiviert und kann nicht mehr auf die Zielressource zugreifen.
 
-## <a name="disable-using-azure-resource-manager-template"></a>Deaktivieren mithilfe der Azure Resource Manager-Vorlage
+## <a name="disable-using-rest-api"></a>Deaktivierung mithilfe der REST-API
 
-Wenn Sie die verwaltete Identität für Ihr Automation-Konto mithilfe einer Azure Resource Manager-Vorlage erstellt haben, können Sie die verwaltete Identität deaktivieren, indem Sie diese Vorlage wiederverwenden und deren Einstellungen ändern. Legen Sie den Typ der untergeordneten Eigenschaft des Identitätsobjekts wie im folgenden Beispiel gezeigt auf **Keine** fest, und führen Sie dann die Vorlage erneut aus.
+Syntax und Beispielschritte sind unten angegeben.
+
+### <a name="request-body"></a>Anforderungstext
+
+Der folgende Anforderungstext deaktiviert die systemseitig zugewiesene verwaltete Identität und entfernt alle benutzerseitig zugewiesenen verwalteten Identitäten mithilfe der HTTP-**PATCH**-Methode.
 
 ```json
-"identity": { 
+{ 
+ "identity": { 
    "type": "None" 
-} 
+  } 
+}
+
 ```
 
-Bei dieser Methode zum Entfernen einer systemseitig zugewiesenen Identität wird diese auch aus Azure AD gelöscht. Systemseitig zugewiesene Identitäten werden automatisch aus Azure AD entfernt, wenn die ihnen zugewiesene App-Ressource gelöscht wird.
+Wenn mehrere benutzerseitig zugewiesene Identitäten definiert sind und Sie diese beibehalten und nur die systemseitig zugewiesene Identität entfernen möchten, müssen Sie jede benutzerseitig zugewiesene Identität über eine durch Trennzeichen getrennte Liste angeben. Im folgenden Beispiel wird die HTTP-Methode **PATCH** verwendet.
+
+```json
+{ 
+"identity" : {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/firstIdentity": {},
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/secondIdentity": {}
+        }
+    }
+}
+```
+
+Nachfolgend wird der REST-API-Anforderungs-URI zum Senden der PATCH-Anforderung gezeigt.
+
+```http
+PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
+```
+
+### <a name="example"></a>Beispiel
+
+Führen Sie die folgenden Schritte aus:
+
+1. Kopieren Sie den Anforderungstext, und fügen Sie ihn je nach auszuführendem Vorgang in eine Datei namens `body_remove_sa.json` ein. Speichern Sie die Datei auf Ihrem lokalen Computer oder in einem Azure-Speicherkonto.
+
+1. Melden Sie sich interaktiv mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) bei Azure an, und befolgen Sie die Anweisungen.
+
+    ```powershell
+    # Sign in to your Azure subscription
+    $sub = Get-AzSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Connect-AzAccount -Subscription
+    }
+    
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+    ```
+
+1. Geben Sie einen geeigneten Wert für die Variablen an, und führen Sie dann das Skript aus.
+
+    ```powershell
+    $subscriptionID = "subscriptionID"
+    $resourceGroup = "resourceGroupName"
+    $automationAccount = "automationAccountName"
+    $file = "path\body_remove_sa.json"
+    ```
+
+1. In diesem Beispiel wird das PowerShell-Cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) verwendet, um die PATCH-Anforderung an Ihr Automation-Konto zu senden.
+
+    ```powershell
+    # build URI
+    $URI = "https://management.azure.com/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.Automation/automationAccounts/$automationAccount`?api-version=2020-01-13-preview"
+    
+    # build body
+    $body = Get-Content $file
+    
+    # obtain access token
+    $azContext = Get-AzContext
+    $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+    $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+    $authHeader = @{
+        'Content-Type'='application/json'
+        'Authorization'='Bearer ' + $token.AccessToken
+    }
+    
+    # Invoke the REST API
+    Invoke-RestMethod -Uri $URI -Method PATCH -Headers $authHeader -Body $body
+    
+    # Confirm removal
+    (Get-AzAutomationAccount `
+        -ResourceGroupName $resourceGroup `
+        -Name $automationAccount).Identity.Type
+    ```
+
+    Abhängig von der verwendeten Syntax ist die Ausgabe `UserAssigned` oder leer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Aktivieren der verwalteten Identität in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation (Vorschau)](enable-managed-identity-for-automation.md).
+- Weitere Informationen zum Aktivieren von verwalteten Identitäten in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation (Vorschau)](enable-managed-identity-for-automation.md).
 
 - Eine Übersicht über die Automation-Kontosicherheit finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung.](automation-security-overview.md)

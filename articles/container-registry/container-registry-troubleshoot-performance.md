@@ -3,12 +3,12 @@ title: Beheben von Problemen mit der Registrierungsleistung
 description: Symptome, Ursachen und Lösung von häufigen Problemen mit der Leistung einer Registrierung.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8557c8c342919073099a14be91c743b65c4d7fbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4a93df09c8ceb587815227c073ec69dcd1205451
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069074"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338864"
 ---
 # <a name="troubleshoot-registry-performance"></a>Beheben von Problemen mit der Registrierungsleistung
 
@@ -21,6 +21,7 @@ Mindestens eines der folgenden Probleme kann ein Symptom sein:
 * Das Pullen oder Pushen von Images mit der DockerCLI dauern länger als erwartet.
 * Die Bereitstellung von Images in einem Dienst wie Azure Kubernetes Service dauert länger als erwartet.
 * Sie können eine große Anzahl von gleichzeitigen Pull- oder Pushvorgängen nicht in der erwarteten Zeit abschließen.
+* Möglicherweise wird ein HTTP 429-Fehler ähnlich dem folgenden angezeigt: `Too many requests`
 * Pull- oder Pushvorgänge in einer georeplizierten Registrierung dauern länger als erwartet, oder ein Push schlägt mit dem Fehler `Error writing blob` oder `Error writing manifest` fehl.
 
 ## <a name="causes"></a>Ursachen
@@ -46,7 +47,7 @@ Wenn Sie Ihr Problem hier nicht beheben können, finden Sie weitere Informatione
 Verwandte Links:
 
 * [Azure Container Registry-Tarife](container-registry-skus.md)    
-* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
+* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.yml)
 * [Skalierbarkeits- und Leistungsziele für Azure Blob Storage](../storage/blobs/scalability-targets.md)
 
 ### <a name="check-client-hardware"></a>Überprüfen der Clienthardware
@@ -103,8 +104,8 @@ Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrieru
 
 Verwandte Links:
 
-* [Überwachen von Azure Container Registry](monitor-service.md)
-* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
+* [Protokolle für die Diagnoseauswertung und -überwachung](./monitor-service.md)
+* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.yml)
 * [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

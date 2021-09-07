@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 44c838fcb0728797aa3781da0ad98b37cc2c25a5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317971"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440754"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie wurden in Arbeitsmappen umgewandelt, die einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten. Dieser Artikel unterstützt Sie beim Übergang vom Ansichts-Designer zu Arbeitsmappen. 
@@ -60,9 +60,7 @@ Nach der Auswahl wird ein Katalog mit allen gespeicherten Arbeitsmappen und Vorl
 Um eine neue Arbeitsmappe zu starten, können Sie die Vorlage **Leer** unter **Schnellstart** oder das Symbol **Neu** in der oberen Navigationsleiste auswählen. Um Vorlagen anzuzeigen oder zu gespeicherten Arbeitsmappen zurückzukehren, wählen Sie das Element aus dem Katalog aus, oder suchen Sie in der Suchleiste nach dem Namen.
 
 Zum Speichern einer Arbeitsmappe müssen Sie den Bericht mit einem bestimmten Titel, Abonnement, einer bestimmten Ressourcengruppe und einem bestimmten Ort speichern.
-Die Arbeitsmappe wird automatisch mit denselben Einstellungen wie der LA-Arbeitsbereich ausgefüllt, mit demselben Abonnement und derselben Ressourcengruppe, doch Benutzer können diese Berichtseinstellungen ändern. Arbeitsmappen werden standardmäßig in *Meine Berichte* gespeichert, worauf nur der jeweilige Benutzer Zugriff hat. Sie können auch direkt in „Freigegebene Berichte“ gespeichert oder später freigegeben werden.
-
-![Speichern von Arbeitsmappen](media/view-designer-conversion-overview/workbooks-save.png)
+Die Arbeitsmappe wird automatisch mit denselben Einstellungen wie der LA-Arbeitsbereich ausgefüllt, mit demselben Abonnement und derselben Ressourcengruppe, doch Benutzer können diese Berichtseinstellungen ändern. Bei Arbeitsmappen handelt es sich um gemeinsam genutzte Ressourcen, für die Schreibzugriff auf die übergeordnete Ressourcengruppe erforderlich ist, damit sie gespeichert werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

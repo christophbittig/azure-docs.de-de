@@ -4,12 +4,12 @@ description: Informieren Sie sich, wie Sie den Reverseproxydienst für eine Azur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 1d8f290bf1cad13597376d1d7c27cfaa695f9511
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 78ea7b0ec33fe56ca7a3032f98ad272ce622dc2c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956637"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094037"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -74,7 +74,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         ...
     }
     ```
-3. Fügen Sie das Zertifikat der **reverseProxyCertificate**-Eigenschaft in *Microsoft.ServiceFabric/clusters* im * [Ressourcentypenabschnitt](../azure-resource-manager/templates/syntax.md) hinzu, um TLS-/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren.
+3. Fügen Sie das Zertifikat dem Objekt **reverseProxyCertificate** in der [Ressourcenvorlage](/azure/templates/microsoft.servicefabric/clusters?tabs=json#clusterproperties-object) **Microsoft.ServiceFabric/clusters** hinzu, um TLS-/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren.
 
     ```json
     {
@@ -96,6 +96,8 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         }
     }
     ```
+
+    Sie können auch einen [allgemeinen Namen für Reverseproxyzertifikate](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) angeben. Verwenden Sie hierzu das Objekt **reverseProxyCertificateCommonNames** in der Clusterressourcenvorlage.
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Unterstützung für Reverseproxyzertifikate, die sich vom Clusterzertifkat unterscheiden
  Wenn das Reverseproxyzertifikat sich von dem Zertifikat unterscheidet, das den Cluster schützt, sollte das zuvor angegebene Zertifikat auf dem virtuellen Computer installiert und der Zugriffssteuerungsliste (Access Control List, ACL) hinzugefügt worden sein, damit Service Fabric darauf zugreifen kann. Dies kann in [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) im Abschnitt [Ressourcentypen](../azure-resource-manager/templates/syntax.md) erfolgen. Fügen Sie das Zertifikat für die Installation dem osProfile hinzu. Der Erweiterungsabschnitt der Vorlage kann das Zertifikat in der ACL aktualisieren.

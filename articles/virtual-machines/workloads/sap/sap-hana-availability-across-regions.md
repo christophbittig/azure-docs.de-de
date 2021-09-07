@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f925e72493a94bcdbde64bdfbcef6acf83977f52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bf4f1fbb5d984b052a9fdb84ed9d26da18db2f9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669720"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445811"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA-Verfügbarkeit in verschiedenen Azure-Regionen
 
@@ -67,7 +67,7 @@ In diesen Fällen können Sie mithilfe der HANA-Systemreplikation ein Setup konf
 
 ![Diagramm mit drei virtuellen Computern in zwei Regionen](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-SAP hat mit HANA 2.0 SPS3 die [Multi-Target-Systemreplikation](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) eingeführt. Die Multi-Target-Systemreplikation hat einige Vorteile für Updateszenarios. So ist beispielsweise die DR-Site (Region 2) nicht betroffen, wenn die sekundäre HA-Site wegen Wartung oder Updates ausfällt. [Hier](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html) finden Sie weitere Informationen zur Multi-Target-Systemreplikation von HANA.
+SAP hat mit HANA 2.0 SPS3 die [Multi-Target-Systemreplikation](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) eingeführt. Die Multi-Target-Systemreplikation hat einige Vorteile für Updateszenarios. So ist beispielsweise die DR-Site (Region 2) nicht betroffen, wenn die sekundäre HA-Site wegen Wartung oder Updates ausfällt. Weitere Informationen zur Multi-Target-Systemreplikation von HANA finden Sie im [SAP-Hilfeportal](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html).
 Eine mögliche Architektur mit Multi-Target-Replikation würde folgendermaßen aussehen:
 
 ![Diagramm mit drei virtuellen Computern in zwei Multi-Target-Regionen](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)

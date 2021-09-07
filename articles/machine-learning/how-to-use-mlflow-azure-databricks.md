@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: f541985b7e8210084ae11a9f48e18f735e6e4335
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 62fd9820d1ec743d7424679753828b0cb7837fbc
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479869"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031047"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>Nachverfolgen von ML-Experimenten in Azure Databricks mit MLflow und Azure Machine Learning
 
@@ -24,9 +24,9 @@ In diesem Artikel erfahren Sie, wie Sie den Nachverfolgungs-URI und die Protokol
 
 [MLflow](https://www.mlflow.org) ist eine Open-Source-Bibliothek zum Verwalten des Lebenszyklus Ihrer Machine Learning-Experimente. MLflow Tracking ist eine Komponente von MLflow, die Metriken zu Trainingsausführungen und Modellartefakte protokolliert und nachverfolgt. Erfahren Sie mehr zu [Azure Databricks und MLflow](/azure/databricks/applications/mlflow/). 
 
-Weitere Informationen zur Integration von MLflow- und Azure Machine Learning Funktionen finden Sie unter [Nachverfolgen von Experimentausführungen mit MLflow und Azure Machine Learning](how-to-use-mlflow.md).
+Weitere Informationen zur Integration von MLflow- und Azure Machine Learning-Funktionen finden Sie unter [MLflow und Azure Machine Learning](concept-mlflow.md).
 
-Informationen zum Trainieren eines MLflow-Projekts mit Azure Machine Learning finden Sie unter [Trainieren von ML-Modellen mit MLflow-Projekten und Azure Machine Learning (Vorschau)](how-to-train-mlflow-projects.md).
+Informationen zum Trainieren eines MLflow-Projekts mit Azure Machine Learning finden Sie unter [Trainieren von ML-Modellen mit MLflow-Projekten und Azure Machine Learning](how-to-train-mlflow-projects.md).
 
 > [!TIP]
 > Die Informationen in diesem Dokument sind hauptsächlich für Datenanalysten und Entwickler gedacht, die den Modelltrainingsprozess überwachen möchten. Wenn Sie Administrator sind und sich für die Überwachung der Nutzung und Ereignisse von Azure Machine Learning (z. B. Kontingente, abgeschlossene Trainingsausführungen oder abgeschlossene Modellimplementierungen) interessieren, helfen Ihnen die Informationen im Artikel [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md) weiter.

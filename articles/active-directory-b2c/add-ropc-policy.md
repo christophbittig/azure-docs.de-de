@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 06/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c4d31d7a1d9e67b1c246de50887d65206a12d57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581880"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284615"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C
 
@@ -365,6 +365,14 @@ Eine erfolgreiche Antwort ähnelt dem folgenden Beispiel:
     "refresh_token_expires_in": 1209600
 }
 ```
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="the-provided-application-is-not-configured-to-allow-the-oauth-implicit-flow"></a>Die angegebene Anwendung ist nicht zum Zulassen des impliziten Flows „OAuth“ konfiguriert.
+
+* **Symptom:** Sie führen den ROPC-Flow aus und erhalten die folgende Meldung: *AADB2C90057: Die angegebene Anwendung ist nicht zum Zulassen des impliziten Flows „OAuth“ konfiguriert.*
+* **Mögliche Ursachen:** Der implizite Flow ist für Ihre Anwendung nicht zulässig.
+* **Lösung:** Beim Erstellen der [App-Registrierung](#register-an-application) in Azure AD B2C müssen Sie das Anwendungsmanifest manuell bearbeiten und den Wert der Eigenschaft `oauth2AllowImplicitFlow` auf `true` festlegen. Nach dem Konfigurieren der Eigenschaft `oauth2AllowImplicitFlow` kann es einige Minuten (in der Regel nicht länger als fünf Minuten) dauern, bis die Änderung wirksam wird. 
 
 ## <a name="use-a-native-sdk-or-app-auth"></a>Verwenden eines nativen SDK oder einer App-Authentifizierung
 

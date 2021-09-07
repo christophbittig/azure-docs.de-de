@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Erneutes Trainieren eines klassischen Webdiensts (Azure)'
-description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio (klassisch) erneut trainieren und einen klassischen Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
+description: Hier erfahren Sie, wie Sie ein Modell in Machine Learning Studio (Classic) erneut trainieren und einen klassischen Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9b249dff4bbb6f5c3aa688986bf470e3d449372
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517568"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579538"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Erneutes Trainieren und Bereitstellen eines (klassischen) Studio-Webdiensts
 
-**GILT FÜR:**  ![Grünes Häkchen.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassisch) ![X gibt nein an.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Gilt hierfür.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![„X“ für „Nein“.](../../../includes/media/aml-applies-to-skus/no.png)[Gilt nicht hierfür.](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. In diesem Artikel werden das erneute Trainieren eines (klassischen) Studio-Webdiensts erläutert. Eine Anleitung zum erneuten Trainieren eines neues (klassischen) Studio-Webdiensts [finden Sie in dieser Anleitung](retrain-machine-learning-model.md).

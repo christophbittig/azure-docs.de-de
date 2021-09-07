@@ -3,12 +3,12 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34b0cac710833e1d1b29060aa37425d2e57ae828
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92171535"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303734"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
@@ -26,17 +26,15 @@ Um das Erstellen von Diagnoseeinstellungen nach Maß (mit LA als Ziel) zu verein
 
 * Der Bereich „Verwaltungsgruppe“ wird derzeit nicht unterstützt.
 
-* Die integrierte Richtlinie ist in nationalen Clouds zurzeit nicht verfügbar.
-
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>Zuweisen der integrierten Richtlinie zu einem Bereich
 
 Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zum Dashboard **Richtlinie**.
-2. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
-3. Filtern Sie die Liste nach **Category=Backup**. Suchen Sie die Richtlinie mit dem Namen **[Vorschau]: Bereitstellen von Diagnoseeinstellungen für den Recovery Services-Tresor im Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien**.
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zum Dashboard **Backup Center**.
+2. Wählen Sie im linken Menü die Option **Azure-Richtlinien für die Sicherung** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
+3. Suchen Sie die Richtlinie **Stellen Sie dem Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien Diagnoseeinstellungen für den Recovery Services-Tresor bereit.** .
 
     ![Bereich „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

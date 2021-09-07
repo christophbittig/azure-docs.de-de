@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0c087838029a5e7863359564682a6843238421c5
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683646"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964588"
 ---
 # <a name="transform-data-for-iot-central"></a>Transformieren von Daten für IoT Central
 
@@ -35,7 +35,7 @@ Die folgende Tabelle zeigt drei Beispiele für Transformationstypen:
 |------------------------|-------------|----------|-------|
 | Nachrichtenformat         | Konvertieren in oder Bearbeiten von JSON-Nachrichten. | CSV in JSON  | Eingehend. IoT Central akzeptiert nur JSON-Nachrichten mit Wert. Weitere Informationen finden Sie unter [Telemetrie-, Eigenschaften- und Befehlsnutzlasten](concepts-telemetry-properties-commands.md). |
 | Berechnungen           | Mathematische Funktionen, die durch [Azure Functions](../../azure-functions/index.yml) ausgeführt werden können. | Einheitenkonvertierung von Fahrenheit in Celsius.  | Nutzen Sie das Ausgangsmuster zur Transformierung, um den skalierbaren Geräteeingang über eine direkte Verbindung mit IoT Central zu nutzen. Durch Transformierung der Daten können Sie IoT Central-Features wie Visualisierungen und Aufträge verwenden. |
-| Nachrichtenerweiterung     | Anreicherungen aus externen Datenquellen wurden in Geräteeigenschaften oder Telemetriedaten nicht gefunden. Weitere Informationen zu internen Anreicherungen finden Sie unter [Exportieren von IoT-Daten in Cloudziele mithilfe des Datenexports](howto-export-data.md) | Hinzufügen von Wetterinformationen zu Nachrichten mithilfe von Standortdaten von Geräten. | Nutzen Sie das Ausgangsmuster zur Transformierung, um den skalierbaren Geräteeingang über eine direkte Verbindung mit IoT Central zu nutzen. |
+| Nachrichtenerweiterung     | Anreicherungen aus externen Datenquellen wurden in Geräteeigenschaften oder Telemetriedaten nicht gefunden. Weitere Informationen zu internen Anreicherungen finden Sie unter [Exportieren von IoT-Daten in Cloudziele mithilfe des Datenexports](howto-export-data.md) | Hinzufügen von Wetterinformationen zu Nachrichten mithilfe von [Standortdaten](howto-use-location-data.md) von Geräten | Nutzen Sie das Ausgangsmuster zur Transformierung, um den skalierbaren Geräteeingang über eine direkte Verbindung mit IoT Central zu nutzen. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

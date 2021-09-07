@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e86c9afcdb68aa6ad030405a2b5cbe59dc92e6f0
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99989077"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201624"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
@@ -40,7 +40,7 @@ Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Cognitive Services d
 
 ## <a name="supported-regions-and-service-offerings"></a>Unterstützte Regionen und Dienstangebote
 
-Virtuelle Netzwerke (VNETs) werden unterstützt in [Regionen, in denen Cognitive Services verfügbar ist](https://azure.microsoft.com/global-infrastructure/services/). Cognitive Services unterstützt Diensttags für die Konfiguration von Netzwerkregeln. Die unten aufgeführten Dienste sind im Diensttag **CognitiveServicesManagement** enthalten:
+Virtuelle Netzwerke (VNETs) werden unterstützt in [Regionen, in denen Cognitive Services verfügbar ist](https://azure.microsoft.com/global-infrastructure/services/). VNets werden derzeit von einer Ressource mit mehreren Diensten nicht unterstützt. Cognitive Services unterstützt Diensttags für die Konfiguration von Netzwerkregeln. Die unten aufgeführten Dienste sind im Diensttag **CognitiveServicesManagement** enthalten:
 
 > [!div class="checklist"]
 > * Anomalieerkennung

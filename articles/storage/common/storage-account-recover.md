@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e45d2ea0c0e44e859f5339459ed834be22fbb5ea
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 3a26a181dc8fd25ad93ebba9aaa496f3421bbffc
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950854"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354581"
 ---
 # <a name="recover-a-deleted-storage-account"></a>Wiederherstellen eines gelöschten Speicherkontos
 
@@ -23,6 +23,7 @@ In einigen Fällen kann ein gelöschtes Speicherkonto möglicherweise über das 
 - Das Speicherkonto wurde innerhalb der letzten 14 Tage gelöscht.
 - Das Speicherkonto wurde mit dem Azure Resource Manager-Bereitstellungsmodell erstellt.
 - Seit dem Löschen des ursprünglichen Kontos wurde kein neues Speicherkonto mit demselben Namen erstellt.
+- Dem Benutzer, der das Speicherkonto wiederherstellt, muss eine Azure RBAC-Rolle zugewiesen werden, die die Berechtigung **Microsoft.Storage/storageAccounts/write** erteilt. Informationen zu integrierten Azure RBAC-Rollen, die diese Berechtigung erteilen, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md). 
 
 Bevor Sie ein gelöschtes Speicherkonto wiederherzustellen versuchen, vergewissern Sie sich, dass die Ressourcengruppe für dieses Konto vorhanden ist. Wenn die Ressourcengruppe gelöscht wurde, müssen Sie sie neu erstellen. Eine Ressourcengruppe kann nicht wiederhergestellt werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcengruppen](../../azure-resource-manager/management/manage-resource-groups-portal.md).
 

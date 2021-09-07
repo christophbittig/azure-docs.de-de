@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 06/25/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: 95ac82bfbdef8843f3eb4fc10cea7a0309d9eb89
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: e6a06c2a2a525e89fd6d7ab61f983f2b91c1cc8a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656835"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989001"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal
 
@@ -42,8 +42,6 @@ Azure RBAC bietet eine neue Benutzeroberfläche zum Zuweisen von Azure-Rollen im
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Suchen Sie im oberen Suchfeld nach dem Bereich, für den Sie Zugriff gewähren möchten. Suchen Sie beispielsweise nach **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine bestimmten Ressource.
-
-    ![Screenshot: Suchen nach einer Ressourcengruppe im Azure-Portal.](./media/shared/rg-portal-search.png)
 
 1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
@@ -124,8 +122,6 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 1. Suchen Sie im oberen Suchfeld nach dem Bereich, für den Sie Zugriff gewähren möchten. Suchen Sie beispielsweise nach **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine bestimmten Ressource.
 
-    ![Screenshot: Suche nach einer Ressourcengruppe im Azure-Portal in der Benutzeroberfläche der Vorschauversion.](./media/shared/rg-portal-search.png)
-
 1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
     Nachfolgend sehen Sie ein Beispiel für eine Ressourcengruppe.
@@ -150,7 +146,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
     ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
 
-    Die Seite „Rolle zuweisen“ wird geöffnet.
+    Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
 ## <a name="step-3-select-the-appropriate-role-preview"></a>Schritt 3: Auswählen der geeigneten Rolle (Vorschau)
 
@@ -158,7 +154,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
     Sie können nach einer Rolle anhand des Namens oder der Beschreibung suchen. Sie können Rollen auch nach Typ und Kategorie filtern.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rolle auswählen“ in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal/roles.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/roles.png)
 
 1. Klicken Sie in der Spalte **Details** auf **Anzeigen**, um weitere Details zu einer Rolle abzurufen.
 
@@ -170,21 +166,21 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus, um die ausgewählte Rolle mindestens einem Azure AD-Benutzer, einer Gruppe oder einem Dienstprinzipal (Anwendung) zuzuweisen.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal/members.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/members.png)
 
-1. Klicken Sie auf **Mitglieder hinzufügen**.
+1. Klicken Sie auf **Mitglieder auswählen**.
 
 1. Suchen Sie nach den Benutzern, Gruppen oder Dienstprinzipalen, und wählen Sie sie aus.
 
-    Sie können im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichnern zu durchsuchen.
+    Sie können im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigename oder E-Mail-Adresse zu durchsuchen.
 
-   ![Screenshot: Hinzufügen von Mitgliedern im Bereich „Mitglieder auswählen“ in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal/select-principal.png)
+   ![Screenshot: Bereich „Mitglieder auswählen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/select-members.png)
 
 1. Klicken Sie auf **Speichern**, um die Benutzer, Gruppen oder Dienstprinzipale der Liste „Mitglieder“ hinzuzufügen.
 
 1. Um die ausgewählte Rolle mindestens einer verwalteten Identität zuzuweisen, wählen Sie **Verwaltete Identität** aus.
 
-1. Klicken Sie auf **Mitglieder hinzufügen**.
+1. Klicken Sie auf **Mitglieder auswählen**.
 
 1. Wählen Sie im Bereich **Verwaltete Identitäten auswählen** aus, ob der Typ [Systemseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder [Benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) ist.
 

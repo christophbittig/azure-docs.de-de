@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.openlocfilehash: cb88998009ab05eb91b8945a138ef935660dac35
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580590"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710764"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Überwachung und Optimierung von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -20,9 +20,17 @@ Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembeha
 
 ## <a name="metrics"></a>metrics
 
-Hyperscale (Citus) stellt Metriken für jeden Knoten in einer Servergruppe bereit. Die Metriken bieten Einblicke in das Verhalten der unterstützenden Ressourcen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen Verlauf von bis zu 30 Tagen.
+Hyperscale (Citus) stellt Metriken für Knoten in einer Servergruppe bereit und aggregiert Metriken für die Gruppe als Ganzes. Die Metriken bieten Einblicke in das Verhalten der unterstützenden Ressourcen. Jede Metrik wird mit einer Frequenz von einer Minute ausgegeben und verfügt über einen Verlauf von bis zu 30 Tagen.
 
-Zusätzlich zum Anzeigen von Diagrammen der Metriken können Sie Warnungen konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-hyperscale-alert-on-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL).  Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Ausführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
+Zusätzlich zum Anzeigen von Diagrammen der Metriken können Sie Warnungen konfigurieren. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Einrichten von Warnungen](howto-hyperscale-alert-on-metric.md).  Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Ausführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../azure-monitor/data-platform.md).
+
+### <a name="per-node-vs-aggregate"></a>Metriken pro Knoten und aggregierte Metriken
+
+Standardmäßig werden im Azure-Portal knotenübergreifende Hyperscale (Citus)-Metriken in einer Servergruppe aggregiert. Einige Metriken, etwa der Prozentsatz der Datenträgernutzung, sind jedoch pro Knoten aussagekräftiger. Wenn Sie Metriken für Knoten einzeln anzeigen möchten, verwenden Sie die [Metrikteilung](../azure-monitor/essentials/metrics-charts.md#metric-splitting) von Azure Monitor nach Servername.
+
+> [!NOTE]
+>
+> Einige Hyperscale (Citus)-Servergruppen unterstützen die Metrikteilung nicht. In diesen Servergruppen können Sie Metriken für einzelne Knoten anzeigen, indem Sie auf der Seite **Übersicht** der Servergruppe auf den Knotennamen klicken. Öffnen Sie anschließend die Seite **Metriken** für den Knoten.
 
 ### <a name="list-of-metrics"></a>Liste der Metriken
 
@@ -44,3 +52,4 @@ Azure liefert keine aggregierten Metriken für den Cluster als Ganzes, aber Metr
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-hyperscale-alert-on-metric.md).
+- Erfahren Sie, wie Sie die [Metrikteilung](../azure-monitor/essentials/metrics-charts.md#metric-splitting) anwenden, um Metriken pro Knoten in einer Servergruppe zu überprüfen.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 680563e0688d11e02f79f3c184b38d5a80bafeb0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 01d8f23331525443a9f83245b8eec2b402e92d6e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480355"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443020"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurieren von ADDS LDAP mit erweiterten Gruppen für Zugriff auf NFS-Volumes
 
@@ -29,11 +29,11 @@ Dieser Artikel erklärt die Überlegungen und Schritte zum Aktivieren von LDAP m
 
 ## <a name="considerations"></a>Überlegungen
 
+* Sie können das Feature „LDAP mit erweiterten Gruppen“ nur bei der Volumeerstellung aktivieren. Dieses Feature kann nicht nachträglich für bereits vorhandene Volumes aktiviert werden.  
+
 * LDAP mit erweiterten Gruppen wird nur mit Active Directory Domain Services (AD DS) oder Azure Active Directory Domain Services (AADDS) unterstützt. OpenLDAP oder andere LDAP-Verzeichnisdienste von Drittanbietern werden nicht unterstützt. 
 
 * LDAP über TLS darf *nicht* aktiviert werden, wenn Sie Azure Active Directory Domain Services (AADDS) verwenden.  
-
-* Wenn Sie die LDAP mit erweiterten Gruppenfeature aktivieren, werden LDAP-aktivierte [Kerberos-Volumes](configure-kerberos-encryption.md) den Dateibesitz für LDAP-Benutzer nicht ordnungsgemäß anzeigen. Eine Datei oder ein Verzeichnis, die/das von einem LDAP-Benutzer erstellt wurde, wird standardmäßig als Besitzer `root` und nicht als der tatsächliche LDAP-Benutzer verwendet. Allerdings kann `root` das Konto den Dateibesitz mithilfe des Befehls manuell ändern `chown <username> <filename>`. 
 
 * Nachdem Sie das Volume erstellt haben, können Sie die Einstellung der LDAP-Option (aktiviert oder deaktiviert) nicht mehr ändern.  
 

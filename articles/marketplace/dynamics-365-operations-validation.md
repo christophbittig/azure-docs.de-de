@@ -7,16 +7,16 @@ ms.topic: article
 author: vamahtan
 ms.author: vamahtan
 ms.date: 05/19/2021
-ms.openlocfilehash: 45bdf3e0006aeaf24b8c3ede0f7090aabfe85808
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05b7c223823522b7c511df7cfa66c7dffa2a8b4b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482662"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281285"
 ---
 # <a name="dynamics-365-for-operations-functional-validation"></a>Funktionale Überprüfung eines Dynamics 365 for Operations-Angebots
 
-Die Veröffentlichung eines Angebots für Dynamics 365 for Operations in [Partner Center](https://partner.microsoft.com/dashboard/home) erfordert zwei funktionale Überprüfungen:
+Die Veröffentlichung eines Angebots für Dynamics 365 for Operations in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) erfordert zwei funktionale Überprüfungen:
 
 - Hochladen eines Demovideos der Dynamics 365-Umgebung zur Beschreibung der grundlegenden Funktionen
 - Bereitstellen von Screenshots zur Veranschaulichung der [LCS-Umgebung](https://lcs.dynamics.com/) (Lifecycle Services) der Lösung
@@ -29,7 +29,7 @@ Die Veröffentlichung eines Angebots für Dynamics 365 for Operations in [Partn
 Es gibt zwei Optionen für die funktionale Überprüfung:
 
 - Sie stellen uns die [LCS](https://lcs.dynamics.com/)-Umgebung und die Lösung in einem 30-minütigen Konferenzgespräch während unserer Geschäftszeiten (PST) vor.
-- Sie navigieren in Partner Center zum [kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) > **Übersicht** und laden eine URL zum Demovideo sowie auf der Registerkarte „Ergänzende Inhalte“ LCS-Screenshots zum Angebot hoch.
+- Navigieren Sie in Partner Center zum [kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165290), und laden Sie auf der Registerkarte „Ergänzender Inhalt“ eine Demovideo-URL und LCS-Screenshots hoch.
 
 Das Microsoft-Zertifizierungsteam überprüft das Video und die Dateien und genehmigt dann entweder die Lösung oder sendet eine E-Mail mit den nächsten Schritten.
 
@@ -70,7 +70,7 @@ Wenden Sie sich für einen Termin für das finale Überprüfungsgespräch an [ap
 3. Laden Sie das Dokument in Partner Center hoch.
 
     1. Erstellen Sie ein Textdokument, das die Adresse des Demovideos und die Screenshots enthält, oder speichern Sie die Screenshots als separate JPG-Dateien.
-    2. Fügen Sie in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) auf der Registerkarte **Ergänzende Inhalte** des Angebots den Text und die Bilder zu einer ZIP-Datei hinzu.
+    2. Fügen Sie in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) auf der Registerkarte **Ergänzende Inhalte** des Angebots den Text und die Bilder zu einer ZIP-Datei hinzu.
 
     [![Abbildung des Projektbibliothekfensters](media/dynamics-365-operations/supplemental-content.png)](media/dynamics-365-operations/supplemental-content.png#lightbox)
 

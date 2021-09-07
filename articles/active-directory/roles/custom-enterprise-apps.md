@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db22b44e032261d138d74e34340dca6fcaf75779
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf49cfd4d1e0e9b3e65354c9f6c89dd7efd71970
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092870"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339696"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Erstellen benutzerdefinierter Rollen zum Verwalten von Unternehmens-Apps in Azure Active Directory
 
@@ -54,8 +54,9 @@ Das Erteilen der Berechtigung zum Aktualisieren erfolgt in zwei Schritten:
 >[!NOTE]
 > Benutzerdefinierte Rollen werden auf Organisationsebene erstellt und verwaltet und sind nur auf der Seite „Übersicht“ der Organisation verfügbar.
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
-1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** > **Neue benutzerdefinierte Rolle** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** und dann **Neue benutzerdefinierte Rolle** aus.
 
     ![Hinzufügen einer neuen benutzerdefinierten Rolle aus der Liste der Rollen in Azure AD](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -73,8 +74,10 @@ Das Erteilen der Berechtigung zum Aktualisieren erfolgt in zwei Schritten:
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-portal"></a>Zuweisen der Rolle zu einem Benutzer über das Azure-Portal
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus.
+
 1. Wählen Sie die Rolle **Berechtigungen zum Verwalten von Benutzer- und Gruppenzuweisungen erteilen** aus.
 
     ![„Rollen und Administratoren“ öffnen und nach der benutzerdefinierten Rolle suchen](./media/custom-enterprise-apps/select-custom-role.png)

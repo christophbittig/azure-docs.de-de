@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9913fc2e3780d9d6ab91be19913238f8002f281a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: e04d3a0a5b7c48117af1f597606658a878a3a6ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346786"
 ---
 # <a name="troubleshoot-vm-deployment-in-azure-stack-edge-pro-gpu"></a>Behandeln von Problemen bei der Bereitstellung virtueller Computer in Azure Stack Edge Pro GPU
 
@@ -21,7 +21,7 @@ ms.locfileid: "111983271"
 
 In diesem Artikel wird beschrieben, wie häufige Fehler bei der Bereitstellung virtueller Computer (VMs) auf einem Azure Stack Edge Pro GPU-Gerät behoben werden. Dieser Artikel enthält Anleitungen zum Untersuchen der häufigsten Probleme, die bei der VM-Bereitstellung zu Timeouts und beim Erstellen von Netzwerkschnittstelle und virtuellem Computer zu Problemen führen.
 
-Zum Diagnostizieren von Fehlern bei der VM-Bereitstellung überprüfen Sie die Gastprotokolle für den virtuellen Computer, bei dem der Fehler aufgetreten ist. <!--For steps to collect VM guest logs and include them in a Support package, see [Collect guest logs for VMs on Azure Stack Edge Pro](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).-->
+Zum Diagnostizieren von Fehlern bei der VM-Bereitstellung überprüfen Sie die Gastprotokolle für den virtuellen Computer, bei dem der Fehler aufgetreten ist. Die Schritte zum Erfassen von VM-Gastprotokollen und deren Einbindung in ein Supportpaket finden Sie unter [Erfassen von VM-Gastprotokollen auf Azure Stack Edge Pro GPU-Geräten](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).
 
 Informationen zu Problemen, die ein erfolgreiches Hochladen eines VM-Images vor der VM-Bereitstellung verhindern, finden Sie unter [Problembehandlung beim Hochladen von VM-Images in Azure Stack Edge Pro GPU](azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md).
 
@@ -32,7 +32,7 @@ Dieser Abschnitt enthält Informationen zu den häufigsten Ursachen eines Timeou
 
 Wenn bei der VM-Bereitstellung ein Timeout auftritt, wird der folgende Fehler angezeigt: 
 
-![Screenshot: Fehler, der im Azure-Portal bei einem Timeout bei der VM-Bereitstellung angezeigt wird.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
+![Screenshot: Im Azure-Portal angezeigter Fehler nach einem Timeout bei der VM-Bereitstellung in Azure Stack Edge.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
 
 Die folgenden Probleme sind die Hauptursachen für Timeouts bei der VM-Bereitstellung:
 - Die IP-Adresse, die Sie dem virtuellen Computer zugewiesen haben, wird bereits verwendet. [Weitere Informationen](#vm-provisioning-timeout)
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Standardgateway u
 
    Um die IP-Adressen für Standardgateway und DNS-Server zu ermitteln, wechseln Sie zur lokalen Benutzeroberfläche für Ihr Gerät. Wählen Sie den gewünschten Port aus, und zeigen Sie die Netzwerkeinstellungen an.
 
-   ![Screenshot: Einstellungen für Standardgateway und DNS-Server für einen Port auf einem Azure Stack Edge Pro GPU-Gerät.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
+   ![Screenshot: Seite „Netzwerk“ für Azure Stack Edge-Gerät mit Anzeige der Netzwerkeinstellungen für Port 2.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
 
 
 ### <a name="cloud-init-issues-linux-vms"></a>Probleme mit `cloud init` (virtuelle Linux-Computer)
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um nach einigen der häufigsten Probleme
 
    Wenn die Datenquelle auf *Azure* festgelegt ist, sieht der Eintrag in den *cloud-init*-Protokollen in etwa wie folgt aus.
 
-   ![Abbildung eines cloud-init-Protokolleintrags für ein VM-Image mit auf Azure festgelegter Datenquelle.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png) 
+   ![Abbildung: cloud-init-Protokolleintrag für ein VM-Image mit der Einstellung „Azure“ für die Datenquelle. Der identifizierende Text ist hervorgehoben.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png)
 
    Wenn die Datenquelle nicht auf Azure festgelegt ist, müssen Sie möglicherweise Ihr `cloud init`-Skript überarbeiten. Weitere Informationen finden Sie unter [Tiefere Einblicke in cloud-init](../virtual-machines/linux/cloud-init-deep-dive.md).
 
@@ -153,7 +153,7 @@ Um zu überprüfen, ob die Netzwerkschnittstelle erfolgreich erstellt wurde, geh
 
 1. Wenn eine Netzwerkschnittstelle nicht erfolgreich erstellt wurde, wird der folgende Fehler angezeigt.
 
-   ![Screenshot: Fehler, der im Portal angezeigt wird, wenn beim Erstellen der Netzwerkschnittstelle ein Fehler auftritt.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
+   ![Screenshot: Im Azure-Portal angezeigter Fehler, wenn die Netzwerkschnittstelle während der VM-Bereitstellung auf einem Azure Stack Edge-Gerät nicht erfolgreich erstellt werden kann.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
 
 **Lösungsvorschlag:** Erstellen Sie den virtuellen Computer erneut, und weisen Sie ihm eine statische IP-Adresse zu.
 
@@ -166,7 +166,7 @@ In diesem Abschnitt werden häufige Probleme behandelt, die bei der Erstellung v
 
 **Fehlerbeschreibung:** Wenn die VM-Erstellung aufgrund von unzureichendem Arbeitsspeicher fehlschlägt, wird der folgende Fehler angezeigt.
  
-![Screenshot: Fehler, der im Portal angezeigt wird und der beim Erstellen des virtuellen Computers auftritt.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
+![Screenshot: Im Azure-Portal angezeigter Fehler, wenn die VM-Erstellung auf einem Azure Stack Edge-Gerät nicht erfolgreich ist.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
 
 **Lösungsvorschlag:** Überprüfen Sie den verfügbaren Arbeitsspeicher auf dem Gerät, und wählen Sie die VM-Größe entsprechend aus. Weitere Informationen finden Sie unter [In Azure Stack Edge unterstützte VM-Größen](azure-stack-edge-gpu-virtual-machine-sizes.md).
 
@@ -188,16 +188,15 @@ Der für die Bereitstellung eines virtuellen Computers verfügbare Arbeitsspeich
 
 Wenn Sie versuchen, einen virtuellen Computer auf einem GPU-Gerät bereitzustellen, auf dem bereits Kubernetes aktiviert ist, sind keine GPUs verfügbar, und bei der VM-Bereitstellung tritt der folgende Fehler auf:
 
-![Screenshot: Fehler, der im Portal angezeigt wird, wenn bei der Erstellung einer GPU-VM ein Fehler auftritt, weil keine GPUs verfügbar sind.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
+![Screenshot: Im Azure-Portal angezeigter Fehler, wenn keine GPU-VM auf einem Azure Stack Edge-Gerät erstellt werden kann, weil keine GPUs verfügbar sind.](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
 
 **Mögliche Ursachen:** Wenn Kubernetes aktiviert ist, bevor der virtuelle Computer erstellt wird, verwendet Kubernetes alle verfügbaren GPUs, und Sie können keine VMs mit GPU-optimierter Größe erstellen. Sie können so viele VMs mit GPU-optimierter Größe erstellen, wie GPUs verfügbar sind. Ihr Azure Stack Edge-Gerät kann mit 1 oder 2 GPUs ausgestattet sein.
 
-**Lösungsvorschlag:** Informationen zu VM-Bereitstellungsoptionen auf einem Gerät mit 1 oder 2 GPUs, auf dem auch Kubernetes konfiguriert ist, finden Sie unter [GPU-VMs und Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes).
+**Lösungsvorschlag:** Informationen zu VM-Bereitstellungsoptionen auf einem Gerät mit 1 oder 2 GPUs, auf dem auch Kubernetes konfiguriert ist, finden Sie unter [GPU-VMs und Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-<!-- Remove link while cmdlet issue is fixed. - * [Collect a Support package that includes guest logs for a failed VM](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)-->
-* [Behandeln von Problemen mit einer fehlgeschlagenen GPU-Erweiterungsinstallation](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
-* [Behandeln von Fehlern bei Azure Resource Manager](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)
-
+- [Erfassen von VM-Gastprotokollen auf Azure Stack Edge Pro GPU-Geräten](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)<!--Does a failed VM have a guest log? Does it have GPU and memory metrics?-->
+- [Behandeln von Problemen mit einer fehlgeschlagenen GPU-Erweiterungsinstallation](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
+- [Behandeln von Fehlern bei Azure Resource Manager](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)

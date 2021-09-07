@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6435fbffc6a78d82129443f15a9ebcc41ab52ce8
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 600c651601e4281b717c1c8fa7808f3663be4af6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635191"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093941"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -28,18 +28,21 @@ Microsoft empfiehlt die Verwendung von Azure Key Vault zum Verwalten Ihrer Zugri
 
 Sie können Ihre Kontozugriffsschlüssel mit dem Azure-Portal, PowerShell oder der Azure CLI anzeigen und kopieren. Das Azure-Portal stellt auch eine Verbindungszeichenfolge für Ihr Speicherkonto bereit, die Sie kopieren können.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie folgende Schritte durch, um die Zugriffsschlüssel oder Verbindungszeichenfolge Ihres Speicherkontos aus dem Azure-Portal anzuzeigen oder zu kopieren:
 
 1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
-1. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche zum **Kopieren**, um den Kontoschlüssel zu kopieren.
-1. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
+
+2. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+
+3. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche zum **Kopieren**, um den Kontoschlüssel zu kopieren.
+
+4. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
 
     :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen":::
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Rufen Sie den Befehl [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) auf, um Ihre Kontozugriffsschlüssel mit PowerShell abzurufen.
 
@@ -52,7 +55,7 @@ $storageAccountKey = `
     -Name <storage-account>).Value[0]
 ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Rufen Sie, wie im folgenden Beispiel zu sehen, den Befehl [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) auf, um Ihre Kontozugriffsschlüssel mit der Azure CLI aufzulisten. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen. 
 
@@ -84,23 +87,138 @@ Es werden zwei Zugriffsschlüssel zugewiesen, sodass Sie Ihre Schlüssel rotiere
 > [!WARNING]
 > Das erneute Generieren Ihrer Zugriffsschlüssel kann sich auf Anwendungen oder Azure-Dienste auswirken, die von dem Speicherkontoschlüssel abhängig sind. Alle Clients, die den Kontoschlüssel verwenden, um auf das Speicherkonto zuzugreifen, müssen aktualisiert werden, damit der neue Schlüssel verwendet wird, einschließlich Media Services, Cloud-, Desktop- und mobiler Anwendungen sowie grafischer Benutzeroberflächenanwendungen für Azure Storage wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+Wenn Sie Zugriffsschlüssel manuell rotieren möchten, empfiehlt Microsoft, eine Richtlinie für den Schlüsselablauf festzulegen und dann mithilfe von Abfragen in Azure Monitor zu bestimmen, wann ein Zugriffsschlüssel rotiert werden sollte.
+
+### <a name="create-a-key-expiration-policy"></a>Erstellen einer Richtlinie für den Schlüsselablauf
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Bisher kann eine Schlüsselablaufrichtlinie noch nicht mithilfe des Azure-Portals festgelegt werden. Sie können dazu entweder PowerShell oder die Azure CLI verwenden.
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Verwenden Sie zum Erstellen einer Schlüsselablaufrichtlinie den Befehl [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount), und legen Sie den Parameter `-KeyExpirationPeriodInDay` auf die Anzahl von Tagen fest, für die ein Zugriffsschlüssel aktiv sein kann, bevor er rotiert werden muss. 
+
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
+    <storage-account-name>  -KeyExpirationPeriodInDay <period-in-days> 
+```
+
+> [!TIP]
+> Sie können die Schlüsselablaufrichtlinie auch beim Erstellen eines Speicherkontos festlegen, indem Sie den Parameter `-KeyExpirationPeriodInDay` des Befehls [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) festlegen.
+
+Um zu überprüfen, ob die Richtlinie angewendet wurde, verwenden Sie die Eigenschaft `KeyPolicy` von [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount), die im vorherigen Befehl an die Variable `$account` zurückgegeben wurde. 
+  
+```powershell
+$account.KeyPolicy
+``` 
+
+Der Ablaufzeitraum des Schlüssels wird in der Konsolenausgabe angezeigt.
+
+> [!div class="mx-imgBorder"]
+> ![Ablaufzeitraum des Zugriffsschlüssels](./media/storage-account-keys-manage/key-policy-powershell.png)
+
+Sie sollten vorhandene Schlüssel rotieren, wenn sie über das Ablaufdatum hinaus aktiv waren. Ermitteln Sie mithilfe der Eigenschaft `KeyCreationTime`, wann ein Schlüssel erstellt wurde. 
+  
+```powershell
+$account.KeyCreationTime
+``` 
+
+Die Erstellungszeit des Zugriffsschlüssels wird für beide Zugriffsschlüssel in der Konsolenausgabe angezeigt.
+
+> [!div class="mx-imgBorder"]
+> ![Erstellungszeit des Zugriffsschlüssels](./media/storage-account-keys-manage/key-creation-time-powershell.png)
+
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie zum Erstellen einer Schlüsselablaufrichtlinie für vorhandene Speicherkonten den Befehl [az storage account update](/cli/azure/storage/account#az_storage_account_update), und legen Sie den Parameter `--key-exp-days` auf die Anzahl von Tagen fest, für die ein Zugriffsschlüssel aktiv sein kann, bevor er rotiert werden muss. 
+
+```azurecli-interactive
+az storage account update \
+  -n <storage-account-name> \
+  -g <resource-group> --key-exp-days <period-in-days>
+```
+
+> [!TIP]
+> Sie können die Schlüsselablaufrichtlinie auch beim Erstellen eines Speicherkontos festlegen, indem Sie den Parameter `-KeyExpirationPeriodInDay` des Befehls [az storage account create](/cli/azure/storage/account#az_storage_account_create) festlegen.
+
+Um zu überprüfen, ob die Richtlinie angewendet wurde, rufen Sie den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf, und verwenden Sie die Zeichenfolge `{KeyPolicy:keyPolicy}` für den Parameter `-query`.
+  
+```azurecli-interactive
+az storage account show \
+  -n <storage-account-name> \
+  -g <resource-group-name> \
+  --query "{KeyPolicy:keyPolicy}"
+```
+
+Der Ablaufzeitraum des Schlüssels wird in der Konsolenausgabe angezeigt.
+
+```json
+{
+  "KeyPolicy": {
+    "keyExpirationPeriodInDays": 5
+  }
+}
+```
+
+
+Sie sollten vorhandene Schlüssel rotieren, wenn sie über das Ablaufdatum hinaus aktiv waren. Verwenden Sie zum Ermitteln des Erstellungszeitpunkts eines Schlüssels den Befehl [az storage account show](/cli/azure/storage/account#az_storage_account_show) und dann die Zeichenfolge `keyCreationTime` für den Parameter „-query“.
+  
+```azurecli-interactive
+az storage account show \
+  -n <storage-account-name> \
+  -g <resource-group-name> \
+  --query "keyCreationTime"
+```
+
+---
+
+### <a name="query-for-policy-violations"></a>Abfragen von Richtlinienverstößen
+
+Beim Erstellen einer Diagnoseeinstellung, die [Protokolle an einen Azure Log Analytics-Arbeitsbereich sendet](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics), können Sie eine Azure Monitor-Protokollabfrage nutzen, um zu ermitteln, ob ein Schlüssel abgelaufen ist. 
+
+Um zu ermitteln, ob ein Schlüssel abgelaufen ist, geben Sie die folgende Abfrage in die Leiste **Protokollsuche** ein.
+
+```Kusto
+StorageBlobLogs | where KeyExpiryStatus startsWith "Policy Violated". 
+```
+
+Sie können auch eine Abfrage erstellen, mit der Sie ermitteln können, ob eine Abfrage bald abläuft. Mit der folgenden Abfrage werden diese Informationen abgerufen:
+
+```Kusto
+resources  
+| where type =~ 'microsoft.storage/storageAccounts' 
+| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime)) 
+| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "") 
+| project name, days, KeyExpiryStatus  
+```
+
+### <a name="rotate-access-keys"></a>Rotieren von Zugriffsschlüsseln
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel im Azure-Portal zu rotieren:
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
-1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus.
-1. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Zugriffsschlüssel, um den primären Zugriffsschlüssel für Ihr Speicherkonto neu zu generieren.
-1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
-1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+2. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
+
+3. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+
+4. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Zugriffsschlüssel, um den primären Zugriffsschlüssel für Ihr Speicherkonto neu zu generieren.
+
+5. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
+
+6. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit PowerShell zu rotieren:
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
-1. Rufen Sie den Befehl [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
+
+2. Rufen Sie den Befehl [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
 
     ```powershell
     New-AzStorageAccountKey -ResourceGroupName <resource-group> `
@@ -108,15 +226,17 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit PowerShell
       -KeyName key1
     ```
 
-1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
-1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
+3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+4. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
+
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit der Azure CLI zu rotieren:
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
-1. Rufen Sie den Befehl [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
+
+2. Rufen Sie den Befehl [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) auf, um den primären Zugriffsschlüssel neu zu generieren, wie im folgenden Beispiel zu sehen:
 
     ```azurecli-interactive
     az storage account keys renew \
@@ -126,7 +246,8 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel mit der Azure 
     ```
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
-1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
+
+2. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu. Verwenden Sie `key2` anstelle von `key1` als Schlüsselnamen, um den sekundären Schlüssel neu zu generieren.
 
 ---
 

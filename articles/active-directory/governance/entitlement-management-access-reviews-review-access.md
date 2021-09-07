@@ -3,7 +3,7 @@ title: Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigun
 description: Erfahren Sie, wie Sie in Azure Active Directory-Zugriffsüberprüfungen (Vorschauversion) eine Zugriffsüberprüfung für Zugriffspakete in der Berechtigungsverwaltung durchführen.
 services: active-directory
 documentationCenter: ''
-author: ajburnle
+author: amsliu
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
-ms.author: ajburnle
+ms.date: 07/22/2021
+ms.author: amsliu
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a3a146b2622963fb20deeb2a8915eadb028ac3
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: a1d034d3e64e6c74b076ba636822bbd6e04ad1f5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714402"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440221"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -29,11 +29,14 @@ Die Azure AD-Berechtigungsverwaltung erleichtert Unternehmen die Verwaltung des 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die aktiven Zugriffspaketzuweisungen eines Benutzers zu überprüfen, müssen zunächst die Voraussetzungen zum Durchführen einer Zugriffsüberprüfung erfüllt sein:
+Für die Überprüfung der aktiven Zugriffspaketzuweisungen der Benutzer muss der Ersteller einer Überprüfung die folgenden Voraussetzungen erfüllen:
 - Azure AD Premium P2
 - Globaler Administrator, Identity Governance-Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-management-overview.md#license-requirements).
+
+>[!NOTE]
+>Der Prüfer kann eine beliebige Person sein, die vom Ersteller einer Überprüfung ausgewählt wird (Besitzer der Gruppe, Manager des Benutzers, der Benutzer selbst oder ein anderer Benutzer bzw. eine Gruppe).
 
 
 ## <a name="open-the-access-review"></a>Öffnen der Zugriffsüberprüfung
@@ -86,7 +89,7 @@ Nachdem Sie die Zugriffsüberprüfung geöffnet haben, sehen Sie die Namen der B
 Wenn es mehr als einen Reviewer gibt, wird die letzte abgegebene Antwort übernommen. Stellen Sie sich z.B. vor, dass ein Administrator zwei Reviewer auswählt, Alice und Bob. Alice öffnet die Überprüfung als Erste und gewährt den Zugriff. Vor dem Abschluss der Überprüfung öffnet Bob die Überprüfung und verweigert den Zugriff. In diesem Fall wird die letzte Entscheidung – die Zugriffsverweigerung – protokolliert.
 
 >[!NOTE]
->Wenn der Zugriff für einen Benutzer verweigert wird, wird dieser nicht sofort aus dem Zugriffspaket entfernt. Der Benutzer wird bei Abschluss der Überprüfung oder bei Beendigung der Überprüfung durch einen Administrator aus dem Zugriffspaket entfernt.
+>Wenn der Zugriff für einen Benutzer verweigert wird, wird dieser nicht sofort aus dem Zugriffspaket entfernt. Der Benutzer wird bei Abschluss der Überprüfung oder bei Beendigung der Überprüfung durch einen Administrator aus dem Zugriffspaket entfernt. Wenn für einen Benutzer der Zugriff aber genehmigt wird, wird die Genehmigung sofort erteilt. Dies gilt auch, wenn der Überprüfungszeitraum noch nicht beendet ist.
 
 ### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Genehmigen oder Verweigern des Zugriffs mithilfe der systemseitig generierten Empfehlungen
 

@@ -2,14 +2,14 @@
 title: Azure Backup-Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für die Sicherung von SQL Server auf Azure-VMs mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 06/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 678a3e63205d986681016fe64971e9bd874f9c71
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257342"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119926"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -20,7 +20,7 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 **Unterstützung** | **Details**
 --- | ---
 **Unterstützte Bereitstellungen** | SQL-Marketplace-Azure-VMs und Nicht-Marketplace-VMs (manuelle SQL Server-Installation) werden unterstützt.
-**Unterstützte Regionen** | „Australien, Südosten (ASE)“, „Australien, Osten (AE)“, „Australien, Mitte (AC)“, „Australien, Mitte 2 (AC)“ <br> Brasilien, Süden (BRS)<br> „Kanada, Mitte (CNC)“, „Kanada, Osten (CE)“<br> „Asien, Südosten (SEA)“, „Asien, Osten (EA)“ <br> „USA, Osten (EUS)“, „USA, Osten 2 (EUS2)“, „USA, Westen-Mitte (WCUS)“, „USA, Westen (WUS)“, „USA, Westen 2 (WUS 2)“, „USA, Norden-Mitte (NCUS)“, „USA, Mitte (CUS)“, „USA, Süden-Mitte (SCUS)“ <br> „Indien, Mitte (INC)“, „Indien, Süden (INS)“, „Indien, Westen“ <br> „Japan, Osten (JPE)“, „Japan, Westen (JPW)“ <br> „Südkorea, Mitte (KRC)“, „Südkorea, Süden (KRS)“ <br> „Europa, Norden (NE)“, „Europa, Westen“ <br> „Vereinigtes Königreich, Süden (UKS)“, „Vereinigtes Königreich, Westen (UKW)“ <br> „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“, „US DoD, Mitte“, „US DoD, Osten“ <br> „Deutschland, Norden“, „Deutschland, Westen-Mitte“ <br> „Schweiz, Norden“, „Schweiz, Westen“ <br> Frankreich, Mitte <br> „China, Osten“, „China, Osten 2“, „China, Norden“, „China, Norden 2“
+**Unterstützte Regionen** | Azure Backup für SQL Server-Datenbanken ist in allen Regionen verfügbar, mit Ausnahme von „Frankreich, Süden“ (FRS), „Vereinigtes Königreich, Norden“ (UKN), „Vereinigtes Königreich, Süden 2“ (UKS2), „UG IOWA“ (UGI) und „Deutschland (Black Forest)“.
 **Unterstützte Betriebssysteme** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wird derzeit nicht unterstützt.
 **Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express<br><br>Lokale Express-Datenbankversionen werden nicht unterstützt.
 **Unterstützte .NET-Versionen** | .NET Framework 4.5.2 oder höher auf dem virtuellen Computer installiert
@@ -97,9 +97,9 @@ Nur vollständig kopieren |  Secondary
 
 Azure Backup unterstützt eine konsistente Datenübertragungsrate von 200 MBit/s für vollständige und differenzielle Sicherungen großer SQL-Datenbanken (von 500 GB). Um die optimale Leistung zu nutzen, stellen Sie Folgendes sicher:
 
-- Die zugrunde liegende VM (mit der SQL Server-Instanz, die die Datenbank hostet) ist mit dem erforderlichen Netzwerkdurchsatz konfiguriert. Wenn der maximale Durchsatz der VM weniger als 200 MBit/s beträgt, kann Azure Backup Daten nicht mit der optimalen Geschwindigkeit übertragen.<br></br>Außerdem muss für den Datenträger, der die Datenbankdateien enthält, ausreichend Durchsatz bereitgestellt werden. [Erfahren Sie mehr](../virtual-machines/disks-performance.md) über Datenträgerdurchsatz und -leistung auf Azure-VMs. 
+- Die zugrunde liegende VM (mit der SQL Server-Instanz, die die Datenbank hostet) ist mit dem erforderlichen Netzwerkdurchsatz konfiguriert. Wenn der maximale Durchsatz der VM weniger als 200 MBit/s beträgt, kann Azure Backup Daten nicht mit der optimalen Geschwindigkeit übertragen.<br>Außerdem muss für den Datenträger, der die Datenbankdateien enthält, ausreichend Durchsatz bereitgestellt werden. [Erfahren Sie mehr](../virtual-machines/disks-performance.md) über Datenträgerdurchsatz und -leistung auf Azure-VMs. 
 - Prozesse, die auf der VM ausgeführt werden, verbrauchen keine VM-Bandbreite. 
-- Die Sicherungszeitpläne sind auf eine Teilmenge von Datenbanken verteilt. Mehrere Sicherungen, die gleichzeitig auf einer VM ausgeführt werden, teilen sich die Netzwerknutzungsrate zwischen den Sicherungen. [Erfahren Sie mehr](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) über das Steuern der Anzahl gleichzeitiger Sicherungen.
+- Die Sicherungszeitpläne sind auf eine Teilmenge von Datenbanken verteilt. Mehrere Sicherungen, die gleichzeitig auf einer VM ausgeführt werden, teilen sich die Netzwerknutzungsrate zwischen den Sicherungen. [Erfahren Sie mehr](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) über das Steuern der Anzahl gleichzeitiger Sicherungen.
 
 >[!NOTE]
 > [Laden Sie den detaillierten Ressourcenplaner herunter](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx). Mit diesem können Sie die ungefähre Anzahl von geschützten Datenbanken berechnen, die basierend auf den VM-Ressourcen, der Bandbreite und der Sicherungsrichtlinie pro Server empfohlen werden.

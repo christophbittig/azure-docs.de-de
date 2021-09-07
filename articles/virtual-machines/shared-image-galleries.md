@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c6c39a7ef0404a0e78e5b8ed0b41bf54156b488a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f00f98ac9e6350aa09d3fa67c1c87677fef2db6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032661"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346655"
 ---
 # <a name="shared-image-galleries-overview"></a>Übersicht über Kataloge mit freigegebenen Images
 
@@ -27,7 +27,7 @@ Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu
 - Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über Azure RBAC
 - Skalieren Ihrer Bereitstellungen mit Imagereplikaten in jeder Region.
 
-Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
+Über einen Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen innerhalb und außerhalb Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
 
 Ein Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie es erstellt wird. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
 
@@ -104,7 +104,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Alle öffentlichen Regionen können Zielregionen sein, in bestimmten Regionen ist es jedoch erforderlich, dass Kunden einen Anforderungsprozess durchlaufen, um Zugriff zu erhalten. Um anzufordern, dass ein Abonnement zur Zulassungsliste für eine Region wie „Australien, Mitte“ oder „Australien, Mitte 2“ hinzugefügt wird, senden Sie eine [Zugriffsanforderung](/troubleshoot/azure/general/region-access-request-process).
+Alle öffentlichen Regionen können Zielregionen sein, in bestimmten Regionen ist es jedoch erforderlich, dass Kunden einen Anforderungsprozess durchlaufen, um Zugriff zu erhalten. Um anzufordern, dass ein Abonnement zur Positivliste für eine Region wie „Australien, Mitte“ oder „Australien, Mitte 2“ hinzugefügt wird, senden Sie eine [Zugriffsanforderung](/troubleshoot/azure/general/region-access-request-process).
 
 ## <a name="limits"></a>Einschränkungen 
 
@@ -133,7 +133,7 @@ Wir empfehlen Ihnen stets, die Anzahl der Replikate überdimensioniert bereitzus
 
 [Zonenredundanter Azure-Speicher (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) bietet Resilienz vor einem Ausfall der Verfügbarkeitszone in der Region. Mit der allgemeinen Verfügbarkeit des Katalogs mit freigegebenen Images können Sie sich entschließen, Ihre Images in ZRS-Konten in Regionen mit Verfügbarkeitszonen zu speichern. 
 
-Sie können außerdem den Kontotyp für jede der Zielregionen auswählen. Der Standardtyp des Speicherkontos ist „Standard_LRS“, aber Sie können „Standard_ZRS“ für Regionen mit Verfügbarkeitszonen auswählen. Überprüfen Sie die regionale Verfügbarkeit von ZRS [hier](../storage/common/storage-redundancy.md).
+Sie können außerdem den Kontotyp für jede der Zielregionen auswählen. Der Standardtyp des Speicherkontos ist „Standard_LRS“, aber Sie können „Standard_ZRS“ für Regionen mit Verfügbarkeitszonen auswählen. Weitere Informationen zur regionalen Verfügbarkeit von ZRS finden Sie unter [Datenredundanz](../storage/common/storage-redundancy.md).
 
 ![Grafik mit ZRS](./media/shared-image-galleries/zrs.png)
 
@@ -190,7 +190,7 @@ Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen I
 
 - [.NET](/dotnet/api/overview/azure/virtualmachines/management)
 - [Java](/java/azure/)
-- [Node.js](/javascript/api/@azure/arm-compute)
+- [Node.js](/javascript/api/overview/azure/arm-compute-readme)
 - [Python](/python/api/overview/azure/virtualmachines)
 - [Go](/azure/go/)
 
@@ -201,7 +201,6 @@ Sie können einen Katalog mit freigegebenen Images mithilfe von Vorlagen erstell
 - [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
 - [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [Erstellen eines virtuellen Computers aus einer Imageversion](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 

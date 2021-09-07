@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5f4314afa17f245c36417916bc9af59aa7493a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634697"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237548"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Vergleichen der Baselines mithilfe der Überwachung der Dateiintegrität (FIM)
 
@@ -36,7 +36,7 @@ Im Grunde erfordern viele regulatorische Konformitätsstandards wie PCI-DSS & IS
 
 Die Standardeinstellungen der FIM-Registrierungsstruktur bieten eine bequeme Möglichkeit, rekursive Änderungen innerhalb gemeinsamer Sicherheitsbereiche zu überwachen.  Angenommen, ein Angreifer konfiguriert ein Skript, das im LOCAL_SYSTEM-Kontext ausgeführt wird, indem er eine Ausführung beim Hoch- oder Herunterfahren konfiguriert.  Um solche Änderungen zu überwachen, aktivieren Sie die integrierte Überprüfung.  
 
-![Registrierung](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Registrierung.](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Rekursive Überprüfungen gelten nur für die empfohlenen Sicherheitsstrukturen und nicht für benutzerdefinierte Registrierungspfade.  

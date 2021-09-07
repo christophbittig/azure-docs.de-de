@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 28d602f5edebaa122ec873338d99e31a4f755d14
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/25/2021
+ms.openlocfilehash: 4726df91efb18b2d9beec77606db449bd4aee3fa
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372462"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652646"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte
 
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter [Erstellen von Logik-App-Workflows mit nu
 
 ### <a name="set-up-private-endpoint-connection"></a>Einrichten einer Verbindung mit dem privaten Endpunkt
 
-1. Wählen Sie in Ihrem Logik-App-Menü unter **Einstellungen** die Option **Konfiguration** aus.
+1. Wählen Sie in Ihrem Logik-App-Menü unter **Einstellungen** die Option **Netzwerk** aus.
 
 1. Wählen Sie auf der Seite **Netzwerk** unter **Verbindungen mit privaten Endpunkten** die Option **Verbindungen mit privaten Endpunkten konfigurieren** aus.
 
@@ -153,7 +153,7 @@ Legen Sie in ihren Logik-App-Einstellungen `AzureWebJobsStorage` auf die Verbind
 
 ### <a name="considerations-for-private-endpoints-on-storage-accounts"></a>Überlegungen zu privaten Endpunkten in Speicherkonten
 
-- Erstellen Sie für jeden Tabellen-, Warteschlangen- und Blobspeicherdienst unterschiedliche private Endpunkte.
+- Erstellen Sie für jeden Tabellen-, Warteschlangen-, Blob- und Dateispeicherdienst unterschiedliche private Endpunkte.
 
 - Leiten Sie den gesamten ausgehenden Datenverkehr über Ihr virtuelles Netzwerk, indem Sie diese Einstellung verwenden:
 

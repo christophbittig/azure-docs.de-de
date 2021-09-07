@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074843"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914227"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -142,7 +142,6 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
 
 - Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
-- Eine Tabelle muss einen gruppierten Index enthalten, der bei der Datensynchronisierung verwendet werden soll.
 - Ein Primärschlüssel kann nicht über die folgenden Datentypen verfügen: sql_variant, binary, varbinary, image, xml.
 - Gehen Sie mit Bedacht vor, wenn Sie die folgenden Datentypen als Primärschlüssel verwenden, da nur die Genauigkeit bis auf die Sekunde unterstützt wird: time, datetime, datetime2, datetimeoffset.
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
@@ -154,6 +153,8 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Wenn sich zwei Primärschlüssel nur in Bezug auf die Groß-/Kleinschreibung unterscheiden (z. B. „Foo“ und „foo“), wird dieses Szenario von der Datensynchronisierung nicht unterstützt.
 - Das Verkürzen von Tabellen wird von der Datensynchronisierung nicht unterstützt (Änderungen werden nicht nachverfolgt).
 - Hyperscale-Datenbanken werden nicht unterstützt. 
+- Speicheroptimierte Tabellen werden nicht unterstützt.
+- Wenn sich die Hub- und Mitgliedsdatenbanken in einem virtuellen Netzwerk befinden, funktioniert die Datensynchronisierung nicht, da die Synchronisierungs-App, die für die Ausführung der Synchronisierung zwischen Hub und Mitgliedern zuständig ist, den Zugriff auf die Hub- oder Mitgliedsdatenbanken innerhalb der privaten Verbindung eines Kunden nicht unterstützt. Diese Einschränkung gilt auch, wenn der Kunde das Private Link-Feature für die Datensynchronisierung verwendet. 
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 
@@ -198,6 +199,10 @@ Nachdem die Synchronisierungsgruppe erstellt und bereitgestellt wurde, können S
 
 > [!NOTE]
 > Wenn Sie die Schemaeinstellungen der Synchronisierungsgruppe ändern, müssen Sie dem Datensynchronisierungsdienst den Zugriff auf den Server erneut gestatten, damit die Hub-Datenbank erneut bereitgestellt werden kann.
+
+### <a name="region-data-residency"></a>Regionsdatenresidenz 
+
+Wenn Sie Daten innerhalb derselben Region synchronisieren, werden bei der SQL-Datensynchronisierung keine Kundendaten außerhalb der Region gespeichert oder verarbeitet, in der die Dienstinstanz bereitgestellt wird. Wenn Sie Daten regionsübergreifend synchronisieren, werden bei der SQL-Datensynchronisierung die Kundendaten in den Regionspaaren repliziert.
 
 ## <a name="faq-about-sql-data-sync"></a>Häufig gestellte Fragen zur SQL-Datensynchronisierung
 

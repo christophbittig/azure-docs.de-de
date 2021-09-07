@@ -7,13 +7,12 @@ ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: aae17a1071949ea935d7094539d31e85a354da08
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 4032dec715fc12b4e8144e6d9eebd51faceaaaaf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326595"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355331"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>In Azure Maps unterstützte integrierte Kartenstile
 
@@ -90,7 +89,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 
 **grayscale_light** ist eine helle Version des Stils „Straßenkarte“.
 
-![Kartenstil „grayscale_light“](./media/supported-map-styles/grayscale-light.png)
+![Kartenstil „grayscale_light“](./media/supported-map-styles/grayscale-light.jpg)
 
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
@@ -131,10 +130,42 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 **Anwendbare APIs:**
 
 * Web-SDK-Kartensteuerelement
+* Android-Kartensteuerelement
 * Power BI-Visualisierung
+
+## <a name="high_contrast_light"></a>high_contrast_light
+
+**high_contrast_light** ist ein heller Kartenstil mit einem höheren Kontrast als bei anderen Stilen.
+
+![Heller Kartenstil mit starkem Kontrast](./media/supported-map-styles/high-contrast-light.jpg)
+
+**Anwendbare APIs:**
+
+* Web-SDK-Kartensteuerelement
+* Android-Kartensteuerelement
+* Power BI-Visualisierung
+
+## <a name="map-style-accessibility"></a>Barrierefreiheit von Kartenstilen
+
+Bei den interaktiven Kartensteuerelementen von Azure Maps kommen Vektorkacheln in den Kartenstilen zum Einsatz, damit die Sprachausgabe den angezeigten Kartenbereich beschreiben kann. Mehrere Kartenstile sind außerdem im Hinblick auf den Farbkontrast vollständig barrierefrei. Die folgende Tabelle enthält Details zu den Barrierefreiheitsfeatures, die von den einzelnen Kartenstilen unterstützt werden:
+
+| Kartenstil  | Farbkontrast | Sprachausgabe | Notizen |
+|------------|----------------|---------------|-------|
+| `blank` | – | Nein | Eine leere Canvas, die für Entwickler nützlich ist, die ihre eigenen Kacheln als Basiskarte verwenden oder ihre Daten ganz ohne Hintergrund anzeigen möchten. Von der Sprachausgabe werden keine Vektorkacheln für Beschreibungen genutzt.  |
+| `blank_accessible` | –  | Ja | Bei diesem Kartenstil werden im Hintergrund zwar weiterhin die zum Rendern der Karte verwendeten Vektorkacheln geladen, die Daten werden allerdings transparent gemacht. Dadurch werden die Daten weiterhin geladen und können von der Sprachausgabe verwendet werden. |
+| `grayscale_dark` | Partial | Ja | Dieser Kartenstil ist in erster Linie für Business Intelligence-Szenarien konzipiert, eignet sich aber auch zum Anzeigen farbiger Überlagerungen (etwa Wetterradarbilder). |
+| `grayscale_light` | Partial | Ja | Dieser Kartenstil ist in erster Linie für Business Intelligence-Szenarien konzipiert. |
+| `high_contrast_dark` | Ja | Ja | Vollständig barrierefreier Kartenstil für Benutzer im Modus für hohen Kontrast mit einer dunklen Einstellung. Einstellungen für hohen Kontrast werden beim Laden der Karte automatisch erkannt. |
+| `high_contrast_light` | Ja | Ja | Vollständig barrierefreier Kartenstil für Benutzer im Modus für hohen Kontrast mit einer hellen Einstellung. Einstellungen für hohen Kontrast werden beim Laden der Karte automatisch erkannt. |
+| `night` | Partial | Ja | Dieser Stil wurde für den Fall konzipiert, dass sich der Benutzer in einer Umgebung mit schwachem Licht befindet und nicht durch eine helle Karte geblendet werden soll. |
+| `road` | Partial | Ja | Dies ist das primäre farbige Straßenkartenformat in Azure Maps. Aufgrund der Anzahl verschiedener Farben und möglicher Überschneidungen bei Farbkombinationen ist es bei diesem Stil nahezu unmöglich, eine vollständige Barrierefreiheit zu erreichen. Die Barrierefreiheit dieses Kartenstils wird jedoch regelmäßig getestet, und der Kartenstil wird bei Bedarf verbessert, um die Lesbarkeit von Beschriftungen zu verbessern. |
+| `road_shaded_relief` | Partial | Ja | Dieser Stil ist nahezu mit dem primären Straßenkartenformat identisch. Er verfügt allerdings über eine zusätzliche Kachelebene im Hintergrund, die ein schattiertes Relief für Gebirge sowie Farben für die Landnutzung hinzufügt, wenn die Ansicht auf höhere Ebenen verkleinert wird. |
+| `satellite` | – | Ja | Reine Satellitenbilder und Luftaufnahmen; keine Beschriftungen oder Straßenlinien. Die Vektorkacheln werden im Hintergrund geladen, um die Sprachausgabe sowie einen reibungsloseren Übergang beim Wechsel zu `satellite_with_roads` zu ermöglichen. |
+| `satellite_with_roads` | Nein | Ja | Satellitenbilder und Luftaufnahmen mit überlagerten Beschriftungen und Straßenlinien. Auf globaler Ebene gibt es eine unbegrenzte Anzahl von Farbkombinationen, die zwischen den überlagerten Daten und den Bildern möglich sind. Einer der Schwerpunkte besteht darin, Beschriftungen in den meisten gängigen Szenarien lesbar zu machen, aber an manchen Stellen kann der Farbkontrast mit den Hintergrundbildern das Lesen von Beschriftungen erschweren. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen, wie ein Kartenstil in Azure Maps festgelegt wird:
 
-[Auswählen eines Kartenstils](./choose-map-style.md)
+> [!div class="nextstepaction"]
+> [Auswählen eines Kartenstils](./choose-map-style.md)

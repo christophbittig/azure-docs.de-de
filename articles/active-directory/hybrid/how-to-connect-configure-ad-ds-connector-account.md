@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: adea0e63c9e285a751a1a0508e84c5b83a10e994
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074689"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464546"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -84,7 +84,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 
 Stellen Sie sicher, dass Sie `<ADAccountName>`, `<ADDomainName>` und `<ADAccountDN>` durch die entsprechenden Werte für Ihre Umgebung ersetzen.
 
-Für den Fall, dass Sie keine Berechtigungen des AdminSDHolder-Containers ändern möchten, verwenden Sie den Parameter `-SkipAdminSdHolders`. 
+Verwenden Sie den Parameter `-IncludeAdminSdHolders`, falls Sie keine Berechtigungen des Containers „AdminSDHolder“ ändern möchten. Beachten Sie hierbei, dass dies nicht die empfohlene Vorgehensweise ist.
 
 Standardmäßig versuchen alle Cmdlets zum Festlegen von Berechtigungen AD DS-Berechtigungen im Stamm jeder Domäne in der Gesamtstruktur festzulegen, was bedeutet, dass der Benutzer, der die PowerShell-Sitzung ausführt, Domänenadministratorberechtigungen für jede Domäne in der Gesamtstruktur benötigt.  Aufgrund dieser Anforderung wird empfohlen, einen Unternehmensadministrator aus dem Gesamtstrukturstamm zu verwenden. Wenn Ihre Azure AD Connect-Bereitstellung mehrere AD DS-Connectors besitzt, ist es erforderlich, dasselbe Cmdlet in jeder Gesamtstruktur auszuführen, die über einen AD DS-Connector verfügt. 
 

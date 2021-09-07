@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Pläne für ein VM-Angebot im Azure Marketpla
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
-ms.date: 05/20/2021
-ms.openlocfilehash: f0e05f06258cc30253fefdc7113fce045009f500
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/26/2021
+ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340071"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -31,7 +31,7 @@ Wählen Sie nach dem Erstellen Ihrer Pläne die Registerkarte **Planübersicht**
 Die in diesem Bereich verfügbaren Aktionen unterscheiden sich abhängig vom aktuellen Status Ihres Plans.
 
 - Wenn es sich bei dem Plan um einen Entwurf handelt, wählen Sie **Entwurf löschen** aus.
-- Wenn der Planstatus live veröffentlicht wurde, wählen Sie **Stop sell plan** (Verkauf des Plans einstellen) oder **Sync private audience** (Private Zielgruppe synchronisieren) aus.
+- Wenn der Planstatus live veröffentlicht wird, wählen Sie **Verkauf des Plans einstellen** oder **Private Zielgruppe synchronisieren** aus.
 
 ## <a name="create-a-new-plan"></a>Erstellen eines neuen Plans
 
@@ -149,7 +149,7 @@ Wenn Ihre VM bei Verweisen über eine andere Lösungsvorlage oder verwaltete Anw
 
 Jeder Azure-Kunde kann das Angebot entweder mithilfe von PowerShell oder über die CLI bereitstellen.  Wenn Sie dieses Angebot für eine begrenzte Anzahl von Kunden verfügbar machen möchten, legen Sie den Plan auf **Privat** fest. 
 
-Ausgeblendete Pläne generieren keine Vorschaulinks. Sie können Sie jedoch testen, indem Sie [die folgenden Schritte](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image)ausführen. 
+Ausgeblendete Pläne generieren keine Vorschaulinks. Sie können Sie jedoch testen, indem Sie [die folgenden Schritte](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-)ausführen. 
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte im linken Planmenü (**Technische Konfiguration**) fortfahren.
 
@@ -179,7 +179,23 @@ Fügen Sie geöffnete öffentliche oder private Ports auf einem bereitgestellten
 
 ### <a name="properties"></a>Eigenschaften
 
-Wählen Sie ggf. **Unterstützt beschleunigten Netzwerkbetrieb** für Ihren virtuellen Computer aus. Weitere Informationen finden Sie unter [Maximize your VM’s Performance with Accelerated Networking – now generally available for both Windows and Linux](https://go.microsoft.com/fwlink/?linkid=2124513) (Maximieren der Leistung Ihrer VM mit beschleunigtem Netzwerkbetrieb – jetzt allgemein verfügbar für Windows und Linux).
+Nachfolgend sehen Sie eine Liste der Eigenschaften, die für Ihre VM ausgewählt werden können.
+
+- **Sicherung unterstützt**: Aktivieren Sie diese Eigenschaft, wenn Ihre Images die Azure-VM-Sicherung unterstützen. Weitere Informationen finden Sie unter [Azure-VM-Sicherung](../backup/backup-azure-vms-introduction.md).
+
+- **Unterstützt den beschleunigten Netzwerkbetrieb**: Aktivieren Sie diese Eigenschaft, wenn die VM-Images für diesen Plan E/A-Virtualisierung mit Einzelstamm (SR-IOV) für einen virtuellen Computer unterstützen, was für geringe Latenz und einen hohen Durchsatz für die Netzwerkschnittstelle sorgt. Erfahren Sie mehr über den [beschleunigten Netzwerkbetrieb](https://go.microsoft.com/fwlink/?linkid=2124513).
+
+- **Unterstützt die cloud-init-Konfiguration**: Aktivieren Sie diese Eigenschaft, wenn die Images in diesem Plan nach der Bereitstellung ausgeführte cloud-init-Skripts unterstützen. Weitere Informationen finden Sie unter [cloud-init-Konfiguration](../virtual-machines/linux/using-cloud-init.md).
+
+- **Unterstützt Hotpatch**: Windows Server-Azure-Editionen bieten Unterstützung für Hotpatches. Weitere Informationen finden Sie unter [Hotpatch](../automanage/automanage-hotpatch.md).
+
+- **Unterstützt Erweiterungen**: Aktivieren Sie diese Eigenschaft, wenn die Images in diesem Plan Erweiterungen unterstützen. Erweiterungen sind kleine Anwendungen, die Konfiguration und Automatisierung für virtuelle Azure-Computer nach der Bereitstellung bereitstellen. Erfahren Sie mehr über [Azure-VM-Erweiterungen](./azure-vm-create-certification-faq.yml#vm-extensions).
+
+- **Ist ein virtuelles Netzwerkgerät**: Aktivieren Sie diese Eigenschaft, wenn es sich bei diesem Produkt um ein virtuelles Netzwerkgerät handelt. Ein virtuelles Netzwerkgerät ist ein Produkt, das eine oder mehrere Netzwerkfunktionen ausführt und z. B. als Lastenausgleich, VPN-Gateway, Firewall oder Anwendungsgateway genutzt wird. Erfahren Sie mehr über [virtuelle Netzwerkgeräte](https://go.microsoft.com/fwlink/?linkid=2155373).
+
+- **Remotedesktop oder SSH deaktiviert**: Aktivieren Sie diese Eigenschaft, wenn mit diesen Images bereitgestellte VMs Kunden keinen Zugriff über Remotedesktop oder SSH gestatten. Erfahren Sie mehr über die [gesperrte VM-Images](./azure-vm-create-certification-faq.yml#locked-down-or-ssh-disabled-offer).
+
+- **Erfordert eine benutzerdefinierte ARM-Vorlage für die Bereitstellung**: Aktivieren Sie diese Eigenschaft, wenn die Images in diesem Plan nur mithilfe einer benutzerdefinierten ARM-Vorlage bereitgestellt werden können. Weitere Informationen finden Sie im [Abschnitt „Benutzerdefinierte Vorlagen“ des Artikels „Problembehandlung bei der Zertifizierung von virtuellen Computern“](./azure-vm-create-certification-faq.yml#custom-templates).
 
 ### <a name="generations"></a>Generationen
 

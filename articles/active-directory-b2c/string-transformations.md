@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 07/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 176c36ee5c3addf655503e3a371767764e0d9968
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a7041f343eec34f16f4cfd7b32ae56157963dd09
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738051"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439358"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -718,6 +718,44 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
   - **emailAddress**: joe@outlook.com
 - Ausgabeansprüche:
     - **domain**: outlook.com
+
+## <a name="setclaimifbooleansmatch"></a>SetClaimIfBooleansMatch
+
+Überprüft, ob ein boolescher Anspruch `true` oder `false` ist. Falls ja, werden die Ausgabeansprüche mit dem Wert festgelegt, der im Eingabeparameter `outputClaimIfMatched` enthalten ist.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | claimToMatch | Zeichenfolge | Dies ist der Anspruchstyp, der überprüft werden soll. Ein Null-Wert löst eine Ausnahme aus. |
+| InputParameter | matchTo | Zeichenfolge | Der Wert, der mit dem Eingabeanspruch `claimToMatch` verglichen werden soll. Mögliche Werte sind `true` oder `false`.  |
+| InputParameter | outputClaimIfMatched | Zeichenfolge | Der Wert, der festgelegt werden soll, wenn der Eingabeanspruch dem Wert im Eingabeparameter `matchTo` entspricht. |
+| OutputClaim | outputClaim | Zeichenfolge | Wenn der Eingabeanspruch `claimToMatch` dem Eingabeparameter `matchTo` entspricht, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. |
+
+Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des **hasPromotionCode**-Anspruchs `true` lautet. Falls ja, wird der Wert als *Promotioncode nicht gefunden* zurückgegeben.
+
+```xml
+<ClaimsTransformation Id="GeneratePromotionCodeError" TransformationMethod="SetClaimIfBooleansMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="hasPromotionCode" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="true" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="Promotion code not found." />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="promotionCode" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **claimToMatch**: true
+- Eingabeparameter:
+    - **matchTo**: true
+    - **outputClaimIfMatched**: „Promotioncode nicht gefunden“.
+- Ausgabeansprüche:
+    - **outputClaim**: „Promotioncode nicht gefunden“.
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 

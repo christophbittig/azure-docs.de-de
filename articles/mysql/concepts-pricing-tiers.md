@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9e726e53d40ac90aec6bbbaaf41399698b11209
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720918"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340149"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Sie können eine Azure Database for MySQL-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MySQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
@@ -43,27 +45,94 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for MySQL-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MySQL-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-| Speicherattribut   | Basic | Allgemeiner Zweck | Arbeitsspeicheroptimiert |
+Azure Database for MySQL Single Server unterstützt die folgenden Back-End-Speichertypen für die Server. 
+
+| Speichertyp   | Basic | Universell V1 | Universell V2 |
 |:---|:----------|:--------------------|:---------------------|
-| Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 16 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
-| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
-
-> [!NOTE]
-> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, Brasilien, Süden“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“, „USA, Westen-Mitte“, „Kanada, Osten“ und „Kanada, Mitte“.
->
-> Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und bis zu 6.000 IOPS.
->
-
-Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
+| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
 
 >[!NOTE]
+> Speicher im Tarif „Basic“ bietet keine IOPS-Garantie. Für Speicher im Tarif „Universell“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
+
+### <a name="basic-storage"></a>Basic-Speicher 
+Basic-Speicher ist der Back-End-Speicher, der Server im Tarif „Basic“ unterstützt. Basic-Speicher nutzt Azure-Standardspeicher im Back-End, bei dem die bereitgestellte IOPS-Menge nicht garantiert wird und die Latenz variabel ist. Der Basic-Tarif eignet sich am besten für Workloads, die wenig Rechenleistung, niedrige Kosten und E/A-Leistung für die Entwicklung oder kleine, selten genutzte Anwendungen erfordern.
+
+### <a name="general-purpose-storage"></a>Universeller Speicher 
+Universeller Speicher ist der Back-End-Speicher, der Server im Tarif „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt. Für Speicher im Tarif „Universell“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert. Es gibt zwei Generationen von universellem Speicher, wie unten beschrieben:
+
+#### <a name="general-purpose-storage-v1-supports-up-to-4-tb"></a>Speichertyp „Universell V1“ (unterstützt bis zu 4 TB)
+Speicher vom Typ „Universell V1“ basiert auf Legacy-Speichertechnologie, die bis zu 4 TB Speicher und 6.000 IOPs pro Server unterstützen kann. Speichertyp „Universell V1“ ist so optimiert, dass Arbeitsspeicher von den Computeknoten zur Ausführung der MySQL-Engine für die lokale Zwischenspeicherung und Sicherungen genutzt wird. Der Sicherungsprozess für den Speichertyp „Universell V1“ liest die Daten- und Protokolldateien im Arbeitsspeicher der Computeknoten und kopiert die Informationen für eine Aufbewahrung von bis zu 35 Tage in den Zielsicherungsspeicher. Aus diesem Grund liegt der Arbeitsspeicher- und E/A-Verbrauch des Speichers während der Durchführung von Sicherungen relativ hoch. 
+
+Alle Azure-Regionen unterstützen den Speichertyp „Universell V1“.
+
+Für Speicher im Tarif „Universell“ oder „Arbeitsspeicheroptimiert“ mit dem Speichertyp „Universell V1“ sollte Folgendes berücksichtigt werden:
+
+*   Planen Sie für den Compute-SKU-Tarif 10–30 % zusätzlichen Speicher für Speichercaching und Sicherungspuffer ein. 
+*   Stellen Sie 10 % mehr IOPS als für die Datenbankworkload benötigt bereit, um E/A-Anforderungen für Sicherungen zu berücksichtigen. 
+*   Alternativ können Sie zu einem Speicher vom Typ „Universell V2“ migrieren (siehe Beschreibung unten), der bis zu 16 TB unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in Ihren bevorzugten Azure-Regionen verfügbar ist. 
+
+#### <a name="general-purpose-storage-v2-supports-up-to-16-tb-storage"></a>Speichertyp „Universell V2“ (unterstützt bis zu 16 TB Speicher)
+Speicher vom Typ „Universell V2“ basiert auf der neuesten Speicherinfrastruktur, die bis zu 16 TB und 20.000 IOPS unterstützen kann. In einer Teilmenge der Azure-Regionen, in denen die Infrastruktur verfügbar ist, entsprechen alle neu bereitgestellten Server standardmäßig dem Speichertyp „Universell V2“. Speicher vom Typ „Universell V2“ verbraucht keinen Arbeitsspeicher von den MySQL-Computeknoten und bietet im Vergleich zum Speichertyp „Universell V1“ besser vorhersagbare E/A-Latenzzeiten. Sicherungen für Server mit dem Speichertyp „Universell V2“ basieren auf Momentaufnahmen und verursachen keinen zusätzlichen E/A-Overhead. Es ist zu erwarten, dass die Leistung eines MySQL-Servers für den Speichertyp „Universell V2“ im Vergleich zu „Universell V1“ bei gleichem Speicherplatz und gleicher IOPS-Menge höher ist. Für universellen Speicher, der bis zu 16 TB unterstützt, fallen keine zusätzlichen Kosten an. Unterstützung bei der Migration auf einen 16-TB-Speicher erhalten Sie, indem Sie über das Azure-Portal ein Supportticket öffnen.
+
+Der Speichertyp „Universell V2“ wird in den folgenden Azure-Regionen unterstützt: 
+
+| Region | Verfügbarkeit des Speichertyps „Universell V2“ | 
+| --- | --- | 
+| Australien (Osten) | :heavy_check_mark: | 
+| Australien, Südosten | :heavy_check_mark: | 
+| Brasilien Süd | :heavy_check_mark: | 
+| Kanada, Mitte | :heavy_check_mark: |
+| Kanada, Osten | :heavy_check_mark: |
+| USA (Mitte) | :heavy_check_mark: | 
+| East US | :heavy_check_mark: | 
+| USA (Ost) 2 | :heavy_check_mark: |
+| Asien, Osten | :heavy_check_mark: | 
+| Japan, Osten | :heavy_check_mark: | 
+| Japan, Westen | :heavy_check_mark: | 
+| Korea, Mitte | :heavy_check_mark: |
+| Korea, Süden | :heavy_check_mark: |
+| Nordeuropa | :heavy_check_mark: | 
+| USA Nord Mitte | :heavy_check_mark: | 
+| USA Süd Mitte | :heavy_check_mark: | 
+| Asien, Südosten | :heavy_check_mark: | 
+| UK, Süden | :heavy_check_mark: | 
+| UK, Westen | :heavy_check_mark: | 
+| USA, Westen-Mitte | :heavy_check_mark: | 
+| USA (Westen) | :heavy_check_mark: | 
+| USA, Westen 2 | :heavy_check_mark: | 
+| Europa, Westen | :heavy_check_mark: | 
+| Indien, Mitte* | :heavy_check_mark: | 
+| Frankreich, Mitte* | :heavy_check_mark: | 
+| VAE, Norden* | :heavy_check_mark: | 
+| Südafrika, Norden* | :heavy_check_mark: |
+
+> [!Note] 
+> *Regionen, in denen sich der Speichertyp „Universell V2“ für Azure Database for MySQL in der öffentlichen Vorschau befindet <br /> *Für diese Azure-Regionen haben Sie die Möglichkeit, Server mit dem Speichertyp „Universell V1“ und „Universell V2“ zu erstellen. Für Server, die in der öffentlichen Vorschauversion des Speichertyps „Universell V2“ erstellt wurden, gelten die folgenden Einschränkungen: <br /> 
+> * Die georedundante Sicherung wird nicht unterstützt.<br /> 
+> * Der Replikatserver muss sich in einer der Regionen befinden, die den Speichertyp „Universell V2“ unterstützen. <br /> 
+    
+
+### <a name="how-can-i-determine-which-storage-type-my-server-is-running-on"></a>Wie kann ich bestimmen, mit welchem Speichertyp mein Server ausgeführt wird?
+
+Der Speichertyp Ihres Servers ist im Portal auf dem Blatt „Tarif“ angegeben. 
+* Wenn der Server mit der SKU „Basic“ bereitgestellt wird, lautet der Speichertyp „Basic“.
+* Wenn der Server mit der SKU „Universell“ oder „Arbeitsspeicheroptimiert“ bereitgestellt wurde, lautet der Speichertyp „Universell“.
+   *  Wenn auf Ihrem Speicher maximal 4 TB an Speicher bereitgestellt werden können, lautet der Speichertyp „Universell V1“.
+   *  Wenn auf Ihrem Speicher bis zu 16 TB an Speicher bereitgestellt werden können, lautet der Speichertyp „Universell V2“.
+
+### <a name="can-i-move-from-general-purpose-storage-v1-to-general-purpose-storage-v2-if-yes-how-and-is-there-any-additional-cost"></a>Kann ich von Speichertyp „Universell V1“ zu „Universell V2“ wechseln? Falls ja, wie kann ich vorgehen, und entstehen hierbei zusätzliche Kosten?
+Ja, die Migration von Speichertyp „Universell V1“ zu „Universell V2“ wird unterstützt, wenn die zugrunde liegende Speicherinfrastruktur in der Azure-Region des Quellservers verfügbar ist. Die Migration und der V2-Speicher sind ohne zusätzliche Kosten verfügbar.
+
+### <a name="can-i-grow-storage-size-after-server-is-provisioned"></a>Kann ich den Server nach der Bereitstellung des Servers vergrößern?
+Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
+
+>[!IMPORTANT]
 > Der Speicher kann nur zentral hochskaliert und nicht herunterskaliert werden.
 
-Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
-
-Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
+### <a name="monitoring-io-consumption"></a>Überwachen des E/A-Verbrauchs
+Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die relevanten zu überwachenden Metriken sind [Speicherlimit, Speicherprozentsatz, verwendeter Speicher und E/A-Prozentsatz](concepts-monitoring.md). Die Überwachungsmetriken für einen MySQL-Server mit dem Speichertyp „Universell V1“ melden den von der MySQL-Engine verbrauchten Arbeitsspeicher und die E/A-Auslastung, erfassen jedoch möglicherweise nicht den Arbeitsspeicher- und E/A-Verbrauch der Speicherebene, was eine Einschränkung darstellt.
 
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 

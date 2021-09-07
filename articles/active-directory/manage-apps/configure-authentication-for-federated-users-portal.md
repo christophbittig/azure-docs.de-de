@@ -2,22 +2,23 @@
 title: Konfigurieren der automatischen Anmeldebeschleunigung mit der Startbereichsermittlung
 description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2729ec3ca445fa53503a1968e1fee639bd990f6b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: hirsin
+ms.openlocfilehash: c909f888ac498900cfa4aac409ee6cabfc381250
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081495"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339634"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -254,7 +255,7 @@ Um zu überprüfen, welche Anwendungen über eine konfigurierte Richtlinie zur S
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-#### <a name="step-5-youre-done"></a>Schritt 5: Sie haben es geschafft!
+#### <a name="step-5-youre-done"></a>Schritt 5: Sie haben es geschafft!
 
 Testen Sie die Anwendung, um zu überprüfen, ob die neue Richtlinie funktioniert.
 

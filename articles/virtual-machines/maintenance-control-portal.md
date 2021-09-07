@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: bcd0992347033fa355db1f952e775a5077fecabe
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f50e0320405ecab8139657aafb8194e25957bce4
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554511"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369499"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Steuern von Updates mit der Wartungssteuerung und dem Azure-Portal
 
@@ -35,7 +35,7 @@ Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre iso
     
     :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics-tab.png" alt-text="Screenshot der Grundlagen der Wartungskonfiguration":::
 
-1. In der Registerkarte Zeitplan können Sie ein geplantes Fenster deklarieren, in dem Azure die Updates auf Ihre Ressourcen anwendet. Legen Sie ein Startdatum, ein Wartungsfenster und die Wiederholungen fest. Nachdem Sie ein geplantes Fenster erstellt haben, müssen Sie die Updates nicht mehr manuell anwenden. Klicken Sie auf **Weiter**. 
+1. Auf der Registerkarte „Zeitplan“ können Sie ein geplantes Fenster deklarieren, in dem Azure die Updates auf Ihre Ressourcen anwendet. Legen Sie ein Startdatum, ein Wartungsfenster und die Wiederholungen fest. Nachdem Sie ein geplantes Fenster erstellt haben, müssen Sie die Updates nicht mehr manuell anwenden. Klicken Sie auf **Weiter**. 
 
     > [!IMPORTANT]
     > Die **Dauer** des Wartungsfensters muss *2 Stunden* oder länger sein. Die Wartung muss mindestens ein Mal in 35 Tagen **wiederholt** werden. 
@@ -87,7 +87,7 @@ Sie können auch einen bestimmten Host mithilfe von **Virtual Machines** oder de
 
 ## <a name="apply-updates"></a>Anwenden von Updates
 
-Sie können ausstehende Updates bedarfsgesteuert mithilfe von **Virtual Machines** anwenden. Klicken Sie in den VM-Details auf **Wartung** und dann auf **Wartungsfunktion jetzt anwenden**.
+Sie können ausstehende Updates nach Bedarf anwenden. Klicken Sie in den Details des virtuellen Computers oder in den Details von Azure Dedicated Host auf **Wartung** und anschließend auf **Wartungsfunktion jetzt anwenden**. Aufrufe zum Anwenden von Updates können bis zu zwei Stunden dauern.
 
 ![Screenshot des Anwendens ausstehender Updates](media/virtual-machines-maintenance-control-portal/maintenance-configurations-apply-updates-now.png)
 

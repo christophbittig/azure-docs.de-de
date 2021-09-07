@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f1325141ecd9220e3564c402c5fa75fa690fe29
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bb48d72c892723e7b6c3ca2009ea874f788bb5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110661965"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346144"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
@@ -39,7 +39,7 @@ Sie können die Größe Ihres Gateways in eine Gateway-SKU innerhalb einer SKU-F
 
 ### <a name="resource-manager"></a>Ressourcen-Manager
 
-Um die Größe eines Gateways mithilfe von PowerShell für das Resource Manager-Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
+Verwenden Sie den folgenden Befehl, um die Größe eines Gateways mithilfe von PowerShell für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) zu ändern:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg

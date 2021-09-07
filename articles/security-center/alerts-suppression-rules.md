@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d6a9ca83060c074740985b87af841bfa4be17f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339160"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Unterdrücken von Warnungen von Azure Defender
 
@@ -26,7 +26,7 @@ Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln fü
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Kostenlos<br>(Die meisten Sicherheitswarnungen sind nur in Azure Defender verfügbar.)|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen.<br>**Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 
@@ -45,7 +45,7 @@ Mit Unterdrückungsregeln definieren Sie die Kriterien, nach denen Warnungen aut
 > [!CAUTION]
 > Durch das Unterdrücken von Sicherheitswarnungen wird die Effektivität des Bedrohungsschutzes von Azure Defender verringert. Sie sollten die potenziellen Auswirkungen der Unterdrückungsregeln sorgfältig überprüfen und diese über einen bestimmten Zeitraum überwachen.
 
-:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Warnungsunterdrückungsregel erstellen":::
+:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Erstellen einer Warnungsunterdrückungsregel":::
 
 ## <a name="create-a-suppression-rule"></a>Erstellen einer Unterdrückungsregel
 
@@ -64,7 +64,7 @@ So erstellen Sie eine Regel direkt im Azure-Portal
 
     - Oder wählen Sie oben auf der Seite den Link **Unterdrückungsregeln** und dann auf der Seite der Unterdrückungsregeln die Option **Neue Unterdrückungsregel erstellen** aus:
 
-        ![Schaltfläche „Neue Unterdrückungsregel erstellen“](media/alerts-suppression-rules/create-new-suppression-rule.png)
+        ![Neue Unterdrückungsregel erstellen** (Schaltfläche)](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. Geben Sie im Bereich „Neue Unterdrückungsregel (Vorschau)“ Details zur neuen Regel ein.
     - Mit der Regel kann die Warnung für **alle Ressourcen** verworfen werden, sodass zukünftig keine derartige Regel mehr angezeigt wird.     
@@ -103,7 +103,7 @@ Wenn Sie eine oder mehrere der erstellten Regeln löschen möchten, verwenden Si
 1. Die Seite der Unterdrückungsregeln wird mit allen Regeln für das ausgewählte Abonnement geöffnet.
 1. Um eine einzelne Regel zu löschen, öffnen Sie das Menü mit den Auslassungspunkten (...) für die Regel, und wählen Sie **Löschen** aus.
 1. Wenn Sie mehrere Regeln löschen möchten, aktivieren Sie die Kontrollkästchen für die zu löschenden Regeln, und wählen Sie **Löschen** aus.
-    ![Löschen einer oder mehrerer Unterdrückungsregeln](media/alerts-suppression-rules/delete-multiple-alerts.png)
+    ![Löschen einzelner oder mehrerer Unterdrückungsregeln](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Erstellen und Verwalten von Unterdrückungsregeln über die API
 

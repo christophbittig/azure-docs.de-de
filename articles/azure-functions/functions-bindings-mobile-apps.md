@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2c47b4a0895ef41096348c97ebb2d6ff34e801
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88212248"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554602"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
 
@@ -143,7 +143,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
 | **id**| **Id** | Der Bezeichner des abzurufenden Datensatzes. Kann statisch sein oder auf dem Trigger, der die Funktion aufruft, basieren. Wenn Sie beispielsweise einen Warteschlangentrigger für Ihre Funktion verwenden, nutzt `"id": "{queueTrigger}"` den Zeichenfolgenwert der Warteschlangennachricht als abzurufende Datensatz-ID.|
 |**connection**|**Connection**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [einen API-Schlüssel in Ihrer mobilen Node.js-App](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [einen API-Schlüssel in Ihrer mobilen .NET-App](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
+|**apiKey**|**ApiKey**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie einen API-Schlüssel in Ihrer mobilen Node.js-App oder einen [API-Schlüssel in Ihrer mobilen .NET-App implementieren](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) möchten. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -300,7 +300,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 | **name**| – | Der Name des Ausgabeparameters in der Funktionssignatur|
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
 |**connection**|**MobileAppUriSetting**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKeySetting**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [in Ihrem Node.js-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [in Ihrem .NET-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) einen API-Schlüssel implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
+|**apiKey**|**ApiKeySetting**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie in Ihrem Node.js-Mobile App-Back-End oder [in Ihrem .NET-Mobile App-Back-End einen API-Schlüssel implementieren](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) möchten. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

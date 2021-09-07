@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate-Appliance
 description: Zusammenfassung der Unterstützung der Azure Migrate-Appliance.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 7a660b6da0d391e7e2671302432c937b5142f4b0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d8aa5f6bf955bcc3ee3fa86c17375d47402628ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339017"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -23,8 +23,8 @@ Die Azure Migrate-Appliance wird in den folgenden Szenarien verwendet.
 
 **Szenario** | **Tool** | **Verwendung für**
 --- | --- | ---
-**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Führen Sie die Ermittlung des installierten Softwareinventars und die Abhängigkeitsanalyse ohne Agent aus, und ermitteln Sie SQL Server-Instanzen und -Datenbanken.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
-**Migration ohne Agent von Servern, die in VMware-Umgebungen ausgeführt werden** | Azure Migrate-Servermigration | Ermitteln Sie Server, die in Ihrer VMware-Umgebung ausgeführt werden. <br/><br/> Replizieren Sie Server ohne Installation von Agents.
+**Ermittlung und Bewertung von Servern, die in einer VMware-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln von Servern, die in Ihrer VMware-Umgebung ausgeführt werden<br/><br/> Ermitteln Sie das installierte Softwareinventar, ASP.NET-Web-Apps, SQL Server-Instanzen und -Datenbanken und Abhängigkeitsanalyse ohne Agent.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
+**Migration ohne Agent von Servern, die in VMware-Umgebungen ausgeführt werden** | Azure Migrate: Servermigration | Ermitteln Sie Server, die in Ihrer VMware-Umgebung ausgeführt werden. <br/><br/> Replizieren Sie Server ohne Installation von Agents.
 **Ermittlung und Bewertung von Servern, die in einer Hyper-V-Umgebung ausgeführt werden** | Azure Migrate: Ermittlung und Bewertung | Ermitteln Sie Server, die in Ihrer Hyper-V-Umgebung ausgeführt werden.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 **Ermittlung und Bewertung lokaler physischer oder virtualisierter Server** |  Azure Migrate: Ermittlung und Bewertung |  Erkennen Sie lokale physische oder virtualisierte Server.<br/><br/> Sammeln Sie Serverkonfigurations- und Leistungsmetadaten für Bewertungen.
 
@@ -44,8 +44,8 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 
 **Anforderung** | **VMware**
 --- | ---
-**Berechtigungen** | Für den lokalen oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
-**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager**: Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **VMware-Ermittlungsagent**: Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **VMware-Bewertungsagent**: Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen**: Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.<br/>- **DRA-Agent**: Orchestriert die Serverreplikation und koordiniert die Kommunikation zwischen replizierten Servern und Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **SQL Discovery and Assessment Agent**: Sendet die Konfigurations- und Leistungsmetadaten von SQL Server-Instanzen und -Datenbanken an Azure.
+**Berechtigungen** | Für den lokalen Zugriff oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
+**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager:** Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **VMware-Ermittlungs-Agent:** Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **VMware-Bewertungsagent:** Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen:** Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.<br/>- **DRA-Agent**: Orchestriert die Serverreplikation und koordiniert die Kommunikation zwischen replizierten Servern und Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von Servern in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **SQL Discovery and Assessment Agent**: Sendet die Konfigurations- und Leistungsmetadaten von SQL Server-Instanzen und -Datenbanken an Azure.<br/>- **Ermittlungs- und Bewertungs-Agent für Web-Apps:** Sendet die Konfigurationsdaten der Web-Apps an Azure.
 **Projekteinschränkungen** |  Eine Appliance kann nur mit einem einzelnen Projekt registriert werden.<br/> Ein einzelnes Projekt kann über mehrere registrierte Appliances verfügen.
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 10.000 Server ermitteln, die auf einer vCenter Server-Instanz ausgeführt werden.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
 **Unterstützte Bereitstellung** | Bereitstellung als neuer Server, der auf einer vCenter Server-Instanz ausgeführt wird, mithilfe einer OVA-Vorlage.<br/><br/> Bereitstellung auf einem vorhandenen Server, auf dem Windows Server 2016 ausgeführt wird, mithilfe eines PowerShell-Installationsskripts.
@@ -54,14 +54,14 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 **PowerShell-Skript** | Informationen zum Bereitstellen einer Appliance mithilfe des PowerShell-Installationsskripts finden Sie in diesem [Artikel](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Hardware- und Netzwerkanforderungen** |  Die Appliance sollte auf einem Server mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance mithilfe der OVA-Vorlage bereitstellen, benötigen Sie genügend Ressourcen auf der vCenter Server-Instanz, um einen Server zu erstellen, der die Hardwareanforderungen erfüllt.<br/><br/> Wenn Sie die Appliance auf einem vorhandenen Server ausführen, stellen Sie sicher, dass auf dem Server Windows Server 2016 ausgeführt wird und die Hardwareanforderungen erfüllt werden.<br/>_(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_
 **VMware-Anforderungen** | Wenn Sie die Appliance als Server auf vCenter Server bereitstellen, muss sie auf einer vCenter Server-Instanz, auf der 5.5, 6.0, 6.5, 6.7 oder 7.0 ausgeführt wird, und auf einem ESXi-Host, auf dem Version 5.5 oder höher ausgeführt wird, bereitgestellt werden.<br/><br/> 
-**VDDK (Migration ohne Agent)** | Um die Appliance für die Migration von Servern ohne Agent zu nutzen, muss das VMware vSphere-VDDK auf dem Applianceserver installiert sein.
+**VDDK (Migration ohne Agent)** | Um die Appliance für die Migration von Servern ohne Agent zu nutzen, muss das VMware vSphere-VDDK auf dem Applianceserver installiert sein.
 
 ## <a name="appliance---hyper-v"></a>Appliance – Hyper-V
 
 **Anforderung** | **Hyper-V**
 --- | ---
-**Berechtigungen** | Für den lokalen oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
-**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager**: Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **Ermittlungsagent**: Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **Bewertungsagent**: Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen**: Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.
+**Berechtigungen** | Für den lokalen Zugriff oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
+**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager:** Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **Ermittlungs-Agent:** Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **Bewertungsagent:** Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen:** Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.
 **Projekteinschränkungen** |  Eine Appliance kann nur mit einem einzelnen Projekt registriert werden.<br/> Ein einzelnes Projekt kann über mehrere registrierte Appliances verfügen.
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 5000 Server ermitteln, die in einer Hyper-V-Umgebung ausgeführt werden.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
 **Unterstützte Bereitstellung** | Bereitstellung als Server, der auf einem Hyper-V-Host ausgeführt wird, mithilfe einer VHD-Vorlage.<br/><br/> Bereitstellung auf einem vorhandenen Server, auf dem Windows Server 2016 ausgeführt wird, mithilfe eines PowerShell-Installationsskripts.
@@ -75,8 +75,8 @@ In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für
 
 **Anforderung** | **Physisch**
 --- | ---
-**Berechtigungen** | Für den lokalen oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
-**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager**: Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **Ermittlungsagent**: Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **Bewertungsagent**: Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen**: Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.
+**Berechtigungen** | Für den lokalen Zugriff oder Remotezugriff auf den Appliance-Konfigurations-Manager benötigen Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto mit Administratorrechten auf dem Applianceserver.
+**Appliancedienste** | Die Appliance verfügt über die folgenden Dienste:<br/><br/> - **Appliance-Konfigurations-Manager:** Dies ist eine Webanwendung, die mit Quelldetails konfiguriert werden kann, um die Ermittlung und Bewertung von Servern zu starten.<br/> - **Ermittlungs-Agent:** Der Agent sammelt Serverkonfigurationsmetadaten, die zum Erstellen von lokalen Bewertungen verwendet werden können.<br/>- **Bewertungsagent:** Der Agent sammelt Serverleistungsmetadaten, die zum Erstellen von leistungsbasierten Bewertungen verwendet werden können.<br/>- **Dienst für automatische Aktualisierungen:** Der Dienst hält alle Agents, die auf der Appliance ausgeführt werden, auf dem neuesten Stand. Er wird automatisch alle 24 Stunden ausgeführt.
 **Projekteinschränkungen** |  Eine Appliance kann nur mit einem einzelnen Projekt registriert werden.<br/> Ein einzelnes Projekt kann über mehrere registrierte Appliances verfügen.<br/>
 **Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 1.000 physische Server ermitteln.
 **Unterstützte Bereitstellung** | Bereitstellung auf einem vorhandenen Server, auf dem Windows Server 2016 ausgeführt wird, mithilfe eines PowerShell-Installationsskripts.
@@ -97,12 +97,11 @@ Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 **URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Navigieren Sie zum Azure-Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
-management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit Azure Migrate kommunizieren kann.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com  <br/> *.microsoftazuread-sso.com | Verwendet für Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory
+management.azure.com | Verwendet für Ressourcenbereitstellungen und Verwaltungsvorgänge
 *.services.visualstudio.com | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault<br/> Hinweis: Stellen Sie sicher, dass die zu replizierenden Server darauf zugreifen können.
-aka.ms/* | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
+aka.ms/* | Zulassen des Zugriffs auf diese Links, die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden
 download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
 *.servicebus.windows.net | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
@@ -115,11 +114,11 @@ download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download 
 --- | --- |
 *.portal.azure.us  | Navigieren Sie zum Azure-Portal.
 graph.windows.net | Melden Sie sich bei Ihrem Azure-Abonnement an.
-login.microsoftonline.us  | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
-management.usgovcloudapi.net | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
+login.microsoftonline.us  | Verwendet für Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory
+management.usgovcloudapi.net |  Verwendet für Ressourcenbereitstellungen und Verwaltungsvorgänge
 *.services.visualstudio.com | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
 *.vault.usgovcloudapi.net | Verwalten von Geheimnissen in Azure Key Vault
-aka.ms/* | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
+aka.ms/* | Zulassen des Zugriffs auf diese Links, die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden
 download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
 *.servicebus.usgovcloudapi.net  | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
@@ -129,16 +128,15 @@ download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download 
 
 ### <a name="public-cloud-urls-for-private-link-connectivity"></a>URLs für öffentliche Clouds für Private Link-Konnektivität
 
-Die Appliance benötigt Zugriff auf die folgenden URLs (direkt oder über einen Proxy) über den Private Link-Zugriff hinaus. 
+Die Appliance benötigt Zugriff auf die folgenden URLs (direkt oder über einen Proxy) über den Private Link-Zugriff hinaus.
 
 **URL** | **Details**  
---- | --- | 
+--- | --- |
 *.portal.azure.com  | Navigieren Sie zum Azure-Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
-management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit Azure Migrate kommunizieren kann.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> *.microsoftazuread-sso.com  | Verwendet für Zugriffssteuerung und Identitätsverwaltung durch Azure Active Directory
+management.azure.com |  Verwendet für Ressourcenbereitstellungen und Verwaltungsvorgänge
 *.services.visualstudio.com (optional) | Hochladen von Applianceprotokollen, die für die interne Überwachung verwendet werden.
-aka.ms/* (optional) | Zulassen des Zugriffs auf aka-Links; die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden.
+aka.ms/* (optional) | Zulassen des Zugriffs auf diese Links, die für das Herunterladen und Installieren der neuesten Updates für Appliancedienste verwendet werden
 download.microsoft.com/download | Zulassen von Downloads vom Microsoft Download Center.
 *.servicebus.windows.net | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
 *.hypervrecoverymanager.windowsazure.com | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
@@ -248,6 +246,15 @@ Name  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  
 Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition
 Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
 Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version
+
+#### <a name="aspnet-web-apps-data"></a>Daten von ASP.NET-Web-Apps
+
+Die folgende Tabelle enthält die Web-App-Konfigurationsdaten, die die Appliance für jede in der VMware-Umgebung ermittelte Windows Server-Instanz erfasst:
+
+**Entität** | **Daten**
+--- | ---
+Web-Apps | Anwendungsname <br/>Konfigurationspfad <br/>Front-End-Bindungen <br/>Aktivierte Frameworks <br/>Hostwebserver<br/>Unteranwendungen und virtuelle Anwendungen <br/>Name des Anwendungspools <br/>Laufzeitversion <br/>Verwalteter Pipelinemodus
+Webserver | Servername <br/>Servertyp (derzeit nur IIS) <br/>Speicherort der Konfiguration <br/>Version <br/>FQDN <br/>Für die Ermittlung verwendete Anmeldeinformationen <br/>Liste der Anwendungen
 
 #### <a name="windows-server-operating-system-data"></a>Windows-Server-Betriebssystemdaten
 

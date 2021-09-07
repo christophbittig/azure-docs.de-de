@@ -4,15 +4,16 @@ description: Verwenden Sie diese Beispielabfragen, um programmgesteuert auf Anal
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
-ms.date: 3/08/2021
-ms.openlocfilehash: 7d788448fb3f8a849f79e43fcb0737898f4c9e15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 8/06/2021
+ms.openlocfilehash: ac276f495ac2a5eb3bee6ac0f682185cf8424611
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355882"
 ---
 # <a name="sample-queries-for-programmatic-analytics"></a>Beispielabfragen für die programmgesteuerte Analyse
 
@@ -62,6 +63,8 @@ Diese Beispielabfragen gelten für den Bericht „Bestellungen“.
 | Bestellungenbericht für einen bestimmten Angebotsnamen für die letzten 6M | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OfferName = ‘Example Offer Name’ TIMESPAN LAST_6_MONTHS` |
 | Bestellungenbericht für aktive Bestellungen für die letzten 6M | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OrderStatus = ‘Active’ TIMESPAN LAST_6_MONTHS` |
 | Bestellungenbericht für stornierte Bestellungen für die letzten 6M | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OrderStatus = ‘Cancelled’ TIMESPAN LAST_6_MONTHS` |
+| Bericht zu den Bestellungen mit Laufzeitbeginn, Laufzeitende, geschätzten Kosten und Währung | `SELECT OrderId, TermStartId, TermEndId, estimatedcharges from ISVOrderV2 WHERE OrderStatus = ‘Active’ TIMESPAN LAST_6_MONTHS` |
+| Bericht zu den Bestellungen für aktive Testversionen für die letzten 6 Monate | `SELECT OrderId from ISVOrderV2 WHERE OrderStatus = ‘Active’ and HasTrial = ‘True’ TIMESPAN LAST_6_MONTHS` |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

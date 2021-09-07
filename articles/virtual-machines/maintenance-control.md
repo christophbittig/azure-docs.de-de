@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 290a1e8da4e9b3e8eff171ab2d5837bfc9c381b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b85614bce6ddaee98a271e3bf7f34fd3e0301580
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552421"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369427"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
 
@@ -24,13 +24,13 @@ Mit der Wartungssteuerung können Sie entscheiden, wann Sie Updates auf Ihre iso
 Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 - Batchupdates in ein Updatepaket
 - Warten von bis zu 35 Tagen bis zur Anwendung der Updates 
-- Automatisieren Sie Plattformupdates durch Konfigurieren eines Wartungszeitplans oder mithilfe von [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
+- Automatisieren von Plattformupdates durch Konfigurieren eines Wartungszeitplans
 - Wartungskonfigurationen funktionieren abonnement- und ressourcengruppenübergreifend. 
 
 ## <a name="limitations"></a>Einschränkungen
 
 - Virtuelle Computer müssen sich auf einem [dedizierten Host](./dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](isolation.md) erstellt werden.
-- Wenn ein Wartungszeitplan festgelegt wird, muss er mindestens zwei Stunden betragen.
+- Die Dauer des Wartungsfensters muss mindestens zwei Stunden betragen. Dabei handelt es sich um die Zeit zwischen dem Initiieren des Updates durch den Kunden und dem Abschluss des Updates. 
 - Nach 35 Tagen wird automatisch ein Update angewendet.
 - Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
 

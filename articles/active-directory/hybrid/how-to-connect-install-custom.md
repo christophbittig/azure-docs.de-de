@@ -14,12 +14,12 @@ ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29cc31121a4888c23ccbec1c549f2313d0c9e165
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92096350"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439320"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Benutzerdefinierte Installation von Azure Active Directory Connect
 Verwenden Sie *benutzerdefinierte Einstellungen* in Azure Active Directory (Azure AD) Connect, wenn Sie mehr Optionen für die Installation benötigen. Verwenden Sie diese Einstellungen z. B., wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten. Verwenden Sie benutzerdefinierte Einstellungen in allen Fällen, in denen die [Expressinstallation](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -42,7 +42,7 @@ Wählen Sie auf der Seite **Express-Einstellungen** die Option **Anpassen** aus,
 - [Sync](#sync-pages)
 
 ### <a name="install-required-components"></a>Installieren der erforderlichen Komponenten
-Bei der Installation der Synchronisierungsdienste können Sie den optionalen Konfigurationsabschnitt deaktiviert lassen. Azure AD Connect richtet alles automatisch ein. Azure AD Connect richtet eine SQL Server 2012 Express LocalDB-Instanz ein, erstellt die benötigten Gruppen und weist Berechtigungen zu. Wenn Sie die Standardwerte ändern möchten, deaktivieren Sie die entsprechenden Kontrollkästchen.  Die nachstehende Tabelle enthält eine Zusammenfassung dieser Optionen sowie Links zu weiteren Informationen. 
+Bei der Installation der Synchronisierungsdienste können Sie den optionalen Konfigurationsabschnitt deaktiviert lassen. Azure AD Connect richtet alles automatisch ein. Azure AD Connect richtet eine SQL Server 2019 Express LocalDB-Instanz ein, erstellt die geeigneten Gruppen und weist Berechtigungen zu. Wenn Sie die Standardwerte ändern möchten, deaktivieren Sie die entsprechenden Kontrollkästchen.  Die nachstehende Tabelle enthält eine Zusammenfassung dieser Optionen sowie Links zu weiteren Informationen. 
 
 ![Screenshot mit optionalen Auswahlmöglichkeiten für die erforderlichen Installationskomponenten in Azure AD Connect.](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
@@ -116,7 +116,7 @@ Benutzer verwenden das *userPrincipalName*-Attribut, wenn sie sich bei Azure AD
 
 Wenn das userPrincipalName-Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. Sie können beispielsweise „email“ als Attribut auswählen, das die Anmelde-ID enthält. Wenn Sie ein anderes Attribut als userPrincipalName verwenden, wird dieses als *alternative ID* bezeichnet. 
 
-Der Attributwert der alternativen ID muss dem RFC 822-Standard entsprechen. Eine alternative ID kann mit der Kennworthashsynchronisierung, Passthrough-Authentifizierung und Verbundlösungen verwendet werden. Das Attribut kann in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Weitere Informationen zur alternativen ID finden Sie unter [Passthrough-Authentifizierung: Häufig gestellte Fragen (FAQs)](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
+Der Attributwert der alternativen ID muss dem RFC 822-Standard entsprechen. Eine alternative ID kann mit der Kennworthashsynchronisierung, Passthrough-Authentifizierung und Verbundlösungen verwendet werden. Das Attribut kann in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Weitere Informationen zur alternativen ID finden Sie unter [Passthrough-Authentifizierung: Häufig gestellte Fragen (FAQs)](./how-to-connect-pta-faq.yml#does-pass-through-authentication-support--alternate-id--as-the-username--instead-of--userprincipalname--).
 
 >[!NOTE]
 > Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um die benutzerdefinierte Installation fortzusetzen.

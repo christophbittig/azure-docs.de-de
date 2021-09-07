@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 492663ca35ed04da09e7f0d198444a4d40178e2b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a911e468443fe49bb1edc18af3d3412edc8eb8cc
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867524"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678214"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
-HDInsight ermöglicht Machine Learning mit Big Data und bietet so die Möglichkeit, wertvolle Erkenntnisse aus großen Mengen (Petabytes, ja sogar Exabytes) strukturierter, unstrukturierter und sich schnell verändernder Daten zu gewinnen. HDInsight umfasst mehrere Optionen für maschinelles Lernen: SparkML und Apache Spark MLlib, R, Apache Hive und das Microsoft Cognitive Toolkit.
+HDInsight ermöglicht Machine Learning mit Big Data und bietet so die Möglichkeit, wertvolle Erkenntnisse aus großen Mengen (Petabytes, ja sogar Exabytes) strukturierter, unstrukturierter und sich schnell verändernder Daten zu gewinnen. HDInsight umfasst mehrere Optionen für maschinelles Lernen: SparkML und Apache Spark MLlib, Apache Hive und das Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>SparkML und MLlib
 
@@ -22,23 +22,13 @@ HDInsight ermöglicht Machine Learning mit Big Data und bietet so die Möglichke
 
 Die Microsoft Machine Learning-Bibliothek für Apache Spark ist [MMLSpark](https://github.com/Azure/mmlspark). Diese Bibliothek ist darauf ausgelegt, die Produktivität von Datenanalysten mit Spark zu steigern, die Experimentierrate zu erhöhen und innovative Verfahren für das maschinelle Lernen, einschließlich Deep Learning, in sehr großen Datasets zu nutzen. MMLSpark bietet zusätzlich zu den SparkML-APIs auf niedriger Ebene eine weitere Ebene beim Erstellen skalierbarer ML-Modelle, z.B. zum Indizieren von Zeichenfolgen, Umwandeln von Daten in ein von Algorithmen für maschinelles Lernen erwartetes Layout und Zusammenstellen von Featurevektoren. Die MMLSpark-Bibliothek vereinfacht diese und andere gängige Aufgaben zum Erstellen von Modellen in PySpark.
 
-## <a name="r"></a>R
-
-[R](https://www.r-project.org/) ist derzeit die weltweit am häufigsten verwendete Programmiersprache für statistische Berechnungen. Es handelt sich um ein Open-Source-Datenvisualisierungstool mit einer Community von mehr als 2,5 Millionen Benutzern, die stetig wächst. Mit der stark wachsenden Benutzerbasis und mehr als 8.000 verteilten Paketen ist R die wahrscheinlichste Wahl für viele Unternehmen, die maschinelles Lernen nutzen möchten. Sie können einen HDInsight-Cluster mit ML Services erstellen, der bereit für den Einsatz mit sehr großen Datasets und Modellen ist. Diese Funktion bietet Datenanalysten und Statistikern eine vertraute R-Schnittstelle, die bei Bedarf durch HDInsight skaliert werden kann – ohne den zusätzlichen Aufwand der Einrichtung und Wartung eines Clusters.
-
-:::image type="content" source="./media/hdinsight-machine-learning-overview/training-for-prediction.png" alt-text="Training für die Vorhersage mit R Server" border="false":::
-
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
-
-Mit ML Services in HDInsight mit Spark können Sie das Training auf den Knoten eines Clusters durch Verwenden eines Spark-Computekontexts parallel ausführen. Sie können R-Skripts direkt auf dem Edgeknoten ausführen und bei Bedarf alle verfügbaren Kerne parallel verwenden. Alternativ können Sie den Code auch über den Edgeknoten ausführen, um die Verarbeitung zu starten, die auf alle Knoten im Cluster verteilt wird. ML Services in HDInsight mit Spark ermöglicht zudem bei Bedarf das Parallelisieren der Funktionen von Open-Source-R-Paketen.
-
 ## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning und Apache Hive
 
 Azure Machine Learning verfügt über Tools zur Modellierung von Predictive Analytics-Lösungen und einen vollständig verwalteten Dienst, über den Sie Ihre Vorhersagemodelle als sofort nutzbare Webdienste bereitstellen können. Azure Machine Learning ist eine vollständige Predictive Analytics-Lösung in der Cloud, die Sie zum Erstellen, Testen, Operationalisieren und Verwalten von Vorhersagemodelle verwenden können. Wählen Sie aus einer großen Algorithmusbibliothek aus, verwenden Sie ein webbasiertes Studio zum Erstellen von Modellen, und stellen Sie Ihr Modell ganz einfach als Webdienst bereit.
 
 :::image type="content" source="./media/hdinsight-machine-learning-overview/azure-machine-learning.png" alt-text="Microsoft Azure Machine Learning – Übersicht" border="false":::
 
-Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/classic/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio (klassisch) ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
+Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](/azure/architecture/data-science-process/create-features-hive) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/classic/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio (klassisch) ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
@@ -46,16 +36,16 @@ Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfr
 
 Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Dieses Toolkit wird von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 ### <a name="scenarios"></a>Szenarien
 
 * [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [Generieren von Filmempfehlungen mithilfe von Apache Mahout](hadoop/apache-hadoop-mahout-linux-mac.md)
-* [Apache Hive und Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
-* [Apache Hive und Azure Machine Learning End-to-End](../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Machine Learning mit Apache Spark in HDInsight](../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Hive und Azure Machine Learning](/azure/architecture/data-science-process/create-features-hive)
+* [Apache Hive und Azure Machine Learning End-to-End](/azure/architecture/data-science-process/hive-walkthrough)
+* [Machine Learning mit Apache Spark in HDInsight](/azure/architecture/data-science-process/spark-overview)
 
 ### <a name="deep-learning-resources"></a>Deep Learning-Ressourcen
 

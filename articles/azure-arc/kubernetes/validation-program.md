@@ -1,5 +1,5 @@
 ---
-title: Validierungsprogramm für Kubernetes mit Azure Arc-Aktivierung
+title: Validierung für Kubernetes mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
@@ -8,14 +8,14 @@ author: shashankbarsin
 ms.author: shasb
 description: Beschreibung des Arc-Validierungsprogramms für Kubernetes-Distributionen
 keywords: Kubernetes, Arc, Azure, K8s, Validierung
-ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d8e48a6e9dc5d8d95dacb649fb0748e4ae4daa5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121370"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355631"
 ---
-# <a name="azure-arc-validation-program"></a>Azure Arc-Validierungsprogramm
+# <a name="azure-arc-enabled-kubernetes-validation"></a>Validierung für Kubernetes mit Azure Arc-Unterstützung
 
 Kubernetes mit Azure Arc-Aktivierung funktioniert mit jedem Kubernetes-Cluster, der eine CNCF-Zertifizierung (Cloud Native Computing Foundation) besitzt. Das Azure Arc-Team hat auch mit den wichtigsten Anbietern von Kubernetes-Angeboten der Branche zusammengearbeitet, um Kubernetes mit Azure Arc-Aktivierung mit ihren Kubernetes-Distributionen zu überprüfen. Zukünftige Haupt- und Nebenversionen von Kubernetes-Distributionen, die von diesen Anbietern veröffentlicht werden, werden auf Kompatibilität mit Kubernetes mit Azure Arc-Aktivierung überprüft.
 
@@ -32,7 +32,7 @@ Die folgenden Anbieter und ihre entsprechenden Kubernetes-Distributionen haben d
 
 | Anbietername | Distributionsname | Version |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html), [4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html), [4.7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
+| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5.41+](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html), [4.6.35+](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html), [4.7.18+](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes-Version: v1.17.5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI-Version: [v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-Versionen: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |

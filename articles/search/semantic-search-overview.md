@@ -7,21 +7,38 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2021
+ms.date: 07/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 04300b8d148bb22bf585aa81481c475b347ad462
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1b50fbbdd38d1bb24c1732c465784c3ddb757e3f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222043"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454780"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantische Suche in Azure Cognitive Search
 
 > [!IMPORTANT]
-> Die semantische Suche befindet sich in der öffentlichen Vorschauphase und ist über die Vorschau-REST-API und das Portal verfügbar. Previewfunktionen werden im Ist-Zustand gemäß den [ergänzenden Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) angeboten, und es ist nicht garantiert, dass dieselbe Implementierung bei allgemeiner Verfügbarkeit verwendet wird. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
+> Die semantische Suche befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sie ist über das Azure-Portal, die Vorschau-REST-API und Beta-SDKs verfügbar. Diese Features sind abrechenbar. Weitere Informationen finden Sie unter [Verfügbarkeit und Preise](semantic-search-overview.md#availability-and-pricing).
 
-Bei der semantischen Suche handelt es sich um eine Sammlung abfragebezogener Funktionen, die den Suchergebnissen semantische Relevanz und Sprachverständnis (Language Understanding) hinzufügen. Die *semantische Rangfolge* sucht nach Kontext und Verwandtschaft zwischen Begriffen und stuft die Übereinstimmungen hoch, die gemäß Abfrage sinnvoller sind. Language Understanding findet *Titel* und *Antworten* innerhalb Ihrer Inhalte, die das übereinstimmende Dokument zusammenfassen oder eine Frage beantworten. Die Ergebnisse werden anschließend auf einer Suchergebnisseite dargestellt, um eine produktivere Suchoberfläche bereitzustellen.
+Bei der semantischen Suche handelt es sich um eine Sammlung abfragebezogener Funktionen, die semantische Relevanz und Sprachverständnis in die Suchergebnisse einbringen. Dieser Artikel enthält eine allgemeine Einführung in die semantische Suche und Beschreibungen der einzelnen Features und ihrer Funktionsweise und gemeinsamen Verwendung. Das eingebettete Video enthält eine Beschreibung der Technologie, und im letzten Abschnitt geht es um die Verfügbarkeit und die Preise.
+
+Die semantische Suche ist ein Premium-Feature. Es wird empfohlen, diesen Artikel zu lesen, um Hintergrundinformationen zu erhalten. Falls Sie aber direkt loslegen möchten, können Sie die folgenden Schritte ausführen:
+
+> [!div class="checklist"]
+> * [Überprüfen Sie die regionalen Anforderungen und die Dienstebenenanforderungen.](#availability-and-pricing)
+> * [Registrieren Sie sich für das Vorschauprogramm.](https://aka.ms/SemanticSearchPreviewSignup) Die Verarbeitung der Anfrage kann bis zu zwei Werktage dauern.
+> * Nach der Annahme können Sie Abfragen erstellen oder ändern, um [semantische Beschriftungen und Hervorhebungen](semantic-how-to-query-request.md) zurückzugeben.
+> * Fügen Sie einige weitere Abfrageeigenschaften hinzu, um auch [semantische Antworten](semantic-answers.md) zurückzugeben.
+> * Lösen Sie optional eine [Rechtschreibprüfung](speller-how-to-add.md) aus, um Genauigkeit und Treffer zu verbessern.
+
+## <a name="what-is-semantic-search"></a>Was ist die semantische Suche?
+
+Die semantische Suche ist eine Sammlung von Features, die die Qualität von Suchergebnissen verbessern. Wenn diese für Ihren Suchdienst aktiviert ist, erweitert sie die herkömmliche Abfrageausführungspipeline auf zwei Arten. Zum einen wird einem anfänglichen Resultset eine sekundäre Bewertung hinzugefügt, wodurch die Ergebnisse mit der höchsten semantischen Relevanz ganz oben in der Liste angezeigt werden. Zweitens werden Beschriftungen und Antworten extrahiert und zurückgegeben, die Sie auf einer Suchseite ausgeben können, um das Benutzererlebnis bei der Suche zu verbessern.
+
+## <a name="how-semantic-ranking-works"></a>Funktionsweise der semantischen Rangfolge
+
+Die *semantische Rangfolge* sucht nach Kontext und Verwandtschaft zwischen Begriffen und stuft die Übereinstimmungen hoch, die gemäß Abfrage sinnvoller sind. Language Understanding findet Zusammenfassungen oder *Titel* und *Antworten* innerhalb Ihrer Inhalte und schließt diese in die Antwort mit ein, die dann für eine effektivere Suchfunktion auf einer Suchergebnisseite dargestellt werden kann.
 
 Moderne vorab trainierte Modelle werden für Zusammenfassung und Rangfolge verwendet. Um die hohe Leistung zu gewährleisten, die Benutzer von der Suche erwarten, werden semantische Zusammenfassung und Rangfolge auf die ersten 50 Ergebnisse gemäß der Bewertung durch den standardmäßigen [Ähnlichkeitsalgorithmus für die Rangfolge](index-similarity-and-scoring.md#similarity-ranking-algorithms) angewendet. Wenn diese Ergebnisse als Dokumentkorpus verwendet werden, bewertet die semantische Rangfolge diese Ergebnisse basierend auf der semantischen Stärke der Entsprechung neu.
 
@@ -31,9 +48,9 @@ Im folgenden Video erhalten Sie eine Übersicht zu den Funktionen.
 
 > [!VIDEO https://www.youtube.com/embed/yOf0WfVd_V0]
 
-## <a name="components-and-workflow"></a>Komponenten und Workflow
+## <a name="features-in-semantic-search"></a>Features der semantischen Suche
 
-Die semantische Suche verbessert Genauigkeit und Abruf durch Hinzufügen folgender Funktionen:
+Die semantische Suche verbessert Genauigkeit und Treffer durch diese neuen Funktionen:
 
 | Funktion | BESCHREIBUNG |
 |---------|-------------|
@@ -58,22 +75,33 @@ Die Ergebnisse werden dann basierend auf der [konzeptionellen Ähnlichkeit](sema
 
 Um semantische Funktionen in Abfragen zu verwenden, müssen Sie geringfügige Änderungen an der [Suchanforderung](semantic-how-to-query-request.md) vornehmen. Es ist aber keine zusätzliche Konfiguration oder Neuindizierung erforderlich.
 
+## <a name="semantic-capabilities-and-limitations"></a>Semantische Funktionen und Einschränkungen
+
+Die semantische Suche ist eine neuere Technologie, weshalb es wichtig ist, festzulegen, was von ihr erwartet werden kann und was nicht. Die Qualität der Suchergebnisse wird auf zwei Arten verbessert:
+
+* Erstens werden Übereinstimmungen heraufgestuft, die semantisch näher an der Absicht der ursprünglichen Abfrage liegen.
+
+* Zweitens können Ergebnisse einfacher genutzt werden, wenn Beschriftungen und potenziell auch Antworten auf der Seite vorhanden sind.
+
+Die semantische Suche ist nicht in jedem Szenario von Vorteil. Stellen Sie daher zunächst sicher, dass Sie über Inhalte verfügen, die die zugehörigen Funktionen nutzen können. Die Sprachmodelle in der semantischen Suche funktionieren am besten für durchsuchbare Inhalte, die viele Informationen enthalten und in offener Textform strukturiert sind. Bei der Auswertung Ihrer Inhalte auf Antworten suchen die Modelle beispielsweise nach einer langen Zeichenfolge, die wie eine Antwort aussieht, und extrahieren diese. Es werden aber keine neuen Zeichenfolgen als Antworten auf eine Abfrage oder als Beschriftungen für ein passendes Dokument erstellt. Um die Frage „Welches Auto weist den niedrigsten Kraftstoffverbrauch auf?“ zu beantworten, sollte ein Index Sätze wie „Hybridautos weisen den niedrigsten Kraftstoffverbrauch aller auf dem Markt befindlichen Autos auf“ enthalten.
+
+Die semantische Suche kann keine Informationen aus verschiedenen Inhaltsteilen in einem Dokument oder Dokumentkorpus ableiten. Bei der Abfrage „Resorthotels in einer Wüste“ ohne geografische Eingabe findet die Engine beispielsweise keine Übereinstimmungen für Hotels in Arizona oder Nevada, obwohl es in beiden Staaten Wüsten gibt. Ebenso berechnet die Engine für die Rückgabe keinen Zeitintervall basierend auf dem aktuellen Datum, wenn die Abfrage die Klausel „in den letzten fünf Jahren“ enthält. In Cognitive Search umfassen Mechanismen, die für die oben genannten Szenarios hilfreich sein können, sogenannte [Synonymzuordnungen](search-synonyms.md), mit denen Sie Zuordnungen zwischen sich nach außen hin unterscheidenden Begriffen erstellen können, und [Datenfilter](search-query-odata-filter.md), die als OData-Ausdruck angegeben sind.
+
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Semantische Funktionen sind über die [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) für im Tarif „Standard“ (S1, S2, S3) erstellte Suchdienste in folgenden Regionen verfügbar: „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“ und „Europa, Westen“. 
+Die semantische Suche ist nach der [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) verfügbar. Die Registrierung gilt sowohl für die semantische Suche als auch für die Rechtschreibprüfung.
 
-Die Rechtschreibkorrektur ist in den gleichen Regionen verfügbar, aber auf keinen bestimmten Tarif beschränkt. Wenn Sie bereits einen Dienst nutzen, der den Kriterien für Tarif und Region entspricht, ist nur die Registrierung erforderlich.
+| Komponente | Tarif | Region | Registrieren | Preise |
+|---------|------|--------|---------------------|-------------------|
+| Semantische Suche (Titel, Hervorhebungen, Antworten) | Standardebene (S1, S2, S3) | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | [Preisübersicht für Cognitive Search](https://azure.microsoft.com/pricing/details/search/)  |
+| Rechtschreibprüfung | Any | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | Keine (kostenlos) |
 
-Ab dem Start der Vorschauversion am 2. März bis weit in den April werden Rechtschreibkorrektur und semantische Rangfolge kostenlos angeboten. Später im April wird der Rechenaufwand für die Nutzung dieser Funktionen in Rechnung gestellt. Die Kosten liegen voraussichtlich bei etwa 500 USD/Monat für 250.000 Abfragen. Ausführliche Kosteninformationen finden Sie unter [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/) sowie unter [Schätzen und Verwalten von Kosten](search-sku-manage-costs.md).
+Sie können die Rechtschreibprüfung ohne semantische Suche kostenlos verwenden. Gebühren für die semantische Suche werden erhoben, wenn Abfrageanforderungen `queryType=semantic` enthalten und die Suchzeichenfolge nicht leer ist (z. B. `search=pet friendly hotels in new york`). Leere Suchen (Abfragen der Form `search=*`) werden nicht in Rechnung gestellt, selbst wenn „queryType“ auf `semantic` festgelegt ist.
+
+Wenn Sie keine semantische Suche für Ihren Suchdienst wünschen, können Sie die [semantische Suche deaktivieren](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch), um eine versehentliche Nutzung und Gebühren zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein neuer Abfragetyp ermöglicht die Rangfolge nach Relevanz sowie Antwortstrukturen für die semantische Suche.
+Führen Sie die [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) für die Vorschauversion über einen Suchdienst durch, der die tarif- und regionsbezogenen Anforderungen aus dem vorherigen Abschnitt erfüllt.
 
-[Erstellen Sie eine Semantikabfrage](semantic-how-to-query-request.md), um mit der Verwendung zu beginnen. Suchen Sie alternativ in den folgenden Artikeln nach entsprechenden Informationen.
-
-+ [Hinzufügen der Rechtschreibprüfung für Abfragebegriffe](speller-how-to-add.md)
-+ [Zurückgeben einer semantischen Antwort](semantic-answers.md)
-+ [Semantische Rangfolge](semantic-ranking.md)
-+ [Einführung in die semantische Suche (Blogbeitrag)](https://techcommunity.microsoft.com/t5/azure-ai/introducing-semantic-search-bringing-more-meaningful-results-to/ba-p/2175636)
-+ [Gewinnen aussagekräftiger Erkenntnisse mithilfe von Semantikfunktionen (AI Show-Video)](https://channel9.msdn.com/Shows/AI-Show/Find-meaningful-insights-using-semantic-capabilities-in-Azure-Cognitive-Search)
+Die Verarbeitung der Anfrage kann bis zu zwei Werktage dauern. Sobald Ihr Dienst bereit ist, [erstellen Sie eine semantische Abfrage](semantic-how-to-query-request.md), um die Leistung für Ihren Inhalt zu bewerten.

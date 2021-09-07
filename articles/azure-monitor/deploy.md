@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 769fae5791575d8f361aaee13347bb00f3fbe749
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076796"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616431"
 ---
 # <a name="deploy-azure-monitor"></a>Bereitstellen von Azure Monitor
 Die Aktivierung von Azure Monitor für die Überwachung aller Ihrer Azure-Ressourcen umfasst die Konfiguration von Azure Monitor-Komponenten und von Azure-Ressourcen, damit diese Überwachungsdaten generieren, die Azure Monitor dann sammeln kann. In diesem Artikel werden die erforderlichen Schritte für eine vollständige Implementierung von Azure Monitor anhand einer allgemeinen Konfiguration beschrieben, mit der alle Ressourcen in Ihrem Azure-Abonnement überwacht werden können. Die grundlegenden Beschreibungen der einzelnen Schritte enthalten Links zu weiteren Informationen mit detaillierten Konfigurationsanforderungen.
@@ -129,7 +129,7 @@ Die **Überwachung ohne Code** ist am einfachsten zu implementieren und kann nac
 - [Anwendungen, die in Azure-Web-Apps gehostet werden](app/azure-web-apps.md)
 - [Java-Anwendungen](app/java-in-process-agent.md)
 - [Auf IIS gehostete ASP.NET-Anwendungen auf virtuellem Azure-Computer oder in Azure-VM-Skalierungsgruppe](app/azure-vm-vmss-apps.md)
-- [ASP.NET-Anwendungen, die auf IIS auf einem lokalen virtuellen Computer gehostet werden](app/monitor-performance-live-website-now.md)
+- [In IIS lokal gehostete ASP.NET-Anwendungen](app/status-monitor-v2-overview.md)
 
 
 Die **codebasierte Überwachung** bietet mehr Anpassungsmöglichkeiten und sammelt zusätzliche Telemetriedaten. Sie erfordert jedoch das Hinzufügen einer Abhängigkeit von NuGet-Paketen des Application Insights SDK zu Ihrem Code. Weitere Informationen zum Aktivieren der Überwachung in Abhängigkeit von Ihrer Anwendung finden Sie unter den folgenden Ressourcen.

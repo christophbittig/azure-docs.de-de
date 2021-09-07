@@ -11,15 +11,15 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2020
+ms.date: 07/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f862299dfb677a4b459611050832f602ff5598eb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f53eb460d6b131dce607c0dd99f97babd758de35
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412491"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603408"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
@@ -27,7 +27,7 @@ In diesem Artikel wird die Speicherarchitektur für die Bereitstellung von SAP H
 
 Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Weitere Informationen zu den Richtlinien finden Sie unter [SAP HANA-Speicheranforderungen](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
 
-Bei HANA (große Instanzen) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. Dies ist nicht der Fall bei der Klasse Typ II von Einheiten von HANA (große Instanzen), die über ein Volume verfügen, das zum Speichern von HANA-Transaktionsprotokollsicherungen vorgesehen ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
+Bei HANA (große Instanzen) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. HANA (große Instanzen) der Typ-II-Klasse verfügen hingegen über ein Volume, das zum Speichern von HANA-Transaktionsprotokollsicherungen vorgesehen ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
 
 Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tabelle enthält die ungefähre Kapazität für die Volumes, die mit den unterschiedlichen Einheiten von HANA (große Instanzen) bereitgestellt werden.
 
@@ -121,9 +121,9 @@ In den folgenden Beispielen wird gezeigt, wie die Ausführung mehrerer SAP HANA-
 Andere Variationen sind ebenfalls möglich. 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
-Der Speicher für HANA (große Instanzen) verwendet eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In Bereitstellungen vor Ende 2018 konnten Sie festlegen, dass die Volumes verschlüsselt werden sollen. Wenn Sie sich dagegen entschieden hatten, konnten Sie die Verschlüsselung der Volumes online anfordern. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
+Der Speicher für HANA (große Instanzen) verwendet eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In Bereitstellungen vor Ende des Jahres 2018 konnten Sie die Volumes verschlüsseln. Wenn Sie sich dagegen entschieden hatten, konnten Sie die Volumes online verschlüsseln. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
 
-Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. In Stamps von HANA (große Instanzen) der Revision 3 müssen Sie bei Verwendung von SKUs von HANA (große Instanzen) der Typ-II-Klasse die Start-LUN mithilfe von Methoden des Betriebssystems verschlüsseln. In Stamps von HANA (große Instanzen) der Revision 4 wird bei Verwendung von Typ-II-Einheiten das Volume, auf dem die Start-LUN gespeichert ist, standardmäßig im Ruhezustand verschlüsselt. 
+Bei SKUs der Klasse „Typ I“ für HANA (große Instanzen) wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. Bei Revision 3 der Stempel von HANA (große Instanzen) müssen Sie bei Verwendung von SKUs der Klasse „Typ II“ die Start-LUN mithilfe von Betriebssystemmethoden verschlüsseln. Bei Revision 4 der Stempel von HANA (große Instanzen) wird bei Verwendung von SKUs der Klasse „Typ II“ das Volume, auf dem die Start-LUN gespeichert ist, standardmäßig im Ruhezustand verschlüsselt. 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Erforderliche Einstellungen für größere HANA-Instanzen in HANA (große Instanzen)
 

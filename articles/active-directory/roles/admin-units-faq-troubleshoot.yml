@@ -1,0 +1,71 @@
+### YamlMime:FAQ
+metadata:
+  title: Fehlerbehandlung bei und häufig gestellte Fragen zu Verwaltungseinheiten – Azure Active Directory | Microsoft-Dokumentation
+  description: Untersuchen Sie Verwaltungseinheiten in Azure Active Directory, um Berechtigungen mit eingeschränktem Bereich zu erteilen.
+  services: active-directory
+  documentationcenter: ''
+  author: rolyon
+  manager: daveba
+  ms.service: active-directory
+  ms.topic: how-to
+  ms.subservice: roles
+  ms.workload: identity
+  ms.date: 11/04/2020
+  ms.author: rolyon
+  ms.reviewer: anandy
+  ms.custom: oldportal;it-pro;
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 7577d738de6dc7933a4d884879eed4bf9614eadf
+  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113095183"
+title: 'Azure AD-Verwaltungseinheiten: Problembehandlung und häufig gestellte Fragen'
+summary: >
+  Um eine präzisere administrative Steuerung in Azure Active Directory (Azure AD) zu ermöglichen, können Sie Benutzer einer Azure AD-Rolle mit einem auf eine oder mehrere Verwaltungseinheiten beschränkten Bereich zuweisen. PowerShell-Beispielskripts für häufige Aufgaben finden Sie unter [Arbeiten mit Verwaltungseinheiten](/powershell/azure/active-directory/working-with-administrative-units).
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Warum kann ich keine Verwaltungseinheit erstellen?
+    answer: >
+      Nur ein *globaler Administrator* oder ein *Administrator für privilegierte Rollen* kann in Azure AD eine Verwaltungseinheit erstellen. Stellen Sie sicher, dass dem Benutzer, der versucht, die Verwaltungseinheit zu erstellen, die Rolle *Globaler Administrator* oder *Administrator für privilegierte Rollen* zugewiesen ist.
+  - question: >
+      Ich habe einer Verwaltungseinheit eine Gruppe hinzugefügt. Warum werden die Mitglieder der Gruppe trotzdem nicht angezeigt?
+    answer: >
+      Wenn Sie einer Verwaltungseinheit eine Gruppe hinzufügen, führt dies nicht dazu, dass ihr alle Mitglieder der Gruppe hinzugefügt werden. Die Benutzer müssen der Verwaltungseinheit direkt zugewiesen werden.
+  - question: >
+      Ich habe gerade ein Mitglied der Verwaltungseinheit hinzugefügt (oder daraus entfernt). Warum wird das Mitglied nicht (oder noch) auf der Benutzeroberfläche angezeigt?
+    answer: >
+      Manchmal kann es nach dem Hinzufügen oder Entfernen von einem oder mehreren Mitgliedern der Verwaltungseinheit einige Minuten dauern, bis die Änderung auf der Seite **Verwaltungseinheiten** angezeigt wird. Alternativ können Sie auch direkt zu den Eigenschaften der zugehörigen Ressource wechseln und überprüfen, ob die Aktion abgeschlossen wurde. Weitere Informationen zu Benutzern und Gruppen in Verwaltungseinheiten finden Sie unter [Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory](admin-units-add-manage-users.md) und [Hinzufügen und Verwalten von Gruppen in Verwaltungseinheiten in Azure Active Directory](admin-units-add-manage-groups.md).
+  - question: >
+      Ich bin ein delegierter Kennwortadministrator für eine Verwaltungseinheit. Warum kann ich das Kennwort eines bestimmten Benutzers nicht zurücksetzen?
+    answer: "Als Administrator einer Verwaltungseinheit können Sie nur die Kennwörter für Benutzer zurücksetzen, die Ihrer Verwaltungseinheit zugewiesen sind. Stellen Sie sicher, dass der Benutzer, dessen Kennwort nicht zurückgesetzt werden kann, zu der Verwaltungseinheit gehört, der Sie zugewiesen sind. Wenn der Benutzer zur gleichen Verwaltungseinheit gehört, Sie aber das Kennwort des Benutzers trotzdem nicht zurücksetzen können, überprüfen Sie die dem Benutzer zugewiesenen Rollen. \n\nUm eine Rechteerweiterung zu verhindern, kann ein Administrator einer Verwaltungseinheit das Kennwort eines Benutzers nicht zurücksetzen, der einer Rolle mit organisationsweitem Geltungsbereich zugewiesen ist.\n"
+  - question: >
+      Wozu sind Verwaltungseinheiten erforderlich? Könnten wir einen Bereich nicht auch mithilfe von Sicherheitsgruppen definieren?
+    answer: "Für Sicherheitsgruppen gibt es ein bestehendes Zweck- und Autorisierungsmodell. Beispielsweise kann ein *Benutzeradministrator* die Mitgliedschaft aller Sicherheitsgruppen in der Azure AD-Organisation verwalten. Die Rolle kann Gruppen verwenden, um den Zugriff auf Anwendungen wie Salesforce zu verwalten. Ein *Benutzeradministrator* sollte nicht in der Lage sein, das eigentliche Delegierungsmodell zu verwalten. Dies wäre jedoch der Fall, wenn Sicherheitsgruppen auf die Unterstützung von Ressourcengruppierungsszenarien ausgeweitet würden. \n\nVerwaltungseinheiten (wie Organisationseinheiten in Windows Server Active Directory) sollen eine Möglichkeit darstellen, die Verwaltung einer Vielzahl von Verzeichnisobjekten in Bereiche zu unterteilen. Sicherheitsgruppen selbst können Mitglieder von Ressourcenbereichen sein. Die Verwendung von Sicherheitsgruppen zum Definieren einer Gruppe von Sicherheitsgruppen, die ein Administrator verwalten kann, könnte zu Verwirrung führen.\n"
+  - question: >
+      Was bedeutet es, eine Gruppe zu einer Verwaltungseinheit hinzuzufügen?
+    answer: >
+      Durch das Hinzufügen einer Gruppe zu einer Verwaltungseinheit wird die jeweilige Gruppe in den Verwaltungsbereich eines *Benutzeradministrators* integriert, der ebenfalls auf den Bereich dieser Verwaltungseinheit beschränkt ist. Benutzeradministratoren für die Verwaltungseinheit können den Namen und die Mitgliedschaft der jeweiligen Gruppe verwalten. Der *Benutzeradministrator* erhält jedoch keine Berechtigungen zum Verwalten der Benutzer der Gruppe (z. B. zum Zurücksetzen ihrer Kennwörter). Um dem *Benutzeradministrator* die Möglichkeit zum Verwalten von Benutzern einzuräumen, müssen die Benutzer direkte Mitglieder der Verwaltungseinheit sein.
+  - question: >
+      Kann eine Ressource (Benutzer oder Gruppe) mehreren Verwaltungseinheiten angehören?
+    answer: >
+      Ja. Eine Ressource (Benutzer oder Gruppe) kann in mehr als einer Verwaltungseinheit Mitglied sein. Die Ressource kann von allen organisationsweiten Administratoren und von Administratoren einer Verwaltungseinheit verwaltet werden, die über Berechtigungen für die Ressource verfügen.
+  - question: >
+      Sind Verwaltungseinheiten in B2C-Organisationen verfügbar?
+    answer: >
+      Nein. Verwaltungseinheiten sind nicht für B2C-Organisationen verfügbar.
+  - question: >
+      Werden geschachtelte Verwaltungseinheiten unterstützt?
+    answer: >
+      Nein. Geschachtelte Verwaltungseinheiten werden nicht unterstützt.
+  - question: >
+      Werden Verwaltungseinheiten in PowerShell und in der Graph-API unterstützt?
+    answer: >
+      Ja. Entsprechende Informationen zur Unterstützung von Verwaltungseinheiten finden Sie in der [Dokumentation zu PowerShell-Cmdlets](/powershell/module/Azuread/) und in [Beispielskripts](/powershell/azure/active-directory/working-with-administrative-units).
+
+
+      Informationen zur Unterstützung in Microsoft Graph finden Sie unter [Ressourcentyp „administrativeUnit“](/graph/api/resources/administrativeunit).
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Einschränken des Bereichs von Rollen mithilfe von Verwaltungseinheiten](administrative-units.md)\n- [Verwalten von Verwaltungseinheiten](admin-units-manage.md)"

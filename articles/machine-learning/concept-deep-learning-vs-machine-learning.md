@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e465a4d349a6e381aac6aa7f77e9a7d70c84d724
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311752"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433686"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -57,13 +57,13 @@ In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 |  **Ausführungszeit** | Das Training nimmt im Vergleich weniger Zeit in Anspruch: von wenigen Sekunden bis hin zu einigen Stunden. | Das Training dauert meist lange, da ein Deep Learning-Algorithmus viele Schichten aufweist. |
 |  **Ausgabe** | Die Ausgabe ist normalerweise ein numerischer Wert, z.B. eine Bewertung oder Klassifizierung. | Die Ausgabe kann mehrere Formate aufweisen, z. B. einen Text, eine Bewertung oder eine Tonausgabe. |
 
-## <a name="what-is-transfer-learning"></a>Was ist Lerntransfer?
+## <a name="what-is-transfer-learning"></a>Was ist Übertragungslernen?
 
 Das Training von Deep Learning-Modellen erfordert häufig große Mengen an Trainingsdaten, High-End-Computeressourcen (GPU, TPU) und eine längere Trainingszeit. Wenn diese Voraussetzungen in Ihren Szenarien nicht erfüllt sind, können Sie den Trainingsprozess mithilfe eines als *Lerntransfer* (Transfer Learning) bezeichneten Verfahrens verkürzen.
 
 Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird.
 
-Aufgrund der Struktur neuronaler Netze enthalten die ersten Ebenen in der Regel allgemeinere Features, während die letzten Ebenen spezifischere Features enthalten, die der gewünschten Domäne ähnlicher sind. Wenn Sie die letzten Ebenen für die Verwendung in einer neuen Domäne oder einem neuen Problem umwidmen, können Sie die Zeit, die Daten und die Computeressourcen zum Trainieren des neuen Modells deutlich reduzieren. Wenn Sie z. B. bereits über ein Modell verfügen, mit dem Autos erkannt werden, können Sie dieses Modell durch einen Lerntransfer auch für die Erkennung von Lkw, Motorrädern und andere Fahrzeugtypen verwenden.
+Aufgrund der Struktur neuronaler Netze enthalten die ersten Ebenen in der Regel Features der unteren Ebenen, während die letzten Ebenen Features der höheren Ebenen enthalten, die näher an der fraglichen Domäne sind. Wenn Sie die letzten Ebenen für die Verwendung in einer neuen Domäne oder einem neuen Problem umwidmen, können Sie die Zeit, die Daten und die Computeressourcen zum Trainieren des neuen Modells deutlich reduzieren. Wenn Sie z. B. bereits über ein Modell verfügen, mit dem Autos erkannt werden, können Sie dieses Modell durch einen Lerntransfer auch für die Erkennung von Lkw, Motorrädern und andere Fahrzeugtypen verwenden.
 
 Informieren Sie sich über die Anwendung eines Lerntransfers auf die Bildklassifizierung mithilfe eines Open-Source-Frameworks in Azure Machine Learning: [Bedarfsgerechtes Trainieren von PyTorch-Modellen mit Azure Machine Learning](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
 

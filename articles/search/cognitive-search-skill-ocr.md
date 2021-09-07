@@ -2,18 +2,17 @@
 title: Der Skill „OCR“
 titleSuffix: Azure Cognitive Search
 description: Extrahieren von Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 12b6c8e71052d8d821d4b253d5f921bbff82e02d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/12/2021
+ms.openlocfilehash: b0ed1860abe3d8a85e87e2bf2746812e1ca67d2e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473876"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349832"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
@@ -32,10 +31,10 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 + .TIFF
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
+> 
+> Darüber hinaus wird die Bildextraktion [durch Azure Cognitive Search abgerechnet](https://azure.microsoft.com/pricing/details/search/).
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
-
 
 ## <a name="skill-parameters"></a>Skillparameter
 
@@ -209,6 +208,8 @@ Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Fe
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
+
++ [Was ist optische Zeichenerkennung?](../cognitive-services/computer-vision/overview-ocr.md)
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Der Skill „Text zusammenführen“](cognitive-search-skill-textmerger.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

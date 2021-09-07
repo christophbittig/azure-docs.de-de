@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 191c76c6ec67112df71d8d5525b2c5938627b3d6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538844"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458536"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Trainieren von Modellen mit Azure Machine Learning-Datasets 
 
@@ -31,7 +31,7 @@ Wenn Sie noch nicht bereit sind, Ihre Daten für das Modelltraining verfügbar z
 
 Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutzen:
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -126,7 +126,7 @@ Im folgenden Beispiel werden folgende Aktionen ausgeführt:
 * Einbinden des Eingabedatasets am Computeziel
 
 > [!Note]
-> Wenn Sie ein benutzerdefiniertes Docker-Basisimage verwenden, müssen Sie fuse über `apt-get install -y fuse` als Abhängigkeit für die Durchführung der Datasetinstallation installieren. Erfahren Sie, wie Sie ein [benutzerdefiniertes Buildimage erstellen](how-to-deploy-custom-docker-image.md#build-a-custom-base-image).
+> Wenn Sie ein benutzerdefiniertes Docker-Basisimage verwenden, müssen Sie fuse über `apt-get install -y fuse` als Abhängigkeit für die Durchführung der Datasetinstallation installieren. Erfahren Sie, wie Sie ein [benutzerdefiniertes Buildimage erstellen](./how-to-deploy-custom-container.md).
 
 Ein Notebookbeispiel finden Sie unter [Konfigurieren einer Trainingsausführung mit Dateneingabe und -ausgabe](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
 
@@ -228,17 +228,14 @@ with open(mounted_input_path, 'r') as f:
 
 Das Einbinden oder Herunterladen von Dateien beliebiger Formate aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL wird für Datasets beliebiger Formate unterstützt. 
 
-Wenn Sie ein Dataset **einbinden**, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. 
+Wenn Sie ein Dataset **einbinden**, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. Wenn der Umfang Ihrer Daten die Größe des Computedatenträgers übersteigt, ist das Herunterladen nicht möglich. Für dieses Szenario empfehlen wir das Einbinden, da nur die von Ihrem Skript verwendeten Datendateien zum Zeitpunkt der Verarbeitung geladen werden.
 
-Beim **Herunterladen** eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. 
+Beim **Herunterladen** eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden. Informationen zu Downloads mit mehreren Knoten finden Sie unter [Problembehandlung](#troubleshooting). 
 
 > [!NOTE]
 > Der Name des Downloadpfads darf für das Windows-Betriebssystem höchstens 255 alphanumerische Zeichen lang sein. Für das Linux-Betriebssystem darf der Name des Downloadpfads höchstens 4.096 alphanumerische Zeichen lang sein. Außerdem sollte der Dateiname (das letzte Segment des Downloadpfads) `/path/to/file/{filename}` für das Linux-Betriebssystem höchstens 255 alphanumerische Zeichen lang sein.
 
-Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden. Wenn der Umfang Ihrer Daten die Größe des Computedatenträgers übersteigt, ist das Herunterladen nicht möglich. Für dieses Szenario empfehlen wir das Einbinden, da nur die von Ihrem Skript verwendeten Datendateien zum Zeitpunkt der Verarbeitung geladen werden.
-
 Der folgende Code bindet `dataset` in das temporäre Verzeichnis unter `mounted_path` ein.
-
 
 ```python
 import tempfile
@@ -297,6 +294,18 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
   * Wenn Sie keine Ausgangsregeln für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) haben und `azureml-sdk>=1.12.0` verwenden, aktualisieren Sie `azureml-dataset-runtime` und die zugehörigen Abhängigkeiten auf die neueste Version für die jeweilige Nebenversion. Wenn Sie das SDK in einer Ausführung verwenden, erstellen Sie die Umgebung neu, damit sie über den neuesten Patch mit dem Fix verfügt. 
   * Wenn Sie `azureml-sdk<1.12.0` verwenden, führen Sie ein Upgrade auf die neueste Version aus.
   * Wenn Sie über Ausgangsregeln für Netzwerksicherheitsgruppen verfügen, stellen Sie sicher, dass eine Ausgangsregel vorhanden ist, die sämtlichen Datenverkehr für das Diensttag `AzureResourceMonitor` zulässt.
+
+**Fehler bei der Datasetinitialisierung: StreamAccessException durch ThrottlingException verursacht**
+
+Bei Dateidownloads mit mehreren Knoten versuchen möglicherweise alle Knoten, alle Dateien im Dateidataset aus dem Azure Storage-Dienst herunterzuladen. Dies führt zu einem Drosselungsfehler. Legen Sie zum Vermeiden der Drosselung zunächst die Umgebungsvariable `AZUREML_DOWNLOAD_CONCURRENCY` auf einen Wert fest, der achtmal so groß wie die Anzahl von CPU-Kernen geteilt durch die Anzahl von Knoten ist. Beim Einrichten eines Werts für diese Umgebungsvariable müssen Sie unter Umständen etwas experimentieren, daher ist die oben genannte Anleitung ein guter Ausgangspunkt.
+
+Im folgenden Beispiel wird von 32 Kernen und 4 Knoten ausgegangen.
+
+```python
+from azureml.core.environment import Environment 
+myenv = Environment(name="myenv")
+myenv.environment_variables = {"AZUREML_DOWNLOAD_CONCURRENCY":64}
+```
 
 ### <a name="azurefile-storage"></a>AzureFile-Speicher
 

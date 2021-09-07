@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42326cd4080fe6737fd14f8dc2c5a2028c20077f
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 890bf61eb98218df53a6aa66c9e8562881b8d2df
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854538"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895596"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>AD FS-Anmeldungen in Azure AD mit Connect Health – Vorschau
 
@@ -102,6 +102,9 @@ Der Azure AD Connect Health-Agent für AD FS korreliert Ereignis-IDs aus AD FS i
 
 ***Warum wird bei bestimmten AD FS-Anmeldungen in der Anwendungs-ID/dem Anwendungsnamen „NotSet“ oder „NotApplicable“ angezeigt?***
 Der AD FS-Anmeldebericht zeigt für OAuth-Anmeldungen OAuth-IDs im Feld Anwendungs-ID an. In den WS-Fed-, WS-Trust-Sign-In-Szenarien wird die Anwendungs-ID auf NotSet oder NotApplicable gesetzt und die Ressourcen-IDs und Relying-Party-Identifikatoren werden im Feld Ressourcen-ID angezeigt.
+
+***Warum wird für die Felder „Ressourcen-ID“ und „Ressourcenname“ der Status „NotSet“ angezeigt?***
+Bei einigen Fehlern wird für die Felder „Ressourcen-ID“ und „Ressourcenname“ der Status „NotSet“ angezeigt, z. B. bei „Benutzername und Kennwort fehlerhaft“ und WSTrust-basierten Anmeldefehlern.
 
 ***Gibt es in der Vorschauversion weitere bekannte Probleme mit dem Bericht?***
 Der Bericht weist ein bekanntes Problem auf, bei dem das Feld „Authentifizierungsanforderung“ auf der Registerkarte „Grundlegende Informationen“ unabhängig von der Anmeldung den Wert für eine einstufige Authentifizierung für AD FS-Anmeldungen enthält. Außerdem wird auf der Registerkarte „Authentifizierungsdetails“ unter dem Feld „Anforderung“ der Wert „Primär oder sekundär“ angezeigt, wobei gerade eine Korrektur in Arbeit ist, um die primären oder sekundären Authentifizierungstypen zu unterscheiden.

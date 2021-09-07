@@ -3,15 +3,20 @@ title: Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services |
 description: Hier erfahren Sie, wie Sie ein Labkonto für die Verwendung eines Katalogs mit freigegebenen Images konfigurieren, sodass ein Benutzer ein Image für andere freigeben und ein anderer Benutzer mithilfe dieses Images eine Vorlage für virtuelle Computer im Lab erstellen kann.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: e4ebc0c865784922cc52d4f9b67c61f27908df55
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: caba089d5f3f0f9ec50f575a06ce9fad1bf8ef8f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339875"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
-In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
+
+Ein Image enthält das Betriebssystem, Softwareanwendungen und Einstellungen für die Installation auf einer VM.  Es gibt zwei Arten von Images, die Sie beim Einrichten eines neuen Labs verwenden können:
+-   Marketplace-Images, die von Microsoft für die Verwendung in Azure vordefiniert wurden.  Auf diesen Images ist entweder Windows oder Linux installiert, und sie können auch Softwareanwendungen enthalten.  Beispielsweise sind auf dem [Data Science Virtual Machine-Image (DSVM)](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) Deep Learning-Frameworks und -Tools installiert.
+-   Benutzerdefinierte Images, die von der IT-Abteilung Ihrer Einrichtung und/oder anderen Lehrkräften erstellt werden.  Sie können sowohl benutzerdefinierte Windows- als auch Linux-Images erstellen und haben die Möglichkeit, Anwendungen von Microsoft und Drittanbietern zu installieren, die Ihren individuellen Anforderungen entsprechen.  Sie können außerdem Dateien hinzufügen, Anwendungseinstellungen ändern und vieles mehr.
+
+In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein benutzerdefiniertes Image anhand einer Vorlagen-VM erstellen und in einem [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) speichern können, damit es von anderen Benutzern zum Erstellen von Labs genutzt werden kann.
 
 > [!IMPORTANT]
 > Bei Verwendung einer Shared Image Gallery unterstützt Azure Lab Services nur Images mit weniger als 128 GB Betriebssystem-Speicherplatz. Images mit mehr als 128 GB Speicherplatz auf dem Datenträger oder mehreren Datenträgern werden während der Erstellung des Labs nicht in der Liste der Images virtueller Computer angezeigt.
@@ -27,7 +32,6 @@ Im Folgenden sehen Sie ein paar der Szenarien, die von diesem Feature unterstüt
 ## <a name="prerequisites"></a>Voraussetzungen
 - Erstellen Sie mithilfe von [Azure PowerShell](../virtual-machines/shared-images-powershell.md) oder über die [Azure-Befehlszeilenschnittstelle](../virtual-machines/shared-images-cli.md) einen Katalog mit freigegebenen Images.
 - Sie haben den Katalog mit freigegebenen Images an das Lab-Konto angefügt. Schrittweise Anweisungen finden Sie unter [Anfügen oder Trennen eines Katalogs mit freigegebenen Images](how-to-attach-detach-shared-image-gallery.md).
-
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Speichern eines Images im Katalog mit freigegebenen Images
 Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Lab-Kontoadministrator oder ein Lehrer/Dozent ein Image im Katalog mit freigegebenen Images speichern, das dann von anderen Lehrern/Dozenten wiederverwendet werden kann. 
@@ -49,7 +53,7 @@ Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Lab-Konto
     Nachdem Sie das Image in dem Katalog mit freigegebenen Images gespeichert haben, können Sie dieses Image beim Erstellen eines anderen Labs aus dem Katalog verwenden. Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter
 
     - [Übersicht über Shared Image Gallery](../virtual-machines/shared-images-powershell.md)
-    - [Hochladen eines benutzerdefinierten Images in Shared Image Gallery](upload-custom-image-shared-image-gallery.md)
+    - [Empfohlene Vorgehensweisen zum Erstellen benutzerdefinierter Images](approaches-for-custom-image-creation.md)
 
     > [!IMPORTANT]
     > Wenn Sie in Azure Lab Services ein [Vorlagenimage eines Labs in einem Katalog mit freigegebenen Images speichern](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery), wird das Image als ein **spezialisiertes Image** in den Katalog hochgeladen. Bei [spezialisierten Images](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) werden computerspezifische Informationen und Benutzerprofile beibehalten. Sie können weiterhin ein generalisiertes Image direkt in den Katalog außerhalb von Azure Lab Services hochladen.    
@@ -75,6 +79,6 @@ Wenn Sie stattdessen **Vorhandenes Image aktualisieren** auswählen, wird die De
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Einrichten einer Shared Image Gallery durch Anfügen des Images an ein bzw. Trennen von einem Lab-Konto finden Sie unter [Anfügen an eine und Trennen von einer Shared Image Gallery](how-to-attach-detach-shared-image-gallery.md).
 
-Informationen zum Hochladen eines benutzerdefinierten Windows-Images in eine Shared Image Gallery außerhalb des Kontexts eines Labs finden Sie unter [Hochladen eines benutzerdefinierten Images in eine Shared Image Gallery](upload-custom-image-shared-image-gallery.md).
+Weitere Möglichkeiten, benutzerdefinierte Images außerhalb des Kontexts eines Labs in einen Katalog mit freigegebene Images einzufügen, finden Sie unter [Empfohlene Vorgehensweisen zum Erstellen benutzerdefinierter Images](approaches-for-custom-image-creation.md).
 
 Weitere allgemeine Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md).

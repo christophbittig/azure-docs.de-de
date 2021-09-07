@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 060d24a331a7f15c4ee687c919fe8c2b7cdf2ca6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ea640bc4f5b191c3b01ed2a00ecb1d247f1a602d
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971468"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240285"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Wie man ein Dynamics 365 for Customer Engagement & PowerApps Angebot erstellt
 
@@ -61,7 +61,7 @@ Wählen Sie für **Wie sollen potenzielle Kunden mit diesem Angebot interagieren
 - **App-Lizenzverwaltung über Microsoft aktivieren**: Verwalten Sie Ihre App-Lizenzen über Microsoft. Damit Kunden die Basisfunktionen Ihrer App ohne Lizenz und Premium-Features nach Erwerb einer Lizenz ausführen können, aktivieren Sie das Kontrollkästchen **Kunden die Installation meiner App erlauben, auch wenn keine Lizenzen zugewiesen sind**. Wenn Sie dieses zweite Kontrollkästchen aktivieren, müssen Sie Ihr Lösungspaket so konfigurieren, dass keine Lizenz erforderlich ist.
 
     > [!NOTE]
-    > Sie können diese Einstellung nach dem Veröffentlichen Ihres Angebots nicht mehr ändern. Weitere Informationen zu dieser Einstellung finden Sie unter [Verwaltung von Drittanbieter-App-Lizenzen über Microsoft](third-party-license.md).
+    > Sie können diese Einstellung nach dem Veröffentlichen Ihres Angebots nicht mehr ändern. Weitere Informationen zu dieser Einstellung finden Sie unter [ISV-App-Lizenzverwaltung](isv-app-license.md).
 
 - **Jetzt abrufen (kostenlos):** Listen Sie Ihr Angebot für Kunden als kostenlos auf.
 - **Kostenlose Testversion (Listing):** Listen Sie Ihr Angebot für Kunden als kostenlos auf, und stellen Sie einen Link zu einer kostenlose Testversion bereit. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.

@@ -2,13 +2,13 @@
 title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-Dokumentation
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Service Bus
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/28/2021
+ms.openlocfilehash: 0cca1b38e5acb5bac3c5ab91460aa43825d4f4a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933754"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354994"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -23,7 +23,8 @@ Die georedundante Notfallwiederherstellung von Service Bus erleichtert die Wiede
 Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Warteschlangen, Themen, Abonnements, Filter) ständig von einem primären Namespace in einen sekundären Namespace repliziert wird, wenn sie gekoppelt sind. Außerdem können Sie mit ihr jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, dann wird die Kopplung aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
 
 > [!IMPORTANT]
-> Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit der gleichen Konfiguration, jedoch **werden die Nachrichten in Warteschlangen, Themenabonnements oder in Warteschlangen für unzustellbare Nachrichten nicht repliziert**. Damit die Warteschlangensemantik beibehalten wird, müssen bei einer solchen Replikation nicht nur die Nachrichtendaten, sondern auch jede Zustandsänderung im Broker repliziert werden. Bei den meisten Service Bus-Namespaces würde der erforderliche Replikationsdatenverkehr den Anwendungsdatenverkehr weit überschreiten. Zudem würden bei Warteschlangen mit hohem Durchsatz die meisten Nachrichten immer in den sekundären Namespace repliziert, während sie bereits vom primären Replikat gelöscht werden. Dies hätte übermäßigen unwirtschaftlichen Datenverkehr zur Folge. Bei Replikationsrouten mit hoher Latenz, wie dies auf viele Kopplungen zutrifft, die Sie für die georedundante Notfallwiederherstellung wählen würden, kann zudem der Replikationsdatenverkehr aufgrund der latenzbedingten Drosselungseffekte möglicherweise nicht nachhaltig mit dem Anwendungsdatenverkehr Schritt halten.
+> - Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit der gleichen Konfiguration, jedoch **werden die Nachrichten in Warteschlangen, Themenabonnements oder in Warteschlangen für unzustellbare Nachrichten nicht repliziert**. Damit die Warteschlangensemantik beibehalten wird, müssen bei einer solchen Replikation nicht nur die Nachrichtendaten, sondern auch jede Zustandsänderung im Broker repliziert werden. Bei den meisten Service Bus-Namespaces würde der erforderliche Replikationsdatenverkehr den Anwendungsdatenverkehr weit überschreiten. Zudem würden bei Warteschlangen mit hohem Durchsatz die meisten Nachrichten immer in den sekundären Namespace repliziert, während sie bereits vom primären Replikat gelöscht werden. Dies hätte übermäßigen unwirtschaftlichen Datenverkehr zur Folge. Bei Replikationsrouten mit hoher Latenz, wie dies auf viele Kopplungen zutrifft, die Sie für die georedundante Notfallwiederherstellung wählen würden, kann zudem der Replikationsdatenverkehr aufgrund der latenzbedingten Drosselungseffekte möglicherweise nicht nachhaltig mit dem Anwendungsdatenverkehr Schritt halten.
+> - Zuweisungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory (Azure AD) für Service Bus-Entitäten im primären Namespace werden nicht in den sekundären Namespace repliziert. Erstellen Sie Rollenzuweisungen manuell im sekundären Namespace, um den Zugriff auf sie zu schützen. 
  
 > [!TIP]
 > Verwenden Sie zum Replizieren der Inhalte von Warteschlangen und Themenabonnements sowie für den Betrieb der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](service-bus-federation-overview.md).  
@@ -205,6 +206,10 @@ Der Vorteil dieses Ansatzes besteht darin, dass ein Failover auf Anwendungsebene
 
 > [!NOTE]
 > Eine Anleitung zur georedundanten Notfallwiederherstellung eines virtuellen Netzwerks finden Sie unter [Virtuelles Netzwerk: Geschäftskontinuität](../virtual-network/virtual-network-disaster-recovery-guidance.md).
+
+## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+Zuweisungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory (Azure AD) für Service Bus-Entitäten im primären Namespace werden nicht in den sekundären Namespace repliziert. Erstellen Sie Rollenzuweisungen manuell im sekundären Namespace, um den Zugriff auf sie zu schützen. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: e479a743a54e0cf3d7350fa87c3cc5ad8bf332be
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 37955c748135768701fd3429c2e4182f5d18e70c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696529"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353681"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Cache for Redis mit Azure Private Link
 
@@ -24,7 +24,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> Derzeit werden Zonenredundanz, Portalkonsolenunterstützung und Persistenz auf Firewall-Speicherkonten nicht unterstützt. 
+> Derzeit werden Portalkonsole und Persistenz für Firewall-Speicherkonten nicht unterstützt. 
 >
 >
 
@@ -44,7 +44,7 @@ In diesem Abschnitt erstellen Sie eine neue Azure Cache for Redis-Instanz mit ei
 
 4. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieses virtuelle Netzwerk erstellt werden soll. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Name der Ressourcengruppe, in der Ihr virtuelles Netzwerk und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -134,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
 
 4. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieses virtuelle Netzwerk erstellt werden soll. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Name der Ressourcengruppe, in der Ihr virtuelles Netzwerk und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -173,7 +173,7 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt zu erstellen:
 
 5. Konfigurieren Sie auf der Seite **Privaten Endpunkt erstellen** die Einstellungen für Ihren privaten Endpunkt.
 
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem dieser private Endpunkt erstellt werden soll. | 
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr privater Endpunkt und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -212,7 +212,7 @@ Wenn Ihr Cache bereits ein VNet-eingeschleuster Cache ist, können private Endpu
 
 ### <a name="what-features-arent-supported-with-private-endpoints"></a>Welche Features werden von privaten Endpunkten nicht unterstützt?
 
-Derzeit werden Zonenredundanz, Portalkonsolenunterstützung und Persistenz auf Firewall-Speicherkonten nicht unterstützt. 
+Derzeit werden Portalkonsole und Persistenz für Firewall-Speicherkonten nicht unterstützt. 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Wie kann ich meinen privaten Endpunkt so ändern, dass der öffentliche Netzwerkzugriff auf ihn deaktiviert oder aktiviert ist?
 
@@ -238,6 +238,10 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-link-cache"></a>Wie kann ich meinen Cache mit VNet-Einschleusung zu einem Private Link-Cache migrieren?
+
+In unserem [Migrationsleitfaden](cache-vnet-migration.md) werden verschiedene Ansätze zum Migrieren eines Caches mit VNet-Einschleusung zu einem Private Link-Cache vorgestellt. 
+
 ### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>Wie kann ich mehrere Endpunkte in unterschiedlichen virtuellen Netzwerken haben?
 
 Um mehrere private Endpunkte in unterschiedlichen virtuellen Netzwerken zu verwenden, muss die private DNS-Zone manuell für die verschiedenen virtuellen Netzwerke konfiguriert werden, _bevor_ der private Endpunkt erstellt wird. Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md). 
@@ -256,9 +260,6 @@ Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehe
 
 Sie ist mit Ihrem VNet nur verknüpft. Da sie sich nicht in Ihrem VNet befindet, müssen NSG-Regeln für abhängige Endpunkte nicht geändert werden.
 
-### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Wie kann ich meinen VNet-eingeschleusten Cache zu einem privaten Endpunktcache migrieren?
-
-Sie müssen Ihren in das VNet eingefügten Cache löschen und eine neue Cache-Instanz mit einem privaten Endpunkt erstellen. Weitere Informationen finden Sie unter [Migrieren zu Azure Cache für Redis](cache-migration-guide.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

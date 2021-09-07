@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 08/06/2021
 ms.author: victorh
-ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339025"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Bereitstellen eines Sicherheitspartneranbieters
 
@@ -69,6 +69,9 @@ Denken Sie daran, dass ein VPN-Gateway bereitgestellt sein muss, um einen vorhan
 
 Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittanbieter Zugriffsrechte für Ihren Hub. Weisen Sie zu diesem Zweck einen Dienstprinzipal mit Ihrem Abonnement oder Ihrer Ressourcengruppe zu, und gewähren Sie diesem Zugriffsrechte. Diese Anmeldeinformationen müssen Sie dann dem Drittanbieter über dessen Portal mitteilen.
 
+> [!NOTE]
+> Drittanbieter für die Sicherheit erstellen für Sie einen VPN-Standort. Dieser VPN-Standort wird nicht im Azure-Portal angezeigt.
+
 ### <a name="create-and-authorize-a-service-principal"></a>Erstellen und Autorisieren eines Dienstprinzipals
 
 1. Erstellen Sie einen Azure Active Directory-Dienstprinzipal: Sie können die Umleitungs-URL überspringen. 
@@ -103,6 +106,8 @@ Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittan
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Sicherheitskonfiguration":::
 5. Wenn Ihre Organisation außerdem öffentliche IP-Adressbereiche in virtuellen Netzwerken und Filialen verwendet, müssen Sie diese IP-Präfixe explizit mithilfe von **privaten Datenverkehrs Präfixen** angeben. Die öffentlichen IP-Adressen-Präfixe können einzeln oder als Aggregate angegeben werden.
+
+   Wenn Sie RFC1918-fremde Adressen für Ihre Präfixe für privaten Datenverkehr verwenden, müssen Sie möglicherweise SNAT-Richtlinien für Ihre Firewall konfigurieren, um SNAT für privaten RFC1918-fremden Datenverkehr zu deaktivieren. Standardmäßig wird SNAT von Azure Firewall für sämtlichen RFC1918-fremden Datenverkehr verwendet.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Zweigstellen- oder VNET-Internetdatenverkehr über Drittanbieterdienst
 

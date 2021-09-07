@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 286ce9b628eff0975cff1cfa006f914ed43c3c46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469677"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238802"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
 
@@ -56,7 +56,7 @@ So aktivieren Sie Sicherheitsrisikoscans von Images in Ihrer auf Azure Resource 
 
 1. Auf der Seite **Empfehlungen** können Sie sich die Ergebnisse ansehen. Wenn Probleme gefunden wurden, wird die Empfehlung **Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden** angezeigt.
 
-    ![Empfehlung zum Beheben von Problemen ](media/monitor-container-security/acr-finding.png)
+    ![Empfehlung zum Beheben von Problemen](media/monitor-container-security/acr-finding.png)
 
 1. Wählen Sie die Empfehlung aus. 
 
@@ -64,19 +64,19 @@ So aktivieren Sie Sicherheitsrisikoscans von Images in Ihrer auf Azure Resource 
 
 1. Wählen Sie eine bestimmte Registrierung aus, um die darin enthaltenen Repositorys mit möglicherweise gefährdeten Images anzuzeigen.
 
-    ![Registrierung auswählen](media/monitor-container-security/acr-finding-select-registry.png)
+    ![Auswählen einer Registrierung](media/monitor-container-security/acr-finding-select-registry.png)
 
     Die Detailseite der Registrierung wird geöffnet und zeigt eine Liste der betroffenen Repositorys an.
 
 1. Wählen Sie ein bestimmtes Repository aus, um die darin enthaltenen Repositorys mit möglicherweise gefährdeten Images anzuzeigen.
 
-    ![Repository auswählen](media/monitor-container-security/acr-finding-select-repository.png)
+    ![Wählen Sie ein Repository aus.](media/monitor-container-security/acr-finding-select-repository.png)
 
     Die Detailseite für das Repository wird geöffnet. Sie zeigt die möglicherweise gefährdeten Images sowie eine Bewertung des Schweregrads der Ergebnisse an.
 
 1. Wählen Sie ein bestimmtes Image aus, um die Sicherheitsrisiken anzuzeigen.
 
-    ![Image auswählen](media/monitor-container-security/acr-finding-select-image.png)
+    ![Auswählen von Images](media/monitor-container-security/acr-finding-select-image.png)
 
     Die Liste der Ergebnisse für das ausgewählte Image wird geöffnet.
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5921ad250934121223c35012d2278165b3dcc262
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468435"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237184"
 ---
 # <a name="review-your-security-recommendations"></a>Überprüfen Ihrer Sicherheitsempfehlungen
 
@@ -28,7 +28,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
 
 1. Verwenden Sie die optionalen Filter oberhalb der Liste der Empfehlungen, um Empfehlungen zu Ressourcentyp, Schweregrad, Umgebung oder anderen Kriterien zu finden, die für Sie wichtig sind.
 
-    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filter zum Verfeinern der Liste der Azure Security Center-Empfehlungen":::
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filter zum Optimieren der Liste der Azure Security Center-Empfehlungen":::
 
 1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Seite mit den Empfehlungsdetails anzuzeigen.
 

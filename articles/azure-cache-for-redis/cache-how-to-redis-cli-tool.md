@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81327bd5fc76d14d60d26bd912da8de054e5308d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7c46ae96de44b191009a86552799488cb770c7e4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833956"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112233527"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis
 
@@ -47,9 +47,9 @@ Mit Azure Cache for Redis ist nur der TLS-Port (6380) standardmäßig aktiviert.
 
     Führen Sie **stunnel GUI Start** zum Starten des Servers aus.
 
-    Klicken Sie mit der rechten Maustaste auf das Taskleistensymbol für den stunnel-Server, und klicken Sie auf **Show Log Window (Protokollfenster anzeigen)** .
+    Klicken Sie mit der rechten Maustaste auf das Taskleistensymbol für den stunnel-Server, und wählen Sie **Show Log Window** (Protokollfenster anzeigen) aus.
 
-    Klicken Sie im stunnel-Menü „Log Window“ (Protokollfenster) auf **Configuration (Konfiguration)**  > **Edit Configuration (Konfiguration bearbeiten)** , um die aktuelle Konfigurationsdatei zu öffnen.
+    Wählen Sie im stunnel-Menü „Log Window“ (Protokollfenster) die Optionen **Configuration** (Konfiguration) > **Edit Configuration** (Konfiguration bearbeiten) aus, um die aktuelle Konfigurationsdatei zu öffnen.
 
     Fügen Sie den folgenden Eintrag für *redis-cli.exe* im Abschnitt **Service definitions (Dienstdefinitionen)** hinzu. Fügen Sie Ihren tatsächlichen Cachename anstelle von `yourcachename` ein. 
 
@@ -62,7 +62,7 @@ Mit Azure Cache for Redis ist nur der TLS-Port (6380) standardmäßig aktiviert.
 
     Speichern und schließen Sie die Konfigurationsdatei. 
   
-    Klicken Sie im stunnel-Menü „Log Window“ (Protokollfenster) auf **Configuration (Konfiguration)**  > **Reload Configuration (Konfiguration erneut laden)** .
+    Wählen Sie im stunnel-Menü „Log Window“ (Protokollfenster) die Optionen **Configuration** (Konfiguration) > **Reload Configuration** (Konfiguration erneut laden) aus.
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Stellen Sie mit dem Redis-Befehlszeilentool eine Verbindung her.

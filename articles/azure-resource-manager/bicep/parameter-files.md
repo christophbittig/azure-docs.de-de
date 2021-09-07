@@ -4,13 +4,13 @@ description: Erstellen einer Parameterdatei zum Übergeben von Werten während d
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: eab3052b55b1dc1033139c734605e72b5494b174
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 06/16/2021
+ms.openlocfilehash: 4628b7d6a04bdec2a7ec4273536bf895dc23a5d9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026287"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292229"
 ---
 # <a name="create-bicep-parameter-file"></a>Erstellen einer Bicep-Parameterdatei
 
@@ -35,31 +35,7 @@ Eine Parameterdatei verwendet das folgende Format:
 }
 ```
 
-Beachten Sie, dass die Parameterdatei Parameterwerte als Nur-Text speichert. Diese Vorgehensweise funktioniert bei Werten, die nicht sensibler Art sind, z. B. bei einer SKU-Ressource. Nur-Text ist nicht für sensible Werte, z. B. Kennwörter, geeignet. Wenn Sie einen Parameter übergeben müssen, der einen vertraulichen Wert enthält, speichern Sie den Wert in einem Schlüsseltresor. Verweisen Sie dann auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei. Der sensible Wert wird während der Bereitstellung dann auf sichere Weise abgerufen.
-
-Die folgende Parameterdatei enthält einen Klartextwert und einen vertraulichen Wert, der in einem Schlüsseltresor gespeichert ist.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "<first-parameter-name>": {
-      "value": "<first-value>"
-    },
-    "<second-parameter-name>": {
-      "reference": {
-        "keyVault": {
-          "id": "<resource-id-key-vault>"
-        },
-        "secretName": "<secret-name>"
-      }
-    }
-  }
-}
-```
-
-Weitere Informationen zur Verwendung von Werten aus einem Schlüsseltresor finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
+Beachten Sie, dass die Parameterdatei Parameterwerte als Nur-Text speichert. Diese Vorgehensweise funktioniert bei Werten, die nicht sensibler Art sind, z. B. bei einer SKU-Ressource. Nur-Text ist nicht für sensible Werte, z. B. Kennwörter, geeignet. Wenn Sie einen Parameter übergeben müssen, der einen vertraulichen Wert enthält, speichern Sie den Wert in einem Schlüsseltresor. Anstatt den vertraulichen Wert Ihrer Parameterdatei hinzuzufügen, sollten Sie ihn mit der [Funktion „getSecret“](bicep-functions-resource.md#getsecret) abrufen. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bicep-Bereitstellung](key-vault-parameter.md).
 
 ## <a name="define-parameter-values"></a>Definieren von Parameterwerten
 
@@ -183,7 +159,7 @@ Das folgende Beispiel zeigt die Formate verschiedener Parametertypen: Zeichenfol
 
 ## <a name="deploy-bicep-file-with-parameter-file"></a>Bereitstellen der Bicep-Datei mit der Parameterdatei
 
-In Azure CLI übergeben Sie eine lokale Parameterdatei mit `@` und dem Namen der Parameterdatei. Beispiel: `@storage.parameters.json`.
+Übergeben Sie in der Azure CLI eine lokale Parameterdatei mit `@` und dem Namen der Parameterdatei. Beispiel: `@storage.parameters.json`.
 
 ```azurecli
 az deployment group create \
@@ -195,7 +171,7 @@ az deployment group create \
 
 Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Bicep und der Azure CLI](./deploy-cli.md#parameters). Zum Bereitstellen von _.bicep_-Dateien benötigen Sie Version 2.20 oder höher der Azure CLI.
 
-In Azure PowerShell übergeben Sie eine lokale Parameterdatei mithilfe des `TemplateParameterFile`-Parameters.
+Übergeben Sie in Azure PowerShell eine lokale Parameterdatei, indem Sie den Parameter `TemplateParameterFile` verwenden.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -224,4 +200,4 @@ Wenn Ihre Bicep-Datei einen Parameter enthält, der denselben Namen besitzt wie 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Definieren von Parametern in einer Bicep-Datei finden Sie unter [Parameter in Bicep](./parameters.md).
-- Weitere Informationen zur Verwendung von Werten aus einem Schlüsseltresor finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
+- Informationen zum Abrufen von vertraulichen Werten finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).

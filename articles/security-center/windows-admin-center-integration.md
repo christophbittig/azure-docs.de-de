@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0a6c62145f5e8c94462a33fe446c595a7e2109e
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101306"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236803"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Schützen von Windows Admin Center-Ressourcen mit Azure Security Center
 
@@ -35,13 +35,13 @@ Durch die Kombination dieser beiden Tools wird Security Center zum zentralen Anz
 
 1. Wählen Sie in Windows Admin Center einen Ihrer Server und dann im Bereich **Tools** die Azure Security Center-Erweiterung aus:
 
-    ![Azure Security Center-Erweiterung in Windows Admin Center](./media/windows-admin-center-integration/onboarding-from-wac.png)
+    ![Azure Security Center-Erweiterung in Windows Admin Center](./media/windows-admin-center-integration/onboarding-from-wac.png)
 
     > [!NOTE]
     > Wenn das Onboarding des Servers in Security Center bereits durchgeführt wurde, wird das Einrichtungsfenster nicht angezeigt.
 
 1. Klicken Sie auf **Sign in to Azure and set up** (Bei Azure anmelden und einrichten).
-    ![Onboarding der Windows Admin Center-Erweiterung in Azure Security Center](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
+    ![Onboarding der Windows Admin Center-Erweiterung in Azure Security Center](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
 
 1. Befolgen Sie die Anweisungen zum Verbinden Ihres Servers mit Security Center. Nachdem Sie die erforderlichen Informationen eingegeben und bestätigt haben, nimmt Security Center die erforderlichen Konfigurationsänderungen vor, um sicherzustellen, dass Folgendes gilt:
     * Ein Azure-Gateway ist registriert.

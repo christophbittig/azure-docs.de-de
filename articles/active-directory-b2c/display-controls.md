@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 07/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b6ea85cfaf32ab9ba2c04c40befbe1fbf8ce915
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387053"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445469"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
 
@@ -124,17 +124,15 @@ Das Element **ValidationClaimsExchange** enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1:n | Ein technisches Profil, mit dem einige oder alle Anzeigeansprüche des verweisenden technischen Profils überprüft werden sollen. |
+| ValidationClaimsExchangeTechnicalProfile | 1:n | Ein technisches Profil, mit dem einige oder alle Anzeigeansprüche des verweisenden technischen Profils überprüft werden sollen. |
 
-Das Element **ValidationTechnicalProfile** enthält die folgenden Attribute:
+Das Element **ValidationClaimsExchangeTechnicalProfile** enthält das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
-|ContinueOnError|Nein| Gibt an, ob die Validierung aller nachfolgenden technischen Validierungsprofile fortgesetzt werden soll, wenn dieses technische Validierungsprofil einen Fehler auslöst. Mögliche Werte: `true` oder `false` (Standard; die Verarbeitung weiterer Validierungsprofile wird beendet, und ein Fehler zurückgegeben). |
-|ContinueOnSuccess | Nein | Gibt an, ob die Validierung aller nachfolgenden Validierungsprofile fortgesetzt werden soll, wenn dieses technische Validierungsprofil erfolgreich ist. Mögliche Werte: `true` oder `false`. Der Standardwert ist `true`, was bedeutet, dass die Verarbeitung weiterer Validierungsprofile fortgesetzt wird. |
+| TechnicalProfileReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
 
-Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
+Das Element **ValidationClaimsExchangeTechnicalProfile** enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |

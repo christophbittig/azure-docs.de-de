@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5b1883b06ae234ed8a4f9adf949cf26919f7b877
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757173"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550154"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
+# <a name="how-to-use-text-analytics-for-health"></a>Gewusst wie: Verwenden von Text Analytics for Health
 
 > [!IMPORTANT] 
-> Text Analytics for Health ist eine Vorschaufunktion, die „WIE BESEHEN“ und „MIT ALLEN MÄNGELN“ zur Verfügung gestellt wird. Daher sollte Text Analytics for Health (Vorschau) nicht in einer Produktionsumgebung implementiert oder bereitgestellt werden. Text Analytics for Health ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder als sonstige Technologie für den Einsatz in Diagnose, Therapie, Entschärfung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar, und Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Jede Verwendung von Text Analytics for Health liegt in der alleinigen Verantwortung des Kunden. Der Kunde muss separat alle Quellvokabulare lizenzieren, die er gemäß den Bedingungen verwenden möchte, die für den [Anhang des UMLS-Metathesaurus-Lizenzvertrags](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html) oder einen zukünftigen entsprechenden Link festgelegt sind. Der Kunde ist für die Einhaltung dieser Lizenzbedingungen verantwortlich, einschließlich aller geografischen oder anderen anwendbaren Einschränkungen.
+> Text Analytics for Health ist eine Funktion, die „WIE BESEHEN“ und „MIT ALLEN MÄNGELN“ zur Verfügung gestellt wird. Text Analytics for Health ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder als sonstige Technologie für den Einsatz in Diagnose, Therapie, Entschärfung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar, und Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Jede Verwendung von Text Analytics for Health liegt in der alleinigen Verantwortung des Kunden. Der Kunde muss separat alle Quellvokabulare lizenzieren, die er gemäß den Bedingungen verwenden möchte, die für den [Anhang des UMLS-Metathesaurus-Lizenzvertrags](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html) oder einen zukünftigen entsprechenden Link festgelegt sind. Der Kunde ist für die Einhaltung dieser Lizenzbedingungen verantwortlich, einschließlich aller geografischen oder anderen anwendbaren Einschränkungen.
 
 
 Text Analytics for Health ist ein Feature des Textanalyse-API-Diensts, der relevante medizinische Informationen aus unstrukturierten Texten wie Arztbriefen, Entlassungszusammenfassungen, klinischen Dokumenten und elektronischen Gesundheitsakten extrahiert und bezeichnet.  Es gibt zwei Möglichkeiten zur Nutzung dieses Diensts: 
@@ -94,17 +94,15 @@ Die neueste Vorabversion der Text Analytics-Clientbibliothek ermöglicht es Ihne
 
 ### <a name="preparation"></a>Vorbereitung
 
-Text Analytics for Health liefert bessere Ergebnisse, wenn Sie ihr kleinere Textmengen zur Bearbeitung zuführen. Dies steht im Gegensatz zu einigen der anderen Text Analytics-Features, wie z. B. die Schlüsselbegriffserkennung, die bei größeren Textblöcken besser funktioniert. Wenn Sie aus diesen Vorgängen optimale Ergebnisse erzielen möchten, sollten Sie die Eingaben ggf. entsprechend umstrukturieren.
-
 Sie benötigen JSON-Dokumente im folgenden Format: ID, Text und Sprache. 
 
-Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl von Dokumenten in einer Sammlung finden Sie im Artikel [Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API](../concepts/data-limits.md?tabs=version-3) unter „Konzepte“. Die Sammlung wird im Hauptteil der Anforderung übermittelt.
+Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl von Dokumenten in einer Sammlung finden Sie im Artikel [Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API](../concepts/data-limits.md?tabs=version-3) unter „Konzepte“. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Wenn Ihr Text diesen Grenzwert überschreitet, können Sie ihn ggf. in separate Anforderungen aufteilen. Unterteilen Sie Text in die einzelnen Sätze, aus denen er besteht, um optimale Ergebnisse zu erzielen.
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Strukturieren der API-Anforderung für die gehostete asynchrone Web-API
 
-Sowohl für den Container als auch die gehostete Web-API müssen Sie eine POST-Anforderung erstellen. Sie können mithilfe von [Postman](text-analytics-how-to-call-api.md), einem cURL-Befehl oder der **API-Testkonsole** in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health) schnell eine POST-Anforderung erstellen und an die gehostete Web-API in Ihrer gewünschten Region senden. Im API-Endpunkt (v3.1-preview.5) kann der boolesche Abfrageparameter `loggingOptOut` verwendet werden, um die Protokollierung zu Problembehandlungszwecken zu aktivieren.  Der Standardwert ist TRUE, wenn er in der Anforderungsabfrage nicht angegeben ist.
+Sowohl für den Container als auch die gehostete Web-API müssen Sie eine POST-Anforderung erstellen. Sie können mithilfe von [Postman](text-analytics-how-to-call-api.md), einem cURL-Befehl oder der **API-Testkonsole** in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Health) schnell eine POST-Anforderung erstellen und an die gehostete Web-API in Ihrer gewünschten Region senden. Auf dem API-Endpunkt (v3.1) kann der boolesche Abfrageparameter `loggingOptOut` verwendet werden, um die Protokollierung zu Problembehandlungszwecken zu aktivieren.  Der Standardwert ist TRUE, wenn er in der Anforderungsabfrage nicht angegeben ist.
 
-Senden Sie die POST-Anforderung an `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs`. Nachstehend finden Sie ein Beispiel für eine JSON-Datei, die an den POST-Text der „Textanalyse für Gesundheit“-API-Anforderung angefügt ist:
+Senden Sie die POST-Anforderung an `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs`. Nachstehend finden Sie ein Beispiel für eine JSON-Datei, die an den POST-Text der „Textanalyse für Gesundheit“-API-Anforderung angefügt ist:
 
 ```json
 example.json
@@ -124,20 +122,20 @@ example.json
 
 Da mithilfe dieser POST-Anforderung ein Auftrag für den asynchronen Vorgang übermittelt wird, enthält das Antwortobjekt keinen Text.  Sie benötigen jedoch den Wert des „operation-location“-Schlüssels in den Antwortheadern, um eine GET-Anforderung zum Überprüfen des Auftragsstatus und der Ausgabe zu erstellen.  Nachstehend finden Sie ein Beispiel für den Wert des „operation-location“-Schlüssels im Antwortheader der POST-Anforderung:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs/<jobID>`
 
 Wenn Sie den Auftragsstatus überprüfen möchten, senden Sie eine GET-Anforderung an die URL im Wert für den „operation-location“-Schlüsselheader der POST-Antwort.  Mithilfe der folgenden Status können Sie den Status eines Auftrag anzeigen: `NotStarted`, `running`, `succeeded`, `failed`, `rejected`, `cancelling` und `cancelled`.  
 
-Sie können einen Auftrag mit dem Status `NotStarted` oder `running` mit einem HTTP-Aufruf „DELETE“ in derselben URL abbrechen wie die GET-Anforderung.  Weitere Informationen zum DELETE-Aufruf finden Sie in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob).
+Sie können einen Auftrag mit dem Status `NotStarted` oder `running` mit einem HTTP-Aufruf „DELETE“ in derselben URL abbrechen wie die GET-Anforderung.  Weitere Informationen zum DELETE-Aufruf finden Sie in der [Referenz zur gehosteten API für Text Analytics for Health](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/CancelHealthJob).
 
 Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausgabe steht zum Abrufen zur Verfügung, bis `expirationDateTime` (24 Stunden ab der Uhrzeit, zu der der Auftrag erstellt wurde) nach Bereinigung der Ausgabe verstrichen ist.
 
 ```json
 {
-    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
-    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
-    "createdDateTime": "2021-03-11T05:42:32Z",
-    "expirationDateTime": "2021-03-12T05:42:32Z",
+    "jobId": "69081148-055b-4f92-977d-115df343de69",
+    "lastUpdateDateTime": "2021-07-06T19:06:03Z",
+    "createdDateTime": "2021-07-06T19:05:41Z",
+    "expirationDateTime": "2021-07-07T19:05:41Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -219,14 +217,14 @@ Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausga
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0
+                        "confidenceScore": 0.99
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.94
+                        "confidenceScore": 0.98
                     }
                 ],
                 "relations": [
@@ -274,7 +272,7 @@ Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausga
             }
         ],
         "errors": [],
-        "modelVersion": "2021-03-01"
+        "modelVersion": "2021-05-15"
     }
 }
 ```
@@ -285,7 +283,7 @@ Das nachstehende Beispiel zeigt die Antwort auf eine GET-Anforderung.  Die Ausga
 Sie können [mithilfe von Postman](text-analytics-how-to-call-api.md) oder der unten aufgeführten cURL-Beispielanforderung eine Abfrage an den von Ihnen bereitgestellten Container senden und darin die Variable `serverURL` durch den geeigneten Wert ersetzen.  Beachten Sie, dass die Version der API in der URL für den Container anders als diejenige der gehosteten API ist.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

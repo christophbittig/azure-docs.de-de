@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: cbc5ff51a576cf2c784192bc33b06018c6f116c8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fd364d07202a486bfa47c513af601aeefe595bb5
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472091"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437790"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Ausgangsregeln – Azure Load Balancer
 
@@ -22,7 +22,7 @@ Mit Ausgangsregeln können Sie die SNAT (Quell-Netzwerkadressenübersetzung) fü
 Diese Konfiguration ermöglicht Folgendes:
 
 * IP-Maskierung
-* Vereinfachen ihrer Zulassungslisten.
+* Vereinfachen ihrer Positivlisten.
 * Verringern der Anzahl öffentlicher IP-Ressourcen für die Bereitstellung.
 
 Mit Ausgangsregeln besitzen Sie vollständige deklarative Kontrolle über ausgehende Internetkonnektivität. Ausgangsregeln ermöglichen Ihnen das Skalieren und Optimieren dieser Fähigkeit gemäß Ihren speziellen Anforderungen. 
@@ -65,7 +65,7 @@ Verwenden Sie mehrere IP-Adressen, um umfangreiche Szenarien zu planen. Verwende
 
 Sie können auch ein [öffentliches IP-Präfix](./load-balancer-outbound-connections.md#outboundrules) direkt mit einer Ausgangsregel verwenden. 
 
-Ein öffentliches IP-Präfix erhöht die Skalierung Ihrer Bereitstellung. Das Präfix kann der Positivliste der Datenflüsse hinzugefügt werden, die aus ihren Azure-Ressourcen stammen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Instanz konfigurieren, um auf das Präfix einer öffentlichen IP-Adresse zu verweisen.  
+Ein öffentliches IP-Präfix erhöht die Skalierung Ihrer Bereitstellung. Das Präfix kann der Positivliste der Flows hinzugefügt werden, die von Ihren Azure-Ressourcen stammen. Sie können eine Front-End-IP-Konfiguration innerhalb der Load Balancer-Instanz konfigurieren, um auf das Präfix einer öffentlichen IP-Adresse zu verweisen.  
 
 Die Load Balancer-Instanz besitzt die Kontrolle über das öffentliche IP-Präfix. Die Ausgangsregel verwendet automatisch alle öffentlichen IP-Adressen, die im Präfix für öffentliche IP-Adressen für ausgehende Verbindungen enthalten sind. 
 
@@ -122,7 +122,7 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 #### <a name="details"></a>Details
 
 
-Verwenden Sie dieses Szenario, um einen Satz öffentlicher IP-Adressen als Ursprung ausgehender Datenverbindungen einzurichten. Fügen Sie öffentliche IP-Adressen oder Präfixe basierend auf dem Ursprung zu Zulassungs- oder Ablehnungslisten hinzu.
+Verwenden Sie dieses Szenario, um einen Satz öffentlicher IP-Adressen als Ursprung ausgehender Datenverbindungen einzurichten. Fügen Sie öffentliche IP-Adressen oder Präfixe je nach Ursprung zu Positiv- oder Sperrlisten hinzu.
 
 
 Diese öffentliche IP-Adresse oder das Präfix kann dieselbe bzw. dasselbe sein, die/das von einer Lastenausgleichsregel verwendet wird. 
@@ -175,13 +175,13 @@ Verwenden Sie eine öffentliche Load Balancer Standard-Instanz, um die NAT für 
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** kann ausgehende Konnektivität für virtuelle Computer bereitstellen, ohne dass ein Lastenausgleich erforderlich ist. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-overview.md).
+> **Azure Virtual Network NAT** kann ausgehende Konnektivität für virtuelle Computer bereitstellen, ohne dass ein Lastenausgleich erforderlich ist. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md).
 
 ### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Szenario 4: NAT für ausgehenden Datenverkehr nur für VMs (kein eingehender Datenverkehr)
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** kann ausgehende Konnektivität für virtuelle Computer bereitstellen, ohne dass ein Lastenausgleich erforderlich ist. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-overview.md).
+> **Azure Virtual Network NAT** kann ausgehende Konnektivität für virtuelle Computer bereitstellen, ohne dass ein Lastenausgleich erforderlich ist. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md).
 
 #### <a name="details"></a>Details
 
@@ -198,7 +198,7 @@ In diesem Szenario: Ausgangsregeln von Azure Load Balancer und Virtual Network N
 
 
 
-Verwenden Sie ein Präfix oder eine öffentliche IP-Adresse, um [SNAT](load-balancer-outbound-connections.md)-Ports zu skalieren. Fügen Sie die Quelle der ausgehenden Datenverbindungen zu einer Zulassungs-oder Ablehnungsliste hinzu.
+Verwenden Sie ein Präfix oder eine öffentliche IP-Adresse, um [SNAT](load-balancer-outbound-connections.md)-Ports zu skalieren. Fügen Sie die Quelle ausgehender Verbindungen einer Positiv- oder Sperrliste hinzu.
 
 
 
@@ -206,7 +206,7 @@ Verwenden Sie ein Präfix oder eine öffentliche IP-Adresse, um [SNAT](load-bala
 
 
 > [!NOTE]
-> **Azure Virtual Network NAT** kann über eine interne Load Balancer Standard-Instanz ausgehende Konnektivität für virtuelle Computer bereitstellen. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-overview.md).
+> **Azure Virtual Network NAT** kann über eine interne Load Balancer Standard-Instanz ausgehende Konnektivität für virtuelle Computer bereitstellen. Weitere Informationen finden Sie unter [Was ist Azure Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md).
 
 #### <a name="details"></a>Details
 
@@ -255,4 +255,4 @@ Wenn nur NAT-Eingangsregeln verwendet werden, wird keine NAT für ausgehenden Da
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über [Azure Load Balancer Standard](load-balancer-overview.md)
-- Weitere Informationen finden Sie unter den [häufig gestellten Fragen zu Azure Load Balancer](load-balancer-faqs.md)
+- Weitere Informationen finden Sie unter den [häufig gestellten Fragen zu Azure Load Balancer](load-balancer-faqs.yml)

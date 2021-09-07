@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b4bd2615dd99145bd75fd7c1095056961d3b2d80
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369657"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988353"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
@@ -44,29 +44,12 @@ Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher 
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>Zuweisen eines Benutzers als Administrator
 
-1. Melden Sie sich beim Azure-Portal als Besitzer des Abonnements an, und öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+- Weisen Sie einem Benutzer im Abonnementbereich die Rolle „Besitzer“ zu.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
-1. Klicken Sie auf das Abonnement, für das Sie Zugriff erteilen möchten.
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
-
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
-
-    ![Screenshot von Rollenzuweisungen](./media/add-change-subscription-administrator/role-assignments.png)
-
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen** , um den Bereich **Rollenzuweisung hinzufügen** zu öffnen.
-
-    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen besitzen, ist die Option deaktiviert.
-
-1. Wählen Sie in der Dropdownliste **Rolle** die Option **Besitzer** aus.
-
-1. Wählen Sie in der Liste **Auswählen** einen Benutzer aus. Wird der Benutzer in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Suchbegriff eingeben, um das Verzeichnis nach Anzeigenamen und E-Mail-Adressen zu durchsuchen.
-
-    ![Screenshot mit ausgewählter Besitzerrolle](./media/add-change-subscription-administrator/add-role.png)
-
-1. Klicken Sie auf **Speichern** , um die Rolle zuzuweisen.
-
-    Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Besitzer“ zugewiesen.
+[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -74,7 +57,3 @@ Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher 
 * [Grundlegendes zu den verschiedenen Rollen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Berechtigungen der Administratorrolle in Azure Active Directory](../../active-directory/roles/permissions-reference.md)
-
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
-
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

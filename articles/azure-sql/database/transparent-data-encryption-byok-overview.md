@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/01/2021
-ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812766"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090311"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,11 +28,15 @@ In diesem Szenario ist der Schlüssel, der für die Verschlüsselung des Datenba
 
 Bei Azure SQL-Datenbank und Azure Synapse Analytics wird der TDE-Schutz auf der Serverebene festgelegt und von allen verschlüsselten Datenbanken geerbt, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. Sofern nicht anders angegeben, bezeichnet der Begriff *Server* in diesem Dokument sowohl Server in SQL-Datenbank und Azure Synapse als auch verwaltete Instanzen in SQL Managed Instance.
 
+> [!NOTE]
+> Dieser Artikel gilt für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (dedizierte SQL-Pools (vormals SQL DW)). Die Dokumentation zu Transparent Data Encryption für dedizierte SQL-Pools in Synapse-Arbeitsbereichen finden Sie unter [Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche](../../synapse-analytics/security/workspaces-encryption.md).
+
 > [!IMPORTANT]
 > Für diejenigen, die eine dienstseitig verwaltete TDE verwenden und auf eine kundenseitig verwalteten TDE umsteigen möchten, bleiben die Daten während der Umstellung verschlüsselt, und es kommt nicht zu Ausfallzeiten oder einer Neuverschlüsselung der Datenbankdateien. Der Wechsel von einem dienstseitig verwalteten Schlüssel zu einem kundenseitig verwalteten Schlüssel erfordert lediglich eine erneute Verschlüsselung des Datenbankverschlüsselungsschlüssels (DEK), die schnell und online durchzuführen ist.
 
 > [!NOTE]
-> <a id="doubleencryption"></a> Zum Bereitstellen von zwei Ebenen der Verschlüsselung von ruhenden Daten für Azure SQL-Kunden wird die Infrastrukturverschlüsselung (mithilfe des AES-256-Verschlüsselungsalgorithmus) mit von der Plattform verwalteten Schlüsseln eingeführt. Dadurch erhalten sie neben TDE mit vom Kunden verwalteten Schlüsseln (bereits verfügbar) eine zusätzliche Ebene der Verschlüsselung von ruhenden Daten. Für Azure SQL-Datenbank und Managed Instance werden alle Datenbanken verschlüsselt, einschließlich der Masterdatenbank und anderer Systemdatenbanken, wenn die Infrastrukturverschlüsselung aktiviert wird. Zurzeit müssen Kunden den Zugriff anfordern, um diese Funktion verwenden zu können. Wenn Sie an dieser Funktion interessiert sind, wenden Sie sich an AzureSQLDoubleEncryptionAtRest@service.microsoft.com.
+> <a id="doubleencryption"></a> Zum Bereitstellen von zwei Ebenen der Verschlüsselung von ruhenden Daten für Azure SQL-Kunden wird die Infrastrukturverschlüsselung (mithilfe des AES-256-Verschlüsselungsalgorithmus) mit von der Plattform verwalteten Schlüsseln eingeführt. Dadurch erhalten sie neben TDE mit vom Kunden verwalteten Schlüsseln (bereits verfügbar) eine zusätzliche Ebene der Verschlüsselung von ruhenden Daten. Für Azure SQL-Datenbank und Managed Instance werden alle Datenbanken verschlüsselt, einschließlich der Masterdatenbank und anderer Systemdatenbanken, wenn die Infrastrukturverschlüsselung aktiviert wird. Zurzeit müssen Kunden den Zugriff anfordern, um diese Funktion verwenden zu können. Sollten Sie an dieser Funktion interessiert sein, wenden Sie sich an AzureSQLDoubleEncryptionAtRest@service.microsoft.com.
+
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Vorteile der kundenseitig verwalteten TDE
 

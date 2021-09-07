@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6868739d5b2350d5ac29e12f48278348ee7204a8
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027967"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437444"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Aufgaben für Kontoadministratoren im Azure-Portal
 
@@ -25,6 +25,11 @@ In diesem Artikel erfahren Sie, wie Sie folgende Aufgaben im Azure-Portal ausfü
 - Hinzufügen von Guthaben zu Ihrem Azure in Open-Abonnement
 
 Diese Aufgaben können nur vom Kontoadministrator ausgeführt werden.
+
+## <a name="accounts-portal-is-retiring"></a>Kontenportal wird eingestellt
+
+Das Kontenportal wird eingestellt, und Kunden werden ab 31. Dezember 2021 zum Azure-Portal umgeleitet. Die im Kontenportal unterstützten Features werden zum Azure-Portal migriert. In diesem Artikel erfahren Sie, wie Sie einige der gängigsten Vorgänge im Azure-Portal ausführen.
+
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigieren zu den Zahlungsmethoden Ihres Abonnements
 

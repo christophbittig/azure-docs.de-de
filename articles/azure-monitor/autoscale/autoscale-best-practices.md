@@ -4,18 +4,17 @@ description: Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 5a49c9812848d9ef8cbe5a4499fb1430ca146855
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 42cef2578ed95e7d7935079569e34b221bdd6830
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738426"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454163"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](../../api-management/api-management-key-concepts.md).
 
 ## <a name="autoscale-concepts"></a>Konzepte der automatischen Skalierung
-
 * Eine Ressource kann nur *eine* Einstellung für die automatische Skalierung haben.
 * Eine Einstellung für die automatische Skalierung kann ein oder mehrere Profile beinhalten, und jedes Profil kann eine oder mehrere Regeln für die automatische Skalierung beinhalten.
 * Eine Einstellung für die automatische Skalierung skaliert Instanzen horizontal *hoch*, indem die Anzahl der Instanzen erhöht, und *herunter*, indem die Anzahl der Instanzen verringert wird.
@@ -26,19 +25,16 @@ Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgrupp
 * Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="autoscale-best-practices"></a>Empfohlene Methoden für die automatische Skalierung
-
 Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Stellen Sie sicher, dass sich die Höchst- und Mindestwerte unterscheiden und eine angemessene Spanne zwischen ihnen liegt.
-
 Falls Ihre Einstellung ein Minimum von „2“ und ein Maximum von „2“ hat und dabei die Anzahl der aktuellen Instanzen „2“ ist, kann keine automatische Skalierung durchgeführt werden. Behalten Sie eine passende Spanne zwischen der maximalen und der minimalen Instanzenanzahl bei. Beide Werte gelten dabei als inklusive. Die automatische Skalierung skaliert immer zwischen diesen Grenzwerten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Die manuelle Skalierung wird durch die Mindest- und Höchstwerte der automatischen Skalierung außer Kraft gesetzt.
-
 Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert die Engine für die automatische Skalierung automatisch auf den Mindestwert (sofern der Wert niedriger ist) oder den Höchstwert (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert die Engine für die automatische Skalierung bei der nächsten Ausführung auf drei Instanzen. Wenn Sie manuell die Skalierung auf acht Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf sechs Instanzen herunterskaliert.  Die manuelle Skalierung ist temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
-Wenn Sie nur einen Teil der Kombination verwenden, wird die Autoskalierung nur in eine Richtung (aufskalieren oder abskalieren) wirken, bis sie die im Profil definierte maximale oder minimale Anzahl von Instanzen erreicht. Dies ist nicht optimal, da Sie Ihre Ressource in Zeiten hoher Auslastung vorzugsweise aufskalieren möchten, um die Verfügbarkeit sicherzustellen. Ebenso möchten Sie in Zeiten geringer Auslastung, dass Ihre Ressource abskaliert wird, damit Sie Kosteneinsparungen realisieren können.
+Wenn Sie nur einen Teil der Kombination verwenden, wird die Autoskalierung nur in eine Richtung (Aufskalieren oder Abskalieren) wirken, bis sie die im Profil definierte maximale oder minimale Anzahl von Instanzen erreicht. Dies ist nicht optimal, da Sie Ihre Ressource in Zeiten hoher Auslastung vorzugsweise aufskalieren möchten, um die Verfügbarkeit sicherzustellen. Ebenso möchten Sie in Zeiten geringer Auslastung, dass Ihre Ressource abskaliert wird, damit Sie Kosteneinsparungen realisieren können.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wählen Sie die passende Statistik für Ihre Diagnosemetrik aus
 Für die Diagnosemetriken können Sie zwischen *Durchschnitt*, *Minimum*, *Maximum* und *Gesamt* als Metrik, nach der skaliert werden soll, auswählen. Die am häufigsten verwendete Statistik ist *Durchschnitt*.
@@ -78,7 +74,7 @@ In diesem Fall
 > Wenn die Engine für die automatische Skalierung erkennt, dass als Folge der Skalierung auf die Zielanzahl von Instanzen eine Fluktuation auftreten könnte, wird zudem versucht, eine Skalierung auf eine andere Anzahl von Instanzen durchzuführen, die zwischen der aktuellen Anzahl und der Zielanzahl liegt. Wenn innerhalb dieses Bereichs keine Fluktuation auftritt, setzt die automatische Skalierung den Vorgang mit dem neuen Ziel fort.
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Überlegungen zu Skalierungsschwellenwerten für spezielle Metriken
- Für spezielle Metriken, wie die Metrik für die Länge der Speicher- oder Service Bus-Warteschlange, ist der Schwellenwert die durchschnittliche Anzahl der Nachrichten, die pro aktueller Anzahl von Instanzen verfügbar ist. Wählen Sie den Schwellenwert für diese Metrik sorgfältig aus.
+Für spezielle Metriken, wie die Metrik für die Länge der Speicher- oder Service Bus-Warteschlange, ist der Schwellenwert die durchschnittliche Anzahl der Nachrichten, die pro aktueller Anzahl von Instanzen verfügbar ist. Wählen Sie den Schwellenwert für diese Metrik sorgfältig aus.
 
 Veranschaulichen wir diesen Punkt mit einem Beispiel, um sicherzustellen, dass Sie dieses Verhalten besser verstehen.
 
@@ -115,7 +111,6 @@ Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird ebenf
 ![Einstellungen für die automatische Skalierung](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Skalierungsüberlegungen, wenn in einem Profil mehrere Regeln konfiguriert sind
-
 Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die Autoskalierung werden von der Autoskalierungs-Engine verwendet, wenn mehrere Regeln festgelegt sind.
 
 Beim *horizontalen Hochskalieren* wird die Autoskalierung durchgeführt, sobald eine Regel erfüllt wird.

@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Daten in Speicherdiensten in Azure
+title: Herstellen einer Verbindung mit Datenspeichern über die Studio-Benutzeroberfläche
 titleSuffix: Azure Machine Learning
 description: Erstellen von Datenspeichern und Datasets, um sichere Verbindungen mit Daten in Speicherdiensten in Azure mit Azure Machine Learning Studio herzustellen.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 09/22/2020
+ms.date: 07/06/2021
 ms.custom: data4ml
-ms.openlocfilehash: b85be179fa12e29ef17fe9fa488b22c3d8a3c69b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8764f237d3e5304df95357cb770738e32d8395dd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785113"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441880"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -37,7 +37,7 @@ Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln,
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 - Zugriff auf [Azure Machine Learning Studio](https://ml.azure.com/).
 
@@ -85,8 +85,11 @@ So erstellen Sie ein Dataset im Studio
 1. Wählen Sie **Tabellarisch** oder **Datei** als Datasettyp aus.
 1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset nach dem Erstellen aufbewahrt werden soll, sowie welche Datendateien für Ihr Dataset verwendet werden sollen.
     1. Aktivieren Sie das Überspringen der Überprüfung, wenn sich Ihre Daten in einem virtuellen Netzwerk befinden. Weitere Informationen finden Sie unter [Isolierung virtueller Netzwerke und Datenschutz](how-to-enable-studio-virtual-network.md).
-    1. Für Tabellendatasets können Sie das Merkmal „timeseries angeben, um Datums- und Uhrzeitvorgänge für Ihr Dataset zu ermöglichen. Informieren Sie sich darüber, wie Sie [Ihrem Dataset das Merkmal „timeseries“ hinzufügen](how-to-monitor-datasets.md#studio-dataset).
+
 1. Wählen Sie **Weiter** aus, um die Formulare **Einstellungen und Vorschau** und **Schema** auszufüllen. Sie werden basierend auf dem Dateityp auf intelligente Weise aufgefüllt, und Sie können das Dataset in diesen Formularen vor der Erstellung weiter konfigurieren. 
+    1.  Im Formular „Einstellungen und Vorschau“ können Sie angeben, ob Ihre Daten mehrzeilige Daten enthalten. 
+    1. Im Formular „Schema“ können Sie angeben, dass Ihr TabularDataset-Element über eine Zeitkomponente verfügt. Wählen Sie dazu für Ihre Datums- oder Zeitspalte den Typ **Zeitstempel** aus. 
+        1. Wenn Ihre Daten als Teilmengen (z. B. Fenster) formatiert sind und Sie diese Teilmengen für das Training verwenden möchten, wählen Sie den Typ **Zeitstempel der Partition** aus. Dadurch werden Zeitreihenvorgänge für Ihr Dataset ermöglicht. Erfahren Sie mehr darüber, wie Sie [Partitionen in Ihrem Dataset für das Training nutzen](how-to-monitor-datasets.md?tabs=azure-studio#create-target-dataset).
 1. Wählen Sie **Weiter** aus, um das Formular **Details bestätigen** zu überprüfen. Überprüfen Sie Ihre Auswahl, und erstellen Sie ein optionales Datenprofil für das Dataset. Weitere Informationen zur [Datenprofilerstellung](#profile).
 1. Wählen Sie **Erstellen** aus, um die Erstellung des Datasets abzuschließen.
 

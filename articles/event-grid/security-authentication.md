@@ -2,31 +2,41 @@
 title: Authentifizieren der Ereignisübermittlung an Ereignishandler (Azure Event Grid)
 description: In diesem Artikel werden verschiedene Methoden zum Authentifizieren der Übermittlung an Ereignishandler in Azure Event Grid beschrieben.
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 7db258ee152e4b1c46362e74e0246b80513ca9f2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/28/2021
+ms.openlocfilehash: 01383809e6aab895ff4ed42763c57004a6ee02a8
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777255"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003231"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Authentifizieren der Ereignisübermittlung an Ereignishandler (Azure Event Grid)
-Dieser Artikel enthält Informationen zum Authentifizieren der Ereignisübermittlung an Ereignishandler. Er zeigt auch das Sichern der Webhook-Endpunkte für das Empfangen von Ereignissen von Event Grid über Azure Active Directory (Azure AD) oder ein gemeinsames Geheimnis.
+Dieser Artikel enthält Informationen zum Authentifizieren der Ereignisübermittlung an Ereignishandler. 
+
+## <a name="overview"></a>Übersicht
+Azure Event Grid verwendet verschiedene Authentifizierungsmethoden, um Ereignisse an Ereignishandler zu übermitteln. `
+
+| Authentifizierungsmethode | Unterstützte Handler | BESCHREIBUNG  |
+|--|--|--|
+Zugriffsschüssel | <p>Event Hubs</p><p>Service Bus</p><p>Storage-Warteschlangen</p><p>Relay-Hybridverbindungen</p><p>Azure Functions</p><p>Storage-Blobs (Warteschlange für unzustellbare Nachrichten)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> | Zugriffsschlüssel werden mit den Anmeldeinformationen des Event Grid-Dienstprinzipals abgerufen. Die Berechtigungen werden Event Grid erteilt, wenn Sie den Event Grid-Ressourcenanbieter im jeweiligen Azure-Abonnement registrieren. |  
+Verwaltete Systemidentität <br/>&<br/> Rollenbasierte Zugriffssteuerung | <p>Event Hubs</p><p>Service Bus</p><p>Storage-Warteschlangen</p><p>Storage-Blobs (Warteschlange für unzustellbare Nachrichten)</p></li></ul> | Aktivieren Sie die verwaltete Systemidentität für das Thema, und fügen Sie es der entsprechenden Rolle auf dem Ziel hinzu. Ausführliche Informationen finden Sie unter [Verwenden von systemseitig zugewiesenen Identitäten für die Ereignisübermittlung](#use-system-assigned-identities-for-event-delivery).  |
+|Bearertokenauthentifizierung mit einem durch Azure AD geschützten Webhook | Webhook | Ausführliche Informationen finden Sie im Abschnitt [Authentifizieren der Ereignisübermittlung an Webhook-Endpunkte](#authenticate-event-delivery-to-webhook-endpoints). |
+Geheimer Clientschlüssel als Abfrageparameter | Webhook | Ausführliche Informationen finden Sie im Abschnitt [Mit dem geheimen Clientschlüssel als Abfrageparameter](#using-client-secret-as-a-query-parameter). |
 
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Verwenden von systemseitig zugewiesenen Identitäten für die Ereignisübermittlung
 Sie können eine vom System zugewiesene verwaltete Identität für ein Thema oder eine Domäne aktivieren und mit dieser Identität Ereignisse an unterstützte Ziele weiterleiten, z. B. Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten.
 
 Im Folgenden werden die Schritte aufgeführt: 
 
-1. Erstellen Sie ein Thema oder eine Domäne mit einer vom System zugewiesenen Identität, oder aktualisieren Sie ein vorhandenes Thema oder eine Domäne, um die Identität zu aktivieren. 
-1. Fügen Sie die Identität einer geeigneten Rolle (z. B. Azure Service Bus-Datensender) für das Ziel (z. B. Service Bus-Warteschlange) zu.
-1. Aktivieren Sie beim Erstellen von Ereignisabonnements die Verwendung der Identität, um Ereignisse an das Ziel zu übermitteln. 
+1. Erstellen Sie ein Thema oder eine Domäne mit einer vom System zugewiesenen Identität, oder aktualisieren Sie ein vorhandenes Thema oder eine Domäne, um die Identität zu aktivieren. Weitere Informationen finden Sie unter [Aktivieren einer verwalteten Identität für ein Systemthema](enable-identity-system-topics.md) oder [Aktivieren einer verwalteten Identität für ein benutzerdefiniertes Thema oder eine benutzerdefinierte Domäne](enable-identity-custom-topics-domains.md).
+1. Fügen Sie die Identität einer geeigneten Rolle (z. B. Azure Service Bus-Datensender) für das Ziel (z. B. Service Bus-Warteschlange) zu. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf ein Event Grid-Ziel für die Identität](add-identity-roles.md).
+1. Aktivieren Sie beim Erstellen von Ereignisabonnements die Verwendung der Identität, um Ereignisse an das Ziel zu übermitteln. Weitere Informationen finden Sie unter [Erstellen eines Ereignisabonnements, von dem die Identität verwendet wird](managed-service-identity.md). 
 
 Ausführliche Anweisungen finden Sie unter [Ereignisübermittlung mit einer verwalteten Identität](managed-service-identity.md).
 
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Authentifizieren der Ereignisübermittlung an Webhook-Endpunkte
-In den folgenden Abschnitten wird beschrieben, wie die Übermittlung von Ereignissen an Webhook-Endpunkte authentifiziert wird. Sie müssen unabhängig von der verwendeten Methode einen Mechanismus für einen Überprüfungshandshake verwenden. Weitere Informationen finden Sie unter [Webhook-Ereignisbereitstellung](webhook-event-delivery.md). 
+In den folgenden Abschnitten wird beschrieben, wie die Übermittlung von Ereignissen an Webhook-Endpunkte authentifiziert wird. Verwenden Sie unabhängig von der verwendeten Methode einen Mechanismus für einen Überprüfungshandshake. Weitere Informationen finden Sie unter [Webhook-Ereignisbereitstellung](webhook-event-delivery.md). 
 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Mit Azure Active Directory (Azure AD)

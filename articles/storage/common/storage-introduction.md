@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b49e780714bd5e0662c6cb7ef208c473a8b45ccc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 494afe20edc4ffdeea9e0eb1cd4b1368782c3cda
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498148"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729036"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Einführung in die zentralen Azure Storage-Dienste
 
@@ -111,7 +111,7 @@ Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt un
 
 Jede Anforderung an Azure Storage muss autorisiert sein. Azure Storage unterstützt die folgenden Autorisierungsmethoden:
 
-- **Integration von Azure Active Directory (Azure AD) für Blob- und Warteschlangendaten.** Azure Storage unterstützt die Authentifizierung und Autorisierung mit Azure AD für Blob- und Warteschlangendienste über die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Für mehr Sicherheit und Benutzerfreundlichkeit wird die Autorisierung von Anforderungen mit Azure AD empfohlen. Weitere Informationen finden Sie unter [Authorize access to Azure blobs and queues using Azure Active Directory (Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory)](storage-auth-aad.md).
+- **Integration von Azure Active Directory (Azure AD) für Blob-, Warteschlangen- und Tabellendaten.** Azure Storage unterstützt die Authentifizierung und Autorisierung mit Azure AD für Blob- und Warteschlangendienste über die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC). Die Autorisierung mit Azure AD wird in der Vorschauphase auch für den Tabellendienst unterstützt. Für mehr Sicherheit und Benutzerfreundlichkeit wird die Autorisierung von Anforderungen mit Azure AD empfohlen. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Daten in Azure Storage](authorize-data-access.md).
 - **Azure AD-Autorisierung über SMB für Azure Files.** Azure Files unterstützt die identitätsbasierte Autorisierung per SMB (Server Message Block), indem entweder Azure Active Directory Domain Services (Azure AD DS) oder eine lokale Instanz von Active Directory Domain Services (Vorschauversion) verwendet wird. Ihre in die Domäne eingebundenen Windows-VMs können mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen. Weitere Informationen finden Sie unter [Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff](../files/storage-files-active-directory-overview.md) und [Planung für eine Azure Files-Bereitstellung](../files/storage-files-planning.md#identity).
 - **Autorisierung mit gemeinsam verwendetem Schlüssel.** Die Dienste Azure Storage Blob, Files, Queue und Table unterstützen die Autorisierung per gemeinsam verwendetem Schlüssel. Ein Client mit Autorisierung per gemeinsam verwendetem Schlüssel übergibt mit jeder Anforderung einen Header, der mit dem Speicherkonto-Zugriffsschlüssel signiert wird. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key).
 - **Autorisierung mit Shared Access Signatures (SAS).** Eine Shared Access Signature (SAS) ist eine Zeichenfolge mit einem Sicherheitstoken, das an den URI für eine Speicherressource angefügt werden kann. Im Sicherheitstoken sind Einschränkungen wie Berechtigungen und das Zugriffsintervall gekapselt. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).

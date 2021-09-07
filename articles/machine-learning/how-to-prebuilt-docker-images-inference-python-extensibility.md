@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 08139501886f580033aae46bdabd55ed300c5059
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536324"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710019"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>Erweiterbarkeit von Python-Paketen für vordefinierte Docker-Images (Vorschau)
 
@@ -173,6 +173,13 @@ Hier sind einige Gründe angegeben, die zu diesem Problem führen können:
 
 
 * Weitere Informationen zum Laden eines registrierten oder lokalen Modells finden Sie im Artikel zum [Bereitstellen eines Modells](how-to-deploy-and-where.md?tabs=azcli#define-a-dummy-entry-script).
+
+## <a name="bug-fixes"></a>Fehlerbehebungen
+
+### <a name="2021-07-26"></a>26.07.2021
+
+* `AZUREML_EXTRA_REQUIREMENTS_TXT` und `AZUREML_EXTRA_PYTHON_LIB_PATH` gelten jetzt immer relativ zum Verzeichnis des Bewertungsskripts.
+Wenn sich beispielsweise sowohl die Datei „requirements.txt“ als auch das Bewertungsskript in **my_folder** befinden, muss `AZUREML_EXTRA_REQUIREMENTS_TXT` auf „requirements.txt“ festgelegt werden. `AZUREML_EXTRA_REQUIREMENTS_TXT` wird nicht mehr auf **my_folder/requirements.txt** festgelegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

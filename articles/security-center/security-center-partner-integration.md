@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d7bed3847465c48914453a3fd167384e1c180b6
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099249"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435816"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -40,7 +40,7 @@ Azure Security Center bietet auch eine Sicherheitsrisikoanalyse für Folgendes:
 ## <a name="how-security-solutions-are-integrated"></a>Informationen zur Integration von Sicherheitslösungen
 Über Security Center bereitgestellte Azure-Sicherheitslösungen werden automatisch verbunden. Sie können auch andere Sicherheitsdatenquellen verwenden, so auch Computer, die lokal oder in anderen Clouds ausgeführt werden.
 
-[![Integration von Partnerlösungen](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
+:::image type="content" source="./media/security-center-partner-integration/security-solutions-page.png" alt-text="Integration von Partnerlösungen" lightbox="./media/security-center-partner-integration/security-solutions-page.png":::
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Verwalten integrierter Azure-Sicherheitslösungen und anderer Datenquellen
 
@@ -91,7 +91,7 @@ Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration
 
 Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenquellen, mit denen eine Verbindung hergestellt werden kann. Klicken Sie **HINZUFÜGEN**, um eine Anleitung zum Hinzufügen von Daten aus einer dieser Quellen anzuzeigen.
 
-![Datenquellen](./media/security-center-partner-integration/add-data-sources.png)
+![Datenquellen.](./media/security-center-partner-integration/add-data-sources.png)
 
 
 

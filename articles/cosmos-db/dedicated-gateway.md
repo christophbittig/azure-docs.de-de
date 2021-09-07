@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: 436ad1da3e1b212e03113132d4aff9f48a3d80da
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385419"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914245"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Dediziertes Azure Cosmos DB-Gateway – Übersicht (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,6 +26,9 @@ Sie können ein dediziertes Gateway bereitstellen, um die Leistung im großen St
 Das dedizierte Gateway ist in Azure Cosmos DB integriert. Wenn Sie [ein dediziertes Gateway bereitstellen](how-to-configure-integrated-cache.md), verfügen Sie über einen vollständig verwalteten Knoten, der Anforderungen an Back-End-Partitionen weiterleitet. Das Herstellen einer Verbindung mit Azure Cosmos DB mit dem dedizierten Gateway bietet eine geringere und besser vorhersagbare Latenz als das Herstellen einer Verbindung mit Azure Cosmos DB mit dem Standardgateway. Selbst Cachefehler werden beim Vergleich des dedizierten Gateways mit dem Standardgateway zu Latenzverbesserungen führen.
 
 Es sind nur minimale Codeänderungen erforderlich, damit Ihre Anwendung ein dediziertes Gateway verwenden kann. Sowohl neue als auch vorhandene Azure Cosmos DB-Konten können ein dediziertes Gateway bereitstellen, um die Leseleistung zu verbessern.
+
+> [!NOTE]
+> Haben Sie Feedback zum dedizierten Gateway? Teilen Sie uns Ihre Meinung mit! Sie können Feedback direkt an das Azure Cosmos DB-Entwicklungsteam senden: cosmoscachefeedback@microsoft.com
 
 ## <a name="connection-modes"></a>Verbindungsmodi
 

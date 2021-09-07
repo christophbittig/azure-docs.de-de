@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 908d9492a6eb699c999fe93b92697dc511dca082
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 0967e440a661d6bf51dc5206e5c21cdda45db073
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189293"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565128"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -57,7 +57,7 @@ Wenn Sie einer Kategorie protokollierte Elemente zuweisen, haben Sie mehr Kontro
 
 ### <a name="custom-telemetry-data"></a>Benutzerdefinierte Telemetriedaten
 
-In [C#](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions) und [JavaScript-](functions-reference-node.md#log-custom-telemetry)können Sie ein Application Insights SDK verwenden, um benutzerdefinierte Telemetriedaten zu schreiben.
+In [C#](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions), [JavaScript](functions-reference-node.md#log-custom-telemetry) und [Python](functions-reference-python.md#log-custom-telemetry) können Sie ein Application Insights SDK verwenden, um benutzerdefinierte Telemetriedaten zu schreiben.
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
@@ -80,6 +80,7 @@ Zusätzlich zur automatischen Sammlung von Abhängigkeitsdaten können Sie auch 
 
 + [Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions)
 + [Protokollieren von benutzerdefinierter Telemetrie in JavaScript-Funktionen](functions-reference-node.md#log-custom-telemetry) 
++ [Protokollieren von benutzerdefinierter Telemetrie in Python-Funktionen](functions-reference-python.md#log-custom-telemetry)
 
 ## <a name="writing-to-logs"></a>Schreiben in Protokolle 
 
@@ -123,6 +124,10 @@ _Dieses Feature befindet sich in der Vorschauphase._
 Der [Azure Functions-Skalierungscontroller](./event-driven-scaling.md#runtime-scaling) dient zum Überwachen von Instanzen des Azure Functions-Hosts, auf dem Ihre App ausgeführt wird. Dieser Controller entscheidet basierend auf der aktuellen Leistung über das Hinzufügen oder Entfernen von Instanzen. Der Skalierungscontroller kann Protokolle an Application Insights ausgeben, damit sie die Entscheidungen, die der Skalierungscontroller für Ihre Funktions-App trifft, besser nachvollziehen können. Sie können die generierten Protokolle auch im Blobspeicher speichern, damit Sie von einem anderen Dienst analysiert werden können. 
 
 Um dieses Feature zu aktivieren, fügen Sie den Einstellungen ihrer Funktions-App eine Anwendungseinstellung mit dem Namen `SCALE_CONTROLLER_LOGGING_ENABLED` hinzu. Weitere Informationen finden Sie unter [Konfigurieren der Skalierung von Controllerprotokollen](configure-monitoring.md#configure-scale-controller-logs).
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor-Metriken
+
+Zusätzlich zu den von Application Insights erfassten protokollbasierten Telemetriedaten können Sie auch Daten über die Ausführung von Funktions-Apps von den [Azure Monitor-Metriken](../azure-monitor/essentials/data-platform-metrics.md) erhalten. Weitere Informationen finden Sie unter [Verwenden von Azure Monitor-Metriken mit Azure Functions](monitor-metrics.md).
 
 ## <a name="report-issues"></a>Melden von Problemen
 

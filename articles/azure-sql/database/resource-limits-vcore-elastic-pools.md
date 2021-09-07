@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 06/04/2021
-ms.openlocfilehash: c0767ffd85e6d6e93f922f4d27e5d41167282b1c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 06/23/2021
+ms.openlocfilehash: 54a3e933cda054b8bd3f9e86f2db775fca7342f7
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555432"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964426"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ In diesem Artikel werden die detaillierten Ressourcenlimits für Pools für elas
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).
 
-Jedes schreibgeschützte Replikat hat eigene Ressourcen wie virtuelle Kerne, Arbeitsspeicher, Daten-IOPS, TempDB, Worker und Sitzungen. Jedes schreibgeschützte Replikat unterliegt den Ressourcenlimits, die weiter unten in diesem Artikel beschrieben werden.
+Jedes schreibgeschützte Replikat eines Pools für elastische Datenbanken hat eigene Ressourcen wie virtuelle Kerne, Arbeitsspeicher, Daten-IOPS, TempDB, Worker und Sitzungen. Jedes schreibgeschützte Replikat unterliegt den Ressourcenlimits eines Pools für elastische Datenbanken, die weiter unten in diesem Artikel beschrieben werden.
 
 Sie können die Dienstebene, Computegröße (Dienstziel) und Speichermenge mit folgenden Optionen festlegen:
 
@@ -548,17 +548,29 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 
 ## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 
-Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
+Für jeden Pool für elastische Datenbanken können Sie optional pro Datenbank minimale und maximale virtuelle Kerne angeben, um Ressourcenverbrauchsmuster innerhalb des Pools zu ändern. Die angegebenen Mindest- und Höchstwerte gelten für alle Datenbanken im Pool. Das Anpassen der Mindest- und Höchstanzahl virtueller Kerne für einzelne Datenbanken im Pool wird nicht unterstützt. 
 
-> [!NOTE]
-> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße (das gleiche Dienstziel) aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
+Sie können auch den maximalen Speicher pro Datenbank festlegen, um beispielsweise zu verhindern, dass eine Datenbank den gesamten Poolspeicher beansprucht. Diese Einstellung kann unabhängig für jede Datenbank konfiguriert werden.
+
+In der folgenden Tabelle werden Eigenschaften für Pooldatenbanken beschrieben, die pro Datenbank festgelegt werden können: 
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Maximale Anzahl virtueller Kerne pro Datenbank |Die maximale Anzahl von virtuellen Kernen, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar. Die maximale Anzahl von virtuellen Kernen pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl von virtuellen Kernen pro Datenbank hoch genug fest, sodass Lastspitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind.|
-| Minimale Anzahl virtueller Kerne pro Datenbank |Die minimale Anzahl von virtuellen Kernen, die für jede Datenbank im Pool garantiert werden. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl von virtuellen Kernen pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen Nutzung der virtuellen Kerne pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von virtuellen Kernen pro Datenbank darf die tatsächliche Anzahl der virtuellen Kerne pro Pool nicht übersteigen.|
-| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. Pooldatenbanken nutzen den zugeordneten Poolspeicher gemeinsam, daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder der Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von Protokolldateien belegten Speicherplatz. |
+| Maximale Anzahl virtueller Kerne pro Datenbank |Die maximale Anzahl von virtuellen Kernen, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar. Die maximale Anzahl von virtuellen Kernen pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Wenn für die Workload in den einzelnen Datenbanken nicht alle verfügbaren Poolressourcen benötigt werden, um eine angemessene Leistung zu erzielen, empfiehlt es sich gegebenenfalls, die maximale Anzahl virtueller Kerne pro Datenbank festzulegen, um zu verhindern, dass eine einzelne Datenbank übermäßig viele Poolressourcen beansprucht. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. |
+| Minimale Anzahl virtueller Kerne pro Datenbank |Die Mindestanzahl virtueller Kerne, die für jede Datenbank im Pool reserviert wird. Das Festlegen einer Mindestanzahl von virtuellen Kernen pro Datenbank empfiehlt sich gegebenenfalls, wenn Sie die Ressourcenverfügbarkeit für jede Datenbank unabhängig vom Ressourcenverbrauch durch andere Datenbanken im Pool gewährleisten möchten. Die Mindestanzahl von virtuellen Kernen pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen Nutzung der virtuellen Kerne pro Datenbank festgelegt.|
+| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. Pooldatenbanken nutzen den zugeordneten Poolspeicher gemeinsam, daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder die maximale Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von der Protokolldatei belegten Speicherplatz. |
 |||
+
+> [!IMPORTANT]
+> Da Ressourcen in einem Pool für elastische Datenbanken endlich sind, wird die Ressourcenauslastung durch die einzelnen Datenbanken implizit beschränkt, wenn Sie die Mindestanzahl virtueller Kerne pro Datenbank auf einen Wert größer null festlegen. Falls sich zu einem bestimmten Zeitpunkt die meisten Datenbanken in einem Pool im Leerlauf befinden, stehen Ressourcen, die zur Erfüllung der Mindestgarantie für virtuelle Kerne reserviert sind, für Datenbanken, die zu diesem Zeitpunkt aktiv sind, nicht zur Verfügung.
+>
+> Darüber hinaus wird die Anzahl von Datenbanken, die dem Pool hinzugefügt werden können, implizit beschränkt, wenn Sie die Mindestanzahl virtueller Kerne pro Datenbank auf einen Wert größer null festlegen. Wenn Sie also beispielsweise in einem Pool mit 20 virtuellen Kernen die Mindestanzahl virtueller Kerne auf „2“ festlegen, können dem Pool maximal 10 Datenbanken hinzugefügt werden, da für jede Datenbank 2 virtuelle Kerne reserviert werden.
+> 
+
+Die Eigenschaften pro Datenbank werden zwar in virtuellen Kernen ausgedrückt, steuern aber auch den Verbrauch anderer Ressourcentypen wie Daten-E/A, Protokoll-E/A und Arbeitsthreads. Wenn Sie Mindest- und Höchstwerte für virtuelle Kerne pro Datenbank anpassen, werden Reservierungen und Grenzwerte für alle Ressourcentypen proportional angepasst.
+
+> [!NOTE]
+> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, welche die gleiche Computegröße (das gleiche Dienstziel) aufweisen. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

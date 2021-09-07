@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a04c6c58f8bfa5370a6529b81a5a85090413a2a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6dc086aae55f3b35dbb7dc787df6a65b7ade108f
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107532"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674204"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Anzeigen und Konfigurieren der DDoS Protection-Telemetrie
 
@@ -30,6 +30,12 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen und Testen von DDoS Protection-Telemetriedaten
 
 ### <a name="metrics"></a>Metriken
+
+Die Metriknamen stellen verschiedene Pakettypen und Bytes im Vergleich zu Paketen mit einem grundlegenden Konstrukt von Tagnamen für jede Metrik dar:
+
+- **Gelöschter Tagname** (Beispiel: **Als DDoS eingehende gelöschte Pakete**): Die Anzahl der durch das DDoS-Schutzsystem gelöschten/bereinigten Pakete.
+- **Weitergeleiteter Tagname** (Beispiel: **Weitergeleitete als DDoS eingehende Pakete**): Die Anzahl der durch das DDoS-System an das Ziel-VIP weitergeleiteten Pakete – Datenverkehr, der nicht gefiltert wurde.
+- **Kein Tagname** (Beispiel: **Als DDoS eingehende Pakete**): Die gesamte Anzahl von Paketen, die in das Bereinigungssystem gelangt sind, welche die Summe der gelöschten und bereinigten Pakete darstellt.
 
 > [!NOTE]
 > Im Azure-Portal werden mehrere Optionen für die **Aggregation** angezeigt, aber nur die in der folgenden Tabelle aufgeführten Aggregationstypen werden für jede Metrik unterstützt. Wir entschuldigen uns für diese Unübersichtlichkeit und arbeiten bereits an ihrer Behebung.
@@ -70,26 +76,35 @@ Die folgenden [Metriken](../azure-monitor/essentials/metrics-supported.md#micros
 
 ## <a name="view-ddos-protection-telemetry"></a>Anzeigen von DDoS Protection-Telemetriedaten
 
-Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Telemetrie ist nur verfügbar, wenn eine öffentliche IP-Adresse gerade entschärft wird. 
+Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Während [Entschärfungstrigger](#view-ddos-mitigation-policies) für TCP SYN, TCP & UDP in Zeiten ohne Vorkommnisse verfügbar sind, sind andere Telemetriedaten nur verfügbar, wenn eine öffentliche IP-Adresse entschärft wurde. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem DDoS Protection-Plan.
+Sie können DDoS-Telemetriedaten für eine geschützte öffentliche IP-Adresse über drei verschiedene Ressourcentypen anzeigen: DDoS-Schutzplan, virtuelles Netzwerk und öffentliche IP-Adresse.
+
+### <a name="ddos-protection-plan"></a>DDoS-Schutzplan
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem DDoS-Schutzplan.
+2. Wählen Sie unter **Überwachung** die Option **Metriken** aus.
+3. Wählen Sie **Bereich** aus. Wählen Sie das **Abonnement** aus, das die öffentliche IP-Adresse enthält, die Sie protokollieren möchten, und wählen Sie **Öffentliche IP-Adresse** als **Ressourcentyp** aus. Wählen Sie anschließend die öffentliche IP-Adresse aus, für die Sie Metriken protokollieren möchten, und wählen Sie dann **Anwenden** aus.
+4. Wählen Sie als Typ der **Aggregation** die Option **Max** aus. 
+
+### <a name="virtual-network"></a>Virtuelles Netzwerk
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem virtuellen Netzwerk, für das ein DDoS-Schutzplan aktiviert ist.
 2. Wählen Sie unter **Überwachung** die Option **Metriken** aus.
 3. Wählen Sie **Bereich** aus. Wählen Sie das **Abonnement** aus, das die öffentliche IP-Adresse enthält, die Sie protokollieren möchten, und wählen Sie **Öffentliche IP-Adresse** als **Ressourcentyp** aus. Wählen Sie anschließend die öffentliche IP-Adresse aus, für die Sie Metriken protokollieren möchten, und wählen Sie dann **Anwenden** aus.
 4. Wählen Sie als Typ der **Aggregation** die Option **Max** aus.
+5. Klicken Sie auf **Filter hinzufügen**. Wählen Sie unter **Eigenschaft** die Option **Geschützte IP-Adresse** aus. Der Operator sollte auf **=** festgelegt sein. Unter **Werte** wird eine Dropdownliste mit öffentlichen IP-Adressen angezeigt, die dem virtuellen Netzwerk zugeordnet sind und für die der DDoS-Schutz aktiviert wurde. 
 
-Die Metriknamen stellen verschiedene Pakettypen und Bytes im Vergleich zu Paketen mit einem grundlegenden Konstrukt von Tagnamen für jede Metrik dar:
+![DDoS-Diagnoseeinstellungen](./media/ddos-attack-telemetry/vnet-ddos-metrics.png)
 
-- **Gelöschter Tagname** (Beispiel: **Als DDoS eingehende gelöschte Pakete**): Die Anzahl der durch das DDoS-Schutzsystem gelöschten/bereinigten Pakete.
-- **Weitergeleiteter Tagname** (Beispiel: **Weitergeleitete als DDoS eingehende Pakete**): Die Anzahl der durch das DDoS-System an das Ziel-VIP weitergeleiteten Pakete – Datenverkehr, der nicht gefiltert wurde.
-- **Kein Tagname** (Beispiel: **Als DDoS eingehende Pakete**): Die gesamte Anzahl von Paketen, die in das Bereinigungssystem gelangt sind, welche die Summe der gelöschten und bereinigten Pakete darstellt.
+### <a name="public-ip-address"></a>Öffentliche IP-Adresse
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrer öffentlichen IP-Adresse.
+2. Wählen Sie unter **Überwachung** die Option **Metriken** aus.
+3. Wählen Sie als Typ der **Aggregation** die Option **Max** aus.
 
 ## <a name="view-ddos-mitigation-policies"></a>Anzeigen von DDoS-Entschärfungsrichtlinien
 
-Der DDoS-Schutzstandard wendet drei automatisch optimierte Entschärfungsrichtlinien (TCP-SYN, TCP und UDP) für jede öffentliche IP-Adresse der geschützten Ressource in dem virtuellen Netzwerk an, für das DDoS aktiviert ist. Sie können die Richtlinienschwellenwerte anzeigen, indem Sie die Metriken **Eingehende TCP-Pakete zum Auslösen der DDoS-Entschärfung** und **Eingehende UDP-Pakete zum Auslösen der DDoS-Entschärfung** mit dem **Aggregation** styp als „Max“ auswählen, wie in der folgenden Abbildung gezeigt wird:
+DDoS Protection Standard wendet drei automatisch optimierte Entschärfungsrichtlinien (TCP-SYN, TCP und UDP) auf jede öffentliche IP-Adresse der geschützten Ressource in dem virtuellen Netzwerk an, für das der DDoS-Schutz aktiviert ist. Sie können die Richtlinienschwellenwerte anzeigen, indem Sie die Metriken **Eingehende TCP-Pakete zum Auslösen der DDoS-Entschärfung** und **Eingehende UDP-Pakete zum Auslösen der DDoS-Entschärfung** mit dem **Aggregation** styp als „Max“ auswählen, wie in der folgenden Abbildung gezeigt wird:
 
 ![Anzeigen von Entschärfungsrichtlinien](./media/manage-ddos-protection/view-mitigation-policies.png)
-
-Die Schwellenwerte der Richtlinien werden automatisch über unsere auf Machine Learning basierende Netzwerkdatenverkehrs-Profilerstellung von Azure konfiguriert. Nur, wenn der Richtlinienschwellenwert überschritten wird, wird die DDoS-Entschärfung für die IP-Adresse durchgeführt, die einem Angriff ausgesetzt ist.
 
 ## <a name="validate-and-test"></a>Überprüfen und Testen
 

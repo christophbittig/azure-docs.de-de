@@ -3,16 +3,16 @@ title: Ausgaben in Bicep
 description: Beschreibt, wie Sie Ausgabevariablen in Bicep definieren.
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 95366013ed972e0251c99732ea4b344b5b94e743
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026448"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635139"
 ---
 # <a name="outputs-in-bicep"></a>Ausgaben in Bicep
 
-Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) und Bicep-Datei definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
+Dieser Artikel beschreibt, wie Sie in einer Bicep-Datei Ausgabewerte definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
 
 Das Format der einzelnen Ausgabewerte muss sich zu einem der [Datentypen](data-types.md) auflösen lassen.
 
@@ -112,7 +112,7 @@ Von der folgenden Vorlage werden keine Ressourcen bereitgestellt. Sie zeigt eini
 
 Bicep unterstützt derzeit keine Schleifen.
 
-:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/outputs.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>Abrufen von Ausgabewerten
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4a7a4fdcad177c6108399a0cb1e64327c3eac8f5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: aa5c8ae942bb48c78526867eb44cc2084c056d48
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186330"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649675"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure Active Directory-Anwendungsproxy
 
@@ -42,7 +42,7 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden auf dem Anwendungsproxy als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
-- Sie sollten bereits [RDS bereitgestellt](/windows-server/remote/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](../app-proxy/application-proxy-add-on-premises-application.md) haben. Stellen Sie sicher, dass Sie die Voraussetzungen zum Aktivieren des Anwendungsproxys erfüllt haben, z. B. das Installieren des Connectors, das Öffnen erforderlicher Ports und URLs und das Aktivieren von TLS 1.2 auf dem Server.
+- Sie sollten bereits [RDS bereitgestellt](/windows-server/remote/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](../app-proxy/application-proxy-add-on-premises-application.md) haben. Stellen Sie sicher, dass Sie die Voraussetzungen zum Aktivieren des Anwendungsproxys erfüllt haben, z. B. das Installieren des Connectors, das Öffnen erforderlicher Ports und URLs und das Aktivieren von TLS 1.2 auf dem Server. Informationen zu den Ports, die geöffnet werden müssen, und weitere Details finden Sie unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
 - Ihre Endbenutzer müssen einen kompatiblen Browser verwenden, um eine Verbindung mit Web Access für Remotedesktop oder dem Remotedesktop-Webclient herzustellen. Weitere Informationen finden Sie unter [Unterstützung für andere Clientkonfigurationen](#support-for-other-client-configurations).
 - Bei der Veröffentlichung von RD-Web empfiehlt es sich, den gleichen internen und externen FQDN zu verwenden. Wenn sich die internen und externen FQDNs unterscheiden, deaktivieren Sie die Anforderungsgheaderübersetzung, um zu vermeiden, dass der Client ungültige Links empfängt.
 - Wenn Sie Web Access für Remotedesktop mit dem Internet Explorer verwenden, müssen Sie das RDS-ActiveX-Add-On aktivieren.

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97812749"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339144"
 ---
 * Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen, mit Ausnahme von „Isoliert“.
 * Die App Service-Umgebung, die in Ihrem VNET bereitgestellt wird und Apps im Tarif „App Service (isoliert)“ unterstützt.
@@ -30,7 +30,7 @@ Für die Funktionen für die VNET-Integration gilt Folgendes:
 Einige Vorgänge werden von der VNET-Integration nicht unterstützt, z. B.:
 
 * Einbindung eines Laufwerks
-* Active Directory-Integration
+* Windows Server Active Directory-Integration
 * NetBIOS
 
 Die VNET-Integration mit erforderlichem Gateway ermöglicht nur den Zugriff auf Ressourcen im Ziel-VNET oder in Netzwerken, die mit dem Ziel-VNET über Peering oder VPNs verbunden sind. Die VNET-Integration mit erforderlichem Gateway ermöglicht keinen Zugriff auf Ressourcen, die über Azure ExpressRoute-Verbindungen verfügbar sind oder mit Dienstendpunkten funktionieren.

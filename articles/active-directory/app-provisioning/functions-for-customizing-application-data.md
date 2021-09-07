@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/11/2021
+ms.date: 07/29/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3cd910cac906af54e039e38c9ccdd9d563cd9b8c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 9736bee99483a7e4fbb5a5f02a3f415a74c9f76f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570313"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339105"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
@@ -38,7 +38,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Anfügen
@@ -55,7 +55,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 | **Suffix** |Erforderlich |String |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
 
-### <a name="append-constant-suffix-to-user-name"></a>Anfügen eines konstanten Suffixes an einen Benutzernamen
+#### <a name="append-constant-suffix-to-user-name"></a>Anfügen eines konstanten Suffixes an einen Benutzernamen
 Beispiel: Wenn Sie eine Salesforce Sandbox-Instanz verwenden, müssen Sie möglicherweise ein weiteres Suffix an alle Benutzernamen anfügen, bevor Sie diese synchronisieren.
 
 **Ausdruck:**  
@@ -66,6 +66,18 @@ Beispiel: Wenn Sie eine Salesforce Sandbox-Instanz verwenden, müssen Sie mögli
 * **EINGABE**: (userPrincipalName): "John.Doe@contoso.com"
 * **AUSGABE**:  "John.Doe@contoso.com.test"
 
+---
+### <a name="approleassignmentscomplex"></a>AppRoleAssignmentsComplex
+
+**Funktion**: AppRoleAssignmentsComplex([appRoleAssignments])
+
+**Beschreibung**: Wird zum Bereitstellen mehrerer Rollen für einen Benutzer verwendet. Ausführliche Informationen zur Verwendung finden Sie unter [Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md#provisioning-a-role-to-a-scim-app).
+
+**Parameter:** 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |Erforderlich |String |**[appRoleAssignments]** -Objekt |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -109,6 +121,44 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
 ---
+### <a name="cdate"></a>ZDate
+**Funktion:**  
+`CDate(expression)`
+
+**Beschreibung:**  
+Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. DateTime ist kein nativer Attributtyp, kann aber in Datumsfunktionen wie [FormatDateTime](#formatdatetime) und [DateAdd](#dateadd) verwendet werden.
+
+**Parameter:** 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** |Erforderlich | expression | Jede gültige Zeichenfolge, die ein Datum/eine Uhrzeit darstellt. Informationen zu unterstützten Formaten finden Sie unter [.NET: Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+
+**Hinweise:**  
+Die zurückgegebene Zeichenfolge wird immer als UTC-Wert angegeben und weist das Format **M/d/yyyy h:mm:ss tt** auf.
+
+**Beispiel 1:** <br> 
+`CDate([StatusHireDate])`  
+**Beispieleingabe/-ausgabe:** 
+
+* **EINGABE**: (StatusHireDate): "2020-03-16-07:00"
+* **AUSGABE**:  "3/16/2020 7:00:00 AM" <-- *Beachten Sie, dass die UTC-Entsprechung des obigen DateTime-Werts zurückgegeben wird.*
+
+**Beispiel 2:** <br> 
+`CDate("2021-06-30+08:00")`  
+**Beispieleingabe/-ausgabe:** 
+
+* **EINGABE**: "2021-06-30+08:00"
+* **AUSGABE**:  "6/29/2021 4:00:00 PM" <-- *Beachten Sie, dass die UTC-Entsprechung des obigen DateTime-Werts zurückgegeben wird.*
+
+**Beispiel 3:** <br> 
+`CDate("2009-06-15T01:45:30-07:00")`  
+**Beispieleingabe/-ausgabe:** 
+
+* **EINGABE**: "2009-06-15T01:45:30-07:00"
+* **AUSGABE**:  "6/15/2009 8:45:30 AM" <-- *Beachten Sie, dass die UTC-Entsprechung des obigen DateTime-Werts zurückgegeben wird.*
+
+---
 ### <a name="coalesce"></a>Coalesce
 **Funktion:** Coalesce(source1, source2, ..., defaultValue)
 
@@ -121,7 +171,7 @@ Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 | **source1 … sourceN** | Erforderlich | String |Erforderlich, unterschiedlich oft. Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **defaultValue** | Optional | String | Der zu verwendende Standardwert, wenn alle Quellwerte NULL sind. Kann eine leere Zeichenfolge ("") sein.
 
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>E-Mail-Wert übermitteln, wenn nicht NULL, andernfalls userPrincipalName-Wert übermitteln
+#### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>E-Mail-Wert übermitteln, wenn nicht NULL, andernfalls userPrincipalName-Wert übermitteln
 Beispiel: Sie möchten das E-Mail-Attribut übermitteln, wenn es vorhanden ist. Andernfalls möchten Sie stattdessen den Wert von „userPrincipalName“ übermitteln.
 
 **Ausdruck:**  
@@ -198,6 +248,60 @@ Gibt „48656C6C6F20776F726C6421“ zurück.
 Gibt „cn=Joe,dc=contoso,dc=com“ zurück
 
 ---
+### <a name="dateadd"></a>DateAdd
+**Funktion:**  
+`DateAdd(interval, value, dateTime)`
+
+**Beschreibung:**  
+Gibt eine Datums-/Uhrzeitzeichenfolge zurück, die ein Datum darstellt, zu dem ein bestimmtes Zeitintervall hinzugefügt wurde. Das zurückgegebene Datum weist das folgende Format auf: **M/d/yyyy h:mm:ss tt**.
+
+**Parameter:** 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **interval** |Erforderlich | String | Gibt das Zeitintervall an, das Sie hinzufügen möchten. Die zulässigen Werte werden unterhalb dieser Tabelle aufgeführt. |
+| **value** |Erforderlich | Number | Die Anzahl der Einheiten, die Sie hinzufügen möchten. Der Wert kann positiv (für Datumsangaben in der Zukunft) oder negativ (für Datumsangaben in der Vergangenheit) sein. |
+| **dateTime** |Erforderlich | Datetime | DateTime-Wert, der das Datum darstellt, dem das Intervall hinzugefügt wird. |
+
+Die **interval**-Zeichenfolge muss einem der folgenden Werte entsprechen: 
+ * yyyy: Jahr 
+ * q: Quartal
+ * m: Monat
+ * y: Tag des Jahres
+ * d: Tag
+ * w: Wochentag
+ * ww: Woche
+ * h: Stunde
+ * n: Minute
+ * s: Sekunde
+
+**Beispiel 1: Hinzufügen von 7 Tagen zum Einstellungsdatum**  
+`DateAdd("d", 7, CDate([StatusHireDate]))`
+* **EINGABE**: (StatusHireDate): 2012-03-16-07:00
+* **AUSGABE**: 3/23/2012 7:00:00 AM
+
+**Beispiel 2: Abrufen des Datums 10 Tage vor dem Einstellungsdatum**  
+`DateAdd("d", -10, CDate([StatusHireDate]))`
+* **EINGABE**: (StatusHireDate): 2012-03-16-07:00
+* **AUSGABE**: 3/6/2012 7:00:00 AM
+
+**Beispiel 3: Hinzufügen von 2 Wochen zum Einstellungsdatum**  
+`DateAdd("ww", 2, CDate([StatusHireDate]))`
+* **EINGABE**: (StatusHireDate): 2012-03-16-07:00
+* **AUSGABE**: 3/30/2012 7:00:00 AM
+
+**Beispiel 4: Hinzufügen von 10 Monaten zum Einstellungsdatum**  
+`DateAdd("m", 10, CDate([StatusHireDate]))`
+* **EINGABE**: (StatusHireDate): 2012-03-16-07:00
+* **AUSGABE**: 1/16/2013 7:00:00 AM
+
+**Beispiel 5: Hinzufügen von 2 Jahren zum Einstellungsdatum**  
+`DateAdd("yyyy", 2, CDate([StatusHireDate]))`
+* **EINGABE**: (StatusHireDate): 2012-03-16-07:00
+* **AUSGABE**: 3/16/2014 7:00:00 AM
+
+---
+
 ### <a name="datefromnum"></a>DateFromNum
 **Funktion:** DateFromNum(value)
 
@@ -228,12 +332,12 @@ Gibt einen DateTime-Wert zurück, der für den 1. Januar 2012 um 23:00 Uhr st
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **dateTimeStyles** | Optional | String | Verwenden Sie diese Zeichenfolge, um die Formatierungsoptionen anzugeben, mit denen die Art der Analyse einer Zeichenfolge für eine Reihe von Datums- und Uhrzeitanalysemethoden angepasst wird. Unterstützte Werte finden Sie in der [Dokumentation zu DateTimeStyles](/dotnet/api/system.globalization.datetimestyles). Wird das Feld leer gelassen, wird als Standardwert „DateTimeStyles.RoundtripKind, DateTimeStyles.AllowLeadingWhite, DateTimeStyles.AllowTrailingWhite“ verwendet.  |
-| **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate sind unter [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) aufgeführt. |
+| **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Informationen zu unterstützten Formaten finden Sie unter [.NET: Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 | **Ausgabeformat** |Erforderlich |String |Format des Ausgabedatums. |
 
 
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
+#### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
 Beispiel: Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung wie ServiceNow senden. Sie können ggf. den folgenden Ausdruck verwenden: 
 
 **Ausdruck:** 
@@ -251,6 +355,31 @@ Beispiel: Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anw
 **Funktion:** Guid()
 
 **Beschreibung:** Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
+
+**Beispiel:** <br>
+`Guid()`<br>
+Beispielausgabe: "1088051a-cd4b-4288-84f8-e02042ca72bc"
+
+---
+### <a name="ignoreflowifnullorempty"></a>IgnoreFlowIfNullOrEmpty
+**Funktion**: IgnoreFlowIfNullOrEmpty(expression)
+
+**Beschreibung**: Die IgnoreFlowIfNullOrEmpty-Funktion weist den Bereitstellungsdienst an, das Attribut zu ignorieren und aus dem Flow zu löschen, wenn die eingeschlossene Funktion oder das eingeschlossene Attribut NULL oder leer ist.
+
+**Parameter:** 
+
+| Name | Erforderlich/wiederholt | type | Notizen |
+| --- | --- | --- | --- |
+| **expression** | Erforderlich | expression | Der auszuwertende Ausdruck |
+
+**Beispiel 1: Entfernen eines Attributs aus dem Flow, wenn es NULL ist** <br>
+`IgnoreFlowIfNullOrEmpty([department])` <br>
+Mit dem obigen Ausdruck wird das Attribut „department“ aus dem Bereitstellungsflow entfernt, wenn es NULL oder leer ist. <br>
+
+**Beispiel 2: Entfernen eines Attributs aus dem Flow, wenn der Ausdruck als eine leere Zeichenfolge oder NULL ausgewertet wird** <br>
+Angenommen, das *prefix* des Attributs „SuccessFactors“ wird mithilfe der folgenden Ausdruckszuordnung dem lokalen Active Directory-Attribut *personalTitle* zugeordnet: <br>
+`IgnoreFlowIfNullOrEmpty(Switch([prefix], "", "3443", "Dr.", "3444", "Prof.", "3445", "Prof. Dr."))` <br>
+Der obige Ausdruck wertet zuerst die [Switch](#switch)-Funktion aus. Wenn das *prefix*-Attribut keine der in der *Swicht*-Funktion aufgeführten Werte auflistet, gibt *Switch* eine leere Zeichenfolge zurück, und das Attribut *personalTitle* wird nicht in den Bereitstellungsflow für die lokale Active Directory-Instanz eingeschlossen.
 
 ---
 ### <a name="iif"></a>IIF
@@ -434,7 +563,7 @@ Gibt „Joh“ zurück.
 | **Quelle** |Erforderlich |String | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
 
-### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
+#### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
 Beispiel: Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
 
 **Ausdruck:** NormalizeDiacritics([givenName])
@@ -456,6 +585,17 @@ Beispiel: Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind TRUE oder FALSE. |
+
+---
+### <a name="now"></a>jetzt
+**Funktion**: Now()
+
+**Beschreibung:**  
+Die Now-Funktion gibt eine Zeichenfolge zurück, die die aktuelle UTC-DateTime im Format **M/d/yyyy h:mm:ss tt** darstellt.
+
+**Beispiel:** 
+`Now()` <br>
+Zurückgegebener Beispielwert: *7/2/2021 3:33:38 PM*
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -527,7 +667,7 @@ Beispiel: Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent
 | **Ersatzattributname** |Optional |String |Name des Attributs, das als Ersatzwert verwendet werden soll. |
 | **Vorlage** |Optional |String |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
 
-### <a name="replace-characters-using-a-regular-expression"></a>Ersetzen von Zeichen mit einem regulären Ausdruck
+#### <a name="replace-characters-using-a-regular-expression"></a>Ersetzen von Zeichen mit einem regulären Ausdruck
 Beispiel: Sie müssen Zeichen suchen, die mit einem regulären Ausdruck übereinstimmen, und diese entfernen.
 
 **Ausdruck:** 
@@ -559,7 +699,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |String | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
+#### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
 Beispiel: Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wert für das UPN-Attribut generieren und die Eindeutigkeit im AD-Zielverzeichnis überprüfen, bevor Sie den Wert dem UPN-Attribut zuweisen.
 
 **Ausdruck:** 
@@ -607,7 +747,7 @@ Beispiel: Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie
 | **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
 | **Trennzeichen** |Erforderlich |String |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>Unterteilen einer Zeichenfolge in ein mehrwertiges Array
+#### <a name="split-a-string-into-a-multi-valued-array"></a>Unterteilen einer Zeichenfolge in ein mehrwertiges Array
 Beispiel: Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen in ein Array unterteilen, das in ein mehrwertiges Attribut wie das PermissionSets-Attribut von Salesforce eingegeben werden kann. In diesem Beispiel wurde eine Liste von Berechtigungssätzen in extensionAttribute5 in Azure AD eingegeben.
 
 **Ausdruck:** Split([extensionAttribute5], ",")
@@ -645,7 +785,7 @@ Beispiel: Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen 
 | **key** |Erforderlich |String |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
 | **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
+#### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 Beispiel: Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:**  
@@ -663,6 +803,8 @@ Beispiel: Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes fe
 
 **Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Kleinbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
+Wenn Sie für vorhandene Werte im Zielsystem die Kleinschreibung festlegen möchten, [aktualisieren Sie das Schema für Ihre Zielanwendung](./customize-application-attributes.md#editing-the-list-of-supported-attributes), und legen Sie die Eigenschaft „caseExact“ für das gewünschte Attribut auf TRUE fest. 
+
 **Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
@@ -670,7 +812,7 @@ Beispiel: Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes fe
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konvertieren des generierten userPrincipalName-Werts (UPN) in Kleinbuchstaben
+#### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konvertieren des generierten userPrincipalName-Werts (UPN) in Kleinbuchstaben
 Beispiel: Sie möchten den UPN-Wert generieren, indem Sie die Quellfelder „PreferredFirstName“ und „PreferredLastName“ verketten und alle Zeichen in Kleinbuchstaben konvertieren. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -687,6 +829,8 @@ Beispiel: Sie möchten den UPN-Wert generieren, indem Sie die Quellfelder „Pre
 **Funktion:** ToUpper(source, culture)
 
 **Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
+
+Wenn Sie für vorhandene Werte im Zielsystem die Großschreibung festlegen möchten, [aktualisieren Sie das Schema für Ihre Zielanwendung](./customize-application-attributes.md#editing-the-list-of-supported-attributes), und legen Sie die Eigenschaft „caseExact“ für das gewünschte Attribut auf TRUE fest. 
 
 **Parameter:** 
 

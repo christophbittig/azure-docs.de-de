@@ -7,23 +7,31 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
-ms.openlocfilehash: b1f742c1de259f6c1c06d9b31a8788699f0b8426
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/18/2021
+ms.openlocfilehash: c7c5ce32801efe68d653dc3abd97c1e5ff3a7f9b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580038"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113000408"
 ---
-# <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kapazität eines Azure Cognitive Search-Diensts
+# <a name="estimate-and-manage-capacity-of-a-search-service"></a>Schätzen und Verwalten der Kapazität eines Suchdiensts
 
-Nehmen Sie sich einige Minuten Zeit, bevor Sie [einen Suchdienst bereitstellen](search-create-service-portal.md) und einen bestimmten Tarif festlegen, um zu verstehen, wie die Kapazität funktioniert und wie Sie Replikate und Partitionen an Schwankungen der Workload anpassen können.
+Nehmen Sie sich vor dem [Erstellen eines Suchdiensts](search-create-service-portal.md) und Festlegen eines bestimmten [Tarifs](search-sku-tier.md) einige Minuten Zeit, um zu verstehen, wie die Kapazität funktioniert und wie Sie Replikate und Partitionen an Fluktuationen der Workload anpassen können.
 
-Kapazität ist eine Funktion der [Dienstebene](search-sku-tier.md). Sie bestimmt die maximale Speichergröße pro Dienst und Partition sowie die Obergrenze für die Anzahl von Objekten, die Sie erstellen können. Der Tarif „Basic“ ist für Apps vorgesehen, die relativ geringe Speicheranforderungen (nur eine Partition) haben, aber die Möglichkeit zur Ausführung in einer Konfiguration mit hoher Verfügbarkeit (3 Replikate) bieten. Andere Tarife sind für bestimmte Arbeitsauslastungen oder Muster, z. B. Mehrinstanzenfähigkeit, konzipiert. Intern profitieren auf diesen Tarifen erstellte Dienste von Hardware, die diese Szenarien unterstützt.
+In Azure Cognitive Search basiert die Kapazität auf *Replikaten* und *Partitionen*. Replikate sind Kopien des Suchmoduls.
+Partitionen sind Speichereinheiten. Jeder neue Suchdienst verfügt zunächst über jeweils ein Replikat und eine Partition. Sie haben aber die Möglichkeit, jede Ressource separat hochzuskalieren, um Fluktuationen bei den Workloads abzudecken. Das Hinzufügen dieser Ressourcen ist jeweils [abrechenbar](search-sku-manage-costs.md#billable-events).
 
-Die Skalierbarkeitsarchitektur in Azure Cognitive Search basiert auf flexiblen Kombinationen von Replikaten und Partitionen, sodass Sie die Kapazität variieren können – je nachdem, ob Sie mehr Abfrage- oder mehr Indizierungsleistung benötigen. Nach der Erstellung eines Diensts können Sie die Anzahl von Replikaten oder Partitionen unabhängig voneinander erhöhen oder verringern. Die Kosten erhöhen sich mit jeder zusätzlichen physischen Ressource. Nach Abschluss umfangreicher Workloads können Sie jedoch herunterskalieren, um Ihre Kosten zu senken. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern.
+Die technischen Merkmale von Replikaten und Partitionen, z. B. Verarbeitungsgeschwindigkeit und Datenträger-E/A, variieren je nach [Dienstebene](search-sku-tier.md). Wenn Sie die Bereitstellung unter „Standard“ durchgeführt haben, sind Replikate und Partitionen schneller und größer als bei „Basic“.
 
-Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
+Wenn die Kapazität geändert wird, ist dies nicht sofort wirksam. Die Inbetrieb- bzw. Außerbetriebnahme von Partitionen kann bis zu eine Stunde dauern. Dies gilt vor allem für Dienste mit großen Datenmengen.
+
+Beim Skalieren eines Suchdiensts können Sie zwischen den folgenden Tools und Ansätzen wählen:
+
++ [Azure portal](#adjust-capacity)
++ [Azure PowerShell](search-manage-powershell.md)
++ [Azure-Befehlszeilenschnittstelle](/cli/azure/search)
++ [Verwaltungs-REST-API](/rest/api/searchmanagement/2020-08-01/services)
 
 ## <a name="concepts-search-units-replicas-partitions-shards"></a>Konzepte: Sucheinheiten, Replikate, Partitionen, Shards
 
@@ -123,7 +131,7 @@ Für Features des kostenlosen Tarifs (Free) und der Previewfunktionen gelten kei
 
 ## <a name="when-to-add-capacity"></a>Wann Sie Kapazität hinzufügen sollten
 
-Zunächst wird einem Dienst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet. Der [ausgewählte Tarif](search-sku-tier.md) bestimmt die Größe und Geschwindigkeit der Partition, und jeder Tarif ist um eine Reihe von Eigenschaften optimiert, die auf bestimmte Szenarien ausgerichtet sind. Wenn Sie sich für einen höherwertigen Tarif entscheiden, benötigen Sie möglicherweise weniger Partitionen als bei S1. Eine der Fragen, die Sie durch selbstgesteuerte Tests beantworten müssen, lautet: Bringt eine größere und teurere Partition eine bessere Leistung als zwei billigere Partitionen bei einem Dienst, der in einem niedrigeren Tarif bereitgestellt wird?
+Zunächst wird einem Dienst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet. Der [ausgewählte Tarif](search-sku-tier.md) bestimmt die Größe und Geschwindigkeit der Partition, und jeder Tarif ist um eine Reihe von Eigenschaften optimiert, die auf bestimmte Szenarien ausgerichtet sind. Wenn Sie sich für einen höherwertigen Tarif entscheiden, [benötigen Sie möglicherweise weniger Partitionen](search-performance-tips.md#service-capacity) als bei S1. Eine der Fragen, die Sie durch selbstgesteuerte Tests beantworten müssen, lautet: Bringt eine größere und teurere Partition eine bessere Leistung als zwei billigere Partitionen bei einem Dienst, der in einem niedrigeren Tarif bereitgestellt wird?
 
 Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Workloads (Indizierung und Abfragen) bewältigen zu können. Beide Workloads laufen nicht im Hintergrund. Sie können die Indizierung für Zeiten planen, in denen Abfrageanforderungen naturgemäß weniger häufig sind, aber der Dienst priorisiert ansonsten keine Aufgabe gegenüber einer anderen. Zusätzlich gleicht ein gewisses Maß an Redundanz die Abfrageleistung aus, wenn Dienste oder Knoten intern aktualisiert werden.
 
@@ -154,7 +162,7 @@ Schließlich erfordern größere Indizes eine längere Abfragezeit. Daher werden
 
    :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="Seite „Skalierung“ mit aktuellen Werten" border="true":::
 
-1. Mit dem Schieberegler können Sie die Anzahl der Partitionen erhöhen oder verringern. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden. Wählen Sie **Speichern** aus.
+1. Mit dem Schieberegler können Sie die Anzahl der Partitionen erhöhen oder verringern. Wählen Sie **Speichern** aus.
 
    In diesem Beispiel werden ein zweites Replikat und eine zweite Partition hinzugefügt. Beachten Sie die Anzahl der Sucheinheiten. Sie beträgt jetzt vier, weil die Formel für die Abrechnung lautet: Replikate, multipliziert mit Partitionen (2 x 2). Bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten für die Ausführung des Diensts an. Wenn die Kosten für die Sucheinheit 100 US-Dollar wären, würde die neue Monatsrechnung jetzt 400 US-Dollar betragen.
 
@@ -172,9 +180,31 @@ Schließlich erfordern größere Indizes eine längere Abfragezeit. Daher werden
 
 > [!NOTE]
 > Sobald ein Dienst bereitgestellt ist, kann kein direktes Upgrade auf einen höheren Tarif erfolgen. In diesem Fall müssen Sie einen Suchdienst unter dem neuen Tarif erstellen und Ihre Indizes neu laden. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Diensts für die kognitive Azure-Suche im Portal](search-create-service-portal.md).
->
-> Darüber hinaus werden die Partitionen und Replikate ausschließlich und intern vom Dienst verwaltet. Es gibt kein Konzept der Prozessoraffinität oder der Zuweisung einer Workload auf einen bestimmten Knoten.
->
+
+## <a name="how-scale-requests-are-handled"></a>Verarbeiten von Skalierungsanforderungen
+
+Nach dem Erhalt einer Skalierungsanforderung wird vom Suchdienst Folgendes durchgeführt:
+
+1. Er überprüft, ob die Anforderung gültig ist.
+1. Er beginnt mit der Sicherung von Daten und Systeminformationen.
+1. Er überprüft, ob sich der Dienst bereits in einem Bereitstellungsstatus befindet (aktive Vorgänge zum Hinzufügen oder Entfernen von Replikaten oder Partitionen).
+1. Er startet den Bereitstellungsvorgang.
+
+Die Skalierung eines Diensts kann je nach seiner Größe und dem Umfang der Anforderung nur 15 Minuten oder auch deutlich länger als eine Stunde dauern. Der Sicherungsvorgang kann je nach Datenmenge und Anzahl von Partitionen und Replikaten mehrere Minuten dauern.
+
+Die obigen Schritte folgen nicht unbedingt direkt aufeinander. Das System beginnt beispielsweise erst mit der Bereitstellung, wenn dieser Vorgang auf sichere Weise möglich ist, und dies kann auch gegen Ende des Sicherungsvorgangs der Fall sein.
+
+## <a name="errors-during-scaling"></a>Fehler während der Skalierung
+
+Die Fehlermeldung der Art „Vorgänge zur Dienstaktualisierung sind derzeit nicht zulässig, weil eine vorherige Anforderung verarbeitet wird“ wird verursacht, wenn eine Anforderung zum Herunter- oder Hochskalieren wiederholt wird, während vom Dienst bereits eine vorherige Anforderung verarbeitet wird.
+
+Beheben Sie diesen Fehler, indem Sie den Dienststatus überprüfen, um den Bereitstellungsstatus zu verifizieren:
+
+1. Verwenden Sie die [Verwaltungs-REST-API](/rest/api/searchmanagement/2020-08-01/services), [Azure PowerShell](search-manage-powershell.md) oder die [Azure CLI](/cli/azure/search), um den Dienststatus abzurufen.
+1. Rufen Sie [Get Service](/rest/api/searchmanagement/2020-08-01/services/get) auf.
+1. Überprüfen Sie die Antwort auf ["provisioningState": "provisioning"](/rest/api/searchmanagement/2020-08-01/services/get#provisioningstate).
+
+Wenn der Status „Provisioning“ (Bereitstellung wird durchgeführt) lautet, warten Sie, bis die Anforderung abgeschlossen ist. Der Status sollte entweder „Succeeded“ (Erfolgreich) oder „Failed“ (Fehler) lauten, bevor versucht wird, eine weitere Anforderung zu senden. Für die Sicherung wird kein Status angegeben. Die Sicherung ist ein interner Vorgang, und es ist unwahrscheinlich, dass dieser bei einer Störung einer Skalierungsübung eine Rolle spielt.
 
 <a id="chart"></a>
 
@@ -197,7 +227,7 @@ Alle Suchdienste vom Typ „Standard“ oder „Datenspeicheroptimiert“ könne
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Der Grund: Die kognitive Azure-Suche unterteilt jeden Index vorab in 12 Shards, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition 4 Shards des Indexes. Die kognitive Azure-Suche erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
+> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Bei Azure Cognitive Search wird jeder Index vorab in zwölf Shards unterteilt, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition 4 Shards des Indexes. Die kognitive Azure-Suche erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

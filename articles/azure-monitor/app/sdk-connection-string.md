@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 2b4a7ac88f92c830daecf943d6937946c4a89f82
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191352"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297443"
 ---
 # <a name="connection-strings"></a>Verbindungszeichenfolgen
 
@@ -34,7 +34,7 @@ Kundenszenarien, die die wichtigsten Auswirkungen veranschaulichen:
 
 - Firewallausnahmen oder Proxyumleitungen 
 
-    Wenn eine Überwachung für den Intranetwebserver erforderlich ist, mussten Kunden bei unseren früheren Lösungen ihrer Konfiguration einzelne Dienstendpunkte hinzufügen. Weitere Informationen finden Sie [hier](../faq.md#can-i-monitor-an-intranet-web-server). 
+    Wenn eine Überwachung für den Intranetwebserver erforderlich ist, mussten Kunden bei unseren früheren Lösungen ihrer Konfiguration einzelne Dienstendpunkte hinzufügen. Weitere Informationen finden Sie [hier](../faq.yml#can-i-monitor-an-intranet-web-server-). 
     Verbindungszeichenfolgen stellen eine bessere Alternative dar, da der gesamte Aufwand auf eine einzige Einstellung reduziert wird. Ein einfacher Präfix-Suffix-Zusatz ermöglicht das automatische Auffüllen und Umleiten aller Endpunkte an die richtigen Dienste. 
 
 - Sovereign Cloud- oder Hybrid Cloud-Umgebungen
@@ -209,17 +209,22 @@ NetCore (config.json):
 
 # <a name="java"></a>[Java](#tab/java)
 
+Sie können die Verbindungszeichenfolge in der Konfigurationsdatei `applicationinsights.json` festlegen:
 
-Java (v2.5.x) (explizit festgelegt):
-```java
-TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+}
 ```
 
-ApplicationInsights.xml
+Weitere Informationen finden Sie unter [Konfigurieren der Verbindungszeichenfolge](./java-standalone-config.md#connection-string).
+
+Für Application Insights Java 2.x können Sie die Verbindungszeichenfolge in der Konfigurationsdatei `ApplicationInsights.xml`festlegen:
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
-    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000;</ConnectionString>
+    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000</ConnectionString>
 </ApplicationInsights>
 ```
 
@@ -290,7 +295,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 Beginnen mit der Laufzeitmethode mit:
 
 * [Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe – Auf IIS gehostete Apps](./azure-vm-vmss-apps.md)
-* [IIS-Server](./monitor-performance-live-website-now.md)
+* [IIS-Server](./status-monitor-v2-overview.md)
 * [Azure-Web-Apps](./azure-web-apps.md)
 
 Beginnen mit der Entwicklungszeitmethode mit:
@@ -300,4 +305,3 @@ Beginnen mit der Entwicklungszeitmethode mit:
 * [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
-

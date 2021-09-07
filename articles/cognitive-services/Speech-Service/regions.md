@@ -3,20 +3,20 @@ title: Regionen für den Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der verfügbaren Regionen und Endpunkte für den Speech-Dienst, einschließlich Spracherkennung, Sprachsynthese und Sprachübersetzung.
 services: cognitive-services
-author: mahilleb-msft
+author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 07/01/2021
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: ab3e61a9c6593f8ee3075dd0ef6f0dee62c3a9c2
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 002f8ce7311d59a101f676908453fb1493b6dd39
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315253"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710418"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -29,6 +29,9 @@ Beim Erwägen einer Region sollten Sie die folgenden Punkte bedenken:
 * Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionsbezeichner (z. B. `westus`) an.
 * Wenn Ihre Anwendung eine der [REST-APIs](./overview.md#reference-docs) des Sprachdiensts verwendet, ist die Region Teil des Endpunkt-URIs, den Sie bei der Anforderung verwenden.
 * Schlüssel, die für eine Region erstellt wurden, sind nur in dieser Region gültig. Der Versuch, sie mit anderen Regionen zu verwenden, führt zu Authentifizierungsfehlern.
+
+> [!NOTE]
+> Bei Speech-Diensten werden keine Kundendaten außerhalb der Region, in der der Kunde die Dienstinstanz bereitstellt, gespeichert oder verarbeitet.
 
 ## <a name="speech-sdk"></a>Sprach-SDK
 

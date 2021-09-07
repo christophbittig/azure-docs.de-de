@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92f92580fdfab00e6629ac53774f57abe59828f1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 66426b6e48c15882f884657fbf8e75f44e500eb8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755301"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467637"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -238,7 +238,7 @@ ms.locfileid: "111755301"
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +253,7 @@ ms.locfileid: "111755301"
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
+[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
 [virtual-machines-azurerm-versus-azuresm]:../../../resource-manager-deployment-model.md
@@ -430,7 +430,7 @@ Die Dokumentation zeigt, dass die Funktionalität mit den neueren SQL Server-Rel
 ### <a name="azure-backup-for-sql-server-vms"></a>Automatisierte Sicherung für SQL Server-VMS
 Diese neue Methode für SQL Server-Sicherungen wird ab Juni 2018 von den Azure Backup-Diensten als Public Preview angeboten. Die Methode zum Sichern von SQL Server ist die gleiche wie bei anderen Drittanbietertools: mithilfe der VSS/VDI-Schnittstelle von SQL Server werden Sicherungen an einen Zielspeicherort gestreamt. In diesem Fall ist der Zielspeicherort ein Azure Recovery Services-Tresor.
 
-Ausführlichere Informationen zu dieser Sicherungsmethode, die zahlreiche Vorteile wie zentrale Sicherungskonfigurationen, Überwachung und Verwaltung bietet, [finden Sie hier](../../../backup/backup-azure-sql-database.md). 
+Ausführlichere Informationen zu dieser Sicherungsmethode, die zahlreiche Vorteile – darunter zentrale Sicherungskonfigurationen, Überwachung und Verwaltung – bietet, finden Sie auf der Seite [Sichern einer SQL Server-Datenbank auf einem virtuellen Azure-Computer](../../../backup/backup-azure-sql-database.md).
 
 
 ### <a name="third-party-backup-solutions"></a>Sicherungslösungen von Drittanbietern

@@ -2,13 +2,13 @@
 title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: a9dcb83b54a665a71c8f1095a682c9dabcafd039
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/02/2021
+ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026110"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286626"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -297,6 +297,10 @@ Geben Sie einen [Datentyp](data-types.md) für den Ausgabewert an.
 Eine Ausgabe darf nicht denselben Namen wie ein Parameter, eine Variable, ein Modul oder eine Ressource haben.
 
 Weitere Informationen finden Sie unter [Ausgaben in Bicep](./outputs.md).
+
+## <a name="whitespace"></a>Leerraum
+
+Leerzeichen und Tabstoppzeichen werden beim Erstellen von Bicep-Dateien ignoriert. Neue Zeilen haben aber eine semantische Bedeutung, z. B. bei Deklarationen von [Objekten](./data-types.md#objects) und [Arrays](./data-types.md#arrays).
 
 ## <a name="comments"></a>Kommentare
 

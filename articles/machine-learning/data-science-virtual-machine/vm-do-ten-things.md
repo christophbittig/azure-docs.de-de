@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 9df1304cd127f15d948fba3e498f6fbfbce30557
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e4e4a7169d7550523fb2e712560d1bdf86197558
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701008"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679132"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data Science mit einer Windows Data Science Virtual Machine
 
@@ -49,7 +49,7 @@ In diesem Artikel ist beschrieben, wie Sie Ihre DSVM nutzen können, um Data Sci
 
 
 ## <a name="use-jupyter-notebooks"></a>Verwenden von Jupyter-Notebooks
-Jupyter Notebook stellt eine browserbasierte integrierte Entwicklungsumgebung für Datenauswertung und -modellierung bereit. Sie können Python 2, Python 3 oder R (sowohl Open Source als auch Microsoft R Server) in einem Jupyter Notebook verwenden.
+Jupyter Notebook stellt eine browserbasierte integrierte Entwicklungsumgebung für Datenauswertung und -modellierung bereit. Sie können Python 2, Python 3 oder R in einer Jupyter Notebook-Instanz verwenden.
 
 Um das Jupyter-Notebook zu starten, wählen Sie das **Jupyter Notebook**-Symbol im **Startmenü** oder auf dem Desktop aus. An der DSVM-Eingabeaufforderung können Sie auch den Befehl ```jupyter notebook``` in dem Verzeichnis ausführen, in dem Notebooks vorhanden sind oder in dem Sie neue Notebooks erstellen möchten.  
 
@@ -68,6 +68,10 @@ Navigieren Sie nach dem Starten von Jupyter zum Verzeichnis `/notebooks`, in dem
 Nachdem Sie das Notebook geöffnet haben, können Sie mit den Bibliotheken Ihrer Wahl Ihre Daten auswerten, das Modell erstellen und das Modell testen.
 
 ## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Auswerten von Daten und Entwickeln von Modellen mit Microsoft Machine Learning Server
+
+> [!NOTE]
+> Der Support für Machine Learning Server (eigenständig) endet am 1. Juli 2021. Sie wird nach dem 30. Juni aus den DSVM-Images entfernt. Vorhandene Bereitstellungen haben weiterhin Zugriff auf die Software, aber aufgrund des erreichten Enddatums für den Support wird sie nach dem 1. Juli 2021 nicht mehr unterstützt.
+
 Sie können Ihre Datenanalysen mit Sprachen wie R und Python direkt auf der DSVM ausführen.
 
 Für R können Sie eine integrierte Entwicklungsumgebung wie RStudio verwenden, die im Startmenü oder auf dem Desktop zu finden ist. Alternativ können Sie R Tools für Visual Studio verwenden. Microsoft stellt zusätzliche Bibliotheken auf Basis der Open-Source-Sprache R (verfügbar über CRAN) bereit, um skalierbare Analysen und das Analysieren von Datenmengen, deren Größe den Arbeitsspeicher überschreitet, in parallelen Datenblöcken zu ermöglichen. 
@@ -254,7 +258,7 @@ Die Daten werden als Datenrahmen gelesen:
 ### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics und Datenbanken
 Azure Synapse Analytics ist ein elastisches Data Warehouse-as-a-Service-Angebot mit einer SQL Server-Umgebung auf Unternehmensniveau.
 
-Sie können Azure Synapse Analytics anhand der Anweisungen in [diesem Artikel](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) bereitstellen. Nachdem Sie Azure Synapse Analytics bereitgestellt haben, können Sie [diese exemplarische Vorgehensweise](../team-data-science-process/sqldw-walkthrough.md) befolgen, um Daten hochzuladen, zu erkunden und zu modellieren, indem Sie Daten innerhalb von Azure Synapse Analytics verwenden.
+Sie können Azure Synapse Analytics anhand der Anweisungen in [diesem Artikel](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) bereitstellen. Nachdem Sie Azure Synapse Analytics bereitgestellt haben, können Sie [diese exemplarische Vorgehensweise](/azure/architecture/data-science-process/sqldw-walkthrough) befolgen, um Daten hochzuladen, zu erkunden und zu modellieren, indem Sie Daten innerhalb von Azure Synapse Analytics verwenden.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB ist eine NoSQL-Datenbank in der Cloud. Sie können diese Datenbank verwenden, um mit Dokumenten wie JSON zu arbeiten und die Dokumente zu speichern und abzufragen.

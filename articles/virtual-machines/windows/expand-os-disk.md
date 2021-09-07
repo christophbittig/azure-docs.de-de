@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7bbea4fabcfce3a8f73045ab1f5071b7df0855b8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 74ce4cf27f8a8be8fd86bad3e3f03589cf3640ea
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670338"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600530"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
 
@@ -57,7 +57,7 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 5. Wählen Sie unter **Größe und Leistung** die gewünschte Datenträgergröße aus.
    
    > [!WARNING]
-   > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem arbeitet nur mit den ersten 2.048 GB.)
+   > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger liegt bei 4.095 GB. (Sie können auch ein größeres VHD-Blob verwenden, das Betriebssystem arbeitet jedoch nur mit den ersten 4.095 GB.)
    > 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Screenshot: Bereich „Größe und Leistung“ mit ausgewählter Datenträgergröße":::
@@ -105,7 +105,7 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
     Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
     ```   
     > [!WARNING]
-    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem arbeitet nur mit den ersten 2.048 GB.)
+    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger liegt bei 4.095 GB. (Sie können auch ein größeres VHD-Blob verwenden, das Betriebssystem arbeitet jedoch nur mit den ersten 4.095 GB.)
     > 
          
 6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:

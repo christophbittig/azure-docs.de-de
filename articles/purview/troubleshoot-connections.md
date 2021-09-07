@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/04/2021
-ms.openlocfilehash: 812c7871a6fd9501164530f0e9feee92f275426b
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 586c6988372d6ae6310367ba6a3c0c2f0fa4d9e0
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526486"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090545"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Problembehandlung für Ihre Verbindungen in Azure Purview
 
@@ -63,7 +63,7 @@ Wenn der öffentliche Endpunkt auf Ihre Datenquellen beschränkt ist, müssen Si
 > [!IMPORTANT]
 > Beim Überprüfen mehrerer Datenquellen, die Datenbanken wie etwa Azure SQL-Datenbank mit der Option _Zugriff auf öffentliches Netzwerk verweigern_ enthalten, tritt ein Fehler auf. Verwenden Sie zum Überprüfen dieser Datenquellen mithilfe eines privaten Endpunkts stattdessen die Option zum Registrieren einer einzelnen Datenquelle.
 
-Weitere Informationen zum Einrichten einer selbstgehosteten Integration Runtime finden Sie unter [Private Endpunkte für die Erfassung und das Überprüfen von Quellen in privaten Netzwerken, VNets und hinter privaten Endpunkten](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints).
+Weitere Informationen zum Einrichten einer selbstgehosteten Integration Runtime finden Sie unter [Bereitstellen einer selbstgehosteten Integration Runtime (IR) und Überprüfen Ihrer Datenquellen](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources).
 
 Weitere Informationen zum Erstellen neuer Anmeldeinformationen in Azure Purview finden Sie unter [Erstellen von Azure Key Vault-Verbindungen in Ihrem Azure Purview-Konto](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 

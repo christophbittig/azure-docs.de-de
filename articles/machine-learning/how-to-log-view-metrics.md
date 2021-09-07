@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: ce8fe90a88795c7c08708d6a77246d36f3079e4c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 4cb94dab1576e6fdb422fc640ae6edfdcdaad119
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889140"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446219"
 ---
 # <a name="log--view-metrics-and-log-files"></a>Protokollieren und Anzeigen von Metriken und Protokolldateien
 
@@ -38,7 +38,7 @@ Protokolle helfen bei der Diagnose von Fehlern und Warnungen und beim Nachverfol
 
 Sie können mehrere Datentypen protokollieren, einschließlich skalarer Werte, Listen, Tabellen, Images, Verzeichnisse und mehr. Weitere Informationen und Python-Codebeispiele für verschiedene Datentypen finden Sie auf der [Referenzseite für die Run-Klasse](/python/api/azureml-core/azureml.core.run%28class%29).
 
-### <a name="logging-run-metrics"></a>Protokollieren von Ausführungsmetriken 
+## <a name="logging-run-metrics"></a>Protokollieren von Ausführungsmetriken 
 
 Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken anzupassen. Beachten Sie die [Diensteinschränkungen](./resource-limits-quotas-capacity.md#metrics) für diese protokollierten Metriken. 
 
@@ -50,29 +50,43 @@ Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visual
 |Protokollieren einer Tabelle mit zwei numerischen Spalten|`run.log_table(name='Sine Wave', value=sines)`|Liniendiagramm mit zwei Variablen|
 |Protokollieren eines Bilds|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|Verwenden Sie diese Methode, um eine Bilddatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren. Diese Bilder sind in der Ausführungsaufzeichnung sicht- und vergleichbar.|
 
-### <a name="logging-with-mlflow"></a>Protokollieren mit MLflow
-Verwenden Sie MLFlowLogger zum Protokollieren von Metriken.
+## <a name="logging-with-mlflow"></a>Protokollieren mit MLflow
 
-```python
-from azureml.core import Run
-# connect to the workspace from within your running code
-run = Run.get_context()
-ws = run.experiment.workspace
+Es wird empfohlen, Ihre Modelle, Metriken und Artefakte mit MLflow zu protokollieren, da es sich um eine Open Source-Lösung handelt, die eine Portierung vom lokalen Modus zur Cloud unterstützt. Die folgende Tabelle und die Codebeispiele zeigen, wie Sie MLflow verwenden, um Metriken und Artefakte aus Ihren Trainingsläufen zu protokollieren. 
+[Erfahren Sie mehr über die Protokollierungsmethoden und Entwurfsmuster von MLflow](https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact).
 
-# workspace has associated ml-flow-tracking-uri
-mlflow_url = ws.get_mlflow_tracking_uri()
+Stellen Sie sicher, dass Sie die pip-Pakete `mlflow` und `azureml-mlflow` in Ihrem Arbeitsbereich installieren. 
 
-#Example: PyTorch Lightning
-from pytorch_lightning.loggers import MLFlowLogger
-
-mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
-mlf_logger._run_id = run.id
+```conda
+pip install mlflow
+pip install azureml-mlflow
 ```
 
-## <a name="view-run-metrics"></a>Anzeigen von Ausführungsmetriken
+Legen Sie den MLflow-Nachverfolgungs-URI so fest, dass er auf das Azure Machine Learning-Back-End verweist, um sicherzustellen, dass Ihre Metriken und Artefakte in Ihrem Arbeitsbereich protokolliert werden. 
 
-## <a name="via-the-sdk"></a>Über das SDK
-Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Betrachten Sie das folgende Beispiel. 
+```python
+from azureml.core import Workspace
+import mlflow
+from mlflow.tracking import MlflowClient
+
+ws = Workspace.from_config()
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
+
+mlflow.create_experiment("mlflow-experiment")
+mlflow.set_experiment("mlflow-experiment")
+mlflow_run = mlflow.start_run()
+```
+
+|Protokollierter Wert|Beispielcode| Notizen|
+|----|----|----|
+|Protokollierung eines numerischen Werts (int oder float) | `mlfow.log_metric('my_metric', 1)`| |
+|Protokollierung eines booleschen Werts | `mlfow.log_metric('my_metric', 0)`| 0 = True, 1 = False|
+|Protokollierung einer Zeichenfolge | `mlfow.log_text('foo', 'my_string')`| Protokollierung als Artefakt|
+|Protokollierung von numpy-Metriken oder PIL-Imageobjekten|`mlflow.log_image(img, 'figure.png')`||
+|Protokollierung von matlotlib-Plot oder Imagedatei|` mlflow.log_figure(fig, "figure.png")`||
+
+## <a name="view-run-metrics-via-the-sdk"></a>Anzeigen von Ausführungsmetriken über das SDK
+Mit `run.get_metrics()` können Sie die Metriken eines trainierten Modells anzeigen. 
 
 ```python
 from azureml.core import Run
@@ -80,16 +94,41 @@ run = Run.get_context()
 run.log('metric-name', metric_value)
 
 metrics = run.get_metrics()
-# metrics is of type Dict[str, List[float]] mapping mertic names
+# metrics is of type Dict[str, List[float]] mapping metric names
 # to a list of the values for that metric in the given run.
 
 metrics.get('metric-name')
 # list of metrics in the order they were recorded
 ```
 
+Sie können mithilfe von MLflow anhand der Daten- und Infoeigenschaften des Ausführungsobjekts auch auf Ausführungsinformationen zugreifen. Weitere Informationen finden Sie in der Dokumentation zum [MLflow.entities.Run-Objekt](https://mlflow.org/docs/latest/python_api/mlflow.entities.html#mlflow.entities.Run). 
+
+Nach Abschluss der Ausführung können Sie das Objekt mithilfe von MlFlowClient() abrufen.
+
+```python
+from mlflow.tracking import MlflowClient
+
+# Use MlFlow to retrieve the run that was just completed
+client = MlflowClient()
+finished_mlflow_run = MlflowClient().get_run(mlflow_run.info.run_id)
+```
+
+Sie können die Metriken, Parameter und Tags für die Ausführung im Datenfeld des Ausführungsobjekts anzeigen.
+
+```python
+metrics = finished_mlflow_run.data.metrics
+tags = finished_mlflow_run.data.tags
+params = finished_mlflow_run.data.params
+```
+
+>[!NOTE]
+> Das Metrikwörterbuch unter `mlflow.entities.Run.data.metrics` gibt nur den zuletzt protokollierten Wert für einen angegebenen Metriknamen zurück. Wenn Sie z. B. nacheinander den Wert 1, dann 2, dann 3 und dann 4 für eine Metrik mit dem Namen `sample_metric` protokollieren, enthält das Metrikwörterbuch für `sample_metric` nur den Wert 4 vorhanden.
+> 
+> Um alle für einen bestimmten Metriknamen protokollierten Metriken abzurufen, können Sie [`MlFlowClient.get_metric_history()`](https://www.mlflow.org/docs/latest/python_api/mlflow.tracking.html#mlflow.tracking.MlflowClient.get_metric_history) verwenden.
+
 <a name="view-the-experiment-in-the-web-portal"></a>
 
-## <a name="view-run-metrics-in-aml-studio-ui"></a>Anzeigen von Ausführungsmetriken in der AML Studio-Benutzeroberfläche
+## <a name="view-run-metrics-in-the-studio-ui"></a>Anzeigen von Ausführungsmetriken in der Studio-Benutzeroberfläche
 
 Sie können abgeschlossene Ausführungsaufzeichnungen, einschließlich protokollierter Metriken, in [Azure Machine Learning Studio](https://ml.azure.com) durchsuchen.
 

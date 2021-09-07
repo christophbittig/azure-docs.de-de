@@ -1,6 +1,6 @@
 ---
 title: Veröffentlichen Ihrer App im App-Katalog von Azure Active Directory
-description: Erfahren Sie, wie Sie eine Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog listen.
+description: Erfahren Sie, wie Sie eine Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog listen. Die Veröffentlichung im App-Katalog erleichtert Kunden das Auffinden und Hinzufügen Ihrer App zu ihrem Mandanten.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -8,20 +8,34 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/10/2021
+ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
-ms.custom: aaddev
-ms.openlocfilehash: ade77d05e209d65a9d7aa40451362bd66718cf75
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: aaddev, contperf-fy21q4
+ms.openlocfilehash: 7938e8ffbaca3f069016a445775d9c669f1ad144
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033325"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228066"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
-Sie können Ihre App im Azure AD-App-Katalog veröffentlichen. Wenn Ihre App veröffentlicht wurde, wird Sie als Option für Kunden angezeigt, die Apps zu ihrem Mandanten hinzufügen. 
+Sie können Ihre App im Azure Active Directory-App-Katalog (Azure AD) veröffentlichen. Wenn Ihre App veröffentlicht wurde, wird Sie Kunden als Option angezeigt, wenn sie [Apps zu ihrem Mandanten hinzufügen](../manage-apps/add-application-portal.md). 
+
+Folgende Schritte müssen Sie zum Veröffentlichen Ihrer App im Azure AD-App-Katalog ausführen:
+1. Voraussetzungen
+1. Wählen Sie für Ihre App den richtigen Standard für einmaliges Anmelden aus.
+1. Implementieren Sie einmaliges Anmelden in Ihrer App.
+1. Implementieren der SCIM-Benutzerbereitstellung in Ihrer App (optional)
+1. Erstellen Sie Ihren Azure-Mandanten, und testen Sie Ihre App.
+1. Erstellen und veröffentlichen Sie die Dokumentation.
+1. Übermitteln Sie Ihre App.
+1. Werden Sie Mitglied im Microsoft Partner Network.
+
+## <a name="what-is-the-azure-ad-application-gallery"></a>Was ist der Azure AD-Anwendungskatalog?
+
+Der [Azure AD-App-Katalog](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) ist ein Katalog mit Tausenden von Apps, die das Bereitstellen und Konfigurieren von SSO (Single Sign-On, einmaliges Anmelden) und der automatisierten Benutzerbereitstellung erleichtern.
 
 Das Hinzufügen Ihrer App zum Azure AD-Katalog bietet u. a. folgende Vorteile:
 
@@ -30,6 +44,7 @@ Das Hinzufügen Ihrer App zum Azure AD-Katalog bietet u. a. folgende Vorteile:
 - Eine schnelle Suche findet Ihre Anwendung im Katalog.
 - Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen.
 - Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration.
+- Kunden, die das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, [SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) verwenden, können die Bereitstellung für dieselbe App nutzen.
 
 Außerdem gibt es viele Vorteile, wenn Ihre Kunden Azure AD als Identitätsanbieter für Ihre App verwenden. Dazu zählen:
 
@@ -47,39 +62,18 @@ Außerdem gibt es viele Vorteile, wenn Ihre Kunden Azure AD als Identitätsanbi
 - Mit dem einmaligen Anmelden (SSO) von Azure AD und dem Verzicht auf die Eingabe separater Anmeldeinformationen erhöhen Sie Sicherheit und Benutzerfreundlichkeit, wenn sich Benutzer bei Ihren Anwendungen anmelden.
 
 > [!TIP]
-> Wenn Sie Ihre Anwendung per Kauf oder Abonnement für andere Unternehmen zur Nutzung anbieten, machen Sie die Anwendung für Kunden in deren eigenen Azure-Mandanten verfügbar. Sie erstellen also eine mehrinstanzenfähige Anwendung. Eine Übersicht über dieses Konzept finden Sie unter [Mehrinstanzenfähige Anwendungen in Azure](../../dotnet-develop-multitenant-applications.md) und [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md).
-
-> [!IMPORTANT]
-> Wenn Sie Ihre App im Azure AD-Katalog veröffentlichen möchten, müssen Sie den speziellen Geschäftsbedingungen zustimmen. Lesen Sie vor dem Start unbedingt die [Geschäftsbedingungen](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/), und erklären Sie sich mit diesen einverstanden.
-
-Folgende Schritte müssen Sie zum Veröffentlichen Ihrer App im Azure AD-App-Katalog ausführen:
-1. Wählen Sie für Ihre App den richtigen Standard für einmaliges Anmelden aus.
-2. Implementieren Sie einmaliges Anmelden in Ihrer App.
-3. Erstellen Sie Ihren Azure-Mandanten, und testen Sie Ihre App.
-4. Erstellen und veröffentlichen Sie die Dokumentation.
-5. Übermitteln Sie Ihre App.
-6. Werden Sie Mitglied im Microsoft Partner Network.
-
-## <a name="what-is-the-azure-ad-application-gallery"></a>Was ist der Azure AD-Anwendungskatalog?
-
-- Kunden finden so die bestmögliche Umgebung für einmaliges Anmelden.
-- Die Konfiguration der Anwendung ist einfach und in wenigen Schritten erledigt.
-- Eine schnelle Suche findet Ihre Anwendung im Katalog.
-- Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen.
-- Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration.
-- Kunden, die das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, [SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) verwenden, können die Bereitstellung für dieselbe App nutzen.
+> Wenn Sie Ihre Anwendung per Kauf oder Abonnement für andere Unternehmen zur Nutzung anbieten, machen Sie die Anwendung für Kunden in deren eigenen Azure-Mandanten verfügbar. Sie erstellen also eine mehrinstanzenfähige Anwendung. Eine Übersicht über dieses Konzept finden Sie unter [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie Ihre App im Azure AD-Katalog veröffentlichen möchten, müssen Sie den spezifischen [Geschäftsbedingungen](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/) zustimmen.
 
 Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern.
 
 - Bei Verbundanwendungen (OpenID und SAML/WS-Fed) muss die Anwendung das Software-as-a-Service-Modell (SaaS-Modell) für die Aufnahme in den Azure AD-App-Katalog unterstützen. Die Unternehmenskataloganwendungen müssen mehrere Kundenkonfigurationen und nicht einen bestimmten Kunden unterstützen.
-- Für OpenID Connect muss die Anwendung mehrinstanzenfähig sein, und das [Azure AD-Zustimmungsframework](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) muss für die Anwendung ordnungsgemäß implementiert werden. Der Benutzer kann die Anmeldeanforderung an einen gemeinsamen Endpunkt senden, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern.
+- Für OpenID Connect muss die Anwendung mehrinstanzenfähig sein, und das [Azure AD-Zustimmungsframework](../develop/consent-framework.md) muss für die Anwendung ordnungsgemäß implementiert werden. Der Benutzer kann die Anmeldeanforderung an einen gemeinsamen Endpunkt senden, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern.
 - Für SAML 2.0/WS-Fed muss Ihre Anwendung über eine Funktion zur SAML-/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Stellen Sie sicher, dass diese Funktion ordnungsgemäß funktioniert, bevor Sie die Anforderung senden.
 - Stellen Sie beim Kennwort-SSO sicher, dass Ihre Anwendung die Formularauthentifizierung unterstützt, sodass Kennworttresore verwendet werden können, damit einmaliges Anmelden wie erwartet funktioniert.
 - Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern.
-
-**Wie erhalte ich Azure AD für Entwickler?**
 
 Sie können ein kostenloses Testkonto mit allen Azure AD-Premiumfeatures erhalten. Dieses ist 90 Tage lang kostenlos und kann verlängert werden, solange Sie Entwicklungsaufgaben damit ausführen. Siehe hierzu [Teilnehmen am Microsoft 365-Entwicklerprogramm](/office/developer-program/microsoft-365-developer-program).
 
@@ -139,7 +133,7 @@ Informationen zu OAuth und OIDC finden Sie im [Leitfaden zu Authentifizierungsmu
 
 Für SAML und WS-Fed muss Ihre Anwendung über eine Funktion zur Integration des einmaligen Anmeldens im SP- oder IDP-Modus verfügen. Stellen Sie sicher, dass diese Funktion ordnungsgemäß funktioniert, bevor Sie die Anforderung senden.
 
-Weitere Informationen zur Authentifizierung finden Sie unter [Was ist die Authentifizierung?](../azuread-dev/v1-authentication-scenarios.md)
+Weitere Informationen zur Authentifizierung finden Sie unter [Was ist die Authentifizierung?](authentication-vs-authorization.md)
 
 > [!IMPORTANT]
 > Für Verbundanwendungen (OpenID und SAML/WS-Fed) muss die App das SaaS-Modell (Software as a Service) unterstützen. Anwendungen im Azure AD-Katalog müssen mehrere Kundenkonfigurationen unterstützen und sollten nicht nur für einen bestimmten Kunden ausgelegt sein.
@@ -296,6 +290,8 @@ Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis
 Das Auflisten einer OpenID Connect-Anwendung im Katalog dauert etwa 2 bis 5 Werktage.
 
 ![Zeitskala für das Auflisten einer OpenID Connect-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline2.png)
+
+Die Zeit bis zum Listing einer SCIM-Bereitstellungsanwendung im Katalog ist variabel und hängt von zahlreichen Faktoren ab. 
 
 ### <a name="escalations"></a>Eskalationen
 

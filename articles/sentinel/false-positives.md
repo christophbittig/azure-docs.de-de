@@ -6,16 +6,16 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 88886f46f028da19f5e5b75f42e5d96a09f2213a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1b13d49707402143c59078aa3e73cd93db1b10de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340120"
 ---
 # <a name="handle-false-positives-in-azure-sentinel"></a>Behandeln falsch positiver Ergebnisse in Azure Sentinel
 
-[Azure Sentinel-Analyseregeln](tutorial-detect-threats-built-in.md) benachrichtigen Sie, wenn in Ihrem Netzwerk etwas Verdächtiges auftritt. Keine Analyseregel ist perfekt, und Sie werden einige falsch positive Ergebnisse, die sich nicht vermeiden lassen, behandeln müssen. In diesem Artikel wird beschrieben, wie Sie falsch positive Ergebnisse entweder mithilfe der Automatisierung oder durch Ändern geplanter Analyseregeln behandeln können.
+[Azure Sentinel-Analyseregeln](detect-threats-built-in.md) benachrichtigen Sie, wenn in Ihrem Netzwerk etwas Verdächtiges auftritt. Keine Analyseregel ist perfekt, und Sie werden einige falsch positive Ergebnisse, die sich nicht vermeiden lassen, behandeln müssen. In diesem Artikel wird beschrieben, wie Sie falsch positive Ergebnisse entweder mithilfe der Automatisierung oder durch Ändern geplanter Analyseregeln behandeln können.
 
 ## <a name="false-positive-causes-and-prevention"></a>Ursachen und Prävention falsch positiver Ergebnisse
 
@@ -31,10 +31,10 @@ In diesem Artikel werden zwei Methoden zum Vermeiden falsch positiver Ergebnisse
 
 - Mit **Automatisierungsregeln** werden Ausnahmen erstellt, ohne die Analyseregeln zu ändern.
 - **Änderungen an geplanten Analyseregeln** ermöglichen detailliertere und dauerhafte Ausnahmen.
-  
+
 In der folgenden Tabelle sind die Merkmale der einzelnen Methoden beschrieben:
 
-  
+
 |Methode|Merkmal|
 |-|-|
 |**Automatisierungsregeln**|<ul><li>Können auf mehrere Analyseregeln angewendet werden.</li><li>Bieten ein Überwachungsprotokoll. Ausnahmen verhindern die Erstellung von Incidents. Warnungen werden jedoch weiterhin zu Überwachungszwecken aufgezeichnet.</li><li>Werden häufig von Analysten generiert.</li><li>Ermöglichen das Anwenden von Ausnahmen für einen begrenzten Zeitraum. Wartungsarbeiten können beispielsweise falsch positive Ergebnisse auslösen, die außerhalb des Wartungszeitraums echte Incidents wären.</li></ul>|
@@ -51,17 +51,17 @@ So fügen Sie eine Automatisierungsregel hinzu, um ein falsch positives Ergebnis
 1. Ändern Sie optional auf der Randleiste **Neue Automatisierungsregel erstellen** den Namen der neuen Regel, der die Ausnahme definieren soll, und verwenden Sie nicht einfach den Namen der Warnungsregel.
 1. Fügen Sie unter **Bedingungen** optional weitere **Namen von Analyseregeln** hinzu, auf die die Ausnahme angewendet werden soll.
 1. Auf der Randleiste werden jeweils die Entitäten im aktuellen Incident angezeigt, die möglicherweise das falsch positive Ergebnis verursacht haben. Übernehmen Sie die automatischen Vorschläge, oder ändern Sie diese, um die Ausnahme zu optimieren. Beispielsweise können Sie eine Bedingung für eine IP-Adresse so ändern, dass sie für ein ganzes Subnetz gilt.
-   
+
    :::image type="content" source="media/false-positives/create-rule.png" alt-text="Screenshot: Erstellen einer Automatisierungsregel für einen Incident in Azure Sentinel.":::
-   
+
 1. Nachdem Sie den Trigger definiert haben, können Sie den Vorgang fortsetzen und die Funktion der Regel definieren:
-   
+
    :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Screenshot: Beenden des Erstellens und Anwendens einer Automatisierungsregel in Azure Sentinel.":::
-   
+
    - Die Regel ist bereits so konfiguriert, dass sie den Incident schließt, der die Ausnahmekriterien erfüllt.
    - Sie können dem automatisch geschlossenen Incident einen Kommentar hinzufügen, in dem die Ausnahme erläutert wird. Sie können z. B. angeben, dass der Incident von einer bekannten Verwaltungsaktivität ausgelöst wurde.
    - Standardmäßig ist festgelegt, dass die Regel nach 24 Stunden automatisch abläuft. Dieser Ablauftermin entspricht möglicherweise Ihren Vorstellungen und verringert gleichzeitig die Wahrscheinlichkeit falsch negativer Fehler. Wenn die Ausnahme jedoch länger bestehen soll, legen Sie den **Regelablauf** auf einen späteren Zeitpunkt fest.
-   
+
 1. Wählen Sie **Anwenden** aus, um die Ausnahme zu aktivieren.
 
 > [!TIP]
@@ -75,7 +75,7 @@ Eine weitere Möglichkeit zum Implementieren von Ausnahmen ist das Ändern der A
 
 Um vorhandene Analyseregeln zu bearbeiten, wählen Sie im linken Navigationsmenü von Azure Sentinel **Automatisierung** aus. Wählen Sie die Regel aus, die Sie bearbeiten möchten, und wählen Sie dann unten rechts **Bearbeiten** aus, um den **Assistenten für Analyseregeln** zu öffnen.
 
-Ausführliche Anweisungen zum Verwenden des **Assistenten für Analyseregeln** zum Erstellen und Bearbeiten von Analyseregeln finden Sie im [Tutorial: Erstellen von benutzerdefinierten Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md).
+Ausführliche Anweisungen zum Verwenden des **Assistenten für Analyseregeln** zum Erstellen und Bearbeiten von Analyseregeln finden Sie unter [Erstellen von benutzerdefinierten Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
 
 Um in einer typischen Regelpräambel eine Ausnahme zu implementieren, können Sie eine Bedingung wie `where IPAddress !in ('<ip addresses>')` ziemlich am Anfang der Regelabfrage hinzufügen. Diese Zeile schließt bestimmte IP-Adressen aus der Regel aus.
 
@@ -145,7 +145,8 @@ let subnets = _GetWatchlist('subnetallowlist');
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
+- [Verwenden von UEBA-Daten zum Analysieren falsch positiver Ergebnisse](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [Automatisierung der Vorfallbehandlung in Azure Sentinel mit Automatisierungsregeln](automate-incident-handling-with-automation-rules.md)
-- [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md)
+- [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md)
 - [Verwenden von Azure Sentinel-Watchlists](watchlists.md)

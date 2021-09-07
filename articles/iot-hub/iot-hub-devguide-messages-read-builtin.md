@@ -2,21 +2,20 @@
 title: Grundlegendes zum integrierten Azure IoT Hub-Endpunkt | Microsoft-Dokumentation
 description: Entwicklerhandbuch – beschreibt, wie der integrierte, Event Hub-kompatible Endpunkt verwendet wird, um Nachrichten zu lesen, die von Geräten an die Cloud gesendet werden.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/16/2021
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: f98bf2cc4fb4946f6e4609db7a1428dd153cbc84
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: eb90f48c78e98284268806aa6f1698a94f57fb4c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787327"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355002"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -65,25 +64,36 @@ Zu den SDKs, die Sie für die Verbindung mit dem integrierten Event Hub-kompatib
 
 | Sprache | SDK | Beispiel |
 | -------- | --- | ------ |
-| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Schnellstart](quickstart-send-telemetry-dotnet.md) |
-| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Schnellstart](quickstart-send-telemetry-java.md) |
-| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Schnellstart](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | [Schnellstart](quickstart-send-telemetry-python.md) |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Schnellstart](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Schnellstart](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Schnellstart](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs) |
+| Python | https://pypi.org/project/azure-eventhub/ | [Schnellstart](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python) |
 
 Zu den Produktintegrationen, die Sie mit dem integrierten Event Hub-kompatiblen Endpunkt verwenden können, den der IoT Hub bereitstellt, gehören:
 
-* [Azure Functions](../azure-functions/index.yml). Weitere Informationen finden Sie unter [Verarbeiten von Daten von IoT Hub mit Azure Functions](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure Functions](../azure-functions/index.yml). Weitere Informationen finden Sie unter [Azure IoT Hub-Bindungen für Azure Functions](../azure-functions/functions-bindings-event-iot.md).
 * [Azure Stream Analytics](../stream-analytics/index.yml): Weitere Informationen finden Sie unter [Streamen von Daten als Eingabe in Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
 * [Time Series Insights](../time-series-insights/index.yml): Weitere Informationen finden Sie unter [Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung](../time-series-insights/how-to-ingest-data-iot-hub.md).
 * [Apache Storm-Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Sie können sich die [Spoutquelle](https://github.com/apache/storm/tree/master/external/storm-eventhubs) bei GitHub ansehen.
 * [Apache Spark-Integration](../hdinsight/spark/apache-spark-ipython-notebook-machine-learning.md).
 * [Azure Databricks](/azure/azure-databricks/):
 
+## <a name="use-amqp-ws-or-a-proxy-with-event-hubs-sdks"></a>Verwenden von AMQP-WS oder eines Proxys mit Event Hubs SDKs
+
+Sie können die Event Hubs SDKs verwenden, um in Umgebungen, in denen AMQP über WebSockets oder das Lesen über einen Proxy erforderlich ist, Daten aus dem integrierten Endpunkt zu lesen. Weitere Informationen finden Sie in den folgenden Beispielen:
+
+| Sprache | Beispiel |
+| -------- | ------ |
+| .NET | [ReadD2cMessages (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/ReadD2cMessages) |
+| Java | [read-d2c-messages (Java)](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+| Node.js | [read-d2c-messages (Node.js)](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+| Python | [read-dec-messages (Python)](https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu IoT Hub-Endpunkten finden Sie unter [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md).
 
-* In den [Schnellstarts](quickstart-send-telemetry-node.md) erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden und die Nachrichten über den integrierten Endpunkt lesen. 
+* In den [Schnellstarts](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs) erfahren Sie, wie Sie D2C-Nachrichten über simulierte Geräte senden und die Nachrichten über den integrierten Endpunkt lesen. 
 
 Ausführlichere Informationen finden Sie im Tutorial [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen](tutorial-routing.md).
 

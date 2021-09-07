@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 06/10/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: b54fcdc25e6278aa4e98eebde948b5f67525d080
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 2a77d4992d5ee2e505f9e3f29112d45c3776d8d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987855"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438760"
 ---
 # <a name="troubleshoot-blob-storage-issues-for-an-azure-stack-edge-device"></a>Behandeln von Blob Storage-Problemen für Azure Stack Edge-Geräte 
 
@@ -40,7 +40,7 @@ Dies sind die Fehler bezüglich Blob Storage auf Azure Stack Edge-Geräten.
 |Der Wert eines der HTTP-Header weist nicht das richtige Format auf.|Die installierte Version der Microsoft Azure Storage-Bibliothek für Python wird von Azure Stack Edge nicht unterstützt. Unterstützte Bibliotheksversionen finden Sie unter [Unterstützte Azure-Clientbibliotheken](azure-stack-edge-gpu-system-requirements-rest.md#supported-azure-client-libraries).|
 |… [SSL: CERTIFICATE_VERIFY_FAILED] …| Legen Sie vor dem Ausführen von Python die Umgebungsvariable REQUESTS_CA_BUNDLE auf den Pfad der Base64-codierten SSL-Zertifikatsdatei fest. (Weitere Informationen zum [Herunterladen des Zertifikats](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates).) Führen Sie zum Beispiel aus:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativ können Sie das Zertifikat dem Zertifikatspeicher des Systems hinzufügen und dann diese Umgebungsvariable auf den Pfad dieses Speichers festlegen. Beispiel für Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`|
 |Bei der Verbindung ist eine Zeitüberschreitung aufgetreten.|Melden Sie sich auf Ihrem Gerät an, und überprüfen Sie dann, ob es entsperrt ist. Bei jedem Neustart des Geräts bleibt es gesperrt, bis sich ein Benutzer anmeldet.|
-
+|Das Speicherkonto konnte nicht erstellt oder aktualisiert werden. Stellen Sie sicher, dass der Zugriffsschlüssel für Ihr Speicherkonto gültig ist. Aktualisieren Sie bei Bedarf den Schlüssel auf dem Gerät.|Synchronisieren Sie die Speicherkontoschlüssel. Führen Sie die [hier](azure-stack-edge-gpu-manage-storage-accounts.md#sync-storage-keys) beschriebenen Schritte aus.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

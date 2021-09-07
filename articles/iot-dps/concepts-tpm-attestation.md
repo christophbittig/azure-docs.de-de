@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning-Dienst – TPM-Nachweis
 description: Dieser Artikel enthält eine konzeptionelle Übersicht über den TPM-Nachweisfluss mithilfe des IoT Hub Device Provisioning-Diensts (Device Provisioning Service, DPS).
-author: nberdy
-ms.author: nberdy
-ms.date: 04/04/2019
+author: wesmc7777
+ms.author: wesmc
+ms.date: 06/21/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e670b0feabfe785712dc7140bcc594b770783e74
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531592"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457874"
 ---
 # <a name="tpm-attestation"></a>TPM-Nachweis
 
@@ -68,4 +68,5 @@ Das Gerät kann dann ein SAS-Token anhand der entschlüsselten Nonce signieren u
 Nun stellt das Gerät eine Verbindung mit IoT Hub her, und Sie können darauf vertrauen, dass Ihre Geräteschlüssel sicher aufbewahrt sind. Nachdem Sie nun erfahren haben, wie der Device Provisioning-Dienst die Identität eines Geräts mit TPM auf sichere Weise überprüft, lesen Sie die folgenden Artikeln, um weitere Informationen zu erhalten:
 
 * [Konzepte für die Bereitstellung](about-iot-dps.md#provisioning-process)
-* [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) unter Verwendung von SDKs für den Ablauf
+* [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) 
+* [Schnellstart: Registrieren eines TPM-Geräts bei IoT Hub Device Provisioning Service per Java Service SDK](./quick-enroll-device-tpm-java.md)

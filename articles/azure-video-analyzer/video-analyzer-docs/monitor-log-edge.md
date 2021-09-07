@@ -2,13 +2,13 @@
 title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung in Azure Video Analyzer.
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: d7f048aecd89d75ad7bff728bc8a4ddebc8f515a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7938a68272378cf592fff17be0c4dfef2ca0e3f3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386138"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604869"
 ---
 # <a name="monitor-and-log-on-iot-edge"></a>Überwachen und Protokollieren mit IoT Edge
 
@@ -392,31 +392,38 @@ Wie bei anderen IoT Edge-Modulen, können Sie außerdem [die Containerprotokolle
    * `MediaPipeline`: Detailprotokolle, die möglicherweise Einblicke bei der Problembehandlung geben können, etwa bei Problemen beim Herstellen einer Verbindung mit einer RTSP-fähigen Kamera.
    
 ### <a name="generating-debug-logs"></a>Generieren von Debugprotokollen
+In bestimmten Fällen müssen Sie möglicherweise ausführlichere Protokolle als die oben beschriebenen generieren, um den Azure-Support beim Beheben eines Problems zu unterstützen. So generieren Sie diese Protokolle:  
 
-In bestimmten Fällen müssen Sie möglicherweise ausführlichere Protokolle als die oben beschriebenen generieren, um den Azure-Support beim Beheben eines Problems zu unterstützen. So generieren Sie diese Protokolle:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
+1. Wählen Sie im linken Bereich die Option **IoT Edge** aus.
+1. Wählen Sie in der Liste der Geräte die ID des Zielgeräts aus.
+1. Wählen Sie oben im Bereich die Option **Module festlegen** aus.
 
-1. [Verknüpfen Sie den Modulspeicher mit dem Gerätespeicher](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) über `createOptions`. Wenn Sie eine [Vorlage für ein Bereitstellungsmanifest](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp/blob/master/src/edge/deployment.template.json) aus den Schnellstartanleitungen untersuchen, sehen Sie diesen Code:
+   ![Screenshot der Schaltfläche „Module festlegen“ im Azure-Portal](media/troubleshoot/set-modules.png)
 
-   ```json
-   "createOptions": {
-     …
-     "Binds": [
-       "/var/local/videoAnalyzer/:/var/lib/videoAnalyzer/"
-     ]
-    }
-   ```
+1. Suchen Sie im Abschnitt **IoT Edge Modules** nach **avaedge** und wählen Sie Letzteres aus.
+1. Wählen Sie **Zwilling der Modulkennung** aus. Ein bearbeitbarer Bereich wird geöffnet.
+1. Fügen Sie unter **desired key** das folgende Schlüssel-Wert-Paar hinzu:
 
-   Mit diesem Code schreibt das Edge-Modul Protokolle in den Gerätespeicherpfad `/var/local/videoAnalyzer/`. 
+   `"DebugLogsDirectory": "/var/lib/videoanalyzer/logs"`
 
- 1. Fügen Sie dem Modul die folgende `desired`-Eigenschaft hinzu:
+   > [!NOTE]
+   > Dieser Befehl bindet die Protokollordner zwischen dem Edge-Gerät und dem Container. Wenn Sie die Protokolle an einem anderen Speicherort auf dem Gerät sammeln möchten:
+   >
+   > 1. Erstellen Sie eine Bindung für den Speicherort des Debugprotokolls im Abschnitt **Binds**, wobei **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** und **$DEBUG_LOG_LOCATION** durch den von Ihnen gewünschten Speicherort ersetzt werden: `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+   > 2. Verwenden Sie den folgenden Befehl, wobei **$DEBUG_LOG_LOCATION** durch den im vorherigen Schritt verwendeten Speicherort ersetzt wird: `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`
 
-    `"debugLogsDirectory": "/var/lib/videoAnalyzer/debuglogs/"`
+1. Wählen Sie **Speichern** aus.
 
-Das Modul schreibt nun Debugprotokolle in einem binären Format in den Gerätespeicherpfad `/var/local/videoAnalyzer/debuglogs/`. Sie können diese Protokolle für den Azure-Support freigeben.
+Das Modul schreibt nun Debugprotokolle in einem binären Format in den Gerätespeicherpfad `/var/local/videoAnalyzer/debuglogs/`. Sie können diese Protokolle für den Azure-Support freigeben.  
+
+Sie können die Protokollsammlung beenden, indem Sie den Wert unter **Zwilling der Modulkennung** auf _NULL_ festlegen. Wechseln Sie zurück zur Seite **Zwilling der Modulkennung**, und aktualisieren Sie den folgenden Parameter wie folgt:
+
+   `"DebugLogsDirectory": ""`
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-Wenn Sie Fragen haben, finden Sie weitere Informationen in den [häufig gestellten Fragen zu Überwachung und Metriken](faq-edge.md#monitoring-and-metrics).
+Wenn Sie Fragen haben, finden Sie weitere Informationen in den [häufig gestellten Fragen zu Überwachung und Metriken](faq-edge.yml#monitoring-and-metrics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

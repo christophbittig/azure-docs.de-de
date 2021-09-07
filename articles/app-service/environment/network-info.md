@@ -7,14 +7,18 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0931d5668835229be858a8725fd1a2d90c81081d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997340"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432948"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
+
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 
 ## <a name="overview"></a>Übersicht ##
 
@@ -127,7 +131,7 @@ Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 - **Öffentliche IP-Adresse für eingehenden Datenverkehr**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
 - **Öffentliche IP-Adresse für ausgehenden Datenverkehr**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
 - **ILB IP-Adresse**: Die ILB-IP-Adresse ist nur in einer ILB-ASE vorhanden.
-- **Von der App zugewiesene IP-basierte SSL-Adressen**: Kann nur in einer externen ASE verwendet werden, wenn gleichzeitig auch IP-basiertes SSL konfiguriert ist.
+- **Von der App zugewiesene IP-basierte TLS/SSL-Adressen**: Können nur in einer externen ASE verwendet werden, wenn gleichzeitig auch die IP-basierte TLS/SSL-Bindung konfiguriert ist.
 
 All diese IP-Adressen sind über die ASE-Benutzeroberfläche im Azure-Portal sichtbar. Wenn Sie eine ILB-ASE verwenden, wird die IP der ILB angezeigt.
 

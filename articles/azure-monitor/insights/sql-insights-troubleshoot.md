@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 35aa53def1a72f98309e7616ce64194dd77c5a4d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 53940c21a96da9b763a0b2f25400fb13cbba7098
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331284"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119676"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>Problembehandlung für SQL Insights (Vorschauversion)
 Überprüfen Sie auf der Registerkarte **Profil verwalten** den Status des Überwachungscomputers, um Probleme mit der Datensammlung in SQL Insights zu behandeln. Mögliche Zustände:
@@ -85,7 +85,7 @@ Führen Sie den Telegraf-Dienst manuell mit dem folgenden Befehl aus, um die Feh
 
 ### <a name="mdsd-service-logs"></a>mdsd-Dienstprotokolle 
 
-Machen Sie sich mit den [aktuellen Einschränkungen](../agents/azure-monitor-agent-overview.md#current-limitations) für den Azure Monitor-Agent vertraut. 
+Sehen Sie sich die [Voraussetzungen](../agents/azure-monitor-agent-install.md#prerequisites) für den Azure Monitor-Agent an. 
 
 
 Dienstprotokolle:  

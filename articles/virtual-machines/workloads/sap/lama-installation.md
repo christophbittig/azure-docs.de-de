@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9eca2fe92109bcd91fe5943e53d1e18734401984
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: bebae71179153479d66891924ba2f7679838d8bc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814357"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112297043"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -132,9 +132,9 @@ Verbindung erfolgreich: Verbindung mit Microsoft-Cloud war erfolgreich. 7 Ressou
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>Bereitstellen eines neuen adaptiven SAP-Systems
 
-Sie können eine neue VM manuell bereitstellen oder eine Azure-Vorlage im [Schnellstartrepository](https://github.com/Azure/azure-quickstart-templates) verwenden. Das Repository enthält Vorlagen für [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver-Anwendungsserver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps) und die [Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Sie können diese Vorlagen auch verwenden, um neue Hosts beispielsweise als Teil einer Systemkopie/eines Systemklons bereitzustellen.
+Sie können eine neue VM manuell bereitstellen oder eine Azure-Vorlage im [Schnellstartrepository](https://github.com/Azure/azure-quickstart-templates) verwenden. Das Repository enthält Vorlagen für [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-ascs), [SAP NetWeaver-Anwendungsserver](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-apps) und die [Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-database). Sie können diese Vorlagen auch verwenden, um neue Hosts beispielsweise als Teil einer Systemkopie/eines Systemklons bereitzustellen.
 
-Es wird empfohlen, für alle VMs, die Sie mit SAP LaMa verwalten möchten, ein eigenes Subnetz und keine dynamischen IP-Adressen zu verwenden, um das „Stehlen“ von IP-Adressen zu verhindern, wenn neue VMs bereitgestellt werden, und SAP-Instanzen nicht vorbereitet sind.
+Wir empfehlen Ihnen, für alle VMs, die Sie mit SAP LaMa verwalten möchten, ein eigenes Subnetz und keine dynamischen IP-Adressen zu verwenden. So können Sie das „Stehlen“ von IP-Adressen verhindern, wenn neue VMs bereitgestellt werden, und SAP-Instanzen nicht entsprechend vorbereitet wurden.
 
 > [!NOTE]
 > Wenn möglich, entfernen Sie alle Erweiterungen der VM, da sie lange Laufzeiten beim Trennen von Datenträgern von einer VM verursachen können.
@@ -282,7 +282,7 @@ Australien, Osten; USA, Mitte; USA, Osten; USA, Osten 2, Europa, Norden; USA, S�
 
 #### <a name="network-requirements"></a>Netzwerkanforderungen
 
-ANF erfordert ein delegiertes Subnetz, das Teil desselben VNET wie bei den SAP-Servern sein muss. Hier ist ein Beispiel für solch eine Konfiguration.
+ANF erfordert ein delegiertes Subnetz, das Teil desselben VNET wie bei den SAP-Servern sein muss. Hier ist ein Beispiel für eine Konfiguration dieser Art angegeben.
 Dieser Bildschirm zeigt die Erstellung des VNET und des ersten Subnetzes:
 
 ![SAP LaMa – Erstellen eines virtuellen Netzwerks für Azure ANF ](media/lama/sap-lama-createvn-50.png)

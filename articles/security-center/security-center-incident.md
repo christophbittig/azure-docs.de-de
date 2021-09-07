@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e385dec04db44e88ef5759cf8e2391b19b77dccc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652105"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237522"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
@@ -39,11 +39,11 @@ In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen f
 
 1. Um die Details eines Incident anzuzeigen, wählen Sie einen Incident aus der Liste aus. Ein Seitenbereich mit weiteren Details des Incident wird angezeigt.
 
-    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Seitenbereich, in dem Details des Incident angezeigt werden":::
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Seitenbereich mit Details zum Incident":::
 
 1. Wenn Sie weitere Details anzeigen möchten, wählen Sie **Alle Informationen anzeigen** aus.
 
-    [![Reagieren auf Sicherheitsvorfälle in Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
+    [![Reagieren auf Sicherheitsincidents in Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
     Im linken Bereich der Seite mit dem Sicherheitsvorfall werden allgemeine Informationen über den Sicherheitsvorfall angezeigt: Titel, Schweregrad, Status, Zeitpunkt der Aktivität, Beschreibung und die betroffene Ressource. Neben der betroffenen Ressource sehen Sie die relevanten Azure-Tags. Verwenden Sie diese Tags, um den Organisationskontext der Ressource abzuleiten, wenn Sie die Warnung untersuchen.
 
@@ -52,7 +52,7 @@ In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen f
     >[!TIP]
     > Um weitere Informationen zu einer bestimmten Warnung zu erhalten, wählen Sie sie aus. 
 
-    [![Registerkarte „Maßnahmen ergreifen“ des Vorfalls](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
+    [![Registerkarte „Maßnahmen ergreifen“ des Incidents](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
 
     Um zur Registerkarte **Maßnahmen ergreifen** zu wechseln, wählen Sie die Registerkarte oder die Schaltfläche am unteren Rand des rechten Bereichs aus. Verwenden Sie diese Registerkarte, um weitere Aktionen durchzuführen, wie z. B:
     - *Auswirkungen der Bedrohung minimieren*: Stellt manuelle Schritte zur Behebung dieses Sicherheitsvorfalls bereit.

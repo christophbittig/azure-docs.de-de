@@ -2,22 +2,22 @@
 title: Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen, mithilfe von Azure AD
 description: Hier erfahren Sie, ob Gruppen- und Teambesitzer in Anwendungen einwilligen können, die Zugriff auf die Daten der Gruppe bzw. des Teams haben werden.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 46b6d91846b2498ce046da7a80bc3c9bc6110929
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076058"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567970"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
 
@@ -74,7 +74,7 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](/powershell/module/a
 
 1. Sie müssen die Einstellungswerte verstehen. Es gibt zwei Einstellungswerte, die definieren, welche Benutzer einer App Zugriff auf die Daten ihrer Gruppe gewähren dürfen:
 
-    | Einstellung       | Typ         | BESCHREIBUNG  |
+    | Einstellung       | type         | BESCHREIBUNG  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Boolean | Flag, das angibt, ob Gruppenbesitzer gruppenspezifische Berechtigungen erteilen dürfen. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Wenn _EnableGroupSpecificConsent_ auf TRUE und dieser Wert auf die Objekt-ID einer Gruppe festgelegt ist, werden die Mitglieder der identifizierten Gruppe autorisiert, den Gruppen, die Sie besitzen, gruppenspezifische Berechtigungen zu erteilen. |
@@ -113,6 +113,9 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](/powershell/module/a
 
 ---
 
+> [!NOTE]
+> Das Deaktivieren der Einstellung „Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten“ führt nicht zur Deaktivierung der Option „Benutzer können den Apps Zugriff auf Unternehmensdaten für Gruppen gewähren, für die sie als Besitzer fungieren.“.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen:
@@ -124,4 +127,5 @@ Weitere Informationen:
 * [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
+
 * [Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)

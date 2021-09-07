@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 77a01a270f47ddacb71962188e7fedd0a0a9f6d0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7377f0e296f571640aba35639972e66a60c6dd0f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790435"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444647"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind
 
-Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um zusätzliche Kontrolle über die Verschlüsselungsschlüssel zu erhalten, können Sie eigene Schlüssel verwalten. Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault oder im Key Vault Managed Hardware Security Model (HSM, Vorschau) gespeichert werden.
+Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um zusätzliche Kontrolle über die Verschlüsselungsschlüssel zu erhalten, können Sie eigene Schlüssel verwalten. Kundenseitig verwaltete Schlüssel müssen in Azure Key Vault oder in Azure Key Vault Managed HSM gespeichert werden.
 
-In diesem Artikel wird erläutert, wie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem Schlüsseltresor gespeichert sind, über das Azure-Portal, PowerShell oder die Azure CLI konfiguriert wird. Informationen zum Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem verwalteten HSM gespeichert sind, finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
+In diesem Artikel wird erläutert, wie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem Schlüsseltresor gespeichert sind, über das Azure-Portal, PowerShell oder die Azure CLI konfiguriert wird. Informationen zum Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in einem verwalteten HSM gespeichert sind, finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
 
 > [!NOTE]
 > Azure Key Vault und Azure Key Vault Managed HSM unterstützen dieselben APIs und Verwaltungsschnittstellen für die Konfiguration.

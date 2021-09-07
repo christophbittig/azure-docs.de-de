@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 0a08dfd1771ab0a8f866ffad1faa2c7d867b3072
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: f873bec75d0454aed2c6569a8f8dfaa7eaab9868
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075499"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350827"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -84,7 +84,7 @@ Wenn Sie den globalen Endpunkt eines regionsübergreifenden Lastenausgleichs fü
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>Statische IP
-Der regionsübergreifende Lastenausgleich verfügt über eine statische öffentliche IP-Adresse, wodurch sichergestellt wird, dass die IP-Adresse unverändert bleibt. Weitere Informationen zu statischen IP-Adressen finden Sie [hier](../virtual-network/public-ip-addresses.md#allocation-method).
+Der regionsübergreifende Lastenausgleich verfügt über eine statische öffentliche IP-Adresse, wodurch sichergestellt wird, dass die IP-Adresse unverändert bleibt. Weitere Informationen zu statischen IP-Adressen finden Sie [hier](../virtual-network/public-ip-addresses.md#ip-address-assignment).
 
 ### <a name="client-ip-preservation"></a>Client-IP-Beibehaltung
 Der regionsübergreifende Lastenausgleich ist ein Layer-4-Passthrough-Netzwerklastenausgleich. Dieses Passthrough-Verfahren behält die ursprüngliche IP-Adresse des Pakets bei.  Die ursprüngliche IP-Adresse ist für den Code verfügbar, der auf dem virtuellen Computer ausgeführt wird. Diese Beibehaltung ermöglicht Ihnen das Anwenden von Programmlogik, die für eine IP-Adresse spezifisch ist.
@@ -140,6 +140,8 @@ Der regionsübergreifende Lastenausgleich leitet den Datenverkehr an den entspre
 * Ein privater oder interner Lastenausgleich kann nicht dem Back-End-Pool des regionsübergreifenden Lastenausgleichs hinzugefügt werden. 
 
 * Regionsübergreifende IPv6-Front-End-IP-Konfigurationen werden nicht unterstützt. 
+
+* UDP-Datenverkehr wird für einen regionsübergreifenden Lastenausgleich nicht unterstützt. 
 
 * Zurzeit kann kein Integritätstest konfiguriert werden. Bei einem standardmäßigen Integritätstest werden alle 20 Sekunden automatisch Verfügbarkeitsinformationen zum regionalen Lastenausgleich abgerufen. 
 

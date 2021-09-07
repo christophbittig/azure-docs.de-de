@@ -11,29 +11,35 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: Absichtserkennung
-ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: c4a81c5f666b9cb42b642390ba79ca2a1bf7232b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210363"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710086"
 ---
 # <a name="what-is-intent-recognition"></a>Was ist die Absichtserkennung?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-In dieser Übersicht lernen Sie die Vorteile und Funktionen der Absichtserkennung kennen. Das Speech SDK von Cognitive Services ist in den Language Understanding Service (LUIS) integriert, um Absichtserkennung zu ermöglichen. Eine Absicht ist eine Aufgabe, die der Benutzer ausführen möchte: einen Flug buchen, sich über das Wetter informieren oder einen Anruf tätigen.
-Mithilfe der Absichtserkennung können Ihre Anwendungen, Tools und Geräte bestimmen, was der Benutzer basierend auf den in LUIS definierten Optionen initiieren oder tun möchte.
+In dieser Übersicht werden der Nutzen und die Funktionen der Absichtserkennung vorgestellt. Das Cognitive Services Speech SDK bietet zwei Möglichkeiten zum Erkennen von Absichten, die im Folgenden beschrieben werden. Eine Absicht ist eine Aufgabe, die der Benutzer ausführen möchte: einen Flug buchen, sich über das Wetter informieren oder einen Anruf tätigen. Mithilfe der Absichtserkennung können Ihre Anwendungen, Tools und Geräte basierend auf den in der Absichtserkennung oder in LUIS definierten Optionen bestimmen, was der Benutzer initiieren oder tun möchte.
 
-## <a name="luis-key-required"></a>LUIS-Schlüssel erforderlich
+## <a name="pattern-matching"></a>Musterabgleich
+Das SDK stellt einen eingebetteten Musterabgleich (Matcher) bereit, mit dem Sie Absichten sehr genau erkennen können. Dies ist hilfreich, wenn Sie eine schnelle Offlinelösung benötigen. Der Abgleich funktioniert besonders gut, wenn der Benutzer in irgendeiner Form geschult wird oder erwartet werden kann, dass er bestimmte Ausdrücke zum Auslösen von Absichten verwendet. Beispiele für solche Ausdrücke sind „Gehe in Etage sieben“, „Schalte die Lampe ein“ usw. Für den Anfang wird dieser Ansatz empfohlen. Wenn der Musterabgleich Ihre Anforderungen nicht mehr erfüllt, können Sie stattdessen LUIS oder eine Kombination aus LUIS und Musterabgleich verwenden. 
+
+## <a name="luis-language-understanding-intent-service"></a>LUIS (Language Understanding Intent Service)
+Der Microsoft LUIS-Dienst ist als vollständiger KI-Dienst für die Absichtserkennung verfügbar. Er funktioniert gut, wenn Ihre Domäne möglicher Absichten groß ist und Sie nicht sicher sind, was der Benutzer sagen wird. Er unterstützt viele komplexe Szenarien, Absichten und Entitäten.
+
+### <a name="luis-key-required"></a>LUIS-Schlüssel erforderlich
 
 * LUIS ist in Speech Service integriert, um Absichten aus Sprache zu erkennen. Ein Speech Service-Abonnement ist nicht erforderlich, nur LUIS.
-* Sprechabsichtserkennung ist in das SDK integriert. Sie können einen LUIS-Schlüssel mit dem Speech-Dienst verwenden.
-* Die Absichtserkennung durch das Speech SDK wird [für einen Teil der von LUIS unterstützten Regionen angeboten](./regions.md#intent-recognition).
+* Die Sprechabsichtserkennung ist in das Speech SDK integriert. Sie können einen LUIS-Schlüssel mit dem Speech-Dienst verwenden.
+* Die Absichtserkennung durch das Speech SDK wird [in einigen der von LUIS unterstützten Regionen angeboten](./regions.md#intent-recognition).
 
 ## <a name="get-started"></a>Erste Schritte
+Informationen zu den ersten Schritten mit dem Musterabgleich finden Sie in dieser [Schrittanleitung](how-to-use-simple-language-pattern-matching.md).
 
-Verwenden Sie den [Schnellstart](get-started-intent-recognition.md), um mit der Absichtserkennung zu beginnen.
+Informationen zu den ersten Schritten mit der LUIS-Absichtserkennung finden Sie in diesem [Schnellstart](get-started-intent-recognition.md).
 
 ## <a name="sample-code"></a>Beispielcode
 

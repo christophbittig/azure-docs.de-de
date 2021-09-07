@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4d725375cb964cb8bc2893f5f8365416e29e5541
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346391"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
@@ -125,7 +125,7 @@ Um ein Abrechnungsprofil erstellen zu können, müssen Sie ein **Besitzer des Ab
     |---------|---------|
     |Name     | Ein Anzeigename, über den Sie das Abrechnungsprofil im Azure-Portal einfach identifizieren können.  |
     |Auftragsnummer    | Eine optionale Auftragsnummer. Die Auftragsnummer wird in den für das Abrechnungsprofil generierten Rechnungen angezeigt. |
-    |Abrechnungsadresse   | Die Abrechnungsadresse wird in den für das Abrechnungsprofil generierten Rechnungen angezeigt. |
+    |Bill to  | Der Rechnungsempfänger wird auf den für das Abrechnungsprofil generierten Rechnungen angezeigt. |
     |Rechnung per E-Mail   | Aktivieren Sie das Feld „Rechnung per E-Mail“, um die Rechnungen für dieses Abrechnungsprofil per E-Mail zu erhalten. Wenn Sie sich nicht dafür anmelden, können Sie die Rechnungen im Azure-Portal anzeigen und herunterladen.|
 
 5. Klicken Sie auf **Erstellen**.
@@ -162,10 +162,6 @@ Nachdem Sie Ihr Abrechnungskonto entsprechend Ihren Anforderungen angepasst habe
 
 Wenn Sie bereits über Azure-Abonnements oder andere Produkte wie Azure Marketplace- und AppSource-Ressourcen verfügen, können Sie diese aus ihrem bisherigen Rechnungsabschnitt in einen anderen verschieben, um Ihre Kosten neu zu organisieren.
 
-> [!IMPORTANT]
->
-> Abonnements und andere Produkte können nur zwischen Rechnungsabschnitten verschoben werden, die zum selben Abrechnungsprofil gehören. Das Verschieben von Abonnements und Produkten über Rechnungsabschnitte in verschiedenen Abrechnungsprofilen hinweg wird nicht unterstützt.
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
@@ -174,11 +170,11 @@ Wenn Sie bereits über Azure-Abonnements oder andere Produkte wie Azure Marketpl
 
 3. Wenn Sie ein Abonnement mit einem neuen Rechnungsabschnitt verknüpfen möchten, wählen Sie auf der linken Seite des Bildschirms **Azure-Abonnements** aus. Wählen Sie für andere Produkte wie Azure Marketplace- und AppSource-Ressourcen **Laufende Gebühren** aus.
 
-   [![Screenshot der Option zum Ändern des Rechnungsabschnitts](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section.png#lightbox)
+   [![Screenshot der Option zum Ändern des Rechnungsabschnitts](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section-zoomed-in.png#lightbox)
 
 4. Klicken Sie auf der Seite auf das Auslassungszeichen (drei Punkte) für das Abonnement oder Produkt, das Sie mit einem neuen Rechnungsabschnitt verknüpfen möchten. Wählen Sie **Rechnungsabschnitt ändern** aus.
 
-5. Wählen Sie in der Dropdownliste den neuen Rechnungsabschnitt aus. In der Dropdownliste werden nur Rechnungsabschnitte angezeigt, die demselben Abrechnungsprofil wie der vorhandene Rechnungsbereich zugeordnet sind.
+5. Wählen Sie in der Dropdownliste das neue Abrechnungsprofil und den Rechnungsabschnitt aus.
 
     [![Screenshot der Auswahl eines neuen Rechnungsabschnitts](./media/mca-section-invoice/mca-select-new-invoice-section.png)](./media/mca-section-invoice/mca-select-new-invoice-section-zoomed-in.png#lightbox)
 

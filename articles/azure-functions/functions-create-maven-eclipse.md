@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: fb0cca1859a8e4fcc456bb3815f0e03f4f0311d1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3720ac243fd90be23c18f760977dc2a0d13e0412
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459399"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989109"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -51,7 +51,7 @@ Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactI
 > [Version 2 der Azure Functions Core Tools](functions-run-local.md#v2) muss installiert sein, damit Funktionen lokal ausgeführt und gedebuggt werden können.
 
 1. Klicken Sie mit der rechten Maustaste auf das generierte Projekt und wählen Sie **Run As** (Ausführen als) und **Maven build** (Maven-Build) aus.
-1. Geben Sie im Dialogfeld **Edit Configuration** (Konfiguration bearbeiten) `package` in die Felder **Goals** (Ziele) und **Name** (Name) ein, und wählen Sie dann **Run** (Ausführen) aus. Daraufhin wird der Funktionscode erstellt und verpackt.
+1. Geben Sie im Dialogfeld **Edit Configuration** (Konfiguration bearbeiten) den Text `package` in das Feld **Goals** (Ziele) ein, und wählen Sie anschließend **Run** (Ausführen) aus. Daraufhin wird der Funktionscode erstellt und verpackt.
 1. Sobald der Erstellungsvorgang abgeschlossen ist, erstellen Sie eine weitere Laufzeitkonfiguration wie oben beschrieben. Verwenden Sie dabei `azure-functions:run` als Ziel und Name. Wählen Sie **Run** (Ausführen) aus, um die Funktion in der IDE auszuführen.
 
 Beenden Sie die Laufzeit im Konsolenfenster, wenn Sie Ihre Funktion getestet haben. Es kann nicht mehr als ein Funktionshost gleichzeitig aktiv sein und lokal ausgeführt werden.

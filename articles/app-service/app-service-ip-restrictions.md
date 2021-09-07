@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 27bb3f163dc8f1a2f50e39ca5bbb5708419cb171
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: afadabb0503cde997858fce1ff9d1e82ac6d2f89
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073898"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679518"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Einrichten von Azure App Service-Zugriffseinschränkungen
 
@@ -95,7 +95,7 @@ Sie können Dienstendpunkte nicht nutzen, um den Zugriff auf Apps einzuschränke
 Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten (Web Application Firewall) konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md) und [Application Gateway-Integration mit Dienstendpunkten](networking/app-gateway-with-service-endpoints.md).
 
 > [!NOTE]
-> - Dienstendpunkte werden derzeit nicht für Web-Apps unterstützt, für die eine virtuelle IP (VIP) vom Typ „Secure Sockets Layer“ (SSL) genutzt wird.
+> - Dienstendpunkte werden derzeit nicht für Web-Apps unterstützt, für die IP-basierte TLS/SSL-Bindungen mit einer virtuellen IP (VIP) verwendet werden.
 >
 #### <a name="set-a-service-tag-based-rule"></a>Festlegen einer diensttagbasierten Regel
 

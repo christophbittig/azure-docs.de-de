@@ -1,21 +1,21 @@
 ---
-title: Vorbereitung einer Änderung der SSL-IP-Adresse
-description: Erfahren Sie, wie Sie vorgehen, wenn Ihre SSL-IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
+title: Vorbereiten einer Änderung der TLS/SSL-IP-Adresse
+description: Enthält eine Beschreibung der Vorgehensweise beim Ändern Ihrer TLS/SSL-IP-Adresse, damit Ihre App nach der Änderung weiterhin funktioniert.
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3712931f73463ec1a799f003b82197752a735136
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020958"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895281"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Vorbereitung auf eine Änderung der SSL-IP-Adresse
+# <a name="how-to-prepare-for-a-tlsssl-ip-address-change"></a>Vorbereiten auf eine Änderung der TLS/SSL-IP-Adresse
 
-Wenn Sie eine Benachrichtigung erhalten haben, dass die SSL-IP-Adresse Ihrer Azure App Service-App geändert wird, befolgen Sie die Anweisungen in diesem Artikel, um die vorhandene SSL-IP-Adresse freizugeben und eine neue zuzuweisen.
+Wenn Sie eine Benachrichtigung erhalten haben, dass die TLS/SSL-IP-Adresse Ihrer Azure App Service-App geändert wird, sollten Sie die Anleitung in diesem Artikel befolgen, um die vorhandene TLS/SSL-IP-Adresse freizugeben und eine neue zuzuweisen.
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Freigeben von SSL-IP-Adressen und Zuweisen neuer SSL-IP-Adressen
+## <a name="release-tlsssl-ip-addresses-and-assign-new-ones"></a>Freigeben von TLS/SSL-IP-Adressen und Zuweisen neuer TLS/SSL-IP-Adressen
 
 1.  Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 

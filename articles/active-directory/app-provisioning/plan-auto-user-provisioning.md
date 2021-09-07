@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9e58650a98539b815173040cf0e47c200045b2bb
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785023"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728496"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Planen einer automatischen Benutzerbereitstellung in Azure Active Directory
 
@@ -44,7 +44,7 @@ Die Aktivierung der automatischen Benutzerbereitstellung bietet die folgenden Ha
 
 ### <a name="licensing"></a>Lizenzierung
 
-Azure AD bietet die Self-Service-Integration einer beliebigen Anwendung mithilfe von Vorlagen im Anwendungskatalogmenü. Eine vollständige Liste der Lizenzanforderungen finden Sie auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure AD bietet die Self-Service-Integration einer beliebigen Anwendung mithilfe von Vorlagen im Anwendungskatalogmenü. Eine vollständige Liste der Lizenzanforderungen finden Sie auf der Seite [Preise für Azure Active Directory](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 #### <a name="application-licensing"></a>Anwendungslizenzierung
 

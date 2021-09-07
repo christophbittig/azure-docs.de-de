@@ -1,19 +1,19 @@
 ---
 title: Verwaltetes Datenträgerbursting
 description: Erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und virtuelle Azure-Computer.
-author: albecker1
-ms.author: albecker
-ms.date: 06/03/2021
+author: roygara
+ms.author: rogarana
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9fd7d892eea43edf71da212fdba8cc1ac11c798
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 6af3d66afe107bae470f4081407f2293fe04f0fb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528315"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356946"
 ---
 # <a name="managed-disk-bursting"></a>Verwaltetes Datenträgerbursting
 
@@ -31,8 +31,8 @@ Die folgenden Szenarien können von einem Bursting stark profitieren:
 
 Derzeit gibt es zwei verwaltete Datenträgertypen, für die Bursting möglich ist: [SSD Premium](disks-types.md#premium-ssd) und [SSD Standard](disks-types.md#standard-ssd). Für andere Datenträgertypen ist derzeit kein Bursting möglich. Es gibt zwei Burstingmodelle für Datenträger:
 
-- Ein bedarfsgesteuertes Burstingmodell (Vorschau), bei dem der Datenträger immer dann ein Bursting vornimmt, wenn die Anforderungen seine aktuelle Kapazität übersteigen. Bei diesem Modell fallen zusätzliche Gebühren beim Bursting auf dem Datenträger an. Nicht auf Guthaben basierendes Bursting ist nur auf Datenträgern mit einer Größe von mehr als 512 GiB verfügbar.
-- Ein auf Guthaben basierendes Modell, bei dem das Bursting auf dem Datenträger nur erfolgt, wenn Guthaben für das Bursting im Guthaben-Bucket akkumuliert wurde. Bei diesem Modell fallen keine zusätzlichen Gebühren an, wenn das Bursting auf dem Datenträger erfolgt. Das auf Guthaben basierende Bursting ist nur auf Datenträgern mit maximal 512 GiB verfügbar.
+- Ein bedarfsgesteuertes Burstingmodell (Vorschau), bei dem der Datenträger immer dann ein Bursting vornimmt, wenn die Anforderungen seine aktuelle Kapazität übersteigen. Bei diesem Modell fallen zusätzliche Gebühren beim Bursting auf dem Datenträger an. Bedarfsgesteuertes Bursting ist nur für Premium-SSDs verfügbar, die größer als 512 GiB sind.
+- Ein auf Guthaben basierendes Modell, bei dem das Bursting auf dem Datenträger nur erfolgt, wenn Guthaben für das Bursting im Guthaben-Bucket akkumuliert wurde. Bei diesem Modell fallen keine zusätzlichen Gebühren an, wenn das Bursting auf dem Datenträger erfolgt. Das guthabenbasierte Bursting ist nur für SSD-Datenträger vom Typ Premium und Standard mit maximal 512 GiB verfügbar.
 
 Bei Azure [SSD Premium](disks-types.md#premium-ssd) können Sie beide Burstingmodelle verwenden, bei [SSD Standard](disks-types.md#standard-ssd) ist derzeit jedoch nur das guthabenbasierte Bursting möglich.
 
@@ -42,12 +42,13 @@ Zusätzlich kann die [Leistungsstufe der verwalteten Datenträger geändert werd
 |---------|---------|---------|---------|
 | **Szenarios**|Ideal für die kurzfristige Skalierung (30 Minuten oder weniger).|Ideal für die kurzfristige Skalierung (keine Zeitbeschränkung).|Ideal, wenn Ihre Workload andernfalls ständig im Burstmodus ausgeführt werden würde.|
 |**Kosten**     |Kostenlos         |Die Kosten sind variabel. Weitere Informationen finden Sie im Abschnitt [Abrechnung](#billing).        |Die Kosten für die einzelnen Leistungsstufen sind festgelegt. Details finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).         |
-|**Verfügbarkeit**     |Nur verfügbar für SSD Premium-Datenträger mit 512 GiB und weniger.         |Nur verfügbar für SSD Premium-Datenträger, die größer als 512 GiB sind.         |Verfügbar für alle SSD Premium-Größen.         |
+|**Verfügbarkeit**     |Nur verfügbar für SSD-Datenträger vom Typ Premium und Standard mit maximal 512 GiB.         |Nur verfügbar für SSD Premium-Datenträger, die größer als 512 GiB sind.         |Verfügbar für alle SSD Premium-Größen.         |
 |**Aktivierung**     |Standardmäßig auf berechtigten Datenträgern aktiviert.         |Muss vom Benutzer aktiviert werden.         |Der Benutzer muss seine Leistungsstufe manuell ändern.         |
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Aktivieren des bedarfsgesteuerten Burstings finden Sie unter [Aktivieren des bedarfsgesteuerten Burstings](disks-enable-bursting.md).
-Wie Sie einen Einblick in Ihre Burstingressourcen erhalten, erfahren Sie unter [Metriken zum Datenträgerbursting](disks-metrics.md).
+- Informationen zum Aktivieren des bedarfsgesteuerten Burstings finden Sie unter [Aktivieren des bedarfsgesteuerten Burstings](disks-enable-bursting.md).
+- Wie Sie einen Einblick in Ihre Burstingressourcen erhalten, erfahren Sie unter [Metriken zum Datenträgerbursting](disks-metrics.md).
+- Genaue Informationen dazu, in welchem Umfang das Bursting für die einzelnen zulässigen Datenträgergrößen möglich ist, finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger](disks-scalability-targets.md).

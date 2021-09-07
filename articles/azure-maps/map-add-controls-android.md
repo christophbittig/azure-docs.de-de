@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b84150196467606800df737ba9c9d50c69346e30
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100218"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093587"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>Hinzufügen von Steuerelementen zu einer Karte (Android SDK)
 
@@ -126,7 +126,7 @@ Der folgende Screenshot zeigt ein Verkehrsinfo-Steuerelement, das auf einer Kart
 
 ## <a name="a-map-with-all-controls"></a>Eine Karte mit allen Steuerelementen
 
-Mehrere Steuerelemente können in einem Array platziert, der Karte in einem Durchgang hinzugefügt und im gleichen Bereich der Karte positioniert werden, um die Entwicklung zu vereinfachen. Nachfolgend werden mit diesem Ansatz der Karte die Standard-Navigationssteuerelemente hinzugefügt.
+Mehrere Steuerelemente können in einem Array platziert, der Karte in einem Durchgang hinzugefügt und im gleichen Bereich der Karte positioniert werden, um die Entwicklung zu vereinfachen. Im folgenden Code werden der Karte bei diesem Ansatz die Standard-Navigationssteuerelemente hinzugefügt.
 
 ::: zone pivot="programming-language-java-android"
 
@@ -158,7 +158,7 @@ map.controls.add(
 
 ::: zone-end
 
-Der folgende Screenshot zeigt alle auf einer Karte geladenen Steuerelemente. Beachten Sie, dass die Reihenfolge, in der sie der Karte hinzugefügt werden, der Reihenfolge entspricht, in der sie angezeigt werden.
+Der folgende Screenshot zeigt alle auf einer Karte geladenen Steuerelemente. Die Reihenfolge, in der sie der Karte hinzugefügt werden, entspricht der Anzeigereihenfolge.
 
 ![Alle der Karte hinzugefügten Steuerelemente](media/map-add-controls-android/android-all-controls.jpg)
 

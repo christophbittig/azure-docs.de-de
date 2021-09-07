@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: f56d1c305f5d18d82ae79781a7b60fd6b429357b
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 6344e83593509b2828b41b8e9074211aa83fc2d3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613816"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440190"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -22,8 +22,8 @@ ms.locfileid: "110613816"
 Dieser Artikel beschreibt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
 
 Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein Beispiel für ein [automatisiertes Bereitstellungsskript](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) zum Optimieren des Prozesses ausgeführt wird. 
-* Die manuellen CLI-Schritte, die das Skript im Hintergrund durchläuft, finden Sie in der CLI-Version dieses Artikels: [Verwenden Einrichten einer Instanz und Authentifizierung (CLI)](how-to-set-up-instance-cli.md) .
-* Eine Beschreibung der manuellen Schritte im Azure-Portal finden Sie in der Portalversion dieses Artikels: [Verwenden Einrichten einer Instanz und Authentifizierung (Portal)](how-to-set-up-instance-portal.md) .
+* Die manuellen CLI-Schritte, die das Skript im Hintergrund durchläuft, finden Sie in der CLI-Version dieses Artikels: [Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md).
+* Eine Beschreibung der manuellen Schritte im Azure-Portal finden Sie in der Portalversion dieses Artikels: [Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md).
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -126,7 +126,7 @@ Wenn die Überprüfung nicht erfolgreich war, können Sie Ihre eigene Rollenzuwe
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
 * [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
-* [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
+* [Befehlssatz der Azure Digital Twins-Befehlszeilenschnittstelle](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)
+* [Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

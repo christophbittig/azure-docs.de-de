@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/11/2020
+ms.date: 06/15/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0824a0947318172ec8094787f4fe01058f1a5e7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 2c50d62d5c8f24ed25258305411f9ed045098c7f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846132"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232829"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Zuweisen von Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -35,6 +35,8 @@ Azure Active Directory Privileged Identity Management (Azure AD PIM) kann sowohl
 > [!NOTE]
 > Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ für das Abonnement zugewiesen sind, sowie globale Azure AD-Administratoren, die die Abonnementverwaltung in Azure AD ermöglichen, haben standardmäßig Ressourcenadministratorberechtigungen. Diese Administratoren können Rollen zuweisen, Rolleneinstellungen konfigurieren und den Zugriff mithilfe von Privileged Identity Management für Azure-Ressourcen überprüfen. Ohne Ressourcenadministratorberechtigung kann ein Benutzer in Privileged Identity Management keine Ressourcen verwalten. Zeigen Sie die Liste der [integrierten Azure-Rollen](../../role-based-access-control/built-in-roles.md) an.
 
+Für Privileged Identity Management werden sowohl integrierte als auch benutzerdefinierte Azure-Rollen unterstützt. Weitere Informationen zu benutzerdefinierten Azure-Rollen finden Sie in [diesem Artikel](../../role-based-access-control/custom-roles.md).
+
 ## <a name="role-assignment-conditions"></a>Bedingungen für Rollenzuweisungen
 
 Sie können die Vorschauversion der attributbasierten Zugriffssteuerung von Azure (Azure ABAC) verwenden, um mithilfe von Privileged Identity Management (PIM) Ressourcenbedingungen für berechtigte Rollenzuweisungen zu platzieren. Mit PIM müssen Ihre Endbenutzer eine Rollenzuweisung vom Typ „berechtigt“ aktivieren, um die Berechtigung zum Ausführen bestimmter Aktionen zu erhalten. Mithilfe von Azure ABAC-Bedingungen in PIM können Sie nicht nur die Rollenberechtigungen eines Benutzers für eine Ressource mit differenzierten Bedingungen einschränken, sondern mithilfe von PIM auch die Rollenzuweisung mit einer zeitgebundenen Einstellung, einem Genehmigungsworkflow, einem Überwachungspfad usw. schützen. Weitere Informationen finden Sie unter [Attributbasierte Zugriffssteuerung von Azure (öffentliche Vorschau)](../../role-based-access-control/conditions-overview.md).
@@ -44,8 +46,6 @@ Sie können die Vorschauversion der attributbasierten Zugriffssteuerung von Azur
 Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Ressourcenrolle als „berechtigt“ festzulegen.
 
 1. Melden Sie sich mit den Rollenberechtigungen „Besitzer“ oder „Benutzerzugriffsadministrator“ beim [Azure-Portal](https://portal.azure.com/) an.
-
-    Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 

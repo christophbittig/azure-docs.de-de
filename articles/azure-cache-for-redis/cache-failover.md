@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 91c62faf53bd0a0f81322316e5225579eaa6ca9d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 69ddda7bd88218a3667b16bfdc9fa33aa5349ff6
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813047"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573938"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover und Patching für Azure Cache for Redis
 
@@ -78,12 +78,6 @@ Die Anzahl der von der Clientanwendung erkannten Fehler hängt davon ab, wie vie
 
 Die meisten Clientbibliotheken versuchen, erneut eine Verbindung mit dem Cache herzustellen, wenn sie entsprechend konfiguriert sind. Durch unvorhergesehene Fehler können die Bibliotheksobjekte jedoch gelegentlich in einen nicht wiederherstellbaren Zustand gesetzt werden. Wenn Fehler länger als eine vorkonfigurierte Zeitspanne andauern, sollte das Verbindungsobjekt neu erstellt werden. In Microsoft .NET und anderen objektorientierten Sprachen kann die Neuerstellung der Verbindung ohne Neustart der Anwendung durch Verwendung eines [Lazy\<T\>-Musters](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern) erreicht werden.
 
-### <a name="how-do-i-make-my-application-resilient"></a>Wie mache ich meine Anwendung resilient?
-
-Da Failover nicht vollständig vermieden werden können, müssen Sie Ihre Clientanwendungen so konfigurieren, dass sie für Verbindungsunterbrechungen und fehlerhafte Anforderungen resilient sind. Obwohl die meisten Clientbibliotheken automatisch erneut eine Verbindung mit dem Cacheendpunkt herstellen, versuchen nur wenige, fehlerhafte Anforderungen zu wiederholen. Je nach Anwendungsszenario ist es möglicherweise sinnvoll, Wiederholungslogik mit Backoff zu verwenden.
-
-Verwenden Sie zum Testen der Resilienz einer Clientanwendung einen [Neustart](cache-administration.md#reboot) als manuellen Auslöser für Verbindungsunterbrechungen. Außerdem wird empfohlen, dass Sie [Updates](cache-administration.md#schedule-updates) für einen Cache planen. Legen Sie für den Verwaltungsdienst fest, dass während der angegebenen wöchentlichen Zeitfenster Redis-Laufzeitpatches angewandt werden. Bei diesen Zeitfenstern handelt es sich normalerweise um Zeiträume, in denen der Datenverkehr der Clientanwendung gering ist.
-
 ### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Kann ich im Voraus über eine geplante Wartung informiert werden?
 
 Azure Cache for Redis veröffentlicht jetzt Benachrichtigungen auf einem Kanal mit Veröffentlichungs- und Abonnementarchitektur namens [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) etwa 30 Sekunden vor geplanten Aktualisierungen. Bei den Benachrichtigungen handelt es um Laufzeitbenachrichtigungen. Diese wurden speziell für Anwendungen entwickelt, die Leistungsschutzschalter verwenden können, um den Cache zu umgehen oder Befehle zu puffern, z. B. bei geplanten Updates. Es handelt sich nicht um einen Mechanismus, der Sie Tage oder Stunden im Voraus benachrichtigen kann.
@@ -96,6 +90,22 @@ Bestimmte Änderungen der clientseitigen Netzwerkkonfiguration können Fehler vo
 - Skalieren der Größe oder Anzahl der Instanzen der Anwendung
 
 Diese Änderungen können zu einem Verbindungsproblem führen, das weniger als eine Minute dauert. Möglicherweise wird dabei die Verbindung Ihrer Clientanwendung mit anderen externen Netzwerkressourcen sowie dem Azure Cache for Redis-Dienst getrennt.
+
+## <a name="build-in-resiliency"></a>Erstellen von Resilienz
+
+Failover lassen sich nicht ganz vermeiden. Schreiben Sie Ihre Clientanwendungen daher so, dass sie gegenüber Verbindungsunterbrechungen und nicht erfolgreichen Anforderungen resilient sind. Von den meisten Clientbibliotheken wird zwar automatisch erneut eine Verbindung mit dem Cacheendpunkt hergestellt, aber nur wenige versuchen, nicht erfolgreiche Anforderungen zu wiederholen. Je nach Anwendungsszenario ist es möglicherweise sinnvoll, Wiederholungslogik mit Backoff zu verwenden.
+
+### <a name="how-do-i-make-my-application-resilient"></a>Wie mache ich meine Anwendung resilient?
+
+Die folgenden Entwurfsmustern helfen Ihnen bei der Erstellung robuster Clients. Das gilt insbesondere für die Trennschalter- und Wiederholungsmuster:
+
+- [Resilienz](/azure/architecture/framework/resiliency/reliability-patterns#resiliency)
+- [Wiederholungsanleitung für Azure-Dienste](/azure/architecture/best-practices/retry-service-specific) (bewährte Methoden für Cloudanwendungen)
+- [Implementieren von Wiederholungen mit exponentiellem Backoff](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)
+
+Verwenden Sie zum Testen der Resilienz einer Clientanwendung einen [Neustart](cache-administration.md#reboot) als manuellen Auslöser für Verbindungsunterbrechungen.
+
+Darüber hinaus empfiehlt sich die [Planung von Updates](cache-administration.md#schedule-updates) für einen Cache, um Redis-Runtimepatches während bestimmter wöchentlicher Zeitfenster anzuwenden. Bei diesen Zeitfenstern handelt es sich normalerweise um Zeiträume, in denen der Datenverkehr der Clientanwendung gering ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Details zu den Netzwerkinformationen, die f
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c3b00a3d60db16c3b768494f8630587a16033d8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708882"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465797"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Details zur Netzwerkkonfiguration mit Azure Automation
 
@@ -36,7 +36,7 @@ Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind der zuvor defini
 
 Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren (z. B. [WaitFor*-Ressourcen](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)), müssen Sie auch Datenverkehr zwischen Knoten zulassen. Informationen zu diesen Netzwerkanforderungen finden Sie in der Dokumentation für die einzelnen DSC-Ressourcen.
 
-Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-for-azure-automation).
 
 ## <a name="update-management-and-change-tracking-and-inventory"></a>Updateverwaltung und „Änderungsnachverfolgung und Bestand“
 

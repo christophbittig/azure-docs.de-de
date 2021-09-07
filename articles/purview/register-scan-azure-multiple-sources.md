@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: ce78b36a07a0648e869a2a382554fdc41b408f96
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: ee5151b31e691b43d1d0df1694c636c3c35f9bc2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346925"
 ---
 # <a name="register-and-scan-multiple-sources-in-azure-purview"></a>Registrieren und überprüfen Sie mehrere Quellen in Azure Purview
 
@@ -59,7 +59,7 @@ Wie Sie Berechtigungen für jeden Ressourcentyp innerhalb eines Abonnements oder
 Um neue Mehrfachquellen in Ihrem Datenkatalog zu registrieren, gehen Sie wie folgt vor:
 
 1. Gehen Sie zu Ihrem Azure Purview-Konto.
-1. Wählen Sie **Quellen** im linken Menü aus.
+1. Wählen Sie im linken Menü **Data Map** aus.
 1. Wählen Sie **Registrieren**.
 1. Wählen Sie unter **Quellen registrieren** die Option **Azure (mehrere)** aus.
 
@@ -80,7 +80,7 @@ Um neue Mehrfachquellen in Ihrem Datenkatalog zu registrieren, gehen Sie wie fol
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Navigieren Sie zum **Quellen-** Abschnitt.
+1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
 1. Wählen Sie die von Ihnen registrierte Datenquelle aus.
 1. Wählen Sie **Details anzeigen** >  **+** Neue Überprüfung, oder verwenden Sie das Schnellaktionssymbol **Überprüfen** auf der Quellfläche.
 1. Geben Sie unter **Name** den Namen ein.
@@ -112,7 +112,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 ## <a name="view-your-scans-and-scan-runs"></a>Betrachten Sie Ihre Überprüfungen und Überprüfungsausführungen
 
-1. Zeigen Sie die Quellendetails an, indem Sie auf der Fläche unter dem Abschnitt **Quellen** die Option **Details** anzeigen auswählen. 
+1. Zeigen Sie Details zur Quelle an, indem Sie auf der Kachel unter dem Abschnitt **Data Map** die Option **Details anzeigen** auswählen. 
 
     :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="Screenshot, der die Quellendetails anzeigt."::: 
 

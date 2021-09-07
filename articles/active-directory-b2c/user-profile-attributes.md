@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 06/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 523212e0f63453e78967eb9a4716febb754ea5d6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 76a7fa3cfeafa20dd81f043d67388bdfb281b6d4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315271"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232519"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -88,6 +88,16 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|Datetime|Zeigt den Zeitstempel der letzten Änderung der „UserState“-Eigenschaft an.|Nein|Nein|Persistent, Ausgabe|
 
 <sup>1 </sup>Wird von Microsoft Graph nicht unterstützt<br><sup>2 </sup>Weitere Informationen finden Sie unter [MFA-Attribut „Telefonnummer“](#mfa-phone-number-attribute)<br><sup>3 </sup>Sollte mit Azure AD B2C nicht verwendet werden
+
+## <a name="required-attributes"></a>Erforderliche Attribute
+
+Geben Sie die folgenden erforderlichen Attribute an, um im Azure AD B2C-Verzeichnis ein Benutzerkonto zu erstellen: 
+
+- [Anzeigename](#display-name-attribute)
+
+- [Identitäten](#display-name-attribute): Mindestens eine vorhandene Entität (lokales oder Verbundkonto).
+
+- [Kennwortprofil](#password-policy-attribute): Geben Sie das Kennwortprofil an, wenn Sie ein lokales Konto erstellen.
 
 ## <a name="display-name-attribute"></a>Anzeigenamenattribut
 

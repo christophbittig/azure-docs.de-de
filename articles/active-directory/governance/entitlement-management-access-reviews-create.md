@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34223e44ddfb59a72f98d31f0df5d9a882e0eb
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713592"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565717"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Erstellen einer Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -53,16 +53,22 @@ Mit dieser Einstellung wird festgelegt, wie oft Zugriffsüberprüfungen erfolgen
 
 1. Legen Sie die **Dauer** fest, um zu definieren, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Sie können beispielsweise eine jährliche Überprüfung planen, die am 1. Januar beginnt und 30 Tage lang zur Überprüfung geöffnet ist, sodass Prüfer bis zum Ende des Monats Zeit für die Bearbeitung haben.
 
-1. Wählen Sie neben **Prüfer** die Option **Selbstüberprüfung** aus, wenn Sie möchten, dass Benutzer ihre eigene Zugriffsüberprüfung durchführen, oder wählen Sie **Bestimmte Prüfer** aus, wenn Sie einen Prüfer angeben möchten.
+1. Wählen Sie neben **Prüfer** die Option **Selbstüberprüfung** aus, wenn Sie möchten, dass Benutzer ihre eigene Zugriffsüberprüfung durchführen, oder wählen Sie **Bestimmte Prüfer** aus, wenn Sie einen Prüfer angeben möchten. Sie können auch **Verwalter** auswählen, wenn Sie den Verwalter des Überprüften als Prüfer festlegen möchten. Wenn Sie diese Option auswählen, müssen Sie ein **Fallback** hinzufügen, an das die Überprüfung weitergeleitet wird, falls der Verwalter nicht im System gefunden werden kann.
 
-    ![„Prüfer hinzufügen“ auswählen](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
+1. Wenn Sie **Bestimmte Prüfer** ausgewählt haben, geben Sie an, welche Benutzer die Zugriffsüberprüfung durchführen sollen: ![Auswählen von „Prüfer hinzufügen“](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. Wenn Sie **Bestimmte Prüfer** ausgewählt haben, geben Sie an, welche Benutzer die Zugriffsüberprüfung durchführen sollen:
     1. Wählen Sie **Prüfer hinzufügen** aus.
     1. Suchen Sie im Bereich **Prüfer auswählen** nach dem/den Benutzer(n), den/die Sie als Prüfer festlegen möchten, und wählen Sie diese(n) aus.
     1. Klicken Sie nach der Auswahl des/der gewünschten Prüfer(s) auf die Schaltfläche **Auswählen**.
 
     ![Prüfer angeben](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
+
+1. Wenn Sie  **Verwalter** ausgewählt haben, geben Sie den Fallbackprüfer an: 
+    1. Wählen Sie **Add fallback reviewers** (Fallbackprüfer hinzufügen) aus.
+    1. Suchen Sie im Bereich „Select fallback reviewers“ (Fallbackprüfer auswählen) nach den Benutzern, die Fallbackprüfer für den Verwalter des Überprüften sein sollen, und wählen Sie sie aus.
+    1. Klicken Sie nach der Auswahl der gewünschten Fallbackprüfer auf die Schaltfläche  **Auswählen**. 
+
+    ![Hinzufügen der Fallbackprüfer](./media/entitlement-management-access-reviews/access-reviews-select-manager.png)
 
 1. Klicken Sie unten auf der Seite auf **Überprüfen und erstellen**, wenn Sie ein neues Zugriffspaket erstellen, oder klicken Sie auf **Aktualisieren**, wenn Sie ein Zugriffspaket bearbeiten.
 

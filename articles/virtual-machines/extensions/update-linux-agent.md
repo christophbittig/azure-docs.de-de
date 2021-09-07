@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 08/02/2017
-ms.openlocfilehash: a274435d6e0fc32bdf5b2ab04702ed971d7c5175
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da94bc47a5d7796e0b13bcdaa0dc5e30db55722c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558983"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445862"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Vorgehensweise zum Aktualisieren des Azure Linux-Agents auf einer VM
 
@@ -397,7 +397,7 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2. Installieren des Azure Linux-Agents
 
-Verwenden Sie für Version 2.2.x Folgendes: Möglicherweise müssen Sie zuerst das Paket `setuptools` installieren (weitere Informationen finden Sie [hier](https://pypi.python.org/pypi/setuptools)). Führen Sie dann Folgendes aus:
+Verwenden Sie für Version 2.2.x Folgendes: (Unter Umständen müssen Sie zuerst das Paket `setuptools` installieren. Weitere Informationen finden Sie unter [setuptools](https://pypi.python.org/pypi/setuptools).) Führen Sie dann Folgendes aus:
 
 ```bash
 sudo python setup.py install

@@ -2,17 +2,15 @@
 title: Diagnose- und Lösungstool
 description: Erfahren Sie, wie Sie Probleme mit Ihrer App in Azure App Service mit dem Diagnose- und Lösungstool im Azure-Portal beheben können.
 keywords: App Service, Azure App Service, Diagnose, Unterstützung, Web-App, Problembehandlung, Selbsthilfe
-author: jen7714
 ms.topic: article
 ms.date: 10/18/2019
-ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf044baf233c159ff271221522f0f9faf15cc1ed
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962807"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451586"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -28,7 +26,7 @@ Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Servic
 
 Navigieren Sie für Azure Functions zu Ihrer Funktions-App, klicken Sie im oberen Navigationsbereich auf **Plattformfeatures**, und wählen Sie **Diagnose und Problembehandlung** im Abschnitt **Ressourcenverwaltung** aus.
 
-Auf der Startseite der App Service-Diagnose können Sie mithilfe der Schlüsselwörter auf den einzelnen Kacheln der Startseite die Kategorie auswählen, die auf das Problem mit Ihrer App am ehesten zutrifft. Außerdem finden Sie auf dieser Seite **Diagnosetools** für Windows-Apps. Weitere Informationen finden Sie unter [Diagnosetools (nur für Windows-Apps)](#diagnostic-tools-only-for-windows-app).
+Auf der Startseite der App Service-Diagnose können Sie mithilfe der Schlüsselwörter auf den einzelnen Kacheln der Startseite die Kategorie auswählen, die auf das Problem mit Ihrer App am ehesten zutrifft. Außerdem finden Sie auf dieser Seite **Diagnosetools**. Siehe [Diagnosetools](#diagnostic-tools).
 
 ![Startseite](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
@@ -83,21 +81,23 @@ Wenn innerhalb der letzten 24 Stunden ein Problem einer bestimmten Kategorie er
 
 ![Application Insights, Problembehandlung und nächste Schritte](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
 
-## <a name="diagnostic-tools-only-for-windows-app"></a>Diagnosetools (nur für Windows-Apps)
+## <a name="diagnostic-tools"></a>Diagnosetools 
 
 Diagnosetools umfassen erweiterte Diagnosetools, mit denen Sie Probleme mit dem Anwendungscode, langsame Ausführung, Verbindungszeichenfolgen und vieles mehr untersuchen können. Darüber hinaus sind proaktive Tools enthalten, mit denen Sie Probleme mit der CPU-Auslastung, mit Anforderungen und dem Speicher beheben können.
 
-### <a name="proactive-cpu-monitoring"></a>Proaktive CPU-Überwachung
+### <a name="proactive-cpu-monitoring-only-for-windows-app"></a>Proaktive CPU-Überwachung (nur für Windows-Apps)
 
 Die proaktive CPU-Überwachung stellt eine einfache und proaktive Möglichkeit für Sie dar, mit einer Aktion einzugreifen, wenn eine App oder ein untergeordneter Prozess der App CPU-Ressourcen in hohem Maße auslastet. Sie können eigene Regeln für den CPU-Schwellenwert festlegen, um eine hohe CPU-Auslastung vorübergehend zu beheben, bis die tatsächliche Ursache für das unerwartete Problem gefunden wird. Weitere Informationen finden Sie unter [Behandeln von CPU-Problemen, bevor sie auftreten](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktive CPU-Überwachung](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
-### <a name="auto-healing-and-proactive-auto-healing"></a>Automatische Reparatur und proaktive automatische Reparatur
+### <a name="auto-healing"></a>Automatische Reparatur 
 
-Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben. Weitere Informationen finden Sie unter [Announcing the new auto healing experience in app service diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) (Bekanntgabe der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose).
+Die automatische Reparatur ist eine Abhilfemaßnahme, die Sie durchführen können, wenn Ihre App ein unerwartetes Verhalten aufweist. Sie können eigene Regeln basierend auf der Anzahl der Anforderungen, langsamen Anforderungen, dem Speicherlimit und dem HTTP-Statuscode festlegen, um Abhilfeaktionen auszulösen. Verwenden Sie das Tool, um ein unerwartetes Verhalten vorübergehend einzudämmen, bis Sie die Ursache gefunden haben. Das Tool steht derzeit nur für Windows-Web-Apps, Linux-Web-Apps und benutzerdefinierte Linux-Container zur Verfügung. Unterstützte Bedingungen und Entschärfungen variieren je nach Typ der Web-App. Weitere Informationen finden Sie unter [Ankündigung der neuen Funktion zur automatischen Reparatur in der App Service-Diagnose](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html) und unter [Ankündigung der automatischen Reparatur für Linux](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html).
 
 ![Automatische Reparatur](./media/app-service-diagnostics/auto-healing-10.png)
+
+### <a name="proactive-auto-healing-only-for-windows-app"></a>Proaktive automatische Reparatur (nur für Windows-Apps)
 
 Wie die proaktive CPU-Überwachung ist die proaktive automatische Reparatur eine einfache Lösung, unerwartetes Verhalten Ihrer App in den Griff zu bekommen. Die proaktive automatische Reparatur startet Ihre App neu, wenn App Service feststellt, dass sie sich in einem nicht wiederherstellbaren Zustand befindet. Weitere Informationen finden Sie in der [Einführung in die proaktive automatische Reparatur](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 07/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339922"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -58,7 +58,7 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
    * Wenn der Dienst für Rückschreiben nicht aktiv ist, wird dem Benutzer mitgeteilt, dass sein Kennwort derzeit nicht zurückgesetzt werden kann.
 1. Im nächsten Schritt muss der Benutzer sich erfolgreich authentifizieren und gelangt dann zur Seite **Kennwort zurücksetzen**.
 1. Der Benutzer wählt ein neues Kennwort aus und bestätigt es.
-1. Wenn der Benutzer **Senden** auswählt, wird das Klartextkennwort mit einem symmetrischen Schlüssel verschlüsselt, der beim Einrichten des Kennwortrückschreibens erstellt wurde.
+1. Wenn der Benutzer **Senden** auswählt, wird das Klartextkennwort mit einem öffentlichen Schlüssel verschlüsselt, der beim Einrichten des Kennwortrückschreibens erstellt wurde.
 1. Das verschlüsselte Kennwort wird in eine Nutzlast eingeschlossen, die über einen HTTPS-Kanal an Ihr mandantenspezifisches Service Bus Relay gesendet wird (dieses wurde beim Einrichten der Kennwortrückschreibung festgelegt). Dieses Relay wird durch ein zufällig generiertes Kennwort geschützt, das nur der lokalen Installation bekannt ist.
 1. Sobald die Nachricht den Service Bus erreicht hat, wird der Endpunkt für die Kennwortzurücksetzung automatisch aktiviert, und der Endpunkt erkennt, dass eine Anforderung zur Zurücksetzung aussteht.
 1. Der Dienst sucht dann nach dem Benutzer, indem er das Cloudankerattribut verwendet. Damit die Suche erfolgreich ist, müssen die folgenden Bedingungen erfüllt sein:

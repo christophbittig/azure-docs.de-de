@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7c3459d5df540304b0595ac6aacf039c558d6c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6f40b395bffabd089831a7a827a4ab81e216727c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094652"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339434"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory
 
@@ -43,9 +43,9 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
 - Zuweisen einzelner Benutzer aus einem Benutzerprofil:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
+   1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
-   1. Wählen Sie **Benutzer** und dann zum Öffnen des Benutzerprofils den Benutzer aus, der einer Verwaltungseinheit zugewiesen werden soll.
+   1. Wählen Sie **Azure Active Directory** > **Benutzer** und zum Öffnen des Benutzerprofils anschließend den Benutzer aus, der einer Verwaltungseinheit zugewiesen werden soll.
    
    1. Wählen Sie **Verwaltungseinheiten** aus. 
    
@@ -55,17 +55,19 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
 - Zuweisen einzelner Benutzer aus einer Verwaltungseinheit:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
-   1. Wählen Sie **Verwaltungseinheiten** und dann die Verwaltungseinheit aus, für die der Benutzer zugewiesen werden sollen.
+   1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+   1. Wählen Sie **Azure Active Directory** > **Verwaltungseinheiten** und dann die Verwaltungseinheit aus, der der Benutzer zugewiesen werden sollen.
+
    1. Wählen Sie **Alle Benutzer**, **Mitglied hinzufügen** und dann im Bereich **Mitglied hinzufügen** einen oder mehrere Benutzer aus, die Sie der Verwaltungseinheit zuweisen möchten.
 
         ![Screenshot: Bereich „Benutzer“ der Verwaltungseinheit zum Zuweisen eines Benutzers zu einer Verwaltungseinheit](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
 - Zuweisen von Benutzern per Massenvorgang:
 
-   1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) an.
+   1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
-   1. Wählen Sie **Verwaltungseinheiten** aus.
+   1. Wählen Sie **Azure Active Directory** > **Verwaltungseinheiten** aus.
 
    1. Wählen Sie die Verwaltungseinheit aus, der Sie Benutzer hinzufügen möchten.
 

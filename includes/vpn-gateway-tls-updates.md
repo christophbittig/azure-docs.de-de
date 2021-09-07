@@ -1,19 +1,19 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 07/30/2018
+ms.date: 06/15/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e4d20cd39d2a843ee1ab57a412ac668b3495fdb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b77128033cbe0f99023dbee8a5a15e06820399b1
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "67177915"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112255014"
 ---
 >[!NOTE]
 >Ab dem 1. Juli 2018 wird die Unterstützung für TLS 1.0 und 1.1 vom Azure-VPN-Gateway entfernt. Das VPN-Gateway unterstützt dann nur noch TLS 1.2. Informationen zum Beibehalten der Unterstützung finden Sie unter [Updates zum Ermöglichen der Unterstützung von TLS 1.2](#tls1).
@@ -25,6 +25,6 @@ Die folgenden älteren Algorithmen werden ebenfalls am 1. Juli 2018 für TLS als
 * 3DES (Triple Data Encryption Algorithm)
 * MD5 (Message Digest 5)
 
-### <a name="how-do-i-enable-support-for-tls-12-in-windows-7-and-windows-81"></a><a name="tls1"></a>Wie aktiviere ich Unterstützung für TLS 1.2 unter Windows 7 und Windows 8.1?
+### <a name="how-do-i-enable-support-for-tls-12-in-windows-81"></a><a name="tls1"></a>Wie aktiviere ich Unterstützung für TLS 1.2 unter Windows 8.1?
 
 [!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

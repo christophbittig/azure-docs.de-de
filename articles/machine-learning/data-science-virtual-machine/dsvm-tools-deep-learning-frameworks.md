@@ -6,16 +6,16 @@ keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für D
 services: machine-learning
 ms.service: data-science-vm
 ms.custom: devx-track-python
-author: timoklimmer
-ms.author: tklimmer
+author: michalmar
+ms.author: mimarusa
 ms.topic: conceptual
-ms.date: 05/12/2021
-ms.openlocfilehash: 3272c2584d03c6f13d2ffb85eb0b37bf3c29000a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: a757151d17456c7ee9646bc0730a51f34088b255
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081620"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729187"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Deep Learning- und KI-Frameworks für Azure Data Science VM
 Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
@@ -53,16 +53,16 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 | Category | Wert |
 |--|--|
-| Unterstützte Versionen | 1.8.1 (Ubuntu 18.04, Windows 2019) |
+| Unterstützte Versionen | 1.9.0 (Ubuntu 18.04, Windows 2019) |
 | Unterstützte DSVM-Editionen | Windows Server 2019<br>Ubuntu 18.04 |
-| Konfiguration/Installation auf der DSVM | Installation in Python, Conda-Umgebung „py38_pytorch“ |
+| Konfiguration/Installation auf der DSVM | Installation in Python, Conda-Umgebungen „py38_default“, „py38_pytorch“ |
 | Zur Ausführung | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Stellen Sie eine Verbindung her, und öffnen Sie dann das PyTorch-Verzeichnis für Beispiele. |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 | Category | Wert |
 |--|--|
-| Unterstützte Versionen | 2.4 |
+| Unterstützte Versionen | 2.5 |
 | Unterstützte DSVM-Editionen | Windows Server 2019<br>Ubuntu 18.04 |
-| Konfiguration/Installation auf der DSVM | Installation in Python, Conda-Umgebung „py38_tensorflow“ |
+| Konfiguration/Installation auf der DSVM | Installation in Python, Conda-Umgebungen „py38_default“, „py38_tensorflow“ |
 | Zur Ausführung | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus. <br/> * Jupyter: Stellen Sie eine Verbindung mit [Jupyter](provision-vm.md) oder [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) her, und öffnen Sie dann das TensorFlow-Verzeichnis für Beispiele. |

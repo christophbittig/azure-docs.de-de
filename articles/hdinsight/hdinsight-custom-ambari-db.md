@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 0d5b67bb25f6f2425016824e5b73783a8db8e806
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d2ab2609338daff846797834be7694a8b1f220e6
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072152"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600937"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Einrichten von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank
 
@@ -62,19 +62,25 @@ az deployment group create --name HDInsightAmbariDBDeployment \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="database-sizing"></a>Festlegen der Datenbankgröße
+
+> [!WARNING]
+> Verwenden Sie für Ihren HDInsight-Cluster die folgende empfohlene SQL-Datenbank und Hauptknoten-VM. Verwenden Sie die Ambari-Standarddatenbank (S0) nicht für Produktionsumgebungen. 
+>
+
+
+## <a name="database-and-headnode-sizing"></a>Dimensionierung von Datenbank und Hauptknoten
 
 Die folgende Tabelle enthält Richtlinien für die Auswahl der Azure SQL-Datenbankebene basierend auf der Größe Ihres HDInsight-Clusters.
 
-| Anzahl der Workerknoten | Erforderliche Datenbankebene |
-|---|---|
-| <=4 | S0 |
-| >4 && <=8 | S1 |
-| >8 && <=16 | S2 |
-| >16 && <=32 | S3 |
-| >32 && <=64 | S4 |
-| >64 && <=128 | P2 |
-| >128 | Kontaktieren des Supports |
+| Anzahl der Workerknoten | Erforderliche Datenbankebene | Erforderliche Hauptknoten-VM |
+|---|---|---|
+| <=4 | S0 | 4 Kerne/28 GB RAM (oder höher) |
+| >4 && <=8 | S1 | 4 Kerne/28 GB RAM (oder höher) |
+| >8 && <=16 | S2 | 4 Kerne/28 GB RAM (oder höher) |
+| >16 && <=32 | S3 | 8 Kerne/56 GB RAM (oder höher) |
+| >32 && <=64 | S4 | 8 Kerne/56 GB RAM (oder höher) |
+| >64 && <=128 | P2 | 16 Kerne/112 GB RAM (oder höher) |
+| >128 | Kontaktieren des Supports | Kontaktieren des Supports |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

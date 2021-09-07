@@ -7,22 +7,24 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 604adeb3eeb716027ba821b4e230285602680e00
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962042"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433164"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
-
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v2 beschrieben, die mit isolierten App Service-Plänen verwendet wird
+> 
 Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service, die in Ihrem Azure Virtual Network (VNet) ausgeführt wird. Sie kann mit einem über das Internet zugänglichen Anwendungsendpunkt oder einem Anwendungsendpunkt in Ihrem VNet bereitgestellt werden. Wenn Sie die ASE mit einem über das Internet zugänglichen Endpunkt bereitstellen, wird diese Bereitstellung als externe ASE bezeichnet. Wenn Sie die ASE mit einem Endpunkt in Ihrem VNet bereitstellen, wird diese Bereitstellung als IBL-ASE bezeichnet. Weitere Informationen zur ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE](./create-ilb-ase.md).
 
 Die ASE ist ein einzelnes Mandantensystem. Da es sich um einen einzelnen Mandanten handelt, gibt es einige Features, die nur mit einer ASE verfügbar sind und die im mehrinstanzenfähigen App Service nicht verfügbar sind. 
 
 ## <a name="ilb-ase-certificates"></a>ILB-ASE-Zertifikate 
 
-Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-name].p.azurewebsites.net erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps TLS unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges TLS/SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
+Bei Verwendung einer externen ASE sind Ihre Apps unter „&lt;Name der App&gt;.&lt;Name der ASE&gt;.p.azurewebsites.net“ erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps TLS unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges TLS/SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
 
 Es gibt zwei Möglichkeiten, Zertifikate mit Ihrer ILB-ASE zu konfigurieren.  Sie können ein Platzhalterzertifikat für die ILB-ASE festlegen oder Zertifikate für die einzelnen Web-Apps in der ASE festlegen.  Unabhängig davon, welche Auswahl Sie treffen, müssen die folgenden Zertifikatsattribute ordnungsgemäß konfiguriert sein:
 
@@ -35,7 +37,7 @@ Als dritte Variante können Sie ein ILB-ASE-Zertifikat erstellen, das alle Ihre 
 
 Nachdem eine ILB-ASE im Portal erstellt wurde, muss das Zertifikat für die ILB-ASE festgelegt werden. Bis das Zertifikat festgelegt ist, zeigt die ASE ein Banner an, dass das Zertifikat nicht festgelegt wurde.  
 
-Das Zertifikat, das Sie hochladen, muss eine PFX-Datei sein. Nachdem das Zertifikat hochgeladen wurde, führt die ASE einen Skalierungsvorgang durch, um das Zertifikat festzulegen. 
+Das Zertifikat, das Sie hochladen, muss eine PFX-Datei sein. Nach dem Hochladen des Zertifikats dauert es etwa 20 Minuten, bis das Zertifikat verwendet wird. 
 
 Sie können die ASE nicht erstellen und das Zertifikat als eine Aktion im Portal oder sogar in einer Vorlage hochladen. Als separate Aktion können Sie das Zertifikat mithilfe einer Vorlage hochladen, wie im Dokument [Erstellen einer ASE aus einer Vorlage](./create-from-template.md) beschrieben.  
 

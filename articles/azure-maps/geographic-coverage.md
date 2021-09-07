@@ -1,19 +1,19 @@
 ---
-title: Informationen zur geografischen Abdeckung | Microsoft Azure Maps
+title: Informationen zur geografischen Abdeckung in Microsoft Azure Maps
 description: Details zur Verfügbarkeit geografischer Daten in Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 6/11/2020
+ms.date: 6/23/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2e6392de1eedde122567d9ffa1c8bfdd6d9c5522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321888d2b2f3917cde0fdeb91b049578c94f601b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84739581"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579796"
 ---
 # <a name="geographic-coverage-information"></a>Informationen zur geografischen Abdeckung
 
@@ -23,7 +23,6 @@ Unter den folgenden Links finden Sie ausführliche Informationen zur Abdeckung f
 * [Verkehrsinformationen in Azure Maps](traffic-coverage.md)
 * [Azure Maps-Renderabdeckung](render-coverage.md)
 * [Azure Maps-Streckenabdeckung](routing-coverage.md)
-* [Mobilitätsabdeckung in Azure Maps](mobility-coverage.md)
 * [Umfang der Azure Maps-Wetterberichte](weather-coverage.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

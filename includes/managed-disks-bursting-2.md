@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: c0c170fefe85393fb3c8b443a96aaddbb98eb65e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528316"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113356945"
 ---
 ### <a name="on-demand-bursting-preview"></a>Bedarfsgesteuertes Bursting (Vorschau)
 
@@ -69,9 +69,17 @@ Für SSD Premium-Datenträger ist guthabenbasiertes Bursting für die Datenträg
 Beim Bursting auf VM-Ebene wird nur das guthabenbasierte Modell angewandt. Es ist standardmäßig für alle VMs aktiviert, von denen es unterstützt wird.
 
 Das Bursting auf VM-Ebene ist in allen Regionen in der öffentlichen Azure-Cloud für die folgenden unterstützten Größen aktiviert: 
+- [Dsv4-Serie](../articles/virtual-machines/dv4-dsv4-series.md)
+- [Dasv4-Serie](../articles/virtual-machines/dav4-dasv4-series.md)
+- [Ddsv4-Serie](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Esv4-Serie](../articles/virtual-machines/ev4-esv4-series.md)
+- [Easv4-Serie](../articles/virtual-machines/eav4-easv4-series.md)
+- [Edsv4-Serie](../articles/virtual-machines/edv4-edsv4-series.md)
+- [B-Serie](../articles/virtual-machines/sizes-b-series-burstable.md)
+- [Fsv2-Serie](../articles/virtual-machines/fsv2-series.md)
+- [Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Esv3-Serie](../articles/virtual-machines/ev3-esv3-series.md)
 - [Lsv2-Serie](../articles/virtual-machines/lsv2-series.md)
-- [Dv3- und Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)
-- [Ev3- und Esv3-Serie](../articles/virtual-machines/ev3-esv3-series.md)
 
 ## <a name="bursting-flow"></a>Bursting-Flow
 
@@ -121,7 +129,7 @@ Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 192 MB/s e
     - MB/s bei max. Burst: 1.280
 - P50-Betriebssystemdatenträger
     - Bereitgestellte MB/s: 250 
-- 2 P10-Datenträger für Daten 
+- 2 P50-Datenträger für Daten 
     - Bereitgestellte MB/s: 250
 
  Nach dem anfänglichen Start wird eine Anwendung auf dem virtuellen Computer ausgeführt, die eine nicht kritische Workload aufweist. Diese Workload erfordert 30 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.

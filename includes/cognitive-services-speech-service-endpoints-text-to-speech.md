@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 95f69f04ec1aa0fb0c5588647709d8d938ad2a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554209"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441378"
 ---
 ### <a name="neural-and-standard-voices"></a>Neuronale Stimmen und Standardstimmen
 
@@ -77,8 +77,8 @@ In der folgenden Tabelle wird die regionale Unterstützung für die Features der
 |---|---|
 | Hosting des Stimmmodells | „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „Australien, Osten“ |
 | Echtzeitzeichen | „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „Australien, Osten“ |
-| Zeichenanzahl für langes Audio | „USA, Osten“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Indien, Mitte“ |
-| Benutzerdefiniertes neuronales Training | „USA, Osten“, „Vereinigtes Königreich, Süden“ |
+| Zeichenanzahl für langes Audio | „USA, Osten“, „Europa, Westen“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Indien, Mitte“ |
+| Benutzerdefiniertes neuronales Training | „USA, Osten“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“ |
 
 ### <a name="long-audio-api"></a>API für lange Audioinhalte
 

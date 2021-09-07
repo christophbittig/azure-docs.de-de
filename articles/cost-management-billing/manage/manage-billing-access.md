@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 06/27/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 2aae9775c884f8ccedc1f3ce70025c5331030133
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096416"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112987849"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -42,7 +42,8 @@ Diese Rollen haben Zugriff auf Abrechnungsinformationen im [Azure-Portal](https:
 
 Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
-** Wenn Sie EA-Kunde sind, kann ein Kontobesitzer die obige Rolle anderen Benutzern des Teams zuweisen. Damit diese Benutzer Abrechnungsinformationen anzeigen können, muss der Unternehmensadministrator im Enterprise Portal aber die Option „AO-Ansichtsgebühren“ aktivieren.
+> [!note]
+> Wenn Sie EA-Kunde sind, kann ein Kontobesitzer die obige Rolle anderen Benutzern seines Teams zuweisen. Damit diese Benutzer Abrechnungsinformationen anzeigen können, muss der Unternehmensadministrator im Enterprise Portal aber die Option „AO-Ansichtsgebühren“ aktivieren.
 
 
 ### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> Berechtigen von Benutzern zum Herunterladen von Rechnungen
@@ -57,11 +58,11 @@ Nachdem ein Kontoadministrator anderen Benutzern die entsprechenden Rollen zugew
 
 1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
 
-    ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
+    ![Screenshot: Auswählen von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung**.
 
-    ![Der Screenshot zeigt das Delegieren des Zugriffs auf Rechnungen](./media/manage-billing-access/aa-optin01.png)
+    ![Screenshot: Delegieren des Zugriffs auf Rechnungen](./media/manage-billing-access/aa-optin01.png)
 
 1. Wählen Sie **An** und „Speichern“ aus.
 
@@ -75,39 +76,20 @@ Weisen Sie die Rolle „Abrechnungsleser“ einem Benutzer zu, der Lesezugriff a
 
 Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine nicht globalen Clouds.
 
-1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
+- Weisen Sie die Rolle „Abrechnungsleser“ einem Benutzer im Abonnementbereich zu.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-
-    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/manage-billing-access/billing-search-cost-management-billing.png)
-
-1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
-
-    ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
-
-1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie oben auf der Seite die Option **Hinzufügen**.
-
-    ![Screenshot: Klicken auf „Rollenzuweisung hinzufügen“](./media/manage-billing-access/billing-click-add-role-assignment.png)
-
-1. Wählen Sie in der Dropdownliste **Rolle** **Abrechnungsleser** aus.
-1. Geben Sie im Textfeld **Auswählen** den Namen oder die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten.
-1. Wählen Sie den Benutzer aus.
-1. Wählen Sie **Speichern** aus.
-    ![Screenshot mit hervorgehobener Schaltfläche „Speichern“](./media/manage-billing-access/billing-save-role-assignment.png)
-
-1. Nach einigen Augenblicken wird dem Benutzer die Rolle „Abrechnungsleser“ für das Abonnement zugewiesen.
-
-** Wenn Sie EA-Kunde sind, kann ein Kontobesitzer oder Abteilungsadministrator Teammitgliedern die Rolle „Abrechnungsleser“ zuweisen. Damit Abrechnungsleser jedoch auf Abrechnungsinformationen für die Abteilung oder das Konto zugreifen können, muss der Unternehmensadministrator im Enterprise Portal die Richtlinie **Kontobesitzer können Gebühren anzeigen** bzw. **Abteilungsadministratoren können Gebühren anzeigen** aktivieren.
+> [!NOTE]
+> Wenn Sie EA-Kunde sind, kann ein Kontobesitzer oder Abteilungsadministrator Teammitgliedern die Rolle „Abrechnungsleser“ zuweisen. Damit Abrechnungsleser jedoch auf Abrechnungsinformationen für die Abteilung oder das Konto zugreifen können, muss der Unternehmensadministrator im Enterprise Portal die Richtlinie **Kontobesitzer können Gebühren anzeigen** bzw. **Abteilungsadministratoren können Gebühren anzeigen** aktivieren.
 
 ## <a name="check-the-type-of-your-billing-account"></a>Überprüfen des Typs Ihres Abrechnungskontos
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
+
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Benutzer in anderen Rollen, z.B. „Besitzer“ oder „Mitwirkender“, können nicht nur auf Abrechnungsinformationen, sondern auch auf Azure-Dienste zugreifen. Informationen zum Verwalten dieser Rollen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 - Weitere Informationen zu Rollen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
-
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

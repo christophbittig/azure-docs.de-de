@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862847"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989055"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -62,15 +62,8 @@ Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwa
 
 Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
-- Delegieren der Zugriffsverwaltung für eine individuelle Reservierungsreihenfolge:
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-    1. Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
-    1. Wählen Sie die Reservierung aus, für die Sie den Zugriff an andere Benutzer delegieren möchten.
-    1. Wählen Sie unter „Reservierungsdetails“ die gewünschte Reservierungsreihenfolge aus.
-    1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-    1. Wählen Sie **Rollenzuweisung hinzufügen** > **Rolle** > **Besitzer** aus. Wenn Sie eingeschränkten Zugriff gewähren möchten, wählen Sie eine andere Rolle aus.
-    1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten.
-    1. Wählen Sie den Benutzer und dann **Speichern** aus.
+- Delegieren Sie die Zugriffsverwaltung für einen einzelnen Reservierungsauftrag, indem Sie einem Benutzer im Ressourcenbereich des Reservierungsauftrags die Rolle „Besitzer“ zuweisen. Wenn Sie eingeschränkten Zugriff gewähren möchten, wählen Sie eine andere Rolle aus.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 - Hinzufügen eines Benutzers als Abrechnungsadministrator zu einem Konzernvertrag oder einer Microsoft-Kundenvereinbarung:
     - Fügen Sie bei einem Konzernvertrag Benutzer mit der Rolle _Unternehmensadministrator_ hinzu, um alle für diesen Vertrag geltenden Reservierungsaufträge anzuzeigen und zu verwalten. Benutzer mit der Rolle _Unternehmensadministrator (schreibgeschützt)_ können die Reservierung nur anzeigen. Abteilungsadministratoren und Kontobesitzer können Reservierungen nicht anzeigen, _außer_ wenn sie ihnen mithilfe der Zugriffssteuerung (Access Control, IAM) explizit hinzugefügt werden. Weitere Informationen finden Sie unter [Verwalten von Azure Enterprise-Rollen](../manage/understand-ea-roles.md).
@@ -81,8 +74,18 @@ Damit andere Personen Reservierungen verwalten können, haben Sie zwei Optionen:
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Anzeigen oder Verwalten von Reservierungen durch Abrechnungsadministratoren
 
-1. Wechseln Sie zu **Cost Management + Billing*** , und wählen Sie auf der linken Seite **Reservierungstransaktionen** aus.
-2. Wenn Sie die erforderlichen Abrechnungsberechtigungen haben, können Sie Reservierungen anzeigen und verwalten. Wenn keine Reservierungen angezeigt werden, vergewissern Sie sich, dass Sie mit dem Azure AD-Mandanten angemeldet sind, in dem die Reservierungen erstellt wurden.
+Führen Sie als Abrechnungsadministrator die folgenden Schritte aus, um alle Reservierungen und Reservierungstransaktionen anzuzeigen und zu verwalten.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Kostenverwaltung + Abrechnung**.
+    - Wenn Sie EA-Administrator sind, wählen Sie im Menü auf der linken Seite die Option **Abrechnungsbereiche** und dann in der Liste der Abrechnungsbereiche einen Bereich aus.
+    - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
+2. Wählen Sie im Menü auf der linken Seite **Produkte und Dienste** > **Reservierungen** aus.
+3. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
+4. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie sie auswählen und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
+
+## <a name="change-billing-subscription-for-an-azure-reservation"></a>Ändern des Abrechnungsabonnements für eine Azure-Reservierung
+
+Das Abrechnungsabonnement kann nach dem Kauf einer Reservierung nicht mehr geändert werden. Wenn Sie das Abonnement ändern möchten, verwenden Sie den Umtauschprozess, um das richtige Abrechnungsabonnement für die Reservierung festzulegen.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Aufteilten einer einzelnen Reservierung in zwei Reservierungen
 
@@ -182,4 +185,3 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
  - [Verlängern von Reservierungen](reservation-renew.md)
  - [Übertragungen zwischen Mandanten](troubleshoot-reservation-transfers-between-tenants.md)
  - [Ermitteln eines Reservierungskäufers über Azure-Protokolle](find-reservation-purchaser-from-logs.md)
- - [Verlängern einer Reservierung](reservation-renew.md)

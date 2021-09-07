@@ -15,14 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007122"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339008"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Verknüpfen von Azure AD-Daten (Azure Active Directory) mit Azure Sentinel
+
+> [!IMPORTANT]
+> Wie weiter unten angegeben, befinden sich einige der verfügbaren Protokolltypen derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Sie können den in Azure Sentinel integrierten Connector verwenden, um Daten aus [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) zu erfassen und in Azure Sentinel zu streamen. Der Connector ermöglicht das Streamen folgender Protokolltypen:
 
@@ -40,8 +45,7 @@ Sie können den in Azure Sentinel integrierten Connector verwenden, um Daten aus
 
 - [**Bereitstellungsprotokolle**](../active-directory/reports-monitoring/concept-provisioning-logs.md) (ebenfalls in der **VORSCHAUPHASE**): Diese Protokolle enthalten Informationen zu Systemaktivitäten im Zusammenhang mit Benutzern, Gruppen und Rollen, die durch den Azure AD-Bereitstellungsdienst bereitgestellt werden. 
 
-> [!IMPORTANT]
-> Wie bereits erwähnt, befinden sich einige der verfügbaren Protokolltypen derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Für die Aufnahme von Anmeldeprotokollen in Azure Sentinel ist eine Azure Active Directory P1- oder P2-Lizenz erforderlich. Eine beliebige Azure AD-Lizenz (Free/O365/P1/P2) reicht aus, um die anderen Protokolltypen zu ingestieren. Für Azure Monitor (Log Analytics) und Azure Sentinel können zusätzliche Gebühren auf Gigabytebasis anfallen.
@@ -75,5 +79,5 @@ Geben Sie zum Abfragen der Azure AD-Protokolle im oberen Bereich des Abfragefen
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie Sie Azure Active Directory mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).

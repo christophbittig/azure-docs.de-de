@@ -1,22 +1,22 @@
 ---
 title: Konformität mithilfe von Azure Policy
-description: Zuweisen integrierter Richtlinien in Azure Policy, um die Konformität Ihrer Azure-Containerregistrierungen zu überwachen
+description: Zuweisen integrierter Richtliniendefinitionen in Azure Policy, um die Konformität Ihrer Azure-Containerregistrierungen zu überwachen
 ms.topic: article
-ms.date: 03/01/2021
-ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/10/2021
+ms.openlocfilehash: d8f986a3a857f622248daa75d0402f1abfbf8a7b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345792"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy
 
-[Azure Policy](../governance/policy/overview.md) ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben.
+[Azure Policy](../governance/policy/overview.md) ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen erstellen, zuweisen und verwalten können. Richtliniendefinitionen erzwingen unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben.
 
-In diesem Artikel werden integrierte Richtlinien für Azure Container Registry vorgestellt. Verwenden Sie diese Richtlinien, um die Konformität neuer und vorhandener Registrierungen zu überwachen.
+In diesem Artikel werden integrierte Richtliniendefinitionen für Azure Container Registry vorgestellt. Verwenden Sie diese Definitionen, um die Konformität neuer und vorhandener Registrierungen zu überwachen.
 
-Die Verwendung von Azure Policy ist gebührenfrei.
+Die Nutzung von Azure Policy ist kostenlos.
 
 ## <a name="built-in-policy-definitions"></a>Integrierte Richtliniendefinitionen
 
@@ -24,14 +24,14 @@ Für Azure Container Registry gelten die folgenden integrierten Richtliniendefin
 
 [!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
-## <a name="assign-policies"></a>Zuweisen von Richtlinien
+## <a name="create-policy-assignments"></a>Erstellen von Richtlinienzuweisungen
 
-* Weisen Sie Richtlinien über das [Azure-Portal](../governance/policy/assign-policy-portal.md), die [Azure CLI](../governance/policy/assign-policy-azurecli.md), eine [Resource Manager-Vorlage](../governance/policy/assign-policy-template.md) oder die Azure Policy-SDKs zu.
+* Erstellen Sie Richtlinienzuweisungen über das [Azure-Portal](../governance/policy/assign-policy-portal.md), die [Azure CLI](../governance/policy/assign-policy-azurecli.md), eine [Resource Manager-Vorlage](../governance/policy/assign-policy-template.md) oder die Azure Policy SDKs.
 * Beschränken Sie eine Richtlinienzuweisung auf eine Ressourcengruppe, ein Abonnement oder eine [Azure-Verwaltungsgruppe](../governance/management-groups/overview.md). Zuweisungen von Containerregistrierungsrichtlinien gelten für vorhandene und neue Containerregistrierungen innerhalb des festgelegten Bereichs.
 * Sie können die [Richtliniendurchsetzung](../governance/policy/concepts/assignment-structure.md#enforcement-mode) jederzeit aktivieren oder deaktivieren.
 
 > [!NOTE]
-> Nach dem Zuweisen oder Aktualisieren einer Richtlinie dauert es einen Moment, bis die Zuweisung auf die Ressourcen innerhalb des festgelegten Bereichs angewendet wird. Lesen Sie dazu auch die Informationen zu [Richtlinienauswertungsauslösern](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
+> Nach dem Erstellen oder Aktualisieren einer Richtlinienzuweisung dauert es einen Moment, bis die Zuweisung die Ressourcen im definierten Bereich auswertet. Lesen Sie dazu auch die Informationen zu [Richtlinienauswertungsauslösern](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
 
 ## <a name="review-policy-compliance"></a>Überprüfen der Richtlinienkonformität
 

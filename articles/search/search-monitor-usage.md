@@ -7,26 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 5cd9438eecc973524d8e5f7218ad0c92ab627f87
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 01/27/2021
+ms.openlocfilehash: 5e9e09508591e2b6e58b6bae17df281c23a5129d
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559876"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414789"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search
 
-Dieser Artikel bietet eine Übersicht über die Überwachungskonzepte und -tools für Azure Cognitive Search. Für eine ganzheitliche Überwachung können Sie eine Kombination aus integrierten Funktionen und ergänzenden Diensten wie Azure Monitor verwenden.
+Dieser Artikel bietet eine Übersicht über die Überwachungskonzepte und -tools für Azure Cognitive Search. Für eine ganzheitliche Überwachung sollten Sie eine Kombination aus integrierten Funktionen und ergänzenden Diensten wie Azure Monitor verwenden.
 
 Alles in allem können Sie Folgendes nachverfolgen:
 
-* Dienst: Integrität/Verfügbarkeit sowie Änderungen an der Dienstkonfiguration
-* Speicher: sowohl verwendet als auch verfügbar, mit Angaben zu den einzelnen Inhaltstypen in Relation zu dem für die Dienstebene zulässigen Kontingent
+* Suchdienst: Integrität und Änderungen an der Dienstkonfiguration.
+* Speicherverbrauch: Verwendet und verfügbar.
+* Objektgrenzwerte für Indizes, Indexer und andere Objekte mit Zählern für jeden Typ, relativ zum [zulässigen Höchstwert](search-limits-quotas-capacity.md) für die Dienstebene.
 * Abfrageaktivität: Volumen, Latenz und gedrosselt oder verworfene Abfragen. Protokollierte Abfrageanforderungen erfordern [Azure Monitor](#add-azure-monitor).
 * Indexaktivität: erfordert die [Diagnoseprotokollierung](#add-azure-monitor) von Azure Monitor.
 
-Ein Suchdienst unterstützt keine benutzerspezifische Authentifizierung, sodass keine Identitätsinformationen in den Protokollen gefunden werden.
+Ein Suchdienst unterstützt keine benutzerspezifische Authentifizierung, sodass keine Benutzeridentitätsinformationen in den Protokollen gefunden werden.
 
 ## <a name="built-in-monitoring"></a>Integrierte Überwachung
 
@@ -48,9 +49,9 @@ Auf dem folgenden Screenshot sehen Sie, wie Sie Überwachungsinformationen im Po
 
 <a name="monitoring-apis"> </a>
 
-### <a name="apis-useful-for-monitoring"></a>Für die Überwachung nützliche APIs
+### <a name="rest-apis-useful-for-monitoring"></a>Für die Überwachung nützliche REST-APIs
 
-Mithilfe der folgenden APIs können Sie dieselben Informationen abrufen, die auf den Registerkarten „Überwachen“ und „Verwendung“ im Portals angezeigt werden.
+Mithilfe von [Postman](search-get-started-rest.md) und der folgenden APIs können Sie die gleichen Informationen abrufen, die auf den Registerkarten „Überwachen“ und „Verwendung“ im Portal angezeigt werden. Sie müssen einen [Administrator-API-Schlüssel](search-security-api-keys.md) bereitstellen, um Systeminformationen zu erhalten.
 
 * [Abrufen von Dienststatistiken](/rest/api/searchservice/get-service-statistics)
 * [Abrufen von Indexstatistiken](/rest/api/searchservice/get-index-statistics)

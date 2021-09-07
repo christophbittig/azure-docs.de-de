@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e90c33f63eb360bae4182ac1f9ed32eb9b8aa0c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042707"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439087"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von benutzerdefinierten Protokollen mit dem Log Analytics-Agent in Azure Monitor
 
@@ -52,8 +52,8 @@ Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.
 ### <a name="step-1-open-the-custom-log-wizard"></a>Schritt 1: Öffnen des Assistenten für benutzerdefinierte Protokolle
 Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protokolle können Sie ein neues benutzerdefiniertes Protokoll für die Sammlung definieren.
 
-1. Wählen Sie im Azure-Portal die Optionen **Log Analytics-Arbeitsbereiche** > Ihr Arbeitsbereich > **Erweiterte Einstellungen** aus.
-2. Klicken Sie auf **Daten** > **Benutzerdefinierte Protokolle**.
+1. Wählen Sie im Azure-Portal **Log Analytics-Arbeitsbereiche** > Ihr Arbeitsbereich > **Einstellungen** aus.
+2. Klicken Sie auf **Benutzerdefinierte Protokolle**.
 3. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben. Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.
 4. Klicken Sie auf **Hinzufügen+** , um den Assistenten für benutzerdefinierte Protokolle zu öffnen.
 
