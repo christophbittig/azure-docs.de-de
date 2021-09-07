@@ -4,13 +4,13 @@ description: Hier wird beschrieben, wie Ressourcen für die Bereitstellung in Bi
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: f62c790f1cb4f0613e17d2bbb3e4fc13e39d8e39
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/16/2021
+ms.openlocfilehash: a540a30cd93d9f1dc54f77355f2f6560444131c1
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963469"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356451"
 ---
 # <a name="resource-declaration-in-bicep"></a>Ressourcendeklaration in Bicep
 
@@ -23,12 +23,12 @@ Wenn Sie Ihrer Bicep-Datei eine Ressource hinzufügen, legen Sie zunächst den R
 Im folgenden Beispiel wird gezeigt, wie der Ressourcentyp und die API-Version für ein Speicherkonto festgelegt werden. Das Beispiel zeigt nicht die vollständige Ressourcendeklaration.
 
 ```bicep
-resource myStorageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   ...
 }
 ```
 
-Sie legen einen symbolischen Namen für die Ressource fest. Im vorherigen Beispiel lautet der symbolische Name `myStorageAccount`. Sie können einen beliebigen Wert für den symbolischen Namen verwenden, aber er kann nicht mit dem Namen einer anderen Ressource, eines Parameters oder einer Variablen in der Bicep-Datei identisch sein. Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf einfache Weise auf die Ressource zu verweisen.
+Sie legen einen symbolischen Namen für die Ressource fest. Im vorherigen Beispiel lautet der symbolische Name `stg`. Sie können einen beliebigen Wert für den symbolischen Namen verwenden, aber er kann nicht mit dem Namen einer anderen Ressource, eines Parameters oder einer Variablen in der Bicep-Datei identisch sein. Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen.
 
 Das `apiProfile`-Element wird von Bicep nicht unterstützt. Dieses Element ist in [ARM-Vorlagen-JSON-Dateien (Azure Resource Manager)](../templates/syntax.md) verfügbar.
 
@@ -104,6 +104,40 @@ az provider show \
 
 Sie können während der Bereitstellung Tags auf eine Ressource anwenden. Tags helfen Ihnen dabei, Ihre bereitgestellten Ressourcen logisch zu organisieren. Beispiele für die verschiedenen Methoden zum Angeben der Tags finden Sie unter [ARM-Vorlagen-Tags](../management/tag-resources.md#arm-templates).
 
+## <a name="set-managed-identities-for-azure-resources"></a>Festlegen verwalteter Identitäten für Azure-Ressourcen
+
+Einige Ressourcen unterstützen [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Diese Ressourcen verfügen über ein Identitätsobjekt auf der Stammebene der Ressourcendeklaration. 
+
+Sie können entweder systemseitig oder benutzerseitig zugewiesene Identitäten verwenden.
+
+Das folgende Beispiel zeigt, wie sie eine systemseitig zugewiesene Identität für einen Azure Kubernetes Service-Cluster konfigurieren.
+
+```bicep
+resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
+  name: clusterName
+  location: location
+  tags: tags
+  identity: {
+    type: 'SystemAssigned'
+  }
+```
+
+Im nächsten Beispiel wird gezeigt, wie Sie eine benutzerseitig zugewiesene Identität für einen virtuellen Computer konfigurieren.
+
+```bicep
+param userAssignedIdentity string
+
+resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  name: vmName
+  location: location
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${userAssignedIdentity}': {}
+    }
+  }
+```
+
 ## <a name="set-resource-specific-properties"></a>Festlegen ressourcenspezifischer Eigenschaften
 
 Die vorstehenden Eigenschaften sind für die meisten Ressourcentypen generisch. Nachdem Sie diese Werte festgelegt haben, müssen Sie die Eigenschaften festlegen, die für den Ressourcentyp, den Sie bereitstellen, spezifisch sind.
@@ -133,7 +167,7 @@ Azure Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus un
 
 ### <a name="implicit-dependency"></a>Implizite Abhängigkeit
 
-Eine implizite Abhängigkeit wird erstellt, wenn eine Ressourcendeklaration auf den Bezeichner einer anderen Ressourcendeklaration in einem Ausdruck verweist. Im folgenden Beispiel wird auf *dnsZone* beispielsweise durch die zweite Ressourcendefinition verwiesen:
+Eine implizite Abhängigkeit wird erstellt, wenn eine Ressourcendeklaration auf eine andere Ressource in derselben Bereitstellung verweist. Im folgenden Beispiel wird auf *dnsZone* beispielsweise durch die zweite Ressourcendefinition verwiesen:
 
 ```bicep
 resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = {
@@ -164,20 +198,24 @@ resource myParent 'My.Rp/parentType@2020-01-01' = {
 }
 ```
 
-Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen in Bicep](./child-resource-name-type.md).
+Wenn eine implizite Abhängigkeit besteht, **fügen Sie keine explizite Abhängigkeit hinzu**.
+
+Weitere Informationen zu geschachtelten Ressourcen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen in Bicep](./child-resource-name-type.md).
 
 ### <a name="explicit-dependency"></a>Explizite Abhängigkeit
 
-Eine explizite Abhängigkeit wird über die Eigenschaft `dependsOn` in der Ressourcendeklaration deklariert. Die Eigenschaft akzeptiert ein Array von Ressourcenbezeichnern. Hier sehen Sie ein Beispiel für eine DNS-Zone, die explizit von einer anderen abhängig ist:
+Eine explizite Abhängigkeit wird mit der `dependsOn`-Eigenschaft deklariert. Die Eigenschaft akzeptiert ein Array von Ressourcenbezeichnern, sodass Sie mehr als eine Abhängigkeit angeben können. 
+
+Das folgende Beispiel zeigt eine DNS-Zone namens `otherZone`, die von einer DNS-Zone namens `dnsZone` abhängt:
 
 ```bicep
 resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = {
-  name: 'myZone'
+  name: 'demoeZone1'
   location: 'global'
 }
 
 resource otherZone 'Microsoft.Network/dnszones@2018-05-01' = {
-  name: 'myZone'
+  name: 'demoZone2'
   location: 'global'
   dependsOn: [
     dnsZone
@@ -187,33 +225,42 @@ resource otherZone 'Microsoft.Network/dnszones@2018-05-01' = {
 
 Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von `dependsOn` zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist `dependsOn` nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im `dependsOn`-Element definiert waren. Das Festlegen unnötiger Abhängigkeiten verlangsamt die Bereitstellung, da Resource Manager diese Ressourcen nicht gleichzeitig bereitstellen kann.
 
-Explizite Abhängigkeiten sind zwar manchmal erforderlich, dies ist aber selten der Fall. In den meisten Fällen steht Ihnen ein symbolischer Verweis zur Verfügung, der die Abhängigkeit zwischen Ressourcen impliziert. Wenn Sie „dependsOn“ verwenden, sollten Sie erwägen, ob es eine Möglichkeit gibt, dieses Attribut zu entfernen.
+Explizite Abhängigkeiten sind zwar manchmal erforderlich, dies ist aber selten der Fall. In den meisten Fällen können Sie einen symbolischen Verweis verwenden, um die Abhängigkeit zwischen Ressourcen zu implizieren. Wenn Sie selbst explizite Abhängigkeiten festlegen, sollten Sie berücksichtigen, ob es eine Möglichkeit gibt, sie zu entfernen.
 
 ### <a name="visualize-dependencies"></a>Visualisieren von Abhängigkeiten
 
-Visual Studio Code stellt ein Tool zum Visualisieren der Abhängigkeiten zur Verfügung. Öffnen Sie eine Bicep-Datei in Visual Studio Code, und wählen Sie dann die Schaltfläche „Schnellansicht“ in der oberen linken Ecke aus.  Der folgende Screenshot zeigt die in der Bicep-Datei definierten Abhängigkeiten einer VM-Ressource.
+Visual Studio Code stellt ein Tool zum Visualisieren der Abhängigkeiten zur Verfügung. Öffnen Sie eine Bicep-Datei in Visual Studio Code, und wählen Sie dann die Schaltfläche „Schnellansicht“ in der oberen linken Ecke aus.  Der folgende Screenshot zeigt die Abhängigkeiten eines virtuellen Computers.
 
 :::image type="content" source="./media/resource-declaration/bicep-resource-visualizer.png" alt-text="Screenshot: Schnellansicht der Bicep-Ressourcen in Visual Studio Code":::
 
 ## <a name="reference-existing-resources"></a>Verweisen auf vorhandene Ressourcen
 
-Sie können Verweise hinzufügen und auf Laufzeiteigenschaften von Ressourcen außerhalb der aktuellen Datei zugreifen, indem Sie das Schlüsselwort `existing` in einer Ressourcendeklaration verwenden. Dies entspricht der Verwendung der [reference()-Funktion](../templates/template-functions-resource.md#reference) in ARM-Vorlagen.
+Um auf eine Ressource zu verweisen, die sich außerhalb der aktuellen Bicep-Datei befindet, verwenden Sie das `existing`-Schlüsselwort in einer Ressourcendeklaration.
 
-Bei Verwendung des Schlüsselworts `existing` müssen Sie den Namen (`name`) der Ressource angeben und optional auch die `scope`-Eigenschaft für den Zugriff auf eine Ressource in einem anderen Bereich festlegen. Weitere Informationen zur Verwendung der Eigenschaft „scope“ finden Sie unter [Bereitstellung von Ressourcengruppen mit Bicep-Dateien](./deploy-to-resource-group.md).
+Geben Sie bei Verwendung des Schlüsselworts `existing` den `name` der Ressource an. Im folgenden Beispiel wird ein vorhandenes Speicherkonto in derselben Ressourcengruppe wie der der aktuellen Bereitstellung gespeichert.
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
-  name: 'exampleStorage'
+  name: 'examplestorage'
 }
 
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
 
-Im vorherigen Beispiel wird das Speicherkonto nicht bereitgestellt, aber die Deklaration bietet Zugriff auf Eigenschaften für die vorhandene Ressource. Mit dem symbolischen Namen „stg“ können Sie auf Eigenschaften im Speicherkonto zugreifen.
+Optional können Sie die `scope`-Eigenschaft festlegen, um auf eine Ressource in einem anderen Bereich zuzugreifen. Im folgenden Beispiel wird auf ein vorhandenes Speicherkonto in einer anderen Ressourcengruppe verwiesen.
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie die Eigenschaft `scope` angeben:
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
+  name: 'examplestorage'
+  scope: resourceGroup(exampleRG)
+}
 
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = { name: 'exampleStorage' scope: resourceGroup(mySub, myRg) }
+output blobEndpoint string = stg.properties.primaryEndpoints.blob
+```
+
+Weitere Informationen zum Festlegen des Bereichs finden Sie unter [Bereichsfunktionen für Bicep](bicep-functions-scope.md).
+
+In den vorherigen Beispielen wird das Speicherkonto nicht bereitgestellt. Stattdessen können Sie mithilfe des symbolischen Namens auf Eigenschaften der vorhandenen Ressource zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

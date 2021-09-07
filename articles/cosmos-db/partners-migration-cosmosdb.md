@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 4b2bb3659d68ec5c4a4ed7d21f39542d1329452b
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.date: 08/26/2021
+ms.openlocfilehash: 781fb98b1b71e70f07291f04d89fbfb8fed17759
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331590"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028573"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,6 +51,10 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/).
+
+Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+* Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png

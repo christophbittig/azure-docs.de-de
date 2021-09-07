@@ -4,19 +4,22 @@ description: In diesem Artikel wird Version 2 des Features „VMs starten/beende
 ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/29/2021
-ms.openlocfilehash: 8df0f31b57d7cd82ed89c4f5f0df37535ad9678a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/25/2021
+ms.openlocfilehash: 3e2946bf493da2570106fdb554704ef7f286b7cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067274"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355461"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>VMs starten/beenden v2 (Vorschau): Übersicht
 
 Mit dem Feature „VMs starten/beenden v2 (Vorschau)“ werden Azure-VMs mehrere Abonnements übergreifend gestartet oder beendet. Damit können Sie Azure-VMs nach benutzerdefinierten Zeitplänen starten und beenden, über [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Erkenntnisse gewinnen und mithilfe von [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) optional Benachrichtigungen senden. Das Feature kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch klassischen VMs aktiviert werden.
 
 Diese neue Version von „VMs starten/beenden v2 (Vorschau)“ ist eine dezentralisierte kostengünstige Automatisierungsoption für Kunden, die Ihre VM-Kosten optimieren möchten. Sie bietet die gleiche Funktionalität wie die mit Azure Automation verfügbare [ursprüngliche Version](../../automation/automation-solution-vm-management.md), ist aber darauf ausgelegt, neuere Technologie in Azure zu nutzen.
+
+> [!NOTE]
+> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -28,15 +31,16 @@ Eine HTTP-Triggerendpunkt-Funktion wird erstellt, um die im Feature enthaltenen 
 
 |Name |Trigger |BESCHREIBUNG |
 |-----|--------|------------|
-|AlertAvailabilityTest |Timer |Diese Funktion führt den Verfügbarkeitstest aus, um sicherzustellen, dass die primäre Funktion **AutoStopVM** immer verfügbar ist.|
-|AutoStop |HTTP |Diese Funktion unterstützt das **AutoStop**-Szenario, das die von der Logik-App aufgerufene Einstiegspunktfunktion ist.|
-|AutoStopAvailabilityTest |Timer |Diese Funktion führt den Verfügbarkeitstest aus, um sicherzustellen, dass die primäre Funktion **AutoStop** immer verfügbar ist.|
-|AutoStopVM |HTTP |Diese Funktion wird automatisch von der VM-Warnung ausgelöst, wenn die Warnungsbedingung erfüllt ist.|
-|CreateAutoStopAlertExecutor |Warteschlange |Diese Funktion ruft die Nutzlastinformationen aus der Funktion **AutoStop** ab, um die Warnung auf dem virtuellen Computer zu erstellen.|
 |Geplant |HTTP |Diese Funktion ist sowohl für ein geplantes als auch sequenziertes Szenario (Unterscheidung nach dem Nutzlastschema) vorgesehen. Dabei handelt es sich um die von der Logik-App aufgerufene Einstiegspunktfunktion, der die Nutzlast zum Verarbeiten des Startens oder Beendens der VM übergeben wird. |
-|ScheduledAvailabilityTest |Timer |Diese Funktion führt den Verfügbarkeitstest aus, um sicherzustellen, dass die primäre Funktion **Scheduled** immer verfügbar ist.|
-|VirtualMachineRequestExecutor |Warteschlange |Diese Funktion führt den eigentlichen Start- und Beendevorgang auf dem virtuellen Computer aus.|
+|AutoStop |HTTP |Diese Funktion unterstützt das **AutoStop**-Szenario, das die von der Logik-App aufgerufene Einstiegspunktfunktion ist.|
+|AutoStopVM |HTTP |Diese Funktion wird automatisch von der VM-Warnung ausgelöst, wenn die Warnungsbedingung erfüllt ist.|
 |VirtualMachineRequestOrchestrator |Warteschlange |Diese Funktion ruft die Nutzlastinformationen aus der **Scheduled**-Funktion ab und orchestriert die Anforderungen zum Starten und Beenden des virtuellen Computers.|
+|VirtualMachineRequestExecutor |Warteschlange |Diese Funktion führt den eigentlichen Start- und Beendevorgang auf dem virtuellen Computer aus.|
+|CreateAutoStopAlertExecutor |Warteschlange |Diese Funktion ruft die Nutzlastinformationen aus der Funktion **AutoStop** ab, um die Warnung auf dem virtuellen Computer zu erstellen.|
+|HeartBeatAvailabilityTest |Timer |Diese Funktion überwacht die Verfügbarkeit der primären HTTP-Funktionen.|
+|CostAnalyticsFunction |Timer |Diese Funktion berechnet die monatlichen Kosten für die Ausführung der Lösung zum Starten/Beenden V2.|
+|SavingsAnalyticsFunction |Timer |Diese Funktion berechnet die monatliche Gesamtersparnis, die mit der Lösung zum Starten/Beenden V2 erzielt werden.|
+|VirtualMachineSavingsFunction |Warteschlange |Diese Funktion führt die Berechnung der tatsächlichen Einsparungen auf einem virtuellen Computer durch, die mit der Lösung zum Starten/Beenden V2 erzielt werden.|
 
 Beispielsweise wird die **Scheduled**-HTTP-Triggerfunktion verwendet, um Plan- und Sequenzszenarios zu behandeln. Entsprechend behandelt die **AutoStop**-HTTP-Triggerfunktion das Szenario für automatische Beendigung.
 

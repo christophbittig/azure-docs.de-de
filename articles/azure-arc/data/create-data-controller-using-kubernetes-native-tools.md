@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: cf352cf9ce944ef3f1bb2702fda249deb6ce186e
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 9f7f5569d5381a7d1ff4d7ebbeac535105f22c93
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407721"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356419"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Erstellen eines Azure Arc-Datencontrollers unter Verwendung von Kubernetes-Tools
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,27 +32,72 @@ Zum Erstellen des Azure Arc-Datencontrollers mithilfe von Kubernetes-Tools müss
 
 ### <a name="cleanup-from-past-installations"></a>Bereinigen früherer Installationen
 
-Wenn Sie in der Vergangenheit den Azure Arc-Datencontroller auf demselben Cluster installiert und den Azure Arc-Datencontroller mit dem Befehl `azdata arc dc delete` gelöscht haben, sind möglicherweise noch Objekte auf Clusterebene vorhanden, die noch gelöscht werden müssten. Führen Sie die folgenden Befehle aus, um Objekte des Azure Arc-Datencontrollers auf Clusterebene zu löschen:
+Wenn Sie in der Vergangenheit den Azure Arc-Datencontroller auf demselben Cluster installiert und den Azure Arc-Datencontroller gelöscht haben, sind möglicherweise noch Objekte auf Clusterebene vorhanden, die noch gelöscht werden müssten. Führen Sie die folgenden Befehle aus, um Objekte des Azure Arc-Datencontrollers auf Clusterebene zu löschen:
 
 ```console
 # Cleanup azure arc data service artifacts
-kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete crd postgresqls.arcdata.microsoft.com 
+
+# Note: not all of these objects will exist in your environment depending on which version of the Arc data controller was installed
+
+# Custom resource definitions (CRD)
+kubectl delete crd datacontrollers.arcdata.microsoft.com
+kubectl delete crd postgresqls.arcdata.microsoft.com
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com
+kubectl delete crd sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com
+kubectl delete crd dags.sql.arcdata.microsoft.com
+kubectl delete crd exporttasks.tasks.arcdata.microsoft.com
+kubectl delete crd monitors.arcdata.microsoft.com
+
+# Cluster roles and role bindings
+kubectl delete clusterrole arcdataservices-extension
+kubectl delete clusterrole arc:cr-arc-metricsdc-reader
+kubectl delete clusterrole arc:cr-arc-dc-watch
+kubectl delete clusterrole cr-arc-webhook-job
+
+# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get clusterrolebinding'
+kubectl delete clusterrolebinding {namespace}:crb-arc-metricsdc-reader
+kubectl delete clusterrolebinding {namespace}:crb-arc-dc-watch
+kubectl delete clusterrolebinding crb-arc-webhook-job
+
+# API services
+# Up to May 2021 release
+kubectl delete apiservice v1alpha1.arcdata.microsoft.com
+kubectl delete apiservice v1alpha1.sql.arcdata.microsoft.com
+
+# June 2021 release
+kubectl delete apiservice v1beta1.arcdata.microsoft.com
+kubectl delete apiservice v1beta1.sql.arcdata.microsoft.com
+
+# GA/July 2021 release
+kubectl delete apiservice v1.arcdata.microsoft.com
+kubectl delete apiservice v1.sql.arcdata.microsoft.com
+
+# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get mutatingwebhookconfiguration'
+kubectl delete mutatingwebhookconfiguration arcdata.microsoft.com-webhook-{namespace}
+
 ```
 
 ## <a name="overview"></a>Übersicht
 
 Das Erstellen des Azure Arc-Datencontrollers umfasst die folgenden allgemeinen Schritte:
-1. Erstellen Sie die benutzerdefinierten Ressourcendefinitionen für den Arc-Datencontroller, die Azure SQL Managend Instance-Instanz und für PostgreSQL Hyperscale. **[Erfordert Administratorberechtigungen für Kubernetes-Cluster]**
-2. Erstellen Sie einen Namespace, in dem der Datencontroller erstellt wird. **[Erfordert Administratorberechtigungen für Kubernetes-Cluster]**
-3. Erstellen Sie den Bootstrapperdienst, einschließlich der Replikatgruppe, des Dienstkontos, der Rolle und der Rollenbindung.
-4. Erstellen Sie ein Geheimnis für den Benutzernamen und das Kennwort des Datencontrolleradministrators.
-5. Erstellen Sie den Datencontroller.
-   
+
+   > [!IMPORTANT]
+   > Einige der folgenden Schritte erfordern Administratorberechtigungen für Kubernetes-Cluster.
+
+1. Erstellen Sie die benutzerdefinierten Ressourcendefinitionen für den Arc-Datencontroller, die Azure SQL Managend Instance-Instanz und für PostgreSQL Hyperscale. 
+1. Erstellen Sie einen Namespace, in dem der Datencontroller erstellt wird. 
+1. Erstellen Sie den Bootstrapperdienst, einschließlich der Replikatgruppe, des Dienstkontos, der Rolle und der Rollenbindung.
+1. Erstellen Sie ein Geheimnis für den Benutzernamen und das Kennwort des Datencontrolleradministrators.
+1. Erstellen Sie den Webhook-Bereitstellungsauftrag, die Clusterrolle und die Clusterrollenbindung. 
+1. Erstellen Sie den Datencontroller.
+
+
 ## <a name="create-the-custom-resource-definitions"></a>Erstellen der benutzerdefinierten Ressourcendefinitionen
 
-Führen Sie den folgenden Befehl aus, um die benutzerdefinierten Ressourcendefinitionen zu erstellen.  **[Erfordert Administratorberechtigungen für Kubernetes-Cluster]**
+Führen Sie den folgenden Befehl aus, um die benutzerdefinierten Ressourcendefinitionen zu erstellen.  
+
+   > [!IMPORTANT]
+   > Erfordert Administratorberechtigungen für Kubernetes-Cluster.
 
 ```console
 kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
@@ -66,12 +110,18 @@ Führen Sie einen mit dem folgenden vergleichbaren Befehl aus, um einen neuen de
 ```console
 kubectl create namespace arc
 ```
+Wenn Sie OpenShift verwenden, müssen Sie die Anmerkungen `openshift.io/sa.scc.supplemental-groups` und `openshift.io/sa.scc.uid-range` für den Namespace mithilfe von `kubectl edit namespace <name of namespace>` bearbeiten.  Ändern Sie diese vorhandenen Anmerkungen so, dass sie mit diesen _spezifischen_ UID- und fsGroup-IDs/-Bereichen übereinstimmen.
 
-Wenn dieser Namespace von anderen Personen verwendet wird, bei denen es sich nicht um Clusteradministratoren handelt, empfiehlt es sich, eine Namespace-Administratorrolle zu erstellen und diesen Benutzern die Rolle mithilfe einer Rollenbindung zuzuweisen.  Der Namespaceadministrator sollte über vollständige Berechtigungen für den Namespace verfügen.  Weitere Informationen dazu, wie Benutzern ein präziser abgestimmter rollenbasierter Zugriff erteilt werden kann, folgen später.
+```console
+openshift.io/sa.scc.supplemental-groups: 1000700001/10000
+openshift.io/sa.scc.uid-range: 1000700001/10000
+```
+
+Wenn dieser Namespace von anderen Personen verwendet wird, bei denen es sich nicht um Clusteradministratoren handelt, empfiehlt es sich, eine Namespace-Administratorrolle zu erstellen und diesen Benutzern die Rolle mithilfe einer Rollenbindung zuzuweisen.  Der Namespaceadministrator sollte über vollständige Berechtigungen für den Namespace verfügen.  Stärker granulare Rollen und Beispielrollenbindungen finden Sie im [Azure Arc GitHub Repository](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/rbac).
 
 ## <a name="create-the-bootstrapper-service"></a>Erstellen des Bootstrapperdiensts
 
-Der Bootstrapperdienst verarbeitet eingehende Anforderungen zum Erstellen, Bearbeiten und Löschen benutzerdefinierter Ressourcen, beispielsweise eines Datencontrollers, einer SQL Managed Instance-Instanz oder einer PostgreSQL Hyperscale-Servergruppe.
+Der Bootstrapperdienst verarbeitet eingehende Anforderungen zum Erstellen, Bearbeiten und Löschen benutzerdefinierter Ressourcen, beispielsweise eines Datencontrollers, von SQL Managed Instance-Instanzen oder von PostgreSQL Hyperscale-Servergruppen.
 
 Führen Sie den folgenden Befehl aus, um einen Bootstrapperdienst, ein Dienstkonto für den Bootstrapperdienst sowie eine Rolle und eine Rollenbindung für das Konto des Bootstrapperdiensts zu erstellen.
 
@@ -103,13 +153,13 @@ Das folgende Beispiel setzt voraus, dass Sie ein Geheimnis für Imagepullvorgän
       - name: arc-private-registry #Create this image pull secret if you are using a private container registry
       containers:
       - name: bootstrapper
-        image: mcr.microsoft.com/arcdata/arc-bootstrapper:latest #Change this registry location if you are using a private container registry.
+        image: mcr.microsoft.com/arcdata/arc-bootstrapper:v1.0.0_2021-07-30 #Change this registry location if you are using a private container registry.
         imagePullPolicy: Always
 ```
 
-## <a name="create-a-secret-for-the-data-controller-administrator"></a>Erstellen eines Geheimnis für den Datencontrolleradministrator
+## <a name="create-a-secret-for-the-kibanagrafana-dashboards"></a>Erstellen eines Geheimnisses für die Kibana-/Grafana-Dashboards
 
-Der Benutzername und das Kennwort des Datencontrolleradministrators werden zur Authentifizierung bei der Datencontroller-API verwendet, um Verwaltungsfunktionen auszuführen.  Wählen Sie ein sicheres Kennwort aus, und geben Sie es nur an Personen weiter, die Clusteradministratorberechtigungen benötigen.
+Der Benutzername und das Kennwort werden für die Authentifizierung bei den Kibana- und Grafana-Dashboards als Administrator verwendet.  Wählen Sie ein sicheres Kennwort aus, und geben Sie es nur an Personen weiter, die diese Berechtigungen besitzen müssen.
 
 Ein Kubernetes-Geheimnis wird als Base64-codierte Zeichenfolge gespeichert – eine für den Benutzernamen und eine für das Kennwort.
 
@@ -145,6 +195,22 @@ kubectl create --namespace arc -f <path to your data controller secret file>
 kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.yaml
 ```
 
+## <a name="create-the-webhook-deployment-job-cluster-role-and-cluster-role-binding"></a>Erstellen Sie den Webhook-Bereitstellungsauftrag, die Clusterrolle und die Clusterrollenbindung.
+
+Erstellen Sie zunächst eine lokale Kopie der [Vorlagendatei](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/web-hook.yaml) auf Ihrem Computer, damit Sie einige Einstellungen ändern können.
+
+Bearbeiten Sie die Datei, und ersetzen Sie `{{namespace}}` an allen Stellen durch den Namen des Namespace, den Sie im vorherigen Schritt erstellt haben. **Speichern Sie die Datei .**
+
+Führen Sie den folgenden Befehl aus, um die Clusterrolle und die Clusterrollenbindungen zu erstellen.  
+
+   > [!IMPORTANT]
+   > Erfordert Administratorberechtigungen für Kubernetes-Cluster.
+
+```console
+kubectl create -n arc -f <path to the edited template file on your computer>
+```
+
+
 ## <a name="create-the-data-controller"></a>Erstellen des Datencontrollers
 
 Nun können Sie den Datencontroller selbst erstellen.
@@ -160,16 +226,14 @@ Bearbeiten Sie die folgenden Einstellungen nach Bedarf:
 
 **ÜBERPRÜFUNG UND GGF. ÄNDERUNG DER STANDARDWERTE EMPFOHLEN**
 - **storage..className**: Die Speicherklasse, die für die Daten- und Protokolldateien des Datencontrollers verwendet werden soll.  Wenn Sie nicht sicher sind, welche Speicherklassen in Ihrem Kubernetes-Cluster verfügbar sind, können Sie den folgenden Befehl ausführen: `kubectl get storageclass`.  Der Standardwert ist `default`. Dabei wird davon ausgegangen, dass eine Speicherklasse mit dem Namen `default` vorhanden ist, und _nicht_, dass eine Speicherklasse vorhanden ist, die der Standardspeicherklasse entspricht.  Hinweis: Es gibt zwei className-Einstellungen, die auf die gewünschte Speicherklasse festgelegt werden müssen – eine für Daten und eine für Protokolle.
-- **serviceType**: Ändern Sie den Diensttyp in `NodePort`, wenn Sie keinen LoadBalancer verwenden.  Hinweis: Es gibt zwei serviceType-Einstellungen, die geändert werden müssen.
-- Auf der Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform müssen Sie die Einschränkung beim Sicherheitskontext anwenden, bevor Sie den Datencontroller erstellen. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
-- **Sicherheit:** Ersetzen Sie bei Azure Red Hat OpenShift oder bei der Red Hat OpenShift-Containerplattform die Einstellungen vom Typ `security:` durch die folgenden Werte in der YAML-Datei des Datencontrollers. 
+- **serviceType**: Ändern Sie den Diensttyp in `NodePort`, wenn Sie keinen LoadBalancer verwenden.
+- **Sicherheit:** Ersetzen Sie bei Azure Red Hat OpenShift oder bei der Red Hat OpenShift-Containerplattform die Einstellungen vom Typ `security:` durch die folgenden Werte in der YAML-Datei des Datencontrollers.
 
 ```yml
   security:
-    allowDumps: true
+    allowDumps: false
     allowNodeMetricsCollection: false
     allowPodMetricsCollection: false
-    allowRunAsRoot: false
 ```
 
 **OPTIONAL**
@@ -188,32 +252,29 @@ kind: ServiceAccount
 metadata:
   name: sa-mssql-controller
 ---
-apiVersion: arcdata.microsoft.com/v1alpha1
-kind: datacontroller
+apiVersion: arcdata.microsoft.com/v1
+kind: DataController
 metadata:
   generation: 1
-  name: arc
+  name: arc-dc
 spec:
   credentials:
     controllerAdmin: controller-login-secret
     dockerRegistry: arc-private-registry #Create a registry secret named 'arc-private-registry' if you are going to pull from a private registry instead of MCR.
-    serviceAccount: sa-mssql-controller
+    serviceAccount: sa-arc-controller
   docker:
     imagePullPolicy: Always
-    imageTag: latest
+    imageTag: v1.0.0_2021-07-30
     registry: mcr.microsoft.com
     repository: arcdata
+  infrastructure: other #Must be a value in the array [alibaba, aws, azure, gcp, onpremises, other]
   security:
-    allowDumps: true
-    allowNodeMetricsCollection: true
-    allowPodMetricsCollection: true
-    allowRunAsRoot: false
+    allowDumps: true #Set this to false if deploying on OpenShift
+    allowNodeMetricsCollection: true #Set this to false if deploying on OpenShift
+    allowPodMetricsCollection: true #Set this to false if deploying on OpenShift
   services:
   - name: controller
     port: 30080
-    serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
-  - name: serviceProxy
-    port: 30777
     serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
   settings:
     ElasticSearch:
@@ -224,7 +285,7 @@ spec:
       resourceGroup: <your resource group>
       subscription: <your subscription GUID>
     controller:
-      displayName: arc
+      displayName: arc-dc
       enableBilling: "True"
       logs.rotation.days: "7"
       logs.rotation.size: "5000"
@@ -271,10 +332,6 @@ kubectl describe pod/<pod name> --namespace arc
 #Example:
 #kubectl describe pod/control-2g7bl --namespace arc
 ```
-
-Die Azure Arc-Erweiterung für Azure Data Studio bietet ein Notebook, das veranschaulichen soll, wie Sie Azure Arc-fähiges Kubernetes einrichten und anschließend für die Überwachung eines Git-Repositorys konfigurieren, das ein Beispiel für eine SQL Managed Instance-YAML-Datei enthält. Nachdem alle Verbindungen hergestellt wurden, wird eine neue SQL Managed Instance-Instanz in Ihrem Kubernetes-Cluster bereitgestellt.
-
-Weitere Informationen finden Sie im Notebook unter **Bereitstellen einer SQL Managed Instance-Instanz mithilfe von Azure Arc-fähigem Kubernetes und Flux** in der Azure Arc-Erweiterung für Azure Data Studio.
 
 ## <a name="troubleshooting-creation-problems"></a>Beheben von Problemen bei der Erstellung
 
