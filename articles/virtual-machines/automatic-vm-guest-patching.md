@@ -4,18 +4,17 @@ description: Erfahren Sie, wie Sie virtuelle Computer in Azure automatisch patch
 author: mayanknayar
 ms.service: virtual-machines
 ms.subservice: automatic-guest-patching
-ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f59d43dfa4d952b29dbe16b6679a527c4fc0d50c
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: f3ff46312c7836d90aeb8e3281e760d2ab163186
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565390"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345901"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Vorschau: Automatische VM-Gastpatches für Azure-VMs
 
@@ -24,12 +23,12 @@ Durch das Aktivieren von automatischen VM-Gastpatches für Ihre Azure-VMs könne
 Automatische VM-Gastpatches weisen die folgenden Merkmale auf:
 - Patches, die als *Kritisch* oder *Sicherheit* klassifiziert werden, werden automatisch heruntergeladen und auf die VM angewendet.
 - Patches werden außerhalb der Spitzenzeiten in der Zeitzone der VM angewendet.
-- Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](#availability-first-patching) angewendet.
+- Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](#availability-first-updates) angewendet.
 - Die Integrität des virtuellen Computers wird anhand von Integritätssignalen der Plattform ermittelt und überwacht, um Patchfehler zu erkennen.
 - Funktioniert für alle VM-Größen.
 
 > [!IMPORTANT]
-> Automatische VM-Gastpatches befinden sich derzeit in der öffentlichen Vorschau. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
+> Automatische VM-Gastpatches befinden sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -43,7 +42,7 @@ Patches werden innerhalb von 30 Tagen nach den monatlichen Patchreleases nach d
 
 Definitionsupdates und andere Patches, die nicht als *Kritisch* oder *Sicherheit* eingestuft sind, werden nicht über das automatische Patchen von VM-Gästen installiert. Um Patches mit anderen Patchklassifizierungen zu installieren oder die Patchinstallation innerhalb Ihres eigenen benutzerdefinierten Wartungsfensters zu planen, können Sie die [Updateverwaltung](./windows/tutorial-config-management.md#manage-windows-updates) verwenden.
 
-### <a name="availability-first-patching"></a>Patches nach Verfügbarkeit
+### <a name="availability-first-updates"></a>Verfügbarkeitsupdates
 
 Der Patchinstallationsvorgang wird global von Azure für alle VMs orchestriert, für die automatisches VM-Gastpatchen aktiviert ist. Diese Orchestrierung folgt den Verfügbarkeitsprinzipien auf unterschiedlichen Verfügbarkeitsstufen, die von Azure bereitgestellt werden.
 
@@ -56,7 +55,7 @@ Für eine Gruppe von virtuellen Computern, die ein Update durchlaufen, orchestri
 - Der Erfolg eines Updates wird durch die Nachverfolgung der Integrität nach dem Update der VM gemessen. Die VM-Integrität wird durch Integritätsindikatoren der Plattform für die VM nachverfolgt.
 
 **Innerhalb einer Region:**
-- VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig aktualisiert.
+- VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig mit demselben Update aktualisiert.
 - VMs, die nicht Teil einer Verfügbarkeitsgruppe sind, werden nach bestem Wissen in einem Batch zusammengefasst, um gleichzeitige Updates für alle VMs in einem Abonnement zu vermeiden.
 
 **Innerhalb einer Verfügbarkeitsgruppe:**
@@ -74,7 +73,7 @@ Da die automatischen VM-Gastpatches die Patchquelle nicht konfigurieren, können
 
 Bei Betriebssystemtypen, die Patches in einem festen Rhythmus veröffentlichen, können VMs, die für das öffentliche Repository des Betriebssystems konfiguriert sind, erwarten, dass sie in den verschiedenen Rolloutphasen eines Monats den gleichen Satz an Patches erhalten. Beispiel: Virtuelle Windows-Computer, die für das öffentliche Windows Update-Repository konfiguriert sind.
 
-Da jeden Monat ein neues Rollout ausgelöst wird, erhält eine VM jeden Monat mindestens ein Patchrollout, wenn die VM außerhalb der Spitzenzeiten eingeschaltet ist. Dadurch wird sichergestellt, dass die VM monatlich mit den neuesten verfügbaren Sicherheits- und kritischen Patches gepatcht wird. Um die Konsistenz der installierten Patches sicherzustellen, können Sie Ihre VMs so konfigurieren, dass sie Patches aus Ihren eigenen privaten Repositorys bewerten und herunterladen.
+Da jeden Monat ein neues Rollout ausgelöst wird, erhält eine VM jeden Monat mindestens ein Patchrollout, wenn die VM außerhalb der Spitzenzeiten eingeschaltet ist. Durch diesen Prozess wird sichergestellt, dass die VM monatlich mit den neuesten verfügbaren Sicherheits- und kritischen Patches gepatcht wird. Um die Konsistenz der installierten Patches sicherzustellen, können Sie Ihre VMs so konfigurieren, dass sie Patches aus Ihren eigenen privaten Repositorys bewerten und herunterladen.
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
 Zurzeit werden nur VMs, die aus bestimmten Betriebssystem-Plattformimages erstellt wurden, in der Vorschau unterstützt. Benutzerdefinierte Images werden in der Vorschau zurzeit nicht unterstützt.
@@ -84,12 +83,25 @@ Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelm�
 | Herausgeber               | Betriebssystemangebot      |  Sku               |
 |-------------------------|---------------|--------------------|
 | Canonical  | UbuntuServer | 18.04-LTS |
-| Redhat  | RHEL | 7.x |
+| Canonical  | 0001-com-ubuntu-pro-bionic | pro-18_04-lts |
+| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts |
+| Canonical  | 0001-com-ubuntu-pro-focal | pro-20_04-lts |
+| Redhat  | RHEL | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7_9, 7-RAW, 7-LVM |
+| Redhat  | RHEL | 8, 8.1, 8.2, 8_3, 8_4, 8-LVM |
+| Redhat  | RHEL-RAW | 8-raw |
+| OpenLogic  | Centos | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
+| OpenLogic  | Centos | 8.0, 8_1, 8_2, 8_3, 8-lvm |
+| SUSE  | sles-12-sp5 | gen1, gen2 |
+| SUSE  | sles-15-sp2 | gen1, gen2 |
+| MicrosoftWindowsServer  | Windows Server | 2008-R2-SP1 |
 | MicrosoftWindowsServer  | Windows Server | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | Windows Server | 2016-Datacenter    |
 | MicrosoftWindowsServer  | Windows Server | 2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer  | Windows Server | 2019-Datacenter |
 | MicrosoftWindowsServer  | Windows Server | 2019-Datacenter-Core |
+
+> [!NOTE]
+>Automatische VM-Gastpatches, bedarfsgesteuerte Patchbewertung und bedarfsbasierte Patchinstallation werden nur für VMs unterstützt, die aus Images erstellt wurden, die genau die Kombination aus Herausgeber, Angebot und SKU aus der Liste der unterstützten Betriebssystemimages enthalten. Benutzerdefinierte Images oder andere Herausgeben-, Angebots- und SKU-Kombinationen werden nicht unterstützt.
 
 ## <a name="patch-orchestration-modes"></a>Patchorchestrierungsmodi
 VMs in Azure unterstützen nun die folgenden Patchorchestrierungsmodi:
@@ -101,7 +113,7 @@ VMs in Azure unterstützen nun die folgenden Patchorchestrierungsmodi:
 - Dieser Modus wird nur für VMs unterstützt, die mithilfe der oben genannten unterstützten Betriebssystem-Plattformimages erstellt wurden.
 - Wenn Sie diesen Modus für virtuelle Windows-Computer festlegen, werden die nativen automatischen Updates auf dem virtuellen Windows-Computer deaktiviert, um Duplizierung zu vermeiden.
 - Um diesen Modus auf virtuellen Linux-Computern zu verwenden, legen Sie die Eigenschaft `osProfile.linuxConfiguration.patchSettings.patchMode=AutomaticByPlatform` in der VM-Vorlage fest.
-- Um diesen Modus auf virtuellen Windows-Computern zu verwenden, legen Sie die Eigenschaft `osProfile.windowsConfiguration.enableAutomaticUpdates=true` fest, und legen Sie die Eigenschaft `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` in der VM-Vorlage fest.
+- Um diesen Modus auf virtuellen Windows-Computern zu verwenden, legen Sie die Eigenschaft `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` in der VM-Vorlage fest.
 
 **AutomaticByOS:**
 - Dieser Modus wird nur für virtuelle Windows-Computer unterstützt.
@@ -125,7 +137,7 @@ VMs in Azure unterstützen nun die folgenden Patchorchestrierungsmodi:
 - Um diesen Modus auf virtuellen Linux-Computern zu verwenden, legen Sie die Eigenschaft `osProfile.linuxConfiguration.patchSettings.patchMode=ImageDefault` in der VM-Vorlage fest.
 
 > [!NOTE]
->Die Eigenschaft `osProfile.windowsConfiguration.enableAutomaticUpdates` kann für virtuelle Windows-Computer derzeit nur bei der Erstellung der VM festgelegt werden. Der Wechsel von einem manuellen in einen automatischen Modus oder von einem der beiden automatischen Modi in den manuellen Modus wird derzeit nicht unterstützt. Der Wechsel vom AutomaticByOS-Modus in den AutomaticByPlatfom-Modus wird unterstützt.
+>Die Eigenschaft `osProfile.windowsConfiguration.enableAutomaticUpdates` kann für virtuelle Windows-Computer nur bei der Erstellung der VM festgelegt werden. Dies wirkt sich auf bestimmte Patchmodusübergänge aus. Der Wechsel zwischen den Modi „AutomaticByPlatform“ und „Manual“ wird auf VMs unterstützt, die über `osProfile.windowsConfiguration.enableAutomaticUpdates=false` verfügen. In ähnlicher Weise wird der Wechsel zwischen den Modi „AutomaticByPlatform“ und „AutomaticByOS“ auf VMs unterstützt, die über `osProfile.windowsConfiguration.enableAutomaticUpdates=true` verfügen. Der Wechsel zwischen den Modi „AutomaticByOS“ und „Manual“ wird nicht unterstützt.
 
 ## <a name="requirements-for-enabling-automatic-vm-guest-patching"></a>Anforderungen zum Aktivieren von automatischen VM-Gastpatches
 
@@ -133,78 +145,11 @@ VMs in Azure unterstützen nun die folgenden Patchorchestrierungsmodi:
 - Bei virtuellen Linux-Computern muss der Azure Linux-Agent die Version 2.2.53.1 oder höher aufweisen. [Aktualisieren Sie den Linux-Agent](./extensions/update-linux-agent.md), wenn die aktuelle Version niedriger als die erforderliche Version ist.
 - Der Windows Update-Dienst muss für virtuelle Windows-Computer auf dem virtuellen Computer ausgeführt werden.
 - Der virtuelle Computer muss auf die konfigurierten Update-Endpunkte zugreifen können. Wenn Ihr virtueller Computer für die Verwendung privater Repositorys für Linux oder Windows Server Update Services (WSUS) für virtuelle Windows-Computer konfiguriert ist, müssen Sie auf die relevanten Update-Endpunkte zugreifen können.
-- Verwenden Sie die Compute-API-Version 2020-12-01 oder höher. Die Compute-API-Version 2020-06-01 kann für virtuelle Windows-Computer mit eingeschränkter Funktionalität verwendet werden.
-
-Zum Aktivieren der Vorschaufunktion ist ein einmalige Abonnement für die Features **InGuestAutoPatchVMPreview** und **InGuestPatchVMPreview** pro Abonnement erforderlich, wie im folgenden Abschnitt beschrieben.
-
-### <a name="rest-api"></a>REST-API
-Im folgenden Beispiel wird beschrieben, wie Sie die Vorschauversion für Ihr Abonnement aktivieren:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestAutoPatchVMPreview/register?api-version=2015-12-01`
-```
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview/register?api-version=2015-12-01`
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestAutoPatchVMPreview?api-version=2015-12-01`
-```
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview?api-version=2015-12-01`
-```
-Schließen Sie den Aktivierungsvorgang ab, nachdem das Feature für Ihr Abonnement registriert wurde, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNamespace Microsoft.Compute
-Get-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
-```
-
-Schließen Sie den Aktivierungsvorgang ab, nachdem das Feature für Ihr Abonnement registriert wurde, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
-az feature register --namespace Microsoft.Compute --name InGuestPatchVMPreview
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
-az feature show --namespace Microsoft.Compute --name InGuestPatchVMPreview
-```
-
-Schließen Sie den Aktivierungsvorgang ab, nachdem das Feature für Ihr Abonnement registriert wurde, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+- Verwenden Sie Compute-API Version 2021-03-01 oder höher, um auf alle Funktionen zuzugreifen, einschließlich bedarfsbasierter Bewertung und bedarfsgesteuertem Patching.
+- Benutzerdefinierte Images werden derzeit nicht unterstützt.
 
 ## <a name="enable-automatic-vm-guest-patching"></a>Aktivieren automatischer VM-Gastpatches
-Um automatische VM-Gastpatches auf einem virtuellen Windows-Computer zu aktivieren, stellen Sie sicher, dass die Eigenschaft *osProfile.windowsConfiguration.enableAutomaticUpdates* in der VM-Vorlagendefinition auf *true* festgelegt ist. Diese Eigenschaft kann nur beim Erstellen der VM festgelegt werden. Diese zusätzliche Eigenschaft gilt nicht für virtuelle Linux-Computer.
+Automatische VM-Gastpatches können auf jeder Windows- oder Linux-VM aktiviert werden, die aus einem unterstützten Plattformimage erstellt wird. Um automatische VM-Gastpatches auf einem virtuellen Windows-Computer zu aktivieren, stellen Sie sicher, dass die Eigenschaft *osProfile.windowsConfiguration.enableAutomaticUpdates* in der VM-Vorlagendefinition auf *true* festgelegt ist. Diese Eigenschaft kann nur beim Erstellen der VM festgelegt werden. Diese zusätzliche Eigenschaft gilt nicht für virtuelle Linux-Computer.
 
 ### <a name="rest-api-for-linux-vms"></a>REST-API für virtuelle Linux-Computer
 Im folgenden Beispiel wird das Aktivieren von automatischen VM-Gastpatches beschrieben:
@@ -215,6 +160,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 
 ```json
 {
+  "location": "<location>",
   "properties": {
     "osProfile": {
       "linuxConfiguration": {
@@ -232,11 +178,12 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 Im folgenden Beispiel wird das Aktivieren von automatischen VM-Gastpatches beschrieben:
 
 ```
-PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine?api-version=2020-06-01`
+PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine?api-version=2020-12-01`
 ```
 
 ```json
 {
+  "location": "<location>",
   "properties": {
     "osProfile": {
       "windowsConfiguration": {
@@ -283,7 +230,7 @@ Es kann mehr als drei Stunden dauern, bis automatische VM-Gastupdates auf einer 
 Automatische Updates sind in den meisten Szenarien deaktiviert, und die Installation von Patches wird künftig über die Erweiterung durchgeführt. Die folgenden Bedingungen gelten.
 - Wenn für einen virtuellen Windows-Computer zuvor automatische Windows-Updates im AutomaticByOS-Patchmodus aktiviert waren, werden automatische Windows-Updates für die VM deaktiviert, wenn die Erweiterung installiert wird.
 - Bei virtuellen Ubuntu-Computern werden die standardmäßigen automatischen Updates automatisch deaktiviert, wenn die automatischen VM-Gastpatches die Aktivierung abschließen.
-- Für RHEL müssen automatische Updates manuell deaktiviert werden (dies ist eine Einschränkung der Vorschauversion). Führen Sie folgende Befehle aus:
+- Für RHEL müssen die automatischen Updates in der Vorschau manuell deaktiviert werden. Führen Sie folgende Befehle aus:
 
 ```
 systemctl stop packagekit
@@ -324,15 +271,26 @@ Die Bewertungsergebnisse für Ihre VM können im Abschnitt `availablePatchSummar
 
 Die Ergebnisse der Patchinstallation für Ihre VM können im Abschnitt `lastPatchInstallationSummary` überprüft werden. Dieser Abschnitt enthält Details zum letzten Patchinstallationsversuch auf der VM, einschließlich der Anzahl der Patches, die installiert wurden, ausstehend bzw. fehlgeschlagen sind oder übersprungen wurden. Patches werden nur während des Wartungsfensters außerhalb der Spitzenzeiten für die VM installiert. Ausstehende und fehlerhafte Patches werden während des nächsten Wartungsfensters außerhalb der Spitzenzeiten automatisch wiederholt.
 
+## <a name="disable-automatic-vm-guest-patching"></a>Deaktivieren automatischer VM-Gastpatches
+Die automatischen VM-Gastpatches können durch Ändern des [Patchorchestrierungsmodus](#patch-orchestration-modes) für die VM deaktiviert werden.
+
+Ändern Sie den Patch-Modus in `ImageDefault`, um automatische VM-Gastpatches auf einer Linux-VM zu deaktivieren.
+
+Um automatische VM-Gastpatches auf einer Windows-VM zu aktivieren, bestimmt die Eigenschaft `osProfile.windowsConfiguration.enableAutomaticUpdates`, welche Patchmodi auf der VM festgelegt werden können, und diese Eigenschaft kann nur festgelegt werden, wenn die VM zum ersten Mal erstellt wird. Dies wirkt sich auf bestimmte Patchmodusübergänge aus:
+- Deaktivieren Sie bei VMs mit `osProfile.windowsConfiguration.enableAutomaticUpdates=false` die automatischen VM-Gastpatches, indem Sie den Patchmodus in `Manual` ändern.
+- Deaktivieren Sie bei VMs mit `osProfile.windowsConfiguration.enableAutomaticUpdates=true`, die automatischen VM-Gastpatches, indem Sie den Patchmodus in `AutomaticByOS` ändern.
+- Der Wechsel zwischen den Modi „AutomaticByOS“ und „Manual“ wird nicht unterstützt.
+
+Verwenden Sie die Beispiele aus dem Abschnitt zur [Aktivierung](#enable-automatic-vm-guest-patching) oben in diesem Artikel für API-, PowerShell- und CLI-Verwendungsbeispiele, um den erforderlichen Patchmodus festzulegen.
+
 ## <a name="on-demand-patch-assessment"></a>Bedarfsgesteuerte Patchbewertung
 Wenn automatische VM-Gastpatches bereits für Ihre VM aktiviert sind, wird eine regelmäßige Patchbewertung für die VM außerhalb der Spitzenzeiten der VM durchgeführt. Dieser Prozess erfolgt automatisch, und die Ergebnisse der aktuellen Bewertung können wie zuvor in diesem Dokument beschrieben über die Instanzansicht der VM überprüft werden. Sie können auch jederzeit eine bedarfsgesteuerte Patchbewertung für Ihren virtuellen Computer auslösen. Die Patchbewertung kann einige Minuten dauern, und der Status der aktuellen Bewertung wird in der Instanzansicht der VM aktualisiert.
-
-Zum Aktivieren der Vorschaufunktion ist eine einmalige Aktivierung des Features **InGuestPatchVMPreview** pro Abonnement erforderlich. Diese Featurevorschau unterscheidet sich von der Featureregistrierung für das automatische Patchen von VM-Gästen, die zuvor für **InGuestAutoPatchVMPreview** durchgeführt wurde. Die Aktivierung der zusätzlichen Featurevorschau ist eine separate und zusätzliche Anforderung. Die Funktionsvorschau für die Patchbewertung auf Anforderung kann durch Befolgen des [Prozesses zum Aktivieren der Vorschau](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) aktiviert werden, der weiter oben für automatische VM-Gastpatches beschrieben wurde.
 
 > [!NOTE]
 >Bei der bedarfsgesteuerten Patchbewertung wird die Patchinstallation nicht automatisch auslöst. Wenn Sie das automatische Patchen von VM-Gästen aktiviert haben, werden die bewerteten und anwendbaren Patches für die VM außerhalb der Spitzenzeiten der VM installiert. Dies erfolgt nach dem zuvor in diesem Dokument beschriebenen Vorgang zur Patchverfügbarkeit.
 
 ### <a name="rest-api"></a>REST-API
+Verwenden Sie die API für die [Patchbewertung](/rest/api/compute/virtual-machines/assess-patches), um verfügbare Patches für Ihren virtuellen Computer zu bewerten.
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine/assessPatches?api-version=2020-12-01`
 ```
@@ -349,6 +307,79 @@ Verwenden Sie [az vm assess-patches](/cli/azure/vm#az_vm_assess_patches), um ver
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM
+```
+
+## <a name="on-demand-patch-installation"></a>Bedarfsbasierte Patchinstallation
+Wenn automatische VM-Gastpatches für Ihre VM bereits aktiviert sind, wird eine regelmäßige Patchinstallation von Sicherheitspatches und wichtigen Patches für die VM außerhalb der Spitzenzeiten der VM durchgeführt. Dieser Prozess erfolgt automatisch, und die Ergebnisse der aktuellen Installation können wie zuvor in diesem Dokument beschrieben über die Instanzansicht der VM überprüft werden.
+
+Sie können auch jederzeit eine bedarfsbasierte Patchinstallation für Ihren virtuellen Computer auslösen. Die Patchinstallation kann einige Minuten dauern, und der Status der aktuellen Installation wird in der Instanzansicht der VM aktualisiert.
+
+Sie können die bedarfsbasierte Patchinstallation verwenden, um alle Patches einer oder mehrere Patchklassifizierungen zu installieren. Sie können auch wählen, ob Sie bestimmte Pakete für Linux oder bestimmte KB-IDs für Windows ein- oder ausschließen möchten. Wenn Sie eine bedarfsbasierte Patchinstallation auslösen, stellen Sie sicher, dass Sie mindestens eine Patchklassifizierung oder mindestens ein Patch (Paket für Linux, KB-ID für Windows) in der Aufnahmeliste angeben.
+
+### <a name="rest-api"></a>REST-API
+Verwenden Sie die API zum [Installieren von Patches](/rest/api/compute/virtual-machines/install-patches), um Patches auf Ihrem virtuellen Computer zu installieren.
+
+```
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine/installPatches?api-version=2020-12-01`
+```
+
+Beispiel für einen Anforderungstext für Linux:
+```json
+{
+  "maximumDuration": "PT1H",
+  "rebootSetting": "IfRequired",
+  "linuxParameters": {
+    "classificationsToInclude": [
+      "Critical",
+      "Security"
+    ]
+  }
+}
+```
+
+Beispiel für einen Anforderungstext für Windows:
+```json
+{
+  "maximumDuration": "PT1H",
+  "rebootSetting": "IfRequired",
+  "windowsParameters": {
+    "classificationsToInclude": [
+      "Critical",
+      "Security"
+    ]
+  }
+}
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Verwenden Sie das Cmdlet [Invoke-AzVMInstallPatch](/powershell/module/az.compute/invoke-azvminstallpatch), um Patches auf Ihrem virtuellen Computer zu installieren.
+
+Beispiel für die Installation bestimmter Pakete auf einer Linux-VM:
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude ["package123"] -PackageNameMaskToExclude ["package567"]
+```
+
+Beispiel für die Installation aller wichtigen Patches auf einer Windows-VM:
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT2H" -RebootSetting "Never" -Windows   -ClassificationToIncludeForWindows Critical
+```
+
+Beispiel für die Installation aller Sicherheitspatches auf einer Windows-VM, wobei Patches mit bestimmten KB-IDs ein- und ausgeschlossen werden und alle Patches, die einen Neustart erfordern, ausgeschlossen werden:
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude ["KB1234567", "KB123567"] -KBNumberToExclude ["KB1234702", "KB1234802"] -ExcludeKBsRequiringReboot
+```
+
+### <a name="azure-cli"></a>Azure CLI
+Verwenden Sie [az vm install-patches](/cli/azure/vm#az_vm_install_patches), um Patches auf Ihrem virtuellen Computer zu installieren.
+
+Beispiel für die Installation aller wichtigen Patches auf einer Linux-VM:
+```azurecli-interactive
+az vm install-patches --resource-group myResourceGroup --name myVM --maximum-duration PT2H --reboot-setting IfRequired --classifications-to-include-linux Critical
+```
+
+Beispiel für die Installation aller wichtigen Patches und Sicherheitspatches auf einer Windows-VM, wobei alle Patches, die einen Neustart erfordern, ausgeschlossen werden:
+```azurecli-interactive
+az vm install-patches --resource-group myResourceGroup --name myVM --maximum-duration PT2H --reboot-setting IfRequired --classifications-to-include-win Critical Security --exclude-kbs-requiring-reboot true
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

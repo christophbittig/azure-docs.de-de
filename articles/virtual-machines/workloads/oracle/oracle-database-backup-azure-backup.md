@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 9ed157dad020c69f3243db591ddf494853d793eb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 31bb35a096845c489b0f141a601ee604253e6ef9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087380"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355490"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Backup
 
@@ -35,8 +35,9 @@ Sie müssen für den Sicherungs- und Wiederherstellungsprozess zuerst eine Linux
 
 Führen Sie die folgenden Schritte aus, um die Umgebung vorzubereiten:
 
-1. Stellen Sie eine Verbindung zur VM her.
-1. Bereiten Sie die Datenbank vor.
+1. [Stellen Sie eine Verbindung mit der VM her](#connect-to-the-vm).
+1. [Einrichten von Azure Files-Speicher](#setup-azure-files-storage-for-the-oracle-archived-redo-log-files)
+1. [Bereiten Sie die Datenbank vor](#prepare-the-databases).
 
 ### <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 
@@ -58,9 +59,21 @@ Führen Sie die folgenden Schritte aus, um die Umgebung vorzubereiten:
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-### <a name="prepare-the-database"></a>Vorbereiten der Datenbank
+### <a name="setup-azure-files-storage-for-the-oracle-archived-redo-log-files"></a>Einrichten von Azure Files-Speicher für die archivierten Oracle-Wiederholungsprotokolldateien
 
-Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz namens `test` verfügen, die auf einer VM namens `vmoracle19c` ausgeführt wird.
+Die archivierten Oracle-Wiederholungsprotokolldateien spielen eine wichtige Rolle bei der Datenbankwiederherstellung, da die Transaktionen in diesen gespeichert sind, für die ein Rollforward von einer Datenbankmomentaufnahme ausgeführt wurde, die in der Vergangenheit erstellt wurde. Im Archivprotokollmodus archiviert die Datenbank die Inhalte von Online-Wiederholungsprotokolldateien, wenn diese voll sind und ausgetauscht werden. Diese werden zusammen mit einer Sicherung für eine Zeitpunktwiederherstellung benötigt, wenn die Datenbank verloren gegangen ist.  
+   
+Mit Oracle können Wiederholungsprotokolldateien an verschiedenen Speicherorten archiviert werden. Als Best Practice wird in der Branche empfohlen, dabei mindestens einen Remotespeicherort zu wählen. Dieser ist vom Hostspeicher getrennt und wird mit unabhängigen Momentaufnahmen geschützt. Azure Files eignet sich hervorragend, um diese Anforderungen zu erfüllen.
+
+Eine Azure Files-Dateifreigabe ist ein Speicher, der mithilfe von SMB- oder NFS-Protokollen (Vorschauversion) als reguläre Dateisystemkomponente an eine Linux- oder Windows-VM angefügt werden kann. 
+   
+Befolgen Sie die Anleitung im [Leitfaden für Azure Files mit Linux](../../../storage/files/storage-how-to-use-files-linux.md), um eine Azure Files-Dateifreigabe mithilfe des SMB 3.0-Protokolls (empfohlen) unter Linux einzurichten und als Archivprotokollspeicher zu verwenden. Wenn Sie die Einrichtung abgeschlossen haben, kehren Sie zu dieser Anleitung zurück und führen alle verbleibenden Schritte aus.
+
+### <a name="prepare-the-databases"></a>Vorbereiten der Datenbanken
+
+Dieser Schritt setzt voraus, dass Sie den [Schnellstart zum Erstellen einer Oracle-Datenbank](./oracle-database-quick-create.md) befolgt haben und eine Oracle-Instanz namens `oratest1` auf einer VM namens `vmoracle19c` verwenden, und dass Sie das Oracle-Standardskript „oraenv“ mit seiner Abhängigkeit von der Oracle-Standardkonfigurationsdatei „/etc/oratab“ verwenden, um Umgebungsvariablen in einer Shell-Sitzung einzurichten.
+
+Führen Sie die folgenden Schritte für jede Datenbank auf der VM durch:
 
 1. Ändern Sie den Benutzer in den Benutzer *oracle*:
  
@@ -68,93 +81,30 @@ Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz namens `test` ve
     sudo su - oracle
     ```
     
-1. Bevor Sie eine Verbindung herstellen, müssen Sie die Umgebungsvariablen ORACLE_SID festlegen:
+1. Bevor Sie eine Verbindung herstellen, müssen Sie die Umgebungsvariable ORACLE_SID festlegen, indem Sie das Skript `oraenv` ausführen, das Sie zur Eingabe des ORACLE_SID-Namens auffordert:
     
     ```bash
-    export ORACLE_SID=test;
+    $ . oraenv
     ```
 
-    Sie müssen auch für künftige Anmeldungen die Variable ORACLE_SID der `.bashrc`-Datei für `oracle`-Benutzer mit dem folgenden Befehl hinzufügen:
+1.   Fügen Sie die Azure Files-Freigabe als zusätzliches Ziel für Datenbankarchiv-Protokolldateien hinzu.
+     
+     Dieser Schritt setzt voraus, dass Sie eine Azure Files-Freigabe auf der Linux-VM konfiguriert und eingebunden haben, z. B. unter einem Bereitstellungspunktsverzeichnis namens `/backup`.
 
-    ```bash
-    echo "export ORACLE_SID=test" >> ~oracle/.bashrc
-    ```
+     Erstellen Sie für jede auf der VM installierte Datenbank ein Unterverzeichnis, das nach Ihrer Datenbank-SID benannt ist, indem Sie z. B. das folgende Beispiel verwenden.
+     
+     In diesem Beispiel lautet der Name des Bereitstellungspunkts `/backup` und die SID lautet `oratest1`. Sie erstellen also das Unterverzeichnis `/backup/oratest1` und übertragen den Besitz an den Benutzer „oracle“. Ersetzen Sie **/backup/SID** durch den Bereitstellungspunktnamen und die Datenbank-SID. 
+
+     ```bash
+     sudo mkdir /backup/oratest1
+     sudo chown oracle:oinstall /backup/oratest1
+     ```
     
-1. Starten Sie den Oracle-Listener, sofern noch nicht erfolgt:
-
-    ```output
-    $ lsnrctl start
-    ```
-
-    Die Ausgabe sollte in etwa wie im folgenden Beispiel aussehen:
-
-    ```bash
-    LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 18-SEP-2020 03:23:49
-
-    Copyright (c) 1991, 2019, Oracle.  All rights reserved.
-
-    Starting /u01/app/oracle/product/19.0.0/dbhome_1/bin/tnslsnr: please wait...
-
-    TNSLSNR for Linux: Version 19.0.0.0.0 - Production
-    System parameter file is /u01/app/oracle/product/19.0.0/dbhome_1/network/admin/listener.ora
-    Log messages written to /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
-    Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-
-    Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    STATUS of the LISTENER
-    ------------------------
-    Alias                     LISTENER
-    Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
-    Start Date                18-SEP-2020 03:23:49
-    Uptime                    0 days 0 hr. 0 min. 0 sec
-    Trace Level               off
-    Security                  ON: Local OS Authentication
-    SNMP                      OFF
-    Listener Parameter File   /u01/app/oracle/product/19.0.0/dbhome_1/network/admin/listener.ora
-    Listener Log File         /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
-    Listening Endpoints Summary...
-     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-    The listener supports no services
-    The command completed successfully
-    ```
-
-1.  Erstellen Sie den Datenbank-Speicherort für die Fast Recovery Area (FRA): Die FRA ist ein zentraler Speicherort für Sicherungs- und Wiederherstellungsdateien:
-
-    ```bash
-    mkdir /u02/fast_recovery_area
-    ```
-
-1. Erstellen Sie eine Azure Files-Dateifreigabe für die archivierten Oracle-Wiederholungsprotokolldateien.
-
-   Die archivierten Oracle-Wiederholungsprotokolldateien spielen eine wichtige Rolle bei der Datenbankwiederherstellung, da die Transaktionen in diesen gespeichert sind, für die ein Rollforward von einer Datenbankmomentaufnahme ausgeführt wurde, die in der Vergangenheit erstellt wurde. Im Archivprotokollmodus archiviert die Datenbank die Inhalte von Online-Wiederholungsprotokolldateien, wenn diese voll sind und ausgetauscht werden. Diese werden zusammen mit einer Sicherung für eine Zeitpunktwiederherstellung benötigt, wenn die Datenbank verloren gegangen ist.  
-   
-   Mit Oracle können Wiederholungsprotokolldateien an verschiedenen Speicherorten archiviert werden. Als Best Practice wird in der Branche empfohlen, dabei mindestens einen Remotespeicherort zu wählen. Dieser ist vom Hostspeicher getrennt und wird mit unabhängigen Momentaufnahmen geschützt. Azure Files eignet sich hervorragend, um diese Anforderungen zu erfüllen.
-
-   Eine Azure Files-Dateifreigabe ist ein Speicher, der mithilfe von SMB- oder NFS-Protokollen (Vorschauversion) als reguläre Dateisystemkomponente an eine Linux- oder Windows-VM angefügt werden kann. Befolgen Sie die Anleitung im [Leitfaden für Azure Files mit Linux](../../../storage/files/storage-how-to-use-files-linux.md), um eine Azure Files-Dateifreigabe mithilfe des SMB 3.0-Protokolls (empfohlen) unter Linux einzurichten und als Archivprotokollspeicher zu verwenden. 
-   
-   Sobald die Azure Files-Freigabe konfiguriert und auf dem virtuellen Linux-Computer eingebunden ist, z. B. in einem Bereitstellungspunktverzeichnis namens `/backup`, kann sie wie folgt als zusätzliches Ziel für Archivprotokolldateien in der Datenbank hinzugefügt werden:
-
-   Überprüfen Sie zunächst den Namen der Oracle-SID.
+1. Stellen Sie eine Verbindung mit der Datenbank her:
+    
    ```bash
-   echo $ORACLE_SID
-   test
+   sqlplus / as sysdba
    ```
-
-   Erstellen Sie ein Unterverzeichnis mit dem Namen Ihrer Datenbank-SID. In diesem Beispiel lautet der Name des Bereitstellungspunkts `/backup`, und die vom vorherigen Befehl zurückgegebene SID lautet `test`. Sie erstellen also das Unterverzeichnis `/backup/test` und übertragen den Besitz an den Benutzer „oracle“. Ersetzen Sie **/backup/SID** durch den Bereitstellungspunktnamen und die Datenbank-SID. Wenn auf der VM mehrere Datenbanken vorhanden sind, erstellen Sie für jede Datenbank ein Unterverzeichnis, und ändern Sie den Besitz:
-
-   ```bash
-   sudo mkdir /backup/test
-   sudo chown oracle:oinstall /backup/test
-   ```
-
-1.  Stellen Sie eine Verbindung mit der Datenbank her:
-
-    ```bash
-    sqlplus / as sysdba
-    ```
-    Wenn Sie mehrere Datenbanken auf der VM installiert haben, müssen Sie Schritt 6 bis 15 für jede Datenbank ausführen:
 
 1.  Starten Sie die Datenbank, sofern sie nicht bereits ausgeführt wird. 
    
@@ -162,22 +112,11 @@ Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz namens `test` ve
     SQL> startup
     ```
    
-1. Legen Sie das erste Archivprotokollziel der Datenbank auf das Dateifreigabeverzeichnis fest, das Sie in Schritt 5 erstellt haben:
+1. Legen Sie das erste Archivprotokollziel der Datenbank auf das Dateifreigabeverzeichnis fest, das Sie zuvor erstellt haben:
 
    ```bash
-   sqlplus / as sysdba
-   SQL> alter system set log_archive_dest_1='LOCATION=/backup/test';
-   SQL> 
+   SQL> alter system set log_archive_dest_1='LOCATION=/backup/oratest1' scope=both;
    ```
-
-
-1.  Legen Sie die Umgebungsvariablen der Datenbank für die Fast Recovery Area fest:
-
-    ```bash
-    SQL> alter system set db_recovery_file_dest_size=4096M scope=both;
-    SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
-    ```
-
 
 1. Definieren Sie die RPO (Recovery Point Objective) für die Datenbank.
 
@@ -190,7 +129,6 @@ Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz namens `test` ve
     So legen Sie ARCHIVE_LAG_TARGET fest:
 
     ```bash 
-    sqlplus / as sysdba
     SQL> alter system set archive_lag_target=300 scope=both;
     ```
 
@@ -217,59 +155,47 @@ Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz namens `test` ve
      SQL> ALTER DATABASE OPEN;
      SQL> ALTER SYSTEM SWITCH LOGFILE;
      ```
-
-1.  Erstellen Sie eine Tabelle zum Testen der Sicherungs- und Wiederherstellungsvorgänge:
-
-     ```bash
-     SQL> create user scott identified by tiger quota 100M on users;
-     SQL> grant create session, create table to scott;
-     SQL> connect scott/tiger
-     SQL> create table scott_table(col1 number, col2 varchar2(50));
-     SQL> insert into scott_table VALUES(1,'Line 1');
-     SQL> commit;
-     SQL> quit
-     ```
-
-1. Konfigurieren Sie RMAN für die Sicherung der Datenbanken in der Fast Recovery Area auf dem VM-Datenträger: Die Konfiguration der Momentaufnahmen-Steuerungsdatei akzeptiert die Ersetzung des Datenbanknamens durch %d nicht. Sie sollten daher explizit die Datenbank im Dateinamen einfügen, damit mehrere Datenbanken am selben Speicherort gesichert werden können. Ersetzen Sie `<ORACLE_SID>` durch Ihren Datenbanknamen:
-
-    ```bash
-    $ rman target /
-    RMAN> configure snapshot controlfile name to '/u02/fast_recovery_area/snapcf_<ORACLE_SID>.f';
-    RMAN> configure channel 1 device type disk format '/u02/fast_recovery_area/%d/Full_%d_%U_%T_%s';
-    RMAN> configure channel 2 device type disk format '/u02/fast_recovery_area/%d/Full_%d_%U_%T_%s'; 
-    ```
-
-1. Bestätigen Sie die Details der Konfigurationsänderung:
-
-    ```bash
-    RMAN> show all;
-    ```    
-
-1.  Führen Sie nun die Sicherung aus. Mit dem folgenden Befehl wird eine vollständige Sicherung der Datenbank, einschließlich der ARCHIVELOG-Dateien, als Backupset (Sicherungssatz) im komprimierten Format erstellt:
-
-     ```bash
-     RMAN> backup as compressed backupset database plus archivelog;
-     ```
-
-## <a name="using-azure-backup-preview"></a>Verwenden von Azure Backup (Vorschau)
+1. Erstellen Sie eine Tabelle zum Testen der Sicherungs- und Wiederherstellungsvorgänge:
+   ```bash
+   SQL> create user scott identified by tiger quota 100M on users;
+   SQL> grant create session, create table to scott;
+   SQL> connect scott/tiger
+   SQL> create table scott_table(col1 number, col2 varchar2(50));
+   SQL> insert into scott_table VALUES(1,'Line 1');
+   SQL> commit;
+   SQL> quit
+   ```
+## <a name="using-azure-backup"></a>Verwenden von Azure Backup 
 
 Der Azure Backup-Dienst bietet einfache, sichere und kostengünstige Lösungen, um Ihre Daten zu sichern und aus der Microsoft Azure-Cloud wiederherzustellen. Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen von Originaldaten. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 
-Der Dienst Azure Backup bietet ein [Framework](../../../backup/backup-azure-linux-app-consistent.md) zum Erreichen von Anwendungskonsistenz bei Sicherungen von Windows- und Linux-VMs für verschiedene Anwendungen wie Oracle, MySQL, Mongo DB und PostGreSQL. Dies umfasst das Aufrufen eines Pre-Skripts (zum Stilllegen der Anwendungen), ehe eine Momentaufnahme der Datenträger erstellt wird, und eines Post-Skripts (zum Reaktivieren der Anwendungen) nach Erstellen der Momentaufnahme, um die Anwendungen wieder in den normalen Modus zu versetzen. Obwohl Beispiele für Pre- und Post-Skripts auf GitHub bereitgestellt sind, liegt das Erstellen und Pflegen dieser Skripts in Ihrer Verantwortung.
+Der Dienst Azure Backup bietet ein [Framework](../../../backup/backup-azure-linux-app-consistent.md) zum Erreichen von Anwendungskonsistenz bei Sicherungen von Windows- und Linux-VMs für verschiedene Anwendungen wie Oracle und MySQL. Dies umfasst das Aufrufen eines Pre-Skripts (zum Stilllegen der Anwendungen), bevor eine Momentaufnahme der Datenträger erstellt wird, und eines Post-Skripts (zum Reaktivieren der Anwendungen) nach Erstellen der Momentaufnahme. 
 
-Mittlerweile umfasst Azure Backup ein erweitertes Framework für Pre- und Post-Skripts (**derzeit in der Vorschauphase**), über das gepackte Pre- und Post-Skripts für ausgewählte Anwendungen bereitgestellt werden. Benutzer von Azure Backup müssen lediglich die Anwendung angeben, woraufhin bei der Azure-VM-Sicherung automatisch die entsprechenden Pre- und Post-Skripts aufgerufen werden. Für die Pflege der gepackten Pre- und Post-Skripts ist das Azure Backup-Team zuständig, sodass Benutzer sicher sein können, dass diese Skripts unterstützt werden und gültig sind. Derzeit sind die vom verbesserten Framework unterstützten Anwendungen *Oracle* und *MySQL*.
+Das Framework wurde jetzt dahingehend verbessert, dass verpackte Pre- und Post-Skripts für ausgewählte Anwendungen wie Oracle vom Azure Backup-Dienst bereitgestellt und auf dem Linux-Image vorinstalliert werden, sodass Sie nichts installieren müssen. Benutzer von Azure Backup müssen lediglich die Anwendung angeben, woraufhin bei der Azure-VM-Sicherung automatisch die entsprechenden Pre- und Post-Skripts aufgerufen werden. Für die Pflege der gepackten Pre- und Post-Skripts ist das Azure Backup-Team zuständig, sodass Benutzer sicher sein können, dass diese Skripts unterstützt werden und gültig sind. Derzeit sind die vom verbesserten Framework unterstützten Anwendungen *Oracle* und *MySQL*.
 
-In diesem Abschnitt erstellen Sie mit dem erweiterten Framework von Azure Backup anwendungskonsistente Momentaufnahmen Ihrer laufenden VM und der Oracle-Datenbank. Die Datenbank wird in den Sicherungsmodus versetzt, sodass eine transaktionskonsistente Onlinesicherung erfolgen kann, während Azure Backup eine Momentaufnahme der VM-Datenträger erstellt. Bei der Momentaufnahme handelt es sich um eine vollständige Kopie des Speichers und nicht um eine inkrementelle Momentaufnahme oder eine des Typs „Kopie bei Schreibvorgang“, sodass sie ein effektives Medium zur Wiederherstellung Ihrer Datenbank ist. Der Vorteil anwendungskonsistenter Momentaufnahmen von Azure Backup ist, dass sie unabhängig von der Größe Ihrer Datenbank äußerst schnell erstellt werden können. Eine Momentaufnahme kann für Wiederherstellungsvorgänge verwendet werden, sobald sie erstellt wurde. Sie müssen nicht warten, bis sie in den Recovery Services-Tresor übertragen wurde.
+> [!Note]
+> Das erweiterte Framework führt bei jeder Sicherung die Pre- und Post-Skripts für alle auf der VM installierten Oracle-Datenbanken aus. 
+>
+> Der Parameter `configuration_path` in der Datei **workload.conf** verweist auf den Speicherort der Oracle-Datei „/etc/oratab“ (oder eine benutzerdefinierte Datei, die der oratab-Syntax folgt). Weitere Informationen finden Sie unter [Einrichten anwendungskonsistenter Sicherungen](#set-up-application-consistent-backups).
+> 
+> Azure Backup führt die Skripts vor und nach der Sicherung für jede Datenbank aus, die in der Datei aufgeführt ist, auf die „configuration_path“ verweist, mit Ausnahme der Zeilen, die mit # (wird als Kommentar behandelt) oder +ASM (Oracle Automatic Storage Management-Instanz) beginnen.
+> 
+> Das erweiterte Azure Backup-Framework führt Onlinesicherungen von Oracle-Datenbanken durch, die im ARCHIVELOG-Modus betrieben werden. Die Pre- und Post-Skripts verwenden die Befehle ALTER DATABASE BEGIN/END BACKUP, um die Konsistenz der Anwendung sicherzustellen. 
+>
+> Datenbanken im NOARCHIVELOG-Modus müssen vor Beginn der Momentaufnahme fehlerfrei heruntergefahren werden, damit die Sicherung der Datenbank konsistent ist.
+
+
+In diesem Abschnitt erstellen Sie mit dem Framework von Azure Backup anwendungskonsistente Momentaufnahmen Ihrer laufenden VM und der Oracle-Datenbanken. Die Datenbanken werden in den Sicherungsmodus versetzt, sodass eine transaktionskonsistente Onlinesicherung erfolgen kann, während Azure Backup eine Momentaufnahme der VM-Datenträger erstellt. Bei der Momentaufnahme handelt es sich um eine vollständige Kopie des Speichers und nicht um eine inkrementelle Momentaufnahme oder eine des Typs „Kopie bei Schreibvorgang“, sodass sie ein effektives Medium zur Wiederherstellung Ihrer Datenbank ist. Der Vorteil anwendungskonsistenter Momentaufnahmen von Azure Backup ist, dass sie unabhängig von der Größe Ihrer Datenbank äußerst schnell erstellt werden können. Eine Momentaufnahme kann für Wiederherstellungsvorgänge verwendet werden, sobald sie erstellt wurde. Sie müssen nicht warten, bis sie in den Recovery Services-Tresor übertragen wurde.
 
 Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sichern:
 
-1. Bereiten Sie die Umgebung für eine anwendungskonsistente Sicherung vor.
-1. Richten Sie anwendungskonsistente Sicherungen ein.
-1. Lösen Sie eine anwendungskonsistente Sicherung der VM aus.
+1. [Vorbereiten der Umgebung für eine anwendungskonsistente Sicherung](#prepare-the-environment-for-an-application-consistent-backup).
+1. [Einrichten anwendungskonsistenter Sicherungen](#set-up-application-consistent-backups).
+1. [Auslösen einer anwendungskonsistenten Sicherung der VM](#trigger-an-application-consistent-backup-of-the-vm).
 
 ### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>Vorbereiten der Umgebung für eine anwendungskonsistente Sicherung
 
-> [!IMPORTANT] 
+> [!Note] 
 > In Oracle-Datenbanken werden Auftragsrollen klar voneinander abgetrennt, um eine Aufgabentrennung nach dem Ansatz der geringsten Rechte umzusetzen. Hierfür werden separate Betriebssystemgruppen separaten Datenbank-Verwaltungsrollen zugeordnet. Betriebssystembenutzer können dann abhängig von ihrer Mitgliedschaft in Betriebssystemgruppen über unterschiedliche Datenbankberechtigungen verfügen. 
 >
 > Die Datenbankrolle `SYSBACKUP` (generischer Name: OSBACKUPDBA) wird verwendet, um eingeschränkte Berechtigungen zum Ausführen von Sicherungsvorgängen in der Datenbank zu erteilen, und ist für Azure Backup erforderlich.
@@ -283,7 +209,7 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
 
 1. Legen Sie die Oracle-Umgebung fest:
    ```bash
-   export ORACLE_SID=test
+   export ORACLE_SID=oratest1
    export ORAENV_ASK=NO
    . oraenv
    ```
@@ -317,12 +243,13 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
 1. Erstellen Sie in der Betriebssystemgruppe, die Sie in den vorherigen Schritten überprüft oder erstellt haben, den neuen Sicherungsbenutzer `azbackup`. Ersetzen Sie \<group name\> durch den Namen der überprüften Gruppe:
 
    ```bash
-   sudo useradd -G <group name> azbackup
+   sudo useradd -g <group name> azbackup
    ```
 
 1. Richten Sie die externe Authentifizierung für den neuen Benutzer für die Sicherung ein. 
 
    Der Sicherungsbenutzer `azbackup` muss in der Lage sein, über eine externe Authentifizierung auf die Datenbank zuzugreifen, damit kein Kennwort abgefragt wird. Hierzu müssen Sie einen Datenbankbenutzer erstellen, der sich extern über `azbackup` authentifiziert. Die Datenbank verwendet ein Präfix für den Benutzernamen, das Sie ermitteln müssen.
+
    Führen Sie auf jeder auf der VM installierten Datenbank die folgenden Schritte durch:
  
    Melden Sie sich mit sqlplus bei der Datenbank an, und überprüfen Sie die Standardeinstellungen für die externe Authentifizierung:
@@ -359,15 +286,17 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
    > 1. Führen Sie die folgenden Befehle aus:
    >
    >    ```bash
-   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    mv $ORACLE_HOME/dbs/orapworatest1 $ORACLE_HOME/dbs/orapworatest1.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapworatest1 input_file=$ORACLE_HOME/dbs/orapworatest1.tmp
+   >    rm $ORACLE_HOME/dbs/orapworatest1.tmp
    >    ```
    >
    > 1. Führen Sie in sqlplus den Vorgang `GRANT` erneut aus.
    >
    
 1. Erstellen Sie eine gespeicherte Prozedur zum Protokollieren von Sicherungsmeldungen im Warnungsprotokoll der Datenbank:
+
+   Führen Sie die folgenden Schritte für jede auf der VM installierte Datenbank durch:
 
    ```bash
    sqlplus / as sysdba
@@ -500,12 +429,12 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
 
 ## <a name="recovery"></a>Wiederherstellung
 
-Führen Sie die folgenden Schritte aus, um die Datenbank wiederherzustellen:
+Führen Sie die folgenden Schritte aus, um eine Datenbank wiederherzustellen:
 
-1. Entfernen Sie die Datenbankdateien.
-1. Generieren Sie ein Wiederherstellungsskript aus dem Recovery Services-Tresor.
-1. Stellen Sie den Wiederherstellungspunkt bereit.
-1. Führen Sie die Wiederherstellung aus.
+1. [Entfernen Sie die Datenbankdateien](#remove-the-database-files).
+1. [Generieren eines Wiederherstellungsskripts aus dem Recovery Services-Tresor](#generate-a-restore-script-from-the-recovery-services-vault).
+1. [Einbinden des Wiederherstellungspunkts](#mount-the-restore-point).
+1. [Durchführen der Wiederherstellung](#perform-recovery).
 
 ### <a name="remove-the-database-files"></a>Entfernen der Datenbankdateien 
 
@@ -527,7 +456,7 @@ Weiter unten in diesem Artikel erfahren Sie, wie der Wiederherstellungsprozess g
 1.  Entfernen Sie die Datenbankdatendateien und Steuerungsdateien, um einen Fehler zu simulieren:
 
     ```bash
-    cd /u02/oradata/TEST
+    cd /u02/oradata/ORATEST1
     rm -f *.dbf *.ctl
     ```
 
@@ -701,13 +630,14 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ```
 
 ### <a name="perform-recovery"></a>Ausführen der Wiederherstellung
+Führen Sie die folgenden Schritte für jede Datenbank auf der VM durch:
 
 1. Stellen Sie die fehlenden Datenbankdateien an ihrem Speicherort wieder her:
 
     ```bash
-    cd /restore/vmoracle19c-2020XXXXXXXXXX/Volume1/oradata/TEST
-    cp * /u02/oradata/TEST
-    cd /u02/oradata/TEST
+    cd /restore/vmoracle19c-2020XXXXXXXXXX/Volume1/oradata/ORATEST1
+    cp * /u02/oradata/ORATEST1
+    cd /u02/oradata/ORATEST1
     chown -R oracle:oinstall *
     ```
 1. Wechseln Sie zurück zum Benutzer „oracle“:
@@ -739,13 +669,13 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    SQL> recover automatic database until cancel using backup controlfile;
    ORA-00279: change 2172930 generated at 04/08/2021 12:27:06 needed for thread 1
    ORA-00289: suggestion :
-   /u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc
+   /u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc
    ORA-00280: change 2172930 for thread 1 is in sequence #13
    ORA-00278: log file
-   '/u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc' no
+   '/u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc' no
    longer needed for this recovery
    ORA-00308: cannot open archived log
-   '/u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc'
+   '/u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc'
    ORA-27037: unable to obtain file status
    Linux-x86_64 Error: 2: No such file or directory
    Additional information: 7
@@ -766,7 +696,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    Wechseln Sie zum Benutzer „oracle“, und legen Sie die Oracle-SID fest:
    ```bash
    sudo su - oracle
-   export ORACLE_SID=test
+   export ORACLE_SID=oratest1
    ```
    
    Stellen Sie eine Verbindung mit der Datenbank her, und führen Sie die folgende Abfrage aus, um die Onlineprotokolldatei zu finden: 
@@ -783,31 +713,34 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    ```output
    SEQUENCE#  CHK_CHANGE           GROUP# ARC STATUS            MEMBER
    ---------- ---------------- ---------- --- ---------------- ---------------------------------------------
-           13          2172929          1 NO  CURRENT          /u02/oradata/TEST/redo01.log
-           12          2151934          3 YES INACTIVE         /u02/oradata/TEST/redo03.log
-           11          2071784          2 YES INACTIVE         /u02/oradata/TEST/redo02.log
+           13          2172929          1 NO  CURRENT          /u02/oradata/ORATEST1/redo01.log
+           12          2151934          3 YES INACTIVE         /u02/oradata/ORATEST1/redo03.log
+           11          2071784          2 YES INACTIVE         /u02/oradata/ORATEST1/redo02.log
    ```
-   Kopieren Sie den Protokolldateipfad und den Dateinamen für das aktuelle Onlineprotokoll, in diesem Beispiel `/u02/oradata/TEST/redo01.log`. Wechseln Sie zurück zur SSH-Sitzung, in der der Wiederherstellungsbefehl ausgeführt wird, geben Sie die Informationen für die Protokolldatei ein, und drücken Sie die EINGABETASTE:
+   Kopieren Sie den Protokolldateipfad und den Dateinamen für das aktuelle Onlineprotokoll, in diesem Beispiel `/u02/oradata/ORATEST1/redo01.log`. Wechseln Sie zurück zur SSH-Sitzung, in der der Wiederherstellungsbefehl ausgeführt wird, geben Sie die Informationen für die Protokolldatei ein, und drücken Sie die EINGABETASTE:
 
    ```bash
    Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
-   /u02/oradata/TEST/redo01.log
+   /u02/oradata/ORATEST1/redo01.log
    ```
 
    Es sollte angezeigt werden, dass die Protokolldatei angewendet wird und die Wiederherstellung abgeschlossen ist. Geben Sie CANCEL ein, um den Wiederherstellungsbefehl zu beenden:
    ```output
    Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
-   /u02/oradata/TEST/redo01.log
+   /u02/oradata/ORATEST1/redo01.log
    Log applied.
    Media recovery complete.
    ```
 
 1. Öffnen Sie die Datenbank:
+   
+   > [!IMPORTANT]
+   > Die RESETLOGS-Option ist erforderlich, wenn der RECOVER-Befehl die Option USING BACKUP CONTROLFILE verwendet. RESETLOGS erstellt eine neue Inkarnation der Datenbank, indem der Wiederholungsverlauf vollständig zurückgesetzt wird, da nicht bestimmt werden kann, wie viel der vorherigen Datenbankinkarnation bei der Wiederherstellung übersprungen wurde.
+
    ```bash
    SQL> alter database open resetlogs;
    ```
-   > [!IMPORTANT]
-   > Die RESETLOGS-Option ist erforderlich, wenn der RECOVER-Befehl die Option USING BACKUP CONTROLFILE verwendet. RESETLOGS erstellt eine neue Inkarnation der Datenbank, indem der Wiederholungsverlauf vollständig zurückgesetzt wird, da nicht bestimmt werden kann, wie viel der vorherigen Datenbankinkarnation bei der Wiederherstellung übersprungen wurde.
+
    
 1. Prüfen Sie, ob der Datenbankinhalt vollständig wiederhergestellt wurde:
 
@@ -817,6 +750,9 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. Heben Sie die Bereitstellung des Wiederherstellungspunkts auf.
 
+   Wenn alle Datenbanken auf der VM erfolgreich wiederhergestellt worden sind, können Sie die Bereitstellung des Wiederherstellungspunkts aufheben. Dies kann auf der VM mithilfe des Befehls `unmount` oder im Azure-Portal über das Blatt zur Dateiwiederherstellung erfolgen. Sie können die Bereitstellung der Wiederherstellungsvolumes auch aufheben, indem Sie das Python-Skript mit der Option **-clean** erneut ausführen.
+
+   Auf der VM mithilfe der Aufhebung der Bereitstellung:
    ```bash
    sudo umount /restore/vmoracle19c-20210107110037/Volume*
    ```
@@ -825,7 +761,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
     ![Befehl zum Aufheben der Bereitstellung von Datenträgern](./media/oracle-backup-recovery/recovery-service-10.png)
     
-    Sie können die Bereitstellung der Wiederherstellungsvolumes auch aufheben, indem Sie das Python-Skript mit der Option **-clean** erneut ausführen.
+
 
 ## <a name="restore-the-entire-vm"></a>Wiederherstellen des gesamten virtuellen Computers
 
@@ -833,13 +769,12 @@ Statt die aus den Recovery Services-Tresoren gelöschten Dateien wiederherzustel
 
 Führen Sie diese Schritte aus, um die gesamte VM wiederherzustellen:
 
-1. Beenden und löschen Sie vmoracle19c.
-1. Stellen Sie die VM wieder her.
-1. Legen Sie die öffentliche IP-Adresse fest.
-1. Stellen Sie eine Verbindung zur VM her.
-1. Starten Sie die Datenbank in der Bereitstellungsphase, und führen Sie die Wiederherstellung aus.
+1. [Beenden und löschen Sie die VM](#stop-and-delete-the-vm).
+1. [Stellen Sie die VM wieder her](#recover-the-vm).
+1. [Legen Sie die öffentliche IP-Adresse fest](#set-the-public-ip-address).
+1. [Führen Sie die Datenbankwiederherstellung durch](#perform-database-recovery).
 
-### <a name="stop-and-delete-vmoracle19c"></a>Beenden und löschen von vmoracle19c
+### <a name="stop-and-delete-the-vm"></a>Beenden und Löschen der VM
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -1104,27 +1039,42 @@ Nachdem die VM wiederhergestellt wurde, müssen Sie der neuen VM die ursprüngli
 
 ---
 
-### <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
-
-So stellen Sie eine Verbindung mit der VM her:
+### <a name="perform-database-recovery"></a>Durchführen der Datenbankwiederherstellung
+Stellen Sie zunächst erneut eine Verbindung mit dem virtuellen Computer her:
 
 ```azurecli
 ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>Starten der Datenbank in der Bereitstellungsphase und Ausführen der Wiederherstellung
+Wenn die gesamte VM wiederhergestellt wurde, ist es wichtig, jede einzelne Datenbank auf der VM wiederherzustellen, indem Sie die folgenden Schritte für jede einzelne Datenbank durchführen:
 
-1. Es kann sein, dass die Instanz läuft, da beim Autostart versucht wurde, die Datenbank beim Hochfahren der VM zu starten. Da die Datenbank jedoch wiederhergestellt werden muss und sich wahrscheinlich nur in der Bereitstellungsphase befindet, erfolgt zunächst ein vorbereitendes Herunterfahren.
+1. Es kann sein, dass die Instanz läuft, da beim Autostart versucht wurde, die Datenbank beim Hochfahren der VM zu starten. Da die Datenbank jedoch wiederhergestellt werden muss und sich wahrscheinlich nur in der Bereitstellungsphase befindet, erfolgt zunächst ein vorbereitendes Herunterfahren. Daraufhin folgt der Start der Bereitstellungsphase.
 
     ```bash
     $ sudo su - oracle
     $ sqlplus / as sysdba
     SQL> shutdown immediate
     SQL> startup mount
-    SQL> recover automatic database;
-    SQL> alter database open;
     ```
     
+1. Durchführen der Datenbankwiederherstellung
+   > [!IMPORTANT]
+   > Sie müssen die USING BACKUP CONTROLFILE-Syntax verwenden, um dem Befehl RECOVER AUTOMATIC DATABASE mitzuteilen, dass die Wiederherstellung nicht bei der Oracle-Systemänderungsnummer (System Change Number, SCN) angehalten werden soll, die in der wiederhergestellten Datenbank-Steuerungsdatei aufgezeichnet wurde. Die wiederhergestellte Datenbank-Steuerungsdatei und der Rest der Datenbank waren eine Momentaufnahme, und die darin gespeicherte SCN wurde zum Zeitpunkt der Momentaufnahme erfasst. Nach diesem Punkt wurden möglicherweise weitere Transaktionen aufgezeichnet, und die Wiederherstellung soll für den Zeitpunkt erfolgen, zu dem die letzte Transaktion an die Datenbank committet wurde.
+    
+    ```bash
+    SQL> recover automatic database using backup controlfile until cancel;
+    ```
+   Wenn die letzte verfügbare Archivprotokolldatei angewendet wurde, geben Sie `CANCEL` ein, um die Wiederherstellung zu beenden.
+
+1. Öffnen Sie die Datenbank:
+   > [!IMPORTANT]
+   > Die RESETLOGS-Option ist erforderlich, wenn der RECOVER-Befehl die Option USING BACKUP CONTROLFILE verwendet. RESETLOGS erstellt eine neue Inkarnation der Datenbank, indem der Wiederholungsverlauf vollständig zurückgesetzt wird, da nicht bestimmt werden kann, wie viel der vorherigen Datenbankinkarnation bei der Wiederherstellung übersprungen wurde.
+   
+    ```bash 
+    SQL> alter database open resetlogs;
+    ```
+   
+
 1. Prüfen Sie, ob der Datenbankinhalt wiederhergestellt wurde:
 
     ```bash

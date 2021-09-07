@@ -1,25 +1,20 @@
 ---
 title: Öffentliche IP-Adressen in Azure
-titlesuffix: Azure Virtual Network
+titleSuffix: Azure Virtual Network
 description: Erfahren Sie etwas über öffentliche IP-Adressen in Azure.
 services: virtual-network
-documentationcenter: na
 author: asudbring
-manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/28/2020
+ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 121c22e3a25a95fa64f6f779ebc0827bb6c123c7
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 4497b58e40ccc280661d45932586c14bb8a21108
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015949"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350467"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -29,22 +24,36 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 
 * Netzwerkschnittstellen für virtuelle Computer
 * Load Balancer mit Internetzugriff
-* VPN-Gateways
+* Gateways für virtuelle Netzwerke (VPN/ER)
+* NAT-Gateways
 * Anwendungsgateways
 * Azure Firewall
+* Bastionhost
+
+Für VM-Skalierungsgruppen verwenden Sie [öffentliche IP-Präfixe](public-ip-address-prefix.md).
+
+## <a name="at-a-glance"></a>Auf einen Blick
+
+Die folgende Tabelle zeigt die Eigenschaft einer öffentlichen IP-Adresse, die einer Ressource zugeordnet werden kann, und die Zuordnungsmethoden. Beachten Sie, dass die öffentliche IPv6-Unterstützung derzeit nicht für alle Ressourcentypen verfügbar ist.
+
+| Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisches IPv4 | Statisches IPv4 | Dynamisches IPv6 | Statisches IPv6 |
+| --- | --- | --- | --- | --- | --- |
+| Virtueller Computer |Netzwerkschnittstelle |Ja | Ja | Ja | Ja |
+| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja | Ja | Ja |Ja |
+| Gateway für virtuelle Netzwerke (VPN) |Gateway-IP-Konfiguration |Ja (nur Nicht-AZ) |Ja (nur AZ) | Nein |Nein |
+| Gateway für virtuelle Netzwerke (ER) |Gateway-IP-Konfiguration |Ja | Nein | Ja (Vorschau) |Nein |
+| NAT Gateway |Gateway-IP-Konfiguration |Nein |Ja | Nein |Nein |
+| Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) | Nein | Nein |
+| Azure Firewall | Front-End-Konfiguration | Nein | Ja | Nein | Nein |
+| Bastionhost | Konfiguration der öffentlichen IP-Adresse | Nein | Ja | Nein | Nein |
 
 ## <a name="ip-address-version"></a>IP-Adressversion
 
-Öffentliche IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. 
+Öffentliche IP-Adressen können mit einer IPv4- oder IPv6-Adresse erstellt werden. Möglicherweise haben Sie die Möglichkeit, eine Dual-Stack-Bereitstellung mit einer IPv4- und IPv6-Adresse zu erstellen.
 
 ## <a name="sku"></a>SKU
 
-Weitere Informationen zum SKU-Upgrade finden Sie unter [Ausführen eines Upgrades für öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address-upgrade.md).
-
 Öffentliche IP-Adressen werden mit einer der folgenden SKUs erstellt:
-
->[!IMPORTANT]
-> Für Lastenausgleichs- und öffentliche IP-Adressressourcen müssen übereinstimmende SKUs verwendet werden. Eine Kombination von Ressourcen der SKU-Typen „Basic“ und „Standard“ ist nicht möglich. Sie können eigenständige virtuelle Computer, virtuelle Computer in einer Ressource einer Verfügbarkeitsgruppe oder eine Ressource einer VM-Skalierungsgruppe an beide SKUs gleichzeitig anfügen.  Für neue Entwürfe sollte SKU-Standardressourcen verwendet werden.  Unter [Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finden Sie ausführliche Informationen.
 
 ### <a name="standard"></a>Standard
 
@@ -53,8 +62,9 @@ Für öffentliche IP-Adressen mit Standard-SKU gilt Folgendes:
 - Sie verwenden immer eine statische Zuordnungsmethode.
 - Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann, sowie über ein vorgegebenes Leerlauftimeout für den ursprünglich ausgehenden Datenfluss von vier Minuten.
 - Sie sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie ermöglichen das Auflisten von eingehendem Datenverkehr mit einer [Netzwerksicherheitsgruppe](./network-security-groups-overview.md#network-security-groups).
-- Sie werden Netzwerkschnittstellen, öffentlichen Load Balancer Standard-Instanzen oder Application Gateway-Instanzen zugewiesen. Weitere Informationen zu Load Balancer Standard finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Sie können zonenredundant (in allen drei Zonen verfügbar), zonal (in einer bestimmten vorausgewählten Verfügbarkeitszone garantiert) oder zonenlos (keiner bestimmten vorausgewählten Verfügbarkeitszone zugeordnet) sein. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](../availability-zones/az-region.md) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
+- Sie werden Netzwerkschnittstellen, öffentlichen Load Balancer Standard-Instanzen oder Application Gateway-Instanzen zugewiesen. Weitere Informationen zu Azure Load Balancer finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie können zonenredundant (von allen drei Zonen angekündigt), zonal (in einer bestimmten vorausgewählten Verfügbarkeitszone garantiert) oder zonenlos (keiner bestimmten vorausgewählten Verfügbarkeitszone zugeordnet) sein. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](../availability-zones/az-region.md) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
+- Kann zusammen mit der [Routingpräferenz](routing-preference-overview.md) verwendet werden, um eine differenziertere Kontrolle darüber zu ermöglichen, wie der Datenverkehr zwischen Azure und dem Internet weitergeleitet wird.
 - Können als Anycast-Front-End-IP-Adressen für [regionsübergreifende Load Balancer](../load-balancer/cross-region-overview.md) verwendet werden (Vorschaufunktionalität).
  
 > [!NOTE]
@@ -68,38 +78,23 @@ Für öffentliche IP-Adressen mit Standard-SKU gilt Folgendes:
 
 ### <a name="basic"></a>Basic
 
-Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden, sind öffentliche IP-Adressen vom Typ „Basic-SKU“. 
-
-Nach der Einführung von SKUs können Sie angeben, welche SKU für die öffentliche IP-Adresse verwendet werden soll. 
-
 Für Basic-SKU-Adressen gilt Folgendes:
 
-- Sie werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
+- Für IPv4: Kann mithilfe der dynamischen oder statischen Zuordnungsmethode zugewiesen werden.  Für IPv6: Kann nur mithilfe der dynamischen Zuordnungsmethode zugewiesen werden.
 - Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann, sowie über ein vorgegebenes Leerlauftimeout für den ursprünglich ausgehenden Datenfluss von vier Minuten.
 - Sind standardmäßig geöffnet.  Netzwerksicherheitsgruppen werden empfohlen, sind aber zum Einschränken des ein- oder ausgehenden Datenverkehrs optional.
-- Sie können jeder Azure-Ressource zugewiesen werden, der eine öffentliche IP-Adresse zugewiesen werden kann, z. B.:
-    * Netzwerkschnittstellen
-    * VPN-Gateways
-    * Anwendungsgateways
-    * Öffentliche Lastenausgleichsmodule
-- Sie unterstützen keine Szenarien mit Verfügbarkeitszone. Verwenden Sie für Szenarien mit Verfügbarkeitszone eine öffentliche IP-Adresse mit Standard-SKU. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie unterstützen keine Szenarien mit Verfügbarkeitszone. Verwenden Sie für Szenarien mit Verfügbarkeitszone eine öffentliche IP-Adresse mit Standard-SKU in den entsprechenden Regionen. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Unterstützen Sie keine [Routingpräferenzen](routing-preference-overview.md) oder [regionsübergreifenden Lastausgleichsfunktionen](../load-balancer/cross-region-overview.md).
 
-## <a name="allocation-method"></a>Zuordnungsmethode
+> [!NOTE]
+> Für IPv4-Adressen der Basic-SKU kann nach der Erstellung ein Upgrade auf die Standard-SKU durchgeführt werden.  Weitere Informationen zum SKU-Upgrade finden Sie unter [Ausführen eines Upgrades für öffentliche IP-Adressen](./public-ip-upgrade-portal.md).
 
-Öffentliche IP-Adressen unterstützen sowohl als Basic als auch als Standard die **statische** Zuweisung.  Der Ressource wird bei der Erstellung eine IP-Adresse zugewiesen. Beim Löschen der Ressource wird die IP-Adresse wieder freigegeben.
+>[!IMPORTANT]
+> Für Lastenausgleichs- und öffentliche IP-Adressressourcen müssen übereinstimmende SKUs verwendet werden. Eine Kombination von Ressourcen der SKU-Typen „Basic“ und „Standard“ ist nicht möglich. Sie können eigenständige virtuelle Computer, virtuelle Computer in einer Ressource einer Verfügbarkeitsgruppe oder eine Ressource einer VM-Skalierungsgruppe an beide SKUs gleichzeitig anfügen.  Für neue Entwürfe sollte SKU-Standardressourcen verwendet werden.  Unter [Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finden Sie ausführliche Informationen.
 
-Öffentliche IP-Adressen mit Basic-SKU unterstützen eine **dynamische** Zuweisung. „Dynamisch“ ist das Standardverfahren für die Zuweisung. Bei Auswahl von „Dynamisch“ wird die IP-Adresse **nicht** bei der Erstellung der Ressource zugewiesen.
+## <a name="ip-address-assignment"></a>IP-Adresszuweisung
 
-Die IP-Adresse wird zugewiesen, wenn Sie die öffentliche IP-Adressressource zuordnen:
-
-* Virtueller Computer 
-* Der erste virtuelle Computer wird dem Back-End-Pool eines Lastenausgleichs zugeordnet.
-
-Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen.  
-
-Beispielsweise wird eine öffentliche IP-Adressressource von einer Ressource mit dem Namen **Ressource A** freigegeben. **Ressource A** erhält beim Starten eine andere IP-Adresse, wenn die öffentliche IP-Ressource neu zugewiesen wird.
-
-Die IP-Adresse wird freigegeben, wenn die Zuordnungsmethode von **Statisch** in **Dynamisch** geändert wird. Damit die IP-Adresse für die zugeordnete Ressource unverändert bleibt, können Sie die Zuordnungsmethode explizit auf **Statisch** festlegen. Eine statische IP-Adresse wird sofort zugewiesen.
+ Öffentliche Standard-IPv4-Adressen, öffentliche Basic-IPv4-Adressen und öffentliche Standard-IPv6-Adressen unterstützen die **statische** Zuweisung.  Der Ressource wird bei der Erstellung eine IP-Adresse zugewiesen. Beim Löschen der Ressource wird die IP-Adresse wieder freigegeben.  
 
 > [!NOTE]
 > Auch wenn Sie die Zuordnungsmethode auf **statisch** festlegen, können Sie nicht die tatsächliche IP-Adresse angeben, die der öffentlichen IP-Adressressource zugewiesen ist. Azure weist die IP-Adresse aus einem Pool mit verfügbaren IP-Adressen an dem Azure-Standort zu, an dem die Ressource erstellt wird.
@@ -112,13 +107,17 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 * Ihre Azure-Ressourcen kommunizieren mit anderen Apps oder Diensten, die ein auf IP-Adressen basierendes Sicherheitsmodell verwenden.
 * Sie verwenden TLS/SSL-Zertifikate, die mit einer IP-Adresse verknüpft sind.
 
+Öffentliche Basic-IPv4- und -IPv6-Adressen unterstützen eine **dynamische** Zuweisung.  Bei Auswahl von „Dynamisch“ wird die IP-Adresse **nicht** bei der Erstellung der Ressource zugewiesen.  Die IP-Adresse wird zugewiesen, wenn Sie der öffentlichen IP-Adresse eine Ressource zuordnen. Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen.   Beispielsweise wird eine öffentliche IP-Adressressource von einer Ressource mit dem Namen **Ressource A** freigegeben. **Ressource A** erhält beim Starten eine andere IP-Adresse, wenn die öffentliche IP-Ressource neu zugewiesen wird. Jede zugeordnete IP-Adresse wird freigegeben, wenn die Zuordnungsmethode von **Statisch** in **Dynamisch** geändert wird. Legen Sie die Zuordnungsmethode auf **Statisch** fest, damit die IP-Adresse unverändert bleibt.
+
 > [!NOTE]
 > Azure ordnet öffentliche IP-Adressen aus einem Bereich zu, der für jede Region in jeder Azure-Cloud eindeutig ist. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.
 >
 
-## <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
+## <a name="dns-name-label"></a>DNS-Namensbezeichnung
 
-Wählen Sie die Option aus, eine DNS-Domänennamenbezeichnung für eine öffentliche IP-Ressource anzugeben. 
+Wählen Sie die Option aus, um eine DNS-Bezeichnung für eine öffentliche IP-Ressource anzugeben. Diese Funktion funktioniert sowohl für IPv4-Adressen (32-Bit-A-Datensätze) als auch für IPv6-Adressen (128-Bit-AAAA-Datensätze).
+
+### <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
 
 Mit dieser Auswahl wird eine Zuordnung zwischen **domainnamelabel**.**location**.cloudapp.azure.com und der öffentlichen IP-Adresse im von Azure verwalteten DNS erstellt. 
 
@@ -131,81 +130,45 @@ Der vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) **contoso
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamensbezeichnung muss innerhalb des Azure-Standorts eindeutig sein.  
+
+### <a name="dns-recommendations"></a>DNS-Empfehlungen
+
+Sie können den FQDN Ihrer öffentlichen IP-Adresse nicht zwischen Regionen migrieren. Verwenden Sie den FQDN, um einen benutzerdefinierten CNAME-Eintrag mit Verweis auf die öffentliche IP-Adresse zu erstellen. Wenn ein Wechsel zu einer anderen öffentlichen IP-Adresse erforderlich ist, aktualisieren Sie den CNAME-Eintrag.
+
+Sie können [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) oder einen externen DNS-Anbieter für Ihren DNS-Eintrag verwenden.
+
+## <a name="other-public-ip-address-features"></a>Weitere Features für öffentliche IP-Adressen
+
+Es gibt andere Attribute, die für eine öffentliche IP-Adresse verwendet werden können.  
+
+* Der **Tarif** „Global“ ermöglicht die Verwendung einer öffentlichen IP-Adresse mit regionsübergreifenden Lastenausgleichsmodulen. 
+* Die Option **Internetroutingpräferenz** minimiert die Zeit, die der Datenverkehr im Microsoft-Netzwerk verbringt, und senkt so die Kosten für ausgehende Datenübertragungen.
+
+> [!NOTE]
+> Zurzeit sind sowohl das Feature **Tarif** als auch **Routingpräferenz** nur für Standard-SKU-IPv4-Adressen verfügbar.  Sie können auch nicht gleichzeitig für dieselbe IP-Adresse verwendet werden.
 >
 
-## <a name="dns-recommendations"></a>DNS-Empfehlungen
-
-Wenn ein Regionswechsel erforderlich ist, können Sie nicht den FQDN der öffentlichen IP-Adresse migrieren. Verwenden Sie den FQDN, um einen benutzerdefinierten CNAME-Eintrag mit Verweis auf die öffentliche IP-Adresse zu erstellen. 
-
-Wenn ein Wechsel zu einer anderen öffentlichen IP-Adresse erforderlich ist, aktualisieren Sie den CNAME-Eintrag anstelle des FQDN.
-
-Sie können [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) oder einen externen DNS-Anbieter für Ihren DNS-Eintrag verwenden. 
-
-## <a name="virtual-machines"></a>Virtuelle Computer
-
-Sie können eine öffentliche IP-Adresse einem virtuellen [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer zuordnen, indem Sie sie dessen **Netzwerkschnittstelle** zuweisen. 
-
-Wählen Sie für die öffentliche IP-Adresse **Dynamisch** oder **Statisch** aus. Informieren Sie sich über das [Zuweisen von IP-Adressen zu Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
-
 [!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
-## <a name="internet-facing-load-balancers"></a>Load Balancer mit Internetzugriff
+## <a name="limits"></a>Einschränkungen 
 
-Sie können eine öffentliche IP-Adresse mit einer der beiden [SKUs](#sku) einer [Azure Load Balancer](../load-balancer/load-balancer-overview.md)-Instanz zuordnen, indem Sie sie der **Front-End**-Konfiguration für den Lastenausgleich zuweisen. Diese öffentliche IP-Adresse dient als IP-Adresse mit Lastenausgleich. 
-
-Sie können einem Load Balancer-Front-End eine dynamische oder eine statische öffentliche IP-Adresse zuweisen. Sie können einem Load Balancer-Front-End mehrere öffentliche IP-Adressen zuweisen. Diese Konfiguration ermöglicht Szenarien mit [mehreren VIPs](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), z. B. eine mehrinstanzenfähige Umgebung mit TLS-basierten Websites. 
-
-Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
-
-[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
-
-## <a name="vpn-gateways"></a>VPN-Gateways
-
-[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbindet ein virtuelles Azure-Netzwerk mit den folgenden Elementen:
-
-* Virtuelle Azure-Netzwerke
-* Lokale Netzwerke. 
-
-Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um die Kommunikation mit dem Remotenetzwerk zuzulassen. 
-
-* Weisen Sie einer Front-End-Konfiguration mit VPNGw 1-5-SKU eine **dynamische** grundlegende öffentliche IP-Adresse zu.
-* Weisen Sie einer Front-End-Konfiguration mit VPNGwAZ 1-5-SKU eine **statische** öffentliche Standard-IP-Adresse zu.
-
-## <a name="application-gateways"></a>Anwendungsgateways
-
-Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. 
-
-* Weisen Sie einer Application Gateway-Front-End-Konfiguration der Version 1 eine **dynamische** öffentliche IP-Adresse mit Basic-SKU zu. 
-* Weisen Sie einer Front-End-Konfiguration (v2) eine **statische** öffentliche Standard-IP-Adresse zu.
-
-## <a name="azure-firewall"></a>Azure Firewall
-
-Von [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) können Richtlinien zur Anwendungs- und Netzwerkkonnektivität für Abonnements und virtuelle Netzwerke erstellt, erzwungen und protokolliert werden.
-
-Sie können einer Firewall nur **statische** öffentliche Standard-IP-Adressen zuordnen. Dadurch können externe Firewalls Datenverkehr aus Ihrem virtuellen Netzwerk identifizieren. 
-
-
-## <a name="at-a-glance"></a>Auf einen Blick
-
-In der folgenden Tabelle sind die Eigenschaften, über die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet werden kann, und die möglichen Zuweisungsverfahren angegeben.
-
-| Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisch | statischen |
-| --- | --- | --- | --- |
-| Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
-| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja (nur VPNGwAZ) |
-| Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
-| Azure Firewall | Front-End-Konfiguration | Nein | Ja|
-
-## <a name="limits"></a>Einschränkungen
-
-Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. 
-
-Die Grenzwerte gelten pro Region und pro Abonnement. [Wenden Sie sich an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.
+Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. [Wenden Sie sich an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um oben die Standardgrenzwerte je nach Ihren Unternehmensanforderungen zu erhöhen.
 
 ## <a name="pricing"></a>Preise
 
-Für öffentliche IP-Adressen wird unter Umständen eine geringe Gebühr berechnet. Weitere Informationen zu den Preisen für IP-Adressen in Azure finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses).
+Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Weitere Informationen zu den Preisen für IP-Adressen in Azure finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses).
+
+## <a name="limitations-for-ipv6"></a>Einschränkungen für IPv6
+
+* VPN-Gateways können in einem VNet mit aktiviertem IPv6 weder direkt noch durch Peering mit „UseRemoteGateway“ verwendet werden.
+* Öffentliche IPv6-Adressen werden bei einem Leerlauftimeout von vier Minuten gesperrt.
+* Azure unterstützt keine IPv6-Kommunikation für Container.
+* Die Verwendung von ausschließlich IPv6-basierten virtuellen Computern oder VM-Skalierungsgruppen wird nicht unterstützt. Jede NIC muss mindestens eine IPv4-IP-Konfiguration enthalten (Dual-Stack).
+* Beim Hinzufügen von IPv6 zu vorhandenen IPv4-Bereitstellungen können IPv6-Bereiche nicht zu einem virtuellen Netzwerk hinzugefügt werden, das über vorhandene Ressourcennavigationslinks verfügt.
+* Forward DNS für IPv6 wird für öffentliches DNS von Azure unterstützt. Reverse DNS wird nicht unterstützt.
+* Routingpräferenz und regionsübergreifender Lastenausgleich werden nicht unterstützt.
+
+Weitere Informationen zu IPv6 in Azure finden Sie [hier](./ipv6-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie etwas über [private IP-Adressen in Azure](private-ip-addresses.md).

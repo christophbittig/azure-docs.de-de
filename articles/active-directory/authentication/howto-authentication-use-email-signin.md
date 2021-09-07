@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 5/3/2021
+ms.date: 07/07/2021
 ms.author: justinha
-author: justinha
+author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ed77dcad9e9e6568cc38fd3510d9b5a9a0624c11
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0a4ad5d9aaa9bb851a651ddc77bd1acb773b6019
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963651"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485705"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)
 
@@ -40,7 +40,8 @@ Sie müssen Folgendes über die Verwendung von E-Mail-Adressen als alternative A
 
 * Das Feature ist in Azure AD Free und höher verfügbar.
 * Das Feature ermöglicht die Anmeldung mit dem *ProxyAddresses*-Attribut verifizierter Domänen für cloudauthentifizierte Azure AD-Benutzer.
-* Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, weisen die Ansprüche `unique_name` und `preferred_username` (sofern vorhanden) im [ID-Token](../develop/id-tokens.md) den Wert der E-Mail-Adresse auf, die nicht als UPN registriert ist.
+* Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, geben die Ansprüche `unique_name` und `preferred_username` (sofern vorhanden) im [ID-Token](../develop/id-tokens.md) den Wert der E-Mail-Adresse zurück, die nicht als UPN registriert ist.
+* Das Feature unterstützt die verwaltete Authentifizierung mit Kennworthashsynchronisierung (Password Hash Sync, PHS) oder Passthrough-Authentifizierung (PTA).
 * Es gibt zwei Optionen zum Konfigurieren des Features:
     * [HRD-Richtlinie (Home Realm Discovery, Startbereichsermittlung):](#enable-user-sign-in-with-an-email-address) Verwenden Sie diese Option, um das Feature für den gesamten Mandanten zu aktivieren. Hierzu sind globaler Administratorberechtigungen erforderlich.
     * [Richtlinie für gestaffelten Rollout:](#enable-staged-rollout-to-test-user-sign-in-with-an-email-address) Verwenden Sie diese Option, um das Feature mit spezifischen Azure AD-Gruppen zu testen. Hierzu sind globaler Administratorberechtigungen erforderlich.
@@ -49,31 +50,42 @@ Sie müssen Folgendes über die Verwendung von E-Mail-Adressen als alternative A
 
 In der aktuellen Vorschauversion gelten die folgenden Einschränkungen für die Verwendung von E-Mail-Adressen als alternative Anmelde-IDs:
 
-* Benutzern werden ihre UPNs angezeigt, selbst wenn sie sich mit ihrer E-Mail-Adresse angemeldet haben, die nicht als UPN registriert ist. Beobachten lässt sich das folgende Beispielverhalten:
+* **Benutzeroberfläche:** Benutzern wird möglicherweise ihr UPN angezeigt, selbst wenn sie sich mit einer E-Mail-Adresse angemeldet haben, die nicht als UPN registriert ist. Beobachten lässt sich das folgende Beispielverhalten:
     * Der Benutzer wird aufgefordert, sich mit dem UPN anzumelden, wenn er mit `login_hint=<non-UPN email>` zur Azure AD-Anmeldung umgeleitet wird.
     * Wenn ein Benutzer sich mit einer E-Mail-Adresse anmeldet, die nicht als UPN registriert ist, und ein falsches Kennwort eingibt, wird der UPN auf der Seite *„Kennwort eingeben“* angezeigt.
-    * Bei einigen Websites und Apps von Microsoft (z. B. Microsoft Office) zeigt das Steuerelement **Konto-Manager**, das in der Regel oben rechts angezeigt wird, möglicherweise den UPN des Benutzers anstelle der E-Mail-Adresse an, die nicht als UPN registriert ist und für die Anmeldung verwendet wurde.
+    * Bei einigen Websites und Apps von Microsoft (z. B. Microsoft Office) zeigt das Steuerelement *Konto-Manager*, das in der Regel oben rechts angezeigt wird, möglicherweise den UPN des Benutzers anstelle der E-Mail-Adresse an, die nicht als UPN registriert ist und für die Anmeldung verwendet wurde.
 
-* Einige Flows sind derzeit nicht mit E-Mail-Adressen kompatibel, die nicht als UPN registriert wurden, dazu gehören unter anderem die folgenden:
+* **Nicht unterstützte Flows:** Einige Flows sind derzeit nicht mit E-Mail-Adressen kompatibel, die nicht als UPN registriert wurden. Dazu gehören unter anderem folgende:
     * Identity Protection gleicht nicht als UPN registrierte E-Mail-Adressen nicht mit der Risikoerkennung *Kompromittierte Anmeldeinformationen* ab. Diese Risikoerkennung verwendet zum Abgleichen kompromittierter Anmeldeinformationen den UPN. Weitere Informationen finden Sie unter [Risikoerkennung und Problembehandlung in Azure AD Identity Protection][identity-protection].
     * B2B-Einladungen, die an eine nicht als UPN registrierte E-Mail-Adresse gesendet werden, werden nicht vollständig unterstützt. Nachdem eine Einladung akzeptiert wurde, die an eine nicht als UPN registrierte E-Mail-Adresse gesendet wurde, funktioniert die Anmeldung mit der nicht als UPN registrierten E-Mail-Adresse möglicherweise nicht für den Gastbenutzer am Endpunkt des Ressourcenmandanten.
     * Wenn ein Benutzer sich mit einer nicht als UPN registrierten E-Mail-Adresse anmeldet, kann dieser sein Kennwort nicht ändern. Die Self-Service-Kennwortzurücksetzung (SSPR) von Azure AD sollte erwartungsgemäß funktionieren. Während der SSPR wird dem Benutzer möglicherweise sein UPN angezeigt, wenn er seine Identität über eine alternative E-Mail-Adresse verifiziert.
 
-* Die folgenden Szenarios werden nicht unterstützt. Melden Sie sich mit einer nicht als UPN registrierten E-Mail-Adresse bei den folgenden Diensten/Geräten an:
-    * In Azure AD eingebundene Hybridgeräte
-    * In Azure AD eingebundene Geräte
+* **Nicht unterstützte Szenarien:** Folgende Szenarien werden nicht unterstützt: Anmelden mit einer nicht als UPN registrierten E-Mail-Adresse bei den folgenden Diensten/Geräten:
+    * [In Azure AD eingebundene Hybridgeräte](../devices/concept-azure-ad-join-hybrid.md)
+    * [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md)
+    * [Bei Azure AD registrierte Geräte](../devices/concept-azure-ad-register.md)
+    * [Nahtloses einmaliges Anmelden](../hybrid/how-to-connect-sso.md)
+    * [Anmeldungen mit Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC)](../develop/v2-oauth-ropc.md)
+    * Anwendungen mit Legacyauthentifizierung wie POP3 und SMTP
     * Skype for Business
     * Microsoft Office unter macOS
-    * OneDrive (wenn der Anmeldeflow keine mehrstufige Authentifizierung umfasst)
     * Microsoft Teams im Web
-    * ROPC-Flows (Resource Owner Password Credentials, Kennwortanmeldeinformationen des Ressourcenbesitzers)
+    * OneDrive (wenn der Anmeldeflow keine mehrstufige Authentifizierung umfasst)
 
-* Änderungen an der Konfiguration des Features in der HRD-Richtlinie werden nicht explizit in den Überwachungsprotokollen angezeigt.
-* Die Richtlinie für den gestaffelten Rollout funktioniert für Benutzer, die in mehreren Richtlinien für gestaffelte Rollouts enthalten sind, nicht erwartungsgemäß.
-* Innerhalb eines Mandanten kann ein UPN eines Benutzers, der nur in der Cloud vorhanden ist, demselben Wert wie die Proxyadresse eines anderen Benutzers entsprechen, die aus dem lokalen Verzeichnis synchronisiert wurde. In diesem Szenario kann der Benutzer, der nur die Cloud verwendet, sich nicht mit seinem UPN anmelden, wenn das Feature aktiviert ist. Weitere Informationen zu diesem Problem finden Sie im Abschnitt [Problembehandlung](#troubleshoot).
+* **Nicht unterstützte Apps:** Einige Anwendungen von Drittanbietern funktionieren möglicherweise nicht wie erwartet, wenn sie voraussetzen, dass die Ansprüche vom Typ `unique_name` oder `preferred_username` unveränderlich sind oder immer einem bestimmten Benutzerattribut entsprechen (beispielsweise UPN).
+
+* **Protokollierung:** Änderungen an der Konfiguration des Features in der HRD-Richtlinie werden nicht explizit in den Überwachungsprotokollen angezeigt. Darüber hinaus ist das Feld für die Art des Anmeldebezeichners in den Anmeldeprotokollen möglicherweise nicht immer korrekt und sollte nicht verwendet werden, um zu bestimmen, ob das Feature für die Anmeldung verwendet wurde.
+
+* **Richtlinie für gestaffelte Rollouts:** Die folgenden Einschränkungen gelten nur, wenn das Feature per Richtlinie für gestaffelte Rollouts aktiviert wird:
+    * Das Feature funktioniert für Benutzer, die in anderen Richtlinien für gestaffelte Rollouts enthalten sind, nicht wie erwartet.
+    * Von der Richtlinie für gestaffelte Rollouts werden maximal zehn Gruppen pro Feature unterstützt.
+    * Von der Richtlinie für gestaffelte Rollouts werden keine geschachtelten Gruppen unterstützt.
+    * Von der Richtlinie für gestaffelte Rollouts werden keine dynamischen Gruppen unterstützt.
+    * Durch Kontaktobjekte innerhalb der Gruppe wird das Hinzufügen der Gruppe zu einer Richtlinie für gestaffelte Rollouts blockiert.
+
+* **Doppelte Werte:** Innerhalb eines Mandanten kann ein UPN eines reinen Cloudbenutzers den gleichen Wert haben wie die Proxyadresse eines anderen Benutzers, die aus dem lokalen Verzeichnis synchronisiert wurde. In diesem Szenario kann der Benutzer, der nur die Cloud verwendet, sich nicht mit seinem UPN anmelden, wenn das Feature aktiviert ist. Weitere Informationen zu diesem Problem finden Sie im Abschnitt [Problembehandlung](#troubleshoot).
 
 ## <a name="overview-of-alternate-login-id-options"></a>Übersicht über alternative Optionen für die Anmelde-ID
-
 Für die Anmeldung bei Azure AD geben Benutzer einen Wert ein, der ihr Konto eindeutig identifiziert. Bisher konnten Sie nur den Azure AD-UPN als Anmeldebezeichner verwenden.
 
 Für Organisationen, bei denen der lokale UPN der bevorzugten E-Mail-Adresse für Anmeldungen des Benutzers entspricht, war dieser Ansatz perfekt geeignet. In diesen Organisationen kann der Azure AD-UPN auf denselben Wert wie der lokale UPN festgelegt werden, und die Anmeldung erfolgt für Benutzer überall gleich.
@@ -101,7 +113,7 @@ Ein anderer Ansatz besteht darin, die UPNs für Azure AD und die lokalen UPNs zu
 
 Die Authentifizierung herkömmlicher Active Directory Domain Services (AD DS) oder Active Directory-Verbunddienste (AD FS) erfolgt direkt in Ihrem Netzwerk und wird von Ihrer AD DS-Infrastruktur verarbeitet. Bei der Hybridauthentifizierung können sich Benutzer stattdessen direkt bei Azure AD anmelden.
 
-Zur Unterstützung dieses Hybridauthentifizierungsansatzes synchronisieren Sie Ihre lokale AD DS-Umgebung mithilfe von [Azure AD Connect][azure-ad-connect] mit Azure AD und konfigurieren sie für die Verwendung der Kennworthashsynchronisierung (Password Hash Sync, PHS) oder der Passthrough-Authentifizierung (PTA). Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure AD-Hybrididentitätslösung][hybrid-auth-methods].
+Zur Unterstützung dieses Hybridauthentifizierungsansatzes synchronisieren Sie Ihre lokale AD DS-Umgebung mithilfe von [Azure AD Connect][azure-ad-connect] mit Azure AD und konfigurieren sie für die Verwendung von PHS oder PTA. Weitere Informationen finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure AD-Hybrididentitätslösung][hybrid-auth-methods].
 
 Bei beiden Konfigurationsoptionen übermittelt der Benutzer seinen Benutzernamen und sein Kennwort an Azure AD, das die Anmeldeinformationen überprüft und ein Ticket ausstellt. Wenn sich Benutzer bei Azure AD anmelden, ist es nicht mehr erforderlich, dass Ihre Organisation eine AD FS-Infrastruktur hostet und verwaltet.
 

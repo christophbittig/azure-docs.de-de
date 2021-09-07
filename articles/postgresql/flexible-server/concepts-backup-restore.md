@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: f5c0e8ae52d2af25c41550df1c59680d47360477
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 07/30/2021
+ms.openlocfilehash: 8c6f3ebaa72457d93e4b3e491656f494511bd994
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987846"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355709"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Flexible Server
 
@@ -77,6 +77,8 @@ Sie können zwischen einem spätesten und einem benutzerdefinierten Wiederherste
 
 Die geschätzte Wiederherstellungsdauer hängt von verschiedenen Faktoren ab, z. B. Datenbankgröße, Umfang der zu verarbeitenden Transaktionsprotokolle, Netzwerkbandbreite und der Gesamtanzahl der Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die gesamte Wiederherstellungsdauer beträgt normalerweise mehrere Minuten bis zu mehrere Stunden.
 
+Wenn Sie Ihren Server in einem VNet konfiguriert haben, können Sie ihn im selben oder einem anderen VNet wiederherstellen. Den öffentlichen Zugriff können Sie jedoch nicht wiederherstellen. Wenn Sie Ihren Server mit öffentlichem Zugriff konfiguriert haben, können Sie keinen privaten Zugriff wiederherstellen.
+
 
 > [!IMPORTANT]
 > Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
@@ -96,6 +98,109 @@ Nach der Wiederherstellung der Datenbank können Sie die folgenden Aufgaben durc
 -   Konfigurieren der erforderlichen Warnungen.
   
 -  Wenn Sie die mit Hochverfügbarkeit konfigurierte Datenbank wiederhergestellt haben und den wiederhergestellten Server mit Hochverfügbarkeit konfigurieren möchten, können Sie [diese Schritte](./how-to-manage-high-availability-portal.md) befolgen.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+### <a name="backup-related-questions"></a>Fragen zur Sicherung
+
+* **Wie bewerkstelligt Azure die Sicherung meines Servers?**
+ 
+    Azure Database for PostgreSQL ermöglicht standardmäßig automatische Sicherungen Ihres gesamten Servers (einschließlich aller erstellten Datenbanken) mit einer standardmäßigen Aufbewahrungsfrist von 7 Tagen. Eine tägliche inkrementelle Momentaufnahme der Datenbank wird ausgeführt. Die Protokolldateien (WAL) werden kontinuierlich in Azure Blob Storage archiviert.
+
+* **Kann ich diese automatische Sicherung so konfigurieren, dass sie langfristig aufbewahrt wird?**
+  
+    Nein. Derzeit wird nur eine maximal Aufbewahrungsdauer von 35 Tagen unterstützt. Sie können manuelle Sicherungen durchführen und diese langfristig aufbewahren.
+
+* **Wie führe ich eine manuelle Sicherung meiner Postgres-Server durch?**
+  
+    Sie können mit dem PostgreSQL-Tool pg_dump manuell eine Sicherung erstellen, wie [hier](https://www.postgresql.org/docs/current/app-pgdump.html)dokumentiert. Beispiele finden Sie in dieser [Dokumentation zu Upgrades/Migration](../howto-migrate-using-dump-and-restore.md), die sich auch für Sicherungen eignen. Wenn Sie Azure Database for PostgreSQL in Blobspeicher sichern möchten, lesen Sie unseren Tech Community-Blog [Backup Azure Database for PostgreSQL to a Blob Storage](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/backup-azure-database-for-postgresql-to-a-blob-storage/ba-p/803343). 
+
+* **Welche Sicherungsfenster gibt es für meinen Server? Kann ich sie anpassen?**
+  
+    Sicherungsfenster werden grundsätzlich von Azure verwaltet und können nicht angepasst werden. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Nachfolgende Momentaufnahmesicherungen sind inkrementelle Sicherungen, die einmal täglich erfolgen.
+
+* **Werden meine Sicherungen verschlüsselt?**
+  
+    Ja. Alle Daten, Sicherungen und temporären Dateien für Azure Database for PostgreSQL, die im Zuge der Abfrageausführung erstellt werden, werden mithilfe der AES-256-Bit-Verschlüsselung verschlüsselt. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. 
+
+* **Kann ich einzelne/einige Datenbanken auf einem Server wiederherstellen?**
+  
+    Das Wiederherstellen einzelner oder einiger Datenbanken oder Tabellen wird nicht unterstützt. Sie müssen jedoch den gesamten Server auf einem neuen Server wiederherstellen und dann die benötigten Tabellen oder Datenbanken extrahieren und auf Ihren Server importieren.
+
+* **Ist mein Server verfügbar, während die Sicherung erfolgt?**
+    Ja. Sicherungen sind Onlinevorgänge unter Verwendung von Momentaufnahmen. Der Momentaufnahmevorgang dauert nur wenige Sekunden und beeinträchtigt keine Produktionsworkloads, sodass Hochverfügbarkeit für den Server sichergestellt ist. 
+
+* **Müssen wir beim Einrichten des Wartungsfensters für den Server das Sicherungsfenster berücksichtigen?**
+  
+    Nein. Sicherungen werden intern als Teil des verwalteten Diensts ausgelöst und haben keinen Einfluss auf das verwaltete Wartungsfenster.
+
+* **Wo werden meine automatisierten Sicherungen gespeichert, und wie verwalte ich deren Aufbewahrung?**
+  
+    Azure Database for PostgreSQL erstellt Sicherungen des Servers automatisch und speichert diese automatisch in zonenredundantem Speicher in Regionen, in denen mehrere Zonen unterstützt werden, oder in lokal redundantem Speicher in Regionen, die noch nicht mehrere Zonen unterstützen. Diese Sicherungsdateien können nicht exportiert werden. Sie können mithilfe von Sicherungen Ihren Server nur zu einem bestimmten Zeitpunkt wiederherstellen. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Optional können Sie die Aufbewahrungsdauer für Sicherungen auf bis zu 35 Tage festlegen.
+
+* **Wie werden Sicherungen auf Servern mit aktivierter Hochverfügbarkeit ausgeführt?**
+  
+    Die Datenvolumes des flexiblen Servers werden mit inkrementellen Momentaufnahmen des primären Servers auf verwalteten Datenträgern gesichert. Die WAL-Sicherung wird entweder vom primären oder Standbyserver ausgeführt.
+
+* **Wie kann ich überprüfen, ob Sicherungen auf meinem Server ausgeführt werden?**
+
+    Die beste Möglichkeit, die Verfügbarkeit gültiger Sicherungen zu überprüfen, ist die regelmäßige zeitpunktbezogene Wiederherstellung und Bestätigung, dass Sicherungen gültig und wiederherstellbar sind. Sicherungsvorgänge oder -dateien werden den Endbenutzern nicht verfügbar gemacht.
+
+* **Wo kann ich die Sicherungsverwendung einsehen?**
+  
+    Klicken Sie im Azure-Portal unter „Überwachung“ auf „Metriken“. Dort finden Sie die Metrik „Sicherungsverwendung“, in der Sie die gesamte Sicherungsverwendung überwachen können.
+
+* **Was geschieht mit meinen Sicherungen, wenn ich meinen Server lösche?**
+  
+    Wenn Sie den Server löschen, werden auch alle Sicherungen gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren Verwaltungssperren nutzen.
+
+* **Wie werden Sicherungen für beendete Server beibehalten?**
+
+    Für beendete Server werden keine neuen Sicherungen ausgeführt. Alle älteren Sicherungen (innerhalb des Aufbewahrungszeitfensters) zum Zeitpunkt des Beendens des Servers werden bis zum Neustart des Servers aufbewahrt, wonach die Aufbewahrung der Sicherungen für den aktiven Server durch dessen Aufbewahrungszeitfenster bestimmt wird.
+
+* **Wie werden meine Sicherungen in Rechnung gestellt und abgerechnet?**
+  
+    Für die Flexible Server-Instanz werden bis zu 100 % Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung gestellt. Jeder zusätzlich genutzte Sicherungsspeicher wird gemäß dem Preismodell in GB pro Monat in Rechnung gestellt. Die Abrechnung des Sicherungsspeichers hängt auch von der ausgewählten Aufbewahrungsfrist für Sicherungen und der gewählten Redundanzoption ab – abgesehen von der Transaktionsaktivität auf dem Server, die sich direkt auf den gesamten verwendeten Sicherungsspeicher auswirkt.
+
+* **Wie wird mir ein beendeter Server in Rechnung gestellt?**
+  
+    Während Ihre Serverinstanz beendet wird, werden keine neuen Sicherungen ausgeführt. Ihnen wird bereitgestellter Speicher und Sicherungsspeicher (Sicherungen, die innerhalb des von Ihnen festgelegten Aufbewahrungszeitraums gespeichert werden) in Rechnung gestellt. Kostenloser Sicherungsspeicher ist auf die Größe Ihrer bereitgestellten Datenbank begrenzt. Überschüssige Sicherungsdaten werden zum Preis für die Sicherung in Rechnung gestellt.
+
+* **Ich habe meinen Server mit zonenredundanter Hochverfügbarkeit konfiguriert. Erstellen Sie zwei Sicherungen, und werden mir zweimal Gebühren in Rechnung gestellt?**
+  
+    Nein. Unabhängig von Servern mit oder ohne Hochverfügbarkeit wird nur eine Sicherungskopie angelegt, die Ihnen nur einmal in Rechnung gestellt wird.
+
+### <a name="restore-related-questions"></a>Fragen zur Wiederherstellung
+
+* **Wie kann ich meinen Server wiederherstellen?**
+
+    Azure unterstützt die Zeitpunktwiederherstellung (für alle Server), sodass Benutzer mithilfe von Azure-Portal, Azure CLI und API eine Wiederherstellung gemäß dem neuesten oder einem benutzerdefinierten Wiederherstellungspunkt vornehmen können. 
+
+    Um Ihren Server aus manuell mit Tools wie pg_dump erstellten Sicherungen wiederherzustellen, können Sie zunächst einen flexiblen Server erstellen und Ihre Datenbanken mit [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) auf diesem Server wiederherstellen.
+
+* **Ist eine Wiederherstellung in einer anderen Verfügbarkeitszone innerhalb derselben Region möglich?**
+  
+    Ja. Wenn die Region mehrere Verfügbarkeitszonen unterstützt, wird die Sicherung im ZRS-Konto gespeichert und ermöglicht Ihnen die Wiederherstellung in einer anderen Zone. 
+
+* **Wie lange dauert eine Zeitpunktwiederherstellung? Warum dauert meine Wiederherstellung so lange?**
+  
+    Der Vorgang zur Datenwiederherstellung aus einer Momentaufnahme hängt nicht von der Größe der Daten ab, jedoch kann der Zeitplan für den Wiederherstellungsprozess, der die Protokolle (Transaktionsaktivitäten zur Wiedergabe) anwendet, abhängig von der vorherigen Sicherung des angeforderten Datums/Zeitpunkts und der Menge der zu verarbeitenden Protokolle variieren. Dies gilt sowohl für die Wiederherstellung innerhalb derselben Zone als auch für eine andere Zone. 
+ 
+* **Wenn ich meinen Server mit Hochverfügbarkeit wiederherstelle, wird der Wiederherstellungsserver automatisch mit Hochverfügbarkeit konfiguriert?**
+  
+    Nein. Der Server wird als flexibler Einzelinstanzserver wiederhergestellt. Nach Abschluss der Wiederherstellung können Sie den Server optional mit Hochverfügbarkeit konfigurieren.
+
+* **Ich habe meinen Server in einem VNet konfiguriert. Ist eine Wiederherstellung in einem anderen VNet möglich?**
+  
+    Ja. Wählen Sie zum Zeitpunkt der Wiederherstellung ein anderes VNet aus, in dem die Wiederherstellung erfolgen soll.
+
+* **Kann ich meinen öffentlichen Zugriffsserver in einem VNet wiederherstellen oder umgekehrt?**
+
+    Nein. Die Wiederherstellung von Servern mit öffentlichem und privatem Zugriff wird derzeit nicht unterstützt.
+
+* **Wie kann ich meine Wiederherstellung nachverfolgen?**
+  
+    Derzeit gibt es keine Möglichkeit, den Wiederherstellungsvorgang nachzuverfolgen. Sie können das Aktivitätsprotokoll überwachen, um zu prüfen, ob der Vorgang in Bearbeitung oder abgeschlossen ist.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
