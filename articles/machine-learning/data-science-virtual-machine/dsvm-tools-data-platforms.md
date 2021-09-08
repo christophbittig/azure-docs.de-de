@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13da66fbe5b79026028dc6c525283e40f1d55dad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071198"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339814"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -38,6 +38,8 @@ Folgende Datenplattformen werden von der DSVM unterstützt.
 > [!NOTE]
 > Der Support für Machine Learning Server (eigenständig) endet am 1. Juli 2021. Sie wird nach dem 30. Juni aus den DSVM-Images entfernt. Vorhandene Bereitstellungen haben weiterhin Zugriff auf die Software, aber aufgrund des erreichten Enddatums für den Support wird sie nach dem 1. Juli 2021 nicht mehr unterstützt.
 
+> [!NOTE]
+> Wir werden SQL Server Developer Edition bis Ende November 2021 aus DSVM-Images entfernen. Für vorhandene Bereitstellungen ist weiterhin SQL Server Developer Edition installiert. Wenn Sie in neuen Bereitstellungen Zugriff auf SQL Server Developer Edition benötigen, können Sie es über die Docker-Unterstützung installieren und verwenden. Weitere Informationen finden Sie unter [Schnellstart: Ausführen von SQL Server-Containerimages mit Docker](/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-).
 
 ### <a name="windows"></a>Windows
 

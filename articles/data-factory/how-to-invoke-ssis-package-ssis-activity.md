@@ -2,18 +2,19 @@
 title: Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“
 description: In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer Azure Data Factory-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben.
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/20/2020
-ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/04/2021
+ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391608"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339676"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
 
@@ -37,9 +38,9 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche oder 
 
    ![Data Factory-Startseite](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus. 
+   Wählen Sie auf der Startseite die Option **Orchestrieren** aus. 
 
-   ![Seite für die ersten Schritte](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**. Ziehen Sie dann die Aktivität **SSIS-Paket ausführen** auf die Oberfläche des Pipeline-Designers. 
 

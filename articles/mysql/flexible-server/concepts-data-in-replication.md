@@ -6,19 +6,22 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 5cc19531f076d3b630faced7fef4ea5cb05be9f1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 071672c5c2d3c741abd14dad94c8c150e427a3ce
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751377"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464772"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql-flexible--server-preview"></a>Replizieren von Daten in Azure Database for MySQL Flexible Server (Vorschau)
+
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Die Datenreplikation ermöglicht das Synchronisieren von Daten von einem externen MySQL-Server mit dem Dienst Azure Database for MySQL Flexible. Der externe Server kann lokal, in virtuellen Computern, in Azure Database for MySQL Single Server oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird. Die Datenreplikation basiert auf der Position der binären Protokolldatei (binlog). Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
 > [!Note]
-> Die GTID-basierte Replikation wird für Azure Database for MySQL Flexible Server derzeit nicht unterstützt. 
+> Die GTID-basierte Replikation wird für Azure Database for MySQL Flexible Server derzeit nicht unterstützt.<br>
+> Die Konfiguration von Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt. 
 
 ## <a name="when-to-use-data-in-replication"></a>Szenarien für die Verwendung der Datenreplikation
 
@@ -36,11 +39,12 @@ Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](htt
 
 Die [*Systemdatenbank „mysql“*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) auf dem Quellserver wird nicht repliziert. Außerdem werden Änderungen an Konten und Berechtigungen auf dem Quellserver nicht repliziert. Wenn Sie ein Konto auf dem Quellserver erstellen und dieses Konto Zugriff auf den Replikatserver erfordert, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
+### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>Datenreplikation wird auf Servern mit aktivierter Hochverfügbarkeit nicht unterstützt. 
+Die Konfiguration von Datenreplikation für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt. Auf Servern mit aktivierter Hochverfügbarkeit sind die gespeicherten Prozeduren für die Replikation `mysql.az_replication_*` nicht verfügbar. 
+
 ### <a name="filtering"></a>Filterung
 
-Um das Replizieren von Tabellen vom Quellserver (lokal, auf virtuellen Computern oder in einem von anderen Cloudanbietern gehosteten Datenbankdienst gehostet) zu überspringen, wird der `replicate_wild_ignore_table`-Parameter unterstützt. Optional können Sie diesen Parameter auf dem Replikatserver, der in Azure gehostet wird, mithilfe des [Azure-Portals](how-to-configure-server-parameters-portal.md) oder der [Azure CLI](how-to-configure-server-parameters-cli.md) aktualisieren.
-
-Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table).
+Das Ändern des Parameters `replicate_wild_ignore_table`, der zum Erstellen eines Replikationsfilters für Tabellen verwendet wurde, wird für flexible Azure Database for MySQL-Server derzeit nicht unterstützt. 
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -52,6 +56,8 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 - Wenn für den Quellserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mysql.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](./how-to-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
 - Vergewissern Sie sich, dass für den Computer, der den Quellserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
 - Vergewissern Sie sich, dass der Quellserver eine **öffentliche IP-Adresse** hat, dass DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) zur Verfügung steht.
+- Stellen Sie bei öffentlichem Zugriff sicher, dass der Quellserver eine öffentliche IP-Adresse hat, dass DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) zur Verfügung steht.
+- Stellen Sie bei privatem Zugriff sicher, dass der Name des Quellservers aufgelöst werden kann und über das VNET zugänglich ist, in dem die Azure Database for MySQL-Instanz ausgeführt wird. Weitere Informationen finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

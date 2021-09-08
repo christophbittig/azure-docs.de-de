@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: 7b25aaf6d151b840571a562819fb804f4af5c8dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/28/2021
+ms.openlocfilehash: a620d1cbd9ae0f9a4f03e6bf744cf2febd8ac240
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371083"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355374"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -36,6 +36,8 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 > Es wird empfohlen, Debugvorgänge vor der Bereitstellung im Webdienst lokal durchzuführen. Weitere Informationen finden Sie unter [Lokal debuggen](./how-to-troubleshoot-deployment-local.md).
 >
 > Weitere Informationen finden Sie auch unter Azure Machine Learning – [Bereitstellung auf lokalem Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,7 +72,7 @@ In Azure Machine Learning wird „Bereitstellung“ allgemeiner für das Verfüg
 1. Erstellen oder Herunterladen des Dockerfiles auf den Serverknoten (bezieht sich auf Kubernetes)
     1. Das System berechnet einen Hashwert aus: 
         - Dem Basisimage 
-        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](./how-to-deploy-custom-docker-image.md))
+        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](./how-to-deploy-custom-container.md))
         - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](./how-to-use-environments.md))
     1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
     1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
@@ -92,26 +94,35 @@ Azureml-fe wird sowohl (vertikal) hochskaliert, um mehr Kerne zu verwenden, als 
 
 Beim Herunter- und Abskalieren wird die CPU-Auslastung verwendet. Wenn der Schwellenwert für die CPU-Auslastung erreicht ist, wird das Front-End zuerst herunterskaliert. Wenn die CPU-Auslastung auf den Schwellenwert für die Abskalierung sinkt, erfolgt eine Abskalierung. Ein Hoch- und Aufskalieren erfolgt nur, wenn genügend Clusterressourcen verfügbar sind.
 
+<a id="connectivity"></a>
+
 ## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Grundlegendes zu Konnektivitätsanforderungen für AKS-Rückschlusscluster
 
 Wenn Azure Machine Learning einen AKS-Cluster erstellt oder anfügt, wird der AKS-Cluster mit einem der beiden folgenden Netzwerkmodelle bereitgestellt:
 * Kubenet-Netzwerke: Die Netzwerkressourcen werden normalerweise bei der Bereitstellung des AKS-Clusters erstellt und konfiguriert.
-* Azure Container Networking Interface (CNI) -Netzwerke: Der AKS-Cluster wird mit vorhandenen virtuellen Netzwerkressourcen und -konfigurationen verbunden.
+* Azure Container Networking Interface (CNI)-Netzwerke: Der AKS-Cluster wird mit einer vorhandenen virtuellen Netzwerkressource und -konfigurationen verbunden.
 
-Für den ersten Netzwerkmodus wird das Netzwerk für Azure Machine Learning Service ordnungsgemäß erstellt und konfiguriert. Für den zweiten Netzwerkmodus muss der Kunde, da der Cluster mit einem bestehenden virtuellen Netzwerk verbunden ist, insbesondere wenn ein benutzerdefinierter DNS für das bestehende virtuelle Netzwerk verwendet wird, besonders auf die Konnektivitätsanforderungen für den AKS-Rückschlusscluster achten und die DNS-Auflösung und die ausgehende Konnektivität für AKS-Rückschlüsse sicherstellen.
+Für das Kubenet-Netzwerk wird das Netzwerk für den Azure Machine Learning Service erstellt und ordnungsgemäß konfiguriert. Für das CNI-Netzwerk müssen Sie die Konnektivitätsanforderungen verstehen und die DNS-Auflösung und die ausgehende Konnektivität für AKS-Rückschlüsse sicherstellen. So können Sie z. B. eine Firewall verwenden, um den Netzwerkdatenverkehr zu blockieren.
 
-Das folgende Diagramm erfasst alle Konnektivitätsanforderungen für AKS-Rückschlüsse. Schwarze Pfeile stellen die tatsächliche Kommunikation dar, während blaue Pfeile die Domänennamen repräsentieren, die das vom Kunden gesteuerte DNS auflösen soll.
+Das folgende Diagramm zeigt die Konnektivitätsanforderungen für AKS-Rückschlüsse. Die schwarzen Pfeile stehen für die tatsächliche Kommunikation und die blauen Pfeile für die Domänennamen. Möglicherweise müssen Sie Einträge für diese Hosts zu Ihrer Firewall oder zu Ihrem benutzerdefinierten DNS-Server hinzufügen.
 
  ![Konnektivitätsanforderungen für AKS-Rückschlüsse](./media/how-to-deploy-aks/aks-network.png)
 
+Allgemeine Anforderungen an die AKS-Konnektivität finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)](../aks/limit-egress-traffic.md).
+
 ### <a name="overall-dns-resolution-requirements"></a>Allgemeine Anforderungen an die DNS-Auflösung
-Die DNS-Auflösung innerhalb des bestehenden VNET liegt in der Verantwortung des Kunden. Die folgenden DNS-Einträge sollten auflösbar sein:
-* AKS-API-Server in Form von \<cluster\>.hcp.\<region\>.azmk8s.io
-* Microsoft Container Registry (MCR): mcr.microsoft.com
-* Azure Container Registry (ARC) des Kunden in Form von \<ACR name\>.azurecr.io
-* Azure Storage-Konto in Form von \<account\>.table.core.windows.net und \<account\>.blob.core.windows.net
-* (Optional) Für die AAD-Authentifizierung: api.azureml.ms
-* Bewertungsendpunkt-Domänenname, entweder automatisch von Azure ML generiert oder benutzerdefinierter Domänenname Der automatisch generierte Domänenname würde wie folgt aussehen: \<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com
+
+Die DNS-Auflösung innerhalb eines bestehenden virtuellen Netzwerks unterliegt Ihrer Kontrolle. Beispiel: Firewall oder benutzerdefinierter DNS-Server. Die folgenden Hosts müssen erreichbar sein:
+
+| Hostname | Verwendet von |
+| ----- | ----- |
+| `<cluster>.hcp.<region>.azmk8s.io` | AKS-API-Server |
+| `mcr.microsoft.com` | Microsoft Container Registry (MCR) |
+| `<ACR name>.azurecr.io` | Azure Container Registry (ACR) |
+| `<account>.table.core.windows.net` | Azure Storage-Konto (Tabellenspeicher) |
+| `<account>.blob.core.windows.net` | Azure Storage-Konto (Blobspeicher) |
+| `api.azureml.ms` | Authentifizierung über Azure Active Directory (AAD) |
+| `<leaf-domain-label + auto-generated suffix>.<region>.cloudapp.azure.com` | Endpunktdomänenname, wenn er von Azure Machine Learning automatisch generiert wird. Wenn Sie einen benutzerdefinierten Domänennamen verwendet haben, benötigen Sie diesen Eintrag nicht. |
 
 ### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>Konnektivitätsanforderungen in chronologischer Reihenfolge: von der Clustererstellung zur Modellimplementierung
 
@@ -125,7 +136,7 @@ Direkt nach der Bereitstellung von azureml-fe wird der Start versucht und dies e
 * Abfragen des AKS-API-Servers, um andere Instanzen von sich selbst zu ermitteln (es handelt sich um einen Multi-Pod-Dienst)
 * Herstellen einer Verbindung mit anderen Instanzen von sich selbst
 
-Nachdem azureml-fe gestartet wurde, benötigt es zusätzliche Konnektivität, um ordnungsgemäß zu funktionieren:
+Nachdem azureml-fe gestartet wurde, benötigt es die folgende Konnektivität, um ordnungsgemäß zu funktionieren:
 * Herstellen einer Verbindung mit Azure Storage zum Herunterladen einer dynamischen Konfiguration
 * Lösen Sie das DNS für den AAD-Authentifizierungsserver „api.azureml.ms“ auf und kommunizieren Sie mit ihm, wenn der bereitgestellte Dienst die AAD-Authentifizierung verwendet.
 * Abfragen des AKS-API-Servers, um bereitgestellte Modelle zu entdecken
@@ -372,7 +383,7 @@ print(token)
 >
 > Microsoft empfiehlt dringend, den Azure Machine Learning-Arbeitsbereich in der gleichen Region zu erstellen wie den Azure Kubernetes Service-Cluster. Im Zuge der Tokenauthentifizierung richtet der Webdienst einen Aufruf an die Region, in der Ihr Azure Machine Learning-Arbeitsbereich erstellt wird. Ist die Region Ihres Arbeitsbereichs nicht verfügbar, können Sie kein Token für Ihren Webdienst abrufen (auch dann nicht, wenn sich Ihr Cluster in einer anderen Region befindet als Ihr Arbeitsbereich). Die tokenbasierte Authentifizierung ist dann erst wieder verfügbar, wenn die Region Ihres Arbeitsbereichs wieder verfügbar wird. Außerdem wirkt sich die Entfernung zwischen der Region Ihres Clusters und der Region Ihres Arbeitsbereichs direkt auf die Tokenabrufdauer aus.
 >
-> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) verwenden.
+> Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](/cli/azure/ml(v1)/computetarget/create#az_ml_service_get_access_token) verwenden.
 
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
@@ -383,7 +394,7 @@ Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwalt
 
 * [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
 * [Schützen von Rückschlussumgebungen mit Azure Virtual Network](how-to-secure-inferencing-vnet.md)
-* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
+* [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](./how-to-deploy-custom-container.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Aktualisieren des Webdiensts](how-to-deploy-update-web-service.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)

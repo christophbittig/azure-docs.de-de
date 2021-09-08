@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps'
 description: Tutorial zum Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 605d30a6e209b8da9e772a95f6318a4aa679c704
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: d4dae509d65ef2d090439fe1f532f6878a2139b4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578935"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439468"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 

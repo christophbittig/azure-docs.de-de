@@ -9,16 +9,23 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dea90773340bb16b4f3c01e11affb2d4d2851b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592320"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345846"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Überwachen von Daten in Azure Files – Referenz
 
 Ausführliche Informationen über das Erfassen und Analysieren von Überwachungsdaten für Azure Files finden Sie unter [Überwachen von Azure Files](storage-files-monitoring.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="metrics"></a>Metriken
 
@@ -44,7 +51,7 @@ Diese Tabelle enthält [Azure Files-Metriken](../../azure-monitor/essentials/met
 | FileCount   | Die Anzahl von Dateien im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | FileShareCapacityQuota | Die Obergrenze für die Speichermenge zur Verwendung durch den Azure Files-Dienst, angegeben in Byte. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024|
 | FileShareCount | Die Anzahl von Dateifreigaben im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
-| FileShareProvisionedIOPS | Die Anzahl der bereitgestellten IOPS in einer Dateifreigabe. Diese Metrik gilt nur für den Speicher für Premiumdateien. <br/><br/> Einheit: Bytes <br/> Aggregationstyp: Average |
+| FileShareProvisionedIOPS | Die Anzahl der bereitgestellten IOPS in einer Dateifreigabe. Diese Metrik gilt nur für den Speicher für Premiumdateien. <br/><br/> Einheit: CountPerSecond <br/> Aggregationstyp: Average |
 | FileShareSnapshotCount | Hiermit wird die Anzahl der in der Freigabe im Azure Files-Dienst des Speicherkontos enthaltenen Momentaufnahmen angegeben. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average | 
 |FileShareSnapshotSize|Hiermit wird die durch die Momentaufnahmen im Azure Files-Dienst des Speicherkontos genutzte Speichermenge angegeben. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average|
 

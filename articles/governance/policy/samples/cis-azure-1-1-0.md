@@ -1,15 +1,15 @@
 ---
 title: Details der Einhaltung gesetzlicher Bestimmungen für CIS Microsoft Azure Foundations Benchmark 1.1.0
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0 Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 4eca33f77a4415e13773a51057bb7495857df043
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 3b2d7a49eb67fb2905ddf5c5fa98c3973f1e2e82
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112185"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472666"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0
 
@@ -216,7 +216,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Der öffentliche Zugriff auf Speicherkonten muss untersagt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode zum Freigeben von Daten, birgt aber unter Umständen Sicherheitsrisiken. Um Datenverletzungen durch unerwünschten anonymen Zugriff zu verhindern, empfiehlt Microsoft, den öffentlichen Zugriff auf ein Speicherkonto zu verhindern, sofern dies für Ihr Szenario nicht erforderlich ist. |Audit, Deny, Disabled |[2.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[Der öffentliche Zugriff auf Speicherkonten muss untersagt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode zum Freigeben von Daten, birgt aber unter Umständen Sicherheitsrisiken. Um Datenverletzungen durch unerwünschten anonymen Zugriff zu verhindern, empfiehlt Microsoft, den öffentlichen Zugriff auf ein Speicherkonto zu verhindern, sofern dies für Ihr Szenario nicht erforderlich ist. |Audit, Deny, Disabled |[3.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>Sicherstellen, dass die Standard-Netzwerkzugriffsregel für Speicherkonten auf „Verweigern“ festgelegt ist
 
@@ -382,7 +382,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Der öffentliche Zugriff auf Speicherkonten muss untersagt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode zum Freigeben von Daten, birgt aber unter Umständen Sicherheitsrisiken. Um Datenverletzungen durch unerwünschten anonymen Zugriff zu verhindern, empfiehlt Microsoft, den öffentlichen Zugriff auf ein Speicherkonto zu verhindern, sofern dies für Ihr Szenario nicht erforderlich ist. |Audit, Deny, Disabled |[2.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[Der öffentliche Zugriff auf Speicherkonten muss untersagt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode zum Freigeben von Daten, birgt aber unter Umständen Sicherheitsrisiken. Um Datenverletzungen durch unerwünschten anonymen Zugriff zu verhindern, empfiehlt Microsoft, den öffentlichen Zugriff auf ein Speicherkonto zu verhindern, sofern dies für Ihr Szenario nicht erforderlich ist. |Audit, Deny, Disabled |[3.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>Sicherstellen, dass das Speicherkonto, das den Container mit Aktivitätsprotokollen enthält, per BYOK (Bring Your Own Key) verschlüsselt ist
 
@@ -557,7 +557,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault-Schlüssel sollten ein Ablaufdatum aufweisen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |Kryptografische Schlüssel sollten ein definiertes Ablaufdatum aufweisen und nicht dauerhaft sein. Schlüssel, die immer gültig sind, bieten einem potenziellen Angreifer mehr Zeit, um den Schlüssel zu kompromittieren. Als empfohlene Sicherheitsmethode sollte für kryptografische Schlüssel ein Ablaufdatum festgelegt werden. |Audit, Deny, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
+|[Key Vault-Schlüssel sollten ein Ablaufdatum aufweisen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |Kryptografische Schlüssel sollten ein definiertes Ablaufdatum aufweisen und nicht dauerhaft sein. Schlüssel, die immer gültig sind, bieten einem potenziellen Angreifer mehr Zeit, um den Schlüssel zu kompromittieren. Als empfohlene Sicherheitsmethode sollte für kryptografische Schlüssel ein Ablaufdatum festgelegt werden. |Audit, Deny, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
 
 ### <a name="ensure-that-the-expiration-date-is-set-on-all-secrets"></a>Sicherstellen, dass das Ablaufdatum für alle Geheimnisse festgelegt ist
 
@@ -565,7 +565,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault-Geheimnisse sollten ein Ablaufdatum aufweisen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |Geheimnisse sollten ein definiertes Ablaufdatum aufweisen und nicht dauerhaft sein. Geheimnisse, die immer gültig sind, bieten einem potenziellen Angreifer mehr Zeit, sie zu kompromittieren. Als empfohlene Sicherheitsmethode sollte für Geheimnisse ein Ablaufdatum festgelegt werden. |Audit, Deny, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
+|[Key Vault-Geheimnisse sollten ein Ablaufdatum aufweisen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |Geheimnisse sollten ein definiertes Ablaufdatum aufweisen und nicht dauerhaft sein. Geheimnisse, die immer gültig sind, bieten einem potenziellen Angreifer mehr Zeit, sie zu kompromittieren. Als empfohlene Sicherheitsmethode sollte für Geheimnisse ein Ablaufdatum festgelegt werden. |Audit, Deny, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
 
 ### <a name="ensure-the-key-vault-is-recoverable"></a>Sicherstellen, dass der Schlüsseltresor wiederhergestellt werden kann
 

@@ -1,27 +1,27 @@
 ---
 title: Erstellen und Verwenden von Ledgertabellen, die nur Anfügevorgänge unterstützen
 description: Erfahren Sie, wie Sie Ledgertabellen, die nur Anfügevorgänge unterstützen, in Azure SQL-Datenbank erstellen und verwenden können.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: f433e56140a199cdb872bc733343a8cf88c818cb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: fede72baa7df89e821e496066090658bda2df80e
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076400"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665843"
 ---
 # <a name="create-and-use-append-only-ledger-tables"></a>Erstellen und Verwenden von Ledgertabellen, die nur Anfügevorgänge unterstützen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 In diesem Artikel erfahren Sie, wie Sie [Ledgertabellen, die nur Anfügevorgänge unterstützen](ledger-append-only-ledger-tables.md), in Azure SQL-Datenbank erstellen können. Als Nächstes fügen Sie Werte in die Ledgertabelle, die nur Anfügevorgänge unterstützt, ein. Danach versuchen Sie, die Daten zu aktualisieren. Schließlich zeigen Sie die Ergebnisse unter Verwendung der Ledgeransicht an. Wir verwenden ein Beispiel für ein Kartenschlüsselzugangssystem für eine Einrichtung, das ein Nur-Anfügen-Systemmuster ist. In diesem Beispiel erhalten Sie einen praxisnahen Blick auf die Beziehung zwischen der Ledgertabelle, die nur Anfügevorgänge unterstützt, und der entsprechenden Ledgeransicht.
 

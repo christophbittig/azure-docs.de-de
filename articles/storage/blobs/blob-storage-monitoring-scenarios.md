@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 37a916ca07a1767855b32b79ccb35722cc389f65
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 1d09538b9ada9a355ed956640d13a10ad544b348
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830990"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342874"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Bewährte Methoden für die Überwachung von Azure Blob Storage
 
@@ -155,6 +155,8 @@ Die Authentifizierung über gemeinsam verwendete Schlüssel und die SAS-Authenti
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>Optimieren der Kosten für selten verwendete Abfragen
 
+Wenn Sie große Mengen an Protokolldaten erfassen, diese aber nur gelegentlich abfragen möchten (z. B. zur Erfüllung von Konformitäts- und Sicherheitsverpflichtungen), können Sie die Protokolle in einem Speicherkonto archivieren, anstatt Log Analytics zu verwenden. Bei einer großen Anzahl von Transaktionen können die Kosten für Log Analytics im Vergleich zur Archivierung im Speicher und der Verwendung anderer Abfragemethoden beträchtlich sein. Log Analytics ist in Fällen sinnvoll, in denen Sie die umfassenden Möglichkeiten dieses Diensts ausschöpfen möchten. Sie können die Kosten für die Abfrage von Daten reduzieren, indem Sie Protokolle in einem Speicherkonto archivieren und sie dann in einem Synapse-Arbeitsbereich abfragen.
+
 Sie können Protokolle in Log Analytics exportieren und dann die umfassenden nativen Abfragefunktionen nutzen. Bei umfangreichen Transaktionen in Ihrem Speicherkonto können die Kosten für die Verwendung von Protokollen mit Log Analytics beträchtlich sein. Weitere Informationen finden Sie unter [Azure Log Analytics – Preise](https://azure.microsoft.com/pricing/details/monitor/). Wenn Sie Protokolle nur gelegentlich abfragen möchten (z. B. Abfrageprotokolle für die Konformitätsüberwachung), können Sie die Gesamtkosten reduzieren, indem Sie die Protokolle in ein Speicherkonto exportieren und dann zusätzlich zu den Protokolldaten eine serverlose Abfragelösung verwenden, z. B. Azure Synapse.
 
 Mit Azure Synapse können Sie einen serverlosen SQL-Pool erstellen, um Protokolldaten bei Bedarf abzufragen. Dadurch lassen sich die Kosten erheblich senken. 
@@ -188,7 +190,6 @@ Mit Azure Synapse können Sie einen serverlosen SQL-Pool erstellen, um Protokoll
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Überwachen von Azure Blob Storage](monitor-blob-storage.md)
-- [Überwachen von Daten in Azure Blob Storage – Referenz](monitor-blob-storage-reference.md)
 - [Tutorial: Verwenden von Kusto-Abfragen in Azure Data Explorer und Azure Monitor](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)
 - [Get started with log queries in Azure Monitor (Erste Schritte mit Abfragen in Azure Monitor)](../../azure-monitor/logs/get-started-queries.md)
 

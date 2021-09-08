@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: d14274c43c3241a4c091ee004747c1ad8e12968b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 24f466e7c9a9e5630510f73652fcf515540bee10
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111896443"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646493"
 ---
 Azure Defender bietet einen Echtzeit-Bedrohungsschutz für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
@@ -22,7 +22,7 @@ Azure Defender bietet Bedrohungsschutz auf unterschiedlichen Ebenen:
     >[!IMPORTANT]
     > Derzeit wird die Installation des Log Analytics-Agents in Azure Kubernetes Service-Clustern, die in VM-Skalierungsgruppen ausgeführt werden, nicht unterstützt.
 
-    Eine Liste der Warnungen auf Clusterebene finden Sie in der [Referenztabelle der Warnungen](../articles/security-center/alerts-reference.md#alerts-containerhost).
+    Eine Liste der Warnungen auf Hostebene finden Sie in der [Referenztabelle der Warnungen](../articles/security-center/alerts-reference.md#alerts-containerhost).
 
 
 * **Clusterebene (bereitgestellt von Azure Defender für Kubernetes):** Auf Clusterebene basiert der Bedrohungsschutz auf der Analyse der Überwachungsprotokolle von Kubernetes. Aktivieren Sie Azure Defender, um diese Überwachung **ohne Agents** zu ermöglichen. Wenn Ihr Cluster lokal oder von einem anderen Cloudanbieter gehostet wird, aktivieren Sie [Kubernetes mit Arc-Unterstützung und die Azure Defender-Erweiterung](../articles/security-center/defender-for-kubernetes-azure-arc.md).

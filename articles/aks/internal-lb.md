@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen internen Lastenausgleich erstellen und 
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: cbb898d05ecc1f0796f3609adb1368c3d77de2c5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e55ec0b6066b2b2582adf20acd646117c47f8e4
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779739"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666456"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
@@ -67,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>Angeben einer IP-Adresse
 
-Wenn Sie eine bestimmte IP-Adresse für den internen Lastenausgleich verwenden möchten, fügen Sie dem YAML-Manifest des Lastenausgleichs die Eigenschaft *loadBalancerIP* hinzu. Die angegebene IP-Adresse muss sich in diesem Szenario im gleichen Subnetz wie der AKS-Cluster befinden und darf keiner Ressource zugewiesen sein. Beispielsweise sollten Sie keine IP-Adresse in dem für das Kubernetes-Subnetz vorgesehenen Bereich verwenden.
+Wenn Sie eine bestimmte IP-Adresse für den internen Lastenausgleich verwenden möchten, fügen Sie dem YAML-Manifest des Lastenausgleichs die Eigenschaft *loadBalancerIP* hinzu. Die angegebene IP-Adresse muss sich in diesem Szenario im gleichen Subnetz wie der AKS-Cluster befinden und darf keiner Ressource zugewiesen sein. Beispielsweise sollte keine IP-Adresse aus dem Bereich verwendet werden, der für das Kubernetes-Subnetz im AKS-Cluster festgelegt ist.
 
 ```yaml
 apiVersion: v1

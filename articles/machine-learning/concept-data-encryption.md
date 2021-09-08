@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 04/21/2021
-ms.openlocfilehash: ab71dc6f02c87997a680722e3553f2739c378dc4
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 08/02/2021
+ms.openlocfilehash: 2a838d2c1206cbc1a73e00d3ff41337400a08676
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371286"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339816"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -36,6 +36,9 @@ Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken
 * Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Azure Machine Learning-Computecluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
 * Bereinigt Ihren lokalen Scratch-Datenträger zwischen den Ausführungen.
 * Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
+
+> [!TIP]
+> Das Flag `hbi_workspace` wirkt sich nicht auf die Verschlüsselung während der Übertragung aus, sondern nur auf die Verschlüsselung ruhender Daten.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -59,7 +62,7 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
 
 * Registrieren Sie die Anbieter von Microsoft.MachineLearning- und Microsoft.DocumentDB-Ressourcen in Ihrem Abonnement, falls dies noch nicht geschehen ist.
 
-* Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden in SDK-, CLI-, REST-APIs und Resource Manager-Vorlagen unterstützt.
+* Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden beim SDK, der Azure-Befehlszeilenschnittstelle, bei REST-APIs und in Resource Manager-Vorlagen unterstützt.
 
     * `resource_cmk_uri`: Dieser Parameter ist der vollständige Ressourcen-URI des vom Kunden verwalteten Schlüssels in Ihrem Schlüsseltresor, einschließlich der [Versionsinformationen für den Schlüssel](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
 
@@ -120,11 +123,11 @@ Dieser Prozess ermöglicht es Ihnen, sowohl die Daten als auch den Betriebssyste
 
 ### <a name="machine-learning-compute"></a>Machine Learning Compute
 
-Der Betriebssystem-Datenträger für jeden in Azure Storage gespeicherten Computeknoten wird mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning verschlüsselt. Dieses Computeziel ist kurzlebig, und Cluster werden in der Regel zentral herunterskaliert, wenn keine Ausführungen in der Warteschlange stehen. Die Bereitstellung des zugrunde liegenden virtuellen Computers wird aufgehoben, und der Betriebssystem-Datenträger wird gelöscht. Azure Disk Encryption wird für den Betriebssystem-Datenträger nicht unterstützt. 
+**Computecluster:** Der Betriebssystemdatenträger für jeden in Azure Storage gespeicherten Serverknoten wird mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning verschlüsselt. Dieses Computeziel ist kurzlebig, und Cluster werden in der Regel zentral herunterskaliert, wenn keine Ausführungen in der Warteschlange stehen. Die Bereitstellung des zugrunde liegenden virtuellen Computers wird aufgehoben, und der Betriebssystem-Datenträger wird gelöscht. Azure Disk Encryption wird für den Betriebssystem-Datenträger nicht unterstützt. 
 
-Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Wenn Sie möchten, können Sie den Datenträger zum Bereitstellen von Trainingsdaten verwenden. Der Datenträger wird standardmäßig für Arbeitsbereiche mit dem Parameter `hbi_workspace` verschlüsselt, der auf `TRUE` festgelegt ist. Diese Umgebung ist auf die Dauer Ihrer Ausführung befristet, und die Unterstützung für die Verschlüsselung beschränkt sich auf vom System verwaltete Schlüssel.
+Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Wenn Sie möchten, können Sie den Datenträger zum Bereitstellen von Trainingsdaten verwenden. Wenn bei der Erstellung des Arbeitsbereichs der Parameter `hbi_workspace` auf `TRUE` festgelegt war, wird der temporäre Datenträger verschlüsselt. Diese Umgebung ist auf die Dauer Ihrer Ausführung befristet, und die Unterstützung für die Verschlüsselung beschränkt sich auf vom System verwaltete Schlüssel.
 
-Der Betriebssystem-Datenträger für die Compute-Instanz wird mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning verschlüsselt. Der lokale temporäre Datenträger auf der Compute-Instanz wird mit von Microsoft verwalteten Schlüsseln für Arbeitsbereiche verschlüsselt, deren Parameter `hbi_workspace` auf `TRUE` festgelegt ist.
+**Compute-Instanz:** Der Betriebssystemdatenträger für die Compute-Instanz wird mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning verschlüsselt. Wenn bei der Erstellung des Arbeitsbereichs der Parameter `hbi_workspace` auf `TRUE` festgelegt war, wird der lokale temporäre Datenträger auf der Compute-Instanz mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Verschlüsselung mit vom Kunden verwalteten Schlüsseln wird für Betriebssystem- und temporäre Datenträger nicht unterstützt.
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -146,11 +149,11 @@ Zum Sichern externer Aufrufe an den Bewertungsendpunkt verwendet Azure Machine L
 
 ### <a name="microsoft-collected-data"></a>Von Microsoft gesammelte Daten
 
-Microsoft sammelt möglicherweise Informationen, z. B. Ressourcennamen (wie den Datasetnamen oder den Namen des Machine Learning-Experiments) oder Variablen von Auftragsumgebungen zu Diagnosezwecken, die nicht den Benutzer identifizieren. Alle diese Daten werden mit von Microsoft verwalteten Schlüsseln in einem Speicher gespeichert, der in Microsoft-eigenen Abonnements gehostet wird, und folgen den [Standarddatenschutzrichtlinien und Datenverarbeitungsstandards von Microsoft](https://privacy.microsoft.com/privacystatement).
+Microsoft sammelt möglicherweise Informationen, z. B. Ressourcennamen (wie den Datasetnamen oder den Namen des Machine Learning-Experiments) oder Variablen von Auftragsumgebungen zu Diagnosezwecken, die nicht den Benutzer identifizieren. Alle diese Daten werden mit von Microsoft verwalteten Schlüsseln in einem Speicher gespeichert, der in Microsoft-eigenen Abonnements gehostet wird, und folgen den [Standarddatenschutzrichtlinien und Datenverarbeitungsstandards von Microsoft](https://privacy.microsoft.com/privacystatement). Diese Daten werden in derselben Region wie Ihr Arbeitsbereich gespeichert.
 
 Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert. Vermeiden Sie beim Benennen von [run_id](/python/api/azureml-core/azureml.core.run%28class%29) daher vertrauliche Informationen wie Benutzernamen oder geheime Projektnamen. Diese Informationen können in Telemetrieprotokollen enthalten sein, auf die Microsoft-Supporttechniker zugreifen können.
 
-Sie können sich von der Erfassung von Diagnosedaten abmelden, indem Sie den Parameter `hbi_workspace` während der Bereitstellung des Arbeitsbereichs auf `TRUE` festlegen. Diese Funktionalität wird unterstützt, wenn AzureML Python-SDK-, CLI-, REST-APIs oder Azure Resource Manager-Vorlagen verwendet werden.
+Sie können sich von der Erfassung von Diagnosedaten abmelden, indem Sie den Parameter `hbi_workspace` während der Bereitstellung des Arbeitsbereichs auf `TRUE` festlegen. Diese Funktionalität wird unterstützt, wenn das AzureML Python SDK, die Azure-Befehlszeilenschnittstelle, REST-APIs oder Azure Resource Manager-Vorlagen verwendet werden.
 
 ## <a name="using-azure-key-vault"></a>Verwenden von Azure Key Vault
 

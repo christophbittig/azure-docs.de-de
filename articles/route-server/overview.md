@@ -1,27 +1,22 @@
 ---
-title: Was ist Azure Route Server (Vorschau)?
+title: Was ist Azure Route Server?
 description: Hier erfahren Sie, wie Azure Route Server das Routing zwischen Ihrem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) und Ihrem virtuellen Netzwerk vereinfachen kann.
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2c4a31f4c1c0ec53e76ffaf6f4670d9179e9505
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437160"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436786"
 ---
-# <a name="what-is-azure-route-server-preview"></a>Was ist Azure Route Server (Vorschau)? 
+# <a name="what-is-azure-route-server"></a>Was ist Azure Route Server? 
 
 Azure Route Server vereinfacht das dynamische Routing zwischen Ihrem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) und Ihrem virtuellen Netzwerk. Sie können Routinginformationen direkt über das Border Gateway Protocol-Routingprotokoll (BGP-Routingprotokoll) zwischen jedem NVA, das das BGP-Routingprotokoll unterstützt, und dem softwaredefinierten Azure-Netzwerk (Software Defined Network, SDN) in Azure Virtual Network (VNet) austauschen, ohne Routingtabellen manuell konfigurieren oder verwalten zu müssen. Azure Route Server ist ein vollständig verwalteter Dienst, der mit Hochverfügbarkeit konfiguriert ist.
-
-> [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 

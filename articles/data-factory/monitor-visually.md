@@ -5,14 +5,15 @@ author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: bcc10ccde73f5036e50d1717528933a49ccd69cd
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/30/2021
+ms.openlocfilehash: 81649565955d1de031e4eefca548c5d58f7e28c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904944"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346187"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -95,7 +96,19 @@ Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Üb
 
 ![Aktivitätsausführungenliste mit Spalten für Benutzereigenschaften](media/monitor-visually/view-user-properties.png)
 
+
 ## <a name="rerun-pipelines-and-activities"></a>Erneutes Ausführen von Pipelines und Aktivitäten
+ 
+ Das Verhalten beim erneuten Ausführen der Containeraktivitäten lautet wie folgt:
+ 
+- `Wait`: Die Aktivität verhält sich wie zuvor.
+- `Set Variable`: Die Aktivität verhält sich wie zuvor.
+- `Filter`: Die Aktivität verhält sich wie zuvor.
+- Die `Until`-Aktivität wertet den Ausdruck aus und durchläuft eine Schleife, bis die Bedingung erfüllt ist. Innere Aktivitäten können auf der Grundlage der Regeln für die erneute Ausführung trotzdem übersprungen werden.
+- Die `Foreach`-Aktivität durchläuft immer eine Schleife für die empfangenen Elemente. Innere Aktivitäten können auf der Grundlage der Regeln für die erneute Ausführung trotzdem übersprungen werden.
+- `If and switch`: Bedingungen werden immer ausgewertet. Innere Aktivitäten können auf der Grundlage der Regeln für die erneute Ausführung trotzdem übersprungen werden.
+- `Execute pipeline activity`: Die untergeordnete Pipeline wird ausgelöst, aber alle Aktivitäten in der untergeordneten Pipeline können auf der Grundlage der Regeln für die erneute Ausführung trotzdem übersprungen werden.
+
 
 Um eine Pipeline, die bereits ausgeführt wurde, von Anfang an erneut auszuführen, zeigen Sie auf die jeweilige Pipelineausführung, und wählen Sie **Erneut ausführen** aus. Wenn Sie mehrere Pipelines auswählen, können Sie über die Schaltfläche **Erneut ausführen** alle erneut ausführen.
 

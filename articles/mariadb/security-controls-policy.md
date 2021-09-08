@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Database for MariaDB
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen auf, die für Azure Policy für Azure Database for MariaDB verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 65c10e1275b2e26a23a08c76ad3e33a3217c3492
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8b619abb15f1205a37dad51891ccb03e3348dc7a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105817"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469891"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Database for MariaDB
 

@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Serverparameter für die Postgres-Engine Ihrer PostgreSQL Hyperscale-Servergruppe in Azure Arc
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Konfigurieren der Serverparameter für die Postgres-Engine Ihrer PostgreSQL Hyperscale-Servergruppe in Azure Arc
 services: azure-arc
 ms.service: azure-arc
@@ -8,16 +8,16 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 06bff9acd76edc05498285809735eb4ec8a3c2f3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e634bcc7d07cfba4016c8f2db323e78e9beda92a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407753"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346552"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Festlegen der Einstellungen der Datenbank-Engine für Azure Arc-fähiges PostgreSQL Hyperscale
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Festlegen der Einstellungen der Datenbank-Engine für PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
 In diesem Dokument wird beschrieben, wie Sie die Einstellungen der Datenbank-Engine Ihrer PostgreSQL Hyperscale-Servergruppe auf benutzerdefinierte (nicht standardmäßige) Werte festlegen. Ausführliche Informationen dazu, welche Parameter für die Datenbank-Engine festgelegt werden können und wie die Standardwerte lauten, finden Sie [hier](https://www.postgresql.org/docs/current/runtime-config.html) in der PostgreSQL-Dokumentation.
 
@@ -41,22 +41,22 @@ In diesem Dokument wird beschrieben, wie Sie die Einstellungen der Datenbank-Eng
 
 Der Befehl zum Konfigurieren der Einstellungen für die Datenbank-Engine hat das folgende allgemeine Format:
 
-```console
-azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
+```azurecli
+az postgres arc-server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-settings , --re}] {'<parameter name>=<parameter value>, ...'} --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="show-current-custom-values"></a>Aktuelle benutzerdefinierte Werte anzeigen
 
 ### <a name="with-azure-data-cli-azdata-command"></a>Mit dem Befehl [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server show -n postgres01
+```azurecli
+az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s 
 ```
 
 Durch diesen Befehl werden die Spezifikationen der Servergruppe zurückgegeben, in der die von Ihnen festgelegten Parameter angezeigt werden sollen. Wenn kein Abschnitt für die Engine/Einstellungen vorhanden ist, bedeutet dies, dass alle Parameter mit dem Standardwert ausgeführt werden:
@@ -82,14 +82,14 @@ Führen Sie die folgenden Schritte aus.
 
    Führen Sie Folgendes aus:
 
-   ```console
-   azdata arc postgres server show -n <server group name>
+   ```azurecli
+   az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
    ```
 
    Zum Beispiel:
 
-   ```console
-   azdata arc postgres server show -n postgres01
+   ```azurecli
+   az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s
    ```
 
    Durch diesen Befehl werden die Spezifikationen der Servergruppe zurückgegeben, in der die von Ihnen festgelegten Parameter angezeigt werden sollen. Wenn kein Abschnitt für die Engine/Einstellungen vorhanden ist, bedeutet dies, dass alle Parameter mit dem Standardwert ausgeführt werden:
@@ -146,26 +146,26 @@ Mit den folgenden Befehlen werden die Parameter des Koordinatorknotens und der W
 
 ### <a name="set-a-single-parameter"></a>Festlegen eines einzelnen Parameters
 
-```console
-azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  <parameter name>=<parameter value> --k8s-namespace <namespace> --use-k8s
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  shared_buffers=8MB --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="set-multiple-parameters-with-a-single-command"></a>Festlegen mehrerer Parameter mit einem einzigen Befehl
 
-```console
-azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '<parameter name>=<parameter value>, <parameter name>=<parameter value>, --k8s-namespace <namespace> --use-k8s...'
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'shared_buffers=8MB, max_connections=50' --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="reset-a-parameter-to-its-default-value"></a>Zurücksetzen eines Parameters auf den Standardwert
@@ -174,34 +174,34 @@ Wenn Sie einen Parameter auf den Standardwert zurücksetzen möchten, legen Sie 
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server edit -n postgres01 -e shared_buffers=
+```azurecli
+az postgres arc-server edit -n postgres01 --k8s-namespace <namespace> --use-k8s --engine-settings  shared_buffers=
 ```
 
 ### <a name="reset-all-parameters-to-their-default-values"></a>Zurücksetzen aller Parameter auf die Standardwerte
 
-```console
-azdata arc postgres server edit -n <server group name> -e '' -re
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server edit -n postgres01 -e '' -re
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="special-considerations"></a>Besondere Überlegungen
 
 ### <a name="set-a-parameter-which-value-contains-a-comma-space-or-special-character"></a>Festlegen eines Parameters, dessen Wert ein Komma, ein Leerzeichen oder ein Sonderzeichen enthält
 
-```console
-azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '<parameter name>="<parameter value>"' --k8s-namespace <namespace> --use-k8s
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'custom_variable_classes = "plpgsql,plperl"' --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="pass-an-environment-variable-in-a-parameter-value"></a>Übergeben einer Umgebungsvariablen in einem Parameterwert
@@ -210,8 +210,8 @@ Die Umgebungsvariable sollte in Anführungszeichen (" ") eingeschlossen werden, 
 
 Beispiel: 
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'search_path = "$user"' --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

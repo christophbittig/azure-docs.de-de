@@ -1,20 +1,20 @@
 ---
 title: Verbinden von Azure Percept über 5G- oder LTE-Netzwerke
 description: In diesem Artikel wird erläutert, wie Sie das Azure Percept DK über 5G- oder LTE-Netzwerke verbinden.
-author: mimcco
-ms.author: mimcco
+author: juhaluoto
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 07/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7388a50951137b45821bc80f2290900a00550395
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 202bec8182cc2ae04e9fadffe01977150ea93dda
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350208"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222325"
 ---
-# <a name="connect-the-azure-percept-dk-over-5g-or-lte-networks"></a>Verbinden des Azure Percept DK über 5G- oder LTE-Netzwerke
+# <a name="connect-azure-percept-over-5g-or-lte-networks"></a>Verbinden von Azure Percept über 5G- oder LTE-Netzwerke
 
 Die Verbindung von Edge-KI-Geräten über 5G- oder LTE-Netzwerke bietet zahlreiche Vorteile. Edge-KI ist in Szenarien besonders effektiv, in denen WLAN- und LAN-Konnektivität nur eingeschränkt vorhanden ist, z. B. in intelligenten Städten, autonomen Fahrzeugen und der Landwirtschaft. Darüber hinaus bieten 5G- oder LTE-Netzwerke mehr Sicherheit als ein WLAN. Und schließlich ermöglicht die Verwendung von IoT-Geräten, die KI am Edge ausführen, die Optimierung der Bandbreite von 5G- oder LTE-Netzwerken. Dabei werden nur notwendige Informationen an die Cloud gesendet, der größte Teil der Daten wird auf dem Gerät verarbeitet. Derzeit kann das Azure Percept DK keine direkte Verbindung mit 5G- oder LTE-Netzwerken herstellen. Das DK kann jedoch über die integrierten Ethernet- und WLAN-Funktionen eine Verbindung mit 5G/LTE-Gateways herstellen. In diesem Artikel wird erläutert, wie dies funktioniert.
 

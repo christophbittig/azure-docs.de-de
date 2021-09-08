@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73b115ad6f49d943c423c7490df347afce7c5869
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e31ee4ed9b7baa074f59bc615b9044cbf314a47d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668420"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438512"
 ---
 # <a name="adopting-an-industry-ontology"></a>Übernehmen einer branchenspezifischen Ontologie
 
-Da es einfacher sein kann, mit einer Open-Source-DTDL-Ontologie zu beginnen, als von Grund auf neu zu entwickeln, arbeitet Microsoft mit Branchenexperten zusammen, um Ontologien zu veröffentlichen, die weitgehend akzeptierte Branchenkonventionen darstellen und eine Vielzahl verschiedener Anwendungsfälle von Kunden unterstützen. 
+Da es einfacher sein kann, mit einer Open-Source-DTDL-Ontologie zu beginnen, als von Grund auf neu zu entwickeln, arbeitet Microsoft mit Branchenexperten zusammen, um Ontologien zu veröffentlichen. Diese Ontologien stellt weitgehend akzeptierte Branchenkonventionen dar und unterstützen verschiedenste Anwendungsfälle von Kunden. 
 
-Das Ergebnis dieser Zusammenarbeit ist eine Reihe von quelloffenen DTDL-basierten Ontologien, die aus Branchenstandards lernen, auf diesen aufbauen oder sie direkt verwenden. Diese Ontologien sind so konzipiert, dass sie die Anforderungen von Entwicklern, die damit weiterarbeiten, erfüllen und das Potenzial haben, in der entsprechenden Branche von vielen übernommen und/oder erweitert zu werden.
+Das Ergebnis dieser Zusammenarbeit ist eine Reihe von Open-Source-Ontologien auf Basis von DTDL, die aus Branchenstandards lernen, auf diesen aufbauen oder sie direkt verwenden. Diese Ontologien sind so konzipiert, dass sie die Anforderungen von Entwicklern, die damit weiterarbeiten, erfüllen und das Potenzial haben, in der entsprechenden Branche von vielen übernommen und erweitert zu werden.
 
 Microsoft hat hierbei mit Partnern zusammengearbeitet, um Ontologien für [intelligente Gebäude](#realestatecore-smart-building-ontology), [intelligente Städte](#smart-cities-ontology) und [Stromnetze](#energy-grid-ontology) zu entwickeln. Sie dienen als gemeinsame Grundlage für die Modellierung anhand der Standards in diesen Branchen, um zu vermeiden, dass Aufwand für Neuerfindungen anfällt. 
 
@@ -58,6 +58,6 @@ Weitere Informationen zu den Partnerschaften und dem Ansatz für Stromnetze find
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [Konzepte: Erweitern von Branchenontologien](concepts-ontologies-extend.md).
+* Informieren Sie sich über das Erweitern von Branchenstandardontologien zur Erfüllung Ihrer Spezifikationen: [Erweitern von Branchenontologien](concepts-ontologies-extend.md).
 
 * Oder fahren Sie mit dem Pfad für das Entwickeln von Modellen basierend auf Ontologien fort: [Verwenden von Ontologiestrategien in einem Modellentwicklungspfad](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).

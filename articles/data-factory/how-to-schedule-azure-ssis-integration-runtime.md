@@ -2,17 +2,18 @@
 title: Planen von Azure-SSIS Integration Runtime
 description: Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS Integration Runtime mithilfe von Azure Data Factory.
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 06/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec61a586c744fd8a5f537bf5a593b7409a1636e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384366"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339482"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 
@@ -79,9 +80,9 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 
 ### <a name="create-your-pipelines"></a>Erstellen Ihrer Pipelines
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus. 
+1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus. 
 
-   ![Seite für die ersten Schritte](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
    
 2. Erweitern Sie in der Toolbox **Aktivitäten** das Menü **Allgemein**, ziehen Sie die Aktivität **Web** auf die Oberfläche des Pipeline-Designers, und legen Sie sie dort ab. Ändern Sie im Fenster „Aktivitätseigenschaften“ auf der Registerkarte **Allgemein** den Namen der Aktivität in **startMyIR**. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus.
 

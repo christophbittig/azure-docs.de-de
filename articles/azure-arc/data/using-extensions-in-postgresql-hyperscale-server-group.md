@@ -1,30 +1,30 @@
 ---
 title: Verwenden von PostgreSQL-Erweiterungen
 description: Verwenden von PostgreSQL-Erweiterungen
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ba92ca8a959fae389dbdb30c295e6592f76100eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288524"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339906"
 ---
-# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwenden von PostgreSQL-Erweiterungen in Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen
+# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwenden von PostgreSQL-Erweiterungen in Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
 PostgreSQL eignet sich am besten für die Verwendung mit Erweiterungen. Tatsächlich ist die von Microsoft bereitgestellte und standardmäßig installierte `citus`-Erweiterung ein wichtiges Element der Hyperscalefunktion, da sie Postgres das transparente und knotenübergreifende Konfigurieren von Datenshards ermöglicht.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="supported-extensions"></a>Unterstützte Erweiterungen
-Die Standarderweiterungen vom Typ [`contrib`](https://www.postgresql.org/docs/12/contrib.html) sowie die folgenden Erweiterungen wurden bereits in den Containern Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitgestellt:
+Die Standarderweiterungen vom Typ [`contrib`](https://www.postgresql.org/docs/12/contrib.html) sowie die folgenden Erweiterungen wurden bereits in den Containern Ihrer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt:
 - [`citus`](https://github.com/citusdata/citus), Version 10.0. Die Citus-Erweiterung von [Citus Data](https://www.citusdata.com/) wird standardmäßig geladen, da sie die Hyperscale-Funktion für die PostgreSQL-Engine bereitstellt. Das Löschen der Citus-Erweiterung aus Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung wird nicht unterstützt.
 - [`pg_cron`](https://github.com/citusdata/pg_cron), Version 1.3
 - [`pgaudit`](https://www.pgaudit.org/), Version 1.4
@@ -59,12 +59,12 @@ Ausführliche Informationen zu `shared_preload_libraries` finden Sie in der [Pos
 - Dieser Schritt ist nicht erforderlich für Erweiterungen, die nicht vorab durch „shared_preload_libraries“ geladen werden müssen. Für diese Erweiterungen können Sie direkt zum Absatz [Erstellen von Erweiterungen](#create-extensions) springen.
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Hinzufügen einer Erweiterung beim Erstellen einer Servergruppe
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>Hinzufügen einer Erweiterung zu einer bereits vorhandenen Instanz
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
 
@@ -73,9 +73,9 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 ## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>Anzeigen der Liste der Erweiterungen, die „shared_preload_libraries“ hinzugefügt wurden
 Führen Sie einen der folgenden Befehlen aus.
 
-### <a name="with-an-azdata-cli-command"></a>Verwenden eines CLI-Befehls vom Typ „azdata“
-```console
-azdata arc postgres server show -n <server group name>
+### <a name="with-cli-command"></a>Mit Befehl an der Befehlszeilenschnittstelle
+```azurecli
+az postgres arc-server show -n <server group name>
 ```
 Scrollen Sie durch die Ausgabe, und beachten Sie die engine\extensions-Abschnitte in den Spezifikationen Ihrer Servergruppe. Zum Beispiel:
 ```console
@@ -185,8 +185,8 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 
 Aktivieren Sie nun `pg_cron` in der PostgreSQL-Servergruppe, indem Sie sie „shared_preload_libraries“ hinzufügen:
 
-```console
-azdata postgres server update -n pg2 -ns arc --extensions pg_cron
+```azurecli
+az postgres arc-server update -n pg2 -ns arc --extensions pg_cron
 ```
 
 Ihre Servergruppe wird neu gestartet, um die Installation der Erweiterungen abzuschließen. Das kann zwei bis drei Minuten dauern.
