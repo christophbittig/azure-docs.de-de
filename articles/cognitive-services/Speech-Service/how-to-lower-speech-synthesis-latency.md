@@ -12,12 +12,12 @@ ms.date: 04/29/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 8aaa087d1de85b77c9407f8d39e029e3bf2696f2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 38af8d1ffd422b151bebc2fea42c575f181cc72e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614845"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346807"
 ---
 # <a name="lower-speech-synthesis-latency-using-speech-sdk"></a>Geringere Wartezeit bei der Sprachsynthese mit dem Speech SDK
 
@@ -343,7 +343,8 @@ Wir haben z. B. ein Problem mit der `TCP_NODELAY`-Einstellung in [1.16.0](relea
 Sie können den Auslastungstest verwenden, um die Kapazität und Wartezeit des Sprachsynthesediensts zu testen.
 Hier folgen einige Richtlinien.
 
- - Der Sprachsynthesedienst kann automatisch skaliert werden, benötigt jedoch Zeit für die Aufskalierung. Wenn die Parallelität in kurzer Zeit erhöht wird, erhält der Client möglicherweise eine lange Wartezeit oder einen `429`-Fehlercode (zu viele Anforderungen). Daher wird empfohlen, die Parallelität schrittweise im Auslastungstest zu erhöhen. Weitere Informationen finden Sie [in diesem Artikel](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling).
+ - Der Sprachsynthesedienst kann automatisch skaliert werden, benötigt jedoch Zeit für die Aufskalierung. Wenn die Parallelität in kurzer Zeit erhöht wird, erhält der Client möglicherweise eine lange Wartezeit oder einen `429`-Fehlercode (zu viele Anforderungen). Daher wird empfohlen, die Parallelität schrittweise im Auslastungstest zu erhöhen. [In diesem Artikel](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling) finden Sie weitere Einzelheiten, insbesondere [dieses Beispiel für Workloadmuster](speech-services-quotas-and-limits.md#example-of-a-workload-pattern-best-practice).
+ - Sie können unser Beispiel verwenden, indem Sie einen Objektpool ([C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs) und [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechSynthesisScenarioSamples.java)) für Auslastungstests verwenden und die Latenzwerte erhalten. Sie können die Testdurchläufe und die Parallelität im Beispiel ändern, um Ihre Zielparallelität zu erreichen.
  - Der Dienst verfügt basierend auf dem tatsächlichen Datenverkehr über eine Kontingentgrenze. Wenn Sie also einen Auslastungstest mit einer deutlich höheren Parallelität als dem tatsächlichen Datenverkehr durchführen möchten, stellen Sie vor dem Test eine Verbindung her.
 
 ## <a name="next-steps"></a>Nächste Schritte

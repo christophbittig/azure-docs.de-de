@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02def8321ce5df33fb89ca8d9f6c24167c15bbb6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "73182214"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346387"
 ---
 ### <a name="what-is-expressroute-direct"></a>Was ist ExpressRoute Direct?
 
@@ -39,6 +39,8 @@ ExpressRoute Direct bietet Kunden direkte Portpaare mit 100 oder 10 GBit/s in d
 
 ExpressRoute Direct wird für das Portpaar zu einem festen Betrag in Rechnung gestellt. Standardverbindungen sind ohne zusätzliche Stunden enthalten, und Premium wird mit einem leichten Aufpreis berechnet. Ausgehende Datenübertragungen werden pro Verbindung basierend auf der Zone des Peeringstandorts abgerechnet.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Wann beginnt die Abrechnung für die ExpressRoute Direct-Portpaare?
+### <a name="when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs"></a>Wann beginnt und endet die Abrechnung für die ExpressRoute Direct-Portpaare?
 
 ExpressRoute Direct-Portpaare werden 45 Tage nach Beginn der Erstellung der ExpressRoute Direct-Ressource berechnet, oder wenn 1 oder beide Links aktiviert werden, was auch immer zuerst eintritt. Die 45-Tage-Karenzzeit wird Kunden gewährt, damit diese den Querverbindungsprozess mit dem Housinganbieter abschließen können.
+
+Die Portpaare von ExpressRoute Direct werden Ihnen nicht mehr in Rechnung gestellt, nachdem Sie die direkten Ports gelöscht und die Querverbindungen entfernt haben. 

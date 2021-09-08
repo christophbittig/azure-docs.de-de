@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 637da84073d014effc05a25104c3233ff385b432
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 332866c49470ed47f3c3de65b03ffd07003f6d13
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752587"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343359"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -56,8 +56,10 @@ Im folgenden Azure PowerShell-Beispiel wird kein Dienstprinzipal angegeben. In d
 New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
 ```
 
----
+> [!NOTE]
+> Für den Fehler „Die Dienstprinzipal-clientID "00000000-0000-0000-0000-000000000000" wurde nicht im Active Directory-Mandanten "00000000-0000-0000-0000-000000000000" gefunden“ finden Sie unter [Weitere Überlegungen](#additional-considerations) Informationen zum Entfernen der Datei `acsServicePrincipal.json`.
 
+---
 ## <a name="manually-create-a-service-principal"></a>Manuelles Erstellen eines Dienstprinzipals
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
@@ -189,6 +191,7 @@ Bei dem Bereich (`Scope`) für eine Ressource muss es sich um eine vollständige
 
 > [!NOTE]
 > Wenn Sie die Rollenzuweisung „Mitwirkender“ aus der Knotenressourcengruppe entfernt haben, können die folgenden Vorgänge möglicherweise nicht erfolgreich ausgeführt werden.
+> Es kann bis zu 60 Minuten dauern, bis die Berechtigungszuweisungen für Cluster mithilfe systemseitig verwalteter Identitäten aufgefüllt werden.
 
 In den folgenden Abschnitten werden allgemeine Delegierungen, die Sie möglicherweise vornehmen müssen, ausführlicher erläutert.
 
@@ -251,9 +254,9 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen die folgenden
 - Jeder Dienstprinzipal ist einer Azure AD-Anwendung zugeordnet. Der Dienstprinzipal für einen Kubernetes-Cluster kann einem beliebigen gültigen Azure AD-Anwendungsnamen zugeordnet sein (z.B. *https://www.contoso.org/example* ). Bei der URL für die Anwendung muss es sich nicht um einen realen Endpunkt handeln.
 - Geben Sie als **Client-ID** des Dienstprinzipals den `ApplicationId`-Wert an.
 - Auf den Agent-Knoten-VMs im Kubernetes-Cluster werden die Anmeldeinformationen des Dienstprinzipals in der Datei `/etc/kubernetes/azure.json` gespeichert.
-- Wenn Sie den Befehl [New-AzAksCluster][new-azakscluster]" verwenden, um den Dienstprinzipal automatisch zu erstellen, werden die Anmeldeinformationen für den Dienstprinzipal in die `~/.azure/aksServicePrincipal.json`Datei auf dem Computer geschrieben, der für die Ausführung des Befehls verwendet wird.
-- Wenn Sie in weiteren AKS-PowerShell-Befehlen nicht spezifisch einen Dienstprinzipal übergeben, wird der Standard-Dienstprinzipal verwendet, der sich bei `~/.azure/aksServicePrincipal.json`befindet.
-- Optional können Sie auch die Datei „aksServicePrincipal.json“ entfernen, woraufhin AKS einen neuen Dienstprinzipal erstellt.
+- Wenn Sie den Befehl [New-AzAksCluster][new-azakscluster]" verwenden, um den Dienstprinzipal automatisch zu erstellen, werden die Anmeldeinformationen für den Dienstprinzipal in die `~/.azure/acsServicePrincipal.json`Datei auf dem Computer geschrieben, der für die Ausführung des Befehls verwendet wird.
+- Wenn Sie in weiteren AKS-PowerShell-Befehlen nicht spezifisch einen Dienstprinzipal übergeben, wird der Standard-Dienstprinzipal verwendet, der sich bei `~/.azure/acsServicePrincipal.json`befindet.
+- Optional können Sie auch die Datei „acsServicePrincipal.json“ entfernen, woraufhin AKS einen neuen Dienstprinzipal erstellt.
 - Beim Löschen eines AKS-Clusters, der mit [New-AzAksCluster][new-azakscluster] erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht.
     - Um den Dienstprinzipal zu löschen, fragen Sie nach Ihrem Cluster  *ServicePrincipalProfile.ClientId ab* und löschen Sie es anschließend mit [Remove-AzADServicePrincipal][remove-azadserviceprincipal]. Ersetzen Sie die folgenden Namen für Ressourcengruppe und Cluster durch Ihre eigenen Werte:
 

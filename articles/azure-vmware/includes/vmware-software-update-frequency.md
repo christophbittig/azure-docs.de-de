@@ -3,16 +3,19 @@ title: Häufigkeit von VMware-Softwareupdates
 description: Unterstützte Häufigkeit von VMware-Softwareupdates für Azure VMware Solution.
 ms.topic: include
 ms.date: 04/23/2021
-ms.openlocfilehash: 5adf381e3c27197b6791dbd389d3b7359fa30248
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 3295ab9da93b1e1ec1cace62653670de366c880d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950992"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324314"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds.  Das Upgrade der Software der privaten Cloud erfolgt nach einem Zeitplan, der sich nach der Veröffentlichung des Softwarepakets von VMware richtet. Ihre private Cloud erfordert keine Ausfallzeiten für Upgrades.
+Die Hostwartung und Lebenszyklusverwaltung haben keine Auswirkungen auf die Kapazität oder Leistung von Clustern in privaten Clouds. Upgrades der Software der privaten Cloud erfolgen nach einem Zeitplan, der sich nach der Veröffentlichung des Softwarepakets von VMware richtet.  Ihre private Cloud erfordert daher keine Downtime für Upgrades.
 
 Die Upgrades für die Softwarepakete der privaten Cloud behalten eine Version der Software des neuesten Release des Softwarepakets von VMware bei. Die Softwareversionen der privaten Cloud können sich von den aktuellen Versionen der einzelnen Softwarekomponenten (ESXi, NSX-T, vCenter und vSAN) unterscheiden. Updates umfassen auch Treiber, Software auf den Netzwerkswitches und Firmware auf den Bare-Metal-Knoten.
 

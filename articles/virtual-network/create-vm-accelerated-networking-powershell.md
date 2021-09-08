@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44f061b124523a920a6fe02bb0c04233d533ab1c
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919968"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350811"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb mit Azure PowerShell
 
@@ -51,11 +51,11 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die folgenden Distributionen werden direkt aus dem Azure-Katalog unterstützt:
+Die folgenden Versionen von Windows werden unterstützt:
 
-- **Windows Server 2019 Datacenter**
-- **Windows Server 2016 Datacenter** 
-- **Windows Server 2012 R2 Datacenter**
+- **Windows Server 2019 Standard/Datacenter**
+- **Windows Server 2016 Standard/Datacenter** 
+- **Windows Server 2012 R2 Standard/Datacenter**
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 

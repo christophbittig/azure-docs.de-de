@@ -1,69 +1,63 @@
 ---
-title: Abrechnungs- und Preismodelle
-description: Übersicht über die Funktionsweise von Preis- und Abrechnungsmodellen in Azure Logic Apps
+title: Verwendungsmessung, Abrechnung und Preise
+description: Hier erfahren Sie, wie die Modelle zu Verwendungsmessung, Abrechnung und Preisen in den Azure Logic Apps funktionieren.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 06/10/2021
-ms.openlocfilehash: 3b627abdf27907a5c0739e6dd7920932a3035ee7
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 08/09/2021
+ms.openlocfilehash: 63c7a2c79ca5f0d241ddc3727d006bb2befb8163
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349883"
 ---
-# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Preis- und Abrechnungsmodelle für Azure Logic Apps
+# <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Modelle für Verwendungsmessung, Abrechnung und Preise in den Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie dabei, automatisierte Integrationsworkflows zu erstellen und auszuführen, die in der Cloud abskaliert werden können. In diesem Artikel werden die Abrechnungs- und Preismodelle für Azure Logic Apps und die zugehörigen Ressourcen beschrieben. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps). Informationen zum Planen, Verwalten und Überwachen von Kosten finden Sie unter [Planen und Verwalten von Kosten für Azure Logic Apps](plan-manage-costs.md).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie dabei, automatisierte Integrationsworkflows zu erstellen und auszuführen, die in der Cloud abskaliert werden können. In diesem Artikel werden Modelle für Verwendungsmessung, Abrechnung und Preise für Azure Logic Apps und die zugehörigen Ressourcen beschrieben. Informationen zu bestimmten Preisen, Kostenplanung oder verschiedenen Hostingumgebungen finden Sie in den folgenden Artikeln:
+
+* [Preise für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps)
+* [Planen und Verwalten von Kosten für Azure Logic Apps](plan-manage-costs.md)
+* [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung](single-tenant-overview-compare.md)
 
 <a name="consumption-pricing"></a>
 
-## <a name="consumption-pricing-multi-tenant"></a>Nutzungspreise (mehrere Mandanten)
+## <a name="consumption-multi-tenant"></a>Verbrauch (mehrere Mandanten)
 
-Für Logik-Apps, die in der öffentlichen, „globalen“, mehrinstanzenfähigen Azure Logic Apps-Umgebung ausgeführt werden, gilt ein nutzungsabhängiges Preismodell. Sie haben mehrere Optionen für die Erstellung dieser Logik-Apps, z. B.:
+In Azure Logic Apps mit mehreren Mandanten wird für eine Logik-App und ihren Workflow der [**Verbrauchsplan**](https://azure.microsoft.com/pricing/details/logic-apps) für Preise und Abrechnung verwendet. Sie erstellen solche Logik-Apps auf unterschiedliche Weisen, z. B. wenn Sie den Ressourcentyp **Logik-App (Verbrauch)** auswählen, die Erweiterung **Azure Logic Apps (Verbrauch)** in Visual Studio Code verwenden oder [Automatisierungsaufgaben](create-automation-tasks-azure-resources.md) verwenden.
 
-* Ressourcentyp „Logik-App (Verbrauch)“ im Azure-Portal
-* Erweiterung „Azure Logic Apps (Verbrauch)“ in Visual Studio Code
-* Erweiterung „Azure Logic Apps-Tools“ in Visual Studio
-* ARM-Vorlage (Azure Resource Manager) mit dem Ressourcentyp `Microsoft.Logic`
-* Azure CLI für Azure Logic Apps mit den `az logic`-Befehlen
-* Azure PowerShell für Azure Logic Apps mit dem Modul `Az.LogicApp`
-* REST-API für Azure Logic Apps
-* [Automatisierungsaufgaben](create-automation-tasks-azure-resources.md) im Azure-Portal
+In der folgenden Tabelle wird zusammengefasst, wie das Verbrauchsmodell die Verbrauchsmessung und Abrechnung für die folgenden Komponenten verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit mehreren Mandanten verwendet wird:
 
-Die Messung und die Abrechnung basieren auf den Trigger- und Aktionsausführungen in einem Logik-App-Workflow. Diese Ausführungen werden unabhängig davon gemessen und abgerechnet, ob der Workflow erfolgreich ausgeführt oder überhaupt instanziiert wird. Gehen wir beispielsweise davon aus, dass Ihre Automatisierungsaufgabe einen Abruftrigger verwendet, der regelmäßig ausgehende Aufrufe an einen Endpunkt sendet. Diese ausgehenden Anforderungen werden unabhängig davon gemessen und als Ausführung abgerechnet, ob der Trigger ausgelöst oder übersprungen wurde. Dies wirkt sich darauf aus, ob eine Workflowinstanz erstellt wird.
-
-| Elemente | Beschreibung |
-|-------|-------------|
-| [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden im Dienst Azure Logic Apps nativ ausgeführt und mit dem Preis von [**Aktionen** gemessen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger, während die Aktionen „HTTP“ und „Antwort“ integrierte Aktionen sind. Daten-, Batch- und Variablenvorgänge sowie [Aktionen zum Steuern von Workflows](../connectors/built-in.md) wie Schleifen, Bedingungen, Schalter, parallele Verzweigungen usw. sind ebenfalls integrierte Aktionen. <p><p>**Hinweis**: Als monatlichen Bonus enthält der Verbrauchsplan mehrere Tausend integrierte Ausführungen, die kostenlos sind. |
-| Trigger und Aktionen des Typs [Standardconnector](../connectors/managed.md) <p><p>Trigger und Aktionen des Typs [Benutzerdefinierter Connector](../connectors/apis-list.md#custom-apis-and-connectors) | Gemessen mit dem Preis für [Standardconnector](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| Trigger und Aktionen des Typs [Unternehmensconnector](../connectors/managed.md) | Gemessen mit dem Preis für [Unternehmensconnector](https://azure.microsoft.com/pricing/details/logic-apps/). In der Connectorvorschau werden Unternehmensconnectors jedoch mit dem Preis für [*Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/) abgerechnet. |
-| Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Jede Aktion, die in einer Schleife erfolgt, wird für jeden ausgeführten Schleifenzyklus gemessen. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Der Dienst Azure Logic Apps erfasst jede Aktion in dieser Schleife, indem die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife multipliziert wird. Anschließend wird die Aktion zum Starten der Schleife hinzugefügt. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
-| Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Diese Wiederholungen werden zusammen mit der ursprünglichen Anforderung zu Tarifen in Rechnung gestellt, die darauf basieren, ob der Trigger oder die Aktion den Typ „Integriert“, „Standard“ oder „Unternehmen“ hat. Beispielsweise werden für eine Aktion, die mit zwei Wiederholungen ausgeführt wird, drei Aktionsausführungen berechnet. |
-| [Datenaufbewahrung und Speichernutzung](#data-retention) | Wird mit dem Preis für Datenaufbewahrung gemessen, den Sie auf der [Preisseite für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) unter der Tabelle **Preisdetails** finden. |
+| Komponente | Messung und Abrechnung |
+| ----------|----------------------|
+| Trigger- und Aktionsvorgänge | Das Verbrauchsmodell enthält eine *anfängliche Anzahl* von kostenlosen integrierten Vorgängen pro Azure-Abonnement, die ein Workflow ausführen kann. Über diesem Wert gilt für *jede Ausführung* die Verbrauchsmessung, und die Abrechnung erfolgt nach den [*Aktionspreisen* für den Verbrauchsplan](https://azure.microsoft.com/pricing/details/logic-apps). Für andere Vorgangstypen wie verwaltete Connectors erfolgt die Abrechnung nach den Preisen für [*Standard*- oder *Unternehmensconnectors* des Verbrauchsplans](https://azure.microsoft.com/pricing/details/logic-apps). Weitere Informationen finden Sie unter [Trigger- und Aktionsvorgänge im Verbrauchsmodell](#consumption-operations). |
+| Speichervorgänge | Die Verbrauchsmessung gilt *nur für den Speicherverbrauch im Zusammenhang mit der Datenaufbewahrung*, z. B. das Speichern von Ein- und Ausgaben aus dem Ausführungsverlauf Ihres Workflows. Die Abrechnung erfolgt entsprechend den [Preisen für die Datenaufbewahrung des Verbrauchsplans](https://azure.microsoft.com/pricing/details/logic-apps/). Weitere Informationen finden Sie unter [Speichervorgänge](#storage-operations). |
+| Integrationskonten | Die Verbrauchsmessung wird basierend auf dem Integrationskontotyp angewendet, den Sie mit Ihrer Logik-App erstellen und verwenden. Für die Abrechnung gelten die [Preise für *Integrationskonten*](https://azure.microsoft.com/pricing/details/logic-apps/), es sei denn, die Logik-App wird in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](#ise-pricing) ausgeführt. Weitere Informationen finden Sie unter [Integrationskonten](#integration-accounts). |
 |||
 
-Weitere Informationen finden Sie in der folgenden Dokumentation:
+<a name="consumption-operations"></a>
 
-* [Anzeigen von Metriken für Ausführungen und Speichernutzung](plan-manage-costs.md#monitor-billing-metrics)
-* [Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md)
+### <a name="trigger-and-action-operations-in-the-consumption-model"></a>Trigger- und Aktionsvorgänge im Verbrauchsmodell
 
-### <a name="not-metered"></a>Nicht gemessen
+Mit Ausnahme der anfänglichen Anzahl kostenloser integrierter Vorgangsausführungen pro Azure-Abonnement, die ein Workflow ausführen kann, wird ein Vorgang im Verbrauchsmodell auf Grundlage *jeder Ausführung* gemessen und abgerechnet. Dies ist unabhängig davon, ob der gesamte Workflow erfolgreich ausgeführt, abgeschlossen oder sogar instanziiert wird. Ein Vorgang wird in der Regel einmal ausgeführt, [es sei denn, für den Vorgang wurden Wiederholungsversuche aktiviert](#other-operation-behavior). Umgekehrt wird bei einer Ausführung in der Regel nur ein einzelner Aufruf ausgeführt, [es sei denn, der Vorgang unterstützt und ermöglicht die Blockerstellung oder Paginierung, um große Datenmengen abzurufen](logic-apps-handle-large-messages.md). Wenn Blockerstellung oder Paginierung aktiviert ist, verfügt eine Vorgangsausführung möglicherweise über mehrere Aufrufe. Mit dem Verbrauchsmodell wird ein Vorgang *pro Ausführung und nicht pro Aufruf* gemessen und abgerechnet.
 
-* Aktionen, die aufgrund nicht erfüllter Bedingungen übersprungen werden
-* Aktionen, die nicht ausgeführt werden, weil die Logik-App vor Abschluss beendet wurde
-* [Deaktivierte Logik-Apps](#disabled-apps)
+Angenommen, ein Workflow beginnt mit einem Abfragetrigger, der Datensätze abruft, indem regelmäßig ausgehende Aufrufe an einen Endpunkt durchgeführt werden. Der ausgehende Aufruf wird als eine Ausführung gemessen und abgerechnet, unabhängig davon, ob der Trigger ausgelöst oder übersprungen wird. Der Triggerzustand steuert, ob die Workflowinstanz erstellt und ausgeführt wird. Nehmen wir nun an, dass der Vorgang außerdem die Blockerstellung oder Paginierung unterstützt und diese aktiviert ist. Wenn der Vorgang 10 Aufrufe ausführen muss, um alle Daten abzurufen, wird der Vorgang trotz mehrerer Aufrufe weiterhin als *eine einzelne Ausführung* gemessen und abgerechnet.
 
-### <a name="other-related-resources"></a>Andere zugehörige Ressourcen
+In der folgenden Tabelle wird zusammengefasst, wie das Verbrauchsmodell die Verbrauchsmessung und Abrechnung für diese Vorgangstypen verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit mehreren Mandanten verwendet wird:
 
-Logik-Apps arbeiten mit anderen zugehörigen Ressourcen zusammen, z. B. mit Integrationskonten, lokalen Datengateways und Integrationsdienstumgebungen (ISEs). Weitere Informationen zu den Preisen dieser Ressourcen finden Sie in diesen Abschnitten weiter unten in diesem Thema:
+| Vorgangsart | BESCHREIBUNG | Messung und Abrechnung |
+|----------------|-------------|----------------------|
+| [*Integriert*](../connectors/built-in.md) | Diese Vorgänge werden direkt und nativ mit der Azure Logic Apps-Runtime ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Integriert**. <p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger. Die Aktionen „HTTP“ und „Antwort“ sind hingegen integrierte Aktionen. Andere integrierte Vorgänge umfassen Workflowsteuerungsaktionen wie Schleifen und Bedingungen, Datenvorgänge, Batchvorgänge usw. | Das Verbrauchsmodell enthält eine *anfängliche Anzahl von kostenlosen integrierten Vorgängen* pro Azure-Abonnement, die ein Workflow ausführen kann. Oberhalb dieser Anzahl gelten für Ausführungen von integrierten Vorgängen die [Preise für *Aktionen*](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Hinweis:** Einige Vorgänge für verwaltete Connectors sind *auch* als integrierte Vorgänge verfügbar, die in den ersten kostenlosen Vorgängen enthalten sind. Über die anfänglichen kostenlosen Vorgänge hinaus erfolgt die Abrechnung nach den [Preisen für *Aktionen*](https://azure.microsoft.com/pricing/details/logic-apps/), nicht nach den [Preisen für *Standard*- oder *Unternehmensconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [*Verwalteter Connector*](../connectors/managed.md) | Diese Vorgänge werden separat in Azure ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Standard** oder **Unternehmen**. | Für diese Ausführungen von Vorgängen gelten die [Preise für *Standard*- oder *Unternehmensconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Hinweis:** Für die Vorgangsausführungen von Vorschau-Unternehmensconnectors gelten die [Preise nach Verbrauch für *Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [*Benutzerdefinierter Connector*](../connectors/apis-list.md#custom-apis-and-connectors) | Diese Vorgänge werden separat in Azure ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Benutzerdefiniert**. Informationen zu Grenzwerten für die Anzahl von Connectors, Durchsatz und Timeout finden Sie unter [Grenzwerte für einen benutzerdefinierten Connector](logic-apps-limits-and-config.md#custom-connector-limits) in Azure Logic Apps. | Für diese Ausführungen von Vorgängen gelten die [Preise für *Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+||||
 
-* [Lokales Datengateway](#data-gateway)
-* [Preismodell für Integrationskonten](#integration-accounts)
-* [ISE-Preismodell](#fixed-pricing)
+Weitere Informationen zur Funktionsweise des Verbrauchsmodells mit Vorgängen, die in anderen Vorgängen wie Schleifen ausgeführt werden oder mehrere Elemente wie Arrays verarbeiten, sowie Wiederholungsrichtlinien finden Sie unter [Verhalten bei anderen Vorgängen](#other-operation-behavior).
 
-### <a name="tips-for-estimating-consumption-costs"></a>Tipps zum Schätzen der Nutzungskosten
+<a name="consumption-cost-estimation-tips"></a>
+
+### <a name="cost-estimation-tips-for-the-consumption-model"></a>Tipps zur Kostenschätzung für das Verbrauchsmodell
 
 Diese Tipps helfen Ihnen beim Schätzen genauerer Nutzungskosten:
 
@@ -75,148 +69,185 @@ Diese Tipps helfen Ihnen beim Schätzen genauerer Nutzungskosten:
 
 <a name="standard-pricing"></a>
 
-## <a name="standard-pricing-single-tenant"></a>Standardpreise (einzelner Mandant)
+## <a name="standard-single-tenant"></a>Standard (ein Mandant)
 
-Ein Preismodell, das auf einem Hostingplan und einem Tarif basiert, gilt für Logik-Apps, die in der Azure Logic Apps-Umgebung mit nur einem Mandanten ausgeführt werden. Diese Preise gelten für den Ressourcentyp **Logik-App (Standard)** im Azure-Portal oder für Logik-Apps, an denen Sie mit der Erweiterung **Azure Logic Apps (Standard)** für Visual Studio Code arbeiten. Beim Erstellen oder Bereitstellen einer Logik-App dieser Art müssen Sie einen Hostingplan und einen Tarif auswählen, um die Preise zu ermitteln, die beim Ausführen Ihrer Workflows für die Messung und Abrechnung genutzt werden sollen.
+In Azure Logic Apps mit einem Mandanten wird für eine Logik-App und ihren Workflow der [**Standardplan**](https://azure.microsoft.com/pricing/details/logic-apps/) für Preise und Abrechnung verwendet. Sie erstellen solche Logik-Apps auf unterschiedliche Weisen, z. B. wenn Sie den Ressourcentyp **Logik-App (Standard)** auswählen oder die Erweiterung **Azure Logic Apps (Standard)** in Visual Studio Code verwenden. Für dieses Preismodell müssen Logik-Apps einen Hostingplan und einen Tarif verwenden. Dies unterscheidet sich vom Verbrauchsplan insofern, dass Ihnen reservierte Kapazitäten und dedizierte Ressourcen in Rechnung gestellt werden, unabhängig davon, ob Sie sie verwenden.
 
-> [!NOTE]
-> Für neue Logik-Apps, die Sie mit dem Ressourcentyp **Logik-App (Standard)** erstellen, müssen Sie den Hostingplan **Workflow (Standard)** verwenden. Der App Service-Plan und die App Service-Umgebung sind für neue Logik-Apps nicht verfügbar.
+> [!IMPORTANT]
+> Wenn Sie neue Logik-Apps basierend auf dem Ressourcentyp **Logik-App (Standard)** erstellen oder bereitstellen, können Sie den Hostingplan „Hosting Standard“ in allen Azure-Regionen verwenden. Sie können alternativ den App Service-Hostingplan verwenden, jedoch nur, wenn Sie die Region **App Service-Umgebung v3** auf der Registerkarte **Grundlagen** auswählen.
+>
+> Obwohl Sie mit dem Vorschauressourcentyp **Logik-App (Standard)** den App Service-Plan, den Functions Premium-Plan, App Service-Umgebung v1 und App Service-Umgebung v2 verwenden können, sind diese Optionen für die öffentliche Veröffentlichung dieses Azure Logic Apps-Ressourcentyps nicht mehr verfügbar oder werden nicht mehr unterstützt.
 
-<a name="hosting-plans"></a>
+In der folgenden Tabelle wird zusammengefasst, wie das Standardmodell die Verbrauchsmessung und Abrechnung für die folgenden Komponenten verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit einem Mandanten verwendet wird:
 
-### <a name="pricing-tiers-and-billing-rates"></a>Tarife und Abrechnungssätze
+| Komponente | Messung und Abrechnung |
+|-----------|----------------------|
+| Virtuelle CPU (vCPU) und Arbeitsspeicher | Für das Standardmodell *muss* Ihre Logik-App den **Workflow Standard**-Hostingplan und einen Tarif verwenden, der die Ressourcenebenen und Preise für Compute- und Arbeitsspeicherkapazität bestimmt. Weitere Informationen finden Sie unter [Tarife im Standardmodell](#standard-pricing-tiers). |
+| Trigger- und Aktionsvorgänge | Das Standardmodell umfasst eine *unbegrenzte Anzahl* kostenloser integrierter Vorgänge, die Ihr Workflow ausführen kann. <p>Wenn Ihr Workflow Vorgänge für verwaltete Connectors verwendet, gilt die Messung für diese Vorgänge für *jeden Aufruf*, während für die Abrechnung [dieselben Preise für *Standard*- oder *Unternehmensconnectors* wie im Verbrauchsplan](https://azure.microsoft.com/pricing/details/logic-apps) gelten. Weitere Informationen finden Sie unter [Trigger- und Aktionsvorgänge im Standardmodell](#standard-operations). |
+| Speichervorgänge | Die Messung gilt für alle Speichervorgänge, die von Azure Logic Apps ausgeführt werden. Speichervorgänge werden beispielsweise ausgeführt, wenn der Dienst Eingaben und Ausgaben aus dem Ausführungsverlauf des Workflows speichert. Die Abrechnung erfolgt nach dem von Ihnen gewählten [Tarif](#standard-pricing-tiers). Weitere Informationen finden Sie unter [Speichervorgänge](#storage-operations). |
+| Integrationskonten | Wenn Sie ein Integrationskonto für Ihre Logik-App erstellen, basiert die Messung auf dem Typ des erstellten Integrationskontos. Die Abrechnung erfolgt gemäß den [Preisen für *Integrationskonten*](https://azure.microsoft.com/pricing/details/logic-apps/). Weitere Informationen finden Sie unter [Integrationskonten](#integration-accounts). |
+|||
 
-Jeder Tarif in einem Hostingplan umfasst eine bestimmte Menge an Compute-, Arbeitsspeicher- und Speicherressourcen. Informationen zu den Stundensätzen pro Ressource und Region finden Sie auf der [Seite mit den Preisen für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
+<a name="standard-pricing-tiers"></a>
 
-Um Ihnen das Verständnis der Preise zu erleichtern, enthält dieses Beispiel Schätzwerte für die *Region „USA, Osten 2“* .
+### <a name="pricing-tiers-in-the-standard-model"></a>Tarife im Standardmodell
 
-* Wählen Sie auf der [Seite mit den Preisen für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) die Region **USA, Osten 2** aus, um die Stundensätze anzuzeigen, oder sehen Sie sich die folgende Tabelle an:
+Der Tarif, den Sie für die Messung und Abrechnung Ihrer Logik-App auswählen, umfasst bestimmte Computekapazitäten in virtuellen CPU- (vCPU) und Arbeitsspeicherressourcen. Derzeit ist nur der Hostingplan **Workflow Standard** für den Ressourcentyp **Logik-App (Standard)** verfügbar und bietet die folgenden Tarife:
 
-  | Resource | USD pro Stunde (USA, Osten 2) |
-  |----------|------------------------|
-  | **Virtuelle CPU (vCPU)** | 0,192 USD |
-  | **Arbeitsspeicher** | 0,0137 USD pro GB |
-  |||
+| Tarif | Virtuelle CPU (vCPU) | Arbeitsspeicher (GB) |
+|--------------|--------------------|-------------|
+| **WS1** | 1 | 3,5 |
+| **WS2** | 2 | 7 |
+| **WS3** | 4 | 14 |
+||||
 
-* Basierend auf den obigen Informationen werden in dieser Tabelle die geschätzten Monatssätze für die einzelnen Tarife und die darin enthaltenen Ressourcen angezeigt:
+> [!IMPORTANT]
+>
+> Das folgende Beispiel dient nur zur Veranschaulichung und enthält Beispielschätzungen, um die Funktionsweise eines Tarifs allgemein zu zeigen. 
+> Informationen zu spezifischen vCPU- und Arbeitsspeicherpreisen basierend auf bestimmten Regionen, in denen Azure Logic Apps verfügbar ist, finden Sie im [Standardplan für eine ausgewählte Region auf der Seite mit Azure Logic Apps-Preisinformationen](https://azure.microsoft.com/pricing/details/logic-apps/).
+>
+> Angenommen, in einer Beispielregion gelten für die folgenden Ressourcen diese Stundensätze:
+>
+> | Ressource | Stundensatz (Beispielregion) |
+> |----------|-----------------------------|
+> | **vCPU** | 0,192 USD pro vCPU |
+> | **Arbeitsspeicher** | 0,0137 USD pro GB |
+> |||
+>
+> Die folgende Berechnung liefert eine geschätzte monatliche Rate:
+>
+> <*Monatliche Rate*> = 730 Stunden (pro Monat) * [(<*Anzahl_vCPU*> * <*Stundensatz_vCPU*>) + (<*Menge_GB_Arbeitsspeicher*> * <*Stundensatz_GB_Arbeitsspeicher*>)]
+>
+> Auf Grundlage der obigen Informationen zeigt die folgende Tabelle die geschätzten Monatsraten für die einzelnen Tarife und die darin enthaltenen Ressourcen:
+>
+> | Tarif | Virtuelle CPU (vCPU) | Arbeitsspeicher (GB) | Monatliche Rate (Beispielregion) |
+> |--------------|--------------------|-------------|------------------------------|
+> | **WS1** | 1 | 3,5 | 175,16 USD |
+> | **WS2** | 2 | 7 | 350,33 USD |
+> | **WS3** | 4 | 14 | 700,65 USD |
+> |||||
 
-  | Tarif | USD pro Monat (USA, Osten 2) | Virtuelle CPU (vCPU) | Arbeitsspeicher (GB) | Speicher (GB) |
-  |--------------|-------------------------|--------------------|-------------|--------------|
-  | **WS1** | 175,20 USD | 1 | 3,5 | 250 |
-  | **WS2** | 350,40 USD | 2 | 7 | 250 |
-  | **WS3** | 700,80 USD | 4 | 14 | 250 |
-  ||||||
+<a name="standard-operations"></a>
 
-* Basierend auf den obigen Informationen werden in dieser Tabelle die einzelnen Ressourcen und der geschätzte Monatssatz angezeigt, wenn Sie den Tarif **WS1** auswählen:
+### <a name="trigger-and-action-operations-in-the-standard-model"></a>Trigger- und Aktionsvorgänge im Standardmodell
 
-  | Resource | Amount (Betrag) | USD pro Monat (USA, Osten 2) |
-  |----------|--------|-------------------------|
-  | **Virtuelle CPU (vCPU)** | 1 | 140,16 USD |
-  | **Arbeitsspeicher** | 3,5 GB | 35,04 USD |
-  ||||
+Mit Ausnahme der unbegrenzten kostenlosen integrierten Vorgangsausführungen, die ein Workflow ausführen kann, misst und berechnet das Standardmodell einen Vorgang auf Grundlage *jedes Aufrufs*, unabhängig davon, ob der gesamte Workflow erfolgreich ausgeführt, abgeschlossen oder sogar instanziiert wird. Ein Vorgang wird in der Regel einmal ausgeführt, [es sei denn, für den Vorgang wurden Wiederholungsversuche aktiviert](#other-operation-behavior). Umgekehrt wird bei einer Ausführung in der Regel nur ein einzelner Aufruf ausgeführt, [es sei denn, der Vorgang unterstützt und ermöglicht die Blockerstellung oder Paginierung, um große Datenmengen abzurufen](logic-apps-handle-large-messages.md). Wenn Blockerstellung oder Paginierung aktiviert ist, verfügt eine Vorgangsausführung möglicherweise über mehrere Aufrufe. Mit dem Standardmodell wird ein Vorgang *pro Aufruf und nicht pro Ausführung* gemessen und abgerechnet.
 
-<a name="storage-transactions"></a>
+Angenommen, ein Workflow beginnt mit einem Abfragetrigger, der Datensätze abruft, indem regelmäßig ausgehende Aufrufe an einen Endpunkt durchgeführt werden. Der ausgehende Aufruf wird gemessen und abgerechnet, unabhängig davon, ob der Trigger ausgelöst oder übersprungen wird. Der Triggerzustand steuert, ob die Workflowinstanz erstellt und ausgeführt wird. Nehmen wir nun an, dass der Vorgang außerdem die Blockerstellung oder Paginierung unterstützt und diese aktiviert ist. Wenn der Vorgang 10 Aufrufe ausführen muss, um alle Daten abzurufen, wird der Vorgang *pro Aufruf* gemessen und abgerechnet.
 
-### <a name="storage-transactions"></a>Speichertransaktionen
+In der folgenden Tabelle wird zusammengefasst, wie das Standardmodell die Verbrauchsmessung und Abrechnung für Vorgangstypen verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit einem Mandanten verwendet wird:
 
-Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Mit Azure Logic Apps mit einem einzelnen Mandanten können Sie Ihr eigenes Azure-[Speicherkonto](../azure-functions/storage-considerations.md#storage-account-requirements) verwenden. Diese Funktion bietet Ihnen mehr Kontrolle und Flexibilität für Ihre Logic Apps-Daten.
+| Vorgangsart | BESCHREIBUNG | Messung und Abrechnung |
+|----------------|-------------|----------------------|
+| [*Integriert*](../connectors/built-in.md) | Diese Vorgänge werden direkt und nativ mit der Azure Logic Apps-Runtime ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Integriert**. <p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger. Die Aktionen „HTTP“ und „Antwort“ sind hingegen integrierte Aktionen. Andere integrierte Vorgänge umfassen Workflowsteuerungsaktionen wie Schleifen und Bedingungen, Datenvorgänge, Batchvorgänge usw. | Das Standardmodell umfasst unbegrenzte kostenlose integrierte Vorgänge. <p><p>**Hinweis:** Einige Vorgänge für verwaltete Connectors sind *auch* als integrierte Vorgänge verfügbar. Obwohl integrierte Vorgänge kostenlos sind, werden Vorgänge mit verwalteten Connectors im Standardmodell gemessen und abgerechnet. Dafür werden [dieselben Preise für *Standard*- oder *Unternehmensconnectors* verwendet wie im Verbrauchsmodell](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [*Verwalteter Connector*](../connectors/managed.md) | Diese Vorgänge werden separat in Azure ausgeführt. Im Designer finden Sie diese Vorgänge unter der zusammengefassten Bezeichnung **Azure**. | Im Standardmodell werden Vorgänge mit verwalteten Connectors gemäß [denselben Preisen für *Standard*- oder *Unternehmensconnectors* wie im Verbrauchsmodell](https://azure.microsoft.com/pricing/details/logic-apps/) gemessen und abgerechnet. <p><p>**Hinweis:** Für Unternehmensconnector-Vorgänge gelten die [Preise nach Verbrauch für *Standardconnectors*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [*Benutzerdefinierter Connector*](../connectors/apis-list.md#custom-apis-and-connectors) | Derzeit können Sie nur [benutzerdefinierte integrierte Connectorvorgänge](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) in Logik-App-Workflows mit einem Mandanten erstellen und verwenden. | Das Standardmodell umfasst unbegrenzte kostenlose integrierte Vorgänge. Informationen zu Grenzwerten für Durchsatz und Timeout finden Sie unter [Grenzwerte für einen benutzerdefinierten Connector](logic-apps-limits-and-config.md#custom-connector-limits) in Azure Logic Apps. |
+||||
 
-Wenn *zustandsbehaftete* Workflows ihre Vorgänge ausführen, führt die Azure Logic Apps-Runtime Speichertransaktionen durch. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden. Die Speicherkosten ändern sich basierend auf dem Inhalt Ihres Workflows. Verschiedene Auslöser, Vorgänge und Nutzdaten führen zu unterschiedlichen Speichervorgängen und Anforderungen. Speichertransaktionen folgen dem [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/). Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt.
+Weitere Informationen zur Funktionsweise des Standardmodells mit Vorgängen, die in anderen Vorgängen wie Schleifen ausgeführt werden oder mehrere Elemente wie Arrays verarbeiten, sowie Wiederholungsrichtlinien finden Sie unter [Verhalten bei anderen Vorgängen](#other-operation-behavior).
 
-### <a name="tips-for-estimating-storage-needs-and-costs"></a>Tipps zum Schätzen von Speicheranforderungen und -kosten
+<a name="ise-pricing"></a>
 
-Um eine Vorstellung von der Anzahl der Speichervorgänge, die ein Workflow ausführen könnte, und deren Kosten zu erhalten, verwenden Sie den [Logic Apps-Speicherrechner](https://logicapps.azure.com/calculator). Sie können entweder einen Beispielworkflow auswählen oder eine vorhandene Workflowdefinition verwenden. Die erste Berechnung schätzt die Anzahl der Speichervorgänge in Ihrem Workflow. Sie können diese Zahlen dann verwenden, um mögliche Kosten mithilfe des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/) zu schätzen.
+## <a name="integration-service-environment-ise"></a>Integrationsdienstumgebung (Integration Service Environment, ISE)
 
-Weitere Informationen finden Sie in der folgenden Dokumentation:
+Wenn Sie eine Logik-App mithilfe des Ressourcentyps **Logik-App (Verbrauch)** erstellen und sie in einer dedizierten [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) bereitstellen, wird für die Logik-App und ihren Workflow der [Tarif für Integrationsdienstumgebungen](https://azure.microsoft.com/pricing/details/logic-apps) für Preise und Abrechnung verwendet. Dieses Preismodell ist abhängig von Ihrer [ISE-Ebene oder *SKU*](connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). Dies unterscheidet sich vom Verbrauchsplan insofern, dass Ihnen reservierte Kapazitäten und dedizierte Ressourcen in Rechnung gestellt werden, unabhängig davon, ob Sie sie verwenden.
 
-* [Abschätzen der Speicheranforderungen und -kosten für Workflows in Azure Logic Apps für nur einen Mandanten](estimate-storage-costs.md)
-* [Azure Storage – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
+In der folgenden Tabelle wird zusammengefasst, wie das ISE-Modell die Messung und Abrechnung für Kapazität und andere dedizierte Ressourcen basierend auf der ISE-Ebene oder SKU verarbeitet:
 
-<a name="fixed-pricing"></a>
-
-## <a name="ise-pricing-dedicated"></a>ISE-Preise (dediziert)
-
-Für Logik-Apps, die in der dedizierten [*Integrationsdienstumgebung* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt werden, gilt ein Festpreismodell. Eine ISE wird mit dem [Preis für Integrationsdienstumgebungen](https://azure.microsoft.com/pricing/details/logic-apps) abgerechnet, der von der von Ihnen erstellten [ISE-Stufe oder *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) abhängt. Diese Preise unterscheiden sich von den Preisen für mehrere Mandanten, da Sie für reservierte Kapazität und dedizierte Ressourcen unabhängig davon zahlen, ob Sie diese nutzen oder nicht.
-
-| ISE SKU | BESCHREIBUNG |
-|---------|-------------|
+| ISE SKU | Messung und Abrechnung |
+|---------|----------------------|
 | **Premium** | Die Basiseinheit bietet eine [feste Kapazität](logic-apps-limits-and-config.md#integration-service-environment-ise) und wird [für die SKU „Premium“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Falls Sie mehr Durchsatz benötigen, können Sie bei der Erstellung Ihrer ISE oder nachträglich [weitere Skalierungseinheiten hinzufügen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). Jede Skalierungseinheit wird mit einem [Stundensatz abgerechnet, der etwa der Hälfte des Satzes der Basiseinheit entspricht](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>Informationen zu Grenzwerten und Kapazitäten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 | **Developer** | Die Basiseinheit bietet eine [feste Kapazität](logic-apps-limits-and-config.md#integration-service-environment-ise) und wird [für die SKU „Developer“ mit einem Stundensatz abgerechnet](https://azure.microsoft.com/pricing/details/logic-apps). Diese SKU umfasst keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA), Funktion zum zentralen Hochskalieren der Kapazität oder Redundanz während der Wiederverwendung. Dies bedeutet, dass Verzögerungen oder Ausfallzeiten auftreten können. Der Dienst kann vorübergehend von Back-End-Updates unterbrochen werden. <p><p>**Wichtig**: Stellen Sie sicher, dass Sie diese SKU nur für Erkundung, Experimente, Entwicklung und Tests verwenden, nicht jedoch für die Produktion oder für Leistungstests. <p><p>Informationen zu Grenzwerten und Kapazitäten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
-### <a name="included-at-no-extra-cost"></a>Ohne zusätzliche Kosten inbegriffen
+In der folgenden Tabelle wird zusammengefasst, wie das ISE-Modell die folgenden Komponenten behandelt, wenn es mit einer Logik-App und einem Workflow in einer ISE verwendet wird:
 
-| Elemente | Beschreibung |
-|-------|-------------|
-| [Integrierte](../connectors/built-in.md) Trigger und Aktionen | Werden mit der Beschriftung **Core** angezeigt und in derselben ISE ausgeführt wie Ihre Logik-Apps. |
-| [Standardconnectors](../connectors/managed.md) <p><p>[Unternehmensconnector](../connectors/managed.md#enterprise-connectors) | Verwaltete Connectors, die mit der Beschriftung **ISE** versehen sind, wurden speziell für den Betrieb ohne das lokale Datengateways entwickelt und werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Die ISE-Preise decken so viele Unternehmensverbindungen wie gewünscht ab. <p><p>Connectors ohne die Beschriftung „ISE“ werden im Azure Logic Apps-Dienst für einen einzelnen Mandanten ausgeführt. Die ISE-Preise decken diese Ausführungen jedoch für in einer ISE ausgeführte Logik-Apps ab. |
-| Aktionen innerhalb von [Schleifen](logic-apps-control-flow-loops.md) | Die ISE-Preise decken jede in einer Schleife ausgeführte Aktion für jeden ausgeführten Schleifenzyklus ab. <p><p>Angenommen, Sie haben eine FOR EACH-Schleife mit Aktionen zum Verarbeiten einer Liste. Zur Ermittlung der Gesamtanzahl der Ausführungen von Aktionen multiplizieren Sie die Anzahl der Listenelemente mit der Anzahl der Aktionen in der Schleife und addieren die Aktion zum Starten der Schleife. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. |
-| Wiederholungsversuche | Um die grundlegendsten Ausnahmen und Fehler zu behandeln, können Sie, sofern unterstützt, eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) für Trigger und Aktionen einrichten. Die ISE-Preise berücksichtigen Wiederholungen ebenso wie die ursprüngliche Anforderung. |
-| [Datenaufbewahrung und Speichernutzung](#data-retention) | Für Logik-Apps in einer ISE fallen keine Gebühren für die Datenaufbewahrung und Speichernutzung an. |
-| [Integrationskonten](#integration-accounts) | Schließt die Nutzung eines Einzeltarifs für Integrationskonten auf Basis der ISE SKU ohne zusätzliche Kosten ein. |
+| Komponente | BESCHREIBUNG |
+|-----------|-------------|
+| Trigger- und Aktionsvorgänge | Das ISE-Modell umfasst kostenlose integrierte Vorgänge für verwaltete Connectors und benutzerdefinierte Connectors, die Ihr Workflow ausführen kann. Es gelten allerdings die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise) und [Grenzwerte für benutzerdefinierte Connectors in Azure Logic Apps](logic-apps-limits-and-config.md#custom-connector-limits). Weitere Informationen finden Sie unter [Trigger- und Aktionsvorgänge im ISE-Modell](#integration-service-environment-operations). |
+| Speichervorgänge | Das ISE-Modell umfasst die kostenlose Speichernutzung, z. B. für die Datenaufbewahrung. Weitere Informationen finden Sie unter [Speichervorgänge](#storage-operations). |
+| Integrationskonten | Das ISE-Modell enthält eine einzelne kostenlose Integrationskontoebene, die auf der ausgewählten ISE-SKU basiert. [Gegen Mehrkosten](https://azure.microsoft.com/pricing/details/logic-apps/) können Sie weitere Integrationskonten für Ihre ISE anlegen, die Sie bis zur [ISE-Obergrenze](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) nutzen können. Weitere Informationen finden Sie unter [Integrationskonten](#integration-accounts). |
 |||
 
-Informationen zu Grenzwerten finden Sie unter [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise).
+<a name="integration-service-environment-operations"></a>
 
-<a name="integration-accounts"></a>
+### <a name="trigger-and-action-operations-in-the-ise-model"></a>Trigger- und Aktionsvorgänge im ISE-Modell
 
-## <a name="integration-accounts"></a>Integrationskonten
+In der folgenden Tabelle wird zusammengefasst, wie das ISE-Modell die folgenden Vorgangstypen behandelt, wenn es mit einer Logik-App und einem Workflow in einer ISE verwendet wird:
 
-Ein [Integrationskonto](../logic-apps/logic-apps-pricing.md#integration-accounts) ist eine gesonderte Ressource, die Sie erstellen und mit einer Logik-App verknüpfen. Es dient zum Erkunden, Erstellen und Testen von B2B-Integrationslösungen, in denen Funktionen für [EDI](logic-apps-enterprise-integration-b2b.md) und die [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) genutzt werden.
-
-Für Azure Logic Apps werden diese Integrationskontoebenen bzw. -tarife angeboten, die sich in Bezug auf die [Preise](https://azure.microsoft.com/pricing/details/logic-apps/) und das [Abrechnungsmodell](logic-apps-pricing.md#integration-accounts) unterscheiden können. Dies richtet sich danach, ob Ihre Logik-App unter Azure Logic Apps (mit mehreren oder nur einem Mandanten) oder in einer ISE ausgeführt wird.
-
-| Tarif | BESCHREIBUNG |
-|------|-------------|
-| **Basic** | Für Szenarien, in denen Sie nur die Verarbeitung von Nachrichten nutzen oder als Partner eines kleines Unternehmens fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist. <p><p>Ist von der SLA für Logic Apps abgedeckt. |
-| **Standard** | Für Szenarien mit komplexeren B2B-Beziehungen und einer größeren Anzahl zu verwaltender Entitäten. <p><p>Ist von der SLA für Logic Apps abgedeckt. |
-| **Free** | Nur für Erkundungs- und nicht für Produktionsszenarien. Bei diesem Tarif gelten Einschränkungen für Region, Durchsatz und Nutzung. Der Free-Tarif ist beispielsweise nur für öffentliche Regionen in Azure verfügbar, z. B. USA, Westen oder Asien, Südosten, aber nicht für [Azure China 21ViaNet](/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md). <p><p>**Hinweis**: Ist von der SLA für Logic Apps nicht abgedeckt. |
-|||
-
-Informationen zu den Grenzwerten für Integrationskonten finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) wie z. B.:
-
-* [Grenzwerte für Integrationskonten pro Azure-Abonnement](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
-
-* [Grenzwerte für verschiedene Artefakte pro Integrationskonto](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). Artefakte umfassen Handelspartner, Vereinbarungen, Zuordnungen, Schemas, Assemblys, Zertifikate, Batchkonfigurationen usw.
-
-### <a name="multi-tenant-or-single-tenant-based-logic-apps"></a>Logik-Apps mit mehreren oder nur einem Mandanten
-
-Integrationskonten werden mit einem [Festpreis für Integrationskonten](https://azure.microsoft.com/pricing/details/logic-apps/) abgerechnet, der sich nach dem von Ihnen genutzten Kontotarif richtet.
-
-### <a name="ise-based-logic-apps"></a>ISE-basierte Logik-Apps
-
-Ohne Mehrkosten gehört zu Ihrer ISE ein einzelnes Integrationskonto, das auf Ihrer ISE SKU basiert. Gegen Mehrkosten können Sie weitere Integrationskonten für Ihre ISE anlegen, die Sie bis zur [ISE-Obergrenze](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) nutzen können. Weitere Informationen zum [ISE-Preismodell](#fixed-pricing) finden Sie weiter oben in diesem Thema.
-
-| ISE SKU | Integrationskonto inbegriffen | Zusätzliche Kosten |
-|---------|------------------------------|-----------------|
-| **Premium** | Einzelnes Integrationskonto im Tarif [Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) | Bis zu 19 weitere Standard-Konten. Es sind keine Free- oder Basic-Konten zulässig. |
-| **Developer** | Einzelnes Integrationskonto im Tarif [Free](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) | Bis zu 19 weitere Standard-Konten, wenn Sie bereits über ein Free-Konto verfügen, oder 20 Standardkonten, wenn Sie kein Free-Konto besitzen. Es sind keine Basic-Konten zulässig. |
+| Vorgangsart | BESCHREIBUNG | Messung und Abrechnung |
+|----------------|-------------|----------------------|
+| [*Integriert*](../connectors/built-in.md) | Diese Vorgänge werden direkt und nativ mit der Azure Logic Apps-Runtime und in derselben ISE wie Ihr Logik-App-Workflow ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Integriert**, es wird aber für jeden Vorgang auch die Bezeichnung **CORE** angezeigt. <p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger. Die Aktionen „HTTP“ und „Antwort“ sind hingegen integrierte Aktionen. Andere integrierte Vorgänge umfassen Workflowsteuerungsaktionen wie Schleifen und Bedingungen, Datenvorgänge, Batchvorgänge usw. | Das ISE-Modell enthält diese Vorgänge *kostenlos*, es gelten aber die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| [*Verwalteter Connector*](../connectors/managed.md) | Unabhängig davon, ob es sich um *Standard*- oder *Unternehmensconnectors* handelt, werden Vorgänge für verwaltete Connectors in Ihrer ISE oder in Azure mit mehreren Mandanten ausgeführt. Dies hängt davon ab, ob für den Connector oder Vorgang die Bezeichnung **ISE** angezeigt wird. <p><p>- **ISE**-Bezeichnung: Diese Vorgänge werden in derselben ISE wie Ihre Logik-App ausgeführt und benötigen kein [lokales Datengateway](#data-gateway). <p><p>– Keine **ISE**-Bezeichnung: Diese Vorgänge werden in Azure mit mehreren Mandanten ausgeführt. | Das ISE-Modell enthält Vorgänge mit und ohne **ISE**-Bezeichnung *kostenlos*, es gelten aber die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| [*Benutzerdefinierter Connector*](../connectors/apis-list.md#custom-apis-and-connectors) | Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Benutzerdefiniert**. | Das ISE-Modell enthält diese Vorgänge *kostenlos*, es gelten aber die [Grenzwerte für benutzerdefinierte Connectors in Azure Logic Apps](logic-apps-limits-and-config.md#custom-connector-limits). |
 ||||
 
-<a name="data-retention"></a>
+Weitere Informationen zur Funktionsweise des ISE-Modells mit Vorgängen, die in anderen Vorgängen wie Schleifen ausgeführt werden oder mehrere Elemente wie Arrays verarbeiten, sowie Wiederholungsrichtlinien finden Sie unter [Verhalten bei anderen Vorgängen](#other-operation-behavior).
 
-## <a name="data-retention-and-storage-usage"></a>Datenaufbewahrung und Speichernutzung
+<a name="other-operation-behavior"></a>
 
-Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. Die Ein- und Ausgaben aus dem Ausführungsverlauf Ihres Workflows werden basierend auf dem [Aufbewahrungslimit des Ausführungsverlaufs](logic-apps-limits-and-config.md#run-duration-retention-limits), das für Ihre Logik-App gilt, gespeichert und gemessen. Informationen zur Überwachung der Speichernutzung finden Sie unter [Anzeigen von Metriken zu Ausführungen und Speichernutzung](plan-manage-costs.md#monitor-billing-metrics).
+## <a name="other-operation-behavior"></a>Verhalten bei anderen Vorgängen
 
-| Umgebung | Hinweise |
-|-------------|-------|
-| **Mehrinstanzenfähig** | Die Kosten für die Speichernutzung und die Aufbewahrung werden anhand eines Festpreises berechnet. Informationen hierzu finden Sie auf der [Seite mit den Preisen für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps) in der Tabelle mit den **Preisdetails**. |
-| **Einzelmandant** | Die Speichernutzung und die Aufbewahrung werden anhand des [Azure Storage-Preismodells](https://azure.microsoft.com/pricing/details/storage/) berechnet. Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt. Weitere Informationen finden Sie unter [Speichertransaktionen (bei nur einem Mandanten)](#storage-transactions). |
-| **ISE** | Für die Speichernutzung und die Aufbewahrung fallen keine Gebühren an. |
-|||
+Die folgende Tabelle zeigt die Funktionsweise des Verbrauchsmodells, Standardmodells und ISE-Modells mit Vorgängen, die in anderen Vorgängen wie Schleifen ausgeführt werden oder mehrere Elemente wie Arrays verarbeiten, und Wiederholungsrichtlinien:
+
+| Vorgang | BESCHREIBUNG | Nutzung | Standard | ISE |
+|-----------|-------------|-------------|----------|-----|
+| [Schleifenaktionen](logic-apps-control-flow-loops.md) | Eine Schleifenaktion, z. B. eine **For each**- oder **Until**-Schleife, kann andere Aktionen enthalten, die während jedes Schleifendurchlaufs ausgeführt werden. | Mit Ausnahme der anfänglichen Anzahl der integrierten Vorgänge werden die Schleifenaktion und jede Aktion in der Schleife bei jedem Schleifendurchlauf gemessen. Wenn eine Aktion Elemente in einer Sammlung verarbeitet, z. B. eine Liste oder ein Array, wird die Anzahl der Elemente ebenfalls bei der Messung berücksichtigt. <p><p>Angenommen, Sie verfügen über eine **For each**-Schleife mit Aktionen, die eine Liste verarbeiten. Der Dienst multipliziert die Anzahl von Listenelementen mit der Anzahl von Aktionen in der Schleife. Anschließend wird die Aktion hinzugefügt, mit der die Schleife gestartet wird. Daher lautet die Berechnung für eine Liste mit zehn Elementen (10 * 1) + 1, sodass sich 11 Aktionsausführungen ergeben. <p><p>Die Preise basieren darauf, ob der Vorgangstyp „Integriert“, „Standard“ oder „Unternehmen“ lautet. | Mit Ausnahme der eingeschlossenen integrierten Vorgänge wie im Verbrauchsmodell. | Nicht gemessen oder abgerechnet. |
+| [Wiederholungsrichtlinien](logic-apps-exception-handling.md#retry-policies) | Bei unterstützten Vorgängen können Sie eine grundlegende Ausnahme- und Fehlerbehandlung implementieren, indem Sie eine [Wiederholungsrichtlinie](logic-apps-exception-handling.md#retry-policies) einrichten. | Mit Ausnahme der anfänglichen Anzahl integrierter Vorgänge werden die ursprüngliche Ausführung plus jede wiederholte Ausführung gemessen. Beispielsweise werden für eine Aktion, die mit fünf Wiederholungen ausgeführt wird, sechs Ausführungen gemessen und berechnet. <p><p>Die Preise basieren darauf, ob der Vorgangstyp „Integriert“, „Standard“ oder „Unternehmen“ lautet. | Mit Ausnahme der eingeschlossenen integrierten Vorgänge wie im Verbrauchsmodell. | Nicht gemessen oder abgerechnet. |
+||||||
+
+<a name="storage-operations"></a>
+
+## <a name="storage-operations"></a>Speichervorgänge
+
+Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle erforderlichen Speichertransaktionen, z. B. die Verwendung von Warteschlangen zum Planen von Triggervorgängen oder die Verwendung von Tabellen und Blobs zum Speichern von Workflowzuständen. Basierend auf den Vorgängen in Ihrem Workflow variieren die Speicherkosten, da verschiedene Trigger, Aktionen und Nutzlasten zu unterschiedlichen Speichervorgängen und -anforderungen führen. Der Dienst speichert außerdem Eingaben und Ausgaben aus dem Ausführungsverlauf Ihres Workflows. Dabei gilt der [Grenzwert für die Aufbewahrung des Ausführungsverlaufs](logic-apps-limits-and-config.md#run-duration-retention-limits) für die Logik-App-Ressource. Sie können diesen Aufbewahrungsgrenzwert auf Logik-App-Ressourcenebene und nicht auf Workflowebene verwalten.
+
+In der folgenden Tabelle wird zusammengefasst, wie Messung und Abrechnung für Speichervorgänge im Verbrauchs-, Standard- und ISE-Modell verarbeitet werden:
+
+| Modell | BESCHREIBUNG | Messung und Abrechnung |
+|-------|-------------|----------------------|
+| Verbrauch (mehrere Mandanten) | Speicherressourcen und -nutzung werden an die Logik-App-Ressource angefügt. | Messung und Abrechnung beziehen sich *nur auf den Speicherverbrauch im Zusammenhang mit der Datenaufbewahrung*. Es gelten die [Preise für die Datenaufbewahrung für den Verbrauchsplan](https://azure.microsoft.com/pricing/details/logic-apps). |
+| Standard (ein Mandant) | Sie können Ihr eigenes Azure-[Speicherkonto](../azure-functions/storage-considerations.md#storage-account-requirements) verwenden. Dies bietet Ihnen mehr Kontrolle und Flexibilität bei den Daten Ihres Workflows. |  Messung und Abrechnung erfolgen nach dem [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/). Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt. <p><p>**Tipp:** Um eine Vorstellung von der Anzahl der Speichervorgänge, die ein Workflow ausführen könnte, und deren Kosten zu erhalten, verwenden Sie den [Logic Apps-Speicherrechner](https://logicapps.azure.com/calculator). Sie können entweder einen Beispielworkflow auswählen oder eine vorhandene Workflowdefinition verwenden. Die erste Berechnung schätzt die Anzahl der Speichervorgänge in Ihrem Workflow. Sie können diese Zahlen dann verwenden, um mögliche Kosten mithilfe des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/) zu schätzen. Weitere Informationen finden Sie unter [Abschätzen der Speicheranforderungen und -kosten für Workflows in Azure Logic Apps für nur einen Mandanten](estimate-storage-costs.md). |
+| Integrationsdienstumgebung (Integration Service Environment, ISE) | Speicherressourcen und -nutzung werden an die Logik-App-Ressource angefügt. | Nicht gemessen oder abgerechnet. |
+||||
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Anzeigen von Metriken für Ausführungen und Speichernutzung](plan-manage-costs.md#monitor-billing-metrics)
+* [Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md)
 
 <a name="data-gateway"></a>
 
 ## <a name="on-premises-data-gateway"></a>Lokales Datengateway
 
-Ein [lokales Datengateway](../logic-apps/logic-apps-gateway-install.md) ist eine gesonderte Ressource, die Sie erstellen, damit Ihre Logik-App-Workflows über bestimmte vom Gateway unterstützte Connectors auf lokale Daten zugreifen können. Für über das Gateway erfolgende Connectorvorgänge fallen Gebühren an, für das Gateway selbst jedoch nicht.
+Das [lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) ist eine gesonderte Azure-Ressource, die Sie erstellen, damit Ihre Logik-App-Workflows über bestimmte vom Gateway unterstützte Connectors auf lokale Daten zugreifen können. Für die Gatewayressource selbst fallen keine Gebühren an, aber für Vorgänge, die über das Gateway ausgeführt werden. Hierfür gelten die Preise und das Abrechnungsmodell, die von Ihrer Logik-App verwendet werden.
 
-<a name="disabled-apps"></a>
+<a name="integration-accounts"></a>
 
-## <a name="disabled-logic-apps-or-workflows"></a>Deaktivierte Logik-Apps oder Workflows
+## <a name="integration-accounts"></a>Integrationskonten
 
-Für deaktivierte Logik-Apps (mehrere Mandanten) oder Workflows (einzelner Mandant) fallen keine Gebühren an, weil darüber während der Deaktivierung keine neuen Instanzen erstellt werden können.
+Ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md) ist eine separate Azure-Ressource, die Sie als Container erstellen, um B2B-Artefakte (Business-to-Business) wie Handelspartner, Vereinbarungen, Schemas, Zuordnungen usw. zu definieren und zu speichern. Nachdem Sie dieses Konto erstellt und diese Artefakte definiert haben, verknüpfen Sie das Konto mit Ihrer Logik-App, damit Sie die Artefakte und verschiedene B2B-Vorgänge in Workflows verwenden können. So können Sie Integrationslösungen untersuchen, erstellen und testen, die [EDI](logic-apps-enterprise-integration-b2b.md)- und [XML-Verarbeitungsfunktionen](logic-apps-enterprise-integration-xml.md) verwenden.
+
+In der folgenden Tabelle wird zusammengefasst, wie Messung und Abrechnung für Integrationskonten im Verbrauchs-, Standard- und ISE-Modell verarbeitet werden:
+
+| Modell | Messung und Abrechnung |
+|-------|----------------------|
+| Verbrauch (mehrere Mandanten) | Für Messung und Abrechnung werden die [Preise für Integrationskonten](https://azure.microsoft.com/pricing/details/logic-apps/) auf Grundlage der von Ihnen verwendeten Kontoebene genutzt. |
+| Standard (ein Mandant) | Für Messung und Abrechnung werden die [Preise für Integrationskonten](https://azure.microsoft.com/pricing/details/logic-apps/) auf Grundlage der von Ihnen verwendeten Kontoebene genutzt. |
+| ISE | Dieses Modell umfasst ein einzelnes Integrationskonto, das auf Ihrer ISE-SKU basiert. [Gegen Mehrkosten](https://azure.microsoft.com/pricing/details/logic-apps/) können Sie weitere Integrationskonten für Ihre ISE anlegen, die Sie bis zur [ISE-Obergrenze](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) nutzen können. |
+|||
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Erstellen und Verwalten von Integrationskonten](logic-apps-enterprise-integration-create-integration-account.md)
+* [Grenzwerte für Integrationskonten in Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
+
+## <a name="other-items-not-metered-or-billed"></a>Andere Elemente, die nicht gemessen oder abgerechnet werden
+
+In allen Preismodellen werden die folgenden Elemente nicht gemessen oder abgerechnet:
+
+* Aktionen, die nicht ausgeführt wurden, weil der Workflow vor Abschluss beendet wurde
+* Deaktivierte Logik-Apps oder Workflows, da für sie keine neuen Instanzen erstellt werden können, wenn sie inaktiv sind
 
 ## <a name="next-steps"></a>Nächste Schritte
 

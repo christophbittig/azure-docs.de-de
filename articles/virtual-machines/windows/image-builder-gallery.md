@@ -1,20 +1,21 @@
 ---
 title: Verwenden von Azure Image Builder mit einem Imagekatalog für Windows-VMs
 description: Erstellen Sie Azure Shared Gallery-Imageversionen mithilfe von Azure Image Builder und Azure PowerShell.
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dd821ac9f5722047ec5c233feaaf2a48d4de3b41
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 03ae984a5950a026fc9bc5c30ee1951e1c17b909
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031149"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346431"
 ---
 # <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
 
@@ -26,7 +27,7 @@ Die Vorlage verwendet [sharedImage](../linux/image-builder-json.md#distribute-sh
 
 Azure Image Builder führt automatisch Sysprep aus, um das Image zu generalisieren. Dies ist ein generischer Sysprep-Befehl, den Sie bei Bedarf [außer Kraft setzen](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) können. 
 
-Achten Sie darauf, wie oft Sie Anpassungen nacheinander vornehmen. Sie können den Sysprep-Befehl auf einem einzelnen Windows-Image bis zu 8-mal ausführen. Nach dem achten Ausführen von Sysprep müssen Sie das Windows-Image neu erstellen. Weitere Informationen finden Sie unter [Grenzwerte für die Ausführung von Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
+Achten Sie darauf, wie oft Sie Anpassungen nacheinander vornehmen. Sie können den Sysprep-Befehl auf einem einzelnen Windows-Image nur eine begrenzte Anzahl von Malen ausführen. Wenn Sie den Sysprep-Grenzwert erreicht haben, müssen Sie Ihr Windows-Image neu erstellen. Weitere Informationen finden Sie unter [Grenzwerte für die Ausführung von Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
 
 ## <a name="register-the-features"></a>Registrieren des Features

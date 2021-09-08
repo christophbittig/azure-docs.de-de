@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 672fac2b33ef1d8fd9be1948d0c7da332f8ce43b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987522"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355224"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -31,23 +31,50 @@ Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtue
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Gateway-SKUs
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Wenn Sie das Gateway auf eine leistungsfähigere Gateway-SKU aktualisieren möchten, können Sie in den meisten Fällen das PowerShell-Cmdlet „Resize-AzVirtualNetworkGateway“ verwenden. Mit diesem können Sie Upgrades von Standard- auf HighPerformance-SKUs durchführen. Für ein Upgrade auf die UltraPerformance-SKU müssen Sie jedoch das Gateway neu erstellen. Das Neuerstellen eines Gateways führt zu Ausfällen.
+Wenn Sie das Gateway auf eine leistungsfähigere Gateway-SKU aktualisieren möchten, können Sie in den meisten Fällen das PowerShell-Cmdlet „Resize-AzVirtualNetworkGateway“ verwenden. Mit diesem können Sie Upgrades von Standard- auf HighPerformance-SKUs durchführen. Um jedoch ein Upgrade für ein Gateway ohne Verfügbarkeitszone (Availability Zone, AZ) auf die UltraPerformance-SKU durchzuführen, müssen Sie das Gateway neu erstellen. Das Neuerstellen eines Gateways führt zu Ausfällen. Sie müssen das Gateway nicht löschen und neu erstellen, um ein Upgrade einer AZ-fähigen SKU durchzuführen.
+### <a name="feature-support-by-gateway-sku"></a><a name="gatewayfeaturesupport"></a>Featureunterstützung nach Gateway-SKU
+In der folgenden Tabelle sind die von den einzelnen Gatewaytypen unterstützten Features aufgeführt.
+
+|**Gateway-SKU**|**Koexistenz von VPN-Gateway und ExpressRoute**|**FastPath**|**Maximale Anzahl von Leitungsverbindungen**|
+| --- | --- | --- | --- |
+|**Standard-SKU/ERGw1Az**|Ja|Nein|4|
+|**Hochleistungs-SKU/ERGw2Az**|Ja|Nein|8
+|**Höchstleistungs-SKU/ErGw3AZ**|Ja|Ja|16
 
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>Geschätzte Leistungen nach Gateway-SKU
-In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
+In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungsstufenwerte angegeben. Diese Werte sind von den folgenden Testbedingungen abgeleitet und stellen die maximalen Unterstützungsgrenzwerte dar. Die tatsächliche Leistung kann je nachdem variieren, wie genau der Datenverkehr die Testbedingungen repliziert.
+
+### <a name="testing-conditions"></a>Testbedingungen
+##### <a name="standardergw1az"></a>**Standard/ERGw1Az** #####
+
+- Leitungsbandbreite: 1 GBits/s
+- Anzahl der vom Gateway angekündigten Routen: 500
+- Anzahl der erlernten Routen: 4.000
+##### <a name="high-performanceergw2az"></a>**Hochleistung/ERGw2Az** #####
+
+- Leitungsbandbreite: 1 GBits/s
+- Anzahl der vom Gateway angekündigten Routen: 500
+- Anzahl der erlernten Routen: 9.500
+##### <a name="ultra-performanceergw3az"></a>**Höchstleistung/ErGw3Az** #####
+
+- Leitungsbandbreite: 1 GBits/s
+- Anzahl der vom Gateway angekündigten Routen: 500
+- Anzahl der erlernten Routen: 9.500
+
+ Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
+ 
+|**Gateway-SKU**|**Verbindungen pro Sekunde**|**Megabits pro Sekunde**|**Pakete pro Sekunde**|**Unterstützte Anzahl der virtuellen Computer im virtuellen Netzwerk**|
+| --- | --- | --- | --- | --- |
+|**Standard/ERGw1Az**|7\.000|1\.000|100.000|2.000|
+|**Hochleistung/ERGw2Az**|14.000|2\.000|250.000|4\.500|
+|**Höchstleistung/ErGw3Az**|16.000|10.000|1\.000.000|11.000|
 
 > [!IMPORTANT]
 > Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
->
->
 
-> [!NOTE]
+>[!NOTE]
 > Die maximale Anzahl von ExpressRoute-Verbindungen vom gleichen Peeringstandort, die eine Verbindung mit demselben virtuellen Netzwerk herstellen können, beträgt 4 für alle Gateways.
 >
->
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>Gatewaysubnetz
 

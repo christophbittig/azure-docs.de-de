@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: d65367b561ed94c4872ce86edede2043f99cced4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 304d96e9f7566ab80ac71d176fc52ccf3c852b49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339207"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Hinzufügen zusätzlicher Site-to-Site-Verbindungen zu einem virtuellen Netzwerk: Azure-Portal
 
@@ -31,7 +31,7 @@ Dieser Artikel gilt für Resource Manager-VNETs, die ein VPN-Gateway des Typs Ro
 Überprüfen Sie folgende Maßnahmen:
 
 * Sie konfigurieren keine neue Konfiguration für parallel bestehende ExpressRoute- und VPN Gateway-Verbindungen.
-* Sie verfügen über ein virtuelles Netzwerk, das mithilfe des Resource Manager-Bereitstellungsmodells mit einer bestehenden Verbindung erstellt wurde.
+* Sie verfügen über ein virtuelles Netzwerk, das mithilfe des [Resource Manager-Bereitstellungsmodells](../azure-resource-manager/management/deployment-models.md) mit einer bestehenden Verbindung erstellt wurde.
 * Das Gateway für virtuelle Netzwerke für Ihr VNet ist RouteBased. Wenn Sie über ein PolicyBased-VPN Gateway verfügen, müssen Sie das Gateway für virtuelle Netzwerke löschen, und ein neues VPN-Gateway als RouteBased erstellen.
 * Keine der Adressbereiche überlappen sich mit einem der VNets, mit der dieses VNet eine Verbindung herstellt.
 * Sie haben ein kompatibles VPN-Gerät (und eine Person, die es konfigurieren kann). Weitere Informationen finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Wenn Sie sich mit dem Konfigurieren des VPN-Geräts oder mit den IP-Adressbereichen Ihrer lokalen Netzwerkkonfiguration nicht auskennen, müssen Sie sich an eine Person wenden, die Ihnen diese Details liefern kann.

@@ -1,16 +1,16 @@
 ---
 title: Informationen zu Dienstnetzen
-description: Enthält eine Übersicht über Dienstnetze, ihre Architektur und Funktionen sowie die Kriterien, die Sie bei der Auswahl für die Bereitstellung berücksichtigen sollten.
-author: paulbouwer
+description: Verschaffen Sie sich einen Überblick über Dienstnetze, unterstützte Szenarien, Auswahlkriterien und die möglichen nächsten Schritte.
+author: pgibson
 ms.topic: article
-ms.date: 10/09/2019
-ms.author: pabouwer
-ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.author: pgibson
+ms.openlocfilehash: b77ee6fb25f45b365003850627276c0ecd47c7b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77594310"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339782"
 ---
 # <a name="about-service-meshes"></a>Informationen zu Dienstnetzen
 
@@ -28,48 +28,9 @@ Hier sind einige Szenarien angegeben, die Sie bei Verwendung eines Dienstnetzes 
 
 - **Einblick**: Verschaffen Sie sich einen Einblick in der Verbindung Ihrer Dienste mit dem Datenverkehr, der zwischen den Diensten ausgetauscht wird. Rufen Sie Metriken, Protokolle und Ablaufverfolgungen für den gesamten Datenverkehr im Cluster und für den Ein- und Ausgang ab. Fügen Sie Ihren Anwendungen Funktionen für die verteilte Ablaufverfolgung hinzu.
 
-## <a name="architecture"></a>Architektur
-
-Ein Dienstnetz besteht normalerweise aus einer Steuerungsebene und der Datenebene.
-
-Die **Steuerungsebene** verfügt über einige Komponenten, die die Verwaltung des Dienstnetzes unterstützen. Dies umfasst in der Regel eine Verwaltungsschnittstelle, bei der es sich um eine Benutzeroberfläche oder eine API handeln kann. Meist sind auch Komponenten zum Verwalten der Regel- und Richtliniendefinitionen vorhanden, mit denen definiert wird, wie bestimmte Funktionen vom Dienstnetz implementiert werden sollten. Es gibt auch Komponenten, mit denen Sicherheitsaspekte wie sichere Identität und Zertifikate für gegenseitiges TLS (mTLS) verwaltet werden. Darüber hinaus verfügen Dienstnetze normalerweise auch über eine Metrik- oder Einblickkomponente, mit der Metriken und Telemetriedaten aus den Workloads gesammelt und aggregiert werden.
-
-Die **Datenebene** besteht meist aus einem Proxy, der als „Sidecar“ auf transparente Weise in Ihre Workloads eingefügt wird. Dieser Proxy ist so konfiguriert, dass der gesamte ein- und ausgehende Netzwerkdatenverkehr des Pods, der Ihre Workload enthält, gesteuert wird. Der Proxy kann dann so konfiguriert werden, dass Datenverkehr per mTLS geschützt und eine dynamische Weiterleitung durchgeführt wird und Richtlinien darauf angewendet werden können. Darüber hinaus können Informationen zu Metriken und zur Ablaufverfolgung gesammelt werden. 
-
-![Typische Dienstnetzarchitektur](media/servicemesh/typical-architecture.png)
-
-## <a name="capabilities"></a>Funktionen
-
-Jedes Dienstnetz ist speziell auf die Unterstützung bestimmter Szenarien ausgelegt. Normalerweise ist es aber meist der Fall, dass einige oder alle der folgenden Funktionen implementiert werden.
-
-### <a name="traffic-management"></a>Datenverkehrsverwaltung 
-
-- **Protokoll**: Layer 7 (HTTP, GRPC)
-- **Dynamisches Routing**: Bedingtheit, Gewichtung, Spiegelung
-- **Resilienz**: Timeouts, Wiederholungen, Trennschalter
-- **Richtlinie**: Zugriffssteuerung, Ratenlimits, Kontingente
-- **Tests**: Fault Injection
-
-### <a name="security"></a>Sicherheit
-
-- **Verschlüsselung**: mTLS, Zertifikatverwaltung, externe Zertifizierungsstelle
-- **Sichere Identität**: SPIFFE oder Ähnliches
-- **Authentifizierung**: Authentifizierung, Autorisierung
-
-### <a name="observability"></a>Einblick
-
-- **Metriken**: „Golden Metrics“, Prometheus, Grafana
-- **Ablaufverfolgung**: Workloadübergreifende Ablaufverfolgungen
-- **Datenverkehr**: Cluster, Ein-/Ausgang
-
-### <a name="mesh"></a>Mesh
-
-- **Unterstützte Computevorgänge**: Kubernetes, virtuelle Computer
-- **Multicluster**: Gateways, Verbund
-
 ## <a name="selection-criteria"></a>Auswahlkriterien
 
-Stellen Sie vor dem Auswählen eines Dienstnetzes sicher, dass Sie ausreichend mit Ihren Anforderungen und den Gründen für die Installation eines Dienstnetzes vertraut sind. Versuchen Sie, die folgenden Fragen zu stellen.
+Stellen Sie vor dem Auswählen eines Dienstnetzes sicher, dass Sie ausreichend mit Ihren Anforderungen und den Gründen für die Installation eines Dienstnetzes vertraut sind. Stellen Sie sich die folgenden Fragen:
 
 - **Ist ein Eingangscontroller für meine Zwecke ausreichend?** - In einigen Fällen reicht es aus, eine Funktion wie A/B-Tests oder die Datenverkehrsaufteilung für eingehenden Datenverkehr zu verwenden, um das gewünschte Szenario zu unterstützen. Erhöhen Sie die Komplexität Ihrer Anwendung nicht, wenn sich daraus keine Vorteile ergeben.
 
@@ -79,41 +40,38 @@ Stellen Sie vor dem Auswählen eines Dienstnetzes sicher, dass Sie ausreichend m
 
 - **Kann für die Einführung ein inkrementeller Ansatz verwendet werden?** - Einige Dienstnetze, mit denen viele Funktionen bereitgestellt werden, können auch mit einem inkrementellen Ansatz eingeführt werden. Installieren Sie nur die Komponenten, die Sie benötigen, um den Erfolg sicherzustellen. Wenn Sie später dann Erfahrung gesammelt haben und zusätzliche Funktionen erforderlich sind, können Sie diese separat erkunden. Widerstehen Sie der Versuchung, *alles* gleich am Anfang zu installieren.
 
-Falls Sie nach sorgfältiger Überlegung die Entscheidung treffen, dass Sie zum Bereitstellen der erforderlichen Funktionen ein Dienstnetz benötigen, lautet die nächste Frage: *Welches Dienstnetz soll verwendet werden?*
-
-Sehen Sie sich die folgenden Bereiche an, um zu ermitteln, welche am ehesten auf Ihre Anforderungen zutreffen. Auf diese Weise können Sie die beste Wahl für Ihre Umgebung und die Workloads treffen. Der Abschnitt [Nächste Schritte](#next-steps) enthält Links zu ausführlicheren Informationen zu bestimmten Dienstnetzen und deren Eignung für diese Bereiche.
-
-- **Technik**: Datenverkehrsverwaltung, Richtlinie, Sicherheit, Einblick
-
-- **Business**: Commercial Support, Foundation (CNCF), OSS-Lizenz, Governance
-
-- **Betrieb**: Installation/Upgrades, Ressourcenanforderungen, Leistungsanforderungen, Integrationen (Metriken, Telemetriedaten, Dashboards, Tools, SMI), gemischte Workloads (Linux- und Windows-Knotenpools), Compute (Kubernetes, virtuelle Computer), Multicluster
-
-- **Sicherheit**: Authentifizierung, Identität, Zertifikatsverwaltung und Rotation, Plug-fähige externe Zertifizierungsstelle
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgende Dokumentation enthält weitere Informationen zu Dienstnetzen, die Sie in Azure Kubernetes Service (AKS) ausprobieren können:
+Machen Sie sich als Nächstes mit Open Service Mesh (OSM) auf Azure Kubernetes Service (AKS) vertraut:
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Istio...][istio-about]
+> [Weitere Informationen zu OSM][osm-about]
 
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Linkerd...][linkerd-about]
+Sie können sich über die folgenden Dienstnetze auf Azure Kubernetes Service (AKS) auch in der umfassenden Projektdokumentation zu den einzelnen Diensten informieren:
 
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Consul...][consul-about]
+- [Istio][istio]
+- [Linkerd][linkerd]
+- [Consul Connect][consul]
 
-Sie können auch Service Mesh Interface (SMI), eine Standardschnittstelle für Dienstnetze in Kubernetes, erkunden:
+Unter dem folgenden Link erfahren Sie mehr über die Dienstnetzlandschaft, weitere verfügbare Dienstnetze, Tools und Compliance:
+
+- [Layer5: Service Mesh Landscape][service-mesh-landscape]
+
+Sie können sich auch die verschiedenen Standardisierungsinitiativen für Dienstnetze ansehen:
 
 - [Service Mesh Interface (SMI)][smi]
+- [Service Mesh Federation][smf]
+- [Service Mesh Performance (SMP)][smp]
 
 
 <!-- LINKS - external -->
+[istio]: https://istio.io/latest/docs/setup/install/
+[linkerd]: https://linkerd.io/getting-started/
+[consul]: https://learn.hashicorp.com/tutorials/consul/service-mesh-deploy
+[service-mesh-landscape]: https://layer5.io/service-mesh-landscape
 [smi]: https://smi-spec.io/
+[smf]: https://github.com/vmware/hamlet
+[smp]: https://github.com/service-mesh-performance/service-mesh-performance
 
 <!-- LINKS - internal -->
-[istio-about]: ./servicemesh-istio-about.md
-[linkerd-about]: ./servicemesh-linkerd-about.md
-[consul-about]: ./servicemesh-consul-about.md
+[osm-about]: ./servicemesh-osm-about.md

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/06/2021
+ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: e658a2ceed031ea68bce17b87887fd42f24756d6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 474954faebe62138e234f5bb7a7c1bee7bdcf95b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079929"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397173"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,6 +47,7 @@ Im folgenden finden Sie eine kurze Checkliste mit bewährten Methoden für die V
 - Für unternehmenskritische und Data Warehouse-Workloads ist unter Umständen ein höheres Verhältnis von Arbeitsspeicher zu virtuellen Kernen erforderlich. 
 - Nutzen Sie die Azure Virtual Machines-Marketplace-Images, da die SQL Server-Einstellungen und Speicheroptionen für eine optimale SQL Server-Leistung konfiguriert sind. 
 - Erfassen Sie die Leistungsmerkmale des Zielworkloads, und nutzen Sie sie zum Ermitteln der passenden VM-Größe für Ihr Unternehmen.
+- Verwenden Sie das [SKU-Empfehlungstool](/sql/dma/dma-sku-recommend-sql-db) des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595), um die richtige VM-Größe für Ihre vorhandene SQL Server-Workload zu ermitteln.
 
 Weitere Informationen finden Sie in den [bewährten Methoden für die VM-Größe](performance-guidelines-best-practices-vm-size.md). 
 
@@ -114,7 +115,7 @@ Im Folgenden finden Sie eine kurze Checkliste der Best Practices zur Azure-spezi
 - Nutzen Sie [Azure Security Center](../../../security-center/index.yml), um den Sicherheitsstatus Ihres bereitgestellten virtuellen Computers insgesamt zu verbessern.
 - Nutzen Sie [Azure Defender](../../../security-center/azure-defender.md) in [Azure Security Center](https://azure.microsoft.com/services/security-center/) für bestimmte [SQL Server-VM-Abdeckungen](../../../security-center/defender-for-sql-introduction.md), einschließlich Sicherheitsrisikobewertungen und Just-in-Time-Zugriff, wodurch der Angriffsdienst reduziert wird, während berechtigte Benutzer bei Bedarf auf virtuelle Computer zugreifen können. Weitere Informationen finden Sie unter [Sicherheitsrisikobewertungen](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md), [Aktivieren von Sicherheitsrisikobewertungen für SQL Server-VMs](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md) und [Just-in-Time-Zugriff](../../../security-center/just-in-time-explained.md). 
 - Verwenden Sie [Azure Advisor](../../../advisor/advisor-overview.md), um Empfehlungen für [Leistung](../../../advisor/advisor-performance-recommendations.md), [Kosten](../../../advisor/advisor-cost-recommendations.md), [Zuverlässigkeit](../../../advisor/advisor-high-availability-recommendations.md), [Operational Excellence](../../../advisor/advisor-operational-excellence-recommendations.md) und [Sicherheit](../../../advisor/advisor-security-recommendations.md) zu erfüllen.
-- Verwenden Sie [Azure Monitor](../../../azure-monitor/vm/quick-monitor-azure-vm.md), um Telemetriedaten aus Ihrer SQL Server-Umgebung zu sammeln, zu analysieren und darauf zu reagieren. Dies umfasst das Identifizieren von Infrastrukturproblemen mit [VM-Erkenntnissen](../../../azure-monitor/vm/vminsights-overview.md) und das Überwachen von Daten mit [Log Analytics](../../../azure-monitor/logs/log-query-overview.md) für eine ausführlichere Diagnose.
+- Verwenden Sie [Azure Monitor](../../../azure-monitor/vm/monitor-virtual-machine.md), um Telemetriedaten aus Ihrer SQL Server-Umgebung zu sammeln, zu analysieren und darauf zu reagieren. Dies umfasst das Identifizieren von Infrastrukturproblemen mit [VM-Erkenntnissen](../../../azure-monitor/vm/vminsights-overview.md) und das Überwachen von Daten mit [Log Analytics](../../../azure-monitor/logs/log-query-overview.md) für eine ausführlichere Diagnose.
 - Aktivieren Sie die Option [Automatisches Herunterfahren](../../../automation/automation-solution-vm-management.md) für Entwicklungs- und Testumgebungen. 
 - Implementieren Sie eine HADR-Lösung (High Availability and Disaster Recovery), die Ihren SLAs für Geschäftskontinuität entspricht. Weitere Informationen finden Sie unter [HADR-Optionen](business-continuity-high-availability-disaster-recovery-hadr-overview.md#deployment-architectures), die für SQL Server auf Azure-VMs verfügbar sind. 
 - Verwenden Sie das Azure-Portal (Support und Problembehandlung), um die Integrität und den Verlauf von [Ressourcen](../../../service-health/resource-health-overview.md) zu bewerten. Übermitteln Sie bei Bedarf neue Supportanfragen.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f80b91695af6350376d5fcd97732e1a056278a9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413085"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460490"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
@@ -102,7 +102,7 @@ Die VM-Basisimages mit Ubuntu Server 16.04 LTS, 18.04 LTS und 20.04 LTS im Ma
 - Skripts, die bei der Erstellung der auf Ubuntu 18.04 und 20.04 LTS basierenden HPC VM-Images aus einem Ubuntu-Basis-Image aus dem Marketplace verwendet werden, befinden sich im [ Repository „azhpc-images“](https://github.com/Azure/azhpc-images/tree/master/ubuntu).
 
 > [!NOTE]
-> Ab Mellanox OFED 5.1 werden keine ConnectX3-Pro-InfiniBand-Karten auf für SR-IOV aktivierten VM-Größen der N-Serie mit FDR-InfiniBand (z. B. NCv3) unterstützt. Verwenden Sie LTS Mellanox OFED ab Version 4.9-0.1.7.0 auf den VMs der N-Serie mit ConnectX3-Pro-Karten. Ausführlichere Informationen finden Sie [hier](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+> Ab Mellanox OFED 5.1 werden keine ConnectX3-Pro-InfiniBand-Karten auf für SR-IOV aktivierten VM-Größen der N-Serie mit FDR-InfiniBand (z. B. NCv3) unterstützt. Verwenden Sie LTS Mellanox OFED ab Version 4.9-0.1.7.0 auf den VMs der N-Serie mit ConnectX3-Pro-Karten. Weitere Informationen finden Sie unter [Linux InfiniBand-Treiber](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
 
 ### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server-VM-Images
 SLES 12 SP3 for HPC-, SLES 12 SP3 for HPC (Premium)-, SLES 12 SP1 for HPC-, SLES 12 SP1 for HPC (Premium)-, SLES 12 SP4- und SLES 15-VM-Images im Marketplace werden unterstützt. Bei diesen VM-Images sind die Network Direct-Treiber für RDMA (bei VM-Größen ohne SR-IOV) und Intel MPI Version 5.1 vorab geladen. Informieren Sie sich über das [Einrichten von MPI](setup-mpi.md) auf den VMs.

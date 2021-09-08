@@ -3,17 +3,17 @@ title: 'Szenario: Benutzerdefinierte Isolation für virtuelle Netzwerke und Bran
 titleSuffix: Azure Virtual WAN
 description: Erfahren Sie mehr über Virtual WAN Routing-Szenarien, um zu verhindern, dass ausgewählte VNets und Branches sich gegenseitig erreichen können.
 services: virtual-wan
-author: wellee
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
-ms.author: wellee
-ms.openlocfilehash: c5c85d2d24a6e1c49dd2787eeb14caabd0e3f941
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.author: cherylmc
+ms.openlocfilehash: 49e6a65bf14b3d7678a996685efde1b1a2c0a9d3
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579240"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719696"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>Szenario: Benutzerdefinierte Isolation für virtuelle Netzwerke und Branches
 

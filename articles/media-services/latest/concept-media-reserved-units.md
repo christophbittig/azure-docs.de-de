@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 44205bc628a839dd28cd574dbd19a22e9856d999
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120808"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719412"
 ---
 # <a name="media-reserved-units"></a>Reservierte Einheiten für Medien
 
@@ -43,7 +43,7 @@ Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschi
 
 ## <a name="considerations"></a>Überlegungen
 
-* Für Audio- und Videoanalyseaufträge, die von Media Services v3 oder Video Indexer ausgelöst werden, wird dringend empfohlen, das Konto mit zehn S3-Einheiten bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
+* Für Audio- und Videoanalyseaufträge, die von Media Services v3 oder Azure Video Analyzer for Media ausgelöst werden, wird dringend empfohlen, das Konto mit zehn S3-Einheiten bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
 * Bei der Codierung von Tasks ohne MRUs können sich die Tasks beliebig lange in der Warteschlange befinden, und es wird immer nur maximal ein Task ausgeführt.
 
 ## <a name="billing"></a>Abrechnung

@@ -2,19 +2,17 @@
 title: Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
 description: Erfahren Sie, wie Sie eine Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität einrichten
-manager: luisca
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: efb7d0a239d31d82b55b5cd5066e6003391ace45
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/02/2021
+ms.openlocfilehash: bd4d10c32f1c850adf6dc886672b16937b553222
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558787"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350379"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 
@@ -31,9 +29,22 @@ Diese Probleme lassen sich durch Einrichten der Verbindung mithilfe einer verwal
 
 ## <a name="using-managed-identities"></a>Verwenden von verwalteten Identitäten
 
-[Verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) sind eine Funktion, die für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitstellt. Sie können diese Funktion in Azure Cognitive Search verwenden, um ein Datenquellenobjekt mit einer Verbindungszeichenfolge zu erstellen, die keine Anmeldeinformationen enthält. Stattdessen wird dem Suchdienst durch die rollenbasierte Zugriffssteuerung in Azure (RBAC) Zugriff auf die Datenquelle erteilt.
+[Verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) ist eine Funktion, die eine automatisch verwaltete Identität für Anwendungen in Azure Active Directory (Azure AD) bereitstellt. Sie können diese Funktion in Azure Cognitive Search verwenden, um ein Datenquellenobjekt mit einer Verbindungszeichenfolge zu erstellen, die keine Anmeldeinformationen enthält. Stattdessen wird dem Suchdienst durch die rollenbasierte Zugriffssteuerung in Azure (RBAC) Zugriff auf die Datenquelle erteilt.
 
 Wenn Sie eine Datenquelle mithilfe einer verwalteten Identität einrichten, können Sie die Anmeldeinformationen der Datenquelle ändern, und die Indexer können weiterhin eine Verbindung mit der Datenquelle herstellen. Sie können außerdem Datenquellenobjekte in Ihrem Code erstellen, ohne einen Kontoschlüssel einfügen oder Key Vault zum Abrufen eines Kontoschlüssels verwenden zu müssen.
+
+Es gibt zwei Typen von verwalteten Identitäten. Azure Cognitive Search unterstützt sowohl systemseitig zugewiesene als auch benutzerseitig zugewiesene verwaltete Identitäten.
+
+### <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
+
+Eine [systemseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) kann einem einzelnen Azure-Dienst zugewiesen werden. Sie können eine systemseitig zugewiesene verwaltete Identität einem einzelnen Azure Cognitive Search-Dienst zuweisen, und diese ist dann an den Lebenszyklus dieses Search-Diensts gebunden.
+
+### <a name="user-assigned-managed-identity-preview"></a>Benutzerseitig zugewiesene verwaltete Identität (Vorschau)
+
+> [!IMPORTANT]
+>Dieses Feature befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature steht in der REST-API-Version 2021-04-30-Preview und der [Verwaltungs-REST-API 2021-04-01-Preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) zur Verfügung.
+
+Eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ist eine eigenständige Azure-Ressource, die einem oder mehreren Azure-Diensten zugewiesen werden kann. Einem einzelnen Azure Cognitive Search-Dienst kann eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zugewiesen werden. Eine einzelne benutzerseitig zugewiesene verwaltete Identität kann mehreren Suchdiensten zugewiesen werden.
 
 ## <a name="limitations"></a>Einschränkungen
 

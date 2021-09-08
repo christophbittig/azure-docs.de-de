@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a95f83dbfa0574aa88b964538f329c7d9075a50b
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: d0bed89f56d41c6613080e84d743d245243bb507
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111593977"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336325"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -82,6 +82,6 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 - Unterstützt derzeit keine Momentaufnahmen von Datenträgern, Exportieren von Datenträgern, Ändern des Datenträgertyps, VM-Images, Verfügbarkeitsgruppen, Azure Dedicated Hosts oder Azure Disk Encryption.
 - Unterstützt derzeit keine Integration in Azure Backup oder Azure Site Recovery.
 - Unterstützt nur Lese- und Schreibvorgänge, die nicht zwischengespeichert sind.
-- Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
+- Der aktuelle Höchstwert für IOPS für einen einzelnen virtuellen Computer in allgemein verfügbaren Größen beträgt 80.000. Ultra Disks mit größeren IOPS können als freigegebene Datenträger verwendet werden, um mehrere VMs zu unterstützen.
 
 Ultra Disks bieten in Azure pro Region und Abonnement standardmäßig bis zu 32 TiB, auf Anfrage aber auch mehr Kapazität. Wenn Sie mehr Kapazität wünschen, beantragen Sie eine Kontingenterhöhung, oder wenden Sie sich an den Azure-Support.

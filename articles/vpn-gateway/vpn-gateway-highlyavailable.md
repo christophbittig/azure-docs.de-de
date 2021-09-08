@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: yushwang
-ms.openlocfilehash: f00de78ba4e2b46595489f46155546157642fb12
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 82a1ad0968a80be1ff1780b1cf83ec928a016dbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953846"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346136"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit Hochverfügbarkeit
 
@@ -83,5 +83,5 @@ Die gleiche Aktiv/Aktiv-Konfiguration kann auch für Azure-VNet-zu-VNet-Verbindu
 So wird sichergestellt, dass zwischen den beiden virtuellen Netzwerken immer ein Tunnelpaar für geplante Wartungsereignisse vorhanden ist. Dies führt zu einer weiteren Verbesserung der Verfügbarkeit. Für die gleiche Topologie für die standortübergreifende Konnektivität sind zwar zwei Verbindungen erforderlich, aber für die obige VNet-zu-VNet-Topologie wird nur eine Verbindung für jedes Gateway benötigt. Außerdem ist die Verwendung von BGP optional, sofern kein Transitrouting über die VNet-zu-VNet-Verbindung erforderlich ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Schritte zum Konfigurieren von standortübergreifenden Verbindungen und VNet-zu-VNet-Verbindungen vom Typ „Aktiv/Aktiv“ finden Sie unter [Konfigurieren von Aktiv/Aktiv-VPN-Gateways für standortübergreifende und VNet-zu-VNet-Verbindungen](vpn-gateway-activeactive-rm-powershell.md).
+Weitere Informationen finden Sie unter [Konfigurieren von Aktiv/Aktiv-Gateways](active-active-portal.md) über das [Azure-Portal](active-active-portal.md) oder mit [PowerShell](vpn-gateway-activeactive-rm-powershell.md).
 

@@ -5,20 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/03/2021
+ms.date: 07/12/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d159ffa3dc75dc3917e8b82ee7b86f1e9e7ea7c6
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 9a7a103710f2dc4dce6541a87968e6fc4028b086
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527105"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665973"
 ---
 1. Navigieren Sie zur PFX-Zertifikatdatei, und kopieren Sie sie auf Ihren Mac. Das Zertifikat kann auf verschiedene Weise auf den Mac übertragen werden. Sie können die Zertifikatdatei beispielsweise per E-Mail senden.
-1. Wenn das Zertifikat auf den Mac kopiert wurde, doppelklicken Sie auf das Zertifikat, um das Feld **Zertifikate hinzufügen** zu öffnen. Klicken Sie dann auf **Hinzufügen**, um die Installation zu starten.
+1. Doppelklicken Sie auf das Zertifikat. Sie werden entweder aufgefordert, das Kennwort einzugeben, und das Zertifikat wird automatisch installiert, oder das Feld **Zertifikate hinzufügen** wird angezeigt. Klicken Sie im Feld **Zertifikate hinzufügen** auf **Hinzufügen**, um die Installation zu starten.
+1. Wählen Sie **Anmelden** aus der Dropdownliste aus.
 
-   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png" alt-text="Screenshot: Feld „Zertifikate hinzufügen“":::
-1. Geben Sie das Kennwort ein, das Sie beim Exportieren des Clientzertifikats erstellt haben. Das Kennwort schützt den privaten Schlüssel des Zertifikats. Klicken Sie auf **OK**, um die Installation abzuschließen.
+   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/add-cert.png" alt-text="Screenshot: Feld „Zertifikate hinzufügen“":::
+1. Geben Sie das Kennwort ein, das Sie beim Exportieren des Clientzertifikats erstellt haben. Das Kennwort schützt den privaten Schlüssel des Zertifikats. Klicken Sie auf **OK**.
 
-   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png" alt-text="Screenshot: Dialogfeld mit der Aufforderung zur Eingabe eines Kennworts" border="false":::
+   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png" alt-text="Screenshot: Dialogfeld mit der Aufforderung zur Eingabe eines Kennworts":::
+1. Klicken Sie auf **Hinzufügen**, um das Zertifikat hinzuzufügen.
+1. Um das hinzugefügte Zertifikat anzuzeigen, öffnen Sie die Anwendung **Keychain Access**, und navigieren Sie zur Registerkarte **Zertifikate**.

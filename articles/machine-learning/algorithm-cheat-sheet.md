@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 03/05/2020
+ms.date: 07/20/2021
 adobe-target: true
-ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe02e264a9f3faea2812253eeced6d56319627d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100367055"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355608"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
@@ -23,13 +23,13 @@ Mithilfe des **Spickzettels für Azure Machine Learning-Algorithmen** können Si
 
 Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung** _, _*_Empfehlungssystem_*_, _*_Clustering_*_, _*_Anomalieerkennung_*_, _*_Regression_*_ und _ *_Textanalyse_* *. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
-Weitere Anweisungen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
+Weitere Informationen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Herunterladen: Spickzettel für Machine Learning-Algorithmen
 
 **Laden Sie das Cheat Sheet hier herunter: [Machine Learning – Cheat Sheet für Algorithmen (11x17 Zoll)](https://download.microsoft.com/download/3/5/b/35bb997f-a8c7-485d-8c56-19444dafd757/azure-machine-learning-algorithm-cheat-sheet-nov2019.pdf?WT.mc_id=docs-article-lazzeri)**
 
-![Spickzettel für Machine Learning-Algorithmen: Erfahren Sie, wie ein Machine Learning-Algorithmus ausgewählt wird.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.svg)
+![Spickzettel für Machine Learning-Algorithmen: Erfahren Sie, wie ein Machine Learning-Algorithmus ausgewählt wird.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.png)
 
 Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat herunterladen und drucken, um praktische Hilfe bei der Wahl eines Algorithmus zu erhalten.
 
@@ -59,9 +59,9 @@ Beim vertiefenden Lernen wählt der Algorithmus eine Aktion als Reaktion auf jed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Anweisungen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
+* Weitere Informationen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
 
-* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](overview-what-is-azure-ml.md).
+* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](overview-what-is-azure-machine-learning.md).
 
 * [Tutorial: Erstellen eines Vorhersagemodells im Azure Machine Learning-Designer](tutorial-designer-automobile-price-train-score.md).
 

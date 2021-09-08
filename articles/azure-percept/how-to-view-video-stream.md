@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 678c5520b002f22552a6262fe245783f88ee61eb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ef0f7a581329e9ee5e4d891b41d321ed559d64d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346012"
 ---
-# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Anzeigen des RTSP-Videostreams von Azure Percept DK
+# <a name="view-your-azure-percept-dk-rtsp-video-stream"></a>Anzeigen des RTSP-Videostreams von Azure Percept DK
 
 In dieser Anleitung erfahren Sie, wie Sie den RTSP-Videostream von Azure Percept DK in Azure Percept Studio anzeigen. Rückschlüsse von KI-Modellen für maschinelles Sehen, die auf Ihrem Gerät bereitgestellt wurden, können im Webstream angezeigt werden.
 

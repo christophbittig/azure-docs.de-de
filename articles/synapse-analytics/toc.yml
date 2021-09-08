@@ -599,7 +599,7 @@ items:
             href: ./spark/apache-spark-notebook-concept.md
           - name: Paketverwaltung
             href: ./spark/apache-spark-azure-portal-add-libraries.md
-          - name: Überwachungstools
+          - name: Überwachen von Apache Spark-Anwendungen
             href: monitoring/how-to-monitor-spark-applications.md
       - name: Anleitungen
         items:
@@ -645,14 +645,18 @@ items:
                 href: ./spark/apache-spark-history-server.md
               - name: Überwachen von Spark-Anwendungen
                 href: monitoring/apache-spark-applications.md
-              - name: Überwachen von Spark-Pools
+              - name: "Überwachen von Apache\_Spark-Pools"
                 href: monitoring/how-to-monitor-spark-pools.md
-              - name: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene
+              - name: "Sammeln von Apache\_Spark-Anwendungsmetriken mithilfe von APIs"
                 href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-              - name: "Überwachen von Apache\_Spark-Metriken auf Anwendungsebene mit Prometheus und Grafana"
+              - name: "Überwachen von Apache\_Spark-Anwendungsmetriken mit Prometheus und Grafana"
                 href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-              - name: Erfassen und Visualisieren von Metriken und Protokollen mithilfe von Azure Log Analytics (Vorschau)
+              - name: "Überwachen Ihrer Apache\_Spark-Anwendungen mit Azure Log Analytics (Vorschau)"
                 href: ./spark/apache-spark-azure-log-analytics.md
+              - name: "Sammeln von Apache\_Spark-Anwendungsprotokollen und -metriken mit einem Azure\_Storage Konto"
+                href: ./spark/azure-synapse-diagnostic-emitters-azure-storage.md
+              - name: "Sammeln von Apache\_Spark-Anwendungsprotokollen und -metriken mit Azure Event Hubs"
+                href: ./spark//azure-synapse-diagnostic-emitters-azure-eventhub.md
           - name: Datenquellen
             items:
               - name: Azure Cosmos DB Spark 3

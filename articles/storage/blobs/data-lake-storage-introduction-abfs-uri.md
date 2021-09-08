@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 948b5aa0ad015f9f3c693e13219ec034724687c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c1d861da7a312ce94bbc7bc4074037bdb27d02b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95913163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346572"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Verwenden des Azure Data Lake Storage Gen2-URI
 
@@ -27,7 +27,7 @@ Wenn das zu adressierende Data Lake Storage Gen2-fähige Konto während der Kont
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Sie können eine Verbindung mit oder ohne TLS (Transport Layer Security, zuvor als Secure Sockets Layer, SSL, bezeichnet) herstellen. Verwenden Sie `abfss`, um eine TLS-Verbindung herzustellen.
+1. **Schemabezeichner**: Das `abfs`-Protokoll wird als Schemabezeichner verwendet. Wenn Sie am Ende ein „s“ hinzufügen (abfs<b><i>s</i></b>), verwendet der ABFS-Hadoop-Clienttreiber <i>IMMER</i> TLS (Transport Layer Security), unabhängig von der ausgewählten Authentifizierungsmethode. Wenn Sie OAuth als Authentifizierung auswählen, verwendet der Clienttreiber immer TLS, auch wenn Sie „abfs“ anstelle von „abfss“ angeben, da OAuth ausschließlich auf der TLS-Ebene aufbaut. Wenn Sie schließlich die ältere Methode mit Speicherkontoschlüssel verwenden, interpretiert der Clienttreiber „abfs“ so, dass Sie TLS nicht verwenden möchten. 
 
 2. **Dateisystem**: Der übergeordnete Speicherort, in dem sich die Dateien und Ordner befinden. Dies entspricht Containern in Azure Storage-Blobs.
 

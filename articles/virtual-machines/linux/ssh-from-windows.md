@@ -9,12 +9,12 @@ ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e85974968e523903282cdd8a577dee13ab32bf4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 485968e6fa9a68781de85648f0ad008586c2c15b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355267"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -84,6 +84,12 @@ Stellen Sie mit dem auf Ihrer Azure-VM bereitgestellten öffentlichen Schlüssel
 ```bash
 ssh -i ~/.ssh/id_rsa azureuser@10.111.12.123
 ```
+
+Wenn Sie noch nie eine Verbindung mit diesem virtuellen Computer hergestellt haben, werden Sie aufgefordert, den Fingerabdruck des Hosts zu überprüfen. Es ist verlockend, den vorgelegten Fingerabdruck einfach zu akzeptieren, doch damit setzen Sie sich einem möglichen „Person-in-the-Middle“-Angriff aus. Sie sollten den Fingerabdruck des Hosts immer überprüfen. Dies ist nur erforderlich, wenn Sie zum ersten Mal von einem Client aus eine Verbindung herstellen. Um den Hostfingerabdruck über das Portal abzurufen, verwenden Sie den Befehl „Ausführen“ wie folgt: `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`.
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="Screenshot: Verwenden des Befehls „Ausführen“ zum Überprüfen des Hostfingerabdrucks":::
+
+Verwenden Sie den [`az vm run-command invoke`-Befehl](/cli/azure/vm/run-command), um den Befehl mithilfe der CLI auszuführen.
 
 Falls Sie beim Erstellen des Schlüsselpaars eine Passphrase konfiguriert haben, müssen Sie diese bei Aufforderung eingeben.
 

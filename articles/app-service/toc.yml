@@ -36,7 +36,7 @@
       href: quickstart-arc.md
 - name: Tutorials
   items:
-    - name: Zugreifen auf Speicher und Microsoft Graph durch eine sichere App
+    - name: 'Sichere App: Zugriff, Speicher und Microsoft Graph'
       items:
         - name: Übersicht
           href: scenario-secure-app-overview.md

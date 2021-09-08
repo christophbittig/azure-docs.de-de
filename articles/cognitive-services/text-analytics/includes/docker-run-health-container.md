@@ -7,42 +7,35 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/12/2020
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 2deb67f5a569ed6283bfe4a99bef795ffbf13bac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47a7059e21f1c9b9d6d72644bc08c62b66afc772
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164017"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339567"
 ---
 ## <a name="install-the-container"></a>Installieren des Containers
 
 Es gibt mehrere Möglichkeiten zum Installieren und Ausführen des Text Analytics for Health-Containers. 
 
 - Verwenden Sie das [Azure-Portal](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare), um eine Ressource für die Textanalyse zu erstellen, und Docker, um Ihren Container abzurufen.
+- Verwenden Sie eine Azure-VM mit Docker, um den Container auszuführen. Informationen finden Sie unter [Docker in Azure](../../../docker/index.yml).
 - Verwenden Sie die folgenden PowerShell- und Azure CLI-Skripts, um die Ressourcenbereitstellung und Containerkonfiguration zu automatisieren.
 
 ### <a name="run-the-container-locally"></a>Lokales Ausführen des Containers
 
-Um den Container nach dem Herunterladen des Containerimages in Ihrer eigenen Umgebung auszuführen, suchen Sie seine Image-ID:
- 
-```bash
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
-
-Führen Sie den folgenden `docker run`-Befehl aus. Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
+Um den Container nach dem Herunterladen des Containerimages in Ihrer eigenen Umgebung auszuführen, führen Sie den folgenden `docker run`-Befehl aus. Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
 | **{API_KEY}** | Der Schlüssel für Ihre Textanalyseressource. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Der Endpunkt für den Zugriff auf die Textanalyse-API. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
-| **{IMAGE_ID}** | Die Image-ID für ihren Container. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | Das Eingabeverzeichnis für den Container. | Windows: `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
---mount type=bind,src={INPUT_DIR},target=/output {IMAGE_ID} \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare:latest \
 Eula=accept \
 rai_terms=accept \
 Billing={ENDPOINT_URI} \
@@ -52,8 +45,7 @@ Logging:Disk:Format=json
 
 Dieser Befehl:
 
-- Geht davon aus, dass das Eingabeverzeichnis auf dem Hostcomputer vorhanden ist.
-- Führt einen „Textanalyse für Gesundheit“-Container aus dem Containerimage aus
+- Führt den *Textanalyse für Gesundheit*-Container aus dem Containerimage aus
 - Ordnet 6 CPU-Kerne und 12 GB Arbeitsspeicher zu.
 - Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
 - Akzeptiert die Bestimmungen des Endbenutzer-Lizenzvertrags (EULA) und der Verantwortlichen Ki (RAI)
@@ -73,7 +65,7 @@ http://<serverURL>:5000/demo
 Verwenden Sie die unten aufgeführte cURL-Beispielanforderung, um eine Abfrage an den bereitgestellten Container zu senden, und ersetzen Sie die Variable `serverURL` durch den passenden Wert.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

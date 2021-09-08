@@ -2,17 +2,28 @@
 title: Plattformupdates für Azure VMware Solution
 description: Erfahren Sie mehr über die Plattformupdates für Azure VMware Solution.
 ms.topic: reference
-ms.date: 05/26/2021
-ms.openlocfilehash: 38cd183b783989f6a682b68e92e490354b032750
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 07/23/2021
+ms.openlocfilehash: 01667e4a22dc220e9895071d047210e8487ff2bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538062"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355972"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Plattformupdates für Azure VMware Solution
 
 Die Azure VMware Solution wird ab März 2021 wichtige Aktualisierungen anwenden. Sie erhalten eine Benachrichtigung über Azure Service Health, die den Zeitplan der Wartung enthält. Weitere Informationen finden Sie unter [Wartung des Hosts und Lebenszyklusmanagement](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).
+
+## <a name="july-23-2021"></a>23. Juli 2021
+
+Alle neuen privaten Azure VMware Solution-Clouds werden jetzt mit der NSX-T-Version [!INCLUDE [nsxt-version](includes/nsxt-version.md)] bereitgestellt. Für die NSX-T-Version in bestehenden privaten Clouds wird bis September 2021 ein Ugrade auf die NSX-T-Version [!INCLUDE [nsxt-version](includes/nsxt-version.md)] durchgeführt.
+ 
+Sie erhalten eine E-Mail mit dem Datum und der Uhrzeit der geplanten Wartung. Sie können ein Upgrade erneut planen. Die E-Mail enthält auch Details über die aktualisierte Komponente, ihre Auswirkungen auf Arbeitslasten, den Zugriff auf die Private Cloud und andere Azure-Dienste. 
+
+Weitere Informationen zu dieser NSX-T-Version finden Sie in den [Versionshinweisen zum VMware NSX-T Data Center [!INCLUDE [nsxt-version](includes/nsxt-version.md)]](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-312-Release-Notes.html).
+
+
+
 
 ## <a name="may-25-2021"></a>25. Mai 2021
 Laut VMware-Sicherheitsempfehlung [VMSA-2021-0010](https://www.vmware.com/security/advisories/VMSA-2021-0010.html) wurden mehrere Sicherheitsrisiken in VMware ESXi und vSphere Client (HTML5) an VMware gemeldet. 

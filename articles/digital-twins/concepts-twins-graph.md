@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Enthält grundlegende Informationen zum Konzept eines digitalen Zwillings und die Erstellung eines Graphen basierend auf den entsprechenden Beziehungen.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460274"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351171"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -23,7 +23,7 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 
 ## <a name="digital-twins"></a>Digital Twins
 
-Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Konzepte: Benutzerdefinierte Modelle](concepts-models.md).
+Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Benutzerdefinierte Modelle](concepts-models.md).
 
 Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ Floor (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ Floor mit dem Namen GroundFloor, einen anderen mit dem Namen Floor2 usw.).
 
@@ -39,13 +39,15 @@ Das Ergebnis dieses Prozesses ist eine Gruppe mit Knoten (die digitalen Zwilling
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit Beispielmodellen und -zwillingen." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 ## <a name="create-with-the-apis"></a>Erstellen mit den APIs
 
 In diesem Abschnitt wird gezeigt, wie das Erstellen digitaler Zwillinge und Beziehungen über eine Clientanwendung aussieht. Es sind .NET-Codebeispiele enthalten, die die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) nutzen, um zusätzlichen Kontext darüber bereitzustellen, was innerhalb der verschiedenen Konzepte passiert.
 
 ### <a name="create-digital-twins"></a>Erstellen digitaler Zwillinge
 
-Unten ist ein Ausschnitt des Clientcodes angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) zum Instanziieren eines Zwillings vom Typ „Room“ (Zimmer) verwendet wird.
+Unten sehen Sie einen Ausschnitt des Clientcodes, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) zum Instanziieren eines Zwillings vom Typ „Room“ (Zimmer) mit einer bei der Instanziierung definierten `twinId` verwendet wird.
 
 Sie können die Eigenschaften eines Zwillings bei der Erstellung initialisieren oder später festlegen. Um einen Zwilling mit initialisierten Eigenschaften zu erstellen, erstellen Sie ein JSON-Dokument, das die erforderlichen Initialisierungswerte bereitstellt.
 
@@ -162,8 +164,8 @@ Hier ist ein Beispiel für eine Beziehung angegeben, die als JSON-Objekt formati
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich darüber, wie Sie Graphelemente mit Azure Digital Twin-APIs verwalten können:
-* [Gewusst wie: Verwalten digitaler Zwillinge](how-to-manage-twin.md)
-* [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md)
+* [Verwalten digitaler Zwillinge](how-to-manage-twin.md)
+* [Verwalten des Zwillingsgraphen und der Beziehungen](how-to-manage-graph.md)
 
 Sie können sich auch damit vertraut machen, wie Sie Informationen für einen Azure Digital Twins-Zwillingsgraphen abfragen:
-* [Konzepte: Abfragesprache](concepts-query-language.md)
+* [Abfragesprache](concepts-query-language.md)

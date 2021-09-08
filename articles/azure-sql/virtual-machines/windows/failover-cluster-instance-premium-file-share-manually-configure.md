@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 7ca6fdf685da74b8b0e10875a2bd16d66a7b4c60
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: fa70dce0e245f706e5278e7274ac17855b50622f
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020300"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396898"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -213,7 +213,9 @@ Sie können einen VNet-Namen oder einen Namen für ein verteiltes Netzwerk für 
 - MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden unter Windows Server 2016 und früheren Versionen nicht unterstützt. 
 - Filestream wird für einen Failovercluster mit einer Premium-Dateifreigabe nicht unterstützt. Um Filestream zu verwenden, stellen Sie den Cluster stattdessen mithilfe von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) oder von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) bereit.
 - Nur die Registrierung mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt. 
-- Datenbankmomentaufnahmen werden [bei Azure Files aufgrund von Einschränkungen für Sparsedateien](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)derzeit nicht unterstützt.  
+- Datenbankmomentaufnahmen werden [bei Azure Files aufgrund von Einschränkungen für Sparsedateien](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)derzeit nicht unterstützt.
+- Das Ausführen von DBCC CHECKDB wird derzeit nicht unterstützt, da keine Datenbankmomentaufnahmen erstellt werden können. 
+- Datenbanken, die das In-Memory-OLTP-Feature verwenden, werden auf einer Failoverclusterinstanz, die mit einer Premium-Dateifreigabe bereitgestellt wird, nicht unterstützt. Wenn Ihr Unternehmen In-Memory-OLTP erfordert, sollten Sie stattdessen die Bereitstellung Ihrer FCI mit [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) oder [direkten Speicherplätzen](failover-cluster-instance-storage-spaces-direct-manually-configure.md) in Betracht ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

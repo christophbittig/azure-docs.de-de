@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 10/20/2020
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 31b1ac989e90b525f754f49ccf2f6d5fd254ff58
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 12da538cfbf258aa8e447d5b5832cbc1865600ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098594"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355713"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
 In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Image zum Trainieren von Modellen mit Azure Machine Learning verwenden. Mit den Beispielskripts in diesem Artikel klassifizieren Sie Bilder von Haustieren durch Erstellen eines Convolutional Neural Network. 
 
-Azure Machine Learning bietet ein standardmäßig verwendetes Docker-Basisimage. Sie können jedoch auch Azure Machine Learning-Umgebungen verwenden, um ein anderes Basisimage anzugeben, z. B. eines der verwalteten [Azure Machine Learning-Basisimages](https://github.com/Azure/AzureML-Containers) oder Ihr eigenes [benutzerdefiniertes Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Mit benutzerdefinierten Basisimages können Sie Abhängigkeiten umfassend verwalten und die Komponentenversionen beim Ausführen von Trainingsaufträgen genauer steuern.
+Azure Machine Learning bietet ein standardmäßig verwendetes Docker-Basisimage. Sie können jedoch auch Azure Machine Learning-Umgebungen verwenden, um ein anderes Basisimage anzugeben, z. B. eines der verwalteten [Azure Machine Learning-Basisimages](https://github.com/Azure/AzureML-Containers) oder Ihr eigenes [benutzerdefiniertes Image](./how-to-deploy-custom-container.md). Mit benutzerdefinierten Basisimages können Sie Abhängigkeiten umfassend verwalten und die Komponentenversionen beim Ausführen von Trainingsaufträgen genauer steuern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,7 +88,7 @@ Sie können auch ein benutzerdefiniertes Dockerfile verwenden. Verwenden Sie die
 ```python 
 # Specify Docker steps as a string. 
 dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
 RUN echo "Hello from custom container!"
 """
 
@@ -103,8 +103,8 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 
 >[!IMPORTANT]
 > Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
-> * Ubuntu 16.04 oder höher.
-> * Conda 4.5.# oder höher.
+> * Ubuntu 18.04 oder höher.
+> * Conda 4.7.# oder höher.
 > * Python 3.6+
 > * Eine unter „/bin/sh“ verfügbare POSIX-kompatible Shell ist in jedem Containerimage erforderlich, das für das Training verwendet wird. 
 
@@ -142,6 +142,11 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
+
+>[!IMPORTANT]
+>Verwenden Sie CPU-SKUs für jeden Imagebuild auf der Computeressource. 
+
+
 ## <a name="configure-your-training-job"></a>Konfigurieren Ihres Trainingsauftrags
 
 Verwenden Sie für dieses Tutorial das auf [GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) verfügbare Trainingsskript *train.py*. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript verwenden und so, wie es ist, mit Azure Machine Learning ausführen.
@@ -174,4 +179,4 @@ run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie ein Modell mit einem benutzerdefinierten Docker-Image trainiert. Weitere Informationen zu Azure Machine Learning finden Sie in den folgenden Artikeln:
 * [Erfassen von Ausführungsmetriken](how-to-log-view-metrics.md) während des Trainings
-* [Bereitstellen eines Modells](how-to-deploy-custom-docker-image.md) mithilfe eines benutzerdefinierten Docker-Images
+* [Bereitstellen eines Modells](./how-to-deploy-custom-container.md) mithilfe eines benutzerdefinierten Docker-Images

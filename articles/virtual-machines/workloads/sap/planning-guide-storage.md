@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/26/2021
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0af6df954dda4e5af6335776b1f93f929da5834e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128701"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343607"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -86,9 +86,9 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 | DBMS-Protokollvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen<sup>1</sup> | empfohlen | empfohlen<sup>2</sup> | 
 | DBMS-Datenvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen<sup>2</sup> |
 | DBMS-Protokollvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen<sup>2</sup> | 
-| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
-| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
-| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux |
+| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
+| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
+| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
@@ -97,15 +97,15 @@ Merkmale der verschiedenen Speichertypen:
 
 | Verwendungsszenario | HDD Standard | SSD Standard | Storage Premium | Ultra-Datenträger | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Durchsatz/IOPS-SLA | nein | nein | ja | ja | ja |
+| Durchsatz/IOPS-SLA | nein | Nein | Ja | Ja | ja |
 | Latenz Lesevorgänge | high | mittel bis hoch | niedrig | unter einer Millisekunde | unter einer Millisekunde |
 | Latenz Schreibvorgänge | high | mittel bis hoch  | niedrig (unter einer Millisekunde<sup>1</sup>) | unter einer Millisekunde | unter einer Millisekunde |
 | Von HANA unterstützt | nein | nein | ja<sup>1</sup> | ja | ja |
-| Datenträger-Momentaufnahmen möglich | ja | ja | ja | nein | ja |
+| Datenträger-Momentaufnahmen möglich | ja | Ja | Ja | Nein | ja |
 | Zuordnung von Datenträgern in verschiedenen Speicherclustern bei Verwendung von Verfügbarkeitsgruppen | über verwaltete Datenträger | über verwaltete Datenträger | über verwaltete Datenträger | Datenträgertyp wird mit über Verfügbarkeitsgruppen bereitgestellten virtuellen Computern nicht unterstützt | nein<sup>3</sup> |
-| Angepasst an Verfügbarkeitszonen | ja | ja | ja | ja | erfordert Unterstützung von Microsoft |
+| Angepasst an Verfügbarkeitszonen | ja | Ja | Ja | ja | erfordert Unterstützung von Microsoft |
 | Zonenredundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein |
-| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
+| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | Nein | nein |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
@@ -241,6 +241,7 @@ Der ANF-Speicher wird derzeit für verschiedene SAP-Workloadszenarien unterstüt
     - [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-suse-netapp-files.md)
     - [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](./high-availability-guide-rhel-netapp-files.md)
 - SAP HANA-Bereitstellungen mit NFS v4.1-Freigaben für „/hana/data“- und „/hana/log“-Volumes und/oder NFS v4.1- oder NFS v3-Freigaben für „/hana/shared“-Volumes, wie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) beschrieben
+- IBM Db2 unter Suse- oder Red Hat Linux-Gastbetriebssystem
 - Oracle-Bereitstellungen im Oracle Linux-Gastbetriebssystem mit [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) für Oracle-Daten- und Wiederholungsprotokollvolumes. Weitere Informationen finden Sie im Artikel [Oracle-DBMS-Bereitstellung für SAP-Workload auf Azure Virtual Machines](./dbms_guide_oracle.md).
 
 > [!NOTE]

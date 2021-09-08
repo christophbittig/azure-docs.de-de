@@ -1,19 +1,20 @@
 ---
 title: Zu beachtende Punkte bei der Verwendung von Azure Video Analyzer for Media (früher Video Indexer) im großen Stil – Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: In diesem Thema werden die zu beachtenden Punkte bei der Verwendung von Azure Video Analyzer for Media (früher Video Indexer) im großen Stil behandelt.
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: how-to
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: bfad40e55deae4ebad930907221517ae3ef4e5f4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8784b82c59575a569730949d71473027cd30479a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355229"
 ---
 # <a name="things-to-consider-when-using-video-analyzer-for-media-at-scale"></a>Zu beachtende Punkte bei der Verwendung von Video Analyzer for Media im großen Stil
 
@@ -48,21 +49,11 @@ Wenn Sie Videos mithilfe einer URL hochladen, müssen Sie lediglich einen Pfad z
 > [!TIP]
 > Verwenden Sie den optionalen Parameter `videoUrl` der API zum Hochladen von Videos.
 
-Ein Beispiel für das Hochladen von Videos mithilfe einer URL finden Sie unter [diesem Beispiel](upload-index-videos.md#code-sample). Oder Sie können [AzCopy](../../storage/common/storage-use-azcopy-v10.md) als schnelle und zuverlässige Methode verwenden, um Ihren Inhalt auf ein Speicherkonto zu übertragen, von dem aus Sie ihn mit [SAS URL](../../storage/common/storage-sas-overview.md) an Video Analyzer for Media übermitteln können.
+Ein Beispiel für das Hochladen von Videos mithilfe einer URL finden Sie unter [diesem Beispiel](upload-index-videos.md#code-sample). Oder Sie können [AzCopy](../../storage/common/storage-use-azcopy-v10.md) als schnelle und zuverlässige Methode verwenden, um Ihren Inhalt auf ein Speicherkonto zu übertragen, von dem aus Sie ihn mit [SAS URL](../../storage/common/storage-sas-overview.md) an Video Analyzer for Media übermitteln können. Video Analyzer for Media empfiehlt, *schreibgeschützte* SAS-URLs zu verwenden.
 
-## <a name="increase-media-reserved-units-if-needed"></a>Bedarfsgesteuertes Erhöhen der reservierten Einheiten für Medien
+## <a name="automatic-scaling-of-media-reserved-units"></a>Automatische Skalierung reservierter Einheiten für Medien 
 
-Normalerweise benötigen Sie in der Proof of Concept-Phase, wenn Sie gerade mit der Verwendung von Video Analyzer for Media beginnen, nicht viel Rechenleistung. Wenn die Größe des Archivs von zu indizierenden Videos zunimmt und Sie möchten, dass der Prozess in einem Tempo abläuft, das Ihrem Anwendungsfall entspricht, müssen Sie Ihre Verwendung von Video Analyzer for Media hochskalieren. Daher sollten Sie darüber nachdenken, die Anzahl der von Ihnen verwendeten Computeressourcen zu erhöhen, wenn die derzeitige Rechenleistung einfach nicht ausreicht.
-
-Wenn Sie bei Azure Media Services die Rechenleistung und Parallelisierung erhöhen möchten, müssen Sie auf [reservierte Einheiten (RUs) für Medien](../../media-services/latest/concept-media-reserved-units.md) achten. Die reservierten Einheiten (RUs) für Medien sind die Compute-Einheiten, die die Parameter für Ihre Medienverarbeitungsaufgaben bestimmen. Die Anzahl der RUs wirkt sich auf die Anzahl der Medienaufgaben aus, die gleichzeitig in den einzelnen Konten verarbeitet werden können, und ihr Typ bestimmt die Verarbeitungsgeschwindigkeit. Ein Video kann mehr als eine RU erfordern, wenn seine Indizierung komplex ist. Wenn Ihre RUs ausgelastet sind, werden neue Aufgaben zu einer Warteschlange hinzugefügt, bis eine andere Ressource verfügbar ist.
-
-Um effizient zu arbeiten und zu vermeiden, dass Ressourcen einen Teil der Zeit im Leerlauf sind, bietet Video Indexer ein automatisches Skalierungssystem, das die RUs herunterfährt, wenn weniger Verarbeitung erforderlich ist, und die RUs zu Spitzenzeiten hochfährt (bis zur vollständigen Nutzung sämtlicher RUs). Sie können diese Funktion aktivieren, indem Sie die [automatische Skalierung](manage-account-connected-to-azure.md#autoscale-reserved-units) in den Kontoeinstellungen aktivieren oder die [Update-Paid-Account-Azure-Media-Services-API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services) verwenden.
-
-:::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="Zweite Überlegung zur Verwendung von Video Analyzer for Media im großen Stil":::
-
-:::image type="content" source="./media/considerations-when-use-at-scale/reserved-units.jpg" alt-text="Reservierte AMS-Einheiten":::
-
-Zum Minimieren der Indexierungsdauer und des geringen Durchsatzes empfehlen wir, mit 10 RUs vom Typ S3 zu beginnen. Wenn Sie später zur Unterstützung weiterer Inhalte oder einer höherer Parallelität hochskalieren und dafür mehr Ressourcen benötigen, können Sie [uns über das Supportsystem kontaktieren](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) (nur für kostenpflichtige Konten), um die Zuteilung weiterer RUs anzufordern.
+Seit dem 1. August 2021 ermöglicht Azure Video Analyzer for Media (ehemals Video Indexer) die automatische Skalierung von [reservierten Einheiten](../../media-services/latest/concept-media-reserved-units.md)(Media Reservced Units, MRUs) durch [Azure Media Services](../../media-services/latest/media-services-overview.md) (AMS), sodass Sie diese nicht mehr über Azure Video Analyzer for Media verwalten müssen. Dies ermöglicht eine Preisoptimierung, z. B. in vielen Fällen eine Preissenkung, die sich an den Anforderungen Ihres Unternehmens orientiert, während es automatisch skaliert wird. 
 
 ## <a name="respect-throttling"></a>Respektieren von Einschränkungen
 

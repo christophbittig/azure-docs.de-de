@@ -9,12 +9,12 @@ ms.date: 04/29/2021
 ms.author: cherylmc
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 259d5776e6f9a2ce431743fe8dd3d9160b9f657d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: fcce91b5914318157ca4263504d46c992294d153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671889"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346137"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ VNet-Name: VNet1<br>
 Ressourcengruppenname: RG1<br>
 Name des Gateways des virtuellen Netzwerks: GW1<br>
 
-Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+Die folgenden Schritte gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md).
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Holen Sie sich das virtuelle Netzwerk-Gateway, das Sie löschen möchten.
 
@@ -148,7 +148,7 @@ VNet-Name: VNet1<br>
 Ressourcengruppenname: RG1<br>
 Name des Gateways des virtuellen Netzwerks: GW1<br>
 
-Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+Die folgenden Schritte gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md).
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Holen Sie sich das virtuelle Netzwerk-Gateway, das Sie löschen möchten.
 
@@ -236,7 +236,7 @@ VNet-Name: VNet1<br>
 Ressourcengruppenname: RG1<br>
 Name des Gateways des virtuellen Netzwerks: GW1<br>
 
-Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+Die folgenden Schritte gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md).
 
 
 >[!NOTE]
@@ -289,7 +289,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
-Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md).
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Rufen Sie eine Liste aller Ressourcengruppen in Ihrem Abonnement auf.
 

@@ -1,26 +1,28 @@
 ---
-title: Erstellen von ML-Modellen mit dem Designer
+title: Was ist der Azure Machine Learning-Designer?
 titleSuffix: Azure Machine Learning
-description: Hier erhalten Sie Informationen zu Terminologie, Konzepten und Workflows des Designers für Azure Machine Learning.
+description: Erfahren Sie, was der Azure Machine Learning-Designer ist und für welche Aufgaben Sie ihn verwenden können. Die Drag & Drop-Benutzeroberfläche ermöglicht das Modelltraining und die Modellimplementierung.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/03/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: c6bb9eefd7545a014faf10ad20afa655f7f4cd48
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503539"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356439"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
 
+Azure Machine Learning-Designer ist eine Drag & Drop-Schnittstelle, die zum Trainieren und Bereitstellen von Modellen in Azure Machine Learning verwendet wird. In diesem Artikel werden die Aufgaben beschrieben, die Sie im Designer ausführen können.
 
-Mit dem Azure Machine Learning-Designer können Sie [Datasets](#datasets) und [Module](#module) auf einem interaktiven Zeichenbereich visuell miteinander verbinden, um Machine Learning-Modelle zu erstellen. Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
+ - Informationen zu den ersten Schritten mit dem Designer finden Sie unter [Tutorial: Trainieren eines Regressionsmodells ohne Code](tutorial-designer-automobile-price-train-score.md). 
+ - Informationen zu den im Designer verfügbaren Komponenten finden Sie in der [Referenz zu Algorithmen und Komponenten](/azure/machine-learning/algorithm-module-reference/module-reference).
 
 ![Azure Machine Learning-Designer: Beispiel](./media/concept-designer/designer-drag-and-drop.gif)
 
@@ -35,22 +37,22 @@ Der Designer verwendet Ihren Azure Machine Learning-[Arbeitsbereich](concept-wor
 
 ## <a name="model-training-and-deployment"></a>Trainieren und Bereitstellen des Modells
 
-Der Designer bietet Ihnen einen visuellen Zeichenbereich zum Erstellen, Testen und Bereitstellen von Machine Learning-Modellen. Folgendes ist mit dem Designer möglich:
+Verwenden Sie eine visuelle Canvas, um einen End-to-End-Machine Learning-Workflow zu erstellen. Trainieren, Testen und Bereitstellen von Modellen im Designer:
 
-+ Platzieren von [Datasets](#datasets) und [Modulen](#module) auf der Canvas per Drag & Drop-Verfahren
-+ Verbinden der Module, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
-+ Übermitteln einer [Pipelineausführung](#pipeline-run) mithilfe der Computeressourcen in Ihrem Azure Machine Learning-Arbeitsbereich
-+ Konvertieren Ihrer **Trainingspipelines** in die **Rückschlusspipelines**
-+ [Veröffentlichen](#publish) Ihrer Pipelines an einem REST-basierten **Pipelineendpunkt**, um eine neue Pipeline zu übermitteln, die mit anderen Parametern und Datasets ausgeführt wird
+1. Platzieren von [Datasets](#datasets) und [Modulen](#module) auf der Canvas per Drag & Drop-Verfahren
+1. Verbinden der Module, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
+1. Übermitteln einer [Pipelineausführung](#pipeline-run) mithilfe der Computeressourcen in Ihrem Azure Machine Learning-Arbeitsbereich
+1. Konvertieren Ihrer **Trainingspipelines** in die **Rückschlusspipelines**
+1. [Veröffentlichen](#publish) Ihrer Pipelines an einem REST-basierten **Pipelineendpunkt**, um eine neue Pipeline zu übermitteln, die mit anderen Parametern und Datasets ausgeführt wird
     + Veröffentlichen einer **Trainingspipeline**, um beim Ändern von Parametern und Datasets eine einzelnen Pipeline zum Trainieren mehrerer Modelle nochmal zu verwenden
     + Veröffentlichen einer **Batchrückschlusspipeline**, um Vorhersage zu neuen Daten zu treffen, indem ein zuvor trainiertes Modell verwendet wird
-+ [Bereitstellen](#deploy) einer **Echtzeit-Rückschlusspipeline** für einen Echtzeitendpunkt, um in Echtzeit Vorhersagen zu neuen Daten zu treffen
+1. [Bereitstellen](#deploy) einer **Echtzeit-Rückschlusspipeline** für einen Echtzeitendpunkt, um in Echtzeit Vorhersagen zu neuen Daten zu treffen
 
 ![Workflowdiagramm für Training, Batchrückschluss und Echtzeitrückschluss im Designer](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Pipeline
 
-Eine [Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) besteht aus verbundenen Datasets und Analysemodulen. Pipelines haben viele Verwendungsmöglichkeiten: Sie können eine Pipeline erstellen, die ein einzelnes Modell trainiert, oder eine, die mehrere Modelle trainiert. Sie können eine Pipeline erstellen, die Vorhersagen in Echtzeit oder als Batch erstellt, oder eine, die nur Daten bereinigt. Mit Pipelines können Sie Ihre Arbeit wiederverwenden und Ihre Projekte organisieren.
+Eine [Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) besteht aus Datasets und algorithmischen Modulen, die Sie verbinden. Pipelines haben viele Verwendungsmöglichkeiten: Sie können eine Pipeline erstellen, die ein einzelnes Modell trainiert, oder eine, die mehrere Modelle trainiert. Sie können eine Pipeline erstellen, die Vorhersagen in Echtzeit oder im Batch erstellt, oder eine, die nur Daten bereinigt. Mit Pipelines können Sie Ihre Arbeit wiederverwenden und Ihre Projekte organisieren.
 
 ### <a name="pipeline-draft"></a>Pipelineentwurf
 
@@ -67,19 +69,19 @@ Wenn Sie bereit sind, den Pipelineentwurf auszuführen, übermitteln Sie eine Pi
 
 ### <a name="pipeline-run"></a>Ausführen der Pipeline
 
-Jedes Mal, wenn Sie eine Pipeline ausführen, werden die Konfiguration der Pipeline und ihre Ergebnisse in Ihrem Arbeitsbereich als **Pipelineausführung** gespeichert. Sie können zu jeder Pipelineausführung zurückkehren, um sie zur Problembehandlung oder zu Überwachungszwecken zu überprüfen. **Klonen** Sie eine Pipelineausführung, um einen neuen Pipelineentwurf zu erstellen, den Sie bearbeiten können.
+Jedes Mal, wenn Sie eine Pipeline ausführen, werden die Konfiguration der Pipeline und ihre Ergebnisse in Ihrem Arbeitsbereich als **Pipelineausführung** gespeichert. Sie können zu jeder Pipelineausführung zurückkehren, um sie zur Problembehandlung oder zur Überwachung zu überprüfen. **Klonen** Sie eine Pipelineausführung, um einen neuen Pipelineentwurf zu erstellen, den Sie bearbeiten können.
 
 Pipelineausführungen werden in [Experimenten](concept-azure-machine-learning-architecture.md#experiments) gruppiert, um den Ausführungsverlauf zu organisieren. Sie können das Experiment für jede Pipelineausführung festlegen. 
 
 ## <a name="datasets"></a>Datasets
 
-Ein Azure Machine Learning-Dataset erleichtert Ihnen den Zugriff auf Ihre Daten und die Arbeit damit. Im Designer sind mehrere Beispieldatasets enthalten, mit denen Sie experimentieren können. Sie können bei Bedarf weitere Datasets [registrieren](how-to-create-register-datasets.md).
+Ein Azure Machine Learning-Dataset erleichtert Ihnen den Zugriff auf Ihre Daten und die Arbeit damit. Im Designer sind mehrere [Beispieldatasets](samples-designer.md#datasets) enthalten, mit denen Sie experimentieren können. Sie können bei Bedarf weitere Datasets [registrieren](how-to-create-register-datasets.md).
 
 ## <a name="module"></a>Modul
 
 Ein Modul ist ein Algorithmus, den Sie auf Ihre Daten anwenden können. Der Designer verfügt über eine Reihe von Modulen, die von Funktionen für die Datenerfassung bis zu Trainings-, Bewertungs- und Überprüfungsvorgängen reichen.
 
-Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der internen Algorithmen des Moduls einsetzen können. Wenn Sie ein Modul auf der Canvas auswählen, werden dessen Parameter rechts neben der Canvas im Bereich „Eigenschaften“ angezeigt. Sie können die Parameter in diesem Bereich zur Abstimmung Ihres Modells verändern. Sie können die Computeressourcen für einzelne Module im Designer festlegen. 
+Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der internen Algorithmen des Moduls einsetzen können. Wenn Sie ein Modul auf der Canvas auswählen, werden dessen Parameter rechts neben der Canvas im Bereich „Eigenschaften“ angezeigt. Sie können die Parameter in diesem Bereich zur Abstimmung Ihrer Pipeline verändern. Sie können die Computeressourcen für einzelne Module im Designer festlegen. 
 
 :::image type="content" source="./media/concept-designer/properties.png" alt-text="Moduleigenschaften":::
 
@@ -93,7 +95,6 @@ Verwenden Sie Computeressourcen aus Ihrem Arbeitsbereich, um Ihre Pipeline auszu
 | Computeziel | Training | Bereitstellung |
 | ---- |:----:|:----:|
 | Azure Machine Learning Compute | ✓ | |
-| Azure Machine Learning-Computeinstanz | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Computeziele sind an Ihren [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) angefügt. Ihre Computeziele verwalten Sie in Ihrem Arbeitsbereich im [Azure Machine Learning-Studio](https://ml.azure.com).
@@ -105,6 +106,8 @@ Zum Ausführen von Rückschlüssen in Echtzeit müssen Sie eine Pipeline als **E
 Echtzeitendpunkte müssen in einem Azure Kubernetes Service-Cluster bereitgestellt werden.
 
 Informationen dazu, wie Sie Ihr Modell bereitstellen, finden Sie unter [Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer](tutorial-designer-automobile-price-deploy.md).
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="publish"></a>Veröffentlichen
 

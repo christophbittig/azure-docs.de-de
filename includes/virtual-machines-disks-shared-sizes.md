@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/06/2020
+ms.date: 08/03/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d7d9389e00b3b0f23d590563a242ae0c12e2463
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81008335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346753"
 ---
 Vorerst können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Unterschiedliche Datenträgergrößen haben möglicherweise verschiedene `maxShares`-Limits, die Sie beim Festlegen des `maxShares`-Werts nicht überschreiten können. Bei SSD Premium sind die Datenträgergrößen, die die Freigabe ihrer Datenträger unterstützen, P15 und größer.
 
@@ -24,15 +24,27 @@ Sie können für jeden Datenträger einen `maxShares`-Wert definieren, der die m
 
 ### <a name="premium-ssd-ranges"></a>SSD Premium-Bereiche
 
-In der folgenden Tabelle werden die zulässigen maximalen Werte für `maxShares` nach Premium-Datenträgergröße veranschaulicht:
+In der folgenden Tabelle werden die zulässigen maximalen Werte für `maxShares` nach SSD Premium-Größe veranschaulicht:
 
 |Datenträgergrößen  |maxShares-Limit  |
 |---------|---------|
-|P15, P20     |2         |
+|P1,P2,P3,P4,P6,P10,P15,P20     |3         |
 |P30, P40, P50     |5         |
 |P60, P70, P80     |10         |
 
 Die IOPS- und Bandbreitenlimits für einen Datenträger sind vom `maxShares`-Wert nicht betroffen. Beispielsweise beträgt der maximale IOPS eines P15-Datenträgers 1100, unabhängig davon, ob maxShares = 1 oder maxShares > 1 ist.
+
+### <a name="standard-ssd-ranges"></a>SSD Standard-Bereiche
+
+In der folgenden Tabelle werden die zulässigen maximalen Werte für `maxShares` nach SSD Standard-Größe veranschaulicht:
+
+|Datenträgergrößen  |maxShares-Limit  |
+|---------|---------|
+|E1,E2,E3,E4,E6,E10,E15,E20     |3         |
+|E30, E40, E50     |5         |
+|E60, E70, E80     |10         |
+
+Die IOPS- und Bandbreitenlimits für einen Datenträger sind vom `maxShares`-Wert nicht betroffen. Beispielsweise beträgt der maximale IOPS eines E15-Datenträgers 500, unabhängig davon, ob maxShares = 1 oder maxShares > 1 ist.
 
 ### <a name="ultra-disk-ranges"></a>Disk Ultra-Bereiche
 

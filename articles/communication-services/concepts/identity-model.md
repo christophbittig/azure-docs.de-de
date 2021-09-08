@@ -6,15 +6,15 @@ author: tomaschladek
 manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e53f9e89dd9718111da4f8016bc3e5a7f791627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452fffa58d9845c1655c8b643dcde54f0b6a7d90
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496574"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459260"
 ---
 # <a name="identity-model"></a>Identitätsmodell
 
@@ -86,3 +86,4 @@ Wenn Sie Zugriffstoken in einen Sicherungsspeicher zwischenspeichern, empfehlen 
 * Eine Einführung in die Verwaltung von Zugriffstoken finden Sie unter [Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md).
 * Eine Einführung in die Authentifizierung finden Sie unter [Authentifizierung bei Azure Communication Services](./authentication.md).
 * Eine Einführung in die Datenresidenz und den Datenschutz finden Sie unter [Regionale Verfügbarkeit und Datenresidenz](./privacy.md).
+* Wie Sie schnell Identitäten zum Testen erstellen können, erfahren Sie im [Schnellstart zum schnellen Erstellen von Identitäten](../quickstarts/identity/quick-create-identity.md).

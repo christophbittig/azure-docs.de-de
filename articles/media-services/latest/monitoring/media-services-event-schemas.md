@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 03/17/2021
+ms.date: 07/08/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: e35a46f22fcbb6c2abfa9c6ba436f700aa752dbe
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356163"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -138,8 +138,8 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| previousState | Zeichenfolge | Der Status des Auftrags vor dem Ereignis. |
-| state | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
+| `previousState` | Zeichenfolge | Der Status des Auftrags vor dem Ereignis. |
+| `state` | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
 
 Der Auftragsstatus kann einen der folgenden Werte aufweisen: *Queued* (In Warteschlange), *Scheduled* (Geplant), *Processing* (Wird verarbeitet), *Finished* (Abgeschlossen), *Error* (Fehler), *Canceled* (Abgebrochen), *Canceling* (Wird abgebrochen).
 
@@ -208,7 +208,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| outputs | Array | Ruft die Auftragsausgaben ab.|
+| `outputs` | Array | Ruft die Auftragsausgaben ab.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -324,11 +324,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| resultCode | Zeichenfolge | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
+| `streamId` | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
+| `ingestUrl` | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
+| `encoderIp` | Zeichenfolge | IP-Adresse des Encoders. |
+| `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
+| `resultCode` | Zeichenfolge | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
 Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes-reference.md).
 
@@ -360,10 +360,10 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL bereitzustellen. |
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
+| `streamId` | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL bereitzustellen. |
+| `ingestUrl` | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
+| `encoderIp` | Zeichenfolge | IP-Adresse des Encoders. |
+| `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -394,11 +394,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| resultCode | Zeichenfolge | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
+| `streamId` | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
+| `ingestUrl` | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
+| `encoderIp` | Zeichenfolge | IP-Adresse des Encoders. |
+| `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
+| `resultCode` | Zeichenfolge | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
 Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes-reference.md).
 
@@ -430,8 +430,8 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIncomingDataChunkDropped**
       "trackType": "Video",
       "trackName": "Video",
       "bitrate": 300000,
-      "timestamp": 36656620000,
-      "timescale": 10000000,
+      "timestamp": "36656620000",
+      "timescale": "10000000",
       "resultCode": "FragmentDrop_OverlapTimestamp"
     },
     "dataVersion": "1.0",
@@ -444,12 +444,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur |
-| bitrate | integer | Bitrate der Spur |
-| timestamp | Zeichenfolge | Zeitstempel des gelöschten Datenblocks |
-| timescale | Zeichenfolge | Zeitskala des Zeitstempels |
-| resultCode | Zeichenfolge | Grund für das Löschen des Datenblocks. **FragmentDrop_OverlapTimestamp** oder **FragmentDrop_NonIncreasingTimestamp**. |
+| `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
+| `trackName` | Zeichenfolge | Name der Spur |
+| `bitrate` | integer | Bitrate der Spur |
+| `timestamp` | Zeichenfolge | Zeitstempel des gelöschten Datenblocks |
+| `timescale` | Zeichenfolge | Zeitskala des Zeitstempels |
+| `resultCode` | Zeichenfolge | Grund für das Löschen des Datenblocks. **FragmentDrop_OverlapTimestamp** oder **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -484,14 +484,14 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
-| bitrate | integer | Bitrate der Spur |
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
-| encoderIp | Zeichenfolge  | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| timestamp | Zeichenfolge | Erster Zeitstempel des empfangenen Datenblocks |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung des Zeitstempels |
+| `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
+| `trackName` | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| `bitrate` | integer | Bitrate der Spur |
+| `ingestUrl` | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
+| `encoderIp` | Zeichenfolge  | IP-Adresse des Encoders. |
+| `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
+| `timestamp` | Zeichenfolge | Erster Zeitstempel des empfangenen Datenblocks |
+| `timescale` | Zeichenfolge | Zeitskala für die Darstellung des Zeitstempels |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -523,12 +523,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| minLastTimestamp | Zeichenfolge | Minimum der letzten Zeitstempel für alle Spuren (Audio oder Video). |
-| typeOfTrackWithMinLastTimestamp | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem niedrigsten letzten Zeitstempel. |
-| maxLastTimestamp | Zeichenfolge | Maximum aller Zeitstempel in allen Spuren (Audio oder Video). |
-| typeOfTrackWithMaxLastTimestamp | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem höchsten letzten Zeitstempel. |
-| timescaleOfMinLastTimestamp| Zeichenfolge | Ruft die Zeitskala ab, in der „MinLastTimestamp“ dargestellt wird.|
-| timescaleOfMaxLastTimestamp| Zeichenfolge | Ruft die Zeitskala ab, in der „MaxLastTimestamp“ dargestellt wird.|
+| `minLastTimestamp` | Zeichenfolge | Minimum der letzten Zeitstempel für alle Spuren (Audio oder Video). |
+| `typeOfTrackWithMinLastTimestamp` | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem niedrigsten letzten Zeitstempel. |
+| `maxLastTimestamp` | Zeichenfolge | Maximum aller Zeitstempel in allen Spuren (Audio oder Video). |
+| `typeOfTrackWithMaxLastTimestamp` | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem höchsten letzten Zeitstempel. |
+| `timescaleOfMinLastTimestamp`| Zeichenfolge | Ruft die Zeitskala ab, in der „MinLastTimestamp“ dargestellt wird.|
+| `timescaleOfMaxLastTimestamp`| Zeichenfolge | Ruft die Zeitskala ab, in der „MaxLastTimestamp“ dargestellt wird.|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -559,11 +559,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| firstTimestamp | Zeichenfolge | Zeitstempel, der für eine der Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
-| firstDuration | Zeichenfolge | Dauer des Datenblocks mit dem ersten Zeitstempel. |
-| secondTimestamp | Zeichenfolge  | Zeitstempel, der für einige andere Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
-| secondDuration | Zeichenfolge | Dauer des Datenblocks mit dem zweiten Zeitstempel. |
-| timescale | Zeichenfolge | Die Zeitskala für Zeitstempel und Dauer.|
+| `firstTimestamp` | Zeichenfolge | Zeitstempel, der für eine der Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
+| `firstDuration` | Zeichenfolge | Dauer des Datenblocks mit dem ersten Zeitstempel. |
+| `secondTimestamp` | Zeichenfolge  | Zeitstempel, der für einige andere Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
+| `secondDuration` | Zeichenfolge | Dauer des Datenblocks mit dem zweiten Zeitstempel. |
+| `timescale` | Zeichenfolge | Die Zeitskala für Zeitstempel und Dauer.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -575,21 +575,25 @@ Das folgende Beispiel zeigt das Schema des **LiveEventIngestHeartbeat**-Ereignis
     "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
     "subject": "liveEvent/mle1",
     "eventType": "Microsoft.Media.LiveEventIngestHeartbeat",
-    "eventTime": "2018-08-07T23:17:57.4610506",
+    "eventTime": "2021-05-14T23:50:00.324",
     "id": "7f450938-491f-41e1-b06f-c6cd3965d786",
     "data": {
-      "trackType": "audio",
-      "trackName": "audio",
-      "bitrate": 160000,
-      "incomingBitrate": 155903,
-      "lastTimestamp": "15336837535253637",
-      "timescale": "10000000",
-      "overlapCount": 0,
-      "discontinuityCount": 0,
-      "nonincreasingCount": 0,
-      "unexpectedBitrate": false,
-      "state": "Running",
-      "healthy": true
+      "trackType":"video",
+      "trackName":"video",
+      "bitrate":2500000,
+      "incomingBitrate":2462597,
+      "lastTimestamp":"106999",
+      "timescale":"1000",
+      "overlapCount":0,
+      "discontinuityCount":0,
+      "nonincreasingCount":0,
+      "unexpectedBitrate":false,
+      "state":"Running",
+      "healthy":true,
+      "lastFragmentArrivalTime":"2021-05-14T23:50:00.324",
+      "ingestDriftValue":"0",
+      "transcriptionState":"",
+      "transcriptionLanguage":""
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -601,18 +605,23 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
-| bitrate | integer | Bitrate der Spur |
-| incomingBitrate | integer | Berechnete Bitrate basierend auf den Datenblöcken vom Encoder. |
-| lastTimestamp | Zeichenfolge | Neuester Zeitstempel, der für eine Spur in den letzten 20 Sekunden empfangen wurde. |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung der Zeitstempel. |
-| overlapCount | integer | Anzahl der Datenblöcke mit überlappenden Zeitstempeln in den letzten 20 Sekunden. |
-| discontinuityCount | integer | Anzahl von Diskontinuitäten in den letzten 20 Sekunden. |
-| nonIncreasingCount | integer | Anzahl der Datenblöcke mit Zeitstempeln in der Vergangenheit, die in den letzten 20 Sekunden empfangen wurden. |
-| unexpectedBitrate | bool | Die erwarteten und tatsächlichen Bitraten in den letzten 20 Sekunden unterscheiden sich um mehr als das maximal zulässige Limit. TRUE, wenn (und nur wenn) incomingBitrate >= 2 * Bitrate OR incomingBitrate <= Bitrate / 2 OR IncomingBitrate = 0 gilt. |
-| state | Zeichenfolge | Zustand des Liveereignisses. |
-| healthy | bool | Gibt an, ob die Erfassung hinsichtlich Anzahl und Flags fehlerfrei ist. Healthy ist TRUE, wenn overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false gilt. |
+| `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
+| `trackName` | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| `bitrate` | integer | Bitrate der Spur |
+| `incomingBitrate` | integer | Berechnete Bitrate basierend auf den Datenblöcken vom Encoder. |
+| `lastTimestamp` | Zeichenfolge | Neuester Zeitstempel, der für eine Spur in den letzten 20 Sekunden empfangen wurde. |
+| `timescale` | Zeichenfolge | Zeitskala für die Darstellung der Zeitstempel. |
+| `overlapCount` | integer | Anzahl der Datenblöcke mit überlappenden Zeitstempeln in den letzten 20 Sekunden. |
+| `discontinuityCount` | integer | Anzahl von Diskontinuitäten in den letzten 20 Sekunden. |
+| `nonIncreasingCount` | integer | Anzahl der Datenblöcke mit Zeitstempeln in der Vergangenheit, die in den letzten 20 Sekunden empfangen wurden. |
+| `unexpectedBitrate` | bool | Die erwarteten und tatsächlichen Bitraten in den letzten 20 Sekunden unterscheiden sich um mehr als das maximal zulässige Limit. TRUE, wenn (und nur wenn) incomingBitrate >= 2 * Bitrate OR incomingBitrate <= Bitrate / 2 OR IncomingBitrate = 0 gilt. |
+| `state` | Zeichenfolge | Zustand des Liveereignisses. |
+| `healthy` | bool | Gibt an, ob die Erfassung hinsichtlich Anzahl und Flags fehlerfrei ist. Healthy ist TRUE, wenn overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false gilt. |
+| `lastFragmentArrivalTime` | Zeichenfolge |Der letzte Zeitstempel in UTC, zu dem ein Fragment am Erfassungsendpunkt eingetroffen ist. Beispiel für das Datumsformat: „2020-11-11 12:12:12:888999“ |
+| `ingestDriftValue` | Zeichenfolge | Gibt die Geschwindigkeit der Verzögerung der eingehenden Audio- oder Videodaten während der letzten Minute in Sekunden pro Minute an. Der Wert ist größer als null, wenn Daten in der letzten Minute langsamer als erwartet beim Liveereignis eintreffen. null, wenn Daten ohne Verzögerung eingetroffen sind; und „n/a“ (n/v), wenn keine Audio- oder Videodaten empfangen wurden. Wenn Sie beispielsweise über einen Beitragsencoder verfügen, der Liveinhalte sendet und aufgrund von Verarbeitungsproblemen oder Netzwerklatenz verlangsamt wird, kann er möglicherweise nur insgesamt 58 Sekunden Audio oder Video in einem Zeitraum von einer Minute liefern. Dies wird als Abweichung von 2 Sekunden pro Minute gemeldet. Wenn der Encoder aufholen und alle 60 Sekunden oder mehr Daten pro Minute und senden kann, wird dieser Wert als 0 gemeldet. Wenn eine Trennung oder Diskontinuität vom Encoder vorgelegen hat, wird dieser Wert möglicherweise trotzdem als 0 angezeigt, da er keine Unterbrechungen der Daten berücksichtigt, sondern nur Daten, die in Zeitstempeln verzögert sind.|
+| `transcriptionState` | Zeichenfolge | Dieser Wert ist für Audiospurheartbeats aktiviert, wenn Livetranskription aktiviert ist. Andernfalls wird eine leere Zeichenfolge verwendet. Dieser Status gilt nur für den Tracktyp „audio“ für Livetranskription. Alle anderen Spuren haben einen leeren Wert.|
+| `transcriptionLanguage` | Zeichenfolge  | Der Sprachcode (im BCP-47-Format) der Transkriptionssprache. „de-de“ gibt beispielsweise Deutsch (Deutschland) an. Der Wert ist für die Videospurheartbeats oder bei deaktivierter Livetranskription leer. |
+
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -645,13 +654,13 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
-| bitrate | integer | Bitrate der Spur |
-| previousTimestamp | Zeichenfolge | Zeitstempel des vorherigen Fragments. |
-| newTimestamp | Zeichenfolge | Zeitstempel des aktuellen Fragments. |
-| discontinuityGap | Zeichenfolge | Lücke zwischen den beiden obigen Zeitstempeln. |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung von Zeitstempel und Diskontinuitätslücke. |
+| `trackType` | Zeichenfolge | Spurtyp (Audio/Video) |
+| `trackName` | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| `bitrate` | integer | Bitrate der Spur |
+| `previousTimestamp` | Zeichenfolge | Zeitstempel des vorherigen Fragments. |
+| `newTimestamp` | Zeichenfolge | Zeitstempel des aktuellen Fragments. |
+| `discontinuityGap` | Zeichenfolge | Lücke zwischen den beiden obigen Zeitstempeln. |
+| `timescale` | Zeichenfolge | Zeitskala für die Darstellung von Zeitstempel und Diskontinuitätslücke. |
 
 ### <a name="common-event-properties"></a>Allgemeine Ereigniseigenschaften
 
@@ -659,14 +668,14 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Das EventGrid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
-| subject | Zeichenfolge | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. Beispiel: “Microsoft.Media.JobStateChange“. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | Media Services-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| `topic` | Zeichenfolge | Das EventGrid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
+| `subject` | Zeichenfolge | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |
+| `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. Beispiel: “Microsoft.Media.JobStateChange“. |
+| `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| `data` | Objekt (object) | Media Services-Ereignisdaten. |
+| `dataVersion` | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| `metadataVersion` | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

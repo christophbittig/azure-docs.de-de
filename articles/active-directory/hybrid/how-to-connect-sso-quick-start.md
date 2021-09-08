@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c42fef2abddc5f04a2d74f30df5fcf54e1b1b3
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 3a1c9bcec2a9aec2673e29a3f578146cad7de5d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355090"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -177,12 +177,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (alle Plattformen)
 
-Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URL mithilfe der folgenden Schritte hinzufügen:
-1. Führen Sie Firefox aus, und geben Sie in die Adressleiste `about:config` ein. Schließen Sie alle Benachrichtigungen, die Sie sehen.
-2. Suchen Sie nach der Einstellung **network.negotiate-auth.trusted-uris**. In dieser Einstellung werden in Firefox die vertrauenswürdigen Sites für die Kerberos-Authentifizierung aufgeführt.
-3. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Ändern** aus.
-4. Geben Sie `https://autologon.microsoftazuread-sso.com` in das Feld ein.
-5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
+Wenn Sie die [Authentication](https://github.com/mozilla/policy-templates/blob/master/README.md#authentication)-Richtlinieneinstellungen in Ihrer Umgebung verwenden, stellen Sie sicher, dass Sie auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) zum Abschnitt **SPNEGO** hinzufügen. Sie können auch die Option **PrivateBrowsing** auf „true“ festlegen, um nahtloses einmaliges Anmelden im privaten Browsermodus zu ermöglichen.
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
@@ -198,17 +193,20 @@ Für Microsoft Edge auf Chromium-Basis auf macOS und anderen Nicht-Windows-Platt
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
-Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateAllowlist](https://chromeenterprise.google/policies/#AuthNegotiateDelegateAllowlist) oder [AuthServerAllowlist](https://chromeenterprise.google/policies/#AuthServerAllowlist) in Ihrer Umgebung überschrieben haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
 
-#### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS und andere Nicht-Windows-Plattformen)
+#### <a name="macos"></a>macOS
 
-Informationen dazu, wie Sie in Google Chrome unter macOS und anderen Nicht-Windows-Plattformen die Zulassungsliste für die Azure AD-URL für die integrierte Authentifizierung kontrollieren können, finden Sie unter [The Chromium Project Policy List](https://chromeenterprise.google/policies/) (Richtlinienliste von The Chromium Project).
-
-Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
+Der Rollout der Azure AD-URL für Firefox und Google Chrome unter macOS mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern wird in diesem Artikel nicht behandelt.
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen. Microsoft Edge (Legacyversion) wird nicht mehr unterstützt.
+Nahtloses SSO funktioniert bei Internet Explorer nicht, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. In der nächsten Version von Microsoft Edge auf Chromium-Basis wird das einmalige Anmelden unterstützt und kann im InPrivate- und Gastmodus erfolgen. Microsoft Edge (Legacyversion) wird nicht mehr unterstützt. 
+
+ `AmbientAuthenticationInPrivateModesEnabled` muss möglicherweise gemäß den entsprechenden Dokumentationen für InPrivate- und/oder Gastbenutzer konfiguriert werden:
+ 
+   - [Microsoft Edge Chromium](/DeployEdge/microsoft-edge-policies#ambientauthenticationinprivatemodesenabled)
+   - [Google Chrome](https://chromeenterprise.google/policies/?policy=AmbientAuthenticationInPrivateModesEnabled)
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 
@@ -232,7 +230,7 @@ In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentie
 >[!IMPORTANT]
 >Wenn der Kerberos-Entschlüsselungsschlüssel auf einem Computerkonto kompromittiert wird, kann er dazu verwendet werden, für jeden Benutzer in der AD-Gesamtstruktur Kerberos-Tickets zu generieren. Böswillige Akteure können dann Azure AD-Anmeldungen für kompromittierte Benutzer imitieren. Sie sollten das Rollover dieser Kerberos-Entschlüsselungsschlüssel regelmäßig durchführen – mindestens alle 30 Tage.
 
-Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](how-to-connect-sso-faq.md). Wir arbeiten an einer Funktion zur Einführung des automatischen Rollovers von Schlüsseln.
+Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](how-to-connect-sso-faq.yml).
 
 >[!IMPORTANT]
 >Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.
@@ -240,6 +238,6 @@ Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nah
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Technische Einzelheiten](how-to-connect-sso-how-it-works.md): Informationen zur Funktionsweise des nahtlosen einmaligen Anmeldens
-- [Häufig gestellte Fragen](how-to-connect-sso-faq.md): Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
+- [Häufig gestellte Fragen](how-to-connect-sso-faq.yml): Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
 - [Problembehandlung](tshoot-connect-sso.md): Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für nahtloses einmaliges Anmelden auftreten können
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.

@@ -3,19 +3,17 @@ title: Verwenden von GPUs in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie GPUs für Hochleistungscompute- oder grafikintensive Workloads in Azure Kubernetes Service (AKS) verwendet werden können.
 services: container-service
 ms.topic: article
-ms.date: 08/21/2020
-ms.author: jpalma
-author: palma21
-ms.openlocfilehash: 95400d75442ba0d61b0d24aef6e67bbea397a240
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/06/2021
+ms.openlocfilehash: fa7415f015ad17cc2e8a5ff4822c8ff53578f054
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340292"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
-GPUs (Graphical Processing Units) werden häufig für computeintensive Workloads (also etwa für grafikintensive und visualisierungsorientierte Workloads) verwendet. AKS unterstützt die Erstellung von GPU-fähigen Knotenpools, um diese computrintensiven Workloads in Kubernetes auszuführen. Weitere Informationen zu verfügbaren GPU-fähigen virtuellen Computern finden Sie unter [GPU-optimierte VM-Größen in Azure][gpu-skus]. Für die AKS-Knoten empfehlen wir eine Mindestgröße von *Standard_NC6*.
+GPUs (Graphical Processing Units) werden häufig für computeintensive Workloads (also etwa für grafikintensive und visualisierungsorientierte Workloads) verwendet. AKS unterstützt die Erstellung von GPU-fähigen Knotenpools, um diese computrintensiven Workloads in Kubernetes auszuführen. Weitere Informationen zu verfügbaren GPU-fähigen virtuellen Computern finden Sie unter [GPU-optimierte VM-Größen in Azure][gpu-skus]. Für die AKS-Knotenpools wird die Mindestgröße *Standard_NC6* empfohlen.
 
 > [!NOTE]
 > GPU-fähige virtuelle Computer verfügen über spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen finden Sie in der [Preisübersicht][azure-pricing] sowie auf der [Website zur regionalen Verfügbarkeit][azure-availability].
@@ -24,41 +22,127 @@ Die Verwendung GPU-fähiger Knotenpools steht aktuell nur für Linux-Knotenpools
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit Knoten verfügen, die AKS unterstützen. Ihr AKS-Cluster muss Kubernetes 1.10 oder höher ausführen. Wenn Sie einen AKS-Cluster benötigen, der diese Anforderungen erfüllt, lesen Sie den ersten Abschnitt dieses Artikels zum [Erstellen eines AKS-Clusters](#create-an-aks-cluster).
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle][aks-quickstart].
 
 Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
-## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
+## <a name="get-the-credentials-for-your-cluster"></a>Abrufen der Anmeldeinformationen für Ihren Cluster
 
-Wenn Sie einen AKS-Cluster benötigen, der die Mindestanforderungen erfüllt (GPU-fähiger Knoten und Kubernetes Version 1.10 oder höher), führen Sie die folgenden Schritte aus. Wenn Sie bereits über einen AKS-Cluster verfügen, der diese Anforderungen erfüllt, [fahren Sie mit dem nächsten Abschnitt fort](#confirm-that-gpus-are-schedulable).
-
-Erstellen Sie zunächst mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe für den Cluster. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-Erstellen Sie nun mit dem Befehl [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit einem einzelnen Knoten der Größe `Standard_NC6` erstellt:
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-vm-size Standard_NC6 \
-    --node-count 1
-```
-
-Rufen Sie die Anmeldeinformationen für Ihren AKS-Cluster mit dem Befehl [az aks get-credentials][az-aks-get-credentials] ab:
+Rufen Sie die Anmeldeinformationen für Ihren AKS-Cluster mit dem Befehl [az aks get-credentials][az-aks-get-credentials] ab. Im folgenden Beispiel werden die Anmeldeinformationen für den Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-device-plugin"></a>Installieren des NVIDIA-Geräte-Plug-Ins
+## <a name="add-the-nvidia-device-plugin"></a>Hinzufügen des NVIDIA-Geräte-Plug-Ins
 
-Um die GPUs in den Knoten verwenden zu können, muss zunächst ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitgestellt werden. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
+Es gibt zwei Optionen zum Hinzufügen des NVIDIA-Geräte-Plug-Ins:
 
-Erstellen Sie zunächst einen Namespace mit dem Befehl [kubectl create namespace][kubectl-create], z.B. *gpu-resources*:
+* Verwenden des AKS-GPU-Images
+* Manuelles Installieren des NVIDIA-Geräte-Plug-Ins
+
+> [!WARNING]
+> Sie können jede der oben genannten Optionen verwenden. Installieren Sie jedoch nicht das NVIDIA-Geräte-Plug-In-DaemonSet mit Clustern, in denen das AKS-GPU-Image verwendet wird.
+
+### <a name="update-your-cluster-to-use-the-aks-gpu-image-preview"></a>Aktualisieren des Clusters für die Verwendung des AKS-GPU-Images (Vorschau)
+
+AKS stellt ein vollständig konfiguriertes AKS-Image bereit, in dem das [NVIDIA-Geräte-Plug-In für Kubernetes][nvidia-github] bereits enthalten ist.
+
+Registrieren Sie das Feature `GPUDedicatedVHDPreview`:
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az_feature_list) überprüfen:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az_provider_register) aktualisieren:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+## <a name="add-a-node-pool-for-gpu-nodes"></a>Hinzufügen eines Knotenpools für GPU-Knoten
+
+Verwenden Sie den Befehl [az aks nodepool add][az-aks-nodepool-add], um dem Cluster einen Knotenpool hinzuzufügen.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --aks-custom-headers UseGPUDedicatedVHD=true \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+Mit dem obigen Befehl wird dem Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup* ein Knotenpool mit dem Namen *gpunp* hinzugefügt. Der Befehl legt außerdem die VM-Größe für die Knoten im Knotenpool auf *Standard_NC6* fest, aktiviert die automatische Clusterskalierung, konfiguriert die automatische Clusterskalierung so, dass mindestens ein Knoten und maximal drei Knoten im Knotenpool beibehalten werden, gibt einen spezialisierten AKS-GPU-Imageknoten im neuen Knotenpool und den Taint *sku=gpu:NoSchedule* für den Knotenpool an.
+
+> [!NOTE]
+> Ein Taint und eine VM-Größe können für Knotenpools nur während ihrer Erstellung festgelegt werden, die Autoskalierungseinstellungen können jedoch jederzeit aktualisiert werden.
+
+> [!NOTE]
+> Verwenden Sie *--aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true*, wenn Ihre GPU-SKU VMs der 2. Generation erfordert. Zum Beispiel:
+> 
+> ```azurecli
+> az aks nodepool add \
+>    --resource-group myResourceGroup \
+>    --cluster-name myAKSCluster \
+>    --name gpunp \
+>    --node-count 1 \
+>    --node-vm-size Standard_NC6 \
+>    --node-taints sku=gpu:NoSchedule \
+>    --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true \
+>    --enable-cluster-autoscaler \
+>    --min-count 1 \
+>    --max-count 3
+> ```
+
+### <a name="manually-install-the-nvidia-device-plugin"></a>Manuelles Installieren des NVIDIA-Geräte-Plug-Ins
+
+Alternativ können Sie ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitstellen. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
+
+Fügen Sie mit dem Befehl [az aks nodepool add][az-aks-nodepool-add] dem Cluster einen Knotenpool hinzu.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+Mit dem obigen Befehl wird dem Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup* ein Knotenpool mit dem Namen *gpunp* hinzugefügt. Der Befehl legt außerdem die VM-Größe für die Knoten im Knotenpool auf *Standard_NC6* fest, aktiviert die automatische Clusterskalierung, konfiguriert die automatische Clusterskalierung so, dass mindestens ein Knoten und maximal drei Knoten im Knotenpool beibehalten werden, und gibt den Taint *sku=gpu:NoSchedule* für den Knotenpool an.
+
+> [!NOTE]
+> Ein Taint und eine VM-Größe können für Knotenpools nur während ihrer Erstellung festgelegt werden, die Autoskalierungseinstellungen können jedoch jederzeit aktualisiert werden.
+
+Erstellen Sie mit dem Befehl [kubectl create namespace][kubectl-create] einen Namespace, z. B. *gpu-resources*:
 
 ```console
 kubectl create namespace gpu-resources
@@ -96,6 +180,10 @@ spec:
       - key: nvidia.com/gpu
         operator: Exists
         effect: NoSchedule
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
       containers:
       - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
@@ -112,78 +200,13 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Erstellen Sie als Nächstes mithilfe des Befehls [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das NVIDIA-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe zu sehen:
+Erstellen Sie mit [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das NVIDIA-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe gezeigt:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
-
-## <a name="use-the-aks-specialized-gpu-image-preview"></a>Verwenden des speziellen AKS-GPU-Images (Vorschau)
-
-Als Alternative zu diesen Schritten stellt AKS ein vollständig konfiguriertes AKS-Image bereit, das schon das [NVIDIA-Geräte-Plug-In für Kubernetes][nvidia-github] enthält.
-
-> [!WARNING]
-> Sie sollten das NVIDIA-Geräte-Plug-In-DaemonSet für Cluster nicht manuell mit dem neuen speziellen AKS-GPU-Image installieren.
-
-
-Registrieren Sie das Feature `GPUDedicatedVHDPreview`:
-
-```azurecli
-az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
-```
-
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az_feature_list) überprüfen:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
-```
-
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az_provider_register) aktualisieren:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Verwenden des speziellen AKS-GPU-Images für neue Cluster (Vorschau)    
-
-Konfigurieren Sie den Cluster beim Erstellen so, dass das spezielle AKS-GPU-Image verwendet wird. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Cluster, um das spezielle AKS-GPU-Image zu verwenden.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-Wenn Sie einen Cluster mit regulären AKS-Images erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. Sie können auch weitere spezielle GPU-Knotenpools hinzufügen, wie im Anschluss beschrieben.
-
-
-### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>Verwenden des speziellen AKS-GPU-Images für vorhandene Cluster (Vorschau)
-
-Konfigurieren Sie einen neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden. Verwenden Sie das `--aks-custom-headers`-Flag für die GPU-Agent-Knoten im neuen Knotenpool, um das spezielle AKS-GPU-Image zu verwenden.
-
-```azurecli
-az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-Wenn Sie einen Knotenpool mit regulären AKS-Images erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. 
-
-> [!NOTE]
-> Wenn Ihre GPU-SKU virtuelle Computer der 2. Generation erfordert, können Sie Folgendes erstellen:
-> ```azurecli
-> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
-> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Bestätigen, dass GPUs planbar sind
 
@@ -192,8 +215,8 @@ Nachdem Ihr AKS-Cluster erstellt wurde, bestätigen Sie, dass GPUs in Kubernetes
 ```console
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
+NAME                   STATUS   ROLES   AGE   VERSION
+aks-gpunp-28993262-0   Ready    agent   13m   v1.20.7
 ```
 
 Verwenden Sie nun den Befehl [kubectl describe node][kubectl-describe], um zu bestätigen, dass die GPUs planbar sind. Unter dem Abschnitt *Capacity* (Kapazität) sollte die GPU als `nvidia.com/gpu:  1` aufgelistet werden.
@@ -201,50 +224,17 @@ Verwenden Sie nun den Befehl [kubectl describe node][kubectl-describe], um zu be
 Das folgende verkürzte Beispiel zeigt, dass eine GPU für den Knoten *aks-nodepool1-18821093-0* verfügbar ist:
 
 ```console
-$ kubectl describe node aks-nodepool1-28993262-0
+$ kubectl describe node aks-gpunp-28993262-0
 
-Name:               aks-nodepool1-28993262-0
+Name:               aks-gpunp-28993262-0
 Roles:              agent
 Labels:             accelerator=nvidia
 
 [...]
 
 Capacity:
- attachable-volumes-azure-disk:  24
- cpu:                            6
- ephemeral-storage:              101584140Ki
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         57713784Ki
+[...]
  nvidia.com/gpu:                 1
- pods:                           110
-Allocatable:
- attachable-volumes-azure-disk:  24
- cpu:                            5916m
- ephemeral-storage:              93619943269
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         51702904Ki
- nvidia.com/gpu:                 1
- pods:                           110
-System Info:
- Machine ID:                 b0cd6fb49ffe4900b56ac8df2eaa0376
- System UUID:                486A1C08-C459-6F43-AD6B-E9CD0F8AEC17
- Boot ID:                    f134525f-385d-4b4e-89b8-989f3abb490b
- Kernel Version:             4.15.0-1040-azure
- OS Image:                   Ubuntu 16.04.6 LTS
- Operating System:           linux
- Architecture:               amd64
- Container Runtime Version:  docker://1.13.1
- Kubelet Version:            v1.12.7
- Kube-Proxy Version:         v1.12.7
-PodCIDR:                     10.244.0.0/24
-ProviderID:                  azure:///subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-28993262-0
-Non-terminated Pods:         (9 in total)
-  Namespace                  Name                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  AGE
-  ---------                  ----                                     ------------  ----------  ---------------  -------------  ---
-  kube-system                nvidia-device-plugin-daemonset-bbjlq     0 (0%)        0 (0%)      0 (0%)           0 (0%)         2m39s
-
 [...]
 ```
 
@@ -279,6 +269,11 @@ spec:
           limits:
            nvidia.com/gpu: 1
       restartPolicy: OnFailure
+      tolerations:
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
 ```
 
 Führen Sie den Auftrag mithilfe des Befehls [kubectl apply][kubectl-apply] aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte:
@@ -386,6 +381,20 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
+## <a name="use-container-insights-to-monitor-gpu-usage"></a>Verwenden von Container Insights zum Überwachen der GPU-Nutzung
+
+Für [Container Insights mit AKS][aks-container-insights] sind die folgenden Metriken zum Überwachen der GPU-Nutzung verfügbar.
+
+| Metrikname | Metrikdimension (Tags) | Beschreibung |
+|-------------|-------------------------|-------------|
+| containerGpuDutyCycle | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor`   | Der Prozentsatz der Zeit im Verlauf des letzten Beispielzeitraums (60 Sekunden), während dessen die GPU ausgelastet war/aktiv die Verarbeitung für einen Container ausgeführt hat. Der Arbeitszyklus ist eine Zahl zwischen 1 und 100. |
+| containerGpuLimits | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | In jedem Container können Grenzwerte als eine oder mehrere GPUs angegeben werden. Es ist nicht möglich, einen Bruchteil einer GPU anzufordern oder einzuschränken. |
+| containerGpuRequests | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | Jeder Container kann einen oder mehrere GPUs anfordern. Es ist nicht möglich, einen Bruchteil einer GPU anzufordern oder einzuschränken. |
+| containerGpumemoryTotalBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | Menge an GPU-Arbeitsspeicher in Bytes, die für einen bestimmten Container verwendet werden kann. |
+| containerGpumemoryUsedBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | Menge an GPU-Arbeitsspeicher in Bytes, die für einen bestimmten Container verwendet wird. |
+| nodeGpuAllocatable | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | Anzahl von GPUs in einem Knoten, die von Kubernetes verwendet werden können. |
+| nodeGpuCapacity | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | Gesamtanzahl der GPUs in einem Knoten. |
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Verwenden Sie zum Entfernen der zugehörigen Kubernetes-Objekte, die in diesem Artikel erstellt wurden, den Befehl [kubectl delete job][kubectl delete] wie folgt:
@@ -422,9 +431,11 @@ Informationen zur Verwendung von Azure Kubernetes Service mit Azure Machine Lear
 [az-group-create]: /cli/azure/group#az_group_create
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[aks-quickstart]: kubernetes-walkthrough.md
 [aks-spark]: spark-job.md
 [gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azureml-aks]: ../machine-learning/how-to-deploy-azure-kubernetes-service.md
 [azureml-gpu]: ../machine-learning/how-to-deploy-inferencing-gpus.md
 [azureml-triton]: ../machine-learning/how-to-deploy-with-triton.md
+[aks-container-insights]: monitor-aks.md#container-insights

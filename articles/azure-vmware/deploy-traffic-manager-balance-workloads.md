@@ -3,12 +3,12 @@ title: Bereitstellen von Traffic Manager zum Ausgleichen der Workloads von Azure
 description: Erfahren Sie, wie Sie Traffic Manager in Azure VMware Solution integrieren, um Anwendungsworkloads auf mehreren Endpunkten in unterschiedlichen Regionen auszugleichen.
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: d00f699c094995dad15d4ab5558fcd838ed33128
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ac8f402eadcced4e8592a68f13abd6d2693b8b0c
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087002"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602031"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Bereitstellen von Traffic Manager zum Ausgleichen der Workloads von Azure VMware Solution
 
@@ -18,7 +18,7 @@ Die Gateways verfügen über virtuelle Azure VMware Solution-Computer (VMs), die
 
 Wie im Diagramm dargestellt, bietet Azure Traffic Manager einen Lastenausgleich für die Anwendungen auf DNS-Ebene zwischen regionalen Endpunkten. Die Gateways verfügen über Back-End-Poolmitglieder, die als IIS-Server konfiguriert sind und als externe Azure VMware Solution-Endpunkte referenziert werden. Zur Verbindung zwischen den beiden Private Cloud-Regionen über das virtuelle Netzwerk wird ein ExpressRoute-Gateway verwendet.   
 
-:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Architekturdiagramm der Traffic Manager-Integration in Azure VMware Solution" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Diagramm: Traffic Manager-Integration in Azure VMware Solution" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
 
 Bevor Sie beginnen, überprüfen Sie zunächst die [Voraussetzungen](#prerequisites). Dann gehen wir die Verfahren zu Folgendem durch:
 
@@ -56,7 +56,7 @@ Die folgenden Schritte überprüfen die Konfiguration Ihrer Anwendungsgateways.
 
    Es wird ein Fenster mit verschiedenen Informationen zum Anwendungsgateway geöffnet. 
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Screenshot der Seite „Anwendungsgateway“ mit Details des ausgewählten Anwendungsgateways." lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-configuration.png" alt-text="Screenshot der Seite „Anwendungsgateway“ mit Details des ausgewählten Anwendungsgateways." lightbox="media/traffic-manager/backend-pool-configuration.png":::
 
 1. Wählen Sie **Back-End-Pools** aus, um die Konfiguration eines der Back-End-Pools zu überprüfen. Sie sehen ein Mitglied des Back-End-Pools für virtuelle Computer, das als Webserver mit der IP-Adresse 172.29.1.10 konfiguriert ist.
  
@@ -70,7 +70,7 @@ Mit den folgenden Schritten wird die Konfiguration des NSX-T-Segments in der Azu
 
 1. Wählen Sie **Segments** (Segmente) aus, um Ihre konfigurierten Segmente anzuzeigen.  Sie sehen, dass „Contoso-segment1“ mit dem Gateway „Contoso-T01“, einem flexiblen Router auf Ebene 1, verbunden ist.
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Screenshot mit Segmentprofilen in NSX-T Manager." lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png" alt-text="Screenshot mit Segmentprofilen in NSX-T Manager." lightbox="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png":::    
 
 1. Wählen Sie **Tier-1 Gateways** (Gateways der Ebene 1) aus, um eine Liste Ihrer Gateways der Ebene 1 mit der Anzahl der verknüpften Segmente anzuzeigen. 
 

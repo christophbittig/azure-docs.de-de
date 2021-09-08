@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e09f3c8f4691eaf978e0b5245626508e4aa2b961
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5c9421397b6e5fbfe8688e5ceeff6056de25674a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746859"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356129"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -196,6 +196,39 @@ Die Ausführung der geschachtelten Virtualisierung in Azure Virtual Desktop wird
 - Windows Server 2019
 - Windows 10 Enterprise
 - Windows 10 Enterprise (mehrere Sitzungen)
+
+## <a name="windows-defender-application-control"></a>Windows Defender Application Control
+
+Die folgenden Betriebssysteme unterstützen die Verwendung der Windows Defender-Anwendungssteuerung mit Azure Virtual Desktop:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise (mehrere Sitzungen)
+
+>[!NOTE]
+>Wenn Sie die Windows Defender-Anwendungssteuerung verwenden, wird empfohlen, nur Richtlinien auf Geräteebene als Ziel zu verwenden. Obwohl es möglich ist, Richtlinien auf einzelne Benutzer auszurichten, wirkt sich die Richtlinie, sobald sie angewendet wird, auf alle Benutzer des Geräts gleichermaßen aus.
+
+## <a name="ip-virtualization"></a>IP-Virtualisierung
+
+Wenn Sie die IP-Virtualisierung unter Windows Server 2019 verwenden möchten, führen Sie die folgenden Schritte aus:
+
+1. Benennen Sie in einem Windows PowerShell-Administratorfenster den folgenden Schlüssel um: 
+```powershell
+Rename-Item HKLM:\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1 Backup_2C69D9F1
+```
+>[!NOTE]
+>Das Löschen des Schlüssels würde das Gleiche bewirken, aber die Umbenennung bietet die Möglichkeit, den Vorgang bei Bedarf leichter rückgängig zu machen. Dies sind die Daten, die standardmäßig vorhanden sind:
+>       
+>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1\
+>AppFullPath: C:\Windows\System32\svchost.exe\
+>PermittedLspCategories: 0x40000000
+
+2. Starten Sie den virtuellen Computer neu.
+
+3. Aktivieren Sie das Feature „IP-Virtualisierung“ durch Öffnen von **gpedit.msc**. Wechseln Sie dann zu **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Anwendungskompatibilität**. Aktivieren Sie die Richtlinie **Remotedesktop-IP-Virtualisierung aktivieren**, und geben Sie dann die IP-Adresse an, die die Richtlinie verwenden soll.
+
+4. Starten Sie den virtuellen Computer neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

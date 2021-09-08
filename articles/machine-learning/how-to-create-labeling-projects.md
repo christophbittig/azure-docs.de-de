@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: c4edd4317bf125b4aa8dd8ebf404613c7fab3ba8
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 54ed2504063cc3a0479d37127888ccb727fbd671
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290480"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355380"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen
 
@@ -26,7 +26,8 @@ Erfahren Sie, wie Sie in Azure Machine Learning Projekte erstellen und ausführe
 > [!Important]
 > Datenbilder oder Text müssen in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Dateien während der Projekterstellung hochladen.)
 
-Bilddaten können Dateien eines der folgenden Typen sein: JPG, JPEG, PNG, JPE, JFIF, BMP, TIF, TIFF. Jede Datei ist ein zu beschriftendes Element.
+Bilddaten können Dateien eines der folgenden Typen sein: JPG, JPEG, PNG, JPE, JFIF, BMP, TIF, TIFF, DCM, DICOM. Jede Datei ist ein zu beschriftendes Element.
+ 
 Textdaten können entweder TXT- oder CSV-Dateien sein.
 
 * Bei TXT-Dateien stellt jede Datei ein zu beschriftendes Element dar.
@@ -44,7 +45,7 @@ Die Datenbeschriftung von Azure Machine Learning bietet Ihnen einen zentralen Or
 - Die zu beschriftenden Daten (entweder in lokalen Dateien oder in Azure Blob Storage).
 - Der Satz von Beschriftungen, die Sie anwenden möchten.
 - Die Anweisungen für die Beschriftung.
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 ## <a name="create-a-data-labeling-project"></a>Erstellen eines Datenbeschriftungsprojekts
@@ -66,7 +67,6 @@ Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie 
   * Wählen Sie **Objektidentifikation (umgebendes Rechteck)** für Projekte aus, in denen jedem Objekt innerhalb eines Bilds eine Beschriftung und ein Begrenzungsrahmen zugewiesen werden soll.
   * Wählen Sie für Projekte **Instanzsegmentierung (Polygon)** aus, wenn Sie eine Bezeichnung zuweisen und ein Polygon um jedes Objekt innerhalb eines Bilds zeichnen möchten.
 
-    
 * Wählen Sie **Weiter**, wenn Sie bereit sind, fortzufahren.
 
 ### <a name="text-labeling-project-preview"></a>Textbeschriftungsprojekt (Vorschau)
@@ -100,7 +100,9 @@ Erstellen eines Datasets aus Dateien, die Sie bereits in einem Azure-Blobspeiche
 
 1. Wählen Sie **Dataset erstellen** > **Aus Datenspeicher**.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
-1. Wählen Sie den **Datasettyp** aus.  Für Bilder werden nur Dateien als Datasettypen unterstützt. Datei- und Tabellentypen sind für die Textbeschriftung verfügbar.
+1. Wählen Sie den **Datasettyp** aus.  Für Bilder werden nur Dateien als Datasettypen unterstützt. Für ein Textbeschriftungsprojekt:
+    * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, in der jede Zeile eine Antwort darstellt.
+    * Wählen Sie **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
 1. Wählen Sie den Datenspeicher aus.
 1. Wenn Ihre Daten sich in einem Unterordner des Blobspeichers befinden, klicken Sie auf **Durchsuchen**, um den Ordnerpfad auszuwählen.
     * Fügen Sie „/**“ an den Pfad an, um alle Dateien in den Unterordnern des ausgewählten Pfads einzubeziehen.
@@ -115,7 +117,9 @@ Direktes Hochladen Ihrer Daten:
 
 1. Wählen Sie **Dataset erstellen** > **Aus lokalen Dateien** aus.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
-1. Wählen Sie den **Datasettyp** aus.  Für Bilder werden nur Dateien als Datasettypen unterstützt. Datei- und Tabellentypen sind für die Textbeschriftung verfügbar.
+1. Wählen Sie den **Datasettyp** aus.   Für Bilder werden nur Dateien als Datasettypen unterstützt. Für ein Textbeschriftungsprojekt:
+    * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, in der jede Zeile eine Antwort darstellt.
+    * Wählen Sie **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
 1. *Optional:* Wählen Sie **Erweiterte Einstellungen** aus, um den Datenspeicher, den Container und den Pfad zu Ihren Daten anzupassen.
 1. Wählen Sie **Durchsuchen** aus, um die lokalen Dateien zum Hochladen auszuwählen.
 1. Geben Sie eine Beschreibung des Datasets ein.
@@ -164,7 +168,7 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 
 ## <a name="use-ml-assisted-data-labeling"></a>Verwenden der ML-gestützten Datenbeschriftung
 
-Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um Beschriftungsaufgaben zu beschleunigen. Sie ist nur für die Bildbeschriftung verfügbar.
+Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um Beschriftungsaufgaben zu beschleunigen. Sie ist nur für die Bildbeschriftung verfügbar. Medizinische Bilder (DCM) sind nicht in der unterstützten Beschriftung enthalten.
 
 Zu Beginn Ihres Beschriftungsprojekts werden die Elemente in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Elemente um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. Dieses Training beinhaltet kein aktives Lernen.
 
@@ -178,7 +182,7 @@ Die genaue Anzahl beschrifteter Daten, die zum Starten der Beschriftungsunterst�
 Da die abschließenden Beschriftungen weiterhin von den Eingaben des Beschriftungserstellers abhängig sind, wird diese Technologie manchmal auch als *Human-in-the-Loop*-Beschriftung bezeichnet.
 
 > [!NOTE]
-> Von der ML-gestützten Datenbeschriftung werden keine Standardspeicherkonten unterstützt, die hinter einem [virtuellen Netzwerk](how-to-network-security-overview.md) gesichert sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Das nicht standardmäßige Speicherkonto kann hinter dem virtuellen Netzwerk gesichert werden.
+> Von der ML-gestützten Datenbeschriftung werden keine Standardspeicherkonten unterstützt, die hinter einem [virtuellen Netzwerk](how-to-network-security-overview.md) geschützt sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Das nicht standardmäßige Speicherkonto kann hinter dem virtuellen Netzwerk gesichert werden.
 
 ### <a name="clustering"></a>Clustering
 
@@ -274,7 +278,7 @@ Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
 Verwenden Sie die Schaltfläche **Exportieren** auf der Seite **Projektdetails** Ihres Beschriftungsprojekts. Sie können die Beschriftungsdaten für Machine Learning-Experimente jederzeit exportieren. 
 
 * Textbeschriftungen können wie folgt exportiert werden:
-    * Als CSV-Datei. Die CSV-Datei wird im Standardblobspeicher des Azure Machine Learning-Arbeitsbereichs in einem Ordner unter *Labeling/export/csv* erstellt. 
+    * Eine CSV-Datei. Die CSV-Datei wird im Standardblobspeicher des Azure Machine Learning-Arbeitsbereichs in einem Ordner unter *Labeling/export/csv* erstellt. 
     * Ein [Azure Machine Learning-Dataset mit Beschriftungen](how-to-use-labeled-dataset.md). 
 
 * Bildbeschriftungen können wie folgt exportiert werden:

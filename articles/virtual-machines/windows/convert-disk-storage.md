@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2b0ac2750515c8a61674b695e0faf3fd54ff7c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 994b24110399057741b9f62f7ecf30a8a505fd6d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670252"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350592"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
 
@@ -117,7 +117,7 @@ Folgen Sie diesen Schritten:
 3. Wenn der virtuelle Computer nicht beendet ist, wählen Sie im oberen Bereich unter **Übersicht** für den virtuellen Computer **Beenden** aus, und warten Sie, bis der virtuellen Computer beendet wurde.
 4. Wählen Sie im Bereich für den virtuellen Computer im Menü die Option **Datenträger** aus.
 5. Wählen Sie den Datenträger aus, den Sie konvertieren möchten.
-6. Wählen Sie im Menü die Option **Konfiguration** aus.
+6. Wählen Sie im Menü **Größe und Leistung** aus.
 7. Ändern Sie den **Kontotyp** aus dem ursprünglichen Datenträgertyp in den gewünschten Datenträgertyp.
 8. Wählen Sie **Speichern** aus, und schließen Sie den Datenträgerbereich.
 

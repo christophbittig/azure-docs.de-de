@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: c53a59279a8101f29cb9bfb64f4ccd1b4921283e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 383636d07aa453266be43b33d6f62b93255ac24a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355047"
 ---
 # <a name="configure-forced-tunneling"></a>Konfigurieren der Tunnelerzwingung
 
 Über die Tunnelerzwingung können Sie die Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort „erzwingen“. Sie verwenden dazu einen Standort-zu-Standort-VPN-Tunnel für die Kontrolle und Überwachung. Dies ist eine wichtige Sicherheitsvoraussetzung der IT-Richtlinien für die meisten Unternehmen. Wenn Sie die Tunnelerzwingung nicht konfigurieren, wird der Internetdatenverkehr Ihrer virtuellen Computer in Azure immer direkt von der Azure-Netzwerkinfrastruktur an das Internet geleitet, ohne dass Sie die Möglichkeit haben, diesen zu überprüfen oder zu überwachen. Nicht autorisierter Zugriff auf das Internet kann potenziell zur Offenlegung von Informationen oder anderen Arten von Sicherheitsverletzungen führen.
 
-Die Tunnelerzwingung kann mithilfe von Azure PowerShell konfiguriert werden. Eine Konfiguration über das Azure-Portal ist nicht möglich. Dieser Artikel hilft Ihnen dabei, die Tunnelerzwingung für virtuelle Netzwerke zu konfigurieren, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Informationen zum Konfigurieren der Tunnelerzwingung für das klassische Bereitstellungsmodell finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md).
+Die Tunnelerzwingung kann mithilfe von Azure PowerShell konfiguriert werden. Eine Konfiguration über das Azure-Portal ist nicht möglich. Dieser Artikel hilft Ihnen dabei, die Tunnelerzwingung für virtuelle Netzwerke zu konfigurieren, die mit dem [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) erstellt wurden. Informationen zum Konfigurieren der Tunnelerzwingung für das klassische Bereitstellungsmodell finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md).
 
 ## <a name="about-forced-tunneling"></a>Informationen zur Tunnelerzwingung
 
@@ -110,7 +110,7 @@ Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource
    Set-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-6. Erstellen Sie das virtuelle Netzwerkgateway. Dieser Schritt dauert einige Zeit (manchmal 45 Minuten oder länger), da Sie das Gateway erstellen und konfigurieren. Wenn ValidateSet-Fehler zum GatewaySKU-Wert angezeigt werden, sollten Sie überprüfen, ob Sie die [aktuelle Version der PowerShell-Cmdlets](#before) installiert haben. Die aktuelle Version der PowerShell-Cmdlets enthält die neuen überprüften Werte für die neuesten Gateway-SKUs.
+6. Erstellen Sie das virtuelle Netzwerkgateway. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Wenn ValidateSet-Fehler zum GatewaySKU-Wert angezeigt werden, sollten Sie überprüfen, ob Sie die [aktuelle Version der PowerShell-Cmdlets](#before) installiert haben. Die aktuelle Version der PowerShell-Cmdlets enthält die neuen überprüften Werte für die neuesten Gateway-SKUs.
 
    ```powershell
    $pip = New-AzPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic

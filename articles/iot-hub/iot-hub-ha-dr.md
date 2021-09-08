@@ -1,22 +1,22 @@
 ---
 title: Hochverfügbarkeit und Notfallwiederherstellung für Azure IoT Hub | Microsoft-Dokumentation
 description: Informationen zu den Azure- und IoT Hub-Features zum Erstellen von Azure IoT-Lösungen mit hoher Verfügbarkeit und Notfallwiederherstellung.
-author: jlian
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.author: philmea
-ms.openlocfilehash: 10a3360f30d211336e4ce861b124a307c85fb150
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.author: robinsh
+ms.openlocfilehash: 6b7fea611eeb3701bc624be8354b4639966dfaa6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308250"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356081"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
-Als ersten Schritt zur Implementierung einer belastbaren IoT-Lösung müssen Architekten, Entwickler und Geschäftsinhaber die Betriebszeitziele für die von ihnen erstellten Lösungen definieren. Diese Ziele können in erster Linie auf Grundlage bestimmter Geschäftsziele für jedes Szenario definiert werden. In diesem Zusammenhang bietet der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](/azure/architecture/resiliency/) einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/reliability/disaster-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
+Als ersten Schritt zur Implementierung einer belastbaren IoT-Lösung müssen Architekten, Entwickler und Geschäftsinhaber die Betriebszeitziele für die von ihnen erstellten Lösungen definieren. Diese Ziele können in erster Linie auf Grundlage bestimmter Geschäftsziele für jedes Szenario definiert werden. In diesem Zusammenhang bietet der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](/azure/architecture/framework/resiliency/app-design) einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/reliability/disaster-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
 Dieser Artikel beschreibt die Funktionen für Hochverfügbarkeit und Notfallwiederherstellung, die der Dienst IoT Hub bietet. In diesem Artikel werden schwerpunktmäßig die folgenden Themen beschrieben:
 
@@ -60,7 +60,7 @@ Beide Failoveroptionen bieten die folgende Recovery Point Objectiv (RPO):
 Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwartet, dass alle Vorgänge des Geräts und der Back-End-Anwendungen ohne manuellen Eingriff fortgesetzt werden. Dies bedeutet, dass Ihre Gerät-zu-Cloud-Nachrichten weiterhin funktionieren sollten und die gesamte Geräteregistrierung intakt ist. Ereignisse, die über Event Grid ausgegeben werden, können über dieselben zuvor konfigurierten Abonnements genutzt werden, solange diese Event Grid-Abonnements weiterhin verfügbar sind. Bei benutzerdefinierten Endpunkten ist keine zusätzliche Behandlung erforderlich.
 
 > [!CAUTION]
-> - Der Event Hub-kompatible Namen und Endpunkt des im IoT Hub integrierten Endpunkts ändern sich nach dem Failover. Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, sollten Sie [die IoT Hub-Verbindungszeichenfolge verwenden](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den mit Event Hub kompatiblen Namen und Endpunkt in Ihrer Anwendung direkt verwenden, müssen Sie zum Fortfahren [den neuen mit Event Hub kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) nach dem Failover abrufen. 
+> - Der Event Hub-kompatible Namen und Endpunkt des im IoT Hub integrierten Endpunkts ändern sich nach dem Failover. Wenn Sie Telemetrienachrichten vom integrierten Endpunkt über den Event Hub-Client oder den Ereignisprozessorhost empfangen, sollten Sie [die IoT Hub-Verbindungszeichenfolge verwenden](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint), um die Verbindung herzustellen. So wird sichergestellt, dass Ihre Back-End-Anwendungen weiterhin ausgeführt werden, ohne dass ein manueller Eingriff nach dem Failover erforderlich ist. Wenn Sie den mit Event Hub kompatiblen Namen und Endpunkt in Ihrer Anwendung direkt verwenden, müssen Sie zum Fortfahren [den neuen mit Event Hub kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) nach dem Failover abrufen. Weitere Informationen finden Sie unter [Manuelles Failover und Event Hub](#manual-failover-and-event-hub).
 >
 > - Wenn Sie für die Verbindung des integrierten Events-Endpunkts Azure Functions oder Azure Stream Analytics verwenden, müssen Sie möglicherweise einen **Neustart** durchführen. Der Grund: Während eines Failovers sind frühere Offsets nicht mehr gültig.
 >
@@ -81,6 +81,18 @@ Die manuelle Failoveroption ist immer verfügbar, unabhängig davon, ob in der p
 Das manuelle Failover steht ohne zusätzliche Kosten für IoT-Hubs zur Verfügung, die nach dem 18. Mai 2017 erstellt wurden.
 
 Eine Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz](tutorial-manual-failover.md)
+
+## <a name="manual-failover-and-event-hub"></a>Manuelles Failover und Event Hub
+
+Wie bereits im Abschnitt **Vorsicht** erwähnt, ändern sich der Event Hub-kompatible Namen und der Endpunkt des im IoT Hub integrierten Endpunkts nach einem manuellen Failover. Dies liegt daran, dass der Event Hub-Client nicht über IoT Hub-Ereignisse informiert wird. Dasselbe gilt für andere cloudbasierte Clients wie Functions und Azure Stream Analytics. Um den Endpunkt und den Namen abzurufen, können Sie das Azure-Portal verwenden oder ein bereitgestelltes Beispiel nutzen.
+
+### <a name="use-the-portal"></a>Verwenden des Portals
+
+Weitere Informationen zur Verwendung des Portals zum Abrufen des Event Hub-kompatiblen Endpunkts und des Event Hub-kompatiblen Namens finden Sie unter [Lesen vom integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint).
+
+### <a name="use-the-included-sample"></a>Verwenden des bereitgestellten Beispiels
+
+Um die IoT Hub Verbindungszeichenfolge zum erneuten Erfassen des Event Hub-kompatiblen Endpunkts zu verwenden, nutzen Sie ein Beispiel, das Sie unter [https://github.com/Azure/azure-sdk-for-net/tree/main/samples/iothub-connect-to-eventhubs](https://github.com/Azure/azure-sdk-for-net/tree/main/samples/iothub-connect-to-eventhubs) finden und das zeigt, wie die IoT Hub-Verbindungszeichenfolge verwendet wird, um den EventHub-kompatiblen Endpunkt erneut zu erfassen. Im Codebeispiel wird die Verbindungszeichenfolge verwendet, um den neuen Event Hub-Endpunkt abzurufen und die Verbindung wiederherzustellen. Visual Studio muss installiert sein.
 
 ### <a name="running-test-drills"></a>Ausführen von Testdrills
 
@@ -141,5 +153,5 @@ Diese Zusammenfassung der in diesem Artikel vorgestellten Optionen für Hochverf
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist Azure IoT Hub?](about-iot-hub.md)
-* [Erste Schritte mit IoT Hubs (Schnellstart)](quickstart-send-telemetry-dotnet.md)
+* [Erste Schritte mit IoT Hubs (Schnellstart)](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 * [Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz](tutorial-manual-failover.md)

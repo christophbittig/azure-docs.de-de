@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: a41dce28427db40dfd19879e4ada95add64009c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772432"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343371"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High-Performance Computing (HPC): VM-Größen
+
+> [!TIP]
+> Probieren Sie das **[Auswahltool für virtuelle Computer](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.
 
 Virtuelle Azure-Computer (Azure-VMs) der H-Serie bieten eine herausragende Leistung, Skalierbarkeit und Kosteneffizienz für verschiedene HPC-Workloads in der Praxis.
 

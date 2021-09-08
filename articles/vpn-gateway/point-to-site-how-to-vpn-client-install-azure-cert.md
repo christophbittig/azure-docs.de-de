@@ -6,26 +6,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 07/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: d4ab1009b38d250a39455a9e8a470cd7f1156793
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 4643502a16982fc3b3c2a659a4dbc127e515d349
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527104"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346147"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Installieren eines Clientzertifikats für die Zertifikatauthentifizierung bei P2S-Verbindungen
 
-Wenn ein P2S-VPN-Gateway so konfiguriert ist, dass es eine Zertifikatauthentifizierung erfordert, muss auf jedem Client ein lokales Clientzertifikat installiert sein. Sie können ein Clientzertifikat entweder mithilfe eines selbstsignierten Stammzertifikats oder mithilfe eines Stammzertifikats, das mit einer Lösung einer Unternehmenszertifizierungsstelle generiert wurde, erstellen. 
+Wenn ein P2S-VPN-Gateway so konfiguriert ist, dass es eine Zertifikatauthentifizierung erfordert, muss auf jedem Clientcomputer ein lokales Clientzertifikat installiert sein. Dieser Artikel hilft Ihnen, ein Clientzertifikat zu installieren.
 
-Wenn Sie ein Clientzertifikat generieren, wird das Zertifikat in der Regel automatisch auf dem Clientcomputer installiert, von dem es generiert wurde. Wenn Sie von einem anderen Clientcomputer aus eine Verbindung mit Ihrem VNet herstellen möchten, müssen Sie ein Clientzertifikat auf dem Computer installieren, von dem aus Sie eine Verbindung herstellen. Dies ist zusätzlich zur Konfiguration des VPN-Clients auf diesem Computer erforderlich.
+Wenn Sie ein Clientzertifikat aus einem selbstsignierten Stammzertifikat generieren möchten, lesen Sie einen der folgenden Artikel:
 
-Sie können mehrere Methoden verwenden, um selbstsignierte Zertifikate zu generieren und zu exportieren. Weitere Informationen finden Sie in den folgenden Artikeln:
-
-* [PowerShell](vpn-gateway-certificates-point-to-site.md)
-* [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-* [Linux](vpn-gateway-certificates-point-to-site-linux.md) 
+* [Generieren von Zertifikaten – PowerShell](vpn-gateway-certificates-point-to-site.md)
+* [Generieren von Zertifikaten – MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+* [Generieren von Zertifikaten – Linux](vpn-gateway-certificates-point-to-site-linux.md) 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
@@ -34,7 +32,7 @@ Sie können mehrere Methoden verwenden, um selbstsignierte Zertifikate zu generi
 ## <a name="mac"></a><a name="installmac"></a>Mac
 
 >[!NOTE]
->Mac-VPN-Clients werden nur für das Resource Manager-Bereitstellungsmodell unterstützt. Für das klassische Bereitstellungsmodell werden sie nicht unterstützt.
+>Mac-VPN-Clients werden nur für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) unterstützt. Für das klassische Bereitstellungsmodell werden sie nicht unterstützt.
 >
 >
 

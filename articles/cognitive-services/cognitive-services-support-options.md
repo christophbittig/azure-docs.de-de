@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e0b0a3023147fc12c0133f7fb0c78b943c09ced
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720184"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340489"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Support- und Hilfeoptionen für Azure Cognitive Services
 
@@ -106,13 +106,9 @@ Verwenden Sie beim Übermitteln einer neuen Frage an Stack Overflow bei der Erst
 * [Metrics Advisor (Vorschau)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Personalisierung](https://stackoverflow.com/search?q=azure+personalizer)
 
-## <a name="submit-feedback-on-user-voice"></a>Einreichen von Feedback auf User Voice
+## <a name="submit-feedback"></a>Feedback übermitteln
 
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-In UserVoice können Sie neue Features anfordern. Teilen Sie Ihre Ideen mit, damit Cognitive Services und die APIs noch besser für die Anwendungen funktionieren, die Sie entwickeln. 
+Um neue Features anzufordern, veröffentlichen Sie sie auf https://feedback.azure.com. Teilen Sie Ihre Ideen mit, damit Cognitive Services und die APIs noch besser für die Anwendungen funktionieren, die Sie entwickeln. 
 
 * [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
 

@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 3158d4fae313afcb1fef69ba7a2728df4d235175
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 522c9e590f1f63a12bd4f52f56eac0798ba78aa7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525334"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346114"
 ---
 # <a name="linux-concurrency-best-practices-for-azure-netapp-files---session-slots-and-slot-table-entries"></a>Bewährte Methoden für Linux-Parallelität für Azure NetApp Files: Sitzungsslots und Slottabelleneinträge
 
-In diesem Artikel erfahren Sie mehr zu bewährte Methoden für Parallelität für Sitzungsslots und Slottabelleneinträge für das NFS-Protokoll für Azure NetApp Files. 
+In diesem Artikel erfahren Sie mehr zu bewährten Methoden für Parallelität für Sitzungsslots und Slottabelleneinträge des NFS-Protokolls für Azure NetApp Files. 
 
 ## <a name="nfsv3"></a>NFSv3
 
@@ -48,7 +48,7 @@ Ein Parallelitätsgrad von maximal 155 reicht aus, um 155.000 Oracle DB-NFS-Vo
 
 Einzelheiten finden Sie unter [Leistung von Oracle-Datenbanken auf einzelnen Azure NetApp Files-Volumes](performance-oracle-single-volumes.md).
 
-Der optimierbare Parameter `sunrpc.max_tcp_slot_table_entries` ist ein Optimierungsparameter auf Verbindungsebene.  *Als bewährte Methode legen Sie diesen Wert pro Verbindung auf höchsten 128 fest, wobei 3.000 Slots in der Umgebung nicht überschritten werden sollten.*
+Der optimierbare Parameter `sunrpc.max_tcp_slot_table_entries` ist ein Optimierungsparameter auf Verbindungsebene.  *Als bewährte Methode legen Sie diesen Wert pro Verbindung auf höchsten 128 fest, wobei 10.000 Slots in der Umgebung nicht überschritten werden sollten.*
 
 ### <a name="examples-of-slot-count-based-on-concurrency-recommendation"></a>Beispiele der Slotanzahl basierend auf der Parallelitätsempfehlung 
 
@@ -109,7 +109,7 @@ In Beispiel 4 wird pro Client der reduzierte Wert 8 für `sunrpc.max_tcp_slot_t
         * Der Client stellt pro Verbindung nicht mehr als 8 In-Flight-Anforderungen an den Server.
         * Der Server akzeptiert über diese Einzelverbindung nicht mehr als 128 In-Flight-Anforderungen.
 
-Wenn Sie NFSv3 verwenden, *sollten Sie gemeinsam die Anzahl der Speicherendpunktslots auf maximal 2.000 belassen*. Es ist am besten, den Wert pro Verbindung für `sunrpc.max_tcp_slot_table_entries` auf weniger als 128 festzulegen, wenn eine Anwendung auf viele Netzwerkverbindungen horizontal aufskaliert wird (`nconnect` und HPC im Allgemeinen und EDA im Besonderen).  
+Wenn Sie NFSv3 verwenden, *sollten Sie gemeinsam die Anzahl der Speicherendpunktslots auf maximal 10.000 belassen*. Es ist am besten, den Wert pro Verbindung für `sunrpc.max_tcp_slot_table_entries` auf weniger als 128 festzulegen, wenn eine Anwendung auf viele Netzwerkverbindungen horizontal aufskaliert wird (`nconnect` und HPC im Allgemeinen und EDA im Besonderen).  
 
 ### <a name="how-to-calculate-the-best-sunrpcmax_tcp_slot_table_entries"></a>Berechnen des besten Werts für `sunrpc.max_tcp_slot_table_entries` 
 
@@ -129,7 +129,7 @@ Die folgende Tabelle zeigt eine Beispielstudie zur Parallelität mit angegebenen
 
 ### <a name="how-to-calculate-concurrency-settings-by-connection-count"></a>Berechnen von Parallelitätseinstellungen anhand der Verbindungsanzahl
 
-Wenn es sich bei der Workload beispielsweise um eine EDA-Farm handelt und 200 Clients Workload zum selben Speicherendpunkt leiten (ein Speicherendpunkt ist eine Speicher-IP-Adresse), berechnen Sie die erforderliche E/A-Rate und teilen die Parallelität auf die gesamte Farm auf.
+Wenn es sich bei der Workload beispielsweise um eine EDA-Farm handelt und 1.250 Clients Workload zu demselben Speicherendpunkt leiten (ein Speicherendpunkt ist eine Speicher-IP-Adresse), berechnen Sie die erforderliche E/A-Rate und teilen die Parallelität auf die gesamte Farm auf.
 
 Angenommen, die Workload beträgt 4.000 MiB/s bei einer durchschnittlichen Vorgangsgröße von 256 KiB und einer durchschnittlichen Latenz von 10 ms. Berechnen Sie die Parallelität mit der folgenden Formel:
 
@@ -139,7 +139,7 @@ Die Berechnung ergibt eine Parallelität von 160:
  
 `(160 = 16,000 × 0.010)`
 
-Angesichts des Bedarfs für 200 Clients könnten Sie `sunrpc.max_tcp_slot_table_entries` sicher auf 2 pro Client festlegen, um 4.000 MiB/s zu erreichen.  Sie können jedoch zusätzlichen Spielraum einräumen, indem Sie die Anzahl pro Client auf 4 oder sogar 8 festlegen, um unter der empfohlenen Obergrenze von 2.000 Slots zu bleiben. 
+Angesichts des Bedarfs für 1.250 Clients könnten Sie `sunrpc.max_tcp_slot_table_entries` sicher auf 2 pro Client festlegen, um 4.000 MiB/s zu erreichen.  Sie können jedoch zusätzlichen Spielraum einräumen, indem Sie die Anzahl pro Client auf 4 oder sogar 8 festlegen, um deutlich unter der empfohlenen Obergrenze von 10.000 Slots zu bleiben. 
 
 ### <a name="how-to-set-sunrpcmax_tcp_slot_table_entries-on-the-client"></a>Festlegen von `sunrpc.max_tcp_slot_table_entries` auf dem Client
 
@@ -266,5 +266,9 @@ Das folgende Beispiel zeigt Paket 14 (maximale Anzahl der Serveranforderungen):
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Bewährte Methoden in Bezug auf direkte E/A unter Linux für Azure NetApp Files](performance-linux-direct-io.md)
+* [Bewährte Methoden in Bezug auf den Linux-Dateisystemcache für Azure NetApp Files](performance-linux-filesystem-cache.md)
 * [Einbindungsoptionen für NFS unter Linux: bewährte Methoden für Azure NetApp Files](performance-linux-mount-options.md)
+* [Bewährte Methoden für NFS-Read-Ahead unter Linux](performance-linux-nfs-read-ahead.md)
+* [Bewährte Methoden für SKUs für virtuelle Azure-Computer](performance-virtual-machine-sku.md) 
 * [Leistungsbenchmarks für Linux](performance-benchmarks-linux.md) 

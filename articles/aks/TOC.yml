@@ -61,7 +61,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Speicher
+    - name: Storage
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -132,6 +132,8 @@
           maintainContext: false
     - name: Unterstützte Kubernetes-Version
       href: supported-kubernetes-versions.md
+    - name: Cloud Controller Manager (Vorschau)
+      href: out-of-tree.md
     - name: Sicherheitshärtung im Hostbetriebssystem
       href: security-hardened-vm-host-image.md
     - name: Übersicht über die Azure Kubernetes Service-Diagnose

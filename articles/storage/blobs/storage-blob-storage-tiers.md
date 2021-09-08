@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 810a62dee277453d4cc2f41c72d0868549d711cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653218"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342783"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 
@@ -75,7 +75,7 @@ Für die kalte Zugriffsebene fallen im Vergleich mit dem heißen Speicher niedri
 
 ## <a name="archive-access-tier"></a>Zugriffsebene „Archiv“
 
-Die Archivzugriffsebene hat im Vergleich zur heißen und kalten Ebene die niedrigsten Speicherkosten, aber höhere Datenabrufkosten. Die Daten müssen sich mindestens 180 Tage lang auf der Archivspeicherebene befinden, sonst unterliegen sie einer Gebühr für frühe Löschung. Das Abrufen von Daten in der Archivspeicherebene kann je nach angegebener Priorität der Aktivierung mehrere Stunden dauern. Ein kleines Objekt kann bei einer Aktivierung mit hoher Priorität in weniger als einer Stunde aus dem Archiv abgerufen werden. Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md).
+Die Archivzugriffsebene hat im Vergleich zur heißen und kalten Ebene die niedrigsten Speicherkosten, aber höhere Datenabrufkosten. Die Daten müssen sich mindestens 180 Tage lang auf der Archivspeicherebene befinden, sonst unterliegen sie einer Gebühr für frühe Löschung. Das Abrufen von Daten in der Archivspeicherebene kann je nach angegebener Priorität der Aktivierung mehrere Stunden dauern. Ein kleines Objekt kann bei einer Aktivierung mit hoher Priorität in weniger als einer Stunde aus dem Archiv abgerufen werden. Weitere Informationen finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
 
 Solange sich ein Blob im Archivspeicher befindet, sind die Blobdaten offline und können nicht gelesen oder geändert werden. Um ein Blob, das sich im Archivspeicher befindet, zu lesen oder herunterzuladen, müssen Sie es zunächst in einer Onlineebene aktivieren. Sie können keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Die Blobmetadaten bleiben jedoch online und verfügbar, sodass Sie das Blob, seine Eigenschaften, Metadaten und Blobindextags auflisten können. Das Festlegen oder Ändern der Blobmetadaten im Archiv ist nicht zulässig. Sie können jedoch die Blobindextags festlegen und ändern. Für Blobs im Archiv sind die einzigen gültigen Vorgänge [Abrufen von Blobeigenschaften](/rest/api/storageservices/get-blob-properties), [Abrufen von Blobmetadaten](/rest/api/storageservices/get-blob-metadata), [Festlegen von Blobtags](/rest/api/storageservices/set-blob-tags), [Abrufen von Blobtags](/rest/api/storageservices/get-blob-tags), [Suchen nach Blobs anhand von Tags](/rest/api/storageservices/find-blobs-by-tags), [Auflisten von Blobs](/rest/api/storageservices/list-blobs), [Festlegen des Blobtarifs](/rest/api/storageservices/set-blob-tier), [Kopieren von Blobs](/rest/api/storageservices/copy-blob) und [Löschen von Blobs](/rest/api/storageservices/delete-blob).
 
@@ -122,7 +122,7 @@ Wenn ein Blob hochgeladen oder zwischen Ebenen verschoben wird, wird dies sofort
 
 Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Heiß“ zu „Kalt“, von „Heiß“ zu „Archiv“ oder von „Kalt“ zu „Archiv“), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB).
 
-Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB). Bei Blobs, die aus der Ebene „Kalt“ oder „Archiv“ verschoben werden, können auch Gebühren für das [frühe Löschen](#cool-and-archive-early-deletion) anfallen. Die [Aktivierung von Daten aus der Archivebene](storage-blob-rehydration.md) nimmt einige Zeit in Anspruch, und für die Daten werden Archivpreise so lange in Rechnung gestellt, bis sie online wiederhergestellt werden und sich die Blobebene in „Heiß“ oder „Kalt“ ändert.
+Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB). Bei Blobs, die aus der Ebene „Kalt“ oder „Archiv“ verschoben werden, können auch Gebühren für das [frühe Löschen](#cool-and-archive-early-deletion) anfallen. Die [Aktivierung von Daten aus der Archivebene](archive-rehydrate-overview.md) nimmt einige Zeit in Anspruch, und für die Daten werden Archivpreise so lange in Rechnung gestellt, bis sie online wiederhergestellt werden und sich die Blobebene in „Heiß“ oder „Kalt“ ändert.
 
 Die folgende Tabelle gibt Aufschluss darüber, wie Ebenenänderungen abgerechnet werden.
 
@@ -155,7 +155,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 
 <sup>1</sup> Bei GPv2-Konten beträgt die Aufbewahrungsdauer für Objekte der kalten Ebene mindestens 30 Tage. Bei Blob Storage-Konten gilt keine Mindestaufbewahrungsdauer für die kalte Ebene.
 
-<sup>2</sup> Archivspeicher unterstützt zurzeit zwei Aktivierungsprioritäten („High“ und „Standard“), die unterschiedliche Abruflatenzen und Kosten bieten. Weitere Informationen finden Sie unter [Aktivieren von Blobdaten aus der Archivspeicherebene](storage-blob-rehydration.md).
+<sup>2</sup> Archivspeicher unterstützt zurzeit zwei Aktivierungsprioritäten („High“ und „Standard“), die unterschiedliche Abruflatenzen und Kosten bieten. Weitere Informationen finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
 
 > [!NOTE]
 > Blob Storage-Konten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie universelle Speicherkonten der Version 2. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](scalability-targets.md).

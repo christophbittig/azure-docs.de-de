@@ -1,5 +1,5 @@
 ---
-title: 'Übersicht: Azure Percept Dev Tools-Paketinstallationsprogramm'
+title: Installieren der Azure Percept-Entwicklungstools
 description: Hier erfahren Sie, wie Sie die erweiterte Entwicklung mit Azure Percept mithilfe des Dev Tools-Paketinstallationsprogramms beschleunigen können.
 author: mimcco
 ms.author: mimcco
@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 49d5a6ed7b23169e655a02cdbb14df52a6e82231
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 88d93b98b9bd456c5529bff67fbef98b9e792ba0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099783"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346112"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Übersicht: Dev Tools-Paketinstallationsprogramm
 

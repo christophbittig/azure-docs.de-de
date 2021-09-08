@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Grundlegendes zu den Funktionen und dem Zweck von Azure Digital Twins-Explorer
 author: baanders
 ms.author: baanders
-ms.date: 4/28/2021
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac5f42857f1e0d9979701e1a05bdf5ecaa761c84
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 873e1a9fc0fdda5c331112d02a1b6111e336193e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110485950"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351124"
 ---
 # <a name="azure-digital-twins-explorer-preview"></a>Azure Digital Twins-Explorer (Vorschau)
 
@@ -27,17 +27,17 @@ Hier sehen Sie eine Ansicht des Explorer-Fensters mit Modellen und Zwillingen, d
 
 Die grafische Benutzeroberfläche ist ein hervorragendes Tool zum Untersuchen und Verstehen der Form Ihres Graphen und Modellsatzes sowie zum Vornehmen gezielter Ad-hoc-Änderungen an einzelnen Zwillingen und Beziehungen.
 
-Dieser Artikel enthält weitere Informationen zum Azure Digital Twins-Explorer, einschließlich Anwendungsfälle und einer Übersicht seiner Features. Ausführliche Schritte zur Verwendung der einzelnen Funktionen finden Sie unter [Vorgehensweise: Verwenden von Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md).
+Dieser Artikel enthält weitere Informationen zum Azure Digital Twins-Explorer, einschließlich Anwendungsfälle und einer Übersicht seiner Features. Ausführliche Schritte zur Verwendung der einzelnen Funktionen finden Sie unter [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md).
 
 ## <a name="when-to-use"></a>Verwendung
 
 Azure Digital Twins-Explorer ist ein visuelles Tool für Benutzer, die ihren Zwillingsgraphen untersuchen sowie Zwillinge und Beziehungen im Kontext ihres Graphen ändern möchten.
 
 Entwickler finden dieses Tool in den folgenden Szenarien möglicherweise besonders nützlich:
-* **Erkunden**: Verwenden Sie den Explorer, um mehr über Azure Digital Twins und die Art und Weise zu erfahren, wie es Ihre reale Umgebung darstellt. Importieren Sie Beispielmodelle und Graphen, die Sie anzeigen und bearbeiten können, um sich mit dem Dienst vertraut zu machen. Anleitungen für die ersten Schritte mit Azure Digital Twins-Explorer finden Sie unter [Schnellstart: Erste Schritte mit Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md).
-* **Entwicklung**: Verwenden Sie den Explorer, um Ihren Zwillingsgraphen anzuzeigen und zu überprüfen sowie bestimmte Eigenschaften von Modellen, Zwillingen und Beziehungen zu untersuchen. Nehmen Sie Ad-hoc-Änderungen an Ihrem Graphen und seinen Daten vor. Ausführliche Anweisungen zur Verwendung der einzelnen Funktionen finden Sie unter [Vorgehensweise: Verwenden von Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md). 
+* **Erkunden**: Verwenden Sie den Explorer, um mehr über Azure Digital Twins und die Art und Weise zu erfahren, wie es Ihre reale Umgebung darstellt. Importieren Sie Beispielmodelle und Graphen, die Sie anzeigen und bearbeiten können, um sich mit dem Dienst vertraut zu machen. Anleitungen für die ersten Schritte mit Azure Digital Twins-Explorer finden Sie unter [Erste Schritte mit dem Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md).
+* **Entwicklung**: Verwenden Sie den Explorer, um Ihren Zwillingsgraphen anzuzeigen und zu überprüfen sowie bestimmte Eigenschaften von Modellen, Zwillingen und Beziehungen zu untersuchen. Nehmen Sie Ad-hoc-Änderungen an Ihrem Graphen und seinen Daten vor. Ausführliche Anweisungen zur Verwendung der einzelnen Funktionen finden Sie unter [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md). 
 
-Der Hauptzweck des Explorers besteht darin, Sie beim Visualisieren und Verstehen Ihres Graphen zu unterstützen und Ihren Graphen nach Bedarf zu aktualisieren. Bei umfangreichen Lösungen und bei Arbeiten, die wiederholt oder automatisiert werden sollten, sollten Sie stattdessen die Verwendung von [APIs und SDKs](how-to-use-apis-sdks.md) erwägen, um mit Ihrer Instanz über Code zu interagieren.
+Der Hauptzweck des Explorers besteht darin, Sie beim Visualisieren und Verstehen Ihres Graphen zu unterstützen und Ihren Graphen nach Bedarf zu aktualisieren. Bei umfangreichen Lösungen und bei Arbeiten, die wiederholt oder automatisiert werden sollten, sollten Sie stattdessen die Verwendung von [APIs und SDKs](./concepts-apis-sdks.md) erwägen, um mit Ihrer Instanz über Code zu interagieren.
 
 [!INCLUDE [digital-twins-access-explorer.md](../../includes/digital-twins-access-explorer.md)]
 
@@ -53,7 +53,7 @@ Die Abschnitte des Explorers lauten wie folgt:
 
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png" alt-text="Screenshot von Azure Digital Twins-Explorer mit einer Hervorhebung um jedes der oben beschriebenen Panels." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png":::
 
-Ausführliche Anweisungen zur Verwendung der einzelnen Funktionen finden Sie unter [Vorgehensweise: Verwenden von Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md). 
+Ausführliche Anweisungen zur Verwendung der einzelnen Funktionen finden Sie unter [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md). 
 
 ## <a name="how-to-contribute"></a>Beitragen
 
@@ -77,4 +77,4 @@ Azure Digital Twins-Explorer ist ein kostenloses Tool für die Interaktion mit d
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Detaillierte Informationen zur Verwendung von Azure Digital Twins-Explorer-Funktionen: [Vorgehensweise: Verwenden von Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md).
+Detaillierte Informationen zur Verwendung von Azure Digital Twins-Explorer-Funktionen: [Verwenden des Azure Digital Twins-Explorers](how-to-use-azure-digital-twins-explorer.md).

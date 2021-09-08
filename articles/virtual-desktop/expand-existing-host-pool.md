@@ -3,15 +3,15 @@ title: Erweitern eines vorhandenen Hostpools um neue Sitzungshosts – Azure
 description: Hier erfahren Sie, wie Sie einen vorhandenen Hostpool in Azure Virtual Desktop um neue Sitzungshosts erweitern.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 446052190df59f6dc53ac6a39cd4bc120752fa41
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f37e7e18fd32c3ad0b06f1189c57f44d72dced7a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757731"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760847"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -60,21 +60,25 @@ So erweitern Sie den Hostpool durch Hinzufügen von virtuellen Computern:
 
 9. Wählen Sie als **Informationen zum virtuellen Netzwerk** das virtuelle Netzwerk und das Subnetz aus, mit dem die virtuellen Computer verknüpft werden sollen. Sie können dasselbe virtuelle Netzwerk auswählen, das zurzeit bereits von Ihren vorhandenen Computern verwendet wird, oder ein anderes virtuelles Netzwerk auswählen, das besser für die Region geeignet ist, die Sie in Schritt 7 ausgewählt haben.
 
-10. Geben Sie als **Administratorkonto** den Active Directory-Domänenbenutzernamen und das Kennwort ein, der bzw. das dem ausgewählten virtuellen Netzwerk zugeordnet ist. Diese Anmeldeinformationen werden verwendet, um die virtuellen Computer mit dem virtuellen Netzwerk zu verknüpfen.
+10. Wählen Sie für die **Domäne für den Beitritt** aus, ob Sie die virtuellen Computer mit Active Directory oder [Azure Active Directory](deploy-azure-ad-joined-vm.md) verknüpfen möchten. Wenn Sie die Option **VM bei Intune registrieren** auswählen, werden die virtuellen Computer automatisch bei Intune registriert. Alle virtuellen Computer in einem Hostpool sollten mit derselben Domäne oder demselben Azure AD-Mandanten verknüpft sein.
+
+11. Geben Sie für den **UPN für AD-Domänenbeitritt** einen Active Directory-Domänenbenutzernamen und ein Kennwort ein, die der von Ihnen ausgewählten Domäne zugeordnet sind. Diese Anmeldeinformationen werden verwendet, um die virtuellen Computer mit der Active Directory-Domäne zu verknüpfen.
 
       >[!NOTE]
       >Stellen Sie sicher, dass Ihre Administratornamen den hier angegebenen Informationen entsprechen. Vergewissern Sie sich außerdem, dass keine mehrstufige Authentifizierung (MFA) für das Konto aktiviert ist.
 
-11. Wählen Sie die Registerkarte **Tag** aus, wenn Sie über Tags verfügen, mit denen Sie die virtuellen Computer gruppieren möchten. Überspringen Sie diese Registerkarte andernfalls.
+12. Geben Sie für das **VM-Administratorkonto** die Informationen des lokalen Administratorkontos ein, das Sie für alle virtuellen Computer verwenden möchten.
 
-12. Wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Überprüfen Sie Ihre Auswahl, und wählen Sie **Erstellen** aus, wenn alles in Ordnung ist.
+13. Wählen Sie die Registerkarte **Tags** aus, wenn Sie über Tags verfügen, mit denen Sie die virtuellen Computer gruppieren möchten. Überspringen Sie diese Registerkarte andernfalls.
+
+14. Wählen Sie die Registerkarte **Überprüfen und erstellen** aus. Überprüfen Sie Ihre Auswahl, und wählen Sie **Erstellen** aus, wenn alles in Ordnung ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie Ihren vorhandenen Hostpool erweitert haben, können Sie sich bei einem Azure Virtual Desktop-Client anmelden, um die Einstellungen im Rahmen einer Benutzersitzung zu testen. Sie können jeden der folgenden Clients verwenden, um eine Verbindung mit einer Sitzung herzustellen:
 
-- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./connect-windows-7-10.md)
-- [Herstellen einer Verbindung mit dem Webclient](./connect-web.md)
-- [Herstellen einer Verbindung mit dem Android-Client](./connect-android.md)
-- [Herstellen einer Verbindung mit dem macOS-Client](./connect-macos.md)
-- [Herstellen einer Verbindung mit dem iOS-Client](./connect-ios.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](./user-documentation/connect-windows-7-10.md)
+- [Herstellen einer Verbindung mit dem Webclient](./user-documentation/connect-web.md)
+- [Herstellen einer Verbindung mit dem Android-Client](./user-documentation/connect-android.md)
+- [Herstellen einer Verbindung mit dem macOS-Client](./user-documentation/connect-macos.md)
+- [Herstellen einer Verbindung mit dem iOS-Client](./user-documentation/connect-ios.md)

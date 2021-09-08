@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f3a19958770e157ed31dc3104331bcf5f860041d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229376"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719586"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNet mithilfe mehrerer Authentifizierungstypen: Azure-Portal
 
@@ -41,7 +41,8 @@ Sie können die folgenden Werte zum Erstellen einer Testumgebung oder zum besser
 * **Ressourcengruppe:** TestRG1
 * **Standort:** East US
 * **GatewaySubnet:** 10.1.255.0/27<br>
-* **Name des Gateways des virtuellen Netzwerks:** VNet1GW
+* **SKU:** VpnGw2
+* **Generation:** Generation 2
 * **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
 * **Öffentliche IP-Adresse:** VNet1GWpip
@@ -66,7 +67,12 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt. Die gesamte Erstellung und Bereitstellung eines Gateways kann häufig 45 Minuten oder länger dauern. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="client-address-pool"></a><a name="addresspool"></a>Clientadresspool
 

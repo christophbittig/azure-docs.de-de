@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f43fc94174ebdcfdf447d3635a696193959849fa
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600290"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460519"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Einrichten von Message Passing Interface für HPC
 
@@ -51,7 +51,7 @@ make -j 8 && make install
 ```
 
 > [!NOTE]
-> In aktuellen UCX-Builds wurde ein [Problem](https://github.com/openucx/ucx/pull/5965) behoben, wodurch bei mehreren vorhandenen NIC-Schnittstellen nun die richtige InfiniBand-Schnittstelle ausgewählt wird. Weitere Informationen zum Ausführen von MPI über InfiniBand bei aktiviertem beschleunigtem Netzwerkbetrieb auf der VM finden Sie [hier](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2).
+> In aktuellen UCX-Builds wurde ein [Problem](https://github.com/openucx/ucx/pull/5965) behoben, wodurch bei mehreren vorhandenen NIC-Schnittstellen nun die richtige InfiniBand-Schnittstelle ausgewählt wird. Weitere Informationen zum Ausführen von MPI über InfiniBand, wenn der beschleunigte Netzwerkbetrieb auf der VM aktiviert ist, finden Sie unter [Beheben von bekannten Problemen bei HPC- und GPU-VMs](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2).
 
 ## <a name="hpc-x"></a>HPC-X
 
@@ -329,5 +329,6 @@ In der obigen Syntax wird von einem gemeinsam genutzten Basisverzeichnis ausgega
 
 - Informieren Sie sich über die [InfiniBand-fähigen](../../sizes-hpc.md#rdma-capable-instances) VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md).
 - Weitere Informationen finden Sie in der [Übersicht über virtuelle Computer der HBv3-Serie](hbv3-series-overview.md) und in der [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
+- Weitere Informationen finden Sie unter [Optimale MPI-Prozessplatzierung für VMs der HB-Serie](https://techcommunity.microsoft.com/t5/azure-global/optimal-mpi-process-placement-for-azure-hb-series-vms/ba-p/2450663).
 - Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

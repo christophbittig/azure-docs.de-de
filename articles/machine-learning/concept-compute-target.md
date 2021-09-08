@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/29/2020
-ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/27/2021
+ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021085"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340362"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -24,7 +24,7 @@ In einem typischen Modellentwicklungslebenszyklus gehen Sie unter Umständen wie
 
 1. Sie entwickeln und experimentieren zunächst mit einer kleinen Datenmenge. In dieser Phase verwenden Sie Ihre lokale Umgebung, z. B. einen lokalen Computer oder einen cloudbasierten virtuellen Computer (VM), als Ihr Computeziel.
 1. Skalieren Sie Ihre Umgebung für größere Datenmengen hoch, oder führen Sie ein verteiltes Training mithilfe eines dieser [Trainingscomputeziele](#train) durch.
-1. Wenn Ihr Modell bereit ist, stellen Sie es in einer Webhostingumgebung oder auf einem IoT-Gerät mit einem [dieser Bereitstellungscomputeziele](#deploy) bereit.
+1. Wenn Ihr Modell bereit ist, stellen Sie es in einer Webhostingumgebung mit einem [dieser Bereitstellungscomputeziele](#deploy) bereit.
 
 Die Computeressourcen, die Sie für Ihre Computeziele verwenden, werden an einen [Arbeitsbereich](concept-workspace.md) angefügt. Andere Computeressourcen als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
 
@@ -52,10 +52,9 @@ Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und ve
 Sie können Azure Machine Learning-Compute-Instanzen oder -Computecluster erstellen mithilfe von:
 
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* Das Python SDK und die CLI:
+* Das Python SDK und die Azure CLI:
     * [Compute-Instanz](how-to-create-manage-compute-instance.md)
     * [Computecluster](how-to-create-attach-compute-cluster.md)
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
 * Azure Resource Manager-Vorlage Eine Beispielvorlage finden Sie unter [Erstellen eines Azure Machine Learning-Computeclusters](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute).
 * Eine [Machine-Learning-Erweiterung für die Azure CLI](reference-azure-machine-learning-cli.md#resource-management)
 
@@ -64,7 +63,7 @@ Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten v
 
 |Funktion  |Computecluster  |Compute-Instanz  |
 |---------|---------|---------|
-|Cluster mit einem oder mehreren Knoten     |    **&check;**       |         |
+|Cluster mit einem oder mehreren Knoten     |    **&check;**       |    Einzelknotencluster     |
 |Automatische Skalierung bei jedem Übermitteln einer Ausführung     |     **&check;**      |         |
 |Automatische Clusterverwaltung und Auftragsplanung     |   **&check;**        |     **&check;**      |
 |Unterstützt CPU- und GPU-Ressourcen     |  **&check;**         |    **&check;**       |
@@ -107,8 +106,8 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 | [NDv2](../virtual-machines/ndv2-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
 | [SH](../virtual-machines/nv-series.md) | Keine. | GPU | Computecluster und -instanzen |
 | [NVv3](../virtual-machines/nvv3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
-| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NCasT4_v3](../virtual-machines/nct4-v3-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| [NDasrA100_v4](../virtual-machines/nda100-v4-series.md) | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
 
 
 Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Informationen zum Überprüfen, ob VM-Serien verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
@@ -152,7 +151,20 @@ Weitere Informationen zur Isolation finden Sie unter [Isolation in der öffentli
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 
-Ein nicht verwaltetes Computeziel wird *nicht* von Azure Machine Learning verwaltet. Sie erstellen diese Art von Computeziel außerhalb von Azure Machine Learning und fügen es anschließend an Ihren Arbeitsbereich an. Für nicht verwaltete Computeressourcen sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern.
+Ein nicht verwaltetes Computeziel wird *nicht* von Azure Machine Learning verwaltet. Sie erstellen diese Art von Computeziel außerhalb von Azure Machine Learning und fügen es anschließend an Ihren Arbeitsbereich an. Für nicht verwaltete Computeressourcen sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern. 
+
+Azure Machine Learning unterstützt die folgenden nicht verwalteten Computetypen:
+
+* Ihr lokaler Computer
+* Virtuelle Remotecomputer
+* Azure HDInsight
+* Azure Batch
+* Azure Databricks
+* Azure Data Lake Analytics
+* Azure Container Instances
+* Azure Kubernetes Service und Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)
+
+Weitere Informationen finden Sie unter [Einrichten von Computezielen für das Trainieren und Bereitstellen von Modellen](how-to-attach-compute-targets.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

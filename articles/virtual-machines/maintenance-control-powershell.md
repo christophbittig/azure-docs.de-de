@@ -9,16 +9,18 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a56e0e5f3d344f37b689daa0b9dd9f7d3263523
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ced9437fbb2a508772b8e22993e0af5bd2b69859
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672851"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595253"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Steuern von Updates mit der Wartungssteuerung und Azure PowerShell
 
 Mit der Wartungssteuerung können Sie entscheiden, wann Sie Plattformupdates der Hostinfrastruktur auf Ihre isolierten VMs und Ihre dedizierten Azure-Hosts anwenden. In diesem Thema werden die Azure PowerShell-Optionen für die Wartungssteuerung behandelt. Weitere Informationen zu den Vorteilen der Verwendung der Wartungssteuerung, ihren Einschränkungen und anderen Verwaltungsoptionen finden Sie unter [Verwalten von Plattformupdates mit der Wartungssteuerung](maintenance-control.md).
+
+Informationen zur Wartungssteuerung für Skalierungsgruppen finden Sie unter [Wartungssteuerung für VM-Skalierungsgruppen](virtual-machine-scale-sets-maintenance-control.md).
  
 ## <a name="enable-the-powershell-module"></a>Aktivieren des PowerShell-Moduls
 
@@ -178,7 +180,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Anwenden von Updates
 
-Verwenden Sie [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate), um ausstehende Updates anzuwenden.
+Verwenden Sie [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate), um ausstehende Updates anzuwenden. Aufrufe zum Anwenden von Updates können bis zu zwei Stunden dauern.
 
 ### <a name="isolated-vm"></a>Isolierte VM
 

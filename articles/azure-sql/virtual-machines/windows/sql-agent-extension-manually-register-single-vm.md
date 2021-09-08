@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 07/21/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 7890d87730aa65e09e3bbc5a79fd22eb68610939
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 649bf52c48867f4508a7071cb1443b62eae36010
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079713"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349835"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 
@@ -57,8 +57,8 @@ Um Ihre SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren zu könne
 
 1. Öffnen Sie das Azure-Portal, und wechseln Sie zu **Alle Dienste**.
 1. Wechseln Sie zu **Abonnements**, und wählen Sie das gewünschte Abonnement aus.
-1. Navigieren Sie auf der Seite **Abonnements** zu **Erweiterungen**.
-1. Geben Sie im Filter die Zeichenfolge **sql** ein, um die SQL-bezogenen Erweiterungen aufzurufen.
+1. Wählen Sie auf der Seite **Abonnements** unter **Einstellungen** die Option **Ressourcenanbieter** aus.
+1. Geben Sie im Filter **sql** ein, um die SQL-bezogenen Ressourcenanbieter aufzurufen.
 1. Wählen Sie je nach gewünschter Aktion für den Anbieter **Microsoft.SqlVirtualMachine** eine der Optionen **Registrieren**, **Erneut registrieren** oder **Registrierung aufheben** aus.
 
    ![Ändern des Anbieters](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
@@ -167,9 +167,11 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ---
 
-## <a name="verify-mode"></a>Überprüfen des Modus
+## <a name="check-extension-mode"></a>Überprüfen des Erweiterungsmodus
 
-Über Azure PowerShell können Sie den aktuellen Modus des SQL Server-IaaS-Agents anzeigen:
+Verwenden Sie Azure PowerShell, um zu überprüfen, in welchem Modus sich Ihre SQL Server IaaS-Agent-Erweiterung befindet. 
+
+Um den Modus der Erweiterung zu überprüfen, verwenden Sie das folgende Azure PowerShell-Cmdlet: 
 
 ```powershell-interactive
 # Get the SqlVirtualMachine
@@ -189,7 +191,7 @@ Für SQL Server-VMs, auf denen die Erweiterung im Modus *Lightweight* registrie
 Führen Sie die folgenden Schritte aus, um die Erweiterung im Azure-Portal auf den Modus „Vollständig“ zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource).
+1. Wechseln Sie zu Ihrer Ressource [Virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-resource).
 1. Wählen Sie Ihre SQL Server-VM aus, und klicken Sie auf **Übersicht**.
 1. Wählen Sie für SQL Server-VMs mit dem IaaS-Modus „NoAgent“ oder „Lightweight“ die Meldung **Mit der SQL-IaaS-Erweiterung sind nur Lizenztyp- und Editionsaktualisierungen verfügbar** aus.
 
@@ -239,6 +241,8 @@ Führen Sie die folgenden Schritte aus, um den Registrierungsstatus im Azure-Por
 
    ![Überprüfen des Status per SQL RP-Registrierung](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
+Alternativ können Sie den Status überprüfen, indem Sie im Bereich **Support und Problembehandlung** in der Ressource **Virtueller SQL-Computer** die Option **Reparieren** auswählen. Der Bereitstellungsstatus für die SQL IaaS-Agent-Erweiterung kann **Erfolgreich** oder **Fehler** sein. 
+
 ### <a name="command-line"></a>Befehlszeile
 
 Überprüfen Sie den aktuellen Registrierungsstatus der SQL Server-VM mit der Azure CLI oder Azure PowerShell. `ProvisioningState` zeigt `Succeeded` an, wenn die Registrierung erfolgreich abgeschlossen wurde.
@@ -262,6 +266,23 @@ Führen Sie den folgenden Code aus, um den Registrierungsstatus mithilfe von Azu
 ---
 
 Ein Fehler weist darauf hin, dass die SQL Server-VM nicht mit der Erweiterung registriert wurde.
+
+## <a name="repair-extension"></a>Reparieren der Erweiterung
+
+Es ist möglich, dass sich Ihre SQL IaaS-Agent-Erweiterung in einem fehlerhaften Zustand befindet. Verwenden Sie das Azure-Portal, um die SQL IaaS-Agent-Erweiterung zu reparieren. Gehen Sie dazu folgendermaßen vor: 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu Ihrem [SQL Server-VMs](manage-sql-vm-portal.md).
+1. Wählen Sie die SQL Server-VM in der Liste aus. Wenn Ihre SQL Server-VM hier nicht aufgeführt ist, wurde sie wahrscheinlich nicht mit der SQL-IaaS-Agent-Erweiterung registriert.
+1. Wählen Sie **Reparieren** unter **Support und Problembehandlung** auf der Ressourcenseite **Virtueller SQL-Computer** aus. 
+
+   :::image type="content" source="media/sql-agent-extension-manually-register-single-vm/repair-extension.png" alt-text="Auswählen von **Reparieren** unter **Support und Problembehandlung** auf der Ressourcenseite **Virtueller SQL-Computer**":::   
+
+1. Wenn der Bereitstellungsstatus **Fehler** ist, wählen Sie **Reparieren** aus, um die Erweiterung zu reparieren. Wenn der Status **Erfolgreich** ist, können Sie das Kontrollkästchen neben **Reparatur erzwingen** aktivieren, um die Erweiterung unabhängig vom Status zu reparieren. 
+
+   ![Wenn der Bereitstellungsstatus **Fehler** ist, wählen Sie **Reparieren** aus, um die Erweiterung zu reparieren. Wenn der Status **Erfolgreich** ist, können Sie das Kontrollkästchen neben **Reparatur erzwingen** aktivieren, um die Erweiterung unabhängig vom Status zu reparieren.](./media/sql-agent-extension-manually-register-single-vm/force-repair-extension.png)
+
+
 
 ## <a name="unregister-from-extension"></a>Aufheben der Registrierung der Erweiterung
 

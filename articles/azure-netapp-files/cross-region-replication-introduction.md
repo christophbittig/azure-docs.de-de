@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 08/16/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 4273e69e3143c25fb78961c5b6b128b69b69dbd1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 625df6ed5147b77a9829b6e7b3396f4855068d62
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068121"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351139"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
@@ -44,6 +44,8 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 * Japan, Osten und Japan, Westen
 * Europa, Norden und Europa, Westen
 * Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen
+* „VAE, Norden“ und „VAE, Mitte“
+* „Norwegen, Osten“ und „Norwegen, Westen“
 
 ### <a name="azure-regional-non-standard-pairs"></a>Nicht dem Standard entsprechende Azure-Regionspaare
 
@@ -56,14 +58,15 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 *   „Australien, Osten“ und „Asien, Südosten“ 
 *   „Deutschland, Westen-Mitte“ und „Vereinigtes Königreich, Süden“
 *   „Deutschland, Westen-Mitte“ und „Europa, Westen“
+*   „Deutschland, Westen-Mitte“ und „Frankreich, Mitte“
 
 ## <a name="service-level-objectives"></a>Servicelevel-Zielpunkte (SLO)
 
-Die Recovery Point Objective (RPO), oder der maximal akzeptable Datenverlust, wird als doppelt so groß wie der Replikationsplan definiert.  Der tatsächliche RPO-Wert hängt von Faktoren wie der Gesamtgröße des Datasets zusammen mit der Änderungsrate, dem Prozentsatz der Datenüberschreitungen und der für die Übertragung verfügbaren Replikationsbandbreite ab.   
+Die RPO (Recovery Point Objective) gibt den Zeitpunkt an, auf den Daten wiederhergestellt werden können. Der RRO-Zielwert ist i. d. R. kleiner als das Doppelte des Replikationszeitplans, er kann jedoch variieren. Manchmal kann der RPO-Zielwert überschritten werden, abhängig von Faktoren wie der Gesamtgröße des Datasets, der Änderungsrate, dem Prozentsatz der Datenüberschreitungen und der für die Übertragung verfügbaren Replikationsbandbreite.   
 
-* Für den Replikationszeitplan von zehn Minuten beträgt der maximale RPO-Wert 20 Minuten.  
-* Der maximale RPO-Wert für den stündlichen Replikationszeitplan beträgt zwei Stunden.  
-* Der maximale RPO-Wert für den täglichen Replikationszeitplan beträgt zwei Tage.  
+* Für den Replikationszeitplan von 10 Minuten beträgt der maximale RPO-Wert weniger als 20 Minuten.  
+* Der typische RPO-Wert für den stündlichen Replikationszeitplan beträgt weniger als zwei Stunden.  
+* Der typische RPO-Wert für den täglichen Replikationszeitplan beträgt weniger als zwei Tage.  
 
 Die Wiederherstellungszeit-Zielsetzung (Recovery Time Objective, RTO), oder die maximal akzeptable Downtime für Geschäftsanwendungen, wird durch Faktoren beim Aufrufen der Anwendung und der Bereitstellung des Zugriffs auf die Daten am zweiten Standort bestimmt. Der Speicherteil der RTO zum Unterbrechen der Peeringbeziehung zum Aktivieren des Zielvolumes und zum Bereitstellen von Lese- und Schreibzugriff auf Daten am zweiten Standort soll innerhalb einer Minute abgeschlossen sein.
 

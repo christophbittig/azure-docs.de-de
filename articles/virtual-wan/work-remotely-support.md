@@ -2,17 +2,17 @@
 title: Azure Virtual WAN und Remotearbeit
 description: Erfahren Sie, wie Sie Azure Virtual WAN nutzen können, um Remotearbeit aufgrund der COVID-19-Pandemie zu ermöglichen.
 services: virtual-wan
-author: reyandap
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: fb3af5f19e81ccf21a9ca38fe45514aa0bdf471e
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: c82bce78f82e28d4accc97ec816e6b1edc9346cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347173"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure Virtual WAN und Unterstützung von Remotearbeit
 
@@ -51,11 +51,11 @@ Basic Virtual WAN unterstützt nur Site-to-Site-VPN. Damit Remotebenutzer eine V
 
 ## <a name="additional-information"></a><a name="other considerations"></a>Weitere Informationen
 
-Virtual WAN unterstützt einen Hub pro Region/Standort. Informationen zu Standorten finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md). Jeder Hub unterstützt bis zu 10.000 Remotebenutzerverbindungen, 1.000 Branchverbindungen, vier ExpressRoute-Leitungen und bis zu 500 VNet-Verbindungen. Wenn Sie die Remotebenutzer zentral hochskalieren, sollten Sie bei Fragen nicht zögern, Hilfe anzufordern, indem Sie eine E-Mail an azurevirtualwan@microsoft.com senden. Öffnen Sie ein Supportticket im Azure-Portal, wenn Sie technischen Support benötigen, um schnell Hilfe zu erhalten.
+Virtual WAN unterstützt mehrere Hubs pro Region/Standort. Informationen zu Standorten finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md). Jeder Hub unterstützt bis zu 10.000 Remotebenutzerverbindungen, 1.000 Branchverbindungen, vier ExpressRoute-Leitungen und bis zu 500 VNet-Verbindungen. Wenn Sie die Remotebenutzer zentral hochskalieren, sollten Sie bei Fragen nicht zögern, Hilfe anzufordern, indem Sie eine E-Mail an azurevirtualwan@microsoft.com senden. Öffnen Sie ein Supportticket im Azure-Portal, wenn Sie technischen Support benötigen, um schnell Hilfe zu erhalten.
 
 ## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
-[!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+Weitere Informationen finden Sie unter [Virtual WAN – Häufig gestellte Fragen](virtual-wan-faq.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

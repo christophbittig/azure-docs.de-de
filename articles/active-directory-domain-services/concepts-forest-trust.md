@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 06/18/2021
 ms.author: justinha
-ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d7c3eeb184f7ceb09541ca9533203f4b45194bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620204"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355093"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ Die Weiterleitung von geschützten Datenflüssen über Vertrauensstellungen best
 
 Die Weiterleitung von Datenflüssen über Vertrauensstellungen wird durch die Richtung der jeweiligen Vertrauensstellung bestimmt. Eine Vertrauensstellung kann unidirektional oder bidirektional und transitiv oder nicht transitiv sein.
 
-Die folgende Abbildung zeigt, dass alle Domänen in *Struktur 1* und *Struktur 2* standardmäßig transitive Vertrauensstellungen haben. Daraus folgt, dass Benutzer in *Struktur 1* auf Ressourcen in Domänen in *Struktur 2* und Benutzer in *Struktur 1* auf Ressourcen in *Struktur 2* zugreifen können, wenn in der jeweiligen Ressource die entsprechenden Berechtigungen zugewiesen sind.
+Die folgende Abbildung zeigt, dass alle Domänen in *Struktur 1* und *Struktur 2* standardmäßig transitive Vertrauensstellungen haben. Daraus folgt, dass Benutzer in *Struktur 1* auf Ressourcen in Domänen in *Struktur 2* und Benutzer in *Struktur 2* auf Ressourcen in *Struktur 1* zugreifen können, wenn in der jeweiligen Ressource die entsprechenden Berechtigungen zugewiesen sind.
 
 ![Abbildung der Vertrauensstellung zwischen zwei Gesamtstrukturen](./media/concepts-forest-trust/trust-relationships.png)
 
@@ -108,7 +108,7 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung erstellen können, müssen Sie 
 
 Damit Sie eine Gesamtstruktur-Vertrauensstellung erstellen können, müssen Sie Mitglied der Gruppe „Domänen-Admins“ (in der Stammdomäne der Gesamtstruktur) oder der Gruppe „Organisations-Admins“ in Active Directory sein. Jeder Vertrauensstellung wird ein Kennwort zugewiesen, das die Administratoren in beiden Gesamtstrukturen kennen müssen. Mitglieder von „Organisations-Admins“ in beiden Gesamtstrukturen können die Vertrauensstellungen in beiden Gesamtstrukturen auf einmal erstellen, und es wird (in diesem Szenario) automatisch ein kryptografisch zufälliges Kennwort generiert und für beide Gesamtstrukturen geschrieben.
 
-Die ausgehende Gesamtstruktur-Vertrauensstellung für Azure AD Domain Services wird im Azure-Portal erstellt. Sie erstellen die Vertrauensstellung nicht manuell mit der verwalteten Domäne selbst. Die eingehende Gesamtstruktur-Vertrauensstellung muss von einem Benutzer mit den Berechtigungen konfiguriert werden, die zuvor im lokalen Active Directory festgehalten wurden.
+Eine Ressourcengesamtstruktur der verwalteten Domäne unterstützt bis zu fünf unidirektionale ausgehende Gesamtstruktur-Vertrauensstellungen zu lokalen Gesamtstrukturen. Die ausgehende Gesamtstruktur-Vertrauensstellung für Azure AD Domain Services wird im Azure-Portal erstellt. Sie erstellen die Vertrauensstellung nicht manuell mit der verwalteten Domäne selbst. Die eingehende Gesamtstruktur-Vertrauensstellung muss von einem Benutzer mit den Berechtigungen konfiguriert werden, die zuvor im lokalen Active Directory festgehalten wurden. 
 
 ## <a name="trust-processes-and-interactions"></a>Vertrauensstellungsprozesse und -interaktionen
 

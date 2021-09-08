@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure VMware Solution A
 ms.custom: subject-moving-resources
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 02f35efe90d4670c4ab38155f129ec0d61c1b03d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4541bf1cf13a8b4c090365c31c2403685a69c7f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966697"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343526"
 ---
 # <a name="move-azure-vmware-solution-subscription-to-another-subscription"></a>Verschieben des Abonnements für Azure VMware Solution in ein anderes Abonnement
 
@@ -39,13 +39,13 @@ Sie müssen für das **Quell-** und **Zielabonnement** mindestens über die Bere
 
    :::image type="content" source="media/move-subscriptions/move-resources-subscription-target.png" alt-text="Screenshot der Zielressource.":::
 
-1. Bestätigen Sie die Validierung der Ressourcen, die zum Verschieben ausgewählt wurden.  Dadurch werden alle ressourcen überprüft, die verschoben werden sollen. Während der Validierung der ausgewählten Ressourcen sehen Sie **Ausstehende Validierung** für den Validierungsstatus. 
+1. Bestätigen Sie die Validierung der Ressourcen, die zum Verschieben ausgewählt wurden. Während der Validierung wird der Status **Ausstehende Validierung**  angezeigt. 
 
    :::image type="content" source="media/move-subscriptions/pending-move-resources-subscription-target.png" alt-text="Screenshot der zu verschiebenden Ressourcen.":::
 
 1. Nach erfolgreicher Validierung wählen Sie **Weiter**, um die Migration Ihrer privaten Cloud zu starten.
 
-   :::image type="content" source="media/move-subscriptions/move-resources-succeeded.png" alt-text="Screenshot, der den Validierungsstatus &quot;Erfolgreich&quot; zeigt.":::
+   :::image type="content" source="media/move-subscriptions/move-resources-succeeded.png" alt-text="Screenshot: Validierungsstatus „Erfolgreich“":::
 
 1. Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie verstanden haben, dass die zugehörigen Tools und Skripts erst dann funktionieren, nachdem Sie sie für die neuen Ressourcen-IDs aktualisiert haben. Wählen Sie **Verschieben** aus.
 

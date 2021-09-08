@@ -84,6 +84,8 @@
       href: automation-manage-api-management.md
     - name: API-Importbeschränkungen
       href: api-management-api-import-restrictions.md
+    - name: Virtuelle Netzwerke im Überblick
+      href: virtual-network-concepts.md
     - name: Übersicht über das selbstgehostete Gateway
       href: self-hosted-gateway-overview.md
     - name: Einblick
@@ -92,6 +94,8 @@
       href: devops-api-development-templates.md
     - name: Vorläufiges Löschen
       href: soft-delete.md
+    - name: Computeplattform
+      href: compute-infrastructure.md
 - name: Anleitungen
   items:
     - name: Definieren von APIs

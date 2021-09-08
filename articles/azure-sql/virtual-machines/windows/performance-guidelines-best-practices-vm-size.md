@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 84164e95d5b961392787f4011abbe553b2cb5595
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 14197b7974db7697b9718f13ef59ac3e34c22a9b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079875"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397149"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM-Größe: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,6 +42,7 @@ In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährte
 - Für unternehmenskritische und Data Warehouse-Workloads ist unter Umständen ein höheres Verhältnis von Arbeitsspeicher zu virtuellen Kernen erforderlich. 
 - Nutzen Sie die Azure Virtual Machines-Marketplace-Images, da die SQL Server-Einstellungen und Speicheroptionen für eine optimale SQL Server-Leistung konfiguriert sind. 
 - Erfassen Sie die Leistungsmerkmale der Zielworkload, und nutzen Sie sie zum Ermitteln der passenden VM-Größe für Ihr Unternehmen.
+- Verwenden Sie das [SKU-Empfehlungstool](/sql/dma/dma-sku-recommend-sql-db) des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595), um die richtige VM-Größe für Ihre vorhandene SQL Server-Workload zu ermitteln.
 
 Informationen zum Vergleichen der Prüfliste für die VM-Größe mit den anderen, finden Sie unter [Prüfliste für bewährte Methoden für die Leistung](performance-guidelines-best-practices-checklist.md). 
 

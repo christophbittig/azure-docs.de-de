@@ -2,15 +2,16 @@
 title: Verwenden von Key Vault beim Bereitstellen einer verwalteten App
 description: Zeigt die Verwendung von Zugriffsgeheimnissen in Azure Key Vault bei der Bereitstellung von verwalteten Anwendungen
 author: tfitzmac
+ms.custom: subject-rbac-steps
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5a6dc1de2ee574a69b8dab746a24bcf82b44d64
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81458282"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343339"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications
 
@@ -36,19 +37,9 @@ Dieser Artikel beschreibt, wie Sie den Schlüsseltresor zum Arbeiten mit verwalt
 
 ## <a name="add-service-as-contributor"></a>Hinzufügen des Diensts als Mitwirkender
 
-1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+Weisen Sie die Rolle **Mitwirkender** dem Benutzer **Applianceressourcenanbieter** im Schlüsseltresorbereich zu.
 
-   ![„Zugriffssteuerung“ auswählen](./media/key-vault-access/access-control.png)
-
-1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-
-   ![„Hinzufügen“ auswählen](./media/key-vault-access/add-access-control.png)
-
-1. Wählen Sie **Mitwirkender** für die Rolle aus. Suchen Sie nach dem **Applianceressourcenanbieter**, und wählen Sie ihn in den verfügbaren Optionen aus.
-
-   ![Nach Anbieter suchen](./media/key-vault-access/search-provider.png)
-
-1. Wählen Sie **Speichern** aus.
+Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="reference-key-vault-secret"></a>Verweisen auf Schlüsseltresorgeheimnis
 

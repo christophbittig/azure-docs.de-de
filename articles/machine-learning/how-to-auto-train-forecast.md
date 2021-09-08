@@ -8,14 +8,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: contperf-fy21q1, automl
+ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030862"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356379"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Einrichten von AutoML zum Trainieren eines Zeitreihenvorhersagemodells mit Python
 
@@ -32,6 +32,7 @@ Für ein Vorgehen mit wenig Code folgen Sie dem [Tutorial: Vorhersage des Bedarf
 
 Im Gegensatz zu klassischen Methoden für Zeitreihen werden beim automatisierten maschinellen Lernen Zeitreihenwerte aus der Vergangenheit „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz umfasst mehrere Kontextvariablen und deren Beziehung zueinander beim Training. Da sich mehrere Faktoren auf eine Vorhersage auswirken können, richtet sich diese Methode gut an realen Vorhersageszenarios aus. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Wechselwirkungen zwischen historischen Trends, des Wechselkurses und des Preises berechnet. 
 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für diesen Artikel ist Folgendes erforderlich: 
@@ -40,6 +41,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 * In diesem Artikel werden Grundkenntnisse in der Einrichtung eines Experiments mit automatisiertem maschinellem Lernen vorausgesetzt. Machen Sie sich anhand des [Tutorials](tutorial-auto-train-models.md) oder der [Anleitung](how-to-configure-auto-train.md) mit den wichtigsten Entwurfsmustern für automatisierte ML-Experimente vertraut.
 
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 ## <a name="preparing-data"></a>Aufbereiten der Daten
 
 Der wichtigste Unterschied zwischen einem Regressionsaufgabentyp für Vorhersagen und einem Regressionsaufgabentyp im automatisierten ML liegt in der Einbeziehung eines Features in Ihre Daten, das eine gültige Zeitreihe darstellt. Eine reguläre Zeitreihe besitzt ein klar definiertes und konsistentes Intervall sowie einen Wert an jedem Stichprobenpunkt in einem ununterbrochenen Zeitraum. 
@@ -115,7 +117,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
-Erfahren Sie mehr darüber, wie AutoML die Kreuzvalidierung anwendet, um eine [Überanpassung von Modellen zu verhindern](concept-manage-ml-pitfalls.md#prevent-over-fitting).
+Erfahren Sie mehr darüber, wie AutoML die Kreuzvalidierung anwendet, um eine [Überanpassung von Modellen zu verhindern](concept-manage-ml-pitfalls.md#prevent-overfitting).
 
 ## <a name="configure-experiment"></a>Konfigurieren des Experiments
 
@@ -364,19 +366,28 @@ best_run, fitted_model = local_run.get_output()
 
 Verwenden Sie die beste Modelliteration, um Werte für das Testdataset vorherzusagen.
 
-Die `forecast()`-Funktion ermöglicht anzugeben, wann Vorhersagen gestartet werden sollten. Im Gegensatz dazu wird `predict()` in der Regel für Klassifizierungs- und Regressionsaufgaben verwendet.
+Die Funktion [forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset) ermöglicht anzugeben, wann Vorhersagen gestartet werden sollten. Im Gegensatz dazu wird die `predict()`-Methode in der Regel für Klassifizierungs- und Regressionsaufgaben verwendet. Die Methode „forecast_quantiles()“ generiert standardmäßig eine Punkt- oder eine Mittelwertvorhersage, die nicht von einem Kegel der Unsicherheit umgeben ist. 
 
 Im folgenden Beispiel ersetzen Sie zunächst alle Werte in `y_pred` durch `NaN`. Der Ursprung der Vorhersage liegt in diesem Fall am Ende der Trainingsdaten. Wenn Sie jedoch nur die zweite Hälfte von `y_pred` durch `NaN` ersetzen, lässt die Funktion die numerischen Werte in der ersten Hälfte unverändert, sagt aber die `NaN`-Werte in der zweiten Hälfte voraus. Die Funktion gibt sowohl die vorhergesagten Werte als auch die angepassten Features zurück.
 
-Sie können den Parameter `forecast_destination` in der Funktion `forecast()` auch verwenden, um Werte bis zu einem bestimmten Datum vorherzusagen.
+Sie können den Parameter `forecast_destination` in der Funktion `forecast_quantiles()` auch verwenden, um Werte bis zu einem bestimmten Datum vorherzusagen.
 
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_model.forecast(
+label_fcst, data_trans = fitted_model.forecast_quantiles(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
+Häufig möchten Kunden die Vorhersagen für ein bestimmtes Quantil der Verteilung verstehen. Wenn z. B. die Vorhersage verwendet wird, um den Bestand an Lebensmitteln oder virtuellen Computern für einen Clouddienst zu kontrollieren. In solchen Fällen lautet der Steuerungspunkt in der Regel: „Wir möchten, dass der Artikel zu 99 % der Zeit auf Lager ist und nicht ausgeht“. Im Folgenden wird gezeigt, wie Sie angeben, welche Quantilen Sie für Ihre Vorhersagen sehen möchten, z. B. das 50. oder 95. Perzentil. Wenn Sie kein Quantil angeben, wie im oben genannten Codebeispiel, werden nur die Vorhersagen für das 50. Perzentil erstellt. 
+
+```python
+# specify which quantiles you would like 
+fitted_model.quantiles = [0.05,0.5, 0.9]
+fitted_model.forecast_quantiles(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+```
+ 
 Berechnen Sie den RMSE-Wert (Root Mean Squared Error, mittlere quadratische Gesamtabweichung) zwischen den tatsächlichen Werten (`actual_labels`) und den vorhergesagten Werten (`predict_labels`).
 
 ```python
@@ -386,7 +397,8 @@ from math import sqrt
 rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
-
+ 
+ 
 Nach der Ermittlung der allgemeinen Modellgenauigkeit besteht der nächste Schritt in der Regel darin, mithilfe des Modells unbekannte zukünftige Werte vorherzusagen. 
 
 Stellen Sie ein Dataset im gleichen Format wie das Testdataset `test_data`, aber mit zukünftigen Datums-/Uhrzeitwerten bereit, um einen Vorhersagesatz mit Vorhersagewerten für die einzelnen Zeitreihenschritte zu erhalten. Angenommen, die letzten Zeitreihendatensätze im Dataset waren für den 31.12.2018. Wenn Sie die Nachfrage für den Folgetag (oder für beliebig viele Vorhersagezeiträume < = `forecast_horizon`) vorhersagen möchten, erstellen Sie für jede Filiale einen einzelnen Zeitreihendatensatz für den 01.01.2019.
@@ -397,13 +409,13 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.forecast(test_data)` aus, um zukünftige Werte vorherzusagen.
+Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.forecast_quantiles(test_data)` aus, um zukünftige Werte vorherzusagen.
 
 > [!NOTE]
 > In-Sample-Vorhersagen werden für die Vorhersage mit automatisiertem maschinellen Lernen nicht unterstützt, wenn `target_lags` und/oder `target_rolling_window_size` aktiviert sind.
 
-
 ## <a name="example-notebooks"></a>Beispielnotebooks
+
 Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
 
 * [Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
@@ -416,5 +428,4 @@ Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/M
 
 * Lernen Sie, [wie und wo Sie Modelle bereitstellen](how-to-deploy-and-where.md) können.
 * Informieren Sie sich über [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)](how-to-machine-learning-interpretability-automl.md). 
-* Hier erfahren Sie, wie Sie mehrere Modelle mit AutoML im [Many Models Solution Accelerator](https://aka.ms/many-models) trainieren.
 * Im [Tutorial: Trainieren von Regressionsmodellen](tutorial-auto-train-models.md) finden Sie ein umfassendes Beispiel für das Erstellen von Experimenten mit automatisiertem Machine Learning.

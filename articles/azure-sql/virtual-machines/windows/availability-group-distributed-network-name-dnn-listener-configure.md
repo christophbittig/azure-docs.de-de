@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 50984f7a22caa6e1340b6ed4d927d9450eccdf9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572371"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356067"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurieren eines DNN-Listeners für eine Verfügbarkeitsgruppe
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -179,7 +179,7 @@ Testen Sie die Konnektivität Ihres DNN-Listeners mit den folgenden Schritten:
 
 ## <a name="port-considerations"></a>Überlegungen zum Port
 
-DNN-Listener dienen zum Listen an allen IP-Adressen, aber an einem bestimmten, eindeutigen Port. Der DNS-Eintrag für den Listenernamen sollte in die Adressen aller Replikate in der Verfügbarkeitsgruppe aufgelöst werden. Dies erfolgt automatisch über das PowerShell-Skript, das im Abschnitt [Skript erstellen](#create-script) bereitgestellt wird. Da DNN-Listener Verbindungen an allen IP-Adressen akzeptieren, ist es wichtig, dass der Listenerport eindeutig ist und nicht von einem anderen Replikat in der Verfügbarkeitsgruppe verwendet wird. Da SQL Server immer an Port 1433 entweder direkt oder über den SQL-Browser Dienst listent, kann Port 1433 nicht für einen DNN-Listener verwendet werden.
+DNN-Listener dienen zum Listen an allen IP-Adressen, aber an einem bestimmten, eindeutigen Port. Der DNS-Eintrag für den Listenernamen sollte in die Adressen aller Replikate in der Verfügbarkeitsgruppe aufgelöst werden. Dies erfolgt automatisch über das PowerShell-Skript, das im Abschnitt [Skript erstellen](#create-script) bereitgestellt wird. Da DNN-Listener Verbindungen an allen IP-Adressen akzeptieren, ist es wichtig, dass der Listenerport eindeutig ist und nicht von einem anderen Replikat in der Verfügbarkeitsgruppe verwendet wird. Da SQL Server standardmäßig an Port 1433 lauscht, entweder direkt oder über den SQL Browser-Dienst, wird dringend davon abgeraten, Port 1433 für den DNN-Listener zu verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -188,7 +188,6 @@ Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Ei
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
-

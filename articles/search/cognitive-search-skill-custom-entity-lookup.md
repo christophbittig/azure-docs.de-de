@@ -1,36 +1,25 @@
 ---
 title: Cognitive Search-Qualifikation „Benutzerdefinierte Entitätssuche“
 titleSuffix: Azure Cognitive Search
-description: Extrahieren Sie verschiedene benutzerdefinierte Entitäten aus Text in einer Azure Cognitive Search-Pipeline für die kognitive Suche. Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: Extrahieren Sie verschiedene benutzerdefinierte Entitäten aus Text in einer Azure Cognitive Search-Pipeline für die kognitive Suche.
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 68e4949fe0ef0b10018cd3827e259028c37d5b5c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 08/12/2021
+ms.openlocfilehash: 977ac567f195e0ab8053d7b8bd98543801a3b6a4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019087"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349851"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill"></a>Cognitive Search-Qualifikation „Benutzerdefinierte Entitätssuche“
+# <a name="custom-entity-lookup-cognitive-skill"></a>Cognitive Search-Qualifikation „Benutzerdefinierte Entitätssuche“
 
 Die Qualifikation **Benutzerdefinierte Entitätssuche** sucht nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann.  
 
-Dieser Skill ist nicht an eine Cognitive Services-API gebunden. Sie sollten jedoch dennoch [eine Cognitive Services-Ressource anfügen](./cognitive-search-attach-cognitive-services.md), um das tägliche Anreicherungslimit außer Kraft zu setzen. Das Tageslimit gilt für den kostenlosen Zugriff auf Cognitive Services, wenn dieser über Azure Cognitive Search erfolgt.
-
-## <a name="pricing-details"></a>Preisübersicht
-
-Textdatensätze entsprechen der Anzahl von Einheiten mit 1.000 Zeichen innerhalb eines Dokuments, das als Eingabe für den Skill bereitgestellt wird.
-
-|  Tarif  |        Preis  |
-|--------------|----------------------|
-| 0–500.000 Textdatensätze | 1 USD pro 1.000 Textdatensätze |
-| 0,5 Mio.–2,5 Mio Textdatensätze | 0,75 USD pro 1.000 Textdatensätze |
-| 2,5 Mio.–10 Mio Textdatensätze | 0,30 USD pro 1.000 Textdatensätze |
-| Mehr als 10 Mio. Textdatensätze | 0,25 USD pro 1.000 Textdatensätze |
+> [!NOTE]
+> Diese Qualifikation ist nicht an eine Cognitive Services-API gebunden, erfordert jedoch einen Cognitive Services-Schlüssel, um mehr als 20 Transaktionen zu unterstützen. Diese Qualifikation wird [über Cognitive Search abgerechnet](https://azure.microsoft.com/pricing/details/search/#pricing).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -175,13 +164,12 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 | `accentSensitive` | (Optional) Dieser Parameter weist dieselbe Funktion wie der oben genannte Stammentitätsparameter „accentSensitive“ auf, gilt jedoch nur für diesen einen Alias. |
 | `fuzzyEditDistance` | (Optional) Funktioniert wie der oben beschriebene Parameter fuzzyEditDistance der Stammentität, gilt aber nur für diesen einen Alias. |
 
-
 ### <a name="inline-format"></a>Inlineformat
 
 In einigen Fällen ist es möglicherweise einfacher, die Liste der benutzerdefinierten Entitäten, die abgeglichen werden sollen, direkt inline in der Qualifikationsdefinition bereitzustellen. In diesem Fall können Sie ein ähnliches JSON-Format wie das oben beschriebene verwenden, das jedoch inline in der Qualifikationsdefinition enthalten ist.
 Nur Konfigurationen mit einer Größe von weniger als 10 KB (serialisierte Größe) unterstützen Inlinedefinitionen. 
 
-##    <a name="sample-definition"></a>Beispieldefinition
+## <a name="sample-definition"></a>Beispieldefinition
 
 Eine Beispieldefinition einer Qualifikation mit einem Inlineformat wird unten gezeigt:
 
@@ -221,6 +209,7 @@ Eine Beispieldefinition einer Qualifikation mit einem Inlineformat wird unten ge
     ]
   }
 ```
+
 Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefinitionsdatei bereitzustellen, sehen Sie im folgenden Beispiel eine Qualifikationsdefinition mit dem `entitiesDefinitionUri`-Format:
 
 ```json
@@ -244,7 +233,7 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
 
 ```
 
-##    <a name="sample-input"></a>Beispieleingabe
+## <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -261,7 +250,7 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
 }
 ```
 
-##    <a name="sample-output"></a>Beispielausgabe
+## <a name="sample-output"></a>Beispielausgabe
 
 ```json
   { 

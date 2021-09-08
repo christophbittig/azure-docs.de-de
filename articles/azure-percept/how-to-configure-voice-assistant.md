@@ -1,20 +1,20 @@
 ---
-title: Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
-description: Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
+title: Konfigurieren Ihrer Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
+description: Konfigurieren Ihrer Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 514bee115ee0e01910fe726ee8ae378352f89d99
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 01e7fd180448639f9dc2440b546746046d9097aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355654"
 ---
-# <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Konfigurieren der Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
+# <a name="configure-your-voice-assistant-application-using-azure-iot-hub"></a>Konfigurieren Ihrer Sprach-Assistenten-Anwendung mithilfe von Azure IoT Hub
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Sprach-Assistenten-Anwendung mithilfe von IoT Hub konfigurieren. Ein schrittweises Tutorial, das Sie durch den Prozess der Erstellung eines Sprach-Assistenten führt, finden Sie unter [Erstellen eines Sprach-Assistenten ohne Code mit Azure Percept Studio und Azure Percept Audio](./tutorial-no-code-speech.md).
 

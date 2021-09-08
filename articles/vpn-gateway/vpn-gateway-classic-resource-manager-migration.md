@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: 0d7d4dda75fba86bf5d624ea277b8866490ea608
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a69cb5e2a4563f96fb18979ff8aefdf805e94d7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291188"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355050"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager
-VPN Gateways können jetzt aus dem klassischen Modell zum Resource Manager-Bereitstellungsmodell migriert werden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/management/overview.md). In diesem Artikel wird erklärt, wie man von klassischen Bereitstellungen zu neueren Resource Manager-basierten Modellen migriert. 
+VPN Gateways können jetzt aus dem klassischen Modell zum [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) migriert werden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/management/overview.md). In diesem Artikel wird erklärt, wie man von klassischen Bereitstellungen zu neueren Resource Manager-basierten Modellen migriert. 
 
 VPN Gateways werden als Teil der VNet-Migration vom klassischen Modell zu Resource Manager migriert. Diese Migration erfolgt nacheinander für einzelne VNets. Es gibt keine zusätzlichen Anforderungen in Bezug auf Tools oder Voraussetzungen für die Migration. Die Schritte bei der Migration sind mit der Migration von VNets identisch, und sind auf der Seite [Migrieren von IaaS-Ressourcen](../virtual-machines/migration-classic-resource-manager-ps.md) aufgeführt. Es gibt keine Downtime von Datenpfaden während der Migration. Aus diesem Grund können bestehende Workloads während der Migration ohne Verlust der lokalen Konnektivität weiterhin ausgeführt werden. Die öffentliche IP-Adresse, die dem VPN Gateway zugeordnet ist, verändert sich während des Migrationsvorgangs nicht. Das bedeutet, dass Sie Ihren lokalen Router nicht neu konfigurieren müssen, wenn die Migration abgeschlossen ist.  
 

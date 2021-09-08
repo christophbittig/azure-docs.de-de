@@ -13,18 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7b3db4e47a73cf7b7ad4e4645546d103c1a3c4fc
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: bbd27f7457b01386ddb1b207c10dcab87ffd4cd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812872"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356313"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtual Network-Dienstendpunkte
 
 Der Virtual Network (VNet)-Dienstendpunkt bietet eine sichere und direkte Verbindung mit Azure-Diensten über eine optimierte Route über das Azure-Backbonenetzwerk. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Dienstendpunkte ermöglichen es privaten IP-Adressen im VNet, den Endpunkt eines Azure-Diensts zu erreichen, ohne dass eine öffentliche IP-Adresse im VNet benötigt wird.
 
-Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar. Die *Microsoft.\** -Ressource ist in Klammern angegeben. Aktivieren Sie diese Ressource über die Subnetzseite, während Sie die Dienstendpunkte für Ihren Dienst konfigurieren:
+   >[!NOTE]
+   > Microsoft empfiehlt die Verwendung von Azure Private Link für den sicheren und privaten Zugriff auf Dienste, die auf der Azure-Plattform gehostet werden. Weitere Informationen hierzu finden Sie unter [Azure Private Link](../private-link/private-link-overview.md).  
+
+Dienstendpunkte sind für die folgenden Azure-Dienste und -Regionen verfügbar. Die *Microsoft.\** -Ressource ist in Klammern angegeben. Aktivieren Sie diese Ressource über die Subnetzseite, während Sie die Dienstendpunkte für Ihren Dienst konfigurieren:
 
 **Allgemein verfügbar**
 
@@ -150,6 +153,6 @@ Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – h
 - [Sichern eines Azure Storage-Kontos in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Schützen von Azure Synapse Analytics in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
-- [Azure-Dienstintegration in virtuellen Netzwerken](virtual-network-for-azure-services.md)
+- [Private Endpunkte und VNet-Dienstendpunkte im Vergleich](./vnet-integration-for-azure-services.md#compare-private-endpoints-and-service-endpoints)
 - [Richtlinien für VNET-Dienstendpunkte](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/vnet-2subnets-service-endpoints-storage-integration)

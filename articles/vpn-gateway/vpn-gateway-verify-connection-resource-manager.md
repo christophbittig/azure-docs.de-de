@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3616c425f191c9ff7788cb5f4333fa69d65e5728
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: eaeb77e1dafe7b2791537190d0b4d220363280a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204601"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339202"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Überprüfen einer VPN Gateway-Verbindung
 
-In diesem Artikel erfahren Sie, wie Sie eine VPN Gateway-Verbindung für das klassische und das Resource Manager-Bereitstellungsmodell überprüfen.
+In diesem Artikel erfahren Sie, wie Sie eine VPN Gateway-Verbindung für das klassische und das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) überprüfen.
 
 ## <a name="azure-portal"></a>Azure-Portal
 

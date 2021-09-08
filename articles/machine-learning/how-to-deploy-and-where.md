@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Machine Learning-Modellen
 titleSuffix: Azure Machine Learning
-description: Es wird beschrieben, wie und wo Sie Machine Learning-Modelle bereitstellen können. Die Bereitstellung ist für Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge und FPGA möglich.
+description: Es wird beschrieben, wie und wo Sie Machine Learning-Modelle bereitstellen können. Die Bereitstellung ist für Azure Container Instances, Azure Kubernetes Service und FPGA möglich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 0592577040d411d3ecad395d8697828a5c4bc516
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356125"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Bereitstellen von Machine Learning-Modellen für Azure 
 
@@ -37,6 +37,8 @@ Der Workflow ist unabhängig vom Bereitstellungsort Ihres Modells sehr ähnlich:
 1. Testen des resultierenden Webdiensts
 
 Weitere Informationen zu den Konzepten, die für den Workflow zur Bereitstellung von Machine Learning-Modellen gelten, finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](concept-model-management-and-deployment.md).
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -410,7 +412,7 @@ Um einen bereitgestellten Webdienst zu löschen, verwenden Sie `az ml service de
 
 Um ein registriertes Modell aus Ihrem Arbeitsbereich zu löschen, verwenden Sie `az ml model delete <model id>`.
 
-Erfahren Sie mehr über das [Löschen eines Webdiensts](/cli/azure/ml/service#az_ml_service_delete) und das [Löschen eines Modells](/cli/azure/ml/model#az_ml_model_delete).
+Erfahren Sie mehr über das [Löschen eines Webdiensts](/cli/azure/ml(v1)/computetarget/create#az_ml_service_delete) und das [Löschen eines Modells](/cli/azure/ml/model#az_ml_model_delete).
 
 # <a name="python"></a>[Python](#tab/python)
 

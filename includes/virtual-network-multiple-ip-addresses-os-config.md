@@ -1,25 +1,26 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-network
-author: jimdial
+author: asudbring
 ms.service: virtual-network
 ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b2d619db998a2339387cb6e2a4c80271fcf6b76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84194227"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336219"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
 Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehreren privaten IP-Adresse erstellt haben, und melden Sie sich an. Alle dem virtuellen Computer hinzugefügten privaten IP-Adressen müssen manuell hinzugefügt werden. (Das gilt auch für die primäre Adresse.) Führen Sie für das Betriebssystem Ihres virtuellen Computers die folgenden Schritte aus.
 
 ### <a name="windows-server"></a>Windows Server
+
 <details>
   <summary>Expand</summary>
 
@@ -43,20 +44,24 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all* ein. Überprüfen Sie, ob alle hinzugefügten IP-Adressen angezeigt werden und DHCP deaktiviert ist.
 7. Konfigurieren Sie Windows so, dass die private IP-Adresse der primären IP-Konfiguration in Azure als die primäre IP-Adresse für Windows verwendet wird. Ausführliche Informationen finden Sie unter [No Internet access from Azure Windows VM that has multiple IP addresses](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) (Kein Internetzugriff über einen virtuellen Azure Windows-Computer mit mehreren IP-Adressen). 
 
-### <a name="validation-windows-server"></a>Überprüfung (Windows Server)
+#### <a name="validation-windows-server"></a>Überprüfung (Windows Server)
 
 Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können. Sobald Sie sie anhand der oben beschriebenen Schritte ordnungsgemäß hinzugefügt haben, verwenden Sie den folgenden Befehl (ersetzen Sie 10.0.0.7 durch die sekundäre, private IP-Adresse):
 
 ```bash
 ping -S 10.0.0.7 outlook.com
 ```
->[!NOTE]
->Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+ 
+> [!NOTE]
+> Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+
 </details>
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
+
 <details>
   <summary>Expand</summary>
+
 Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nutzen. 
 
 1. Öffnen Sie ein Terminalfenster.
@@ -116,15 +121,16 @@ Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nu
 
    Es sollte die IP-Adresse angezeigt werden, die Sie als Teil der Liste hinzugefügt haben.
 
-### <a name="validation-ubuntu-1416"></a>Überprüfung (Ubuntu 14/16)
+#### <a name="validation-ubuntu-1416"></a>Überprüfung (Ubuntu 14/16)
 
 Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
 
 ```bash
 ping -I 10.0.0.5 outlook.com
 ```
->[!NOTE]
->Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
+
+> [!NOTE]
+> Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
 
 Wenn Sie ausgehende Verbindungen von einem sekundären NIC für virtuelle Linux-Computer überprüfen möchten, müssen Sie möglicherweise entsprechende Routen hinzufügen. Dazu gibt es zahlreiche Möglichkeiten. Weitere Informationen für Ihre Linux-Distribution finden Sie in der entsprechenden Dokumentation. Nachfolgend finden Sie eine der möglichen Methoden:
 
@@ -133,16 +139,20 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
     - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
     - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC </details>
+    - **eth2** durch den Namen Ihrer sekundären NIC 
+
+</details>
 
 ### <a name="linux-ubuntu-1804"></a>Linux (ab Ubuntu 18.04)
+
 <details>
   <summary>Expand</summary>
+
 Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `netplan` geändert. Es wird empfohlen, die aktuelle Dokumentation für Ihre Linux-Distribution zu nutzen. 
 
 1. Öffnen Sie ein Terminalfenster.
@@ -181,8 +191,8 @@ Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `n
     netplan try
     ```
 
-> [!NOTE]
-> `netplan try` wendet die Änderungen temporär an und macht sie nach 120 Sekunden wieder rückgängig. Wenn ein Verbindungsverlust vorliegt, warten Sie 120 Sekunden, und stellen Sie dann erneut eine Verbindung her. Zu diesem Zeitpunkt wurden etwaige Änderungen zurückgesetzt.
+    > [!NOTE]
+    > `netplan try` wendet die Änderungen temporär an und macht sie nach 120 Sekunden wieder rückgängig. Wenn ein Verbindungsverlust vorliegt, warten Sie 120 Sekunden, und stellen Sie dann erneut eine Verbindung her. Zu diesem Zeitpunkt wurden etwaige Änderungen zurückgesetzt.
 
 7. Wenn keine Probleme mit `netplan try` auftreten, wenden Sie die Konfigurationsänderungen an:
 
@@ -214,13 +224,15 @@ Ubuntu 18.04 und höher wurden für die Betriebssystem-Netzwerkverwaltung in `n
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-### <a name="validation-ubuntu-1804"></a>Überprüfung (Ubuntu 18.04+)
+
+#### <a name="validation-ubuntu-1804"></a>Überprüfung (Ubuntu 18.04+)
 
 Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
 
 ```bash
 ping -I 10.0.0.5 outlook.com
 ```
+
 >[!NOTE]
 >Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
 
@@ -231,14 +243,17 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
     - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
     - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC </details>
+    - **eth2** durch den Namen Ihrer sekundären NIC 
+
+</details>
 
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS usw.)
+
 <details>
   <summary>Expand</summary>
 
@@ -300,7 +315,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 
     In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0* angezeigt werden.
 
-### <a name="validation-red-hat-centos-and-others"></a>Überprüfung (Red Hat, CentOS usw.)
+#### <a name="validation-red-hat-centos-and-others"></a>Überprüfung (Red Hat, CentOS usw.)
 
 Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ihr zugeordneten öffentlichen IP-Adresse eine Verbindung mit dem Internet herstellen können, verwenden den folgenden Befehl:
 
@@ -317,9 +332,92 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
     - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
     - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC </details>
+    - **eth2** durch den Namen Ihrer sekundären NIC 
+
+
+</details>
+
+### <a name="debian-gnulinux"></a>Debian GNU/Linux
+
+<details>
+  <summary>Expand</summary>
+
+1. Öffnen Sie ein Terminalfenster.
+1. Stellen Sie sicher, dass Sie der root-Benutzer sind. Geben Sie andernfalls den folgenden Befehl ein:
+
+   ```bash
+   sudo -i
+   ```
+
+1. Aktualisieren Sie die Konfigurationsdatei der Netzwerkschnittstelle (es wird von „eth0“ ausgegangen).
+
+   * Öffnen Sie die Netzwerkschnittstellendatei mithilfe des folgenden Befehls:
+     
+     ```bash
+     vi /etc/network/interfaces
+     ```
+    
+   * Am Ende der Datei sollten die folgenden Zeilen angezeigt werden:
+    
+      ```bash
+      auth eth0
+      iface eth0 inet dhcp
+      ```
+    
+   * Behalten Sie den vorhandenen Eintrag für DHCP unverändert bei. Die Konfiguration der primären IP-Adresse bleibt unverändert.
+   * Fügen Sie nach den vorhandenen Zeilen in dieser Datei die folgenden Zeilen ein:
+
+     ```bash
+     iface eth0 inet static
+     address <your private IP address here> 
+     netmask <your subnet mask> 
+     ```
+
+1. Speichern Sie die Datei mit dem folgenden Befehl:
+
+   ```bash
+   :wq! 
+   ```
+
+1. Starten Sie die Netzwerkdienste neu, damit die Änderungen wirksam werden. Für Debian 8 und höher kann dies mithilfe des folgenden Befehls erfolgen:
+
+   ```bash
+   systemctl restart networking
+   ```
+   Für frühere Versionen von Debian können Sie die folgenden Befehle verwenden:
+    
+   ```bash
+   service networking restart
+   ```
+
+1. Überprüfen Sie mit dem folgenden Befehl, ob die IP-Adresse der Netzwerkschnittstelle hinzugefügt wurde:
+
+   ```bash
+   ip addr list eth0
+    ```
+
+Es sollte die IP-Adresse angezeigt werden, die Sie als Teil der Liste hinzugefügt haben. Beispiel:
+
+```bash
+ 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+  link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+  inet 127.0.0.1/8 scope host lo
+     valid_lft forever preferred_lft forever
+  inet6 ::1/128 scope host
+     valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+  link/ether 00:0d:3a:1d:1d:64 brd ff:ff:ff:ff:ff:ff
+  inet 10.2.0.5/24 brd 10.2.0.255 scope global eth0
+     valid_lft forever preferred_lft forever
+  inet 10.2.0.6/24 brd 10.2.0.255 scope global secondary eth0
+     valid_lft forever preferred_lft forever
+  inet6 fe80::20d:3aff:fe1d:1d64/64 scope link
+     valid_lft forever preferred_lft forever
+ ```
+
+</details>

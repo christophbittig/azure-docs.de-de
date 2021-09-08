@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 06/17/2021
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8b201b3717d3ba82882131d49add020a8e6b2a9
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98659970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340466"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -37,7 +37,8 @@ Mit den REST-APIs für die Batch-Transkription können Sie die folgenden Methode
 Sie können die ausführliche API prüfen und testen. Sie steht als [Swagger-Dokument](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) zur Verfügung.
 
 Batch-Transkriptionsaufträge werden auf der Grundlage des optimalen Arbeitsaufwands geplant.
-Sie können nicht einschätzen, wann ein Auftrag in den Status „Wird ausgeführt“ wechselt, aber dies sollte bei normaler Systemauslastung innerhalb weniger Minuten erfolgen. Sobald er ausgeführt wird, ist die Geschwindigkeit der Transkription höher als die der Audiowiedergabe zur Laufzeit.
+Sie können nicht einschätzen, wann ein Auftrag in den Status „Wird ausgeführt“ wechselt, aber dies sollte bei normaler Systemauslastung innerhalb weniger Minuten erfolgen.
+Sobald er ausgeführt wird, ist die Geschwindigkeit der Transkription höher als die der Audiowiedergabe zur Laufzeit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +50,7 @@ Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung u
 Wenn Sie planen, Modelle anzupassen, befolgen Sie die Schritte unter [Akustische Anpassung](./how-to-custom-speech-train-model.md) und [Sprachanpassung](./how-to-custom-speech-train-model.md). Um die erstellten Modelle in der Batch-Transkription zu verwenden, benötigen Sie ihren Modellspeicherort. Der Modellspeicherort lässt sich durch Untersuchen der Details des Modells ermitteln (`self`-Eigenschaft). Für den Batch-Transkriptionsdienst ist *kein* bereitgestellter benutzerdefinierter Endpunkt erforderlich.
 
 >[!NOTE]
-> Als Bestandteil der REST-API weist der Batch Transkriptionsdienst eine Reihe von [Kontingenten und Grenzwerten](speech-services-quotas-and-limits.md#batch-transcription) auf, zu deren Prüfung wir Sie auffordern. Damit Sie die Funktion zur Batch-Transkription zum effizienten Transkribieren einer großen Anzahl von Audiodateien in vollem Umfang nutzen können, empfehlen wir, immer mehrere Dateien pro Anforderung zu senden oder auf einen Blob-Speichercontainer mit den zu transkribierenden Audiodateien zu verweisen. Der Dienst transkribiert die Dateien parallel, wodurch sich die Umschlagszeit verringert. Das Verwenden mehrerer Dateien in einer einzelnen Anforderung ist ganz einfach und unkompliziert. Weitere Informationen finden Sie im Abschnitt [Konfiguration](#configuration). 
+> Als Bestandteil der REST-API weist der Batch Transkriptionsdienst eine Reihe von [Kontingenten und Grenzwerten](speech-services-quotas-and-limits.md#batch-transcription) auf, zu deren Prüfung wir Sie auffordern. Damit Sie die Funktion zur Batch-Transkription zum effizienten Transkribieren einer großen Anzahl von Audiodateien in vollem Umfang nutzen können, empfehlen wir, immer mehrere Dateien pro Anforderung zu senden oder auf einen Blob-Speichercontainer mit den zu transkribierenden Audiodateien zu verweisen. Der Dienst transkribiert die Dateien parallel, wodurch sich die Umschlagszeit verringert. Das Verwenden mehrerer Dateien in einer einzelnen Anforderung ist ganz einfach und unkompliziert. Weitere Informationen finden Sie im Abschnitt [Konfiguration](#configuration).
 
 ## <a name="batch-transcription-api"></a>Batch-Transkriptions-API
 
@@ -66,7 +67,7 @@ Verwenden Sie die pro Äußerung erstellten Zeitstempel, um eine geordnete endg�
 
 ### <a name="configuration"></a>Konfiguration
 
-Die Konfigurationsparameter werden als JSON angegeben. 
+Die Konfigurationsparameter werden als JSON angegeben.
 
 **Transkribieren einer oder mehrerer Einzeldateien.** Wenn Sie mehrere Dateien zu transkribieren haben, empfehlen wir, mehrere Dateien in einer Anforderung zu senden. Im Beispiel unten werden drei Dateien verwendet:
 
@@ -187,7 +188,8 @@ Bei der Batch-Transkription können Audiodaten von einem öffentlich sichtbaren 
 ## <a name="batch-transcription-result"></a>Ergebnis der Batch-Transkription
 
 Für jeden Audioeingang wird eine Transkriptionsergebnisdatei erstellt.
-Der Vorgang [Transkriptionsdateien abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles) gibt eine Liste der Ergebnisdateien für diese Transkription zurück. Filtern Sie alle zurückgegebenen Dateien mit `kind` == `Transcription` und `name` == `{originalInputName.suffix}.json`, um die Transkriptionsdatei für eine bestimmte Eingabedatei zu finden.
+Der Vorgang [Transkriptionsdateien abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles) gibt eine Liste der Ergebnisdateien für diese Transkription zurück.
+Filtern Sie alle zurückgegebenen Dateien mit `kind` == `Transcription` und `name` == `{originalInputName.suffix}.json`, um die Transkriptionsdatei für eine bestimmte Eingabedatei zu finden.
 
 Jede Transkriptionsergebnisdatei weist das folgende Format auf:
 
@@ -208,10 +210,10 @@ Jede Transkriptionsergebnisdatei weist das folgende Format auf:
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
       "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
-      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
+      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
@@ -320,13 +322,16 @@ Zeitstempel auf Wortebene müssen aktiviert werden, wie die Parameter in der obi
 Der Batch-Transkriptionsdienst kann eine große Anzahl an übermittelten Transkriptionen verarbeiten. Sie können den Status Ihrer Transkriptionen mit [Transkriptionen abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions) abfragen.
 Rufen Sie [Transkription löschen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regelmäßig aus dem Dienst auf, nachdem Sie die Ergebnisse abgerufen haben. Alternativ können Sie die `timeToLive`-Eigenschaft so festlegen, dass eine schließliche Löschung der Ergebnisse sichergestellt ist.
 
+> [!TIP]
+> Sie können das Tool [Erfassungsclient](ingestion-client.md) und die resultierende Lösung verwenden, um eine große Menge von Audiodaten zu verarbeiten.
+
 ## <a name="sample-code"></a>Beispielcode
 
 Vollständige Beispiele stehen im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
 
 Aktualisieren Sie den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem URI auf die zu transkribierende Audiodatei und dem Modellspeicherort, sofern Sie ein benutzerdefiniertes Modell verwenden.
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/batchclient/program.cs#transcriptiondefinition)]
 
 Der Beispielcode richtet den Client ein und sendet die Transkriptionsanforderung. Anschließend fragt er die Statusinformationen ab und gibt Details zum Fortschritt der Transkription aus.
 

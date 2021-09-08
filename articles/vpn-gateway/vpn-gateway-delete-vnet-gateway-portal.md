@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 0510292b27d61c9142edd710e903ebad74b3d244
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c65c860e54d327c4ec24474658968577387fbc49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228926"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355049"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Löschen eines Gateways für virtuelle Netzwerke über das Portal
 
@@ -29,7 +29,7 @@ Dieser Artikel unterstützt Sie beim Löschen eines virtuellen Netzwerkgateways.
 * Wenn Sie einige der Ressourcen aus der Ressourcengruppe beibehalten möchten, ist das Löschen eines Gateways des virtuellen Netzwerks etwas komplizierter. Bevor Sie das Gateway des virtuellen Netzwerks löschen können, müssen Sie zuerst alle Ressourcen löschen, die von dem Gateway abhängig sind. Welche Schritte Sie ausführen, hängt vom Typ der Verbindungen ab, die Sie erstellt haben, und den abhängigen Ressourcen für jede Verbindung.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell. Wenn Sie ein VPN-Gateway löschen möchten, das mit dem klassischen Bereitstellungsmodell bereitgestellt wurde, führen Sie die Schritte im Artikel [Löschen eines virtuellen Netzwerkgateways mit PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md) aus.
+> Die Schritte in diesem Artikel gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md). Wenn Sie ein VPN-Gateway löschen möchten, das mit dem klassischen Bereitstellungsmodell bereitgestellt wurde, führen Sie die Schritte im Artikel [Löschen eines virtuellen Netzwerkgateways mit PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md) aus.
 
 ## <a name="delete-a-vpn-gateway"></a>Löschen eines VPN-Gateways
 
@@ -61,7 +61,7 @@ Die folgenden Schritte unterstützen Sie beim Löschen von Ressourcen, die nicht
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
-Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
+Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md).
 
 1. Suchen Sie in **Alle Ressourcen** nach der Ressourcengruppe, und klicken Sie darauf, um das Blatt zu öffnen.
 1. Klicken Sie auf **Löschen**. Auf dem Blatt „Löschen“ werden die betroffenen Ressourcen angezeigt. Vergewissern Sie sich, dass alle diese Ressourcen gelöscht werden sollen. Führen Sie andernfalls die Schritte unter „Löschen eines VPN Gateway“ am Anfang dieses Artikels aus.

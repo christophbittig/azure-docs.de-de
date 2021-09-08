@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345767"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
 
@@ -31,10 +31,6 @@ Für eine lokale SQL Server-Datenquelle wird Folgendes unterstützt:
 - Jede Version von SQL ab SQL Server 2019 bis zurück zu SQL Server 2000
 
 - Authentifizierungsmethode: SQL-Authentifizierung
-
-### <a name="known-limitations"></a>Bekannte Einschränkungen
-
-Azure Purview unterstützt nicht die Überprüfung von [Ansichten](/sql/relational-databases/views/views) in SQL Server.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -99,7 +95,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 
 1. Wählen Sie im linken Navigationsbereich unter „Quellen und Überprüfen“ die Option **Integration Runtimes** aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls nicht, führen Sie die [hier](manage-integration-runtimes.md) beschriebenen Schritte aus, um eine selbstgehostete Integration Runtime für Überprüfungen auf einem lokalen virtuellen Computer oder auf einem virtuellen Azure-Computer mit Zugriff auf Ihr lokales Netzwerk zu erstellen.
 
-1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
 1. Wählen Sie **Registrieren** aus.
 

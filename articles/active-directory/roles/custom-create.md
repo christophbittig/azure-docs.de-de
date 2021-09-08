@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef0dc016b2b216d51a4844c469d14a24e11068b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3d7ece742e211715c27a4bb81b67c51a7910552f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347115"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -31,7 +31,7 @@ Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der
 - Eine Lizenz vom Typ Azure AD Premium P1 oder P2
 - „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
 - AzureADPreview-Modul bei Verwendung von PowerShell
-- Administratoreinwilligung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
 
 Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
 
@@ -39,7 +39,8 @@ Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von 
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Erstellen einer neuen benutzerdefinierten Rolle für den Zugriff zum Verwalten von App-Registrierungen
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** > **Neue benutzerdefinierte Rolle** aus.
 
    ![Erstellen oder Bearbeiten von Rollen auf der Seite „Rollen und Administratoren“](./media/custom-create/new-custom-role.png)
@@ -165,8 +166,10 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organisationsweiten Standardbereich zugewiesen, um Zugriffsberechtigungen für alle App-Registrierungen in Ihrer Organisation zu erteilen. Darüber hinaus können benutzerdefinierte Rollen und einige relevante integrierte Rollen (je nach Typ der Azure AD-Ressource) auch im Bereich einer einzelnen Azure AD-Ressource zugewiesen werden. Dadurch können Sie dem Benutzer die Berechtigung zum Aktualisieren von Anmeldeinformationen und grundlegenden Eigenschaften einer einzelnen App erteilen, ohne eine zweite benutzerdefinierte Rolle erstellen zu müssen.
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen des Typs „Anwendungsentwickler“ an.
-1. Wählen Sie **App-Registrierungen** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen des Typs „Anwendungsentwickler“ an.
+
+1. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**.
+
 1. Wählen Sie die App-Registrierung aus, für die Sie Zugriff zum Verwalten gewähren möchten. Möglicherweise müssen Sie die Option **Alle Anwendungen** auswählen, um die vollständige Liste der App-Registrierungen in ihrer Azure AD-Organisation anzuzeigen.
 
     ![Auswählen der App-Registrierung als Ressourcenbereich für eine Rollenzuweisung](./media/custom-create/appreg-all-apps.png)
@@ -174,6 +177,7 @@ Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organ
 1. Wählen Sie in der App-Registrierung die Option **Rollen und Administratoren** aus. Wenn Sie noch keine erstellt haben, finden Sie Anweisungen im [vorherigen Verfahren](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
 
 1. Wählen Sie die Rolle aus, um die Seite **Zuweisungen** zu öffnen.
+
 1. Wählen Sie **Zuweisung hinzufügen** aus, um einen Benutzer hinzuzufügen. Dem Benutzer werden ausschließlich Berechtigungen für die ausgewählte App-Registrierung erteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte

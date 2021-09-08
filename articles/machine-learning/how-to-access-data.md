@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 11/03/2020
+ms.date: 07/06/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: f0fb8ee681bfb3056547eed712d0197100b8ec08
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: a164fb60dde8ba8e652bab3c99b87ffa84ec8596
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356122"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Herstellen einer Verbindung mit Speicherdiensten in Azure
 
@@ -33,7 +33,7 @@ Wenn Sie an einer Vorgehensweise ohne größeren Codeaufwand interessiert sind, 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 - Ein Azure Storage-Konto mit einem [unterstützten Speichertyp](#matrix).
 
@@ -98,7 +98,7 @@ Um sicherzustellen, dass eine sichere Verbindung mit Ihrem Azure-Speicherdienst 
 
 Damit Azure Machine Learning mit einem Speicherkonto kommunizieren kann, das sich hinter einer Firewall oder in einem virtuellen Netzwerk befindet, sind zusätzliche Konfigurationsschritte erforderlich. Wenn sich Ihr Speicherkonto hinter einer Firewall befindet, können Sie [die IP-Adresse über das Azure-Portal der Zulassungsliste hinzufügen](../storage/common/storage-network-security.md#managing-ip-network-rules).
 
-Azure Machine Learning kann Anforderungen von Clients außerhalb des virtuellen Netzwerks empfangen. Um die Sicherheit der Entität sicherzustellen, die Daten vom Dienst anfordert, [richten Sie Azure Private Link für Ihren Arbeitsbereich ein](how-to-configure-private-link.md).
+Azure Machine Learning kann Anforderungen von Clients außerhalb des virtuellen Netzwerks empfangen. Um sicherzustellen, dass die Entität, die Daten vom Dienst anfordert, sicher ist, [verwenden Sie einen privaten Endpunkt mit Ihrem Arbeitsbereich](how-to-configure-private-link.md).
 
 Damit **Benutzer des Python-SDK** über Ihr Trainingsskript auf einem Computeziel auf Ihre Daten zugreifen können, muss sich das Computeziel in demselben virtuellen Netzwerk und Subnetz wie der Speicher befinden. 
 
@@ -230,7 +230,7 @@ Zusätzlich zur Erstellung von Datenspeichern mit dem Python-SDK und mit Studio 
 <a name="arm"></a>
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Es gibt eine Reihe von Vorlagen unter [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/), die zum Erstellen von Datenspeichern verwendet werden können.
+Es gibt eine Reihe von Vorlagen unter [https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices), die zum Erstellen von Datenspeichern verwendet werden können.
 
 Informationen zur Verwendung dieser Vorlagen finden Sie unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).
 
@@ -282,7 +282,6 @@ Azure Machine Learning bietet mehrere Möglichkeiten, Ihre Modelle zur Bewertung
 | ----- | :-----: | ----- |
 | [Batchvorhersage](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Treffen Sie asynchron Vorhersagen für große Datenmengen. |
 | [Webdienst](how-to-deploy-and-where.md) | &nbsp; | Stellen Sie Modelle als Webdienste bereit. |
-| [Azure IoT Edge-Modul](how-to-deploy-and-where.md) | &nbsp; | Stellen Sie Modelle auf IoT Edge-Geräten bereit. |
 
 Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, können Sie möglicherweise benutzerdefinierten Code mit dem entsprechenden Azure-SDK erstellen, um auf die Daten zuzugreifen. Das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) ist beispielsweise eine Clientbibliothek, mit der Sie auf in Blobs oder Dateien gespeicherte Daten zugreifen können.
 

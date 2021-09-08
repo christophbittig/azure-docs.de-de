@@ -11,18 +11,31 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/25/2021
-ms.openlocfilehash: 512d502dc5877c15086d69f96643d4251dfc167b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/21/2021
+ms.openlocfilehash: c8f8699d58d26c745be8cb1207a88cdad6857f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078688"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356068"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server in Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. 
+
+## <a name="july-2021"></a>Juli 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Reparieren der SQL Server IaaS-Erweiterung im Portal** | Es ist jetzt möglich, den Status Ihrer SQL Server IaaS Agent-Erweiterung direkt vom Azure-Portal aus zu überprüfen und sie bei Bedarf zu [reparieren](sql-agent-extension-manually-register-single-vm.md#repair-extension). | 
+
+
+## <a name="june-2021"></a>Juni 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Sicherheitsverbesserungen im Azure-Portal** | Nachdem Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie die Security Center-Empfehlungen in der [Ressource „Virtuelle SQL-Computer“ im Azure-Portal](manage-sql-vm-portal.md#security-center) anzeigen. | 
 
 ## <a name="may-2021"></a>Mai 2021
 

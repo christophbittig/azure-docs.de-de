@@ -4,19 +4,19 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 01/28/2021
+ms.date: 07/13/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 886e0ffb2ba9d367c5f0bb89ec1f48b5fbf7ef5a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: f1da6ec900176807647819865ba708002bd6e614
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061270"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343451"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -102,8 +102,8 @@ Im folgenden Dokument finden Sie Informationen zum erneuten Konfigurieren einer 
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom System zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
+| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
 
 Informationen zur Verwendung einer verwalteten Identität mit [Azure Automation](../../automation/automation-intro.md) finden Sie in den folgenden Dokumenten:
 
@@ -155,8 +155,8 @@ Konfigurieren Sie die verwaltete Identität für Azure Container Instances anhan
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom System zugewiesen | ![Verfügbar][check] | Vorschau | Nicht verfügbar | Vorschau |
+| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Container Registry Tasks anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -179,9 +179,6 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
 - [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
@@ -192,7 +189,7 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 Konfigurieren Sie anhand der folgenden Liste die verwaltete Identität für Azure Digital Twins (in Regionen mit Verfügbarkeit):
 
-- [Azure-Portal](../../digital-twins/how-to-enable-managed-identities-portal.md)
+- [Azure-Portal](../../digital-twins/how-to-route-with-managed-identity.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
@@ -280,6 +277,17 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten mit Azure Machine Learning](../../machine-learning/how-to-use-managed-identities.md).
+
+### <a name="azure-media-services"></a>Azure Media Services
+
+| Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar. | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | Nicht verfügbar.  | Nicht verfügbar.  | Nicht verfügbar.  | Nicht verfügbar.  |
+
+Konfigurieren Sie die verwaltete Identität für Azure Media Services (in Regionen, in denen sie verfügbar sind) anhand der folgenden Liste:
+
+- [Azure-Befehlszeilenschnittstelle](../../media-services/latest/security-access-storage-managed-identity-cli-tutorial.md)
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -429,6 +437,15 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+
+| Cloud | Ressourcen-ID | Status |
+|--------|------------|:-:|
+| Azure Global | `https://<account>.documents.azure.com/`<br/><br/>`https://cosmos.azure.com` | ![Verfügbar][check] |
+| Azure Government | `https://<account>.documents.azure.us/`<br/><br/>`https://cosmos.azure.us` | ![Verfügbar][check] |
+| Azure Deutschland | `https://<account>.documents.microsoftazure.de/`<br/><br/>`https://cosmos.microsoftazure.de` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://<account>.documents.azure.cn/`<br/><br/>`https://cosmos.azure.cn` | ![Verfügbar][check] |
+
 ### <a name="azure-sql"></a>Azure SQL
 
 | Cloud | Ressourcen-ID | Status |
@@ -492,8 +509,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 
-> [!Note]
-> Microsoft Power BI bietet auch [Unterstützung für verwaltete Identitäten](../../stream-analytics/powerbi-output-managed-identity.md).
+> [!NOTE]
+> Sie können verwaltete Identitäten für die Authentifizierung eines [Azure Stream Analytics-Auftrags in Power BI](../../stream-analytics/powerbi-output-managed-identity.md) verwenden.
 
 
 [check]: media/services-support-managed-identities/check.png "Verfügbar"

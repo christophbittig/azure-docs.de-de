@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/14/2021
+ms.date: 07/06/2021
 ms.author: aahi
-ms.openlocfilehash: 0e897b71f1f5f99ce2834768a72bf99b9773301f
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 105f88499367857d1133ab24a88372db747727bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346808"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Textanalyse-API v3: Sprachunterstützung 
 
-> [!NOTE]
-> Sprachen werden hinzugefügt, wenn neue Modellversionen für bestimmte Textanalysefeatures veröffentlicht werden. Weitere Informationen zu den neueste Modellversion für die von Ihnen verwendeten Features finden Sie unter [Versionsverwaltung der Modelle](concepts/model-versioning.md).   
-
 #### <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment-analysis)
 
-| Sprache              | Sprachcode | v3-Unterstützung | Ab Modellversion 3: |              Notizen |
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für Standpunktanalyse ist `2020-04-01`.
+
+| Sprache              | Sprachcode | v3.x-Unterstützung | Ab Modellversion 3: |              Notizen |
 |:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
 | Chinesisch (vereinfacht)    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` wird ebenfalls akzeptiert. |
 | Chinesisch (traditionell)   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
@@ -42,7 +42,7 @@ ms.locfileid: "112078256"
 | Spanisch               |     `es`      |     ✓      |         2019-10-01         |                    |
 | Türkisch               |     `tr`      |     ✓       |         2020-04-01        |                    |
 
-### <a name="opinion-mining-v31-preview-only"></a>Opinion Mining (nur v3.1-preview)
+### <a name="opinion-mining-v31-only"></a>Opinion Mining (nur v3.1)
 
 | Sprache              | Sprachcode | Ab Modellversion 3: |              Notizen |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
@@ -53,8 +53,9 @@ ms.locfileid: "112078256"
 
 > [!NOTE]
 > * Nur die Entitäten „Person“, „Standort“ und „Organisation“ werden für mit einem * gekennzeichnete Sprachen zurückgegeben.
+> * Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für NER ist `2021-06-01`.
 
-| Sprache               | Sprachcode | v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
+| Sprache               | Sprachcode | v3.x-Unterstützung | Ab Modellversion 3: |       Notizen        |
 |:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
 | Arabisch                 |     `ar`      |      ✓*    |               2019-10-01        |                    |
 | Chinesisch (vereinfacht)     |   `zh-hans`   |     ✓      |               15.1.2021        | `zh` wird ebenfalls akzeptiert. |
@@ -82,7 +83,10 @@ ms.locfileid: "112078256"
 
 #### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/key-phrase-extraction)
 
-| Sprache              | Sprachcode |  v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für die Schlüsselbegriffserkennung ist `2021-06-01`.
+
+| Sprache              | Sprachcode |  v3.x-Unterstützung | Ab Modellversion 3: |       Notizen        |
 |:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
 | Afrikaans             |     `af`      |     ✓      |                2020-07-01                 |                    |
 | Bulgarisch             |     `bg`      |     ✓      |                2020-07-01                 |                    |
@@ -117,14 +121,33 @@ ms.locfileid: "112078256"
 
 #### <a name="entity-linking"></a>[Entitätsverknüpfung](#tab/entity-linking)
 
-| Sprache | Sprachcode |  v3-Unterstützung | Ab Modellversion 3: | Notizen |
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für die Entitätsverknüpfung ist `2020-02-01`.
+
+| Sprache | Sprachcode |  v3.x-Unterstützung | Ab Modellversion 3: | Notizen |
 |:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
 | Englisch  |     `en`      |     ✓      |                2019-10-01                 |       |
 | Spanisch  |     `es`      |    ✓      |                2019-10-01                 |       |
 
+#### <a name="text-analytics-for-health"></a>[Textanalyse für Gesundheit](#tab/health)
+
+> [!NOTE]
+> * Der Container verwendet andere Modellversionen als die API-Endpunkte und das SDK.
+> * Sprachen werden hinzugefügt, wenn neue Modellversionen für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuellen [Modellversionen](concepts/model-versioning.md) für Textanalyse für die Integrität sind:
+>    * API und SDK: `2021-05-15`
+>    * Container: `2021-03-01`
+
+
+| Sprache | Sprachcode |  v3.x-Unterstützung | Ab Modellversion 3: | Notizen |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| Englisch  |     `en`      |     ✓      |                API-Endpunkt: 2019-10-01 <br> Container: 2020-04-16                |       |
+
 #### <a name="personally-identifiable-information-pii"></a>[Personenbezogene Informationen (Personally Identifiable Information, PII)](#tab/pii)
 
-| Sprache               | Sprachcode | v3-Unterstützung | Ab Modellversion 3: |       Notizen        |
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für PII ist `2021-01-15`.
+
+| Sprache               | Sprachcode | v3.x-Unterstützung | Ab Modellversion 3: |       Notizen        |
 |:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
 | Chinesisch (vereinfacht)     |   `zh-hans`   |     ✓      |               15.1.2021        | `zh` wird ebenfalls akzeptiert. |
 | Englisch                |     `en`      |     ✓      |               2020-07-01        |                    |
@@ -139,11 +162,14 @@ ms.locfileid: "112078256"
 
 #### <a name="language-detection"></a>[Sprachenerkennung](#tab/language-detection)
 
+> [!NOTE]
+> Sprachen werden hinzugefügt, wenn neue [Modellversionen](concepts/model-versioning.md) für bestimmte Textanalysefeatures veröffentlicht werden. Die aktuelle Modellversion für die Sprachenerkennung ist `2021-01-05`.
+
 Die Textanalyse-API kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen erkennen und erkannte Sprachen mit Name und Code zurückgeben. Sprachcodeparameter für die Sprachenerkennung der Textanalyse entsprechen dem Standard [BCP-47](https://tools.ietf.org/html/bcp47), und der Großteil ist mit [ISO-639-1](https://www.iso.org/iso-639-language-codes.html)-Bezeichnern konform. 
 
 Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerkennung ausprobieren, um zu sehen, ob sie einen Code zurückgibt. Die Antwort bei Sprachen, die nicht erkannt werden können, lautet `unknown`.
 
-| Sprache | Sprachcode | v3-Unterstützung | Ab Modellversion 3: |
+| Sprache | Sprachcode | v3.x-Unterstützung | Ab Modellversion 3: |
 |:-|:-:|:-:|:-:|
 |Afrikaans|`af`|✓|    |
 |Albanisch|`sq`|✓|    |
@@ -261,6 +287,21 @@ Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerken
 |Yukatekisches Maya| `yua` | ✓| |
 |Zulu|`zu`|✓|5\.1.2021|
 
+
+#### <a name="text-summarization"></a>[Textzusammenfassung](#tab/summarization)
+
+| Sprache | Sprachcode |  v3.x-Unterstützung | Ab Modellversion 3: | Notizen |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| Chinesisch (vereinfacht)     |   `zh-hans`   |     ✓      |               2021-08-01        | `zh` wird ebenfalls akzeptiert. |
+| Englisch  |     `en`      |     ✓      |                2021-08-01                 |       |
+| Französisch                 |     `fr`      |     ✓      |               2021-08-01        |                    |
+| Deutsch                 |     `de`      |     ✓      |               2021-08-01        |                    |
+| Italienisch               |     `it`      |     ✓       |               2021-08-01        |                    |
+| Japanisch              |     `ja`      |     ✓       |               2021-08-01        |                    |
+| Koreanisch                |     `ko`      |     ✓       |               2021-08-01        |                    |
+| Spanisch               |     `es`      |     ✓       |               2021-08-01        |                    |
+| Portugiesisch (Brasilien)   |    `pt-BR`    |     ✓       |               2021-08-01        |                    |
+| Portugiesisch (Portugal) |    `pt-PT`    |     ✓       |               2021-08-01        | `pt` wird ebenfalls akzeptiert. |
 
 ---
 

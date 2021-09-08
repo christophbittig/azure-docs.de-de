@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 679682ed0a268306bfb6c7afcf9abbd94a4d45b7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100178"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355492"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -134,6 +134,8 @@ Verwenden von `AADClientCertificate`:
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
+Hinweis: Bei allen Werten wird die Groß- und Kleinschreibung unterschieden.
+
 | Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 01.07.2019 | date |
@@ -156,7 +158,7 @@ Verwenden von `AADClientCertificate`:
 
 Ein Beispiel für eine auf der Schemaversion 2.2 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad).
 
-Ein Beispiel für eine auf der Schemaversion 1.1 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
+Ein Beispiel für eine auf der Schemaversion 1.1 basierende Vorlagenbereitstellung finden Sie in der Azure-Schnellstartvorlage [encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm).
 
 >[!NOTE]
 > Wenn der Parameter `VolumeType` auf „All“ festgelegt ist, werden Datenträger nur dann verschlüsselt, wenn sie ordnungsgemäß formatiert sind.

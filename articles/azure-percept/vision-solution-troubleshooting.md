@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136242"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349675"
 ---
 # <a name="vision-solution-troubleshooting"></a>Problembehandlung für die Vision-Lösung
 
@@ -113,6 +113,8 @@ Führen Sie die folgenden Schritte aus, um das Nachrichtenintervall zu aktualisi
 Zeigen Sie den RTSP-Videostream Ihres Geräts über [Azure Percept Studio](./how-to-view-video-stream.md) oder [VLC Media Player](https://www.videolan.org/vlc/index.html) an.
 
 Navigieren Sie zum Öffnen des RTSP-Stream in VLC Media Player zu **Medien** > **Netzwerkstream öffnen** > **rtsp://[Geräte-IP-Adresse]:8554/result**.
+
+Wenn Ihr RTSP-Stream teilweise durch ein graues Kästchen blockiert wird, versuchen Sie möglicherweise, ihn über eine schlechte Netzwerkverbindung anzuzeigen. Überprüfen Sie, ob die Bandbreite Ihrer Verbindung für Videostreams ausreichend ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
