@@ -7,16 +7,17 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 64d5f46d167b0707c2257f29c5d5cb1950aaa046
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 7b1c270f83565e2968e6677f07b81968dcf61ac7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029206"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339441"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
 Wenn Sie über vorhandene virtuelle Windows-Computer (VMs) verfügen, die nicht verwaltete Datenträger verwenden, können Sie die VMs über den [Azure Managed Disks-Dienst](../managed-disks-overview.md) konvertieren, sodass verwaltete Datenträger verwendet werden. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
+
 
  
 
@@ -88,8 +89,11 @@ Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn während der Konvertierung ein Fehler auftritt oder sich eine VM aufgrund von Problemen bei einer vorherigen Konvertierung in einen fehlerhaften Zustand befindet, führen Sie das Cmdlet `ConvertTo-AzVMManagedDisk` erneut aus. Derartige Probleme können normalerweise durch eine einfache Wiederholung behoben werden.
-Stellen Sie vor dem Konvertieren sicher, dass alle VM-Erweiterungen den Zustand „Bereitstellung erfolgreich“ aufweisen. Andernfalls tritt bei der Konvertierung ein Fehler mit Fehlercode 409 auf.
+- Stellen Sie vor dem Konvertieren sicher, dass alle VM-Erweiterungen den Zustand „Bereitstellung erfolgreich“ aufweisen. Andernfalls tritt bei der Konvertierung ein Fehler mit Fehlercode 409 auf.
+- Wenn während der Konvertierung ein Fehler auftritt oder sich eine VM aufgrund von Problemen bei einer vorherigen Konvertierung in einen fehlerhaften Zustand befindet, führen Sie das Cmdlet `ConvertTo-AzVMManagedDisk` erneut aus. Derartige Probleme können normalerweise durch eine einfache Wiederholung behoben werden.
+- Wenn Sie eine Linux-VM in verwaltete Datenträger konvertieren, verwenden Sie die neueste Version des Azure Linux-Agents. Vorgänge, für die die Azure Linux-Agent-Version ab 2.2.0 verwendet wird, schlagen wahrscheinlich fehl. Die Ausführung der Konvertierung auf einer generalisierten VM oder einer VM, die zu einer klassischen Verfügbarkeitsgruppe gehört, wird ebenfalls nicht unterstützt.
+- Wenn bei der Konvertierung der Fehler SnapshotCountExceeded auftritt, löschen Sie einige Momentaufnahmen, und wiederholen Sie den Vorgang.
+
 
 ## <a name="convert-using-the-azure-portal"></a>Konvertieren über das Azure-Portal
 

@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: eb50a6418c296e98b12af481df33509af3f0a06d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: a7dfe0b24143b9a92c10d1b1c876eabb200f2270
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536583"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598250"
 ---
 # <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -30,7 +30,7 @@ Sie können den Status Ihres Angebots im [Partner Center](https://partner.micros
 | Eingreifen erforderlich | Wir haben während der Zertifizierung oder einer anderen Veröffentlichungsphase ein kritisches Problem festgestellt. |
 | Vorschau | Wir haben das Angebot zertifiziert. Nun muss es abschließend durch den Herausgeber verifiziert werden. Wählen Sie **Live schalten** aus, um das Angebot live zu veröffentlichen. |
 | Live | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
-| Ausstehender Verkaufsstopp | Der Herausgeber hat „Verkaufsstopp“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
+| Verteilungsende ausstehend | Der Herausgeber hat „Verteilung beenden“ für ein Angebot oder einen Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
 | Im Marketplace nicht verfügbar | Ein zuvor im Marketplace veröffentlichtes Angebot wurde entfernt. |
 |
 
@@ -128,7 +128,7 @@ Das Angebot wird auf verschiedenen Plattformen und mit verschiedenen Versionen g
 
 Wenn Ihr Angebot eine der Listungs-, technischen oder Richtlinienprüfungen nicht besteht oder Sie nicht berechtigt sind, ein solches Angebot zu übermitteln, erhalten Sie per E-Mail einen Bericht mit Zertifizierungsfehlern.
 
-Dieser Bericht enthält Beschreibungen aller Richtlinien, gegen die verstoßen wurde, sowie Prüfhinweise. Überprüfen Sie diesen E-Mail-Bericht, beheben Sie mögliche Probleme, aktualisieren Sie Ihr Angebot bei Bedarf, und reichen Sie es über das [Portal des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) erneut im Partner Center ein. Sie können das Angebot bis zum Bestehen der Zertifizierung beliebig oft erneut einreichen.
+Dieser Bericht enthält Beschreibungen aller Richtlinien, gegen die verstoßen wurde, sowie Prüfhinweise. Überprüfen Sie diesen E-Mail-Bericht, beheben Sie mögliche Probleme, aktualisieren Sie Ihr Angebot bei Bedarf, und reichen Sie es über das [Portal des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165935) erneut im Partner Center ein. Sie können das Angebot bis zum Bestehen der Zertifizierung beliebig oft erneut einreichen.
 
 ## <a name="preview-creation-phase"></a>Phase „Erstellung einer Vorschau“
 
@@ -214,8 +214,8 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 |Angebot erstellt    |Das Angebot wurde im Partner Center erstellt. Ein Benutzer hat den Angebotstyp, die Angebots-ID und den Angebotsalias in **Kommerzieller Marketplace** > **Übersicht** ausgewählt.    |
 |Plan erstellt: *Planname*    |Ein Benutzer hat einen neuen Plan erstellt, indem er die Plan-ID und den Plannamen auf der Registerkarte **Planübersicht** eingegeben hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
 |Plan gelöscht    |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Einstellung des Verkaufs für den Plan initiiert: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verkauf beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
-|Einstellung des Verkaufs für den Plan rückgängig gemacht: *Planname*    |Ein Benutzer hat die Einstellung des Verkaufs für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verkaufsstopp rückgängig machen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Verteilungsende für Plan initiiert: *Planname*    |Ein Benutzer hat das Verteilungsende für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verteilung beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Verteilung fortsetzen: *Planname*    |Ein Benutzer hat das Verteilungsende für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verteilung fortsetzen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
 |Angebot für die Vorschau übermittelt    |Ein Benutzer hat das Angebot für die Vorschau übermittelt, indem er auf der Seite **Überprüfen und veröffentlichen** die Option **Veröffentlichen** ausgewählt hat.    |
 |Abbruch der Übermittlung für die Vorschau initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung für die Vorschau angefordert, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Übermittlung für die Vorschau abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung für die Vorschau abgebrochen, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
@@ -223,7 +223,7 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 |Abbruch der Veröffentlichung im Marketplace initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung angefordert, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
 |Veröffentlichung im kommerziellen Marketplace abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung abgebrochen, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
 |Private Zielgruppe synchronisiert    |Ein Benutzer hat die private Zielgruppe aktualisiert und synchronisiert, indem er auf der Seite **Planübersicht** oder der Seite **Preise und Verfügbarkeit des Plans** die Option **Private Zielgruppe synchronisieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die private Pläne unterstützen*.    |
-|Verkauf des Angebots eingestellt    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** ausgewählt hat.    |
+|Verteilungsende für Angebot    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verteilung beenden** ausgewählt hat.    |
 
 > [!NOTE]
 > Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.

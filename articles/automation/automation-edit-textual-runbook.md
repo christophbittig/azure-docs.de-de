@@ -10,12 +10,12 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 296d45fae4d59553b54a1b68923c91be4168d3a5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 48df3f834601410caf83d818ac75b1b7b7e68dc2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829384"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468241"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Bearbeiten von Textrunbooks in Azure Automation
 
@@ -26,6 +26,9 @@ Der Text-Editor enthält ein Feature zum Einfügen von Code für Cmdlets, Objekt
 Jedes Runbook in Azure Automation umfasst zwei Versionen: eine Entwurfsversion und eine veröffentlichte Version. Sie bearbeiten die Entwurfsversion des Runbooks und veröffentlichen sie anschließend, damit sie ausgeführt werden kann. Die veröffentlichte Version kann nicht bearbeitet werden. Weitere Informationen finden Sie unter [Veröffentlichen eines Runbooks](manage-runbooks.md#publish-a-runbook).
 
 Dieser Artikel enthält detaillierte Schritte zum Ausführen verschiedener Funktionen mit diesem Editor. Diese gelten nicht für [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks). Informationen zur Arbeit mit diesen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
+
+> [!IMPORTANT] 
+> Fügen Sie das Schlüsselwort AzureRm nicht in ein Skript ein, das mit dem Az-Modul ausgeführt werden soll. Die Einbeziehung des Schlüsselworts, auch in einen Kommentar, kann dazu führen, dass AzureRm geladen wird und dann in Konflikt mit dem Az-Modul gerät.
 
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Bearbeiten eines Runbooks mit dem Azure-Portal
 

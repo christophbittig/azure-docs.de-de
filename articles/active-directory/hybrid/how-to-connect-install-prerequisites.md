@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb12328a02a08bfcde4c431ff584a85dc48d31e
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 3e01dd7c32c822f03b8f47147826e085321eeacf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613645"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472398"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -42,7 +42,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 
 ### <a name="on-premises-active-directory"></a>Lokales Active Directory
 * Die Active Directory-Schemaversion und die Funktionsebene der Gesamtstruktur müssen Windows Server 2003 oder höher entsprechen. Die Domänencontroller können unter einer beliebigen Version ausgeführt werden, sofern die Anforderungen an die Schemaversion und an die Gesamtstrukturebene erfüllt sind.
-* Wenn Sie das Feature *Kennwortrückschreiben* verwenden möchten, müssen die Domänencontroller unter Windows Server 2012 oder höher ausgeführt werden.
+* Wenn Sie das Feature *Kennwortrückschreiben* verwenden möchten, müssen die Domänencontroller unter Windows Server 2016 oder höher ausgeführt werden.
 * Der von Azure AD verwendete Domänencontroller darf nicht schreibgeschützt sein. Die Verwendung eines schreibgeschützten Domänencontrollers (Read-Only Domain Controller, RODC) wird *nicht unterstützt*, und Azure AD Connect folgt keinen Umleitungen für Schreibvorgänge.
 * Die Verwendung von lokalen Gesamtstrukturen oder Domänen mit NetBIOS-Namen, die einen Punkt (.) enthalten, wird *nicht unterstützt*.
 * Wir empfehlen das [Aktivieren des Active Directory-Papierkorbs](how-to-connect-sync-recycle-bin.md).
@@ -64,7 +64,7 @@ Weitere Informationen zum Schützen Ihrer Active Directory-Umgebung finden Sie u
 
 #### <a name="installation-prerequisites"></a>Voraussetzungen für die Installation
 
-- Azure AD Connect muss auf einem in die Domäne eingebundenen Computer unter Windows Server 2012 oder höher installiert werden. 
+- Azure AD Connect muss auf einem in die Domäne eingebundenen Computer unter Windows Server 2016 oder höher installiert werden. 
 - Azure AD Connect kann nicht unter Small Business Server oder Windows Server Essentials vor 2019 (Windows Server Essentials 2019 wird unterstützt) installiert werden. Der Server muss Windows Server Standard oder höher verwenden. 
 - Auf dem Azure AD Connect Server muss eine vollständige GUI installiert sein. Die Installation von Azure AD Connect unter Windows Server Core wird nicht unterstützt. 
 - Auf dem Azure AD Connect-Server darf die Gruppenrichtlinie für die PowerShell-Aufzeichnung nicht aktiviert sein, wenn Sie die Konfiguration von Active Directory-Verbunddienste (Active Directory Federation Services, AD FS) mit dem Azure AD Connect-Assistenten verwalten. Sie können die PowerShell-Aufzeichnung aktivieren, wenn Sie den Azure AD Connect-Assistenten zum Verwalten der Synchronisierungskonfiguration verwenden. 
@@ -86,10 +86,11 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 - Stellen Sie sicher, dass für jeden Computer ein eindeutiges lokales Administratorkennwort vorhanden ist. Weitere Informationen finden Sie unter [Microsoft-Sicherheitsempfehlung: Local Administrator Password Solution (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps). Mit dieser Lösung können eindeutige zufällige Kennwörter auf jeder Arbeitsstation konfiguriert werden, und für den Server werden die Kennwörter in Active Directory gespeichert und durch eine ACL geschützt. Nur berechtigte autorisierte Benutzer können diese lokalen Kennwörter für das Administratorkonto lesen oder eine Rücksetzung anfordern. Sie können die LAPS für die Verwendung auf Arbeitsstationen und Servern aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899) abrufen. Weitere Informationen zum Betreiben einer Umgebung mit LAPS und Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) finden Sie unter [Prinzip der vertrauenswürdigen Quelle für betriebliche Standards](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementieren Sie dedizierte [Arbeitsstationen mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) für alle Mitarbeiter mit privilegiertem Zugriff auf die Informationssysteme Ihrer Organisation. 
 - Berücksichtigen Sie diese [zusätzlichen Richtlinien](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface), um die Angriffsfläche Ihrer Active Directory-Umgebung zu verringern.
+- Folgen Sie den Anweisungen unter [Überwachen von Änderungen an der Verbundkonfiguration](how-to-connect-monitor-federation-changes.md) zum Einrichten von Warnungen zur Überwachung von Änderungen an der zwischen Ihrem Identitätsanbieter und Azure AD eingerichteten Vertrauensstellung. 
 
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Von Azure AD Connect verwendete SQL Server-Datenbank
-* Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2012 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt eine Größenbeschränkung von 10 GB. Dies ermöglicht Ihnen das Verwalten von ca. 100.000 Objekten. Wenn Sie eine größere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Installation von SQL Server verweisen. Der SQL Server-Installationstyp kann sich auf die [Leistung von Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors) auswirken.
+* Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2019 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt eine Größenbeschränkung von 10 GB. Dies ermöglicht Ihnen das Verwalten von ca. 100.000 Objekten. Wenn Sie eine größere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Installation von SQL Server verweisen. Der SQL Server-Installationstyp kann sich auf die [Leistung von Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors) auswirken.
 * Wenn Sie eine andere Installation von SQL Server verwenden, gelten die folgenden Anforderungen:
   * Azure AD Connect unterstützt alle SQL Server-Versionen von 2012 (mit dem neuesten Service Pack) bis SQL Server 2019. Azure SQL-Datenbank wird als Datenbank *nicht unterstützt*.
   * Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese Sortierungen werden durch „\_CI_“ in ihrem Namen bestimmt. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird *nicht unterstützt*.
@@ -106,7 +107,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 * Wenn Sie in Ihrem Intranet Firewalls verwenden und die Ports zwischen den Azure AD Connect-Servern und Ihren Domänencontrollern öffnen müssen, lesen Sie die Informationen unter [Azure AD Connect-Ports](reference-connect-ports.md).
 * Wenn Ihr Proxy oder Ihre Firewall den Zugriff auf bestimmte URLs beschränkt, müssen die unter [Office 365-URLs und -IP-Adressbereiche](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) dokumentierten URLs geöffnet werden. Weitere Informationen finden Sie auch unter [Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)
   * Wenn Sie die Microsoft Cloud in Deutschland oder die Microsoft Azure Government-Cloud verwenden, finden Sie die entsprechenden URLs unter [Azure AD Connect: Besondere Überlegungen zu Instanzen](reference-connect-instances.md).
-* Azure AD Connect (Version 1.1.614.0 und höher) verwendet standardmäßig TLS 1.2 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Wenn TLS 1.2 auf dem zugrunde liegenden Betriebssystem nicht verfügbar ist, greift Azure AD Connect schrittweise auf älter Protokolle zurück (TLS 1.1 und TLS 1.0).
+* Azure AD Connect (Version 1.1.614.0 und höher) verwendet standardmäßig TLS 1.2 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Wenn TLS 1.2 auf dem zugrunde liegenden Betriebssystem nicht verfügbar ist, greift Azure AD Connect schrittweise auf älter Protokolle zurück (TLS 1.1 und TLS 1.0). Ab Azure AD ConnectAD Connect-Version 2.0. TLS 1.0 und 1.1 werden nicht mehr unterstützt. Die Installation misslingt, wenn TLS 1.2 nicht verfügbar ist.
 * Vor der Version 1.1.614.0 verwendet Azure AD Connect standardmäßig TLS 1.0 für die Verschlüsselung der Kommunikation zwischen dem Synchronisierungsmodul und Azure AD. Folgen Sie zur Änderung in TLS 1.2 den Schritten in [Aktivieren von TLS 1.2 für Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
 * Wenn Sie einen ausgehenden Proxy für die Verbindung mit dem Internet verwenden, muss die folgende Einstellung in der Datei **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** hinzugefügt werden, um dem Installations-Assistenten und der Azure AD Connect-Synchronisierung das Herstellen einer Verbindung mit dem Internet und Azure AD zu ermöglichen. Dieser Text muss am Ende der Datei eingegeben werden. Im folgenden Code steht *&lt;PROXYADDRESS&gt;* für die tatsächliche Proxy-IP-Adresse oder den tatsächlichen Hostnamen.
 
@@ -147,15 +148,7 @@ Optional: Verwenden Sie ein Testbenutzerkonto zum Überprüfen der Synchronisier
 
 ## <a name="component-prerequisites"></a>Voraussetzungen an Komponenten
 ### <a name="powershell-and-net-framework"></a>PowerShell und .NET Framework
-Azure AD Connect ist abhängig von Microsoft PowerShell und .NET Framework 4.5.1. Auf dem Server muss diese Version oder eine neuere Version installiert sein. Führen Sie abhängig von Ihrer Windows Server-Version die folgenden Aktionen aus:
-
-* Windows Server 2012 R2
-  * Microsoft PowerShell ist standardmäßig installiert. Keine Aktion erforderlich.
-  * .NET Framework 4.5.1 und neuere Versionen werden über Windows Update angeboten. Stellen Sie in der Systemsteuerung sicher, dass die neuesten Updates von Windows Server installiert sind.
-* Windows Server 2012
-  * Die aktuelle Version von Microsoft PowerShell steht im [Microsoft Download Center](https://www.microsoft.com/downloads) in Windows Management Framework 4.0 zur Verfügung.
-  * .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](https://www.microsoft.com/downloads) verfügbar.
-
+Azure AD Connect ist abhängig von Microsoft PowerShell 5.0 und .NET Framework 4.5.1. Auf dem Server muss diese Version oder eine neuere Version installiert sein. 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Aktivieren von TLS 1.2 für Azure AD Connect
 Vor der Version 1.1.614.0 verwendet Azure AD Connect standardmäßig TLS 1.0 für die Verschlüsselung der Kommunikation zwischen dem Server mit dem Synchronisierungsmodul und Azure AD. Sie können .NET-Anwendungen für die standardmäßige Verwendung von TLS 1.2 auf dem Server konfigurieren. Weitere Informationen zu TLS 1.2 finden Sie in der [Microsoft-Sicherheitsempfehlung 2960358](/security-updates/SecurityAdvisories/2015/2960358).
@@ -218,10 +211,10 @@ Wenn Sie Azure AD Connect zum Bereitstellen von AD FS oder des Webanwendungspr
 Azure AD Connect installiert die folgenden Komponenten auf dem Server, auf dem Azure AD Connect installiert ist. Diese Liste ist für eine einfache Expressinstallation. Wenn Sie auf der Seite **Synchronisierungsdienste installieren** eine andere SQL Server-Version auswählen, wird SQL Express LocalDB nicht lokal installiert.
 
 * Azure AD Connect Health
-* Microsoft SQL Server 2012 – Befehlszeilenprogramme
-* Microsoft SQL Server 2012 Express LocalDB
-* Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013 Redistributionspaket
+* Microsoft SQL Server 2019-Befehlszeilen-Hilfsprogramme
+* Microsoft SQL Server 2019 Express LocalDB
+* Microsoft SQL Server 2019 Native Client
+* Microsoft Visual C++ 14 Redistributable Package
 
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Hardwareanforderungen für Azure AD Connect
 In der folgenden Tabelle sind die Mindestanforderungen für den Azure AD Connect-Synchronisierungscomputer aufgeführt.

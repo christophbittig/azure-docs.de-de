@@ -4,21 +4,16 @@ description: Erfahren Sie mehr über Richtlinienausdrücke in Azure API Manageme
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/07/2021
 ms.author: apimpm
-ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65309253886d8186087a1ac93b5da9d067f444bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99219314"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468482"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -123,6 +118,7 @@ Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitg
 |System.Linq.Enumerable|All|
 |System.Math|All|
 |System.MidpointRounding|All|
+|System.Net.IPAddress|All|
 |System.Net.WebUtility|All|
 |System.Nullable|All|
 |System.Random|All|
@@ -212,7 +208,7 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |----------------------|-------------------------------------------------------|
 |context|[Api](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Bereitstellung](#ref-context-deployment)<br /><br /> Elapsed: TimeSpan – Zeitintervall zwischen dem Wert des Zeitstempels und der aktuellen Uhrzeit<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Vorgang](#ref-context-operation)<br /><br /> [Produkt](#ref-context-product)<br /><br /> [Anforderung](#ref-context-request)<br /><br /> RequestId: Guid – eindeutiger Bezeichner der Anforderung<br /><br /> [Antwort](#ref-context-response)<br /><br /> [Abonnement](#ref-context-subscription)<br /><br /> Timestamp: DateTime – Zeitpunkt des Empfangs der Anforderung<br /><br /> Tracing: bool – gibt an, ob die Ablaufverfolgung aktiviert oder deaktiviert ist <br /><br /> [Benutzer](#ref-context-user)<br /><br /> [Variablen:](#ref-context-variables) IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|
 |<a id="ref-context-api"></a>context.Api|Id: string<br /><br /> IsCurrentRevision: bool<br /><br />  Name: string<br /><br /> Path: string<br /><br /> Revision: string<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Version: string |
-|<a id="ref-context-deployment"></a>context.Deployment|Region: string<br /><br /> ServiceName: string<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-deployment"></a>context.Deployment|GatewayId: Zeichenfolge (gibt für verwaltete Gateways „managed“ zurück)<br /><br /> Region: string<br /><br /> ServiceName: string<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>context.Operation|Id: string<br /><br /> Method: string<br /><br /> Name: string<br /><br /> UrlTemplate: string|
 |<a id="ref-context-product"></a>context.Product|Apis: IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Groups: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: string<br /><br /> Name: string<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
@@ -224,7 +220,7 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |<a id="ref-context-user"></a>context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: Datetime|
 |<a id="ref-iapi"></a>IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: string<br /><br /> Name: string|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, byte[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. Standardmäßig verwendet die Methode den Datenstrom des Originalnachrichtentexts und sorgt dafür, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter auf `true` fest. Ein Beispiel finden Sie [hier](api-management-transformation-policies.md#SetBody).|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, byte[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. Standardmäßig verwendet die Methode den Datenstrom des Originalnachrichtentexts und sorgt dafür, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter wie in [diesem Beispiel](api-management-transformation-policies.md#SetBody) auf `true` fest.|
 |<a id="ref-iurl"></a>IUrl|Host: string<br /><br /> Path: string<br /><br /> Port: int<br /><br /> [Query](#ref-iurl-query) (Abfrage): IReadOnlyDictionary<string, string[]><br /><br /> QueryString: string<br /><br /> Scheme: string|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: string<br /><br /> Provider: string|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: string<br /><br /> Query: string|

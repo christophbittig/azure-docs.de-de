@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c637f22a21b73450746a90b83ea7c87249da1d45
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772671"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507409"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Hinzufügen von Routingregeln
 
-Regeln werden in der Reihenfolge ihrer Auflistung verarbeitet. Der Datenverkehr wird unter Verwendung der ersten übereinstimmenden Regel weitergeleitet, unabhängig von spezifischen Eigenschaften. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
+Regeln werden in der aufgelisteten Reihenfolge verarbeitet, wenn das Feld für die Regelpriorität nicht verwendet wird. Der Datenverkehr wird unter Verwendung der ersten übereinstimmenden Regel weitergeleitet, unabhängig von spezifischen Eigenschaften. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert.
 
 In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die beim Bereitstellen des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create) hinzufügen.
 
@@ -171,6 +171,29 @@ az network application-gateway rule delete \
   --gateway-name myAppGateway \
   --name rule1 \
   --resource-group myResourceGroupAG
+```
+### <a name="add-priority-to-routing-rules"></a>Hinzufügen von Priorität zu Routingregeln
+
+Um sicherzustellen, dass spezifischere Regeln zuerst verarbeitet werden, verwenden Sie das Regelprioritätsfeld, um sicherzustellen, dass sie eine höhere Priorität haben. Das Regelprioritätsfeld muss für alle vorhandenen Anforderungsroutingregeln festgelegt werden. Jede neue Regel, die später erstellt wird, muss auch einen Regelprioritätswert haben.
+```azurecli-interactive
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name wccontosoRule \
+  --resource-group myResourceGroupAG \
+  --http-listener wccontosoListener \
+  --rule-type Basic \
+  --priority 200 \
+  --address-pool wccontosoPool
+
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name shopcontosoRule \
+  --resource-group myResourceGroupAG \
+  --http-listener shopcontosoListener \
+  --rule-type Basic \
+  --priority 100 \
+  --address-pool shopcontosoPool
+
 ```
 
 ## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen

@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ed084e26b12851985e2b3b906be1367b7b4a437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355393"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Bereitstellen von benutzerdefinierten Skripterweiterungen auf VMs, die auf Ihrem Azure Stack Edge Pro-Gerät ausgeführt werden
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Die benutzerdefinierte Skripterweiterung lädt Skripts oder Befehle auf VMs auf Ihren Azure Stack Edge Pro-Geräten herunter und führt sie aus. In diesem Artikel wird erläutert, wie Sie die benutzerdefinierte Skripterweiterung mithilfe einer Azure Resource Manager-Vorlage installieren und ausführen. 
-
-Dieser Artikel bezieht sich auf Geräte vom Typ „Azure Stack Edge Pro-GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“.
+Die benutzerdefinierte Skripterweiterung lädt Skripts oder Befehle auf VMs auf Ihren Azure Stack Edge Pro-Geräten herunter und führt sie aus. In diesem Artikel wird erläutert, wie Sie die benutzerdefinierte Skripterweiterung mithilfe einer Azure Resource Manager-Vorlage installieren und ausführen.
 
 ## <a name="about-custom-script-extension"></a>Informationen zur benutzerdefinierten Skripterweiterung
 
@@ -72,7 +70,7 @@ If your script is on a local server, then you may still need additional firewall
 
     Im folgenden Beispiel ist Port 2 mit dem Internet verbunden und wird zum Aktivieren des Computenetzwerks verwendet. Wenn Sie im vorausgehenden Schritt festgestellt haben, dass Kubernetes nicht benötigt wird, können Sie die IP-Adresse des Kubernetes-Knotens und die IP-Zuweisung für externe Dienste überspringen.
 
-    ![Aktivieren von Computeeinstellungen für den mit dem Internet verbundenen Port](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+    ![Screenshot des Bereichs „Compute“ für ein Azure Stack Edge-Gerät. Computeeinstellungen für Port 2 sind hervorgehoben.](media/azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension/enable-compute-network-1.png)
 
 ## <a name="install-custom-script-extension"></a>Installieren der benutzerdefinierten Skripterweiterung
 
@@ -239,7 +237,7 @@ Die angegebenen Dateien werden in den folgenden Ordner auf dem virtuellen Zielco
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-Hierbei ist <n> eine dezimale Ganzzahl, die sich zwischen verschiedenen Ausführungen der Erweiterung ändern kann. Der Wert „1.*“ entspricht dem tatsächlichen aktuellen `typeHandlerVersion`-Wert der Erweiterung. Das tatsächliche Verzeichnis lautete in diesem Fall z. B. `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0`. 
+Hierbei ist *n* eine dezimale Ganzzahl, die sich zwischen verschiedenen Ausführungen der Erweiterung ändern kann. Der Wert „1.*“ entspricht dem tatsächlichen aktuellen `typeHandlerVersion`-Wert der Erweiterung. Das tatsächliche Verzeichnis lautete in diesem Fall z. B. `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0`. 
 
 
 Der Befehl für die Ausführung der benutzerdefinierten Erweiterung lautete `md C:\\Users\\Public\\Documents\\test`. Wenn die Erweiterung erfolgreich installiert wurde, können Sie überprüfen, ob das Verzeichnis auf der VM unter dem im Befehl angegebenen Pfad erstellt wurde. 

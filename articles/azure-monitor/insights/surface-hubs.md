@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e1a5b98607046f8f57699e49be764439baa6f2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711075"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474147"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Überwachen von Surface Hubs mit Azure Monitor zum Verfolgen ihrer Integrität
 
@@ -38,14 +38,16 @@ Sie benötigen die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel für den
 
 Intune ist ein Microsoft-Produkt, mit dem Sie die Konfigurationseinstellungen für einen Log Analytics-Arbeitsbereich zentral verwalten können, die auf ein Gerät oder mehrere Geräte angewendet werden. Gehen Sie wie folgt vor, um Ihre Geräte über Intune zu konfigurieren:
 
-1. Melden Sie sich bei Intune an.
-2. Navigieren Sie zu **Einstellungen** > **Verbundene Quellen**.
-3. Erstellen oder bearbeiten Sie eine Richtlinie basierend auf der Surface Hub-Vorlage.
-4. Navigieren Sie zum Abschnitt „Azure Operational Insights“ der Richtlinie, und fügen Sie der Richtlinie die *Arbeitsbereichs-ID* und den *Arbeitsbereichsschlüssel* von Log Analytics hinzu.
-5. Speichern Sie die Richtlinie.
-6. Verknüpfen Sie die Richtlinie mit der entsprechenden Gruppe von Geräten.
+1. Melden Sie sich beim [Microsoft Endpoint Manager Admin Center](https://endpoint.microsoft.com/) an.
+2. Navigieren Sie zu **Geräte** > **Konfigurationsprofile**.
+3. Erstellen Sie ein neues Windows 10-Profil, und wählen Sie dann **Vorlagen** aus.
+4. Wählen Sie in der Liste der Vorlagen die Option **Geräteeinschränkungen (Windows 10 Team)** aus.
+5. Geben Sie einen Namen und eine Beschreibung für das Profil ein.
+6. Wählen Sie für **Azure Operational Insights** die Option **Aktivieren** aus.
+7. Geben Sie die Log Analytics-**Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** für die Richtlinie ein.
+8. Weisen Sie die Richtlinie Ihrer Gruppe von Surface Hub-Geräten zu, und speichern Sie die Richtlinie.
 
-   ![Intune-Richtlinie](./media/surface-hubs/intune.png)
+    :::image type="content" source="./media/surface-hubs/intune.png" alt-text="Screenshot zum Festlegen einer Intune-Richtlinie":::
 
 Intune synchronisiert dann die Log Analytics-Einstellungen mit den Geräten in der Zielgruppe und registriert diese in Ihrem Log Analytics-Arbeitsbereich.
 
@@ -58,9 +60,10 @@ Wenn Sie Intune verwenden, um Ihre Umgebung zu verwalten, können Sie Geräte ma
 2. Geben Sie die Anmeldeinformationen des Administrators für das Gerät auf Aufforderung ein.
 3. Klicken Sie auf **Dieses Gerät** und dann unter **Überwachung** auf **Log Analytics-Einstellungen konfigurieren**.
 4. Wählen Sie **Überwachung aktivieren** aus.
-5. Geben Sie im Dialogfeld mit den Log Analytics-Einstellungen die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** von Log Analytics ein.  
-   ![Screenshot der Einstellungen für die Microsoft Operations Manager-Suite mit ausgewählter Option „Überwachung aktivieren“ und Textfeldern für die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel](./media/surface-hubs/settings.png)
-6. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
+5. Geben Sie im Dialogfeld mit den Log Analytics-Einstellungen die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** von Log Analytics ein. 
+
+    ![Screenshot der Einstellungen für die Microsoft Operations Manager-Suite mit ausgewählter Option „Überwachung aktivieren“ und Textfeldern für die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel](./media/surface-hubs/settings.png)
+1. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
 
 Eine Bestätigung informiert Sie darüber, ob die Konfiguration erfolgreich auf das Gerät angewendet wurde. Ist dies der Fall, wird eine Meldung angezeigt, die besagt, dass der Agent erfolgreich mit Azure Monitor verbunden wurde. Das Gerät beginnt dann mit dem Senden von Daten an Azure Monitor, wo Sie sie anzeigen und darauf reagieren können.
 

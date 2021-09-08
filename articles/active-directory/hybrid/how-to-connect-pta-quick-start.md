@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e71522d53bd4e528b2a5a106a4dcc344df3ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85f2d5d928d93bf9e85899e53439a2cc4710448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732855"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455603"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -51,13 +51,13 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Identifizieren Sie einen Server mit Windows Server 2012 R2 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen. Beachten Sie, dass die Installation des Passthroughauthentifizierungs-Agents unter Windows Server Core-Versionen nicht unterstützt wird. 
+1. Bestimmen Sie einen Server mit Windows Server 2016 oder höher, auf dem Azure AD Connect ausgeführt werden soll. Wenn nicht bereits aktiviert, [aktivieren Sie TLS 1.2 auf dem Server](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen. Beachten Sie, dass die Installation des Passthroughauthentifizierungs-Agents unter Windows Server Core-Versionen nicht unterstützt wird. 
 2. Installieren Sie die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) auf dem Server, den Sie im vorherigen Schritt ausgewählt haben. Wenn Azure AD Connect bereits ausgeführt wird, vergewissern Sie sich, dass die Version 1.1.750.0 oder höher lautet.
 
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).
 
-3. Identifizieren Sie mindestens einen weiteren Server (mit Windows Server 2012 R2 oder höher, mit aktivierter TLS 1.2), auf dem eigenständige Authentifizierungs-Agents ausgeführt werden können. Diese zusätzlichen Server werden benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie die Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
+3. Bestimmen Sie mindestens einen weiteren Server (mit Windows Server 2016 oder höher, mit aktivierter TLS 1.2), auf dem eigenständige Authentifizierungs-Agents ausgeführt werden können. Diese zusätzlichen Server werden benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie die Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
 
     >[!IMPORTANT]
     >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
@@ -179,7 +179,7 @@ Smart Lockout unterstützt Sie beim Sperren von Angreifern, die versuchen, Benut
 - [Smart Lockout](../authentication/howto-password-smart-lockout.md): Erfahren Sie, wie Sie die Smart Lockout-Funktion für Ihren Mandanten zum Schutz von Benutzerkonten konfigurieren.
 - [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Hier finden Sie Informationen zu den unterstützten und nicht unterstützten Szenarien für die Passthrough-Authentifizierung.
 - [Technische Einzelheiten](how-to-connect-pta-how-it-works.md): Hier finden Sie Informationen zur Funktionsweise der Passthrough-Authentifizierung.
-- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Finden Sie Antworten auf häufig gestellte Fragen.
+- [Häufig gestellte Fragen](how-to-connect-pta-faq.yml): Finden Sie Antworten auf häufig gestellte Fragen.
 - [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
 - [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Hier erhalten Sie technische Informationen zur Passthrough-Authentifizierung.
 - [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.

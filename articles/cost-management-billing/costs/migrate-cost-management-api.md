@@ -3,17 +3,17 @@ title: Migrieren von EA zu APIs der Microsoft-Kundenvereinbarung
 description: Dieser Artikel hilft Ihnen, die Folgen einer Migration von Microsoft Enterprise Agreement (EA) zu einer Microsoft-Kundenvereinbarung zu verstehen.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 07/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750297"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762259"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
@@ -42,7 +42,7 @@ Die folgenden Punkte helfen Ihnen beim Übergang zu MCA-APIs.
 - Aktualisieren Sie Programmcode für die [Verwendung der Azure AD-Authentifizierung](/rest/api/azure/#create-the-request).
 - Aktualisieren Sie Programmcode, sodass Aufrufe der EA-APIs durch Aufrufe der MCA-APIs ersetzt werden.
 - Aktualisieren Sie die Fehlerbehandlung für die Verwendung neuer Fehlercodes.
-- Überprüfen Sie zusätzliche Integrationsangebote, z.B. Cloudyn und Power BI, auf weitere erforderliche Aktionen.
+- Überprüfen Sie zusätzliche Integrationsangebote wie Power BI auf weitere erforderliche Aktionen.
 
 ## <a name="ea-apis-replaced-with-mca-apis"></a>Durch MCA-APIs ersetzte EA-APIs
 
@@ -78,7 +78,6 @@ Wenn Sie vorhandene EA-APIs verwenden, müssen Sie diese für die Unterstützung
 
 | Zweck | Altes Angebot | Neues Angebot |
 | --- | --- | --- |
-| Cloudyn | Cloudyn | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights)-Inhaltspaket und -Connector |  [Azure Consumption Insights-Connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>APIs zum Abrufen von Saldo und Guthaben
@@ -515,18 +514,6 @@ Zum Abrufen von Reservierungszusammenfassungen mit der API für Reservierungszus
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 
-
-
-## <a name="move-from-cloudyn-to-cost-management"></a>Wechsel von Cloudyn zu Cost Management
-
-Organisationen, die Cloudyn verwenden, sollten mit der Verwendung von [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) für alle Kostenmanagementanforderungen beginnen. Cost Management steht im Azure-Portal ohne Onboarding und mit einer Wartezeit von acht Stunden zur Verfügung. Weitere Informationen finden Sie in der [Dokumentation zur Kostenverwaltung](../index.yml).
-
-Azure Cost Management bietet Ihnen folgende Möglichkeiten:
-
-- Zeigen Sie Kosten im zeitlichen Verlauf gegenüber einem vordefinierten Budget an. Analysieren Sie die täglichen Kostenmuster, um ungewöhnliche Ausgaben zu erkennen und zu vermeiden. Unterteilen Sie Kosten nach Tags, Ressourcengruppe, Dienst und Standort.
-- Erstellen Sie Budgets, um Grenzwerte für Nutzung und Kosten festzulegen, und erhalten Sie Benachrichtigungen, wenn wichtige Schwellenwerte erreicht sind. Richten Sie Automation mit Aktionsgruppen ein, um benutzerdefinierte Ereignisse auszulösen und feste Grenzwerte zu Ihren Bedingungen zu erzwingen.
-- Optimieren Sie Kosten und Nutzung anhand von Azure Advisor-Empfehlungen. Ermitteln Sie Einkaufsoptimierungen mit Reservierungen, verkleinern Sie nicht ausgelastete virtuelle Computer, und löschen Sie nicht verwendete Ressourcen, um innerhalb der Budgets zu bleiben.
-- Planen Sie den Export von Kosten- und Nutzungsdaten, um täglich eine CSV-Datei in Ihrem Speicherkonto zu veröffentlichen. Automatisieren Sie die Integration in externe Systeme, um Abrechnungsdaten synchron und auf dem neuesten Stand zu halten.
 
 ## <a name="power-bi-integration"></a>Power BI-Integration
 

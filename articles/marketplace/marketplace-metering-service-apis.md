@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2a95821b615c934a2bf22f52406f2c257b9be91b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8a8f6052ba2ce66e22208972fa84b7af1f48dd3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542351"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346671"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
@@ -255,6 +255,7 @@ Beschreibung des Statuscodes, der in der `BatchUsageEvent`-API-Antwort angegeben
 | `Error` | Fehlercode |
 | `ResourceNotFound` | Die angegebene Nutzungsressource ist ungültig. |
 | `ResourceNotAuthorized` | Sie sind nicht autorisiert, die Nutzung für diese Ressource anzugeben. |
+| `ResourceNotActive` | Die Ressource wird angehalten oder wurde nie aktiviert. |
 | `InvalidDimension` | Die Dimension, für die die Nutzung übergeben wird, ist für dieses Angebot bzw. diesen Plan ungültig. |
 | `InvalidQuantity` | Die übergebene Menge ist kleiner oder gleich 0 (null). |
 | `BadArgument` | Die Eingabe fehlt oder ist falsch formatiert. |
@@ -277,4 +278,4 @@ Befolgen Sie die Anweisungen unter [Support für das Programm „Kommerzieller M
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Messungsdienst-APIs finden Sie unter [Häufig gestellte Fragen zu Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis-faq.md).
+Weitere Informationen zu Messungsdienst-APIs finden Sie unter [Häufig gestellte Fragen zu Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis-faq.yml).

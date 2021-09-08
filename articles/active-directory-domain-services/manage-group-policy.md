@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67eeae96e7965db1eb92f34f23ca6d8745aaac3a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619384"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707985"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer von Azure Active Directory Domain Services verwalteten Domäne
 
@@ -43,8 +43,6 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 > Sie können administrative Vorlagen für Gruppenrichtlinien verwenden, indem Sie die neuen Vorlagen in die Verwaltungsarbeitsstation kopieren. Kopieren Sie die *ADMX*-Dateien in das Verzeichnis `%SYSTEMROOT%\PolicyDefinitions` und die gebietsschemaspezifischen *ADML*-Dateien in das Verzeichnis `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, wobei `Language-CountryRegion` der Sprache und der Region der *ADML*-Dateien entspricht.
 >
 > Kopieren Sie z. B. die Version „en-US (Englisch, USA)“ der *ADML*-Dateien in den Ordner `\en-us`.
->
-> Alternativ können Sie Ihre administrative Vorlage für Gruppenrichtlinien auf den Domänencontrollern, die Teil der verwalteten Domäne sind, zentral speichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten des zentralen Speichers für administrative Vorlagendateien für Gruppenrichtlinien in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Installieren der Gruppenrichtlinien-Verwaltungstools
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e9bf7d7d61ad05726ca8dcaad06d63902273f6f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d30ce268c7e117e5673af51ee32bea3b8923576b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346787"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systemanforderungen für Azure Stack Edge Pro mit GPU 
 
@@ -115,9 +115,9 @@ Fügen Sie die folgenden URL-Muster für Azure Monitor hinzu, wenn Sie die Conta
 
 | URL-Muster | Port | Komponente oder Funktion |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.com | 443 | Datenerfassung |
-| http://\*.oms.opinsights.azure.com | 443 | OMS-Onboarding (Operations Management Suite) |
-| http://\*.dc.services.visualstudio.com | 443 | Agent-Telemetrie mit Application Insights in der öffentlichen Azure-Cloud |
+| https://\*ods.opinsights.azure.com | 443 | Datenerfassung |
+| https://\*.oms.opinsights.azure.com | 443 | OMS-Onboarding (Operations Management Suite) |
+| https://\*.dc.services.visualstudio.com | 443 | Agent-Telemetrie mit Application Insights in der öffentlichen Azure-Cloud |
 
 Weitere Informationen finden Sie unter [Netzwerkfirewallanforderungen](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements).
 
@@ -139,9 +139,9 @@ Fügen Sie die folgenden URL-Muster für Azure Monitor hinzu, wenn Sie die Conta
 
 | URL-Muster | Port | Komponente oder Funktion |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.us | 443 | Datenerfassung |
-| http://\*.oms.opinsights.azure.us | 443 | OMS-Onboarding (Operations Management Suite) |
-| http://\*.dc.services.visualstudio.com | 443 | Agent-Telemetrie mit Application Insights in der öffentlichen Azure-Cloud |
+| https://\*ods.opinsights.azure.us | 443 | Datenerfassung |
+| https://\*.oms.opinsights.azure.us | 443 | OMS-Onboarding (Operations Management Suite) |
+| https://\*.dc.services.visualstudio.com | 443 | Agent-Telemetrie mit Application Insights in der öffentlichen Azure-Cloud |
 
 
 ## <a name="internet-bandwidth"></a>Internetbandbreite

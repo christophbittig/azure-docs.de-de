@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a73269a411ff250afd6e9779deb36d00a596ac3d
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920289"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223660"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions-Muster für Bindungsausdrücke
 
@@ -261,7 +261,9 @@ module.exports = function (context, info) {
 
 ### <a name="dot-notation"></a>Punktnotation
 
-Wenn einige der Eigenschaften in Ihrer JSON-Nutzlast Objekte mit Eigenschaften sind, finden Sie diese durch die Punktnotation. Nehmen wir beispielsweise an, dass Ihr JSON wie folgt aussieht:
+Wenn einige der Eigenschaften in Ihrer JSON-Nutzlast Objekte mit Eigenschaften sind, finden Sie diese durch die Punktnotation. Die Punktschreibweise funktioniert nicht für Bindungen mit [Cosmos DB](./functions-bindings-cosmosdb-v2.md) oder [Tabellenspeicher](./functions-bindings-storage-table-output.md). 
+
+Nehmen wir beispielsweise an, dass Ihr JSON wie folgt aussieht:
 
 ```json
 {

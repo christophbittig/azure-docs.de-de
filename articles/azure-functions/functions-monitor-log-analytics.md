@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 194154f192cfcc91138b13bd37b37d80d38097d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591081"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126786"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
 
@@ -22,7 +22,7 @@ Azure Monitor-Protokolle bieten Ihnen die Möglichkeit, Protokolle aus unterschi
 Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Abfragesprache Kusto](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z.B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](../azure-monitor/logs/get-started-queries.md) nutzen.
 
 > [!NOTE]
-> Die Integration mit Azure Monitor-Protokollen befindet sich derzeit in der öffentlichen Vorschauphase für Funktions-Apps der Version 2 und Version 3, die unter den Windows-Hostingplänen „Nutzung“, „Premium“ und „Dedicated“ ausgeführt werden.
+> Die Integration in Azure Monitor-Protokolle befindet sich derzeit in Public Preview. Nicht unterstützt für Funktions-Apps, die unter [Version 1.x](functions-versions.md) ausgeführt werden.
 
 ## <a name="setting-up"></a>Einrichten
 

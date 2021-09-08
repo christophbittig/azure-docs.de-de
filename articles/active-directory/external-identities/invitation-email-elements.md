@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc80c208b5a48a45b8c47d640dc381f5559c3d4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 324b37931fff91779b8d25c744ae63671bae315c
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304765"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224308"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
@@ -40,7 +40,8 @@ Der Betreff der E-Mail folgt diesem Muster:
 Wir verwenden ein LinkedIn-ähnliches Muster für die Absenderadresse. Dieses Muster sollte deutlich machen, dass die E-Mail zwar von invites@microsoft.com stammt, die Einladung jedoch von einer anderen Organisation. Das Format lautet: Microsoft-Einladungen <invites@microsoft.com> oder Microsoft-Einladungen im Namen von &lt;Mandantenname&gt; <invites@microsoft.com>. 
 
 > [!NOTE]
-> Die Absenderadresse des Azure-Diensts, der von 21Vianet in China betrieben wird, lautet Invites@oe.21vianet.com.
+> Die Absenderadresse des Azure-Diensts, der von 21Vianet in China betrieben wird, lautet Invites@oe.21vianet.com.  
+> Für Azure AD Government lautet die Absenderadresse invites@azuread.us.
 
 ### <a name="reply-to"></a>Antworten an
 

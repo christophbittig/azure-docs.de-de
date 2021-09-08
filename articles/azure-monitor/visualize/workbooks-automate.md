@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 48766e51e3408e11c264b77c43b066f3fedc6c28
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d48cefcae16829bc0a58cdb4f4a43f52d78f8460
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080504"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356035"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 
@@ -193,7 +193,7 @@ Diese Vorlage zeigt, wie Sie eine einfache Arbeitsmappe bereitstellen, in der �
 | `workbookType` | Der Katalog, in dem die Arbeitsmappe angezeigt wird. Zu den unterstützten Werten zählen Arbeitsmappe, `tsg`, Azure Monitor usw. |
 | `workbookSourceId` | Die ID der Ressourceninstanz, der die Arbeitsmappe zugeordnet wird. Die neue Arbeitsmappe wird im Zusammenhang mit dieser Ressourceninstanz angezeigt, z. B. im Inhaltsverzeichnis der Ressource unter _Arbeitsmappe_. Wenn die Arbeitsmappe im Arbeitsmappenkatalog in Azure Monitor angezeigt werden soll, verwenden Sie anstelle einer Ressourcen-ID die Zeichenfolge _Azure Monitor_. |
 | `workbookId` | Die eindeutige GUID für diese Arbeitsmappeninstanz. Verwenden Sie _[newGuid()]_ , um automatisch eine neue GUID zu erstellen. |
-| `kind` | Hiermit wird angegeben, ob die erstellte Arbeitsmappe freigegeben oder privat ist. Verwenden Sie den Wert _shared_ für freigegebene Arbeitsmappen und den Wert _user_ für private Arbeitsmappen. |
+| `kind` | Hiermit wird angegeben, ob die erstellte Arbeitsmappe freigegeben ist. Alle neuen Arbeitsmappen verwenden den Wert _shared_. |
 | `location` | Der Azure-Speicherort, an dem die Arbeitsmappe erstellt wird. Verwenden Sie _[resourceGroup().location]_ , um sie an demselben Speicherort wie die Ressourcengruppe zu erstellen |
 | `serializedData` | Enthält den Inhalt oder die Nutzlast, der bzw. die in der Arbeitsmappe verwendet werden soll. Rufen Sie den Wert mithilfe der Resource Manager-Vorlage aus der Arbeitsmappen-Benutzeroberfläche ab |
 
@@ -307,4 +307,4 @@ Aus technischen Gründen können mit diesem Mechanismus keine Arbeitsmappeninsta
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Arbeitsmappen die neue [Storage Insights-Funktion](../insights/storage-insights-overview.md) fördern.
+Erfahren Sie, wie Arbeitsmappen die neue [Storage Insights-Funktion](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) fördern.

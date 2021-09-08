@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: f8d0871f07168e0d7a2fbda90df4209ab7e5a28e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748497"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339452"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -46,9 +46,9 @@ Derzeit sind keine Erzwingungsoptionen verfügbar. Adaptive Anwendungssteuerunge
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
-|Unterstützte Computer:|![Ja](./media/icons/yes-icon.png) Azure- und Nicht-Azure-Computer, auf denen Windows und Linux ausgeführt wird<br>![Ja](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml)-Computer|
+|Unterstützte Computer:|:::image type="icon" source="./media/icons/yes-icon.png"::: Azure- und Nicht-Azure-Computer, auf denen Windows und Linux ausgeführt wird<br>:::image type="icon" source="./media/icons/yes-icon.png"::: [Azure Arc](../azure-arc/index.yml)-Computer|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter**- und **Leseberechtigter**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen anzeigen<br>**Mitwirkender**- und **Sicherheitsadministrator**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen bearbeiten|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 
@@ -61,7 +61,7 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
 
 1. Öffnen Sie das Azure Defender-Dashboard, und wählen Sie im Bereich „Erweiterter Schutz“ die Option **Adaptive Anwendungssteuerungen** aus.
 
-    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Öffnen von „Adaptive Anwendungssteuerungen“ über das Azure-Dashboard" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Öffnen von „Adaptive Anwendungssteuerungen“ über das Azure-Dashboard." lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     Die Seite **Adaptive Anwendungssteuerung** wird geöffnet, auf der Ihre VMs auf den folgenden Registerkarten gruppiert sind:
 
@@ -87,13 +87,13 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
 
 1. Öffnen Sie die Registerkarte **Empfohlen**. Die Gruppen von Computern mit empfohlenen Zulassungslisten werden angezeigt.
 
-   ![Registerkarte „Empfohlen“](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
+   ![Registerkarte „Empfohlen“.](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
 1. Wählen Sie eine Gruppe aus. 
 
 1. Um die neue Regel zu konfigurieren, überprüfen Sie die verschiedenen Abschnitte dieser Seite **Konfigurieren von Regeln zur Anwendungssteuerung** und der Inhalte, die für diese bestimmte Gruppe von Computern eindeutig sein werden:
 
-   ![Konfigurieren einer neuen Regel](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
+   ![Konfigurieren einer neuen Regel.](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
    1. **Computer auswählen**: Standardmäßig werden alle Computer in der identifizierten Gruppe ausgewählt. Heben Sie die Auswahl von Computern auf, die Sie von dieser Regel ausnehmen möchten.
    
@@ -127,7 +127,7 @@ So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
    1. Wählen Sie **Regel hinzufügen** aus.
 
-      ![Hinzufügen einer benutzerdefinierten Regel](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+      ![Hinzufügen einer benutzerdefinierten Regel.](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
    1. Falls Sie einen bekannten sicheren Pfad definieren, ändern Sie den **Regeltyp** in „Pfad“, und geben Sie einen einzelnen Pfad ein. Sie können Platzhalter in den Pfad einschließen.
    
@@ -150,7 +150,7 @@ So bearbeiten Sie die Regeln für eine Gruppe von Computern:
 
     In diesem Bereich werden der Name der Gruppe (der geändert werden kann), der Betriebssystemtyp, der Standort und andere relevante Details angezeigt.
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Seite „Gruppeneinstellungen“ für adaptive Anwendungssteuerungen" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Seite „Gruppeneinstellungen“ für adaptive Anwendungssteuerungen." lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
 1. Ändern Sie optional den Namen der Gruppe oder den jeweiligen Schutzmodus für Dateitypen.
 
@@ -183,13 +183,13 @@ So beheben Sie die Probleme:
 
 1. Wählen Sie eine Gruppe zur weiteren Untersuchung aus.
 
-   ![Recent alerts (Letzte Warnungen)](./media/security-center-adaptive-application/recent-alerts.png)
+   ![Letzte Warnungen.](./media/security-center-adaptive-application/recent-alerts.png)
 
 1. Wählen Sie eine Warnung aus, um weitere Informationen und die Liste der betroffenen Computer zu erhalten.
 
     Auf der Seite „Warnungen“ werden weitere Details zu den Warnungen angezeigt, und es wird ein Link **Maßnahme ergreifen** mit Empfehlungen zur Entschärfung der Bedrohung angezeigt.
 
-    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Die Startzeit der Warnungen von adaptiven Anwendungssteuerungen ist das ":::
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Die Startzeit der Warnungen von adaptiven Anwendungssteuerungen ist das .":::
 
     > [!NOTE]
     > „Adaptive Anwendungssteuerungen“ berechnet Ereignisse einmal alle zwölf Stunden. Die auf der Seite „Warnungen“ angezeigte „Startzeit der Aktivität" ist der Zeitpunkt, zu dem die adaptiven Anwendungssteuerungen die Warnung generiert haben, und **nicht** der Zeitpunkt, zu dem der verdächtige Prozess aktiv war.
@@ -238,12 +238,12 @@ Einige der Funktionen, die über die REST-API verfügbar sind:
 ## <a name="faq---adaptive-application-controls"></a>Häufig gestellte Fragen zu adaptiven Anwendungssteuerungen
 
 - [Gibt es Optionen zur Erzwingung der Anwendungssteuerung?](#are-there-any-options-to-enforce-the-application-controls)
-- [Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+- [Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?](#why-do-i-see-a-qualys-app-in-my-recommended-applications)
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Gibt es Optionen zur Erzwingung der Anwendungssteuerung?
 Derzeit sind keine Erzwingungsoptionen verfügbar. Adaptive Anwendungssteuerungen sollen **Sicherheitswarnungen** ausgeben, wenn eine andere als die von Ihnen als sicher definierte Anwendung ausgeführt wird. Sie bieten eine Reihe von Vorteilen ([Was sind die Vorteile adaptiver Anwendungssteuerungen?](#what-are-the-benefits-of-adaptive-application-controls)) und sind, wie auf dieser Seite gezeigt, überaus anpassbar.
 
-### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?
+### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?
 [Azure Defender für Server](defender-for-servers-introduction.md) umfasst eine kostenlose Überprüfung auf Sicherheitsrisiken für Ihre Computer. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Ausführliche Informationen zu diesem Scanner und Anweisungen zu seiner Bereitstellung finden Sie in der [integrierten Sicherheitsrisikobewertungslösung für Defender](deploy-vulnerability-assessment-vm.md).
 
 Um sicherzustellen, dass keine Warnungen generiert werden, wenn Security Center den Scanner bereitstellt, enthält die empfohlene Zulassungsliste der adaptiven Anwendungssteuerung die Scanner für alle Computer. 

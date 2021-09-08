@@ -6,20 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 76e1f80e1c6e1d977521724959db6ad36694f238
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 80337c4953182e903655eddb360fc8b49a88ca59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110684118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346319"
 ---
 # <a name="install-gpu-extension-on-vms-for-your-azure-stack-edge-pro-gpu-device"></a>Installieren der GPU-Erweiterung auf VMs auf Ihrem Azure Stack Edge Pro GPU-Gerät
 
 [!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
-Dieser Artikel beschreibt, wie Sie die GPU-Treibererweiterung installieren, um die entsprechenden Nvidia-Treiber auf den GPU-VMs zu installieren, die auf Ihrem Azure Stack Edge-Gerät ausgeführt werden. In diesem Artikel werden die Installationsschritte für die GPU-Erweiterung auf Windows- und Linux-VMs beschrieben.
+Dieser Artikel beschreibt, wie Sie die GPU-Treibererweiterung installieren, um die entsprechenden Nvidia-Treiber auf den GPU-VMs zu installieren, die auf Ihrem Azure Stack Edge-Gerät ausgeführt werden. In diesem Artikel werden die Schritte zur Installation einer GPU-Erweiterung mithilfe von Azure Resource Manager-Vorlagen auf Windows- und Linux-VMs beschrieben.
+
+> [!NOTE]
+> Im Azure-Portal können Sie eine GPU-Erweiterung während der VM-Erstellung oder nach der Bereitstellung der VM installieren. Informationen zu den Schritten und Anforderungen finden Sie unter [Bereitstellen virtueller GPU-Computer](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -32,11 +35,9 @@ Stellen Sie Folgendes sicher, bevor Sie die GPU-Erweiterung auf den GPU-VMs inst
 
         Im folgenden Beispiel ist Port 2 mit dem Internet verbunden und wird zum Aktivieren des Computenetzwerks verwendet. Wenn Kubernetes in Ihrer Umgebung nicht bereitgestellt ist, können Sie das Zuweisen der Kubernetes-Knoten-IP und der externen Dienst-IP überspringen.
 
-        ![Aktivieren von Computeeinstellungen für den mit dem Internet verbundenen Port](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+        ![Screenshot des Bereichs „Compute“ für ein Azure Stack Edge-Gerät. Computeeinstellungen für Port 2 sind hervorgehoben.](media/azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension/enable-compute-network-1.png)
 1. [Laden Sie die GPU-Erweiterungsvorlagen und Parameterdateien](https://aka.ms/ase-vm-templates) auf Ihren Clientcomputer herunter. Entpacken Sie die Vorlagen und Dateien in einem Verzeichnis, das Sie als Arbeitsverzeichnis verwenden.
 1. Vergewissern Sie sich, dass der Client, den Sie für den Zugriff auf Ihr Gerät verwenden, weiterhin über Azure PowerShell mit dem Azure Resource Manager verbunden ist. Die Verbindung mit Azure Resource Manager läuft alle 1,5 Stunden oder beim Neustart des Azure Stack Edge-Geräts ab. In diesem Fall geben alle ausgeführten Cmdlets eine Fehlermeldung mit dem Inhalt zurück, dass keine Verbindung mit Azure mehr besteht. Sie müssen sich erneut anmelden. Eine ausführliche Anleitung finden Sie unter [Herstellen einer Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-connect-resource-manager.md).
-
-
 
 ## <a name="edit-parameters-file"></a>Bearbeiten der Parameterdatei
 
@@ -391,6 +392,9 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 Weitere Informationen finden Sie unter [Nvidia-GPU-Treibererweiterung für Windows](../virtual-machines/extensions/hpccompute-gpu-windows.md).
 
+> [!NOTE]
+> Nachdem Sie die Installation des GPU-Treibers und der GPU-Erweiterung abgeschlossen haben, müssen Sie keinen Port mit Internetzugriff für Compute mehr verwenden.
+
 ### <a name="linux"></a>[Linux](#tab/linux)
 
 Führen Sie diese Schritte aus, um die Treiberinstallation zu überprüfen:
@@ -468,6 +472,10 @@ Führen Sie diese Schritte aus, um die Treiberinstallation zu überprüfen:
 
 Weitere Informationen finden Sie unter [Nvidia-GPU-Treibererweiterung für Linux](../virtual-machines/extensions/hpccompute-gpu-linux.md).
 
+> [!NOTE]
+> Nachdem Sie die Installation des GPU-Treibers und der GPU-Erweiterung abgeschlossen haben, müssen Sie keinen Port mit Internetzugriff für Compute mehr verwenden.
+
+
 ---
 
 
@@ -493,6 +501,8 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 In diesem Artikel werden folgende Themen erläutert:
 
+- [Behandeln von Problemen mit der GPU-Erweiterung](azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md)
+- [Überwachen der VM-Aktivität auf Ihrem Gerät](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)
 - [Verwalten von VM-Datenträgern](azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md).
 - [Verwalten von VM-Netzwerkschnittstellen](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md).
 - [Verwalten von VM-Größen](azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md).

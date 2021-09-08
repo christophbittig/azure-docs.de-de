@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: cb296d12d03bf05ffe628bd435ae15cfbb7b79e5
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2589c96e6b1de95ef93e942f382eb57f2eb4b53c
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204943"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722470"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: Azure-Portal
+# <a name="configure-a-point-to-site-vpn-connection-using-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung unter Verwendung der Azure-Zertifikatauthentifizierung: Azure-Portal
 
 Dieser Artikel enthält Informationen zum sicheren Verbinden von einzelnen Clients, auf denen Windows, Linux oder macOS ausgeführt wird, mit einem Azure-VNET. Eine P2S-VPN-Verbindung ist nützlich, wenn Sie an einem Remotestandort (beispielsweise bei der Telearbeit zu Hause oder in einer Konferenz) eine Verbindung mit Ihrem VNET herstellen möchten. Sie können anstelle einer Site-to-Site-VPN-Verbindung auch P2S verwenden, wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen. Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol) oder IKEv2. Weitere Informationen zu Point-to-Site-VPN-Verbindungen finden Sie unter [Informationen zu Point-to-Site-VPN](point-to-site-about.md).
 
-:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="Herstellen einer Verbindung zwischen einem Computer und einem Azure VNET – Diagramm der Point-to-Site-Verbindung":::
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="Herstellen einer Verbindung zwischen einem Computer und einem Azure VNet: Diagramm der Point-to-Site-Verbindung.":::
 
 Weitere Informationen zu Point-to-Site-VPN finden Sie unter [Informationen zu Point-to-Site-VPN](point-to-site-about.md). Informationen zum Erstellen dieser Konfiguration mithilfe von Azure PowerShell finden Sie unter [Konfigurieren eines Point-to-Site-VPN mit Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md).
 
@@ -33,6 +33,8 @@ Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch
 
 Sie können die folgenden Werte zum Erstellen einer Testumgebung oder zum besseren Verständnis der Beispiele in diesem Artikel nutzen:
 
+**VNET**
+
 * **VNet-Name:** VNet1
 * **Adressraum:** 10.1.0.0/16<br>In diesem Beispiel verwenden wir nur einen einzelnen Adressraum. Sie können für Ihr VNet aber auch mehrere Adressräume verwenden.
 * **Subnetzname:** FrontEnd
@@ -40,15 +42,23 @@ Sie können die folgenden Werte zum Erstellen einer Testumgebung oder zum besser
 * **Abonnement:** Falls Sie über mehrere Abonnements verfügen, vergewissern Sie sich, dass Sie das richtige Abonnement verwenden.
 * **Ressourcengruppe:** TestRG1
 * **Standort:** East US
-* **GatewaySubnet:** 10.1.255.0/27<br>
+
+**Gateway für virtuelle Netzwerke**
+
 * **Name des Gateways des virtuellen Netzwerks:** VNet1GW
 * **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
+* **SKU:** VpnGw2
+* **Generation:** Generation2
+* **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
 * **Öffentliche IP-Adresse:** VNet1GWpip
+
+**Verbindungstyp und Clientadressenpool**
+
 * **Verbindungstyp:** Punkt-zu-Standort
 * **Clientadresspool:** 172.16.201.0/24<br>VPN-Clients, die über diese Point-to-Site-Verbindung eine Verbindung mit dem VNet herstellen, erhalten eine IP-Adresse aus dem Clientadresspool.
 
-## <a name="virtual-network"></a><a name="createvnet"></a>Virtual Network
+## <a name="create-a-vnet"></a><a name="createvnet"></a>Erstellen eines VNET
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk.
 
@@ -56,7 +66,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk.
 
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="virtual-network-gateway"></a><a name="creategw"></a>Virtuelles Netzwerkgateway
+## <a name="create-the-vpn-gateway"></a><a name="creategw"></a>Erstellen des VPN-Gateways
 
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
@@ -66,7 +76,12 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="generate-certificates"></a><a name="generatecert"></a>Generieren von Zertifikaten
 
@@ -80,50 +95,56 @@ Zertifikate werden von Azure zum Authentifizieren von Clients verwendet, die ein
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="client-address-pool"></a><a name="addresspool"></a>Clientadresspool
+## <a name="add-the-vpn-client-address-pool"></a><a name="addresspool"></a>Hinzufügen des VPN-Clientadresspools
 
 Der Clientadresspool ist ein Bereich privater IP-Adressen, die Sie angeben. Den Clients, die eine Verbindung über ein P2S-VPN herstellen, wird dynamisch eine IP-Adresse aus diesem Bereich zugewiesen. Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten. Wenn Sie mehrere Protokolle konfigurieren und SSTP eines der Protokolle ist, wird der konfigurierte Adresspool gleichmäßig auf die konfigurierten Protokolle aufgeteilt.
 
 1. Navigieren Sie nach Erstellung des Gateways für virtuelle Netzwerke auf dem Blatt des Gateways für virtuelle Netzwerke zum Abschnitt **Einstellungen**. Klicken Sie unter **Einstellungen** auf **Punkt-zu-Standort-Konfiguration**. Wählen Sie **Jetzt konfigurieren** aus, um die Konfigurationsseite zu öffnen.
 
-   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png" alt-text="Seite „Point-to-Site-Konfiguration“" lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png":::
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png" alt-text="Seite „Point-to-Site-Konfiguration“." lightbox="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configure-now.png":::
 1. Fügen Sie auf der Seite **Point-to-Site-Konfiguration** im Feld **Adresspool** den privaten IP-Adressbereich hinzu, den Sie verwenden möchten. VPN-Clients wird aus dem von Ihnen angegebenen Bereich dynamisch eine IP-Adresse zugewiesen. Der Wert der kleinstmöglichen Subnetzmaske beträgt 29 Bit für die Aktiv/Passiv-Konfiguration und 28 Bit für die Aktiv/Aktiv-Konfiguration.
 1. Fahren Sie mit dem nächsten Abschnitt fort, um die Authentifizierungs- und Tunneltypen zu konfigurieren.
 
-## <a name="authentication-and-tunnel-types"></a><a name="type"></a>Authentifizierungs- und Tunneltypen
+## <a name="specify-tunnel-type-and-authentication-type"></a><a name="type"></a>Angeben des Tunnel- und Authentifizierungstyps
 
-In diesem Abschnitt konfigurieren Sie den Authentifizierungstyp und den Tunneltyp. Wenn auf der Seite **Point-to-Site-Konfiguration** weder der **Tunneltyp** noch der **Authentifizierungstyp** angezeigt wird, verwendet Ihr Gateway die Basic-SKU. Die Basic-SKU unterstützt keine IKEv2- oder RADIUS-Authentifizierung. Wenn Sie diese Einstellungen verwenden möchten, müssen Sie das Gateway löschen und mit einer anderen Gateway-SKU neu erstellen.
+In diesem Abschnitt geben Sie den Tunnel- und Authentifizierungstyp an. Wenn auf der Seite „Point-to-Site-Konfiguration“ weder der Tunnel- noch der Authentifizierungstyp angezeigt wird, verwendet Ihr Gateway die Basic-SKU. Die Basic-SKU unterstützt keine IKEv2- oder RADIUS-Authentifizierung. Wenn Sie diese Einstellungen verwenden möchten, müssen Sie das Gateway löschen und mit einer anderen Gateway-SKU neu erstellen.
 
 ### <a name="tunnel-type"></a><a name="tunneltype"></a>Tunneltyp
 
-Wählen Sie auf der Seite **Point-to-Site-Konfiguration** den Tunneltyp aus. Die Tunneloptionen sind OpenVPN, SSTP und IKEv2.
+Wählen Sie auf der Seite **Point-to-Site-Konfiguration** den **Tunneltyp** aus. Beachten Sie beim Auswählen des Tunneltyps Folgendes:
 
-* Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und OSX verwenden nur den IKEv2-Tunnel für die Verbindungsherstellung.
-* Windows-Clients probieren es zunächst mit IKEv2. Wenn keine Verbindung hergestellt wird, verwenden sie SSTP.
+* Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und macOS verwenden zur Verbindungsherstellung nur den IKEv2-Tunneltyp.
+* Windows-Clients probieren zunächst IKEv2. Wenn keine Verbindung hergestellt wird, greifen sie auf SSTP zurück.
 * Sie können den OpenVPN-Client verwenden, um eine Verbindung mit dem OpenVPN-Tunneltyp herzustellen.
 
 ### <a name="authentication-type"></a><a name="authenticationtype"></a>Authentifizierungsart
 
 Wählen Sie unter **Authentifizierungstyp** die Option **Azure-Zertifikat** aus.
 
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication.png" alt-text="Screenshot: Authentifizierungstyp mit ausgewähltem Azure-Zertifikat." :::
 
-## <a name="root-certificate-data"></a><a name="uploadfile"></a>Stammzertifikatdaten
+## <a name="upload-root-certificate-public-key-information"></a><a name="uploadfile"></a>Hochladen von Informationen des öffentlichen Schlüssels des Stammzertifikats
 
 In diesem Abschnitt laden Sie die Daten des öffentlichen Stammzertifikats in Azure hoch. Nach dem Hochladen der Daten des öffentlichen Zertifikats kann Azure sie verwenden, um Clients zu authentifizieren, auf denen ein aus dem vertrauenswürdigen Stammzertifikat generiertes Clientzertifikat installiert ist.
 
-1. Die Zertifikate werden auf der Seite **Point-to-Site-Konfiguration** im Abschnitt **Stammzertifikat** hinzugefügt.
-1. Vergewissern Sie sich, dass Sie das Stammzertifikat als X.509-CER-Datei mit Base-64-Codierung exportiert haben. Das Zertifikat muss in diesem Format exportiert werden, damit Sie es mit einem Text-Editor öffnen können.
+1. Navigieren Sie im Abschnitt **Stammzertifikat** zur Seite **Gateway für virtuelle Netzwerke > Point-to-Site-Konfiguration**. Dieser Abschnitt ist nur sichtbar, wenn Sie **Azure-Zertifikat** als Authentifizierungstyp ausgewählt haben.
+1. Vergewissern Sie sich, dass Sie das Stammzertifikat in den vorherigen Schritten als **X.509-CER-Datei mit Base-64-Codierung** exportiert haben. Das Zertifikat muss in diesem Format exportiert werden, damit Sie es mit einem Text-Editor öffnen können. Sie müssen den privaten Schlüssel nicht exportieren.
+
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/base-64.png" alt-text="Screenshot: Export als X.509-CER-Datei mit Base-64-Codierung." :::
 1. Öffnen Sie das Zertifikat mit einem Text-Editor (beispielsweise mit dem Windows-Editor). Stellen Sie beim Kopieren der Zertifikatsdaten sicher, dass Sie den Text als fortlaufende Zeile ohne Wagenrückläufe oder Zeilenvorschübe kopieren. Es kann erforderlich sein, Ihre Ansicht im Text-Editor so zu ändern, dass die Symbole bzw. alle Zeichen angezeigt werden, damit die Wagenrückläufe bzw. Zeilenvorschübe sichtbar sind. Kopieren Sie nur den folgenden Abschnitt als fortlaufende Zeile:
 
-   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png" alt-text="Zertifikatdaten" border="false":::
-1. Fügen Sie die Zertifikatdaten im Feld **Daten des öffentlichen Zertifikats** ein. Geben Sie dem Zertifikat einen **Namen**, und wählen Sie dann **Speichern** aus. Sie können bis zu 20 vertrauenswürdige Stammzertifikate hinzufügen.
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png" alt-text="Screenshot: Stammzertifikatinformationen in Editor." border="false":::
+1. Sie können im Abschnitt **Stammzertifikat** bis zu 20 vertrauenswürdige Stammzertifikate hinzufügen.
 
-   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png" alt-text="Einfügen von Zertifikatdaten" border="false":::
+   * Fügen Sie die Zertifikatdaten im Feld **Daten des öffentlichen Zertifikats** ein. 
+   * **Benennen** Sie das Zertifikat. 
+
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/root-certificate.png" alt-text="Screenshot des Felds „Zertifikatdaten“." :::
 1. Wählen Sie oben auf der Seite die Option **Speichern** aus, um alle Konfigurationseinstellungen zu speichern.
 
-   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png" alt-text="Speichern der Konfiguration" border="false":::
+   :::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save-configuration.png" alt-text="Screenshot der P2S-Konfiguration mit ausgewählter Option „Speichern“" :::
 
-## <a name="client-certificate"></a><a name="installclientcert"></a>Clientzertifikat
+## <a name="install-exported-client-certificate"></a><a name="installclientcert"></a>Installieren eines exportierten Clientzertifikats
 
 Wenn Sie eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die Generierung der Clientzertifikate verwendeten Computer herstellen möchten, müssen Sie ein Clientzertifikat installieren. Beim Installieren eines Clientzertifikats benötigen Sie das Kennwort, das beim Exportieren des Clientzertifikats erstellt wurde.
 
@@ -131,11 +152,11 @@ Stellen Sie sicher, dass das Clientzertifikat zusammen mit der gesamten Zertifik
 
 Die Installationsschritte finden Sie unter [Installieren eines Clientzertifikats für Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="vpn-client-configuration-package"></a><a name="clientconfig"></a>VPN-Clientkonfigurationspaket
+## <a name="configure-settings-for-vpn-clients"></a><a name="clientconfig"></a>Konfigurieren von Einstellungen für VPN-Clients
 
-VPN-Clients müssen mit Clientkonfigurationseinstellungen konfiguriert werden. Das VPN-Clientkonfigurationspaket enthält Dateien mit den Einstellungen zum Konfigurieren von VPN-Clients, damit sie über eine P2S-Verbindung mit einem VNet verbunden werden können.
+Um eine P2S-Verbindung mit dem Gateway des virtuellen Netzwerks herzustellen, verwendet jeder Computer den VPN-Client, der nativ als Teil des Betriebssystems installiert ist. Sie können beispielsweise in den VPN-Einstellungen Ihres Windows-Computers VPN-Verbindungen hinzufügen, ohne einen separaten VPN-Client zu installieren. Sie konfigurieren jeden VPN-Client mithilfe eines Clientkonfigurationspakets. Das Clientkonfigurationspaket enthält Einstellungen, die für das von Ihnen erstellte VPN-Gateway spezifisch sind. 
 
-Schritte zum Erstellen und Installieren von VPN-Clientkonfigurationsdateien finden Sie unter [Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-Konfigurationen mit nativer Azure-Zertifikatauthentifizierung](point-to-site-vpn-client-configuration-azure-cert.md).
+Schritte zum Erstellen und Installieren von VPN-Clientkonfigurationsdateien finden Sie unter [Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-Konfigurationen mit Azure-Zertifikatauthentifizierung](point-to-site-vpn-client-configuration-azure-cert.md).
 
 ## <a name="connect-to-azure"></a><a name="connect"></a>Herstellen einer Verbindung mit Azure
 
@@ -149,9 +170,9 @@ Schritte zum Erstellen und Installieren von VPN-Clientkonfigurationsdateien find
 
 Suchen Sie im Dialogfeld „Netzwerk“ nach dem gewünschten Clientprofil, geben Sie die Einstellungen aus der Datei [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) an, und wählen Sie dann **Verbinden** aus.
 
-Ausführliche Anweisungen finden Sie unter [Installieren – Mac (OS X)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
+Ausführliche Anweisungen finden Sie unter [Installieren – macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac). Wenn beim Herstellen einer Verbindung Probleme auftreten, stellen Sie sicher, dass das Gateway des virtuellen Netzwerks nicht die Basic-SKU verwendet. Die Basic-SKU wird für Mac-Clients nicht unterstützt.
 
-:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="VPN-Clientverbindung unter Mac" border="false":::
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="VPN-Clientverbindung unter Mac." border="false":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>So überprüfen Sie Ihre Verbindung
 
@@ -187,23 +208,19 @@ Diese Anweisungen gelten für Windows-Clients.
 
 Sie können vertrauenswürdige Stammzertifikate hinzufügen und aus Azure entfernen. Wenn Sie ein Stammzertifikat entfernen, können Clients, für die über diesen Stamm ein Zertifikat generiert wurde, nicht authentifiziert werden und somit auch keine Verbindung herstellen. Wenn Sie für einen Client die Authentifizierung und Verbindungsherstellung durchführen möchten, müssen Sie ein neues Clientzertifikat installieren, das aus einem für Azure vertrauenswürdigen (hochgeladenen) Stammzertifikat generiert wurde.
 
-### <a name="to-add-a-trusted-root-certificate"></a>So fügen Sie ein vertrauenswürdiges Stammzertifikat hinzu
+Sie können Azure bis zu 20 vertrauenswürdige CER-Stammzertifikatdateien hinzufügen. Anweisungen finden Sie unter [Hochladen eines vertrauenswürdigen Stammzertifikats](#uploadfile).
 
-Sie können Azure bis zu 20 vertrauenswürdige CER-Stammzertifikatdateien hinzufügen. Eine entsprechende Anleitung finden Sie in diesem Artikel im Abschnitt zum [Hochladen eines vertrauenswürdigen Stammzertifikats](#uploadfile).
+So entfernen Sie ein vertrauenswürdiges Stammzertifikat
 
-### <a name="to-remove-a-trusted-root-certificate"></a>Entfernen eines vertrauenswürdigen Stammzertifikats
-
-1. Navigieren Sie zum Entfernen eines vertrauenswürdigen Zertifikats zur Seite **Punkt-zu-Standort-Konfiguration** für Ihr Gateway für virtuelle Netzwerke.
+1. Navigieren Sie zur Seite **Point-to-Site-Konfiguration-Konfiguration** des Gateways für virtuelle Netzwerke.
 1. Suchen Sie auf der Seite im Abschnitt **Stammzertifikat** nach dem Zertifikat, das Sie entfernen möchten.
-1. Wählen Sie neben dem Zertifikat die Auslassungspunkte und anschließend „Entfernen“ aus.
+1. Wählen Sie neben dem Zertifikat die Auslassungspunkte und anschließend **Entfernen** aus.
 
 ## <a name="to-revoke-a-client-certificate"></a><a name="revokeclient"></a>So sperren Sie ein Clientzertifikat
 
 Sie können Clientzertifikate sperren. Anhand der Zertifikatsperrliste können Sie basierend auf einzelnen Clientzertifikaten selektiv Punkt-zu-Standort-Verbindungen verweigern. Das ist nicht dasselbe wie das Entfernen eines vertrauenswürdigen Stammzertifikats. Wenn Sie ein vertrauenswürdiges Stammzertifikat (CER-Datei) aus Azure entfernen, wird der Zugriff für alle Clientzertifikate gesperrt, die mit dem gesperrten Stammzertifikat generiert oder signiert wurden. Wenn Sie anstelle des Stammzertifikats ein Clientzertifikat sperren, können die anderen Zertifikate, die auf der Grundlage des Stammzertifikats generiert wurden, weiterhin für die Authentifizierung verwendet werden.
 
 Üblicherweise wird das Stammzertifikat zum Verwalten des Zugriffs auf Team- oder Organisationsebene verwendet. Eine genauer abgestufte Steuerung des Zugriffs für einzelne Benutzer erfolgt hingegen mit gesperrten Clientzertifikaten.
-
-### <a name="revoke-a-client-certificate"></a>Sperren eines Clientzertifikats
 
 Sie können ein Clientzertifikat sperren, indem Sie den Fingerabdruck der Sperrliste hinzufügen.
 
@@ -217,9 +234,7 @@ Sie können ein Clientzertifikat sperren, indem Sie den Fingerabdruck der Sperrl
 
 ## <a name="point-to-site-faq"></a><a name="faq"></a>Point-to-Site – Häufig gestellte Fragen
 
-In diesem Abschnitt finden Sie Informationen zu häufig gestellten Fragen (FAQ), die sich auf Point-to-Site-Konfigurationen beziehen. Weitere Informationen zu VPN Gateway finden Sie auch unter [Häufig gestellte Fragen zu VPN Gateway](vpn-gateway-vpn-faq.md).
-
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+Häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen](vpn-gateway-vpn-faq.md#P2S).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](../index.yml) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/network-overview.md).

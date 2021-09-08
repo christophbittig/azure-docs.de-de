@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2021
 ms.author: bwren
-ms.openlocfilehash: 5c8256e453763d9cd2fdc18687df3064552dcf2b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 00014d4a7f2829ec6836473d03ae0b25f388a903
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289532"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286481"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Überblick über Metriken in Azure Monitor
 Metriken in Azure Monitor sind ein Feature von Azure Monitor, das numerische Daten aus [überwachten Ressourcen](../monitor-reference.md) in einer Zeitreihendatenbank erfasst. Metriken sind numerische Werte, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Metriken in Azure Monitor sind einfach gehalten und unterstützen Szenarien vom Typ „Nahezu in Echtzeit“, sodass sie besonders für Warnungen und die schnelle Erkennung von Problemen hilfreich sind. Sie können sie interaktiv mit dem Metrik-Explorer analysieren, sich proaktiv mit einer Warnung benachrichtigen lassen, wenn ein Wert einen Schwellenwert überschreitet, oder sie in einer Arbeitsmappe oder einem Dashboard visualisieren.
@@ -133,6 +133,9 @@ Für die meisten Ressourcen in Azure werden Plattformmetriken 93 Tage lang gesp
 > [!NOTE]
 > Sie können [Plattformmetriken für Azure Monitor-Ressourcen an einen Log Analytics-Arbeitsbereich senden](./resource-logs.md#send-to-azure-storage), um Informationen zu langfristigen Trends zu erhalten.
 
+
+> [!NOTE]
+> Wie bereits erwähnt, werden Plattformmetriken für die meisten Ressourcen in Azure 93 Tage lang gespeichert. Sie können jedoch nur Daten für maximal 30 Tage in einem einzelnen Diagramm abfragen (auf der Kachel „Metriken“). Diese Einschränkung gilt nicht für protokollbasierte Metriken. Falls ein leeres Diagramm angezeigt wird oder Ihr Diagramm nur einen Teil der Metrikdaten darstellt, stellen Sie sicher, dass die Differenz zwischen Start- und Enddatum in der Zeitauswahl das Intervall von 30 Tagen nicht überschreitet. Nachdem Sie ein Intervall von 30 Tagen ausgewählt haben, können Sie das Diagramm [schwenken](./metrics-charts.md#pan), um die gesamte Aufbewahrungsdauer anzuzeigen.
 
 
 

@@ -2,69 +2,144 @@
 title: Einrichten eines privaten Endpunkts mit privater Verbindung
 description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung ein, und ermöglichen Sie den Zugriff auf ein virtuelles Netzwerk über eine private Verbindung. Der Zugriff auf private Links ist ein Feature der Dienstebene Premium.
 ms.topic: article
-ms.date: 03/31/2021
-ms.openlocfilehash: d3c7c573b0ffc08a85f5cbe5cc62d3f7c052f0af
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: 25a45f0e1f4115fce623deef919368ecdf479ead
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781431"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471509"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link
-
 
 Beschränken Sie den Zugriff auf eine Registrierung, indem Sie den Registrierungsendpunkten private IP-Adressen eines virtuellen Netzwerks zuweisen und [Azure Private Link](../private-link/private-link-overview.md) verwenden. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den privaten Endpunkten der Registrierung wird über das virtuelle Netzwerk und einen privaten Link im Microsoft-Backbonenetzwerk geleitet, und somit nicht im öffentlichen Internet verfügbar gemacht. Private Link ermöglicht auch den Zugriff auf die private Registrierung aus einem lokalen System über privates Peering mit [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) oder ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 Sie können für den privaten Endpunkt der Registrierung [DNS-Einstellungen konfigurieren](../private-link/private-endpoint-overview.md#dns-configuration), sodass die Einstellungen zur zugeordneten privaten IP-Adresse der Registrierung aufgelöst werden. Dank DNS-Konfiguration können Clients und Dienste im Netzwerk weiterhin unter dem vollqualifizierten Domänennamen der Registrierung (beispielsweise *myregistry.azurecr.io*) auf die Registrierung zugreifen. 
 
-Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
+Dieser Artikel zeigt, wie Sie einen privaten Endpunkt für Ihre Registrierung mithilfe des Azure-Portals (empfohlen) oder der Azure CLI konfigurieren. Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
+> [!NOTE]
+> Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden. 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
+* Ein virtuelles Netz und Subnetz, in dem der private Endpunkt eingerichtet werden soll. Sie können bei Bedarf auch [ein neues virtuelles Netzwerk und Subnetz erstellen](../virtual-network/quick-create-portal.md).
+* Zu Testzwecken wird empfohlen, eine VM im virtuellen Netzwerk einzurichten. Schritte zum Erstellen einer Test-VM für den Zugriff auf Ihre Registrierung finden Sie unter [Erstellen eines Docker-fähigen virtuellen Computers](container-registry-vnet.md#create-a-docker-enabled-virtual-machine). 
 * Wenn Sie die Azure CLI-Schritte in diesem Artikel verwenden möchten, wird mindestens die Azure CLI-Version 2.6.0 empfohlen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli]. Alternativ können Sie [Azure Cloud Shell](../cloud-shell/quickstart.md) verwenden.
 * Sollten Sie noch nicht über eine Containerregistrierung verfügen, können Sie eine Registrierung erstellen (Premium-Tarif erforderlich) und ein öffentliches Beispielimage (etwa `mcr.microsoft.com/hello-world`) aus Microsoft Container Registry [importieren](container-registry-import-images.md). Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle][quickstart-cli] verwenden.
-* Um den Registrierungszugriff mithilfe einer privaten Verbindung in einem anderen Azure-Abonnement zu konfigurieren, müssen Sie den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren. Beispiel:
 
-  ```azurecli
-  az account set --subscription <Name or ID of subscription of private link>
+### <a name="register-container-registry-resource-provider"></a>Registrieren des Ressourcenanbieters für die Containerregistrierung
 
-  az provider register --namespace Microsoft.ContainerRegistry
-  ``` 
+Um den Registrierungszugriff mithilfe einer privaten Verbindung in einem anderen Azure-Abonnement oder -Mandanten zu konfigurieren, müssen Sie [den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren](../azure-resource-manager/management/resource-providers-and-types.md). Hierfür können Sie das Azure-Portal, die Azure CLI oder andere Tools verwenden.
 
-In den Azure CLI-Beispielen dieses Artikels werden die folgenden Umgebungsvariablen verwendet. Ersetzen Sie die Werte durch entsprechende Werte für Ihre Umgebung. Alle Beispiele sind für die Bash-Shell formatiert:
+Beispiel:
+
+```azurecli
+az account set --subscription <Name or ID of subscription of private link>
+
+az provider register --namespace Microsoft.ContainerRegistry
+``` 
+
+## <a name="set-up-private-endpoint---portal-recommended"></a>Einrichten eines privaten Endpunkts im Portal (empfohlen)
+
+Richten Sie einen privaten Endpunkt ein, wenn Sie eine Registrierung erstellen, oder fügen Sie einen privaten Endpunkt zu einer bestehenden Registrierung hinzu. 
+
+### <a name="create-a-private-endpoint---new-registry"></a>Erstellen eines privaten Endpunkts: neue Registrierung
+
+1. Wenn Sie eine Registrierung im Portal erstellen, wählen Sie auf der Registerkarte **Grundlagen** in **SKU** den Tarif **Premium** aus.
+1. Wählen Sie die Registerkarte **Netzwerk** aus.
+1. Wählen Sie in **Netzwerkverbindung** die Optionen **Privater Endpunkt** >  **+ Hinzufügen** aus.
+1. Geben Sie die folgenden Informationen an:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
+    | Name | Geben Sie einen eindeutigen Namen ein. |
+    | Registrierungsunterressource |Wählen Sie **Registrierung** aus.|
+    | **Netzwerk** | |
+    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netz für den privaten Endpunkt aus. Beispiel: *myDockerVMVNET*. |
+    | Subnet | Wählen Sie das Subnetz für den privaten Endpunkt aus. Beispiel: *myDockerVMSubnet*. |
+    |**Private DNS-Integration**||
+    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
+    |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
+    |||
+1. Konfigurieren Sie die restlichen Registrierungseinstellungen, und wählen Sie dann **Überprüfen und erstellen** aus.
+  
+:::image type="content" source="media/container-registry-private-link/private-link-create-portal.png" alt-text="Erstellen einer Registrierung mit einem privaten Endpunkt":::
+
+
+
+Ihre private Verbindung ist nun konfiguriert und einsatzbereit.
+
+### <a name="create-a-private-endpoint---existing-registry"></a>Erstellen eines privaten Endpunkts: vorhandene Registrierung
+
+1. Navigieren Sie im Azure-Portal zu Ihrer Containerregistrierung.
+1. Wählen Sie unter **Einstellungen** die Option **Netzwerk** aus.
+1. Wählen Sie auf der Registerkarte **Private Endpunkte** die Option **+ Privater Endpunkt** aus.
+    :::image type="content" source="media/container-registry-private-link/private-endpoint-existing-registry.png" alt-text="Hinzufügen eines privaten Endpunkts zur Registrierung":::
+
+1. Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Informationen an:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | **Projektdetails** | |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
+    | **Instanzendetails** |  |
+    | Name | Geben Sie einen Namen ein. |
+    |Region|Wählen Sie eine Region aus.|
+    |||
+1. Klicken Sie auf **Weiter: Ressource** aus.
+1. Geben Sie die folgenden Informationen an:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    |Verbindungsmethode  | Wählen Sie für dieses Beispiel **Verbindung mit einer Azure-Ressource in meinem Verzeichnis herstellen** aus.|
+    | Subscription| Wählen Sie Ihr Abonnement aus. |
+    | Ressourcentyp | Wählen Sie **Microsoft.ContainerRegistry/registries** aus. |
+    | Resource |Wählen Sie den Namen Ihrer Registrierung aus.|
+    |Unterressource des Ziels |Wählen Sie **Registrierung** aus.|
+    |||
+1. Klicken Sie auf **Weiter: Konfiguration** aus.
+1. Geben Sie die folgenden Informationen an:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    |**Netzwerk**| |
+    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netz für den privaten Endpunkt aus. |
+    | Subnet | Wählen Sie das Subnetz für den privaten Endpunkt aus. |
+    |**Private DNS-Integration**||
+    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
+    |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
+    |||
+
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
+1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+
+### <a name="confirm-endpoint-configuration"></a>Bestätigen der Konfiguration des privaten Endpunkts
+
+Nachdem der private Endpunkt erstellt wurde, werden DNS-Einstellungen in der privaten Zone in den Einstellungen zu **Private Endpunkte** im Portal angezeigt:
+
+1. Navigieren Sie im Portal zu Ihrer Containerregistrierung, und wählen Sie **Einstellungen > Netzwerk** aus.
+1. Wählen Sie auf der Registerkarte **Private Endpunkte** den privaten Endpunkt aus, den Sie erstellt haben. 
+1. Wählen Sie **DNS-Konfiguration** aus.
+1. Überprüfen Sie die Verbindungs- und benutzerdefinierten DNS-Einstellungen.
+
+:::image type="content" source="media/container-registry-private-link/private-endpoint-overview.png" alt-text="DNS-Einstellungen für den Endpunkt im Portal":::
+## <a name="set-up-private-endpoint---cli"></a>Einrichten eines privaten Endpunkts über die CLI
+
+In den Azure CLI-Beispielen dieses Artikels werden die folgenden Umgebungsvariablen verwendet. Sie benötigen die Namen einer vorhandenen Containerregistrierung, eines virtuellen Netzwerks und eines Subnetzes, um einen privaten Endpunkt einzurichten. Ersetzen Sie die Werte durch entsprechende Werte für Ihre Umgebung. Alle Beispiele sind für die Bash-Shell formatiert:
 
 ```bash
 REGISTRY_NAME=<container-registry-name>
 REGISTRY_LOCATION=<container-registry-location> # Azure region such as westeurope where registry created
-RESOURCE_GROUP=<resource-group-name>
-VM_NAME=<virtual-machine-name>
+RESOURCE_GROUP=<resource-group-name> # Resource group for your existing virtual network and subnet
+NETWORK_NAME=<virtual-network-name>
+SUBNET_NAME=<subnet-name>
 ```
-
-[!INCLUDE [Set up Docker-enabled VM](../../includes/container-registry-docker-vm-setup.md)]
-
-## <a name="set-up-private-link---cli"></a>Einrichten einer privaten Verbindung: CLI
-
-### <a name="get-network-and-subnet-names"></a>Abrufen des Netzwerk- und Subnetznamens
-
-Für die Einrichtung einer privaten Verbindung benötigen Sie den Namen eines virtuellen Netzwerks und eines Subnetzes. In diesem Beispiel wird für den virtuellen Computer und den privaten Endpunkt der Registrierung das gleiche Subnetz verwendet. In vielen Szenarien wird der Endpunkt jedoch in einem separaten Subnetz eingerichtet. 
-
-Wenn Sie einen virtuellen Computer erstellen, erstellt Azure standardmäßig in der gleichen Ressourcengruppe ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks hängt von dem Namen des virtuellen Computers ab. Wenn Sie Ihren virtuellen Computer beispielsweise *MyDockerVM* nennen, lautet der Standardname des virtuellen Netzwerks *MyDockerVMVNET* mit einem Subnetz namens *MyDockerVMSubnet*. Legen Sie diese Werte in Umgebungsvariablen fest, indem Sie den Befehl [az network vnet list][az-network-vnet-list] ausführen:
-
-```azurecli
-NETWORK_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Name: name}' --output tsv)
-
-SUBNET_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Subnet: subnets[0].name}' --output tsv)
-
-echo NETWORK_NAME=$NETWORK_NAME
-echo SUBNET_NAME=$SUBNET_NAME
-```
-
 ### <a name="disable-network-policies-in-subnet"></a>Deaktivieren von Netzwerkrichtlinien im Subnetz
 
 [Deaktivieren Sie Netzwerkrichtlinien](../private-link/disable-private-endpoint-network-policy.md) (beispielsweise Netzwerksicherheitsgruppen) im Subnetz für den privaten Endpunkt. Aktualisieren Sie Ihre Subnetzkonfiguration mithilfe des Befehls [az network vnet subnet update][az-network-vnet-subnet-update]:
@@ -128,7 +203,7 @@ az network private-endpoint create \
 
 ### <a name="get-endpoint-ip-configuration"></a>Abrufen der Endpunkt-IP-Konfiguration
 
-Rufen Sie zum Konfigurieren von DNS-Einträgen die IP-Konfiguration des privaten Endpunkts ab. Mit der Netzwerkschnittstelle des privaten Endpunkts sind in diesem Beispiel zwei private IP-Adressen für die Containerregistrierung verknüpft: eine für die eigentliche Registrierung und eine für den Datenendpunkt der Registrierung. 
+Rufen Sie zum Konfigurieren von DNS-Einträgen die IP-Konfiguration des privaten Endpunkts ab. Mit der Netzwerkschnittstelle des privaten Endpunkts sind in diesem Beispiel zwei private IP-Adressen für die Containerregistrierung verknüpft: eine für die eigentliche Registrierung und eine für den Datenendpunkt der Registrierung. Wenn Ihre Registrierung georepliziert ist, wird jedem Replikat eine zusätzliche IP-Adresse zugeordnet.
 
 Führen Sie zunächst [az network private-endpoint show][az-network-private-endpoint-show] aus, um die Netzwerkschnittstellen-ID vom privaten Endpunkt abzufragen:
 
@@ -140,7 +215,7 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-Die folgenden [az network nic show][az-network-nic-show]-Befehle rufen die privaten IP-Adressen für die Containerregistrierung und den Datenendpunkt der Registrierung ab:
+Die folgenden [az network nic show][az-network-nic-show]-Befehle rufen die privaten IP-Adressen und FQDNs für die Containerregistrierung und den Datenendpunkt der Registrierung ab:
 
 ```azurecli
 REGISTRY_PRIVATE_IP=$(az network nic show \
@@ -166,17 +241,27 @@ DATA_ENDPOINT_FQDN=$(az network nic show \
   --output tsv)
 ```
 
-> [!NOTE]
-> Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, fragen Sie den zusätzlichen Datenendpunkt für jedes Registrierungsreplikat ab.
+#### <a name="additional-endpoints-for-geo-replicas"></a>Zusätzliche Endpunkte für Georeplikate
 
+Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, fragen Sie den zusätzlichen Datenendpunkt für jedes Registrierungsreplikat ab. Beispiel: in der Region *eastus*: 
+
+```azurecli
+REPLICA_LOCATION=eastus
+GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateIpAddress" \
+  --output tsv) 
+
+GEO_REPLICA_DATA_ENDPOINT_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateLinkConnectionProperties.fqdns" \
+  --output tsv)
+```
 ### <a name="create-dns-records-in-the-private-zone"></a>Erstellen von DNS-Einträgen in der privaten Zone
 
 Mit den folgenden Befehlen werden DNS-Einträge in der privaten Zone für den Registrierungsendpunkt und den zugehörigen Datenendpunkt erstellt. Wenn Sie also beispielsweise über eine Registrierung namens *myregistry* in der Region *westeurope* verfügen, lauten die Endpunktnamen `myregistry.azurecr.io` und `myregistry.westeurope.data.azurecr.io`. 
 
-> [!NOTE]
-> Wenn Ihre Registrierung [georepliziert](container-registry-geo-replication.md) ist, erstellen Sie zusätzliche DNS-Einträge für die Datenendpunkt-IP-Adresse jedes Replikats.
-
-Führen Sie zuerst [az network private-dns record-set a create][az-network-private-dns-record-set-a-create] aus, um leere A-Ressourceneintragssätze für den Registrierungsendpunkt und den Datenendpunkt zu erstellen:
+Führen Sie zuerst [az network private-dns record-set a create][az-network-private-dns-record-set-a-create] aus, um leere A-Ressourceneintragssätze für den Registrierungsendpunkt und Datenendpunkt zu erstellen:
 
 ```azurecli
 az network private-dns record-set a create \
@@ -191,7 +276,7 @@ az network private-dns record-set a create \
   --resource-group $RESOURCE_GROUP
 ```
 
-Führen Sie den Befehl [az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] aus, um die A-Einträge für den Registrierungsendpunkt und den Datenendpunkt zu erstellen:
+Führen Sie den Befehl [az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] aus, um die A-Einträge für den Registrierungsendpunkt und Datenendpunkt zu erstellen:
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -208,115 +293,47 @@ az network private-dns record-set a add-record \
   --ipv4-address $DATA_ENDPOINT_PRIVATE_IP
 ```
 
+#### <a name="additional-records-for-geo-replicas"></a>Zusätzliche Datensätze für Georeplikate
+
+Wenn Ihre Registrierung georepliziert ist, erstellen Sie zusätzliche DNS-Einstellungen für jedes Replikat. Fortsetzung des Beispiels in der Region *eastus*:
+
+```azurecli
+az network private-dns record-set a create \
+  --name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP
+
+az network private-dns record-set a add-record \
+  --record-set-name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP \
+  --ipv4-address $GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP
+```
+
 Die private Verbindung ist nun konfiguriert und einsatzbereit.
-
-## <a name="set-up-private-link---portal"></a>Einrichten einer privaten Verbindung: Portal
-
-Richten Sie eine private Verbindung ein, wenn Sie eine Registrierung erstellen, oder fügen Sie einer vorhandenen Registrierung eine private Verbindung hinzu. Bei den folgenden Schritten wird davon ausgegangen, dass Sie bereits ein virtuelles Netzwerk und ein Subnetz eingerichtet haben und über einen virtuellen Computer zum Testen verfügen. Sie können auch [ein neues virtuelles Netzwerk und Subnetz erstellen](../virtual-network/quick-create-portal.md).
-
-### <a name="create-a-private-endpoint---new-registry"></a>Erstellen eines privaten Endpunkts: neue Registrierung
-
-1. Wenn Sie eine Registrierung im Portal erstellen, wählen Sie auf der Registerkarte **Grundlagen** in **SKU** den Tarif **Premium** aus.
-1. Wählen Sie die Registerkarte **Netzwerk** aus.
-1. Wählen Sie in **Netzwerkverbindung** die Optionen **Privater Endpunkt** >  **+ Hinzufügen** aus.
-1. Geben Sie die folgenden Informationen an:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
-    | Name | Geben Sie einen eindeutigen Namen ein. |
-    | Unterressource |Wählen Sie **Registrierung** aus.|
-    | **Netzwerk** | |
-    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET*). |
-    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet*) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
-    |**Private DNS-Integration**||
-    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
-    |||
-1. Konfigurieren Sie die restlichen Registrierungseinstellungen, und wählen Sie dann **Überprüfen und erstellen** aus.
-
-  ![Erstellen einer Registrierung mit einem privaten Endpunkt](./media/container-registry-private-link/private-link-create-portal.png)
-
-### <a name="create-a-private-endpoint---existing-registry"></a>Erstellen eines privaten Endpunkts: vorhandene Registrierung
-
-1. Navigieren Sie im Azure-Portal zu Ihrer Containerregistrierung.
-1. Wählen Sie unter **Einstellungen** die Option **Netzwerk** aus.
-1. Wählen Sie auf der Registerkarte **Private Endpunkte** die Option **+ Privater Endpunkt** aus.
-1. Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Informationen an:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | **Projektdetails** | |
-    | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
-    | **Instanzendetails** |  |
-    | Name | Geben Sie einen Namen ein. |
-    |Region|Wählen Sie eine Region aus.|
-    |||
-5. Klicken Sie auf **Weiter: Ressource** aus.
-6. Geben Sie die folgenden Informationen an:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    |Verbindungsmethode  | Wählen Sie **Hiermit wird eine Verbindung mit einer Azure-Ressource im eigenen Verzeichnis hergestellt** aus.|
-    | Subscription| Wählen Sie Ihr Abonnement aus. |
-    | Ressourcentyp | Wählen Sie **Microsoft.ContainerRegistry/registries** aus. |
-    | Resource |Wählen Sie den Namen Ihrer Registrierung aus.|
-    |Unterressource des Ziels |Wählen Sie **Registrierung** aus.|
-    |||
-7. Klicken Sie auf **Weiter: Konfiguration** aus.
-8. Geben Sie die folgenden Informationen an:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    |**Netzwerk**| |
-    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET*). |
-    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet*) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
-    |**Private DNS-Integration**||
-    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
-    |||
-
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
-2. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
-
-Nachdem der private Endpunkt erstellt wurde, werden DNS-Einstellungen in der privaten Zone auf der Seite **Private Endpunkte** im Portal angezeigt:
-
-1. Navigieren Sie im Portal zu Ihrer Containerregistrierung, und wählen Sie **Einstellungen > Netzwerk** aus.
-1. Wählen Sie auf der Registerkarte **Private Endpunkte** den privaten Endpunkt aus, den Sie erstellt haben.
-1. Überprüfen Sie auf der Seite **Übersicht** die Verbindungseinstellungen und benutzerdefinierten DNS-Einstellungen.
-
-  ![DNS-Einstellungen des Endpunkts](./media/container-registry-private-link/private-endpoint-overview.png)
-
-Ihre private Verbindung ist nun konfiguriert und einsatzbereit.
 
 ## <a name="disable-public-access"></a>Deaktivieren des öffentlichen Zugriffs
 
 Deaktivieren Sie für viele Szenarien den Registrierungszugriff aus öffentlichen Netzwerken. Mit dieser Konfiguration wird verhindert, dass Clients von außerhalb des virtuellen Netzwerks die Registrierungsendpunkte erreichen können. 
-
-### <a name="disable-public-access---cli"></a>Deaktivieren des öffentlichen Zugriffs – CLI
-
-Um den öffentlichen Zugriff mithilfe der Azure CLI zu deaktivieren, führen Sie [az acr update][az-acr-update] aus, und legen Sie `--public-network-enabled` auf `false` fest. 
-
-> [!NOTE]
-> Das Argument `public-network-enabled` erfordert Azure CLI 2.6.0 oder höher. 
-
-```azurecli
-az acr update --name $REGISTRY_NAME --public-network-enabled false
-```
-
 
 ### <a name="disable-public-access---portal"></a>Deaktivieren des öffentlichen Zugriffs – Portal
 
 1. Navigieren Sie im Portal zu Ihrer Containerregistrierung, und wählen Sie **Einstellungen > Netzwerk** aus.
 1. Wählen Sie auf der Registerkarte **Öffentlicher Zugriff** in **Öffentlichen Netzwerkzugriff zulassen** die Option **Deaktiviert** aus. Klicken Sie dann auf **Speichern**.
 
+### <a name="disable-public-access---cli"></a>Deaktivieren des öffentlichen Zugriffs – CLI
+
+Um den öffentlichen Zugriff mithilfe der Azure CLI zu deaktivieren, führen Sie [az acr update][az-acr-update] aus, und legen Sie `--public-network-enabled` auf `false` fest. 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
 ## <a name="validate-private-link-connection"></a>Überprüfen der Private Link-Verbindung
 
 Vergewissern Sie sich, dass die Ressourcen im Subnetz des privaten Endpunkts eine Verbindung mit Ihrer Registrierung über eine private IP-Adresse herstellen und dass die Integration in die private DNS-Zone korrekt ist.
 
-Stellen Sie zum Überprüfen der Private Link-Verbindung eine SSH-Verbindung mit dem virtuellen Computer her, den Sie im virtuellen Netzwerk eingerichtet haben.
+Stellen Sie zum Überprüfen der Private Link-Verbindung eine Verbindung mit dem virtuellen Computer her, den Sie im virtuellen Netzwerk eingerichtet haben.
 
 Führen Sie ein Hilfsprogramm wie `nslookup` oder `dig` aus, um die IP-Adresse Ihrer Registrierung über die private Verbindung nachzuschlagen. Beispiel:
 
@@ -362,7 +379,7 @@ xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
 
 ### <a name="registry-operations-over-private-link"></a>Registrierungsvorgänge über die private Verbindung
 
-Vergewissern Sie sich außerdem, dass Sie Registrierungsvorgänge über den virtuellen Computer im Subnetz ausführen können. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her, und führen Sie [az acr login][az-acr-login] aus, um sich bei Ihrer Registrierung anzumelden. Je nach VM-Konfiguration müssen die folgenden Befehle unter Umständen mit dem Präfix `sudo` versehen werden.
+Vergewissern Sie sich außerdem, dass Sie Registrierungsvorgänge über den virtuellen Computer im Netzwerk ausführen können. Stellen Sie eine SSH-Verbindung mit Ihrem virtuellen Computer her, und führen Sie [az acr login][az-acr-login] aus, um sich bei Ihrer Registrierung anzumelden. Je nach VM-Konfiguration müssen die folgenden Befehle unter Umständen mit dem Präfix `sudo` versehen werden.
 
 ```bash
 az acr login --name $REGISTRY_NAME
@@ -410,15 +427,16 @@ In einigen Szenarien müssen Sie DNS-Einträge in einer privaten Zone möglicher
 > [!IMPORTANT]
 > Wenn Sie später ein neues Replikat hinzufügen, müssen Sie für den Datenendpunkt in dieser Region manuell einen neuen DNS-Eintrag hinzufügen. Wenn Sie beispielsweise ein Replikat von *myregistry* am Standort „northeurope“ erstellen, fügen Sie einen Eintrag für `myregistry.northeurope.data.azurecr.io` hinzu.
 
-Die FQDNs und privaten IP-Adressen, die Sie zum Erstellen von DNS-Einträgen benötigen, sind der Netzwerkschnittstelle des privaten Endpunkts zugeordnet. Sie können diese Informationen über die Azure CLI oder das Portal abrufen:
+Die FQDNs und privaten IP-Adressen, die Sie zum Erstellen von DNS-Einträgen benötigen, sind der Netzwerkschnittstelle des privaten Endpunkts zugeordnet. Sie können diese Informationen über das Azure-Portal oder die Azure CLI abrufen.
 
+* Navigieren Sie im Portal zu Ihrem privaten Endpunkt, und wählen Sie **DNS-Konfiguration** aus. 
 * Führen Sie mithilfe der Azure CLI den Befehl [az network nic show][az-network-nic-show] aus. Beispielbefehle finden Sie weiter oben in diesem Artikel unter [Abrufen der Endpunkt-IP-Konfiguration](#get-endpoint-ip-configuration).
-
-* Navigieren Sie im Portal zu Ihrem privaten Endpunkt, und wählen Sie **DNS-Konfiguration** aus.
 
 Stellen Sie nach dem Erstellen von DNS-Einträgen sicher, dass die Registrierungs-FQDNs ordnungsgemäß in ihre jeweiligen privaten IP-Adressen aufgelöst werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie Ihre Ressourcen über das Portal bereinigen möchten, navigieren Sie zu Ihrer Ressourcengruppe. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe und die dort gespeicherten Ressourcen zu entfernen.
 
 Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben und sie nicht mehr benötigen, können Sie die Ressourcen optional mit einem einzigen Befehl [az group delete](/cli/azure/group) löschen:
 
@@ -426,11 +444,11 @@ Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben u
 az group delete --name $RESOURCE_GROUP
 ```
 
-Wenn Sie Ihre Ressourcen über das Portal bereinigen möchten, navigieren Sie zu Ihrer Ressourcengruppe. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe und die dort gespeicherten Ressourcen zu entfernen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Private Link finden Sie in der Dokumentation zu [Azure Private Link](../private-link/private-link-overview.md).
+
+* Um DNS-Einstellungen im virtuellen Netzwerk zu überprüfen, die zu einem privaten Endpunkt führen, führen Sie den Befehl [az acr check-health](/cli/azure/acr#az_acr_check_health) mit dem Parameter `--vnet` aus. Weitere Informationen finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). 
 
 * Wenn Sie Zugriffsregeln für die Registrierung hinter einer Clientfirewall einrichten müssen, finden Sie Informationen hierzu unter [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall](container-registry-firewall-access-rules.md).
 

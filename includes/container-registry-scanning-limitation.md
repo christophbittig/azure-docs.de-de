@@ -1,21 +1,22 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 12/16/2020
+ms.date: 05/19/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 198f1594722aa2e0853fa19de59bea6507d481d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83a42f7a68dc34770106e258b4ed5949feb48c8d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99532113"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471489"
 ---
 > [!IMPORTANT]
-> * Azure Security Center kann zurzeit keine [Image-Sicherheitsrisikoüberprüfung](../articles/security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) in einer Registrierung durchführen, die den Zugriff auf private Endpunkte, ausgewählte Subnetze oder IP-Adressen einschränkt. 
-> * Instanzen von Azure-Diensten, einschließlich Azure DevOps Services, Web-Apps und Azure Container Instances, können auch nicht auf eine Containerregistrierung mit Netzwerkeinschränkung zugreifen. 
-> * Bestimmte andere Instanzen von Azure-Diensten können sicher auf eine Containerregistrierung mit Netzwerkeinschränkungen zugreifen. Weitere Informationen finden Sie unter [Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen](../articles/container-registry/allow-access-trusted-services.md).
+> In einer Containerregistrierung, die den Zugriff auf private Endpunkte, ausgewählte Subnetze oder IP-Adressen einschränkt, sind einige Funktionen möglicherweise nicht verfügbar oder erfordern eine umfangreichere Konfiguration. 
+> * Wenn der öffentliche Netzwerkzugriff auf eine Registrierung deaktiviert ist, erfordert der Zugriff auf die Registrierung durch bestimmte [vertrauenswürdige Dienste](../articles/container-registry/allow-access-trusted-services.md) einschließlich Azure Security Center die Aktivierung einer Netzwerkeinstellung, um die Netzwerkregeln zu umgehen.
+> * Instanzen bestimmter Azure-Dienste, darunter Azure DevOps Services und Azure Container Instances, können derzeit nicht auf die Containerregistrierung zugreifen.
+> * Wenn die Registrierung einen genehmigten privaten Endpunkt hat und der öffentliche Netzwerkzugriff deaktiviert ist, können Repositorys und Tags außerhalb des virtuellen Netzwerks nicht über das Azure-Portal, die Azure CLI oder andere Tools aufgelistet werden.

@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a605046c8cf76a425f7df5b1cdf637f7dc4bfc90
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a0dd00dffaa5112ce04723a12e8b8634f6149690
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747249"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588037"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Verwenden von Eigenschaften in einer Azure IoT Central-Lösung
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 
 | Feld           | BESCHREIBUNG                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Anzeigename    | Der Anzeigename für den Eigenschaftswert, der in Dashboards und Formularen verwendet wird.                                                                                                                                                              |
+| Anzeigename    | Der Anzeigename des Eigenschaftswerts, der auf Dashboardkacheln und in Geräteformularen verwendet wird.                                                                                                                                                              |
 | Name            | Der Name der Eigenschaft. Azure IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen. Bei Bedarf können Sie aber einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein.  Der Wert von **Name** wird im Gerätecode verwendet.           |
 | Funktionstyp | Eigenschaft.                                                                                                                                                                                                                          |
 | Semantischer Typ   | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist.                                                                       |
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 | severity        | Nur für den semantischen Typ „Ereignis“ verfügbar. Die Schweregrade lauten **Fehler**, **Information** und **Warnung**.                                                                                                                         |
 | Zustandswerte    | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen.                                                                                   |
 | Einheit            | Eine Einheit für den Eigenschaftswert, z. B. **km/h**, **%** oder **&deg;C**.                                                                                                                                                              |
-| Anzeigeeinheit    | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen.                                                                                                                                                                                    |
+| Anzeigeeinheit    | Eine Anzeigeeinheit zur Verwendung auf Dashboardkacheln und in Geräteformularen.                                                                                                                                                                                    |
 | Comment         | Beliebige Kommentare zur Eigenschaftsfunktion.                                                                                                                                                                                        |
 | BESCHREIBUNG     | Eine Beschreibung der Eigenschaftsfunktion.                                                                                                                                                                                          |
 

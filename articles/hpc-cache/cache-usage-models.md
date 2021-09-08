@@ -4,15 +4,17 @@ description: Beschreibt die verschiedenen Cache-Verwendungsmodelle und wie Sie z
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7e1b11fd15cca9b11fc627222318f08d31743336
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: b623bd074b327d8139082d3060a6cdb120c8acbb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719185"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294899"
 ---
+<!-- filename is referenced from GUI in aka.ms/hpc-cache-usagemodel -->
+
 # <a name="understand-cache-usage-models"></a>Grundlegendes zu Cache-Verwendungsmodellen
 
 Mit Cache-Verwendungsmodellen können Sie anpassen, wie Ihr Azure HPC Cache Dateien speichert, um Ihren Workflow zu beschleunigen.
@@ -21,7 +23,7 @@ Mit Cache-Verwendungsmodellen können Sie anpassen, wie Ihr Azure HPC Cache Date
 
 Durch das Zwischenspeichern von Dateien werden Clientanforderungen von Azure HPC Cache beschleunigt. Dabei werden die folgenden grundlegenden Methoden verwendet:
 
-* **Zwischenspeichern von Lesevorgängen**: Azure HPC Cache speichert eine Kopie von Dateien, die Clients vom Speichersystem anfordern. Wenn ein Client das nächste Mal dieselbe Datei anfordert, kann HPC Cache die Version im Cache bereitstellen, statt sie erneut aus dem Back-End-Speichersystem abrufen zu müssen.
+* **Zwischenspeichern von Lesevorgängen**: Azure HPC Cache speichert eine Kopie von Dateien, die Clients vom Speichersystem anfordern. Wenn ein Client das nächste Mal dieselbe Datei anfordert, kann HPC Cache die Version im Cache bereitstellen, statt die Datei erneut aus dem Back-End-Speichersystem abrufen zu müssen.
 
 * **Zwischenspeichern von Schreibvorgängen**: Optional kann Azure HPC Cache eine Kopie der von den Clientcomputern gesendeten geänderten Dateien speichern. Wenn mehrere Clients in einem kurzen Zeitraum Änderungen an derselben Datei vornehmen, können alle Änderungen im Cache erfasst werden, sodass nicht jede Änderung einzeln in das Back-End-Speichersystem geschrieben werden muss.
 
@@ -55,7 +57,7 @@ Die Optionen für das Verwendungsmodell sind:
 
 * **Mehr als 15 % Schreibvorgänge**: Diese Option beschleunigt die Lese-und Schreibleistung. Wenn diese Option verwendet wird, müssen alle Clients über den Azure HPC-Cache auf Dateien zugreifen, anstatt den Back-End-Speicher direkt einzubinden. Die zwischengespeicherten Dateien enthalten aktuelle Änderungen, die noch nicht in das Back-End kopiert wurden.
 
-  Bei diesem Nutzungsmodell werden Dateien im Cache nur alle acht Stunden mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird in das Back-End-Speichersystem geschrieben, nachdem sie sich 20 Minuten lang<!-- an hour --> ohne zusätzliche Änderungen im Cache befunden hat.
+  Bei diesem Nutzungsmodell werden Dateien im Cache nur alle acht Stunden mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird in das Back-End-Speichersystem geschrieben, nachdem sie sich eine Stunde lang ohne zusätzliche Änderungen im Cache befunden hat.
 
 * **Clients umgehen den Cache und schreiben in das NFS-Ziel**: Wählen Sie diese Option aus, wenn Clients in Ihrem Workflow Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben, oder wenn Sie die Datenkonsistenz verbessern möchten. Dateien, die von Clients angefordert werden, werden zwischengespeichert (Lesevorgänge), aber alle Änderungen an diesen Dateien durch den Client (Schreibvorgänge) werden nicht zwischengespeichert. Sie werden direkt an das Back-End-Speichersystem weitergeleitet.
 
@@ -78,28 +80,22 @@ In dieser Tabelle werden die Unterschiede im Nutzungsmodell zusammengefasst:
 
 Wenn Sie Fragen zum optimalen Verwendungsmodell für Ihren Azure HPC Cache-Workflow haben, wenden Sie sich an Ihren Azure-Vertreter, oder öffnen Sie eine Supportanfrage, um Hilfe zu erhalten.
 
-## <a name="know-when-to-remount-clients-for-nlm"></a>Wissen, wann Clients für NLM erneut bereitgestellt werden müssen
+## <a name="change-usage-models"></a>Ändern von Nutzungsmodellen
 
-In einigen Fällen müssen Sie Clients möglicherweise erneut bereitstellen, wenn Sie das Nutzungsmodell eines Speicherziels ändern. Dies ist aufgrund der Art und Weise erforderlich, in der verschiedene Nutzungsmodelle Anforderungen des Netzwerksperrungs-Managers (Network Lock Manager, NLM) verarbeiten.
+Sie können Nutzungsmodelle ändern, indem Sie das Speicherziel bearbeiten. Einige Änderungen sind jedoch nicht zulässig, da dadurch ein geringes Risiko von Dateiversionskonflikten entsteht.
 
-Die HPC Cache-Instanz befindet sich zwischen Clients und dem Back-End-Speichersystem. In der Regel übergibt der Cache NLM-Anforderungen an das Back-End-Speichersystem, aber in einigen Fällen bestätigt der Cache selbst die NLM-Anforderung und gibt einen Wert an den Client zurück. In Azure HPC Cache ist dies nur bei Verwendung des Nutzungsmodells **Leseintensiv, unregelmäßige Schreibvorgänge** der Fall (oder mit einem Blobspeicher-Standardziel, für das keine konfigurierbaren Nutzungsmodelle verfügbar sind).
+Eine Änderung **in das** oder **aus dem** Modell **Viele Lesevorgänge, seltene Schreibvorgänge** ist nicht möglich. Um ein Speicherziel in dieses Nutzungsmodell zu ändern oder um es von diesem in ein anderes Nutzungsmodell zu ändern, müssen Sie das ursprüngliche Speicherziel löschen und ein neues erstellen.
 
-Es besteht ein geringes Risiko von Dateikonflikten, wenn Sie zwischen dem Nutzungsmodell **Leseintensiv, unregelmäßige Schreibvorgänge** und einem anderen Nutzungsmodell wechseln. Es gibt keine Möglichkeit, den aktuellen NLM-Status vom Cache in das Speichersystem (oder umgekehrt) zu übertragen. Daher ist der Sperrstatus des Clients ungenau.
+Diese Einschränkung gilt auch für das Nutzungsmodell **Viele Lesezugriffe, Überprüfung des Sicherungsservers alle 3 Stunden**, das nicht so häufig verwendet wird. Außerdem können Sie zwischen den beiden Nutzungsmodellen des Typs „Viele Lesezugriff“ umschalten, aber nicht auf einen anderen Nutzungsmodellstil umsteigen.
 
-Stellen Sie die Clients erneut bereit, um sicherzustellen, dass sie über einen genauen NLM-Status mit dem neuen Sperrungs-Manager verfügen.
+Diese Einschränkung ist aufgrund der Art und Weise erforderlich, in der verschiedene Nutzungsmodelle Anforderungen des Netzwerksperrungs-Managers (Network Lock Manager, NLM) verarbeiten. Die Azure HPC Cache-Instanz befindet sich zwischen Clients und Back-End-Speichersystem. In der Regel übergibt der Cache NLM-Anforderungen an das Back-End-Speichersystem, aber in einigen Fällen bestätigt der Cache selbst die NLM-Anforderung und gibt einen Wert an den Client zurück. In Azure HPC Cache ist dies nur bei Verwendung des Nutzungsmodells **Viele Lesevorgänge, seltene Schreibvorgänge** oder **Viele Lesezugriffe, Überprüfung des Sicherungsservers alle 3 Stunden** der Fall (oder mit einem standardmäßigen Blobspeicherziel, für das keine konfigurierbaren Nutzungsmodelle verfügbar sind).
 
-Wenn Ihre Clients eine NLM-Anforderung senden, obwohl das Nutzungsmodell oder der Back-End-Speicher dies nicht unterstützt, erhalten sie eine Fehlermeldung.
-
-### <a name="disable-nlm-at-client-mount-time"></a>Deaktivieren von NLM zur Clientbereitstellungszeit
-
-Es lässt sich nicht immer leicht feststellen, ob Ihre Clientsysteme NLM-Anforderungen senden oder nicht.
-
-Sie können NLM deaktivieren, wenn Clients den Cluster bereitstellen, indem Sie im Befehl ``mount`` die Option ``-o nolock`` verwenden.
-
-Das genaue Verhalten der Option ``nolock`` hängt vom Clientbetriebssystem ab. Entsprechende Informationen finden Sie in der Bereitstellungsdokumentation (man 5 nfs) für Ihr Clientbetriebssystem. In den meisten Fällen wird die Sperre lokal auf den Client verschoben. Seien Sie vorsichtig, wenn Ihre Anwendung Dateien über mehrere Clients hinweg sperrt.
+Wenn Sie zwischen **Viele Lesevorgänge, seltene Schreibvorgänge** und einem anderen Nutzungsmodell wechseln, gibt es keine Möglichkeit, den aktuellen NLM-Status vom Cache zum Speichersystem zu übertragen oder umgekehrt. Daher ist der Sperrstatus des Clients ungenau.
 
 > [!NOTE]
-> ADLS-NFS bietet keine Unterstützung für NLM. Bei Verwendung eines ADLS-NFS-Speicherziels sollten Sie NLM mit der oben genannten Bereitstellungsoption deaktivieren.
+> ADLS-NFS bietet keine Unterstützung für NLM. Sie müssen NLM deaktivieren, wenn Clients den Cluster einbinden, um auf ein ADLS-NFS-Speicherziel zuzugreifen.
+>
+> Verwenden Sie im Befehl ``mount`` die Option ``-o nolock``. Konsultieren Sie die Dokumentation zur Einbindung Ihres Clientbetriebssystems (man 5 nfs), um mehr über das genaue Verhalten der Option ``nolock`` für Ihre Clients zu erfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

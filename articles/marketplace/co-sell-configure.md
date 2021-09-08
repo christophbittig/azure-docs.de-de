@@ -7,17 +7,17 @@ ms.topic: how-to
 author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: d38123aef6ac51423b90fa06d720574bb595bb14
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133455"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389116"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
-In diesem Artikel wird beschrieben, wie Sie die Registerkarte **Co-Selling mit Microsoft** für ein Angebot im kommerziellen Marketplace konfigurieren. Die Angabe von Informationen auf dieser Registerkarte ist vollkommen optional. Um die [Status „Co-Sell Ready“ und „IP Co-Sell Incentivized“](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) zu erreichen, sind die Angaben jedoch erforderlich. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen zum Co-Selling finden Sie in der [Übersicht über das Co-Selling mit Microsoft-Verkäufern und -Partnern](./co-sell-overview.md) und unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+In diesem Artikel wird beschrieben, wie Sie die Registerkarte **Co-Selling mit Microsoft** für ein Angebot im kommerziellen Marketplace konfigurieren. Die Angabe von Informationen auf dieser Registerkarte ist vollkommen optional. Um die [Status „Co-Sell Ready“ und „IP Co-Sell Incentive“](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) zu erreichen, sind die Angaben jedoch erforderlich. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen zum Co-Selling finden Sie in der [Übersicht über das Co-Selling mit Microsoft-Verkäufern und -Partnern](./co-sell-overview.md) und unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 
@@ -93,7 +93,7 @@ Sie müssen Begleitdokumente bereitstellen, die Details zu Ihrem Angebot enthalt
 Als Dateitypen werden PDF, PPT, PPTX, DOC, DOCX, XLS, XLSX, JPG, PNG und MP4 unterstützt. Vorlagen für einige Dokumente werden unten in Tabelle 2 bereitgestellt.
 
 > [!NOTE]
-> Um den Status „Co-Sell Ready“ zu erreichen, sind ein **einseitiges Lösungs-/Angebotsdokument** und eine **Lösungs-/Angebotspräsentation** erforderlich. Diese Voraussetzungen gelten bei einigen Angeboten auch für das Erreichen des Status „Azure IP Co-Sell Incentivized“. Für den Status „Azure IP Co-Sell Incentivized“ ist außerdem das Referenzarchitekturdiagramm erforderlich. Die anderen in dieser Tabelle beschriebenen Dokumente sind optional, werden jedoch empfohlen.
+> Um den Status „Co-Sell Ready“ zu erreichen, sind ein **einseitiges Lösungs-/Angebotsdokument** und eine **Lösungs-/Angebotspräsentation** erforderlich. Diese Voraussetzungen gelten bei einigen Angeboten auch für das Erreichen des Status „Azure IP Co-Sell Incentive“. Für den Status „Azure IP Co-Sell Incentive“ ist außerdem das Referenzarchitekturdiagramm erforderlich. Die anderen in dieser Tabelle beschriebenen Dokumente sind optional, werden jedoch empfohlen.
 
 ***Tabelle 2: Dokumente zur Co-Selling-Unterstützung***
 
@@ -104,7 +104,7 @@ Als Dateitypen werden PDF, PPT, PPTX, DOC, DOCX, XLS, XLSX, JPG, PNG und MP4 unt
 | *Kundenfallstudie* (Optional)| Verwenden Sie die [Vorlage für Fallstudien](https://aka.ms/GTM_Case_Study_Template), um Ihre Kundenfallstudie zu erstellen. Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft dieses Angebot in früheren Fällen erfolgreich bereitgestellt haben. |
 | *Überprüfbare Kundengewinne* (Optional) | Geben Sie konkrete Beispiele für den Erfolg von Kunden nach der Bereitstellung Ihres Angebots an. |
 | *Kanalpräsentation* (Optional) | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihr Angebot zu erfahren und ihre Vertriebsteams auf den Verkauf des Angebots vorzubereiten. Hierzu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, zur Dokumentation und zu Supportinformationen. |
-| *Referenzarchitekturdiagramm* (Für den Status „Azure IP Co-Sell Incentivized“ erforderlich) | Ein Diagramm, das Ihr Angebot und dessen Beziehung mit Microsoft Cloud Services darstellt. Es kann auch veranschaulichen, inwiefern Ihr Angebot die technischen Anforderungen für den Status „Azure IP Co-Sell Incentivized“ erfüllt. [Erfahren Sie hier mehr über das Diagramm zur Referenzarchitektur.](reference-architecture-diagram.md) |
+| *Referenzarchitekturdiagramm* (Für den Status „Azure IP Co-Sell Incentive“ erforderlich) | Ein Diagramm, das Ihr Angebot und dessen Beziehung mit Microsoft Cloud Services darstellt. Es kann auch veranschaulichen, inwiefern Ihr Angebot die technischen Anforderungen für den Status „Azure IP Co-Sell Incentive“ erfüllt. [Erfahren Sie hier mehr über das Diagramm zur Referenzarchitektur.](reference-architecture-diagram.md) |
 | *Andere Dokumente* (Optional) | Sie können bis zu fünf zusätzliche Dokumente oder Videos hochladen, um Microsoft-Vertriebsteams und Vertriebspartnern zu helfen, mehr über Ihr Angebot, Ihre Organisation und/oder Ihre Alleinstellungsmerkmale zu erfahren. |
 |||
 

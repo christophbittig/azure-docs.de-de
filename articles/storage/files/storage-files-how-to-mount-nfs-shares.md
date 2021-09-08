@@ -1,23 +1,23 @@
 ---
-title: Einbinden einer Azure-NFS-Dateifreigabe – Azure Files
+title: 'Einbinden einer Azure-NFS-Dateifreigabe (Vorschau): Azure Files'
 description: Erfahren Sie, wie Sie eine NFS (Network File System)-Freigabe einbinden.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 9b537509d83c680fc9edb014acc13b41a8ca1466
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810520"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225251"
 ---
-# <a name="how-to-mount-an-nfs-file-share"></a>Einbinden einer NFS-Dateifreigabe
+# <a name="how-to-mount-an-nfs-file-share-preview"></a>Einbinden einer NFS-Dateifreigabe (Vorschau)
 
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mit dem SMB (Server Message Block)-Protokoll oder dem NFS (Network File System)-Protokoll eingebunden werden. Dieser Artikel konzentriert sich auf die Einbindung mit NFS. Ausführliche Informationen zum Einbinden mit SMB finden Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Ausführliche Informationen zu den einzelnen verfügbaren Protokollen finden Sie unter [Azure-Dateifreigabeprotokolle](storage-files-compare-protocols.md).
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mit dem SMB- oder NFS-Protokoll (Server Message Block/Network File System) (Vorschau) eingebunden werden. Dieser Artikel konzentriert sich auf die Einbindung mit NFS. Ausführliche Informationen zum Einbinden mit SMB finden Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Ausführliche Informationen zu den einzelnen verfügbaren Protokollen finden Sie unter [Azure-Dateifreigabeprotokolle](storage-files-planning.md#available-protocols).
 
 ## <a name="limitations"></a>Einschränkungen
 

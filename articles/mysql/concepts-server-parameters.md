@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8220afc8020e5a6a4ba77c46a98ee3c220c3f37e
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720952"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675314"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Dieser Artikel enthält Überlegungen und Richtlinien zur Konfiguration von Serverparametern in Azure Database for MySQL.
 
@@ -65,7 +67,7 @@ Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle
 
 Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size).
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>Server, die bis zu 4 TB Speicher unterstützen
+#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-4-tb"></a>Server für den [Speichertyp „Universell V1“ (unterstützt bis zu 4 TB)](concepts-pricing-tiers.md#general-purpose-storage-v1-supports-up-to-4-tb)
 
 |**Tarif**|**vCore(s)**|**Standardwert (Bytes)**|**Mindestwert (Bytes)**|**Höchstwert (Bytes)**|
 |---|---|---|---|---|
@@ -83,7 +85,7 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 |Arbeitsspeicheroptimiert|16|65498251264|134217728|65498251264|
 |Arbeitsspeicheroptimiert|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-support-up-to-16-tb-storage"></a>Server, die bis zu 16 TB Speicher unterstützen
+#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-16-tb"></a>Server mit dem Speichertyp [„Universell V1“ (unterstützt bis zu 16 TB)](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage)
 
 |**Tarif**|**vCore(s)**|**Standardwert (Bytes)**|**Mindestwert (Bytes)**|**Höchstwert (Bytes)**|
 |---|---|---|---|---|
@@ -104,11 +106,11 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table` kann nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ aktualisiert werden.
+> `innodb_file_per_table` kann nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ für den [Speichertyp „Universell (V2)“](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) aktualisiert werden.
 
 MySQL speichert die InnoDB-Tabelle in verschiedenen Tabellenbereichen, basierend auf der Konfiguration, die Sie während der Tabellenerstellung angegeben haben. Der [Systemtabellenbereich](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) ist der Speicherbereich für das InnoDB-Datenwörterbuch. Ein [file-per-table-Tabellenbereich](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) enthält die Daten und Indizes für eine einzelne InnoDB-Tabelle und wird im Dateisystem in einer eigenen Datendatei gespeichert. Dieses Verhalten wird vom `innodb_file_per_table`-Serverparameter gesteuert. Durch Festlegen von `innodb_file_per_table` auf `OFF` werden Tabellen von InnoDB im Systemtabellenbereich erstellt. Andernfalls werden die Tabellen im Tabellen-Tabellenbereich erstellt.
 
-Azure Database for MySQL unterstützt bis zu **4 TB** in einer einzelnen Datendatei. Wenn die Größe Ihrer Datenbank 4 TB überschreitet, sollten Sie die Tabelle im Tabellenbereich [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) erstellen. Wenn eine einzelne Ihrer Tabellen größer als 4 TB ist, sollten Sie die Partitionstabelle verwenden.
+Azure Database for MySQL unterstützt maximal bis zu **4 TB** in einer einzelnen Datendatei im [Speichertyp „Universell (V2)“](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage). Wenn die Datenbankgröße 4 TB überschreitet, sollten Sie die Tabelle im Tabellenbereich [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) erstellen. Wenn eine einzelne Tabelle größer als 4 TB ist, müssen Sie die Partitionstabelle verwenden.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 

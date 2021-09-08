@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren des auf einem virtuellen Netzwerk basierenden Zugriffs für ein Azure Cosmos-Konto
 description: Dieses Dokument beschreibt die Schritte, die zum Einrichten eines VNET-Dienstendpunkts für Azure Cosmos DB erforderlich sind.
-author: markjbrown
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
-ms.author: mjbrown
+ms.date: 07/07/2021
+ms.author: thweiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 39b134b77fbb98c79fe163b7a36f087ab8a27116
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 42e38162409c5762f43807f483b091fbb88638af
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681776"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493277"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,6 +47,9 @@ Die folgenden Abschnitte beschreiben, wie Sie den VNET-Dienstendpunkt für ein A
 1. Wählen Sie das **Abonnement** aus, aus dem ein virtuelles Azure-Netzwerk hinzugefügt werden soll. Wählen Sie für **Virtuelle Netzwerke** und **Subnetze** die virtuellen Azure-Netzwerke und Subnetze aus, denen Sie Zugriff auf Ihr Azure Cosmos DB-Konto gewähren möchten. Klicken Sie als Nächstes auf **Aktivieren**, um die ausgewählten Netzwerke mit Dienstendpunkten für „Microsoft.AzureCosmosDB“ zu aktivieren. Wenn der Vorgang abgeschlossen ist, klicken Sie auf **Hinzufügen**.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Auswählen des virtuellen Netzwerks und des Subnetzes":::
+
+   > [!NOTE]
+   > Die Weitergabe der Konfiguration eines VNet-Dienstendpunkts kann bis zu 15 Minuten dauern, wobei der Endpunkt während dieses Zeitraums ein inkonsistentes Verhalten aufweisen kann.
 
 1. Nachdem das Azure Cosmos DB-Konto für den Zugriff aus einem virtuellen Netzwerk aktiviert wurde, lässt es nur den Datenverkehr aus diesem ausgewählten Subnetz zu. Das von Ihnen hinzugefügte virtuelle Netzwerk und das Subnetz sollten wie im folgenden Screenshot angezeigt werden:
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 08/11/2021
 ms.author: justinha
-ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c28711e937290df75687376f3ee6e067a69ad91d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619231"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339860"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien für verwaltete Azure Active Directory Domain Services-Domänen
 
@@ -63,7 +63,7 @@ Für alle Benutzer (unabhängig davon, wie sie erstellt werden) gelten die folge
 
 * **Kontosperrungsdauer:** 30
 * **Zulässige Anzahl fehlerhafter Anmeldeversuche:** 5
-* **Anzahl fehlerhafter Anmeldeversuche zurücksetzen nach:** 30 Minuten
+* **Anzahl fehlgeschlagener Anmeldeversuche zurücksetzen nach**: 2 Minuten
 * **Maximales Kennwortalter (Gültigkeitsdauer):** 90 Tage
 
 Bei diesen Standardeinstellungen werden Benutzerkonten für 30 Minuten gesperrt, wenn innerhalb von zwei Minuten fünf ungültige Kennwörter verwendet werden. Nach 30 Minuten werden die Konten automatisch wieder entsperrt.
@@ -105,10 +105,7 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
 
     Legen Sie die Rangfolge für Ihre benutzerdefinierte Kennwortrichtlinie so fest, dass die Standardeinstellung überschrieben wird, z.B. als *1*.
 
-1. Bearbeiten Sie andere Einstellungen für Kennwortrichtlinien wie gewünscht. Beachten Sie die folgenden wichtigen Punkte:
-
-    * Einstellungen wie Kennwortkomplexität, Alter oder Ablaufzeit gelten nur für Benutzer, die in einer verwalteten Domäne manuell erstellt werden.
-    * Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne und nicht in Azure AD wirksam.
+1. Bearbeiten Sie andere Einstellungen für Kennwortrichtlinien wie gewünscht. Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne und nicht in Azure AD wirksam.
 
     ![Erstellen einer benutzerdefinierten differenzierten Kennwortrichtlinie](./media/password-policy/custom-fgpp.png)
 

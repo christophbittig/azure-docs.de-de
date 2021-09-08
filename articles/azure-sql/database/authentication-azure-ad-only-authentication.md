@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/01/2021
-ms.openlocfilehash: fc0896e2885e3c90e542e8fcbd66b2b3ca960522
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/30/2021
+ms.openlocfilehash: eaf4228dead01e970e25f7c8dc533bfbc06db802
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970672"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128514"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Reine Azure AD-Authentifizierung mit Azure SQL
 
@@ -406,3 +406,6 @@ SELECT SERVERPROPERTY('IsExternalAuthenticationOnly')
 
 > [!div class="nextstepaction"]
 > [Tutorial: Aktivieren der reinen Azure Active Directory-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication-tutorial.md)
+
+> [!div class="nextstepaction"]
+> [Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL](authentication-azure-ad-only-authentication-create-server.md)

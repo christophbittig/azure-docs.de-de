@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2661e73b5ef1a820d28d71b93fd96db034e8daf6
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96519041"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675331"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Datenverschlüsselung für Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle die Datenverschlüsselung für Azure Database for MySQL einrichten und verwalten.
 
@@ -63,6 +65,7 @@ Sie können die oben genannten Attribute des Schlüssels mit dem folgenden Befeh
 ```azurecli-interactive
 az keyvault key show --vault-name <key_vault_name> -n <key_name>
 ```
+* Die Azure Database for MySQL Single Server-Instanz muss den Tarif „Universell“ oder „Arbeitsspeicheroptimiert“ und den Speichertyp „Universell (v2)“ haben. Bevor Sie fortfahren, sehen Sie sich die Einschränkungen für die [Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln](concepts-data-encryption-mysql.md#limitations) an.
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
 
@@ -280,4 +283,7 @@ Sie können Azure Resource Manager-Vorlagen auch verwenden, um die Datenverschl�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- Weitere Informationen zur Datenverschlüsselung finden Sie unter [Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel](concepts-data-encryption-mysql.md).
+* [Überprüfen der Datenverschlüsselung für Azure Database for MySQL](howto-data-encryption-validation.md)
+* [Behandeln von Problemen bei der Datenverschlüsselung in Azure Database for MySQL](howto-data-encryption-troubleshoot.md)
+* [Konzepte der Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln](concepts-data-encryption-mysql.md).
+

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a448c5b7ecb69c79c05c28c03593058e4c5ab87a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568799"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540994"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Erstellen interaktiver Berichte in VM Insights mit Arbeitsmappen
 
@@ -23,22 +23,30 @@ Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 * Weitergeben der Ergebnisse eines Größenänderungsexperiments für Ihren virtuellen Computer an andere Mitglieder Ihres Teams. Sie können die Ziele des Experiments in Textform erläutern und anschließend die einzelnen Nutzungsmetriken und Analyseabfragen für die Auswertung des Experiments sowie eindeutige Anmerkungen dazu präsentieren, ob eine Metrik oberhalb oder unterhalb des Zielwerts lag.
 * Melden der Auswirkungen eines Ausfalls auf die Nutzung Ihres virtuellen Computers durch eine Kombination aus Daten, einer Erläuterung in Textform und einer Auflistung der nächsten Schritte, mit denen sich Ausfälle in Zukunft vermeiden lassen.
 
-In der folgenden Tabelle sind die Arbeitsmappen zusammengefasst, die VM Insights für den Einstieg enthält.
+## <a name="vm-insights-workbooks"></a>VM Insights-Arbeitsmappen
+VM Insights umfasst die folgenden Arbeitsmappen. Sie können diese Arbeitsmappen verwenden oder sie als Ausgangspunkt nutzen, um benutzerdefinierte Arbeitsmappen für Ihre speziellen Anforderungen zu erstellen.
 
-| Arbeitsmappe | BESCHREIBUNG | `Scope` |
-|----------|-------------|-------|
-| Leistung | Eine anpassbare Version unserer Top-N-Liste und der Diagrammansicht in einer einzelnen Arbeitsmappe, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt.| Mehrere VMs |
-| Leistungsindikatoren | Eine Top-N-Diagrammansicht für ein breites Spektrum von Leistungsindikatoren. | Mehrere VMs |
-| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer überwachten virtuellen Computer. | Mehrere VMs |
-| Aktive Ports | Eine Liste der Prozesse, die an die Ports der überwachten virtuellen Computer gebunden sind, und ihrer Aktivität innerhalb des ausgewählten Zeitrahmens. | Mehrere VMs |
-| Offene Ports | Die Anzahl geöffneter Ports Ihrer überwachten virtuellen Computer sowie Details zu diesen geöffneten Ports. | Mehrere VMs |
-| Verbindungsfehler | Die Anzahl von Verbindungsfehlern für Ihre überwachten virtuellen Computer, der Fehlertrend sowie die Angabe, ob sich der Prozentsatz an Fehlern im Laufe der Zeit erhöht. | Mehrere VMs |
-| Security and Audit | Eine Analyse Ihres TCP/IP-Datenverkehrs mit Informationen zu Verbindungen im Allgemeinen, zu schädlichen Verbindungen sowie dazu, wo sich die IP-Endpunkte global befinden.  Wenn Sie alle Features aktivieren möchten, müssen Sie die Sicherheitserkennung aktivieren. | Mehrere VMs |
-| TCP-Datenverkehr | Ein Bericht mit einer Rangfolge Ihrer überwachten virtuellen Computer und ihrem gesendeten, empfangenen und gesamten Netzwerkdatenverkehr in einem Raster und als Trendlinie. | Mehrere VMs |
-| Vergleich von Datenverkehr | Diese Arbeitsmappe ermöglicht den Vergleich von Trends beim Netzwerkdatenverkehr eines einzelnen Computers oder einer Gruppe von Computern. | Mehrere VMs |
-| Leistung | Eine anpassbare Version unserer Leistungsansicht, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt. | Einzelne VM | 
-| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer virtuellen Computer. | Einzelne VM |
- 
+### <a name="single-virtual-machine"></a>Einzelner virtueller Computer
+
+| Arbeitsmappe | BESCHREIBUNG |
+|----------|-------------|
+| Leistung | Eine anpassbare Version der Leistungsansicht, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt. | 
+| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer virtuellen Computer. | 
+
+### <a name="multiple-virtual-machines"></a>Mehrere Virtuelle Computer
+
+| Arbeitsmappe | BESCHREIBUNG |
+|----------|-------------|
+| Leistung | Eine anpassbare Version der Top-N-Liste und der Diagrammansicht in einer einzelnen Arbeitsmappe, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt.|
+| Leistungsindikatoren | Eine Top-N-Diagrammansicht für ein breites Spektrum von Leistungsindikatoren. |
+| Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer überwachten virtuellen Computer. |
+| Aktive Ports | Eine Liste der Prozesse, die an die Ports der überwachten virtuellen Computer gebunden sind, und ihrer Aktivität innerhalb des ausgewählten Zeitrahmens. |
+| Offene Ports | Die Anzahl geöffneter Ports Ihrer überwachten virtuellen Computer sowie Details zu diesen geöffneten Ports. |
+| Verbindungsfehler | Die Anzahl von Verbindungsfehlern für Ihre überwachten virtuellen Computer, der Fehlertrend sowie die Angabe, ob sich der Prozentsatz an Fehlern im Laufe der Zeit erhöht. |
+| Security and Audit | Eine Analyse Ihres TCP/IP-Datenverkehrs mit Informationen zu Verbindungen im Allgemeinen, zu schädlichen Verbindungen sowie dazu, wo sich die IP-Endpunkte global befinden.  Wenn Sie alle Features aktivieren möchten, müssen Sie die Sicherheitserkennung aktivieren. |
+| TCP-Datenverkehr | Ein Bericht mit einer Rangfolge Ihrer überwachten virtuellen Computer und ihrem gesendeten, empfangenen und gesamten Netzwerkdatenverkehr in einem Raster und als Trendlinie. |
+| Vergleich von Datenverkehr | Diese Arbeitsmappe ermöglicht den Vergleich von Trends beim Netzwerkdatenverkehr eines einzelnen Computers oder einer Gruppe von Computern. |
+
 ## <a name="creating-a-new-workbook"></a>Erstellen einer neuen Arbeitsmappe
 
 Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinander bearbeitbaren Diagrammen, Tabellen, Text und Eingabesteuerelementen bestehen. Zum besseren Verständnis von Arbeitsmappen öffnen wir eine Vorlage und sehen uns die einzelnen Schritte für die Erstellung einer benutzerdefinierten Arbeitsmappe an. 

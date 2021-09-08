@@ -9,33 +9,19 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: f83e84e3aa747c41d0e45a5650c704c796c62447
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775862"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112968265"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Verwenden von Synapse Studio zum Überwachen Ihrer Apache Spark-Anwendungen
 
 Mit Azure Synapse Analytics können Sie mithilfe von Apache Spark Notebooks, Aufträge und andere Arten von Anwendungen in ihren Apache Spark-Pools in Ihrem Arbeitsbereich ausführen.
 
 In diesem Artikel wird erläutert, wie Sie Ihre Apache Spark-Anwendungen überwachen, was es Ihnen gestattet, den aktuellen Status, die aktuellen Probleme und den Fortschritt im Auge zu behalten.
-
-Dieses Tutorial enthält die folgenden Aufgaben:
-
-* Überwachen aktiver Apache Spark-Anwendungen
-* Anzeigen einer abgeschlossenen Apache Spark-Anwendung
-* Anzeigen einer abgebrochenen Apache Spark-Anwendung
-* Debuggen von Fehlern bei Apache Spark-Anwendungen
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
-
-- Ein Synapse Studio-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Synapse Studio-Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
-
-- Ein Apache Spark-Pool.
 
 ## <a name="view-apache-spark-applications"></a>Anzeigen von Apache Spark-Anwendungen 
 Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spark-Anwendungen** anzeigen.
@@ -49,47 +35,66 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
-2. Aktualisieren Sie die Protokollabfrage.
+2. **Aktualisieren** Sie den Auftrag.
 
-3. Öffnen Sie den Link zum Apache Spark-Verlaufsserver, indem Sie auf **Spark-Verlaufsserver** klicken.
+3. Klicken Sie auf **Anwendungen vergleichen**, um das Vergleichsfeature zu verwenden. Weitere Informationen zu diesem Feature finden Sie unter [**Vergleichen von Apache Spark-Anwendungen**](#compare-apache-spark-applications).
 
-4. Überprüfen Sie die Informationen unter **Zusammenfassung**.
+4. Klicken Sie auf **Spark-Verlaufsserver**, um die Seite „Verlaufsserver“ zu öffnen.
 
-5. Überprüfen Sie die **Protokolle**. Sie können verschiedene Arten von Protokollen aus der Dropdownliste auswählen, und Sie können die Protokollinformationen herunterladen, indem Sie auf **Protokolle herunterladen** klicken und das Kontrollkästchen **Fehler und Warnungen filtern** aktivieren, um die von Ihnen benötigten Fehler und Warnungen zu filtern.
+5. Überprüfen Sie die Informationen unter **Zusammenfassung**.
 
-6. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Standardmäßig werden in dem Diagramm alle Aufträge angezeigt. Sie können diese Ansicht anhand der **Auftrags-ID** filtern.
+6. Überprüfen Sie die Diagnose auf der Registerkarte **Diagnose**.
 
-7. Standardmäßig ist die Anzeige **Status** ausgewählt. Sie können den Datenfluss überprüfen, indem Sie **Progress (Fortschritt)** /**Read (Gelesen)** /**Written (Geschrieben)** /**Duration (Dauer)** in der Dropdownliste **Anzeige** auswählen.
+7. Überprüfen Sie die **Protokolle**. Sie können die vollständigen **Livy**-, **Prelaunch**- und **Driver**-Protokolle einsehen, indem Sie in der Dropdownliste verschiedene Optionen auswählen. Sie können die gewünschten protokollierten Informationen auch direkt über eine Stichwortsuche abrufen. Klicken Sie auf **Protokoll herunterladen**, um die Protokollinformationen lokal herunterzuladen. Aktivieren Sie das Kontrollkästchen **Fehler und Warnungen filtern**, um die gewünschten Fehler und Warnungen herauszufiltern.
 
-8. Klicken Sie zur Wiedergabe des Auftrags auf die Schaltfläche **Wiedergabe**. Sie können jederzeit auf die Schaltfläche **Beenden** klicken, um den Vorgang anzuhalten.
+8. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Standardmäßig werden in dem Diagramm alle Aufträge angezeigt. Sie können diese Ansicht anhand der **Auftrags-ID** filtern.
 
-9. Scrollen Sie zum Vergrößern und Verkleinern des Auftragsgraphen mit der Maus oder über die Scrollleiste. Sie können auch **Zoom anpassen** auswählen, um ihn an den Bildschirm anzupassen.
+9. Standardmäßig ist die Anzeige **Status** ausgewählt. Sie können den Datenfluss überprüfen, indem Sie **Progress (Fortschritt)** /**Read (Gelesen)** /**Written (Geschrieben)** /**Duration (Dauer)** in der Dropdownliste **Views** (Ansicht) auswählen.
 
-10. Der Auftragsdiagrammknoten zeigt die folgenden Informationen zu den einzelnen Phasen an:
+10. Klicken Sie zur Wiedergabe des Auftrags auf die Schaltfläche **Wiedergabe**. Sie können jederzeit auf die Schaltfläche **Beenden** klicken, um den Vorgang anzuhalten.
 
-    * ID
+11. Vergrößern oder verkleinern Sie den Auftragsgraphen über die Scrollleiste. Sie können auch **Zoom anpassen** auswählen, um ihn an den Bildschirm anzupassen.
 
-    * Name oder Beschreibung
+    [![Abgeschlossenen Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-completed-job.png)](./media/how-to-monitor-spark-applications/view-completed-job.png#lightbox)
 
-    * Anzahl der Aufträge insgesamt
 
-    * Gelesene Daten: die Summe der Eingabegröße und der Shuffle-Lesegröße
+12. Der Auftragsdiagrammknoten zeigt die folgenden Informationen zu den einzelnen Phasen an:
 
-    * Geschriebene Daten: die Summe der Ausgabegröße und der Shuffle-Schreibgröße.
+    - Auftrags-ID
+    - Nummer der Aufgabe
+    - Dauer
+    - Zeilenanzahl
+    - Gelesene Daten: die Summe der Eingabegröße und der Shuffle-Lesegröße
+    - Geschriebene Daten: die Summe der Ausgabegröße und Größe der Shuffleschreibvorgänge
+    - Phasennummer
 
-    * Ausführungszeit: die Zeit zwischen der Startzeit des ersten Versuchs und der Endzeit des letzten Versuchs
+       ![Knoten des Auftragsgraphenknoten](./media/how-to-monitor-spark-applications/job-graph-node.png)
 
-    * Zeilenanzahl: die Summe der Eingabe und Ausgabedatensätze sowie die Datensätze der zufälligen Lese- und Schreibvorgänge
-
-    * Status
-
-     ![Abgeschlossenen Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-completed-job.png)
+13. Wenn Sie mit der Maus auf einen Auftrag zeigen, werden die Auftragsdetails in der QuickInfo angezeigt:
     
-11. Klicken Sie auf **Details anzeigen** im Graphen, um die Details für die Phase anzuzeigen.
+    - Symbol des Auftragsstatus: Wenn der Auftragsstatus „Erfolgreich“ ist, wird ein grünes „√“ angezeigt. Wenn der Auftrag ein Problem erkennt, wird ein gelbes „!“ angezeigt.
+    - Auftrags-ID.
+    - Allgemeiner Teil:
+      - Fortschritt
+      - Dauer
+      - Gesamtanzahl der Aufgaben
+    - Datenteil:
+      - Gesamtanzahl der Zeilen
+      - Lesegröße
+      - Geschriebene Größe
+    - Teil „Schiefe“:
+      - Datenschiefe
+      - Zeitabweichung
+    - Phasennummer
 
-    ![Details für Phase](./media/how-to-monitor-spark-applications/details-for-stage.png)
+      ![Zeigen auf einen Auftrag](./media/how-to-monitor-spark-applications/hover-a-job.png)
 
+14. Klicken Sie auf **Phasennummer**, um alle im Auftrag enthaltenen Phasen aufzuklappen. Klicken Sie neben der Auftrags-ID auf **Zuklappen**, um alle Phasen des Auftrags zuzuklappen.
 
+15. Klicken Sie im Graphen einer Phase auf **Details anzeigen**, um die Details für die Phase anzuzeigen.
+
+    [![Aufklappen aller Phasen](./media/how-to-monitor-spark-applications/expand-all-the-stages.png)](./media/how-to-monitor-spark-applications/expand-all-the-stages.png#lightbox)
+    
 ## <a name="monitor-running-apache-spark-application"></a>Überwachen aktiver Apache Spark-Anwendungen
 
 Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu den ausgeführten Apache Spark-Anwendungen anzuzeigen, wählen Sie die sendende Apache Spark-Anwendung aus, und zeigen Sie die Details an. Wenn die Apache Spark-Anwendung noch ausgeführt wird, können Sie den Fortschritt überwachen.
@@ -100,19 +105,13 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 2. **Brechen** Sie die Apache Spark-Anwendung ab.
 
-3. **Aktualisieren** Sie die Protokollabfrage.
+3. **Aktualisieren** Sie den Auftrag.
 
 4. Klicken Sie auf die Schaltfläche für die **Spark-Benutzeroberfläche**, um zur Seite „Spark-Auftrag“ zu wechseln.
 
-5. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 6, 7, 8, 9 und 10 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
+5. Für **Auftragsdiagramm**, **Zusammenfassung**, **Diagnose**, **Protokolle**. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 5-15 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application). 
 
-6. Überprüfen Sie die Informationen unter **Zusammenfassung**.
-
-7. Überprüfen Sie die Diagnose auf der Registerkarte **Diagnose**.
-
-8. Überprüfen Sie die **Protokolle** auf dieser Registerkarte. Sie können verschiedene Arten von Protokollen aus der Dropdownliste auswählen, und Sie können die Protokollinformationen herunterladen, indem Sie auf **Protokolle herunterladen** klicken und das Kontrollkästchen **Fehler und Warnungen filtern** aktivieren, um die von Ihnen benötigten Fehler und Warnungen zu filtern.
-
-    ![Ausgeführten Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-running-job.png)
+    [![Ausgeführten Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-running-job.png)](./media/how-to-monitor-spark-applications/view-running-job.png#lightbox)
 
 ## <a name="view-canceled-apache-spark-application"></a>Anzeigen abgebrochener Apache Spark-Anwendungen
 
@@ -122,19 +121,15 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
-2. Aktualisieren Sie die Protokollabfrage.
+2. **Aktualisieren** Sie den Auftrag.
 
-3. Öffnen Sie den Link zum Apache Spark-Verlaufsserver, indem Sie auf **Spark-Verlaufsserver** klicken.
+3. Klicken Sie auf **Anwendungen vergleichen**, um das Vergleichsfeature zu verwenden. Weitere Informationen zu diesem Feature finden Sie unter [**Vergleichen von Apache Spark-Anwendungen**](#compare-apache-spark-applications).
 
-4. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 6, 7, 8, 9 und 10 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
+4. Öffnen Sie den Link zum Apache Spark-Verlaufsserver, indem Sie auf **Spark-Verlaufsserver** klicken.
 
-5. Überprüfen Sie die Informationen unter **Zusammenfassung**.
+5. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 5-15 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
 
-6. Überprüfen Sie die **Protokolle**. Sie können verschiedene Arten von Protokollen aus der Dropdownliste auswählen, und Sie können die Protokollinformationen herunterladen, indem Sie auf **Protokolle herunterladen** klicken und das Kontrollkästchen **Fehler und Warnungen filtern** aktivieren, um die von Ihnen benötigten Fehler und Warnungen zu filtern.
-
-7. Klicken Sie auf **Details anzeigen** im Graphen, um die Details für die Phase anzuzeigen.
-
-   ![Abgebrochenen Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
+  [![Abgebrochenen Auftrag anzeigen](./media/how-to-monitor-spark-applications/view-cancelled-job.png)](./media/how-to-monitor-spark-applications/view-cancelled-job.png#lightbox)
 
 ## <a name="debug-failed-apache-spark-application"></a>Debuggen von Fehlern bei Apache Spark-Anwendungen
 
@@ -144,23 +139,56 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
-2. Aktualisieren Sie die Protokollabfrage.
+2. **Aktualisieren** Sie den Auftrag.
 
-3. Öffnen Sie den Link zum Apache Spark-Verlaufsserver, indem Sie auf **Spark-Verlaufsserver** klicken.
+3. Klicken Sie auf **Anwendungen vergleichen**, um das Vergleichsfeature zu verwenden. Weitere Informationen zu diesem Feature finden Sie unter [**Vergleichen von Apache Spark-Anwendungen**](#compare-apache-spark-applications).
 
-4. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 6, 7, 8, 9 und 10 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
+4. Öffnen Sie den Link zum Apache Spark-Verlaufsserver, indem Sie auf **Spark-Verlaufsserver** klicken.
 
-5. Überprüfen Sie die Informationen unter **Zusammenfassung**.
+5. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 5-15 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
 
-6. Überprüfen Sie die Fehlerinformationen.
+   [![Informationen zu Auftrag mit Fehlern](./media/how-to-monitor-spark-applications/failed-job-info.png)](./media/how-to-monitor-spark-applications/failed-job-info.png#lightbox)
 
-   ![Informationen zu Auftrag mit Fehlern](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="view-input-dataoutput-data-for-apache-spark-application"></a>Anzeigen von Ein-/Ausgabedaten für Apache Spark-Anwendungen
+
+Wählen Sie eine Apache Spark-Anwendung aus, und klicken Sie auf die Registerkarte **Eingabedaten/Ausgabedaten**, um die Datumsangaben der Ein- und Ausgabe für die Apache Spark-Anwendung anzuzeigen. Die Funktion kann Sie beim Debuggen des Spark-Auftrags besser unterstützen. Die Datenquelle unterstützt außerdem drei Speichermethoden: „gen1“, „gen2“ und „blob“.
+    
+**Registerkarte „Eingabedaten“**
+     
+1. Klicken Sie auf die Schaltfläche **Eingabe kopieren**, um die Eingabedatei in die lokale Datei einzufügen.
+
+2. Klicken Sie auf die Schaltfläche **In CSV exportieren**, um die Eingabedatei im CSV-Format zu exportieren.
+
+3. Sie können Dateien nach Eingabeschlüsselwörtern im **Suchfeld** durchsuchen (Schlüsselwörter umfassen Dateiname, Leseformat und Pfad).
+
+4. Sie können die Eingabedateien sortieren, indem Sie auf **Name**, **Leseformat** und **Pfad** klicken.
+
+5. Zeigen Sie mit dem Mauszeiger auf eine Eingabedatei, damit das Symbol der Schaltfläche **Herunterladen/Pfad kopieren/Mehr** angezeigt wird.
+
+   ![Registerkarte „Eingabe“](./media/how-to-monitor-spark-applications/input-tab.png)
+
+6. Klicken Sie auf die Schaltfläche **Mehr**, um das Kontextmenü **Pfad kopieren/Im Explorer anzeigen/Eigenschaften** anzuzeigen.
+      
+    ![Eingabe „Mehr“](./media/how-to-monitor-spark-applications/input-more.png)
+
+   * Pfad kopieren: kann den **vollständigen Pfad** und den **relativen Pfad** kopieren.
+   * Im Explorer anzeigen: kann zum verknüpften Speicherkonto springen („Daten -> Verknüpft“).
+   * Eigenschaften: Anzeigen der grundlegenden Eigenschaften der Datei (Dateiname/Dateipfad/Leseformat/Größe/Änderungszeipunkt).
+
+     ![Abbildung der Eigenschaften](./media/how-to-monitor-spark-applications/properties.png)
+
+**Registerkarte „Ausgabedaten“**
+
+   Verfügt über dieselben Features wie die „Eingabe“.
+
+   ![Abbildung der „Ausgabe“](./media/how-to-monitor-spark-applications/output.png)
 
 ## <a name="compare-apache-spark-applications"></a>Vergleichen von Apache Spark-Anwendungen
 
 Es gibt zwei Möglichkeiten, Anwendungen zu vergleichen. Sie können vergleichen, indem Sie eine **Vergleichsanwendung** auswählen, oder klicken Sie auf die Schaltfläche **Im Notebook vergleichen**, um sie im Notebook anzuzeigen.
 
-### <a name="compare-by-choose-an-application"></a>Vergleichen durch Auswählen einer Anwendung
+### <a name="compare-by-choosing-an-application"></a>Vergleichen durch Wählen einer Anwendung
 
 Klicken Sie auf die Schaltfläche **Anwendungen vergleichen**, und wählen Sie eine Anwendung aus, um die Leistung zu vergleichen. Sie erkennen intuitiv den Unterschied zwischen den beiden Anwendungen.
 
@@ -184,7 +212,7 @@ Klicken Sie auf die Schaltfläche **Anwendungen vergleichen**, und wählen Sie e
 
 ### <a name="compare-by-compare-in-notebook"></a>Vergleichen durch Vergleichen im Notebook
 
-Klicken Sie auf der Seite **Anwendungen vergleichen** auf die Schaltfläche **Im Notebook vergleichen**, um das Notebook zu öffnen. Der Standardname der IPYNB-Datei ist **Wiederkehrende Anwendungsanalyse**.
+Klicken Sie auf der Seite **Anwendungen vergleichen** auf die Schaltfläche **Im Notebook vergleichen**, um das Notebook zu öffnen. Der Standardname der *IPYNB*-Datei ist **Wiederkehrende Anwendungsanalyse**.
 
 ![Vergleichen im Notebook](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
 

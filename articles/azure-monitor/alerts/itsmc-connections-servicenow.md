@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 51d16ae53e34dacfc41e3d31b01115f9c55ca9f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 441ed0072eee17ee6250bb7de39442ecfd669cf3
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039545"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687783"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Verbinden von ServiceNow mit dem ITSM-Connector
 
@@ -28,20 +28,15 @@ Informationen zum Installieren von ITSMC finden Sie unter [Hinzufügen der IT Se
 
 ### <a name="oauth-setup"></a>OAuth-Setup
 
-Zu den von ServiceNow unterstützten Versionen gehören Paris, Orlando, New York, Madrid, London, Kingston, Jakarta, Istanbul, Helsinki und Geneva.
+Zu den von ServiceNow unterstützten Versionen gehören Quebec, Paris, Orlando, New York, Madrid, London, Kingston, Jakarta, Istanbul, Helsinki und Geneva.
 
 ServiceNow-Administratoren müssen eine Client-ID und einen geheimen Clientschlüssel für ihre ServiceNow-Instanz generieren. Sehen Sie sich die jeweils zutreffenden folgenden Informationen an:
 
+- [OAuth-Setup für Quebec](https://docs.servicenow.com/bundle/quebec-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup für Paris](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup für Orlando](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup für New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Madrid](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup für London](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Jakarta](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Istanbul](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Helsinki](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup für Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 Im Rahmen des OAuth-Setup wird Folgendes empfohlen:
 

@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.openlocfilehash: c89b352954f114ec9da22cad6751bb57ef59899b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340371"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Erläuterungen zur Azure Monitor-Metrikaggregation und -anzeige
 
@@ -97,7 +97,7 @@ Es gibt zwei Arten von Sammlungszeiträumen.
 
 ### <a name="granularity"></a>Granularität
 
-Der Mindestwert für das Zeitintervall beträgt 1 Minute, aber das zugrunde liegende System erfasst Daten je nach Metrik möglicherweise häufiger. Beispielsweise wird der CPU-Prozentsatz in regelmäßigen Abständen von je 15 Sekunden nachverfolgt. Da HTTP-Fehler als Transaktionen nachverfolgt werden, können sie sehr viel häufiger als einmal pro Minute erfasst werden. Andere Metriken wie z. B. „SQL-Speicher“ werden alle 20 Minuten erfasst. Diese Auswahl richtet sich nach dem jeweiligen Ressourcenanbieter und -typ. In den meisten Fällen wird versucht, das kleinstmögliche Intervall bereitzustellen.
+Der Mindestwert für die Zeitgranularität beträgt 1 Minute, aber das zugrunde liegende System erfasst Daten je nach Metrik möglicherweise häufiger. Beispielsweise wird der CPU-Prozentsatz für eine Azure-VM in einem Zeitintervall von 15 Sekunden erfasst. Da HTTP-Fehler als Transaktionen nachverfolgt werden, können sie sehr viel häufiger als einmal pro Minute erfasst werden. Andere Metriken wie z. B. „SQL-Speicher“ werden in einem Zeitintervall von 20 Minuten erfasst. Diese Auswahl richtet sich nach dem jeweiligen Ressourcenanbieter und -typ. In den meisten Fällen wird versucht, das kleinstmögliche Zeitintervall bereitzustellen.
 
 ### <a name="dimensions-splitting-and-filtering"></a>Dimensionen, Aufteilung und Filterung
 

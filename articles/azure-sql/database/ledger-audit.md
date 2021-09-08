@@ -1,29 +1,29 @@
 ---
 title: Azure SQL-Datenbank – Überwachen von Ereignissen mit ledgerfähigen Tabellen
 description: Übersicht über die Überwachungsfunktionen von Azure SQL-Datenbank-Ledger
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: eafca78dc22a01784eee79293fb7a2ec798818ad
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d032b311809449d35a017fdd053fb97447b8479c
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386366"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666737"
 ---
 # <a name="azure-sql-database-audit-events-with-ledger-enabled-tables"></a>Azure SQL-Datenbank – Überwachen von Ereignissen mit ledgerfähigen Tabellen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger ist zurzeit als **Public Preview** (Öffentliche Vorschau) verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
-Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden den SQL-Überwachungsprotokollen – über die in der Ledgeransicht und im Datenbankledger erfassten Daten hinaus – zusätzliche Aktions-IDs hinzugefügt.  In der folgenden Tabelle sind diese neuen Überwachungsprotokollierungsereignisse zusammen mit den Bedingungen aufgeführt, die die Ereignisse auslösen.
+Wenn Sie forensische Aktivitäten mit ledgerfähigen Tabellen ausführen, werden Daten in der Ledgeransicht und im Datenbankledger erfasst. Auch andere Aktions-IDs werden den SQL-Überwachungsprotokollen hinzugefügt. In den folgenden Tabellen werden diese neuen Überwachungsprotokollierungsereignisse beschrieben. Die Bedingungen, die die Ereignisse auslösen, folgen auf jede Tabelle.
 
 ## <a name="enable-ledger"></a>Ledger aktivieren
 
@@ -39,7 +39,7 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**Bedingung, die das Ereignis auslöst**: Erstellen einer neuen Ledgertabelle oder Konvertieren einer regulären Tabelle in eine Ledgertabelle.
+**Bedingungen, die das Ereignis auslösen**: Wenn Sie eine neue Ledgertabelle erstellen oder eine herkömmliche Tabelle in eine Ledgertabelle konvertieren.
 
 ## <a name="alter-ledger"></a>Ledger ändern
 
@@ -55,7 +55,7 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**Bedingung,die das Ereignis auslöst**: Löschen oder Umbenennen einer Ledgertabelle, Konvertieren einer Ledgertabelle in eine normale Tabelle, Hinzufügen, Löschen oder Umbenennen einer Spalte in einer Ledgertabelle.
+**Bedingungen, die das Ereignis auslösen**: Wenn Sie eine Ledgertabelle löschen oder umbenennen, eine Ledgertabelle in eine normale Tabelle umwandeln und eine Spalte in einer Ledgertabelle hinzufügen, löschen oder umbenennen.
 
 
 ## <a name="generate-ledger-digest"></a>Ledgerdigest generieren
@@ -72,7 +72,7 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP  |
 | **action_in_log** | 1 |
 
-**Bedingung, die das Ereignis auslöst**: Generieren eines Ledgerdigests.
+**Bedingung, die das Ereignis auslöst**: Wenn Sie einen Ledgerdigest generieren.
 
 ## <a name="verify-ledger"></a>Ledger überprüfen
 
@@ -88,7 +88,7 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**Bedingung, die das Ereignis auslöst**: Überprüfen eines Ledgerdigests.
+**Bedingung, die das Ereignis auslöst**: Wenn Sie einen Ledgerdigest überprüfen.
 
 ## <a name="ledger-operation-group"></a>Ledger-Vorgangsgruppe
 
@@ -104,7 +104,7 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 0 |
 
-**Bedingung, die das Ereignis auslöst**: n. v.
+**Bedingung, die das Ereignis auslöst**: –
 
 | Spalte | Wert |
 |--|--|
@@ -118,10 +118,10 @@ Bei der Ausführung forensischer Aktivitäten mit ledgerfähigen Tabellen werden
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 0 |
 
-**Bedingung, die das Ereignis auslöst**: n. v. 
+**Bedingung, die das Ereignis auslöst**: – 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics](auditing-overview.md)
 - [Azure SQL-Datenbank-Ledger – Übersicht](ledger-overview.md)
-- [Schnellstart: Erstellen einer Azure SQL-Datenbank mit aktiviertem Ledger](ledger-create-a-single-database-with-ledger-enabled.md)
+- [Schnellstart: Erstellen einer Datenbank in Azure SQL-Datenbank mit aktiviertem Ledger](ledger-create-a-single-database-with-ledger-enabled.md)

@@ -1,20 +1,20 @@
 ---
 title: 'Vorschau: DevOps-Task des Azure VM Image Builder-Diensts'
 description: Mit diesem Azure DevOps-Task zum Einfügen von Buildartefakten in ein VM-Image können Sie Ihre Anwendung und Ihr Betriebssystem installieren und konfigurieren.
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 2c3785f20c47656304f7d40b67c9d90c54cb3072
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441796"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447078"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>DevOps-Task des Azure VM Image Builder-Diensts (Vorschau)
 
@@ -79,7 +79,7 @@ Verwenden Sie die Ressourcengruppe, in der das Artefakt der temporären Imagevor
 Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
 
 ### <a name="managed-identity-required"></a>Verwaltete Identität (erforderlich)
-Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Ausführlichere Informationen finden Sie [hier](../image-builder-overview.md#permissions).
+Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Weitere Informationen finden Sie unter [Informationen zu Azure VM Image Builder](../image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>VNET-Unterstützung
 
@@ -347,3 +347,4 @@ Das Ressourcenartefakt der Imagevorlage befindet sich in der anfangs in dem Task
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Übersicht über Azure Image Builder](../image-builder-overview.md).
+

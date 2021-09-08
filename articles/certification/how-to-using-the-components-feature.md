@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0041299031934bd76e4ef0700d2e75e2d61516cd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 494ff350866d8de1386a5fd98539f0e3e5ff2c3f
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745458"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126300"
 ---
 # <a name="add-components-on-the-portal"></a>Hinzufügen von Komponenten im Portal
 
@@ -65,7 +65,7 @@ Möglicherweise haben Sie Fragen dazu, wie viele Komponenten eingeschlossen werd
 | Fertiggestelltes Produkt                                   | 1          | Sofort einsatzfähiges Produkt, Eigenständig | –                                              |
 | Fertiges Produkt mit **abnehmbaren Peripheriegeräten** | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Peripheriegerät/Eigenständig oder integriert              |
 | Fertiges Produkt mit **integrierten Komponenten**  | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder Integriert |
-| Implementierungsfertiges Entwicklungskit                             | 2 oder mehr  | Sofort einsatzfähiges Produkt, Eigenständig | Geeigneten Typ auswählen/Eigenständig oder integriert |
+| Implementierungsfertiges Entwicklungskit                             | Mindestens 1  | Kundenfertiges Produkt oder Entwicklungsboard, separat oder integriert| Geeigneten Typ auswählen/Eigenständig oder integriert |
 
 ## <a name="example-component-usage"></a>Beispiel für Komponentenverwendung
 

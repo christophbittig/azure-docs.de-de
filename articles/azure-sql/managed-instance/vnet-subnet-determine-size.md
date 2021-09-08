@@ -10,77 +10,78 @@ ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
-ms.date: 02/22/2019
-ms.openlocfilehash: 18592f282cb2f06b5a305f2186aa6285bc50fcf3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, bonova, srbozovi, wiassaf
+ms.date: 06/14/2021
+ms.openlocfilehash: e3c789ec59e66189753c8515235b2375aa20e5f1
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689348"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687392"
 ---
-# <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Bestimmen von Subnetzgröße und -bereich für Azure SQL Managed Instance
+# <a name="determine-required-subnet-size-and-range-for-azure-sql-managed-instance"></a>Bestimmen von Subnetzgröße und -bereich für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance muss in einem [virtuellen Azure-Netzwerk (VNET)](../../virtual-network/virtual-networks-overview.md) bereitgestellt werden.
+Azure SQL Managed Instance muss in einem [virtuellen Azure-Netzwerk](../../virtual-network/virtual-networks-overview.md) bereitgestellt werden. Die Anzahl verwalteter Instanzen, die im Subnetz eines VNet bereitgestellt werden können, hängt von der Größe des Subnetzes (dem Subnetzbereich) ab.
 
-Die Anzahl der verwalteten Instanzen, die im Subnetz eines VNETs bereitgestellt werden können, hängt von der Größe des Subnetzes (dem Subnetzbereich) ab.
+Bei der Erstellung einer verwalteten Instanz ordnet Azure abhängig vom Tarif, den Sie bei der Bereitstellung ausgewählt haben, eine Reihe virtueller Computer zu. Da diese virtuellen Computer Ihrem Subnetz zugeordnet sind, benötigen sie IP-Adressen. Um bei regulären Vorgängen und der Wartung von Diensten Hochverfügbarkeit sicherzustellen, kann Azure zusätzliche virtuelle Computer zuteilen. Daher ist die Anzahl der erforderlichen IP-Adressen in einem Subnetz größer als die Anzahl der verwalteten Instanzen in diesem Subnetz.
 
-Bei der Erstellung einer verwalteten Instanz ordnet Azure abhängig vom Tarif, den Sie bei der Bereitstellung ausgewählt haben, eine Reihe von virtuellen Computern zu. Da diese virtuellen Computer Ihrem Subnetz zugeordnet sind, benötigen sie IP-Adressen. Um bei regulären Vorgängen und bei der Wartung von Diensten Hochverfügbarkeit sicherzustellen, kann Azure zusätzliche virtuelle Computer zuordnen. Daher ist die Anzahl der erforderlichen IP-Adressen in einem Subnetz größer als die Anzahl der verwalteten Instanzen in diesem Subnetz.
-
-Prinzipiell benötigt eine verwaltete Instanz mindestens 32 IP-Adressen in einem Subnetz. Daher können Sie bei der Definition der IP-Adressbereiche für das Subnetz die Subnetzmaske /27 verwenden. Es wird eine sorgfältige Planung der Subnetzgröße für die Bereitstellungen verwalteter Instanzen empfohlen. Folgende Eingaben sollten bei der Planung berücksichtigt werden:
+Prinzipiell benötigt eine verwaltete Instanz mindestens 32 IP-Adressen in einem Subnetz. Daher können Sie bei der Definition der IP-Adressbereiche für das Subnetz die Subnetzmaske /27 verwenden. Wir empfehlen eine sorgfältige Planung der Subnetzgröße für die Bereitstellungen verwalteter Instanzen. Berücksichtigen Sie bei der Planung die folgenden Eingaben:
 
 - Anzahl verwalteter Instanzen mit den folgenden Instanzparametern:
   - Dienstebene
   - Hardwaregeneration
   - Anzahl der virtuellen Kerne
-- Pläne zum Hoch- oder Herunterskalieren oder Ändern der Dienstebene
+  - [Wartungsfenster](../database/maintenance-window.md)
+- Pläne zum Hoch- oder Herunterskalieren bzw. Ändern der Dienstebene
 
 > [!IMPORTANT]
-> Ein Subnetz, das 16 IP-Adressen (Subnetzmaske /28) umfasst, ermöglicht die Bereitstellung verwalteter Instanzen in diesem Subnetz. Es sollte allerdings nur für die Bereitstellung einzelner Instanzen verwendet werden, die für die Evaluierung oder in Dev/Test-Szenarios genutzt werden, in denen keine Skalierungsvorgänge ausgeführt werden.
+> Eine Subnetzgröße von 16 IP-Adressen (Subnetzmaske /28) ermöglicht die Bereitstellung einer einzelnen verwalteten Instanz darin. Sie sollte nur für Auswertungs- oder Entwicklungs-/Testszenarien verwendet werden, in denen keine Skalierungsvorgänge erfolgen. 
 
 ## <a name="determine-subnet-size"></a>Bestimmen der Subnetzgröße
 
-Wählen Sie die Größe Ihres Subnetzes in Abhängigkeit von den Anforderungen hinsichtlich der Bereitstellung und Skalierung künftiger Instanzen. Die folgenden Parameter unterstützen Sie bei der Berechnung:
+Dimensionieren Sie Ihr Subnetz abhängig von den Anforderungen hinsichtlich Bereitstellung und Skalierung künftiger Instanzen. Die folgenden Parameter helfen Ihnen bei der Berechnung:
 
-- Azure verwendet fünf IP-Adressen im Subnetz für den eigenen Bedarf.
-- Von jedem virtuellen Cluster wird eine zusätzliche Anzahl von Adressen zugeordnet. 
-- Jede verwaltete Instanz verwendet die Anzahl der Adressen, die vom Tarif und der Hardwaregeneration abhängig ist.
+- Azure benötigt fünf IP-Adressen im Subnetz für den eigenen Bedarf.
+- Von jedem virtuellen Cluster wird eine zusätzliche Anzahl von Adressen zugeteilt. 
+- Jede verwaltete Instanz nutzt die Anzahl von Adressen, die vom Tarif und der Hardwaregeneration abhängig ist.
+- Mit jeder Skalierungsanforderung wird vorübergehend eine zusätzliche Anzahl von Adressen zugeteilt.
 
 > [!IMPORTANT]
-> Es ist nicht möglich, den Subnetzadressbereich zu ändern, wenn eine Ressource im Subnetz vorhanden ist. Außerdem ist es nicht möglich, verwaltete Instanzen von einem Subnetz in ein anderes zu verschieben. Verwenden Sie nach Möglichkeit immer größere Subnetze, um in Zukunft Probleme zu vermeiden.
+> Es ist nicht möglich, den Subnetzadressbereich zu ändern, wenn Ressourcen im Subnetz vorhanden sind. Außerdem ist es nicht möglich, verwaltete Instanzen aus einem Subnetz in ein anderes zu verschieben. Erwägen Sie den Einsatz größerer statt kleinerer Subnetze, um Probleme künftig zu vermeiden.
 
 GP = universell; BC = unternehmenskritisch; VC = virtueller Cluster
 
-| **Hardwaregeneration** | **Preisstufe** | **Azure-Nutzung** | **Nutzung virtueller Cluster** | **Instanznutzung** | **Gesamt*** |
+| **Hardwaregeneration** | **Preisstufe** | **Azure-Nutzung** | **Nutzung virtueller Cluster** | **Instanznutzung** | **Gesamt** |
 | --- | --- | --- | --- | --- | --- |
 | Gen4 | GP | 5 | 1 | 5 | 11 |
 | Gen4 | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \* Die Spalte „Gesamt“ gibt die Anzahl der Adressen an, die verwendet werden, wenn eine Instanz im Subnetz bereitgestellt wird. Jede zusätzliche Instanz im Subnetz fügt eine Anzahl von Adressen hinzu, die mit der Spalte „Instanznutzung“ angegeben werden. Adressen, die mit der Spalte „Azure-Nutzung“ dargestellt werden, werden für mehrere virtuelle Cluster freigegeben, während Adressen, die mit der Spalte „Nutzung virtueller Cluster“ dargestellt werden, für alle Instanzen in diesem virtuellen Cluster freigegeben werden.
+Für die obige Tabelle gilt Folgendes:
 
-Beim Aktualisierungsvorgang ist in der Regel eine Größenänderung der virtuellen Cluster erforderlich. Unter bestimmten Umständen ist für den Aktualisierungsvorgang die Erstellung virtueller Cluster erforderlich (weitere Informationen finden Sie im Artikel [Verwaltungsvorgänge](sql-managed-instance-paas-overview.md#management-operations)). Bei der Erstellung virtueller Cluster ist die Anzahl erforderlicher zusätzlicher Adressen gleich der Anzahl von Adressen, die durch die Spalte „Nutzung virtueller Cluster“ dargestellt werden, summiert mit den Adressen, die für in diesem virtuellen Cluster platzierte Instanzen erforderlich sind (Spalte „Instanznutzung“).
+- In der Spalte **Gesamt** wird die Gesamtanzahl der Adressen angezeigt, die von einer einzelnen bereitgestellten Instanz im Subnetz verwendet werden. 
+- Wenn Sie dem Subnetz weitere Instanzen hinzufügen, erhöht sich die Anzahl der von der Instanz verwendeten Adressen. Die Gesamtanzahl der Adressen nimmt dann ebenfalls zu. Das Hinzufügen einer weiteren von Gen4 GP verwalteten Instanz würde beispielsweise den Wert **Instanznutzung** auf 10 und den Wert **Gesamt** der verwendeten Adressen auf 16 erhöhen. 
+- Die Adressen in der Spalte **Azure-Nutzung** werden von mehreren virtuellen Clustern gemeinsam genutzt.  
+- Die Adressen in der Spalte **VC-Nutzung** werden von allen Instanzen im jeweiligen virtuellen Cluster gemeinsam genutzt.
 
-**Beispiel 1:** Sie planen, eine universelle verwaltete Instanz (Gen4-Hardware) und eine unternehmenskritische verwaltete Instanz (Gen5-Hardware) zu verwenden. Dies bedeutet, dass Sie für die Bereitstellung mindestens 5 + 1 + 1 * 5 + 6 + 1 * 5 = 22 IP-Adressen benötigen. Da IP-Bereiche in Zweierpotenzen definiert sind, erfordert Ihr Subnetz für diese Bereitstellung einen minimalen IP-Adressbereich von 32 (2 ^ 5).<br><br>
-Wie bereits erwähnt, ist für den Aktualisierungsvorgang unter bestimmten Umständen die Erstellung eines virtuellen Clusters erforderlich. Dies bedeutet beispielsweise, dass bei einem Update der verwalteten Gen5-Instanz, für die ein virtueller Cluster erstellt werden muss, zusätzlich 6 + 5 = 11 IP-Adressen verfügbar sein müssen. Da Sie bereits 22 der 32 Adressen verwenden, sind für diesen Vorgang keine Adressen verfügbar. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /26 (64 Adressen) reservieren.
+Berücksichtigen Sie auch das Feature [Wartungsfenster](../database/maintenance-window.md), wenn Sie die Subnetzgröße bestimmen, insbesondere wenn mehrere Instanzen innerhalb desselben Subnetzes bereitgestellt werden. Wenn Sie während oder nach der Erstellung ein anderes Wartungsfenster für eine verwaltete Instanz angeben, muss sie im virtuellen Cluster mit dem entsprechenden Wartungsfenster platziert werden. Wenn kein solcher virtueller Cluster im Subnetz vorhanden ist, muss zuerst ein neuer Cluster erstellt werden, in dem die Instanz gehostet wird.
 
-**Beispiel 2:** Sie planen, drei universelle (Gen5-Hardware) und zwei unternehmenskritische verwaltete Instanzen (Gen5-Hardware) im gleichen Subnetz zu platzieren. Dies bedeutet, dass Sie 5 + 6 + 3 * 3 + 2 * 5 = 30 IP-Adressen benötigen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /26 reservieren. Die Auswahl der Subnetzmaske /27 würde dazu führen, dass die verbleibende Anzahl von Adressen 2 ist (32 – 30). Dadurch werden Aktualisierungsvorgänge für alle Instanzen verhindert, da zum Durchführen der Instanzskalierung zusätzliche Adressen im Subnetz erforderlich sind.
+Bei einem Aktualisierungsvorgang ist in der Regel eine [Änderung der Größe des virtuellen Clusters](management-operations-overview.md) erforderlich. Wenn eine neue Erstellungs- oder Aktualisierungsanforderung eingeht, meldet der SQL Managed Instance-Dienst der Computeplattform eine Anforderung neuer Knoten, die hinzugefügt werden müssen. Basierend auf der Computeantwort erweitert das Bereitstellungssystem entweder den vorhandenen virtuellen Cluster oder erstellt einen neuen. Auch wenn der Vorgang in den meisten Fällen innerhalb desselben virtuellen Clusters erfolgt, wird auf Computeseite ggf. ein neuer Cluster erstellt. 
 
-**Beispiel 3:** Sie planen, eine universelle verwaltete Instanz (Gen5-Hardware) zu verwenden und den Aktualisierungsvorgang für virtuelle Kerne von Zeit zu Zeit durchzuführen. Dies bedeutet, dass Sie 5 + 6 + 1 * 3 + 3 = 17 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren.
 
-### <a name="address-requirements-for-update-scenarios"></a>Adressanforderungen für Aktualisierungsszenarios
+## <a name="update-scenarios"></a>Updateszenarien
 
-Bei Skalierungsvorgängen benötigen Instanzen vorübergehend zusätzliche IP-Kapazität, die vom Tarif und der Hardwaregeneration abhängig ist.
+Bei Skalierungsvorgängen benötigen Instanzen vorübergehend zusätzliche IP-Kapazität, die vom Tarif und der Hardwaregeneration abhängig ist:
 
-| **Hardwaregeneration** | **Preisstufe** | **Szenario** | **Zusätzliche Adressen*** |
+| **Hardwaregeneration** | **Preisstufe** | **Szenario** | **Zusätzliche Adressen**  |
 | --- | --- | --- | --- |
-| Gen4 | universell oder unternehmenskritisch | Skalieren von virtuellen Kernen | 5 |
-| Gen4 | universell oder unternehmenskritisch | Skalieren des Speichers | 5 |
+| Gen4<sup>1</sup> | universell oder unternehmenskritisch | Skalieren von virtuellen Kernen | 5 |
+| Gen4<sup>1</sup> | universell oder unternehmenskritisch | Skalieren des Speichers | 5 |
 | Gen4 | universell oder unternehmenskritisch | Wechseln von universell zu unternehmenskritisch oder von unternehmenskritisch zu universell | 5 |
-| Gen4 | GP | Wechseln zu Gen5* | 9 |
-| Gen4 | BC | Wechseln zu Gen5* | 11 |
+| Gen4 | GP | Umstieg auf Gen5 | 9 |
+| Gen4 | BC | Umstieg auf Gen5 | 11 |
 | Gen5 | GP | Skalieren von virtuellen Kernen | 3 |
 | Gen5 | GP | Skalieren des Speichers | 0 |
 | Gen5 | GP | Wechseln zu unternehmenskritisch | 5 |
@@ -88,11 +89,35 @@ Bei Skalierungsvorgängen benötigen Instanzen vorübergehend zusätzliche IP-Ka
 | Gen5 | BC | Skalieren des Speichers | 5 |
 | Gen5 | BC | Wechseln zu universell | 3 |
 
-  \* Die Gen4-Hardware wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. Aktualisieren Sie die Hardware von Gen4 auf Gen5, um die Funktionen zu nutzen, die für die Gen5-Hardwaregeneration spezifisch sind.
+<sup>1</sup> Gen4-Hardware wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. Durch die Aktualisierung der Hardwaregeneration von Gen4 auf Gen5 können die besonderen Möglichkeiten von Gen5 genutzt werden.
+  
+## <a name="calculate-the-number-of-ip-addresses"></a>Berechnen der Anzahl von IP-Adressen
+
+Für die Berechnung der Gesamtanzahl der IP-Adressen empfehlen wir folgende Formel. Sie berücksichtigt die mögliche Erstellung eines neuen virtuellen Clusters bei einer späteren Anforderung zum Erstellen oder Aktualisieren einer Instanz. Außerdem werden die Wartungsfensteranforderungen virtueller Cluster berücksichtigt.
+
+**Formel: 5 + (a x 12) + (b x 16) + (c x 16)**
+
+- a = Anzahl der GP-Instanzen
+- a = Anzahl der BC-Instanzen
+- c = Anzahl verschiedener Wartungsfensterkonfigurationen
+
+Erläuterung:
+- 5 = Anzahl der von Azure reservierten IP-Adressen
+- 12 Adressen pro GP-Instanz = 6 für virtuellen Cluster, 3 für verwaltete Instanz, 3 weitere für Skalierungsvorgang
+- 16 Adressen pro BC-Instanz = 6 für virtuellen Cluster, 5 für verwaltete Instanz, 5 weitere für Skalierungsvorgang
+- 16 Adressen als Reserve = Szenario, in dem ein neuer virtueller Cluster erstellt wird
+
+Beispiel: 
+- Sie planen, drei universelle und zwei geschäftskritische verwaltete Instanzen im selben Subnetz bereitzustellen. Für alle Instanzen ist dasselbe Wartungsfenster konfiguriert. Dies bedeutet, dass Sie 5 + (3 x 12) + (2 x 16) + (1 x 16) = 89 IP-Adressen benötigen. 
+
+  Da IP-Bereiche in Zweierpotenzen angegeben werden, erfordert Ihr Subnetz für diese Bereitstellung einen minimalen IP-Adressbereich von 128 (2 ^ 7). Sie müssen das Subnetz mit der Subnetzmaske /25 reservieren.
+
+> [!NOTE]
+> Obwohl es möglich ist, verwaltete Instanzen in einem Subnetz mit einer Anzahl von IP-Adressen bereitzustellen, die geringer ist als die Ausgabe der Subnetzformel, sollten Sie stets größere Subnetze verwenden. Ein größeres Subnetz kann dazu beitragen, künftige Probleme zu vermeiden, die sich aus einem Mangel an IP-Adressen ergeben, z. B. die fehlende Möglichkeit, zusätzliche Instanzen innerhalb des Subnetzes zu erstellen oder bestehende Instanzen zu skalieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht finden Sie unter [Was ist Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md).
 - Machen Sie sich mit der [Verbindungsarchitektur für SQL Managed Instance](connectivity-architecture-overview.md) vertraut.
-- Informieren Sie sich, wie Sie [ein VNET erstellen, in dem Sie SQL Managed Instance bereitstellen können](virtual-network-subnet-create-arm-template.md).
-- Informationen zu Problemen im Zusammenhang mit dem DNS finden Sie unter [Konfigurieren eines benutzerdefinierten DNS für Azure SQL Managed Instance](custom-dns-configure.md).
+- Informieren Sie sich, wie Sie [ein virtuelles Netzwerk erstellen, in dem Sie SQL Managed Instance bereitstellen](virtual-network-subnet-create-arm-template.md).
+- Informationen zu Problemen im Zusammenhang mit dem DNS finden Sie unter [Konfigurieren eines benutzerdefinierten DNS](custom-dns-configure.md).

@@ -4,28 +4,27 @@ description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und h
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 344c7e6c14ca8ecdd91ffb9c148ce01d2b937573
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 08/06/2021
+ms.openlocfilehash: 1cc7e76833ac710ae4bdd511efa3033f8cf8fed7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542017"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345856"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Aufträge“ im Partner Center. Dieses Dashboard zeigt Informationen zu Ihren Aufträgen einschließlich Wachstumstrends in einem grafischen und herunterladbaren Format an.
 
-Um auf das Dashboard „Aufträge“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Aufträge** aus.
-
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.yml).
 
 ## <a name="orders-dashboard"></a>Dashboard „Bestellungen“
 
-Im Dashboard „Aufträge“ werden die aktuellen Aufträge für all Ihre SaaS-Angebote (Software-as-a-Service) angezeigt. Sie können grafische Darstellungen folgender Elemente anzeigen:
+Im [Dashboard „Aufträge“](https://go.microsoft.com/fwlink/?linkid=2165914) werden die aktuellen Aufträge für all Ihre SaaS-Angebote (Software-as-a-Service) angezeigt. Sie können grafische Darstellungen folgender Elemente anzeigen:
 
 - Trend für Aufträge
 - Trend für Aufträge pro Arbeitsplatz und Standort
@@ -40,6 +39,8 @@ Im Dashboard „Aufträge“ werden die aktuellen Aufträge für all Ihre SaaS-A
 ## <a name="elements-of-the-orders-dashboard"></a>Elemente des Dashboards „Aufträge“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Aufträge“ verwendet und wie die Daten gelesen werden.
+
+Um auf das Dashboard „Aufträge“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Aufträge** aus.
 
 ### <a name="month-range"></a>Monatsbereich
 
@@ -118,7 +119,7 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 | Marketplace-Abonnement-ID | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. | Marketplace-Abonnement-ID |
 | MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. Das Format ist JJJJ-MM-TT. | MonthStartDate |
 | Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace | OfferType |
-| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
+| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>[Cloud Solution Provider](cloud-solution-providers.md)</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li><li>GTM</li></ul> | AzureLicenseType |
 | Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | Der dem Angebot zugeordnete Plan | SKU |
 | Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountry |
@@ -136,7 +137,16 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 | Customer ID | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. | CustomerId |
 | ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. | BillingAccountId |
 | AssetCount | Anzahl der Objekte | Die Anzahl der Objekte, die der Auftrags-ID zugeordnet sind. | Als veraltet markiert |
+| Nicht verfügbar * | TermStartDate | Gibt das Startdatum einer Laufzeit für einen Auftrag an. | TermStartDate |
+| Nicht verfügbar * | TermEndDate | Gibt das Enddatum einer Laufzeit für einen Auftrag an. | TermEndDate |
+| Nicht verfügbar * | purchaseRecordId | Der Bezeichner des Bestellungsdatensatzes, der sich auf einen Auftrag bezieht. | purchaseRecordId |
+| Nicht verfügbar * | purchaseRecordLineItemId | Der Bezeichner der Position eines Bestellungsdatensatzes, die sich auf diesen Auftrag bezieht. | purchaseRecordLineItemId |
+| Nicht verfügbar * | EstimatedCharges | Der Preis, der dem Kunden für alle Auftragseinheiten vor Steuern berechnet wird. In Ländern, in denen die Steuer inklusive ist, enthält dieser Preis die Steuer, andernfalls ist sie nicht enthalten. | EstimatedCharges |
+| Nicht verfügbar * | Währung | Abrechnungswährung für das Angebot. | Währung |
+| Nicht verfügbar * | HasTrial | Gibt an, ob für ein Angebot ein Testzeitraum aktiviert ist. | HasTrial |
 |||||
+
+`*` Diese neuen Felder werden derzeit im ISVOrderV2-Dataset bereitgestellt und können programmgesteuert aufgerufen werden.
 
 ### <a name="orders-page-filters"></a>Filter für die Seite „Aufträge“
 
@@ -153,4 +163,4 @@ Die Filter für die Seite **Aufträge** werden auf der Ebene der Seite „Auftr�
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.yml).

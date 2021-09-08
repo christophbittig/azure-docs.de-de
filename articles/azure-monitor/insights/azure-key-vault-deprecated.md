@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c12cb6c344554f4d18af28dd563b7c96358ea2ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4702a91154a4aa93a504597a02a915d1fb26ea0f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095156"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345879"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 
@@ -75,7 +75,7 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 | Azure |  |  |&#8226; |  |  | Bei der Ankunft |
 
 ## <a name="use-azure-key-vault"></a>Verwenden von Azure Key Vault
-Zeigen Sie nach der [Installation der Lösung](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview) die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
+Zeigen Sie nach der Installation der Lösung die Key Vault-Daten an, indem Sie in Azure Monitor auf der Seite **Übersicht** auf die Kachel **Key Vault-Analyse** klicken. Sie können diese Seite im Menü **Azure Monitor** öffnen, indem Sie im Abschnitt **Insights** auf **Mehr** klicken. 
 
 ![Screenshot: Key Vault-Analyse-Kachel auf der Azure Monitor-Übersichtsseite mit einem Diagramm zum Key Vault-Vorgangsvolumen im Zeitverlauf](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
@@ -150,4 +150,3 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollabfragen in Azure Monitor](../logs/log-query-overview.md), um detaillierte Azure Key Vault-Daten anzuzeigen.
-

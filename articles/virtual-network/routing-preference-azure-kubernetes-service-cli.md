@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 9eaad12e254150109498be0fac2f285f33a5965c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 491572ceaac3e4bc401d5bd6c3a5401966d0c528
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776571"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463624"
 ---
 # <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Konfigurieren der Routingpräferenz für einen Kubernetes-Cluster mithilfe der Azure CLI
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI die Routingpräferenz über das ISP-Netzwerk (Option **Internet**) für einen Kubernetes-Cluster konfigurieren. Die Routingpräferenz wird festgelegt, indem eine öffentliche IP-Adresse für den Routingpräferenztyp „Internet“ erstellt und beim Erstellen des AKS-Clusters verwendet wird.
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI die Routingpräferenz über das ISP-Netzwerk (Option **Internet**) für einen Kubernetes-Cluster konfigurieren. Die Routingpräferenz wird festgelegt, indem eine öffentliche IP-Adresse für den Routingpräferenztyp **Internet** erstellt und beim Erstellen des AKS-Clusters verwendet wird.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

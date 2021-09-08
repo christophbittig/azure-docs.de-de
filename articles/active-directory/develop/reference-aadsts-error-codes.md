@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/17/2021
+ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e08f9090682a62ffe209122e88adca9e9710b96
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064033"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339436"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -119,13 +119,13 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50048 | SubjectMismatchesIssuer: Der Antragsteller stimmt nicht mit dem Ausstelleranspruch in der Clientassertion überein. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50049 | NoSuchInstanceForDiscovery: Unbekannte oder ungültige Instanz. |
 | AADSTS50050 | MalformedDiscoveryRequest: Die Anforderung ist falsch formatiert. |
-| AADSTS50053 | IdsLocked: Das Konto ist gesperrt, weil der Benutzer zu häufig versucht hat, sich mit einer falschen Benutzer-ID bzw. einem falschen Kennwort anzumelden. |
-| AADSTS50055 | InvalidPasswordExpiredPassword: Das Kennwort ist abgelaufen. |
-| AADSTS50056 | Ungültiges oder NULL-Kennwort: Das Kennwort ist für diesen Benutzer nicht im Speicher vorhanden. |
-| AADSTS50057 | UserDisabled: Das Benutzerkonto ist deaktiviert. Das Konto wurde von einem Administrator deaktiviert. |
-| AADSTS50058 | UserInformationNotProvided: Dies bedeutet, dass ein Benutzer nicht angemeldet ist. Dieser Fehler kommt häufig vor und wird erwartet, wenn ein Benutzer nicht authentifiziert wurde und sich noch nicht angemeldet hat.</br>Wenn dieser Fehler in einem SSO-Kontext auftritt, in dem sich der Benutzer zuvor angemeldet hat, bedeutet das, dass die SSO-Sitzung nicht gefunden wurde oder ungültig war.</br>Dieser Fehler kann an die Anwendung zurückgegeben werden, wenn prompt=none angegeben wird. |
+| AADSTS50053 | Dieser Fehler kann aus zwei Gründen auftreten: <br><ul><li>IdsLocked: Das Konto ist gesperrt, weil der Benutzer zu häufig versucht hat, sich mit einer falschen Benutzer-ID bzw. einem falschen Kennwort anzumelden. Der Benutzer wird aufgrund wiederholter Anmeldeversuche blockiert. Weitere Informationen finden Sie unter [Behandeln von Risiken und Aufheben der Blockierung von Benutzern](../identity-protection/howto-identity-protection-remediate-unblock.md).</li><li>Oder die Anmeldung wurde blockiert, weil sie von einer IP-Adresse aus erfolgt ist, von der schädliche Aktivitäten ausgehen.</li></ul> <br>Um festzustellen, aus welchem Grund dieser Fehler aufgetreten ist, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  Navigieren Sie zu Ihrem Azure AD-Mandanten und dann zu **Überwachung** -> **Anmeldungen**. Suchen Sie die fehlgeschlagene Benutzeranmeldung mit dem **Code des Anmeldefehlers** 50053, und prüfen Sie die **Fehlerursache**.|
+| AADSTS50055 | InvalidPasswordExpiredPassword: Das Kennwort ist abgelaufen. Das Kennwort des Benutzers ist abgelaufen. Daher wurde seine Anmeldung oder Sitzung beendet. Ihm wird die Möglichkeit gegeben, es zurückzusetzen, oder er kann einen Administrator bitten, es über das [Zurücksetzen eines Benutzerkennworts mit Azure Active Directory](../fundamentals/active-directory-users-reset-password-azure-portal.md) zurückzusetzen. |
+| AADSTS50056 | Ungültiges oder fehlendes Kennwort: Das Kennwort ist für diesen Benutzer nicht im Verzeichnis vorhanden. Der Benutzer muss aufgefordert werden, sein Kennwort erneut einzugeben. |
+| AADSTS50057 | UserDisabled: Das Benutzerkonto ist deaktiviert. Das Benutzerobjekt in Active Directory, das dieses Konto sichern soll, wurde deaktiviert. Ein Administrator kann dieses Konto [über PowerShell](/powershell/module/activedirectory/enable-adaccount) reaktivieren. |
+| AADSTS50058 | UserInformationNotProvided: Sitzungsinformationen reichen für einmaliges Anmelden nicht aus. Dies bedeutet, dass ein Benutzer nicht angemeldet ist. Dieser Fehler kommt häufig vor und wird erwartet, wenn ein Benutzer nicht authentifiziert wurde und sich noch nicht angemeldet hat.</br>Wenn dieser Fehler in einem SSO-Kontext auftritt, in dem sich der Benutzer zuvor angemeldet hat, bedeutet das, dass die SSO-Sitzung nicht gefunden wurde oder ungültig war.</br>Dieser Fehler kann an die Anwendung zurückgegeben werden, wenn prompt=none angegeben wird. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. Der Benutzer kann sich an den Mandantenadministrator wenden, um das Problem zu lösen. |
-| AADSTS50061 | SignoutInvalidRequest: Die Anforderung zur Abmeldung ist ungültig. |
+| AADSTS50061 | SignoutInvalidRequest: Abmeldung kann nicht abgeschlossen werden. Die Anforderung war ungültig. |
 | AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen bezüglich Benutzername und Kennwort. |
 | AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Abmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
 | AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit der/den vorhandenen Sitzung(en) übereinstimmt. |
@@ -136,14 +136,16 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50079 | UserStrongAuthEnrollmentRequired: Aufgrund einer Konfigurationsänderung durch den Administrator oder eines neuen Standorts des Benutzers muss der Benutzer mehrstufige Authentifizierung verwenden. |
 | AADSTS50085 | Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie Benutzer, sich per Benutzername und Kennwort erneut anzumelden. |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError: Der Dienst ist vorübergehend nicht verfügbar. Versuchen Sie es erneut. |
-| AADSTS50089 | Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie den Benutzer, sich mit Benutzername und Kennwort erneut anzumelden. |
+| AADSTS50087 | SasRetryableError: Bei der sicheren Authentifizierung ist ein vorübergehender Fehler aufgetreten. Versuchen Sie es erneut. |
+| AADSTS50088 | Grenzwert für telefonische MFA-Aufrufe erreicht. Wiederholen Sie den Vorgang in einigen Minuten. |
+| AADSTS50089 | Authentifizierung fehlgeschlagen, da Flowtoken abgelaufen. Erwartet: Authentifizierungscodes, Aktualisierungstoken und Sitzungen laufen im Laufe der Zeit ab oder werden vom Benutzer oder einem Administrator widerrufen. Die App fordert vom Benutzer eine neue Anmeldung an. |
 | AADSTS50097 | DeviceAuthenticationRequired: Geräteauthentifizierung ist erforderlich. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized: Die JWT-Signatur ist ungültig. |
 | AADSTS50105 | EntitlementGrantsNotFound: Der angemeldete Benutzer ist keiner Rolle für die angemeldete App zugewiesen. Weisen Sie den Benutzer der App zu. Weitere Informationen finden Sie im Artikel zur Behebung von Fehler [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role). |
 | AADSTS50107 | InvalidRealmUri: Das angeforderte Verbundbereichsobjekt ist nicht vorhanden. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat: Problem mit JWT-Header. Wenden Sie sich an den Administrator des Mandanten. |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter: Die Anspruchstransformation enthält ungültige Eingabeparameter. Wenden Sie sich an den Administrator des Mandanten, um die Richtlinie zu aktualisieren. |
+| AADSTS501241 | Die obligatorische Eingabe {paramName} fehlt in der Transformations-ID {transformId}. Dieser Fehler wird zurückgegeben, während Azure AD versucht, eine SAML-Antwort für die Anwendung zu erstellen. Der NameID-Anspruch oder NameIdentifier ist in der SAML-Antwort obligatorisch. Wenn Azure AD das Quellattribut für den NameID-Anspruch nicht abrufen konnte, wird dieser Fehler zurückgegeben. Stellen Sie als Lösung sicher, dass Sie Anspruchsregeln hier hinzufügen: Azure-Portal > Azure Active Directory > Unternehmensanwendungen > Ihre Anwendung auswählen > Einmaliges Anmelden > Benutzerattribute und Ansprüche > Eindeutiger Bezeichner (Name-ID).  |
 | AADSTS50125 | PasswordResetRegistrationRequiredInterrupt: Die Anmeldung wurde aufgrund einer Kennwortzurücksetzung oder eines Kennwortregistrierungseintrags unterbrochen. |
 | AADSTS50126 | InvalidUserNameOrPassword: Fehler beim Überprüfen der Anmeldeinformationen aufgrund eines ungültigen Benutzernamens oder Kennworts. |
 | AADSTS50127 | BrokerAppNotInstalled: Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren. |
@@ -156,7 +158,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50135 | PasswordChangeCompromisedPassword: Eine Kennwortänderung ist aufgrund des Kontorisikos erforderlich. |
 | AADSTS50136 | RedirectMsaSessionToApp: Einzelne MSA-Sitzung erkannt. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken: Die Sitzung ist aufgrund eines fehlenden externen Aktualisierungstokens ungültig. |
-| AADSTS50140 | KmsiInterrupt: Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interruptvorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
+| AADSTS50140 | KmsiInterrupt: Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interruptvorgang „Angemeldet bleiben“ aufgetreten ist. Dies ist ein erwarteter Teil des Anmeldeflows, bei dem ein Benutzer gefragt wird, ob er in seinem aktuellen Browser angemeldet bleiben möchte, um weitere Anmeldungen zu erleichtern. Weitere Informationen finden Sie unter [The new Azure AD sign-in and “Keep me signed in” experiences rolling out now!](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/the-new-azure-ad-sign-in-and-keep-me-signed-in-experiences/m-p/128267) (Die neue Azure AD-Anmeldung und die Option „Angemeldet bleiben“ werden gerade eingeführt). [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details zu erhalten.|
 | AADSTS50143 | Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword: Das Active Directory-Kennwort des Benutzers ist abgelaufen. Generieren Sie ein neues Kennwort für den Benutzer, oder lassen Sie den Benutzer das Self-Service-Tool für die Zurücksetzung verwenden, um sein Kennwort zurückzusetzen. |
 | AADSTS50146 | MissingCustomSigningKey: Diese App muss mit einem anwendungsspezifischen Signaturschlüssel konfiguriert werden. Entweder ist dies nicht der Fall, oder der Schlüssel ist abgelaufen oder noch nicht gültig. |
@@ -193,6 +195,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS65004 | UserDeclinedConsent: Der Benutzer hat seine Zustimmung für den Zugriff auf die App abgelehnt. Bitten Sie den Benutzer, die Anmeldung zu wiederholen und die Zustimmung für die App zu erteilen.|
 | AADSTS65005 | MisconfiguredApplication: Die für die App erforderliche Liste für den Ressourcenzugriff enthält keine Apps, die von der Ressource ermittelt werden können, die Client-App hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben. Wenn die App SAML unterstützt, haben Sie die App ggf. mit dem falschen Bezeichner (Entität) konfiguriert. Weitere Informationen finden Sie im Artikel zur Behebung von Fehler [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app). |
 | AADSTS650052 | Die App benötigt Zugriff auf einen Dienst `(\"{name}\")`, den Ihre Organisation `\"{organization}\"` nicht abonniert oder aktiviert hat. Wenden Sie sich an Ihren IT-Administrator, damit dieser die Konfiguration Ihrer Dienstabonnements überprüft. |
+| AADSTS650054 |  Die Anwendung hat nach Berechtigungen für den Zugriff auf eine Ressource gefragt, die entfernt wurde oder nicht mehr verfügbar ist. Stellen Sie sicher, dass alle Ressourcen, die die App aufruft, im Mandanten vorhanden sind, in dem Sie arbeiten. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant: Fehler bei der Authentifizierung. Das Aktualisierungstoken ist ungültig. Der Fehler kann aus den folgenden Gründen auftreten:<ul><li>Der Bindungsheader des Tokens ist leer.</li><li>Der Tokenbindungshash stimmt nicht überein.</li></ul> |
 | AADSTS70001 | UnauthorizedClient: Die Anwendung ist deaktiviert. Weitere Informationen finden Sie im Artikel zur Behebung von Fehler [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory). |
@@ -200,6 +203,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS70003 | UnsupportedGrantType: Die App hat einen nicht unterstützten Gewährungstyp zurückgegeben. |
 | AADSTS70004 | InvalidRedirectUri: Die App hat einen ungültigen Umleitungs-URI zurückgegeben. Die vom Client angegebene Umleitungsadresse stimmt nicht mit den konfigurierten Adressen oder anderen Adressen in der Liste mit den OIDC-Genehmigungen überein. |
 | AADSTS70005 | UnsupportedResponseType: Die App hat aus den folgenden Gründen einen nicht unterstützten Antworttyp zurückgegeben:<ul><li>Der Antworttyp „token“ ist für die App nicht aktiviert.</li><li>Für den Antworttyp „id_token“ ist der Bereich „OpenID“ erforderlich: - Enthält einen nicht unterstützten OAuth-Parameterwert im codierten wctx-Element.</li></ul> |
+| AADSTS700054 | Response_type „id_token“ ist für die Anwendung nicht aktiviert.  Die Anwendung hat ein ID-Token vom Autorisierungsendpunkt angefordert, aber die implizite Gewährung des ID-Tokens war nicht aktiviert.  Wechseln Sie zu: Azure Portal > Azure Active Directory > App-Registrierungen > Ihre Anwendung auswählen > Authentifizierung. Stellen Sie unter „Implizite Genehmigung und hybride Flows“ sicher, das „ID-Token“ ausgewählt ist.|
 | AADSTS70007 | UnsupportedResponseMode: Die App hat beim Anfordern eines Tokens den nicht unterstützten Wert `response_mode` zurückgegeben.  |
 | AADSTS70008 | ExpiredOrRevokedGrant: Das Aktualisierungstoken ist aufgrund von Inaktivität abgelaufen. Das Token wurde auf XXX ausgestellt und war für einen bestimmten Zeitraum inaktiv. |
 | AADSTS70011 | InvalidScope: Der von der App angeforderte Bereich ist ungültig. |

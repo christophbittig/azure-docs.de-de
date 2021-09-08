@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 92edc1e2e2ae1e359cfd951a239e30d506d2452c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 07/31/2021
+ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355368"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -27,10 +27,10 @@ In der folgenden Tabelle sind die Auflistungsoptionen für SaaS-Angebote im komm
 
 | Auflistungsoption | Transaktionsprozess |
 | ------------ | ------------- |
-| Kontakt mit mir aufnehmen | Der Kunde kontaktiert Sie direkt über die in Ihrer Auflistung enthaltenen Informationen.``*`` |
-| Kostenlose Testversion | Der Kunde wird über Azure Active Directory (Azure AD) an Ihre Ziel-URL umgeleitet.``*`` |
-| Jetzt abrufen (kostenlos) | Der Kunde wird über Azure AD an Ihre Ziel-URL umgeleitet.``*`` |
-| Über Microsoft verkaufen  | Über Microsoft verkaufte Angebote werden als _transaktionsfähige_ Angebote bezeichnet. Bei einem transaktionsfähigen Angebot handelt es sich um ein Angebot, bei dem Microsoft den Geldfluss für eine Softwarelizenz im Namen des Herausgebers vereinfacht. Wir berechnen SaaS-Angebote mit dem von Ihnen gewählten Preismodell und verwalten Kundentransaktionen in Ihrem Namen. Die Nutzungsgebühren für Azure-Infrastruktur werden Ihnen als Partner direkt in Rechnung gestellt. Deshalb sollten Sie die Infrastrukturkosten in Ihrem Preismodell berücksichtigen. Dies wird im Abschnitt [SaaS-Abrechnung](#saas-billing) weiter unten ausführlich erläutert.  |
+| Kontakt mit mir aufnehmen | Der Kunde kontaktiert Sie direkt über die in Ihrer Auflistung enthaltenen Informationen.``*``<br>Sie können nach der Veröffentlichung des Angebots zu einer anderen Auflistungsoption wechseln. |
+| Kostenlose Testversion | Der Kunde wird über Azure Active Directory (Azure AD) an Ihre Ziel-URL umgeleitet.``*``<br>Sie können nach der Veröffentlichung des Angebots zu einer anderen Auflistungsoption wechseln. |
+| Jetzt abrufen (kostenlos) | Der Kunde wird über Azure AD an Ihre Ziel-URL umgeleitet.``*``<br>Sie können nach der Veröffentlichung des Angebots zu einer anderen Auflistungsoption wechseln. |
+| Über Microsoft verkaufen  | Über Microsoft verkaufte Angebote werden als _transaktionsfähige_ Angebote bezeichnet. Bei einem transaktionsfähigen Angebot handelt es sich um ein Angebot, bei dem Microsoft den Geldfluss für eine Softwarelizenz im Namen des Herausgebers vereinfacht. Wir berechnen SaaS-Angebote mit dem von Ihnen gewählten Preismodell und verwalten Kundentransaktionen in Ihrem Namen. Die Nutzungsgebühren für Azure-Infrastruktur werden Ihnen als Partner direkt in Rechnung gestellt. Deshalb sollten Sie die Infrastrukturkosten in Ihrem Preismodell berücksichtigen. Dies wird im Abschnitt [SaaS-Abrechnung](#saas-billing) weiter unten ausführlich erläutert.<br><br>**Hinweis**: Sie können diese Option nicht mehr ändern, nachdem Ihr Angebot veröffentlicht wurde.  |
 |||
 
 ``*`` Herausgeber sind für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf Auftrag, Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso.

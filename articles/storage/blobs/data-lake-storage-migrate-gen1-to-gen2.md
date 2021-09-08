@@ -4,20 +4,22 @@ description: Migrieren Sie Azure Data Lake Storage von Gen1 zu Gen2, das auf Azu
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 03/11/2020
+ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 485f0a19c5cb87b358f1723664425619b5d2c6aa
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d6d173188c147e04a688ff7c373a1a253393ee87
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903309"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204514"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrieren von Azure Data Lake Storage von Gen1 zu Gen2
 
 Sie können Ihre Daten, Workloads und Anwendungen von Data Lake Storage Gen1 zu Data Lake Storage Gen2 migrieren.
+
+Am **29. Februar 2024** wird Azure Data Lake Storage Gen1 eingestellt. Weitere Informationen finden Sie in der [offiziellen Ankündigung](https://azure.microsoft.com/updates/action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024/). Wenn Sie Azure Data Lake Storage Gen1 verwenden, stellen Sie sicher, dass Sie vor diesem Datum zu Azure Data Lake Storage Gen2 migrieren. In diesem Artikel erfahren Sie, wie Sie dabei vorgehen.
 
 ‎Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für Big Data-Analysen. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) verbindet Features von [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) wie Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit mit den kostengünstigen, mehrstufigen Speicherlösungen sowie Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md).
 
@@ -69,13 +71,22 @@ Für die Migration zu Gen2 empfehlen wir die folgende Vorgehensweise.
 
 Migrieren Sie Daten, Workloads und Anwendungen mithilfe Ihres bevorzugten Musters. Wir empfehlen, Szenarien inkrementell zu validieren.
 
-1. [Erstellen Sie ein Speicherkonto](../common/storage-account-create.md), und aktivieren Sie das Feature für hierarchische Namespaces. 
+1. [Erstellen Sie ein Speicherkonto](create-data-lake-storage-account.md), und aktivieren Sie das Feature für hierarchische Namespaces. 
 
 2. Migrieren Sie Ihre Daten. 
 
 3. Konfigurieren Sie [Dienste in Ihren Workloads](./data-lake-storage-supported-azure-services.md), sodass sie auf Ihren Gen2-Endpunkt verweisen. 
    
-4. Aktualisieren Sie Anwendungen für die Verwendung von Gen2-APIs. Weitere Informationen finden Sie in den Anleitungen für [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) und [REST](/rest/api/storageservices/data-lake-storage-gen2). 
+4. Aktualisieren Sie Anwendungen für die Verwendung von Gen2-APIs. Weitere Informationen finden Sie in diesen Leitfäden:
+
+| Environment | Artikel |
+|--------|-----------|
+|Azure Storage-Explorer |[Verwenden von Azure Storage-Explorer zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md)|
+|.NET |[Verwenden von .NET zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Verwenden von Java zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Verwenden von Python zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
+|JavaScript (Node.js)|[Verwenden des JavaScript-SDK in Node.js zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-javascript.md)|
+|REST-API |[Azure Data Lake Store-REST-API](/rest/api/storageservices/data-lake-storage-gen2)|
    
 5. Aktualisieren Sie Skripts für die Verwendung der [PowerShell-Cmdlets](data-lake-storage-directory-file-acl-powershell.md) und [Azure CLI-Befehle](data-lake-storage-directory-file-acl-cli.md) für Data Lake Storage Gen2.
    
@@ -126,7 +137,7 @@ Dies ist das einfachste Muster.
 
 1. Beenden Sie alle Schreibvorgänge in Gen1.
 
-2. Verschieben Sie Daten von Gen1 zu Gen2. Wir empfehlen [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Die ACLs werden mit den Daten kopiert.
+2. Verschieben Sie Daten von Gen1 zu Gen2. Wir empfehlen dazu [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md) oder das [Azure-Portal](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md). Die ACLs werden mit den Daten kopiert.
 
 3. Leiten Sie Erfassungsvorgänge und Workloads zu Gen2 weiter.
 
@@ -144,6 +155,9 @@ Sehen Sie sich den Beispielcode für das Lift & Shift-Muster im [Lift & Shif
 :heavy_check_mark: Gehen Sie während der Migration und des Umstellungszeitraums von Ausfallzeiten aus.
 
 :heavy_check_mark: Ideal für Pipelines, bei denen Ausfallzeiten kein Problem darstellen und alle Apps gleichzeitig aktualisiert werden können.
+
+> [!TIP]
+> Erwägen Sie die Verwendung des [Azure-Portals](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md), um die Ausfallzeit zu verkürzen und die Anzahl der für die Migration erforderlichen Schritte zu verringern.
 
 ### <a name="incremental-copy-pattern"></a>Muster mit inkrementellem Kopieren
 

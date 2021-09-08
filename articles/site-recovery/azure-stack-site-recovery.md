@@ -3,12 +3,12 @@ title: Replizieren virtueller Azure Stack-Computer in Azure mit Azure Site Recov
 description: Hier erfahren Sie, wie Sie die Notfallwiederherstellung in Azure für virtuelle Azure Stack-Computer mit dem Azure Site Recovery-Dienst einrichten.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 386eae05ea06b59aac290d5f1f51d643d7952b6a
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728384"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580420"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -82,7 +82,7 @@ Stellen Sie sicher, dass auf den virtuellen Computern eines der in der Tabelle g
 
 **Betriebssystem** | **Details**
 --- | ---
-**64-Bit-Windows** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 (ab SP1)
+**64-Bit-Windows** | Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 (ab SP1)
 **CentOS** | 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.3
 **Ubuntu** | 14.04 LTS Server, 16.04 LTS Server. Überprüfen Sie [unterstützte Kernels](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions).
 

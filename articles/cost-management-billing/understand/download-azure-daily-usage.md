@@ -8,19 +8,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 141da3dfab9996110952ec266733271582e66ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: devx-track-azurecli
+ms.date: 07/28/2020
+ms.openlocfilehash: b5f1090c11844e1ca75c2296275588e5123a9d92
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439193"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355398"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 
-Sie können eine tägliche Aufschlüsselung Ihrer Azure-Nutzung und -Gebühren vom Azure-Portal herunterladen. Nur bestimmte Rollen (z. B. „Kontoadministrator“ oder „Unternehmensadministrator“) verfügen über die Berechtigung zum Abrufen von Azure-Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](../manage/manage-billing-access.md).
+Sie können eine tägliche Aufschlüsselung Ihrer Azure-Nutzung und -Gebühren vom Azure-Portal herunterladen. Sie können Ihre Nutzungsdaten auch mithilfe der Azure CLI abrufen. Nur bestimmte Rollen (z. B. „Kontoadministrator“ oder „Unternehmensadministrator“) verfügen über die Berechtigung zum Abrufen von Azure-Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](../manage/manage-billing-access.md).
 
-Wenn Sie über eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) verfügen, müssen Sie über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Ihre Azure-Nutzung und -Gebühren anzeigen zu können.  Bei einer Microsoft-Partnervereinbarung (Microsoft Partner Agreement, MPA) können nur der globale Administrator und Administrator-Agent in der Partnerorganisation Azure-Rechnungen anzeigen und herunterladen. [Überprüfen des Abrechnungskontotyps im Azure-Portal](#check-your-billing-account-type).
+Wenn Sie über eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) verfügen, müssen Sie über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Ihre Azure-Nutzung und -Gebühren anzeigen zu können.  Bei einer Microsoft-Partnervereinbarung (Microsoft Partner Agreement, MPA) können nur der globale Administrator und Administrator-Agent in der Partnerorganisation Azure-Rechnungen anzeigen und herunterladen.
 
 Basierend auf dem von Ihnen verwendeten Abonnementtyp variieren die Optionen zum Herunterladen Ihrer Nutzung und Gebühren.
 
@@ -43,11 +44,33 @@ Sie müssen Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrato
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.  
     ![Screenshot der Suche im Azure-Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
+1. Wenn Sie über Zugriff auf mehrere Abrechnungskonten verfügen, wählen Sie den Abrechnungsbereich für Ihr EA-Abrechnungskonto aus.
 1. Wählen Sie **Verbrauch + Gebühren** aus.
 1. Wählen Sie für den Monat, den Sie herunterladen möchten, **Herunterladen** aus.  
     ![Screenshot der Seite „Kostenverwaltung + Abrechnung“ für E A-Kunden](./media/download-azure-daily-usage/download-usage-ea.png)
 
-## <a name="download-usage-for-pending-charges"></a>Herunterladen der ausstehenden Nutzungsgebühren
+## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Herunterladen der Nutzungsdaten für Ihre Microsoft-Kundenvereinbarung
+
+Sie müssen über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Nutzungsdaten für ein Abrechnungsprofil anzeigen oder herunterladen zu können.
+
+### <a name="download-usage-for-billed-charges"></a>Herunterladen der Nutzung für in Rechnung gestellte Gebühren
+
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Wählen Sie ein Abrechnungsprofil aus.
+3. Wählen Sie **Rechnungen** aus.
+4. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die der Nutzung entspricht, die Sie herunterladen möchten.
+5. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
+6. Wählen Sie im Kontextmenü „Download“ die Option **Azure-Nutzung und -Gebühren** aus.
+
+### <a name="download-usage-for-open-charges"></a>Herunterladen der Nutzung für offene Gebühren
+
+Sie können ebenfalls die Monat-bis-Datum-Nutzung für den aktuellen Abrechnungszeitraum herunterladen, also für die Gebühren, die noch nicht abgerechnet wurden.
+
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Wählen Sie ein Abrechnungsprofil aus.
+3. Klicken Sie auf dem Blatt **Übersicht** auf **Azure-Nutzung und -Gebühren herunterladen**.
+
+### <a name="download-usage-for-pending-charges"></a>Herunterladen der ausstehenden Nutzungsgebühren
 
 Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie die Nutzung für den bisherigen Kalendermonat für den aktuellen Abrechnungszeitraum herunterladen. Diese Nutzungsgebühren wurden noch nicht in Rechnung gestellt.
 
@@ -55,11 +78,52 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie die Nutz
 2. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
 3. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
 4. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den aktuellen Gebühren.
-5. Wählen Sie **Nutzung und Preise herunterladen** aus.  
-    :::image type="content" source="./media/download-azure-daily-usage/open-usage01.png" alt-text="Screenshot des Blatts „Übersicht“ mit dem Downloadlink" lightbox="./media/download-azure-daily-usage/open-usage01.png" :::
+5. Wählen Sie **Nutzung und Preise herunterladen** aus.
 
-## <a name="check-your-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
-[!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
+## <a name="get-usage-data-with-azure-cli"></a>Abrufen von Nutzungsdaten mit der Azure CLI
+
+Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle vor:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Nachdem Sie sich angemeldet haben, verwenden Sie den Befehl [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query), um Nutzungsinformationen für Ihr Abonnement für den bisherigen Kalendermonat abzufragen:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+Sie können die Abfrage auch mithilfe des Parameters **--dataset-filter** oder anderer Parameter eingrenzen:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+Mit dem Parameter **--dataset-filter** wird eine JSON-Zeichenfolge oder `@json-file` übernommen.
+
+Sie haben auch die Möglichkeit, die [az costmanagement export](/cli/azure/costmanagement/export)-Befehle zu verwenden, um Nutzungsdaten in ein Azure-Speicherkonto zu exportieren. Sie können die Daten hier herunterladen.
+
+1. Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene Ressourcengruppe. Führen Sie den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen:
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. Erstellen Sie ein Speicherkonto zum Empfangen der Exporte, oder verwenden Sie ein vorhandenes Speicherkonto. Zum Erstellen eines Kontos verwenden Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create):
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. Führen Sie den Befehl [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) aus, um den Export zu erstellen:
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

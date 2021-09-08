@@ -5,33 +5,28 @@ services: azure-monitor
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/12/2021
-ms.openlocfilehash: a7b2e6ee4b54427f33ba9701ae13f139341a1941
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/22/2021
+ms.openlocfilehash: 204c7a75eed5be4b6c3aca91d59011fd2b1327b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030951"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349536"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
 Virtuelle Computer und andere Computeressourcen benötigen einen Agent, um Überwachungsdaten zu erfassen, die für die Messung der Leistung und Verfügbarkeit ihres Gastbetriebssystems und ihrer Workloads erforderlich sind. In diesem Artikel werden die von Azure Monitor verwendeten Agents beschrieben. Außerdem bietet er Hilfe bei der Entscheidung, welche Agents Sie zum Erfüllen der Anforderungen für Ihre bestimmte Umgebung benötigen.
 
 > [!NOTE]
-> Aufgrund der kürzlich vorgenommenen Konsolidierung von Azure Monitor und Log Analytics verfügt Azure Monitor über mehrere Agents. Die Features überschneiden sich zwar unter Umständen, jeder hat jedoch seine eigenen Funktionen. Je nach Anforderungen benötigen Sie auf Ihren Computern möglicherweise einen oder mehrere der Agents. 
-
-Es kann vorkommen, dass spezifische Anforderungen für einen bestimmten Computer nicht vollständig durch einen einzelnen Agent erfüllt werden können. Dies wäre etwa der Fall, wenn Sie Metrikwarnungen verwenden möchten, für die die Azure-Diagnoseerweiterung erforderlich ist, gleichzeitig aber auch die Funktionen von VM Insights nutzen möchten, für die der Log Analytics-Agent und der Dependency-Agent benötigt werden. In solchen Fällen können Sie mehrere Agents verwenden. Dies ist ein gängiges Szenario für Kunden, die Funktionen beider Agents benötigen.
+> In Azure Monitor wurde kürzlich ein neuer Agent eingeführt, der Azure Monitor-Agent, der alle notwendigen Funktionen zum Sammeln von Überwachungsdaten des Gastbetriebssystems bietet. Zwar gibt es mehrere Legacy-Agents, die aufgrund der Konsolidierung von Azure Monitor und Log Analytics vorhanden sind und jeweils eigene Funktionen mit einigen Überschneidungen aufweisen, doch wird empfohlen, den neuen Agent zu verwenden, der das Ziel hat, Features aller vorhandenen Agents zu konsolidieren und zusätzliche Vorteile zu bieten. [Weitere Informationen](./azure-monitor-agent-overview.md)
 
 ## <a name="summary-of-agents"></a>Übersicht über die Agents
 
 Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monitor-Agents für Windows und Linux. Weitere Details zu den jeweiligen Agents finden Sie im Abschnitt weiter unten.
 
-> [!NOTE]
-> Der Azure Monitor-Agent ist derzeit als Vorschauversion mit eingeschränkten Funktionen verfügbar. Diese Tabelle wird aktualisiert. 
-
 ### <a name="windows-agents"></a>Windows-Agents
 
-| | Azure Monitor-Agent (Vorschau) | Diagnose<br>erweiterung (WAD) | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
+| | Azure Monitor-Agent | Diagnose<br>erweiterung (WAD) | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|
 | **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc)  | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
@@ -41,30 +36,40 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 
 ### <a name="linux-agents"></a>Linux-Agents
 
-| | Azure Monitor-Agent (Vorschau) | Diagnose<br>erweiterung (LAD) | Telegraf-<br>Agent | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
+| | Azure Monitor-Agent | Diagnose<br>erweiterung (LAD) | Telegraf-<br>Agent | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|:---|
-| **Unterstützte Umgebungen** (unterstützte Betriebssysteme finden Sie in der folgenden Tabelle) | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc) | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
+| **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc) | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | syslog<br>Leistung | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
-| **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
+| **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
 | **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
+<sup>1</sup> Derzeit gilt eine Einschränkung für den Azure Monitor-Agent für Linux, die bewirkt, dass die Verwendung von Azure Monitor-Metriken als *einziges* Ziel nicht unterstützt wird. Die Verwendung zusammen mit Azure Monitor-Protokollen funktioniert. Diese Einschränkung wird im nächsten Erweiterungsupdate behoben.
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor-Agent (Vorschau)
+## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 
-Der [Azure Monitor-Agent](azure-monitor-agent-overview.md) befindet sich derzeit in der Vorschau und wird den Log Analytics-Agent und den Telegraf-Agent sowohl für Windows- als auch für Linux-Computer ersetzen. Er kann Daten an Azure Monitor-Protokolle und Azure Monitor-Metriken senden und nutzt [Data Collection Rules (DCR)](data-collection-rule-overview.md), die eine skalierbare Methode zum Konfigurieren der Datensammlung und der Ziele für jeden Agent bereitstellen.
+Der [Azure Monitor-Agent](azure-monitor-agent-overview.md) soll den Log Analytics-Agent, die Azure-Diagnoseerweiterung und den Telegraf-Agent sowohl für Windows- als auch für Linux-Computer ersetzen. Er kann Daten an Azure Monitor-Protokolle und Azure Monitor-Metriken senden und nutzt [Data Collection Rules (DCR)](data-collection-rule-overview.md), die eine skalierbare Methode zum Konfigurieren der Datensammlung und der Ziele für jeden Agent bereitstellen.
 
 Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 
 - Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Azure Arc-fähige Server](../../azure-arc/servers/overview.md) erforderlich.) 
+- Zentrales Verwalten der Datensammlungskonfiguration mithilfe von [Datensammlungsregeln](./data-collection-rule-overview.md) und Verwenden von Azure Resource Manager-Vorlagen oder -Richtlinien (ARM) für die Gesamtverwaltung.
 - Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken zur Analyse mit Azure Monitor. 
-- Senden von Daten an Azure Storage zur Archivierung.
-- Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)
-- Verwalten der Sicherheit Ihrer Computer mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md). (In der Vorschau nicht verfügbar.)
-
+- Nutzen der Windows-Ereignisfilterung oder Multihoming für Protokolle unter Windows und Linux.
+<!--- Send data to Azure Storage for archiving.
+- Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
+- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md). (Available in private preview.)
+- Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
+- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md).
+- Use different [solutions](../monitor-reference.md#insights-and-core-solutions) to monitor a particular service or application. */
+-->
 Einschränkungen des Azure Monitor-Agents:
+- Log Analytics-Lösungen können nicht in der Produktion verwendet werden (nur in der Vorschau verfügbar, siehe[Unterstützte Dienste und Features](./azure-monitor-agent-overview.md#supported-services-and-features)).
+- Netzwerkszenarien, die private Links enthalten, werden noch nicht unterstützt. 
+- Das Sammeln von benutzerdefinierten Protokollen (Dateien) oder IIS-Protokolldateien wird noch nicht unterstützt. 
+- Event Hubs und Storage-Konten als Ziele werden noch nicht unterstützt.
+- Hybrid Runbook Worker werden nicht unterstützt.
 
-- Zurzeit als Public Preview verfügbar. Eine Liste der Einschränkungen während der öffentlichen Vorschau finden Sie unter [Aktuelle Einschränkungen](azure-monitor-agent-overview.md#current-limitations).
 
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
 
@@ -127,9 +132,9 @@ Beachten Sie bei der Verwendung des Dependency-Agents Folgendes:
 
 ## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
 
-Durch die Log Analytics-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) wird der Log Analytics-Agent auf virtuellen Azure-Computern installiert. Durch die Azure Monitor-Dependency-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) wird der Dependency-Agent auf virtuellen Azure-Computern installiert. Hierbei handelt es sich um die oben beschriebenen Agents, allerdings mit der Möglichkeit, sie über [VM-Erweiterungen](../../virtual-machines/extensions/overview.md) zu verwalten. Verwenden Sie zum Installieren und Verwalten der Agents möglichst immer Erweiterungen.
+Der [Azure Monitor-Agent](./azure-monitor-agent-install.md#virtual-machine-extension-details) ist nur als VM-Erweiterung verfügbar. Durch die Log Analytics-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) wird der Log Analytics-Agent auf virtuellen Azure-Computern installiert. Durch die Azure Monitor-Dependency-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) wird der Dependency-Agent auf virtuellen Azure-Computern installiert. Hierbei handelt es sich um die oben beschriebenen Agents, allerdings mit der Möglichkeit, sie über [VM-Erweiterungen](../../virtual-machines/extensions/overview.md) zu verwalten. Verwenden Sie zum Installieren und Verwalten der Agents möglichst immer Erweiterungen.
 
-Verwenden Sie für Hybridcomputer [Azure Arc-fähige Server](../../azure-arc/servers/manage-vm-extensions.md), um die Log Analytics- und Azure Monitor-Dependency-Erweiterungen für VMs bereitzustellen.
+Verwenden Sie für Hybridcomputer [Azure Arc-fähige Server](../../azure-arc/servers/manage-vm-extensions.md), um die Azure Monitor-Agent-, Log Analytics- und Azure Monitor-Dependency-Erweiterungen für VMs bereitzustellen.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -146,7 +151,8 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
-| Windows Server 2008 R2                                   |   | X | X | X |
+| Windows Server 2008 R2                                   |   |   | X | X |
+| Windows Server 2008 SP2                                   |   | X |  |  |
 | Windows 10 Enterprise<br>(einschließlich Multisession) und Pro<br>(nur Serverszenarien)  | X | X | X | X |
 | Windows 8 Enterprise und Pro<br>(nur Serverszenarien)  |   | X | X |   |
 | Windows 7 SP1<br>(nur Serverszenarien)                 |   | X | X |   |
@@ -169,7 +175,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8.3                         | X<sup>3</sup> | X | X |   |
+| Red Hat Enterprise Linux Server 8.2, 8.3, 8.4               | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
@@ -227,6 +233,7 @@ Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auc
 
 Weitere Details zu den einzelnen Agents finden Sie hier:
 
+- [Übersicht über den Azure Monitor-Agent](./azure-monitor-agent-overview.md)
 - [Übersicht über den Log Analytics-Agent](./log-analytics-agent.md)
 - [Übersicht zur Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md)
 - [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](../essentials/collect-custom-metrics-linux-telegraf.md)

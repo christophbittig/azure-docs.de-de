@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2021
-ms.openlocfilehash: baa3508917180ebbaccb9ef8863fd4c5bf68ed74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/05/2021
+ms.openlocfilehash: 39f7af59a808fbe0c4141e17cb709c014c91dd4d
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129367"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594893"
 ---
 # <a name="create-and-edit-plans-for-an-azure-container-offer"></a>Erstellen und Bearbeiten von Plänen für ein Azure Container-Angebot
 
@@ -31,7 +31,7 @@ Nachdem Sie einen Plan erstellt haben, wird auf der Seite **Planübersicht** Fol
 Die für einen Plan verfügbaren Aktionen unterscheiden sich abhängig vom aktuellen Status Ihres Plans. Dazu gehören:
 
 - **Entwurf löschen**: Wenn es sich beim Plan um einen Entwurf handelt.
-- **Planverkauf beenden**: Wenn der Plan live veröffentlicht wurde.
+- **Verteilung beenden**: Wenn der Plan live veröffentlicht wurde.
 
 ## <a name="edit-a-plan"></a>Bearbeiten eines Plans
 

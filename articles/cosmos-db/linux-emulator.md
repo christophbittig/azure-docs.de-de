@@ -6,12 +6,12 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 06/04/2021
-ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5c6ddce8d50da1660bfcba8b29bb032b56197bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354861"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>Ausführen des Emulators in Docker für Linux (Vorschau)
 
@@ -37,11 +37,11 @@ Da der Azure Cosmos DB-Emulator eine emulierte Umgebung bereitstellt, die auf e
 
 - Der Linux-Emulator ist kein skalierbarer Speicherdienst und unterstützt keine große Anzahl von Containern. Bei Verwendung des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 10 Container mit fester Größe mit 400 RU/s (nur unterstützt bei Verwendung von Azure Cosmos DB SDKs) oder 5 Container mit unbegrenzter Größe erstellen. Weitere Informationen zum Ändern dieses Werts finden Sie im Artikel [Festlegen des PartitionCount-Werts](emulator-command-line-parameters.md#set-partitioncount).
 
-- Zwar können [Konsistenzebenen](consistency-levels.md) wie beim Clouddienst nur für Testszenarios mithilfe von Befehlszeilenargumenten angepasst werden (Standardeinstellung: Session (Sitzung)), erwartet ein Benutzer möglicherweise nicht dasselbe Verhalten wie im Clouddienst. Beispielsweise haben die Konsistenzmodelle „Streng“ und „Begrenzte Veraltung“ keine Auswirkungen auf den Emulator, außer dass sie dem Cosmos DB SDK die Standardkonsistenz des Kontos melden.
+- Obwohl [Konsistenzebenen](consistency-levels.md) mithilfe von Befehlszeilenargumenten nur für Testszenarien angepasst werden können (Standardeinstellung: Session (Sitzung)), erwartet ein Benutzer möglicherweise nicht dasselbe Verhalten wie beim Clouddienst. Beispielsweise haben die Konsistenzmodelle „Streng“ und „Begrenzte Veraltung“ keine Auswirkungen auf den Emulator, außer dass sie dem Cosmos DB SDK die Standardkonsistenz des Kontos melden.
 
 - Der Linux-Emulator bietet keine [Replikation in mehrere Regionen](distribute-data-globally.md).
 
-- Möglicherweise ist Ihre Kopie des Azure Cosmos DB-Emulators für Linux nicht immer auf dem neuesten Stand der Änderungen im Azure Cosmos DB-Dienst. Verwenden Sie daher stets das [Azure Cosmos DB-Kapazitätsplanungstool](estimate-ru-with-capacity-planner.md), um den erforderlichen Durchsatz (in RUs, Anforderungseinheiten) für Ihre Anwendung richtig einzuschätzen. <add link>
+- Möglicherweise ist Ihre Kopie des Azure Cosmos DB-Emulators für Linux nicht immer auf dem neuesten Stand der Änderungen im Azure Cosmos DB-Dienst. Verwenden Sie daher stets das [Azure Cosmos DB-Kapazitätsplanungstool](estimate-ru-with-capacity-planner.md), um den erforderlichen Durchsatz (in RUs, Anforderungseinheiten) für Ihre Anwendung richtig einzuschätzen.
 
 - Der Linux-Emulator unterstützt für die ID-Eigenschaft maximal 254 Zeichen.
 

@@ -1,27 +1,27 @@
 ---
 title: Append-Only Ledger-Tabellen in Azure SQL Database
 description: Dieser Artikel enthält Informationen über das Schema und die Ansichten der nur zum Anfügen vorgesehenen Ledgertabelle in Azure SQL-Datenbank.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: bb8c1c933bda5a972209133fea301c1d87f6bd06
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a23190552239af387fa2af362592347c0c46b900
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080199"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666727"
 ---
 # <a name="azure-sql-database-append-only-ledger-tables"></a>Append-Only Ledger-Tabellen in Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 Nur zum Anfügen vorgesehenen Ledgertabellen lassen ausschließlich `INSERT`-Vorgänge in Ihren Tabellen zu. Dadurch wird gewährleistet, dass privilegierte Benutzer wie etwa Datenbankadministratoren die Daten nicht durch herkömmliche [DML](/sql/t-sql/queries/queries)-Vorgänge (Data Manipulation Language, Datenbearbeitungssprache) ändern können. Diese Art von Ledgertabellen eignen sich ideal für Systeme, die Datensätze nicht aktualisieren oder löschen, etwa SIEM-Systeme (Security Information & Event Management) oder Blockchain-Systeme, bei denen Daten aus der Blockchain in einer Datenbank repliziert werden müssen. Da es keine `UPDATE`- oder `DELETE`-Vorgänge in einer nur zum Anfügen vorgesehenen Tabelle gibt, ist keine entsprechende Verlaufstabelle wie bei [aktualisierbaren Ledgertabellen](ledger-updatable-ledger-tables.md) notwendig.
 

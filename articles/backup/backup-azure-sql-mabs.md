@@ -2,17 +2,31 @@
 title: Sichern von SQL Server mithilfe von Azure Backup Server
 description: Dieser Artikel enthält Informationen zur Konfiguration für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
-ms.date: 03/24/2017
-ms.openlocfilehash: e79b5263b248312b7170288be24ab5fc196042a7
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/28/2021
+ms.openlocfilehash: f97fc81b051b8c7d76ee1769b82ad4a2d489357b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518659"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338878"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Sichern von SQL Server in Azure mithilfe von Azure Backup Server
 
-In diesem Artikel erfahren Sie, wie Sie Sicherungen von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS) einrichten.
+Microsoft Azure Backup Server (MABS) ermöglicht die Sicherung und Wiederherstellung von SQL Server-Datenbanken. Zusätzlich zum Sichern von SQL Server-Datenbanken können Sie eine Systemsicherung oder vollständige Bare-Metal-Sicherung des SQL Server-Computers durchführen. MABS kann Folgendes schützen:
+
+- Eigenständige SQL Server-Instanz
+- SQL Server-Failoverclusterinstanz (FCI)
+
+>[!Note]
+>Von MABS v3 UR2 wird die SQL Server-Failoverclusterinstanz (FCI) mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) unterstützt.
+>
+>Der Schutz von SQL Server FCI mit „Direkte Speicherplätze“ in Azure und SQL Server FCI mit freigegebenen Azure-Datenträgern wird mit diesem Feature unterstützt. Der DPM-Server muss auf der Azure-VM bereitgestellt werden, um die SQL FCI-Instanz zu schützen, die auf den Azure VMs bereitgestellt ist.
+>
+>SQL Server AlwaysOn-Verfügbarkeitsgruppe mit folgenden Einstellungen:
+>- Sekundär bevorzugen
+>- Nur sekundär
+>- Primär
+>- Beliebiges Replikat
 
 Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung von Azure umfasst Folgendes:
 

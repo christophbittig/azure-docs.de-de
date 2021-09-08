@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96d3957a7626e393728d4a309bc56ecaa19d4e83
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950311"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400919"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Beibehalten von ACLs, Attributen und Zeitstempeln für Dateien mit Azure Data Box
 
@@ -102,6 +102,45 @@ where
 |`/log+:<LogFile>`  |Fügt die Ausgabe an die vorhandene Protokolldatei an.|
 
 Weitere Informationen zu diesen `robocopy`-Parametern finden Sie unter [Tutorial: Kopieren von Daten in eine Azure Data Box über SMB](./data-box-deploy-copy-data.md).
+
+> [!NOTE]
+> Wenn Sie `/copyall` zum Kopieren Ihrer Daten verwenden, werden die Quell-ACLs für Verzeichnisse und Dateien an Azure Files übertragen. Wenn Sie nur Lesezugriff auf Ihre Quelldaten hatten und die Quelldaten nicht ändern konnten, haben Sie nur Lesezugriff auf die Daten in Data Box. Verwenden Sie `/copyall` nur, wenn Sie beabsichtigen, alle ACLs für die Verzeichnisse und Dateien zusammen mit den Daten zu kopieren.
+
+#### <a name="use-robocopy-to-list-copy-modify-files-on-data-box"></a>Verwenden von Robocopy zum Auflisten, Kopieren und Ändern von Dateien in Data Box
+
+Im Folgenden finden Sie einige der gängigen Szenarien beim Kopieren von Daten mit `robocopy`.
+
+- **Nur Daten in Data Box kopieren, keine ACLs für Verzeichnisse und Dateien**
+
+    Wählen Sie die Option `/dcopy:DAT`, um nur Daten, Attribute und Zeitstempel zu kopieren. ACLs für Verzeichnisse und Dateien werden nicht kopiert.
+
+- **Daten und ACLs für Verzeichnisse und Dateien in Data Box kopieren**
+
+    Wählen Sie `/copyall`, um alle Quelldaten einschließlich aller ACLs für Verzeichnisse und Dateien zu kopieren.
+
+- **Dateisystem in Data Box mit robocopy auflisten**
+
+    Listen Sie mit diesem Befehl den Inhalt von Verzeichnissen auf:
+
+    `robocopy <source-dir> NULL /l /s /xx /njh /njs /fp /B`
+
+    Beachten Sie, dass Sie diese Dateien im Datei-Explorer nicht auflisten können.
+    
+- **Ordner und Dateien in Data Box kopieren oder löschen**
+
+    Kopieren Sie mit diesem Befehl eine einzelne Datei:
+
+    `robocopy <source-dir> <destination-dir> <file-name> /B`
+
+    Löschen Sie mit diesem Befehl eine einzelne Datei:
+
+    `robocopy <source-dir> <destination-dir> <file-name> /purge /B`
+
+    Im obigen Befehl darf `<source-dir>` nicht die Datei `<file-name>` enthalten. Anschließend synchronisiert der obige Befehl das Ziel mit der Quelle, was dazu führt, dass die Datei aus dem Ziel entfernt wird.
+
+    Beachten Sie, dass der Datei-Explorer die oben genannten Vorgänge möglicherweise nicht zulässt.
+
+Weitere Informationen finden Sie unter [Verwenden von robocopy-Befehlen](/windows-server/administration/windows-commands/robocopy).
 
 ### <a name="linux-data-copy-tool"></a>Tool zum Kopieren von Daten unter Linux
 

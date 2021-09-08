@@ -2,14 +2,14 @@
 title: Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen in Azure Monitor
 description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal mit einer Azure Resource Manager-Vorlage und Azure PowerShell.
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0961b091f87120d8bfed885b000c380862a4074c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.subservice: alerts
+ms.date: 08/12/2021
+ms.openlocfilehash: 2128f0ce8b2538d89876f7609002d293a29b3447
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317269"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350775"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -22,117 +22,97 @@ Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resourc
 > [!IMPORTANT]
 > Warnungen zur Service Health-Benachrichtigung können nicht über die Schnittstelle zur Erstellung von Aktivitätsprotokollwarnungen erstellt werden. Weitere Informationen zum Erstellen und Verwenden von Service Health-Benachrichtigungen finden Sie unter [Empfangen von Aktivitätsprotokollwarnungen zu Service Health-Benachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
-Stellen Sie beim Erstellen von Warnungsregeln Folgendes sicher:
+Beachten Sie beim Erstellen von Warnungsregeln die folgenden Punkte:
 
 - Das Abonnement im Bereich unterscheidet sich nicht von dem Abonnement, unter dem die Warnung erstellt wird.
 - Die Kriterien, für die die Warnung konfiguriert wird, müssen die Ereigniskategorie „Ebene“, „Status“, „Aufrufer“, „Ressourcengruppe“, „Ressourcen-ID“ oder „Ressourcentyp“ sein.
-- Nur eine „allOf“-Bedingung ist zulässig.
-- „AnyOf“ kann verwendet werden, damit für mehrere Felder mehrere Bedingungen zulässig sind, z. B. wenn entweder das Feld „status“ oder das Feld „subStatus“ einem bestimmten Wert entspricht. Beachten Sie, dass die Verwendung von „AnyOf“ derzeit auf das Erstellen von Warnungsregeln mithilfe einer ARM-Vorlagenbereitstellung beschränkt ist.
-- „ContainsAny“ kann verwendet werden, wenn für ein Feld mehrere Werte verwendet werden sollen, z. B. wenn für „operation“ entweder der Wert „delete“ oder „modify“ gilt. Beachten Sie, dass die Verwendung von „ContainsAny“ derzeit auf das Erstellen von Warnungsregeln mithilfe einer ARM-Vorlagenbereitstellung beschränkt ist.
+- Im JSON-Code für die Warnungskonfiguration gibt es keine Bedingung „anyOf“ oder geschaltete Bedingungen. Grundsätzlich ist nur eine „allOf“-Bedingung ohne weitere „allOf“- oder „anyOf“-Bedingungen zulässig.
 - Wenn die Kategorie „Verwaltung“ lautet, müssen Sie in Ihrer Warnung mindestens ein Kriterium der oben genannten Kriterien angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
 - Warnungen können für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls nicht erstellt werden.
 
 ## <a name="azure-portal"></a>Azure-Portal
 
 Sie können das Azure-Portal verwenden, um Warnungsregeln für das Aktivitätsprotokoll zu erstellen und zu ändern. Die Umgebung ist in ein Aktivitätsprotokoll von Azure integriert, um eine nahtlose Erstellung von Warnmeldungen für bestimmte Ereignisse zu gewährleisten, die für Sie von Interesse sind.
+Im Azure-Portal können Sie eine neue Warnungsregel für das Aktivitätsprotokoll entweder über das Blatt „Warnungen“ oder das Blatt „Aktivitätsprotokoll“ in Azure Monitor erstellen. 
 
-### <a name="create-with-the-azure-portal"></a>Erstellen mit dem Azure-Portal
 
-Verwenden Sie das folgende Verfahren.
+### <a name="create-an-alert-rule-from-the-azure-monitor-alerts-blade"></a>Erstellen einer Warnungsregel über das Blatt „Warnungen“ in Azure Monitor
 
-1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen** aus.
-2. Wählen Sie **Neue Warnungsregel** in der oberen linken Ecke des Fensters **Warnungen** aus.
+Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azure-Portal erstellen:
 
-     ![Neue Warnungsregel](media/alerts-activity-log/AlertsPreviewOption.png)
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Überwachen**. Das Blatt „Überwachen“ konsolidiert alle Ihre Überwachungseinstellungen und Daten in einer Ansicht.
 
-     Das Fenster **Regel erstellen** wird angezeigt.
+2. Klicken Sie auf **Warnungen** und dann auf **+ Neue Warnungsregel**.
 
-      ![Optionen für neue Warnungsregeln](media/alerts-activity-log/create-new-alert-rule-options.png)
+    :::image type="content" source="media/alerts-activity-log/create-alert-rule-button-new.png" alt-text="Screenshot der Schaltfläche „Neue Warnungsregel“":::
+    > [!TIP]
+    > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
 
-3. Geben Sie unter **Warnungsbedingung definieren** die folgenden Informationen an, und wählen Sie **Fertig** aus:
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+    
+    > [!NOTE]
+    > Als Ziel können Sie ein gesamtes Abonnement, eine Ressourcengruppe oder eine bestimmte Ressource auswählen. Wenn Sie ein Abonnement oder eine Ressourcengruppe als Ziel und zudem einen Ressourcentyp ausgewählt haben, gilt die Regel für alle Ressourcen dieses Typs innerhalb des ausgewählten Abonnements oder einer Ressourcengruppe. Wenn Sie eine bestimmte Zielressource ausgewählt haben, gilt die Regel nur für diese Ressource. Sie können mithilfe der Zielauswahl nicht mehrere Abonnements, Ressourcengruppen oder Ressourcen explizit auswählen. 
 
-   - **Warnungsziel:** Um das Ziel für die neue Warnung anzuzeigen und auszuwählen, verwenden Sie **Nach Abonnement filtern** / **Nach Ressourcentyp filtern**. Wählen Sie die Ressource oder die Ressourcengruppe aus der angezeigten Liste aus.
+4. Wenn die ausgewählte Ressource Aktivitätsprotokollvorgänge aufweist, für die Sie Warnungen erstellen können, wird für **Verfügbare Signale** unten rechts der Eintrag „Aktivitätsprotokoll“ angezeigt. Die vollständige Liste der für Aktivitätsprotokollwarnungen unterstützten Ressourcentypen finden Sie in diesem [Artikel](../../role-based-access-control/resource-provider-operations.md).
 
-     > [!NOTE]
-     > 
-     > Sie können nur vom [Azure Resource Manager](../../azure-resource-manager/management/overview.md) überwachte Ressourcen, Ressourcengruppen oder ein ganzes Abonnement für ein Aktivitätsprotokollsignal auswählen. 
+    :::image type="content" source="media/alerts-activity-log/select-target-new.png" alt-text="Screenshot des Blatts für die Zielauswahl" lightbox="media/alerts-activity-log/select-target-new.png":::
 
-     **Beispielansicht für Warnungsziel**
+5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 
-     ![Ziel auswählen](media/alerts-activity-log/select-target.png)
+6. Sie sehen eine Liste der für die Ressource unterstützten Signale, einschließlich der Signale aus verschiedenen Kategorien für **Aktivitätsprotokoll**. Wählen Sie das Aktivitätsprotokollsignal bzw. den Aktivitätsprotokollvorgang aus, für das/den Sie eine Warnung erstellen möchten.
 
-   - Wählen Sie unter **Zielkriterien** die Option **Kriterien hinzufügen** aus. Alle verfügbaren Signale für das Ziel werden angezeigt, einschließlich derjenigen aus verschiedenen Kategorien des **Aktivitätsprotokolls**. Der Kategoriename wird an den Namen des **Überwachungsdiensts** angefügt.
+7. Es wird ein Diagramm für den Aktivitätsprotokollvorgang für die letzten sechs Stunden angezeigt. Verwenden Sie die Dropdownliste **Diagrammzeitraum**, um einen längeren Verlauf für den Vorgang anzuzeigen.
 
-   - Wählen Sie das Signal aus der Liste der verschiedenen möglichen Operationen für den Typ **Aktivitätsprotokoll** aus.
+8. Unter **Warnungslogik** können Sie optional weitere Filterkriterien definieren:
 
-     Sie können die Zeitachse für den Protokollverlauf und die entsprechende Warnungslogik für dieses Zielsignal auswählen:
+    - **Ereignisstufe**: Der Schweregrad des Ereignisses: _Ausführlich_, _Information_, _Warnung_, _Fehler_ oder _Kritisch_.
+    - **Status:** Der Status des Ereignisses: _Gestartet_, _Fehlgeschlagen_ oder _Erfolgreich_.
+    - **Ereignis initiiert von:** Wird auch als „Aufrufer“ bezeichnet. Die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang durchgeführt hat.
 
-     **Anzeige „Kriterien hinzufügen“**
+    > [!NOTE]
+    >   Um hochwertige und effektive Regeln zu erhalten, wird Folgendes empfohlen: Wenn der Warnungsbereich ein gesamtes Abonnement umfasst und das ausgewählte Signal auf „Alle Verwaltungsvorgänge“ festgelegt ist, müssen Sie beim Definieren der Bedingung eine der Dropdownlisten für die Warnungslogik ausfüllen („Ereignisstufe“, „Status“ oder „Initiiert von“), damit die Regel spezifischer wird.
+        
+9. Klicken Sie auf **Fertig**.
 
-     ![Hinzufügen von Kriterien](media/alerts-activity-log/add-criteria.png)
+    :::image type="content" source="media/alerts-activity-log/condition-selected-new.png" alt-text="Screenshot des Blatts für die Bedingungsauswahl" lightbox="media/alerts-activity-log/condition-selected-new.png":::
+
+10. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+
+    > [!NOTE]
+    >   Der Warnungsschweregrad für Aktivitätsprotokollwarnungen kann derzeit nicht vom Benutzer konfiguriert werden und ist standardmäßig auf „Sev4“ festgelegt.
+
+11. Fügen Sie der Warnung eine Aktionsgruppe hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+
+12. Klicken Sie auf **Fertig**, um die Warnungsregel für das Aktivitätsprotokoll zu speichern.
      
-     > [!NOTE]
-     > 
-     >  Um hochwertige und effektive Regeln zu erhalten, sollten Sie den Regeln mindestens eine weitere Bedingung mit dem Signal „Alle administrativen“ hinzufügen. 
-     > Als Teil der Definition der Warnung müssen Sie eines der Dropdownfelder ausfüllen: „Ereignisebene“, „Status“ oder „Initiiert von“, und so wird die Regel spezifischer.
+     
+### <a name="create-an-alert-rule-from-the-azure-monitor-activity-log-blade"></a>Erstellen einer Warnungsregel über das Blatt „Aktivitätsprotokoll“ in Azure Monitor
 
-     - **Verlaufszeit**: Die für den ausgewählten Vorgang verfügbaren Ereignisse können über die letzten 6, 12 bzw. 24 Stunden oder über die letzte Woche aufgezeichnet werden.
+Eine alternative Möglichkeit zum Erstellen einer Aktivitätsprotokollwarnung besteht darin, mit einem bereits aufgetretenen Aktivitätsprotokollereignis über das [Aktivitätsprotokoll im Azure-Portal](../essentials/activity-log.md#view-the-activity-log) zu beginnen. 
 
-     - **Warnungslogik**:
+1. Auf dem Blatt **Azure Monitor – Aktivitätsprotokoll** können Sie das gewünschte Ereignis filtern oder finden und dann eine Warnung für zukünftige ähnliche Ereignisse mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. 
 
-       - **Ereignisstufe**: Der Schweregrad des Ereignisses: _Ausführlich_, _Information_, _Warnung_, _Fehler_ oder _Kritisch_.
-       - **Status:** Der Status des Ereignisses: _Gestartet_, _Fehlgeschlagen_ oder _Erfolgreich_.
-       - **Ereignis initiiert von:** Wird auch als „Aufrufer“ bezeichnet. Die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang durchgeführt hat.
+    :::image type="content" source="media/alerts-activity-log/create-alert-rule-from-activity-log-event-new.png" alt-text="Screenshot der Erstellung einer Warnungsregel über ein Aktivitätsprotokollereignis" lightbox="media/alerts-activity-log/create-alert-rule-from-activity-log-event-new.png":::
 
-       In diesem Beispielsignaldiagramm wird die Warnungslogik angewendet:
+2. Das Blatt zum Erstellen einer Warnungsregel wird geöffnet, wobei der Bereich und die Bedingung der Warnungsregel bereits entsprechend dem zuvor ausgewählten Aktivitätsprotokollereignis ausgefüllt sind. Sie können den Bereich und die Bedingung in dieser Phase bei Bedarf bearbeiten und ändern. Beachten Sie, dass der genaue Bereich und die Bedingung für die neue Regel standardmäßig unverändert aus den ursprünglichen Ereignisattributen kopiert werden. Beispielsweise sind die genaue Ressource, für die das Ereignis aufgetreten ist, und der Name des spezifischen Benutzers/Diensts, der das Ereignis initiiert hat, standardmäßig in der neuen Warnungsregel enthalten. Wenn Sie die Warnungsregel allgemeiner gestalten möchten, müssen Sie den Bereich und die Bedingung entsprechend ändern, wie es in den Schritten 3 bis 9 oben erläutert ist. 
 
-       ![Ausgewählten Kriterien](media/alerts-activity-log/criteria-selected.png)
-
-4. Geben Sie unter **Details der Warnungsregel definieren** die folgenden Details an:
-
-    - **Name der Warnungsregel**: Der Name für die neue Warnungsregel.
-    - **Beschreibung**: Die Beschreibung für die Warnungsregel.
-    - **Warnung in Ressourcengruppe speichern**: Wählen Sie die Ressourcengruppe aus, in der Sie die neue Regel speichern möchten.
-
-5. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](./action-groups.md) und der neuen Regel zuweisen. Klicken Sie zum Erstellen einer neuen Gruppe auf **+ Neue Gruppe**.
-
-6. Klicken Sie zum Aktivieren der Regeln nach der Erstellung für **Regel beim Erstellen aktivieren** auf **Ja**.
-7. Wählen Sie **Warnungsregel erstellen** aus.
-
-    Die neue Warnungsregel für das Aktivitätsprotokoll wird erstellt, und oben rechts im Fenster wird eine Bestätigungsmeldung angezeigt.
-
-    Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. Erfahren Sie mehr über die Verwaltung von Aktivitätsprotokollregeln.
-
-
-Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln in einem Aktivitätsprotokoll erstellt werden können, ist die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](../essentials/activity-log.md#view-the-activity-log). Auf dem Bildschirm **Azure Monitor – Aktivitätsprotokoll** können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann die Schritte 4 bis 7 wie zuvor gezeigt.
+3. Befolgen Sie dann die Schritte 10 bis 12 wie zuvor gezeigt.
     
- ![Hinzufügen einer Warnung aus dem Aktivitätsprotokoll](media/alerts-activity-log/add-activity-log.png)
-    
-
 ### <a name="view-and-manage-in-the-azure-portal"></a>Anzeigen und Verwalten im Azure-Portal
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen** aus. Wählen Sie **Warnungsregeln verwalten** in der oberen linken Ecke des Fensters aus.
 
-    ![Screenshot: Aktivitätsprotokoll, in dem das Suchfeld hervorgehoben ist](media/alerts-activity-log/manage-alert-rules.png)
-
+    :::image type="content" source="media/alerts-activity-log/manage-alert-rules-button-new.png" alt-text="Screenshot der Schaltfläche „Warnungsregeln verwalten“":::
+    
     Die Liste mit den verfügbaren Regeln wird angezeigt.
 
-2. Suchen Sie nach der zu ändernden Aktivitätsprotokollregel.
+2. Filtern oder suchen Sie nach der zu ändernden Aktivitätsprotokollregel.
 
-    ![Suchen nach Regeln für Aktivitätsprotokollwarnungen](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
+    :::image type="content" source="media/alerts-activity-log/manage-alert-rules-new.png" alt-text="Screenshot des Blatts zur Verwaltung von Warnungsregeln" lightbox="media/alerts-activity-log/manage-alert-rules-new.png":::
 
     Sie können die verfügbaren Filter _Abonnement_, _Ressourcengruppe_, _Ressource_, _Signaltyp_ oder _Status_ verwenden, um die Aktivitätsregel zu ermitteln, die Sie bearbeiten möchten.
-
-   > [!NOTE]
-   > 
-   > Sie können nur **Beschreibung**, **Zielkriterien** und **Aktionsgruppen** bearbeiten.
-
-3. Wählen Sie die Regel aus, und doppelklicken Sie darauf, um die Regeloptionen zu bearbeiten. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie dann **Speichern** aus.
-
-   ![Verwalten von Warnungsregeln](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4. Sie können eine Regel aktivieren, deaktivieren oder löschen. Wählen Sie oben im Fenster die entsprechende Option aus, nachdem Sie die Regel wie in Schritt 2 beschrieben ausgewählt haben.
-
+ 
+3. Wählen Sie die Regel aus, und doppelklicken Sie darauf, um die Regeloptionen zu bearbeiten. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie dann **Speichern** aus. 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 Um eine Aktivitätsprotokoll-Warnungsregel mithilfe einer Azure Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `microsoft.insights/activityLogAlerts` erstellen. Anschließend tragen Sie alle zugehörigen Eigenschaften ein. Hier sehen Sie eine Vorlage, mit der eine Aktivitätsprotokoll-Warnungsregel erstellt wird:
@@ -202,12 +182,12 @@ Um eine Aktivitätsprotokoll-Warnungsregel mithilfe einer Azure Resource Manager
   ]
 }
 ```
-Der vorherige JSON-Beispielcode kann für diese exemplarische Vorgehensweise z.B. als „sampleActivityLogAlert.json“ gespeichert und mit [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md) bereitgestellt werden.
+Der vorherige JSON-Beispielcode kann z. B. als „sampleActivityLogAlert.json“ gespeichert und mit [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md) bereitgestellt werden.
 
-  > [!NOTE]
-  > 
-  > Beachten Sie, dass die höchste Ebene, auf der Aktivitätsprotokollwarnungen definiert werden können, das Abonnement ist.
-  > Das bedeutet, dass es keine Möglichkeit gibt, eine Warnung für mehrere Abonnements zu definieren. Daher sollte die Definition eine Warnung pro Abonnement umfassen.
+> [!NOTE]
+> 
+> Beachten Sie, dass die höchste Ebene, auf der Aktivitätsprotokollwarnungen definiert werden können, das Abonnement ist.
+> Das bedeutet, dass es keine Möglichkeit gibt, eine Warnung für mehrere Abonnements zu definieren. Daher sollte die Definition eine Warnung pro Abonnement umfassen.
 
 Bei den folgenden Feldern handelt es sich um die Optionen, die Sie in der Azure Resource Manager-Vorlage für die Bedingungsfelder verwenden können. Beachten Sie, dass „Resource Health“, „Advisor“ und „Service Health“ zusätzliche Eigenschaftenfelder für die jeweiligen speziellen Felder umfassen. 
 1. resourceId:  Die Ressourcen-ID der betroffenen Ressource in dem Aktivitätsprotokollereignis, für das die Warnung generiert werden soll.
@@ -277,17 +257,18 @@ Unter [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) ste
 
 Verwenden Sie für die Erstellung einer neuen Warnungsregel des Aktivitätsprotokolls die folgenden Befehle in der angegebenen Reihenfolge:
 
-1. [az monitor activity-log alert create:](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_create) Erstellen einer neuen Ressource für Warnungsregeln des Aktivitätsprotokolls.
-1. [az monitor activity-log alert scope:](/cli/azure/monitor/activity-log/alert/scope) Hinzufügen des Bereichs für die erstellte Warnungsregel des Aktivitätsprotokolls.
-1. [az monitor activity-log alert action-group:](/cli/azure/monitor/activity-log/alert/action-group) Hinzufügen einer Aktionsgruppe zur Warnungsregel des Aktivitätsprotokolls.
+1. [az monitor activity-log alert create:](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create) Erstellen einer neuen Ressource für Warnungsregeln des Aktivitätsprotokolls.
+2. [az monitor activity-log alert scope:](/cli/azure/monitor/activity-log/alert/scope) Hinzufügen des Bereichs für die erstellte Warnungsregel des Aktivitätsprotokolls.
+3. [az monitor activity-log alert action-group:](/cli/azure/monitor/activity-log/alert/action-group) Hinzufügen einer Aktionsgruppe zur Warnungsregel des Aktivitätsprotokolls.
 
-Zum Abrufen einer Ressource für Warnungsregeln des Aktivitätsprotokolls verwenden Sie den Azure CLI-Befehl [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_show
-). Zum Anzeigen aller Ressourcen für Warnungsregeln des Aktivitätsprotokolls in einer Ressourcengruppe verwenden Sie den Befehl [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_list).
-Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure CLI-Befehl [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_delete) entfernt werden.
+Zum Abrufen einer Ressource für Warnungsregeln des Aktivitätsprotokolls verwenden Sie den Azure CLI-Befehl [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+). Zum Anzeigen aller Ressourcen für Warnungsregeln des Aktivitätsprotokolls in einer Ressourcengruppe verwenden Sie den Befehl [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Ressourcen für Warnungsregeln des Aktivitätsprotokolls können mit dem Azure CLI-Befehl [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokolle](./activity-log-alerts-webhook.md).
 - Lesen Sie eine [Übersicht über Aktivitätsprotokolle](./activity-log-alerts.md).
-- Weitere Informationen zu [Aktionsgruppen](./action-groups.md).  
+- Weitere Informationen zu [Aktionsgruppen](../platform/action-groups.md).  
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../../service-health/service-notifications.md).
+

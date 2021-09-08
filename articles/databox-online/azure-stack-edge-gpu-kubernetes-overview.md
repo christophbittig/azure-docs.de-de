@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 22a66ca16d8d2cb7ade82cb665f50cc9aae4b27b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437926"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355817"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -45,7 +45,12 @@ Das folgende Diagramm veranschaulicht die Implementierung von Kubernetes auf ein
 
 Weitere Informationen zur Kubernetes-Clusterarchitektur finden Sie unter [Grundlegende Kubernetes-Konzepte](https://kubernetes.io/docs/concepts/architecture/).
 
+Die Master- und Workerknoten sind virtuelle Computer, die CPU und Arbeitsspeicher beanspruchen. Bei der Bereitstellung von Kubernetes-Workloads ist es wichtig, die Computeanforderungen für die Master- und Worker-VMs zu verstehen.
 
+|Kubernetes-VM-Typ|CPU- und Arbeitsspeicheranforderung|
+|---------|---------|
+|Master-VM|4 Kerne, 4 GB RAM|
+|Worker-VM|12 Kerne, 32 GB RAM|
 <!--The Kubernetes cluster control plane components make global decisions about the cluster. The control plane has:
 
 - *kubeapiserver* that is the front end of the Kubernetes API and exposes the API.

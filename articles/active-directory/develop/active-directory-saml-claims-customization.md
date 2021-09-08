@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f0f943475fc397acf61c51fc3dc34cc9efdb1cfb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598838"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450565"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -50,7 +50,7 @@ Gehen Sie wie folgt vor, um die NameID (den Wert für den Namensbezeichner) zu b
 
 Wenn die SAML-Anforderung das NameIDPolicy-Element in einem bestimmten Format enthält, berücksichtigt Microsoft Identity Platform das Format in der Anforderung.
 
-Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Microsoft Identity Platform die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Microsoft Identity Platform das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist.
+Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Microsoft Identity Platform die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Microsoft Identity Platform das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist. Wenn eine Transformation zu einem NULL- oder unzulässigen Wert führt, sendet Azure AD in nameIdentifier einen persistenten paarweisen Bezeichner. 
 
 Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
 
@@ -98,7 +98,6 @@ Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 | Funktion | BESCHREIBUNG |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
-| **Join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
 | **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 
@@ -125,7 +124,7 @@ Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwende
 | Funktion | BESCHREIBUNG |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
-| **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. Bei der NameID-Anspruchstransformation beschränkt sich die Verknüpfung auf eine verifizierte Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
+| **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. |
 | **ToLowercase()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
 | **ToUppercase()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
 | **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
@@ -142,6 +141,13 @@ Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwende
 | **IfNotEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe nicht null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID für einen bestimmten Benutzer nicht leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1 |
 
 Wenn Sie zusätzliche Transformationen benötigen, senden Sie Ihre Vorschläge an das [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599). Verwenden Sie dort die Kategorie *SaaS-Anwendung*.
+
+## <a name="add-the-upn-claim-to-saml-tokens"></a>Hinzufügen des UPN-Anspruchs zu SAML-Token
+
+Der `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`-Anspruch ist Teil des [eingeschränkten SAML-Anspruchssatzes](reference-claims-mapping-policy-type.md#table-2-saml-restricted-claim-set) und kann nicht im Abschnitt **Benutzerattribute und Ansprüche** hinzugefügt werden.  Er kann allerdings im Azure-Portal über **App-Registrierungen** als [optionaler Anspruch](active-directory-optional-claims.md) hinzugefügt werden. 
+
+Öffnen Sie die App unter **App-Registrierungen**. Wählen Sie **Tokenkonfiguration** und dann **Optionalen Anspruch hinzufügen** aus. Wählen Sie den Tokentyp **SAML** und dann **UPN** in der Liste aus. Klicken Sie auf **Hinzufügen**, um den Anspruch im Token zu erhalten.
+
 
 ## <a name="emitting-claims-based-on-conditions"></a>Ausgeben von Ansprüchen aufgrund von Bedingungen
 

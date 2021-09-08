@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2df019888d293cd8a25a34e6f0f4e7dd215c6a41
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 1f7a3f31ed67817252f7ba33b9f4a83ef8ccd5c6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030632"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455620"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>Verwenden vorhandener Runbooks und Module
 
@@ -57,6 +57,9 @@ Das direkte Importieren aus dem PowerShell-Katalog ist nur über das Azure-Porta
 PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](https://www.powershellgallery.com) verfügbar. Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch manuell herunterladen und installieren.
 
 Sie finden auch Module, die Sie im Azure-Portal importieren können. Diese finden Sie für Ihr Automation-Konto im **Modulkatalog** unter **Freigegebene Ressourcen**.
+
+> [!IMPORTANT] 
+> Fügen Sie das Schlüsselwort AzureRm nicht in ein Skript ein, das mit dem Az-Modul ausgeführt werden soll. Die Einbeziehung des Schlüsselworts, auch in einen Kommentar, kann dazu führen, dass AzureRm geladen wird und dann in Konflikt mit dem Az-Modul gerät.
 
 ## <a name="common-scenarios-available-in-the-powershell-gallery"></a>Allgemeine im PowerShell-Katalog verfügbare Szenarios
 

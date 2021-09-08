@@ -4,12 +4,12 @@ description: Erstellen Sie programmgesteuert Warnungen, die Sie informieren, wen
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34f8ec2eb47428f06ddcaf6b82a988f7f2b4b836
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6543e376f1cfa3ed2592972b997895c8bae68f01
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703271"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643575"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 

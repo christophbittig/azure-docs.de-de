@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 4/15/2021
-ms.openlocfilehash: bb4a0cd58c316a9e40a3346d4f5417fe911c2c0e
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 07/13/2021
+ms.openlocfilehash: 8e705c95f875428c5089416ed3f49d90a474def9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111420966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339280"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht
 
@@ -44,11 +44,11 @@ Co-Selling-Status für Azure:
 
 - Not Co-Sell Ready (Nicht für Co-Selling bereit)
 - Co-Sell Ready (Für Co-Selling bereit)
-- Azure IP Co-Sell Incentivized (Azure IP-Co-Selling: Incentive)
+- Azure IP Co-Sell Incentive
 
 Co-Selling-Status für Geschäftsanwendungen
-- Business Applications – Co-Sell Incentivized Standard
-- Business Applications – Co-Sell Incentivized Premium  
+- Business Applications – Co-Sell Incentive Standard
+- Business Applications – Co-Sell Incentive Premium  
 
 Ausführliche Informationen zu den Anforderungen, die für die Erreichung dieser Co-Selling-Status erfüllt werden müssen, finden Sie unter [Co-Selling-Anforderungen](co-sell-requirements.md).
 
@@ -56,13 +56,13 @@ Ausführliche Informationen zu den Anforderungen, die für die Erreichung dieser
 
 Im Status „Co-Sell Ready“ werden Ihre Lösungen für Microsoft-Vertriebsteams verfügbar gemacht. Beim Co-Selling mit Microsoft-Vertriebsteams und Microsoft Partnern können Sie eine große Community mit Kunden von Microsoft erreichen. Dies ermöglicht Ihnen die gemeinsame Arbeit an Verkaufschancen, mit denen Sie Ihr geschäftliches Wachstum beschleunigen können.
 
-Informationen dazu, wie Sie den Status „Co-Sell Ready“ bzw. „Azure IP Co-Sell“ erreichen, finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentivized“](co-sell-requirements.md).
+Informationen dazu, wie Sie den Status „Co-Sell Ready“ bzw. „Azure IP Co-Sell“ erreichen, finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentive“](co-sell-requirements.md).
 
-## <a name="benefits-of-co-sell-incentivized-status"></a>Vorteile des Status „Co-Sell Incentivized“
+## <a name="benefits-of-co-sell-incentive-status"></a>Vorteile des Status „Co-Sell Incentive“
 
-Der Status _Co-Sell Incentivized_ umfasst _Azure IP Co-Sell Incentivized_ und _Business Applications Co-Sell Incentivized (Standard und Premium)_ . Diese Status motivieren Microsoft-Vertriebsteams, Ihr Angebot zu verkaufen. Um den Status zu erreichen, müssen Sie auch den Status „Co-Sell Ready“ erreicht haben. Im Status „Co-Sell Incentivized“ verfügen Sie über alle Vorteile des Status „Co-Sell Ready“ und können weitere Anreize für Microsoft-Vertriebsteams erzielen. Darüber hinaus erwerben Sie die Berechtigung für weitere Vorteile in Bezug auf den kommerziellen Marketplace.
+Der Status _Co-Sell Incentivized_ umfasst _Azure IP Co-Sell Incentivized_ und _Business Applications Co-Sell Incentivized (Standard und Premium)_ . Diese Status motivieren Microsoft-Vertriebsteams, Ihr Angebot zu verkaufen. Um den Status zu erreichen, müssen Sie auch den Status „Co-Sell Ready“ erreicht haben. Im Status „Co-Sell Incentive“ kommen Sie in den Genuss aller Vorteile des Status „Co-Sell Ready“ und können weitere Anreize für Microsoft-Vertriebsteams erzielen. Darüber hinaus erwerben Sie die Berechtigung für weitere Vorteile in Bezug auf den kommerziellen Marketplace.
 
-Der Status „Azure IP Co-Sell Incentivized“ kann auf die folgenden Angebotstypen angewendet werden:
+Der Status „Azure IP Co-Sell Incentive“ kann auf die folgenden Angebotstypen angewendet werden:
 
 - Azure-Anwendung
 - Azure-Container
@@ -70,23 +70,22 @@ Der Status „Azure IP Co-Sell Incentivized“ kann auf die folgenden Angebotsty
 - IoT Edge-Modul
 - Software-as-a-Service (SaaS)
 
-Der Status „Business Applications Co-Sell Incentivized (Standard und Premium)“ kann auf folgende Angebotstypen angewandt werden:
+Der Status „Business Applications Co-Sell Incentive (Standard und Premium)“ kann auf folgende Angebotstypen angewendet werden:
 
 - Dynamics 365 for Customer Engagement & PowerApps
 - Dynamics 365 for Operations
 
 Angebote, die den Status _Azure IP Co-Sell Incentivized_ erzielen, profitieren von den folgenden Vorteilen in Bezug auf den kommerziellen Marketplace:
 
-- Die Marketplace-Servicegebühr wird von 20 % auf 10 % reduziert. Dieser Rabatt gilt für Ihre IaaS- (Infrastructure-as-a-Service) oder SaaS-Lösung (Software-as-a-Service), die über den kommerziellen Marketplace verkauft wird. Weitere Informationen finden Sie unter [Dienstgebühren im kommerziellen Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - CSP-Partner (Cloud Solution Provider) erhalten für den Verkauf Ihrer IaaS-Lösung oder Ihres SaaS-Angebots einen Anreiz in Höhe von 10 %. Weitere Informationen über das CSP-Programm finden Sie unter [Programm für Cloud-Lösungsanbieter](cloud-solution-providers.md).
 - Der Verkauf Ihres Angebots über Azure Marketplace trägt zu den Azure Consumption Commitments der Kunden bei. Für berechtigte Kunden ist das Angebot im Azure-Portal mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Der Artikel [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](/marketplace/azure-consumption-commitment-benefit) enthält weitere Informationen dazu, wie Kunden vom MACC-Programm profitieren und wie sie Lösungen mit MACC-Aktivierung finden. Informationen dazu, wie Herausgeber ihr transaktionsfähiges Angebot bei MACC registrieren können, finden Sie unter [Registrierung für den Prepaidtarif für den Azure-Verbrauch](azure-consumption-commitment-enrollment.md).
 - Angebote, die den Status _Azure IP Co-Sell Incentivized_ erreichen oder beim [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) mit Co-Selling-Status registriert sind, erhalten in den folgenden Onlineshops auf der Angebotsseite den Badge **Bevorzugte Microsoft-Lösung**: [Azure Marketplace](https://azuremarketplace.microsoft.com/) und [AppSource](https://appsource.microsoft.com/).  Nachdem ein Angebot den entsprechenden Status erreicht hat, kann es bis zu 30 Tage dauern, bis der Badge „Bevorzugte Lösung“ im Onlineshop angezeigt wird. Der Badge bewirbt die Qualität und Leistung eines Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen.
 
-Informationen dazu, wie Sie den Status „Co-Sell Ready“ bzw. „Co-Sell Incentivized“ erreichen, finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentivized“](co-sell-requirements.md).
+Informationen dazu, wie Sie den Status „Co-Sell Incentive“ erreichen, finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentive“](co-sell-requirements.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Anforderungen finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentivized“](co-sell-requirements.md).
-- Informationen zum Konfigurieren eines Angebots für das Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
+- Weitere Informationen zu Anforderungen finden Sie unter [Anforderungen für „Co-Sell Ready“ und „Co-Sell Incentive“](co-sell-requirements.md).
+- Informationen zum Konfigurieren eines Angebots für das Co-Selling finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](co-sell-configure.md).
 - Informationen zum Überprüfen des Co-Selling-Status finden Sie unter [Überprüfen des Co-Selling-Status für ein Angebot im kommerziellen Marketplace](co-sell-status.md).
 - Erfahren Sie mehr zum [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).

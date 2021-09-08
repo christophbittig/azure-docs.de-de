@@ -2,21 +2,22 @@
 title: App-Transparenz und -Steuerung mit Microsoft Cloud App Security
 description: Hier erfahren Sie, wie Sie App-Risikostufen identifizieren, Sicherheitsverletzungen und Datenlecks in Echtzeit verhindern und App-Connectors verwenden, um Anbieter-APIs für Transparenz und Governance zu nutzen.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/03/2020
-ms.author: mtillman
+ms.date: 07/29/2021
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb26310861df38ba743bf39c42344278da288ef3
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: bokacevi, dacurwin
+ms.openlocfilehash: ffc4a35aef2304a650f5673a26f0e4fd532e23be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339636"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Sichtbarkeit und Steuerung von Cloud-Apps
 
@@ -33,39 +34,41 @@ Mit Microsoft Cloud App Discovery (einem Azure Active Directory Premium P1-Feat
 - Verwalten Ihrer Apps
 - Erweiterte Berichte zur Schatten-IT-Ermittlung
 - Kontrollieren von sanktionierten Apps
- 
+
 ### <a name="learn-more"></a>Weitere Informationen
 
-- [Tutorial: Erkennen und Verwalten von Schatten-IT in Ihrem Netzwerk](/cloud-app-security/tutorial-shadow-it)
-- [Arbeiten mit ermittelten Apps](/cloud-app-security/discovered-apps)
- 
-## <a name="user-session-visibility-and-control"></a>Transparenz und Steuerung von Benutzersitzungen 
+- [Erkennen und Verwalten von Schatten-IT in Ihrem Netzwerk](/cloud-app-security/tutorial-shadow-it)
+- [Mit Cloud App Security entdeckte Apps](/cloud-app-security/discovered-apps)
 
-Heutzutage reicht es häufig nicht aus, wenn Sie erst im Nachhinein von Vorgängen in Ihrer Cloudumgebung erfahren. Sicherheitsverletzungen und Datenlecks sollten nach Möglichkeit verhindert werden, bevor Mitarbeiter absichtlich oder versehentlich Ihre Daten und Ihre Organisation gefährden. Die dazu nötigen Funktionen werden von Microsoft Cloud App Security in Kombination mit Azure Active Directory (Azure AD) in Form einer ganzheitlichen und integrierten Lösung mit App-Steuerung für bedingten Zugriff bereitgestellt. 
+## <a name="user-session-visibility-and-control"></a>Transparenz und Steuerung von Benutzersitzungen
+
+Heutzutage reicht es häufig nicht aus, wenn Sie erst im Nachhinein von Vorgängen in Ihrer Cloudumgebung erfahren. Sicherheitsverletzungen und Datenlecks sollten nach Möglichkeit verhindert werden, bevor Mitarbeiter absichtlich oder versehentlich Ihre Daten und Ihre Organisation gefährden. Die dazu nötigen Funktionen werden von Microsoft Cloud App Security in Kombination mit Azure Active Directory (Azure AD) in Form einer ganzheitlichen und integrierten Lösung mit App-Steuerung für bedingten Zugriff bereitgestellt.
 
 Die Sitzungssteuerung verwendet eine Reverseproxyarchitektur und ist auf einzigartige Weise in den bedingten Azure AD-Zugriff integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nach Bestimmung der Bedingungen können Sie Benutzer an Cloud App Security weiterleiten, wo Ihre Daten in Echtzeit geschützt werden können.  
 
-Diese Steuerung ermöglicht Folgendes:  
+Diese Steuerung ermöglicht Folgendes:
+
 - Steuern von Dateidownloads
 - Überwachen von B2B-Szenarien  
 - Steuern des Dateizugriffs  
 - Schützen von Dokumenten beim Herunterladen  
- 
+
 ### <a name="learn-more"></a>Weitere Informationen
 
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
- 
-## <a name="advanced-app-visibility-and-controls"></a>Erweiterte App-Transparenz und -Steuerung 
+- [Schützen von Apps mithilfe der Sitzungssteuerung in Cloud App Security](/cloud-app-security/proxy-intro-aad)
 
-App-Connectors nutzen die APIs von App-Anbietern, um für die Apps, mit denen Sie eine Verbindung herstellen, die Transparenz und Steuerung durch Microsoft Cloud App Security zu verbessern. Cloud App Security nutzt die vom Cloudanbieter bereitgestellten APIs. Jeder Dienst hat seine eigenen Framework- und API-Einschränkungen wie etwa Drosselung, API-Grenzwerte und dynamische API-Fenster mit Zeitversatz. Das Cloud App Security-Produktteam hat mit diesen Diensten gearbeitet, um die API-Verwendung zu optimieren und die bestmögliche Leistung zu erzielen. Von den Cloud App Security-Engines wird die maximal zulässige Kapazität genutzt (unter Berücksichtigung verschiedener API-Einschränkungen, die von den Diensten erzwungen werden). Einige Vorgänge wie etwa das Scannen aller Dateien im Mandanten erfordern zahlreiche API-Aufrufe und erstrecken sich daher über einen längeren Zeitraum. Bei einigen Richtlinien ist mit einer Ausführungsdauer von mehreren Stunden oder Tagen zu rechnen. 
- 
-### <a name="learn-more"></a>Weitere Informationen  
+## <a name="advanced-app-visibility-and-controls"></a>Erweiterte App-Transparenz und -Steuerung
 
-- [Verbinden von Apps](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+App-Connectors nutzen die APIs von App-Anbietern, um für die Apps, mit denen Sie eine Verbindung herstellen, die Transparenz und Steuerung durch Microsoft Cloud App Security zu verbessern.
+Cloud App Security nutzt die vom Cloudanbieter bereitgestellten APIs. Jeder Dienst hat seine eigenen Framework- und API-Einschränkungen wie etwa Drosselung, API-Grenzwerte und dynamische API-Fenster mit Zeitversatz. Das Cloud App Security-Produktteam hat mit diesen Diensten gearbeitet, um die API-Verwendung zu optimieren und die bestmögliche Leistung zu erzielen. Von den Cloud App Security-Engines wird die maximal zulässige Kapazität genutzt (unter Berücksichtigung verschiedener API-Einschränkungen, die von den Diensten erzwungen werden). Einige Vorgänge wie etwa das Scannen aller Dateien im Mandanten erfordern zahlreiche API-Aufrufe und erstrecken sich daher über einen längeren Zeitraum. Bei einigen Richtlinien ist mit einer Ausführungsdauer von mehreren Stunden oder Tagen zu rechnen.
+
+### <a name="learn-more"></a>Weitere Informationen
+
+- [Verbinden von Apps in Cloud App Security](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erkennen und Verwalten von Schatten-IT in Ihrem Netzwerk](/cloud-app-security/tutorial-shadow-it)
-- [Arbeiten mit ermittelten Apps](/cloud-app-security/discovered-apps)
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad)
-- [Verbinden von Apps](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Erkennen und Verwalten von Schatten-IT in Ihrem Netzwerk](/cloud-app-security/tutorial-shadow-it)
+- [Mit Cloud App Security entdeckte Apps](/cloud-app-security/discovered-apps)
+- [Schützen von Apps mithilfe der Sitzungssteuerung in Cloud App Security](/cloud-app-security/proxy-intro-aad)
+- [Verbinden von Apps in Cloud App Security](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

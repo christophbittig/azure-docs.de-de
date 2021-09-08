@@ -2,18 +2,20 @@
 title: Konfigurieren von Warnungen und arbeiten mit Metriken in Azure VMware Solution
 description: Erfahren Sie, wie Benachrichtigungen zum Empfangen von Benachrichtigungen verwendet werden. Außerdem erfahren Sie mehr über das Arbeiten mit Metriken, um tiefere Erkenntnisse in Ihre Azure VMware-Lösung Private Cloud zu erhalten.
 ms.topic: how-to
-ms.date: 04/02/2021
-ms.openlocfilehash: 2e7a04a11b5a569c6e12e7a8315f13ea740a812c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/23/2021
+ms.openlocfilehash: 718838d5335ff10200fc41029a6431a96552894b
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126282"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653574"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Konfigurieren von Azure-Warnungen in Azure VMware Solution 
 
 In diesem Artikel erfahren Sie, wie Sie [Azure-Aktionsgruppen](../azure-monitor/alerts/action-groups.md) in [Microsoft Azure Warnungen](../azure-monitor/alerts/alerts-overview.md) konfigurieren, um Benachrichtigungen über ausgelöste Ereignisse zu erhalten, die Sie definieren. Außerdem erfahren Sie mehr über die Verwendung von [Azure Monitor Metriken](../azure-monitor/essentials/data-platform-metrics.md), um tiefere Erkenntnisse in Ihre Azure VMware-Lösung Private Cloud zu erhalten.
 
+>[!NOTE]
+>Incidents, die sich auf die Verfügbarkeit eines Azure VMware Solution-Hosts und die entsprechende Wiederherstellung auswirken, werden automatisch an den Kontoadministrator, Dienstadministrator (klassische Berechtigung), die Co-Administratoren (klassische Berechtigung) und Besitzer (RBAC-Rolle) der Abonnements mit den privaten Azure VMware Solution-Clouds gesendet.
 
 ## <a name="supported-metrics-and-activities"></a>Unterstützte Metriken und Aktivitäten
 
@@ -45,7 +47,7 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
    - Einrichten der Aktionsgruppe
    - Festlegen der Details der Benachrichtigungsregel
     
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/create-alert-rule-details.png" alt-text="Screenshot, der das Fenster „Warnungsregel erstellen“ zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/create-alert-rule-details.png":::
+   :::image type="content" source="../devtest-labs/media/activity-logs/create-alert-rule-done.png" alt-text="Screenshot des Fensters „Warnungsregel erstellen“." lightbox="../devtest-labs/media/activity-logs/create-alert-rule-done.png":::
 
 1. Wählen Sie unter **Umfang**, die Zielressource aus, die Sie überwachen möchten. Standardmäßig wurde die Azure VMware-Lösung Private Cloud, über die Sie das Menü Warnungen geöffnet haben, definiert.
 
@@ -53,27 +55,17 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
 
    In unserem Beispiel haben wir den **Prozentsatz des verwendeten Datenträger DataStore-Daten** Trägers ausgewählt, der aus einer SLA-Perspektive der [Azure VMware-Lösung](https://aka.ms/avs/sla) relevant ist. 
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/configure-signal-logic-options.png" alt-text="Screenshot, der das Fenster Signallogik konfigurieren mit vordefinierten Signalnamen anzeigt."::: 
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/configure-signal-logic-options.png" alt-text="Screenshot des Fensters „Signallogik konfigurieren“ mit den Signalen, die für die Warnungsregel erstellt werden sollen."::: 
 
 1. Definieren Sie die Logik, durch die die Warnung ausgelöst wird, und wählen Sie dann **abgeschlossen** aus. 
 
    In unserem Beispiel wurden nur der **Schwellenwert** und die **Frequenz der Auswertung** angepasst. 
    
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/define-alert-logic-threshold.png" alt-text="Screenshot, der die Informationen für die ausgewählte Signallogik zeigt."::: 
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/define-alert-logic-threshold.png" alt-text="Screenshot mit Angabe von Schwellenwert, Operator, Aggregationsart und -granularität, Schwellenwert und Häufigkeit der Auswertung der Signalwarnungslogik."::: 
 
 1. Klicken Sie unter **Aktionen** auf **Add action groups** (Aktionsgruppen auswählen). Die Aktionsgruppe definiert, *wie* die Benachrichtigung empfangen wird und *wer* Sie empfängt.   Benachrichtigungen können per e-Mail, SMS, [Azure Mobile App-Pushbenachrichtigung](https://azure.microsoft.com/features/azure-portal/mobile-app/) oder Sprachnachricht empfangen werden.
- 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/create-action-group.png" alt-text="Screenshot, der die vorhandenen Aktionsgruppen und den Speicherort für die Erstellung einer neuen Aktionsgruppe anzeigt.":::
 
-1. Wählen Sie im Fenster, das geöffnet wird, **Aktionsgruppe erstellen** aus.
-
-   >[!TIP]
-   > Sie können auch eine vorhandene Aktionsgruppe auswählen.
-
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/select-action-group-for-alert-rule.png" alt-text="Screenshot, der die Aktionsgruppen anzeigt, die für die Warnung ausgewählt werden sollen."::: 
-
- 
-
+1. Wählen Sie eine vorhandene Aktionsgruppe oder **Aktionsgruppe erstellen** aus, um eine neue Gruppe zu erstellen.
  
 1. Weisen Sie in dem Fenster, das geöffnet wird, auf der Registerkarte **Grundlagen** der Aktionsgruppe einen Namen und einen Anzeigenamen zu.
 
@@ -81,28 +73,30 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
 
    Unser Beispiel basiert auf einer E-Mail-Benachrichtigung.
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/create-action-group-notification-settings.png" alt-text="Screenshot mit den Einstellungen für E-Mail, SMS, Push und Spracheinstellungen für die Warnung." lightbox="media/configure-alerts-for-azure-vmware-solution/create-action-group-notification-settings.png":::     
+   :::image type="content" source="../azure-monitor/alerts/media/action-groups/action-group-2-notifications.png" alt-text="Screenshot mit den E-Mail-, SMS-, Push- und Spracheinstellungen für die Warnung." lightbox="../azure-monitor/alerts/media/action-groups/action-group-2-notifications.png":::    
 
 1. (Optional) Konfigurieren Sie die **Aktionen**, wenn Sie proaktive Aktionen ausführen und Benachrichtigungen zu dem Ereignis erhalten möchten. Wählen Sie einen verfügbaren **Aktionstyp** aus, und wählen Sie dann **überprüfen + erstellen**. 
-   - Automation Runbooks
-   - Azure Functions – für benutzerdefinierte, ereignisgesteuerte serverlose Codeausführung
-   - ITSM – für die Integration in einen Dienstanbieter wie ServiceNow zum Erstellen eines Tickets
-   - Logik-App: für eine komplexere Workflow Orchestrierung
-   - Webhooks: so wird ein Prozess in einem anderen Dienst auslöst
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/create-action-group-action-type.png" alt-text="Screenshot, der das Fenster „Aktionsgruppe erstellen“ mit dem Fokus auf die Dropdown-Datei „Aktionstyp“ zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/create-action-group-action-type.png":::     
+   - **Automation-Runbooks**: zum Automatisieren von Aufgaben basierend auf Warnungen
+
+   - **Azure Functions**: für benutzerdefinierte, ereignisgesteuerte serverlose Codeausführung
+
+   - **ITSM**: für die Integration in einen Dienstanbieter wie ServiceNow zum Erstellen eines Tickets
+
+   - **Logik-App**: für die Orchestrierung komplexerer Workflows
+
+   - **Webhooks**: zum Auslösen eines Prozesses in einem anderen Dienst
+
 
 1. Geben Sie unter den **Details der Alarmregel** einen Namen, eine Beschreibung, eine Ressourcengruppe zum Speichern der Alarmregel und den Schweregrad an. Wählen Sie **Warnungsregel erstellen** aus.
    
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/alert-rule-details.png" alt-text="Screenshot, der die Details für die Benachrichtigungsregel anzeigt."::: 
- 
    Die Warnungsregel ist sichtbar und kann über die Azure-Portal verwaltet werden.
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/existing-alert-rule.png" alt-text="Screenshot, der die neue Warnungsregel im Fenster „Regeln“ anzeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/existing-alert-rule.png":::     
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/existing-alert-rule.png" alt-text="Screenshot, der die neue Warnungsregel im Fenster „Regeln“ zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/existing-alert-rule.png":::      
 
    Sobald eine Metrik den in einer Warnungsregel definierten Schwellenwert erreicht, wird das Menü **Warnungen** aktualisiert und sichtbar gemacht.
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/threshold-alert.png" alt-text="Screenshot, der die Warnung anzeigt, nachdem der definierte Schwellenwert erreicht wurde." lightbox="media/configure-alerts-for-azure-vmware-solution/threshold-alert.png":::     
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/threshold-alert.png" alt-text="Screenshot der Warnung nach Erreichen des in der Warnregel festgelegten Schwellenwerts." lightbox="media/configure-alerts-for-azure-vmware-solution/threshold-alert.png":::     
 
    Abhängig von der konfigurierten Aktionsgruppe erhalten Sie eine Benachrichtigung über das konfigurierte Medium. In unserem Beispiel haben wir die e-Mail-Adresse konfiguriert.
     
@@ -112,7 +106,7 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
 
 1. Wählen Sie in Ihrer Azure VMware Solution Private Cloud die Option **Monitoring** > **Metriken**. Wählen Sie dann die gewünschte Metrik aus der Dropdown-Dropdown-Option aus.
     
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics.png" alt-text="Screenshot, der das Fenster „Metriken“ und einen Fokus auf das Dropdown Feld „Metrik“ zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics.png":::   
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics.png" alt-text="Screenshot, der das Fenster „Metriken“ mit Fokus auf das Dropdownfeld „Metrik“ zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics.png":::   
 
 1. Sie können die Parameter des Diagramms ändern, z. b. den **Zeitbereich** oder die **Granularität der Zeit**. 
 
@@ -120,7 +114,7 @@ Die folgenden Metriken sind über Azure Monitor Metriken sichtbar.
    - **Logs anbohren** und die Daten im zugehörigen Log Analytics-Arbeitsbereich abfragen
    - **Heften Sie dieses Diagramm** der Einfachheit halber an ein Azure-Dashboard.
 
-   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics-time-range-granularity.png" alt-text="Screenshot, der die Optionen für Zeitbereich und Granularität der Zeit für die Metrik anzeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics-time-range-granularity.png":::  
+   :::image type="content" source="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics-time-range-granularity.png" alt-text="Screenshot, der die Optionen für Zeitbereich und Granularität der Zeit für die Metrik zeigt." lightbox="media/configure-alerts-for-azure-vmware-solution/monitoring-metrics-time-range-granularity.png":::  
  
  
 ## <a name="next-steps"></a>Nächste Schritte

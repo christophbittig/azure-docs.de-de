@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92124674"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220257"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
@@ -31,9 +31,10 @@ Fehler in Data Box und Data Box Heavy lassen sich wie folgt zusammenfassen:
 | Größenbeschränkung für Container oder Freigaben | Die Datengesamtmenge in Containern oder Freigaben überschreitet den Azure-Grenzwert.   |Laden Sie die Fehlerlisten herunter. <br> Verringern Sie die Datengesamtmenge im Container oder in den Freigaben. [Weitere Informationen](#container-or-share-size-limit-errors)|
 | Objekt- oder Dateigrößenbeschränkung | Die Objekte oder Dateien in Containern oder Freigaben überschreiten den Azure-Grenzwert.|Laden Sie die Fehlerlisten herunter. <br> Verringern Sie die Dateigröße im Container oder in den Freigaben. [Weitere Informationen](#object-or-file-size-limit-errors) |    
 | Daten- oder Dateityp | Das Datenformat oder der Dateityp wird nicht unterstützt. |Laden Sie die Fehlerlisten herunter. <br> Stellen Sie für Seitenblobs oder verwaltete Datenträger sicher, dass die Daten auf 512 Bytes ausgerichtet sind und in die vorab erstellten Ordner kopiert werden. [Weitere Informationen](#data-or-file-type-errors) |
+| Ordner- oder dateiinterne Fehler | Die Datei oder der Ordner hat einen internen Fehler. |Laden Sie die Fehlerlisten herunter. <br> Entfernen Sie die Datei, und kopieren Sie sie erneut. Ändern Sie einen Ordner, indem Sie ihn umbenennen oder eine Datei hinzufügen oder löschen. Der Fehler sollte binnen 30 Minuten behoben sein.  [Weitere Informationen](#folder-or-file-internal-errors) |
 | Nicht kritische Blob- oder Dateifehler  | Die Blob- oder Dateinamen folgen nicht den Benennungsregeln von Azure, oder der Dateityp wird nicht unterstützt. | Diese Blobs oder Dateien werden ggf. nicht kopiert, oder die Namen können geändert werden. [Erfahren Sie, wie Sie diese Fehler beheben](#non-critical-blob-or-file-errors). |
 
-\* Die ersten vier Fehlerkategorien sind kritische Fehler und müssen behoben werden, bevor Sie mit der Vorbereitung der Auslieferung fortfahren können.
+\* Die ersten fünf Fehlerkategorien sind kritische Fehler und müssen behoben werden, bevor Sie mit der Vorbereitung der Auslieferung fortfahren können.
 
 
 ## <a name="container-or-share-name-errors"></a>Container- oder Freigabenamenfehler
@@ -119,8 +120,8 @@ Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die zulässige 
 - Ermitteln Sie anhand der Fehlerprotokolle die Ordner, die dieses Problem aufweisen, und stellen Sie sicher, dass die Dateien in diesem Ordner kleiner als 5 TB sind.
 - Das Limit von 5 TiB gilt nicht für Speicherkonten, in denen große Dateifreigaben zulässig sind. Sie müssen jedoch große Dateifreigaben konfiguriert haben, wenn Sie Ihre Bestellung aufgeben. 
   - Fordern Sie vom [Microsoft-Support](data-box-disk-contact-microsoft-support.md) ein neues Versandetikett an.
-  - [Aktivieren Sie große Dateifreigaben im Speicherkonto.](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
-  - [Erweitern Sie die Dateifreigaben im Speicherkonto](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares), und legen Sie das Kontingent auf 100 TiB fest.
+  - [Aktivieren Sie große Dateifreigaben im Speicherkonto](../storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account).
+  - [Erweitern Sie die Dateifreigaben im Speicherkonto](../storage/files/storage-how-to-create-file-share.md#expand-existing-file-shares), und legen Sie das Kontingent auf 100 TiB fest.
   
   
 ## <a name="object-or-file-size-limit-errors"></a>Objekt- oder Dateigrößenbeschränkungs-Fehler
@@ -176,6 +177,11 @@ Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-
 
 **Vorgeschlagene Lösung:** Die symbolischen Verknüpfungen sind normalerweise Links, Pipes und ähnliche Dateien. Entfernen Sie die Verknüpfungen, oder lösen Sie die Verknüpfungen auf, und kopieren Sie die Daten.
 
+## <a name="folder-or-file-internal-errors"></a>Ordner- oder dateiinterne Fehler
+
+**Fehlerbeschreibung**: Die Datei oder der Ordner hat den Status „Interner Fehler“.
+
+**Vorgeschlagene Lösung**: Wenn es sich um eine Datei handelt, entfernen Sie die Datei, und kopieren Sie sie erneut. Wenn es sich um einen Ordner handelt, ändern Sie den Ordner. Benennen Sie den Ordner um, oder fügen Sie eine Datei hinzu, oder löschen Sie sie aus dem Ordner. Der Fehler sollte sich binnen 30 Minuten von selbst beheben. Wenn der Fehler weiterhin auftritt, wenden Sie sich an den Microsoft-Support.
 
 ## <a name="non-critical-blob-or-file-errors"></a>Nicht kritische Blob- oder Dateifehler
 

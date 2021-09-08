@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 31c5be9ce48ffea8ebd23e893e2d77e6365d2327
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4d0197e76659e864ab0f5553317b64b2d74b867d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467662"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354865"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ Die Konsistenzebenen sind regionsunabhängig und für alle Vorgänge garantiert,
 
 ## <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
-Azure Cosmos DB bietet für gängige Datenbanken native Unterstützung für Wire Protocol-kompatible APIs. Dazu zählen MongoDB, Apache Cassandra, Gremlin und Azure Table Storage. Für die Gremlin-API und die Tabellen-API wird die im Azure Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet. Ausführliche Informationen zum Mapping von Konsistenzebenen zwischen Cassandra-API oder der API für MongoDB und Azure Cosmos DB-Konsistenzebenen finden Sie unter [Cassandra API consistency mapping](cassandra-consistency.md) (Cassandra-API-Konsistenzmapping) und [API for MongoDB consistency mapping](mongodb-consistency.md) (API für MongoDB-Konsistenzmapping).
+Azure Cosmos DB bietet für gängige Datenbanken native Unterstützung für Wire Protocol-kompatible APIs. Dazu zählen MongoDB, Apache Cassandra, Gremlin und Azure Table Storage. Für die Gremlin-API und die Tabellen-API wird die im Azure Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet. Ausführliche Informationen zum Mapping von Konsistenzebenen zwischen Cassandra-API oder der API für MongoDB und Azure Cosmos DB-Konsistenzebenen finden Sie unter [Cassandra API consistency mapping](cassandra/apache-cassandra-consistency-mapping.md) (Cassandra-API-Konsistenzmapping) und [API for MongoDB consistency mapping](mongodb/consistency-mapping.md) (API für MongoDB-Konsistenzmapping).
 
 ## <a name="scope-of-the-read-consistency"></a>Geltungsbereich der Lesekonsistenz
 
@@ -43,6 +43,9 @@ Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb einer logisch
 ## <a name="configure-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 
 Sie können die Standardkonsistenzebene für Ihr Azure Cosmos-Konto jederzeit konfigurieren. Die für Ihr Konto konfigurierte Standardkonsistenzebene gilt für alle Azure Cosmos-Datenbanken und -Container in diesem Konto. Bei allen in einem Container oder einer Datenbank ausgeführten Lesevorgängen und Abfragen wird standardmäßig die angegebene Konsistenzebene verwendet. Weitere Informationen finden Sie unter [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level). Sie können auch die Standardkonsistenzebene für eine bestimmte Anforderung außer Kraft setzen. Weitere Informationen hierzu finden Sie im Artikel [Außerkraftsetzen der Standardkonsistenzebene](how-to-manage-consistency.md?#override-the-default-consistency-level).
+
+> [!TIP]
+> Das Außerkraftsetzen der Standardkonsistenzebene gilt nur für Lesevorgänge innerhalb des SDK-Clients. Ein Konto, das standardmäßig für starke Konsistenz konfiguriert ist, schreibt und repliziert Daten weiterhin synchron in jede Region im Konto. Wenn die SDK-Clientinstanz oder -anforderung dies mit Sitzungskonsistenz oder einer schwächeren Konsistenz überschreibt, werden Lesevorgänge mit einem einzigen Replikat ausgeführt. Weitere Informationen finden Sie unter [Konsistenzebenen und Durchsatz](consistency-levels.md#consistency-levels-and-throughput).
 
 > [!IMPORTANT]
 > Nach dem Ändern der Standardkonsinstenzebene müssen alle SDK-Instanzen neu erstellt werden. Dies kann durch einen Neustart der Anwendung erreicht werden. Dadurch wird sichergestellt, dass das SDK die neue Standardkonsistenzebene verwendet.

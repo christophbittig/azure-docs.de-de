@@ -5,16 +5,16 @@ description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Pow
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 0100bd0e0eb0ee6dbd802ad1cf5df002a706c12c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676161"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727150"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -31,6 +31,13 @@ Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung
     Bei lokal redundanten und zonenredundanten Speicherkonten können Azure-Dateifreigaben bis zu 100 TiB umfassen, bei geo- und geozonenredundanten Speicherkonten können Azure-Dateifreigaben hingegen nur maximal 5 TiB enthalten. 
 
 Weitere Informationen zu diesen drei Optionen finden Sie unter [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Azure-Abonnement erstellt haben. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -163,6 +170,37 @@ az storage account create \
 
 ---
 
+### <a name="enable-large-files-shares-on-an-existing-account"></a>Aktivieren großer Dateifreigaben für ein vorhandenes Konto
+Bevor Sie eine Azure-Dateifreigabe für ein vorhandenes Konto erstellen, ist es empfehlenswert, diese für große Dateifreigaben zu aktivieren, falls noch nicht geschehen. Standardspeicherkonten mit LRS und/oder ZRS können so aktualisiert werden, dass große Dateifreigaben unterstützt werden. Wenn Sie ein GRS-, GZRS-, RA-GRS- oder RA-GZRS-Konto haben, müssen Sie es in ein LRS-Konto konvertieren, bevor Sie fortfahren.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu dem Speicherkonto, für das Sie große Dateifreigaben aktivieren möchten.
+1. Öffnen Sie das Speicherkonto, und wählen Sie **Dateifreigaben** aus.
+1. Wählen Sie für **Große Dateifreigaben** die Option **Aktiviert** und dann **Speichern** aus.
+1. Wählen Sie **Übersicht** und dann **Aktualisieren** aus.
+1. Wählen Sie unter **Freigabekapazität** den Wert **100 TiB** und anschließend **Speichern** aus.
+
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Screenshot: Azure-Speicherkonto, Blatt „Dateifreigaben“ mit hervorgehobenen 100 TiB-Freigaben":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Verwenden Sie den folgenden Befehl, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren. Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` durch Ihre Angaben.
+
+```powershell
+Set-AzStorageAccount `
+    -ResourceGroupName <yourResourceGroup> `
+    -Name <yourStorageAccountName> `
+    -EnableLargeFileShare
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Verwenden Sie den folgenden Befehl, um große Dateifreigaben für Ihr vorhandenes Konto zu aktivieren. Ersetzen Sie `<yourStorageAccountName>` und `<yourResourceGroup>` durch Ihre Angaben.
+
+```azurecli-interactive
+az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
+```
+
+---
+
 ## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 Nachdem Sie Ihr Speicherkonto erstellt haben, fehlt nur noch die Erstellung der Dateifreigabe. Dieser Prozess ist unabhängig davon, ob eine Premium- oder Standard-Dateifreigabe verwendet wird, größtenteils identisch. Sie sollten die folgenden Unterschiede berücksichtigen.
 
@@ -173,7 +211,7 @@ Standarddateifreigaben können in einer der Standardebenen bereitgestellt werden
 
 Die **quota**-Eigenschaft unterscheidet sich leicht zwischen Premium- und Standarddateifreigaben:
 
-- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Wenn kein Kontingent angegeben wird, kann eine Standard-Dateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde).
+- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Wenn kein Kontingent angegeben wird, kann eine Standarddateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde). Wenn Sie Ihr Speicherkonto nicht mit aktivierten großen Dateifreigaben erstellt haben, finden Sie unter [Aktivieren großer Dateifreigaben für ein vorhandenes Konto](#enable-large-files-shares-on-an-existing-account) Informationen zur Aktivierung von Dateifreigaben mit 100 TiB. Die Leistung (IOPs/MBit/s), die Sie erhalten, hängt vom festgelegten Kontingent ab.
 
 - Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
 
@@ -185,7 +223,7 @@ In der Liste mit den Dateifreigaben sollten alle Dateifreigaben angezeigt werden
 Das Blatt „Neue Dateifreigabe“ wird angezeigt. Füllen Sie die Felder des Blatts „Neue Dateifreigabe“ aus, um eine Dateifreigabe zu erstellen:
 
 - **Name**: Der Name der Dateifreigabe, die erstellt werden soll.
-- **Kontingent**: Das Kontingent der Dateifreigabe für Standard-Dateifreigaben. Dies ist die bereitgestellte Dateifreigabegröße für Premium-Dateifreigaben.
+- **Kontingent**: Das Kontingent der Dateifreigabe für Standard-Dateifreigaben. Dies ist die bereitgestellte Dateifreigabegröße für Premium-Dateifreigaben. Bei Standarddateifreigaben bestimmt das Kontingent auch, welche Leistung Sie erhalten.
 - **Ebenen**: Die ausgewählte Ebene für eine Dateifreigabe. Dieses Feld ist nur in einem **GPv2-Speicherkonto (Universell)** verfügbar. Sie können „transaktionsoptimiert“, „heiß“ oder „kalt“ auswählen. Die Ebene der Freigabe kann jederzeit geändert werden. Es wird empfohlen, während einer Migration die heißeste mögliche Ebene auszuwählen, um die Transaktionskosten zu minimieren, und nach Abschluss der Migration bei Bedarf auf eine niedrigere Ebene zu wechseln.
 
 Wählen Sie **Erstellen** aus, um die Erstellung der neuen Freigabe abzuschließen.
@@ -272,6 +310,45 @@ az storage share-rm update \
     --storage-account $storageAccountName \
     --name $shareName \
     --access-tier "Cool"
+```
+
+---
+
+### <a name="expand-existing-file-shares"></a>Erweitern vorhandener Dateifreigaben
+Wenn Sie große Dateifreigaben für ein vorhandenes Speicherkonto aktivieren, müssen Sie vorhandene Dateifreigaben in diesem Speicherkonto erweitern, um von der erhöhten Kapazität und Skalierung zu profitieren. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. Wählen Sie in Ihrem Speicherkonto die Option **Dateifreigaben** aus.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, und wählen Sie dann **Kontingent** aus.
+1. Geben Sie die gewünschte neue Größe ein, und wählen Sie dann **OK** aus.
+
+![Benutzeroberfläche des Azure-Portals mit „Kontingent“ für vorhandene Dateifreigaben](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Verwenden Sie den folgenden Befehl, um das Kontingent auf die maximale Größe festzulegen. Ersetzen Sie `<YourResourceGroupName>`, `<YourStorageAccountName>` und `<YourStorageAccountFileShareName>` durch Ihre Angaben.
+
+```powershell
+$resourceGroupName = "<YourResourceGroupName>"
+$storageAccountName = "<YourStorageAccountName>"
+$shareName="<YourStorageAccountFileShareName>"
+
+# update quota
+Set-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -QuotaGiB 102400
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Verwenden Sie den folgenden Befehl, um das Kontingent auf die maximale Größe festzulegen. Ersetzen Sie `<yourResourceGroupName>`, `<yourStorageAccountName>` und `<yourFileShareName>` durch Ihre Angaben.
+
+```azurecli-interactive
+az storage share-rm update \
+    --resource-group <yourResourceGroupName> \
+    --storage-account <yourStorageAccountName> \
+    --name <yourFileShareName> \
+    --quota 102400
 ```
 
 ---

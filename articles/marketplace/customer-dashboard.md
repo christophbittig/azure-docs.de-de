@@ -4,33 +4,32 @@ description: Erfahren Sie, wie Sie mithilfe des Dashboards „Kunden“ in Analy
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 3d5016e1671bb52d4b819c10e7c52c12e5046b7e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339279"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Kunden“ in Partner Center. Dieses Dashboard zeigt Informationen zu Ihren Kunden, einschließlich Wachstumstrends, in einem grafischen und herunterladbaren Format an.
 
-Um auf das Dashboard „Kunden“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Kunden** aus.
-
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.yml).
 
 ## <a name="customers-dashboard"></a>Dashboard „Kunden“
 
-Das Dashboard „Kunden“ zeigt Daten zu Kunden an, die Ihre Angebote erworben haben. Sie können grafische Darstellungen folgender Elemente anzeigen:
+Das Dashboard [Kunden](https://go.microsoft.com/fwlink/?linkid=2166011) zeigt Daten zu Kunden an, die Ihre Angebote erworben haben. Sie können grafische Darstellungen folgender Elemente anzeigen:
 
 - Trend für aktive und abgewanderte Kunden
 - Trend für Kundenwachstum einschließlich vorhandener, neuer und abgewanderter Kunden
 - Kunden nach Bestellungen und Nutzung
-- Perzentil für Kunden 
+- Perzentil für Kunden
 - Kundentyp nach Aufträgen und Nutzung
 - Kunden nach Geographie
 - Tabelle der Kundendetails
@@ -42,6 +41,8 @@ Das Dashboard „Kunden“ zeigt Daten zu Kunden an, die Ihre Angebote erworben 
 ## <a name="elements-of-the-customers-dashboard"></a>Elemente des Dashboards „Kunden“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Kunden“ verwendet wird und wie die Daten gelesen werden.
+
+Um auf das Dashboard „Kunden“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Kunden** aus.
 
 ### <a name="month-range"></a>Monatsbereich
 
@@ -181,4 +182,4 @@ Die Filter auf der Seite Kunden werden auf der Ebene der Seite „Kunden“ ange
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.yml).

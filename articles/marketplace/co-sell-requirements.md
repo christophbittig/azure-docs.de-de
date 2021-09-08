@@ -1,19 +1,19 @@
 ---
 title: Co-Selling-Anforderungen | Azure Marketplace
-description: Hier erfahren Sie mehr über die Voraussetzungen, die ein Angebot im kommerziellen Marketplace erfüllen muss, damit es sich für die Status „Co-Sell Ready“ oder „Co-Sell Incentivized“ („Bereit für Co-Selling“ und „Für Co-Selling gefördert“) qualifiziert.
+description: Hier erfahren Sie mehr über die Voraussetzungen, die ein Angebot im kommerziellen Marketplace erfüllen muss, damit es sich für die Status „Co-Sell Ready“ (Bereit für Co-Selling) oder „Co-Sell Incentive“ (Co-Selling-Incentive) qualifiziert.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 04/16/2021
-ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/13/2021
+ms.openlocfilehash: 31ea2d07db013220db97ab9d3b0e7879f83bc3fe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209857"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388060"
 ---
 # <a name="co-sell-requirements"></a>Co-Selling-Anforderungen
 
@@ -25,8 +25,8 @@ In der folgenden Tabelle werden alle möglichen Co-Selling-Status aufgeführt:
 | ------------ | ------------- |
 | Not Co-Sell Ready (Nicht für Co-Selling bereit) | Die [Mindestanforderungen für den Status „Co-Sell Ready“](#requirements-for-co-sell-ready-status) (Bereit für Co-Selling) wurden nicht erfüllt. |
 | Co-Sell Ready | Alle [Anforderungen für den Status „Co-Sell Ready“](#requirements-for-co-sell-ready-status) wurden erfüllt. |
-| Azure IP Co-Sell Incentivized | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](#requirements-for-azure-ip-co-sell-incentivized-status) wurden erfüllt. |
-| Business Applications – Co-Sell Incentivized | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote im [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) und gibt an, dass alle [ Anforderungen für diesen Status](#requirements-for-business-applications-co-sell-incentivized-status) erfüllt wurden. |
+| Azure IP Co-Sell Incentive | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](#requirements-for-azure-ip-co-sell-incentive-status) wurden erfüllt. |
+| Business Applications Co-Sell Incentive | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote im [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) und gibt an, dass alle [ Anforderungen für diesen Status](#requirements-for-business-applications-co-sell-incentive-status) erfüllt wurden. |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>Anforderungen für den Status „Co-Sell Ready“
@@ -64,9 +64,9 @@ Zum Erstellen dieser Dokumente werden Vorlagen zur Verfügung gestellt. Weitere 
 
 Damit Ihr Angebot oder Ihre Lösung sich für den Status „Co-Sell Ready“ qualifizieren kann, muss es in mindestens einem der kommerziellen Marketplace-Onlineshops veröffentlicht sein: Azure Marketplace oder Microsoft AppSource. Informationen zum Veröffentlichen von Angeboten im kommerziellen Marketplace finden Sie im [Leitfaden zur Veröffentlichung nach Angebotstyp](publisher-guide-by-offer-type.md). Wenn Sie noch kein Angebot im kommerziellen Marketplace veröffentlicht haben, stellen Sie sicher, dass Sie über ein [Konto für den kommerziellen Marketplace](create-account.md) verfügen.
 
-## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Anforderungen für den Status „Azure IP Co-Sell Incentivized“
+## <a name="requirements-for-azure-ip-co-sell-incentive-status"></a>Anforderungen für den Status „Azure IP Co-Sell Incentive“
 
-Der Status „Azure IP Co-Sell Incentivized“ gilt für die folgenden Angebotstypen:
+Der Status „Azure IP Co-Sell Incentive“ gilt für die folgenden Angebotstypen:
 
 - Azure-Anwendung
 - Azure-Container
@@ -74,7 +74,7 @@ Der Status „Azure IP Co-Sell Incentivized“ gilt für die folgenden Angebotst
 - IoT Edge-Modul
 - Software-as-a-Service (SaaS)
 
-Nachdem der Status „Co-Sell Ready“ erreicht wurde, müssen drei zusätzliche Anforderungen für den Status „Azure IP Co-Sell Incentivized“ erfüllt werden:
+Nachdem der Status „Co-Sell Ready“ erreicht wurde, müssen drei zusätzliche Anforderungen für den Status „Azure IP Co-Sell Incentive“ erfüllt werden:
 
 Anforderung 1: Erreichen Sie Folgendes:
 
@@ -86,7 +86,7 @@ Anforderung 2: Bestehen Sie die technische Prüfung von Microsoft für Azure-ba
 Anforderung 3: Stellen Sie ein Diagramm zur Referenzarchitektur bereit:
 - Laden Sie ein Referenzarchitekturdiagramm mit Ihren Co-Selling-Dokumenten zur Überprüfung in Partner Center hoch. Eine Anleitung zum Erstellen dieses Diagramms finden Sie unter [Referenzarchitekturdiagramm](reference-architecture-diagram.md). Informationen zum Hochladen des Diagramms finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
 
-## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Anforderungen an den Business Applications – Co-Sell Incentivized-Status
+## <a name="requirements-for-business-applications-co-sell-incentive-status"></a>Anforderungen für den Status „Business Applications Co-Sell Incentive“
 
 Dieser Status gilt für IP-basierte Lösungen, die auf Dynamics 365 oder PowerApps (mit Ausnahme von Dynamics 365 Business Central) basieren, die im ISV Connect Program registriert sind. Angebote müssen jedoch auch die Anforderungen für den Status der Co-Selling-Bereitstellung erfüllen (oben beschrieben), damit Microsoft-Verkäufer in der Lage sind, das Angebot mit Ihnen gemeinsam zu verkaufen.
 

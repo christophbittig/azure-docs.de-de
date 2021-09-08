@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: f401c143f1f5a9352b56b80f9e473bd7fa819245
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: a4b433ed7a2eb0a2a9367f921e63091a823df37d
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968253"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356128"
 ---
 # <a name="azure-monitor-network-insights"></a>Azure Monitor Netzwerk-Insights
 
@@ -108,9 +108,19 @@ Das Diagnosetoolkit bietet Zugriff auf alle Diagnosefeatures, die für das Behan
 
 ![Screenshot der Registerkarte „Diagnosetoolkit“](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="onboarded-resources"></a>Integrierte Ressourcen 
+## <a name="availability-of-resources"></a>Verfügbarkeit von Ressourcen 
 
-Integrierte Ressourcen verfügen über integrierte Arbeitsmappen und Abhängigkeitsansichten. Zu den integrierten Ressourcen zählen derzeit Virtual WAN, Application Gateway, Load Balancer und ExpressRoute.
+Standardmäßig sind alle Netzwerkressourcen in Network Insights sichtbar. Kunden können auf den Ressourcentyp klicken, um Ressourcenintegrität und Metriken (falls verfügbar), Abonnementdetails, Standort usw. anzuzeigen. Eine Teilmenge der Netzwerkressourcen wurde _integriert_. Bei integrierten Ressourcen haben Kunden Zugriff auf eine ressourcenspezifische Topologieansicht und eine integrierte Arbeitsmappe mit Metriken. Diese sofort einsatzbereiten Funktionen erleichtern das Untersuchen von Ressourcenmetriken und das Beheben von Problemen.  
+
+Die folgenden Ressourcen wurden integriert: 
+* Virtuelles WAN
+* Application Gateway
+* Load Balancer
+* ExpressRoute
+* Private Link
+* NAT Gateway
+* Öffentliche IP-Adresse
+* NIC
 
 ## <a name="troubleshooting"></a>Problembehandlung 
 Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).

@@ -8,24 +8,27 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 06/18/2021
 ms.author: justinha
-ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 935abb1a1eae362e3036c323da35aa5fd7b9b018
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619350"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707962"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten von DNS und Erstellen bedingter Weiterleitungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
-In Azure Active Directory Domain Services (Azure AD DS) ist DNS eine Schlüsselkomponente. Azure AD DS umfasst einen DNS-Server, der die Namensauflösung für die verwaltete Domäne bereitstellt. Dieser DNS-Server enthält integrierte DNS-Einträge und Updates für die wichtigsten Komponenten, die die Ausführung des Dienstes ermöglichen.
+Azure AD DS umfasst einen DNS-Server (Domain Name System), der die Namensauflösung für die verwaltete Domäne bereitstellt. Dieser DNS-Server enthält integrierte DNS-Einträge und Updates für die wichtigsten Komponenten, die die Ausführung des Dienstes ermöglichen.
 
 Wenn Sie Ihre eigenen Anwendungen und Dienste ausführen, müssen Sie unter Umständen DNS-Einträge für nicht in die Domäne eingebundene Computer erstellen, virtuelle IP-Adressen für Load Balancer konfigurieren oder externe DNS-Weiterleitungen einrichten. Benutzern, die zur Gruppe *AAD DC-Administratoren* gehören, werden DNS-Administratorrechte in der von Azure AD DS verwalteten Domäne gewährt und sie können benutzerdefinierte DNS-Einträge erstellen und bearbeiten.
 
 In einer Hybridumgebung werden in anderen DNS-Namespaces (z. B. in einer lokalen AD DS-Umgebung) konfigurierte DNS-Zonen und DNS-Einträge nicht mit der verwalteten Domäne synchronisiert. Um benannte Ressourcen in anderen DNS-Namespaces aufzulösen, erstellen und verwenden Sie bedingte Weiterleitungen, die auf vorhandene DNS-Server in Ihrer Umgebung verweisen.
 
 In diesem Artikel erfahren Sie, wie Sie die DNS-Servertools installieren und dann die DNS-Konsole zur Verwaltung von Einträgen und zum Erstellen bedingter Weiterleitungen in Azure AD DS verwenden.
+
+>[!NOTE]
+>Das Erstellen oder Ändern von DNS-Weiterleitungen auf Serverebene wird nicht unterstützt und führt zu Problemen für die von Azure AD DS verwaltete Domäne.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

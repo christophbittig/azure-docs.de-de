@@ -4,28 +4,27 @@ description: Erfahren Sie, wie Sie über das Dashboard „Zusammenfassung“ im 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 8b76469697da62ed379d6854d2977e841080781d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 08/06/2021
+ms.openlocfilehash: b9b3a1e651e6207cc037ab8e4c70f81a176c3d82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539886"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340070"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Zusammenfassung“ im Partner Center. In diesem Dashboard werden Diagramme, Trends und Werte von aggregierten Daten angezeigt, mit deren Hilfe die Marketplace-Aktivitäten für Ihre Angebote zusammengefasst werden.
 
-Um auf das Dashboard „Zusammenfassung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Zusammenfassung** aus.
-
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.yml).
 
 ## <a name="summary-dashboard"></a>Dashboard „Zusammenfassung“
 
-Das Dashboard „Zusammenfassung“ bietet eine Übersicht über die Geschäftsleistung der Angebote von Azure Marketplace und Microsoft AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
+Das [Dashboard „Zusammenfassung“](https://go.microsoft.com/fwlink/?linkid=2165765) bietet eine Übersicht über die Geschäftsleistung der Angebote von Azure Marketplace und Microsoft AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
 
 - Aufträge der Kunden
 - Kunden
@@ -35,6 +34,8 @@ Das Dashboard „Zusammenfassung“ bietet eine Übersicht über die Geschäftsl
 ## <a name="elements-of-the-summary-dashboard"></a>Elemente des Dashboards „Zusammenfassung“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Zusammenfassung“ verwendet und wie die Daten gelesen werden.
+
+Um auf das Dashboard „Zusammenfassung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Zusammenfassung** aus.
 
 ### <a name="month-range"></a>Monatsbereich
 
@@ -47,7 +48,7 @@ Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie di
 
 ### <a name="orders-widget"></a>Widget „Aufträge“
 
-Das Widget „Aufträge“ auf dem Dashboard „Zusammenfassung“** zeigt die aktuellen Aufträge für alle Ihre transaktionsbasierten Angebote an. Das Widget „Aufträge“ zeigt eine Anzahl und den Trend aller erworbenen Aufträge (stornierte Aufträge ausgenommen) für den ausgewählten Berechnungszeitraum an. Der Prozentwert **Aufträge** stellt den Zuwachs im ausgewählten Berechnungszeitraum dar.
+Das Widget „Aufträge“ auf dem Dashboard **Zusammenfassung** zeigt die aktuellen Aufträge für alle Ihre transaktionsbasierten Angebote an. Das Widget „Aufträge“ zeigt eine Anzahl und den Trend aller erworbenen Aufträge (stornierte Aufträge ausgenommen) für den ausgewählten Berechnungszeitraum an. Der Prozentwert **Aufträge** stellt den Zuwachs im ausgewählten Berechnungszeitraum dar.
 
 [![Veranschaulicht das Widget „Aufträge“ auf dem Dashboard „Zusammenfassung“.](./media/summary-dashboard/orders-widget.png)](./media/summary-dashboard/orders-widget.png#lightbox)
 
@@ -109,4 +110,4 @@ Beachten Sie Folgendes:
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](customer-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen in den letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.yml).

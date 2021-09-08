@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 08/13/2021
 ms.author: tisande
-ms.openlocfilehash: 20798fc438f037ca7372822ea8bd54117b8936ee
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c2f380e92693e6ef2d16e74001b2d22d76e6d941
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456567"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356427"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ In Azure Cosmos DB verfügt jeder Container über eine Indizierungsrichtlinie, 
 In einigen Fällen ist eventuell sinnvoll, dieses automatische Verhalten besser an Ihre Anforderungen anzupassen. Sie können die Indizierungsrichtlinie eines Containers anpassen, indem Sie seinen *Indizierungsmodus* festlegen und *Eigenschaftenpfade* ein- oder ausschließen.
 
 > [!NOTE]
-> Die in diesem Artikel beschriebene Methode zur Aktualisierung von Indizierungsrichtlinien gilt nur für die SQL (Core)-API von Azure Cosmos DB. Informationen zum Indizieren finden Sie unter [Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB](mongodb-indexing.md).
+> Die in diesem Artikel beschriebene Methode zur Aktualisierung von Indizierungsrichtlinien gilt nur für die SQL (Core)-API von Azure Cosmos DB. Informationen zum Indizieren finden Sie unter [Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB](mongodb/mongodb-indexing.md).
 
 ## <a name="indexing-mode"></a>Indizierungsmodus
 
@@ -32,7 +32,7 @@ Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 - **Keine:** Die Indizierung ist für den Container deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Sie kann auch verwendet werden, um die Leistung von Massenvorgängen zu verbessern. Nach Abschluss der Massenvorgänge kann der Indexmodus auf „Konsistent“ festgelegt und dann mit [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) überwacht werden, bis er abgeschlossen ist.
 
 > [!NOTE]
-> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Für neue Container kann keine verzögerte Indizierung ausgewählt werden. Sie können eine Ausnahme beantragen, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden (außer wenn Sie ein Azure Cosmos-Konto im [serverlosen](serverless.md) Modus verwenden, der keine verzögerte Indizierung unterstützt).
+> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Für neue Container kann keine verzögerte Indizierung ausgewählt werden. Sie können eine Ausnahme beantragen, indem Sie sich an den cosmoslazyindexing@microsoft.com wenden (außer wenn Sie ein Azure Cosmos-Konto im [serverlosen](serverless.md) Modus verwenden, der keine verzögerte Indizierung unterstützt).
 
 Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
 
@@ -329,7 +329,7 @@ Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage 
 | ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
 | ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
-## <a name="index-transformationmodifying-the-indexing-policy"></a><index-transformation>Ändern der Indizierungsrichtlinie
+## <a name="modifying-the-indexing-policy"></a><a id=index-transformation></a>Ändern der Indizierungsrichtlinie
 
 Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Die alte Indizierungsrichtlinie wird effizient in die neue Richtlinie transformiert, ohne die Schreibverfügbarkeit, Leseverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab.
 
@@ -341,9 +341,11 @@ Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder
 
 Es gibt keine Auswirkung auf die Schreibverfügbarkeit während der Indextransformationen. Die Indextransformation verwendet Ihre bereitgestellten RUs, allerdings mit einer niedrigeren Priorität als die CRUD-Vorgänge oder -Abfragen.
 
-Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
+Das Hinzufügen neuer indizierter Pfade hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue indizierte Pfade erst dann, wenn eine Indextransformation abgeschlossen ist. Anders ausgedrückt: Beim Hinzufügen eines neuen indizierten Pfads weisen Abfragen, die von diesem indizierten Pfad profitieren, vor und während der Indextransformation die gleiche Leistung auf. Nachdem die Indextransformation abgeschlossen ist, beginnt die Abfrage-Engine mit der Verwendung der neuen indizierten Pfade.
 
-Beim Entfernen von Indizes und beim sofortigen Ausführen von Abfragen, die nach den gelöschten Indizes filtern, gibt es keine Garantie für konsistente oder komplette Abfrageergebnisse. Wenn Sie im Zuge einer einzigen Indizierungsrichtlinienänderung mehrere Indizes entfernen, stellt die Abfrage-Engine konsistente und vollständige Ergebnisse im Rahmen der Indextransformation bereit. Wenn Sie Indizes jedoch über mehrere Indizierungsrichtlinienänderungen entfernen, stellt die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse bereit, bis alle Indextransformationen abgeschlossen sind. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen auszuführen, die diese Indizes verwenden, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+Beim Entfernen indizierter Pfade sollten Sie alle Änderungen in einer Transformation für Indizierungsrichtlinien gruppieren. Wenn Sie im Zuge einer einzigen Indizierungsrichtlinienänderung mehrere Indizes entfernen, stellt die Abfrage-Engine konsistente und vollständige Ergebnisse im Rahmen der Indextransformation bereit. Wenn Sie Indizes jedoch über mehrere Indizierungsrichtlinienänderungen entfernen, stellt die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse bereit, bis alle Indextransformationen abgeschlossen sind. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen auszuführen, die diese Indizes verwenden, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+
+Wenn Sie einen indizierten Pfad löschen, wird er von der Abfrage-Engine umgehend nicht mehr verwendet. Stattdessen wird eine vollständige Überprüfung ausgeführt.
 
 > [!NOTE]
 > Sie sollten immer versuchen, mehrere Indizierungsänderungen zu einer einzelnen Indizierungsrichtlinienänderung zu gruppieren.

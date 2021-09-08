@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c5f8a4361774368e3934d1e2b16c8311876f5caa
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 63892e4ed71ec435a7068c9c68b9981a71205fb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345924"
 ---
 # <a name="how-to-meet-data-residency-requirements-in-azure-cosmos-db"></a>Vorgehensweise: Erfüllen der Datenresidenzanforderungen in Azure Cosmos DB
 
-In Azure Cosmos DB können Sie Ihre Daten und Sicherungen so konfigurieren, dass sie in einer einzelnen Region verbleiben, um die [Residenzanforderungen](https://azure.microsoft.com/en-us/global-infrastructure/data-residency/) zu erfüllen.
+In Azure Cosmos DB können Sie Ihre Daten und Sicherungen so konfigurieren, dass sie in einer einzelnen Region verbleiben, um die [Residenzanforderungen](https://azure.microsoft.com/global-infrastructure/data-residency/) zu erfüllen.
 
 ## <a name="residency-requirements-for-data"></a>Residenzanforderungen für Daten
 
@@ -24,7 +24,7 @@ In Azure Cosmos DB müssen Sie die regionsübergreifende Datenreplikation expliz
 
 ## <a name="residency-requirements-for-backups"></a>Residenzanforderungen für Sicherungen
 
-**Sicherungen im fortlaufenden Modus**: Diese Sicherungen sind standardmäßig resident, da sie entweder in lokal redundantem oder zonenredundantem Speicher gespeichert werden. Weitere Informationen finden Sie im Artikel [Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwenden des Azure-Portals](continuous-backup-restore-portal.md).
+**Sicherungen im fortlaufenden Modus**: Diese Sicherungen sind standardmäßig resident, da sie entweder in lokal redundantem oder zonenredundantem Speicher gespeichert werden. Weitere Informationen finden Sie im Artikel [Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwenden des Azure-Portals](provision-account-continuous-backup.md).
 
 **Sicherungen im periodischen Modus**: Standardmäßig werden Kontosicherungen im periodischen Modus im georedundanten Speicher gespeichert. Für Sicherungen in periodischen Modi können Sie die Datenredundanz auf Kontoebene konfigurieren. Es gibt drei Redundanzoptionen für den Sicherungsspeicher. Dabei handelt es sich um lokale Redundanz, Zonenredundanz oder Georedundanz. Informieren Sie sich über das [Ändern des Sicherungsintervalls und des Aufbewahrungszeitraums](configure-periodic-backup-restore.md#configure-backup-interval-retention) im Portal.
 
@@ -37,4 +37,7 @@ Azure Policy ist ein Dienst, mit dem Sie Richtlinien zum Anwenden von Regeln auf
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurieren und Verwalten der periodischen Sicherung mit dem [Azure-Portal](configure-periodic-backup-restore.md)
-* Konfigurieren und verwalten Sie die fortlaufende Sicherung über das [Azure-Portal](continuous-backup-restore-portal.md) oder aber mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).
+* Bereitstellen der fortlaufende Sicherung mit dem [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), der [CLI](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
+* Wiederherstellen des Kontos für die fortlaufende Sicherung mit dem [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), der [CLI](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+* [Migrieren eines Konto von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
+

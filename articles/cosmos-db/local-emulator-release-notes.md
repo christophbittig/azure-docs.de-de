@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 31b051c37d4fbf1c73c8711e3e9a330cacc1c26d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 23abc9cd391548a4a97622e6cb7110de828498f2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904332"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350507"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB-Emulator: Versionshinweise und Informationen zum Download
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,18 @@ Dieser Artikel enthält die Versionshinweise zum Azure Cosmos DB-Emulator mit ei
 |**Erste Schritte**|[Lokale Entwicklung mit dem Azure Cosmos DB-Emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="2142-12-august-2021"></a>2.14.2 (12. August 2021)
+
+ - Mit diesem Release wird der lokale Inhalt des Daten-Explorers auf die aktuelle Azure Portal-Version aktualisiert und die Basis für das Docker-Image des Cosmos-Emulators unter Linux zurückgesetzt.
+
+### <a name="2141-18-june-2021"></a>2.14.1 (18. Juni 2021)
+
+ - Dieses Release verbessert die Startzeit des Emulators und reduziert gleichzeitig den Speicherbedarf seiner Daten auf dem Datenträger. Diese neue Optimierung wird mit dem Argument „/EnablePreview“ aktiviert.
+
+### <a name="2140-15-june-2021"></a>2.14.0 (15. Juni 2021)
+
+ - Mit diesem Release wird der lokale Inhalt des Daten-Explorers auf die aktuelle Azure Portal-Version aktualisiert. Dieses Release behebt ein bekanntes Problem, das beim Importieren mehrerer Dokumentelemente mithilfe der Funktion zum Hochladen von JSON-Dateien auftrat.
 
 ### <a name="21113-21-april-2021"></a>2.11.13 (21. April 2021)
 

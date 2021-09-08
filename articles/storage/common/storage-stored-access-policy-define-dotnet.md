@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/12/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a68697d6dffad6aad857bb59d66beeb42dec62d2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8c1b6aa0d6bdd98a66a638a216f93a6d81bd6b93
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475394"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113726858"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Erstellen einer gespeicherten Zugriffsrichtlinie mit .NET
 
@@ -38,7 +38,7 @@ Weitere Informationen zu gespeicherten Zugriffsrichtlinien finden Sie unter [Def
 
 ## <a name="create-a-stored-access-policy"></a>Erstellen einer gespeicherten Zugriffsrichtlinie
 
-Der zugrunde liegende REST-Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie ist [Set Container ACL](/rest/api/storageservices/set-container-acl). Sie müssen den Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie über einen gemeinsam verwendeten Schlüssel autorisieren, indem Sie die Kontozugriffsschlüssel in einer Verbindungszeichenfolge verwenden. Das Autorisieren des Vorgangs **Set Container ACL** mit Azure AD-Anmeldeinformationen wird nicht unterstützt. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Der zugrunde liegende REST-Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie ist [Set Container ACL](/rest/api/storageservices/set-container-acl). Sie müssen den Vorgang zum Erstellen einer gespeicherten Zugriffsrichtlinie über einen gemeinsam verwendeten Schlüssel autorisieren, indem Sie die Kontozugriffsschlüssel in einer Verbindungszeichenfolge verwenden. Das Autorisieren des Vorgangs **Set Container ACL** mit Azure AD-Anmeldeinformationen wird nicht unterstützt. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations).
 
 In den folgenden Codebeispielen wird eine gespeicherte Zugriffsrichtlinie für einen Container erstellt. Sie können mit der Zugriffsrichtlinie Einschränkungen für eine Dienst-SAS für den Container oder seine Blobs festlegen.
 

@@ -8,15 +8,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 07/15/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56d0116217f8db76131ccecc884312fb5296d1ed
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: ad09c97b784dcfabfe0dfa3e531fc789ba6fc956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331716"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297356"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Durchführen eines Upgrades für Ihr kostenloses Azure-Konto oder Ihr Azure for Students Starter-Konto
 
@@ -25,6 +25,9 @@ Im Azure-Portal können Sie ein Upgrade Ihres [kostenlosen Azure-Kontos](https:/
 Wenn Sie ein [Microsoft Azure for Students Starter-Konto](https://azure.microsoft.com/offers/ms-azr-0144p/) besitzen und für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) berechtigt sind, können Sie ein Upgrade auf ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) durchführen. Sie erhalten eine Azure-Gutschrift in Höhe von 200 USD in Ihrer Abrechnungswährung und zwölf Monate lang kostenlose Dienste beim Upgrade. Wenn Sie nicht für ein kostenloses Konto berechtigt sind, können Sie mit einer [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) ein Upgrade auf [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen.
 
 Wenn Sie ein [Microsoft Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/)-Konto besitzen, können Sie mit einer [Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458) ein Upgrade auf [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen.
+
+>[!NOTE]
+>Wenn Sie kostenpflichtige Ressourcen verwenden und Ihr Abonnement deaktiviert wird, weil Ihnen kein Guthaben mehr zur Verfügung steht, und Sie dann ein Upgrade für Ihr Abonnement durchführen, werden die Ressourcen nach dem Upgrade aktiviert. Dies führt dazu, dass Ihnen die verwendeten Ressourcen in Rechnung gestellt werden.
 
 <a id="freetrial"></a>
 

@@ -1,8 +1,8 @@
 ---
 title: 'Image Builder: Erstellen eines Windows Virtual Desktop-Images'
 description: Erstellen eines Azure-VM-Images von Windows Virtual Desktop mithilfe von Azure VM Image Builder in PowerShell.
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
 ms.reviewer: cynthn
 ms.date: 05/12/2021
 ms.topic: article
@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20f50ccfcbfce7a4e70722feaef4d245e11336f8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031113"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472075"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Windows Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie Sie ein Windows Virtual Desktop-Image mit
 
 * Installieren von [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)
 * Ausführen eines [Optimierungsskripts für Windows Virtual Desktop](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) aus dem Communityrepository
-* Installieren von [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md)
+* Installieren von [Microsoft Teams](../../virtual-desktop/teams-on-avd.md)
 * [Neu starten](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * Ausführen von [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
@@ -74,7 +74,7 @@ Dieser Artikel ist als Kopier- und Einfügeübung gedacht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die neuesten Azure PowerShell-Cmdlets müssen installiert sein. Weitere Informationen finden Sie [hier](/powershell/azure/overview).
+Die neuesten Azure PowerShell-Cmdlets müssen installiert sein. Weitere Informationen zur Installation finden Sie in der [Übersicht über Azure PowerShell](/powershell/azure/overview).
 
 ```PowerShell
 # check you are registered for the providers, ensure RegistrationState is set to 'Registered'.
@@ -162,8 +162,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 ```
 
 > [!NOTE] 
-> Wenn der Fehler „New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden.“ angezeigt wird, lesen Sie die Informationen zur Fehlerbehebung in diesem Artikel: https://docs.microsoft.com/azure/role-based-access-control/troubleshooting.
-
+> Wenn der Fehler „New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden.“ angezeigt wird, Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
 
 ## <a name="create-the-shared-image-gallery"></a>Erstellen der Shared Image Gallery-Instanz 
@@ -273,9 +272,9 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>Erstellen einer VM
-Wenn der Buildprozess abgeschlossen ist, können Sie eine VM aus dem Image erstellen. Sie können dazu die [hier](/powershell/module/az.compute/new-azvm#examples) aufgeführten Beispiele verwenden.
+Sobald der Buildprozess abgeschlossen ist, können Sie eine VM anhand des Images erstellen. Sie können dazu die unter [New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) aufgeführten Beispiele verwenden.
 
-## <a name="clean-up"></a>Bereinigung
+## <a name="clean-up"></a>Bereinigen
 
 Löschen Sie zunächst die Ressourcengruppenvorlage. Löschen Sie nicht nur die gesamte Ressourcengruppe, da andernfalls nicht die in AIB verwendete Stagingressourcengruppe (*IT_* ) bereinigt wird.
 
@@ -306,3 +305,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Beispiele finden Sie in [GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts).
+

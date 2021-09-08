@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 03ed6d53908b1daf8e027ee0143cc06d803a24cd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2efd5fdc49f5ae6724b9d1dc3b45d54329f17a61
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257822"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223948"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrieren von Trusona mit Azure Active Directory B2C
 
@@ -148,15 +148,17 @@ Trusona sollte jetzt als **neuer OpenID Connect-Identitätsanbieter** unter Ihre
 
 ### <a name="test-the-policy"></a>Testen der Richtlinie
 
-1. Wählen Sie Ihre neu erstellte Richtlinie aus.
+1. Wählen Sie die von Ihnen erstellte Richtlinie aus.
 
-2. Wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie **Benutzerflow ausführen** und dann diese Einstellungen aus:
 
-3. Geben Sie im Formular die Antwort-URL ein.
+   1. **Anwendung**: Wählen Sie die registrierte App aus.
+ 
+   1. **Antwort-URL:** Wählen Sie die Umleitungs-URL aus.
+   
+1. Wählen Sie **Benutzerflow ausführen** aus. Sie sollten zum Trusona-OIDC-Gateway umgeleitet werden. Scannen Sie auf dem Trusona-Gateway den angezeigten Secure-QR-Code mit der Trusona-App oder mit einer benutzerdefinierten App, indem Sie das Trusona Mobile SDK verwenden.
 
-4. Wählen Sie **Benutzerflow ausführen** aus. Sie sollten zum Trusona-OIDC-Gateway umgeleitet werden. Scannen Sie auf dem Trusona-Gateway den angezeigten Secure-QR-Code mit der Trusona-App oder mit einer benutzerdefinierten App, indem Sie das Trusona Mobile SDK verwenden.
-
-5. Nach dem Scannen des Secure-QR-Codes sollten Sie zur Antwort-URL umgeleitet werden, die Sie in Schritt 3 definiert haben.
+1. Nach dem Scannen des sicheren QR-Codes sollten Sie zur Antwort-URL umgeleitet werden, die Sie festgelegt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: 77e4ccd7b651de97d3f423a72309ac08a6495fd6
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 55b37ce3f96bc187e4420fc16924b02639c9a7df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539807"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355965"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB: Free-Tarif 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,7 +20,7 @@ Der kostenlose Azure Cosmos DB-Free-Tarif erleichtert den Einstieg, die Entwickl
 
 Der Free-Tarif gilt auf unbestimmte Zeit für die Lebensdauer des Kontos und beinhaltet alle [Vorteile und Funktionen](introduction.md#key-benefits) eines regulären Azure Cosmos DB-Kontos. Zu diesen Vorteilen gehören unbegrenzter Speicher und Durchsatz (RU/s), SLAs, hohe Verfügbarkeit, schlüsselfertige globale Verteilung in allen Azure-Regionen und mehr.
 
-Sie können pro Azure-Abonnement maximal ein Azure Cosmos DB-Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. Wird die Option zum Anwenden des tarifspezifischen Rabatts für den Free-Tarif nicht angezeigt, bedeutet dies, dass bereits ein anderes Konto im Abonnement mit dem Free-Tarif aktiviert wurde. Beim Anlegen eines neuen Kontos wird empfohlen, den kostenlosen Free-Tarif-Rabatt zu aktivieren, wenn er verfügbar ist.
+Sie können pro Azure-Abonnement maximal ein Azure Cosmos DB-Konto im Free-Tarif einrichten und müssen sich beim Erstellen des Kontos registrieren. Wird die Option zum Anwenden des tarifspezifischen Rabatts für den Free-Tarif nicht angezeigt, bedeutet dies, dass bereits ein anderes Konto im Abonnement mit dem Free-Tarif aktiviert wurde. Wenn Sie ein Konto mit dem Free-Tarif erstellen und dann löschen, können Sie den Free-Tarif auf ein neues Konto anwenden. Beim Anlegen eines neuen Kontos wird empfohlen, den kostenlosen Free-Tarif-Rabatt zu aktivieren, wenn er verfügbar ist.
 
 > [!NOTE]
 > Der Free-Tarif ist derzeit nicht für serverlose Konten verfügbar.
@@ -92,6 +92,6 @@ New-AzCosmosDBAccount -ResourceGroupName "MyResourcegroup" `
 Nachdem Sie ein kostenloses Free-Tarif-Konto erstellt haben, können Sie mit der Erstellung von Apps mit Azure Cosmos DB gemäß den folgenden Artikeln beginnen:
 
 * [Erstellen Sie eine Konsolen-App mit dem .NET V4 SDK](create-sql-api-dotnet-v4.md), um Azure Cosmos DB-Ressourcen zu verwalten.
-* [Erstellen einer .NET-Web-App mit der API für MongoDB von Azure Cosmos DB](create-mongodb-dotnet.md)
+* [Erstellen einer .NET-Web-App mit der API für MongoDB von Azure Cosmos DB](mongodb/create-mongodb-dotnet.md)
 * [Laden Sie ein Notebook aus der Galerie](publish-notebook-gallery.md#download-a-notebook-from-the-gallery) herunter und analysieren Sie Ihre Daten.
 * Weitere Informationen unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md)

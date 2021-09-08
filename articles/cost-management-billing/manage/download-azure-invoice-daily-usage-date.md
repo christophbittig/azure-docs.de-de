@@ -1,31 +1,29 @@
 ---
-title: Herunterladen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
-description: Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen oder ansehen können.
-keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
+title: Herunterladen der Azure-Rechnung
+description: Hier erfahren Sie, wie Sie Ihre Azure-Rechnung herunterladen oder anzeigen können.
+keywords: Rechnung, Rechnungsdownload, Azure-Rechnung
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 07/28/2021
 ms.author: banders
-ms.openlocfilehash: a2f4bab7f0d2f28cdefcecd82ad9a2285cd9b41a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 14183a46085ca0da60f1abb5f6ba390b9d4c334a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355738"
 ---
-# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
+# <a name="download-or-view-your-azure-billing-invoice"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnung
 
 Für die meisten Abonnements können Sie die Rechnung aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen oder per E-Mail zugeschickt bekommen. Wenn Sie Azure-Kunde mit einem Enterprise Agreement (EA-Kunde) sind, können Sie die Rechnungen Ihrer Organisation nicht herunterladen. Rechnungen werden an den Benutzer gesendet, der für den Empfang von Rechnungen für die Registrierung festgelegt wurde.
 
-Wenn Sie EA-Kunde sind oder über eine [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) verfügen, können Sie im [Azure-Portal](https://portal.azure.com/) die Nutzung herunterladen.
+Nur bestimmte Rollen (z. B. „Kontoadministrator“ oder „Unternehmensadministrator“) verfügen über die Berechtigung zum Abrufen der Rechnung. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](manage-billing-access.md).
 
-Nur bestimmte Rollen, z.B. der Konto- oder Unternehmensadministrator, verfügen über die Berechtigung zum Abrufen von Abrechnungs- und Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](manage-billing-access.md).
-
-Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Abrechnungs- und Nutzungsinformationen anzuzeigen. Weitere Informationen zu Abrechnungsrollen für Microsoft-Kundenvereinbarungen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, muss Ihnen die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ zugewiesen sein, um Abrechnungsinformationen anzuzeigen. Weitere Informationen zu Abrechnungsrollen für Microsoft-Kundenvereinbarungen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -115,54 +113,6 @@ Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, können Sie Ihre
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Kündigen des Erhalts der Rechnungen für Abrechnungsprofile per E-Mail
 
 Sie können den Erhalt von Rechnungen per E-Mail kündigen, indem Sie die oben aufgeführten Schritte befolgen und auf **Deaktivieren** klicken. Alle Benutzer mit den Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ und „Rechnungs-Manager“ erhalten dann ebenfalls keine Rechnungen mehr per E-Mail. Als Leseberechtigter können Sie die Einstellungen für den Empfang der Rechnungen per E-Mail nicht bearbeiten.
-
-## <a name="download-usage-in-azure-portal"></a>Herunterladen von Nutzungsdaten im Azure-Portal
-
- Für die meisten Abonnements lässt sich die tägliche Nutzung mit den folgenden Schritten ermitteln:
-
-1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](manage-billing-access.md) aus.
-
-2. Wählen Sie **Rechnungen** aus.
-
-    ![Screenshot mit der Option „Abrechnung und Nutzung“](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
-
-3. Klicken Sie auf die Schaltfläche „Herunterladen“ eines Rechnungszeitraums, den Sie überprüfen möchten.
-
-4. Laden Sie eine tägliche Aufschlüsselung der verbrauchten Mengen und geschätzten Gebühren herunter, indem Sie auf **CSV herunterladen** klicken.  Die Vorbereitung der CSV-Datei kann einige Minuten dauern.
-
-### <a name="download-usage-for-ea-customers"></a>Herunterladen von Nutzungsdaten für EA-Kunden
-
-Sie müssen Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrator sein, um Nutzungsdaten als EA-Kunde anzeigen und herunterladen zu können. Außerdem muss die Richtlinie zum Anzeigen von Gebühren aktiviert sein.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
-1. Wenn Sie über Zugriff auf mehrere Abrechnungskonten verfügen, wählen Sie den Abrechnungsbereich für Ihr EA-Abrechnungskonto aus.
-1. Wählen Sie **Verbrauch + Gebühren** aus.
-1. Wählen Sie für den Monat, den Sie herunterladen möchten, **Herunterladen** aus.
-
-### <a name="download-usage-for-your-microsoft-customer-agreement"></a>Herunterladen der Nutzungsdaten für Ihre Microsoft-Kundenvereinbarung
-
-Sie müssen über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Nutzungsdaten für ein Abrechnungsprofil anzeigen oder herunterladen zu können.
-
-#### <a name="download-usage-for-billed-charges"></a>Herunterladen der Nutzung für in Rechnung gestellte Gebühren
-
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-2. Wählen Sie ein Abrechnungsprofil aus.
-3. Wählen Sie **Rechnungen** aus.
-4. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die der Nutzung entspricht, die Sie herunterladen möchten.
-5. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
-6. Wählen Sie im Kontextmenü „Download“ die Option **Azure-Nutzung und -Gebühren** aus.
-
-#### <a name="download-usage-for-open-charges"></a>Herunterladen der Nutzung für offene Gebühren
-
-Sie können ebenfalls die Monat-bis-Datum-Nutzung für den aktuellen Abrechnungszeitraum herunterladen, also für die Gebühren, die noch nicht abgerechnet wurden.
-
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-2. Wählen Sie ein Abrechnungsprofil aus.
-3. Klicken Sie auf dem Blatt **Übersicht** auf **Azure-Nutzung und -Gebühren herunterladen**.
-
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
-[!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

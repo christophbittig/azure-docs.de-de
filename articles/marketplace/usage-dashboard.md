@@ -4,28 +4,27 @@ description: Erfahren Sie, wie Sie für Angebote, die im Azure Marketplace verö
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 04/28/2021
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: fca763f307c8ae1437009b282e460fc249c40b60
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 07/15/2021
+ms.openlocfilehash: c68216675a41a71b21216ce558b03171781dbc43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540967"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355942"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel enthält Informationen zum Dashboard „Nutzung“ im Partner Center. In diesem Dashboard werden alle VM-Angebote mit Metriken zur normalisierten Nutzung, zur tatsächlichen Nutzung und zur Nutzung nach getakteter Abrechnung auf drei separaten Registerkarten angezeigt: Normalisierte Nutzung nach VM-Größe, Tatsächliche Nutzung nach VM-Größe und Nutzung nach getakteter Abrechnung.
 
-Um auf das Dashboard „Nutzung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Optionen **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Nutzung** aus.
-
 >[!NOTE]
-> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.md).
+> Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.yml).
 
 ## <a name="usage-dashboard"></a>Dashboard „Nutzung“
 
-Im Dashboard **Nutzung** im Menü **Analysieren** werden die aktuellen Aufträge für all Ihre SaaS (Software-as-a-Service)-Angebote angezeigt. Sie können grafische Darstellungen folgender Elemente anzeigen:
+Im [Dashboard „Nutzung“](https://go.microsoft.com/fwlink/?linkid=2166106) werden die aktuellen Aufträge für all Ihre SaaS-Angebote (Software-as-a-Service) angezeigt. Sie können grafische Darstellungen folgender Elemente anzeigen:
 
 - Nutzungstrend
 - Normalisierte Nutzung nach Angeboten
@@ -40,6 +39,8 @@ Im Dashboard **Nutzung** im Menü **Analysieren** werden die aktuellen Aufträge
 ## <a name="elements-of-the-usage-dashboard"></a>Elemente des Dashboards „Nutzung“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Nutzung“ verwendet wird und wie die Daten gelesen werden.
+
+Um auf das Dashboard „Nutzung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Optionen **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Nutzung** aus.
 
 ### <a name="month-range"></a>Monatsbereich
 
@@ -122,7 +123,7 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 | Marketplace-Abonnement-ID | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. | MarketplaceSubscriptionId |
 | MonthStartDate | Monatliches Startdatum | Das monatliche Startdatum steht für den Monat des Kaufs. | MonthStartDate |
 | Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace | OfferType |
-| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als „Kanal“ bezeichnet. Mögliche Werte sind:<ui><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
+| Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als „Kanal“ bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> | AzureLicenseType |
 | Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Mögliche Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | Der dem Angebot zugeordnete Plan | SKU |
 | Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountry |
@@ -162,6 +163,7 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 | Aktion ausgeführt um | Aktion ausgeführt um | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt den Zeitpunkt an, zu dem der Herausgeber die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenAt |
 | Aktion ausgeführt von | Aktion ausgeführt von | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt die Person an, die die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenBy |
 | Geschätzte finanzielle Auswirkungen (USD) | Geschätzte finanzielle Auswirkungen in USD | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Wenn Partner Center eine Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als anomal kennzeichnet, gibt das Feld die geschätzten finanziellen Auswirkungen (in USD) der anomalen Überschreitungsnutzung an.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte programmgesteuert exportiert, ist der Wert NULL._ | EstimatedFinancialImpactUSD |
+| – | Ressourcen-ID | Die vollständig qualifizierte ID der Ressource, einschließlich des Ressourcennamens und des Ressourcentyps. Beachten Sie, dass dies ein Datenfeld ist, das nur in Downloadberichten verfügbar ist.<br>Verwenden Sie folgendes Format:<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name} | – |
 |||||
 
 ### <a name="usage-page-filters"></a>Filter für die Seite „Nutzung“
@@ -200,4 +202,4 @@ Wenn Sie über mehrere Angebote verfügen, bei denen benutzerdefinierte Verbrauc
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.yml).

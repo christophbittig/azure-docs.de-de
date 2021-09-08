@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 30bd445940187d3514dc4b7024d3dbb8f7d920b2
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: af8e6a64e94530d6cca1494aff2c3b249186a42e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339619"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Übersicht zu Azure Blob Storage-Bindungen für Azure Functions
 
@@ -36,7 +36,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 #### <a name="storage-extension-5x-and-higher"></a>Storage-Erweiterung 5.x und höher
 
-Eine neue Version der Storage-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) ersetzt.
+Eine neue Version der Storage-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) ersetzt. Erfahren Sie im [Migrationsleitfaden für Azure.Storage.Blobs](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md) mehr über diese neuen Typen, wie sie sich unterscheiden und wie zu ihnen migrieren.
 
 > [!NOTE]
 > Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].

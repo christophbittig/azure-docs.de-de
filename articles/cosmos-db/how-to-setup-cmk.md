@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8738f34ea9d038bbc5a0bc3d9f13be11db2b9e00
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4f9f9c9688340a153efab189cc24ace13fc4da6e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681708"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113589207"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -301,7 +301,7 @@ Die Rotation des kundenseitig verwalteten Schlüssels, der von Ihrem Azure Cosmo
     $account | Set-AzResource -Force
     ```
 
-Der vorherige Schlüssel oder die vorherige Schlüsselversion kann nach 24 Stunden oder dann deaktiviert werden, wenn in den [Azure Key Vault-Überwachungsprotokollen](../key-vault/general/logging.md) keine Aktivitäten mehr von Azure Cosmos DB für diesen Schlüssel oder diese Schlüsselversion angezeigt werden.
+Der vorherige Schlüssel oder die vorherige Schlüsselversion kann deaktiviert werden, wenn in den [Azure Key Vault-Überwachungsprotokollen](../key-vault/general/logging.md) keine Aktivitäten mehr von Azure Cosmos DB für diesen Schlüssel oder diese Schlüsselversion angezeigt werden. Nach einer 24-stündigen Schlüsselrotation sollten keine Aktivitäten mehr mit dem vorherigen Schlüssel oder der vorherigen Schlüsselversion erfolgen.
     
 ## <a name="error-handling"></a>Fehlerbehandlung
 
@@ -341,7 +341,7 @@ Dieses Feature ist derzeit nur für neue Konten verfügbar.
 
 ### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Können kundenseitig verwaltete Schlüssel in Verbindung mit dem Azure Cosmos DB-[Analysespeicher](analytical-store-introduction.md) verwendet werden?
 
-Ja, aber Sie müssen die [verwaltete Identität Ihres Azure Cosmos DB-Kontos](#using-managed-identity) in ihrer Azure Key Vault-Zugriffsrichtlinie verwenden, bevor Sie den analytischen Speicher aktivieren.
+Ja, Azure Synapse Link unterstützt nur das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie müssen die [verwaltete Identität Ihres Azure Cosmos DB-Kontos in Ihrer Azure Key Vault-Zugriffsrichtlinie verwenden](#using-managed-identity), bevor Sie [Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) für Ihr Konto aktivieren.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Ist die Unterstützung einer feineren Granularität als bei Schlüsseln auf Kontoebene geplant?
 

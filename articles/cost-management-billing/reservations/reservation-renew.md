@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/05/2020
 ms.author: banders
-ms.openlocfilehash: bf7945c56fc05c33ae3cfed1c67085b3b28f847f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b038ab5a937105d3fb625f6b17dd71b0073b7080
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690509"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354925"
 ---
 # <a name="automatically-renew-reservations"></a>Automatisches Verlängern von Reservierungen
 
@@ -84,6 +84,8 @@ Azure kann die Verlängerung in folgenden Fällen nicht verarbeiten:
 Sie erhalten eine E-Mail-Benachrichtigung, wenn eine der vorstehenden Bedingungen eintritt und die Verlängerung deaktiviert wird.
 
 ## <a name="renewal-notification"></a>Benachrichtigung zur Verlängerung
+
+E-Mails zur Verlängerungsbenachrichtigung werden 30 Tage vor Ablauf und noch einmal am Ablaufdatum gesendet. Die E-Mail-Adresse des Absenders lautet `azure-noreply@microsoft.com`. Gegebenenfalls sollten Sie die E-Mail-Adresse Ihrer Liste sicherer bzw. zulässiger Absender hinzufügen.
 
 Abhängig von Ihrer Kaufmethode werden E-Mails an verschiedene Personen gesendet:
 

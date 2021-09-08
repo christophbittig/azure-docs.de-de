@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: how-to
-ms.date: 04/28/2021
+ms.topic: conceptual
+ms.date: 07/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 73cb44dd3564f56f8edd5304a344a50f1e4b5c9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663857"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346785"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät mit GPU
 
@@ -53,8 +53,9 @@ Um die Größe und Anzahl von VMs zu berechnen, die Sie auf Ihrem Gerät bereits
 |Master-VM|4 Kerne, 4 GB RAM|
 |Worker-VM|12 Kerne, 32 GB RAM|
 
-
 Informationen zur nutzbaren Computeleistung und zum Arbeitsspeicher auf Ihrem Gerät finden Sie in den [Spezifikationen zu Compute- und Arbeitsspeicherressourcen](azure-stack-edge-gpu-technical-specifications-compliance.md#compute-and-memory-specifications) für Ihr Gerätemodell. 
+
+Für einen virtuellen GPU-Computer müssen Sie eine [VM-Größe aus der NCasT4-v3-Serie](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview) verwenden.
 
 
 ### <a name="vm-limits"></a>Grenzwerte für virtuelle Computer

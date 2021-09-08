@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: aebadcbb37a91b1a908054738fc901c6e7e54ac1
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 07/09/2021
+ms.openlocfilehash: d36d7e91afc4b0bade9f3da08d1324aa7f56cba9
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004473"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594137"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -46,7 +46,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="what-is-a-compute-cluster"></a>Was ist ein Computecluster?
 
-Ein Azure Machine Learning-Computecluster ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion als Ressource erstellt, die für andere Benutzer im Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
+Ein Azure Machine Learning-Computecluster ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht. Der Computecluster ist eine Ressource, die für andere Benutzer in Ihrem Arbeitsbereich freigegeben werden kann. Es wird automatisch zentral hochskaliert, wenn ein Auftrag übermittelt wird, und kann in einem virtuellen Azure-Netzwerk platziert werden kann. Das Computeziel wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einem [Docker-Container](https://www.docker.com/why-docker).
 
 Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-secure-training-vnet.md) ausführen, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container. 
 
@@ -54,7 +54,12 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 
 * Einige der in diesem Dokument aufgeführten Szenarien sind als __Vorschau__ gekennzeichnet. Vorschaufunktionen werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-* Zurzeit wird nur die Erstellung (und nicht Aktualisierung) von Clustern über ARM-Vorlagen [https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ] unterstützt. Zum Aktualisieren von Compute empfiehlt es sich, das SDK, die CLI oder die UX für den Moment zu verwenden.
+* Computecluster können in einer anderen Region als der Ihres Arbeitsbereichs erstellt werden. Diese Funktionalität befindet sich in der __Vorschau__ und ist nur für __Computecluster__ und nicht für Compute-Instanzen verfügbar. Diese Vorschau ist nicht verfügbar, wenn Sie einen Arbeitsbereich mit aktivierten privaten Endpunkten verwenden. 
+
+    > [!WARNING]
+    > Wenn Sie einen Computecluster in einer anderen Region als der Ihres Arbeitsbereichs oder Ihrer Datenspeicher nutzen, können erhöhte Netzwerklatenz und Datenübertragungskosten die Folge sein. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen.
+
+* Zurzeit wird nur die Erstellung (und nicht die Aktualisierung) von Clustern mittels [ARM-Vorlagen](/azure/templates/microsoft.machinelearningservices/workspaces/computes) unterstützt. Zum Aktualisieren von Compute empfiehlt sich derzeit das SDK, die Azure CLI oder Benutzeroberfläche.
 
 * Bei Azure Machine Learning Compute gelten Standardgrenzwerte, beispielsweise für die Anzahl von Kernen, die zugeordnet werden können. Weitere Informationen finden Sie unter [Verwalten und Anfordern von Kontingenten für Azure-Ressourcen](how-to-manage-quotas.md).
 
@@ -88,15 +93,20 @@ Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstel
 
 Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.  Weitere Informationen finden Sie in der [AmlCompute-Klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute).
 
+> [!WARNING]
+> Wenn Sie den Parameter `location` auf eine andere Region als die Ihres Arbeitsbereichs oder Ihrer Datenspeicher festlegen, können erhöhte Netzwerklatenz und Datenübertragungskosten die Folge sein. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 
 ```azurecli-interactive
-az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
+az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2 --location westus2
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute).
+> [!WARNING]
+> Wenn Sie einen Computecluster in einer anderen Region als der Ihres Arbeitsbereichs oder Ihrer Datenspeicher nutzen, können erhöhte Netzwerklatenz und Datenübertragungskosten die Folge sein. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen.
+
+Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_amlcompute).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

@@ -10,45 +10,49 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack
-ms.openlocfilehash: c5e5461163b28ff53e77121a8e48dc478887ea6c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
+ms.openlocfilehash: 06dc1a34f35434019d1b992c12502577aa470360
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081063"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653489"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
 
 Schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen von Azure Machine Learning mithilfe virtueller Netzwerke (VNets). Hier wird anhand eines Beispielszenarios veranschaulicht, wie Sie ein vollständiges virtuelles Netzwerk konfigurieren.
 
-Der Artikel ist Teil einer fünf teiligen Artikelreihe, in der Sie schrittweise durch die Absicherung eines Azure Machine Learning-Workflows geführt werden. Wir empfehlen dringend, erst diesen Übersichtsartikel zu lesen, um zunächst die Konzepte zu verstehen. 
-
-Hier sind die übrigen Artikel der Reihe:
-
-**1. Übersicht zu VNETs** > [2. Schützen des Arbeitsbereichs](how-to-secure-workspace-vnet.md) > [3. Schützen der Trainingsumgebung](how-to-secure-training-vnet.md) > [4. Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md) > [5. Aktivieren der Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
+>
+> * [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+> * [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+> * [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+> * [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+> * [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+> * [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Artikel wird vorausgesetzt, dass Sie mit den folgenden Themen vertraut sind:
 + [Virtuelle Azure-Netzwerke](../virtual-network/virtual-networks-overview.md)
 + [IP-Netzwerke](../virtual-network/public-ip-addresses.md)
-+ [Azure Private Link](how-to-configure-private-link.md)
++ [Azure Machine Learning-Arbeitsbereich mit privatem Endpunkt](how-to-configure-private-link.md)
 + [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md):
 + [Netzwerkfirewalls](../firewall/overview.md)
 ## <a name="example-scenario"></a>Beispielszenario
 
 In diesem Abschnitt erfahren Sie, wie ein Netzwerkszenario grundsätzlich eingerichtet wird, um die Azure Machine Learning-Kommunikation mit privaten IP-Adressen zu schützen.
 
-In der folgenden Tabelle sehen Sie in einer Gegenüberstellung, wie Dienste mit bzw. ohne VNET auf verschiedene Teile eines Azure Machine Learning-Netzwerks zugreifen.
+In der folgenden Tabelle sehen Sie in einer Gegenüberstellung, wie Dienste mit und ohne VNet auf verschiedene Teile eines Azure Machine Learning-Netzwerks zugreifen:
 
 | Szenario | Arbeitsbereich | Zugeordnete Ressourcen | Trainingscompute-Umgebung | Rückschlusscompute-Umgebung |
 |-|-|-|-|-|-|
 |**Kein virtuelles Netzwerk**| Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse |
 |**Sichere Ressourcen in einem virtuellen Netzwerk**| Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Private IP-Adresse | Private IP-Adresse  | 
 
-* **Arbeitsbereich:** Erstellen Sie einen privaten Endpunkt in Ihrem VNET, um im Arbeitsbereich eine Private Link-Verbindung herzustellen. Der private Endpunkt verbindet den Arbeitsbereich über mehrere private IP-Adressen mit dem VNET.
+* **Arbeitsbereich**: Erstellen Sie einen privaten Endpunkt für Ihren Arbeitsbereich. Der private Endpunkt verbindet den Arbeitsbereich über mehrere private IP-Adressen mit dem VNET.
 * **Zugehörige Ressourcen:** Stellen Sie mithilfe von Dienstendpunkten oder privaten Endpunkten eine Verbindung mit Arbeitsbereichsressourcen wie Azure Storage, Azure Key Vault oder Azure Container Services her.
     * **Dienstendpunkte** geben die Identität Ihres virtuellen Netzwerks gegenüber dem Azure-Dienst an. Nachdem Sie Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert haben, können Sie eine virtuelle Netzwerkregel hinzufügen, um die Azure-Dienstressourcen in Ihrem virtuellen Netzwerk zu schützen. Dienstendpunkte nutzen öffentliche IP-Adressen.
     * **Private Endpunkte** sind Netzwerkschnittstellen, die das Herstellen einer sicheren Verbindung mit einem Dienst gestatten, der über Private Link betrieben wird. Ein privater Endpunkt verwendet eine private IP-Adresse in Ihrem VNET und bindet den Dienst so effektiv in das VNET ein.
@@ -56,7 +60,7 @@ In der folgenden Tabelle sehen Sie in einer Gegenüberstellung, wie Dienste mit 
 * **Rückschlusscomputezugriff:** Hiermit greifen Sie mit privaten IP-Adressen auf AKS-Computecluster (Azure Kubernetes Services) zu.
 
 
-In den nächsten fünf Abschnitten wird gezeigt, wie Sie das oben beschriebene Netzwerkszenario absichern. Zum Schützen Ihres Netzwerks müssen Sie folgende Schritte ausführen:
+In den nächsten Abschnitten wird gezeigt, wie Sie das oben beschriebene Netzwerkszenario absichern. Zum Schützen Ihres Netzwerks müssen Sie folgende Schritte ausführen:
 
 1. [**Arbeitsbereich und zugehörige Ressourcen schützen**](#secure-the-workspace-and-associated-resources)
 1. [**Trainingsumgebung schützen**](#secure-the-training-environment)
@@ -85,7 +89,7 @@ Ausführliche Anweisungen zum Ausführen dieser Schritte finden Sie unter [Secur
 ### <a name="limitations"></a>Einschränkungen
 
 Für das Schützen Ihres Arbeitsbereichs und zugehöriger Ressourcen in einem virtuellen Netzwerk gelten die folgenden Einschränkungen:
-- Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit Private Link ist in den Regionen Azure Government und Azure China 21Vianet nicht verfügbar.
+- Ein Azure Machine Learning-Arbeitsbereich mit privatem Endpunkt ist in den Regionen Azure Government und Azure China 21Vianet nicht verfügbar.
 - Alle Ressourcen müssen sich innerhalb desselben VNET befinden. Sie können allerdings Subnetze innerhalb eines VNET einsetzen.
 
 ## <a name="secure-the-training-environment"></a>Schützen der Trainingsumgebung
@@ -95,7 +99,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Trainingsumgebung in Azure Machine
 Führen Sie die folgenden Schritte aus, um die Trainingsumgebung zu schützen:
 
 1. [Erstellen Sie im virtuellen Netzwerk eine Azure Machine Learning-Compute-Instanz und einen Azure Machine Learning-Computercluster](how-to-secure-training-vnet.md#compute-instance), um den Trainingsauftrag auszuführen.
-1. [Erlauben Sie die von Azure Batch eingehende Kommunikation](how-to-secure-training-vnet.md#mlcports), damit Batch Aufträge an Ihre Computeressourcen übermitteln kann. 
+1. [Lassen Sie eingehende Kommunikation zu](how-to-secure-training-vnet.md#required-public-internet-access), damit Verwaltungsdienste Aufträge an Ihre Computeressourcen übermitteln können. 
 
 ![Architekturdiagramm, das die Absicherung verwalteter Computecluster und -instanzen zeigt](./media/how-to-network-security-overview/secure-training-environment.png)
 
@@ -109,7 +113,7 @@ In diesem Abschnitt erfahren Sie, wie Azure Machine Learning für eine sichere K
 
 1. Der Client sendet einen Trainingsauftrag über den privaten Endpunkt an den Azure Machine Learning-Arbeitsbereich.
 
-1. Der Azure Batch-Dienst empfängt den Auftrag vom Arbeitsbereich und übergibt den Trainingsauftrag über den öffentlichen Lastenausgleich, der mit der Computeressource bereitgestellt wird, an die Compute-Umgebung. 
+1. Der Azure Batch-Dienst empfängt den Auftrag aus dem Arbeitsbereich. Er übergibt dann den Trainingsauftrag über den öffentlichen Lastenausgleich für die Computeressource an die Compute-Umgebung. 
 
 1. Die Computeressource erhält den Auftrag und startet das Training. Die Computeressource greift auf sichere Speicherkonten zu, um Trainingsdateien herunter- und die Ausgabe hochzuladen.
 
@@ -143,7 +147,7 @@ Das folgende Netzwerkdiagramm zeigt einen geschützten Azure Machine Learning-Ar
 
 Sie können den Arbeitsbereich hinter einem VNet mithilfe eines privaten Endpunkts schützen und weiterhin den Zugriff über das öffentliche Internet zulassen. Die anfängliche Konfiguration entspricht der zum [Schützen von Arbeitsbereich und zugehörigen Ressourcen](#secure-the-workspace-and-associated-resources). 
 
-Nachdem Sie den Arbeitsbereich mit einer privaten Verbindung geschützt haben, [aktivieren Sie den öffentlichen Zugriff](how-to-configure-private-link.md#enable-public-access). Anschließend können Sie über das öffentliche Internet und das VNet auf den Arbeitsbereich zugreifen.
+Nachdem Sie den Arbeitsbereich mit einem privaten Endpunkt geschützt haben, [aktivieren Sie öffentlichen Zugriff](how-to-configure-private-link.md#enable-public-access). Anschließend können Sie über das öffentliche Internet und das VNet auf den Arbeitsbereich zugreifen.
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -152,7 +156,7 @@ Nachdem Sie den Arbeitsbereich mit einer privaten Verbindung geschützt haben, [
 
 [Schützen des Arbeitsbereichs](#secure-the-workspace-and-associated-resources) > [Schützen der Trainingsumgebung](#secure-the-training-environment) > [Schützen der Rückschlussumgebung](#secure-the-inferencing-environment) > **Aktivieren der Studio-Funktionalität** > [Konfigurieren der Firewalleinstellungen](#configure-firewall-settings)
 
-Wenn sich Ihr Speicher in einem VNet befindet, müssen Sie zunächst zusätzliche Konfigurationsschritte durchführen, um die volle Funktionalität im [Studio](overview-what-is-machine-learning-studio.md) zu aktivieren. Standardmäßig sind die folgenden Features deaktiviert:
+Wenn sich Ihr Speicher in einem VNet befindet, müssen Sie die volle Funktionalität in Studio durch zusätzliche Konfigurationsschritte aktivieren. Standardmäßig sind die folgenden Features deaktiviert:
 
 * Vorschau der Daten im Studio.
 * Visualisieren von Daten im Designer.
@@ -160,15 +164,18 @@ Wenn sich Ihr Speicher in einem VNet befindet, müssen Sie zunächst zusätzlich
 * Senden eines AutoML-Experiments.
 * Starten eines Beschriftungsprojekts.
 
-Informationen zur Aktivierung der vollen Studio-Funktionalität innerhalb eines VNets finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio). Das Studio unterstützt Speicherkonten entweder unter Verwendung von Dienstendpunkten oder privaten Endpunkten.
+Informationen zur Aktivierung der vollen Studio-Funktionalität finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md).
 
 ### <a name="limitations"></a>Einschränkungen
 
-Von der [ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) werden keine Standardspeicherkonten unterstützt, die hinter einem virtuellen Netzwerk geschützt sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Beachten Sie, dass das nicht standardmäßige Speicherkonto hinter dem virtuellen Netzwerk gesichert werden kann. 
+Von der [ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) werden keine Standardspeicherkonten hinter einem virtuellen Netzwerk unterstützt. Verwenden Sie daher für die ML-gestützte Datenbeschriftung ein anderes Speicherkonto als das Standardkonto. 
+
+> [!TIP]
+> Solange es sich nicht um das Standardspeicherkonto handelt, kann das Konto für die Datenbeschriftung hinter dem virtuellen Netzwerk abgesichert werden. 
 
 ## <a name="configure-firewall-settings"></a>Konfigurieren der Firewalleinstellungen
 
-Konfigurieren Sie Ihre Firewall für die Steuerung des Zugriffs auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet. Zwar empfehlen wir die Verwendung von Azure Firewall, aber Sie sollten Ihr Netzwerk auch mit anderen Firewallprodukten schützen können. Wenn Sie Fragen dazu haben, wie Sie die Kommunikation über die Firewall zulassen, lesen Sie die Dokumentation für die von Ihnen verwendete Firewall.
+Konfigurieren Sie Ihre Firewall für die Steuerung des Datenverkehrs zwischen Ihrem Azure Machine Learning-Arbeitsbereich und dem öffentlichen Internet. Zwar empfehlen wir Azure Firewall, aber Sie können auch andere Firewallprodukte einsetzen. 
 
 Weitere Informationen zu Firewalleinstellungen finden Sie unter [Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning](how-to-access-azureml-behind-firewall.md).
 
@@ -180,11 +187,11 @@ Weitere Informationen zu den erforderlichen Domänennamen und IP-Adressen finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel ist der erste Teil einer fünfteiligen Serie zu virtuellen Netzwerken. Weitere Informationen zum Schützen eines virtuellen Netzwerks finden Sie in den verbleibenden Artikeln:
+Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
-* [Teil 2: Virtuelle Netzwerke im Überblick](how-to-secure-workspace-vnet.md)
-* [Teil 3: Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
-* [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
-* [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
-
-Sehen Sie sich ebenso den Artikel zur Verwendung des [benutzerdefinierten DNS](how-to-custom-dns.md) für die Namensauflösung an.
+* [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+* [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+* [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+* [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+* [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+* [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)

@@ -1,5 +1,5 @@
 ---
-title: Behandeln eines Problems mit Privileged Identity Management – Azure Active Directory | Microsoft-Dokumentation
+title: 'Behandeln eines Problems mit in Privileged Identity Management verweigertem Zugriff auf Ressourcen: Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie Systemfehler mit Rollen in Azure AD Privileged Identity Management (PIM) behandeln.
 services: active-directory
 documentationcenter: ''
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/18/2019
+ms.date: 06/30/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcbebcb32e912abdf0112007c743c6890fae36e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26c3129e463ffaad01db48fa0a15cfd1fadefb29
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372394"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113127974"
 ---
-# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Behandeln eines Problems mit Privileged Identity Management
+# <a name="troubleshoot-access-to-azure-resources-denied-in-privileged-identity-management"></a>Behandeln eines Problems mit in Privileged Identity Management verweigertem Zugriff auf Azure-Ressourcen
 
 Haben Sie ein Problem mit Privileged Identity Management (PIM) in Azure Active Directory (Azure AD)? In diesem Artikel erfahren Sie, wie Sie solche Probleme beheben.
 

@@ -3,12 +3,12 @@ title: Kostenüberwachung für Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird die Überwachung der Kosten für Metriken und Bestandsdaten beschrieben, die von Container Insights gesammelt werden, damit Kunden ihre Nutzung und die entsprechenden Kosten besser verwalten können.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2ff3616b3c78bbd7202acb08ffb3e46e0f7591b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728908"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339615"
 ---
 # <a name="understand-monitoring-costs-for-container-insights"></a>Informationen zur Kostenüberwachung für Container Insights
 
@@ -37,7 +37,7 @@ In der folgenden Auflistung werden die Datentypen zusammengefasst, die in einem 
 
 - Das aktive Abrufen von Prometheus-Metriken.
 
-- Die [Sammlung von Diagnoseprotokollen](../../aks/view-control-plane-logs.md) von Kubernetes-Masterknotenprotokollen in Ihrem AKS-Cluster zur Analyse von Protokolldaten, die von Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* generiert werden.
+- Die [Sammlung von Diagnoseprotokollen](../../aks/monitor-aks.md#configure-monitoring) von Kubernetes-Masterknotenprotokollen in Ihrem AKS-Cluster zur Analyse von Protokolldaten, die von Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* generiert werden.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Erfasste Elemente in Kubernetes-Clustern
 
@@ -108,7 +108,7 @@ Für die Beispielschätzung wird die Überwachung eines AKS-Clusters mit folgend
 - fünf Kubernetes Services-Instanzen (einschließlich kube-system-Pods, -Dienste und -Namespaces)
 - Sammlungshäufigkeit von 60 Sek. (Standardwert)
 
-Für diese Parameter werden die folgenden Tabellen und Datenmengen pro Stunde im zugewiesenen Log Analytics-Arbeitsbereich generiert. Weitere Informationen zu den einzelnen Tabellen finden Sie unter [Containerdatensätze](container-insights-log-search.md#container-records).
+Für diese Parameter werden die folgenden Tabellen und Datenmengen pro Stunde im zugewiesenen Log Analytics-Arbeitsbereich generiert. Weitere Informationen zu den einzelnen Tabellen finden Sie unter [Tabellen in Azure Monitor-Protokollen](../../aks/monitor-aks-reference.md#azure-monitor-logs-tables).
 
 |Tabelle | Geschätzte Größe (MB/Stunde) |
 |------|---------------|

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 3fa2276163b054c72ec27901fb28315b648c47c3
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296436"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446253"
 ---
 # <a name="labeling-images-and-text-documents"></a>Beschriften von Bildern und Textdokumenten
 
@@ -79,6 +79,19 @@ Hier haben wir ein 2 × 2-Layout ausgewählt und sind im Begriff, das Tag „M
 Azure aktiviert die Schaltfläche **Senden**, wenn Sie alle Bilder auf der Seite markiert haben. Wählen Sie **Übermitteln** aus, um Ihre Arbeit zu speichern.
 
 Nach der Übermittlung von Tags für die vorliegenden Daten aktualisiert Azure die Seite mit einer neuen Gruppe von Bildern aus der Arbeitswarteschlange.
+
+## <a name="medical-image-tasks"></a>Aufgaben für medizinische Bilder
+
+> [!IMPORTANT]
+> Die Möglichkeit der Beschriftung von DICOM- oder ähnlichen Bildtypen ist nicht für die Verwendung als medizinisches Hilfsmittel, zur klinischen Unterstützung, als Diagnosetool oder sonstige Technologie für den Einsatz in Diagnose, Therapie, Linderung, Behandlung oder Prävention von Krankheiten oder medizinischen Fällen vorgesehen oder verfügbar. Microsoft erteilt keine Lizenzen oder Rechte zur Nutzung dieser Funktion für die beschriebenen Zwecke. Diese Funktion ist nicht als Ersatz für professionelle medizinische Beratung oder medizinische Gutachten, Diagnosen, Behandlungen oder das klinische Urteilsvermögen einer medizinischen Fachkraft konzipiert oder vorgesehen und sollte nicht als solcher eingesetzt werden. Der Kunde allein ist für die Verwendung der Datenbeschriftung für DICOM- oder ähnliche Bildtypen verantwortlich.
+
+Bildprojekte unterstützen das DICOM-Bildformat für Röntgendateibilder.
+
+:::image type="content" source="media/how-to-label-data/x-ray-image.png" alt-text="Zu beschriftendes DICOM-Röntgenbild.":::
+
+Während Sie die medizinischen Bilder mit denselben Tools wie alle anderen Bilder bezeichnen, gibt es für DICOM-Bilder ein zusätzliches Tool.  Wählen Sie das Tool **Fenster und Ebene** aus, um die Intensität des Bilds zu ändern. Dieses Tool ist nur für DICOM-Bilder verfügbar.
+
+:::image type="content" source="media/how-to-label-data/window-level-tool.png" alt-text="Tool „Fenster und Ebenen“ für DICOM-Bilder.":::
 
 ## <a name="tag-images-for-multi-class-classification"></a>Taggen von Bildern für die Klassifizierung mit mehreren Klassen
 

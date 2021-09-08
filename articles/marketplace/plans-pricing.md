@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: 4ab56d50bbe6eed3763540e7b993ecc4f403b09c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536526"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598268"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -68,7 +68,7 @@ Der Planname und die Beschreibung werden in der Angebotsliste in den kommerziell
 Nachdem Sie Ihre Pläne erstellt haben, wird auf der Seite **Planübersicht** eine Liste mit dem Namen, der ID, weiteren Details, dem aktuellen Veröffentlichungsstatus und allen verfügbaren Aktionen für den Plan angezeigt. Welche Aktionen verfügbar sind, richtet sich nach dem Status Ihres Plans. Folgende Aktionen sind möglich:
 
 - Wenn der Planstatus **Entwurf** lautet: Entwurf löschen.
-- Wenn der Planstatus **Live** lautet: Verkauf des Plans einstellen oder private Zielgruppe synchronisieren.
+- Wenn der Planstatus **Live** lautet: Verteilung des Plans beenden oder private Zielgruppe synchronisieren.
 
 Der folgende Screenshot zeigt zwei Angebotsentwürfe.
 

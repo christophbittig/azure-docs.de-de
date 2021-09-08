@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34d3bd45d2c0bf0260a4f8524cff6f8ac03b746c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: e289ad866ba53de761077f22b27ef4ff763451ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501718"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468551"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -138,6 +138,9 @@ In der folgenden Tabelle sind alle AzCopy v10-Befehle aufgeführt. Jeder Befehl
 |[azcopy make](storage-ref-azcopy-make.md?toc=/azure/storage/blobs/toc.json)|Erstellt einen Container oder eine Dateifreigabe.|
 |[azcopy remove](storage-ref-azcopy-remove.md?toc=/azure/storage/blobs/toc.json)|Löscht Blobs oder Dateien aus einem Azure Storage-Konto.|
 |[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|Repliziert den Quellspeicherort an den Zielspeicherort.|
+
+> [!NOTE]
+> AzCopy bietet keinen Befehl zum Umbenennen von Dateien. 
 
 ## <a name="use-in-a-script"></a>Verwenden in einem Skript
 

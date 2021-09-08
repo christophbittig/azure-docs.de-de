@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 01/20/2021
-ms.openlocfilehash: a6f9debd9b4daec96fdb2f00f81bcbeb5073e4c7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 07/06/2021
+ms.openlocfilehash: f5822a3d5594388627858be22ca9bbc0a43c1739
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691731"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361079"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,10 +45,12 @@ Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstell
 
 ## <a name="data-consistency"></a>Datenkonsistenz
 
-Einer der Vorteile von Replikaten besteht darin, dass die Replikate sich immer in einem konsistenten Transaktionszustand befinden. Allerdings kann es auch vorkommen, dass zwischen den verschiedenen Replikaten ein geringes Maß an Latenz auftritt. Die horizontale Leseskalierung unterstützt Konsistenz auf Sitzungsebene. Das bedeutet Folgendes: Wenn die schreibgeschützte Sitzung nach einem Verbindungsfehler, der durch die Nichtverfügbarkeit eines Replikats verursacht wurde, die Verbindung wiederherstellt, wird sie möglicherweise an ein Replikat weitergeleitet, das nicht zu 100 % auf dem gleichen Stand ist wie das Replikat mit Lese-/Schreibzugriff. Gleiches gilt in diesem Fall: Wenn eine Anwendung Daten mithilfe einer Sitzung mit Lese-/Schreibzugriff schreibt und sie mithilfe einer schreibgeschützten Sitzung sofort liest, ist es möglich, dass die neuesten Updates nicht sofort im Replikat sichtbar sind. Die Latenz wird von einem asynchronen Wiederholungsvorgang des Transaktionsprotokolls verursacht.
+Am primären Replikat vorgenommene Datenänderungen werden asynchron an schreibgeschützte Replikate weitergegeben. Innerhalb einer Sitzung, die mit einem schreibgeschützten Replikat verbunden ist, sind Lesevorgänge immer transaktionskonsistent. Da die Latenzzeit für die Datenweitergabe jedoch variabel ist, können verschiedene Replikate Daten zu geringfügig unterschiedlichen Zeitpunkten im Vergleich zum primären Replikat und zueinander zurückgeben. Wenn ein schreibgeschütztes Replikat nicht mehr verfügbar ist und die Sitzung erneut verbunden wird, kann sie sich mit einem Replikat verbinden, das sich an einem anderen Zeitpunkt befindet als das ursprüngliche Replikat. Ebenso ist es möglich, dass, wenn eine Anwendung Daten in einer Sitzung mit Lese-/Schreibzugriff ändert und sie sofort in einer schreibgeschützten Sitzung liest, die letzten Änderungen im schreibgeschützten Replikat nicht sofort sichtbar sind.
+
+Die typische Latenz bei der Datenweitergabe zwischen dem primären Replikat und schreibgeschützten Replikaten liegt im Bereich von einigen Dutzend Millisekunden bis zu einstelligen Sekunden. Es gibt jedoch für die Datenweitergabelatenz keine feste Obergrenze. Bedingungen wie eine hohe Ressourcenauslastung im Replikat können die Latenz erheblich erhöhen. Anwendungen, die sitzungsübergreifende Datenkonsistenz erfordern oder bei denen committete Daten sofort lesbar sein müssen, müssen das primäre Replikat verwenden.
 
 > [!NOTE]
-> Replikationslatenzen innerhalb der Region sind gering, und diese Situation tritt selten ein. Informationen zum Überwachen der Replikationslatenz finden Sie unter [Überwachung und Problembehandlung bei schreibgeschützten Replikaten](#monitoring-and-troubleshooting-read-only-replicas).
+> Informationen zum Überwachen der Datenweitergabelatenz finden Sie unter [Überwachung und Problembehandlung bei schreibgeschützten Replikaten](#monitoring-and-troubleshooting-read-only-replicas).
 
 ## <a name="connect-to-a-read-only-replica"></a>Herstellen einer Verbindung mit einem schreibgeschützten Replikat
 
@@ -89,7 +91,7 @@ Häufig verwendete Sichten sind:
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Bietet Metriken zur Ressourcennutzung für die letzte Stunde, einschließlich CPU-, Daten-E/A- und Protokollschreibauslastung bezogen auf Dienstziellimits.|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Stellt Statistiken zu aggregierten Wartevorgängen für die Datenbank-Engine-Instanz bereit. |
-|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Bietet Statistiken zum Replikatintegritätsstatus und zur Synchronisierung. Die Größe der Wiederholungswarteschlange und die Wiederholungsrate dienen als Hinweise auf die Datenlatenz im schreibgeschützten Replikat. |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Bietet Statistiken zum Replikatintegritätsstatus und zur Synchronisierung. Die Größe der Wiederholungswarteschlange und die Wiederholungsrate dienen als Hinweise auf die Datenweitergabelatenz im schreibgeschützten Replikat. |
 |[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Bietet Leistungsindikatoren für die Datenbank-Engine.|
 |[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Bietet Ausführungsstatistiken pro Abfrage, z. B. Anzahl von Ausführungen, verwendete CPU-Zeit usw.|
 |[sys.dm_exec_query_plan()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Bietet zwischengespeicherte Abfragepläne. |
@@ -123,7 +125,7 @@ Wenn eine Abfrage mit langer Ausführungszeit für ein schreibgeschützten Repli
 > Wenn beim Ausführen von Abfragen für ein schreibgeschütztes Replikat einer der Fehler 3961, 1219 oder 3947 angezeigt wird, wiederholen Sie die Abfrage.
 
 > [!TIP]
-> Wenn eine Verbindung mit einem schreibgeschützten Replikat besteht, können auf den Dienstebenen Premium und Unternehmenskritisch die Spalten `redo_queue_size` und `redo_rate` in der DMV [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) zum Überwachen der Datensynchronisierung verwendet werden und dadurch als Indikatoren für die Datenlatenz auf dem schreibgeschützten Replikat herangezogen werden.
+> Wenn eine Verbindung mit einem schreibgeschützten Replikat besteht, können auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ die Spalten `redo_queue_size` und `redo_rate` in der DMV [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) zum Überwachen der Datensynchronisierung verwendet werden und dadurch als Indikatoren für die Datenweitergabelatenz beim schreibgeschützten Replikat herangezogen werden.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung

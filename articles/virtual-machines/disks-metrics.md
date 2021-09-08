@@ -2,17 +2,17 @@
 title: Datenträgermetriken
 description: Beispiele für Datenträgerbursting-Metriken
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d0330996629ec087022e592cc862a428bc02807
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674984"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454577"
 ---
 # <a name="disk-performance-metrics"></a>Leistungsmetriken für Datenträger
 Azure bietet im Azure-Portal Metriken, die Aufschluss über die Leistung Ihrer virtuellen Computer (VM) und Datenträger geben. Die Metriken können auch über einen API-Aufruf abgerufen werden. Dieser Artikel ist in drei Unterabschnitte unterteilt:
@@ -58,7 +58,9 @@ Die folgenden Metriken bieten Einblick in das [Burstingfeature](disk-bursting.md
 - **Verwendetes Betriebssystemdatenträger-Guthaben für Burst-E/A in Prozent**: Der kumulierte Prozentsatz der verwendeten Burst-IOPS für den Betriebssystemdatenträger. Wird in einem Intervall von 5 Minuten ausgegeben.
 
 ## <a name="storage-io-utilization-metrics"></a>Auslastungsmetriken für Speicher-E/A
-Die folgenden Metriken helfen bei der Diagnose von Engpässen Ihrer Kombination aus VM und Datenträger. Diese Metriken sind nur verfügbar, wenn Sie eine Premium-VM verwenden. Sie stehen für alle Datenträgertypen mit Ausnahme von Ultra zur Verfügung. 
+Die folgenden Metriken helfen bei der Diagnose von Engpässen Ihrer Kombination aus VM und Datenträger. Diese Metriken sind nur bei der folgenden Konfiguration verfügbar:
+- Nur für VM-Serien mit Unterstützung von Storage Premium verfügbar.
+- Nicht für Disk Ultra-Datenträger verfügbar. Alle anderen Datenträgertypen dieser VM-Serie können diese Metriken verwenden.
 
 Metriken, die bei der Diagnose der E/A-Begrenzung von Datenträgern helfen:
 

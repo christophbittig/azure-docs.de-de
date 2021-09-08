@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005733"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350216"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Einrichten eines Azure Marketplace-Abonnements für gehostete Testversionen
 
@@ -58,7 +58,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
         1. Klicken Sie unter **Anwendung verwalten** auf **Zertifikate und Geheimnisse**.
         2. Wählen Sie unter „Geheime Clientschlüssel“ die Option **Neuer geheimer Clientschlüssel** aus.
         3. Geben Sie eine Beschreibung ein (z. B. *Testversion*), und wählen Sie dann eine angemessene Dauer aus. Die Testversion funktioniert nicht mehr, sobald dieser Schlüssel abläuft. Dann müssen Sie einen neuen Schlüssel generieren und in AppSource angeben.
-        4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt schließen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
+        4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt verlassen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
 
@@ -72,7 +72,33 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Anmelden mit Ihrem Konto":::
 
-6. Fügen Sie die zuvor erstellte Azure-App als Anwendungsbenutzer zur Testversion Ihrer CRM-Instanz hinzu.
+6. Erstellen Sie eine neue Sicherheitsgruppe, und fügen Sie sie der Canvas-App (Power Apps) hinzu. Dieser Schritt gilt nur für Canvas-App-Angebote (Power Apps).
+    1. Erstellen Sie eine neue Sicherheitsgruppe.
+        1. Wechseln Sie zu **Azure Active Directory**.
+        1. Wählen Sie unter **Verwalten** die Option **Gruppen** aus.
+        1. Wählen Sie **+ Neue Gruppe** aus.
+        1. Wählen Sie als Gruppentyp die Option **Sicherheit** aus. 
+        1. Geben Sie als **Gruppenname** die Zeichenfolge *TestDriveSecurityGroup* ein.
+        1. Fügen Sie eine Beschreibung hinzu, z. B. **Sicherheitsgruppe für Testversion**.
+        1. Behalten Sie bei den anderen Feldern die Standardeinstellungen bei, und wählen Sie **Erstellen** aus.
+
+            :::image type="content" source="./media/test-drive/create-new-group.png" alt-text="Erstellen einer neuen Sicherheitsgruppe":::
+
+    1. Fügen Sie die soeben erstellte Sicherheitsgruppe der Canvas-App (Power Apps) hinzu.
+        1. Öffnen Sie die Portalseite **PowerApps**, und melden Sie sich an.
+        1. Wählen Sie **Apps** und dann die Auslassungspunkte neben der App aus.
+        1. Wählen Sie **Freigeben** aus.
+        1. Suchen Sie nach der Sicherheitsgruppe **TestDriveSecurityGroup**, die Sie im vorherigen Schritt erstellt haben.
+        1. Fügen Sie der Sicherheitsgruppe **Datenberechtigungen** hinzu.
+        1. Deaktivieren Sie das Kontrollkästchen **E-Mail-Einladung senden**.
+        1. Wählen Sie **Freigeben** aus.
+    
+            > [!NOTE]
+            > Bei Verwendung einer anderen Back-End-Datenquelle als CE/Dataverse für die Canvas-App (Power Apps):
+            > - Erlauben Sie der oben erstellten Sicherheitsgruppe den Zugriff auf Ihre Datenquelle, z. B. eine SharePoint-Datenquelle.
+            > - Öffnen Sie SharePoint, und geben Sie die Datentabelle für die Sicherheitsgruppe frei.
+
+7. Fügen Sie die soeben erstellte Azure-App als Anwendungsbenutzer zur Testversion Ihrer CRM-Instanz hinzu. Dieser Schritt gilt nur für Dynamics 365 Customer Engagement-Angebote.
     1. Fügen Sie einen neuen Benutzer in **Azure Active Directory** hinzu. Nur die Werte **Name** und **Benutzername** (die zum selben Mandanten gehören) sind erforderlich, um diesen Benutzer zu erstellen. Behalten Sie für die anderen Felder die Standardwerte bei. Kopieren Sie den Wert für den Benutzernamen.
     2. Melden Sie sich bei der **CRM-Instanz** an, und klicken Sie dann auf **Einstellungen** > **Sicherheit** > **Benutzer**.
     3. Wechseln Sie zur Ansicht **Anwendungsbenutzer**.
@@ -128,7 +154,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
         1. Klicken Sie unter **Anwendung verwalten** auf **Zertifikate und Geheimnisse**.
         2. Wählen Sie unter „Geheime Clientschlüssel“ die Option **Neuer geheimer Clientschlüssel** aus.
         3. Geben Sie eine Beschreibung ein (z. B. *Testversion*), und wählen Sie dann eine angemessene Dauer aus. Die Testversion funktioniert nicht mehr, sobald dieser Schlüssel abläuft. Dann müssen Sie einen neuen Schlüssel generieren und in AppSource angeben.
-        4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt schließen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
+        4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt verlassen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
 

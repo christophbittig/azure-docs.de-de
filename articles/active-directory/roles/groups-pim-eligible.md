@@ -13,19 +13,19 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d1d5e1b9a159d8084c3bf93d00611af72f2b21
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 38b6ee8181f24601a66df7205d44256604834c10
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085867"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228633"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Zuweisen einer Rolle zu einer Gruppe mithilfe von Privileged Identity Management
 
 In diesem Artikel wird beschrieben, wie Sie einer Gruppe mithilfe von Azure AD Privileged Identity Management (PIM) eine Azure Active Directory-Rolle (Azure AD) zuweisen können.
 
 > [!NOTE]
-> Sie müssen die aktualisierte Version von Privileged Identity Management verwenden, um einer Azure AD-Rolle mithilfe von PIM eine Gruppe zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, wenn Ihre Azure AD-Organisation die Privileged Identity Management-API nutzt. Wenden Sie sich in diesem Fall an den Alias pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und Features in PIM](../privileged-identity-management/azure-ad-roles-features.md).
+> Sie müssen die aktualisierte Version von Privileged Identity Management verwenden, um einer Azure AD-Rolle mithilfe von PIM eine Gruppe zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, wenn Ihre Azure AD-Organisation die Privileged Identity Management-API nutzt. Wenden Sie sich in diesem Fall an den Alias pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und Features in PIM](../privileged-identity-management/pim-configure.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -84,7 +84,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen](groups-concept.md)
-- [Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind](groups-faq-troubleshooting.md)
+- [Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen](groups-concept.md)
+- [Behandeln von Problemen bei Azure AD-Rollen mit Gruppenzuweisung](groups-faq-troubleshooting.yml)
 - [Konfigurieren von Einstellungen für Azure AD-Rollen in PIM](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Zuweisen von Azure-Ressourcenrollen in PIM](../privileged-identity-management/pim-resource-roles-assign-roles.md)

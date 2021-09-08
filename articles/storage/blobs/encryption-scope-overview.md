@@ -4,17 +4,17 @@ description: Verschlüsselungsbereiche ermöglichen Ihnen die Verwaltung der Ver
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/01/2021
+ms.date: 07/19/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d089ef587e209810fe0400871aba9a55cb9c0ed3
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 0d8f1a7e0312ea350a5a34c13d8389b240c14476
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372655"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472467"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>Verschlüsselungsbereiche für Blobspeicher
 
@@ -72,7 +72,7 @@ Wenn Sie einen Verschlüsselungsbereich deaktivieren, schlagen alle nachfolgende
 
 Wenn ein Verschlüsselungsbereich deaktiviert ist, wird Ihnen dieser nicht mehr in Rechnung gestellt. Deaktivieren Sie alle Verschlüsselungsbereiche, die nicht benötigt werden, um unnötige Gebühren zu vermeiden.
 
-Wenn Ihr Verschlüsselungsbereich durch einen kundenseitig verwalteten Schlüssel geschützt ist und Sie den Schlüssel im Schlüsseltresor löschen, kann auf die Daten nicht mehr zugegriffen werden. Stellen Sie sicher, dass Sie auch den Verschlüsselungsbereich deaktivieren, damit keine Gebühren anfallen.
+Wenn Ihr Verschlüsselungsbereich durch einen kundenseitig verwalteten Schlüssel geschützt ist und Sie den Schlüssel im Schlüsseltresor widerrufen, kann nicht mehr auf die Daten zugegriffen werden. Stellen Sie sicher, dass Sie den Verschlüsselungsbereich deaktivieren, bevor Sie den Schlüssel im Schlüsseltresor widerrufen, um zu vermeiden, dass Ihnen der Verschlüsselungsbereich in Rechnung gestellt wird.
 
 Beachten Sie, dass kundenseitig verwaltete Schlüssel gegen vorläufiges und endgültiges Löschen im Schlüsseltresor geschützt sind und dass sich ein gelöschter Schlüssel entsprechend den dafür definierten Eigenschaften verhält. Weitere Information finden Sie in den folgenden Themen in der Azure Key Vault-Dokumentation:
 

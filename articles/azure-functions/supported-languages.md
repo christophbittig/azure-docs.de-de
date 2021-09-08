@@ -3,12 +3,12 @@ title: In Azure Functions unterstützte Sprachen
 description: Erfahren Sie, welche Sprachen unterstützt werden (GA) und welche sich in der Vorschau befinden sowie wie die Entwicklung mit Functions auf andere Sprachen ausgeweitet werden kann.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02a416fa669cd71702e991c79677575bd4563bfb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98108550"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493230"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
@@ -26,6 +26,14 @@ Es gibt zwei Unterstützungsebenen:
 Es sind [drei Versionen der Azure Functions-Runtime](functions-versions.md) verfügbar. Die folgende Tabelle gibt an, welche Sprachen in den beiden Runtimeversionen unterstützt werden.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
+
+### <a name="language-major-version-support"></a>Sprachunterstützung für Hauptversionen
+
+Azure Functions bietet eine garantierte Unterstützung für die Hauptversionen unterstützter Programmiersprachen. Für die meisten Sprachen gibt es Neben- oder Patchversionen, die zur Aktualisierung einer unterstützten Hauptversion veröffentlicht werden. Beispiele für Neben- oder Patchversionen sind Python 3.9.1 und Node 14.17. Sobald neue Nebenversionen unterstützter Sprachen verfügbar sind, werden die von Ihren Funktions-Apps verwendeten Nebenversionen automatisch auf diese neueren Neben- oder Patchversionen aktualisiert. 
+
+> [!NOTE]
+>Da Azure Functions die Unterstützung älterer Nebenversionen jederzeit einstellen kann, sobald eine neue Nebenversion verfügbar ist, sollten Sie Ihre Funktions-Apps nicht an eine bestimmte Neben-/Patchversion einer Programmiersprache binden.  
+>
 
 ## <a name="custom-handlers"></a>Benutzerdefinierte Handler
 

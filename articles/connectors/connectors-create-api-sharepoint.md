@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit SharePoint über Azure Logic Apps
+title: Herstellen einer Verbindung mit SharePoint
 description: Hier erfahren Sie, wie Sie Ressourcen in SharePoint Online oder SharePoint Server lokal mithilfe von Azure Logic Apps überwachen und verwalten.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 08/11/2021
 tags: connectors
-ms.openlocfilehash: 750253d5607262614cf8576c376b261616361266
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e53fca8b0e9f8dbca3dba8bd684e71ef25c88738
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285446"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338869"
 ---
-# <a name="connect-to-sharepoint-resources-with-azure-logic-apps"></a>Herstellen einer Verbindung mit SharePoint-Ressourcen mit Azure Logic Apps
+# <a name="connect-to-sharepoint-resources-using-azure-logic-apps"></a>Herstellen einer Verbindung mit SharePoint-Ressourcen mithilfe von Azure Logic Apps
 
 Mit Azure Logic Apps und dem SharePoint-Connector können Sie automatisierte Integrationsworkflows erstellen, um Aufgaben für die Überwachung und Verwaltung von Ressourcen wie Dateien, Ordner, Listen und Elemente in SharePoint Online oder in einer lokalen SharePoint Server-Instanz zu automatisieren.
 
@@ -36,9 +36,16 @@ In Ihrem Logik-App-Workflow können Sie einen Trigger verwenden, der Ereignisse 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ihre Anmeldeinformationen für das Microsoft Office 365-Konto, das Sie mit SharePoint verwenden, wenn Sie sich mit einem [Geschäfts- Schul- oder Unikonto](https://support.microsoft.com/office/what-account-to-use-with-office-and-you-need-one-914e6610-2763-47ac-ab36-602a81068235#bkmk_msavsworkschool) anmelden.
 
-* Die Adresse Ihrer SharePoint-Website sowie Benutzeranmeldeinformationen. Sie benötigen diese Anmeldeinformationen, um den Zugriff des Workflows auf Ihr SharePoint-Konto autorisieren zu können.
+  Sie benötigen diese Anmeldeinformationen, um den Zugriff des Workflows auf Ihr SharePoint-Konto autorisieren zu können.
+
+  > [!NOTE]
+  > Wenn Sie [von 21Vianet betriebenes Microsoft Azure](https://portal.azure.cn) verwenden, funktioniert die Azure Active Directory-Authentifizierung (Azure AD) nur mit einem von 21Vianet geführten Konto für Microsoft Office 365 (.cn) und nicht mit .com-Konten.
+
+* Adresse Ihrer SharePoint-Website
+
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Verbindungen mit einem lokalen SharePoint-Server erfordern die [Installation und Einrichtung des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md) auf einem lokalen Computer sowie eine [bereits in Azure erstellte Datengatewayressource](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -49,13 +56,17 @@ In Ihrem Logik-App-Workflow können Sie einen Trigger verwenden, der Ereignisse 
   * Wenn Sie den Workflow mit einem SharePoint-Trigger starten möchten, benötigen Sie einen leeren Logik-App-Workflow.
   * Wenn Sie eine SharePoint-Aktion hinzufügen möchten, muss Ihr Workflow bereits über einen Trigger verfügen.
 
+## <a name="connector-reference"></a>Connector-Referenz
+
+Weitere technische Details zu diesem Connector (beispielsweise Trigger, Aktionen und Grenzwerte aus der Swagger-Datei des Connectors) finden Sie auf der [Referenzseite des Connectors](/connectors/sharepoint/).
+
 ## <a name="connect-to-sharepoint"></a>Herstellen einer Verbindung mit SharePoint
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 ## <a name="add-a-trigger"></a>Hinzufügen eines Triggers
 
-1. Öffnen Sie im Azure-Portal, in Visual Studio Code oder in Visual Studio Ihren Logik-App-Workflow im Logik-App-Designer, sofern er noch nicht geöffnet ist.
+1. Öffnen Sie im Azure-Portal, in Visual Studio Code oder Visual Studio Ihren Logik-App-Workflow im visuellen Designer, sofern noch nicht geöffnet.
 
 1. Geben Sie `sharepoint` als Suchbegriff in das Suchfeld des Designers ein. Wählen Sie den Connector **SharePoint** aus.
 
@@ -74,7 +85,7 @@ In Ihrem Logik-App-Workflow können Sie einen Trigger verwenden, der Ereignisse 
 
 ## <a name="add-an-action"></a>Hinzufügen einer Aktion
 
-1. Öffnen Sie im Azure-Portal, in Visual Studio Code oder in Visual Studio Ihren Logik-App-Workflow im Logik-App-Designer, sofern er noch nicht geöffnet ist.
+1. Öffnen Sie im Azure-Portal, in Visual Studio Code oder Visual Studio Ihren Logik-App-Workflow im visuellen Designer, sofern noch nicht geöffnet.
 
 1. Wählen Sie eine der folgenden Optionen aus:
 
@@ -95,10 +106,6 @@ In Ihrem Logik-App-Workflow können Sie einen Trigger verwenden, der Ereignisse 
    Nach erfolgreicher Verbindungserstellung durch den Workflow wird die ausgewählte Aktion angezeigt.
 
 1. Geben Sie die Informationen zum Einrichten der Aktion an, und fahren Sie mit der Workflowerstellung fort.
-
-## <a name="connector-reference"></a>Connector-Referenz
-
-Weitere technische Details zu diesem Connector (beispielsweise Trigger, Aktionen und Grenzwerte aus der Swagger-Datei des Connectors) finden Sie auf der [Referenzseite des Connectors](/connectors/sharepoint/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

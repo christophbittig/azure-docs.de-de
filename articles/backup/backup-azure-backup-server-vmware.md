@@ -2,17 +2,20 @@
 title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: d734b9852da54c13d498cfd4a60caf007735d2f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084590"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722585"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
 In diesem Artikel wird erläutert, wie Sie auf VMware ESXi-Hosts/vCenter Server-Instanzen ausgeführte VMware-VMs mithilfe von Microsoft Azure Backup Server in Azure (MABS) sichern.
+
+>[!Note]
+>Mit dem Updaterollup 2-Release von MABS v3 können Sie jetzt auch VMware 7.0-VMs sichern.
 
 In diesem Artikel wird Folgendes erläutert:
 
@@ -33,6 +36,13 @@ MABS bietet beim Sichern von VMware-VMs die folgenden Features:
 - MABS schützt VMs, die auf einem lokalen Datenträger, in Network File System (NFS) oder Clusterspeicher gespeichert sind.
 - MABS schützt zum Lastenausgleich migrierte VMs: Wenn VMs zum Lastenausgleich migriert werden, erkennt MABS automatisch den VM-Schutz und hält ihn aufrecht.
 - MABS kann Dateien und Ordner in einer Windows-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen, wodurch notwendige Dateien schneller wiederhergestellt werden können.
+
+## <a name="support-matrix"></a>Unterstützungsmatrix
+
+| MABS-Versionen | Unterstützte VMware-VM-Versionen für die Sicherung |
+| --- | --- |
+| MABS v3 UR2 | VMware-Server 7.0, 6.7, 6.5 oder 6.0 (lizenzierte Version) |
+| MABS v3 UR1 | VMware-Server 6.7, 6.5, 6.0 oder 5.5 (lizenzierte Version) |
 
 ## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
 
@@ -160,7 +170,7 @@ Azure Backup Server benötigt ein Benutzerkonto mit Berechtigungen für den Zugr
 
 In der folgenden Tabelle werden die Berechtigungen erfasst, die Sie dem von Ihnen erstellten Benutzerkonto zuweisen müssen:
 
-| Berechtigungen für vCenter 6.5-Benutzerkonto                          | Berechtigungen für vCenter 6.7-Benutzerkonto                            |
+| Berechtigungen für vCenter 6.5-Benutzerkonto                          | Berechtigungen für ein vCenter-Benutzerkonto ab Version 6.7                            |
 |----------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | Datastore cluster.Configure a datastore cluster                           | Datastore cluster.Configure a datastore cluster                           |
 | Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
@@ -401,9 +411,9 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 ## <a name="vmware-parallel-backups"></a>Parallele VMware-Sicherungen
 
 >[!NOTE]
-> Diese Funktion ist für MABS V3 UR1 anwendbar.
+> Dieses Feature gilt ab MABS V3 UR1.
 
-Bei früheren Versionen von MABS wurden parallele Sicherungen nur für Schutzgruppen durchgeführt. Mit MABS V3 UR1 werden die Sicherungen aller VMware-VMs innerhalb einer Schutzgruppe parallel durchgeführt. Dies führt zu schnelleren VM-Sicherungen. Alle VMware-Deltareplikationsaufträge werden parallel ausgeführt. Standardmäßig ist die Anzahl der parallel auszuführenden Aufträge auf „8“ festgelegt.
+Bei früheren Versionen von MABS wurden parallele Sicherungen nur für Schutzgruppen durchgeführt. Ab MABS V3 UR1 erfolgen die Sicherungen aller VMware-VMs parallel innerhalb einer Schutzgruppe, was zu schnelleren VM-Sicherungen führt. Alle VMware-Deltareplikationsaufträge werden parallel ausgeführt. Standardmäßig ist die Anzahl der parallel auszuführenden Aufträge auf „8“ festgelegt.
 
 Sie können die Anzahl der Aufträge ändern, indem Sie wie unten gezeigt den Registrierungsschlüssel verwenden (standardmäßig nicht vorhanden, Sie müssen ihn hinzufügen):
 
@@ -413,9 +423,9 @@ Sie können die Anzahl der Aufträge ändern, indem Sie wie unten gezeigt den Re
 > [!NOTE]
 > Sie können die Anzahl der Aufträge in einen höheren Wert ändern. Wenn Sie die Anzahl der Aufträge auf „1“ festlegen, werden Replikationsaufträge nacheinander ausgeführt. Um die Anzahl auf einen höheren Wert zu erhöhen, müssen Sie die VMware-Leistung berücksichtigen. Berücksichtigen Sie die Anzahl der verwendeten Ressourcen und die zusätzliche erforderliche Verwendung auf dem VMware vSphere-Server, und bestimmen Sie die Anzahl der parallel auszuführenden Deltareplikationsaufträge. Diese Änderung wirkt sich lediglich auf die neu erstellten Schutzgruppen aus. Bei vorhandenen Schutzgruppen müssen Sie der jeweiligen Schutzgruppe vorübergehend einen anderen virtuellen Computer hinzufügen. Dadurch sollte die Konfiguration der Schutzgruppe entsprechend aktualisiert werden. Nach Abschluss des Vorgangs können Sie diesen virtuellen Computer aus der Schutzgruppe entfernen.
 
-## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
+## <a name="vmware-vsphere-67-and-70"></a>VMware vSphere 6.7 und 7.0
 
-Für eine Sicherung von vSphere 6.7 gehen Sie wie folgt vor:
+Für eine Sicherung von vSphere 6.7 und 7.0 gehen Sie wie folgt vor:
 
 - Aktivieren Sie auf dem MABS-Server TLS 1.2.
 
@@ -447,9 +457,9 @@ Windows Registry Editor Version 5.00
 ## <a name="exclude-disk-from-vmware-vm-backup"></a>Ausschließen eines Datenträgers von der VMware-VM-Sicherung
 
 > [!NOTE]
-> Diese Funktion ist für MABS V3 UR1 anwendbar.
+> Dieses Feature gilt ab MABS V3 UR1.
 
-Mit MABS V3 UR1 können Sie einen spezifischen Datenträger von der VMware-VM-Sicherung ausschließen. Das Konfigurationsskript **ExcludeDisk.ps1** befindet sich unter `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder`.
+Ab MABS V3 UR1 können Sie einen spezifischen Datenträger von der VMware-VM-Sicherung ausschließen. Das Konfigurationsskript **ExcludeDisk.ps1** befindet sich unter `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder`.
 
 Führen Sie die nachfolgenden Schritte aus, um den Ausschluss eines Datenträgers zu konfigurieren:
 

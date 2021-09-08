@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/13/2021
+ms.custom: subject-rbac-steps
+ms.date: 07/26/2021
 ms.author: radeltch
-ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: be174bf6d71ed243e0e7997250df55edffc27739
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100034"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722501"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -619,18 +620,8 @@ Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an 
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle zu.
 
-Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent Role“ zu, die im letzten Abschnitt erstellt wurde. Verwenden Sie nicht mehr die Besitzerrolle.
-
-1. Gehe zu[https://portal.azure.com](https://portal.azure.com)
-1. Öffnen Sie das Blatt „Alle Ressourcen“.
-1. Wählen Sie den virtuellen Computer des ersten Clusterknotens aus.
-1. Klicken Sie auf „Zugriffssteuerung (IAM)“.
-1. Klicken Sie auf „Rollenzuweisung hinzufügen“.
-1. Wählen Sie die Rolle „Linux Fence Agent Role“ aus.
-1. Geben Sie den Namen der Anwendung ein, die Sie zuvor erstellt haben.
-1. Klicken Sie auf Speichern.
-
-Wiederholen Sie die oben genannten Schritte für den zweiten Clusterknoten.
+Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent Role“ zu, die im letzten Abschnitt erstellt wurde. Verwenden Sie die Rolle „Owner“ nicht mehr. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../../role-based-access-control/role-assignments-portal.md).   
+Stellen Sie sicher, dass Sie die Rolle beiden Clusterknoten zuweisen.    
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** Erstellen Sie die STONITH-Geräte.
 

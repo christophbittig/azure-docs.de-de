@@ -3,12 +3,12 @@ title: 'Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas'
 description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
 ms.topic: reference
 ms.date: 05/10/2021
-ms.openlocfilehash: 5d9ae1cd9ca1d5f71d4ad2baff95159bf0e2e7f8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 621c606313fa68de24100e8c6214b56ee42b2f03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026433"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355626"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
@@ -56,7 +56,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Azure Batch |[Azure Batch-Protokollierung](../../batch/batch-diagnostics.md) |
 | Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Instances | [Protokollierung für Azure Container Instances](../../container-instances/container-instances-log-analytics.md#log-schema) |
-| Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/monitor-service.md) |
 | Content Delivery Network | [Azure-Protokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
@@ -66,16 +66,17 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Protokolle](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Diagnoseprotokollierung in Azure Databricks](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Machine Learning | [Diagnoseprotokollierung in Azure Machine Learning](../../machine-learning/monitor-resource-reference.md) |
 | DDoS Protection | [Protokollierung für Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Einrichten der Azure Digital Twins-Diagnose](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-Protokolle](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schema nicht verfügbar. |
-| Azure Firewall | Schema nicht verfügbar. |
+| Azure Firewall | [Protokollierung für Azure Firewall](../../firewall/logs-and-metrics.md#diagnostic-logs) |
 | Front Door | [Protokollierung für Front Door](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub-Vorgänge](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Azure-Schlüsseltresor-Protokollierung](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes-Protokollierung](../../aks/view-control-plane-logs.md#log-event-schema) |
-| Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Kubernetes Service |[Azure Kubernetes-Protokollierung](../../aks/monitor-aks-reference.md#resource-logs) |
+| Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/monitor-load-balancer.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Media Services | [Media Services-Überwachungsschemas](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |

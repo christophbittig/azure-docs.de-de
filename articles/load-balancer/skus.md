@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94698086"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472848"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
@@ -39,7 +39,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown)** | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Sämtliche TCP-Verbindungen werden bei Ausfällen aller Tests beendet. |
 | **Verfügbarkeitszonen** | Zonenredundante und zonale Front-Ends für eingehenden und ausgehenden Datenverkehr | Nicht verfügbar |
-| **Diagnose** | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | [Azure Monitor-Protokolle](./load-balancer-monitor-log.md) |
+| **Diagnose** | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | Nicht unterstützt |
 | **Hochverfügbarkeitsports** | [Verfügbar für den internen Lastenausgleich](./load-balancer-ha-ports-overview.md) | Nicht verfügbar |
 | **Standardmäßig sicher** | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
 | **Regeln für ausgehenden Datenverkehr** | [Deklarative ausgehende NAT-Konfiguration](./load-balancer-outbound-connections.md#outboundrules) | Nicht verfügbar |
@@ -47,6 +47,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | **[Mehrere Front-Ends](./load-balancer-multivip-overview.md)** | Eingehend und [ausgehend](./load-balancer-outbound-connections.md) | Nur eingehend |
 | **Verwaltungsvorgänge** | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
 | **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nicht verfügbar | 
+| **Unterstützung des globalen VNet-Peerings** | Standard-ILB wird über globales VNet-Peering unterstützt. | Nicht unterstützt | 
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](./load-balancer-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 

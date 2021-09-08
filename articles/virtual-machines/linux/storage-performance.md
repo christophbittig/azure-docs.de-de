@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffe772677e8de28c3ea0de31092f1aca693feccf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552761"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339442"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimieren der Leistung virtueller Linux-Computer der Lsv2-Serie
 
@@ -32,7 +32,7 @@ Virtuelle Computer der Lsv2-Serie nutzen den AMD EPYC™ 7551-Prozessor optimal
 
 Mit den Tipps und Vorschlägen in diesem Artikel können Sie sicherstellen, dass Ihre Workloads und Anwendungen die maximale Leistung erreichen, für die die virtuellen Computer konzipiert wurden. Die Informationen auf dieser Seite werden immer wieder aktualisiert, wenn dem Azure Marketplace weitere Lsv2-optimierte Images hinzugefügt werden.
 
-## <a name="amd-eypc-chipset-architecture"></a>Architektur des AMD EYPC™-Chipsatzes
+## <a name="amd-epyc-chipset-architecture"></a>Architektur des AMD EPYC™-Chipsatzes
 
 Die von virtuellen Computern der Lsv2-Serie verwendeten AMD EYPC™-Serverprozessoren basieren auf der Zen-Mikroarchitektur. AMD entwickelte Infinity Fabric (IF) für EYPC™ als skalierbare Interconnect-Lösung für das NUMA-Modell, die für die On-Die-, On-Package- und Multi-Package-Kommunikation verwendet werden kann. Im Vergleich mit QPI (Quick-Path Interconnect) und UPI (Ultra-Path Interconnect), die bei modernen Intel-Prozessoren mit monolithischem Die zum Einsatz kommen, kann die AMD-Architektur mit vielen NUMA-Knoten und kleinem Die sowohl Leistungsvorteile als auch Herausforderungen mit sich bringen. Die tatsächlichen Auswirkungen von Arbeitsspeicherbandbreite und Wartezeiteneinschränkungen können je nach Art der ausgeführten Workloads variieren.
 

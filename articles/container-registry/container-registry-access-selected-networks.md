@@ -2,13 +2,13 @@
 title: Konfigurieren des öffentlichen Registrierungszugriffs
 description: Konfigurieren von IP-Regeln, um den Zugriff auf eine Azure-Containerregistrierung über ausgewählte öffentliche IP-Adressen oder -Adressbereiche zu ermöglichen.
 ms.topic: article
-ms.date: 03/08/2021
-ms.openlocfilehash: 00912f0e66c84feff40e6439d59ccdfa82a4ab6a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/30/2021
+ms.openlocfilehash: cb48a91190f352154a2f0af1e02dcd3e36f436d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785834"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338868"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurieren von Netzwerkregeln für öffentliche IP-Adressen
 
@@ -108,15 +108,32 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
+### <a name="access-behind-https-proxy"></a>Zugriff hinter HTTPS-Proxy
+
 Wenn eine Regel für das öffentliche Netzwerk festgelegt ist oder der öffentliche Zugriff auf die Registrierung verweigert wird, tritt beim Versuch, sich aus dem nicht zulässigen öffentlichen Netzwerk bei der Registrierung anzumelden, ein Fehler auf. Der Clientzugriff aus einer Umgebung hinter einem HTTPS-Proxy ist ebenfalls nicht möglich, wenn keine Zugriffsregel für den Proxy festgelegt ist. Es wird eine Fehlermeldung ähnlich der folgenden angezeigt: `Error response from daemon: login attempt failed with status: 403 Forbidden` oder `Looks like you don't have access to registry`.
 
 Diese Fehler können auch dann auftreten, wenn Sie einen HTTPS-Proxy verwenden, der durch eine Netzwerkzugriffsregel zugelassen ist, aber in der Clientumgebung nicht ordnungsgemäß konfiguriert wurde. Überprüfen Sie, ob sowohl Ihr Docker-Client als auch Ihr Docker-Daemon für das Proxyverhalten konfiguriert sind. Details finden Sie unter [HTTP/HTTPS-Proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) in der Docker-Dokumentation.
 
+### <a name="access-from-azure-pipelines"></a>Zugriff aus Azure Pipelines
+
+Wenn Sie Azure Pipelines mit einer Azure-Containerregistrierung verwenden, die den Zugriff auf bestimmte IP-Adressen beschränkt, kann die Pipeline möglicherweise nicht auf die Registrierung zugreifen, da die ausgehende IP-Adresse von der Pipeline nicht festgelegt ist. Standardmäßig wendet die Pipeline Aufträge mit einem von Microsoft gehosteten [Agent](/azure/devops/pipelines/agents/agents) auf einen VM-Pool mit einem sich ändernden Satz von IP-Adressen an.
+
+Eine Abhilfemaßnahme ist, den für die Ausführung der Pipeline verwendeten Agent von „Von Microsoft gehostet“ in „Selbstgehostet“ zu ändern. Mit einem selbstgehosteten Agent, der auf einem von Ihnen verwalteten [Windows](/azure/devops/pipelines/agents/v2-windows)- oder [Linux](/azure/devops/pipelines/agents/v2-linux)-Computer läuft, kontrollieren Sie die ausgehende IP-Adresse der Pipeline und können diese Adresse einer IP-Zugriffsregel in der Registrierung hinzufügen.
+
+### <a name="access-from-aks"></a>Zugriff aus AKS
+
+Wenn Sie Azure Kubernetes Service (AKS) mit einer Azure-Containerregistrierung verwenden, die den Zugriff auf bestimmte IP-Adressen beschränkt, können Sie standardmäßig keine feste IP-Adresse für AKS konfigurieren. Die ausgehende IP-Adresse aus dem AKS-Cluster wird nach dem Zufallsprinzip zugewiesen.
+
+Um dem AKS-Cluster den Zugriff auf die Registrierung zu ermöglichen, haben Sie die folgenden Optionen:
+
+* Wenn Sie den Azure Load Balancer Basic verwenden, richten Sie eine [statische IP-Adresse](../aks/egress.md) für den AKS-Cluster ein. 
+* Wenn Sie den Azure Load Balancer Standard verwenden, konsultieren Sie den Leitfaden zum [Steuern des ausgehenden Datenverkehrs](../aks/limit-egress-traffic.md) aus dem Cluster.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Einschränken des Zugriffs auf eine Registrierung mithilfe eines privaten Endpunkts in einem virtuellen Netzwerk finden Sie unter [Konfigurieren von Azure Private Link für eine Azure-Container Containerregistrierung](container-registry-private-link.md).
 * Wenn Sie Zugriffsregeln für die Registrierung hinter einer Clientfirewall einrichten müssen, finden Sie Informationen hierzu unter [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall](container-registry-firewall-access-rules.md).
+* Weitere Anleitungen zur Problembehandlung finden Sie unter [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md).
 
 [az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add
