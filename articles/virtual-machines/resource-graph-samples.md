@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Virtual Machines
 description: Hier finden Sie Azure Resource Graph-Beispielabfragen für Azure Virtual Machines, die die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf Azure Virtual Machines-Ressourcen und -Eigenschaften veranschaulichen.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: ed4642289e744cc4f7344188943e22705c077fa7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 464f12a7d8e9f0f6f4fceccf948197872c156043
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304096"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541943"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-virtual-machines"></a>Azure Resource Graph-Beispielabfragen für Azure Virtual Machines
 

@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: 38e1d89a6934c603fa15c4b50e2309c57dc28622
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 02/02/2021
+ms.openlocfilehash: 30e87110ae7124141eaeb18fafa77bcef1d59201
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339089"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatisiertes Veröffentlichen für Continuous Integration und Delivery
 
@@ -79,10 +79,10 @@ Im Paket sind zurzeit zwei Befehle verfügbar:
 
 ### <a name="export-arm-template"></a>Exportieren einer ARM-Vorlage
 
-Führen Sie `npm run build export <rootFolder> <factoryId> [outputFolder]` aus, um die ARM-Vorlage unter Verwendung der Ressourcen eines bestimmten Ordners zu exportieren. Mit diesem Befehl wird vor dem Generieren der ARM-Vorlage auch eine Überprüfung ausgeführt. Ein Beispiel:
+Führen Sie `npm run start export <rootFolder> <factoryId> [outputFolder]` aus, um die ARM-Vorlage unter Verwendung der Ressourcen eines bestimmten Ordners zu exportieren. Mit diesem Befehl wird vor dem Generieren der ARM-Vorlage auch eine Überprüfung ausgeführt. Ein Beispiel:
 
 ```dos
-npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
+npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
 - `RootFolder` ist ein obligatorisches Feld, das den Speicherort der Data Factory-Ressourcen darstellt.
@@ -94,10 +94,10 @@ npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxx
 
 ### <a name="validate"></a>Überprüfen
 
-Führen Sie `npm run build validate <rootFolder> <factoryId>` aus, um alle Ressourcen eines bestimmten Ordners zu überprüfen. Ein Beispiel:
+Führen Sie `npm run start validate <rootFolder> <factoryId>` aus, um alle Ressourcen eines bestimmten Ordners zu überprüfen. Ein Beispiel:
 
 ```dos
-npm run build validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
+npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
 - `RootFolder` ist ein obligatorisches Feld, das den Speicherort der Data Factory-Ressourcen darstellt.

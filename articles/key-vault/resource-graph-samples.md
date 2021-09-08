@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Key Vault
 description: Hier finden Sie Azure Resource Graph-Beispielabfragen für Azure Key Vault, die die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf Azure Key Vault-bezogene Ressourcen und Eigenschaften zeigen.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: ff5312d122833b357e485007b13934be7e61693f
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: bee1576a33ed64791e4db3456d953cf7f409a10f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315104"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536723"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-key-vault"></a>Azure Resource Graph-Beispielabfragen für Azure Key Vault
 

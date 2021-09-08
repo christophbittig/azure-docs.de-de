@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 09/05/2021
 ms.author: memildin
-ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: dee498ea30bc31fa0193f6bbff3c01261260d03b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749145"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537758"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Zusätzliche Bedrohungsschutzmaßnahmen in Azure Security Center
 Ebenso wie die integrierten [Azure Defender-Schutzmaßnahmen](azure-defender.md) bietet Azure Security Center auch die folgenden Funktionen zum Schutz vor Bedrohungen.
@@ -28,16 +28,6 @@ Einige Netzwerkkonfigurationen schränken Security Center in der Erstellung von 
 - Der ausgehende Netzwerkdatenverkehr des virtuellen Computers wird nicht durch eine externe IDS-Lösung blockiert.
 
 Eine Liste der Warnungen der Azure-Netzwerkebene finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-azurenetlayer).
-
-
->[!NOTE]
-> Einige dieser Analysen basieren auf Microsoft Cloud App Security. Um von diesen Analysen zu profitieren, müssen Sie eine Cloud App Security-Lizenz aktivieren. Wenn Sie über eine Cloud App Security-Lizenz verfügen, sind diese Warnungen standardmäßig aktiviert. So deaktivieren Sie die Warnungen:
->
-> 1. Wählen Sie im Menü von Security Center **Preise und Einstellungen** aus.
-> 1. Wählen Sie das Abonnement aus, das Sie ändern möchten.
-> 1. Wählen Sie **Integrationen** aus.
-> 1. Deaktivieren Sie **Microsoft Cloud App Security Zugriff auf meine Daten erteilen**, und wählen Sie anschließend **Speichern** aus.
-
 
 >[!NOTE]
 > Security Center speichert sicherheitsbezogene Kundendaten im gleichen geografischen Raum, in dem sich auch die Ressource befindet. Falls Security Center von Microsoft noch nicht im geografischen Raum der Ressource bereitgestellt wurde, werden die Daten in den USA gespeichert. Wenn Cloud App Security aktiviert ist, werden diese Informationen gemäß den Regeln für geografische Standorte von Cloud App Security gespeichert. Weitere Informationen finden Sie unter [Data storage for non-regional services](https://azuredatacentermap.azurewebsites.net/) (Datenspeicherung für nicht regionale Dienste).

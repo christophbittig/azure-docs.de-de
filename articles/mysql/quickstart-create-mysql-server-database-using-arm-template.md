@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/19/2020
-ms.openlocfilehash: 2e9589063d5a094161a8eef09d0968c0679d58bd
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3d2750c607c8fe370122988d3836e00230ef0f21
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643364"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423986"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mithilfe einer ARM-Vorlage
 
@@ -187,7 +187,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 Sie können über das Azure-Portal [eine ARM-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md). Eine Vorlage kann auf zwei Arten exportiert werden:
 
 - [Export aus Ressourcengruppe oder Ressource](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Diese Option generiert eine neue Vorlage aus vorhandenen Ressourcen. Die exportierte Vorlage ist eine „Momentaufnahme“ des aktuellen Zustands der Ressourcengruppe. Sie können eine gesamte Ressourcengruppe oder bestimmte Ressourcen innerhalb dieser Ressourcengruppe exportieren.
-- [Export vor der Bereitstellung oder über den Verlauf](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Diese Option ruft eine exakte Kopie einer für die Bereitstellung verwendeten Vorlage ab.
+- [Export vor der Bereitstellung oder über den Verlauf](../azure-resource-manager/templates/export-template-portal.md#download-template-before-deployment). Diese Option ruft eine exakte Kopie einer für die Bereitstellung verwendeten Vorlage ab.
 
 Beim Exportieren der Vorlage sehen Sie im Abschnitt ```"properties":{ }``` der MySQL-Serverressource, dass ```administratorLogin``` und ```administratorLoginPassword``` aus Sicherheitsgründen nicht enthalten sind. Diese Parameter **MÜSSEN** der Vorlage vor ihrer Bereitstellung hinzugefügt werden, andernfalls tritt bei der Vorlage ein Fehler auf.
 

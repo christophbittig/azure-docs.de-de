@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 6afe193cb29b313f45335e46aa9fcaec2e8bf240
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b033b37532bffa92bcc8f427abe4508c5b93aefc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339658"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
 
@@ -29,7 +29,9 @@ In diesem Leitfaden erfahren Sie, wie Sie das Interpretierbarkeitspaket des Pyth
 
 * Erläutern Sie das Verhalten für das gesamte Modell und einzelne Vorhersagen in Azure.
 
-* Verwenden Sie ein Visualisierungsdashboard, um mit Ihren Erklärungen für das Modell zu interagieren.
+* Laden Sie Erklärungen zum Azure Machine Learning-Ausführungsverlauf hoch.
+
+* Verwenden Sie ein Visualisierungsdashboard, um sowohl in einem Jupyter Notebook als auch in Azure Machine Learning Studio mit Ihren Modellerklärungen zu interagieren.
 
 * Stellen Sie einen Bewertungsexplainer mit Ihrem Modell bereit, um die Erklärungen während der Rückschlüsse zu beobachten.
 
@@ -298,14 +300,14 @@ Das folgende Beispiel zeigt die Verwendung der `ExplanationClient`-Klasse zum Ak
 Nachdem Sie die Erklärungen in Ihre lokale Jupyter Notebook-Instanz heruntergeladen haben, können Sie Ihr Modell anhand der Visualisierungen auf dem Erklärungsdashboard auswerten und interpretieren. Verwenden Sie den folgenden Code, um das Erklärungsdashboard-Widget in Ihrer Jupyter Notebook-Instanz zu laden:
 
 ```python
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 Die Visualisierungen unterstützen Erklärungen für entwickelte Features sowie für Features im Rohformat. Erklärungen im Rohformat basieren auf den Features des ursprünglichen Datasets, und Erklärungen im entwickelten Format basieren auf den Features des Datasets mit Anwendung von Feature Engineering („Featurisierung“).
 
-Beim Interpretieren eines Modells in Bezug auf das ursprüngliche Dataset empfehlen wir Ihnen, Erklärungen im Rohformat zu nutzen, da jede Featurerelevanz jeweils einer Spalte aus dem ursprünglichen Dataset entspricht. Ein Szenario, in dem Erklärungen im entwickelten Format ggf. hilfreich sind, sind Untersuchungen der Auswirkung einzelner Kategorien eines kategorischen Features. Wenn eine 1-Hot-Codierung auf ein kategorisches Feature angewendet wird, enthalten die sich ergebenden Erklärungen im entwickelten Format einen anderen Relevanzwert pro Kategorie (einen pro entwickeltem Feature mit 1-Hot-Codierung). Dies kann hilfreich sein, wenn eingegrenzt werden soll, welcher Teil des Datasets für das Modell die meisten Informationen enthält.
+Beim Interpretieren eines Modells in Bezug auf das ursprüngliche Dataset wird empfohlen, Erklärungen im Rohformat zu nutzen, da jede Featurerelevanz jeweils einer Spalte aus dem ursprünglichen Dataset entspricht. Ein Szenario, in dem Erklärungen im entwickelten Format ggf. hilfreich sind, sind Untersuchungen der Auswirkung einzelner Kategorien eines kategorischen Features. Wenn eine 1-Hot-Codierung auf ein kategorisches Feature angewendet wird, enthalten die sich ergebenden Erklärungen im entwickelten Format einen anderen Relevanzwert pro Kategorie (einen pro entwickeltem Feature mit 1-Hot-Codierung). Diese Codierung kann hilfreich sein, wenn eingegrenzt werden soll, welcher Teil des Datasets für das Modell die meisten Informationen enthält.
 
 > [!NOTE]
 > Erklärungen im entwickelten und im Rohformat werden sequenziell berechnet. Zuerst wird basierend auf der Modell- und Featurisierungspipeline eine entwickelte Erklärung erstellt. Anschließend wird basierend auf dieser entwickelten Erklärung die Erklärung im Rohformat erstellt, indem die Relevanz der entwickelten Features, die aus demselben Rohfeature stammen, aggregiert wird.
@@ -352,7 +354,7 @@ Auf der vierten Registerkarte der Seite mit den Erklärungen können Sie einen D
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisierung in Azure Machine Learning-Studio
 
-Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärungen in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie die Visualisierungen auf dem Erklärungsdashboard in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Bei diesem Dashboard handelt es sich um eine einfachere Version des Dashboardwidgets, das in Ihrer Jupyter Notebook-Instanz generiert wird. Die Generierung von Was-wäre-wenn-Datenpunkten und die ICE-Plots sind deaktiviert, da in Azure Machine Learning Studio keine aktive Computeressource vorhanden ist, mit der die Echtzeitberechnungen durchgeführt werden können.
+Wenn Sie die Schritte zur [Remoteinterpretierbarkeit](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (Hochladen der generierten Erklärungen in den Azure Machine Learning-Ausführungsverlauf) abgeschlossen haben, können Sie die Visualisierungen auf dem Erklärungsdashboard in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Bei diesem Dashboard handelt es sich um eine einfachere Version des Dashboardwidgets, das in Ihrem Jupyter Notebook generiert wird. Die Generierung von Was-wäre-wenn-Datenpunkten und die ICE-Plots sind deaktiviert, da in Azure Machine Learning Studio keine aktive Computeressource vorhanden ist, mit der die Echtzeitberechnungen durchgeführt werden können.
 
 Wenn die Dataset-, globalen und lokalen Erklärungen verfügbar sind, werden auf allen Registerkarten Daten eingefügt. Falls nur eine globale Erklärung verfügbar ist, wird die Registerkarte für „Individuelle Featurerelevanz“ deaktiviert.
 
@@ -564,7 +566,7 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 
 * **Keine Unterstützung von Daten mit geringer Dichte**: Da für das Dashboard für die Modellerklärungen Fehler auftreten können bzw. die Leistung erheblich verringert werden kann, wenn eine große Zahl von Features vorhanden ist, werden Daten mit geringer Dichte derzeit nicht unterstützt. Darüber hinaus treten bei großen Datasets und einer großen Anzahl von Features allgemeine Speicherprobleme auf. 
 
-* **Vorhersagemodelle werden für Modellerklärungen nicht unterstützt**: Die Funktion für die Interpretierbarkeit (Erklärung des besten Modells) ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, von denen die folgenden Algorithmen als bestes Modell empfohlen werden: TCNForecaster, AutoArima, Prophet, ExponentialSmoothing, Average, Naive, Seasonal Average und Seasonal Naive. Bei Vorhersagen mit automatisiertem maschinellem Lernen werden Regressionsmodelle verwendet, die Erklärungen unterstützen. Im Erklärungsdashboard wird die Registerkarte „Individuelle Featurerelevanz“ aufgrund der Komplexität der Datenpipelines aber nicht für Vorhersagen unterstützt.
+* **Vorhersagemodelle werden für Modellerklärungen nicht unterstützt**: Die Funktion für die Interpretierbarkeit (Erklärung des besten Modells) ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, von denen die folgenden Algorithmen als bestes Modell empfohlen werden: TCNForecaster, AutoArima, Prophet, ExponentialSmoothing, Average, Naive, Seasonal Average und Seasonal Naive. Bei Vorhersagen mit automatisiertem maschinellem Lernen unterstützen Regressionsmodelle auch Erklärungen. Im Erklärungsdashboard wird die Registerkarte „Individuelle Featurerelevanz“ aufgrund der Komplexität der Datenpipelines aber nicht für Vorhersagen unterstützt.
 
 * **Lokale Erklärung für Datenindex**: Das Erklärungsdashboard verfügt nicht über die Unterstützung für das Abgleichen der lokalen Relevanzwerte mit einem Zeilenbezeichner aus dem ursprünglichen Validierungsdataset, wenn das Dataset mehr als 5.000 Datenpunkte umfasst. Der Grund ist, dass für die Daten im Dashboard ein Downsampling nach dem Zufallsprinzip durchgeführt wird. Im Dashboard werden aber für jeden Datenpunkt, der an das Dashboard übergeben wird, auf der Registerkarte „Individuelle Featurerelevanz“ die Rohfeaturewerte für das Dataset angezeigt. Die Benutzer können die lokalen Relevanzwerte wieder dem ursprünglichen Dataset zuordnen, indem sie einen Abgleich mit den Rohfeaturewerten für das Dataset durchführen. Wenn die Größe des Validierungsdatasets weniger als 5.000 Stichproben umfasst, entspricht das Feature `index` in AzureML Studio dem Index im Validierungsdataset.
 

@@ -3,21 +3,21 @@ title: 'Schnellstart: Einrichten der Entwicklungsumgebung'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech SDK für Ihre bevorzugte Kombination aus Plattform und Programmiersprache installieren.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/15/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-speech-services-one-nomore
-ms.openlocfilehash: a5cad8b7e0557c346dc760665f17e254b1fa1321
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: bfc8145bae4a0b6125e29d35de424faca0701055
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070043"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123544206"
 ---
 # <a name="quickstart-setup-development-environment"></a>Schnellstart: Einrichten der Entwicklungsumgebung
 

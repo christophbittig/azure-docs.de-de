@@ -3,18 +3,19 @@ title: Migrieren von Datenbanken zu SQL Managed Instance mithilfe des Protokollw
 description: Es wird beschrieben, wie Sie Datenbanken aus SQL Server zu SQL Managed Instance migrieren, indem Sie den Protokollwiedergabedienst verwenden.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
+ms.subservice: migration
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/31/2021
-ms.openlocfilehash: 730a03ce06efe96347d32409961638532823f6dc
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e76493aa83383e4ce59da77cfb0ce050475ad303
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883578"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340280"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,7 +68,7 @@ Nachdem der Protokollwiedergabedienst beendet wurde – entweder automatisch bei
     
 | Vorgang | Details |
 | :----------------------------- | :------------------------- |
-| **1. Kopieren von Datenbanksicherungen aus SQL Server in Blob Storage** | Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server per [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in den Blob Storage-Container. <br /><br />Hierbei können Sie beliebige Dateinamen verwenden. Für den Protokollwiedergabedienst muss keine bestimmte Namenskonvention für Dateien befolgt werden.<br /><br />Bei der Migration mehrerer Datenbanken benötigen Sie für jede Datenbank einen separaten Ordner. |
+| **1. Kopieren von Datenbanksicherungen aus SQL Server in Blob Storage** | Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server per [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in einen Blob Storage-Container. <br /><br />Hierbei können Sie beliebige Dateinamen verwenden. Für den Protokollwiedergabedienst muss keine bestimmte Namenskonvention für Dateien befolgt werden.<br /><br />Bei der Migration mehrerer Datenbanken benötigen Sie für jede Datenbank einen separaten Ordner. |
 | **2. Starten des Protokollwiedergabediensts in der Cloud** | Sie können den Dienst mit den folgenden Cmdlets neu starten: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_start](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Starten Sie den Protokollwiedergabedienst separat für jede Datenbank, die auf einen Sicherungsordner in Blob Storage verweist. <br /><br /> Nachdem der Dienst gestartet wurde, wird mit dem Wiederherstellen der Sicherungen aus dem Blob Storage-Container in SQL Managed Instance begonnen.<br /><br /> Wenn Sie den Protokollwiedergabedienst im Modus „Kontinuierlich“ gestartet haben, achtet der Dienst nach der Wiederherstellung aller anfänglich hochgeladenen Sicherungen auf neue Dateien, die in den Ordner hochgeladen werden. Vom Dienst werden basierend auf der Kette mit den Protokollfolgenummern fortlaufend Protokolle angewendet, bis der Dienst beendet wird. |
 | **2.1. Überwachen des Vorgangsstatus** | Sie können den Status des Wiederherstellungsvorgangs mit den folgenden Cmdlets überwachen: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_show](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2.2. Beenden des Vorgangs bei Bedarf** | Falls Sie den Migrationsprozess beenden müssen, können Sie die folgenden Cmdlets verwenden: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Wenn Sie den Vorgang beenden, wird die Datenbank gelöscht, die Sie in SQL Managed Instance wiederherstellen. Nachdem Sie einen Vorgang beendet haben, können Sie den Protokollwiedergabedienst für eine Datenbank nicht fortsetzen. Sie müssen den Migrationsprozess ganz neu starten. |
@@ -106,7 +107,7 @@ Wir empfehlen die folgenden bewährten Methoden:
 - Teilen Sie vollständige und differenzielle Sicherungen in mehrere Dateien auf, anstatt nur eine Datei zu verwenden.
 - Aktivieren Sie die Sicherungskomprimierung.
 - Verwenden Sie Cloud Shell für die Ausführung von Skripts, da hierfür immer eine Aktualisierung auf die neuesten veröffentlichten Cmdlets durchgeführt wird.
-- Planen Sie, dass die Migration innerhalb von 47 Stunden nach dem Starten des Protokollwiedergabediensts abgeschlossen sein soll. Dies ist eine Toleranzperiode, mit der verhindert werden soll, dass systemseitig verwaltete Softwarepatches installiert werden.
+- Planen Sie, dass die Migration innerhalb von 36 Stunden nach dem Starten des Protokollwiedergabediensts abgeschlossen sein soll. Dies ist eine Toleranzperiode, mit der verhindert werden soll, dass systemseitig verwaltete Softwarepatches installiert werden.
 
 > [!IMPORTANT]
 > - Sie können die Datenbank, die mit dem Protokollwiedergabedienst wiederhergestellt wird, erst verwenden, nachdem der Migrationsprozess abgeschlossen ist. 
@@ -165,7 +166,7 @@ Azure Blob Storage wird als zwischengeschalteter Speicher für Sicherungsdateien
 
 Beim Migrieren von Datenbanken zu einer verwalteten Instanz mit dem Protokollwiedergabedienst können Sie die folgenden Ansätze nutzen, um Sicherungen in Blob Storage hochzuladen:
 - Verwenden der nativen SQL Server-Funktion für die [Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url)
-- Verwenden von [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder des [Azure Storage-Explorers](https://azure.microsoft.com/en-us/features/storage-explorer), um Sicherungen in einen Blobcontainer hochzuladen
+- Verwenden von [AzCopy](../../storage/common/storage-use-azcopy-v10.md) oder des [Azure Storage-Explorers](https://azure.microsoft.com/features/storage-explorer) zum Hochladen von Sicherungen in einen Blobcontainer
 - Verwenden des Storage-Explorers im Azure-Portal
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Erstellen von Sicherungen aus SQL Server direkt in Blob Storage
@@ -329,7 +330,7 @@ az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden alle systemseitig verwalteten Softwarepatches für einen Zeitraum von 47 Stunden ausgesetzt. Nach Ablauf dieses Zeitraums wird der Protokollwiedergabedienst mit dem nächsten automatisierten Softwarepatch automatisch beendet. In diesem Fall können Sie die Migration nicht fortsetzen und müssen den Vorgang ganz neu starten. 
+> Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden alle systemseitig verwalteten Softwarepatches für einen Zeitraum von 36 Stunden ausgesetzt. Nach Ablauf dieses Zeitraums wird der Protokollwiedergabedienst mit dem nächsten automatisierten Softwarepatch automatisch beendet. In diesem Fall können Sie die Migration nicht fortsetzen und müssen den Vorgang ganz neu starten. 
 
 ## <a name="monitor-the-migration-progress"></a>Überwachen des Migrationsfortschritts
 
@@ -388,7 +389,7 @@ az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last
 
 Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränkungen:
 - Die Datenbank, die Sie wiederherstellen, kann während des Migrationsprozesses nicht für den schreibgeschützten Zugriff verwendet werden.
-- Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden systemseitig verwaltete Softwarepatches für einen Zeitraum von 47 Stunden blockiert. Nach Ablauf dieses Zeitfensters wird der Protokollwiedergabedienst mit dem nächsten Softwareupdate beendet. Anschließend müssen Sie den Protokollwiedergabedienst ganz neu starten.
+- Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden systemseitig verwaltete Softwarepatches für einen Zeitraum von 36 Stunden blockiert. Nach Ablauf dieses Zeitfensters wird der Protokollwiedergabedienst mit dem nächsten Softwareupdate beendet. Anschließend müssen Sie den Protokollwiedergabedienst ganz neu starten.
 - Für den Protokollwiedergabedienst müssen Datenbanken unter SQL Server mit aktivierter Option `CHECKSUM` gesichert werden.
 - Das SAS-Token, das vom Protokollwiedergabedienst verwendet wird, muss für den gesamten Azure Blob Storage-Container generiert werden und darf nur über die Berechtigungen „Lesen“ und „Auflisten“ verfügen.
 - Sicherungsdateien für verschiedene Datenbanken müssen in Blob Storage in separaten Ordnern abgelegt werden.

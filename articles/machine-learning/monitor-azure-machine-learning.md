@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c0f35290aa653d5b9e9be9f1a9a0184854509889
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816852"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349971"
 ---
 # <a name="monitor-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 
@@ -29,7 +29,7 @@ Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfüge
 > * [Nachverfolgen von Experimenten mit MLflow](how-to-use-mlflow.md)
 > * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
 >
-> Wenn Sie Informationen überwachen möchten, die von Modellen generiert werden, die als Webdienste oder IoT Edge-Module bereitgestellt werden, finden Sie weitere Informationen unter [Sammeln von Modelldaten](how-to-enable-data-collection.md) und [Überwachen mit Application Insights](how-to-enable-app-insights.md).
+> Wenn Sie Informationen überwachen möchten, die von Modellen generiert werden, die als Webdienste bereitgestellt werden, finden Sie weitere Informationen unter [Sammeln von Modelldaten](how-to-enable-data-collection.md) und [Überwachen mit Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
 
@@ -60,20 +60,21 @@ Eine ausführliche Referenz zu den Protokollen und Metriken, die von Azure Machi
 
 Plattformmetriken und das Aktivitätsprotokoll werden automatisch erfasst und gespeichert, können jedoch mithilfe einer Diagnoseeinstellung an andere Speicherorte weitergeleitet werden.  
 
-Ressourcenprotokolle werden erst erfasst und gespeichert, sobald Sie eine Diagnoseeinstellung erstellt und an einen oder mehrere Standorte weitergeleitet haben.
+Ressourcenprotokolle werden erst erfasst und gespeichert, sobald Sie eine Diagnoseeinstellung erstellt und an einen oder mehrere Standorte weitergeleitet haben. Wenn Sie mehrere Azure Machine Learning-Arbeitsbereiche verwalten müssen, können Sie die Protokolle für alle Arbeitsbereiche in dasselbe Protokollierungsziel leiten und alle Protokolle von einem einzigen Ort aus abfragen.
 
-Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md). Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen. Eine Liste der Kategorien für Azure Machine Learning finden Sie in der [Referenz zu Azure Machine Learning-Überwachungsdaten](monitor-resource-reference.md#resource-logs).
+Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/essentials/diagnostic-settings.md). Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen. Eine Liste der Kategorien für Azure Machine Learning finden Sie in der [Referenz zu Azure Machine Learning-Überwachungsdaten](monitor-resource-reference.md#resource-logs).
 
 > [!IMPORTANT]
 > Ein Aktivieren dieser Einstellungen erfordert zusätzliche Azure-Dienste (Speicherkonto, Event Hub oder Log Analytics). Dadurch können sich Ihre Kosten erhöhen. Um geschätzte Kosten zu berechnen, wechseln Sie zum [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator).
 
 Sie können die folgenden Protokolle für Azure Machine Learning konfigurieren:
 
-| Kategorie | Beschreibung |
+| Kategorie | BESCHREIBUNG |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
 | AmlComputeJobEvent | Ereignisse von Knoten, die in Azure Machine Learning-Compute ausgeführt werden |
+
 
 > [!NOTE]
 > Wenn Sie Metriken in einer Diagnoseeinstellung aktivieren, sind Dimensionsinformationen derzeit nicht in den Informationen enthalten, die an ein Speicherkonto, an einen Event Hub oder an Log Analytics gesendet werden.
@@ -109,11 +110,22 @@ Um Azure Monitor Log Analytics verwenden zu können, müssen Sie eine Diagnoseko
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat. In Azure Machine Learning werden Daten in den folgenden Tabellen gespeichert:
 
-| Tabelle | Beschreibung |
+| Tabelle | BESCHREIBUNG |
 |:---|:---|
-| AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
+| AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern|
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
 | AmlComputeJobEvent | Ereignisse von Knoten, die in Azure Machine Learning-Compute ausgeführt werden |
+| AmlComputeInstanceEvent | Ereignisse beim Zugriff auf die ML Compute-Instanz (Lese-/Schreibzugriff) Kategorie umfasst: ComputeInstanceEvent (sehr kommunikativ) |
+| AmlDataLabelEvent | Ereignisse beim Zugriff auf Datenbezeichnungen oder deren Projekte (gelesen, erstellt oder gelöscht) Kategorie umfasst: DataLabelReadEvent, DataLabelChangeEvent  |
+| AmlDataSetEvent | Ereignisse beim Zugriff auf ein registriertes oder nicht registriertes ML-Dataset (gelesen, erstellt oder gelöscht) Kategorie umfasst: DataSetReadEvent, DataSetChangeEvent |
+| AmlDataStoreEvent | Ereignisse beim Zugriff auf ML-Datenspeicher (gelesen, erstellt oder gelöscht) Kategorie umfasst: DataStoreReadEvent, DataStoreChangeEvent |
+| AmlDeploymentEvent | Ereignisse bei der Modellimplementierung in ACI oder AKS Kategorie umfasst: DeploymentReadEvent, DeploymentEventACI, DeploymentEventAKS |
+| AmlInferencingEvent | Ereignisse für Rückschlüsse oder verwandte Vorgänge für AKS- oder ACI-Computetypen Kategorie umfasst: InferencingOperationACI (sehr kommunikativ), InferencingOperationAKS (sehr kommunikativ) |
+| AmlModelsEvent | Ereignisse beim Zugriff auf das ML-Modell (gelesen, erstellt oder gelöscht) Umfasst Ereignisse, wenn das Verpacken von Modellen und Ressourcen in erstellungsbereite Pakete erfolgt Kategorie umfasst: ModelsReadEvent, ModelsActionEvent|
+| AmlPipelineEvent | Ereignisse beim Zugriff auf ML-Pipelineentwürfe, -Endpunkte oder -Module (gelesen, erstellt oder gelöscht). Kategorie umfasst: PipelineReadEvent, PipelineChangeEvent |
+| AmlRunEvent | Ereignisse beim Zugriff auf ML-Experimente (gelesen, erstellt oder gelöscht) Kategorie umfasst: RunReadEvent, RunEvent |
+| AmlEnvironmentEvent | Ereignisse bei ML-Umgebungskonfigurationen (gelesen, erstellt oder gelöscht) Kategorie umfasst: EnvironmentReadEvent (sehr kommunikativ), EnvironmentChangeEvent |
+
 
 > [!IMPORTANT]
 > Wenn Sie **Protokolle** im Menü von Azure Machine Learning auswählen, wird Log Analytics geöffnet, wobei der Abfragebereich auf den aktuellen Arbeitsbereich festgelegt ist. Dies bedeutet, dass Protokollabfragen nur Daten aus dieser Ressource umfassen. Wenn Sie eine Abfrage ausführen möchten, die Daten aus anderen Datenbanken oder Daten aus anderen Azure-Diensten enthält, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](../azure-monitor/logs/scope.md).
@@ -157,6 +169,17 @@ Die folgenden Abfragen sind Abfragen, mit denen Sie Ihre Azure Machine Learning-
     AmlComputeClusterNodeEvent
     | where TimeGenerated > ago(8d) and NodeAllocationTime  > ago(8d)
     | distinct NodeId
+    ```
+
+Wenn Sie mehrere Azure Machine Learning-Arbeitsbereiche mit demselben Log Analytics-Arbeitsbereich verbinden, können Sie Abfragen über alle Ressourcen hinweg durchführen. 
+
++ Rufen Sie die Anzahl der am letzten Tag ausgeführten Knoten in Arbeitsbereichen und Clustern ab:
+
+    ```Kusto
+    AmlComputeClusterEvent
+    | where TimeGenerated > ago(1d)
+    | summarize avgRunningNodes=avg(TargetNodeCount), maxRunningNodes=max(TargetNodeCount)
+             by Workspace=tostring(split(_ResourceId, "/")[8]), ClusterName, ClusterType, VmSize, VmPriority
     ```
 
 ## <a name="alerts"></a>Warnungen

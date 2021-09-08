@@ -2,17 +2,18 @@
 title: Verwenden des Features „Verbindung diagnostizieren“ in der SSIS Integration Runtime
 description: Beheben Sie Verbindungsprobleme in der SSIS-Integration Runtime mithilfe des Features „Verbindung diagnostizieren“.
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
-ms.date: 06/07/2020
-ms.openlocfilehash: 1fb9a0c77a7cdc286c7c206d6eb33e43917ee719
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/21/2021
+ms.openlocfilehash: 1d501a461caab23fb45441473fda60e13c7e8334
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346323"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Verwenden des Features „Verbindung diagnostizieren“ in der SSIS Integration Runtime
 
@@ -101,6 +102,6 @@ In den folgenden Abschnitten erfahren Sie mehr über die beim Testen von Verbind
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen eines SSIS-Projekts mit SQL Server Management Studio (SSMS)](/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [Ausführen eines SSIS-Pakets mit SQL Server Management Studio (SSMS)](/sql/integration-services/ssis-quickstart-run-ssms)
-- [Planen der Ausführung von in Azure bereitgestellten SSIS-Paketen mit SSMS](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)
+- [Migrieren von SSIS-Aufträgen mit SSMS](how-to-migrate-ssis-job-ssms.md)
+- [Ausführen eines SSIS-Pakets in Azure mit SSDT](how-to-invoke-ssis-package-ssdt.md)
+- [Planen der Ausführung von in Azure bereitgestellten SSIS-Paketen mit SSMS](how-to-schedule-azure-ssis-integration-runtime.md)

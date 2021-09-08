@@ -5,28 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 06/09/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 252c4d27a9d7b53a0298c434c953802c11dd6e0f
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91256437"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303020"
 ---
 # <a name="azure-ad-registered-devices"></a>Bei Azure AD registrierte Geräte
 
-Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterstützung für das BYOD-Szenario (Bring Your Own Device) oder von mobilen Geräten für Ihre Benutzer. In diesen Szenarien kann ein Benutzer mit einem persönlichen Gerät auf die über Azure Active Directory gesteuerten Ressourcen Ihres Unternehmens zugreifen.
+Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterstützung für das BYOD-Szenario (Bring Your Own Device) oder von mobilen Geräten für Ihre Benutzer. In diesen Szenarien kann ein Benutzer mit einem persönlichen Gerät auf die Ressourcen Ihres Unternehmens zugreifen.
 
 | Bei Azure AD registriert | BESCHREIBUNG |
 | --- | --- |
 | **Definition** | Registrierung bei Azure AD, ohne dass ein Organisationskonto für die Anmeldung am Gerät verwendet werden muss |
 | **Hauptzielgruppe** | Gilt für alle Benutzer mit den folgenden Kriterien: |
-|   | Bring Your Own Device (BYOD) |
+|   | Bring Your Own Device |
 |   | Mobile Geräte |
 | **Gerätebesitz** | Benutzer oder Organisation |
 | **Betriebssysteme** | Windows 10, iOS, Android und macOS |
@@ -47,7 +47,7 @@ Ziel von bei Azure AD registrierten Geräten ist die Bereitstellung der Unterst�
 
 ![Bei Azure AD registrierte Geräte](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Bei Azure AD registrierte Geräte werden angemeldet, um ein lokales Konto zu verwenden, z. B. ein Microsoft-Konto auf einem Windows 10-Gerät. Zusätzlich verfügen sie aber noch über ein angefügtes Azure AD-Konto für den Zugriff auf Organisationsressourcen. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf Richtlinien für den bedingten Zugriff, die auf die Geräteidentität angewendet werden, weiter eingeschränkt werden.
+Bei Azure AD registrierte Geräte werden mit einem lokalen Konto angemeldet, z. B. einem Microsoft-Konto auf einem Windows 10-Gerät. Diese Geräte verfügen über ein Azure AD-Konto für den Zugriff auf Organisationsressourcen. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf Richtlinien für den bedingten Zugriff, die auf die Geräteidentität angewendet werden, eingeschränkt werden.
 
 Administratoren können diese bei Azure AD registrierten Geräte schützen und genauer steuern, indem sie MDM-Tools (Mobile Device Management, Mobile Geräteverwaltung) verwenden, z. B. Microsoft Intune. MDM ist eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität und aktuelle Sicherheitssoftware. 
 
@@ -55,7 +55,7 @@ Die Azure AD-Registrierung kann durchgeführt werden, wenn zum ersten Mal auf ei
 
 ## <a name="scenarios"></a>Szenarien
 
-Ein Benutzer Ihrer Organisation möchte von seinem Heim-PC aus auf Tools für E-Mail, das Melden von Abwesenheit und die Registrierung für Boni zugreifen. In Ihrer Organisation sind diese Tools hinter einer Richtlinie für bedingten Zugriff angeordnet, sodass der Zugriff über ein Intune-konformes Gerät durchgeführt werden muss. Der Benutzer fügt sein Organisationskonto hinzu und registriert seinen Heim-PC bei Azure AD. Die erforderlichen Intune-Richtlinien werden dann erzwungen, und dem Benutzer wird Zugriff auf seine Ressourcen gewährt.
+Ein Benutzer Ihrer Organisation möchte von seinem Heim-PC aus auf das Tool für die Registrierung für Boni zugreifen. Ihre Organisation verlangt, dass jeder von einem Intune-konformen Gerät auf dieses Tool zugreift. Der Benutzer registriert seinen Heim-PC bei Azure AD. Dabei werden die erforderlichen Intune-Richtlinien erzwungen, und dem Benutzer wird Zugriff auf seine Ressourcen gewährt.
 
 Ein anderer Benutzer möchte auf sein E-Mail-Konto der Organisation über sein eigenes Android-Smartphone zugreifen, das manipuliert wurde. Für Ihr Unternehmen gilt die Regel, dass ein konformes Gerät verwendet werden muss, und es wurde eine Intune-Konformitätsrichtlinie erstellt, um manipulierte Geräte zu blockieren. Es wird verhindert, dass der Mitarbeiter mit diesem Gerät auf Ressourcen der Organisation zugreift.
 

@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b2b97f11c1493deca9b79907e894efbb7b9c456
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: d5334314626d29dc9e3047bc382d41fcfa318a1d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920992"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469516"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Tutorial: Bestellen von Azure Data Box Heavy
 
@@ -60,65 +61,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="order-data-box-heavy"></a>Bestellen von Data Box Heavy
 
-Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestellen.
-
-1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen unter folgender URL an: [https://portal.azure.com](https://portal.azure.com).
-2. Wählen Sie **+ Ressource erstellen** aus, und suchen Sie nach *Azure Data Box*. Wählen Sie **Azure Data Box** aus.
-    
-   [![Suchen nach Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
-
-3. Klicken Sie auf **Erstellen**.
-
-4. Überprüfen Sie, ob der Data Box-Dienst in Ihrer Region verfügbar ist. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Übernehmen** aus.
-
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
-    |Übertragungstyp     | Wählen Sie **Import in Azure** aus.        |
-    |Quellland/Quellregion     | Wählen Sie das Land/die Region aus, in dem/der sich Ihre Daten zurzeit befinden.         |
-    |Azure-Zielregion     | Wählen Sie die Azure-Region aus, in die Daten übertragen werden sollen.        |
-
-    [![Auswählen der Verfügbarkeit der Data Box-Familie](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
-
-5. Wählen Sie **Data Box Heavy** aus. Die maximal nutzbare Kapazität für eine einzelne Bestellung beträgt 770 TB.
-
-    [![Auswählen von „Data Box Heavy“](media/data-box-heavy-deploy-ordered/select-data-box-heavy.png)
-
-6. Geben Sie in **Bestellung** die **Bestelldetails** an. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie anschließend **Weiter** aus.
-    
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Name     | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.      |
-    |Resource group     | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
-    |Azure-Zielregion     | Wählen Sie eine Region für Ihr Speicherkonto aus. <br> Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/?products=databox).        |
-    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region mindestens ein Speicherkonto in der gefilterten Liste eines vorhandenen Speicherkontos aus. <br>Data Box Heavy kann mit bis zu zehn Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Weitere Informationen finden Sie unter [Unterstützte Speicherkonten](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](../storage/common/storage-network-security.md#exceptions).|
-
-    Wenn Sie als Speicherziel ein Speicherkonto verwenden, wird Folgendes angezeigt:
-
-    ![Data Box Heavy-Bestellung für ein Speicherkonto](media/data-box-heavy-deploy-ordered/order-storage-account.png)
-
-    Falls Sie nicht nur ein Speicherkonto als Speicherziel verwenden, sondern mit Data Box Heavy auch verwaltete Datenträger auf der Grundlage der lokalen virtuellen Festplatten erstellen möchten, geben Sie folgende Informationen an:
-
-    |Einstellung  |Wert  |
-    |---------|---------|
-    |Ressourcengruppen     | Erstellen Sie neue Ressourcengruppen, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Eine bereits vorhandene Ressourcengruppe kann nur verwendet werden, wenn diese zuvor beim Erstellen einer Data Box Heavy-Bestellung für einen verwalteten Datenträger durch den Data Box-Dienst erstellt wurde. <br> Bei Angabe mehrerer Ressourcengruppen müssen diese jeweils durch ein Semikolon getrennt werden. Es werden maximal zehn Ressourcengruppen unterstützt.|
-
-    ![Data Box Heavy-Bestellung für einen verwalteten Datenträger](media/data-box-heavy-deploy-ordered/order-managed-disks.png)
-
-    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
-
-7. Geben Sie unter **Lieferadresse** Ihren Vor- und Nachnamen, den Namen und die Postanschrift des Unternehmens sowie eine gültige Telefonnummer an. Wählen Sie **Adresse überprüfen** aus. 
-
-    Der Dienst überprüft anhand der Lieferadresse die Verfügbarkeit des Diensts. Wenn der Dienst für die angegebene Lieferadresse verfügbar ist, erhalten Sie eine entsprechende Benachrichtigung. Wählen Sie **Weiter** aus.
-
-8. Geben Sie in den **Benachrichtigungsdetails** E-Mail-Adressen an. Der Dienst sendet E-Mail-Benachrichtigungen in Bezug auf Aktualisierungen des Auftragsstatus an die angegebenen E-Mail-Adressen.
-
-    Es wird empfohlen, eine E-Mail-Gruppenadresse zu verwenden, damit Sie weiterhin Benachrichtigungen erhalten, wenn ein Administrator die Gruppe verlässt.
-
-9. Überprüfen Sie die Informationen der **Zusammenfassung** im Zusammenhang mit der Bestellung, den Kontakt, die Benachrichtigungen und die Datenschutzbestimmungen. Aktivieren Sie das Kontrollkästchen für die Zustimmung zu den Datenschutzbestimmungen.
-
-10. Wählen Sie **Bestellen** aus. Die Erstellung des Auftrags dauert einige Minuten.
-
+[!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
 
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 

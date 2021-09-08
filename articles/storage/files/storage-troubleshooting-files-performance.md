@@ -1,22 +1,29 @@
 ---
 title: Leistungsprobleme mit Azure-Dateifreigaben – Handbuch zur Problembehandlung
 description: Hier finden Sie Informationen zur Behandlung bekannter Leistungsprobleme mit Azure-Dateifreigaben. Machen Sie sich mit möglichen Ursachen und entsprechenden Problemumgehungen vertraut.
-author: roygara
+author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.author: rogarana
+ms.date: 07/06/2021
+ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b303dbc20cf0caf4bb0d75f28a2983bc0f27064d
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346863"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
 In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenhang mit Azure-Dateifreigaben auftreten können. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme bei Ihnen auftreten.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Hohe Latenz, niedriger Durchsatz und allgemeine Leistungsprobleme
 
@@ -58,9 +65,9 @@ Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können
     > [!NOTE]
     > Informationen zum Empfangen einer Warnung finden Sie weiter unten in diesem Artikel im Abschnitt [„Erstellen einer Warnung, wenn eine Dateifreigabe gedrosselt ist“](#how-to-create-an-alert-if-a-file-share-is-throttled).
 
-### <a name="solution"></a>Lösung
+#### <a name="solution"></a>Lösung
 
-- Wenn Sie eine Standarddateifreigabe verwenden, aktivieren Sie [große Dateifreigaben](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) für Ihr Speicherkonto. Große Dateifreigaben unterstützen bis zu 10.000 IOPS pro Freigabe.
+- Wenn Sie eine Standarddateifreigabe verwenden, [aktivieren Sie große Dateifreigaben](storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account) in Ihrem Speicherkonto, und [erhöhen Sie das Dateifreigabekontingent, um die Unterstützung für große Dateifreigaben zu nutzen](storage-how-to-create-file-share.md#expand-existing-file-shares). Große Dateifreigaben unterstützen hohe Grenzwerte für IOPS und Bandbreite. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](storage-files-scale-targets.md).
 - Wenn Sie eine Premium-Dateifreigabe verwenden, erhöhen Sie die Größe der bereitgestellten Dateifreigabe, um den IOPS-Grenzwert heraufzusetzen. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung für Premium-Dateifreigaben](./understanding-billing.md#provisioned-model).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Ursache 2: Hohe Arbeitsauslastung bei Metadaten oder Namespace
@@ -71,7 +78,7 @@ Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentrie
 
 ![Der Screenshot der Metrikoptionen für Premium-Dateifreigaben zeigt einen Eigenschaftsfilter „API-Name“.](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
-### <a name="workaround"></a>Problemumgehung
+#### <a name="workaround"></a>Problemumgehung
 
 - Überprüfen Sie, ob die Anwendung so geändert werden kann, dass sich die Anzahl von Metadatenvorgängen verringert.
 - Fügen Sie auf der Dateifreigabe eine virtuelle Festplatte (Virtual Hard Disk, VHD) hinzu, und binden Sie die VHD über SMB vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarios mit einem einzelnen Writer/Reader oder bei Szenarios mit mehreren Readern und keinen Writern. Weil das Dateisystem im Besitz des Clients (und nicht von Azure Files) ist, dürfen Metadatenvorgänge lokal sein. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
@@ -80,10 +87,18 @@ Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentrie
 
 Wenn die von Ihnen verwendete Anwendung eine Singlethread-Anwendung ist, kann dieses Setup dazu führen, dass der IOPS-Durchsatz deutlich niedriger ist als derjenige, der je nach Ihrer bereitgestellten Freigabegröße maximal möglich wäre.
 
-### <a name="solution"></a>Lösung
+#### <a name="solution"></a>Lösung
 
 - Erhöhen Sie die Parallelität Ihrer Anwendung, indem Sie die Anzahl von Threads erhöhen.
 - Wechseln Sie zu Anwendungen, in denen Parallelität möglich ist. Für Kopiervorgänge könnten Sie beispielsweise „AzCopy“ oder „RoboCopy“ von Windows-Clients oder den Befehl **parallel** von Linux-Clients verwenden.
+
+### <a name="cause-4-number-of-smb-channels-exceeds-four"></a>Ursache 4: mehr als vier SMB-Kanäle
+
+Wenn Sie SMB MultiChannel verwenden und die Anzahl Ihrer Kanäle vier überschreitet, führt dies zu einer schlechteren Leistung. Verwenden Sie das PowerShell-Cmdlet `get-SmbClientConfiguration`, um die aktuellen Einstellungen für die Verbindungsanzahl anzuzeigen und zu ermitteln, ob die Anzahl der Verbindungen vier überschreitet.
+
+#### <a name="solution"></a>Lösung
+
+Legen Sie unter Windows die NIC-Einstellung für SMB fest, damit die Gesamtanzahl der Kanäle vier nicht überschreitet. Wenn Sie beispielsweise über zwei NICs verfügen, können Sie die maximale Anzahl pro NIC mithilfe des folgenden PowerShell-Cmdlets auf zwei festlegen: `Set-SmbClientConfiguration -ConnectionCountPerRssNetworkInterface 2`.
 
 ## <a name="very-high-latency-for-requests"></a>Sehr hohe Latenz für Anforderungen
 
@@ -275,7 +290,7 @@ Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwe
 12. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
 13. Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.
 
-Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Erstellen von Warnungen, wenn sich eine Premium-Dateifreigabe der Drosselung nähert
 
@@ -313,7 +328,7 @@ Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Si
     >    - Wählen Sie in Schritt 5 die Metrik **Transaktionen** statt **Ausgehend** aus.
     >    - Außerdem ist in Schritt 10 die einzige Option für den **Aggregationstyp** der *Gesamtwert*. Daher ist der Schwellenwert abhängig von Ihrer ausgewählten Aggregationsgranularität. Wenn Sie z. B. als Schwellenwert 80&nbsp;% des bereitgestellten IOPS-Grundwerts verwenden möchten und für *Aggregationsgranularität* den Wert **1 Stunde** ausgewählt haben, wäre Ihr **Schwellenwert** Ihr IOPS-Grundwert (in Byte) gleich &times;&nbsp;0,8 &times;&nbsp;3.600. 
 
-Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)  

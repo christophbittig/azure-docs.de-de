@@ -9,13 +9,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 07/22/2021
+ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952078"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355506"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -28,7 +28,7 @@ Informationen zum Erstellen und Verwalten von Dateien, einschließlich Notebooks
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 ## <a name="edit-a-notebook"></a>Bearbeiten eines Notebooks
@@ -72,6 +72,31 @@ Um die Liste der Ausschnitte zu durchsuchen, können Sie in der Notebook-Symboll
 Im Ausschnittbereich können Sie auch eine Anforderung zum Hinzufügen neuer Codeausschnitte senden.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Im Ausschnittbereich können Sie einen neuen Ausschnitt vorschlagen.":::
+
+## <a name="collaborate-with-notebook-comments-preview"></a>Zusammenarbeiten mit Notebookkommentaren (Vorschau)
+
+Verwenden Sie einen Notebookkommentar, um mit anderen Personen zusammenzuarbeiten, die Zugriff auf Ihr Notebook haben.
+
+Schalten Sie den Kommentarbereich mit dem Werkzeug **Notebookkommentare** am oberen Rand des Notebooks ein und aus.  Wenn Ihr Bildschirm nicht breit genug ist, finden Sie dieses Tool, indem Sie zuerst die **...** am Ende des Toolsatzes auswählen.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/notebook-comments-tool.png" alt-text="Screenshot: Tool für Notebookkommentare in der oberen Symbolleiste":::  
+
+Unabhängig davon, ob der Kommentarbereich sichtbar ist oder nicht, können Sie einen Kommentar in eine beliebige Codezelle einfügen:
+
+1. Wählen Sie etwas Text in der Codezelle aus.  Sie können nur Text in einer Codezelle kommentieren.
+1. Verwenden Sie das Tool **Neuer Kommentarthread**, um Ihren Kommentar zu erstellen.
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/comment-from-code.png" alt-text="Screenshot: Hinzufügen eines Kommentars zu einem Codezellentool":::
+1. Wenn der Kommentarbereich zuvor ausgeblendet war, wird er nun geöffnet.  
+1. Geben Sie Ihren Kommentar ein, und veröffentlichen Sie ihn mit dem Tool, oder drücken Sie **STRG+EINGABETASTE**.
+1. Nachdem ein Kommentar veröffentlicht wurde, wählen Sie **...** in der oberen rechten Ecke aus, um Folgendes auszuführen:
+    * Bearbeiten des Kommentars
+    * Auflösen des Threads
+    * Löschen des Threads
+
+Kommentierter Text wird im Code lila hervorgehoben. Wenn Sie im Kommentarbereich einen Kommentar auswählen, scrollt Ihr Notebook zu der Zelle, die den markierten Text enthält.
+
+> [!NOTE]
+> Kommentare werden in den Metadaten der Codezelle gespeichert.
 
 ## <a name="clean-your-notebook-preview"></a>Bereinigen des Notebooks (Vorschau)
 
@@ -288,9 +313,11 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 
 * Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
 
-* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur [im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
+* Wenn eine Compute-Instanz in einem Arbeitsbereich mit einem privaten Endpunkt bereitgestellt wird, kann [nur im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
 
-* Wenn Ihr Kernel abgestürzt ist und neu gestartet wurde, können Sie den folgenden Befehl ausführen, um das Jupyter-Protokoll anzuzeigen und weitere Details zu erfahren. `sudo journalctl -u jupyter`. Wenn Kernelprobleme weiterhin bestehen, erwägen Sie, eine Compute-Instanz mit mehr Arbeitsspeicher zu verwenden.
+* Wenn Ihr Kernel abgestürzt ist und neu gestartet wurde, können Sie den folgenden Befehl ausführen, um das Jupyter-Protokoll anzuzeigen und weitere Details zu erfahren: `sudo journalctl -u jupyter`. Wenn Kernelprobleme weiterhin bestehen, erwägen Sie, eine Compute-Instanz mit mehr Arbeitsspeicher zu verwenden.
+
+* Wenn ein Problem mit einem abgelaufenen Token aufgetreten ist, melden Sie sich von Ihrem Azure ML Studio ab, melden Sie sich erneut an, und starten Sie den Notebook-Kernel neu.
     
 ## <a name="next-steps"></a>Nächste Schritte
 

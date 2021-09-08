@@ -8,15 +8,19 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 28365f4c5e4096c83bdf7b1c4cd7ade3fe1e46b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d9b5803069316a97d6180429bd6b096d401d2396
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339823"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695581"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Reihe „Data Science für Einsteiger“
+
 Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie ein Data Science-Problem in einer Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)

@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2b41342ab7d267c37b8e68fdbcaa9d570034ac17
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e23d2f82da833c4613a243bdef268d3fd44aa92c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568436"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538289"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Schnellstart: Massenladen von Daten mit der COPY-Anweisung
 
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Bewährte Methoden zum Laden von Daten finden Sie unter [Bewährte Methoden für das Laden von Daten mit einem Synapse SQL-Pool](./guidance-for-loading-data.md).
+- Bewährte Methoden zum Laden von Daten finden Sie unter [Bewährte Methoden für das Laden von Daten mit einem Synapse SQL-Pool](../sql/data-loading-best-practices.md).
 - Informationen zum Verwalten der Ressourcen für Ihre Datenladevorgänge finden Sie unter [Schnellstart: Konfigurieren der Workloadisolation mithilfe von T-SQL](./quickstart-configure-workload-isolation-tsql.md).

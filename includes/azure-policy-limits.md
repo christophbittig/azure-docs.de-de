@@ -6,12 +6,12 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4792245dff3784d1aa72120c6be1412bf6659c35
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e9ba8efefd2238b1aadc2fbeaf17a286e0714bcd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113027441"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123485076"
 ---
 Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Bei Definitionen gilt ein _Scope_-Eintrag (Bereich) entweder für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md) oder das Abonnement.
 Bei Zuweisungen und Ausnahmen gilt ein _Scope_-Eintrag für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md), das Abonnement, die Ressourcengruppe oder eine einzelne Ressource.
@@ -25,7 +25,7 @@ Bei Zuweisungen und Ausnahmen gilt ein _Scope_-Eintrag für die [Verwaltungsgrup
 | Bereich | Ausnahmen | 1000 |
 | Richtliniendefinition | Parameter | 20 |
 | Initiativdefinition | Richtlinien | 1000 |
-| Initiativdefinition | Parameter | 250 |
+| Initiativdefinition | Parameter | 300 |
 | Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 400 |
 | Richtlinienregel | Geschachtelte konditionelle Abschnitte | 512 |
 | Wartungstask | Ressourcen | 500 |

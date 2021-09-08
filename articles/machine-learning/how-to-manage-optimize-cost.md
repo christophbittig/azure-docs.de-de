@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: f5f0351e21588d6e01a633a11d5638358e4d706b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008266"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346674"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>Verwalten und Optimieren von Azure Machine Learning-Kosten
 
@@ -26,10 +26,11 @@ Verwenden Sie die folgenden Tipps, um Ihre Kosten für Computeressourcen zu verw
 - Legen Sie Kontingente für Ihr Abonnement und Ihre Arbeitsbereiche fest
 - Legen Sie Terminierungsrichtlinien für Ihre Trainingsläufe fest
 - Verwenden Sie virtuelle Computer (VMs) mit niedriger Priorität
+- Planen Sie das automatische Herunterfahren und Starten von Compute-Instanzen.
 - Verwenden Sie eine reservierte Azure-VM-Instanz
 - Trainieren Sie lokal
 - Parallelisieren Sie das Training
-- Legen Sie Richtlinien für Datenaufbewahrung und Löschen fest
+- Legen Sie Richtlinien für die Aufbewahrung und das Löschen von Daten fest
 - Stellen Sie Ressourcen in derselben Region bereit
 
 Informationen zur Planung und Überwachung von Kosten finden Sie im Leitfaden zum [Planen der Kostenverwaltung für Azure Machine Learning](concept-plan-manage-cost.md).
@@ -55,7 +56,7 @@ Sie können auch festlegen, wie lange sich der Knoten im Leerlauf befindet, bevo
 + Wenn Sie weniger iterative Experimente ausführen, setzen Sie diese Zeit herab, um Kosten zu sparen.
 + Wenn Sie hochgradig iterative Dev/Test-Experimente ausführen, müssen Sie die Zeit möglicherweise erhöhen, damit Sie nicht für ständiges Hoch- und Herunterskalieren nach jeder Änderung Ihres Trainingsskripts oder Ihrer Umgebung zahlen müssen.
 
-AmlCompute-Cluster können im Azure-Portal für Ihre wechselnden Workloadanforderungen konfiguriert werden, mithilfe der [AmlCompute SDK-Klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute), des [AmlCompute-CLIs](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute) und mit den [REST-APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
+AmlCompute-Cluster können im Azure-Portal für Ihre wechselnden Workloadanforderungen konfiguriert werden, mithilfe der [AmlCompute SDK-Klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute), des [AmlCompute-CLIs](/cli/azure/ml(v1)/computetarget/create#az_ml_v1__computetarget_create_amlcompute) und mit den [REST-APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -86,6 +87,10 @@ VMs mit niedriger Priorität besitzen ein einzelnes Kontingent, das sich nach de
 
  VMs mit geringer Priorität funktionieren nicht als Computeinstanzen, da sie in der Lage sein müssen, interaktive Notebookumgebungen zu unterstützen.
 
+## <a name="schedule-compute-instances"></a>Planen von Compute-Instanzen
+
+Wenn Sie eine [Compute-Instanz](concept-compute-instance.md) erstellen, bleibt die VM eingeschaltet, damit sie für Ihre Arbeit verfügbar ist.  [Richten Sie einen Zeitplan ein](how-to-create-manage-compute-instance.md#schedule), um die Compute-Instanz automatisch zu starten und zu beenden (Vorschau), wenn Sie nicht planen, sie zu verwenden, und damit Kosten zu sparen.
+
 ## <a name="use-reserved-instances"></a>Verwenden von reservierten Instanzen
 
 Reservierte Azure VM-Instanzen sind eine weitere Möglichkeit zur Kosteneinsparung bei Computeressourcen. Bei diesem Angebot stehen Verträge mit ein- oder dreijähriger Laufzeit zur Wahl. Diese Rabatte erreichen bis zu 72 % gegenüber den Preisen für nutzungsbasierte Bezahlung und werden direkt auf Ihre monatliche Azure-Rechnung angewendet.
@@ -104,7 +109,7 @@ Eine der wichtigsten Methoden zur Optimierung von Kosten und Leistung ist die Pa
 
 ## <a name="set-data-retention--deletion-policies"></a>Festlegen von Richtlinien für Datenaufbewahrung und Löschen
 
-Bei jeder Ausführung einer Pipeline werden bei jedem Schritt Zwischen-Datasets generiert. Im Laufe der Zeit nehmen diese Zwischen-Datasets Speicherplatz in Ihrem Speicherkonto in Anspruch. Erwägen Sie das Einrichten von Richtlinien zum Verwalten Ihrer Daten während des gesamten Lebenszyklus, um Ihre Datasets zu archivieren und zu löschen. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](/storage/blobs/storage-lifecycle-management-concepts.md).
+Bei jeder Ausführung einer Pipeline werden bei jedem Schritt Zwischen-Datasets generiert. Im Laufe der Zeit nehmen diese Zwischen-Datasets Speicherplatz in Ihrem Speicherkonto in Anspruch. Erwägen Sie das Einrichten von Richtlinien zum Verwalten Ihrer Daten während des gesamten Lebenszyklus, um Ihre Datasets zu archivieren und zu löschen. Weitere Informationen finden Sie unter [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/storage-lifecycle-management-concepts.md).
 
 ## <a name="deploy-resources-to-the-same-region"></a>Stellen Sie Ressourcen in derselben Region bereit
 

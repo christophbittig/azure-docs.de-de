@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5cecf43f3795e38daa75f9463cadec94114046de
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 66b762cac767987a1ea2cf74b9e706e7a7939d51
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568898"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356135"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>Konfigurieren von Azure Load Balancer für einen FCI-VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,6 +41,9 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
 - Sie müssen die neueste Version von [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows) installiert haben. 
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
+
+Sie können entweder einen internen Lastenausgleich oder einen externen Lastenausgleich erstellen. Ein interner Lastenausgleich kann nur von privaten Ressourcen aus erfolgen, die sich innerhalb des Netzwerks befinden.  Ein externer Lastenausgleich kann den Datenverkehr von öffentlichen Ressourcen zu internen Ressourcen leiten. Wenn Sie einen internen Lastenausgleich konfigurieren, verwenden Sie bei der Konfiguration der Regeln für den Lastenausgleich dieselbe IP-Adresse wie die FCI-Ressource für die Front-End-IP-Adresse. Wenn Sie einen externen Lastenausgleich konfigurieren, können Sie nicht dieselbe IP-Adresse verwenden, da es sich bei der FCI-IP-Adresse nicht um eine öffentliche IP-Adresse handeln darf. Um also einen externen Lastenausgleich zu verwenden, weisen Sie logischerweise eine IP-Adresse im gleichen Subnetz wie die FCI zu, die mit keiner anderen IP-Adresse in Konflikt steht, und verwenden Sie diese Adresse als Front-End-IP-Adresse für die Lastenausgleichsregeln. 
+
 
 Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Lastenausgleichs:
 
@@ -75,7 +78,7 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 1. Ordnen Sie den Back-End-Pool der Verfügbarkeitsgruppe mit den virtuellen Computern zu.
 
-1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die FCI hosten.
+1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die FCI hosten. Fügen Sie nur die primäre IP-Adresse der einzelnen VMs hinzu, aber keine sekundären IP-Adressen. 
 
 1. Wählen Sie **OK** aus, um den Back-End-Pool zu erstellen.
 
@@ -97,14 +100,19 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 ## <a name="set-load-balancing-rules"></a>Festlegen von Lastenausgleichsregeln
 
+Legen Sie die Lastenausgleichsregeln für den Lastenausgleich fest. 
+
+
+# <a name="private-load-balancer"></a>[Privater Lastenausgleich](#tab/ilb)
+
+Legen Sie die Lastenausgleichsregeln für den privaten Lastenausgleich wie folgt fest: 
+
 1. Wählen Sie im Bereich für den Lastenausgleich **Lastenausgleichsregeln** aus.
-
 1. Wählen Sie **Hinzufügen**.
-
 1. Legen Sie die Parameter für die Lastenausgleichsregeln fest:
 
    - **Name**: Ein Name für die Lastenausgleichsregeln.
-   - **Front-End-IP-Adresse**: Die IP-Adresse für die Clusternetzwerkressource der SQL Server-FCI oder des Verfügbarkeitsgruppenlisteners.
+   - **Front-End-IP-Adresse**: Die IP-Adresse für die Clusternetzwerkressource der SQL Server-FCI.
    - **Port:** Der SQL Server-TCP-Port. Der Standardport der Instanz lautet 1433.
    - **Back-End-Port**: Der gleiche Port, den Sie als Wert für **Port** angeben, wenn Sie **Floating IP (Direct Server Return)** aktivieren.
    - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
@@ -115,9 +123,35 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 1. Klicken Sie auf **OK**.
 
+# <a name="public-load-balancer"></a>[Öffentlicher Lastenausgleich](#tab/elb)
+
+Legen Sie die Lastenausgleichsregeln für den öffentlichen Lastenausgleich wie folgt fest: 
+
+1. Wählen Sie im Bereich für den Lastenausgleich **Lastenausgleichsregeln** aus.
+1. Wählen Sie **Hinzufügen**.
+1. Legen Sie die Parameter für die Lastenausgleichsregeln fest:
+
+   - **Name**: Ein Name für die Lastenausgleichsregeln.
+   - **Front-End-IP-Adresse**: Die öffentliche IP-Adresse, die Clients zum Herstellen einer Verbindung mit dem öffentlichen Endpunkt verwenden. 
+   - **Port:** Der SQL Server-TCP-Port. Der Standardport der Instanz lautet 1433.
+   - **Back-End-Port**: Der von der FCI-Instanz verwendete Port. Der Standardwert ist "1433". 
+   - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
+   - **Integritätstest**: Der Integritätstest, den Sie zuvor konfiguriert haben.
+   - **Sitzungspersistenz**: Keine.
+   - **Leerlaufzeitüberschreitung (Minuten)** : 4.
+   - **Floating IP (Direct Server Return)** : Deaktiviert.
+
+1. Klicken Sie auf **OK**.
+
+---
+
+
+
 ## <a name="configure-cluster-probe"></a>Konfigurieren des Clustertests
 
 Legen Sie den Parameter für den Clustertestport in PowerShell fest.
+
+# <a name="private-load-balancer"></a>[Privater Lastenausgleich](#tab/ilb)
 
 Aktualisieren Sie die Variablen im folgenden Skript mit Werten aus Ihrer Umgebung, um den Parameter für den Clustertestport festzulegen. Entfernen Sie die spitzen Klammern (`<` und `>`) aus dem Skript.
 
@@ -138,7 +172,7 @@ Die Werte, die Sie aktualisieren können, werden in der folgenden Tabelle beschr
 |**Wert**|**Beschreibung**|
 |---------|---------|
 |`Cluster Network Name`| Der Name des Windows Server-Failoverclusters für das Netzwerk. Klicken Sie in **Failovercluster-Manager** > **Netzwerke** mit der rechten Maustaste auf das Netzwerk, und wählen Sie **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Der Ressourcenname für die IP-Adresse der SQL Server-FCI oder des Verfügbarkeitsgruppenlisteners. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`SQL Server FCI IP Address Resource Name`|Der Ressourcenname für die IP-Adresse der SQL Server-FCI. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
 |`ILBIP`|Die IP-Adresse des internen Load Balancers (ILB). Diese Adresse wird als Front-End-Adresse des ILB im Azure-Portal konfiguriert. Dies ist auch die FCI-IP-Adresse von SQL Server. Sie finden sie im **Failovercluster-Manager** auf der gleichen Eigenschaftenseite, auf der sich der `<SQL Server FCI/AG listener IP Address Resource Name>` befindet.|
 |`nnnnn`|Der Testport, den Sie im Integritätstest des Lastenausgleichs konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig.|
 |„SubnetMask“| Die Subnetzmaske für den Clusterparameter. Dabei muss es sich um die TCP/IP-Broadcastadresse handeln: `255.255.255.255`.| 
@@ -149,6 +183,43 @@ Nach dem Festlegen des Clustertests werden in PowerShell alle Clusterparameter a
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
+
+# <a name="public-load-balancer"></a>[Öffentlicher Lastenausgleich](#tab/elb)
+
+Aktualisieren Sie die Variablen im folgenden Skript mit Werten aus Ihrer Umgebung, um den Parameter für den Clustertestport festzulegen. Entfernen Sie die spitzen Klammern (`<` und `>`) aus dem Skript.
+
+```powershell
+$ClusterNetworkName = "<Cluster Network Name>"
+$IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
+$ELBIP = "<n.n.n.n>" 
+[int]$ProbePort = <nnnnn>
+
+Import-Module FailoverClusters
+
+Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ELBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+```
+
+Die Werte, die Sie aktualisieren können, werden in der folgenden Tabelle beschrieben:
+
+
+|**Wert**|**Beschreibung**|
+|---------|---------|
+|`Cluster Network Name`| Der Name des Windows Server-Failoverclusters für das Netzwerk. Klicken Sie in **Failovercluster-Manager** > **Netzwerke** mit der rechten Maustaste auf das Netzwerk, und wählen Sie **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`SQL Server FCI IP Address Resource Name`|Der Ressourcenname für die IP-Adresse der SQL Server-FCI. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`ELBIP`|Die IP-Adresse des externen Lastenausgleichs (ELB). Diese Adresse wird im Azure-Portal als Front-End-Adresse des externen Lastenausgleichs konfiguriert und wird verwendet, um eine Verbindung mit dem öffentlichen Lastenausgleich von externen Ressourcen aus herzustellen. |
+|`nnnnn`|Der Testport, den Sie im Integritätstest des Lastenausgleichs konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig.|
+|„SubnetMask“| Die Subnetzmaske für den Clusterparameter. Dabei muss es sich um die TCP/IP-Broadcastadresse handeln: `255.255.255.255`.| 
+
+Nach dem Festlegen des Clustertests werden in PowerShell alle Clusterparameter angezeigt. Führen Sie dieses Skript aus:
+
+```powershell
+Get-ClusterResource $IPResourceName | Get-ClusterParameter
+```
+
+> [!NOTE]
+> Da es keine private IP-Adresse für den externen Lastenausgleich gibt, können die Benutzer den VNN-DNS-Namen nicht direkt verwenden, da er die IP-Adresse innerhalb des Subnetzes auflöst. Verwenden Sie entweder die öffentliche IP-Adresse des öffentlichen Lastenausgleichs, oder konfigurieren Sie eine andere DNS-Zuordnung auf dem DNS-Server. 
+
+---
 
 ## <a name="modify-connection-string"></a>Ändern der Verbindungszeichenfolge 
 
@@ -167,7 +238,7 @@ Weitere Informationen finden Sie in der SQL Server-Dokumentation [Listenerverbin
 
 > [!TIP]
 > - Legen Sie den MultiSubnetFailover-Parameter in der Verbindungszeichenfolge auf true fest, auch für HADR-Lösungen, die sich über ein einzelnes Subnetz erstrecken, um die zukünftige Spanne von Subnetzen zu unterstützen, ohne dass Verbindungszeichenfolgen aktualisiert werden müssen.  
-> - Standardmäßig werden von Clients DNS-Clustereinträge 20 Minuten zwischengespeichert. Durch das Reduzieren von HostRecordTTL reduzieren Sie die Gültigkeitsdauer (Time to Live, TTL) für den zwischengespeicherten Eintrag, Legacyclients können schneller wieder Verbindungen herstellen. Das Reduzieren der Einstellung HostRecordTTL kann an sich zu größerem Datenverkehr an die DNS-Server führen.
+> - Standardmäßig werden von Clients DNS-Clustereinträge 20 Minuten zwischengespeichert. Durch das Reduzieren von HostRecordTTL reduzieren Sie die Gültigkeitsdauer (Time to Live, TTL) für den zwischengespeicherten Eintrag. Legacyclients können schneller wieder Verbindungen herstellen. Das Reduzieren der Einstellung HostRecordTTL kann zu größerem Datenverkehr an die DNS-Server führen.
 
 
 ## <a name="test-failover"></a>Testfailover
@@ -189,8 +260,8 @@ Unter **Failovercluster-Manager** wird die Rolle angezeigt, und die Ressourcen w
 
 Melden Sie sich zum Testen der Konnektivität an einem anderen virtuellen Computer in demselben virtuellen Netzwerk an. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit dem SQL Server-FCI-Namen her. 
 
->[!NOTE]
->Bei Bedarf können Sie [SQL Server Management Studio herunterladen](/sql/ssms/download-sql-server-management-studio-ssms).
+> [!NOTE]
+> Bei Bedarf können Sie [SQL Server Management Studio herunterladen](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 
@@ -202,7 +273,7 @@ Weitere Informationen finden Sie unter:
 
 - [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
-- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Übersicht über Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: Herunterladen von Blobs aus Azure Blob Storage mithilfe AzCopy v10 | Microsoft-Dokumentation
+title: Herunterladen von Blobs aus Azure Blob Storage mithilfe von AzCopy v10 | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, die Sie beim Herunterladen von Blobs aus Azure Blob Storage unterstützen.
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 56bb36cfda9d0cf1a8882950c862a73ad1e77898
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c57744817e26cc79c101246f146d32d3db061ed5
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502945"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361477"
 ---
-# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>Herunterladen von Blobs aus Azure Blob Storage mithilfe AzCopy
+# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>Herunterladen von Blobs aus Azure Blob Storage mithilfe von AzCopy
 
 Mit dem Befehlszeilenprogramm AzCopy v10 können Sie Blobs und Verzeichnisse aus Blob Storage herunterladen. 
 
@@ -245,6 +245,6 @@ Weitere Beispiele finden Sie in diesen Artikeln:
 
 Lesen Sie diese Artikel, um Einstellungen zu konfigurieren, die Leistung zu optimieren und Probleme zu beheben:
 
-- [AzCopy-Konfigurationseinstellungen](storage-ref-azcopy-configuration-settings.md)
+- [AzCopy v10-Konfigurationseinstellungen (Azure Storage)](storage-ref-azcopy-configuration-settings.md)
 - [Optimieren der Leistung von AzCopy mit Azure Storage](storage-use-azcopy-optimize.md)
-- [Konfigurieren, Optimieren und Problembehandlung von AzCopy v10 in Azure Storage mithilfe von Protokolldateien](storage-use-azcopy-configure.md)
+- [Ermitteln von Fehlern und Fortsetzen von Aufträgen mithilfe von Protokoll- und Plandateien in AzCopy](storage-use-azcopy-configure.md)
