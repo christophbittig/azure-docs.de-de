@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Data Lake Analytics
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen auf, die für Azure Policy für Azure Data Lake Analytics verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d4d7d4be643eaaa0844a0c307b53e958a340246f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8321d0c80b8687dca6bfb503815770726fdaf441
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104173"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471718"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Data Lake Analytics
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b81883b8c9556500ec6b6bd994d50a1f4202808
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 72bf18bee387dc0602f543161afc20c73c2e4144
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949897"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355596"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Anwendung des Azure-Hybridvorteils auf virtuelle Linux-Computer
 
@@ -64,18 +64,39 @@ So beginnen Sie mit der Verwendung des Vorteils für Red Hat:
 
 ### <a name="suse-customers"></a>SUSE-Kunden
 
+Der Azure-Hybridvorteil für SUSE ist für Kunden verfügbar, die über Folgendes verfügen:
+
+- Nicht genutzte SUSE-Abonnements, die zur Verwendung in Azure berechtigt sind.
+- Mindestens ein aktives SUSE-Abonnement, das lokal verwendet und in Azure verschoben werden soll.
+- Erworbene Abonnements, die sie im SUSE Customer Center für die Verwendung in Azure aktiviert haben. 
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie das richtige Abonnement für die Verwendung in Azure auswählen.
+
 So beginnen Sie mit der Verwendung des Vorteils für SUSE:
 
-1. Registrieren Sie sich beim SUSE Public Cloud-Programm.
-1. Wenden Sie den Vorteil über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle auf Ihre neu erstellten oder vorhandenen VMs an.
-1. Registrieren Sie die virtuellen Computer, auf die der Vorteil angewendet wird, bei einer separaten Quelle für Updates.
+1. Registrieren Sie das Abonnement, das Sie von SUSE oder einem SUSE-Vertriebspartner erworben haben, im [SUSE Customer Center](https://scc.suse.com).
+2. Aktivieren Sie das Abonnement im SUSE Customer Center.
+3. Registrieren Sie Ihre VMs, die den Vorteil erhalten, beim SUSE Customer Center, um die Updates vom SUSE Customer Center zu erhalten.
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Aktivieren und Deaktivieren des Vorteils im Azure-Portal
 
-Sie können den Vorteil für vorhandene VMs aktivieren, indem Sie den Anweisungen unter der Option **Konfiguration** auf der linken Seite befolgen. Sie können den Vorteil auf neuen virtuellen Computern beim Erstellen des virtuellen Computers aktivieren.
+Im Azure-Portal können Sie den Vorteil für bestehende VMs aktivieren oder den Vorteil für neue VMs aktivieren, wenn Sie die VM erstellen.
 
-### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>Beispiel für das Aktivieren des Vorteils während der Erstellung einer VM über das Azure-Portal:
-1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
+### <a name="enable-the-benefit-for-an-existing-vm-in-the-azure-portal"></a>Aktivieren des Vorteils für eine vorhandene VM im Azure-Portal
+
+So aktivieren Sie den Vorteil für eine vorhandene VM
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
+1. Öffnen Sie die Seite der VM, auf die Sie die Konvertierung anwenden möchten.
+1. Navigieren Sie zur Option **Konfiguration** auf der linken Seite. Der Abschnitt „Lizenzierung“ wird angezeigt. Aktivieren Sie das Optionsfeld „Ja“ und das Kontrollkästchen zur Bestätigung, um die AHB-Konvertierung zu aktivieren.
+![Blatt für die AHB-Konfiguration nach dem Erstellen](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+### <a name="enable-the-benefit-when-you-create-the-vm-in-the-azure-portal"></a>Aktivieren des Vorteils beim Erstellen der VM im Azure-Portal
+
+So aktivieren Sie den Vorteil, wenn Sie die VM erstellen (der SUSE-Workflow ist derselbe wie das hier gezeigte RHEL-Beispiel):
+
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/).
 1. Navigieren Sie im Portal zur Seite „Virtuellen Computer erstellen“.
  ![Azure-Hybridvorteil beim Erstellen einer VM](./media/azure-hybrid-benefit/create-vm-ahb.png)
 1. Aktivieren Sie das Kontrollkästchen, um die AHB-Konvertierung zu aktivieren und Cloudzugriffslizenzen zu verwenden.
@@ -83,13 +104,6 @@ Sie können den Vorteil für vorhandene VMs aktivieren, indem Sie den Anweisunge
 1. Erstellen Sie anhand der folgenden Anweisungen eine VM.
 1. Überprüfen Sie auf dem Blatt **Konfiguration**, ob die Option aktiviert ist. 
 ![Blatt für die AHB-Konfiguration nach dem Erstellen](./media/azure-hybrid-benefit/create-configuration-blade.png)
-
-### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>Beispiel für das Aktivieren des Vorteils für eine vorhandene VM über das Azure-Portal:
-1. Öffnen Sie das [Microsoft Azure-Portal](https://portal.azure.com/).
-1. Öffnen Sie die Seite der VM, auf die Sie die Konvertierung anwenden möchten.
-1. Navigieren Sie zur Option **Konfiguration** auf der linken Seite. Der Abschnitt „Lizenzierung“ wird angezeigt. Aktivieren Sie das Optionsfeld „Ja“ und das Kontrollkästchen zur Bestätigung, um die AHB-Konvertierung zu aktivieren.
-![Blatt für die AHB-Konfiguration nach dem Erstellen](./media/azure-hybrid-benefit/create-configuration-blade.png)
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Aktivieren und Deaktivieren des Vorteils über die Azure-Befehlszeilenschnittstelle
 
@@ -172,11 +186,16 @@ Weitere Informationen zur Konformität von Red Hat-Abonnements, Softwareupdates 
 
 ### <a name="suse"></a>SUSE
 
+Kunden, die den Azure-Hybridvorteil verwenden, müssen die Infrastruktur für Cloudupdates auf eine der drei Optionen umstellen, die Softwareupdates und Patches für jene VMs bereitstellen:
+- [SUSE Customer Center](https://scc.suse.com)
+- SUSE Manager
+- SUSE Repository Mirroring Tool (RMT) 
+
 Wenn Sie den Azure-Hybridvorteil für Ihre SLES-VMs verwenden möchten oder wenn Sie Informationen zum Umstieg von der nutzungsbasierten Bezahlung für SLES auf BYOS oder umgekehrt benötigen, lesen Sie unter [SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/) (SUSE Linux Enterprise und der Azure-Hybridvorteil) nach. 
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>Azure-Hybridvorteil auf reservierten Instanzen 
 
-Mit Azure-Reservierungen (Azure Reserved Virtual Machine Instances) können Sie Geld sparen, indem Sie sich bei mehreren Produkten für Pläne mit einer Laufzeit von einem Jahr oder drei Jahren entscheiden. Hier können Sie [mehr über reservierte Instanzen](../../cost-management-billing/reservations/save-compute-costs-reservations.md) erfahren. Der Azure Hybridvorteil ist als Vorschau für die [reservierte VM-Instanz (RIs)](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation) verfügbar. 
+Mit Azure-Reservierungen (Azure Reserved Virtual Machine Instances) können Sie Geld sparen, indem Sie sich bei mehreren Produkten für Pläne mit einer Laufzeit von einem Jahr oder drei Jahren entscheiden. Hier können Sie [mehr über reservierte Instanzen](../../cost-management-billing/reservations/save-compute-costs-reservations.md) erfahren. Der Azure Hybridvorteil ist als Vorschau für die [reservierte VM-Instanz (RIs)](../../cost-management-billing/reservations/save-compute-costs-reservations.md#charges-covered-by-reservation) verfügbar. 
 
 Dies bedeutet Folgendes: Wenn Sie mithilfe von RI Computekosten zu einem reduzierten Preis erworben haben, können Sie zusätzlich auf die Lizenzkosten für RHEL und SUSE den AHB-Vorteil anwenden. Die Schritte zum Anwenden des AHB-Vorteils für eine RI-Instanz bleiben genau dieselben wie für eine reguläre VM.
 ![AHB für RIs](./media/azure-hybrid-benefit/reserved-instances.png)
@@ -198,13 +217,13 @@ A: Es kann eine Weile dauern, bis die Registrierung Ihres Red Hat Cloud Access-A
 
 A: Nein, das ist nicht möglich. Der Azure-Hybridvorteil unterstützt eine Konvertierung nur für Images mit nutzungsbasierter Bezahlung.
 
-*F: Ich habe ein eigenes RHEL-Image aus meinem lokalen System (über Azure Migrate, Azure Site Recovery oder eine andere Methode) in Azure hochgeladen. Kann ich die Abrechnung für diese Images von BYOS zur nutzungsbasierten Bezahlung ändern?*
+*F: Ich habe mein eigenes RHEL- oder SLES-Image aus meinem lokalen System (über Azure Migrate, Azure Site Recovery oder auf andere Weise) in Azure hochgeladen. Kann ich die Abrechnung für diese Images von BYOS auf die nutzungsbasierte Zahlung umstellen?*
 
 A: Nein, das ist nicht möglich. Der Azure-Hybridvorteil ist derzeit nur für RHEL- und SLES-Images in Azure Marketplace verfügbar. 
 
-*F: Ich habe ein eigenes RHEL-Image aus meinem lokalen System (über Azure Migrate, Azure Site Recovery oder eine andere Methode) in Azure hochgeladen. Muss ich bestimmte Schritte ausführen, um vom Azure-Hybridvorteil profitieren zu können?*
+*F: Ich habe mein eigenes RHEL- oder SLES-Image aus meinem lokalen System (über Azure Migrate, Azure Site Recovery oder auf andere Weise) in Azure hochgeladen. Muss ich bestimmte Maßnahmen ergreifen, um vom Azure-Hybridvorteil zu profitieren?*
 
-A: Nein, müssen Sie nicht. Die von Ihnen hochgeladenen RHEL-Images gelten bereits als BYOS, und Ihnen werden nur die Kosten für die Azure-Infrastruktur in Rechnung gestellt. Sie sind für die Kosten der RHEL-Abonnements genauso verantwortlich wie für Ihre lokalen Umgebungen. 
+A: Nein, müssen Sie nicht. Die von Ihnen hochgeladenen RHEL- oder SLES-Images gelten bereits als BYOS, und Ihnen werden nur die Kosten für die Azure-Infrastruktur in Rechnung gestellt. Sie sind für die Kosten der RHEL-Abonnements genauso verantwortlich wie für Ihre lokalen Umgebungen. 
 
 *F: Kann ich den Azure-Hybridvorteil auf VMs verwenden, die mithilfe von RHEL- und SLES-SAP-Images von Azure Marketplace bereitgestellt wurden?*
 

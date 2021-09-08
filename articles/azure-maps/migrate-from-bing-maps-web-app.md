@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Migrieren einer Web-App aus Bing Karten | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Web-App aus Bing Karten zu Microsoft Azure Maps migrieren.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 9/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 8726f6211ef792064e9e180a8c2e34383eeb6d53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: adec0b04e82d0a00b2f95b6b4f7980f628b93a7a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441570"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439630"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
@@ -909,7 +909,7 @@ In Azure Maps werden Daten aus einer Datenquelle hinzugefügt und verwaltet. Ebe
 
 Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppierte Datenpunkte zum Rendern an Ebenen. Die Datenquelle kann Hunderttausende von Datenpunkten gruppieren. Ein gruppierter Datenpunkt weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname               | type    | Beschreibung                                    |
+| Eigenschaftenname               | type    | BESCHREIBUNG                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Gibt an, ob das Feature einen Cluster darstellt.     |
 | `cluster_id`                | Zeichenfolge  | Eine eindeutige ID für den Cluster, die zusammen mit den `DataSource`-Klassen und den `getClusterExpansionZoom`-, `getClusterChildren`- und `getClusterLeaves`-Funktionen verwendet werden kann. |

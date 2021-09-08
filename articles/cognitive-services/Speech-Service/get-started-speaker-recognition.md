@@ -3,22 +3,22 @@ title: Schnellstart für die Sprechererkennung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit der Sprechererkennung aus dem Sprach-SDK die Frage „Wer spricht?“ beantworten können. In dieser Schnellstartanleitung erfahren Sie mehr über allgemeine Entwurfsmuster für die Arbeit mit Sprecherüberprüfung und -identifizierung, bei denen beide Sprachbiometrie verwenden, um eindeutige Stimmen zu erkennen.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/02/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-five
 keywords: Sprechererkennung, Sprachbiometrie
-ms.openlocfilehash: 10994721b0beab520d687d51a7e4b12b9fa75064
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 1f9690427a52aaf8025010ccbbc12899077c6b15
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066625"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543797"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Erste Schritte mit der Sprechererkennung
 

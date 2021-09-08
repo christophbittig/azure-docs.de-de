@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.devlang: dotnet
 ms.date: 04/15/2021
-ms.openlocfilehash: 60c177c913c78dbcfcbfe1d465044b69b0e6dd2e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 468c02d9384fb2c8a4723c179fde9a44be76dd50
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589758"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476284"
 ---
 # <a name="publish-messages-to-and-process-messages-from-azure-purviews-atlas-kafka-topics-via-event-hubs-using-net"></a>Veröffentlichen von Nachrichten in Atlas-Kafka-Themen von Azure Purview und Verarbeiten von Nachrichten aus diesen Themen über Event Hubs unter Verwendung von .NET 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der .NET-Bibliothek **Azure.Messaging.EventHubs** über Event Hub Ereignisse an Atlas-Kafka-Themen von Azure Purview senden bzw. von dort empfangen. 
@@ -65,7 +65,6 @@ Erstellen Sie im nächsten Schritt in Visual Studio eine C# .NET-Konsolenanwendu
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Producer
     ```    
-
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Schreiben von Code zum Senden von Nachrichten an den Event Hub
 

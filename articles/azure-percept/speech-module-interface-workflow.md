@@ -1,18 +1,18 @@
 ---
 title: Workflow für die Schnittstelle des Azure Percept-Sprachmoduls
 description: Beschreibt den Workflow und die verfügbaren Methoden für das Azure Percept-Sprachmodul.
-author: tsampige
-ms.author: amiyouss
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 7/19/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8dec6a6c4162225b4f5e9ddf3ce74b739fd39562
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 7ac6a2e02dacb63ebe36d6c16c7a39e370751033
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222834"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354871"
 ---
 # <a name="azure-percept-speech-module-interface-workflow"></a>Workflow für die Schnittstelle des Azure Percept-Sprachmoduls
 
