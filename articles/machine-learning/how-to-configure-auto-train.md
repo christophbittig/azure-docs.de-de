@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/11/2021
+ms.date: 07/01/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: dff2e9c0c1de1b92f0d00d5dc50aeb7dadca348f
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030897"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356299"
 ---
 # <a name="set-up-automl-training-with-python"></a>Einrichten von AutoML-Training mit Python
 
@@ -46,13 +46,15 @@ Für diesen Artikel ist Folgendes erforderlich:
     * Erstellen Sie eine Compute-Instanz, wodurch das SDK automatisch installiert und für ML-Workflows vorkonfiguriert wird. Weitere Informationen hierzu finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md). 
 
     * [Installieren Sie das Paket `automl` selbst](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment). Es enthält die [Standardinstallation](/python/api/overview/azure/ml/install#default-install) des SDK.
+
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
     
     > [!WARNING]
     > Python 3.8 ist nicht kompatibel mit `automl`. 
 
 ## <a name="select-your-experiment-type"></a>Auswählen der Experimentart
 
-Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Lernens Sie lösen möchten. Das automatisierte maschinelle Lernen unterstützt die Aufgabentypen `classification`, `regression` und `forecasting`. Weitere Informationen zu [Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)
+Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Lernens Sie lösen möchten. Das automatisierte maschinelle Lernen unterstützt die Aufgabentypen `classification`, `regression` und `forecasting`. Weitere Informationen zu [Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)
 
 Der folgende Code nutzt den Parameter `task` im Konstruktor `AutoMLConfig`, um den Experimenttyp `classification` anzugeben.
 
@@ -71,14 +73,14 @@ Anforderungen für das Trainieren von Daten beim maschinellen Lernen:
 - Die Daten müssen in Tabellenform vorliegen.
 - Der Wert, der vorhergesagt werden soll (Zielspalte), muss in den Daten vorhanden sein.
 
-**Für Remoteexperimente** müssen Trainingsdaten über die Remotecomputeressource zugänglich sein. AutoML akzeptiert nur [TabularDatasets von Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset), wenn Sie auf einer Remotecomputeressource arbeiten. 
+**Für Remoteexperimente** müssen Trainingsdaten über die Remotecomputeressource zugänglich sein. Automatisiertes ML akzeptiert nur [TabularDatasets von Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset), wenn Sie auf einer Remotecomputeressource arbeiten. 
 
 Azure Machine Learning-Datasets stellen Funktionen für folgende Zwecke bereit:
 
 * Einfacher Datentransfer von statischen Dateien oder URL-Quellen in Ihren Arbeitsbereich
 * Bereitstellen Ihrer Daten für Trainingsskripts bei Ausführung auf Cloudcomputeressourcen (Ein Beispiel für die Verwendung der `Dataset`-Klasse zum Einbinden von Daten in Ihr Remotecomputeziel finden Sie unter [Trainieren mit Datasets](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).)
 
-Mit dem folgenden Code wird ein TabularDataset-Element aus einer Web-URL erstellt. Codebeispiele zum Erstellen von Datasets aus anderen Quellen wie lokalen Dateien und Datenspeichern finden Sie unter [Erstellen eines TabularDatasets-Element](how-to-create-register-datasets.md#create-a-tabulardataset).
+Mit dem folgenden Code wird ein TabularDataset-Element aus einer Web-URL erstellt. Codebeispiele zum Erstellen von Datasets aus anderen Quellen wie lokalen Dateien und Datenspeichern finden Sie unter [Erstellen eines TabularDataset-Elements](how-to-create-register-datasets.md#create-a-tabulardataset).
 
 ```python
 from azureml.core.dataset import Dataset
@@ -108,6 +110,22 @@ Wenn Sie keinen `validation_data`- oder `n_cross_validation`-Parameter explizit 
 |**Kleiner&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Der Kreuzvalidierungsansatz wird angewendet. Die Standardanzahl der Faltungen (Folds) hängt von der Zeilenanzahl ab. <br> **Wenn das Dataset weniger als 1.000 Zeilen aufweist**, werden 10 Faltungen verwendet. <br> **Wenn die Anzahl der Zeilen zwischen 1.000 und 20.000 liegt**, werden drei Faltungen verwendet.
 
 Zu diesem Zeitpunkt müssen Sie Ihre eigenen **Testdaten** für die Modellauswertung angeben. Ein Codebeispiel, in dem Sie Ihre eigenen Testdaten für die Modellauswertung verwenden, finden Sie im Abschnitt **Testen** von [diesem Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb).
+
+### <a name="large-data"></a>Große Datenmengen 
+
+Automatisiertes ML unterstützt eine begrenzte Anzahl von Algorithmen für das Training mit großen Datenmengen, die erfolgreich Modelle für große Daten auf kleinen virtuellen Computern erstellen können. Heuristiken für automatisiertes ML hängen von Eigenschaften wie der Datengröße, der Arbeitsspeichergröße des virtuellen Computers, dem Timeout für Experimente und den Featurisierungseinstellungen ab, um festzustellen, ob diese Algorithmen für große Datenmengen angewendet werden sollten. [Erfahren Sie mehr darüber, welche Modelle beim automatisierten maschinellen Lernen unterstützt werden](#supported-models). 
+
+* Für die Regression sind dies [Online Gradient Descent Regressor](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) und [Fast Linear Regressor](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest) (Schneller linearer Regressor).
+
+* Für die Klassifizierung sind dies [Averaged Perceptron Classifier](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest) und [Linear SVM Classifier](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest). Dabei verfügt der „Linear SVM Classifier“ sowohl über Versionen für große Datenmengen als auch kleine Datenmengen.
+
+Wenn Sie diese Heuristiken außer Kraft setzen möchten, wenden Sie die folgenden Einstellungen an: 
+
+Aufgabe | Einstellung | Notizen
+|---|---|---
+Blockieren&nbsp;von Datenstreamingalgorithmen | `blocked_models` in Ihrem `AutoMLConfig`-Objekt und Auflisten der Modelle, die Sie nicht verwenden möchten. | Führt entweder zu einem Ausführungsfehler oder zu einer langen Laufzeit.
+Verwenden von Datenstreamingalgorithmen&nbsp;&nbsp;&nbsp;| `allowed_models` in Ihrem `AutoMLConfig`-Objekt und Auflisten der Modelle, die Sie verwenden möchten.| 
+Verwenden von Datenstreamingalgorithmen&nbsp;&nbsp;&nbsp; <br> [(Experimente mit der Studio-Benutzeroberfläche)](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)|Blockieren Sie alle Modelle außer den Big Data-Algorithmen, die Sie verwenden möchten. |
 
 ## <a name="compute-to-run-experiment"></a>Computeziel zum Ausführen des Experiments
 
@@ -204,6 +222,7 @@ Klassifizierung | Regression | Zeitreihe und Vorhersage
 ||| Average
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
+
 ### <a name="primary-metric"></a>Primäre Metrik
 Der Parameter `primary metric` bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, werden vom ausgewählten Tasktyp bestimmt. In der folgenden Tabelle werden gültige primäre Metriken für jeden Tasktyp aufgeführt.
 
@@ -213,14 +232,13 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 |Klassifizierung | Regression | Zeitreihe und Vorhersage
 |--|--|--
-|`accuracy`| `spearman_correlation` | `spearman_correlation`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
-|`average_precision_score_weighted` | `r2_score` | `r2_score`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
+|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | 
 |`precision_score_weighted` |
 
-### <a name="primary-metrics-for-classification-scenarios"></a>Primäre Metriken für Klassifizierungsszenarien 
-
+#### <a name="metrics-for-classification-scenarios"></a>Metriken für Klassifizierungsszenarien 
 Postschwellenwert-Metriken wie `accuracy`, `average_precision_score_weighted`, `norm_macro_recall`, und `precision_score_weighted` optimieren möglicherweise nicht so gut für Datensätze, die klein sind, sehr große Klassenschieflage (Klassenungleichgewicht) aufweisen oder wenn der erwartete metrische Wert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
 
 | Metrik | Beispiel eines Anwendungsfalls |
@@ -231,8 +249,8 @@ Postschwellenwert-Metriken wie `accuracy`, `average_precision_score_weighted`, `
 | `norm_macro_recall` | Vorhersage der Kundenabwanderung |
 | `precision_score_weighted` |  |
 
-### <a name="primary-metrics-for-regression-scenarios"></a>Primäre Metriken für Regressionsszenarien
-
+#### <a name="metrics-for-regression-scenarios"></a>Metriken für Regressionsszenarien
+ 
 Mit Metriken wie `r2_score` und `spearman_correlation` lässt sich die Qualität des Modells besser darstellen, wenn für den vorherzusagenden Wert eine Vielzahl von Größenordnungen verfügbar sind. Nehmen wir die Schätzung eines Gehalts als Beispiel: Viele Menschen verfügen über ein Gehalt zwischen 20.000 und 100.000 USD, es gibt jedoch auch Gehälter von rund 100 Millionen. 
 
 In diesem Fall würden `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` einen Vorhersagefehler im Bereich 20.000 USD bei einem Mitarbeiter mit 30.000 USD Jahresgehalt und einem Mitarbeiter mit 20 Millionen USD Jahresgehalt identisch behandeln. Tatsächlich ist ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Jahresgehalt von 20 Millionen USD jedoch sehr nah am eigentlichen Wert (eine geringe relative Differenz von 0,1 %), wohingegen ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Gehalt von 30.000 USD eine erhebliche Abweichung darstellt (eine große relative Differenz von 67 %). `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` sind nützlich, wenn die Größenordnung der vorherzusagenden Werte ähnlich ist.
@@ -244,14 +262,12 @@ In diesem Fall würden `normalized_mean_absolute_error` und `normalized_root_mea
 | `r2_score` | Verspätungen bei Fluggesellschaften, Gehaltsschätzung, erforderlicher Zeitaufwand bis zur Problemlösung |
 | `normalized_mean_absolute_error` |  |
 
-### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>Primäre Metriken für Szenarien zur Zeitreihenvorhersage
-
-Siehe Hinweise zur Regression oben.
+#### <a name="metrics-for-time-series-forecasting-scenarios"></a>Metriken für Szenarien zur Zeitreihenvorhersage
+Die Empfehlungen ähneln den Empfehlungen für Regressionsszenarien. 
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |
-| `spearman_correlation` | |
-| `normalized_root_mean_squared_error` | Preisvorhersage, Bestandoptimierung, Bedarfsvorhersage |
+| `normalized_root_mean_squared_error` | Preisvorhersage, Bestandoptimierung, Bedarfsvorhersage | 
 | `r2_score` | Preisvorhersage, Bestandoptimierung, Bedarfsvorhersage |
 | `normalized_mean_absolute_error` | |
 
@@ -353,6 +369,9 @@ After&nbsp;a&nbsp;length&nbsp;of&nbsp;time (Nach einem Zeitraum)| Verwenden Sie 
 A&nbsp;score&nbsp;has&nbsp;been&nbsp;reached (Eine Bewertung wurde erzielt)| Wenn Sie `experiment_exit_score` verwenden, wird das Experiment abgeschlossen, nachdem der angegebene primäre metrischer Bewertungswert erreicht wurde.
 
 ## <a name="run-experiment"></a>Ausführen des Experiments
+
+> [!WARNING]
+> Wenn Sie ein Experiment mit denselben Konfigurationseinstellungen und derselben primären Metrik mehrmals durchführen, werden Sie wahrscheinlich bei jedem Experiment eine Abweichung in der abschließenden metrischen Bewertung und in den generierten Modellen sehen. Die Algorithmen, die beim automatisierten maschinellen Lernen eingesetzt werden, weisen eine inhärente Zufälligkeit auf, die zu geringfügigen Abweichungen bei den im Experiment ausgegebenen Modellen und der abschließenden metrischen Bewertung eines empfohlenen Modells führen kann, z. B. bei der Genauigkeit. Sie werden wahrscheinlich auch Ergebnisse mit demselben Modellnamen, aber unterschiedlichen verwendeten Hyperparametern erhalten. 
 
 Für automatisierte ML-Experimente erstellen Sie ein `Experiment`-Objekt, wobei es sich um ein benanntes Objekt in einem `Workspace` handelt, das zur Ausführung von Experimenten verwendet wird.
 
@@ -492,8 +511,6 @@ best_run, model_from_aml = automl_run.get_output()
 print_model(model_from_aml)
 
 ```
-> [!NOTE]
-> Die Algorithmen, die beim automatisierten maschinellen Lernen eingesetzt werden, weisen eine inhärente Zufälligkeit auf, die zu geringfügigen Abweichungen in der abschließenden metrischen Bewertung eines empfohlenen Modells führen kann, z. B. bei der Genauigkeit. Automatisiertes maschinelles Lernen führt bei Bedarf auch Vorgänge an Daten wie Training-Test-Aufteilung, Training-Validierung-Aufteilung oder Kreuzvalidierung durch. Wenn Sie also ein Experiment mit denselben Konfigurationseinstellungen und derselben primären Metrik mehrmals durchführen, werden Sie aufgrund dieser Faktoren wahrscheinlich bei jedem Experiment eine Abweichung in der abschließenden metrischen Bewertung sehen. 
 
 ## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> Überwachen automatisierter Machine Learning-Ausführungen
 
@@ -519,14 +536,14 @@ Zum Registrieren eines Modells aus einer Ausführung für das automatisierte mas
 
 ```Python
 
-best_run, fitted_model = run.get_output()
+best_run = run.get_best_child()
 print(fitted_model.steps)
 
 model_name = best_run.properties['model_name']
 description = 'AutoML forecast example'
 tags = None
 
-model = remote_run.register_model(model_name = model_name, 
+model = run.register_model(model_name = model_name, 
                                   description = description, 
                                   tags = tags)
 ```
@@ -554,7 +571,5 @@ Allgemeine Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in 
 + Lernen Sie, [wie und wo Sie Modelle bereitstellen](how-to-deploy-and-where.md) können.
 
 + Weitere Informationen finden Sie unter [Trainieren eines Regressionsmodells mit automatisiertem Machine Learning](tutorial-auto-train-models.md).
-
-+ Hier erfahren Sie, wie Sie mehrere Modelle mit AutoML im [Many Models Solution Accelerator](https://aka.ms/many-models) trainieren.
 
 + [Behandeln Sie Probleme bei automatisierten ML-Experimenten.](how-to-troubleshoot-auto-ml.md) 

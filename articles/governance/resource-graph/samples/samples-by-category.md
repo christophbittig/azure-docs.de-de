@@ -1,15 +1,15 @@
 ---
 title: Liste der Azure Resource Graph-Beispielabfragen nach Kategorie
 description: Auflisten von Beispielabfragen für Azure Resource Graph. Zu den Kategorien zählen Tags, Azure Advisor, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: fe756f62dee2a576ddeff23955de800fb50fe46e
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: a16d52f0c780a73bebf9db3e764d76ea6394aff2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309560"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536264"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>Azure Resource Graph-Beispielabfragen nach Kategorie
 

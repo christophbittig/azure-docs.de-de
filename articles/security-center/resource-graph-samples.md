@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Security Center
 description: Hier finden Sie Azure Resource Graph-Beispielabfragen für Azure Security Center, mit denen die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf die zugehörigen Ressourcen und Eigenschaften von Azure Security Center veranschaulicht wird.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 4584e6e0f3dca77584a738bfbdf618807f2188a9
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 11955d140e8b0e6af219af1c62f1dfca54056749
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315972"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540305"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-security-center"></a>Azure Resource Graph-Beispielabfragen für Azure Security Center
 

@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355377"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
@@ -285,17 +285,14 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -418,17 +415,14 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```     
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
-
+    
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -442,17 +436,14 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     **öffentliche Azure-Regionen**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.

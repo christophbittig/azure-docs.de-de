@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Service Health
 description: Azure Resource Graph-Beispielabfragen für Azure Service Health, die die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf Azure Service Health in Zusammenhang mit den Ressourcen und Eigenschaften veranschaulichen.
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 380c2ab11a3cc8c27476365e747d8e7a5cd625e0
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 9d7e039ee1429f86fdb610eeea6bc6ffc40a81a9
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305521"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535503"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-service-health"></a>Azure Resource Graph-Beispielabfragen für Azure Service Health
 

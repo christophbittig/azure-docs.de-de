@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.author: mikben
-ms.openlocfilehash: 8e95261da4bd8f6082d567f90e17cf236b8fe7f1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 45123517d1f2a53a6bf023d1af6fafc528cde856
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560499"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339762"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -576,6 +576,84 @@ try! localRenderer!.createView(withOptions: CreateViewOptions(scalingMode: Scali
 // [Synchronous] dispose rendering view
 localRenderer.dispose()
 
+```
+
+## <a name="record-calls"></a>Aufzeichnen von Anrufen
+> [!WARNING]
+> Bis zur Version 1.1.0 und der Betaversion 1.1.0-beta.1 des ACS Calling iOS SDK wird `isRecordingActive` als Teil des `Call`-Objekts verwendet und `didChangeRecordingState` ist Teil des `CallDelegate`-Delegaten. Für die neuen Betaversionen wurden diese APIs als erweitertes Feature von `Call` verschoben, wie unten beschrieben.
+> [!NOTE]
+> Diese API wird als Vorschau für Entwickler bereitgestellt. Je nachdem, welches Feedback wir dazu erhalten, werden möglicherweise Änderungen vorgenommen. Verwenden Sie diese API nicht in einer Produktionsumgebung. Um diese API einzusetzen, verwenden Sie das Beta-Release des ACS Calling iOS SDK.
+
+Die Anrufaufzeichnung ist ein erweitertes Feature der zentralen `Call`-API. Sie müssen zunächst das API-Objekt der Aufzeichnungsfunktion abrufen:
+
+```swift
+let callRecordingFeature = call.api(RecordingFeature.self)
+```
+
+Um anschließend herauszufinden, ob der Anruf aufgezeichnet wird, prüfen Sie die Eigenschaft `isRecordingActive` von `callRecordingFeature`. Er gibt `Bool` zurück.
+
+```swift
+let isRecordingActive = callRecordingFeature.isRecordingActive;
+```
+
+Sie können die Aufzeichnung von Änderungen auch abonnieren, indem Sie den `RecordingFeatureDelegate`-Delegaten für Ihre Klasse mit dem Ereignis `didChangeRecordingState` implementieren:
+
+```swift
+callRecordingFeature.delegate = self
+
+// didChangeRecordingState is a member of RecordingFeatureDelegate
+public func recordingFeature(_ recordingFeature: RecordingFeature, didChangeRecordingState args: PropertyChangedEventArgs) {
+    let isRecordingActive = recordingFeature.isRecordingActive
+}
+```
+
+Wenn Sie die Aufzeichnung aus Ihrer Anwendung heraus starten möchten, folgen Sie bitte zunächst der [Übersicht über die Anrufaufzeichnung](../../../../concepts/voice-video-calling/call-recording.md), um die Schritte zur Einrichtung der Aufzeichnung von Anrufen zu erfahren.
+
+Sobald Sie die Anrufaufzeichnung auf Ihrem Server eingerichtet haben, müssen Sie von Ihrer iOS-Anwendung aus den `ServerCallId`-Wert des Anrufs abrufen und ihn dann an Ihren Server senden, um den Aufzeichnungsprozess zu starten. Der `ServerCallId`-Wert kann mithilfe von `getServerCallId()` der `CallInfo`-Klasse verwendet werden, die im Klassenobjekt mit `getInfo()` gefunden werden kann.
+
+```swift
+let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
+// Send serverCallId to your recording server to start the call recording.
+```
+
+Wenn die Aufzeichnung vom Server aus gestartet wird, wird das Ereignis `didChangeRecordingState` ausgelöst und der Wert von `recordingFeature.isRecordingActive` wird `true` sein.
+
+Genau wie beim Starten der Anrufaufzeichnung müssen Sie, wenn Sie die Aufzeichnung beenden möchten, die `ServerCallId` abrufen und an Ihren Aufzeichnungsserver senden, sodass dieser die Aufzeichnung beenden kann.
+
+```swift
+let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
+// Send serverCallId to your recording server to stop the call recording.
+```
+
+Wenn die Aufzeichnung vom Server aus beendet wird, wird das Ereignis `didChangeRecordingState` ausgelöst und der Wert von `recordingFeature.isRecordingActive` wird `false` sein.
+
+## <a name="call-transcription"></a>Anruftranskription
+> [!WARNING]
+> Bis zur Version 1.1.0 und der Betaversion 1.1.0-beta.1 des ACS Calling iOS SDK wird `isTranscriptionActive` als Teil des `Call`-Objekts verwendet und `didChangeTranscriptionState` ist Teil des `CallDelegate`-Delegaten. Für die neuen Betaversionen wurden diese APIs als erweitertes Feature von `Call` verschoben, wie unten beschrieben.
+> [!NOTE]
+> Diese API wird als Vorschau für Entwickler bereitgestellt. Je nachdem, welches Feedback wir dazu erhalten, werden möglicherweise Änderungen vorgenommen. Verwenden Sie diese API nicht in einer Produktionsumgebung. Um diese API einzusetzen, verwenden Sie das Beta-Release des ACS Calling iOS SDK.
+
+Die Anruftranskription ist ein erweitertes Feature der zentralen `Call`-API. Sie müssen zunächst das API-Objekt des Transkriptionsfeatures abrufen:
+
+```swift
+let callTranscriptionFeature = call.api(TranscriptionFeature.self)
+```
+
+Um anschließend herauszufinden, ob der Anruf transkribiert wird, prüfen Sie die Eigenschaft `isTranscriptionActive` von `callTranscriptionFeature`. Er gibt `Bool` zurück.
+
+```swift
+let isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive;
+```
+
+Sie können die Transkriptionsänderungen auch abonnieren, indem Sie den `TranscriptionFeatureDelegate`-Delegaten für Ihre Klasse mit dem Ereignis `didChangeTranscriptionState` implementieren:
+
+```swift
+callTranscriptionFeature.delegate = self
+
+// didChangeTranscriptionState is a member of TranscriptionFeatureDelegate
+public func transcriptionFeature(_ transcriptionFeature: TranscriptionFeature, didChangeTranscriptionState args: PropertyChangedEventArgs) {
+    let isTranscriptionActive = transcriptionFeature.isTranscriptionActive
+}
 ```
 
 ## <a name="subscribe-to-notifications"></a>Abonnieren von Benachrichtigungen

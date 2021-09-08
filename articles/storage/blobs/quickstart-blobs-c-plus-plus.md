@@ -7,12 +7,12 @@ ms.date: 06/21/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5b961145b065f2ce63497b32d4ba533dda04c68f
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 34a232990f037e72cee97c6f185b567056cc394e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894267"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470596"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für C++
 
@@ -31,8 +31,6 @@ Ressourcen:
 - [API-Referenzdokumentation](https://azure.github.io/azure-sdk-for-cpp/storage.html)
 - [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)
 - [Beispiele](../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

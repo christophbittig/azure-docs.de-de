@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Migrieren von Bing Karten zu Azure Maps | Microsoft Azure Maps'
 description: Hier finden Sie ein Tutorial zum Migrieren von Bing Karten zu Microsoft Azure Maps. In diesem Leitfaden wird die Umstellung auf Azure Maps-APIs und SDKs erläutert.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 074a21174798b53ee10c27e620d6227d1aacec98
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786560"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429692"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Tutorial: Migrieren von Bing Karten zu Azure Maps
 
