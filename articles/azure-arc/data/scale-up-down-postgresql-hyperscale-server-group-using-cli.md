@@ -1,24 +1,22 @@
 ---
-title: Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
-description: Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
+title: Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der Befehlszeilenschnittstelle (az oder kubectl)
+description: Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der Befehlszeilenschnittstelle (az oder kubectl)
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 490eaaef7e4e8569e4422b2ef2659ced583f7ff2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8b2b64de8dd16e36b6956c289beda986d89a5c98
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407397"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339391"
 ---
-# <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Zentrales Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der CLI (azdata oder kubectl)
-
-
+# <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-az-or-kubectl"></a>Hoch- und Herunterskalieren einer Azure Database for PostgreSQL Hyperscale-Servergruppe mithilfe der Befehlszeilenschnittstelle (az oder kubectl)
 
 Es kann vorkommen, dass Sie die Merkmale oder die Definition einer Servergruppe ändern müssen. Zum Beispiel:
 
@@ -35,10 +33,10 @@ Wenn Sie die Einstellungen der virtuellen Kerne oder des Arbeitsspeichers der Se
 
 Führen Sie einen der folgenden Befehle aus, um die aktuelle Definition der Servergruppe und die aktuellen Einstellungen für virtuelle Kerne und den Arbeitsspeicher anzuzeigen:
 
-### <a name="cli-with-azdata"></a>CLI mit azdata
+### <a name="cli-with-azure-cli-az"></a>CLI mit Azure-Befehlszeilenschnittstelle (az)
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="cli-with-kubectl"></a>CLI mit kubectl
 
@@ -107,32 +105,29 @@ Wie geben Sie an, für welche Rolle eine Einstellung gilt?
 
 **Die allgemeine Syntax sieht wie folgt aus:**
 
-```console
-azdata arc postgres server edit -n <servergroup name> --memory-limit/memory-request/cores-request/cores-limit <coordinator=val1,worker=val2>
+```azurecli
+az postgres arc-server edit -n <servergroup name> --memory-limit/memory-request/cores-request/cores-limit <coordinator=val1,worker=val2> --k8s-namespace <namespace> --use-k8s
 ```
 
 Der Wert, den Sie für die Arbeitsspeichereinstellung angeben, ist eine Zahl gefolgt von einer Volumeneinheit. Um beispielsweise 1 GB anzugeben, geben Sie „1024Mi“ oder „1Gi“ an.
 Um eine Anzahl von Kernen anzugeben, übergeben Sie einfach eine Zahl ohne Einheit. 
 
-### <a name="examples-using-the-azdata-cli"></a>Beispiele für die Verwendung von azdata an der Befehlszeilenschnittstelle
-
-
-
-
+### <a name="examples-using-the-azure-cli"></a>Beispiele für die Verwendung der Azure-Befehlszeilenschnittstelle
 
 **Konfigurieren Sie die Koordinatorrolle so, dass sie höchstens zwei Kerne verwendet, und die Workerrolle so, dass sie höchstens vier Kerne verwendet:**
-```console
- azdata arc postgres server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2
- azdata arc postgres server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4
+
+```azurecli
+ az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace <namespace> --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace <namespace> --use-k8s
 ```
 
 oder
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace <namespace> --use-k8s
 ```
 
 > [!NOTE]
-> Weitere Informationen zu diesen Parametern erhalten Sie, wenn Sie `azdata arc postgres server edit --help` ausführen.
+> Weitere Informationen zu diesen Parametern erhalten Sie, wenn Sie `az postgres arc-server edit --help` ausführen.
 
 ### <a name="example-using-kubernetes-native-tools-like-kubectl"></a>Beispiel für die Verwendung nativer Kubernetes-Tools wie `kubectl`
 
@@ -190,14 +185,14 @@ Wenn Sie mit dem `vi`-Editor nicht vertraut sind, finden Sie [hier](https://www.
 ## <a name="reset-to-default-values"></a>Zurücksetzen auf Standardwerte
 Zum Zurücksetzen der Parameter für Kerne/Arbeitsspeichergrenzwerte/Anforderungen auf ihre Standardwerte bearbeiten Sie sie und übergeben eine leere Zeichenfolge anstelle eines tatsächlichen Werts. Wenn Sie beispielsweise den Parameter für den Kerngrenzwert zurücksetzen möchten, führen Sie die folgenden Befehle aus:
 
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker=''
-azdata arc postgres server edit -n postgres01 --cores-limit coordinator='',worker=''
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
 ```
 
 oder 
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker=''
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

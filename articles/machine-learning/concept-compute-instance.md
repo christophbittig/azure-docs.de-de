@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: 966b471efc7fcadbb4207fe94bb11e5333bfb0a0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: bba8329075ecb47d367fc04afa1f2df0b4fcf721
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346870"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -28,6 +28,11 @@ Verwenden Sie für das Modelltraining in Produktionsqualität einen [Azure Machi
 
 Damit die Jupyter-Funktionen für Computeinstanzen eingesetzt werden können, stellen Sie sicher, dass die Websocketkommunikation nicht deaktiviert ist. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt.
 
+> [!IMPORTANT]
+> Die in diesem Artikel markierten Elemente (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="why-use-a-compute-instance"></a>Gründe für eine Compute-Instanz
 
 Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstation, die für Ihre Machine Learning-Entwicklungsumgebung optimiert ist. Ihnen bieten sich folgende Vorteile:
@@ -39,16 +44,12 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
 
-Sie können selbst eine [Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create) oder ein Administrator kann eine **[Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** .
-
-Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
+* Die Compute-Instanz ist ähnlich Computeclustern ebenfalls ein sicheres Computeziel, es handelt sich aber um einen einzelnen Knoten.
+* Sie können selbst eine [Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create) oder ein Administrator kann eine **[Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** .
+* Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
+* Um Kosten zu sparen, **[erstellen Sie einen Zeitplan (Vorschau)](how-to-create-manage-compute-instance.md#schedule)** , um die Compute-Instanz (Vorschau) automatisch zu starten und zu beenden.
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
-
-> [!IMPORTANT]
-> Die in diesem Artikel markierten Elemente (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
-> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Eine Azure Machine Learning-Compute-Instanz ermöglicht Ihnen das Erstellen, Trainieren und Bereitstellen von Modellen in einer vollständig integrierten Notebookumgebung in Ihrem Arbeitsbereich.
 
@@ -73,7 +74,6 @@ Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installie
 |----|:----:|
 |RStudio Server Open Source Edition (Vorschauversion)||
 |R-Kernel||
-|Azure Machine Learning SDK für R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-Beispiele|
 
 |**PYTHON**-Tools und Umgebungen|Details|
 |----|----|
@@ -85,7 +85,7 @@ Die folgenden Tools und Umgebungen sind in der Compute-Instanz bereits installie
 |Conda-Pakete|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep Learning-Pakete|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX-Pakete|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
-|Python- und R-SDK-Beispiele für Azure Machine Learning||
+|Python-Beispiele für Azure Machine Learning||
 
 Python-Pakete sind alle in der **Python 3.8 – AzureML**-Umgebung installiert. Die Compute-Instanz verfügt über Ubuntu 18.04 als Basisbetriebssystem.
 
@@ -101,15 +101,7 @@ Sie können auch die neuesten Azure Machine Learning-Beispiele in Ihren Ordner i
 
 Das Schreiben kleiner Dateien kann auf Netzlaufwerken langsamer sein als das Schreiben auf den lokalen Datenträger der Compute-Instanz selbst.  Wenn Sie viele kleine Dateien schreiben, sollten Sie versuchen, ein Verzeichnis direkt auf der Compute-Instanz zu verwenden, z. B. ein `/tmp`-Verzeichnis. Beachten Sie, dass auf diese Dateien von anderen Compute-Instanzen nicht zugegriffen werden kann.
 
-Speichern Sie keine Trainingsdaten auf der Notebook-Dateifreigabe. Sie können das Verzeichnis `/tmp` auf der Compute-Instanz für Ihre temporären Daten verwenden.  Schreiben Sie jedoch keine sehr großen Dateien mit Daten auf den Betriebssystemdatenträger der Compute-Instanz. Der Betriebssystemdatenträger der Compute-Instanz verfügt über eine Kapazität von 128 GB. Sie können temporäre Trainingsdaten auch auf einem temporären Datenträger speichern, der auf /mnt eingebunden ist. Die temporäre Datenträgergröße kann basierend auf der gewählten VM-Größe konfiguriert werden und kann größere Datenmengen speichern, wenn eine VM mit höherer Größe ausgewählt wird. Sie können auch [Datenspeicher und Datasets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) einbinden.
-
-## <a name="managing-a-compute-instance"></a>Verwalten einer Compute-Instanz
-
-Wählen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio **Compute** aus, und wählen sie dann oben **Compute-Instanz** aus.
-
-![Verwalten einer Compute-Instanz](./media/concept-compute-instance/manage-compute-instance.png)
-
-Weitere Informationen zum Verwalten der Compute-Instanz finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md).
+Speichern Sie keine Trainingsdaten auf der Notebook-Dateifreigabe. Sie können das Verzeichnis `/tmp` auf der Compute-Instanz für Ihre temporären Daten verwenden.  Schreiben Sie jedoch keine sehr großen Dateien mit Daten auf den Betriebssystemdatenträger der Compute-Instanz. Der Betriebssystemdatenträger der Compute-Instanz verfügt über eine Kapazität von 128 GB. Sie können temporäre Trainingsdaten auch auf einem temporären Datenträger speichern, der auf /mnt eingebunden ist. Die temporäre Datenträgergröße kann basierend auf der gewählten VM-Größe konfiguriert werden und kann größere Datenmengen speichern, wenn eine VM mit höherer Größe ausgewählt wird. Sie können auch [Datenspeicher und Datasets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) einbinden. Alle Softwarepakete, die Sie installieren, werden auf dem Betriebssystemdatenträger der Compute-Instanz gespeichert. Beachten Sie, dass die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Betriebssystemdatenträger derzeit nicht unterstützt wird. Der Betriebssystemdatenträger für die Compute-Instanz wird mit von Microsoft verwalteten Schlüsseln verschlüsselt. 
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Erstellen einer Compute-Instanz
 
@@ -117,7 +109,7 @@ Als Administrator können Sie eine **[Compute-Instanz für andere Benutzer im Ar
 
 Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
 
-[Erstellen Sie für eine neue Compute-Instanz](how-to-create-attach-compute-studio.md#compute-instance) in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
+[Erstellen Sie für eine neue Compute-Instanz](how-to-create-manage-compute-instance.md?tabs=azure-studio#create) in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
 
 Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-train-models-with-aml.md#azure) erstellen.

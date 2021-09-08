@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/06/2020
+ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: fbe9c1585ab2eee6e0d38c309a2d1d279ffab0b4
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 8f74b21e2c40b441c48cc3a2837f396252408224
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346512"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -29,10 +29,14 @@ In diesem Artikel erfahren Sie, wie Sie Computeziele in Azure Machine Learning S
   * [Weitere Berechnungsressourcen](how-to-attach-compute-targets.md)
 * [VS Code-Erweiterung](how-to-manage-resources-vscode.md#compute-clusters) für Azure Machine Learning
 
+> [!IMPORTANT]
+> Die in diesem Artikel markierten Elemente (Vorschau) sind aktuell als öffentliche Vorschau verfügbar.
+> Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
 ## <a name="whats-a-compute-target"></a>Was ist ein Computeziel? 
@@ -51,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um alle Computeziele für Ihren Arbeitsb
 
     :::image type="content" source="media/how-to-create-attach-studio/view-compute-targets.png" alt-text="Anzeigen der Liste mit Computezielen":::
 
-## <a name="create-compute-target"></a><a id="portal-create"></a>Erstellen eines Computeziels
+## <a name="start-creation-process"></a><a id="portal-create"></a>Starten des Erstellungsprozesses
 
 Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus. Führen Sie dann die folgenden Schritte aus, um ein Computeziel zu erstellen:
 
@@ -68,10 +72,10 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
 1. Füllen Sie das Formular für Ihren Computetyp aus:
 
-  * [Compute-Instanz](#compute-instance)
-  * [Computecluster](#amlcompute)
-  * [Rückschlusscluster](#inference-clusters)
-  * [Angefügte Computeressourcen](#attached-compute)
+    * [Compute-Instanz](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)
+    * [Computecluster](#amlcompute)
+    * [Rückschlusscluster](#inference-clusters)
+    * [Angefügte Computeressourcen](#attached-compute)
 
 1. Klicken Sie auf __Erstellen__.
 
@@ -79,48 +83,50 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Anzeigen des Computestatus in einer Liste":::
 
-
-### <a name="compute-instance"></a><a name="compute-instance"></a> Compute-Instanz
-
-Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um die Compute-Instanz zu erstellen.  Füllen Sie das Formular anschließend wie folgt aus:
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Erstellen einer neuen Compute-Instanz":::
+Befolgen Sie die Schritte in [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md?tabs=azure-studio#create).
 
 
-|Feld  |BESCHREIBUNG  |
-|---------|---------|
-|Computename     |  <li>Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.</li><li>Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen **-** .</li><li>Der Name muss mit einem Buchstaben beginnen.</li><li>Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.</li><li>Wenn ein **-** -Zeichen verwendet wird, muss darauf im Namen mindestens ein Buchstabe folgen.</li>     |
-|Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
-|Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
-|Aktivieren/Deaktivieren des SSH-Zugriffs     |   Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach der Erstellung nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.   |
-|Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.  Verwenden Sie außerdem erweiterte Einstellungen, um ein [Setupskript](how-to-create-manage-compute-instance.md#setup-script) anzugeben. |
-
-### <a name="compute-clusters"></a><a name="amlcompute"></a> Computecluster
+## <a name="create-compute-clusters"></a><a name="amlcompute"></a> Erstellen von Computeclustern
 
 Erstellen Sie einen Computecluster mit einem oder mehreren Knoten für Ihre Workloads in den Bereichen Training, Batchrückschlüsse und vertiefendes Lernen. Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um den Computecluster zu erstellen.  Füllen Sie das Formular anschließend wie folgt aus:
 
+|Feld  |BESCHREIBUNG  |
+|---------|---------|
+| Standort | Die Azure-Region, in der der Computecluster erstellt wird. Standardmäßig ist dies derselbe Standort wie für den Arbeitsbereich. Das Festlegen des Standorts auf eine andere Region als für den Arbeitsbereich befindet sich in der __Vorschau__ und ist nur für __Computecluster__, nicht für Compute-Instanzen verfügbar.</br>Wenn Sie eine andere Region als für Ihren Arbeitsbereich oder Ihre Datenspeicher nutzen, können erhöhte Netzwerklatenz und Datenübertragungskosten die Folge sein. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen. |
+|Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
+|VM-Priorität | Wählen Sie **Dediziert** oder **Mit niedriger Priorität** aus.  Virtuelle Computer mit niedriger Priorität sind kostengünstiger, bieten jedoch keine garantierten Computeknoten. Ihr Auftrag wird unter Umständen vorzeitig entfernt.
+|Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
+
+Wählen Sie **Weiter** aus, um mit **Erweiterte Einstellungen** fortzufahren, und füllen Sie das Formular wie folgt aus:
 
 |Feld  |BESCHREIBUNG  |
 |---------|---------|
 |Computename     |  <li>Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.</li><li>Gültige Zeichen sind Groß- und Kleinbuchstaben, Ziffern und das Zeichen **-** .</li><li>Der Name muss mit einem Buchstaben beginnen.</li><li>Der Name muss auf allen vorhandenen Compute-Instanzen innerhalb einer Azure-Region eindeutig sein. Sie erhalten eine Warnung, wenn der von Ihnen gewählte Name nicht eindeutig ist.</li><li>Wenn ein **-** -Zeichen verwendet wird, muss darauf im Namen mindestens ein Buchstabe folgen.</li>     |
-|Typ des virtuellen Computers |  Wählen Sie CPU oder GPU aus. Dieser Typ kann nach der Erstellung nicht mehr geändert werden.     |
-|VM-Priorität | Wählen Sie **Dediziert** oder **Mit niedriger Priorität** aus.  Virtuelle Computer mit niedriger Priorität sind kostengünstiger, bieten jedoch keine garantierten Computeknoten. Ihr Auftrag wird unter Umständen vorzeitig entfernt.
-|Größe des virtuellen Computers     |  Die Größe der unterstützten virtuellen Computer kann in Ihrer Region eingeschränkt sein. Überprüfen Sie die [Verfügbarkeitsliste](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).     |
 |Mindestanzahl von Knoten | Mindestanzahl von Knoten, die Sie bereitstellen möchten. Wenn Sie eine dedizierte Anzahl von Knoten verwenden möchten, legen Sie diese Anzahl hier fest. Sparen Sie Geld, indem Sie die Mindestanzahl auf 0 festlegen, sodass Sie für keine Knoten bezahlen, wenn sich der Cluster im Leerlauf befindet. |
 |Maximale Knotenanzahl | Maximale Anzahl von Knoten, die Sie bereitstellen möchten. Beim Übermitteln eines Auftrags wird die Computeressource automatisch auf den Höchstwert dieser Knotenanzahl skaliert. |
+| Leerlauf in Sekunden vor dem Herunterskalieren | Leerlaufzeit, bevor der Cluster auf die Mindestknotenanzahl herunterskaliert wird. |
+| Aktivieren des SSH-Zugriffs | Befolgen Sie dieselben Anweisungen wie bei [Aktivieren des SSH-Zugriffs](#enable-ssh) für eine Compute-Instanz (oben). |
 |Erweiterte Einstellungen     |  Optional. Konfigurieren Sie ein virtuelles Netzwerk. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET.   Fügen Sie außerdem [verwaltete Identitäten](#managed-identity) an, um Zugriff auf Ressourcen zu gewähren.     |
 
-#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Einrichten einer verwalteten Identität
+### <a name="enable-ssh-access"></a><a name="enable-ssh"></a> Aktivieren des SSH-Zugriffs
+
+Der SSH-Zugriff ist standardmäßig deaktiviert.  Der SSH-Zugriff kann nach dem Erstellen nicht mehr geändert werden. Stellen Sie sicher, dass Sie den Zugriff aktivieren, wenn Sie das interaktive Debuggen mit [VS Code Remote](how-to-set-up-vs-code-remote.md) planen.  
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
+
+Sobald der Computecluster erstellt ist und ausgeführt wird, finden Sie weitere Informationen unter [Herstellen einer Verbindung mit SSH-Zugriff](#ssh-access).
+
+### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Einrichten einer verwalteten Identität
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
 Schalten Sie beim Erstellen von Clustern oder beim Bearbeiten von Computeclusterdetails unter **Erweiterte Einstellungen** die Option **Verwaltete Identität zuweisen** um, und geben Sie eine systemseitig oder eine benutzerseitig zugewiesene Identität an.
 
-#### <a name="managed-identity-usage"></a>Nutzung von verwalteten Identitäten
+### <a name="managed-identity-usage"></a>Nutzung von verwalteten Identitäten
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
-### <a name="inference-clusters"></a>Rückschlusscluster
+## <a name="create-inference-clusters"></a><a name="inference-clusters"></a> Erstellen von Rückschlussclustern
 
 > [!IMPORTANT]
 > Für die Verwendung des Azure Kubernetes Service mit Azure Machine Learning gibt es mehrere Konfigurationsoptionen. In bestimmten Szenarien wie Netzwerken ist eine zusätzliche Einrichtung und Konfiguration erforderlich. Weitere Informationen zum Verwenden von AKS mit Azure Machine Learning finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
@@ -139,7 +145,7 @@ Sie können einen AKS-Cluster (Azure Kubernetes Service) für umfangreiche Rück
 | Netzwerkkonfiguration | Wählen Sie **Erweitert** aus, um die Computeressource in einem vorhandenen virtuellen Netzwerk zu erstellen. Weitere Informationen zu AKS in einem virtuellen Netzwerk finden Sie unter [Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken](./how-to-secure-inferencing-vnet.md). |
 | Enable SSL configuration (SSL-Konfiguration aktivieren) | Hiermit konfigurieren Sie das SSL-Zertifikat für das Computing. |
 
-### <a name="attached-compute"></a>Angefügte Computeressourcen
+## <a name="attach-other-compute"></a><a name="attached-compute"></a> Anfügen anderer Computeressourcen
 
 Um Computeziele zu verwenden, die außerhalb des Azure Machine Learning-Arbeitsbereichs erstellt wurde, müssen Sie sie anfügen. Durch das Anfügen eines Computeziels wird es Ihrem Arbeitsbereich zur Verfügung gestellt.  Verwenden Sie **Angefügte Computeressourcen**, um ein Computeziel für **Training** anzufügen.  Verwenden Sie **Rückschlusscluster**, um einen AKS-Cluster für **Rückschlüsse** anzufügen.
 
@@ -151,6 +157,7 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um eine Compu
     * Azure Databricks (zur Verwendung in Machine Learning-Pipelines)
     * Azure Data Lake Analytics (zur Verwendung in Machine Learning-Pipelines)
     * Azure HDInsight
+    * Kubernetes (Vorschau)
 
 1. Füllen Sie das Formular aus, und geben Sie Werte für die Pflichteigenschaften an.
 
@@ -160,8 +167,43 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um eine Compu
     > * [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md)
     > * [Verwenden von SSH-Schlüsseln mit Windows in Azure](../virtual-machines/linux/ssh-from-windows.md)
 
-1. Wählen Sie __Anfügen__ aus. 
+1. Wählen Sie __Anfügen__ aus.
 
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+> [!IMPORTANT]
+> Um einen Azure Kubernetes Services- (AKS) oder Kubernetes-Cluster mit Arc-Unterstützung anzufügen, müssen Sie Besitzer des Abonnements sein oder über die Berechtigung verfügen, auf AKS-Clusterressourcen unter dem Abonnement zuzugreifen. Andernfalls ist die Clusterliste auf der Seite „Neue Computeressource anfügen“ leer.
+
+Führen Sie die folgenden Schritte aus, um Ihre Computeressourcen zu trennen:
+
+1. Wählen Sie in Azure Machine Learning Studio die Optionen __Compute__, __Angefügte Computeressourcen__ und die Computeressource aus, die Sie entfernen möchten.
+1. Verwenden Sie den Link __Trennen__, um Ihre Computeressource zu trennen.
+
+## <a name="connect-with-ssh-access"></a><a name="ssh-access"></a> Herstellen einer Verbindung mit SSH-Zugriff
+
+Wenn Sie Ihre Compute-Instanz oder Ihren Computecluster mit aktiviertem SSH-Zugriff erstellt haben, verwenden Sie diese Schritte für den Zugriff.
+
+1. Suchen Sie die Computeressourcen in Ihren Arbeitsbereichsressourcen:
+    1. Wählen Sie links **Compute** aus.
+    1. Verwenden Sie die Registerkarten oben, um **Compute-Instanz** oder **Computecluster** für die Suche nach Ihrem Computer auszuwählen.
+1. Wählen Sie den Namen der Computeressource in der Liste der Ressourcen aus.
+1. Suchen Sie die Verbindungszeichenfolge:
+
+    * Wählen Sie für eine **Compute-Instanz** die Option **Verbinden** am oberen Rand des Abschnitts **Details** aus.
+
+        :::image type="content" source="media/how-to-create-attach-studio/details.png" alt-text="Screenshot: Tool „Verbinden“ oben auf der Seite „Details“":::
+
+    * Wählen Sie für einen **Compute-Cluster** oben die Option **Knoten** und dann in der Tabelle die **Verbindungszeichenfolge** für Ihren Knoten aus.
+        :::image type="content" source="media/how-to-create-attach-studio/compute-nodes.png" alt-text="Screenshot: Verbindungszeichenfolge für einen Knoten in einem Computecluster":::
+
+1. Kopieren Sie die Verbindungszeichenfolge.
+1. Unter Windows öffnen Sie PowerShell oder eine Eingabeaufforderung:
+    1. Wechseln Sie in das Verzeichnis oder den Ordner, in dem Ihr Schlüssel gespeichert ist.
+    1. Fügen Sie der Verbindungszeichenfolge das Flag „-i“ hinzu, um den privaten Schlüssel zu finden und auf seinen Speicherort zu verweisen:
+    
+        ```ssh -i <keyname.pem> azureuser@... (rest of connection string)```
+
+1. Führen Sie für Linux-Benutzer die Schritte unter [Erstellen und Verwenden eines SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure](../virtual-machines/linux/mac-create-ssh-keys.md) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

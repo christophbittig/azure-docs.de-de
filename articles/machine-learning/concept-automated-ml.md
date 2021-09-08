@@ -1,40 +1,88 @@
 ---
 title: Was ist automatisiertes maschinelles Lernen? AutoML
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Azure Machine Learning automatisch mithilfe der bereitgestellten Parameter und Kriterien ein Modell generieren kann.
+description: Erfahren Sie, wie Azure Machine Learning mithilfe des automatisierten maschinellen Lernens und von Ihnen bereitgestellter Parameter und Kriterien ein Modell generieren kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
-ms.date: 10/27/2020
+ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: a45d3a9be8c4741b0d9a1df615a70b9d7e88415f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 33fa0218a81d57ae6d33578cd08917bfd2055770
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094598"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690772"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
-Automatisiertes maschinelles Lernen, auch als automatisiertes ML oder AutoML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes maschinelles Lernen in Azure Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://www.microsoft.com/research/project/automl/).
+Automatisiertes maschinelles Lernen, auch als automatisiertes ML oder AutoML bezeichnet, ist der Prozess der Automatisierung von zeitaufwändigen, iterativen Aufgaben bei der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes maschinelles Lernen in Azure Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://www.microsoft.com/research/project/automl/).
 
 Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Mit automatisiertem maschinellem Lernen verkürzen Sie die Zeit, die benötigt wird, um produktionsbereite ML-Modelle mit großer Leichtigkeit und Effizienz zu erhalten.
 
-## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
+## <a name="ways-to-use-automl-in-azure-machine-learning"></a>Möglichkeiten zur Verwendung des automatisierten maschinellen Lernens in Azure Machine Learning
 
-Azure Machine Learning bietet zwei Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen:
+Azure Machine Learning bietet die folgenden beiden Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen. In den folgenden Abschnitten finden Sie Informationen zur [Featureverfügbarkeit bei beiden Verfahren](#parity).
 
-* Für Kunden mit Codierungserfahrung, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro).  Erste Schritte mit dem [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md).
+* Für Kunden mit Programmiererfahrung: [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro).  Erste Schritte mit dem [Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md).
 
-* Für Kunden mit begrenzten oder keinen Codierungserfahrungen, Azure Machine Learning Studio unter [https://ml.azure.com](https://ml.azure.com/).  Erste Schritte mit folgenden Tutorials:
+* Für Kunden mit begrenzten oder keinen Programmiererfahrungen: Azure Machine Learning Studio unter [https://ml.azure.com](https://ml.azure.com/).  Erste Schritte mit folgenden Tutorials:
     * [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
     *  [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md)
 
+<a name="parity"></a>
 
-## <a name="when-to-use-automl-classify-regression--forecast"></a>Verwendung von AutoML: Klassifizieren, Regression und Prognose
+## <a name="automl-settings-and-configuration"></a>Einstellungen und Konfiguration für automatisiertes maschinelles Lernen
+
+### <a name="experiment-settings"></a>Einstellungen für das Experiment 
+
+Mit den folgenden Einstellungen können Sie Ihr Experiment für automatisiertes maschinelles Lernen konfigurieren. 
+
+| |Python SDK|Die Studioweboberfläche|
+----|:----:|:----:
+|**Aufteilen der Daten in Trainings-/Validierungssätze**| ✓|✓
+|**Unterstützt Aufgaben für maschinelles Lernen: Klassifizierung, Regression und Vorhersage**| ✓| ✓
+|**Optimiert auf Grundlage der primären Metrik**| ✓| ✓
+|**Unterstützt Azure ML-Compute als Computeziel** | ✓|✓
+|**Konfigurieren des Vorhersagehorizonts, der Zielverzögerungen und des rollierenden Fensters**|✓|✓
+|**Festlegen der Beendigungskriterien** |✓|✓ 
+|**Festlegen gleichzeitiger Iterationen**| ✓|✓
+|**Löschen von Spalten**| ✓|✓
+|**Blockieren von Algorithmen**|✓|✓
+|**Kreuzvalidierung im Vergleich** |✓|✓
+|**Unterstützt das Training für Azure Databricks-Cluster**| ✓|
+|**Anzeigen der Namen der technischen Features**|✓|
+|**Featurezusammenfassung**| ✓|
+|**Featurisierung für Feiertage**|✓|
+|**Ausführlichkeitsgrade der Protokolldatei**| ✓|
+
+### <a name="model-settings"></a>Modelleinstellungen
+
+Diese Einstellungen können auf das beste Modell als Ergebnis Ihres Experiments für das automatisierte maschinelle Lernen angewendet werden.
+
+| |Python SDK|Die Studioweboberfläche|
+|----|:----:|:----:|
+|**Registrierung, Bereitstellung, Erklärbarkeit des besten Modells**| ✓|✓|
+|**Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen**| ✓|✓|
+|**Anzeigen des besten Modells auf der Basis von nicht primärer Metrik**|✓||
+|**Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells**|✓||
+|**Testen des Modells** | ✓| |
+
+### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
+
+Mit diesen Einstellungen können Sie Ihre Experimentausführungen und die Ausführungen der ihnen untergeordneten Elemente überprüfen und steuern. 
+
+| |Python SDK|Die Studioweboberfläche|
+|----|:----:|:----:|
+|**Ausführen der Zusammenfassungstabelle**| ✓|✓|
+|**Abbrechen von Ausführungen und untergeordneten Ausführungen**| ✓|✓|
+|**Abrufen von Schutzmaßnahmen**| ✓|✓|
+|**Anhalten und Fortsetzen von Ausführungen**| ✓| |
+
+## <a name="when-to-use-automl-classification-regression--forecasting"></a>Anwendungsfälle für automatisiertes maschinelles Lernen: Klassifizierung, Regression und Vorhersage
 
 Sie arbeiten mit automatisiertem ML, wenn Sie möchten, dass Azure Machine Learning mit der von Ihnen angegebenen Zielmetrik ein Modell für Sie trainiert und optimiert. Automatisiertes ML demokratisiert den Entwicklungsprozess eines Machine Learning-Modells und befähigt seine Benutzer, unabhängig von deren Data Science-Kenntnissen, eine durchgängige Machine Learning-Pipeline für jedes Problem zu bestimmen.
 
@@ -199,62 +247,6 @@ Wägen Sie die folgenden Vor- und Nachteile gegeneinander ab, wenn Sie zwischen 
 | Registrieren und Visualisieren der Informationen und Metriken von Experimenten auf der Benutzeroberfläche | ✓      | ✓     |
 | Schutzmaßnahmen für Daten                                            | ✓      | ✓     |
 
-## <a name="many-models"></a>Viele Modelle 
-
-Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen die Verwendung des automatisierten maschinellen Lernens für Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
-
-Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann in den folgenden Szenarien z. B. zu verbesserten Ergebnissen führen:
-
-* Vorhersage der Umsätze für jedes einzelne Geschäft
-* Vorausschauende Wartung für Hunderte von Ölquellen
-* Anpassen einer Erfahrung für einzelne Benutzer
-
-<a name="parity"></a>
-
-### <a name="experiment-settings"></a>Einstellungen für das Experiment 
-
-Mit den folgenden Einstellungen können Sie Ihr Experiment für automatisiertes maschinelles Lernen konfigurieren. 
-
-| |Python SDK|Die Studioweboberfläche|
-----|:----:|:----:
-|**Aufteilen der Daten in Trainings-/Validierungssätze**| ✓|✓
-|**Unterstützt Aufgaben für maschinelles Lernen: Klassifizierung, Regression und Vorhersage**| ✓| ✓
-|**Optimiert auf Grundlage der primären Metrik**| ✓| ✓
-|**Unterstützt Azure ML-Compute als Computeziel** | ✓|✓
-|**Konfigurieren des Vorhersagehorizonts, der Zielverzögerungen und des rollierenden Fensters**|✓|✓
-|**Festlegen der Beendigungskriterien** |✓|✓ 
-|**Festlegen gleichzeitiger Iterationen**| ✓|✓
-|**Löschen von Spalten**| ✓|✓
-|**Blockieren von Algorithmen**|✓|✓
-|**Kreuzvalidierung im Vergleich** |✓|✓
-|**Unterstützt das Training für Azure Databricks-Cluster**| ✓|
-|**Anzeigen der Namen der technischen Features**|✓|
-|**Featurezusammenfassung**| ✓|
-|**Featurisierung für Feiertage**|✓|
-|**Ausführlichkeitsgrade der Protokolldatei**| ✓|
-
-### <a name="model-settings"></a>Modelleinstellungen
-
-Diese Einstellungen können auf das beste Modell als Ergebnis Ihres Experiments für das automatisierte maschinelle Lernen angewendet werden.
-
-| |Python SDK|Die Studioweboberfläche|
-|----|:----:|:----:|
-|**Registrierung, Bereitstellung, Erklärbarkeit des besten Modells**| ✓|✓|
-|**Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen**| ✓|✓|
-|**Anzeigen des besten Modells auf der Basis von nicht primärer Metrik**|✓||
-|**Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells**|✓||
-|**Testen des Modells** | ✓| |
-
-### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
-
-Mit diesen Einstellungen können Sie Ihre Experimentausführungen und die Ausführungen der ihnen untergeordneten Elemente überprüfen und steuern. 
-
-| |Python SDK|Die Studioweboberfläche|
-|----|:----:|:----:|
-|**Ausführen der Zusammenfassungstabelle**| ✓|✓|
-|**Abbrechen von Ausführungen und untergeordneten Ausführungen**| ✓|✓|
-|**Abrufen von Schutzmaßnahmen**| ✓|✓|
-|**Anhalten und Fortsetzen von Ausführungen**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -264,7 +256,7 @@ Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Pyth
 
 Informationen zum Konvertieren in das ONNX-Format finden Sie in [diesem Jupyter Notebook-Beispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Erfahren Sie, welche [Algorithmen in ONNX unterstützt werden](how-to-configure-auto-train.md#select-your-experiment-type).
 
-Die ONNX-Runtime unterstützt auch C#, sodass Sie das erstellte Modell automatisch in Ihren C#-Apps verwenden können, ohne es neu codieren oder die Netzwerklatenzen in Kauf nehmen zu müssen, die REST-Endpunkte mit sich bringen. Erfahren Sie mehr über die [Verwendung eines AutoML ONNX-Modells in einer .NET-Anwendung mit ML.NET](./how-to-use-automl-onnx-model-dotnet.md) und das [Rückschließen von ONNX-Modellen mit der C#-API für die ONNX-Runtime](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md). 
+Die ONNX-Runtime unterstützt auch C#, sodass Sie das erstellte Modell automatisch in Ihren C#-Apps verwenden können, ohne es neu codieren oder die Netzwerklatenzen in Kauf nehmen zu müssen, die REST-Endpunkte mit sich bringen. Erfahren Sie mehr über die [Verwendung eines AutoML ONNX-Modells in einer .NET-Anwendung mit ML.NET](./how-to-use-automl-onnx-model-dotnet.md) und das [Rückschließen von ONNX-Modellen mit der C#-API für die ONNX-Runtime](https://www.onnxruntime.ai/docs/reference/api/csharp-api.html). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -272,17 +264,17 @@ Es gibt mehrere Ressourcen, um Sie mit AutoML vertraut zu machen.
 
 ### <a name="tutorials-how-tos"></a>Tutorials/Anleitungen
 Tutorials sind einführende End-to-End-Beispiele für AutoML-Szenarien.
-+ **Für ein Code First-Konzept** folgen Sie dem [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Machine Learning Python SDK](tutorial-auto-train-models.md).
++ **Für das codegesteuerte Verfahren** befolgen Sie das [Tutorial: Trainieren eines Regressionsmodells mit AutoML und Python](tutorial-auto-train-models.md).
 
- + **Für ein Konzept mit wenig Code oder ohne Code:** folgen Sie dem [Tutorial: Erstellen von automatisierten ML-Klassifizierungsmodellen mit Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md).
+ + **Für die Herangehensweise mit wenig/keinem Code** sehen Sie sich das [Tutorial: Trainieren eines Klassifizierungsmodells mit AutoML ohne Schreiben von Code in Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md) an.
 
-Anleitungsartikel bieten zusätzliche Informationen zu den Funktionen von AutoML. Beispiel: 
+Anleitungen bieten zusätzliche Einzelheiten zu den Funktionen des automatisierten maschinellen Lernens. Beispiel: 
 
 + Konfigurieren der Einstellungen für automatische Trainingsexperimente
-    + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-use-automated-ml-for-ml-models.md). 
-    + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
+    + [Ohne Code in Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) 
+    + [Mit dem Python SDK](how-to-configure-auto-train.md)
 
-+  Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).
++  Erfahren Sie, wie Sie [Vorhersagemodelle mit Zeitreihendaten trainieren](how-to-auto-train-forecast.md).
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter Notebook-Beispiele 
 

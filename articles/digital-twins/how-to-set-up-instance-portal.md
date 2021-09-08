@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2, subject-rbac-steps
-ms.openlocfilehash: 203c53daf07949e343e9aa7e5cf56e89a7b07b1f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f520ed1054c5d0d9dd6c053e22a984a813840131
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474541"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468774"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -22,42 +22,34 @@ ms.locfileid: "110474541"
 Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe des Azure-Portals durchlaufen. Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt.
-* Wenn Sie diese Schritte manuell mithilfe der CLI durchlaufen möchten, finden Sie weitere Informationen in der CLI-Version dieses Artikels: [Vorgehensweise: Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md) .
-* Ein Beispiel zur Ausführung eines automatisierten Setups mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (über ein Skript)](how-to-set-up-instance-scripted.md) .
+* Wenn Sie diese Schritte manuell mithilfe der Befehlszeilenschnittstelle durchführen möchten, finden Sie weitere Informationen in der entsprechenden Version dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md).
+* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md).
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Erstellen der Azure Digital Twins-Instanz
 
-In diesem Abschnitt **erstellen Sie eine neue Azure Digital Twins-Instanz** über das [Azure-Portal](https://ms.portal.azure.com/). Navigieren Sie zum Portal, und melden Sie sich mit Ihren Anmeldeinformationen an.
+[!INCLUDE [digital-twins-setup-portal.md](../../includes/digital-twins-setup-portal.md)]
 
-Sobald Sie im Portal sind, wählen Sie im Menü auf der Homepage der Azure-Dienste _Ressource erstellen_ aus.
+3. Geben Sie auf der folgenden Seite **Ressource erstellen** die unten angegebenen Werte ein:
+    * **Abonnement**: Das Azure-Abonnement, das Sie verwenden.
+      - **Ressourcengruppe**: Eine Ressourcengruppe, in der die Instanz bereitgestellt werden soll. Wenn Sie nicht bereits eine vorhandene Ressourcengruppe in Erwägung ziehen, können Sie hier eine Ressourcengruppe erstellen, indem Sie den Link *Neu erstellen* auswählen und einen Namen für eine neue Ressourcengruppe eingeben
+    * **Standort**: Eine für Azure Digital Twins aktivierte Region für die Bereitstellung. Weitere Informationen zur regionalen Unterstützung finden Sie unter [Verfügbare Azure-Produkte nach Region (Azure Digital Twins)](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins) .
+    * **Ressourcenname**: Ein Name für Ihre Azure Digital Twins-Instanz. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
+    * **Zugriff auf Ressource gewähren**: Wenn Sie das Kontrollkästchen in diesem Abschnitt aktivieren, erhält Ihr Azure-Konto die Berechtigung, auf Daten in der Instanz zuzugreifen und diese zu verwalten. Wenn Sie die Person sind, die die Instanz verwaltet, sollten Sie dieses Kontrollkästchen jetzt aktivieren. Wenn es ausgegraut ist, weil Sie über keine Berechtigung im Abonnement verfügen, können Sie die Erstellung der Ressource fortsetzen und sich die Rolle später von einer Person mit den erforderlichen Berechtigungen zuweisen lassen. Weitere Informationen zu dieser Rolle und zum Zuweisen von Rollen zu Ihrer Instanz finden Sie im nächsten Abschnitt [Einrichten von Benutzerzugriffsberechtigungen](#set-up-user-access-permissions).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Screenshot des Azure-Portals mit hervorgehobenem Symbol „Ressource erstellen“ auf der Startseite.":::
+    :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Die beschriebenen Werte sind eingetragen.":::
 
-Suchen Sie im Suchfeld nach *Azure Digital Twins*, und wählen Sie den Dienst **Azure Digital Twins** aus den Ergebnissen aus. Wählen Sie die Schaltfläche _Erstellen_ aus, um eine neue Instanz des Diensts zu erstellen.
+4. Wenn Sie fertig sind, können Sie auf **Überprüfen + erstellen** klicken, wenn Sie keine weiteren Einstellungen für Ihre Instanz konfigurieren möchten. Dadurch gelangen Sie zu einer Zusammenfassungsseite, auf der Sie die eingegebenen Instanzdetails überprüfen und den Vorgang durch Klicken auf **Erstellen** abschließen können. 
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Screenshot des Azure-Portals, mit hervorgehobener Schaltfläche „Erstellen“ auf der Azure Digital Twins-Dienstseite.":::
-
-Geben Sie auf der folgenden Seite **Ressource erstellen** die unten angegebenen Werte ein:
-* **Abonnement**: Das Azure-Abonnement, das Sie verwenden.
-  - **Ressourcengruppe**: Eine Ressourcengruppe, in der die Instanz bereitgestellt werden soll. Wenn Sie nicht bereits eine vorhandene Ressourcengruppe in Erwägung ziehen, können Sie hier eine Ressourcengruppe erstellen, indem Sie den Link *Neu erstellen* auswählen und einen Namen für eine neue Ressourcengruppe eingeben
-* **Standort**: Eine für Azure Digital Twins aktivierte Region für die Bereitstellung. Weitere Informationen zur regionalen Unterstützung finden Sie unter [Verfügbare Azure-Produkte nach Region (Azure Digital Twins)](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins) .
-* **Ressourcenname**: Ein Name für Ihre Azure Digital Twins-Instanz. Wenn in Ihrem Abonnement für die Region eine weitere Azure Digital Twins-Instanz vorhanden ist, die den angegeben Namen bereits verwendet, werden Sie aufgefordert, einen anderen Namen auszuwählen.
-* **Zugriff auf Ressource gewähren**: Wenn Sie das Kontrollkästchen in diesem Abschnitt aktivieren, erhält Ihr Azure-Konto die Berechtigung, auf Daten in der Instanz zuzugreifen und diese zu verwalten. Wenn Sie die Person sind, die die Instanz verwaltet, sollten Sie dieses Kontrollkästchen jetzt aktivieren. Wenn es ausgegraut ist, weil Sie über keine Berechtigung im Abonnement verfügen, können Sie die Erstellung der Ressource fortsetzen und sich die Rolle später von einer Person mit den erforderlichen Berechtigungen zuweisen lassen. Weitere Informationen zu dieser Rolle und zum Zuweisen von Rollen zu Ihrer Instanz finden Sie im nächsten Abschnitt [Einrichten von Benutzerzugriffsberechtigungen](#set-up-user-access-permissions).
-
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Screenshot des Prozesses „Ressource erstellen“ für Azure Digital Twins im Azure-Portal. Die beschriebenen Werte sind eingetragen.":::
-
-Wenn Sie fertig sind, können Sie auf **Überprüfen + erstellen** klicken, wenn Sie keine weiteren Einstellungen für Ihre Instanz konfigurieren möchten. Dadurch gelangen Sie zu einer Zusammenfassungsseite, auf der Sie die eingegebenen Instanzdetails überprüfen und den Vorgang durch Klicken auf **Erstellen** abschließen können. 
-
-Wenn Sie weitere Details für Ihre Instanz konfigurieren möchten, finden Sie Informationen zu den übrigen Registerkarten für die Einrichtung im nächsten Abschnitt.
+    Wenn Sie weitere Details für Ihre Instanz konfigurieren möchten, finden Sie Informationen zu den übrigen Registerkarten für die Einrichtung im nächsten Abschnitt.
 
 ### <a name="additional-setup-options"></a>Zusätzliche Optionen für die Einrichtung
 
 Im Folgenden finden Sie die zusätzlichen Optionen, die Sie während der Einrichtung mithilfe der anderen Registerkarten im Prozess **Ressource erstellen** verwenden können.
 
-* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [Gewusst wie: Aktivieren des privaten Zugriffs mit Private Link (Vorschau)](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation) .
-* **Erweitert**: Auf dieser Registerkarte können Sie eine vom System verwaltete Identität für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Weitere Informationen zur Verwendung systemseitig verwalteter Identitäten mit Azure Digital Twins finden Sie unter [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md#managed-identity-for-accessing-other-resources-preview).
+* **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [Aktivieren des privaten Zugriffs mit Private Link (Vorschau)](./how-to-enable-private-link.md?tabs=portal#add-a-private-endpoint-during-instance-creation).
+* **Erweitert**: Auf dieser Registerkarte können Sie eine vom System verwaltete Identität für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Weitere Informationen zur Verwendung systemseitig verwalteter Identitäten mit Azure Digital Twins finden Sie unter [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md#managed-identity-for-accessing-other-resources-preview).
 * **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
@@ -135,7 +127,7 @@ Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und habe
 
 Testen Sie einzelne REST-API-Aufrufe für Ihre Instanz mithilfe der Befehle der Azure Digital Twins-CLI: 
 * [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
-* [Konzepte: Befehlssatz der Azure Digital Twins-CLI](concepts-cli.md)
+* [Befehlssatz der Azure Digital Twins-Befehlszeilenschnittstelle](concepts-cli.md)
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)
+* [Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

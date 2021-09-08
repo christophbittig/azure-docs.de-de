@@ -1,6 +1,6 @@
 ---
-title: 'Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Planung'
-description: Eine Azure-Zielzone ist die Umgebung, die als letzter Zielort für ein Cloudmigrationsprojekt definiert ist.
+title: 'Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Planen'
+description: Eine Azure-Zielzone ist die Umgebung, die als finaler Zielort für ein Cloudmigrationsprojekt definiert ist.
 ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: af4b64a9621f2327287a88fc9f3d00e485c424d5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 86dca0c57b473ca759c7dd2a685707c09dd11f05
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082786"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340138"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-planning"></a>Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Planung
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-planning"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Planen
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,16 +57,16 @@ Durch den Speicherort des Migrationstools werden die Netzwerkkonnektivitätsanfo
 
 | Migrationstool | Typ | Standort | Eingehende Netzwerkanforderungen | Ausgehende Netzwerkanforderungen |
 |----------------|------|----------|------------------------------|-------------------------------|
-| **Database Migration Service (DMS)** | Offline | Azure | Zulassen von 3306 über eine externe IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
-| **Import/Export (MySQL Workbench, mysqldump)** | Offline | Lokal | Zulassen von 3306 über eine interne IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
-| **Import/Export (MySQL Workbench, mysqldump)** | Offline | Azure VM | Zulassen von 3306 über eine externe IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
+| **Database Migration Service (DMS)** | Offline | Azure| Zulassen von 3306 über eine externe IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
+| **Import/Export (MySQL Workbench, mysqldump)** | Offline| Lokal | Zulassen von 3306 über eine interne IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
+| **Import/Export (MySQL Workbench, mysqldump)** | Offline| Azure VM | Zulassen von 3306 über eine externe IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
 | **mydumper/myloader** | Offline | Lokal | Zulassen von 3306 über eine interne IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
 | **mydumper/myloader** | Offline | Azure VM | Zulassen von 3306 über eine externe IP-Adresse | Ein Pfad zum Herstellen einer Verbindung mit der Azure MySQL-Datenbankinstanz |
-| **binlog** | Offline | Lokal | Zulassen von 3306 über eine externe oder private IP-Adresse von privaten Endpunkten | Ein Pfad für jeden Replikationsserver zum Master |
+| **binlog**  | Offline | Lokal | Zulassen von 3306 über eine externe oder private IP-Adresse von privaten Endpunkten | Ein Pfad für jeden Replikationsserver zum Master |
 
 Andere Netzwerküberlegungen beinhalten:
 
-- DMS in einem VNET wird eine [dynamische öffentliche IP-Adresse](../../../dms/faq.md#setup) zugewiesen. Sie können den Dienst zum Zeitpunkt der Erstellung in einem virtuellen Netzwerk platzieren, das über eine [ExpressRoute](../../../expressroute/expressroute-introduction.md)-Verbindung oder über ein [Site-to-Site-VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) verbunden ist.
+- DMS in einem VNET wird eine [dynamische öffentliche IP-Adresse](/azure/dms/faq#setup) zugewiesen. Sie können den Dienst zum Zeitpunkt der Erstellung in einem virtuellen Netzwerk platzieren, das über eine [ExpressRoute](../../../expressroute/expressroute-introduction.md)-Verbindung oder über ein [Site-to-Site-VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) verbunden ist.
 
 - Wenn Sie einen virtuellen Azure-Computer für das Ausführen der Migrationstools verwenden, weisen Sie ihm eine öffentliche IP-Adresse zu und lassen Sie anschließend nur eine Verbindung mit der lokalen MySQL-Instanz zu.
 
@@ -72,7 +74,7 @@ Andere Netzwerküberlegungen beinhalten:
 
 ## <a name="ssltls-connectivity"></a>SSL/TLS-Konnektivität
 
-Zusätzlich zu den Auswirkungen der Migration zur SSL-basierten Kommunikation auf Anwendungen müssen auch die SSL/TLS-Verbindungstypen berücksichtigt werden. Überprüfen Sie nach der Erstellung der Azure Database for MySQL Datenbank die SSL-Einstellungen. Informationen zur den möglichen Auswirkung von TLS-Einstellungen auf den Sicherheitsstatus finden Sie im Artikel [SSL/TLS-Konnektivität in Azure Database for MySQL](../../concepts-ssl-connection-security.md).
+Zusätzlich zu den Auswirkungen der Migration zur SSL-basierten Kommunikation auf Anwendungen müssen auch die SSL/TLS-Verbindungstypen berücksichtigt werden. Überprüfen Sie nach der Erstellung der Azure Database for MySQL-Datenbank die SSL-Einstellungen. Informationen zu den möglichen Auswirkung von TLS-Einstellungen auf den Sicherheitsstatus finden Sie im Artikel [SSL/TLS-Konnektivität in Azure Database for MySQL](../../concepts-ssl-connection-security.md).
 
 > [!Important]
 > Beachten Sie den Haftungsausschluss auf der Seite. Die Erzwingung der TLS-Version ist standardmäßig nicht aktiviert. Sobald TLS aktiviert ist, besteht die einzige Möglichkeit zum Deaktivieren darin, SSL erneut zu aktivieren.
@@ -93,8 +95,10 @@ WWI wollte ursprünglich eine Onlinemigration testen. Dies war aber wegen der er
 
 - Legen Sie fest, ob Sie eine Online- oder Offline-Datenmigrationsstrategie verwenden möchten.
 
-- Entscheiden Sie sich für eine SSL-Zertifikatstrategie.  
+- Entscheiden Sie sich für eine SSL-Zertifikatstrategie.
 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Migrationsmethoden](./05-migration-methods.md)

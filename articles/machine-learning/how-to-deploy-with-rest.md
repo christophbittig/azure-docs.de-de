@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b8162a9770aea9d8cb3d1220f0ab81169151f781
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 97cfd7a5121094af9fc1663fcdddcd4c620b77cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346866"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Bereitstellen von Modellen per REST (Vorschau)
 
@@ -34,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie die neuen REST-APIs für folgende Zw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein **Azure-Abonnement**, für das Sie über Administratorrechte verfügen. Testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://aka.ms/AMLFree), falls Sie nicht über ein Abonnement dieser Art verfügen.
+- Ein **Azure-Abonnement**, für das Sie über Administratorrechte verfügen. Testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://azure.microsoft.com/free/), falls Sie nicht über ein Abonnement dieser Art verfügen.
 - Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 - Ein Dienstprinzipal in Ihrem Arbeitsbereich. Für administrative REST-Anforderungen wird die [Dienstprinzipalauthentifizierung](how-to-setup-authentication.md#use-service-principal-authentication) verwendet.
 - Ein Token für die Dienstprinzipalauthentifizierung. Führen Sie die Schritte unter [Abrufen eines Tokens für die Dienstprinzipalauthentifizierung](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token) aus, um dieses Token abzurufen. 
@@ -50,7 +51,7 @@ In diesem Artikel wird beschrieben, wie Sie die neuen REST-APIs für folgende Zw
 ## <a name="azure-machine-learning-managed-online-endpoints"></a>Verwaltete Azure Machine Learning-Onlineendpunkte
 Verwaltete Onlineendpunkte (Vorschau) gestatten Ihnen die Bereitstellung Ihres Modells, ohne dass Sie die zugrunde liegende Infrastruktur erstellen und verwalten müssen. In diesem Artikel erstellen Sie einen Onlineendpunkt und eine Bereitstellung und überprüfen ihn, indem Sie ihn aufrufen. Zunächst müssen Sie jedoch die für die Bereitstellung erforderlichen Ressourcen registrieren, einschließlich Modell, Code und Umgebung.
 
-Es gibt viele Möglichkeiten, einen Azure Machine Learning-Onlineendpunkt zu erstellen, [einschließlich der CLI](how-to-deploy-managed-online-endpoints.md) und visuell über das [Studio](how-to-use-managed-online-endpoint-studio.md). Im folgenden Beispiel wird ein verwalteter Onlineendpunkt mit der REST-API verwendet.
+Es gibt viele Möglichkeiten, einen Azure Machine Learning-Onlineendpunkt zu erstellen, [einschließlich der Azure-Befehlszeilenschnittstelle](how-to-deploy-managed-online-endpoints.md) und visuell über [Studio](how-to-use-managed-online-endpoint-studio.md). Im folgenden Beispiel wird ein verwalteter Onlineendpunkt mit der REST-API verwendet.
 
 ## <a name="create-machine-learning-assets"></a>Erstellen von Machine Learning-Ressourcen
 
@@ -154,6 +155,12 @@ Wenn Sie die Bereitstellung nicht verwenden, sollten Sie sie mit dem folgenden B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie Ihr Modell [mithilfe der CLI](how-to-deploy-managed-online-endpoints.md) bereitstellen.
+* Erfahren Sie, wie Sie Ihr Modell [mithilfe der Azure-Befehlszeilenschnittstelle](how-to-deploy-managed-online-endpoints.md) bereitstellen.
 * Erfahren Sie, wie Sie Ihr Modell [über das Studio](how-to-use-managed-online-endpoint-studio.md) bereitstellen.
+* Erfahren Sie mehr über die [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md).
+* Erfahren Sie mehr über das [Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md).
 * Erfahren Sie, wie Sie [Onlineendpunkte überwachen](how-to-monitor-online-endpoints.md).
+* Erfahren Sie mehr über den [sicheren Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).
+* [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
+* [SKU-Liste für verwaltete Onlineendpunkte (Vorschau)](reference-managed-online-endpoints-vm-sku-list.md)
+* Weitere Informationen zu Grenzwerten bei verwalteten Onlineendpunkten finden Sie unter [Verwalten und Erhöhen von Kontingenten für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).

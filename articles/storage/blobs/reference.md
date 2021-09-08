@@ -1,44 +1,43 @@
 ---
-title: Azure Blob Storage-Referenz
+title: 'Azure Blob Storage: API-Referenz'
 description: Hier finden Sie die Referenz zur Azure Blob Storage-API, Infodateien und Clientbibliothekspakete.
 author: twooley
 ms.author: twooley
-ms.date: 09/10/2020
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.reviewer: ripohane
-ms.openlocfilehash: 0f5faa22e18f22ac5324885c404b98e7116e4e32
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.topic: reference
+ms.openlocfilehash: 738081a8f31e50accee17f66272b278e72544916
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277163"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215340"
 ---
-# <a name="azure-blob-storage-reference"></a>Azure Blob Storage-Referenz
+# <a name="azure-blob-storage-api-reference"></a>Azure Blob Storage: API-Referenz
 
-Hier finden Sie die Referenz zur Azure Blob Storage-API, Bibliothekspakete, Infodateien und Artikel zu den ersten Schritten.
+Hier finden Sie die Referenz zur Blob Storage-API, Bibliothekspakete, Infodateien und Artikel zu den ersten Schritten.
 
 ## <a name="net-client-libraries"></a>.NET-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu .NET-APIs für Azure Blob Storage.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für Blob Storage.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Blob Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](./storage-quickstart-blobs-dotnet.md) |
 | 11.x | [Microsoft.Azure.Storage.Blob (Namespace)](/dotnet/api/microsoft.azure.storage.blob) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Schnellstart: Azure Blob Storage-Clientbibliothek v11 für .NET](./storage-quickstart-blobs-dotnet-legacy.md) |
 
-### <a name="storage-management"></a>Speicherverwaltung
+### <a name="storage-management-net-apis"></a>.NET-APIs für die Speicherverwaltung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Verwaltung.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für die Azure Storage-Verwaltung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
 | 16.x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
 
-### <a name="data-movement"></a>Datenverschiebung
+### <a name="data-movement-net-apis"></a>.NET APIs für die Datenverschiebung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Azure Storage-Datenverschiebung.
+Die folgende Tabelle enthält Referenzinformationen zu den .NET-APIs für die Azure Storage-Datenverschiebung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
@@ -46,16 +45,16 @@ Die folgende Tabelle enthält die Referenzdokumentation zu .NET-APIs für die Az
 
 ## <a name="java-client-libraries"></a>Java-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Java-APIs für Azure Blob Storage.
+Die folgende Tabelle enthält Referenzinformationen zu den Java-APIs für Blob Storage.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Storage: Blobs](/java/api/overview/azure/storage-blob-readme) | [Maven-Paket](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Schnellstart: Verwalten von Blobs per Java v12 SDK](./storage-quickstart-blobs-java.md) |
 | 8.x | [com.microsoft.azure.storage.blob](/java/api/com.microsoft.azure.storage.blob) | [Maven-Paket](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Schnellstart: Verwalten von Blobs mit Java SDK, Version 8](./storage-quickstart-blobs-java-legacy.md) |
 
-### <a name="storage-management"></a>Speicherverwaltung
+### <a name="storage-management-java-apis"></a>Java-APIs für die Speicherverwaltung
 
-Die folgende Tabelle enthält die Referenzdokumentation zu Java-APIs für die Azure Storage-Verwaltung.
+Die folgende Tabelle enthält Referenzinformationen zu den Java-APIs für die Azure Storage-Verwaltung.
 
 |  Version  | Referenzdokumentation | Paket |
 | :-------: | ----------------------- | ------- |
@@ -63,7 +62,7 @@ Die folgende Tabelle enthält die Referenzdokumentation zu Java-APIs für die Az
 
 ## <a name="python-client-libraries"></a>Python-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-APIs für Azure Blob Storage.
+Die folgende Tabelle enthält Referenzinformationen zu den Python-APIs für Blob Storage.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,16 +71,24 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu Python-
 
 ## <a name="javascript-client-libraries"></a>JavaScript-Clientbibliotheken
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu JavaScript-APIs für Azure Blob Storage.
+Die folgende Tabelle enthält Referenzinformationen zu den JavaScript-APIs für Blob Storage.
 
 |  Version  | Referenzdokumentation | Paket | Schnellstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure Storage Blob-Clientbibliothek für JavaScript](/javascript/api/overview/azure/storage-blob-readme) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js](./storage-quickstart-blobs-nodejs.md) <br/> [Schnellstart: Verwalten von Blobs mit dem JavaScript v12 SDK in einem Browser](./quickstart-blobs-javascript-browser.md) |
 | 10.x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js](./storage-quickstart-blobs-nodejs-legacy.md) <br/> [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK im Browser](./storage-quickstart-blobs-javascript-client-libraries-legacy.md)|
 
+## <a name="c-client-libraries"></a>C++-Clientbibliotheken
+
+Die folgende Tabelle enthält Referenzinformationen zu den C++-APIs für Blob Storage.
+
+|  Version  | Referenzdokumentation | Quellcode/Infodatei | Schnellstart |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12.x | [Azure SDK für C++-APIs](https://azure.github.io/azure-sdk-for-cpp/index.html) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage) | [Schnellstart: Azure Blob Storage-Clientbibliothek v12 für C++](./quickstart-blobs-c-plus-plus.md) |
+
 ## <a name="rest-apis"></a>REST-APIs
 
-Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-APIs für Azure Blob Storage.
+Die folgende Tabelle enthält Referenzinformationen zu den REST-APIs für Blob Storage.
 
 | Referenzdokumentation | Übersicht |
 | ----------------------- | -------- |
@@ -89,13 +96,12 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-AP
 
 ### <a name="other-rest-reference"></a>Sonstige REST-Referenz
 
-- Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Dateien in und aus dem Blobspeicher importieren und exportieren.
+Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Daten in und aus Blob Storage importieren und exportieren.
 
 ## <a name="other-languages-and-platforms"></a>Andere Sprachen und Plattformen
 
 Die folgende Liste enthält Links zu Bibliotheken für andere Programmiersprachen und Plattformen.
 
-- [C++](https://azure.github.io/azure-storage-cpp)
 - [Ruby](https://azure.github.io/azure-storage-ruby)
 - [PHP](https://azure.github.io/azure-storage-php/)
 - [iOS](https://azure.github.io/azure-storage-ios/)
@@ -103,14 +109,8 @@ Die folgende Liste enthält Links zu Bibliotheken für andere Programmiersprache
 
 ## <a name="powershell"></a>PowerShell
 
-Die folgende Tabelle enthält Links zur neuesten Version der Referenzen.
-
-| Version | Plattform |
-| ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
-|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
-|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
+[Azure PowerShell-Referenz](/powershell/module/az.storage/)
 
 ## <a name="azure-cli"></a>Azure CLI
 
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/storage)
+[Azure CLI-Referenz](/cli/azure/azure-cli-reference-for-storage)

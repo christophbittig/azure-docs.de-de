@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 07db1f1c8021759fbd5702ad9353f74fcd1524c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e3cbbd725dc6c3343cc9fd2edc6739bbb79156a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100516973"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346871"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Reihe „Data Science für Einsteiger“
@@ -99,8 +99,8 @@ Je mehr Daten Sie hinzufügen, umso klarer wird Ihr Bild, sodass Sie detailliert
 
 Mit Daten, die relevant, verbunden, genau und in ausreichender Menge vorhanden sind, verfügen Sie über alle Zutaten für Data Science in hoher Qualität.
 
-Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science für Einsteiger* von Microsoft Azure Machine Learning Studio (klassisch) an.
+Sehen Sie sich unbedingt auch die vier Videos in der Reihe *Data Science für Einsteiger* von Machine Learning Studio (klassisch) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio (klassisch)](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](../overview-what-is-azure-ml.md)
+* [Einführung in Azure Machine Learning](../overview-what-is-azure-machine-learning.md)

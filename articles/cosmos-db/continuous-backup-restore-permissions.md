@@ -4,25 +4,20 @@ description: Erfahren Sie, wie Sie die Wiederherstellungsberechtigungen für ein
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d566a2ee66df4adb810cb5908da3c47657fab418
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100648602"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339375"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Verwalten von Berechtigungen zum Wiederherstellen eines Azure Cosmos DB-Kontos
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Die Funktion der Zeitpunktwiederherstellung (fortlaufender Sicherungsmodus) für Azure Cosmos DB befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Mit Azure Cosmos DB können Sie die Wiederherstellungsberechtigungen für ein Konto für die fortlaufende Sicherung (Vorschauversion) auf eine bestimmte Rolle oder einen Prinzipal isolieren und einschränken. Der Besitzer des Kontos kann eine Wiederherstellung auslösen und anderen Prinzipalen eine Rolle zuweisen, damit diese den Wiederherstellungsvorgang ausführen können. Diese Berechtigungen können im Abonnementbereich oder präziser im Quellkontobereich angewendet werden, wie in der folgenden Abbildung dargestellt:
+Mit Azure Cosmos DB können Sie die Wiederherstellungsberechtigungen für ein Konto für die fortlaufende Sicherung auf eine bestimmte Rolle oder einen Prinzipal isolieren und einschränken. Der Besitzer des Kontos kann eine Wiederherstellung auslösen und anderen Prinzipalen eine Rolle zuweisen, damit diese den Wiederherstellungsvorgang ausführen können. Diese Berechtigungen können im Abonnementbereich oder präziser im Quellkontobereich angewendet werden, wie in der folgenden Abbildung dargestellt:
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="Liste der zum Ausführen des Wiederherstellungsvorgangs erforderlichen Rollen." lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 
@@ -52,19 +47,22 @@ Um eine Wiederherstellung ausführen zu können, benötigt ein Benutzer oder ein
 |Resource group | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |Wiederherstellbare CosmosDB-Kontoressource | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-Die wiederherstellbare Kontoressource kann aus der Ausgabe des Befehls `az cosmosdb restorable-database-account list --name <accountname>` (in der Befehlszeilenschnittstelle) oder des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` (in PowerShell) extrahiert werden. Das name-Attribut in der Ausgabe stellt die Instanz-ID (`instanceID`) des wiederherstellbaren Kontos dar. Weitere Informationen finden Sie im Artikel zu [PowerShell](continuous-backup-restore-powershell.md) oder zur [Befehlszeilenschnittstelle](continuous-backup-restore-command-line.md).
+Die wiederherstellbare Kontoressource kann aus der Ausgabe des Befehls `az cosmosdb restorable-database-account list --name <accountname>` (in der Befehlszeilenschnittstelle) oder des Cmdlets `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` (in PowerShell) extrahiert werden. Das name-Attribut in der Ausgabe stellt die Instanz-ID (`instanceID`) des wiederherstellbaren Kontos dar. 
 
 ## <a name="permissions"></a>Berechtigungen
 
 Die folgenden Berechtigungen sind zum Ausführen der verschiedenen Aktivitäten im Zusammenhang mit der Wiederherstellung für Konten im fortlaufenden Sicherungsmodus erforderlich:
 
+> [!NOTE]
+> Die Berechtigung kann dem wiederherstellbaren Datenbankkonto im Konto- oder Abonnementbereich zugewiesen werden. Das Zuweisen von Berechtigungen im Ressourcengruppenbereich wird nicht unterstützt.
+
 |Berechtigung  |Auswirkung  |Mindestumfang  |Maximaler Bereich  |
 |---------|---------|---------|---------|
-|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](#custom-restorable-action). | Nicht zutreffend | Nicht verfügbar  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Diese Berechtigungen sind für die ARM-Vorlagenbereitstellung zum Erstellen des wiederhergestellten Kontos erforderlich. Informationen zum Festlegen dieser Rolle finden Sie unten in der Beispielberechtigung [RestorableAction](#custom-restorable-action). | Nicht zutreffend | Nicht zutreffend  |
 |`Microsoft.DocumentDB/databaseAccounts/write` | Diese Berechtigung ist erforderlich, um ein Konto in einer Ressourcengruppe wiederherstellen zu können. | Die Ressourcengruppe, unter der das wiederhergestellte Konto erstellt wird. | Das Abonnement, unter dem das wiederhergestellte Konto erstellt wird. |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, damit Wiederherstellungsaktionen dafür ausgeführt werden können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* . | Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, um die wiederherstellbaren Datenbankkonten auflisten zu können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden.  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Diese Berechtigung ist für den Bereich des wiederherstellbaren Quellkontos erforderlich, um das Lesen von wiederherstellbaren Ressourcen wie der Liste der Datenbanken und Container für ein wiederherstellbares Konto zuzulassen.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. Die Ressourcengruppe kann nicht als Bereich ausgewählt werden. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` </br> Sie können die Ressourcengruppe nicht als Berechtigungsbereich auswählen. |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, damit Wiederherstellungsaktionen dafür ausgeführt werden können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* . | Das Abonnement, das das wiederherstellbare Datenbankkonto enthält.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` </br> Sie können die Ressourcengruppe nicht als Berechtigungsbereich auswählen. |Diese Berechtigung ist für den Bereich des wiederherstellbaren Datenbankquellkontos erforderlich, um die wiederherstellbaren Datenbankkonten auflisten zu können.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` </br> Sie können die Ressourcengruppe nicht als Berechtigungsbereich auswählen. | Diese Berechtigung ist für den Bereich des wiederherstellbaren Quellkontos erforderlich, um das Lesen von wiederherstellbaren Ressourcen wie der Liste der Datenbanken und Container für ein wiederherstellbares Konto zuzulassen.  | Die *RestorableDatabaseAccount*-Ressource, die zum wiederherzustellenden Quellkonto gehört. Dieser Wert wird auch durch die Eigenschaft `ID` der wiederherstellbaren Datenbankkontoressource angegeben. Ein Beispiel für ein wiederherstellbares Konto ist */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/\<guid-instanceid\>* .| Das Abonnement, das das wiederherstellbare Datenbankkonto enthält. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Azure CLI-Rollenzuweisungsszenarien für die Wiederherstellung in unterschiedlichen Bereichen
 
@@ -131,5 +129,7 @@ az role definition create --role-definition <JSON_Role_Definition_Path>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren und verwalten Sie die fortlaufende Sicherung im [Azure-Portal](continuous-backup-restore-portal.md), mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [Azure CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).
+* Bereitstellen der fortlaufende Sicherung über das [Azure-Portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), die [Befehlszeilenschnittstelle](provision-account-continuous-backup.md#provision-cli) oder [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template)
+* Wiederherstellen eines Kontos über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), die [Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) oder [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template)
+* [Migrieren eines Konto von der regelmäßigen Sicherung zur fortlaufenden Sicherung](migrate-continuous-backup.md)
 * [Ressourcenmodell des fortlaufenden Sicherungsmodus](continuous-backup-restore-resource-model.md)

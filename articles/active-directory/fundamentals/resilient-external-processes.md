@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d3c159c615d928a8d56d3913c8e1cab846c7580
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724406"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462091"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Robuste Schnittstellen mit externen Prozessen
 
@@ -38,7 +38,7 @@ Mithilfe der IEF-Richtlinien (Identity Experience Framework) können Sie ein ext
 
 - Entfernen Sie nach Möglichkeit API-Aufrufe aus dem vorab authentifizierten Pfad. Wenn dies nicht möglich ist, müssen Sie strikte Schutzvorkehrungen für DoS-Angriffe (Denial-of-Service) und DDoS-Angriffe (Distributed Denial-of-Service) vor ihren APIs platzieren. Angreifer können die Anmeldeseite laden und versuchen, Ihre API mit DoS-Angriffen zu überfluten und Ihre Anwendung lahmzulegen. Beispielsweise kann die Verwendung von CAPTCHA beim Anmeldungs- bzw. Registrierungsvorgang hilfreich sein.
 
-- Verwenden Sie nach Möglichkeit [API-Connectors des integrierten Anmeldebenutzerflusses](../../active-directory-b2c/api-connectors-overview.md) zur Integration in Web-APIs nach dem Anmelden mit einem Identitätsanbieter oder vor dem Erstellen des Benutzers. Da die Benutzerflows bereits ausgiebig getestet wurden, ist es wahrscheinlich, dass Sie keine Funktions-, Leistungs- oder Skalierungstests auf Benutzerflowebene durchführen müssen. Sie müssen Ihre Anwendungen weiterhin auf Funktionalität, Leistung und Skalierung testen.
+- Verwenden Sie nach Möglichkeit die [API-Connectors des integrierten Flows für die Benutzerregistrierung](../../active-directory-b2c/api-connectors-overview.md) zur Integration in Web-APIs, entweder nach dem Erstellen eines Verbunds mit einem Identitätsanbieter oder vor dem Erstellen des Benutzers. Da die Benutzerflows bereits ausgiebig getestet wurden, ist es wahrscheinlich, dass Sie keine Funktions-, Leistungs- oder Skalierungstests auf Benutzerflowebene durchführen müssen. Sie müssen Ihre Anwendungen weiterhin auf Funktionalität, Leistung und Skalierung testen.
 
 - [Technische Profile](../../active-directory-b2c/restful-technical-profile.md) der RESTFul-API von Azure AD stellen kein Zwischenspeicherungsverhalten zur Verfügung. Stattdessen implementiert das RESTFul-API-Profil eine Wiederholungslogik und ein Timeout, das in die Richtlinie integriert ist.
 

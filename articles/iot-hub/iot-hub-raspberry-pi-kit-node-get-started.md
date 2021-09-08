@@ -8,23 +8,23 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/18/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f6a1ebdcae8b166200f5a2a491939ede0a7a259
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97802523"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414897"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-In diesem Tutorial erlernen Sie die Grundlagen der Verwendung von Raspberry Pi 3 und Raspbian. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](about-iot-hub.md) nahtlos mit der Cloud verbinden. Beispiele für Windows 10 IoT Core finden Sie im [Windows Dev Center](https://www.windowsondevices.com/).
+In diesem Tutorial werden zunächst die Grundlagen der Verwendung von Raspberry Pi mit dem Raspberry Pi-Betriebssystem vermittelt. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](about-iot-hub.md) nahtlos mit der Cloud verbinden. Beispiele für Windows 10 IoT Core finden Sie im [Windows Dev Center](https://www.windowsondevices.com/).
 
 Sie haben noch kein Kit? Probieren Sie den [Raspberry Pi-Onlinesimulator](iot-hub-raspberry-pi-web-simulator-get-started.md) aus. Oder erwerben Sie [hier](https://azure.microsoft.com/develop/iot/starter-kits) ein neues Kit.
 
@@ -91,25 +91,25 @@ Die folgenden Elemente sind optional:
 
 ## <a name="set-up-raspberry-pi"></a>Einrichten von Raspberry Pi
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Installieren des Betriebssystems Raspbian für Pi
+### <a name="install-the-raspberry-pi-os"></a>Installieren des Raspberry Pi-Betriebssystems
 
-Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
+Bereiten Sie die microSD-Karte für die Installation des Raspberry Pi-Betriebssystemimages vor.
 
-1. Laden Sie Raspbian herunter.
+1. Laden Sie das Raspberry Pi-Betriebssystem mit Desktop herunter.
 
-   a. [Raspbian Buster mit Desktop](https://www.raspberrypi.org/software/) (ZIP-Datei).
+   a. [Raspberry Pi-Betriebssystem mit Desktop](https://www.raspberrypi.org/software/) (die ZIP-Datei).
 
-   b. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
+   b. Extrahieren Sie das Image des Raspberry Pi-Betriebssystems mit Desktop in einen Ordner auf Ihrem Computer.
 
-2. Installieren Sie Raspbian auf der microSD-Karte.
+2. Installieren Sie das Raspberry Pi-Betriebssystem mit Desktop auf der microSD-Karte.
 
    a. [Laden Sie das SD-Kartenbrennprogramm Etcher herunter, und installieren Sie es](https://etcher.io/).
 
-   b. Führen Sie Etcher aus, und wählen Sie das Raspbian-Image, das Sie in Schritt 1 entpackt haben.
+   b. Führen Sie Etcher aus, und wählen Sie das Image des Raspberry Pi-Betriebssystems mit Desktop aus, das Sie in Schritt 1 extrahiert haben.
 
    c. Wählen Sie das microSD-Kartenlaufwerk. Etcher hat möglicherweise bereits das richtige Laufwerk ausgewählt.
 
-   d. Klicken Sie auf „Flash“, um Raspbian auf der microSD-Karte zu installieren.
+   d. Klicken Sie auf „Flash“, um das Raspberry Pi-Betriebssystem mit Desktop auf der microSD-Karte zu installieren.
 
    e. Entfernen Sie die microSD-Karte aus dem Computer, wenn die Installation abgeschlossen ist. Es ist sicher, die microSD-Karte direkt zu entfernen, da Etcher die microSD-Karte nach Abschluss des Vorgangs automatisch auswirft bzw. die Bereitstellung aufhebt.
 
@@ -119,13 +119,20 @@ Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Stellen Sie die Verbindung von Pi mit Monitor, Tastatur und Maus her.
 
-2. Starten Sie Pi, und melden Sie sich bei Raspbian mit `pi` als Benutzername und `raspberry` als Kennwort an.
+2. Starten Sie Pi, und melden Sie sich beim Raspberry Pi-Betriebssystem mit `pi` als Benutzername und `raspberry` als Kennwort an.
 
 3. Klicken Sie auf das Raspberry-Symbol und dann auf **Preferences** > **Raspberry Pi Configuration**.
 
-   ![Das Raspbian-Menü „Preferences“](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
+   ![Raspberry Pi-Betriebssystem mit Menü „Einstellungen“](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. Legen Sie auf der Registerkarte **Interfaces** die Einstellungen **I2C** und **SSH** auf **Enable** fest, und klicken Sie dann auf **OK**. Wenn Sie keine physischen Sensoren besitzen und simulierte Sensordaten verwenden möchten, ist dieser Schritt optional.
+4. Legen Sie auf der Registerkarte **Schnittstellen** die Einstellungen **SSH** und **I2C** auf **Aktivieren** fest, und klicken Sie dann auf **OK**. 
+ 
+    | Schnittstelle | BESCHREIBUNG |
+    | --------- | ----------- |
+    | *SSH* | Secure Shell (SSH) wird verwendet, um eine Remoteverbindung mit dem Raspberry Pi über eine Remotebefehlszeile zu ermöglichen. Dies ist die bevorzugte Methode für Remoteausgabe der Befehle an Ihren Raspberry Pi in diesem Dokument. |
+    | *I2C* | Inter-Integrated Circuit (I2C) ist ein Kommunikationsprotokoll, das für die Verbindung mit Hardware wie z. B. Sensoren verwendet wird. Diese Schnittstelle ist für die Verbindung mit physischen Sensoren in diesem Thema erforderlich.|
+
+    Wenn Sie keine physischen Sensoren haben und simulierte Sensordaten von Ihrem Raspberry Pi-Gerät verwenden möchten, können Sie **I2C** deaktiviert lassen.
 
    ![Aktivieren von I2C und SSH auf Raspberry Pi](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -198,7 +205,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
    Wenn die Version niedriger als 10.x oder kein Node.js auf Ihrem Pi vorhanden ist, installieren Sie die neueste Version.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
+   curl -sSL https://deb.nodesource.com/setup_16.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -256,6 +263,14 @@ Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichte
 Wenn Sie die von Ihrem IoT-Hub empfangenen Nachrichten von Ihrem Gerät aus überwachen möchten, können Sie dafür die Azure IoT-Tools für Visual Studio Code verwenden. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
 Weitere Informationen zum Verarbeiten von Daten, die von Ihrem Gerät gesendet wurden, finden Sie im nächsten Abschnitt.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Sie können die in diesem Thema erstellten Ressourcen mit anderen Tutorials und Schnellstartanleitungen in dieser Dokumentreihe verwenden. Wenn Sie mit weiteren Schnellstartanleitungen oder Tutorials fortfahren möchten, überspringen Sie die Bereinigung der in diesem Thema erstellten Ressourcen. Falls Sie nicht fortfahren möchten, gehen Sie im Azure-Portal wie folgt vor, um alle in diesem Thema erstellten Ressourcen zu löschen.
+
+1. Wählen Sie im linken Menü des Azure-Portals die Option **Alle Ressourcen** und anschließend die von Ihnen erstellte IoT Hub-Instanz aus. 
+1. Klicken Sie im oberen Bereich der IoT Hub-Übersicht auf **Löschen**.
+1. Geben Sie den Namen Ihres Hubs ein, und klicken Sie erneut auf **Löschen**, um das endgültige Löschen der IoT Hub-Instanz zu bestätigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

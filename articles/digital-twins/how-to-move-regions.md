@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 9b4d896edea86d85b650325ac5efb7f3cf439b17
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9617fc3cc7668d8449a9ec3b46e6c82228783e9d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953939"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447147"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
@@ -79,7 +79,7 @@ Nun vervollständigen Sie das „Verschieben“ Ihrer Instanz, indem Sie eine ne
 
 ### <a name="create-a-new-instance"></a>Erstellen einer neuen Instanz
 
-Erstellen Sie zunächst eine neue Azure Digital Twins-Instanz in Ihrer Zielregion. Führen Sie die in der folgenden Anleitung beschriebenen Schritte aus: [Vorgehensweise: Einrichten einer Instanz und von Authentifizierung](how-to-set-up-instance-portal.md). Beachten Sie Folgendes:
+Erstellen Sie zunächst eine neue Azure Digital Twins-Instanz in Ihrer Zielregion. Führen Sie die Schritte unter [Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-portal.md) aus. Beachten Sie Folgendes:
 
 * Sie können denselben Namen für die neue Instanz beibehalten, *wenn* sie sich in einer anderen Ressourcengruppe befindet. Wenn Sie dieselbe Ressourcengruppe verwenden müssen, die Ihre ursprüngliche Instanz enthält, benötigt Ihre neue Instanz einen eigenen, eindeutigen Namen.
 * Geben Sie die neue Zielregion ein, wenn Sie zur Eingabe eines Standorts aufgefordert werden.
@@ -110,7 +110,7 @@ Diese Ansichten bestätigen, dass Ihre Modelle, Zwillinge und Graphen erneut in 
 
 Wenn Sie Endpunkte oder Routen in Ihrer ursprünglichen Instanz besitzen, müssen Sie diese in Ihrer neuen Instanz neu erstellen. Wenn Sie in Ihrer ursprünglichen Instanz keine Endpunkte oder Routen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie zum [nächsten Abschnitt](#relink-connected-resources) springen.
 
-Führen Sie andernfalls die Schritte unter [Vorgehensweise: Verwalten von Endpunkten und Routen](how-to-manage-routes-portal.md) aus, wobei Sie die neue Instanz verwenden. Beachten Sie Folgendes:
+Führen Sie andernfalls die Schritte unter [Verwalten von Endpunkten und Routen](how-to-manage-routes.md) aus, und verwenden Sie dabei die neue Instanz. Beachten Sie Folgendes:
 
 * Sie müssen *nicht* die Event Grid-, Event Hub- oder Service Bus-Ressource neu erstellen, die Sie für den Endpunkt verwenden. Weitere Informationen finden Sie im Abschnitt „Voraussetzungen“ in den Endpunktanleitungen. Sie müssen den Endpunkt nur auf der Azure Digital Twins-Instanz neu erstellen.
 * Sie können Endpunkt- und Routennamen wiederverwenden, da ihr Gültigkeitsbereich eine andere Instanz ist.
@@ -132,7 +132,7 @@ Die genauen Ressourcen, die Sie bearbeiten müssen, hängen von Ihrem Szenario a
 * Time Series Insights.
 * Azure Maps.
 * IoT Hub Device Provisioning Service.
-* Persönliche oder Unternehmens-Apps außerhalb von Azure, z. B. die Client-App, die im [Tutorial: Codieren einer Client-App](tutorial-code.md) erstellt wurde, die eine Verbindung mit der Instanz herstellt und Azure Digital Twins-APIs aufruft.
+* Persönliche oder Unternehmens-Apps außerhalb von Azure, z. B. die Client-App, die unter [Codieren einer Client-App](tutorial-code.md) erstellt wurde, die eine Verbindung mit der Instanz herstellt und Azure Digital Twins-APIs aufruft.
 * Azure AD-App-Registrierungen müssen *nicht* neu erstellt werden. Wenn Sie eine [App-Registrierung](./how-to-create-app-registration-portal.md) verwenden, um eine Verbindung mit den Azure Digital Twins-APIs herzustellen, können Sie die gleiche App-Registrierung mit Ihrer neuen Instanz wiederverwenden.
 
 Nachdem Sie diesen Schritt abgeschlossen haben, sollte Ihre neue Instanz in der Zielregion eine Kopie der ursprünglichen Instanz sein.

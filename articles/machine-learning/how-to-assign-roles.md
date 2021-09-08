@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: d18d674c47d3e337ce5c789d1dc038acbf6792ba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2e0b503cd305697a808c08a2fe903d0f27972448
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339975"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie den Zugriff (Autorisierung) auf einen Az
 >
 > * [Steuern des Zugriffs auf Azure Kubernetes-Clusterressourcen](../aks/azure-ad-rbac.md)
 > * [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
-> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](../storage/common/storage-auth-aad-rbac-portal.md)
+> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](../storage/blobs/assign-azure-role-data-access.md)
 
 > [!WARNING]
 > Die Anwendung einiger Rollen kann die Funktionalität der Benutzeroberfläche in Azure Machine Learning Studio für andere Benutzer einschränken. Wenn z. B. die Rolle eines Benutzers nicht die Möglichkeit hat, eine Compute-Instanz zu erstellen, ist die Option zum Erstellen einer Compute-Instanz im Studio nicht verfügbar. Dieses Verhalten wird erwartet und verhindert, dass der Benutzer Vorgänge versucht, die einen Fehler vom Typ „Zugriff verweigert“ zurückgeben würden.
@@ -121,7 +121,7 @@ az role definition create --role-definition data_scientist_role.json
 Nach der Bereitstellung ist die Rolle im angegebenen Arbeitsbereich verfügbar. Jetzt können Sie diese Rolle über das Azure-Portal hinzufügen und zuweisen. Alternativ können Sie diese Rolle einem Benutzer mit dem CLI-Befehl `az ml workspace share` zuweisen:
 
 ```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist Custom" --user jdoe@contoson.com
 ```
 
 Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md). 
@@ -163,7 +163,7 @@ Sie müssen über Berechtigungen für den gesamten Bereich der neuen Rollendefin
 
 ## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Verwenden von Azure Resource Manager-Vorlagen für Wiederholbarkeit
 
-Wenn Sie davon ausgehen, dass Sie komplexe Rollenzuweisungen mehrfach erstellen müssen, kann eine Azure Resource Manager-Vorlage eine große Hilfe sein. Die Vorlage [201-machine-learning-dependencies-role-assignment](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) zeigt, wie Rollenzuweisungen im Quellcode für die Wiederverwendung angegeben werden können. 
+Wenn Sie davon ausgehen, dass Sie komplexe Rollenzuweisungen mehrfach erstellen müssen, kann eine Azure Resource Manager-Vorlage eine große Hilfe sein. Die Vorlage [machine-learning-dependencies-role-assignment](https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment) zeigt, wie Rollenzuweisungen im Quellcode für die Wiederverwendung angegeben werden können. 
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
 
@@ -182,7 +182,7 @@ Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivit
 | Veröffentlichen von Pipelines und Endpunkten | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Bereitstellen eines registrierten Modells in einer AKS/ACI-Ressource | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Bewertung anhand eines bereitgestellten AKS-Endpunkts | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit der Berechtigung `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (ohne Verwendung der Authentifizierung über Azure Active Directory) ODER `"/workspaces/read"` (bei Verwendung der Tokenauthentifizierung) |
-| Zugreifen auf Speicher mithilfe interaktiver Notebooks | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
+| Zugreifen auf Speicher mithilfe interaktiver Notebooks | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listStorageAccountKeys/action"` |
 | Erstellen einer neuen benutzerdefinierten Rolle | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit der Berechtigung `Microsoft.Authorization/roleDefinitions/write` | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `/workspaces/computes/write` |
 
 > [!TIP]
@@ -453,6 +453,42 @@ Ermöglicht Ihnen das Definieren einer Rolle nur für das Beschriften von Daten:
 }
 ```
 
+### <a name="labeling-team-lead"></a>Teamleiter Beschriftung
+
+Ermöglicht Ihnen das Überprüfen und Ablehnen des bezeichneten Datasets und das Anzeigen von Bezeichnungserkenntnissen. Darüber hinaus können Sie mit dieser Rolle auch die Rolle eines Beschriftungserstellers ausführen.
+
+`labeling_team_lead_custom_role.json` :
+```json
+{
+    "properties": {
+        "roleName": "Labeling Team Lead",
+        "description": "Team lead for Labeling Projects",
+        "assignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.MachineLearningServices/workspaces/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+                ],
+                "notActions": [
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/delete",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/export/action"
+                ],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Im Folgenden finden Sie einige Aspekte, die Sie bei der Verwendung der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC) beachten müssen:
@@ -465,7 +501,7 @@ Im Folgenden finden Sie einige Aspekte, die Sie bei der Verwendung der rollenbas
 
 - Um Computeressourcen in einem VNET bereitstellen zu können, benötigen Sie explizite Berechtigungen für die folgenden Aktionen:
     - `Microsoft.Network/virtualNetworks/*/read` für die VNet-Ressourcen.
-    - `Microsoft.Network/virtualNetworks/subnet/join/action` für die Subnetzressource.
+    - `Microsoft.Network/virtualNetworks/subnets/join/action` für die Subnetzressource.
     
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
 

@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b278be45af62d50c8df85ed833ebbeb99dd5c35d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340113"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -103,7 +103,7 @@ az aks update \
 
 ## <a name="how-many-node-pools-can-i-create"></a>Wie viele Knotenpools kann ich erstellen?
 
-Der AKS-Cluster kann maximal 10 Knotenpools umfassen. In diesen Knotenpools können insgesamt höchstens 1.000 Knoten enthalten sein. Weitere Informationen finden Sie unter [Einschränkungen von Knotenpools][nodepool-limitations].
+Der AKS-Cluster kann maximal 100 Knotenpools umfassen. In diesen Knotenpools können insgesamt höchstens 1.000 Knoten enthalten sein. Weitere Informationen finden Sie unter [Einschränkungen von Knotenpools][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Wie kann ich meine Windows-Knotenpools benennen?
 

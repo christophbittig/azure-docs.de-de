@@ -2,17 +2,18 @@
 title: Automatisiertes Veröffentlichen für Continuous Integration und Delivery
 description: Erfahren Sie, wie Sie automatisch für Continuous Integration und Delivery veröffentlichen.
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 9056dd0be8e84fdff6934b2aecbd4a553f540811
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.date: 08/23/2021
+ms.openlocfilehash: 38e1d89a6934c603fa15c4b50e2309c57dc28622
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331574"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771808"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatisiertes Veröffentlichen für Continuous Integration und Delivery
 
@@ -78,25 +79,25 @@ Im Paket sind zurzeit zwei Befehle verfügbar:
 
 ### <a name="export-arm-template"></a>Exportieren einer ARM-Vorlage
 
-Führen Sie `npm run start export <rootFolder> <factoryId> [outputFolder]` aus, um die ARM-Vorlage unter Verwendung der Ressourcen eines bestimmten Ordners zu exportieren. Mit diesem Befehl wird vor dem Generieren der ARM-Vorlage auch eine Überprüfung ausgeführt. Ein Beispiel:
+Führen Sie `npm run build export <rootFolder> <factoryId> [outputFolder]` aus, um die ARM-Vorlage unter Verwendung der Ressourcen eines bestimmten Ordners zu exportieren. Mit diesem Befehl wird vor dem Generieren der ARM-Vorlage auch eine Überprüfung ausgeführt. Ein Beispiel:
 
-```
-npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
+```dos
+npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
 - `RootFolder` ist ein obligatorisches Feld, das den Speicherort der Data Factory-Ressourcen darstellt.
 - `FactoryId` ist ein obligatorisches Feld, das die Data Factory-Ressourcen-ID im Format `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` darstellt.
 - `OutputFolder` ist ein optionaler Parameter, der den relativen Pfad zum Speichern der generierten ARM-Vorlage angibt.
- 
+
 > [!NOTE]
 > Die generierte ARM-Vorlage wird nicht in der Liveversion der Factory veröffentlicht. Die Bereitstellung sollte mithilfe einer CI/CD-Pipeline erfolgen.
- 
+
 ### <a name="validate"></a>Überprüfen
 
-Führen Sie `npm run start validate <rootFolder> <factoryId>` aus, um alle Ressourcen eines bestimmten Ordners zu überprüfen. Ein Beispiel:
+Führen Sie `npm run build validate <rootFolder> <factoryId>` aus, um alle Ressourcen eines bestimmten Ordners zu überprüfen. Ein Beispiel:
 
-```
-npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
+```dos
+npm run build validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
 - `RootFolder` ist ein obligatorisches Feld, das den Speicherort der Data Factory-Ressourcen darstellt.
@@ -104,91 +105,90 @@ npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-x
 
 ## <a name="create-an-azure-pipeline"></a>Erstellen einer Azure-Pipeline
 
-npm-Pakete können zwar auf verschiedene Weise genutzt werden, aber einer der Hauptvorteile ist die Nutzung über [Azure Pipelines](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0). Bei jedem Merge in den Kollaborationsbranch kann eine Pipeline ausgelöst werden, die zuerst den gesamten Code überprüft und dann die ARM-Vorlage in ein [Buildartefakt](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0) exportiert, das von einer Releasepipeline verwendet werden kann. Der Unterschied zum aktuellen CI/CD-Prozess besteht darin, dass Sie *in der Releasepipeline nicht auf den vorhandenen `adf_publish`-Branch, sondern auf dieses Artefakt verweisen*.
+npm-Pakete können zwar auf verschiedene Weise genutzt werden, aber einer der Hauptvorteile ist die Nutzung über [Azure Pipelines](/azure/devops/pipelines/get-started/). Bei jedem Merge in den Kollaborationsbranch kann eine Pipeline ausgelöst werden, die zuerst den gesamten Code überprüft und dann die ARM-Vorlage in ein [Buildartefakt](/azure/devops/pipelines/artifacts/build-artifacts) exportiert, das von einer Releasepipeline verwendet werden kann. Der Unterschied zum aktuellen CI/CD-Prozess besteht darin, dass Sie *in der Releasepipeline nicht auf den vorhandenen `adf_publish`-Branch, sondern auf dieses Artefakt verweisen*.
 
 Gehen Sie dazu wie folgt vor:
 
-1.  Öffnen Sie ein Azure DevOps-Projekt, und navigieren Sie zu **Pipelines**. Wählen Sie **Neue Pipeline** aus.
+1. Öffnen Sie ein Azure DevOps-Projekt, und navigieren Sie zu **Pipelines**. Wählen Sie **Neue Pipeline** aus.
 
-    ![Screenshot der Schaltfläche „Neue Pipeline“](media/continuous-integration-deployment-improvements/new-pipeline.png)
-    
-1.  Wählen Sie das Repository aus, in dem Sie das YAML-Skript Ihrer Pipeline speichern möchten. Es wird empfohlen, die Datei im Ordner „build“ im gleichen Repository wie Ihre Data Factory-Ressourcen zu speichern. Stellen Sie sicher, dass im Repository die Datei *package.json* vorhanden ist, die den Paketnamen enthält, wie im folgenden Beispiel gezeigt:
+   ![Screenshot der Schaltfläche „Neue Pipeline“](media/continuous-integration-deployment-improvements/new-pipeline.png)
 
-    ```json
-    {
-        "scripts":{
-            "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
-        },
-        "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.5"
-        }
-    } 
-    ```
-    
-1.  Wählen Sie **Starterpipeline** aus. Wenn Sie die YAML-Datei wie im Beispiel unten hochgeladen oder zusammengeführt haben, können Sie auch direkt darauf verweisen und sie bearbeiten.
+2. Wählen Sie das Repository aus, in dem Sie das YAML-Skript Ihrer Pipeline speichern möchten. Es wird empfohlen, die Datei im Ordner „build“ im gleichen Repository wie Ihre Data Factory-Ressourcen zu speichern. Stellen Sie sicher, dass im Repository die Datei *package.json* vorhanden ist, die den Paketnamen enthält, wie im folgenden Beispiel gezeigt:
 
-    ![Screenshot der Starterpipeline](media/continuous-integration-deployment-improvements/starter-pipeline.png)
+   ```json
+   {
+       "scripts":{
+           "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
+       },
+       "dependencies":{
+           "@microsoft/azure-data-factory-utilities":"^0.1.5"
+       }
+   } 
+   ```
 
-    ```yaml
-    # Sample YAML file to validate and export an ARM template into a build artifact
-    # Requires a package.json file located in the target repository
-    
-    trigger:
-    - main #collaboration branch
-    
-    pool:
-      vmImage: 'ubuntu-latest'
-    
-    steps:
-    
-    # Installs Node and the npm packages saved in your package.json file in the build
-    
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
-    
-    - task: Npm@1
-      inputs:
-        command: 'install'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        verbose: true
-      displayName: 'Install npm package'
-    
-    # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
-    # Enter the appropriate subscription and name for the source factory.
-    
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
-      displayName: 'Validate'
-    
-    # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
-    # The ARM template generated isn't published to the live version of the factory. Deployment should be done by using a CI/CD pipeline. 
-    
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
-      displayName: 'Validate and Generate ARM template'
-    
-    # Publish the artifact to be used as a source for a release pipeline.
-    
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>/ArmTemplate' #replace with the package.json folder
-        artifact: 'ArmTemplates'
-        publishLocation: 'pipeline'
-    ```
+3. Wählen Sie **Starterpipeline** aus. Wenn Sie die YAML-Datei wie im Beispiel unten hochgeladen oder zusammengeführt haben, können Sie auch direkt darauf verweisen und sie bearbeiten.
 
-1.  Geben Sie den YAML-Code ein. Es wird empfohlen, dass Sie die YAML-Datei als Ausgangspunkt verwenden.
-1.  Speichern Sie das Projekt, und führen Sie es aus. Wenn Sie die YAML-Datei verwendet haben, wird diese jedes Mal ausgelöst, wenn der Mainbranch aktualisiert wird.
+   ![Screenshot der Starterpipeline](media/continuous-integration-deployment-improvements/starter-pipeline.png)
+
+   ```yaml
+   # Sample YAML file to validate and export an ARM template into a build artifact
+   # Requires a package.json file located in the target repository
+   
+   trigger:
+   - main #collaboration branch
+   
+   pool:
+     vmImage: 'ubuntu-latest'
+   
+   steps:
+   
+   # Installs Node and the npm packages saved in your package.json file in the build
+   
+   - task: NodeTool@0
+     inputs:
+       versionSpec: '10.x'
+     displayName: 'Install Node.js'
+   
+   - task: Npm@1
+     inputs:
+       command: 'install'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       verbose: true
+     displayName: 'Install npm package'
+   
+   # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
+   # Enter the appropriate subscription and name for the source factory.
+   
+   - task: Npm@1
+     inputs:
+       command: 'custom'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
+     displayName: 'Validate'
+   
+   # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
+   # The ARM template generated isn't published to the live version of the factory. Deployment should be done by using a CI/CD pipeline. 
+   
+   - task: Npm@1
+     inputs:
+       command: 'custom'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
+     displayName: 'Validate and Generate ARM template'
+   
+   # Publish the artifact to be used as a source for a release pipeline.
+   
+   - task: PublishPipelineArtifact@1
+     inputs:
+       targetPath: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>/ArmTemplate' #replace with the package.json folder
+       artifact: 'ArmTemplates'
+       publishLocation: 'pipeline'
+   ```
+
+4. Geben Sie den YAML-Code ein. Es wird empfohlen, dass Sie die YAML-Datei als Ausgangspunkt verwenden.
+
+5. Speichern Sie das Projekt, und führen Sie es aus. Wenn Sie die YAML-Datei verwendet haben, wird diese jedes Mal ausgelöst, wenn der Mainbranch aktualisiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Continuous Integration und Continuous Delivery in Data Factory:
-
-- [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-deployment.md).
+Erfahren Sie mehr über Continuous Integration und Continuous Delivery in Data Factory: [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-deployment.md).

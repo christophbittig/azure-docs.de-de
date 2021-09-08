@@ -4,14 +4,15 @@ description: Hier finden Sie eine Übersicht über Data Wrangling in Azure Data 
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: f922e7a2755a6e26a0d9f93f2668753e2f4dad5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 133496614db862d4c1af31afb015a535ddbfd188
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98738168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345860"
 ---
 # <a name="what-is-data-wrangling"></a>Was ist Data Wrangling?
 
@@ -60,9 +61,9 @@ Wenn Sie eine Power Query-Aktivität erstellen, werden alle Quelldatasets zu Dat
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen von Power Query-Aktivitäten wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Power Query Spark Runtime does not support the function`
 
-Weitere Informationen zu unterstützten Transformationen finden Sie unter den [Data Wrangling-Funktionen](wrangling-functions.md).
+Weitere Informationen zu unterstützten Transformationen finden Sie unter den [Data Wrangling-Funktionen in Power Query](wrangling-functions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

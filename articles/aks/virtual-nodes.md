@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78be2edacdcf72a6274755413810fe1308510a79
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634446"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669122"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten
 
@@ -23,7 +23,7 @@ In diesem Artikel finden Sie eine Übersicht über die regionale Verfügbarkeit 
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-In allen Regionen, in denen ACI VNET-SKUs unterstützt, werden Bereitstellungen virtueller Knoten unterstützt.
+In allen Regionen, in denen ACI VNET-SKUs unterstützt, werden Bereitstellungen virtueller Knoten unterstützt. Weitere Einzelheiten finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen](../container-instances/container-instances-region-availability.md).
 
 Informationen zu den verfügbaren CPU- und Arbeitsspeicher-SKUs in den einzelnen Regionen finden Sie unter [Azure Container Instances: Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen: Linux-Containergruppen](../container-instances/container-instances-region-availability.md#linux-container-groups).
 

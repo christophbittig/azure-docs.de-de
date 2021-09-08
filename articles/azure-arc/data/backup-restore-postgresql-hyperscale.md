@@ -7,22 +7,25 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 4ad0fbacdfe8b6205dd32ecd75e5291b504adcac
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: de908a8f29d85aea1954415ba5c9793349837c5f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407775"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339399"
 ---
-# <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung
+# <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Sichern und Wiederherstellen von Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+
+> [!IMPORTANT]
+> Das Sichern und Wiederherstellen von Servern mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung wird in der aktuellen Vorschauversion nicht unterstützt.
 
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-Wenn Sie Ihre PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung sichern oder wiederherstellen, werden alle Datenbanken auf allen PostgreSQL-Knoten Ihrer Servergruppe gesichert und/oder wiederhergestellt.
+Wenn Sie Ihre Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung sichern oder wiederherstellen, werden alle Datenbanken auf allen PostgreSQL-Knoten Ihrer Servergruppe gesichert und/oder wiederhergestellt.
 
 ## <a name="take-a-manual-full-backup"></a>Manuelles Erstellen einer vollständigen Sicherung
 
@@ -35,7 +38,7 @@ Hierbei gilt:
 - __server-name__ gibt eine Servergruppe an.
 - __no-wait__ gibt an, dass die Befehlszeile nicht auf den Abschluss der Sicherung wartet, sodass Sie mit der Verwendung des Befehlszeilenfensters fortfahren können.
 
-Dieser Befehl koordiniert eine verteilte vollständige Sicherung für alle Knoten, aus denen Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden gesichert.
+Dieser Befehl koordiniert eine verteilte vollständige Sicherung für alle Knoten, aus denen Ihre Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden gesichert.
 
 Zum Beispiel:
 
@@ -105,7 +108,7 @@ azdata arc postgres backup restore -sn <target server group name> [-ssn <source 
 
 Hierbei gilt:
 - __backup-id__ entspricht der ID der Sicherung, die mit dem oben gezeigten Befehl zum Auflisten der Sicherungen angezeigt wird.
-Hiermit wird eine verteilte vollständige Wiederherstellung für alle Knoten koordiniert, aus denen Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden wiederhergestellt.
+Hiermit wird eine verteilte vollständige Wiederherstellung für alle Knoten koordiniert, aus denen Ihre Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung besteht. Das bedeutet, alle Daten in Ihren Coordinator- und Workerknoten werden wiederhergestellt.
 
 #### <a name="examples"></a>Beispiele:
 

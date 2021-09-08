@@ -10,12 +10,12 @@ ms.custom: automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 716ed2920b1e731a8515b7f099e77853955d9943
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 343d6dd27167001ecf98435596837eaab5f50da5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884802"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339656"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)
 
@@ -41,15 +41,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 Rufen Sie die Erklärung aus `best_run` ab, darin sind Erklärungen für unbearbeitete und entwickelte Features enthalten.
 
 > [!NOTE]
-> Interpretierbarkeit, die Erklärung des besten Modells, ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, die die folgenden Algorithmen als bestes Modell empfehlen: 
-> * TCNForecaster
-> * AutoArima
-> * ExponentialSmoothing
-> * Prophet
-> * Durchschnitt 
-> * Naiv
-> * Saisonaler Durchschnitt 
-> * Saisonal naiv
+> Interpretierbarkeit, Modellerklärung, ist nicht für das TCNForecaster-Modell verfügbar, das von Experimenten zur Vorhersage mit automatischem maschinellem Lernen empfohlen wird.
 
 ### <a name="download-the-engineered-feature-importances-from-the-best-run"></a>Herunterladen der Relevanzen der entwickelten Features aus dem besten Lauf
 
@@ -134,7 +126,7 @@ Sie können die `explain()`-Methode in MimicWrapper mit den transformierten Test
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
-Für Modelle, die mit automatisiertem ML trainiert werden, können Sie das beste Modell mithilfe der `get_output()` -Methode und der COMPUTE-Erläuterungen lokal erhalten.  Sie können die Erläuterungs-Ergebnisse mit `ExplanationDashboard` aus dem `interpret-community` Paket visualisieren.
+Für Modelle, die mit automatisiertem ML trainiert werden, können Sie das beste Modell mithilfe der `get_output()` -Methode und der COMPUTE-Erläuterungen lokal erhalten.  Sie können die Erklärungsergebnisse mit `ExplanationDashboard` aus dem Paket `raiwidgets` visualisieren.
 
 ```python
 best_run, fitted_model = remote_run.get_output()
@@ -157,7 +149,7 @@ pip install interpret-community[visualization]
 
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
 
  
@@ -166,7 +158,7 @@ raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
                                      raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
                                      eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(raw_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 

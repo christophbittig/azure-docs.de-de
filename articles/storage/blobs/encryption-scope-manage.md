@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1419dcba2dbf1732760848738c6f50c4168ac545
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a44666d8378b13f7ac8498ae4256507705ffc42b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338925"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>Erstellen und Verwalten von Verschlüsselungsbereichen
 
@@ -27,7 +27,7 @@ In diesem Artikel wird gezeigt, wie Sie einen Verschlüsselungsbereich erstellen
 
 ## <a name="create-an-encryption-scope"></a>Erstellen eines Verschlüsselungsbereichs
 
-Sie können einen Verschlüsselungsbereich erstellen, der mit einem von Microsoft verwalteten Schlüssel oder mit einem kundenseitig verwalteten Schlüssel geschützt ist, der in Azure Key Vault oder in Azure Key Vault Managed Hardware Security Model (HSM) (Vorschauversion) gespeichert ist. Zum Erstellen eines Verschlüsselungsbereichs mit einem kundenseitig verwalteten Schlüssel müssen Sie zunächst einen Schlüsseltresor oder ein verwaltetes HSM erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor oder das verwaltete HSM muss der Löschschutz aktiviert sein. Außerdem muss sich der Schlüsseltresor oder das verwaltete HSM in derselben Region befinden wie das Speicherkonto.
+Sie können einen Verschlüsselungsbereich erstellen, der mit einem von Microsoft verwalteten Schlüssel oder mit einem kundenseitig verwalteten Schlüssel geschützt ist, der in Azure Key Vault oder in einem Azure Key Vault Managed Hardware Security Model (HSM) gespeichert ist. Zum Erstellen eines Verschlüsselungsbereichs mit einem kundenseitig verwalteten Schlüssel müssen Sie zunächst einen Schlüsseltresor oder ein verwaltetes HSM erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor oder das verwaltete HSM muss der Löschschutz aktiviert sein. Außerdem muss sich der Schlüsseltresor oder das verwaltete HSM in derselben Region befinden wie das Speicherkonto.
 
 Ein Verschlüsselungsbereich wird bei der Erstellung immer automatisch aktiviert. Nach der Erstellung des Verschlüsselungsbereichs können Sie diesen beim Erstellen eines Blobs angeben. Sie können beim Erstellen eines Containers auch einen Standardverschlüsselungsbereich angeben, der automatisch für alle Blobs im Container gilt.
 
@@ -65,7 +65,7 @@ $accountName = "<storage-account>"
 $scopeName1 = "customer1scope"
 
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName1 `
     -StorageEncryption
 ```
@@ -105,7 +105,7 @@ Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Wer
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName2 `
     -KeyUri $keyUri `
     -KeyvaultEncryption
@@ -181,7 +181,7 @@ az storage account encryption-scope create \
 Wie Sie die Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor oder verwalteten HSM konfigurieren können, erfahren Sie in den folgenden Artikeln:
 
 - [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](../common/customer-managed-keys-configure-key-vault.md)
-- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](../common/customer-managed-keys-configure-key-vault-hsm.md).
+- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM gespeichert sind](../common/customer-managed-keys-configure-key-vault-hsm.md)
 
 Weitere Informationen zur Infrastrukturverschlüsselung finden Sie unter [Aktivieren der Infrastrukturverschlüsselung für die doppelte Verschlüsselung von Daten](../common/infrastructure-encryption-enable.md).
 

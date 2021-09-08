@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 1e2751c7df1cd3b43ce6c700bc51b51faf95963f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613525"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468694"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (PowerShell)
 
@@ -23,8 +23,8 @@ Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe von [Azure PowerShell](/powershell/azure/new-azureps-module-az) durchlaufen.
 
-* Wenn Sie diese Schritte manuell mithilfe des Azure-Portals durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md) .
-* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [Verwenden Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md) .
+* Wenn Sie diese Schritte manuell im Azure-Portal durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md).
+* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md).
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -145,4 +145,4 @@ Sie verfügen nun über eine einsatzbereite Azure Digital Twins-Instanz und habe
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können auch eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie Authentifizierungscode verwenden:
-* [Verwenden Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)
+* [Schreiben von App-Authentifizierungscode](how-to-authenticate-client.md)

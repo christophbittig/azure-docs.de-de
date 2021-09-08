@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma, moslake
-ms.date: 02/09/2021
-ms.openlocfilehash: e0f2ffbb09929a919f90fdec50fe72173af78606
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 07/26/2021
+ms.openlocfilehash: aad6da736bde6a50d3bf0b0164830333823f444b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411861"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709763"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrieren einer Datenbank in Azure SQL-Datenbank vom DTU- zum vCore-basierten Modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,15 +35,15 @@ Um das Dienstziel oder die Computegröße für die migrierte Datenbank im vCore-
 > [!TIP]
 > Diese Regel ist eine Annäherung, da sie die für die DTU-Datenbank oder den Pool für elastische Datenbanken genutzte Hardwaregeneration nicht berücksichtigt. 
 
-Im DTU-Modell kann jede verfügbare [Hardwaregeneration](purchasing-models.md#hardware-generations-in-the-dtu-based-purchasing-model) für Ihre Datenbank oder Ihren Pool für elastische Datenbanken genutzt werden. Darüber hinaus haben Sie nur eine indirekte Kontrolle über die Anzahl der virtuellen Kerne (logischen CPUs), indem Sie höhere oder niedrigere DTU- oder eDTU-Werte wählen. 
+Im DTU-Modell kann jede verfügbare [Hardwaregeneration](purchasing-models.md#hardware-generations-in-the-dtu-based-purchasing-model) für Ihre Datenbank oder Ihren Pool für elastische Datenbanken vom System ausgewählt werden. Darüber hinaus haben Sie beim DTU-Modell nur indirekte Kontrolle über die Anzahl der virtuellen Kerne (logischen CPUs), indem Sie höhere oder niedrigere DTU- oder eDTU-Werte auswählen. 
 
-Beim vCore-Modell muss der Kunde eine explizite Auswahl sowohl der Hardwaregeneration als auch der Anzahl der virtuellen Kerne (logischen CPUs) treffen. Das DTU-Modell bietet diese Wahlmöglichkeiten nicht. Die Hardwaregeneration und Anzahl der logischen CPUs, die für jede Datenbank und jeden Pool für elastische Datenbanken genutzt werden, werden jedoch über dynamische Verwaltungsansichten verfügbar gemacht. Dies ermöglicht es, das passende vCore-Dienstziel genauer zu bestimmen. 
+Beim vCore-basierten Kaufmodell muss der Kunde eine explizite Auswahl sowohl der Hardwaregeneration als auch der Anzahl der virtuellen Kerne (logischen CPUs) treffen. Das DTU-basierte Kaufmodell bietet diese Wahlmöglichkeiten nicht. Die Hardwaregeneration und Anzahl logischer CPUs, die für jede Datenbank und jeden Pool für elastische Datenbanken genutzt werden, werden über dynamische Verwaltungssichten verfügbar gemacht. Dies ermöglicht es, das passende vCore-Dienstziel genauer zu bestimmen. 
 
 Beim folgenden Ansatz werden diese Informationen zur Bestimmung eines vCore-Dienstziels mit einer ähnlichen Zuteilung von Ressourcen genutzt, um nach der Migration zum vCore-Modell ein ähnliches Leistungsniveau zu erreichen.
 
 ### <a name="dtu-to-vcore-mapping"></a>Zuordnung von DTU zu vCore
 
-Die nachstehende T-SQL-Abfrage gibt bei der Ausführung im Kontext einer zu migrierenden DTU-Datenbank eine übereinstimmende Anzahl virtueller Kerne (möglicherweise als Bruchzahl) in jeder Hardwaregeneration im vCore-Modell zurück. Durch Runden dieser Zahl auf die nächstliegende Anzahl virtueller Kerne, die für [Datenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md) in jeder Hardwaregeneration im vCore-Modell verfügbar sind, können Kunden das vCore-Dienstziel wählen, das ihrer DTU-Datenbank oder ihrem Pool für elastische Datenbanken am ehesten entspricht. 
+Die folgende T-SQL-Abfrage gibt bei der Ausführung im Kontext einer zu migrierenden DTU-Datenbank eine übereinstimmende Anzahl virtueller Kerne (möglicherweise als Bruchzahl) in jeder Hardwaregeneration im vCore-Modell zurück. Durch Runden dieser Zahl auf die nächstliegende Anzahl virtueller Kerne, die für [Datenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md) in jeder Hardwaregeneration im vCore-Modell verfügbar sind, können Kunden das vCore-Dienstziel wählen, das ihrer DTU-Datenbank oder ihrem Pool für elastische Datenbanken am ehesten entspricht. 
 
 Beispiele von Migrationsszenarien, die diesen Ansatz aufgreifen, sind im Abschnitt [Beispiele](#dtu-to-vcore-migration-examples) beschrieben.
 
@@ -65,7 +65,7 @@ SELECT rg.slo_name,
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
-WHERE dtu_limit > 0
+WHERE rg.dtu_limit > 0
       AND
       DB_NAME() <> 'master'
       AND
@@ -103,18 +103,18 @@ FROM dtu_vcore_map;
 Neben der Anzahl der virtuellen Kerne (logischen CPUs) und der Hardwaregeneration können verschiedene andere Faktoren die Wahl des vCore-Dienstziels beeinflussen:
 
 - Die T-SQL-Zuordnungsabfrage entspricht den DTU- und vCore-Dienstzielen in Bezug auf ihre CPU-Kapazität. Daher sind die Ergebnisse bei CPU-gebundenen Workloads genauer.
-- Bei der gleichen Hardwaregeneration und der gleichen Anzahl virtueller Kerne sind die Ressourcengrenzwerte für IOPS- und Transaktionsprotokolldurchsatz bei vCore-Datenbanken oft höher als bei DTU-Datenbanken. Bei E/A-gebundenen Workloads ist es eventuell möglich, die Anzahl der virtuellen Kerne im vCore-Modell zu verringern, um dasselbe Leistungsniveau zu erreichen. Ressourcengrenzen für DTU- und vCore-Datenbanken werden in der Sicht [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) in absoluten Werten verfügbar gemacht. Der Vergleich dieser Werte zwischen der zu migrierenden DTU-Datenbank und einer vCore-Datenbank unter Verwendung eines annähernd übereinstimmenden vCore-Dienstziels hilft Ihnen, das vCore-Dienstziel genauer auszuwählen.
+- Bei der gleichen Hardwaregeneration und der gleichen Anzahl virtueller Kerne sind die Ressourcengrenzwerte für IOPS- und Transaktionsprotokolldurchsatz bei vCore-Datenbanken oft höher als bei DTU-Datenbanken. Bei E/A-gebundenen Workloads ist es eventuell möglich, die Anzahl der virtuellen Kerne im vCore-Modell zu verringern, um dasselbe Leistungsniveau zu erreichen. Tatsächliche Ressourcengrenzwerte für DTU- und vCore-Datenbanken werden in der Sicht [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) verfügbar gemacht. Der Vergleich dieser Werte zwischen der zu migrierenden DTU-Datenbank oder dem Pool und einer vCore-Datenbank bzw. einem Pool unter Verwendung eines annähernd übereinstimmenden vCore-Dienstziels hilft Ihnen, das vCore-Dienstziel genauer auszuwählen.
 - Die Zuordnungsabfrage gibt auch die Arbeitsspeichergröße pro Kern für die zu migrierende DTU-Datenbank oder den zu migrierenden Pool für elastische Datenbanken und für jede Hardwaregeneration im vCore-Modell zurück. Die Gewährleistung eines ähnlichen oder größeren Gesamtarbeitsspeichers nach der Migration zu vCore ist wichtig für Workloads, die einen großen Datencache im Arbeitsspeicher benötigen, um eine ausreichende Leistung zu erzielen, oder für Workloads, die für die Abfrageverarbeitung große Speicherzuweisungen erfordern. Bei solchen Workloads kann es je nach tatsächlicher Leistung erforderlich sein, die Anzahl der virtuellen Kerne zu erhöhen, um genügend Gesamtarbeitsspeicher zu erhalten.
 - Bei Wahl des vCore-Dienstziels sollte die [bisherige Ressourcennutzung](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) der DTU-Datenbank berücksichtigt werden. DTU-Datenbanken mit durchweg nicht ausgelasteten CPU-Ressourcen benötigen möglicherweise weniger virtuellen Kerne als die von der Zuordnungsabfrage zurückgegebene Anzahl. Umgekehrt können DTU-Datenbanken, bei denen eine konstant hohe CPU-Auslastung eine unzureichende Leistung bei Workloads verursacht, mehr virtuellen Kerne erfordern, als von der Abfrage zurückgegeben werden.
-- Wenn Sie Datenbanken mit sporadischen oder unvorhersehbaren Nutzungsmustern migrieren, sollten Sie den Computetarif [Serverlos](serverless-tier-overview.md) erwägen. Beachten Sie, dass die maximale Anzahl gleichzeitiger Worker (Anforderungen) beim Tarif „Serverlos“ 75 % des Limits für bereitgestelltes Computing bei gleicher Anzahl der maximal konfigurierten virtuellen Kerne beträgt. Außerdem beträgt der maximale verfügbare Arbeitsspeicher beim Tarif „Serverlos“ 3 GB multipliziert mit der maximalen Anzahl konfigurierter virtueller Kerne. Beispielsweise beläuft sich der maximale Arbeitsspeicher auf 120 GB, wenn 40 virtuelle Kerne konfiguriert wurden.   
+- Wenn Sie Datenbanken mit sporadischen oder unvorhersehbaren Nutzungsmustern migrieren, sollten Sie den Computetarif [Serverlos](serverless-tier-overview.md) erwägen. Beachten Sie, dass die maximale Anzahl gleichzeitiger Worker (Anforderungen) beim Tarif „Serverlos“ 75 % des Limits für bereitgestelltes Computing bei gleicher Anzahl der maximal konfigurierten virtuellen Kerne beträgt. Außerdem ist bei „Serverlos“ der verfügbare maximale Arbeitsspeicher 3 GB mal der maximalen Anzahl konfigurierter virtueller Kerne und damit kleiner als der pro Kern verfügbare Arbeitsspeicher für bereitgestelltes Computing. Beispielsweise beträgt der maximale Arbeitsspeicher für Gen5 120 GB, wenn bei „Serverlos“ maximal 40 virtuelle Kerne konfiguriert sind, im Gegensatz dazu aber 204 GB bei bereitgestelltem Computing mit 40 virtuellen Kernen.
 - Beim vCore-Modell kann die unterstützte maximale Datenbankgröße je nach Hardwaregeneration variieren. Überprüfen Sie für große Datenbanken die unterstützten Höchstgrößen im vCore-Modell für [einzelne Datenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
 - Bei Pools für elastische Datenbanken weisen das [DTU](resource-limits-dtu-elastic-pools.md)- und das [vCore](resource-limits-vcore-elastic-pools.md)-Modell Unterschiede bei der maximal unterstützten Anzahl von Datenbanken pro Pool auf. Dies muss bei der Migration von Pools für elastische Datenbanken mit vielen Datenbanken berücksichtigt werden.
-- Einige Hardwaregenerationen sind möglicherweise nicht in allen Regionen verfügbar. Überprüfen Sie die Verfügbarkeit unter [Hardwaregenerationen für SQL-Datenbank](./service-tiers-sql-database-vcore.md#hardware-generations) oder [Hardwaregenerationen für SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations).
+- Einige Hardwaregenerationen sind möglicherweise nicht in allen Regionen verfügbar. Prüfen Sie die Verfügbarkeit unter [Hardwaregenerationen für SQL-Datenbank](./service-tiers-sql-database-vcore.md#hardware-generations).
 
 > [!IMPORTANT]
 > Bei den genannten Größenrichtlinien für die Migration von DTU zu vCore handelt es sich um Richtwerte, die eine erste Einschätzung des Dienstziels der Zieldatenbank ermöglichen sollen.
 >
-> Die optimale Konfiguration der Zieldatenbank ist workloadabhängig. Zur Erzielung des optimalen Preis-Leistungs-Verhältnisses nach der Migration müssen Sie ggf. sowohl die Flexibilität des vCore-Modells nutzen, um die Anzahl virtueller Kerne, die Hardwaregeneration sowie die Dienst- und Compute-Ebene anzupassen, als auch andere Parameter für die Datenbankkonfiguration optimieren (etwa den [maximalen Grad an Parallelität](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)).
+> Die optimale Konfiguration der Zieldatenbank ist workloadabhängig. Um nach der Migration ein optimales Preis-Leistungs-Verhältnis zu erzielen, müssen Sie daher möglicherweise die Flexibilität des vCore-Modells nutzen, um die Anzahl der virtuellen Kerne, die Hardwaregeneration sowie die Dienst- und Computeebenen anzupassen. Möglicherweise müssen Sie auch Datenbankkonfigurationsparameter anpassen, z. B. den [maximalen Grad an Parallelität](configure-max-degree-of-parallelism.md), und/oder den [Kompatibilitätsgrad](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) der Datenbank ändern, um aktuelle Verbesserungen an der Datenbank-Engine anzuwenden.
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>Beispiele für die Migration von DTU zu vCore
@@ -198,7 +198,7 @@ Wenn Sie eine Geo-Sekundärdatenbank im Pool für elastische Datenbanken für ei
 
 ## <a name="use-database-copy-to-migrate-from-dtu-to-vcore"></a>Verwenden von Datenbankkopien zum Migrieren von DTU zu vCore
 
-Sie können eine beliebige Datenbank mit einer DTU-basierten Computegröße in eine Datenbank mit einer V-Kern-basierten Computegröße kopieren, ohne dass hierfür Einschränkungen oder spezielle Sequenzierungen gelten, solange die Zielcomputegröße die maximale Datenbankgröße der Quelldatenbank unterstützt. Die Datenbankkopie erstellt eine Momentaufnahme der Daten zum Startzeitpunkt des Kopiervorgangs und synchronisiert keine Daten zwischen Quelle und Ziel.
+Sie können eine beliebige Datenbank mit einer DTU-basierten Computegröße in eine Datenbank mit einer V-Kern-basierten Computegröße kopieren, ohne dass hierfür Einschränkungen oder spezielle Sequenzierungen gelten, solange die Zielcomputegröße die maximale Datenbankgröße der Quelldatenbank unterstützt. Beim Kopieren einer Datenbank wird eine transaktional konsistente Momentaufnahme der Daten zu einem bestimmten Zeitpunkt nach dem Start des Kopiervorgangs erstellt. Nach diesem Zeitpunkt werden keine Daten zwischen der Quelle und dem Ziel mehr synchronisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

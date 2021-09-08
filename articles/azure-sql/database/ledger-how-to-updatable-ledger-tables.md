@@ -1,27 +1,27 @@
 ---
 title: Erstellen und Verwenden aktualisierbarer Ledgertabellen
 description: Erfahren Sie, wie Sie aktualisierbare Ledgertabellen in Azure SQL-Datenbank erstellen und verwenden.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 739523f6d98ea2905f4de5071581c8f4d8484893
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4027bcaba4e89e89bec2ffa45d50c94e9a07b12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076418"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339687"
 ---
 # <a name="create-and-use-updatable-ledger-tables"></a>Erstellen und Verwenden aktualisierbarer Ledgertabellen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 In diesem Artikel erfahren Sie, wie Sie [aktualisierbare Ledgertabellen](ledger-updatable-ledger-tables.md) in Azure SQL-Datenbank erstellen können. Als Nächstes fügen Sie Werte in die aktualisierbare Ledgertabelle ein. Danach nehmen Sie Aktualisierungen an den Daten vor. Schließlich zeigen Sie die Ergebnisse unter Verwendung der Ledgeransicht an. Dazu wird als Beispiel eine Bankanwendung verwendet, die das Guthaben von Bankkunden auf deren Konten nachverfolgt. In diesem Beispiel erhalten Sie einen praxisnahen Blick auf die Beziehung zwischen der aktualisierbaren Ledgertabelle und der zugehörigen Verlaufstabelle sowie der Ledgersicht.
 
@@ -161,7 +161,7 @@ Erstellen Sie eine Kontosaldotabelle mit dem folgenden Schema.
    FROM [Account].[Balance] 
    GO
    
-   SELECT * FROM <Your unique history table name>
+   SELECT * FROM [<Your unique history table name>]
    GO 
    
    SELECT * FROM Account.Balance_Ledger

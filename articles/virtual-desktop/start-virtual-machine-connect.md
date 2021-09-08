@@ -3,23 +3,19 @@ title: 'Virtuellen Computer bei Verbindung starten: Azure'
 description: Vorgehensweise beim Konfigurieren des Features zum Starten eines virtuellen Computers bei Verbindung.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e4ca9a6cfc87844bf74131b145c19aecd964554
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752133"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339147"
 ---
-# <a name="start-virtual-machine-on-connect-preview"></a>VM bei Verbindung starten (Vorschau)
+# <a name="start-virtual-machine-on-connect"></a>VM bei Verbindung starten
 
-> [!IMPORTANT]
-> Das Feature „VM bei Verbindung starten“ befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Mit dem Feature „VM bei Verbindung starten (Vorschau)“ können Sie Kosten sparen, indem Sie Endbenutzern erlauben, ihre virtuellen Computer (VMs) nur dann zu aktivieren, wenn sie sie benötigen. Nicht benötigte VMs können Sie dann deaktivieren.
+Mit dem Feature „VM bei Verbindung starten“ können Sie Kosten sparen, indem Sie Endbenutzern erlauben, ihre virtuellen Computer (VMs) nur dann zu aktivieren, wenn sie sie benötigen. Nicht benötigte VMs können Sie dann deaktivieren.
 
 >[!NOTE]
 >Dieses Feature wird von Azure Virtual Desktop (klassisch) nicht unterstützt.
@@ -30,12 +26,13 @@ Sie können das Feature „VM bei Verbindung starten“ für persönliche oder g
 
 Die folgenden Remotedesktopclients unterstützen das Feature „VM bei Verbindung starten“:
 
-- [Der Webclient](connect-web.md)
-- [Der Windows-Client (Version 1.2748 oder höher)](connect-windows-7-10.md)
-- [Der Android-Client (Version 10.0.10 oder höher)](connect-android.md)
-- [Der macOS-Client (Version 10.6.4 oder höher)](connect-macos.md)
-
-Sie können im [Tech Community-Forum](https://aka.ms/wvdtc) nach Ankündigungen zu Updates und zur Clientunterstützung suchen.
+- [Der Webclient](./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Der Windows-Client (Version 1.2.2061 oder höher)](./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Der Android-Client (Version 10.0.10 oder höher)](./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Der macOS-Client (Version 10.6.4 oder höher)](./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Der iOS-Client (Version 10.2.5 oder höher)](./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Der Microsoft Store-Client (Version 10.2.2005.0 oder höher)](./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- Die unter [Thin Client-Unterstützung](./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json) aufgeführten Thin Clients
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Erstellen einer benutzerdefinierten Rolle für „VM bei Verbindung starten“
 
@@ -69,7 +66,7 @@ So weisen Sie die benutzerdefinierten Rolle zu:
 
 2. Wählen Sie die Rolle aus, die Sie gerade erstellt haben.
 
-3. Geben Sie in der Suchleiste **Azure Virtual Desktop** ein, und wählen Sie diese Eingabe aus.
+3. Geben Sie in der Suchleiste **Windows Virtual Desktop** (dies wird in Kürze auf „Azure Virtual Desktop“ aktualisiert) ein, und wählen Sie es aus.
 
       >[!NOTE]
       >Wenn Sie Azure Virtual Desktop (klassisch) bereitgestellt haben, werden möglicherweise zwei Apps angezeigt. Weisen Sie die Rolle beiden Apps zu, die Sie sehen.
@@ -79,30 +76,33 @@ So weisen Sie die benutzerdefinierten Rolle zu:
 
 ### <a name="create-a-custom-role-with-a-json-file-template"></a>Erstellen einer benutzerdefinierten Rolle mit einer JSON-Dateivorlage
 
-Wenn Sie eine JSON-Datei verwenden, um die benutzerdefinierte Rolle zu erstellen, können Sie die im folgenden Beispiel gezeigte grundlegende Vorlage verwenden. Stellen Sie sicher, dass Sie den Wert der Abonnement-ID durch die Abonnement-ID ersetzen, der Sie die Rolle zuweisen möchten.
+Wenn Sie eine JSON-Datei verwenden, um die benutzerdefinierte Rolle zu erstellen, können Sie die im folgenden Beispiel gezeigte grundlegende Vorlage verwenden. Achten Sie darauf, den Wert der Abonnement-ID in *AssignableScopes* durch die Abonnement-ID zu ersetzen, der Sie die Rolle zuweisen möchten.
 
 ```json
 {
-    "properties": {
-        "roleName": "start VM on connect",
-        "description": "Friendly description.",
-        "assignableScopes": [
-            "/subscriptions/<SubscriptionID>"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/virtualMachines/start/action",
-                    "Microsoft.Compute/virtualMachines/read"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+  "Name": "Start VM on connect (Custom)",
+  "IsCustom": true,
+  "Description": "Start VM on connect with AVD (Custom)",
+  "Actions": [
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/read"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/00000000-0000-0000-0000-000000000000"
+  ]
 }
 ```
+
+Zur Verwendung der JSON-Vorlage speichern Sie die JSON-Datei, fügen unter *Zuweisbare Bereiche* die entsprechenden Abonnementinformationen hinzu und führen dann das folgende Cmdlet in PowerShell aus:
+
+```powershell
+New-AzRoleDefinition -InputFile "C:\temp\filename"
+```
+
+Weitere Informationen zum Erstellen benutzerdefinierter Rollen finden Sie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell](../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template).
 
 ## <a name="configure-the-start-vm-on-connect-feature"></a>Konfigurieren des Features „VM bei Verbindung starten“
 

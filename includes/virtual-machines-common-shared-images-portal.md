@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: cynthn
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f4a2e5a7186032995ee277dfb9f2c226853163b
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101750558"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573980"
 ---
 ## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs
 
@@ -35,13 +35,15 @@ Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGa
 
 ## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
 
-Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
+Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. 
 
-Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In diesem Beispiel heißt das Katalogimage *myImageDefinition*.
+Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
+
+Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. 
 
 1. Wählen Sie auf der Seite Ihres neuen Imagekatalogs **Neue Imagedefinition hinzufügen** oben auf der Seite aus. 
 1. Wählen Sie unter **Neue Imagedefinition zum Katalog mit freigegebenen Images hinzufügen** für **Region** die Option *USA, Osten* aus.
-1. Geben Sie für **Name der Imagedefinition** *myImageDefinition* ein.
+1. Geben Sie für **Name der Imagedefinition** einen Namen wie *meineImageDefinition* ein.
 1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.  
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quell-VM aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../articles/virtual-machines/generation-2.md).
 1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
@@ -55,39 +57,35 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 
 ## <a name="create-an-image-version"></a>Erstellen einer Imageversion
 
-Erstellen Sie eine Imageversion aus einem verwalteten Image. In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die *Quell* region als Ziel für die Replikation angeben müssen.
-
-Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
+ Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die *Quell* region als Ziel für die Replikation angeben müssen.
 
 Die Schritte zum Erstellen einer Imageversion unterscheiden sich geringfügig, abhängig davon, ob es sich bei der Quelle um ein generalisiertes Image oder eine Momentaufnahme eines spezialisierten virtuellen Computers handelt. 
 
-### <a name="option-generalized"></a>Option: Generalisiert
 
 1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
-1. Wählen Sie unter **Region** die Region, in der Ihr verwaltetes Image gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie das verwaltete Image, aus dem sie erstellt wurden.
-1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
-1. Wählen Sie unter **Quellimage** aus der Dropdownliste das von der Quelle verwaltete Image aus.
+1. Wählen Sie unter **Region** die Region aus, in der das Image erstellt werden soll.
+1. Geben Sie für **Versionsnummer** eine Zahl wie *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
+1. Wählen Sie unter **Quellimage** aus der Dropdownliste das von der Quelle verwaltete Image aus. In der folgenden Tabelle finden Sie spezifische Angaben zu den einzelnen Quellentypen.
+
+    | `Source` | Weitere Felder |
+    |---|---|
+    | Datenträger oder Momentaufnahmen | – Wählen Sie für **Betriebssystemdatenträger** den Datenträger oder die Momentaufnahme aus der Dropdownliste aus. <br> – Zum Hinzufügen eines Datenträgers geben Sie die LUN-Nummer ein, und wählen Sie dann in der Dropdownliste den Datenträger aus. |
+    | Imageversion | – Wählen Sie in der Dropdownliste den **Quellkatalog** aus. <br> – Wählen Sie in der Dropdownliste die richtige Bilddefinition aus. <br>– Wählen Sie in der Dropdownliste die vorhandene Imageversion aus, die Sie verwenden möchten. |
+    | Verwaltetes Image | – Wählen Sie in der Dropdownliste das **Quellimage** aus. <br>Das verwaltete Image muss sich in derselben Region befinden, die Sie unter **Instanzdetails** ausgewählt haben.
+    | VHD in einem Speicherkonto | Wählen Sie **Durchsuchen** aus, um das Speicherkonto für die VHD auszuwählen. |
+
 1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
 1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.
-1. Belassen Sie in **Replikation** die **Anzahl von Standardreplikaten** bei 1. Die Replikation muss in den Quellbereich ausgeführt werden. Also belassen Sie das erste Replikat als Standard bei und wählen Sie dann einen zweiten Replikatbereich als *USA, Osten* aus.
+1. Wählen Sie auf der Registerkarte **Replikation** in der Dropdownliste den Speichertyp aus.
+1. Legen Sie die **Anzahl von Standardreplikaten** fest. Diese können Sie für jede hinzugefügte Region überschreiben. 
+1. Sie müssen in die Quellregion replizieren, damit sich das erste Replikat in der Liste in der Region befindet, in der Sie das Image erstellt haben. Sie können weitere Replikate hinzufügen, indem Sie die Region in der Dropdownliste auswählen und die Anzahl der Replikate nach Bedarf anpassen.
 1. Wählen Sie abschließend **Überprüfen + Erstellen** aus. Azure überprüft die Konfiguration.
 1. Nachdem die Imageversion erfolgreich überprüft wurde, wählen Sie **Erstellen**.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
 Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
 
-### <a name="option-specialized"></a>Option: Spezialisiert
-
-1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
-1. Wählen Sie unter **Region** die Region aus, in der die Momentaufnahme gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie die Quelle, aus der sie erstellt wurden.
-1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
-1. Wählen Sie in **Betriebssystemdatenträger-Momentaufnahme** die Momentaufnahme aus der Quell-VM in der Dropdownliste aus. Wenn die Quell-VM einen Datenträger enthält, den Sie einschließen möchten, wählen Sie in der Dropdownliste die richtige **LUN** aus, und wählen Sie dann für **Datenträger-Momentaufnahme** die Momentaufnahme des Datenträgers aus. 
-1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
-1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.
-1. Belassen Sie in **Replikation** die **Anzahl von Standardreplikaten** bei 1. Die Replikation muss in den Quellbereich ausgeführt werden. Also belassen Sie das erste Replikat als Standard bei und wählen Sie dann einen zweiten Replikatbereich als *USA, Osten* aus.
-1. Wählen Sie abschließend **Überprüfen + Erstellen** aus. Azure überprüft die Konfiguration.
-1. Nachdem die Imageversion erfolgreich überprüft wurde, wählen Sie **Erstellen**.
-1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
+Sie können eine vorhandene VM auch über das Portal als Image erfassen. Weitere Informationen finden Sie unter [Erstellen eines Images eines virtuellen Computers im Portal](../articles/virtual-machines/capture-image-portal.md).
 
 ## <a name="share-the-gallery"></a>Teilen des Katalogs
 

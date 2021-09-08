@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e57f687622b0878d66bfde5770ed9a97b613a683
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904702"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091355"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Erste Schritte mit dem Azure Maps-Visual in Power BI
 
-<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz </Token>
+<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz</Token>
 
 Dieser Artikel zeigt die Verwendung des Microsoft Azure Maps-Visuals für Power BI.
 
@@ -31,11 +31,11 @@ Das Azure Maps-Visual für Power BI bietet umfangreiche Datenvisualisierungen f
 
 ## <a name="what-is-sent-to-azure"></a>Welche Daten werden an Azure gesendet?
 
-Das Azure Maps-Visual stellt eine Verbindung mit dem in Azure gehosteten Clouddienst her, um Standortdaten wie Kartenabbildungen und Koordinaten zum Erstellen der Kartenvisualisierung abzurufen. 
+Das Azure Maps-Visual stellt eine Verbindung mit dem in Azure gehosteten Clouddienst her, um Standortdaten wie Kartenabbildungen und Koordinaten zum Erstellen der Kartenvisualisierung abzurufen.
 
--   Details über den Bereich im Fokus der Karte werden an Azure gesendet, um die zum Rendern der Karten-Canvas (auch als Kartenkacheln bezeichnet) benötigten Abbildungen abzurufen. 
--   Daten in den Buckets für Standort, Breitengrad und Längengrad können an Azure gesendet werden, um Kartenkoordinaten abzurufen. Dieser Vorgang wird als Geocodierung bezeichnet. 
--   Telemetriedaten können zur Integrität des visuellen Elements (d. h. Absturzberichte) gesammelt werden, wenn die Telemetrieoption in Power BI aktiviert ist.
+- Details über den Bereich im Fokus der Karte werden an Azure gesendet, um die zum Rendern der Karten-Canvas (auch als Kartenkacheln bezeichnet) benötigten Abbildungen abzurufen.
+- Daten in den Buckets für Standort, Breitengrad und Längengrad können an Azure gesendet werden, um Kartenkoordinaten abzurufen. Dieser Vorgang wird als Geocodierung bezeichnet.
+- Telemetriedaten können zur Integrität des visuellen Elements (z. B. Absturzberichte) gesammelt werden, wenn die Telemetrieoption in Power BI aktiviert ist.
 
 Abgesehen von den oben beschriebenen Szenarien werden keine weiteren Daten, die auf der Karte überlagert werden, an die Azure Maps-Server gesendet. Das gesamte Rendering von Daten erfolgt lokal innerhalb des Clients.
 
@@ -49,9 +49,8 @@ Weitere Informationen zu Datenschutz und Nutzungsbedingungen im Zusammenhang mit
 
 Für das **Azure Maps** Visual sind einige Aspekte und Anforderungen zu beachten. :
 
--   Das **Azure Maps**-Visual (Vorschau) muss in Power BI Desktop aktiviert werden. Zum Aktivieren des **Azure Maps**-Visuals wählen Sie **Datei** &gt; **Optionen und Einstellungen** &gt; **Optionen** &gt; **Previewfunktionen** aus und aktivieren dann das Kontrollkästchen **Azure Maps-Visual**. Wenn das Azure Maps-Visual anschließend nicht verfügbar ist, muss wahrscheinlich eine Option des Mandantenadministrators im Verwaltungsportal aktiviert werden.
--   Das Dataset muss Felder mit Informationen zu **Breitengrad** und **Längengrad** enthalten. Die Geocodierung von Standortfeldern wird in einem zukünftigen Update hinzugefügt.
--   Das integrierte Legendensteuerelement für Power BI wird in dieser Vorschau derzeit nicht angezeigt. Es wird in einem späteren Update hinzugefügt.
+- Das **Azure Maps**-Visual (Vorschau) muss in Power BI Desktop aktiviert werden. Zum Aktivieren des **Azure Maps**-Visuals wählen Sie **Datei** &gt; **Optionen und Einstellungen** &gt; **Optionen** &gt; **Previewfunktionen** aus und aktivieren dann das Kontrollkästchen **Azure Maps-Visual**. Wenn das Azure Maps-Visual nach dem Aktivieren dieser Einstellung nicht verfügbar ist, muss wahrscheinlich eine Option des Mandantenadministrators im Verwaltungsportal aktiviert werden.
+- Das Dataset muss Felder mit Informationen zu **Breitengrad** und **Längengrad** enthalten.
 
 ## <a name="use-the-azure-maps-visual-preview"></a>Verwenden des Azure Maps-Visuals (Vorschau)
 
@@ -59,32 +58,32 @@ Wählen Sie nach dem Aktivieren des **Azure Maps**-Visuals im Bereich **Visualis
 
 ![Schaltfläche des Azure Maps-Visuals im Bereich „Visualisierungen“](media/power-bi-visual/azure-maps-in-visualizations-pane.png)
 
-Power BI erstellt eine leere Design-Canvas für das Azure Maps-Visual. In der Vorschauversion wird zusätzlich ein Haftungsausschluss angezeigt.
+Power BI erstellt eine leere Design-Canvas für das Azure Maps-Visual. In der Vorschauversion wird ein weiterer Haftungsausschluss angezeigt.
 
 ![Power BI Desktop mit geladenem Azure Maps-Visual im Anfangszustand](media/power-bi-visual/visual-initial-load.png)
 
 Gehen Sie zum Laden des Azure Maps-Visuals folgendermaßen vor:
 
-1.  Ziehen Sie Datenfelder mit Informationen zu Breitengrad- und Längengradkoordinaten aus dem Bereich **Felder** in die Buckets **Breitengrad** und/oder **Längengrad**. Dies sind die Mindestdaten, die zum Laden des Azure Maps-Visuals erforderlich sind.
-    
+1. Ziehen Sie Datenfelder mit Informationen zu Breitengrad- und Längengradkoordinaten aus dem Bereich **Felder** in die Buckets **Breitengrad** und/oder **Längengrad**. Dies sind die Mindestdaten, die zum Laden des Azure Maps-Visuals erforderlich sind.
+
     > [!div class="mx-imgBorder"]
     > ![Azure Maps-Visual mit Blasendarstellung von Punkten auf der Karte nach Angabe von Feldern für Breiten- und Längengrad](media/power-bi-visual/bubble-layer.png)
 
-2.  Ziehen Sie ein Kategoriefeld in den Bucket **Legende** des Bereichs **Felder**, um die Daten der Kategorisierung entsprechend zu färben. In diesem Beispiel verwenden wir die Spalte **AdminDistrict** (auch als „Staat“ oder „Provinz“ bezeichnet).  
-    
+2. Ziehen Sie ein Kategoriefeld in den Bucket **Legende** des Bereichs **Felder**, um die Daten der Kategorisierung entsprechend zu färben. In diesem Beispiel verwenden wir die Spalte **AdminDistrict** (auch als „Staat“ oder „Provinz“ bezeichnet).  
+
     > [!div class="mx-imgBorder"]
     > ![Azure Maps-Visual mit farbiger Blasendarstellung von Punkten auf der Karte nach Angabe des Legendenfelds](media/power-bi-visual/bubble-layer-with-legend-color.png)
 
     > [!NOTE]
-    > Das integrierte Legendensteuerelement für Power BI wird in dieser Vorschau derzeit nicht angezeigt. Es wird in einem späteren Update hinzugefügt.
+    > Das integrierte Legendensteuerelement für Power BI wird in dieser Vorschau derzeit nicht angezeigt.
 
-3.  Um die Daten relativ zu skalieren, ziehen Sie ein Measure in den Bucket **Größe** des Bereichs **Felder**. In diesem Beispiel verwenden wir die Spalte für **Umsatz**.  
-    
+3. Um die Daten relativ zu skalieren, ziehen Sie ein Measure in den Bucket **Größe** des Bereichs **Felder**. In diesem Beispiel verwenden wir die Spalte für **Umsatz**.  
+
     > [!div class="mx-imgBorder"]
     > ![Azure Maps-Visual mit farbiger und skalierter Blasendarstellung von Punkten auf der Karte nach Angabe des Größenfelds](media/power-bi-visual/bubble-layer-with-legend-color-and-size.png)
 
-4.  Verwenden Sie die Optionen im Bereich **Format**, um das Datenrendering anzupassen. Die folgende Abbildung zeigt dieselbe Karte wie oben, allerdings wurde die Option für die Fülltransparenz der Blasenebenen auf 50 % festgelegt, und die Option für Umrisse mit hohem Kontrast wurde aktiviert.  
-    
+4. Verwenden Sie die Optionen im Bereich **Format**, um das Datenrendering anzupassen. Die folgende Abbildung zeigt dieselbe Karte wie oben, allerdings wurde die Option für die Fülltransparenz der Blasenebenen auf 50 % festgelegt, und die Option für Umrisse mit hohem Kontrast wurde aktiviert.  
+
     > [!div class="mx-imgBorder"]
     > ![Azure Maps-Visual mit Blasendarstellung von Punkten auf der Karte in einem benutzerdefinierten Stil](media/power-bi-visual/bubble-layer-styled.png)
 
@@ -96,9 +95,9 @@ Im Bereich **Felder** des Azure Maps-Visuals stehen die folgenden Datenbuckets z
 |-----------|--------------|
 | Breitengrad  | Das Feld, in dem der Breitengradwert der Datenpunkte angegeben wird. Breitengradwerte müssen als Gradangabe zwischen -90 und 90 im Dezimalformat vorliegen.  |
 | Längengrad | Das Feld, in dem der Längengradwert der Datenpunkte angegeben wird. Längengradwerte müssen als Gradangabe zwischen -180 und 180 im Dezimalformat vorliegen.  |
-| Legende    | Das Feld, das zum Kategorisieren der Daten und zum Zuweisen einer eindeutigen Farbe für Datenpunkte in den einzelnen Kategorien verwendet wird. Wenn dieser Bucket gefüllt wird, erscheint im Bereich **Format** ein Abschnitt **Datenfarben**, der die Anpassung der Farben ermöglicht. |
+| Legende    | Das Feld, das zum Kategorisieren der Daten und zum Zuweisen einer eindeutigen Farbe für Datenpunkte in den einzelnen Kategorien verwendet wird. Wenn dieser Bucket ist, wird im Bereich **Format** der Abschnitt **Datenfarben** angezeigt, der die Anpassung der Farben ermöglicht. |
 | Size      | Das Measure, das für die relative Dimensionierung von Datenpunkten auf der Karte verwendet wird.   |
-| QuickInfos  | Zusätzliche Datenfelder, die beim Zeigen auf Formen in QuickInfos angezeigt werden. |
+| QuickInfos  | Andere Datenfelder, die in QuickInfos angezeigt werden sollen, wenn auf Formen gezeigt wird. |
 
 ## <a name="map-settings"></a>Karteneinstellungen
 
@@ -106,11 +105,12 @@ Mit den Optionen im Abschnitt **Karteneinstellungen** im Bereich „Format“ k�
 
 | Einstellung             | BESCHREIBUNG  |
 |---------------------|--------------|
-| Automatischer Zoom           | Ändert die Größe der Karte automatisch auf die Daten, die über den Bereich **Felder** des Visuals geladen werden. Wenn sich die Daten ändern, wird die Position der Karte entsprechend aktualisiert. Wenn sich der Schieberegler in der Position **Aus** befindet, werden für die Standardkartenansicht zusätzliche Kartenansichtseinstellungen angezeigt. |
+| Automatischer Zoom           | Ändert die Größe der Karte automatisch auf die Daten, die über den Bereich **Felder** des Visuals geladen werden. Wenn sich die Daten ändern, wird die Position der Karte entsprechend aktualisiert. Wenn sich der Schieberegler in der Position **Aus** befindet, werden für die Standardkartenansicht weitere Kartenansichtseinstellungen angezeigt. |
 | Erdumrundung          | Ermöglicht dem Benutzer das unbegrenzte horizontale Schwenken der Karte. |
 | Stilauswahl        | Fügt der Karte eine Schaltfläche hinzu, die es den Lesern des Berichts ermöglicht, den Stil der Karte zu ändern. |
-| Navigationssteuerelemente | Fügt der Karte Schaltflächen als weitere Methode hinzu, mit der die Leser des Berichts die Karte drehen sowie die Größe und Neigung der Karte ändern können. Weitere Informationen zu den verschiedenen Navigationsmöglichkeiten der Benutzer in der Karte finden Sie in diesem Dokument unter [Navigieren auf einer Karte](map-accessibility.md#navigating-the-map). |
-| Kartenstil           | Der Stil der Karte. Weitere Informationen zu [unterstützten Kartenstilen](supported-map-styles.md) finden Sie in diesem Dokument. |
+| Navigationssteuerelemente | Fügt der Karte Schaltflächen als weitere Methode hinzu, mit der die Leser des Berichts die Karte drehen sowie die Größe und Neigung der Karte ändern können. Details zu den verschiedenen Navigationsmöglichkeiten der Benutzer in der Karte finden Sie in diesem Dokument unter [Navigieren auf einer Karte](map-accessibility.md#navigating-the-map). |
+| Kartenstil           | Der Stil der Karte. Weitere Informationen finden Sie im Dokument [Unterstützte Kartenstile ](supported-map-styles.md). |
+| Auswahlsteuerelement   | Fügt eine Schaltfläche hinzu, mit der der Benutzer zwischen verschiedenen Modi auswählen kann, um Daten auf der Karte auszuwählen. Kreis, Rechteck, Polygon (Lasso) oder Reisezeit oder Entfernung. Beim Zeichnen eines Polygons, um die Zeichnung zu vervollständigen; klicken Sie auf den ersten Punkt, oder doppelklicken Sie auf die Karte am letzten Punkt, oder drücken Sie die Taste `c`. |
 
 ### <a name="map-view-settings"></a>Kartenansichtseinstellungen
 
@@ -137,14 +137,13 @@ Das Azure Maps-Visual ist in den folgenden Diensten und Anwendungen verfügbar:
 | Power BI Embedded                        | Nein           |
 | Einbettung des Power BI-Diensts (PowerBI.com) | Ja          |
 
-Unterstützung für zusätzliche Power BI-Dienste/-Apps wird in zukünftigen Updates hinzugefügt.
-
 **Wo ist Azure Maps verfügbar?**
 
 Abgesehen von folgenden Ausnahmen ist Azure Maps aktuell in allen Ländern und Regionen verfügbar:
 
 - China
 - Südkorea
+- Azure Government (GCC + GCC High)
 
 Details zur Abdeckung der verschiedenen Azure Maps-Dienste, die dieses Visual unterstützen, finden Sie im Dokument [Informationen zur geografischen Abdeckung](geographic-coverage.md).
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2c83ac769cc4a8aec6148e1a45ec6435f117d73a
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: b670c244c502049cc9eb419aa6570ad40e5aafa7
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812048"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689924"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
 Entitäten in Ihrer Umgebung werden durch [digital Zwillinge](concepts-twins-graph.md) dargestellt. Die Verwaltung digitaler Zwillinge kann das Erstellen, Ändern und Löschen umfassen.
 
-Dieser Artikel beschreibt die Verwaltung digitaler Zwillinge. Informationen zum Arbeiten mit Beziehungen und dem [Zwillingsgraph](concepts-twins-graph.md) als Ganzes finden Sie unter [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md).
+In diesem Artikel wird die Verwaltung digitaler Zwillinge beschrieben. Informationen zum Arbeiten mit Beziehungen und dem [Zwillingsgraphen](concepts-twins-graph.md) insgesamt finden Sie unter [Verwalten des Zwillingsgraphen und der Beziehungen](how-to-manage-graph.md).
 
 > [!TIP]
 > Alle SDK-Funktionen sind in synchronen und asynchronen Versionen enthalten.
@@ -40,7 +40,7 @@ Wenn Sie einen Zwilling erstellen möchten, verwenden Sie die `CreateOrReplaceDi
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 Zum Erstellen eines digitalen Zwillings müssen Sie Folgendes angeben:
-* Die gewünschte ID für den digitalen Zwilling
+* Die gewünschte ID für den digitalen Zwilling, den Sie in dieser Phase definieren
 * Das zu verwendende [Modell](concepts-models.md)
 
 Optional können Sie Anfangswerte für alle Eigenschaften des digitalen Zwillings bereitstellen. Eigenschaften werden als optional behandelt und können später festgelegt werden. **Sie werden jedoch erst als Teil eines Zwillings angezeigt, nachdem sie festgelegt wurden.**
@@ -57,7 +57,7 @@ Die Modell- und alle ursprünglichen Eigenschaftswerte werden über den `initDat
 
 Sie können die Eigenschaften eines Zwillings zum Zeitpunkt der Erstellung des Zwillings initialisieren. 
 
-Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [Konzepte: digitale Zwillinge und das Zwillingsdiagramm](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
+Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [Digitale Zwillinge und der Zwillingsgraph](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
 
 Zunächst können Sie ein Datenobjekt erstellen, das den Zwilling und seine Eigenschaftsdaten darstellt. Sie können ein Parameterobjekt entweder manuell oder mithilfe einer bereitgestellten Hilfsklasse erstellen. Im Folgenden finden Sie Beispiele für beides.
 
@@ -86,7 +86,12 @@ Sie können auf die Details jedes digitalen Zwillings zugreifen, indem Sie die M
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwinCall":::
 
-Dieser Aufruf gibt Zwillingsdaten als einen stark typisierten Objekttyp (z. B. `BasicDigitalTwin`) zurück. `BasicDigitalTwin` ist eine Serialisierungshilfsklasse, die im SDK enthalten ist und die die zentralen Zwillingsmetadaten und -eigenschaften in einem vorab analysierten Format zurückgibt. Hier folgt ein Beispiel zur Vorgehensweise beim Anzeigen der Zwillingsdetails:
+Dieser Aufruf gibt Zwillingsdaten als einen stark typisierten Objekttyp (z. B. `BasicDigitalTwin`) zurück. `BasicDigitalTwin` ist eine Serialisierungshilfsklasse, die im SDK enthalten ist und die die zentralen Zwillingsmetadaten und -eigenschaften in einem vorab analysierten Format zurückgibt. Sie können jederzeit Zwillingsdaten deserialisieren, indem Sie die JSON-Bibliothek Ihrer Wahl wie `System.Text.Json` oder `Newtonsoft.Json` verwenden. Den grundlegenden Zugriff auf einen Zwilling können jedoch die Hilfsklassen komfortabler machen.
+
+> [!NOTE]
+> Von `BasicDigitalTwin` werden Attribute vom Typ `System.Text.Json` verwendet. Um `BasicDigitalTwin` mit Ihrer Instanz von [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true) verwenden zu können, müssen Sie entweder den Client mit dem Standardkonstruktor initialisieren oder den Serialisierer [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true), wenn Sie die Serialisierungsoption anpassen möchten.
+
+Die Hilfsklasse `BasicDigitalTwin` bietet Ihnen auch Zugriff auf Eigenschaften, die auf dem Zwilling definiert sind, über ein `Dictionary<string, object>`. Sie können Folgendes verwenden, um die Eigenschaften eines Zwillings aufzulisten:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
@@ -95,7 +100,7 @@ Beim Abrufen eines Zwillings mit der Methode `GetDigitalTwin()` werden nur Eigen
 >[!TIP]
 >Der `displayName` für einen Zwilling ist ein Teil seiner Modellmetadaten und wird daher nicht angezeigt, wenn Daten für die Zwillingsinstanz abgerufen werden. Um diesen Wert zu sehen, können Sie [ihn aus dem Modell abrufen](how-to-manage-model.md#retrieve-models).
 
-Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md).
+Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [Abfragen des Zwillingsgraphen](how-to-query-graph.md).
 
 Beachten Sie das folgende Modell (geschrieben in [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)), das einen Zwilling vom Typ Moon definiert:
 
@@ -137,7 +142,7 @@ Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften d
   - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
   - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
 
-Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [Konzepte: Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md).
+Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [Azure Digital Twins-APIs und SDKs](concepts-apis-sdks.md#serialization-helpers).
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
@@ -162,7 +167,7 @@ Im Folgenden finden Sie ein Beispiel für JSON Patch-Code. Dieses Dokument erset
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Patches können mithilfe von [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) des Azure .NET SDK erstellt werden. Beispiel:
+Aktualisierungsaufrufe für Zwillinge und Beziehungen verwenden die [JSON-Patchstruktur](http://jsonpatch.com/). Patches können mithilfe von [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) des Azure .NET SDK erstellt werden. Beispiel:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -184,15 +189,7 @@ Wenn ein Zwilling mit diesem Modell erstellt wird, ist es nicht erforderlich, di
 
 Dies kann mit einem JSON-Patchvorgang vom Typ `add` wie folgt geschehen:
 
-```json
-[
-  {
-    "op": "add", 
-    "path": "/ObjectProperty", 
-    "value": {"StringSubProperty":"<string-value>"}
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-object-sub-property-1.json":::
 
 >[!NOTE]
 > Wenn `ObjectProperty` über mehrere Eigenschaften verfügt, sollten Sie alle Eigenschaften in das `value`-Feld dieses Vorgangs einbeziehen, auch wenn Sie nur Eigenschaft eine aktualisieren:
@@ -203,15 +200,7 @@ Dies kann mit einem JSON-Patchvorgang vom Typ `add` wie folgt geschehen:
 
 Nachdem dies einmal erfolgt ist, ist ein Pfad zu `StringSubProperty` vorhanden, und sie kann von nun an direkt mit einem typischen `replace`-Vorgang aktualisiert werden:
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/ObjectProperty/StringSubProperty",
-    "value": "<string-value>"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-object-sub-property-2.json":::
 
 Obwohl der erste Schritt in Fällen, in denen `ObjectProperty` beim Erstellen des Zwillings instanziiert wurde, nicht notwendig ist, wird empfohlen, ihn jedes Mal zu verwenden, wenn Sie eine Untereigenschaft zum ersten Mal aktualisieren, da Sie nicht immer sicher wissen, ob die Objekteigenschaft ursprünglich instanziiert wurde oder nicht.
 
@@ -257,7 +246,7 @@ Hier folgt ein Beispiel für den Code zum Löschen von Zwillingen und ihren Bezi
 
 ### <a name="delete-all-digital-twins"></a>Löschen aller digitalen Zwillinge
 
-Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der Beispiel-App im [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllTwins()`-Funktion durchgeführt.
+Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der Beispiel-App unter [Erkunden von Azure Digital Twins mit einer Beispielclient-App](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllTwins()`-Funktion durchgeführt.
 
 ## <a name="runnable-digital-twin-code-sample"></a>Ausführbares Codebeispiel für digitale Zwillinge
 
@@ -299,4 +288,4 @@ Hier ist die Konsolenausgabe des obigen Programms:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie Beziehungen zwischen Ihren digitalen Zwillingen erstellen und verwalten können:
-* [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md)
+* [Verwalten des Zwillingsgraphen und der Beziehungen](how-to-manage-graph.md)

@@ -1,26 +1,26 @@
 ---
-title: 'Schnellstart: Erstellen eines Automation-Kontos – Azure-Vorlage'
+title: Erstellen eines Automation-Kontos – Azure-Vorlage
 titleSuffix: Azure Automation
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Automation-Konto per Azure Resource Manager-Vorlage erstellen.
+description: In diesem Artikel erfahren Sie, wie Sie ein Automation-Konto per Azure Resource Manager-Vorlage erstellen.
 services: automation
 ms.author: magoedte
 ms.date: 07/20/2021
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 17183bffcfe9607a774d1205180c284d49cd7503
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: b17bb61230fa06acc988129bd593ab5c25332e84
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652008"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727374"
 ---
-# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Automation-Kontos mithilfe einer ARM-Vorlage
+# <a name="create-an-automation-account-by-using-arm-template"></a>Erstellen eines Automation-Kontos mithilfe einer ARM-Vorlage
 
-Mit Azure Automation wird ein cloudbasierter Automatisierungs- und Konfigurationsdienst bereitgestellt, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen, die ein Automation-Konto erstellt. Bei Verwendung einer ARM-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
+Mit Azure Automation wird ein cloudbasierter Automatisierungs- und Konfigurationsdienst bereitgestellt, der eine einheitliche Verwaltung Ihrer Azure- und Nicht-Azure-Umgebungen unterstützt. Dieser Artikel zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen, die ein Automation-Konto erstellt. Bei Verwendung einer ARM-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Diese Beispielvorlage führt Folgendes aus:
 
 Nachdem Sie diese Schritte ausgeführt haben, müssen Sie [Diagnoseeinstellungen konfigurieren](automation-manage-send-joblogs-log-analytics.md), damit Ihr Automation-Konto Auftragsstatus und Auftragsdatenströme von Runbooks an den verknüpften Log Analytics Arbeitsbereich sendet.
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-automation/).
+Die in diesem Artikel verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-automation/).
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
 
@@ -132,7 +132,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, trennen Sie das Automation-Konto 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein Automation-Konto und einen Log Analytics-Arbeitsbereich erstellt und diese miteinander verknüpft.
+In diesem Artikel haben Sie ein Automation-Konto und einen Log Analytics-Arbeitsbereich erstellt und diese miteinander verknüpft.
 
 Weitere Informationen finden Sie in den Tutorials zu Azure Automation.
 

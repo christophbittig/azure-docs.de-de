@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
-ms.openlocfilehash: 4e776555b1f51cc4a66c4cd074ce021adc976957
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 36691229ebe59a6b3b5dd59776b6af41e326a3c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537532"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340217"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0: Detect
 
@@ -33,37 +33,18 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-<table width="100%">
-  <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>api-version</td>
-    <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
-  </tr>
-</table> 
+| Query parameter (Abfrageparameter) | BESCHREIBUNG |
+| --- | --- |
+| api-version | *Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
 
 Anforderungsheader enthalten Folgendes:
 
-<table width="100%">
-  <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Die Länge des Anforderungstexts.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
-  </tr>
-</table> 
+| Header | BESCHREIBUNG |
+| --- | --- |
+| Authentifizierungsheader | <em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication)</a>. |
+| Content-Type | *Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`. |
+| Content-Length | *Erforderlicher Anforderungsheader*.<br/>Die Länge des Anforderungstexts. |
+| X-ClientTraceId | *Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen. |
 
 ## <a name="request-body"></a>Anforderungstext
 
@@ -71,7 +52,7 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 
 ```json
 [
-    { "Text": "Ich würde wirklich gern Ihr Auto um den Block fahren ein paar Mal." }
+    { "Text": "Ich würde wirklich gerne Ihr Auto ein paar Mal um den Block fahren." }
 ]
 ```
 
@@ -116,51 +97,23 @@ Eine JSON-Beispielantwort lautet wie folgt:
 
 ## <a name="response-headers"></a>Antwortheader
 
-<table width="100%">
-  <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>X-RequestId</td>
-    <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
-  </tr>
-</table> 
+| Header | BESCHREIBUNG |
+| --- | --- |
+| X-RequestId | Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet. |
 
 ## <a name="response-status-codes"></a>Antwortstatuscodes
 
 Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zurückgeben kann. 
 
-<table width="100%">
-  <th width="20%">Statuscode</th>
-  <th>BESCHREIBUNG</th>
-  <tr>
-    <td>200</td>
-    <td>Erfolg.</td>
-  </tr>
-  <tr>
-    <td>400</td>
-    <td>Einer der Abfrageparameter fehlt oder ist ungültig. Korrigieren Sie die Anforderungsparameter, bevor Sie es erneut versuchen.</td>
-  </tr>
-  <tr>
-    <td>401</td>
-    <td>Die Anforderung konnte nicht authentifiziert werden. Überprüfen Sie, ob die Anmeldeinformationen angegeben und gültig sind.</td>
-  </tr>
-  <tr>
-    <td>403</td>
-    <td>Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind.</td>
-  </tr>
-  <tr>
-    <td>429</td>
-    <td>Der Server hat die Anforderung abgelehnt, da der Client die Anforderungsgrenzwerte überschritten hat.</td>
-  </tr>
-  <tr>
-    <td>500</td>
-    <td>Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
-  </tr>
-  <tr>
-    <td>503</td>
-    <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
-  </tr>
-</table> 
+| Statuscode | BESCHREIBUNG |
+| --- | --- |
+| 200 | Erfolg. |
+| 400 | Einer der Abfrageparameter fehlt oder ist ungültig. Korrigieren Sie die Anforderungsparameter, bevor Sie es erneut versuchen. |
+| 401 | Die Anforderung konnte nicht authentifiziert werden. Überprüfen Sie, ob die Anmeldeinformationen angegeben und gültig sind. |
+| 403 | Die Anforderung ist nicht autorisiert. Weitere Informationen finden Sie in der Fehlermeldung. Diese weist oft darauf hin, dass alle kostenlosen Übersetzungen, die mit einer Testversion bereitgestellt wurden, aufgebraucht sind. |
+| 429 | Der Server hat die Anforderung abgelehnt, da der Client die Anforderungsgrenzwerte überschritten hat. |
+| 500 | Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`. |
+| 503 | Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`. |
 
 Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes finden Sie in der [Referenz zu Version 3 von Translator](./v3-0-reference.md#errors). 
 

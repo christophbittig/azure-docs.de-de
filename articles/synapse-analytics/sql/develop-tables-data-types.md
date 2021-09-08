@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ae919a12dc1c50fcb30d08128e4ebf2faa2b2ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a85b4409f36846a14e21d2f3894b7dbae1ec30
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338923"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Tabellendatentypen in Synapse SQL
 
-In diesem Artikel finden Sie Empfehlungen zum Definieren von Tabellendatentypen in Synapse SQL. 
+In diesem Artikel finden Sie Empfehlungen zum Definieren von Tabellendatentypen in dedizierten Synapse SQL-Pools. 
 
 ## <a name="data-types"></a>Datentypen
 
-Synapse SQL unterstützt die am häufigsten verwendeten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true). 
+Dedizierte Synapse SQL-Pools unterstützen die am häufigsten verwendeten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true). Informationen zu Synapse SQL (serverlos) finden Sie im Artikel [Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics](./query-data-storage.md) und [Verwenden von OPENROWSET mit einem serverlosen SQL-Pool in Azure Synapse Analytics](./develop-openrowset.md).
 
 ## <a name="minimize-row-length"></a>Minimieren der Zeilenlänge
 
@@ -33,6 +33,7 @@ Durch das Minimieren der Größe von Datentypen wird die Zeilenlänge verkürzt.
 - Vermeiden Sie es, für Zeichenspalten eine hohe Standardlänge zu definieren. Wenn der längste Wert 25 Zeichen umfasst, sollten Sie die Spalte VARCHAR(25) definieren.
 - Vermeiden Sie die Verwendung von [NVARCHAR][NVARCHAR], wenn Sie nur VARCHAR benötigen.
 - Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
+- Vermeiden Sie die Verwendung von Gleitkommazahlen und Dezimalzahlen mit 0 (null) Dezimalstellen.  Dafür sollten TINYINT, SMALLINT, INT oder BIGINT verwendet werden.
 
 > [!NOTE]
 > Wenn Sie Ihre Synapse SQL-Tabellen mithilfe externer PolyBase-Tabellen laden, darf die definierte Länge der Tabellenzeile 1 MB nicht überschreiten. Wenn eine Zeile mit Daten variabler Länge 1 MB überschreitet, können Sie die Zeile mit BCP, jedoch nicht mit PolyBase laden.

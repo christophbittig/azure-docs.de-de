@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/10/2020
+ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 697e594581636bb3940684371661705539068e6a
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: c7f33156394b3dfde100014ace6d8b7f1cbc8caf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001662"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339345"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe der Azure CLI und REST-API
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQL-Dienst mithilfe der Azure CLI und REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
@@ -33,6 +35,8 @@ Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 > [!IMPORTANT]
 > Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
+>
+>Wenn die GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate die GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid).
 
 Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 
@@ -58,7 +62,9 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Lesereplikate werden mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
+> * Der Befehl `az mysql server replica create` hat das Argument `--sku-name`, mit dem Sie die SKU (`{pricing_tier}_{compute generation}_{vCores}`) angeben können, während Sie mit der Azure-Befehlszeilenschnittstelle ein Replikat erstellen. </br>
+> * Der primäre Server und das Lesereplikat sollten sich im gleichen Tarif („Universell“ oder „Arbeitsspeicheroptimiert“) befinden. </br>
+> * Die Replikatserverkonfiguration kann nach der Erstellung noch geändert werden. Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
 
 
 ### <a name="list-replicas-for-a-source-server"></a>Auflisten von Replikaten für einen Quellserver
@@ -178,6 +184,14 @@ Wenn Sie einen Quellserver löschen, wird die Replikation in alle Lesereplikate 
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}?api-version=2017-12-01
 ```
 
+### <a name="known-issue"></a>Bekanntes Problem
+
+Es gibt zwei Generationen von Speicher, die von Servern der Ebenen „Universell“ und „Arbeitsspeicheroptimiert“ verwendet werden: universelle Speicher v1 (unterstützen bis zu 4 TB) und universelle Speicher v2 (unterstützen bis zu 16 TB Speicher).
+Quellserver und Replikatserver sollten denselben Speichertyp aufweisen. Da [universeller Speicher v2](./concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) nicht in allen Regionen verfügbar ist, müssen Sie sicherstellen, dass Sie die richtige Replikatregion auswählen, wenn Sie den Standort mit der Befehlszeilenschnittstelle oder der REST-API für die Erstellung von Lesereplikaten verwenden. Informationen zur Ermittlung des Speichertyps Ihres Quellservers finden Sie unter [Wie ermittle ich den Speichertyp, auf dem mein Server ausgeführt wird?](./concepts-pricing-tiers.md#how-can-i-determine-which-storage-type-my-server-is-running-on). 
+
+Wenn Sie eine Region auswählen, in der Sie kein Lesereplikat für Ihren Quellserver erstellen können, tritt das Problem wie in der folgenden Abbildung auf, dass die Bereitstellung weiter ausgeführt wird, bis ein Timeout mit dem Fehler *„Der Ressourcenbereitstellungsvorgang wurde nicht innerhalb des zulässigen Timeoutzeitraums abgeschlossen“* auftritt.
+
+[ :::image type="content" source="media/howto-read-replicas-cli/replcia-cli-known-issue.png" alt-text="Fehler beim Lesereplikat an der Befehlszeilenschnittstelle":::](media/howto-read-replicas-cli/replcia-cli-known-issue.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

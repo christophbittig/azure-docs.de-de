@@ -1,27 +1,27 @@
 ---
 title: 'Azure SQL-Datenbank: aktualisierbare Ledgertabellen'
 description: Dieser Artikel enthält Informationen zu aktualisierbaren Ledgertabellen, dem Ledgerschema und Ledgeransichten in Azure SQL-Datenbank.
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 688bcf79acd64006f35f7d5c6909088f5448d31d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4a84cb359a0840f593fd732339a4ef9f9f3588db
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080397"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665509"
 ---
 # <a name="azure-sql-database-updatable-ledger-tables"></a>Azure SQL-Datenbank: aktualisierbare Ledgertabellen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschau und ist in der Region „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
 
 Aktualisierbare Ledgertabellen sind Tabellen mit vom System verwalteten Versionen, für die Benutzer Updates und Löschungen durchführen können und die gleichzeitig Beweisfunktionen für Manipulationen bereitstellen. Bei Updates oder Löschungen werden alle früheren Versionen einer Zeile in einer sekundären Tabelle beibehalten, die als Verlaufstabelle bezeichnet wird. Die Verlaufstabelle hat dasselbe Schema wie die aktualisierbare Ledgertabelle. Bei einem Update einer Zeile verbleibt die neueste Version der Zeile in der Ledgertabelle, während ihre frühere Version vom System in die Verlaufstabelle eingefügt wird. Dieser Vorgang ist für die Anwendung vollkommen transparent. 
 

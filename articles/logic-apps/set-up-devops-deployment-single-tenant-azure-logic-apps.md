@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 08/11/2021
+ms.openlocfilehash: 010fbfc3b6a2df9c8cdca1221fb4f25a5d288d70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346878"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>Einrichten der DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten
 
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von DevOps-Tools und -Prozessen
 
 ## <a name="deploy-infrastructure-resources"></a>Bereitstellen von Infrastrukturressourcen
 
-Wenn Sie noch kein Logik-App-Projekt oder keine Infrastruktur eingerichtet haben, können Sie die folgenden Beispielprojekte verwenden, um eine Beispiel-App und -infrastruktur auf Grundlage der Quell- und Bereitstellungsoptionen bereitzustellen, die Sie verwenden möchten.
+Wenn Sie noch kein Logik-App-Projekt oder keine Infrastruktur eingerichtet haben, können Sie die folgenden Beispielprojekte verwenden, um eine Beispiel-App und -infrastruktur auf Grundlage Ihrer gewünschten Quell- und Bereitstellungsoptionen bereitzustellen:
 
 - [GitHub-Beispiel für Azure Logic Apps-Instanzen mit nur einem Mandanten](https://github.com/Azure/logicapps/tree/master/github-sample)
 
@@ -47,7 +47,7 @@ Beide Beispiele enthalten die folgenden Ressourcen, die eine Logik-App für die 
 |---------------|----------|-------------|
 | Logik-App (Standard) | Ja | Diese Azure-Ressource enthält die Workflows, die in Azure Logic Apps-Instanzen mit nur einem Mandanten ausgeführt werden. |
 | Functions Premium- oder App Service-Hostingplan | Ja | Diese Azure-Ressource gibt die Hostingressourcen an, die zum Ausführen Ihrer Logik-App verwendet werden soll, z. B. Compute, Verarbeitung, Speicher, Netzwerk usw. <p><p>**Wichtig**: In der aktuellen Erfahrung erfordert die **Logik-App-Ressource (Standard)** den [**Workflow Standard**-Hostingplan](logic-apps-pricing.md#standard-pricing), der auf dem Functions Premium-Hostingplan basiert. |
-| Azure-Speicherkonto | Ja, für zustandslose Workflows. | Diese Azure-Ressource speichert die Metadaten, den Zustand, die Ein- und Ausgaben, den Ausführungsverlauf sowie andere Informationen zu Ihren Workflows. |
+| Azure-Speicherkonto | Ja, für zustandsbehaftete und zustandslose Workflows | Diese Azure-Ressource speichert die Metadaten, die Schlüssel für die Zugriffssteuerung, den Zustand, die Ein- und Ausgaben, den Ausführungsverlauf sowie andere Informationen zu Ihren Workflows. |
 | Application Insights | Optional | Diese Azure-Ressource bietet Überwachungsfunktionen für Ihre Workflows. |
 | API-Verbindungen | Optional, wenn nicht vorhanden. | Diese Azure-Ressourcen definieren alle verwalteten API-Verbindungen, die Ihre Workflows zum Ausführen verwalteter Connectorvorgänge verwenden, z. B. Office 365, SharePoint usw. <p><p>**Wichtig**: In Ihrem Logik-App-Projekt enthält die Datei **connections.json** Metadaten, Endpunkte und Schlüssel für alle verwalteten API-Verbindungen und Azure-Funktionen, die von Ihren Workflows verwendet werden. Um unterschiedliche Verbindungen und Funktionen in jeder Umgebung zu verwenden, stellen Sie sicher, dass Sie die Datei **connections.json** parametrisieren und die Endpunkte aktualisieren. <p><p>Weitere Informationen finden Sie unter [API-Verbindungsressourcen und Zugriffsrichtlinien](#api-connection-resources). |
 | ARM-Vorlage (Azure Resource Manager) | Optional | Diese Azure-Ressource definiert eine Baseline-Infrastrukturbereitstellung, die Sie wiederverwenden oder [exportieren](../azure-resource-manager/templates/template-tutorial-export-template.md) können. Die Vorlage enthält außerdem die erforderlichen Zugriffsrichtlinien, z. B. für die Verwendung verwalteter API-Verbindungen. <p><p>**Wichtig**: Beim Exportieren der ARM-Vorlage sind nicht alle zugehörigen Parameter für alle API-Verbindungsressourcen enthalten, die von Ihren Workflows verwendet werden. Weitere Informationen finden Sie unter [Suchen von API-Verbindungsparametern](#find-api-connection-parameters). |
@@ -81,7 +81,7 @@ Wenn Ihre Workflows verwaltete API-Verbindungen verwenden, werden bei Verwendung
 
 Um die Werte zu ermitteln, die Sie im `properties`-Objekt zum Abschließen der Verbindungsressourcendefinition verwenden müssen, können Sie die folgende API für einen bestimmten Connector verwenden:
 
-`PUT https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2018–07–01-preview`
+`GET https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2016-06-01`
 
 Suchen Sie in der Antwort nach dem `connectionParameters`-Objekt, das alle Informationen enthält, die Sie zum Abschließen der Ressourcendefinition für diesen spezifischen Connector benötigen. Das folgende Beispiel zeigt eine Beispielressourcendefinition für eine verwaltete SQL-Verbindung:
 
@@ -217,9 +217,16 @@ Wenn Sie andere Bereitstellungstools verwenden, können Sie Ihre auf einem Einze
 
 ##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Installieren der Azure Logic Apps-Erweiterung (Standard) für Azure CLI
 
-Installieren Sie die *Vorschau* der Einzelmandantenerweiterung für Azure Logic Apps (Standard) für Azure CLI, indem Sie den Befehl `az extension add` mit den folgenden erforderlichen Parametern ausführen:
+Derzeit ist nur die *Vorschauversion* für diese Erweiterung verfügbar. Wenn Sie diese Erweiterung noch nicht installiert haben, führen Sie den Befehl `az extension add` mit den folgenden erforderlichen Parametern aus:
 
 ```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+Damit Sie die neueste Version 0.1.1 erhalten, führen Sie die folgenden Befehle aus, um die vorhandene Erweiterung zu entfernen und dann die neueste Version aus der Quelle zu installieren:
+
+```azurecli-interactive
+az extension remove --name logicapp
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
@@ -260,7 +267,7 @@ Wenn Ihre Ressourcengruppe erfolgreich erstellt wurde, wird `provisioningState` 
 Um Ihr gezipptes Artefakt in einer Azure-Ressourcengruppe bereitzustellen, führen Sie den Befehl `az logicapp deployment` mit folgenden erforderlichen Parametern aus:
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Ihre ZIP-Datei die Artefakte Ihres Projekts auf Stammebene enthält. Zu diesen Artefakten zählen alle Workflowordner, Konfigurationsdateien wie „host.json“ und „connections.json“ sowie alle anderen zugehörigen Dateien. Fügen Sie weder zusätzliche Ordner hinzu noch Artefakte, die noch nicht in Ihrer Projektstruktur vorhanden sind, Ordnern hinzu. Diese Liste zeigt ein Beispiel für die MyBuildArtifacts.zip-Dateistruktur:
+> Stellen Sie sicher, dass Ihre ZIP-Datei die Artefakte Ihres Projekts auf Stammebene enthält. Zu diesen Artefakten zählen alle Workflowordner, Konfigurationsdateien wie „host.json“ und „connections.json“ sowie alle anderen zugehörigen Dateien. Fügen Sie keine zusätzlichen Ordner hinzu, und platzieren Sie keine Artefakte in Ordnern, die noch nicht in Ihrer Projektstruktur vorhanden sind. Diese Liste zeigt ein Beispiel für die MyBuildArtifacts.zip-Dateistruktur:
 >
 > ```output
 > MyStatefulWorkflow1-Folder

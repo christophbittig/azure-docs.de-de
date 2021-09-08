@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 59cb8290809df877e6faf374026db5aa3011e81b
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/30/2021
+ms.openlocfilehash: 3ccbe4cfa7b6e4f485d16ffecbda5c3b7042b8e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984192"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339968"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -49,6 +49,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[intagg](https://www.postgresql.org/docs/13/intagg.html)                     | 1.1             | Integeraggregator und -enumerator. (Veraltet)|
 > |[intarray](https://www.postgresql.org/docs/13/intarray.html)                     | 1.3             | Funktionen, Operatoren und Indexunterstützung für 1-D-Arrays mit Integerwerten|
 > |[isn](https://www.postgresql.org/docs/13/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
+> |[lo](https://www.postgresql.org/docs/13/lo.html)                            | 1.1             | Wartung großer Objekte |
 > |[ltree](https://www.postgresql.org/docs/13/ltree.html)                        | 1.2             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/13/pageinspect.html)                        | 1.8             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/13/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
@@ -61,6 +62,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pg_visibility](https://www.postgresql.org/docs/13/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.5             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/13/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen| 
+> |[pglogisch](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | Logische Streamingreplikation |
 > |[pgrowlocks](https://www.postgresql.org/docs/13/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/13/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/13/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
@@ -100,6 +102,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[intagg](https://www.postgresql.org/docs/12/intagg.html)                     | 1.1             | Integeraggregator und -enumerator. (Veraltet)|
 > |[intarray](https://www.postgresql.org/docs/12/intarray.html)                     | 1.2             | Funktionen, Operatoren und Indexunterstützung für 1-D-Arrays mit Integerwerten|
 > |[isn](https://www.postgresql.org/docs/12/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
+> |[lo](https://www.postgresql.org/docs/12/lo.html)                            | 1.1             | Wartung großer Objekte |
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
@@ -112,6 +115,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
+>|[pglogisch](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | Logische Streamingreplikation |
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|
@@ -151,6 +155,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[intagg](https://www.postgresql.org/docs/11/intagg.html)                     | 1.1             | Integeraggregator und -enumerator. (Veraltet)|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | Funktionen, Operatoren und Indexunterstützung für 1-D-Arrays mit Integerwerten|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
+> |[lo](https://www.postgresql.org/docs/11/lo.html)                            | 1.1             | Wartung großer Objekte |
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | Überprüft den Inhalt von Datenbankseiten im Detail|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Untersuchung des freigegebenen Puffercaches|
@@ -163,6 +168,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL Flexible Ser
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | Überprüft die Informationen zur Zuordnung von Sichtbarkeiten (VM) und Sichtbarkeit auf Seitenebene|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
+>|[pglogisch](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | Logische Streamingreplikation |
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Anzeige von Statistiken auf Tupelebene|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL: Prozedurale Sprache|

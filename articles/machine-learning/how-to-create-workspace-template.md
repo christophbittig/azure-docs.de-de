@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: afb0d487d43b2a04aa298d9ec4249a6855d06544
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a8272d6b21130f253046ef3ffe05db8b00d4b79
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967751"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038669"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -28,11 +28,9 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 * Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](/powershell/azure/) oder die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli).
-
-* Für einige Szenarien müssen Sie ein Supportticket öffnen. Ein Beispiel wäre etwa die Verwendung eines Arbeitsbereichs mit Private Link-Unterstützung und kundenseitig verwaltetem Schlüssel. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -278,9 +276,6 @@ Wenn Sie den `vnetOption`-Parameterwert entweder auf `new` oder `existing`festle
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Bereitstellen des Arbeitsbereichs nur hinter einem privatem Endpunkt
 
 Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen. Dies kann für neue und vorhandene Arbeitsbereiche erfolgen. Wenn Sie einen vorhandenen Arbeitsbereich aktualisieren, geben Sie die Vorlagenparameter anhand der Informationen aus dem vorhandenen Arbeitsbereich ein.
-
-> [!IMPORTANT]
-> Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit privater Verbindung ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 
@@ -540,8 +535,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-1. Befolgen Sie die Schritte in [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Wählen Sie auf dem Bildschirm __Vorlage auswählen__ den Eintrag **Schnellstarts** aus. Wenn er angezeigt wird, klicken Sie auf den Link „Klicken Sie hier, um das Vorlagenrepository zu öffnen“. Über diesen Link gelangen Sie zum Verzeichnis `quickstarts` im Azure-Schnellstartvorlagen-Repository.
-1. Wählen Sie in der Liste der Schnellstartvorlagen die Option `microsoft.machinelearningservices'. Finally, select ` „In Azure bereitstellen“ aus.
+1. Befolgen Sie die Schritte in [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Wählen Sie auf dem Bildschirm __Vorlage auswählen__ den Eintrag **Schnellstarts** aus. Wenn er angezeigt wird, wählen Sie den Link „Klicken Sie hier, um das Vorlagenrepository zu öffnen“ aus. Über diesen Link gelangen Sie zum Verzeichnis `quickstarts` im Azure-Schnellstartvorlagen-Repository.
+1. Wählen Sie in der Liste der Schnellstartvorlagen die Option `microsoft.machinelearningservices` aus. Wählen Sie abschließend `Deploy to Azure` aus.
 1. Wenn die Vorlage angezeigt wird, geben Sie abhängig von Ihrem Bereitstellungsszenario die folgenden erforderlichen Informationen und sonstige Parameter an.
 
    * Abonnement: Wählen Sie aus, welches Azure-Abonnement für diese Ressourcen verwendet werden soll.

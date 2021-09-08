@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 36f05d2803d4ac347ef9dc8bf8e840e3f4a63cac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e12a4226357160e2269034136a2df9c671b66313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339421"
 ---
 Das NER-Feature (Erkennung benannter Entitäten) für die Textanalyse gibt die folgenden allgemeinen (nicht identifizierenden) Entitätskategorien zurück. Dies ist beispielsweise beim Senden von Anforderungen an den `/entities/recognition/general`-Endpunkt der Fall.
 
@@ -32,7 +32,7 @@ Das NER-Feature (Erkennung benannter Entitäten) für die Textanalyse gibt die f
 | [Telefonnummer](#category-phonenumber) | Telefonnummern |
 | [E-Mail](#category-email) | E-Mail-Adressen |
 | [URL](#category-url) | URLs zu Websites |
-| [IP](#category-ip) | Netzwerk-IP-Adressen |
+| [IPAddress](#category-ipaddress) | Netzwerk-IP-Adressen |
 | [DateTime](#category-datetime) | Datums- und Uhrzeitangaben |
 | [Menge](#category-quantity) | numerische Messungen und Einheiten |
 
@@ -515,7 +515,7 @@ Diese Kategorie enthält die folgende Entität:
    :::column-end:::
 :::row-end:::
 
-### <a name="category-ip"></a>Kategorie: IP
+### <a name="category-ipaddress"></a>Kategorie: IPAddress
 
 Diese Kategorie enthält die folgende Entität:
 
@@ -523,7 +523,7 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="":::
         **Entität**
 
-        IP
+        IPAddress
 
     :::column-end:::
     :::column span="2":::

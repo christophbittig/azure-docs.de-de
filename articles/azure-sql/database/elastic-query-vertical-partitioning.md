@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e7618232c38f8686e7b21e4a0660d812d9638f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792088"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339551"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,9 +47,8 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
 
 ```sql
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
-CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
-SECRET = '<password>'
-[;]
+CREATE DATABASE SCOPED CREDENTIAL [<credential_name>]  WITH IDENTITY = '<username>',  
+SECRET = '<password>';
 ```
 
 > [!NOTE]
@@ -59,9 +58,15 @@ SECRET = '<password>'
 
 Syntax:
 
-<External_Data_Source> ::= CREATE EXTERNAL DATA SOURCE <data_source_name> WITH (TYPE = RDBMS, LOCATION = ’<fully_qualified_server_name>’, DATABASE_NAME = ‘<remote_database_name>’,  
-    CREDENTIAL = <credential_name> ) [;]
-
+```syntaxsql
+<External_Data_Source> ::=
+CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
+    (TYPE = RDBMS,
+    LOCATION = ’<fully_qualified_server_name>’,
+    DATABASE_NAME = ‘<remote_database_name>’,  
+    CREDENTIAL = <credential_name>
+    ) [;]
+```
 > [!IMPORTANT]
 > Der TYPE-Parameter muss auf **RDBMS** festgelegt werden.
 
@@ -90,10 +95,17 @@ select * from sys.external_data_sources;
 
 Syntax:
 
+```syntaxsql
 CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
-    ( { <column_definition> } [ ,...n ]) { WITH ( <rdbms_external_table_options> ) } )[;]
+    ( { <column_definition> } [ ,...n ])
+    { WITH ( <rdbms_external_table_options> ) }
+    )[;]
 
-<rdbms_external_table_options> ::= DATA_SOURCE = <External_Data_Source>, [ SCHEMA_NAME = N'nonescaped_schema_name',] [ OBJECT_NAME = N'nonescaped_object_name',]
+<rdbms_external_table_options> ::=
+    DATA_SOURCE = <External_Data_Source>,
+    [ SCHEMA_NAME = N'nonescaped_schema_name',]
+    [ OBJECT_NAME = N'nonescaped_object_name',]
+```
 
 ### <a name="example"></a>Beispiel
 
@@ -127,7 +139,7 @@ Wenn Sie eine externe Datenquelle gemäß der Beschreibung im vorherigen Abschni
 
 Die DATA_SOURCE-Klausel definiert die externe Datenquelle (d. h. die Remotedatenbank bei vertikaler Partitionierung), die für die externe Tabelle verwendet wird.  
 
-Die Klauseln SCHEMA_NAME und OBJECT_NAME bieten die Möglichkeit, die Definition der externen Tabelle einer Tabelle in einem anderen Schema in der Remotedatenkbank bzw. einer Tabelle mit einem anderen Namen zuzuordnen. Das ist nützlich, wenn Sie eine externe Tabelle für eine Katalogsicht oder DMV in Ihrer Remotedatenbank definieren möchten oder wenn der Name der Remotetabelle bereits lokal verwendet wird.  
+Die Klauseln SCHEMA_NAME und OBJECT_NAME bieten die Möglichkeit, die Definition der externen Tabelle einer Tabelle in einem anderen Schema in der Remotedatenbank bzw. einer Tabelle mit einem anderen Namen zuzuordnen. Diese Zuordnung ist nützlich, wenn Sie eine externe Tabelle für eine Katalogsicht oder DMV in Ihrer Remotedatenbank definieren möchten oder wenn der Name der Remotetabelle bereits lokal verwendet wird.  
 
 Die folgende DDL-Anweisung löscht eine vorhandene Definition für eine externe Tabelle aus dem lokalen Katalog. Das wirkt sich nicht auf die Remotedatenbank aus.
 
@@ -139,7 +151,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
-Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf die zugrunde liegenden Remotetabellen gemäß den Anmeldeinformationen, die in der externen Datenquellendefinition angegeben sind. Sie müssen den Zugriff auf die externe Tabelle sorgfältig verwalten, um eine unerwünschte Erhöhung von Berechtigungen über die Anmeldeinformationen für die externe Datenquelle zu vermeiden. Herkömmliche SQL-Berechtigungen können zum Gewähren (GRANT) oder Widerrufen (REVOKE) des Zugriffs auf eine externe Tabelle wie bei einer normalen Tabelle verwendet werden.  
+Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf die zugrunde liegenden Remotetabellen gemäß den Anmeldeinformationen, die in der externen Datenquellendefinition angegeben sind. Sie sollten den Zugriff auf die externe Tabelle sorgfältig verwalten, um eine unerwünschte Erhöhung von Berechtigungen über die Anmeldeinformationen für die externe Datenquelle zu vermeiden. Herkömmliche SQL-Berechtigungen können zum Gewähren (GRANT) oder Widerrufen (REVOKE) des Zugriffs auf eine externe Tabelle wie bei einer normalen Tabelle verwendet werden.  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>Beispiel: Abfragen von vertikal partitionierten Datenbanken
 

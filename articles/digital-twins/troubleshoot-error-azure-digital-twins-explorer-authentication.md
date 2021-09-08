@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: a91053f9a21aebf1a99c35a3a982fd3ad5514d04
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef78f1dd6089201744de19900738ebcc6e5f70db
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475653"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468670"
 ---
 # <a name="authentication-failed"></a>Fehler bei der Authentifizierung.
 
@@ -29,7 +29,7 @@ Beim Einrichten und Ausführen des Azure Digital Twins-Explorers führen Versuch
 
 Zu diesem Fehler kann es kommen, wenn Ihr Azure-Konto nicht über die benötigten Azure-Berechtigungen für die rollenbasierte Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC) für Ihre Azure Digital Twins-Instanz verfügt. Um auf Daten in Ihrer Instanz zugreifen zu können, müssen Sie über die Rolle **Leseberechtigter für Azure Digital Twins-Daten** oder **Azure Digital Twins-Datenbesitzer** für die Instanz verfügen, für die Sie Lesevorgänge ausführen bzw. die Sie verwalten möchten. 
 
-Weitere Informationen zu Sicherheit und Rollen in Azure Digital Twins finden Sie unter [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md).
+Weitere Informationen zu Sicherheit und Rollen in Azure Digital Twins finden Sie unter [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md).
 
 ## <a name="solutions"></a>Lösungen
 
@@ -63,7 +63,7 @@ Weitere Informationen zu dieser Rollenanforderung und zum Zuweisungsvorgang find
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die Einrichtungsschritte zum Erstellen und Authentifizieren einer neuen Azure Digital Twins-Instanz:
-* [Verwenden Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md)
+* [Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md)
 
 Informieren Sie sich weiter über die Sicherheit und Berechtigungen in Azure Digital Twins:
-* [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)
+* [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)

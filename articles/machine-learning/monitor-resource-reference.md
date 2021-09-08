@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 04/07/2021
-ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 124b8679ad11eb9a39881cdcf39969360e3275a6
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031068"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227809"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -139,12 +139,34 @@ Ressourcenanbieter und Typ: [Microsoft.MachineLearningServices/workspace](../azu
 | AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
 | AmlComputeJobEvent | AmlComputeJobEvent |
 | AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+| ModelsChangeEvent | ModelsChangeEvent |
+| ModelsReadEvent | ModelsReadEvent |
+| ModelsActionEvent | ModelsActionEvent |
+| DeploymentReadEvent | DeploymentReadEvent |
+| DeploymentEventACI | DeploymentEventACI |
+| DeploymentEventAKS | DeploymentEventAKS |
+| InferencingOperationAKS | InferencingOperationAKS |
+| InferencingOperationACI | InferencingOperationACI |
+| EnvironmentChangeEvent | EnvironmentChangeEvent |
+| EnvironmentReadEvent | EnvironmentReadEvent |
+| DataLabelChangeEvent | DataLabelChangeEvent |
+| DataLabelReadEvent | DataLabelReadEvent |
+| ComputeInstanceEvent | ComputeInstanceEvent |
+| DataStoreChangeEvent | DataStoreChangeEvent |
+| DataStoreReadEvent | DataStoreReadEvent |
+| DataSetChangeEvent | DataSetChangeEvent |
+| DataSetReadEvent | DataSetReadEvent |
+| PipelineChangeEvent | PipelineChangeEvent |
+| PipelineReadEvent | PipelineReadEvent |
+| RunEvent | RunEvent |
+| RunReadEvent | RunReadEvent |
+
 
 ## <a name="schemas"></a>Schemas
 
 Die folgenden Schemas werden von Azure Machine Learning verwendet.
 
-### <a name="amlcomputejobevents-table"></a>Tabelle „AmlComputeJobEvents“
+### <a name="amlcomputejobevent-table"></a>Tabelle AmlComputeJobEvent
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
@@ -173,7 +195,7 @@ Die folgenden Schemas werden von Azure Machine Learning verwendet.
 | JobErrorMessage | Ausführliche Meldung für den Auftragsfehler |
 | NodeId | ID des erstellten Knotens, auf dem der Auftrag ausgeführt wird |
 
-### <a name="amlcomputeclusterevents-table"></a>Tabelle „AmlComputeClusterEvents“
+### <a name="amlcomputeclusterevent-table"></a>Tabelle AmlComputeClusterEvent
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
@@ -216,7 +238,7 @@ Die folgenden Schemas werden von Azure Machine Learning verwendet.
 | ClusterErrorCodes | Fehlercode, der während der Clustererstellung oder Skalierung empfangen wurde |
 | CreationApiVersion | API-Version, die beim Erstellen des Clusters verwendet wurde |
 
-### <a name="amlcomputeclusternodeevents-table"></a>Tabelle „AmlComputeClusterNodeEvents“
+### <a name="amlcomputeclusternodeevent-table"></a>Tabelle AmlComputeClusterNodeEvent
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
@@ -240,6 +262,156 @@ Die folgenden Schemas werden von Azure Machine Learning verwendet.
 | StartTaskStartTime | Zeitpunkt, zu dem die Aufgabe einem Knoten zugewiesen und gestartet wurde |
 | StartTaskEndTime | Zeitpunkt, zu dem die einem Knoten zugewiesene Aufgabe beendet wurde |
 | TotalE2ETimeInSeconds | Gesamtzeit, die der Knoten aktiv war |
+
+### <a name="amlcomputeinstanceevent-table"></a>Tabelle AmlComputeInstanceEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Name des Protokollereignisses, AmlComputeInstanceEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| CorrelationId | Eine GUID, die ggf. zum Gruppieren eines Satzes mit verwandten Ereignissen verwendet wird. |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlComputeInstanceName | Der Name der Compute-Instanz, die dem Protokolleintrag zugeordnet ist |
+
+### <a name="amldatalabelevent-table"></a>Tabelle AmlDataLabelEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Name des Protokollereignisses, AmlDataLabelEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| CorrelationId | Eine GUID, die ggf. zum Gruppieren eines Satzes mit verwandten Ereignissen verwendet wird. |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlProjectId | Der eindeutige Bezeichner des AML-Projekts |
+| AmlProjectName | Der Name des AML Projekts |
+| AmlLabelNames | Die Bezeichnungsklassennamen, die für das Projekt erstellt werden |
+| AmlDataStoreName | Der Name des Datenspeichers, in dem die Projektdaten gespeichert werden |
+
+### <a name="amldatasetevent-table"></a>Tabelle AmlDataSetEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlDataSetEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| AmlWorkspaceId | Eine GUID und eine eindeutige ID des AML Arbeitsbereichs |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlDatasetId | Die ID des AML-Datasets |
+| AmlDatasetName | Der Name des AML-Datasets |
+
+### <a name="amldatastoreevent-table"></a>Tabelle AmlDataStoreEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Name des Protokollereignisses, AmlDataStoreEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| AmlWorkspaceId | Eine GUID und eine eindeutige ID des AML Arbeitsbereichs |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlDatastoreName | Der Name des AML-Datenspeichers |
+
+### <a name="amldeploymentevent-table"></a>Tabelle AmlDeploymentEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlDeploymentEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlServiceName | Der Name des AML-Diensts |
+
+### <a name="amlinferencingevent-table"></a>Tabelle AmlInferencingEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlInferencingEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlServiceName | Der Name des AML-Diensts |
+
+### <a name="amlmodelsevent-table"></a>Tabelle AmlModelsEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlModelsEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| ResultSignature | Der HTTP-Statuscode des Ereignisses. Typische Werte sind 200, 201, 202 usw. |
+| AmlModelName | Der Name des AML-Modells |
+
+### <a name="amlpipelineevent-table"></a>Tabelle AmlPipelineEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlPipelineEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| AmlWorkspaceId | Eine GUID und eine eindeutige ID des AML Arbeitsbereichs |
+| AmlWorkspaceId | Der Name des AML-Arbeitsbereichs |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlModuleId | Eine GUID und eine eindeutige ID des Moduls|
+| AmlModelName | Der Name des AML-Modells |
+| AmlPipelineId | Die ID der AML-Pipeline |
+| AmlParentPipelineId | Die ID der übergeordneten AML-Pipeline (beim Klonen) |
+| AmlPipelineDraftId | Die ID des AML-Pipelineentwurfs |
+| AmlPipelineDraftName | Der Name des AML-Pipelineentwurfs |
+| AmlPipelineEndpointId | Die ID des AML-Pipelineendpunkts |
+| AmlPipelineEndpointName | Der Name des AML-Pipelineendpunkts |
+
+
+### <a name="amlrunevent-table"></a>Tabelle AmlRunEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlRunEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| ResultType | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| AmlWorkspaceId | Eine GUID und eine eindeutige ID des AML Arbeitsbereichs |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| RunId | Die eindeutige ID des Durchlaufs. |
+
+### <a name="amlenvironmentevent--table"></a>Tabelle AmlEnvironmentEvent
+
+| Eigenschaft | BESCHREIBUNG |
+|:--- |:--- |
+| type | Der Name des Protokollereignisses, AmlEnvironmentEvent |
+| TimeGenerated | Zeitpunkt (UTC), zu dem der Protokolleintrag generiert wurde |
+| Ebene | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| Vorgangsname | Der Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
+| Identity | Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat |
+| AadTenantId | Die AAD-Mandanten-ID, für die der Vorgang übermittelt wurde |
+| AmlEnvironmentName | Der Name der AML-Umgebungskonfiguration |
+| AmlEnvironmentVersion | Der Name der Version der AML-Umgebungskonfiguration |
 
 
 ## <a name="see-also"></a>Weitere Informationen

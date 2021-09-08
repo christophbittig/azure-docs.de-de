@@ -1,6 +1,6 @@
 ---
 title: Bereitstellungspläne – Azure Active Directory | Microsoft-Dokumentation
-description: Umfassende Anleitungen für die Bereitstellung vieler Azure Active Directory-Funktionen
+description: Leitfaden für die Bereitstellung vieler Azure Active Directory-Funktionen
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,15 +12,15 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c521752558e58f19b408b5e85e84863cb4cad2f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8d2a64ec05fb3f6d353374684c14733dda9b302d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966183"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443048"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
-Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
+Sie suchen nach umfassenden Leitfäden für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
 
 Verwenden Sie auf einer der Planseiten die Funktion Ihres Browsers zum Drucken als PDF-Datei, um eine aktuelle Offlineversion der Dokumentation zu erstellen.
 
@@ -29,7 +29,7 @@ Verwenden Sie auf einer der Planseiten die Funktion Ihres Browsers zum Drucken a
 
 | Funktion | BESCHREIBUNG|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure AD MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig die Forderung nach einem einfachen Anmeldevorgang erfüllt wird. Sehen Sie sich dieses Video zum [Konfigurieren und Erzwingen von mehrstufiger Authentifizierung in Ihrem Mandanten](https://www.youtube.com/watch?v=qNndxl7gqVM) an.|
+| [Mehrstufige Azure AD-Authentifizierung](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure AD MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig die Forderung nach einem einfachen Anmeldevorgang erfüllt wird. Sehen Sie sich dieses Video zum [Konfigurieren und Erzwingen von mehrstufiger Authentifizierung in Ihrem Mandanten](https://www.youtube.com/watch?v=qNndxl7gqVM) an.|
 | [Bedingter Zugriff](../conditional-access/plan-conditional-access.md)| Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung für den Zugriff auf Ihre Cloud-Apps implementieren. |
 | [Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md)| Mit der Self-Service-Kennwortzurücksetzung können Ihre Benutzer jederzeit ihr Kennwort zurücksetzen, ohne dass ein Administrator eingreifen muss. |
 | [Kennwortlos](../authentication/howto-authentication-passwordless-deployment.md) | Implementieren Sie kennwortlose Authentifizierung mit der Microsoft Authenticator-App oder mit FIDO2-Sicherheitsschlüsseln in Ihrer Organisation. |
@@ -43,12 +43,11 @@ Verwenden Sie auf einer der Planseiten die Funktion Ihres Browsers zum Drucken a
 | [Geräte](../devices/plan-device-deployment.md) | In diesem Artikel erfahren Sie, wie Sie die Methoden zur Integration Ihres Geräts in Azure AD auswerten, den Implementierungsplan auswählen und wichtige Links zu den unterstützten Geräteverwaltungstools bereitstellen. |
 
 
-## <a name="deploy-hybrid-scenarios"></a>Bereitstellen von Hybridszenarien
+## <a name="deploy-hybrid-scenarios"></a>Bereitstellen von Hybridszenarien  
 
 | Funktion | BESCHREIBUNG|
 | -| -|
-| [Verteiltes Azure-Dateisystem (ADFS) für Kennworthashsynchronisierung](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Mit der Kennworthashsynchronisierung werden Hashes von Benutzerkennwörtern aus dem lokalen Active Directory mit Azure AD synchronisiert, sodass Azure AD Benutzer ohne Interaktion mit dem lokalen Active Directory authentifizieren kann. |
-| [Verteiltes Azure-Dateisystem (ADFS) für Passthrough-Authentifizierung](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Mit der Azure AD-Pass-Through-Authentifizierung können sich Benutzer mit denselben Kennwörtern sowohl bei lokalen als auch bei cloudbasierten Anwendungen anmelden. Diese Funktion stellt den Benutzern eine benutzerfreundlichere Oberfläche zur Verfügung, da ein Kennwort wegfällt, und sie reduziert die Kosten des IT-Helpdesks, da Benutzer seltener vergessen, wie sie sich anmelden. Wenn Benutzer sich mithilfe von Azure AD anmelden, überprüft dieses Feature die Benutzerkennwörter direkt anhand Ihres lokalen Active Directory. |
+| [AD FS zur Cloudbenutzerauthentifizierung](../hybrid/migrate-from-federation-to-cloud-authentication.md)| Erfahren Sie, wie Sie Ihre Benutzerauthentifizierung vom Verbund zur Cloudauthentifizierung migrieren, indem Sie entweder die Pass-Through-Authentifizierung oder die Kennworthashsynchronisierung verwenden.
 | [Azure AD-Anwendungsproxy](../app-proxy/application-proxy-deployment-plan.md) |Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie müssen auf SaaS-Apps in der Cloud und lokal auf Unternehmensanwendungen zugreifen. Der Azure AD-Anwendungsproxy ermöglicht diesen stabilen Zugriff ohne kostspielige und komplexe virtuelle private Netzwerke (VPNs) oder demilitarisierte Zonen (DMZs). |
 | [Nahtloses einmaliges Anmelden](../hybrid/how-to-connect-sso-quick-start.md)| Die nahtlose einmalige Anmeldung mit Azure Active Directory (nahtlose SSO mit Azure AD) meldet Benutzer automatisch auf ihren Unternehmensgeräten an, die mit dem Unternehmensnetzwerk verbunden sind. Mit diesem Feature müssen Benutzer zur Anmeldung bei Azure AD kein Kennwort und in der Regel nicht einmal einen Benutzernamen eingeben. Dieses Feature ermöglicht autorisierten Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind. |
 
@@ -78,7 +77,7 @@ Dazu zählen u.a. die folgenden Rollen:
 |Endbenutzer|Eine repräsentative Gruppe von Benutzern, für welche die Funktion implementiert wird. Erkundet häufig vorher die Änderungen in einem Pilotprogramm.
 |IT-Supportmanager|Ein Vertreter der IT-Supportorganisation, der zu den Unterstützungsmöglichkeiten dieser Änderung aus einer Helpdesk-Perspektive Stellung nehmen kann.  
 |Identitätsarchitekt oder globaler Azure-Administrator|Vertreter des Identitätsverwaltungsteams, der definieren muss, wie diese Änderung an die Kerninfrastruktur für die Identitätsverwaltung in Ihrer Organisation gekoppelt ist.|
-|Geschäftlicher Anwendungsbesitzer |Der allgemeine geschäftliche Besitzer der betroffenen Anwendung(en), ggf. mit Zugriffsverwaltung.  Kann unter Umständen auch Angaben zur Benutzerfreundlichkeit und Zweckmäßigkeit dieser Änderung aus Sicht eines Endbenutzers machen.
+|Geschäftlicher Anwendungsbesitzer |Der allgemeine geschäftliche Besitzer der betroffenen Anwendung(en), ggf. mit Zugriffsverwaltung.Kann unter Umständen auch Angaben zur Benutzerfreundlichkeit und Zweckmäßigkeit dieser Änderung aus Sicht eines Endbenutzers machen.
 |Sicherheitsbesitzer|Ein Vertreter des Sicherheitsteams, der abzeichnen kann, dass der Plan die Sicherheitsanforderungen Ihrer Organisation erfüllt.|
 |Compliance-Manager|Die Person in Ihrem Unternehmen, die für die Sicherstellung der Konformität mit Unternehmens-, Branchen- oder behördlichen Anforderungen verantwortlich ist.|
 
@@ -92,10 +91,9 @@ Dazu zählen u.a. die folgenden Rollen:
 
 - **I** nformed – Zu informieren. Wird über Projektplan und Ergebnis informiert
 
-
 ## <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch
-Bei einem Pilotversuch können Sie eine Funktion mit einer kleinen Gruppe testen, bevor Sie die Funktion für alle Benutzer aktivieren. Sorgen Sie im Rahmen Ihrer Tests dafür, dass die einzelnen Anwendungsfälle in Ihrer Organisation sorgfältig getestet werden. Es empfiehlt sich, eine bestimmte Gruppe von Pilotbenutzern als Zielgruppe auszuwählen, bevor Sie die Funktion in der gesamten Organisation einführen.
+Bei einem Pilotversuch können Sie eine Funktion mit einer kleinen Gruppe testen, bevor Sie die Funktion für alle Benutzer aktivieren. Sorgen Sie im Rahmen Ihrer Tests dafür, dass die einzelnen Anwendungsfälle in Ihrer Organisation sorgfältig getestet werden. Es empfiehlt sich, eine bestimmte Gruppe von Pilotbenutzern als Zielgruppe auszuwählen, bevor Sie diese Bereitstellung in der gesamten Organisation einführen.
 
-Zielen Sie in der ersten Phase auf IT und Benutzerfreundlichkeit ab, und wählen Sie zum Testen andere geeignete Benutzer aus, die Feedback bereitstellen können. Anhand dieses Feedbacks sollten Sie die Kommunikation mit Ihren Benutzern und die entsprechenden Anweisungen weiterentwickeln. Außerdem erhalten Sie Erkenntnisse über die Art von Problemen, mit denen Ihr Supportpersonal möglicherweise konfrontiert ist. 
+Zielen Sie in der ersten Phase auf IT und Benutzerfreundlichkeit ab, und wählen Sie zum Testen andere geeignete Benutzer aus, die Feedback bereitstellen können. Verwenden Sie dieses Feedback, um die Informationen und Anweisungen weiterzuentwickeln, die Sie an Ihre Benutzer senden, und Erkenntnisse über die Art von Problemen zu gewinnen, mit denen Ihre Supportmitarbeiter möglicherweise konfrontiert sind. 
 
 Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Ausweitung der Zielgruppen vorgenommen werden. Dies kann über eine [dynamische Gruppenmitgliedschaft](../enterprise-users/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.

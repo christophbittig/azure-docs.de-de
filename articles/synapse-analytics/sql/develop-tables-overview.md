@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7958c66275bbfb3d08244c7ca81d50fca4b915d0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585433"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340396"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Entwerfen von Tabellen mithilfe von Synapse SQL in Azure Synapse Analytics
 
@@ -102,7 +102,7 @@ Weitere Informationen finden Sie unter [Temporäre Tabellen](develop-tables-temp
 
 [Externe Tabellen](develop-tables-external-tables.md) verweisen auf Daten in Azure Storage Blob oder Azure Data Lake Store.
 
-Importieren Sie mit der [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-Anweisung Daten aus externen Tabellen in den dedizierten SQL-Pool. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
+Importieren Sie mit der [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)-Anweisung Daten aus externen Tabellen in den dedizierten SQL-Pool. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 Bei Bedarf können Sie beim serverlosen SQL-Pool [CETAS](develop-tables-cetas.md) verwenden, um das Abfrageergebnis in einer externen Tabelle in Azure Storage zu speichern.
 
@@ -112,7 +112,7 @@ Der dedizierte SQL-Pool unterstützt die am häufigsten verwendeten Datentypen. 
 
 ## <a name="distributed-tables"></a>Verteilte Tabellen
 
-Ein grundlegendes Feature des dedizierten SQL-Pools ist die Art und Weise, wie Tabellen [verteilungsübergreifend](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions) gespeichert und ausgeführt werden können.  Der dedizierte SQL-Pool unterstützt drei Methoden zum Verteilen von Daten:
+Ein grundlegendes Feature des dedizierten SQL-Pools ist die Art und Weise, wie Tabellen [verteilungsübergreifend](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?context=/azure/synapse-analytics/context/context#distributions) gespeichert und ausgeführt werden können.  Der dedizierte SQL-Pool unterstützt drei Methoden zum Verteilen von Daten:
 
 - Roundrobin (Standard)
 - Hash
@@ -122,19 +122,19 @@ Ein grundlegendes Feature des dedizierten SQL-Pools ist die Art und Weise, wie T
 
 Bei einer Hashverteilung werden die Tabellenzeilen auf Basis des Werts in der Verteilungsspalte verteilt. Eine Tabelle mit Hashverteilung ist für eine hohe Leistung bei Abfragen an große Tabellen ausgelegt. Bei der Auswahl der Verteilungsspalte müssen mehrere Faktoren berücksichtigt werden.
 
-Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context).
 
 ### <a name="replicated-tables"></a>Replizierte Tabellen
 
 Eine replizierte Tabelle ist eine vollständige Kopie der Tabelle, die auf jedem Serverknoten zur Verfügung gestellt wird. Abfragen werden für replizierte Tabellen schnell ausgeführt, da bei Verknüpfungen replizierter Tabellen keine Datenverschiebung erforderlich ist. Für die Replikation wird zusätzlicher Speicherplatz benötigt, und sie ist für große Tabellen nicht geeignet.
 
-Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](../sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](../sql-data-warehouse/design-guidance-for-replicated-tables.md?context=/azure/synapse-analytics/context/context).
 
 ### <a name="round-robin-tables"></a>Roundrobintabellen
 
 Bei einer Roundrobintabelle werden die Tabellenzeilen gleichmäßig auf alle Verteilungen aufgeteilt. Die Zeilen werden nach dem Zufallsprinzip verteilt. Das Laden von Daten in eine Roundrobintabelle geht schnell vonstatten.  Bei Abfragen kann aber eine größere Anzahl von Datenverschiebungen erforderlich sein als bei anderen Verteilungsmethoden.
 
-Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context).
 
 ### <a name="common-distribution-methods-for-tables"></a>Allgemeine Verteilungsmethoden für Tabellen
 
@@ -150,7 +150,7 @@ Die Tabellenkategorie bestimmt oft die optimale Option für die Tabellenverteilu
 
 In dedizierten SQL-Pools speichert eine partitionierte Tabelle die Tabellenzeilen nach Datenbereichen und wendet Vorgänge entsprechend an. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird.
 
-Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in einem dedizierten SQL-Pool bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  
+Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in einem dedizierten SQL-Pool bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context).  
 
 > [!TIP]
 > Beim Wechseln der Partitionen zu Tabellenpartitionen, die nicht leer sind, sollten Sie die Option TRUNCATE_TARGET in Ihrer [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)-Anweisung in Erwägung ziehen, wenn die vorhandenen Daten abgeschnitten werden sollen.
@@ -200,7 +200,7 @@ Die Aktualisierung der Statistiken erfolgt nicht automatisch. Führen Sie die St
 
 ## <a name="primary-key-and-unique-key"></a>Primärschlüssel und eindeutiger Schlüssel
 
-PRIMARY KEY wird für den dedizierten SQL-Pool nur unterstützt, wenn sowohl NONCLUSTERED als auch NOT ENFORCED verwendet werden.  Der UNIQUE-Constraint wird nur unterstützt, wenn NOT ENFORCED verwendet wird.  Weitere Informationen finden Sie im Artikel zu [Tabellenconstraints für den SQL-Pool](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+PRIMARY KEY wird für den dedizierten SQL-Pool nur unterstützt, wenn sowohl NONCLUSTERED als auch NOT ENFORCED verwendet werden.  Der UNIQUE-Constraint wird nur unterstützt, wenn NOT ENFORCED verwendet wird.  Weitere Informationen finden Sie im Artikel zu [Tabellenconstraints für dedizierte SQL-Pools](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="commands-for-creating-tables"></a>Befehle zum Erstellen von Tabellen
 
@@ -231,7 +231,7 @@ Dedizierte SQL-Pools unterstützen viele, aber nicht alle Tabellenfunktionen, di
 - [Indizierte Sichten](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
 - [Sequenz](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [Spalten mit geringer Dichte](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
-- Ersatzschlüssel, implementieren mit [Identität](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- Ersatzschlüssel, implementieren mit [Identität](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?context=/azure/synapse-analytics/context/context)
 - [Synonyme](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [Trigger](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [Eindeutige Indizes](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -440,4 +440,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Erstellen der Tabellen für das Data Warehouse werden im nächsten Schritt Daten in die Tabelle geladen.  Ein Tutorial zum Laden von Daten finden Sie unter [Laden von Daten in einen dedizierten SQL-Pool](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).
+Nach dem Erstellen der Tabellen für das Data Warehouse werden im nächsten Schritt Daten in die Tabelle geladen.  Ein Tutorial zum Laden von Daten finden Sie unter [Laden von Daten in einen dedizierten SQL-Pool](../sql-data-warehouse/load-data-wideworldimportersdw.md?context=/azure/synapse-analytics/context/context#load-the-data-into-sql-pool).

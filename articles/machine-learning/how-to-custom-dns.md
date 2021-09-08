@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 616354174f5eb4bdae8e4b76379106e309c0dd14
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969103"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771454"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
@@ -25,6 +25,15 @@ Wenn Sie einen Azure Machine Learning-Arbeitsbereich mit einem privaten Endpunkt
 > [!IMPORTANT]
 > In diesem Artikel wird beschrieben, wie Sie die vollqualifizierten Domänennamen (Fully Qualified Domain Namas, FQDN) und IP-Adressen für diese Einträge finden, wenn Sie DNS-Einträge manuell in Ihrer DNS-Lösung registrieren möchten. Darüber hinaus enthält dieser Artikel Architekturempfehlungen zum Konfigurieren Ihrer benutzerdefinierten DNS-Lösung, um FQDNs automatisch in die richtigen IP-Adressen aufzulösen. Dieser Artikel enthält KEINE Informationen zum Konfigurieren der DNS-Einträge für diese Elemente. Weitere Informationen zum Hinzufügen von Einträgen finden Sie in der Dokumentation zu Ihrer DNS-Software.
 
+> [!TIP]
+> Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
+>
+> * [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+> * [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+> * [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+> * [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+> * [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+> * [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure Virtual Network, das [Ihren eigenen DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) verwendet.
@@ -50,6 +59,7 @@ Es gibt zwei gängige Architekturen für die Verwendung der automatisierten DNS-
 
 Ihre Architektur kann sich zwar von diesen Beispielen unterscheiden, Sie können sie jedoch als Bezugspunkt verwenden. Beide Beispielarchitekturen bieten Schritte zur Problembehandlung, mit denen Sie Komponenten identifizieren können, die möglicherweise falsch konfiguriert sind.
 
+Eine weitere Möglichkeit besteht in der Änderung der `hosts`-Datei auf dem Client, der eine Verbindung mit dem Azure Virtual Network (VNet) herstellt, das Ihren Arbeitsbereich enthält. Weitere Informationen finden Sie im Abschnitt [Hostdatei](#hosts).
 ### <a name="workspace-dns-resolution-path"></a>DNS-Auflösungspfad des Arbeitsbereichs
 
 Der Zugriff auf einen bestimmten Azure Machine Learning-Arbeitsbereich über Private Link erfolgt durch die Kommunikation mit den folgenden vollqualifizierten Domänen (als Arbeitsbereichs-FQDNs bezeichnet), die unten aufgeführt sind:
@@ -86,7 +96,7 @@ Die vollqualifizierten Domänen werden in die folgenden kanonischen Namen (Canon
 - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.privatelink.api.ml.azure.us```
 - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>.privatelink.notebooks.usgovcloudapi.net```
 
-Die FQDNs werden in die IP-Adressen des Azure Machine Learning-Arbeitsbereichs in dieser Region auflösen. Die Auflösung des Arbeitsbereichs Private Link-FQDNs wird jedoch überschrieben, wenn die Auflösung mit der IP-Adresse des virtuellen Azure DNS-Servers in einer Virtual Network-Datei ausgeführt wird, die mit den oben erstellten Private DNS-Zonen verknüpft ist.
+Die FQDNs werden in die IP-Adressen des Azure Machine Learning-Arbeitsbereichs in dieser Region auflösen. Die Auflösung der FQDNs des Arbeitsbereichs „Private Link“ kann jedoch mithilfe eines benutzerdefinierten DNS-Servers, der im virtuellen Netzwerk gehostet wird, außer Kraft gesetzt werden. Ein Beispiel für diese Architektur finden Sie in dem Beispiel für den [benutzerdefinierten DNS-Server, der in einem VNet gehostet wird](#example-custom-dns-server-hosted-in-vnet).
 
 ## <a name="manual-dns-server-integration"></a>Manuelle DNS-Serverintegration
 
@@ -147,10 +157,37 @@ Verwenden Sie eine der folgenden Methoden, um die internen IP-Adressen für die 
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-```azurecli
-az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'customDnsConfigs[*].{FQDN: fqdn, IPAddress: ipAddresses[0]}' --output table
-```
+1. Verwenden Sie den folgenden Befehl, um die ID der Netzwerkschnittstelle des privaten Endpunkts zu erhalten:
 
+    ```azurecli
+    az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'networkInterfaces[*].id' --output table
+    ```
+
+1. Verwenden Sie den folgenden Befehl, um die IP-Adresse und FQDN-Informationen zu erhalten. Ersetzen Sie `<resource-id>` durch die ID aus dem vorherigen Schritt:
+
+    ```azurecli
+    az network nic show --ids <resource-id> --query 'ipConfigurations[*].{IPAddress: privateIpAddress, FQDNs: privateLinkConnectionProperties.fqdns}'
+    ```
+
+    Die Ausgabedaten ähneln dem folgenden Text:
+
+    ```json
+    [
+        {
+            "FQDNs": [
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms",
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms"
+            ],
+            "IPAddress": "10.1.0.5"
+        },
+        {
+            "FQDNs": [
+            "ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net"
+            ],
+            "IPAddress": "10.1.0.6"
+        }
+    ]
+    ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
@@ -234,7 +271,10 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
 
 2. **Erstellen Sie einen privaten Endpunkt mit privater DNS-Integration für die Private DNS-Zone, die mit DNS Server Virtual Network verbunden ist**:
 
-    Im nächsten Schritt erstellen Sie einen privaten Endpunkt für den Azure Machine Learning-Arbeitsbereich. Ein privater Endpunkt stellt sicher, dass Private DNS-Integration aktiviert ist. Der private Endpunkt ist für beide Private DNS-Zonen, die in Schritt 1 erstellt wurden. Dadurch wird sichergestellt, dass die gesamte Kommunikation mit dem Arbeitsbereich über den privaten Endpunkt im Azure Machine Learning Virtual Network durchgeführt wird.
+    Im nächsten Schritt erstellen Sie einen privaten Endpunkt für den Azure Machine Learning-Arbeitsbereich. Der private Endpunkt ist für beide Private DNS-Zonen, die in Schritt 1 erstellt wurden. Dadurch wird sichergestellt, dass die gesamte Kommunikation mit dem Arbeitsbereich über den privaten Endpunkt im Azure Machine Learning Virtual Network durchgeführt wird.
+
+    > [!IMPORTANT]
+    > Für den privaten Endpunkt muss die Integration von „Privates DNS“ aktiviert sein, damit dieses Beispiel ordnungsgemäß funktioniert.
 
 3. **Erstellen Sie eine bedingte Weiterleitungsanweisung auf dem DNS-Server, um sie an Azure DNS weiterzuleiten**: 
 
@@ -243,16 +283,19 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     Die Zonen, die bedingt weitergeleitet werden sollen, sind unten aufgeführt. Die Azure DNS-IP-Adresse des virtuellen Servers lautet 168.63.129.16:
 
     **öffentliche Azure-Regionen**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -274,9 +317,9 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-5. **Öffentliches DNS antwortet mit CNAME**:
+5. **Azure DNS löst die Arbeitsbereichsdomäne rekursiv zu CNAME auf**:
 
-    Der DNS-Server löst die FQDNs aus Schritt 4 aus dem öffentlichen DNS auf. Das öffentliche DNS antwortet mit einer der Domänen, die in Schritt 1 im Abschnitt mit den Informationen aufgeführt sind.
+    Der DNS-Server wird die FQDNs aus Schritt 4 von Azure DNS auflösen. Azure DNS antwortet mit einer der in Schritt 1 aufgeführten Domänen.
 
 6. **Der DNS-Server löst den CNAME-Eintrag der Arbeitsbereichsdomäne rekursiv aus Azure DNS auf**:
 
@@ -361,7 +404,10 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
 
 2. **Erstellen Sie einen privaten Endpunkt mit privater DNS-Integration für die Private DNS-Zone, die mit DNS Server Virtual Network verbunden ist**:
 
-    Im nächsten Schritt erstellen Sie einen privaten Endpunkt für den Azure Machine Learning-Arbeitsbereich. Ein privater Endpunkt stellt sicher, dass Private DNS-Integration aktiviert ist. Der private Endpunkt ist für beide Private DNS-Zonen, die in Schritt 1 erstellt wurden. Dadurch wird sichergestellt, dass die gesamte Kommunikation mit dem Arbeitsbereich über den privaten Endpunkt im Azure Machine Learning Virtual Network durchgeführt wird.
+    Im nächsten Schritt erstellen Sie einen privaten Endpunkt für den Azure Machine Learning-Arbeitsbereich. Der private Endpunkt ist für beide Private DNS-Zonen, die in Schritt 1 erstellt wurden. Dadurch wird sichergestellt, dass die gesamte Kommunikation mit dem Arbeitsbereich über den privaten Endpunkt im Azure Machine Learning Virtual Network durchgeführt wird.
+
+    > [!IMPORTANT]
+    > Für den privaten Endpunkt muss die Integration von „Privates DNS“ aktiviert sein, damit dieses Beispiel ordnungsgemäß funktioniert.
 
 3. **Erstellen Sie eine bedingte Weiterleitungsanweisung auf dem DNS-Server, um sie an Azure DNS weiterzuleiten**:
 
@@ -370,16 +416,19 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     Die Zonen, die bedingt weitergeleitet werden sollen, sind unten aufgeführt. Die Azure DNS-IP-Adresse des virtuellen Servers lautet 168.63.129.16.
 
     **öffentliche Azure-Regionen**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```     
     
     **Azure China-Regionen**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
-    
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
+
     **Azure US Government-Regionen**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -391,16 +440,19 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     Die Zonen, die bedingt weitergeleitet werden sollen, sind unten aufgeführt. Die IP-Adressen, an die weitergeleitet werden soll, sind die IP-Adressen Ihrer DNS-Server:
 
     **öffentliche Azure-Regionen**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China-Regionen**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government-Regionen**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > Konfigurationsschritte für den DNS-Server sind hier nicht enthalten, da viele DNS-Lösungen verfügbar sind, die als benutzerdefinierter DNS-Server verwendet werden können. Informationen zum ordnungsgemäßen Konfigurieren der bedingten Weiterleitung finden Sie in der Dokumentation zu Ihrer DNS-Lösung.
@@ -423,26 +475,62 @@ Die folgenden Schritte beschreiben, wie diese Topologie funktioniert:
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-6. **Öffentliches DNS antwortet mit CNAME**:
+6. **Der lokale DNS-Server löst die Arbeitsbereichsdomäne rekursiv auf**:
 
-    Der DNS-Server löst die FQDNs aus Schritt 4 aus dem öffentlichen DNS auf. Das öffentliche DNS antwortet mit einer der Domänen, die in Schritt 1 im Abschnitt mit den Informationen aufgeführt sind.
+    Der lokale DNS-Server löst die FQDNs aus Schritt 5 vom DNS-Server auf. Da es eine bedingte Weiterleitung gibt (Schritt 4), sendet der lokale DNS-Server die Anforderung zur Auflösung an den DNS-Server.
 
-7. **Der lokale DNS-Server löst den CNAME-Eintrag der Arbeitsbereichsdomäne rekursiv aus dem DNS-Server auf**:
+7. **Der DNS-Server löst die Arbeitsbereichsdomäne in CNAME aus Azure DNS auf**:
 
-    Der lokale DNS-Server löst den in Schritt 6 empfangenen CNAME rekursiv auf. Da in Schritt 4 eine bedingte Weiterleitung eingerichtet wurde, sendet der lokale DNS-Server die Anforderung zur Auflösung an den DNS-Server.
+    Der DNS-Server wird die FQDNs aus Schritt 5 von Azure DNS auflösen. Azure DNS antwortet mit einer der in Schritt 1 aufgeführten Domänen.
 
-8. **Der DNS-Server löst den CNAME-Eintrag der Arbeitsbereichsdomäne rekursiv aus Azure DNS auf**:
+8. **Der lokale DNS-Server löst den CNAME-Eintrag der Arbeitsbereichsdomäne rekursiv aus dem DNS-Server auf**:
 
-    Der DNS-Server löst den in Schritt 5 empfangenen CNAME rekursiv auf. Da in Schritt 3 eine bedingte Weiterleitung eingerichtet wurde, sendet der DNS-Server die Anforderung zur Auflösung an die IP-Adresse des Azure DNS Virtual Servers.
+    Der lokale DNS-Server löst den in Schritt 7 empfangenen CNAME rekursiv auf. Da in Schritt 4 eine bedingte Weiterleitung eingerichtet wurde, sendet der lokale DNS-Server die Anforderung zur Auflösung an den DNS-Server.
 
-9. **Azure DNS gibt Datensätze aus Private DNS-Zone zurück**:
+9. **Der DNS-Server löst den CNAME-Eintrag der Arbeitsbereichsdomäne rekursiv aus Azure DNS auf**:
+
+    Der DNS-Server löst den in Schritt 7 empfangenen CNAME rekursiv auf. Da in Schritt 3 eine bedingte Weiterleitung eingerichtet wurde, sendet der DNS-Server die Anforderung zur Auflösung an die IP-Adresse des Azure DNS Virtual Servers.
+
+10. **Azure DNS gibt Datensätze aus Private DNS-Zone zurück**:
 
     Die entsprechenden Datensätze, die in den Private DNS-Zonen gespeichert sind, werden an den DNS-Server zurückgegeben. Dies bedeutet, dass der Azure DNS Virtual Server die IP-Adressen des privaten Endpunkts zurückgibt.
 
-10. **Der lokale DNS-Server löst den Domänennamen des Arbeitsbereichs in die Adresse des privaten Endpunkts auf**:
+11. **Der lokale DNS-Server löst den Domänennamen des Arbeitsbereichs in die Adresse des privaten Endpunkts auf**:
 
-    Die Abfrage vom lokalen DNS-Server zum DNS-Server in Schritt 7 gibt letztendlich die IP-Adressen, die dem privaten Endpunkt zugeordnet sind, an den Azure Machine Learning-Arbeitsbereich zurück. Diese IP-Adressen werden an den ursprünglichen Client zurückgegeben, der nun über den in Schritt 1 konfigurierten privaten Endpunkt mit dem Azure Machine Learning-Arbeitsbereich kommuniziert.
+    Die Abfrage vom lokalen DNS-Server zum DNS-Server in Schritt 8 gibt letztendlich die IP-Adressen, die dem privaten Endpunkt zugeordnet sind, an den Azure Machine Learning-Arbeitsbereich zurück. Diese IP-Adressen werden an den ursprünglichen Client zurückgegeben, der nun über den in Schritt 1 konfigurierten privaten Endpunkt mit dem Azure Machine Learning-Arbeitsbereich kommuniziert.
 
+<a id="hosts"></a>
+## <a name="example-hosts-file"></a>Beispiel: Datei „hosts“
+
+Die `hosts`-Datei ist ein Textdokument, das Linux, macOS und Windows alle verwenden, um die Namensauflösung für den lokalen Computer außer Kraft zu setzen. Die Datei enthält eine Liste von IP-Adressen und den entsprechenden Hostnamen. Wenn der lokale Computer versucht, einen Hostnamen aufzulösen, wird der Name in die entsprechende IP-Adresse aufgelöst, wenn der Hostname in der `hosts`-Datei aufgeführt ist.
+
+> [!IMPORTANT]
+> Die `hosts`-Datei setzt nur die Namensauflösung für den lokalen Computer außer Kraft. Wenn Sie eine `hosts`-Datei mit mehreren Computern verwenden möchten, müssen Sie sie auf jedem Computer einzeln ändern.
+
+In der folgenden Tabelle ist der Speicherort der `hosts`-Datei aufgeführt:
+
+| Betriebssystem | Standort |
+| ----- | ----- |
+| Linux | `/etc/hosts` |
+| macOS | `/etc/hosts` |
+| Windows | `%SystemRoot%\System32\drivers\etc\hosts` |
+
+> [!TIP]
+> Der Name der `hosts`-Datei hat keine Erweiterung. Verwenden Sie beim Bearbeiten der Datei den Administratorzugriff. Unter Linux oder macOS können Sie z. B. `sudo vi` verwenden. Unter Windows führen Sie Editor als Administrator aus.
+
+Im Folgenden finden Sie ein Beispiel für `hosts`-Dateieinträge für Azure Machine Learning:
+
+```
+# For core Azure Machine Learning hosts
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms
+10.1.0.6    ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net
+
+# For a compute instance named 'mycomputeinstance'
+10.1.0.5    mycomputeinstance.eastus.instances.azureml.ms
+```
+
+Weitere Informationen zur `hosts`-Datei finden Sie unter [https://wikipedia.org/wiki/Hosts_(file)](https://wikipedia.org/wiki/Hosts_(file)).
 
 #### <a name="troubleshooting"></a>Problembehandlung
 
@@ -477,6 +565,15 @@ Wenn Sie nach dem Ausführen der oben genannten Schritte nicht von einem virtuel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von Azure Machine Learning mit einem virtuellen Netzwerk finden Sie in der [Übersicht über virtuelle Netzwerke](how-to-network-security-overview.md).
+Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
-Weitere Informationen zur Integration privater Endpunkte in Ihre DNS-Konfiguration finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
+* [Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md)
+* [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+* [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+* [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+* [Aktivieren von Studio-Funktionalität](how-to-enable-studio-virtual-network.md)
+* [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
+
+Informationen zur Integration privater Endpunkte in Ihre DNS-Konfiguration finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
+
+Informationen zum Bereitstellen von Modellen mit einem benutzerdefinierten DNS-Namen oder TLS-Sicherheit finden Sie unter [Absichern von Webdiensten mit TLS](how-to-secure-web-service.md).

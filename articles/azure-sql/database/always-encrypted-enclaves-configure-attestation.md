@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
+title: Konfigurieren des Nachweises für Always Encrypted mithilfe von Azure Attestation
 description: Konfigurieren von Azure Attestation für Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank
 keywords: Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted, Secure Enclaves, SGX, Nachweis
 services: sql-database
@@ -10,21 +10,18 @@ ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 05/01/2021
+ms.date: 07/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e2e6bc57a830b5257d246a4229e174cf8612d3c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a27acf96b42a4a963b88e281fd692a91616b7e4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662520"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727199"
 ---
-# <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
+# <a name="configure-attestation-for-always-encrypted-using-azure-attestation"></a>Konfigurieren des Nachweises für Always Encrypted mithilfe von Azure Attestation
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Always Encrypted mit Secure Enclaves für Azure SQL-Datenbank befindet sich derzeit in der **öffentlichen Vorschau**.
 
 [Microsoft Azure Attestation](../../attestation/overview.md) ist eine Lösung für Trusted Execution Environment-Nachweise (TEE), einschließlich Intel Software Guard Extensions-Enclaves (Intel SGX). 
 
@@ -42,6 +39,9 @@ Um Azure Attestation für Nachweise von Intel SGX-Enclaves, die für [Always Enc
 Bei einem [Nachweisanbieter](../../attestation/basic-concepts.md#attestation-provider) handelt es sich um eine Ressource in Azure Attestation, mit deren Hilfe [Nachweisanforderungen](../../attestation/basic-concepts.md#attestation-request) anhand von [Nachweisrichtlinien](../../attestation/basic-concepts.md#attestation-request) ausgewertet und [Nachweistoken](../../attestation/basic-concepts.md#attestation-token) ausgestellt werden. 
 
 Nachweisrichtlinien werden mithilfe der [Anspruchsregelgrammatik](../../attestation/claim-rule-grammar.md) angegeben.
+
+> [!IMPORTANT]
+> Ein Nachweisanbieter wird mit der Standardrichtlinie für Intel SGX-Enclaves erstellt, wodurch der innerhalb der Enclave ausgeführte Code nicht überprüft wird. Microsoft empfiehlt dringend, für Always Encrypted mit Secure Enclaves die unten empfohlene Richtlinie festzulegen und nicht die Standardrichtlinie zu verwenden.
 
 Microsoft empfiehlt die folgende Richtlinie zum Nachweisen von Intel SGX-Enclaves, die für Always Encrypted in Azure SQL-Datenbank verwendet werden:
 
@@ -69,7 +69,7 @@ Mit der oben genannten Richtlinie wird Folgendes überprüft:
   > Eines der Hauptziele des Nachweises ist, Clients zu überzeugen, dass die in der Enclave ausgeführte Binärdatei die Binärdatei ist, die ausgeführt werden soll. Nachweisrichtlinien stellen zwei Mechanismen für diesen Zweck bereit. Einer ist der **mrenclave**-Anspruch, bei dem es sich um den Hash der Binärdatei handelt, die in einer Enclave ausgeführt werden soll. Bei **mrenclave** besteht das Problem, dass sich der binäre Hash selbst bei geringfügigen Änderungen des Codes ändert, wodurch es schwierig wird, den Code, der in der Enclave ausgeführt wird, zu überarbeiten. Daher sollte **mrsigner** verwendet werden, der Hash eines Schlüssels, der zum Signieren der Enclave-Binärdatei verwendet wird. Wenn Microsoft die Enclave überarbeitet, bleibt **mrsigner** unverändert, solange der Signaturschlüssel nicht geändert wird. Auf diese Weise wird es möglich, aktualisierte Binärdateien bereitzustellen, ohne die Anwendungen der Kunden zu zerstören. 
 
 > [!IMPORTANT]
-> Ein Nachweisanbieter wird mit der Standardrichtlinie für Intel SGX-Enclaves erstellt, wodurch der innerhalb der Enclave ausgeführte Code nicht überprüft wird. Microsoft empfiehlt dringend, für Always Encrypted mit Secure Enclaves die oben empfohlene Richtlinie festzulegen und nicht die Standardrichtlinie zu verwenden.
+> Microsoft muss möglicherweise den Schlüssel rotieren, der zum Signieren der Binärdatei für die Always Encrypted-Enclave verwendet wird. Dies kommt jedoch nur selten vor. Bevor eine neue Version der Binärdatei für die Enclave, die mit einem neuen Schlüssel signiert ist, in Azure SQL-Datenbank bereitgestellt wird, wird dieser Artikel aktualisiert, um die neue empfohlene Nachweisrichtlinie sowie Anweisungen dazu bereitzustellen, wie Sie die Richtlinie in Ihren Nachweisanbietern aktualisieren sollten, damit Sie sicherstellen können, dass Ihre Anwendungen weiterhin unterbrechungsfrei funktionieren.
 
 Anweisungen zum Erstellen eines Nachweisanbieters und Konfigurieren des Anbieters mit einer Nachweisrichtlinie unter Verwendung folgender Optionen:
 
@@ -82,6 +82,7 @@ Anweisungen zum Erstellen eines Nachweisanbieters und Konfigurieren des Anbieter
 - [Schnellstart: Einrichten von Azure Attestation mithilfe der Azure CLI](../../attestation/quickstart-azure-cli.md)
     > [!IMPORTANT]
     > Wenn Sie die Nachweisrichtlinie mit der Azure CLI konfigurieren, legen Sie den Parameter `attestation-type` auf `SGX-IntelSDK` fest.
+
 
 ## <a name="determine-the-attestation-url-for-your-attestation-policy"></a>Ermitteln der Nachweis-URL für die Nachweisrichtlinie
 

@@ -10,15 +10,16 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 3/31/2021
-ms.openlocfilehash: a3a3ca1e4a6161f12b5695ac96a3d9e562a13947
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 7/8/2021
+ms.openlocfilehash: ca9bfaa6155c2d0f4600ed56bf5a3cab3880274c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693336"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345801"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
 
@@ -41,10 +42,10 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzl
 - Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Computeressourcen  
 - Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
 - Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
-- Schnelle Aufskalierung: Sie können einen oder mehrere schreibgeschützte Knoten zur Abladung Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
+- Schnelle Aufskalierung: Sie können ein oder mehrere [schreibgeschützte Replikate](service-tier-hyperscale-replicas.md) zum Abladen Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
 - Schnelle Hochskalierung: Sie können Ihre Computeressourcen in konstanter Zeit hochskalieren, um hohe Workloads nach Bedarf zu bewältigen, und anschließend wieder herunterskalieren, sobald sie nicht mehr benötigt werden.
 
-Die Dienstebene „Hyperscale“ beseitigt viele praktische Einschränkungen, die normalerweise für Clouddatenbanken gelten. Während die meisten anderen Datenbanken durch die auf einem einzelnen Knoten verfügbaren Ressourcen eingeschränkt werden, gelten in der Dienstebene „Hyperscale“ keine solchen Limits. Aufgrund der flexiblen Speicherarchitektur wächst der Speicher nach Bedarf. Hyperscale-Datenbanken werden ohne Definition einer maximalen Größe erstellt. Eine Hyperscale-Datenbank wächst nach Bedarf – und Ihnen wird nur die tatsächlich verwendete Kapazität in Rechnung gestellt. Für leseintensive Workloads bietet die Dienstebene „Hyperscale“ eine schnelle horizontale Skalierung, indem nach Bedarf zusätzliche Lesereplikate zur Abladung von Leseworkloads bereitgestellt werden.
+Die Dienstebene „Hyperscale“ beseitigt viele praktische Einschränkungen, die normalerweise für Clouddatenbanken gelten. Während die meisten anderen Datenbanken durch die auf einem einzelnen Knoten verfügbaren Ressourcen eingeschränkt werden, gelten in der Dienstebene „Hyperscale“ keine solchen Limits. Aufgrund der flexiblen Speicherarchitektur wächst der Speicher nach Bedarf. Hyperscale-Datenbanken werden ohne Definition einer maximalen Größe erstellt. Eine Hyperscale-Datenbank wächst nach Bedarf – und Ihnen wird nur die tatsächlich verwendete Kapazität in Rechnung gestellt. Für leseintensive Workloads bietet die Dienstebene „Hyperscale“ eine schnelle horizontale Skalierung, indem nach Bedarf zusätzliche Replikate zur Abladung von Leseworkloads bereitgestellt werden.
 
 Darüber hinaus ist die Zeit, die zum Erstellen von Datenbanksicherungen oder zum Hoch- oder Herunterskalieren erforderlich ist, nicht mehr an die Menge der Daten in der Datenbank gebunden. Hyperscale-Datenbanken können praktisch sofort gesichert werden. Außerdem können Sie eine Datenbank in Minutenschnelle in der Größenordnung von zig Terabyte hoch- oder herunterskalieren. Durch diese Funktion müssen Sie nicht befürchten, durch Ihre Auswahl bei der Anfangskonfiguration eingeschränkt zu werden.
 
@@ -69,7 +70,7 @@ Die Dienstebene „Hyperscale“ ist nur im [V-Kern-Modell](service-tiers-vcore.
 
 - **Compute**:
 
-  Der Preis für Compute-Einheiten bei „Hyperscale“ ist pro Replikat. Der Preis für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) wird automatisch auf Replikate mit Leseskalierung angewendet. Wir erstellen standardmäßig ein primäres Replikat und ein schreibgeschütztes Replikat pro Hyperscale-Datenbank.  Benutzer können die Gesamtanzahl der Replikate einschließlich des primären Replikats von 1 bis 5 anpassen.
+  Der Preis für Compute-Einheiten bei „Hyperscale“ ist pro Replikat. Der Preis für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) wird automatisch auf Hochverfügbarkeits- und benannte Replikate angewandt. Standardmäßig werden ein primäres Replikat und ein sekundäres [Hochverfügbarkeitsreplikat](service-tier-hyperscale-replicas.md) pro Hyperscale-Datenbank erstellt.  Benutzer können die Gesamtanzahl von Hochverfügbarkeitsreplikaten abhängig von der gewünschten [SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) zwischen von 0 und 4 festlegen. 
 
 - **Storage**:
 
@@ -79,7 +80,7 @@ Weitere Informationen zu den Hyperscale-Preisen finden Sie unter [Preise für Az
 
 ## <a name="distributed-functions-architecture"></a>Architektur mit verteilten Funktionen
 
-Im Gegensatz zu herkömmlichen Datenbank-Engines, in denen alle Datenverwaltungsfunktionen an einem Standort/in einem Prozess zentralisiert sind (selbst die so genannten verteilten Datenbanken in modernen Produktionsumgebung verfügen über mehrere Kopien einer monolithischen Daten-Engine), trennt eine Hyperscale-Datenbank die Abfrageverarbeitungs-Engine, in der die Semantik verschiedener Daten-Engines abweicht, von den Komponenten, die eine langfristige Speicherung und Dauerhaftigkeit für die Daten bereitstellen. Auf diese Weise kann die Speicherkapazität nahtlos nach Bedarf horizontal hochskaliert werden. (Das Anfangsziel ist 100 TB). Schreibgeschützte Replikate nutzen dieselben Speicherkomponenten gemeinsam, daher ist keine Datenkopie erforderlich, um ein neues lesbares Replikat zu starten.
+Im Gegensatz zu herkömmlichen Datenbank-Engines, in denen alle Datenverwaltungsfunktionen an einem Standort/in einem Prozess zentralisiert sind (selbst die so genannten verteilten Datenbanken in modernen Produktionsumgebung verfügen über mehrere Kopien einer monolithischen Daten-Engine), trennt eine Hyperscale-Datenbank die Abfrageverarbeitungs-Engine, in der die Semantik verschiedener Daten-Engines abweicht, von den Komponenten, die eine langfristige Speicherung und Dauerhaftigkeit für die Daten bereitstellen. Auf diese Weise kann die Speicherkapazität nahtlos nach Bedarf horizontal hochskaliert werden. (Das Anfangsziel ist 100 TB). Hochverfügbarkeits- und benannte Replikate nutzen dieselben Speicherkomponenten gemeinsam, daher ist keine Datenkopie erforderlich, um ein neues Replikat zu starten.
 
 Das folgende Diagramm veranschaulicht die verschiedenen Typen von Knoten in einer Hyperscale-Datenbank:
 
@@ -141,22 +142,11 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Herstellen einer Verbindung mit einem schreibgeschützten Replikat einer Hyperscale-Datenbank
-
-Bei Hyperscale-Datenbanken bestimmt das Argument `ApplicationIntent` in der vom Client bereitgestellten Verbindungszeichenfolge, ob eine Verbindung an das Replikat mit Schreibzugriff oder an ein schreibgeschütztes sekundäres Replikat weitergeleitet wird. Wenn `ApplicationIntent` auf `READONLY` festgelegt ist und die Datenbank kein sekundäres Replikat aufweist, wird die Verbindung an das primäre Replikat weitergeleitet, und sie weist standardmäßig das `ReadWrite`-Verhalten auf.
-
-```cmd
--- Connection string with application intent
-Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
-```
-
-Sekundäre Hyperscale-Replikate sind identisch, wobei das gleiche Servicelevelziel wie beim primären Replikat verwendet wird. Wenn mehrere sekundäre Replikate vorhanden sind, wird die Arbeitslast auf alle verfügbaren sekundären Replikate verteilt. Sekundäre Replikate werden unabhängig voneinander aktualisiert. Daher können verschiedene Replikate unterschiedliche Datenlatenzen im Vergleich zum primären Replikat aufweisen.
-
 ## <a name="database-high-availability-in-hyperscale"></a>Hochverfügbarkeit von Datenbanken in Hyperscale
 
-Wie bei allen anderen Dienstebenen gewährleistet Hyperscale die Dauerhaftigkeit von Daten für committete Transaktionen unabhängig von der Verfügbarkeit des Computereplikats. Das Ausmaß der Ausfallzeiten aufgrund der Nichtverfügbarkeit des primären Replikats hängt von der Art des Failovers (geplant oder ungeplant) und vom Vorhandensein mindestens eines sekundären Replikats ab. Bei einem geplanten Failover (d.h. einem Wartungsereignis) erstellt das System entweder das neue primäre Replikat, bevor ein Failover initiiert wird, oder verwendet ein vorhandenes sekundäres Replikat als Failoverziel. Bei einem ungeplanten Failover (d.h. bei einem Hardwarefehler auf dem primären Replikat) verwendet das System ein sekundäres Replikat als Failoverziel, sofern vorhanden, oder erstellt ein neues primäres Replikat aus dem Pool der verfügbaren Computekapazität. Im letzteren Fall ist die Dauer der Ausfallzeit länger, da zusätzliche Schritte erforderlich sind, um das neue primäre Replikat zu erstellen.
+Wie bei allen anderen Dienstebenen gewährleistet Hyperscale die Dauerhaftigkeit von Daten für committete Transaktionen unabhängig von der Verfügbarkeit des Computereplikats. Das Ausmaß der Ausfallzeiten aufgrund der Nichtverfügbarkeit des primären Replikats hängt von der Art des Failovers (geplant oder ungeplant) und vom Vorhandensein mindestens eines Hochverfügbarkeitsreplikats ab. Bei einem geplanten Failover (d. h. einem Wartungsereignis) erstellt das System entweder das neue primäre Replikat, bevor ein Failover initiiert wird, oder es verwendet ein vorhandenes Hochverfügbarkeitsreplikat als Failoverziel. Bei einem ungeplanten Failover (d. h. bei einem Hardwarefehler auf dem primären Replikat) verwendet das System ein Hochverfügbarkeitsreplikat als Failoverziel (sofern vorhanden), oder es erstellt ein neues primäres Replikat aus dem Pool der verfügbaren Computekapazität. Im letzteren Fall ist die Dauer der Ausfallzeit länger, da zusätzliche Schritte erforderlich sind, um das neue primäre Replikat zu erstellen.
 
-Weitere Informationen zur Hyperscale-SLA finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database/).
+Weitere Informationen zur Hyperscale-SLA finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database).
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Notfallwiederherstellung für Hyperscale-Datenbanken
 
@@ -175,7 +165,7 @@ Wenn Sie im Rahmen der Wiederherstellung einer Hyperscale-Datenbank in Azure SQL
 Die Hyperscale-Dienstebene für Azure SQL-Datenbank ist in allen Regionen verfügbar, standardmäßig jedoch nur in den unten aufgeführten Regionen aktiviert. Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, wo Hyperscale nicht standardmäßig unterstützt wird, können Sie eine Onboardinganforderung über das Azure-Portal senden. Anweisungen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md). Beachten Sie beim Übermitteln Ihrer Anforderung die folgenden Richtlinien:
 
 - Verwenden Sie den SQL-Datenbank-Kontingenttyp [Regionszugriff](quota-increase-request.md#region).
-- Fügen Sie in der Beschreibung die Compute-SKU/Gesamtzahl der Kerne einschließlich lesbarer Replikate hinzu, und geben Sie an, dass Sie Hyperscale-Kapazität anfordern.
+- Fügen Sie in der Beschreibung die Compute-SKU/Gesamtanzahl der Kerne einschließlich Hochverfügbarkeits- und benannter Replikate hinzu, und geben Sie an, dass Sie Hyperscale-Kapazität anfordern.
 - Geben Sie außerdem eine Prognose der Gesamtgröße aller Datenbanken im Zeitverlauf in TB an.
 
 Aktivierte Regionen:
@@ -230,11 +220,11 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu Hyperscale kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren. Der BACPAC-Export/-Import über das Azure-Portal, über PowerShell mithilfe von [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) oder [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport), über die Azure-Befehlszeilenschnittstelle mithilfe von [az sql db export](/cli/azure/sql/db#az_sql_db_export) oder [az sql db import](/cli/azure/sql/db#az_sql_db_import) sowie über die [REST-API](/rest/api/sql/) wird nicht unterstützt. Der BACPAC-Import/-Export für kleinere Hyperscale-Datenbanken (bis zu 200 GB) wird über SSMS und [SqlPackage](/sql/tools/sqlpackage) Version 18.4 und höher unterstützt. Bei größeren Datenbanken kann der BACPAC-Export/-Import sehr lange dauern und aus verschiedenen Gründen zu Fehlern führen.|
 | Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt eine Teilmenge von In-Memory-OLTP-Objekten, einschließlich speicheroptimierter Tabellentypen, Tabellenvariablen und systemintern kompilierter Module. Wenn aber In-Memory-OLTP-Objekte von beliebiger Art in der gerade migrierten Datenbank vorhanden sind, wird die Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Für die Migration solch einer Datenbank zu Hyperscale müssen alle In-Memory-OLTP-Objekte und deren Abhängigkeiten gelöscht werden. Nachdem die Datenbank migriert wurde, können diese Objekte neu erstellt werden. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden zurzeit in Hyperscale nicht unterstützt und müssen in Datenträgertabellen geändert werden.|
 | Georeplikation  | Die [Geo-Replikation](active-geo-replication-overview.md) auf Hyperscale ist jetzt in der öffentlichen Vorschau. |
-| Datenbankkopie | Die [Datenbankkopie](database-copy.md) auf Hyperscale ist jetzt in der öffentlichen Vorschau (Public Preview). |
 | Intelligente Datenbankfeatures | Mit Ausnahme der Option „Plan erzwingen“ werden alle anderen Optionen zur automatischen Optimierung für Hyperscale noch nicht unterstützt. Optionen scheinen möglicherweise aktiviert zu sein, es erfolgen jedoch keine Empfehlungen oder Aktionen. |
 | Statistik zur Abfrageleistung | Die Statistik zur Abfrageleistung wird derzeit nicht für Hyperscale-Datenbanken unterstützt. |
 | Verkleinern der Datenbank | DBCC SHRINKDATABASE und DBCC SHRINKFILE werden derzeit für Hyperscale-Datenbanken nicht unterstützt. |
 | Datenbankintegritätsprüfung | DBCC CHECKDB wird für Hyperscale-Datenbanken derzeit nicht unterstützt. DBCC CHECKFILEGROUP und DBCC CHECKTABLE können als Problemumgehung verwendet werden. Ausführliche Informationen zur Datenintegritätsverwaltung in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/). |
+| Elastische Aufträge | Die Verwendung einer Hyperscale-Datenbank als Auftragsdatenbank wird nicht unterstützt. Elastische Aufträge können jedoch Hyperscale-Datenbanken auf die gleiche Weise wie jede andere Azure SQL-Datenbank-Instanz als Ziel verwenden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Application Gateway-Integration mit Dienstendpunkten – Azure App Service | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zur Application Gateway-Integration in Azure App Service mit Schutz durch Dienstendpunkte.
+title: Application Gateway-Integration – Azure App Service | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zur Application Gateway-Integration in Azure App Service.
 services: app-service
 documentationcenter: ''
 author: madsd
@@ -11,18 +11,18 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b383c28ca5097a6a30dc43f48213b0793ccdee11
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 50de997203357f86cae4a684eb55b5e30e97b712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096380"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355337"
 ---
-# <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway-Integration mit Dienstendpunkten
-Es gibt drei Varianten von App Service, die jeweils eine etwas andere Konfiguration der Integration mit Azure Application Gateway erfordern. Zu diesen Varianten zählen die reguläre App Service-Instanz (mehrinstanzenfähig) sowie ILB-ASE (Internal Load Balancer App Service Environment, App Service-Umgebung mit internem Lastenausgleich) und die externe ASE. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Konfiguration mit App Service (mehrinstanzenfähig) durchführen, und Sie finden Informationen zu ILB und externer ASE.
+# <a name="application-gateway-integration"></a>Application Gateway-Integration
+Es gibt drei Varianten von App Service, die jeweils eine etwas andere Konfiguration der Integration mit Azure Application Gateway erfordern. Zu diesen Varianten zählen die reguläre App Service-Instanz (mehrinstanzenfähig) sowie ILB-ASE (Internal Load Balancer App Service Environment, App Service-Umgebung mit internem Lastenausgleich) und die externe ASE. In diesem Artikel wird beschrieben, wie Sie die Integration mit App Service (mehrinstanzenfähig) mithilfe eines Dienstendpunkts zum Schützen des Datenverkehrs konfigurieren. Außerdem werden Überlegungen zur Verwendung privater Endpunkte und zur Integration mit ILB und einer externen ASE erörtert. Und nicht zuletzt beinhaltet der Artikel Überlegungen zur scm/kudu-Website.
 
 ## <a name="integration-with-app-service-multi-tenant"></a>Integration mit App Service (mehrinstanzenfähig)
 App Service (mehrinstanzenfähig) verfügt über einen öffentlichen Endpunkt mit Internetzugriff. Mithilfe von [Dienstendpunkten](../../virtual-network/virtual-network-service-endpoints-overview.md) können Sie dafür sorgen, dass nur Datenverkehr von einem bestimmten Subnetz innerhalb eines virtuellen Azure-Netzwerks zugelassen und alles andere blockiert wird. Im folgenden Szenario verwenden wir diese Funktion, um sicherzustellen, dass eine App Service-Instanz nur Datenverkehr von einer bestimmten Application Gateway-Instanz empfangen kann.
@@ -40,7 +40,7 @@ Im Azure-Portal müssen vier Schritte ausgeführt werden, um das Setup bereitzus
 
 Nun können Sie über die Application Gateway-Instanz auf die App Service-Instanz zugreifen. Wenn Sie jedoch versuchen, direkt auf die App Service-Instanz zuzugreifen, erhalten Sie einen HTTP-Fehler vom Typ 403, der angibt, dass die Website beendet wurde.
 
-![Screenshot: Text eines Fehlers vom Typ „403 – Verboten“](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/website-403-forbidden.png" alt-text="Screenshot: Text eines Fehlers vom Typ „403 – Verboten“":::
 
 ## <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
 Die [Resource Manager-Bereitstellungsvorlage][template-app-gateway-app-service-complete] stellt ein vollständiges Szenario bereit. Das Szenario besteht aus einer App Service-Instanz, die durch eine Kombination aus Dienstendpunkten und Zugriffseinschränkung gesperrt wurde, um nur Datenverkehr von Application Gateway zu empfangen. Die Vorlage enthält der Einfachheit halber viele intelligente Standardwerte sowie eindeutige Postfixes für die Ressourcennamen. Wenn Sie diese überschreiben möchten, müssen Sie das Repository klonen oder die Vorlage herunterladen und bearbeiten.
@@ -55,6 +55,12 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 In der Standardkonfiguration richtet der Befehl sowohl die Dienstendpunktkonfiguration im Subnetz als auch die Zugriffseinschränkung in der App Service-Instanz ein.
+
+## <a name="considerations-when-using-private-endpoint"></a>Wichtige Aspekte bei Verwendung eines privaten Endpunkts
+
+Als Alternative zum Dienstendpunkt können Sie einen privaten Endpunkt verwenden, um den Datenverkehr zwischen Application Gateway und App Service (mehrinstanzenfähig) zu sichern. Sie müssen sicherstellen, dass Application Gateway die private IP der App Service-Anwendungen per DNS auflösen kann. Alternativ können Sie die private IP im Back-End-Pool verwenden und den Hostnamen in den HTTP-Einstellungen überschreiben.
+
+:::image type="content" source="./media/app-gateway-with-service-endpoints/private-endpoint-appgw.png" alt-text="Diagramm: Datenverkehr, der zu einer Application Gateway-Instanz in einer Azure Virtual Network-Instanz und von dort aus über einen privaten Endpunkt zu Instanzen von Apps in App Service geleitet wird":::
 
 ## <a name="considerations-for-ilb-ase"></a>Überlegungen zur ILB-ASE
 Da eine ILB-ASE nicht für das Internet verfügbar gemacht wird, ist der Datenverkehr zwischen der Instanz und einer Application Gateway-Instanz bereits im virtuellen Netzwerk isoliert. In [dieser Anleitung](../environment/integrate-with-application-gateway.md) wird eine ILB-ASE konfiguriert und über das Azure-Portal in eine Application Gateway-Instanz integriert.

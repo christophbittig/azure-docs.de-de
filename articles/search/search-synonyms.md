@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: ea92a5e196c809535801278631cbfdfdc5013199
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251623"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288215"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
-Mit Synonymzuordnungen können Sie entsprechende Begriffe zuordnen, um den Bereich einer Abfrage zu erweitern, ohne dass der Benutzer den Begriff tatsächlich bereitstellen muss. Wenn zum Beispiel „dog“, „canine“ und „canine“ Synonyme sind, wird eine Abfrage nach „canine“ Dokumente finden, die „canine“ enthalten.
+Innerhalb eines Suchdiensts sind Synonymzuordnungen eine globale Ressource, die äquivalente Begriffe assoziiert und so den Umfang einer Suchabfrage erweitert, ohne dass der Benutzer den Begriff tatsächlich eingeben muss. Wenn zum Beispiel „Hund“, „Hundeartige“ und „Welpe“ zugeordnete Synonyme sind, werden bei Abfrage von „Hundeartige“ Dokumente gefunden, die „Hund“ enthalten.
 
 ## <a name="create-synonyms"></a>Erstellen von Synonymen
 
@@ -38,7 +38,13 @@ POST /synonymmaps?api-version=2020-06-30
 }
 ```
 
-Um eine Synonymzuordnung zu erstellen, verwenden Sie [Synonymzuordnung erstellen (REST-API)](/rest/api/searchservice/create-synonym-map) oder ein Azure-SDK. C#-Entwickler sollten mit dem [Hinzufügen von Synonymen in der kognitiven Azure-Suche mit C#](search-synonyms-tutorial-sdk.md) beginnen.
+Eine Synonymzuordnung muss programmgesteuert erstellt werden (das Portal unterstützt keine Synonymzuordnungsdefinitionen):
+
++ [Erstellen einer Synonymzuordnung (REST-API)](/rest/api/searchservice/create-synonym-map). Dieser Verweis ist der anschaulichste.
++ [SynonymMap-Klasse (.NET)](/dotnet/api/azure.search.documents.indexes.models.synonymmap) und [Hinzufügen von Synonymen in C#](search-synonyms-tutorial-sdk.md)
++ [SynonymMap-Klasse (Python)](/python/api/azure-search-documents/azure.search.documents.indexes.models.synonymmap)
++ [SynonymMap-Schnittstelle (JavaScript)](/javascript/api/@azure/search-documents/synonymmap)
++ [SynonymMap-Klasse (Java)](/java/api/com.azure.search.documents.indexes.models.synonymmap)
 
 ## <a name="define-rules"></a>Definieren von Regeln
 
@@ -85,7 +91,14 @@ Bei einer expliziten Zuordnung wird eine Abfrage nach `Washington`, `Wash.` oder
 
 ### <a name="escaping-special-characters"></a>Verwenden von Escapezeichen für Sonderzeichen
 
-Synonyme werden während der Abfrageverarbeitung analysiert. Wenn Sie Synonyme definieren müssen, die Kommas oder andere Sonderzeichen enthalten, können Sie diese wie in diesem Beispiel mit einem umgekehrten Schrägstrich als Escapezeichen versehen:
+Bei der Volltextsuche werden Synonyme während der Abfrageverarbeitung wie jeder andere Suchbegriff analysiert, was bedeutet, dass die Regeln für reservierte Zeichen und Sonderzeichen auch für die Begriffe in Ihrer Synonymzuordnung gelten. Die Liste der Zeichen, die die Verwendung von Escapezeichen erfordern, unterscheidet sich zwischen der einfachen Syntax und der vollständigen Syntax:
+
++ [einfache Syntax](query-simple-syntax.md)  `+ | " ( ) ' \`
++ [vollständige Syntax](query-lucene-syntax.md) `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`
+
+Denken Sie daran: Wenn Sie Zeichen beibehalten müssen, die andernfalls während der Indizierung vom Standardanalyseprogramm verworfen würden, müssen Sie ein Analyseprogramm einsetzen, das sie beibehält. Zu den Optionen gehören Microsoft Natural [Language Analyzer](index-add-language-analyzers.md) (Analysetool für natürliche Sprache), bei dem Wörter mit Bindestrichen beibehalten werden, oder ein benutzerdefiniertes Analysetool für komplexere Muster. Weitere Informationen finden Sie unter [Teilausdrücke, Muster und Sonderzeichen](search-query-partial-matching.md).
+
+Nachfolgend sehen Sie ein Beispiel für das Versehen eines Zeichens mit einem Backslash als Escapezeichen.
 
 ```json
 {

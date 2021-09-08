@@ -4,12 +4,12 @@ description: Hier erhalten Sie Informationen zu AKS-Unterstützungsrichtlinien (
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1e85effa5a8efca59bfc88aada050ee5ddcc7fcf
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368108"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666439"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -127,7 +127,7 @@ Obwohl Sie sich bei Agentknoten anmelden und diese ändern können, ist dies nic
 
 ## <a name="network-ports-access-and-nsgs"></a>Netzwerkports, Zugriff und NSGs
 
-Sie können die NGSs nur für benutzerdefinierte Subnetze anpassen. NSGs können nicht in verwalteten Subnetzen oder auf NIC-Ebene der Agentknoten angepasst werden. In AKS gelten Anforderungen für ausgehenden Datenverkehr an bestimmte Endpunkte, um den ausgehenden Datenverkehr zu steuern und die erforderliche Konnektivität sicherzustellen. Weitere Informationen finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)](limit-egress-traffic.md).
+Sie können die NGSs nur für benutzerdefinierte Subnetze anpassen. NSGs können nicht in verwalteten Subnetzen oder auf NIC-Ebene der Agentknoten angepasst werden. In AKS gelten Anforderungen für ausgehenden Datenverkehr an bestimmte Endpunkte, um den ausgehenden Datenverkehr zu steuern und die erforderliche Konnektivität sicherzustellen. Weitere Informationen finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)](limit-egress-traffic.md). Für eingehenden Datenverkehr basieren die Anforderungen auf den Anwendungen, die Sie im Cluster bereitgestellt haben.
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Beendete Cluster oder Cluster mit aufgehobener Zuordnung
 

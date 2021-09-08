@@ -6,19 +6,60 @@ ms.service: mysql
 ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 6b77ede348073dd09c0ba44bfe282d3bf546a092
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/17/2021
+ms.openlocfilehash: b324c6b536ae5038ed9eb1d31025d6e88cf21011
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340137"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Neuerungen in Azure Database for MySQL Single Server
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Der Dienst basiert auf der [Datenbank-Engine MySQL Community Edition](https://www.mysql.com/products/community/) (verfügbar unter der GPLv2-Lizenz) und unterstützt die Versionen 5.6, 5.7 und 8.0. Bei [Azure Database for MySQL Single Server](./overview.md#azure-database-for-mysql---single-server) handelt es sich um einen Bereitstellungsmodus, der einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank bietet. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit, alle mit minimaler Benutzerkonfiguration und -steuerung.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Single Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
+
+## <a name="june-2021"></a>Juni 2021
+  
+Dieses Release von Azure Database for MySQL Single Server enthält die folgenden Updates.
+
+- **Möglichkeit zum Ändern des Serverparameters `activate_all_roles_on_login` über Portal/Befehlszeilenschnittstelle für MySQL 8.0 aktiviert**
+
+  Benutzer können jetzt den Wert des Parameters „activate_all_roles_on_login“ über das Azure-Portal und die Befehlszeilenschnittstelle ändern. Mit diesem Parameter können Sie konfigurieren, ob die automatische Aktivierung aller gewährten Rollen aktiviert werden soll, wenn sich Benutzer beim Server anmelden. Weitere Informationen finden Sie unter [Serversystemvariablen](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html).
+
+- **MySQL-Communityfehler 29596969 und 94668 behoben**
+
+  Dieses Release behebt ein Problem, bei dem der Standardausdruck in einer CREATE TABLE-Abfrage ignoriert wird, wenn das Feld als PRIMÄRSCHLÜSSEL für MySQL 8.0 markiert wurde. (MySQL-Communityfehler 29596969, Fehler 94668). Weitere Informationen finden Sie unter [MySQL Bugs: #94668: Expression Default is made NULL during CREATE TABLE query, if field is made PK](https://bugs.mysql.com/bug.php?id=94668) (MySQL-Fehler 94668: Standardwert für Ausdruck ist NULL bei CREATE TABLE-Abfrage, wenn das Feld der Primärschlüssel ist).
+
+- **Ein Problem mit doppelten Tabellennamen in der SHOW TABLE-Abfrage behoben**
+
+  Es wurde eine neue Funktion eingeführt, die während des Tabellenvorgangs eine differenzierte Steuerung des Tabellencaches ermöglicht. Aufgrund eines Codefehlers in der neuen Funktion kann der Eintrag im Verzeichniscache falsch konfiguriert oder hinzugefügt werden und zu unerwartetem Verhalten führen, z. B. der Rückgabe von zwei Tabellen mit dem gleichen Namen. Der Verzeichniscache funktioniert nur für die SHOW TABLE-Abfrage. Er wirkt sich nicht auf DML- oder DDL-Abfragen aus. Dieses Problem wurde in diesem Release vollständig behoben.
+
+- **Standardwert für Serverparameter `max_heap_table_size` erhöht, um Überläufe der temporären Tabelle auf dem Datenträger zu reduzieren**
+
+  Mit diesem Release wurde der maximal zulässige Wert für den Parameter `max_heap_table_size` in „8589934592“ für Speicher der Ebene „Universell“ mit 64 virtuellen Kernen und der Ebene „Arbeitsspeicheroptimiert“ mit 32 virtuellen Kernen geändert.
+
+- **Problem beim Festlegen des Werts des Parameters `sql_require_primary_key` über das Portal behoben**
+
+  Benutzer können jetzt den Wert des Parameters `sql_require_primary_key` direkt über das Azure-Portal ändern.
+
+- **Allgemeine Verfügbarkeit von Benachrichtigungen zu geplanten Wartungen**
+
+  Mit diesem Release werden Benachrichtigungen zu geplanten Wartungen in Azure Database for MySQL – Einzelserver allgemein verfügbar gemacht. Weitere Informationen finden Sie im Artikel [Benachrichtigungen zu geplanten Wartungen](concepts-planned-maintenance-notification.md).
+
+- **Parameter `redirect_enabled` standardmäßig aktiviert**
+
+  Mit diesem Release wird der Parameter `redirect_enabled` standardmäßig aktiviert. Mithilfe der Umleitung soll die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern dadurch verringert werden, dass Anwendungen eine direkte Verbindung mit Back-End-Serverknoten herstellen dürfen. Unterstützung für die Umleitung in PHP-Anwendungen ist über die von Microsoft entwickelte [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)-Erweiterung verfügbar. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung](howto-redirection.md).
+
+>[!Note]
+> * Die Umleitung funktioniert bei der Einrichtung von Private Link nicht. Wenn Sie Private Link für Azure Database for MySQL verwenden, tritt möglicherweise ein Verbindungsproblem auf. Um das Problem zu beheben, stellen Sie sicher, dass der Parameter „redirect_enabled“ auf „OFF“ festgelegt ist und die Clientanwendung neu gestartet wurde.</br>
+> * Wenn Sie eine PHP-Anwendung mit dem Umleitungstreiber mysqlnd_azure verwenden, um eine Verbindung mit Azure Database for MySQL herzustellen (wobei die Umleitung standardmäßig aktiviert ist), kann es zu einem Datencodierungsproblem kommen, das sich auf Ihre Einfügetransaktionen auswirken kann.</br>
+> Führen Sie zum Beheben dieses Problems eine der folgenden Aktionen aus:
+>    - Deaktivieren Sie im Azure-Portal die Umleitung, indem Sie den Parameter „redirect_enabled“ auf „OFF“ festlegen, und starten Sie die PHP-Anwendung neu, um den Treibercache nach der Änderung zu löschen.
+>     - Legen Sie die zeichensatzbezogenen Parameter explizit auf Sitzungsebene und basierend auf Ihren Einstellungen fest, nachdem die Verbindung hergestellt wurde (z. B. „set names utf8mb4“).
 
 ## <a name="february-2021"></a>Februar 2021
 

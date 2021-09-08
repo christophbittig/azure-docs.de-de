@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8c914b2b6db65e6956db830e16351f13144ab5aa
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 4fe42db21a08a398f5518d794b897d7ce015fa66
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340379"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
 
@@ -97,7 +97,7 @@ Im Kontext von Azure wird der Back-End-Adresspool als *Back-End-Pool* bezeichnet
 
 4. Geben Sie im Bereich **Back-End-Pool hinzufügen** unter **Name** einen Namen für den Back-End-Pool ein.
 
-5. Wählen Sie unter **Virtuelle Computer** die Option **Virtuellen Computer hinzufügen** aus. 
+5. Wählen Sie unter **Virtuelle Computer** die Option **Virtuellen Computer hinzufügen** aus. Fügen Sie nur die primäre IP-Adresse der VM hinzu, aber keine sekundären IP-Adressen. 
 
 6. Wählen Sie unter **Virtuelle Computer auswählen** die Option **Verfügbarkeitsgruppe auswählen**, und geben Sie die Verfügbarkeitsgruppe an, der die virtuellen SQL Server-Computer angehören.
 
@@ -322,7 +322,7 @@ Wenn Sie über eine Azure-Netzwerksicherheitsgruppe verfügen, um den Zugriff ei
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

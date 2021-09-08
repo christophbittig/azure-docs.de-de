@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63c1e21b95971abf74abe47e07619c257f13e499
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714730"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665105"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriken von Azure Storage Analytics (klassisch)
 
@@ -80,7 +80,7 @@ Wenn Sie ein Storage-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem
 ## <a name="billing-on-storage-metrics"></a>Abrechnung von Speichermetriken
 Für Schreibanforderungen zum Erstellen von Tabellenentitäten für Metriken fallen die Standardraten an, die für alle Azure Storage-Vorgänge gelten.  
 
-Für Lese- und Löschanforderungen für Metrikdaten durch einen Client gelten ebenfalls Standardraten. Wenn Sie eine Datenaufbewahrungsrichtlinie konfiguriert haben, fallen keine Kosten an, wenn Azure Storage alte Metrikdaten löscht. Wenn Sie Analysedaten löschen, wird Ihr Konto für die Löschvorgänge belastet.  
+Für Leseanforderungen für Metrikdaten durch einen Client gelten ebenfalls Standardraten. 
 
 Die von Metriktabellen beanspruchte Kapazität ist ebenfalls kostenpflichtig. Verwenden Sie die folgenden Angaben, um die erforderliche Kapazität zum Speichern von Metrikdaten einzuschätzen:  
 

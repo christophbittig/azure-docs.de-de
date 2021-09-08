@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968334"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297001"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -911,7 +911,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ----------- |
 > | Controller | Ja | Ja | Nein |
-> | AKS-Cluster | **Ausstehend** | **Ausstehend** | Nein<br/><br/> [Weitere Informationen](../../dev-spaces/index.yml) zum Verschieben in eine andere Region.
+> | AKS-Cluster | **Ausstehend** | **Ausstehend** | Nein<br/><br/> [Weitere Informationen](/previous-versions/azure/dev-spaces/) zum Verschieben in eine andere Region.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1104,7 +1104,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | Ja | Ja | Nein. [Weitere Informationen](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region) |
+> | accounts | Ja | Ja | Nein. [Weitere Informationen](../../azure-monitor/faq.yml#how-do-i-move-an-application-insights-resource-to-a-new-region-) |
 > | actiongroups | Ja | Ja | Nein |
 > | activitylogalerts | Nein | Nein | Nein |
 > | alertrules | Ja | Ja | Nein |
@@ -2082,4 +2082,4 @@ Derzeit wird der Verschiebevorgang nicht für Drittanbieterdienste unterstützt.
 
 - Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](move-resource-group-and-subscription.md).
 - Weitere Informationen zum Resource Mover-Dienst finden Sie [hier](../../resource-mover/overview.md).
-- Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter.
+- Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie zur Unterstützung des Verschiebens von Ressourcengruppen und Abonnements [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter. Wenn Sie diese Eigenschaften und das Verschieben der Region unterstützen möchten, laden Sie [move-support-resources-with-regions.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources-with-regions.csv) herunter.

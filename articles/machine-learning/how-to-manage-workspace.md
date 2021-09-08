@@ -9,23 +9,23 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
-ms.custom: fasttrack-edit
-ms.openlocfilehash: e84f0d45666e158805a9290d2e446672a6867fb2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346161"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
-In diesem Artikel erfahren Sie, wie Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-ml.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/) erstellen, anzeigen und löschen.
+In diesem Artikel erfahren Sie, wie Sie [**Azure Machine Learning-Arbeitsbereiche**](concept-workspace.md) für [Azure Machine Learning](overview-what-is-azure-machine-learning.md) über das Azure-Portal oder mit dem [SDK für Python](/python/api/overview/azure/ml/) erstellen, anzeigen und löschen.
 
 Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisierung zunehmen, können Sie Arbeitsbereiche auch [mithilfe der CLI](reference-azure-machine-learning-cli.md) oder [über die VS Code-Erweiterung](how-to-setup-vs-code.md) verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 * Wenn Sie das Python SDK verwenden, [installieren Sie das SDK](/python/api/overview/azure/ml/install).
 
 ## <a name="limitations"></a>Einschränkungen
@@ -396,3 +396,5 @@ Beispiele für das Erstellen eines Arbeitsbereichs:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sobald Sie über einen Arbeitsbereich verfügen, erfahren Sie, wie ein Modell [trainiert und bereitgestellt wird](tutorial-train-models-with-aml.md).
+
+Weitere Informationen zum Planen eines Arbeitsbereichs für die Anforderungen Ihrer Organisation finden Sie unter [Organisieren und Einrichten von Azure Machine Learning](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization).

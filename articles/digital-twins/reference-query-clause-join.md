@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 7dc6827f7ebd7b034ffc00906629bafe04036fbd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6e018985b231e67e519968c0057754c7f3383ee4
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789567"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731940"
 ---
 # <a name="azure-digital-twins-query-language-reference-join-clause"></a>Referenz zur Azure Digital Twins-Abfragesprache: JOIN-Klausel
 
@@ -23,9 +23,9 @@ Die `JOIN`-Klausel wird bei der Azure Digital Twins-Abfragesprache als Teil der 
 Diese Klausel kann bei Abfragen optional genutzt werden.
 
 ## <a name="core-syntax-join--related"></a>Core-Syntax: JOIN ... RELATED 
-Da Beziehungen in Azure Digital Twins Teil von digitalen Zwillingen und keine unabhängigen Entitäten sind, wird das Schlüsselwort `RELATED` in `JOIN`-Abfragen genutzt, um aus der Zwillingssammlung auf die Beziehungen eines bestimmten Typs zu verweisen. Dieser Gruppe von Beziehungen kann ein Sammlungsname zugewiesen werden.
+Da Beziehungen in Azure Digital Twins Teil von digitalen Zwillingen und keine unabhängigen Entitäten sind, wird das Schlüsselwort `RELATED` in `JOIN`-Abfragen genutzt, um aus der Zwillingssammlung auf die Beziehungen eines bestimmten Typs zu verweisen (der Typ wird über das Feld **name** der Beziehung in der [DTDL-Definition](concepts-models.md#basic-relationship-example) angegeben). Dieser Gruppe von Beziehungen kann ein Sammlungsname in der Abfrage zugewiesen werden.
 
-Für die Abfrage muss dann die `WHERE`-Klausel verwendet werden, um anzugeben, welche spezifischen Zwillinge zur Unterstützung der Beziehungsabfrage verwendet werden. Hierfür wird entweder für den Quell- oder den Zielzwilling nach dem Wert `$dtId` gefiltert.
+Die Abfrage muss dann die `WHERE`-Klausel verwenden, um anzugeben, welche spezifischen Zwillinge verwendet werden, um die Beziehungsabfrage zu unterstützen. Dies erfolgt durch das Filtern nach dem Wert `$dtId` des Quell- oder Zielzwillings.
 
 ### <a name="syntax"></a>Syntax
 
@@ -66,13 +66,13 @@ Die Durchlauftiefe für den Graphen ist auf fünf `JOIN`-Ebenen pro Abfrage besc
 
 #### <a name="example"></a>Beispiel
 
-Die folgende Abfrage veranschaulicht die maximale Anzahl von `JOINs`, die in einer Azure Digital Twins-Abfrage möglich ist. Es werden alle „LightBulbs“ in „Building1“ abgerufen.
+Die folgende Abfrage veranschaulicht die maximale Anzahl von `JOIN`-Klauseln, die in einer Azure Digital Twins-Abfrage möglich ist. Es werden alle „LightBulbs“ in „Building1“ abgerufen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="MaxJoinExample":::
 
 ### <a name="no-outer-join-semantics"></a>Keine OUTER JOIN-Semantik (äußere Verknüpfung)
 
-`OUTER JOIN`-Semantik wird nicht unterstützt. Das bedeutet, dass die gesamte „Zeile“ aus dem Ausgaberesultset entfernt wird, wenn die Beziehung den Rang null aufweist.
+Die `OUTER JOIN`-Semantik wird nicht unterstützt. Das bedeutet, dass die gesamte „Zeile“ aus dem Ausgaberesultset entfernt wird, wenn die Beziehung den Rang 0 (null) aufweist.
 
 #### <a name="example"></a>Beispiel
 
@@ -84,6 +84,6 @@ Falls „Building1“ keine Etagen hat, wird bei dieser Abfrage ein leeres Resul
 
 ### <a name="twins-required"></a>Zwillinge erforderlich
 
-Beziehungen in Azure Digital Twins können nicht als unabhängige Entitäten abgefragt werden. Sie müssen zudem Informationen über den Quellzwilling angeben, von dem die Beziehung stammt. Dies ist Teil der Standardnutzung von `JOIN` in Azure Digital Twins mit dem Schlüsselwort `RELATED`. 
+Beziehungen in Azure Digital Twins können nicht als unabhängige Entitäten abgefragt werden. Sie müssen zudem Informationen über den Quellzwilling angeben, von dem die Beziehung stammt. Diese Funktion ist Teil der Standardnutzung von `JOIN` in Azure Digital Twins mit dem Schlüsselwort `RELATED`. 
 
 Für Abfragen mit einer `JOIN`-Klausel muss in der `WHERE`-Klausel auch nach der `$dtId`-Eigenschaft eines Zwillings gefiltert werden, um zu ermitteln, welche Zwillinge zur Unterstützung der Beziehungsabfrage verwendet werden.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05713c5a27a8b42ce9b6967212bf1414c841788c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474575"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340252"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung: Azure Digital Twins
 
@@ -70,7 +70,7 @@ Beachten Sie, dass die in diesem Tool angezeigten Informationen nicht für eine 
 ## <a name="best-practices"></a>Bewährte Methoden
 
 Bewährte Methoden für Hochverfügbarkeit/Notfallwiederherstellung finden Sie in den folgenden Azure-Anleitungen zu diesem Thema: 
-* Der Artikel [Geschäftskontinuität mit Azure – technische Dokumentation](/azure/architecture/framework/resiliency/overview) bietet einen allgemeinen Überblick über Geschäftskontinuität und Notfallwiederherstellung. 
+* Im Artikel [Entwerfen zuverlässiger Azure-Anwendungen](/azure/architecture/framework/resiliency/app-design) finden Sie eine allgemeine Übersicht über Geschäftskontinuität und Notfallwiederherstellung. 
 * Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery) enthält Architekturanleitungen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
 ## <a name="next-steps"></a>Nächste Schritte 
@@ -78,4 +78,4 @@ Bewährte Methoden für Hochverfügbarkeit/Notfallwiederherstellung finden Sie i
 Erfahren Sie mehr über die ersten Schritte mit Azure Digital Twins-Lösungen:
  
 * [Was ist Azure Digital Twins?](overview.md)
-* [Schnellstart: Erste Schritte mit Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md)
+* [Erste Schritte mit dem Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md)

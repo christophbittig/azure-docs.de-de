@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/20/2020
+ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340390"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
-Enthält Informationen zu Architektur und Konzepten von [Azure Machine Learning](overview-what-is-azure-ml.md).  In diesem Artikel erhalten Sie ein allgemeines Verständnis der Komponenten und deren Zusammenarbeit, um das Entwickeln, Bereitstellen und Warten von Machine Learning-Modellen zu unterstützen.
+Enthält Informationen zu Architektur und Konzepten von [Azure Machine Learning](overview-what-is-azure-machine-learning.md).  In diesem Artikel erhalten Sie ein allgemeines Verständnis der Komponenten und deren Zusammenarbeit, um das Entwickeln, Bereitstellen und Warten von Machine Learning-Modellen zu unterstützen.
 
 ## <a name="workspace"></a><a name="workspace"></a> Arbeitsbereich
 
@@ -197,7 +197,7 @@ Weitere Informationen zu diesen Komponenten finden Sie unter [Bereitstellen von 
 
 [Arbeitsbereich](#workspace) > **Endpunkte**
 
-Ein Endpunkt ist eine Instanziierung Ihres Modells in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
+Ein Endpunkt ist eine Instanziierung Ihres Modells in einem Webdienst, der in der Cloud gehostet werden kann.
 
 #### <a name="web-service-endpoint"></a>Webdienst-Endpunkt
 
@@ -232,13 +232,7 @@ Mithilfe von Pipelineendpunkten können Sie Ihre [ML-Pipelines](#ml-pipelines) p
 Ein Pipelineendpunkt ist eine Sammlung veröffentlichter Pipelines. Diese logische Anordnung ermöglicht Ihnen die Verwaltung und den Aufruf mehrerer Pipelines mithilfe desselben Endpunkts. Jede veröffentlichte Pipeline in einem Pipelineendpunkt verfügt über eine Versionsangabe. Sie können eine Standardpipeline für den Endpunkt auswählen oder im REST-Befehl eine Version angeben.
  
 
-#### <a name="iot-module-endpoints"></a>IoT-Modulendpunkte
 
-Ein bereitgestellter IoT-Modulendpunkt ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edge-Geräten bereit.
-
-Wenn Sie die Überwachung aktiviert haben, erfasst Azure Telemetriedaten aus dem Modell im Azure IoT Edge-Modul. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihrer Speicherkontoinstanz gespeichert.
-
-Azure IoT Edge stellt sicher, dass Ihr Modul ausgeführt wird, und überwacht das Gerät, auf dem es gehostet wird. 
 ## <a name="automation"></a>Automation
 
 ### <a name="azure-machine-learning-cli"></a>Azure Machine Learning-CLI 
@@ -261,7 +255,7 @@ Azure Machine Learning verfügt über die folgenden Funktionen für die Überwac
    * [Nachverfolgen von Experimenten mit MLflow](how-to-use-mlflow.md)
    * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
 * __Administratoren__ können ihre Informationen zum Arbeitsbereich und zu den relevanten Azure-Ressourcen und Ereignissen, z. B. Erstellen und Löschen von Ressourcen, mit Azure Monitor überwachen. Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
-* Für den __DevOps__- bzw. __MLOps__-Bereich können generierte Informationen von Modellen, die als Webdienste oder IoT Edge-Module bereitgestellt werden, überwacht werden. Dies ermöglicht das Identifizieren von Problemen mit den Bereitstellungen und das Sammeln der an den Dienst übermittelten Daten. Weitere Informationen finden Sie unter [Sammeln von Modelldaten](how-to-enable-data-collection.md) und [Überwachen mit Application Insights](how-to-enable-app-insights.md).
+* Für __DevOps__ bzw. __MLOps__ können generierte Informationen von Modellen, die als Webdienste bereitgestellt werden, überwacht werden. Dies ermöglicht das Identifizieren von Problemen mit den Bereitstellungen und das Sammeln der an den Dienst übermittelten Daten. Weitere Informationen finden Sie unter [Sammeln von Modelldaten](how-to-enable-data-collection.md) und [Überwachen mit Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="interacting-with-your-workspace"></a>Interaktion mit Ihrem Arbeitsbereich
 
@@ -283,15 +277,13 @@ In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Mac
 > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 +  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro) verwenden.
-+ Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Vorschauversion) verwenden.
 + Verwenden Sie den [Azure Machine Learning-Designer](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung. 
 + Verwenden Sie die [Azure Machine Learning-CLI](./reference-azure-machine-learning-cli.md) zur Automatisierung.
-+ Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unter:
 
-* [Was ist Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Was ist Azure Machine Learning?](overview-what-is-azure-machine-learning.md)
 * [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md)
 * [Tutorial (Teil 1): Trainieren eines Modells](tutorial-train-models-with-aml.md)

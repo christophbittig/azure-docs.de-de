@@ -1,6 +1,6 @@
 ---
-title: Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Arc-fähige PostgreSQL Hyperscale-Servergruppe
-titleSuffix: Azure Arc enabled data services
+title: Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+titleSuffix: Azure Arc-enabled data services
 description: Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Arc-fähige PostgreSQL Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
@@ -8,44 +8,31 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 964b7fcca00afb91a457203d2ed53b885a254d5e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339396"
 ---
-# <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Arc-fähige PostgreSQL Hyperscale-Servergruppe
+# <a name="get-connection-endpoints-and-form-the-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Abrufen von Verbindungsendpunkten und Erstellen von Verbindungszeichenfolgen für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
-In diesem Artikel wird erläutert, wie Sie die Verbindungsendpunkte für Ihre Servergruppe abrufen und Verbindungszeichenfolgen erstellen, die Sie mit Ihren Anwendungen und/oder Tools verwenden.
+In diesem Artikel wird erläutert, wie Sie die Verbindungsendpunkte für Ihre Servergruppe abrufen und Verbindungszeichenfolgen erstellen, die Sie mit Ihren Anwendungen und/oder Tools verwenden können.
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="get-connection-end-points"></a>Abrufen von Verbindungsendpunkten:
 
-### <a name="from-cli-with-azdata"></a>Über die CLI mit azdata
-#### <a name="1-connect-to-your-arc-data-controller"></a>1. Herstellen einer Verbindung mit dem Arc-Datencontroller:
-- Wenn Sie bereits eine Sitzung auf dem Arc-Datencontroller-Host geöffnet haben: Führen Sie den folgenden Befehl aus:
-```console
-azdata login
-```
-
-- Wenn auf dem Arc-Datencontroller-Host keine Sitzungen geöffnet sind, führen Sie den folgenden Befehl aus: 
-```console
-azdata login --endpoint https://<external IP address of host/data controller>:30080
-```
-
-#### <a name="2-show-the-connection-endpoints"></a>2. Anzeigen der Verbindungsendpunkte
 Führen Sie den folgenden Befehl aus:
-```console
-azdata arc postgres endpoint list -n <server group name>
+```azurecli
+az postgres arc-server endpoint list -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 Beispiel:
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 
 Es wird die Liste der Endpunkte angezeigt: der PostgreSQL-Endpunkt, den Sie zum Verbinden Ihrer Anwendung verwenden, und die verwendeten Datenbank-, Kibana- und Grafana-Endpunkte für die Protokollanalyse und Überwachung. Beispiel: 
@@ -79,7 +66,7 @@ postgres=#
 > [!NOTE]
 >
 > - Das Kennwort des am Endpunkt _PostgreSQL-Instanz_ angegebenen _postgres_-Benutzers ist das Kennwort, das Sie beim Bereitstellen der Servergruppe angegeben haben.
-> - Hinweis zu azdata: Die Leasedauer für die Verbindung beträgt ca. 10 Stunden. Danach müssen Sie die Verbindung erneut herstellen. Wenn die Leasedauer abgelaufen ist, erhalten Sie die folgende Fehlermeldung, wenn Sie versuchen, einen Befehl mit azdata auszuführen (außer bei azdata login): _FEHLER: (401)_ 
+> _ERROR: (401)_ 
 > _Reason: Unauthorized_
 > _HTTP response headers: HTTPHeaderDict({'Date': 'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length': '0', 'WWW-Authenticate': '_ 
 > _Basic realm="Login_ credentials required", Bearer error="invalid_token", error_description="The token is expired"'})_ (Fehlermeldung 401, dass das Token abgelaufen ist) Wenn dies passiert, müssen Sie wie weiter oben erläutert erneut eine Verbindung mit azdata herstellen.
@@ -94,7 +81,6 @@ Mit diesen Befehlen wird eine Ausgabe ähnlich der folgenden erzeugt. Diese Info
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   3/3          123.456.789.4:31066      5d20h
 ``` 
-
 
 ## <a name="form-connection-strings"></a>Erstellen von Verbindungszeichenfolgen:
 Verwenden Sie die folgende Tabelle mit Vorlagen für Verbindungszeichenfolgen für Ihre Servergruppe. Sie können sie kopieren und einfügen sowie nach Bedarf anpassen:

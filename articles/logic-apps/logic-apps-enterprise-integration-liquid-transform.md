@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 07/31/2020
-ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/25/2021
+ms.openlocfilehash: 01b5e9930353078406751001300a1baa3c23cf00
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992708"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690570"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Transformieren von JSON und XML mithilfe von Liquid-Vorlagen als Zuordnungen in Azure Logic Apps
 
@@ -132,9 +132,20 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 ## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
 
-Stellen Sie mittels [Postman](https://www.getpostman.com/postman) oder einem ähnlichen Tool JSON-Eingaben für Ihre Logik-App bereit. Die transformierte JSON-Ausgabe von der Logik-App sieht wie im folgenden Beispiel dargestellt aus:
+1. Senden Sie mithilfe von [Postman](https://www.getpostman.com/postman) oder einem ähnlichen Tool und der `POST`-Methode einen Aufruf an die URL des Anforderungstriggers, und fügen Sie die zu transformierende JSON-Eingabe ein, z. B.:
 
-![Beispielausgabe](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+   ```json
+   {
+      "devices": "Surface, Windows Phone, Desktop computer, Monitors",
+      "firstName": "Dean",
+      "lastName": "Ledet",
+      "phone": "(111)5551111"
+   }
+   ```
+
+1. Nachdem die Ausführung Ihres Workflows abgeschlossen ist, wechseln Sie zum Ausführungsverlauf des Workflows, und untersuchen Sie die Ein- und Ausgaben der Aktion **Von JSON in JSON transformieren**, z. B.:
+
+   ![Beispielausgabe](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
 <a name="template-considerations"></a>
 

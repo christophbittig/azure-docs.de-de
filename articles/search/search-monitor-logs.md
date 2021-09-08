@@ -7,21 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 01/27/2021
+ms.openlocfilehash: 5643f9a8bb1caec8d264ba5dfba9913d5d13b2ec
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581621"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414843"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
 
 Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung des Status und der Prozesse des Diensts nützlich. Intern speichert Microsoft Systeminformationen für einen kurzen Zeitraum (etwa 30 Tage) im Back-End, was für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch die Besitzrechte an den Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
 
-Die Diagnoseprotokollierung wird durch Integration in [Azure Monitor](../azure-monitor/index.yml) aktiviert. 
-
-Beim Einrichten der Diagnoseprotokollierung werden Sie zur Angabe eines Speichermechanismus aufgefordert. In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten aufgelistet.
+Die Diagnoseprotokollierung wird durch Back-End-Integration in [Azure Monitor](../azure-monitor/index.yml) aktiviert. Beim Einrichten der Diagnoseprotokollierung werden Sie zur Angabe einer Speicheroption für das Beibehalten des Protokolls aufgefordert. Die folgende Tabelle enthält eine Auflistung Ihrer Optionen.
 
 | Resource | Syntaxelemente |
 |----------|----------|
@@ -55,7 +53,7 @@ Diagnoseeinstellungen geben an, wie protokollierte Ereignisse und Metriken erfas
 
 1. Speichern Sie die Einstellung.
 
-1. Verwenden Sie nach dem Aktivieren der Protokollierung ihren Suchdienst, um mit dem Generieren von Protokollen und Metriken zu beginnen. Es dauert eine Weile, bis protokollierte Ereignisse und Metriken verfügbar werden.
+1. Nach dem Aktivieren der Protokollierung beginnt Ihr Suchdienst mit dem Generieren von Protokollen und Metriken. Es kann eine Weile dauern, bis protokollierte Ereignisse und Metriken verfügbar werden.
 
 Log Analytics: Es dauert mehrere Minuten, bis die Daten verfügbar sind. Anschließend können Sie Kusto-Abfragen ausführen, um Daten zurückzugeben. Weitere Informationen finden Sie unter [Überwachen von Abfrageanforderungen](search-monitor-logs.md).
 
@@ -70,7 +68,9 @@ Zwei Tabellen enthalten Protokolle und Metriken für Azure Cognitive Search: **A
 
 1. Wählen Sie unter **Überwachung** die Option **Protokolle** aus.
 
-1. Geben Sie im Abfragefenster **AzureMetrics** ein. Führen Sie diese einfache Abfrage aus, um sich mit den in dieser Tabelle gesammelten Daten vertraut zu machen. Scrollen Sie in der Tabelle, um Metriken und Werte anzuzeigen. Beachten Sie den Datensatzzähler am oberen Rand. Wenn Ihr Dienst eine Weile lang Metriken gesammelt hat, können Sie das Zeitintervall anpassen, um ein verwaltbares Dataset zu erhalten.
+1. Geben Sie im Abfragefenster **AzureMetrics** ein, überprüfen Sie den Bereich (Ihren Suchdienst) und den Zeitbereich, und klicken Sie dann auf **Ausführen**, um sich mit den in dieser Tabelle gesammelten Daten vertraut zu machen.
+
+   Scrollen Sie in der Tabelle, um Metriken und Werte anzuzeigen. Beachten Sie die Datensatzanzahl oben. Wenn Ihr Dienst eine Weile lang Metriken gesammelt hat, können Sie das Zeitintervall anpassen, um ein verwaltbares Dataset zu erhalten.
 
    ![AzureMetrics-Tabelle](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics-Tabelle")
 
@@ -112,7 +112,7 @@ So korrelieren Sie die Abfrageanforderung mit Indizierungsvorgängen und rendern
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| summarize Count=count(), AvgLatency=avg(durationMs) by bin(TimeGenerated, 1h), OperationName
 | render timechart
 ```
 

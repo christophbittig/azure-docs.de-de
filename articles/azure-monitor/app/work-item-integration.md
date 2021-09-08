@@ -2,17 +2,27 @@
 title: Integration von Arbeitselementen (Vorschau) – Application Insights
 description: Erfahren Sie, wie Sie Arbeitselemente in GitHub oder Azure DevOps mit darin eingebetteten Application Insights-Daten erstellen.
 ms.topic: conceptual
-ms.date: 04/22/2021
-ms.openlocfilehash: 57eae6b0cda7a0f77a83ecbe453aca56eaf2504b
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.date: 06/27/2021
+ms.openlocfilehash: 02fbb15f417d01d1f9c5b572fdb5553ad1127037
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930399"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989133"
 ---
 # <a name="work-item-integration"></a>Integration von Arbeitselementen 
 
 Die Funktion zur Integration von Arbeitselementen ermöglicht Ihnen das einfache Erstellen von Arbeitselementen in GitHub oder Azure DevOps, in die relevante Application Insights-Daten eingebettet sind.
+
+
+Die neue Arbeitselementintegration bietet gegenüber der [klassischen](#classic-work-item-integration) die folgenden Funktionen:
+- Erweiterte Felder wie „Zugewiesene Person“, „Projekte“ oder „Meilensteine“.
+- Repositorysymbole, damit Sie zwischen GitHub- und Azure DevOps-Arbeitsmappen unterscheiden können.
+- Mehrere Konfigurationen für eine beliebige Anzahl von Repositorys oder Arbeitselementen.
+- Bereitstellung über Azure Resource Manager-Vorlagen.
+- Vorgefertigte und anpassbare KQL-Abfragen (Keyword Query Language) zum Hinzufügen von Application Insights-Daten zu Ihren Arbeitselementen.
+- Anpassbare Arbeitsmappenvorlagen.
+
 
 ## <a name="create-and-configure-a-work-item-template"></a>Erstellen und Konfigurieren einer Arbeitselementvorlage
 
@@ -20,7 +30,7 @@ Die Funktion zur Integration von Arbeitselementen ermöglicht Ihnen das einfache
 
     :::image type="content" source="./media/work-item-integration/create-work-item-template.png" alt-text=" Screenshot der Registerkarte für Arbeitselemente mit ausgewählter Option zum Erstellen einer neuen Vorlage" lightbox="./media/work-item-integration/create-work-item-template.png":::
 
-    Sie können eine Arbeitselementvorlage auch über die Registerkarte mit End-to-End-Transaktionsdetails erstellen, falls derzeit keine Vorlage vorhanden ist. Wählen Sie ein Ereignis und dann auf der rechten Seite **Arbeitselement erstellen** aus. Anschließend wählen Sie **Mit Arbeitsmappenvorlage beginnen** aus.
+    Sie können eine Arbeitselementvorlage auch über die Registerkarte „End-to-End-Transaktionsdetails “ erstellen, falls derzeit keine Vorlage vorhanden ist. Wählen Sie ein Ereignis und dann auf der rechten Seite **Arbeitselement erstellen** aus. Anschließend wählen Sie **Mit Arbeitsmappenvorlage beginnen** aus.
 
     :::image type="content" source="./media/work-item-integration/create-template-from-transaction-details.png" alt-text=" Screenshot der Registerkarte mit End-to-End-Transaktionsdetails mit ausgewählten Optionen zum Erstellen eines Arbeitselements und zum Beginnen mit einer Arbeitsmappenvorlage" lightbox="./media/work-item-integration/create-template-from-transaction-details.png":::
 
@@ -55,3 +65,24 @@ Wählen Sie oben das Bearbeitungssymbol ![Bearbeitungssymbol](./media/work-item-
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Screenshot der Arbeitsmappe mit der Arbeitselementvorlage im Bearbeitungsmodus" lightbox="./media/work-item-integration/edit-workbook.png":::
 
 Sie können mehrere Arbeitselementkonfigurationen erstellen und für jedes Szenario über eine benutzerdefinierte Arbeitsmappe verfügen. Die Arbeitsmappen können auch von Azure Resource Manager bereitgestellt werden, um Standardimplementierungen in allen Umgebungen zu gewährleisten.
+
+## <a name="classic-work-item-integration"></a>Integration von klassischen Arbeitselementen 
+
+1. Wählen Sie in Ihrer Application Insights-Ressource unter *Konfigurieren* die Option **Arbeitselemente** aus.
+1. Wählen Sie **Zur klassischen Ansicht wechseln** aus, füllen Sie die Felder mit Ihren Informationen aus, und autorisieren Sie. 
+
+    :::image type="content" source="./media/work-item-integration/classic.png" alt-text="Screenshot: Konfigurieren klassischer Arbeitselemente" lightbox="./media/work-item-integration/classic.png":::
+
+1. Erstellen Sie ein Arbeitselement, indem Sie zu den Details der End-to-End-Transaktion navigieren, ein Ereignis auswählen und dann **Arbeitselement erstellen (klassisch)** wählen. 
+
+
+### <a name="migrate-to-new-work-item-integration"></a>Migrieren zu einer neuen Arbeitselementintegration
+
+Löschen Sie zum Migrieren Ihre klassische Arbeitselementkonfiguration, und [erstellen und konfigurieren Sie dann eine Arbeitselementvorlage](#create-and-configure-a-work-item-template), um die Integration neu zu erstellen.
+
+Zum Löschen navigieren Sie unter *Konfigurieren* zur Ihrer Application Insights-Ressource, wählen Sie **Arbeitselemente**, dann **Zur klassischen Ansicht wechseln** und dann oben die Option **Löschen* aus.
+
+
+## <a name="next-steps"></a>Nächste Schritte
+[Verfügbarkeitstest](availability-overview.md)
+

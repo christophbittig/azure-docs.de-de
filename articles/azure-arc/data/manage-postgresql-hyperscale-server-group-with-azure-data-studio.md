@@ -7,16 +7,16 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1849e317c4245eb1aa96ff96f0ffac8bd8425299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92320232"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349551"
 ---
-# <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwalten einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe mithilfe von Azure Data Studio
+# <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwalten einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung mithilfe von Azure Data Studio
 
 
 Dieser Artikel beschreibt, wie Sie:
@@ -29,7 +29,10 @@ Dieser Artikel beschreibt, wie Sie:
 
 - [Installieren von azdata, Azure Data Studio und Azure CLI](install-client-tools.md)
 - Installieren der Erweiterungen für **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** und **Azure Arc** und **PostgreSQL** in Azure Data Studio
-- Erstellen des [Azure Arc-Datencontrollers](create-data-controller-using-azdata.md)
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
+- Erstellen des [Azure Arc-Datencontrollers](./create-data-controller-indirect-cli.md)
 - Starten von Azure Data Studio
 
 ## <a name="connect-to-the-azure-arc-data-controller"></a>Herstellen einer Verbindung mit dem Azure Arc-Datencontroller
@@ -47,13 +50,13 @@ Geben Sie die Verbindungsinformationen Ihres Azure-Datencontrollers ein:
     ```
 - **Benutzername:**
 
-    Der Name des Benutzerkontos, über das Sie eine Verbindung mit dem Controller herstellen. Verwenden Sie den Namen, den Sie normalerweise beim Ausführen von `azdata login` verwenden. Es handelt sich nicht um den Namen des PostgreSQL-Benutzers, den Sie normalerweise in „psql“ verwenden, um eine Verbindung mit dem PostgreSQL-Datenbankmodul herzustellen.
+    Der Name des Benutzerkontos, über das Sie eine Verbindung mit dem Controller herstellen. Verwenden Sie den Namen, den Sie normalerweise beim Ausführen von `az login` verwenden. Es handelt sich nicht um den Namen des PostgreSQL-Benutzers, den Sie normalerweise in „psql“ verwenden, um eine Verbindung mit dem PostgreSQL-Datenbankmodul herzustellen.
 - **Kennwort:** Das Kennwort des Benutzerkontos, über das Sie eine Verbindung mit dem Controller herstellen.
 
 
 Ihr Arc-Datencontroller wird in Azure Data Studio angezeigt. Erweitern Sie den Eintrag, um die Liste der von ihm verwalteten PostgreSQL-Instanzen anzuzeigen.
 
-## <a name="manage-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Verwalten von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen
+## <a name="manage-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Verwalten von Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
 Klicken Sie mit der rechten Maustaste auf die PostgreSQL-Instanz, die Sie verwalten möchten, und wählen Sie [Verwalten] aus.
 
@@ -75,13 +78,13 @@ Wählen Sie [Verbindung hinzufügen] aus, und geben Sie die Verbindungsdetails f
 - **Servername:** Geben Sie den Namen der PostgreSQL-Instanz ein. Beispiel: postgres01
 - **Authentifizierungstyp:** Kennwort
 - **Benutzername:** Hier können Sie den Standardnamen des PostgreSQL-Administratorbenutzers eingeben. Für dieses Feld wird zwischen Groß- und Kleinschreibung unterschieden.
-- **Kennwort:** Das Kennwort des PostgreSQL-Benutzernamens befindet sich in der Ausgabe des Befehls `azdata postgres server endpoint -n postgres01` in der psql-Verbindungszeichenfolge.
+- **Kennwort:** Das Kennwort des PostgreSQL-Benutzernamens befindet sich in der Ausgabe des Befehls `az postgres arc-server endpoint -n postgres01` in der psql-Verbindungszeichenfolge.
 - **Datenbankname:** Legen Sie den Namen der Datenbank fest, mit der Sie eine Verbindung herstellen möchten. Sie können den Namen __Standard__ übernehmen.
 - **Servergruppe:** Sie können den Namen __Standard__ übernehmen.
 - **Name (optional):** Dieses Feld kann leer bleiben.
 - **Erweitert:**
     - **Host-IP-Adresse:** Die öffentliche IP-Adresse des Kubernetes-Clusters.
-    - **Port:** Der Port, an dem die PostgreSQL-Instanz lauscht. Sie finden diesen Port am Ende der psql-Verbindungszeichenfolge in der Ausgabe des Befehls `azdata postgres server endpoint -n postgres01`. Es handelt sich nicht um Port 30080, an dem Kubernetes lauscht und den Sie zum Herstellen einer Verbindung mit dem Azure-Datencontroller in Azure Data Studio eingegeben haben.
+    - **Port:** Der Port, an dem die PostgreSQL-Instanz lauscht. Sie finden diesen Port am Ende der psql-Verbindungszeichenfolge in der Ausgabe des Befehls `az postgres arc-server endpoint -n postgres01`. Es handelt sich nicht um Port 30080, an dem Kubernetes lauscht und den Sie zum Herstellen einer Verbindung mit dem Azure-Datencontroller in Azure Data Studio eingegeben haben.
     - **Weitere Parameter:** Diese sollten selbsterklärend sein. Sie können die bestehenden Standardwerte/Leerstellen übernehmen.
 
 Klicken Sie auf **[OK] und [Verbinden]** , um eine Verbindung mit dem Server herzustellen.

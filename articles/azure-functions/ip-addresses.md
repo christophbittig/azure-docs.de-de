@@ -3,12 +3,12 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a884edd23fa1538fcc2b00c80190eab6699e1e47
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204997"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414483"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -25,9 +25,21 @@ IP-Adressen werden Funktionen-Apps zugeordnet, nicht einzelnen Funktionen. Einge
 
 Jede Funktionen-App verfügt über eine einzelne eingehende IP-Adresse. So finden Sie diese IP-Adresse:
 
+# <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zur Funktionen-App.
 3. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus. Die eingehende IP-Adresse wird unter **Virtuelle IP-Adresse** angezeigt.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+
+Verwenden Sie das `nslookup`-Hilfsprogramm auf Ihrem lokalen Clientcomputer:
+
+```command
+nslookup <APP_NAME>.azurewebsites.net
+```
+
+---
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktions-App
 
@@ -35,22 +47,25 @@ Jede Funktionen-App verfügt über einen Satz von verfügbaren ausgehenden IP-Ad
 
 So finden Sie die verfügbaren ausgehenden IP-Adressen einer Funktionen-App:
 
+# <a name="azure-portal"></a>[Azure-Portal](#tab/portal)
+
 1. Melden Sie sich beim [Azure-Ressourcen-Explorer](https://resources.azure.com) an.
 2. Wählen Sie **Abonnements > {Ihr Abonnement} > Anbieter > Microsoft.Web > Websites**.
 3. Suchen Sie im JSON-Panel die Site mit einer `id`-Eigenschaft, die auf den Namen Ihrer Funktionen-App endet.
 4. Prüfen Sie `outboundIpAddresses` und `possibleOutboundIpAddresses`. 
 
-Der Satz der `outboundIpAddresses` steht derzeit für die Funktionen-App zur Verfügung. Der Satz der `possibleOutboundIpAddresses` enthält IP-Adressen, die nur zur Verfügung stehen, wenn für die Funktionen-App [eine Skalierung auf andere Tarife](#outbound-ip-address-changes) möglich ist.
-
-Eine Alternative zum Ermitteln der verfügbaren ausgehenden IP-Adressen ist die Verwendung der [Cloud Shell](../cloud-shell/quickstart.md):
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
 ```azurecli-interactive
-az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
-az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query outboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query possibleOutboundIpAddresses --output tsv
 ```
+---
+
+Der Satz der `outboundIpAddresses` steht derzeit für die Funktionen-App zur Verfügung. Der Satz der `possibleOutboundIpAddresses` enthält IP-Adressen, die nur zur Verfügung stehen, wenn für die Funktionen-App [eine Skalierung auf andere Tarife](#outbound-ip-address-changes) möglich ist.
 
 > [!NOTE]
-> Bei der Skalierung einer im [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Bei der Ausführung in diesen Tarifen müssen Sie möglicherweise das gesamte Rechenzentrum einer Positivliste hinzufügen.
+> Bei der Skalierung einer im [Verbrauchstarif](consumption-plan.md) oder [Premium-Tarif](functions-premium-plan.md) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Wenn Sie einen dieser Pläne ausführen, können Sie sich nicht auf die gemeldeten ausgehenden IP-Adressen verlassen, um eine endgültige Positivliste zu erstellen. Um alle potenziellen ausgehenden Adressen einzubeziehen, die während der dynamischen Skalierung verwendet werden, müssen Sie das gesamte Rechenzentrum auf Ihre Positivliste setzen.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Ausgehende IP-Adressen eines Rechenzentrums
 
@@ -98,7 +113,7 @@ Die relative Stabilität der ausgehenden IP-Adresse hängt vom Hostingplan ab.
 
 Aufgrund des Verhaltens der automatischen Skalierung kann sich die ausgehende IP-Adresse jederzeit ändern, wenn sie in einem [Verbrauchsplan](consumption-plan.md) oder einem [Premium-Plan](functions-premium-plan.md) ausgeführt wird. 
 
-Falls Sie die ausgehende IP-Adresse Ihrer Funktions-App steuern müssen, z. B. wenn Sie sie einer Positivliste hinzufügen müssen, erwägen Sie die Implementierung eines [NAT-Gateways für virtuelle Netzwerke](#virtual-network-nat-gateway-for-outbound-static-ip) in Ihrem Premium-Plan.
+Falls Sie die ausgehende IP-Adresse Ihrer Funktions-App steuern müssen, z. B. wenn Sie sie einer Positivliste hinzufügen müssen, erwägen Sie die Implementierung eines [NAT-Gateways für virtuelle Netzwerke](#virtual-network-nat-gateway-for-outbound-static-ip) während der Ausführung in einem Premium-Plan. Dazu können Sie auch in einem dedizierten Plan (App Service) ausführen.
 
 ### <a name="dedicated-plans"></a>Dedizierte Pläne
 
@@ -127,7 +142,7 @@ Wenn Ihre Funktions-App statische, dedizierte IP-Adressen erfordert, können Sie
 
 ### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>NAT-Gateway eines virtuellen Netzwerks für ausgehende statische IP-Adressen
 
-Sie können die IP-Adresse des von Ihren Funktionen ausgehenden Datenverkehrs steuern, indem Sie mithilfe eines NAT-Gateways eines virtuellen Netzwerks Datenverkehr über eine statische öffentliche IP-Adresse weiterleiten. Sie können diese Topologie für Ausführungen in einem [Premium-Plan](functions-premium-plan.md) verwenden. Weitere Informationen finden Sie unter [Tutorial: Steuern der IP-Adresse für ausgehenden Datenverkehr von Azure Functions mit einem Virtual Network NAT-Gateway in Azure](functions-how-to-use-nat-gateway.md).
+Sie können die IP-Adresse des von Ihren Funktionen ausgehenden Datenverkehrs steuern, indem Sie mithilfe eines NAT-Gateways eines virtuellen Netzwerks Datenverkehr über eine statische öffentliche IP-Adresse weiterleiten. Sie können diese Topologie für Ausführungen in einem [Premium-Plan](functions-premium-plan.md) oder in einem [dedizierten Plan (App Service)](dedicated-plan.md) verwenden. Weitere Informationen finden Sie unter [Tutorial: Steuern der IP-Adresse für ausgehenden Datenverkehr von Azure Functions mit einem Virtual Network NAT-Gateway in Azure](functions-how-to-use-nat-gateway.md).
 
 ### <a name="app-service-environments"></a>App Service-Umgebungen
 
@@ -135,16 +150,20 @@ Um die vollständige Kontrolle sowohl über Eingangs- als auch Ausgangs-IP-Adres
 
 So finden Sie heraus, ob Ihre Funktionen-App in einer App Service-Umgebung ausgeführt wird:
 
+# <a name="azure-porta"></a>[Azure Portal](#tab/portal)
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zur Funktionen-App.
 3. Klicken Sie auf die Registerkarte **Übersicht**.
 4. Die App Service-Plantarif wird unter **App Service-Plan/Tarif** angezeigt. Der App Service Environment-Tarif ist **isoliert**.
- 
-Alternativ können Sie die [Cloud Shell](../cloud-shell/quickstart.md) verwenden:
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
+
+---
 
 Die `sku` der App Service-Umgebung ist `Isolated`.
 

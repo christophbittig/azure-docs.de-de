@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/02/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339974"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Einrichten von Computezielen für das Training und die Bereitstellung von Modellen
 
@@ -29,13 +29,12 @@ In diesem Artikel erfahren Sie, wie Sie Ihren Arbeitsbereich für die Verwendung
 * Apache Spark-Pools (powered by Azure Synapse Analytics)
 * Azure HDInsight
 * Azure Batch
-* Azure Databricks
+* Azure Databricks: wird nur in [Machine Learning-Pipelines](how-to-create-machine-learning-pipelines.md) als Computeziel beim Training verwendet.
 * Azure Data Lake Analytics
 * Azure Container Instances
-
+* Azure Kubernetes Service und Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)
 
 Informationen zur Verwendung von Computezielen, die von Azure Machine Learning verwaltet werden, finden Sie unter den folgenden Links:
-
 
 * [Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md)
 * [Azure Machine Learning Compute-Cluster](how-to-create-attach-compute-cluster.md)
@@ -346,9 +345,23 @@ Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://ak
 
 Azure Container Instances (ACI) werden dynamisch erstellt, wenn Sie ein Modell bereitstellen. Es gibt keine andere Möglichkeit, ACI zu erstellen und an Ihren Arbeitsbereich anzufügen. Weitere Informationen finden Sie unter [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-azure-container-instance.md).
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes (Vorschau)
 
-Azure Kubernetes Service (AKS) unterstützt eine Vielzahl von Konfigurationsoptionen bei der Verwendung mit Azure Machine Learning. Weitere Informationen finden Sie unter [How to create and attach Azure Kubernetes Service](how-to-create-attach-kubernetes.md) (Erstellen und Anfügen des Azure Kubernetes Service).
+Azure Machine Learning bietet die folgenden Optionen zum Anfügen eigener Kubernetes-Cluster für das Training:
+
+* [Azure Kubernetes Service](../aks/intro-kubernetes.md) Azure Kubernetes Service bietet verwaltete Cluster in Azure.
+* [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) Verwenden Sie Kubernetes-Cluster mit Azure Arc-Unterstützung, wenn Ihr Cluster außerhalb von Azure gehostet wird.
+
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+Verwenden Sie eine der folgenden Methoden, um einen Kubernetes-Cluster von Ihrem Arbeitsbereich zu trennen:
+
+```python
+compute_target.detach()
+```
+
+> [!WARNING]
+> Beim Trennen eines Clusters **wird der Cluster nicht gelöscht**. Informationen zum Löschen eines Azure Kubernetes Service-Clusters finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit AKS](../aks/kubernetes-walkthrough.md#delete-the-cluster). Informationen zum Löschen eines Kubernetes-Clusters mit Azure Arc-Unterstützung finden Sie im [Azure Arc-Schnellstart](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources).
 
 ## <a name="notebook-examples"></a>Notebook-Beispiele
 

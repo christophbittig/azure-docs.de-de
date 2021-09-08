@@ -1,28 +1,30 @@
 ---
-title: Beheben von Problemen bei der Einrichtung von Azure Percept DK
+title: Problembehandlung für den Azure Percept DK-Setupvorgang
 description: Hier finden Sie Tipps zur Problembehandlung für einige der häufigsten Probleme während der Einrichtung.
-author: mimcco
-ms.author: mimcco
+author: SillyKeith
+ms.author: amiyouss
 ms.service: azure-percept
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7ce13cedff9afc25900c0bf75359ae49cc29fe19
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40b7289b3c6fd841a0af9b9a61f66906e0dfa028
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608492"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226838"
 ---
-# <a name="azure-percept-dk-setup-experience-troubleshooting-guide"></a>Leitfaden zur Problembehandlung beim Einrichten von Azure Percept DK
+# <a name="troubleshoot-the-azure-percept-dk-setup-experience"></a>Problembehandlung für den Azure Percept DK-Setupvorgang
 
 In der folgenden Tabelle finden Sie Problemumgehungen für häufige Probleme, die während der [Einrichtung von Azure Percept DK](./quickstart-percept-dk-set-up.md) auftreten. Wenn das Problem weiterhin besteht, wenden Sie sich an den Azure-Kundensupport.
 
 |Problem|`Reason`|Problemumgehung|
 |:-----|:------|:----------|
-|Beim Herstellen einer Verbindung mit den Seiten für die Azure-Kontoregistrierung oder mit dem Azure-Portal können Sie sich automatisch mit einem zwischengespeicherten Konto anmelden. Handelt es sich dabei nicht um das vorgesehene Konto, ergeben sich möglicherweise Inkonsistenzen mit der Dokumentation.|Dies liegt in der Regel an einer Browsereinstellung, mit der Sie ein zuvor verwendetes Konto speichern können.|Klicken Sie auf der Azure-Seite auf Ihren Kontonamen in der oberen rechten Ecke, und wählen Sie **Abmelden** aus. Sie können sich dann mit dem richtigen Konto anmelden.|
-|Das Netzwerk des Azure Percept DK-WLAN-Zugriffspunkts (scz-xxxx oder apd-xxxx) wird nicht in der Liste der verfügbaren WLAN-Netzwerke angezeigt.|Dies ist normalerweise ein temporäres Problem, das innerhalb von 15 Minuten behoben wird.|Warten Sie darauf, dass das Netzwerk angezeigt wird. Wird es nach mehr als 15 Minuten nicht angezeigt, starten Sie das Gerät neu.|
-|Die Verbindung mit dem Azure Percept DK-WLAN-Zugriffspunkt wird häufig unterbrochen.|Dies kann auf eine schlechte Verbindung zwischen dem Gerät und dem Hostcomputer zurückzuführen sein. Es kann auch durch Störungen durch andere WLAN-Verbindungen auf dem Hostcomputer verursacht werden.|Vergewissern Sie sich, dass die Antennen ordnungsgemäß an das DevKit angeschlossen wurden. Ist das DevKit weit vom Hostcomputer entfernt, sollten Sie es näher am Hostcomputer platzieren. Deaktivieren Sie alle anderen Internetverbindungen (etwa LTE/5G), wenn diese auf dem Hostcomputer hergestellt wurden.|
+|Beim Herstellen einer Verbindung mit den Seiten für die Azure-Kontoregistrierung oder mit dem Azure-Portal können Sie sich automatisch mit einem zwischengespeicherten Konto anmelden. Wenn Sie sich nicht mit dem richtigen Konto anmelden, kann dies zu einer Erfahrung führen, die nicht mit der Dokumentation übereinstimmt.|Das Ergebnis einer Browsereinstellung zur „Erinnerung“ an ein Konto, das Sie zuvor verwendet haben.|Klicken Sie auf der Azure-Seite auf Ihren Kontonamen in der oberen rechten Ecke, und wählen Sie **Abmelden** aus. Sie können sich dann mit dem richtigen Konto anmelden.|
+|Das Netzwerk des Azure Percept DK-WLAN-Zugriffspunkts (apd-xxxx) wird nicht in der Liste der verfügbaren WLAN-Netzwerke angezeigt.|Dies ist normalerweise ein temporäres Problem, das innerhalb von 15 Minuten behoben wird.|Warten Sie darauf, dass das Netzwerk angezeigt wird. Wird es nach mehr als 15 Minuten nicht angezeigt, starten Sie das Gerät neu.|
+|Die Verbindung mit dem Azure Percept DK-WLAN-Zugriffspunkt wird häufig unterbrochen.|Dies kann in der Regel auf eine schlechte Verbindung zwischen dem Gerät und dem Hostcomputer zurückgeführt werden. Es kann auch durch Störungen durch andere WLAN-Verbindungen auf dem Hostcomputer verursacht werden.|Vergewissern Sie sich, dass die Antennen ordnungsgemäß an das DevKit angeschlossen wurden. Ist das DevKit weit vom Hostcomputer entfernt, sollten Sie es näher am Hostcomputer platzieren. Deaktivieren Sie alle anderen Internetverbindungen (etwa LTE/5G), wenn diese auf dem Hostcomputer hergestellt wurden.|
 |Auf dem Hostcomputer wird eine Sicherheitswarnung bezüglich der Verbindung mit dem Azure Percept DK-Zugriffspunkt angezeigt.|Dies ist ein bekanntes Problem, das in einem späteren Update behoben wird.|Es ist sicher, mit der Einrichtung fortzufahren.|
-|Das Netzwerk des Azure Percept DK-WLAN-Zugriffspunkts (scz-xxxx oder apd-xxxx) wird in der Netzwerkliste angezeigt, es kann aber keine Verbindung hergestellt werden.|Die Ursache kann eine vorübergehende Störung des WLAN-Zugriffspunkts des DevKits sein.|Starten Sie das DevKit neu, und versuchen Sie es noch einmal.|
+|Das Netzwerk des Azure Percept DK-WLAN-Zugriffspunkts (scz-xxxx oder apd-xxxx) wird in der Netzwerkliste angezeigt, es kann aber keine Verbindung hergestellt werden.|Dies könnte auf eine vorübergehende Störung des WLAN-Zugriffpunkts des DevKits zurückzuführen sein.|Starten Sie das DevKit neu, und versuchen Sie es noch einmal.|
 |Während des Setups kann keine Verbindung mit einem WLAN hergestellt werden.|Das WLAN muss aktuell über eine Internetverbindung verfügen, damit die Kommunikation mit Azure möglich ist. EAP[PEAP/MSCHAP], Captive Portals und Enterprise EAP-TLS-Konnektivität werden derzeit nicht unterstützt.|Stellen Sie sicher, dass Ihr WLAN-Netzwerktyp unterstützt wird und eine Internetverbindung besteht.|
+|**Gerätecodefehler** <br><br> Wenn sie auf der Gerätecodeseite die folgenden Fehler erhalten haben: <br><br>**Auf der Benutzeroberfläche für die Einrichtung**: Der Gerätecode kann nicht abgerufen werden. Stellen Sie sicher, dass das Gerät mit dem Internet verbunden ist. <br><br> **Im Webentwicklermodus des Browsers**: Fehler beim Laden der Ressource: Der Server hat mit dem Status 503 (Dienst nicht verfügbar) geantwortet. <br><br>oder <br><br>Das Zertifikat ist noch ungültig. | Es gibt ein Problem mit Ihrem WLAN-Netzwerk, das das Gerät daran hindert, DNS-Abfragen durchzuführen oder einen NTP-Zeitserver zu kontaktieren. | Schließen Sie ein Ethernet-Kabel an das DevKit an, oder stellen Sie eine Verbindung mit einem anderen WLAN-Netzwerk her, und versuchen Sie es dann erneut. <br><br> Weniger häufige Ursachen können sein, dass Datum/Uhrzeit des Hostcomputers falsch sind.  |
+|**Probleme bei der Verwendung des Gerätecodes**<br><br> Nach der Verwendung des Gerätecodes und der Anmeldung bei Azure wird eine Azure-Fehlermeldung zu Richtlinienberechtigungen oder Konformitätsproblemen angezeigt. Sie können die Einrichtung nicht fortsetzen.<br><br> Hier folgen einige der Fehler, die ihnen möglicherweise angezeigt werden:<br><br>**BlockedByConditionalAccessOnSecurityPolicy**: Der Mandantenadministrator hat eine Sicherheitsrichtlinie konfiguriert, die diese Anforderung blockiert. Überprüfen Sie die Sicherheitsrichtlinien, die auf Mandantenebene definiert sind, um festzustellen, ob Ihre Anforderung der Richtlinie entspricht. <br><br>**DevicePolicyError**: Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff zurzeit nicht unterstützt wird.<br><br>**DeviceNotCompliant**: Die Richtlinie für bedingten Zugriff erfordert ein konformes Gerät, und das Gerät ist nicht konform. Der Benutzer muss das Gerät mit einem genehmigten MDM-Anbieter (z. B. Intune) registrieren.<br><br>**BlockedByConditionalAccess**: Zugriff wurde von Richtlinien für bedingten Zugriff blockiert. Die Zugriffsrichtlinie erlaubt nicht die Ausstellung von Token.<br><br>**Hierauf können Sie zurzeit nicht zugreifen**: Ihre Anmeldung war erfolgreich, erfüllt aber nicht die Kriterien für den Zugriff auf diese Ressource.   |Einige Azure-Mandanten blockieren möglicherweise die Verwendung von „Gerätecodes“ zum Bearbeiten von Azure-Ressourcen als Sicherheitsmaßnahme. Dies ist in der Regel das Ergebnis der IT-Richtlinien für bedingten Zugriff Ihrer Organisation. Aus diesem Grund kann das Azure Percept-Setup keine Azure-Ressourcen für Sie erstellen. <br><br>Ihre Richtlinie für bedingten Zugriff erfordert, dass Sie mit Ihrem Unternehmensnetzwerk oder VPN verbunden sind, um fortfahren zu können.    |Arbeiten Sie mit Ihrer Organisation zusammen, um deren IT-Richtlinien für bedingten Zugriff zu verstehen.  |

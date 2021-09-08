@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: core
 author: lobrien
 ms.author: laobri
-ms.date: 04/24/2020
+ms.date: 08/05/2021
 ms.topic: how-to
-ms.openlocfilehash: f3e432573e07146157d76de71e5ef1b328ed5bcf
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1889798d120946e0afc319ceeeaa43db12f59566
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885072"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339528"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst
 
@@ -32,7 +32,7 @@ Bei Azure Machine Learning bestehen personenbezogene Daten aus Benutzerinformati
 
 ## <a name="delete-high-level-resources-using-the-portal"></a>Löschen von allgemeinen Ressourcen über das Portal
 
-Wenn Sie einen Arbeitsbereich erstellen, erzeugt Azure eine Anzahl von Ressourcen innerhalb der Ressourcengruppe:
+Wenn Sie einen Arbeitsbereich erstellen, erzeugt Azure mehrere Ressourcen innerhalb der Ressourcengruppe:
 
 - Den Arbeitsbereich selbst
 - Ein Speicherkonto
@@ -52,11 +52,14 @@ Ausführungsverlaufsdokumente, die persönliche Benutzerinformationen enthalten 
 
 Azure Machine Learning Studio bietet eine einheitliche Übersicht über Ihre Machine Learning-Ressourcen, z. B. Notebooks, Datasets, Modelle und Experimente. Azure Machine Learning Studio legt Wert auf die Bewahrung einer Aufzeichnung Ihrer Daten und Experimente. Rechenressourcen wie Pipelines und Computeressourcen können über den Browser gelöscht werden. Navigieren Sie für diese Ressourcen zu der betreffenden Ressource, und wählen Sie **Löschen** aus. 
 
-Die Registrierung von Datasets kann aufgehoben und Experimente können archiviert werden, aber diese Vorgänge löschen die Daten nicht. Zum vollständigen Entfernen der Daten müssen Datasets und Ausführungsdaten auf der Speicherebene gelöscht werden. Das Löschen auf der Speicherebene erfolgt, wie zuvor beschrieben, über das Portal.
+Die Registrierung von Datasets kann aufgehoben und Experimente können archiviert werden, aber diese Vorgänge löschen die Daten nicht. Zum vollständigen Entfernen der Daten müssen Datasets und Experimentdaten auf Speicherebene gelöscht werden. Das Löschen auf der Speicherebene erfolgt, wie zuvor beschrieben, über das Portal. Eine einzelne Ausführung kann direkt in Studio gelöscht werden. Beim Löschen einer Ausführung werden auch die Ausführungsdaten gelöscht. 
 
-Sie können Trainingsartefakte aus experimentellen Ausführungen mit dem Studio herunterladen. Wählen Sie das **Experiment** und **Ausführung** aus, an dem Sie interessiert sind. Wählen Sie **Ausgabe + Protokolle** aus, und navigieren Sie zu den spezifischen Artefakten, die Sie herunterladen möchten. Wählen Sie **...** und **Herunterladen** aus.
+> [!NOTE]
+> Verwenden Sie vor dem Aufheben der Registrierung eines Datasets dessen **Datenquellenlink**, um die spezifische Daten-URL für das Löschen zu finden. 
 
-Sie können ein registriertes Modell herunterladen, indem Sie zu dem gewünschten **Modell** navigieren und **Herunterladen** auswählen. 
+Sie können Trainingsartefakte aus experimentellen Ausführungen mit dem Studio herunterladen. Wählen Sie das gewünschte **Experiment** und die **Ausführung** aus. Wählen Sie **Ausgabe + Protokolle** aus, und navigieren Sie zu den spezifischen Artefakten, die Sie herunterladen möchten. Wählen Sie **...** und **Herunterladen** aus.
+
+Sie können ein registriertes Modell herunterladen, indem Sie zu dem **Modell** navigieren und **Herunterladen** auswählen. 
 
 :::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Screenshot der Studiomodellseite mit hervorgehobener Option „Herunterladen“":::
 

@@ -7,33 +7,33 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b828d9e5765a180e1b42de9b96a0ee06eab085f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "92320214"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339390"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Problembehandlung von PostgreSQL Hyperscale-Servergruppen
 In diesem Artikel werden einige Methoden beschrieben, die Sie bei der Problembehandlung Ihrer Servergruppe verwenden können. Zusätzlich zu diesem Artikel empfiehlt es sich, nachzulesen, wie Sie [Kibana](monitor-grafana-kibana.md) verwenden, um die Protokolle zu durchsuchen, oder [Grafana](monitor-grafana-kibana.md), um Metriken zu Ihrer Servergruppe zu visualisieren. 
 
-## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>Weitere Details zur Ausführung eines azdata-Befehls erhalten
-Sie können den Parameter **--debug** zu jedem azdata-Befehl hinzufügen, den Sie ausführen. Dadurch werden zusätzliche Informationen zur Ausführung dieses Befehls in Ihrer Konsole angezeigt. Es sollte sich als hilfreich erweisen, Detailinformationen zu erhalten, durch die Sie das Verhalten dieses Befehls besser verstehen können.
+## <a name="getting-more-details-about-the-execution-of-a-cli-command"></a>Abrufen weiterer Details zur Ausführung eines Befehls an der Befehlszeilenschnittstelle
+Sie können den Parameter **--debug** jedem Befehl hinzufügen, den Sie an der Befehlszeilenschnittstelle ausführen. Dadurch werden zusätzliche Informationen zur Ausführung dieses Befehls in Ihrer Konsole angezeigt. Es sollte sich als hilfreich erweisen, Detailinformationen zu erhalten, durch die Sie das Verhalten dieses Befehls besser verstehen können.
 Beispielsweise könnten Sie Folgendes ausführen
-```console
-azdata arc postgres server create -n postgres01 -w 2 --debug
+```azurecli
+az postgres arc-server create -n postgres01 -w 2 --debug --k8s-namespace <namespace> --use-k8s
 ```
 
 oder
-```console
-azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```azurecli
+az postgres arc-server edit -n postgres01 --extension --k8s-namespace <namespace> --use-k8s SomeExtensionName --debug
 ```
 
-Außerdem können Sie den Parameter „--help“ mit jedem azdata-Befehl verwenden, um Hilfeinformationen und eine Liste mit Parametern für einen bestimmten Befehl anzuzeigen. Beispiel:
-```console
-azdata arc postgres server create --help
+Außerdem können Sie den Parameter „--help“ mit jedem Befehl an der Befehlszeilenschnittstelle verwenden, um Hilfeinformationen und eine Liste mit Parametern für diesen Befehl anzuzeigen. Beispiel:
+```azurecli
+az postgres arc-server create --help
 ```
 
 
@@ -43,33 +43,22 @@ Lesen Sie den Artikel zum [Abrufen von Protokollen für Azure Arc-fähige Datend
 
 
 ## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>Interaktive Problembehandlung mit Jupyter Notebooks in Azure Data Studio
+
 Notebooks können Prozeduren dokumentieren, indem sie Markdowninhalte einschließen, die beschreiben, welche Aktionen wie durchzuführen sind. Notebooks können auch ausführbaren Code bereitstellen, um eine Prozedur zu automatisieren.  Dieses Muster eignet sich für zahlreiche Szenarien: von Standardbetriebsprozeduren bis hin zu Problembehandlungsanleitungen.
 
 Beispielsweise können Sie Problembehandlung für eine PostgreSQL Hyperscale-Servergruppe ausführen, bei der möglicherweise Probleme bei der Verwendung von Azure Data Studio auftreten.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 ### <a name="install-tools"></a>Installieren von Tools
 
-Installieren Sie Azure Data Studio, `kubectl` und [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] auf dem Clientcomputer, den Sie zum Ausführen des Notebooks in Azure Data Studio verwenden. Befolgen Sie hierzu die Anweisungen unter [Installieren von Clienttools](install-client-tools.md).
+Installieren Sie Azure Data Studio, `kubectl` und die Azure-Befehlszeilenschnittstelle (`az`) mit der Erweiterung `arcdata` auf dem Clientcomputer, den Sie zum Ausführen des Notebooks in Azure Data Studio verwenden. Befolgen Sie hierzu die Anweisungen unter [Installieren von Clienttools](install-client-tools.md).
 
 ### <a name="update-the-path-environment-variable"></a>Aktualisieren der PATH-Umgebungsvariablen
 
 Stellen Sie sicher, dass diese Tools überall auf diesem Clientcomputer aufgerufen werden können. Aktualisieren Sie z. B. auf einem Windows-Clientcomputer die PATH-Systemumgebungsvariable, und fügen Sie den Ordner hinzu, in dem Sie kubectl installiert haben.
-
-### <a name="sign-in-with-azure-data-cli-azdata"></a>Melden Sie sich mit [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] an.
-
-Melden Sie Ihren Arc-Datencontroller von diesem Clientcomputer aus und vor dem Starten von Azure Data Studio an. Führen Sie zu diesem Zweck beispielsweise den folgenden Befehl aus:
-
-```console
-azdata login --endpoint https://<IP address>:<port>
-```
-
-Ersetzen Sie `<IP address>` durch die IP-Adresse Ihres Kubernetes-Clusters und `<port>` durch den Port, an dem Kubernetes lauscht. Sie werden zur Eingabe des Benutzernamens und Kennworts aufgefordert. Um weitere Informationen anzuzeigen, führen Sie Folgendes aus: _
-
-```console
-azdata login --help
-```
 
 ### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Anmelden bei Ihrem Kubernetes-Cluster mit kubectl
 

@@ -12,12 +12,12 @@ author: rothja
 ms.author: jroth
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0d811953b191a661682767262c899b98119cdbc8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 75f30fe7263d14538ad14588a56aafecde96a126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786203"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339683"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Verschieben von Ressourcen in eine neue Region – Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,9 @@ Dieser Artikel bietet einen allgemeinen Workflow zum Verschieben von Ressourcen 
 > [!NOTE]
 > Dieser Artikel betrifft Migrationsvorgänge innerhalb der öffentlichen Azure-Cloud oder innerhalb derselben Sovereign Cloud.
 
+> [!NOTE]
+> Sie können für das Verschieben von Azure SQL-Datenbank-Instanzen und Pools für elastische Datenbanken in eine andere Azure-Region auch Azure Resource Mover (Vorschau) verwenden. Ausführliche Schritte hierzu finden Sie in [diesem Tutorial](../../resource-mover/tutorial-move-region-sql.md).
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="move-a-database"></a>Verschieben einer Datenbank
@@ -49,7 +52,13 @@ Dieser Artikel bietet einen allgemeinen Workflow zum Verschieben von Ressourcen 
 1. Erstellen Sie einen Zielserver für jeden Quellserver.
 1. Konfigurieren Sie die Firewall mit den richtigen Ausnahmen mithilfe von [PowerShell](scripts/create-and-configure-database-powershell.md).  
 1. Konfigurieren Sie die Server mit den richtigen Anmeldedaten. Wenn Sie nicht der Abonnement- oder SQL Server-Administrator sind, wenden Sie sich an den Administrator, damit dieser Ihnen die erforderlichen Berechtigungen zuweist. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](active-geo-replication-security-configure.md).
-1. Wenn Ihre Datenbanken mit transparenter Datenverschlüsselung verschlüsselt sind und Sie Ihren eigenen Schlüssel in Azure Key Vault verwenden, stellen Sie sicher, dass das richtige Verschlüsselungsmaterial in den Zielregionen bereitgestellt wird. Weitere Informationen finden Sie unter [Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden](transparent-data-encryption-byok-overview.md).
+1. Wenn Ihre Datenbanken mit Transparent Data Encryption (TDE) und BYOK (Bring Your Own Key oder kundenseitig verwalteter Schlüssel) in Azure Key Vault verschlüsselt sind, stellen Sie sicher, dass in den Zielregionen die richtigen Verschlüsselungskomponenten bereitgestellt werden. 
+    - Als einfachste Möglichkeit fügen Sie dazu den Verschlüsselungsschlüssel aus dem vorhandenen Schlüsseltresor (der als TDE-Schutzvorrichtung auf dem Quellserver verwendet wird) auf dem Zielserver hinzu und legen anschließend den Schlüssel als TDE-Schutzvorrichtung auf dem Zielserver fest.
+      > [!NOTE]
+      > Ein Server oder eine verwaltete Instanz in einer Region kann jetzt mit einem Schlüsseltresor in einer beliebigen anderen Region verbunden werden.
+    - Um sicherzustellen, dass der Zielserver Zugriff auf ältere Verschlüsselungsschlüssel hat (erforderlich zum Wiederherstellen von Datenbanksicherungen), hat es sich bewährt, das Cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) auf dem Quellserver oder das Cmdlet [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) auf der verwalteten Quellinstanz auszuführen, um die Liste der verfügbaren Schlüssel zurückzugeben, und diese Schlüssel dann auf dem Zielserver hinzuzufügen.
+    - Weitere Informationen und bewährte Methoden zum Konfigurieren von kundenseitig verwalteter TDE auf dem Zielserver finden Sie unter [Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels in Azure Key Vault](transparent-data-encryption-byok-overview.md).
+    - Informationen zum Verschieben des Schlüsseltresors in die neue Region finden Sie unter [Regionsübergreifendes Verschieben eines Azure Key Vault](../../key-vault/general/move-region.md). 
 1. Wenn die Überwachung auf Datenbankebene aktiviert ist, deaktivieren Sie sie, und aktivieren Sie stattdessen die Überwachung auf Serverebene. Nach dem Failover ist für die Überwachung auf Datenbankebene überregionaler Datenverkehr erforderlich. Dies ist nach der Verschiebung jedoch nicht gewünscht oder möglich.
 1. Stellen Sie für Überwachung auf Serverebene Folgendes sicher:
    - Der Speichercontainer, Log Analytics oder der Event Hub mit den vorhandenen Überwachungsprotokollen wird in die Zielregion verschoben.

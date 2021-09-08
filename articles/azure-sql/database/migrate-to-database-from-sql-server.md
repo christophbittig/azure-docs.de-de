@@ -12,12 +12,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: mathoma
 ms.date: 02/11/2019
-ms.openlocfilehash: 53f01086bebc968c1a33f249993e9b6e94ae11db
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3073bce2587cf08c494a5d0524a17d551ebcfa17
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708442"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688626"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.micr
 
  Verwenden Sie diese Methode zum Migrieren zu einer Einzel -oder Pooldatenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](../../dms/tutorial-sql-server-to-azure-sql.md).
 
-Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migration einer Einzel- oder Pooldatenbank mit dieser Methode. Informationen zur Migration zu SQL Managed Instance finden Sie unter [Migration zu SQL Managed Instance](../managed-instance/migrate-to-instance-from-sql-server.md).
+Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migration einer Einzel- oder Pooldatenbank mit dieser Methode. Informationen zum Migrieren zu SQL Managed Instance finden Sie unter [Leitfaden zum Migrieren von SQL Server zu Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 
   ![Diagramm der VSSSDT-Migration](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 

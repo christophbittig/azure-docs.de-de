@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: ff7862636ec96db525e4a6920b35dbc1ce6be6d7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6ca95378145664b2fafe342d4887d3d8dcf7122a
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076238"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112403"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 
@@ -46,17 +46,15 @@ metadata:
   namespace: kube-system
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
-    <domain to be rewritten>.com:53 {
-        errors
-        cache 30
-        rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
-          pods insecure
-          upstream
-          fallthrough in-addr.arpa ip6.arpa
-        }
-        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
-    }
+  <domain to be rewritten>.com:53 {
+  log
+  errors
+  rewrite stop {
+    name regex (.*)\.<domain to be rewritten>.com {1}.default.svc.cluster.local
+    answer name (.*)\.default\.svc\.cluster\.local {1}.<domain to be rewritten>.com
+  }
+  forward . /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
+}
 ```
 
 > [!IMPORTANT]
@@ -179,22 +177,6 @@ metadata:
   namespace: kube-system
 data:
     test.override: | # you may select any name here, but it must end with the .override file extension
-          hosts example.hosts example.org { # example.hosts must be a file
-              10.0.0.1 example.org
-              fallthrough
-          }
-```
-
-So geben Sie mit INLINE eine oder mehrere Zeilen in der Hosttabelle an:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: coredns-custom # this is the name of the configmap you can overwrite with your changes
-  namespace: kube-system
-data:
-    test.override: | # you may select any name here, but it must end with the .override file extension
           hosts { 
               10.0.0.1 example1.org
               10.0.0.2 example2.org
@@ -203,7 +185,9 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>Aktivieren der Protokollierung zum Debuggen von DNS-Abfragen 
+## <a name="troubleshooting"></a>Problembehandlung
+
+Allgemeine Schritte zur Problembehandlung für CoreDNS, z. B. das Überprüfen der Endpunkte oder die Auflösung, finden Sie unter [Debuggen der DNS-Auflösung][coredns-troubleshooting].
 
 Um die DNS-Abfrageprotokollierung zu aktivieren, wenden Sie die folgende Konfiguration in Ihrer coredns-custom-ConfigMap an:
 
@@ -216,6 +200,12 @@ metadata:
 data:
   log.override: | # you may select any name here, but it must end with the .override file extension
         log
+```
+
+Nachdem Sie die Konfigurationsänderungen angewandt haben, verwenden Sie den Befehl `kubectl logs`, um die CoreDNS-Debugprotokollierung anzuzeigen. Beispiel:
+
+```console
+kubectl logs --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -233,6 +223,7 @@ Weitere Informationen zu den Kernnetzwerkkonzepten finden Sie unter [Netzwerkkon
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [coredns hosts]: https://coredns.io/plugins/hosts/
+[coredns-troubleshooting]: https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 
 <!-- LINKS - internal -->
 [concepts-network]: concepts-network.md

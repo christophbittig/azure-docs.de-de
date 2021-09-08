@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 82ea26a5522d44bb39adc30f388f996688cb1ad5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131402"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342850"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurieren von Datenaufteilung und Kreuzvalidierung im automatisierten maschinellen Lernen
 
@@ -44,6 +44,8 @@ Für diesen Artikel ist Folgendes erforderlich:
     * [About training, validation and test data in machine learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7) (Informationen zu Trainings-, Validierungs- und Testdaten beim maschinellen Lernen)
 
     * [Understand Cross Validation in machine learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) (Grundlegendes zur Kreuzvalidierung beim maschinellen Lernen) 
+
+[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Standarddatenaufteilung und Kreuzvalidierung beim maschinellen Lernen
 
@@ -74,7 +76,7 @@ Wenn Sie nicht explizit die Parameter `validation_data` oder `n_cross_validation
 In diesem Fall können Sie entweder von einer einzelnen Datendatei ausgehen, die Sie in Trainings- und Validierungsdatasets aufteilen, oder Sie können für den Validierungssatz eine separate Datendatei bereitstellen. In beiden Fällen weist der Parameter `validation_data` in Ihrem `AutoMLConfig`-Objekt die Daten zu, die als Validierungsset verwendet werden. Dieser Parameter akzeptiert nur Datasets in der Form eines [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) oder eines Pandas-Dataframes.   
 
 > [!NOTE]
-> Der Parameter `validation_size` wird in Vorhersageszenarien nicht unterstützt.
+> Für den Parameter `validation_data` müssen die Parameter `training_data` und `label_column_name` ebenfalls festgelegt werden. Sie können nur einen Validierungsparameter festlegen. Das heißt, Sie können nur entweder `validation_data` oder `n_cross_validations` angeben, aber nicht beide.
 
 Im folgenden Codebeispiel ist explizit definiert, welcher Teil der bereitgestellten Daten in `dataset` zum Training und welcher zur Validierung verwendet wird.
 

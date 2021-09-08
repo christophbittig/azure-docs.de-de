@@ -4,14 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie SQL Server Integration 
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a9e69b0672a5b4235effcd68b50eeddc5ec9f82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339483"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrieren von SQL Server-Agent-Aufträgen zu ADF mit SSMS
 
@@ -30,7 +31,7 @@ Mit dem **Assistenten für die SSIS-Auftragsmigration** können Sie generell fol
 |---------|---------|---------|
 |SQL-Agent-Auftrag|pipeline     |Der Name der Pipeline lautet *Generiert für \<job name>* . <br> <br> Folgende integrierte Agent-Aufträge sind nicht anwendbar: <li> Wartungsauftrag für SSIS-Server <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
 |SSIS-Auftragsschritt|Aktivität „SSIS-Paket ausführen“|<li> Der Name der Aktivität lautet \<step name>. <li> Das im Auftragsschritt verwendete Proxykonto wird als Windows-Authentifizierung dieser Aktivität migriert. <li> *Ausführungsoptionen*, mit Ausnahme der im Auftragsschritt definierten Option *32-Bit-Runtime verwenden*, werden bei der Migration ignoriert. <li> Die im Auftragsschritt definierte *Überprüfung* wird bei der Migration ignoriert.|
-|schedule      |Zeitplantrigger        |Der Name des Zeitplantriggers lautet *Generiert für \<schedule name>* . <br> <br> Die folgenden Optionen im Auftragszeitplan des SQL-Agents werden bei der Migration ignoriert: <li> Intervall der zweiten Ebene <li> *Automatisch starten, wenn der SQL Server-Agent startet* <li> *Starten, wenn sich die CPUs im Leerlauf befinden* <li> *Wochentag* und *Wochenendtag* <time zone> <br> Nach der Migration des Auftragszeitplans des SQL-Agents zum ADF-Zeitplantrigger sind folgende Unterschiede vorhanden: <li> Die nachfolgende Ausführung des ADF-Zeitplantriggers erfolgt unabhängig vom Ausführungszustand der zuvor ausgelösten Ausführung. <li> Die Wiederholungskonfiguration für den ADF-Zeitplantrigger unterscheidet sich von der täglichen Häufigkeit im SQL-Agent-Auftrag.|
+|schedule      |Zeitplantrigger        |Der Name des Zeitplantriggers lautet *Generiert für \<schedule name>* . <br> <br> Die folgenden Optionen im Auftragszeitplan des SQL-Agents werden bei der Migration ignoriert: <li> Intervall der zweiten Ebene <li> *Automatisch starten, wenn der SQL Server-Agent startet* <li> *Starten, wenn sich die CPUs im Leerlauf befinden* <li> *Wochentag* und *Wochenendtag* &gt;Zeitzone&lt; <br> Nach der Migration des Auftragszeitplans des SQL-Agents zum ADF-Zeitplantrigger sind folgende Unterschiede vorhanden: <li> Die nachfolgende Ausführung des ADF-Zeitplantriggers erfolgt unabhängig vom Ausführungszustand der zuvor ausgelösten Ausführung. <li> Die Wiederholungskonfiguration für den ADF-Zeitplantrigger unterscheidet sich von der täglichen Häufigkeit im SQL-Agent-Auftrag.|
 
 - Generieren von Azure Resource Manager-Vorlagen (ARM) im lokalen Ausgabeordner, die direkt oder später manuell in Data Factory bereitgestellt werden. Weitere Informationen zu den Azure Resource Manager-Vorlagen in ADF finden Sie unter [Microsoft.DataFactory-Ressourcentypen](/azure/templates/microsoft.datafactory/allversions).
 
