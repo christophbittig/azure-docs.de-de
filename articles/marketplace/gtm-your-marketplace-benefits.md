@@ -4,15 +4,15 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 03/09/2021
+ms.date: 07/01/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: f0f75a305a411e49a29124599dfa90aa0aee9056
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: dcd7c7c64c0a686abe88b9e0d5810ff84aab27f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004276"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339811"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -30,11 +30,11 @@ Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um 
 
 Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams kontaktiert, wenn Ihr Angebot veröffentlicht wird.
 
-Bei Transaktionspartnern ermöglichen Sie durch die Steigerung der abgerechneten Verkäufe über die kommerzielle Marketplace-Plattform größere Vorteile pro Ebene.
+List- und Trial-Angebote erhalten einmalige Nutzungsvorteile. Transact-Angebote sind für dauerhafte Vorteile berechtigt. Wenn Sie als Transaktionspartner Ihre abgerechneten Verkäufe über den kommerziellen Marketplace steigern, können Sie größere Vorteilen pro Stufe des abgerechneten Umsatzes (oder verkaufter Arbeitsplätze) erzielen.
 
 Die Mindestanforderung für die Veröffentlichung in den Onlineshops ist eine MPN-ID – diese Vorteile stehen also allen Partnern unabhängig von ihrem MPN-Kompetenzstatus oder ihrem Partnertyp zur Verfügung. Jeder Partner kann sein Geschäft über den kommerziellen Marketplace als Plattform vergrößern.
 
-Sie erhalten Informationen zu den für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig nachlesen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) können.
+Sie erhalten Informationen zu den für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig nachlesen](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!1039&ithint=file%2cdocx&authkey=!AFs7CHF5_XGje3k) können.
 
 Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsentation des Marketplace-Prämienprogramms](https://aka.ms/marketplacerewards).
 
@@ -50,20 +50,20 @@ Ausführliche Beschreibungen aller Programmvorteile finden Sie in der [Präsenta
     1. Nachdem Sie den Marketingkontakt aktualisiert haben, wählen Sie für den Vorteil, den Sie verwenden möchten, die Option **Aktivieren** aus. Sobald Sie einen Vorteil aktiviert haben, wird Ihr Marketingkontakt innerhalb einer Woche von einem Mitglied des Prämienteams kontaktiert.
 
 > [!NOTE]
-> Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie in Ihrer Organisation, wer der Besitzer des fraglichen Angebots ist, indem Sie in Partner Center nachsehen. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://go.microsoft.com/fwlink/?linkid=2165533) ein Supportticket erstellen.
+> Wenn Ihr Angebot seit mehr als vier Wochen aktiv ist und Sie keine Nachricht erhalten haben, überprüfen Sie, wer der Besitzer des fraglichen Angebots in Ihrer Organisation ist. Dazu wechseln Sie zu Partner Center und überprüfen die aufgelisteten Kontakte. Einer der dort aufgeführten Kontakte sollte die Kommunikation und die nächsten Schritte erhalten haben.<br><br>Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, können Sie unter [Hilfe und Support](https://go.microsoft.com/fwlink/?linkid=2165533) ein Supportticket erstellen.
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote im kommerziellen Marketplace. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Vorteile für List, Trial und Consulting
 
-Jedes Mal, wenn Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace veröffentlichen, haben Sie Zugriff auf eine neue Gruppe von Vorteilen. Sobald Ihr Angebot live geschaltet ist, wechseln Sie zum [Partner Center](https://partner.microsoft.com/dashboard), um die Ihnen zustehenden Marketing-, Verkaufs- und technischen Vorteile zu aktivieren.
+Jedes Mal, wenn Sie ein Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlichen, haben Sie Zugriff auf eine neue Gruppe von Marketing-, Verkaufs- und technischen Vorteilen. Sobald Ihr Angebot live geschaltet ist, wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard), um die Ihnen zustehenden Vorteile zu aktivieren.
 
 > [!IMPORTANT]
 > Alle Vorteile für Trial und Consulting laufen nach drei Monaten ab.
 
 In der folgenden Tabelle sind die Berechtigungsvoraussetzungen für List-, Trial- und Consulting-Angebote zusammengefasst:
 
-![Vorteile bei der Markteinführung](./media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)
+[![Vorteile bei der Markteinführung](media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)](media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png#lightbox)
 
 Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
@@ -72,29 +72,27 @@ Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel f
 Wenn Sie Ihr transaktionsfähiges Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlichen, erhalten Sie zusätzliche Vorteile, während Ihre abgerechneten Umsatztransaktionen oder verkauften Arbeitsplätze über den kommerziellen Marketplace wachsen.
 
 >[!NOTE]
->Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2021 abgeschlossen sein.
+>Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2022 abgeschlossen sein.
 
 Diese Vorteile sollen Sie bei Marketing-, Vertriebs- und technischen Aktivitäten unterstützen und Ihnen dadurch dabei helfen, mehr Besucher und mehr Leads zu erhalten und mehr Geschäfte zu verwirklichen.
 
-Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten Engagement-Manager die optimalen Aktivitäten für Ihr Portfolio von Angeboten im kommerziellen Marketplace auswählen. Dieses Engagement beginnt mit jedem Angebot neu, d. h., Sie können Ihre Aktivitäten und den zeitlichen Ablauf dieser Aktivitäten mit der zeitlichen Planung der allgemeineren Marketing- und Verkaufsstrategien Ihres Unternehmens abstimmen.
+Alle Partner mit einem aktiven, transaktionsfähigen Angebot können gemeinsam mit einem dedizierten Engagement-Manager die optimalen Aktivitäten für Ihr Portfolio von Angeboten im kommerziellen Marketplace auswählen. Dieses Engagement beginnt mit jedem Angebot neu, d. h., Sie können Ihre Aktivitäten und den zeitlichen Ablauf dieser Aktivitäten mit der zeitlichen Planung der allgemeineren Marketing- und Verkaufsstrategien Ihres Unternehmens abstimmen.
 
 ### <a name="marketing-benefits-for-transact-offers"></a>Marketingvorteile für Transact-Angebote
 
-![Marketingvorteile](./media/marketplace-publishers-guide/marketing-benefit.png)
+[![Marketingvorteile](media/marketplace-publishers-guide/marketing-benefit.png)](media/marketplace-publishers-guide/marketing-benefit.png#lightbox)
 
 ### <a name="sales-benefits-for-transact-offers"></a>Verkaufsvorteile für Transact-Angebote
 
-![Verkaufsvorteile](./media/marketplace-publishers-guide/sales-benefit.png)
+[![Verkaufsvorteile](media/marketplace-publishers-guide/sales-benefit.png)](media/marketplace-publishers-guide/sales-benefit.png#lightbox)
 
 ### <a name="technical-benefits-for-transact-offers"></a>Technische Vorteile für Transact-Angebote
 
-![Technische Vorteile](./media/marketplace-publishers-guide/technical-benefit.png)
-
- Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2021 abgeschlossen sein.
+[![Technische Vorteile](media/marketplace-publishers-guide/technical-benefit.png)](media/marketplace-publishers-guide/technical-benefit.png#lightbox)
 
 Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
-Zusätzlich zu den Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dynamics-Angeboten, die bei Microsoft AppSource veröffentlicht werden, über [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) weitere Programmbereiche zur Verfügung. Diese umfassen Support bei Technik, Marketing und Vertrieb, der auf die Anforderungen von Geschäftsanwendungspartnern spezialisiert ist.
+Zusätzlich zu den Marketplace-Prämienvorteilen stehen Geschäftsanwendungspartnern mit Dynamics-Angeboten, die in Microsoft AppSource veröffentlicht werden, über [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) weitere Programmbereiche zur Verfügung. Diese umfassen Support bei Technik, Marketing und Vertrieb, der auf die Anforderungen von Geschäftsanwendungspartnern spezialisiert ist.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Anforderungen und Einschränkungen für Marketplace-Prämien
 
@@ -121,7 +119,7 @@ Microsoft behält sich vor, Marketplace-Prämienvorteile in folgenden Fällen zu
 
 ### <a name="offer-availability"></a>Angebotsverfügbarkeit
 
-Dieses Angebot wird für alle Partner mit einem aktiven Angebot im Azure Marketplace oder bei Microsoft AppSource in englischer Sprache abgewickelt.
+Dieses Angebot wird für alle Partner mit einem aktiven Angebot in Microsoft AppSource oder im Azure Marketplace in englischer Sprache abgewickelt.
 
 Transaktionen, die sich als betrügerisch erweisen, werden nicht zur Ebene des abgerechneten Umsatzes des Herausgebers gezählt, wie es im Abschnitt [List, Trial, Consulting](#list-trial-and-consulting-benefits) und im Abschnitt [Vorteile für Transact-Partner](#marketplace-rewards-for-transact-partners) beschrieben ist. Microsoft weist Partner ihre Berechtigungsstufen basierend auf dem tatsächlichen abgerechneten Umsatz zu, nachdem der Betrug entfernt wurde.
 

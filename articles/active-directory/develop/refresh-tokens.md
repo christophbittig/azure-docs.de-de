@@ -13,16 +13,16 @@ ms.date: 05/25/2021
 ms.author: shermanouko
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8b8bda71c637419dbd5b2bf7b181288abd9b965c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4d2721905d1e344cd0825466e0b0eb08578ef47
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075239"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688123"
 ---
 # <a name="microsoft-identity-platform-refresh-tokens"></a>Microsoft Identity Platform: Aktualisierungstoken
 
-Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er auch ein Aktualisierungstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Aktualisierungstoken werden auch verwendet, um zusätzliche Zugriffstoken für andere Ressourcen abzurufen. Aktualisierungstoken sind an eine Kombination aus Benutzer und Client gebunden, aber nicht an eine Ressource oder einen Mandanten. Dies ermöglicht es einem Client, mithilfe eines Aktualisierungstoken Zugriffstoken für eine beliebige Kombination von Ressourcen und Mandanten abzurufen, für die er dazu berechtigt ist. Aktualisierungstoken werden verschlüsselt und können nur von Microsoft Identity Platform gelesen werden.
+Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er auch ein Aktualisierungstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Aktualisierungstoken werden auch verwendet, um zusätzliche Zugriffstoken für andere Ressourcen abzurufen. Aktualisierungstoken sind an eine Kombination aus Benutzer und Client gebunden, aber nicht an eine Ressource oder einen Mandanten. Dadurch kann ein Client mithilfe eines Aktualisierungstoken Zugriffstoken für eine beliebige Kombination von Ressourcen und Mandanten beziehen, für die er berechtigt ist. Aktualisierungstoken werden verschlüsselt und können nur von Microsoft Identity Platform gelesen werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Bevor Sie sich diesen Artikel durchlesen, sollten Sie die folgenden Artikel durc
 
 ## <a name="refresh-token-lifetime"></a>Lebensdauer von Aktualisierungstoken
 
-Aktualisierungstoken haben eine deutlich längere Lebensdauer als Zugriffstoken. Die Standardlebensdauer für die Token beträgt 90 Tage,und sie ersetzen sich selbst bei jeder Verwendung durch ein neues Token. Das bedeutet, dass immer dann, wenn ein Aktualisierungstoken zum Abrufen eines neuen Zugriffstokens verwendet wird, auch ein neues Aktualisierungstoken ausgegeben wird. Microsoft Identity Platform widerruft keine alten Aktualisierungstoken, wenn damit neue Zugriffstoken abgerufen werden. Löschen Sie das alte Aktualisierungstoken dauerhaft, nachdem Sie ein neues Token abgerufen haben. Aktualisierungstoken müssen wie Zugriffstoken oder Anwendungsanmeldeinformationen sicher gespeichert werden. 
+Aktualisierungstoken haben eine längere Gültigkeitsdauer als Zugriffstoken. Die Standardlebensdauer für die Token beträgt 90 Tage,und sie ersetzen sich selbst bei jeder Verwendung durch ein neues Token. Das bedeutet, dass immer dann, wenn ein Aktualisierungstoken zum Beziehen eines neuen Zugriffstokens verwendet wird, auch ein neues Aktualisierungstoken ausgestellt wird. Microsoft Identity Platform widerruft keine alten Aktualisierungstoken, wenn damit neue Zugriffstoken abgerufen werden. Löschen Sie das alte Aktualisierungstoken dauerhaft, nachdem Sie ein neues Token abgerufen haben. Aktualisierungstoken müssen wie Zugriffstoken oder Anwendungsanmeldeinformationen sicher gespeichert werden. 
 
 ## <a name="refresh-token-expiration"></a>Ablauf von Aktualisierungstoken
 
@@ -41,15 +41,9 @@ Aktualisierungstoken können aufgrund von Timeouts und Sperrungen jederzeit wide
 
 ### <a name="token-timeouts"></a>Tokenzeitüberschreitungen
 
-Mit der [Konfiguration der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md#refresh-and-session-token-lifetime-policy-properties) kann die Lebensdauer von Aktualisierungstoken verringert oder verlängert werden. Mit dieser Einstellung wird geändert, wie lange ein ungenutztes Aktualisierungstoken gültig bleibt. Stellen Sie sich beispielsweise ein Szenario vor, in dem ein Benutzer eine App 90 Tage lang nicht öffnet. Wenn die App versucht, dieses über 90 Tage alte Aktualisierungstoken zu verwenden, wird sie feststellen, dass es abgelaufen ist. Darüber hinaus kann ein Administrator verlangen, dass in regelmäßigen Abständen zweite Faktoren verwendet werden, sodass sich der Benutzer in bestimmten Intervallen manuell anmelden muss. Zu diesen Szenarien gehören:
+Sie können die Gültigkeitsdauer eines Aktualisierungstokens nicht konfigurieren. Sie können ihre Gültigkeitsdauer nicht verkürzen oder verlängern. Konfigurieren Sie die Anmeldehäufigkeit in „Bedingter Zugriff“, um die Zeiträume festzulegen, bevor sich ein Benutzer erneut anmelden muss. Erfahren Sie mehr zum [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md).
 
-* Inaktivität: Aktualisierungstoken sind nur für den durch `MaxInactiveTime` bestimmten Zeitraum gültig.  Wird das Token innerhalb dieses Zeitraums nicht verwendet (und durch das neue Token ersetzt), kann es nicht mehr verwendet werden.
-* Veraltung der Sitzung: Wenn `MaxAgeSessionMultiFactor` oder `MaxAgeSessionSingleFactor` auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der in „MaxAgeSession*“ festgelegte Zeitraum abgelaufen ist.  Diese Einstellung wird verwendet, um zu erzwingen, dass sich Benutzer in regelmäßigen Abständen mit einem ersten oder zweiten Faktor erneut authentifizieren. 
-* Beispiele:
-  * Für den Mandanten ist ein MaxInactiveTime-Wert von fünf Tagen festgelegt, und der Benutzer ist eine Woche lang im Urlaub. Daher hat Azure AD seit sieben Tagen keine neue Tokenanforderung vom Benutzer erhalten. Bei der nächsten Anforderung eines neuen Tokens durch den Benutzer wurde das Aktualisierungstoken widerrufen, sodass der Benutzer seine Anmeldeinformationen erneut eingeben muss.
-  * Für eine vertrauliche Anwendung gilt ein `MaxAgeSessionMultiFactor`-Wert von einem Tag. Ein Benutzer muss die MFA über eine interaktive Eingabeaufforderung erneut ausführen, wenn er sich nach einem Tag erneut anmeldet. Beispiel: Ein Benutzer meldet sich am Montag und nach 25 Stunden am Dienstag an. 
-
-Nicht alle Aktualisierungstoken folgen den Regeln, die in der Richtlinie für die Tokengültigkeitsdauer festgelegt sind. Insbesondere in [Single-Page-Apps](reference-third-party-cookies-spas.md) verwendete Aktualisierungstoken sind stets auf 24 Stunden Aktivität beschränkt, als würde für sie eine `MaxAgeSessionSingleFactor`-Richtlinie von 24 Stunden gelten. 
+Nicht alle Aktualisierungstoken folgen den Regeln, die in der Richtlinie für die Tokengültigkeitsdauer festgelegt sind. Insbesondere in [Single-Page-Apps](reference-third-party-cookies-spas.md) verwendete Aktualisierungstoken sind stets auf 24 Stunden Aktivität festgelegt, als würde für sie eine `MaxAgeSessionSingleFactor`-Richtlinie von 24 Stunden gelten. 
 
 ### <a name="revocation"></a>Widerruf
 

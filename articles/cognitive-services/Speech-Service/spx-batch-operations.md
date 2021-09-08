@@ -3,19 +3,19 @@ title: 'Batchvorgänge für die Speech-Befehlszeilenschnittstelle: Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mithilfe der Speech-Befehlszeilenschnittstelle Batchvorgänge für die Spracherkennung (Sprache-in-Text) und für die Sprachsynthese (Text-zu-Sprache) ausführen.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.author: lajanuar
-ms.openlocfilehash: c3481edc4b66afc4556ae6d7e957f2dfee9b2e69
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: a64288707e9a9ce7388ca60a0c28e2a01f504d7f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072332"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543833"
 ---
 # <a name="speech-cli-batch-operations"></a>Batchvorgänge für die Speech-Befehlszeilenschnittstelle
 

@@ -8,19 +8,14 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: fc6c9f6c7c69f92c66706678dd27e082412afa3e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6613952b5d7811c187123963a6e611602aabb5dc
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539170"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113127688"
 ---
-# <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway---preview"></a>Konfigurieren von NAT-Regeln für Ihr Virtual WAN-VPN-Gateway (Vorschau)
-
-> [!IMPORTANT]
-> NAT-Regeln sind zurzeit als öffentliche Vorschau verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway"></a>Konfigurieren von NAT-Regeln für Ihr Virtual WAN-VPN-Gateway
 
 Sie können Ihr Virtual WAN-VPN-Gateway mit statischen 1:1-NAT-Regeln konfigurieren. Eine NAT-Regel bietet einen Mechanismus zum Einrichten einer 1:1-Übersetzung von IP-Adressen. NAT kann verwendet werden, um zwei IP-Netzwerke mit nicht kompatiblen oder überlappenden IP-Adressen miteinander zu verbinden. Hierbei sind Branches, die überlappende IP-Adressen besitzen und auf Azure-VNET-Ressourcen zugreifen möchten, ein typisches Szenario.
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe50cc3b8387b8cf377a1dce7cdcd69d174bd6ef
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6bbea74f635375785f325f48a2babb01af7c8228
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671872"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463189"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
 
@@ -63,7 +63,7 @@ Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgori
 | IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5  |
 | DH-Gruppe         | DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2048, DHGroup2, DHGroup1, keine |
 | IPsec-Verschlüsselung | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, keine    |
-| IPsec-Integrität  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
+| IPsec-Integrität  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-Gruppe        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, keine 
 | QM-SA-Gültigkeitsdauer   | (**Optional**: Wenn kein Wert angegeben wird, werden die Standardwerte verwendet)<br>Sekunden (ganze Zahl; **min. 300**/Standard: 27.000 Sekunden)<br>KB (ganze Zahl; **min. 1024**/Standard: 102.400.000 KB)   |
 | Datenverkehrsselektor | UsePolicyBasedTrafficSelectors** ($True/$False; **Optional**, default $False if not specified)    |
@@ -84,8 +84,8 @@ Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgori
 > 3. In der obigen Tabelle:
 >    * IKEv2 entspricht Hauptmodus oder Phase 1.
 >    * IPsec entspricht Hauptmodus oder Phase 2.
->    * Die DH-Gruppe gibt die im Hauptmodus oder in Phase 1 verwendete Diffie-Hellmen-Gruppe an.
->    * Die PFS-Gruppe gibt die im Schnellmodus oder in Phase 2 verwendete Diffie-Hellmen-Gruppe an.
+>    * Die DH-Gruppe gibt die im Hauptmodus oder in Phase 1 verwendete Diffie-Hellman-Gruppe an.
+>    * Die PFS-Gruppe gibt die im Schnellmodus oder in Phase 2 verwendete Diffie-Hellman-Gruppe an.
 > 4. Die SA-Gültigkeitsdauer von IKEv2 (Hauptmodus) ist für die Azure-VPN-Gateways auf 28.800 Sekunden festgelegt.
 > 5. Wenn „UsePolicyBasedTrafficSelectors“ für eine Verbindung auf „$True“ festgelegt wird, wird das Azure-VPN-Gateway zum Herstellen einer Verbindung mit einer richtlinienbasierten VPN-Firewall an einem lokalen Standort konfiguriert. Wenn Sie „PolicyBasedTrafficSelectors“ aktivieren, müssen für Ihr VPN-Gerät die entsprechenden Datenverkehrsselektoren mit allen Präfixkombinationen zwischen Ihrem lokalen Netzwerk (lokalen Netzwerkgateway) und den Präfixen des virtuellen Azure-Netzwerks definiert sein (anstelle von Any-to-Any). Wenn die Präfixe Ihres lokalen Netzwerks also beispielsweise 10.1.0.0/16 und 10.2.0.0/16 lauten und für Ihr virtuelles Netzwerk die Präfixe 192.168.0.0/16 und 172.16.0.0/16 verwendet werden, müssen folgende Datenverkehrsselektoren angegeben werden:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16

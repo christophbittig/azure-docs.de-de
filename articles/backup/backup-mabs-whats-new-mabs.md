@@ -2,15 +2,41 @@
 title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads.
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.openlocfilehash: 8f7c0e8709cd899b9b6a285dcd8c556763869c65
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332762"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338875"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Neuerungen in Microsoft Azure Backup Server (MABS)
+
+## <a name="whats-new-in-mabs-v3-ur2"></a>Neuerungen in MABS v3 UR2
+
+Die Microsoft Azure Backup Server-Version 3 UR2 (MABS) unterstützt die folgenden neuen Features/Featureupdates.
+
+Informationen zu den UR2-Problemlösungen und Installationsanweisungen finden Sie im [KB-Artikel](https://support.microsoft.com/topic/update-rollup-2-for-microsoft-azure-backup-server-v3-350de164-0ae4-459a-8acf-7777dbb7fd73).
+
+### <a name="support-for-azure-stack-hci"></a>Unterstützung für Azure Stack HCI
+
+Mit MABS v3 UR2 können Sie VMs in Azure Stack HCI sichern. [Weitere Informationen](./back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md)
+
+### <a name="support-for-vmware-70"></a>Unterstützung für VMware 7.0
+
+Mit MABS v3 UR2 können Sie VMware 7.0-VMs sichern. [Weitere Informationen](./backup-azure-backup-server-vmware.md)
+
+### <a name="support-for-sql-server-failover-cluster-instance-fci-using-cluster-shared-volume-csv"></a>Unterstützung der SQL Server-Failoverclusterinstanz (FCI) mit freigegebenem Clustervolume (Cluster Shared Volume, CSV)
+
+Von MABS v3 UR2 wird die SQL Server-Failoverclusterinstanz (FCI) mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) unterstützt. CSV trägt zur Vereinfachung der Verwaltung Ihrer SQL Server-Instanz bei. Dadurch können Sie den zugrunde liegenden Speicher von einem beliebigen Knoten aus verwalten, da abstrahiert wird, welcher Knoten als Besitzer des Datenträgers fungiert. [Weitere Informationen](./backup-azure-sql-mabs.md)
+
+### <a name="optimized-volume-migration"></a>Optimierte Migration von Volumes
+
+MABS v3 UR2 unterstützt die optimierte Migration von Volumes. Mit der optimierten Migration von Volumes können Datenquellen deutlich schneller auf das neue Volume migriert werden. Im Rahmen des erweiterten Migrationsprozesses wird lediglich die aktive Sicherungskopie (das aktive Replikat) auf das neuen Volume migriert. Alle neuen Wiederherstellungspunkte werden auf dem neuen Volume erstellt, während bereits vorhandene Wiederherstellungspunkte auf dem vorhandenen Volume verbleiben und gemäß der Aufbewahrungsrichtlinie bereinigt werden. [Weitere Informationen](/system-center/dpm/volume-to-volume-migration?view=sc-dpm-2019&preserve-view=true)
+
+### <a name="offline-backup-using-azure-data-box"></a>Offlinesicherung mit Azure Data Box
+
+Von MABS v3 UR2 wird die Offlinesicherung mit Azure Data Box unterstützt. Durch die Integration von Microsoft Azure Data Box können Sie problemlos mehrere Terabytes an Sicherungsdaten aus einer lokalen Umgebung zu Azure Storage migrieren. Dank Azure Data Box müssen Sie keine eigenen Azure-kompatiblen Datenträger und Connectors beschaffen oder temporären Speicher als Stagingspeicherort bereitstellen. Microsoft übernimmt zudem die End-to-End-Transportlogistik, die Sie über das Azure-Portal verfolgen können. [Weitere Informationen](./offline-backup-azure-data-box-dpm-mabs.md)
 
 ## <a name="whats-new-in-mabs-v3-ur1"></a>Neuerungen in MABS V3 UR1
 
@@ -61,7 +87,7 @@ Mit MABS V3 UR1 wird eine zusätzliche Authentifizierungsebene für kritische Vo
 Mit MABS V3 UR1 wird die Offlinesicherung unter Verwendung des Azure Import/Export-Diensts verbessert. Weitere Informationen finden Sie in den [hier](./backup-azure-backup-server-import-export.md) aktualisierten Schritten.
 
 >[!NOTE]
->Mit dem Update wird unter Verwendung von Azure Data Box in MABS auch die Vorschau der Offlinesicherung eingeführt. Wenden Sie sich an [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com), um mehr darüber zu erfahren.
+>Von MABS v3 UR2 wird die Offlinesicherung mit Azure Data Box unterstützt. [Weitere Informationen](./offline-backup-azure-data-box-dpm-mabs.md)
 
 ### <a name="new-cmdlet-parameter"></a>Neuer Cmdlet-Parameter
 

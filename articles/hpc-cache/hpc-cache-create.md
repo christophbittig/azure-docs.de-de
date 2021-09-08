@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706784"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294927"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -28,7 +28,7 @@ Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.micro
 
 ## <a name="define-basic-details"></a>Definieren grundlegender Informationen
 
-![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
+![Screenshot: Projektdetailseite im Azure-Portal.](media/hpc-cache-create-basics.png)
 
 Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus.
 
@@ -39,49 +39,92 @@ Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribut
 * Subnetz: Wählen Sie ein Subnetz mit mindestens 64 IP-Adressen (/24) aus, oder erstellen Sie es. Dieses Subnetz darf nur für diese Azure HPC Cache-Instanz verwendet werden.
 
 ## <a name="set-cache-capacity"></a>Festlegen der Cachekapazität
-<!-- referenced from GUI - update aka.ms link if you change this header text -->
+<!-- referenced from GUI - update aka.ms/hpc-cache-iops link if you change this header text -->
 
-Legen Sie auf der Seite **Cache** die Kapazität Ihres Caches fest. Die hier festgelegten Werte bestimmen, wie viele Daten der Cache enthalten und wie schnell er Clientanforderungen bewältigen kann.
+Legen Sie auf der Seite **Cache** die Kapazität Ihres Caches fest. Die hier festgelegten Werte bestimmen, wie schnell Ihr Cache Clientanforderungen erfüllen kann und wie viele Daten er speichern kann.
 
 Die Kapazität wirkt sich auch auf die Kosten für den Cache und darauf aus, wie viele Speicherziele unterstützt werden können.
 
-Legen Sie zum Auswählen der Kapazität die beiden folgenden Werte fest:
+Cachekapazität ist eine Kombination aus zwei Werten:
 
 * Die maximale Datenübertragungsrate für den Cache (Durchsatz) in GB/Sekunde
 * Die zugeordnete Speichermenge für zwischengespeicherte Daten in TB
 
-Wählen Sie einen der verfügbaren Durchsatzwerte und eine der verfügbaren Cachespeichergrößen aus.
+![Screenshot: Seite zum Festlegen der Cachegröße im Azure-Portal.](media/hpc-cache-create-capacity.png)
 
-> [!TIP]
-> Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, müssen Sie den höchsten verfügbaren Wert für die Cachespeichergröße für Ihre Durchsatzgröße auswählen. Weitere Informationen finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets).
+### <a name="understand-throughput-and-cache-size"></a>Grundlegendes zu Durchsatz und Cachegröße
 
-Beachten Sie, dass die tatsächliche Datenübertragungsrate von der Arbeitsauslastung, der Netzwerkgeschwindigkeit und der Art der Speicherziele abhängt. Die von Ihnen ausgewählten Werte bestimmen den maximalen Durchsatz für das gesamte Cachesystem, ein Teil davon wird jedoch für zusätzliche Aufgaben verwendet. Wenn ein Client beispielsweise eine Datei anfordert, die noch nicht im Cache gespeichert ist, oder wenn die Datei als veraltet markiert ist, nutzt der Cache einen Teil des Durchsatzes, um sie aus dem Back-End-Speicher abzurufen.
+Mehrere Faktoren können die Effizienz Ihres HPC-Caches beeinflussen, aber die Wahl eines geeigneten Durchsatzwerts und der Größe des Cachespeichers ist einer der wichtigsten.
 
-Mit Azure HPC Cache wird verwaltet, welche Dateien zwischengespeichert und vorab geladen werden, um die Cachetrefferraten zu maximieren. Cacheinhalte werden kontinuierlich bewertet, und seltener verwendete Dateien werden in den langfristigen Speicher verschoben. Wählen Sie eine Cachespeichergröße aus, die problemlos den aktiven Satz von Arbeitsdateien aufnehmen kann sowie Speicherplatz für Metadaten und andere Zusatzdaten bietet.
+Beachten Sie bei der Wahl eines Durchsatzwerts, dass die tatsächliche Datenübertragungsrate von der Workload, Netzwerkgeschwindigkeit und Art der Speicherziele abhängt.
 
-![Screenshot: Seite zum Festlegen der Cachegröße](media/hpc-cache-create-capacity.png)
+Die von Ihnen ausgewählten Werte bestimmen den maximalen Durchsatz für das gesamte Cachesystem, ein Teil davon wird jedoch für zusätzliche Aufgaben verwendet. Wenn ein Client beispielsweise eine Datei anfordert, die noch nicht im Cache gespeichert ist, oder wenn die Datei als veraltet markiert ist, nutzt der Cache einen Teil des Durchsatzes, um sie aus dem Back-End-Speicher abzurufen.
+
+Mit Azure HPC Cache wird verwaltet, welche Dateien zwischengespeichert und vorab geladen werden, um Cachetrefferquoten zu maximieren. Cacheinhalte werden kontinuierlich bewertet, und seltener verwendete Dateien werden in den langfristigen Speicher verschoben.
+
+Wählen Sie eine Cachespeichergröße aus, die problemlos den aktiven Satz von Arbeitsdateien aufnehmen kann sowie Speicherplatz für Metadaten und andere Zusatzdaten bietet.
+
+Durchsatz und Cachegröße beeinflussen auch, wie viele Speicherziele für einen bestimmten Cache unterstützt werden. Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, müssen Sie den höchsten verfügbaren Wert für die Cachespeichergröße wählen, der für Ihre Durchsatzgröße verfügbar ist, oder eine der schreibgeschützten Konfigurationen mit hohem Durchsatz wählen. Weitere Informationen finden Sie unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets).
+
+Wenn Sie Hilfe beim richtigen Dimensionieren Ihres Caches benötigen, wenden Sie sich an den Microsoft-Support.
+
+### <a name="choose-the-cache-type-for-your-needs"></a>Wählen des Cachetyps für Ihre Anforderungen
+
+Bei der Wahl der Cachekapazität werden Sie feststellen, dass einige Durchsatzwerte feste Cachegrößen haben, während Sie bei anderen aus mehreren Optionen für die Cachegröße auswählen können. Dies liegt daran, dass es zwei verschiedene Stile von Cacheinfrastruktur gibt:
+
+* Standardcaches: im Menü „Durchsatz“ unter **Zwischenspeichern von Lese- und Schreibvorgängen** aufgeführt
+
+  Bei Standardcaches können Sie aus mehreren Cachegrößenwerten auswählen. Diese Caches können schreibgeschützt oder für das Zwischenspeichern von Lese- und Schreibvorgängen konfiguriert werden.
+
+* Caches mit hohem Durchsatz: im Menü „Durchsatz“ unter **Schreibgeschütztes Zwischenspeichern** aufgeführt
+
+  Die Konfigurationen mit hohem Durchsatz haben festgelegte Cachegrößen, da sie mit NVME-Datenträgern vorkonfiguriert sind. Sie wurden entwickelt, um nur den Lesezugriff auf Dateien zu optimieren.
+
+![Screenshot des Menüs „Maximaler Durchsatz“ im Portal. Es gibt mehrere Größenoptionen unter der Überschrift „Zwischenspeichern von Lese- und Schreibvorgängen“ und mehrere unter der Überschrift „Schreibgeschützt“.](media/rw-ro-cache-sizing.png)
+
+In dieser Tabelle werden einige wichtige Unterschiede zwischen den beiden Optionen erläutert.
+
+| Attribut | Cachetarif „Standard“ | Cache mit hohem Durchsatz |
+|--|--|--|
+| Menükategorie „Durchsatz“ |„Zwischenspeichern von Lese- und Schreibvorgängen“| „Schreibgeschütztes Zwischenspeichern“|
+| Durchsatzgrößen | 2, 4 oder 8 GB/s | 4,5, 9 oder 16 GB/s |
+| Cachegrößen | 3, 6 oder 12 TB für 2 GB/s<br/> 6, 12 oder 24 TB für 4 GB/s<br/> 12, 24 oder 48 TB für 8 GB/s| 21 TB für 4,5 GB/s <br/> 42 TB für 9 GB/s <br/> 84 TB für 16 GB/s |
+| Maximale Anzahl von Speicherzielen | [10 oder 20](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets) je nach Auswahl der Cachegröße | 20 |
+| Kompatible Speicherzieltypen | Azure-Blob, lokaler NFS-Speicher, NFS-fähiges Blob | Lokaler NFS-Speicher <br/>NFS-fähiger Blobspeicher befindet sich für diese Kombination in der Vorschau |
+| Zwischenspeicherstile | Zwischenspeichern von Lese- oder Lese-/Schreibvorgängen | Nur Zwischenspeicherung von Lesevorgängen |
+| Der Cache kann beendet werden, um Kosten zu sparen, wenn er nicht benötigt wird | Ja | Nein |
+
+Weitere Informationen zu diesen Optionen:
+
+* [Maximale Anzahl von Speicherzielen](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)
+* [Zwischenspeichermodi für Lese- und Schreibvorgänge](cache-usage-models.md#basic-file-caching-concepts)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Aktivieren der Azure Key Vault-Verschlüsselung (optional)
-
-Die Seite **Datenträgerverschlüsselungsschlüssel** wird zwischen den Registerkarten **Cache** und **Tags** angezeigt.<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 Wenn Sie die für Ihren Cachespeicher verwendeten Verschlüsselungsschlüssel verwalten möchten, geben Sie die Azure Key Vault-Informationen auf der Seite **Datenträgerverschlüsselungsschlüssel** an. Der Schlüsseltresor muss sich in derselben Region und im selben Abonnement befinden wie der Cache.
 
 Sie können diesen Abschnitt überspringen, wenn Sie keine kundenseitig verwalteten Schlüssel benötigen. Standardmäßig verschlüsselt Azure Daten mit von Microsoft verwalteten Schlüsseln. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md).
 
 > [!NOTE]
->
-> * Nach dem Erstellen des Caches können Sie nicht mehr zwischen von Microsoft und von Kunden verwalteten Schlüsseln wechseln.
-> * Nachdem der Cache erstellt wurde, müssen Sie ihn für den Zugriff auf den Schlüsseltresor autorisieren. Klicken Sie auf der Seite **Übersicht** des Caches auf die Schaltfläche **Verschlüsselung aktivieren**, um die Verschlüsselung zu aktivieren. Führen Sie diesen Schritt innerhalb von 90 Minuten nach dem Erstellen des Caches aus.
-> * Cachedatenträger werden nach dieser Autorisierung erstellt. Dies bedeutet, dass die anfängliche Cacheerstellungszeit kurz ist, der Cache jedoch für mindestens zehn Minuten nach der Autorisierung des Zugriffs noch nicht verwendet werden kann.
+> Nach dem Erstellen des Caches können Sie nicht mehr zwischen von Microsoft und von Kunden verwalteten Schlüsseln wechseln.
 
 Eine ausführliche Erläuterung des Verschlüsselungsverfahrens mit kundenseitig verwalteten Schlüsseln finden Sie unter [Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache](customer-keys.md).
 
-![Screenshot der Seite „Verschlüsselungsschlüssel“ mit ausgewählter Option „Vom Kunden verwaltet“ und erkennbaren Feldern des Schlüsseltresors](media/create-encryption.png)
+![Screenshot der Seite „Verschlüsselungsschlüssel“ mit ausgewählter Option „Kundenseitig verwaltet“ und den Konfigurationsformularen „Kundenschlüsseleinstellungen“ und „Verwaltete Identitäten“.](media/create-encryption.png)
 
 Wählen Sie **Vom Kunden verwaltet** aus, um die Verschlüsselung mit kundenseitig verwalteten Schlüsseln auszuwählen. Die Felder für die Angabe des Schlüsseltresors werden angezeigt. Wählen Sie die zu verwendende Azure Key Vault-Instanz und dann den Schlüssel und die Version für diesen Cache aus. Bei dem Schlüssel muss es sich um einen 2.048-Bit-RSA-Schlüssel handeln. Auf dieser Seite können Sie einen Schlüsseltresor, einen Schlüssel oder eine Schlüsselversion neu erstellen.
 
-Nach dem Erstellen des Caches müssen Sie ihn für die Verwendung des Key Vault-Diensts autorisieren. Weitere Informationen finden Sie unter [Autorisieren der Verschlüsselung mit Azure Key Vault aus dem Cache](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache).
+Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview) wünschen.
+
+Wenn Sie eine bestimmte verwaltete Identität für diesen Cache verwenden möchten, konfigurieren Sie sie im Abschnitt **Verwaltete Identitäten**. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+
+> [!NOTE]
+> Nach Erstellung des Caches können Sie die zugewiesene Identität nicht mehr ändern.
+
+Wenn Sie eine systemseitig zugewiesene oder vom Benutzer zugewiesene Identität verwenden, die noch keinen Zugriff auf Ihren Schlüsseltresor hat, müssen Sie nach Erstellen des Caches einen zusätzlichen Schritt ausführen. In diesem manuellen Schritt wird die verwaltete Identität des Caches für die Verwendung des Schlüsseltresors autorisiert.
+
+* Lesen Sie [Auswählen einer Option für verwaltete Identitäten für den Cache](customer-keys.md#choose-a-managed-identity-option-for-the-cache), um die Unterschiede in den Einstellungen der verwalteten Identität zu verstehen.
+* Weitere Informationen finden Sie unter [Autorisieren der Verschlüsselung mit Azure Key Vault aus dem Cache](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed).
 
 ## <a name="add-resource-tags-optional"></a>Hinzufügen von Ressourcentags (optional)
 
@@ -100,7 +143,7 @@ Wenn die Erstellung abgeschlossen ist, wird eine Benachrichtigung mit einem Link
 ![Screenshot: Azure HPC Cache-Instanz im Azure-Portal](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> Wenn für Ihren Cache kundenseitig verwaltete Verschlüsselungsschlüssel verwendet werden, wird der Cache möglicherweise in der Ressourcenliste aufgeführt, bevor der Bereitstellungsstatus in „Fertig“ geändert wird. Sobald der Status des Caches **Warten auf Schlüssel** lautet, können Sie ihn für die Verwendung des Schlüsseltresors [autorisieren](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache).
+> Wenn für Ihren Cache kundenseitig verwaltete Verschlüsselungsschlüssel verwendet werden und nach der Erstellung ein manuelle Autorisierungsschritt erforderlich ist, wird der Cache möglicherweise in der Ressourcenliste aufgeführt, bevor der Bereitstellungsstatus in „Fertig“ geändert wird. Sobald der Status des Caches **Warten auf Schlüssel** lautet, können Sie ihn für die Verwendung des Schlüsseltresors [autorisieren](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed).
 
 ## <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -120,8 +163,7 @@ Geben Sie die folgenden Werte an:
 * Azure-Region
 * Cachesubnetz im folgenden Format:
 
-  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"``
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"``
 
   Das Cachesubnetz benötigt mindestens 64 IP-Adressen (/24) und kann keine anderen Ressourcen hosten.
 
@@ -137,9 +179,9 @@ nets/<cache_subnet_name>"``
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
   | 3\.072 GB    | ja         | Nein          | nein          |
-  | 6144 GB    | ja         | ja         | nein          |
-  | 12288 GB   | ja         | ja         | ja         |
-  | 24576 GB   | nein          | ja         | ja         |
+  | 6144 GB    | ja         | Ja         | nein          |
+  | 12288 GB   | ja         | Ja         | ja         |
+  | 24576 GB   | nein          | Ja         | ja         |
   | 49152 GB   | nein          | Nein          | ja         |
 
   Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, wählen Sie den höchsten verfügbaren Wert für die Cachegröße für Ihre SKU aus. Diese Konfigurationen unterstützen bis zu 20 Speicherziele.
@@ -225,8 +267,7 @@ Geben Sie die folgenden Werte an:
 * Azure-Region
 * Cachesubnetz im folgenden Format:
 
-  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"`
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"`
 
   Das Cachesubnetz benötigt mindestens 64 IP-Adressen (/24) und kann keine anderen Ressourcen hosten.
 
@@ -242,9 +283,9 @@ nets/<cache_subnet_name>"`
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
   | 3\.072 GB    | ja         | Nein          | nein          |
-  | 6144 GB    | ja         | ja         | nein          |
-  | 12.288 GB   | ja         | ja         | ja         |
-  | 24.576 GB   | nein          | ja         | ja         |
+  | 6144 GB    | ja         | Ja         | nein          |
+  | 12.288 GB   | ja         | Ja         | ja         |
+  | 24.576 GB   | nein          | Ja         | ja         |
   | 49.152 GB   | nein          | Nein          | ja         |
 
   Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
@@ -293,4 +334,4 @@ Die Meldung enthält einige nützliche Informationen, u. a. folgende:
 Nachdem der Cache in der Liste **Ressourcen** aufgeführt wird, können Sie mit dem nächsten Schritt fortfahren.
 
 * [Definieren Sie Speicherziele](hpc-cache-add-storage.md), um dem Cache Zugriff auf Ihre Datenquellen zu gewähren.
-* Wenn Sie kundenseitig verwaltete Verschlüsselungsschlüssel verwenden, müssen Sie auf der Übersichtsseite des Caches die [Azure Key Vault-Verschlüsselung autorisieren](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache), um das Cachesetup abzuschließen. Diesen Schritt müssen Sie ausführen, damit Sie anschließend Speicher hinzufügen können. Details finden Sie unter [Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln](customer-keys.md).
+* Wenn Sie kundenseitig verwaltete Verschlüsselungsschlüssel verwenden und die [Azure Key Vault-Verschlüsselung](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed) auf der Übersichtsseite des Caches autorisieren müssen, um die Einrichtung des Caches abzuschließen, folgen Sie den Anweisungen unter [Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln](customer-keys.md). Diesen Schritt müssen Sie ausführen, damit Sie anschließend Speicher hinzufügen können.

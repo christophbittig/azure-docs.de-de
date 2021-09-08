@@ -41,7 +41,7 @@
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Lizenzverwaltung
       href: isv-app-license.md
-    - name: Private Angebote
+    - name: Private Pläne
       href: private-plans.md
     - name: Pläne und Preise
       href: plans-pricing.md
@@ -341,6 +341,10 @@
               href: power-bi-app-technical-configuration.md
             - name: Ergänzender Inhalt
               href: power-bi-app-supplemental-content.md
+    - name: "Angebote für Power\_BI-Visuals"
+      items:
+        - name: Häufig gestellte Fragen zur Migration zu Partner Center
+          href: power-bi-visual-faq.yml
     - name: SaaS-Angebote
       items:
         - name: Planen des Angebots

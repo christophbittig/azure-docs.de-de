@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 007424969672167d7ca81b2130cda8e0a5da8000
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8630451fe4ff8b3468b5c31168a417a72e8769f3
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539404"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386280"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrieren von Azure-Diensten mit virtuellen Netzwerken zur Netzwerkisolation
 
@@ -97,6 +97,9 @@ Weitere Informationen zu Diensttags und Azure-Diensten, die diese unterstützen,
 
 ## <a name="compare-private-endpoints-and-service-endpoints"></a>Private Endpunkte und VNet-Dienstendpunkte im Vergleich
 
+>[!NOTE]
+> Microsoft empfiehlt die Verwendung von Azure Private Link. Private Link bietet bessere Möglichkeiten im Hinblick auf den privaten Zugriff auf PaaS aus dem lokalen Netzwerk, integrierten Schutz vor Datenexfiltration und eine Zuordnung zwischen dem Dienst und der privaten IP-Adresse in Ihrem eigenen Netzwerk. Weitere Informationen hierzu finden Sie unter [Azure Private Link](../private-link/private-link-overview.md).
+
 Anstatt nur die Unterschiede zu betrachten, sollte beachtet werden, dass Dienstendpunkte und private Endpunkte gemeinsame Merkmale aufweisen.
 
 Beide Features werden für eine präzisere Steuerung der Firewall auf dem Zieldienst verwendet. Beispielsweise das Einschränken des Zugriffs auf SQL Server Datenbanken oder Speicherkonten. Wie in den Abschnitten oben ausgeführt wurde, unterscheidet sich dieser Vorgang jedoch bei den beiden Endpunktarten.
@@ -105,12 +108,17 @@ Beide Ansätze lösen das Problem der [Portauslastung bei der Quellnetzwerk-Adre
 
 In beiden Fällen können Sie dennoch sicherstellen, dass der Datenverkehr zum Zieldienst über eine Netzwerkfirewall oder ein NVA verläuft. Dieser Prozess unterscheidet sich bei den beiden Ansätzen. Wenn Sie Dienstendpunkte verwenden, sollten Sie den Dienstendpunkt im **Firewallsubnetz** konfigurieren und nicht im Subnetz, in dem der Quelldienst bereitgestellt wird. Wenn Sie private Endpunkte verwenden, legen Sie eine benutzerdefinierte Route (User Defined Route, UDR) für die IP-Adresse des privaten Endpunkts im **Quellsubnetz** an. Nicht im Subnetz des privaten Endpunkts.
 
+Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle.
+
 | Aspekt                                                                                                                                    | Dienstendpunkte                                                                                                           | Private Endpunkte                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Anwendungsbereich der Konfiguration                                                                                                   | Gesamter Dienst (z. B. _alle_ SQL Server oder Speicherkonten _aller_ Kunden)                                      | Einzelne Instanz (z. B. eine bestimmte SQL Server-Instanz oder ein Speicherkonto, das _Sie_ besitzen)                                                                    |
+| Dienstumfang, auf dessen Ebene die Konfiguration gilt                                                                                                   | Gesamter Dienst (z. B. _alle_ SQL Server oder Speicherkonten _aller_ Kunden)                                      | Einzelne Instanz (z. B. eine bestimmte SQL Server-Instanz oder ein Speicherkonto, das _Sie_ besitzen)                                                                    |
+|Integrierter Schutz vor Datenexfiltration: Möglichkeit des Verschiebens/ Kopierens von Daten aus einer geschützten PaaS-Ressource in eine andere ungeschützte PaaS-Ressource durch böswillige Insider| Nein | Ja|
+|Privater Zugriff auf PaaS-Ressource in der lokalen Umgebung| Nein| Ja|
+|Für Dienstzugriff erforderliche NSG-Konfiguration| Ja (mit Diensttags)| Nein|
+| Der Dienst kann ohne öffentliche IP-Adresse erreicht werden.                                                                                       | Nein                                                                                                                          | Ja                                                                                                                                                               |
 | Azure-zu-Azure-Datenverkehr verbleibt im Azure-Backbonenetzwerk.                                                                                       | Ja                                                                                                                         | Ja                                                                                                                                                               |
 | Der Dienst kann seine öffentliche IP-Adresse deaktivieren.                                                                                                        | Nein                                                                                                                          | Ja                                                                                                                                                               |
-| Der Dienst kann ohne öffentliche IP-Adresse erreicht werden.                                                                                       | Nein                                                                                                                          | Ja                                                                                                                                                               |
 | Sie können Datenverkehr aus einem Azure Virtual Network leicht einschränken.                                                                             | Ja (Zugriff aus bestimmten Subnetzen zulassen oder NSGs verwenden)                                                                   | Nein*                                                                                                                                                               |
 | Sie können von lokalen Umgebungen (VPN/ExpressRoute) kommenden Datenverkehr einfach einschränken.                                                                           | Nicht verfügbar                                                                                                                       | Nein*                                                                                                                                                               |
 | Erfordert DNS-Änderungen                                                                                                                             | Nein                                                                                                                          | Ja (siehe [DNS-Konfiguration](../private-link/private-endpoint-dns.md))                                                                 |

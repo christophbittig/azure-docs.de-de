@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2021
-ms.openlocfilehash: 348cd594ae515503c870c1b96eb64aa7117ea26b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/7/2021
+ms.openlocfilehash: 92361142fa2ac7758b16e26faa5e5df8f1da9bf6
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786752"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113506869"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Blobspeicher- und Azure Data Lake Gen2-Ausgabe von Azure Stream Analytics
 
@@ -67,5 +67,5 @@ Die maximale Nachrichtengröße finden Sie unter [Grenzwerte für Azure Storage]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwendung von verwalteten Identitäten (Vorschau) zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage](blob-output-managed-identity.md)
+* [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für Azure Blob Storage](blob-output-managed-identity.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md)

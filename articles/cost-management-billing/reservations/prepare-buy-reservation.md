@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 3445ca559dc54e693912e1d796caeb1f940ab23e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474889"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231483"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -37,7 +37,7 @@ Ihnen stehen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bere
 
 - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
 - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
-- **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an.
+- **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Wenn ein Abonnement in einen anderen Abrechnungskontext verschoben wurde, wird der Vorteil nicht mehr auf dieses Abonnement angewendet und gilt weiterhin für andere Abonnements im Abrechnungskontext.
     - Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Der Reservierungsbereich für die gemeinsame Nutzung umfasst mehrere Active Directory-Mandanten in einer Registrierung.
     - Für Microsoft-Kundenvereinbarung-Kunden ist der Abrechnungsbereich das Abrechnungsprofil.
     - Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.

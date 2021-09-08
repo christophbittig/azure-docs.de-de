@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 6289a142e98b347f3295b8961ee1518ce8499eb4
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/09/2021
+ms.openlocfilehash: 7c4a2958f8629b224cecf1e92fd0efcff6b1fdd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539474"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350596"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -32,6 +32,218 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 >
 > Und auch Sie selbst können sich beteiligen! Werden Sie Teil der [GitHub-Community für Azure Sentinel-Bedrohungsspezialisten](https://github.com/Azure/Azure-Sentinel/wiki).
 >
+
+## <a name="august-2021"></a>August 2021
+
+- [Erweiterte Incidentsuche (öffentliche Vorschau)](#advanced-incident-search-public-preview)
+- [Fusion-Erkennung für Ransomware (öffentliche Vorschau)](#fusion-detection-for-ransomware-public-preview)
+- [Watchlistvorlagen für UEBA-Daten](#watchlist-templates-for-ueba-data-public-preview)
+- [Schema zur Dateiereignisnormalisierung (öffentliche Vorschau)](#file-event-normalization-schema-public-preview)
+- [Neues in der Dokumentation: Anleitung für bewährte Methoden](#new-in-docs-best-practice-guidance)
+
+### <a name="advanced-incident-search-public-preview"></a>Erweiterte Incidentsuche (öffentliche Vorschau)
+
+Standardmäßig werden Incidentsuchvorgänge nur für die Werte **Incident-ID**, **Titel**, **Tags**, **Besitzer** und **Produktname** ausgeführt. Azure Sentinel bietet jetzt [erweiterte Suchoptionen](investigate-cases.md#search-for-incidents) für die Suche in größeren Datenmengen, einschließlich Warnungsdetails, Beschreibungen, Entitäten, Taktiken und mehr.
+
+Zum Beispiel:
+
+:::image type="content" source="media/tutorial-investigate-cases/advanced-search.png" alt-text="Screenshot der Seite „Incidents“ mit erweiterten Suchoptionen":::
+
+Weitere Informationen finden Sie unter [Suchen nach Incidents](investigate-cases.md#search-for-incidents).
+
+### <a name="fusion-detection-for-ransomware-public-preview"></a>Fusion-Erkennung für Ransomware (öffentliche Vorschau)
+
+Azure Sentinel bietet jetzt neue Fusion-Erkennungen für mögliche Ransomware-Aktivitäten und generiert Incidents mit dem Titel **Mehrere Warnungen möglicherweise im Zusammenhang mit erkannter Ransomware-Aktivität**.
+
+Incidents werden für Warnungen generiert, die möglicherweise mit Ransomware-Aktivitäten in Verbindung stehen, wenn sie innerhalb eines bestimmten Zeitrahmens auftreten und den Ausführungs- und Verteidigungsumgehungsphasen eines Angriffs zugeordnet sind. Anhand der im Incident aufgeführten Warnungen können Sie die Techniken analysieren, die Angreifer möglicherweise einsetzen, um einen Host bzw. ein Gerät zu gefährden und die Erkennung zu umgehen.
+
+Zu den unterstützten Datenkonnektoren gehören:
+
+- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
+- [Microsoft Defender für den Endpunkt](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel-Regeln für geplante Analysen](detect-threats-built-in.md#scheduled)
+
+Weitere Informationen finden Sie unter [Mehrere Warnungen möglicherweise im Zusammenhang mit erkannter Ransomware-Aktivität](fusion.md#multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview).
+
+### <a name="watchlist-templates-for-ueba-data-public-preview"></a>Watchlistvorlagen für UEBA-Daten (öffentliche Vorschau)
+
+Azure Sentinel bietet jetzt integrierte Watchlistvorlagen für UEBA-Daten, die Sie an Ihre Umgebung anpassen und bei Untersuchungen verwenden können.
+
+Nachdem die UEBA-Watchlists mit Daten gefüllt wurden, können Sie diese Daten mit Analyseregeln korrelieren, sie auf den Entitätsseiten und Untersuchungsdiagrammen als Erkenntnisse anzeigen, benutzerdefinierte Verwendungen erstellen, z. B. zum Nachverfolgen von VIP- oder sensiblen Benutzern und mehr.
+
+Watchlistvorlagen umfassen derzeit Folgendes:
+
+- **VIP-Benutzer** Eine Liste der Benutzerkonten der Mitarbeiter, die einen hohen Einflusswert in der Organisation haben
+- **Ausgeschiedene Mitarbeiter** Eine Liste der Benutzerkonten der Mitarbeitern, die ausgeschieden sind oder demnächst ausscheiden
+- **Dienstkonten** Eine Liste der Dienstkonten und deren Besitzer
+- **Identitätskorrelation** Eine Liste verknüpfter Benutzerkonten, die der gleichen Person gehören
+- **Anlagen mit hohem Wert** Eine Liste von Geräten, Ressourcen oder anderen Anlagen, die für die Organisation von großem Wert sind
+- **Netzwerkzuordnung** Eine Liste der IP-Subnetze und ihrer jeweiligen Organisationskontexte
+
+Weitere Informationen finden Sie unter [Erstellen einer neuen Watchlist mithilfe einer Vorlage](watchlists.md#create-a-new-watchlist-using-a-template-public-preview) und [Integrierte Watchlistschemas](watchlist-schemas.md).
+
+
+
+### <a name="file-event-normalization-schema-public-preview"></a>Schema zur Dateiereignisnormalisierung (öffentliche Vorschau)
+
+Das Azure Sentinel Information Model (ASIM) unterstützt jetzt ein Schema zur Dateiereignisnormalisierung, das zum Beschreiben von Dateiaktivitäten wie das Erstellen, Ändern oder Löschen von Dateien oder Dokumenten verwendet wird. Dateiereignisse werden von Betriebssystemen, Dateispeichersystemen wie Azure Files und Dokumentenverwaltungssystemen wie Microsoft SharePoint gemeldet.
+
+Weitere Informationen finden Sie unter:
+
+- [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (öffentliche Vorschau)](file-event-normalization-schema.md)
+- [Normalisierung und das Azure Sentinel-Informationsmodell (ASIM)](normalization.md)
+
+
+### <a name="new-in-docs-best-practice-guidance"></a>Neues in der Dokumentation: Anleitung für bewährte Methoden
+
+Auf vielfachen Wunsch von Kunden und unseren Supportteams haben wir unserer Dokumentation eine Reihe von Anleitungen für bewährte Methoden hinzugefügt.
+
+Weitere Informationen finden Sie unter:
+
+- [Voraussetzungen für die Bereitstellung von Azure Sentinel](prerequisites.md)
+- [Bewährte Methoden für Azure Sentinel](best-practices.md)
+- [Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur](best-practices-workspace-architecture.md)
+- [Entwerfen der Azure Sentinel-Arbeitsbereichsarchitektur](design-your-workspace-architecture.md)
+- [Beispiele für Azure Sentinel-Arbeitsbereichsentwürfe](sample-workspace-designs.md)
+- [Bewährte Methoden für die Datensammlung](best-practices-data.md)
+
+> [!TIP]
+> Weitere der Dokumentation hinzugefügte Anleitungen finden Sie in den entsprechenden konzeptionellen Artikeln und Schrittanleitungen. Weitere Informationen finden Sie unter [Zusätzliche Referenzen für bewährte Methoden](best-practices.md#additional-best-practice-references).
+>
+
+## <a name="july-2021"></a>Juli 2021
+
+- [Microsoft Threat Intelligence Matching Analytics (öffentliche Vorschau)](#microsoft-threat-intelligence-matching-analytics-public-preview)
+- [Verwenden von Azure AD-Daten mit der Azure Sentinel IdentityInfo-Tabelle (öffentliche Vorschau)](#use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview)
+- [Anreichern von Entitäten mit Geolocationdaten über die API (öffentliche Vorschau)](#enrich-entities-with-geolocation-data-via-api-public-preview)
+- [Unterstützung für ressourcenübergreifende ADX-Abfragen (öffentliche Vorschau)](#support-for-adx-cross-resource-queries-public-preview)
+- [Watchlists sind allgemein verfügbar](#watchlists-are-in-general-availability)
+- [Unterstützung für Datenresidenz in mehr geografischen Standorten](#support-for-data-residency-in-more-geos)
+- [Bidirektionale Synchronisierung in Azure Defender Connector (öffentliche Vorschau)](#bidirectional-sync-in-azure-defender-connector-public-preview)
+
+
+### <a name="microsoft-threat-intelligence-matching-analytics-public-preview"></a>Microsoft Threat Intelligence Matching Analytics (öffentliche Vorschau)
+
+Azure Sentinel bietet jetzt die integrierte **Microsoft Threat Intelligence-Abgleichsanalyse**-Regel, die von Microsoft generierte Threat Intelligence-Daten mit Ihren Protokollen abgleicht. Diese Regel generiert Warnungen und Incidents mit hoher Genauigkeit mit entsprechenden Schweregraden basierend auf dem Kontext der erkannten Protokolle. Wenn eine Übereinstimmung gefunden wird, wird der Indikator auch in Ihrem Threat Intelligence-Repository in Azure Sentinel veröffentlicht.
+
+Die Regel **Microsoft Threat Intelligence-Abgleichsanalyse** gleicht derzeit Domänenindikatoren mit den folgenden Protokollquellen ab:
+
+- [CEF](connect-common-event-format.md)
+- [DNS](connect-dns.md)
+- [Syslog](connect-syslog.md)
+
+Weitere Informationen finden Sie unter [Erkennen von Bedrohungen mithilfe von Abgleichsanalysen (öffentliche Vorschau)](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview).
+
+### <a name="use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview"></a>Verwenden von Azure AD-Daten mit der Azure Sentinel IdentityInfo-Tabelle (öffentliche Vorschau)
+
+Da Angreifer häufig die eigenen Benutzer- und Dienstkonten der Organisation verwenden, sind Daten über diese Benutzerkonten wie etwa Benutzeridentifikation und Berechtigungen für die Analysten bei der Untersuchung von entscheidender Bedeutung.
+
+Nachdem Sie [UEBA](enable-entity-behavior-analytics.md) in Ihrem Azure Sentinel-Arbeitsbereich aktiviert haben, werden Azure AD-Daten auch mit der neuen **IdentityInfo**-Tabelle in Log Analytics synchronisiert. Bei Synchronisierungen zwischen Azure AD und der **IdentityInfo**-Tabelle wird eine Momentaufnahme Ihrer Benutzerprofildaten erstellt. Diese umfassen Benutzermetadaten, Gruppeninformationen und Azure AD-Rollen, die den einzelnen Benutzern zugewiesen sind.
+
+Verwenden Sie die **IdentityInfo**-Tabelle während Untersuchungen und bei der Feinabstimmung von Analyseregeln für Ihre Organisation, um falsch positive Ergebnisse zu reduzieren.
+
+Weitere Informationen finden Sie in der Referenz zu UEBA-Anreicherungen unter [Tabelle „IdentityInfo“](ueba-enrichments.md#identityinfo-table-public-preview) und [Verwenden von UEBA-Daten zum Analysieren falsch positiver Ergebnisse](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives).
+
+### <a name="enrich-entities-with-geolocation-data-via-api-public-preview"></a>Anreichern von Entitäten mit Geolocationdaten über die API (öffentliche Vorschau)
+
+Azure Sentinel bietet jetzt eine API zum Anreichern Ihrer Daten mit Geolocationinformationen. Die Geolocationdaten können dann zur Analyse und Untersuchung von Sicherheitsincidents verwendet werden.
+
+Weitere Informationen finden Sie unter [Anreichern von Entitäten in Azure Sentinel mit Geolocationdaten über die REST-API (öffentliche Vorschau)](geolocation-data-api.md) und [Klassifizieren und Analysieren von Daten mithilfe von Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).
+
+
+### <a name="support-for-adx-cross-resource-queries-public-preview"></a>Unterstützung für ressourcenübergreifende ADX-Abfragen (öffentliche Vorschau)
+
+Die Hunting-Benutzeroberfläche in Azure Sentinel unterstützt jetzt [ressourcenübergreifende ADX-Abfragen](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer).
+ 
+Obwohl Log Analytics der primäre Datenspeicherort für die Analyse mit Azure Sentinel bleibt, gibt es Fälle, in denen aufgrund von Kosten, Aufbewahrungszeiträumen oder anderen Faktoren ADX zum Speichern von Daten erforderlich ist. Mit dieser Funktion können Kunden einen größeren Satz von Daten durchsuchen und die Ergebnisse auf der [Hunting-Benutzeroberfläche in Azure Sentinel](hunting.md) anzeigen, einschließlich Hunting- und [Livestream](livestream.md)-Abfragen und der Log Analytics-Suchseite.
+
+Verwenden Sie zum Abfragen von in ADX-Clustern gespeicherten Daten die Adx()-Funktion, um den ADX-Cluster, den Datenbanknamen und die gewünschte Tabelle anzugeben. Anschließend können Sie die Ausgabe wie jede andere Tabelle abfragen. Weitere Informationen finden Sie auf den oben verlinkten Seiten.
+
+
+
+
+### <a name="watchlists-are-in-general-availability"></a>Watchlists sind allgemein verfügbar
+
+Die [Watchlists](watchlists.md)-Funktion ist jetzt allgemein verfügbar. Verwenden Sie Watchlists zum Anreichern von Warnungen mit Geschäftsdaten, um Zulässigkeits- oder Blocklisten zu erstellen, anhand derer Zugriffsereignisse überprüft werden können, und um die Untersuchung von Bedrohungen zu unterstützen und die Anzahl der Warnmeldungen zu reduzieren.
+
+### <a name="support-for-data-residency-in-more-geos"></a>Unterstützung für Datenresidenz in mehr geografischen Standorten
+
+Azure Sentinel unterstützt jetzt die vollständige Datenresidenz in den folgenden zusätzlichen geografischen Standorten:
+
+Brasilien, Norwegen, Südafrika, Südkorea, Deutschland, Vereinigte Arabische Emirate und Schweiz.
+
+Die vollständige Liste der unterstützten geografischen Standorte finden Sie in [diesem Artikel](quickstart-onboard.md#geographical-availability-and-data-residency).
+
+### <a name="bidirectional-sync-in-azure-defender-connector-public-preview"></a>Bidirektionale Synchronisierung in Azure Defender Connector (öffentliche Vorschau)
+
+Der Azure Defender Connector unterstützt jetzt die bidirektionale Synchronisierung des Warnungsstatus zwischen Defender und Azure Sentinel. Wenn Sie einen Sentinel-Incident schließen, der eine Defender-Warnung enthält, wird die Warnung automatisch auch im Defender-Portal geschlossen.
+
+Eine vollständige Beschreibung des aktualisierten Azure Defender Connectors [finden Sie hier](connect-azure-security-center.md).
+
+## <a name="june-2021"></a>Juni 2021
+
+- [Upgrades für die Normalisierung und das Azure Sentinel-Informationsmodell (ASIM)](#upgrades-for-normalization-and-the-azure-sentinel-information-model)
+- [Aktualisierte Dienst-zu-Dienst-Connectors](#updated-service-to-service-connectors)
+- [Exportieren und Importieren von Analyseregeln (öffentliche Vorschau)](#export-and-import-analytics-rules-public-preview)
+- [Warnungsanreicherung: Warnungsdetails (öffentliche Vorschau)](#alert-enrichment-alert-details-public-preview)
+- [Weitere Hilfe zu Playbooks!](#more-help-for-playbooks)
+- [Neuorganisation der Dokumentation](#new-documentation-reorganization)
+
+### <a name="upgrades-for-normalization-and-the-azure-sentinel-information-model"></a>Upgrades für die Normalisierung und das Azure Sentinel-Informationsmodell (ASIM)
+
+Mit dem Azure Sentinel-Informationsmodell können Sie quellenunabhängige Inhalte verwenden und erstellen, um die Analyse der Daten in Ihrem Azure Sentinel-Arbeitsbereich zu vereinfachen.
+
+In diesem Monat haben wir unsere Normalisierungsdokumentation verbessert und um neue Detailebenen und vollständige DNS-, Prozessereignis- und Authentifizierungsnormalisierungsschemas erweitert.
+
+Weitere Informationen finden Sie unter:
+
+- [Normalisierung und das Azure Sentinel-Informationsmodell (ASIM)](normalization.md) (aktualisiert)
+- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (öffentliche Vorschau)](authentication-normalization-schema.md) (neu!)
+- [Azure Sentinel: Schemareferenz zur Datennormalisierung](normalization-schema.md)
+- [Referenz zum DNS-Normalisierungsschema von Azure Sentinel (öffentliche Vorschau)](dns-normalization-schema.md) (neu!)
+- [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (öffentliche Vorschau)](process-events-normalization-schema.md) (neu!)
+- [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (öffentliche Vorschau)](registry-event-normalization-schema.md) (neu!)
+
+
+### <a name="updated-service-to-service-connectors"></a>Aktualisierte Dienst-zu-Dienst-Connectors
+
+Zwei unserer am häufigsten verwendeten Connectors wurden umfassend überarbeitet.
+
+- Der [Windows Connector für Sicherheitsereignisse (öffentliche Vorschau)](connect-windows-security-events.md) basiert jetzt auf dem neuen Azure Monitor-Agent (AMA), der Ihnen weitaus mehr Flexibilität bei der Auswahl der zu erfassenden Daten bietet und Ihnen maximale Transparenz zu minimalen Kosten ermöglicht.
+
+- Der [Connector für Azure-Aktivitätsprotokolle](connect-azure-activity.md) basiert jetzt auf der Diagnoseeinstellungspipeline, sodass Sie vollständigere Daten, eine deutlich geringere Verzögerung bei der Erfassung und eine bessere Leistung und Zuverlässigkeit erhalten.
+
+Die Upgrades erfolgen nicht automatisch. Benutzern dieser Connectors wird empfohlen, die neuen Versionen zu aktivieren.
+
+### <a name="export-and-import-analytics-rules-public-preview"></a>Exportieren und Importieren von Analyseregeln (öffentliche Vorschau)
+
+Sie können Ihre Analyseregeln jetzt in ARM-Vorlagendateien (Azure Resource Manager) im JSON-Format exportieren und Regeln aus diesen Dateien importieren, um Ihre Azure Sentinel-Bereitstellungen in Form von Code zu verwalten und zu steuern. Alle Arten von [Analyseregel](detect-threats-built-in.md) – nicht nur **geplante Regeln** können in eine ARM-Vorlage exportiert werden. Die Vorlagendatei enthält alle Informationen der Regel, von der Abfrage bis zu den zugewiesenen MITRE ATT&CK-Taktiken.
+
+Weitere Informationen finden Sie unter [Exportieren und Importieren von Analyseregeln in und aus ARM-Vorlagen](import-export-analytics-rules.md).
+
+### <a name="alert-enrichment-alert-details-public-preview"></a>Warnungsanreicherung: Warnungsdetails (öffentliche Vorschau)
+
+Sie können nicht nur den Inhalt Ihrer Warnungen mit Entitätszuordnung und benutzerdefinierten Details anreichern, sondern auch die Art und Weise anpassen, wie Warnmeldungen – und damit auch Incidents – basierend auf ihrem jeweiligen Inhalt präsentiert und angezeigt werden. Wie bei den anderen Funktionen zur Warnungsanreicherung ist dies im [Analyseregel-Assistenten](detect-threats-custom.md) konfigurierbar.
+
+Weitere Informationen finden Sie unter [Anpassen von Warnungsdetails in Azure Sentinel](customize-alert-details.md).
+
+
+### <a name="more-help-for-playbooks"></a>Weitere Hilfe zu Playbooks!
+
+Zwei neue Dokumente erleichtern Ihnen den Einstieg in die Erstellung und Verwendung von Playbooks.
+- Unter [Authentifizieren von Playbooks für Azure Sentinel](authenticate-playbooks-to-sentinel.md) erfahren Sie, mit welchen verschiedenen Authentifizierungsmethoden Logic Apps-basierte Playbooks eine Verbindung zu Azure Sentinel herstellen und auf Informationen in Azure Sentinel zugreifen können und in welchen Fällen die Verwendung der jeweiligen Methode sinnvoll ist.
+- Unter [Verwenden von Triggern und Aktionen in Playbooks](playbook-triggers-actions.md) wird der Unterschied zwischen dem **Incidenttrigger** und dem **Warnungstrigger** erläutert und beschrieben, welche Trigger wann zu verwenden sind. Außerdem werden einige Aktionen erläutert, die Sie als Reaktion auf Incidents in Playbooks ausführen können, einschließlich des Zugriffs auf die Informationen in [benutzerdefinierten Details](playbook-triggers-actions.md#work-with-custom-details).
+
+Die Playbookdokumentation thematisiert auch ausführlich das MSSP-Szenario mit mehreren Mandanten.
+
+### <a name="new-documentation-reorganization"></a>Neuorganisation der Dokumentation
+
+In diesem Monat haben wir unsere [Azure Sentinel-Dokumentation](index.yml) neu strukturiert und in intuitive Kategorien unterteilt, die sich an gängigen Customer Journeys orientieren. Verwenden Sie den Filter für die Dokumentensuche und die aktualisierte Landing Page, um durch die Azure Sentinel-Dokumente zu navigieren.
+
+:::image type="content" source="media/whats-new/new-docs.png" alt-text="Neuorganisation der Azure Sentinel-Dokumentation" lightbox="media/whats-new/new-docs.png":::
+
 
 ## <a name="may-2021"></a>Mai 2021
 
@@ -67,7 +279,7 @@ Anschließend wählen Sie Ihren Entitätstyp und die jeweiligen Details aus, die
 
 :::image type="content" source="media/whats-new/alert-grouping-details.png" alt-text="Gruppieren von Warnungen nach übereinstimmenden Entitätsdetails":::
 
-Weitere Informationen finden Sie unter [Warnungsgruppierung](tutorial-detect-threats-custom.md#alert-grouping).
+Weitere Informationen finden Sie unter [Warnungsgruppierung](detect-threats-custom.md#alert-grouping).
 
 ### <a name="azure-sentinel-solutions-public-preview"></a>Azure Sentinel-Lösungen (Public Preview)
 
@@ -87,7 +299,7 @@ Weitere Informationen finden Sie unter [Tutorial: Bereitstellen der Azure Sentin
 
 ### <a name="threat-intelligence-integrations-public-preview"></a>Threat Intelligence-Integrationen (Public Preview)
 
-Azure Sentinel bietet Ihnen verschiedene Möglichkeiten zur [Verwendung von Threat Intelligence-Feeds](import-threat-intelligence.md), damit Ihre Sicherheitsanalysten besser in der Lage sind, bekannte Bedrohungen zu erkennen und zu priorisieren.
+Azure Sentinel bietet Ihnen verschiedene Möglichkeiten zur [Verwendung von Threat Intelligence-Feeds](./understand-threat-intelligence.md), damit Ihre Sicherheitsanalysten besser in der Lage sind, bekannte Bedrohungen zu erkennen und zu priorisieren.
 
 Sie können jetzt eines von vielen neu verfügbaren Produkten der integrierten Threat Intelligence Platform (TIP) verwenden, eine Verbindung mit TAXII-Servern herstellen, um von STIX-kompatiblen Threat Intelligence-Quellen zu profitieren, und benutzerdefinierte Lösungen nutzen, die direkt mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](/graph/api/resources/tiindicator) kommunizieren können.
 
@@ -97,7 +309,7 @@ Weitere Informationen finden Sie unter [Threat Intelligence-Integration in Azure
 
 ### <a name="fusion-over-scheduled-alerts-public-preview"></a>Fusion über geplante Warnungen (Public Preview)
 
-Die Machine Learning-basierte **Fusion**-Korrelations-Engine kann jetzt mehrstufige Angriffe mithilfe von Warnungen erkennen, die von einer Reihe [geplanter Analyseregeln](tutorial-detect-threats-custom.md) in den zugehörigen Korrelationen generiert werden, zusätzlich zu den aus anderen Datenquellen importierten Warnungen.
+Die Machine Learning-basierte **Fusion**-Korrelations-Engine kann jetzt mehrstufige Angriffe mithilfe von Warnungen erkennen, die von einer Reihe [geplanter Analyseregeln](detect-threats-custom.md) in den zugehörigen Korrelationen generiert werden, zusätzlich zu den aus anderen Datenquellen importierten Warnungen.
 
 Weitere Informationen finden Sie unter [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](fusion.md).
 
@@ -159,7 +371,7 @@ Wir wissen, dass Compliance mehr als eine jährlich wiederkehrende Anforderung i
 - Umfasst über 75 Kontrollkarten, die an den TIC 3.0-Sicherheitsfunktionen ausgerichtet sind und über auswählbare GUI-Schaltflächen zur Navigation verfügen.
 - Wurde entwickelt, um die Ressourcen der Mitarbeiter durch Automatisierung, künstliche Intelligenz, Machine Learning, Erzeugung von Abfragen und Warnungen, Visualisierungen, maßgeschneiderte Empfehlungen und entsprechende Dokumentationsverweise zu erweitern.
 
-Weitere Informationen finden Sie unter [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md).
+Weitere Informationen finden Sie unter [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md).
 
 ## <a name="april-2021"></a>April 2021
 
@@ -186,7 +398,7 @@ Beispiel:
 
 :::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="Registerkarte „Zeitachse für Incidents“":::
 
-Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azure Sentinel](tutorial-investigate-cases.md).
+Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azure Sentinel](investigate-cases.md).
 
 ## <a name="march-2021"></a>März 2021
 
@@ -211,11 +423,11 @@ Wählen Sie in der Arbeitsmappe oder Arbeitsmappenvorlage die Option :::image ty
 
     Die Intervalle werden auch neu gestartet, wenn Sie die Arbeitsmappe manuell mithilfe der Schaltfläche :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **Aktualisieren** aktualisieren.
 
-Weitere Informationen finden Sie unter [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md) und in der [Azure Monitor-Dokumentation](../azure-monitor/visualize/workbooks-overview.md).
+Weitere Informationen finden Sie unter [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md) und in der [Azure Monitor-Dokumentation](../azure-monitor/visualize/workbooks-overview.md).
 
 ### <a name="new-detections-for-azure-firewall"></a>Neue Erkennungen für Azure Firewall
 
-Dem Bereich [Analysen](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) in Azure Sentinel wurden mehrere sofort einsatzbereite Erkennungen für Azure Firewall hinzugefügt. Mithilfe dieser neuen Erkennungen können Sicherheitsteams Warnungen erhalten, wenn Computer im internen Netzwerk versuchen, Internetdomänennamen oder IP-Adressen, die gemäß der Erkennungsregelabfrage bekannten IOCs (Indicators of Compromise) zugeordnet sind, abzufragen oder eine Verbindung mit ihnen herzustellen.
+Dem Bereich [Analysen](./understand-threat-intelligence.md) in Azure Sentinel wurden mehrere sofort einsatzbereite Erkennungen für Azure Firewall hinzugefügt. Mithilfe dieser neuen Erkennungen können Sicherheitsteams Warnungen erhalten, wenn Computer im internen Netzwerk versuchen, Internetdomänennamen oder IP-Adressen, die gemäß der Erkennungsregelabfrage bekannten IOCs (Indicators of Compromise) zugeordnet sind, abzufragen oder eine Verbindung mit ihnen herzustellen.
 
 Folgende neue Erkennungen sind verfügbar:
 
@@ -265,12 +477,12 @@ Wählen Sie in Ihrer Arbeitsmappe im Optionsmenü :::image type="icon" source="m
 
 :::image type="content" source="media/whats-new/print-workbook.png" alt-text="Arbeitsmappe drucken oder als PDF speichern":::
 
-Weitere Informationen finden Sie unter [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md).
+Weitere Informationen finden Sie unter [Visualisieren und Überwachen Ihrer Daten](monitor-your-data.md).
 
 ### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Speicherung von Incidentfiltern und Sortierungseinstellungen in der Sitzung (Public Preview)
 
 Ihre Filter und Sortierung für Incidents werden jetzt während Ihrer Azure Sentinel-Sitzung gespeichert, auch wenn Sie in andere Produktbereiche wechseln.
-Solange Sie sich in derselben Sitzung befinden, sind Ihre Filter und Sortierung unverändert, wenn Sie zurück zum Bereich [Incidents](tutorial-investigate-cases.md) in Azure Sentinel wechseln.
+Solange Sie sich in derselben Sitzung befinden, sind Ihre Filter und Sortierung unverändert, wenn Sie zurück zum Bereich [Incidents](investigate-cases.md) in Azure Sentinel wechseln.
 
 > [!NOTE]
 > Wenn Sie Azure Sentinel verlassen oder den Browser aktualisieren, werden die Filter und Sortierung für Incidents nicht gespeichert.
@@ -296,222 +508,6 @@ Azure Policy-basierte Connectors sind nun für die folgenden Azure-Dienste verf�
 
 Kunden können die Protokolle weiterhin manuell für bestimmte Instanzen senden, ohne die Richtlinien-Engine zu verwenden.
 
-## <a name="february-2021"></a>Februar 2021
-
-- [Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC)](#cybersecurity-maturity-model-certification-cmmc-workbook)
-- [Datenconnectors von Drittanbietern](#third-party-data-connectors)
-- [UEBA-Insights auf der Entitätsseite (Public Preview)](#ueba-insights-in-the-entity-page-public-preview)
-- [Verbesserte Incidentsuche (Public Preview)](#improved-incident-search-public-preview)
-
-### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC)
-
-Die Azure Sentinel-CMMC-Arbeitsmappe umfasst einen Mechanismus zum Anzeigen von Protokollabfragen, die auf CMMC-Steuerelemente im gesamten Microsoft-Portfolio ausgerichtet sind, einschließlich Microsoft-Sicherheitsangebote, Office 365, Teams, Intune, Windows Virtual Desktop und vieles mehr.
-
-Anhand der CMMC-Arbeitsmappe können Sicherheitsarchitekten, Techniker, Security Operations-Analysten, Manager und IT-Experten ein Situationsbewusstsein zum Sicherheitsstatus von Cloudworkloads erhalten. Außerdem gibt es Empfehlungen zum Auswählen, Entwerfen, Bereitstellen und Konfigurieren von Microsoft-Angeboten zur Anpassung an die jeweiligen CMMC-Anforderungen und -Praktiken.
-
-Auch wenn Sie nicht verpflichtet sind, CMMC einzuhalten, ist die CMMC-Arbeitsmappe nützlich für den Aufbau von Security Operations Centern, die Entwicklung von Warnungen, die Visualisierung von Bedrohungen und das Situationsbewusstsein von Workloads.
-
-Auf die CMMC-Arbeitsmappe können Sie im Azure Sentinel-Bereich **Arbeitsmappen** zugreifen. Wählen Sie **Vorlage** aus, und suchen Sie dann nach **CMMC**.
-
-:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="Aktivieren und Deaktivieren der CMMC-Arbeitsmappe" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
-
-
-Weitere Informationen finden Sie in folgenden Quellen:
-
-- [Azure Sentinel Cybersecurity Maturity Model Certification (CMMC) Workbook](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524) (Azure Sentinel-Cybersecurity Maturity Model Certification-Arbeitsmappe (CMMC))
-- [Tutorial: Visualisieren und Überwachen Ihrer Daten](tutorial-monitor-your-data.md)
-
-
-### <a name="third-party-data-connectors"></a>Datenconnectors von Drittanbietern
-
-In unserer Sammlung werden kontinuierlich Connectors von Drittanbietern integriert. Allein in den letzten zwei Monaten wurden dreißig Connectors hinzugefügt. Hier die Liste:
-
-- [Agari Phishing Defense und Brand Protection](connect-agari-phishing-defense.md)
-- [Sicherheitsrelevante Akamai-Ereignisse](connect-akamai-security-events.md)
-- [Alsid for Active Directory](connect-alsid-active-directory.md)
-- [Apache HTTP Server](connect-apache-http-server.md)
-- [Aruba ClearPass](connect-aruba-clearpass.md)
-- [Blackberry CylancePROTECT](connect-data-sources.md)
-- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
-- [Cisco Firepower eStreamer](connect-data-sources.md)
-- [Cisco Meraki](connect-cisco-meraki.md)
-- [Cisco Umbrella](connect-cisco-umbrella.md)
-- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
-- [ESET Enterprise Inspector](connect-data-sources.md)
-- [ESET Security Management Center](connect-data-sources.md)
-- [Google Workspace (ehemals G Suite)](connect-google-workspace.md)
-- [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
-- [Juniper SRX](connect-juniper-srx.md)
-- [Netskope](connect-data-sources.md)
-- [NXLog DNS Logs](connect-nxlog-dns.md)
-- [NXLog Linux Audit](connect-nxlog-linuxaudit.md)
-- [Onapsis Platform](connect-data-sources.md)
-- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
-- [Qualys Vulnerability Management Knowledge Base](connect-data-sources.md)
-- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
-- [SonicWall Firewall](connect-data-sources.md)
-- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
-- [Squid Proxy](connect-squid-proxy.md)
-- [Symantec Endpoint Protection](connect-data-sources.md)
-- [Thycotic Secret Server](connect-thycotic-secret-server.md)
-- [Trend Micro XDR](connect-data-sources.md)
-- [VMware ESXi](connect-vmware-esxi.md)
-
-### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA-Insights auf der Entitätsseite (Public Preview)
-
-Die Entitätsdetailseiten in Azure Sentinel enthalten einen [Erkenntnisbereich](identify-threats-with-entity-behavior-analytics.md#entity-insights), in dem verhaltensrelevante Erkenntnisse zu der Entität angezeigt werden, sodass Sie schnell Anomalien und Sicherheitsbedrohungen ermitteln können.
-
-Wenn Sie [UEBA aktiviert](ueba-enrichments.md) und einen Zeitraum von mindestens vier Tagen ausgewählt haben, enthält dieser Erkenntnisbereich jetzt auch die folgenden neuen Abschnitte für UEBA-Erkenntnisse:
-
-|`Section`  |BESCHREIBUNG  |
-|---------|---------|
-|**UEBA Insights** (UEBA-Erkenntnisse)     | Zusammenfassung anomaler Benutzeraktivitäten: <br>- an verschiedenen geografischen Standorten, auf Geräten und in Umgebungen<br>- in verschiedenen Zeiträumen und mit unterschiedlicher Häufigkeit – im Vergleich zum Verlauf des Benutzer <br>- im Vergleich zum Verhalten von Peers <br>- im Vergleich zum Verhalten der Organisation     |
-|**User Peers Based on Security Group Membership** (Benutzerpeers basierend auf Sicherheitsgruppenmitgliedschaft)     |   Auflistung der Peers des Benutzers basierend auf der Mitgliedschaft in Azure AD-Sicherheitsgruppen. Teams für Sicherheitsvorgänge erhalten so eine Liste anderer Benutzer mit ähnlichen Berechtigungen.  |
-|**User Access Permissions to Azure Subscription** (Benutzerzugriffsberechtigungen für Azure-Abonnement)     |     Anzeige der Zugriffsberechtigungen des Benutzers für die Azure-Abonnements, die direkt oder über Azure AD-Gruppen oder -Dienstprinzipale zugänglich sind.   |
-|**Threat Indicators Related to The User** (Bedrohungsindikatoren in Bezug auf den Benutzer)     |  Eine Sammlung bekannter Bedrohungen in Bezug auf IP-Adressen in den Aktivitäten des Benutzers. Die Bedrohungen sind nach Bedrohungsart und -familie aufgeführt und werden durch den Microsoft Threat Intelligence-Dienst angereichert.       |
-|     |         |
-
-### <a name="improved-incident-search-public-preview"></a>Verbesserte Incidentsuche (Public Preview)
-
-Die Suchfunktion für Azure Sentinel-Vorfälle wurde verbessert, sodass Sie beim Untersuchen einer spezifischen Bedrohung schneller durch Vorfälle navigieren können.
-
-Bei der Suche nach Vorfällen in Azure Sentinel können Sie nun nach folgenden Vorfallsdetails suchen:
-
-- ID
-- Titel
-- Produkt
-- Besitzer
-- Tag
-
-## <a name="january-2021"></a>Januar 2021
-
-- [Analyseregel-Assistent: Verbesserte Abfragebearbeitung (Public Preview)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
-- [PowerShell-Modul „Az.SecurityInsights“ (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
-- [SQL-Datenbank-Connector](#sql-database-connector)
-- [Dynamics 365-Connector (Public Preview)](#dynamics-365-connector-public-preview)
-- [Verbesserte Incidentkommentare](#improved-incident-comments)
-- [Dedizierte Log Analytics-Cluster](#dedicated-log-analytics-clusters)
-- [Verwaltete Identitäten für Logik-Apps](#logic-apps-managed-identities)
-- [Verbesserte Regeloptimierung mit den Vorschaudiagrammen für Analyseregeln](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
-
-
-### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analyseregel-Assistent: Verbesserte Abfragebearbeitung (Public Preview)
-
-Der Azure Sentinel-Assistent für geplante Analyseregeln bietet nun die folgenden Verbesserungen für das Erstellen und Bearbeiten von Abfragen:
-
--   Ein erweiterbares Bearbeitungsfenster mit mehr Platz zum Anzeigen Ihrer Abfrage auf dem Bildschirm
--   Hervorhebung von Schlüsselwörtern im Abfragecode
--   Erweiterte Unterstützung für AutoVervollständigen
--   Validierung von Echtzeitabfragen Fehler in Abfragen werden nun auf der Scrollleiste als roter Block und im Registerkartennamen **Regellogik festlegen** als roter Punkt angezeigt. Außerdem kann eine Abfrage mit Fehlern nicht gespeichert werden.
-
-Weitere Informationen finden Sie unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md).
-### <a name="azsecurityinsights-powershell-module-public-preview"></a>PowerShell-Modul „Az.SecurityInsights“ (Public Preview)
-
-Azure Sentinel unterstützt jetzt das neue PowerShell-Modul [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/).
-
-Das Modul **Az.SecurityInsights** unterstützt gängige Azure Sentinel-Anwendungsfälle wie etwa die Interaktion mit Incidents, um Dinge wie Status, Schweregrad oder Besitzer zu ändern, sowie das Hinzufügen von Kommentaren und Bezeichnungen zu Incidents und das Erstellen von Lesezeichen.
-
-Wir empfehlen zwar die Verwendung von ARM-Vorlagen ([Azure Resource Manager](../azure-resource-manager/templates/index.yml)) für Ihre CI/CD-Pipeline, das Modul **Az.SecurityInsights** ist jedoch bei Aufgaben nach der Bereitstellung hilfreich und für die SOC-Automatisierung vorgesehen.  Ihre SOC-Automatisierung kann beispielsweise Schritte zum Konfigurieren von Datenconnectors, zum Erstellen von Analyseregeln oder zum Hinzufügen von Automatisierungsaktionen zu Analyseregeln enthalten.
-
-Weitere Informationen, einschließlich einer vollständigen Liste und einer Beschreibung der verfügbaren Cmdlets, sowie Parameterbeschreibungen und Beispiele finden Sie in der [PowerShell-Dokumentation zu „Az.SecurityInsights“](/powershell/module/az.securityinsights/).
-
-### <a name="sql-database-connector"></a>SQL-Datenbank-Connector
-
-Azure Sentinel bietet jetzt einen Azure SQL-Datenbank-Connector, mit dem Sie die Überwachungs- und Diagnoseprotokolle Ihrer Datenbanken an Azure Sentinel streamen und kontinuierlich die Aktivitäten in allen Ihren Instanzen überwachen können.
-
-Azure SQL ist eine vollständig verwaltete PaaS-Datenbank-Engine (Platform-as-a-Service), bei der die meisten Funktionen für die Datenbankverwaltung ohne Benutzereingriff erfolgen, z. B. Upgrades, Patches, Sicherungen und Überwachung.
-
-Weitere Informationen finden Sie unter [Verbinden von Diagnose- und Überwachungsprotokollen von Azure SQL-Datenbank](connect-azure-sql-logs.md).
-
-### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365-Connector (Public Preview)
-
-Azure Sentinel umfasst nun einen Connector für Microsoft Dynamics 365, über den Sie die Aktivitätsprotokolle für Benutzer, Administratoren und Unterstützung der Dynamics 365-Anwendungen in Azure Sentinel erfassen können. Anhand dieser Daten können Sie die gesamten Datenverarbeitungsaktionen überwachen und auf mögliche Sicherheitsverletzungen prüfen.
-
-Weitere Informationen finden Sie unter [Verbinden von Dynamics 365-Aktivitätsprotokollen mit Azure Sentinel](connect-dynamics-365.md).
-
-### <a name="improved-incident-comments"></a>Verbesserte Incidentkommentare
-
-Analysten verwenden Incidentkommentare, um bei Incidents zusammenzuarbeiten und Prozesse und Schritte manuell oder im Rahmen eines Playbooks zu dokumentieren. 
-
-Dank unserer verbesserten Kommentierung können Sie nun Ihre Kommentare formatieren und vorhandene Kommentare bearbeiten oder löschen.
-
-Weitere Informationen finden Sie unter [Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen](create-incidents-from-alerts.md).
-### <a name="dedicated-log-analytics-clusters"></a>Dedizierte Log Analytics-Cluster
-
-Azure Sentinel unterstützt jetzt dedizierte Log Analytics-Cluster als Bereitstellungsoption. Die Verwendung eines dedizierten Clusters empfiehlt sich in folgenden Fällen:
-
-- **Erfassung von mehr als 1 TB pro Tag** in Ihrem Azure Sentinel-Arbeitsbereich
-- **Mehrere Azure Sentinel-Arbeitsbereiche** in Ihrer Azure-Registrierung
-
-Dedizierte Cluster ermöglichen die Verwendung von Features wie kundenseitig verwalteten Schlüsseln, Lockbox, Mehrfachverschlüsselung und schnelleren arbeitsbereichsübergreifenden Abfragen, wenn sich mehrere Arbeitsbereiche im gleichen Cluster befinden.
-
-Weitere Informationen finden Sie unter [Dedizierte Azure Monitor-Protokollcluster](../azure-monitor/logs/logs-dedicated-clusters.md).
-
-### <a name="logic-apps-managed-identities"></a>Verwaltete Identitäten für Logik-Apps
-
-Azure Sentinel unterstützt jetzt verwaltete Identitäten für den Logic Apps-Connector für Azure Sentinel. Dadurch können Sie einem bestimmten Playbook direkt Berechtigungen für die Verwendung in Azure Sentinel erteilen, anstatt zusätzliche Identitäten zu erstellen.
-
-- **Ohne verwaltete Identität** benötigt der Logic Apps-Connector eine separate Identität mit einer Azure Sentinel-RBAC-Rolle, damit er in Azure Sentinel verwendet werden kann. Bei der separaten Identität kann es sich um einen Azure AD-Benutzer oder um einen Dienstprinzipal (beispielsweise eine bei Azure AD registrierte Anwendung) handeln.
-
-- **Wenn Sie die Unterstützung verwalteter Identitäten in Ihrer Logik-App aktivieren**, wird die Logik-App bei Azure AD registriert und eine Objekt-ID bereitgestellt. Verwenden Sie die Objekt-ID in Azure Sentinel, um die Logik-App mit einer Azure RBAC-Rolle in Ihrem Azure Sentinel-Arbeitsbereich zuzuweisen. 
-
-Weitere Informationen finden Sie unter
-
-- [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
-- [Dokumentation zum Logic Apps-Connector für Azure Sentinel](/connectors/azuresentinel) 
-
-### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Verbesserte Regeloptimierung mit den Vorschaudiagrammen für Analyseregeln (Public Preview)
-
-Azure Sentinel ermöglicht nun eine bessere Optimierung Ihrer Analyseregeln, um deren Genauigkeit zu erhöhen und Stördatenverkehr zu verringern.
-
-Nachdem Sie eine Analyseregel auf der Registerkarte **Regellogik festlegen** bearbeitet haben, steht auf der rechten Seite der Bereich **Ergebnissimulation** zur Verfügung. 
-
-Wählen Sie **Mit aktuellen Daten testen** aus. Daraufhin wird von Azure Sentinel eine Simulation der letzten 50 Ausführungen Ihrer Analyseregel durchgeführt. Im generierten Diagramm wird die durchschnittliche Anzahl von Warnungen angezeigt, die durch die Regel generiert worden wären (basierend auf den ausgewerteten Ereignisrohdaten). 
-
-Weitere Informationen finden Sie unter [Definieren der Regelabfragelogik und Konfigurieren von Einstellungen](tutorial-detect-threats-custom.md#define-the-rule-query-logic-and-configure-settings).
-
-## <a name="december-2020"></a>Dezember 2020
-
-- [80 neue integrierte Hunting-Abfragen](#80-new-built-in-hunting-queries)
-- [Verbesserungen für den Log Analytics-Agent](#log-analytics-agent-improvements)
-
-### <a name="80-new-built-in-hunting-queries"></a>80 neue integrierte Hunting-Abfragen
- 
-Mit den integrierten Hunting-Abfragen von Azure Sentinel können SOC-Analysten Lücken in der aktuellen Erkennungsabdeckung verringern und neue Hunting-Spuren initiieren.
-
-Dieses Update für Azure Sentinel umfasst neue Hunting-Abfragen mit Abdeckung der MITRE ATT&CK-Frameworkmatrix:
-
-- **Sammlung**
-- **Command-and-Control**
-- **Zugriff auf Anmeldeinformationen**
-- **Ermittlung**
-- **Ausführung**
-- **Exfiltration**
-- **Auswirkung**
-- **Erstzugriff**
-- **Persistenz**
-- **Rechteausweitung**
-
-Die zusätzlichen Hunting-Abfragen unterstützen Sie bei der Ermittlung verdächtiger Aktivitäten in Ihrer Umgebung. Sie geben zwar unter Umständen auch legitime Aktivitäten und potenziell schädliche Aktivitäten zurück, können aber eine gute Orientierungshilfe bei der Bedrohungssuche sein. 
-
-Wenn Sie nach der Ausführung dieser Abfragen mit den Ergebnissen zufrieden sind, können Sie sie ggf. in Analyseregeln konvertieren oder vorhandenen oder neuen Incidents Hunting-Ergebnisse hinzufügen.
-
-Alle hinzugefügten Abfragen sind über die Azure Sentinel-Hunting-Seite verfügbar. Weitere Informationen finden Sie unter [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md).
-
-### <a name="log-analytics-agent-improvements"></a>Verbesserungen für den Log Analytics-Agent
-
-Azure Sentinel-Benutzer profitieren von folgenden Verbesserungen für den Log Analytics-Agent:
-
-- **Unterstützung weiterer Betriebssysteme**, einschließlich CentOS 8, RedHat 8 und SuSE Linux 15
-- **Unterstützung von Python 3** (zusätzlich zu Python 2)
-
-Azure Sentinel verwendet den Log Analytics-Agent, um Ereignisse wie Windows-Sicherheitsereignisse, Syslog-Ereignisse, CEF-Protokolle und Ähnliches an Ihren Arbeitsbereich zu senden.
-
-> [!NOTE]
-> Der Log Analytics-Agent wird manchmal auch als OMS-Agent oder als Microsoft Monitoring Agent (MMA) bezeichnet. 
-> 
-
-Weitere Informationen finden Sie in der [Log Analytics-Dokumentation](../azure-monitor/agents/log-analytics-agent.md) sowie in den [Versionshinweisen zum Log Analytics-Agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -519,4 +515,4 @@ Weitere Informationen finden Sie in der [Log Analytics-Dokumentation](../azure-
 >[Schnellstart: Ausführen des Onboardings für Azure Sentinel](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
->[Einblick in Warnungen](quickstart-get-visibility.md)
+>[Einblick in Warnungen](get-visibility.md)

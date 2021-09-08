@@ -4,25 +4,27 @@ description: In diesem Artikel wird beschrieben, wie Sie Abfragen für Ressource
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/11/2021
-ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 06/30/2021
+ms.openlocfilehash: ef7a917b504df521f087e5a2729d5c431e84fd62
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379552"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295902"
 ---
-# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Ausführen arbeitsbereichs- und anwendungsübergreifender Protokollabfragen in Azure Monitor
+# <a name="perform-log-queries-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Ausführen arbeitsbereichs- und App-übergreifender Protokollabfragen in Azure Monitor
 
-Azure Monitor-Protokolle unterstützen Abfragen über mehrere Log Analytics-Arbeitsbereiche und Application Insights-Apps in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.
+Azure Monitor-Protokolle unterstützen Abfragen mehrerer Log Analytics-Arbeitsbereiche und Application Insights-Apps in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.
+
+Wenn Sie Abonnements in anderen Azure Active Directory-Mandanten (Azure AD) über [Azure Lighthouse](../../lighthouse/overview.md) verwalten, können Sie [Log Analytics-Arbeitsbereiche, die in diesen Kundenmandanten erstellt wurden](../../lighthouse/how-to/monitor-at-scale.md), in Ihre Abfragen einschließen.
 
 Es gibt zwei Methoden zum Abfragen von Daten, die in mehreren Arbeitsbereichen und Apps gespeichert sind:
+
 1. Explizit durch Angabe der Arbeitsbereichs- und App-Details. Dieses Verfahren wird in diesem Artikel ausführlich erläutert.
 2. Implizit durch Verwendung von [Abfragen im Ressourcenkontext](./design-logs-deployment.md#access-mode). Wenn Sie Abfragen im Kontext einer bestimmten Ressource, Ressourcengruppe oder eines Abonnements ausführen, werden die relevanten Daten aus allen Arbeitsbereichen abgerufen, die Daten für diese Ressourcen enthalten. Application Insights-Daten, die in Apps gespeichert werden, werden nicht abgerufen.
 
 > [!IMPORTANT]
-> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Verwenden Sie den workspace()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen umfasst. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
-
+> Wenn Sie eine [arbeitsbereichsbasierte Application Insights-Ressource](../app/create-workspace-resource.md) verwenden, werden Telemetriedaten in einem Log Analytics-Arbeitsbereich mit allen anderen Protokolldaten gespeichert. Verwenden Sie den workspace()-Ausdruck, um eine Abfrage zu schreiben, die Anwendungen in mehreren Arbeitsbereichen einschließt. Für mehrere Anwendungen im gleichen Arbeitsbereich benötigen Sie keine arbeitsbereichübergreifende Abfrage.
 
 ## <a name="cross-resource-query-limits"></a>Ressourcenübergreifende Abfragelimits 
 

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: fauhse
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: a3dc42ece6bbd05b61ef9a4f1a0f82e147b2a762
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 12a11fadaa7a98b9a5d2d9f81cf91dfa26680f56
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749289"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462190"
 ---
 Die Geschwindigkeit und die Erfolgsrate einer bestimmten Robocopy-Ausführung hängt von mehreren Faktoren ab:
 
@@ -48,11 +48,14 @@ Robocopy durchläuft den Namespace, auf den jeweils verwiesen wird, und wertet j
 
 Häufig wird die Bandbreite als der am stärksten einschränkende Faktor bei der Migration angesehen – und dies kann auch tatsächlich der Fall sein. Die Möglichkeit zum Enumerieren eines Namespace kann aber dazu führen, dass sich die Gesamtkopierdauer für größere Namespaces mit kleineren Dateien noch weiter erhöht. Beachten Sie, dass das Kopieren von 1 TiB an kleinen Dateien erheblich länger dauert, als wenn eine Datenmenge von 1 TiB kopiert wird, die eine geringere Zahl von größeren Dateien umfasst. Bei dieser Aussage wird vorausgesetzt, dass alle anderen Variablen gleich bleiben.
 
-Die Ursache für diesen Unterschied ist die Verarbeitungsleistung, die für das Durchlaufen eines Namespace erforderlich ist. Robocopy unterstützt Multithread-Kopien über den Parameter `/MT:n`, wobei „n“ für die Anzahl von Prozessorthreads steht. Wenn Sie einen Computer speziell für Robocopy bereitstellen, sollten Sie also auf die Anzahl von Prozessorkernen und deren Beziehung zur jeweiligen Threadanzahl achten. Eine gängige Vorgehensweise ist die Nutzung von zwei Threads pro Kern. Die Anzahl von Kernen und Threads eines Computers stellt einen wichtigen Datenpunkt dar, der hilfreich beim Treffen der Entscheidung ist, welche Multithread-Werte (`/MT:n`) Sie angeben sollten. Berücksichtigen Sie auch, wie viele Robocopy-Aufträge Sie auf einem bestimmten Computer parallel ausführen möchten.
+Die Ursache für diesen Unterschied ist die Verarbeitungsleistung, die für das Durchlaufen eines Namespace erforderlich ist. Robocopy unterstützt Multithreadkopien über den Parameter `/MT:n`, wobei „n“ für die Anzahl der zu verwendenden Threads steht. Wenn Sie einen Computer speziell für Robocopy bereitstellen, sollten Sie also auf die Anzahl von Prozessorkernen und deren Beziehung zur jeweiligen Threadanzahl achten. Eine gängige Vorgehensweise ist die Nutzung von zwei Threads pro Kern. Die Anzahl von Kernen und Threads eines Computers stellt einen wichtigen Datenpunkt dar, der hilfreich beim Treffen der Entscheidung ist, welche Multithread-Werte (`/MT:n`) Sie angeben sollten. Berücksichtigen Sie auch, wie viele Robocopy-Aufträge Sie auf einem bestimmten Computer parallel ausführen möchten.
 
 Bei einer höheren Anzahl von Threads verläuft der Kopiervorgang für die kleinen Dateien aus dem Beispiel mit 1 TiB erheblich schneller als bei einer geringeren Anzahl von Threads. Gleichzeitig kann es sein, dass die zusätzliche Investition in Ressourcen beim Beispiel mit 1 TiB an größeren Dateien nicht zu proportionalen Vorteilen führt. Bei einer höheren Anzahl von Threads wird versucht, eine größere Zahl von großen Dateien gleichzeitig über das Netzwerk zu kopieren. Durch diese zusätzliche Netzwerkaktivität erhöht sich die Wahrscheinlichkeit, dass es zu Einschränkungen in Bezug auf den Durchsatz oder den Speicher-IOPS-Wert kommt.
 
 Beim ersten Kopieren in ein leeres Ziel mithilfe von RoboCopy oder bei einem differenziellen Vorgang mit zahlreichen geänderten Dateien ist Ihr Netzwerkdurchsatz wahrscheinlich ein limitierender Faktor. Beginnen Sie mit einer hohen Threadanzahl für eine erste Ausführung. Eine hohe Threadanzahl, die über die derzeit verfügbaren Threads auf dem Computer hinausgeht, hilft bei der Auslastung der verfügbaren Netzwerkbandbreite. Nachfolgende /MIR-Ausführungen werden progressiv durch die Verarbeitung von Elementen beeinflusst. Weniger Änderungen bei einem differenziellen Vorgang bedeuten weniger Datentransporte über das Netzwerk. Ihre Geschwindigkeit hängt nun weniger von der Übertragungsgeschwindigkeit über die Netzwerkverbindung und vielmehr von der Verarbeitungsgeschwindigkeit für Namespaceelemente ab. Stimmen Sie bei nachfolgenden Ausführungen den Threadanzahlwert auf die Prozessorkernanzahl und die Threadanzahl pro Kern ab. Berücksichtigen Sie, ob Kerne für andere Aufgaben reserviert werden müssen, die ein Produktionsserver möglicherweise hat.
+
+> [!TIP]
+> Faustregel: Die erste RoboCopy-Ausführung, bei der viele Daten über ein Netzwerk mit höherer Latenz verschoben werden, profitiert von einer Überbereitstellung bei der Anzahl der Threads (`/MT:n`). Bei nachfolgenden Ausführungen werden weniger Unterschiede kopiert, und es ist wahrscheinlicher, dass Sie vom eingeschränkten Netzwerkdurchsatz auf eingeschränkten Computeressourcen umschalten. Unter diesen Umständen ist es oft besser, die Anzahl der Threads für robocopy an die tatsächlich verfügbaren Threads auf dem Computer anzupassen. Eine Überbereitstellung in diesem Szenario kann zu mehr Kontextverschiebungen im Prozessor führen, was Ihren Kopiervorgang möglicherweise verlangsamt.
 
 ### <a name="avoid-unnecessary-work"></a>Vermeiden von unnötigem Arbeitsaufwand
 
@@ -69,4 +72,3 @@ Sie sollten darauf vorbereitet sein, Robocopy für einen bestimmten Namespaceber
 * `/W:n`: Mit „n“ wird angegeben, wie viele Sekunden lang zwischen den Wiederholungen gewartet werden soll.
 
 `/R:5 /W:5`: Eine gängige Einstellung, die Sie je nach Ihren Anforderungen anpassen können. Bei dieser Beispieleinstellung werden für eine nicht kopierte Datei fünf Wiederholungsversuche durchgeführt, und zwischen den Wiederholungen wird jeweils fünf Sekunden gewartet. Falls die Datei immer noch nicht kopiert werden kann, wird dies beim nächsten Robocopy-Auftrag erneut versucht. Mit diesem Ansatz ist der Kopiervorgang für Dateien, die aufgrund einer gegenwärtigen Nutzung oder von Timeoutproblemen nicht kopiert werden können, in vielen Fällen schließlich erfolgreich.
-   

@@ -6,24 +6,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: trkeya
 ms.author: trkeya
-ms.date: 05/28/2021
+ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8f1997c4cc25ab02e58ab43d38311885dc3bb74f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6931f33c303e1e42af75b34cb7a72d7a37c702cd
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110709251"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598187"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
-In diesem Artikel erfahren Sie, wie Sie bestehende Angebote und Pläne aktualisieren und ein Angebot aus dem kommerziellen Marketplace entfernen. Sie können Ihre Angebote in Partner Center im [Portal des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) auf der Registerkarte **Übersicht** anzeigen.
+In diesem Artikel erfahren Sie, wie Sie bestehende Angebote und Pläne aktualisieren und ein Angebot aus dem kommerziellen Marketplace entfernen. Sie können Ihre Angebote in Partner Center im [Portal des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165935.) anzeigen.
 
 ## <a name="update-a-published-offer"></a>Aktualisieren eines veröffentlichten Angebots
 
 Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zustand „Vorschau“ oder „Live“ veröffentlicht wurde.
 
-1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
+1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, die Verteilung des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
 1. Wählen Sie die Angebotsseite aus, die Sie aktualisieren möchten (beispielsweise **Eigenschaften**, **Angebotsliste** oder **Vorschau**), oder wählen Sie auf der entsprechenden Karte der Seite **Angebotsübersicht** die Option **Aktualisieren** aus.
 1. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Entwurf speichern**. Wiederholen Sie diesen Vorgang, bis alle gewünschten Änderungen erfolgt sind.
 1. Überprüfen Sie Ihre Änderungen auf der Seite **[Vergleichen](#compare-changes-to-your-offer)** .
@@ -58,6 +58,21 @@ Führen Sie die folgenden Schritte aus, um einen Plan für ein bereits veröffen
 1. Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus. Dann wird die Seite **[Überprüfen und veröffentlichen](review-publish-offer.md)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 1. Wählen Sie **Veröffentlichen** aus, um den aktualisierten Plan zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots zur Überprüfung und Freigabe verfügbar ist.
 
+## <a name="update-image-versions-for-an-existing-vm-offer"></a>Aktualisieren von Imageversionen für ein vorhandenes VM-Angebot
+
+Führen Sie die folgenden Schritte aus, um verfügbare Images in einem Plan für ein bereits veröffentlichtes Angebot zu ändern.
+
+1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen**.
+1. Wählen Sie in der Fokusnavigation die Option **Technische Konfiguration** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Version die Option **+ VM-Image hinzufügen** aus.
+1. Zum Entfernen einer Version wählen Sie **Als veraltet kennzeichnen** aus. Beachten Sie, dass Sie die letzte VM im Plan nicht als veraltet kennzeichnen können.
+1. Nachdem Sie Ihre Änderungen vorgenommen haben, wählen Sie **Entwurf speichern** aus.
+1. Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus. Die [Seite „Überprüfen und veröffentlichen“](review-publish-offer.md) mit dem Fertigstellungsstatus Ihrer Aktualisierungen wird angezeigt.
+1. Wählen Sie **Veröffentlichen** aus, um den aktualisierten Plan zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots zur Überprüfung und Freigabe verfügbar ist.
+
+> [!NOTE]
+> Für einen Plan ist mindestens eine Imageversion erforderlich. Wenn Sie den Plan nicht mehr anbieten möchten, kennzeichnen Sie ihn als veraltet.
+
 ## <a name="offer-a-virtual-machine-plan-at-a-new-price"></a>Anbieten eines VM-Plans zu einem neuen Preis
 
 Nachdem ein VM-Plan veröffentlicht wurde, kann dessen Preis nicht mehr geändert werden. Wenn Sie denselben Plan zu einem anderen Preis anbieten möchten, müssen Sie den Plan ausblenden und einen neuen Plan mit dem aktualisierten Preis erstellen. Blenden Sie zunächst den Plan mit dem Preis aus, den Sie ändern möchten:
@@ -71,7 +86,7 @@ Nachdem Sie den Plan mit dem alten Preis ausgeblendet haben, erstellen Sie eine 
 2. Wählen Sie **Neuen Plan erstellen** aus. Geben Sie eine **Plan-ID** und einen **Plannamen** ein, und wählen Sie dann **Erstellen** aus.
 1. Wenn Sie die technische Konfiguration des ausgeblendeten Plans wiederverwenden möchten, aktivieren Sie das Kontrollkästchen **Technische Konfiguration erneut verwenden**. Weitere Informationen finden Sie unter [Erstellen von Plänen für ein VM-Angebot](azure-vm-create-plans.md).
     > [!IMPORTANT]
-    > Wenn Sie **In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet** auswählen, können Sie den Verkauf des übergeordneten Plans später nicht einstellen. Verwenden Sie diese Option nicht, wenn Sie den Verkauf des übergeordneten Plans einstellen möchten.
+    > Wenn Sie **In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet** auswählen, können Sie die Verteilung des übergeordneten Plans später nicht beenden. Verwenden Sie diese Option nicht, wenn Sie die Verteilung des übergeordneten Plans beenden möchten.
 3. Füllen Sie alle erforderlichen Abschnitte für den neuen Plan aus, einschließlich des neuen Preises.
 1. Wähen Sie **Entwurf speichern** aus.
 1. Nachdem Sie alle erforderlichen Abschnitte für den neuen Plan bearbeitet haben, wählen Sie **Überprüfen und veröffentlichen** aus. Dadurch wird Ihr Angebot zur Überprüfung und Veröffentlichung übermittelt. Weitere Informationen finden Sie unter [Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace](review-publish-offer.md).
@@ -125,21 +140,21 @@ Wenn Sie Änderungen an einer Vorschau vorgenommen haben, die nicht live geschal
 
 Denken Sie daran, Ihr Angebot nach der Aktualisierung erneut zu veröffentlichen, damit die Änderungen wirksam werden.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Einstellen des Verkaufs eines Angebots oder Plans
+## <a name="stop-distribution-of-an-offer-or-plan"></a>Beenden der Verteilung eines Angebots oder Plans
 
 Sie können Angebotsauflistungen und Pläne aus dem kommerziellen Marketplace von Microsoft entfernen, sodass sie von neuen Kunden nicht gefunden und erworben werden können. Kunden, die das Angebot oder den Plan bereits erworben haben, können das Angebot oder den Plan weiterhin nutzen und bei Bedarf erneut herunterladen. Sie erhalten jedoch keine Updates, wenn Sie das Angebot oder den Plan zu einem späteren Zeitpunkt erneut veröffentlichen.
 
-- Um den Verkauf eines Angebots zu beenden, nachdem Sie es veröffentlicht haben, wählen Sie auf der Seite **Angebotsübersicht** die Option **Verkauf beenden** aus. Innerhalb weniger Stunden nach Ihrer Bestätigung wird das Angebot im kommerziellen Marketplace nicht mehr angezeigt.
+- Um die Verteilung eines Angebots zu beenden, nachdem Sie es veröffentlicht haben, wählen Sie auf der Seite **Angebotsübersicht** die Option **Verteilung beenden** aus. Innerhalb weniger Stunden nach Ihrer Bestätigung wird das Angebot im kommerziellen Marketplace nicht mehr angezeigt.
 
-- Um den Verkauf eines Plans einzustellen, wählen Sie auf der Seite **Plan overview** (Planübersicht) **Stop selling** (Verkauf einstellen) aus. Die Option zum Beenden des Verkaufs eines Plans ist nur verfügbar, wenn das Angebot mehr als einen Plan enthält. Sie können den Verkauf eines Plans beenden, ohne dass dadurch andere Pläne in Ihrem Angebot beeinträchtigt werden.
+- Um die Verteilung eines Plans zu beenden, wählen Sie auf der Seite **Planübersicht** die Option **Verteilung beenden** aus. Die Option zum Beenden der Verteilung eines Plans ist nur verfügbar, wenn das Angebot mehr als einen Plan enthält. Sie können die Verteilung eines Plans beenden, ohne dass dadurch andere Pläne in Ihrem Angebot beeinträchtigt werden.
      >[!NOTE]
-     > Sobald Sie bestätigt haben, dass Sie den Verkauf des Plans beenden möchten, müssen Sie das Angebot erneut veröffentlichen, damit die Änderung wirksam wird.
+     > Sobald Sie bestätigt haben, dass Sie die Verteilung des Plans beenden möchten, müssen Sie das Angebot erneut veröffentlichen, damit die Änderung wirksam wird.
 
-Nachdem Sie den Verkauf eines Angebots oder Plans beendet haben, wird es in Partner Center weiterhin angezeigt, hat nun aber den Status **Nicht verfügbar**. Wenn Sie sich entscheiden, dieses Angebot oder diesen Plan erneut zu listen oder zu verkaufen, folgen Sie den Anweisungen zum [Aktualisieren eines veröffentlichten Angebots](#update-a-published-offer). Vergessen Sie nicht, dass Sie das Angebot oder den Plan nach etwaigen Änderungen erneut **veröffentlichen** müssen.
+Nachdem Sie die Verteilung eines Angebots oder Plans beendet haben, wird es in Partner Center weiterhin angezeigt, hat nun aber den Status **Nicht verfügbar**. Wenn Sie sich entscheiden, dieses Angebot oder diesen Plan erneut zu listen oder zu verkaufen, folgen Sie den Anweisungen zum [Aktualisieren eines veröffentlichten Angebots](#update-a-published-offer). Vergessen Sie nicht, dass Sie das Angebot oder den Plan nach etwaigen Änderungen erneut **veröffentlichen** müssen.
 
 ## <a name="remove-offers-from-existing-customers"></a>Aufheben von Angeboten für Bestandskunden
 
-Um Angebote für Bestandskunden aufzuheben, [stellen Sie eine Supportanfrage](https://aka.ms/marketplacepublishersupport). Wählen Sie in der Liste der Supportthemen **Kommerzieller Marketplace** > **Angebot oder App aus Liste entfernen, löschen oder beenden** aus, und übermitteln Sie die Anforderung. Das Supportteam führt Sie durch den Vorgang zum Aufheben des Angebots.
+Um Angebote für Bestandskunden aufzuheben, [stellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2165533). Wählen Sie in der Liste der Supportthemen **Kommerzieller Marketplace** > **Angebot oder App aus Liste entfernen, löschen oder beenden** aus, und übermitteln Sie die Anforderung. Das Supportteam führt Sie durch den Vorgang zum Aufheben des Angebots.
 
 Wenn die Entfernung des Angebots vom Herausgeber initiiert wird, ist der Herausgeber dafür verantwortlich, die Kunden über die Entfernung zu informieren.
 

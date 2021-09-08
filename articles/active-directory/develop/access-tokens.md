@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 06/25/2021
 ms.author: hirsin
-ms.reviewer: mmacy, hirsin
+ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d633f52d739552a02999295ec083a965e0fa45fd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105594"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447026"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -84,16 +84,15 @@ Einige Ansprüche werden verwendet, um Azure AD das Schützen von Token im Fall 
 |Anspruch | Format | BESCHREIBUNG |
 |--------|--------|-------------|
 | `typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
-| `nonce` | String | Ein eindeutiger Bezeichner, der zum Schutz vor Token-Replay-Angriffen verwendet wird. Ihre Ressource kann diesen Wert zum Schutz vor Wiedergaben aufzeichnen. |
 | `alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde, beispielsweise „RS256“. |
-| `kid` | String | Gibt den Fingerabdruck des öffentlichen Schlüssels an, der zum Signieren dieses Tokens verwendet wird. Wird in v1.0- und v2.0-Zugriffstoken ausgegeben. |
+| `kid` | String | Gibt den Fingerabdruck für den öffentlichen Schlüssel an, mit dem die Signatur dieses Tokens überprüft werden kann. Wird in v1.0- und v2.0-Zugriffstoken ausgegeben. |
 | `x5t` | String | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. `x5t` ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-Zugriffstoken ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
 | Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
-| `aud` | Zeichenfolge, App-ID-URI oder GUID | Identifiziert den vorgesehenen Empfänger des Tokens – die Zielgruppe.  Ihre API sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. In v2.0-Token ist dies immer die Client-ID der API, während es in v1.0-Token die Client-ID oder der in der Anforderung verwendete Ressourcen-URI sein kann. Das richtet sich danach, wie der Client das Token angefordert hat.|
+| `aud` | Zeichenfolge, App-ID-URI oder GUID | Identifiziert den vorgesehenen Empfänger des Tokens – die Zielgruppe.  Ihre API muss diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. In v2.0-Token ist dies immer die Client-ID der API, während es in v1.0-Token die Client-ID oder der in der Anforderung verwendete Ressourcen-URI sein kann. Das richtet sich danach, wie der Client das Token angefordert hat.|
 | `iss` | Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das ausgegebene Token ein v2. 0-Token ist (weitere Informationen finden Sie im Anspruch `ver`), endet der URI in `/v2.0`. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App kann den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können (sofern zutreffend). |
 |`idp`| Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
 | `iat` | Ganze Zahl, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist. |
@@ -116,7 +115,7 @@ Einige Ansprüche werden verwendet, um Azure AD das Schützen von Token im Fall 
 | `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. Siehe auch den `oid`-Anspruch (der innerhalb eines Mandanten für alle Apps immer gleich bleibt). |
 | `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für den „Prinzipal“ der Anforderung: der Benutzer oder Dienstprinzipal, dessen Identität überprüft wurde.  Bei ID-Token sowie App- und Benutzertoken ist dies die Objekt-ID des Benutzers.  In reinen App-Token ist dies die Objekt-ID des aufrufenden Dienstprinzipals. Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer eindeutig und anwendungsübergreifend: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten im `oid`-Anspruch den gleichen Wert. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes [Benutzerkonto](/graph/api/resources/user) zurück. Da mit `oid` mehrere Apps Prinzipale korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch für Benutzer zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
-| `tid` | Zeichenfolge, eine GUID | Stellt den Azure AD-Mandanten dar, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+|`tid` | Zeichenfolge, eine GUID | Stellt den Mandanten dar, bei dem sich der Benutzer anmeldet. Bei Geschäfts-, Schul- oder Unikonten ist die GUID die unveränderliche Mandanten-ID der Organisation, bei der sich der Benutzer anmeldet. Für Anmeldungen beim persönlichen Microsoft-Kontomandanten (Dienste wie Xbox, Teams for Life oder Outlook) ist der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Um diesen Anspruch zu erhalten, muss Ihre App den Bereich `profile` anfordern. |
 | `unique_name` | String | Ist nur in v1.0-Token vorhanden. Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist. Er sollte daher nur zu Anzeigezwecken verwendet werden. |
 | `uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `rh` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
@@ -229,7 +228,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 Dieses Metadatendokument:
 
 * Ist ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Speicherort der verschiedenen Endpunkte, die zum Ausführen der OpenID Connect-Authentifizierung erforderlich sind.
-* Enthält einen `jwks_uri`, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Der JSON-Webschlüssel (JWK) unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln.  Das JWK-Format wird in [RFC 7517](https://tools.ietf.org/html/rfc7517) beschrieben.  Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines bestimmten Tokens verwendet wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
+* Enthält einen `jwks_uri`, der den Speicherort des Satzes öffentlicher Schlüssel angibt, welcher den privaten Schlüsseln entspricht, mit dem Token signiert werden. Der JSON-Webschlüssel (JWK) unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln. Das JWK-Format wird in [RFC 7517](https://tools.ietf.org/html/rfc7517) beschrieben. Ihre App kann den Anspruch `kid` im JWT-Header verwenden, um den öffentlichen Schlüssel in diesem Dokument auszuwählen, der dem privaten Schlüssel entspricht, mit dem ein bestimmtes Token signiert wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
 
 > [!NOTE]
 > Es wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen. Während v1.0-Token sowohl den Anspruch `x5t` als auch den Anspruch `kid` enthalten, können v2.0-Token nur den Anspruch `kid` enthalten.
@@ -242,10 +241,10 @@ Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-dire
 
 Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden Sie einige allgemeine Autorisierungsmethoden.
 
-* Überprüfen Sie den `scp`- oder `roles`-Anspruch, um sicherzustellen, dass alle vorhandenen Bereiche mit den von Ihrer API verfügbar gemachten Bereichen übereinstimmen und der Client die angeforderte Aktion durchführen kann.
+* Verwenden Sie den Anspruch `aud`, um sicherzustellen, dass der Benutzer beabsichtigt, Ihre Anwendung aufzurufen.  Wenn der Bezeichner Ihrer Ressource nicht im Anspruch `aud` enthalten ist, lehnen Sie ihn ab.
+* Überprüfen Sie mit dem Anspruch `scp`, ob der Benutzer der aufrufenden App die Berechtigung zum Aufrufen Ihrer API erteilt hat.
+* Überprüfen Sie mit den Ansprüchen `roles` und `wids`, ob der Benutzer selbst die Berechtigung hat, Ihre API aufzurufen.  So kann beispielsweise ein Administrator die Berechtigung zum Schreiben in Ihre API haben, ein normaler Benutzer jedoch nicht.
 * Stellen Sie mithilfe des `appid`-Anspruchs sicher, dass der aufrufende Client Ihre API aufrufen darf.
-* Überprüfen Sie den Authentifizierungsstatus des aufrufenden Clients mit `appidacr`. Er sollte nicht 0 sein, wenn öffentlichen Clients das Aufrufen Ihrer API nicht erlaubt ist.
-* Stellen Sie anhand einer Liste früherer `nonce`-Ansprüche sicher, dass das Token nicht wiedergegeben wird.
 * Stellen Sie sicher, dass der `tid`-Anspruch einem Mandanten entspricht, dem das Aufrufen Ihrer API erlaubt ist.
 * Verwenden Sie den `amr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Dies sollte durch [bedingten Zugriff](../conditional-access/overview.md) erzwungen werden.
 * Wenn Sie die `roles`- oder `groups`-Ansprüche im Zugriffstoken angefordert haben, stellen Sie sicher, dass der Benutzer der Gruppe angehört, der das Ausführen dieser Aktion erlaubt ist.

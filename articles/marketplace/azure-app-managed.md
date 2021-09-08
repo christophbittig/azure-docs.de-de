@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 9fb40048a57955fc6a8e4a4e73361f545380f84e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 666dfb22036c3d7f1d88515f4b8118eaf133db8c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971548"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594953"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurieren eines Plans für verwaltete Anwendungen
 
@@ -194,7 +194,7 @@ Nachdem Sie mindestens einen Plan erstellt haben, werden auf der Registerkarte *
 Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** verfügbar sind, hängen vom Status Ihres Plans ab und können Folgendes umfassen:
 
 - Wenn der Planstatus **Entwurf** lautet, wird in der Spalte **Aktion** die Option **Entwurf löschen** angezeigt.
-- Wenn der Planstatus **Live** lautet, wird in der Spalte **Aktion** entweder **Verkauf des Plans einstellen** oder **Private Zielgruppe synchronisieren** angezeigt. Über den Link **Sync private audience** (Private Zielgruppe synchronisieren) werden nur die Änderungen an Ihren privaten Zielgruppen veröffentlicht, ohne dass weitere Aktualisierungen veröffentlicht werden, die Sie möglicherweise am Angebot vorgenommen haben.
+- Wenn der Planstatus **Live** lautet, wird in der Spalte **Aktion** entweder **Verteilung beenden** oder **Private Zielgruppe synchronisieren** angezeigt. Über den Link **Sync private audience** (Private Zielgruppe synchronisieren) werden nur die Änderungen an Ihren privaten Zielgruppen veröffentlicht, ohne dass weitere Aktualisierungen veröffentlicht werden, die Sie möglicherweise am Angebot vorgenommen haben.
 - Um einen weiteren Plan für dieses Angebot zu erstellen, wählen Sie im oberen Bereich der Registerkarte **Planübersicht** die Option **+ Neuen Plan erstellen** aus. Wiederholen Sie dann die Schritte unter [Erstellen von Plänen für Ihr Azure-Anwendungsangebot](azure-app-plans.md). Wenn Sie das Erstellen von Plänen abgeschlossen haben, fahren Sie mit dem nächsten Abschnitt „Nächste Schritte“ fort.
 
 ## <a name="next-steps"></a>Nächste Schritte

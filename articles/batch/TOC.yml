@@ -165,6 +165,8 @@
         - name: Erstellen eines Pools ohne öffentliche IP-Adressen
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: Erstellen eines Pools mit Knoten für kurzlebige Betriebssystemdatenträger
+          href: create-pool-ephemeral-os-disk.md
         - name: Verwenden von Erweiterungen mit Pools
           href: create-pool-extensions.md
         - name: Konfigurieren von verwalteten Identitäten

@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/31/2020
+ms.date: 07/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07094e399f153f56746a931a4a100b3c0d38f92f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30d16b2042e2bfc8e11824fe64cf709413fd05d8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772075"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218383"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 
@@ -123,7 +123,7 @@ Der Abschnitt **Eigenschaften** enthält wichtige Informationen, die Sie bei Üb
 
 ![Oberer Teil der HLI-Eigenschaften im Azure-Portal](./media/hana-li-portal/portal-properties-top.png)
 
-Die ersten paar Datenelemente haben Sie bereits im Übersichtsbildschirm gesehen. Ein wichtiger Bestandteil der Daten ist jedoch die ID der ExpressRoute-Verbindung, die Sie bei der Übergabe der ersten bereitgestellten Einheiten erhalten haben. In einigen Supportfällen werden Sie möglicherweise nach diesen Daten gefragt. Ein wichtiger Dateneintrag wird im unteren Teil des Screenshot gezeigt. Dabei handelt es sich um die IP-Adresse des NFS-Speicherheads, die Ihren Speicher im Stapel von HANA (große Instanzen) auf Ihren **Mandanten** isoliert. Diese IP-Adresse ist auch erforderlich, wenn Sie die [Konfigurationsdatei für Sicherungen von Speichermomentaufnahmen](./hana-backup-restore.md#set-up-storage-snapshots) bearbeiten. 
+Die ersten paar Datenelemente haben Sie bereits im Übersichtsbildschirm gesehen. Ein wichtiger Bestandteil der Daten ist jedoch die ID der ExpressRoute-Verbindung, die Sie bei der Übergabe der ersten bereitgestellten Einheiten erhalten haben. In einigen Supportfällen werden Sie möglicherweise nach diesen Daten gefragt. Ein wichtiger Dateneintrag wird im unteren Teil des Screenshot gezeigt. Dabei handelt es sich um die IP-Adresse des NFS-Speicherheads, die Ihren Speicher im Stapel von HANA (große Instanzen) auf Ihren **Mandanten** isoliert. Diese IP-Adresse wird auch benötigt, wenn Sie das [Tool zum Konfigurieren anwendungskonsistenter Momentaufnahmen in Azure](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md) bearbeiten. 
 
 Während Sie im Eigenschaftenbereich nach unten scrollen, erhalten Sie zusätzliche Daten wie eine eindeutige Ressourcen-ID für Ihre Einheit für HANA (große Instanzen) oder die Abonnement-ID, die der Bereitstellung zugewiesen wurde.
 
