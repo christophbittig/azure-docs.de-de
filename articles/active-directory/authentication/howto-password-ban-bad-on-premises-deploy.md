@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951896"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449121"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -188,6 +188,9 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
     ```powershell
     Import-Module AzureADPasswordProtection
     ```
+    
+    > [!WARNING]
+    > Die 64-Bit-Version von PowerShell muss verwendet werden. Bestimmte Cmdlets funktionieren möglicherweise nicht mit PowerShell (x86).
 
 1. Um zu überprüfen, ob der Azure AD-Kennwortschutz-Proxydienst ausgeführt wird, verwenden Sie den folgenden PowerShell-Befehl:
 

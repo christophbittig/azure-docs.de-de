@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/26/2021
 ms.author: tisande
-ms.openlocfilehash: f0a0556ce2a46f922e387d96d20b6425ab362580
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2642f1e85e12ce0251e9b7bfff84b5d468a342d2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385388"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361402"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Übersicht: Integrierter Azure Cosmos DB-Cache (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,9 @@ Ein integrierter Cache wird automatisch innerhalb des dedizierten Gateways konfi
 * Ein Abfragecache für Abfragen
 
 Der integrierte Cache ist ein Lese-/Schreibcache mit einer Entfernungsrichtlinie nach seltener Verwendung. Der Elementcache und der Abfragecache teilen sich die gleiche Kapazität innerhalb des integrierten Caches, und die Entfernungsrichtlinie nach seltener Verwendung gilt für beide. Das bedeutet, das Entfernen von Daten aus dem Cache erfolgt streng danach, welche am längsten nicht verwendet wurden, unabhängig davon, ob es sich um einen Punktlesevorgang oder eine Abfrage handelt.
+
+> [!NOTE]
+> Möchten Sie Feedback zum integrierten Cache äußern? Teilen Sie uns Ihre Meinung mit! Sie können Feedback direkt an das Azure Cosmos DB-Entwicklungsteam senden: cosmoscachefeedback@microsoft.com
 
 ## <a name="workloads-that-benefit-from-the-integrated-cache"></a>Vom integrierten Cache profitierende Workloads
 
@@ -89,26 +92,57 @@ Der integrierte Cache unterstützt nur die letztliche [Konsistenz](consistency-l
 
 Die einfachste Vorgehensweise zum Konfigurieren der letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Wenn Sie die letztliche Konsistenz jedoch nur für einige Ihrer Lesevorgänge festlegen möchten, können Sie die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren.
 
-## <a name="integrated-cache-retention-time"></a>Aufbewahrungszeit des integrierten Caches
+## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-Die Cacheaufbewahrungszeit stellt die maximale Aufbewahrungsdauer für zwischengespeicherte Daten dar. In der Vorschauversion ist `MaxIntegratedCacheStaleness` immer auf 5 Minuten festgelegt. Dies kann nicht geändert werden.
+`MaxIntegratedCacheStaleness` ist die maximal zulässige Veraltung für zwischengespeichertes Lesen und Abfragen von Punkten. `MaxIntegratedCacheStaleness` ist auf Anforderungsebene konfigurierbar. Wenn Sie beispielsweise für `MaxIntegratedCacheStaleness` einen Wert von 2 Stunden festlegen, gibt Ihre Anforderung nur dann zwischengespeicherte Daten zurück, wenn die Daten weniger als 2 Stunden alt sind. Um die Wahrscheinlichkeit von wiederholten Lesezugriffen mithilfe des integrierten Caches zu erhöhen, sollten Sie für `MaxIntegratedCacheStaleness` den maximalen Wert festlegen, den Ihre Geschäftsanforderungen zulassen.
+
+Es ist wichtig zu verstehen, dass `MaxIntegratedCacheStaleness` beim Konfigurieren für eine Anforderung, die den Cache auffüllt, sich nicht auf die Dauer der Zwischenspeicherung dieser Anforderung auswirkt. `MaxIntegratedCacheStaleness` erzwingt Konsistenz, wenn Sie versuchen, zwischengespeicherte Daten zu verwenden. Es gibt keine globale Einstellung für TTL oder Cachedatenaufbewahrung, sodass Daten nur dann aus dem Cache entfernt werden, wenn entweder der integrierte Cache voll ist oder ein neuer Lesezugriff mit einem `MaxIntegratedCacheStaleness` ausgeführt wird, der niedriger als das Alter des aktuellen zwischengespeicherten Eintrags ist.
+
+Dies ist eine Verbesserung gegenüber der Funktionsweise der meisten Caches und ermöglicht die folgende zusätzliche Anpassung:
+
+- Sie können unterschiedliche Veraltungsanforderungen für jedes Lesen oder Abfragen von Punkten festlegen.
+- Verschiedene Clients können auch dann unterschiedliche `MaxIntegratedCacheStaleness`-Werte konfigurieren, wenn sie dasselbe Lesen oder Abfragen von Punkten ausführen.
+- Wenn Sie die Lesekonsistenz bei der Verwendung zwischengespeicherter Daten ändern möchten, hat die Änderung von `MaxIntegratedCacheStaleness` sofortige Auswirkungen auf die Lesekonsistenz.
+
+> [!NOTE]
+> Ohne explizite Konfiguration hat MaxIntegratedCacheStaleness den Standardwert 5 Minuten.
+
+Sehen Sie sich das folgende Beispiel an, um den `MaxIntegratedCacheStaleness`-Parameter besser zu verstehen:
+
+| Time       | Anforderung                                         | Antwort                                                     |
+| ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| t = 0 s  | Ausführen von Abfrage A mit MaxIntegratedCacheStaleness = 30 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Auffüllen des Caches     |
+| t = 0 s  | Ausführen von Abfrage B mit MaxIntegratedCacheStaleness = 60 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Auffüllen des Caches     |
+| t = 20 s | Ausführen von Abfrage A mit MaxIntegratedCacheStaleness = 30 Sekunden | Zurückgeben von Ergebnissen aus integriertem Cache (0 RU-Gebühr)           |
+| t = 20 s | Ausführen von Abfrage B mit MaxIntegratedCacheStaleness = 60 Sekunden | Zurückgeben von Ergebnissen aus integriertem Cache (0 RU-Gebühr)           |
+| t = 40 s | Ausführen von Abfrage A mit MaxIntegratedCacheStaleness = 30 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Aktualisieren des Caches |
+| t = 40 s | Ausführen von Abfrage B mit MaxIntegratedCacheStaleness = 60 Sekunden | Zurückgeben von Ergebnissen aus integriertem Cache (0 RU-Gebühr)           |
+| t = 50 s | Ausführen von Abfrage B mit MaxIntegratedCacheStaleness = 20 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Aktualisieren des Caches |
+
+> [!NOTE]
+> Das Anpassen von `MaxIntegratedCacheStaleness` wird nur in den neuesten .NET- und Java-Vorschau-SDKs unterstützt.
+
+[Lernen Sie, `MaxIntegratedCacheStaleness` zu konfigurieren.](how-to-configure-integrated-cache.md#adjust-maxintegratedcachestaleness)
 
 ## <a name="metrics"></a>Metriken
 
 Bei Verwendung des integrierten Caches ist es hilfreich, einige wichtige Metriken zu überwachen. Zu diesen Metriken des integrierten Caches gehören:
 
-- `DedicatedGatewayCpuUsage`: Hierbei handelt es sich um die CPU-Auslastung durch jeden dedizierten Gatewayknoten.
-- `DedicatedGatewayMemoryUsage`: Hierbei handelt es sich um die Arbeitsspeicherauslastung durch jeden dedizierten Gatewayknoten für die Weiterleitung und Zwischenspeicherung von Anforderungen.
-- `DedicatedGatewayRequests`: Hierbei handelt es sich um die Anzahl der Anforderungen, die über jeden dedizierten Gatewayknoten weitergeleitet werden.
-- `IntegratedCacheEvictedEntriesSize`: Hierbei handelt es sich um die Menge der Daten, die aus dem integrierten Cache entfernt werden.
-- `IntegratedCacheTTLExpirationCount`: Hierbei handelt es sich um die Anzahl der Einträge, die spezifisch aus dem integrierten Cache entfernt werden, weil die zwischengespeicherten Daten die `MaxIntegratedCacheStaleness`-Zeit überschreiten.
-- `IntegratedCacheHitRate`: Hierbei handelt es sich um das Verhältnis der Punktlesevorgänge und Abfragen, die den integrierten Cache verwendet haben (aus allen dedizierten Gatewayanforderungen, die versucht haben, den integrierten Cache zu verwenden).
+- `DedicatedGatewayAverageCpuUsage`: Durchschnittliche CPU-Auslastung aller dedizierten Gatewayknoten.
+- `DedicatedGatewayMaxCpuUsage`: Maximale CPU-Auslastung aller dedizierten Gatewayknoten.
+- `DedicatedGatewayAverageMemoryUsage`: Durchschnittliche Arbeitsspeicherauslastung aller dedizierten Gatewayknoten, die sowohl für das Weiterleiten von Anforderungen als auch das Zwischenspeichern von Daten verwendet werden.
+- `DedicatedGatewayRequests`: Gesamtanzahl dedizierter Gatewayanforderungen für alle dedizierten Gatewayinstanzen.
+- `IntegratedCacheEvictedEntriesSize`: Die durchschnittliche Datenmenge, die aufgrund von LRU aus dem integrierten Cache über dedizierte Gatewayknoten hinweg entfernt wurde. Dieser Wert enthält keine Daten, die aufgrund einer `MaxIntegratedCacheStaleness`-Zeitüberschreitung abgelaufen sind.
+- `IntegratedCacheItemExpirationCount`: Die Anzahl der Elemente, die aus dem integrierten Cache entfernt werden, weil zwischengespeicherte Punktlesezugriffe die `MaxIntegratedCacheStaleness`-Zeit überschritten haben. Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
+- `IntegratedCacheQueryExpirationCount`: Die Anzahl der Abfragen, die aus dem integrierten Cache entfernt werden, weil zwischengespeicherte Abfragen die `MaxIntegratedCacheStaleness`-Zeit überschritten haben. Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
+- `IntegratedCacheItemHitRate`: Der Anteil der Punktlesevorgänge, die den integrierten Cache verwendet haben (aus allen Punktlesevorgängen, die mit letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
+- `IntegratedCacheQueryHitRate`: Der Anteil der Abfragen, die den integrierten Cache verwendet haben (aus allen Abfragen, die mit letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
 
 Alle vorhandenen Metriken sind standardmäßig über das Blatt **Metriken** verfügbar (nicht über das Blatt „Metriken (klassisch)“):
 
    :::image type="content" source="./media/integrated-cache/integrated-cache-metrics.png" alt-text="Screenshot: Metriken des integrierten Caches" border="false":::
 
-Alle Metriken werden als Mittelwert für alle dedizierten Gatewayknoten zur Verfügung gestellt. Wenn Sie beispielsweise einen dedizierten Gatewaycluster mit fünf Knoten bereitstellen, spiegeln die Metriken den durchschnittlichen Wert aller fünf Knoten wider.
+Metriken sind entweder ein Durchschnittswert, ein Maximum oder eine Summe für alle dedizierten Gatewayknoten. Wenn Sie beispielsweise einen dedizierten Gatewaycluster mit fünf Knoten bereitstellen, spiegeln die Metriken den aggregierten Wert aller fünf Knoten wider. Es ist nicht möglich, die Metrikwerte für jeden einzelnen Knoten zu bestimmen.
 
 ## <a name="troubleshooting-common-issues"></a>Behandlung häufig auftretender Probleme
 
@@ -120,21 +154,23 @@ In den folgenden Beispielen wird das Debuggen einiger gängiger Szenarios verans
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>Wie erkenne ich, ob meine Anforderungen den integrierten Cache betreffen?
 
-Überprüfen Sie die Metrik `IntegratedCacheHitRate`. Wenn dieser Wert 0 (null) ist, betreffen die Anforderungen nicht den integrierten Cache. Überprüfen Sie, ob Sie die Verbindungszeichenfolge des dedizierten Gateways verwenden, eine Verbindung im Gatewaymodus herstellen und die letztliche Konsistenz festgelegt haben.
+Überprüfen Sie `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate`. Wenn beide Werte 0 (null) sind, treffen Anforderungen nicht den integrierten Cache. Überprüfen Sie, ob Sie die Verbindungszeichenfolge des dedizierten Gateways verwenden, indem Sie eine [Verbindung mit dem Gatewaymodus herstellen](sql-sdk-connection-modes.md) und die [letztliche Konsistenz festgelegt haben](consistency-levels.md#configure-the-default-consistency-level).
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>Woran erkenne ich, ob mein dediziertes Gateway zu klein ist?
 
-Überprüfen Sie die Metrik `IntegratedCacheHitRate`. Wenn dieser Wert hoch ist (z. B. über 0,5 – 0,6), ist das ein gutes Anzeichen dafür, dass die Größe des dedizierten Gateways genügt.
+Überprüfen Sie `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate`. Wenn dieser Wert hoch ist (z. B. über 0,7- 0,8), ist das ein gutes Anzeichen dafür, dass die Größe des dedizierten Gateways genügt.
 
-Wenn der `IntegratedCacheHitRate`-Wert niedrig ist, überprüfen Sie den Wert `IntegratedCacheEvictedEntriesSize`. Wenn der `IntegratedCacheEvictedEntriesSize`-Wert hoch ist, bedeutet dies, dass ein größeres dediziertes Gateway von Vorteil wäre.
+Wenn `IntegratedCacheItemHitRate` oder `IntegratedCacheQueryHitRate` niedrig ist, überprüfen Sie `IntegratedCacheEvictedEntriesSize`. Wenn der `IntegratedCacheEvictedEntriesSize`-Wert hoch ist, bedeutet dies, dass ein größeres dediziertes Gateway von Vorteil wäre. Sie können experimentieren, indem Sie die Größe des dedizierten Gateways erhöhen und die neuen Werte von `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate` vergleichen. Wenn ein größeres dediziertes Gateway die Werte von `IntegratedCacheItemHitRate` oder `IntegratedCacheQueryHitRate` nicht verbessert, ist es möglich, dass sich Lesezugriffe einfach nicht genug wiederholen, sodass der integrierte Cache keine Auswirkung hat.
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-large"></a>Woran erkenne ich, ob mein dediziertes Gateway zu groß ist?
 
-Das ist etwas schwieriger. Im Allgemeinen sollten Sie klein anfangen und die Größe des dedizierten Gateways langsam erhöhen, bis der `IntegratedCacheHitRate`-Wert sich nicht mehr verbessert.
+Es ist schwieriger zu messen, ob ein dediziertes Gateway zu groß ist, als zu messen, ob ein dediziertes Gateway zu klein ist. Im Allgemeinen sollten Sie klein anfangen und die Größe des dedizierten Gateways langsam erhöhen, bis die Werte von `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate` sich nicht mehr verbessern. In einigen Fällen ist nur eine der beiden Cachetreffermetriken wichtig, nicht beide. Wenn es sich bei Ihrer Workload beispielsweise hauptsächlich um Abfragen und nicht um Punktlesevorgänge handelt, ist `IntegratedCacheQueryHitRate` viel wichtiger als `IntegratedCacheItemHitRate`.
 
-Wenn die meisten Daten aufgrund der Überschreitung des `MaxIntegratedCacheStaleness`-Werts aus dem Cache entfernt werden, anstatt aufgrund der Entfernungsrichtlinie nach seltener Verwendung, ist Ihr Cache möglicherweise größer als notwendig. Überprüfen Sie, ob der `IntegratedCacheTTLExpirationCount`-Wert fast so groß ist wie der `IntegratedCacheEvictedEntriesSize`-Wert. Wenn dies der Fall ist, können Sie eine kleinere Größe für das dedizierte Gateway testen und die Leistung vergleichen.
+Wenn die meisten Daten aufgrund der Überschreitung des `MaxIntegratedCacheStaleness`-Werts aus dem Cache entfernt werden, anstatt aufgrund der Entfernungsrichtlinie nach seltener Verwendung, ist Ihr Cache möglicherweise größer als notwendig. Wenn `IntegratedCacheItemExpirationCount` und `IntegratedCacheQueryExpirationCount` kombiniert fast so groß wie `IntegratedCacheEvictedEntriesSize` sind, können Sie mit einer kleineren Größe des dedizierten Gateways experimentieren und die Leistung vergleichen.
 
-Überprüfen Sie den `DedicatedGatewayMemoryUsage`-Wert, und vergleichen Sie ihn mit der Größe des dedizierten Gateways. Wenn der `DedicatedGatewayMemoryUsage`-Wert kleiner als die Größe des dedizierten Gateways ist, sollten Sie ein kleineres dediziertes Gateway testen.
+### <a name="i-want-to-understand-if-i-need-to-add-more-dedicated-gateway-nodes"></a>Ich möchte wissen, ob ich weitere dedizierte Gatewayknoten hinzufügen muss.
+
+Wenn die Latenz unerwartet hoch ist, benötigen Sie in einigen Fällen möglicherweise mehr dedizierte Gatewayknoten als größere Knoten. Überprüfen Sie `DedicatedGatewayMaxCpuUsage` und `DedicatedGatewayAverageMemoryUsage`, um zu ermitteln, ob das Hinzufügen weiterer dedizierter Gatewayknoten die Latenz reduzieren würde. Beachten Sie: Da alle Instanzen des integrierten Caches voneinander unabhängig sind, wird der Wert von `IntegratedCacheEvictedEntriesSize` durch das Hinzufügen weiterer dedizierter Gatewayknoten nicht reduziert. Das Hinzufügen weiterer Knoten verbessert jedoch das Anforderungsvolumen, das Ihr dedizierter Gatewaycluster verarbeiten kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

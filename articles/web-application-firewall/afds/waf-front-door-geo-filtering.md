@@ -5,26 +5,29 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 08/31/2021
 ms.author: victorh
-ms.openlocfilehash: 50a46556e960070eaedcd03d356eeaa72f872ac7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6d4997253c1b6acfd66d4b126a9249956b18242f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058418"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305402"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Was ist die Geofilterung in einer Domäne für Azure Front Door Service?
 
-Standardmäßig reagiert Azure Front Door Service auf alle Benutzeranforderungen, ganz gleich, wo sich der Benutzer befindet, von dem die Anforderung stammt. Manchmal ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren.
+Standardmäßig reagiert Azure Front Door auf alle Benutzeranforderungen unabhängig davon, woher die Anforderung stammt. In einigen Szenarien ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren.
 
-Eine WAF-Richtlinie enthält üblicherweise einige benutzerdefinierte Regeln. Eine Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In der Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert.  Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
+Eine WAF-Richtlinie enthält einige benutzerdefinierte Regeln. Die Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In einer Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert. Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariable „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Länder-/Regionscode als Wert zusammen. Die Landeskennzahl „ZZ“ oder das Land „Unbekannt“ erfassen IP-Adressen, die noch keinem Land/keiner Region in unserem Dataset zugeordnet sind. Sie können „ZZ“ zu Ihrer Vergleichsbedingung hinzufügen, um False Positive-Ergebnisse zu vermeiden. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
 
-Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) oder mithilfe unserer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering) konfiguriert werden.
+Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](../../frontdoor/front-door-tutorial-geo-filtering.md) oder mithilfe einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering) konfiguriert werden.
+
+> [!IMPORTANT]
+> Geben Sie den Landeskennzahl **ZZ** an, wenn Sie die Funktion Geofilterung verwenden. Die Landeskennzahl **ZZ** (oder das Land *Unbekannt*) erfasst IP-Adressen, die noch keinem Land in unserem Dataset zugeordnet sind. Dadurch werden falsch positive Ergebnisse vermieden.
 
 ## <a name="countryregion-code-reference"></a>Referenz zu Länder-/Regionscodes
 
-|Länder-/Regionscode | Länder-/Regionsname |
+|Länder-/Regionscode | Name des Landes / der Region |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Vereinigte Arabische Emirate|
@@ -58,6 +61,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | BZ | Belize|
 | CA | Canada|
 | CD | Demokratische Republik Kongo|
+| CG | Republik Kongo |
 | CF | Zentralafrikanische Republik|
 | CH | Schweiz|
 | CI | Côte d'Ivoire|

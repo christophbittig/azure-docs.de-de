@@ -1,14 +1,14 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 description: In diesem Artikel wird beschrieben, wie Sie Azure Arc-fähige Server über Windows Admin Center verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
-ms.date: 10/12/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5fa7a61b1e3b22503377cbcbe308a82be89dac72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1abfe2e69a8f3e7b2ab1abcc2d34c79877b750d3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584778"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351348"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 
@@ -16,7 +16,7 @@ Sie können Azure Arc-fähige Server für einen oder mehrere Windows-Computer in
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Arc-fähige Server: Sehen Sie sich die Informationen zu den [Voraussetzungen](agent-overview.md#prerequisites) an, und stellen Sie sicher, dass die Anforderungen für Ihr Abonnement, Ihr Azure-Konto und die zugehörigen Ressourcen erfüllt sind.
+* Arc-fähige Server: Sehen Sie sich die Informationen zu den [Voraussetzungen](agent-overview.md#prerequisites) an und stellen Sie sicher, dass die Anforderungen für Ihr Abonnement, Ihr Azure-Konto und die zugehörigen Ressourcen erfüllt sind.
 
 * Windows Admin Center: Sehen Sie sich die Anforderungen zur [Vorbereitung Ihrer Umgebung](/windows-server/manage/windows-admin-center/deploy/prepare-environment) an, um die [Azure-Integration zu konfigurieren](/windows-server/manage/windows-admin-center/azure/azure-integration) und bereitzustellen.
 
@@ -49,11 +49,11 @@ Führen Sie die folgenden Schritte aus, um den Windows-Server mit Arc-fähigen S
     1. Wählen Sie in der Dropdownliste **Azure-Abonnement** das Azure-Abonnement aus.
     1. Wählen Sie unter **Ressourcengruppe** die Option **Neu** aus, um eine neue Ressourcengruppe zu erstellen. Alternativ können Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressourcengruppe auswählen, die Sie für die Registrierung und Verwaltung des Computers nutzen möchten.
     1. Wählen Sie in der Dropdownliste **Regionen** die Azure-Region aus, in der die Metadaten des Servers gespeichert werden sollen.
-    1. Wählen Sie die Option **Proxyserver verwenden** aus, wenn der Computer oder der Server die Internetverbindung über einen Proxyserver herstellt. Geben Sie die IP-Adresse des Proxyservers oder den Namen und die Portnummer für die Kommunikation mit dem Proxyserver an.
+    1. Wählen Sie die Option **Proxyserver verwenden** aus, wenn der Computer oder der Server die Internetverbindung über einen Proxyserver herstellt. Bei dieser Konfiguration kommuniziert der Agent über den Proxyserver mithilfe des HTTP-Protokolls. Geben Sie die IP-Adresse des Proxyservers oder den Namen und die Portnummer für die Kommunikation mit dem Proxyserver an.
 
 1. Wählen Sie **Set up** (Einrichten) aus, um mit dem Konfigurieren des Windows-Servers mit Azure Arc-fähigen Servern fortzufahren.
 
-Der Windows-Server stellt eine Verbindung mit Azure her, lädt den Connected Machine-Agent herunter und installiert ihn und führt die Registrierung bei Azure Arc-fähigen Servern durch. Wählen Sie im Menü die Option **Benachrichtigungen** aus, um Informationen zum Status zu erhalten.
+Der Windows-Server stellt eine Verbindung mit Azure her, lädt den Connected Machine-Agent herunter, installiert ihn und führt die Registrierung bei Azure Arc-fähigen Servern durch. Wählen Sie im Menü die Option **Benachrichtigungen** aus, um Informationen zum Status zu erhalten.
 
 Wählen Sie in Windows Admin Center im linken Bereich die Option [**Ereignisse**](/windows-server/manage/windows-admin-center/use/manage-servers#events) aus, um die *MsiInstaller*-Ereignisse im Anwendungsereignisprotokoll anzuzeigen und sicherzustellen, dass die Installation des Connected Machine-Agents erfolgreich war.
 
@@ -67,6 +67,6 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 * Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung des Connected Machine-Agents](troubleshoot-agent-onboard.md).
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.
+* Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) und vielem mehr.

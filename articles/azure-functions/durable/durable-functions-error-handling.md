@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Fehler in der Durable Functions-Erweiterung f
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 7a2a95a25bc42de9f4c93200d4fdd1e5d558549a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8ffa633479189ad8391d4c03c59113dc957d77e6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377431"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667133"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Fehlerbehandlung in Durable Functions (Azure Functions)
 
@@ -218,7 +218,7 @@ Invoke-DurableActivity -FunctionName 'FlakyFunction' -RetryOptions $retryOptions
 
 Der Aktivitätsfunktionsaufruf im vorherigen Beispiel nimmt einen Parameter zum Konfigurieren einer automatischen Wiederholungsrichtlinie. Es stehen mehrere Optionen zur Verfügung, um die automatische Wiederholungsrichtlinie anzupassen:
 
-* **Maximale Anzahl von Versuchen**: Die maximale Anzahl der Wiederholungsversuche.
+* **Maximale Anzahl von Versuchen**: Die maximale Anzahl von Versuchen. Wenn 1 festgelegt ist, wird kein Wiederholungsversuch durchgeführt.
 * **Intervall für erste Wiederholung**: Die abzuwartende Zeitspanne bis zum ersten Wiederholungsversuch.
 * **Backoff-Koeffizient**: Der Koeffizient, der verwendet wird, um die Rate für die Erhöhung des Backoffs zu bestimmen. Der Standardwert lautet 1.
 * **Max. Wiederholungsintervall**: Die maximale Zeitspanne zwischen den Wiederholungsversuchen.

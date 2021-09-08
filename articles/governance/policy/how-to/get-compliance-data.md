@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 04/19/2021
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.openlocfilehash: fcc82e2f86746f68000e9cfcafedf2d7b8b3105d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 547128d56eb2577a416ad2dae419d58ffe8b645b
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733566"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038370"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -196,7 +196,7 @@ Neben **Konform** und **Nicht konform** können Richtlinien und Ressourcen vier 
 - **Nicht gestartet**: Der Auswertungszyklus für die Richtlinie oder Ressource wurde noch nicht gestartet.
 - **Nicht registriert**: Der Azure Policy-Ressourcenanbieter wurde nicht registriert, oder das angemeldete Konto hat keine Berechtigung zum Lesen von Konformitätsdaten.
 
-Azure Policy verwendet die Felder **type**, **name** oder **kind** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Zustand **Konform**, **Nicht konform** oder **Ausnahme**. Wenn entweder **type**, **name** oder **kind** die einzige Eigenschaft in der Definition ist, werden alle eingeschlossenen und nicht ausgenommenen Ressourcen als anwendbar angesehen und ausgewertet.
+Azure Policy verwendet die Felder **type**, **name** oder **kind** in der Definition der Richtlinienregel, um zu ermitteln, ob eine Ressource übereinstimmend ist. Falls ja, wird sie als anwendbar angesehen und hat entweder den Zustand **Konform**, **Nicht konform** oder **Ausnahme**. Wenn entweder der **Name** oder die **Art** die einzige Eigenschaft in der Definition ist, werden alle eingeschlossenen und nicht ausgenommenen Ressourcen als anwendbar betrachtet und ausgewertet.
 
 Der Prozentsatz der Konformität wird ermittelt, indem die **konformen** und **ausgenommen** Ressourcen durch _Ressourcen gesamt_ geteilt werden. _Ressourcen gesamt_ ist als Summe der Ressourcen mit dem Zustand **Konform**, **Nicht konform**, **Ausnahme** und **Konflikt** definiert. Die Gesamtzahl für die Konformität ist die Summe der einzelnen Ressourcen mit dem Zustand **Konform** oder **Ausnahme**, dividiert durch die Summe aller einzelnen Ressourcen. Die Abbildung unten enthält 20 einzelne Ressourcen, die zutreffen, und nur eine davon ist **nicht konform**.
 Daher lautet der Gesamtwert für die Ressourcenkonformität 95 % (19 von 20).

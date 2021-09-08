@@ -6,16 +6,19 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 05/27/2020
+ms.date: 08/27/2021
 ms.author: cynthn
-ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78fce318d07e8603830fe04b41df387e6a25f8d9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550449"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227252"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -30,7 +33,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     Das Fenster **Netzwerksicherheitsgruppe erstellen** wird geöffnet.
 
-    ![Erstellen einer Netzwerksicherheitsgruppe](./media/nsg-quickstart-portal/create-nsg.png)
+    :::image type="content" source="media/nsg-quickstart-portal/create-nsg.png" alt-text="Erstellen einer Netzwerksicherheitsgruppe.":::
 
 1. Geben Sie einen Namen für Ihre Netzwerksicherheitsgruppe ein. 
 
@@ -40,14 +43,14 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-an-inbound-security-rule"></a>Erstellen einer Eingangssicherheitsregel
 
-1. Wählen Sie Ihre neue Netzwerksicherheitsgruppe aus. 
+1. Wählen Sie Ihre neue Netzwerksicherheitsgruppe aus.
 
 1. Wählen Sie **Eingangssicherheitsregeln** im linken Menü und dann **Hinzufügen** aus.
 
-    ![Wechsel zur Seite "Erweitert"](./media/nsg-quickstart-portal/advanced.png)
+    :::image type="content" source="media/nsg-quickstart-portal/advanced.png" alt-text="Hinzufügen einer Eingangssicherheitsregel.":::
 
-1. Wechseln Sie auf der Seite **Eingehende Sicherheitsregel hinzufügen** oben auf der Seite von **Grundlegend** zu **Erweitert**. 
-
+1. Sie können die **Quelle** und **Quellportbereiche** nach Bedarf einschränken oder den Standardwert auf *Beliebige* belassen.
+1. Sie können das **Ziel** nach Bedarf einschränken oder den Standardwert auf *Beliebige* belassen.
 1. Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. **HTTP**, aus. Sie können auch **Benutzerdefiniert** auswählen, wenn Sie einen bestimmten zu verwendenden Port angeben möchten. 
 
 1. Ändern Sie optional die **Priorität** oder den **Namen**. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden: je niedriger der numerische Wert, desto früher wird die Regel angewendet.

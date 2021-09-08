@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b8c2e27b7023a106815b34538f1cd3dba85354b3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797669"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667653"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Konfigurieren des integrierten Azure Cosmos DB-Caches (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,6 +59,11 @@ In diesem Artikel wird beschrieben, wie Sie ein dediziertes Gateway bereitstelle
 
 3. Wenn Sie das .NET oder Java SDK verwenden, legen Sie als Verbindungsmodus den [Gatewaymodus](sql-sdk-connection-modes.md#available-connectivity-modes) fest. Dieser Schritt ist für die Python und Node.js SDKs nicht erforderlich, da sie neben dem Gatewaymodus keine weiteren Optionen zum Herstellen von Verbindungen bieten.
 
+> [!NOTE]
+> Wenn Sie die neueste .NET- oder Java SDK-Version verwenden, ist der Standardverbindungsmodus der direkte Modus. Um den integrierten Cache zu verwenden, müssen Sie diesen Standardwert überschreiben.
+
+Wenn Sie das Java SDK verwenden, müssen Sie [contentResponseOnWriteEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.contentresponseonwriteenabled?view=azure-java-stable&preserve-view=true) auch manuell in `CosmosClientBuilder` auf `true` festlegen. Wenn Sie ein anderes SDK verwenden, ist dieser Wert bereits standardmäßig auf `true` festgelegt, sodass Sie keine Änderungen vornehmen müssen.
+
 ## <a name="adjust-request-consistency"></a>Anpassen der Anforderungskonsistenz
 
 Sie müssen die Anforderungskonsistenz auf „Letztliche Konsistenz“ festlegen. Andernfalls wird der integrierte Cache immer von der Anforderung umgangen. Die einfachste Vorgehensweise zum Konfigurieren der letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Sie können die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren. Dies wird empfohlen, wenn der integrierte Cache nur von einem Teil Ihrer Lesezugriffe verwendet werden soll.
@@ -85,7 +90,7 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 ```
 
 > [!NOTE]
-> Derzeit können Sie MaxIntegratedCacheStaleness nur mithilfe den neuesten .NET- und Java-Preview-SDKs anpassen.
+> Derzeit können Sie MaxIntegratedCacheStaleness nur mithilfe der neuesten [.NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview)- und [Java](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.16.0-beta.1)-Vorschau-SDKs anpassen.
 
 ## <a name="verify-cache-hits"></a>Überprüfen von Cachetreffern
 
@@ -96,6 +101,10 @@ Damit eine Leseanforderung (Punktlesevorgang oder Abfrage) den integrierten Cach
 -   Ihr Client stellt eine Verbindung mit dem dedizierten Gatewayendpunkt her.
 -  Ihr Client verwendet den Gatewaymodus (beim Python und Node.js SDK wird immer der Gatewaymodus verwendet).
 -   Die Konsistenz für die Anforderung muss auf „Letztliche Konsistenz“ festgelegt sein.
+
+> [!NOTE]
+> Möchten Sie Feedback zum integrierten Cache äußern? Teilen Sie uns Ihre Meinung mit! Sie können Feedback direkt an das Azure Cosmos DB-Entwicklungsteam senden: cosmoscachefeedback@microsoft.com
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

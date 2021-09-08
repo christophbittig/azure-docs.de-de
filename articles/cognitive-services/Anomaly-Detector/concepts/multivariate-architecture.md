@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
-ms.openlocfilehash: 4d379cfe01dcbd88531b98a32b45e0b30f6adeef
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9de0a774ab2464d3b59ee8875453255e92ea5c45
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318837"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297242"
 ---
-# <a name="predictive-maintenance-solution-with-anomaly-detector-multivariate"></a>Predictive Maintenance-Lösung mit multivariater Anomalieerkennung
+# <a name="predictive-maintenance-solution-with-anomaly-detector-multivariate"></a>Predictive Maintenance-Lösung mit Erkennung von multivariaten Anomalien
 
 Viele verschiedene Branchen benötigen Predictive Maintenance-Lösungen, um Risiken zu verringern und umsetzbare Erkenntnisse durch die Verarbeitung der Daten ihrer Ausrüstung zu gewinnen. Predictive Maintenance wertet den Zustand von Geräten mithilfe von Onlineüberwachung aus. Das Ziel besteht darin, Wartung durchzuführen, bevor die Ausrüstung nachlässt oder ausfällt.
 

@@ -6,14 +6,14 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 9/06/2020
+ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685770"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444839"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN-Endpunkt mit mehreren Ursprüngen
 
@@ -83,6 +83,12 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
 3. Wählen Sie **Hinzufügen**.
 
 4. Wählen Sie **Ursprung konfigurieren** aus, um den Ursprungspfad für alle Ursprünge festzulegen:
+
+    Dieser Ursprungspfad wird verwendet, um die URL umzuschreiben, die von Microsoft CDN beim Erstellen der an den Ursprung weitergeleiteten Anforderung verwendet wird. Außerdem werden alle verbleibenden Teile der eingehenden Anforderung übertragen. Dieser Pfad wird standardmäßig nicht angegeben. Daher verwendet Microsoft CDN den eingehenden URL-Pfad in der Anforderung zum Ursprung.
+
+    Der Ursprungspfad: `/fwd/`
+
+    Der Eingehende URL-Pfad: `/foo/a/b/image1.jpg` </br> URL von Microsoft CDN zum Ursprung: `fwd/foo/a/b/image1.jpg.`
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Konfigurieren des Ursprungspfads" border="true":::
 

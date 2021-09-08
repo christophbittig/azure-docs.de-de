@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 01/25/2021
+ms.date: 06/24/2021
 tags: azure-synpase
-ms.openlocfilehash: b44248732891163bc2630cdfe5b297a06f3cf730
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 869498111df151f78cb0a1d9ad7ede1dd84aaf42
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001014"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582617"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -84,6 +84,7 @@ Sie können die REST-API verwenden, um Datenmaskierungsrichtlinien und -regeln p
 
 Die dynamische Datenmaskierung kann von den Rollen „Azure SQL-Datenbank-Administrator“, „Serveradministrator“ oder die RBAC-Rolle [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) konfiguriert werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
-[Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking)
+- [Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) für (SQL Server).
+- Episode „Data Exposed“ (Daten verfügbar gemacht) zu [Granular Permissions for Azure SQL Dynamic Data Masking](https://channel9.msdn.com/Shows/Data-Exposed/Granular-Permissions-for-Azure-SQL-Dynamic-Data-Masking) (Präzise Berechtigungen für die dynamische Datenmaskierung in Azure SQL) auf Channel 9.

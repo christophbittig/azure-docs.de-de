@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 8bcf300c9e17bd809a0dc35443917dee2a908e27
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0e252a1822d36bf1d8aecbac7f38a0d315d38351
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075581"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371845"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt
 
@@ -29,7 +29,7 @@ Möglicherweise müssen Sie den Datenverkehr von Clients zu den über private En
 Es gelten die folgenden Einschränkungen:
 
 * Netzwerksicherheitsgruppen werden von Datenverkehr, der von privaten Endpunkten stammt, umgangen.
-* Benutzerdefinierte Routen werden von Datenverkehr, der von privaten Endpunkten stammt, umgangen.
+* Benutzerdefinierte Routen (User-defined routes, UDR) werden von Datenverkehr umgangen, der von privaten Endpunkten stammt. Benutzerdefinierte Routen können verwendet werden, um Datenverkehr zu überschreiben, der für den privaten Endpunkt bestimmt ist.
 * Eine einzelne Routingtabelle kann an ein Subnetz angefügt werden
 * Eine Routingtabelle unterstützt bis zu 400 Routen
 

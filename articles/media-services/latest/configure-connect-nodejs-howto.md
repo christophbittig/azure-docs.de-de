@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7c6bba2084247d76a79de9ae9efb1b3ea356a5c4
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960723"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221498"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinden mit der Media Services v3-API – Node.js
 
@@ -47,7 +47,7 @@ Sie arbeiten mit einigen Dateien in Azure-Beispielen. Klonen Sie das Node.js-Bei
 git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
 ```
 
-## <a name="install-the-packages"></a>Installieren der Pakete
+## <a name="install-the-nodejs-packages"></a>Installieren des Node.js-Pakets
 
 ### <a name="install-azurearm-mediaservices"></a>Installieren von @azure/arm-mediaservices
 
@@ -96,11 +96,12 @@ In diesem Beispiel verwenden Sie die folgenden Pakete in der Datei `package.json
 
 ## <a name="connect-to-nodejs-client-using-typescript"></a>Herstellen einer Verbindung zum Node.js-Client mit TypeScript
 
-
-
 ### <a name="sample-env-file"></a>*.env*-Beispieldatei
 
 Kopieren Sie den Inhalt dieser Datei in eine Datei mit dem Namen *.env*. Sie sollte im Stammverzeichnis Ihres Arbeitsrepositorys gespeichert werden. Dies sind die Werte, die Sie von der Seite für den API-Zugriff für Ihr Media Services-Konto im Portal erhalten haben.
+
+Um auf die Werte zuzugreifen, die für die Eingabe in die *.env*-Datei benötigt werden, empfiehlt es sich, zunächst den Artikel [Zugriff auf die API](./access-api-howto.md) zu lesen und zu überprüfen.
+Sie können entweder das Azure-Portal oder die CLI verwenden, um die Werte abzurufen, die für die Eingabe in die Umgebungsvariablendatei dieses Beispiels erforderlich sind.
 
 Nachdem Sie die Datei *.env* erstellt haben, können Sie mit den Beispielen arbeiten.
 
@@ -137,7 +138,7 @@ DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 cd AMSv3Samples
 ```
 
-2. Installieren Sie die Pakete, die in der Datei *packages.json* verwendet werden.
+2. Installieren Sie die Pakete, die in der Datei *package.json* verwendet werden.
 
 ```
 npm install 

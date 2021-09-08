@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 6f0a0fd48e3717d14a714e42c5566cd7bcf090d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d48f1cf99b22c091f069e7e5f572941a234eaebe
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545281"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449863"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Verwalten von StorSimple-Volumecontainern mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -33,7 +33,7 @@ Ein Volumecontainer verfügt über die folgenden Attribute:
 * **Volumes** : Die mehrstufigen oder lokalen StorSimple-Volumes, die im Volumecontainer enthalten sind. 
 * **Verschlüsselung**: Ein Verschlüsselungsschlüssel, der für jeden Volumecontainer definiert werden kann. Mit diesem Schlüssel werden die vom StorSimple-Gerät an die Cloud gesendeten Daten verschlüsselt. Zusammen mit dem vom Benutzer eingegebenen Schlüssel wird ein AES-256-Bit-Schlüssel (gemäß militärischen Sicherheitsstandards) verwendet. Zum Schutz Ihrer Daten wird empfohlen, immer die Cloudspeicherverschlüsselung zu aktivieren.
 * **Speicherkonto** – Das Azure-Speicherkonto, das zum Speichern der Daten verwendet wird. Alle Volumes in einem Volumecontainer nutzen dieses Speicherkonto gemeinsam. Sie können ein Speicherkonto aus einer vorhandenen Liste auswählen oder beim Erstellen des Volumecontainers ein neues Konto erstellen und dann die Anmeldeinformationen für das Konto angeben.
-* **Cloudbandbreite**: Die vom Gerät beanspruchte Bandbreite, wenn Daten vom Gerät an die Cloud gesendet werden. Sie können die Bandbreite steuern, indem Sie beim Erstellen dieses Containers einen Wert von 1-1.000 MBit/s angeben. Wenn das Gerät die gesamte verfügbare Bandbreite nutzen soll, legen Sie dieses Feld auf **Unbegrenzt** fest. Sie können auch eine Bandbreitenvorlage erstellen und anwenden, um Bandbreite basierend auf einem Zeitplan zuzuweisen.
+* **Cloudbandbreite**: Die vom Gerät beanspruchte Bandbreite, wenn Daten vom Gerät an die Cloud gesendet werden. Wenn das Gerät die gesamte verfügbare Bandbreite nutzen soll, legen Sie dieses Feld auf **Unbegrenzt** fest. Sie können auch eine Bandbreitenvorlage erstellen und anwenden, um Bandbreite auf einem Zeitplan basierend zuzuweisen.
 
 In den folgenden Verfahren wird erläutert, wie Sie das Blatt **Volumecontainer** verwenden, um die folgenden allgemeinen Vorgänge durchzuführen:
 

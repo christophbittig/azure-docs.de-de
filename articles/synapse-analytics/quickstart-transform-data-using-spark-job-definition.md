@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2021
-ms.openlocfilehash: f7a44ae2033d75c81f80bc9a37e17ed8fe2786b2
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2b7392af7a00ec68ad263b7c930842714c94fe1d
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110501320"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967713"
 ---
 # <a name="quickstart-transform-data-using-apache-spark-job-definition"></a>Schnellstart: Transformieren von Daten mithilfe einer Apache Spark-Auftragsdefinition
 
@@ -42,13 +42,13 @@ In dieser Schnellstartanleitung wird der Arbeitsbereich „sampletest“ als Bei
 
 Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline, die eine Apache Spark-Auftragsdefinitionsaktivität enthält.
 
-1. Navigieren Sie zur Registerkarte **Integrieren**. Wählen Sie neben dem Header „Pipelines“ das Pluszeichen und anschließend „Pipeline“ aus.
+1. Wechseln Sie zur Registerkarte **Integrieren**. Wählen Sie neben dem Header „Pipelines“ das Pluszeichen und anschließend **Pipeline** aus.
 
      ![Erstellen einer neuen Pipeline](media/doc-common-process/new-pipeline.png)
 
 2. Geben Sie auf der Einstellungsseite **Eigenschaften** der Pipeline unter **Name** die Zeichenfolge **demo** ein.
 
-3. Ziehen Sie unter *Synapse* im Bereich *Aktivitäten* die **Spark-Auftragsdefinition** auf den Pipelinecanvas.
+3. Ziehen Sie unter **Synapse** im Bereich **Aktivitäten** die **Spark-Auftragsdefinition** auf den Pipelinecanvas.
 
      ![Ziehen der Spark-Auftragsdefinition](media/quickstart-transform-data-using-spark-job-definition/drag-spark-job-definition.png)
 
@@ -61,7 +61,7 @@ Nachdem Sie Ihre Apache Spark-Auftragsdefinition erstellt haben, gelangen Sie au
 
 1. Wählen Sie auf dem Canvas das Modul „Spark-Auftragsdefinition“ aus.
 
-2. Geben Sie auf der Registerkarte Allgemein **sample** als **Name** ein.
+2. Geben Sie auf der Registerkarte **Allgemein** für **Name** **sample** ein.
 
 3. Optional können Sie auch eine Beschreibung angeben.
 
@@ -81,9 +81,9 @@ Nachdem Sie Ihre Apache Spark-Auftragsdefinition erstellt haben, gelangen Sie au
 
 In diesem Panel können Sie auf die auszuführende Spark-Auftragsdefinition verweisen.
 
-* Erweitern Sie die Liste der Spark-Auftragsdefinition. Sie können eine vorhandene Apache Spark-Auftragsdefinition auswählen. Sie können auch eine neue Apache Spark-Auftragsdefinition erstellen, indem Sie auf die Schaltfläche „Neu“ klicken, um auf die auszuführende Spark-Auftragsdefinition zu verweisen.
+* Erweitern Sie die Liste der Spark-Auftragsdefinition. Sie können eine vorhandene Apache Spark-Auftragsdefinition auswählen. Sie können auch eine neue Apache Spark-Auftragsdefinition erstellen, indem Sie die Schaltfläche **Neu** auswählen, um auf die auszuführende Spark-Auftragsdefinition zu verweisen.
 
-* Sie können Befehlszeilenargumente hinzufügen, indem Sie auf die Schaltfläche **Neu** klicken. Beachten Sie, dass dadurch die Befehlszeilenargumente außer Kraft gesetzt werden, die durch die Spark-Auftragsdefinition definiert sind. <br> *Beispiel: `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result`* <br>
+* Sie können Befehlszeilenargumente hinzufügen, indem Sie auf die Schaltfläche **Neu** klicken. Beachten Sie, dass durch das Hinzufügen von Befehlszeilenargumenten die Befehlszeilenargumente außer Kraft gesetzt werden, die durch die Spark-Auftragsdefinition definiert sind. <br> *Beispiel: `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result`* <br>
 
      ![Pipelineeinstellungen für Spark-Auftragsdefinitionen](media/quickstart-transform-data-using-spark-job-definition/spark-job-definition-pipline-settings.png)
 

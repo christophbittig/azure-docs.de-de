@@ -5,21 +5,22 @@ services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 08/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11cb0bda5fbedb9dfeef2cc4acc34159a1faf64f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94961191"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446518"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Optionen zum Migrieren von Daten aus StorSimple-Serie 8000
 
 > [!IMPORTANT]
-> Ab dem 31. Dezember 2022 wird die StorSimple-Serie 8000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 8000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
+> Im Dezember 2022 wird die StorSimple 8000-Serie den Status Ende des Supports (EOS) erreichen. Microsoft wird die Hardware und Software dieser Geräte nicht mehr unterstützen und den Dienst einstellen.</br></br>
+> Es wird dringend empfohlen, dass die Kunden der StorSimple-Serie 8000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
 
-Im Dezember 2022 erreicht die StorSimple-Serie 8000 das [Ende des Supports](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series). Kunden, die StorSimple-Serie 8000 ausführen, können ein Upgrade auf andere Erstanbieter-Hybriddienste von Azure durchführen. In diesem Artikel werden die verfügbaren Azure-Hybridoptionen zum Migrieren von Daten beschrieben.
+Im Dezember 2022 erreicht die StorSimple-Serie 8000 das [Ende des Supports](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series). Die Kunden, die StorSimple-Serie 8000 ausführen, können ein Upgrade auf andere Erstanbieter-Hybriddienste von Azure durchführen. In diesem Artikel werden die verfügbaren Azure-Hybridoptionen zum Migrieren von Daten beschrieben.
 
 ## <a name="migration-options"></a>Migrationsoptionen
 
@@ -43,9 +44,16 @@ Diese Migration wird von Panzura unterstützt, und können Kunden als ersten Sch
 
 #### <a name="migrate-to-nasuni"></a>Migrieren zu Nasuni
 
-Das Umstellen Ihrer gesamten StorSimple-Umgebung auf eine stabile, sichere und hochleistungsfähige Dateidienstplattform ist mit Nasuni einfach. Nasuni bietet die Sicherheit und Leistung lokaler Dateispeicherung, jedoch kombiniert mit der Skalierbarkeit und Dauerhaftigkeit von Azure.  Als führender unabhängiger Softwarehersteller (Independent Software Vendor, ISV) von Azure bietet Nasuni alle erforderlichen Tools zur Auslagerung Ihrer StorSimple-Daten auf eine moderne Plattform, die übergreifendes Teilen und Zusammenarbeit an ihren Dateien über mehrere Standorte hinweg ermöglicht.
+Das Umstellen Ihrer gesamten StorSimple-Umgebung auf eine stabile, sichere und hochleistungsfähige Dateidienstplattform ist mit Nasuni einfach. Nasuni bietet die Sicherheit und Leistung lokaler Dateispeicherung, jedoch kombiniert mit der Skalierbarkeit und Dauerhaftigkeit von Azure. Als führender unabhängiger Softwarehersteller (Independent Software Vendor, ISV) von Azure bietet Nasuni alle erforderlichen Tools zur Auslagerung Ihrer StorSimple-Daten auf eine moderne Plattform, die übergreifendes Teilen und Zusammenarbeit an ihren Dateien über mehrere Standorte hinweg ermöglicht.
 
 Legen Sie noch heute los: [Nasuni-Website](https://info.nasuni.com/storsimple8000-webinar).
+
+#### <a name="migrate-to-netapp"></a>Migrieren zu NetApp
+
+Die Kunden der StorSimple 8000-Serie können zu Azure NetApp Files (ANF) in Kombination mit NetApp Global File Cache (GFC) migrieren, um die wichtigen Daten weiterhin in Azure zu speichern und gleichzeitig die Inhalte an den Remotestandorten zu verwalten. Kunden können IT-Speicher und -Infrastruktur optimieren und vereinfachen, indem sie die unstrukturierten Daten in Microsoft Azure mithilfe von Azure NetApp Files zentralisieren, um schnellen lokalen und geografisch verteilten Zugriff mit dem Global File Cache von NetApp zu ermöglichen.
+
+Eine Übersicht über die Funktionen, Bereitstellungsmethoden und Migration finden Sie unter [Referenzarchitektur: Global verteilte Enterprise-Dateifreigabe mit Azure NetApp Files und NetApp Global File Cache](https://f.hubspotusercontent20.net/hubfs/525875/r3_NA-581-0521-Ref-Arch-ANF-GFC-StorSimple%20(1)%20(1)%20(2).pdf) von NetApp.<!--Not included: 1) Partnership with MS; 2) How to initiate migration with NetApp (other providers point people to their site).-->
+
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
@@ -71,7 +79,7 @@ Learn more about how to evolve to a cloud-consolidated enterprise at https://www
 
 ### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>Q. Wenn ist das Dienstende der StorSimple-Geräte der Serie 8000 erreicht?
 
-A. Im Dezember 2022 erreicht die StorSimple-Serie 8000 das [Ende des Supports](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series). Das Ende des Supports bedeutet, dass Microsoft nach Dezember 2022 weder für Hardware noch Software dieser Geräte Support leisten kann. Sie sollten jetzt unbedingt beginnen, einen Plan zum Migrieren der Daten von Ihren Geräten zu formulieren.
+A. Im Dezember 2022 erreicht die StorSimple-Serie 8000 das [Ende des Supports](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series). Das Ende des Supports bedeutet, dass Microsoft nach Dezember 2022 weder für die Hardware noch Software dieser Geräte Support leisten wird. Dazu gehören auch der Dienstsupport und die Softwarepatches/Sicherheitspatches. Außerdem wird der Dienst selbst wird eingestellt. Sie sollten jetzt unbedingt beginnen, einen Plan zum Migrieren der Daten von Ihren Geräten zu formulieren.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Q. Was geschieht mit den Daten, die ich in Azure gespeichert habe?  
 
@@ -83,7 +91,7 @@ A. Die auf dem lokalen Gerät gespeicherten Daten können wie in den Dokumenten 
 
 ### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>Q. Was geschieht, wenn ich mein Gerät der StorSimple-Serie 8000 behalten möchte?
 
-A. Die Dienste könnten zwar weiterhin funktionieren, aber Microsoft wird nicht mehr in der Lage sein, Support für Hardware und Software zu leisten. Die Migration wird im Interesse der Geschäftskontinuität dringend empfohlen.
+A. Microsoft wird keinen Support für die Hardware und Software mehr leisten. Der StorSimple-Dienst wird nicht mehr funktionieren. Die Migration wird im Interesse der Geschäftskontinuität dringend empfohlen.
 
 ### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>Q. Welche Optionen sind verfügbar, um Daten von StorSimple-Geräten der Serie 8000 zu migrieren?
 

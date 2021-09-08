@@ -1,5 +1,5 @@
 ---
-title: Leitfaden zur Migration von MySQL lokal zu Azure Database for MySQL – Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR)
+title: 'Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Business Continuity & Disaster Recovery (BCDR)'
 description: Wie bei jedem unternehmenskritischen System ist die Strategie für Sicherung und Wiederherstellung sowie Notfallwiederherstellung (BCDR) ein wichtiger Bestandteil Ihres gesamten Systementwurfs.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 4785c49c456b0008f0ec4c67cdee55d8118c76a9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 35ab4f952b2e8082f4923926f11698fef352c8f8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082734"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296223"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-business-continuity-and-disaster-recovery-bcdr"></a>Leitfaden zur Migration von MySQL lokal zu Azure Database for MySQL – Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR)
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-business-continuity-and-disaster-recovery-bcdr"></a>Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Business Continuity & Disaster Recovery (BCDR)
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,9 +30,9 @@ Wie bei jedem unternehmenskritischen System ist die Strategie für Sicherung und
 
 ### <a name="backup"></a>Backup
 
-Azure Database for MySQL unterstützt automatische Sicherungen standardmäßig 7 Tage lang. Es kann sinnvoll sein, dies in den aktuellen Maximalwert von 35 Tagen zu ändern. Sie müssen beachten, dass bei einer Änderung des Werts in 35 Tage Gebühren für über den zugeordneten Speicher hinausgehenden zusätzlichen Sicherungsspeicher anfallen.
+Azure Database for MySQL unterstützt standardmäßig automatische Sicherungen für sieben Tage. Es kann sinnvoll sein, dies in den aktuellen Maximalwert von 35 Tagen zu ändern. Sie müssen beachten, dass bei einer Änderung des Werts in 35 Tage Gebühren für über den zugeordneten Speicher hinausgehenden zusätzlichen Sicherungsspeicher anfallen.
 
-Es gibt mehrere aktuelle Einschränkungen der Datenbanksicherungsfunktion, wie im Dokumentationsartikel [Sicherung und Wiederherstellung in Azure Database for MySQL](/azure/mysql/concepts-backup) beschrieben. Diese müssen Sie kennen, wenn Sie entscheiden, welche zusätzlichen Strategien implementiert werden sollen.
+Es gibt mehrere aktuelle Einschränkungen der Datenbanksicherungsfunktion, wie im Dokumentationsartikel [Sicherung und Wiederherstellung in Azure Database for MySQL](../../concepts-backup.md) beschrieben. Diese müssen Sie kennen, wenn Sie entscheiden, welche zusätzlichen Strategien implementiert werden sollen.
 
 Sie müssen z. B. Folgendes beachten:
 
@@ -41,21 +43,21 @@ Sie müssen z. B. Folgendes beachten:
 - Für Ebenen, die bis zu 16 TB zulassen, werden Sicherungen auf Momentaufnahmenbasis durchgeführt.
 
     > [!NOTE]
-    > [Einige Regionen](/azure/mysql/concepts-pricing-tiers#storage) unterstützen noch keinen Speicher von bis zu 16 TB.
+    > [Einige Regionen](../../concepts-pricing-tiers.md#storage) unterstützen noch keinen Speicher von bis zu 16 TB.
 
 ### <a name="restore"></a>Restore
 
 Redundanz (lokal oder Georedundanz) muss während der Servererstellung konfiguriert werden. Eine Geowiederherstellung kann jedoch durchgeführt werden und ermöglicht die Änderung dieser Optionen während des Wiederherstellungsprozesses. Das Ausführen eines Wiederherstellungsvorgangs kann die Konnektivität vorübergehend beenden, und alle Anwendungen sind während des Wiederherstellungsvorgangs ausgeschaltet.
 
-Während einer Datenbankwiederherstellung müssen alle unterstützenden Elemente außerhalb der Datenbank wiederhergestellt werden. Überprüfen Sie den Migrationsprozess. Weitere Informationen finden Sie unter [Durchführen der Aufgaben nach der Wiederherstellung](/azure/mysql/concepts-backup#perform-post-restore-tasks).
+Während einer Datenbankwiederherstellung müssen alle unterstützenden Elemente außerhalb der Datenbank wiederhergestellt werden. Überprüfen Sie den Migrationsprozess. Weitere Informationen finden Sie unter [Durchführen der Aufgaben nach der Wiederherstellung](../../concepts-backup.md#perform-post-restore-tasks).
 
 ## <a name="read-replicas"></a>Lesereplikate
 
-[Lesereplikate](/azure/mysql/concepts-read-replicas) können verwendet werden, um den MySQL-Lesedurchsatz zu erhöhen, die Leistung für regionale Benutzer zu verbessern und die Notfallwiederherstellung zu implementieren. Beachten Sie beim Erstellen eines oder mehrerer Lesereplikate, dass zusätzliche Gebühren für die gleiche Compute- und Speichernutzung wie für den primären Server anfallen.
+[Lesereplikate](../../concepts-read-replicas.md) können verwendet werden, um den MySQL-Lesedurchsatz zu erhöhen, die Leistung für regionale Benutzer zu verbessern und die Notfallwiederherstellung zu implementieren. Beachten Sie beim Erstellen eines oder mehrerer Lesereplikate, dass zusätzliche Gebühren für die gleiche Compute- und Speichernutzung wie für den primären Server anfallen.
 
 ## <a name="deleted-servers"></a>Gelöschte Server
 
-Wenn ein Administrator oder ein böswilliger Benutzer den Server im Azure-Portal oder über automatisierte Methoden löscht, werden alle Sicherungen und Lesereplikate gelöscht. Es ist wichtig, dass [Ressourcensperren](/azure/azure-resource-manager/management/lock-resources) für die Azure Database for MySQL-Ressourcengruppe erstellt werden, um den Instanzen eine zusätzliche Löschschutzebene hinzuzufügen.
+Wenn ein Administrator oder ein böswilliger Benutzer den Server im Azure-Portal oder über automatisierte Methoden löscht, werden alle Sicherungen und Lesereplikate gelöscht. Es ist wichtig, dass [Ressourcensperren](../../../azure-resource-manager/management/lock-resources.md) für die Azure Database for MySQL-Ressourcengruppe erstellt werden, um den Instanzen eine zusätzliche Löschschutzebene hinzuzufügen.
 
 ## <a name="regional-failure"></a>Regionaler Ausfall
 
@@ -66,7 +68,7 @@ Wenn ein seltener regionalen Ausfall eintritt, können georedundante Sicherungen
 
 ### <a name="load-balancers"></a>Load Balancer
 
-Wenn die Anwendung aus vielen verschiedenen Instanzen auf der ganzen Welt besteht, ist es möglicherweise nicht möglich, alle Clients zu aktualisieren. Verwenden Sie einen [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) oder ein [Application Gateway](/azure/application-gateway/overview), um eine nahtlose Failoverfunktion zu implementieren. Obwohl sie hilfreich und zeitsparend sind, sind diese Tools für regionale Failoverfunktionen nicht erforderlich.
+Wenn die Anwendung aus vielen verschiedenen Instanzen auf der ganzen Welt besteht, ist es möglicherweise nicht möglich, alle Clients zu aktualisieren. Verwenden Sie einen [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) oder ein [Application Gateway](../../../application-gateway/overview.md), um eine nahtlose Failoverfunktion zu implementieren. Obwohl sie hilfreich und zeitsparend sind, sind diese Tools für regionale Failoverfunktionen nicht erforderlich.
 
 ## <a name="wwi-scenario"></a>WWI-Szenario
 
@@ -86,7 +88,7 @@ WWI wollte die Failoverfunktionen von Lesereplikaten testen, sodass sie die unte
 
 - Wählen Sie die Region aus.
 
-- Wählen Sie **OK** aus, und warten Sie, bis die Instanz bereitgestellt ist. Je nach Größe der Hauptinstanz kann die Replikation einige Zeit dauern.
+- Wählen Sie **OK** aus, und warten Sie, bis die Instanz bereitgestellt wurde. Je nach Größe der Hauptinstanz kann die Replikation einige Zeit dauern.
 
     > [!NOTE]
     > Für jedes Replikat fallen zusätzliche Gebühren an, die denen für die Hauptinstanz entsprechen.
@@ -119,6 +121,8 @@ Failoverschritte:
 
 - Implementieren Sie eine Lastenausgleichsstrategie für Anwendungen für schnelles Failover.  
 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Security](./13-security.md)

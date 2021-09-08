@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 03ae984a5950a026fc9bc5c30ee1951e1c17b909
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 954750e0e20b56a09cd416f2ef2503877cc30588
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346431"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692443"
 ---
 # <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 In diesem Artikel erfahren Sie, wie Sie mit Azure Image Builder und Azure PowerShell eine Imageversion in einer [Shared Image Gallery](../shared-image-galleries.md) erstellen und dann global verteilen. Sie können hierfür auch die [Azure-Befehlszeilenschnittstelle](../linux/image-builder-gallery.md) verwenden.
 

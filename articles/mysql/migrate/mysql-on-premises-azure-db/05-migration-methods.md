@@ -1,5 +1,5 @@
 ---
-title: 'Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Migrationsmethoden'
+title: 'Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Migrationsmethoden'
 description: Für eine erfolgreiche Migration müssen Tools oder Features von MySQL verwendet werden, um die Daten von der Quelle an das Ziel zu übertragen.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: be44dd31b5a038414a10a7dac47e53a12573449e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 6a4b0e2dc084168e1bffa539924ad897ac93961e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082781"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085000"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-migration-methods"></a>Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Migrationsmethoden
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-migration-methods"></a>Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL: Migrationsmethoden
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,9 +104,9 @@ WWI kann zwischen verschiedenen Methoden für die Migration von MySQL-Workloads 
 
 | Ziel | BESCHREIBUNG | Tool | Voraussetzungen | Vorteile | Nachteile |
 |-----------|-------------|------|---------------|------------|---------------|
-| **Schnellstmögliche Migration** | Paralleler Ansatz | mydumper und myloader | Linux | Stark parallelisiert | Zieldrosselung |
-| **Onlinemigration** | Möglichst lange Verfügbarkeit der Quelle | binlog | Keine | Nahtlos | Zusätzlicher Verarbeitungsaufwand und Speicherbedarf  |
-| **Offlinemigration** | Möglichst lange Verfügbarkeit der Quelle | Database Migration Service (DMS) | Keine | Wiederholbarer Prozess  | Auf Daten beschränkt; unterstützt alle MySQL-Versionen |
+| **Schnellstmögliche Migration** | Paralleler Ansatz| mydumper und myloader | Linux | Stark parallelisiert | Zieldrosselung |
+| **Onlinemigration** | Möglichst lange Verfügbarkeit der Quelle | binlog | Keine | Nahtlos | Zusätzlicher Verarbeitungsaufwand und Speicherbedarf |
+| **Offlinemigration** | Möglichst lange Verfügbarkeit der Quelle | Database Migration Service (DMS)| Keine | Wiederholbarer Prozess | Auf Daten beschränkt; unterstützt alle MySQL-Versionen |
 | **Stark angepasste Offlinemigration** | Selektiver Export von Objekten | mysqldump | Keine | Hochgradig anpassbar | Manuell |
 | **Halbautomatisierte Offlinemigration** | Export und Import über eine Benutzeroberfläche | MySQL Workbench | Herunterladen und Installieren | Halbautomatisiert | Nur gängige Switches werden unterstützt |
 
@@ -120,6 +122,8 @@ WWI hat als erste Migrationsworkload die Konferenzdatenbank des Unternehmens aus
 
   - Methode wird von der Datenworkload unterstützt (muss immer geprüft werden)  
 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Test Plans](./06-test-plans.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: eb7d88424a04754612f981d58e8e1d6cb85ce0fb
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294927"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770590"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -84,7 +84,7 @@ Bei der Wahl der Cachekapazität werden Sie feststellen, dass einige Durchsatzwe
 
 In dieser Tabelle werden einige wichtige Unterschiede zwischen den beiden Optionen erläutert.
 
-| Attribut | Cachetarif „Standard“ | Cache mit hohem Durchsatz |
+| attribute | Cachetarif „Standard“ | Cache mit hohem Durchsatz |
 |--|--|--|
 | Menükategorie „Durchsatz“ |„Zwischenspeichern von Lese- und Schreibvorgängen“| „Schreibgeschütztes Zwischenspeichern“|
 | Durchsatzgrößen | 2, 4 oder 8 GB/s | 4,5, 9 oder 16 GB/s |
@@ -114,7 +114,7 @@ Eine ausführliche Erläuterung des Verschlüsselungsverfahrens mit kundenseitig
 
 Wählen Sie **Vom Kunden verwaltet** aus, um die Verschlüsselung mit kundenseitig verwalteten Schlüsseln auszuwählen. Die Felder für die Angabe des Schlüsseltresors werden angezeigt. Wählen Sie die zu verwendende Azure Key Vault-Instanz und dann den Schlüssel und die Version für diesen Cache aus. Bei dem Schlüssel muss es sich um einen 2.048-Bit-RSA-Schlüssel handeln. Auf dieser Seite können Sie einen Schlüsseltresor, einen Schlüssel oder eine Schlüsselversion neu erstellen.
 
-Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview) wünschen.
+Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys) wünschen.
 
 Wenn Sie eine bestimmte verwaltete Identität für diesen Cache verwenden möchten, konfigurieren Sie sie im Abschnitt **Verwaltete Identitäten**. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -178,11 +178,11 @@ Geben Sie die folgenden Werte an:
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | Nein          | nein          |
-  | 6144 GB    | ja         | Ja         | nein          |
-  | 12288 GB   | ja         | Ja         | ja         |
-  | 24576 GB   | nein          | Ja         | ja         |
-  | 49152 GB   | nein          | Nein          | ja         |
+  | 3\.072 GB    | ja         | nein          | nein          |
+  | 6144 GB    | ja         | ja         | nein          |
+  | 12288 GB   | ja         | ja         | ja         |
+  | 24576 GB   | nein          | ja         | ja         |
+  | 49152 GB   | nein          | nein          | ja         |
 
   Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, wählen Sie den höchsten verfügbaren Wert für die Cachegröße für Ihre SKU aus. Diese Konfigurationen unterstützen bis zu 20 Speicherziele.
 
@@ -282,11 +282,11 @@ Geben Sie die folgenden Werte an:
 
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3\.072 GB    | ja         | Nein          | nein          |
-  | 6144 GB    | ja         | Ja         | nein          |
-  | 12.288 GB   | ja         | Ja         | ja         |
-  | 24.576 GB   | nein          | Ja         | ja         |
-  | 49.152 GB   | nein          | Nein          | ja         |
+  | 3\.072 GB    | ja         | nein          | nein          |
+  | 6144 GB    | ja         | ja         | nein          |
+  | 12.288 GB   | ja         | ja         | ja         |
+  | 24.576 GB   | nein          | ja         | ja         |
+  | 49.152 GB   | nein          | nein          | ja         |
 
   Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: v-erkel
-ms.openlocfilehash: 59b83132f4de25886494bdc5c23819243240e962
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 202f942bc4fb47b2c71802667e31e08de7cfe13e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737328"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588811"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -93,7 +93,7 @@ Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfiguration
 ## <a name="storage-infrastructure"></a>Speicherinfrastruktur
 <!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-Der Cache unterstützt Azure-Blobcontainer, NFS-Hardwarespeicherexporte und in NFS eingebundene ADLS-Blobcontainer (derzeit in der Vorschauphase). Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu.
+Der Cache unterstützt Azure-Blobcontainer, NFS-Hardwarespeicherexporte und in NFS eingebundene ADLS-Blobcontainer. Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu.
 
 Die Größe Ihres Caches bestimmt, wie viele Speicherziele unterstützt werden können – bis zu 10 Speicherziele für die meisten Caches oder bis zu 20 für die größten Caches. Weitere Informationen finden Sie unter [Korrekte Cachegröße zur Unterstützung Ihrer Speicherziele](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets).
 
@@ -104,7 +104,7 @@ Für jeden Speichertyp gelten bestimmte Voraussetzungen.
 Wenn Sie Azure-Blobspeicher in Kombination mit Ihrem Cache verwenden möchten, benötigen Sie ein kompatibles Speicherkonto und entweder einen leeren Blobcontainer oder einen Container, der mit Daten im Format von Azure HPC Cache aufgefüllt ist, wie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md) beschrieben.
 
 > [!NOTE]
-> Für in NFS eingebundenen Blobspeicher gelten andere Anforderungen. Weitere Informationen finden Sie unter [ADLS-NFS-Speicheranforderungen](#nfs-mounted-blob-adls-nfs-storage-requirements-preview).
+> Für in NFS eingebundenen Blobspeicher gelten andere Anforderungen. Weitere Informationen finden Sie unter [ADLS-NFS-Speicheranforderungen](#nfs-mounted-blob-adls-nfs-storage-requirements).
 
 Erstellen Sie das Konto, bevor Sie versuchen, ein Speicherziel hinzufügen. Beim Hinzufügen des Ziels können Sie einen neuen Container erstellen.
 
@@ -122,7 +122,7 @@ Es wird empfohlen, ein Speicherkonto in derselben Azure-Region Ihres Caches zu v
 Außerdem müssen Sie der Cacheanwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben (wie weiter oben unter [Berechtigungen](#permissions) beschrieben). Befolgen Sie das Verfahren unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die erforderlichen Zugriffsrollen zuzuweisen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
 
 ### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
-<!-- linked from configuration.md -->
+<!-- linked from configuration.md and add storage -->
 
 Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise eines lokalen hardwarebasierten NAS-Systems), dass es die folgenden Anforderungen erfüllt. Arbeiten Sie bei der Überprüfung dieser Einstellungen ggf. mit den Netzwerkadministratoren oder den Firewall-Managern Ihres Speichersystems (oder Rechenzentrums) zusammen.
 
@@ -171,14 +171,11 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konf
 
 * Der NFS-Back-End-Speicher muss eine kompatible Hardware-/Softwareplattform aufweisen. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
 
-### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>Anforderungen für in NFS eingebundenen Blobspeicher (ADLS-NFS) (Vorschau)
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements"></a>Anforderungen für in NFS eingebundenen Blobspeicher (ADLS-NFS)
 
 Azure HPC Cache kann auch einen Blobcontainer verwenden, der mit dem NFS-Protokoll als Speicherziel eingebunden ist.
 
-> [!NOTE]
-> Die Unterstützung des NFS 3.0-Protokolls für Azure Blob Storage befindet sich in der öffentlichen Vorschauphase. Die Verfügbarkeit ist eingeschränkt, und es können Änderungen an den Features vorgenommen werden, bevor diese allgemein verfügbar sind. Verwenden Sie in Produktionssystemen keine Technologien, die sich in der Vorschau befinden.
->
-> Weitere Informationen zu dieser Previewfunktion finden Sie unter [Unterstützung des NFS 3.0-Protokolls in Azure Blob Storage](../storage/blobs/network-file-system-protocol-support.md).
+Weitere Informationen zu dieser Funktion finden Sie unter [Unterstützung des NFS 3.0-Protokolls in Azure Blob Storage](../storage/blobs/network-file-system-protocol-support.md).
 
 Die Speicherkontoanforderungen für ein ADLS-NFS-Blobspeicherziel unterscheidet sich von den Anforderungen für ein Standard-Blobspeicherziel. Führen Sie die Anweisungen unter [Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)](../storage/blobs/network-file-system-protocol-support-how-to.md) sorgfältig aus, um das NFS-fähige Speicherkonto zu erstellen und zu konfigurieren.
 

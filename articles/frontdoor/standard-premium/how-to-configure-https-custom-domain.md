@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/10/2021
+ms.date: 08/26/2021
 ms.author: amsriva
-ms.openlocfilehash: 0e8c597037ac769c293a2f04cb2e300658db93b4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 79674febe7f43f8ae57d8c0420d6c8500506506e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005229"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965673"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Konfigurieren von HTTPS für eine benutzerdefinierte Front Door Standard/Premium-SKU (Vorschau) über das Azure-Portal
 

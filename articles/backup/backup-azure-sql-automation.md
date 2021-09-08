@@ -2,15 +2,15 @@
 title: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 description: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit Azure Backup und PowerShell.
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 06/30/2021
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8695d72a213245df71845a76c4d3250816454672
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: be335dc70290c61f35608b8adf55483bf2a61ca8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681259"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449450"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
@@ -149,7 +149,8 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 Es ist geplant, die Tresorkontexteinstellung gemäß den Azure PowerShell-Richtlinien als veraltet zu kennzeichnen. Stattdessen können Sie die Tresor-ID speichern oder abrufen und wie folgt an relevante Befehle übergeben:
 
 ```powershell
-$vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
+$testVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
+$testVault.ID
 ```
 
 ## <a name="configure-a-backup-policy"></a>Konfigurieren einer Sicherungsrichtlinie
@@ -198,7 +199,7 @@ Im Falle von Sicherungen virtueller Azure-Computer und Azure-Dateifreigaben kann
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
-Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
+Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $testVault.ID -Force
 ```
 
 Der Befehl gibt einen „Sicherungscontainer“ dieser Ressource zurück, und der Status lautet „registriert“.
@@ -211,13 +212,13 @@ Der Befehl gibt einen „Sicherungscontainer“ dieser Ressource zurück, und de
 Nach der Registrierung kann der Backup-Dienst alle verfügbaren SQL-Komponenten auf dem virtuellen Computer auflisten. Verwenden Sie zum Anzeigen aller SQL-Komponenten, die in diesem Tresor noch zu sichern sind, das PowerShell-Cmdlet [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem).
 
 ```powershell
-Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $testVault.ID
 ```
 
 Die Ausgabe zeigt alle nicht geschützten SQL-Komponenten auf allen virtuellen SQL-Computern, die bei diesem Tresor registriert sind, mit dem Elementtyp und dem Servernamen an. Sie können weiter nach einem bestimmten virtuellen SQL-Computer filtern, indem Sie den Parameter „-Container“ übergeben oder die Kombination aus „Name“ und „ServerName“ zusammen mit dem Flag „ItemType“ verwenden, um zu einem eindeutigen SQL-Element zu gelangen.
 
 ```powershell
-$SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID -Name "<Item Name>" -ServerName "<Server Name>"
+$SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $testVault.ID -Name "<Item Name>" -ServerName "<Server Name>"
 ```
 
 ### <a name="configuring-backup"></a>Konfigurieren der Sicherung
@@ -241,9 +242,9 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 Sobald der Computer registriert ist, ruft der Backup-Dienst die Details der dann verfügbaren Datenbanken ab. Wenn SQL-Datenbanken oder SQL-Instanzen dem registrierten Computer später hinzugefügt werden, müssen Sie den Sicherungsdienst manuell auslösen, damit eine neue „Abfrage“ zum erneuten Abrufen **aller** nicht geschützten Datenbanken (einschließlich der neu hinzugefügten) ausgeführt wird. Verwenden Sie zum Ausführen einer neuen Abfrage das PowerShell-Cmdlet [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) auf dem virtuellen SQL-Computer. Der Befehl wartet, bis der Vorgang abgeschlossen ist. Verwenden Sie später das PowerShell-Cmdlet [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem), um die Liste der neuesten nicht geschützten SQL-Komponenten abzurufen.
 
 ```powershell
-$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
-Initialize-AzRecoveryServicesBackupProtectableItem -Container $SQLContainer -WorkloadType MSSQL -VaultId $targetvault.ID
-Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID
+$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $testVault.ID
+Initialize-AzRecoveryServicesBackupProtectableItem -Container $SQLContainer -WorkloadType MSSQL -VaultId $testVault.ID
+Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $testVault.ID
 ```
 
 Nachdem die entsprechenden schützbaren Elemente abgerufen wurden, aktivieren Sie die Sicherungen wie im [Abschnitt oben](#configuring-backup) angegeben.
@@ -256,8 +257,8 @@ Sie können die Sicherung so konfigurieren, dass alle zukünftig hinzugefügten 
 Da die Anweisung das Sichern aller zukünftigen Datenbanken vorsieht, erfolgt der Vorgang auf der Ebene einer SQL-Instanz.
 
 ```powershell
-$SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
-Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $NewSQLPolicy -VaultId $targetvault.ID
+$SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $testVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
+Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $NewSQLPolicy -VaultId $testVault.ID
 ```
 
 Sobald der beabsichtigte automatische Schutz festgelegt ist, wird die Anfrage an den Computer zum Abrufen neu hinzugefügter Datenbanken alle acht Stunden als geplante Hintergrundaufgabe ausgeführt.
@@ -271,10 +272,13 @@ Azure Backup kann auf virtuellen Azure-Computern ausgeführte SQL Server-Datenb
 
 Überprüfen Sie vor dem Wiederherstellen von SQL-Datenbanken die [hier](restore-sql-database-azure-vm.md#restore-prerequisites) genannten Voraussetzungen.
 
+> [!WARNING]
+> Aufgrund eines Sicherheitsproblems im Zusammenhang mit der RBAC mussten wir einen Breaking Change in den Wiederherstellungsbefehlen für SQL DB über PowerShell einführen. Führen Sie ein Upgrade auf Az 6.0.0 oder höher durch, damit die richtigen Wiederherstellungsbefehle über PowerShell übermittelt werden. Die neuesten PS-Befehle werden unten bereitgestellt.
+
 Rufen Sie zunächst die jeweilige gesicherte SQL-Datenbank mit dem PowerShell-Cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) ab.
 
 ```powershell
-$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
+$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $testVault.ID
 ```
 
 ### <a name="fetch-the-relevant-restore-time"></a>Abrufen der relevanten Wiederherstellungszeit
@@ -288,7 +292,7 @@ Mit [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryse
 ```powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
 $endDate = (Get-Date).ToUniversalTime()
-Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -StartDate $startdate -EndDate $endDate
+Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $testVault.ID -StartDate $startdate -EndDate $endDate
 ```
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
@@ -303,7 +307,7 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ItemName           
 Verwenden Sie zum Abrufen des relevanten Wiederherstellungspunkts den Filter „RecoveryPointId“ oder einen Arrayfilter.
 
 ```powershell
-$FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -RecoveryPointId "6660368097802"
+$FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $testVault.ID -RecoveryPointId "6660368097802"
 ```
 
 #### <a name="fetch-point-in-time-recovery-point"></a>Abrufen eines Zeitpunkts als Wiederherstellungspunkt
@@ -311,7 +315,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 Wenn Sie die Datenbank auf einen bestimmten Zeitpunkt wiederherstellen möchten, verwenden Sie dazu das PowerShell-Cmdlet [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain). Das Cmdlet gibt eine Liste mit Datumsangaben zurück, die Start- und Endzeiten einer ununterbrochenen, kontinuierlichen Protokollkette für das jeweilige SQL-Sicherungselement darstellen. Der gewünschte Zeitpunkt sollte innerhalb dieses Bereichs liegen.
 
 ```powershell
-Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $testVault.ID
 ```
 
 Die Ausgabe entspricht etwa folgendem Beispiel:
@@ -345,13 +349,13 @@ Um die gesicherte Datenbank mit Daten vom Wiederherstellungspunkt zu überschrei
 ##### <a name="original-restore-with-distinct-recovery-point"></a>Wiederherstellen des ursprünglichen Zustands mit eindeutigem Wiederherstellungspunkt
 
 ```powershell
-$OverwriteWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -OriginalWorkloadRestore -VaultId $targetVault.ID
+$OverwriteWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -OriginalWorkloadRestore -VaultId $testVault.ID
 ```
 
 ##### <a name="original-restore-with-log-point-in-time"></a>Wiederherstellen des ursprünglichen Zustands mit Protokollzeitpunkt
 
 ```powershell
-$OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem  -OriginalWorkloadRestore -VaultId $targetVault.ID
+$OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem  -OriginalWorkloadRestore -VaultId $testVault.ID
 ```
 
 #### <a name="alternate-workload-restore"></a>Wiederherstellen einer anderen Workload
@@ -359,24 +363,25 @@ $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -Po
 > [!IMPORTANT]
 > Eine gesicherte SQL-Datenbank kann nur auf einem virtuellen Azure-Computer, der beim entsprechenden Tresor „registriert“ ist, als eine neue Datenbank in einer anderen SQL-Instanz wiederhergestellt werden.
 
-Wie oben beschrieben, stellen Sie im Fall einer SQL-Zielinstanz auf einem anderen virtuellen Azure-Computer sicher, dass dieser [beim entsprechenden Tresor registriert ist](#registering-the-sql-vm) und die relevante SQL-Instanz als schützbares Element angezeigt wird.
+Wie oben beschrieben, stellen Sie im Fall einer SQL-Zielinstanz auf einem anderen virtuellen Azure-Computer sicher, dass dieser [beim entsprechenden Tresor registriert ist](#registering-the-sql-vm) und die relevante SQL-Instanz als schützbares Element angezeigt wird. In diesem Dokument gehen wir davon aus, dass der SQLInstance-Zielname MSSQLSERVER sich auf einem anderen virtuellen Computer namens „Contoso2“ befindet.
 
 ```powershell
-$TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
+$TargetContainer =  Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered  -VaultId $testVault.ID -FriendlyName "Contoso2"
+$TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "MSSQLSERVER" -ServerName "Contoso2" -VaultId $testVault.ID
 ```
 
-Übergeben Sie dann einfach den relevanten Wiederherstellungspunkt und die SQL-Zielinstanz mit dem richtigen Flag, wie es nachfolgend gezeigt ist.
+Übergeben Sie dann einfach den relevanten Wiederherstellungspunkt, die SQL-Zielinstanz mit dem richtigen Flag, wie unten dargestellt, und den Zielcontainer, unter dem sich die SQL-Zielinstanz befindet.
 
 ##### <a name="alternate-restore-with-distinct-recovery-point"></a>Wiederherstellen eines anderen Zustands mit eindeutigem Wiederherstellungspunkt
 
 ```powershell
-$AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $targetVault.ID
+$AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $testVault.ID -TargetContainer $TargetContainer
 ```
 
 ##### <a name="alternate-restore-with-log-point-in-time"></a>Wiederherstellen eines anderen Zustands mit Protokollzeitpunkt
 
 ```powershell
-$AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem -AlternateWorkloadRestore -VaultId $targetVault.ID
+$AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $testVault.ID -TargetContainer $TargetContainer
 ```
 
 ##### <a name="restore-as-files"></a>Wiederherstellen als Dateien
@@ -390,13 +395,13 @@ $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAp
 ##### <a name="restore-as-files-with-distinct-recovery-point"></a>Wiederherstellen als Dateien mit eindeutigem Wiederherstellungspunkt
 
 ```powershell
-$FileRestoreWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+$FileRestoreWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $testVault.ID
 ```
 
 ##### <a name="restore-as-files-with-log-point-in-time-from-latest-full"></a>Wiederherstellen als Dateien mit Protokollzeitpunkt von letzter vollständiger Sicherung
 
 ```powershell
-$FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+$FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $testVault.ID
 ```
 
 ##### <a name="restore-as-files-with-log-point-in-time-from-a-specified-full"></a>Wiederherstellen als Dateien mit Protokollzeitpunkt von einer angegebenen vollständigen Sicherung
@@ -404,7 +409,7 @@ $FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -
 Wenn Sie eine bestimmte vollständige Sicherung angeben möchten, die für die Wiederherstellung verwendet werden soll, verwenden Sie den folgenden Befehl:
 
 ```powershell
-$FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+$FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $testVault.ID
 ```
 
 Das endgültige Konfigurationsobjekt für den Wiederherstellungspunkt, das mit dem PowerShell-Cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) abgerufen wird, enthält alle relevanten Informationen für die Wiederherstellung und ähnelt der folgenden Abbildung.
@@ -460,12 +465,110 @@ PointInTime          : 1/1/0001 12:00:00 AM
 > [!IMPORTANT]
 > Stellen Sie sicher, dass das endgültige Wiederherstellungskonfigurationsobjekt alle erforderlichen und richtigen Werte aufweist, da der Wiederherstellungsvorgang auf dem Konfigurationsobjekt basiert.
 
+#### <a name="alternate-workload-restore-to-a-vault-in-secondary-region"></a>Alternative Workloadwiederherstellung in einem Tresor in der sekundären Region
+
+> [!IMPORTANT]
+> Unterstützung für Wiederherstellungen sekundärer Regionen für SQL mit PowerShell ist unter Az 6.0.0 verfügbar.
+
+Wenn Sie die regionsübergreifende Wiederherstellung aktiviert haben, werden die Wiederherstellungspunkte auch in die sekundäre gekoppelte Region repliziert. Anschließend können Sie diese Wiederherstellungspunkte abrufen und eine Wiederherstellung auf einem Computer auslösen, der in dieser gekoppelten Region vorhanden ist. Wie bei der normalen Wiederherstellung sollte der Zielcomputer beim Zieltresor in der sekundären Region registriert werden. Die folgende Abfolge von Schritten sollte den End-to-End-Prozess verdeutlichen.
+
+* Abrufen der Sicherungselemente, die in die sekundäre Region repliziert werden
+* Rufen Sie für ein solches Element die Wiederherstellungspunkte (eindeutig und/oder Protokolle) ab, die in die sekundäre Region repliziert werden.
+* Wählen Sie dann einen Zielserver aus, der bei einem Tresor innerhalb der sekundären gekoppelten Region registriert ist.
+* Lösen Sie die Wiederherstellung auf diesem Server aus, und verfolgen Sie sie mithilfe der JobId nach.
+
+#### <a name="fetch-backup-items-from-secondary-region"></a>Abrufen von Sicherungselementen aus der sekundären Region
+
+Rufen Sie alle SQL-Sicherungselemente aus der sekundären Region mit dem üblichen Befehl ab, aber mit einem zusätzlichen Parameter, um anzugeben, dass diese Elemente aus der sekundären Region abgerufen werden sollen.
+
+```powershell
+$secondaryBkpItems = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload  -WorkloadType MSSQL  -VaultId $testVault.ID -UseSecondaryRegion
+```
+
+##### <a name="fetch-distinct-recovery-points-from-secondary-region"></a>Abrufen eindeutiger Wiederherstellungspunkte aus der sekundären Region
+
+Rufen Sie mit [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) eindeutige (vollständige/differenzielle) Wiederherstellungspunkte für eine sicherungsbasierte SQL-Datenbank ab, und fügen Sie einen Parameter hinzu, um anzugeben, dass es sich um Wiederherstellungspunkte handelt, die aus der sekundären Region abgerufen werden.
+
+```powershell
+$startDate = (Get-Date).AddDays(-7).ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
+Get-AzRecoveryServicesBackupRecoveryPoint -Item $secondaryBkpItems[0] -VaultId $testVault.ID -StartDate $startdate -EndDate $endDate -UseSecondaryRegion
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```output
+RecoveryPointId    RecoveryPointType  RecoveryPointTime      ItemName                             BackupManagemen
+                                                                                                  tType
+---------------    -----------------  -----------------      --------                             ---------------
+6660368097802      Full               3/18/2019 8:09:35 PM   MSSQLSERVER;model             AzureWorkload
+```
+
+Verwenden Sie zum Abrufen des relevanten Wiederherstellungspunkts den Filter „RecoveryPointId“ oder einen Arrayfilter.
+
+```powershell
+$FullRPFromSec = Get-AzRecoveryServicesBackupRecoveryPoint -Item $secondaryBkpItems[0] -VaultId $testVault.ID -RecoveryPointId "6660368097802" -UseSecondaryRegion
+```
+
+##### <a name="fetch-log-recovery-points-from-secondary-region"></a>Abrufen von Protokollwiederherstellungspunkten aus der sekundären Region
+
+Verwenden Sie das PowerShell-Cmdlet [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) mit dem Parameter *-UseSecondaryRegion*, das die Start- und Endzeiten einer ununterbrochenen, kontinuierlichen Protokollkette für diesen SQL-Sicherungsartikel aus der sekundären Region zurückgibt. Der gewünschte Zeitpunkt sollte innerhalb dieses Bereichs liegen.
+
+```powershell
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $secondaryBkpItems[0] -VaultId $testVault.ID -UseSecondaryRegion
+```
+
+Die Ausgabe entspricht etwa folgendem Beispiel:
+
+```output
+ItemName                       StartTime                      EndTime
+--------                       ---------                      -------
+SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
+```
+
+Die vorstehende Ausgabe bedeutet, dass Sie auf jeden beliebigen Zeitpunkt zwischen der angezeigten Start- und Endzeit wiederherstellen können. Die Zeitangaben sind in UTC. Erstellen Sie in PowerShell einen beliebigen Zeitpunkt innerhalb des oben gezeigten Bereichs.
+
+#### <a name="fetch-target-server-from-secondary-region"></a>Abrufen des Zielservers aus der sekundären Region
+
+In der sekundären Region benötigen wir einen Tresor und einen Zielserver, der bei diesem Tresor registriert ist. Sobald der Zielcontainer der sekundären Region und die SQL vorhanden sind, können wir die vorhandenen Cmdlets erneut verwenden, um eine Wiederherstellungsworkload-Konfiguration zu generieren. In diesem Dokument gehen wir davon aus, dass der VM-Name „secondaryVM“ und der Instanzname auf diesem virtuellen Computer „MSSQLInstance“ ist.
+
+Zunächst rufen wir den relevanten Tresor in der sekundären Region und dann die registrierten Container in diesem Tresor ab.
+
+```powershell
+$PairedRegionVault = Get-AzRecoveryServicesVault -ResourceGroupName SecondaryRG -Name PairedVault
+$secContainer =  Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered  -VaultId $PairedRegionVault.ID -FriendlyName "secondaryVM"
+```
+
+Nachdem der registrierte Container ausgewählt wurde, rufen wir die SQL-Instanzen innerhalb des Containers ab, in dem die Datenbank wiederhergestellt werden soll. Hier wird davon ausgegangen, dass in „secondaryVM“eine SQL-Instanz vorhanden ist, und wir rufen diese Instanz ab.
+
+```powershell
+$secSQLInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -VaultId $PairedRegionVault.ID -Container $secContainer
+```
+
+#### <a name="prepare-the-recovery-configuration"></a>Vorbereiten der Wiederherstellungskonfiguration
+
+Wie [oben](#determine-recovery-configuration) für die normale SQL-Wiederherstellung dokumentiert, kann derselbe Befehl erneut verwendet werden, um die relevante Wiederherstellungskonfiguration zu generieren.
+
+##### <a name="for-full-restores-from-secondary-region"></a>Für vollständige Wiederherstellungen aus der sekundären Region
+
+```powershell
+Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRPFromSec[0] -TargetItem $secSQLInstance -AlternateWorkloadRestore -VaultId $vault.ID -TargetContainer $secContainer
+```
+
+##### <a name="for-log-point-in-time-restores-from-secondary-region"></a>Für Protokollzeitpunktwiederherstellungen aus der sekundären Region
+
+```powershell
+Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $secondaryBkpItems[0] -TargetItem $secSQLInstance  -AlternateWorkloadRestore -VaultId $vault.ID -TargetContainer $secContainer
+```
+
+Sobald die relevante Konfiguration für die Wiederherstellung der primären oder sekundären Region abgerufen wurde, kann derselbe Wiederherstellungsbefehl verwendet werden, um Wiederherstellungen auszulösen, und später mithilfe der jobIDs nachverfolgt werden.
+
 ### <a name="restore-with-relevant-configuration"></a>Wiederherstellen mit relevanter Konfiguration
 
 Nachdem das relevante Wiederherstellungskonfigurationsobjekt abgerufen und überprüft wurde, starten Sie den Wiederherstellungsvorgang mit dem PowerShell-Cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem).
 
 ```powershell
-Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
+Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $testVault.ID
 ```
 
 Der Wiederherstellungsvorgang gibt einen nachzuverfolgenden Auftrag zurück.
@@ -483,9 +586,9 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 Nachdem die Sicherung für eine Datenbank aktiviert wurde, können Sie mit dem PowerShell-Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) auch eine bedarfsgesteuerte Sicherung für die Datenbank auslösen. Im folgenden Beispiel wird eine vollständige Sicherung für eine SQL-Datenbank mit aktivierter Komprimierung ausgelöst, und die vollständige Sicherung soll 60 Tage lang aufbewahrt werden.
 
 ```powershell
-$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
+$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $testVault.ID
 $endDate = (Get-Date).AddDays(60).ToUniversalTime()
-Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
+Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $testVault.ID -ExpiryDateTimeUTC $endDate
 ```
 
 Der Befehl zur bedarfsgesteuerten Sicherung gibt einen nachzuverfolgenden Auftrag zurück.
@@ -538,8 +641,8 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentIte
 Um die erneute Registrierung des virtuellen SQL-Computers auszulösen, rufen Sie den relevanten Sicherungscontainer ab, und übergeben Sie ihn an das Cmdlet „Register“.
 
 ```powershell
-$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
-Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID
+$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $testVault.ID
+Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $testVault.ID
 ```
 
 ### <a name="stop-protection"></a>Schutz beenden
@@ -549,8 +652,8 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 Wenn Sie den Schutz verhindern möchten, können Sie dafür das PowerShell-Cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) verwenden. Dadurch werden die geplanten Sicherungen beendet, doch werden die bis zu diesem Zeitpunkt gesicherten Daten dauerhaft beibehalten.
 
 ```powershell
-$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
-Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
+$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $testVault.ID
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $testVault.ID
 ```
 
 #### <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
@@ -558,7 +661,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 Um die gespeicherten Sicherungsdaten im Tresor vollständig zu entfernen, fügen Sie einfach das Flag/den Switch „-RemoveRecoveryPoints“ zum [Befehl „Disable“](#retain-data) hinzu.
 
 ```powershell
-Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $testVault.ID -RemoveRecoveryPoints
 ```
 
 #### <a name="disable-auto-protection"></a>Deaktivieren des automatischen Schutzes
@@ -566,8 +669,8 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 Wenn der automatische Schutz für eine SQL-Instanz konfiguriert wurde, können Sie ihn mit dem PowerShell-Cmdlet [Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) deaktivieren.
 
 ```powershell
-$SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
-Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetvault.ID
+$SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $testVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
+Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $testVault.ID
 ```
 
 #### <a name="unregister-sql-vm"></a>Aufheben der Registrierung des virtuellen SQL-Computers
@@ -575,8 +678,8 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 Wenn alle Datenbanken eines SQL-Servers [nicht mehr geschützt sind und es keine Sicherungsdaten gibt](#delete-backup-data), können Sie die Registrierung des virtuellen SQL-Computers bei diesem Tresor aufheben. Erst dann können Sie Datenbanken in einem anderen Tresor schützen. Mit dem PowerShell-Cmdlet [Unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) können Sie die Registrierung des virtuellen SQL-Computers aufheben.
 
 ```powershell
-$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
- Unregister-AzRecoveryServicesBackupContainer -Container $SQLContainer -VaultId $targetvault.ID
+$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $testVault.ID
+ Unregister-AzRecoveryServicesBackupContainer -Container $SQLContainer -VaultId $testVault.ID
 ```
 
 ### <a name="track-azure-backup-jobs"></a>Nachverfolgen von Azure Backup-Aufträgen
@@ -586,7 +689,7 @@ Sie müssen beachten, dass Azure Backup nur vom Benutzer ausgelöste Aufträge i
 Benutzer können bedarfsgesteuerte bzw. vom Benutzer ausgelöste Vorgänge anhand der Auftrags-ID nachverfolgen, die in der [Ausgabe](#on-demand-backup) asynchroner Aufträge (z. B. einer Sicherung) zurückgegeben ist. Mit dem PowerShell-Cmdlet [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) können Sie einen Auftrag und seine Details nachverfolgen.
 
 ```powershell
- Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
+ Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $testVault.ID
 ```
 
 Zum Abrufen der Liste von bedarfsgesteuerten Aufträgen und deren Status aus dem Azure Backup-Dienst verwenden Sie das PowerShell-Cmdlet [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob). Im folgenden Beispiel werden alle in Bearbeitung befindlichen SQL-Aufträge zurückgegeben.

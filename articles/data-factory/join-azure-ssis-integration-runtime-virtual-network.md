@@ -8,12 +8,12 @@ ms.date: 07/16/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55ad870da1b89e24777647613f607038089863e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc6175ca771a8be262c9a2d1ba92871a43140367
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355531"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257361"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 
@@ -264,7 +264,7 @@ Damit die Firewallappliance ausgehenden Datenverkehr zulässt, müssen Sie für 
 
 -   Port 445 mit dem Ziel Azure Storage (nur erforderlich, wenn Sie das in Azure Files gespeicherte SSIS-Paket ausführen).
 
-    Wenn Sie Azure Firewall verwenden, können Sie eine Netzwerkregel mit dem Speicherdiensttag angeben. Andernfalls könnten Sie das Ziel als spezifische Azure File Storage-URL in der Firewallappliance zulassen.
+    Wenn Sie Azure Firewall verwenden, können Sie eine Netzwerkregel mit dem Speicherdiensttag angeben. Andernfalls könnten Sie das Ziel als spezifische Azure Dateifreigabe-URL in der Firewallappliance zulassen.
 
 > [!NOTE]
 > Wenn Sie bei Azure SQL und Azure Storage VNET-Dienstendpunkte in Ihrem Subnetz konfigurieren, wird der Datenverkehr zwischen Azure-SSIS IR und Azure SQL in derselben Region und Azure Storage in derselben Region oder einem Regionspaar direkt an das Microsoft Azure-Backbonenetzwerk (statt an Ihre Firewallappliance) weitergeleitet.

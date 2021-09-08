@@ -2,17 +2,19 @@
 title: Informationen zu Azure Site Recovery-Konfiguration/Prozess/Masterzielservern
 description: Dieser Artikel enthält eine Übersicht über die Konfiguration, Prozesse und Masterzielserver, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/19/2021
+ms.openlocfilehash: ad8cdbdf9d051ac9b0e5a7fd47660811e4a285e3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062088"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446426"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informationen zu Site Recovery-Komponenten (Konfiguration, Prozess und Masterziel)
 
-Dieser Artikel beschreibt die Konfiguration, Prozesse und Masterzielserver, die vom [Site Recovery](site-recovery-overview.md)-Dienst zum Replizieren von virtuellen VMware-Computern und physischen Servern in Azure verwendet werden.
+Dieser Artikel beschreibt die Konfiguration, Prozesse und Masterzielserver, die vom [Site Recovery](site-recovery-overview.md)-Dienst zum Replizieren von virtuellen VMware-Computern und physischen Servern in Azure verwendet werden. Dieser Artikel gilt für klassische Releases.
+
+In der Vorschau müssen Sie einen Azure Site Recovery-Replikationsserver erstellen und verwenden, um virtuelle Computer zu replizieren. Weitere Informationen zu Azure Site Recovery-Replikationsserver und seinen Komponenten finden Sie in [diesem Artikel](vmware-azure-architecture-preview.md).
 
 ## <a name="configuration-server"></a>Konfigurationsserver
 

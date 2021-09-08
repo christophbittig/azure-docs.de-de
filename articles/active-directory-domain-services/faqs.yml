@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 02/09/2021
+  ms.date: 06/18/2021
   ms.author: justinha
-  ms.openlocfilehash: a431fff476cd79d25c4db0e60ad0bcff361a4a2a
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 287613213a565f475515e3034fd3897d29c1fff0
+  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907189"
+  ms.lasthandoff: 07/27/2021
+  ms.locfileid: "114707900"
 title: Häufig gestellte Fragen (FAQs) zu den Azure Active Directory (AD) Domain Services
 summary: Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet.
 sections:
@@ -73,6 +73,9 @@ sections:
       Können in mein Verzeichnis eingeladene Gastbenutzer Azure AD Domain Services verwenden?
     answer: >
       Nein. Gastbenutzer, die mit dem [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md)-Einladungsprozess in Ihr Azure AD-Verzeichnis eingeladen wurden, werden in Ihrer verwalteten Azure AD Domain Services-Domäne synchronisiert. Kennwörter für diese Benutzer werden jedoch nicht in Ihrem Azure AD-Verzeichnis gespeichert. Daher gibt es in Azure AD Domain Services keine Möglichkeit zum Synchronisieren von NTLM- und Kerberos-Hashes für diese Benutzer in Ihrer verwalteten Domäne. Diese Benutzer können sich nicht anmelden und auch keine Computer in die verwaltete Domäne einbinden.
+  - question: >
+      Kann eine zweiseitige Gesamtstruktur-Vertrauensstellung zwischen einer Ressourcengesamtstruktur und einer lokalen Gesamtstruktur erstellt werden?
+    answer: "Nein. Eine Ressourcengesamtstruktur der verwalteten Domäne unterstützt bis zu fünf unidirektionale ausgehende Gesamtstruktur-Vertrauensstellungen zu lokalen Gesamtstrukturen. \n"
   - question: >
       Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region oder ein anderes virtuelles Netzwerk verschieben?
     answer: >
@@ -158,6 +161,10 @@ sections:
       Kann ich die Azure AD Domain Services als Teil der Enterprise Mobility Suite (EMS) erwerben? Benötige ich Azure AD Premium, um Azure AD-Domänendienste zu verwenden?
     answer: >
       Nein. Azure AD Domain Services ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil von EMS. Azure AD Domain Services kann mit allen Editionen von Azure AD (Free und Premium) verwendet werden. Die Abrechnung erfolgt auf Stundenbasis nach Verbrauch.
+  - question: >
+      Kann ich eine untergeordnete Domäne unter einer verwalteten Domäne erstellen?
+    answer: >
+      Nein. Das Konzept von Azure AD Domain Services sieht eine einzelne Domäne und eine einzelne Gesamtstruktur vor, und Sie können keine untergeordneten Domänen erstellen.
   - question: >
       In welchen Azure-Regionen ist der Dienst verfügbar?
     answer: >

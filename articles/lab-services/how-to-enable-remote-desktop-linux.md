@@ -3,12 +3,12 @@ title: Aktivieren des grafischen Remotedesktops für Linux in Azure Lab Services
 description: Es wird beschrieben, wie Sie Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services aktivieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 604cde661fb566851d3eacdb42dd41f4effded7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647952"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355434"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Aktivieren des grafischen Remotedesktops für Linux-VMs in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -25,12 +25,15 @@ Zum Herstellen einer Verbindung mit einer Linux-VM mithilfe einer **GUI** (grafi
 Für die Verwendung von RDP muss der Kursleiter:
   - die Remotedesktopverbindung aktivieren (dies ist spezifisch zum Öffnen des Ports der VM für RDP erforderlich).
   - den RDP-Remotedesktopserver installieren.
-  - eine grafische Linux-Desktopumgebung installieren (z. B. MATE, XFCE und so weiter).
+  - Installieren einer grafischen Linux-Desktopumgebung (z. B. XFCE, MATE und so weiter).
+
+> [!WARNING]
+>  Es wird empfohlen, eine andere grafische Desktopumgebung als [GNOME](https://www.gnome.org/) zu verwenden.  Sie sollten die Installation von GNOME auf Lab-VMs vermeiden, da GNOME einen Konflikt mit dem Azure Linux-Agent aufweist, der erforderlich ist, damit die VMs in Azure Lab Services ordnungsgemäß funktionieren.  Wie bereits erwähnt, wird die Verwendung einer grafischen Desktopumgebung wie XFCE oder MATE empfohlen.
 
 ### <a name="x2go-setup"></a>X2Go-Setup
 Für die Verwendung von X2Go muss der Kursleiter:
 - den X2Go-Remotedesktopserver installieren.
-- eine grafische Linux-Desktopumgebung installieren (z. B. MATE, XFCE und so weiter).
+- Installieren einer grafischen Linux-Desktopumgebung (z. B. XFCE, MATE und so weiter).
 
 X2Go nutzt denselben Port, der bereits für SSH aktiviert ist.  Daher ist keine weitere Konfiguration erforderlich, um einen Port der VM für X2Go zu öffnen.
 

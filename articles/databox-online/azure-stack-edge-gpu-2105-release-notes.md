@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 77138d6a303bd773b1e9842fdeca27462ec37f34
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 60de3b926e490ce1eb6a74b5234e21f8173a8ade
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614913"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220345"
 ---
 # <a name="azure-stack-edge-2105-release-notes"></a>Versionshinweise zu Azure Stack Edge 2105
 
@@ -64,7 +64,8 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme im Rel
 
 | Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
-|**1.**|Previewfunktionen |In diesem Release sind die folgenden Funktionen als Vorschauversionen verfügbar: Lokaler Azure Resource Manager, VMs, Cloudverwaltung von VMs, Kubernetes-Cloudverwaltung, Kubernetes mit Azure Arc-Unterstützung, VPN für Azure Stack Edge Pro R und Azure Stack Edge Mini R, Multiprozessdienst (MPS) für Azure Stack Edge Pro – GPU.  |Diese Funktionen werden in einem späteren Release allgemein verfügbar sein. |
+|**1.**|Previewfunktionen |In diesem Release sind die folgenden Funktionen als Vorschauversionen verfügbar: Lokaler Azure Resource Manager, VMs, Cloudverwaltung von VMs, Kubernetes-Cloudverwaltung, Kubernetes mit Azure Arc-Unterstützung, VPN für Azure Stack Edge Pro R und Azure Stack Edge Mini R, Multiprozessdienst (MPS), Network Function Manager für Azure Stack Edge Pro-GPU.  |Diese Funktionen werden in einem späteren Release allgemein verfügbar sein. |
+|**2.**|Multi-Access Edge Computing-Bereitstellungen (MEC)/Network Function Manager-Bereitstellungen (NFM) |Bei MEC-/NFM-Bereitstellungen vor dem Update 2105 kann in seltenen Fällen das Problem auftreten, das Datenverkehr von LAN/WAN-VM-NetAdaptern verworfen wird. <br><br> Auf Ihrem Azure Stack Edge-Gerät sind Port 5 und Port 6 mit der Mellanox-Netzwerkschnittstellenkarte verbunden, die [beschleunigten Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) ermöglicht. Der beschleunigte Netzwerkbetrieb ermöglicht dem LAN/WAN-Datenverkehr von Port 5 und Port 6, die Hypervisorebene und den virtuellen Switch zu umgehen und den physischen Switch direkt zu erreichen. <br><br> Sie können den beschleunigten Netzwerkbetrieb deaktivieren, indem Sie das [Virtuelle Funktionen (VF)](/windows-hardware/drivers/network/sr-iov-virtual-functions--vfs-)-Gerät auf den LAN/WAN-Netzwerkschnittstellen deaktivieren. Der ganze Netzwerkdatenverkehr von den VMs durchläuft jetzt die Hypervisorebene, die Sicherheitsüberprüfungen durchführt. Wenn Ihre Anwendung Datenverkehr mit einer beliebigen Unicast-Quell-IP-Adresse sendet (dies ist nicht die IP-Adresse für VM NetAdapter), führen die Sicherheitsüberprüfungen dazu, dass der Datenverkehr verworfen wird (da er scheinbar von beliebigen IP-Adressen stammt, die nicht im Vertrag für Virtual Networking Functions angegeben sind).|Um dieses Problem zu umgehen, können Sie mit Update 2105 warten, bis das nächste Release herauskommt, das eine Lösung für dieses Problem enthält.<br><br> Alternativ können Sie das Update 2105 auf Ihr Azure Stack Edge-Gerät anwenden und dieselben VNF erneut bereitstellen. Die nach dem Update 2105 bereitgestellten VNFs erfordern keine Korrektur. |
 
 
 ## <a name="known-issues-from-previous-releases"></a>Bekannte Probleme aus vorherigen Releases
@@ -102,6 +103,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bereits aus früheren Rel
 |**27.**|Benutzerdefinierte VM-Skripterweiterung |Bei den Windows-VMs, die in einem früheren Release erstellt und auf 2103 aktualisiert wurden, ist ein Problem bekannt. <br> Wenn Sie diesen VMs eine benutzerdefinierte Skripterweiterung hinzufügen, wird der Windows-VM-Gast-Agent (nur Version 2.7.41491.901) beim Update hängen bleiben, was zu einem Timeout bei der Erweiterungsbereitstellung führt. | So umgehen Sie dieses Problem: <ul><li> Stellen Sie mithilfe des Remotedesktopprotokolls (RDP) eine Verbindung mit der Windows-VM her. </li><li> Stellen Sie sicher, dass `waappagent.exe` auf dem Computer ausgeführt wird: `Get-Process WaAppAgent`. </li><li> Wenn `waappagent.exe` nicht ausgeführt wird, starten Sie den `rdagent`-Dienst neu: `Get-Service RdAgent` \| `Restart-Service`. Warten Sie 5 Minuten.</li><li> Beenden Sie den `WindowsAzureGuest.exe`-Prozess, während `waappagent.exe` ausgeführt wird. </li><li>Nachdem Sie den Prozess beendet haben, wird der Prozess erneut mit der neueren Version gestartet.</li><li>Überprüfen Sie mithilfe des folgenden Befehls, ob die Version des Windows VM-Gast-Agents 2.7.41491.971 lautet: `Get-Process WindowsAzureGuestAgent` \| `fl ProductVersion`.</li><li>[Richten Sie die benutzerdefinierte Skripterweiterung auf der Windows-VM ein](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md). </li><ul> |
 |**28.**|Virtuelle Computer mit GPU |Vor diesem Release wurde der GPU-VM-Lebenszyklus nicht im Updateflow verwaltet. Daher werden GPU-VMs beim Aktualisieren auf Release 2103 nicht automatisch während des Updates angehalten. Sie müssen die GPU-VMs manuell mit einem `stop-stayProvisioned`-Flag anhalten, bevor Sie Ihr Gerät aktualisieren. Weitere Informationen finden Sie unter [Anhalten oder Herunterfahren des virtuellen Computers](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#suspend-or-shut-down-the-vm).<br> Alle GPU-VMs, die vor dem Update ausgeführt werden, werden nach dem Update gestartet. In diesen Fällen werden die Workloads, die auf den VMs ausgeführt werden, nicht ordnungsgemäß beendet. Außerdem können die VMs nach dem Update möglicherweise einen unerwünschten Status aufweisen. <br>Alle GPU-VMs, die über `stop-stayProvisioned` vor dem Update angehalten werden, werden nach dem Update automatisch gestartet. <br>Wenn Sie die GPU-VMs über das Azure-Portal anhalten, müssen Sie die VM nach dem Geräteupdate manuell starten.| Wenn Sie GPU-VMs mit Kubernetes ausführen, halten Sie die GPU-VMs direkt vor dem Update an. <br>Wenn die GPU-VMs angehalten werden, übernimmt Kubernetes die GPUs, die ursprünglich von VMs verwendet wurden. <br>Je länger die GPU-VMs sich im angehaltenen Status befinden, desto höher ist die Wahrscheinlichkeit, dass Kubernetes die GPUs übernimmt. |
 |**29.**|Multiprozessdienst (Multi-Process Service, MPS) |Wenn die Gerätesoftware und der Kubernetes-Cluster aktualisiert werden, wird die MPS-Einstellung für die Workloads nicht beibehalten.   |[Aktivieren Sie den MPS erneut](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface), und stellen Sie die Workloads erneut bereit, die MPS verwendet haben. |
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

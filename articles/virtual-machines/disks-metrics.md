@@ -7,14 +7,17 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0d0330996629ec087022e592cc862a428bc02807
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 461d8c7ae29c56a80b8863b2900c051158add918
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454577"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689378"
 ---
 # <a name="disk-performance-metrics"></a>Leistungsmetriken für Datenträger
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Azure bietet im Azure-Portal Metriken, die Aufschluss über die Leistung Ihrer virtuellen Computer (VM) und Datenträger geben. Die Metriken können auch über einen API-Aufruf abgerufen werden. Dieser Artikel ist in drei Unterabschnitte unterteilt:
 
 - **Metriken für Datenträger-E/A, Durchsatz und Warteschlangentiefe**: Diese Metriken liefern Ihnen Informationen zur Speicherleistung eines Datenträgers und eines virtuellen Computers.

@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mbullwin
-ms.openlocfilehash: 3979bb82bfa055cc2a134bf3119097c452ffb855
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec057d625342c2e80478b0555395f6bc5250ee6b
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94364121"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296773"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Bereitstellen eines Containers für die Anomalieerkennung in Azure Container Instances
+# <a name="deploy-an-anomaly-detector-univariate-container-to-azure-container-instances"></a>Bereitstellen eines Containers zur Erkennung von univariaten Anomalien in Azure Container Instances
 
 Erfahren Sie, wie Sie Container für die [Anomalieerkennung](../anomaly-detector-container-howto.md) von Cognitive Services für Azure [Container Instances](../../../container-instances/index.yml) bereitstellen. Dieses Verfahren veranschaulicht die Erstellung der Ressource für die Anomalieerkennung. Anschließend wird das Abrufen des dazugehörigen Containerimages erläutert. Abschließend erklären wir, wie Sie die Orchestrierung von Ressource und Image über einen Browser ausführen können. Die Verwendung von Containern kann die Aufmerksamkeit der Entwickler von der Verwaltung der Infrastruktur auf die Anwendungsentwicklung lenken.
 

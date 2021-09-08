@@ -4,17 +4,21 @@ description: Hier erfahren Sie, wie Sie Ihre App Service-Umgebung zum Hosten is
 author: ccompy
 ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 131c8d2abc21e046a96488a602b831361f64dcf4
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586401"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446223"
 ---
 # <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
+
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung V3 beschrieben, die mit isolierten V2 App Service-Plänen verwendet wird
+> 
 
 Die App Service-Umgebung (App Service Environment, ASE) ist eine Azure App Service-Bereitstellung mit einem einzelnen Mandanten, die direkt in ein virtuelles Azure-Netzwerk (Virtual Network, VNET) Ihrer Wahl integriert wird. Dieses System wird nur von einem einzelnen Kunden verwendet. Für in der ASE bereitgestellte Apps gelten die Netzwerkfeatures, die auf das ASE-Subnetz angewendet werden. Für Ihre Apps müssen keine zusätzlichen Features aktiviert werden, damit diese Netzwerkfeatures für sie gelten. 
 
@@ -26,51 +30,43 @@ Um eine App in einer ASE zu erstellen, verwenden Sie denselben Prozess wie bei d
 - In einer ASE erstellte App Service-Pläne können sich nur in einem Tarif vom Typ „Isoliert V2“ befinden.
 
 Wenn Sie über keine ASE verfügen, können Sie eine erstellen. Folgen Sie hierzu den Anweisungen in [Erstellen einer App Service-Umgebung][MakeASE].
-
 So erstellen Sie eine App in einer ASE
 
 1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
-
 1. Wählen Sie ein Abonnement aus.
-
 1. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
-
-1. Geben Sie einen Namen für die App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE:
-
-    ![Erstellen einer App in einer ASE][1]
-
+1. Geben Sie einen Namen für die App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE: ![Erstellen einer App in einer ASE][1]
 1. Wählen Sie Ihren Veröffentlichungstyp, Ihren Stack und Ihr Betriebssystem aus.
-
-1.  Wählen Sie eine Region aus. Hier muss eine bereits vorhandene App Service-Umgebung der Version 3 ausgewählt werden.  Im Rahmen der App-Erstellung kann keine ASE der Version 3 erstellt werden. 
-
-1. Wählen Sie einen vorhandenen App Service-Plan in Ihrer ASE aus, oder erstellen Sie einen neuen Plan. Wenn Sie eine neue App erstellen, wählen Sie die gewünschte Größe für Ihren App Service-Plan aus. Die einzige SKU, die Sie für Ihre App auswählen können, ist eine SKU mit Tarif vom Typ „Isoliert V2“.
-
-    ![Tarife vom Typ „Isoliert V2“][2]
-
-    > [!NOTE]
-    > Linux- und Windows-Apps können sich zwar nicht im gleichen App Service-Plan, aber in der gleichen App Service-Umgebung befinden.
-    >
-
+1. Wählen Sie eine Region aus. Hier muss eine bereits vorhandene App Service-Umgebung der Version 3 ausgewählt werden.  Im Rahmen der App-Erstellung kann keine ASE der Version 3 erstellt werden. 
+1. Wählen Sie einen vorhandenen App Service-Plan in Ihrer ASE aus, oder erstellen Sie einen neuen Plan. Wenn Sie eine neue App erstellen, wählen Sie die gewünschte Größe für Ihren App Service-Plan aus. Die einzige SKU, die Sie für Ihre App auswählen können, ist eine SKU mit Tarif vom Typ „Isoliert V2“. Die Erstellung eines neuen App Service-Plans dauert normalerweise weniger als 20 Minuten. 
+![Tarife vom Typ „Isoliert V2“][2]
 1. Klicken Sie auf **Weiter: Überwachen** aus. Wenn Sie App Insights für Ihre App aktivieren möchten, können Sie dies hier im Rahmen der Erstellung tun. 
-
 1.  Klicken Sie auf **Weiter: Tags**. Fügen Sie der App ggf. gewünschte Tags hinzu.  
-
 1. Wählen Sie **Bewerten + erstellen** aus, stellen Sie sicher, dass die Informationen richtig sind, und wählen Sie dann **Erstellen** aus.
+
+Windows- und Linux-Apps können sich in derselben ASE, aber nicht in demselben App Service-Plan befinden.
 
 ## <a name="how-scale-works"></a>Skalieren
 
 Jede App Service-App wird in einem App Service-Plan ausgeführt. App Service-Umgebungen enthalten App Service-Pläne, und App Service-Pläne enthalten Apps. Wenn Sie eine App skalieren, skalieren Sie auch den App Service-Plan und damit alle Apps in diesem Plan.
 
-Wenn Sie einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Bei der Skalierung von Vorgängen kommt es zu einer Zeitverzögerung, während die Infrastruktur hinzugefügt wird. Wenn Sie einen App Service-Plan skalieren, werden alle anderen Skalierungsvorgänge, die mit dem gleichen Betriebssystem und der gleichen Größe angefordert wurden, erst nach Abschluss des ersten Vorgangs ausgeführt. Nach Abschluss des blockierenden Skalierungsvorgangs werden alle in die Warteschlange eingereihten Anforderungen gleichzeitig verarbeitet. Ein Skalierungsvorgang mit einer bestimmten Größe und einem bestimmten Betriebssystem führt nicht zur Blockierung der Skalierung anderer Kombinationen von Größe und Betriebssystem. Wenn Sie also beispielsweise einen App Service-Plan vom Typ „Windows I2v2“ skaliert haben, werden andere Skalierungsanforderungen für „Windows I2v2“ in dieser ASE in die Warteschlange eingereiht, bis die erste Skalierung abgeschlossen ist.   
+Wenn Sie einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Bei der Skalierung von Vorgängen kommt es zu einer Zeitverzögerung, während die Infrastruktur hinzugefügt wird. Wenn Sie einen App Service-Plan skalieren, werden alle anderen Skalierungsvorgänge, die mit dem gleichen Betriebssystem und der gleichen Größe angefordert wurden, erst nach Abschluss des ersten Vorgangs ausgeführt. Nach Abschluss des blockierenden Skalierungsvorgangs werden alle in die Warteschlange eingereihten Anforderungen gleichzeitig verarbeitet. Ein Skalierungsvorgang mit einer bestimmten Größe und einem bestimmten Betriebssystem führt nicht zur Blockierung der Skalierung anderer Kombinationen von Größe und Betriebssystem. Wenn Sie also beispielsweise einen App Service-Plan vom Typ „Windows I2v2“ skaliert haben, werden andere Skalierungsanforderungen für „Windows I2v2“ in dieser ASE in die Warteschlange eingereiht, bis die erste Skalierung abgeschlossen ist. Die Skalierung dauert normalerweise weniger als 20 Minuten. 
 
 Bei einer mehrinstanzenfähigen App Service-Instanz erfolgt die Skalierung unmittelbar, da sofort ein Ressourcenpool für die Unterstützung verfügbar ist. In einer ASE gibt es keinen solchen Puffer. Die Ressourcen werden nach Bedarf zugeordnet.
 
 ## <a name="app-access"></a>App-Zugriff
 
-In einer ASE lautet das Domänensuffix für die App-Erstellung *.&lt;asename&gt;.appserviceenvironment.net*. Wenn Ihre ASE _my-ase_ heißt und Sie in dieser ASE eine App mit dem Namen _contoso_ hosten, erreichen Sie sie unter den folgenden URLs:
+In einer ASE mit einer internen VIP lautet das Domänensuffix für die App-Erstellung *.&lt;asename&gt;.appserviceenvironment.net*. Wenn Ihre ASE _my-ase_ heißt und Sie in dieser ASE eine App mit dem Namen _contoso_ hosten, erreichen Sie sie unter den folgenden URLs:
 
 - contoso.my-ase.appserviceenvironment.net
 - contoso.scm.my-ase.appserviceenvironment.net
+
+Auf die Apps, die in einer ASE gehostet werden, die eine interne VIP verwendet, kann nur zugegriffen werden, wenn Sie sich im selben virtuellen Netzwerk wie die ASE befinden oder in irgendeiner Weise mit diesem virtuellen Netzwerk verbunden sind. Es gib eine Beschränkung in Bezug auf die Veröffentlichung. Sie ist nur möglich, wenn Sie sich im selben virtuellen Netzwerk befinden oder in irgendeiner Weise mit diesem virtuellen Netzwerk verbunden sind. 
+
+In einer ASE mit einer externen VIP lautet das Domänensuffix für die App-Erstellung *.&lt;asename&gt;.p.azurewebsites.net*. Wenn Ihre ASE _my-ase_ heißt und Sie in dieser ASE eine App mit dem Namen _contoso_ hosten, erreichen Sie sie unter den folgenden URLs:
+
+- contoso.my-ase.p.azurewebsites.net
+- contoso.scm.my-ase.p.azurewebsites.net
 
 Informationen zum Erstellen einer ASE finden Sie unter [Erstellen einer App Service-Umgebung][MakeASE].
 
@@ -78,20 +74,24 @@ Die SCM-URL wird verwendet, um auf die Kudu-Konsole zuzugreifen oder Ihre App pe
 
 ### <a name="dns-configuration"></a>DNS-Konfiguration 
 
-Die ASE verwendet private Endpunkte für eingehenden Datenverkehr. Sie wird nicht automatisch mit privaten Azure DNS-Zonen konfiguriert. Wenn Sie einen eigenen DNS-Server verwenden möchten, müssen die folgenden Einträge hinzugefügt werden:
+Wenn Ihre ASE mit einer externen VIP erstellt wird, werden Ihre Apps automatisch in ein öffentliches DNS eingebunden. Wenn Ihre ASE mit einer internen VIP erstellt wird, müssen Sie möglicherweise das DNS dafür konfigurieren. Wenn Sie ausgewählt haben, dass Azure DNS in privaten Zonen während der ASE-Erstellung automatisch konfiguriert werden, wird das DNS in Ihrem ASE-VNET konfiguriert. Wenn Sie das Manuelle Konfigurieren für das DNS ausgewählt haben, müssen Sie entweder Ihren eigenen DNS-Server verwenden oder es in den privaten Zonen von Azure DNS konfigurieren. Navigieren Sie zu der **ASE Portal > IP Adressen** Benutzeroberfläche, um die Adressen für den eingehenden Datenverkehr Ihrer ASE zu finden. 
+
+![IP-Adressen Benutzeroberfläche][6]
+
+Wenn Sie einen eigenen DNS-Server verwenden möchten, müssen die folgenden Einträge hinzugefügt werden:
 
 1. Erstellen Sie eine Zone für „&lt;ASE-Name&gt;.appserviceenvironment.net“.
-1. Erstellen Sie in dieser Zone einen A-Eintrag, durch den „*“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse für eingehenden Datenverkehr verwiesen wird.
-1. Erstellen Sie in dieser Zone einen A-Eintrag, durch den „@“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse für eingehenden Datenverkehr verwiesen wird.
+1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf * in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
+1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf @ in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
 1. Erstellen Sie eine Zone namens „scm“ in „&lt;ASE-Name&gt;.appserviceenvironment.net“.
-1. Erstellen Sie in der Zone „scm“ einen A-Eintrag, durch den „*“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse verwiesen wird.
+1. Erstellen Sie in dieser Zone einen A-Eintrag, der auf * in der IP-Adresse für den eingehenden Datenverkehr verweist, die von Ihrer ASE verwendet wird
 
 So konfigurieren Sie DNS in privaten Azure DNS-Zonen
 
-1. Erstellen Sie eine private Azure DNS-Zone namens <ASE name>.appserviceenvironment.net.
-1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
-1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
-1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie eine private Azure DNS-Zone namens „&lt;ASE-Name&gt;.appserviceenvironment.net“.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die IP-Adresse für den eingehenden Datenverkehr verweist
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die IP-Adresse für den eingehenden Datenverkehr verweist
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die IP-Adresse für den eingehenden Datenverkehr verweist
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ASE festlegen. Wenn Sie dann eine Zone namens *contoso.net* erstellen möchten, können Sie dies tun und auf die IP-Adresse für eingehenden Datenverkehr verweisen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* verfügbar. 
 
@@ -104,9 +104,9 @@ Wie bei dem mehrinstanzenfähigen App Service können Sie in einer ASE mithilfe 
 - Drag and Drop in der Kudu-Konsole
 - Eine IDE wie Visual Studio, Eclipse oder IntelliJ IDEA
 
-Mit einer ASE sind die Veröffentlichungsendpunkte nur über die vom privaten Endpunkt verwendete Adresse für eingehenden Datenverkehr verfügbar. Ohne Netzwerkzugriff auf die Adresse des privaten Endpunkts können Sie in dieser ASE keine Apps veröffentlichen.  Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf den ILB verfügen, um direkt an ihn veröffentlichen zu können.
+Mit einer internen VIP-ASE sind die Veröffentlichungsendpunkte nur über die Adresse für den eingehenden Datenverkehr verfügbar. Wenn Sie keinen Netzwerkzugriff auf die Adresse für den eingehenden Datenverkehr haben, können Sie in der betreffenden ASE keine Apps veröffentlichen.  Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf die Adresse für eingehenden Datenverkehr zu der ASE verfügen, um direkt an ihn veröffentlichen zu können.
 
-Ohne zusätzliche Änderungen lassen sich internetbasierte CI-Systeme wie GitHub oder Azure DevOps nicht standardmäßig mit einer ILB-ASE verwenden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Sie können die Veröffentlichung in einer ILB-ASE über Azure DevOps ermöglichen, indem Sie in dem virtuellen Netzwerk, das die ILB-ASE enthält, einen selbstgehosteten Release-Agent installieren. 
+Ohne zusätzliche Änderungen lassen sich internetbasierte CI-Systeme, wie GitHub oder Azure DevOps, nicht mit einer internen VIP-ASE verwenden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Sie können die Veröffentlichung in einer internen VIP-ASE über Azure DevOps aktivieren, indem Sie in dem virtuellen Netzwerk, das die ASE enthält, einen selbstgehosteten Release-Agent installieren. 
 
 ## <a name="storage"></a>Storage
 
@@ -116,18 +116,20 @@ Eine ASE verfügt für alle Apps in der ASE über Speicher mit einer Größe von
 
 Sie können Ihre ASE in Azure Monitor integrieren, um Protokolle zur ASE an Azure Storage, Azure Event Hubs oder Log Analytics zu senden. Diese Elemente werden heute protokolliert:
 
-| Situation | `Message` |
-|---------|----------|
-| ASE ist fehlerhaft | Die angegebene ASE ist aufgrund einer ungültigen VNET-Konfiguration fehlerhaft. Die ASE wird angehalten, falls der Fehlerzustand weiter besteht. Stellen Sie sicher, dass die folgenden Richtlinien befolgt werden: https://docs.microsoft.com/azure/app-service/environment/network-info. |
-| Speicherplatz im ASE-Subnetz ist nahezu erschöpft | Die angegebene ASE befindet sich in einem Subnetz, dessen Speicherplatz nahezu erschöpft ist. Es sind {0} verbleibende Adressen vorhanden. Nachdem diese Adressen ausgeschöpft wurden, kann die ASE nicht mehr skaliert werden.  |
-| ASE nähert sich dem Limit für die Höchstmenge der Instanzen | Für die angegebene ASE wird in Kürze das Limit für die Höchstmenge der Instanzen erreicht. Derzeit sind {0} App Service-Planinstanzen bei einer maximalen Anzahl von 201 Instanzen vorhanden. |
-| ASE kann eine Abhängigkeit nicht erreichen | Die angegebene ASE kann {0} nicht erreichen.  Stellen Sie sicher, dass die folgenden Richtlinien befolgt werden: https://docs.microsoft.com/azure/app-service/environment/network-info. |
-| ASE wurde angehalten | Die angegebene ASE wurde angehalten. Der Grund für das Anhalten der ASE kann ein Kontoausfall oder eine ungültige Konfiguration des virtuellen Netzwerks sein. Beseitigen Sie die Grundursache, und setzen Sie die Ausführung der ASE fort, damit die Bereitstellung von Datenverkehr erfolgen kann. |
-| ASE-Upgrade wurde gestartet | Ein Plattformupgrade für die angegebene ASE wurde gestartet. Es ist mit Verzögerungen bei den Skalierungsvorgängen zu rechnen. |
-| ASE-Upgrade wurde abgeschlossen | Ein Plattformupgrade für die angegebene ASE wurde abgeschlossen. |
-| Skalierungsvorgänge wurden gestartet | Für einen App Service-Plan ({0}) wurde die Skalierung gestartet. Gewünschter Status: {1} I{2}-Worker.
-| Skalierungsvorgänge wurden abgeschlossen | Die Skalierung eines App Service-Plans ({0}) wurde abgeschlossen. Aktueller Status: {1} I{2}-Worker. |
-| Für Skalierungsvorgänge sind Fehler aufgetreten | Bei der Skalierung eines App Service-Plans ({0}) ist ein Fehler aufgetreten. Aktueller Status: {1} I{2}-Worker. |
+|Situation |`Message` |
+|----------|--------|
+|Speicherplatz im ASE-Subnetz ist nahezu erschöpft | Die angegebene ASE befindet sich in einem Subnetz, dessen Speicherplatz nahezu erschöpft ist. Es sind {0} verbleibende Adressen vorhanden. Nachdem diese Adressen ausgeschöpft wurden, kann die ASE nicht mehr skaliert werden.  |
+|ASE nähert sich dem Limit für die Höchstmenge der Instanzen | Für die angegebene ASE wird in Kürze das Limit für die Höchstmenge der Instanzen erreicht. Derzeit sind {0} App Service-Planinstanzen bei einer maximalen Anzahl von 200 Instanzen vorhanden. |
+|ASE wurde angehalten | Die angegebene ASE wurde angehalten. Der Grund für das Anhalten der ASE kann ein Kontoausfall oder eine ungültige Konfiguration des virtuellen Netzwerks sein. Beseitigen Sie die Grundursache, und setzen Sie die Ausführung der ASE fort, damit die Bereitstellung von Datenverkehr erfolgen kann. |
+|ASE-Upgrade wurde gestartet | Ein Plattformupgrade für die angegebene ASE wurde gestartet. Es ist mit Verzögerungen bei den Skalierungsvorgängen zu rechnen. |
+|ASE-Upgrade wurde abgeschlossen | Ein Plattformupgrade für die angegebene ASE wurde abgeschlossen. |
+|Die App Service Planerstellung wurde gestartet | Die App Service Plan ({0}) Erstellung wurde gestartet. Gewünschter Status: {1} I{2}V2 Workers.
+|Skalierungsvorgänge wurden abgeschlossen | Die App Service Plan ({0}) Erstellung wurde beendet. Aktueller Status: {1} I{2}V2 Workers. |
+|Für Skalierungsvorgänge sind Fehler aufgetreten | Es ist ein Fehler bei der App Service Plan ({0}) Erstellung aufgetreten. Das kann darauf zurückzuführen sein, dass die ASE bei einer Spitzenanzahl von Instanzen ausgeführt wird oder keine Subnetzadressen mehr vorhanden sind. |
+|Skalierungsvorgänge wurden gestartet | Für einen App Service-Plan ({0}) wurde die Skalierung gestartet. Aktueller Status: {1} I(2)V2. Gewünschter Status: {3} I{4}V2 Workers.|
+|Skalierungsvorgänge wurden abgeschlossen | Die Skalierung eines App Service-Plans ({0}) wurde abgeschlossen. Aktueller Status: {1} I{2}V2 Workers. |
+|Die Skalierungsvorgänge wurden unterbrochen | Ein App Service Plan ({0}) wurde während des Skalierens unterbrochen. Vorheriger gewünschter Status: {1} I{2}V2 Workers. Neuer gewünschter Status: {3} I{4}V2 Workers. |
+|Für Skalierungsvorgänge sind Fehler aufgetreten | Bei der Skalierung eines App Service-Plans ({0}) ist ein Fehler aufgetreten. Aktueller Status: {1} I{2}V2 Workers. |
 
 Aktivieren Sie die Protokollierung für Ihre ASE wie folgt:
 
@@ -136,12 +138,11 @@ Aktivieren Sie die Protokollierung für Ihre ASE wie folgt:
 1. Geben Sie einen Namen für die Protokollintegration an.
 1. Wählen Sie die gewünschten Protokollziele aus, und konfigurieren Sie sie.
 1. Wählen Sie **AppServiceEnvironmentPlatformLogs** aus.
-
 ![Einstellungen für ASE-Diagnoseprotokollierung][4]
 
-Bei der Integration mit Log Analytics können Sie die Protokolle anzeigen, indem Sie im ASE-Portal die Option **Protokolle** auswählen und eine Abfrage für **AppServiceEnvironmentPlatformLogs** erstellen. Protokolle werden nur ausgegeben, wenn Ihre ASE über ein Ereignis verfügt, das diese auslöst. Wenn Ihre ASE nicht über ein derartiges Ereignis verfügt, stehen keine Protokolle zur Verfügung. Um sich schnell ein Beispiel für Protokolle in Ihrem Log Analytics-Arbeitsbereich anzusehen, führen Sie einen Skalierungsvorgang mit einem der App Service-Pläne in ihrer ASE aus. Anschließend können Sie eine Abfrage an **AppServiceEnvironmentPlatformLogs-** ausführen, um diese Protokolle anzuzeigen. 
+Bei der Integration mit Log Analytics können Sie die Protokolle anzeigen, indem Sie im ASE-Portal die Option **Protokolle** auswählen und eine Abfrage für **AppServiceEnvironmentPlatformLogs** erstellen. Protokolle werden nur ausgegeben, wenn Ihre ASE über ein Ereignis verfügt, das diese auslöst. Wenn Ihre ASE nicht über ein derartiges Ereignis verfügt, stehen keine Protokolle zur Verfügung. Um sich schnell ein Beispiel für Protokolle in Ihrem Log Analytics-Arbeitsbereich anzusehen, führen Sie einen Skalierungsvorgang mit einem App Service-Pläne in ihrer ASE aus. Anschließend können Sie eine Abfrage an **AppServiceEnvironmentPlatformLogs-** ausführen, um diese Protokolle anzuzeigen. 
 
-**Erstellen einer Warnung**
+### <a name="creating-an-alert"></a>Erstellen einer Warnung
 
 Anleitungen zum Erstellen einer Warnung für Ihre Protokolle befolgen Sie die Anleitungen unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md). Kurz gesagt:
 
@@ -154,7 +155,7 @@ Anleitungen zum Erstellen einer Warnung für Ihre Protokolle befolgen Sie die An
 
 ## <a name="internal-encryption"></a>Interne Verschlüsselung
 
-Die App Service-Umgebung wird als Blackbox-System betrieben, bei dem Sie die internen Komponenten oder die Kommunikation innerhalb des Systems nicht sehen können. Um einen höheren Durchsatz zu ermöglichen, ist die Verschlüsselung zwischen internen Komponente standardmäßig nicht aktiviert. Das System ist sicher, da der Datenverkehr vollständig vor Überwachung und Zugriff geschützt ist. Sollte aus Compliancegründen allerdings eine End-to-End-Verschlüsselung des Datenpfads erforderlich sein, können Sie dies im Bereich **Konfiguration** der ASE-Benutzeroberfläche aktivieren.
+Die App Service-Umgebung wird als Blackbox-System betrieben, bei dem Sie die internen Komponenten oder die Kommunikation innerhalb des Systems nicht sehen können. Um einen höheren Durchsatz zu ermöglichen, ist die Verschlüsselung zwischen internen Komponente standardmäßig nicht aktiviert. Das System ist sicher, da der Datenverkehr vor Überwachung und Zugriff geschützt ist. Sollte aus Compliancegründen allerdings eine End-to-End-Verschlüsselung des Datenpfads erforderlich sein, können Sie dies im Bereich **Konfiguration** der ASE-Benutzeroberfläche aktivieren.
 
 ![Aktivieren der internen Verschlüsselung][5]
 
@@ -162,13 +163,15 @@ Dadurch werden der interne Netzwerkdatenverkehr in Ihrer App Service-Umgebung (A
 
 ## <a name="upgrade-preference"></a>Upgradeeinstellung
 
-Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Im **Resource Manager-Objekt „HostingEnvironment“** der ASE können Sie einen Wert für **upgradePreference** festlegen. Die Einstellung **upgradePreference** kann mithilfe einer Vorlage, mit ARMClient oder per https://resources.azure.com konfiguriert werden. Es gibt drei mögliche Werte:
+Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Dieses Verhalten kann in Ihrem ASE-Portal aktiviert werden.  Unter **Konfiguration** können Sie die Option für die **Aktualisierungseinstellung** festlegen. Es gibt drei mögliche Werte:
 
 - **Keine:** Azure führt das Upgrade Ihrer ASE in keinem bestimmten Batch durch. Dies ist der Standardwert.
 - **Early**: Ihre ASE wird in der ersten Hälfte der App Service-Upgrades aktualisiert.
 - **Late**: Ihre ASE wird in der zweiten Hälfte der App Service-Upgrades aktualisiert.
 
-Ihre Upgradepräferenz können Sie im Bereich **Konfiguration** der ASE-Benutzeroberfläche konfigurieren. 
+Wählen Sie den gewünschten Wert und dann **Speichern** aus.  Der Standardwert aller Azure App Service-Umgebungen ist **Keine**.
+
+![ASE-Konfigurationsportal][5]
 
 Die Verwendung der Funktion **upgradePreferences** ist am sinnvollsten, wenn Sie mehrere ASEs besitzen, weil Ihre als „Early“ gekennzeichneten ASEs vor den mit „Late“ gekennzeichneten ASEs aktualisiert werden. Bei Verwendung von mehreren ASEs sollten Sie für Ihre Entwicklungs- und Test-ASEs die Option „Early“ und für Ihre Produktions-ASEs die Option „Late“ festlegen.
 
@@ -177,22 +180,32 @@ Die Verwendung der Funktion **upgradePreferences** ist am sinnvollsten, wenn Sie
 So löschen Sie eine ASE
 
 1. Wählen Sie **Löschen** am Anfang des Bereichs **App Service-Umgebung** aus.
-
 1. Geben Sie den Namen Ihrer ASE ein, um zu bestätigen, dass Sie sie löschen möchten. Beim Löschen einer ASE wird auch ihr gesamter Inhalt gelöscht.
-
-    ![Löschen einer ASE][3]
-
+![Löschen einer ASE][3]
 1. Klicken Sie auf **OK**.
 
+## <a name="pricing"></a>Preise 
+
+Bei ASEv3 gibt es je nach Art der ASE-Bereitstellung ein anderes Preismodell. Es gibt drei verschiedene Preismodelle: 
+
+- **ASEv3**: Wenn die ASE leer ist, fällt eine Gebühr an, als ob Sie einen ASP mit einer Instanz von Windows I1v2 hätten. Die Gebühr für eine Instanz ist keine additive Gebühr, Sie wird jedoch nur angewendet, wenn die ASE leer ist.
+- **Verfügbarkeitszone ASEv3**: Es gibt eine Gebühr für eine Mindestanzahl von neun Windows I1v2-Instanzen. Wenn Sie über neun oder mehr App Service Planinstanzen verfügen, fällt keine zusätzliche Gebühr für die Unterstützung von Verfügbarkeitszonen an. Alle App Service Pläne in einer AZ ASEv3-Instanz haben auch eine Mindestanzahl von 3 Instanzen, um sicherzustellen, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. Wenn die Pläne hochskaliert werden, werden sie auf die Verfügbarkeitszonen verteilt. 
+- **Dedizierter Host-ASEv3**: Bei der Bereitstellung eines dedizierten Hosts, werden Ihnen zwei dedizierte Hosts gemäß unserer Preisgestaltung bei der ASEv3-Erstellung in Rechnung gestellt. Bei der Skalierung wird dann ein kleiner Prozentsatz des isolierten V2-Tarifs pro Core berechnet.
+
+Die Preise für reservierte Instanzen für isolierte V2 sind verfügbar und werden unter [Anwenden von Reservierungsrabatten auf Azure App Service][reservedinstances] beschrieben. Die Preisgestaltung, zusammen mit der Preisgestaltung für reservierte Instanzen, ist bei der [App Service Preisgestaltung][pricing] unter dem **Plan für isolierte V2** verfügbar. 
+
 <!--Image references-->
+
 [1]: ./media/using/using-appcreate.png
 [2]: ./media/using/using-appcreate-skus.png
 [3]: ./media/using/using-delete.png
 [4]: ./media/using/using-logsetup.png
 [4]: ./media/using/using-logs.png
 [5]: ./media/using/using-configuration.png
+[6]: ./media/using/using-ip-addresses.png
 
 <!--Links-->
+
 [Intro]: ./overview.md
 [MakeASE]: ./creation.md
 [ASENetwork]: ./networking.md
@@ -207,3 +220,5 @@ So löschen Sie eine ASE
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

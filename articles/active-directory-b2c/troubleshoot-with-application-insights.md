@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/05/2021
+ms.date: 08/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028740"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967797"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
 
@@ -164,7 +164,7 @@ Nachdem Sie die Einstellungen gespeichert haben, werden die Application Insights
 
 ## <a name="configure-application-insights-in-production"></a>Konfigurieren von Application Insights in der Produktionsumgebung
 
-Um die Leistung der Produktionsumgebung und die Benutzerfreundlichkeit zu verbessern, müssen Sie Ihre Richtlinie so konfigurieren, dass unwichtige Nachrichten ignoriert werden. Verwenden Sie die folgende Konfiguration, um nur kritische Fehlermeldungen an Application Insights zu senden. 
+Um die Leistung der Produktionsumgebung und die Benutzerfreundlichkeit zu verbessern, müssen Sie Ihre Richtlinie so konfigurieren, dass unwichtige Nachrichten ignoriert werden. Verwenden Sie die folgende Konfiguration in Produktionsumgebungen. 
 
 1. Legen Sie das `DeploymentMode`-Attribut von [TrustFrameworkPolicy](trustframeworkpolicy.md) auf `Production` fest. 
 

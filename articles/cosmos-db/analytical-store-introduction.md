@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9328b8159b04d4e7e7bc2383739c86c76dbf156a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: fed7f84ed86e4543c74073811ccbafcdf8736c77
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985884"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428672"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -153,28 +153,66 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
 
 ### <a name="schema-representation"></a>Schemadarstellung
 
-Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Bei diesen Modi bestehen Kompromisse zwischen der Einfachheit einer Spaltendarstellung, der Verarbeitung der polymorphen Schemata und der Einfachheit der Abfrageleistung:
+Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Diese Modi definieren die Methode der Schemadarstellung für alle Container im Datenbankkonto und weisen Kompromisse zwischen der Einfachheit der Abfrageerfahrung und der Einfachheit einer inklusiveren spaltenweisen Darstellung für polymorphe Schemas auf.
 
-* Genau definierte Schemadarstellung
-* Schemadarstellung mit vollständiger Genauigkeit
+* Die klar definierte Schemadarstellung für die Standardoption für SQL (CORE)-API-Konten. 
+* Die Darstellung des Schemas mit vollständiger Genauigkeit ist die Standardoptionen für die API von Azure Cosmos DB für MongoDB-Konten.
 
+Es ist möglich, das Schema mit vollständiger Genauigkeit für SQL (Core)-API-Konten zu verwenden. Hier sind die Überlegungen zu dieser Möglichkeit:
+
+ * Diese Option ist nur für Konten gültig, für die Synapse Link nicht aktiviert ist.
+ * Es ist nicht möglich, Synapse Link zu deaktivieren und erneut zu aktivieren, die Standardoption zurückzusetzen und von klar definierter zu vollständiger Genauigkeit zu wechseln.
+ * Es ist nicht möglich, mithilfe eines anderen Prozesses von klar definierter zu vollständiger Genauigkeit zu wechseln.
+ * Die MongoDB-Konten sind mit der Möglichkeit, die Darstellungsmethode zu ändern, nicht kompatibel.
+ * Diese Entscheidung kann derzeit nicht über das Azure-Portal getroffen werden.
+ * Die Entscheidung über diese Option sollte gleichzeitig getroffen werden, wenn Synapse Link für das Konto aktiviert wird:
+ 
+ Mit der Azure CLI:
+ ```cli
+ az cosmosdb create --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --subscription MySubscription --analytical-storage-schema-type "FullFidelity" --enable-analytical-storage true
+ ```
+ 
 > [!NOTE]
-> Wenn bei SQL-API (Core-API)-Konten der Analysespeicher aktiviert wurde, ist die Standardschemadarstellung in diesem Speicher genau definiert. Bei Azure Cosmos DB-API für MongoDB-Konten hingegen ist die Standardschemadarstellung im Analysespeicher eine Schemadarstellung mit vollständiger Genauigkeit. 
+> Ersetzen Sie im obigen Befehl `create` mit `update` für bestehende Konten.
+ 
+  Mit der PowerShell:
+  ```
+   New-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount  -EnableAnalyticalStorage true -AnalyticalStorageSchemaType "FullFidelity"
+   ```
+ 
+> [!NOTE]
+> Ersetzen Sie im obigen Befehl `New-AzCosmosDBAccount` mit `Update-AzCosmosDBAccount` für bestehende Konten.
+ 
 
-**Genau definierte Schemadarstellung**
+
+#### <a name="well-defined-schema-representation"></a>Genau definierte Schemadarstellung
 
 Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Darstellung der schemaunabhängigen Daten im Transaktionsspeicher. Bei der genau definierten Schemadarstellung gibt es die folgenden Überlegungen:
 
-* Eine Eigenschaft verfügt immer über denselben Typ für mehrere Elemente.
-* Wir lassen nur eine einzige Typänderung zu: von NULL in einen anderen Datentyp. Das erste Vorkommen ungleich NULL definiert den Spaltendatentyp.
+* Das erste Dokument definiert das Basisschema. Die Eigenschaft muss in allen Dokumenten immer denselben Typ aufweisen. Es gelten nur die folgende Ausnahmen:
+  * Von null in einen anderen Datentyp. Das erste Vorkommen ungleich null definiert den Spaltendatentyp. Alle Dokumente, die nicht dem ersten Datentyp ungleich null folgen, werden im Analysespeicher nicht dargestellt.
+  * Von `float` in `integer`. Alle Dokumente werden im Analysespeicher dargestellt.
+  * Von `integer` in `float`. Alle Dokumente werden im Analysespeicher dargestellt. Um diese Daten jedoch mit Azure Synapse SQL serverlosen Pools zu lesen, müssen Sie eine WITH-Klausel verwenden, um die Spalte in `varchar` zu konvertieren. Und nach dieser anfänglichen Konvertierung ist es möglich, sie erneut in eine Zahl zu konvertieren. Schauen Sie sich das folgende Beispiel an, bei dem **num** der erste Wert eine Ganzzahl und der zweite ein Gleitkommazahl war.
 
-  * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. In diesem Fall registriert der Analysespeicher den Datentyp von `"a"` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Das Dokument wird weiterhin in den Analysespeicher aufgenommen, aber Elemente, bei denen der Datentyp von `"a"` abweicht, werden nicht berücksichtigt.
+```SQL
+SELECT CAST (num as float) as num
+FROM OPENROWSET(PROVIDER = 'CosmosDB',
+                CONNECTION = '<your-connection',
+                OBJECT = 'IntToFloat',
+                SERVER_CREDENTIAL = 'your-credential'
+) 
+WITH (num varchar(100)) AS [IntToFloat]
+```
+
+  * Eigenschaften, die nicht dem Basisschemadatentyp folgen, werden im Analysespeicher nicht dargestellt. Betrachten Sie beispielsweise die beiden folgenden Dokumente, und dass das erste Dokument das Basisschema des Analysespeichers definiert hat. Das zweite Dokument, wo `id` `2` ist, hat kein genau definiertes Schema, da die Eigenschaft `"a"` eine Zeichenkette ist und das erste Dokument `"a"` als Zahl hat. In diesem Fall registriert der Analysespeicher den Datentyp von `"a"` als `integer` für die Lebensdauer des Containers. Das zweite Dokument wird weiterhin im Analysespeicher enthalten sein, aber seine Eigenschaft `"a"` nicht.
   
-    Diese Bedingung gilt nicht für NULL-Eigenschaften. Beispielsweise ist `{"a":123} {"a":null}` weiterhin genau definiert.
+    * `{"id": "1", "a":123}` 
+    * `{"id": "2", "a": "str"}`
+     
+ > [!NOTE]
+ > Die obige Bedingung gilt nicht für die Null-Eigenschaften. Beispielsweise ist `{"a":123} and {"a":null}` weiterhin genau definiert.
 
-* Arraytypen müssen einen einzelnen wiederholten Typ enthalten.
-
-  * `{"a": ["str",12]}` ist beispielsweise kein genau definiertes Schema, weil das Array eine Mischung aus ganzzahligen Typen und Zeichenfolgetypen enthält.
+* Arraytypen müssen einen einzelnen wiederholten Typ enthalten. `{"a": ["str",12]}` ist beispielsweise kein genau definiertes Schema, weil das Array eine Mischung aus ganzzahligen Typen und Zeichenfolgetypen enthält.
 
 > [!NOTE]
 > Wenn der Azure Cosmos DB-Analysespeicher der genau definierten Schemadarstellung folgt und die vorstehende Spezifikation durch bestimmte Elemente verletzt wird, werden diese Elemente in den Analysespeicher nicht einbezogen.
@@ -192,7 +230,7 @@ Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Dars
   * SQL Serverless-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
 
 
-**Schemadarstellung mit vollständiger Genauigkeit**
+#### <a name="full-fidelity-schema-representation"></a>Schemadarstellung mit vollständiger Genauigkeit
 
 Die Schemadarstellung mit vollständiger Genauigkeit ist so konzipiert, dass sie die gesamte Breite von polymorphen Schemata in den schemaunabhängigen operativen Daten verarbeitet. In dieser Schemadarstellung werden keine Elemente aus dem Analysespeicher gelöscht, selbst wenn die genau definierten Schemaeinschränkungen (d. h. keine Felder mit gemischtem Datentyp oder Arrays mit gemischtem Datentyp) verletzt werden.
 
@@ -260,7 +298,11 @@ Wenn Sie über ein global verteiltes Azure Cosmos DB-Konto verfügen, ist es na
 
 ## <a name="security"></a>Sicherheit
 
-Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktionsspeicher für eine bestimmte Datenbank. Sie können Primärschlüssel oder Schlüssel mit Leseberechtigung für die Authentifizierung verwenden. Sie können den verknüpften Dienst in Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in den Spark-Notebooks eingefügt werden. Der Zugriff auf diesen verknüpften Dienst steht jedem Benutzer zur Verfügung, der Zugriff auf den Arbeitsbereich hat.
+* Die **Authentifizierung mit dem Analysespeicher** erfolgt genauso, wie mit dem Transaktionsspeicher für eine bestimmte Datenbank. Sie können Primärschlüssel oder Schlüssel mit Leseberechtigung für die Authentifizierung verwenden. Sie können den verknüpften Dienst in Synapse Studio nutzen, um zu verhindern, dass die Azure Cosmos DB-Schlüssel in den Spark-Notebooks eingefügt werden. Für die serverlose Azure Synapse SQL können Sie die SQL Anmeldeinformationen verwenden, um auch das Einfügen der Azure Cosmos-Datenbankschlüssel in die SQL Notebooks zu verhindern. Der Zugriff auf diese verknüpften Dienste oder diese Anmeldeinformationen steht allen Personen zur Verfügung, die Zugriff auf den Arbeitsbereich haben.
+
+* **Netzwerkisolation mithilfe privater Endpunkte:** Sie können den Netzwerkzugriff auf die Daten in den Transaktions- und Analysespeichern unabhängig voneinander steuern. Die Netzwerkisolation erfolgt über separate verwaltete private Endpunkte für jeden Speicher in verwalteten virtuellen Netzwerken in Azure Synapse-Arbeitsbereichen. Weitere Informationen finden Sie im Artikel [Konfigurieren privater Endpunkte für den Analysespeicher](analytical-store-private-endpoints.md).
+
+* **Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln:** Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Azure Synapse Link unterstützt nur das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie müssen die verwaltete Identität Ihres Kontos in Ihrer Azure Key Vault-Zugriffsrichtlinie konfigurieren, bevor Sie den [Azure Synapse Link für Ihr Konto aktivieren](configure-synapse-link.md#enable-synapse-link). Weitere Informationen finden Sie in dem Artikel [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe verwalteter Identitäten eines Azure Cosmos DB-Kontos](how-to-setup-cmk.md#using-managed-identity).
 
 ## <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Unterstützung für mehrere Azure Synapse Analytics-Laufzeiten
 
@@ -323,6 +365,8 @@ Weitere Informationen finden Sie unter [Konfigurieren der analytischen Gültigke
 Weitere Informationen finden Sie in den folgenden Dokumenten:
 
 * [Azure Synapse Link für Azure Cosmos DB](synapse-link.md)
+
+* Sehen Sie sich das Lernmodul zum [Entwerfen der Hybridanalysen und Transaktionsverarbeitung mit Azure Synapse Analytics](/learn/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/) an
 
 * [Erste Schritte mit Azure Synapse Link für Azure Cosmos DB](configure-synapse-link.md)
 

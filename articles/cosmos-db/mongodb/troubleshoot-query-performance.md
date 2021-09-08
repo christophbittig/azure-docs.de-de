@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit Abfragen der API für MongoDB in
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 03/02/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.reviewer: sngun
-ms.openlocfilehash: 30e9623a63f0342f6800ffbb6b3534989d02ec02
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 90641a3ecbf7d09e9ecdc1101d97cedbe64b893e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339368"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039497"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Behandeln von Abfrageproblemen bei Verwendung der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -349,3 +349,6 @@ Der Wert `estimatedDelayFromRateLimitingInMilliseconds` bietet einen Eindruck vo
 
 * [Beheben von Problemen mit der Abfrageleistung (SQL-API)](troubleshoot-query-performance.md)
 * [Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB](mongodb-indexing.md)
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)

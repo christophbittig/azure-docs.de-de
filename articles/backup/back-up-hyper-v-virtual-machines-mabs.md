@@ -2,13 +2,13 @@
 title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 07/09/2021
+ms.openlocfilehash: e10bab2af14cdf540b5c5ec9c670e6ccb2c8807a
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739996"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585406"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -62,7 +62,7 @@ Dies sind die Voraussetzungen für die Sicherung virtueller Hyper-V-Computer mit
 
 |Voraussetzung|Details|
 |------------|-------|
-|MABS-Voraussetzungen|- Wenn Sie eine Wiederherstellung auf Elementebene für virtuelle Computer (Dateien, Ordner, Volumes) durchführen möchten, müssen Sie die Hyper-V-Rolle auf dem MABS-Server installieren.  Wenn Sie eine Wiederherstellung auf Elementebene für virtuelle Computer (Dateien, Ordner, Volumes) durchführen möchten, müssen Sie die Hyper-V-Rolle auf dem MABS-Server installieren.<br />- Sie können bis zu 800 virtuelle Computer mit je 100 GB auf einem MABS-Server schützen und mehrere MABS-Server zulassen, die größere Cluster unterstützen.<br />- MABS schließt die Auslagerungsdatei von inkrementellen Sicherungen aus, um die Sicherungsleistung des virtuellen Computers zu verbessern.<br />- MABS kann einen Hyper-V-Server oder -Cluster in der gleichen Domäne sichern, in der sich auch der MABS-Server befindet, oder in einer Unter- oder vertrauenswürdigen Domäne. Wenn Sie Hyper-V in einer Arbeitsgruppe oder einer nicht vertrauenswürdigen Domäne sichern möchten, müssen Sie die Authentifizierung einrichten. Für einen einzelnen Hyper-V-Server können Sie NTLM oder die Zertifikatauthentifizierung verwenden. Bei einem Cluster können Sie nur die Zertifikatauthentifizierung verwenden.<br />- Die Verwendung von Sicherungen auf Hostebene zur Sicherung von Daten virtueller Computer auf Pass-Through-Datenträgern wird nicht unterstützt. In diesem Szenario empfehlen wir Ihnen, zum Sichern von VHD-Dateien eine Sicherung auf Hostebene und zum Sichern der anderen Daten, die auf dem Host nicht sichtbar sind, eine Sicherung auf Gastebene durchzuführen.<br />   \- Sie können virtuelle Computer sichern, die auf deduplizierten Volumes gespeichert sind.|
+|MABS-Voraussetzungen|– Wenn Sie die Wiederherstellung auf Elementebene für virtuelle Computer durchführen möchten (Dateien, Ordner, Volumes wiederherstellen), muss die Hyper-V-Rolle auf dem MABS-Server aktiviert sein (die Hyper-V-Rolle wird bei der Installation von MABS standardmäßig installiert). Wenn Sie eine Wiederherstellung auf Elementebene für virtuelle Computer (Dateien, Ordner, Volumes) durchführen möchten, müssen Sie die Hyper-V-Rolle auf dem MABS-Server installieren.<br />- Sie können bis zu 800 virtuelle Computer mit je 100 GB auf einem MABS-Server schützen und mehrere MABS-Server zulassen, die größere Cluster unterstützen.<br />- MABS schließt die Auslagerungsdatei von inkrementellen Sicherungen aus, um die Sicherungsleistung des virtuellen Computers zu verbessern.<br />- MABS kann einen Hyper-V-Server oder -Cluster in der gleichen Domäne sichern, in der sich auch der MABS-Server befindet, oder in einer Unter- oder vertrauenswürdigen Domäne. Wenn Sie Hyper-V in einer Arbeitsgruppe oder einer nicht vertrauenswürdigen Domäne sichern möchten, müssen Sie die Authentifizierung einrichten. Für einen einzelnen Hyper-V-Server können Sie NTLM oder die Zertifikatauthentifizierung verwenden. Bei einem Cluster können Sie nur die Zertifikatauthentifizierung verwenden.<br />- Die Verwendung von Sicherungen auf Hostebene zur Sicherung von Daten virtueller Computer auf Pass-Through-Datenträgern wird nicht unterstützt. In diesem Szenario empfehlen wir Ihnen, zum Sichern von VHD-Dateien eine Sicherung auf Hostebene und zum Sichern der anderen Daten, die auf dem Host nicht sichtbar sind, eine Sicherung auf Gastebene durchzuführen.<br />   \- Sie können virtuelle Computer sichern, die auf deduplizierten Volumes gespeichert sind.|
 |Voraussetzungen für Hyper-V-VMs|– Die Version der Integrationskomponenten, die auf dem virtuellen Computer ausgeführt wird, muss mit der Version des Hyper-V-Hosts identisch sein. <br />- Für jede Sicherung der virtuellen Computer benötigen Sie freien Speicherplatz auf dem Volume, auf dem sich die Dateien der virtuellen Festplatten befinden, damit Hyper-V während der Sicherung ausreichend Platz für differenzierende Datenträger (AVHD) hat. Der Speicherplatz muss mindestens der berechneten Fensterzeit **Anfängliche Datenträgergröße\*Änderungsrate\*Sicherung** entsprechen. Wenn Sie mehrere Sicherungen auf einem Cluster ausführen, benötigen Sie genügend Speicherkapazität für die AVHDs für jeden virtuellen Computer, der diese Berechnung verwendet.<br />- Um virtuelle Computer zu sichern, die auf Hyper-V-Hostservern mit Windows Server 2012 R2 ausgeführt werden, sollte für den virtuellen Computer ein SCSI-Controller angegeben sein, auch wenn dieser nicht mit einer Komponente verbunden ist. (Bei der Sicherung von Windows Server 2012 R2 bindet der Hyper-V-Host eine neue VHD auf dem virtuellen Computer ein und hebt die Einbindung später wieder auf. Nur der SCSI-Controller kann dies unterstützen. Daher ist er für die Onlinesicherung des virtuellen Computers erforderlich.  Ohne diese Einstellung wird die Ereignis-ID 10103 ausgegeben, wenn Sie versuchen, den virtuellen Computer zu sichern.)|
 |Linux-Voraussetzungen|– Sie können virtuelle Linux-Computer mithilfe von MABS sichern. Es werden nur dateikonsistente Momentaufnahmen unterstützt.|
 |Sichern von VMs mit CSV-Speicher|-Installieren Sie bei einem CSV-Speicher den Hardwareanbieter für  den Volumeschattenkopie-Dienst (VSS) auf dem Hyper-V-Server. Wenden Sie sich für Informationen zum VSS-Hardwareanbieter an Ihren Storage Area Network-Anbieter.<br />- Wenn ein einzelner Knoten in einem CSV-Cluster unerwartet heruntergefahren wird, führt MABS eine Konsistenzprüfung für die virtuellen Computer durch, die auf diesem Knoten ausgeführt wurden.<br />Wenn Sie einen Hyper-V-Server mit aktivierter BitLocker-Laufwerkverschlüsselung auf dem CSV-Cluster neu starten müssen, müssen Sie eine Konsistenzprüfung für die virtuelle Hyper-V-Computer durchführen.|
@@ -155,6 +155,39 @@ Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen
 6. Vergewissern Sie sich auf dem Bildschirm „Zusammenfassung“, dass alle Details richtig sind. Wenn die Details nicht richtig sind oder Sie eine Änderung vornehmen möchten, wählen Sie **Zurück** aus. Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsprozess zu starten.
 
 7. Der Bildschirm **Wiederherstellungsstatus** enthält Informationen zum Wiederherstellungsauftrag.
+
+## <a name="restore-an-individual-file-from-a-hyper-v-vm"></a>Wiederherstellen einer einzelnen Datei auf einer Hyper-V-VM 
+
+Sie können einzelne Dateien über einen Wiederherstellungspunkt einer geschützten Hyper-V-VM wiederherstellen. Dieses Feature ist nur für Windows Server-VMs verfügbar. Die Wiederherstellung einzelner Dateien ähnelt der Wiederherstellung einer vollständigen VM. Allerdings müssen Sie zunächst zur VMDK navigieren und die gewünschten Dateien suchen, bevor Sie den Wiederherstellungsprozess starten. So stellen Sie eine einzelne Datei wieder her oder wählen Dateien von einer Windows Server-VM aus: 
+
+>[!Note]
+>Die Wiederherstellung einzelner Dateien auf einer Hyper-V-VM ist nur für Wiederherstellungspunkte von Windows-VMs und Datenträgern verfügbar. 
+
+1. Wählen Sie in der MABS-Administratorkonsole die Ansicht **Wiederherstellung** aus. 
+
+1. Suchen oder filtern Sie im Bereich **Durchsuchen**, um die wiederherzustellende VM zu ermitteln. Nachdem Sie eine Hyper-V-VM oder einen Ordner ausgewählt haben, zeigt der Bereich **Wiederherstellungspunkte für** die verfügbaren Wiederherstellungspunkte. 
+
+    ![Bereich „Wiederherstellungspunkte für“ zum Wiederherstellen von Dateien auf einer Hyper-V-VM](./media/back-up-hyper-v-virtual-machines-mabs/hyper-v-vm-rp-disk.png)
+
+1. Verwenden Sie im Bereich **Wiederherstellungspunkte für** den Kalender, um das Datum auszuwählen, das die gewünschten Wiederherstellungspunkte enthält. Je nach Konfiguration der Sicherungsrichtlinie können Daten ggf. über mehr als einen Wiederherstellungspunkt verfügen. Nachdem Sie den Tag ausgewählt haben, an dem der Wiederherstellungspunkt erstellt wurde, sollten Sie sicherstellen, dass Sie die richtige **Wiederherstellungszeit** angegeben haben. Falls das ausgewählte Datum über mehrere Wiederherstellungspunkte verfügt, sollten Sie Ihren Wiederherstellungspunkt über das Dropdownmenü „Wiederherstellungszeit“ auswählen. Nachdem Sie den Wiederherstellungspunkt ausgewählt haben, wird die Liste der wiederherstellbaren Elemente im Bereich „Pfad“ angezeigt. 
+
+1. Doppelklicken Sie im Bereich **Pfad** auf das Element in der Spalte „Wiederherstellbares Element“, um es zu öffnen und die Dateien zu finden, die wiederhergestellt werden sollen. Wählen Sie die Dateien oder Ordner aus, die Sie wiederherstellen möchten. Um mehrere Elemente auszuwählen, drücken Sie die **STRG**-Taste, während Sie die einzelnen Elemente auswählen. Nutzen Sie den Bereich **Pfad**, um nach der Liste der Dateien oder Ordner zu suchen, die in der Spalte **Wiederherstellbares Element** angezeigt werden. Bei Verwendung der Option **Liste unten durchsuchen** wird nicht in Unterordnern gesucht. Doppelklicken Sie auf den Ordner, um die Unterordner zu durchsuchen. Verwenden Sie die Schaltfläche „Nach oben“, um von einem untergeordneten Ordner in den übergeordneten Ordner zu wechseln. Sie können mehrere Elemente (Dateien und Ordner) auswählen, aber diese müssen in demselben übergeordneten Ordner enthalten sein. Es ist nicht möglich, in einem einzigen Wiederherstellungsauftrag Elemente aus mehreren Ordnern wiederherzustellen. 
+
+    ![Überprüfen der Wiederherstellungsauswahl für die Hyper-V-VM](./media/back-up-hyper-v-virtual-machines-mabs/hyper-v-vm-rp-disk-ilr-2.png) 
+
+1. Wählen Sie nach dem Auswählen der wiederherzustellenden Elemente im Menüband der Administratorkonsole **Wiederherstellen** aus, um den **Wiederherstellungs-Assistenten** zu öffnen. Im Wiederherstellungs-Assistenten werden auf dem Bildschirm **Wiederherstellungsauswahl überprüfen** die zur Wiederherstellung ausgewählten Elemente angezeigt. 
+
+1. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** die Option **Ändern** aus, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Wenn die Netzwerk-Bandbreiteneinschränkung deaktiviert bleiben soll, wählen Sie **Weiter** aus. Keine anderen Optionen auf dieser Seite des Assistenten sind für VMware-VMs verfügbar. Wenn Sie die Netzwerk-Bandbreiteneinschränkung ändern möchten, klicken Sie im Dialogfeld „Drosselung“ auf **Netzwerk-Bandbreiteneinschränkung aktivieren**, um die Option zu aktivieren. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**. 
+
+1. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** die Option **Weiter** aus. Sie können die Dateien oder Ordner nur in einem Netzwerkordner wiederherstellen. 
+
+1. Wählen Sie auf dem Bildschirm **Ziel angeben** die Option **Durchsuchen** aus, um eine Netzwerkadresse für Ihre Dateien bzw. Ordner auszuwählen. MABS erstellt einen Ordner, in den alle wiederhergestellten Elemente kopiert werden. Der Name des Ordners enthält das Präfix „MABS_day-month-year“. Wenn Sie einen Speicherort für die wiederhergestellten Dateien oder den Ordner auswählen, werden die Details für diesen Speicherort angegeben (Ziel, Zielpfad und verfügbarer Speicherplatz). 
+
+    ![Angeben des Standorts für die Wiederherstellung der Dateien der Hyper-V-VM](./media/back-up-hyper-v-virtual-machines-mabs/hyper-v-vm-specify-destination.png) 
+
+1. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** aus, welche Sicherheitseinstellung angewendet werden soll. Sie können sich für eine Änderung der Drosselung der Netzwerkbandbreite entscheiden, aber die Drosselung ist standardmäßig deaktiviert. Auch die Optionen **SAN-Wiederherstellung** und **Benachrichtigung** sind nicht aktiviert. 
+
+1. Überprüfen Sie Ihre Einstellungen auf dem Bildschirm **Zusammenfassung**, und wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsprozess zu starten. Auf dem Bildschirm **Wiederherstellungsstatus** wird der Status des Wiederherstellungsvorgangs angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

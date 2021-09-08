@@ -9,14 +9,16 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
 ms.custom: contperf-fy21q3-portal, devx-track-azurecli
-ms.openlocfilehash: f440518e0d7b4fc347da6455e7f6c06e18633598
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b0df8d446716363f21c468838523ffe4804f2e9c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346749"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691905"
 ---
 # <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Suchen nach Azure Marketplace-Imageinformationen mithilfe der Azure CLI
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Dieses Thema beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle im Azure Marketplace nach VM-Images suchen. Verwenden Sie diese Informationen, um ein Marketplace-Image anzugeben, wenn Sie einen virtuellen Computer programmgesteuert mit der Befehlszeilenschnittstelle, mit Resource Manager-Vorlagen oder anderen Tools erstellen.
 

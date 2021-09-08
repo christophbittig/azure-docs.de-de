@@ -3,15 +3,15 @@ title: Verwalten von Pre- und Post-Skripts in der Bereitstellung der Updateverwa
 description: In diesem Artikel erfahren Sie, wie Sie Pre- und Post-Skripts für Updatebereitstellungen konfigurieren und verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 07/20/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51067095b7ebb33da61908b1424752b481668f5f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830806"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472092"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -45,21 +45,57 @@ Neben den Standardrunbookparametern steht auch der `SoftwareUpdateConfigurationR
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
-|Eigenschaft  |BESCHREIBUNG  |
-|---------|---------|
-|SoftwareUpdateConfigurationName     | Der Name der Softwareupdatekonfiguration.        |
-|SoftwareUpdateConfigurationRunId     | Die eindeutige ID für die Ausführung        |
-|SoftwareUpdateConfigurationSettings     | Eine Sammlung von Eigenschaften im Zusammenhang mit der Softwareupdatekonfiguration.         |
-|SoftwareUpdateConfigurationSettings.operatingSystem     | Die Zielbetriebssysteme für die Updatebereitstellung.         |
-|SoftwareUpdateConfigurationSettings.duration     | Die maximale Dauer der Ausführung der Updatebereitstellung im Format `PT[n]H[n]M[n]S` gemäß ISO 8601 (das so genannte „Wartungsfenster“).          |
-|SoftwareUpdateConfigurationSettings.Windows     | Eine Sammlung von Eigenschaften im Zusammenhang mit Windows-Computern.         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Eine Liste mit KBs, die von der Bereitstellung ausgeschlossen werden.        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | Für die Updatebereitstellung ausgewählte Updateklassifizierungen.        |
-|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | Neustarteinstellungen für die Updatebereitstellung.        |
-|azureVirtualMachines     | Eine Liste mit Ressourcen-IDs für die virtuellen Azure-Computer in der Updatebereitstellung.        |
-|nonAzureComputerNames|Eine Liste mit den FQDNs der Azure-fremden Computer in der Updatebereitstellung.|
+|Eigenschaft  |type |BESCHREIBUNG  |
+|---------|---------|---------|
+|SoftwareUpdateConfigurationName     |String | Der Name der Softwareupdatekonfiguration.        |
+|SoftwareUpdateConfigurationRunId     |GUID | Die eindeutige ID für die Ausführung        |
+|SoftwareUpdateConfigurationSettings     || Eine Sammlung von Eigenschaften im Zusammenhang mit der Softwareupdatekonfiguration.         |
+|SoftwareUpdateConfigurationSettings.OperatingSystem     |Int | Die Zielbetriebssysteme für die Updatebereitstellung. `1` = Windows und `2` = Linux        |
+|SoftwareUpdateConfigurationSettings.Duration     |Timespan (HH:MM:SS) | Die maximale Dauer der Ausführung der Updatebereitstellung im Format `PT[n]H[n]M[n]S` gemäß ISO 8601 (das so genannte „Wartungsfenster“).<br> Beispiel: 02:00:00         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration     || Eine Sammlung von Eigenschaften im Zusammenhang mit Windows-Computern.         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |String | Eine durch Leerzeichen getrennte Liste von KBs, die von der Updatebereitstellung ausgeschlossen sind.        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |String | Eine durch Leerzeichen getrennte Liste von KBs, die in die Updatebereitstellung einbezogen sind.        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |Integer | 1 = „Critical“;<br> 2 = „Security“<br> 4 = „UpdateRollUp“<br> 8 = „FeaturePack“<br> 16 = „ServicePack“<br> 32 = „Definition“<br> 64 = „Tools“<br> 128 = „Updates“        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.rebootSetting     |String | Neustarteinstellungen für die Updatebereitstellung. Die Werte sind `IfRequired`, `Never`, `Always`.      |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || Eine Sammlung von Eigenschaften im Zusammenhang mit Linux-Computern.         |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |Integer |0 = „Unclassified“<br> 1 = „Critical“<br> 2 = „Security“<br> 4 = „Other“|
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |String | Eine durch Leerzeichen getrennte Liste von Paketnamen, die in die Updatebereitstellung einbezogen sind. |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |String |Eine durch Leerzeichen getrennte Liste von Paketnamen, die von der Updatebereitstellung ausgeschlossen sind. |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.RebootSetting |String |Neustarteinstellungen für die Updatebereitstellung. Die Werte sind `IfRequired`, `Never`, `Always`.      |
+|SoftwareUpdateConfiguationSettings.AzureVirtualMachines     |Zeichenfolgenarray | Eine Liste mit Ressourcen-IDs für die virtuellen Azure-Computer in der Updatebereitstellung.        |
+|SoftwareUpdateConfigurationSettings.NonAzureComputerNames|Zeichenfolgenarray |Eine Liste mit den FQDNs der Azure-fremden Computer in der Updatebereitstellung.|
 
-Das folgende Beispiel ist eine JSON-Zeichenfolge, die an den **SoftwareUpdateConfigurationRunContext**-Parameter übergeben wird:
+Das folgende Beispiel ist eine JSON-Zeichenfolge, die den **SoftwareUpdateConfigurationSettings**-Eigenschaften für einen Linux-Computer übergeben wird:
+
+```json
+"SoftwareUpdateConfigurationSettings": {
+     "OperatingSystem": 2,
+     "WindowsConfiguration": null,
+     "LinuxConfiguration": {
+         "IncludedPackageClassifications": 7,
+         "ExcludedPackageNameMasks": "fgh xyz",
+         "IncludedPackageNameMasks": "abc bin*",
+         "RebootSetting": "IfRequired"
+     },
+     "Targets": {
+         "azureQueries": null,
+         "nonAzureQueries": ""
+     },
+     "NonAzureComputerNames": [
+        "box1.contoso.com",
+        "box2.contoso.com"
+     ],
+     "AzureVirtualMachines": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/vm-01"
+     ],
+     "Duration": "02:00:00",
+     "PSComputerName": "localhost",
+     "PSShowComputerName": true,
+     "PSSourceJobInstanceId": "2477a37b-5262-4f4f-b636-3a70152901e9"
+ }
+```
+
+Das folgende Beispiel ist eine JSON-Zeichenfolge, die den **SoftwareUpdateConfigurationSettings**-Eigenschaften für einen Windows-Computer übergeben wird:
 
 ```json
 "SoftwareUpdateConfigurationRunContext": {
@@ -67,7 +103,7 @@ Das folgende Beispiel ist eine JSON-Zeichenfolge, die an den **SoftwareUpdateCon
     "SoftwareUpdateConfigurationRunId": "00000000-0000-0000-0000-000000000000",
     "SoftwareUpdateConfigurationSettings": {
       "operatingSystem": "Windows",
-      "duration": "PT2H0M",
+      "duration": "02:00:00",
       "windows": {
         "excludedKbNumbers": [
           "168934",
@@ -77,9 +113,9 @@ Das folgende Beispiel ist eine JSON-Zeichenfolge, die an den **SoftwareUpdateCon
         "rebootSetting": "IfRequired"
       },
       "azureVirtualMachines": [
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-02",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-03"
       ],
       "nonAzureComputerNames": [
         "box1.contoso.com",

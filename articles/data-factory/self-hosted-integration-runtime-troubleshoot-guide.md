@@ -1,39 +1,50 @@
 ---
-title: Problembehandlung bei der selbstgehosteten Integration Runtime in Azure Data Factory
-description: Hier erfahren Sie, wie Sie eine Problembehandlung im Fall von Problemen bei der selbstgehosteten Integration Runtime in Azure Data Factory durchführen können.
+title: Problembehandlung bei der selbstgehosteten Integration Runtime
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie Probleme mit der selbstgehosteten Integration Runtime in Azure Data Factory- und Azure Synapse Analytics-Pipelines beheben.
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 05/31/2021
+ms.date: 08/24/2021
 ms.author: lle
-ms.openlocfilehash: 7abdd532e20a2514fcf96d97973a8fbfdd87d0df
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b833b8b63415a36fb0ee2862c9dfa261cfeb44ef
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796270"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864209"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden allgemeine Methoden zur Behandlung von Problemen mit der selbstgehosteten Integration Runtime (IR) in Azure Data Factory erläutert.
+In diesem Artikel werden allgemeine Methoden zur Behandlung von Problemen mit der selbstgehosteten Integration Runtime (IR) in Azure Data Factory- und Synapse-Arbeitsbereichen erläutert.
 
-## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>Erfassen von Protokollen der selbstgehosteten IR aus Azure Data Factory
+## <a name="gather-self-hosted-ir-logs"></a>Erfassen von selbstgehosteten Integration Runtime-Protokollen
 
-Bei fehlgeschlagenen Aktivitäten in der selbstgehosteten oder freigegebenen Integration Runtime (IR) unterstützt Azure Data Factory das Anzeigen und Hochladen von Fehlerprotokollen. Befolgen Sie die hier erwähnten Anweisungen, um die Fehlerberichts-ID abzurufen, und geben Sie dann die Berichts-ID ein, um nach verwandten bekannten Problemen zu suchen.
+Wenn bei den Aktivitäten in der selbstgehosteten oder freigegebenen Integration Runtime (IR) Fehler auftreten, unterstützt der Dienst das Anzeigen und Hochladen von Fehlerprotokollen. Befolgen Sie die hier erwähnten Anweisungen, um die Fehlerberichts-ID abzurufen, und geben Sie dann die Berichts-ID ein, um nach verwandten bekannten Problemen zu suchen.
 
-1. Wählen Sie in Azure Data Factory **Pipelineausführungen** aus.
+1. Wählen Sie auf der Seite „Überwachen“ für die Dienstbenutzeroberfläche die Funktion **Pipeline führt aus**.
 
 1. Wählen Sie unter **Aktivitätsausführungen** in der Spalte **Fehler** die hervorgehobene Schaltfläche aus, um die Aktivitätsprotokolle anzuzeigen (siehe folgender Screenshot):
 
-    ![Screenshot des Abschnitts „Aktivitätsausführungen“ im Bereich „Alle Pipelineausführungen“](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
-
-    Die Aktivitätsprotokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt.
-
-    ![Screenshot mit den Aktivitätsprotokollen für die fehlgeschlagene Aktivität](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png) 
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
     
-1. Wählen Sie **Protokolle senden** aus, wenn Sie weitere Hilfe benötigen.
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="Ein Screenshot, der den Abschnitt „Aktivitätsausführungen“ im Bereich „Alle Pipelineausführungen“ zeigt":::.
+    
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="Ein Screenshot, der den Abschnitt „Aktivitätsausführungen“ im Bereich „Alle Pipelineausführungen“ zeigt":::.
+    
+    ---
+    
+    Die Aktivitätsprotokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt.
+    
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png" alt-text="Screenshot mit den Aktivitätsprotokollen für die fehlgeschlagene Aktivität"::: 
+    
+3. Wählen Sie **Protokolle senden** aus, wenn Sie weitere Hilfe benötigen.
  
    Das Fenster **Protokolle der selbstgehosteten Integration Runtime (IR) für Microsoft freigeben** wird geöffnet.
 
@@ -71,7 +82,7 @@ Eine neue Aktivität kann einen OOM-Fehler auslösen, wenn auf dem IR-Computer e
 
 #### <a name="symptoms"></a>Symptome
 
-Wenn Sie versuchen, auf der Azure Data Factory-Benutzeroberfläche den Grenzwert für gleichzeitige Aufträge zu erhöhen, bleibt der Vorgang im Status *Wird aktualisiert* hängen.
+Wenn Sie versuchen, auf der Benutzeroberfläche den Grenzwert für gleichzeitige Aufträge zu erhöhen, bleibt der Vorgang im Status *Wird aktualisiert* hängen.
 
 Beispielszenario: Der Höchstwert für gleichzeitige Aufträge ist aktuell auf „24“ festgelegt, und Sie möchten die Anzahl erhöhen, damit Aufträge schneller ausgeführt werden können. Der Mindestwert, den Sie eingeben können, ist „3“, und der Höchstwert beträgt „32“. Sie erhöhen den Wert von 24 auf 32 und wählen dann die Schaltfläche **Aktualisieren** aus. Der Prozess bleibt in Status *Wird aktualisiert* hängen, wie aus dem folgenden Screenshot hervorgeht. Sie aktualisieren die Seite, und es wird immer noch der Wert 24 angezeigt. Er wurde nicht wie erwartet auf 32 aktualisiert.
 
@@ -307,7 +318,7 @@ Der Grund dafür ist, dass die Workerknoten keinen Zugriff auf die privaten Schl
 
 `[14]0460.3404::05/07/21-00:23:32.2107988 [System] A fatal error occurred when attempting to access the TLS server credential private key. The error code returned from the cryptographic module is 0x8009030D. The internal error state is 10001.`
 
-Wenn Sie die Dienstprinzipalauthentifizierung im verknüpften ADF-Dienst verwenden, tritt kein Problem beim Synchronisierungsprozess auf. Sobald Sie jedoch den Authentifizierungstyp in den Kontoschlüssel ändern, beginnt das Synchronisierungsproblem. Dies liegt daran, dass der selbstgehostete Integration Runtime-Dienst unter einem Dienstkonto (NT SERVICE\DIAHostService) ausgeführt wird und den Berechtigungen für den privaten Schlüssel hinzugefügt werden muss.
+Wenn Sie die Dienstprinzipalauthentifizierung im verknüpften Dienst verwenden, tritt kein Problem beim Synchronisierungsprozess auf. Sobald Sie jedoch den Authentifizierungstyp in den Kontoschlüssel ändern, beginnt das Synchronisierungsproblem. Dies liegt daran, dass der selbstgehostete Integration Runtime-Dienst unter einem Dienstkonto (NT SERVICE\DIAHostService) ausgeführt wird und den Berechtigungen für den privaten Schlüssel hinzugefügt werden muss.
  
 
 #### <a name="resolution"></a>Lösung
@@ -516,9 +527,9 @@ Vor und nach der Konvertierung:
 ![Screenshot des Ergebnisses nach der Zertifikatskonvertierung](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
 ### <a name="self-hosted-integration-runtime-version-5x"></a>Selbstgehostete Integration Runtime, Version 5.x
-Für das Upgrade auf Version 5.x der selbstgehosteten Integration Runtime von Azure Data Factory wird mindestens **.NET Framework Runtime 4.7.2** oder höher benötigt. Auf der Downloadseite befinden sich Downloadlinks für die aktuelle 4.x-Version und die beiden neuen 5.x-Versionen. 
+Für das Upgrade auf die Version 5.x der selbstgehosteten Integration Runtime wird mindestens **.NET Framework Runtime 4.7.2** oder höher benötigt. Auf der Downloadseite befinden sich Downloadlinks für die aktuelle 4.x-Version und die beiden neuen 5.x-Versionen. 
 
-Für Kunden von Azure Data Factory v2 gilt Folgendes:
+Für Kunden von Azure Data Factory V2 und Azure Synapse:
 - Wenn die automatische Aktualisierung aktiviert ist und Sie bereits ein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, erfolgt automatisch ein Upgrade der selbstgehosteten Integration Runtime auf die neueste Version 5.x.
 - Wenn die automatische Aktualisierung aktiviert ist und Sie noch kein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, erfolgt kein automatisches Upgrade der selbstgehosteten Integration Runtime auf die neueste Version 5.x. Die aktuelle Version 4.x bleibt für die selbstgehostete Integration Runtime unverändert erhalten. Im Portal und im Client der selbstgehosteten Integration Runtime wird eine Warnung zum Upgrade von .NET Framework Runtime angezeigt.
 - Wenn die automatische Aktualisierung deaktiviert ist und Sie bereits ein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, können Sie die neueste Version 5.x manuell herunterladen und auf Ihrem Computer installieren.
@@ -545,7 +556,7 @@ Wenn Sie versuchen, die selbstgehostete Integration Runtime zu registrieren, wir
 
 #### <a name="cause"></a>Ursache 
 
-Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Factory-Dienst (Back-End) herstellen. Dieses Problem wird in der Regel durch Netzwerkeinstellungen in der Firewall verursacht.
+Die selbstgehostete Integration Runtime kann keine Verbindung zum Backenddienst herstellen. Dieses Problem wird in der Regel durch Netzwerkeinstellungen in der Firewall verursacht.
 
 #### <a name="resolution"></a>Lösung
 
@@ -557,10 +568,10 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Fac
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-    ```
-        
+    ```      
+
    > [!NOTE]     
-   > Die Dienst-URL kann je nach Speicherort Ihrer Azure Data Factory-Instanz variieren. Sie finden die Dienst-URL unter **ADF-Benutzeroberfläche** > **Verbindungen** > **Integration Runtimes** > **Selbstgehostete IR bearbeiten** > **Knoten** > **Dienst-URLs anzeigen**.
+   > Die Dienst-URL kann je nach Speicherort Ihrer Azure Data Factory- oder Synapse Arbeitsbereich-Instanz variieren. Um die Dienst-URL zu finden, verwenden Sie die Seite „Verwalten der Benutzeroberfläche“ in Ihrer Data Factory- oder Azure Synapse-Instanz, um **Integration Runtimes** zu suchen. Klicken Sie auf Ihre selbstgehostete IR, um sie zu bearbeiten.  Wählen Sie dort die Registerkarte **Knoten** aus und klicken Sie auf **Dienst-URLs anzeigen**.
             
     Die folgende Antwort wird erwartet:
             
@@ -646,13 +657,13 @@ Dieses Verhalten tritt auf, wenn Knoten nicht miteinander kommunizieren können.
     - Platzieren Sie alle Knoten in derselben Domäne.
     - Fügen Sie die IP-Adresse zur Hostzuordnung in allen Hostdateien des gehosteten virtuellen Computers hinzu.
 
-### <a name="connectivity-issue-between-the-self-hosted-ir-and-your-data-factory-instance-or-the-self-hosted-ir-and-the-data-source-or-sink"></a>Konnektivitätsprobleme zwischen der selbstgehosteten IR und Ihrer Azure Data Factory-Instanz oder der selbstgehosteten IR und der Datenquelle oder Senke
+### <a name="connectivity-issue-between-the-self-hosted-ir-and-your-data-factory-or-azure-synapse-instance-or-the-self-hosted-ir-and-the-data-source-or-sink"></a>Konnektivitätsprobleme zwischen der selbstgehosteten IR und Ihrer Azure Data Factory- oder Azure Synapse-Instanz oder der selbstgehosteten IR und der Datenquelle oder Senke
 
 Um ein Problem mit der Netzwerkkonnektivität zu beheben, müssen Sie wissen, wie Sie die Netzwerkablaufverfolgung erfassen und verwenden und die [Microsoft Network Monitor (Netmon)-Ablaufverfolgung analysieren](#analyze-the-netmon-trace), bevor Sie die Netmon-Tools in realen Fällen von der selbstgehosteten IR anwenden.
 
 #### <a name="symptoms"></a>Symptome
 
-Möglicherweise müssen Sie gelegentlich bestimmte Konnektivitätsprobleme zwischen der selbstgehosteten IR und Ihrer Azure Data Factory-Instanz (siehe folgender Screenshot) oder zwischen der selbstgehosteten IR und der Datenquelle oder Senke beheben. 
+Möglicherweise müssen Sie gelegentlich bestimmte Konnektivitätsprobleme zwischen der selbstgehosteten IR und Ihrer Azure Data Factory oder Azure Synapse-Instanz (siehe folgender Screenshot) oder zwischen der selbstgehosteten IR und der Datenquelle oder Senke beheben. 
 
 ![Screenshot der Meldung „Fehler bei der Verarbeitung der HTTP-Anforderung“](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
 
@@ -764,9 +775,9 @@ Diese Benachrichtigung gilt für die folgenden Szenarios:
 
 So bestimmen Sie, ob Sie betroffen sind:
 
-- *Sie sind nicht betroffen*, wenn Sie Firewallregeln anhand von vollqualifizierten Domänennamen (FQDNs) definieren und den unter [Einrichten einer Firewallkonfiguration und Positivliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses) beschriebenen Ansatz verwenden.
+- Sie *sind nicht* betroffen, wenn Sie die Firewallregeln anhand von vollqualifizierten Domänennamen (FQDNs) definieren und den unter [Einrichten einer Firewallkonfiguration und Positivliste für IP-Adressen](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses) beschriebenen Ansatz verwenden.
 
-- *Sie sind betroffen*, wenn Sie die Positivliste für ausgehende IP-Adressen in Ihrer Unternehmensfirewall ausdrücklich aktivieren.
+- Sie *sind* betroffen, wenn Sie die Positivliste für ausgehende IP-Adressen in Ihrer Unternehmensfirewall ausdrücklich aktivieren.
 
    Wenn Sie betroffen sind, gehen Sie wie folgt vor: Benachrichtigen Sie bis zum 8. November 2020 das für die Netzwerkinfrastruktur zuständige Team, damit Ihre Netzwerkkonfiguration aktualisiert und die neuesten IP-Adressen von Azure Data Factory verwendet werden. Navigieren Sie zum Herunterladen der aktuellen IP-Adressen zu [Ermitteln von Diensttags mit herunterladbaren JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
@@ -780,7 +791,7 @@ So bestimmen Sie, ob Sie betroffen sind:
 
   ![Screenshot einer Zielüberprüfung mit DataFactory als Ziel](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 
-- *Sie sind betroffen*, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen für die NSG-Regeln im virtuellen Azure-Netzwerk ausdrücklich aktivieren.
+- Sie *sind* betroffen, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen für die NSG-Regeln im virtuellen Azure-Netzwerk ausdrücklich aktivieren.
 
    Wenn Sie betroffen sind, gehen Sie wie folgt vor: Benachrichtigen Sie bis zum 8. November 2020 das für die Netzwerkinfrastruktur zuständige Team, damit die NSG-Regeln in der Konfiguration Ihres virtuellen Azure-Netzwerks aktualisiert und die neuesten IP-Adressen von Azure Data Factory verwendet werden. Wechseln Sie zum Herunterladen der aktuellen IP-Adressen zu [Ermitteln von Diensttags mit herunterladbaren JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
@@ -792,7 +803,7 @@ So bestimmen Sie, ob Sie betroffen sind:
 
 - Wenn Einschränkungen durch Ausgangsregeln bestehen, prüfen Sie, ob Sie Diensttags verwenden. Wenn Sie Diensttags verwenden, sind Sie nicht betroffen. Sie brauchen nichts zu ändern oder hinzuzufügen, da der neue IP-Adressbereich in den Bereich der vorhandenen Diensttags fällt.
 
-- *Sie sind betroffen*, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen für die NSG-Regeln im virtuellen Azure-Netzwerk ausdrücklich aktivieren.
+- Sie *sind* betroffen, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen für die NSG-Regeln im virtuellen Azure-Netzwerk ausdrücklich aktivieren.
 
   Wenn Sie betroffen sind, gehen Sie wie folgt vor: Benachrichtigen Sie bis zum 8. November 2020 das für die Netzwerkinfrastruktur zuständige Team, damit die NSG-Regeln in der Konfiguration Ihres virtuellen Azure-Netzwerks aktualisiert und die neuesten IP-Adressen von Azure Data Factory verwendet werden. Wechseln Sie zum Herunterladen der aktuellen IP-Adressen zu [Ermitteln von Diensttags mit herunterladbaren JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
@@ -800,13 +811,13 @@ So bestimmen Sie, ob Sie betroffen sind:
 
 #### <a name="symptoms"></a>Symptome
 
-Die selbstgehostete Integration Runtime konnte keine Verbindung zum Azure Data Factory-Dienst herstellen.
+Die selbstgehostete Integration Runtime konnte keine Verbindung zum Azure Data Factory- oder Azure Synapse Dienst herstellen.
 
 Wenn Sie das Ereignisprotokoll der selbstgehosteten IR oder die Clientbenachrichtigungsprotokolle in der Tabelle „CustomLogEvent“ überprüfen, finden Sie die folgende Fehlermeldung:
 
 „Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden. System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure." (System.Security.Authentication.AuthenticationException: Das Remotezertifikat ist laut Validierungsverfahren ungültig.)
 
-Am einfachsten überprüfen Sie das Zertifikat des Azure Data Factory-Diensts, indem Sie die URL des Azure Data Factory-Diensts in Ihren Browser eingeben und den Dienst öffnen. Öffnen Sie beispielsweise auf dem Computer, auf dem die selbstgehostete IR installiert ist, den Link [Serverzertifikat überprüfen](https://eu.frontend.clouddatahub.net/), und zeigen Sie dann die Informationen zum Serverzertifikat an.
+Am einfachsten überprüfen Sie das Dienstzertifikat, indem Sie die URL in Ihren Browser eingeben und den Dienst öffnen. Öffnen Sie beispielsweise auf dem Computer, auf dem die selbstgehostete IR installiert ist, den Link [Serverzertifikat überprüfen](https://eu.frontend.clouddatahub.net/), und zeigen Sie dann die Informationen zum Serverzertifikat an.
 
   ![Screenshot des Bereichs „Serverzertifikat überprüfen“ des Azure Data Factory-Diensts](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
 
@@ -816,13 +827,13 @@ Am einfachsten überprüfen Sie das Zertifikat des Azure Data Factory-Diensts, i
 
 Für dieses Problem gibt es zwei mögliche Ursachen:
 
-- Ursache 1: Auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, wird die Stammzertifizierungsstelle des Serverzertifikats des Azure Data Factory-Diensts nicht als vertrauenswürdig eingestuft. 
-- Ursache 2: Sie verwenden einen Proxy in Ihrer Umgebung. Das Serverzertifikat des Azure Data Factory-Diensts wird durch den Proxy ersetzt, und das ersetzte Serverzertifikat wird auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, nicht als vertrauenswürdig eingestuft.
+- Ursache 1: Auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, wird die Stammzertifizierungsstelle des Dienstserverzertifikats nicht als vertrauenswürdig eingestuft. 
+- Ursache 2: Sie verwenden einen Proxy in Ihrer Umgebung. Das Dienstserverzertifikat wird durch den Proxy ersetzt und das ersetzte Serverzertifikat wird auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, nicht als vertrauenswürdig eingestuft.
 
 #### <a name="resolution"></a>Lösung
 
-- Für Ursache 1: Stellen Sie sicher, dass das Azure Data Factory-Serverzertifikat und die zugehörige Zertifikatkette auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als vertrauenswürdig gelten.
-- Für Ursache 2: Stellen Sie entweder auf dem Computer mit der selbstgehosteten Integration Runtime eine Vertrauensstellung zur ersetzten Stammzertifizierungsstelle her, oder konfigurieren Sie den Proxy so, dass das Azure Data Factory-Serverzertifikat nicht ersetzt wird.
+- Für Ursache 1: Stellen Sie sicher, dass das Dienstserverzertifikat und die zugehörige Zertifikatkette auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als vertrauenswürdig gelten.
+- Für Ursache 2: Stellen Sie entweder auf dem Computer mit der selbstgehosteten Integration Runtime eine Vertrauensstellung zur ersetzten Stammzertifizierungsstelle her, oder konfigurieren Sie den Proxy so, dass das Dienstserverzertifikat nicht ersetzt wird.
 
 Weitere Informationen zum Herstellen einer Vertrauensstellung von Zertifikaten unter Windows finden Sie unter [Installieren des vertrauenswürdigen Stammzertifikats](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
@@ -839,7 +850,7 @@ Wenn sich das Zertifikat nicht unter den vertrauenswürdigen Stammzertifizierung
 Weitere Hilfe zur Problembehandlung finden Sie in den folgenden Ressourcen:
 
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Q&A-Seite von Microsoft](/answers/topics/azure-data-factory.html)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)

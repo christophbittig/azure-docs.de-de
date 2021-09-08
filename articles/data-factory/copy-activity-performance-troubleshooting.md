@@ -1,18 +1,20 @@
 ---
 title: Problembehandlung für die Leistung der Kopieraktivität
-description: Es wird beschrieben, wie Sie in Azure Data Factory die Problembehandlung in Bezug auf die Leistung der Kopieraktivität durchführen.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Es wird beschrieben, wie Sie in Azure Data Factory und in Azure Synapse Analytics die Problembehandlung in Bezug auf die Leistung der Kopieraktivität durchführen.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/07/2021
-ms.openlocfilehash: eee68b8cb533763aff0c1cc6a1ebe19db735461e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: cea4999752d416f36f435ba88403fd9dc735f689
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488571"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255814"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -26,7 +28,7 @@ Nachdem Sie eine Kopieraktivität ausgeführt haben, können Sie das Ausführung
 
 ## <a name="performance-tuning-tips"></a>Tipps zur Leistungsoptimierung
 
-In einigen Szenarien werden bei der Ausführung einer Kopieraktivität in Data Factory oben **„Tipps zur Leistungsoptimierung“** angezeigt. Dies ist im obigen Beispiel dargestellt. Die Tipps geben Aufschluss über den Engpass, der von ADF für den jeweiligen Kopiervorgang identifiziert wurde, und Sie erhalten Vorschläge, wie der Kopierdurchsatz erhöht werden kann. Versuchen Sie, die empfohlene Änderung vorzunehmen, und führen Sie den Kopiervorgang dann erneut durch.
+In einigen Szenarien werden bei der Ausführung einer Kopieraktivität in oben **„Tipps zur Leistungsoptimierung“** angezeigt. Dies ist im obigen Beispiel dargestellt. Die Tipps geben Ihnen Aufschluss über den Engpass, der von dem Dienst für den jeweiligen Kopiervorgang identifiziert wurde. Sie erhalten außerdem Vorschläge, wie der Kopierdurchsatz erhöht werden kann. Versuchen Sie, die empfohlene Änderung vorzunehmen, und führen Sie den Kopiervorgang dann erneut durch.
 
 Als Hilfe ist hier angegeben, für welche Fälle in den Tipps zur Leistungsoptimierung derzeit Vorschläge gemacht werden:
 
@@ -69,11 +71,11 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
     - Überprüfen Sie, ob Sie [Dateien basierend auf einem Dateipfad oder -namen mit datetime-Partition kopieren](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) können. Diese Vorgehensweise ist nicht mit einer höheren Belastung bei der Auflistung aufseiten der Quelle verbunden.
 
-    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob/Azure File Storage und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
+    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob Storage/Azure File und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
 
     - Erwägen Sie, große Einzeldatasets in mehrere kleinere Datasets zu unterteilen, und ermöglichen Sie die gleichzeitige Ausführung dieser Kopieraufträge, die jeweils für einen Teil der Daten bestimmt sind. Hierfür können Sie „Lookup/GetMetadata + ForEach + Copy“ verwenden. Die Lösungsvorlagen [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md) und [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md) dienen hier als allgemeine Beispiele.
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
   - Verwenden Sie Azure IR in derselben oder in einer Region, die nicht weit von der Region Ihres Quelldatenspeichers entfernt ist.
 
@@ -81,7 +83,7 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
   - Halten Sie sich an die bewährte Methode für das connectorspezifische Laden von Daten, falls sie für Sie zutrifft. Wenn Sie beispielsweise Daten von [Amazon Redshift](connector-amazon-redshift.md) kopieren, sollten Sie konfigurieren, dass Redshift UNLOAD verwendet wird.
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher eine hohe Auslastung besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
   - Überprüfen Sie Ihre Kopierquelle und das Senkenmuster: 
 
@@ -95,7 +97,7 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
   - Halten Sie sich an die bewährte Methode für das connectorspezifische Laden von Daten, falls sie für Sie zutrifft. Verwenden Sie beispielsweise beim Kopieren von Daten in [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) PolyBase oder die COPY-Anweisung. 
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Senke gemeldet werden oder für Ihren Datenspeicher eine hohe Auslastung besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
   - Überprüfen Sie Ihre Kopierquelle und das Senkenmuster: 
 
@@ -123,11 +125,11 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
     - Überprüfen Sie, ob Sie [Dateien basierend auf einem Dateipfad oder -namen mit datetime-Partition kopieren](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) können. Diese Vorgehensweise ist nicht mit einer höheren Belastung bei der Auflistung aufseiten der Quelle verbunden.
 
-    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob/Azure File Storage und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
+    - Überprüfen Sie, ob Sie stattdessen den nativen Filter des Datenspeichers verwenden können, also „**prefix**“ für Amazon S3/Azure Blob Storage/Azure File und „**listAfter/listBefore**“ für ADLS Gen1. Diese Filter sind serverseitige Datenspeicherfilter mit einer deutlich besseren Leistung.
 
     - Erwägen Sie, große Einzeldatasets in mehrere kleinere Datasets zu unterteilen, und ermöglichen Sie die gleichzeitige Ausführung dieser Kopieraufträge, die jeweils für einen Teil der Daten bestimmt sind. Hierfür können Sie „Lookup/GetMetadata + ForEach + Copy“ verwenden. Die Lösungsvorlagen [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md) und [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md) dienen hier als allgemeine Beispiele.
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
 - **Lange Dauer für „Übertragen: Lesen von der Quelle“** : 
 
@@ -135,7 +137,7 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
   - Überprüfen Sie, ob der Computer mit der selbstgehosteten IR über genügend Eingangsbandbreite verfügt, um die Daten effizient lesen und übertragen zu können. Wenn sich Ihr Quelldatenspeicher in Azure befindet, können Sie [dieses Tool](https://www.azurespeed.com/Azure/Download) verwenden, um die Downloadgeschwindigkeit zu überprüfen.
 
-  - Überprüfen Sie den Nutzungstrend für die CPU und den Arbeitsspeicher der selbstgehosteten IR, indem Sie im Azure-Portal auf die Übersichtsseite Ihrer Data Factory zugreifen. Erwägen Sie, die [IR horizontal oder vertikal hochzuskalieren](create-self-hosted-integration-runtime.md#high-availability-and-scalability), falls die CPU-Auslastung hoch ist oder nur wenig Arbeitsspeicher verfügbar ist.
+  - Überprüfen Sie, ob der Nutzungstrend für die CPU und den Arbeitsspeicher der selbstgehosteten IR, im Azure-Portal auf die Übersichtsseite Ihrer Data Factory oder den Synapse-Arbeitsbereich angezeigt wird. Erwägen Sie, die [IR horizontal oder vertikal hochzuskalieren](create-self-hosted-integration-runtime.md#high-availability-and-scalability), falls die CPU-Auslastung hoch ist oder nur wenig Arbeitsspeicher verfügbar ist.
 
   - Halten Sie sich an die bewährte Methode für das connectorspezifische Laden von Daten, falls sie für Sie zutrifft. Beispiel:
 
@@ -145,7 +147,7 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
     - Konfigurieren Sie beim Kopieren von Daten aus [Amazon Redshift](connector-amazon-redshift.md) die Verwendung von Redshift UNLOAD.
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher eine hohe Auslastung besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
   - Überprüfen Sie Ihre Kopierquelle und das Senkenmuster: 
 
@@ -161,9 +163,9 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
   - Überprüfen Sie, ob der Computer mit der selbstgehosteten IR über genügend Ausgangsbandbreite verfügt, um die Daten effizient übertragen und schreiben zu können. Wenn sich Ihr Senkendatenspeicher in Azure befindet, können Sie [dieses Tool](https://www.azurespeed.com/Azure/UploadLargeFile) verwenden, um die Uploadgeschwindigkeit zu überprüfen.
 
-  - Überprüfen Sie den Nutzungstrend für die CPU und den Arbeitsspeicher der selbstgehosteten IR, indem Sie im Azure-Portal auf die Übersichtsseite Ihrer Data Factory zugreifen. Erwägen Sie, die [IR horizontal oder vertikal hochzuskalieren](create-self-hosted-integration-runtime.md#high-availability-and-scalability), falls die CPU-Auslastung hoch ist oder nur wenig Arbeitsspeicher verfügbar ist.
+  - Überprüfen Sie, ob der Nutzungstrend für die CPU und den Arbeitsspeicher der selbstgehosteten IR, im Azure-Portal auf die Übersichtsseite Ihrer Data Factory oder den Synapse-Arbeitsbereich angezeigt wird. Erwägen Sie, die [IR horizontal oder vertikal hochzuskalieren](create-self-hosted-integration-runtime.md#high-availability-and-scalability), falls die CPU-Auslastung hoch ist oder nur wenig Arbeitsspeicher verfügbar ist.
 
-  - Überprüfen Sie, ob von ADF Drosselungsfehler für die Senke gemeldet werden oder für Ihren Datenspeicher eine hohe Auslastung besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
+  - Überprüfen Sie, ob von dem Dienst Drosselungsfehler für die Quelle gemeldet werden oder für Ihren Datenspeicher ein hoher Auslastungszustand besteht. Wenn dies der Fall ist, sollten Sie entweder Ihre Workloads im Datenspeicher verringern, oder Ihren Datenspeicheradministrator darum bitten, das Drosselungslimit oder die verfügbaren Ressourcen zu erhöhen.
 
   - Erwägen Sie, die [parallelen Kopien](copy-activity-performance-features.md) allmählich zu optimieren. Beachten Sie, dass sich zu viele parallele Kopien ggf. negativ auf die Leistung auswirken können.
 
@@ -178,9 +180,7 @@ Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integrat
 
 - **Symptome:** Durch einfaches Umschalten der Dropdownliste „Verknüpfter Dienst“ im Dataset werden dieselben Pipelineaktivitäten ausgeführt, die Laufzeiten unterscheiden sich jedoch stark. Wenn das Dataset auf der Managed Virtual Network Integration Runtime basiert, dauert es im Durchschnitt länger als die Ausführung auf Basis der Standard Integration Runtime.  
 
-- **Ursache:** Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computerknoten pro Data Factory reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase von  erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR. 
-
-
+- **Ursache:** Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computerknoten pro Dienstinstanz reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR. 
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Geringe Leistung beim Laden von Daten in Azure SQL-Datenbank
@@ -212,7 +212,7 @@ Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integrat
 
     - Für Vorgänge wie das Importieren von Schemas, das Anzeigen einer Datenvorschau und das Auflisten von Arbeitsblättern eines Excel-Datasets beträgt der Timeoutzeitraum 100 Sekunden und ist statisch. Bei sehr umfangreichen Excel-Dateien können diese Vorgänge unter Umständen nicht innerhalb des Timeoutzeitraums abgeschlossen werden.
 
-    - Bei der ADF-Kopieraktivität wird die gesamte Excel-Datei in den Arbeitsspeicher eingelesen. Anschließend wird das angegebene Arbeitsblatt ermittelt, und die Daten werden aus den Zellen ausgelesen. Dieses Verhalten basiert auf dem zugrunde liegenden SDK, das von ADF verwendet wird.
+    - Durch die Kopieraktivität wird die gesamte Excel-Datei in den Arbeitsspeicher eingelesen. Anschließend wird das angegebene Arbeitsblatt ermittelt, und die Daten werden aus den Zellen ausgelesen. Dieses Verhalten basiert auf dem zugrunde liegenden SDK, das von dem Dienst verwendet wird.
 
 - **Lösung:** 
 
@@ -240,5 +240,5 @@ Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
 - [Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität](copy-activity-performance.md)
 - [Features für die Leistungsoptimierung bei Kopieraktivitäten](copy-activity-performance-features.md)
-- [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md)
+- [Migrieren von Daten aus Ihrem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md)
 - [Migrieren von Daten aus Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md)

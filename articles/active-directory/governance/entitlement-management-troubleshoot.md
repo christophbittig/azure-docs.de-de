@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e165340dc9856916a8c2ccdcd6609663282d63
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: f4dd89dd22345188c05dd607b4a71ea8ef733f73
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714096"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259972"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -29,7 +29,9 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 ## <a name="administration"></a>Verwaltung
 
-* Wenn Sie beim Konfigurieren der Berechtigungsverwaltung eine Meldung vom Typ „Zugriff verweigert“ erhalten und Sie ein globaler Administrator sind, stellen Sie sicher, dass Ihr Verzeichnis über eine [Azure AD Premium P2- oder EMS E5-Lizenz](entitlement-management-overview.md#license-requirements) verfügt.
+* Wenn Sie beim Konfigurieren der Berechtigungsverwaltung eine Meldung vom Typ „Zugriff verweigert“ erhalten und Sie ein globaler Administrator sind, stellen Sie sicher, dass Ihr Verzeichnis über eine [Azure AD Premium P2- oder EMS E5-Lizenz](entitlement-management-overview.md#license-requirements) verfügt.  Wenn Sie vor Kurzem ein abgelaufenes Azure AD Premium P2 Abonnement erneuert haben, kann es 8 Stunden lang dauern, bis diese Lizenzverlängerung sichtbar ist.
+
+* Wenn die Azure AD Premium P2 Lizenz Ihres Mandanten abgelaufen ist, können Sie keine neuen Zugriffsanforderungen verarbeiten oder Zugriffsüberprüfungen durchführen.  
 
 * Wenn Sie beim Erstellen oder Anzeigen von Zugriffspaketen eine Meldung vom Typ „Zugriff verweigert“ erhalten und Sie Mitglied der Gruppe „Katalogersteller“ sind, müssen Sie vor dem Erstellen Ihres ersten Zugriffspakets einen [Katalog erstellen](entitlement-management-catalog-create.md).
 
@@ -38,6 +40,8 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 * Rollen für Anwendungen werden von der Anwendung selbst definiert und in Azure AD verwaltet. Wenn eine Anwendung keine Ressourcenrollen umfasst, ordnet die Berechtigungsverwaltung die Benutzer einer Rolle mit **Standardzugriff** zu.
 
     Beachten Sie, dass das Azure-Portal möglicherweise auch Dienstprinzipale für Dienste anzeigt, die nicht als Anwendungen ausgewählt werden können.  Insbesondere sind **Exchange Online** und **SharePoint Online** Dienste, aber keine Anwendungen, die über Ressourcenrollen im Verzeichnis verfügen. Daher können sie nicht in ein Zugriffspaket einbezogen werden.  Verwenden Sie stattdessen die gruppenbasierte Lizenzierung, um geeignete Lizenzen für Benutzer einzurichten, die Zugriff auf diese Dienste benötigen.
+
+* Anwendungen, die nur Persönliche Microsoft-Kontobenutzer für die Authentifizierung unterstützen und keine Unternehmenskonten in Ihrem Verzeichnis unterstützen, verfügen nicht über Anwendungsrollen und können nicht zum Zugriff auf Paketkataloge hinzugefügt werden.
 
 * Damit eine Gruppe als Ressource in einem Zugriffspaket dienen kann, muss sie in Azure AD bearbeitet werden können.  Gruppen, die aus einer lokalen Active Directory-Instanz stammen, können nicht als Ressourcen zugewiesen werden, weil ihre Besitzer- oder Mitgliedsattribute in Azure AD nicht geändert werden können.   Gruppen, die ursprünglich als Verteilergruppen in Exchange Online vorliegen, können in Azure AD ebenfalls nicht geändert werden. 
 

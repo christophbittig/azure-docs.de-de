@@ -4,12 +4,14 @@ description: Dieser Artikel fasst die unterstützten Komponenten und Anforderung
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: b36711e9249764df5d170fa955b8d72d1a2656f1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+author: Sharmistha-Rai
+ms.author: sharrai
+ms.openlocfilehash: 7c64aee5177adf7ee1d5f5d47ba80c5e25a53002
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960851"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444798"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -24,6 +26,9 @@ In diesem Artikel werden die unterstützten Komponenten und Einstellungen für d
 --- | ---
 Hyper-V mit Virtual Machine Manager <br> <br>| Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
 Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
+
+> [!NOTE]
+> Das Konfigurieren von Azure Backup und Azure Site Recovery auf demselben Hyper-V-Host kann zu Problemen bei der Replikation führen und wird nicht unterstützt.
 
 ## <a name="on-premises-servers"></a>Lokale Server
 
@@ -92,7 +97,7 @@ Beschleunigter Netzwerkbetrieb | Nein | Nein
 ## <a name="hyper-v-host-storage"></a>Hyper-V-Hostspeicher
 
 **Storage** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
---- | --- | --- 
+--- | --- | ---
 NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
@@ -148,6 +153,7 @@ Option für die sichere Übertragung | Ja | Ja
 **Feature** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
 Verfügbarkeitsgruppen | Ja | Ja
+Verfügbarkeitszonen | Nein | Nein
 HUB | Ja | Ja  
 Verwaltete Datenträger | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt. | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt.
 
@@ -187,7 +193,7 @@ Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br
 Damit Ihre Bereitstellung mit den Einstellungen in diesem Artikel kompatibel ist, stellen Sie sicher, dass Sie die neuesten Anbieter- und Agent-Versionen ausführen.
 
 **Name** | **Beschreibung** | **Details**
---- | --- | --- 
+--- | --- | ---
 Azure Site Recovery-Anbieter | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Hyper-V mit Virtual Machine Manager: Installiert auf Virtual Machine Manager-Servern<br/><br/> Hyper-V ohne Virtual Machine Manager: Installiert auf Hyper-V-Hosts| [Neueste Features und Fixes](./site-recovery-whats-new.md)
 Microsoft Azure Recovery Services-Agent | Koordiniert die Replikation zwischen Hyper-V-VMs und Azure<br/><br/> Installation auf lokalen Hyper-V-Servern (mit oder ohne Virtual Machine Manager) | Aktueller Agent über das Portal verfügbar
 

@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389116"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866735"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
@@ -25,7 +25,7 @@ Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 - Azure-Container
 - Virtueller Azure-Computer
 - Beratungsdienst
-- Dynamics 365 for Customer Engagement & PowerApps
+- Dynamics 365 for Customer Engagement und Power Apps
 - Dynamics 365 for Operations
 - Dynamics 365 Business Central
 - IoT Edge-Modul

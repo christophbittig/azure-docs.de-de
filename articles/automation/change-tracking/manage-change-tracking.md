@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d67acd025e453cee41a2461276d2f5df3066a141
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572648"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518454"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
@@ -161,7 +161,7 @@ Sie können verschiedene Suchvorgänge in den Azure Monitor-Protokollen für Än
 
 |Abfrage  |BESCHREIBUNG  |
 |---------|---------|
-|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zeigt die aktuellen Bestandsdatensätze für Microsoft-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden. Die Ergebnisse werden auf den aktuellen Datensatz für den angegebenen Softwarenamen und Computer beschränkt.    |
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zeigt die aktuellen Bestandsdatensätze für Windows-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden. Die Ergebnisse werden auf den aktuellen Datensatz für den angegebenen Softwarenamen und Computer beschränkt.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Zeigt Änderungsdatensätze für entfernte Software an.|
 
 ## <a name="next-steps"></a>Nächste Schritte

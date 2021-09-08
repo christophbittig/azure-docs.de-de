@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 07/19/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0acadadc728f714e84418a438c451aea255ccc
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e45101caec9127c39837d015d6a5117c7e2ae775
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408027"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472041"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -153,7 +153,7 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>EnableGroupCreation<li>Typ: Boolean<li>Standardwert: True |Das Flag, das angibt, ob die Erstellung von Microsoft 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Typ: String<li>Standardeinstellung: "" |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Microsoft 365-Gruppen auch dann erlaubt ist, wenn der EnableGroupCreation-Wert „false“ lautet. |
 |  <ul><li>UsageGuidelinesUrl<li>Typ: String<li>Standardeinstellung: "" |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
-|  <ul><li>ClassificationDescriptions<li>Typ: String<li>Standardeinstellung: "" | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>wobei Classification mit einem Eintrag in ClassificationList übereinstimmt.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>ClassificationDescriptions<li>Typ: String<li>Standardeinstellung: "" | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>wobei Classification mit einem Eintrag in ClassificationList übereinstimmt.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.<br>Das Zeichenlimit für die ClassificationDescriptions-Eigenschaft beträgt 300, und Kommas können nicht mit Escapezeichen versehen werden.
 |  <ul><li>DefaultClassification<li>Typ: String<li>Standardeinstellung: "" | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Typ: String<li>Standardeinstellung: "" | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Microsoft 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Microsoft 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Typ: String<li>Standardeinstellung: "" | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Microsoft 365-Gruppen](groups-naming-policy.md). |

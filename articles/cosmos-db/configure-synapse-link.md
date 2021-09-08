@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB-Konten akti
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 86f27f08bd7495e558cd81b122f1daa243dbe313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968039"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354962"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -29,7 +29,15 @@ Azure Synapse Link ist für Azure Cosmos DB SQL-API-Container oder für Azure Co
 * [Abfragen des Analysespeichers mit einem serverlosen SQL-Pool](#query-analytical-store-sql-on-demand)
 * [Verwenden eines serverlosen SQL-Pools zum Analysieren und Visualisieren von Daten in Power BI](#analyze-with-powerbi)
 
+Sie können sich auch das Lernmodul zur [Konfiguration von Azure Synapse Link für Azure Cosmos DB](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/) ansehen.
+
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Aktivieren von Azure Synapse Link für Azure Cosmos DB-Konten
+
+> [!NOTE]
+> Wenn Sie kundenverwaltete Schlüssel mit Azure Synapse Link verwenden möchten, müssen Sie die verwaltete Identität Ihres Kontos in Ihrer Azure Key Vault-Zugriffsrichtlinie konfigurieren, bevor Sie Synapse Link für Ihr Konto aktivieren. Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe verwalteter Identitäten eines Azure Cosmos DB-Kontos](how-to-setup-cmk.md#using-managed-identity).
+
+> [!NOTE]
+> Wenn Sie Full Fidelity Schema für SQL (CORE)-API-Konten verwenden möchten, können Sie das Azure-Portal nicht verwenden, um Synapse Link zu aktivieren. Diese Option kann nicht mehr geändert werden, nachdem Synapse Link in Ihrem Konto aktiviert wurde. Sie müssen Azure CLI oder PowerShell verwenden, um sie festzulegen. Weitere Informationen finden Sie in der [Dokumentation zur Schemadarstellung des Analysespeichers](analytical-store-introduction.md#schema-representation). 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -200,15 +208,13 @@ Nachdem der Analysespeicher mit einem bestimmten TTL-Wert aktiviert wurde, sollt
 Wenn Sie einen für Analysespeicher aktivierten Container über das Azure-Portal erstellt haben, weist dieser für die analytische Gültigkeitsdauer den Standardwert „-1“ auf. Verwenden Sie die folgenden Schritte, um diesen Wert zu aktualisieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) oder [Azure Cosmos DB-Explorer](https://cosmos.azure.com/) an.
-
 1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
-
 1. Wählen Sie einen vorhandenen Container aus, für den Analysespeicher aktiviert ist. Erweitern Sie ihn, und ändern Sie die folgenden Werte:
+   1. Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
+   1. Suchen Sie unter **Einstellung** nach **Analytical Storage Time to Live**.
+   1. Wählen Sie **Ein (Standard)** oder **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest.
+   1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-  * Öffnen Sie das Fenster **Scale & Settings** (Skalierung und Einstellungen).
-  * Suchen Sie unter **Einstellung** nach **Analytical Storage Time to Live** (Gültigkeitsdauer für Analysespeicher).
-  * Wählen Sie **Ein (Standard)** aus, oder wählen Sie **Ein** aus, und legen Sie einen Wert für die Gültigkeitsdauer fest.
-  * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -285,7 +291,7 @@ Beispiele für die ersten Schritte mit Azure Synapse Link finden Sie auf [GitHub
 
 Weitere Informationen finden Sie in den folgenden Dokumenten:
 
-* [Azure Synapse Link für Azure Cosmos DB](synapse-link.md)
+* Sie können sich auch das Lernmodul zur [Konfiguration von Azure Synapse Link für Azure Cosmos DB](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/) ansehen.
 
 * [Übersicht über den Azure Cosmos DB-Analysespeicher](analytical-store-introduction.md)
 

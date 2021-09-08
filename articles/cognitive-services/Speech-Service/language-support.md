@@ -3,20 +3,20 @@ title: Sprachunterstützung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst unterstützt neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache in Text und Text in Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienstfunktionen.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: references_regions
-ms.openlocfilehash: 2879ecbc6b50c3cd2bd7541357886f5d6dfe483b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7066a001d27376be6f9b8464beafc0cad2b54437
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752493"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419233"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -104,6 +104,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Maltesisch (Malta)                    | `mt-MT` | Text                                   |                           |                          |
 | Marathi (Indien)                    | `mr-IN` | Text                                   |                           |                          |
 | Norwegisch, Bokmål (Norwegen)         | `nb-NO` | Text                                   |     Ja                      |                          |
+| Persisch (Iran)                     | `fa-IR` | Text                                   |                           |                          |
 | Polnisch (Polen)                    | `pl-PL` | Text                                   |       Ja                    |                          |
 | Portugiesisch (Brasilien)                | `pt-BR` | Audio (20190620, 20201015)<br>Text<br>Aussprache|          Ja                 |                          |
 | Portugiesisch (Portugal)              | `pt-PT` | Text<br>Aussprache                  |             Ja              |                          |
@@ -133,6 +134,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Spanisch (Uruguay)                  | `es-UY` | Text<br>Aussprache                  |                           |                          |
 | Spanisch (USA)                      | `es-US` | Text<br>Aussprache                  |                           |                          |
 | Spanisch (Venezuela)                | `es-VE` | Text<br>Aussprache                  |                           |                          |
+| Suaheli (Kenia)                    | `sw-KE` | Text<br>Aussprache                  |                           |                          |
 | Schwedisch (Schweden)                   | `sv-SE` | Text                                   |   Ja                        |                          |
 | Tamil (Indien)                      | `ta-IN` | Text                                   |                           |                          |
 | Telugu (Indien)                     | `te-IN` | Text                                   |                           |                          |
@@ -217,8 +219,19 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-MiaNeural` | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Male | `en-GB-RyanNeural` | Allgemein |
 | Englisch (USA) | `en-US` | Female | `en-US-AriaNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Englisch (USA) | `en-US` | Female | `en-US-JennyNeural` | Allgemein |
-| Englisch (USA) | `en-US` | Male | `en-US-GuyNeural` | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-JennyNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Englisch (USA) | `en-US` | Male | `en-US-GuyNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Englisch (USA) | `en-US` | Female | `en-US-AmberNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-AshleyNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-CoraNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-ElizabethNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-MichelleNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Female | `en-US-MonicaNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Kid | `en-US-AnaNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Male | `en-US-BrandonNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Male | `en-US-ChristopherNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Male | `en-US-JacobNeural` <sup>Neu</sup> | Allgemein |
+| Englisch (USA) | `en-US` | Male | `en-US-EricNeural` <sup>Neu</sup> | Allgemein |
 | Estnisch (Estland) | `et-EE` | Female | `et-EE-AnuNeural` | Allgemein |
 | Estnisch (Estland) | `et-EE` | Male | `et-EE-KertNeural` | Allgemein |
 | Finnisch (Finnland) | `fi-FI` | Female | `fi-FI-NooraNeural` | Allgemein |
@@ -329,18 +342,7 @@ Die folgenden neuronalen Stimmen sind in der öffentlichen Vorschau verfügbar.
 
 | Sprache                         | Gebietsschema  | Geschlecht | Name der Stimme                             | Stilunterstützung |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| Englisch (USA) | `en-US` | Female | `en-US-AmberNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-AshleyNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-CoraNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-ElizabethNeural` <sup>Neu</sup> | Allgemein |
 | Englisch (USA) | `en-US` | Female | `en-US-JennyMultilingualNeural` <sup>Neu</sup> | Allgemeine, mehrsprachige Funktionen, die mit [SSML verfügbar sind](speech-synthesis-markup.md#create-an-ssml-document) |
-| Englisch (USA) | `en-US` | Female | `en-US-MichelleNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-MonicaNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Kid | `en-US-AnaNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Male | `en-US-BrandonNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Male | `en-US-ChristopherNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Male | `en-US-JacobNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Male | `en-US-EricNeural` <sup>Neu</sup> | Allgemein |
 
 > [!IMPORTANT]
 > Stimmen in der öffentlichen Vorschau sind nur in drei Dienstregionen verfügbar: „USA, Osten“, „Europa, Westen“ und „Asien, Südosten“.
@@ -356,7 +358,7 @@ Informationen dazu, wie Sie neuronale Stimmen konfigurieren und anpassen können
 > Die Stimme `en-US-JessaNeural` wurde in `en-US-AriaNeural` geändert. Wenn Sie zuvor „Jessa“ verwendet haben, wechseln Sie zu „Aria“.
 
 > [!TIP]
-> In Sprachsyntheseanforderungen kann weiterhin die vollständige Dienstnamenzuordnung wie etwa „Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)“ verwendet werden.
+> In Ihren Sprachsyntheseanforderungen kann weiterhin die vollständige Dienstnamenzuordnung wie etwa „Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)“ verwendet werden.
 
 ### <a name="standard-voices"></a>Standardstimmen
 
@@ -478,6 +480,7 @@ Custom Voice ist auf der neuronalen Ebene (auch als „benutzerdefinierte neuron
 | Koreanisch (Korea) | `ko-KR` | Ja | Ja |
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Ja | Nein |
 | Portugiesisch (Brasilien) | `pt-BR` | Ja | Ja |
+| Russisch (Russische Föderation) | `ru-RU` | Ja | Ja |
 | Spanisch (Mexiko) | `es-MX` | Ja | Ja |
 | Spanisch (Spanien) | `es-ES` | Ja | Ja |
 
@@ -572,19 +575,19 @@ In der folgenden Tabelle finden Sie die unterstützten Sprachen für die verschi
 
 | Sprache | Gebietsschema (BCP-47) | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
 |----|----|----|----|----|
-|Englisch (USA)  |  en-US  |  ja  |  ja  |  ja |
-|Chinesisch (Mandarin, vereinfacht) | zh-CN     |     – |     ja |     ja|
-|Englisch (Australien)     | en-AU     | –     | ja     | ja|
-|Englisch (Kanada)     | en-CA     | – |     ja |     ja|
-|English (UK)     | en-GB     | –     | ja     | ja|
-|Französisch (Kanada)     | fr-CA     | –     | ja |     ja|
-|Französisch (Frankreich)     | fr-FR     | –     | ja     | ja|
-|Deutsch (Deutschland)     | de-DE     | –     | ja     | ja|
-|Italienisch | it-IT     |     –     | ja |     ja|
-|Japanisch     | ja-JP | –     | ja     | ja|
-|Portugiesisch (Brasilien) | pt-BR |     – |     ja |     ja|
-|Spanisch (Mexiko)     | es-MX     | – |     ja |     ja|
-|Spanisch (Spanien)     | es-ES | –     | ja |     Ja|
+|Englisch (USA)  |  en-US  |  ja  |  Ja  |  ja |
+|Chinesisch (Mandarin, vereinfacht) | zh-CN     |     – |     Ja |     ja|
+|Englisch (Australien)     | en-AU     | –     | Ja     | ja|
+|Englisch (Kanada)     | en-CA     | – |     Ja |     ja|
+|English (UK)     | en-GB     | –     | Ja     | ja|
+|Französisch (Kanada)     | fr-CA     | –     | Ja |     ja|
+|Französisch (Frankreich)     | fr-FR     | –     | Ja     | ja|
+|Deutsch (Deutschland)     | de-DE     | –     | Ja     | ja|
+|Italienisch | it-IT     |     –     | Ja |     ja|
+|Japanisch     | ja-JP | –     | Ja     | ja|
+|Portugiesisch (Brasilien) | pt-BR |     – |     Ja |     ja|
+|Spanisch (Mexiko)     | es-MX     | – |     Ja |     ja|
+|Spanisch (Spanien)     | es-ES | –     | Ja |     Ja|
 
 ## <a name="custom-keyword-and-keyword-verification"></a>Benutzerdefiniertes Schlüsselwort und Schlüsselwortüberprüfung
 

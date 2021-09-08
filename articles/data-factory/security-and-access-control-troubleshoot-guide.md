@@ -1,17 +1,20 @@
 ---
 title: Beheben von Problemen mit der Sicherheit und Zugriffssteuerung
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Hier erfahren Sie, wie Sie Probleme mit der Sicherheit und Zugriffssteuerung in Azure Data Factory beheben.
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 05/31/2021
+ms.date: 07/28/2021
 ms.author: lle
-ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a025e46914390d203537d0ddd0c9faf5f22488ab
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782891"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864155"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Beheben von Problemen mit der Sicherheit und Zugriffssteuerung in Azure Data Factory
 
@@ -189,6 +192,37 @@ ADF verwendet möglicherweise weiterhin die Integration Runtime für verwaltete 
 - Aktivieren Sie einen privaten Endpunkt für die Quell- und Senkenseite, wenn Sie die Integration Runtime für verwaltete VNETs verwenden.
 - Wenn Sie dennoch den öffentlichen Endpunkt verwenden möchten, können Sie stattdessen nur die Integration Runtime für verwaltete VNETs für die Quelle und die Senke verwenden. Selbst wenn Sie zur öffentlichen Integration Runtime zurückwechseln, verwendet ADF möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, wenn diese noch vorhanden ist.
 
+### <a name="internal-error-while-trying-to-delete-adf-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>Es ist ein interner Fehler beim Versuch, ADF mit kundenverwalteten Schlüsseln (Customer Managed Key, CMK) und vom Benutzer zugewiesener verwalteter Identität (UA-MI) zu löschen, aufgetreten
+
+#### <a name="symptoms"></a>Symptome
+`{\"error\":{\"code\":\"InternalError\",\"message\":\"Internal error has occurred.\"}}`
+
+#### <a name="cause"></a>Ursache
+
+Wenn Sie Vorgänge im Zusammenhang mit CMK durchführen, sollten Sie zuerst alle ADF-bezogenen Vorgänge und dann externe Vorgänge (z. B. verwaltete Identitäten oder Key Vault Vorgänge) durchführen. Wenn Sie beispielsweise alle Ressourcen löschen möchten, müssen Sie zuerst die Factory löschen und dann den Schlüsseltresor löschen. Wenn Sie dies in einer anderen Reihenfolge tun, schlägt der ADF-Aufruf fehl, da er verwandte Objekte nicht mehr lesen kann, und er kann nicht überprüfen, ob das Löschen möglich ist oder nicht. 
+
+#### <a name="solution"></a>Lösung
+
+Dieses Problem kann auf drei Arten behandelt werden. Dies sind:
+
+* Sie haben den Zugriff von ADF auf den Schlüsseltresor widerrufen, in dem der CMK-Schlüssel gespeichert wurde. 
+Sie können den Zugriff auf die Data Factory mit den folgenden Berechtigungen neu zuweisen: **Abrufen, Aufhebung der Umschließung des Schlüssels und Schlüssel Umschließen**. Diese Berechtigungen sind erforderlich, um vom Kunden verwaltete Schlüssel in Data Factory aktivieren zu können. Informationen hierzu finden Sie im Abschnitt [Zugriff auf die ADF gewähren](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault). Sobald die Erlaubnis erteilt wurde, sollten Sie in der Lage sein, die ADF zu löschen
+ 
+* Der Kunde hat den Key Vault/CMK vor dem Löschen der ADF gelöscht. Die Einstellungen „Vorläufiges Löschen“ und „Schutz vor endgültigem Löschen“ für CMK in der ADF müssen aktiviert sein. Dafür ist eine Standardaufbewahrungsrichtlinie von 90 Tagen festgelegt. Sie können den gelöschten Schlüssel wiederherstellen.  
+ Bitte lesen Sie die Informationen zu [Wiederherstellen von gelöschten Schlüsseln](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates) und [Gelöschter Schlüsselwert](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)
+
+* Die vom Benutzer zugewiesene verwaltete Identität (UA-MI) wurde vor ADF gelöscht. Sie können das mithilfe von REST-API-Aufrufen wiederherstellen. Sie können das in einem HTTP-Client Ihrer Wahl in einer beliebigen Programmiersprache durchführen. Wenn Sie die REST-API-Aufrufe mit Azure-Authentifizierung noch nicht eingerichtet haben, ist die einfachste Möglichkeit um die Einrichtung auszuführen die Verwendung von POSTMAN/Fiddler. Bitte führen Sie die folgenden Schritte aus.
+
+   1.  Führen Sie ein GET-Aufruf an die Factory mithilfe der folgenden Methode aus GET-URL wie   `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01`
+
+   2. Sie müssen eine neue vom Benutzer verwaltete Identität mit einem anderen Namen erstellen (der gleiche Name funktioniert möglicherweise, aber es ist sicherer, einen anderen Namen als in der „GET-Antwort“ zu verwenden)
+
+   3. Ändern Sie die Encryption.identity-Eigenschaft und identity.userassignedidentities so, dass sie auf die neu erstellte verwaltete Identität verweisen. Entfernen Sie die „clientId“ und „principalId“ aus dem userAssignedIdentity-Objekt. 
+
+   4.  Nehmen Sie einen PUT-Aufruf an dieselbe Factory-URL vor und übergeben Sie den neuen Text. Es ist sehr wichtig, dass Sie alles übergeben, was Sie in der GET-Antwort erhalten haben und nur die Identität ändern. Andernfalls würden sie andere Einstellungen versehentlich außer Kraft setzen. 
+
+   5.  Nachdem der Aufruf erfolgreich war, können Sie die Entitäten erneut sehen und das Löschen wiederholen. 
+
 ## <a name="sharing-self-hosted-integration-runtime"></a>Freigeben der selbstgehosteten Integration Runtime
 
 ### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Die Freigabe der selbstgehosteten Integration Runtime von einem anderen Mandanten wird nicht unterstützt. 
@@ -201,13 +235,14 @@ Beim Versuch, die selbstgehostete Integration Runtime über die Azure Data Facto
 
 Die selbstgehostete Integration Runtime kann nicht mandantenübergreifend freigegeben werden.
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Hilfe zur Problembehandlung finden Sie in den folgenden Ressourcen:
 
 *  [Private Link für Data Factory](data-factory-private-link.md)
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Q&A-Seite von Microsoft](/answers/topics/azure-data-factory.html)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)

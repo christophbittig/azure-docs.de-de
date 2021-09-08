@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 714197288708691cb35e887975d1fabbe27cb406
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/05/2021
+ms.openlocfilehash: ce68d4161762d47b8754cb69633a3918848085d0
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555378"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113593831"
 ---
 # <a name="create-plans-for-a-saas-offer"></a>Erstellen von Plänen für ein SaaS-Angebot
 
@@ -144,7 +144,7 @@ Nachdem Sie mindestens einen Plan erstellt haben, werden auf der Registerkarte *
 Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** verfügbar sind, hängen vom Status Ihres Plans ab und können Folgendes umfassen:
 
 - Wenn der Planstatus **Entwurf** lautet, wird in der Spalte **Aktion** die Option **Entwurf löschen** angezeigt.
-- Wenn der Planstatus **Live** lautet, wird in der Spalte **Aktion** der Link **Stop sell plan** (Verkauf des Plans einstellen) oder der Link **Sync private audience** (Private Zielgruppe synchronisieren) angezeigt. Über den Link **Sync private audience** (Private Zielgruppe synchronisieren) werden nur die Änderungen an Ihren privaten Zielgruppen veröffentlicht, ohne dass weitere Aktualisierungen veröffentlicht werden, die Sie möglicherweise am Angebot vorgenommen haben.
+- Wenn der Planstatus **Live** lautet, wird in der Spalte **Aktion** entweder **Verteilung eines Plans beenden** oder **Private Zielgruppe synchronisieren** angezeigt. Über den Link **Sync private audience** (Private Zielgruppe synchronisieren) werden nur die Änderungen an Ihren privaten Zielgruppen veröffentlicht, ohne dass weitere Aktualisierungen veröffentlicht werden, die Sie möglicherweise am Angebot vorgenommen haben.
 
 ## <a name="before-you-publish-your-offer"></a>Vor dem Veröffentlichen Ihres Angebots
 

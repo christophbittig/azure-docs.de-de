@@ -13,14 +13,14 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f0f943475fc397acf61c51fc3dc34cc9efdb1cfb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450565"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033860"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
+# <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
 Microsoft Identity Platform unterstützt derzeit einmaliges Anmelden (Single Sign-On, SSO) für die meisten Unternehmensanwendungen, darunter auch die im Azure AD-App-Katalog integrierten Anwendungen sowie benutzerdefinierte Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Microsoft Identity Platform bei einer Anwendung authentifiziert, sendet Microsoft Identity Platform ein Token an die Anwendung (über HTTP POST). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als *Ansprüche* bezeichnet werden.
 

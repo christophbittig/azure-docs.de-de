@@ -3,12 +3,12 @@ title: Einrichten von Project Lead The Way-Labs mit Azure Lab Services
 description: Hier erfahren Sie, wie Sie Labs einrichten, um Project Lead The Way-Kurse zu unterrichten.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: aaaddcb2c2111ccfbf0edfc79bbefafb711b19dc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 85e8b8d55ed5a91c21c2554ce15e3ef893e30f15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768533"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355437"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Einrichten von Labs für Project Lead The Way-Kurse
 
@@ -100,7 +100,7 @@ Weitere Informationen finden Sie unter [Einrichten eines Lizenzservers als freig
 ### <a name="template-machine"></a>Vorlagencomputer
 Einige der Installationsdateien, die Sie für PLTW benötigen, sind groß. Wenn Sie die Dateien auf eine Vorlagen-VM für Labs herunterladen, kann das Kopieren sehr lange dauern.
 
-Anstatt Installationsdateien auf den Vorlagencomputer herunterzuladen und dort alles zu installieren, empfehlen wir, die PLTW-Images in Ihrer physischen Umgebung zu erstellen.  Anschließend können Sie die benutzerdefinierten Images in Shared Image Gallery importieren, sodass Sie sie zum Erstellen Ihrer Labs verwenden können.  Weitere Informationen finden Sie unter [Hochladen eines benutzerdefinierten Images in Shared Image Gallery](./upload-custom-image-shared-image-gallery.md).
+Anstatt Installationsdateien auf den Vorlagencomputer herunterzuladen und dort alles zu installieren, empfehlen wir, die PLTW-Images in Ihrer physischen Umgebung zu erstellen.  Anschließend können Sie die benutzerdefinierten Images in einen freigegebene Image-Katalog importieren, sodass Sie sie zum Erstellen Ihrer Labs verwenden können.  Weitere Informationen finden Sie unter [Empfohlene Vorgehensweisen zum Erstellen von benutzerdefinierten Images](approaches-for-custom-image-creation.md).
 
 Zum Einrichten eines Labs führen Sie unter Berücksichtigung dieser Empfehlung die folgenden Hauptaufgaben aus:
 

@@ -10,12 +10,13 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 557c2591b0bd5406266e5f833ca8c5c4fb581e47
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 9923a2bd2e36975fe1af77fddb4bb484a4eb87c6
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125353"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217771"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
@@ -25,15 +26,28 @@ Microsoft Spark-Hilfsprogramme (MSSparkUtils) sind ein integriertes Paket, mit d
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurieren des Zugriffs auf Azure Data Lake Storage Gen2 
 
-Synapse-Notebooks verwenden Azure Active Directory (Azure AD)-Passthrough für den Zugriff auf den ADLS Gen2-Konten. Sie müssen **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
+Synapse-Notebooks verwenden Azure Active Directory-Passthrough (Azure AD) für den Zugriff auf ADLS Gen2-Konten. Sie müssen **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zugreifen zu können. 
 
 Synapse-Pipelines verwenden die Managed Service Identity (MSI) des Arbeitsbereichs für den Zugriff auf die Speicherkonten. Um MSSparkUtils in Ihren Pipelineaktivitäten zu verwenden, muss Ihre Arbeitsbereichsidentität **Mitwirkender an Storage-Blobdaten** sein, um auf das ADLS Gen2-Konto (oder den Ordner) zuzugreifen.
 
 Gehen Sie folgendermaßen vor, um sicherzustellen, dass Ihr Azure AD- und Arbeitsbereichs-MSI Zugriff auf das ADLS Gen2-Konto haben:
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) und das Speicherkonto, auf das sie zugreifen möchten. Sie können zu dem spezifischen Container navigieren, auf den Sie zugreifen möchten.
-2. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-3. Weisen Sie der Rolle **Mitwirkender an Storage-Blobdaten** im Speicherkonto **Ihr Azure AD-Konto** und **Ihre Arbeitsbereichsidentität** (identisch mit Ihrem Arbeitsbereichsnamen) zu, wenn diese nicht bereits zugewiesen sind. 
-4. Wählen Sie **Speichern** aus.
+1. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blobdaten |
+    | Zugriff zuweisen zu | USER und MANAGEDIDENTITY |
+    | Members | Ihr Azure AD-Konto und Ihre Arbeitsbereichsidentität |
+
+    > [!NOTE]
+    > Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs.
+
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+ 
+1. Wählen Sie **Speichern** aus.
 
 Sie können über die folgende URL mithilfe von Synapse Spark auf Daten in ADLS Gen2 zugreifen:
 
@@ -41,7 +55,7 @@ Sie können über die folgende URL mithilfe von Synapse Spark auf Daten in ADLS 
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Konfigurieren des Zugriffs auf Azure Blob Storage  
 
-Synapse verwendet [**Shared Access Signature (SAS)** ](../../storage/common/storage-sas-overview.md) für den Zugriff auf Azure Blob Storage. Um das Verfügbarmachen von SAS-Schlüsseln im Code zu vermeiden, empfehlen wir, im Synapse-Arbeitsbereich einen neuen verknüpften Dienst mit dem Azure Blob Storage Konto zu erstellen, auf das Sie zugreifen möchten.
+Synapse verwendet [**Shared Access Signature (SAS)**](../../storage/common/storage-sas-overview.md) für den Zugriff auf Azure Blob Storage. Um das Verfügbarmachen von SAS-Schlüsseln im Code zu vermeiden, empfehlen wir, im Synapse-Arbeitsbereich einen neuen verknüpften Dienst mit dem Azure Blob Storage Konto zu erstellen, auf das Sie zugreifen möchten.
 
 Befolgen Sie diese Schritte, um einen neuen verknüpften Dienst für ein Azure Blob Storage-Konto hinzuzufügen:
 

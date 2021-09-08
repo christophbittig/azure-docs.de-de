@@ -5,20 +5,20 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 07/08/2021
 ms.author: robinsh
-ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abbef6e0e244f7cfc937f738c7c2d0acd89549dd
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545411"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205198"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über die Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Dieses Update erfolgt mithilfe einer _automatischen Gerätekonfiguration_ oder einer _automatischen Modulkonfiguration_, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten und Konfigurationen gestaffelt einführen können.
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Dieses Update erfolgt mithilfe einer *automatischen Gerätekonfiguration* oder einer *automatischen Modulkonfiguration*, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten und Konfigurationen gestaffelt einführen können.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -28,7 +28,7 @@ Bei der automatischen Geräteverwaltung werden mehrere Geräte- oder Modulzwilli
 
 * Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder Zielmodulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
-* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl der Zwillinge, die erfolgreich aktualisiert wurden.
+* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben. Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl der Zwillinge, die erfolgreich aktualisiert wurden.
 
 Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal ausgeführt, wenn die automatische Konfiguration ausgeführt wird.
 

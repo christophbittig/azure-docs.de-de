@@ -1,18 +1,20 @@
 ---
 title: Kopieren von Daten aus der Azure Cosmos DB-API für MongoDB
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern in die oder aus der Azure Cosmos DB-API für MongoDB in unterstützte Senkenspeicher kopieren können.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 11/20/2019
-ms.openlocfilehash: 4a40ed7f9b5fd2b39e617ef40becf5f979a22eea
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 0147782482308ac8b625926e51c59315f084237d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072170"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304658"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopieren von Daten in die oder aus der Azure Cosmos DB-API für MongoDB mithilfe von Azure Data Factory
 
@@ -37,6 +39,30 @@ Sie können den Connector für Azure Cosmos DB-API für MongoDB für die folgend
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
+## <a name="create-a-linked-service-to-azure-cosmos-dbs-api-for-mongodb-using-ui"></a>Erstellen eines verknüpften Diensts für die MongoDB über die Benutzeroberfläche mithilfe der Azure Cosmos DB-API
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst für die MongoDB auf der Azure-Portal-Benutzeroberfläche mithilfe der Azure Cosmos DB-API zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zur Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus, und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche":::.
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Synapse Benutzeroberfläche":::.
+
+2. Suchen Sie nach Cosmos, und wählen Sie die Azure Cosmos DB-Connector API für den MongoDB-Connector aus.
+
+    :::image type="content" source="media/connector-azure-cosmos-db-mongodb-api/azure-cosmos-db-mongodb-api-connector.png" alt-text="Wählen Sie den Connector für die Azure Cosmos DB-API für MongoDB aus":::.    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-cosmos-db-mongodb-api/configure-azure-cosmos-db-mongodb-api-linked-service.png" alt-text="Konfigurieren eines verknüpften Diensts für die MongoDB mithilfe der Azure Cosmos DB-API":::.
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die Sie zum Definieren von Data Factory-Entitäten verwenden können, die es speziell für die Azure Cosmos DB-API für MongoDB gibt.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
@@ -46,8 +72,9 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verk
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **CosmosDbMongoDbApi** festgelegt werden. | Ja |
-| connectionString |Geben Sie die Verbindungszeichenfolge für Ihre Azure Cosmos DB-API für MongoDB an. Diese ist im Azure-Portal auf dem Blatt für Ihre Cosmos DB-Instanz unter der primären oder sekundären Verbindungszeichenfolge mit dem folgenden Muster aufgeführt: `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb` <br/><br />Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).|Ja |
+| connectionString |Geben Sie die Verbindungszeichenfolge für Ihre Azure Cosmos DB-API für MongoDB an. Diese ist im Azure-Portal auf dem Blatt für Ihre Cosmos DB-Instanz unter der primären oder sekundären Verbindungszeichenfolge aufgeführt. <br/>Für die Serverversion 3.2 lautet das Zeichenfolgenmuster `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/>Für die Serverversionen 3.6 und höher lautet das Zeichenfolgenmuster `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<cosmosdb-name>@`.<br/><br />Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).|Ja |
 | database | Der Name der Datenbank, auf die Sie zugreifen möchten. | Ja |
+| isServerVersionAbove32 | Geben Sie an, ob die Serverversion höher als 3.2 ist. Die zulässigen Werte sind **true** und **false** (Standard). Dadurch wird der Treiber bestimmt, der im Dienst verwendet werden soll. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel**
@@ -59,7 +86,8 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verk
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
             "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
-            "database": "myDatabase"
+            "database": "myDatabase",
+            "isServerVersionAbove32": "false"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

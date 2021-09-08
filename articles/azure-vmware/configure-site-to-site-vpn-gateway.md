@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen VPN-Standort-zu-Standort-Tunnel (IPSec 
 ms.topic: how-to
 ms.custom: contperf-fy22q1
 ms.date: 06/30/2021
-ms.openlocfilehash: f3ed10e2a67e40fe8f1124a88fd8e11b24b71986
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: fc2f62549a9a06122b77e0e8864c029cb6af8029
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343706"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515219"
 ---
 # <a name="configure-a-site-to-site-vpn-in-vwan-for-azure-vmware-solution"></a>Konfigurieren einer Standort-zu-Standort-VPN-Verbindung in vWAN für Azure VMware Solution
 
@@ -151,7 +151,7 @@ Für [richtlinienbasierte VPN-Setups](../virtual-wan/virtual-wan-custom-ipsec-po
 
    1. Wenden Sie die Konfiguration auf Ihr lokales VPN-Gerät an.
 
-   Weitere Informationen zur Konfigurationsdatei finden Sie unter [Informationen zur VPN-Gerätekonfigurationsdatei](../virtual-wan/virtual-wan-site-to-site-portal.md#about-the-vpn-device-configuration-file).
+   Weitere Informationen zur Konfigurationsdatei finden Sie unter [Informationen zur VPN-Gerätekonfigurationsdatei](../virtual-wan/virtual-wan-site-to-site-portal.md#config-file).
 
 1. Fügen Sie das Azure VMware Solution-ExpressRoute-Gateway in den Virtual WAN-Hub ein. 
 

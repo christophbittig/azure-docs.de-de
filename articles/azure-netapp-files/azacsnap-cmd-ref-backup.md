@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 4e0091d1d94a173df07f956959580f7f862ec08f
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 5fd588cc9ff36f4213d62ee47ce296e9eadfc40e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930027"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296755"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool"></a>Sichern mithilfe des Tools für konsistente Momentaufnahmen in Azure-Anwendungen
 
@@ -85,9 +85,11 @@ azacsnap -c backup --volume data --prefix hana_TEST --retention 9 --trim
 
 Der Befehl gibt keine Ausgabe an die Konsole aus, schreibt aber in eine Protokolldatei, eine Ergebnisdatei und in `/var/log/messages`.
 
-Die *Protokolldatei* besteht aus dem Befehlsnamen und der Option „-c“ mit dem Konfigurationsdateinamen. Standardmäßig wird ein Protokolldateiname für eine `-c backup` mit einem standardmäßigen Konfigurationsdateinamen `azacsnap-backup-azacsnap.log` ausgeführt.
+Der Name der *Protokolldatei* in diesem Beispiel ist `azacsnap-backup-azacsnap.log` (siehe [Protokolldateien](#log-files)).
 
-Die *Ergebnis* datei hat denselben Basisnamen wie die Protokolldatei mit `.result` als Suffix, z. B. `azacsnap-backup-azacsnap.result`, die die folgende Ausgabe enthält:
+Beim Ausführen von `-c backup` mit der `--volume data`-Option wird auch eine Ergebnisdatei als Datei generiert, um eine schnelle Überprüfung des Ergebnisses einer Sicherung zu ermöglichen.  Die *Ergebnisdatei* hat denselben Basisnamen wie die Protokolldatei mit `.result` als Suffix.
+
+In diesem Beispiel ist `azacsnap-backup-azacsnap.result` der Name der *Ergebnisdatei* und enthält die folgende Ausgabe:
 
 ```bash
 cat logs/azacsnap-backup-azacsnap.result
@@ -124,7 +126,7 @@ azacsnap -c backup --volume other --prefix logs_TEST --retention 9
 
 Der Befehl gibt keine Ausgabe an die Konsole aus, schreibt aber nur in eine Protokolldatei.  Er schreibt _nicht_ in eine Ergebnisdatei oder in `/var/log/messages`.
 
-Die *Protokolldatei* besteht aus dem Befehlsnamen und der Option „-c“ mit dem Konfigurationsdateinamen. Standardmäßig wird ein Protokolldateiname für eine `-c backup` mit einem standardmäßigen Konfigurationsdateinamen `azacsnap-backup-azacsnap.log` ausgeführt.
+Der Name der *Protokolldatei* in diesem Beispiel ist `azacsnap-backup-azacsnap.log` (siehe [Protokolldateien](#log-files)).
 
 ## <a name="example-with-other-parameter-to-backup-host-os"></a>Beispiel mit dem Parameter `other` (zum Sichern des Host-BS)
 
@@ -135,15 +137,17 @@ Die *Protokolldatei* besteht aus dem Befehlsnamen und der Option „-c“ mit de
 azacsnap -c backup --volume other --prefix boot_TEST --retention 9 --configfile bootVol.json
 ```
 
+> [!IMPORTANT]
+> Für Azure (große Instanzen) ist der Parameter des Konfigurationsdateivolumes für das Startvolume auf der Ebene des Hostbetriebssystems möglicherweise nicht sichtbar.
+> Dieser Wert kann von Microsoft Operations bereitgestellt werden.
+
 Der Befehl gibt keine Ausgabe an die Konsole aus, schreibt aber nur in eine Protokolldatei.  Er schreibt _nicht_ in eine Ergebnisdatei oder in `/var/log/messages`.
 
-Der Name der *Protokolldatei* in diesem Beispiel lautet `azacsnap-backup-bootVol.log`.
+Der Name der *Protokolldatei* in diesem Beispiel ist `azacsnap-backup-bootVol.log` (siehe [Protokolldateien](#log-files)).
 
-> [!NOTE]
-> Der Name der Protokolldatei besteht aus dem „(Befehlsnamen-(der Option `-c`)-(dem Konfigurationsdateinamen)“.  Wenn Sie z. B. die Option `-c backup` mit dem Protokolldateinamen `h80.json` verwenden, wird die Protokolldatei `azacsnap-backup-h80.log` aufgerufen.  Oder wenn Sie die Option `-c test` mit derselben Konfigurationsdatei verwenden, wird die Protokolldatei `azacsnap-test-h80.log` aufgerufen.
+## <a name="log-files"></a>Protokolldateien
 
-- Typ der großen HANA-Instanz: Es gibt zwei gültige Werte mit `TYPEI` bzw. `TYPEII`, je nach der großen HANA-Instanzeinheit.
-- Die verfügbaren SKUs können Sie unter [Verfügbare SKUs für große HANA-Instanzen](../virtual-machines/workloads/sap/hana-available-skus.md) bestätigen.
+Der Protokolldateiname wird nach dem Schema „(Befehlsname)-(die `-c`-Option)-(der Konfigurationsdateiname)“ gebildet.  Wenn Sie z. B. den Befehl `azacsnap -c backup --configfile h80.json --retention 5 --prefix one-off` ausführen, wird die Protokolldatei `azacsnap-backup-h80.log` genannt.  Wenn Sie die Option `-c test` mit derselben Konfigurationsdatei (z. B. `azacsnap -c test --configfile h80.json`) verwenden, wird die Protokolldatei `azacsnap-test-h80.log` genannt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

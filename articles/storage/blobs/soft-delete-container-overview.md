@@ -1,64 +1,54 @@
 ---
-title: Vorläufiges Löschen für Container (Vorschau)
+title: Vorläufiges Löschen für Container
 titleSuffix: Azure Storage
-description: Vorläufiges Löschen für Container (Vorschau) schützt Ihre Daten, damit Sie sie leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Speicherkontobenutzer geändert oder gelöscht wurden.
+description: Vorläufiges Löschen für Container schützt Ihre Daten, damit Sie sie leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Speicherkontobenutzer geändert oder gelöscht wurden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6ef960351f22e07c46f4f03a061bc47afbe09dd6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d3684d3fcb79fca31f403294a640887fa8e33d92
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679337"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504475"
 ---
-# <a name="soft-delete-for-containers-preview"></a>Vorläufiges Löschen für Container (Vorschau)
+# <a name="soft-delete-for-containers"></a>Vorläufiges Löschen für Container
 
-Vorläufiges Löschen für Container (Vorschau) schützt Ihre Daten vor versehentlichem oder böswilligen Löschen. Wenn das vorläufige Löschen von Containern für ein Speicherkonto aktiviert ist, wird ein gelöschter Container und dessen Inhalte in Azure Storage für den von Ihnen festgelegten Zeitraum aufbewahrt. Während dieses Aufbewahrungszeitraums können Sie zuvor gelöschte Container wiederherstellen. Beim Wiederherstellen eines Containers werden alle Blobs wiederhergestellt, die sich in diesem Container befanden, als er gelöscht wurde.
+Das vorläufige Löschen von Containern schützt Ihre Daten vor versehentlichem Löschen, indem die gelöschten Daten für einen bestimmten Zeitraum im System beibehalten werden. Während des Aufbewahrungszeitraums können Sie den Zustand eines vorläufig gelöschten Containers und seinen Inhalt zum Zeitpunkt seiner Löschung wiederherstellen. Nachdem der Aufbewahrungszeitraum abgelaufen ist, werden der Container und sein Inhalt dauerhaft gelöscht.
 
-Microsoft empfiehlt die Aktivierung der folgenden Datenschutzfeatures, um den vollständigen Schutz für Ihre Blobdaten zu gewährleisten:
+## <a name="recommended-data-protection-configuration"></a>Empfohlene Datenschutzkonfiguration
+
+Das vorläufige Löschen von Blobs ist Teil einer umfassenden Datenschutzstrategie für Blobdaten. Microsoft empfiehlt die Aktivierung folgender Datenschutzfeatures, um einen optimalen Schutz Ihrer Blobdaten zu gewährleisten:
 
 - Vorläufiges Löschen für Container, um einen gelöschten Container wiederherzustellen. Informationen zum Aktivieren des vorläufigen Löschens für Container finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens für Container (Vorschau)](soft-delete-container-enable.md).
 - Blobversionsverwaltung zum automatischen Verwalten früherer Versionen eines Blobs. Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden. Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md).
-- Vorläufiges Löschen von Blobs, um einen Blob oder eine Version wiederherzustellen, das/die gelöscht wurde. Informationen zum Aktivieren des vorläufigen Löschens von Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens von Blobs](soft-delete-blob-enable.md).
+- Vorläufiges Löschen von Blobs, um ein gelöschtes Blob, eine gelöschte Momentaufnahme oder eine gelöschte Version wiederherzustellen. Informationen zum Aktivieren des vorläufigen Löschens von Blobs finden Sie unter [Aktivieren und Verwalten des vorläufigen Löschens von Blobs](soft-delete-blob-enable.md).
 
-> [!IMPORTANT]
-> Das vorläufige Löschen von Containern befindet sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+Weitere Informationen zu den Datenschutzempfehlungen von Microsoft finden Sie in der [Übersicht zum Datenschutz](data-protection-overview.md).
 
 ## <a name="how-container-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens von Containern
 
 Wenn Sie das vorläufige Löschen von Containern aktivieren, können Sie einen Aufbewahrungszeitraum für gelöschte Container zwischen 1 und 365 Tagen angeben. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Während des Aufbewahrungszeitraums können Sie einen gelöschten Container wiederherstellen, indem Sie den Vorgang **Restore Container** (Container wiederherstellen) aufrufen.
 
-Wenn Sie einen Container wiederherstellen, werden auch die Blobs im Container und alle Blobversionen wiederhergestellt. Sie können das vorläufige Löschen von Containern jedoch nur dann zur Wiederherstellung von Blobs verwenden, wenn der Container selbst gelöscht wurde. Um einen gelöschten Blob wiederherzustellen, wenn sein übergeordneter Container nicht gelöscht wurde, müssen Sie mit dem vorläufigen Löschen oder der Versionsverwaltung von Blobs arbeiten.
+Wenn Sie einen Container wiederherstellen, werden auch die Blobs im Container und alle Blobversionen und Momentaufnahmen wiederhergestellt. Sie können das vorläufige Löschen von Containern jedoch nur dann zur Wiederherstellung von Blobs verwenden, wenn der Container selbst gelöscht wurde. Um einen gelöschten Blob wiederherzustellen, wenn sein übergeordneter Container nicht gelöscht wurde, müssen Sie mit dem vorläufigen Löschen oder der Versionsverwaltung von Blobs arbeiten.
 
 > [!WARNING]
 > Beim vorläufigen Löschen von Containern können nur vollständige Container und deren Inhalte wiederhergestellt werden, die zum Zeitpunkt der Löschung in diesen enthalten waren. Es ist nicht möglich, mithilfe des vorläufigen Löschens von Containern ein gelöschtes Blob in einem Container wiederherzustellen. Microsoft empfiehlt außerdem das Aktivieren von vorläufigem Löschen von Blobs und Blobversionierung zum Schutz einzelner Blobs in einem Container.
+>
+> Wenn Sie einen Container wiederherstellen, müssen Sie ihn unter seinem ursprünglichen Namen wiederherstellen. Wenn der ursprüngliche Name zum Erstellen eines neuen Containers verwendet wurde, können Sie den vorläufig gelöschten Container nicht wiederherstellen.
 
 Das folgende Diagramm zeigt, wie ein gelöschter Container wiederhergestellt werden kann, wenn das vorläufige Löschen von Containern aktiviert ist:
 
 :::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Diagramm der Wiederherstellung eines vorläufig gelöschten Containers":::
 
-Bei der Wiederherstellung eines Containers können Sie diesen mit dem ursprünglichen Namen wiederherstellen, wenn dieser Name nicht wiederverwendet wurde. Wenn der ursprüngliche Containername bereits verwendet wird, können Sie den Container mit einem neuen Namen wiederherstellen.
-
 Nach Ablauf des Aufbewahrungszeitraums wird der Container endgültig aus Azure Storage gelöscht und kann nicht wiederhergestellt werden. Der Aufbewahrungszeitraum beginnt zum Zeitpunkt der Löschung des Containers. Sie können den Aufbewahrungszeitraum jederzeit ändern. Denken Sie jedoch daran, dass ein aktualisierter Aufbewahrungszeitraum nur für neu gelöschte Container gilt. Zuvor gelöschte Container werden basierend auf dem Aufbewahrungszeitraum endgültig gelöscht, der zum Zeitpunkt der Löschung dieser Container festgelegt war.
 
 Das Deaktivieren des vorläufigen Löschens von Containern führt nicht zur endgültigen Löschung der Container, die zuvor vorläufig gelöscht wurden. Vorläufig gelöschte Container werden nach Ablauf des Aufbewahrungszeitraums endgültig gelöscht, der zum Zeitpunkt der Löschung dieser Container festgelegt war.
-
-> [!IMPORTANT]
-> Vorläufiges Löschen eines Containers schützt nicht vor dem Löschen eines Speicherkontos. Es schützt nur vor dem Löschen von Containern in diesem Konto. Um ein Speicherkonto vor dem Löschen zu schützen, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren eines Speicherkontos finden Sie unter [Anwenden einer Azure Resource Manager-Sperre auf einem Speicherkonto](../common/lock-account-resource.md).
-
-## <a name="about-the-preview"></a>Informationen zur Vorschau
-
-Das vorläufige Löschen von Containern ist in allen Azure-Regionen in der Vorschauversion verfügbar.
-
-Version 2019-12-12 oder höher der Azure Storage-REST-API unterstützt das vorläufige Löschen von Containern.
-
-### <a name="storage-account-support"></a>Speicherkontounterstützung
 
 Das vorläufige Löschen von Containern ist für die folgenden Typen von Speicherkonten verfügbar:
 
@@ -68,55 +58,10 @@ Das vorläufige Löschen von Containern ist für die folgenden Typen von Speiche
 
 Speicherkonten mit einem hierarchischen Namespace, die für die Verwendung mit Azure Data Lake Storage Gen2 aktiviert sind, werden ebenfalls unterstützt.
 
-### <a name="register-for-the-preview"></a>Registrieren für die Vorschau
+Version 2019-12-12 oder höher der Azure Storage-REST-API unterstützt das vorläufige Löschen von Containern.
 
-Registrieren Sie sich für die Vorschauversion des vorläufigen Löschens von Containern, indem Sie über PowerShell oder die Azure CLI eine Anforderung zum Registrieren des Features für Ihr Abonnement senden. Wenn die Anforderung genehmigt wurde, können Sie das vorläufige Löschen von Containern mit allen neuen oder bereits vorhandenen Speicherkonten vom Typ „Universell v2“ sowie mit Blob Storage-Konten oder Blockblob-Speicherkonten mit dem Tarif „Premium“ aktivieren.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Rufen Sie für die Registrierung mit PowerShell den Befehl [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) auf.
-
-```powershell
-# Register for container soft delete (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName ContainerSoftDelete
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az_feature_register)“ auf.
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name ContainerSoftDelete
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Überprüfen des Registrierungsstatus
-
-Verwenden Sie PowerShell oder die Azure CLI, um den Status Ihrer Registrierung zu überprüfen.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Um den Status Ihrer Registrierung mit PowerShell zu überprüfen, rufen Sie den Befehl [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) auf.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName ContainerSoftDelete
-```
-
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-
-Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az_feature_show) auf.
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
-```
-
----
+> [!IMPORTANT]
+> Vorläufiges Löschen schützt bei Containern nicht vor dem Löschen eines Speicherkontos, sondern nur vor dem Löschen von Containern in diesem Konto. Um ein Speicherkonto vor dem Löschen zu schützen, konfigurieren Sie eine Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure Resource Manager-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 

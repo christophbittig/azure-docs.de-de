@@ -4,15 +4,15 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/12/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3ea51d88d65b8016e68673703ee823df19bcf608
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738516"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294959"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -20,7 +20,7 @@ ms.locfileid: "109738516"
 
 Sie können 10 verschiedene Speicherziele für jeden Cache definieren, außerdem können größere Caches [bis zu 20 Speicherziele unterstützen](#size-your-cache-correctly-to-support-your-storage-targets).
 
-Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar. Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben.
+Der Cache stellt alle Speicherziele in einem [aggregierten Namespace](hpc-cache-namespace.md) dar. Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben.
 
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prerequisites.md#dns-access).
 
@@ -38,12 +38,37 @@ Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.micro
 
 ## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>Korrekte Cachegröße zur Unterstützung Ihrer Speicherziele
 
-Die Anzahl der unterstützten Speicherziele hängt von der Cachegröße ab, die beim Erstellen des Caches festgelegt wird. Die Größe ist eine Kombination aus Durchsatzkapazität (in GB/s) und Speicherkapazität (in TB).
+Die Anzahl der unterstützten Speicherziele hängt von der Cachegröße ab, die beim Erstellen des Caches festgelegt wird. Die Cachekapazität ist eine Kombination aus Durchsatzkapazität (in GB/s) und Speicherkapazität (in TB).
 
-* Bis zu 10 Speicherziele: Wenn Sie die kleinste oder mittlere Cachespeichergröße für den ausgewählten Durchsatzwert auswählen, kann Ihr Cache über bis zu 10 Speicherziele verfügen.
-* Bis zu 20 Speicherziele: Wählen Sie die höchste verfügbare Cachegröße für den ausgewählten Durchsatzwert aus, wenn Sie mehr als 10 Speicherziele verwenden möchten. (Wenn Sie Azure CLI verwenden, wählen Sie die höchste gültige Cachegröße für Ihre Cache-SKU aus.)
+* Bis zu 10 Speicherziele: Ein Standardcache mit dem kleinsten oder mittleren Cachespeicherwert für den ausgewählten Durchsatz kann maximal 10 Speicherziele haben.
+
+  Wenn Sie beispielsweise einen Durchsatz von 2 GB/Sekunde und nicht die höchste Cachespeichergröße auswählen, unterstützt Ihr Cache maximal 10 Speicherziele.
+
+* Bis zu 20 Speicherziele:
+
+  * Alle Caches mit hohem Durchsatz (mit vorkonfigurierten Cachespeichergrößen) können bis zu 20 Speicherziele unterstützen.
+  * Standardcaches können bis zu 20 Speicherziele unterstützen, wenn Sie die höchste verfügbare Cachegröße für den ausgewählten Durchsatzwert auswählen. (Wenn Sie Azure CLI verwenden, wählen Sie die höchste gültige Cachegröße für Ihre Cache-SKU aus.)
 
 Weitere Informationen zu Durchsatz- und Cachegrößeneinstellungen finden Sie unter [Festlegen der Cachekapazität](hpc-cache-create.md#set-cache-capacity).
+
+## <a name="choose-the-correct-storage-target-type"></a>Auswählen des richtigen Speicherzieltyps
+
+Sie können zwischen drei Speicherzieltypen wählen: **NFS**, **Blob** und **ADLS-NFS**. Wählen Sie den Typ aus, der dem Speichersystemtyp entspricht, mit dem Sie Ihre Dateien während dieses HPC Cache-Projekts speichern.
+
+* **NFS**: Erstellen Sie ein NFS-Speicherziel für den Zugriff auf Daten in einem NAS-System (Network Attached Storage). Dies kann ein lokales Speichersystem oder ein anderer Speichertyp sein, auf den mit NFS zugegriffen werden kann.
+
+  * Anforderungen: [NFS-Speicheranforderungen](hpc-cache-prerequisites.md#nfs-storage-requirements)
+  * Anweisungen: [Hinzufügen eines neuen NFS-Speicherziels](#add-a-new-nfs-storage-target)
+
+* **Blob**: Verwenden Sie ein Blobspeicherziel, um Ihre Arbeitsdateien in einem neuen Azure-Blobcontainer zu speichern. Nur von einer Azure HPC Cache-Instanz aus kann aus diesem Container gelesen oder in ihn hineingeschrieben werden.
+
+  * Voraussetzungen: [Blobspeicheranforderungen](hpc-cache-prerequisites.md#blob-storage-requirements)
+  * Anweisungen: [Hinzufügen eines neuen Azure Blobspeicherziels](#add-a-new-azure-blob-storage-target)
+
+* **ADLS-NFS**: Das ADLS-NFS-Speicherziel hat Zugriff auf Daten aus einem [Blobcontainer mit NFS-Unterstützung](../storage/blobs/network-file-system-protocol-support.md). Sie können den Container mit NFS-Standardbefehlen vorab laden, und die Dateien können später mit NFS gelesen werden.
+
+  * Voraussetzungen: [ADLS-NFS-Speicheranforderungen](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)
+  * Anweisungen: [Hinzufügen eines neuen ADLS-NFS-Speicherziels](#add-a-new-adls-nfs-storage-target)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Hinzufügen eines neuen Azure Blobspeicherziels
 
@@ -52,7 +77,9 @@ Für ein neues Blobspeicherziel ist ein leerer Blobcontainer oder ein Container 
 Im Azure-Portal finden Sie auf der Seite **Speicherziel hinzufügen** die Option, mit der Sie einen neuen Blobcontainer direkt vor dem Hinzufügen erstellen können.
 
 > [!NOTE]
-> Verwenden Sie für in NFS eingebundenen Blobspeicher den Typ [ADLS-NFS storage target](#) (ADLS-NFS-Speicherziel).
+>
+> * Verwenden Sie für in NFS eingebundenen Blobspeicher den Typ [ADLS-NFS storage target](#add-a-new-adls-nfs-storage-target) (ADLS-NFS-Speicherziel).
+> * [Cachekonfigurationen mit hohem Durchsatz](hpc-cache-create.md#choose-the-cache-type-for-your-needs) unterstützen keine standardmäßigen Azure Blobspeicherziele. Verwenden Sie stattdessen Blobspeicher mit NFS-Unterstützung (ADLS-NFS).
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -91,7 +118,7 @@ Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung in Azure (Azure 
 
 Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](../role-based-access-control/built-in-roles.md#storage-account-contributor) und [Mitwirkender an Storage-Blobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) für den Benutzer „HPC Cache-Ressourcenanbieter“ explizit hinzufügen.
 
-Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
+Sie können dies im Voraus erledigen, oder indem Sie auf einen Link auf der Portalseite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
 
 1. Öffnen Sie **Zugriffssteuerung (IAM)** für Ihr Speicherkonto.
 
@@ -107,7 +134,7 @@ Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite
     ![Seite „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > Wenn Sie den HPC Cache-Ressourcenanbieter nicht finden können, suchen Sie stattdessen nach der Zeichenfolge „storagecache“. Benutzer, die an HPC Cache-Vorschauen (vor der allgemeinen Verfügbarkeit) teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
+   > Wenn Sie den HPC Cache-Ressourcenanbieter nicht finden können, suchen Sie stattdessen nach der Zeichenfolge „storagecache“. Dies war vor GA ein Name für den Dienstprinzipal.
 
 <!-- 
 Steps to add the Azure roles:
@@ -116,9 +143,9 @@ Steps to add the Azure roles:
 
 1. Click the **+** at the top of the page and choose **Add a role assignment**.
 
-1. Select the role "Storage Account Contributor&quot; from the list.
+1. Select the role "Storage Account Contributor" from the list.
 
-1. In the **Assign access to** field, leave the default value selected (&quot;Azure AD user, group, or service principal").  
+1. In the **Assign access to** field, leave the default value selected ("Azure AD user, group, or service principal").  
 
 1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
 
@@ -183,7 +210,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>Hinzufügen eines neuen NFS-Speicherziels
 
-Ein NFS-Speicherziel besitzt andere Einstellungen als ein Blob-Speicherziel. Mithilfe der Einstellung „Verwendungsmodell“ kann der Cache Daten aus diesem Speichersystem effizient zwischenspeichern.
+Ein NFS-Speicherziel verfügt über andere Einstellungen als ein Blobspeicherziel, einschließlich einer Nutzungsmodelleinstellung, die dem Cache mitteilt, wie Daten aus diesem Speichersystem gespeichert werden.
 
 ![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/add-nfs-target.png)
 
@@ -191,13 +218,15 @@ Ein NFS-Speicherziel besitzt andere Einstellungen als ein Blob-Speicherziel. Mit
 > Stellen Sie vor dem Erstellen eines NFS-Speicherziels sicher, dass das Speichersystem über den Azure HPC Cache zugänglich ist und die Berechtigungsanforderungen erfüllt. Das Erstellen des Speicherziels schlägt fehl, wenn der Cache auf das Speichersystem nicht zugreifen kann. Einzelheiten dazu finden Sie in [NFS-Speicheranforderungen](hpc-cache-prerequisites.md#nfs-storage-requirements) und [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
 
 ### <a name="choose-a-usage-model"></a>Auswählen eines Nutzungsmodells
-<!-- referenced from GUI by aka.ms link -->
 
 Wenn Sie ein Speicherziel erstellen, das NFS zum Erreichen des Speicherziels verwendet, müssen Sie ein Nutzungsmodell für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 
 Weitere Informationen zu diesen Einstellungen finden Sie unter [Grundlegendes zu Nutzungsmodellen](cache-usage-models.md).
 
-Mit den integrierten Nutzungsmodellen können Sie zwischen kurzen Reaktionszeiten und dem Risiko veralteter Daten abwägen. Wenn Sie die Geschwindigkeit von Dateilesevorgängen optimieren möchten, spielt es für Sie möglicherweise keine Rolle, ob die Dateien im Cache mit den Back-End-Dateien abgeglichen werden. Wenn Sie jedoch sicherstellen möchten, dass Ihre Dateien immer auf dem neuesten Stand sind und den Dateien im Remotespeicher entsprechen, wählen Sie ein Modell aus, bei dem regelmäßig eine Überprüfung durchgeführt wird.
+Mit den integrierten HPC Cache-Nutzungsmodellen können Sie zwischen kurzen Reaktionszeiten und dem Risiko veralteter Daten abwägen. Wenn Sie die Geschwindigkeit von Dateilesevorgängen optimieren möchten, spielt es für Sie möglicherweise keine Rolle, ob die Dateien im Cache mit den Back-End-Dateien abgeglichen werden. Wenn Sie jedoch sicherstellen möchten, dass Ihre Dateien immer auf dem neuesten Stand sind und den Dateien im Remotespeicher entsprechen, wählen Sie ein Modell aus, bei dem regelmäßig eine Überprüfung durchgeführt wird.
+
+> [!NOTE]
+> [Caches mit hohem Durchsatz](hpc-cache-create.md#choose-the-cache-type-for-your-needs) unterstützen nur Cachelesevorgänge.
 
 Die folgenden drei Optionen decken die meisten Situationen ab:
 
@@ -246,7 +275,7 @@ Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
 
 * **Zieltyp**: Wählen Sie **NFS** aus.
 
-* **Hostname**: Geben Sie die IP-Adresse oder den vollqualifizierten Domänennamen Ihres NFS-Speichersystems ein. (Verwenden Sie nur dann einen Domänennamen, wenn Ihr Cache Zugriff auf einen DNS-Server hat, der den Namen auflösen kann.)
+* **Hostname**: Geben Sie die IP-Adresse oder den vollqualifizierten Domänennamen Ihres NFS-Speichersystems ein. (Verwenden Sie nur dann einen Domänennamen, wenn Ihr Cache Zugriff auf einen DNS-Server hat, der den Namen auflösen kann.) Sie können mehrere IP-Adressen eingeben, wenn mehrere IP-Adressen auf Ihr Speichersystem verweisen.
 
 * **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eines der oben im Abschnitt [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschriebenen Datencacheprofile aus.
 
@@ -324,22 +353,23 @@ Ausgabe:
 
 ---
 
-## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Hinzufügen eines neuen ADLS-NFS-Speicherziels (Vorschau)
+## <a name="add-a-new-adls-nfs-storage-target"></a>Hinzufügen eines neuen ADLS-NFS-Speicherziels
 
 ADLS-NFS-Speicherziele verwenden Azure-Blobcontainer, die das NFS 3.0-Protokoll (Network File System, Netzwerkdateisystem) unterstützen.
 
-> [!NOTE]
-> Die Unterstützung des NFS 3.0-Protokolls für Azure Blob Storage befindet sich in der öffentlichen Vorschauphase. Die Verfügbarkeit ist eingeschränkt, und es können Änderungen an den Features vorgenommen werden, bevor diese allgemein verfügbar sind. Verwenden Sie in Produktionssystemen keine Technologien, die sich in der Vorschau befinden.
->
-> Die neuesten Informationen finden Sie unter [Unterstützung für NFS 3.0-Protokolle](../storage/blobs/network-file-system-protocol-support.md).
+Weitere Informationen zu diesem Feature finden Sie unter [NFS 3.0-Protokollunterstützung](../storage/blobs/network-file-system-protocol-support.md).
 
 ADLS-NFS-Speicherziele weisen einige Ähnlichkeiten mit Blobspeicherzielen und NFS-Speicherzielen auf. Zum Beispiel:
 
 * Ähnlich wie bei einem Blobspeicherziel müssen Sie Azure HPC Cache die Berechtigung erteilen, um [auf Ihr Speicherkonto zuzugreifen](#add-the-access-control-roles-to-your-account).
 * Wie bei einem NFS-Speicherziel müssen Sie ein [Nutzungsmodell](#choose-a-usage-model) für den Cache festlegen.
-* Da NFS-fähige Blobcontainer über eine mit NFS kompatible hierarchische Struktur verfügen, müssen Sie den Cache nicht zum Erfassen von Daten verwenden, und die Container können von anderen NFS-Systemen gelesen werden. Sie können Daten vorab in einen ADLS-NFS-Container laden, diesen dann als Speicherziel zu einem HPC-Cache hinzufügen, und später außerhalb eines HPC-Caches auf diese Daten zugreifen. Wenn Sie einen Standard-Blobcontainer als Speicherziel für einen HPC-Cache verwenden, werden die Daten in einem geschützten Format geschrieben, und Sie können nur mit anderen mit Azure HPC Cache kompatiblen Produkten auf diese Daten zugreifen.
+* Da NFS-fähige Blobcontainer über eine mit NFS kompatible hierarchische Struktur verfügen, müssen Sie den Cache nicht zum Erfassen von Daten verwenden, und die Container können von anderen NFS-Systemen gelesen werden.
 
-Bevor Sie ein ADLS-NFS-Speicherziel erstellen können, müssen Sie ein NFS-fähiges Speicherkonto erstellen. Befolgen Sie die Tipps unter [Voraussetzungen für Azure HPC Cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview), und führen Sie die Anweisungen unter [Einbinden eines Blobspeichers mit einem NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). Nachdem Sie Ihr Speicherkonto eingerichtet haben, können Sie einen neuen Container erstellen, wenn Sie das Speicherziel erstellen.
+  Sie können Daten vorab in einen ADLS-NFS-Container laden, diesen dann als Speicherziel zu einem HPC-Cache hinzufügen, und später außerhalb eines HPC-Caches auf diese Daten zugreifen. Wenn Sie einen Standard-Blobcontainer als Speicherziel für einen HPC-Cache verwenden, werden die Daten in einem geschützten Format geschrieben, und Sie können nur mit anderen mit Azure HPC Cache kompatiblen Produkten auf diese Daten zugreifen.
+
+Bevor Sie ein ADLS-NFS-Speicherziel erstellen können, müssen Sie ein NFS-fähiges Speicherkonto erstellen. Führen Sie die Schritte unter [Voraussetzungen für Azure HPC Cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements) und die Anweisungen unter [Einbinden eines Blobspeichers mit einem NFS](../storage/blobs/network-file-system-protocol-support-how-to.md) aus. Wenn Sie nicht dasselbe virtuelle Netzwerk für Cache und Speicherkonto verwenden, stellen Sie sicher, dass das VNET des Caches auf das VNET des Speicherkontos zugreifen kann.
+
+Nachdem Sie Ihr Speicherkonto eingerichtet haben, können Sie einen neuen Container erstellen, wenn Sie das Speicherziel erstellen.
 
 Weitere Informationen zu dieser Konfiguration finden Sie unter [Verwenden von in NFS eingebundenen Blobspeicher mit Azure HPC Cache](nfs-blob-considerations.md).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c11a151876677e06a32364b050538f233cc2b9c4
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: ec09ac444999be23fa0caed741e1e1534117fa0c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343226"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105617"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Wie bietet Azure Cosmos DB Hochverfügbarkeit?
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -129,7 +129,7 @@ Verfügbarkeitszonen können über Folgendes aktiviert werden:
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 
-* [Azure-Befehlszeilenschnittstelle](manage-with-cli.md#add-or-remove-regions)
+* [Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#add-or-remove-regions)
 
 * [Azure-Ressourcen-Manager-Vorlagen](./manage-with-templates.md)
 
@@ -158,7 +158,7 @@ Bei Konten mit mehreren Regionen treten unterschiedliche Verhaltensweisen auf, d
 | -- | -- | -- | -- |
 | Eine Schreibregion | Nicht aktiviert | Bei einem Ausfall in einer Leseregion an andere Regionen umgeleitet. Kein Verlust der Lese- oder Schreibverfügbarkeit. Kein Datenverlust. <p/> Bei einem Ausfall in einer Schreibregion verlieren Clients die Schreibverfügbarkeit. Wenn keine starke Konsistenzebene ausgewählt ist, wurden einige Daten möglicherweise nicht in die verbleibenden aktiven Regionen repliziert. Dies hängt von der ausgewählten Konsistenzebene ab, wie in [diesem Abschnitt](consistency-levels.md#rto) beschrieben. Wenn in der betroffenen Region dauerhafte Datenverluste auftreten, können nicht replizierte Daten verlorengehen. <p/> Cosmos DB stellt die Schreibverfügbarkeit nach einem Ausfall automatisch wieder her. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend RUs zur Unterstützung des Lesedatenverkehrs bereitgestellt sind. <p/> Lösen Sie während des Ausfalls *kein* manuelles Failover aus, da es nicht erfolgreich verläuft. <p/> Passen Sie die bereitgestellten RUs nach einem Ausfall ggf. an. |
 | Eine Schreibregion | Aktiviert | Bei einem Ausfall in einer Leseregion an andere Regionen umgeleitet. Kein Verlust der Lese- oder Schreibverfügbarkeit. Kein Datenverlust. <p/> Bei einem Ausfall in der Schreibregion, verlieren Clients die Schreibverfügbarkeit, bis Cosmos DB gemäß Ihren Einstellungen automatisch eine neue Region als neue Schreibregion auswählt. Wenn keine starke Konsistenzebene ausgewählt ist, wurden einige Daten möglicherweise nicht in die verbleibenden aktiven Regionen repliziert. Dies hängt von der ausgewählten Konsistenzebene ab, wie in [diesem Abschnitt](consistency-levels.md#rto) beschrieben. Wenn in der betroffenen Region dauerhafte Datenverluste auftreten, können nicht replizierte Daten verlorengehen. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend RUs zur Unterstützung des Lesedatenverkehrs bereitgestellt sind. <p/> Lösen Sie während des Ausfalls *kein* manuelles Failover aus, da es nicht erfolgreich verläuft. <p/> Wenn der Ausfall vorüber ist, können Sie die Schreibregion wieder in die ursprüngliche Region verschieben und die bereitgestellten RUs entsprechend anpassen. Konten, die SQL-APIs verwenden, können auch die nicht replizierten Daten in der fehlerhaften Region aus Ihrem [Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed) wiederherstellen. |
-| Mehrere Schreibregionen | Nicht zutreffend | Kein Verlust der Lese- oder Schreibverfügbarkeit. <p/> Kürzlich aktualisierte Daten in der fehlerhaften Region sind in den verbleibenden aktiven Regionen möglicherweise nicht verfügbar. Letztliche, konsistente Präfix- und Sitzungskonsistenzebenen garantieren ein Veralten von < 15 Minuten. Die begrenzte Veraltung garantiert je nach Konfiguration weniger als K Updates oder T Sekunden. Wenn in der betroffenen Region dauerhafte Datenverluste auftreten, können nicht replizierte Daten verlorengehen. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend RUs zur Unterstützung von zusätzlichem Datenverkehr bereitgestellt sind. <p/> Wenn der Ausfall vorüber ist, können Sie die bereitgestellten RUs ggf. anpassen. Wenn möglich, stellt Cosmos DB automatisch nicht replizierte Daten in der fehlerhaften Region wieder her, indem die konfigurierte Konfliktlösungsmethode für SQL-API-Konten verwendet wird, und „Letzter Schreibvorgang gewinnt“ für Konten, die andere APIs verwenden. |
+| Mehrere Schreibregionen | Nicht verfügbar | Kein Verlust der Lese- oder Schreibverfügbarkeit. <p/> Kürzlich aktualisierte Daten in der fehlerhaften Region sind in den verbleibenden aktiven Regionen möglicherweise nicht verfügbar. Letztliche, konsistente Präfix- und Sitzungskonsistenzebenen garantieren ein Veralten von < 15 Minuten. Die begrenzte Veraltung garantiert je nach Konfiguration weniger als K Updates oder T Sekunden. Wenn in der betroffenen Region dauerhafte Datenverluste auftreten, können nicht replizierte Daten verlorengehen. | Stellen Sie sicher, dass während eines Ausfalls in den verbleibenden Regionen genügend RUs zur Unterstützung von zusätzlichem Datenverkehr bereitgestellt sind. <p/> Wenn der Ausfall vorüber ist, können Sie die bereitgestellten RUs ggf. anpassen. Wenn möglich, stellt Cosmos DB automatisch nicht replizierte Daten in der fehlerhaften Region wieder her, indem die konfigurierte Konfliktlösungsmethode für SQL-API-Konten verwendet wird, und „Letzter Schreibvorgang gewinnt“ für Konten, die andere APIs verwenden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

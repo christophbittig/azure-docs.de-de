@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc0eed20ee392b668078425946b39ac6c6440c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ad99f677cde82f461eee6396d945fb3cd030245
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346915"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306106"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Voraussetzungen für die Azure AD Connect-Cloudsynchronisierung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory Connect-Cloudsynchronisierung (Azure AD) als Identitätslösung.
@@ -33,9 +33,9 @@ Für die Verwendung der Azure AD Connect-Cloudsynchronisierung benötigen Sie Fo
 Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Die Azure AD Connect-Cloudsynchronisierung unterstützt und verwendet ein gMSA zum Ausführen des Agents.  Sie werden während des Setups zur Eingabe administrativer Anmeldeinformationen aufgefordert, um das Konto zu erstellen.  Das Konto wird als (domain\provAgentgMSA$) angezeigt.  Weitere Informationen zu einem gruppenverwalteten Dienstkonto (Group Managed Service Account, GMSA) finden Sie unter [Gruppenverwaltete Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
 
 ### <a name="prerequisites-for-gmsa"></a>Voraussetzungen für das gMSA:
-1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2016 aktualisiert werden.
+1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2012 oder höher aktualisiert werden.
 2.  [PowerShell-RSAT-Module](/windows-server/remote/remote-server-administration-tools) auf einem Domänencontroller
-3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 2016 ausgeführt werden.
+3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 2012 oder höher ausgeführt werden.
 4.  Ein in eine Domäne eingebundener Server, auf dem der Agent installiert ist, muss Windows Server 2016 oder höher aufweisen.
 
 ### <a name="custom-gmsa-account"></a>Benutzerdefiniertes gMSA-Konto
@@ -133,6 +133,9 @@ Es gelten die folgenden bekannten Einschränkungen:
 Bei Verwendung des Bereichsfilters für Organisationseinheiten
 - Sie können für eine bestimmte Konfiguration nur bis zu 59 separate Organisationseinheiten synchronisieren. 
 - Geschachtelte Organisationseinheiten werden unterstützt (d. h., Sie **können** eine Organisationseinheit mit 130 geschachtelten Organisationseinheiten synchronisieren, aber Sie **können nicht** 60 separate Organisationseinheiten in derselben Konfiguration synchronisieren). 
+
+### <a name="password-hash-sync"></a>Kennworthashsynchronisierung
+- Die Verwendung der Kennworthashsynchronisierung mit InetOrgPerson wird nicht unterstützt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

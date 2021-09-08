@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24797f6524cd9a129f8eafb5b13e4bd1a26cf803
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711058"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432192"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -78,6 +78,7 @@ Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datens
 | `SCAgentChannel` | Der Wert lautet *Direct* bzw. *SCManagementServer*.|
 | `IsGatewayInstalled` | Wenn das Log Analytics-Gateway installiert ist, lautet der Wert *true*, andernfalls *false*.|
 | `ComputerIP` | Die öffentliche IP-Adresse des Computers. Auf virtuellen Azure-Computern wird hier die öffentliche IP-Adresse angezeigt, sofern sie verfügbar ist. Bei virtuellen Computern, auf denen private IP-Adressen verwendet werden, wird die Azure-SNAT-Adresse (und nicht die private IP-Adresse) angezeigt. |
+| `ComputerPrivateIPs` | Liste der privaten IPs des Computers. |
 | `RemoteIPCountry` | Geografischer Standort, an dem der Computer bereitgestellt wird|
 | `ManagementGroupName` | Name der Operations Manager-Verwaltungsgruppe|
 | `SourceComputerId` | Eindeutige ID des Computers|

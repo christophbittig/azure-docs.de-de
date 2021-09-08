@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6df1b170d350d483a52311d8a7d2bcd24282eaa6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034587"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667011"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -58,7 +58,7 @@ Wenn Sie dieses Kontrollkästchen aktivieren, müssen Benutzer Azure AD Multi-F
 
 Organisationen, die Microsoft Intune bereitstellen, können die von ihren Geräten zurückgegebenen Informationen verwenden, um Geräte zu identifizieren, die bestimmte Kompatibilitätsanforderungen erfüllen. Diese Informationen zur Richtliniencompliance werden von Intune an Azure AD weitergeleitet, sodass der bedingte Zugriff Entscheidungen zum Gewähren oder Blockieren des Zugriffs auf Ressourcen treffen kann. Weitere Informationen zu Konformitätsrichtlinien finden Sie im Artikel [Legen Sie mit Intune Regeln auf Geräten fest, um Zugriff auf Ressourcen in Ihrer Organisation zu gewähren](/intune/protect/device-compliance-get-started).
 
-Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. Jamf Pro ist das einzige unterstützte MDM-Drittanbietersystem. Weitere Informationen zur Integration finden Sie im Artikel [Integrieren von Jamf Pro in Intune zu Konformitätszwecken](/intune/protect/conditional-access-integrate-jamf).
+Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. Eine Liste der unterstützten MDM-Systeme von Drittanbietern finden Sie im Artikel [Unterstützen von Drittanbieter-Gerätekonformitätspartnern in Intune](/mem/intune/protect/device-compliance-partners).
 
 Geräte müssen in Azure AD registriert werden, damit Sie als kompatibel gekennzeichnet werden können. Weitere Informationen zur Geräteregistrierung finden Sie im Artikel [Was ist eine Geräteidentität?](../devices/overview.md).
 
@@ -145,7 +145,7 @@ Für die folgenden Client-Apps wurde bestätigt, dass diese Einstellung unterst�
 - Nine Mail – Email & Calendar
 
 > [!NOTE]
-> Microsoft Teams, Microsoft Kaizala, Microsoft Skype for Business und Microsoft Visio unterstützen den Gewährungstyp **App-Schutzrichtlinie erforderlich** nicht. Wenn Sie mit diesen Apps arbeiten müssen, verwenden Sie exklusiv den Gewährungstyp **Genehmigte Apps erforderlich**. Die Verwendung der OR-Klausel zwischen den beiden Gewährungstypen funktioniert für diese drei Anwendungen nicht.
+> Microsoft Kaizala, Microsoft Skype for Business und Microsoft Visio unterstützen den Gewährungstyp **App-Schutzrichtlinie erforderlich** nicht. Wenn Sie mit diesen Apps arbeiten müssen, verwenden Sie exklusiv den Gewährungstyp **Genehmigte Apps erforderlich**. Die Verwendung der OR-Klausel zwischen den beiden Gewährungstypen funktioniert für diese drei Anwendungen nicht.
 
 **Anmerkungen**
 
@@ -158,22 +158,22 @@ Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Erzwingen einer App-
 
 ### <a name="require-password-change"></a>Kennwortänderung anfordern 
 
-Wenn Benutzerrisiken erkannt werden, können Administratoren mithilfe der Benutzerrisiko-Richtlinienbedingungen festlegen, dass der Benutzer sein Kennwort mithilfe der Self-Service-Kennwortzurücksetzung von Azure AD sicher ändern kann. Wenn Benutzerrisiken erkannt werden, können die Benutzer die Self-Service-Kennwortzurücksetzung zur Eigenwartung durchführen und das Benutzerrisikoereignis schließen, um unnötigen Aufwand für Administratoren zu vermeiden. 
+Wenn Benutzerrisiken erkannt werden, können Administratoren mithilfe der Benutzerrisiko-Richtlinienbedingungen festlegen, dass der Benutzer sein Kennwort mithilfe der Self-Service-Kennwortzurücksetzung von Azure AD sicher ändern kann. Wenn Benutzerrisiken erkannt werden, können die Benutzer die Self-Service-Kennwortzurücksetzung zur Eigenwartung durchführen. Dieser Prozess schließt das Benutzerrisikoereignis, um unnötigen Aufwand für Administratoren zu vermeiden. 
 
 Wenn Benutzer aufgefordert werden, ihr Kennwort zu ändern, müssen sie zunächst die mehrstufige Authentifizierung durchführen. Sie müssen sicherstellen, dass alle Ihre Benutzer sich für die mehrstufige Authentifizierung registriert haben, damit sie vorbereitet sind, wenn ein Risiko für ihr Konto erkannt werden sollte.  
 
 > [!WARNING]
 > Benutzer müssen sich vor Auslösen der Anmelderisikorichtlinie bereits für die Self-Service-Kennwortzurücksetzung registriert haben. 
 
-Es gibt einige Einschränkungen, wenn Sie eine Richtlinie mithilfe der Kennwortänderungssteuerung konfigurieren.  
+Wenn Sie eine Richtlinie mithilfe der Kennwortänderungssteuerung konfigurieren, sind Einschränkungen wirksam.  
 
-1. Diese Richtlinie muss „allen Cloud-Apps“ zugewiesen sein. Dadurch wird verhindert, dass ein Angreifer eine andere App verwendet, um das Kennwort des Benutzers zu ändern und so das Kontorisiko zurücksetzt, indem er sich einfach bei einer anderen App anmeldet. 
+1. Diese Richtlinie muss „allen Cloud-Apps“ zugewiesen sein. Diese Anforderung verhindert, dass ein Angreifer eine andere App verwendet, um das Kennwort des Benutzers zu ändern und so das Kontorisiko zurückzusetzen, indem er sich bei einer anderen App anmeldet. 
 1. „Kennwortänderung erforderlich“ kann nicht mit anderen Steuerungen verwendet werden, zum Beispiel der Anforderung, ein kompatibles Gerät zu verwenden.  
 1. Die Kennwortänderungssteuerung kann nur mit der Benutzer- und Gruppenzuweisungsbedingung, mit der Cloud-App-Zuweisung (die auf „Alle“ festgelegt sein muss) und den Benutzerrisikobedingungen verwendet werden. 
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 
-Wenn Ihre Organisation Nutzungsbedingungen erstellt hat, werden unter den Steuerelementen zur Rechteerteilung ggf. weitere Optionen angezeigt. Mit diesen Optionen können Administratoren die Bestätigung von Nutzungsbedingungen als Bedingung für den Zugriff auf die Ressourcen festlegen, die durch die Richtlinie geschützt werden. Weitere Informationen zu Nutzungsbedingungen finden Sie im Artikel [Nutzungsbedingungen für Azure Active Directory](terms-of-use.md).
+Wenn Ihre Organisation Nutzungsbedingungen erstellt hat, werden unter den Steuerelementen zur Rechteerteilung ggf. andere Optionen angezeigt. Mit diesen Optionen können Administratoren die Bestätigung von Nutzungsbedingungen als Bedingung für den Zugriff auf die Ressourcen festlegen, die durch die Richtlinie geschützt werden. Weitere Informationen zu Nutzungsbedingungen finden Sie im Artikel [Nutzungsbedingungen für Azure Active Directory](terms-of-use.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

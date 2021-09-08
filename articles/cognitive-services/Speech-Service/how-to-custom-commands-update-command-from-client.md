@@ -1,5 +1,5 @@
 ---
-title: Aktualisieren eines Befehls aus einer Client-App
+title: Aktualisieren eines Befehlsparameters aus einer Client-App
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie einen Befehl aus einer Client-App heraus aktualisieren.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: lajanuar
-ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 9ae8d43be88558469165e926994f994aa0fe5736
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356195"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455888"
 ---
 # <a name="update-a-command-from-a-client-app"></a>Aktualisieren eines Befehls aus einer Client-App
 
@@ -53,7 +53,8 @@ Lassen Sie uns die Schlüsselattribute dieser Aktivität überprüfen:
 
 | attribute | Erklärung |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Typ** | Die Aktivität ist vom Typ `"event"`, und der Name des Ereignisses muss `"RemoteUpdate"` lauten. |
+| **Typ** | Die Aktivität weist den Typ `"event"` auf. |
+| **name** | Der Name des Ereignisses muss `"RemoteUpdate"` lauten. |
 | **value** | Das Attribut `"value"` enthält die zur Aktualisierung des aktuellen Befehls erforderlichen Attribute. |
 | **updatedCommand** | Das Attribut `"updatedCommand"` enthält den Namen des Befehls. Innerhalb dieses Attributs ist `"updatedParameters"` eine Zuordnung mit den Namen der Parameter und deren aktualisierten Werten. |
 | **cancel** | Wenn der laufende Befehl abgebrochen werden muss, legen Sie das Attribut `"cancel"` auf `true` fest. |

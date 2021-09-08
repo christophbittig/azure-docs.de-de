@@ -6,37 +6,32 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 07/13/2021
 ms.author: tamram
-ms.reviewer: sohamnc
+ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b417bff98b7e48154c96ede973a8b8bc7256f128
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 34c3f19ebb48bef3ece00b6413af2c1d7e585cf5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984570"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355420"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) (Azure Role-Based Access Control, Azure RBAC). Azure Storage bietet eine Reihe integrierter Rollen mit allgemeinen Berechtigungen für den Zugriff auf Container.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) (Azure Role-Based Access Control, Azure RBAC). Azure Storage definiert eine Reihe von in Azure integrierten Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob-Daten.
 
-Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
+Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-In diesem Artikel erfahren Sie, wie Sie Azure-Rollen für den Datenzugriff auf Blobs zuweisen können.
+Weitere Informationen zur Verwendung von Azure AD zum Autorisieren des Zugriffs auf Blob-Daten finden Sie unter [Autorisieren des Zugriffs auf Blobs mithilfe von Azure Active Directory](authorize-access-azure-active-directory.md).
 
-## <a name="azure-roles-for-blobs"></a>Azure-Rollen für Blobs
-
-[!INCLUDE [storage-auth-rbac-roles-blob-include](../../../includes/storage-auth-rbac-roles-blob-include.md)]
-
-## <a name="determine-resource-scope"></a>Bestimmen des Ressourcenumfangs
-
-[!INCLUDE [storage-auth-resource-scope-blob-include](../../../includes/storage-auth-resource-scope-blob-include.md)]
+> [!NOTE]
+> In diesem Artikel wird gezeigt, wie Sie eine Azure-Rolle für den Zugriff auf Blob-Daten in einem Speicherkonto zuweisen. Informationen zum Zuweisen von Rollen für Verwaltungsvorgänge in Azure Storage finden Sie unter [Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen](../common/authorization-resource-provider.md).
 
 ## <a name="assign-an-azure-role"></a>Zuweisen einer Azure-Rolle
 
-Sie können über das Azure-Portal, PowerShell oder die Azure CLI eine Rolle für den Datenzugriff zuweisen.
+Sie können das Azure-Portal, PowerShell, die Azure CLI oder eine Azure Resource Manager-Vorlage verwenden, um eine Rolle für den Datenzugriff zuzuweisen.
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -62,7 +57,7 @@ Sie können auch eine Azure Resource Manager-Rolle zuweisen, die zusätzliche Be
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie eine Azure-Rolle einem Sicherheitsprinzipal zuweisen möchten, rufen Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) auf. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden.
+Wenn Sie eine Azure-Rolle einem Sicherheitsprinzipal mit PowerShell zuweisen möchten, rufen Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) auf. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden.
 
 Geben Sie zum Zuweisen einer auf einen Container begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält. Der Bereich für einen Container weist folgendes Format auf:
 
@@ -82,7 +77,7 @@ Informationen zum Zuweisen von Rollen mit PowerShell im Abonnement-, Ressourceng
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um einem Sicherheitsprinzipal eine Azure-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden.
+Verwenden Sie den Befehl [Erstellen einer Azure Rollenzuweisung](/cli/azure/role/assignment#az_role_assignment_create), um einem Sicherheitsprinzipal eine Azure-Rolle mit einer Azure CLI zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden.
 
 Geben Sie zum Zuweisen einer auf einen Container begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält. Der Bereich für einen Container weist folgendes Format auf:
 
@@ -101,12 +96,17 @@ az role assignment create \
 
 Informationen zum Zuweisen von Rollen mit PowerShell im Abonnement-, Ressourcengruppen- oder Speicherkontobereich finden Sie unter [Zuweisen von Azure-Rollen mithilfe der Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
+# <a name="template"></a>[Vorlage](#tab/template)
+
+Informationen zur Verwendung einer Azure Resource Manager-Vorlage zum Zuweisen einer Azure-Rolle finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
+
 ---
 
 Beachten Sie die folgenden Punkte zu Azure-Rollenzuweisungen in Azure Storage:
 
 - Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers zuordnen.
 - Wenn das Speicherkonto mit einem Schreibschutz von Azure Resource Manager gesperrt wurde, verhindert diese Sperre die Zuweisung von Azure-Rollen, die für das Speicherkonto oder einen Container gelten.
+- Wenn Sie die entsprechenden Berechtigungen für den Zugriff auf Daten über Azure AD festgelegt haben und nicht auf die Daten zugreifen können, erhalten Sie z. B. den Fehler „AuthorizationPermissionMismatch“. Stellen Sie sicher, dass Sie genügend Zeit für die Änderungen an den Berechtigungen haben, die Sie in Azure AD vorgenommen haben, um zu replizieren. Stellen Sie auch sicher, dass Sie keine Verweigerungszuweisungen haben, die Ihren Zugriff blockieren. Weitere Informationen finden Sie unter [Verstehen von Azure-Verweigerungszuweisungen](../../role-based-access-control/deny-assignments.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

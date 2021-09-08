@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: 8e705c95f875428c5089416ed3f49d90a474def9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c50db3a7127959539d4a03f7f9a04cb2943dec79
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339280"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866952"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht
 
@@ -72,7 +72,7 @@ Der Status „Azure IP Co-Sell Incentive“ kann auf die folgenden Angebotstypen
 
 Der Status „Business Applications Co-Sell Incentive (Standard und Premium)“ kann auf folgende Angebotstypen angewendet werden:
 
-- Dynamics 365 for Customer Engagement & PowerApps
+- Dynamics 365 for Customer Engagement und Power Apps
 - Dynamics 365 for Operations
 
 Angebote, die den Status _Azure IP Co-Sell Incentivized_ erzielen, profitieren von den folgenden Vorteilen in Bezug auf den kommerziellen Marketplace:

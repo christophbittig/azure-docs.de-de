@@ -1,20 +1,20 @@
 ---
-title: Behandeln von Problemen mit Azure Percept-Vision und Vision-Modulen
+title: Problembehandlung für Azure Percept Vision und Vision-Module
 description: Hier finden Sie Tipps zur Problembehandlung für einige der häufigsten Probleme während der Vision-KI-Prototyperstellung.
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bc06ed6850c247641423ef365a86dd9d8aec90a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349675"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225970"
 ---
-# <a name="vision-solution-troubleshooting"></a>Problembehandlung für die Vision-Lösung
+# <a name="troubleshoot-azure-percept-vision-and-vision-modules"></a>Problembehandlung für Azure Percept Vision und Vision-Module
 
 In diesem Artikel finden Sie Informationen zum Beheben von Problemen mit Vision-Lösungen ohne Code in Azure Percept Studio.
 

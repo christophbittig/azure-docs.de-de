@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/10/2021
+ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3f185f24c824008a6488ab2e9401dd05439daafb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984966"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418546"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -25,6 +25,9 @@ Berücksichtigen Sie bei der Entscheidung, welche Redundanzoption für Ihr Szena
 - Wie werden Ihre Daten in der primären Region repliziert?
 - Werden Ihre Daten in eine zweite Region repliziert, die geografisch von der primären Region entfernt ist, um Schutz vor regionalen Ausfällen zu erreichen?
 - Benötigt Ihre Anwendung Lesezugriff auf die replizierten Daten in der sekundären Region, falls die primäre Region aus irgendeinem Grund nicht verfügbar ist?
+
+> [!NOTE]
+> Die in diesem Artikel beschriebenen Funktionen und die regionale Verfügbarkeit, sind auch für Konten mit einem hierarchischen Namespace verfügbar.
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundanz in der primären Region
 
@@ -127,24 +130,24 @@ Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. We
 
 GZRS und RA-GZRS werden in den folgenden Regionen unterstützt:
 
-- (Afrika) Südafrika, Norden
+- (Asien-Pazifik) Asien, Osten
 - (Asien-Pazifik) Asien, Südosten
 - (Asien-Pazifik) Australien, Osten
-- (Asien-Pazifik) Indien, Mitte
 - (Asien-Pazifik) Japan, Osten
-- (Asien-Pazifik) Südkorea, Mitte
 - (Kanada) Kanada, Mitte
 - (Europa) Europa, Norden
 - (Europa) Europa, Westen
 - (Europa) Frankreich, Mitte
-- (Europa) Deutschland, Westen-Mitte
+- (Europa) Norwegen, Osten
 - (Europa) Vereinigtes Königreich, Süden
 - (Südamerika) Brasilien, Süden
 - (USA) USA, Mitte
 - (USA) USA, Osten
-- (USA) USA, Osten 2
+- (USA) USA, Osten 2
+- (USA) US Government, Osten
 - (USA) USA, Süden-Mitte
-- (USA) USA, Westen 2
+- (USA) USA, Westen 2
+- (USA) USA, Westen 3
 
 Weitere Informationen zu den Preisen finden Sie in den Preisdetails für [Blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [Dateien](https://azure.microsoft.com/pricing/details/storage/files/), [Warteschlangen](https://azure.microsoft.com/pricing/details/storage/queues/) und [Tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
 
@@ -203,9 +206,12 @@ In der folgenden Tabelle wird gezeigt, ob Ihre Daten in einem bestimmten Szenari
 
 In der folgenden Tabelle wird dargestellt, welche Redundanzoptionen von den einzelnen Azure Storage-Diensten unterstützt werden.
 
-| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
-|:-|:-|:-|:-|
-| Blob Storage<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br />Verwaltete Azure-Datenträger | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br /> | Blobspeicher<br />Queue Storage<br />Tabellenspeicher<br />Azure Files<br /> |
+| LRS | ZRS | GRS | RA-GRS | GZRS | RA-GZRS |
+|---|---|---|---|---|---|
+| Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br />Azure Files<sup>1,</sup><sup>2</sup> <br />Verwaltete Azure-Datenträger | Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br />Azure Files<sup>1,</sup><sup>2</sup> | Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br />Azure Files<sup>1</sup> | Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br /> | Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br />Azure Files<sup>1</sup> | Blobspeicher <br />Queue Storage <br />Tabellenspeicher <br /> |
+
+<sup>1</sup> Standard-Dateifreigaben werden für LRS und ZRS unterstützt. Die Standarddateifreigaben werden für GRS und GZRS unterstützt, solange sie kleiner oder gleich fünf TiB sind.<br />
+<sup>2</sup> Premium-Dateifreigaben werden für LRS und ZRS unterstützt.<br />
 
 ### <a name="supported-storage-account-types"></a>Unterstützte Speicherkontotypen
 

@@ -1,23 +1,26 @@
 ---
-title: Übersicht über Azure Data Factory-Connectors
-description: Informationen zu den unterstützten Connectors in Data Factory.
+title: Übersicht über Connectors
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Lernen Sie die unterstützten Connectors in Azure Data Factory- und Azure Synapse Analytics-Pipelines kennen.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/26/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1e25ba74eddbb39467fabbd6bfb60d4a2c7d049b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: be49d5563a1e267b6f9be7ad5b4fa4534a56f22c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793666"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225607"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Übersicht über Azure Data Factory-Connectors
+# <a name="azure-data-factory-and-azure-synapse-analytics-connector-overview"></a>Übersicht über die Connectors in Azure Data Factory und Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory unterstützt die folgenden Datenspeicher und Formate über die Kopieraktivität, den Datenfluss, die Lookup-Aktivität, die Aktivität „Metadaten abrufen“ und die Löschaktivität. Klicken Sie auf die einzelnen Datenspeicher, um mehr über die unterstützten Funktionen und die entsprechende Konfiguration zu erfahren.
+Azure Data Factory- und Azure Synapse Analytics-Pipelines unterstützen die folgenden Datenspeicher und Formate über die Kopieraktivität, den Datenfluss, die Lookup-Aktivität, die Aktivität „Metadaten abrufen“ und die Löschaktivität. Klicken Sie auf die einzelnen Datenspeicher, um mehr über die unterstützten Funktionen und die entsprechende Konfiguration zu erfahren.
 
 ## <a name="supported-data-stores"></a>Unterstützte Datenspeicher
 
@@ -25,18 +28,18 @@ Azure Data Factory unterstützt die folgenden Datenspeicher und Formate über di
 
 ## <a name="integrate-with-more-data-stores"></a>Integrieren in weitere Datenspeicher
 
-Azure Data Factory kann sich mit einer größeren Gruppe von Datenspeichern als mit denen in der obigen Liste verbinden. Wenn Sie Daten in/aus einem Datenspeicher verschieben müssen, der nicht in der Liste der integrierten Connectors für Azure Data Factory enthalten ist, finden Sie hier einige Erweiterungsmöglichkeiten:
+Azure Data Factory- und Azure Synapse Analytics-Pipelines können sich mit einer größeren Gruppe von Datenspeichern als mit denen in der obigen Liste erwähnten verbinden. Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der nicht in der Liste der integrierten Connectors für die Dienste enthalten ist, finden Sie hier einige Erweiterungsmöglichkeiten:
 - Für Datenbanken und Data Warehouses finden Sie in der Regel einen entsprechenden ODBC-Treiber, mit dem Sie den [generischen ODBC-Connector](connector-odbc.md) verwenden können.
 - Für SaaS-Anwendungen:
     - Sie können den [generischen REST-Connector](connector-rest.md) verwenden, sofern dieser RESTful-APIs bereitstellt.
     - Sie können den [generischen OData-Connector](connector-odata.md) verwenden, wenn dieser einen OData-Feed bietet.
     - Sie können den [generischen HTTP-Connector](connector-http.md) verwenden, sofern dieser SOAP-APIs bereitstellt.
     - Sie können den [generischen ODBC-Connector](connector-odbc.md) verwenden, sofern dieser einen ODBC-Treiber bietet.
-- Prüfen Sie für andere, ob Sie Daten in einen von Azure Data Factory unterstützten Datenspeicher laden oder verfügbar machen können, z. B. Azure Blob/File/FTP/SFTP usw. Lassen Sie Azure Data Factory anschließend eine Wahl treffen. Sie können einen benutzerdefinierten Datenlademechanismus über [Azure Function](control-flow-azure-function-activity.md), [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md), [Datenbanken](transform-data-databricks-notebook.md)/[HDInsight](transform-data-using-hadoop-hive.md), [Webaktivität](control-flow-web-activity.md) usw. aufrufen.
+- Prüfen Sie für andere, ob Sie Daten in einen unterstützten Datenspeicher laden oder verfügbar machen können, z. B. Azure Blob/File/FTP/SFTP usw. Lassen Sie den Dienst anschließend vor dort weitermachen. Sie können einen benutzerdefinierten Datenlademechanismus über [Azure Function](control-flow-azure-function-activity.md), [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md), [Datenbanken](transform-data-databricks-notebook.md)/[HDInsight](transform-data-using-hadoop-hive.md), [Webaktivität](control-flow-web-activity.md) usw. aufrufen.
 
 ## <a name="supported-file-formats"></a>Unterstützte Dateiformate
 
-Azure Data Factory unterstützt die folgenden Dateiformate. Informationen zu formatbasierten Einstellungen finden Sie in den jeweiligen Artikeln.
+Die folgenden Dateiformate werden unterstützt. Informationen zu formatbasierten Einstellungen finden Sie in den jeweiligen Artikeln.
 
 - [Avro-Format](format-avro.md)
 - [Binärformat](format-binary.md)

@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/12/2021
 ms.author: tamram
-ms.reviewer: sohamnc
+ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0262cdd348c03dafd378af95374beacf2bc77c23
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5e38cfeae5ad8593e5ee69059f4bdb903b04aa42
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679268"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350287"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto
 
 Jede sichere Anforderung an ein Azure Storage-Konto muss autorisiert werden. Standardmäßig können Anforderungen entweder mit Azure AD-Anmeldeinformationen (Azure Active Directory) oder mithilfe des Kontozugriffsschlüssels (bei einer Autorisierung mit einem gemeinsam verwendeten Schlüssel) autorisiert werden. Von diesen beiden Autorisierungsarten bietet Azure AD eine höhere Sicherheit und einfachere Verwendung gegenüber einem gemeinsam verwendeten Schlüssel und wird von Microsoft empfohlen. Sie können von Clients erzwingen, Azure AD für das Autorisieren von Anforderungen zu verwenden. Dazu verhindern Sie Anforderungen an das Speicherkonto, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden.
 
-Wenn Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speicherkonto nicht zulassen, lehnt Azure Storage alle nachfolgenden Anforderungen an dieses Konto ab, die mit den Kontozugriffsschlüsseln autorisiert sind. Nur sichere Anforderungen, die durch Azure AD autorisiert wurden, werden erfolgreich ausgeführt. Weitere Informationen zur Verwendung von Azure AD finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+Wenn Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Speicherkonto nicht zulassen, lehnt Azure Storage alle nachfolgenden Anforderungen an dieses Konto ab, die mit den Kontozugriffsschlüsseln autorisiert sind. Nur sichere Anforderungen, die durch Azure AD autorisiert wurden, werden erfolgreich ausgeführt. Weitere Informationen zur Verwendung von Azure AD finden Sie unter [Autorisieren des Zugriffs auf die Daten in Azure Storage](authorize-data-access.md).
 
 In diesem Artikel wird beschrieben, wie Sie Anforderungen erkennen, die mit einem gemeinsam verwendeten Schlüssel autorisiert wurden, und wie Sie die Autorisierung mit gemeinsam verwendeten Schlüsseln für Ihr Speicherkonto aufheben.
 
@@ -107,7 +107,7 @@ Sie können auch eine auf dieser Abfrage basierende Warnungsregel konfigurieren,
 
 ## <a name="remediate-authorization-via-shared-key"></a>Aufheben der Autorisierung mit gemeinsam verwendeten Schlüsseln
 
-Nachdem Sie analysiert haben, wie Anforderungen an Ihr Speicherkonto autorisiert werden, können Sie Maßnahmen ergreifen, um den Zugriff mit gemeinsam verwendeten Schlüsseln zu verhindern. Zuerst müssen Sie jedoch alle Anwendungen, die die Autorisierung mit gemeinsam verwendeten Schlüsseln verwenden, so aktualisieren, dass sie stattdessen Azure AD verwenden. Sie können Protokolle und Metriken überwachen, wie in [Ermitteln der von Clientanwendungen verwendeten Autorisierung](#detect-the-type-of-authorization-used-by-client-applications) beschrieben, um den Übergang nachzuverfolgen. Weitere Informationen zur Verwendung von Azure AD mit Blob- und Warteschlangendaten finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+Nachdem Sie analysiert haben, wie Anforderungen an Ihr Speicherkonto autorisiert werden, können Sie Maßnahmen ergreifen, um den Zugriff mit gemeinsam verwendeten Schlüsseln zu verhindern. Zuerst müssen Sie jedoch alle Anwendungen, die die Autorisierung mit gemeinsam verwendeten Schlüsseln verwenden, so aktualisieren, dass sie stattdessen Azure AD verwenden. Sie können Protokolle und Metriken überwachen, wie in [Ermitteln der von Clientanwendungen verwendeten Autorisierung](#detect-the-type-of-authorization-used-by-client-applications) beschrieben, um den Übergang nachzuverfolgen. Weitere Informationen zur Verwendung von Azure AD in einem Speicherkonto finden Sie unter [Autorisieren des Zugriffs auf die Daten in Azure Storage](authorize-data-access.md).
 
 Wenn Sie sicher sind, dass Sie Anforderungen, die mit gemeinsam genutzten Schlüsseln autorisiert wurden, ablehnen können, können Sie die **AllowSharedKeyAccess**-Eigenschaft für das Speicherkonto auf **FALSE** festlegen.
 
@@ -247,6 +247,6 @@ Das Verhindern des Zugriffs auf ein Speicherkonto mit gemeinsam verwendeten Schl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Autorisierung des Datenzugriffs in Azure Storage](storage-auth.md)
-- [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md)
+- [Autorisieren des Zugriffs auf die Daten in Azure Storage](./authorize-data-access.md)
+- [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](authorize-data-access.md)
 - [Autorisieren mit einem gemeinsam verwendeten Schlüssel](/rest/api/storageservices/authorize-with-shared-key)

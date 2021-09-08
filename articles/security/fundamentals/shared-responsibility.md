@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 08/31/2021
 ms.author: terrylan
-ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d53d3f58c1bbdb03a5ac510f6a2e44157906f9
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99548948"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272107"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>Gemeinsame Verantwortung in der Cloud
 
@@ -29,7 +29,7 @@ Wenn Sie öffentliche Clouddienste erwägen und beurteilen, ist es wichtig, das 
 ## <a name="division-of-responsibility"></a>Geteilte Zuständigkeit
 In einem lokalen Rechenzentrum sind Sie für den gesamten Stapel zuständig. Bei einem Wechsel in die Cloud wird dagegen ein Teil der Zuständigkeit auf Microsoft übertragen. Im folgenden Diagramm werden die Zuständigkeitsbereiche zwischen Ihnen und Microsoft entsprechend der Art der Bereitstellung Ihres Stapels veranschaulicht.
 
-![Zuständigkeitszonen](./media/shared-responsibility/shared-responsibility.png)
+:::image type="content" source="media/shared-responsibility/shared-responsibility.svg" alt-text="Das Diagramm, das die Zuständigkeitszonen zeigt" border="false":::.
 
 Ihre Daten und Identitäten gehören bei jeder Art von Cloudbereitstellung Ihnen. Sie sind für den Schutz der Sicherheit Ihrer Daten und Identitäten, lokalen Ressourcen und der von Ihnen gesteuerten Cloudkomponenten zuständig (abhängig von der Art des Diensts).
 
@@ -45,7 +45,7 @@ Die Cloud bietet bedeutende Vorteile für die Lösung lang etablierter Herausfor
 
 Das folgende Diagramm zeigt einen herkömmlichen Ansatz, bei dem viele Sicherheitsverantwortlichkeiten aufgrund begrenzter Ressourcen nicht erfüllt sind. Beim cloudbasierten Ansatz sind Sie in der Lage, die täglichen Sicherheitsaufgaben an Ihren Cloudanbieter zu übergeben und ihre Ressourcen neu zuzuordnen.
 
-![Sicherheitsvorteile des Cloudzeitalters](./media/shared-responsibility/cloud-enabled-security.png)
+:::image type="content" source="media/shared-responsibility/cloud-enabled-security.svg" alt-text="Das Diagramm, das die Sicherheitsvorteile von Cloudera zeigt" border="false":::.
 
 Beim cloudbasierten Ansatz sind Sie außerdem in der Lage, cloudbasierte Sicherheitsfunktionen für eine höhere Effektivität zu nutzen und Cloud Intelligence zur Verbesserung der Bedrohungserkennung und von Reaktionszeiten. Durch die Übertragung von Aufgaben an den Cloudanbieter profitieren Organisationen von einer höheren Sicherheit und können Sicherheitsressourcen und entsprechende Finanzmittel für andere geschäftliche Prioritäten nutzen.
 

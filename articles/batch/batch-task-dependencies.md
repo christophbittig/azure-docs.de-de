@@ -2,18 +2,18 @@
 title: Erstellen von Taskabhängigkeiten zum Ausführen von Tasks
 description: Erstellen Sie Tasks, die vom Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten.
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 06/29/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cd5e0bc97d37e4daf76bee66c8b4de4698b7aca
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97803934"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126516"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
 
-Mit Taskabhängigkeiten in Batch erstellen Sie Tasks, deren Ausführung auf Computeknoten erst nach dem Abschluss von mindestens einem weiteren übergeordneten Task geplant wird. Beispielsweise können Sie einen Auftrag erstellen, der jedes Einzelbild eines 3D-Films mit separaten, parallelen Tasks rendert. Der letzte Task – der „Zusammenführungstask“ – fügt die gerenderten Einzelbilder erst dann zu einem vollständigen Film zusammen, wenn alle Einzelbilder erfolgreich gerendert wurden.
+Mit Taskabhängigkeiten in Batch erstellen Sie Tasks, deren Ausführung auf Computeknoten erst nach dem Abschluss von mindestens einem weiteren übergeordneten Task geplant wird. Beispielsweise können Sie einen Auftrag erstellen, der jedes Einzelbild eines 3D-Films mit separaten, parallelen Tasks rendert. Der letzte Task fügt die gerenderten Einzelbilder erst dann zu einem vollständigen Film zusammen, wenn alle Einzelbilder erfolgreich gerendert wurden. Anders ausgedrückt: Der letzte Task ist von den vorherigen übergeordneten Aufgaben abhängig.
 
 Einige Szenarios, in denen Taskabhängigkeiten nützlich sind:
 
@@ -22,9 +22,7 @@ Einige Szenarios, in denen Taskabhängigkeiten nützlich sind:
 - Prozesse vor und nach dem Rendern, bei denen jeder Task abgeschlossen sein muss, bevor der nächste Task beginnen kann.
 - Alle anderen Aufträge, in denen nachgelagerte Tasks von der Ausgabe vorgelagerter Tasks abhängen.
 
-Standardmäßig werden abhängige Tasks erst für die Ausführung eingeplant, nachdem der übergeordnete Task erfolgreich abgeschlossen wurde. Sie können optional eine [Abhängigkeitsaktion](#dependency-actions) bestimmen, um das Standardverhalten zu überschreiben und Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt.
-
-## <a name="task-dependencies-with-batch-net"></a>Taskabhängigkeiten bei Batch .NET
+Standardmäßig werden abhängige Tasks erst für die Ausführung eingeplant, nachdem der übergeordnete Task erfolgreich abgeschlossen wurde. Sie können optional eine [Abhängigkeitsaktion](#dependency-actions) bestimmen, um das Standardverhalten zu überschreiben und die abhängigen Tasks auch dann auszuführen, wenn im übergeordneten Task ein Fehler auftritt.
 
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [Batch-Bibliothek für .NET](/dotnet/api/microsoft.azure.batch) konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Es wird auch beschrieben, wie Sie eine Abhängigkeitsaktion bestimmen, um abhängige Tasks auszuführen, wenn im übergeordneten Task ein Fehler auftritt. Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
 
@@ -92,7 +90,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 
 ### <a name="one-to-many"></a>1:n
 
-In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere Task-IDs für die statische [TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids)-Methode an, wenn Sie die [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson)-Eigenschaft ausfüllen.
+In einer 1 : n-Beziehung hängt ein Task vom Abschluss mehrerer übergeordneter Tasks ab. Um die Abhängigkeit zu erstellen, geben Sie mehrere spezifische Task-IDs für die statische [TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids)-Methode an, wenn Sie die [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson)-Eigenschaft ausfüllen.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -107,17 +105,21 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
+> [!IMPORTANT]
+> Bei der Erstellung des abhängigen Tasks tritt ein Fehler auf, wenn die kombinierte Länge der übergeordneten Task-IDs 64.000 Zeichen überschreitet. Um eine große Anzahl von übergeordneten Tasks anzugeben, sollten Sie stattdessen einen Task-ID-Bereich verwenden.
+
 ### <a name="task-id-range"></a>Task-ID-Bereich
 
-Bei einer Abhängigkeit von einem Bereich von übergeordneten Tasks hängt ein Task vom Abschluss von Tasks ab, deren IDs innerhalb eines Bereichs liegen.
-Geben Sie zum Erstellen der Abhängigkeit die erste und letzte Task-ID im Bereich für die statische [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange)-Methode an, wenn Sie die [CloudTask.DependsOn-Eigenschaft](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) ausfüllen.
+Bei einer Abhängigkeit von einem Bereich von übergeordneten Tasks hängt ein Task vom Abschluss von Tasks ab, deren IDs innerhalb eines von Ihnen angegebenen Bereichs liegen.
+
+Um die Abhängigkeit zu erstellen, geben Sie die IDs des ersten und letzten Tasks im Bereich für die statische [TaskDependencies.OnIdRange](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange)-Methode an, wenn Sie die [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson)-Eigenschaft ausfüllen.
 
 > [!IMPORTANT]
 > Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, werden nur Tasks mit IDs, die Integerwerte darstellen, durch den Bereich ausgewählt. Der Bereich `1..10` wählt z. B. somit die Aufgaben `3` und `7` aus, aber nicht `5flamingoes`.
 >
-> Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung. Tasks mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich daher alle *im* Bereich und werden alle als Task `4` behandelt, sodass der erste abgeschlossene Task die Abhängigkeit erfüllt.
+> Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung. Tasks mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich alle *im* Bereich und werden daher alle als Task `4` behandelt, sodass der erste abgeschlossene Task die Abhängigkeit erfüllt.
 >
-> Jeder Task in dem Bereich muss die Abhängigkeit erfüllen. Dies kann durch erfolgreichen Abschluss geschehen oder durch Abschließen mit einem Fehler, der einer [Abhängigkeitsaktion](#dependency-actions) zugeordnet ist, die auf **Satisfy** (Erfüllen) festgelegt ist.
+> Damit der abhängige Task ausgeführt wird, muss jeder Task in dem Bereich die Abhängigkeit erfüllen. Dies kann durch erfolgreichen Abschluss geschehen oder durch Abschließen mit einem Fehler, der einer [Abhängigkeitsaktion](#dependency-actions) zugeordnet ist, die auf **Erfüllen** festgelegt ist.
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -139,9 +141,9 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## <a name="dependency-actions"></a>Abhängigkeitsaktionen
 
-Standardmäßig werden ein abhängiger Task oder eine Gruppe von Tasks erst ausgeführt, nachdem ein übergeordneter Task erfolgreich abgeschlossen wurde. In einigen Szenarios möchten Sie abhängige Tasks eventuell auch ausführen, wenn im übergeordneten Task ein Fehler auftritt. Sie können das Standardverhalten überschreiben, indem Sie eine Abhängigkeitsaktion angeben.
+Standardmäßig werden ein abhängiger Task oder eine Gruppe von Tasks erst ausgeführt, nachdem ein übergeordneter Task erfolgreich abgeschlossen wurde. In einigen Szenarios möchten Sie abhängige Tasks eventuell auch ausführen, wenn im übergeordneten Task ein Fehler auftritt. Sie können das Standardverhalten überschreiben, indem Sie eine *Abhängigkeitsaktion* angeben, die angibt, ob ein abhängiger Task ausgeführt werden kann.
 
-Eine Abhängigkeitsaktion gibt an, ob ein abhängiger Task basierend auf Erfolg oder Misserfolg des übergeordneten Tasks ausgeführt werden darf. Nehmen wir beispielsweise an, dass ein abhängiger Task auf Daten vom Abschluss des Upstreamtasks wartet. Wenn der Upstreamtask fehlschlägt, kann der abhängige Task möglicherweise mit älteren Daten ausgeführt werden. In diesem Fall kann eine Abhängigkeitsaktion angeben, dass der abhängige Task berechtigt ist, trotz des Fehlers im übergeordneten Task ausgeführt zu werden.
+Nehmen wir beispielsweise an, dass ein abhängiger Task auf Daten vom Abschluss des Upstreamtasks wartet. Wenn der Upstreamtask fehlschlägt, kann der abhängige Task möglicherweise mit älteren Daten ausgeführt werden. In diesem Fall kann eine Abhängigkeitsaktion angeben, dass der abhängige Task berechtigt ist, trotz des Fehlers im übergeordneten Task ausgeführt zu werden.
 
 Eine Abhängigkeitsaktion basiert auf einer Beendigungsbedingung für den übergeordneten Task. Sie können eine Abhängigkeitsaktion für jede der folgenden Beendigungsbedingungen angeben:
 
@@ -151,9 +153,9 @@ Eine Abhängigkeitsaktion basiert auf einer Beendigungsbedingung für den überg
 - Wenn der Task mit einem Exitcode aus einem Bereich beendet wird, der durch die **ExitCodeRanges**-Eigenschaft angegeben wird.
 - Der Standardfall, wenn der Task einem nicht in **ExitCodes** oder **ExitCodeRanges** definierten Exitcode beendet wird oder wenn der Task mit einem Fehler bei der Vorverarbeitung beendet wird und die **PreProcessingError**-Eigenschaft nicht festgelegt ist oder wenn für den Task ein Fehler beim Dateiupload auftritt und die **FileUploadError**-Eigenschaft nicht festgelegt ist. 
 
-Weitere Informationen zu diesen Bedingungen für .NET finden Sie unter der [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions)-Klasse.
+Für .NET werden diese Bedingungen als Eigenschaften der [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions)-Klasse definiert.
 
-Legen Sie zum Angeben einer Abhängigkeitsaktion in .NET für die [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction)-Eigenschaft der Beendigungsbedingung eine der folgenden Optionen fest:
+Legen Sie zum Angeben einer Abhängigkeitsaktion für die [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction)-Eigenschaft der Beendigungsbedingung eine der folgenden Optionen fest:
 
 - **Satisfy**: Gibt an, dass abhängige Tasks ausgeführt werden dürfen, wenn der übergeordnete Task mit einem angegebenen Fehler beendet wird.
 - **Blockieren**: Gibt an, dass abhängige Tasks nicht zur Ausführung berechtigt sind.

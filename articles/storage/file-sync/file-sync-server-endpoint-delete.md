@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 6/01/2021
 ms.author: mtalasila
 ms.subservice: files
-ms.openlocfilehash: 597a3dfce5d647359b23e732f74dc6949078c000
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: b608100ab9ec1706e65cd4930b00ef163218f64d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798956"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258697"
 ---
 # <a name="deprovision-your-azure-file-sync-server-endpoint"></a>Aufheben der Bereitstellung des Serverendpunkts der Azure-Dateisynchronisierung
 
@@ -61,7 +61,7 @@ Um den Status der Synchronisierungssitzung zu überprüfen, öffnen Sie die **Er
 
 ![Screenshot der Überprüfung, ob die letzte Synchronisierungssitzung abgeschlossen wurde](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-Wenn „PerItemErrorCount“ größer als 0 ist, konnten einige Dateien nicht synchronisiert werden. Verwenden Sie  **FileSyncErrorsReport.ps1**, um die Dateien anzuzeigen, die nicht synchronisiert wurden. Dieses PowerShell-Skript befindet sich normalerweise unter dem folgenden Pfad auf einem Server, auf dem ein Azure-Dateisynchronisierungs-Agent installiert ist: **C:\Programme\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**.
+Wenn „PerItemErrorCount“ größer als 0 ist, konnten einige Dateien nicht synchronisiert werden. Verwenden Sie **FileSyncErrorsReport.ps1**, um die Dateien anzuzeigen, die nicht synchronisiert wurden. Dieses PowerShell-Skript befindet sich normalerweise unter dem folgenden Pfad auf einem Server, auf dem ein Azure-Dateisynchronisierungs-Agent installiert ist: **C:\Programme\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
 
 Wenn diese Dateien nicht wichtig sind, können Sie den Serverendpunkt löschen. Wenn die Dateien wichtig sind, beheben Sie die Fehler, und warten Sie, bis ein weiteres 9102-Ereignis mit „sync direction“ = upload, „HResult“ = 0 und „PerItemErrorCount“ = 0 angezeigt wird, bevor Sie den Serverendpunkt löschen.
 
@@ -81,7 +81,7 @@ Vergewissern Sie sich vor dem Abrufen der Dateien, ob lokal genügend freier Spe
 
 Verwenden Sie das PowerShell-Cmdlet **Invoke-StorageSyncFileRecall**, und geben Sie den Parameter **SyncGroupName** an, um alle Dateien abzurufen. 
 ```powershell
-Invoke-StorageSyncFileRecall  -SyncGroupName “samplesyncgroupname”
+Invoke-StorageSyncFileRecall -SyncGroupName "samplesyncgroupname"
 ```
 Wenn die Ausführung des Cmdlets abgeschlossen ist, können Sie mit dem nächsten Abschnitt fortfahren.
 
@@ -106,7 +106,7 @@ Wechseln Sie dazu auf dem lokalen Server zur **Ereignisanzeige**. Navigieren Sie
 
 ![Screenshot der Überprüfung, ob die letzte Synchronisierungssitzung abgeschlossen wurde](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-Wenn „PerItemErrorCount“ größer als 0 ist, konnten einige Dateien nicht synchronisiert werden. Verwenden Sie  **FileSyncErrorsReport.ps1**, um die Dateien anzuzeigen, die nicht synchronisiert wurden. Dieses PowerShell-Skript befindet sich normalerweise unter dem folgenden Pfad auf einem Server, auf dem ein Azure-Dateisynchronisierungs-Agent installiert ist: **C:\Programme\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**.
+Wenn „PerItemErrorCount“ größer als 0 ist, konnten einige Dateien nicht synchronisiert werden. Verwenden Sie **FileSyncErrorsReport.ps1**, um die Dateien anzuzeigen, die nicht synchronisiert wurden. Dieses PowerShell-Skript befindet sich normalerweise unter dem folgenden Pfad auf einem Server, auf dem ein Azure-Dateisynchronisierungs-Agent installiert ist: **C:\Programme\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
 
 Wenn diese Dateien nicht wichtig sind, können Sie den Serverendpunkt löschen. Wenn die Dateien wichtig sind, beheben Sie die Fehler, und warten Sie, bis ein weiteres 9102-Ereignis mit „sync direction“ = download, „HResult“ = 0 und „PerItemErrorCount“ = 0 angezeigt wird, bevor Sie den Serverendpunkt löschen.
 

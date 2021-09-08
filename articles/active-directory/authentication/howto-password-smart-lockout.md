@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0916d4107fdcf97875d1c6a428bbfa75164a65
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0947f9924e97532b087940ecde08e8a0f8d7e005
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068504"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449104"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Schützen von Benutzerkonten vor Angriffen mithilfe von Smart Lockout von Azure Active Directory
 
@@ -90,7 +90,7 @@ Wenn der Schwellenwert von Smart Lockout ausgelöst wird, wird das Konto gesperr
 
 *Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch mal. Wenden Sie sich an Ihren Administrator, wenn das Problem weiterhin besteht.*
 
-Wenn Sie Smart Lockout testen, werden Ihre Anmeldeanforderungen möglicherweise von unterschiedlichen Rechenzentren verarbeitet, da der Azure AD-Authentifizierungsdienst geografisch verteilt ist und über einen Lastenausgleich verfügt. Da in diesem Szenario jedes Azure AD-Rechenzentrum die Sperre unabhängig nachverfolgt, kann es mehr Versuche erfordern, als durch den Sperrschwellenwert festgelegt sind, bis eine Sperre ausgelöst wird. Ein Benutzer hat (*Schwellenwert × Rechenzentrumsanzahl*) fehlerhafte Versuche, wenn der Benutzer auf die einzelnen Rechenzentren trifft, bevor eine Sperrung erfolgt.
+Wenn Sie Smart Lockout testen, werden Ihre Anmeldeanforderungen möglicherweise von unterschiedlichen Rechenzentren verarbeitet, da der Azure AD-Authentifizierungsdienst geografisch verteilt ist und über einen Lastenausgleich verfügt. Da in diesem Szenario jedes Azure AD-Rechenzentrum die Sperre unabhängig nachverfolgt, kann es mehr Versuche erfordern, als durch den Sperrschwellenwert festgelegt sind, bis eine Sperre ausgelöst wird. Ein Benutzer hat eine maximale Anzahl von (*threshold_limit * datacenter_count*) fehlerhafter Versuche, bevor er vollständig gesperrt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

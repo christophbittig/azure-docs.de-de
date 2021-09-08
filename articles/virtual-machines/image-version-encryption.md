@@ -1,20 +1,20 @@
 ---
-title: 'Vorschau: Erstellen einer mit eigenen Schlüsseln verschlüsselten Imageversion'
+title: Erstellen einer mit eigenen Schlüsseln verschlüsselten Imageversion
 description: Erstellen Sie eine Imageversion in einem Katalog mit freigegebenen Images, und verwenden Sie dabei kundenseitig verwaltete Verschlüsselungsschlüssel.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/3/2020
-ms.author: cynthn
+ms.date: 7/1/2021
+ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20e5d4f0d9d3f8f8ab168ca7699f99bc40919b32
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c04dffcad178694f4f2548f38aa4c1d512c6fe60
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669476"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351316"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -48,38 +48,7 @@ Wenn Sie kundenseitig verwaltete Schlüssel zur Verschlüsselung von Images in e
 - Sobald Sie eigene Schlüssel zum Verschlüsseln eines Datenträgers oder Images verwenden, können Sie nicht zur Verwendung von plattformseitig verwalteten Schlüsseln zum Verschlüsseln dieser Datenträger oder Images zurückkehren.
 
 
-> [!IMPORTANT]
-> Die Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 ## <a name="powershell"></a>PowerShell
-
-Für die öffentliche Vorschau müssen Sie das Feature zuerst registrieren:
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-Es dauert einige Minuten, bis die Registrierung abgeschlossen ist. Verwenden Sie `Get-AzProviderFeature`, um den Status der Featureregistrierung zu überprüfen:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-Wenn `RegistrationState` den Wert `Registered` zurückgibt, können Sie mit dem nächsten Schritt fortfahren.
-
-Überprüfen Sie Ihre Anbieterregistrierung. Stellen Sie sicher, dass `Registered` zurückgegeben wird.
-
-```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
-```
-
-Wenn nicht `Registered` zurückgegeben wird, registrieren Sie die Anbieter mithilfe des folgenden Codes:
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 Um einen Datenträgerverschlüsselungssatz für eine Imageversion anzugeben, verwenden Sie [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) mit dem Parameter `-TargetRegion`: 
 
@@ -136,33 +105,6 @@ Bei Datenträgern für Daten fügen Sie den Parameter `-DiskEncryptionSetId $set
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI) 
 
-In der Public Preview müssen Sie das Feature zuerst registrieren. Die Registrierung dauert ungefähr 30 Minuten.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name SIGEncryption
-```
-
-Überprüfen Sie den Status der Funktionsregistrierung:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name SIGEncryption | grep state
-```
-
-Wenn dieser Code den Wert `"state": "Registered"` zurückgibt, können Sie mit dem nächsten Schritt fortfahren.
-
-Überprüfen Sie die Registrierung:
-
-```azurecli-interactive
-az provider show -n Microsoft.Compute | grep registrationState
-```
-
-Wenn nicht „registered“ zurückgegeben wird, führen Sie den folgenden Befehl aus:
-
-```azurecli-interactive
-az provider register -n Microsoft.Compute
-```
-
-
 Um einen Datenträgerverschlüsselungssatz für eine Imageversion anzugeben, verwenden Sie [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) mit dem Parameter `--target-region-encryption`. Das Format für `--target-region-encryption` ist eine durch Komma getrennte Liste mit Schlüsseln für die Verschlüsselung der Datenträger für Betriebssystem und Daten. Diese sollte wie folgt aussehen: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>`. 
 
 Wenn die Quelle des Betriebssystemdatenträgers ein verwalteter Datenträger oder eine VM ist, verwenden Sie `--managed-image`, um die Quelle für die Imageversion anzugeben. In diesem Beispiel ist die Quelle ein verwaltetes Image, das sowohl über einen Datenträger für das Betriebssystem als auch über einen Datenträger für Daten bei LUN 0 verfügt. Der Betriebssystemdatenträger wird mit DiskEncryptionSet1 verschlüsselt, der Datenträger für Daten mit DiskEncryptionSet2.
@@ -206,10 +148,6 @@ Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kun
 ## <a name="portal"></a>Portal
 
 Wenn Sie Ihre Imageversion im Portal erstellen, können Sie die Registerkarte **Verschlüsselung** verwenden, um Ihre Speicherverschlüsselungssätze anzuwenden.
-
-> [!IMPORTANT]
-> Wenn Sie die doppelte Verschlüsselung verwenden möchten, müssen Sie für den Zugriff auf das Azure-Portal den Link [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) verwenden. Die doppelte Verschlüsselung im Ruhezustand ist derzeit im öffentlichen Azure-Portal ohne Verwendung des Links nicht sichtbar.
-
 
 1. Wählen Sie auf der Seite **Imageversion erstellen** die Registerkarte **Verschlüsselung** aus.
 2. Wählen Sie als **Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** oder **Doppelte Verschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln** aus. 

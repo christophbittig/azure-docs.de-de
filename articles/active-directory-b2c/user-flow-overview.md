@@ -12,12 +12,12 @@ ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b663904df2d116bdfa92a0dcef4b05c0806fec14
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226005"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199140"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>Übersicht über Benutzerflows und benutzerdefinierte Richtlinien
 
@@ -55,7 +55,7 @@ Die meisten gängigen Identitätsszenarien für Apps können mit Benutzerflows e
 
 Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten der Benutzerumgebung Ihres Azure AD B2C-Mandanten definieren. Während Benutzerflows im Azure AD B2C-Portal für die gängigsten Identitätsaufgaben vordefiniert sind, können benutzerdefinierte Richtlinien von einem Identitätsentwickler vollständig bearbeitet werden, um die Ausführung vieler verschiedener Aufgaben zu ermöglichen.
 
-Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtliniengesteuert. Sie orchestriert die Vertrauensstellung zwischen Entitäten in Standardprotokollen, zum Beispiel OpenID Connect, OAuth, SAML und einige wenige nicht standardmäßige Protokolle wie der Austausch von Systemansprüchen auf REST API-Basis. Das Framework erstellt benutzerfreundliche Umgebungen mit Positivlisten.
+Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtliniengesteuert. Sie orchestriert die Vertrauensstellung zwischen Entitäten in Standardprotokollen, zum Beispiel OpenID Connect, OAuth, SAML und einige wenige nicht standardmäßige Protokolle wie der Austausch von Systemansprüchen auf REST-API-Basis. Das Framework erstellt benutzerfreundliche Umgebungen mit Positivlisten.
 
 Mit einer benutzerdefinierten Richtlinie haben Sie die Möglichkeit, User Journeys mit einer beliebigen Schrittkombination zu erstellen. Beispiel:
 
@@ -76,7 +76,7 @@ Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Ben
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Vergleichen von Benutzerflows mit benutzerdefinierten Richtlinien
 
-Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die mit Azure AD B2C-Benutzerflows und benutzerdefinierten Richtlinien möglich sind.
+Die folgende Tabelle enthält einen detaillierten Vergleich der Szenarien, die Sie mit Azure AD B2C-Benutzerflows und benutzerdefinierten Richtlinien ermöglichen können.
 
 | Kontext | Benutzerflows | Benutzerdefinierte Richtlinien |
 |-|-------------------|-----------------|

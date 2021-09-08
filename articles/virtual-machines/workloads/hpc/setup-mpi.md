@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c189c850d0db5965823c531d86c243d209c8db34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460519"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694126"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Einrichten von Message Passing Interface für HPC
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface) ist eine offene Bibliothek und der De-facto-Standard für die Parallelisierung von verteiltem Arbeitsspeicher. Sie wird für eine Vielzahl von HPC-Workloads verwendet. HPC-Workloads auf den [RDMA-fähigen](../../sizes-hpc.md#rdma-capable-instances) VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) können MPI verwenden, um über das InfiniBand-Netzwerk zu kommunizieren, das sich durch niedrige Latenz und hohe Bandbreite auszeichnet.
 - Die SR-IOV-fähigen VM-Größen in Azure gestatten die Verwendung nahezu jeder Variante von MPI mit Mellanox OFED.

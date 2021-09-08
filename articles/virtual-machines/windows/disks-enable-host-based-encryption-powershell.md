@@ -2,18 +2,18 @@
 title: 'Azure PowerShell: Aktivieren der End-to-End-Verschlüsselung auf dem VM-Host'
 description: Hier erfahren Sie, wie Sie die End-to-End-Verschlüsselung für Ihre Azure-VMs mithilfe der Verschlüsselung auf dem Host aktivieren.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 51b8b202b95e5246b31bf97c3cc7f2e9ba8e36e7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9fc618480b4c00ab65f4300a66747acdc2a11f74
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669084"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359009"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden des Azure PowerShell-Moduls zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
 
@@ -171,6 +171,21 @@ $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
 $VM.SecurityProfile.EncryptionAtHost
 ```
 
+### <a name="disable-encryption-at-host"></a>Deaktivieren der Verschlüsselung auf dem Host
+
+Sie müssen die Zuordnung Ihrer VM aufheben, damit Sie die Verschlüsselung auf dem Host deaktivieren können.
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMName = "yourVMName"
+
+$VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+
+Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
+
+Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Erstellen einer VM-Skalierungsgruppe mit aktivierter Verschlüsselung auf dem Host mit kundenseitig verwalteten Schlüsseln 
 
 Erstellen Sie eine VM-Skalierungsgruppe mit verwalteten Datenträgern mithilfe des Ressourcen-URIs der zuvor erstellten DiskEncryptionSet-Klasse, um einen Zwischenspeicher des Betriebssystems und Datenträger mit kundenseitig verwalteten Schlüsseln zu verschlüsseln. Temporäre Datenträger werden mit plattformseitig verwalteten Schlüsseln verschlüsselt. 
@@ -276,6 +291,19 @@ $VMScaleSetName = "yourVMSSName"
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 
 $VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>Aktualisieren einer VM-Skalierungsgruppe zur Deaktivierung der Verschlüsselung auf dem Host 
+
+Sie können die Verschlüsselung auf dem Host für Ihre VM-Skalierungsgruppe deaktivieren. Dies wirkt sich jedoch nur auf VMs aus, die nach dem Deaktivieren der Verschlüsselung auf dem Host erstellt wurden. Bei vorhandenen VMs müssen Sie die Zuordnung der VM aufheben, die [Verschlüsselung auf dem Host für diese jeweilige VM deaktivieren](#disable-encryption-at-host) und dann die VM neu zuweisen.
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMScaleSetName = "yourVMSSName"
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
+
+Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Ermitteln der unterstützten VM-Größen

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83d7066ca003cc935526abd6b7fd4d456b4dd7d1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b2c166da02d145e9995526279121c1dd360557ad
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665842"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397681"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -89,7 +89,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 }
 ```
 
-| Tag | Beschreibung | Erforderlich |
+| Tag | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: “.”, “+”, “?”, “/”, “<”,”>”,”\*”,”%”,”&”,”:”,”\\”</li></ul> |Ja |
 | description | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |Ja |
@@ -127,14 +127,14 @@ Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Je
 
 In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivität beschrieben:
 
-| Tag | Beschreibung | Erforderlich |
+| Tag | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Ja |
 | type | Der Typ der Aktivität. Verschiedene Typen von Aktivitäten finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities) und [Transformationsaktivitäten von Daten](#data-transformation-activities). |Ja |
 | inputs |Von der Aktivität verwendete Eingabetabellen<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ja |
 | outputs |Von der Aktivität verwendete Ausgabetabellen.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ja |
-| linkedServiceName |Name des verknüpften Diensts, der von der Aktivität verwendet wird. <br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. |„Ja“ für die HDInsight-Aktivität und die Batchbewertungsaktivität für Azure Machine Learning Studio (klassisch) <br/><br/>„Nein“ für alle übrigen |
+| linkedServiceName |Name des verknüpften Diensts, der von der Aktivität verwendet wird. <br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. |„Ja“ für die HDInsight-Aktivität und die Batch Scoring Activity für Azure ML Studio (Classic) <br/><br/>„Nein“ für alle übrigen |
 | typeProperties |Eigenschaften im Abschnitt **typeProperties** sind abhängig vom Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein |
 | policy |Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Falls dies nicht angegeben wird, werden Standardrichtlinien verwendet. |Nein |
 | scheduler | Die „scheduler“-Eigenschaft wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#dataset-availability). |Nein |

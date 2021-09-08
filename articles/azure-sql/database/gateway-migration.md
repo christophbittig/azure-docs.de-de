@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 58194f74bb32fec7d58f707d74720c37e26dba5a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c6afb13902282e1e89acb6fe7929e97994883589
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699496"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463414"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,26 @@ Aktuelle Informationen finden Sie in der Tabelle mit den [Gateway-IP-Adressen vo
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+## <a name="august-2021"></a>August 2021
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
+- „Norwegen, Osten“: 51.120.104.32, 51.120.208.32
+- „Japan, Osten“: 40.79.184.32
+- „Indien, Mitte“: 40.80.48.32, 20.192.96.32
+
+Dieses SQL-Gateway akzeptiert ab dem 2. August 2021 Kundendatenverkehr.
+
 ## <a name="june-2021"></a>Juni 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
 - Vereinigtes Königreich, Westen: 51.140.208.96, 51.140.208.97
 - Südkorea, Mitte: 20.44.24.32, 20.194.64.33
 - Japan, Osten: 13.78.104.32
 
-Dieses SQL-Gateway nimmt Kundendatenverkehr ab dem 1. Juni 2021 an.
+Dieses SQL-Gateway akzeptiert ab dem 1. Juni 2021 Kundendatenverkehr.
+
+# <a name="completed"></a>[Abgeschlossen](#tab/completed-ip)
+Die folgenden Gatewaymigrationen sind abgeschlossen: 
 
 ## <a name="may-2021"></a>Mai 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
@@ -74,9 +87,6 @@ Die folgenden SQL-Gateways in mehreren Regionen werden gerade deaktiviert:
 - USA, Westen: 23.99.34.75
 
 Es wird keine Beeinträchtigung der Kunden erwartet, da diese Gateways (die auf älterer Hardware ausgeführt werden) keinen Kundendatenverkehr weiterleiten. Die IP-Adressen für diese Gateways werden am 15. März 2021 deaktiviert.
-
-# <a name="completed"></a>[Abgeschlossen](#tab/completed-ip)
-Die folgenden Gatewaymigrationen sind abgeschlossen: 
 
 ## <a name="february-2021"></a>Februar 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
@@ -192,7 +202,7 @@ In den folgenden Fällen spüren Sie die Auswirkungen nicht:
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Vorgehensweise, wenn Sie betroffen sind
 
-Es wird empfohlen, ausgehenden Datenverkehr zu IP-Adressen für alle [Gateway-IP-Adressen](connectivity-architecture.md#gateway-ip-addresses) in der Region an TCP-Port 1433 und im Portbereich 11000–11999 zulassen. Diese Empfehlung bezieht sich auf Clients, die Verbindungen von lokalen Standorten herstellen, und solche, die Verbindungen über Dienstendpunkte herstellen. Weitere Informationen zu Portbereichen finden Sie unter [Verbindungsarchitektur von Azure SQL](connectivity-architecture.md#connection-policy).
+Sie sollten ausgehenden Datenverkehr zu IP-Adressen für alle [Gateway-IP-Adressen](connectivity-architecture.md#gateway-ip-addresses) in der Region an TCP-Port 1433 zulassen. Lassen Sie außerdem den Portbereich 11000 bis 11999 zu, wenn Sie eine Verbindung von einem Client in Azure (z. B. einer Azure-VM) herstellen oder wenn Ihre Verbindungsrichtlinie auf „Umleitung“ festgelegt ist. Diese Empfehlung bezieht sich auf Clients, die Verbindungen von lokalen Standorten herstellen, und solche, die Verbindungen über Dienstendpunkte herstellen. Weitere Informationen zu Portbereichen finden Sie unter [Verbindungsarchitektur von Azure SQL](connectivity-architecture.md#connection-policy).
 
 Bei Verbindungen von Anwendungen, die eine ältere Version des Microsoft JDBC-Treibers als 4.0 verwenden, können Fehler bei der Zertifikatüberprüfung auftreten. Bei älteren Versionen von Microsoft JDBC muss das Feld „Antragsteller“ des Zertifikats einen allgemeinen Namen (Common Name, CN) enthalten. Stellen Sie sicher, dass die Eigenschaft „hostNameInCertificate“ auf „*.database.windows.net“ festgelegt ist, um dieses Problem zu umgehen. Weitere Informationen zum Festlegen der Eigenschaft „hostNameInCertificate“ finden Sie unter [Herstellen von Verbindungen mit einer Verschlüsselung](/sql/connect/jdbc/connecting-with-ssl-encryption).
 

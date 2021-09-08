@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/22/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 90e81e30e26846bf05032dddf1441e8428bc7158
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 405843ad0d56a75dac20dc2a6c85d8bc15600312
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550981"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429102"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)
 Mit der Microsoft-Authentifizierungsbibliothek (MSAL) können Entwickler [Token](developer-glossary.md#security-token) von Microsoft Identity Platform abrufen, um Benutzer zu authentifizieren und auf geschützte Web-APIs zuzugreifen. Sie kann verwendet werden, um sicheren Zugriff auf Microsoft Graph, andere Microsoft-APIs, Web-APIs von Drittanbietern oder Ihre eigene Web-API zu gewährleisten. MSAL unterstützt verschiedene Anwendungsarchitekturen und -plattformen einschließlich .NET, JavaScript, Java, Python, Android und iOS.
@@ -31,6 +31,8 @@ MSAL bietet zahlreiche Möglichkeiten für den Tokenabruf und stellt eine konsis
 * Sie können angeben, welche Benutzer sich bei Ihrer Anwendung anmelden sollen (Ihre Organisation, mehrere Organisationen, Geschäfts-, Schul- und Unikonten sowie persönliche Microsoft-Konten, Identitäten in sozialen Netzwerken mit Azure AD B2C, Benutzer in Sovereign Clouds und nationalen Clouds).
 * Sie können Ihre Anwendung mithilfe von Konfigurationsdateien einrichten.
 * Sie können Fehler in Ihrer App mithilfe von handlungsrelevanten Ausnahmen sowie Protokoll- und Telemetriedaten beheben.
+
+> [!VIDEO https://www.youtube.com/embed/zufQ0QRUHUk]
 
 ## <a name="application-types-and-scenarios"></a>Anwendungstypen und -szenarien
 Mit MSAL kann ein Token von verschiedenen Anwendungstypen abgerufen werden: Webanwendungen, Web-APIs, Single-Page-Apps (JavaScript), mobilen und nativen Anwendungen sowie Daemonanwendungen und serverseitigen Anwendungen.
@@ -61,8 +63,8 @@ MSAL kann in vielen Anwendungsszenarien verwendet werden, darunter:
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows, macOS, Linux|
 | [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| Single-Page-Apps mit React-Bibliotheken und React-basierten Bibliotheken (Next.js, Gatsby.js)|
 
-## <a name="differences-between-adal-and-msal"></a>Unterschiede zwischen ADAL und MSAL
+## <a name="migrate-apps-that-use-adal-to-msal"></a>Migrieren von Apps von der ADAL zu der MSAL
 
 Die Active Directory-Authentifizierungsbibliothek (ADAL) ist in den Endpunkt von Azure AD für Entwickler (v1.0) integriert, während MSAL in Microsoft Identity Platform integriert ist. Der v1.0-Endpunkt unterstützt Geschäftskonten, aber keine persönlichen Konten. Der v2.0-Endpunkt wird für die Zusammenführung von persönlichen Konten und Geschäftskonten von Microsoft in einem gemeinsamen Authentifizierungssystem genutzt. Darüber hinaus unterstützt MSAL auch Authentifizierungen für Azure AD B2C.
 
-Spezifischere Informationen finden Sie in den Themen zum [Migrieren zu MSAL.NET von ADAL.NET](msal-net-migration.md) und [Migrieren zu MSAL.js von ADAL.js](msal-compare-msal-js-and-adal-js.md).
+Weitere Informationen zur Migration zu der MSAL finden Sie unter [Migrieren von Anwendungen zu der Microsoft Authentication Library (MSAL)](msal-migration.md).

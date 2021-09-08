@@ -3,18 +3,38 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444309"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272864"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
 Dieser Artikel beantwortet allgemeine Fragen, die aufkommen können, wenn Sie die Notfallwiederherstellung von lokalen virtuellen VMware-Computern (VMs) in Azure bereitstellen.
 
 ## <a name="general"></a>Allgemein
+
+### <a name="how-do-i-use-the-classic-experience-in-the-recovery-services-vault-rather-than-the-preview-experience"></a>Gewusst wie: So verwenden Sie die klassische Erfahrung im Recovery Services-Tresor anstelle der Vorschauversion 
+
+Eine neue und zuverlässigere Möglichkeit zum Schützen von virtueller VMware-Computern mithilfe der Azure Site Recovery-Replikationsappliance befindet sich jetzt in der [öffentlichen Vorschau](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094). Wenn ein neuer Recovery Services-Tresor erstellt wird, wird standardmäßig die Vorschauversion ausgewählt. 
+
+So ändern Sie dieses Prozedere: 
+
+1. Öffnen Sie den Tresor im Azure-Portal. 
+2. Klicken Sie in dem Abschnitt **Erste Schritte** auf **Site Recovery**. 
+3. Klicken Sie auf das Banner oben auf dieser Seite. 
+
+    [![Ändern des VMware-Stapels – Schritt 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
+
+4. Dadurch öffnet sich das Auswahlblatt für die Erfahrungen. Wählen Sie die klassische Erfahrung aus, wenn Sie den Konfigurationsserver verwenden möchten, und klicken Sie dann auf **OK**. Wenn nicht, schließen Sie den Bereich. 
+
+    [![Ändern des VMware-Stapels – Schritt 2](./media/vmware-azure-common-questions/change-stack-step-2.png)](./media/vmware-azure-common-questions/change-stack-step-2.png#lightbox)
+
+> [!NOTE]
+> Beachten Sie, dass der Benutzererfahrungstyp, nachdem er von der Vorschauversion auf „Klassisch“ umgeschaltet wurde, nicht mehr im selben Recovery Services-Tresor umgeschaltet werden kann. Stellen Sie sicher, dass die gewünschte Benutzererfahrung ausgewählt ist, bevor Sie diese Änderung speichern.
+
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Was benötige ich für die Notfallwiederherstellung von virtuellen VMware-Computern?
 

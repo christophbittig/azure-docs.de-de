@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c08d0f561e743b33720258ce5d6886411f3859f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503047"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462521"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -150,6 +150,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--include-pattern** string   Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: `*.jpg;*.pdf;exactName`
 
 **--log-level** string  Definiert die Ausführlichkeit des Protokolls für die Protokolldatei. Verfügbare Ebenen: `INFO`(alle Anforderungen und Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standardwert: `INFO`) 
+
+**--mirror-mode**          Deaktiviert den auf dem Zeitpunkt der letzten Änderung basierenden Vergleich und überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf `true` festgelegt ist. Der Standardwert ist `false`.
 
 **--preserve-smb-info:** standardmäßig FALSE. Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. „include-pattern“).  Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
 

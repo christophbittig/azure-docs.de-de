@@ -1,31 +1,33 @@
 ---
-title: Connectors für Azure Logic Apps
-description: Übersicht über die Verwendung von Connectors zum Erstellen automatisierter Workflows mit Azure Logic Apps. Erfahren Sie, wie verschiedene Trigger, Aktionen und Connectors funktionieren.
+title: Übersicht über Connectors für Azure Logic Apps
+description: Erfahren Sie mehr über Connectors und wie sie das schnelle und einfache Erstellen automatisierter Integrationsworkflows mit Azure Logic Apps unterstützen.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 07/01/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e6841afabe36667070ca595810c423c61db03837
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f8db25d79784b1a2ca2b63ace57f729271271a43
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377037"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218869"
 ---
-# <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
+# <a name="about-connectors-in-azure-logic-apps"></a>Informationen zu Connectors in Azure Logic Apps
 
-In Azure Logic Apps unterstützen Sie *Connectors* beim schnellen Zugriff auf Daten, Ereignisse und andere Ressourcen von anderen Apps, Diensten, Systemen, Protokollen und Plattformen. Mit Connectors können Sie Logik-App-Workflows erstellen, die Informationen in cloudbasierten, lokalen und Hybridumgebungen verwenden, verarbeiten und integrieren – häufig ohne Code schreiben zu müssen.
+Wenn Sie Workflows mithilfe von Azure Logic Apps erstellen, können Sie mit *Connectors* schnell und einfach auf Daten, Ereignisse und Ressourcen in anderen Apps, Diensten, Systemen, Protokollen und Plattformen zu zugreifen – häufig ohne Code zu schreiben. Ein Connector bietet vordefinierte Vorgänge, die Sie als Schritte in Ihren Workflows verwenden können. Azure Logic Apps bietet Hunderte von Connectors, die Sie verwenden können. Wenn kein Connector für die Ressource verfügbar ist, auf die Sie zugreifen möchten, können Sie den generischen HTTP-Vorgang verwenden, um mit dem Dienst zu kommunizieren, oder Sie können [einen benutzerdefinierten Connector erstellen](#custom-apis-and-connectors).
 
-Sie können aus Hunderten von Connectors auswählen, die Sie in Ihren Workflows verwenden können. Daher konzentriert sich diese Dokumentation auf einige der beliebten und am häufigsten verwendeten Connectors für Logic Apps. Umfassende Informationen zu Connectors für Logic Apps, Microsoft Power Automate und Microsoft Power Apps finden Sie in der [Connectors-Dokumentation](/connectors). Preisinformationen finden Sie im [Preismodell für Logic Apps](../logic-apps/logic-apps-pricing.md) und unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+Diese Übersicht bietet eine Einführung in Connectors, deren Funktionsweise im Allgemeinen und die gängigeren und häufiger verwendeten Connectors in Azure Logic Apps. Weitere Informationen finden Sie in der folgenden Dokumentation:
 
-> [!NOTE]
-> Zur Integration des Workflows mit einem Dienst oder einer API, der bzw. die keine Connectors hat, können Sie den Dienst entweder direkt über ein Protokoll wie HTTP aufrufen oder einen [benutzerdefinierten Connector](#custom-apis-and-connectors) erstellen.
+* [Übersicht über Connectors für Azure Logic Apps, Microsoft Power Automate und Microsoft Power Apps](/connectors)
+* [Connectors-Referenz für Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors)
+* [Preis- und Abrechnungsmodelle für Azure Logic Apps](../logic-apps/logic-apps-pricing.md)
+* [Azure Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/)
 
 ## <a name="what-are-connectors"></a>Was sind Konnektoren?
 
-Connectors stellen *Trigger* und *Aktionen* bereit, die Sie zum Ausführen von Aufgaben im Workflow Ihrer Logik-App verwenden. Jeder Trigger und jede Aktion verfügt über Eigenschaften, die Sie konfigurieren können. Für einige Trigger und Aktionen müssen Sie [Verbindungen erstellen und konfigurieren](#connection-configuration), damit Ihr Workflow auf einen bestimmten Dienst oder ein bestimmtes System zugreifen kann.
+Technisch gesehen ist ein Connector ein Proxy oder Wrapper um eine API, den der zugrunde liegende Dienst für die Kommunikation mit Azure Logic Apps verwendet. Dieser Connector stellt Vorgänge zur Verfügung, die Sie in Ihren Workflows zum Ausführen von Aufgaben verwenden. Ein Vorgang ist entweder als *Trigger* oder *Aktion* verfügbar, dessen/deren Eigenschaften Sie konfigurieren können. Einige Trigger und Aktionen erfordern auch, dass Sie zuerst [eine Verbindung mit dem zugrunde liegenden Dienst oder System herstellen und konfigurieren](#connection-configuration), damit Sie z. B. den Zugriff auf ein Benutzerkonto authentifizieren können.
 
 ### <a name="triggers"></a>Trigger
 
@@ -44,7 +46,7 @@ Eine *Aktion* ist ein Vorgang, der dem Trigger folgt und eine Art von Aufgabe in
 
 ## <a name="connector-categories"></a>Konnektorkategorien
 
-In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder in einer *verwalteten Connectorversion* verfügbar. In beiden Versionen ist eine kleine Anzahl von Triggern und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in [Azure Logic Apps mit einem Mandanten](../logic-apps/single-tenant-overview-compare.md) verfügbar ist.
+In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder in einer *verwalteten Connectorversion* verfügbar. In beiden Versionen sind einige Trigger und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in [Azure Logic Apps mit einem Mandanten](../logic-apps/single-tenant-overview-compare.md) verfügbar ist.
 
 [Integrierte Trigger und Aktionen](built-in.md) werden nativ in der Logic Apps-Runtime ausgeführt, erfordern keine Verbindungen und führen diese Arten von Aufgaben aus:
 
@@ -184,4 +186,4 @@ Im Folgenden werden bekannte Probleme bei Logic Apps Connectors behandelt.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](/logic-apps/logic-apps-create-api-app)
+> [Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können](../logic-apps/logic-apps-create-api-app.md)

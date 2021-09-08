@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0248491ed8a2fb8459565306249f95b1af92cf09
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030753"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588895"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Einrichten des Trainings für automatisiertes maschinelles Lernen ohne Code über die Studio-Benutzeroberfläche 
 
@@ -30,7 +30,7 @@ Wenn Sie eine auf Python-Code basierende Umgebung bevorzugen, [konfigurieren Sie
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) noch heute aus.
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). 
 
@@ -114,7 +114,7 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
 
     Wählen Sie **Weiter** aus.
 
-1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
+1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting).
 
     1. Für die **Klassifizierung** können Sie auch Deep Learning aktivieren.
     
@@ -175,10 +175,13 @@ Die Registerkarte **Modelle** enthält eine Liste der erstellten Modelle, wobei 
 
 ### <a name="view-training-run-details"></a>Anzeigen der Details der Trainingsausführung
 
-Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Details zur Trainingsausführung anzuzeigen, z. B. eine Modellzusammenfassung auf der Registerkarte **Modell** oder Leistungsmetrikdiagramme auf der Registerkarte **Metriken**. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
+Lassen Sie zu jedem abgeschlossenen Modell Detailinformationen zur Trainingsausführung anzeigen. Zeigen Sie auf der Registerkarte **Modell** Details wie eine Modellzusammenfassung und die für das ausgewählte Modell verwendeten Hyperparameter an. 
 
-[![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![Hyperparameterdetails](media/how-to-use-automated-ml-for-ml-models/hyperparameter-button.png)](media/how-to-use-automated-ml-for-ml-models/hyperparameter-details.png)
 
+ Sie können auch modellspezifische Leistungsmetrikdiagramme auf der Registerkarte **Metriken** anzeigen. [Hier finden Sie weitere Informationen zu Diagrammen.](how-to-understand-automated-ml.md)
+
+![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 Auf der Registerkarte „Datentransformation“ wird ein Diagramm mit der Datenvorverarbeitung, der Featurisierung, den Skalierungstechniken und dem Algorithmus für maschinelles Lernen angezeigt, die zum Generieren dieses Modells angewandt wurden.
 

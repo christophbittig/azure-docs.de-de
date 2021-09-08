@@ -9,14 +9,16 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c3785f20c47656304f7d40b67c9d90c54cb3072
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c700170e59792dc6f782ded02960962c7b21d946
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447078"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696921"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>DevOps-Task des Azure VM Image Builder-Diensts (Vorschau)
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen
 
 In diesem Artikel erfahren Sie, wie Sie mit einem Azure DevOps-Task zum Einfügen von Buildartefakten in ein VM-Image Ihre Anwendung und Ihr Betriebssystem installieren und konfigurieren können.
 

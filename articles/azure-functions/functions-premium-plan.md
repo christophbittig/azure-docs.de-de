@@ -9,16 +9,19 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: e53089c2287d255fd3dbe6ca7961646e0e3de05a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2ac7aa7d5078359f747e141971eabeba21eab3e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457422"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968730"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
-Der Premium-Plan für Azure Functions (gelegentlich auch als Elastic Premium-Plan bezeichnet) ist eine Hostingoption für Funktions-Apps. Andere Hostingplanoptionen finden Sie im [Artikel zu Hostingplänen](functions-scale.md).
+Der Elastic Premium-Tarif für Azure Functions ist eine dynamische Staffelung für Hostingoption für Funktions-Apps. Andere Hostingplanoptionen finden Sie im [Artikel zu Hostingplänen](functions-scale.md).
+
+>[!IMPORTANT]
+>Azure Functions wird auf der Azure App Service-Plattform ausgeführt. Auf der App Service-Plattform werden Tarife, die Premium-Apps für Tariffunktionen hosten, als *Elastic* Premium-Tarife mit SKU-Namen wie `EP1` bezeichnet. Wenn Sie Ihre Funktions-App in einem Premium-Tarif ausführen möchten, stellen Sie sicher, dass Sie einen Tarif mit einem SKU-Namen erstellen, der mit einem „E“ beginnt, z. B. `EP1`. App Service Plan-SKU-Namen, die mit einem „P“ beginnen, z. B. `P1V2` (kleiner Premium V2-Tarif), sind tatsächlich [Dedizierte Hostingtarife.](dedicated-plan.md) Da es sich um dedizierte Tarife und nicht um Elastic Premium Tarife handelt, werden Tarife mit SKU-Namen, die mit einem „P“ beginnen, nicht dynamisch skaliert und möglicherweise ihre Kosten erhöhen. 
 
 Das Hosten von Funktionen im Premium-Plan bietet die folgenden Vorteile:
 
@@ -158,7 +161,7 @@ Stellen Sie bei Plänen mit mehr als 4 GB Arbeitsspeicher sicher, dass die Eins
 
 ## <a name="region-max-scale-out"></a>Maximale horizontale Hochskalierung der Region
 
-Im Folgenden werden die derzeit unterstützten maximalen Werte für horizontales Hochskalieren für einen einzelnen Tarif in jeder Region und Betriebssystemkonfiguration aufgeführt. Wenn Sie eine Erhöhung anfordern möchten, können Sie ein Supportticket eröffnen.
+Im Folgenden werden die derzeit unterstützten maximalen Werte für horizontales Hochskalieren für einen einzelnen Tarif in jeder Region und Betriebssystemkonfiguration aufgeführt.
 
 Auf der [Azure-Website](https://azure.microsoft.com/global-infrastructure/services/?products=functions) finden Sie Informationen zur Verfügbarkeit von Functions in allen Regionen.
 

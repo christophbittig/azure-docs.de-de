@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 11c3fadd7f95f07bbcbf095e8d6a126022bbea0b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343371"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697921"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High-Performance Computing (HPC): VM-Größen
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 > [!TIP]
 > Probieren Sie das **[Auswahltool für virtuelle Computer](https://aka.ms/vm-selector)** aus, um andere Größen zu ermitteln, die für Ihre Workload optimal sind.

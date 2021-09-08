@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6657147d044d49ff72532ad270552a175c197c8f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ae8759bd10096737b400fe672c3555ff5fd41585
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078218"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296629"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Gewusst wie: Verwenden der Anomalieerkennungs-API für Zeitreihendaten  
+# <a name="how-to-use-the-anomaly-detector-univariate-api-on-your-time-series-data"></a>Verwenden der API zur Erkennung von univariaten Anomalien für Zeitreihendaten  
 
 Die [Anomalieerkennungs-API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) bietet zwei Methoden zur Erkennung von Anomalien. Sie können Anomalien entweder als Batch über Ihre Zeitreihen oder beim Generieren Ihrer Daten erkennen, indem Sie den Anomaliestatus des letzten Datenpunkts erkennen. Das Erkennungsmodell gibt die Anomalieergebnisse zusammen mit dem erwarteten Wert der einzelnen Datenpunkte und den oberen und unteren Grenzen der Anomalieerkennung zurück. Mit diesen Werten können Sie den Bereich der Normalwerte und Anomalien in den Daten visualisieren.
 
-## <a name="anomaly-detection-modes"></a>Anomalieerkennungsmodi 
+## <a name="anomaly-detection-modes"></a>Anomalieerkennungsmodi
 
 Die Anomalieerkennungs-API stellt Erkennungsmodi bereit: Batch und Streaming.
 

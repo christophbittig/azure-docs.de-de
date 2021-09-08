@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: b2766495c89b9be1a89e0648bcec83c160c1e0a8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e25fa98e2ca43b6697de6290ad122b6585b6a072
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479441"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186027"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-signalr-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure SignalR Service-Ressourcen
 Azure SignalR Service unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Azure SignalR Service-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -50,7 +50,7 @@ Befolgen Sie diese Anweisungen, um Rollenzuweisungen zu verwalten:
     ![Schaltfläche „Hinzufügen“ auf der Symbolleiste](./media/authenticate/role-assignments-add-button.png)
 
 1. Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
-    1. Wählen Sie **SignalR-App-Server** als Rolle aus. Beachten Sie, dass dies auch für die **Azure Functions-App** gilt.
+    1. Wählen Sie **SignalR Service-Besitzer** als Rolle aus.
     1. Suchen Sie nach dem **Sicherheitsprinzipal** (Benutzer, Gruppe, Dienstprinzipal), dem Sie die Rolle zuweisen möchten.
     1. Klicken Sie auf **Speichern**, um die Rollenzuweisung zu speichern. 
 

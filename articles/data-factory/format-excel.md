@@ -1,24 +1,27 @@
 ---
 title: Excel-Format in Azure Data Factory
-description: In diesem Thema wird der Umgang mit dem Excel-Format in Azure Data Factory beschrieben.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: In diesem Thema wird der Umgang mit dem Excel-Format in Azure Data Factory und Azure Synapse Analytics beschrieben.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 73831a22974513cfc8e8a281099fc652fce4176f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090134"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255845"
 ---
-# <a name="excel-format-in-azure-data-factory"></a>Excel-Format in Azure Data Factory
+# <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Excel Dateiformat in Azure Data Factory and Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Verwenden Sie diesen Artikel, wenn Sie die **Excel-Dateien** analysieren möchten. Azure Data Factory unterstützt sowohl „.xls“ als auch „.xlsx“.
+Verwenden Sie diesen Artikel, wenn Sie die **Excel-Dateien** analysieren möchten. Der Dienst unterstützt sowohl das „.xls“ als auch „.xlsx“-Format.
 
-Das Excel-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt. 
+Das Excel-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md). Es wird als Quelle, aber nicht als Senke unterstützt. 
 
 >[!NOTE]
 >Das „.xls“-Format wird bei Verwendung von [HTTP](connector-http.md) nicht unterstützt.

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, sstein
-ms.date: 05/28/2021
-ms.openlocfilehash: fb5ee8b096f64faa47756642b4e94bae429fb879
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.reviewer: jrasnick, wiassaf
+ms.date: 08/09/2021
+ms.openlocfilehash: 27adb19b07dc67a91d1bdafb6aac54ad59eaa778
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591258"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356248"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,31 +36,19 @@ Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Date
 - Ermöglichen der Verringerung der maximalen Größe einer einzelnen Datenbank oder eines Pools für elastische Datenbanken
 - Ermöglichen der Änderung einer einzelnen Datenbank oder eines Pools für elastische Datenbanken, um eine andere Dienstebene oder Leistungsstufe mit einer geringeren maximalen Größe zu verwenden
 
+> [!NOTE]
+> Die Verkleinerungsvorgänge sollten nicht als ein regulärer Wartungsvorgang betrachtet werden. Die Daten- und Protokolldateien, die aufgrund regelmäßiger, wiederkehrender Geschäftsvorgänge zunehmen, erfordern keine Verkleinerungsvorgänge. 
+
 ### <a name="monitoring-file-space-usage"></a>Überwachen der Dateispeicherplatzverwendung
 
 Bei den meisten Speicherplatzmetriken, die in den folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
 
 - Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittelt, der Datenbanken und Pools für elastische Datenbanken zugeordnet ist:
 
 - T-SQL:  [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
-
-### <a name="shrinking-data-files"></a>Verkleinern von Datendateien
-
-Azure SQL-Datenbank verkleinert Datendateien nicht automatisch, um aufgrund der möglichen Auswirkungen auf die Datenbankleistung ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen.
-
-### <a name="shrinking-transaction-log-file"></a>Verkleinern der Transaktionsprotokolldatei
-
-Im Gegensatz zu Datendateien verkleinert Azure SQL-Datenbank die Transaktionsprotokolldatei automatisch, um eine übermäßige Speicherplatznutzung zu vermeiden, die zu Fehlern führen kann, weil nicht genügend Speicherplatz verfügbar ist. In der Regel müssen Kunden die Transaktionsprotokolldatei nicht verkleinern.
-
-Wenn das Transaktionsprotokoll in den Dienstebenen Premium und Unternehmenskritisch groß wird, kann es erheblich dazu beitragen, dass der Grenzwert für den [maximalen lokalen Speicher](resource-limits-logical-server.md#storage-space-governance) erreicht wird. Wenn sich der lokale Speicherverbrauch dem Grenzwert nähert, können Kunden das Transaktionsprotokoll mithilfe des Befehls [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) verkleinern, wie im folgenden Beispiel gezeigt. Dadurch wird lokaler Speicher freigegeben, nachdem der Befehl abgeschlossen wurde, ohne auf den regelmäßigen automatischen Verkleinerungsvorgang zu warten.
-
-```tsql
-DBCC SHRINKFILE (2);
-```
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Grundlegendes zu den Arten von Speicherplatz für eine Datenbank
 
@@ -210,31 +198,77 @@ ORDER BY end_time DESC;
 
 ## <a name="reclaim-unused-allocated-space"></a>Freigeben von ungenutztem zugewiesenem Speicherplatz
 
-> [!NOTE]
+> [!IMPORTANT]
 > Verkleinerungsbefehle können während der Ausführung der Datenbank zu einer Beeinträchtigung der Leistung führen und sollten daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.
 
-### <a name="dbcc-shrink"></a>DBCC-Verkleinerung
+### <a name="shrinking-data-files"></a>Verkleinern von Datendateien
 
-Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicherplatz ermittelt wurden, können Sie den Namen der Datenbank im folgenden Befehl ändern, um die Datendateien für die einzelnen Datenbanken zu verkleinern.
+Aufgrund einer potenziellen Auswirkung auf die Datenbankleistung verkleinert die Azure SQL-Datenbank die Datendateien nicht automatisch. Kunden können jedoch jederzeit Ihre Dateien per Self-Service verkleinern. Dabei sollte es sich nicht um einen regelmäßig geplanten Vorgang, sondern um ein einmaliges Ereignis als Reaktion auf eine erhebliche Verringerung des Speicherplatzverbrauchs der Datendatei handeln.
+
+In der Azure SQL-Datenbank können Sie zum Verkleinern von Dateien die Befehle `DBCC SHRINKDATABASE` oder `DBCC SHRINKFILE` verwenden:
+
+- `DBCC SHRINKDATABASE` verkleinert alle Datenbankdaten und Protokolldateien, was in der Regel nicht erforderlich ist. Der Befehl verkleinert eine Datei nach der anderen. Außerdem wird die [Protokolldatei verkleinert](#shrinking-transaction-log-file). In der Azure SQL-Datenbank werden die Protokolldateien bei Bedarf automatisch verkleinert.
+- Der Befehl `DBCC SHRINKFILE`-Befehl unterstützt fortgeschrittenere Szenarien:
+    - Er kann je nach Bedarf einzelne Dateien verkleinern, anstatt alle Dateien in der Datenbank zu verkleinern.
+    - Jeder `DBCC SHRINKFILE`-Befehl kann parallel zu anderen `DBCC SHRINKFILE`-Befehlen ausgeführt werden, um die Datenbank schneller zu verkleinern. Das geschieht auf Kosten einer höheren Ressourcennutzung und einer höheren Wahrscheinlichkeit, Benutzerabfragen zu blockieren, wenn sie während der Verkleinerung ausgeführt werden.
+    - Wenn das Ende der Datei keine Daten enthält, kann die zugeordnete Dateigröße durch Angabe des TRUNCATEONLY-Arguments wesentlich schneller reduziert werden. Das erfordert keine Datenverschiebung innerhalb der Datei.
+- Weitere Informationen zu diesen Befehlen zur Verkleinerung finden Sie unter [DBCC SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) oder [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql).
+
+Die folgenden Beispiele müssen ausgeführt werden, während eine Verbindung mit der Zielbenutzerdatenbank und nicht mit der `master`-Datenbank besteht.
+
+So verwenden Sie `DBCC SHRINKDATABASE`, um alle Daten- und Protokolldateien in einer bestimmten Datenbank zu verkleinern:
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1');
+DBCC SHRINKDATABASE (N'database_name');
 ```
 
-Verkleinerungsbefehle können während der Ausführung der Datenbank zu einer Beeinträchtigung der Leistung führen und sollten daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.  
+In der Azure SQL-Datenbank kann eine Datenbank eine oder mehrere Datendateien enthalten. Zusätzliche Datendateien können nur automatisch erstellt werden. Um das Dateilayout Ihrer Datenbank zu bestimmen, fragen Sie die Katalogansicht `sys.database_files` mithilfe des folgenden Beispielskripts ab:
 
-Sie sollten sich auch über die möglichen negativen Auswirkungen auf die Leistung bewusst sein, die sich bei einer Verkleinerung von Datenbankdateien ergeben können. Informationen hierzu finden Sie unten im Abschnitt [**Neuerstellen von Indizes**](#rebuild-indexes).
+```sql
+-- Review file properties, including file_id values to reference in shrink commands
+SELECT file_id,
+       name,
+       CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8 / 1024. AS space_used_mb,
+       CAST(size AS bigint) * 8 / 1024. AS space_allocated_mb,
+       CAST(max_size AS bigint) * 8 / 1024. AS max_size_mb
+FROM sys.database_files
+WHERE type_desc IN ('ROWS','LOG');
+GO
+```
 
-Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Führen Sie eine Verkleinerung für nur eine Datei mit dem Befehl `DBCC SHRINKFILE` aus, z. B.:
+
+```sql
+-- Shrink database data file named 'data_0` by removing all unused at the end of the file, if any.
+DBCC SHRINKFILE ('data_0', TRUNCATEONLY);
+GO
+```
+
+Sie sollten sich auch über die möglichen negativen Auswirkungen auf die Leistung bewusst sein, die sich bei einer Verkleinerung von Datenbankdateien ergeben können. Informationen hierzu finden Sie unten im Abschnitt [Neuerstellen von Indizes](#rebuild-indexes). 
+
+### <a name="shrinking-transaction-log-file"></a>Verkleinern der Transaktionsprotokolldatei
+
+Im Gegensatz zu Datendateien verkleinert Azure SQL-Datenbank die Transaktionsprotokolldatei automatisch, um eine übermäßige Speicherplatznutzung zu vermeiden, die zu Fehlern führen kann, weil nicht genügend Speicherplatz verfügbar ist. In der Regel müssen Kunden die Transaktionsprotokolldatei nicht verkleinern.
+
+Wenn das Transaktionsprotokoll in den Dienstebenen Premium und Unternehmenskritisch groß wird, kann es erheblich dazu beitragen, dass der Grenzwert für den [maximalen lokalen Speicher](resource-limits-logical-server.md#storage-space-governance) erreicht wird. Wenn sich der lokale Speicherverbrauch dem Grenzwert nähert, können Kunden das Transaktionsprotokoll mithilfe des Befehls [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) verkleinern, wie im folgenden Beispiel gezeigt. Dadurch wird lokaler Speicher freigegeben, nachdem der Befehl abgeschlossen wurde, ohne auf den regelmäßigen automatischen Verkleinerungsvorgang zu warten.
+
+Die folgenden Beispiele müssen ausgeführt werden, während eine Verbindung mit der Zielbenutzerdatenbank und nicht mit der Masterdatenbank besteht.
+
+```tsql
+-- Shrink the database log file (always file_id = 2), by removing all unused space at the end of the file, if any.
+DBCC SHRINKFILE (2, TRUNCATEONLY);
+```
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 
-Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus. Das automatische Verkleinern kann besonders bei der Verwaltung von Pools für elastische Datenbanken mit vielen Datenbanken hilfreich sein, bei denen ein erhebliches Wachstum und eine Verringerung des belegten Speicherplatzes zu verzeichnen ist. Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
+Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden. Verglichen mit `DBCC SHRINKDATABASE` und `DBCC SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.  
+
+Das automatische Verkleinern kann in einem bestimmten Szenario hilfreich sein, in dem ein Pool für elastische Datenbanken viele Datenbanken enthält, bei denen der verwendete Datendateispeicherplatz erheblich verkleinert und reduziert wird. Dieses Szenario tritt allerdings nur selten auf. 
 
 Das automatische Verkleinern ist standardmäßig deaktiviert. Dies ist für die meisten Datenbanken die empfohlene Einstellung. Wenn das automatische Verkleinern aktiviert werden muss, wird empfohlen, das automatische Verkleinern wieder zu deaktivieren, sobald die Ziele der Speicherplatzverwaltung erreicht wurden, anstatt das automatische Verkleinern dauerhaft aktiviert zu lassen. Weitere Informationen finden Sie im Abschnitt unter [Überlegungen zu AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
 
-Führen Sie den folgenden Befehl in Ihrer Datenbank aus (nicht in der Masterdatenbank), um das automatische Verkleinern zu aktivieren.
+Führen Sie den folgenden Befehl in Ihrer Datenbank (nicht in der Masterdatenbank) aus, um Auto_Shrink zu aktivieren.
 
 ```sql
 -- Enable auto-shrink for the current database.
@@ -243,9 +277,11 @@ ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
 
 Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
-### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
+### <a name="index-maintenance-before-or-after-shrink"></a><a name="rebuild-indexes"></a>Die Indexwartung vor oder nach dem Verkleinern
 
-Nach dem Verkleinern von Datendateien sind Indizes möglicherweise fragmentiert und verlieren ihre leistungsoptimierende Wirkung. Im Falle einer Leistungsbeeinträchtigung empfiehlt es sich daher, die Datenbankindizes neu zu erstellen. Weitere Informationen zur Fragmentierung und Indexwartung finden Sie unter [Optimale Wartung von Indizes zum Verbessern der Leistung und Verringern der Ressourcenauslastung](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Nachdem ein Verkleinerungsvorgang für die Datendateien abgeschlossen wurde, werden die Indizes möglicherweise fragmentiert und verlieren so ihre Effektivität, bei der Leistungsoptimierung für bestimmte Workloads, z. B. Abfragen mit großen Scans. Wenn nach dem Abschluss des Verkleinerungsvorgang eine Leistungsbeeinträchtigung auftritt, sollten Sie eine Indexwartung in Betracht ziehen, um die Indizes neu zu erstellen. 
+
+Wenn die Seitendichte in der Datenbank gering ist, dauert eine Verkleinerung länger, da in jeder Datendatei mehr Seiten verschoben werden müssen. Microsoft empfiehlt, die durchschnittliche Seitendichte vor dem Ausführen von Befehlen zur Verkleinerung zu bestimmen. Wenn die Seitendichte gering ist, erstellen oder organisieren Sie die Indizes neu, um die Seitendichte zu erhöhen, bevor Sie die Verkleinerung ausführen. Weitere Informationen, einschließlich eines Beispielskripts zum Bestimmen der Seitendichte, finden Sie unter [Optimieren der Indexwartung, um die Abfrageleistung zu verbessern und den Ressourcenverbrauch zu reduzieren](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -254,5 +290,3 @@ Nach dem Verkleinern von Datendateien sind Indizes möglicherweise fragmentiert 
   - [Ressourcenlimits für Einzeldatenbanken, die DTU-basierte Kaufmodell verwenden](resource-limits-dtu-single-databases.md)
   - [Limits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank](resource-limits-vcore-elastic-pools.md)
   - [Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-basierte Kaufmodell verwenden](resource-limits-dtu-elastic-pools.md)
-- Weitere Informationen zum `SHRINKDATABASE`-Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
-- Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

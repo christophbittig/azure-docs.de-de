@@ -1,18 +1,20 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure SQL Managed Instance
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie Daten mit Azure Data Factory in Azure SQL Managed Instance kopieren und transformieren.
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: da1dbfc43aa8dccda8cca53b33923e2fee730d12
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 2fe779877c42935977b5fecb26bd3fe2c1428a33
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789728"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313957"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure SQL Managed Instance mit Azure Data Factory
 
@@ -35,9 +37,6 @@ Für die Kopieraktivität unterstützt dieser Azure SQL-Datenbank-Connector folg
 - Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur Sie können sich auch für das parallele Kopieren aus der SQL MI-Quelle entscheiden. Einzelheiten finden Sie im Abschnitt [Paralleles Kopieren aus SQL MI](#parallel-copy-from-sql-mi).
 - Als Senke das automatische Erstellen einer Zieltabelle (sofern nicht vorhanden) basierend auf dem Quellschema. Außerdem das Anfügen von Daten an eine Tabelle oder das Aufrufen einer gespeicherten Prozedur mit benutzerdefinierter Logik während des Kopiervorgangs.
 
->[!NOTE]
-> [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) der verwalteten SQL-Instanz wird derzeit von diesem Connector nicht unterstützt. Um dies zu umgehen, können Sie einen [generischen ODBC-Connector](connector-odbc.md) und einen SQL Server-ODBC-Treiber über eine selbstgehostete Integration Runtime verwenden. Weitere Informationen finden Sie im Abschnitt [Verwenden von Always Encrypted](#using-always-encrypted). 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für den Zugriff auf den [öffentlichen Endpunkt](../azure-sql/managed-instance/public-endpoint-overview.md) der verwalteten SQL-Instanz können Sie eine über Azure Data Factory verwaltete Azure Integration Runtime verwenden. Stellen Sie sicher, dass Sie den öffentlichen Endpunkt aktivieren und außerdem Datenverkehr über den öffentlichen Endpunkt für die Netzwerksicherheitsgruppe zulassen, damit Azure Data Factory eine Verbindung mit Ihrer Datenbank herstellen kann. Weitere Informationen finden Sie in [dieser Anleitung](../azure-sql/managed-instance/public-endpoint-configure.md).
@@ -48,13 +47,37 @@ Richten Sie für den Zugriff auf den privaten Endpunkt der verwalteten SQL-Insta
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
+## <a name="create-a-linked-service-to-an-azure-sql-managed-instance-using-ui"></a>Erstellen eines verknüpften Diensts mit einer verwalteten Azure SQL-Instanz über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit einer verwalteten SQL-Instanz auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt":::.
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt":::.
+
+2. Suchen Sie nach SQL und wählen Sie den von Azure SQL Server verwalteten Instanz-Connector aus.
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/azure-sql-managed-instance-connector.png" alt-text="Ein Screenshot, der den von Azure SQL Server verwalteten Instanz-Connector zeigt.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung, und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/configure-azure-sql-managed-instance-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration des verknüpften Diensts für eine von SQL verwaltete Instanz zeigt.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Azure Data Factory-Entitäten verwendet werden, die speziell für den Connector für die verwaltete SQL-Instanz verfügbar sind.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
 Folgende Eigenschaften werden für den mit der verwalteten SQL-Instanz verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureSqlMI** festgelegt werden. | Ja |
 | connectionString |Diese Eigenschaft gibt die **connectionString**-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz über die SQL-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. <br/>Der Standardport ist 1433. Wenn Sie die verwaltete SQL-Instanz mit einem öffentlichen Endpunkt verwenden, geben Sie explizit Port 3342 an.<br> Sie können auch ein Kennwort in Azure Key Vault speichern. Bei Verwendung der SQL-Authentifizierung pullen Sie die `password`-Konfiguration aus der Verbindungszeichenfolge. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -62,7 +85,11 @@ Folgende Eigenschaften werden für den mit der verwalteten SQL-Instanz verknüpf
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Azure Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, bei Azure AD-Authentifizierung mit einem Dienstprinzipal |
 | tenant | Geben Sie die Mandanteninformationen, wie Domänenname oder Mandanten-ID, für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja, bei Azure AD-Authentifizierung mit einem Dienstprinzipal |
 | azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure AD-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| Always Encrypted-Einstellungen | Geben Sie die Informationen zu den **Always Encrypted-Einstellungen** an, die erforderlich sind, damit Always Encrypted vertrauliche Daten schützen kann, die auf dem SQL-Server mithilfe der verwalteten Identität oder des Dienstprinzipals gespeichert sind. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie in dem Bereich [Verwenden von Always Encrypted](#using-always-encrypted). Wenn keine Angabe erfolgt, ist die standardmäßige Always Encrypted-Einstellung deaktiviert. |Nein |
 | connectVia | Diese [Integration Runtime](concepts-integration-runtime.md) wird zum Herstellen einer Verbindung mit dem Datenspeicher verwendet. Sie können eine selbstgehostete Integration Runtime oder eine Azure Integration Runtime verwenden, wenn die verwaltete Instanz über einen öffentlichen Endpunkt verfügt und den Zugriff von Azure Data Factory darauf zulässt. Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Ja |
+
+> [!NOTE]
+> [**Always Encrypted**](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true) der verwalteten SQL-Instanz wird derzeit von diesem Datenfluss nicht unterstützt. 
 
 Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizierungstypen finden Sie in den folgenden Abschnitten:
 
@@ -106,6 +133,32 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
                     "type": "LinkedServiceReference" 
                 }, 
                 "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel 3: Verwenden der SQL Authentifizierung mit Always Encrypted**
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "AzureSqlMI",
+        "typeProperties": {
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+        },
+        "alwaysEncryptedSettings": {
+            "alwaysEncryptedAkvAuthType": "ServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
             }
         },
         "connectVia": {
@@ -224,7 +277,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Zum Kopieren von Daten in die bzw. aus der verwaltete(n) SQL-Instanz werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AzureSqlMITable** festgelegt werden. | Ja |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -263,7 +316,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Zum Kopieren von Daten aus der verwalteten SQL-Instanz werden im Abschnitt für die Kopieraktivität der Quelle die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlMISource** festgelegt werden. | Ja |
 | sqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `select * from MyTable`. |Nein |
@@ -376,7 +429,7 @@ GO
 
 Zum Kopieren von Daten in die verwaltete SQL-Instanz werden im Abschnitt für die Kopieraktivität der Senke die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SqlMISink** festgelegt werden. | Ja |
 | preCopyScript |Diese Eigenschaft gibt eine SQL-Abfrage für die Kopieraktivität an, die vor dem Schreiben von Daten in die verwaltete SQL-Instanz ausgeführt werden soll. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
@@ -643,7 +696,7 @@ Beim Transformieren von Daten im Zuordnungsdatenfluss können Sie Tabellen in Az
 
 In der folgenden Tabelle sind die von der Azure SQL Managed Instance-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabelle | Wenn Sie „Tabelle“ als Eingabe auswählen, ruft der Datenfluss alle Daten aus der im Dataset angegebenen Tabelle ab. | Nein | - |- |
 | Abfrage | Wenn Sie „Abfrage“ als Eingabe auswählen, geben Sie eine SQL-Abfrage zum Abrufen von Daten aus der Quelle an, die Vorrang vor jeder im Dataset angegebenen Tabelle hat. Die Verwendung von Abfragen stellt eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern.<br><br>Die **Order By**-Klausel wird nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, mit der eine Tabelle zurückgegeben wird, die Sie im Datenfluss verwenden können.<br>Abfragebeispiel: `Select * from MyTable where customerId > 1000 and customerId < 2000`| Nein | String | Abfrage |
@@ -666,7 +719,7 @@ source(allowSchemaDrift: true,
 
 In der folgenden Tabelle sind die von der Azure SQL Managed Instance-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Senkenoptionen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Updatemethode | Geben Sie an, welche Vorgänge für das Datenbankziel zulässig sind. Standardmäßig sind lediglich Einfügevorgänge zulässig.<br>Um Aktualisierungs-, Upsert- oder Löschaktionen auf Zeilen anzuwenden, muss eine [Zeilenänderungstransformation](data-flow-alter-row.md) zum Kennzeichnen von Zeilen für diese Aktionen erfolgen. | Ja | `true` oder `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
 | Schlüsselspalten | Für Update-, Upsert- und Löschvorgänge müssen Schlüsselspalten festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll.<br>Der Spaltenname, den Sie als Schlüssel auswählen, wird als Teil der nachfolgenden Update-, Upsert- und Löschvorgänge verwendet. Daher müssen Sie eine Spalte auswählen, die in der Senkenzuordnung vorhanden ist. | Nein | Array | keys |
@@ -744,32 +797,19 @@ Beim Kopieren von Daten in eine bzw. aus einer verwalteten SQL-Instanz mithilfe 
 
 ## <a name="using-always-encrypted"></a>Verwenden von Always Encrypted
 
-Verwenden Sie zum Kopieren von Daten mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) in eine bzw. aus einer verwalteten SQL-Instanz den [generischen ODBC-Connector](connector-odbc.md) und den SQL Server-ODBC-Treiber über die selbstgehostete Integration Runtime. Always Encrypted wird von diesem Connector für verwaltete Azure SQL-Instanzen derzeit nicht unterstützt. 
+Führen Sie beim Kopieren von Daten aus bzw. in SQL Server mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)die folgenden Schritte aus: 
 
-Dies gilt insbesondere in folgenden Fällen:
+1. Speichern Sie den [Spalten-Hauptschlüssel (Column Master Key, CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) in einem [Azure Key Vault](../key-vault/general/overview.md). Weitere Informationen: [Konfigurieren von Always Encrypted mithilfe von Azure Key Vault](../azure-sql/database/always-encrypted-azure-key-vault-configure.md?tabs=azure-powershell)
 
-1. Richten Sie eine selbstgehostete Integration Runtime ein, sofern noch nicht vorhanden. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
+2. Stellen Sie sicher, dass Sie auf den Schlüsseltresor zugreifen können, in dem [der Spalten-Hauptschlüssel (Column Master Key, CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) gespeichert ist. Die erforderlichen Berechtigungen finden Sie in diesem [Artikel](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true#key-vaults).
 
-2. Laden Sie [hier](/sql/connect/odbc/download-odbc-driver-for-sql-server) den 64-Bit-ODBC-Treiber für SQL Server herunter, und installieren Sie ihn auf dem Computer mit der Integration Runtime. Weitere Informationen zur Funktionsweise dieses Treibers finden Sie unter [Verwendung von Always Encrypted mit dem ODBC-Treiber für SQL Server](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider).
+3. Erstellen Sie einen verknüpften Dienst, um eine Verbindung mit der SQL-Datenbank herzustellen und aktivieren Sie die „Always Encrypted“-Funktion mithilfe einer verwalteten Identität oder eines Dienstprinzipals. 
 
-3. Erstellen Sie einen verknüpften Dienst mit dem ODBC-Typ für die Verbindung mit Ihrer SQL-Datenbank. Nachfolgend sind einige Beispiele gezeigt:
-
-    - Zur Verwendung der **SQL-Authentifizierung**: Geben Sie die ODBC-Verbindungszeichenfolge wie unten gezeigt an, und wählen Sie die **Standardauthentifizierung** zum Festlegen von Benutzername und Kennwort aus.
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
-        ```
-
-    - Wenn Sie die selbstgehostete Integration Runtime auf einer Azure-VM ausführen, können Sie die **Managed Identity-Authentifizierung** mit der Identität der Azure-VM verwenden: 
-
-        1. Stellen Sie sicher, dass diese [Voraussetzungen](#managed-identity) erfüllt sind, um einen Datenbankbenutzer für die verwaltete Identität zu erstellen, und weisen Sie in Ihrer Datenbank die entsprechende Rolle zu.
-        2. Geben Sie im verknüpften Dienst die ODBC-Verbindungszeichenfolge wie unten gezeigt an, und wählen Sie die **anonyme Authentifizierung** aus, da die Verbindungszeichenfolge selbst `Authentication=ActiveDirectoryMsi` angibt.
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
-        ```
-
-4. Erstellen Sie ein Dataset und eine Kopieraktivität mit dem ODBC-Typ. Weitere Informationen finden Sie im Artikel [ODBC-Connector](connector-odbc.md).
+>[!NOTE]
+>Der SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) unterstützt die folgenden Szenarien: 
+>1. Die Quell- oder Senkendatenspeicher verwenden die verwaltete Identität oder den Dienstprinzipal als Schlüsselanbieter-Authentifizierungstyp.
+>2. Sowohl Quell- als auch Senkendatenspeicher verwenden die verwaltete Identität als Schlüsselanbieter-Authentifizierungstyp.
+>3. Sowohl Quell- als auch Senkendatenspeicher verwenden denselben Dienstprinzipal als Schlüsselanbieter-Authentifizierungstyp.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

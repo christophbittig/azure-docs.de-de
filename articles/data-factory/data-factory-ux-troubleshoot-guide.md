@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/01/2021
 ms.author: ceespino
 ms.reviewer: susabat
-ms.openlocfilehash: 99d6116a69e6aabe080d8e46bb90f90a125d7122
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a6d2a05e5f461a9ccf2f5e6a3cea0ba92c461b15
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639946"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260443"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Problembehandlung bei der Azure Data Factory-Benutzeroberfläche
 
@@ -103,7 +103,7 @@ Datasets im Dateiformat können mit allen dateibasierten Connectors verwendet we
 
 Wenn Sie auf der ADF-Benutzeroberfläche für die Erstellung ein Dataset im Dateiformat für eine Aktivität (einschließlich „Kopieren“, „Suchen“, „Metadaten abrufen“ und „Löschen“) verwenden und im Dataset auf einen verknüpften Dienst verweisen möchten, dessen Typ nicht dem aktuellen Typ entspricht (z. B. ein Wechsel von Dateisystem zu ADLS Gen2), wird die folgende Warnmeldung angezeigt. Für einen reibungslosen Wechsel werden die Pipelines und Aktivitäten, die auf dieses Dataset verweisen, nach Ihrer Zustimmung so geändert, dass sie ebenfalls den neuen Typ verwenden. Da vorhandene Datenspeichereinstellungen, die nicht mit dem neuen Typ kompatibel sind, nicht mehr gültig sind, werden diese Einstellungen gelöscht.
 
-Weitere Informationen zu den unterstützten Datenspeichereinstellungen für die verschiedenen Connectors finden Sie im entsprechenden Artikel zum jeweiligen Connector. Kopieren Sie die Aktivitätseigenschaften, um eine detaillierte Liste der Eigenschaften anzuzeigen. Weitere Informationen zu [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).
+Weitere Informationen zu den unterstützten Datenspeichereinstellungen für die verschiedenen Connectors finden Sie im entsprechenden Artikel zum jeweiligen Connector. Kopieren Sie die Aktivitätseigenschaften, um eine detaillierte Liste der Eigenschaften anzuzeigen. Weitere Informationen zu [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [Hadoop Distributed File System](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).
 
 ![Warnmeldung](media/data-factory-ux-troubleshoot-guide/warning-message.png)
 
@@ -124,7 +124,7 @@ Die Lösung besteht darin, zuerst die JSON-Dateien zu korrigieren und dann die P
 Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
 
 * [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-* [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
+* [Data Factory-Funktionsanfragen](/answers/topics/azure-data-factory.html)
 * [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-Videos](https://azure.microsoft.com/resources/videos/index/)

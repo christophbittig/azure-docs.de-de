@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Informationen zur Konfiguration von Anforde
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/20/2020
+ms.date: 07/06/2021
 ms.author: victorh
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e6403b1bab2bcdd6a001c5f55b34519b9447194d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3b6042ec28e7b774f57be19809c585ad919b25b0
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668625"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432498"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web Application Firewall-Anforderungsgrößenlimits und Ausschlusslisten
 
@@ -97,7 +97,12 @@ Die Web Application Firewall ermöglicht Ihnen das Konfigurieren von Anforderung
    - 500 MB für v1 Große WAF-Gateways
    - 750 MB für v2 WAF-Gateways 
 
- Der Standardwert für die Größe von Dateiuploads beträgt 100 MB.
+Der Standardwert für die Größe von Dateiuploads beträgt 100 MB.
+
+Für CRS 3.2 (in der WAF_v2-SKU) und neuer gelten die folgenden Grenzwerte:
+   
+   - 2 MB Größenbeschränkung für Anforderungstext
+   - 4 GB Dateiuploadlimit 
 
 Die WAF bietet außerdem einen konfigurierbaren Knopf zum Aktivieren bzw. Deaktivieren der Anforderungstextüberprüfung. Standardmäßig ist die Überprüfung des Anforderungstexts aktiviert. Ist die Überprüfung des Anforderungstexts deaktiviert, wertet die WAF die Inhalte des HTTP-Nachrichtentexts nicht aus. In diesem Fall erzwingt die WAF weiterhin WAF-Regeln für Header, Cookies und den URI. Ist die Überprüfung des Anforderungstexts deaktiviert, ist das Feld für die maximale Größe des Anforderungstexts nicht verfügbar, und es kann kein Wert festgelegt werden. Wenn Sie die Überprüfung des Anforderungstexts deaktivieren, können Nachrichten, die größer als 128 KB sind, an die WAF gesendet werden, aber der Nachrichtentext wird nicht auf Sicherheitsrisiken überprüft.
 

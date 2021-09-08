@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 272c146c71e9caf6d7ba6a1ba165a6157f5b6de0
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459051"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445846"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Protokollabfragen werden in der Abfragesprache Kusto (Kusto Query Language, KQL) geschrieben. Hierbei handelt es sich um eine umfangreiche Sprache, die einfach zu lesen und zu verwenden ist, sodass Sie nach einer grundlegenden Einarbeitung mit dem Schreiben von Abfragen beginnen können.
@@ -22,7 +22,7 @@ Abfragen werden beispielsweise in den folgenden Bereichen in Azure Monitor verwe
 - [Arbeitsmappen:](../visualize/workbooks-overview.md) Einfügen der Ergebnisse von Protokollabfragen mithilfe verschiedener Visualisierungen in interaktiven visuellen Berichten im Azure-Portal.
 - [Azure-Dashboards:](../visualize/tutorial-logs-dashboards.md) Anheften der Ergebnisse beliebiger Abfragen in einem Azure-Dashboard, wodurch Protokoll- und Metrikdaten gemeinsam visualisiert und optional mit anderen Azure-Benutzern geteilt werden können.
 - [Logic Apps:](../logs/logicapp-flow-connector.md)  Verwenden der Ergebnisse einer Protokollabfrage in einem automatisierten Workflow mithilfe von Logic Apps.
-- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult): Verwenden der Ergebnisse einer Protokollabfrage in einem PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook, das „Get-AzOperationalInsightsSearchResults“ verwendet.
+- [PowerShell](/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery): Verwenden der Ergebnisse einer Protokollabfrage in einem PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook, das „Get-AzOperationalInsightsSearchResults“ verwendet.
 - [Azure Monitor-Protokolle-API](https://dev.loganalytics.io). Abrufen von Protokolldaten aus dem Arbeitsbereich von einem beliebigen REST-API-Client.  Die API-Anforderung enthält eine Abfrage, die für Azure Monitor ausgeführt wird, um die abzurufenden Daten zu ermitteln.
 
 ## <a name="getting-started"></a>Erste Schritte

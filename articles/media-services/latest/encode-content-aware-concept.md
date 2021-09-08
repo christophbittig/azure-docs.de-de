@@ -1,25 +1,25 @@
 ---
-title: Voreinstellung für die inhaltsbezogene Codierung
+title: Die Voreinstellung für die inhaltsbezogene Codierung
 description: In diesem Artikel wird die inhaltsbezogene Codierung in Microsoft Azure Media Services v3 erläutert.
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8b48c6b0ef84458fa54692994d8e295d25114dd8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 5f333b4ca86e24c845a8a91c621a2b3f7c8c984e
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111239"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429758"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung
+# <a name="content-aware-encoding-preset"></a>Die Voreinstellung für die inhaltsbezogene Codierung
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,7 +29,7 @@ Berücksichtigen Sie stets den Inhalt, den Sie verarbeiten, und passen Sie die C
 
 Die Voreinstellung [Adaptives Streaming](encode-autogen-bitrate-ladder.md) von Microsoft löst das Problem der Variabilität bei der Qualität und Auflösung von Quellvideos zum Teil. Unsere Kunden verfügen über unterschiedlichste Inhalte – manche in 1080p, andere in 720p und einige wenige in SD und niedrigeren Auflösungen. Darüber hinaus handelt es sich nicht bei allen Quellinhalten um hochwertige Mezzanine von Film- oder Fernsehstudios. Die Adaptive Streaming-Voreinstellung löst diese Probleme, indem sichergestellt wird, dass die Bitratenleiter nicht die Auflösung oder die durchschnittliche Bitrate der Eingangs-Mezzanine überschreitet. Diese Voreinstellung untersucht jedoch nur die Quelleigenschaften „Auflösung“ und „Bitrate“.
 
-## <a name="the-content-aware-encoding"></a>Die inhaltsbezogene Codierung
+## <a name="the-content-aware-encoding-preset"></a>Verwenden der Voreinstellung für die inhaltsbezogene Codierung
 
 Die Voreinstellung für die inhaltsbezogene Codierung erweitert den Adaptive Bitrate Streaming-Mechanismus. Hierzu wird benutzerdefinierte Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung ohne aufwendige Berechnungsanalyse zu ermitteln. Diese Voreinstellung generiert eine Reihe von MP4-Dateien mit GOP-Ausrichtung. Der Dienst führt eine einfache Erstanalyse für den Eingabeinhalt aus und ermittelt anhand der Ergebnisse die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming. Diese Voreinstellung eignet sich insbesondere für Videos mit geringer bis mittlerer Komplexität, bei denen die Ausgabedateien zwar eine niedrigere Bitrate als die Adaptive Streaming-Voreinstellung, aber immer noch eine gute Qualität haben. Die Ausgabe enthält MP4-Dateien mit AVI (Audio Video Interleaved).
 
@@ -53,33 +53,11 @@ Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinha
 
 **Abbildung 4: RD-Kurve mit VMAF für Eingabe mit niedriger Qualität (bei 1080p)**
 
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>Verwenden der Voreinstellung für die inhaltsbezogene Codierung 
+## <a name="8-bit-hevc-h265-support"></a>Unterstützung für 8-Bit-HEVC (H.265)
 
-Sie können Transformationen erstellen, die diese Voreinstellung wie folgt verwenden. 
+Der Standard-Encoder von Azure Media Services bietet jetzt Unterstützung für die 8-Bit-HEVC-Codierung (H.265). HEVC-Inhalte können mithilfe des hev1-Formats über die dynamische Paketerstellung übermittelt und gepackt werden.
 
-Unter [Nächste Schritte](#next-steps) finden Sie Links zu Tutorials für die Ausgabetransformation. Das Ausgabemedienobjekt kann von Media Services-Streamingendpunkten in Protokollen wie MPEG-DASH und HLS bereitgestellt werden (wie in den Tutorials gezeigt).
-
-> [!NOTE]
-> Achten Sie darauf, die Einstellung **ContentAwareEncoding**, nicht „ContentAwareEncodingExperimental“ zu verwenden.
-
-```csharp
-TransformOutput[] output = new TransformOutput[]
-{
-   new TransformOutput
-   {
-      // The preset for the Transform is set to one of Media Services built-in sample presets.
-      // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
-      Preset = new BuiltInStandardEncoderPreset()
-      {
-         // This sample uses the new preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncoding
-      }
-   }
-};
-```
-
-> [!NOTE]
-> Codierungsaufträge mit der Voreinstellung `ContentAwareEncoding` werden auf der Grundlage der Ausgabeminuten abgerechnet. 
+Ein neues Beispiel für eine benutzerdefinierte .NET-Codierung mit HEVC finden Sie im GitHub-Repository [media-services-v3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC). Zusätzlich zur benutzerdefinierten Codierung unterstützt AMS auch andere neue integrierte HEVC-Codierungsvoreinstellungen, die Sie in unseren [Versionshinweisen vom Februar 2021](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021) anzeigen können.
   
 ## <a name="next-steps"></a>Nächste Schritte
 

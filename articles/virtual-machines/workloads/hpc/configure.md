@@ -8,16 +8,18 @@ ms.topic: article
 ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cd040ef394163113b46f9af46aef0aead9cb37ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460490"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689277"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
-In diesem Artikel finden Sie einen Leitfaden zum Konfigurieren und Optimieren der InfiniBand-fähigen VMs der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) für HPC.
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
+In diesem Artikel finden Sie eine Anleitung zum Konfigurieren und Optimieren der InfiniBand-fähigen virtuellen Computer der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md) für HPC.
 
 ## <a name="vm-images"></a>VM-Images
 Auf InfiniBand-fähigen (IB) VMs sind die entsprechenden Treiber erforderlich, um RDMA zu aktivieren.

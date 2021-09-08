@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf000169c993290dc45ef6ec9ed4591f87d1def
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030640"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580384"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Anmeldeprotokolle in Azure Active Directory: Vorschau
 
@@ -312,8 +312,6 @@ Um die Verarbeitung der Daten zu vereinfachen, werden verwaltete Identitäten f�
 
 - Status
 
-- IP-Adresse
-
 - Name oder ID der Ressource
 
 Wählen Sie ein Element in der Listenansicht aus, um alle unter einem Knoten gruppierten Anmeldungen anzuzeigen.
@@ -435,7 +433,27 @@ Jeder JSON-Download besteht aus vier verschiedenen Dateien:
 ![Herunterladen von Dateien](./media/concept-all-sign-ins/download-files.png "Herunterladen von Dateien")
 
 
+## <a name="return-log-data-with-microsoft-graph"></a>Zurückgeben von Protokolldaten mit Microsoft Graph
 
+Zusätzlich zur Verwendung des Azure-Portals können Sie Anmeldeprotokolle mithilfe der Microsoft Graph-API abfragen, um verschiedene Arten von Anmeldeinformationen zurückzugeben. Um potenzielle Leistungsprobleme zu vermeiden, sollten Sie ihre Abfrage auf die Daten beschränken, mit denen Sie arbeiten. 
+
+Im folgenden Beispiel wird der Bereich der Abfrage durch die Anzahl der Datensätze, einen bestimmten Zeitraum und den Typ des Anmeldeereignisses beschränkt:
+
+```msgraph-interactive
+GET https://graph.microsoft.com/beta/auditLogs/signIns?$top=100&$filter=createdDateTime ge 2020-09-10T06:00:00Z and createdDateTime le 2020-09-17T06:00:00Z and signInEventTypes/any(t: t eq 'nonInteractiveUser')
+```
+
+Die Abfrageparameter im Beispiel liefern die folgenden Ergebnisse:
+
+- Der [$top](/graph/query-parameters#top-parameter)-Parameter gibt die ersten 100 Ergebnisse zurück.
+- Der [$filter](/graph/query-parameters#filter-parameter)-Parameter schränkt den Zeitrahmen für die Rückgabe von Ergebnissen ein und verwendet die signInEventTypes-Eigenschaft, um nur nicht interaktive Benutzeranmeldungen zurückzugeben.
+
+Die folgenden Werte stehen zum Filtern nach verschiedenen Anmeldetypen zur Verfügung: 
+
+- interactiveUser
+- nonInteractiveUser
+- servicePrincipal 
+- managedIdentity
 
 ## <a name="next-steps"></a>Nächste Schritte
 

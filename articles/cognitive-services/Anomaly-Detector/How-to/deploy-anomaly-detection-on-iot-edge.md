@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fd02fbdd8f6c02ce86a4e0c1ee3eabec69e56c3
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936274"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296719"
 ---
-# <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Bereitstellen eines Anomalieerkennungsmoduls in IoT Edge
+# <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Bereitstellen eines Moduls zur Erkennung von univariaten Anomalien in IoT Edge
 
 Hier erfahren Sie, wie Sie das [Anomalieerkennungsmodul](../anomaly-detector-container-howto.md) von Cognitive Services auf einem IoT Edge-Gerät bereitstellen. Nachdem das Modul in IoT Edge bereitgestellt wurde, wird es in IoT Edge zusammen mit anderen Modulen als Containerinstanz ausgeführt. Es macht dieselben APIs wie eine Containerinstanz zur Anomalieerkennung verfügbar, die in einer Docker-Container-Standardumgebung ausgeführt wird. 
 

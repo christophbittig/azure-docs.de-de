@@ -3,14 +3,14 @@ title: Georeplikation für eine Registrierung
 description: Erste Schritte zum Erstellen und Verwalten einer Azure-Containerregistrierung mit Georeplikation, die es der Registrierung ermöglicht, mehrere Regionen mit regionale Multimasterreplikaten zu versorgen. Georeplikation ist eine Funktion der Premium-Dienstebene.
 author: stevelas
 ms.topic: article
-ms.date: 06/09/2021
+ms.date: 06/28/2021
 ms.author: stevelas
-ms.openlocfilehash: b60de8dd9dc4ba5b66594fe6d75caa43ef0017b5
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c616c3e196547d72825759de94792cc6573a12d9
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029655"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037974"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -64,9 +64,6 @@ Die Georeplikationsfunktion von Azure Container Registry bietet die folgenden Vo
 
 Azure Container Registry unterstützt auch [Verfügbarkeitszonen](zone-redundancy.md), um eine robuste und hoch verfügbare Azure-Containerregistrierung innerhalb einer Azure-Region zu erstellen. Die Kombination aus Verfügbarkeitszonen für Redundanz innerhalb einer Region und Georeplikation über mehrere Regionen hinweg verbessert sowohl die Zuverlässigkeit als auch die Leistung einer Registrierung.
 
-> [!IMPORTANT]
-> Eine georeplizierte Registrierung kann nicht mehr verfügbar sein, wenn in der Startregion der Registrierung (in der die Registrierung ursprünglich bereitgestellt wurde) bestimmte Ausfälle auftreten.
-
 ## <a name="configure-geo-replication"></a>Konfigurieren der Georeplikation
 
 Die Konfiguration der Georeplikation ist so einfach wie das Klicken auf Regionen auf einer Karte. Außerdem können Sie die Georeplikation mithilfe von Tools verwalten, wozu auch die [az acr replication](/cli/azure/acr/replication)-Befehle in der Azure-Befehlszeilenschnittstelle gehören, oder Sie können eine für die Georeplikation aktivierte Registrierung mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/) bereitstellen.
@@ -105,6 +102,13 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 * Um Workflows zu verwalten, die von der Pushübertragung von Updates in eine georeplizierte Registrierung abhängen, wird die Konfiguration von [Webhooks](container-registry-webhook.md) zur Antwort auf die Pushereignisse empfohlen. Sie können regionale Webhooks innerhalb einer georeplizierten Registrierung einrichten, um Pushereignisse nachzuverfolgen, wenn diese über die georeplizierten Regionen hinweg abgeschlossen werden.
 * Zum Verarbeiten von Blobdaten, die Inhaltsebenen darstellen, verwendet Azure Container Registry Datenendpunkte. Sie können [dedizierte Datenendpunkte](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) für Ihre Registrierung in jeder georeplizierten Region Ihrer Registrierung aktivieren. Diese Endpunkte ermöglichen die Konfiguration streng verteilter Firewallzugriffsregeln. Zu Troubleshootingzwecken können Sie optional [das Routing zu einer Replikation deaktivieren](#temporarily-disable-routing-to-replication), die replizierten Daten dabei jedoch behalten.
 * Wenn Sie einen [privaten Link](container-registry-private-link.md) für Ihre Registrierung über private Endpunkte in einem virtuellen Netzwerk konfigurieren, werden standardmäßig in jeder der georeplizierten Regionen dedizierte Datenendpunkte aktiviert. 
+
+## <a name="considerations-for-high-availability"></a>Überlegungen zur Hochverfügbarkeit
+
+* Für Hochverfügbarkeit und Resilienz wird empfohlen, eine Registrierung in einer Region zu erstellen, die die Aktivierung von [Zonenredundanz](zone-redundancy.md) unterstützt. Es wird auch empfohlen, Zonenredundanz in jeder Replikatregion zu aktivieren.
+* Wenn ein Ausfall in der Startregion der Registrierung (der Region, in der sie erstellt wurde) oder in einer der Replikatregionen auftritt, bleibt eine georeplizierte Registrierung für Datenebenenvorgänge wie das Pushen oder Pullen von Containerimages verfügbar. 
+* Wenn die Startregion der Registrierung nicht mehr verfügbar ist, können Sie möglicherweise keine Registrierungsverwaltungsvorgänge durchführen, einschließlich der Konfiguration von Netzwerkregeln, der Aktivierung von Verfügbarkeitszonen und der Verwaltung von Replikaten.
+* Um die Hochverfügbarkeit einer georeplizierten Registrierung zu planen, die mit einem [vom Kunden verwalteten Schlüssel](container-registry-customer-managed-keys.md) verschlüsselt ist, der in einem Azure-Schlüsseltresor gespeichert ist, lesen Sie den Leitfaden zu [Failover und Redundanz](../key-vault/general/disaster-recovery-guidance.md) bei Schlüsseltresoren.
 
 ## <a name="delete-a-replica"></a>Löschen eines Replikats
 

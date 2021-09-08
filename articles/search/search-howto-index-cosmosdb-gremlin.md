@@ -1,34 +1,32 @@
 ---
-title: Durchsuchen von Azure Cosmos DB Gremlin API-Daten (Vorschau)
+title: Indizieren von Daten aus der Gremlin-API (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Importieren Sie Daten aus Azure Cosmos DB Gremlin API in einen durchsuchbaren Index in Azure Cognitive Search. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
-author: vkurpad
-manager: luisca
-ms.author: vikurpad
+description: Richten Sie einen Azure Cosmos DB-Indexer ein, um die Indizierung von Gremlin-API-Inhalten für Volltextsuchen in Azure Cognitive Search zu automatisieren.
+author: MarkHeff
+ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: d54432b482e952327083996b486ce27fc56a1c88
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 69642aa1b9d977591bee6dbb8464cdf74ca7be1e
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949086"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731008"
 ---
-# <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>Indexieren von Daten, die über Cosmos DB Gremlin-API verfügbar sind, mithilfe eines Indexers (Vorschau)
+# <a name="index-data-using-azure-cosmos-db-gremlin-api"></a>Indizieren von Daten mithilfe der Gremlin-API von Azure Cosmos DB
 
 > [!IMPORTANT]
-> Der Cosmos DB Gremlin-API-Indexer befindet sich derzeit in der Vorschau. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversion anfordern möchten.
-> Für diese Vorschau empfehlen wir die Verwendung der [REST-API-Version 2020-06-30-Preview.](search-api-preview.md) Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+> Der Cosmos DB-Gremlin-API-Indexer befindet sich derzeit unter [Zusätzliche Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) in der öffentlichen Vorschauphase. Fordern Sie [Zugriff](https://aka.ms/azure-cognitive-search/indexer-preview) auf dieses Feature an, und verwenden Sie, nachdem der Zugriff aktiviert wurde, eine [Vorschau-REST-API (2020-06-30-preview oder höher)](search-api-preview.md), um Ihre Inhalte zu indizieren. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-> [!WARNING]
-> Damit die Azure Cognitive Search Daten in Cosmos DB über die Gremlin-API indexieren kann, muss auch die [Cosmos DB-eigene Indexierung](../cosmos-db/index-overview.md) aktiviert und auf [Konsistent](../cosmos-db/index-policy.md#indexing-mode) festgelegt sein. Dies ist die Standardkonfiguration für Cosmos DB. Die Indexierung von Azure Cognitive Search funktioniert nicht, wenn Cosmos DB-Indexierung bereits aktiviert ist.
+In diesem Artikel erfahren Sie, wie Sie einen Azure Cosmos DB-Indexer zum Extrahieren von Inhalten konfigurieren und dafür sorgen, dass er in der kognitiven Azure-Suche durchsucht werden kann. Mit diesem Workflow erstellen Sie einen Suchindex für Azure Cognitive Search und laden ihn mit bestehendem Inhalt, der mithilfe der Gremlin-API aus Azure Cosmos DB extrahiert wurde.
 
-[Azure Cosmos DB-Indizierung](../cosmos-db/index-overview.md) und [Azure Cognitive Search-Indizierung](search-what-is-an-index.md) sind verschiedene Vorgänge, die für jeden Service einzigartig sind. Wenn Sie mit der Indizierung in der kognitiven Azure-Suche beginnen, muss Ihre Azure Cosmos DB-Datenbank bereits vorhanden sein.
+Da die Begrifflichkeiten etwas verwirrend sind, soll hier darauf hingewiesen werden, dass die [Indizierung in Azure Cosmos DB](../cosmos-db/index-overview.md) und die [Indizierung in der kognitiven Azure-Suche](search-what-is-an-index.md) zwei verschiedene Vorgänge sind, die jedem Dienst eigen sind. Wenn Sie mit der Indizierung in der kognitiven Azure-Suche beginnen, muss Ihre Azure Cosmos DB-Datenbank bereits vorhanden sein und Daten enthalten.
 
-In diesem Artikel erfahren Sie, wie Sie Azure Cognitive Search mithilfe der Gremlin-API für die Indexierung von Inhalten aus Azure Cosmos DB konfigurieren. Mit diesem Workflow erstellen Sie einen Index für Azure Cognitive Search und laden ihn mit bestehendem Text, der mithilfe der Gremlin-API aus Azure Cosmos DB extrahiert wurde.
+## <a name="prerequisites"></a>Voraussetzungen
+
+Damit die Azure Cognitive Search Daten in Cosmos DB über die Gremlin-API indexieren kann, muss auch die [Cosmos DB-eigene Indexierung](../cosmos-db/index-overview.md) aktiviert und auf [Konsistent](../cosmos-db/index-policy.md#indexing-mode) festgelegt sein. Dies ist die Standardkonfiguration für Cosmos DB. Die Indexierung von Azure Cognitive Search funktioniert nicht, wenn Cosmos DB-Indexierung bereits aktiviert ist.
 
 ## <a name="get-started"></a>Erste Schritte
 

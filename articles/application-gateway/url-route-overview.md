@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e38f590628381710afec1d7bbf1ceb0daf9f77a2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 7a24b9631362618ee3be5e94066ac5267ac85962
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032211"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504871"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -27,7 +27,7 @@ Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „conto
 Anforderungen für http\://contoso.com/video/* werden an VideoServerPool und Anforderungen für http\://contoso.com/images/* an ImageServerPool weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
-> Regeln werden bei der v1-SKU in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt. Bei der v2-SKU haben genaue Übereinstimmungen eine höhere Rangfolge. Es wird jedoch dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zunächst Listener für mehrere Standorte zu konfigurieren. So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird.
+> Regeln werden sowohl bei der v1- als auch v2-SKU in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt. Es wird jedoch dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zunächst Listener für mehrere Standorte zu konfigurieren. So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird.
 
 ## <a name="urlpathmap-configuration-element"></a>urlPathMap-Konfigurationselement
 
@@ -75,7 +75,7 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |v1-Pfadmuster  |Unterstützt?  |
 |---------|---------|
 |`/images/*`     |ja|
-|`/images*`     |ja|
+|`/images*`     |Ja|
 |`/images/*.jpg`     |Nein|
 |`/*.jpg`     |Nein|
 |`/Repos/*/Comments/*`     |Nein|
@@ -88,7 +88,7 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |v2-Pfadmuster  |Unterstützt?  |
 |---------|---------|
 |`/images/*`     |ja|
-|`/images*`     |ja|
+|`/images*`     |Ja|
 |`/images/*.jpg`     |Nein|
 |`/*.jpg`     |Nein|
 |`/Repos/*/Comments/*`     |Nein|

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 09c27d77c80b7c9178fbbe9f7c5e01b3bc67c567
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969038"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296304"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>Onboarding lokaler Server in der virtuellen VMware-Umgebung in Azure Arc   
 
@@ -21,19 +21,22 @@ Mit Azure Arc können Sie Ihre Hybrid-IT-Infrastruktur auf einer zentralen Benut
 
 ## <a name="before-you-get-started"></a>Bevor Sie beginnen
 
-- [Sehen Sie sich die Anforderungen an](/azure/migrate/tutorial-discover-vmware#prerequisites), um die in einer VMware-Umgebung ausgeführten Server mit Azure Migrate: Ermittlung und Bewertung zu ermitteln.  
-- Bereiten Sie [VMware vCenter](/azure/migrate/tutorial-discover-vmware#prepare-vmware) für die Verwendung vor, und überprüfen Sie die [VMware-Anforderungen](migrate-support-matrix-vmware.md#vmware-requirements) für die Softwareinventur. Die Softwareinventur muss abgeschlossen sein, bevor Sie mit dem Onboarding der ermittelten Server in Azure Arc beginnen können.   
-- Sehen Sie sich die [Anforderungen zur Anwendungsermittlung](migrate-support-matrix-vmware.md#application-discovery-requirements) an, bevor Sie die Softwareinventur auf Servern initiieren. Auf Windows-Servern muss PowerShell ab Version 3.0 installiert sein. 
-- Überprüfen Sie die Portzugriffsanforderungen, um Remoteverbindungen mit dem Bestand ermittelter Server zuzulassen. 
-    - **Windows:** Eingehende Verbindung an WinRM-Port 5985 (HTTP) <br/>
-    - **Linux:** Eingehende Verbindungen an Port 22 (TCP) 
-- Sehen Sie sich unbedingt die [Voraussetzungen für Azure Arc](/azure/azure-arc/servers/agent-overview#prerequisites) sowie die folgenden Überlegungen an:
+- [Sehen Sie sich die Anforderungen an](./tutorial-discover-vmware.md#prerequisites), um die in einer VMware-Umgebung ausgeführten Server mit Azure Migrate: Ermittlung und Bewertung zu ermitteln.  
+- Bereiten Sie [VMware vCenter](./tutorial-discover-vmware.md#prepare-vmware) für die Verwendung vor, und überprüfen Sie die [VMware-Anforderungen](migrate-support-matrix-vmware.md#vmware-requirements) für die Softwareinventur. Die Softwareinventur muss abgeschlossen sein, bevor Sie mit dem Onboarding der ermittelten Server in Azure Arc beginnen können.   
+- Sehen Sie sich die [Anforderungen zur Anwendungsermittlung](migrate-support-matrix-vmware.md#software-inventory-requirements) an, bevor Sie die Softwareinventur auf Servern initiieren. Auf Windows-Servern muss PowerShell ab Version 3.0 installiert sein. 
+- Überprüfen Sie die Voraussetzungen, um Remoteverbindungen mit dem Bestand der ermittelten Server für das Onboarding dieser Server zu Azure Arc zuzulassen. 
+    1. Zulassen eingehender Remoteverbindungen mit den gefundenen Servern 
+        - _Für Windows:_ Eingehende Verbindung an WinRM-Port 5985 (HTTP). Führen Sie auf Windows-Zielservern den Befehl „winrm qc“ aus, um das WS-Management-Protokoll auf dem lokalen Computer zu aktivieren. 
+        - _Für Linux:_ Lassen Sie auf allen Linux-Zielservern eingehende Verbindungen an Port 22 (SSH) zu.
+        - Sie können auch die IP-Adressen der Remotecomputer (ermittelte Server) der WinRM TrustedHosts-Liste auf der Appliance hinzufügen. 
+    2. Die Azure Migrate-Appliance sollte über eine direkte Netzwerkverbindung mit den Zielservern verfügen. 
+- Sehen Sie sich unbedingt die [Voraussetzungen für Azure Arc](../azure-arc/servers/agent-overview.md#prerequisites) sowie die folgenden Überlegungen an:
     - Das Onboarding in Azure Arc kann erst initiiert werden, nachdem die vCenter Server-Ermittlung und die Softwareinventur abgeschlossen wurden. Die Softwareinventur kann vom Start bis zum Abschluss bis zu sechs Stunden dauern.
-    -  Während des Onboardings in Arc wird der [Azure Arc Hybrid Connected Machine-Agent](/azure/azure-arc/servers/learn/quick-enable-hybrid-vm) auf den ermittelten Servern installiert. Für die Agent-Installation müssen Sie Anmeldeinformationen mit Administratorberechtigungen auf den Servern angeben. Geben Sie dazu unter Linux das root-Konto und unter Windows ein Konto an, das der Gruppe „Lokale Administratoren“ angehört. 
-    - Vergewissern Sie sich, dass auf den Servern ein [unterstütztes Betriebssystem](/azure/azure-arc/servers/agent-overview#supported-operating-systems) ausgeführt wird.
-    - Stellen Sie sicher, das dem Azure-Konto die [erforderlichen Azure-Rollen](/azure/azure-arc/servers/agent-overview#required-permissions) zugewiesen sind.
-    - Achten Sie darauf, dass die [erforderlichen URLs](/azure/azure-arc/servers/agent-overview#networking-configuration) nicht blockiert werden, wenn die ermittelten Server eine Verbindung über eine Firewall oder einen Proxyserver herstellen, um über das Internet zu kommunizieren.
-    - Sehen Sie sich die für Azure Arc [unterstützten Regionen](/azure/azure-arc/servers/overview#supported-regions) an. 
+    -  Während des Onboardings in Arc wird der [Azure Arc Hybrid Connected Machine-Agent](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) auf den ermittelten Servern installiert. Für die Agent-Installation müssen Sie Anmeldeinformationen mit Administratorberechtigungen auf den Servern angeben. Geben Sie dazu unter Linux das root-Konto und unter Windows ein Konto an, das der Gruppe „Lokale Administratoren“ angehört. 
+    - Vergewissern Sie sich, dass auf den Servern ein [unterstütztes Betriebssystem](../azure-arc/servers/agent-overview.md#supported-operating-systems) ausgeführt wird.
+    - Stellen Sie sicher, das dem Azure-Konto die [erforderlichen Azure-Rollen](../azure-arc/servers/agent-overview.md#required-permissions) zugewiesen sind.
+    - Achten Sie darauf, dass die [erforderlichen URLs](../azure-arc/servers/agent-overview.md#networking-configuration) nicht blockiert werden, wenn die ermittelten Server eine Verbindung über eine Firewall oder einen Proxyserver herstellen, um über das Internet zu kommunizieren.
+    - Sehen Sie sich die für Azure Arc [unterstützten Regionen](../azure-arc/servers/overview.md#supported-regions) an. 
     - Azure Arc-fähige Server unterstützen bis zu 5.000 Computerinstanzen in einer Ressourcengruppe.
 
 
@@ -132,12 +135,13 @@ Wenn der unten aufgeführte Fehlercode nicht angezeigt wird oder wenn dieser mit
 Entweder sind die [Voraussetzungen](./migrate-support-matrix-physical.md) für die Verbindung mit dem Server nicht erfüllt, oder es liegen Netzwerkprobleme beim Herstellen einer Verbindung mit dem Server vor, z. B. einige Proxyeinstellungen.
 
 **Empfohlene Aktionen**   
-- Stellen Sie sicher, dass der Server die Voraussetzungen und Portzugriffsanforderungen erfüllt, wie [hier](https://go.microsoft.com/fwlink/?linkid=2134728)dokumentiert. 
-- Fügen Sie die IP-Adressen der Remotecomputer (ermittelte Server) der WinRM TrustedHosts-Liste auf der Azure Migrate Appliance hinzu, und wiederholen Sie den Vorgang. 
+- Stellen Sie sicher, dass der Server die [Voraussetzungen](#before-you-get-started) und [Portzugriffsanforderungen](./migrate-support-matrix-physical.md) erfüllt. 
+- Fügen Sie die IP-Adressen der Remotecomputer (ermittelte Server) der WinRM TrustedHosts-Liste auf der Azure Migrate Appliance hinzu, und wiederholen Sie den Vorgang. Dies soll eingehende Remoteverbindungen auf Servern zulassen: _Windows:_ WinRM-Port 5985 (HTTP) und _Linux:_ SSH-Port 22 (TCP).
 - Vergewissern Sie sich, dass Sie auf der Appliance die richtige Authentifizierungsmethode für die Verbindung mit dem Server ausgewählt haben. 
    > [!Note] 
    > Azure Migrate unterstützt sowohl die kennwortbasierte als auch die auf SSH-Schlüsseln basierende Authentifizierung für Linux-Server.
-- Wenn das Problem weiterhin besteht, übermitteln Sie den Fall an den Microsoft-Support, und geben Sie die Computer-ID der Appliance an (zu finden in der Fußzeile des Appliance-Konfigurations-Managers).    
+- Wenn das Problem weiterhin besteht, übermitteln Sie den Fall an den Microsoft-Support, und geben Sie die Computer-ID der Appliance an (zu finden in der Fußzeile des Appliance-Konfigurations-Managers).     
+   
 
 ### <a name="error-60002---invalidservercredentials"></a>Fehler 60002: InvalidServerCredentials  
 
@@ -157,7 +161,7 @@ Die Verbindung mit dem Server kann nicht hergestellt werden. Entweder haben Sie 
 **Empfohlene Aktionen**  
 - Stellen Sie sicher, dass auf dem betroffenen Server die neuesten Kernel- und Betriebssystemupdates installiert sind.
 - Stellen Sie sicher, dass zwischen der Appliance und dem Server keine Netzwerklatenz besteht. Es wird empfohlen, die Appliance und den Quellserver in derselben Domäne zu verwenden, um Latenzprobleme zu vermeiden.
-- Stellen Sie von der Appliance aus eine Verbindung mit dem betroffenen Server her, und führen Sie die [hier beschriebenen Befehle](./troubleshoot-appliance-discovery.md) aus, um zu überprüfen, ob NULL-Werte oder leere Daten zurückgegeben werden.
+- Stellen Sie von der Appliance aus eine Verbindung mit dem betroffenen Server her, und führen Sie die [hier beschriebenen Befehle](./troubleshoot-appliance.md) aus, um zu überprüfen, ob NULL-Werte oder leere Daten zurückgegeben werden.
 - Wenn das Problem weiterhin besteht, übermitteln Sie den Fall an den Microsoft-Support, und geben Sie die Computer-ID der Appliance an (zu finden in der Fußzeile des Appliance-Konfigurations-Managers).  
 
 ### <a name="error-60108---softwareinventorycredentialnotassociated"></a>Fehler 60108: SoftwareInventoryCredentialNotAssociated  

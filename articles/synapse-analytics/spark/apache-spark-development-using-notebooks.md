@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 4635848032d60c056b525d4ece0d50ad2eaf6039
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: a0f4a8602b3f4b10ac1ef6ca1ac65e5bedc76210
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396764"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187395"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse-Notebooks in Azure Synapse Analytics
 
@@ -43,20 +43,36 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 |Gliederung (Inhaltsverzeichnis)| Nicht unterstützt |&#9745;|
 |Variablen-Explorer| Nicht unterstützt |&#9745;|
 |Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht verfügbar |
-|Rückgängigmachen des Zellenvorgangs| &#9745;| Nicht verfügbar |
+|Kommentieren von Codezellen| Nicht unterstützt | &#9745;|
 
 
 ## <a name="create-a-notebook"></a>Erstellen eines Notebooks
 
 Ein Notebook kann auf zwei Arten erstellt werden. Sie können ein neues Notebook erstellen oder ein vorhandenes Notebook aus dem **Objekt-Explorer** in einen Synapse-Arbeitsbereich importieren. Synapse-Notebooks erkennen Standard Jupyter Notebook IPYNB-Dateien.
 
-![Erstellen und Importieren von Notebooks](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
+![Ein Screenshot, der das Erstellen eines neuen Notebooks oder Importieren eines Notebooks zeigt](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>Entwickeln von Notebooks
 
 Notebooks bestehen aus Zellen, bei denen es sich um einzelne Code- oder Textblöcke handelt, die unabhängig oder als Gruppe ausgeführt werden können.
 
-### <a name="add-a-cell"></a>Hinzufügen einer Zelle
+Wir bieten umfangreiche Vorgänge zum Entwickeln von Notebooks:
++ [Hinzufügen einer Zelle](#add-a-cell)
++ [Festlegen einer primären Sprache](#set-a-primary-language)
++ [Verwenden mehrerer Sprachen](#use-multiple-languages)
++ [Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen](#use-temp-tables-to-reference-data-across-languages)
++ [IDE-artiges IntelliSense](#ide-style-intellisense)
++ [Codeausschnitte](#code-snippets)
++ [Textzelle mit Symbolleisten-Schaltflächen formatieren](#format-text-cell-with-toolbar-buttons)
++ [Rückgängigmachen des Zellenvorgangs](#undo-cell-operation)
++ [Kommentieren von Codezellen](#Code-cell-commenting)
++ [Verschieben einer Zelle](#move-a-cell)
++ [Löschen einer Zelle](#delete-a-cell)
++ [Reduzieren einer Zelleneingabe](#collapse-a-cell-input)
++ [Reduzieren einer Zellenausgabe](#collapse-a-cell-output)
++ [Notebook-Gliederung](#notebook-outline)
+
+<h3 id="add-a-cell">Hinzufügen einer Zelle</h3>
 
 Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
@@ -64,11 +80,11 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
 1. Erweitern Sie die Schaltfläche oben links **+ Zelle**, und wählen Sie **Codezelle hinzufügen** oder **Textzelle hinzufügen** aus.
 
-    ![Hinzufügen-Zelle-mit-Schaltfläche-Zelle](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
+    ![Ein Screenshot, der „Eine Zelle mit der Schaltfläche Zelle hinzufügen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
 2. Zeigen Sie mit dem Mauszeiger auf den Bereich zwischen zwei Zellen, und wählen Sie **Code hinzufügen** oder **Text hinzufügen** aus.
 
-    ![Hinzufügen-Zelle-Zwischenraum](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
+    ![Ein Screenshot, der „Eine Zelle zwischen den Zwischenräumen hinzufügen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
 3. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A**, um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B**, um eine Zelle unterhalb der aktuellen Zelle einzufügen.
 
@@ -76,16 +92,16 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 1. Erweitern Sie oben links die Schaltfläche **+ Zelle**, und wählen Sie **Codezelle** oder **Markdown-Zelle** aus.
-    ![add-azure-notebook-cell-with-cell-button](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
+    ![Ein Screenshot, der „Eine Zelle mit der Schaltfläche Zelle hinzufügen“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
 2. Wählen Sie das Pluszeichen am Anfang einer Zelle und anschließend **Codezelle** oder **Markdown-Zelle** aus.
 
-    ![add-azure-notebook-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
+    ![Ein Screenshot, der „Eine Zelle zwischen den Zwischenräumen hinzufügen“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
 
 3. Verwenden Sie [aznb-Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A**, um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B**, um eine Zelle unterhalb der aktuellen Zelle einzufügen.
 
 ---
 
-### <a name="set-a-primary-language"></a>Festlegen einer primären Sprache
+<h3 id="set-a-primary-language">Festlegen einer primären Sprache</h3>
 
 Synapse-Notebooks unterstützen vier Apache Spark-Sprachen:
 
@@ -96,9 +112,10 @@ Synapse-Notebooks unterstützen vier Apache Spark-Sprachen:
 
 Sie können die primäre Sprache für neu hinzugefügte Zellen in der Dropdownliste in der oberen Befehlsleiste festlegen.
 
-   ![Standard-Synapse-Sprache](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
+   ![Ein Screenshot der die „Standard-Synapse-Sprache“ zeigt](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
 
-### <a name="use-multiple-languages"></a>Verwenden mehrerer Sprachen
+
+<h3 id="use-multiple-languages">Verwenden mehrerer Sprachen</h3>
 
 Sie können in einem Notebook mehrere Sprachen verwenden, indem Sie den richtigen Magic-Befehl für die Sprache am Anfang einer Zelle angeben. In der folgenden Tabelle werden die Magic-Befehle zum Wechseln von Zellensprachen aufgelistet.
 
@@ -111,9 +128,10 @@ Sie können in einem Notebook mehrere Sprachen verwenden, indem Sie den richtige
 
 Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage mit dem Magic-Befehl **%%pyspark** schreiben können oder eine SparkSQL-Abfrage mit dem Magic-Befehl **%%sql** in einem **Spark (Scala)** -Notebook. Beachten Sie, dass die primäre Sprache für das Notebook auf PySpark festgelegt ist.
 
-   ![Synapse-Spark-Magic-Befehle](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Ein Screenshot der die „Magic-Befehle“ von Synapse Spark zeigt](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen
+
+<h3 id="use-temp-tables-to-reference-data-across-languages&quot;>Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen</h3>
 
 Sie können in einem Synapse-Notebook nicht direkt auf Daten oder Variablen in verschiedenen Sprachen verweisen. In Spark kann auf eine temporäre Tabelle in verschiedenen Sprachen verwiesen werden. Im Folgenden finden Sie ein Beispiel, wie Sie einen `Scala`-Datenrahmen in `PySpark` und `SparkSQL` mittels einer temporären Spark-Tabelle als Problemumgehung lesen können.
 
@@ -139,7 +157,7 @@ Sie können in einem Synapse-Notebook nicht direkt auf Daten oder Variablen in v
    myNewPythonDataFrame = spark.sql("SELECT * FROM mydataframetable")
    ```
 
-### <a name="ide-style-intellisense"></a>IDE-artiges IntelliSense
+<h3 id="ide-style-intellisense">IDE-artiges IntelliSense</h3>
 
 Synapse-Notebooks sind in den Monaco-Editor integriert, um den Zellen-Editor mit IDE-style IntelliSense auszustatten. Syntaxhervorhebung, Fehlermarkierungen und automatische Codevervollständigungen helfen Ihnen dabei, Code zu schreiben und Probleme schneller zu erkennen.
 
@@ -155,23 +173,22 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 >[!Note]
 > Eine aktive Spark-Sitzung ist erforderlich, um von der Codevervollständigung für Variablen, der Codevervollständigung für Systemfunktionen, der Codevervollständigung für Benutzerfunktionen für .NET für Spark (C#) zu profitieren.
 
-### <a name="code-snippets"></a>Codeausschnitte
+<h3 id="code-snippets">Codeausschnitte</h3>
 
 Synapse-Notebooks stellen Codeausschnitte bereit, die die Eingabe häufig verwendeter Codemuster erleichtern, wie z. B. das Konfigurieren Ihrer Spark-Sitzung, das Lesen von Daten als Spark DataFrame oder das Zeichnen von Diagrammen mit matplotlib usw.
 
-Codeausschnitte werden in [IntelliSense](#ide-style-intellisense) gemeinsam mit anderen Vorschlägen angezeigt. Der Inhalt der Codeausschnitte richtet sich nach der Codezellensprache. Sie können die verfügbaren Ausschnitte anzeigen, indem Sie **Snippet** oder beliebige Schlüsselwörter eingeben, die im Titel für den Ausschnitt im Codezellen-Editor angezeigt werden. Wenn Sie beispielsweise **read** eingeben, wird eine Liste der Codeausschnitte zum Lesen von Daten aus verschiedenen Datenquellen angezeigt.
+Codeausschnitte werden in [Tastaturkurzbefehlen im IDE Stil in IntelliSense](#ide-style-intellisense) gemeinsam mit anderen Vorschlägen angezeigt. Der Inhalt der Codeausschnitte richtet sich nach der Codezellensprache. Sie können die verfügbaren Ausschnitte anzeigen, indem Sie **Snippet** oder beliebige Schlüsselwörter eingeben, die im Titel für den Ausschnitt im Codezellen-Editor angezeigt werden. Wenn Sie beispielsweise **read** eingeben, wird eine Liste der Codeausschnitte zum Lesen von Daten aus verschiedenen Datenquellen angezeigt.
 
-![Synapse-Codeausschnitte](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+![Animierte GIF-Datei mit Synapse-Codeausschnitten](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
 
 
-
-### <a name="format-text-cell-with-toolbar-buttons"></a>Textzelle mit Symbolleisten-Schaltflächen formatieren
+<h3 id="format-text-cell-with-toolbar-buttons">Textzelle mit Symbolleisten-Schaltflächen formatieren</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
 Sie können die Formatschaltflächen auf der Textzellen-Symbolleiste verwenden, um allgemeine Markdown-Aktionen durchzuführen. Dies umfasst das Formatieren von Text als fett oder kursiv, das Einfügen von Codeausschnitten, das Einfügen einer unsortierten Liste, das Einfügen einer sortierten Liste sowie das Einfügen von Bildern aus URLs.
 
-  ![Synapse-Text-Zelle-Symbolleiste](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![Ein Screenshot, der die „Synapse-Textzellensymbolleiste“ zeigt](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
@@ -179,20 +196,58 @@ Die Symbolleiste mit den Formatschaltflächen ist für das Notebook der Vorschau
 
 ---
 
-### <a name="undo-cell-operations"></a>Rückgängigmachen von Zellenvorgängen
+<h3 id="undo-cell-operation">Rückgängigmachen des Zellenvorgangs</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
-Wählen Sie die Schaltfläche **Rückgängig**, oder drücken Sie **STRG+Z**, um den letzten Zellenvorgang aufzuheben. Sie können jetzt die bis zu letzten 20 zurückliegenden Zellenaktionen rückgängig machen. 
+Wählen Sie die Schaltfläche **Rückgängig** / **Wiederholen**, oder drücken Sie **STRG+Z** / **STRG+Y** um den letzten Zellenvorgang aufzuheben. Sie können jetzt bis zu 20 der letzten zurückliegenden Zellenaktionen rückgängig machen/wiederherstellen. 
 
-   ![Synapse-Rückgängig-Zellen](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![Ein Screenshot, der die „Synapse-Rückgängig-Zellen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Das Rückgängigmachen des Zellenvorgangs ist für das Notebook der Vorschau noch nicht verfügbar. 
+Wählen Sie die Schaltfläche **Rückgängig** / **Wiederholen** oder drücken Sie **Z** / **Umschalt+Y** um die letzten Zellenvorgänge aufzuheben. Sie können jetzt bis zu 10 der letzten zurückliegenden Zellenaktionen rückgängig machen/wiederherstellen.
+
+   ![Ein Screenshot, der die „Synapse-Rückgängig-Zellen“ in Azure Notebooks zeigt](./media/apache-spark-development-using-notebooks/synapse-undo-cells-aznb.png)
+
+Unterstützte Rückgängig-Zellenvorgänge:
++ Zelle einfügen/löschen: Sie können die Löschvorgänge widerrufen, indem Sie **Rückgängig** auswählen. Der Textinhalt wird zusammen mit der Zelle beibehalten.
++ Eine Zelle neu anordnen.
++ Umschalten von Parametern.
++ Konvertieren zwischen der Codezelle und der Markdown-Zelle.
+
+> [!NOTE]
+> Die Textvorgänge in der Zelle und die Codezellenkommentare sind nicht rückgängig zu machen.
+
 
 ---
 
-### <a name="move-a-cell"></a>Verschieben einer Zelle
+<h3 id="Code-cell-commenting">Kommentieren von Codezellen</h3>
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
+
+Wird nicht unterstützt.
+
+# <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
+
+Wir unterstützen vorerst das Kommentieren einer Codezelle im Vorschauversion von Notebook.
+
+1. Wählen Sie auf der Notebook-Symbolleiste die Schaltfläche **Kommentare,** um den Bereich **Kommentare** zu öffnen.
+
+   ![Ein Screenshot, der die Schaltfläche für „Synapse-Kommentare“ zeigt](./media/apache-spark-development-using-notebooks/synapse-comments-button.png)
+
+2. Wählen Sie Code in der Codezelle aus, klicken Sie im Bereich **Kommentare** auf **Neu**, fügen Sie Kommentare hinzu, und klicken Sie dann auf die Schaltfläche **Kommentar posten**, um zu speichern.
+
+   ![Ein Screenshot des neuen Synapse-Kommentars](./media/apache-spark-development-using-notebooks/synapse-new-comments.png)
+
+3. Sie können einen **Kommentar bearbeiten**, einen **Thread auflösen** oder einen **Thread löschen** ausführen, indem Sie neben Ihrem Kommentar auf die Schaltfläche **Mehr** klicken. 
+
+   ![Ein Screenshot, der „Kommentar bearbeiten“ in Synapse zeigt](./media/apache-spark-development-using-notebooks/synapse-edit-comments.png)
+
+---
+
+
+<h3 id="move-a-cell">Verschieben einer Zelle</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
@@ -200,16 +255,16 @@ Wählen Sie die Auslassungspunkte (...) aus, um ganz rechts auf das Menü mit we
 
 Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **STRG+ALT+↑**, um die aktuelle Zelle nach oben zu verschieben. Drücken Sie **STRG+ALT+↓**, um die aktuelle Zelle nach unten zu verschieben.
 
-   ![eine-Zelle-verschieben](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
+   ![Ein Screenshot, der „Eine Zelle verschieben“ zeigt](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Klicken Sie auf die linke Seite einer Zelle, und ziehen Sie sie an die gewünschte Position. 
-    ![Synapse-Zellen-Verschieben](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
+    ![Animiertes GIF von einer Zellverschiebung in Synapse](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
 
 ---
 
-### <a name="delete-a-cell"></a>Löschen einer Zelle
+<h3 id="delete-a-cell">Löschen einer Zelle</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
@@ -217,7 +272,7 @@ Um eine Zelle zu löschen, wählen Sie die Auslassungspunkte (...) aus, um ganz 
 
 Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **D,D**, um die aktuelle Zelle zu löschen.
   
-   ![eine-Zelle-löschen](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
+   ![Ein Screenshot, der „Eine Zelle löschen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
@@ -225,44 +280,44 @@ Wählen Sie zum Löschen einer Zelle die Schaltfläche „Löschen“ auf der re
 
 Sie können auch [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode) verwenden. Drücken Sie **UMSCHALT+D**, um die aktuelle Zelle zu löschen. 
 
-   ![azure-notebook-delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
+   ![Ein Screenshot, der „Eine Zelle löschen“ in Azure-Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
 
 ---
 
-### <a name="collapse-a-cell-input"></a>Reduzieren einer Zelleneingabe
+<h3 id="collapse-a-cell-input">Reduzieren einer Zelleneingabe</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
 Wählen Sie am unteren Rand der aktuellen Zelle die Pfeilschaltfläche aus, um sie zu reduzieren. Um sie zu erweitern, wählen Sie die Pfeilschaltfläche aus, während die Zelle reduziert ist.
 
-   ![Zelleneingabe-reduzieren](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
+   ![Ein Animiertes GIF von „Reduzieren einer Zelleneingabe“](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Wählen Sie die Auslassungspunkte für **Weitere Befehle** (...) auf der Zellensymbolleiste und dann **Eingabe** aus, um die Eingabe der aktuellen Zelle zu reduzieren. Um sie zu erweitern, wählen Sie **Eingabe ausgeblendet** aus, während die Zelle reduziert ist.
 
-   ![azure-notebook-collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
+   ![Ein Animiertes GIF von „Reduzieren einer Zelleneingabe“ in Azure Notebook](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
 
 ---
 
-### <a name="collapse-a-cell-output"></a>Reduzieren einer Zellenausgabe
+<h3 id="collapse-a-cell-output">Reduzieren einer Zellenausgabe</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
 Wählen Sie links oben in der aktuellen Zellenausgabe die Schaltfläche **Ausgabe reduzieren** aus, um sie zu reduzieren. Um sie zu erweitern, wählen Sie **Zellenausgabe anzeigen** aus, während die Zellenausgabe reduziert ist.
 
-   ![Zellenausgabe-reduzieren](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+   ![Ein Animiertes GIF von „Reduzieren einer Zellenausgabe“](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Wählen Sie die Auslassungspunkte für **Weitere Befehle** (...) auf der Zellensymbolleiste und dann **Ausgabe** aus, um die Ausgabe der aktuellen Zelle zu reduzieren. Um sie zu erweitern, wählen Sie dieselbe Schaltfläche aus, während die Ausgabe der Zelle ausgeblendet ist.
 
-   ![azure-notebook-collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
+   ![Ein Animiertes GIF von „Reduzieren einer Zellenausgabe“ in Azure Notebook](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 
 
 ---
 
-### <a name="notebook-outline"></a>Notebook-Gliederung
+<h3 id="notebook-outline">Notebook-Gliederung</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
@@ -272,7 +327,7 @@ Wird nicht unterstützt.
 
 Das Feld „Gliederung (Inhaltsverzeichnis)“ stellt den ersten Markdownheader einer beliebigen Markdownzelle in einem Randleistenfenster für die schnelle Navigation dar. Die Gliederungsrandleiste ist in der Größe veränderbar und reduzierbar, um den Bildschirm optimal anzupassen. Sie können die Schaltfläche **Gliederung** auf der Notebook-Befehlsleiste auswählen, um die Randleiste zu öffnen oder auszublenden.
 
-![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+![Ein Screenshot, der „Ein Umriss von Azure-Notebook" zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
 
 ---
 
@@ -287,7 +342,7 @@ Es gibt mehrere Methoden, um den Code in einer Zelle auszuführen.
 
 1. Zeigen Sie mit dem Mauszeiger auf die Zelle, die Sie ausführen möchten, und wählen Sie die Schaltfläche **Zelle ausführen** aus, oder drücken Sie **STRG+EINGABE**.
 
-   ![Zelle-1-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+   ![Ein Screenshot, der „Ausführen einer Zelle 1“ zeigt](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
   
 2. Verwenden Sie [Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **UMSCHALT+EINGABE**, um die aktuelle Zelle auszuführen und die Zelle darunter auszuwählen. Drücken Sie **ALT+EINGABE**, um die aktuelle Zelle auszuführen und darunter eine neue Zelle einzufügen.
 
@@ -296,7 +351,7 @@ Es gibt mehrere Methoden, um den Code in einer Zelle auszuführen.
 ### <a name="run-all-cells"></a>Ausführen aller Zellen
 Wählen Sie die Schaltfläche **Alle ausführen** aus, um alle Zellen im aktuellen Notebook nacheinander auszuführen.
 
-   ![alle-Zellen-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+   ![Ein Screenshot, der „Ausführen aller Zellen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
 ### <a name="run-all-cells-above-or-below"></a>Ausführen aller darüber- oder darunterliegenden Zellen
@@ -305,13 +360,13 @@ Wählen Sie die Schaltfläche **Alle ausführen** aus, um alle Zellen im aktuell
 
 Um ganz rechts auf das Menü mit weiteren Zellenaktionen zuzugreifen, wählen Sie die Auslassungspunkte ( **...** ) aus. Wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen Zelle nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
 
-   ![Zellen-oberhalb-oder-unterhalb-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
+   ![Ein Screenshot, der „Ausführen von Zellen, die sich oberhalb oder unterhalb befinden“ zeigt](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Erweitern Sie die Dropdownliste über die Schaltfläche **Alle ausführen**, und wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen Zelle nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
 
-   ![azure-notebook-run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+   ![Ein Screenshot, der „Ausführen von Zellen, die sich oberhalb oder unterhalb befinden“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
 
 ---
 
@@ -319,12 +374,12 @@ Erweitern Sie die Dropdownliste über die Schaltfläche **Alle ausführen**, und
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 Wählen Sie die Schaltfläche **Alle abbrechen** aus, um die ausgeführten oder in der Warteschlange wartenden Zellen abzubrechen. 
-   ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+   ![Ein Screenshot, der „Abbrechen aller Zellen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Wählen Sie die Schaltfläche **Alle abbrechen** aus, um die ausgeführten oder in der Warteschlange wartenden Zellen abzubrechen. 
-   ![azure-notebook-cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
+   ![Ein Screenshot, der „Abbrechen aller Zellen“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
@@ -338,14 +393,17 @@ Wird nicht unterstützt.
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als fünf ist.  Der Befehl ```%run``` unterstützt derzeit nur die Übergabe eines Notebookpfads als Parameter. 
+Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als **fünf** ist.  
 
-Beispiel: ``` %run /path/notebookA ```.
+Beispiel: ``` %run /<path>/Notebook1 { "parameterInt": 1, "parameterFloat": 2.5, "parameterBool": true,  "parameterString": "abc" } ```.
 
 Notebookverweise funktionieren sowohl im interaktiven Modus als auch in der Synapse-Pipeline.
 
 > [!NOTE]
-> Die Notebooks, auf die verwiesen wird, müssen veröffentlicht werden. Sie müssen die Notebooks veröffentlichen, um darauf verweisen zu können. Synapse Studio erkennt die nicht veröffentlichten Notebooks aus dem Git-Repository nicht. 
+> - Der ```%run```-Befehl unterstützt derzeit nur das Übergeben eines absoluten Pfads oder Notebooknamens nur als Parameter, ein relativer Pfad wird nicht unterstützt. 
+> - Der ```%run```-Befehl unterstützt derzeit nur bis zu 4 Parameterwerttypen: `int`, `float`, `bool`, `string`. Der Variablenersetzungsvorgang wird nicht unterstützt.
+> - Die Notebooks, auf die verwiesen wird, müssen veröffentlicht werden. Sie müssen die Notebooks veröffentlichen, um darauf verweisen zu können. Synapse Studio erkennt die nicht veröffentlichten Notebooks aus dem Git-Repository nicht. 
+> - Referenzierte Notebooks unterstützen keine Anweisung, deren die Tiefe größer als **fünf** ist.
 >
 
 ---
@@ -362,7 +420,7 @@ Synapse-Notebooks verfügen über einen integrierten Variablen-Explorer, in dem 
 
 Sie können die Schaltfläche **Variablen** in der Notebook-Befehlsleiste auswählen, um den Variablen-Explorer zu öffnen oder auszublenden.
 
-![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+![Ein Screenshot, der den „Variablen-Explorer“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
 
 
 ---
@@ -371,7 +429,7 @@ Sie können die Schaltfläche **Variablen** in der Notebook-Befehlsleiste auswä
 
 Unterhalb der Zelle wird ein schrittweiser Zellenausführungsstatus angezeigt, damit Sie den aktuellen Fortschritt verfolgen können. Nachdem die Ausführung der Zelle abgeschlossen wurde, wird eine Ausführungszusammenfassung mit Gesamtdauer und Endzeit angezeigt, die zur späteren Bezugnahme dort auch aufbewahrt wird.
 
-![Zellenstatus](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
+![Ein Screenshot, der den „Zellenstatus“ zeigt](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
 
 ### <a name="spark-progress-indicator"></a>Spark-Statusanzeige
 
@@ -379,13 +437,13 @@ Ein Synapse-Notebook basiert ausschließlich auf Spark. Codezellen werden im ser
 Anhand der Anzahl der Aufgaben pro Auftrag oder Phase können Sie die parallele Ebene Ihres Spark-Auftrags identifizieren. Sie können außerdem die Spark-Benutzeroberfläche eines spezifischen Auftrags (oder einer Phase) erweitern, indem Sie den Link im Auftragsnamen (oder Phasennamen) auswählen.
 
 
-![Spark-Statusanzeige](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
+![Ein Screenshot, der eine „Spark-Statusanzeige“ zeigt](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
 
 ### <a name="spark-session-config"></a>Spark-Sitzungskonfiguration
 
 Sie können in **Sitzung konfigurieren** die Timeoutdauer sowie die Anzahl und Größe der Executors angeben, die für die aktuelle Spark-Sitzung gelten sollen. Sie müssen die Spark-Sitzung neu starten, damit die Konfigurationsänderungen wirksam werden. Alle zwischengespeicherten Notebook-Variablen werden gelöscht.
 
-[![session-management](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
+[![Ein Screenshot, der die „Sitzungsverwaltung“ zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
 #### <a name="spark-session-config-magic-command"></a>Magic-Befehl config für Spark-Sitzung
 Sie können auch Spark-Sitzungseinstellungen über einen **%%configure**-Magic-Befehl angeben. Die Spark-Sitzung muss neu gestartet werden, damit die Einstellungen wirksam werden. Wir empfehlen Ihnen, **%%configure** am Anfang Ihres Notebooks auszuführen. Hier ist ein Beispiel. Die vollständige Liste der gültigen Parameter finden Sie unter https://github.com/cloudera/livy#request-body. 
@@ -393,18 +451,22 @@ Sie können auch Spark-Sitzungseinstellungen über einen **%%configure**-Magic-B
 ```json
 %%configure
 {
-    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
-    "driverMemory":"2g",
-    "driverCores":3,
-    "executorMemory":"2g",
-    "executorCores":2,
-    "jars":["myjar1.jar","myjar.jar"],
+    //You can get a list of valid parameters to config the session from https://github.com/cloudera/livy#request-body.
+    "driverMemory":"28g", // Recommended values: ["28g", "56g", "112g", "224g", "400g", "472g"]
+    "driverCores":4, // Recommended values: [4, 8, 16, 32, 64, 80]
+    "executorMemory":"28g",
+    "executorCores":4, 
+    "jars":["abfs[s]://<file_system>@<account_name>.dfs.core.windows.net/<path>/myjar.jar","wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>/myjar1.jar"],
     "conf":{
-        "spark.driver.maxResultSize":"10g"
+    //Example of standard spark property, to find more available properties please visit:https://spark.apache.org/docs/latest/configuration.html#application-properties.
+        "spark.driver.maxResultSize":"10g",
+    //Example of customized property, you can specify count of lines that Spark SQL returns by configuring "livy.rsc.sql.num-rows".
+        "livy.rsc.sql.num-rows&quot;:&quot;3000" 
     }
 }
 ```
 > [!NOTE]
+> - Es wird empfohlen, „DriverMemory“ und „ExecutorMemory“ in %%configure auf denselben Wert zu setzen. Dies gilt auch für „driverCores“ und „executorCores“.
 > - Sie können den Magic-Befehl für die Konfiguration der Spark-Sitzung in Synapse-Pipelines verwenden. Er wird nur wirksam, wenn er auf der obersten Ebene aufgerufen wird. Die im Notebook, auf das verwiesen wird, verwendete „%%configure“-Eigenschaft wird ignoriert.
 > - Die Spark-Konfigurationseigenschaften müssen im „conf“-Textkörper verwendet werden. Wir unterstützen keine Verweise auf oberster Ebene für die Spark-Konfigurationseigenschaften.
 >
@@ -460,7 +522,8 @@ df = spark.read.option("header", "true") \
 
 Sie können auf Daten im primären Speicherkonto direkt zugreifen. Es besteht keine Notwendigkeit, die geheimen Schlüssel bereitzustellen. Klicken Sie im Daten-Explorer mit der rechten Maustaste auf eine Datei, und wählen Sie **Neues Notebook** aus, um ein neues Notebook mit einem automatisch generierten Datenextraktor anzuzeigen.
 
-![Daten-in-Zelle](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+![Ein Screenshot, der von „Daten aus Zelle“ zeigt](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+
 
 ## <a name="ipython-widgets"></a>IPython-Widgets
 
@@ -491,7 +554,7 @@ Widgets sind ereignisbehaftete Python-Objekte, die eine Darstellung im Browser b
    
 3. Führen Sie die Zelle aus, und das Widget wird im Ausgabebereich angezeigt.
 
-   ![ipython-Widgets-Schieberegler](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
+   ![Ein Screenshot, der den „Schiebereglers für IPython-Widgets“ zeigt](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
 
 4. Sie können mehrere `display()`-Aufrufe verwenden, um dieselbe Widgetinstanz mehrmals zu rendern, wobei diese aber miteinander synchronisiert bleiben.
 
@@ -501,7 +564,7 @@ Widgets sind ereignisbehaftete Python-Objekte, die eine Darstellung im Browser b
    display(slider)
    ```
 
-   ![ipython-Widgets-Schieberegler](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
+   ![Ein Screenshot, der die „Schieberegler für IPython-Widgets“ zeigt](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
 
 5. Um zwei Widgets unabhängig voneinander zu rendern, erstellen Sie zwei Widgetinstanzen:
 
@@ -525,35 +588,36 @@ Widgets sind ereignisbehaftete Python-Objekte, die eine Darstellung im Browser b
 |Container-/Layoutwidgets|Box, HBox, VBox, GridBox, Accordion, Tabs, Stacked|
 
 
-### <a name="know-issue"></a>Bekanntes Problem
+### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Die folgenden Widgets werden noch nicht unterstützt. Sie können aber wie folgt eine Problemumgehung befolgen:
+1. Die folgenden Widgets werden noch nicht unterstützt. Sie können aber wie folgt eine Problemumgehung befolgen:
 
-|Funktionalität|Problemumgehung|
-|--|--|
-|`Output`-Widget|Sie können stattdessen die `print()`-Funktion verwenden, um Text in stdout zu schreiben.|
-|`widgets.jslink()`|Sie können die `widgets.link()`-Funktion verwenden, um zwei ähnliche Widgets zu verknüpfen.|
-|`FileUpload`-Widget| Noch nicht unterstützt.|
+   |Funktionalität|Problemumgehung|
+   |--|--|
+   |`Output`-Widget|Sie können stattdessen die `print()`-Funktion verwenden, um Text in stdout zu schreiben.|
+   |`widgets.jslink()`|Sie können die `widgets.link()`-Funktion verwenden, um zwei ähnliche Widgets zu verknüpfen.|
+   |`FileUpload`-Widget| Noch nicht unterstützt.|
+
+2. Die von Synapse bereitgestellte globale `display`-Funktion unterstützt nicht die Anzeige mehrerer Widgets in einem Aufruf (d. h. `display(a, b)`), was sich von der IPython-Funktion `display` unterscheidet.
+3. Wenn Sie ein Notebook schließen, das IPython-Widget enthält, können Sie es erst anzeigen oder damit interagieren, wenn Sie die entsprechende Zelle erneut ausführen.
 
 
 ---
-
-
 ## <a name="save-notebooks"></a>Speichern von Notebooks
 
 Sie können ein einzelnes Notebook oder alle Notebooks in Ihrem Arbeitsbereich speichern.
 
 1. Um an einem einzelnen Notebook vorgenommene Änderungen zu speichern, wählen Sie auf der Notebook-Befehlsleiste die Schaltfläche **Veröffentlichen** aus.
 
-   ![Notebook-veröffentlichen](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
+   ![Ein Screenshot, der die „Veröffentlichungseinstellungen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
 2. Um alle Notebooks in Ihrem Arbeitsbereich zu speichern, wählen Sie die Schaltfläche **Alle veröffentlichen** auf der Befehlsleiste des Arbeitsbereichs aus. 
 
-   ![alle-veröffentlichen](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
+   ![Ein Screenshot, der die Einstellung „Alle veröffentlichen“ zeigt](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
 
 In den Notebook-Eigenschaften können Sie konfigurieren, ob die Zellenausgabe beim Speichern eingeschlossen werden soll.
 
-   ![Notebook-Eigenschaften](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
+   ![Ein Screenshot, der die“ Notebookeigenschaften“ zeigt](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Magic-Befehle
 Sie können bekannte Jupyter-Magic-Befehle in Synapse-Notebooks verwenden. In der folgenden Liste finden Sie die derzeit verfügbaren Magic-Befehle. [Teilen Sie uns Ihre Anwendungsfälle auf GitHub mit](https://github.com/MicrosoftDocs/azure-docs/issues/new), damit wir weitere Magic-Befehle erstellen können, um Ihre Anforderungen zu erfüllen.
@@ -585,7 +649,7 @@ Verfügbare Zeilen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/int
 
 Wählen Sie in der oberen rechten Ecke **Zur Pipeline hinzufügen** aus, um ein Notebook zu einer vorhandenen Pipeline hinzuzufügen oder eine neue Pipeline zu erstellen.
 
-![Hinzufügen eines Notebooks zur Pipeline](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![Ein Screenshot der das „ Hinzufügen eines Notebooks zur Pipeline“ zeigt](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>Festlegen einer Parameterzelle
 
@@ -593,24 +657,24 @@ Wählen Sie in der oberen rechten Ecke **Zur Pipeline hinzufügen** aus, um ein 
 
 Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf das Menü für weitere Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
 
-![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+![Ein Screenshot, der das „Umschalten von Parametern“ zeigt](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Um Ihr Notebook zu parametrisieren, wählen Sie die Auslassungspunkte (...) aus, um auf der Zellensymbolleiste auf **Weitere Befehle** zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
 
-![azure-notebook-toggle-parameter](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
+![Ein Screenshot, der das „Umschalten von Parametern“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
 
 ---
 
-Azure Data Factory sucht nach der Parameterzelle und behandelt diese Zelle als Standard für die Parameter, die zur Ausführungszeit übermittelt werden. Die Ausführungs-Engine fügt eine neue Zelle mit Eingabeparametern unter der Parameterzelle hinzu, um die Standardwerte zu überschreiben. Wenn keine Parameterzelle angegeben ist, wird die Zelle ganz oben im Notebook eingefügt.
+Azure Data Factory sucht nach der Parameterzelle und behandelt diese Zelle als Standard für die Parameter, die zur Ausführungszeit übermittelt werden. Die Ausführungs-Engine fügt eine neue Zelle mit Eingabeparametern unter der Parameterzelle hinzu, um die Standardwerte zu überschreiben. 
 
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Zuweisen von Parameterwerten über eine Pipeline
 
 Sobald Sie ein Notebook mit Parametern erstellt haben, können Sie dieses über eine Pipeline mit der Synapse Analytics-Aktivität ausführen. Nachdem Sie die Aktivität zu Ihrem Pipelinecanvas hinzugefügt haben, können Sie die Parameterwerte auf der Registerkarte **Einstellungen** im Abschnitt **Basisparameter** festlegen. 
 
-![Zuweisen eines Parameters](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![Ein Screenshot, der das „Zuweisen eines Parameters“ zeigt](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 Beim Zuweisen von Parameterwerten können Sie die [Pipelineausdruckssprache](../../data-factory/control-flow-expression-language-functions.md) oder [Systemvariablen](../../data-factory/control-flow-system-variables.md) verwenden.
 
@@ -622,11 +686,11 @@ Beim Zuweisen von Parameterwerten können Sie die [Pipelineausdruckssprache](../
 
 1. Eine Zelle befindet sich im Befehlsmodus, wenn Sie kein Textcursor zur Eingabe auffordert. Wenn sich eine Zelle im Befehlsmodus befindet, können Sie das Notebook als Ganzes bearbeiten, aber keine Eingaben in einzelne Zellen vornehmen. Sie wechseln in den Befehlsmodus, indem Sie `ESC` drücken oder mit der Maus außerhalb des Editor-Bereichs einer Zelle klicken.
 
-   ![Befehlsmodus](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
+   ![Ein Screenshot, der den „Befehlsmodus“ zeigt](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. Der Bearbeitungsmodus wird durch einen Textcursor angezeigt, der Sie zur Eingabe im Editor-Bereich auffordert. Wenn sich eine Zelle im Bearbeitungsmodus befindet, können Sie etwas in die Zelle eingeben. Sie wechseln in den Bearbeitungsmodus, indem Sie `Enter` drücken oder mit der Maus auf den Editor-Bereich einer Zelle klicken.
    
-   ![Bearbeitungsmodus](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
+   ![Ein Screenshot der den „Bearbeitungsmodus“ zeigt](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>Tastenkombinationen im Befehlsmodus
 

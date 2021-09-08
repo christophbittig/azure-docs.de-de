@@ -8,12 +8,12 @@ ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7c1e265f473c1c6fb70fd97416722e7b863c429b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4f31567068b3b0cf1d11764ce8f609a5889c2e51
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503557"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462589"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -288,6 +288,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--content-type** string: gibt den Inhaltstyp der Datei an. Impliziert „no-guess-mime-type“. Wird beim Herunterladen zurückgegeben.
 
 **--decompress:** dekomprimiert Dateien beim Herunterladen automatisch, wenn ihr content-encoding-Wert angibt, dass sie komprimiert sind. Die unterstützten content-encoding-Werte sind `gzip` und `deflate`. Die Dateierweiterungen `.gz`/`.gzip` oder `.zz` sind nicht erforderlich, werden jedoch entfernt, falls vorhanden.
+
+**--disable-auto-decoding**    Standardmäßig FALSE, um die automatische Decodierung ungültiger Zeichen unter Windows zu aktivieren. Kann auf `true` festgelegt werden, um die automatische Decodierung zu deaktivieren.
 
 **--exclude-attributes** string (nur Windows): schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 

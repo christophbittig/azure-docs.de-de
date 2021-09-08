@@ -11,10 +11,10 @@ ms.custom:
 - devx-track-java
 - mode-api
 ms.openlocfilehash: f6f0520797a5c221f1c3e1ea60c22d1576bad07e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
+ms.lasthandoff: 08/21/2021
 ms.locfileid: "121736243"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java (altes Paket)

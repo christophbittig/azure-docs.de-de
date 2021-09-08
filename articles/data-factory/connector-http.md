@@ -1,19 +1,22 @@
 ---
-title: Kopieren von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
-description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen HTTP-Quelle mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren von Daten aus einer HTTP-Quelle
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen HTTP-Quelle mithilfe einer Kopieraktivität in eine Azure Data Factory- oder Azure Synapse Analytics-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: c04bf94b26535ec7791bfd0c2354432aaa6fc98e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 4463c3ffb8deaf0a88b978b39f3a52c83f3f8304
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485025"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303861"
 ---
-# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
+# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus einem HTTP-Endpunkt mit Azure Data Factory oder Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-http-connector.md)
@@ -21,7 +24,7 @@ ms.locfileid: "109485025"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einem HTTP-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory und Azure Synapse Analytics verwenden, um Daten von einem HTTP-Endpunkt zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 Die Unterschiede zwischen diesem HTTP-Connector, dem [REST-Connector](connector-rest.md) und dem [Webtabellenconnector](connector-web-table.md) sind die folgenden:
 
@@ -45,7 +48,7 @@ Sie können diesen HTTP-Connector für die folgenden Aufgaben verwenden:
 - Kopieren der HTTP-Antwort im jeweiligen Zustand oder Analysieren der HTTP-Antwort mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
-> Um eine HTTP-Anforderung für den Datenabruf zu testen, bevor Sie den HTTP-Connector in Data Factory konfigurieren, informieren Sie sich über die API-Spezifikation für Header- und Textanforderungen. Sie können Tools wie Postman oder einen Webbrowser für die Überprüfung verwenden.
+> Um eine HTTP-Anforderung für den Datenabruf zu testen, bevor Sie den HTTP-Connector konfigurieren, informieren Sie sich über die API-Spezifikation für Header- und Textanforderungen. Sie können Tools wie Postman oder einen Webbrowser für die Überprüfung verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,7 +58,31 @@ Sie können diesen HTTP-Connector für die folgenden Aufgaben verwenden:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie Data Factory-Entitäten definieren können, die spezifisch für den HTTP-Connector sind.
+## <a name="create-a-linked-service-to-an-http-source-using-ui"></a>Erstellen eines verknüpften Diensts mit einer HTTP-Quelle über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit einer HTTP-Quelle auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach HTTP, und wählen Sie den HTTP-Connector aus.
+
+    :::image type="content" source="media/connector-http/http-connector.png" alt-text="Ein Screenshot der einen HTTP-Connector zeigt":::.    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-http/configure-http-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration für einen verknüpften HTTP-Dienst zeigt":::.
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+In den folgenden Abschnitten finden Sie Details zu den Eigenschaften, mit denen Sie die Entitäten definieren können, die spezifisch für den HTTP-Connector sind.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -77,7 +104,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic**, **Digest** oder 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzername, der für den Zugriff auf den HTTP-Endpunkt verwendet werden soll. | Ja |
-| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
+| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
 
 **Beispiel**
 
@@ -111,7 +138,7 @@ Um ClientCertificate-Authentifizierung zu verwenden, legen Sie die Eigenschaft *
 |:--- |:--- |:--- |
 | embeddedCertData | Base64-codierte Zertifikatdaten. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher Ihres Computers für die selbstgehostete Integration Runtime installiert wurde. Ist nur anwendbar, wenn für die **connectVia**-Eigenschaft eine Integration Runtime vom Typ „selbstgehostet“ angegeben wird. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
-| password | Das Kennwort, das dem Zertifikat zugeordnet ist. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein |
+| password | Das Kennwort, das dem Zertifikat zugeordnet ist. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein |
 
 Wenn Sie **certThumbprint** für die Authentifizierung verwenden und das Zertifikat im persönlichen Speicher des lokalen Computers installiert wird, erteilen Sie der selbstgehosteten Integration Runtime Leseberechtigungen:
 
@@ -304,7 +331,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der ADF-Benutzeroberfläche für die Erstellung generiert wird.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der Benutzeroberfläche für die Dokumenterstellung generiert wird.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
@@ -401,4 +428,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).

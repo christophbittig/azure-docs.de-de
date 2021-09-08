@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 3786ac149847c61974fb079409d7d18beb16bdd8
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e61a7084a0dd05468716c7f94fb85b6968faf558
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536792"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126552"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -19,29 +19,81 @@ Der Funktionstrigger kann verwendet werden, um auf ein Ereignis zu reagieren, da
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](./functions-bindings-event-grid.md).
 
+> [!NOTE]
+> Event Grid-Trigger werden in einer internen Lastenausgleichs-App Service-Umgebung nicht nativ unterstützt. Der Trigger verwendet eine HTTP-Anforderung, die die Funktions-App ohne Gateway zum virtuellen Netzwerk nicht erreichen kann.
+
 ## <a name="example"></a>Beispiel
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 Ein Beispiel für einen HTTP-Trigger finden Sie unter [Empfangen von Ereignissen an einem HTTP-Endpunkt](../event-grid/receive-events.md).
 
+### <a name="version-3x"></a>Version 3.x
+
+Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `CloudEvent`:
+
+```cs
+using Azure.Messaging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class CloudEventTriggerFunction
+    {
+        [FunctionName("CloudEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] CloudEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.Type, e.Subject);
+        }
+    }
+}
+```
+
+Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Azure.Messaging.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class EventGridEventTriggerFunction
+    {
+        [FunctionName("EventGridEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] EventGridEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.EventType, e.Subject);
+        }
+    }
+}
+```
+
 ### <a name="c-2x-and-higher"></a>C# (ab 2.x)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
 
 ```cs
-using Microsoft.Azure.EventGrid.Models;
+using System;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Extensions.Logging;
 
 namespace Company.Function
 {
-    public static class EventGridTriggerCSharp
+    public static class EventGridTriggerDemo
     {
-        [FunctionName("EventGridTest")]
-        public static void EventGridTest([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+        [FunctionName("EventGridTriggerDemo")]
+        public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
         {
             log.LogInformation(eventGridEvent.Data.ToString());
         }
@@ -71,54 +123,6 @@ namespace Company.Function
         public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
         {
             log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-        }
-    }
-}
-```
-
-### <a name="version-3x-preview"></a>Version 3.x (Vorschau)
-
-Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `CloudEvent`:
-
-```cs
-using Azure.Messaging;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-
-namespace Azure.Extensions.WebJobs.Sample
-{
-    public static class CloudEventTriggerFunction
-    {
-        [FunctionName("CloudEventTriggerFunction")]
-        public static void Run(
-            ILogger logger,
-            [EventGridTrigger] CloudEvent e)
-        {
-            logger.LogInformation("Event received {type} {subject}", e.Type, e.Subject);
-        }
-    }
-}
-```
-
-Das folgende Beispiel zeigt eine Functions 3.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Azure.Messaging.EventGrid;
-using Microsoft.Extensions.Logging;
-
-namespace Azure.Extensions.WebJobs.Sample
-{
-    public static class EventGridEventTriggerFunction
-    {
-        [FunctionName("EventGridEventTriggerFunction")]
-        public static void Run(
-            ILogger logger,
-            [EventGridTrigger] EventGridEvent e)
-        {
-            logger.LogInformation("Event received {type} {subject}", e.EventType, e.Subject);
         }
     }
 }
@@ -404,9 +408,10 @@ In Azure Functions 2.x und höher können Sie optional auch den folgenden Param
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` definiert Eigenschaften für die Felder, die für alle Ereignistypen gelten.
 
 > [!NOTE]
-> Wenn Sie in Functions v1 versuchen, eine Bindung an `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` herzustellen, zeigt der Compiler eine „Veraltet“-Meldung an, und weist Sie an, stattdessen `Microsoft.Azure.EventGrid.Models.EventGridEvent` zu verwenden. Verweisen Sie zum Verwenden des neueren Typs auf das [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)-NuGet-Paket, und qualifizieren Sie den `EventGridEvent`-Typnamen vollständig, indem Sie ihm das Präfix `Microsoft.Azure.EventGrid.Models` voranstellen.
+> Wenn Sie versuchen, eine Bindung an `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` herzustellen, zeigt der Compiler eine „Veraltet“-Meldung an, und weist Sie an, stattdessen `Microsoft.Azure.EventGrid.Models.EventGridEvent` zu verwenden. Verweisen Sie zum Verwenden des neueren Typs auf das [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)-NuGet-Paket, und qualifizieren Sie den `EventGridEvent`-Typnamen vollständig, indem Sie ihm das Präfix `Microsoft.Azure.EventGrid.Models` voranstellen.
 
-### <a name="additional-types"></a>Zusätzliche Typen 
+### <a name="additional-types"></a>Zusätzliche Typen
+
 Apps, die mindestens Version 3.0.0 der Event Grid-Erweiterung nutzen, verwenden den Typ `EventGridEvent` aus dem Namespace [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent). Darüber hinaus können Sie eine Bindung an den Typ `CloudEvent` aus dem Namespace [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) erstellen.
 
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
@@ -421,7 +426,7 @@ In Azure Functions 2.x und höher können Sie optional auch den folgenden Param
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` definiert Eigenschaften für die Felder, die für alle Ereignistypen gelten.
 
 > [!NOTE]
-> Wenn Sie in Functions v1 versuchen, eine Bindung an `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` herzustellen, zeigt der Compiler eine „Veraltet“-Meldung an, und weist Sie an, stattdessen `Microsoft.Azure.EventGrid.Models.EventGridEvent` zu verwenden. Verweisen Sie zum Verwenden des neueren Typs auf das [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)-NuGet-Paket, und qualifizieren Sie den `EventGridEvent`-Typnamen vollständig, indem Sie ihm das Präfix `Microsoft.Azure.EventGrid.Models` voranstellen. Informationen zum Verweisen auf NuGet-Pakete in einer C#-Skriptfunktion finden Sie unter [Verwenden von NuGet-Paketen](functions-reference-csharp.md#using-nuget-packages).
+> Wenn Sie versuchen, eine Bindung an `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` herzustellen, zeigt der Compiler eine „Veraltet“-Meldung an, und weist Sie an, stattdessen `Microsoft.Azure.EventGrid.Models.EventGridEvent` zu verwenden. Verweisen Sie zum Verwenden des neueren Typs auf das [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)-NuGet-Paket, und qualifizieren Sie den `EventGridEvent`-Typnamen vollständig, indem Sie ihm das Präfix `Microsoft.Azure.EventGrid.Models` voranstellen. Informationen zum Verweisen auf NuGet-Pakete in einer C#-Skriptfunktion finden Sie unter [Verwenden von NuGet-Paketen](functions-reference-csharp.md#using-nuget-packages).
 
 ### <a name="additional-types"></a>Zusätzliche Typen 
 Apps, die mindestens Version 3.0.0 der Event Grid-Erweiterung nutzen, verwenden den Typ `EventGridEvent` aus dem Namespace [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent). Darüber hinaus können Sie eine Bindung an den Typ `CloudEvent` aus dem Namespace [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) erstellen.

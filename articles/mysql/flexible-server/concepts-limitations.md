@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034519"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588326"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Einschränkungen in Azure Database for MySQL – Flexible Server (Vorschau)
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible Server-Dienst. [Allgemeine Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in der MySQL-Datenbank-Engine sind ebenfalls anwendbar. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Compute und Speicher](concepts-compute-storage.md).
@@ -59,7 +61,7 @@ Folgendes wird nicht unterstützt:
 - `SELECT ... INTO OUTFILE`: Wird im Dienst nicht unterstützt.
 
 ### <a name="supported"></a>Unterstützt
-- `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden.
+- `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden. Wenn Sie die MySQL-Clientversion ab 8.0 verwenden, müssen Sie außerdem den Parameter `-–local-infile=1` in der Verbindungszeichenfolge angeben.
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 

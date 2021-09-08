@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 323e6960a111d8227c14cf38046807ad6c1cada6
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122261977"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355420"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -259,7 +259,7 @@ Wenn Sie keine Version angeben, erhalten Sie eine Fehlermeldung mit einer Liste 
 
 ### <a name="swagger"></a>Swagger
 
-Eine vollständige Swagger-Definition für IMDS finden Sie unter: https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
+Eine vollständige Swagger-Definition für IMDS finden Sie unter: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 

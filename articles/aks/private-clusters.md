@@ -3,13 +3,13 @@ title: Erstellen eines privaten Azure Kubernetes Service-Clusters
 description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Cluster (AKS) erstellen.
 services: container-service
 ms.topic: article
-ms.date: 6/14/2021
-ms.openlocfilehash: 0e6e825f448ae97f211d9dace03254651012cadd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 8/30/2021
+ms.openlocfilehash: 39090732df8543fc28d1324882f3817402ad587a
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355850"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214311"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -72,7 +72,7 @@ Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwen
 
 - „System“ (Standardwert). Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
 - „None“; Standardwert wird „Öffentliches DNS“, was bedeutet, dass AKS keine private DNS-Zone erstellt (VORSCHAU).  
-- „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser privaten DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
+- „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ erfordert, dass Sie eine Private DNS-Zone in diesem Format für die globale Azure-Cloud erstellen: `privatelink.<region>.azmk8s.io`. In Zukunft benötigen Sie die Ressourcen-ID dieser Private DNS-Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem mindestens die Rollen `private dns zone contributor` und `vnet contributor` zugewiesen wurden.
   - Wenn sich „Private DNS Zone“ in einem anderen Abonnement als der AKS-Cluster befindet, müssen Sie Microsoft.ContainerServices in beiden Abonnements registrieren.
   - „fqdn-subdomain“ kann bei „CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID“ nur verwendet werden, um Unterdomänenfunktionen für `privatelink.<region>.azmk8s.io` bereitzustellen.
 
@@ -80,26 +80,6 @@ Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwen
 
 * Die AKS-Vorschau Version 0.5.19 oder höher
 * API-Version 2021-05-01 oder höher
-
-Wenn Sie das fqdn-subdomain-Feature verwenden möchten, müssen Sie das `EnablePrivateClusterFQDNSubdomain`-Featureflag für Ihr Abonnement aktivieren. 
-
-Registrieren Sie das Featureflag `EnablePrivateClusterFQDNSubdomain` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterFQDNSubdomain"
-```
-
-Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterFQDNSubdomain')].{Name:name,State:properties.state}"
-```
-
-Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone
 
@@ -122,30 +102,6 @@ Die Option „Öffentliches DNS“ kann genutzt werden, um Routingoptionen für 
 1. Wenn Sie bei Bereitstellung eines privaten AKS-Clusters `--enable-public-fqdn` angeben, erstellt AKS einen zusätzlichen A-Eintrag für seinen FQDN im öffentlichen Azure-DNS. Die Agent-Knoten verwendet weiterhin den A-Eintrag in der privaten DNS-Zone, um die private IP-Adresse des privaten Endpunkts für die Kommunikation mit dem API-Server aufzulösen.
 
 2. Wenn Sie sowohl `--enable-public-fqdn` als auch `--private-dns-zone none` verwenden, hat der Cluster nur einen öffentlichen FQDN. Wenn Sie diese Option verwenden, wird keine private DNS-Zone erstellt oder für die Namensauflösung des FQDN des API-Servers verwendet. Die IP-Adresse der API ist weiterhin privat und nicht öffentlich routingfähig.
-
-### <a name="register-the-enableprivateclusterpublicfqdn-preview-feature"></a>Registrieren der Previewfunktion `EnablePrivateClusterPublicFQDN`
-
-Um die neue API zum Aktivieren des öffentlichen FQDN für private Cluster zu verwenden, müssen Sie das Featureflag `EnablePrivateClusterPublicFQDN` in Ihrem Abonnement aktivieren.
-
-Registrieren Sie das Featureflag `EnablePrivateClusterPublicFQDN` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterPublicFQDN"
-```
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterPublicFQDN')].{Name:name,State:properties.state}"
-```
-
-Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>Erstellen eines privaten AKS-Clusters mit einer öffentlichen DNS-Adresse
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
@@ -251,8 +207,6 @@ Wie bereits erwähnt, ist das Peering virtueller Netzwerke eine Möglichkeit fü
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
 * Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster
 * Das Löschen oder Ändern des privaten Endpunkts im Kundensubnetz führt dazu, dass der Cluster nicht mehr funktioniert. 
-* Nachdem Kunden den A-Eintrag auf ihren eigenen DNS-Servern aktualisiert haben, würden diese Pods den apiserver-FQDN nach der Migration bis zu einem Neustart immer noch zu der älteren IP auflösen. Kunden müssen hostNetwork-Pods und default-DNSPolicy-Pods nach dem Migrieren der Steuerungsebene erneut starten.
-* Im Fall einer Wartung der Steuerungsebene ändert sich möglicherweise Ihre [AKS-IP](./limit-egress-traffic.md). In diesem Fall müssen Sie auf Ihrem benutzerdefinierten DNS-Server den A-Eintrag aktualisieren, der auf die private IP des API-Servers verweist, und alle benutzerdefinierten Pods oder Bereitstellungen mithilfe von hostNetwork neu starten.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider#az_provider_register

@@ -1,25 +1,25 @@
 ---
-title: Herstellen einer seriellen Verbindung mit Ihrem Azure Percept DK
+title: Herstellen einer seriellen Verbindung mit Azure Percept DK
 description: Einrichten einer seriellen Verbindung mit Ihrem Azure Percept DK mit einem seriellen USB-zu-TTL-Kabel
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b1cb975c65f2234892cfef919220c68ebf5b2dca
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: fa28fc845e8f15f06170a31d1d22892eca061bb7
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488265"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220414"
 ---
-# <a name="connect-to-your-azure-percept-dk-over-serial"></a>Herstellen einer seriellen Verbindung mit Ihrem Azure Percept DK
+# <a name="connect-to-azure-percept-dk-over-serial"></a>Herstellen einer seriellen Verbindung mit Azure Percept DK
 
 Führen Sie die folgenden Schritte aus, um über [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)eine serielle Verbindung mit Ihrem Azure Percept DK einzurichten.
 
 > [!WARNING]
-> Versuchen Sie **NICHT**, Ihr DevKit über eine serielle Verbindung zu verbinden, es sei denn, ein schwerwiegender Fehler liegt vor (z. B. wenn Sie Ihr Gerät gebrickt haben). Das Zerlegen des Trägerplatinengehäuses zum Anschließen des seriellen Kabels ist sehr schwierig und führt zur Beschädigung der WLAN-Antennenkabel.
+> **Wenn Sie ein Development Kit in der privaten Vorschau haben**, sollten Sie **NICHT** versuchen, Ihr Dev Kit über die serielle Schnittstelle zu verbinden, außer in extremen Ausnahmefällen (z. B. wenn Sie Ihr Gerät funktionsuntüchtig gemacht haben). Zum Herstellen einer seriellen Verbindung muss das Development Kit in privater Vorschau für den Zugriff auf die GPIO-Stifte disassembliert werden. Das Zerlegen des Trägerplatinengehäuses ist sehr schwierig und könnte zur Beschädigung der WLAN-Antennenkabel führen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,29 +32,11 @@ Führen Sie die folgenden Schritte aus, um über [PuTTY](https://www.chiark.gree
 
 ## <a name="start-the-serial-connection"></a>Starten der seriellen Verbindung
 
-1. Wenn Ihre Trägerplatine an eine 80/20-Schiene angebracht, entfernen Sie sie mit dem Inbusschlüssel (in der DevKit-Begrüßungskarte enthalten) von der Schiene.
+1. Verbinden Sie wie unten gezeigt das [serielle USB-zu-TTL-Kabel](https://www.adafruit.com/product/954) mit den drei GPIO-Stiften auf der Hauptplatine.
 
-1. Entfernen Sie die Schrauben an der Unterseite des Trägerplatinengehäuses, und ziehen Sie die Hauptplatine heraus.
+    :::image type="content" source="./media/how-to-connect-to-percept-dk-over-serial/apdk-serial-pins.jpg" alt-text="Serielle Stiftverbindungen auf der Trägerplatine.":::
 
-    > [!WARNING]
-    > Beim Entfernen der Hauptplatine werden die WLAN-Antennenkabel beschädigt. Führen Sie die serielle Verbindung **NICHT** durch, es sei denn, es ist die letzte Möglichkeit, Ihr Gerät wiederherzustellen.
-
-1. Entfernen Sie den Kühlkörper.
-
-1. Entfernen Sie den Rangierverteiler von den GPIO-Stiften.
-
-    > [!TIP]
-    > Beachten Sie die Ausrichtung des Rangierverteilers, bevor Sie ihn entfernen. Zeichnen Sie als Referenz z. B. einen Pfeil auf oder kleben Sie einen Aufkleber auf den Rangierverteiler, der in Richtung der Schaltung zeigt. Der Rangierverteiler ist nicht formschlüssig und kann beim Zusammenbau der Trägerplatine versehentlich verkehrt herum angeschlossen werden.
-
-1. Verbinden Sie wie unten gezeigt das [serielle USB-zu-TTL-Kabel](https://www.adafruit.com/product/954) mit den GPIO-Stiften auf der Hauptplatine.
-
-    - Verbinden Sie das schwarze Kabel (GND) mit Stift 6.
-    - Verbinden Sie das weiße Kabel (RX) mit Stift 8.
-    - Verbinden Sie das grüne Kabel (TX) mit Stift 10.
-
-    :::image type="content" source="./media/how-to-connect-to-percept-dk-over-serial/serial-connection-carrier-board.png" alt-text="Serielle Stiftverbindungen auf der Trägerplatine.":::
-
-1. Schalten Sie Ihr DevKit ein, und verbinden Sie das USB-Ende des seriellen Kabels mit Ihrem PC.
+1. Schalten Sie Ihr Development Kit ein, und verbinden Sie das USB-Ende des seriellen Kabels mit Ihrem PC.
 
 1. Rufen Sie unter Windows **Start** -> **Windows Update-Einstellungen** -> **Optionale Updates anzeigen** -> **Treiberupdates** auf. Suchen Sie in der Liste nach einem Update für „Seriell zu USB“, aktivieren Sie das Kontrollkästchen neben dem Update, und wählen Sie **Herunterladen und installieren** aus.  
 

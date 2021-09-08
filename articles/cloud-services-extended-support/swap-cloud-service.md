@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d9e30d77708ad5ae8c5249a15d28685a56fd0216
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748818"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462982"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Austauschen oder Wechseln von Bereitstellungen in Azure Cloud Services (erweiterter Support)
 
@@ -24,9 +24,14 @@ Nachdem Sie die Bereitstellungen ausgetauscht haben, können Sie Ihr neues Relea
 > [!NOTE]
 > Sie können nicht zwischen einer Azure Cloud Services-Bereitstellung (klassisch) und einer Azure Cloud Services-Bereitstellung (erweiterter Support) wechseln.
 
-Sie müssen einen Clouddienst als austauschbar festlegen, wenn Sie den zweiten Dienst eines Clouddienstpaars bereitstellen.
+Sie müssen festlegen, dass ein Clouddienst gegen einen anderen austauschbar ist, wenn Sie den zweiten Dienst eines Clouddienstpaars zum ersten Mal bereitstellen. Sobald das zweite Clouddienstpaar bereitgestellt ist, kann es in nachfolgenden Updates nicht mehr gegen einen vorhandenen Clouddienst ausgetauscht werden.
 
 Sie können die Bereitstellungen mithilfe einer ARM-Vorlage (Azure Resource Manager), dem Azure-Portal oder der REST-API austauschen.
+
+Bei der Bereitstellung des zweiten Clouddiensts ist für beide Clouddienste die SwappableCloudService-Eigenschaft so festgelegt, dass sie aufeinander verweisen. In einem kommenden Update dieser Clouddienste muss angegeben werden, dass diese Eigenschaft fehlerhaft ist, wobei eine Fehlermeldung zurückgegeben wird, die angibt, dass die SwappableCloudService-Eigenschaft nicht gelöscht oder aktualisiert werden kann.
+
+Nach dem Festlegen wird die SwappableCloudService-Eigenschaft als schreibgeschützte Eigenschaft behandelt. Sie kann nicht gelöscht oder in einen anderen Wert geändert werden. Das Löschen eines der Clouddienste (des austauschbaren Paars) führt dazu, dass die SwappableCloudService-Eigenschaft des verbleibenden Clouddiensts gelöscht wird.
+
 
 ## <a name="arm-template"></a>ARM-Vorlage
 
@@ -114,7 +119,7 @@ Der Austausch von Clouddiensten erfolgt in der Regel schnell, da es sich ledigli
 ## <a name="next-steps"></a>Nächste Schritte 
 
 * Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Azure Cloud Services (erweiterter Support).
-* Sehen Sie sich den Abschnitt [Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)](faq.md) an.
+* Sehen Sie sich den Abschnitt [Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)](faq.yml) an.
 * Stellen Sie einen Azure Cloud Services-Clouddienst (erweiterter Support) mithilfe einer der folgenden Optionen bereit:
   * [Azure portal](deploy-portal.md)
   * [PowerShell](deploy-powershell.md)

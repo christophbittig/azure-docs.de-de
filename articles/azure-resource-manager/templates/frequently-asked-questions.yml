@@ -1,0 +1,186 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Resource Manager-Vorlagen
+  description: Häufig gestellte Fragen (FAQ) zu Azure Resource Manager-Vorlagen (ARM-Vorlagen).
+  ms.topic: article
+  ms.service: azure
+  ms.date: 03/03/2021
+  ms.author: tomfitz
+  author: tfitzmac
+  ms.openlocfilehash: ebfef385a73fbed737c9e77fc05546b3e00709e1
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122351039"
+title: Häufig gestellte Fragen zu Resource Manager-Vorlagen
+summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Resource Manager-Vorlagen (ARM-Vorlagen).
+sections:
+- name: Erste Schritte
+  questions:
+  - question: >
+      Was sind Resource Manager-Vorlagen, und warum sollte ich sie verwenden?
+    answer: >
+      Resource Manager-Vorlagen sind JSON-Dateien, in denen Sie definieren, was Sie in Azure bereitstellen möchten. Vorlagen helfen Ihnen dabei, eine Infrastructure-as-Code-Lösung für Azure zu implementieren. Ihre Organisation kann die damit erforderliche Infrastruktur wiederholt und zuverlässig in verschiedenen Umgebungen bereitstellen.
+
+
+      Weitere Informationen zur Unterstützung von Resource Manager-Vorlagen bei der Verwaltung Ihrer Azure-Infrastruktur finden Sie unter [Was sind ARM-Vorlagen?](overview.md)
+  - question: >
+      Wie beginne ich mit der Nutzung von Vorlagen?
+    answer: >
+      Um die Erstellung von Resource Manager-Vorlagen zu vereinfachen, benötigen Sie die richtigen Tools. Wir empfehlen die Installation von [Visual Studio Code](https://code.visualstudio.com/) und der [Erweiterung „Azure Resource Manager-Tools“](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Eine kurze Einführung in diese Tools finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+
+
+      Wenn Sie sich über das Erstellen von Resource Manager-Vorlagen informieren möchten, arbeiten Sie die [Tutorial-Reihe zu Resource Manager-Vorlagen für Einsteiger](template-tutorial-create-first-template.md) durch. Diese Tutorials führen Sie Schritt für Schritt durch das Erstellen einer Resource Manager-Vorlage. Sie erfahren mehr über die verschiedenen Abschnitte einer Vorlage und deren Zusammenarbeit. Diese Informationen sind auch als [Microsoft Learn-Modul](/learn/modules/authoring-arm-templates/) verfügbar.
+  - question: >
+      Sollte ich Resource Manager-Vorlagen oder Terraform für die Bereitstellung in Azure verwenden?
+    answer: >
+      Verwenden Sie die für Sie am besten geeignete Option. Beide Dienste unterstützen Sie bei der Automatisierung von Bereitstellungen in Azure.
+
+
+      Wir sind davon überzeugt, dass Resource Manager-Vorlagen gegenüber anderen Infrastructure-as-Code-Diensten eine Reihe von Vorteilen bieten. Weitere Informationen zu diesen Vorteilen finden Sie unter [Warum ARM-Vorlagen verwenden?](overview.md#why-choose-arm-templates)
+- name: Build 2020
+  questions:
+  - question: >
+      Ich habe die Präsentation auf der Microsoft Build 2020 Konferenz verpasst. Kann ich sie trotzdem ansehen?
+    answer: >
+      Ja, [Sie können sie hier jederzeit ansehen](https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions).
+  - question: >
+      Wo erhalte ich weitere Informationen zu den neuen Features, die auf der Build angekündigt wurden?
+    answer: >
+      Allgemeine Informationen zu den Funktionen, an denen wir gerade arbeiten, finden Sie in der [Azure Advisors-Yammer-Gruppe zu Bereitstellungen](https://aka.ms/ARMMeet).
+
+
+      Wenn Sie mehr über die neue Vorlagensprache erfahren möchten, [melden Sie sich für Benachrichtigungen an](https://aka.ms/armLangUpdates).
+
+
+      Informationen zu den Vorlagenspezifikationen finden Sie unter [Vorlagenspezifikationen im Azure Resource Manager](template-specs.md).
+- name: Erstellen und Testen von Vorlagen
+  questions:
+  - question: >
+      Wo finde ich Informationen zu bewährten Methoden für Resource Manager-Vorlagen?
+    answer: >
+      Empfehlungen zum Implementieren Ihrer Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](./best-practices.md). Nachdem Sie eine Vorlage erstellt haben, führen Sie das [ARM-Testtoolkit](https://github.com/azure/arm-ttk) aus. Hiermit wird überprüft, ob Ihre Vorlage den empfohlenen Methoden entspricht.
+  - question: >
+      Ich habe meine Umgebung über das Portal eingerichtet. Gibt es eine Möglichkeit, die Vorlage aus einer vorhandenen Ressourcengruppe zu übernehmen?
+    answer: >
+      Ja, Sie können die [Vorlage aus einer Ressourcengruppe exportieren](export-template-portal.md). Die exportierte Vorlage ist ein guter Ausgangspunkt, um sich mit Vorlagen vertraut zu machen. Sie sollten sie allerdings überarbeiten, bevor Sie sie in einer Produktionsumgebung verwenden.
+
+
+      Beim Exportieren der Vorlage können Sie auswählen, welche Ressourcen Sie in die Vorlage einschließen möchten.
+  - question: >
+      Kann ich eine Ressourcengruppe in einer Resource Manager-Vorlage erstellen und Ressourcen darin bereitstellen?
+    answer: >
+      Ja, Sie können eine Ressourcengruppe in einer Vorlage erstellen, wenn Sie die Vorlage auf der Ebene Ihres Azure-Abonnements bereitstellen. Ein Beispiel für das Erstellen einer Ressourcengruppe und das Bereitstellen von Ressourcen finden Sie unter [Ressourcengruppen und Ressourcen](deploy-to-subscription.md#resource-groups).
+  - question: >
+      Kann ich ein Abonnement in einer Resource Manager-Vorlage erstellen?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Programmgesteuertes Erstellen von Azure-Abonnements mit den neuesten APIs](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md).
+  - question: >
+      Wie kann ich meine Vorlage vor der Bereitstellung testen?
+    answer: >
+      Es wird empfohlen, das [ARM-Testtoolkit](https://github.com/azure/arm-ttk) und den [Was-wäre-wenn-Vorgang](./deploy-what-if.md) für Ihre Vorlagen auszuführen, bevor Sie sie bereitstellen. Mit dem Testtoolkit wird überprüft, ob in der Vorlage die empfohlenen Vorgehensweisen verwendet werden. Sie erhalten eine Warnung, wenn Änderungen erkannt werden, die vor der Implementierung Ihrer Vorlage noch optimiert werden könnten.
+
+
+      Mit dem Was-wäre-wenn-Vorgang werden die Änderungen gezeigt, die die Vorlage an Ihrer Umgebung vornimmt. So können Sie unbeabsichtigte Änderungen sehen, bevor sie bereitgestellt werden. Der Was-wäre-wenn-Vorgang gibt außerdem alle Fehler zurück, die während der Preflightvalidierung erkannt werden. Wenn Ihre Vorlage beispielsweise einen syntaktischen Fehler enthält, wird dieser Fehler zurückgegeben. Außerdem werden alle Fehler zurückgegeben, die im Bezug auf den endgültigen Zustand der bereitgestellten Ressourcen erkannt werden können. Wenn mit Ihrer Vorlage beispielsweise ein Speicherkonto mit einem Namen bereitgestellt wird, der bereits verwendet wird, gibt der Was-wäre-wenn-Vorgang diesen Fehler zurück.
+  - question: >
+      Wo finde ich Informationen zu den Eigenschaften, die für die einzelnen Ressourcentypen verfügbar sind?
+    answer: >
+      VS Code bietet IntelliSense zum Arbeiten mit den Ressourceneigenschaften. Eigenschaften und Beschreibungen finden Sie außerdem in der [Vorlagenreferenz](/azure/templates/).
+  - question: >
+      Ich möchte mehrere Instanzen eines Ressourcentyps erstellen. Wie erstelle ich einen Iterator in meiner Vorlage?
+    answer: >
+      Verwenden Sie das „copy“-Element, um mehr als eine Instanz anzugeben. Sie können „copy“ für [Ressourcen](copy-resources.md), [Eigenschaften](copy-properties.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwenden.
+- name: Vorlagensprache
+  questions:
+  - question: >
+      Ich habe gehört, dass Sie an einer neuen Vorlagensprache arbeiten. Wo finde ich weitere Informationen dazu?
+    answer: >
+      Weitere Informationen zur neuen Sprache finden Sie unter [Was ist Bicep (Vorschau)?](../bicep/overview.md).
+  - question: >
+      Soll das Erstellen von Vorlagen in YAML unterstützt werden?
+    answer: Derzeit ist nicht geplant, YAML zu unterstützen. Wir sind der Meinung, dass die neue Vorlagensprache eine Lösung bietet, die benutzerfreundlicher als YAML oder JSON ist.
+  - question: >
+      Kann ich nach der Veröffentlichung der neuen Vorlagensprache weiterhin Vorlagen in JSON schreiben?
+    answer: Ja, Sie können weiterhin JSON-Vorlagen verwenden.
+  - question: >
+      Werden Sie ein Tool anbieten, um JSON-Vorlagen in die neue Vorlagensprache zu konvertieren?
+    answer: >
+      Ja. Weitere Informationen finden Sie unter [Konvertieren von ARM-Vorlagen zwischen JSON und Bicep](../bicep/decompile.md).
+- name: Vorlagenspezifikationen
+  questions:
+  - question: >
+      Was ist der Zusammenhang zwischen Vorlagenspezifikationen und Azure Blueprints?
+    answer: Azure Blueprints verwendet Vorlagenspezifikationen bei der Implementierung, indem die `blueprint definition`-Ressource durch eine `template spec`-Ressource ersetzt wird. Wir werden einen Migrationspfad bereitstellen, über den die Blaupausendefinition in eine Vorlagenspezifikation konvertiert werden kann. Die Blaupausendefinitions-APIs werden aber weiterhin unterstützt. Es gibt keine Änderungen an der `blueprint assignment`-Ressource. Blueprints bleibt als Benutzerumgebung zum Erstellen einer verwalteten Umgebung in Azure erhalten.
+  - question: >
+      Ersetzen Vorlagenspezifikationen verknüpfte Vorlagen?
+    answer: Nein, aber Vorlagenspezifikationen sind für die Zusammenarbeit mit verknüpften Vorlagen konzipiert. Sie müssen die verknüpfte Vorlage nicht auf einen öffentlich zugänglichen Endpunkt verschieben, bevor Sie die übergeordnete Vorlage bereitstellen. Stattdessen packen Sie die übergeordnete Vorlage und ihre Artefakte beim Erstellen der Vorlagenspezifikation.
+  - question: >
+      Können Vorlagenspezifikationen abonnementsübergreifend verwendet werden?
+    answer: Ja, sie können über mehrere Abonnements hinweg verwendet werden, solange der Benutzer über Lesezugriff auf die Vorlagenspezifikation verfügt. Vorlagenspezifikationen können nicht über mehrere Mandanten hinweg verwendet werden.
+- name: Skripts in Vorlagen
+  questions:
+  - question: >
+      Kann ich ein Skript in meine Vorlage einschließen, um Aufgaben auszuführen, die in einer Vorlage nicht möglich sind?
+    answer: >
+      Ja, verwenden Sie hierfür [Bereitstellungsskripts](deployment-script-template.md). Sie können Azure PowerShell- oder Azure CLI-Skripts in Ihre Vorlagen einschließen.
+  - question: >
+      Können weiterhin benutzerdefinierte Skripterweiterungen und DSC-Konfigurationen (Desired State Configuration) verwendet werden?
+    answer: Diese Optionen sind weiterhin verfügbar und wurden nicht geändert. Bereitstellungsskripts sind für die Ausführung von Aktionen konzipiert, die nicht im Zusammenhang mit dem VM-Gast stehen. Wenn Sie ein Skript auf einem Hostbetriebssystem auf einem virtuellen Computer ausführen müssen, ist die benutzerdefinierte Skripterweiterung und/oder DSC eine bessere Wahl. Bereitstellungsskripts bieten jedoch Vorteile, z. B. das Festlegen der Timeoutdauer.
+  - question: >
+      Werden Bereitstellungsskripts in Azure Government unterstützt?
+    answer: Ja, Sie können Bereitstellungsskripts in US Gov Arizona und US Gov Virginia verwenden.
+- name: Vorschau der Änderungen vor der Bereitstellung
+  questions:
+  - question: >
+      Kann ich vor dem Bereitstellen einer Vorlage eine Vorschau der Änderungen anzeigen, die vorgenommen werden?
+    answer: >
+      Ja, verwenden Sie hierfür die [Was-wäre-wenn-Funktion](./deploy-what-if.md). Hiermit wird der aktuelle Zustand Ihrer Umgebung ausgewertet und mit dem Zustand nach der Bereitstellung verglichen. Sie können die zusammengefassten Änderungen überprüfen, um sicherzustellen, dass die Vorlage nicht zu unerwarteten Ergebnissen führt.
+  - question: >
+      Kann ich die Was-wäre-wenn-Funktion im inkrementellen und im vollständigen Modus verwenden?
+    answer: >
+      Ja, beide [Bereitstellungsmodi](deployment-modes.md) werden unterstützt. Ein Beispiel für die Verwendung des inkrementellen Modus finden Sie unter [Ausführen des Was-wäre-wenn-Vorgangs](./deploy-what-if.md#run-what-if-operation). Ein Beispiel für die Verwendung des vollständigen Modus finden Sie unter [Löschvorgang bestätigen](./deploy-what-if.md#confirm-deletion).
+  - question: >
+      Funktioniert der Was-wäre-wenn-Vorgang mit verknüpften Vorlagen?
+    answer: Ja, hierbei werden der Zustand der übergeordneten Vorlage und ihrer verknüpften Vorlagen auswertet.
+  - question: >
+      Kann ich den Was-wäre-wenn-Vorgang in einer Azure-Pipeline verwenden?
+    answer: Ja, Sie können mit dem Was-wäre-wenn-Vorgang überprüfen, ob die Pipeline fortgesetzt werden soll.
+  - question: >
+      Wenn ich den „Was-wäre-wenn-Vorgang“ verwende, werden Änderungen bei Eigenschaften angezeigt, die nicht in meiner Vorlage enthalten sind. Muss mit solchen Fehlern gerechnet werden?
+    answer: >
+      Wir arbeiten daran, die Fehlerrate zu verringern. Sie können uns bei der Verbesserung helfen, indem Sie Probleme über unser GitHub-Repository melden: https://aka.ms/WhatIfIssues
+- name: Schnellansicht für Vorlagen
+  questions:
+  - question: >
+      Gibt es eine Möglichkeit zum Visualisieren meiner Resource Manager-Vorlage und ihrer Ressourcen?
+    answer: >
+      Es gibt eine [von der Community bereitgestellte VS Code-Erweiterung](https://aka.ms/ARMVisualizer), mit der Sie Ihre Resource Manager-Vorlage anzeigen können. Sie zeigt die Ressourcen, die Sie bereitstellen, sowie die Beziehungen zwischen diesen.
+  - question: >
+      Kann ich die Vorlagenschnellansicht außerhalb von VS Code verwenden?
+    answer: >
+      Die Vorlagenschnellansicht wird im Portal als Vorschauversion angezeigt. Weitere Informationen finden Sie [in dieser kurzen Build-Sitzung](https://mybuild.microsoft.com/sessions/0525094b-1fd2-4f69-bfd6-6d2fff6ffe5f?source=sessions).
+- name: Bereitstellungslimits
+  questions:
+  - question: >
+      Wie viele Ressourcengruppen kann ich in einem Bereitstellungsvorgang bereitstellen?
+    answer: >
+      In der Vergangenheit gab es eine Beschränkung auf fünf Ressourcengruppen. Diese wurde vor Kurzem auf 800 Ressourcengruppen erweitert. Weitere Informationen finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](deploy-to-subscription.md).
+  - question: >
+      Im Bereitstellungsverlauf wird ein Fehler angezeigt, dass eine Einschränkung auf 800 Bereitstellungen gilt. Wie sollte ich vorgehen?
+    answer: >
+      Es gibt Änderungen an der Verwaltung des Bereitstellungsverlaufs einer Ressourcengruppe. In der Vergangenheit mussten Sie manuell Bereitstellungen aus dem Verlauf löschen, um diesen Fehler zu vermeiden. Ab Juni 2020 werden Bereitstellungen automatisch aus dem Verlauf gelöscht, wenn Sie den Grenzwert fast erreicht haben. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
+
+
+      Das Löschen einer Bereitstellung aus dem Verlauf wirkt sich nicht auf die bereitgestellten Ressourcen aus.
+- name: Vorlagen und DevOps
+  questions:
+  - question: >
+      Kann ich Resource Manager-Vorlagen in Azure Pipelines integrieren?
+    answer: >
+      Ja. Eine Erläuterung zur Verwendung von Vorlagen und Pipelines finden Sie unter [Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines](deployment-tutorial-pipeline.md) und [Integrieren von ARM-Vorlagen in Azure Pipelines](add-template-to-azure-pipelines.md).
+  - question: >
+      Kann ich GitHub Actions für die Bereitstellung einer Vorlage verwenden?
+    answer: >
+      Ja, siehe [Bereitstellen von ARM-Vorlagen mithilfe von GitHub Actions](deploy-github-actions.md).
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   Eine Einführung in Resource Manager-Vorlagen finden Sie unter [Was sind ARM-Vorlagen?](overview.md)"

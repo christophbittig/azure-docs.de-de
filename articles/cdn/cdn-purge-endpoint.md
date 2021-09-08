@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/17/2019
+ms.date: 06/30/2021
 ms.author: allensu
-ms.openlocfilehash: 4fe4b99f9635ff254f1a75e03f13d7e6ffcb3c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d54b181ee55d841f8739008a2fb6657f7885cb96
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100366516"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126444"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht
@@ -57,13 +57,16 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
     3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
    
    > [!TIP]
-   > Zum Löschen müssen Pfade als relative URL angegeben werden, die dem folgenden [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) entspricht. **Alles löschen** und das **Löschen mit Platzhalter** wird derzeit nicht vom **Azure-CDN von Akamai** unterstützt.
-   > > Einzelne URL löschen `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Abfragezeichenfolge `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Mit Platzhalter löschen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` 
+   > 1. Zum Löschen müssen Pfade als relative URL angegeben werden, die dem folgenden [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) entspricht. **Alles löschen** und das **Löschen mit Platzhalter** werden derzeit vom **Azure-CDN von Akamai** nicht unterstützt.
+   >
+   >    1. Einzelne URL löschen `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
+   >    1. Abfragezeichenfolge `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
+   >    1. Mit Platzhalter löschen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` 
    > 
-   > Nachdem Sie Text eingegeben haben, werden weitere **Pfad** -Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können.  Sie können Assets aus der Liste löschen, indem Sie auf die Schaltfläche mit den Auslassungspunkten (...) klicken.
+   >    Nachdem Sie Text eingegeben haben, werden weitere **Pfad** -Textfelder angezeigt, damit Sie eine Liste mit mehreren Assets erstellen können.  Sie können Assets aus der Liste löschen, indem Sie auf die Schaltfläche mit den Auslassungspunkten (...) klicken.
    > 
+   > 1. In Azure CDN von Microsoft werden Abfragezeichenfolgen im Bereinigungs-URL-Pfad nicht berücksichtigt. Wenn der zu bereinigende Pfad als `/TestCDN?myname=max` angegeben wird, wird nur `/TestCDN` berücksichtigt. Die Abfragezeichenfolge `myname=max` wird ausgelassen. Sowohl `TestCDN?myname=max` als auch `TestCDN?myname=clark` wird gelöscht.
+
 5. Klicken Sie auf die Schaltfläche **Löschen** .
    
     ![Löschschaltfläche](./media/cdn-purge-endpoint/cdn-purge-button.png)

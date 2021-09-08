@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87de8f27114c8b79c297f65805226a33c70b11a9
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 5c601d81053979108ab7c49dee5b1bccbb33bf53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286958"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464008"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung
 
@@ -374,7 +374,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
 ##### <a name="other-errors"></a>Andere Fehler
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - Ursache: EventID 220 ist in Ereignisprotokollen für die Registrierung von Benutzergeräten vorhanden. Windows kann in Active Directory nicht auf das Computerobjekt zugreifen. Möglicherweise ist ein Windows-Fehlercode im Ereignis enthalten. Bei Fehlercodes ERROR_NO_SUCH_LOGON_SESSION (1312) und ERROR_NO_SUCH_USER (1317) sind diese mit Replikationsprobleme im lokalen AD verknüpft.
+   - Ursache: EventID 220 ist in Ereignisprotokollen für die Registrierung von Benutzergeräten vorhanden. Windows kann in Active Directory nicht auf das Computerobjekt zugreifen. Möglicherweise ist ein Windows-Fehlercode im Ereignis enthalten. Die Fehlercodes ERROR_NO_SUCH_LOGON_SESSION (1312) und ERROR_NO_SUCH_USER (1317) stehen im Zusammenhang mit Replikationsproblemen im lokalen AD.
    - Lösung: Beheben Sie die Replikationsprobleme in AD. Bei Replikationsproblemen handelt es sich möglicherweise um vorübergehende Fehler, die nach einer Weile wieder weggehen.
 
 ##### <a name="federated-join-server-errors"></a>Serverfehler bei der Verbundeinbindung
@@ -393,28 +393,296 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Schritt 5: Sammeln Sie Protokolle, und wenden Sie sich an den Microsoft-Support
 
-Laden Sie die Datei „Auth.zip“ von [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) herunter.
+Laden Sie die Datei „Auth.zip“ von [https://cesdiagtools.blob.core.windows.net/windows/Auth.zip](https://cesdiagtools.blob.core.windows.net/windows/Auth.zip) herunter.
 
-1. Entpacken Sie die Datei, und benennen Sie die enthaltenen Dateien **start-auth.txt** und **stop-auth.txt** in **start-auth.cmd** und **stop-auth.cmd** um.
-1. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **start-auth.cmd** aus.
+1. Entzippen Sie die Dateien in einem Ordner wie „c:\temp“, und wechseln Sie in den Ordner.
+1. Führen Sie in einer PowerShell-Sitzung mit erhöhten Rechten **.\start-auth.ps1 -v -accepteula** aus.
 1. Wechseln Sie über „Konto wechseln“ zu einer anderen Sitzung mit dem Problembenutzer.
 1. Reproduzieren Sie das Problem.
 1. Wechseln Sie über „Konto wechseln“ wieder zurück zur Administratorsitzung, in der die Ablaufverfolgung ausgeführt wird.
-1. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **stop-auth.cmd** aus.
+1. Führen Sie in einer PowerShell-Sitzung mit erhöhten Rechten **.\stop-auth.ps1** aus.
 1. Komprimieren Sie den Ordner **Authlogs** im Ordner, in dem die Skripts ausgeführt wurden, und übermitteln Sie ihn.
+    
+## <a name="troubleshoot-post-join-authentication-issues"></a>Behandlung von Authentifizierungsproblemen nach der Einbindung
 
-## <a name="troubleshoot-post-join-issues"></a>Beheben von Problemen nach der Einbindung
+### <a name="step-1-retrieve-prt-status-using-dsregcmd-status"></a>Schritt 1: Abrufen des PRT-Status mit „dsregcmd /status“
 
-### <a name="retrieve-the-join-status"></a>Abrufen des Beitrittsstatus
+**So rufen Sie den PRT-Status ab:**
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: JA und AzureADPrt: YES
+1. Öffnen Sie eine Eingabeaufforderung. 
+   > [!NOTE] 
+   > Um den PRT-Status abzurufen, sollte die Eingabeaufforderung im Kontext des angemeldeten Benutzers ausgeführt werden. 
 
-Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat.
-Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
+2. Geben Sie „dsregcmd /status“ ein. 
 
-- Dem Gerät wurde bei der Registrierung ein ungültiger Speicherschlüssel im TPM zugewiesen (prüfen Sie den KeySignTest bei der Ausführung mit erhöhten Rechten).
-- Alternative Anmelde-ID.
-- HTTP-Proxy nicht gefunden.
+3. Im Abschnitt „SSO-Status" wird der aktuelle PRT-Status angezeigt. 
+
+4. Wenn das Feld AzureAdPrt auf „NEIN“ festgelegt ist, ist beim Abrufen des PRT von Azure AD ein Fehler aufgetreten. 
+
+5. Wenn AzureAdPrtUpdateTime mehr als 4 Stunden beträgt, liegt wahrscheinlich ein Problem beim Aktualisieren des PRT vor. Sperren und entsperren Sie das Gerät, um eine PRT-Aktualisierung zu erzwingen, und überprüfen Sie, ob der Zeitpunkt aktualisiert wurde.
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : YES
+      AzureAdPrtUpdateTime : 2020-07-12 22:57:53.000 UTC
+      AzureAdPrtExpiryTime : 2019-07-26 22:58:35.000 UTC
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+             EnterprisePrt : YES
+   EnterprisePrtUpdateTime : 2020-07-12 22:57:54.000 UTC
+   EnterprisePrtExpiryTime : 2020-07-26 22:57:54.000 UTC
+    EnterprisePrtAuthority : https://corp.hybridadfs.contoso.com:443/adfs
+
++----------------------------------------------------------------------+
+```
+
+### <a name="step-2-find-the-error-code"></a>Schritt 2: Suchen des Fehlercodes 
+
+### <a name="from-dsregcmd-output"></a>In der dsregcmd-Ausgabe
+
+> [!NOTE]
+>  Verfügbar ab **Windows 10-Update von Mai 2021 (Version 21H1)** .
+
+Das Feld „Versuchsstatus“ unter dem Feld AzureAdPrt gibt den Status des vorherigen PRT-Versuchs zusammen mit anderen erforderlichen Debuginformationen an. Bei älteren Windows-Versionen müssen diese Informationen aus AAD-Analyse- und Betriebsprotokollen extrahiert werden.
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : NO
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
+```
+
+### <a name="from-aad-analytic-and-operational-logs"></a>In AAD-Analyse- und Betriebsprotokollen
+
+Verwenden Sie die Ereignisanzeige, um die Protokolleinträge zu suchen, die vom AAD CloudAP-Plug-In während der PRT-Erfassung protokolliert wurden. 
+
+1. Öffnen Sie die AAD-Ereignisprotokolle in der Ereignisanzeige. Sie finden Sie unter „Anwendungs- und Dienstprotokolle > Microsoft > Windows > AAD. 
+
+   > [!NOTE]
+   > Das CloudAP-Plug-In protokolliert Fehlerereignisse in den Betriebsprotokollen, während die Informationsereignisse in den Analyseprotokollen protokolliert werden. Sowohl Analyse- als auch Betriebsprotokollereignisse sind erforderlich, um Probleme zu beheben. 
+
+2. Ereignis 1006 in Analyseprotokollen gibt den Beginn des PRT-Erfassungsablaufs an, und Ereignis 1007 in Analyseprotokollen gibt das Ende des PRT-Erfassungsablaufs an. Alle Ereignisse in AAD-Protokollen (Analyse und Betrieb) zwischen den Ereignissen 1006 und 1007 wurden als Teil des PRT-Erfassungsablaufs protokolliert. 
+
+3. Ereignis 1007 protokolliert den endgültigen Fehlercode.
+
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/event-viewer-prt-acquire.png" alt-text="Screenshot der Ereignisanzeige. Die Ereignisse mit den IDs 1006 und 1007 sind rot umrandet und der endgültige Fehlercode ist hervorgehoben." border="false":::
+
+### <a name="step-3-follow-additional-troubleshooting-based-on-the-found-error-code-from-the-list-below"></a>Schritt 3: Befolgen Sie die zusätzliche Problembehandlung basierend auf dem gefundenen Fehlercode in der folgenden Liste.
+
+**STATUS_LOGON_FAILURE** (-1073741715/ 0xc000006d)
+
+**STATUS_WRONG_PASSWORD** (-1073741718/ 0xc000006a)
+
+Ursache(n): 
+-  Gerät kann keine Verbindung mit dem AAD-Authentifizierungsdienst herstellen
+-  Es wurde eine Fehlerantwort (HTTP 400) vom AAD-Authentifizierungsdienst oder WS-Trust-Endpunkt empfangen.
+> [!NOTE]
+> WS-Trust ist für die Verbundauthentifizierung erforderlich.
+
+Lösung: 
+-  Wenn die lokale Umgebung einen Proxy für den ausgehenden Datenverkehr erfordert, muss der IT-Administrator sicherstellen, dass das Computerkonto des Geräts in der Lage ist, den Proxy zu ermitteln und sich im Hintergrund zu authentifizieren.
+-  Die Ereignisse 1081 und 1088 (AAD-Betriebsprotokolle) enthalten den Serverfehlercode und die Fehlerbeschreibung für Fehler, die vom AAD-Authentifizierungsdienst bzw. WS-Trust-Endpunkt stammen. Häufige Serverfehlercodes und deren Lösungen sind im nächsten Abschnitt aufgeführt. Die erste Instanz von Ereignis 1022 (AAD-Analyseprotokolle) vor den Ereignissen 1081 oder 1088 enthält die URL, auf die zugegriffen wird.
+
+---
+
+**STATUS_REQUEST_NOT_ACCEPTED** (-1073741616/ 0xc00000d0)
+
+Ursache(n):
+-  Es wurde eine Fehlerantwort (HTTP 400) vom AAD-Authentifizierungsdienst oder WS-Trust-Endpunkt empfangen.
+> [!NOTE]
+> WS-Trust ist für die Verbundauthentifizierung erforderlich.
+
+Lösung:
+-  Die Ereignisse 1081 und 1088 (AAD-Betriebsprotokolle) enthalten den Serverfehlercode und die Fehlerbeschreibung für Fehler, die vom AAD-Authentifizierungsdienst bzw. WS-Trust-Endpunkt stammen. Häufige Serverfehlercodes und deren Lösungen sind im nächsten Abschnitt aufgeführt. Die erste Instanz von Ereignis 1022 (AAD-Analyseprotokolle) vor den Ereignissen 1081 oder 1088 enthält die URL, auf die zugegriffen wird.
+
+---
+
+**STATUS_NETWORK_UNREACHABLE** (-1073741252/ 0xc000023c)
+
+**STATUS_BAD_NETWORK_PATH** (-1073741634/ 0xc00000be)
+
+**STATUS_UNEXPECTED_NETWORK_ERROR** (-1073741628/ 0xc00000c4)
+
+Ursache(n):
+-  Es wurde eine Fehlerantwort (HTTP > 400) vom AAD-Authentifizierungsdienst oder WS-Trust-Endpunkt empfangen.
+> [!NOTE]
+> WS-Trust ist für die Verbundauthentifizierung erforderlich.
+-  Problem mit Netzwerkkonnektivität mit einem erforderlichen Endpunkt
+
+Lösung: 
+-  Bei Serverfehlern enthalten die Ereignisse 1081 und 1088 (AAD-Betriebsprotokolle) den Fehlercode und die Fehlerbeschreibung vom AAD-Authentifizierungsdienst bzw. WS-Trust-Endpunkt. Häufige Serverfehlercodes und deren Lösungen sind im nächsten Abschnitt aufgeführt.
+-  Bei Konnektivitätsproblemen enthalten die Ereignisse 1022 (AAD-Analyseprotokolle) und 1084 (AAD-Betriebsprotokolle) die URL, auf die zugegriffen wird, bzw. den Unterfehlercode aus dem Netzwerkstapel.
+
+---
+**STATUS_NO_SUCH_LOGON_SESSION**    (-1073741729/ 0xc000005f)
+
+Ursache(n): 
+-  Fehler bei der Benutzerbereichsermittlung, da der AAD-Authentifizierungsdienst die Domäne des Benutzers nicht finden konnte
+
+Lösung:
+-  Die Domäne des UPN des Benutzers muss in AAD als benutzerdefinierte Domäne hinzugefügt werden. Ereignis 1144 (AAD-Analyseprotokolle) enthält den bereitgestellten UPN.
+-  Wenn der lokale Domänenname nicht routingfähig ist (jdoe@contoso.local), konfigurieren Sie die alternative Anmelde-ID (AltID). Referenzen: [Voraussetzungen](hybrid-azuread-join-plan.md) [Konfigurieren einer alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+**AAD_CLOUDAP_E_OAUTH_USERNAME_IS_MALFORMED**   (-1073445812/ 0xc004844c)
+
+Ursache(n): 
+-  Der UPN des Benutzers hat nicht das erwartete Format. 
+> [!NOTE] 
+> - Bei in Azure AD eingebundenen Geräten ist der UPN der vom Benutzer in die LoginUI eingegebene Text.
+> - Bei in Hybrid Azure AD eingebundenen Geräten wird der UPN während des Anmeldevorgangs vom Domänencontroller zurückgegeben.
+
+Lösung:
+-  Der UPN des Benutzers ist ein Anmeldename im Internetformat, der auf dem Internetstandard [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) basiert. Ereignis 1144 (AAD-Analyseprotokolle) enthält den bereitgestellten UPN.
+-  Stellen Sie für in Hybrid eingebundene Geräte sicher, dass der Domänencontroller so konfiguriert ist, dass der UPN im richtigen Format zurückgegeben wird. „whoami /upn“ sollte den konfigurierten UPN auf dem Domänencontroller anzeigen.
+-  Wenn der lokale Domänenname nicht routingfähig ist (jdoe@contoso.local), konfigurieren Sie die alternative Anmelde-ID (AltID). Referenzen: [Voraussetzungen](hybrid-azuread-join-plan.md) [Konfigurieren einer alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+**AAD_CLOUDAP_E_OAUTH_USER_SID_IS_EMPTY** (-1073445822/ 0xc0048442)
+
+Ursache(n):
+-  Die Benutzer-SID fehlt im ID-Token, das vom AAD-Authentifizierungsdienst zurückgegeben wird
+
+Lösung: 
+-  Stellen Sie sicher, dass der Netzwerk-Proxy keine Beeinträchtigung darstellt und die Serverantwort ändert. 
+
+---
+
+**AAD_CLOUDAP_E_WSTRUST_SAML_TOKENS_ARE_EMPTY** (--1073445695/ 0xc00484c1)
+
+Ursache(n):
+-  Ein Fehler wurde vom WS-Trust-Endpunkt empfangen.
+> [!NOTE]
+> WS-Trust ist für die Verbundauthentifizierung erforderlich.
+
+Lösung: 
+-  Stellen Sie sicher, dass der Netzwerkproxy keine Beeinträchtigung darstellt und nicht die WS-Trust-Antwort ändert.
+-  Ereignis 1088 (AAD-Betriebsprotokolle) enthält den Serverfehlercode und die Fehlerbeschreibung vom WS-Trust-Endpunkt. Häufige Serverfehlercodes und deren Lösungen sind im nächsten Abschnitt aufgeführt.
+
+---
+
+**AAD_CLOUDAP_E_HTTP_PASSWORD_URI_IS_EMPTY** (-1073445749/ 0xc004848b)
+
+Ursache:
+-  Der MEX-Endpunkt wurde falsch konfiguriert. Die MEX-Antwort enthält keine Kennwort-URLs.
+
+Lösung: 
+-  Stellen Sie sicher, dass der Netzwerkproxy keine Beeinträchtigung darstellt und nicht die Serverantwort ändert.
+-  Korrigieren Sie die MEX-Konfiguration, um gültige URLs als Antwort zurückzugeben.    
+
+---
+
+**WC_E_DTDPROHIBITED** (-1072894385/ 0xc00cee4f)
+
+Ursache: 
+-  Die XML-Antwort vom WS-TRUST-Endpunkt enthielt eine DTD. Eine DTD wird in den XML-Antworten nicht erwartet, und bei der Analyse der Antwort tritt ein Fehler auf, wenn eine DTD enthalten ist.
+> [!NOTE]
+> WS-Trust ist für die Verbundauthentifizierung erforderlich.
+
+Lösung:
+-  Korrigieren Sie die Konfiguration im Identitätsanbieter, um das Senden einer DTD in der XML-Antwort zu vermeiden. 
+-   Ereignis 1022 (AAD-Analyseprotokolle) enthält die URL, die die XML-Antwort mit der DTD zurückgibt, auf die zugegriffen wird.
+
+---
+
+**Häufige Serverfehlercodes:**
+
+**AADSTS50155: Fehler bei Geräteauthentifizierung**
+
+Ursache: 
+-  AAD kann das Gerät nicht authentifizieren, um ein PRT auszugeben
+-  Vergewissern Sie sich, dass das Gerät nicht im Azure-Portal gelöscht oder deaktiviert wurde. [Weitere Informationen](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)
+
+Lösung:
+-  Führen Sie die [hier](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do) aufgeführten Schritte aus, um das Gerät je nach Art der Geräteeinbindung neu zu registrieren.
+
+---
+
+**AADSTS50034: Das Benutzerkonto <Account> ist nicht im <tenant id>-Verzeichnis vorhanden**
+
+Ursache: 
+-  AAD kann das Benutzerkonto nicht im Mandanten finden.
+
+Lösung:
+-  Stellen Sie sicher, dass der Benutzer den richtigen UPN eingibt.
+-  Stellen Sie sicher, dass das lokale Benutzerkonto mit AAD synchronisiert wird.
+-  Ereignis 1144 (AAD-Analyseprotokolle) enthält den bereitgestellten UPN.
+
+---
+
+**AADSTS50126: Fehler beim Überprüfen der Anmeldeinformationen aufgrund eines ungültigen Benutzernamens oder Kennworts.**
+
+Ursache: 
+-  Der Benutzername und das Kennwort, die vom Benutzer in der Windows-LoginUI eingegeben wurden, sind falsch.
+-  Wenn für den Mandanten die Kennworthashsynchronisierung aktiviert ist, ist das Gerät hybrid eingebunden, und wenn der Benutzer das Kennwort gerade geändert hat, wurde das neue Kennwort wahrscheinlich nicht mit AAD synchronisiert. 
+
+Lösung:
+-  Warten Sie, bis die AAD-Synchronisierung abgeschlossen ist, um ein neues PRT mit den neuen Anmeldeinformationen zu erhalten. 
+
+---
+
+**Häufige Netzwerkfehlercodes:**
+
+**ERROR_WINHTTP_TIMEOUT** (12002)
+
+**ERROR_WINHTTP_NAME_NOT_RESOLVED** (12007)
+
+**ERROR_WINHTTP_CANNOT_CONNECT** (12029)
+
+**ERROR_WINHTTP_CONNECTION_ERROR** (12030)
+
+Ursache: 
+-  Allgemeine Probleme im Zusammenhang mit dem Netzwerk. 
+
+Lösung: 
+-  Die Ereignisse 1022 (AAD-Analyseprotokolle) und 1084 (AAD-Betriebsprotokolle) enthalten die URL, auf die zugegriffen wird.
+-  Wenn die lokale Umgebung einen Proxy für den ausgehenden Datenverkehr erfordert, muss der IT-Administrator sicherstellen, dass das Computerkonto des Geräts in der Lage ist, den Proxy zu ermitteln und sich im Hintergrund zu authentifizieren.
+
+> [!NOTE]
+> Andere Netzwerkfehlercodes finden Sie [hier](/windows/win32/winhttp/error-messages).
+
+---
+
+### <a name="step-4-collect-logs"></a>Schritt 4: Sammeln von Protokollen ###
+
+**Reguläre Protokolle**
+
+1. Wechseln Sie zu https://aka.ms/icesdptool, um automatisch eine CAB-Datei herunterzuladen, die das Diagnosetool enthält.
+2. Führen Sie das Tool aus, und reproduzieren Sie Ihr Szenario, sobald die Reproduktion abgeschlossen ist. Beenden Sie den Prozess.
+3. Bei Fiddler akzeptieren Ablaufverfolgungen die Zertifikatanforderungen, die angezeigt werden.
+4. Der Assistent fordert Sie zur Eingabe eines Kennworts auf, um Ihre Ablaufverfolgungsdateien zu schützen. Geben Sie ein Kennwort an.
+5. Öffnen Sie abschließend den Ordner, in dem alle gesammelten Protokolle gespeichert sind. Er befindet sich in der Regel in einem Ordner wie „%LOCALAPPDATA%\ElevatedDiagnostics\<numbers>“.
+7. Wenden Sie sich mit dem Inhalt von „latest.cab“, wo alle gesammelten Protokolle enthalten sind, an den Support.
+
+**Netzwerkablaufverfolgung**
+
+> [!NOTE]
+> Sammeln von Netzwerkablaufverfolgungen: (Es ist wichtig, Fiddler NICHT während der Reproduktion zu verwenden)
+
+1.  netsh trace start scenario=InternetClient_dbg capture=yes persistent=yes
+2.  Sperren und entsperren Sie das Gerät. Warten Sie für in Hybrid eingebundene Geräte mehr als eine Minute, bis die PRT-Erfassungsaufgabe abgeschlossen ist.
+3.  netsh trace stop
+4.  Geben Sie „nettrace.cab“ frei.
+
+---
 
 ## <a name="known-issues"></a>Bekannte Probleme
 - Unter „Einstellungen -> Konten -> Auf Arbeits- oder Schulkonto zugreifen“ werden für Geräte mit Hybrid-Azure AD-Einbindung möglicherweise zwei verschiedene Konten angezeigt, wenn Sie mit mobilen Hotspots oder externen WLAN-Netzwerken verbunden sind: ein Konto für Azure AD und eins für das lokale AD. Dies ist nur ein Problem mit der Benutzeroberfläche und hat keinerlei Auswirkungen auf die Funktionalität.

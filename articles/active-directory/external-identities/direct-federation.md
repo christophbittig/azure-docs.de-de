@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 06/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deeaed7b85c741b15931fdbca5cb6b2e276d7e65
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: da0d7c9812575ce6b957e70dbe4f8bc165f39315
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737799"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138727"
 ---
 # <a name="federation-with-samlws-fed-identity-providers-for-guest-users-preview"></a>Verbund mit SAML/WS-Fed-Identitätsanbietern für Gastbenutzer (Vorschau)
 
@@ -62,7 +62,7 @@ Sie können Gastbenutzern auch einen direkten Link zu einer Anwendung oder Resso
 ## <a name="limitations"></a>Einschränkungen
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifizierte Domänen in Azure AD
-Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht*** DNS-verifiziert werden. Es ist zulässig, einen Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
+Sie können einen SAML/WS-Fed-IdP-Verbund mit Domänen einrichten, die in Azure AD nicht DNS-verifiziert sind, einschließlich nicht verwalteter (per E-Mail verifizierter oder „viraler“) Azure AD-Mandanten. Wir blockieren jedoch den SAML/WS-Fed-IdP-Verbund für von Azure AD überprüfte Domänen zugunsten von nativen von Azure AD-verwalteten Domänenfunktionen. Im Azure-Portal oder in PowerShell wird ein Fehler angezeigt, wenn Sie versuchen, einen SAML/WS-Fed-IdP-Verbund mit einer Domäne einzurichten, die in Azure AD DNS-verifiziert ist.
 
 ### <a name="signing-certificate-renewal"></a>Signaturzertifikatverlängerung
 Wenn Sie die Metadaten-URL in den IdP-Einstellungen angeben, verlängert Azure AD das Signaturzertifikat automatisch, wenn es abläuft. Wenn das Zertifikat jedoch aus irgendeinem Grund vor der Ablaufzeit rotiert wird, oder wenn Sie keine Metadaten-URL bereitstellen, kann Azure AD es nicht verlängern. In diesem Fall müssen Sie das Signaturzertifikat manuell aktualisieren.
@@ -75,7 +75,7 @@ Der SAML/WS-Fed IdP-Verbund mit mehreren Domänen desselben Mandanten wird derze
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="can-i-set-up-samlws-fed-idp-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kann ich einen SAML/WS-Fed IdP-Verbund mit einer Domäne einrichten, für die ein nicht verwalteter (E-Mail verifizierten) Mandant vorhanden ist? 
-Ja. Wenn die Domäne nicht verifiziert wurde und der Mandant keine [Übernahme durch den Administrator](../enterprise-users/domains-admin-takeover.md) durchlaufen hat, können Sie einen Verbund mit dieser Domäne einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können den Verbund mit diesen Domänen einrichten. Wenn Sie versuchen im Azure-Portal oder über PowerShell den Verbund mit einer DNS-verifizierten Domäne einzurichten, wird eine Fehlermeldung angezeigt.
+Ja. Wenn die Domäne nicht verifiziert wurde und der Mandant keine [Übernahme durch den Administrator](../enterprise-users/domains-admin-takeover.md) durchlaufen hat, können Sie einen Verbund mit dieser Domäne einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können einen SAML/WS-Fed-IdP-Verbund mit diesen Domänen einrichten.
 ### <a name="if-samlws-fed-idp-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Welche Methode hat Vorrang, wenn die Authentifizierung mittels SAML/WS-Fed IdP-Verbund und mit der E-Mail-Einmalkennung aktiviert ist?
 Wenn ein SAML/WS-Fed IdP-Verbund mit einem Partnerunternehmen eingerichtet ist, hat dieser Vorrang vor der Authentifizierung per E-Mail-Einmalkennung für neue Gastbenutzer dieses Unternehmens. Wenn ein Gastbenutzer eine Einladung mit Authentifizierung mittels Einmalkennung eingelöst hat, bevor Sie den SAML/WS-Fed IdP-Verbund einrichten, wird er die Authentifizierung mit Einmalkennung weiterhin verwenden.
 ### <a name="does-samlws-fed-idp-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Behandelt der SAML/WS-Fed IdP-Verbund Anmeldeprobleme aufgrund eines teilweise synchronisierten Mandanten?
@@ -122,7 +122,7 @@ Als Nächstes muss Ihr Partnerunternehmen ihren IdP mit den erforderlichen Anspr
 Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das SAML-Protokoll mit den unten aufgeführten bestimmten Anforderungen verwenden. Weitere Informationen zum Einrichten einer Vertrauensstellung zwischen Ihrem SAML-IdP und Azure AD, finden Sie unter [Verwenden eines SAML 2.0-Identitätsanbieters (IdP) für das einmalige Anmelden](../hybrid/how-to-connect-fed-saml-idp.md).  
 
 > [!NOTE]
-> Die Zieldomäne für den SAML/WS-Fed-IdP-Verbund darf nicht in Azure AD DNS-verifiziert sein. Die Domäne der Authentifizierungs-URL muss mit der Zieldomäne oder der Domäne eines zulässigen IdPs übereinstimmen. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations).
+> Die Zieldomäne für den SAML/WS-Fed-IdP-Verbund darf nicht in Azure AD DNS-verifiziert sein. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations).
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Erforderliche SAML 2.0-Attribute und -Ansprüche
 In den folgenden Tabellen sind die Anforderungen für bestimmte Attribute und Ansprüche aufgeführt, die bei dem Drittanbieter-IdP konfiguriert werden müssen. Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden.
@@ -148,7 +148,7 @@ Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene SAML 2.0-T
 Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das WS-Fed-Protokoll mit den unten aufgeführten bestimmten Anforderungen verwenden. Derzeit sind die beiden WS-Verbund-Anbieter auf Kompatibilität mit Azure AD getestet, einschließlich AD FS und Shibboleth. Weitere Informationen zum Aufbau einer Vertrauensstellung der vertrauenden Seite zwischen einem WS-Verbund-kompatiblen Anbieter mit Azure AD finden Sie in dem „Artikel zur STS-Integration unter Verwendung von WS-Protokollen“, der in den [Dokumenten zur Kompatibilität von Azure AD-Identitätsanbietern](https://www.microsoft.com/download/details.aspx?id=56843) verfügbar ist.
 
 > [!NOTE]
-> Die Zieldomäne für den Verbund darf nicht in Azure AD DNS-verifiziert sein. Die Domäne der Authentifizierungs-URL muss mit der Zieldomäne oder der Domäne eines zulässigen Identitätsanbieters übereinstimmen. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations).
+> Die Zieldomäne für den Verbund darf nicht in Azure AD DNS-verifiziert sein. Weitere Details finden Sie im Abschnitt [Einschränkungen](#limitations).
 
 #### <a name="required-ws-fed-attributes-and-claims"></a>Erforderliche WS-Verbund-Attribute und -Ansprüche
 

@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4cfa90e2863583cf920df333fd2e5dbd7d7b46c6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736184"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084604"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 Mit Azure können Ihre MySQL-Serverworkloads auf einer gehosteten IaaS-VM (Infrastructure-as-a-Service) oder als gehostete PaaS-Instanz (Platform-as-a-Service) ausgeführt werden. PaaS stellt mehrere Bereitstellungsoptionen und Dienstebenen für jede Bereitstellungsoption zur Verfügung. Bei der Auswahl zwischen IaaS und PaaS müssen Sie entscheiden, ob Sie Ihre Datenbank verwalten, Patches anwenden und Sicherungen erstellen oder diese Vorgänge an Azure delegieren möchten.
 
@@ -45,9 +47,9 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
 | Unterstützte MySQL-Versionen | 5.6, 5.7 & 8.0| 5.7 und 8.0 | Beliebige Version|
 | Compute-Skalierung | Unterstützt (die Skalierung vom und zum Tarif Basic wird nicht unterstützt)| Unterstützt | Unterstützt|
-| Speichergröße | 5 GiB bis 16 TiB| 5 GiB bis 16 TiB | 32 GiB bis 32.767 GiB|
+| Speichergröße | 5 GiB bis 16 TiB| 20 GiB bis 16 TiB | 32 GiB bis 32.767 GiB|
 | Onlinespeicherskalierung | Unterstützt| Unterstützt| Nicht unterstützt|
-| Automatische Speicherskalierung | Unterstützt| In der Vorschauversion nicht unterstützt| Nicht unterstützt|
+| Automatische Speicherskalierung | Unterstützt| Unterstützt| Nicht unterstützt|
 | Zusätzliche IOPS-Skalierung | Nicht unterstützt| Unterstützt| Nicht unterstützt|
 | Netzwerkverbindung | – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|– Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Virtual Network-Integration.| – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|
 | Vereinbarung zum Servicelevel (SLA) | SLA mit 99,99 %Verfügbarkeit |Keine SLA in der Vorschauversion| 99,99 % bei Verwendung von Verfügbarkeitszonen|
@@ -56,16 +58,16 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | Hochverfügbarkeit | Integrierte Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone| Integrierte Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend | Benutzerdefinierte Verwaltung, unter anderem mithilfe von Clustering und Replikation|
 | Zonenredundanz | Nicht unterstützt | Unterstützt | Unterstützt|
 | Zonenplatzierung | Nicht unterstützt | Unterstützt | Unterstützt|
-| Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Nicht in der Vorschau verfügbar | Von Endbenutzern verwaltet |
+| Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Unterstützt mit [Datenreplikation](./flexible-server/concepts-data-in-replication.md) | Von Endbenutzern verwaltet |
 | Lesereplikate | Unterstützt (bis zu 5 Replikate)| Unterstützt (bis zu 10 Replikate)| Von Endbenutzern verwaltet |
 | Backup | Automatisiert mit Aufbewahrungsdauer von 7 bis 35 Tagen | Automatisiert mit Aufbewahrungsdauer von 1 bis 35 Tagen | Von Endbenutzern verwaltet |
 | Überwachen von Datenbankvorgängen | Unterstützt | Unterstützt | Von Endbenutzern verwaltet |
-| Notfallwiederherstellung | Unterstützt mit georedundantem Sicherungsspeicher und regionsübergreifenden Lesereplikaten | In der Vorschauversion nicht unterstützt| Benutzerdefinierte Verwaltung mit Replikationstechnologien |
+| Notfallwiederherstellung | Unterstützt mit georedundantem Sicherungsspeicher und regionsübergreifenden Lesereplikaten | In Kürze verfügbar| Benutzerdefinierte Verwaltung mit Replikationstechnologien |
 | Statistik zur Abfrageleistung | Unterstützt | Nicht in der Vorschau verfügbar| Von Endbenutzern verwaltet |
-| Reservierte Azure-VM-Instanzen (RIs): Preise | Unterstützt | Nicht in der Vorschau verfügbar | Unterstützt |
+| Reservierte Azure-VM-Instanzen (RIs): Preise | Unterstützt | In Kürze verfügbar | Unterstützt |
 | Azure AD-Authentifizierung | Unterstützt | Nicht in der Vorschau verfügbar | Nicht unterstützt|
 | Verschlüsselung ruhender Daten | Unterstützt mit kundenseitig verwalteten Schlüsseln | Unterstützt mit dienstseitig verwalteten Schlüsseln | Nicht unterstützt|
-| SSL/TLS | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0 | Erzwingung von TLS 1.2 | Unterstützung für TLS 1.2, 1.1 und 1.0 |
+| SSL/TLS | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0 | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0| Unterstützung für TLS 1.2, 1.1 und 1.0 |
 | Flottenverwaltung | Unterstützt mit der Azure CLI, PowerShell, REST und dem Azure Resource Manager | Unterstützt mit der Azure CLI, PowerShell, REST und Azure Resource Manager  | Unterstützt für VMs mit der Azure CLI, PowerShell, REST und Azure Resource Manager |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>Geschäftsmotive für die Entscheidung für PaaS oder IaaS

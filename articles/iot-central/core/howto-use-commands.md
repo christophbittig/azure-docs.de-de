@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d6a1d252a6b9068697fe738d4d2b1c6bbf6ceeb5
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733191"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588271"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Verwenden von Befehlen in einer Azure IoT Central-Lösung
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsf
 
 | Feld             |BESCHREIBUNG|
 |-------------------|-----------|
-|Anzeigename       |Der auf Dashboards und in Formularen verwendete Befehlswert|
+|Anzeigename       |Der auf Dashboardkacheln und Geräteformularen verwendete Befehlswert.|
 | Name            | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein. Der Wert von **Name** wird im Gerätecode verwendet.|
 | Funktionstyp | Befehl.|
 | Warteschlange (wenn offline) | Gibt an, ob dieser Befehl als *Offlinebefehl* ausgeführt werden soll. |

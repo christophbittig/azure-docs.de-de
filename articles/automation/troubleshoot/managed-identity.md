@@ -3,18 +3,32 @@ title: Behandlung von Problemen mit verwalteten Identitäten für Azure Automati
 description: In diesem Artikel erfahren Sie, wie Sie Probleme beheben, wenn Sie eine verwaltete Identität mit einem Automation-Konto verwenden.
 services: automation
 ms.subservice: ''
-ms.date: 04/28/2021
+ms.date: 06/28/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 719b20190194779b834eb3de996c0920d50ad313
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787352"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687495"
 ---
 # <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Behandlung von Problemen mit verwalteten Identitäten für Azure Automation (Vorschau)
 
 In diesem Artikel werden Lösungen für Probleme beschrieben, die bei Verwendung einer verwalteten Identität mit Ihrem Automation-Konto auftreten können. Allgemeine Informationen zur Verwendung von verwalteten Identitäten mit Automation-Konten finden Sie unter [Übersicht über die Azure Automation-Kontoauthentifizierung](../automation-security-overview.md#managed-identities-preview).
+
+## <a name="scenario-fail-to-get-msi-token-for-account"></a>Szenario: Fehler beim Abrufen des MSI-Tokens für das Konto
+
+### <a name="issue"></a>Problem
+
+Wenn Sie in Ihrem Automation-Konto mit einer benutzerseitig zugewiesenen verwalteten Identität arbeiten, erhalten Sie eine ähnliche Fehlermeldung wie diese: `Failed to get MSI token for account a123456b-1234-12a3-123a-aa123456aa0b`.
+
+### <a name="cause"></a>Ursache
+
+Verwenden einer benutzerseitig zugewiesenen verwalteten Identität vor dem Aktivieren einer systemseitig zugewiesenen verwalteten Identität für Ihr Automation-Konto.
+
+### <a name="resolution"></a>Lösung
+
+Aktivieren einer systemseitig zugewiesenen verwalteten Identität für Ihr Automation-Konto. Verwenden Sie dann die benutzerseitig zugewiesene verwaltete Identität.  
 
 ## <a name="scenario-attempt-to-use-managed-identity-with-automation-account-fails"></a>Szenario: Fehler bei dem Versuch, eine verwaltete Identität mit einem Automation-Konto zu verwenden
 

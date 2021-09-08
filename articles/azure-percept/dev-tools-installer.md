@@ -1,20 +1,20 @@
 ---
 title: Installieren der Azure Percept-Entwicklungstools
 description: Hier erfahren Sie, wie Sie die erweiterte Entwicklung mit Azure Percept mithilfe des Dev Tools-Paketinstallationsprogramms beschleunigen können.
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 88d93b98b9bd456c5529bff67fbef98b9e792ba0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f445170d3cd2b2cfeb45a85371409a539368ba22
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346112"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224996"
 ---
-# <a name="dev-tools-pack-installer-overview"></a>Übersicht: Dev Tools-Paketinstallationsprogramm
+# <a name="install-azure-percept-development-tools"></a>Installieren der Azure Percept-Entwicklungstools
 
 Das Dev Tools-Paketinstallationsprogramm ist eine Komplettlösung, die alle erforderlichen Tools für die Entwicklung einer fortschrittlichen Intelligent Edge-Lösung installiert und konfiguriert.
 

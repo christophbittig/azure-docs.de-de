@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "112078766"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122261720"
 ---
 Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Datenträger erfordert die Erstellung von Ressourcen in einer bestimmten Reihenfolge. Zuerst müssen Sie eine Azure Key Vault-Instanz erstellen und einrichten.
 
@@ -27,7 +27,7 @@ Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Date
     > [!IMPORTANT]
     > Ihre Azure Key Vault-Instanz, der Datenträgerverschlüsselungssatz, die VM, die Datenträger und die Momentaufnahmen müssen sich alle in derselben Region und demselben Abonnement befinden, damit die Bereitstellung erfolgreich ausgeführt werden kann.
 
-1. Wählen Sie **+ Hinzufügen** aus, um einen neuen Schlüsseltresor zu erstellen.
+1. Wählen Sie **+Erstellen** aus, um einen neuen Schlüsseltresor zu erstellen.
 1. Erstellen Sie eine neue Ressourcengruppe.
 1. Geben Sie einen Namen für den Schlüsseltresor ein, wählen Sie eine Region aus, und wählen Sie dann einen Tarif aus.
 
@@ -47,7 +47,7 @@ Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Date
 1. Lassen Sie **Schlüsseltyp** auf **RSA** und **RSA-Schlüsselgröße** auf **2048** festgelegt.
 1. Treffen Sie Ihre Auswahl für die verbleibenden Optionen nach Wunsch, und wählen Sie dann **Erstellen** aus.
 
-    ![Screenshot des Blatts „Schlüssel erstellen“, das nach dem Auswählen der Schaltfläche „Generieren/Importieren“ angezeigt wird.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
+    ![Screenshot des Bereichs „Schlüssel erstellen“, der nach dem Auswählen der Schaltfläche „Generieren/Importieren“ angezeigt wird](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
 ### <a name="add-an-azure-rbac-role"></a>Hinzufügen einer Azure RBAC-Rolle
 
@@ -59,7 +59,7 @@ Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müs
 ## <a name="set-up-your-disk-encryption-set"></a>Einrichten des Datenträgerverschlüsselungssatzes
 
 1. Suchen Sie nach **Datenträgerverschlüsselungssätze**, und wählen Sie sie aus.
-1. Wählen Sie auf dem Blatt **Datenträgerverschlüsselungssätze** die Option **+Hinzufügen** aus.
+1. Wählen Sie im Bereich **Datenträgerverschlüsselungssätze** die Option **+Erstellen** aus.
 
     ![Screenshot des Hauptbildschirms des Datenträgerverschlüsselungs-Portals. Die Schaltfläche „Hinzufügen“ ist hervorgehoben.](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
@@ -74,4 +74,4 @@ Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müs
 1. Drücken Sie **Auswählen**.
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
-    ![Screenshot des Blatts zum Erstellen der Datenträgerverschlüsselung. Dargestellt sind das Abonnement, die Ressourcengruppe, der Name des Datenträgerverschlüsselungssatzes, die Region und das Auswahlelement für den Schlüsseltresor und den Schlüssel.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    ![Screenshot des Bereichs zum Erstellen der Datenträgerverschlüsselung. Dargestellt sind das Abonnement, die Ressourcengruppe, der Name des Datenträgerverschlüsselungssatzes, die Region und das Auswahlelement für den Schlüsseltresor und den Schlüssel.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)

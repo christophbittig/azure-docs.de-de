@@ -10,14 +10,17 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6386bb06d0728b8d3b5d7832675402913c43087b
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 8032524c01d64fa6100779401b725f0eb339457e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205181"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689934"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Klonen eines verwalteten Images in eine Imageversion mit der Azure-Befehlszeilenschnittstelle
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Wenn Sie über ein vorhandenes verwaltetes Image verfügen, das Sie in eine Shared Image Gallery klonen möchten, können Sie direkt aus dem verwalteten Image ein Image in der Shared Image Gallery erstellen. Nachdem Sie das neue Image getestet haben, können Sie das verwaltete Quellimage löschen. Sie können auch mithilfe von [PowerShell](image-version-managed-image-powershell.md) von einem verwalteten Image zu einem Katalog mit freigegebenen Images migrieren.
 
 Images in Imagekatalogen weisen zwei Komponenten auf, die in diesem Beispiel erstellt werden:

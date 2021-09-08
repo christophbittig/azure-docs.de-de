@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
-ms.openlocfilehash: d58d9ab48fa16fb5258f097ed4567e539e21c72c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cbdc2a43cc4fa3ce18a2ede52a115fd6de580c5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601132"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471577"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>Verschieben einer Azure-Arbeitsmappe in eine andere Region
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure-Arbeitsmappenressourcen in ein
 
 * Stellen Sie sicher, dass Arbeitsmappen in der Zielregion unterstützt werden.
 
-* Diese Anweisungen gelten sowohl für freigegebene Arbeitsmappen (`microsoft.insights/workbooks`) als auch für in Azure Monitor und den meisten Ressourcentypen gespeicherte private Arbeitsmappen (`microsoft.insights/myworkbooks`).
+* Diese Anweisungen gelten für Arbeitsmappen (`microsoft.insights/workbooks`), die in Azure Monitor und den meisten Ressourcentypen gespeichert sind.
 
   Arbeitsmappen, die speziell mit dem Ressourcentyp Application Insights verknüpft sind, werden jedoch in der Azure-Region gespeichert, in der die Application Insights-Ressource gespeichert ist.
 

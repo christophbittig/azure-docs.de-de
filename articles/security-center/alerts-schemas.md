@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2020
+ms.date: 07/18/2021
 ms.author: memildin
-ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e65fd5a0c672e500a0a4bc08f45e9ced32d89047
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557997"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463502"
 ---
 # <a name="security-alerts-schemas"></a>Schemas für Sicherheitswarnungen
 
@@ -37,27 +37,9 @@ Wenn Sie programmgesteuerte Methoden verwenden, um die Warnungen zu verarbeiten,
 ## <a name="the-schemas"></a>Die Schemas 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Workflowautomatisierung und fortlaufender Export in Event Hub](#tab/schema-continuousexport)
+### <a name="azure-sentinel"></a>[Azure Sentinel](#tab/schema-sentinel)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>JSON-Beispiel für Warnungen, die an Logic Apps, Event Hub und SIEM-Lösungen von Drittanbietern gesendet werden
-
-Im Folgenden finden Sie das Schema der Warnungsereignisse, die übergeben werden an:
-
-- Azure Logic App-Instanzen, die in der Workflowautomatisierung von Security Center konfiguriert wurden
-- Azure Event Hub mithilfe des Security Center-Features für den fortlaufenden Export
-
-Weitere Informationen zum Feature Workflowautomatisierung finden Sie unter [Automatisieren von Reaktionen auf Security Center-Trigger](workflow-automation.md).
-
-Weitere Informationen zum fortlaufenden Export finden Sie unter [Fortlaufender Export von Security Center-Daten](continuous-export.md).
-
-[!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
-
-
-
-
-### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel und Log Analytics-Arbeitsbereiche](#tab/schema-sentinel)
-
-Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den Log Analytics-Arbeitsbereich für Azure Sentinel. 
+Der Sentinel-Connector erhält Warnungen von Azure Security Center und sendet diese an den Log Analytics-Arbeitsbereich für Azure Sentinel.
 
 Zum Erstellen eines Sentinel-Falls oder -Vorfalls mithilfe von Security Center-Warnungen benötigen Sie das Schema für die unten angezeigten Warnungen. 
 
@@ -66,15 +48,13 @@ Weitere Informationen finden Sie in der [Dokumentation zu Azure Sentinel](../sen
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
 
-
-
 ### <a name="azure-activity-log"></a>[Azure-Aktivitätsprotokoll](#tab/schema-activitylog)
 
 Azure Security Center überwacht generierte Sicherheitswarnungen als Ereignisse im Azure-Aktivitätsprotokoll.
 
 Sie können die Sicherheitswarnungen im Aktivitätsprotokoll anzeigen, indem Sie folgendermaßen nach dem Ereignis „Activate Alert“ suchen:
 
-[![Durchsuchen des Aktivitätsprotokolls nach dem Ereignis „Activate Alert“](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![Durchsuchen des Aktivitätsprotokolls nach dem Ereignis „Warnung aktivieren“.](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
 ### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>JSON-Beispiel für Warnungen, die an das Azure-Aktivitätsprotokoll gesendet werden
@@ -165,6 +145,18 @@ Sie können die Sicherheitswarnungen im Aktivitätsprotokoll anzeigen, indem Sie
 |**relatedEvents**|Konstant, leeres Array|
 |||
 
+
+### <a name="workflow-automation"></a>[Workflowautomatisierung (Vorschauversion)](#tab/schema-workflow-automation)
+
+Informationen zum Warnungsschema bei Verwendung der Workflowautomatisierung finden Sie in der [Connectors-Dokumentation](/connectors/ascalert/).
+
+
+### <a name="continuous-export"></a>[Fortlaufendem Export](#tab/schema-continuousexport)
+
+Das Security Center-Feature für den fortlaufenden Export übergibt Warnungsdaten an:
+
+- Azure Event Hub verwendet das gleiche Schema wie [die Warnungs-API.](/rest/api/securitycenter/alerts)
+- Log Analytics-Arbeitsbereiche gemäß dem [SecurityAlert-Schema](/azure/azure-monitor/reference/tables/SecurityAlert) in der Azure Monitor-Datenreferenz-Dokumentation.
 
 
 

@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Azure Cosmos DB Datenbankschutz und Datensicherhe
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 08/30/2021
 ms.author: mjbrown
-ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee5b5421ea0cb43371f790eecc31f22cc4ae7142
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94636910"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257875"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Sicherheit bei Azure Cosmos DB – Übersicht
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,22 +84,194 @@ Der folgende Screenshot zeigt, wie Sie Überwachungs- und Aktivitätsprotokolle 
 
 <a id="primary-keys"></a>
 
-## <a name="primary-keys"></a>Primärschlüssel
+## <a name="primarysecondary-keys"></a>Primäre/sekundäre Schlüssel
 
-Primärschlüssel ermöglichen den Zugriff auf alle Verwaltungsressourcen für das Datenbankkonto. Primärschlüssel:
+Primäre/sekundäre Schlüssel ermöglichen den Zugriff auf alle Verwaltungsressourcen für das Datenbankkonto. Primäre/sekundäre Schlüssel:
 
 - Ermöglichen den Zugriff auf Konten, Datenbanken, Benutzer und Berechtigungen. 
 - Können nicht zur präzisen Steuerung des Zugriffs auf Container und Dokumente verwendet werden.
 - Werden im Zuge der Kontoerstellung erstellt.
 - Können jederzeit neu generiert werden.
 
-Jedes Konto umfasst zwei Primärschlüssel: einen primären und einen sekundären Schlüssel. Dank der Verwendung von zwei Schlüsseln können Sie Schlüssel neu generieren oder ersetzen und trotzdem ohne Unterbrechung auf Ihr Konto und Ihre Daten zugreifen.
+Jedes Konto umfasst zwei Schlüssel: einen primären und einen sekundären Schlüssel. Dank der Verwendung von zwei Schlüsseln können Sie Schlüssel neu generieren oder ersetzen und trotzdem ohne Unterbrechung auf Ihr Konto und Ihre Daten zugreifen.
 
-Neben den beiden Primärschlüsseln für das Cosmos DB-Konto stehen noch zwei schreibgeschützte Schlüssel zur Verfügung. Diese schreibgeschützten Schlüssel ermöglichen ausschließlich Lesevorgänge für das Konto. Schreibgeschützte Schlüssel bieten keinen Zugriff auf Leseberechtigungsressourcen.
+Primäre/sekundäre Schlüssel sind in zwei Versionen verfügbar: mit Lese-/Schreibzugriff und als schreibgeschützt. Die schreibgeschützten Schlüssel lassen nur Lesevorgänge für das Konto zu, bieten jedoch keinen Zugriff auf Leseberechtigungsressourcen.
 
-Primäre, sekundäre und schreibgeschützte Primärschlüssel sowie Primärschlüssel mit Lese-/Schreibzugriff können über das Azure-Portal abgerufen und neu generiert werden. Eine entsprechende Anleitung finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln](manage-with-cli.md#regenerate-account-key).
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> Schlüsselrotation und Neugenerierung
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Zugriffssteuerung (IAM) im Azure-Portal: Veranschaulichung der NoSQL-Datenbanksicherheit":::
+Der Prozess der Schlüsselrotation und -neugenerierung ist einfach. Stellen Sie zunächst sicher, dass **Ihre Anwendung konsistent entweder den Primärschlüssel oder den Sekundärschlüssel** verwendet, um auf Ihr Azure Cosmos DB-Konto zuzugreifen. Führen Sie dann die unten beschriebenen Schritte aus.
+
+# <a name="sql-api"></a>[SQL-API](#tab/sql-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>Wenn Ihre Anwendung derzeit den Primärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Schlüssel** aus dem linken Menü und wählen Sie dann die Option **Sekundärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Sekundärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Sekundärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch den Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Primärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>Wenn Ihre Anwendung derzeit den Sekundärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Schlüssel** aus dem linken Menü und wählen Sie dann die Option **Primärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Primärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Primärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Sekundärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+# <a name="azure-cosmos-db-api-for-mongodb"></a>[Azure Cosmos DB-API für MongoDB](#tab/mongo-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>Wenn Ihre Anwendung derzeit den Primärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Kennwort neu generieren** aus der Ellipse rechts neben Ihrem Sekundärkennwort aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Sekundärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch den Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Primärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>Wenn Ihre Anwendung derzeit den Sekundärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Kennwort neu generieren** aus der Ellipse rechts neben Ihrem Primärkennwort aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Primärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Sekundärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+# <a name="cassandra-api"></a>[Cassandra-API](#tab/Cassandra-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>Wenn Ihre Anwendung derzeit den Primärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Sekundären Lese- und Schreibzugriff neu generieren** aus der Ellipse rechts neben Ihrem Sekundärkennwort aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Sekundärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch den Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Primärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>Wenn Ihre Anwendung derzeit den Sekundärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Primärkennwort für den Lese- und Schreibzugriff neu generieren** aus der Ellipse rechts neben Ihrem Primärkennwort aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Primärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Sekundärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+# <a name="gremlin-api"></a>[Gremlin-API](#tab/gremlin-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>Wenn Ihre Anwendung derzeit den Primärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Schlüssel** aus dem linken Menü und wählen Sie dann die Option **Sekundärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Sekundärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Sekundärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch den Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Primärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>Wenn Ihre Anwendung derzeit den Sekundärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Schlüssel** aus dem linken Menü und wählen Sie dann die Option **Primärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Primärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Primärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Sekundärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+# <a name="table-api"></a>[Tabellen-API](#tab/table-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>Wenn Ihre Anwendung derzeit den Primärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Sekundärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Sekundärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Sekundärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch den Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Primärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>Wenn Ihre Anwendung derzeit den Sekundärschlüssel verwendet
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto.
+
+1. Wählen Sie die Option **Verbindungszeichenfolge** aus dem linken Menü und wählen Sie dann die Option **Primärschlüssel neu generieren** aus der Ellipse rechts neben Ihrem Primärschlüssel aus.
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="Ein Screenshot, der zeigt, wie der Primärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+1. Überprüfen Sie, ob der neue Primärschlüssel konsistent mit Ihrem Azure Cosmos DB-Konto funktioniert. Der Vorgang der Schlüsselregenerierung kann je nach Größe des Cosmos DB-Kontos unterschiedlich lange dauern – von einer Minute bis hin zu mehreren Stunden.
+
+1. Ersetzen Sie den Primärschlüssel in Ihrer Anwendung durch Ihren Sekundärschlüssel.
+
+1. Wechseln Sie zurück zum Azure-Portal und lösen Sie die Neugenerierung des Sekundärschlüssels aus.
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

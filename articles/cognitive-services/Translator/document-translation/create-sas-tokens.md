@@ -6,14 +6,14 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a91829ce79c5cd9e32efefc809dd23a19382f49
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489632"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360269"
 ---
-# <a name="create-sas-tokens-for-document-translation-processing"></a>Erstellen von SAS-Token für die Verarbeitung der Dokumentübersetzung
+# <a name="create-sas-tokens-for-your-storage-containers"></a>Erstellen von SAS-Token für Ihre Speichercontainer
 
 In diesem Artikel wird beschrieben, wie Sie SAS-Token (Shared Access Signature) erstellen, indem Sie den Azure Storage-Explorer oder das Azure-Portal nutzen. Ein SAS-Token ermöglicht den sicheren, delegierten Zugriff auf Ressourcen in Ihrem Azure-Speicherkonto.
 

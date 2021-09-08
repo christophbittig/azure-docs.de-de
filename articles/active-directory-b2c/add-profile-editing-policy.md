@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d84756a2ae4f8897c42e1846e3a91dbb9f7ad7e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f019fdc64ca30954017afc34267dcef998cf5fb8
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257040"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198834"
 ---
 # <a name="set-up-a-profile-editing-flow-in-azure-active-directory-b2c"></a>Einrichten eines Profilbearbeitungsflows in Azure Active Directory B2C
 
@@ -48,9 +48,14 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Profilbearbeitung** aus. 
 1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *profileediting1*.
-1. Klicken Sie unter **Identitätsanbieter** auf **Email sign-in** (E-Mail-Anmeldung).
-1. Wählen Sie für **Benutzerattribute** die Attribute aus, die der Kunde in seinem Profil bearbeiten darf. Wählen Sie z.B. **Mehr anzeigen** und dann sowohl Attribute als auch Ansprüche für **Anzeigename** und **Position** aus. Klicken Sie auf **OK**.
-1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+1. Wählen Sie unter **Identitätsanbieter** mindestens einen Identitätsanbieter aus:
+
+   * Wählen Sie unter **Lokale Konten** eine der folgenden Optionen aus: **E-Mail-Anmeldung**, **Benutzer-ID-Anmeldung**, **Telefonanmeldung**, **Telefon-/E-Mail-Anmeldung**, **Benutzer-ID-/E-Mail-Anmeldung** oder **Keine**. [Weitere Informationen](sign-in-options.md)
+   * Wählen Sie unter **Soziale Identitätsanbieter** einen der externen sozialen oder Unternehmensidentitätsanbieter aus, die Sie eingerichtet haben. [Weitere Informationen](add-identity-provider.md)
+1. Wenn Sie unter **Mehrstufige Authentifizierung** festlegen möchten, dass Benutzer ihre Identität mit einer zweiten Authentifizierungsmethode überprüfen müssen, wählen Sie den Methodentyp aus und den Zeitpunkt, an dem die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen werden soll. [Weitere Informationen](multi-factor-authentication.md)
+1. Wenn Sie unter **Bedingter Zugriff** Richtlinien für den bedingten Zugriff für Ihren Azure AD B2C-Mandanten konfiguriert haben und ihn für diesen Benutzerfluss aktivieren möchten, aktivieren Sie das Kontrollkästchen **Richtlinien für bedingten Zugriff erzwingen**. Sie müssen keinen Richtliniennamen angeben. [Weitere Informationen](conditional-access-user-flow.md?pivots=b2c-user-flow)
+1. Wählen Sie unter **Benutzerattribute** die Attribute aus, die der Kunde in seinem Profil bearbeiten darf. Um eine vollständige Liste der Werte zu erhalten, wählen Sie **Mehr anzeigen** aus, wählen Sie die Werte aus, und wählen Sie dann **OK**.
+1. Wählen Sie **Erstellen** aus, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 

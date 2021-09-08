@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472075"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692447"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Windows Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 In diesem Artikel wird erläutert, wie Sie ein Windows Virtual Desktop-Image mit folgenden Anpassungen erstellen:
 
@@ -274,7 +276,7 @@ $getStatus.LastRunStatusRunSubState
 ## <a name="create-a-vm"></a>Erstellen einer VM
 Sobald der Buildprozess abgeschlossen ist, können Sie eine VM anhand des Images erstellen. Sie können dazu die unter [New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) aufgeführten Beispiele verwenden.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Löschen Sie zunächst die Ressourcengruppenvorlage. Löschen Sie nicht nur die gesamte Ressourcengruppe, da andernfalls nicht die in AIB verwendete Stagingressourcengruppe (*IT_* ) bereinigt wird.
 

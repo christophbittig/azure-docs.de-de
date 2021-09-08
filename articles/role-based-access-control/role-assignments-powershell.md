@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 08/31/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a67bb6a79e6ef3e51269090611d18c0711fb5bbd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c0138a36c976a9c7c273d61fdd19a50ffbe31354
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691027"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305945"
 ---
 # <a name="assign-azure-roles-using-azure-powershell"></a>Zuweisen von Azure-Rollen mithilfe von Azure PowerShell
 
@@ -29,7 +29,7 @@ Zum Zuweisen von Rollen müssen Sie über Folgendes verfügen:
 
 - `Microsoft.Authorization/roleAssignments/write`-Berechtigungen, z. B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 - [PowerShell in Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure PowerShell](/powershell/azure/install-az-ps)
-- Das Konto, das Sie zum Ausführen des PowerShell-Befehls verwenden, muss über die Microsoft Graph-Berechtigung `Directory.Read.All` verfügen.
+- Das Konto, das Sie zum Ausführen des PowerShell-Befehls verwenden, muss über die Berechtigungen für Azure Active Directory Graph `Directory.Read.All` und Microsoft Graph `Directory.Read.All` verfügen.
 
 ## <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 

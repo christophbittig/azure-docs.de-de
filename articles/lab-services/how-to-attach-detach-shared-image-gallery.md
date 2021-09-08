@@ -3,12 +3,12 @@ title: Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure La
 description: In diesem Artikel wird beschrieben, wie Sie einen freigegebenen Imagekatalog an ein Classroom-Lab in Azure Lab Services anfügen.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: 2a460e25d59d2c5fcde341212e7912882f5fe111
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 62020f30b000292bf3e6af4cab61364e99ce4b5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190689"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355435"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Dieser Artikel zeigt, wie Sie einen Katalog mit freigegebenen Images einem Labkonto anfügen können. 
@@ -89,6 +89,6 @@ An ein Lab kann immer nur ein einzelner Katalog mit freigegebenen Images angefü
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Speichern eines Labimages im Katalog mit freigegebenen Images oder zum Verwenden eines Images aus dem Katalog mit freigegebenen Images zum Erstellen einer VM finden Sie unter [Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services](how-to-use-shared-image-gallery.md).
 
-Informationen zum Hochladen eines benutzerdefinierten Windows-Images in eine Shared Image Gallery außerhalb des Kontexts eines Labs finden Sie unter [Hochladen eines benutzerdefinierten Images in eine Shared Image Gallery](upload-custom-image-shared-image-gallery.md).
+Weitere Möglichkeiten, benutzerdefinierte Images außerhalb des Kontextes eines Labs in die freigegebene Image-Galerie zu bringen, finden Sie unter [Empfohlene Vorgehensweisen zur Erstellung benutzerdefinierter Images](approaches-for-custom-image-creation.md).
 
 Weitere allgemeine Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md).

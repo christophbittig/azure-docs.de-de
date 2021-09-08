@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba46c98a97b1ef7576cd54ab6227a18bb9cb059f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664929"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356557"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs
 
@@ -36,10 +36,10 @@ Der öffentliche Zugriff auf Ihre Daten ist standardmäßig immer unzulässig. E
 
 In der folgenden Tabelle wird zusammengefasst, wie sich diese beiden Einstellungen auf den öffentlichen Zugriff für einen Container auswirken.
 
-| Einstellung für öffentlichen Zugriff | Öffentlicher Zugriff für einen Container ist deaktiviert (Standardeinstellung) | Öffentlicher Zugriff für einen Container ist auf „Container“ festgelegt | Öffentlicher Zugriff für einen Container ist auf „Blob“ festgelegt |
+|   | Die öffentliche Zugriffsebene für den Container ist auf Privat festgelegt (Standardeinstellung) | Die öffentliche Zugriffsebene für den Container ist auf Container festgelegt | Die öffentliche Zugriffsebene für den Container ist auf Blob festgelegt |
 |--|--|--|--|
-| Öffentlicher Zugriff wird für das Speicherkonto verweigert | Kein öffentlicher Zugriff auf die Container im Speicherkonto | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. |
-| Öffentlicher Zugriff wird für das Speicherkonto zugelassen (Standardeinstellung) | Kein öffentlicher Zugriff auf diesen Container (Standardkonfiguration) | Der öffentliche Zugriff ist für diesen Container und dessen Blobs zulässig. | Der öffentliche Zugriff auf Blobs in diesem Container ist zulässig, jedoch nicht auf den Container selbst. |
+| **Öffentlicher Zugriff wird für das Speicherkonto verweigert** | Kein öffentlicher Zugriff auf die Container im Speicherkonto | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. | Kein öffentlicher Zugriff auf die Container im Speicherkonto – die Einstellung für das Speicherkonto überschreibt die Containereinstellung. |
+| **Öffentlicher Zugriff wird für das Speicherkonto zugelassen (Standardeinstellung)** | Kein öffentlicher Zugriff auf diesen Container (Standardkonfiguration) | Der öffentliche Zugriff ist für diesen Container und dessen Blobs zulässig. | Der öffentliche Zugriff auf Blobs in diesem Container ist zulässig, jedoch nicht auf den Container selbst. |
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Zulassen oder Verweigern des öffentlichen Lesezugriffs für ein Speicherkonto
 
@@ -79,7 +79,7 @@ $location = "<location>"
 
 # Create a storage account with AllowBlobPublicAccess set to true (or null).
 New-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -Location $location `
     -SkuName Standard_GRS
     -AllowBlobPublicAccess $false
@@ -89,7 +89,7 @@ New-AzStorageAccount -ResourceGroupName $rgName `
 
 # Set AllowBlobPublicAccess set to false
 Set-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -AllowBlobPublicAccess $false
 
 # Read the AllowBlobPublicAccess property.
@@ -209,7 +209,7 @@ Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die �
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Rufen Sie den Befehl [Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) auf, um die öffentliche Zugriffsebene für mindestens einen Container mit PowerShell zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Rufen Sie den Befehl [Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) auf, um die öffentliche Zugriffsebene für mindestens einen Container mit PowerShell zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations).
 
 Das folgende Beispiel erstellt einen Container mit deaktiviertem öffentlichem Zugriff und aktualisiert dann die Einstellung für den öffentlichen Zugriff des Containers, um anonymen Zugriff auf den Container und seine Blobs zu ermöglichen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -240,7 +240,7 @@ Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, kann die �
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Sie müssen Sie den Befehl [az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) aufrufen, um die öffentliche Zugriffsebene für einen oder mehrere Container mit der Azure CLI zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Sie müssen Sie den Befehl [az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) aufrufen, um die öffentliche Zugriffsebene für einen oder mehrere Container mit der Azure CLI zu aktualisieren. Autorisieren Sie diesen Vorgang, indem Sie Ihren Kontoschlüssel, eine Verbindungszeichenfolge oder eine Shared Access Signature (SAS) übergeben. Der Vorgang [Container-ACL festlegen](/rest/api/storageservices/set-container-acl), der die öffentliche Zugriffsebene des Containers festlegt, bietet keine Unterstützung für die Autorisierung mit Azure AD. Weitere Informationen finden Sie unter [Berechtigungen zum Aufrufen von Datenvorgängen für Blobs und Warteschlangen](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations).
 
 Das folgende Beispiel erstellt einen Container mit deaktiviertem öffentlichem Zugriff und aktualisiert dann die Einstellung für den öffentlichen Zugriff des Containers, um anonymen Zugriff auf den Container und seine Blobs zu ermöglichen. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -301,4 +301,4 @@ Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 
 - [Verhindern des anonymem, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-prevent.md)
 - [Anonymer Zugriff auf öffentliche Container und Blobs mit .NET](anonymous-read-access-client.md)
-- [Autorisierung des Zugriffs auf Azure Storage](../common/storage-auth.md)
+- [Autorisierung des Zugriffs auf Azure Storage](../common/authorize-data-access.md)

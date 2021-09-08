@@ -1,79 +1,81 @@
 ---
-title: Überwachen und Debuggen mit Metriken in Azure Cosmos DB
+title: Überwachen und Debuggen mit Insights in Azure Cosmos DB
 description: Verwenden Sie Metriken in Azure Cosmos DB zum Beheben häufiger Probleme und Überwachen der Datenbank.
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 07/14/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf92d9e1a1f92c2dc3294b71e3e620166fd90680
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 2e85fa72288ab31fd8e61fcda731debb3517057f
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818696"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114393368"
 ---
-# <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
+# <a name="monitor-and-debug-with-insights-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Insights in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB bietet Metriken für Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz. Das Azure-Portal bietet eine aggregierte Ansicht dieser Metriken. Sie können Azure Cosmos DB-Metriken auch über die Azure Monitor-API anzeigen. Bei den Dimensionswerten für die Metriken, z. B. dem Containernamen, wird die Groß-/Kleinschreibung nicht berücksichtigt. Daher müssen Sie bei Zeichenfolgenvergleichen für diese Dimensionswerte Vergleiche verwenden, bei denen die Groß-/Kleinschreibung nicht berücksichtigt wird. Informationen zum Anzeigen von Metriken von Azure Monitor finden Sie im Artikel [Abrufen von Metriken von Azure Monitor](./monitor-cosmos-db.md).
+Azure Cosmos DB bietet Insights für Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz. Das Azure-Portal bietet eine aggregierte Ansicht dieser Metriken. Sie können Azure Cosmos DB-Metriken auch über die Azure Monitor-API anzeigen. Bei den Dimensionswerten für die Metriken, z. B. dem Containernamen, wird die Groß-/Kleinschreibung nicht berücksichtigt. Daher müssen Sie bei Zeichenfolgenvergleichen für diese Dimensionswerte Vergleiche verwenden, bei denen die Groß-/Kleinschreibung nicht berücksichtigt wird. Informationen zum Anzeigen von Metriken von Azure Monitor finden Sie im Artikel [Abrufen von Metriken von Azure Monitor](./monitor-cosmos-db.md).
 
-Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos DB-Metriken zum Analysieren und Beheben der Probleme verwendet werden können. Metriken werden alle fünf Minuten erfasst und sieben Tage lang gespeichert.
+Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos DB-Insights zum Analysieren und Beheben der Probleme verwendet werden können. Standardmäßig werden die Metrikinsights alle fünf Minuten gesammelt und sieben Tage lang aufbewahrt.
 
-## <a name="view-metrics-from-azure-portal"></a>Anzeigen von Metriken über das Azure-Portal
+## <a name="view-insights-from-azure-portal"></a>Anzeigen von Insights über das Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto.
 
-1. Öffnen Sie den Bereich **Metriken**. Der Bereich „Metriken“ zeigt standardmäßig Metriken für den Speicher, Index und die Anforderungseinheiten für alle Datenbanken in Ihrem Azure Cosmos-Konto an. Sie können diese Metriken pro Datenbank, Container oder Region filtern. Sie können die Metriken auch mit einer bestimmten Zeitgranularität filtern. Weitere Informationen zu den Durchsatz-, Speicher-, Verfügbarkeits-, Latenz- und Konsistenzmetriken werden auf separaten Registerkarten bereitgestellt. 
+1. Sie können Ihre Kontometriken entweder im Bereich **Metriken** oder im Bereich **Insights (Vorschau)** einsehen.
 
-   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal":::
+   * **Metriken:** Dieser Bereich bietet numerische Metriken, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. So können Sie beispielsweise die [serverseitige Latenzmetrik](monitor-server-side-latency.md), die [normalisierte Metrik zur Nutzung von Anfrageeinheiten](monitor-normalized-request-units.md) usw. anzeigen und überwachen.
 
-Die folgenden Metriken sind im Bereich **Metriken** verfügbar:
+   * **Insights (Vorschau):** Dieser Bereich bietet eine angepasste Überwachungsbenutzeroberfläche für Azure Cosmos DB. Sie verwenden die gleichen Metriken und Protokolle, die in Azure Monitor gesammelt werden, und zeigen eine aggregierte Ansicht für Ihr Konto an.
 
-* **Durchsatzmetrik**: Diese Metrik zeigt die Anzahl der genutzten oder fehlerhaften Anforderungen an (Antwortcode 429), da der Durchsatz oder die bereitgestellte Speicherkapazität für den Container überschritten wurde.
+1. Öffnen Sie den Bereich **Insights (Vorschau)** . Standardmäßig werden im Bereich „Insights“ die Metriken für Durchsatz, Anforderungen, Speicher, Verfügbarkeit, Latenz, System und Kontoverwaltung für alle Container in Ihrem Konto angezeigt. Sie können **Zeitbereiche**, **Datenbanken** und **Container** auswählen, für die Sie Insights anzeigen möchten. Auf der Registerkarte **Übersicht** werden die RU/s-Nutzung, Datennutzung, Indexnutzung, gedrosselte Anforderungen und der normalisierte RU/s-Verbrauch für die ausgewählte Datenbank und den Container angezeigt.
 
-* **Speichermetrik**: Diese Metrik zeigt die Größe der Daten und die Indexnutzung an.
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Cosmos DB-Leistungsmetriken im Azure-Portal" lightbox="./media/use-metrics/performance-metrics.png" :::
 
-* **Verfügbarkeitsmetrik**: Diese Metrik zeigt den Prozentsatz erfolgreicher Anforderungen von der Gesamtzahl der Anforderungen pro Stunde an. Die Erfolgsrate wird durch Azure Cosmos DB-SLAs definiert.
+1. Die folgenden Metriken sind im Bereich **Insights** verfügbar:
 
-* **Latenzmetrik**: Diese Metrik zeigt die Wartezeit beim Lesen und Schreiben an, die von Azure Cosmos DB in der Region, in der Ihr Konto ausgeführt wird, gemessen wird. Sie können die regionsübergreifende Wartezeit für ein georepliziertes Konto visualisieren. Diese Metrik stellt nicht die End-to-End-Anforderungswartezeit dar.
+   * **Durchsatz**: Diese Registerkarte zeigt die gesamte Anzahl der genutzten oder fehlerhaften angeforderten Einheiten an (Antwortcode 429), da der Durchsatz oder die bereitgestellte Speicherkapazität für den Container überschritten wurde.
 
-* **Konsistenzmetrik**: Diese Metrik informiert über die Konsistenz für das ausgewählte Konsistenzmodell. Diese Metrik zeigt für Konten in mehreren Regionen auch die Wartezeit für die Replikation zwischen den ausgewählten Regionen an.
+   * **Anforderungen**: Auf dieser Registerkarte werden die Gesamtzahl der vom Statuscode verarbeiteten Anforderungen nach Vorgangstyp und die Anzahl der fehlerhaften Anforderungen (Antwortcode 429) angezeigt. Anforderungen sind fehlerhaft, wenn der für den Container bereitgestellte Durchsatz oder die bereitgestellte Speicherkapazität überschritten wird.
 
-* **Systemmetrik**: Diese Metrik zeigt an, wie viele Metadatenanforderungen von der primären Partition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
+   * **Speicher**: Auf dieser Registerkarte werden die Größe der Daten und die Indexnutzung im ausgewählten Zeitraum angezeigt.
 
-In den folgenden Abschnitten werden allgemeine Szenarios erläutert, in denen Sie Azure Cosmos DB-Metriken verwenden können. 
+   * **Verfügbarkeit**: Diese Registerkarte zeigt den Prozentsatz erfolgreicher Anforderungen der Gesamtzahl der Anforderungen pro Stunde an. Die Erfolgsrate wird durch Azure Cosmos DB-SLAs definiert.
+
+   * **Latenz**: Diese Registerkarte zeigt die Wartezeit beim Lesen und Schreiben an, die von Azure Cosmos DB in der Region, in der Ihr Konto ausgeführt wird, gemessen wird. Sie können die regionsübergreifende Wartezeit für ein georepliziertes Konto visualisieren. Sie können die serverseitige Latenz auch durch verschiedene Vorgänge darstellen. Diese Metrik stellt nicht die End-to-End-Anforderungswartezeit dar.
+
+   * **System**: Diese Registerkarte zeigt an, wie viele Metadatenanforderungen von der primären Partition erfüllt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
+
+   * **Kontoverwaltung**: Auf dieser Registerkarte werden die Metriken für Kontoverwaltungsaktivitäten wie Kontoerstellung, Löschung, Schlüsselupdates, Netzwerk und Replikationseinstellungen angezeigt.
+
+In den folgenden Abschnitten werden allgemeine Szenarios erläutert, in denen Sie Azure Cosmos DB-Metriken verwenden können.
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Ermitteln der Anzahl von Anforderungen, die erfolgreich ausgeführt werden oder Fehler verursachen
 
-Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigieren Sie zum Blatt **Metriken**. Suchen Sie im Blatt das Diagramm **Anzahl von Anforderungen pro Minute, die die Kapazität überschritten haben. In diesem Diagramm wird die Summe der nach Statuscode segmentierten Anforderungen für jede einzelne Minute angezeigt. Weitere Informationen zu HTTP-Statuscodes finden Sie unter [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) (HTTP-Statuscodes für Azure Cosmos DB).
+Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigieren Sie zum Blatt **Insights**. Öffnen Sie auf diesem Blatt die Registerkarte **Anforderungen**. Dort wird ein Diagramm mit der Gesamtzahl der Anforderungen nach Statuscode und Vorgangstyp segmentiert angezeigt. Weitere Informationen zu HTTP-Statuscodes finden Sie unter [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) (HTTP-Statuscodes für Azure Cosmos DB).
 
 Der häufigste Fehlerstatuscode ist 429 (Ratenbegrenzung/Drosselung). Dieser Fehler besagt, dass Anforderungen an Azure Cosmos DB den bereitgestellten Durchsatz überschreiten. Die gängigste Lösung für dieses Problem ist das [Hochskalieren der Anforderungseinheiten](./set-throughput.md) (Request Units, RUs) für die angegebene Sammlung.
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Anzahl von Anforderungen pro Minute":::
+:::image type="content" source="media/use-metrics/request-count.png" alt-text="Anzahl von Anforderungen pro Minute" lightbox= "media/use-metrics/request-count.png":::
 
-## <a name="determine-the-throughput-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Durchsatzverteilung
+## <a name="determine-the-throughput-consumption-by-a-partition-key-range"></a>Bestimmen des Durchsatzverbrauchs nach Partitionsschlüsselbereich
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt **Metriken**. Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich an der extremen Partition am linken Rand erkennen lässt.
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionsschlüssel-Bereichs-IDs aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie zum Bereich **Insights (Vorschau)** . Wenn Sie die Registerkarte **Durchsatz** öffnen, wird der normalisierte RU/s-Verbrauch für verschiedene Partitionsschlüsselbereiche im Diagramm angezeigt.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Einzelne Partition mit starker Auslastung":::
+:::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="Normalisierter Durchsatzverbrauch nach Partitionsschlüsselbereich-IDs" lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
-Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursachen, die zu gedrosselten Anforderungen führen können und möglicherweise eine Neupartitionierung erfordern. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partitioning-overview.md).
+Mithilfe dieses Diagramms können Sie ermitteln, ob eine heiße Partition vorhanden ist. Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursachen, die zu gedrosselten Anforderungen führen können und möglicherweise eine Neupartitionierung erfordern. Nachdem Sie den Partitionsschlüssel identifiziert haben, der die verzerrte Verteilung verursacht, müssen Sie möglicherweise den Container mit einem Partitionsschlüssel für eine gleichmäßigere Verteilung neu partitionieren. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partitioning-overview.md).
 
-## <a name="determine-the-storage-distribution-across-partitions"></a>Ermitteln der partitionsübergreifenden Speicherverteilung
+## <a name="determine-the-data-and-index-usage"></a>Bestimmen der Daten- und Indexnutzung
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Speicherverteilung jedes partitionierten Containers zu bestimmen, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Speicher“ wird die Speicheraufschlüsselung im Diagramm „Von wichtigen Partitionsschlüsseln genutzter Daten- und Indexspeicher“ angezeigt. Die folgende Abbildung zeigt eine schlechte Verteilung des Datenspeichers, wie die verzerrte Partition ganz links verdeutlicht.
+Es ist wichtig, die Speicherverteilung von partitionierten Containern nach Datennutzung, Indexnutzung und Dokumentnutzung zu bestimmen. Sie können die Indexnutzung minimieren, die Datennutzung maximieren und Ihre Abfragen optimieren. Um diese Daten abzurufen, navigieren Sie zum Bereich **Insights (Vorschau)** , und öffnen Sie die Registerkarte **Speicher**:
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Beispiel für eine schlechte Datenverteilung":::
-
-Sie können bestimmen, welcher Partitionsschlüssel die Verteilung verzerrt, indem Sie auf die Partition im Diagramm klicken.
-
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Partitionsschlüssel verzerrt die Verteilung":::
-
-Nachdem Sie den Partitionsschlüssel identifiziert haben, der die verzerrte Verteilung verursacht, müssen Sie möglicherweise den Container mit einem Partitionsschlüssel für eine gleichmäßigere Verteilung neu partitionieren. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partitioning-overview.md).
+:::image type="content" source="media/use-metrics/data-index-consumption.png" alt-text="Daten-, Index- und Dokumentnutzung" lightbox="media/use-metrics/data-index-consumption.png" :::
 
 ## <a name="compare-data-size-against-index-size"></a>Vergleichen der Datengröße mit der Indexgröße
 

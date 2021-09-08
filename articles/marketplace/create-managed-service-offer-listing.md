@@ -1,21 +1,21 @@
 ---
-title: Konfigurieren der Eintragsdetails Ihres Angebots für verwaltete Dienste in Microsoft Partner Center
-description: Erfahren Sie, wie Sie die Eintragsdetails Ihres Angebots für verwaltete Dienste in Azure Marketplace mit Partner Center konfigurieren.
+title: Konfigurieren der Details der Angebotsliste für verwaltete Dienste in Microsoft Partner Center
+description: Konfigurieren der Details der Angebotsliste für verwaltete Dienste in Azure Marketplace.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 5ab831ae6ab761804fc7a4665000a13ab61acadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: 1b2171c300fd52403da29d23f9f34d3f94961b3d
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97917987"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204497"
 ---
-# <a name="how-to-configure-your-managed-service-offer-listing-details"></a>Konfigurieren der Eintragsdetails Ihres Angebots für verwaltete Dienste
+# <a name="configure-managed-service-offer-listing-details"></a>Konfigurieren der Details der Angebotsliste für verwaltete Dienste
 
 Die Informationen, die Sie auf der Partner Center-Seite **Angebotsliste** angeben, werden in Azure Marketplace angezeigt. Hierzu zählen der Name Ihres Angebots und die Beschreibung sowie Medien und andere Marketingressourcen.
 
@@ -32,7 +32,7 @@ Geben Sie auf der Seite **Angebotsliste** in Partner Center die unten beschriebe
 4. Beschreiben Sie im Feld **Beschreibung** Ihr Angebot für verwaltete Dienste. Sie können in dieses Feld bis zu 2.000 Zeichen eingeben (einschließlich HTML-Tags und Leerzeichen). Weitere Informationen zur HTML-Formatierung finden Sie unter [HTML-Tags, die in Angebotsbeschreibungen des kommerzielle Marketplace unterstützt werden](./supported-html-tags.md).
 5. Geben Sie im Feld **Link zur Datenschutzrichtlinie** einen Link (beginnend mit „https“) zur Datenschutzrichtlinie Ihres Unternehmens ein. Sie müssen sicherstellen, dass Ihr Angebot die Datenschutzgesetze und -bestimmungen erfüllt, und Sie müssen eine gültige Datenschutzrichtlinie bereitstellen.
 
-## <a name="useful-links"></a>Nützliche Links
+## <a name="product-information-links"></a>Links zu Produktinformationen
 
 Sie haben die Möglichkeit, optionale Onlinedokumente zu Ihrer Lösung bereitzustellen:
 
@@ -43,7 +43,7 @@ Sie haben die Möglichkeit, optionale Onlinedokumente zu Ihrer Lösung bereitzus
 
 Geben Sie den Namen, die E-Mail-Adresse und die Telefonnummer von zwei Personen in Ihrem Unternehmen ein: eine Kontaktperson für Support und eine Kontaktperson für technische Fragen. (Eine dieser Personen können Sie selbst sein.) Wir werden über diese Informationen bezüglich Ihres Angebots mit Ihnen kommunizieren. Diese Informationen werden Kunden nicht angezeigt, werden aber unter Umständen an Cloudlösungsanbieter weitergegeben.
 
-## <a name="support-urls"></a>Support-URLs
+## <a name="support-link"></a>Supportlink
 
 Wenn Sie Supportwebsites für weltweite Azure-Kunden und/oder Azure Government-Kunden anbieten, geben Sie deren URLs ein (sie müssen mit „https“ beginnen).
 
@@ -56,9 +56,9 @@ Wenn Sie Supportwebsites für weltweite Azure-Kunden und/oder Azure Government-K
 
 Laden Sie unter **Logos** ein **großes** Logo im PNG-Format zwischen 216 × 216 und 350 × 350 Pixel hoch. Von Partner Center werden automatisch Logos vom Typ **Mittel** und **Klein** erstellt, das Sie später ersetzen können.
 
-* Das große Logo (zwischen 216 x 216 und 350 x 350 px) wird in Ihrem Angebotseintrag im Azure Marketplace angezeigt.
-* Das mittlere Logo (90 x 90 px) wird angezeigt, wenn eine neue Ressource erstellt wird.
-* In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48 x 48 px) verwendet.
+- Das große Logo (zwischen 216 x 216 und 350 x 350 px) wird in Ihrem Angebotseintrag im Azure Marketplace angezeigt.
+- Das mittlere Logo (90 x 90 px) wird angezeigt, wenn eine neue Ressource erstellt wird.
+- In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48 x 48 px) verwendet.
 
 ### <a name="add-screenshots-optional"></a>Hinzufügen von Screenshots (optional)
 
@@ -82,4 +82,4 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hinzufügen einer Vorschauzielgruppe](create-managed-service-offer-preview.md)
+- [Hinzufügen einer Vorschauzielgruppe](create-managed-service-offer-preview.md)

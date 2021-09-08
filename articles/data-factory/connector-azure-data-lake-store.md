@@ -1,20 +1,22 @@
 ---
 title: Kopieren von Daten nach oder aus Azure Data Lake Storage Gen1
-description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern nach Azure Data Lake Storage oder aus Data Lake Storage in unterstützte Senkenspeicher kopieren.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie mithilfe der Azure Data Factory- oder Azure Synapse Analytics-Pipeline Daten von unterstützten Quelldatenspeichern nach Azure Data Lake Store oder aus Data Lake Store in unterstützte Senkenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 1a73fc3a48576ca39435d65449fc557fd5c93c43
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: e1ec23300f5bccfea161ec967702e65152bc658f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480435"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314616"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory-or-azure-synapse-analytics"></a>Das Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory- oder Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
 >
@@ -23,7 +25,7 @@ ms.locfileid: "109480435"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure Data Lake Storage Gen1 kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten in und aus Azure Data Lake Storage Gen1 kopieren. Weitere Informationen finden Sie im Einführungsartikel zu [Azure Data Factory](introduction.md) oder [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -51,7 +53,31 @@ Mit diesem Connector können Sie insbesondere:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Informationen zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Data Lake Storage verwendet werden.
+## <a name="create-a-linked-service-to-azure-data-lake-storage-gen1-using-ui"></a>Erstellen eines verknüpften Diensts mit Azure Data Lake Storage Gen1 über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Azure Data Lake Storage Gen1 auf der Azure-Portal-Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach dem Azure Data Lake Storage Gen1-Connector und wählen Sie den Connector aus.
+
+    :::image type="content" source="media/connector-azure-data-lake-store/azure-data-lake-store-connector.png" alt-text="Ein Screenshot, der den Azure Data Lake Storage Gen1-Connector zeigt":::.    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-azure-data-lake-store/configure-azure-data-lake-store-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration des verknüpften Diensts für Azure Data Lake Storage Gen1 zeigt":::.
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+Die folgenden Abschnitte enthalten Informationen zu den Eigenschaften, die zum Definieren von Entitäten speziell für Azure Data Lake Storage Gen1 verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -85,9 +111,9 @@ Folgende Eigenschaften werden unterstützt:
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als `SecureString`, um es sicher in zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen, wie Domänenname oder Mandanten-ID, für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
-| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre Azure Active Directory-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung des Diensts verwendet. | Nein |
 
 **Beispiel:**
 
@@ -115,20 +141,20 @@ Folgende Eigenschaften werden unterstützt:
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> So verwenden Sie verwaltete Identitäten für die Azure-Ressourcenauthentifizierung
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> Verwenden der vom System zugewiesenen Authentifizierung mit einer verwalteten Identität
 
-Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese verwaltete Identität direkt für die Data Lake Storage-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff auf Data Lake Storage sowie das Kopieren von Daten nach oder aus Data Lake Storage.
+Eine Data Factory- oder ein Synapse-Arbeitsbereich kann einer[systemseitig zugewiesenen verwalteten Identität](data-factory-service-identity.md) zugeordnet werden, die den Dienst für die Authentifizierung darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese systemseitig zugewiesenen verwaltete Identität direkt für die Data Lake Storage-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Ressource den Zugriff auf Data Lake Storage sowie das Kopieren von Daten nach oder aus Data Lake Storage.
 
-Führen Sie die folgenden Schritte aus, um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden:
+Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität zu verwenden.
 
-1. [Rufen Sie die verwalteten Data Factory-Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von „Dienstidentitätsanwendungs-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+1. [Rufen Sie die systemseitig zugewiesenen verwalteten Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von der „Dienstidentitätsanwendungs-ID“ kopieren, der zusammen mit Ihrer Factory oder Synapse-Arbeitsbereich generiert wurde.
 
-2. Gewähren Sie der verwalteten Identität Zugriff auf Data Lake Store. Beispiele zur Funktionsweise von Berechtigungen in Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions).
+2. Gewähren Sie der systemseitig zugewiesenen verwalteten Identität Zugriff auf Data Lake Store. Beispiele zur Funktionsweise von Berechtigungen in Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions).
 
     - **Als Quelle**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Lesen** für die zu kopierenden Dateien. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen. Es gelten keine Anforderungen für die Zugriffssteuerung (Identity & Access Management, IAM) auf Kontoebene.
     - **Als Senke**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Schreiben** für den Senkenordner. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen.
 
-In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Storage-Informationen im verknüpften Dienst keine Eigenschaften angeben.
+Sie müssen außer den allgemeinen Data Lake Storage-Informationen im verknüpften Dienst keine Eigenschaften angeben.
 
 **Beispiel:**
 
@@ -142,6 +168,48 @@ In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Storage-Infor
             "subscriptionId": "<subscription of ADLS>",
             "resourceGroupName": "<resource group of ADLS>"
         },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>Verwenden der vom Benutzer zugewiesenen Authentifizierung mit einer verwalteten Identität
+
+Eine Data Factory kann mit einer oder mehreren [benutzerseitig zugewiesenen verwalteten Identitäten](data-factory-service-identity.md) zugewiesen werden. Sie können diese benutzerseitig zugewiesene verwaltete Identität für die Blob Storage-Authentifizierung verwenden, die den Zugriff auf und das Kopieren von Daten aus oder in Data Lake Store ermöglicht. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md)
+
+Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benutzerseitig zugewiesenen verwalteten Identität zu verwenden:
+
+1. [Erstellen Sie eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) und gewähren Sie ihnen den Zugriff auf Azure Data Lake. Beispiele zur Funktionsweise von Berechtigungen in Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions).
+
+    - **Als Quelle**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Lesen** für die zu kopierenden Dateien. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen. Es gelten keine Anforderungen für die Zugriffssteuerung (Identity & Access Management, IAM) auf Kontoebene.
+    - **Als Senke**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Schreiben** für den Senkenordner. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen.
+    
+2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität. 
+
+Die folgende Eigenschaft wird unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
+
+**Beispiel:**
+
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
@@ -205,8 +273,8 @@ Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSett
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **AzureDataLakeStoreReadSettings** festgelegt werden. | Ja                                          |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
 | OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem im Dataset angegebenen Ordner/Dateipfad. Wenn Sie alle Dateien aus einem Ordner kopieren möchten, geben Sie zusätzlich für `wildcardFileName` den Wert `*` an. |  |
-| OPTION 2: Namensbereich<br>– listAfter | Ruft den Ordner bzw. die Dateien ab, deren Namen alphabetisch gesehen nach diesem Wert folgen (exklusiv) Für ADLS Gen1 wird der serverseitige Filter verwendet, dessen Leistung besser als die eines Platzhalterfilters ist. <br/>Data Factory wendet diesen Filter auf den Pfad an, der im Dataset definiert ist, und es wird nur eine Entitätsebene unterstützt. Weitere Beispiele finden Sie unter [Beispiele für Namensbereichfilter](#name-range-filter-examples). | Nein |
-| OPTION 2: Namensbereich<br/>– listBefore | Ruft den Ordner bzw. die Dateien ab, deren Namen alphabetisch gesehen vor diesem Wert folgen (inklusiv) Für ADLS Gen1 wird der serverseitige Filter verwendet, dessen Leistung besser als die eines Platzhalterfilters ist.<br>Data Factory wendet diesen Filter auf den Pfad an, der im Dataset definiert ist, und es wird nur eine Entitätsebene unterstützt. Weitere Beispiele finden Sie unter [Beispiele für Namensbereichfilter](#name-range-filter-examples). | Nein |
+| OPTION 2: Namensbereich<br>– listAfter | Ruft den Ordner bzw. die Dateien ab, deren Namen alphabetisch gesehen nach diesem Wert folgen (exklusiv) Für ADLS Gen1 wird der serverseitige Filter verwendet, dessen Leistung besser als die eines Platzhalterfilters ist. <br/>Der Dienst wendet diesen Filter auf den Pfad an, der im Dataset definiert ist und es wird nur eine Entitätsebene unterstützt. Weitere Beispiele finden Sie unter [Beispiele für Namensbereichfilter](#name-range-filter-examples). | Nein |
+| OPTION 2: Namensbereich<br/>– listBefore | Ruft den Ordner bzw. die Dateien ab, deren Namen alphabetisch gesehen vor diesem Wert folgen (inklusiv) Für ADLS Gen1 wird der serverseitige Filter verwendet, dessen Leistung besser als die eines Platzhalterfilters ist.<br>Der Dienst wendet diesen Filter auf den Pfad an, der im Dataset definiert ist und es wird nur eine Entitätsebene unterstützt. Weitere Beispiele finden Sie unter [Beispiele für Namensbereichfilter](#name-range-filter-examples). | Nein |
 | OPTION 3: Platzhalter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen, um Quellordner zu filtern. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
 | OPTION 3: Platzhalter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen „folderPath/wildcardFolderPath“ für das Filtern von Quelldateien. <br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.  Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
 | OPTION 4: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |
@@ -311,7 +379,7 @@ Folgende Eigenschaften werden für Azure Data Lake Storage Gen1 unter `storeSett
 
 In diesem Abschnitt wird das Verhalten beschrieben, das aus der Verwendung von Namensbereichfiltern resultiert.
 
-| Beispielquellstruktur | ADF-Konfiguration | Ergebnis |
+| Beispielquellstruktur | Konfiguration | Ergebnis |
 |:--- |:--- |:--- |
 |root<br/>&nbsp;&nbsp;&nbsp;&nbsp;a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;c<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| **Im Dataset:**<br>– Ordnerpfad: `root`<br><br>**In der Quelle der Kopieraktivität:**<br>– Auflisten nach: `a`<br>– Auflisten vor: `b`| Anschließend werden die folgenden Dateien kopiert:<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
 
@@ -332,7 +400,7 @@ In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn der Datei
 
 Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
 
-| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | ADF-Konfiguration                                            |
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Ordnerpfad: `root/FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `root/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
 
@@ -352,7 +420,7 @@ In diesem Abschnitt wird das resultierende Verhalten des Kopiervorgangs für ver
 ## <a name="preserve-acls-to-data-lake-storage-gen2"></a>Bewahren von Zugriffssteuerungslisten für Data Lake Storage Gen2
 
 >[!TIP]
->Allgemeine Informationen zum Kopieren von Daten von Azure Data Lake Storage Gen1 in Gen2 sowie eine exemplarische Vorgehensweise und bewährte Methoden finden Sie unter [Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2 mit Azure Data Factory](load-azure-data-lake-storage-gen2-from-gen1.md).
+>Allgemeine Informationen zum Kopieren von Daten von Azure Data Lake Storage Gen1 in Gen2 sowie eine exemplarische Vorgehensweise und bewährte Methoden finden Sie unter [Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2](load-azure-data-lake-storage-gen2-from-gen1.md).
 
 Wenn Sie die Zugriffssteuerungslisten zusammen mit Datendateien beim Upgrade von Data Lake Storage Gen1 auf Gen2 replizieren möchten, finden Sie weitere Informationen unter [Bewahren von Zugriffssteuerungslisten für Azure Data Lake Storage Gen1](copy-activity-preserve-metadata.md#preserve-acls).
 
@@ -373,7 +441,7 @@ In der Quellentransformation können Sie in Azure Data Lake Storage Gen1 Daten a
 
 ![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
 
-**Platzhalterpfad**: Mithilfe eines Platzhaltermusters wird ADF angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Mit dem Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
+**Platzhalterpfade**: Mithilfe eines Platzhaltermusters wird der Dienst angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Mit dem Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
 
 Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Nur der Container kann im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
 
@@ -395,7 +463,7 @@ Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partiti
 
 ![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
 
-Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
+Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass der Dienst die aufgelösten Partitionen hinzufügen wird, die auf Ihren einzelnen Ordnerebenen gefunden werden.
 
 ![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
 
@@ -458,7 +526,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der ADF-Benutzeroberfläche für die Erstellung generiert wird.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das in den obigen Abschnitten erwähnte neue Modell zu verwenden, da das neue Modell nun von der Benutzeroberfläche für die Dokumenterstellung generiert wird.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
@@ -587,4 +655,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

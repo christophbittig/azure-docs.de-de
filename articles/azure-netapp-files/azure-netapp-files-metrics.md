@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.author: b-juche
-ms.openlocfilehash: e16e95bbb65bde6c4c0b38b9c68c0f7287b8b9b3
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 13a63da9abf37f57842b34f32c3ff442f4214062
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795580"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402773"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -101,28 +101,26 @@ Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **
 
 ## <a name="throughput-metrics-for-capacity-pools"></a>Durchsatzmetriken für Kapazitätspools   
 
-* *Zugeordneter Pool für Volumedurchsatz*    
-    Der Gesamtdurchsatz, der Volumes in einem bestimmten Kapazitätspool zugeordnet ist. Dies ist der gesamte zugeordnete Durchsatz der Volumes im Kapazitätspool.   
+* *Dem Pool zugeteilter Durchsatz*    
+    Summe des Durchsatzes aller zum Pool gehörenden Volumes.
+    
+* *Für den Pool bereitgestellter Durchsatz*   
+    Für diesen Pool bereitgestellter Durchsatz.
 
-* *Verbrauchter Durchsatz eines Pools*   
-    Der gesamte Durchsatz, der von Volumes in einem bestimmten Kapazitätspool genutzt wird   
-
-* *Prozentsatz des zugeordneten Pools für Volumedurchsatz*   
-    Prozentsatz des bereitgestellten Durchsatzes des Kapazitätspools, der Volumes zugeordnet ist   
-
-* *Prozentsatz des verbrauchten Durchsatzes eines Pools*    
-    Prozentsatz des bereitgestellten Durchsatzes des Kapazitätspools, der von Volumes verbraucht wird
 
 ## <a name="throughput-metrics-for-volumes"></a>Durchsatzmetriken für Volumes   
 
-*  *Zugeordneter Volumedurchsatz*    
-    Der Durchsatz des übergeordneten Kapazitätspools (MiB/s), dem das Volume zugeordnet ist. Dies ist der maximale Durchsatz, den das Volume nutzen kann.
+* *Lesedurchsatz*   
+    Lesedurchsatz in Bytes pro Sekunde
+    
+* *Durchsatz gesamt*   
+    Summe aller Durchsätze in Bytes pro Sekunde.
 
-* *Verbrauchter Durchsatz eines Volumes*    
-    Der tatsächliche Durchsatz (MiB/s), den das Volume nutzt
+* *Schreibdurchsatz*    
+    Schreibdurchsatz in Bytes pro Sekunde
 
-* *Prozentsatz des verbrauchten Durchsatzes eines Volumes*   
-    Prozentsatz des zugeordneten Durchsatzes, den das Volume nutzt. Das heißt, *Verbrauchter Durchsatz eines Volumes* ist ein Prozentsatz von *Zugeordneter Volumedurchsatz*.
+* *Sonstiger Durchsatz*   
+    Sonstiger Durchsatz (ohne Lese- oder Schreibvorgang) in Bytes pro Sekunde.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

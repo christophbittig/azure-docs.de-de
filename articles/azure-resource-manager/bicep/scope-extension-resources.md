@@ -4,13 +4,13 @@ description: Hier wird die Verwendung der Bereichseigenschaft beim Bereitstellen
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 59b6576dfb1bd5e0ac4f56e6a59b6ea4d5c4b5f4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/30/2021
+ms.openlocfilehash: a899622c22d68217fd4fbf73e495f89885f4d7ba
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026466"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445411"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Festlegen des Bereichs für Erweiterungsressourcen in Bicep
 
@@ -27,7 +27,7 @@ In diesem Artikel wird gezeigt, wie Sie den Bereich für einen Erweiterungsresso
 
 Fügen Sie die Ressource wie bei jedem anderen Ressourcentyp zu Ihrer Vorlage hinzu, um einen Erweiterungsressourcentyp im Zielbereitstellungsumfang anzuwenden. Die verfügbaren Bereiche sind [Ressourcengruppe](deploy-to-resource-group.md), [Abonnement](deploy-to-subscription.md), [Verwaltungsgruppe](deploy-to-management-group.md) und [Mandant](deploy-to-tenant.md). Der Bereitstellungsbereich muss den Ressourcentyp unterstützen.
 
-Mit der folgenden Vorlage wird eine Sperre bereitgestellt.
+Bei der Bereitstellung in einer Ressourcengruppe fügt die folgende Vorlage dieser Ressourcengruppe eine Sperre hinzu.
 
 ```bicep
 resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
@@ -39,7 +39,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-Im nächsten Beispiel wird eine Rolle zugewiesen.
+Im nächsten Beispiel wird dem Abonnement, für das sie bereitgestellt wird, eine Rolle zugewiesen.
 
 ```bicep
 targetScope = 'subscription'
@@ -75,7 +75,7 @@ resource roleAssignSub 'Microsoft.Authorization/roleAssignments@2020-04-01-previ
 
 ## <a name="apply-to-resource"></a>Anwenden auf die Ressource
 
-Verwenden Sie die `scope`-Eigenschaft, um eine Erweiterungsressource auf eine Ressource anzuwenden. Legen Sie die Bereichseigenschaft auf den Namen der Ressource fest, der Sie die Erweiterung hinzufügen möchten. Die Bereichseigenschaft ist eine Stammeigenschaft für den Erweiterungsressourcentyp.
+Verwenden Sie die `scope`-Eigenschaft, um eine Erweiterungsressource auf eine Ressource anzuwenden. Verweisen Sie in der Bereichseigenschaft auf die Ressource, der Sie die Erweiterung hinzufügen möchten. Sie verweisen auf die Ressource, indem Sie den symbolischen Namen für die Ressource angeben. Die Bereichseigenschaft ist eine Stammeigenschaft für den Erweiterungsressourcentyp.
 
 Im folgenden Beispiel wird ein Speicherkonto erstellt und eine Rolle darauf angewendet.
 
@@ -102,7 +102,7 @@ var role = {
 }
 var uniqueStorageName = 'storage${uniqueString(resourceGroup().id)}'
 
-resource storageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: uniqueStorageName
   location: location
   sku: {
@@ -118,10 +118,24 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
     roleDefinitionId: role[builtInRoleType]
     principalId: principalId
   }
-  scope: storageName
-  dependsOn: [
-    storageName
-  ]
+  scope: demoStorageAcct
+}
+```
+
+Sie können eine Erweiterungsressource auf eine vorhandene Ressource anwenden. Im folgenden Beispiel wird einem vorhandenen Speicherkonto eine Sperre hinzugefügt.
+
+```bicep
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {
+  name: 'examplestore'
+}
+
+resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'storeLock'
+  scope: demoStorageAcct
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Storage account should not be deleted.'
+  }
 }
 ```
 
@@ -131,5 +145,5 @@ Weitere Informationen zur Bereitstellung in Bereichen finden Sie unter:
 
 * [Bereitstellungen von Ressourcengruppen](deploy-to-resource-group.md)
 * [Abonnementbereitstellungen](deploy-to-subscription.md)
-* [Bereitstellungen von Verwaltungsgruppen](deploy-to-management-group.md)
-* [Mandantenbereitstellungen](deploy-to-tenant.md)
+* [Verwaltungsgruppenbereitstellungen mit Bicep-Dateien](deploy-to-management-group.md)
+* [Mandantenbereitstellungen mit Bicep-Datei](deploy-to-tenant.md)

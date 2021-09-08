@@ -5,15 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 07/20/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 624f97e8d2ed7a5bfe2564e64eb787671ac10ca5
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: cb66ed6c1a00c049c2fff6d9fccb22acbcb9fbee
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527458"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462504"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure 
 
@@ -23,15 +23,23 @@ In diesem Artikel wird der Prozess erläutert, der für das Aktivieren der Activ
 
 Erstellen Sie zum Registrieren Ihres Speicherkontos bei AD DS ein Konto, das es in Ihrer AD DS-Instanz darstellt. Dieser Prozess ähnelt dem Erstellen eines Kontos, das einen lokalen Windows-Dateiserver in Ihrer AD DS-Instanz darstellt. Wenn das Feature für das Speicherkonto aktiviert ist, gilt es für alle neuen und vorhandenen Dateifreigaben im Konto.
 
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
 ## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>Option 1 (empfohlen): Verwenden des AzFilesHybrid-PowerShell-Moduls
 
 Durch die Cmdlets im AzFilesHybrid-PowerShell-Modul werden die erforderlichen Änderungen vorgenommen, und das Feature wird automatisch aktiviert. Da einige Teile der Cmdlets mit Ihrer lokalen AD DS-Instanz interagieren, wird hier erläutert, was die Cmdlets genau tun, damit sie bestimmen können, ob die Änderungen mit Ihren Compliance- und Sicherheitsrichtlinien konform sind, und dafür sorgen können, dass Sie über die erforderlichen Berechtigungen zum Ausführen der Cmdlets verfügen. Es wird zwar empfohlen, das AzFilesHybrid-Modul zu verwenden, wenn Sie dies jedoch nicht können, finden Sie hier die Schritte, die für eine manuelle Ausführung erforderlich sind.
 
 ### <a name="download-azfileshybrid-module"></a>Herunterladen des AzFilesHybrid-Moduls
 
-- [Herunterladen und Entpacken des AzFilesHybrid-Moduls (GA-Modul: v0.2.0+)](https://github.com/Azure-Samples/azure-files-samples/releases) Beachten Sie, dass die AES 256-Kerberos-Verschlüsselung ab Version 0.2.2 unterstützt wird. Wenn Sie die Funktion mit einer älteren AzFilesHybrid-Version als v0.2.2 aktiviert haben und ein Update zur Unterstützung der AES 256 Kerberos-Verschlüsselung durchführen möchten, lesen Sie [diesen Artikel](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). 
+- Wenn [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) nicht installiert ist, installieren Sie es jetzt. Dies ist erforderlich, damit das Modul erfolgreich importiert werden kann.
+- [Herunterladen und Entpacken des AzFilesHybrid-Moduls (GA-Modul: v0.2.0+)](https://github.com/Azure-Samples/azure-files-samples/releases) Beachten Sie, dass die AES 256-Kerberos-Verschlüsselung ab Version 0.2.2 unterstützt wird. Wenn Sie die Funktion mit einer älteren AzFilesHybrid-Version als v0.2.2 aktiviert haben und ein Update zur Unterstützung der AES 256 Kerberos-Verschlüsselung durchführen möchten, lesen Sie [diesen Artikel](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption).
 - Installieren Sie das Modul auf einem Gerät mit Domäneneinbindung in die lokale AD DS-Umgebung mithilfe von AD DS-Anmeldeinformationen, die zum Erstellen eines Dienstanmeldekontos oder eines Computerkontos in der Ziel-AD-Umgebungen berechtigt sind, und führen Sie das Modul dann aus.
--  Führen Sie das Skript mit lokalen AD DS-Anmeldeinformationen aus, die mit Ihrer Azure AD-Umgebung synchronisiert sind. Die lokalen AD DS-Anmeldeinformationen müssen über die Rolle „Speicherkontobesitzer“ oder „Mitwirkender“ für Azure-Rollen verfügen.
+-  Führen Sie das Skript mit lokalen AD DS-Anmeldeinformationen aus, die mit Ihrer Azure AD-Umgebung synchronisiert sind. Die lokalen AD DS-Anmeldeinformationen müssen über die Azure-Rolle **Besitzer** oder **Mitwirkender** für das Speicherkonto verfügen.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Ausführen von Join-AzStorageAccountForAuth
 
@@ -92,13 +100,13 @@ Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -Stor
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-enablement-actions"></a>Option 2: Manuelle Ausführung der Aktivierungsaktionen
+## <a name="option-two-manually-perform-the-enablement-actions"></a>Option 2: Manuelle Ausführung der Aktivierungsaktionen
 
 Wenn Sie das oben beschriebene Skript `Join-AzStorageAccountForAuth` bereits erfolgreich ausgeführt haben, fahren Sie mit dem nächsten Abschnitt [Überprüfen der Aktivierung des Features](#confirm-the-feature-is-enabled) fort. Die folgenden manuellen Schritte müssen Sie nicht ausführen.
 
 ### <a name="checking-environment"></a>Überprüfen der Umgebung
 
-Sie müssen als ersten Schritt den Zustand der Umgebung überprüfen. Insbesondere müssen Sie überprüfen, ob [Active Directory PowerShell](/powershell/module/activedirectory/) installiert ist und die Shell mit Administratorrechten ausgeführt wird. Überprüfen Sie dann, ob das [Modul „Az.Storage 2.0“](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) installiert ist. Ist dies nicht der Fall, installieren Sie das Modul. Wenn Sie diese beiden Überprüfungen durchgeführt haben, überprüfen Sie, ob Ihre AD DS-Umgebung ein bereits vorhandenes [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standardwert) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) mit dem SPN/UPN „cifs/ihr-speicherkontoname.file.core.windows.net“ aufweist. Wenn das Konto nicht vorhanden ist, erstellen Sie wie im folgenden Abschnitt beschrieben ein Konto.
+Sie müssen als ersten Schritt den Zustand der Umgebung überprüfen. Insbesondere müssen Sie überprüfen, ob [Active Directory PowerShell](/powershell/module/activedirectory/) installiert ist und die Shell mit Administratorrechten ausgeführt wird. Überprüfen Sie dann, ob das [Modul „Az.Storage 2.0“ (oder höher)](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) installiert ist. Ist dies nicht der Fall, installieren Sie das Modul. Wenn Sie diese beiden Überprüfungen durchgeführt haben, überprüfen Sie, ob Ihre AD DS-Umgebung ein bereits vorhandenes [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standardwert) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) mit dem SPN/UPN „cifs/ihr-speicherkontoname.file.core.windows.net“ aufweist. Wenn das Konto nicht vorhanden ist, erstellen Sie wie im folgenden Abschnitt beschrieben ein Konto.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Manuelles Erstellen einer Identität, die das Speicherkonto in Ihrem AD darstellt
 

@@ -1,7 +1,6 @@
 ---
 title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher
 description: Erfahren Sie anhand eines Beispiels für Linux, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
-services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines
 ms-subservice: vm-sizes-storage
@@ -11,14 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: ffe772677e8de28c3ea0de31092f1aca693feccf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5dd1e506b2eafff1d197a108dfa521dc89499925
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339442"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691020"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimieren der Leistung virtueller Linux-Computer der Lsv2-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A-Leistung und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen eingesetzt werden.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
 

@@ -6,12 +6,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 05/25/2021
-ms.openlocfilehash: 5bbdcd8032fbb4d20af2e681bf703c3d62985fe0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b6e23d008a0171e8b71c032349943b809b4bfc92
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971621"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113667093"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Planen und Verwalten von Kosten für Azure Logic Apps
 
@@ -45,13 +45,13 @@ Der Dienst Azure Logic Apps bietet basierend auf den von Ihnen erstellten und ge
 
 * Logik-App-Ressourcen, die Sie in Azure Logic Apps mit einem einzigen Mandanten erstellen und ausführen, unterliegen einem [Preismodell mit Hostingplan](../logic-apps/logic-apps-pricing.md#standard-pricing).
 
-* Logik-App-Ressourcen, die Sie in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen und ausführen, unterliegen einem [Festpreismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing).
+* Logik-App-Ressourcen, die Sie in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen und ausführen, unterliegen einem [ISE-Preismodell](../logic-apps/logic-apps-pricing.md#ise-pricing).
 
 Es folgen weitere Ressourcen, die Kosten verursachen, wenn Sie sie für den Einsatz mit Logik-Apps erstellen:
 
 * Ein [Integrationskonto](../logic-apps/logic-apps-pricing.md#integration-accounts) ist eine gesonderte Ressource, die Sie erstellen und zum Aufbauen von B2B-Integrationen mit Logik-Apps verknüpfen. Integrationskonten unterliegen einem [Festpreismodell](../logic-apps/logic-apps-pricing.md#integration-accounts), bei dem sich der Preis nach dem Typ des Integrationskontos oder dem von Ihnen gewählten *Tarif* richtet.
 
-* Eine [ISE](../logic-apps/logic-apps-pricing.md#fixed-pricing) ist eine gesonderte Ressource, die Sie als Bereitstellungsort für Logik-Apps erstellen, die direkten Zugriff auf Ressourcen in einem virtuellen Netzwerk benötigen. ISEs unterliegen einem [Festpreismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing), dessen Tarif auf der von Ihnen erstellten ISE SKU und anderen Einstellungen basiert. Jedoch entstehen durch Datenaufbewahrung und Speichernutzung keine Kosten.
+* Eine [ISE](../logic-apps/logic-apps-pricing.md#ise-pricing) ist eine gesonderte Ressource, die Sie als Bereitstellungsort für Logik-Apps erstellen, die direkten Zugriff auf Ressourcen in einem virtuellen Netzwerk benötigen. ISEs unterliegen einem [ISE-Preismodell](../logic-apps/logic-apps-pricing.md#ise-pricing), dessen Tarif auf der von Ihnen erstellten ISE SKU und anderen Einstellungen basiert. Jedoch entstehen durch Datenaufbewahrung und Speichernutzung keine Kosten.
 
 * Ein [benutzerdefinierter Connector](../logic-apps/logic-apps-pricing.md#consumption-pricing) ist eine separate Ressource, die Sie für eine REST-API erstellen, die keinen vorgefertigten Connector hat, den Sie in Ihren Logik-Apps verwenden können. Für die Ausführung benutzerdefinierter Connectors gilt ein [nutzungsabhängiges Preismodell](../logic-apps/logic-apps-pricing.md#consumption-pricing), außer wenn Sie sie in einer ISE einsetzen.
 
@@ -59,7 +59,7 @@ Es folgen weitere Ressourcen, die Kosten verursachen, wenn Sie sie für den Eins
 
 #### <a name="storage-operations-and-costs"></a>Speichervorgänge und -kosten
 
-Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Für [Datenaufbewahrung und Speichernutzung](../logic-apps/logic-apps-pricing.md#data-retention) fallen Kosten im Rahmen eines [Festpreismodells](../logic-apps/logic-apps-pricing.md#fixed-pricing) an. Beispielsweise werden Ein- und Ausgaben aus dem Ausführungsverlauf im Hintergrundspeicher aufbewahrt, der sich von Speicherressourcen unterscheidet, die Sie unabhängig in Ihrer Logik-App erstellen, verwalten und nutzen.
+Azure Logic Apps verwendet [Azure Storage](../storage/index.yml) für alle Speichervorgänge. In Azure Logic Apps für mehrere Mandanten werden die gesamte Speichernutzung und alle Speicherkosten an die Logik-App gebunden. Für [Datenaufbewahrung und Speichernutzung](../logic-apps/logic-apps-pricing.md#storage-operations) fallen Kosten im Rahmen eines [Festpreismodells](../logic-apps/logic-apps-pricing.md#storage-operations) an. Beispielsweise werden Ein- und Ausgaben aus dem Ausführungsverlauf im Hintergrundspeicher aufbewahrt, der sich von Speicherressourcen unterscheidet, die Sie unabhängig in Ihrer Logik-App erstellen, verwalten und nutzen.
 
 Mit Azure Logic Apps mit einem einzelnen Mandanten können Sie Ihr eigenes Azure-[Speicherkonto](../azure-functions/storage-considerations.md#storage-account-requirements) verwenden. Diese Funktion bietet Ihnen mehr Kontrolle und Flexibilität für Ihre Logic Apps-Daten. Wenn *zustandsbehaftete* Workflows ihre Vorgänge ausführen, führt die Azure Logic Apps-Runtime Speichertransaktionen durch. Beispielsweise werden Warteschlangen für die Zeitplanung verwendet, während Tabellen und Blobs zum Speichern von Workflowzuständen verwendet werden. Die Speicherkosten ändern sich basierend auf dem Inhalt Ihres Workflows. Verschiedene Auslöser, Vorgänge und Nutzdaten führen zu unterschiedlichen Speichervorgängen und Anforderungen. Speichertransaktionen folgen dem [Azure Storage-Preismodell](https://azure.microsoft.com/pricing/details/storage/). Speicherkosten werden in Ihrer Azure-Rechnung separat aufgeführt.
 

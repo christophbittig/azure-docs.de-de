@@ -1,5 +1,5 @@
 ---
-title: Best Practices bei der Verwendung der Anomalieerkennungs-API
+title: Bewährte Methoden bei der Verwendung der API zur Erkennung von univariaten Anomalien
 titleSuffix: Azure Cognitive Services
 description: Informationen zu Best Practices bei der Anomalieerkennung mit der Anomalieerkennungs-API.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1662fd39030082dfbfef4d38d1803b3d6f82e5
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936196"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297296"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
+# <a name="best-practices-for-using-the-anomaly-detector-univariate-api"></a>Bewährte Methoden zur Verwendung der API zur Erkennung von univariaten Anomalien
 
 Die Anomalieerkennungs-API ist ein zustandsloser Dienst zur Erkennung von Anomalien. Folgende Aspekte können sich auf die Genauigkeit und Leistung ihrer Ergebnisse auswirken:
 

@@ -10,12 +10,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 498c7bd16cc314316c67c202f55c7ce3dcac67c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668144"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518134"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
 
@@ -23,7 +23,7 @@ Das Feature „Skriptausführung“ verwendet den VM-Agent (virtual machine, vir
 
 ## <a name="benefits"></a>Vorteile
 
-Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die Skriptausführung kann Skripts remote unter Verwendung des VM-Agents auf Ihren virtuellen Computern ausführen. Die Skriptausführung kann für virtuelle Linux-Computer über das Azure-Portal, die [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) oder die [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) verwendet werden.
+Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die Skriptausführung kann Skripts remote unter Verwendung des VM-Agents auf Ihren virtuellen Computern ausführen. Die Skriptausführung kann für virtuelle Linux-Computer über das Azure-Portal, die [REST-API](/rest/api/compute/virtual-machines-run-commands/run-command) oder die [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) verwendet werden.
 
 Diese Funktion ist in allen Szenarien sinnvoll, in denen Sie ein Skript innerhalb eines virtuellen Computers ausführen möchten. Es ist eine der wenigen Möglichkeiten, Fehler auf einem virtuellen Computer zu beheben, bei dem der RDP- oder SSH-Port aufgrund einer falschen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
 
@@ -69,7 +69,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem virtuellen Computer, und wählen Sie unter **VORGÄNGE** die Option **Skriptausführung** aus. Daraufhin wird eine Liste mit den verfügbaren Befehlen angezeigt, die auf dem virtuellen Computer ausgeführt werden können.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einem virtuellen Computer, und wählen Sie im linken Menü unter **Vorgänge** die Option **Befehl ausführen** aus. Daraufhin wird eine Liste mit den verfügbaren Befehlen angezeigt, die auf dem virtuellen Computer ausgeführt werden können.
 
 ![Befehlsliste](./media/run-command/run-command-list.png)
 

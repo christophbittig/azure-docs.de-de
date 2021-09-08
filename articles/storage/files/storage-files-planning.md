@@ -4,32 +4,48 @@ description: Hier finden Sie grundlegende Informationen zur Planung einer Azure 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 7b1e8ba6ed5f3ffe4acebfb5bb3047ebb945e40f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e1736d94c50d5c145a66fc845936c5c26a8725cb
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477497"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224056"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
 
-- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files entweder Zugriff auf den Server Message Block (SMB) oder das Network File System (NFS) bereitstellt, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe der SMB- oder NFS-Standardclients einbinden, die in Ihrem Betriebssystem verfügbar sind. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
+- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files entweder Zugriff auf den Server Message Block (SMB) oder das Network File System (NFS) bereitstellt, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe der SMB- oder NFS-Standardclients (Vorschau) einbinden, die in Ihrem Betriebssystem verfügbar sind. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
 
 - **Lokales Zwischenspeichern von Azure-Dateifreigaben mit Azure-Dateisynchronisierung**: Die Azure-Dateisynchronisierung ermöglicht das Zentralisieren der Dateifreigaben Ihrer Organisation in Azure Files, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Die Azure-Dateisynchronisierung transformiert Ihre lokalen Windows Server-Computer in einen schnellen Cache für Ihre Azure-SMB-Dateifreigabe. 
 
 Dieser Artikel befasst sich hauptsächlich mit Bereitstellungsüberlegungen zum Bereitstellen einer Azure-Dateifreigabe, die direkt von einem lokalen oder cloudbasierten Client eingebunden werden soll. Weitere Informationen zum Planen einer Azure-Dateisynchronisierungsbereitstellung finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](../file-sync/file-sync-planning.md).
 
 ## <a name="available-protocols"></a>Verfügbare Protokolle
+Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](files-smb-protocol.md) und das [NFS-Protokoll (Network File System)](files-nfs-protocol.md). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Azure-Dateifreigaben unterstützen nicht SMB- und NFS-Protokolle auf derselben Dateifreigabe. Sie können jedoch SMB- und NFS-Azure-Dateifreigaben innerhalb desselben Speicherkontos erstellen. NFS 4.1 wird derzeit nur innerhalb des neuen **FileStorage**-Speicherkontotyps unterstützt (nur Premium-Dateifreigaben).
 
-Azure Files bietet zwei Protokolle, die beim Einbinden von Dateifreigaben verwendet werden können: den SMB und das NFS. Ausführliche Informationen zu diesen Protokollen finden Sie unter [Azure-Dateifreigabeprotokolle](storage-files-compare-protocols.md).
+Mit sowohl SMB- als auch NFS-Dateifreigaben bietet Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
 
-> [!IMPORTANT]
-> Ein Großteil des Inhalts dieses Artikels gilt nur für SMB-Freigaben. Wenn etwas für NFS-Freigaben gilt, wird ausdrücklich darauf hingewiesen.
+| Komponente | SMB | NFS (Vorschau) |
+|---------|-----|---------------|
+| Unterstützte Protokollversionen | SMB 3.1.1, SMB 3.0, SMB 2.1 | NFS 4.1 |
+| Empfohlenes Betriebssystem | <ul><li>Windows 10, Version 21H1 und höher</li><li>Windows Server 2019 und höher</li><li>Linux-Kernelversion 5.3 und höher</li></ul> | Linux-Kernelversion 4.3 und höher |
+| [Verfügbare Tarife](storage-files-planning.md#storage-tiers)  | Premium, transaktionsoptimiert, heiß, kalt | Premium |
+| Abrechnungsmodell | <ul><li>[Bereitgestellte Kapazität für Premium-Dateifreigaben](./understanding-billing.md#provisioned-model)</li><li>[Pay-as-you-go für Standarddateifreigaben](./understanding-billing.md#pay-as-you-go-model)</li></ul> | [Bereitgestellte Kapazität](./understanding-billing.md#provisioned-model) |
+| [Redundanz](storage-files-planning.md#redundancy) | LRS, ZRS, GRS, GZRS | LRS, ZRS |
+| Dateisystemsemantik | Win32 | POSIX |
+| Authentifizierung | Identitätsbasierte Authentifizierung (Kerberos), Authentifizierung mit gemeinsam verwendeten Schlüsseln (NTLMv2) | Hostbasierte Authentifizierung |
+| Autorisierung | Win32-Zugriffssteuerungslisten (Access Control Lists, ACLs) | Berechtigungen im UNIX-Format |
+| Groß- und Kleinschreibung | Keine Beachtung von Groß-/Kleinschreibung, Schreibweise wird beibehalten | Groß-/Kleinschreibung beachten |
+| Löschen oder Ändern geöffneter Dateien | Nur mit Sperre | Ja |
+| Dateifreigabe | [Windows-Freigabemodus](/windows/win32/fileio/creating-and-opening-files) | Netzwerksperrungs-Manager im Bytebereich (Empfehlung) |
+| Unterstützung fester Links | Nicht unterstützt | Unterstützt |
+| Unterstützung von symbolischen Verknüpfungen | Nicht unterstützt | Unterstützt |
+| Optional über das Internet zugänglich | Ja (nur SMB 3.0 und höher) | Nein |
+| Unterstützt FileREST | Ja | Teilmenge: <br /><ul><li>[`FileService`-Vorgänge](/rest/api/storageservices/operations-on-the-account--file-service-)</li><li>[`FileShares`-Vorgänge](/rest/api/storageservices/operations-on-shares--file-service-)</li><li>[`Directories`-Vorgänge](/rest/api/storageservices/operations-on-directories)</li><li>[`Files`-Vorgänge](/rest/api/storageservices/operations-on-files)</li></ul> |
 
 ## <a name="management-concepts"></a>Verwaltungskonzepte
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -57,7 +73,7 @@ Auf Azure-Dateifreigaben kann über den öffentlichen Endpunkt des Speicherkonto
 
 Zum Aufheben der Blockierung des Zugriffs auf Ihre Azure-Dateifreigabe stehen Ihnen zwei Hauptoptionen zur Verfügung:
 
-- Entsperren von Port 445 für das lokale Netzwerk Ihrer Organisation. Auf Azure-Dateifreigaben kann nur extern über den öffentlichen Endpunkt zugegriffen werden, indem internetsichere Protokolle wie SMB 3.x und die FileREST-API verwendet werden. Dies ist die einfachste Möglichkeit, vom lokalen Standort aus auf Ihre Azure-Dateifreigabe zuzugreifen, da keine erweiterte Netzwerkkonfiguration erforderlich ist, die über das Ändern von Regeln für den Port für ausgehenden Datenverkehr Ihres Unternehmens hinausgeht. Es wird jedoch empfohlen, Legacy- und veraltete Versionen des SMB-Protokolls zu entfernen (also SMB 1.0). Weitere Informationen hierzu finden Sie unter [Sichern von Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server) und [Sichern von Linux](storage-how-to-use-files-linux.md#securing-linux).
+- Entsperren von Port 445 für das lokale Netzwerk Ihrer Organisation. Auf Azure-Dateifreigaben kann nur extern über den öffentlichen Endpunkt zugegriffen werden, indem internetsichere Protokolle wie SMB 3.x und die FileREST-API verwendet werden. Dies ist die einfachste Möglichkeit, vom lokalen Standort aus auf Ihre Azure-Dateifreigabe zuzugreifen, da keine erweiterte Netzwerkkonfiguration erforderlich ist, die über das Ändern von Regeln für den Port für ausgehenden Datenverkehr Ihres Unternehmens hinausgeht. Es wird jedoch empfohlen, Legacy- und veraltete Versionen des SMB-Protokolls zu entfernen (also SMB 1.0). Weitere Informationen hierzu finden Sie unter [Sichern von Windows/Windows Server](/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3) und [Sichern von Linux](files-remove-smb1-linux.md).
 
 - Zugreifen auf Azure-Dateifreigaben über eine ExpressRoute- oder VPN-Verbindung. Wenn Sie über einen Netzwerktunnel auf Ihre Azure-Dateifreigabe zugreifen, können Sie Ihre Azure-Dateifreigabe wie eine lokale Dateifreigabe einbinden, da der SMB-Datenverkehr Ihre Organisationsgrenze nicht überschreitet.   
 
@@ -78,7 +94,7 @@ Azure Files unterstützt zwei verschiedene Verschlüsselungstypen: Verschlüssel
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 
 > [!IMPORTANT]
-> In diesem Abschnitt wird die Verschlüsselung während der Übertragung für SMB-Freigaben behandelt. Ausführliche Informationen zur Verschlüsselung während der Übertragung mit NFS-Freigaben finden Sie unter [Sicherheit](storage-files-compare-protocols.md#security).
+> In diesem Abschnitt wird die Verschlüsselung während der Übertragung für SMB-Freigaben behandelt. Ausführliche Informationen zur Verschlüsselung während der Übertragung mit NFS-Freigaben finden Sie unter [Sicherheit und Netzwerke](files-nfs-protocol.md#security-and-networking).
 
 Standardmäßig ist in allen Azure-Speicherkonten die Verschlüsselung während der Übertragung aktiviert. Das bedeutet Folgendes: Wenn Sie eine Dateifreigabe über SMB einbinden oder über das FileREST-Protokoll darauf zugreifen (z. B. über das Azure-Portal, PowerShell/CLI oder Azure-SDKs), lässt Azure Files die Verbindung nur dann zu, wenn sie über SMB 3.x mit Verschlüsselung oder über HTTPS hergestellt wird. Clients, die SMB 3.x nicht unterstützen, oder Clients, die zwar SMB 3.x, aber nicht die SMB-Verschlüsselung unterstützen, können die Azure-Dateifreigabe nicht einbinden, wenn die Verschlüsselung während der Übertragung aktiviert ist. Weitere Informationen dazu, welche Betriebssysteme SMB 3.x mit Verschlüsselung unterstützen, finden Sie in der ausführlichen Dokumentation zu [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und [Linux](storage-how-to-use-files-linux.md). Alle aktuellen PowerShell-, CLI- und SDK-Versionen unterstützen HTTPS.  
 
@@ -117,10 +133,6 @@ Weitere Informationen finden Sie unter [Einführung in Azure Defender für Azure
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Aktivieren von Standarddateifreigaben für bis zu 100 TiB
-Standardmäßig können Standarddateifreigaben nur bis zu 5 TiB umfassen. Der Freigabegrenzwert kann jedoch auf 100 TiB erhöht werden. Informationen zum Erhöhen des Freigabelimits finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](storage-files-how-to-create-large-file-share.md).
-
 
 #### <a name="limitations"></a>Einschränkungen
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

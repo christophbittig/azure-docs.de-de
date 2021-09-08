@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4fe458ce4f358e81c115761b571874a955ededc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d0b082321adcba147dfefcf0ea9e7948df3bafb
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640666"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311649"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>Kopieren von Daten aus Presto mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,6 +35,31 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-presto-using-ui"></a>Erstellen eines verknüpften Diensts mit Presto über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Presto auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach Presto, und wählen Sie den Presto-Connector aus.
+
+   :::image type="content" source="media/connector-presto/presto-connector.png" alt-text="Ein Screenshot, der den Presto-Connector zeigt.":::    
+
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+   :::image type="content" source="media/connector-presto/configure-presto-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration des verknüpften Diensts für Presto zeigt.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Presto-Connector verwendet werden.
 

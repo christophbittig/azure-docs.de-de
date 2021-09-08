@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 06/30/2021
 ms.author: alkohli
-ms.openlocfilehash: d7dd4a3920e947469c85df0d9ab440d95ab7712d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: has-adal-ref
+ms.openlocfilehash: 453d42adca16593dfdc567d114b8dc7eb7e34143
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466923"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429694"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mit der Azure CLI und Python
 
@@ -49,7 +50,7 @@ Eine ausführliche Erläuterung des Workflowdiagramms finden Sie unter [Bereitst
 
 Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem Azure Stack Edge Pro-Gerät mit der Azure CLI und Python beginnen, müssen Sie sicherstellen, dass Sie die in den folgenden Schritten aufgeführten Voraussetzungen erfüllt haben:
 
-1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren des Azure Stack Edge Pro-Geräts](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device) beschrieben festgelegt.
+1. Sie haben die Netzwerkeinstellungen auf Ihrem Azure Stack Edge Pro-Gerät wie unter [Schritt 1: Konfigurieren des Azure Stack Edge Pro-Geräts](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-device) beschrieben festgelegt.
 
 2. Sie haben eine Netzwerkschnittstelle für Compute aktiviert. Diese IP-Adresse der Netzwerkschnittstelle wird verwendet, um einen virtuellen Switch für die VM-Bereitstellung zu erstellen. Die folgenden Schritte führen Sie durch den Prozess:
 
@@ -283,7 +284,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 3. Registrieren Sie Ihre Umgebung. Verwenden Sie beim Ausführen des Befehls [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) die folgenden Parameter:
 
-    | Wert | Beschreibung | Beispiel |
+    | Wert | BESCHREIBUNG | Beispiel |
     | --- | --- | --- |
     | Umgebungsname | Der Name der Umgebung, mit der Sie eine Verbindung herstellen möchten | Geben Sie einen Namen an, wie z. B. `aze-environ`. |
     | Resource Manager-Endpunkt | Die URL lautet `https://Management.<appliancename><dnsdomain>`. <br> Damit Sie diese URL abrufen können, navigieren Sie zur Seite **Geräte** in der lokalen Webbenutzeroberfläche Ihres Geräts. |Beispiel: `https://management.team3device.teatraining1.com`.  |
@@ -355,7 +356,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
    $ENV:ARM_TENANT_ID = "c0257de7-538f-415c-993a-1b87a031879d"
    $ENV:ARM_CLIENT_ID = "cbd868c5-7207-431f-8d16-1cb144b50971"
    $ENV:ARM_CLIENT_SECRET - "<Your Azure Resource Manager password>"
-   $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
+   $ENV:ARM_SUBSCRIPTION_ID = "<Your subscription ID>"
    ```
 
    Ihre Azure Resource Manager-Client-ID ist hartcodiert. Ihre Azure Resource Manager-Mandanten-ID und Azure Resource Manager-Abonnement-ID sind in der Ausgabe des zuvor ausgeführten Befehls `az login` enthalten. Der geheime Azure Resource-Clientschlüssel ist das Azure Resource Manager-Kennwort, das Sie festgelegt haben.
@@ -404,7 +405,7 @@ Ein Python-Skript wird für Sie bereitgestellt, um einen virtuellen Computer zu 
             ubuntu13.vhd
     
     VM image resource id:
-                /subscriptions/a4257fde-b946-4e01-ade7-674760b8d1a3/resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
+                /subscriptions/.../resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
     
     Create Vnet
     Create Subnet

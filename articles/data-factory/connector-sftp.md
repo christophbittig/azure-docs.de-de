@@ -1,27 +1,29 @@
 ---
 title: Kopieren von Daten von einem und auf einen SFTP-Server
-description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem und auf einen FTP-Server kopieren.
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory- und Azure Synapse Analytics-Pipelines von einem und auf einen SFTP-Server kopieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: bdee163a31c7822aa0eea2ff5900e10796e0c521
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 94034e1a7c297e33209c42b5aa93fed2b52feb3f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486843"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316534"
 ---
-# <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem und auf einen SFTP-Server mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-the-sftp-server-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten von einem und auf einen SFTP-Server mit Azure Data Factory oder Azure Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Diensts aus, den Sie verwenden:"]
 > * [Version 1](v1/data-factory-sftp-connector.md)
 > * [Aktuelle Version](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten von einem und auf einen SFTP-Server (Secure FTP) kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten von einem und auf einen SFTP-Server (Secure FTP) kopieren. Weitere Informationen finden Sie im Einführungsartikel zu [Azure Data Factory](introduction.md) oder [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -45,7 +47,31 @@ Der SFTP-Connector unterstützt insbesondere Folgendes:
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für SFTP verwendet werden.
+## <a name="create-an-sftp-linked-service-using-ui"></a>Erstellen eines verknüpften SFTP-Diensts über die Benutzeroberfläche
+
+Verwenden Sie die folgenden Schritte, um einen verknüpften SFTP-Dienst auf der Azure-Portal Benutzeroberfläche zu erstellen.
+
+1. Navigieren Sie in Ihrem Azure Data Factory- oder Synapse-Arbeitsbereich zu der Registerkarte „Verwalten“, wählen Sie „Verknüpfte Dienste“ aus und klicken Sie dann auf „Neu“:
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Synapse Benutzeroberfläche zeigt.":::
+
+2. Suchen Sie nach SFTP und wählen Sie den „SFTP-Connector“ aus.
+
+    :::image type="content" source="media/connector-sftp/sftp-connector.png" alt-text="Ein Screenshot der einen SFTP-Connector zeigt.":::    
+
+1. Konfigurieren Sie die Dienstdetails, testen Sie die Verbindung und erstellen Sie den neuen verknüpften Dienst.
+
+    :::image type="content" source="media/connector-sftp/configure-sftp-linked-service.png" alt-text="Ein Screenshot, der die Konfiguration für einen verknüpften SFTP-Dienst zeigt.":::
+
+## <a name="connector-configuration-details"></a>Details zur Connector-Konfiguration
+
+Die folgenden Abschnitte enthalten Details zu den Eigenschaften, die zum Definieren von Entitäten speziell für SFTP verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -68,7 +94,7 @@ Um die Standardauthentifizierung zu verwenden, legen Sie die Eigenschaft *authen
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
-| password | Das Kennwort für den Benutzer (userName). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| password | Das Kennwort für den Benutzer (userName). Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Schlüsseltresor gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 
 **Beispiel:**
 
@@ -105,8 +131,8 @@ Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel d
 |:--- |:--- |:--- |
 | userName | Der Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die die Integration Runtime zugreifen kann. Dies ist nur anwendbar, wenn für „connectVia“ eine Integration Runtime vom Typ „selbstgehostet“ angegeben wird. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an.  |
-| privateKeyContent | Inhalt des Base64-codierten privaten SSH-Schlüssels. Der private SSH-Schlüssel sollte das Format „OpenSSH“ aufweisen. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. |
-| passPhrase | Geben Sie die Passphrase zum Entschlüsseln des privaten Schlüssels ein, wenn Schlüsseldatei oder Schlüsselinhalt mit einer Passphrase geschützt sind. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, wenn die private Schlüsseldatei oder der Schlüsselinhalt mit einer Passphrase geschützt sind. |
+| privateKeyContent | Inhalt des Base64-codierten privaten SSH-Schlüssels. Der private SSH-Schlüssel sollte das Format „OpenSSH“ aufweisen. Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Schlüsseltresor gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. |
+| passPhrase | Geben Sie die Passphrase zum Entschlüsseln des privaten Schlüssels ein, wenn Schlüsseldatei oder Schlüsselinhalt mit einer Passphrase geschützt sind. Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Schlüsseltresor gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, wenn die private Schlüsseldatei oder der Schlüsselinhalt mit einer Passphrase geschützt sind. |
 
 > [!NOTE]
 > Der SFTP-Connector unterstützt nur RSA/DSA OpenSSH-Schlüssel. Stellen Sie sicher, dass der Inhalt Ihrer Schlüsseldatei mit „-----BEGIN [RSA/DSA] PRIVATE KEY-----“ beginnt. Wenn die Datei mit dem privaten Schlüssel eine Datei im PPK-Format ist, verwenden Sie das Tool PuTTY für die Konvertierung aus dem PPK- in das OpenSSH-Format. 
@@ -325,7 +351,7 @@ Folgende Eigenschaften werden für SFTP unter den `storeSettings`-Einstellungen 
 | type                     | Die Eigenschaft *type* unter `storeSettings` muss auf *SftpWriteSettings* festgelegt werden. | Ja      |
 | copyBehavior             | Definiert das Kopierverhalten, wenn es sich bei der Quelle um Dateien aus einem dateibasierten Datenspeicher handelt.<br/><br/>Zulässige Werte sind:<br/><b>- PreserveHierarchy (Standard)</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner ist mit dem relativen Pfad der Zieldatei zum Zielordner identisch.<br/><b>- FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich auf der ersten Ebene des Zielordners. Die Namen für die Zieldateien werden automatisch generiert. <br/><b>- MergeFiles</b>: Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Dateiname angegeben wurde, entspricht der zusammengeführte Dateiname dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. | Nein       |
 | maxConcurrentConnections | Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten. | Nein       |
-| useTempFileRename | Geben Sie an, ob Sie temporäre Dateien hochladen und umbenennen oder direkt in den Zielordner oder Dateispeicherort schreiben möchten. Standardmäßig schreibt Azure Data Factory zuerst in temporäre Dateien und benennt sie dann um, wenn der Upload abgeschlossen ist. Diese Sequenz hilft, (1) Konflikte zu vermeiden, die zu einer beschädigten Datei führen könnten, wenn andere Prozesse in dieselbe Datei schreiben, und (2) sicherzustellen, dass die Originalversion der Datei während der Übertragung vorhanden ist. Wenn Ihr SFTP-Server keine Umbenennungsvorgänge unterstützt, deaktivieren Sie diese Option, und stellen Sie sicher, dass keine gleichzeitigen Schreibvorgänge für die Zieldatei ausgeführt werden. Weitere Informationen finden Sie im Tipp zur Problembehandlung am Ende dieser Tabelle. | Nein. Der Standardwert lautet *true*. |
+| useTempFileRename | Geben Sie an, ob Sie temporäre Dateien hochladen und umbenennen oder direkt in den Zielordner oder Dateispeicherort schreiben möchten. Standardmäßig schreibt der Dienst zuerst in temporäre Dateien und benennt sie dann um, wenn der Upload abgeschlossen ist. Diese Sequenz hilft, (1) Konflikte zu vermeiden, die zu einer beschädigten Datei führen könnten, wenn andere Prozesse in dieselbe Datei schreiben, und (2) sicherzustellen, dass die Originalversion der Datei während der Übertragung vorhanden ist. Wenn Ihr SFTP-Server keine Umbenennungsvorgänge unterstützt, deaktivieren Sie diese Option, und stellen Sie sicher, dass keine gleichzeitigen Schreibvorgänge für die Zieldatei ausgeführt werden. Weitere Informationen finden Sie im Tipp zur Problembehandlung am Ende dieser Tabelle. | Nein. Der Standardwert lautet *true*. |
 | operationTimeout | Bei der Wartezeit vor jeder Schreibanforderung an den SFTP-Server tritt ein Timeout auf. Der Standardwert ist 60 Minuten (01:00:00).|Nein |
 
 >[!TIP]
@@ -387,20 +413,20 @@ In dieser Tabelle wird das aus der Verwendung eines Dateilistenpfads in der Quel
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
-Weitere Informationen zu den Eigenschaften der Lookup-Aktivität finden Sie unter [Lookup-Aktivität in Azure Data Factory](control-flow-lookup-activity.md).
+Weitere Informationen zu den Eigenschaften der Lookup-Aktivität finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="getmetadata-activity-properties"></a>Eigenschaften der GetMetadata-Aktivität
 
-Weitere Informationen zu den Eigenschaften der GetMetadata-Aktivität finden Sie unter [GetMetadata-Aktivität in Azure Data Factory](control-flow-get-metadata-activity.md). 
+Weitere Informationen zu den Eigenschaften der GetMetadata-Aktivität finden Sie unter [GetMetadata-Aktivität](control-flow-get-metadata-activity.md). 
 
 ## <a name="delete-activity-properties"></a>Eigenschaften der Delete-Aktivität
 
-Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter [Löschaktivität in Azure Data Factory](delete-activity.md).
+Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter [Löschaktivität](delete-activity.md).
 
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das zuvor beschriebene neue Modell zu verwenden, da auf der Erstellungsbenutzeroberfläche von Azure Data Factory nun das neue Modell generiert wird.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das zuvor beschriebene neue Modell zu verwenden, da auf der Erstellungsbenutzeroberfläche nun das neue Modell generieren wird.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
@@ -492,4 +518,4 @@ Weitere Informationen zu den Eigenschaften der Löschaktivität finden Sie unter
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Copy-Aktivität unterstützt werden, finden Sie hier [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

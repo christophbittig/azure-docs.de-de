@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: dab6415e27239e9140cce7c03bae9a2e3a95ca7d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: bf38602fdbc2c6fb1f7beba5a374c641963651a0
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072125"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429548"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
-Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMB3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. 
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 oder NFSv4.1), SMB3 oder einem dualen Protokoll (NFSv3 und SMB, oder NFSv4.1 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. 
 
 In diesem Artikel wird veranschaulicht, wie Sie ein SMB3-Volume erstellen. Informationen zu NFS-Volumes finden Sie unter [Erstellen eines NFS-Volumes](azure-netapp-files-create-volumes.md). Informationen zu Volumen mit dualem Protokoll finden Sie unter [Erstellen eines Volumes mit dualem Protokoll](create-volumes-dual-protocol.md).
 
@@ -49,7 +49,7 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
-        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Sie dürfen beliebige alphanumerische Zeichen verwenden.   
+        Ein Volumename muss innerhalb der einzelnen Kapazitätspools eindeutig sein. Er muss mindestens drei Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen. Er darf nur Buchstaben, Zahlen, Unterstriche („_“) und Bindestriche („-“) enthalten. 
 
         Sie können `default` oder `bin` nicht als Volumename verwenden.
 
@@ -98,7 +98,7 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
         - Er darf nur Buchstaben, Ziffern oder Gedankenstriche (`-`) enthalten. 
         - Er darf höchstens 80 Zeichen lang sein.   
         
-    * Wenn Sie die Verschlüsselung für SMB3 aktivieren möchten, wählen Sie **SMB3-Protokollverschlüsselung aktivieren** aus.   
+    * <a name="smb3-encryption"></a>Wenn Sie die Verschlüsselung für SMB3 aktivieren möchten, wählen Sie **SMB3-Protokollverschlüsselung aktivieren aus**.   
         Durch dieses Feature wird die Verschlüsselung für In-Flight-SMB3-Daten aktiviert. SMB-Clients ohne Verwendung der SMB3-Verschlüsselung können nicht auf dieses Volume zugreifen.  Ruhende Daten werden unabhängig von dieser Einstellung verschlüsselt.  
         Weitere Informationen finden Sie unter [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption). 
 
@@ -118,7 +118,7 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
         ```
         
         Sie können auch die [Azure CLI-Befehle](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen.  
-    * Wenn Sie die fortlaufende Verfügbarkeit für das SMB-Volume aktivieren möchten, wählen Sie **Fortlaufende Verfügbarkeit aktivieren** aus.    
+    * <a name="continuous-availability"></a>Wenn Sie die fortlaufende Verfügbarkeit für das SMB-Volume aktivieren möchten, wählen Sie **Fortlaufende Verfügbarkeit aktivieren** aus.    
 
         > [!IMPORTANT]   
         > Das SMB-Feature „Fortlaufende Verfügbarkeit“ ist derzeit als öffentliche Vorschauversion verfügbar. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die Seite **[Azure NetApp Files SMB Continuous Availability Shares Public Preview](https://aka.ms/anfsmbcasharespreviewsignup)** übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die fortlaufende Verfügbarkeit verwenden.   
@@ -153,16 +153,7 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
 
 ## <a name="control-access-to-an-smb-volume"></a>Steuern des Zugriffs auf ein SMB-Volume  
 
-Der Zugriff auf ein SMB-Volume wird durch Berechtigungen verwaltet.  
-
-### <a name="share-permissions"></a>Freigabeberechtigungen  
-
-Ein neues Volume verfügt standardmäßig über die Freigabeberechtigungen **Jeder/Vollzugriff**. Mitglieder der Gruppe „Domänenadministratoren“ können die Freigabeberechtigungen wie folgt ändern:  
-
-1. Die Freigabe einem Laufwerk zuordnen.  
-2. Klicken Sie mit der rechten Maustaste auf das Laufwerk, wählen Sie **Eigenschaften** aus, und wechseln Sie dann zur Registerkarte **Sicherheit**.
-
-[![Freigabeberechtigungen festlegen](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
+Der Zugriff auf ein SMB-Volume wird durch Berechtigungen verwaltet. 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS-Datei- und -Ordnerberechtigungen  
 
@@ -175,7 +166,7 @@ Sie können Berechtigungen für eine Datei oder einen Ordner festlegen, indem Si
 * [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Konfigurieren von ADDS LDAP über TLS für Azure NetApp Files](configure-ldap-over-tls.md) 
-* [Konvertieren vorhandener SMB-Volumes zur Verwendung von fortlaufender Verfügbarkeit](convert-smb-continuous-availability.md)
+* [Aktivieren der fortlaufenden Verfügbarkeit auf den vorhandenen SMB-Volumes](enable-continuous-availability-existing-SMB.md)
 * [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption)
 * [Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md)
 * [Erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md)

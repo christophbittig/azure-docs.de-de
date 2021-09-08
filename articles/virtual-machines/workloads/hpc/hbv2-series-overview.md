@@ -11,16 +11,17 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: ee09191069c05ae67eb84ee15d739cd101de8ef0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d695f01daa4b30a6e88607929f67a0453b06edf0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460468"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691456"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HBv2-Serie 
 
- 
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Die Maximierung der Leistung von HPC-Anwendungen (High Performance Computing) für AMD EPYC erfordert ein durchdachtes Konzept für die Lokalität des Arbeitsspeichers und die Prozessplatzierung. Im Anschluss finden Sie einen Überblick über die AMD EPYC-Architektur sowie über unsere Implementierung in Azure für HPC-Anwendungen. Der Begriff **pNUMA** bezieht sich hier auf eine physische NUMA-Domäne; **vNUMA** steht für eine virtualisierte NUMA-Domäne. 
 
 Physisch handelt es sich bei einem Server der [HBv2-Serie](../../hbv2-series.md) um zwei EPYC 7742-CPUs mit jeweils 64 Kernen, wodurch sich eine Gesamtanzahl von 128 physischen Kernen ergibt. Diese 128 Kerne sind in 32 pNUMA-Domänen (16 pro Socket) unterteilt, die jeweils vier Kerne umfassen und von AMD als **Core Complex** (oder **CCX**) bezeichnet werden. Jeder CCX verfügt über einen eigenen L3-Cache, der dem Betriebssystem eine pNUMA-/vNUMA-Grenze signalisiert. Vier benachbarte CCX teilen sich den Zugriff auf zwei Kanäle des physischen DRAM. 
