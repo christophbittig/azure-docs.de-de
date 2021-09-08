@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c04dffcad178694f4f2548f38aa4c1d512c6fe60
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 69e3fa87d55dcedc95ac4fec7fa92f53449ece46
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351316"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768715"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Images in einer Shared Image Gallery werden als Momentaufnahmen gespeichert, sodass sie automatisch durch serverseitige Verschlüsselung verschlüsselt werden. Die serverseitige Verschlüsselung verwendet die [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) mit 256 Bit – eine der stärksten verfügbaren Blockchiffren. Die serverseitige Verschlüsselung ist ebenfalls mit FIPS 140-2 konform. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
@@ -28,7 +30,7 @@ Die serverseitige Verschlüsselung über kundenseitig verwaltete Schlüssel verw
 
 In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz in den einzelnen Regionen verfügen, in denen Sie Ihr Image replizieren möchten:
 
-- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, finden Sie weitere Informationen in den Artikeln zum Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung über das [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation).
+- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, finden Sie weitere Informationen in den Artikeln zum Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung über das [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation).
 
 - Wenn Sie sowohl plattformseitig als auch kundenseitig verwaltete Schlüssel (für die doppelte Verschlüsselung) verwenden möchten, lesen Sie die Artikel zum Aktivieren der doppelten Verschlüsselung für ruhende Daten über das [Azure-Portal](./disks-enable-double-encryption-at-rest-portal.md) oder mithilfe von [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
 

@@ -7,15 +7,19 @@ ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.reviewer: davberg
-ms.openlocfilehash: 2a00c966d7a1ba40d0ba27dc4f4ca3b386a44601
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 41a2f377629b8cce647adecb21e395c60bf15a7c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587857"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770779"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für Hochleistungs-Azure-VMs unter Ubuntu 18.04. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](../windows/compute-benchmark-scores.md)zur Verfügung.
+
 
 ## <a name="azure-coremark-toc"></a>Azure (Coremark) TOC
 | type | Familien |

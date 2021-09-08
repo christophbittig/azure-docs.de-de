@@ -1,14 +1,14 @@
 ---
 title: Erstellen von berechtigten Autorisierungen
 description: Beim Onboarding von Kunden in Azure Lighthouse können Sie es Benutzern in Ihrem Verwaltungsmandanten ermöglichen, ihre Rolle JIT-basiert (Just-In-Time) zu erhöhen.
-ms.date: 07/15/2021
+ms.date: 08/26/2021
 ms.topic: how-to
-ms.openlocfilehash: 5f5711b8ee573e0f91437dd1e89a870c755f4725
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 1754a7d43f184e340badb7adb29de8caa3901372
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667219"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038684"
 ---
 # <a name="create-eligible-authorizations"></a>Erstellen von berechtigten Autorisierungen
 
@@ -47,7 +47,7 @@ Administratoren im Verwaltungsmandanten können alle Privileged Identity Managem
 
 Sie können eine berechtigte Autorisierung erstellen, wenn Sie Kunden mit Azure Resource Manager-Vorlagen integrieren, oder indem Sie ein Angebot für verwaltete Dienste im Azure Marketplace veröffentlichen. Jede berechtigte Autorisierung muss drei Elemente enthalten: den Benutzer, die Rolle und die Zugriffsrichtlinie.
 
-### <a name="user"></a>User
+### <a name="user"></a>Benutzer
 
 Für jede berechtigte Autorisierung geben Sie die Prinzipal-ID für einen einzelnen Benutzer oder eine Azure AD-Gruppe im verwaltenden Mandanten an. Zusammen mit der Prinzipal-ID müssen Sie für jede Autorisierung einen Anzeigenamen Ihrer Wahl angeben.
 
@@ -58,7 +58,7 @@ Sie können berechtigte Autorisierungen nicht mit Dienstprinzipalen verwenden, d
 > [!NOTE]
 > Stellen Sie für jede berechtigte Autorisierung sicher, dass Sie auch eine permanente (aktive) Autorisierung für dieselbe Prinzipal-ID mit einer anderen Rolle erstellen, z. B. Leser (oder eine andere integrierte Azure-Rolle, die über Lesezugriff verfügt). Wenn Sie keine permanente Berechtigung für den Lesezugriff einbeziehen, kann der Benutzer seine Rolle nicht im Azure-Portal erhöhen.
 
-### <a name="role"></a>Rolle
+### <a name="role"></a>Role
 
 Jede berechtigte Autorisierung muss eine [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md) enthalten, die der Benutzer auf Just-In-Time-Basis nutzen kann.
 
@@ -103,7 +103,7 @@ Um beim Onboarding eines Kunden berechtigte Autorisierungen hinzuzufügen, verwe
 
 |So führen Sie das Onboarding durch (mit berechtigten Autorisierungen)  |Verwenden Sie diese Azure Resource Manager-Vorlage:  |Ändern Sie außerdem diese Parameterdatei: |
 |---------|---------|---------|
-|Subscription   |[subscription.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.json)  |[subscription.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.Parameters.json)    |
+|Subscription   |[subscription.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.json)  |[subscription.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.parameters.json)    |
 |Abonnement (mit genehmigenden Personen)  |[subscription-managing-tenant-approvers.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription-managing-tenant-approvers.json)  |[subscription-managing-tenant-approvers.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription-managing-tenant-approvers.parameters.json)    |
 |Resource group   |[rg.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg.json)  |[rg.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg.parameters.json)    |
 |Ressourcengruppe (mit genehmigenden Personen)  |[rg-managing-tenant-approvers.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg-managing-tenant-approvers.json)  |[rg-managing-tenant-approvers.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg-managing-tenant-approvers.parameters.json)    |
@@ -121,113 +121,77 @@ Nachfolgend ist die Vorlage **subscription-managing-tenant-approvers.json** geze
             "type": "string",
             "metadata": {
                 "description": "Specify a unique name for your offer"
-            },
-            "defaultValue": "<to be filled out by MSP> Specify a title for your offer"
+            }
         },
         "mspOfferDescription": {
             "type": "string",
             "metadata": {
                 "description": "Name of the Managed Service Provider offering"
-            },
-            "defaultValue": "<to be filled out by MSP> Provide a brief description of your offer"
+            }
         },
         "managedByTenantId": {
             "type": "string",
             "metadata": {
                 "description": "Specify the tenant id of the Managed Service Provider"
-            },
-            "defaultValue": "<to be filled out by MSP> Provide your tenant id"
+            }
         },
         "authorizations": {
             "type": "array",
             "metadata": {
                 "description": "Specify an array of objects, containing tuples of Azure Active Directory principalId, a Azure roleDefinitionId, and an optional principalIdDisplayName. The roleDefinition specified is granted to the principalId in the provider's Active Directory and the principalIdDisplayName is visible to customers."
-            },
-            "defaultValue": [
-                { 
-                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                    "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-                    "principalIdDisplayName": "PIM_Group" 
-                }, 
-                { 
-                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                    "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46",
-                    "principalIdDisplayName": "PIM_Group" 
-                }   
-            ]
-        }, 
-        "eligibleAuthorizations": { 
-            "type": "array", 
-            "metadata": { 
-                "description": "Provide the authorizations that will have just-in-time role assignments on customer environments" 
-            },
-           "defaultValue": [ 
-                { 
-                        "justInTimeAccessPolicy": { 
-                            "multiFactorAuthProvider": "Azure", 
-                            "maximumActivationDuration": "PT8H",
-                            "managedByTenantApprovers": [ 
-                                { 
-                                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                                    "principalIdDisplayName": "PIM-Approvers" 
-                                }
-                            ]
-                        },
-                        "principalId": "00000000-0000-0000-0000-000000000000", 
-                        "principalIdDisplayName": "PIM_Group",
-                        "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c" 
-                        
-                }                    
-            ]    
-
-        }                 
-    },
-    "variables": {
-        "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
-        "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.ManagedServices/registrationDefinitions",
-            "apiVersion": "2020-02-01-preview",
-            "name": "[variables('mspRegistrationName')]",
-            "properties": {
-                "registrationDefinitionName": "[parameters('mspOfferName')]",
-                "description": "[parameters('mspOfferDescription')]",
-                "managedByTenantId": "[parameters('managedByTenantId')]",
-                "authorizations": "[parameters('authorizations')]", 
-                "eligibleAuthorizations": "[parameters('eligibleAuthorizations')]" 
             }
         },
-        {
-            "type": "Microsoft.ManagedServices/registrationAssignments",
-            "apiVersion": "2020-02-01-preview",
-            "name": "[variables('mspAssignmentName')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
-            ],
-            "properties": {
-                "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+        "eligibleAuthorizations": {
+            "type": "array",
+            "metadata": {
+                "description": "Provide the authorizations that will have just-in-time role assignments on customer environments with support for approvals from the managing tenant"
             }
         }
-    ],
-    
-    "outputs": {
-        "mspOfferName": {
-            "type": "string",
-            "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+    },
+        "variables": {
+            "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
+            "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
         },
-        "authorizations": {
-            "type": "array",
-            "value": "[parameters('authorizations')]"
-        }, 
-        "eligibleAuthorizations": { 
-            "type": "array", 
-            "value": "[parameters('eligibleAuthorizations')]" 
-
-        } 
+        "resources": [
+            {
+                "type": "Microsoft.ManagedServices/registrationDefinitions",
+                "apiVersion": "2020-02-01-preview",
+                "name": "[variables('mspRegistrationName')]",
+                "properties": {
+                    "registrationDefinitionName": "[parameters('mspOfferName')]",
+                    "description": "[parameters('mspOfferDescription')]",
+                    "managedByTenantId": "[parameters('managedByTenantId')]",
+                    "authorizations": "[parameters('authorizations')]",
+                    "eligibleAuthorizations": "[parameters('eligibleAuthorizations')]"
+                }
+            },
+            {
+                "type": "Microsoft.ManagedServices/registrationAssignments",
+                "apiVersion": "2020-02-01-preview",
+                "name": "[variables('mspAssignmentName')]",
+                "dependsOn": [
+                    "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+                ],
+                "properties": {
+                    "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+                }
+            }
+        ],
+        "outputs": {
+            "mspOfferName": {
+                "type": "string",
+                "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+            },
+            "authorizations": {
+                "type": "array",
+                "value": "[parameters('authorizations')]"
+            },
+            "eligibleAuthorizations": {
+                "type": "array",
+                "value": "[parameters('eligibleAuthorizations')]"
+            }
+        }
     }
-}
 ```
 
 ### <a name="define-eligible-authorizations-in-your-parameters-file"></a>Definieren von berechtigten Autorisierungen in der Parameterdatei

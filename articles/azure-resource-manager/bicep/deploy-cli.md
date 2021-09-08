@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/15/2021
-ms.openlocfilehash: 5e46b920359615c34864d670363b11c451b416b3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1feb5f2e858113086b9349c79dacb024570fb5a4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295117"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635157"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-cli"></a>Bereitstellen von Ressourcen mit Bicep und Azure CLI
 
@@ -147,7 +147,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 Schließen Sie den JSON-Code, der an das Objekt übergeben werden soll, in doppelte Anführungszeichen ein.
 
-Sie können eine Variable verwenden, die die Parameterwerte enthalten kann. Legen Sie in Bash die Variable auf alle Parameterwerte fest, und fügen Sie sie dem Bereitstellungsbefehl hinzu.
+Sie können eine Variable verwenden, um die Parameterwerte einzufügen. Legen Sie in Bash die Variable auf alle Parameterwerte fest, und fügen Sie sie dem Bereitstellungsbefehl hinzu.
 
 ```azurecli-interactive
 params="prefix=start suffix=end"
@@ -156,7 +156,7 @@ az deployment group create \
   --resource-group testgroup \
   --template-file <path-to-bicep> \
   --parameters $params
-``` 
+```
 
 Wenn Sie jedoch die Azure-Befehlszeilenschnittstelle mit der Windows-Eingabeaufforderung (CMD) oder PowerShell verwenden, legen Sie die Variable auf eine JSON-Zeichenfolge fest. Versehen Sie Anführungszeichen mit einem Escapezeichen: `$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`.
 
@@ -182,7 +182,7 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Hier sehen Sie ein [Beispiel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep). Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Hier sehen Sie ein [Beispiel](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep). Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 

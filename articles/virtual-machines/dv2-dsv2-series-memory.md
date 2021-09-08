@@ -1,5 +1,5 @@
 ---
-title: 'Virtuelle Computer der arbeitsspeicheroptimierten Dv2- und DSv2-Serie: Azure Virtual Machines'
+title: 'Virtuelle Computer der arbeitsspeicheroptimierten Dv2- und Dsv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Dv2-Serie und der Dsv2-Serie.
 author: joelpelley
 ms.service: virtual-machines
@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f07e4542e380e4e8057d9011a6b613e9ad55a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2010bdb442112af6e62ed30abc8323b669b5166
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560326"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688335"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Arbeitsspeicheroptimierte Dv2- und Dsv2-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die Serien Dv2 und Dsv2, Nachfolger der ursprünglichen D-Serie, weisen eine leistungsfähigere CPU auf. Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lake), dem Intel® Xeon® 8171M-Prozessor mit 2,1 GHz (Skylake), dem Intel® Xeon® E5-2673 v4-Prozessor mit 2,3 GHz (Broadwell) oder dem Intel® Xeon® E5-2673 v3-Prozessor mit 2,4 GHz (Haswell) ausgeführt. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
@@ -28,7 +30,7 @@ Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lak
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br> 
 
@@ -40,7 +42,7 @@ Die Dv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade Lak
 | Standard_D14_v2 | 16 | 112 | 800 | 48000/750/375 | 64/64 x 500 | 8|12000 |
 | Standard_D15_v2 <sup>1</sup> | 20 | 140 | 1000 | 60000/937/468 | 64/64 x 500 | 8|25000 <sup>2</sup> |
 
-<sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+<sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.<br>
 <sup>2</sup> 25000 Mbps mit beschleunigtem Netzwerkbetrieb.
 
 ## <a name="dsv2-series-11-15"></a>DSv2-Serie 11-15
@@ -53,7 +55,7 @@ Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade La
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br> 
 
@@ -68,7 +70,7 @@ Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade La
 <sup>1</sup> Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Details finden Sie unter [Entwerfen für hohe Leistung](./premium-storage-performance.md).
 <sup>2</sup> Die Instanz ist auf der Intel Haswell-basierten Hardware isoliert und ausschließlich für einen einzelnen Kunden vorgesehen.  
 <sup>3</sup> Eingeschränkte Kerngrößen verfügbar.  
-<sup>4</sup> 25000 Mbps mit beschleunigtem Netzwerkbetrieb.
+<sup>4</sup> 25000 Mbps mit beschleunigtem Netzwerkbetrieb.<br>
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

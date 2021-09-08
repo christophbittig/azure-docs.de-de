@@ -8,16 +8,16 @@ author: linda33wj
 ms.author: jingwang
 ms.reviewer: jrasnick
 ms.date: 05/13/2021
-ms.openlocfilehash: f7f697b9df78c44efb7a266d1a92bdd9ffe31753
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4c1f12d4e61f254f753f3feb59ca46997f88b751
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967689"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257079"
 ---
 # <a name="transform-data-by-using-sql-pool-stored-procedure-activity-in-azure-synapse-analytics"></a>Transformieren von Daten mit der SQL-Pool-Aktivität „Gespeicherte Prozedur“ in Azure Synapse Analytics
 
-<Token> **GILT FÜR:** ![ nicht unterstützt ](../media/applies-to/no.png) Azure Data Factory ![ unterstützt ](../media/applies-to/yes.png) Azure Synapse Analytics</Token> 
+[!INCLUDE[appliesto-xxx-asa-md](../../data-factory/includes/appliesto-xxx-asa-md.md)]
 
 Sie verwenden Datentransformationsaktivitäten in einer [Pipeline](../../data-factory/concepts-pipelines-activities.md), um Rohdaten in Vorhersagen und Erkenntnisse umzuwandeln und zu verarbeiten. Dieser Artikel baut auf dem Artikel [Transformieren von Daten](../../data-factory/transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 

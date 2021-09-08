@@ -10,14 +10,16 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 2d4c640695395963a83629fbeea87c96b4a31aad
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112518134"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688214"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
 Das Feature „Skriptausführung“ verwendet den VM-Agent (virtual machine, virtueller Computer), um Shellskripts innerhalb eines virtuellen Azure-Computers unter Linux auszuführen. Diese Skripts können für die allgemeine Computer- oder Anwendungsverwaltung verwendet werden. Mit ihrer Hilfe können Sie Zugriffs- und Netzwerkprobleme eines virtuellen Computers schnell diagnostizieren und beheben und den virtuellen Computer wieder in einen funktionierenden Zustand versetzen.
 

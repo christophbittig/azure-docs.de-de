@@ -1,16 +1,19 @@
 ---
 title: Ausbildungsmodus – Personalisierung
 description: Hier erfahren Sie, wie Sie den Ausbildungsmodus verwenden, um Vertrauen in ein Modell zu gewinnen, ohne dabei Code zu ändern.
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: d61c6be050c07de46613efae66cb32f2fa0d395f
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: aabda26cd2a1dea7205c8432f11af35e3f20b0e1
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107197"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830873"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Verwenden des Ausbildungsmodus zum Trainieren der Personalisierung, ohne Ihre bestehende Anwendung zu beeinträchtigen
 

@@ -9,16 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4eb1ecb84acdf6ccf65852f4da83c238ac136ceb
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 47498a3b790af5b1ff8eeee821b655e8a307660d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582328"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693595"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Definieren von benutzerdefinierten R-Modulen für Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio (klassisch) erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
 

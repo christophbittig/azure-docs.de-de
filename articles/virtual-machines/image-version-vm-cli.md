@@ -10,14 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 75ce18b89975aaf0f45620291ccd106db69656ec
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 618a7df8895c0d44ee186d4f3b5dee61bf9821a7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205096"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697060"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Erstellen einer Imageversion von einer VM in Azure mithilfe der Azure CLI
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie über eine VM verfügen, die Sie verwenden möchten, um mehrere identische VMs zu erstellen, können Sie mit der Azure CLI ein Image dieser VM in Shared Image Gallery erstellen. Ebenso können Sie auch [Azure PowerShell](image-version-vm-powershell.md) verwenden, um ein VM-Image zu erstellen.
 

@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9923a2bd2e36975fe1af77fddb4bb484a4eb87c6
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217771"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257046"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
@@ -40,7 +40,7 @@ Gehen Sie folgendermaßen vor, um sicherzustellen, dass Ihr Azure AD- und Arbeit
     | --- | --- |
     | Role | Mitwirkender an Storage-Blobdaten |
     | Zugriff zuweisen zu | USER und MANAGEDIDENTITY |
-    | Members | Ihr Azure AD-Konto und Ihre Arbeitsbereichsidentität |
+    | Member | Ihr Azure AD-Konto und Ihre Arbeitsbereichsidentität |
 
     > [!NOTE]
     > Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs.
@@ -51,7 +51,7 @@ Gehen Sie folgendermaßen vor, um sicherzustellen, dass Ihr Azure AD- und Arbeit
 
 Sie können über die folgende URL mithilfe von Synapse Spark auf Daten in ADLS Gen2 zugreifen:
 
-<code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
+`abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path>`
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Konfigurieren des Zugriffs auf Azure Blob Storage  
 
@@ -69,7 +69,7 @@ Befolgen Sie diese Schritte, um einen neuen verknüpften Dienst für ein Azure B
 
 Sie können über die folgende URL mithilfe von Synapse Spark auf Daten in Azure Blob Storage zugreifen:
 
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+`wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path>`
 
 Hier finden Sie ein Codebeispiel:
 

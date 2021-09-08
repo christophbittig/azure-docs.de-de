@@ -10,14 +10,16 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3b0de7b9229f8bfd43e41f26ccb7d7d7c790b92
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 960de5d3f40e15bdf4d5b6da828e0b5e27516e3c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205113"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694292"
 ---
 # <a name="create-an-image-from-a-vm"></a>Erstellen von VM-Images
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie über eine VM verfügen, die Sie verwenden möchten, um mehrere identische VMs zu erstellen, können Sie mithilfe von Azure PowerShell ein Image dieser VM in Shared Image Gallery erstellen. Ebenso können Sie auch die [Azure CLI](image-version-vm-cli.md) verwenden, um ein VM-Image zu erstellen.
 

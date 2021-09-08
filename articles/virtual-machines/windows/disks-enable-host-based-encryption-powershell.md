@@ -8,14 +8,16 @@ ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 9fc618480b4c00ab65f4300a66747acdc2a11f74
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 3417288a0ed765d1ff53c47282379ae6cbb85254
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359009"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694693"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden des Azure PowerShell-Moduls zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Host gespeicherten Daten ruhend verschlüsselt und verschlüsselt an den Speicherdienst übermittelt. Informationen zum Konzept der Verschlüsselung auf dem Host sowie zu anderen Verschlüsselungstypen für verwaltete Datenträger finden Sie unter [Verschlüsselung auf dem Host: End-to-End-Verschlüsselung für Ihre VM-Daten](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 

@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b2c4a56be15aa8a331224958329ba263bc9a8426
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 1e836366223a7a283a103375b2888afce71311c9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205079"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689889"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Erstellen eines Images aus einem verwalteten Datenträger oder einer Momentaufnahme in einer Shared Image Gallery-Instanz mithilfe der Azure CLI
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn Sie über eine vorhandene Momentaufnahme oder einen verwalteten Datenträger verfügen, die Sie zu einer Shared Image Gallery-Instanz migrieren möchten, können Sie direkt aus dem verwalteten Datenträger oder der Momentaufnahme ein Shared Image Gallery-Image erstellen. Nachdem Sie das neue Image getestet haben, können Sie den verwalteten Quelldatenträger oder die Quellmomentaufnahme löschen. Sie können auch [Azure PowerShell](image-version-snapshot-powershell.md) verwenden, um ein Image aus einen verwalteten Datenträger oder einer Momentaufnahme in einer Shared Image Gallery-Instanz zu erstellen.
 

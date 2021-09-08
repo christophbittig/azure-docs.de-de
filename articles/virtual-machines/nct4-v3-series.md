@@ -7,14 +7,16 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: c53d875e35e77d782ac2897bbe2a1a356f8ac5a2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 55799d15ef0ebe8af0f4a79b583143394540f48b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359585"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697966"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-Serie 
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die virtuellen Computer der NCasT4_v3-Serie basieren auf GPUs vom Typ [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) sowie auf CPUs vom Typ AMD EPYC 7V12(Rome). Die VMs verfügen über bis zu 4 NVIDIA T4-GPUs mit jeweils 16 GB Arbeitsspeicher, bis zu 64 AMD EPYC 7V12(Rome)-Prozessorkerne ohne Multithreading (Basisfrequenz von 2,45 GHz, Spitzenfrequenz aller Kerne von 3,1 GHz und Spitzenfrequenz von 3,3 GHz für einzelne Kerne) und 440 GiB Systemspeicher. Diese virtuellen Computer eignen sich ideal für das Bereitstellen von KI-Diensten wie Rückschlüsse in Echtzeit im Zusammenhang mit vom Benutzer generierten Anforderungen oder für interaktive Grafiken und Visualisierungsworkloads mit dem GRID-Treiber und der vGPU-Technologie von NVIDIA. GPU-Standardcomputeworkloads, die auf CUDA, TensorRT, Caffe, ONNX und anderen Frameworks basieren, oder auf OpenGL und DirectX basierende GPU-beschleunigte grafische Anwendungen können in der NCasT4_v3-Reihe wirtschaftlich und in unmittelbarer Nähe zu den Benutzern bereitgestellt werden.
 

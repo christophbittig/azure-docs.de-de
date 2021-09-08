@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/26/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 2642f1e85e12ce0251e9b7bfff84b5d468a342d2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 29a97d3f68d9b097bfe5c67f0b5832271fa983e1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361402"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031116"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Übersicht: Integrierter Azure Cosmos DB-Cache (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -109,7 +109,7 @@ Dies ist eine Verbesserung gegenüber der Funktionsweise der meisten Caches und 
 
 Sehen Sie sich das folgende Beispiel an, um den `MaxIntegratedCacheStaleness`-Parameter besser zu verstehen:
 
-| Time       | Anforderung                                         | Antwort                                                     |
+| Zeit       | Anforderung                                         | Antwort                                                     |
 | ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
 | t = 0 s  | Ausführen von Abfrage A mit MaxIntegratedCacheStaleness = 30 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Auffüllen des Caches     |
 | t = 0 s  | Ausführen von Abfrage B mit MaxIntegratedCacheStaleness = 60 Sekunden | Zurückgeben von Ergebnissen aus der Back-End-Datenbank (normale RU-Gebühren) und Auffüllen des Caches     |
@@ -177,3 +177,6 @@ Wenn die Latenz unerwartet hoch ist, benötigen Sie in einigen Fällen mögliche
 - [Häufig gestellte Fragen zum integrierten Cache](integrated-cache-faq.md)
 - [Konfigurieren des integrierten Caches](how-to-configure-integrated-cache.md)
 - [Dediziertes Gateway](dedicated-gateway.md)
+- Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

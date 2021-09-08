@@ -8,18 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: d601f215beae8c4fcb1977a08210429408f94e52
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f0edc024a8266704f3a45a48f50adb32b2616d95
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696474"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356565"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs und Skalierungsgruppen auf dedizierten Hosts über das Portal
 
-**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Einheitliche Skalierungsgruppen
+Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs).
 
-Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](dedicated-hosts.md) zum Hosten Ihrer virtuellen Computer (VMs). 
 
 ## <a name="limitations"></a>Einschränkungen
 

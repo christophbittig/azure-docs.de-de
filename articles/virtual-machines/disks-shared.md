@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 08/16/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 80491f2d9169bcd5c9d4054eb8329c89fd778ba9
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356475"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689351"
 ---
 # <a name="share-an-azure-managed-disk"></a>Freigeben eines verwalteten Azure-Datenträgers
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Freigegebene Azure-Datenträger sind eine neue Funktion für verwaltete Azure-Datenträger, mit dem Sie einen verwalteten Datenträger gleichzeitig an mehrere virtuelle Computer anfügen können. Durch das Anfügen eines verwalteten Datenträgers an mehrere virtuelle Computer können Sie entweder neue gruppierte Anwendungen in Azure bereitstellen oder bereits vorhandene gruppierte Anwendungen zu Azure migrieren.
 

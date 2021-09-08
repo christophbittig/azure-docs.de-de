@@ -9,15 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: c6d78b10b98abe33744673459b3d31d8941aac89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af787dbb441a455392af3515edbe6176b9e301b0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520407"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695601"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Vorhersagen einer Antwort mit einem einfachen Modell
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Reihe „Data Science für Einsteiger“
 Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Regressionsmodells zum Vorhersagen des Preises eines Diamanten. Wir zeichnen ein Regressionsmodell mit Zieldaten.
@@ -125,8 +126,8 @@ Auch wenn wir anstelle einer Handvoll Diamanten zweitausend oder zwei Millionen 
 
 Heute haben wir uns über lineare Regression unterhalten und eine Vorhersage mithilfe von Daten gemacht.
 
-Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning Studio (klassisch) an.
+Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Machine Learning Studio (klassisch) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio (klassisch)](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](../overview-what-is-azure-ml.md)
+* [Einführung in Azure Machine Learning](../overview-what-is-azure-machine-learning.md)
