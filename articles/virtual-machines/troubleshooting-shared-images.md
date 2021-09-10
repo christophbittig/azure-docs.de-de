@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
-ms.date: 10/27/2020
+ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309984"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138817"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
 
@@ -296,6 +296,14 @@ Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Image
 **Meldung:** *Replication failed in this region due to 'The GalleryImageVersion source resource size 2048 exceeds the max size 1024 supported.'* (Fehler bei der Replikation in dieser Region aufgrund des Fehlers "Die Größe 2048 der GalleryImageVersion-Quellressource überschreitet die maximal unterstützte Größe von 1024".)  
 **Ursache:** Ein Datenträger in der Quelle ist größer als 1 TB.  
 **Problemumgehung:** Legen Sie für den Datenträger eine neue Größe unter 1 TB fest.
+
+**Meldung**: *Der Vorgang „Katalogimageversion aktualisieren“ ist für „<versionNumber>“ unzulässig, weil dieses Element für den Löschvorgang markiert ist. Sie können den Löschvorgang noch mal versuchen (oder auf den Abschluss eines laufenden Vorgangs warten).*  
+**Ursache**: Sie haben versucht, eine Katalogimageversion zu aktualisieren, die gerade gelöscht wird.  
+**Problemumgehung**: Warten Sie, bis das Löschereignis abgeschlossen ist, und erstellen Sie die Imageversion erneut.
+
+**Meldung**: *Die Verschlüsselung wird für die Quellressource „<sourceID>“ nicht unterstützt. Verwenden Sie einen anderen Quellressourcentyp, der die Verschlüsselung unterstützt, oder entfernen Sie die Verschlüsselungseigenschaften.*  
+**Ursache**: Derzeit unterstützt Shared Image Gallery nur die Verschlüsselung für VMs, Datenträger, Momentaufnahmen und verwaltete Images. Eine der für die Imageversion bereitgestellten Quellen ist nicht in der obigen Liste der Quellen enthalten, die die Verschlüsselung unterstützen.  
+**Problemumgehung**: Entfernen Sie den Datenträgerverschlüsselungssatz aus der Imageversion, und wenden Sie sich an das Supportteam.
 
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>Erstellen oder Aktualisieren einer VM oder Skalierungsgruppe anhand der Imageversion ##
 

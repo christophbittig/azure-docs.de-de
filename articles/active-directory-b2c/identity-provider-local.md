@@ -12,95 +12,50 @@ ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 48d6f6fc983de3f9a98b81011db1a8843f678939
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 1de783a3e6696e9ca8a8f618ce3744a91e774692
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896259"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198852"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>Einrichten des Identitätsanbieters „Lokales Konto“
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure AD B2C bietet verschiedene Möglichkeiten, wie Benutzer einen Benutzer authentifizieren können. Benutzer können sich bei einem lokalen Konto anmelden, indem sie den Benutzernamen und das Kennwort, die Telefonüberprüfung (auch als kennwortlose Authentifizierung bezeichnet) oder soziale Netzwerke als Identitätsanbieter verwenden. In den Einstellungen des Identitätsanbieters „Lokales Konto“ ist standardmäßig die Registrierung mit E-Mail-Adresse aktiviert. 
+In diesem Artikel wird beschrieben, wie Sie Anmeldemethoden für Ihre lokalen Azure AD B2C-Konten festlegen. Ein lokales Konto ist ein Konto, das in Ihrem Azure AD B2C-Verzeichnis von einem Administrator oder durch die Registrierung eines Benutzers für Ihre Anwendung erstellt wird. Benutzernamen und Kennwörter werden lokal gespeichert, und Azure AD B2C fungiert als Identitätsanbieter für lokale Konten.
 
-In diesem Artikel wird beschrieben, wie Benutzer ihre Konten lokal für diesen Azure AD B2C-Mandanten erstellen. Informationen zu Identitäten bei sozialen Netzwerken oder Unternehmen, bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter wie Facebook und Google verwaltet wird, finden Sie unter [Hinzufügen eines Identitätsanbieters zu Ihrem Azure Active Directory B2C-Mandanten](add-identity-provider.md).
+Für lokale Konten sind mehrere Anmeldemethoden verfügbar:
 
-## <a name="email-sign-in"></a>Anmeldung per E-Mail-Adresse
+- **E-Mail**: Benutzer können sich mit ihrer E-Mail-Adresse und ihrem Kennwort bei Ihrer App registrieren und anmelden. In den Einstellungen des Identitätsanbieters „Lokales Konto“ ist standardmäßig die Registrierung mit E-Mail-Adresse aktiviert.
+- **Benutzername**: Benutzer können sich mit einem Benutzernamen und einem Kennwort bei Ihrer App registrieren und anmelden.
+- **Telefon (oder „kennwortlose Authentifizierung“)** : Benutzer können sich bei Ihrer App registrieren und anmelden, indem sie eine Telefonnummer als primäre Anmelde-ID verwenden. Sie müssen keine Kennwörter erstellen. Einmalkennwörter werden per SMS an Ihre Benutzer gesendet.
+- **Telefon oder E-Mail**: Benutzer können sich registrieren oder anmelden, indem sie eine Telefonnummer oder eine E-Mail-Adresse eingeben. Basierend auf der Benutzereingabe leitet Azure AD B2C den Benutzer zum entsprechenden Flow auf der Registrierungs- oder Anmeldeseite weiter.
+- **Telefonwiederherstellung**: Wenn Sie die Registrierung oder Anmeldung per Telefon aktiviert haben, können Benutzer über die Telefonwiederherstellung eine E-Mail-Adresse zum Wiederherstellen ihres Kontos für den Fall angeben, dass sie ihr Telefon nicht zur Hand haben.
 
-Mit der E-Mail-Option können sich Benutzer mit Ihrer E-Mail-Adresse und Ihrem Kennwort anmelden/registrieren:
+Weitere Informationen zu diesen Methoden finden Sie unter [Anmeldeoptionen](sign-in-options.md). 
 
-- **Anmelden**: Benutzer werden aufgefordert, ihre E-Mail-Adresse und ihr Kennwort anzugeben.
-- **Registrieren**: Benutzer werden zur Eingabe einer E-Mail-Adresse aufgefordert, die bei der Registrierung überprüft (optional) und zu ihrer Anmelde-ID wird. Der Benutzer gibt dann auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. „Anzeigename“, „Vorname“ und „Nachname“. Wählen Sie dann zum Erstellen des Kontos „Fortfahren“ aus.
-- **Kennwort zurücksetzen**: Nach Eingabe und Überprüfung Ihre E-Mail-Adresse können Benutzer das Kennwort zurücksetzen.
-
-![Registrierung oder Anmeldung per E-Mail-Adresse](./media/identity-provider-local/local-account-email-experience.png)
-
-## <a name="username-sign-in"></a>Anmeldung mit Benutzername
-
-Mit der Benutzeroption können sich Benutzer mit einem Benutzernamen und einem Kennwort anmelden/registrieren:
-
-- **Anmelden**: Benutzer werden aufgefordert, ihren Benutzernamen und ihr Kennwort anzugeben.
-- **Registrieren**: Benutzer werden aufgefordert, einen Benutzernamen einzugeben, der zu ihrer Anmelde-ID wird. Benutzer werden außerdem aufgefordert, eine E-Mail-Adresse anzugeben, die bei der Registrierung überprüft wird. Die E-Mail-Adresse wird dann in einem Kennwortzurücksetzungsflow verwendet. Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. „Anzeigename“, „Vorname“ und „Nachname“. Der Benutzer wählt dann zum Erstellen des Kontos „Fortfahren“ aus.
-- **Kennwortzurücksetzung**: Benutzer müssen ihren Benutzernamen und ihre zugehörige E-Mail-Adresse eingeben. Die E-Mail-Adresse muss überprüft werden. Danach kann der Benutzer das Kennwort zurücksetzen.
-
-![Registrierung oder Anmeldung mit Benutzername](./media/identity-provider-local/local-account-username-experience.png)
-
-## <a name="phone-sign-in"></a>Anmeldung per Telefon
-
-Die kennwortlose Authentifizierung ist ein Authentifizierungstyp, bei dem ein Benutzer sich nicht mit seinem Kennwort anmelden muss. Über die Telefonregistrierung und -anmeldung kann sich der Benutzer mit einer Telefonnummer als primärem Anmeldungsbezeichner für die App registrieren. Die Benutzererfahrung bei Registrierung und Anmeldung sieht folgendermaßen aus:
-
-- **Anmelden**: Wenn der Benutzer über ein bestehendes Konto mit der Telefonnummer als Bezeichner verfügt, gibt er seine Telefonnummer ein und wählt *Anmelden* aus. Der Benutzer bestätigt das Land/die Region und die Telefonnummer, indem er *Weiter* auswählt. Daraufhin wird ein Einmalprüfcode an die Telefonnummer des Benutzers gesendet. Der Benutzer gibt den Prüfcode ein und wählt *Weiter* aus, um sich anzumelden.
-- **Registrieren**: Wenn der Benutzer noch nicht über ein Konto für Ihre Anwendung verfügt, kann er durch Klicken auf den Link *Jetzt registrieren* ein Konto erstellen. 
-    1. Daraufhin wird eine Registrierungsseite angezeigt. Auf dieser Seite muss der Benutzer *Land/Region* auswählen, seine Telefonnummer eingeben und *Code senden* auswählen. 
-    1. Ein Einmalprüfcode wird an die Telefonnummer des Benutzers gesendet. Der Benutzer gibt auf der Registrierungsseite den *Prüfcode* ein und wählt dann *Code überprüfen* aus. (Wenn der Benutzer den Code nicht abrufen konnte, kann er die Option *Neuen Code senden* auswählen.) 
-    1. Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. „Anzeigename“, „Vorname“ und „Nachname“. Klicken Sie anschließend auf Weiter.
-    1. Als Nächstes wird der Benutzer aufgefordert, eine **E-Mail-Adresse für die Wiederherstellung** anzugeben. Der Benutzer gibt seine E-Mail-Adresse ein und wählt dann *Prüfcode senden* ein. An den E-Mail-Posteingang des Benutzers wird ein Code gesendet, den der Benutzer abrufen und in das Feld Prüfcode eingeben kann. Anschließend wählt der Benutzer die Option Code überprüfen aus.
-    1. Nachdem der Code überprüft wurde, wählt der Benutzer die Option *Erstellen* aus, um sein Konto zu erstellen. 
-
-![Registrierung oder Anmeldung per Telefon](./media/identity-provider-local/local-account-phone-experience.png)
-
-### <a name="pricing"></a>Preise
-
-Einmalkennwörter werden mithilfe von SMS-Textnachrichten an Ihre Benutzer gesendet. Abhängig von Ihrem Mobilfunkanbieter fallen möglicherweise für jede gesendete Nachricht Gebühren an. Preisinformationen finden Sie im Abschnitt **Separate Gebühren** unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
-
-> [!NOTE]
-> Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist standardmäßig deaktiviert, wenn Sie einen Benutzerflow mit telefonischer Registrierung konfigurieren. In Benutzerflows mit telefonischer Registrierung ist es zwar möglich, MFA zu aktivieren. Als zweiter Authentifizierungsfaktor steht jedoch nur die Einmalkennung per E-Mail zur Verfügung, da die Telefonnummer als primärer Bezeichner verwendet wird.
-
-### <a name="phone-recovery"></a>Telefonwiederherstellung
-
-Wenn Sie für Benutzerflows die telefonische Registrierung und Anmeldung aktivieren, empfiehlt es sich, auch das Feature zum Senden von Wiederherstellungs-E-Mails zu aktivieren. Mit dieser Funktion kann ein Benutzer eine E-Mail-Adresse angeben, die zum Wiederherstellen seines Kontos verwendet werden kann, wenn sein Telefon nicht verfügbar ist. Diese E-Mail-Adresse wird ausschließlich zur Kontowiederherstellung verwendet. Sie kann nicht zum Anmelden verwendet werden.
-
-- Wenn die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse auf **Ein** eingestellt ist, wird ein Benutzer bei der erstmaligen Registrierung aufgefordert, eine E-Mail-Adresse als Sicherung zu verifizieren. Ein Benutzer, der noch keine Wiederherstellungs-E-Mail-Adresse angegeben hat, wird bei der nächsten Anmeldung aufgefordert, eine E-Mail-Adresse als Sicherung zu verifizieren.
-
-- Wenn die Aufforderung zur Eingabe einer Wiederherstellungs-E-Mail-Adresse auf **Aus** eingestellt ist, wird dem Benutzer, der sich registriert oder anmeldet, keine Aufforderung zur Eingabe einer E-Mail-Adresse angezeigt.
- 
-Die folgenden Screenshots veranschaulichen den Ablauf der Telefonwiederherstellung:
-
-![Benutzerflow für Telefonwiederherstellung](./media/identity-provider-local/local-account-change-phone-flow.png)
-
-
-## <a name="phone-or-email-sign-in"></a>Anmeldung per Telefon oder E-Mail
-
-Sie können die [Anmeldung per Telefon](#phone-sign-in) und die [Anmeldung per E-Mail-Adresse](#email-sign-in) kombinieren. Auf der Registrierungs- oder Anmeldeseite kann der Benutzer eine Telefonnummer oder E-Mail-Adresse eingeben. Basierend auf der Benutzereingabe leitet Azure AD B2C den Benutzer zum entsprechenden Flow. 
-
-![Registrierung oder Anmeldung per Telefon oder E-Mail-Adresse](./media/identity-provider-local/local-account-phone-and-email-experience.png)
+Informationen zum Konfigurieren von Einstellungen für Identitäten bei sozialen Netzwerken oder Unternehmen, bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter wie Facebook und Google verwaltet wird, finden Sie unter [Hinzufügen eines Identitätsanbieters zu Ihrem Azure Active Directory B2C-Mandanten](add-identity-provider.md).
 
 ::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-local-account-identity-provider-settings"></a>Konfigurieren der Einstellungen des Identitätsanbieters „Lokales Konto“
 
-Sie können die für die Verwendung in einem Benutzerflow verfügbaren lokalen Identitätsanbieter konfigurieren, indem Sie die Anbieter (E-Mail, Benutzername oder Telefonnummer) aktivieren oder deaktivieren.  Auf Mandantenebene können mehrere lokale Identitätsanbieter aktiviert sein.
 
-Ein Benutzerflow kann nur für die Verwendung jeweils eines Identitätsanbieters „Lokales Konto“ konfiguriert werden. Jeder Benutzerflow kann über einen anderen Identitätsanbieter „Lokales Konto“ verfügen, wenn auf der Mandantenebene mehrere aktiviert wurden.
+Sie können die Anmeldemethoden für lokale Konten (E-Mail, Benutzername oder Telefonnummer) auswählen, die Sie in Ihrem Mandanten zur Verfügung stellen möchten, indem Sie den Anbieter **Lokales Konto** in Ihrer Liste der Azure AD B2C-**Identitätsanbieter** konfigurieren. Wenn Sie anschließend einen Benutzerflow einrichten, können Sie eine der Anmeldemethoden für lokale Konten auswählen, die Sie mandantenweit aktiviert haben. Sie können für einen Benutzerflow nur eine Anmeldemethode für lokale Konten auswählen, aber Sie können für jeden Benutzerflow eine andere Option auswählen.
+
+So legen Sie die Anmeldeoptionen für lokale Konten auf Mandantenebene fest 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Identitätsanbieter** aus.
 1. Wählen Sie in der Liste der Identitätsanbieter die Option **Lokales Konto** aus.
-1. Auf der Seite **Lokalen IDP konfigurieren** muss mindestens einer der zulässigen Identitätstypen ausgewählt sein, die Consumer zum Erstellen ihrer lokalen Konten in Ihrem Azure AD B2C-Mandanten verwenden können.
+1. Wählen Sie auf der Seite **Lokalen IDP konfigurieren** mindestens einen Identitätstyp aus, der für Benutzerflows in Ihrem Azure AD B2C-Mandanten aktiviert werden soll. Wenn Sie hier eine Option auswählen, wird sie mandantenweit zur Verfügung gestellt. Beim Erstellen oder Ändern eines Benutzerflows können Sie eine der hier aktivierten Optionen auswählen.
+
+   - **Telefon**: Benutzer werden aufgefordert, eine Telefonnummer einzugeben, die bei der Registrierung überprüft und als Benutzer-ID festgelegt wird.
+   - **Benutzername**: Benutzer können ihre eigene eindeutige Benutzer-ID erstellen. Eine E-Mail-Adresse des Benutzers wird erfasst und überprüft.
+   - **E-Mail**: Benutzer werden zur Eingabe einer E-Mail-Adresse aufgefordert, die bei der Registrierung überprüft und als Benutzer-ID festgelegt wird.
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="configure-your-user-flow"></a>Konfigurieren des Benutzerflows

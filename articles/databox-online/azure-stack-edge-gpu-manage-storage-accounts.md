@@ -1,31 +1,31 @@
 ---
 title: Verwaltung von Azure Stack Edge Pro-GPU-Speicherkonten | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie im Azure-Portal ein Speicherkonto auf Ihrem Azure Stack Edge Pro-Gerät verwalten.
+description: Hier wird beschrieben, wie Sie im Azure-Portal ein Speicherkonto für Ihre Azure Stack Edge Pro-GPU verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 08/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 2d9520c8f97171dbf2f46aa2c94b9e1e280ed86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c5cb61bf7450ea4668c6368d75615cdf43c2c40
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201279"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343182"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Verwalten von Edge-Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät im Azure-Portal
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro-gpu"></a>Verwalten von Edge-Speicherkonten für Ihre Azure Stack Edge Pro-GPU im Azure-Portal
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Edge-Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät verwalten. Sie können das Azure Stack Edge Pro-Gerät im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Im Azure-Portal können Sie Ihrem Gerät Edge-Speicherkonten hinzufügen oder diese löschen.
+In diesem Artikel wird beschrieben, wie Sie Edge-Speicherkonten auf Ihrem Azure Stack Edge Pro-Gerät verwalten. Sie können die Azure Stack Edge Pro-GPU im Azure-Portal oder über die lokale Webbenutzeroberfläche verwalten. Im Azure-Portal können Sie Ihrem Gerät Edge-Speicherkonten hinzufügen oder diese löschen.
 
 ## <a name="about-edge-storage-accounts"></a>Informationen zu Edge-Speicherkonten
 
-Sie können Daten von Ihrem Azure Stack Edge Pro-Gerät über das SMB-, NFS- oder REST-Protokoll übertragen. Wenn Sie Daten mithilfe der REST-APIs an Blob Storage übertragen möchten, müssen Sie auf Ihrem Azure Stack Edge Pro-Gerät Edge-Speicherkonten erstellen. 
+Sie können Daten von Ihrer Azure Stack Edge Pro-GPU über das SMB-, NFS- oder REST-Protokoll übertragen. Um Daten mithilfe der REST-APIs nach Blob Storage zu übertragen, müssen Sie auf Ihrem Gerät Edge-Speicherkonten anlegen. 
 
-Die Edge-Speicherkonten, die Sie auf dem Azure Stack Edge Pro-Gerät hinzufügen, werden Azure Storage-Konten zugeordnet. Alle Daten, die in die Edge-Speicherkonten geschrieben werden, werden automatisch per Push in die Cloud übertragen.
+Die Edge-Speicherkonten, die Sie für die Azure Stack Edge Pro-GPU hinzufügen, werden Azure Storage-Konten zugeordnet. Alle Daten, die in die Edge-Speicherkonten geschrieben werden, werden automatisch per Push in die Cloud übertragen.
 
 Ein Diagramm, das die beiden Typen von Konten und die Weise, wie die Daten von jedem dieser Konten in Azure gelangen, detailliert zeigt, ist nachstehend abgebildet:
 
@@ -83,9 +83,13 @@ Sie können jetzt in dieser Liste einen Container auswählen und auf der oberen 
 
 ## <a name="sync-storage-keys"></a>Synchronisieren von Speicherschlüsseln
 
-Sie können die Zugriffsschlüssel für die (lokalen) Edge-Speicherkonten auf Ihrem Gerät synchronisieren. 
+Jedes Azure Storage-Konto verfügt über zwei 512-Bit-Speicherzugriffsschlüssel, die beim Zugriff auf das Speicherkonto zur Authentifizierung verwendet werden. Einer dieser beiden Schlüssel muss angegeben werden, wenn Ihr Azure Stack Edge-Gerät auf den Anbieter des Cloudspeicherdiensts (in diesem Fall Azure) zugreift.
 
-Führen Sie die folgenden Schritte aus, um den Zugriffsschlüssel für das Speicherkonto zu synchronisieren:
+Ein Azure-Administrator kann den Zugriffsschlüssel neu generieren oder ändern, indem er direkt (über den Azure Storage-Dienst) auf das Speicherkonto zugreift. Diese Änderung wird dem Azure Stack Edge-Dienst und dem Gerät nicht automatisch angezeigt.
+ 
+Um Azure Stack Edge über die Änderung zu informieren, müssen Sie erst auf den Azure Stack Edge-Dienst und dann auf das Speicherkonto zugreifen und anschließend den Zugriffsschlüssel synchronisieren. Der Dienst ruft dann den neuesten Schlüssel ab, verschlüsselt ihn und sendet ihn an das Gerät. Wenn das Gerät den neuen Schlüssel erhält, kann es weiterhin Daten an das Azure Storage-Konto übertragen. 
+ 
+Um dem Gerät die neuen Schlüssel bereitzustellen, wechseln Sie zum Azure-Portal, und synchronisieren Sie die Speicherzugriffsschlüssel. Führen Sie die folgenden Schritte aus: 
 
 1. Wählen Sie in Ihrer Ressource das Speicherkonto aus, das Sie verwalten möchten. Wählen Sie auf der oberen Befehlsleiste **Speicherschlüssel synchronisieren** aus.
 

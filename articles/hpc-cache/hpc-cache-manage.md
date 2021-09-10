@@ -4,14 +4,14 @@ description: Verwalten und Aktualisieren von Azure HPC Cache im Azure-Portal ode
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862595"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586975"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -33,6 +33,9 @@ Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Port
 * [**Löschen:**](#delete-the-cache) Der Cache wird dauerhaft zerstört.
 
 Nachfolgend finden Sie weitere Informationen zu diesen Optionen.
+
+> [!TIP]
+> Sie können auch einzelne Speicherziele verwalten. Weitere Informationen finden Sie unter [Verwalten von Speicherzielen](manage-storage-targets.md).
 
 Klicken Sie auf das Bild unten, um ein [Video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) abzuspielen, in dem Cacheverwaltungsaufgaben veranschaulicht werden.
 
@@ -247,14 +250,6 @@ $
 
 ---
 
-## <a name="cache-metrics-and-monitoring"></a>Metriken und Überwachung des Caches
-
-Auf der Übersichtsseite werden Diagramme für einige grundlegende Cachestatistiken angezeigt: Cachedurchsatz, Vorgänge pro Sekunde und Latenz.
-
-![Screenshot: drei Liniendiagramme mit den oben genannten Statistiken für einen Beispielcache](media/hpc-cache-overview-stats.png)
-
-Diese Diagramme sind Bestandteil der integrierten Überwachungs- und Analysetools von Azure. Weitere Tools und Warnungen sind auf den Seiten unter der Überschrift **Überwachung** auf der Seitenleiste des Portals verfügbar. Weitere Informationen finden Sie im Abschnitt zum Azure-Portal in der [Dokumentation zur Überwachung mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
-
 ## <a name="view-warnings"></a>Warnungen anzeigen
 
 Wenn der Cache in einen fehlerhaften Zustand wechselt, überprüfen Sie die Seite **Warnungen**. Auf dieser Seite werden Benachrichtigungen der Cachesoftware angezeigt, die Ihnen möglicherweise helfen, den Zustand der Software zu verstehen.
@@ -271,5 +266,5 @@ Folgende Warnungen können bspw. angezeigt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Azure-Metriken und Statistiktools](../azure-monitor/index.yml)
+* [Überwachen des Cache mit Statistiken](metrics.md)
 * Hilfe zu [Azure HPC Cache](hpc-cache-support-ticket.md)

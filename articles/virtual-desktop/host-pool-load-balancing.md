@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 54cbd03283814fd21a95dfe7578173f3481c4cd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6b5316f25725f90be63fb5fbbc135285ad5bce3e
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757605"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204122"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Lastenausgleichsmethoden für Hostpools
 
@@ -23,7 +23,7 @@ Azure Virtual Desktop unterstützt zwei Lastenausgleichsmethoden. Bei beiden Met
 Unter Azure Virtual Desktop sind folgende Lastausgleichsmethoden verfügbar:
 
 - Beim Lastenausgleich vom Typ „Breiter Ansatz“ können Sie Benutzersitzungen gleichmäßig auf die Sitzungshosts in einem Hostpool verteilen.
-- Beim Lastenausgleich vom Typ „Tiefer Ansatz“ können Sie einen Sitzungshost mit Benutzersitzungen in einem Hostpool füllen. Nachdem für die erste Sitzung der Schwellenwert des Sitzungslimits erreicht wurde, leitet der Lastenausgleich alle neuen Benutzerverbindungen an den nächsten Sitzungshost im Hostpool weiter, bis dessen Limit erreicht ist, usw.
+- Beim Lastenausgleich vom Typ „Tiefer Ansatz“ können Sie einen Sitzungshost mit Benutzersitzungen in einem Hostpool füllen. Sobald der erste Sitzungshost der Schwellenwert des Sitzungslimits erreicht, leitet der Lastenausgleich alle neuen Benutzerverbindungen an den nächsten Sitzungshost im Hostpool weiter, bis dessen Limit erreicht ist, usw.
 
 Für jeden Hostpool kann nur jeweils eine Art von Lastenausgleich konfiguriert werden. Unabhängig davon, in welchem Hostpool sie sich befinden, weisen beide Lastenausgleichsmethoden aber das gleiche folgende Verhalten auf:
 

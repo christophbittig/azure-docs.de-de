@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: storage
 author: fauhse
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 60702c23c32f99d19fbe4741ba3ab170a60dcae2
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 52e1accfb5f5bb762cc2833a19e1caa3daa4a03d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109645025"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462189"
 ---
 ```console
-Robocopy /MT:32 /R:5 /W:5 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
 ```
 
 | Schalter                | Bedeutung |
 |-----------------------|---------|
-| `/MT:n`               | Hiermit kann Robocopy mit mehreren Threads ausgeführt werden. Der Standardwert für `n` ist 8. Das Maximum beträgt 128 Threads. Beginnen Sie mit einer hohen Threadanzahl für eine erste Ausführung. Eine hohe Threadanzahl hilft, die verfügbare Bandbreite zu sättigen. Nachfolgende `/MIR`-Läufe werden progressiv beeinflusst, wenn Sie Elemente über den Netzwerktransport verarbeiten. Stimmen Sie bei nachfolgenden Läufen den Threadanzahlwert auf die Prozessorkernanzahl und die Threadanzahl pro Kern ab. Überprüfen Sie, ob Kerne für andere Tasks reserviert werden müssen, über die ein Produktionsserver verfügen könnte. |
+| `/MT:n`               | Hiermit kann Robocopy mit mehreren Threads ausgeführt werden. Der Standardwert für `n` ist 8. Das Maximum beträgt 128 Threads. Beginnen Sie mit einer hohen Threadanzahl für eine erste Ausführung. Eine hohe Threadanzahl hilft, die verfügbare Bandbreite zu sättigen. Nachfolgende Ausführungen von `/MIR` werden zunehmend durch die verfügbare Computeleistung und nicht durch die verfügbare Netzwerkbandbreite beeinflusst. Stimmen Sie bei nachfolgenden Ausführungen den Wert für die Threadanzahl genauer auf die Prozessorkernanzahl und die Threadanzahl pro Kern ab. Überprüfen Sie, ob Kerne für andere Tasks reserviert werden müssen, über die ein Produktionsserver verfügen könnte. |
 | `/R:n`                | Dies ist die maximale Anzahl der Wiederholungsversuche für eine Datei, bei der beim ersten Kopierversuch ein Fehler auftritt. Sie können die Geschwindigkeit einer Robocopy-Ausführung verbessern, indem Sie eine maximale Anzahl (`n`) von Wiederholungsversuchen angeben, bevor bei der Datei während der Ausführung dauerhaft ein Kopierfehler auftritt. Diese Option funktioniert am besten, wenn bereits klar ist, dass es weitere Robocopy-Ausführungen gibt. Falls die Datei in der aktuellen Ausführung nicht kopiert werden kann, wird dies beim nächsten Robocopy-Auftrag noch mal versucht. Wenn Sie diesen Ansatz verwenden, können Dateien schließlich erfolgreich kopiert werden, bei denen durch die Nutzung oder aufgrund von Timeoutproblemen zuvor ein Fehler aufgetreten ist. |
 | `/W:n`                | Hiermit wird die Zeit angegeben, die Robocopy vor dem Versuch wartet, eine Datei zu kopieren, die bei einem vorherigen Versuch nicht erfolgreich kopiert wurde. `n` entspricht der Anzahl der zwischen Wiederholungsversuchen zu wartenden Sekunden. `/W:n` wird häufig in Verbindung mit `/R:n` verwendet. |
 | `/B`                  | Führt Robocopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht Robocopy das Verschieben von Dateien, für die der aktuelle Benutzer keine Berechtigungen hat. |
@@ -33,7 +33,7 @@ Robocopy /MT:32 /R:5 /W:5 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNIL
 | `/NFL`                | Gibt an, dass Dateinamen nicht protokolliert werden. Hiermit wird die Kopierleistung verbessert. |
 | `/NDL`                | Gibt an, dass Verzeichnisnamen nicht protokolliert werden. Hiermit wird die Kopierleistung verbessert. |
 | `/UNILOG:<file name>` | Hiermit wird der Status als Unicode in die Protokolldatei geschrieben. (Überschreibt das vorhandene Protokoll.) |
+| `/L`                  | **Nur für einen Testlauf** </br> Dateien sollen nur aufgelistet werden. Sie werden nicht kopiert, nicht gelöscht und nicht mit einem Zeitstempel versehen. Wird häufig mit `/TEE` für die Konsolenausgabe verwendet. Flags aus dem Beispielskript, z. B. `/NP`, `/NFL` und `/NDL`, müssen möglicherweise entfernt werden, um ordnungsgemäß dokumentierte Testergebnisse zu erzielen. |
 | `/LFSM`               | **Nur für Ziele mit mehrstufigem Speicher vorgesehen** </br>Hiermit wird angegeben, dass Robocopy im Modus „Nicht genügend freier Speicherplatz“ ausgeführt wird. Diese Option ist nur für Ziele mit mehrstufigem Speicher nützlich, bei denen möglicherweise der lokale Speicherplatz aufgebraucht ist, bevor die Robocopy-Ausführung fertiggestellt wird. Sie wurde spezifisch für die Verwendung mit einem Ziel hinzugefügt, für das das Cloudtiering der Azure-Dateisynchronisierung aktiviert ist. Die Option kann unabhängig von der Azure-Dateisynchronisierung verwendet werden. In diesem Modus pausiert die Robocopy-Ausführung immer dann, wenn ein Dateikopiervorgang dazu führen würde, dass der freie Speicherplatz des Zielvolumes einen bestimmten Schwellenwert unterschreitet. Dieser Wert kann mit dem `/LFSM:n`-Formular des Flags festgelegt werden. Der Parameter `n` wird im Dualsystem festgelegt: `nKB`, `nMB` oder `nGB`. Wenn `/LFSM` ohne einen expliziten Schwellenwert festgelegt wird, wird der Schwellenwert auf 10 % der Größe des Zielvolumes festgelegt. Der Modus für nicht genügend freien Speicherplatz ist nicht mit `/MT`, `/EFSRAW`, `/B` oder `/ZB` kompatibel. |
 | `/Z`                  | **Umsichtige Verwendung** </br>Hiermit werden Dateien im Neustartmodus kopiert. Diese Option wird nur in einer instabilen Netzwerkumgebung empfohlen. Sie reduziert die Kopierleistung aufgrund der zusätzlichen Protokollierung erheblich. |
 | `/ZB`                 | **Umsichtige Verwendung** </br>Mit dieser Option wird der Neustartmodus verwendet. Wenn der Zugriff verweigert wird, wird der Sicherungsmodus verwendet. Diese Option reduziert die Kopierleistung aufgrund der Prüfpunkte erheblich. |
-   

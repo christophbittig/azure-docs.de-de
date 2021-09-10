@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70d2401545c49bfb8bb1870f4881e51b7134ae59
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507482"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450893"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
 
@@ -207,12 +207,12 @@ Während der ersten Anforderung stellt der Anwendungsserver eine Verbindung mit 
 
 Beim Bereitstellen Ihrer Oracle-Workloads in Azure übernimmt Microsoft das gesamte Patchen auf der Ebene des Hostbetriebssystems. Kunden werden im Voraus über alle geplanten Wartungsarbeiten auf Betriebssystemebene informiert, damit sich der Kunde darauf einstellen kann. Zwei Server, die in zwei unterschiedlichen Verfügbarkeitszonen angeordnet sind, werden niemals gleichzeitig gepatcht. Weitere Informationen zur Wartung und zum Patchen von virtuellen Computern finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../availability.md). 
 
-Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
+Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/devops/deliver/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
 
 ## <a name="architecture-and-design-considerations"></a>Architektur- und Entwurfsaspekte
 
 - Erwägen Sie den Einsatz einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/constrained-vcpu.md) für Ihre Oracle Database-VM, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Verwenden Sie mehrere Premium-Datenträger bzw. Ultra Disks (Managed Disks), um eine gute Leistung und Verfügbarkeit zu erzielen.
-- Bei Verwendung von verwalteten Datenträgern kann es vorkommen, dass sich der Name eines Datenträgers bzw. Geräts ändert. Wir empfehlen Ihnen, anstelle des Namens die Geräte-UUID zu verwenden, um sicherzustellen, dass Ihre Bereitstellungen über Neustartvorgänge hinweg beibehalten werden. Weitere Informationen finden Sie [hier](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
+- Bei Verwendung von verwalteten Datenträgern kann es vorkommen, dass sich der Name eines Datenträgers bzw. Geräts ändert. Wir empfehlen Ihnen, anstelle des Namens die Geräte-UUID zu verwenden, um sicherzustellen, dass Ihre Bereitstellungen über Neustartvorgänge hinweg beibehalten werden. Weitere Informationen finden Sie unter [Konfigurieren von Software-RAID auf einem virtuellen Linux-Computer](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab).
 - Verwenden Sie Verfügbarkeitszonen, um für eine Region Hochverfügbarkeit zu erzielen.
 - Verwenden Sie ggf. Ultra Disks (falls verfügbar) oder Premium-Datenträger für Ihre Oracle-Datenbank.
 - Erwägen Sie, mit Oracle Data Guard eine Oracle-Standbydatenbank in einer anderen Azure-Region einzurichten.

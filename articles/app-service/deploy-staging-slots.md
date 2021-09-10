@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 792801c568255b471487c14b6a812942298ad0d4
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 925c468ff744df8b543618e4282ec9b6a9dda78a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338887"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -64,6 +64,8 @@ Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, u
 
 Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Sie können beispielsweise [Git verwenden, um etwas in diesem Slot zu veröffentlichen](./deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen.
 
+Die URL des Slots weist folgendes Format auf: `http://sitename-slotname.azurewebsites.net`. Um die URL-Länge innerhalb der erforderlichen DNS-Grenzwerte zu halten, wird der Websitename bei 40 Zeichen und der Slotname bei 19 Zeichen abgeschnitten. Zusätzlich werden weitere 4 Zufallszeichen angefügt, um sicherzustellen, dass der resultierende Domänenname eindeutig ist. 
+
 <a name="AboutConfiguration"></a>
 
 ## <a name="what-happens-during-a-swap"></a>Was geschieht bei einem Austausch?
@@ -94,6 +96,9 @@ Wenn Sie zwei Slots austauschen (in der Regel, um aus einem Stagingslot einen Pr
 1. Nachdem der Quellslot nun die App vor dem Austausch enthält, die sich zuvor im Zielslot befand, führt App Service den gleichen Vorgang erneut aus (also Anwenden aller Einstellungen und Neustarten der Instanzen).
 
 In jeder Phase des Austauschvorgangs finden sämtliche Vorgänge zur Initialisierung der ausgetauschten Apps im Quellslot statt. Der Zielslot bleibt während der gesamten Vorbereitung des Quellslots online – unabhängig davon, ob der Austausch erfolgreich ist. Wenn Sie einen Stagingslot und den Produktionsslot austauschen möchten, muss der Produktionsslot immer der Zielslot sein. So ist sichergestellt, dass Ihre Produktions-App durch den Austauschvorgang nicht beeinträchtigt wird.
+
+> [!NOTE]
+> Die Instanzen in Ihren früheren Produktionsinstanzen (diejenigen, die nach diesem Austauschvorgang in das Staging verlagert wurden) werden im letzten Schritt des Austauschprozesses schnell neu gestartet. Falls Ihre Anwendung zeitintensive Vorgänge umfasst, werden diese beim Neustart der Worker abgebrochen. Dies gilt auch für Funktions-Apps. Daher sollte Ihr Anwendungscode Fehlertoleranz vorsehen. 
 
 ### <a name="which-settings-are-swapped"></a>Welche Einstellungen werden ausgetauscht?
 
@@ -173,7 +178,7 @@ Sollten nach einem Slotaustausch Fehler im Zielslot (etwa im Produktionsslot) au
 ## <a name="configure-auto-swap"></a>Konfigurieren des automatischen Austauschs
 
 > [!NOTE]
-> Automatisches Austauschen wird in Web-Apps unter Linux nicht unterstützt.
+> Der automatische Austausch wird in Web-Apps unter Linux und in der Web-App für Container nicht unterstützt.
 
 Das Feature „Automatisch tauschen“ ermöglicht die Optimierung von Azure DevOps-Szenarien, bei denen Ihre App kontinuierlich ohne Kaltstarts und ohne Downtime für App-Kunden bereitgestellt werden soll. Wenn automatisches Austauschen für die Überprüfung eines Slots in die Produktion aktiviert ist, gilt Folgendes: Sobald Sie Ihre Codeänderungen an diesen Slot pushen, [überführt App Service die App automatisch in die Produktion](#swap-operation-steps), nachdem sie im Quellslot vorbereitet wurde.
 

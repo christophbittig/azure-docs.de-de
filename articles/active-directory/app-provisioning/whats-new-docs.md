@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsbereitstellung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsbereitstellung
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,47 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 77f09b6285a5fcb3539c377b65d333141384c81e
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 23d3c074ee1a4cb07b4770b27ee1ead145bae28a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409035"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355130"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory-Anwendungsbereitstellung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsbereitstellung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Bereitstellungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](functions-for-customizing-application-data.md)
+- [Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs](application-provisioning-configuration-api.md)
+- [Planen einer automatischen Benutzerbereitstellung in Azure Active Directory](plan-auto-user-provisioning.md)
+- [Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung](plan-cloud-hr-provision.md)
+- [Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Directory](known-issues.md)
+- [Tutorial: Generischer SQL-Connector mit Azure AD-ECMA-Connectorhost](tutorial-ecma-sql-connector.md)
+- [Worum handelt es sich bei der App-Bereitstellung in Azure Active Directory?](user-provisioning.md)
+- [Problembehandlung für den ECMA-Connectorhost](on-premises-ecma-troubleshoot.md)
+- [Exportieren eines Microsoft Identity Manager-Connectors für die Verwendung mit dem Azure AD-ECMA-Connectorhost](on-premises-migrate-microsoft-identity-manager.md)
+- [Lokale Azure AD-Anwendungsbereitstellung in SCIM-fähigen Apps](on-premises-scim-provisioning.md)
+- [Konfigurieren eines generischen SQL-Connectors für den Azure AD-ECMA-Connectorhost](on-premises-sql-connector-configure.md)
+
+
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs](application-provisioning-configuration-api.md)
+- [Verstehen der Funktionsweise des Ausdrucks-Generators bei der Anwendungsbereitstellung](expression-builder.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Funktionsweise der Anwendungsbereitstellung in Azure Active Directory](how-provisioning-works.md)
+- [Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung](plan-cloud-hr-provision.md)
+- [Integration der Azure Active Directory-Bereitstellung mit Workday](workday-integration-reference.md)
+
 
 ## <a name="may-2021"></a>Mai 2021
 

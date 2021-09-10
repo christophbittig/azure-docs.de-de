@@ -1,7 +1,7 @@
 ---
 title: Was ist die multivariate Anomalieerkennungs-API?
 titleSuffix: Azure Cognitive Services
-description: Übersicht der öffentlichen Vorschau der neuen multivariaten Anomalieerkennungs-APIs.
+description: Übersicht über die Vorschau der neuen APIs zur Erkennung von multivariaten Anomalien.
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: Anomalieerkennung, maschinelles Lernen, Algorithmen
-ms.openlocfilehash: e913cc4738b0f58a411e80f3e2b602a072f28665
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2e74edb0f716862925bb19140a4425366ebab894
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005985"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587659"
 ---
-# <a name="multivariate-time-series-anomaly-detection-public-preview"></a>Multivariate Zeitreihen-Anomalieerkennung (öffentliche Vorschau)
+# <a name="multivariate-time-series-anomaly-detection-preview"></a>Erkennung von multivariaten Zeitreihenanomalien (Vorschau)
 
 Die neuen **APIs für die multivariate Anomalieerkennung** erweitern die Möglichkeiten von Entwicklern durch die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und gegenseitige Wechselwirkungen zwischen bis zu 300 verschiedenen Signalen werden jetzt automatisch als Schlüsselfaktoren gewertet. Diese neue Funktion hilft Ihnen, Ihre komplexen Systeme wie Softwareanwendungen, Server, Fertigungssysteme, Raumfahrzeuge oder schlicht Ihr Unternehmen proaktiv vor Ausfällen zu schützen.
 
@@ -38,10 +38,9 @@ Machen Sie sich anhand [dieses Notebooks](https://github.com/Azure-Samples/Anoma
 
 Um das Notebook ausführen zu können, rufen Sie einen gültigen **Abonnementschlüssel** für die Anomalieerkennungs-API sowie einen **API-Endpunkt** ab. Fügen Sie im Notebook den gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur `subscription_key`-Variablen hinzu, und ändern Sie die `endpoint`-Variable in Ihren Endpunkt.
 
-
 ## <a name="region-support"></a>Unterstützung für Regionen
 
-Die öffentliche Vorschauversion der multivariaten Anomalieerkennung ist derzeit in sechs Regionen verfügbar: „USA, Westen 2“, „Europa, Westen“, „USA, Osten 2“, „USA, Süden-Mitte“, „USA, Osten“ und „Vereinigtes Königreich, Süden“.
+Die Vorschauversion der Erkennung von multivariaten Anomalien ist derzeit in zehn Azure-Regionen verfügbar: „Asien, Südosten“, „Australien, Osten“, „Kanada, Mitte“, „Europa, Norden“, „Europa, Westen“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „USA, Westen 2“ und „Vereinigtes Königreich, Süden“.
 
 ## <a name="algorithms"></a>Algorithmen
 
@@ -60,5 +59,6 @@ In den folgenden technischen Dokumenten finden Sie Informationen zu den verwende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Tutorial](./tutorials/learn-multivariate-anomaly-detection.md): Dieser Artikel ist ein umfassendes Tutorial zur Verwendung der APIs zur Erkennung von multivariaten Anomalien.
 - [Schnellstarts](./quickstarts/client-libraries-multivariate.md).
-- [Bewährte Methoden:](./concepts/best-practices-multivariate.md)In diesem Artikel werden empfohlene Muster für die Verwendung mit den multivariaten APIs beschrieben.
+- [Bewährte Methoden](./concepts/best-practices-multivariate.md): In diesem Artikel werden empfohlene Muster für die Verwendung mit den APIs zur Erkennung von multivariaten Anomalien beschrieben.

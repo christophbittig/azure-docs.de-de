@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c373e45c8607f10c36f40a23c776bd081bf13207
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789517"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343127"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -54,6 +54,7 @@ Mit *Azure CNI* empfängt jeder Pod eine IP-Adresse im IP-Subnetz und kann direk
 * Routingtabellen und benutzerdefinierte Routen sind für die Verwendung von kubenet erforderlich, wodurch die Vorgänge komplexer werden.
 * Direkte Pod-Adressierung wird aufgrund des kubenet-Designs für kubenet nicht unterstützt.
 * Im Gegensatz zu Azure CNI-Clustern können mehrere kubenet-Clustern Subnetze nicht gemeinsam verwenden.
+* Wenn Sie Ihr eigenes Subnetz bereitstellen, müssen Sie die Netzwerksicherheitsgruppen (NSG) verwalten, die diesem Subnetz zugeordnet sind. AKS ändert keine der NSGs, die diesem Subnetz zugeordnet sind. Sie müssen außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Adressen der Knoten und Pods zulassen.
 * Zu den **in kubenet nicht unterstützten** Funktionen gehören:
    * [Azure-Netzwerkrichtlinien](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), aber Calico-Netzwerkrichtlinien werden in kubenet unterstützt.
    * [Windows-Knotenpools](./windows-faq.md)
@@ -75,7 +76,7 @@ Die folgenden grundlegenden Berechnungen zeigen den Unterschied zwischen Netzwer
   - Diese Knotenanzahl könnte nur bis zu *240* Pods unterstützen (mit standardmäßig maximal 30 Pods pro Knoten mit *Azure CNI*).
 
 > [!NOTE]
-> Bei diesen Maximalwerten werden keine Upgrade- oder Skalierungsvorgänge berücksichtigt. In der Praxis können Sie die maximale Anzahl von Knoten, die der Subnetz-IP-Adressbereich unterstützt, nicht ausführen. Sie müssen einige IP-Adressen zur Verwendung während der Skalierungs- oder Upgradevorgänge verfügbar lassen.
+> Bei diesen Maximalwerten werden keine Upgrade- oder Skalierungsvorgänge berücksichtigt. In der Praxis können Sie die maximale Anzahl von Knoten, die der Subnetz-IP-Adressbereich unterstützt, nicht ausführen. Sie müssen dafür sorgen, dass einige IP-Adressen zur Verwendung während der Skalierungs- oder Upgradevorgänge verfügbar sind.
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Peering virtueller Netzwerke und ExpressRoute-Verbindungen
 

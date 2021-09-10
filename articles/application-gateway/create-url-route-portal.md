@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d42a62c6251456d11dff7b2276936db7df5259af
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708950"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222699"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Tutorial: Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -176,6 +176,9 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von 
 
 > [!NOTE]
 > Sie müssen keine benutzerdefinierte */* *-Pfadregel zum Verarbeiten von Standardfällen hinzufügen. Dies wird automatisch vom Standard-Back-End-Pool durchgeführt.
+
+> [!NOTE]
+> Platzhaltertrennzeichen **\*** werden nur am Ende der Regel berücksichtigt. Weitere Informationen und unterstützte Beispiele für pfadbasierte Regeln finden Sie unter [URL-Pfad-basiertes Routing: Übersicht](url-route-overview.md#pathpattern).
 
 ### <a name="review--create-tab"></a>Registerkarte „Überprüfen und erstellen“
 

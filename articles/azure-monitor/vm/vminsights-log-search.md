@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a210fbab93ebc3a7c47db4ef2e1d74183ba2bc7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046532"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539644"
 ---
 # <a name="how-to-query-logs-from-vm-insights"></a>Abfragen von Protokollen aus VM Insights
 
@@ -18,7 +18,7 @@ VM Insights erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Comput
 
 ## <a name="map-records"></a>Zuordnung von Datensätzen
 
-Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding für das Zuordnungsfeature von VM Insights generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und Prozess generiert. Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
+Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Hinzufügen eines Prozesses oder Computers zu VM Insights generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und Prozess generiert. Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API (Azure Resource Manager) zugeordnet. Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet. Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. 
 
 Es gibt intern generierte Eigenschaften, mit denen Sie eindeutige Prozessen und Computer identifizieren können:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 25feef60e6b417d835f06be9641207ce56aa53a6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 5f70febb77d61e9d797c618faa82c8275f37bfef
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536436"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431382"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Planen einer Lösungsvorlage für ein Azure-Anwendungsangebot
 
@@ -26,7 +26,7 @@ Für den Plantyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage 
 | Requirements (Anforderungen) | Details |
 | ------------ | ------------- |
 | Abrechnung und Messung | Pläne für Lösungsvorlagen sind keine Transaktionsangebote. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Microsoft-Marketplace abgerechnet werden. Die über die ARM-Vorlage der Lösung bereitgestellten Ressourcen werden im Azure-Abonnement des Kunden eingerichtet. Bei virtuellen Computern mit nutzungsbasierter Bezahlung erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei der Abrechnung nach dem Modell „Bring Your Own License“ (BYOL) rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen. |
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |
 | Zuordnen der Nutzung durch Kunden | Die Zuordnung der Nutzung durch Kunden muss für alle Lösungsvorlagen aktiviert werden, die im Azure Marketplace veröffentlicht werden. Weitere Informationen zur Zuordnung der Nutzung durch Kunden sowie zu deren Aktivierung finden Sie unter [Zuordnung der Nutzung durch Kunden von Azure-Partnern](azure-partner-customer-usage-attribution.md). |
 | Verwenden von verwalteten Datenträgern | [Verwaltete Datenträger](../virtual-machines/managed-disks-overview.md) sind die Standardoption für persistente Datenträger von Infrastructure-as-a-Service-VMs (IaaS-VMs) in Azure. In Lösungsvorlagen müssen Sie verwaltete Datenträger verwenden.<ul><li>Wenn Sie Ihre Lösungsvorlagen aktualisieren möchten, folgen Sie den Anweisungen unter [Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen](../virtual-machines/using-managed-disks-template-deployments.md), und verwenden Sie die bereitgestellten [Beispiele](https://github.com/Azure/azure-quickstart-templates).</li><li>Wenn Sie die VHD als Image im Azure Marketplace veröffentlichen möchten, importieren Sie die zugrunde liegende VHD der verwalteten Datenträger in ein Speicherkonto. Verwenden Sie dazu entweder [Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) oder die [Azure-Befehlszeilenschnittstelle](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd).</ul> |
 | Bereitstellungspaket | Sie benötigen ein Bereitstellungspaket, mit dem Kunden Ihren Plan bereitstellen können. Wenn Sie mehrere Pläne erstellen, die dieselbe technische Konfiguration erfordern, können Sie auch dasselbe Planpaket verwenden. Weitere Details finden Sie im nächsten Abschnitt: „Bereitstellungspaket“. |
@@ -38,7 +38,7 @@ Das Bereitstellungspaket enthält alle für diesen Plan erforderlichen Vorlagend
 
 Alle Azure-Anwendungen müssen diese beiden Dateien im Stammordner eines ZIP-Archivs enthalten:
 
-- Eine Resource Manager-Vorlagendatei mit dem Namen [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template). In dieser Vorlage werden die Ressourcen definiert, die im Azure-Abonnement des Kunden bereitgestellt werden sollen. Beispiele für Resource Manager-Vorlagen finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) oder im entsprechenden Repository [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) (Azure Resource Manager-Schnellstartvorlagen).
+- Eine Resource Manager-Vorlagendatei mit dem Namen [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template). In dieser Vorlage werden die Ressourcen definiert, die im Azure-Abonnement des Kunden bereitgestellt werden sollen. Beispiele für Resource Manager-Vorlagen finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) oder im entsprechenden Repository [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) (Azure Resource Manager-Schnellstartvorlagen).
 - Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md). Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
 
 Unterstützte maximale Dateigrößen:

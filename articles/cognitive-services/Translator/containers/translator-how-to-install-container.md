@@ -12,16 +12,16 @@ ms.date: 05/25/2021
 ms.author: lajanuar
 recommendations: false
 keywords: Lokal, Docker, Container, Identifizieren
-ms.openlocfilehash: 4cbc6e65eb72050726a0da5969aab07bf06358f2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 680f1f6f1bfddc5bf525ae06b61bcf9098dc850f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355748"
 ---
 # <a name="install-and-run-translator-containers-preview"></a>Installieren und Ausführen von Containern für die Textübersetzung (Vorschau)
 
-  Mit Containern können Sie einige Features des Textübersetzungsdiensts in Ihrer eigenen Umgebung ausführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Textübersetzung herunterladen, installieren und ausführen.
+  Mithilfe von Containern können Sie verschiedene Features des Textübersetzungsdiensts in Ihrer eigenen Umgebung ausführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Textübersetzung herunterladen, installieren und ausführen.
 
 Mit Containern für die Textübersetzung können Sie eine Anwendungsarchitektur für die Textübersetzung erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann.
 
@@ -36,7 +36,7 @@ Mit Containern für die Textübersetzung können Sie eine Anwendungsarchitektur 
 
 Sie benötigen ein aktives [**Azure-Konto**](https://azure.microsoft.com/free/cognitive-services/), um zu beginnen.  Falls Sie noch kein Konto haben, können Sie ein [**kostenloses Konto erstellen**](https://azure.microsoft.com/free/).
 
-Außerdem benötigen Sie Folgendes, um Container für die Textübersetzung verwenden zu können:
+Außerdem benötigen Sie Folgendes:
 
 | Erforderlich | Zweck |
 |--|--|
@@ -165,7 +165,7 @@ Es gibt mehrere Möglichkeiten zu überprüfen, ob ein Container aktiv ist:
 
 #### <a name="english-leftrightarrow-german"></a>Englisch &leftrightarrow; Deutsch
 
-Navigieren Sie zur Swagger-Seite: <http://localhost:5000/swagger/index.html>.
+Navigieren Sie zur Swagger-Seite: `<http://localhost:5000/swagger/index.html>`.
 
 1. Wählen Sie **POST /translate** aus.
 1. Klicken Sie auf **Try it out** (Ausprobieren).

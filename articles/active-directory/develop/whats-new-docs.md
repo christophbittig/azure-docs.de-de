@@ -5,22 +5,59 @@ description: Neue und aktualisierte Dokumentation für die Microsoft Identity Pl
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 04/30/2021
+ms.date: 07/01/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 7fff1380697f1179207b470e803bf6994e32e1e2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: has-adal-ref
+ms.openlocfilehash: 952126148b9c115803d9a535da287586de771861
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782371"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428837"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Bewährte Methoden für die Sicherheit bei der Azure AD-Anwendungsregistrierung](security-best-practices-for-app-registration.md)
+- [Rollenbasierte Zugriffssteuerung für Anwendungsentwickler](custom-rbac-for-developers.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Migrieren einer JavaScript-App from ADAL.js zu MSAL.js](msal-compare-msal-js-and-adal-js.md)
+- [Migrieren einer Node.js-Anwendung von ADAL zu MSAL](msal-node-migration.md)
+- [Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET](msal-net-migration-confidential-client.md)
+- [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md)
+- [Geschützte Web-API: Überprüfen von Bereichen und App-Rollen](scenario-protected-web-api-verification-scope-app-roles.md)
+- [Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App](quickstart-v2-aspnet-core-webapp.md)
+
+
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Best Practices für den Zugriff mit den geringsten Berechtigungen für Anwendungen](secure-least-privileged-access.md)
+- [Unterschiede zwischen ADAL.NET- und MSAL.NET-Apps](msal-net-differences-adal-net.md)
+- [How to: Get a complete list of apps using ADAL in your tenant](howto-get-list-of-all-active-directory-auth-library-apps.md) (Gewusst wie: Abrufen einer vollständigen Liste von Apps mithilfe von ADAL in Ihrem Mandanten)
+- [Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET](msal-net-migration-confidential-client.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md)
+- [Web-App, die Web-APIs aufruft: Codekonfiguration](scenario-web-app-call-api-app-configuration.md)
+- [Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten](active-directory-claims-mapping.md)
+- [Codebeispiele für die Microsoft Identity Platform](sample-v2-code.md)
+- [Migrieren von Anwendungen zu MSAL.NET oder Microsoft.Identity.Web](msal-net-migration.md)
+- [Serialisierung des Tokencaches in MSAL.NET](msal-net-token-cache-serialization.md)
+- [Neuerungen bei der Authentifizierung](reference-breaking-changes.md)
 
 ## <a name="may-2021"></a>Mai 2021
 
@@ -43,53 +80,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
 - [Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API](quickstart-v2-dotnet-native-aspnet.md)
 - [Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung](tutorial-v2-android.md)
-
-## <a name="april-2021"></a>April 2021
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Richtlinientyp einer Anspruchszuordnung](reference-claims-mapping-policy-type.md)
-- [Migrieren einer Node.js-Anwendung von ADAL zu MSAL](msal-node-migration.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)](active-directory-configurable-token-lifetimes.md)
-- [Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)](configure-token-lifetimes.md)
-- [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md)
-- [Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth 2.0](v2-oauth2-on-behalf-of-flow.md)
-- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows](quickstart-v2-nodejs-webapp-msal.md)
-- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung](quickstart-v2-angular.md)
-- [Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API](scenario-spa-acquire-token.md)
-- [Single-Page-Webanwendung: Codekonfiguration](scenario-spa-app-configuration.md)
-- [Single-Page-Webanwendung: An- und Abmeldung](scenario-spa-sign-in.md)
-- [Verwenden der MSAL in einer nationalen Cloudumgebung](msal-national-cloud.md)
-- [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](application-consent-experience.md)
-
-## <a name="march-2021"></a>März 2021
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Wiederherstellen oder Entfernen einer kürzlich gelöschten Anwendung mit der Microsoft Identity Platform](./howto-restore-app.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Administratoreinwilligung auf Microsoft Identity Platform](v2-admin-consent.md)
-- [Konfigurationsanforderungen und Tipps zur Problembehandlung für Xamarin Android mit MSAL.NET](msal-net-xamarin-android-considerations.md)
-- [Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens](scenario-daemon-acquire-token.md)
-- [Daemon-App, die Web-APIs aufruft – Codekonfiguration](scenario-daemon-app-configuration.md)
-- [Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App](scenario-daemon-call-api.md)
-- [Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)](scenario-daemon-production.md)
-- [Desktop-App, die Web-APIs aufruft: Abrufen eines Token](scenario-desktop-acquire-token.md)
-- [Desktop-App, die Web-APIs aufruft: Codekonfiguration](scenario-desktop-app-configuration.md)
-- [Desktop-App, die Web-APIs aufruft: Aufrufen einer Web-API](scenario-desktop-call-api.md)
-- [Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)](active-directory-claims-mapping.md)
-- [Protokollierung in MSAL für Python](msal-logging-python.md)
-- [Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)](apple-sso-plugin.md)
-- [Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)
-- [Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App](quickstart-v2-aspnet-core-webapp.md)
-- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App](quickstart-v2-netcore-daemon.md)
-- [Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform](quickstart-v2-aspnet-core-web-api.md)
-- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung](quickstart-v2-angular.md)
-- [Support- und Hilfeoptionen für Entwickler](developer-support-help-options.md)
-- [Web-App für Benutzeranmeldungen: Codekonfiguration](scenario-web-app-sign-user-app-configuration.md)
-- [Web-App für Benutzeranmeldungen: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/26/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a1771dd6f312129d418cac3ddac8ef2411e95c6
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 0ce866514aef703f3b79980d94fba156c83b10f5
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496132"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981464"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -92,7 +92,7 @@ Das Element **Endpoints** enthält das folgende Element:
 
 Das Element **Endpoint** enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein eindeutiger Bezeichner des Endpunkts|
 | UserJourneyReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md).  | 
@@ -152,10 +152,10 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 
 Das **SingleSignOn**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
-| KeepAliveInDays | Nein | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+| KeepAliveInDays | Nein | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Der Standardwert ist `0` (deaktiviert). Der Mindestwert ist `1` Tag. Der Höchstwert ist `90` Tage. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |EnforceIdTokenHintOnLogout| Nein|  Erzwingt, dass ein zuvor ausgestelltes ID-Token als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client an den Abmeldeendpunkt übergeben wird. Mögliche Werte: `false` (Standard) oder `true`. Weitere Informationen finden Sie unter [Webanmeldung mit OpenID Connect](openid-connect.md).  |
 
 
@@ -190,7 +190,7 @@ Das **ContentDefinitionParameters**-Element enthält das folgende Element:
 
 Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
@@ -200,7 +200,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 
 Das **JourneyFraming**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Aktiviert | Ja | Ermöglicht das Laden dieser Richtlinie innerhalb eines iFrame. Mögliche Werte: `false` (Standard) oder `true`. |
 | Quellen | Ja | Enthält die Domänen, die den iFrame laden. Weitere Informationen finden Sie unter [Laden von Azure B2C in einem iFrame](embedded-login.md). |
@@ -226,7 +226,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 

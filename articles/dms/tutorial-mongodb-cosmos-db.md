@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 05/19/2021
-ms.openlocfilehash: 937fcc60e8be144fce10748345b71cc05703c04f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 87f211976f74fef5ed2c0cef992d82099e141a29
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638521"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038169"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>Tutorial: Migration von MongoDB zur Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -232,6 +232,12 @@ Nachdem die Migration abgeschlossen ist, können Sie Ihr Azure Cosmos DB-Konto �
 ## <a name="post-migration-optimization"></a>Optimierung nach der Migration
 
 Nach der Migration der in einer MongoDB-Datenbank gespeicherten Daten zur Azure Cosmos DB-API für MongoDB können Sie eine Verbindung mit Azure Cosmos DB herstellen und die Daten verwalten. Sie können auch andere Optimierungsschritte nach der Migration ausführen. Hierzu zählen u. a. die Optimierung der Indizierungs Richtlinie, die Aktualisierung der Standard Konsistenz Ebene oder die Konfiguration der globalen Verteilung für Ihr Azure Cosmos DB Konto. Weitere Informationen finden Sie unter [Optimierung nach der Migration](../cosmos-db/mongodb-post-migration.md).
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../cosmos-db/convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94616891"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982310"
 ---
 # <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
@@ -29,13 +29,12 @@ Azure RBAC kann einer Custom Vision-Ressource zugewiesen werden. Wenn Sie Zugrif
    > [!NOTE]
    > Sie können die Azure RBAC auch für ganze Ressourcengruppen, Abonnements oder Verwaltungsgruppen einrichten. Dazu wählen Sie die Ebene im gewünschten Bereich aus und navigieren dann zum gewünschten Element. Sie klicken also z. B. auf **Ressourcengruppen** und navigieren dann zur gewünschten Ressourcengruppe.
 1. Klicken Sie im linken Navigationsbereich auf **Zugriffssteuerung (IAM)** .
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 1. Wählen Sie **Hinzufügen** -> **Rollenzuweisung hinzufügen**.
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, die Sie hinzufügen möchten.
-1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld „Auswählen“ einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichnern zu durchsuchen.
-1. Wählen Sie **Speichern** aus, um die Rolle zuzuweisen.
+1. Wählen Sie im nächsten Bildschirm auf der Registerkarte **Rolle** eine Rolle aus, die Sie hinzufügen möchten.
+1. Wählen Sie auf der Registerkarte **Mitglieder** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus.
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
 
-Innerhalb weniger Minuten wird dem Ziel die ausgewählte Rolle für den ausgewählten Bereich zugewiesen.
+Innerhalb weniger Minuten wird dem Ziel die ausgewählte Rolle für den ausgewählten Bereich zugewiesen. Hilfe zu diesen Schritten finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 ## <a name="custom-vision-role-types"></a>Rollentypen in Custom Vision
 

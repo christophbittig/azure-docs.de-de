@@ -10,14 +10,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: bc8cd7e3c52f6d9dd247c62590bef358afe06306
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 776daa5b97d5e6957956e1bccabb8c8b1fe5917f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339324"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694348"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
+
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>Herunterladen Ihrer Nutzungsdetails

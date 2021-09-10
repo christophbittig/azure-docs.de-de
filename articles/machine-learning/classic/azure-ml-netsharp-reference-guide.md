@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91fe9cee0178dc3f742ac59995212ae1ef3a7a38
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519251"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582958"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Leitfaden zur Net#-Spezifikationssprache für neuronale Netzwerke für Machine Learning Studio (Classic)
 
@@ -22,10 +22,10 @@ ms.locfileid: "100519251"
 
 Net# ist eine von Microsoft entwickelte Sprache, mit der komplexe Architekturen neuronaler Netze wie Deep Neural Networks oder Faltungen beliebiger Dimensionen definiert werden. Sie können komplexe Strukturen verwenden, um das Lernen aus Bild-, Video- oder Audiodaten zu verbessern.
 
-Sie können eine Net#-Architekturspezifikation in den folgenden Kontexten verwenden:
-
-+ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio (klassisch): [Mehrklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funktionen neuronaler Netze in Microsoft ML Server: [NeuralNet](/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
+Sie können eine Net#-Architekturspezifikation in allen Modulen neuronaler Netze in Machine Learning Studio (Classic) verwenden: 
+* [Mehrklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/multiclass-neural-network)
+* [Zweiklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/two-class-neural-network)
+* [Regression mit neuronalen Netzwerken](/azure/machine-learning/studio-module-reference/neural-network-regression)
 
 
 In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, die zum Entwickeln eines benutzerdefinierten neuronalen Netzwerks mit Net# benötigt werden:
@@ -33,7 +33,6 @@ In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, 
 + Anforderungen neuronaler Netzwerke und Definieren der primären Komponenten
 + Syntax und Schlüsselwörter der Net#-Spezifikationssprache
 + Beispiele von mit Net# erstellten benutzerdefinierten neuronalen Netzwerken
-
 
 
 ## <a name="neural-network-basics"></a>Neuronale Netzwerke – Grundlagen
@@ -57,7 +56,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 
 ## <a name="supported-customizations"></a>Unterstützte Anpassungen
 
-Die Architektur der neuronalen Netzmodelle, die Sie in Azure Machine Learning Studio (klassisch) erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
+Die Architektur der neuronalen Netzmodelle, die Sie in Machine Learning Studio (Classic) erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
 
 + verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 + angeben, wie Schichten miteinander verbunden werden sollen;
@@ -293,7 +292,7 @@ from P1 response norm {
   }
 ```
 
-+ Die Quellschicht enthält fünf Zuordnungen, jede mit einer Dimension von 12x12, also insgesamt 1.440 Knoten.
++ Die Quellschicht enthält fünf Zuordnungen, jede mit einer Dimension von 12×12, also insgesamt 1440 Knoten.
 + Der Wert von **KernelShape** gibt an, dass es sich hierbei um eine Schicht mit zuordnungsinterner Normalisierung handelt, bei der die Umgebung ein 3x3-Rechteck ist.
 + Der Standardwert von **Padding** ist „False“, sodass die Zielschicht nur 10 Knoten in jeder Dimension hat. Um einen Knoten in die Zielschicht entsprechend jedem Knoten in der Quellschicht einzuschließen, fügen Sie Padding = [true, true, true] hinzu, und ändern Sie die Größe von RN1 in [5, 12, 12].
 
@@ -461,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Die Gesamtzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Da `Sharing[d]` nur für `d == 0` „False“ ist, beträgt die Kernelanzahl `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Danksagung
+## <a name="acknowledgments"></a>Danksagungen
 
-Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neuronale Netze in Azure Machine Learning Studio – Einführung in Net#](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net).
+Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neuronale Netze in Machine Learning Studio – Einführung in Net#](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net).

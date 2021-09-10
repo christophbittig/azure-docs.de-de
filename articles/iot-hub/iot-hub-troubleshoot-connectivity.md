@@ -15,22 +15,28 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 19094b6d2c10a77e5e99b698f2e7f5170677110b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 22c1658740af7ef7eccbeca02c6f98485ec11222
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061382"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378302"
 ---
-# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
+# <a name="monitor-diagnose-and-troubleshoot-azure-iot-hub-disconnects"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub 
 
 Verbindungsprobleme bei IoT-Geräten können schwierig zu behandeln sein, weil es viele mögliche Fehlerquellen gibt. Anwendungslogik, physische Netzwerke, Protokolle, Hardware, IoT Hub und andere Clouddienste können Probleme verursachen. Die Möglichkeit zum Erkennen und Ermitteln der Ursache eines Problems ist wichtig. Weil aber bei einer IoT-Lösung im großen Stil Tausende von Geräten betroffen sein könnten, ist es nicht praktikabel, einzelne Geräte manuell zu überprüfen. IoT Hub wird in zwei Azure-Dienste integriert, um Sie bei Folgendem zu unterstützen:
 
-* **Azure Monitor** Nutzen Sie die Überwachungsfunktionen, die IoT Hub über Azure Monitor bereitstellt, als Hilfe beim Erkennen, Diagnostizieren und Beheben dieser Probleme im großen Stil. Dies umfasst das Einrichten von Warnungen zum Auslösen von Benachrichtigungen und Aktionen, wenn Geräteverbindungen getrennt werden, sowie das Konfigurieren von Protokollen, mit denen Sie die Bedingungen ermitteln können, die zu solchen Trennungen geführt haben.
+* **Azure Monitor**: Azure Monitor ermöglicht es Ihnen, Telemetriedaten aus IoT Hub zu erfassen, zu analysieren und entsprechend zu handeln. Nutzen Sie als Hilfe beim Erkennen, Diagnostizieren und Beheben dieser Probleme im großen Stil die Überwachungsfunktionen, die IoT Hub über Azure Monitor bereitstellt. Dies umfasst das Einrichten von Warnungen zum Auslösen von Benachrichtigungen und Aktionen, wenn Geräteverbindungen getrennt werden, sowie das Konfigurieren von Protokollen, mit denen Sie die Bedingungen ermitteln können, die zu solchen Trennungen geführt haben.
 
-* **Azure Event Grid** Bei einer kritischen Infrastruktur und Verbindungstrennungen pro Gerät verwenden Sie Azure Event Grid zum Abonnieren der von IoT Hub ausgegebenen Ereignisse der Geräteverbindung und -trennung.
+* **Azure Event Grid** Bei einer kritischen Infrastruktur und Verbindungstrennungen pro Gerät verwenden Sie Azure Event Grid zum Abonnieren der von IoT Hub ausgegebenen Ereignisse der Geräteverbindung und -trennung. Mit Azure Event Grid können Sie jeden der folgenden Ereignishandler verwenden:
 
-Weil diese Funktionen in beiden Fällen auf das, was IoT Hub beobachten kann, begrenzt sind, empfehlen wir außerdem, dass Sie die bewährten Methoden für die Überwachung Ihrer Geräte und anderer Azure-Dienste befolgen.
+  - Azure-Funktionen
+  - Logic Apps
+  - Azure Automation
+  - WebHooks
+  - Queue Storage
+  - Hybridverbindungen
+  - Event Hubs
 
 ## <a name="event-grid-vs-azure-monitor"></a>Event Grid im Vergleich zu Azure Monitor
 
@@ -44,11 +50,9 @@ Berücksichtigen Sie Folgendes bei Ihrer Entscheidung, ob Sie für ein bestimmte
 
 * Einfaches Setup: Azure Monitor-Metrikwarnungen ermöglichen ein einfaches Setup, bei dem keine Integration in andere Dienste erforderlich ist, um Benachrichtigungen über E-Mail, SMS, Voicemail und andere Benachrichtigungen zu übermitteln.  Event Grid müssen Sie in andere Azure-Dienste integrieren, um Benachrichtigungen zu übermitteln. Beide Dienste können in andere Dienste integriert werden, um komplexere Aktionen auszulösen.
 
-Aufgrund seiner Funktionen mit geringer Wartezeit pro Gerät empfehlen wir für Produktionsumgebungen dringend, Event Grid zum Überwachen von Verbindungen zu verwenden. Diese Auswahl ist natürlich nicht exklusiv. Sie können sowohl Azure Monitor-Metrikwarnungen als auch Event Grid verwenden. Unabhängig von Ihrer Auswahl für die Nachverfolgung von Verbindungstrennungen werden Sie die Ursachen für unerwartete Gerätetrennungen wahrscheinlich mithilfe von Azure Monitor-Ressourcenprotokollen beheben. In den folgenden Abschnitten wird jede dieser Optionen ausführlicher erläutert.
+## <a name="event-grid-monitor-connect-and-disconnect-events"></a>Event Grid: Überwachen von Ereignissen der Herstellung und Trennung von Verbindungen
 
-## <a name="event-grid-monitor-device-connect-and-disconnect-events"></a>Event Grid: Überwachen von Ereignissen der Herstellung und Trennung von Geräteverbindungen
-
-Zur Überwachung von Ereignissen der Herstellung und Trennung von Geräteverbindungen in der Produktion empfiehlt es sich, die [Ereignisse **DeviceConnected** und **DeviceDisconnected**](iot-hub-event-grid.md#event-types) in Event Grid zu abonnieren, um Warnungen auszulösen und den Geräteverbindungsstatus zu überwachen. Event Grid bietet eine viel geringere Ereignislatenz als Azure Monitor, und Sie können die Überwachung pro Gerät statt für die Gesamtanzahl verbundener Geräte durchführen. Durch diese Faktoren wird Event Grid zur bevorzugten Methode für die Überwachung kritischer Geräte und einer kritischen Infrastruktur.
+Zur Überwachung von Ereignissen der Herstellung und Trennung von Geräteverbindungen in der Produktion empfiehlt es sich, die [Ereignisse **DeviceConnected** und **DeviceDisconnected**](iot-hub-event-grid.md#event-types) in Event Grid zu abonnieren, um Warnungen auszulösen und den Geräteverbindungsstatus zu überwachen. Event Grid bietet eine wesentlich geringere Ereignislatenz als Azure Monitor und ermöglicht die Überwachung auf Gerätebasis. Durch diese Faktoren wird Event Grid zur bevorzugten Methode für die Überwachung kritischer Geräte und einer kritischen Infrastruktur.
 
 Wenn Sie Warnungen zur Trennung von Geräteverbindungen mithilfe von Event Grid überwachen oder auslösen, müssen Sie die regelmäßigen Trennungen aufgrund von SAS-Tokenverlängerung auf Geräten herausfiltern, die die Azure IoT-SDKs verwenden. Weitere Informationen finden Sie unter [MQTT device disconnect behavior with Azure IoT SDKs](#mqtt-device-disconnect-behavior-with-azure-iot-sdks) (Verbindungstrennungsverhalten von MQTT-Geräten bei Azure IoT-SDKs).
 
@@ -72,7 +76,7 @@ Wir empfehlen, dass Sie eine Diagnoseeinstellung so früh wie möglich nach dem 
 
 Weitere Informationen zum Weiterleiten von Protokollen an ein Ziel finden Sie unter [Sammlung und Routing](monitor-iot-hub.md#collection-and-routing). Ausführliche Anleitungen zum Erstellen einer Diagnoseeinstellung finden Sie im [Tutorial „Verwenden von Metriken und Protokollen“](tutorial-use-metrics-and-diags.md).
 
-## <a name="azure-monitor-set-up-metric-alerts-for-device-disconnect-at-scale"></a>Azure Monitor: Einrichten von Metrikwarnungen im großen Stil bei einer Trennung der Geräteverbindung
+## <a name="azure-monitor-set-up-metric-alerts-for-device-disconnects"></a>Azure Monitor: Einrichten von Metrikwarnungen bei der Trennung von Geräteverbindungen
 
 Sie können Warnungen basierend auf den Plattformmetriken einrichten, die von IoT Hub ausgegeben werden. Mit Metrikwarnungen können Sie Personen benachrichtigen, dass eine relevante Bedingung aufgetreten ist, und außerdem Aktionen auslösen, die auf diese Bedingung automatisch reagieren können.
 
@@ -80,13 +84,13 @@ Die Metrik [*Verbundene Geräte (Vorschau)*](monitor-iot-hub-reference.md#device
 
 :::image type="content" source="media/iot-hub-troubleshoot-connectivity/configure-alert-logic.png" alt-text="Einstellungen für die Warnungslogik bei der Metrik „Verbundene Geräte“.":::
 
-Sie können Anomalien bei der Trennung von Geräteverbindungen mithilfe von Metrikwarnungsregeln im großen Stil überwachen. Das heißt, wenn eine große Anzahl von Geräten unerwartet getrennt wird. Wird ein solches Vorkommen erkannt, können Sie Protokolle als Hilfe bei der Behebung dieses Problems anzeigen. Zum Überwachen von Trennungen pro Gerät und Trennungen bei kritischen Geräten müssen Sie jedoch Event Grid verwenden. Event Grid bietet auch eine bessere Echtzeitdarstellung als Azure-Metriken.
+Sie können Anomalien bei der Trennung von Geräteverbindungen mithilfe von Metrikwarnungsregeln im großen Stil überwachen. Das bedeutet, dass Sie anhand von Warnungen herausfinden können, wenn bei einer erheblichen Anzahl von Geräten unerwartet die Verbindung getrennt wird. Wenn Sie dies erkennen, können Sie sich die Protokolle ansehen, um das Problem zu behandeln. Zum Überwachen von Trennungen pro Gerät und Trennungen bei kritischen Geräten nahezu in Echtzeit müssen Sie jedoch Event Grid verwenden.
 
 Weitere Informationen zu Warnungen bei IoT Hub finden Sie unter [Warnungen in Monitor IoT Hub](monitor-iot-hub.md#alerts). Eine exemplarische Vorgehensweise zum Erstellen von Warnungen in IoT Hub finden Sie im [Tutorial „Verwenden von Metriken und Protokollen“](tutorial-use-metrics-and-diags.md). Eine ausführlichere Übersicht über Warnungen finden Sie in der Azure Monitor-Dokumentation unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor: Verwenden von Protokollen zum Beheben von Verbindungsfehlern
 
-Wenn Sie Trennungen von Geräteverbindungen erkennen, – unabhängig davon, ob dies mit Azure Monitor-Metrikwarnungen oder mit Event Grid geschieht – können Sie die Ursache anhand von Protokollen beheben. In diesem Abschnitt wird beschrieben, wie Sie in Azure Monitor-Protokollen nach häufigen Problemen suchen. In den folgenden Schritten wird davon ausgegangen, dass Sie bereits eine [Diagnoseeinstellung](#azure-monitor-route-connection-events-to-logs) erstellt haben, um IoT Hub-Verbindungsprotokolle an einen Log Analytics Arbeitsbereich zu senden.
+Wenn Sie über Azure Monitor-Metrikwarnungen oder Event Grid Trennungen von Geräteverbindungen erkennen, können Sie die Ursache anhand von Protokollen beheben. In diesem Abschnitt wird beschrieben, wie Sie in Azure Monitor-Protokollen nach häufigen Problemen suchen. In den folgenden Schritten wird davon ausgegangen, dass Sie bereits eine [Diagnoseeinstellung](#azure-monitor-route-connection-events-to-logs) erstellt haben, um IoT Hub-Verbindungsprotokolle an einen Log Analytics Arbeitsbereich zu senden.
 
 Nachdem Sie eine Diagnoseeinstellung zum Weiterleiten von IoT Hub-Ressourcenprotokollen an Azure Monitor-Protokolle erstellt haben, führen Sie die folgenden Schritte aus, um die Protokolle im Azure-Portal anzuzeigen.
 
@@ -101,11 +105,11 @@ Nachdem Sie eine Diagnoseeinstellung zum Weiterleiten von IoT Hub-Ressourcenprot
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Wenn Ergebnisse vorhanden sind, suchen Sie nach `OperationName`, `ResultType` (Fehlercode) und `ResultDescription` (Fehlermeldung), um weitere Details zu dem Fehler anzuzeigen.
+1. Wenn Ergebnisse vorhanden sind, suchen Sie nach `OperationName`, `ResultType` (Fehlercode) und `ResultDescription` (Fehlermeldung), um weitere Details anzuzeigen.
 
    ![Beispiel für ein Fehlerprotokoll](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-Nachdem Sie den Fehler identifiziert haben, folgen Sie den Handbüchern zur Problemlösung, um Hilfe zu den häufigsten Fehlern zu erhalten:
+Die folgenden Leitfäden für die Problemlösung bieten Hilfestellung für die häufigsten Fehler:
 
 * [400027 ConnectionForcefullyClosedOnNewConnection](iot-hub-troubleshoot-error-400027-connectionforcefullyclosedonnewconnection.md)
 
@@ -127,10 +131,10 @@ Die Tokenlebensdauer bei allen SDKs beträgt standardmäßig 60 Minuten; in ein
 
 | SDK | Tokenlebensdauer | Tokenverlängerung | Verlängerungsverhalten |
 |-----|----------|---------------------|---------|
-| .NET | 60 Minuten, konfigurierbar | 85 % der Lebensdauer, konfigurierbar | Das SDK stellt die Verbindung her und trennt sie während der Tokenlebensdauer, zuzüglich einer Karenzzeit von 10 Minuten. Informationsereignisse und Fehler, die in Protokollen generiert werden. |
-| Java | 60 Minuten, konfigurierbar | 85 % der Lebensdauer, nicht konfigurierbar | Das SDK stellt die Verbindung her und trennt sie während der Tokenlebensdauer, zuzüglich einer Karenzzeit von 10 Minuten. Informationsereignisse und Fehler, die in Protokollen generiert werden. |
-| Node.js | 60 Minuten, konfigurierbar | konfigurierbar | Das SDK stellt die Verbindung her und trennt sie bei der Tokenverlängerung. In Protokollen werden nur Informationsereignisse generiert. |
-| Python | 60 Minuten, nicht konfigurierbar | -- | Das SDK stellt die Verbindung her und trennt sie während der Tokenlebensdauer. |
+| .NET | 60 Minuten, konfigurierbar | 85 % der Lebensdauer, konfigurierbar | Das SDK trennt die Verbindung und stellt sie während der Tokenlebensdauer, zuzüglich einer Karenzzeit von 10 Minuten, wieder her. Informationsereignisse und Fehler, die in Protokollen generiert werden. |
+| Java | 60 Minuten, konfigurierbar | 85 % der Lebensdauer, nicht konfigurierbar | Das SDK trennt die Verbindung und stellt sie während der Tokenlebensdauer, zuzüglich einer Karenzzeit von 10 Minuten, wieder her. Informationsereignisse und Fehler, die in Protokollen generiert werden. |
+| Node.js | 60 Minuten, konfigurierbar | konfigurierbar | Das SDK trennt die Verbindung und stellt sie bei Erneuerung des Tokens wieder her. In Protokollen werden nur Informationsereignisse generiert. |
+| Python | 60 Minuten, konfigurierbar | 120 Sekunden vor Ablauf | Das SDK trennt die Verbindung und stellt sie während der Tokenlebensdauer wieder her. |
 
 Die folgenden Screenshots zeigen das Tokenverlängerungsverhalten in Azure Monitor-Protokollen für verschiedene SDKs. Wie oben erwähnt wurden die Tokenlebensdauer und der Verlängerungsschwellenwert gegenüber ihren Standardeinstellungen geändert.
 
@@ -146,7 +150,7 @@ Die folgenden Screenshots zeigen das Tokenverlängerungsverhalten in Azure Monit
 
     :::image type="content" source="media/iot-hub-troubleshoot-connectivity/node-mqtt.png" alt-text="Fehlerverhalten bei der Tokenverlängerung über MQTT in Azure Monitor-Protokollen mit dem Node SDK.":::
 
-Mit der folgenden Abfrage wurden die Ergebnisse erfasst. Die Abfrage extrahiert den SDK-Namen und die Version aus der Eigenschaftensammlung. Weitere Informationen finden Sie unter [SDK-Version in IoT Hub-Protokollen](monitor-iot-hub.md#sdk-version-in-iot-hub-logs).
+Mit der folgenden Abfrage wurden die Ergebnisse erfasst. Die Abfrage extrahiert den Namen und die Version des SDKs aus dem Eigenschaftenbehälter. Weitere Informationen finden Sie unter [SDK-Version in IoT Hub-Protokollen](monitor-iot-hub.md#sdk-version-in-iot-hub-logs).
 
 ```kusto
 AzureDiagnostics
@@ -160,7 +164,7 @@ AzureDiagnostics
 
 Als Entwickler von IoT-Lösungen oder Operator müssen Sie dieses Verhalten beachten, um Ereignisse von Verbindungsherstellung/Verbindungstrennung und zugehörige Fehler in Protokollen zu interpretieren. Wenn Sie die Tokenlebensdauer oder das Verlängerungsverhalten für Geräte ändern möchten, überprüfen Sie, ob das Gerät eine Gerätezwillingseinstellung oder eine Gerätemethode implementiert, die dies ermöglicht.
 
-Wenn Sie Geräteverbindungen mit Event Hub überwachen, müssen Sie die regelmäßigen Trennungen infolge der SAS-Tokenverlängerung herausfiltern, indem beispielsweise keine Aktionen auf der Grundlage von Trennungen ausgelöst werden, solange auf das Ereignis der Verbindungstrennung innerhalb einer bestimmten Zeitspanne ein Ereignis der Verbindungsherstellung folgt.
+Wenn Sie Geräteverbindungen mit Event Hub überwachen, stellen Sie sicher, dass Sie eine Möglichkeit einbauen, die regelmäßigen Trennungen aufgrund einer Erneuerung des SAS-Tokens herauszufiltern. Lösen Sie beispielsweise keine Aktionen basierend auf Trennungen aus, sofern dem Trennungsereignis innerhalb eines bestimmten Zeitraums ein Verbindungsereignis folgt.
 
 > [!NOTE]
 > IoT Hub unterstützt nur eine aktive MQTT-Verbindung pro Gerät. Jede neue MQTT-Verbindung für die gleiche Geräte-ID bewirkt, dass IoT Hub die vorhandene Verbindung löscht.

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2021
-ms.openlocfilehash: ef8d50b0cc4463f59d8fcb96afda3ef4a5c96781
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1c07e96a82814e59c635a592313e461d06a6fcc3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123028388"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217465"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Konfigurieren eines privaten Endpunkts für einen Azure Machine Learning-Arbeitsbereich
 
@@ -43,6 +43,7 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 
 ## <a name="limitations"></a>Einschränkungen
 
+* Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit einem privaten Endpunkt ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
 * Wenn öffentlicher Zugriff für einen Arbeitsbereich aktiviert wird, der mit einem privaten Endpunkt abgesichert ist, und Sie Azure Machine Learning Studio über das öffentliche Internet verwenden, können einige Features wie der Designer beim Zugriff auf Ihre Daten fehlschlagen. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
 * Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Es wird empfohlen, zur Problemumgehung Microsoft Edge oder Google Chrome zu verwenden.
 * Einen privaten Endpunkt zu verwenden hat keine Auswirkungen auf die Azure-Steuerungsebene, d. h. auf Verwaltungsvorgänge wie das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt. Bei Vorgängen auf Datenebene, etwa bei der Verwendung von Azure Machine Learning Studio, APIs (einschließlich veröffentlichter Pipelines) oder des SDK, wird der private Endpunkt verwendet.

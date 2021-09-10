@@ -1,28 +1,26 @@
 ---
 title: Technische Details und Anforderungen für die Migration zu Azure Cloud Services (erweiterter Support)
 description: In diesem Artikel werden die technischen Details und Anforderungen für die Migration von Azure Cloud Services (klassisch) zu Azure Cloud Services (erweiterter Support) vorgestellt.
-author: tanmaygore
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
 ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: tagore
-ms.openlocfilehash: 4898c0ec17766d0bcbd89176194aec9dee7157ea
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+author: hirenshah1
+ms.author: hirshah
+ms.openlocfilehash: 55ce5305962562876a97dfd7677e6af5e1eb9e3a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293042"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347199"
 ---
 # <a name="technical-details-of-migrating-to-azure-cloud-services-extended-support"></a>Technische Details der Migration zu Azure Cloud Services (erweiterter Support)   
 
 In diesem Artikel werden die technischen Details des Migrationstools für Cloud Services (klassisch) erläutert. 
 
-> [!IMPORTANT]
-> Die Migration von Cloud Services (klassisch) zu Cloud Services (erweiterter Support) mithilfe des Migrationstools befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="details-about-feature--scenarios-supported-for-migration"></a>Details zu den unterstützten Features/Szenarien für die Migration 
+
 
 ### <a name="extensions-and-plugin-migration"></a>Migration von Erweiterung und Plug-Ins 
 - Alle aktivierten und unterstützten Erweiterungen werden migriert. 
@@ -63,6 +61,39 @@ In diesem Artikel werden die technischen Details des Migrationstools für Cloud 
 - Im Rahmen der Migration erstellt Azure automatisch eine neue Key Vault-Instanz und migriert alle Zertifikate in diese Instanz. Das Tool erlaubt keine Verwendung einer vorhandenen Key Vault-Instanz. 
 - Für Cloud Services (erweiterter Export) wird eine Key Vault-Instanz benötigt, die sich in derselben Region und im selben Abonnement befindet. Diese Key Vault-Instanz wird während der Migration automatisch erstellt. 
 
+## <a name="resources-and-features-not-available-for-migration"></a>Für die Migration nicht verfügbare Ressourcen und Features
+Dies sind die wichtigsten Szenarien für Kombinationen aus Ressourcen, Features und Cloud Services. Diese Liste ist nicht vollständig. 
+
+| Resource | Nächste Schritte/Problemumgehung | 
+|---|---|
+| Regeln zur automatischen Skalierung | Die Migration wird durchlaufen, aber Regeln werden gelöscht. [Erstellen Sie die Regeln nach der Migration zu Cloud Services (erweiterter Support) neu](./configure-scaling.md). | 
+| Alerts | Die Migration wird durchlaufen, aber Warnungen werden gelöscht. [Erstellen Sie die Regeln nach der Migration zu Cloud Services (erweiterter Support) neu](./enable-alerts.md). | 
+| VPN Gateway | Entfernen Sie die VPN Gateway-Instanz, bevor Sie mit der Migration beginnen, und erstellen Sie sie nach Abschluss der Migration neu. | 
+| ExpressRoute-Gateway (nur im gleichen Abonnement wie Virtual Network) | Entfernen Sie das ExpressRoute-Gateway, bevor Sie mit der Migration beginnen, und erstellen Sie es nach Abschluss der Migration neu. | 
+| Kontingent  | Kontingente werden nicht migriert. Fordern Sie vor der Migration ein [neues Kontingent](../azure-resource-manager/templates/error-resource-quota.md#solution) für Azure Resource Manager an, damit die Überprüfung erfolgreich ist. | 
+| Affinitätsgruppen | Wird nicht unterstützt. Entfernen Sie alle Affinitätsgruppen vor der Migration.  | 
+| Virtuelle Netzwerke mit [VNet-Peering](../virtual-network/virtual-network-peering-overview.md)| Bevor Sie ein virtuelles Netzwerk migrieren, das mittels Peering mit einem anderen virtuellen Netzwerk verbunden ist, löschen Sie das Peering, migrieren Sie das virtuelle Netzwerk zu Resource Manager, und erstellen Sie das Peering neu. Je nach Architektur kann dies zu Downtime führen. | 
+| Virtuelle Netzwerke, die App Service-Umgebungen enthalten | Nicht unterstützt | 
+| Virtuelle Netzwerke, die HDInsight-Dienste enthalten | Wird nicht unterstützt. 
+| Virtuelle Netzwerke, die Azure API Management-Bereitstellungen enthalten | Wird nicht unterstützt. <br><br> Um das virtuelle Netzwerk zu migrieren, ändern Sie das virtuelle Netzwerk der API Management-Bereitstellung. Dies ist ein Vorgang ohne Downtime. | 
+| Klassische ExpressRoute-Verbindungen | Wird nicht unterstützt. <br><br>Diese Verbindungen müssen vor Beginn der PaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../expressroute/expressroute-howto-move-arm.md). |  
+| Rollenbasierte Access Control | Nach der Migration ändert sich der URI der Ressource von `Microsoft.ClassicCompute` in `Microsoft.Compute`. RBAC-Richtlinien müssen nach der Migration aktualisiert werden. | 
+| Application Gateway | Nicht unterstützt. <br><br> Entfernen Sie die Application Gateway-Instanz, bevor Sie mit der Migration beginnen, und erstellen Sie sie nach Abschluss der Migration zu Azure Resource Manager neu. | 
+
+## <a name="unsupported-configurations--migration-scenarios"></a>Nicht unterstützte Konfigurationen/Migrationsszenarien
+
+| Konfiguration/Szenario  | Nächste Schritte/Problemumgehung | 
+|---|---|
+| Migration einiger älterer Bereitstellungen, die sich nicht in einem virtuellen Netzwerk befinden | Für einige Cloud Services-Bereitstellungen, die nicht in einem virtuellen Netzwerk enthalten sind, wird die Migration nicht unterstützt. <br><br> 1. Überprüfen Sie mithilfe der Überprüfungs-API, ob die Bereitstellung für die Migration geeignet ist. <br> 2. Wenn sie geeignet ist, werden die Bereitstellungen in Azure Resource Manager unter ein virtuelles Netzwerk mit dem Präfix „DefaultRdfeVnet“ verschoben. | 
+| Migration von Bereitstellungen, die sowohl die Produktions- als auch die Stagingslotbereitstellung über dynamische IP-Adressen beinhalten | Bei der Migration eines Clouddiensts mit zwei Slots muss der Stagingslot gelöscht werden. Anschließend migrieren Sie den Produktionsslot als unabhängige Instanz von Cloud Services (erweiterter Support) zu Azure Resource Manager. Stellen Sie dann die Stagingumgebung als neue Instanz von Cloud Services (erweiterter Support) erneut bereit, und konfigurieren Sie sie als mit der ersten Instanz austauschbar. | 
+| Migration von Bereitstellungen, die sowohl die Produktions- als auch die Stagingslotbereitstellung über reservierte IP-Adressen beinhalten | Wird nicht unterstützt. | 
+| Migration einer Produktions- und Stagingbereitstellung in einem anderen virtuellen Netzwerk|Bei der Migration eines Clouddiensts mit zwei Slots muss der Stagingslot gelöscht werden. Anschließend migrieren Sie den Produktionsslot als unabhängige Instanz von Cloud Services (erweiterter Support) zu Azure Resource Manager. Eine neue Bereitstellung von Cloud Services (erweiterter Support) kann dann mit der migrierten Bereitstellung verknüpft werden. Die Eigenschaft „Austauschbar“ muss aktiviert sein. Bereitstellungsdateien der alten Stagingslotbereitstellung können wiederverwendet werden, um diese neue austauschbare Bereitstellung zu erstellen. | 
+| Migration eines leeren Clouddiensts (Clouddienst ohne Bereitstellung) | Wird nicht unterstützt. | 
+| Migration einer Bereitstellung mit dem Remotedesktop-Plug-In und den Remotedesktoperweiterungen | Option 1: Entfernen Sie das Remotedesktop-Plug-In vor der Migration. Dazu sind Änderungen an den Bereitstellungsdateien erforderlich. Die Migration wird dann erfolgreich durchlaufen. <br><br> Option 2: Entfernen Sie die Remotedesktoperweiterung, und migrieren Sie die Bereitstellung. Entfernen Sie nach der Migration das Plug-In, und installieren Sie die Erweiterung. Dazu sind Änderungen an den Bereitstellungsdateien erforderlich. <br><br> Entfernen Sie das Plug-In und die Erweiterung vor der Migration. [Plug-Ins werden für die Verwendung in Cloud Services (erweiterter Support) nicht empfohlen](./deploy-prerequisite.md#required-service-definition-file-csdef-updates).| 
+| Virtuelle Netzwerke mit PaaS- und IaaS-Bereitstellung |Nicht unterstützt <br><br> Verschieben Sie entweder die PaaS- oder die IaaS-Bereitstellungen in ein anderes virtuelles Netzwerk. Dies führt zu Downtime. | 
+Clouddienstbereitstellungen mit älteren Rollengrößen (z. B. „Small“ oder „ExtraLarge“) | Die Migration wird ausgeführt, aber die Rollengrößen werden auf moderne Rollengrößen aktualisiert. Die Kosten oder SKU-Eigenschaften bleiben unverändert, und die VM wird für diese Änderung nicht neu gestartet. Aktualisieren Sie alle Bereitstellungsartefakte, damit sie auf diese neuen modernen Rollengrößen verweisen. Weitere Informationen finden Sie unter [Verfügbare VM-Größen](available-sizes.md).|
+| Migration des Clouddiensts zu einem anderen virtuellen Netzwerk | Nicht unterstützt <br><br> 1. Verschieben Sie die Bereitstellung vor der Migration in ein anderes klassisches virtuelles Netzwerk. Dies führt zu Downtime. <br> 2. Migrieren Sie das neue virtuelle Netzwerk zu Azure Resource Manager. <br><br> oder <br><br> 1. Migrieren Sie das virtuelle Netzwerk zu Azure Resource Manager. <br>2. Verschieben Sie den Clouddienst in ein neues virtuelles Netzwerk. Dies führt zu Downtime. | 
+| Clouddienst in einem virtuellen Netzwerk, aber ohne Zuweisung eines expliziten Subnetzes | Wird nicht unterstützt. Zur Entschärfung muss die Rolle in ein Subnetz verschoben werden. Hierfür ist ein Rollenneustart erforderlich (Downtime). | 
 
 ## <a name="translation-of-resources-and-naming-convention-post-migration"></a>Übersetzung von Ressourcen und Namenskonventionen nach der Migration
 Während der Migration werden die Ressourcennamen geändert, und einige wenige Cloud Services-Features werden als Azure Resource Manager-Ressourcen verfügbar gemacht. In der folgenden Tabelle werden die für eine Cloud Services-Migration spezifischen Änderungen zusammengefasst.
@@ -70,14 +101,14 @@ Während der Migration werden die Ressourcennamen geändert, und einige wenige C
 | Cloud Services (klassisch) <br><br> Ressourcenname | Cloud Services (klassisch) <br><br> Syntax| Cloud Services (erweiterter Support) <br><br> Ressourcenname| Cloud Services (erweiterter Support) <br><br> Syntax | 
 |---|---|---|---|
 | Clouddienst | `cloudservicename` | Nicht zugeordnet| Nicht zugeordnet |
-| Bereitstellung (über Portal erstellt) <br><br> Bereitstellung (nicht über Portal erstellt)  | `deploymentname` | Cloud Services (erweiterter Support) | `deploymentname` |  
-| Virtual Network | `vnetname` <br><br> `Group resourcegroupname vnetname` <br><br> Nicht zugeordnet |  Virtuelles Netzwerk (nicht über Portal erstellt) <br><br> Virtuelles Netzwerk (über Portal erstellt) <br><br> Virtuelle Netzwerke (Standard) | `vnetname` <br><br> `group-resourcegroupname-vnetname` <br><br> `DefaultRdfevirtualnetwork_vnetid`|
-| Nicht zugeordnet | Nicht zugeordnet | Key Vault | `cloudservicename` | 
+| Bereitstellung (über Portal erstellt) <br><br> Bereitstellung (nicht über Portal erstellt)  | `deploymentname` | Cloud Services (erweiterter Support) | `cloudservicename` |  
+| Virtual Network | `vnetname` <br><br> `Group resourcegroupname vnetname` <br><br> Nicht zugeordnet |  Virtuelles Netzwerk (nicht über Portal erstellt) <br><br> Virtuelles Netzwerk (über Portal erstellt) <br><br> Virtuelle Netzwerke (Standard) | `vnetname` <br><br> `group-resourcegroupname-vnetname` <br><br> `VNet-cloudservicename`|
+| Nicht zugeordnet | Nicht zugeordnet | Key Vault | `KV-cloudservicename` | 
 | Nicht zugeordnet | Nicht zugeordnet | Ressourcengruppe für Cloud Services-Bereitstellungen | `cloudservicename-migrated` | 
 | Nicht zugeordnet | Nicht zugeordnet | Ressourcengruppe für virtuelles Netzwerk | `vnetname-migrated` <br><br> `group-resourcegroupname-vnetname-migrated`|
 | Nicht zugeordnet | Nicht zugeordnet | Öffentliche IP-Adresse (dynamisch) | `cloudservicenameContractContract` | 
 | Reservierter IP-Name | `reservedipname` | Reservierte IP-Adresse (nicht über Portal erstellt) <br><br> Reservierte IP-Adresse (über Portal erstellt) | `reservedipname` <br><br> `group-resourcegroupname-reservedipname` | 
-| Nicht zugeordnet| Nicht zugeordnet | Load Balancer | `deploymentname-lb`|
+| Nicht zugeordnet| Nicht zugeordnet | Load Balancer | `LB-cloudservicename`|
 
 
 
@@ -101,3 +132,6 @@ Während der Migration werden die Ressourcennamen geändert, und einige wenige C
 
 ### <a name="how-much-time-can-the-operations-takebr"></a>Wie lange können die Vorgänge dauern?<br>
 Die Validierung ist als schneller Vorgang konzipiert. Die Vorbereitung dauert am längsten und kann abhängig von der Gesamtanzahl der migrierten Rolleninstanzen einige Zeit in Anspruch nehmen. Abbruch und Commit können ebenfalls eine Weile dauern, nehmen aber weniger Zeit in Anspruch als die Vorbereitung. Alle Vorgänge werden nach 24 Stunden mit einem Timeout abgebrochen.
+
+## <a name="next-steps"></a>Nächste Schritte
+Unterstützung bei der Migration Ihrer (klassischen) Cloud Services-Bereitstellung zu Cloud Services (erweiterter Support) finden Sie auf unserer Landing Page [Support und Problembehandlung](support-help.md).

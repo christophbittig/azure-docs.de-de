@@ -3,12 +3,12 @@ title: Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 description: Mit Azure Lighthouse Video können Sie die VMs und Kubernetes-Cluster von Kunden außerhalb von Azure effektiv verwalten.
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: edb9553288ff909e5a5f51bf1440c29914672cb9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 926ec6d3fdca6b31ee5296832e12a63a2dfa9d65
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082080"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350895"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 
@@ -25,7 +25,7 @@ In diesem Artikel finden Sie eine Übersicht darüber, wie Dienstanbieter mit Az
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Skaliertes Verwalten von Hybridservern mit Azure Arc-fähigen Servern
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Verwalten von Hybridservern im großen Stil mit Azure Arc-fähigen Servern
 
 Als Dienstanbieter können Sie lokale Computer mit Windows Server oder Linux außerhalb von Azure verwalten, wenn Ihre Kunden diese über den [Azure Connected Machine-Agent](../../azure-arc/servers/agent-overview.md) mit ihrem Abonnement verbunden haben.
 
@@ -46,7 +46,7 @@ Sie können auch verbundene Cluster mit Azure Monitor überwachen und [mithilfe 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erkunden Sie die Leitfäden für den schnellen Einstieg und die Beispiele im [GitHub-Repository zu Azure Arc](https://github.com/microsoft/azure_arc).
-- Erfahren Sie, [welche Szenarien für Azure Arc-fähige Server unterstützt werden](../../azure-arc/servers/overview.md#supported-scenarios).
+- Erfahren Sie, [welche Szenarien für Azure Arc-fähige Server unterstützt werden](../../azure-arc/servers/overview.md#supported-cloud-operations).
 - Erfahren Sie, [welche Kubernetes-Distributionen von Azure Arc unterstützt werden](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).
 - Erfahren Sie, wie Sie [eine Richtlinie im großen Stil bereitstellen](policy-at-scale.md).
 - Erfahren Sie, wie Sie [Azure Monitor-Protokolle im großen Stil verwenden](monitor-at-scale.md).

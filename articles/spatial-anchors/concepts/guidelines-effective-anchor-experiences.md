@@ -8,24 +8,20 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a6bc500516de7e554c38a335ea57519a39c8f602
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c92b45d9c471cf8a94a4001fb5303347d2839dd2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95487502"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125922"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Erstellen von effektiven Ankerfunktionen mithilfe von Azure Spatial Anchors
 
 In diesem Artikel finden Sie Richtlinien und Hinweise, die Ihnen helfen, mit Azure Spatial Anchors effektiv Anker zu erstellen und zu suchen.
 
-## <a name="anchor-improvement-over-time"></a>Kontinuierliche Verbesserung von Ankern
-
-Jedes Mal, wenn Sie mit Azure Spatial Anchors Anker suchen, versuchen wir, die Qualität zukünftiger Suchvorgänge zu verbessern. Hierzu werden die visuellen Informationen zu den gesuchten Ankern mithilfe der gesammelten Umgebungsdaten angereichert. Dieser Prozess wird im Hintergrund ausgeführt und ist eine Offlineoptimierung von Azure Spatial Anchors, um den Dienst für Ihre Umgebung zu optimieren. Die zusätzlichen Daten, die während der einzelnen Vorgänge gesammelt werden, ermöglichen ein besseres Verständnis der Umgebung. Dies verbessert die Qualität und ermöglicht es, Anker nach Umgebungsänderungen, zu einem späteren Zeitpunkt und für Benutzer zu finden, die Anker aus unterschiedlichen Winkeln und Perspektiven betrachten.
-
 ## <a name="good-anchors"></a>Gute Anker
 
-Azure Spatial Anchors ist zwar darauf ausgerichtet, die Qualität von Ankern im Laufe der Zeit zu verbessern, es ist jedoch ebenso wichtig, Benutzer in der Verwendung der Benutzeroberfläche zu schulen oder anzuleiten, damit sie gute Anker erstellen. Indem Sie mit einer solchen Investition dafür sorgen, dass unter Berücksichtigung folgender Aspekte von vorneherein gute Anker entstehen, helfen Sie den Endbenutzern dabei, Anker zuverlässig zu finden:
+Es ist wichtig, Zeit zu investieren und Ihre Benutzer entweder zu schulen oder anzuleiten, damit diese auf Ihrer Benutzeroberfläche gute Anker erstellen können. Indem Sie mit einer solchen Investition dafür sorgen, dass unter Berücksichtigung folgender Aspekte von vorneherein gute Anker entstehen, helfen Sie den Endbenutzern dabei, Anker zuverlässig zu finden:
 
 - Auf verschiedenen Geräten
 - Zu unterschiedlichen Zeiten
@@ -104,7 +100,7 @@ Visuelle Nachverfolgungssysteme benötigen visuelle Merkmale in einer Umgebung. 
 
 Befolgen Sie die allgemeinen Richtlinien in diesem Abschnitt, um ein Benutzererlebnis zu schaffen, das sinnvolle Scans der Umgebung unterstützt.
 
-Wenn ein Benutzer nicht innerhalb weniger Sekunden einen Anker findet, sollte die App den Benutzer auffordern, das Gerät zu bewegen, um andere Blickwinkel zu erfassen. Die App kann Benutzern auch vorschlagen, sich in der Umgebung zu bewegen, um aus anderen Blickwinkeln nach dem Anker zu suchen. Je mehr Featureperspektiven das Gerät erfasst, desto besser. So wird nicht nur die Wahrscheinlichkeit erhöht, dass ein Anker gefunden wird, es werden auch weitere Umgebungsdaten gesammelt, die zur Verbesserung der Ankerqualität verwendet werden.
+Wenn ein Benutzer nicht innerhalb weniger Sekunden einen Anker findet, sollte die App den Benutzer auffordern, das Gerät zu bewegen, um andere Blickwinkel zu erfassen. Die App kann Benutzern auch vorschlagen, sich in der Umgebung zu bewegen, um aus anderen Blickwinkeln nach dem Anker zu suchen. Je mehr Featureblickwinkel das Gerät erkennt, desto besser, denn dadurch erhöht sich die Wahrscheinlichkeit, dass ein Anker gefunden wird.
 
 Fordern Sie bei Zielszenarien die Benutzer auf, sich um das Ziel herum zu bewegen, um es aus anderen Blickwinkeln zu betrachten. Anders gesagt: Fordern Sie Benutzer so lange auf, das Ziel aus neuen Blickwinkeln zu erfassen, bis der Anker gefunden wurde.
 

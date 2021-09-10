@@ -1,7 +1,7 @@
 ---
-title: Konfigurieren eines Blobindexers
+title: Indizieren von Daten aus Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Richten Sie einen Azure-Blobindexer ein, um die Indizierung von Blobinhalten für Volltextsuchvorgänge in Azure Cognitive Search zu automatisieren.
+description: Richten Sie einen Azure-Blobindexer ein, um die Indizierung von Blobinhalten für Volltextsuchvorgänge und Knowledge Mining in Azure Cognitive Search zu automatisieren.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
@@ -9,18 +9,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 848ffc1d4352d464a9afb1c65a0a8c60eb3cffa3
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5c19cfd69352d898c6f47c7256b8433164cd7eb9
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558888"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982994"
 ---
-# <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Konfigurieren der Blobindizierung in Cognitive Search
+# <a name="index-data-from-azure-blob-storage"></a>Indizieren von Daten aus Azure Blob Storage
 
-Ein Blobindexer wird zum Erfassen von Inhalten aus Azure Blob Storage in einem Cognitive Search-Index verwendet. Blobindexer werden häufig in [Ki-Anreicherungen](cognitive-search-concept-intro.md) verwendet, die durch ein angefügtes [Skillset](cognitive-search-working-with-skillsets.md) die Fähigkeiten zur Verarbeitung von Bildern und natürlicher Sprache hinzufügen, um durchsuchbaren Inhalt zu erstellen. Sie können jedoch auch Blobindexer ohne KI-Anreicherung verwenden, um Inhalte aus textbasierten Dokumenten (z. B. PDF-Dateien, Microsoft Office-Dokumenten und Dateiformaten) zu erfassen.
+In diesem Artikel erfahren Sie, wie Sie einen Azure-Blobindexer zum Extrahieren von Inhalten konfigurieren und dafür sorgen, dass er in Azure Cognitive Search durchsucht werden kann. Dieser Workflow erstellt einen Suchindex für Azure Cognitive Search und lädt ihn mit vorhandenen Inhalten und Metadaten, die aus Azure Blob Storage extrahiert wurden.
 
-In diesem Artikel wird die Konfiguration eines Blobindexers in beiden Szenarien beschrieben. Wenn Sie mit Indexerkonzepten nicht vertraut sind, beginnen Sie mit [Indexer in Azure Cognitive Search](search-indexer-overview.md) und [Erstellen eines Suchindexers](search-howto-create-indexers.md), ehe Sie sich mit der Blobindizierung beschäftigen.
+Blobindexer werden häufig bei der [KI-Anreicherung](cognitive-search-concept-intro.md) verwendet, die durch ein angefügtes [Skillset](cognitive-search-working-with-skillsets.md) die Fähigkeit zur Verarbeitung von Bildern und natürlicher Sprache hinzufügt, um aus nicht durchsuchbaren Inhaltstypen in Blobcontainern durchsuchbare Inhalte zu erstellen.
+
+In diesem Artikel erfahren Sie, wie Sie einen Azure-Blobindexer für die textorientierte Indizierung konfigurieren. Sie können einen Azure Blob Storage-Indexer mithilfe eines der folgenden Clients einrichten:
+
+* [Azure portal](https://ms.portal.azure.com)
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) für die kognitive Azure-Suche
+
+In diesem Artikel werden die REST-APIs verwendet. 
 
 ## <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
 
@@ -63,7 +71,7 @@ Diese Verbindungszeichenfolge erfordert keinen Kontoschlüssel, Sie müssen jedo
 
 **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `{ "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>;" }`
 
-Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
+Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) bzw. zu „Sicherheit + Netzwerkbetrieb“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
 
 **SAS-Verbindungszeichenfolge (Shared Access Signature) für ein Speicherkonto**: `{ "connectionString" : "BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl;" }`
 
@@ -299,7 +307,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Mil
 
 Zu häufigen Fehlern bei der Indizierung gehören nicht unterstützte Inhaltstypen, fehlende Inhalte oder übergroße Blobs.
 
-Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern](cognitive-search-common-errors-warnings.md).
+Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern in Azure Cognitive Search](cognitive-search-common-errors-warnings.md).
 
 ### <a name="respond-to-errors"></a>Reagieren auf Fehler
 

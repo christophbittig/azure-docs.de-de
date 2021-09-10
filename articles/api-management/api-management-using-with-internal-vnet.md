@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8b25f1d92fb1ba7e7caa79ed3f4a31bdf9fa60fd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b0f67862352f2354dbdb5439542229dbee67ae00
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746308"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107467"
 ---
 # <a name="connect-to-an-internal-virtual-network-using-azure-api-management"></a>Herstellen einer Verbindung mit einem internen virtuellen Netzwerk mit Azure API Management 
 Mit Azure Virtual Networks (VNETs) kann Azure API Management APIs verwalten, die nicht über das Internet zugänglich sind, wobei mehrere VPN-Technologien verwendet werden, um die Verbindung herzustellen. Sie können API Management über [externe](./api-management-using-with-vnet.md) oder interne Modi bereitstellen. In diesem Artikel erfahren Sie, wie Sie API Management im internen VNET-Modus bereitstellen.
@@ -32,7 +32,7 @@ Bei Bereitstellung von API Management im internen VNET-Modus können Sie nur die
 
 Verwenden Sie API Management im internen Modus für folgende Aufgaben:
 
-* Ermöglichen eines sicheren Zugriffs durch Dritte auf APIs, die in Ihrem privaten Datencenter gehostet werden, über Site-to-Site- oder Azure ExpressRoute-VPN-Verbindungen.
+* APIs, die in Ihrem privaten Rechenzentrum gehostet werden, können externen Dritten über Azure-VPN-Verbindungen oder Azure ExpressRoute sicher zugänglich gemacht werden.
 * Das Verfügbarmachen von cloudbasierten und lokalen APIs über ein gemeinsames Gateway ermöglicht Hybrid Cloud-Szenarien.
 * Verwalten von APIs, die in mehreren geografischen Standorten gehostet werden, über einen einzelnen Gatewayendpunkt.
 
@@ -44,7 +44,7 @@ Verwenden Sie API Management im internen Modus für folgende Aufgaben:
 
 + **Ein aktives Azure-Abonnement.** [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Eine API Management-Instanz.** Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
++ **Eine Azure API Management-Instanz (unterstützte SKUs: Developer, Premium und Isolated)** . Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 

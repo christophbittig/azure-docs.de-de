@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/22/2020
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71397e4635e447701863122e58576dfb6507bcaf
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a655e8f0a4e4a6d44ce8960b45991cf6e394e2db
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698383"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454278"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>Verwalten von Verschiebungssammlungen und Ressourcengruppen
 
@@ -60,93 +60,93 @@ Entfernen Sie mehrere Ressourcen wie folgt:
 
 1. Überprüfen von Abhängigkeiten:
 
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     $resp = Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -ValidateOnly
     ```
 
-    **Output after running cmdlet**
+    **Ausgabe nach dem Ausführen des Cmdlets**
 
-    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
+    ![Ausgegebener Text nach dem Entfernen mehrerer Ressourcen aus einer Verschiebungssammlung](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
 
-2. Retrieve the dependent resources that need to be removed (along with our example virtual network psdemorm-vnet):
+2. Abrufen der abhängigen Ressourcen, die (zusammen mit unserem virtuellen Beispielnetzwerk „psdemorm-vnet“) entfernt werden müssen:
 
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     $resp.AdditionalInfo[0].InfoMoveResource
     ```
 
-    **Output after running cmdlet**
+    **Ausgabe nach dem Ausführen des Cmdlets**
 
-    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-get-dependencies.png)
+    ![Ausgabetext nach dem Abrufen abhängiger Ressourcen, die entfernt werden müssen](./media/remove-move-resources/remove-multiple-get-dependencies.png)
 
 
-3. Remove all resources, along with the virtual network:
+3. Entfernen aller Ressourcen zusammen mit dem virtuellen Netzwerk:
 
     
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
     ```
 
-    **Output after running cmdlet**
+    **Ausgabe nach dem Ausführen des Cmdlets**
 
-    ![Output text after removing all resources from a move collection](./media/remove-move-resources/remove-multiple-all.png)
+    ![Ausgegebener Text nach dem Entfernen aller Ressourcen aus einer Verschiebungssammlung](./media/remove-move-resources/remove-multiple-all.png)
 
 
-## Remove a collection (PowerShell)
+## <a name="remove-a-collection-powershell"></a>Entfernen einer Sammlung (PowerShell)
 
-Remove an entire move collection from the subscription, as follows:
+Entfernen Sie wie folgt eine ganze Verschiebungssammlung aus dem Abonnement:
 
-1. Follow the instructions above to remove resources in the collection using PowerShell.
-2. Run:
+1. Befolgen Sie die voranstehenden Anweisungen, um Ressourcen in der Sammlung mithilfe der PowerShell zu entfernen.
+2. Entfernen Sie eine Sammlung wie folgt:
 
     ```azurepowershell-interactive
     Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
     ```
 
-    **Output after running cmdlet**
+    **Ausgabe nach dem Ausführen des Cmdlets**
     
-    ![Output text after removing a move collection](./media/remove-move-resources/remove-collection.png)
+    ![Ausgegebener Text nach dem Entfernen einer Verschiebungssammlung](./media/remove-move-resources/remove-collection.png)
 
-## VM resource state after removing
+## <a name="vm-resource-state-after-removing"></a>Zustand einer VM-Ressource nach dem Entfernen
 
-What happens when you remove a VM resource from a move collection depends on the resource state, as summarized in the table.
+Was geschieht, wenn Sie eine VM-Ressource in einer Sammlung für die Verschiebung entfernen, hängt vom Zustand der Ressource ab und ist in der Tabelle aufgeführt.
 
-###  Remove VM state
-**Resource state** | **VM** | **Networking**
+###  <a name="remove-vm-state"></a>Zustand einer VM-Ressource nach dem Entfernen
+**Ressourcenzustand** | **VM** | **Netzwerk**
 --- | --- | --- 
-**Added to move collection** | Delete from move collection. | Delete from move collection. 
-**Dependencies resolved/prepare pending** | Delete from move collection  | Delete from move collection. 
-**Prepare in progress**<br/> (or any other state in progress) | Delete operation fails with error.  | Delete operation fails with error.
-**Prepare failed** | Delete from the move collection.<br/>Delete anything created in the target region, including replica disks. <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from the move collection.  
-**Initiate move pending** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
-**Initiate move failed** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
-**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Commit failed** | We recommend that you discard the  so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Discard completed** | The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target - VM, replica disks, vault etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. <br/><br/> Infrastructure resources created during the move need to be deleted manually. |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection.
-**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
-**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
-**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region. |  Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
+**Zur Sammlung für die Verschiebung hinzugefügt** | Wird in der Sammlung für die Verschiebung gelöscht. | Wird in der Sammlung für die Verschiebung gelöscht. 
+**Abhängigkeiten aufgelöst/Vorbereitung steht aus** | Wird in der Sammlung für die Verschiebung gelöscht.  | Wird in der Sammlung für die Verschiebung gelöscht. 
+**Vorbereitung wird durchgeführt**<br/> (oder ein anderer Zustand in Ausführung) | Beim Löschen tritt ein Fehler auf.  | Beim Löschen tritt ein Fehler auf.
+**Fehler bei Vorbereitung** | Wird in der Sammlung für die Verschiebung gelöscht.<br/>Alle in der Zielregion erstellten Elemente werden gelöscht – auch Replikatdatenträger. <br/><br/> Beim Verschieben erstellte Infrastrukturressourcen müssen manuell gelöscht werden. | Wird in der Sammlung für die Verschiebung gelöscht.  
+**Einleitung der Verschiebung ausstehend** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Alle in der Zielregion erstellten Elemente werden gelöscht – auch der virtuelle Computer, Replikatdatenträger usw.  <br/><br/> Beim Verschieben erstellte Infrastrukturressourcen müssen manuell gelöscht werden. | Wird in der Sammlung für die Verschiebung gelöscht.
+**Fehler beim Einleiten der Verschiebung** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Alle in der Zielregion erstellten Elemente werden gelöscht – auch der virtuelle Computer, Replikatdatenträger usw.  <br/><br/> Beim Verschieben erstellte Infrastrukturressourcen müssen manuell gelöscht werden. | Wird in der Sammlung für die Verschiebung gelöscht.
+**Commit ausstehend** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. 
+**Fehler bei Commit** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen.
+**Verwerfen abgeschlossen** | Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt.<br/><br/> Sie wird in der Sammlung für die Verschiebung zusammen mit allen am Ziel erstellten Elementen – virtuelle Computer, Replikatdatenträger, Tresore usw. – gelöscht.  <br/><br/> Beim Verschieben erstellte Infrastrukturressourcen müssen manuell gelöscht werden. <br/><br/> Beim Verschieben erstellte Infrastrukturressourcen müssen manuell gelöscht werden. |  Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt.<br/><br/> Sie wird in der Sammlung für die Verschiebung gelöscht.
+**Fehler beim Verwerfen** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Danach wird die Ressource wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Danach wird die Ressource wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen.
+**Löschung der Quelle ausstehend** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht.  | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht.
+**Fehler beim Löschen der Quelle** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht. | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht.
+**Verschieben abgeschlossen** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Ziel- oder Quellregion erstellten Elemente werden nicht gelöscht. |  Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Ziel- oder Quellregion erstellten Elemente werden nicht gelöscht.
 
-## SQL resource state after removing
+## <a name="sql-resource-state-after-removing"></a>Zustand einer SQL-Ressource nach dem Entfernen
 
-What happens when you remove an Azure SQL resource from a move collection depends on the resource state, as summarized in the table.
+Was geschieht, wenn Sie eine Azure SQL-Ressource in einer Sammlung für die Verschiebung entfernen, hängt vom Zustand der Ressource ab und ist in der Tabelle aufgeführt.
 
-**Resource state** | **SQL** 
+**Ressourcenzustand** | **SQL** 
 --- | --- 
-**Added to move collection** | Delete from move collection. 
-**Dependencies resolved/prepare pending** | Delete from move collection 
-**Prepare in progress**<br/> (or any other state in progress)  | Delete operation fails with error. 
-**Prepare failed** | Delete from move collection<br/><br/>Delete anything created in the target region. 
-**Initiate move pending** |  Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and will be deleted. 
-**Initiate move failed** | Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and must be deleted. 
-**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Commit failed** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Discard completed** |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target, including SQL databases. 
-**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
-**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
-**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
+**Zur Sammlung für die Verschiebung hinzugefügt** | Wird in der Sammlung für die Verschiebung gelöscht. 
+**Abhängigkeiten aufgelöst/Vorbereitung steht aus** | Wird in der Sammlung für die Verschiebung gelöscht. 
+**Vorbereitung wird durchgeführt**<br/> (oder ein anderer Zustand in Ausführung)  | Beim Löschen tritt ein Fehler auf. 
+**Fehler bei Vorbereitung** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/>Alle in der Zielregion erstellten Elemente werden gelöscht. 
+**Einleitung der Verschiebung ausstehend** |  Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/>Alle in der Zielregion erstellten Elemente werden gelöscht. Die SQL-Datenbank ist zu diesem Zeitpunkt vorhanden und wird gelöscht. 
+**Fehler beim Einleiten der Verschiebung** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/>Alle in der Zielregion erstellten Elemente werden gelöscht. Die SQL-Datenbank ist zu diesem Zeitpunkt vorhanden und muss gelöscht werden. 
+**Commit ausstehend** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen.
+**Fehler bei Commit** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. 
+**Verwerfen abgeschlossen** |  Die Ressource wird wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt.<br/><br/> Sie wird in der Sammlung für die Verschiebung zusammen mit allen am Ziel erstellten Elementen wie SQL-Datenbanken gelöscht. 
+**Fehler beim Verwerfen** | Es wird empfohlen, die Verschiebung zu verwerfen, sodass die Zielressourcen zuerst gelöscht werden.<br/><br/> Danach wird die Ressource wieder in den Zustand **Einleitung der Verschiebung ausstehend** versetzt, und Sie können den Vorgang von dort aus fortsetzen. 
+**Löschung der Quelle ausstehend** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht. 
+**Fehler beim Löschen der Quelle** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Zielregion erstellten Elemente werden nicht gelöscht. 
+**Verschieben abgeschlossen** | Wird in der Sammlung für die Verschiebung gelöscht.<br/><br/> Die in der Ziel- oder Quellregion erstellten Elemente werden nicht gelöscht.
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-Try [moving a VM](tutorial-move-region-virtual-machines.md) to another region with Resource Mover.
+Versuchen Sie, eine VM mit Resource Mover in eine andere Region zu [verschieben](tutorial-move-region-virtual-machines.md).

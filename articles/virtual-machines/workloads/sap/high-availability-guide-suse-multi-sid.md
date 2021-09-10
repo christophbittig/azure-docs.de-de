@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 74606909a0bc87caa6acfb0eaf35c05cf35b1858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d60ea09896d42fa43a650e210ed3c19d3a99ef4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676937"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450634"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Multi-SID-Hochverfügbarkeitsleitfaden für SAP NetWeaver auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server für SAP-Anwendungen
 
@@ -47,9 +47,9 @@ ms.locfileid: "101676937"
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 [suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
-[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-file-server-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
+[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-file-server-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
@@ -238,8 +238,8 @@ In dieser Dokumentation wird Folgendes vorausgesetzt:
 
    Aktualisieren Sie die Datei `/etc/auto.direct` mit den Dateisystemen für die zusätzlichen SAP-Systeme, die Sie im Cluster bereitstellen.  
 
-   * Gehen Sie bei Verwendung eines NFS-Dateiservers wie [hier](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation) beschrieben vor.
-   * Gehen Sie bei Verwendung von Azure NetApp Files wie [hier](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation) beschrieben vor. 
+   * Wenn Sie einen NFS-Dateiserver verwenden, befolgen Sie die Anweisungen auf der Seite [Hochverfügbarkeit von Azure VMs für SAP NetWeaver unter SLES](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation).
+   * Wenn Sie Azure NetApp Files verwenden, befolgen Sie die Anweisungen auf der Seite [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter SLES mit Azure NetApp Files](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation).
 
    Der Dienst `autofs` muss zum Einbinden der neu hinzugefügten Freigaben neu gestartet werden.  
 

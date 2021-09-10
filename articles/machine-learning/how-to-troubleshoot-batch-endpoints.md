@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.custom: troubleshooting
+ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
 ms.date: 05/05/2021
-ms.openlocfilehash: dfdf13d36a3d60c0f544cfda7b74cdba1dcc16ec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9fbbc2af3681b6f91ec3c1e0f6adfd46a8598c17
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382855"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448307"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>Problembehandlung für Batchendpunkte (Vorschau)
 
@@ -50,7 +50,7 @@ Wenn Sie kein MLflow-Modell verwenden, müssen Sie ein Bewertungsskript bereitst
 
 ### <a name="get-logs"></a>Abrufen von Protokollen
 
-Nachdem Sie einen Batchendpunkt mit der CLI oder per REST aufgerufen haben, wird der Batchbewertungsauftrag asynchron ausgeführt. Es gibt zwei Optionen, um die Protokolle für einen Batchbewertungsauftrag abzurufen.
+Nachdem Sie einen Batchendpunkt mit der Azure CLI oder per REST aufgerufen haben, wird der Batchbewertungsauftrag asynchron ausgeführt. Es gibt zwei Optionen, um die Protokolle für einen Batchbewertungsauftrag abzurufen.
 
 1\. Option: Streamen von Protokollen an die lokale Konsole
 

@@ -1,21 +1,21 @@
 ---
-title: Erstellen eines Angebots für einen verwalteten Dienst im kommerziellen Microsoft-Marketplace
-description: Hier erfahren Sie, wie Sie mithilfe des kommerziellen Marketplace-Programms in Microsoft Partner Center ein neues Angebot für einen verwalteten Dienst für den Azure Marketplace planen.
+title: Erstellen eines Angebots für verwaltete Dienste im Azure Marketplace
+description: Erstellen eines neuen Angebots für verwaltete Dienste für den Azure Marketplace
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 46a9c9d953a2311d83b5fd18b83727d6765734fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: 0d5c178010012546bfcf786be7106f980289d6eb
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97917981"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204480"
 ---
-# <a name="how-to-create-a-managed-service-offer-for-the-commercial-marketplace"></a>Erstellen eines Angebots für einen verwalteten Dienst für den kommerziellen Microsoft-Marketplace
+# <a name="create-a-managed-service-offer-for-the-commercial-marketplace"></a>Erstellen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace
 
 In diesem Artikel wird erläutert, wie Sie über Partner Center ein Angebot für einen verwalteten Dienst für den kommerziellen Microsoft-Marketplace erstellen.
 
@@ -31,14 +31,18 @@ Zum Veröffentlichen eines Angebots für einen verwalteten Dienst müssen Sie ü
 
 4. Geben Sie im Dialogfeld **Neues Angebot** eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID ist in der URL der Auflistung im kommerziellen Marketplace und ggf. in den Azure Resource Manager-Vorlagen sichtbar. Wenn Sie in diesem Feld z. B. test-offer-1 eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
-    * Jedes Angebot in Ihrem Konto muss über eine eindeutige Angebots-ID verfügen.
-    * Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt.
-    * Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
+    - Jedes Angebot in Ihrem Konto muss über eine eindeutige Angebots-ID verfügen.
+    - Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt.
+    - Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
 5. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird. Er wird nicht in den Onlinegeschäften angezeigt und unterscheidet sich vom Angebotsnamen, der Kunden angezeigt wird.
 6. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
-## <a name="configure-lead-management"></a>Konfigurieren der Leadverwaltung
+## <a name="setup-details"></a>Details zur Konfiguration
+
+Dieser Abschnitt gilt nicht für diesen Angebotstyp.
+
+## <a name="customer-leads"></a>Kundenleads
 
 Verbinden Sie Ihr CRM-System (Customer Relationship Management) mit Ihrem Angebot im kommerziellen Marketplace, damit Sie Kundenkontaktinformationen erhalten, wenn ein Kunde Interesse an Ihrem Beratungsdienst äußert. Sie können diese Verbindung während oder nach der Erstellung des Angebots jederzeit ändern. Eine detaillierte Anleitung finden Sie unter [Kundenleads aus Ihrem Angebot im kommerziellen Marketplace](./partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -49,11 +53,11 @@ So konfigurieren Sie die Leadverwaltung in Partner Center:
 3. Wählen Sie im Dialogfeld **Verbindungsdetails** eine Leadzielgruppe aus der Liste aus.
 4. Füllen Sie alle angezeigten Felder aus. Ausführliche Schritte finden Sie in den folgenden Artikeln:
 
-    * [Konfigurieren des Angebots zum Senden von Leads an die Azure-Tabelle](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-    * [Konfigurieren Ihres Angebots zum Senden von Leads an Dynamics 365 Customer Engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement) (früher Dynamics CRM Online)
-    * [Konfigurieren Ihres Angebots zum Senden von Leads an den HTTPS-Endpunkt](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-    * [Konfigurieren Ihres Angebots zum Senden von Leads zu Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-    * [Konfigurieren Ihres Angebots zum Senden von Leads zu Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
+    - [Konfigurieren des Angebots zum Senden von Leads an die Azure-Tabelle](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
+    - [Konfigurieren Ihres Angebots zum Senden von Leads an Dynamics 365 Customer Engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement) (früher Dynamics CRM Online)
+    - [Konfigurieren Ihres Angebots zum Senden von Leads an den HTTPS-Endpunkt](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
+    - [Konfigurieren Ihres Angebots zum Senden von Leads zu Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
+    - [Konfigurieren Ihres Angebots zum Senden von Leads zu Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 5. Klicken Sie auf den Link **Überprüfen**, um die angegebene Konfiguration zu überprüfen.
 6. Wenn Sie die Verbindungsdetails konfiguriert haben, klicken Sie auf **Verbinden**.
@@ -64,20 +68,8 @@ Nachdem Sie Ihr Angebot zur Veröffentlichung in Partner Center eingereicht habe
 > [!TIP]
 > Achten Sie darauf, dass die Verbindung mit dem Leadziel immer auf dem neuesten Stand ist, damit keine Leads verloren gehen.
 
-## <a name="configure-offer-properties"></a>Konfigurieren von Angebotseigenschaften
-
-Auf der Seite „Eigenschaften“ Ihres Angebots in Partner Center definieren Sie die für Ihr Angebot geltenden Kategorien sowie geltende rechtliche Vereinbarungen. Mit diesen Informationen stellen Sie sicher, dass Ihr verwalteter Dienst im Onlinestore korrekt angezeigt und den richtigen Kunden angeboten wird.
-
-### <a name="select-a-category"></a>Kategorie auswählen
-
-Wählen Sie unter **Kategorien** mindestens eine und höchstens fünf Kategorien aus, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren.
-
-### <a name="provide-terms-and-conditions"></a>Angeben von Geschäftsbedingungen
-
-Geben Sie unter **Rechtliche Hinweise** Ihre Nutzungsbedingungen für das Angebot an. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot nutzen können. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind.
-
-Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
+Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte fortfahren: **Eigenschaften**.
 
 ## <a name="next-step"></a>Nächster Schritt
 
-* [Konfigurieren des Listings Ihres Angebots für einen verwalteten Diensts](./create-managed-service-offer-listing.md)
+- Konfigurieren von [Angebotseigenschaften](create-managed-service-offer-properties.md)

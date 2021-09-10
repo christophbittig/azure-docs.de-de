@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 346cfa898b5745b5ba8e31635337456ea9adb02d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ca240dd4684bfe57cd7e5a0ea1db928768d0fa22
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581716"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694579"
 ---
 # <a name="evaluate-model-performance-in-machine-learning-studio-classic"></a>Auswerten der Modellleistung in Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 In diesem Artikel erhalten Sie weitere Informationen zu den Metriken, die Sie verwenden können, um die Modellleistung in Machine Learning Studio (Classic) zu überwachen.  Die Auswertung der Leistung eines Modells ist eine der wesentlichen Phasen im Datenanalyseprozess. Sie gibt an, wie erfolgreich die Bewertung (die Vorhersagen) eines Datasets eines trainierten Modells war. In Machine Learning Studio (Classic) wird die Auswertung von Modellen durch zwei der wichtigsten Machine Learning-Module unterstützt: 
 + [Auswertungsmodell][evaluate-model] 

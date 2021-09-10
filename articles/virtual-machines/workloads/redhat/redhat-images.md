@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 970e0931556a787b461b8c614b41fd88271bdf1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694681"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469118"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Übersicht über Red Hat Enterprise Linux-Images
 
@@ -101,7 +101,7 @@ Für RHEL 7.x-Images gibt es ein paar andere Imagetypen. In der folgenden Tabel
 ## <a name="rhel-8-image-types"></a>RHEL 8-Imagetypen
 
 >[!NOTE]
-> Red Hat empfiehlt die Verwendung von Grubby zum Konfigurieren der Kernel-Befehlszeilenparameter in RHEL 8+. Weitere Details finden Sie [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
+> Red Hat empfiehlt die Verwendung von Grubby zum Konfigurieren der Kernel-Befehlszeilenparameter in RHEL 8+. Weitere Informationen finden Sie in [Kapitel 5. Konfigurieren von Kernel-Befehlszeilenparametern: Red Hat Enterprise Linux 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
 
 Weitere Informationen zu RHEL 8-Imagetypen finden Sie unten.
 

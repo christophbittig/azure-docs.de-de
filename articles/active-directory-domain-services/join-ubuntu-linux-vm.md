@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79c3481f523efba4a88a0c559e7e1dcccbeba545
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619486"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112516843"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen Ubuntu Linux-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
@@ -36,6 +36,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [verwaltete Azure Active Directory Domain Services-Domäne zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Teil der verwalteten Domäne ist.
+* Eindeutige Linux-VM-Namen, die maximal 15 Zeichen umfassen. So vermeiden Sie Konflikte in Active Directory, die durch abgeschnittene Namen entstehen.
 
 ## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Erstellen einer Ubuntu Linux-VM und Herstellen einer Verbindung
 

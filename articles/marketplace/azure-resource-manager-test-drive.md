@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0d9c849ce7454e2875c4f00e73cc3b3edc37ad7e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b1ca1b1caa1da1c38e0a7af8ec714c3734ca1191
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971571"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110293"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -26,7 +26,7 @@ Informationen zu einer **gehosteten** oder **Logik-App**-Testversion finden Sie 
 
 Eine Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lösung besteht. In den für dieses Szenario geeigneten Produkten werden nur Azure-Ressourcen verwendet. Legen Sie die folgenden Eigenschaften im Partner Center fest:
 
-- **Regionen** (erforderlich): Es gibt derzeit 26 von Azure unterstützte Regionen, in denen Ihre Testversion zur Verfügung gestellt werden kann. In der Regel sollten Sie Ihre Testversion in den Regionen zur Verfügung stellen, in denen Sie die größte Anzahl von Kunden erwarten, damit sie für eine optimale Leistung die nächstgelegene Region auswählen können. Sie müssen sicherstellen, dass in Ihrem Abonnement alle Ressourcen in jeder von Ihnen ausgewählten Region bereitgestellt werden können.
+- **Regionen** (erforderlich): Es gibt derzeit 26 von Azure unterstützte Regionen, in denen Ihre Testversion zur Verfügung gestellt werden kann. Um die beste Leistung zu erzielen, sollten Sie eine Region auswählen, in der Sie die größte Anzahl von Kunden erwarten. Sie müssen sicherstellen, dass in Ihrem Abonnement alle Ressourcen in jeder von Ihnen ausgewählten Region bereitgestellt werden können.
 
 - **Instanzen**: Wählen Sie den Typ („Heiß“ oder „Kalt“) und die Anzahl von verfügbaren Instanzen aus. Diese wird mit der Anzahl der Regionen multipliziert, in denen Ihr Angebot verfügbar ist.
 
@@ -194,9 +194,9 @@ Weitere Informationen zu Benennungsregeln und Einschränkungen für Ressourcen f
 
 ### <a name="deployment-location"></a>Bereitstellungsort
 
-Sie können die Testversion in verschiedenen Azure-Regionen zur Verfügung stellen. Benutzer sollen die nächstgelegene Region auswählen und so die bestmögliche Umgebung nutzen können.
+Sie können die Testversion in verschiedenen Azure-Regionen zur Verfügung stellen.
 
-Wenn in der Testversion eine Instanz des Labs erstellt wird, wird immer eine Ressourcengruppe in der von einem Benutzer ausgewählten Region erstellt und dann die Bereitstellungsvorlage in diesem Gruppenkontext ausgeführt. Daher sollte in Ihrer Vorlage der Bereitstellungsstandort in der Ressourcengruppe ausgewählt werden:
+Wenn die Testversion eine Instanz des Labs erstellt, wird immer eine Ressourcengruppe in einer der ausgewählten Regionen erstellt und dann die Bereitstellungsvorlage in diesem Gruppenkontext ausgeführt. Daher sollte in Ihrer Vorlage der Bereitstellungsstandort in der Ressourcengruppe ausgewählt werden:
 
 ```JSON
 "variables": {

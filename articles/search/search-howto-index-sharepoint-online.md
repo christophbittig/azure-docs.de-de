@@ -1,35 +1,31 @@
 ---
-title: Konfigurieren eines SharePoint Online-Indexers (Vorschau)
+title: Indizieren von Daten über SharePoint Online (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Richten Sie einen SharePoint Online-Indexer ein, um die Indizierung der Inhalte von Dokumentbibliotheken in Azure Cognitive Search zu automatisieren.
-manager: luisca
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747129"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983048"
 ---
-# <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Konfigurieren der SharePoint Online-Indizierung in Cognitive Search (Vorschau)
+# <a name="index-data-from-sharepoint-online"></a>Indizieren von Daten über SharePoint Online
 
 > [!IMPORTANT] 
-> Die Unterstützung von SharePoint Online ist aktuell als **geschlossene öffentliche Vorschauversion** verfügbar. Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die geschlossene Vorschauversion anfordern möchten.
->
-> Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
-> Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das SDK unterstützt.
+> Die Unterstützung für SharePoint Online befindet sich derzeit in der öffentlichen Vorschauphase unter [Zusätzliche Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Fordern Sie [Zugriff](https://aka.ms/azure-cognitive-search/indexer-preview) auf dieses Feature an, und verwenden Sie, nachdem der Zugriff aktiviert wurde, eine [Vorschau-REST-API (2020-06-30-preview oder höher)](search-api-preview.md), um Ihre Inhalte zu indizieren. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
+
+In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Cognitive Search in SharePoint Online-Dokumentbibliotheken gespeicherte Dokumente (z. B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) in einem Azure Cognitive Search-Index indizieren. Zunächst werden die Grundlagen der Einrichtung und Konfiguration des Indexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
 
 > [!NOTE]
 > SharePoint Online unterstützt ein detailliertes Autorisierungsmodell, das den benutzerspezifischen Zugriff auf Dokumentebene bestimmt. Der SharePoint Online-Indexer übernimmt diese Berechtigungen nicht in den Suchindex, und Cognitive Search unterstützt keine Autorisierung auf Dokumentebene. Wenn ein Dokument von SharePoint Online in einen Suchdienst indiziert wird, steht der Inhalt allen Benutzern zur Verfügung, die über Lesezugriff auf den Index verfügen. Wenn Sie Berechtigungen auf Dokumentebene benötigen, sollten Sie Sicherheitsfilter zum Einschränken von Ergebnissen nicht autorisierter Inhalte prüfen. Weitere Informationen finden Sie unter [Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory-Identitäten](search-security-trimming-for-azure-search-with-aad.md).
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Cognitive Search in SharePoint Online-Dokumentbibliotheken gespeicherte Dokumente (z. B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) in einem Azure Cognitive Search-Index indizieren. Zunächst werden die Grundlagen der Einrichtung und Konfiguration des Indexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
-
 ## <a name="functionality"></a>Funktionalität
+
 Ein Indexer in Azure Cognitive Search ist ein Crawler, der durchsuchbare Daten und Metadaten aus einer Datenquelle extrahiert. Der SharePoint Online-Indexer stellt eine Verbindung mit Ihrer SharePoint Online-Website her und indiziert Dokumente aus einer oder mehreren Dokumentbibliotheken. Der Indexer bietet die folgenden Funktionen:
 + Es können Inhalte aus einer oder mehreren SharePoint Online-Dokumentbibliotheken indiziert werden.
 + Es können Inhalte aus SharePoint Online-Dokumentbibliotheken im gleichen Mandanten wie Ihr Azure Cognitive Search-Dienst indiziert werden. Der Indexer funktioniert nicht mit SharePoint-Websites, die sich in einem anderen Mandanten als Ihr Azure Cognitive Search-Dienst befinden. 

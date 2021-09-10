@@ -2,24 +2,22 @@
 title: Erstellen von Sammlungen für das Portal „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation
 description: Verwenden Sie „Meine Apps“-Sammlungen, um die Seiten von „Meine Apps“ anzupassen und die „Meine Apps“-Umgebung für Ihre Endbenutzer zu vereinfachen. Fassen Sie Anwendungen in Gruppen mit separaten Registerkarten zusammen.
 services: active-directory
-documentationcenter: ''
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: mtillman
-ms.reviewer: kasimpso
+ms.author: davidmu
+ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239bd084a1a593211a544b86ba8b24ed9c13624a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e47e7900fd6d678e07b4fb4ccfe02b17f734c67f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354946"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Erstellen von Sammlungen im Portal „Meine Apps“
 
@@ -71,15 +69,13 @@ Zum Erstellen einer Sammlung müssen Sie über eine Azure AD Premium P1- oder P2
 
 11. Klicken Sie auf **Überprüfen + erstellen**. Die Eigenschaften für die neue Sammlung werden angezeigt.
 
-
 ## <a name="view-audit-logs"></a>Anzeigen von Überwachungsprotokollen
 
 In den Überwachungsprotokollen werden Vorgänge für „Meine Apps“-Sammlungen aufgezeichnet, einschließlich dem Erstellen von Sammlungen und Endbenutzeraktionen. Die folgenden Ereignisse werden von „Meine Apps“ generiert:
 
-* Erstellen der Sammlung
-* Sammlung bearbeiten
-* Sammlung löschen
-* Anwendung starten (Endbenutzer)
+* Erstellen einer Administratorsammlung
+* Bearbeiten einer Administratorsammlung
+* Löschen einer Administratorsammlung
 * Self-Service-Hinzufügung von Anwendungen (Endbenutzer)
 * Self-Service-Löschung von Anwendungen (Endbenutzer)
 
@@ -89,11 +85,12 @@ Sie können im [Azure-Portal](https://portal.azure.com) auf die Überwachungspro
 
 Benutzer können auf der Seite „Meine Apps“ die Optionen **Mein Konto** > **Mein Konto anzeigen** auswählen, um ihre Kontoeinstellungen zu öffnen. Auf der Azure AD-Seite **Mein Konto** können Benutzer ihre Sicherheitsinformationen, Geräte, Kennwörter und vieles mehr verwalten. Die Benutzer können auch auf die Einstellungen ihres Office-Kontos zugreifen.
 
-Falls Sie eine Supportanfrage für ein Problem mit der Azure AD-Kontoseite oder der Office-Kontoseite senden müssen, führen Sie die folgenden Schritte aus, damit Ihre Anfrage ordnungsgemäß weitergeleitet wird: 
+Falls Sie eine Supportanfrage für ein Problem mit der Azure AD-Kontoseite oder der Office-Kontoseite senden müssen, führen Sie die folgenden Schritte aus, damit Ihre Anfrage ordnungsgemäß weitergeleitet wird:
 
 * Bei Problemen mit der **Azure AD-Seite „Mein Konto“** öffnen Sie eine Supportanfrage im Azure-Portal. Wechseln Sie zu **Azure-Portal** > **Azure Active Directory** > **Neue Supportanfrage**.
 
-* Bei Problemen mit der **Office-Seite „Mein Konto“** öffnen Sie eine Supportanfrage im Microsoft 365 Admin Center. Wechseln Sie zu **Microsoft 365 Admin Center** > **Support**. 
+* Bei Problemen mit der **Office-Seite „Mein Konto“** öffnen Sie eine Supportanfrage im Microsoft 365 Admin Center. Wechseln Sie zu **Microsoft 365 Admin Center** > **Support**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Endbenutzerumgebungen für Anwendungen in Azure Active Directory](end-user-experiences.md)

@@ -3,12 +3,12 @@ title: 'Konzept: Integrieren einer Azure VMware Solution-Bereitstellung in eine 
 description: Hier erfahren Sie, wie Sie eine Azure VMware Solution-Bereitstellung in eine Hub-and-Spoke-Architektur in Azure integrieren.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ed815904b8bb15b9822fbc9603b65e20ccdce43
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99062744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340523"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur
 
@@ -32,7 +32,7 @@ Der Datenverkehr zwischen dem lokalen Rechenzentrum, der privaten Azure VMware S
 
 Das Diagramm zeigt ein Beispiel für eine Hub-and-Spoke-Bereitstellung in Azure, die über ExpressRoute Global Reach mit dem lokalen Rechenzentrum und der Azure VMware Solution-Cloud verbunden ist.
 
-:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Hub-and-Spoke-Bereitstellung mit Azure VMware Solution-Integration" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
+:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Diagramm: Hub-and-Spoke-Bereitstellung mit Azure VMware Solution-Integration" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
 
 Diese Architektur besteht aus den folgenden Hauptkomponenten:
 
@@ -52,9 +52,9 @@ Diese Architektur besteht aus den folgenden Hauptkomponenten:
 
 - **Virtuelles Spoke-Netzwerk**
 
-    - **IaaS-Spoke:** In einer IaaS-Spoke werden IaaS-basierte Azure-Workloads gehostet, wozu VM-Verfügbarkeitsgruppen und VM-Skalierungsgruppen sowie die entsprechenden Netzwerkkomponenten gehören.
+    - **IaaS-Spoke:** Hostet IaaS-basierte Azure-Workloads, wozu VM-Verfügbarkeitsgruppen und VM-Skalierungsgruppen sowie die entsprechenden Netzwerkkomponenten gehören.
 
-    - **PaaS-Spoke:** In einer PaaS-Spoke werden Azure-PaaS-Dienste über private Adressierung gehostet, wozu [privater Endpunkt](../private-link/private-endpoint-overview.md) (Private Endpoint) und [Private Link](../private-link/private-link-overview.md) verwendet werden.
+    - **PaaS-Spoke:** Hostet Azure-PaaS-Dienste über private Adressierung, wozu [privater Endpunkt](../private-link/private-endpoint-overview.md) (Private Endpoint) und [Private Link](../private-link/private-link-overview.md) verwendet werden.
 
 - **Azure Firewall:** Fungiert als das zentrale Element zum Segmentieren von Datenverkehr zwischen den Spokes und Azure VMware Solution.
 
@@ -68,23 +68,23 @@ Da ein ExpressRoute-Gateway kein transitives Routing zwischen den verbundenen Ve
 
 * **Datenverkehr von lokalen Standorten zu Azure VMware Solution**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Datenverkehr von lokalen Standorten zu Azure VMware Solution" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Diagramm: Datenverkehrsfluss von lokalen Standorten zu Azure VMware Solution" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Datenverkehr von Azure VMware Solution zu Hub VNET**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Datenverkehr von Azure VMware Solution zum virtuellen Hubnetzwerk" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Diagramm: Datenverkehrsfluss von Azure VMware Solution zum virtuellen Hubnetzwerk" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Weitere Informationen zu den Azure VMware Solution-Netzwerk- und -Konnektivitätskonzepten finden Sie in der [Produktdokumentation von Azure VMware Solution](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Datenverkehrsegmentierung
 
-[Azure Firewall](../firewall/index.yml) ist das zentrale Element der Hub-and-Spoke-Topologie und wird im virtuellen Hub-Netzwerk bereitgestellt. Sie verwenden Azure Firewall oder ein anderes von Azure unterstütztes virtuelles Netzwerkgerät, um Datenverkehrsregeln einzurichten und die Kommunikation zwischen den verschiedenen Spokes und Azure VMware Solution-Workloads zu segmentieren.
+[Azure Firewall](../firewall/index.yml) ist das zentrale Element der Hub-and-Spoke-Topologie und wird im virtuellen Hub-Netzwerk bereitgestellt. Sie verwenden Azure Firewall oder ein anderes von Azure unterstütztes virtuelles Netzwerkgerät (NVA), um Datenverkehrsregeln einzurichten und die Kommunikation zwischen den verschiedenen Spokes und Azure VMware Solution-Workloads zu segmentieren.
 
 Erstellen Sie Routingtabellen, um den Datenverkehr an Azure Firewall zu leiten.  Erstellen Sie für virtuelle Spoke-Netzwerke eine Route, die die Standardroute zur internen Schnittstelle von Azure Firewall festlegt. Wenn eine Workload im virtuellen Netzwerk den Azure VMware Solution-Adressraum erreichen muss, kann die Firewall diese hierdurch auswerten und die entsprechende Datenverkehrsregel anwenden, um den Datenverkehr zuzulassen oder zu verweigern.  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Routingtabellen erstellen, um Datenverkehr an Azure Firewall zu leiten" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Screenshot: Routingtabellen zum Weiterleiten von Datenverkehr an Azure Firewall" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -92,7 +92,7 @@ Erstellen Sie Routingtabellen, um den Datenverkehr an Azure Firewall zu leiten. 
 
 Legen Sie Routen für bestimmte Netzwerke in der entsprechenden Routingtabelle fest. Beispielsweise Routen zum Erreichen von IP-Präfixen für Azure VMware Solution-Verwaltung und -Workloads aus den Spoke-Workloads und umgekehrt.
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Routen für bestimmte Netzwerke in der entsprechenden Routingtabelle festlegen" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Screenshot: Festlegen von Routen für bestimmte Netzwerke in der entsprechenden Routingtabelle" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 Eine zweite Ebene der Datenverkehrssegmentierung mithilfe der Netzwerksicherheitsgruppen in den Spokes und im Hub, um eine präzisere Datenverkehrsrichtlinie zu erstellen.
 
@@ -105,7 +105,7 @@ Azure Application Gateway V1 und V2 wurden mit Web-Apps getestet, die auf Azure 
 
 Weitere Informationen finden Sie im Azure VMware Solution-Artikel zu [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md).
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Zweite Ebene der Datenverkehrssegmentierung über die Netzwerksicherheitsgruppen" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagramm: Zweite Ebene der Datenverkehrssegmentierung über die Netzwerksicherheitsgruppen" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>Jumpbox und Azure Bastion
@@ -115,13 +115,13 @@ Greifen Sie über eine Jumpbox auf die Azure VMware Solution-Umgebung zu. Eine J
 >[!IMPORTANT]
 >Azure Bastion ist der Dienst, der empfohlen wird, um eine Verbindung mit der Jumpbox herzustellen, damit die Azure VMware Solution-Instanz nicht im Internet veröffentlicht wird. Sie können Azure Bastion nicht verwenden, um eine Verbindung mit Azure VMware Solution-VMs herzustellen, da es sich hierbei nicht um Azure-IaaS-Objekte handelt.  
 
-Als bewährte Sicherheitsmethode sollten Sie den [Microsoft Azure Bastion](../bastion/index.yml)-Dienst im virtuellen Hub-Netzwerk bereitstellen. Azure Bastion bietet nahtlosen RDP- und SSH-Zugriff auf VMs, die in Azure bereitgestellt werden, ohne dass diesen Ressourcen öffentliche IP-Adressen bereitgestellt werden müssen. Sobald Sie den Azure Bastion-Dienst bereitgestellt haben, können Sie über das Azure-Portal auf die ausgewählte VM zugreifen. Nachdem Sie die Verbindung hergestellt haben, wird eine neue Registerkarte geöffnet, auf der der Desktop der Jumpbox angezeigt wird. Über diesen Desktop können Sie auf die Verwaltungsebene der privaten Azure VMware Solution-Cloud zugreifen.
+Als bewährte Sicherheitsmethode sollten Sie den [Microsoft Azure Bastion](../bastion/index.yml)-Dienst im virtuellen Hub-Netzwerk bereitstellen. Azure Bastion bietet nahtlosen RDP- und SSH-Zugriff auf VMs, die in Azure bereitgestellt werden, ohne dass diesen Ressourcen öffentliche IP-Adressen bereitgestellt werden. Sobald Sie den Azure Bastion-Dienst bereitgestellt haben, können Sie über das Azure-Portal auf die ausgewählte VM zugreifen. Nachdem Sie die Verbindung hergestellt haben, wird eine neue Registerkarte geöffnet, auf der der Desktop der Jumpbox angezeigt wird. Über diesen Desktop können Sie auf die Verwaltungsebene der privaten Azure VMware Solution-Cloud zugreifen.
 
 > [!IMPORTANT]
 > Sie sollten weder der Jumpbox-VM eine öffentliche IP-Adresse zuweisen noch den TCP-Port 3389 für das öffentliche Internet verfügbar machen. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtuelles Hub-Netzwerk mit Azure Bastion" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Diagramm: Virtuelles Azure Bastion-Hubnetzwerk" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Aspekte zu Azure DNS Auflösung
@@ -134,7 +134,7 @@ Für die Azure DNS-Auflösung stehen zwei Optionen zur Verfügung:
 
 Die beste Vorgehensweise besteht darin, beide Optionen zu kombinieren, um eine zuverlässige Namensauflösung für Azure VMware Solution, lokale Systeme und Azure bereitzustellen.
 
-Als allgemeine Entwurfsempfehlung sollten Sie die vorhandene Azure DNS-Infrastruktur (in diesem Fall Active Directory-integriertes DNS), die auf mindestens zwei Azure-VMs bereitgestellt ist, die im virtuellen Hub-Netzwerk bereitgestellt und in den virtuellen Spoke-Netzwerken konfiguriert sind, damit diese Azure DNS-Server in den DNS-Einstellungen verwendet werden.
+Als allgemeine Entwurfsempfehlung sollten Sie das vorhandene Active Directory-integrierte DNS verwenden, das auf mindestens zwei Azure-VMs im virtuellen Hubnetzwerk bereitgestellt und in den virtuellen Spoke-Netzwerken konfiguriert ist, damit diese Azure DNS-Server in den DNS-Einstellungen verwendet werden.
 
 Sie können ein privates Azure-DNS verwenden, bei dem die private Azure-DNS-Zone zum virtuellen Netzwerk führt.  Die DNS-Server werden als hybride Resolver mit bedingter Weiterleitung an die lokale oder Azure VMware Solution-Instanz mit einem DNS verwendet, das die private Azure-DNS-Infrastruktur des Kunden nutzt. 
 

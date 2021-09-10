@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 7d3ffd754959c59fb34f326473247d836871ea75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 01fe7b84596cbf4dba85f44c49488a8347b4cccc
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106818"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351499"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
 Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbeitsbereich über das Azure-Portal einrichten. Ein Log Analytics-Arbeitsbereich ist eine spezifische Umgebung für Azure Monitor-Protokolldaten. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration. Datenquellen und Lösungen sind so konfiguriert, dass die zugehörigen Daten in einem bestimmten Arbeitsbereich gespeichert werden. Ein Log Analytics-Arbeitsbereich ist erforderlich, wenn Sie Daten aus den folgenden Quellen erfassen möchten:
@@ -19,12 +19,6 @@ Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbei
 * Lokale Computer, die von System Center Operations Manager überwacht werden
 * Gerätesammlungen aus Configuration Manager 
 * Diagnose- oder Protokolldaten aus dem Azure-Speicher
-
-Informationen zu anderen Quellen in Ihrer Umgebung (etwa virtuelle Azure-Computer und virtuelle Windows- oder Linux-Computer) finden Sie in folgenden Themen:
-
-*  [Sammeln von Daten von virtuellen Azure-Computern](../vm/quick-collect-azurevm.md) 
-*  [Sammeln von Daten von Linux-Hybridcomputern](../vm/quick-collect-linux-computer.md)
-*  [Sammeln von Daten von Windows-Hybridcomputern](../vm/quick-collect-windows-computer.md)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -54,7 +48,7 @@ Klicken Sie auf **Überprüfen + erstellen**, um die Einstellungen zu überprüf
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie einen Arbeitsbereich erstellen, der in den letzten 14 Tagen gelöscht wurde und sich im [Zustand des vorläufigen Löschens](../logs/delete-workspace.md#soft-delete-behavior) befindet, kann der Vorgang je nach Arbeitsbereichskonfiguration ein anderes Ergebnis aufweisen:
 1. Wenn Sie denselben Arbeitsbereichsnamen, dieselbe Ressourcengruppe, dasselbe Abonnement und dieselbe Region wie beim gelöschten Arbeitsbereich angeben, wird der Arbeitsbereich einschließlich Daten, Konfiguration und verbundener Agents wiederhergestellt.
-2. Wenn Sie denselben Arbeitsbereichsnamen, aber andere Werte für Ressourcengruppe, Abonnement oder Region verwenden, erhalten Sie eine Fehlermeldung des Typs *Dieser Arbeitsbereichsname wird bereits verwendet. Versuchen Sie es mit einem anderen Namen*. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
+2. Der Arbeitsbereichsname muss innerhalb einer Ressourcengruppe eindeutig sein. Bei Verwendung eines bereits vorhandenen Arbeitsbereichsnamens wird die Fehlermeldung „Der Arbeitsbereichsname ‚Arbeitsbereichsname‘ ist nicht eindeutig“ oder ein Konflikt angezeigt. Dies schließt auch Namen von Elementen in Ihrer Ressourcengruppe ein, die vorläufig gelöscht wurden. Wenn Sie das vorläufige Löschen außer Kraft setzen, den Arbeitsbereich dauerhaft löschen und einen neuen, gleichnamigen Arbeitsbereich erstellen möchten, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:
    - [Wiederherstellen](../logs/delete-workspace.md#recover-workspace) Ihres Arbeitsbereichs
    - [Dauerhaftes Löschen](../logs/delete-workspace.md#permanent-workspace-delete) Ihres Arbeitsbereichs
    - Erstellen eines neuen Arbeitsbereichs mit demselben Arbeitsbereichsnamen

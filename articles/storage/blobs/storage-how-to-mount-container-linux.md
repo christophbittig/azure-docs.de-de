@@ -5,15 +5,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.date: 2/1/2019
+ms.date: 07/06/2021
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 9fa64d491a872d830ac57a1d097045d1702dd852
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 30a91858b03c89d38a58ba02efb75d4368d9e8d5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527296"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302480"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Einbinden von Blob Storage als Dateisystem mit blobfuse
 
@@ -30,7 +30,7 @@ In diesem Handbuch wird gezeigt, wie Sie blobfuse verwenden, einen Blobspeicherc
 ## <a name="install-blobfuse-on-linux"></a>Installieren von blobfuse unter Linux
 Blobfuse-Binärdateien sind für Ubuntu-, Debian-, SUSE-, CentoOS-, Oracle Linux- und RHEL-Distributionen in den [Microsoft-Softwarerepositorys für Linux](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) verfügbar. Um Blobfuse in diesen Distributionen zu installieren, konfigurieren Sie eines der Repositorys aus der Liste. Sie können die Binärdateien auch gemäß den [Azure Storage-Installationsschritten](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) aus dem Quellcode erstellen, wenn für Ihre Distribution keine Binärdateien verfügbar sind.
 
-Blobfuse unterstützt die Installation auf den Ubuntu-Versionen 16.04, 18.04 und 20.04, RHEL-Versionen 7.5, 7.8, 8.0, 8.1, 8.2, CentOS-Versionen 7.0, 8.0, Debian-Versionen 9.0, 10.0, SUSE-Version 15, OracleLinux  8.1. Führen Sie diesen Befehl aus, um sicherzustellen, dass Sie eine dieser Versionen bereitgestellt haben:
+Blobfuse wird im Linux-Repository für folgende Ubuntu-Versionen veröffentlicht: 16.04, 18.04 und 20.04, RHEL-Versionen 7.5, 7.8, 8.0, 8.1, 8.2, CentOS-Versionen 7.0, 8.0, Debian-Versionen 9.0, 10.0, SUSE-Version 15, OracleLinux 8.1. Führen Sie diesen Befehl aus, um sicherzustellen, dass Sie eine dieser Versionen bereitgestellt haben:
 ```
 lsb_release -a
 ```

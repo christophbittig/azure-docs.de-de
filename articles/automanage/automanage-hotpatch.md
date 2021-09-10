@@ -9,16 +9,24 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b3fc9f12dfa6ad4edcc120ac7c9592c9435a0e4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2f7af8ebc054b49df03a7f03c512db08a5098f2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338884"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch für neue VMs (Vorschau)
 
-Hotpatching ist eine neue Methode zur Installation von Updates auf neuen virtuellen Computern (VMs) der Windows Server Azure Edition, die keinen Neustart nach der Installation erfordert. Dieser Artikel enthält Informationen über VMs für Hotpatch für Windows Server Azure Edition. Dies hat die folgenden Vorteile:
+> [!IMPORTANT]
+> Automanage für Windows Server-Dienste befindet sich derzeit in der öffentlichen Vorschau. Es ist ein Anmeldungsverfahren (opt-in) erforderlich, um die unten beschriebene Hotpatchfunktion verwenden zu können.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+> [!NOTE]
+> Hotpatchfunktionen finden Sie in einem der folgenden _Windows Server Azure Edition_-Images: Windows Server 2019 Datacenter: Azure Edition (Core), Windows Server 2022 Datacenter: Azure Edition (Core).
+
+Hotpatching ist eine neue Methode zur Installation von Updates auf unterstützten virtuellen Computern (VMs) der _Windows Server Azure Edition_, die keinen Neustart nach der Installation erfordert. Dieser Artikel enthält Informationen über Hotpatches für unterstützte _Windows Server Azure Edition_-VMs, die folgende Vorteile bieten:
 * Geringere Auswirkungen auf die Workload mit weniger Neustarts
 * Schnellere Bereitstellung von Updates, da die Pakete kleiner sind, schneller installiert werden und eine einfachere Patchorchestrierung mit Azure Update Manager möglich ist
 * Besserer Schutz, da die Hotpatch-Updatepakete auf Windows-Sicherheitsupdates beschränkt sind, die schneller und ohne Neustart installiert werden
@@ -41,16 +49,16 @@ Hotpatch ist in allen globalen Azure-Regionen als Vorschauversion verfügbar. Az
 ## <a name="how-to-get-started"></a>Erste Schritte
 
 > [!NOTE]
-> Während der Vorschauphase können Sie über [diesen Link](https://aka.ms/AzureAutomanageHotPatch) nur im Azure-Portal einsteigen.
+> Während der Vorschauphase können Sie über [diesen Link](https://aka.ms/AutomanageWindowsServerPreview) im Azure-Portal beginnen.
 
 Gehen Sie folgendermaßen vor, um Hotpatch auf einer neuen VM zu verwenden:
 1.  Aktivieren des Zugriffs auf die Vorschauversion
     * Pro Abonnement ist eine einmalige Freigabe des Zugriffs auf die Vorschauversion erforderlich.
     * Der Zugriff auf die Vorschauversion kann über die API, PowerShell oder die Befehlszeilenschnittstelle aktiviert werden, wie im folgenden Abschnitt beschrieben.
 1.  Erstellen einer VM über das Azure-Portal
-    * Während der Vorschau müssen Sie über [diesen Link](https://aka.ms/AzureAutomanageHotPatch) starten.
+    * Während der Vorschau müssen Sie über [diesen Link](https://aka.ms/AutomanageWindowsServerPreview) starten.
 1.  Bereitstellen von VM-Details
-    * Stellen Sie sicher, dass _Windows Server 2019 Datacenter: Azure Edition_ in der Dropdownliste für Images ausgewählt ist).
+    * Stellen Sie sicher, dass das unterstützte _Windows Server Azure Edition_-Image, das Sie verwenden möchten, in der Dropdownliste der Images ausgewählt ist.  Unterstützte Images sind am Anfang dieses Artikels aufgeführt.
     * Scrollen Sie im Schritt „Verwaltung“ zum Abschnitt für Updates für das Gastbetriebssystem. Sie werden sehen, dass Hotpatching aktiviert und die Patchinstallation standardmäßig auf das von Azure orchestrierte Patchen festgelegt ist.
     * Bewährte Methoden für die automatische Verwaltung von virtuellen Computern werden standardmäßig aktiviert.
 1. Erstellen einer neuen VM
@@ -130,21 +138,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Patchinstallation
 
-Während der Vorschau wird die Option für [Automatische VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) automatisch für alle mit _Windows Server 2019 Datacenter: Azure Edition_ erstellten virtuellen Computern aktiviert. Mit aktivierten automatischen VM-Gastpatches:
+Während der Vorschau ist die Funktion der [automatischen VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) automatisch für alle mit einem unterstützten _Windows Server Azure Edition_-Image erstellten VMs aktiviert. Mit aktivierten automatischen VM-Gastpatches:
 * Patches, die als Kritisch oder Sicherheit klassifiziert werden, werden automatisch heruntergeladen und auf die VM angewendet.
 * Patches werden außerhalb der Spitzenzeiten in der Zeitzone der VM angewendet.
-* Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching) angewendet.
+* Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-updates) angewendet.
 * Die Integrität des virtuellen Computers wird anhand von Integritätssignalen der Plattform ermittelt und überwacht, um Patchfehler zu erkennen.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Wie funktioniert automatisches VM-Gastpatchen?
 
 Wenn die Option für [Automatische VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) auf einer VM aktiviert ist, werden die verfügbaren kritischen und Sicherheitspatches heruntergeladen und automatisch angewendet. Dieser Prozess wird jeden Monat automatisch gestartet, wenn neue Patches freigegeben werden. Die Patchbewertung und -installation erfolgt automatisch, und der Vorgang umfasst einen Neustart der VM bei Bedarf.
 
-Wenn Hotpatch für virtuelle Computer mit _Windows Server 2019 Datacenter: Azure Edition_ aktiviert ist, werden die meisten monatlichen Sicherheitsupdates als Hotpatches bereitgestellt, die keinen Neustart erfordern. Aktuelle kumulative Updates, die an Monaten mit geplanten oder nicht geplanten Baselines gesendet werden, erfordern einen Neustart des virtuellen Computers. Zusätzliche kritische oder sicherheitsrelevante Patches können ebenfalls in regelmäßigen Abständen verfügbar sein, was einen Neustart des virtuellen Computers erforderlich machen kann.
+Wenn die Hotpatchfunktion auf unterstützten _Windows Server Azure Edition_-VMs aktiviert ist, werden die meisten monatlichen Sicherheitsupdates als Hotpatches bereitgestellt, die keinen Neustart erfordern. Aktuelle kumulative Updates, die an Monaten mit geplanten oder nicht geplanten Baselines gesendet werden, erfordern einen Neustart des virtuellen Computers. Zusätzliche kritische oder sicherheitsrelevante Patches können ebenfalls in regelmäßigen Abständen verfügbar sein, was einen Neustart des virtuellen Computers erforderlich machen kann.
 
 Der virtuelle Computer wird automatisch alle paar Tage und mehrmals innerhalb eines 30-Tage-Zeitraums überprüft, um die anwendbaren Patches für diese VM zu ermitteln. Diese automatische Bewertung stellt sicher, dass alle fehlenden Patches zum frühestmöglichen Zeitpunkt erkannt werden.
 
-Patches werden innerhalb von 30 Tagen nach den monatlichen Patchreleases installiert, wobei die [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching) gelten. Patches werden nur außerhalb der Spitzenzeiten für die VM installiert, abhängig von der Zeitzone der VM. Die VM muss außerhalb der Spitzenzeiten ausgeführt werden, damit Patches automatisch installiert werden können. Wenn eine VM während einer periodischen Bewertung ausgeschaltet wird, wird die VM bewertet, und die anwendbaren Patches werden bei der nächsten periodischen Bewertung automatisch installiert, wenn die VM eingeschaltet wird. Die nächste regelmäßige Bewertung erfolgt normalerweise innerhalb weniger Tage.
+Patches werden innerhalb von 30 Tagen nach den monatlichen Patchreleases installiert, wobei die [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-updates) gelten. Patches werden nur außerhalb der Spitzenzeiten für die VM installiert, abhängig von der Zeitzone der VM. Die VM muss außerhalb der Spitzenzeiten ausgeführt werden, damit Patches automatisch installiert werden können. Wenn eine VM während einer periodischen Bewertung ausgeschaltet wird, wird die VM bewertet, und die anwendbaren Patches werden bei der nächsten periodischen Bewertung automatisch installiert, wenn die VM eingeschaltet wird. Die nächste regelmäßige Bewertung erfolgt normalerweise innerhalb weniger Tage.
 
 Definitionsupdates und andere Patches, die nicht als „Kritisch“ oder „Sicherheit“ eingestuft sind, werden nicht über automatische VM-Gastpatches installiert.
 
@@ -165,14 +173,14 @@ Mit den automatischen VM-Gastpatches wird Ihre VM regelmäßig und automatisch a
 
 Hotpatch deckt Windows-Sicherheitsupdates ab und hält die Parität mit dem Inhalt von Sicherheitsupdates aufrecht, die über den regulären (Nicht-Hotpatch) Windows-Updatekanal ausgegeben werden.
 
-Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Azure Edition mit aktiviertem Hotpatch. Neustarts sind weiterhin erforderlich, um Updates zu installieren, die nicht im Hotpatch-Programm enthalten sind. Neustarts sind auch regelmäßig erforderlich, nachdem eine neue Baseline installiert wurde. Diese Neustarts halten die VM auf dem neuesten Stand der nicht sicherheitsrelevanten Patches, die im letzten kumulativen Update enthalten sind.
+Beim Betrieb einer unterstützten _Windows Server Azure Edition_-VM mit aktivierter Hotpatchfunktion sind einige wichtige Überlegungen zu berücksichtigen. Neustarts sind weiterhin erforderlich, um Updates zu installieren, die nicht im Hotpatch-Programm enthalten sind. Neustarts sind auch regelmäßig erforderlich, nachdem eine neue Baseline installiert wurde. Diese Neustarts halten die VM auf dem neuesten Stand der nicht sicherheitsrelevanten Patches, die im letzten kumulativen Update enthalten sind.
 * Zu den Patches, die derzeit nicht im Hotpatch-Programm enthalten sind, gehören nicht sicherheitsrelevante Updates, die für Windows veröffentlicht werden, und Nicht-Windows-Updates (z. B. .NET-Patches).  Diese Arten von Patches müssen während eines Baselinemonats installiert werden und erfordern einen Neustart.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="what-is-hotpatching"></a>Was ist Hotpatching?
 
-* Hotpatching ist eine neue Methode zur Installation von Updates auf neuen virtuellen Computern (VMs) mit Windows Server 2019 Datacenter: Azure Edition, die keinen Neustart nach der Installation erfordert. Es funktioniert, indem es den Code im Arbeitsspeicher von aktiven Prozessen patcht, ohne dass ein Neustart des Prozesses erforderlich ist.
+* Hotpatching ist eine neue Methode zur Installation von Updates auf einer unterstützten _Windows Server Azure Edition_-VM, die keinen Neustart nach der Installation erfordert. Es funktioniert, indem es den Code im Arbeitsspeicher von aktiven Prozessen patcht, ohne dass ein Neustart des Prozesses erforderlich ist.
 
 ### <a name="how-does-hotpatching-work"></a>Wie funktioniert das Hotpatching?
 
@@ -180,7 +188,7 @@ Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Az
 
 ### <a name="why-should-i-use-hotpatch"></a>Warum sollte ich Hotpatch verwenden?
 
-* Wenn Sie Hotpatch unter Windows Server 2019 Datacenter: Azure Edition verwenden, hat Ihre VM eine höhere Verfügbarkeit (weniger Neustarts) und schnellere Updates (kleinere Pakete, die schneller installiert werden, ohne dass Prozesse neu gestartet werden müssen). Das Ergebnis dieses Prozesses ist eine VM, die immer auf dem neuesten Stand und sicher ist.
+* Wenn Sie Hotpatch auf einem unterstützten _Windows Server Azure Edition_-Image verwenden, profitiert Ihre VM von einer höheren Verfügbarkeit (weniger Neustarts) und schnelleren Updates (kleinere Pakete, die schneller installiert werden, ohne dass Prozesse neu gestartet werden müssen). Das Ergebnis dieses Prozesses ist eine VM, die immer auf dem neuesten Stand und sicher ist.
 
 ### <a name="what-types-of-updates-are-covered-by-hotpatch"></a>Welche Arten von Updates werden von Hotpatch abgedeckt?
 
@@ -210,7 +218,7 @@ Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Az
 
 ### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>Kann ich ein Upgrade von meinem bestehenden Windows Server-Betriebssystem durchführen?
 
-* Ein Upgrade von bestehenden Versionen von Windows Server (d. h. Windows Server 2016 oder 2019, Nicht-Azure-Editionen) wird derzeit nicht unterstützt. Upgrades auf zukünftige Versionen von Windows Server Azure Edition werden unterstützt.
+* Ein Upgrade von vorhandenen Versionen von Windows Server (d. h. Windows Server 2016 oder 2019 als Nicht-Azure-Editionen) auf _Windows Server 2022 Datacenter: Azure Edition_ wird unterstützt. Ein Upgrade auf _Windows Server 2019 Datacenter: Azure Edition_ wird nicht unterstützt.
 
 ### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>Kann ich Hotpatch für Produktionsworkloads während der Vorschau verwenden?
 
@@ -218,7 +226,7 @@ Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Az
 
 ### <a name="will-i-be-charged-during-the-preview"></a>Werden mir während der Vorschau Gebühren berechnet?
 
-* Die Lizenz für Windows Server Azure Edition ist während der Vorschau kostenlos. Die Kosten für die zugrundeliegende Infrastruktur, die für Ihre VM eingerichtet wurde (Speicher, Compute-Instanz, Netzwerk usw.), werden jedoch weiterhin Ihrem Abonnement in Rechnung gestellt.
+* Die Lizenz für _Windows Server Azure Edition_ ist während der Vorschau kostenlos. Die Kosten für die zugrundeliegende Infrastruktur, die für Ihre VM eingerichtet wurde (Speicher, Compute-Instanz, Netzwerk usw.), werden jedoch weiterhin Ihrem Abonnement in Rechnung gestellt.
 
 ### <a name="how-can-i-get-troubleshooting-support-for-hotpatching"></a>Wie erhalte ich Unterstützung bei der Problembehandlung für Hotpatching?
 

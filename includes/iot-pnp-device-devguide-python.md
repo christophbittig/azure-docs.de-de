@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: f4eb312aff200389f59a3e342305b8eda98f213e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fdee151d746e19323921dddbb409e0816cb014b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582783"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397933"
 ---
 ## <a name="model-id-announcement"></a>Modell-ID-Ankündigung
 
@@ -40,11 +40,11 @@ Geräte, die [Device Provisioning Service (DPS)](../articles/iot-dps/about-iot-d
 }
 ```
 
-## <a name="implement-telemetry-properties-and-commands"></a>Implementieren von Telemetrie, Eigenschaften und Befehlen
+## <a name="use-components"></a>Verwenden von Komponenten
 
-Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-pnp/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei Verwendung von Komponenten müssen Geräte den in diesem Abschnitt beschriebenen Regeln entsprechen.
+Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-develop/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei der Verwendung von Komponenten müssen Geräte den in den folgenden Abschnitten beschriebenen Regeln entsprechen.
 
-### <a name="telemetry"></a>Telemetrie
+## <a name="telemetry"></a>Telemetrie
 
 Für eine Standardkomponente ist keine besondere Eigenschaft erforderlich.
 
@@ -61,7 +61,7 @@ async def send_telemetry_from_temp_controller(device_client, telemetry_msg, comp
 }
 ```
 
-### <a name="read-only-properties"></a>Schreibgeschützte Eigenschaften
+## <a name="read-only-properties"></a>Schreibgeschützte Eigenschaften
 
 Zum Melden einer Eigenschaft aus der Standardkomponente ist kein besonderes Konstrukt erforderlich:
 
@@ -104,11 +104,11 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 }
 ```
 
-### <a name="writable-properties"></a>Schreibbare Eigenschaften
+## <a name="writable-properties"></a>Schreibbare Eigenschaften
 
 Diese Eigenschaften können vom Gerät festgelegt oder von der Lösung aktualisiert werden. Wenn die Lösung eine Eigenschaft aktualisiert, empfängt der Client eine Benachrichtigung als Rückruf im `IoTHubDeviceClient` oder `IoTHubModuleClient`. Um den IoT Plug & Play-Konventionen zu entsprechen, muss das Gerät den Dienst informieren, dass die Eigenschaft erfolgreich empfangen wurde.
 
-#### <a name="report-a-writable-property"></a>Melden einer schreibbaren Eigenschaft
+### <a name="report-a-writable-property"></a>Melden einer schreibbaren Eigenschaft
 
 Wenn ein Gerät eine schreibbare Eigenschaft meldet, müssen die `ack`-Werte enthalten sein, die in den Konventionen definiert sind.
 
@@ -176,7 +176,7 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>Abonnieren von Aktualisierungen der gewünschten Eigenschaften
+### <a name="subscribe-to-desired-property-updates"></a>Abonnieren von Aktualisierungen der gewünschten Eigenschaften
 
 Dienste können gewünschte Eigenschaften aktualisieren, die eine Benachrichtigung auf den verbundenen Geräten auslösen. Diese Benachrichtigung enthält die aktualisierten gewünschten Eigenschaften, einschließlich der Versionsnummer zum Identifizieren der Aktualisierung. Geräte müssen mit der gleichen `ack`-Nachricht wie gemeldete Eigenschaften antworten.
 
@@ -286,7 +286,7 @@ Der Gerätezwilling für Komponenten zeigt die Abschnitte für gewünschte und g
 }
 ```
 
-### <a name="commands"></a>Befehle
+## <a name="commands"></a>Befehle
 
 Eine Standardkomponente empfängt den Befehlsnamen so, wie er vom Dienst aufgerufen wurde.
 
@@ -296,7 +296,7 @@ Eine geschachtelte Komponente empfängt den Befehlsnamen, dem der Komponentennam
 command_request = await device_client.receive_method_request("thermostat1*reboot")
 ```
 
-#### <a name="request-and-response-payloads"></a>Anforderungs- und Antwortnutzlasten
+### <a name="request-and-response-payloads"></a>Anforderungs- und Antwortnutzlasten
 
 Befehle verwenden Typen zum Definieren ihrer Anforderungs- und Antwortnutzlasten. Ein Gerät muss den eingehenden Eingabeparameter deserialisieren und die Antwort serialisieren. Im folgenden Beispiel wird gezeigt, wie ein Befehl mit komplexen Typen implementiert wird, die in den Nutzlasten definiert sind:
 

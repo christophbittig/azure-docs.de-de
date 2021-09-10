@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 756117a2a231fcb406fd3e3102a16c318c621aa0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 77f8ff8cf7e3e9a83b207f8d98ef570437b27b47
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832606"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111157"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>High-Density-Hosting in Azure App Service mit Skalierung pro App
 
@@ -23,7 +23,7 @@ Wenn Sie App Service nutzen, können Sie Ihre Apps skalieren, indem Sie den [App
 Die *Skalierung pro App* kann auf Ebene des App Service-Plans aktiviert werden, damit eine App unabhängig von dem App Service-Plan, in dem sie gehostet wird, skaliert werden kann. Auf diese Weise kann ein App Service-Plan auf 10 Instanzen skaliert werden. Jedoch kann eine App nur auf das Verwenden von fünf Instanzen festgelegt werden.
 
 > [!NOTE]
-> Die Skalierung pro App steht nur für die Tarife **Standard**, **Premium**, **Premium V2** und **Isolated** zur Verfügung.
+> Die Skalierung pro App steht nur für die Tarife **Standard**, **Premium**, **Premium V2**, **Premium V3** und **Isolated** zur Verfügung.
 >
 
 Apps werden verfügbaren App Service-Plänen zugeordnet. Dabei wird eine gleichmäßige Verteilung über die Instanzen angestrebt. Eine gleichmäßige Verteilung kann zwar nicht garantiert werden, aber die Plattform stellt sicher, dass zwei Instanzen derselben App nicht in derselben Instanz eines App Service-Plans gehostet wird.

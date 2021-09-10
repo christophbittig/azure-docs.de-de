@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 08/17/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 29f8e1e3b89ef68c3ead4841cfba7b5e44f09a36
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 04f922d747ef535402baf664f5232e376f43cff2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744645"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444192"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure AD Multi-Factor Authentication
 
@@ -117,6 +117,7 @@ Darüber hinaus ist Konnektivität mit den folgenden URLs erforderlich, um die [
 * *https:\//provisioningapi.microsoftonline.com*
 * *https:\//aadcdn.msauth.net*
 * *https:\//www.powershellgallery.com*
+* *https:\//go.microsoft.com*
 * *https:\//aadcdn.msftauthimages.net*
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
@@ -159,7 +160,7 @@ Zwei Faktoren haben Einfluss darauf, welche Authentifizierungsmethoden mit der B
     > [!NOTE]
     > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
     >
-    > Unabhängig vom verwendeten Authentifizierungsprotokoll (PAP, CHAP oder EAP) wird die Authentifizierung möglicherweise erfolgreich durchgeführt, wenn Ihre MFA-Methode textbasiert ist (SMS, Verifizierungscode in einer mobilen App oder OATH-Hardwaretoken) und erfordert, dass der Benutzer einen Code oder Text in das Eingabefeld der Benutzeroberfläche des VPN-Clients eingibt. *Allerdings* werden RADIUS-Attribute, die in der Richtlinie für den Netzwerkzugriff konfiguriert sind, *nicht* an den RADIUS-Client (also das Netzwerkzugriffsgerät, z. B. das VPN-Gateway) weitergeleitet. Folglich hat der VPN-Client möglicherweise mehr oder weniger Zugriff als gewünscht oder gar keinen Zugriff.
+    > Unabhängig vom verwendeten Authentifizierungsprotokoll (PAP, CHAP oder EAP) wird die Authentifizierung möglicherweise erfolgreich durchgeführt, wenn Ihre MFA-Methode textbasiert ist (SMS, Verifizierungscode in einer mobilen App oder OATH-Hardwaretoken) und erfordert, dass der Benutzer einen Code oder Text in das Eingabefeld der Benutzeroberfläche des VPN-Clients eingibt. *Allerdings* werden RADIUS-Attribute, die in der Richtlinie für den Netzwerkzugriff konfiguriert wurden, *nicht* an den RADIUS-Client (also das Netzwerkzugriffsgerät, z. B. das VPN-Gateway) weitergeleitet. Folglich hat der VPN-Client möglicherweise mehr oder weniger Zugriff als gewünscht oder gar keinen Zugriff.
 
 * Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
 
@@ -173,7 +174,7 @@ Wenn Sie ein Testkonto erstellen und konfigurieren müssen, gehen Sie folgenderm
 
 1. Melden Sie sich bei [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an.
 2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
-3. Melden Sie sich im Azure-Portal als Administratorbenutzer an, und [erstellen Sie eine Richtlinie für bedingten Zugriff](howto-mfa-getstarted.md#create-conditional-access-policy), um für das Testkonto die mehrstufige Authentifizierung zu erzwingen.
+3. Melden Sie sich im Azure-Portal als Administratorbenutzer an, und [erstellen Sie eine Richtlinie für bedingten Zugriff](howto-mfa-getstarted.md#plan-conditional-access-policies), um für das Testkonto die mehrstufige Authentifizierung zu erzwingen.
 
 > [!IMPORTANT]
 >
