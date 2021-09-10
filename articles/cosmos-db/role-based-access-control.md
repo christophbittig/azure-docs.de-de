@@ -1,24 +1,24 @@
 ---
 title: Rollenbasierte Azure-Zugriffssteuerung in Azure Cosmos DB
 description: Erfahren Sie, wie Azure Cosmos DB Datenbankschutz mithilfe der Active Directory-Integration (Azure RBAC) bereitstellt.
-author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.author: mjbrown
+ms.date: 06/17/2021
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a305dc7b6f40883231ebf243624e5d4e0fcfa607
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fa99ba28bacd2132191679c614c2be73fc0a80a8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964207"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123107852"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Rollenbasierte Azure-Zugriffssteuerung in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!NOTE]
-> In diesem Artikel geht es um die rollenbasierte Zugriffssteuerung für Vorgänge auf Verwaltungsebene in Azure Cosmos DB. Falls Sie Vorgänge auf Datenebene verwenden, finden Sie unter [Azure Cosmos DB-RBAC](how-to-setup-rbac.md) weitere Informationen zur rollenbasierten Zugriffssteuerung, die für Vorgänge auf Datenebene angewendet wird.
+> Azure RBAC-Unterstützung in Azure Cosmos DB gilt nur für Vorgänge auf Verwaltungsebene. In diesem Artikel geht es um die rollenbasierte Zugriffssteuerung für Vorgänge auf Verwaltungsebene in Azure Cosmos DB. Wenn Sie Vorgänge auf Datenebene verwenden, werden Daten über Primärschlüssel, Ressourcentoken oder die RBAC von Azure Cosmos DB geschützt. Weitere Informationen zur Anwendung der rollenbasierten Zugriffssteuerung auf Vorgänge der Datenebene finden Sie in den Artikeln [Sicherer Zugriff auf Daten](secure-access-to-data.md) und [Rollenbasierte Zugriffssteuerung in Azure Cosmos DB](how-to-setup-rbac.md).
 
 Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte rollenbasierte Azure-Zugriffssteuerung (Azure RBAC). Eine Person mit einem Profil in Azure Active Directory kann diese Azure-Rollen Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten zuweisen, um den Zugriff auf Ressourcen und Vorgänge für Azure Cosmos DB-Ressourcen zu gewähren oder zu verweigern. Rollenzuweisungen sind auf den Zugriff auf Steuerungsebene beschränkt, was den Zugriff auf Konten, Datenbanken, Container und Angebote (Durchsatz) für Azure Cosmos umfasst.
 
@@ -33,9 +33,6 @@ Die folgenden vordefinierten Rollen werden von Azure Cosmos DB unterstützt:
 |[Cosmos-Sicherungsoperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Kann eine Wiederherstellungsanforderung für Azure-Portal für eine periodisch aktivierte Sicherungsdatenbank oder einen Container übermitteln. Kann das Sicherungsintervall und die Datenaufbewahrung im Azure-Portal ändern. Kann nicht auf Daten zugreifen oder Daten-Explorer verwenden.  |
 | [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | Kann eine Wiederherstellungsaktion für ein Azure Cosmos DB-Konto mit fortlaufendem Sicherungsmodus ausführen.|
 |[Cosmos DB-Operator](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Kann Azure Cosmos-Konten, -Datenbanken und -Container bereitstellen. Kann nicht auf Daten zugreifen oder Daten-Explorer verwenden.|
-
-> [!IMPORTANT]
-> Azure RBAC-Unterstützung in Azure Cosmos DB gilt nur für Vorgänge auf Steuerungsebene. Vorgänge auf Datenebene werden mithilfe von Primärschlüsseln, Ressourcentoken oder Cosmos DB RBAC abgesichert. Weitere Informationen finden Sie unter [Sicherer Zugriff auf Daten in Azure Cosmos DB](secure-access-to-data.md).
 
 ## <a name="identity-and-access-management-iam"></a>Identitäts- und Zugriffsverwaltung (IAM)
 
@@ -52,7 +49,7 @@ Zusätzlich zu den integrierten Rollen können Benutzer in Azure auch [benutzerd
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Verhindern von Änderungen aus den Azure Cosmos DB SDKs
 
-Der Azure Cosmos DB-Ressourcenanbieter kann gesperrt werden, um Ressourcenänderungen von einem Client zu verhindern, der eine Verbindung unter Verwendung der Kontoschlüssel herstellt (also Anwendungen, die eine Verbindung über das Azure Cosmos SDK herstellen). Dies schließt auch Änderungen über das Azure-Portal ein. Dieses Feature ist möglicherweise für Benutzer vorteilhaft, die ein höheres Maß an Kontrolle und Governance für Produktionsumgebungen wünschen. Das Verhindern von Änderungen aus dem SDK ermöglicht außerdem Features wie Ressourcensperren und Diagnoseprotokolle für Vorgänge auf der Steuerungsebene. Von Clients, die eine Verbindung aus dem Azure Cosmos DB SDK herstellen, können keine Eigenschaften für Azure Cosmos-Konten, Datenbanken, Container und Durchsatz geändert werden. Die Vorgänge, bei denen Daten aus Cosmos-Containern gelesen oder in Cosmos-Container geschrieben werden, sind davon nicht betroffen.
+Der Azure Cosmos DB-Ressourcenanbieter kann gesperrt werden, um Ressourcenänderungen von einem Client zu verhindern, der eine Verbindung unter Verwendung der Kontoschlüssel herstellt (also Anwendungen, die eine Verbindung über das Azure Cosmos SDK herstellen). Dieses Feature ist möglicherweise für Benutzer vorteilhaft, die ein höheres Maß an Kontrolle und Governance für Produktionsumgebungen wünschen. Das Verhindern von Änderungen aus dem SDK ermöglicht außerdem Features wie Ressourcensperren und Diagnoseprotokolle für Vorgänge auf der Steuerungsebene. Von Clients, die eine Verbindung aus dem Azure Cosmos DB SDK herstellen, können keine Eigenschaften für Azure Cosmos-Konten, Datenbanken, Container und Durchsatz geändert werden. Die Vorgänge, bei denen Daten aus Cosmos-Containern gelesen oder in Cosmos-Container geschrieben werden, sind davon nicht betroffen.
 
 Wenn dieses Feature aktiviert ist, können Änderungen an Ressourcen nur von einem Benutzer mit der richtigen Azure-Rolle und entsprechenden Azure Active Directory-Anmeldeinformationen vorgenommen werden. Dies schließt auch verwaltete Dienstidentitäten mit ein.
 
@@ -73,7 +70,7 @@ Durch diese Einstellung werden sämtliche Cosmos-Ressourcenänderungen durch Cli
 
 - Ändern von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen
 
-Wenn Ihre Anwendungen (oder Benutzer über das Azure-Portal) eine dieser Aktionen ausführen, müssen sie für die Ausführung mithilfe von [ARM-Vorlagen](./manage-with-templates.md), per [PowerShell](manage-with-powershell.md), über die [Azure CLI](manage-with-cli.md), mithilfe von REST oder per [Azure-Verwaltungsbibliothek](https://github.com/Azure-Samples/cosmos-management-net) migriert werden. Beachten Sie, dass die Azure-Verwaltung in [mehreren Sprachen](/azure/index.yml?product=developer-tools#languages-and-tools) verfügbar ist.
+Wenn Ihre Anwendungen (oder Benutzer über das Azure-Portal) eine dieser Aktionen ausführen, müssen sie für die Ausführung mithilfe von [ARM-Vorlagen](sql/manage-with-templates.md), per [PowerShell](sql/manage-with-powershell.md), über die [Azure CLI](sql/manage-with-cli.md), mithilfe von REST oder per [Azure-Verwaltungsbibliothek](https://github.com/Azure-Samples/cosmos-management-net) migriert werden. Beachten Sie, dass die Azure-Verwaltung in [mehreren Sprachen](/azure/?product=featured#languages-and-tools) verfügbar ist.
 
 ### <a name="set-via-arm-template"></a>Festlegen per ARM-Vorlage
 

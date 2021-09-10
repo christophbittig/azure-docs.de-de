@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 06/07/2021
+ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 576bc21791d088a736044a0111c25dc97c57b059
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 0190d5501b95c0c70606978586edf30ff3d39b79
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854808"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676606"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -149,6 +149,11 @@ Sie müssen das Plug-In „yum-security“ installieren, um Updates in Version 
 Wenn Sie die Ausführung eines Updates auf einem Linux-Computer planen, um z. B. nur Updates zu installieren, die der Klassifizierung **Sicherheit** entsprechen, unterscheiden sich die installierten Updates von den Updates, die dieser Klassifizierung entsprechen, oder sie sind eine Teilmenge davon. Wenn eine Bewertung der ausstehenden Betriebssystemupdates für Ihren Linux-Computer durchgeführt wird, werden [OVAL](https://oval.mitre.org/)-Dateien (Open Vulnerability and Assessment Language), die vom Linux-Distributionsanbieter bereitgestellt werden, von der Updateverwaltung für die Klassifizierung verwendet.
 
 Die Kategorisierung erfolgt für Linux-Updates in **Sicherheit** oder **Sonstiges** und basiert auf den OVAL-Dateien, die Updates enthalten, die Sicherheitsprobleme oder Sicherheitsrisiken beheben. Wenn aber der Zeitplan für Updates ausgeführt wird, wird er auf dem Linux-Computer ausgeführt, wobei er den geeigneten Paket-Manager wie YUM, APT oder ZYPPER verwendet, um diese zu installieren. Der Paket-Manager für die Linux-Distribution verfügt möglicherweise über einen anderen Mechanismus zum Klassifizieren von Updates, sodass sich die Ergebnisse von denen, die die Updateverwaltung über die OVAL-Dateien erzielt hat, unterscheiden können. Informationen dazu, wie Sie den Computer manuell überprüfen und verstehen, welche Updates vom Paket-Manager als sicherheitsrelevant eingestuft werden, finden Sie unter [Problembehandlung für die Bereitstellung von Linux-Updates](../troubleshoot/update-management.md#updates-linux-installed-different).
+
+>[!NOTE]
+> Die Bereitstellung von Updates nach Updateklassifizierung funktioniert möglicherweise nicht ordnungsgemäß für Linux-Distributionen, die von der Updateverwaltung unterstützt werden. Dies ist das Ergebnis eines Problems mit dem Namensschema der OVAL-Datei, das verhindert, dass die Updateverwaltung Klassifizierungen basierend auf Filterregeln ordnungsgemäß abgleicht. Aufgrund der unterschiedlichen Logik, die bei Bewertungen von Sicherheitsupdates verwendet wird, können sich die Ergebnisse von den bei der Bereitstellung angewendeten Sicherheitsupdates unterscheiden. Wenn Sie die Klassifizierung als **Kritisch** und **Sicherheit** festgelegt haben, funktioniert die Updatebereitstellung wie erwartet. Nur die *Klassifizierung von Updates* während einer Bewertung ist betroffen.
+>
+> Die Updateverwaltung für Windows Server-Computer bleibt davon unberührt, und die Updateklassifizierung und Bereitstellungen bleiben unverändert.
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Integrieren der Updateverwaltung in Configuration Manager
 

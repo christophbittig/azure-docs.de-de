@@ -3,15 +3,15 @@ title: Herstellen einer Verbindung mit virtuellen Azure-Netzwerken mithilfe eine
 description: Hier erfahren Sie, wie Sie eine Integrationsdienstumgebung (ISE) erstellen, die von Azure Logic Apps auf virtuelle Azure-Netzwerke (VNETs) zugreifen kann.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/21/2021
-ms.openlocfilehash: 37cbcae47db9c44a39484edfde5e56d916bcaf36
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 08/11/2021
+ms.openlocfilehash: 3b715c15eb889d04c87a654fd68b802a53e7af01
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345770"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -24,7 +24,16 @@ Bei der Erstellung einer ISE wird diese ISE von Azure in Ihr virtuelles Azure-Ne
 > [!IMPORTANT]
 > Damit Logik-Apps und Integrationskonten in einer ISE zusammenarbeiten können, muss jeweils *dieselbe ISE* als Speicherort genutzt werden.
 
-Eine ISE weist auch höhere Grenzwerte für Laufzeiten, Speicheraufbewahrung, Durchsatz, Zeitlimits für HTTP-Anforderungen und -Antworten, Nachrichtengrößen und benutzerdefinierte Connectoranforderungen auf. Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md). Weitere Informationen zu ISEs finden Sie unter [Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+Für eine Integrationsdienstumgebung gelten erhöhte Grenzwerte für:
+
+* Ausführungsdauer
+* Aufbewahrungsdauer im Speicher
+* Throughput
+* Timeouts für HTTP-Anforderung und -Antwort
+* Nachrichtengrößen
+* Anforderungen für benutzerdefinierte Connectors
+
+Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md). Weitere Informationen zu ISEs finden Sie unter [Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 In diesem Artikel wird gezeigt, wie die folgenden Aufgaben mithilfe des Azure-Portals ausgeführt werden:
 
@@ -32,7 +41,7 @@ In diesem Artikel wird gezeigt, wie die folgenden Aufgaben mithilfe des Azure-Po
 * Erstellen Sie Ihre ISE.
 * Fügen Sie Ihrer ISE zusätzliche Kapazität hinzu.
 
-Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) verwenden, oder indem Sie die Logic Apps-REST-API verwenden, einschließlich der Einrichtung kundenseitig verwalteter Schlüssel:
+Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment) verwenden, oder indem Sie die Logic Apps-REST-API verwenden, einschließlich der Einrichtung kundenseitig verwalteter Schlüssel:
 
 * [Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md)
@@ -42,7 +51,7 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
 * Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
   > [!IMPORTANT]
-  > Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
+  > Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#ise-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
 
 * Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit *vier* leeren Subnetzen. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von den folgenden internen und ausgeblendeten Komponenten verwendet:
 
@@ -55,19 +64,9 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
 
   * Stellen Sie sicher, dass Ihr virtuelles Netzwerk [den Zugriff für Ihre ISE ermöglicht](#enable-access), damit Ihre ISE ordnungsgemäß funktioniert und zugänglich ist.
 
-  * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) und [Tunnelerzwingung](../firewall/forced-tunneling.md) verwenden oder verwenden möchten, müssen Sie [eine Routingtabelle erstellen](../virtual-network/manage-route-table.md). Diese muss die folgende spezifische Route enthalten und mit jedem Subnetz verknüpft werden, das von Ihrer ISE verwendet wird:
-
-    **Name**: <*Routenname*><br>
-    **Adresspräfix**: 0.0.0.0/0<br>
-    **Nächster Hop:** Internet
-    
-    Diese spezielle Routingtabelle ist erforderlich, damit Logic Apps-Komponenten mit anderen abhängigen Azure-Diensten wie Azure Storage und Azure SQL-Datenbank kommunizieren können. Weitere Informationen zu dieser Route finden Sie unter [Adresspräfix 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route). Falls Sie keine Tunnelerzwingung mit ExpressRoute verwenden, ist diese spezielle Routingtabelle nicht erforderlich.
-    
-    ExpressRoute ermöglicht die Erweiterung Ihrer lokalen Netzwerke in die Microsoft-Cloud sowie die Verbindungsherstellung mit Microsoft Cloud Services über eine private, durch den Konnektivitätsanbieter bereitgestellte Verbindung. Bei ExpressRoute handelt es sich um ein virtuelles privates Netzwerk, das Datenverkehr nicht über das öffentliche Internet, sondern über ein privates Netzwerk weiterleitet. Von Ihren Logik-Apps kann eine Verbindung mit lokalen Ressourcen im gleichen virtuellen Netzwerk hergestellt werden, wenn sie eine Verbindung über ExpressRoute oder über ein virtuelles privates Netzwerk herstellen.
-   
   * Achten Sie bei Verwendung eines [virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined) darauf, nicht die TLS/SSL-Terminierung zu aktivieren oder den ausgehenden TLS/SSL-Datenverkehr zu ändern. Achten Sie außerdem darauf, die Überprüfung für Datenverkehr aus dem Subnetz Ihrer ISE nicht zu aktivieren. Weitere Informationen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md).
 
-  * Wenn Sie benutzerdefinierte DNS-Server für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie diese Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre ISE in Ihrem virtuellen Netzwerk bereitstellen. Weitere Informationen zum Verwalten von DNS-Servereinstellungen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#change-dns-servers).
+  * Wenn Sie benutzerdefinierte DNS-Server (Domain Name System) für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie die Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre Integrationsdienstumgebung in Ihrem virtuellen Netzwerk bereitstellen. Weitere Informationen zum Verwalten von DNS-Servereinstellungen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
     > [!NOTE]
     > Wenn Sie Ihren DNS-Server oder die DNS-Servereinstellungen ändern, müssen Sie die ISE neu starten, damit die Änderungen übernommen werden. Weitere Informationen finden Sie unter [Neustarten der ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
@@ -122,7 +121,8 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 | Zweck | Quelldiensttag oder IP-Adressen | Quellports | Zieldiensttag oder IP-Adressen | Zielports | Notizen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Kommunikation zwischen Subnetzen innerhalb des virtuellen Netzwerks | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Adressraum für das virtuelle Netzwerk mit ISE-Subnetzen | * | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig**: Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
-| Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Variiert abhängig vom Ziel | Variiert abhängig vom Ziel | Zielports variieren je nach den Endpunkten für die externen Dienste, mit denen Ihre Logik-App kommunizieren muss. <p><p>Beispielsweise ist der Zielport 443 für einen Webdienst, Port 25 für einen SMTP-Dienst Port 25, für einen SFTP-Dienst Port 22 usw. |
+| Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Internet | 443, 80 | Diese Regel wird für die SSL-Zertifikatüberprüfung (Secure Socket Layer) benötigt. Diese Überprüfung erfolgt für verschiedene interne und externe Websites, deshalb ist „Internet“ als Ziel erforderlich. |
+| Kommunikation von Ihrer Logik-App | **VirtualNetwork** | * | Variiert abhängig vom Ziel | Variiert abhängig vom Ziel | Zielports variieren je nach den Endpunkten für die externen Dienste, mit denen Ihre Logik-App kommunizieren muss. <p><p>Beispielsweise lautet der Zielport für einen SMTP-Dienst 25, für einen SFTP-Dienst wird Port 22 verwendet usw. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure Storage-Abhängigkeit | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
 | Verbindungsverwaltung | **VirtualNetwork** | * | **AppService** | 443 ||
@@ -151,12 +151,12 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 * Benutzerdefinierte Routen
 
   Um asymmetrisches Routing zu verhindern, müssen Sie für jede unten aufgeführte IP-Adresse eine Route mit **Internet** als nächstem Hop definieren.
-  
-  * [App Service-Umgebung Management-Adressen](../app-service/environment/management-addresses.md)
+
+  * [Eingehende und ausgehende Logic Apps-Adressen für die ISE-Region](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)  
   * [Azure-IP-Adressen für Connectors in der ISE-Region, die in dieser Downloaddatei verfügbar sind](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [App Service-Umgebung Management-Adressen](../app-service/environment/management-addresses.md)  
   * [Azure Traffic Manager-Verwaltungsadressen](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [Eingehende und ausgehende Logic Apps-Adressen für die ISE-Region](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
-  * [Azure-IP-Adressen für Connectors in der ISE-Region, die sich in dieser Downloaddatei befinden](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [IP-Adressen der Azure API Management-Steuerungsebene](../api-management/api-management-using-with-vnet.md#control-plane-ips)
 
 * Dienstendpunkte
 
@@ -276,7 +276,7 @@ Wenn Sie den Zugriff für diese Abhängigkeiten nicht zulassen, tritt ein Fehler
 
 1. Um Ihre Umgebung anzuzeigen, wählen Sie **Zu Ressource wechseln** aus, wenn Azure nach Abschluss der Bereitstellung nicht automatisch zu Ihrer Umgebung wechselt.
 
-1. Für eine ISE, die Zugriff auf einen *externen* Endpunkt hat, müssen Sie eine Netzwerksicherheitsgruppe erstellen, wenn Sie noch keine besitzen, und eine Eingangssicherheitsregel hinzufügen, um Datenverkehr von IP-Adressen für ausgehenden Datenverkehr des verwalteten Connectors zuzulassen. Eine Regel kann wie folgt eingerichtet werden:
+1. Für eine Dienstintegrationsumgebung mit Zugriff auf einen *externen* Endpunkt müssen Sie eine Netzwerksicherheitsgruppe (NSG) erstellen, falls noch keine vorhanden ist. Sie müssen der NSG eine Eingangssicherheitsregel hinzufügen, um Datenverkehr von ausgehenden IP-Adressen des verwalteten Connectors zuzulassen. Eine Regel kann wie folgt eingerichtet werden:
 
    1. Wählen Sie im ISE-Menü unter **Einstellungen** die Option **Eigenschaften** aus.
 

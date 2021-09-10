@@ -1,32 +1,32 @@
 ---
-title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests
-description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen.
+title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests (veraltet)
+description: Der (veraltete) Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen.
 author: twooley
 ms.author: twooley
-ms.date: 07/16/2020
+ms.date: 07/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 812694ef96e60a9cc52dd9ab94408e3f90fd6d93
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2ff639cd19a97d2e3a5ef730c774f8c967cfa6c3
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677230"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203799"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
+# <a name="use-the-azure-storage-emulator-for-development-and-testing-deprecated"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests (veraltet)
 
 Der Microsoft Azure-Speicheremulator ist ein Tool zum Emulieren der Azure Blob-, -Warteschlangen- und -Tabellendienste für die lokale Entwicklung. Sie können die Anwendung mit den Speicherdiensten lokal testen, ohne ein Azure-Abonnement zu erstellen oder Kosten zu verursachen. Wenn Ihre Anwendung im Emulator erwartungsgemäß funktioniert, können Sie ein Azure-Speicherkonto in der Cloud verwenden.
 
 > [!IMPORTANT]
-> Der Azure-Speicheremulator wird nicht mehr aktiv entwickelt. [**Azurite**](storage-use-azurite.md) ist die Plattform für den Speicheremulator, die zukünftig verwendet wird. Azurite ersetzt den Azure-Speicheremulator. Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen. Weitere Informationen finden Sie unter [**Verwenden des Azurite-Emulators für lokale Azure Storage-Entwicklung**](storage-use-azurite.md).
+> Der Azure-Speicheremulator gilt jetzt als veraltet. Microsoft empfiehlt die Verwendung des [**Azurite**](storage-use-azurite.md)-Emulators für die lokale Entwicklung mit Azure Storage. Azurite ersetzt den Azure-Speicheremulator. Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen. Weitere Informationen finden Sie unter [**Verwenden des Azurite-Emulators für lokale Azure Storage-Entwicklung**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>Abrufen des Speicheremulators
 
 Der Speicheremulator ist als Teil des [Microsoft Azure-SDK](https://azure.microsoft.com/downloads/) verfügbar. Sie können den Speicheremulator auch mithilfe des [eigenständigen Installationsprogramms](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) installieren (direkter Download). Zum Installieren des Speicheremulators benötigen Sie Administratorrechte auf Ihrem Computer.
 
-Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Wenn Sie einen Speicheremulator für Linux benötigen, können Sie beispielsweise den von der Community gepflegten Open-Source-Speicheremulator[Azurite](https://github.com/azure/azurite) verwenden.
+Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Verwenden Sie für die Emulation unter Linux den [Azurite](https://github.com/azure/azurite)-Emulator.
 
 > [!NOTE]
 > Der Zugriff auf die Daten, die in einer bestimmten Version des Speicheremulators erstellt wurden, ist bei Verwendung einer anderen Version nicht garantiert. Wenn Sie die Daten langfristig beibehalten möchten, sollten Sie diese Daten in einem Azure-Speicherkonto und nicht im Speicheremulator speichern.

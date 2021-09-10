@@ -3,16 +3,16 @@ title: Integrieren von Azure Security Center in Azure VMware Solution
 description: Erfahren Sie, wie Sie Ihre Azure VMware Solution-VMs über das Azure Security Center-Dashboard mit den nativen Sicherheitstools von Azure schützen.
 ms.topic: how-to
 ms.date: 06/14/2021
-ms.openlocfilehash: 6060be11ada028234b11e74f56de8c9741fc4cd4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9c7326fca3aeebf277b5f54a65729e2594933984
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754239"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350860"
 ---
 # <a name="integrate-azure-security-center-with-azure-vmware-solution"></a>Integrieren von Azure Security Center in Azure VMware Solution 
 
-Azure Security Center bietet erweiterten Bedrohungsschutz für Azure VMware Solution-VMs und lokale virtuelle Computer. Es bewertet das Sicherheitsrisiko von Azure VMware Solution-VMs und gibt bei Bedarf Warnungen aus. Diese Sicherheitswarnungen können zur Behebung an Azure Monitor weitergeleitet werden. Sie können in Azure Security Center Sicherheitsrichtlinien definieren. Weitere Informationen finden Sie unter [Arbeiten mit Sicherheitswarnungen](../security-center/tutorial-security-policy.md). 
+Azure Security Center bietet erweiterten Bedrohungsschutz für Azure VMware Solution-VMs und lokale virtuelle Computer. Die Lösung bewertet das Sicherheitsrisiko von Azure VMware Solution-VMs und gibt bei Bedarf Warnungen aus. Diese Sicherheitswarnungen können zur Behebung an Azure Monitor weitergeleitet werden. Sie können in Azure Security Center Sicherheitsrichtlinien definieren. Weitere Informationen finden Sie unter [Arbeiten mit Sicherheitswarnungen](../security-center/tutorial-security-policy.md). 
 
 Azure Security Center bietet viele Features. Dazu gehören:
 - Überwachung der Dateiintegrität
@@ -25,6 +25,7 @@ Das Diagramm zeigt die integrierte Überwachungsarchitektur der integrierten Sic
  
 :::image type="content" source="media/azure-security-integration/azure-integrated-security-architecture.png" alt-text="Diagramm: Architektur der integrierten Azure-Sicherheit" border="false":::
 
+Der **Log Analytics-Agent** erfasst Protokolldaten aus Azure, Azure VMware Solution und lokalen VMs. Die Protokolldaten werden an Azure Monitor-Protokolle gesendet und in einem **Log Analytics-Arbeitsbereich** gespeichert. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration zum Speichern von Daten.  Nachdem die Protokolle erfasst wurden, bewertet **Azure Security Center** den Sicherheitsrisikostatus von Azure VMware Solution-VMs und löst bei jedem kritischen Sicherheitsrisiko eine Warnung aus. Nach der Bewertung leitet Azure Security Center das Sicherheitsrisiko an Azure Sentinel weiter, damit dort ein Incident erstellt wird und eine Zuordnung zu anderen Bedrohungen erfolgt.  Azure Security Center ist über den Azure Security Center-Connector mit Azure Sentinel verbunden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +38,7 @@ Das Diagramm zeigt die integrierte Überwachungsarchitektur der integrierten Sic
 - [Aktivieren Sie Azure Security Center für Ihr Abonnement](../security-center/security-center-get-started.md). 
 
    >[!NOTE]
-   >Azure Security Center ist ein vorkonfiguriertes Tool, für das keine Bereitstellung erforderlich ist, das aber im Azure-Portal aktiviert werden muss.
+   >Azure Security Center ist ein vorkonfiguriertes Tool, das keine Bereitstellung erfordert, aber im Azure-Portal aktiviert werden muss.
 
 - [Aktivieren Sie Azure Defender](../security-center/enable-azure-defender.md). 
 
@@ -48,11 +49,11 @@ Das Diagramm zeigt die integrierte Überwachungsarchitektur der integrierten Sic
 
 2. Klicken Sie unter „Ressourcen“ auf **Server** und dann auf **+Hinzufügen**.
 
-   :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Screenshot der Azure Arc-Seite „Server“ zum Hinzufügen einer Azure VMware Solution-VM zu Azure":::
+   :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Screenshot: Azure Arc-Seite „Server“ zum Hinzufügen einer Azure VMware Solution-VM zu Azure":::
 
 3. Wählen Sie **Skript generieren** aus.
  
-   :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Screenshot einer Azure Arc-Seite mit der Option zum Hinzufügen eines Servers mithilfe eines interaktiven Skripts"::: 
+   :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Screenshot: Azure Arc-Seite mit der Option zum Hinzufügen eines Servers über ein interaktives Skript"::: 
  
 4. Klicken Sie auf der Registerkarte **Voraussetzungen** auf **Weiter**.
 
@@ -76,23 +77,25 @@ Das Diagramm zeigt die integrierte Überwachungsarchitektur der integrierten Sic
 
 ## <a name="view-recommendations-and-passed-assessments"></a>Anzeigen von Empfehlungen und bestandenen Bewertungen
 
-Damit erhalten Sie Details zur Sicherheitsintegrität Ihrer Ressource. 
+Empfehlungen und Bewertungen bieten Ihnen Details zur Sicherheitsintegrität Ihrer Ressource. 
 
 1. Wählen Sie in Azure Security Center **Inventar** aus.
 
 2. Wählen Sie als Ressourcentyp **Server – Azure Arc** aus.
  
-   :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Screenshot der Azure Security Center-Seite „Inventar“ mit der unter „Ressourcentyp“ ausgewählten Option „Server – Azure Arc“":::
+   :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Screenshot: Azure Security Center-Seite „Inventar“ mit der unter „Ressourcentyp“ ausgewählten Option „Server – Azure Arc“":::
 
 3. Wählen Sie den Namen Ihrer Ressource aus. Daraufhin wird eine Seite geöffnet, auf die Details zur Sicherheitsintegrität Ihrer Ressource angezeigt werden.
 
 4. Wählen Sie unter **Empfehlungsliste** die Registerkarten **Empfehlungen**, **Bestandene Bewertungen** und **Nicht verfügbare Bewertungen** aus, um die jeweiligen Details anzuzeigen.
 
-   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Screenshot von Azure Security Center mit Sicherheitsempfehlungen und -bewertungen":::
+   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Screenshot: Azure Security Center mit Sicherheitsempfehlungen und -bewertungen":::
 
 ## <a name="deploy-an-azure-sentinel-workspace"></a>Bereitstellen eines Azure Sentinel-Arbeitsbereichs
 
-Da Azure Sentinel auf einem Log Analytics-Arbeitsbereich basiert, müssen Sie lediglich den Log Analytics-Arbeitsbereich auswählen, den Sie verwenden möchten.
+Azure Sentinel bietet Sicherheitsanalysen, Warnungserkennung und automatisierte Reaktionen auf Bedrohungen innerhalb einer Umgebung. Es handelt sich um eine cloudnative SIEM-Lösung (Security Information & Event Management), der ein Log Analytics-Arbeitsbereich zugrunde liegt.
+
+Da Azure Sentinel auf einem Log Analytics-Arbeitsbereich basiert, müssen Sie lediglich den Arbeitsbereich auswählen, den Sie verwenden möchten.
 
 1. Suchen Sie im Azure-Portal nach **Azure Sentinel**, und wählen Sie den Eintrag aus.
 
@@ -112,6 +115,9 @@ Da Azure Sentinel auf einem Log Analytics-Arbeitsbereich basiert, müssen Sie le
 
    :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Screenshot der Azure Sentinel-Seite „Sicherheitsereignisse“, auf der Sie die zu streamenden Ereignisse auswählen können":::
 
+
+
+
 ## <a name="connect-azure-sentinel-with-azure-security-center"></a>Verbinden von Azure Sentinel mit Azure Security Center  
 
 1. Wählen Sie auf der Seite der Azure Sentinel-Arbeitsbereiche den konfigurierten Arbeitsbereich aus.
@@ -120,7 +126,7 @@ Da Azure Sentinel auf einem Log Analytics-Arbeitsbereich basiert, müssen Sie le
 
 3. Wählen Sie **Azure Security Center** aus der Liste aus, und klicken Sie dann auf **Connectorseite öffnen**.
 
-    :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Screenshot der Seite „Datenconnectors“ in Azure Sentinel mit der Auswahl zum Herstellen einer Verbindung zwischen Azure Security Center und Azure Sentinel":::
+   :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Screenshot der Seite „Datenconnectors“ in Azure Sentinel mit der Auswahl zum Herstellen einer Verbindung zwischen Azure Security Center und Azure Sentinel":::
 
 4. Klicken Sie auf **Verbinden**, um Azure Security Center mit Azure Sentinel zu verbinden.
 
@@ -148,7 +154,7 @@ Nachdem Sie Datenquellen mit Azure Sentinel verbunden haben, können Sie Regeln 
 
     - Status
 
-5. Geben Sie auf der Registerkarte **Regellogik festlegen** die erforderlichen Informationen ein, und wählen Sie dann **Weiter** aus.
+5. Geben Sie auf der Registerkarte **Regellogik festlegen** die erforderlichen Informationen ein, und klicken Sie dann auf **Weiter**.
 
     - Regelabfrage (gezeigt wird die Beispielabfrage)
     
@@ -172,11 +178,11 @@ Nachdem Sie Datenquellen mit Azure Sentinel verbunden haben, können Sie Regeln 
 
 6. Aktivieren Sie auf der Registerkarte **Incidenteinstellungen** die Option **Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden**, und wählen Sie **Weiter: Automatisierte Antwort** aus.
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Screenshot des Analyseregel-Assistenten zum Erstellen einer neuen Regel in Azure Sentinel mit aktivierter Option „Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden“":::
+    :::image type="content" source="../sentinel/media/tutorial-detect-threats-custom/general-tab.png" alt-text="Screenshot: Analyseregel-Assistent zum Erstellen einer neuen Regel in Azure Sentinel":::
 
 7. Klicken Sie auf **Weiter: Review** (Weiter: Überprüfen).
 
-8. Überprüfen Sie die Informationen auf der Registerkarte **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus.
+8. Überprüfen Sie die Informationen auf der Registerkarte **Überprüfen + erstellen**, und klicken Sie auf **Erstellen**.
 
 >[!TIP]
 >Nach dem dritten fehlerhaften Anmeldeversuch beim Windows-Server löst die erstellte Regel einen Incident für jeden erfolglosen Versuch aus.
@@ -203,9 +209,9 @@ Sie können Abfragen erstellen oder vordefinierte Abfragen in Azure Sentinel ver
 1. Wählen Sie auf der Azure Sentinel-Übersichtsseite unter „Bedrohungsverwaltung“ die Option **Suche** aus. Eine Liste vordefinierter Abfragen wird angezeigt.
 
    >[!TIP]
-   >Sie können auch eine neue Abfrage erstellen, indem Sie **+ Neue Abfrage** auswählen. 
+   >Sie können auch eine neue Abfrage erstellen, indem Sie **Neue Abfrage** auswählen. 
    >
-   >:::image type="content" source="media/azure-security-integration/create-new-query.png" alt-text="Screenshot der Azure Sentinel-Seite für das Hunting mit hervorgehobener Option „+Neue Abfrage“":::
+   >:::image type="content" source="../sentinel/media/hunting/save-query.png" alt-text="Screenshot der Azure Sentinel-Seite für das Hunting mit hervorgehobener Option „+Neue Abfrage“":::
 
 3. Wählen Sie eine Abfrage aus, und klicken Sie dann auf **Abfrage ausführen**.
 

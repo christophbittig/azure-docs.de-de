@@ -3,14 +3,14 @@ title: Verwenden dynamischer Gruppen mit Azure Automation-Updateverwaltung
 description: In diesem Artikel wird beschrieben, wie Sie dynamische Gruppen mit der Azure Automation-Updateverwaltung verwenden.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 06/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b09def53b32d9616ddab541b3448f863b6ec781a
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575918"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520530"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Verwenden dynamischer Gruppen mit der Updateverwaltung
 
@@ -46,6 +46,9 @@ Klicken Sie auf **Vorschau**, um die Ergebnisse Ihrer Abfrage für die dynamisch
 Bei Verwendung einer dynamischen Gruppe für nicht zu Azure gehörende Computer werden gespeicherte Suchen genutzt, die auch als Computergruppen bezeichnet werden. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group). Nachdem Ihre gespeicherte Suche erstellt wurde, können Sie sie im Azure-Portal unter **Updateverwaltung** in der Liste mit den gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau für die Computer in der gespeicherten Suche anzuzeigen.
 
 ![Der Screenshot zeigt die Seite „Gruppen auswählen“ für Nicht-Azure (Vorschau) und den Vorschaubereich auf der rechten Seite.](./media/configure-groups/select-groups-2.png)
+
+> [!NOTE]
+> Eine gespeicherte Suche, [die in mehreren Log Analytics-Arbeitsbereichen gespeicherte Daten abfragt](../../azure-monitor/logs/cross-workspace-query.md), wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

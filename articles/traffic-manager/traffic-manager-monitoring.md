@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 455eeb83ef5a9608c077de24b8d3d4722d26a822
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce4ff8cfa4bee895e17cd7ad22c54ff777d210ff
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742708"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435180"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -29,6 +29,9 @@ Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellung
 * **Port**: Wählen Sie den Port aus, der für die Anforderung verwendet wird.
 * **-Path:** Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
 * **Benutzerdefinierte Headereinstellungen**. Diese Konfigurationseinstellung hilft Ihnen, bestimmte HTTP-Header den Integritätsüberprüfungen hinzuzufügen, die Traffic Manager an Endpunkte unter einem Profil sendet. Die benutzerdefinierten Header können auf Profilebene so festgelegt werden, dass sie für alle Endpunkte in diesem Profil gelten und/oder auf einer Endpunktebene, die nur für diesen Endpunkt gilt. Sie können benutzerdefinierte Header für Integritätsüberprüfungen von Endpunkten in einer mehrinstanzenfähigen Umgebung verwenden. Auf diese Weise können sie durch Angabe eines Hostheaders ordnungsgemäß an ihr Ziel weitergeleitet werden. Sie können mit dieser Einstellung auch eindeutige Header hinzufügen, mit denen Sie von Traffic Manager stammende HTTP(S)-Anforderungen identifizieren und unterschiedlich verarbeiten können. Sie können bis zu acht Header-Wert-Paare durch Trennzeichen getrennt angeben. Beispiel: „header1:wert1,header2:wert2“. 
+
+   > HINWEIS: Die Verwendung von Sternchen (\*) in benutzerdefinierten `Host`-Headern wird nicht unterstützt.
+
 * **Erwartete Statuscodebereiche**. Mit dieser Einstellung können Sie mehrere Erfolgscodebereiche im Format 200-299, 301-301 angeben. Wenn diese Statuscodes als Antwort von einem Endpunkt empfangen werden, wenn eine Integritätsprüfung erfolgt, markiert Traffic Manager diese Endpunkte als fehlerfrei. Sie können maximal acht Statuscodebereiche angeben. Diese Einstellung gilt nur für das HTTP- und HTTPS-Protokoll sowie für alle Endpunkte. Diese Einstellung bezieht sich auf die Traffic Manager-Profilebene und standardmäßig ist der Wert 200 als Erfolgsstatuscode definiert.
 * **Testintervall**: Dieser Wert gibt an, wie oft die Integrität eines Endpunkts mit einem Test-Agent von Traffic Manager überprüft wird. Sie können hier zwei Werte angeben: 30 Sekunden (Standardtest) und 10 Sekunden (schneller Test). Wenn keine Werte angegeben sind, wird für das Profil ein Standardwert von 30 Sekunden festgelegt. Weitere Informationen zu den Preisen für schnelle Tests finden Sie auf der Seite [Traffic Manager – Preise](https://azure.microsoft.com/pricing/details/traffic-manager).
 * **Tolerierte Anzahl von Fehlern**: Dieser Wert gibt an, wie viele Fehler von einem Traffic Manager-Test-Agent toleriert werden, bevor der Endpunkt als fehlerhaft markiert wird. Der Wert kann zwischen 0 und 9 liegen. Der Wert 0 bedeutet, dass der Endpunkt schon bei nur einem Überwachungsfehler als fehlerhaft markiert werden kann. Wenn kein Wert angegeben ist, wird der Standardwert 3 verwendet.

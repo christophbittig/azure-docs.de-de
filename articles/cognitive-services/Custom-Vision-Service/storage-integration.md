@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: 9f97cc036d9d576a75bc3f7d5eede61a3262e90e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f21313a357c5c86087d3505cfdf654d9958d3893
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078236"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982364"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrieren von Azure-Speicher für Benachrichtigungen und Sicherungen
 
@@ -28,19 +28,18 @@ In diesem Leitfaden wird veranschaulicht, wie Sie diese REST-APIs mit cURL verwe
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Custom Vision-Ressource in Azure. Falls Sie nicht über diese Ressource verfügen, wechseln Sie zum Azure-Portal und [erstellen eine neue Custom Vision-Ressource](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Von diesem Feature wird die Cognitive Service-Ressource (All-in-One-Schlüssel) derzeit nicht unterstützt.
-- Ein Azure Storage-Konto mit einem Blobcontainer. Befolgen Sie diese [Storage-Schnellstartanleitung](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal), wenn Sie Hilfe zu diesem Schritt benötigen.
+- Ein Azure Storage-Konto mit einem Blobcontainer. Befolgen Sie diese [Storage-Schnellstartanleitung](../../storage/blobs/storage-quickstart-blobs-portal.md), wenn Sie Hilfe zu diesem Schritt benötigen.
 - [PowerShell ab Version 6.0](/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
 
 ## <a name="set-up-azure-storage-integration"></a>Einrichten der Azure-Speicherintegration
 
 Navigieren Sie im Azure-Portal zu Ihrer Custom Vision-Trainingsressource, wählen Sie die Seite **Identität** aus, und aktivieren Sie die systemseitig zugewiesene verwaltete Identität.
 
-Navigieren Sie als Nächstes im Azure-Portal zu Ihrer Speicherressource. Navigieren Sie zur Seite **Zugriffssteuerung (IAM)** , und fügen Sie eine Rollenzuweisung für jedes Integrationsfeature hinzu:
-* Wählen Sie Ihre Custom Vision-Trainingsressource aus, und weisen Sie die Rolle **Mitwirkender an Storage-Blobdaten** zu, wenn Sie die Verwendung des Features für die Modellsicherung planen. 
-* Wählen Sie anschließend Ihre Custom Vision-Trainingsressource erneut aus, und weisen Sie die Rolle **Mitwirkender an Storage-Warteschlangendaten** zu, wenn Sie die Verwendung des Features für die Benachrichtigungswarteschlange planen.
+Navigieren Sie als Nächstes im Azure-Portal zu Ihrer Speicherressource. Wechseln Sie zur Seite **Zugriffssteuerung (IAM)** , und wählen Sie dann **Rollenzuweisung hinzufügen (Vorschau)** aus. Fügen Sie dann eine Rollenzuweisung für eines der beiden oder für beide Integrationsfeatures hinzu:
+* Wenn Sie die Verwendung des Features für die Modellsicherung planen, wählen Sie die Rolle **Mitwirkender an Storage-Blobdaten** aus, und fügen Sie Ihre Custom Vision-Trainingsressource als Mitglied hinzu. Wählen Sie zum Abschließen **Überprüfen + zuweisen** aus.
+* Wenn Sie die Verwendung des Features für die Benachrichtigungswarteschlange planen, wählen Sie die Rolle **Mitwirkender an Storage-Warteschlangendaten** aus, und fügen Sie Ihre Custom Vision-Trainingsressource als Mitglied hinzu. Wählen Sie zum Abschließen **Überprüfen + zuweisen** aus.
 
-> [!div class="mx-imgBorder"]
-> ![Speicherkonto: Seite „Rollenzuweisung hinzufügen“](./media/storage-integration/storage-access.png)
+Hilfe zu Rollenzuweisungen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 ### <a name="get-integration-urls"></a>Abrufen von Integrations-URLs
 

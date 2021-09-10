@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3eddd53d8b1d4ff59f27535a070924cf0e86c5a7
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 0374c2da7cda001da779c42cacaf11db6f797356
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904413"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587389"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Einrichten des aggregierten Namespace
 
@@ -115,7 +115,7 @@ Die für den update-Befehl verwendeten Optionen ähneln denen vom create-Befehl,
 
 ---
 
-### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS-Namespacepfade (Vorschau)
+### <a name="adls-nfs-namespace-paths"></a>ADLS-NFS-Namespacepfade
 
 Wie bei einem regulären Blob Storage-Ziel hat ein ADLS-NFS-Speicherziel nur einen Export, sodass es auch nur einen Namespacepfad aufweisen kann.
 

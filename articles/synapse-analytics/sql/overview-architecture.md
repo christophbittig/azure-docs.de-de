@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f342f39b62956cd85f269918e8e1ef1a2478a3d8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e279aea4bdf0ae3bc18c2ece1556d7ad8483a2de
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566357"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217105"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-Architektur 
 
@@ -115,4 +115,4 @@ Das nachstehende Diagramm zeigt eine replizierte Tabelle, die bei der ersten Ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie jetzt etwas über Synapse SQL erfahren haben, informieren Sie sich, wie Sie schnell [einen dedizierten SQL-Pool erstellen](../quickstart-create-sql-pool-portal.md) und [Beispieldaten laden](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) können (./sql-data-warehouse-load-sample-databases.md). Oder beginnen Sie mit der [Verwendung eines serverlosen SQL-Pools](../quickstart-sql-on-demand.md). Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar](../../azure-glossary-cloud-terminology.md) sehr nützlich. 
+Nachdem Sie sich mit den Grundlagen von Synapse SQL vertraut gemacht haben, informieren Sie sich nun darüber, wie Sie innerhalb kurzer Zeit [einen dedizierten SQL-Pool erstellen](../quickstart-create-sql-pool-portal.md) und [Beispieldaten laden](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md). Oder beginnen Sie mit der [Verwendung eines serverlosen SQL-Pools](../quickstart-sql-on-demand.md). Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar](../../azure-glossary-cloud-terminology.md) sehr nützlich. 

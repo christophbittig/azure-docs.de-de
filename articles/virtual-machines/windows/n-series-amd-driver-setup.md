@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec4f09249bda14eb29d7dc9704a6096848a78557
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557419"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343131"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows
 
@@ -33,7 +33,9 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 
 | OS | Treiber |
 | -------- |------------- |
-| Windows 10 Enterprise mit mehreren Sitzungen: Build 1909 <br/><br/>Windows 10 – Build 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe) |
+| Windows 10 – Build 2009, 2004, 1909 <br/><br/>Windows 10 Enterprise mit mehreren Sitzungen – Build 2009, 2004, 1909 <br/><br/>Windows Server 2016 (Version 1607)<br/><br/>Windows Server 2019 (Version 1909) | [21.Q2](https://download.microsoft.com/download/3/4/8/3481cf8d-1706-49b0-aa09-08c9468305ab/AMD-Azure-NVv4-Windows-Driver-21Q2.exe) (EXE-Datei) |
+
+Die bisher unterstützte Treiberversion für Windows-Builds bis Version 1909 lautet [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (EXE-Datei)
 
  > [!NOTE]
    >  Wenn Sie Build 1903/1909 verwenden, müssen Sie möglicherweise die folgende Gruppenrichtlinie aktualisieren, um eine optimale Leistung zu erzielen. Diese Änderungen sind für andere Windows-Builds nicht erforderlich.
@@ -41,12 +43,12 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
    >  [Computerkonfiguration->Richtlinien->Windows-Einstellungen->Administrative Vorlagen->Windows-Komponenten->Remotedesktopdienste >-Remotedesktop-Sitzungshost->Umgebung für Remotesitzung], legen Sie für die Richtlinie [Verwenden des WDDM-Grafikanzeigetreibers für Remotedesktopverbindungen] „Deaktiviert“ fest.
    >  
 
-
+ 
 ## <a name="driver-installation"></a>Treiberinstallation
 
 1. Stellen Sie über Remotedesktop eine Verbindung mit den einzelnen virtuellen Computern der NVv4-Serie her.
 
-2. Wenn Sie die vorherige Treiberversion deinstallieren müssen, laden Sie [hier](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) das AMD-Bereinigungsprogramm herunter. Verwenden Sie nicht das Programm aus der vorherigen Treiberversion.
+2. Wenn Sie die vorherige Treiberversion deinstallieren müssen, laden Sie das [AMD-Bereinigungsprogramm](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) herunter. Verwenden Sie nicht das im Lieferumfang des vorherigen Treibers enthaltene Programm.
 
 3. Laden Sie den neuesten Treiber herunter, und installieren Sie ihn.
 

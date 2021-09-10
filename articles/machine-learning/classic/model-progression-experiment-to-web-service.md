@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Entwicklung eines Modells zu einem Webdienst – Azure'
-description: Ein Überblick darüber, wie Ihr (klassisches) Azure Machine Learning Studio-Modell sich von einem Entwicklungsexperiment zu einem Webdienst entwickelt.
+description: Ein Überblick darüber, wie Ihr Machine Learning Studio (Classic)-Modell sich von einem Entwicklungsexperiment zu einem Webdienst entwickelt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47845c8768e807dff7b12f401feeab3d35a9d81b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518622"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696693"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Entwicklung eines (klassischen) Machine Learning Studio-Modells von einem Experiment zu einem Webdienst
 
-**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich nicht auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure Machine Learning Studio (klassisch) bietet einen interaktiven Arbeitsbereich, in dem Sie ein ***Experiment*** entwickeln, ausführen, testen und durchlaufen können, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+Machine Learning Studio (Classic) bietet eine interaktive Canvas zum Entwickeln, Ausführen, Testen und Durchlaufen eines ***Experiments***, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:
 
 * Eingabe von Daten in das Experiment
 * Manipulation der Daten
@@ -29,7 +31,7 @@ Azure Machine Learning Studio (klassisch) bietet einen interaktiven Arbeitsberei
 * Auswertung der Ergebnisse
 * Ausgabe der endgültigen Werte
 
-Wenn Sie mit dem Experiment zufrieden sind, können Sie es als ***klassischen Azure Machine Learning-Webdienst** _ oder _ *_neuen Azure Machine Learning-Webdienst_** bereitstellen, damit Benutzer neue Daten an diesen senden und Ergebnisse abrufen können.
+Wenn Sie mit dem Experiment zufrieden sind, können Sie es als ***Machine Learning (Classic)-Webdienst** _ oder _ *_Azure Machine Learning-Webdienst_** bereitstellen, damit Benutzer neue Daten an diesen senden und Ergebnisse abrufen können.
 
 In diesem Artikel geben wir einen Überblick, wie Ihr Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
 
@@ -38,7 +40,7 @@ In diesem Artikel geben wir einen Überblick, wie Ihr Machine Learning-Modell si
 >
 >
 
-Azure Machine Learning Studio (Classic) ist darauf ausgerichtet, Sie beim Entwickeln und Bereitstellen eines *Vorhersageanalysemodells* zu unterstützen. Es ist jedoch auch möglich, mithilfe von Studio (Classic) ein Experiment zu entwickeln, das kein Vorhersageanalysemodell umfasst. Beispielsweise kann ein Experiment nur Daten eingeben, bearbeiten und anschließend die Ergebnisse ausgeben. Genau wie ein Vorhersageanalyseexperiment können Sie dieses Nicht-Vorhersageexperiment als Webdienst bereitstellen, es ist jedoch ein einfacherer Vorgang, da durch das Experiment kein Machine Learning-Modell trainiert oder bewertet wird. Auch wenn dies nicht das typische Einsatzgebiet von Studio (Classic) ist, wird es in diesem Thema berücksichtigt, um Ihnen eine vollständige Erläuterung der Funktionsweise von Studio (Classic) zu geben.
+Machine Learning Studio (Classic) ist darauf ausgerichtet, Sie beim Entwickeln und Bereitstellen eines *Vorhersageanalysemodells* zu unterstützen. Es ist jedoch auch möglich, mithilfe von Studio (Classic) ein Experiment zu entwickeln, das kein Vorhersageanalysemodell umfasst. Beispielsweise kann ein Experiment nur Daten eingeben, bearbeiten und anschließend die Ergebnisse ausgeben. Genau wie ein Vorhersageanalyseexperiment können Sie dieses Nicht-Vorhersageexperiment als Webdienst bereitstellen, es ist jedoch ein einfacherer Vorgang, da durch das Experiment kein Machine Learning-Modell trainiert oder bewertet wird. Auch wenn dies nicht das typische Einsatzgebiet von Studio (Classic) ist, wird es in diesem Thema berücksichtigt, um Ihnen eine vollständige Erläuterung der Funktionsweise von Studio (Classic) zu geben.
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>Entwickeln und Bereitstellen eines Vorhersagewebdiensts
 Im Folgenden sind die Phasen einer typischen Lösung aufgeführt, während Sie sie mit Machine Learning Studio (klassisch) entwickeln und bereitstellen:
@@ -48,7 +50,7 @@ Im Folgenden sind die Phasen einer typischen Lösung aufgeführt, während Sie s
 *Abbildung 1: Phasen eines typischen Vorhersageanalysemodells*
 
 ### <a name="the-training-experiment"></a>Das Trainingsexperiment
-Das ***Trainingsexperiment*** ist die Anfangsphase der Entwicklung Ihres Webdiensts in Machine Learning Studio (klassisch). Das Trainingsexperiment soll Ihnen einen Bereich bieten, in dem Sie ein Machine Learning-Modell entwickeln, testen, durchlaufen und schließlich trainieren. Sie können sogar mehrere Modelle gleichzeitig trainieren, während sie nach der idealen Lösung suchen. Wenn Sie mit dem Experimentieren fertig sind, wählen Sie jedoch ein einziges trainiertes Modell aus und löschen die übrigen aus dem Experiment. Ein Beispiel für die Entwicklung eines Vorhersageanalyseexperiments finden Sie unter [Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch)](tutorial-part1-credit-risk.md).
+Das ***Trainingsexperiment*** ist die Anfangsphase der Entwicklung Ihres Webdiensts in Machine Learning Studio (klassisch). Das Trainingsexperiment soll Ihnen einen Bereich bieten, in dem Sie ein Machine Learning-Modell entwickeln, testen, durchlaufen und schließlich trainieren. Sie können sogar mehrere Modelle gleichzeitig trainieren, während sie nach der idealen Lösung suchen. Wenn Sie mit dem Experimentieren fertig sind, wählen Sie jedoch ein einziges trainiertes Modell aus und löschen die übrigen aus dem Experiment. Ein Beispiel für die Entwicklung eines Vorhersageanalyseexperiments finden Sie unter [Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Machine Learning Studio (Classic)](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Das Vorhersageexperiment
 Wenn das Trainingsexperiment ein trainiertes Modell umfasst, klicken Sie in Machine Learning Studio (klassisch) auf **Set Up Web Service** (Webdienst einrichten). Wenn Sie dann **Predictive Web Service** (Vorhersagewebdienst) auswählen, durchläuft Machine Learning Studio (Classic) den Prozess zur Konvertierung des Trainingsexperiments in ein **_Vorhersageexperiment_**. Das Vorhersageexperiment verwendet Ihr trainiertes Modell zur Bewertung neuer Daten und soll letztlich als Azure-Webdienst in Betrieb genommen werden.
@@ -64,12 +66,12 @@ Es gibt möglicherweise weitere Änderungen, die Sie vornehmen möchten, um das 
 In diesem Konvertierungsprozess wird das Trainingsexperiment nicht verworfen. Nach Abschluss des Prozesses werden in Studio (klassisch) zwei Registerkarten angezeigt: eine für das Trainingsexperiment und eine für das Vorhersageexperiment. So können Sie vor dem Bereitstellen Ihres Webdiensts noch Änderungen am Trainingsexperiment durchführen und das Vorhersageexperiment neu erstellen. Ebenso können Sie eine Kopie des Trainingsexperiments speichern, um eine weitere Experimentreihe zu starten.
 
 > [!NOTE]
-> Durch Klicken auf **Set Up Web Service** starten Sie einen automatischen Prozess zum Konvertieren des Trainingsexperiments in ein Vorhersageexperiment. In den meisten Fällen verläuft dieser reibungslos. Wenn das Trainingsexperiment komplex ist (z.B. mehrere Pfade für das Training verknüpft werden), möchten Sie diese Konvertierung vielleicht manuell ausführen. Weitere Informationen finden Sie unter [Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio (klassisch)](deploy-a-machine-learning-web-service.md).
+> Durch Klicken auf **Set Up Web Service** starten Sie einen automatischen Prozess zum Konvertieren des Trainingsexperiments in ein Vorhersageexperiment. In den meisten Fällen verläuft dieser reibungslos. Wenn das Trainingsexperiment komplex ist (z.B. mehrere Pfade für das Training verknüpft werden), möchten Sie diese Konvertierung vielleicht manuell ausführen. Weitere Informationen finden Sie unter [Vorbereiten des Modells für die Bereitstellung in Machine Learning Studio (Classic)](deploy-a-machine-learning-web-service.md).
 >
 >
 
 ### <a name="the-web-service"></a>Der Webdienst
-Sobald Sie mit Ihrem Vorhersageexperiment zufrieden sind, können Sie Ihren Dienst entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen. Um das Modell durch Bereitstellung als *klassischen Machine Learning-Webdienst* in Betrieb zu nehmen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [Classic]** . Um es als *neuen Machine Learning-Webdienst* bereitzustellen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [New]** . Benutzer können jetzt über die REST-API des Webdiensts Daten an Ihr Modell senden und Ergebnisse zurückerhalten. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
+Sobald Sie mit Ihrem Vorhersageexperiment zufrieden sind, können Sie Ihren Dienst entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen. Um das Modell durch Bereitstellung als *klassischen Machine Learning-Webdienst* in Betrieb zu nehmen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [Classic]** . Um es als *neuen Machine Learning-Webdienst* bereitzustellen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [New]** . Benutzer können jetzt über die REST-API des Webdiensts Daten an Ihr Modell senden und Ergebnisse zurückerhalten. Weitere Informationen finden Sie unter [Nutzen eines Machine Learning-Webdiensts](consume-web-services.md).
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>Der untypische Fall: Erstellen eines Nicht-Vorhersagewebdiensts
 Wenn das Experiment kein Vorhersageanalysemodell trainiert, müssen Sie nicht sowohl ein Trainingsexperiment als auch ein Bewertungsexperiment erstellen. Es gibt nur ein Experiment, das als Webdienst bereitgestellt werden kann. Machine Learning Studio (Classic) erkennt durch Analyse der verwendeten Module, ob das Experiment ein Vorhersagemodell enthält.
@@ -109,11 +111,11 @@ Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Prozess des Entwickelns und Experimentierens finden Sie in den folgenden Artikeln:
 
-* Konvertieren des Experiments: [Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio (klassisch)](deploy-a-machine-learning-web-service.md)
-* Bereitstellen des Webdiensts: [Bereitstellen eines Azure Machine Learning-Webdiensts](deploy-a-machine-learning-web-service.md)
+* Konvertieren des Experiments: [Vorbereiten des Modells für die Bereitstellung in Machine Learning Studio (Classic)](deploy-a-machine-learning-web-service.md)
+* Bereitstellen des Webdiensts: [Bereitstellen eines Machine Learning-Webdiensts](deploy-a-machine-learning-web-service.md)
 * Neutrainieren des Modells: [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](./retrain-machine-learning-model.md)
 
 Beispiele für den gesamten Prozess finden Sie unter:
 
-* [Machine Learning-Tutorial: Ihr erstes Experiment in Azure Machine Learning Studio (klassisch) erstellen](create-experiment.md).
-* [Exemplarische Vorgehensweise: Entwickeln einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning](tutorial-part1-credit-risk.md)
+* [Tutorial für maschinelles Lernen: Erstellen Ihres ersten Experiments in Machine Learning Studio (Classic)](create-experiment.md)
+* [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Machine Learning Studio (Classic)](tutorial-part1-credit-risk.md)

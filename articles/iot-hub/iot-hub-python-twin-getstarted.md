@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 292c23398950a367f77c4200925007f660702a34
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87875471"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355439"
 ---
 # <a name="get-started-with-device-twins-python"></a>Erste Schritte mit Gerätezwillingen (Python)
 
@@ -239,8 +239,8 @@ In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert un
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md).
+* Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python).
 
 * Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings im Tutorial [Konfigurieren Ihrer Geräte über einen Back-End-Dienst](tutorial-device-twins.md).
 
-* Interaktives Steuern von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App): [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Node.js)](quickstart-control-device-python.md).
+* Interaktives Steuern von Geräten (z. B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Schnellstart [Verwenden von direkten Methoden](./quickstart-control-device.md?pivots=programming-language-python).

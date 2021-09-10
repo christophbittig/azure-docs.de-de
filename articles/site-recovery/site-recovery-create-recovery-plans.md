@@ -3,12 +3,12 @@ title: Erstellen von Wiederherstellungsplänen in Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Wiederherstellungspläne für die Notfallwiederherstellung mit dem Azure Site Recovery-Dienst erstellen und anpassen | Microsoft-Dokumentation
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee7386b07c93182bb8703702e2ce63e10626457d
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009720"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666157"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Erstellen und Anpassen von Wiederherstellungsplänen
 
@@ -34,6 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Wiederherstellungsplan für Fa
     - Ein Wiederherstellungsplan kann Computer mit derselben Quelle und demselben Ziel aufweisen.
     - Sie können von VMM verwaltete virtuelle VMware- und Hyper-V-Computer nicht in denselben Plan aufnehmen.
     - VMware-VMs und physische Server können sich im selben Plan befinden.
+    - Alle VMs in einem Wiederherstellungsplan müssen in ein einzelnes Abonnement repliziert werden. Wenn Sie verschiedene VMs in verschiedene Abonnements replizieren möchten, verwenden Sie mehrere Wiederherstellungspläne (mindestens einen für jedes Zielabonnement).
 
 4. Wählen Sie unter **Virtuelle Computer auswählen** die Computer (oder die Replikationsgruppe) aus, die Sie dem Plan hinzufügen möchten. Klicken Sie dann auf **OK**.
     - Computer werden der Standardgruppe (Gruppe 1) im Plan hinzugefügt. Nach einem Failover werden alle Computer in dieser Gruppe gleichzeitig gestartet.

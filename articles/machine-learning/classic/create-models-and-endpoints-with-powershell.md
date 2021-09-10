@@ -9,26 +9,26 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b4a5073994da972a4999a82dd9bb0790bad0342
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520509"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582346"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Erstellen mehrerer Webdienst-Endpunkte von einem Experiment mit Machine Learning Studio (Classic) und PowerShell
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio (klassisch) mit nur einem Experiment durchführen.
+Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Machine Learning Studio (Classic) mit nur einem Experiment durchführen.
 
 Angenommen, Sie besitzen eine Fahrradvermietung als globales Franchise-Unternehmen. Sie möchten ein Regressionsmodell erstellen, um die Mietnachfrage anhand von bisherigen Daten vorherzusagen. Sie betreiben weltweit 1.000 Mietstandorte und haben für jeden Standort ein Dataset erfasst. Die Datasets enthalten wichtigen Eigenschaften, etwa Datum, Uhrzeit, Wetter und Verkehrssituation, die für jeden Standort individuell sind.
 
 Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Version mit allen Datasets aller Standorte verwenden. Aber jeder Ihrer Standorte hat eine einzigartige Umgebung. Daher besteht ein besserer Ansatz darin, das Regressionsmodell separat zu trainieren, indem das Dataset für jeden Standort genutzt wird. Auf diese Weise können in jedem trainierten Modell die unterschiedlichen Ladengrößen, das Volumen, die Geografie, die Einwohnerzahl, die Fahrradfreundlichkeit der Verkehrsinfrastruktur und weitere Aspekte berücksichtigt werden.
 
-Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning Studio (klassisch) aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
+Dies wäre vermutlich der beste Ansatz. Sie möchten in Machine Learning Studio (Classic) aber nicht 1.000 Trainingsexperimente erstellen müssen, bei denen jedes einen bestimmten Standort abbildet. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
-Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API (klassisch) für das erneute Trainieren](./retrain-machine-learning-model.md) verwenden und die Aufgabe mit [Azure Machine Learning Studio (klassisch) PowerShell](powershell-module.md) automatisieren.
+Glücklicherweise können Sie hierfür die [Machine Learning Studio (Classic)-API für das erneute Trainieren](./retrain-machine-learning-model.md) verwenden und die Aufgabe mit [Machine Learning Studio (Classic) PowerShell](powershell-module.md) automatisieren.
 
 > [!NOTE]
 > Damit das Beispiel schneller ausgeführt wird, reduzieren Sie die Standortanzahl von 1.000 auf 10. Es gelten aber dieselben Prinzipien und Verfahren wie für 1.000 Standorte. Möchten Sie das Trainieren aber mit 1.000 Datasets vornehmen, sollten Sie die folgenden PowerShell-Skripts gleichzeitig ausführen. Die Erklärung hierzu würde den Rahmen dieses Artikels sprengen, aber im Internet finden Sie Beispiele für das PowerShell-Multithreading.  
@@ -36,7 +36,7 @@ Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API (k
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Einrichten des Trainingsexperiments
-Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](https://gallery.azure.ai) befindet. Öffnen Sie dieses Experiment im [Azure Machine Learning Studio](https://studio.azureml.net) -Arbeitsbereich (klassisch).
+Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](https://gallery.azure.ai) befindet. Öffnen Sie dieses Experiment im [Machine Learning Studio (Classic)](https://studio.azureml.net)-Arbeitsbereich.
 
 > [!NOTE]
 > Damit Sie dieses Beispiel nachvollziehen können, empfiehlt es sich, anstelle eines kostenlosen Arbeitsbereichs einen Standardarbeitsbereich zu verwenden. Sie erstellen einen Endpunkt pro Kunde, also insgesamt zehn Endpunkte, und dadurch ist ein Standardarbeitsbereich erforderlich, da ein kostenloser Arbeitsbereich auf drei Endpunkte beschränkt ist.

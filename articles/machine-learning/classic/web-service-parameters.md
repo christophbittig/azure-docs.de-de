@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Webdienstparameter (Azure)'
-description: 'Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.'
+description: Verwenden von Machine Learning-Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -10,19 +10,20 @@ ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f26a6541fc3c5720043d5b00578bea374cfcb959
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518333"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689505"
 ---
-# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Verwenden von (klassischen) Azure Machine Learning Studio-Webdienstparametern
+# <a name="use-machine-learning-studio-classic-web-service-parameters"></a>Verwenden von Machine Learning Studio (Classic)-Webdienstparametern
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
+Ein Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
 
 Ein typisches Beispiel ist das Einrichten des Moduls [Import Data][reader], damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des Moduls [Export Data][writer], damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection]. 
 
@@ -40,7 +41,7 @@ Sie können entscheiden, ob Sie einen Standardwert für den Webdienstparameter a
 Die API-Dokumentation für den Webdienst enthält Informationen, denen die Webdienstbenutzer entnehmen können, wie der Webdienstparameter beim Zugriff auf den Webdienst programmgesteuert angegeben werden kann.
 
 > [!NOTE]
-> Die API-Dokumentation für einen klassischen Webdienst wird über den Link **API-Hilfeseite** im **DASHBOARD** des Webdiensts in Machine Learning Studio (klassisch) bereitgestellt. Die API-Dokumentation für einen neuen Webdienst wird über das [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart)-Portal auf den Seiten **Consume** und **Swagger API** für den Webdienst bereitgestellt.
+> Die API-Dokumentation für einen klassischen Webdienst wird über den Link **API-Hilfeseite** im **DASHBOARD** des Webdiensts in Machine Learning Studio (klassisch) bereitgestellt. Die API-Dokumentation für einen neuen Webdienst wird über das Portal für [Machine Learning-Webdienste](https://services.azureml.net/Quickstart) auf den Seiten **Consume** (Nutzen) und **Swagger API** (Swagger-API) für den Webdienst bereitgestellt.
 > 
 > 
 
@@ -69,14 +70,14 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
 7. Klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** aus, um den Webdienst bereitzustellen.
 
 > [!NOTE] 
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Portal für Machine Learning-Webdienste](manage-new-webservice.md). 
 
 Benutzer des Webdiensts können jetzt beim Zugreifen auf den Webdienst ein neues Ziel für das Modul [Export Data][writer] angeben.
 
 ## <a name="more-information"></a>Weitere Informationen
 Ein ausführlicheres Beispiel finden Sie unter dem Eintrag [Web Service Parameters](/archive/blogs/machinelearning/azureml-web-service-parameters) im [Machine Learning Blog](/archive/blogs/machinelearning/azureml-web-service-parameters).
 
-Weitere Informationen über den Zugriff auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines veröffentlichten Webdiensts für maschinelles Lernen](consume-web-services.md).
+Weitere Informationen zum Zugriff auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines Machine Learning-Webdiensts](consume-web-services.md).
 
 <!-- Module References -->
 [feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing

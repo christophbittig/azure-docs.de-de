@@ -1,7 +1,7 @@
 ---
-title: Hinzufügen von Active Directory-Verbunddienste (AD FS) als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
+title: Hinzufügen von AD FS als OpenID Connect-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien
 titleSuffix: Azure AD B2C
-description: Einrichten von AD FS 2016 mit dem SAML-Protokoll und benutzerdefinierten Richtlinien in Azure Active Directory B2C
+description: Einrichten von AD FS 2016 mit dem OpenID Connect-Protokoll und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,121 +13,168 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69803dc374e92b8fcc856237cb8b791dac5cb40c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489167"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338900"
 ---
-# <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
+# <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als OpenID Connect-Identitätsanbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+
+## <a name="create-an-ad-fs-application"></a>Erstellen einer AD FS-Anwendung
+
+Um Benutzern mit einem AD FS-Konto die Anmeldung bei Azure Active Directory B2C (Azure AD B2C) zu ermöglichen, erstellen Sie eine Anwendungsgruppe in Ihrer AD FS-Instanz. Weitere Informationen finden Sie unter [Erstellen einer Webanwendung mithilfe von OpenID Connect mit AD FS 2016 und höher](/windows-server/identity/ad-fs/development/enabling-openid-connect-with-ad-fs).
+
+Führen Sie die folgenden Schritte aus, um eine Anwendungsgruppe zu erstellen:
+
+1. Wählen Sie im **Server-Manager** zunächst **Tools** und dann **AD FS-Verwaltung** aus.
+1. Klicken Sie in „AD FS-Verwaltung“ mit der rechten Maustaste auf **Anwendungsgruppen**, und wählen Sie **Anwendungsgruppe hinzufügen** aus.
+1. Gehen Sie auf dem Bildschirm **Willkommen** des Assistenten für Anwendungsgruppen folgendermaßen vor:
+    1. Geben Sie den **Namen** Ihrer Anwendung ein. Beispiel: *Azure AD B2C-Anwendung*.
+    1. Wählen Sie unter **Client/Server-Anwendungen** die Vorlage **Webbrowser mit Zugriff auf eine Webanwendung** aus.
+    1. Klicken Sie auf **Weiter**.
+1. Gehen Sie auf dem Bildschirm **Native Anwendung** des Assistenten für Anwendungsgruppen folgendermaßen vor:
+    1. Kopieren Sie den Wert für den **Clientbezeichner**. Der Clientbezeichner ist die **Anwendungs-ID** Ihrer AD FS-Instanz. Sie benötigen die Anwendungs-ID weiter unten in diesem Artikel.
+    1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` als **Umleitungs-URI** ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne.
+    1. Wählen Sie **Weiter** und dann erneut **Weiter** aus, um den Assistenten für die App-Registrierung abzuschließen. 
+    1. Klicken Sie auf **Schließen**.
+
+
+### <a name="configure-the-app-claims"></a>Konfigurieren der App-Ansprüche
+
+In diesem Schritt konfigurieren Sie die Ansprüche, die eine AD FS-Anwendung an Azure AD B2C zurückgibt.  
+
+1. Wählen Sie unter **Anwendungsgruppen** die von Ihnen erstellte Anwendung aus.
+1. Wählen Sie im Fenster mit den Anwendungseigenschaften unter **Anwendungen** den Eintrag **Webanwendung** aus. Klicken Sie dann auf **Bearbeiten**.
+    :::image type="content" source="./media/identity-provider-adfs/ad-fs-edit-app.png" alt-text="Screenshot: Bearbeiten einer Webanwendung":::
+1. Wählen Sie die Registerkarte **Ausstellungstransformationsregeln** und dann **Regel hinzufügen** aus.
+1. Wählen Sie in **Anspruchsregelvorlage** die Option **Senden von LDAP-Attributen als Ansprüche** aus.
+1. Geben Sie einen **Anspruchsregelnamen** an. Wählen Sie als **Attributspeicher** den Eintrag **Active Directory auswählen** aus, und fügen Sie die folgenden Ansprüche hinzu.
+
+    | LDAP-Attribut | Typ des ausgehenden Anspruchs |
+    | -------------- | ------------------- |
+    | Benutzerprinzipalname | UPN |
+    | Surname | family_name |
+    | Vorname | given_name |
+    | Anzeigename | name |
+
+    Beachten Sie, dass einige dieser Namen in der Dropdownliste der Typen für ausgehende Ansprüche nicht angezeigt werden. Sie müssen sie manuell eingeben. (Die Dropdownliste kann bearbeitet werden.)
+
+1. Wählen Sie **Fertig stellen** und dann **Schließen** aus.
+
+
 ::: zone pivot="b2c-user-flow"
 
-[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+## <a name="configure-ad-fs-as-an-identity-provider"></a>Konfigurieren von AD FS als Identitätsanbieter
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
+1. Geben Sie einen **Namen** ein. Zum Beispiel *Contoso*.
+1. Geben Sie bei **Metadaten-URL** die URL des [AD FS-OpenID Connect-Konfigurationsdokuments](/windows-server/identity/ad-fs/development/ad-fs-openid-connect-oauth-concepts#ad-fs-endpoints) ein. Zum Beispiel:
+
+    ```http
+    https://adfs.contoso.com/adfs/.well-known/openid-configuration 
+    ```
+
+1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
+1. Geben Sie für den **Bereich** das `openid` ein.
+1. Wählen Sie als **Antworttyp** die Option **id_token** aus.
+1. (Optional) Geben Sie als **Domänenhinweis** die Zeichenfolge `contoso.com` ein. Weitere Informationen finden Sie unter [Einrichten einer direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Wählen Sie unter **Zuordnung von Identitätsanbieteransprüchen** die folgenden Ansprüche aus:
+
+    - **Benutzer-ID**: *upn*
+    - **Anzeigename**: *unique_name*
+    - **Vorname**: *given_name*
+    - **Nachname**: *family_name*
+
+1. Wählen Sie **Speichern** aus.
+
+## <a name="add-ad-fs-identity-provider-to-a-user-flow"></a>Hinzufügen des AD FS-Identitätsanbieters zu einem Benutzerflow 
+
+Der AD FS-Identitätsanbieter (Contoso) ist jetzt eingerichtet, aber noch auf keiner der Anmeldeseiten verfügbar. So fügen Sie den AD FS-Identitätsanbieter einem Benutzerflow hinzu:
+
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
+1. Wählen Sie den Benutzerflow aus, dem Sie den AD FS-Identitätsanbieter (Contoso) hinzufügen möchten.
+1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso** aus.
+1. Wählen Sie **Speichern** aus.
+1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie die Schaltfläche **Benutzerflow ausführen** aus.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso** aus, um sich mit dem Contoso-Konto anzumelden.
+
+Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Anmeldung für ein AD FS-Benutzerkonto mithilfe [benutzerdefinierter Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C) aktivieren. Sie ermöglichen die Anmeldung, indem Sie einer benutzerdefinierten Richtlinie einen [SAML-Idenditätsanbieter](identity-provider-generic-saml.md) hinzufügen.
+## <a name="configure-ad-fs-as-an-identity-provider"></a>Konfigurieren von AD FS als Identitätsanbieter
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
-
-## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
-
-[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
-
-## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
-
-Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
-5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-6. Klicken Sie unter **Optionen** auf `Upload`.
-7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `SAMLSigningCert`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Navigieren Sie zur PFX-Datei Ihres Zertifikats mit dem privaten Schlüssel, und wählen Sie sie aus.
-9. Klicken Sie auf **Erstellen**.
-
-## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
-
-Wenn Sie möchten, dass sich Benutzer mit einem AD FS-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
-
-Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines SAML-Identitätsanbieters](identity-provider-generic-saml.md).
+Damit Benutzer sich mit einem AD FS-Konto anmelden können, müssen Sie die AD FS-Instanz als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. 
 
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
-1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
-1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
+2. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+3. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
       <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Contoso-SAML2">
+        <TechnicalProfile Id="Contoso-OpenIdConnect">
           <DisplayName>Contoso</DisplayName>
-          <Description>Login with your AD FS account</Description>
-          <Protocol Name="SAML2"/>
+          <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <Item Key="WantsEncryptedAssertions">false</Item>
-            <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key="METADATA">https://your-adfs-domain/adfs/.well-known/openid-configuration</Item>
+            <Item Key="response_types">id_token</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="scope">openid</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">Your AD FS application ID</Item>
           </Metadata>
-          <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
-          </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name"/>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="contoso.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="upn" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="unique_name" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss"  />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-1. Ersetzen Sie `your-AD-FS-domain` durch den Namen Ihrer AD FS-Domäne und den Wert des **identityProvider**-Ausgabeanspruchs durch Ihren DNS (beliebiger Wert, der Ihre Domäne angibt).
+4. Geben Sie bei **Metadaten-URL** die URL des [AD FS-OpenID Connect-Konfigurationsdokuments](/windows-server/identity/ad-fs/development/ad-fs-openid-connect-oauth-concepts#ad-fs-endpoints) ein. Zum Beispiel:
 
-1. Suchen Sie den Abschnitt `<ClaimsProviders>`, und fügen Sie den folgenden XML-Codeausschnitt hinzu. Wenn Ihre Richtlinie das technische `SM-Saml-idp`-Profil bereits enthält, fahren Sie mit dem nächsten Schritt fort. Weitere Informationen finden Sie unter [Sitzungsverwaltung für einmaliges Anmelden](custom-policy-reference-sso.md).
-
-    ```xml
-    <ClaimsProvider>
-      <DisplayName>Session Management</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SM-Saml-idp">
-          <DisplayName>Session Management Provider</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IncludeSessionIndex">false</Item>
-            <Item Key="RegisterServiceProviders">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
     ```
-
-1. Speichern Sie die Datei .
+    https://adfs.contoso.com/adfs/.well-known/openid-configuration 
+    ```
+5. Legen Sie **client_id** auf die Anwendungs-ID aus der Anwendungsregistrierung fest.
+6. Speichern Sie die Datei .
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
+
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -141,108 +188,25 @@ Sie können ein AD FS-Konto als Anspruchsanbieter definieren, indem Sie es in d
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
   <ClaimsExchanges>
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-OpenIdConnect" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-## <a name="configure-an-ad-fs-relying-party-trust"></a>Konfigurieren einer AD FS-Vertrauensstellung der vertrauenden Seite
-
-Um AD FS als Identitätsanbieter in Azure AD B2C verwenden zu können, müssen Sie eine AD FS-Vertrauensstellung der vertrauenden Seite mit den SAML-Metadaten von Azure AD B2C erstellen. Das folgende Beispiel zeigt eine URL der SAML-Metadaten eines technischen Azure AD B2C-Profils:
-
-```
-https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
-```
-
-Verwenden Sie bei einer [benutzerdefinierten Domäne](custom-domain.md) das folgende Format:
-
-```
-https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
-```
-
-Ersetzen Sie die folgenden Werte:
-
-- **your-tenant-name** durch den Namen Ihres Mandanten, z. B. Ihr-Mandant.onmicrosoft.com.
-- **your-domain-name** durch den Namen Ihrer benutzerdefinierten Domäne, z. B. login.contoso.com.
-- **your-policy** durch den Namen Ihrer Richtlinie. Beispiel: B2C_1A_signup_signin_adfs.
-- **your-technical-profile** durch den Namen des technische Profil des SAML-Identitätsanbieters. Beispiel: Contoso-SAML2
-
-Öffnen Sie einen Browser, und browsen Sie zu dieser URL. Stellen Sie sicher, dass Sie die richtige URL eingeben und dass Sie Zugriff auf die XML-Metadatendatei haben. Um eine neue Vertrauensstellung der vertrauenden Seite mithilfe des AD FS-Verwaltungs-Snap-Ins hinzuzufügen und die Einstellungen manuell zu konfigurieren, führen Sie das folgende Verfahren auf einem Verbundserver aus. Eine Mitgliedschaft in **Administratoren** oder Entsprechendem auf dem lokalen Computer ist die Mindestvoraussetzung, um dieses Verfahren abzuschließen.
-
-1. Wählen Sie im Server-Manager **Tools** und dann **AD FS-Verwaltung** aus.
-2. Wählen Sie **Hinzufügen der Vertrauensstellung der vertrauenden Seite**.
-3. Wählen Sie auf der Seite **Willkommen** die Option **Ansprüche unterstützend** aus, und klicken Sie dann auf **Start**.
-4. Wählen Sie auf der Seite **Datenquelle auswählen** die Option **Import data about the relying party publish online or on a local network** (Daten über die vertrauende Seite für die Veröffentlichung online oder in einem lokalen Netzwerk importieren) aus, geben Sie Ihre Azure AD B2C-Metadaten-URL an, und klicken Sie dann auf **Weiter**.
-5. Geben Sie auf der Seite **Anzeigename angeben** einen Namen in **Anzeigename** und unter **Hinweise** eine Beschreibung für diese Vertrauensstellung der vertrauenden Seite ein, und klicken Sie dann auf **Weiter**.
-6. Wählen Sie auf der Seite **Zugriffssteuerungsrichtlinie auswählen** eine Richtlinie aus, und klicken Sie dann auf **Weiter**.
-7. Überprüfen Sie auf der Seite **Bereit zum Hinzufügen der Vertrauensstellung** die Einstellungen, und klicken Sie dann auf **Weiter**, um die Informationen zur Vertrauensstellung der vertrauenden Seite zu speichern.
-8. Klicken Sie auf der Seite **Fertig stellen** auf **Schließen**. Diese Aktion zeigt automatisch das Dialogfeld **Anspruchsregeln bearbeiten** an.
-9. Wählen Sie **Regel hinzufügen** aus.
-10. Wählen Sie in **Anspruchsregelvorlage** die Option **Senden von LDAP-Attributen als Ansprüche** aus.
-11. Geben Sie einen **Anspruchsregelnamen** an. Wählen Sie als **Attributspeicher** **Active Directory** aus. Fügen Sie die folgenden Ansprüche hinzu, und klicken Sie auf **Fertig stellen** und **OK**.
-
-    | LDAP-Attribut | Typ des ausgehenden Anspruchs |
-    | -------------- | ------------------- |
-    | Benutzerprinzipalname | userPrincipalName |
-    | Surname | family_name |
-    | Vorname | given_name |
-    | E-Mail-Adresse | E-mail |
-    | Anzeigename | name |
-
-    Beachten Sie, dass diese Namen nicht in der Dropdownliste „Typ des ausgehenden Anspruchs“ angezeigt werden. Sie müssen sie manuell eingeben. (Die Dropdownliste kann bearbeitet werden.)
-
-12.  Basierend auf Ihrem Zertifikattyp müssen Sie möglicherweise den Hashalgorithmus festlegen. Wählen Sie im Eigenschaftenfenster der Vertrauensstellung der vertrauenden Seite (B2C-Demo) die Registerkarte **Erweitert** aus, und ändern Sie **Sicherer Hashalgorithmus** in `SHA-256`. Klicken Sie anschließend auf **OK**.
-13. Wählen Sie im Server-Manager **Tools** und dann **AD FS-Verwaltung** aus.
-14. Wählen Sie die Vertrauensstellung der vertrauenden Seite, die Sie erstellt haben, und **Update from Federation Metadata** (Von Verbundmetadaten aktualisieren) aus, und klicken Sie dann auf **Aktualisieren**.
-
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
-1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
 1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
-1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso AD FS** aus, um sich mit dem AD FS-Identitätsanbieter für „Contoso“ anzumelden.
+1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Contoso** aus, um sich mit dem Contoso-Konto anzumelden.
 
 Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
-## <a name="troubleshooting-ad-fs-service"></a>Problembehandlung bei AD FS  
-
-AD FS ist für die Nutzung des Anwendungsprotokolls von Windows konfiguriert. Wenn Sie Probleme beim Einrichten von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure AD B2C haben, können Sie das AD FS-Ereignisprotokoll überprüfen:
-
-1. Geben Sie in die **Suchleiste** unter Windows **Ereignisanzeige** ein, und wählen Sie anschließend die Desktop-App **Ereignisanzeige** aus.
-1. Um das Protokoll eines anderen Computers anzuzeigen, klicken Sie mit der rechten Maustaste auf **Ereignisanzeige (lokal)** . Wählen Sie **Verbindung mit anderem Computer herstellen** aus, und füllen Sie die Felder aus, um die Bearbeitung des Dialogfelds **Computer auswählen** abzuschließen.
-1. Öffnen Sie in der **Ereignisanzeige** das **Anwendungs- und Dienstprotokoll**.
-1. Wählen Sie **AD FS** und dann **Verwaltung** aus. 
-1. Um weitere Informationen zu einem bestimmten Ereignis anzuzeigen, doppelklicken Sie auf dieses Ereignis.  
-
-### <a name="saml-request-is-not-signed-with-expected-signature-algorithm-event"></a>Die SAML-Anforderung ist nicht mit dem erwarteten Signaturalgorithmusereignis signiert
-
-Dieser Fehler bedeutet, dass die von Azure AD B2C gesendete SAML-Anforderung nicht mit dem erwarteten Signaturalgorithmus signiert ist, der in AD FS konfiguriert ist. Beispielsweise wird die SAML-Anforderung mit dem Signaturalgorithmus `rsa-sha256` signiert, wobei jedoch `rsa-sha1` der erwartete Signaturalgorithmus ist. Um dieses Problem zu beheben, stellen Sie sicher, dass sowohl Azure AD B2C als auch AD FS mit dem gleichen Signaturalgorithmus konfiguriert sind.
-
-#### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>Option 1: Festlegen des Signaturalgorithmus in Azure AD B2C  
-
-Sie können konfigurieren, wie die SAML-Anforderung in Azure AD B2C signiert werden soll. Die Metadaten von [XmlSignatureAlgorithm](identity-provider-generic-saml.md) bestimmen in der SAML-Anforderung den Wert des Parameters `SigAlg` (Abfragezeichenfolge oder POST-Parameter). Im folgenden Beispiel wird Azure AD B2C für den Signaturalgorithmus `rsa-sha256` konfiguriert.
-
-```xml
-<Metadata>
-  <Item Key="WantsEncryptedAssertions">false</Item>
-  <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
-  <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-</Metadata>
-```
-
-#### <a name="option-2-set-the-signature-algorithm-in-ad-fs"></a>Option 2: Festlegen des Signaturalgorithmus in AD FS 
-
-Alternativ können Sie den erwarteten Signaturalgorithmus von SAML-Anforderungen in AD FS konfigurieren.
-
-1. Wählen Sie im Server-Manager **Tools** und dann **AD FS-Verwaltung** aus.
-1. Wählen Sie die **Vertrauensstellung der vertrauenden Seite** aus, die Sie zuvor erstellt haben.
-1. Wählen Sie **Eigenschaften** und dann **Erweitert** aus.
-1. Konfigurieren Sie **Sicherer Hashalgorithmus**, und wählen Sie **OK** aus, um die Änderungen zu speichern.
 
 ::: zone-end
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie, wie Sie das [AD FS-Token an Ihre Anwendung übergeben](idp-pass-through-user-flow.md).

@@ -7,15 +7,15 @@ metadata:
   ms.service: synapse-analytics
   ms.topic: overview
   ms.subservice: overview
-  ms.date: 10/25/2020
+  ms.date: 07/27/2021
   ms.author: saveenr
-  ms.reviewer: jrasnick
-  ms.openlocfilehash: b1fb4a033e0b501c25e2588e2dce6b7c1bce3d26
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.reviewer: jrasnick, wiassaf
+  ms.openlocfilehash: c6e970383611a14694b7e921257a117b09a4da89
+  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467795"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123029793"
 title: 'Azure Synapse Analytics: Häufig gestellte Fragen'
 summary: In diesem Leitfaden finden Sie die am häufigsten gestellten Fragen zu Azure Synapse Analytics.
 sections:
@@ -126,4 +126,10 @@ sections:
       Eine „Verschiebung“ oder „Migration“ ist nicht möglich. Sie können auswählen, dass neue Arbeitsbereichsfeatures für Ihre vorhandenen Pools aktiviert werden sollen. Wenn Sie so vorgehen, kommt es nicht zu Breaking Changes, sondern Sie können die neuen Features nutzen, z. B. Synapse Studio, Spark und serverlose SQL-Pools.
   - question: "Wie sieht die Standardbereitstellung von dedizierten SQL-Pools jetzt aus? \n"
     answer: "Standardmäßig werden alle neuen dedizierten SQL-Pools in einem Arbeitsbereich bereitgestellt. Bei Bedarf können Sie aber trotzdem noch einen dedizierten SQL-Pool (vormals SQL DW) basierend auf dem Formfaktor „Eigenständig“ erstellen. \n"
+- name: Netzwerksicherheit
+  questions:
+  - question: >
+      Gewusst wie: Sichern des Zugriffs auf meinen Azure Synapse-Arbeitsbereich
+    answer: >
+      Sowohl mit als auch ohne ein [verwaltetes virtuelles Netzwerk](/azure/synapse-analytics/security/synapse-workspace-managed-vnet) können Sie aus öffentlichen Netzwerken eine Verbindung mit Ihrem Arbeitsbereich herstellen. Weitere Informationen finden Sie unter [Konnektivitätseinstellungen](/azure/azure-sql/database/connectivity-settings). Der Zugriff aus öffentlichen Netzwerken lässt sich kontrollieren, indem Sie das [Feature für den Zugriff auf öffentliche Netzwerke](/azure/azure-sql/database/connectivity-settings#public-network-access) oder die [Arbeitsbereichsfirewall](/bs-cyrl-ba/azure/synapse-analytics/security/synapse-workspace-ip-firewall) aktivieren. Alternativ können Sie auch über einen [verwalteten privaten Endpunkt](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints) und [Private Link](../azure-sql/database/private-endpoint-overview.md) eine Verbindung mit Ihrem Arbeitsbereich herstellen. Synapse-Arbeitsbereiche ohne das [verwaltete virtuelle Netzwerk von Azure Synapse Analytics](/azure/synapse-analytics/security/synapse-workspace-managed-vnet) können keine Verbindung über verwaltete private Endpunkte herstellen.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   * [Erste Schritte mit Azure Synapse Analytics](get-started.md)\n   * [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)\n   * [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)"

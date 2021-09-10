@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 8a1eb1c21663e0294cd384daa0ba644adf78007a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbe0fe6d0dadea6e99b406f2de6e16ed4d667741
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673205"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461536"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Strategien zur Oracle Database-Sicherung auf einer Azure-Linux-VM
 
@@ -103,7 +103,7 @@ Azure-Dateifreigaben können auch über Azure Backup in einem Recovery Services-
 
 #### <a name="azure-files-nfs-v41-preview"></a>Azure Files mit NFS 4.1 (Vorschau)
 
-Azure-Dateifreigaben können über das NFS 4.1-Protokoll (Network File System) in Linux-Distributionen eingebunden werden. In der Vorschauphase gibt es eine Reihe von Einschränkungen bei den unterstützten Funktionen, die [hier](../../../storage/files/storage-files-how-to-mount-nfs-shares.md) dokumentiert sind. 
+Azure-Dateifreigaben können über das NFS 4.1-Protokoll (Network File System) in Linux-Distributionen eingebunden werden. In der Vorschauphase gibt es eine Reihe von Einschränkungen bei den unterstützten Features. Weitere Informationen finden Sie unter [Einbinden einer Azure NFS-Dateifreigabe (Vorschau)](../../../storage/files/storage-files-how-to-mount-nfs-shares.md). 
 
 In der Vorschauphase ist Azure Files mit NFS 4.1 außerdem auf die folgenden [Regionen](../../../storage/files/storage-files-how-to-mount-nfs-shares.md) beschränkt:
 - USA, Osten (LRS und ZRS)
@@ -120,7 +120,7 @@ Azure-Dateifreigaben können mithilfe des SMB-Kernelclients in Linux-Distributio
 
 Azure Files mit SMB ist in allen Azure-Regionen allgemein verfügbar und weist die gleichen Leistungsmerkmale wie das NFS 3.0- und NFS 4.1-Protokoll auf und ist daher derzeit die empfohlene Methode zur Bereitstellung von Sicherungsspeichermedien für Azure-Linux-VMs.  
 
-Zwei unterstützte Versionen von SMB sind verfügbar: SMB 2.1 und SMB 3.0, wobei letztere empfohlen wird, da sie die Verschlüsselung während der Übertragung unterstützt. Die verschiedenen Linux-Kernelversionen weisen jedoch eine unterschiedliche Unterstützung für SMB 2.1 und 3.0 auf. In [dieser Aufstellung](../../../storage/files/storage-how-to-use-files-linux.md) können Sie überprüfen, ob Ihre Anwendung SMB 3.0 unterstützt. 
+Zwei unterstützte Versionen von SMB sind verfügbar: SMB 2.1 und SMB 3.0, wobei letztere empfohlen wird, da sie die Verschlüsselung während der Übertragung unterstützt. Die verschiedenen Linux-Kernelversionen bieten jedoch unterschiedliche Unterstützung für SMB 2.1 und 3.0. Weitere Informationen finden Sie unter [Einbinden einer SMB-Azure-Dateifreigabe unter Linux](../../../storage/files/storage-how-to-use-files-linux.md), um sicherzustellen, dass Ihre Anwendung SMB 3.0 unterstützt. 
 
 Da Azure Files als Dateifreigabedienst für mehrere Benutzer konzipiert ist, sollten Sie bestimmte Eigenschaften anpassen, um ihn optimaler als Sicherungsspeichermedium nutzen zu können. Es wird empfohlen, die Zwischenspeicherung zu deaktivieren und die Benutzer- und Gruppen-IDs für erstellte Dateien festzulegen.
 
@@ -152,5 +152,3 @@ Mittlerweile umfasst Azure Backup ein [erweitertes Framework für Pre- und Post-
 - Schnellstart [Erstellen einer Oracle-Datenbank](oracle-database-quick-create.md)
 - [Sichern einer Oracle-Datenbank in Azure Files](oracle-database-backup-azure-storage.md)
 - [Sichern einer Oracle-Datenbank mithilfe von Azure Backup](oracle-database-backup-azure-backup.md)
-
-

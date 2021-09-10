@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85760971b8f4eb8bfbb431193636532a498d7236
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96317060"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665599"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostizieren von Problemen bei der Konfiguration privater Verbindungen in Azure Key Vault
 
@@ -279,7 +279,7 @@ Damit die Namensauflösung des Schlüsseltresors funktioniert, muss ein `A`-Eint
 Außerdem muss der Wert des `A`-Eintrags (die IP-Adresse) [die private IP-Adresse des Schlüsseltresors](#find-the-key-vault-private-ip-address-in-the-virtual-network) sein. Wenn Sie den `A`-Eintrag finden, dieser aber die falsche IP-Adresse enthält, müssen Sie die falsche IP-Adresse entfernen und eine neue hinzufügen. Es wird empfohlen, dass Sie den gesamten `A`-Eintrag entfernen und einen neuen hinzufügen.
 
 >[!NOTE]
-> Immer wenn Sie einen `A`-Eintrag entfernen oder ändern, kann der Computer weiterhin zu der alten IP-Adresse auflösen, weil der Gültigkeitsdauerwert (Time to Live, TTL) noch nicht abgelaufen ist. Es wird empfohlen, dass Sie immer einen TTL-Wert angeben, der nicht kleiner als 60 Sekunden (eine Minute) und nicht größer als 600 Sekunden (10 Minuten) ist. Wenn Sie einen Wert angeben, der zu groß ist, kann es zu lange dauern, bis Ihre Clients nach Ausfällen wiederhergestellt werden.
+> Immer wenn Sie einen `A`-Eintrag entfernen oder ändern, kann der Computer weiterhin zu der alten IP-Adresse auflösen, weil der Gültigkeitsdauerwert (Time to Live, TTL) noch nicht abgelaufen ist. Es wird empfohlen, immer einen TTL-Wert von mindestens 10 Sekunden und höchstens 600 Sekunden (10 Minuten) anzugeben. Wenn Sie einen Wert angeben, der zu groß ist, kann es zu lange dauern, bis Ihre Clients nach Ausfällen wiederhergestellt werden.
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>DNS-Auflösung für mehr als ein virtuelles Netzwerk
 

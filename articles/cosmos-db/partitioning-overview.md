@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 08/26/2021
+ms.openlocfilehash: 43f722bf102566cf737e43732bf1ab3c39fdecc1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031000"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032572"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Jede physische Partition besteht aus [*Replikatgruppen*](global-dist-under-the-h
 
 Normalerweise benötigen kleinere Container nur eine einzige physische Partition, sie verfügen jedoch trotzdem über mindestens 4 Replikate.
 
-Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
+Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind. [Partitionssatz](global-dist-under-the-hood.md#partition-sets) in der Abbildung bezieht sich auf eine Gruppe physischer Partitionen, die dieselben logischen Partitionsschlüssel in mehreren Regionen verwalten:
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Abbildung zur Veranschaulichung der Azure Cosmos DB-Partitionierung" border="false":::
 
@@ -135,3 +135,7 @@ Wenn Sie die *Element-ID* als Partitionsschlüssel auswählen, müssen Sie die f
 * Erfahren Sie mehr über die [globale Verteilung in Azure Cosmos DB](distribute-data-globally.md).
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos](how-to-provision-database-throughput.md).
+* Weitere Informationen finden Sie im Learn-Modul zum [Modellieren und Partitionieren Ihrer Daten in Azure Cosmos DB](/learn/modules/model-partition-data-azure-cosmos-db/).
+* Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

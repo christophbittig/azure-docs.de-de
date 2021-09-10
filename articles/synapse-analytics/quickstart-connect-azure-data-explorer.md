@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f45bc134c656701ff02beca464ac00fdf222f88
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92172274"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830201"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Verbinden mit Azure Data Explorer mithilfe von Apache Spark für Azure Synapse Analytics
 
@@ -57,6 +57,8 @@ Führen Sie im Datenobjekt-Explorer die folgenden Schritte aus, um eine direkte 
 1. Azure Data Explorer-Cluster und -Datenbanken werden auf der Registerkarte **Verknüpft** unter dem Abschnitt **Azure Data Explorer** angezeigt.
 
     ![Screenshot, der das Durchsuchen nach Clustern zeigt.](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+
+1. Bevor Sie über ein Notebook mit dem verknüpften Dienst interagieren können, muss er im Arbeitsbereich veröffentlicht werden. Klicken Sie in der Symbolleiste auf **Veröffentlichen**, prüfen Sie die ausstehenden Änderungen, und klicken Sie auf **OK**.
 
     > [!NOTE]
     > Im aktuellen Release werden die Datenbankobjekte basierend auf Ihren Azure AD-Kontoberechtigungen in den Azure Data Explorer-Datenbanken aufgefüllt. Beim Ausführen der Apache Spark-Notebooks oder -Integrationsaufträge werden die Anmeldeinformationen im Linkdienst (z. B. Dienstprinzipal) verwendet.

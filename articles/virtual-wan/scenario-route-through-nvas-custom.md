@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575372"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378140"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 
@@ -177,6 +177,7 @@ Führen Sie zum Einrichten des Routings über ein virtuelles Netzwerkgerät die 
    > * Portalbenutzer müssen für Verbindungen (VPN/ER/P2S/VNet) die Option „An Standardroute weitergeben“ aktivieren, damit die Route „0.0.0.0/0“ wirksam wird.
    > * PS-/CLI-/REST-Benutzer müssen das Flag „enableinternetsecurity“ auf TRUE setzen, damit die Route „0.0.0.0/0“ wirksam wird.
    > * Die VNET-Verbindung unterstützt nicht „mehrere/eindeutig“ für die IP-Adresse des nächsten Hops zum „selben“ virtuellen Netzwerkgerät in einem SPOKE-VNET, „wenn“ eine der Routen mit der IP-Adresse des nächsten Hops als öffentliche IP-Adresse oder 0.0.0.0/0 (Internet) angegeben ist.
+   > * Wenn 0.0.0.0/0 als statische Route für eine VNet-Verbindung konfiguriert ist, wird diese Route auf den gesamten Datenverkehr angewendet, einschließlich der Ressourcen innerhalb des Spokes selbst. Dies bedeutet, dass der gesamte Datenverkehr an die IP-Adresse des nächsten Hops der statischen Route (private IP-Adresse des virtuellen Netzwerkgeräts) weitergeleitet wird. Geben Sie daher in Bereitstellungen mit einer 0.0.0.0/0-Route, bei der die IP-Adresse des virtuellen Netzwerkgeräts am nächsten Hop für eine Spoke-VNet-Verbindung konfiguriert ist, eine /32-Route für die Spoke-VNet-Verbindung an, um direkt auf Workloads in demselben VNet wie das virtuelle Netzwerkgerät zuzugreifen (damit der Datenverkehr nicht über das virtuelle Netzwerkgerät geleitet wird). Wenn Sie beispielsweise direkt auf 10.1.3.1 zugreifen möchten, geben Sie 10.1.3.1/32, nächster Hop 10.1.3.1, für die Spoke-VNet-Verbindung an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

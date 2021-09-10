@@ -5,24 +5,31 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4df6a84cd3402a934dc64ca8b8ac1a79ef7f0c22
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862253"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666139"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
-Bevor Sie [Unternehmensintegrations- und B2B-Lösungen](../logic-apps/logic-apps-enterprise-integration-overview.md) mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) aufbauen können, müssen Sie ein Integrationskonto erstellen. Dabei handelt es sich um eine separate Azure-Ressource, die einen sicheren, skalierbaren und verwaltungsfreundlichen Container für die Integrationsartefakte, die Sie mit Ihren Logik-App-Workflows definieren und verwenden.
+Bevor Sie [Unternehmensintegrations- und B2B-Lösungen](../logic-apps/logic-apps-enterprise-integration-overview.md) mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) aufbauen können, müssen Sie ein Integrationskonto erstellen. Dabei handelt es sich um eine separate Azure-Ressource, die einen sicheren, skalierbaren und verwaltungsfreundlichen Container für die Integrationsartefakte, die Sie mit Ihren Logik-App-Workflows definieren und verwenden. Sie können z.B. B2B-Artefakte wie Handelspartner, Vereinbarungen, Zuordnungen, Schemas, Zertifikate und Batchkonfigurationen erstellen, speichern und verwalten.
 
-Sie können z.B. B2B-Artefakte wie Handelspartner, Vereinbarungen, Zuordnungen, Schemas, Zertifikate und Batchkonfigurationen erstellen, speichern und verwalten. Damit Ihre Logik-App mit diesen Artefakten arbeiten und die Logic Apps B2B-Connectors verwenden kann, müssen Sie [Ihr Integrationskonto mit Ihrer Logik-App verknüpfen](#link-account). Ihr Integrationskonto und Ihre Logik-App müssen sich am *gleichen* Standort oder in der *gleichen* Region befinden.
+In der folgenden Tabelle werden die verfügbaren Integrationskontoebenen oder -tarife beschrieben, die [sich im Preis unterscheiden](https://azure.microsoft.com/pricing/details/logic-apps/):
+
+| Tarif | BESCHREIBUNG |
+|------|-------------|
+| **Basic** | Für Szenarien, in denen Sie nur die Verarbeitung von Nachrichten nutzen oder als Partner eines kleines Unternehmens fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist. <p><p>Ist von der SLA für Logic Apps abgedeckt. |
+| **Standard** | Für Szenarien mit komplexeren B2B-Beziehungen und einer größeren Anzahl zu verwaltender Entitäten. <p><p>Ist von der SLA für Logic Apps abgedeckt. |
+| **Free** | Nur für Erkundungs- und nicht für Produktionsszenarien. Bei diesem Tarif gelten Einschränkungen für Region, Durchsatz und Nutzung. Der Free-Tarif ist beispielsweise nur für öffentliche Regionen in Azure verfügbar, z. B. USA, Westen oder Asien, Südosten, aber nicht für [Azure China 21ViaNet](/azure/china/overview-operations) oder [Azure Government](../azure-government/documentation-government-welcome.md). <p><p>**Hinweis**: Ist von der SLA für Logic Apps nicht abgedeckt. |
+|||
 
 > [!IMPORTANT]
-> Je nach ausgewähltem Integrationskontotyp können für die Erstellung eines Integrationskontos Kosten entstehen. Weitere Informationen finden Sie im [Preis- und Abrechnungsmodell für Logic Apps](logic-apps-pricing.md#integration-accounts) und unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+> Je nach Integrationskontotarif können für die Erstellung eines Integrationskontos Kosten anfallen. Weitere Informationen finden Sie im [Preis- und Abrechnungsmodell für Logic Apps](logic-apps-pricing.md#integration-accounts) und unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/). Damit Ihre Logik-App-Workflow mit einem Integrationskonto, B2B-Artefakten und B2B-Connectors arbeiten kann, müssen Sie zuerst [Ihr Integrationskonto mit Ihrer Logik-App verknüpfen](#link-account). Ihr Integrationskonto und Ihre Logik-App müssen sich am *gleichen* Standort oder in der *gleichen* Region befinden.
 
 In diesem Thema wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
@@ -32,13 +39,9 @@ In diesem Thema wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
   > Informationen zum Erstellen eines Integrationskontos in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) finden Sie unter [Erstellen von Integrationskonten in einer ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
 
 * Verknüpfen Ihres Integrationskontos mit einer Logik-App
-
 * Ändern des Tarifs für Ihr Integrationskonto
-
 * Aufheben der Verknüpfung Ihres Integrationskontos mit einer Logik-App
-
 * Verschieben Ihres Integrationskontos in eine andere Azure-Ressourcengruppe bzw. ein anderes Azure-Abonnement
-
 * Löschen Ihres Integrationskontos
 
 ## <a name="prerequisites"></a>Voraussetzungen

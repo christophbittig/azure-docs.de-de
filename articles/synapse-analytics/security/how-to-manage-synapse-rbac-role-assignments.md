@@ -1,19 +1,19 @@
 ---
 title: 'Vorgehensweise: Verwalten von Synapse RBAC-Zuweisungen in Synapse Studio'
 description: In diesem Artikel wird beschrieben, wie Synapse RBAC-Rollen den AAD-Sicherheitsprinzipalen zugewiesen und widerrufen werden.
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01f923828f0b83280d033b9bc6e5c7b6bbebae35
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8bbb6185368b438376529d69409d301c0cdd9c97
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784073"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355139"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Vorgehensweise: Verwalten von Synapse RBAC-Rollenzuweisungen in Synapse Studio
 
@@ -33,7 +33,7 @@ In diesem Artikel wird das Hinzufügen und Löschen von Synapse RBAC-Rollenzuwei
 
 ## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio  
 
-Wenn Sie einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität eine Rolle zuweisen möchten, müssen Sie [zuerst Synapse Studio öffnen](https://web.azuresynapse.net/) und Ihren Arbeitsbereich auswählen. 
+Wenn Sie einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität eine Rolle zuweisen möchten, müssen Sie zunächst [Synapse Studio öffnen](https://web.azuresynapse.net/) und sich bei Ihrem Arbeitsbereich anmelden. 
 
 ![Anmelden beim Arbeitsbereich](./media/common/login-workspace.png) 
  

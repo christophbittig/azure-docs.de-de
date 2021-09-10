@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 8/11/2020
+ms.date: 07/06/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18a9d2efa3093dd342e05f1c9038fa7f460d97bd
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063031"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358919"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -37,18 +37,18 @@ Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan 
 * **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
 * **Europa:** „Europa, Norden“, „Europa, Westen“
 
-Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
+Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung an einen Standort außerhalb des Gebiets weitergeleitet werden.
 
-Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten geografischen Endpunkt:
+Um zu erzwingen, dass die Anforderung von einem bestimmten Gebiet bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten geografischen Endpunkt:
 
-|BESCHREIBUNG|Azure-Geografie|Basis-URL (geografischer Endpunkt)|
-|:--|:--|:--|
-|Azure|Global (nicht regional)|   api.cognitive.microsofttranslator.com|
-|Azure|USA|   api-nam.cognitive.microsofttranslator.com|
-|Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
-|Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
+|Gebiet|Basis-URL (geografischer Endpunkt)|
+|:--|:--|
+|Global (nicht regional)|    api.cognitive.microsofttranslator.com|
+|USA|    api-nam.cognitive.microsofttranslator.com|
+|Europa|    api-eur.cognitive.microsofttranslator.com|
+|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> Kunden mit einer Ressource in „Schweiz, Norden“ oder „Schweiz, Westen“ können sicherstellen, dass ihre Text-API-Anforderungen innerhalb der Schweiz verarbeitet werden. Um sicherzustellen, dass Anforderungen in der Schweiz verarbeitet werden, muss die Textübersetzungsressource in der Ressourcenregion „Schweiz, Norden“ oder „Schweiz, Westen“ erstellt und anschließend in den API-Anforderungen der benutzerdefinierte Endpunkt der Ressource verwendet werden. Beispiel: Wenn Sie im Azure-Portal eine Textübersetzungsressource mit der Ressourcenregion „Schweiz, Norden“ erstellen und Ihre Ressource den Namen „my-ch-n“ hat, lautet der benutzerdefinierte Endpunkt „https://my-ch-n.cognitiveservices.azure.com“. Eine Beispielanforderung für die Übersetzung wäre etwa:
+<sup>1</sup> Kunden mit einer Ressource in „Schweiz, Norden“ oder „Schweiz, Westen“ können sicherstellen, dass ihre Text-API-Anforderungen innerhalb der Schweiz verarbeitet werden. Um sicherzustellen, dass Anforderungen in der Schweiz verarbeitet werden, muss die Textübersetzungsressource in der Ressourcenregion „Schweiz, Norden“ oder „Schweiz, Westen“ erstellt und anschließend in den API-Anforderungen der benutzerdefinierte Endpunkt der Ressource verwendet werden. Beispiel: Wenn Sie im Azure-Portal eine Textübersetzungsressource mit der Ressourcenregion „Schweiz, Norden“ erstellen und Ihre Ressource den Namen „my-ch-n“ aufweist, lautet der benutzerdefinierte Endpunkt „https://my-ch-n.cognitiveservices.azure.com“. Eine Beispielanforderung für die Übersetzung wäre etwa:
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
@@ -197,6 +197,7 @@ Ein Kunde mit einer kostenlose Testversion des Abonnements erhält beispielsweis
     }
 }
 ```
+
 Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Häufige Fehlercodes sind:
 
 | Code | BESCHREIBUNG |
@@ -238,7 +239,7 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 415000| Der Content-Type-Header fehlt oder ist ungültig.|
 | 429000, 429001, 429002| Der Server hat die Anforderung abgelehnt, da der Client die Anforderungsgrenzwerte überschritten hat.|
 | 500000| Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
-| 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
+| 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Wiederholen. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 
 ## <a name="metrics"></a>Metriken 
 Metriken ermöglichen es Ihnen, die Informationen über die Nutzung und Verfügbarkeit des Translator im Azure-Portal im Abschnitt „Metriken“ anzuzeigen, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Daten- und Plattformmetriken](../../../azure-monitor/essentials/data-platform-metrics.md).

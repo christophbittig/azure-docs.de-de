@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0b29c9ceb5ad8cd7adb38582d087e91c2fe6e8b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 86a5d327e00ee7c9595cc586aa7e63023a386bba
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743469"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586543"
 ---
 # <a name="iot-central-operator-guide"></a>Leitfaden für IoT Central-Operatoren
 
@@ -35,7 +35,7 @@ Um ausführlichere Informationen zu erhalten, kann ein Operator Gerätegruppen u
 
 Zum Verwalten einzelner Geräte kann ein Operator Geräteansichten verwenden, um Geräte- und Cloudeigenschaften festzulegen und Gerätebefehle aufzurufen. Beispiele hierfür sind die Ansichten **Gerät verwalten** und **Befehle** im vorherigen Screenshot.
 
-Zur Verwaltung vieler Geräte kann ein Operator Aufträge erstellen und planen. Aufträge können auf mehreren Geräten Eigenschaften aktualisieren und Befehle ausführen. Weitere Informationen finden Sie unter [Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung](howto-run-a-job.md).
+Zur Verwaltung vieler Geräte kann ein Operator Aufträge erstellen und planen. Aufträge können auf mehreren Geräten Eigenschaften aktualisieren und Befehle ausführen. Weitere Informationen finden Sie unter [Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung](howto-manage-devices-in-bulk.md).
 
 ## <a name="troubleshoot-and-remediate-issues"></a>Troubleshooting und Beheben von Geräteproblemen
 
@@ -43,11 +43,11 @@ Der Operator ist für die Integrität der Anwendung und der zugehörigen Geräte
 
 ## <a name="add-and-remove-devices"></a>Hinzufügen und Entfernen von Geräten
 
-Der Operator kann Geräte entweder einzeln oder in einem Massenvorgang zu der IoT Central-Anwendung hinzufügen und daraus entfernen. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices.md).
+Der Operator kann Geräte entweder einzeln oder in einem Massenvorgang zu der IoT Central-Anwendung hinzufügen und daraus entfernen. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices-individually.md).
 
 ## <a name="personalize"></a>Personalize
 
-Operatoren können personalisierte Dashboards in einer IoT Central-Anwendung erstellen, die Links zu den Ressourcen enthält, die sie am häufigsten verwenden. Weitere Informationen finden Sie unter [Verwalten von Dashboards](howto-create-personal-dashboards.md#manage-dashboards).
+Operatoren können persönliche Dashboards in einer IoT Central-Anwendung erstellen, die Links zu den Ressourcen enthält, die sie am häufigsten verwenden. Weitere Informationen finden Sie unter [Verwalten von Dashboards](howto-manage-dashboards.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

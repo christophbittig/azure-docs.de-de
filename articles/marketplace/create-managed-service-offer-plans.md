@@ -1,21 +1,21 @@
 ---
-title: Erstellen von Plänen für Ihr Angebot für den verwalteten Dienst im Azure Marketplace
-description: Erfahren Sie, wie Sie Pläne für Ihr Angebot für den verwalteten Dienst mit Microsoft Partner Center in Azure Marketplace konfigurieren.
+title: Erstellen von Plänen für ein Angebot für verwaltete Dienste im Azure Marketplace
+description: Erstellen Sie Pläne für ein Angebot für verwaltete Dienste im Azure Marketplace.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.reviewer: anbene
+ms.reviewer: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: a20571e411b2849c3487582a9c316f0f0b35c91d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 07/12/2021
+ms.openlocfilehash: 4443492d19c09100433bf326f197c9405fa11d8e
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790935"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204463"
 ---
-# <a name="how-to-create-plans-for-your-managed-service-offer"></a>Erstellen von Plänen für Ihr Angebot für den verwalteten Dienst
+# <a name="create-plans-for-a-managed-service-offer"></a>Erstellen von Plänen für ein Angebot für verwaltete Dienste
 
 Angebote für den verwalteten Dienst, die über den kommerziellen Marketplace von Microsoft verkauft werden, müssen mindestens einen Plan aufweisen. Sie können eine Vielzahl von Plänen mit unterschiedlichen Optionen im gleichen Angebot erstellen. Diese Pläne (auch als SKUs bezeichnet) können sich in Bezug auf Version, Monetarisierung und Dienstebenen unterscheiden. Ausführliche Anleitungen zu Plänen finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](./plans-pricing.md).
 
@@ -100,24 +100,31 @@ Durch Autorisierungen werden in Ihrem Verwaltungsmandanten die Entitäten defini
 Sie können für jeden Plan bis zu 20 Autorisierungen erstellen.
 
 > [!TIP]
-> In den meisten Fällen sollten Sie Rollen einer Azure AD-Benutzergruppe oder einem -Dienstprinzipal zuweisen, anstatt einer Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern. Wenn Sie Azure AD-Gruppen Rollen zuweisen, sollte der [Gruppentyp auf „Sicherheit“ und nicht „Office 365“ festgelegt werden](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Zusätzliche Empfehlungen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../lighthouse/concepts/tenants-users-roles.md).
+> In den meisten Fällen sollten Sie Rollen einer Azure AD-Benutzergruppe oder einem -Dienstprinzipal zuweisen, anstatt einer Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern. Wenn Sie Azure AD-Gruppen Rollen zuweisen, sollte der [Gruppentyp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) auf „Sicherheit“ und nicht „Office 365“ festgelegt werden. Zusätzliche Empfehlungen finden Sie unter [Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien](../lighthouse/concepts/tenants-users-roles.md).
 
-Geben Sie für jede „Autorisierung“ die folgenden Informationen an. Sie können dann so oft wie nötig **+ Autorisierung hinzufügen** auswählen, um weitere Benutzer und Rollendefinitionen hinzuzufügen.
+Geben Sie für jede **Autorisierung** die folgenden Informationen an. Wählen Sie bei Bedarf **+ Autorisierung hinzufügen** aus, um weitere Benutzer und Rollendefinitionen hinzuzufügen.
 
-* **AAD-Objekt-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder Anwendung, denen bestimmte Berechtigungen (wie in der Rollendefinition festgelegt) für die Ressourcen Ihrer Kunden gewährt werden.
-* **AAD-Objektanzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
-* **Rollendefinition**: Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Prinzipal-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](../role-based-access-control/built-in-roles.md) und [Rollenunterstützung für Azure Lighthouse](../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
-
-> [!NOTE]
-> Wenn Azure geeignete neue integrierte Rollen hinzugefügt werden, sind diese hier verfügbar. Es kann jedoch zu Verzögerungen kommen, bevor sie angezeigt werden.
-
-* **Zuweisbare Rollen**: Diese Option wird nur angezeigt, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Objekt-ID von Azure AD** kann diese Rollen verwalteten Identitäten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](../lighthouse/how-to/deploy-policy-remediation.md). Für diesen Benutzer gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
+- **Anzeigename**: Ein Anzeigename, der dem Kunden helfen soll, den Zweck dieser Autorisierung zu verstehen. Dem Kunde wird dieser Name beim Delegieren von Ressourcen angezeigt.
+- **Prinzipal-ID**: Der Azure AD-Bezeichner eines Benutzers, einer Benutzergruppe oder eines Dienstprinzipals, dem bestimmte Berechtigungen (wie durch die von Ihnen angegebene **Rolle** definiert) für die Ressourcen Ihrer Kunden gewährt werden.
+- **Zugriffstyp**:
+  - Bei **aktiven** Autorisierungen sind die Berechtigungen der Rolle ständig zugewiesen. Jeder Plan muss mindestens eine aktive Autorisierung enthalten.
+  - **Berechtigte** Autorisierungen sind zeitlich begrenzt und erfordern eine Aktivierung durch den Benutzer.  Wenn Sie **Berechtigt** auswählen, müssen Sie eine maximale Dauer auswählen, die den gesamten Zeitraum definiert, in dem der Benutzer nach der Aktivierung über die berechtigte Rolle verfügen soll. Der Mindestwert beträgt 30 Minuten und der Höchstwert 8 Stunden. Sie können auch auswählen, ob eine mehrstufige Authentifizierung erforderlich ist, um die Rolle zu aktivieren. Beachten Sie, dass sich berechtigte Autorisierungen derzeit in der öffentlichen Vorschau befinden und bestimmte Lizenzierungsanforderungen aufweisen. Weitere Informationen finden Sie unter [Erstellen von berechtigten Autorisierungen](../lighthouse/how-to/create-eligible-authorizations.md).
+- **Rolle**: Wählen Sie eine der verfügbaren integrierten Azure AD-Rollen aus der Liste aus. Diese Rolle legt die Berechtigungen fest, über die der Benutzer im Feld **Prinzipal-ID** für Ressourcen Ihrer Kunden verfügt. Beschreibungen dieser Rollen finden Sie unter [Integrierte Rollen](../role-based-access-control/built-in-roles.md) und [Rollenunterstützung für Azure Lighthouse](../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
+  > [!NOTE]
+  > Wenn Azure geeignete neue integrierte Rollen hinzugefügt werden, sind diese hier verfügbar. Es kann jedoch zu Verzögerungen kommen, bevor sie angezeigt werden.
+- **Zuweisbare Rollen**: Diese Option wird nur angezeigt, wenn Sie in der **Rollendefinition** für diese Autorisierung „Benutzerzugriffsadministrator“ ausgewählt haben. Wenn dies der Fall ist, müssen Sie hier mindestens eine zuweisbare Rollen hinzufügen. Der Benutzer im Feld **Objekt-ID von Azure AD** kann diese Rollen [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](../lighthouse/how-to/deploy-policy-remediation.md). Für diesen Benutzer gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
+- **Genehmigende Personen**: Diese Option wird nur angezeigt, wenn der **Zugriffstyp** auf **Berechtigt** festgelegt ist. In diesem Fall können Sie optional eine Liste von bis zu zehn Benutzern oder Benutzergruppen angeben, die [Anforderungen eines Benutzers zum Aktivieren der berechtigten Rolle genehmigen oder ablehnen können](../lighthouse/how-to/create-eligible-authorizations.md#approvers). Genehmigende Personen werden benachrichtigt, wenn die Genehmigung angefordert und erteilt wurde. Wenn keine angegeben werden, wird die Autorisierung automatisch aktiviert.
 
 > [!TIP]
 > Um sicherzustellen, dass Sie den [Zugriff auf eine Delegierung im Bedarfsfall entfernen](../lighthouse/how-to/remove-delegation.md) können, schließen Sie eine **Autorisierung** mit der auf [Rolle zum Löschen der Registrierungszuweisung für verwaltete Dienste](../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) festgelegten **Rollendefinition** ein. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
-Nachdem Sie alle Abschnitte für Ihren Plan bearbeitet haben, können Sie **+ Neuen Plan erstellen** auswählen, um zusätzliche Pläne zu erstellen. Wählen Sie anschließend **Entwurf speichern** aus, bevor Sie fortfahren.
+Nachdem Sie alle Abschnitte für Ihren Plan ausgefüllt haben, können Sie **+ Neuen Plan erstellen** auswählen, um zusätzliche Pläne zu erstellen. Klicken Sie auf **Entwurf speichern**, wenn Sie fertig sind. Wenn Sie mit dem Erstellen von Plänen fertig sind, wählen Sie in der Brotkrümelnavigation am oberen Rand des Fensters die Option **Pläne** aus, um zum Menü im linken Navigationsbereich für das Angebot zurückzukehren.
+
+## <a name="updating-an-offer"></a>Aktualisieren eines Angebots
+
+Nachdem Ihr Angebot veröffentlicht wurde, können Sie [jederzeit eine aktualisierte Version Ihres Angebots veröffentlichen](update-existing-offer.md). Beispielsweise können Sie einem zuvor veröffentlichten Angebot eine neue Rollendefinition hinzufügen. Kunden, die das Angebot bereits hinzugefügt haben, wird dann auf der Seite [**Dienstanbieter**](../lighthouse/how-to/view-manage-service-providers.md) im Azure-Portal ein Symbol angezeigt, das darauf hinweist, dass eine Aktualisierung verfügbar ist. Jeder Kunde kann die Änderungen überprüfen und entscheiden, ob er auf die neue Version aktualisieren möchte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Überprüfen und veröffentlichen](review-publish-offer.md)
+- Beenden Sie die Planeinrichtung, und fahren Sie optional mit [Co-Selling mit Microsoft](./co-sell-overview.md) fort, oder
+- [Überprüfen und veröffentlichen Sie Ihr Angebot](review-publish-offer.md)

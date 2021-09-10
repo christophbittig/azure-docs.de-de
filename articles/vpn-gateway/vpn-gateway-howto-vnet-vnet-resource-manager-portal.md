@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2bf603d29b5e949ef83c872017bae49e71b2fcb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346132"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken (VNETs) e
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNET-zu-VNET-Diagramm":::
 
-Die Schritte in diesem Artikel gelten für das Azure Resource Manager-Bereitstellungsmodell und verwenden das Azure-Portal. Sie können diese Konfiguration mit einem anderen Bereitstellungstool oder Modell erstellen, indem Sie Optionen verwenden, die in den folgenden Artikeln beschrieben werden:
+Die Schritte in diesem Artikel gelten für das Azure [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und verwenden das Azure-Portal. Sie können diese Konfiguration mit einem anderen Bereitstellungstool oder Modell erstellen, indem Sie Optionen verwenden, die in den folgenden Artikeln beschrieben werden:
 
 > [!div class="op_single_selector"]
 > * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -87,10 +87,10 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 * **Einstellungen des Gateways für virtuelle Netzwerke**
   * **Name**: VNet1GW
   * **Ressourcengruppe**: East US
-  * **Generation:** Generation 1
+  * **Generation**: Generation 2
   * **Gatewaytyp**: Wählen Sie **VPN** aus.
   * **VPN-Typ:** Wählen Sie **Routenbasiert** aus.
-  * **SKU**: VpnGw1
+  * **SKU**: VpnGw2
   * **Virtuelles Netzwerk:** VNet1
   * **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
   * **Öffentliche IP-Adresse:** Neu erstellen
@@ -115,10 +115,10 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 * **Einstellungen des Gateways für virtuelle Netzwerke**
   * **Name**: VNet4GW
   * **Ressourcengruppe**: USA (Westen)
-  * **Generation:** Generation 1
+  * **Generation**: Generation 2
   * **Gatewaytyp**: Wählen Sie **VPN** aus.
   * **VPN-Typ:** Wählen Sie **Routenbasiert** aus.
-  * **SKU**: VpnGw1
+  * **SKU**: VpnGw2
   * **Virtuelles Netzwerk:** VNet4
   * **Adressbereich für Gatewaysubnetz**: 10.41.255.0/27
   * **Öffentliche IP-Adresse:** Neu erstellen
@@ -146,7 +146,10 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 
 ### <a name="to-create-a-virtual-network-gateway"></a>So erstellen Sie ein Gateway für das virtuelle Netzwerk
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt. Die gesamte Erstellung und Bereitstellung eines Gateways kann 45 Minuten oder länger dauern. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -161,10 +164,10 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und
 1. Wählen Sie im Azure-Portal **Alle Ressourcen** aus, geben Sie *Gateway für virtuelle Netzwerke* in das Suchfeld ein, und navigieren Sie dann zum Gateway für virtuelle Netzwerke für Ihr VNET. Beispiel: **VNet1GW**. Wählen Sie das Gateway aus, um die Seite **Gateway für virtuelle Netzwerke** zu öffnen.
 1. Auf der Gatewayseite wechseln Sie zu **Einstellungen ->Verbindungen**. Wählen Sie anschließend **+Hinzufügen** aus.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Seite „Verbindungen“":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Screenshot: Seite mit den Verbindungen" border="false":::
 1. Die Seite **Verbindung hinzufügen** wird geöffnet.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Verbindung hinzufügen":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Screenshot: Seite „Verbindung hinzufügen“":::
 
    Geben Sie auf der Seite **Verbindung hinzufügen** die Werte zum Herstellen der Verbindung ein:
 
@@ -176,7 +179,7 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und
 
    * **Zweites Gateway für virtuelle Netzwerke**: Dieses Feld enthält das virtuelle Netzwerkgateway des VNET, mit dem Sie eine Verbindung herstellen möchten. Wählen Sie **Ein weiteres virtuelles Netzwerkgateway auswählen** aus, um die Seite **Ein Gateway für virtuelle Netzwerke auswählen** zu öffnen.
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Gateway auswählen":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Screenshot: Seite „Gateway für virtuelle Netzwerke auswählen“ mit ausgewähltem anderen Gateway":::
 
      * Sehen Sie sich die auf der Seite aufgeführten virtuellen Netzwerkgateways an. Beachten Sie, dass nur virtuelle Netzwerkgateways aus Ihrem Abonnement aufgeführt werden. Falls Sie eine Verbindung mit einem Gateway für virtuelle Netzwerke herstellen möchten, das nicht in Ihrem Abonnement enthalten ist, verwenden Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
@@ -194,10 +197,10 @@ Erstellen Sie als Nächstes eine Verbindung zwischen VNet4 und VNet1. Ermitteln 
 1. Suchen Sie im Azure-Portal nach dem Gateway für virtuelle Netzwerke. 
 1. Wählen Sie auf der Seite **Gateway für virtuelle Netzwerke** **Verbindungen** aus, um die Seite **Verbindungen** für das Gateway für virtuelle Netzwerke anzuzeigen. Nach dem Verbindungsaufbau sehen Sie, dass sich die Werte für **Status** in **Verbunden** ändern.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Überprüfen von Verbindungen":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Screenshot: Seite „Verbindungen“ zum Überprüfen der Verbindungen" border="false":::
 1. Wählen Sie unter der Spalte **Name** eine der Verbindungen aus, um weitere Informationen anzuzeigen. Sobald Daten übertragen werden, werden Werte für **Eingehende Daten** und **Ausgehende Daten** angezeigt.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Der Screenshot zeigt eine Ressourcengruppe mit Werten für „Eingehende Daten“ und „Ausgehende Daten“.":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Der Screenshot zeigt eine Ressourcengruppe mit Werten für „Eingehende Daten“ und „Ausgehende Daten“." border="false":::
 
 ## <a name="add-additional-connections"></a>Hinzufügen zusätzlicher Verbindungen
 

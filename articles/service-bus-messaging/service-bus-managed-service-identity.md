@@ -2,13 +2,14 @@
 title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 ms.topic: article
-ms.date: 04/23/2021
-ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ed6f7d495466139a7d1a98aed7d5323f7ad4c074
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161121"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123205"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -92,30 +93,10 @@ Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus:
 Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>So weisen Sie Azure-Rollen mit dem Azure-Portal zu
-Weisen Sie nun die Dienstidentität einer Rolle im gewünschten Umfang in Ihren Servicebus-Ressourcen zu. Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anleitung zum Verwalten von Rollenzuweisungen:
+Weisen Sie der verwalteten Dienstidentität im gewünschten Bereich (Service Bus-Namespace, Ressourcengruppe, Abonnement) eine der [Service Bus-Rollen](#azure-built-in-roles-for-azure-service-bus) zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md). 
 
 > [!NOTE]
-> Mit den folgenden Schritten wird den Service Bus-Namespaces eine Dienstidentitätsrolle zugewiesen. Sie können die gleichen Schritte ausführen, um anderen unterstützten Bereichen (Ressourcengruppe und Abonnement) eine Rolle zuzuweisen. 
-> 
-> [Erstellen Sie einen Service Bus-Messagingnamespace](service-bus-create-namespace-portal.md), wenn dieser noch nicht vorhanden ist. 
-
-1. Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace, und zeigen Sie die **Übersicht** für den Namespace an. 
-1. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Service Bus-Namespace anzuzeigen.
-1.  Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
-3.  Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
-4.  Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
-    1. Wählen Sie als **Rolle** die Service Bus-Rolle aus, die Sie zuweisen möchten. In diesem Beispiel wird die Rolle **Azure Service Bus-Datenbesitzer** verwendet.
-    1. Wählen Sie für das Feld **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus. 
-    1. Wählen Sie das **Abonnement** aus, in dem die verwaltete Identität für die Web-App erstellt wurde.
-    1. Wählen Sie die **verwaltete Identität** für die Web-App aus, die Sie erstellt haben. Der Standardname für die Identität ist identisch mit dem Namen der Web-App. 
-    1. Wählen Sie anschließend **Speichern** aus.
-        
-        ![Seite „Rollenzuweisung hinzufügen“](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-
-    Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Service Bus-Entitäten unter dem definierten Bereich. 
-
-    > [!NOTE]
-    > Eine Liste der Dienste, die verwaltete Identitäten unterstützen, finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
+> Eine Liste der Dienste, die verwaltete Identitäten unterstützen, finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="run-the-app"></a>Ausführen der App
 Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet) verwenden.  

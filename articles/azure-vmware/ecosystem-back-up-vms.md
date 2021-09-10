@@ -3,12 +3,12 @@ title: Sicherungslösungen für virtuelle Azure VMware Solution-Computer
 description: Hier finden Sie Informationen zu führenden Sicherungs- und Wiederherstellungslösungen für Ihre virtuellen Azure VMware Solution-Computer.
 ms.topic: how-to
 ms.date: 04/21/2021
-ms.openlocfilehash: 7347ede0aeb36a5927592da4c6f31360c806446c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 76231aaed4b363daf20abe54a78f84a9e0740da4
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954402"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431625"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Sicherungslösungen für virtuelle Azure VMware Solution-Computer (virtual machines, VMs)
 
@@ -16,10 +16,12 @@ Ein zentrales Prinzip von Azure VMware Solution besteht darin, die Weiterverwend
 
 Unsere Sicherungspartner verfügen über führende Sicherungs- und Wiederherstellungslösungen in VMware-basierten Umgebungen. Viele Kunden haben diese Lösungen für Ihre lokalen Bereitstellungen eingeführt. Nun haben diese Partner ihre Lösungen auf Azure VMware Solution ausgeweitet, und sie verwenden Azure, um ein Sicherungsrepository und ein Speicherziel für die Langzeitaufbewahrung und Archivierung bereitzustellen.
 
-Der sicherungsbezogene Netzwerkdatenverkehr zwischen virtuellen Azure VMware Solution-Computern und dem Sicherungsrepository in Azure wird über eine Verbindung mit hoher Bandbreite und geringer Wartezeit abgewickelt. Der Replikationsdatenverkehr zwischen Regionen verläuft über das interne Azure-Backplanenetzwerk und verringert so Bandbreitenkosten für Benutzer.
+Der sicherungsbezogene Netzwerkdatenverkehr zwischen Azure VMware Solution-VMs und dem Sicherungsrepository in Azure wird über eine Verbindung mit hoher Bandbreite und geringer Wartezeit abgewickelt. Der Replikationsdatenverkehr zwischen Regionen verläuft über das interne Azure-Backplanenetzwerk und verringert so Bandbreitenkosten für Benutzer.
 
 >[!NOTE]
->Häufig gestellte Fragen finden Sie in unseren [häufig gestellten Fragen zu Sicherungslösungen von Drittanbietern](/azure/azure-vmware/faq.yml#third-party-backup-and-recovery).
+>Häufig gestellte Fragen finden Sie in unseren [häufig gestellten Fragen zu Sicherungslösungen von Drittanbietern](/azure/azure-vmware/faq#third-party-backup-and-recovery).
+
+
 
 Weitere Informationen zu diesen Sicherungslösungen finden Sie hier:
 - [Cohesity](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)

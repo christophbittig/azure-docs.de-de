@@ -5,18 +5,62 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 834c70e02ab25fa6dcadb5f6c997be09aaf5e353
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0d7cb5c8747707b950075c7201d90c5e208298db
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932776"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123442"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>Problembehandlung für das Feature „Gastintegrität“ von VM Insights (Vorschau)
 Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Sie ausführen können, wenn Probleme mit der Integrität in VM Insights auftreten.
 
+## <a name="installation-errors"></a>Installationsfehler
+Wenn Ihr Installationsproblem durch keine der folgenden Lösungen behoben werden kann, rufen Sie das Protokoll des VM-Integritäts-Agents unter `/var/log/azure/Microsoft.Azure.Monitor.VirtualMachines.GuestHealthLinuxAgent/*.log` ab, und wenden Sie sich zur weiteren Untersuchung an Microsoft.
 
-## <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>Meldung „Upgrade verfügbar“ wird nach dem Upgrade des Features „Gastintegrität“ weiterhin angezeigt 
+### <a name="error-message-showing-db5-error"></a>Fehlermeldung mit db5-Fehler
+Die Installation war nicht erfolgreich, und Ihnen wird in etwa die folgende Installationsfehlermeldung angezeigt:
+
+```
+script execution exit with error: error: db5 error(5) from dbenv->open: Input/output error
+error: cannot open Packages index using db5 - Input/output error (5)
+error: cannot open Packages database in /var/lib/rpm
+error: db5 error(5) from dbenv->open: Input/output error
+error: cannot open Packages database in /var/lib/rpm
+```
+Dies liegt daran, dass die RPM-Datenbank des Paket-Managers beschädigt ist. Befolgen Sie die Anleitung zur [Wiederherstellung der RPM-Datenbank](https://rpm.org/user_doc/db_recovery.html), um die Wiederherstellung auszuführen. Nachdem die RPM-Datenbank wiederhergestellt wurde, wiederholen Sie die Installation.
+
+### <a name="init-file-already-exist-error"></a>Fehler „Init-Datei bereits vorhanden“
+Die Installation war nicht erfolgreich, und Ihnen wird in etwa die folgende Installationsfehlermeldung angezeigt:
+
+```
+Exiting with the following error: "Failed to install VM Guest Health Agent: Init already exists: /etc/systemd/system/vmGuestHealthAgent.service"install vmGuestHealthAgent service execution failed with exit code 37
+```
+
+Der VM-Integritäts-Agent deinstalliert zuerst den vorhandenen Dienst, bevor die aktuelle Version installiert wird. Dieser Fehler beruht wahrscheinlich darauf, dass die vorherige Dienstdatei aus irgendeinem Grund nicht bereinigt wurde. Melden Sie sich bei der VM an, führen Sie den folgenden Befehl aus, um die vorhandene Dienstdatei zu sichern, und versuchen Sie erneut, die Installation durchzuführen.
+
+```
+sudo mv /etc/systemd/system/vmGuestHealthAgent.service  /etc/systemd/system/vmGuestHealthAgent.service.bak
+```
+
+Wenn die Installation erfolgreich war, führen Sie den folgenden Befehl aus, um die Sicherungsdatei zu entfernen.
+
+```
+sudo rm /etc/systemd/system/vmGuestHealthAgent.service.bak
+```
+
+### <a name="installation-failed-to-exit-code-37"></a>Installationsfehler mit Exitcode 37
+Die Installation war nicht erfolgreich, und Ihnen wird in etwa die folgende Installationsfehlermeldung angezeigt: 
+
+```
+Exiting with the following error: "Failed to install VM Guest Health Agent: exit status 1"install vmGuestHealthAgent service execution failed with exit code 37
+```
+Wahrscheinlich konnte der VM-Gast-Agent die Sperre für die Dienstdatei nicht abrufen. Starten Sie Ihre VM neu, damit die Sperre aufgehoben wird.
+
+
+## <a name="upgrade-errors"></a>Upgradefehler
+
+### <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>Meldung „Upgrade verfügbar“ wird nach dem Upgrade des Features „Gastintegrität“ weiterhin angezeigt 
 
 - Vergewissern Sie sich, dass die VM in Azure weltweit ausgeführt wird. Server mit Arc-Unterstützung werden noch nicht unterstützt.
 - Überprüfen Sie, ob die Region und die Betriebssystemversion des virtuellen Computers unterstützt werden, wie es unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md) beschrieben ist.
@@ -41,41 +85,41 @@ Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Si
    -  Für Windows: Überprüfen Sie die Protokolle unter _C:\WindowsAzure\Resources\*{vmName}.AMADataStore_.
  
 
+## <a name="usage-errors"></a>Nutzungsfehler
 
-
-## <a name="error-message-that-no-data-is-available"></a>Fehlermeldung: Keine Daten verfügbar 
+### <a name="error-message-that-no-data-is-available"></a>Fehlermeldung: Keine Daten verfügbar 
 
 ![Keine Daten](media/vminsights-health-troubleshoot/no-data.png)
 
 
-### <a name="verify-that-the-virtual-machine-meets-configuration-requirements"></a>Überprüfen, ob der virtuelle Computer die Konfigurationsanforderungen erfüllt
+#### <a name="verify-that-the-virtual-machine-meets-configuration-requirements"></a>Überprüfen, ob der virtuelle Computer die Konfigurationsanforderungen erfüllt
 
 1. Vergewissern Sie sich, dass die VM ein virtueller Azure-Computer ist. Azure Arc für Server wird derzeit nicht unterstützt.
 2. Vergewissern Sie sich, dass auf dem virtuellen Computer ein [unterstütztes Betriebssystem](vminsights-health-enable.md?current-limitations.md) ausgeführt wird.
 3. Stellen Sie sicher, dass der virtuelle Computer in einer [unterstützten Region](vminsights-health-enable.md?current-limitations.md) installiert ist.
 4. Stellen Sie sicher, dass der Log Analytics-Arbeitsbereich in einer [unterstützten Region](vminsights-health-enable.md?current-limitations.md) installiert ist.
 
-### <a name="verify-that-the-vm-is-properly-onboarded"></a>Überprüfen, ob das Onboarding für die VM korrekt durchgeführt wurde
+#### <a name="verify-that-the-vm-is-properly-onboarded"></a>Überprüfen, ob das Onboarding für die VM korrekt durchgeführt wurde
 Vergewissern Sie sich, dass die Bereitstellung der Azure Monitor-Agent-Erweiterung und des Agents für die Integrität der Gast-VM auf dem virtuellen Computer erfolgreich war. Wählen Sie im Azure-Portal im Menü des virtuellen Computers die Option **Erweiterungen** aus, und vergewissern Sie sich, dass die beiden Agents aufgelistet sind.
 
 ![VM-Erweiterungen](media/vminsights-health-troubleshoot/extensions.png)
 
-### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Überprüfen, ob auf dem virtuellen Computer die systemseitig zugewiesene Identität aktiviert ist
+#### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Überprüfen, ob auf dem virtuellen Computer die systemseitig zugewiesene Identität aktiviert ist
 Überprüfen Sie, ob auf dem virtuellen Computer die systemseitig zugewiesene Identität aktiviert ist. Wählen Sie im Azure-Portal im Menü des virtuellen Computers die Option **Identität** aus. Wenn die vom Benutzer verwaltete Identität aktiviert ist, kann der Azure Monitor-Agent, unabhängig vom Status der vom System verwalteten Identität, nicht mit dem Konfigurationsdienst kommunizieren, und die Erweiterung für die Gastintegrität funktioniert nicht.
 
 ![Systemzugewiesene Identität](media/vminsights-health-troubleshoot/system-identity.png)
 
-### <a name="verify-data-collection-rule"></a>Überprüfen der Datensammlungsregel
+#### <a name="verify-data-collection-rule"></a>Überprüfen der Datensammlungsregel
 Vergewissern Sie sich, dass die Datensammlungsregel, mit der die Integritätserweiterung als Datenquelle angegeben wird, dem virtuellen Computer zugeordnet ist.
 
-## <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>Fehlermeldung: Ungültige Anforderung aufgrund von unzureichenden Berechtigungen
+### <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>Fehlermeldung: Ungültige Anforderung aufgrund von unzureichenden Berechtigungen
 Dieser Fehler ist ein Hinweis darauf, dass der Ressourcenanbieter **Microsoft.WorkloadMonitor** unter dem Abonnement nicht registriert wurde. Ausführliche Informationen zum Registrieren dieses Ressourcenanbieters finden Sie unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). 
 
 ![Ungültige Anforderung](media/vminsights-health-troubleshoot/bad-request.png)
 
-## <a name="health-shows-as-unknown-after-guest-health-is-enabled"></a>Integrität wird nach Aktivieren der Gastintegrität als „unbekannt“ angezeigt
+### <a name="health-shows-as-unknown-after-guest-health-is-enabled"></a>Integrität wird nach Aktivieren der Gastintegrität als „unbekannt“ angezeigt
 
-### <a name="verify-that-performance-counters-on-windows-nodes-are-working-correctly"></a>Überprüfen, ob die Leistungsindikatoren auf Windows-Knoten ordnungsgemäß funktionieren 
+#### <a name="verify-that-performance-counters-on-windows-nodes-are-working-correctly"></a>Überprüfen, ob die Leistungsindikatoren auf Windows-Knoten ordnungsgemäß funktionieren 
 Die Gastintegrität basiert darauf, dass der Agent Leistungsindikatoren vom Knoten sammeln kann. Der Basissatz der Leistungsindikatorbibliotheken ist möglicherweise beschädigt und muss neu erstellt werden. Folgen Sie den Anweisungen unter [Manuelles Neuerstellen von Leistungsindikatorbibliothekswerten](/troubleshoot/windows-server/performance/rebuild-performance-counter-library-values), um die Leistungsindikatoren neu zu erstellen.
 
 

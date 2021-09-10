@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: c0e63d0aee60ae81c14fa8971369c3a50f9b2bde
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683441"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461398"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>Verbinden von Geräten über ein transparentes IoT Edge-Gateway
 
@@ -70,7 +70,7 @@ Auf dem folgenden Screenshot sehen Sie die Seite **Beziehungen** für ein IoT Ed
 
 :::image type="content" source="media/how-to-connect-iot-edge-transparent-gateway/device-template-relationship.png" alt-text="Screenshot: Beziehung der IoT Edge-Gatewaygerätvorlage mit einer Thermostat-Vorlage für untergeordnete Geräte":::
 
-Auf dem obigen Screenshot sind für die IoT Edge-Gatewaygerätvorlage keine Module definiert. Für ein transparentes Gateway sind keine Module erforderlich, da die IoT Edge-Runtime Nachrichten von den untergeordneten Geräten an IoT Central weiterleitet. Wenn das Gateway selbst Telemetriedaten senden, Eigenschaften synchronisieren oder Befehle verarbeiten muss, können Sie diese Funktionen in der Standardkomponente oder in einem Modul definieren.
+Auf dem obigen Screenshot sind für die IoT Edge-Gatewaygerätvorlage keine Module definiert. Für ein transparentes Gateway sind keine Module erforderlich, da die IoT Edge-Runtime Nachrichten von den untergeordneten Geräten an IoT Central weiterleitet. Wenn das Gateway selbst Telemetriedaten senden, Eigenschaften synchronisieren oder Befehle verarbeiten muss, können Sie diese Funktionen in der Stammkomponente oder in einem Modul definieren.
 
 Fügen Sie die erforderlichen Cloudeigenschaften und Ansichten hinzu, bevor Sie das Gateway und die Vorlagen für untergeordnete Geräte veröffentlichen.
 

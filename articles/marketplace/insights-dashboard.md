@@ -4,27 +4,26 @@ description: Nutzen Sie eine Zusammenfassung der Marketplace-Webanalysen im Part
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 03/23/2021
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: b02d5d4ae412867237d253e488fdb6cd8dd19769
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: a4bd78c15d2015eabf95926e2b4bcf43d6cbcdcb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339468"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
 
 Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Webanalysen im kommerziellen Marketplace angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Onlineshops des kommerziellen Marketplace aufgelistet sind: Microsoft AppSource und Azure Marketplace.
 
-Um auf das Dashboard **Marketplace-Erkenntnisse** im Partner Center zuzugreifen, wählen Sie unter „Kommerzieller Marketplace“ **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Marketplace-Erkenntnisse** aus.
-
-Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.md).
+Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./analytics-faq.yml).
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard „Marketplace-Erkenntnisse“
 
-Das Dashboard „Marketplace-Erkenntnisse“ bietet eine Übersicht über die Geschäftsleistung der Angebote von Azure Marketplace und AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
+Das [Dashboard „Marketplace-Erkenntnisse“](https://go.microsoft.com/fwlink/?linkid=2165936) bietet eine Übersicht über die Geschäftsleistung der Angebote von Azure Marketplace und AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
 
 - Seitenbesuchstrend
 - Handlungsaufforderungstrend
@@ -40,6 +39,8 @@ Das Marketplace Insights-Dashboard bietet Clickstreamdaten, die nicht mit Leads 
 ## <a name="elements-of-the-marketplace-insights-dashboard"></a>Elemente des Dashboards „Marketplace-Erkenntnisse“
 
 Das Dashboard „Marketplace-Erkenntnisse“ zeigt Webtelemetriedetails für Azure Marketplace und AppSource auf zwei separaten Registerkarten an. In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Marketplace-Erkenntnisse“ verwendet und wie die Daten gelesen werden.
+
+Um auf das Dashboard **Marketplace-Erkenntnisse** im Partner Center zuzugreifen, wählen Sie unter „Kommerzieller Marketplace“ **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Marketplace-Erkenntnisse** aus.
 
 ### <a name="month-range"></a>Monatsbereich
 
@@ -127,4 +128,4 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 - Ausführliche Informationen zu Ihren Kunden, einschließlich Wachstumstrends, finden Sie unter [Dashboard „Kunde“ in Analysen für den kommerziellen Marketplace](customer-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](analytics-faq.md).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](analytics-faq.yml).

@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 06/22/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 768cc936964d216ce3f477fde48071aa0eb39162
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 64c2601199db5ca64ab22d49dff4435ecf2fcb44
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902067"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539959"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft Partner-Vereinbarung mit den neuesten APIs
 
@@ -391,7 +391,7 @@ Sie erhalten die Abonnement-ID (subscriptionId) als Teil der Befehlsantwort.
 
 Im vorherigen Abschnitt wurde gezeigt, wie Sie ein Abonnement mit PowerShell, der CLI oder der REST-API erstellen. Wenn Sie das Erstellen von Abonnements automatisieren müssen, verwenden Sie ggf. eine Azure Resource Manager-Vorlage (ARM-Vorlage).
 
-Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die Kunden-ID an. Geben Sie für `targetManagementGroup` die Verwaltungsgruppe an, in der Sie das Abonnement erstellen möchten.
+Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingScope` die Kunden-ID an. Das Abonnement wird in der Stammverwaltungsgruppe erstellt. Nachdem Sie das Abonnement erstellt haben, können Sie es in eine andere Verwaltungsgruppe verschieben.
 
 ```json
 {
@@ -409,12 +409,6 @@ Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingS
             "metadata": {
                 "description": "Provide the full resource ID of billing scope to use for subscription creation."
             }
-        },
-        "targetManagementGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Provide the ID of the target management group to place the subscription."
-            }
         }
     },
     "resources": [
@@ -426,8 +420,7 @@ Mit der folgenden Vorlage wird ein Abonnement erstellt. Geben Sie für `billingS
             "properties": {
                 "workLoad": "Production",
                 "displayName": "[parameters('subscriptionAliasName')]",
-                "billingScope": "[parameters('billingScope')]",
-                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+                "billingScope": "[parameters('billingScope')]"
             }
         }
     ],
@@ -458,9 +451,6 @@ Mit dem Anforderungstext:
       },
       "billingScope": {
         "value": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "targetManagementGroup": {
-        "value": "mg2"
       }
     },
     "mode": "Incremental"
@@ -477,8 +467,7 @@ New-AzManagementGroupDeployment `
   -ManagementGroupId mg1 `
   -TemplateFile azuredeploy.json `
   -subscriptionAliasName sampleAlias `
-  -billingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
-  -targetManagementGroup mg2
+  -billingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
@@ -489,10 +478,44 @@ az deployment mg create \
   --location eastus \
   --management-group-id mg1 \
   --template-file azuredeploy.json \
-  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx' targetManagementGroup=mg2
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
 
 ---
+
+Verwenden Sie die folgende Vorlage, um ein Abonnement in eine neue Verwaltungsgruppe zu verschieben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/",
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,24 +3,28 @@ title: Konfigurieren der Sicherheit zum Gewähren von Datenzugriff – Azure Tim
 description: Hier erfahren Sie, wie Sie in der Azure Time Series Insights-Umgebung Sicherheit und Berechtigungen konfigurieren und Datenzugriffsrichtlinien verwalten.
 ms.service: time-series-insights
 services: time-series-insights
-author: shipra1mishra
-ms.author: shmishr
+author: tedvilutis
+ms.author: tvilutis
 manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebbb3c02263d860822482e2e19293d9a032274ef
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780857"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135359"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
 In diesem Artikel werden die beiden Arten von Zugriffsrichtlinien für Azure Time Series Insights thematisiert.
+
+> [!Warning]
+> Zugriffsrichtlinien gewähren Azure AD-Benutzern und/oder -Gruppen auf Datenebene Zugriff auf Ihre Time Series Insights-Umgebung.
+> Eine Azure Active Directory-Instanz ist an einen Mandanten gebunden. Wenn Sie Ihr Abonnement also zwischen Mandanten verschieben möchten, befolgen Sie das Verfahren [im Abschnitt unten](#procedure-for-when-the-subscription-is-moved-across-tenants).
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Anmelden bei Azure Time Series Insights
 
@@ -119,6 +123,29 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen 
     Er verfügt nun über alle Funktionen, die mit der Rolle verbunden sind, die Sie ihm in **Schritt 5** zugewiesen haben.
 
     [![Gastbenutzer wählt Ihren Azure-Mandanten aus der Dropdownliste aus](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+
+## <a name="procedure-for-when-the-subscription-is-moved-across-tenants"></a>Verfahren für die mandantenübergreifende Verschiebung eines Abonnements
+
+Time Series Insights-Datenzugriffsrichtlinien werden von Azure Active Directory unterstützt und sind an den Azure-Mandanten gebunden, in dem sich das Abonnement befindet.
+
+Die Azure AD-Objekte, denen Sie Datenzugriffsrichtlinien gewähren, und die Time Series Insights-Umgebung selbst sollten sich im selben Mandanten befinden. Andernfalls haben diese Objekte keinen Zugriff auf die Umgebung.
+
+Wenn Sie planen, das Abonnement, in dem sich die Umgebung befindet, in einen anderen Mandanten zu verschieben, müssen Sie sicherstellen, dass die Datenzugriffsrichtlinien aktualisiert werden, sodass sie für die Azure AD-Objekte im neuen Mandanten gelten.
+
+Damit dieser Prozess reibungslos abläuft, führen Sie die folgenden Schritte aus.
+
+### <a name="before-moving-a-subscription-to-another-tenant"></a>Vor dem Verschieben eines Abonnements in einen anderen Mandanten
+
+- Stellen Sie sicher, dass Sie eine Liste der aktuellen Zuweisungen von Datenzugriffsrichtlinien in der Umgebung haben, während diese sich noch im Quellmandanten befindet.
+- Stellen Sie sicher, dass die Benutzer, Gruppen oder Apps, die nach Verschieben des Abonnements weiterhin Zugriff auf die Umgebung haben sollen, in das Active Directory des Zielmandanten migriert werden.
+- Stellen Sie auch sicher, dass Sie nach dem Verschieben mindestens über Zugriff als Mitwirkender auf das Abonnement verfügen (oder mit jemandem zusammenarbeiten, der über diesen Zugriff verfügt), damit die Datenzugriffsrichtlinien im Zielmandanten erneut in der Umgebung angewendet werden können.
+
+### <a name="after-moving-a-subscription-to-another-tenant"></a>Nach dem Verschieben eines Abonnements in einen anderen Mandanten
+
+Der Zugriff als Mitwirkender auf das Abonnement im Zielmandanten bietet Ihnen folgende Möglichkeiten:
+
+- Sie können sämtliche Datenzugriffsrichtlinien entfernen, die mit der Umgebung migriert wurden, da sie zum Zielmandanten gehören.
+- Sie können in der Umgebung erneut Zugriffsrichtlinien gewähren, indem Sie die obigen Schritte ausführen und jetzt auf die Azure AD-Objekte im Zielmandanten verweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

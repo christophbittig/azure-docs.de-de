@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: b1eb954626570d7feb2af7fe0980e4f7a10e70c6
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527537"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280155"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -23,11 +23,9 @@ Alle Images im Azure Marketplace müssen allgemein wiederverwendbar sein. Um die
 Windows-Betriebssystemdatenträger werden mit dem [Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)-Tool generalisiert. Wenn Sie das Betriebssystem später aktualisieren oder neu konfigurieren, müssen Sie Sysprep erneut ausführen.
 
 > [!WARNING]
-> Fahren Sie die VM nach der Ausführung von Sysprep bis zur Bereitstellung herunter, da u. U. automatische Updates ausgeführt werden. Dadurch verhindern Sie, dass durch nachfolgende Updates instanzspezifische Änderungen am Betriebssystem oder den installierten Diensten vorgenommen werden. Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep).
+> Fahren Sie die VM nach der Ausführung von Sysprep bis zur Bereitstellung herunter, da u. U. automatische Updates ausgeführt werden. Dadurch verhindern Sie, dass durch nachfolgende Updates instanzspezifische Änderungen am Betriebssystem oder den installierten Diensten vorgenommen werden. Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Generalisieren einer Windows-VM](../../virtual-machines/generalize.md#windows).
 
 ### <a name="for-linux"></a>Für Linux
-
-Mit dem folgenden Prozess wird eine Linux-VM generalisiert und als separate VM erneut bereitgestellt. Ausführliche Informationen finden Sie unter [Vorgehensweise zum Erstellen eines Images von einem virtuellen Computer oder einer VHD](../../virtual-machines/linux/capture-image.md). Für Sie sind in diesem Fall nur die Informationen bis zum Abschnitt „Bereitstellen eines virtuellen Computers anhand des erfassten Images“ relevant.
 
 1. Entfernen Sie den Azure Linux-Agent.
     1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrer Linux-VM her.

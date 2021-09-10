@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 8/24/2020
+ms.date: 06/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4980692be64c2a8b3918d2dbaab5ef9c983f453
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541928"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345768"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe von PowerShell
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MySQL-Dienst über PowerShell erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
@@ -39,6 +41,8 @@ Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cm
 
 > [!IMPORTANT]
 > Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
+>
+>Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert, und es wird die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid).
 
 ### <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
@@ -66,7 +70,8 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
-Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md).
+> [!NOTE]
+> Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
 
 Standardmäßig werden Lesereplikate mit derselben Serverkonfiguration wie der Quellserver erstellt, es sei denn, der Parameter **Sku** wird angegeben.
 
@@ -106,6 +111,16 @@ Zum Löschen eines Quellservers können Sie das Cmdlet `Remove-AzMySqlServer` au
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
+
+### <a name="known-issue"></a>Bekanntes Problem
+
+Es gibt zwei Generationen von Speicher, die von Servern im Tarif „Universell“ und „Arbeitsspeicheroptimiert“ verwendet werden: „Universell V1“ (Unterstützung von bis zu 4 TB) und „Universell V2“ (Unterstützung von bis zu 16 TB Speicher).
+Quellserver und Replikatserver sollten denselben Speichertyp verwenden. Der Speichertyp [Universell V2](./concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) ist nicht in allen Regionen verfügbar. Deshalb müssen Sie sicherstellen, dass Sie die richtige Replikatregion auswählen, wenn Sie den Standort für die Erstellung von Lesereplikaten mit PowerShell festlegen. Informationen zur Ermittlung des Speichertyps Ihres Quellservers finden Sie unter [Wie kann ich bestimmen, mit welchem Speichertyp mein Server ausgeführt wird?](./concepts-pricing-tiers.md#how-can-i-determine-which-storage-type-my-server-is-running-on). 
+
+Wenn Sie eine Region auswählen, in der Sie kein Lesereplikat für Ihren Quellserver erstellen können, tritt das in der folgenden Abbildung gezeigte Problem auf. Die Bereitstellung wird weiter ausgeführt wird, bis es zu einem Timeout mit dem Fehler *„Der Ressourcenbereitstellungsvorgang wurde nicht innerhalb des zulässigen Zeitlimits abgeschlossen“* kommt.
+
+[ :::image type="content" source="media/howto-read-replicas-powershell/replcia-ps-known-issue.png" alt-text="CLI-Fehler zum Lesereplikat":::](media/howto-read-replicas-powershell/replcia-ps-known-issue.png#lightbox)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

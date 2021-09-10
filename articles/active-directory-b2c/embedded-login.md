@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7874224304f5466c8b166c1e5bd709b915a5d325
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639914"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356588"
 ---
-# <a name="embedded-sign-in-experience"></a>Eingebettete Anmeldung
+# <a name="embedded-sing-up-or-sign-in-experience"></a>Eingebettetes Registrierungs- oder Anmeldeverfahren
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -32,7 +32,10 @@ ms.locfileid: "105639914"
 
 ::: zone pivot="b2c-custom-policy"
 
-Um die Anmeldung zu vereinfachen, können Sie verhindern, dass Benutzer zu einer separaten Anmeldeseite umgeleitet werden oder dass ein Popupfenster generiert wird. Durch Verwenden des Inlineframeelements `<iframe>` können Sie die Azure AD B2C-Anmeldebenutzeroberfläche direkt in Ihre Webanwendung einbetten.
+Um die Registrierung oder Anmeldung zu vereinfachen, können Sie verhindern, dass Benutzer zu einer separaten Registrierungs- oder Anmeldeseite umgeleitet werden oder aber dass ein Popupfenster generiert wird. Mithilfe des HTML-Inlineframe-Elements &lt;iframe&gt; können Sie die Azure AD B2C-Anmeldebenutzeroberfläche direkt in Ihre Webanwendung einbetten. 
+
+> [!TIP]
+> Mithilfe des HTML-Elements &lt;iframe&gt; können Sie die [Registrierung oder Anmeldung](add-sign-up-and-sign-in-policy.md) einbetten, [ein Profil bearbeiten ](add-profile-editing-policy.md) oder aber bei benutzerdefinierten Richtlinien in Ihrer Web- oder Single-Page-App [das Kennwort ändern](add-password-change-policy.md).
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -44,12 +47,12 @@ Das Inlineframeelement `<iframe>` wird zum Einbetten eines Dokuments in eine HTM
 
 Bei der Verwendung des iframe-Elements ist Folgendes zu beachten:
 
-- Bei der eingebetteten Anmeldung werden nur lokale Konten unterstützt. Die meisten Identitätsanbieter für soziale Netzwerke (z. B. Google und Facebook) verhindern, dass ihre Anmeldeseiten in Inlineframes dargestellt werden können.
+- Bei der eingebetteten Registrierung oder Anmeldung werden nur lokale Konten unterstützt. Die meisten Identitätsanbieter für soziale Netzwerke (z. B. Google und Facebook) verhindern, dass ihre Anmeldeseiten in Inlineframes dargestellt werden können.
 - Da Azure AD B2C-Sitzungscookies in einem iframe als Cookies von Drittanbietern gelten, können sie in bestimmten Browsern (z. B. Safari oder Chrome im Inkognito-Modus) entweder blockiert oder gelöscht werden. Dies führt zu unerwünschten Ergebnissen für Benutzer. Um dieses Problem zu vermeiden, müssen Sie sicherstellen, dass der Anwendungsdomänenname und die Azure AD B2C-Domäne den *gleichen Ursprung* haben. Zur Verwendung des gleichen Ursprungs [aktivieren Sie benutzerdefinierte Domänen](custom-domain.md) für den Azure AD B2C-Mandanten, und konfigurieren Sie dann die Webanwendung mit dem gleichen Ursprung. Beispielsweise hat eine Anwendung, die auf https://app.contoso.com gehostet wird, den gleichen Ursprung wie eine Azure AD B2C-Instanz, die unter https://login.contoso.com ausgeführt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) beschriebenen Schritte aus.
+* Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
 * [Aktivieren Sie benutzerdefinierte Domänen](custom-domain.md) für Ihre Richtlinien.
 
 ## <a name="configure-your-policy"></a>Konfigurieren der Richtlinie
@@ -107,7 +110,7 @@ window.parent.postMessage("signUp", '*');
 
 ## <a name="configure-a-web-application"></a>Konfigurieren einer Webanwendung
 
-Wenn ein Benutzer die Anmeldeschaltfläche auswählt, wird in der [Web-App](code-samples.md#web-apps-and-apis) eine Autorisierungsanforderung generiert, über die der Benutzer den Azure AD B2C-Anmeldevorgang durchführt. Nach Abschluss der Anmeldung wird in Azure AD B2C ein ID-Token oder ein Autorisierungscode an den konfigurierten Umleitungs-URI in Ihrer Anwendung zurückgegeben.
+Wenn ein Benutzer die Anmeldeschaltfläche auswählt, wird in der [Web-App](integrate-with-app-code-samples.md#web-apps-and-apis) eine Autorisierungsanforderung generiert, über die der Benutzer den Azure AD B2C-Anmeldevorgang durchführt. Nach Abschluss der Anmeldung wird in Azure AD B2C ein ID-Token oder ein Autorisierungscode an den konfigurierten Umleitungs-URI in Ihrer Anwendung zurückgegeben.
 
 Zur Unterstützung der eingebetteten Anmeldung verweist die iframe-Eigenschaft **src** auf den Anmeldecontroller (z. B. `/account/SignUpSignIn`), der die Autorisierungsanforderung generiert und den Benutzer zur Azure AD B2C-Richtlinie umleitet.
 
@@ -168,6 +171,6 @@ Weitere Informationen finden Sie in den folgenden verwandten Artikeln:
 - [Anpassung der Benutzeroberfläche](customize-ui.md)
 - Referenz zum [RelyingParty](relyingparty.md)-Element
 - [Aktivieren der Richtlinie für JavaScript](./javascript-and-page-layout.md)
-- [Codebeispiele](code-samples.md)
+- [Codebeispiele](integrate-with-app-code-samples.md)
 
 ::: zone-end

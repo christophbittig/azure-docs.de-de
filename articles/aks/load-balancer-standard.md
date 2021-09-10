@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f2219f5052aee0c0a9cd43aa87df8789adbcae2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 73c91e1c4d72fce5757b0b1a0caafc22e0fbcc60
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783087"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114230515"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -127,7 +127,7 @@ Anforderungen für die Verwendung Ihrer eigenen öffentlichen IP-Adresse oder Ih
 
 - Benutzerdefinierte öffentliche IP-Adressen müssen vom Benutzer erstellt werden und sich in seinem Besitz befinden. Verwaltete öffentliche IP-Adressen, die von AKS erstellt werden, können nicht für die Bereitstellung einer eigenen benutzerdefinierten IP-Adresse wiederverwendet werden, weil dies zu Verwaltungskonflikten führen kann.
 - Sie müssen sicherstellen, dass die AKS-Clusteridentität (Dienstprinzipal oder verwaltete Identität) über Berechtigungen für den Zugriff auf ausgehende IP-Adressen verfügt. Gemäß der [Liste der erforderlichen Berechtigungen für die öffentliche IP-Adresse](kubernetes-service-principal.md#networking).
-- Stellen Sie sicher, dass Sie die vorgegebenen [Voraussetzungen und Einschränkungen](../virtual-network/public-ip-address-prefix.md#constraints) erfüllen, die für die Konfiguration von ausgehenden IP-Adressen und der zugehörigen Präfixe gelten.
+- Stellen Sie sicher, dass Sie die vorgegebenen [Voraussetzungen und Einschränkungen](../virtual-network/public-ip-address-prefix.md#limitations) erfüllen, die für die Konfiguration von ausgehenden IP-Adressen und der zugehörigen Präfixe gelten.
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>Aktualisieren des Clusters mit Ihrer eigenen ausgehenden öffentlichen IP-Adresse
 
@@ -171,7 +171,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>Erstellen des Clusters mit Ihren eigenen öffentlichen IP-Adressen oder Präfixen
 
-Möglicherweise möchten Sie zum Zeitpunkt der Clustererstellung Ihre eigenen IP-Adressen oder IP-Präfixe für den ausgehenden Datenverkehr einbinden, um Szenarien wie das Hinzufügen von Endpunkten für ausgehende Datenverkehr zu einer Zulassungsliste zu unterstützen. Fügen Sie die oben gezeigten Parameter im Schritt zur Clustererstellung an, um Ihre eigenen öffentlichen IP-Adressen und IP-Präfixe zu Beginn des Lebenszyklus eines Clusters zu definieren.
+Möglicherweise möchten Sie zum Zeitpunkt der Clustererstellung Ihre eigenen IP-Adressen oder IP-Präfixe für den ausgehenden Datenverkehr einbinden, um Szenarien wie das Hinzufügen von Endpunkten für ausgehenden Datenverkehr zu einer Positivliste zu unterstützen. Fügen Sie die oben gezeigten Parameter im Schritt zur Clustererstellung an, um Ihre eigenen öffentlichen IP-Adressen und IP-Präfixe zu Beginn des Lebenszyklus eines Clusters zu definieren.
 
 Verwenden Sie den Befehl *az aks create* mit dem Parameter *load-balancer-outbound-ips*, um einen neuen Cluster mit Ihren öffentlichen IP-Adressen zu Beginn zu erstellen.
 
@@ -321,7 +321,7 @@ spec:
 
 Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom Typ `LoadBalancer` unterstützt werden. Diese Anmerkungen gelten nur für eingehende Datenflüsse (**INBOUND**):
 
-| Anmerkung | Wert | Beschreibung
+| Anmerkung | Wert | BESCHREIBUNG
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.
@@ -342,7 +342,7 @@ Die Grundursache für eine SNAT-Auslastung ist häufig ein Antimuster bei der Ei
 ### <a name="steps"></a>Schritte
 1. Überprüfen Sie, ob Ihre Verbindungen längere Zeit im Leerlauf verbleiben und für die Freigabe des Ports der Standard-Leerlauftimeout genutzt wird. Wenn dies der Fall ist, müssen Sie den Standard-Timeoutwert von 30 Minuten für Ihr Szenario unter Umständen reduzieren.
 2. Ermitteln Sie, wie von Ihrer Anwendung ausgehende Konnektivität erstellt wird (z. B. Code Review oder Paketerfassung).
-3. Ermitteln Sie, ob es sich bei dieser Aktivität um ein erwartetes Verhalten handelt oder die Anwendung ein Fehlverhalten aufweist. Verwenden Sie [Metriken](../load-balancer/load-balancer-standard-diagnostics.md) und [Protokolle](../load-balancer/load-balancer-monitor-log.md) in Azure Monitor, um Ihre Ergebnisse zu untermauern. Verwenden Sie beispielsweise die Kategorie „Fehler“ für die Metrik „SNAT-Verbindungen“.
+3. Ermitteln Sie, ob es sich bei dieser Aktivität um ein erwartetes Verhalten handelt oder die Anwendung ein Fehlverhalten aufweist. Verwenden Sie [Metriken](../load-balancer/load-balancer-standard-diagnostics.md) und [Protokolle](../load-balancer/monitor-load-balancer.md) in Azure Monitor, um Ihre Ergebnisse zu untermauern. Verwenden Sie beispielsweise die Kategorie „Fehler“ für die Metrik „SNAT-Verbindungen“.
 4. Prüfen Sie, ob die richtigen [Muster](#design-patterns) eingehalten werden.
 5. Prüfen Sie, ob die SNAT-Portüberlastung durch [zusätzliche ausgehende IP-Adressen und zugeordnete ausgehende Ports](#configure-the-allocated-outbound-ports) beseitigt werden muss.
 

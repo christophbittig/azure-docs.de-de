@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 56ee24985da57c6da76638b659e5a07e68d0f516
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2e808ee2d36237a830877e7f043656ce9189bd89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788945"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461277"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>Verwenden der IoT Central-REST-API zur Steuerung von Geräten
 
@@ -33,9 +33,9 @@ Die Referenzdokumentation für die IoT Central-REST-API finden Sie unter [Azure 
 
 ## <a name="components-and-modules"></a>Komponenten und Module
 
-Mit Komponenten können Sie Gerätefunktionen gruppieren und wiederverwenden. Weitere Informationen zu Komponenten und Gerätemodellen finden Sie im [Leitfaden zur Modellierung mit IoT Plug & Play](../../iot-pnp/concepts-modeling-guide.md).
+Mit Komponenten können Sie Gerätefunktionen gruppieren und wiederverwenden. Weitere Informationen zu Komponenten und Gerätemodellen finden Sie im [Leitfaden zur Modellierung mit IoT Plug & Play](../../iot-develop/concepts-modeling-guide.md).
 
-Nicht alle Gerätevorlagen verwenden Komponenten. Der folgende Screenshot zeigt die Gerätevorlage für ein einfaches [Thermostat](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json), bei dem alle Funktionen in einer einzelnen Schnittstelle definiert sind, die als **Standardkomponente** bezeichnet wird:
+Nicht alle Gerätevorlagen verwenden Komponenten. Der folgende Screenshot zeigt die Gerätevorlage für ein einfaches [Thermostat](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json), bei dem alle Funktionen in einer einzigen Schnittstelle definiert sind, die als **Stammkomponente** bezeichnet wird:
 
 :::image type="content" source="media/howto-control-devices-with-rest-api/thermostat-device.png" alt-text="Screenshot eines einfachen Thermostatgeräts ohne Komponente":::
 
@@ -485,4 +485,4 @@ GET https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-con
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Sie Geräte mit der REST-API steuern, wird als nächster Schritt das [Verwalten von IoT Central-Anwendungen mit der REST-API](/learn/modules/manage-iot-central-apps-with-rest-api/) empfohlen.
+Nachdem Sie nun erfahren haben, wie Sie Geräte mit der REST-API steuern, wird als nächster Schritt das [Erstellen und Verwalten von Aufträgen mithilfe der IoT Central-REST-API](howto-manage-jobs-with-rest-api.md) empfohlen.

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: a94821f5254526fa13f9e87e62803581c46127d2
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: abca04eb60538921191b9c632ef6ef2849f959c5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538659"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424904"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe der CLI
 
@@ -170,6 +170,21 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ```azurecli-interactive
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
 ```
+
+> [!NOTE]
+> Sie können den [Verbindungsmonitor](how-to-configure-connection-monitor.md) verwenden, um mithilfe von FastPath zu überprüfen, ob Ihr Datenverkehr das Ziel erreicht.
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>Registrieren für FastPath-Features in ExpressRoute (Vorschau)
+
+FastPath-Unterstützung für das Peering virtueller Netzwerke befindet sich jetzt in der öffentlichen Vorschauphase. Die Registrierung ist nur über Azure PowerShell verfügbar. Anweisungen zur Registrierung finden Sie unter [FastPath-Previewfunktionen](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview).
+
+> [!NOTE] 
+> Alle Verbindungen, die für FastPath im Zielabonnement konfiguriert sind, werden in dieser Vorschauversion registriert. Wir raten davon ab, diese Vorschauversion in Produktionsabonnements zu aktivieren.
+> Wenn Sie FastPath bereits konfiguriert haben und sich für die Previewfunktionen registrieren möchten, müssen Sie folgende Schritte ausführen:
+> 1. Registrieren Sie sich mit dem obigen Azure PowerShell-Befehl für die FastPath-Previewfunktion.
+> 1. Deaktivieren Sie FastPath für die Zielverbindung, und aktivieren Sie es dann erneut.
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die ExpressRoute-Verbindung nicht mehr benötigen, entfernen Sie die Verknüpfung zwischen dem Gateway und der Leitung, indem Sie in dem Abonnement, in dem sich das Gateway befindet, den Befehl `az network vpn-connection delete` verwenden.

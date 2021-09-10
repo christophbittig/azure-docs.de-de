@@ -3,12 +3,12 @@ title: Überwachen von Azure-Diensten und -Anwendungen mit Grafana
 description: Es wird beschrieben, wie Sie Azure Monitor- und Application Insights-Daten weiterleiten, um sie in Grafana anzuzeigen.
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: decd0353bcb2cf048fd5591ea8c895cf22944809
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bfb3322dda2b6702eb3e18eb44cc0cb2cd942ec
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048657"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666859"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -40,6 +40,9 @@ Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen
 7. Rufen Sie die öffentliche IP-Adresse Ihres Grafana-Servers ab: Gehen Sie zurück zur Ressourcenliste, und wählen Sie **öffentliche IP-Adresse** aus.
 
 ## <a name="sign-in-to-grafana"></a>Anmelden an Grafana
+
+> [!IMPORTANT]
+> Der Internet Explorer und ältere Microsoft Edge-Browser sind mit Grafana nicht kompatibel. Sie müssen einen Chromium-basierten Browser einschließlich Microsoft Edge verwenden. Weitere Informationen finden Sie unter [Unterstützte Browser für Grafana](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers).
 
 1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP address\>:3000* oder *\<DNSName>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
 

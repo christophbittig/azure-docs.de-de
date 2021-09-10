@@ -2,17 +2,17 @@
 title: Konzepte – Identität und Zugriff
 description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 832e2906656ef4da6cc9ad054927f17611fbbaf4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/29/2021
+ms.openlocfilehash: 7d6bcfc9426761615d1f9220f36834cc19eb09f8
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953158"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340524"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
-Private Azure VMware Solution-Clouds werden mit vCenter Server und NSX-T Manager bereitgestellt. vCenter dient der Verwaltung von VM-Workloads und NSX-T Manager der Verwaltung und Erweiterung der privaten Cloud. Zugriffs- und Identitätsverwaltung übernehmen die Rolle CloudAdmin für vCenter und eingeschränkte Administratorrechte für NSX-T Manager. 
+Private Azure VMware Solution-Clouds werden mit vCenter Server und NSX-T Manager bereitgestellt. vCenter dient der Verwaltung von VM-Workloads und NSX-T Manager der Verwaltung und Erweiterung der privaten Cloud. Die CloudAdmin-Rolle wird für vCenter und eingeschränkte Administratorrechte für NSX-T Manager verwendet. 
 
 ## <a name="vcenter-access-and-identity"></a>vCenter – Zugriff und Identität
 
@@ -22,7 +22,7 @@ In Azure VMware Solution verfügt vCenter über einen integrierten lokalen Benut
 
 - Bei einer Azure VMware Solution-Bereitstellung hat der Administrator keinen Zugriff auf das Benutzerkonto des Administrators. Er kann der Rolle „CloudAdmin“ in vCenter jedoch AD-Benutzern und -Gruppen zuweisen.  
 
-Der Benutzer der privaten Cloud hat keinen Zugriff auf bestimmte Verwaltungskomponenten, die von Microsoft unterstützt und verwaltet werden, und kann diese nicht konfigurieren. Dazu gehören z. B. Cluster, Hosts, Datenspeicher und verteilte virtuelle Switches.
+Der Benutzer der privaten Cloud hat keinen Zugriff auf bestimmte Verwaltungskomponenten, die von Microsoft unterstützt und verwaltet werden, und kann diese auch nicht konfigurieren. Dazu gehören z. B. Cluster, Hosts, Datenspeicher und verteilte virtuelle Switches.
 
 > [!IMPORTANT]
 > Azure VMware Solution bietet benutzerdefinierte Rollen zwar für vCenter, jedoch derzeit nicht für das Azure VMware Solution-Portal. Weitere Informationen finden Sie im Abschnitt [Erstellen von benutzerdefinierten Rollen in vCenter](#create-custom-roles-on-vcenter) weiter unten in diesem Artikel. 
@@ -31,13 +31,13 @@ Der Benutzer der privaten Cloud hat keinen Zugriff auf bestimmte Verwaltungskomp
 
 Sie können die Berechtigungen anzeigen, die der Azure VMware Solution-Rolle CloudAdmin in vCenter Ihrer privaten Azure VMware Solution-Cloud erteilt wurden.
 
-1. Melden Sie sich beim vSphere-Client an und gehen Sie zu **Menü** > **Verwaltung**.
+1. Melden Sie sich beim vSphere-Client an, und wechseln Sie zu **Menü** > **Verwaltung**.
 
 1. Wählen Sie unter **Zugriffssteuerung** die Option **Rollen** aus.
 
 1. Wählen Sie in der Liste der Rollen den Eintrag **CloudAdmin** aus, und wählen Sie dann **Berechtigungen** aus. 
 
-   :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="Anzeigen der Berechtigungen der CloudAdmin-Rolle im vSphere-Client":::
+   :::image type="content" source="media/concepts/role-based-access-control-cloudadmin-privileges.png" alt-text="Screenshot: Rollen und Berechtigungen für CloudAdmin im vSphere-Client":::
 
 Die Azure VMware Solution-Rolle CloudAdmin verfügt über die folgenden Berechtigungen für vCenter. Weitere Informationen finden Sie in der [VMware-Produktdokumentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
 
@@ -71,7 +71,7 @@ Mithilfe der Cloudadministratorrolle erstellen Sie benutzerdefinierte Rolle, än
 Klonen Sie die CloudAdmin-Rolle als Grundlage zum Erstellen neuer benutzerdefinierter Rollen, um zu verhindern, dass Rollen erstellt werden, die nicht zugewiesen oder gelöscht werden können.
 
 #### <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
-1. Melden Sie sich bei vCenter als „cloudadmin\@vsphere.local“ oder als ein Benutzer mit der Cloudadministratorrolle an.
+1. Melden Sie sich bei vCenter als „cloudadmin\@vsphere.local“ oder als ein Benutzer mit der CloudAdmin-Rolle an.
 
 1. Navigieren Sie zum Konfigurationsabschnitt **Rollen**, und wählen Sie **Menü** > **Verwaltung** > **Zugriffssteuerung** > **Rollen** aus.
 
@@ -91,27 +91,27 @@ Klonen Sie die CloudAdmin-Rolle als Grundlage zum Erstellen neuer benutzerdefini
 
 1. Klicken Sie mit der rechten Maustaste auf das Objekt, und wählen Sie **Berechtigung hinzufügen** aus.
 
-1. Wählen Sie im Fenster **Berechtigung hinzufügen** in der Dropdownliste **Benutzer** die Identitätsquelle aus, in der die Gruppe oder der Benutzer enthalten ist.
+1. Wählen Sie in der Dropdownliste **Benutzer** die Identitätsquelle aus, in der die Gruppe oder der Benutzer enthalten ist.
 
 1. Suchen Sie nach dem Auswählen der Identitätsquelle im Abschnitt **Benutzer** nach dem Benutzer oder der Gruppe. 
 
-1. Wählen Sie die Rolle aus, die auf den Benutzer oder die Gruppe angewandt werden soll.
+1. Wählen Sie die Rolle aus, die Sie auf den Benutzer oder die Gruppe anwenden möchten.
 
 1. Aktivieren Sie bei Bedarf die Option **In untergeordnete Elemente propagieren**, und wählen Sie **OK** aus. Die hinzugefügte Berechtigung wird im Abschnitt **Berechtigungen** angezeigt.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager – Zugriff und Identität
 
 >[!NOTE]
->NSX-T 2.5 wird derzeit von allen neuen Private Clouds unterstützt.
+>NSX-T [!INCLUDE [nsxt-version](includes/nsxt-version.md)] wird derzeit von allen neuen privaten Clouds unterstützt.
 
-Für den Zugriff auf NSX-T Manager verwenden Sie das Konto *Administrator*. Es verfügt über umfassende Berechtigungen und ermöglicht Ihnen, Tier-1-Gateways (T1), Segmente (logische Switches) und alle Dienste zu erstellen und zu verwalten. Durch die Berechtigungen erhalten Sie Zugriff auf das NSX-T-Tier-0-Gateway (T0). Eine Änderung am T0-Gateway kann dazu führen, dass die Netzwerkleistung beeinträchtigt wird oder nicht auf die private Cloud zugegriffen werden kann. Erstellen Sie im Azure-Portal eine Supportanfrage, um Änderungen an Ihrem NSX-T-T0-Gateway anzufordern.
+Für den Zugriff auf NSX-T Manager verwenden Sie das Konto *Administrator*. Es verfügt über umfassende Berechtigungen und ermöglicht Ihnen, Tier-1-Gateways (T1), Segmente (logische Switches) und alle Dienste zu erstellen und zu verwalten. Durch die Berechtigungen erhalten Sie zudem Zugriff auf das NSX-T-Tier-0-Gateway (T0). Eine Änderung am T0-Gateway kann dazu führen, dass die Netzwerkleistung beeinträchtigt wird oder nicht auf die private Cloud zugegriffen werden kann. Erstellen Sie im Azure-Portal eine Supportanfrage, um Änderungen an Ihrem NSX-T-T0-Gateway anzufordern.
 
  
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit den Zugriffs- und Identitätskonzepten von Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
-- [So aktivieren Sie die Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [So aktivieren Sie die Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)  
 - [Details der einzelnen Berechtigungen](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Wie die Azure VMware Solution private Clouds überwacht und repariert](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 

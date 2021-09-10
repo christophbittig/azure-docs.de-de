@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: cb3c503000e895344368f09dfdceac1156628bb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969990"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136110"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -40,18 +40,6 @@ Mit dem Azure Private Link-Dienst können Sie über einen privaten Endpunkt in I
 - Das HTTPS-Protokoll ermöglicht es dem Client, an der TLS-Aushandlung teilzunehmen. **Clients können die neueste TLS-Version erzwingen.** Wenn dies der Fall ist, wird für die gesamte Verbindung der entsprechende Ebenenschutz verwendet. Dass Key Vault weiterhin ältere TLS-Versionen unterstützt, stellt keine Beeinträchtigung für die Sicherheit von Verbindungen dar, die neuere TLS-Versionen verwenden.
 - Trotz bekannter Sicherheitsrisiken im TLS-Protokoll gibt es keinen bekannten Angriff, bei dem ein böswilliger Agent Informationen aus Ihrem Schlüsseltresor extrahieren kann, wenn ein Angreifer eine Verbindung mit einer TLS-Version initiiert, die Sicherheitsrisiken aufweist. Der Angreifer muss sich trotzdem authentifizieren und autorisiert werden, und solange berechtigte Clients Verbindungen immer mit den aktuellen TLS-Versionen herstellen, ist es nicht möglich, dass Anmeldeinformationen aufgrund von Sicherheitsrisiken in älteren TLS-Versionen kompromittiert werden.
 
-## <a name="identity-management"></a>Identitätsverwaltung
-
-Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Jeder Versuch, Inhalte in einem Tresor zu verwalten oder abzurufen, muss von Azure AD authentifiziert werden. In beiden Fällen können Anwendungen auf drei Arten auf den Schlüsseltresor zugreifen:
-
-- **Nur Anwendungszugriff**: Die Anwendung stellt einen Dienstprinzipal oder eine verwaltete Identität dar. Diese Identität ist das häufigste Szenario für Anwendungen, die in regelmäßigen Abständen auf Zertifikate, Schlüssel oder Geheimnisse aus dem Schlüsseltresor zugreifen müssen. Damit dieses Szenario funktioniert, muss die `objectId` der Anwendung in der Zugriffsrichtlinie angegeben werden, und die `applicationId` darf _nicht_ angegeben werden oder muss `null` sein.
-- **Nur Benutzerzugriff**: Der Benutzer greift auf den Schlüsseltresor aus allen Anwendungen zu, die im Mandanten registriert sind. Beispiele für diese Art von Zugriff wären etwa Azure PowerShell und das Azure-Portal. Damit dieses Szenario funktioniert, muss die `objectId` des Benutzers in der Zugriffsrichtlinie angegeben werden, und die `applicationId` darf _nicht_ angegeben werden oder muss `null` sein.
-- **Anwendungs- und Benutzerzuriff** (manchmal als _Verbundidentität_ bezeichnet): Der Benutzer muss aus einer bestimmten Anwendung auf den Schlüsseltresor zugreifen, _und_ die Anwendung muss den On-Behalf-Of-Authentifizierungsdatenfluss verwenden, um die Identität des Benutzers anzunehmen. Damit dieses Szenario funktioniert, müssen sowohl `applicationId` als auch `objectId` in der Zugriffsrichtlinie angegeben werden. `applicationId` identifiziert die erforderliche Anwendung, und `objectId` identifiziert den Benutzer. Diese Option ist derzeit nicht verfügbar für die Azure RBAC-Datenebene.
-
-Bei allen Arten des Zugriffs wird die Anwendung in Azure AD authentifiziert. Die Anwendung verwendet eine beliebige [unterstützte Authentifizierungsmethode](../../active-directory/develop/authentication-vs-authorization.md), die auf dem Anwendungstyp basiert. Die Anwendung erwirbt ein Token für eine Ressource in der Ebene, um den Zugriff zu gewähren. Die Ressource ist ein Endpunkt in der Verwaltungs- oder Datenebene, basierend auf der Azure-Umgebung. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an einen Schlüsseltresor. Weitere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
-
-Vollständige Informationen finden Sie unter [Grundlagen der Key Vault-Authentifizierung](/azure/key-vault/general/authentication.md).
-
 ## <a name="key-vault-authentication-options"></a>Key Vault-Authentifizierungsoptionen
 
 Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser automatisch mit dem Azure AD-Mandanten des Abonnements verknüpft. Alle Aufrufer in beiden Ebenen müssen bei diesem Mandanten registriert sein und sich authentifizieren, um auf den Schlüsseltresor zugreifen zu können. In beiden Fällen können Anwendungen auf drei Arten auf den Schlüsseltresor zugreifen:
@@ -67,6 +55,8 @@ Das Modell eines einzelnen Mechanismus für die Authentifizierung für beide Ebe
 - Organisationen können den Zugriff auf alle Schlüsseltresore zentral steuern.
 - Wenn ein Benutzer aus der Organisation ausscheidet, verliert er umgehend den Zugriff auf sämtliche Schlüsseltresore in der Organisation.
 - Organisationen können die Authentifizierung über die Optionen in Azure AD anpassen und so beispielsweise die mehrstufige Authentifizierung aktivieren, um die Sicherheit zu verbessern.
+
+Weitere Informationen finden Sie unter [Grundlagen der Key Vault-Authentifizierung](authentication.md).
 
 ## <a name="access-model-overview"></a>Übersicht über das Zugriffsmodell
 

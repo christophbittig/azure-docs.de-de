@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 08d2e50df2365c327d16d3232fd3edc0544e3ffd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f408a9182727d8e4395972f8d9f7025f8342b4eb
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745797"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635148"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -83,14 +83,15 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 "gpu_index": 0,
 "do_calibration": true,
 "enable_recalibration": true,
-"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_frequency_seconds": 86400,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
-"calibration_quality_check_one_round_sample_collect_num":10,
-"calibration_quality_check_queue_max_size":1000
+"calibration_quality_check_one_round_sample_collect_num": 10,
+"calibration_quality_check_queue_max_size": 1000,
+"calibration_event_frequency_seconds": -1
 }
 ```
 
-| Name | Typ| Beschreibung|
+| Name | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `gpu_index` | Zeichenfolge| Der GPU-Index, auf dem die Ausführung dieses Vorgangs basiert.|
 | `do_calibration` | Zeichenfolge | Gibt an, dass die Kalibrierung aktiviert ist. `do_calibration` muss auf „true“ festgelegt sein, damit **cognitiveservices.vision.spatialanalysis-persondistance** richtig funktioniert. Die Zeichenfolge „do_calibration“ ist standardmäßig auf TRUE festgelegt. |
@@ -99,9 +100,100 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 | `calibration_quality_check_sample_collect_frequency_seconds` | INT | Dies ist die minimale Anzahl von Sekunden zwischen dem Erfassen neuer Datenstichproben für die Neukalibrierung und der Qualitätsprüfung. Der Standardwert ist `300` (fünf Minuten). Nur verwendet, wenn `enable_recalibration=True`.|
 | `calibration_quality_check_one_round_sample_collect_num` | INT | Dies ist die minimale Anzahl der pro Stichprobenerfassungsrunde zu erfassenden neuen Datenstichproben. Der Standardwert ist `10`. Nur verwendet, wenn `enable_recalibration=True`.|
 | `calibration_quality_check_queue_max_size` | INT | Dies ist die maximale Anzahl der zu speichernden Datenstichproben, wenn das Kameramodell kalibriert wird. Der Standardwert ist `1000`. Nur verwendet, wenn `enable_recalibration=True`.|
+| `calibration_event_frequency_seconds` | INT | Ausgabefrequenz (Sekunden) von Kamerakalibrierungsereignissen. Der Wert `-1` weist darauf hin, dass die Kamerakalibrierung nur gesendet werden soll, wenn sich die Informationen zur Kamerakalibrierung geändert haben. Der Standardwert ist `-1`.|
 | `enable_breakpad`| bool | Hiermit kann angegeben werden, ob Sie Breakpad aktivieren möchten, womit Speicherabbilder für die Debugverwendung generiert werden. Die Standardeinstellung ist `false`. Wenn Sie diese Einstellung auf `true` festlegen, müssen Sie im `HostConfig`-Teil des `createOptions`-Containers auch `"CapAdd": ["SYS_PTRACE"]` hinzufügen. Das Speicherabbild wird standardmäßig in die AppCenter-App [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) hochgeladen. Wenn Sie möchten, dass die Speicherabbilder in Ihre eigene AppCenter-App hochgeladen werden, können Sie die Umgebungsvariable `RTPT_APPCENTER_APP_SECRET` mit dem App-Geheimnis Ihrer App außer Kraft setzen.
 | `enable_orientation` | bool | Gibt an, ob Sie die Ausrichtung für die erkannten Personen berechnen möchten. `enable_orientation` ist standardmäßig auf „False“ festgelegt. |
 
+
+### <a name="camera-calibration-output"></a>Ausgabe der Kamerakalibrierung
+Dies ist ein Beispiel für die Ausgabe der Kamerakalibrierung, sofern diese aktiviert ist. Auslassungspunkte weisen darauf hin, dass die Liste weitere Objekte desselben Typs enthält.
+```
+{
+  "type": "cameraCalibrationEvent",
+  "sourceInfo": {
+    "id": "camera1",
+    "timestamp": "2021-04-20T21:15:59.100Z",
+    "width": 640,
+    "height": 360,
+    "frameId": 531,
+    "cameraCalibrationInfo": {
+      "status": "Calibrated",
+      "cameraHeight": 13.294151306152344,
+      "focalLength": 372.0000305175781,
+      "tiltupAngle": 0.9581864476203918,
+      "lastCalibratedTime": "2021-04-20T21:15:59.058"
+    }
+  },
+  "zonePlacementInfo": {
+    "optimalZoneRegion": {
+      "type": "POLYGON",
+       "points": [
+        {
+          "x": 0.8403755868544601,
+          "y": 0.5515320334261838
+        },
+        {
+          "x": 0.15805946791862285,
+          "y": 0.5487465181058496
+        },
+        ...
+      ],
+      "name": "optimal_zone_region"
+    },
+    "fairZoneRegion": {
+      "type": "POLYGON",
+      "points": [
+        {
+          "x": 0.7871674491392802,
+          "y": 0.7437325905292479
+        },
+        {
+          "x": 0.22065727699530516,
+          "y": 0.7325905292479109
+        },
+        ...
+      ],
+      "name": "fair_zone_region"
+    },
+    "uniformlySpacedPersonBoundingBoxes": [
+      {
+        "type": "RECTANGLE",
+        "points": [
+          {
+            "x": 0.0297339593114241,
+            "y": 0.0807799442896936
+          },
+          {
+            "x": 0.10015649452269171,
+            "y": 0.2757660167130919
+          }
+        ]
+      },
+      ...
+    ],
+    "personBoundingBoxGroundPoints": [
+      {
+        "x": -22.944068908691406,
+        "y": 31.487680435180664
+      },
+      ...
+    ]
+  }
+}
+```
+
+Unter [Ausgabe von Vorgängen der räumlichen Analyse](#spatial-analysis-operation-output) finden Sie weitere Details zu `source_info`.
+
+| ZonePlacementInfo-Feldname | Typ| BESCHREIBUNG|
+|---------|---------|---------|
+| `optimalZonePolygon` | Objekt (object)| Ein Polygon im Kamerabild, in dem Linien oder Zonen für Ihre Vorgänge platziert werden können, damit Sie optimale Ergebnisse erzielen. <br/> Jedes Wertpaar stellt den x/y-Wert für die Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen nachverfolgt und gezählt werden. Die Punkte des Polygons basieren auf normalisierten Koordinaten (0 - 1), wobei die obere Linke Ecke die Werte (0,0, 0,0) und die untere rechte Ecke die Werte (1,0, 1,0) aufweist.|
+| `fairZonePolygon` | Objekt (object)| Ein Polygon im Kamerabild, in dem Linien oder Zonen für Ihre Vorgänge platziert werden können, damit Sie gute, aber möglicherweise nicht optimale Ergebnisse erzielen. <br/> Eine detaillierte Erläuterung der Inhalte finden Sie unter `optimalZonePolygon` weiter oben. |
+| `uniformlySpacedPersonBoundingBoxes` | list | Eine Liste von Begrenzungsrahmen für Personen im Kamerabild, gleichmäßig verteilt im tatsächlichen Raum. Werte basieren auf normalisierten Koordinaten (0–1).|
+| `personBoundingBoxGroundPoints` | list | Eine Liste von Koordinaten auf Bodenebene relativ zur Kamera. Jede Koordinate entspricht der rechten unteren Ecke des Begrenzungsrahmens in `uniformlySpacedPersonBoundingBoxes` mit demselben Index. <br/> Weitere Informationen zur Berechnung von Koordinaten auf Bodenebene finden Sie im Abschnitt [JSON-Format für cognitiveservices.vision.spatialanalysis-persondistance: KI Insights](#json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights) im Feld `centerGroundPoint`. |
+
+Beispiel für die Visualisierung der Zonenplatzierungsinformationen in einem Videoframe: ![Visualisierung von Zonenplatzierungsinformationen](./media/spatial-analysis/zone-placement-info-visualization.png)
+
+Die Zonenplatzierungsinformationen bieten Vorschläge für Ihre Konfigurationen; um die besten Ergebnisse zu erzielen, müssen aber immer noch die Anleitungen für die [Kamerakonfiguration](#camera-configuration) befolgt werden.
 
 ### <a name="speed-parameter-settings"></a>Einstellungen für Geschwindigkeitsparameter
 Sie können die Geschwindigkeitsberechnung über die Parametereinstellungen des Knotens für die Nachverfolgung konfigurieren.
@@ -269,7 +361,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen gezählt werden und der Abstand zwischen den Personen gemessen wird. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. 
 | `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. |
-| `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `people_distance` lauten.|
+| `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `persondistance` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
 | `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`.|
 | `minimum_distance_threshold` | float| Ein Abstand in Fuß, bei dem das Ereignis „TooClose“ ausgelöst wird, wenn Personen weniger als den angegebenen Abstand voneinander aufweisen.|
@@ -454,7 +546,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 }
 ```
 
-| Ereignisfeldname | Typ| Beschreibung|
+| Ereignisfeldname | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -464,7 +556,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 | `zone` | Zeichenfolge | „Name“ des Polygonfelds, das für die durchquerte Zone steht|
 | `trigger` | Zeichenfolge| Der Triggertyp lautet je nach Wert von `trigger` in SPACEANALYTICS_CONFIG entweder „event“ (Ereignis) oder „interval“ (Intervall).|
 
-| Name des Erkennungsfelds | Typ| Beschreibung|
+| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -475,7 +567,7 @@ JSON-Beispielcode für ein Ereignis, das von diesem Vorgang ausgegeben wird.
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
 
-| Name des Felds „SourceInfo“ | Typ| Beschreibung|
+| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|
@@ -545,7 +637,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
     "schemaVersion": "1.0"
 }
 ```
-| Ereignisfeldname | Typ| Beschreibung|
+| Ereignisfeldname | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -556,7 +648,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `orientationDirection` | Zeichenfolge| Die Ausrichtung der erkannten Person nach der Überquerung der Linie. Der Wert kann „Left“, „Right“ oder „Straight“ sein. Dieser Wert wird ausgegeben, wenn `enable_orientation` in `DETECTOR_NODE_CONFIG` auf `True` festgelegt ist. |
 | `zone` | Zeichenfolge | Feld „Name“ der überschrittenen Linie|
 
-| Name des Erkennungsfelds | Typ| Beschreibung|
+| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -570,7 +662,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `face_mask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person eine Gesichtsmaske trägt. |
 | `face_nomask` | float | Der Attributkonfidenzwert mit dem Bereich (0-1) gibt an, dass die erkannte Person **keine** Gesichtsmaske trägt. |
 
-| Name des Felds „SourceInfo“ | Typ| Beschreibung|
+| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|
@@ -700,7 +792,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 }
 ```
 
-| Ereignisfeldname | Typ| Beschreibung|
+| Ereignisfeldname | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Der Ereignistyp. Der Wert kann entweder _personZoneDwellTimeEvent_ oder _personZoneEnterExitEvent_ sein.|
@@ -716,7 +808,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang mit dem `zonedwelltime`-T
 | `minSpeed` | float| Die minimale Geschwindigkeit der Person in der Zone. Die Einheit ist `foot per second (ft/s)`.|
 | `zone` | Zeichenfolge | „Name“ des Polygonfelds, das für die durchquerte Zone steht|
 
-| Name des Erkennungsfelds | Typ| Beschreibung|
+| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -822,7 +914,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 }
 ```
 
-| Ereignisfeldname | Typ| Beschreibung|
+| Ereignisfeldname | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Ereignis-ID|
 | `type` | Zeichenfolge| Ereignistyp|
@@ -837,7 +929,7 @@ JSON-Beispiel für Erkennungen, die von diesem Vorgang ausgegeben werden.
 | `zone` | Zeichenfolge | Das Feld „name“ des Polygons, das für die Zone steht, in der der Abstand zwischen Personen überwacht wird.|
 | `trigger` | Zeichenfolge| Der Triggertyp lautet je nach Wert von `trigger` in SPACEANALYTICS_CONFIG entweder „event“ (Ereignis) oder „interval“ (Intervall).|
 
-| Name des Erkennungsfelds | Typ| Beschreibung|
+| Name des Erkennungsfelds | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Erkennungs-ID|
 | `type` | Zeichenfolge| Erkennungstyp|
@@ -854,7 +946,7 @@ Beim Berechnen von `centerGroundPoint` ist `x` der Abstand zwischen der Kamera u
 In diesem Beispiel hat `centerGroundPoint` den Wert `{x: 4, y: 5}`. Dies bedeutet, dass der Raum in der Vogelperspektive von einer Kamera überwacht wird und sich eine Person an einem Punkt im Raum befindet, der vier Fuß vor und fünf Fuß rechts von der Kamera liegt.
 
 
-| Name des Felds „SourceInfo“ | Typ| Beschreibung|
+| Name des Felds „SourceInfo“ | Typ| BESCHREIBUNG|
 |---------|---------|---------|
 | `id` | Zeichenfolge| Camera ID (Kamera-ID)|
 | `timestamp` | date| UTC-Datum, an dem die JSON-Nutzlast ausgegeben wurde|

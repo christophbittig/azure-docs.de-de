@@ -11,13 +11,14 @@ ms.workload: identity
 ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
+ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6093413fb2f82a009288903ced191dcd56cfc44
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 612fe2085e0eb683c3f423f410ed5b4a98798194
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984894"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455800"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -57,13 +58,158 @@ Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.
 >
 >Informationen zum Versionsverlauf für eingestellte Versionen finden Sie unter [Azure AD Connect: Archiv des Verlaufs der Versionsveröffentlichungen](reference-connect-version-history-archive.md).
 
+## <a name="20100"></a>2.0.10.0
+
+>[!NOTE] 
+>Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Für dieses Release ist Windows Server 2016 oder höher erforderlich. Dieser Hotfix behebt ein Problem, das es sowohl in Version 2.0 als auch in Azure AD Connect, Version  1.6, gibt. Wenn Sie Azure AD Connect auf einer älteren Windows Server-Version ausführen, sollten Sie stattdessen Build [1.6.13.0](#16130) installieren.
+
+### <a name="release-status"></a>Releasestatus
+19.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+ - Wir haben einen Fehler behoben, bei dem die Kennworthashsynchronisierung beim Umbenennen einer Domäne fehlschlägt und im Ereignisprotokoll die Meldung „Eine angegebene Umwandlung ist ungültig“ steht. Dies ist eine Regression aus früheren Builds.
+
+## <a name="16130"></a>1.6.13.0
+>[!NOTE] 
+>Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Dieses Release ist für Kunden vorgesehen, die Azure AD Connect auf einem Server mit Windows Server 2012 oder 2012 R2 ausführen.
+
+19.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+ - Wir haben einen Fehler behoben, bei dem die Kennworthashsynchronisierung beim Umbenennen einer Domäne fehlschlägt und im Ereignisprotokoll die Meldung „Eine angegebene Umwandlung ist ungültig“ steht. Dies ist eine Regression aus früheren Builds.
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+Dieses Release enthält keine funktionalen Änderungen.
+
+## <a name="2090"></a>2.0.9.0
+
+### <a name="release-status"></a>Releasestatus
+17.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+>[!NOTE] 
+>Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Für dieses Release ist Windows Server 2016 oder höher erforderlich. Dieses Release behebt ein Problem, das es in Version 2.0.8.0 gibt. In Azure AD Connect, Version 1.6, gibt es dieses Problem nicht.
+
+ - Wir haben einen Fehler behoben, bei dem beim Synchronisieren einer großen Anzahl von Kennworthashsynchronisierungs-Transaktionen die Länge des Ereignisprotokolleintrags die maximal zulässige Länge für einen Ereigniseintrag zur Kennworthashsynchronisierung überschreiten würde. Der lange Protokolleintrag wird jetzt in mehrere Einträge aufgeteilt.
+
+## <a name="2080"></a>2.0.8.0
+>[!NOTE] 
+>Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Für dieses Release ist Windows Server 2016 oder höher erforderlich. Wenn Sie mit einer älteren Windows Server-Version arbeiten, verwenden Sie bitte [Version 1.6.11.3](#16113).
+>Mit diesem Release soll – wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert – ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
+>Sie können dieses Release über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
+
+### <a name="release-status"></a>Releasestatus
+10.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar. 
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+Dieses Release enthält keine funktionalen Änderungen.
+
+## <a name="16113"></a>1.6.11.3 
+>[!NOTE] 
+>Dies ist ein Sicherheitsupdaterelease von Azure AD Connect. Diese Version soll von Kunden verwendet werden, die eine ältere Windows Server-Version ausführen und ihren Server zurzeit nicht auf Windows Server 2016 oder höher aktualisieren können. Sie können mit dieser Version keinen Azure AD Connect V2.0-Server aktualisieren.
+>Mit diesem Release soll – wie in [diesem CVE-Bericht](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) dokumentiert – ein Sicherheitsrisiko behoben werden. Weitere Informationen zu diesem Sicherheitsrisiko finden Sie im CVE-Bericht.
+>Sie können dieses Release über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen.
+
+### <a name="release-status"></a>Releasestatus
+10.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+Dieses Release enthält keine funktionalen Änderungen.
+
+## <a name="2030"></a>2.0.3.0
+>[!NOTE] 
+>Dies ist ein Hauptrelease von Azure AD Connect. Weitere Details finden Sie im Artikel zu [Azure Active Directory V2.0](whatis-azure-ad-connect-v2.md).
+
+### <a name="release-status"></a>Releasestatus
+20.07.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar
+### <a name="functional-changes"></a>Funktionale Änderungen
+ - Wir haben die LocalDB-Komponenten von SQL Server auf SQL 2019 aktualisiert. 
+ - Aufgrund der Anforderungen von SQL Server 2019 erfordert diese Version Windows Server 2016 oder höher. Beachten Sie: Weil ein direktes Upgrade von Windows Server auf einem Azure AD Connect-Server nicht unterstützt wird, müssen Sie möglicherweise eine [Swing-Migration](how-to-upgrade-previous-version.md#swing-migration) durchführen.
+ -  In dieser Version wird die Verwendung von TLS 1.2 erzwungen. Wenn Sie Ihren Windows-Server für TLS 1.2 aktiviert haben, verwendet AADConnect dieses Protokoll. Wenn TLS 1.2 auf dem Server nicht aktiviert wurde, wird beim Versuch einer AADConnect-Installation eine Fehlermeldung angezeigt, und die Installation wird erst dann fortgesetzt, wenn Sie TLS 1.2 aktiviert haben. Beachten Sie, dass Sie TLS 1.2 mithilfe der neuen „Set-ADSyncToolsTls12“-Cmdlets auf Ihrem Server aktivieren können.
+ -  Mit diesem Release können Sie sich bei der Installation von Azure AD Connect mithilfe eines Benutzers mit der Benutzerrolle „Hybrididentitätsadministrator“ authentifizieren. Sie benötigen dafür nicht mehr die Rolle „Globaler Administrator“.
+ - Als Voraussetzung für SQL Server 2019 haben wir die Visual C++-Laufzeitbibliothek auf Version 14 aktualisiert.  
+ -  In diesem Release wird die MSAL-Bibliothek zur Authentifizierung verwendet, und wir haben die ältere ADAL-Bibliothek entfernt, die 2022 eingestellt wird.   
+ -  Entsprechend dem Windows-Sicherheitsleitfaden wenden wir für die AdminSDHolders keine Berechtigungen mehr an. Wir haben im Modul „ADSyncConfig.psm1“ den Parameter „SkipAdminSdHolders“ in „IncludeAdminSdHolders“ geändert.
+ -  Kennwörter werden jetzt neu ausgewertet, wenn ein abgelaufenes Kennwort „nicht abgelaufen“ ist. Dies geschieht unabhängig davon, ob das Kennwort selbst geändert wird. Wenn für einen Benutzer das Kennwort auf „Muss Kennwort bei der nächsten Anmeldung ändern“ festgelegt wurde und dieses Flag gelöscht wird (wodurch das abgelaufene Kennwort „wiederhergestellt“ wird), werden der Status „Nicht abgelaufen“ und der Kennworthash mit Azure AD synchronisiert. Versucht der Benutzer dann, sich bei Azure AD anzumelden, kann er das nicht abgelaufene Kennwort verwenden.
+Verwenden Sie zum Synchronisieren eines abgelaufenen Kennworts von Active Directory mit Azure Active Directory das Feature [Synchronisieren von temporären Kennwörtern](how-to-connect-password-hash-synchronization.md#synchronizing-temporary-passwords-and-force-password-change-on-next-logon) in Azure AD Connect. Beachten Sie: Sie müssen das Kennwortrückschreiben aktivieren, um dieses Feature nutzen zu können, damit das erforderliche Kennwort für Updates ebenfalls in Active Directory zurückgeschrieben wird.
+ - Wir haben dem Modul „ADSyncTools“ zwei neue Cmdlets hinzugefügt, um TLS 1.2-Einstellungen zu aktivieren oder vom Windows-Server abzurufen. 
+   - Get-ADSyncToolsTls12
+   - Set-ADSyncToolsTls12
+   
+Mithilfe dieser Cmdlets können Sie den TLS 1.2-Aktivierungsstatus abrufen oder nach Bedarf festlegen. Beachten Sie, dass TLS 1.2 auf dem Server aktiviert sein muss, damit die Installation oder AADConnect erfolgreich ist.
+
+ -  Wir haben ADSyncTools mit mehreren neuen und verbesserten Cmdlets überarbeitet. Im Artikel [ADSyncTools](reference-connect-adsynctools.md) finden Sie weitere Informationen zu diesen Cmdlets. 
+  Die folgenden Cmdlets wurden hinzugefügt oder aktualisiert: 
+    - Clear-ADSyncToolsMsDsConsistencyGuid  
+    - ConvertFrom-ADSyncToolsAadDistinguishedName   
+    - ConvertFrom-ADSyncToolsImmutableID    
+    - ConvertTo-ADSyncToolsAadDistinguishedName 
+    - ConvertTo-ADSyncToolsCloudAnchor  
+    - ConvertTo-ADSyncToolsImmutableID  
+    - Export-ADSyncToolsAadDisconnectors    
+    - Export-ADSyncToolsObjects 
+    - Export-ADSyncToolsRunHistory  
+    - Get-ADSyncToolsAadObject  
+    - Get-ADSyncToolsMsDsConsistencyGuid    
+    - Import-ADSyncToolsObjects 
+    - Import-ADSyncToolsRunHistory  
+    - Remove-ADSyncToolsAadObject   
+    - Search-ADSyncToolsADobject    
+    - Set-ADSyncToolsMsDsConsistencyGuid    
+    - Trace-ADSyncToolsADImport 
+    - Trace-ADSyncToolsLdapQuery    
+-   Wir verwenden jetzt den V2-Endpunkt für Import und Export und haben das Problem im Cmdlet „Get-ADSyncAADConnectorExportApiVersion“ behoben. Weitere Informationen zum V2-Endpunkt finden Sie im Artikel [Azure AD Connect-Synchronisierungsendpunkt V2](how-to-connect-sync-endpoint-api-v2.md).
+-   Wir haben die folgenden neuen Benutzereigenschaften für eine Synchronisierung vom lokalen AD mit Azure AD hinzugefügt: 
+    - employeeType  
+    - employeeHireDate  
+-   Für diese Version muss PowerShell, Version 5.0 oder höher, auf dem Windows-Server installiert sein. Beachten Sie, dass diese Version Teil von Windows Server 2016 und höher ist.   
+-   Wir haben die Limits für die Gruppensynchronisierungsmitgliedschaft beim neuen V2-Endpunkt auf 250.000 erhöht.
+-   Wir haben den generischen LDAP-Connector und den generischen SQL-Connector auf die neuesten Versionen aktualisiert. Hier finden Sie weitere Informationen zu diesen Connectors:
+    - [Generischer LDAP-Connector – Referenzdokumentation](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)
+    - [Generischer SQL-Connector – Referenzdokumentation](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)
+-   Im M365 Admin Center melden wir jetzt die AADConnect-Clientversion, wenn es Exportaktivitäten an Azure AD gibt. Dadurch wird sichergestellt, dass das M365 Admin Center immer über die aktuellste AADConnect-Clientversion verfügt und erkennen kann, wenn Sie eine veraltete Version verwenden.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+- Wir haben einen Barrierefreiheitsfehler behoben, bei dem die Sprachausgabe eine falsche Rolle des Links ‚Weitere Informationen‘ ankündigt.
+-   Wir haben einen Fehler behoben, bei dem Synchronisierungsregeln mit großen Rangfolgenwerten (d. h. 387163089) zum Fehlschlagen eines Updates führten. Wir haben die gespeicherte Prozedur „mms_UpdateSyncRulePrecedence“ aktualisiert, um die Rangfolgenummer vor dem Erhöhen des Werts in eine ganze Zahl zu umzuwandeln.
+-   Wir haben einen Fehler behoben, bei dem Berechtigungen für Gruppenrückschreiben im Synchronisierungskonto nicht festgelegt werden, wenn eine Konfiguration für das Gruppenrückschreiben importiert wird. Wir legen die Berechtigungen für Gruppenrückschreiben jetzt fest, wenn das Gruppenrückschreiben für die importierte Konfiguration aktiviert wird.
+-   Wir haben die Agent-Version von Azure AD Connect Health auf 3.1.110.0 aktualisiert, um einen Installationsfehler zu beheben.
+-   Es tritt ein Problem bei nicht standardmäßigen Attributen aus exportierten Konfigurationen auf, bei denen Verzeichniserweiterungsattribute konfiguriert werden. Beim Importieren dieser Konfigurationen auf einen neuen Server bzw. in eine neue Installation wird die Attributaufnahmeliste durch den Konfigurationsschritt der Verzeichniserweiterung außer Kraft gesetzt. Nach dem Import werden also nur Standard- und Verzeichniserweiterungsattribute im Synchronisierungsdienst-Manager ausgewählt (nicht standardmäßige Attribute werden in die Installation nicht einbezogen, sodass der Benutzer sie aus dem Synchronisierungsdienst-Manager manuell erneut aktivieren muss, wenn die importierten Synchronisierungsregeln funktionieren sollen). Wir aktualisieren jetzt den AAD Connector, bevor wir die Verzeichniserweiterung konfigurieren, um vorhandene Attribute aus der Aufnahmeliste für Attribute beizubehalten.
+-   Wir haben ein Barrierefreiheitsproblem behoben, bei dem die Schriftbreite des Seitenkopfs auf „Light“ (Schmal) festgelegt wurde. Die Schriftbreite für den Seitentitel ist jetzt auf „Fett“ festgelegt, und dies gilt für die Kopfzeile aller Seiten.
+-   Die Funktion „Get-AdObject“ in „ADSyncSingleObjectSync.ps1“ wurde in „Get-AdDirectoryObject“ umbenannt, um eine Mehrdeutigkeit mit dem AD-Cmdlet zu verhindern.
+-   Die SQL-Funktion „mms_CheckSynchronizationRuleHasUniquePrecedence“ lässt eine Rangfolge von Duplikaten bei ausgehenden Synchronisierungsregeln auf verschiedenen Connectors zu. Wir haben die Bedingung entfernt, die eine Rangfolge doppelter Regeln zulässt.
+-   Wir haben einen Fehler behoben, bei dem das Cmdlet „Single Object Sync“ fehlschlägt, wenn die Attributflussdaten „null“ sind, d. h. beim Exportieren des Löschvorgangs.  
+-   Es wurde ein Fehler behoben, bei dem die Installation fehlschlägt, weil der ADSync-Bootstrapdienst nicht gestartet werden kann. Wir fügen jetzt das Synchronisierungsdienstkonto der lokalen integrierten Benutzergruppe hinzu, bevor der den Bootstrapdienst gestartet wird.
+-   Wir haben ein Barrierefreiheitsproblem behoben, bei dem die aktive Registerkarte im AAD Connect-Assistenten nicht die richtige Farbe für das Design „Hoher Kontrast“ anzeigt. Aufgrund einer fehlenden Bedingung in der normalen Farbcodekonfiguration wurde der ausgewählte Farbcode außer Kraft gesetzt.
+-   Wir haben ein Problem behoben, bei dem Benutzer die Auswahl von Objekten und Attributen, die in Synchronisierungsregeln verwendet werden, über die Benutzeroberfläche und mithilfe von PowerShell aufheben durften. Wir zeigen jetzt eine kurze Fehlermeldung an, wenn Sie versuchen, die Auswahl eines Attributs oder Objekts aufzuheben, das in Synchronisierungsregeln verwendet wird.
+-   Wir haben einige Updates am „Migrationseinstellungscode“ vorgenommen, um Probleme bei der Abwärtskompatibilität zu überprüfen und zu beheben, wenn das Skript auf einer älteren Version von Azure AD Connect ausgeführt wird.  
+-   Es wurde folgender Fehler behoben: Wenn die Kennworthashsynchronisierung (Password Hash Sync, PHS) versucht, nach einem unvollständigen Objekt zu suchen, verwendet sie zum Auflösen des Domänencontrollers nicht denselben Algorithmus wie den ursprünglich zum Abrufen der Kennwörter verwendeten. Insbesondere werden zugeordnete Informationen zum Domänencontroller ignoriert. Die „Unvollständige Objektsuche“ sollte dieselbe Logik zum Suchen des Domänencontrollers in beiden Instanzen verwenden.
+-   Wir haben einen Fehler behoben, bei dem AADConnect Anwendungsproxyelemente mithilfe von Microsoft Graph nicht lesen kann. Der Grund dafür ist ein Berechtigungsproblem beim Aufrufen von Microsoft Graph direkt basierend auf der AAD Connect-Client-ID. Zur Behebung dieses Problems haben wir die Abhängigkeit von Microsoft Graph entfernt. Verwenden Sie stattdessen AAD PowerShell zum Arbeiten mit den Proxyanwendungsobjekten.
+-   Wir haben das Rückschreibelimit für Mitglieder aus der Synchronisierungsregel „Ausgehend an AD – Gruppe SOAInAAD: Exchange“ entfernt.  
+-   Wir haben folgenden Fehler behoben: Wenn es beim Ändern von Connector-Kontoberechtigungen um ein Objekt geht, das seit dem letzten Deltaimport nicht geändert wurde, wird es mit einem Deltaimport nicht importiert. Jetzt wird eine Warnung angezeigt, die den Benutzer auf das Problem aufmerksam macht.
+-   Wir haben ein Barrierefreiheitsproblem behoben, bei dem die Sprachausgabe die Position des Optionsfelds nicht vorliest. Wir haben im Textfeld zum Optionsfeld „Barrierefreiheit“ Positionstext hinzugefügt.
+-   Wir haben das Paket „Pass-Through-Authentifizierungs-Agent“ aktualisiert. Das ältere Paket enthielt nicht die richtige Antwort-URL für die Erstanbieteranwendung von HIP in „US Gov“.  
+-   Wir haben folgenden Fehler behoben: Nach einer Neuinstallation von AADConnect, Version 1.6.X.X, gibt es beim AAD-Connectorexport eine Ausnahme des Typs „stopped-extension-dll-exception“. Dadurch wird standardmäßig – unter Verwendung einer vorhandenen Datenbank – DirSyncWebServices API V2 verwendet. Zuvor erfolgte das Festlegen der Exportversion auf v2 nur beim Upgrade. Wir haben dies so geändert, dass sie auch bei einer Neuinstallation festgelegt wird.
+-   Das Modul „ADSyncPrep.psm1“ wird nicht mehr verwendet und aus der Installation entfernt.
+
+### <a name="known-issues"></a>Bekannte Probleme
+-   Der AADConnect-Assistent zeigt die Option „Synchronisierungseinstellungen importieren“ als „Vorschau“ an, obwohl dieses Feature allgemein „Verfügbar“ ist.
+-   Einige Active Directory-Connectors werden möglicherweise in einer anderen Reihenfolge installiert, wenn die Ausgabe des Migrationseinstellungsskripts zum Installieren des Produkts verwendet wird. 
+-   Im Azure AD Connect-Assistenten wird auf der Seite „Optionen für die Benutzeranmeldung“ der Begriff „Unternehmensadministrator“ erwähnt. Dieser Begriff wird nicht mehr verwendet und muss durch „Globaler Administrator“ ersetzt werden.
+-   Die Option „Exporteinstellungen“ ist fehlerhaft, wenn die Anmeldeoption zur Verwendung von PingFederate konfiguriert wurde.
+-   Obwohl Azure AD Connect jetzt mithilfe der Rolle „Hybrididentitätsadministrator“ bereitgestellt werden kann, erfordert die Konfiguration der Self-Service-Kennwortrücksetzung weiterhin einen Benutzer mit der Rolle „Globaler Administrator“.
+-   Beim Importieren der AADConnect-Konfiguration während der Bereitstellung, um eine Verbindung mit einem anderen Mandanten als der ursprünglichen AADConnect-Konfiguration herzustellen, werden die Verzeichniserweiterungsattribute nicht richtig konfiguriert.
+
 ## <a name="1640"></a>`1.6.4.0
 
 >[!NOTE]
 > Die V2-Endpunkt-API für die Azure AD Connect-Synchronisierung ist jetzt in den folgenden Azure-Umgebungen verfügbar:
 > - Azure Commercial
 > - Azure China
-> - Azure US Government-Cloud Wird nicht in der Azure-Cloud Deutschland zur Verfügung gestellt
+> - (Azure-Cloud für US-Behörden)
+> - Dieses Release wird in der Azure German Cloud nicht zur Verfügung gestellt.
 
 ### <a name="release-status"></a>Releasestatus
 3/31/2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar
@@ -135,7 +281,7 @@ Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.
     - Get-ADSyncAADConnectorExportApiVersion zum Abrufen der Export-AWS-API-Version
 
  - Änderungen an Synchronisierungsregeln werden nun nachverfolgt, um die Problembehandlung bei Änderungen im Dienst zu unterstützen. Mit dem Cmdlet „Get-ADSyncRuleAudit“ werden nachverfolgte Änderungen abgerufen.
- - Das Cmdlet „Add-ADSyncADDSConnectorAccount“ im [ADSyncConfig-PowerShell-Modul](./how-to-connect-configure-ad-ds-connector-account.md#using-the-adsyncconfig-powershell-module) wurde aktualisiert, damit ein Benutzer in der ADSyncAdmin-Gruppe das AD DS Connector-Konto ändern kann. 
+ - Das Cmdlet „Add-ADSyncADDSConnectorAccount“ im [Modul „ADSyncConfig PowerShell“](./how-to-connect-configure-ad-ds-connector-account.md#using-the-adsyncconfig-powershell-module) wurde aktualisiert, damit ein Benutzer in der Gruppe „ADSyncAdmin“ das AD DS Connector-Konto ändern kann. 
 
 ### <a name="bug-fixes"></a>Behebung von Programmfehlern
  - Deaktivierte Vordergrundfarbe wurde aktualisiert, um die Anforderungen an die Helligkeit auf weißem Hintergrund zu erfüllen. Zusätzliche Bedingungen für die Navigationsstruktur wurden hinzugefügt, um die Vordergrundtextfarbe auf Weiß festzulegen, wenn eine deaktivierte Seite ausgewählt wird, um die Helligkeitsanforderungen zu erfüllen.
@@ -302,7 +448,7 @@ Wir haben einen Synchronisierungsfehler im Komprimierungstool behoben, durch den
 >Wir untersuchen einen Incident, bei dem bei einigen Kunden nach dem Upgraden auf diese Version von Azure AD Connect auf bestehenden in Hybrid-Azure AD eingebundenen Geräten ein Problem auftritt. Wir empfehlen Kunden, die Azure AD Hybrid Join bereitgestellt haben, das Upgrade auf diese Version zu verschieben, bis die Grundursache dieser Probleme vollständig verstanden und behoben wurde. Weitere Informationen werden so bald wie möglich bereitgestellt.
 
 >[!IMPORTANT]
->Diese Version von Azure AD Connect kann bei einigen Kunden dazu führen, dass einige oder sämtliche ihrer Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Weitere Informationen finden Sie unter [Grundlegendes zum Verschwinden eines Azure AD Connect 1.4.xx.x-Geräts](reference-connect-device-disappearance.md)
+>Diese Version von Azure AD Connect kann bei einigen Kunden dazu führen, dass einige oder sämtliche ihrer Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Weitere Informationen finden Sie unter [Grundlegendes zum Verschwinden eines Azure AD Connect 1.4.xx.x-Geräts](/troubleshoot/azure/active-directory/reference-connect-device-disappearance)
 
 
 ### <a name="release-status"></a>Releasestatus

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: cfd57c60c4bfd60976eb28822c696412cabda212
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 5bf02173d105ab81807bdc4ee68e3b8f9bc8e0a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023813"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347139"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-limits-and-limitations"></a>Azure Database for PostgreSQL: Einschränkungen von Hyperscale (Citus)
 
@@ -23,45 +23,23 @@ In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränk
 Jede PostgreSQL-Verbindung (auch inaktive Verbindungen) verwendet mindestens 10 MB Arbeitsspeicher, daher ist es wichtig, gleichzeitige Verbindungen einzuschränken. Dies sind die Grenzwerte, die wir ausgewählt haben, um Knoten fehlerfrei zu halten:
 
 * Koordinatorknoten
-   * Maximale Anzahl von Verbindungen: 300
-   * Maximale Anzahl Benutzerverbindungen: 297
+   * Maximale Verbindungen
+       * 300 für 0 – 3 virtuelle Kerne
+       * 500 für 4 – 15 virtuelle Kerne
+       * 1\.000 für 16 und mehr virtuelle Kerne
+   * Maximale Anzahl von Benutzerverbindungen
+       * 297 für 0–3 virtuelle Kerne
+       * 497 für 4–15 virtuelle Kerne
+       * 997 für 16 und mehr virtuelle Kerne
 * Workerknoten
-   * Maximale Anzahl von Verbindungen: 600
-   * Maximale Anzahl Benutzerverbindungen: 597
-
-> [!NOTE]
-> In einer Servergruppe mit aktivierten [Previewfunktionen](hyperscale-preview-features.md) unterscheiden sich die Verbindungsgrenzwerte für den Koordinator geringfügig:
->
-> * Maximale Anzahl von Verbindungen des Koordinatorknotens
->    * 300 für 0 – 3 virtuelle Kerne
->    * 500 für 4 – 15 virtuelle Kerne
->    * 1\.000 für 16 und mehr virtuelle Kerne
+   * Maximale Verbindungen
+       * 600
 
 Verbindungsversuche über diese Grenzwerte hinaus führen zu einem Fehler. Das System reserviert drei Verbindungen für die Überwachung von Knoten. Aus diesem Grund sind für Benutzerabfragen drei Verbindungen weniger verfügbar als Verbindungen insgesamt.
 
 ### <a name="connection-pooling"></a>Verbindungspooling
 
-Das Einrichten neuer Verbindungen nimmt Zeit in Anspruch. Dies spricht gegen die meisten Anwendungen, die viele kurzlebige Verbindungen anfordern. Wir empfehlen die Verwendung eines Verbindungspoolers, um Transaktionen im Leerlauf zu verringern und vorhandene Verbindungen wiederzuverwenden. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
-
-Sie können Ihre eigene Verbindungspoolfunktion ausführen oder die von Azure verwaltete Lösung PgBouncer verwenden.
-
-#### <a name="managed-pgbouncer-preview"></a>Verwaltete PgBouncer-Instanz (Vorschauversion)
-
-> [!IMPORTANT]
-> Die verwaltete Verbindungspoollösung PgBouncer in Hyperscale (Citus) ist derzeit als Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
-
-Verbindungspoollösungen wie PgBouncer ermöglichen es einer größeren Anzahl von Clients, gleichzeitig eine Verbindung mit dem Koordinatorknoten herzustellen. Anwendungen stellen eine Verbindung mit der Poollösung her, und die Poollösung leitet Befehle an die Zieldatenbank weiter.
-
-Die Anzahl von Verbindungen, die aktiv in der Datenbank ausgeführt werden können, ändert sich nicht, wenn Clients eine Verbindung über PgBouncer herstellen. Stattdessen reiht PgBouncer über den Grenzwert hinausgehende Verbindungen in die Warteschlange ein und führt sie aus, wenn die Datenbank bereit ist.
-
-Hyperscale (Citus) bietet jetzt eine verwaltete Instanz von PgBouncer für Servergruppen (Vorschauversion). Sie unterstützt bis zu 2.000 gleichzeitige Clientverbindungen.
-Führen Sie die folgenden Schritte aus, um eine Verbindung über PgBouncer herzustellen:
-
-1. Wechseln Sie im Azure-Portal zur Seite **Verbindungszeichenfolgen** für Ihre Servergruppe.
-2. Aktivieren Sie das Kontrollkästchen **PgBouncer connection strings** (PgBouncer-Verbindungszeichenfolgen). (Die aufgelisteten Verbindungszeichenfolgen ändern sich.)
-3. Aktualisieren Sie Clientanwendungen, sodass sie die neue Zeichenfolge zum Herstellen einer Verbindung verwenden.
+Sie können Verbindungen über ein [Verbindungspooling](concepts-hyperscale-connection-pool.md) weiter skalieren. Hyperscale (Citus) bietet einen verwalteten pgBouncer-Verbindungspooler, der für bis zu 2.000 gleichzeitige Clientverbindungen konfiguriert ist.
 
 ## <a name="storage-scaling"></a>Speicherskalierung
 
@@ -99,4 +77,5 @@ In Hyperscale (Citus) gelten derzeit die folgenden Einschränkungen für [spalte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [eine Hyperscale (Citus)-Servergruppe im Portal erstellen](quickstart-create-hyperscale-portal.md).
+* Erfahren Sie, wie Sie [eine Hyperscale (Citus)-Servergruppe im Portal erstellen](quickstart-create-hyperscale-portal.md).
+* Erfahren Sie mehr über das [Verbindungspooling](concepts-hyperscale-connection-pool.md).

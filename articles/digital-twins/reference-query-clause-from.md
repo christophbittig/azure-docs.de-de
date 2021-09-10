@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 07dd3319416f6b8cad4cd77d69da81020569788f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1cbdbad379887687c71bd8c52b5791bde4e08a08
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296464"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492881"
 ---
 # <a name="azure-digital-twins-query-language-reference-from-clause"></a>Referenz zur Azure Digital Twins-Abfragesprache: FROM-Klausel
 
@@ -44,7 +44,7 @@ Dies ist eine einfache Abfrage. Die folgende Abfrage gibt alle digitalen Zwillin
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromDigitalTwinsExample":::
 
-Hier ist eine Abfrage mit einer benannten Sammlung. Die folgende Abfrage weist der Sammlung einen Namen `T` zu und gibt weiterhin alle digitalen Zwillinge in der Instanz zurück.
+Dies ist eine Abfrage mit einer benannten Sammlung. Die folgende Abfrage weist der Sammlung einen Namen `T` zu und gibt weiterhin alle digitalen Zwillinge in der Instanz zurück.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromDigitalTwinsNamedExample":::
 
@@ -73,7 +73,7 @@ Dies ist eine Abfrage, die alle Beziehungen in der Instanz zurückgibt.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromRelationshipsExample":::
 
-Dies ist eine Abfrage, die alle Beziehungen zurückgibt, die von den Zwillingen `A`, `B`, `C` oder `D` stammen.
+Dies ist eine Abfrage zur Rückgabe aller Beziehungen, die von den Zwillingen `A`, `B`, `C` oder `D` stammen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromRelationshipsFilteredExample":::
 

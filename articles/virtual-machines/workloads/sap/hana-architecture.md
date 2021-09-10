@@ -11,28 +11,28 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/19/2021
+ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547e48e9cecb672c5274bc001178b2ea2aaf47af
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: fee1aab009bdbf84acf1a73244d6686db50e4e3f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577649"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450704"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektur von SAP HANA in Azure (große Instanzen)
 
 In diesem Artikel wird die Architektur für die Bereitstellung von SAP HANA in Azure (große Instanzen) (auch als BareMetal-Infrastruktur bezeichnet) beschrieben. 
 
-Allgemein betrachtet befindet sich die SAP-Anwendungsschicht bei SAP HANA in Azure (große Instanzen) auf VMs. Die Datenbankschicht befindet sich auf der SAP-zertifizierten großen HANA-Instanz, die sich in derselben Azure-Region wie die Azure IaaS-VMs befindet.
+Allgemein betrachtet befindet sich die SAP-Anwendungsschicht bei SAP HANA in Azure (große Instanzen) auf VMs. Die Datenbankebene basiert auf der von SAP zertifizierten HLI (HANA, große Instanzen). Die HLI befindet sich in der gleichen Azure-Region wie die Azure IaaS-VMs.
 
 > [!NOTE]
 > Stellen Sie die SAP-Anwendungsschicht in derselben Azure-Region bereit wie die SAP-Datenbank-Managementsystem(DBMS)-Schicht. Diese Regel ist in veröffentlichten Informationen zu SAP-Workloads in Azure umfassend dokumentiert. 
 
 ## <a name="architectural-overview"></a>Übersicht über die Architektur
 
-Die Gesamtarchitektur von SAP HANA in Azure (Große Instanzen) basiert auf einer SAP TDI-zertifizierten Hardwarekonfiguration. Die Hardware ist ein nicht virtualisierter Bare-Metal-Hochleistungsserver für die SAP-HANA-Datenbank. Darüber hinaus bietet sie die Flexibilität von Azure, um Ressourcen für die SAP-Anwendungsschicht nach Bedarf zu skalieren.
+Die Gesamtarchitektur von SAP HANA in Azure (Große Instanzen) basiert auf einer SAP TDI-zertifizierten Hardwarekonfiguration. Die Hardware ist ein nicht virtualisierter Bare-Metal-Hochleistungsserver für die SAP-HANA-Datenbank. Es bietet Ihnen die Flexibilität, die Ressourcen für die SAP-Anwendungsschicht zu skalieren, um Ihren Anforderungen gerecht zu werden.
 
 ![Architekturübersicht über SAP HANA in Azure (große Instanzen)](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -49,7 +49,7 @@ Die dargestellte Architektur ist in drei Abschnitte unterteilt:
   -  [Verwenden von SAP auf Windows-VMs](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Verwenden von SAP-Lösungen auf Azure-VMs](get-started.md)
 
-- **Links:** Zeigt die SAP HANA TDI-zertifizierte Hardware im Azure-Umfeld der großen Instanz. Die Einheiten von HANA (große Instanzen) sind mit den virtuellen Netzwerken Ihres Azure-Abonnements verbunden. Dies geschieht ebenfalls mit der zwischen lokalen Systemen und Azure verwendeten Verbindungstechnologie. Im Mai 2019 wurde eine Optimierung eingeführt, die die Kommunikation zwischen den Einheiten von HANA (große Instanzen) und den Azure-VMs ohne ExpressRoute-Gateways ermöglicht. Diese Optimierung, die als ExpressRoute FastPath bezeichnet wird, wird im vorherigen Diagramm durch rote Linien dargestellt.
+- **Links:** Zeigt die SAP HANA TDI-zertifizierte Hardware im Azure-Umfeld der großen Instanz. Die Einheiten von HANA (große Instanzen) sind mit den virtuellen Netzwerken Ihres Azure-Abonnements verbunden. Dies geschieht mithilfe der gleichen Technologie, die lokale Server für die Verbindung mit Azure verwenden. Im Mai 2019 wurde eine Optimierung eingeführt, die die Kommunikation zwischen den Einheiten von HANA (große Instanzen) und den Azure-VMs ohne ExpressRoute-Gateways ermöglicht. Diese Optimierung, die als ExpressRoute FastPath bezeichnet wird, wird im vorherigen Diagramm durch rote Linien dargestellt.
 
 ## <a name="components-of-the-azure-large-instance-stamp"></a>Komponenten des Azure-Stapels für große Instanzen
 
@@ -61,7 +61,9 @@ Im Azure-Stapel für große Instanzen selbst werden die folgenden Komponenten ko
 
 ## <a name="tenants"></a>Mandanten
 
-Innerhalb der mehrinstanzenfähigen Infrastruktur des Stapels für große Instanzen werden Kunden als isolierte Mandanten bereitgestellt. Bei der Bereitstellung des Mandanten benennen Sie ein Azure-Abonnement in Ihrer Azure-Registrierung. Diesem Azure-Abonnement werden die Kosten von HANA (große Instanz) in Rechnung gestellt. Diese Mandanten weisen eine 1:1-Beziehung mit dem Azure-Abonnement auf. In einem Netzwerk ist der Zugriff auf eine Einheit von HANA (große Instanz), die in einem Mandanten in einer Azure-Region bereitgestellt ist, über verschiedene, zu unterschiedlichen Azure-Abonnements gehörende virtuelle Netzwerke möglich. Diese Azure-Abonnements müssen zur selben Azure-Registrierung gehören.
+Innerhalb der mehrinstanzenfähigen Infrastruktur des Stapels für große Instanzen werden Kunden als isolierte Mandanten bereitgestellt. Bei der Bereitstellung des Mandanten benennen Sie ein Azure-Abonnement in Ihrer Azure-Registrierung. Diesem Azure-Abonnement werden die Kosten von HANA (große Instanz) in Rechnung gestellt. Diese Mandanten weisen eine 1:1-Beziehung mit dem Azure-Abonnement auf. 
+
+In einem Netzwerk ist der Zugriff auf eine Einheit von HANA (große Instanz), die in einem Mandanten in einer Azure-Region bereitgestellt ist, über verschiedene, zu unterschiedlichen Azure-Abonnements gehörende virtuelle Netzwerke möglich. Diese Azure-Abonnements müssen zur selben Azure-Registrierung gehören.
 
 ## <a name="availability-across-regions"></a>Regionsübergreifende Verfügbarkeit
 

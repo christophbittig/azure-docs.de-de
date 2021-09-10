@@ -3,12 +3,12 @@ title: Skalierbarkeit – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Skalieren von Azure Event Hubs mithilfe von Partitionen und Durchsatzeinheiten.
 ms.topic: article
 ms.date: 05/26/2021
-ms.openlocfilehash: ef894e0f14c140691b43da121a1983017ab03150
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: ced3d366c87d05fc1d7e8370c6e7db793dfe2535
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616460"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583660"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
@@ -25,7 +25,7 @@ Die Durchsatzkapazität von Event Hubs wird durch *Durchsatzeinheiten* gesteuert
 
 Bei Überschreitung der Kapazität der erworbenen Durchsatzeinheiten wird der Eingang eingeschränkt und [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) zurückgegeben. Der Ausgang erstellt zwar keine Drosselungsausnahmen, die Kapazität der erworbenen Durchsatzeinheiten ist allerdings dennoch beschränkt. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben. Sie können Durchsatzeinheiten auf dem Blatt **Skalierung** der Namespaces im [Azure-Portal](https://portal.azure.com) verwalten. Mithilfe der [Event Hubs-APIs](./event-hubs-samples.md) können Durchsatzeinheiten auch programmgesteuert verwaltet werden.
 
-Durchsatzeinheiten werden im Voraus erworben und auf Stundenbasis abgerechnet. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 20 Durchsatzeinheiten können für einen Event Hubs-Namespace erworben und in allen Event Hubs dieses Namespace gemeinsam verwendet werden.
+Durchsatzeinheiten werden im Voraus erworben und auf Stundenbasis abgerechnet. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 40 Durchsatzeinheiten können für einen Event Hubs-Namespace erworben und in allen Event Hubs dieses Namespace gemeinsam verwendet werden.
 
 Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
 
@@ -48,7 +48,7 @@ Informationen zum Konfigurieren von Verarbeitungseinheiten (PUs) für einen Name
 > Weitere Informationen zu Kontingenten und Grenzwerten finden Sie unter [Azure Event Hubs – Kontingente und Grenzwerte](event-hubs-quotas.md).
 
 ## <a name="partitions"></a>Partitionen
-[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
+[!INCLUDE [event-hubs-partitions](./includes/event-hubs-partitions.md)]
 
 
 

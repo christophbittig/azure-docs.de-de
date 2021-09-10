@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f5e4ff93b90c7644c1d1498a14c8b9954041cb34
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c150fdae1820dee3ae440f4d4acdacff04e14e66
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028365"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351195"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Einrichten der Registrierung und Anmeldung mit einer Apple-ID mithilfe von Azure Active Directory B2C (Vorschau)
 
@@ -46,19 +46,19 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
     1. Geben Sie eine **Beschreibung** ein. 
     1. Geben Sie die **Paket-ID** (z. B. `com.contoso.azure-ad-b2c`) ein. 
     1. Wählen Sie für **Funktionen** in der Liste der Funktionen die Option **Mit Apple anmelden** aus. 
-    1. Notieren Sie sich das App-ID-Präfix (Team-ID) aus diesem Schritt. Sie benötigen die Information später.
+    1. Notieren Sie sich Ihre **Team-ID** (App-ID-Präfix) aus diesem Schritt. Sie benötigen die Information später.
     1. Klicken Sie auf **Continue** (Weiter) und dann auf **Registrieren**.
 1. Wählen Sie im Menü die Option **Zertifikate, IDs und Profile** aus, und wählen Sie dann **(+)** aus.
 1. Wählen Sie für **Neue ID registrieren** die Option **Dienst-IDs** aus, und wählen Sie dann **Weiter** aus.
 1. **Eine Dienst-ID registrieren**:
     1. Geben Sie eine **Beschreibung** ein. Die Beschreibung wird dem Benutzer auf dem Zustimmungsbildschirm angezeigt.
-    1. Geben Sie die **ID** (z. B. `com.consoto.azure-ad-b2c-service`) ein. Bei dieser ID handelt es sich um die Client-ID für den OpenID Connect-Flow.
+    1. Geben Sie die **ID** (z. B. `com.consoto.azure-ad-b2c-service`) ein. Notieren Sie sich Ihre **Dienst-ID**. Bei dieser ID handelt es sich um die **Client-ID** für den OpenID Connect-Flow.
     1. Wählen Sie **Weiter** aus, und wählen Sie dann **Registrieren** aus.
 1. Wählen Sie unter **IDs** die von Ihnen erstellte ID aus.
 1. Wählen Sie **Mit Apple anmelden** aus, und wählen Sie dann **Konfigurieren** aus.
     1. Wählen Sie die **primäre App-ID** aus, die Sie für die Anmeldung mit Apple konfigurieren möchten.
     1. Geben Sie im Feld **Domänen und Unterdomänen** die Zeichenfolge `your-tenant-name.b2clogin.com` ein. Ersetzen Sie „your-tenant-name“ durch den Namen Ihres Mandanten. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name` ein.
-    1. Geben Sie im Feld **Rückgabe-URLs** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne.
+    1. Geben Sie im Feld **Rückgabe-URLs** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne. Die Rückgabe-URL darf nur Kleinbuchstaben enthalten.
     1. Wählen Sie **Weiter** aus, und wählen Sie dann **Fertig** aus.
     1. Wählen Sie nach dem Schließen des Popupfensters die Option **Weiter** aus, und wählen Sie dann **Speichern** aus.
 
@@ -69,7 +69,7 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
     1. Geben Sie einen **Schlüsselnamen** ein.
     1. Wählen Sie **Mit Apple anmelden** aus, und wählen Sie dann **Konfigurieren** aus.
     1. Wählen Sie für die Option **Primäre App-ID** die zuvor von Ihnen erstellte App aus, und wählen Sie dann **Speichern** aus.
-    1. Wählen Sie **Konfigurieren** aus, und wählen Sie dann **Registrieren** aus, um den Schlüsselregistrierungsprozess abzuschließen.
+    1. Wählen Sie **Konfigurieren** aus, und wählen Sie dann **Registrieren** aus, um den Schlüsselregistrierungsprozess abzuschließen. Notieren Sie sich die **Schlüssel-ID**. Dieser Schlüssel wird beim Konfigurieren von Benutzerflows benötigt.
 1. Wählen Sie zum **Herunterladen Ihres Schlüssels** die Option **Herunterladen** aus, um eine P8-Datei herunterzuladen, die Ihren Schlüssel enthält.
 
 
@@ -81,10 +81,10 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
 1. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie **Identitätsanbieter** und dann **Apple (Vorschau)** aus.
-1. Geben Sie einen **Namen** ein. Beispielsweise *Apple*.
+1. Geben Sie als **Name** den Wert **Mit Apple anmelden** ein. 
 1. Geben Sie die **Apple Developer-ID (Team-ID)** ein.
 1. Geben Sie die **Apple-Dienst-ID (Client-ID)** ein.
-1. Geben Sie die **Apple-Schlüssel-ID** ein.
+1. Geben Sie die **Apple-Schlüssel-ID** aus dem Schritt [Erstellen eines geheimen Apple-Clientschlüssels](#creating-an-apple-client-secret) ein.
 1. Wählen Sie die **Apple-Zertifikatdaten** aus, und laden Sie diese hoch.
 1. Wählen Sie **Speichern** aus.
 
@@ -93,6 +93,7 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
 > - Zum Anmelden mit Apple muss der Administrator seinen geheimen Clientschlüssel alle 6 Monate erneuern. 
 > - In der öffentlichen Vorschauphase dieses Features müssen Sie den geheimen Apple-Clientschlüssel manuell erneuern, wenn er abläuft. Auf der Seite „IdP für soziale Netzwerke konfigurieren“ des Apple-Identitätsanbieters wird vorab eine Warnung angezeigt, wir empfehlen Ihnen jedoch, eine eigene Erinnerung festzulegen. 
 > - Wenn Sie den geheimen Clientschlüssel erneuern müssen, öffnen Sie Azure AD B2C im Azure-Portal, navigieren Sie zu **Identitätsanbieter** > **Apple**, und wählen Sie **Geheimnis erneuern** aus.
+> - Befolgen Sie die Richtlinien zum [Anbieten einer Schaltfläche „Mit Apple anmelden“](#customize-your-user-interface).
 
 ## <a name="add-the-apple-identity-provider-to-a-user-flow"></a>Hinzufügen von Apple als Identitätsanbieter zu einem Benutzerflow
 
@@ -124,7 +125,7 @@ Verwenden Sie die zuvor heruntergeladene P8-Datei, um den geheimen Clientschlüs
 1. Senden Sie eine HTTP `POST`-Anforderung, und geben Sie die folgenden Informationen an:
 
     - **appleTeamId**: Ihre Apple Developer-Team-ID
-    - **appleserviceId**: Die Apple-Dienst-ID (auch Client-ID)
+    - **appleServiceId**: Die Apple-Dienst-ID (Client-ID)
     - **p8key**: Der Schlüssel im PEM-Format. Sie können diesen Schlüssel erhalten, indem Sie die P8-Datei in einem Text-Editor öffnen und alles zwischen `-----BEGIN PRIVATE KEY-----` und `-----END PRIVATE KEY-----` ohne Zeilenumbrüche kopieren.
  
 Der folgende JSON-Code ist ein Beispiel für einen Aufruf der Azure-Funktion:
@@ -132,7 +133,6 @@ Der folgende JSON-Code ist ein Beispiel für einen Aufruf der Azure-Funktion:
 ```json
 {
     "appleTeamId": "ABC123DEFG",
-    "appleKeyId": "URKEYID001",
     "appleServiceId": "com.yourcompany.app1",
     "p8key": "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg+s07NiAcuGEu8rxsJBG7ttupF6FRe3bXdHxEipuyK82gCgYIKoZIzj0DAQehRANCAAQnR1W/KbbaihTQayXH3tuAXA8Aei7u7Ij5OdRy6clOgBeRBPy1miObKYVx3ki1msjjG2uGqRbrc1LvjLHINWRD"
 }
@@ -165,6 +165,7 @@ Sie müssen den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azur
 > - Zum Anmelden mit Apple muss der Administrator seinen geheimen Clientschlüssel alle 6 Monate erneuern.
 > - Sie müssen den geheimen Apple-Clientschlüssel manuell erneuern, wenn er abläuft, und den neuen Wert im Richtlinienschlüssel speichern.
 > - Wir empfehlen Ihnen, eine eigene Erinnerung innerhalb von 6 Monaten festzulegen, damit Sie rechtzeitig einen neuen geheimen Clientschlüssel generieren können. 
+> - Befolgen Sie die Richtlinien zum [Anbieten einer Schaltfläche „Mit Apple anmelden“](#customize-your-user-interface).
 
 ## <a name="configure-apple-as-an-identity-provider"></a>Konfigurieren von Apple als Identitätsanbieter
 
@@ -182,7 +183,7 @@ Sie können eine Apple-ID als Anspruchsanbieter definieren, indem Sie in der Erw
       <DisplayName>Apple</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Apple-OIDC">
-          <DisplayName>Apple</DisplayName>
+          <DisplayName>Sign in with Apple</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
             <Item Key="ProviderName">apple</Item>
@@ -208,7 +209,7 @@ Sie können eine Apple-ID als Anspruchsanbieter definieren, indem Sie in der Erw
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="user.name.firstName"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="user.name.lastName"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="user.email"/>
+            <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
@@ -257,3 +258,13 @@ Sie können eine Apple-ID als Anspruchsanbieter definieren, indem Sie in der Erw
 Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet und dadurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt.
 
 ::: zone-end
+
+## <a name="customize-your-user-interface"></a>Anpassen der Benutzeroberfläche
+
+Befolgen Sie die Richtlinien zum [Anbieten einer Anmeldung mit Apple](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/introduction/). Apple stellt verschiedene Schaltflächen **Mit Apple anmelden** bereit, die Sie verwenden können, damit Benutzer ein Konto einrichten und sich anmelden können. Erstellen Sie bei Bedarf eine benutzerdefinierte Schaltfläche, um eine Anmeldung mit Apple zu ermöglichen. Erfahren Sie mehr über das [Anzeigen einer Schaltfläche „Mit Apple anmelden“](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/buttons/).
+
+So sorgen Sie für die Einhaltung der Richtlinien für Apple-Benutzeroberflächen:
+
+- [Anpassen der Benutzeroberfläche mit HTML-Vorlagen](customize-ui-with-html.md)
+- [Lokalisieren](language-customization.md) des Identitätsanbieternamens
+

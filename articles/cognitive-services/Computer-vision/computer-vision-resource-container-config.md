@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d5e405447a93f23f4845a018a74229aacbbad09c
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285672"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302120"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurieren von Read-OCR-Docker-Containern
 
@@ -41,6 +41,9 @@ Der Container hat außerdem die folgenden containerspezifischen Konfigurationsei
 |Nein|Storage:ObjectStore:AzureBlob:ConnectionString| Gilt nur für v3.x-Container. Verbindungszeichenfolge für Azure Blob Storage. |
 |Nein|Storage:TimeToLiveInDays| Gilt nur für v3.x-Container. Ablaufzeitraum für das Ergebnis in Tagen. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Der Standardwert ist 2 Tage (48 Stunden) und bedeutet, dass alle Ergebnisse, die länger als der Zeitraum sind, nicht garantiert erfolgreich abgerufen werden. |
 |Nein|Task:MaxRunningTimeSpanInMinutes| Gilt nur für v3.x-Container. Maximale Ausführungszeit für eine einzelne Anforderung. Der Standardwert ist 60 Sekunden. |
+|Nein|EnableSyncNTPServer| Gilt nur für v3.x-Container. Aktiviert den NTP-Serversynchronisierungsmechanismus, der die Synchronisierung zwischen der Systemzeit und der erwarteten Tasklaufzeit sicherstellt. Beachten Sie, dass hierfür externer Netzwerkdatenverkehr erforderlich ist. Der Standardwert lautet `true`. |
+|Nein|NTPServerAddress| Gilt nur für v3.x-Container. NTP-Server für die Zeitsynchronisierung. Der Standardwert lautet `time.windows.com`. |
+|Nein|Mounts::Shared| Gilt nur für v3.x-Container. Lokaler Ordner zum Speichern des Erkennungsergebnisses. Der Standardwert lautet `/share`. Zum Ausführen eines Containers ohne Azure Blob Storage empfehlen wir, ein Volume in diesen Ordner einzubinden und auf diese Weise sicherzustellen, dass genügend Speicherplatz für die Erkennungsergebnisse vorhanden ist. |
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
@@ -62,11 +65,11 @@ Diese Einstellung finden Sie hier:
 
 * Azure-Portal: Übersicht über **Cognitive Services**, mit der Bezeichnung `Endpoint`
 
-Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
+Denken Sie daran, die `vision/<version>`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
 
 |Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | String | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -122,13 +125,13 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 Im Folgenden finden Sie Docker-Beispiele für den OCR-Lesecontainer.
 
 
-# <a name="version-32-preview"></a>[Version 3.2 (Vorschauversion)](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>Einfaches Beispiel
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +142,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

@@ -8,12 +8,12 @@ metadata:
   author: mathapli
   ms.author: mathapli
   ms.date: 01/18/2021
-  ms.openlocfilehash: 96e8f93f38d7ba84b93fdfb4101371f426a14f37
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: dcb526fe2e7946e9ffd77d319107d150f04ad06d
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114456571"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122968425"
 title: Problembehandlung bei der Zertifizierung von virtuellen Computern
 summary: >
   Beim Veröffentlichen Ihres Images des virtuellen Computers (VM) in Azure Marketplace wird es vom Azure-Team überprüft, um dafür die Startfähigkeit, Sicherheit und Kompatibilität mit Azure sicherzustellen. Falls Ihr VM-Image einen der Tests zur Überprüfung der hohen Qualitätsanforderungen nicht besteht, wird es nicht veröffentlicht. Sie erhalten eine Fehlermeldung, in der das Problem beschrieben ist.
@@ -196,7 +196,7 @@ sections:
 
       | 1 | Testfall zur Überprüfung der Linux-Agent-Version | Die mindestens erforderliche Linux-Agent-Version ist 2.2.41 oder höher. Diese Anforderung gilt seit dem 1. Mai 2020. | Aktualisieren Sie die Version des Linux-Agents. Sie sollte 2.241 oder höher lauten. Weitere Informationen finden Sie auf der [Seite mit Updates für die Linux-Agent-Version](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 
-      | 2 | Bashverlauf-Testfall | Es tritt ein Fehler auf, wenn die Größe des Bashverlaufs in Ihrem gesendeten Image 1 Kilobyte (KB) überschreitet. Die Größe ist auf 1 KB beschränkt, um sicherzustellen, dass in Ihrer Datei mit dem Bashverlauf keine potenziell vertraulichen Informationen erfasst werden. | Stellen Sie die VHD hierfür auf einer anderen funktionierenden VM bereit, und nehmen Sie Änderungen vor, um die Größe auf maximal 1 KB zu reduzieren. Löschen Sie beispielsweise die `.bash`-Verlaufsdateien. |
+      | 2 | Bashverlauf-Testfall | Es tritt ein Fehler auf, wenn die Größe des Bashverlaufs in Ihrem gesendeten Image 1 Kilobyte (KB) überschreitet. Die Größe ist auf 1 KB beschränkt, um sicherzustellen, dass in Ihrer Datei mit dem Bashverlauf keine potenziell vertraulichen Informationen erfasst werden. | Stellen Sie die VHD hierfür auf einer anderen funktionierenden VM bereit, und nehmen Sie Änderungen vor, um die Größe auf maximal 1 KB zu reduzieren. Löschen Sie beispielsweise die `.bash_history`-Dateien. |
 
       | 3 | Testfall für erforderliche Kernelparameter | Dieser Fehler wird angezeigt, wenn der Wert für `console` nicht auf `ttyS0` festgelegt ist. Überprüfen Sie die Änderung, indem Sie den folgenden Befehl ausführen: <br /> `cat /proc/cmdline` | Legen Sie den Wert für `console` auf `ttyS0` fest, und senden Sie die Anforderung noch einmal. |
 

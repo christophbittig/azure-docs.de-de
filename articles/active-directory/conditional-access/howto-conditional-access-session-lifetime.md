@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50c168bffad24646aad0badcdb849d9d3408725b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558184"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354951"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -135,6 +135,10 @@ Verwenden Sie das Was-wäre-wenn-Tool, um eine Anmeldung des Benutzers bei der Z
 ## <a name="policy-deployment"></a>Richtlinienbereitstellung
 
 Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert. Weitere Informationen finden Sie im Artikel [Planen einer Bereitstellung für bedingten Zugriff](plan-conditional-access.md).
+
+## <a name="known-issues"></a>Bekannte Probleme
+- Wenn Sie die Anmeldehäufigkeit bei mobilen Geräten konfigurieren, ist die Authentifizierung nach jeder internen Anmeldehäufigkeit langsam (kann durchschnittlich 30 Sekunden dauern). Außerdem kann dies über verschiedene Apps gleichzeitig geschehen. 
+- Wenn eine App in iOS-Geräten Zertifikate als ersten Authentifizierungsfaktor konfiguriert und auf sie sowohl „Anmeldehäufigkeit“ als auch Richtlinien für die [Verwaltung mobiler Anwendungen in Intune](/mem/intune/apps/app-lifecycle) angewendet wurden, werden Endbenutzer bei der Anmeldung in der App blockiert, wenn die Richtlinie ausgelöst wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

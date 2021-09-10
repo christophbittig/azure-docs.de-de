@@ -4,15 +4,15 @@ description: Eine kurze Übersicht der Standorte, an denen die Daten und Metadat
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ef72214cf0a5a5d0d65cc13dba88a4776b4240ad
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc356e828adbe9b2d93a202f6b58673dd4ec5efc
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745293"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125904"
 ---
 # <a name="data-locations-for-azure-virtual-desktop"></a>Datenstandorte für Azure Virtual Desktop
 
@@ -49,7 +49,8 @@ Derzeit wird das Speichern der oben genannten Daten an den folgenden Standorten 
 
 - Vereinigte Staaten (USA) (allgemein verfügbar)
 - Europa (EU) (allgemein verfügbar)
-- Vereinigtes Königreich (UK) (öffentliche Vorschau)
+- Vereinigtes Königreich (UK) (allgemein verfügbar)
+- Kanada (CA) (allgemein verfügbar)
 
 Mit einer zunehmenden Verbreitung des Diensts werden weitere Geografien hinzugefügt. Die gespeicherten Informationen werden im Ruhezustand verschlüsselt. Außerdem werden georedundante Spiegelungen innerhalb der Geografie verwaltet. Kundendaten wie App-Einstellungen und Benutzerdaten befinden sich an dem vom Kunden ausgewählten Standort und werden nicht vom Dienst verwaltet.
 

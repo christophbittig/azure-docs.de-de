@@ -3,17 +3,17 @@ title: 'Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer: ve
 description: Erhalten Sie Informationen über die verfügbaren Azure-Datenträgertypen für virtuelle Computer, einschließlich Ultra-Datenträgern, SSD Premium, SSD Standard und Standard-HDDs.
 author: roygara
 ms.author: rogarana
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 782d4d18e9b6ffc16c1d95a995cef806adc42904
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5c8e9a7d2d9989ef3080741753f604b9eb5d4289
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083420"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362177"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -29,7 +29,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Ultra-Datenträgern, S
 |Szenario   |E/A-intensive Workloads wie [SAP HANA](workloads/sap/hana-vm-operations-storage.md), führende Datenbanken (z. B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
 |Maximale Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |
 |Max. Durchsatz   |2\.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
-|Max. IOPS   |160.000    |20.000   |6\.000   |2\.000   |
+|Max. IOPS   |160.000    |20.000   |6.000   |2\.000   |
 
 ## <a name="ultra-disk"></a>Ultra-Datenträger
 
@@ -78,13 +78,11 @@ Weitere Informationen zu den einzelnen VM-Typen und -Größen in Azure für Wind
 ### <a name="disk-size"></a>Datenträgergröße
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung eines Storage Premium-Datenträgers die Kapazität, die IOPS und der Durchsatz dieses Datenträgers garantiert. Wenn Sie beispielsweise einen P50-Datenträger erstellen, stellt Azure eine Speicherkapazität von 4.095 GB, 7.500 IOPS und einen Durchsatz von 250 MB/s für diesen Datenträger bereit. Die Anwendung kann die Kapazität und Leistung ganz oder teilweise nutzen. SSD Premium-Datenträger sind dafür ausgelegt, Wartezeiten im niedrigen einstelligen Millisekundenbereich sowie die in der vorherigen Tabelle beschriebenen IOPS und Durchsätze 99,9 % der Zeit bereitzustellen.
+Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung eines Storage Premium-Datenträgers die Kapazität, die IOPS und der Durchsatz dieses Datenträgers garantiert. Wenn Sie beispielsweise einen P50-Datenträger erstellen, stellt Azure eine Speicherkapazität von 4.095 GB, 7.500 IOPS und einen Durchsatz von 250 MB/s für diesen Datenträger bereit. Die Anwendung kann die Kapazität und Leistung ganz oder teilweise nutzen. SSD Premium-Datenträger sind dafür ausgelegt, Wartezeiten im niedrigen einstelligen Millisekundenbereich sowie die in der vorherigen Tabelle beschriebenen IOPS und Durchsätze 99,9 % der Zeit bereitzustellen.
 
 ## <a name="bursting"></a>Bursting
 
-SSD Premium-Größen kleiner als P30 bieten jetzt Datenträgerbursting und können die IOPS pro Datenträger auf bis zu 3.500 und deren Bandbreite auf bis 170 MB/s steigern. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Guthaben werden automatisch in einem Burst-Bucket akkumuliert, wenn der Datenträgerverkehr unterhalb des bereitgestellten Leistungsziels liegt. Guthaben werden automatisch verbraucht, wenn der Datenverkehr über das Ziel hinausgeht (bis zum maximalen Burst-Limit). Das maximale Burst-Limit definiert die Obergrenze für Datenträger-IOPS und Bandbreite (auch wenn Sie über Burst-Guthaben verfügen, das verbraucht werden kann). Datenträgerbursting bietet eine bessere Toleranz bei unvorhersehbaren Änderungen der E/A-Muster. Es ist am besten für den Start des Betriebssystemdatenträgers und Anwendungen mit extremen Spitzen im Datenverkehr geeignet.    
-
-Die Unterstützung für Datenträgerbursting wird standardmäßig in neuen Bereitstellungen der entsprechenden Datenträgergrößen aktiviert, ohne dass eine Benutzeraktion erforderlich ist. Für vorhandene Datenträger mit den entsprechenden Größen haben Sie zwei Möglichkeiten, um die Burstingfunktion zu aktivieren: Trennen und erneutes Anschließen des Datenträgers oder Beenden und Neustarten der zugehörigen VM. Alle für Bursting infrage kommenden Datenträgergrößen werden mit einem vollen Burst-Guthaben-Bucket gestartet, das eine maximale Dauer von 30 Minuten mit maximalem Burst-Limit unterstützt, wenn der Datenträger an einen virtuellen Computer abgeschlossen wird. Weitere Informationen zur Funktionsweise von Datenträgerbursting auf Azure-Datenträgern finden Sie unter [SSD Premium-Bursting](./disk-bursting.md). 
+SSD Premium-Datenträger bieten Datenträgerbursting. Datenträgerbursting bietet eine bessere Toleranz bei unvorhersehbaren Änderungen der E/A-Muster. Es ist am besten für den Start des Betriebssystemdatenträgers und Anwendungen mit extremen Spitzen im Datenverkehr geeignet. Weitere Informationen zur Funktionsweise von Bursting für Azure-Datenträger finden Sie unter [Bursting auf Datenträgerebene](disk-bursting.md#disk-level-bursting).
 
 ### <a name="transactions"></a>Transaktionen
 
@@ -102,6 +100,10 @@ Standard-SSDs sind dafür ausgelegt, 99 % der Zeit Wartezeiten im einstelligen M
 ### <a name="transactions"></a>Transaktionen
 
 Für SSD Standard gilt jeder E/A-Vorgang kleiner oder gleich 256 KiB Durchsatz als ein einzelner E/A-Vorgang. E/A-Vorgänge mit einem Durchsatz größer als 256 KiB gelten als mehrere Ein-bzw. Ausgabevorgänge der Größe 256 KiB. Diese Transaktionen besitzen Auswirkungen auf die Abrechnung.
+
+### <a name="bursting"></a>Bursting
+
+SSD Standard-Datenträger bieten Datenträgerbursting. Datenträgerbursting bietet eine bessere Toleranz bei unvorhersehbaren Änderungen der E/A-Muster. Es ist am besten für den Start des Betriebssystemdatenträgers und Anwendungen mit extremen Spitzen im Datenverkehr geeignet. Weitere Informationen zur Funktionsweise von Bursting für Azure-Datenträger finden Sie unter [Bursting auf Datenträgerebene](disk-bursting.md#disk-level-bursting).
 
 ## <a name="standard-hdd"></a>HDD Standard
 

@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): PowerShell-Module – Azure'
-description: Sie können PowerShell verwenden, um Arbeitsbereiche, Experimente, Webdienste und vieles mehr in Azure Machine Learning Studio (klassisch) zu erstellen und zu verwalten.
+description: Sie können PowerShell verwenden, um beispielsweise Arbeitsbereiche, Experimente oder Webdienste in Machine Learning Studio (klassisch) zu erstellen und zu verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -8,17 +8,18 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 684299d61ba6e9e27e16a162c9f226a7ea3b5f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 662a550145ece8821a8cdbed0533696b265f7952
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518010"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690010"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>PowerShell-Module für Azure Machine Learning Studio (klassisch)
+# <a name="powershell-modules-for-machine-learning-studio-classic"></a>PowerShell-Module für Machine Learning Studio (klassisch)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Mithilfe von PowerShell-Modulen können Sie Ihre Ressourcen und Objekte für Studio (klassisch) wie Arbeitsbereiche, Datasets und Webdienste programmgesteuert verwalten.
 
@@ -26,7 +27,7 @@ Sie können mithilfe von drei PowerShell-Modulen mit Studio-Ressourcen (Classic)
 
 * [Azure PowerShell Az](#az-rm) (veröffentlicht 2018) umfasst die gesamte Funktionalität von AzureRM, allerdings mit anderen Cmdlet-Namen
 * [AzureRM](#az-rm) (veröffentlicht 2016) wurde ersetzt durch PowerShell Az.
-* [Azure Machine Learning PowerShell – klassisch](#classic), veröffentlicht 2016
+* [Machine Learning PowerShell (klassisch)](#classic), veröffentlicht 2016
 
 Trotz einiger Ähnlichkeiten ist jedes dieser PowerShell-Module für bestimmte Szenarien konzipiert. In diesem Artikel werden die Unterschiede zwischen den PowerShell-Modulen beschrieben, und Sie erhalten Unterstützung bei der Modulauswahl.  
 

@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 0dc49265c0ea799e194e4ac7004b558d8a9d4dd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11f142c545bad707ec8595f13f80a95cc626674f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519268"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582922"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Nutzen eines Webdiensts in Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic).](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-Sobald Sie ein (klassisches) Azure Machine Learning Studio-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
+Sobald Sie ein Machine Learning Studio (Classic)-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
 
 Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts mit Machine Learning Studio (klassisch) finden Sie hier:
 
@@ -32,9 +32,9 @@ Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Web
 
 
 ## <a name="overview"></a>Übersicht
-Mit dem Azure Machine Learning-Webdienst kommunizieren externe Anwendungen in Echtzeit mit einem Machine Learning-Workflow-Bewertungsmodell. Ein Machine Learning-Webdienstaufruf gibt Vorhersageergebnisse an eine externe Anwendung zurück. Zur Durchführung eines Machine Learning-Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen einer Vorhersage erstellt wird. Der Machine Learning-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
+Mithilfe des Machine Learning-Webdiensts kommunizieren externe Anwendungen in Echtzeit mit einem Machine Learning-Workflowbewertungsmodell. Ein Machine Learning-Webdienstaufruf gibt Vorhersageergebnisse an eine externe Anwendung zurück. Zur Durchführung eines Machine Learning-Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen einer Vorhersage erstellt wird. Der Machine Learning-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
 
-Azure Machine Learning Studio (klassisch) verfügt über zwei Arten von Diensten:
+Machine Learning Studio (Classic) verfügt über zwei Arten von Diensten:
 
 * Anforderung-/Antwort-Dienst (Request-Response Service, RRS): ein hochskalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in Machine Learning Studio (klassisch) erstellt und bereitgestellt wurden.
 * Batch Execution Service (BES) – ein asynchroner Dienst für die Bewertung eines Stapels für Datensätze.
@@ -44,12 +44,12 @@ Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitst
 ## <a name="get-an-authorization-key"></a>Abrufen eines Autorisierungsschlüssels
 Wenn Sie Ihr Experiment bereitstellen, werden API-Schlüssel für den Webdienst erstellt. Sie können die Schlüssel von verschiedenen Stellen abrufen.
 
-### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Im Azure Machine Learning Web Services-Portal
-Melden Sie sich beim [Microsoft Azure Machine Learning Web Services-Portal](https://services.azureml.net) an.
+### <a name="from-the-machine-learning-web-services-portal"></a>Über das Portal für Machine Learning-Webdienste
+Melden Sie sich beim [Portal für Machine Learning-Webdienste](https://services.azureml.net) an.
 
 So rufen Sie den API-Schlüssel für einen neuen Machine Learning-Webdienst ab
 
-1. Klicken Sie im Azure Machine Learning Web Services-Portal im oberen Menü auf **Web Services**.
+1. Klicken Sie im Portal für Machine Learning-Webdienste im oberen Menü auf **Webdienste**.
 2. Klicken Sie auf den Webdienst, für den der Schlüssel abgerufen werden soll.
 3. Klicken Sie im oberen Menü auf **Consume**.
 4. Kopieren und speichern Sie den **Primary Key**.
@@ -82,7 +82,7 @@ Die Machine Learning-API-Hilfeseite enthält Details zu einem Vorhersagewebdiens
 
 **So zeigen Sie Machine Learning-API-Hilfe für einen neuen Webdienst an**
 
-Im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/):
+Im [Portal für Machine Learning-Webdienste](https://services.azureml.net/):
 
 1. Klicken Sie im oberen Menü auf **WEB SERVICES**.
 2. Klicken Sie auf den Webdienst, für den der Schlüssel abgerufen werden soll.

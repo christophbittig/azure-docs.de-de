@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Themen in Azure Event Grid
 description: Enthält eine Beschreibung der benutzerdefinierten Themen in Azure Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c211e529e5382fd655fca6d78ab32409cbff4453
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 07/27/2021
+ms.openlocfilehash: 54d331d2080d8adf96bf39c9250e7d6888723c1d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736644"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727750"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Benutzerdefinierte Themen in Azure Event Grid
 Ein Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ereignisse sendet. Der Herausgeber erstellt das Thema und legt fest, ob eine Ereignisquelle ein Thema oder mehrere Themen benötigt. Ein Event Grid-Thema wird für eine Sammlung ähnlicher Ereignisse verwendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren.
@@ -67,6 +67,9 @@ Die folgenden Abschnitte enthalten Links zu Tutorials zur Erstellung von benutze
 |---------|---------|
 | [Resource Manager-Vorlage: Benutzerdefiniertes Thema und WebHook-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid) | Eine Resource Manager-Vorlage, mit der ein benutzerdefiniertes Thema und ein Abonnement für dieses benutzerdefinierte Thema erstellt werden. Sendet Ereignisse an einen WebHook. |
 | [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
+
+> [!NOTE]
+> Azure Digital Twins kann Ereignisbenachrichtigungen an benutzerdefinierte Themen routen, die Sie mit Event Grid erstellen. Weitere Informationen finden Sie unter [Verwalten von Endpunkten und Routen in Azure Digital Twins](../digital-twins/how-to-manage-routes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 

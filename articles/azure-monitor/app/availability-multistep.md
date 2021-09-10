@@ -2,23 +2,29 @@
 title: Überwachen mit mehrstufigen Webtests – Azure Application Insights
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/21/2021
+ms.openlocfilehash: d248340aa272a6a1fef386ca755ed46536668ad9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719847"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447996"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
 Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe einer Website über mehrstufige Webtests überwachen. In diesem Artikel wird der Prozess ausführlich beschrieben, mit dem Sie mit Visual Studio Enterprise einen mehrstufigen Webtest erstellen können.
 
 > [!NOTE]
-> Mehrstufige Webtests sind von Visual Studio-Webtestdateien abhängig. Es wurde [angekündigt](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), dass Visual Studio 2019 die letzte Version mit Webtestfunktionen sein wird. Es ist wichtig zu verstehen, dass zwar keine neuen Features hinzugefügt werden, aber Webtestfunktionen in Visual Studio 2019 derzeit noch und auch während des Supportlebenszyklus des Produkts weiterhin unterstützt werden. Das Azure Monitor-Produktteam hat Fragen zur Zukunft von mehrstufigen Verfügbarkeitstests [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101) behandelt.  
-> </br>
 > Mehrstufige Webtests werden in der [Azure Government](../../azure-government/index.yml)-Cloud **nicht unterstützt**.
 
+> [!NOTE]
+> Mehrstufige Webtests werden als klassische Tests kategorisiert und befinden sich im Bereich „Verfügbarkeit“ unter **Klassischen Test hinzufügen**.
+
+## <a name="multi-step-webtest-alternative"></a>Alternative für mehrstufige Webtests
+
+Mehrstufige Webtests sind von Visual Studio-Webtestdateien abhängig. Es wurde [angekündigt](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), dass Visual Studio 2019 die letzte Version mit Webtestfunktionen sein wird. Hiermit wird ausdrücklich darauf hingewiesen, dass zwar keine neuen Features hinzugefügt werden, aber die Webtestfunktionen in Visual Studio 2019 während des gesamten Supportlebenszyklus des Produkts weiterhin unterstützt werden. 
+
+Es empfiehlt sich, [TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) zu verwenden, um anstelle von mehrstufigen Webtests [benutzerdefinierte Verfügbarkeitstests](./availability-azure-functions.md) zu übermitteln. Dies ist die langfristig unterstützte Lösung für Testszenarien mit mehreren Anforderungen oder Authentifizierungen. Mit TrackAvailability() und benutzerdefinierten Verfügbarkeitstests können Sie Tests auf beliebigen Computeressourcen ausführen und mithilfe von C# ganz einfach neue Tests erstellen.
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
@@ -41,9 +47,10 @@ Anleitungen zum Erstellen von Visual Studio-Webtests finden Sie in der [offiziel
 
 ## <a name="upload-the-web-test"></a>Hochladen des Webtests
 
-1. Klicken Sie im Application Insights-Portal im Bereich „Verfügbarkeit“ auf **Test erstellen** > **Testtyp** > **Mehrstufiger Webtest**.
-
-2. Legen Sie die Teststandorte, Häufigkeit und Warnungsparameter fest.
+1. Wählen Sie im Application Insights-Portal im Bereich „Verfügbarkeit“ die Option **Klassischen Test hinzufügen** aus, und wählen Sie dann **Mehrstufig** als *SKU* aus.
+2. Laden Sie Ihren mehrstufigen Webtest hoch.
+3. Legen Sie die Teststandorte, Häufigkeit und Warnungsparameter fest.
+4. Klicken Sie auf **Erstellen**.
 
 ### <a name="frequency--location"></a>Häufigkeit und Standort
 

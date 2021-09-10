@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 399ce5e8714eb6935e3c2eac06ed44b712a14e35
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609474"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346821"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -37,7 +37,7 @@ Standardmäßig leitet Ihre App nur RFC 1918-Datenverkehr in das VNET weiter. W
 1. Wählen Sie **Speichern** aus.
 
 > [!NOTE]
-> Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterliegt dieser den NSGs und UDRs, die auf Ihr Integrationssubnetz angewandt werden. Wenn `WEBSITE_VNET_ROUTE_ALL` auf `1` festgelegt ist, wird ausgehender Datenverkehr weiterhin von den Adressen gesendet, die in Ihren App-Eigenschaften aufgeführt sind, es sei denn, Sie stellen Routen bereit, die den Datenverkehr an einen anderen Ort leiten.
+> Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterliegt dieser den NSGs und UDRs, die auf Ihr Integrationssubnetz angewandt werden. Wenn `WEBSITE_VNET_ROUTE_ALL` auf `1` festgelegt ist, wird von den IP-Adressen, die in Ihren App-Eigenschaften aufgeführt sind, weiterhin ausgehender Datenverkehr an öffentliche IP-Adressen gesendet – es sei denn, Sie stellen Routen bereit, die den Datenverkehr an einen anderen Ort leiten.
 > 
 > Die regionale VNET-Integration kann Port 25 nicht verwenden.
 

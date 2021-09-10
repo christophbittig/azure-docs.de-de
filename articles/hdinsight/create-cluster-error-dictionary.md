@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d80ae76ed47366e56a3a1bf318219c6944fa3dbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183963"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339671"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
 
@@ -148,7 +148,7 @@ Wenn Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkdatenverkehrs verwen
 
 ### <a name="error"></a>Fehler
 
-„The Managed Identity does not have permissions on the storage account. (Die verwaltete Identität weist keine Berechtigungen für das Speicherkonto auf.) Please verify that 'Storage Blob Data Owner' role is assigned to the Managed Identity for the storage account. Storage: /subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
+„The Managed Identity does not have permissions on the storage account. (Die verwaltete Identität weist keine Berechtigungen für das Speicherkonto auf.) Please verify that 'Storage Blob Data Owner' role is assigned to the Managed Identity for the storage account. Storage: /subscriptions/ \<Subscription ID\> /resourceGroups/\<Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\<Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
 
 ### <a name="cause"></a>Ursache
 
@@ -169,7 +169,7 @@ Weitere Informationen finden Sie unter [Festlegen von Berechtigungen für verwal
 
 ### <a name="error"></a>Fehler
 
-"The security rules in the Network Security Group /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> configured with subnet /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> does not allow required inbound and/or outbound connectivity. („Die Sicherheitsregeln in der Netzwerksicherheitsgruppe /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\>, die mit dem Subnetz /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> konfiguriert ist, lässt keine eingehenden und/oder ausgehenden Verbindungen zu) For more information, please visit [Plan a virtual network for Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md), or contact support. (Weitere Informationen finden Sie unter „Planen eines virtuellen Netzwerks für Azure HDInsight“, oder wenden Sie sich an den Support.)“
+„Die Sicherheitsregeln in der Netzwerksicherheitsgruppe /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\>, die mit dem Subnetz /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> konfiguriert ist, lässt nicht die erforderliche eingehende und/oder ausgehende Konnektivität zu. For more information, please visit [Plan a virtual network for Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md), or contact support. (Weitere Informationen finden Sie unter „Planen eines virtuellen Netzwerks für Azure HDInsight“, oder wenden Sie sich an den Support.)“
 
 ### <a name="cause"></a>Ursache
 
@@ -217,7 +217,7 @@ Wenn Sie benutzerdefinierte VNet-Netzwerksicherheitsgruppen (NSGs) und benutzerd
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fehlercode: Deployments failed due to policy violation: 'Resource '<Resource URI>' was disallowed by policy. (Fehler bei Bereitstellungen aufgrund einer Richtlinienverletzung: Die Ressource wurde durch eine Richtlinie abgelehnt.) Richtlinienbezeichner: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition": <Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fehlercode: Deployments failed due to policy violation: 'Resource '\<Resource URI\>' was disallowed by policy. (Fehler bei Bereitstellungen aufgrund einer Richtlinienverletzung: Die Ressource wurde durch eine Richtlinie abgelehnt.) Richtlinienbezeichner: '[{"policyAssignment":{"name":"\<Policy Name\> ","id":"/providers/Microsoft.Management/managementGroups/\<Management Group Name\> providers/Microsoft.Authorization/policyAssignments/\<Policy Name\>"},"policyDefinition": \<Policy Definition\>
 
 ### <a name="cause"></a>Ursache
 

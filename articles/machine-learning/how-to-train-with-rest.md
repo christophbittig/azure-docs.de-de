@@ -10,12 +10,13 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 05/25/2021
 ms.reviewer: peterlu
-ms.openlocfilehash: 65b7446602c8b7202ba7ccf56115edfc5de333db
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 89fb2c08aa76b88110bb5832f297d08d5891dda4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750729"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448314"
 ---
 # <a name="train-models-with-rest-preview"></a>Trainieren von Modellen per REST (Vorschau)
 
@@ -34,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie die neuen REST-APIs für folgende Zw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein **Azure-Abonnement**, für das Sie über Administratorrechte verfügen. Testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://aka.ms/AMLFree), falls Sie nicht über ein Abonnement dieser Art verfügen.
+- Ein **Azure-Abonnement**, für das Sie über Administratorrechte verfügen. Testen Sie das [kostenlose oder kostenpflichtige persönliche Abonnement](https://azure.microsoft.com/free/), falls Sie nicht über ein Abonnement dieser Art verfügen.
 - Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 - Ein Dienstprinzipal in Ihrem Arbeitsbereich. Für administrative REST-Anforderungen wird die [Dienstprinzipalauthentifizierung](how-to-setup-authentication.md#use-service-principal-authentication) verwendet.
 - Ein Token für die Dienstprinzipalauthentifizierung. Führen Sie die Schritte unter [Abrufen eines Tokens für die Dienstprinzipalauthentifizierung](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token) aus, um dieses Token abzurufen. 
@@ -47,7 +48,7 @@ Ein Auftrag ist eine Ressource, mit der alle Aspekte eines Berechnungsauftrags a
 - Wie soll die Ausführung erfolgen?
 - Wo soll die Ausführung erfolgen?
 
-Es gibt viele Möglichkeiten, einen Azure Machine Learning-Auftrag zu übermitteln, z. B. per SDK, CLI oder über die grafische Studio-Benutzeroberfläche. Im folgenden Beispiel wird ein LightGBM-Trainingsauftrag mit der REST-API übermittelt.
+Es gibt viele Möglichkeiten, einen Azure Machine Learning-Auftrag zu übermitteln, z. B. per SDK, Azure CLI oder über die grafische Studio-Benutzeroberfläche. Im folgenden Beispiel wird ein LightGBM-Trainingsauftrag mit der REST-API übermittelt.
 
 ## <a name="create-machine-learning-assets"></a>Erstellen von Machine Learning-Ressourcen
 

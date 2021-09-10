@@ -5,12 +5,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 5b6e83909d3a8ccd224169e1571def422c7456c4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: b422bbad06b419f35e8f4a1107c60e4312abba4d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006327"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304028"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Erstellen von Diagnoseeinstellungen für eine Azure-Ressource. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -127,6 +127,9 @@ Im folgenden Beispiel wird eine Diagnoseeinstellung für ein Aktivitätsprotokol
 
 ## <a name="diagnostic-setting-for-azure-key-vault"></a>Diagnoseeinstellung für Azure Key Vault 
 Im folgenden Beispiel wird eine Diagnoseeinstellung für eine Azure Key Vault-Instanz erstellt, indem der Vorlage eine Ressource vom Typ `Microsoft.KeyVault/vaults/providers/diagnosticSettings` hinzugefügt wird.
+
+> [!IMPORTANT]
+> Für Azure Key Vault muss sich der Event Hub in derselben Region wie der Schlüsseltresor befinden.
 
 ### <a name="template-file"></a>Vorlagendatei
 

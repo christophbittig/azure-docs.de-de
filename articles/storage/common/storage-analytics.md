@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737680"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448115"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -37,7 +37,7 @@ Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 * Anforderungen zum Erstellen von Blobs für die Protokollierung
 * Anforderungen zum Erstellen von Tabellenentitäten für Metriken
 
-Wenn Sie eine Datenbeibehaltungsrichtlinie konfiguriert haben und die Speicheranalyse ältere Protokollierungs- und Metrikdaten löscht, werden Ihnen keine Löschtransaktionen in Rechnung gestellt. Löschtransaktionen von einem Client sind jedoch gebührenpflichtig. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy).
+Wenn Sie eine Datenaufbewahrungsrichtlinie konfiguriert haben, können Sie die Ausgaben reduzieren, indem Sie alte Protokoll- und Metrikdaten löschen. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy).
 
 ### <a name="understanding-billable-requests"></a>Grundlegendes zu gebührenpflichtigen Anforderungen
 

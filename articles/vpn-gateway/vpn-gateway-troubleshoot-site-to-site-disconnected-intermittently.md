@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 47a6649c154ed3fed5ba444a58bae93ac0398bbc
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867252"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676832"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Verbindung des Azure-Standort-zu-Standort-VPN
 
@@ -56,7 +56,7 @@ Beim richtlinienbasierten virtuellen Netzwerkgateway ist die Sicherheitszuordnun
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Schritt 6: Überprüfen der Adresse der externen Schnittstelle des lokalen VPN-Geräts
 
-Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition **Lokales Netzwerkgateway** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
+Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition für den **Adressraum des lokalen Netzwerkgateways** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Schritt 7: Überprüfen, ob beim lokalen VPN-Gerät Perfect Forward Secrecy aktiviert ist
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ac2304ffd8f45d2147822f55f35c965da2db7a9
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579075"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005220"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Was ist der reine Berichtsmodus des bedingten Zugriffs?
 
@@ -24,7 +24,7 @@ Der bedingte Zugriff wird von unseren Kunden häufig verwendet, um durch die Anw
 
 Der reine Berichtsmodus ist ein neuer Status von Richtlinien für bedingten Zugriff, mit dem Administratoren die Auswirkungen von Richtlinien für bedingten Zugriff auswerten können, bevor sie die jeweiligen Richtlinien in ihrer Umgebung aktivieren.  Durch die Einführung des reinen Berichtsmodus ergeben sich die folgenden Vorteile:
 
-- Richtlinien für bedingten Zugriff können im reinen Berichtsmodus aktiviert werden.
+- Richtlinien für bedingten Zugriff können im reinen Berichtsmodus aktiviert werden. Dies gilt nicht für den Bereich „Benutzeraktionen“.
 - Bei der Anmeldung werden Richtlinien im reinen Berichtsmodus ausgewertet, aber nicht erzwungen.
 - Die Ergebnisse werden auf den Registerkarten **Bedingter Zugriff** und **Nur melden** der Anmeldeprotokolldetails protokolliert.
 - Kunden mit einem Azure Monitor-Abonnement können die Auswirkungen ihrer Richtlinien für bedingten Zugriff mithilfe der Arbeitsmappe für Erkenntnisse zum bedingten Zugriff überwachen.

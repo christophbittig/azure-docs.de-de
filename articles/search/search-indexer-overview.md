@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: ac9708e496fd0ee84d6e225ff8a63807bbe34fcd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7a0ac8a344bc48a9d1ce14b326724236c229d096
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468389"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339453"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexer in Azure Cognitive Search
 
@@ -62,19 +62,23 @@ Indexerverbindungen mit Remotedatenquellen können über standardmäßige Intern
 
 Bei einer anfänglichen Ausführung, bei der der Index leer ist, liest ein Indexer alle Daten, die in der Tabelle oder im Container bereitgestellt werden. Bei nachfolgenden Ausführungen kann der Indexer in der Regel nur die geänderten Daten erkennen und abrufen. Bei Blobdaten erfolgt die Änderungserkennung automatisch. Bei anderen Datenquellen wie Azure SQL oder Cosmos DB muss die Änderungserkennung aktiviert werden.
 
-Für jedes empfangene Dokument implementiert oder koordiniert der Indexer mehrere Schritte – vom Abrufen des Dokuments bis hin zur Übergabe an eine Suchmaschine für die Indizierung. Optional ist ein Indexer auch bei der Initiierung von Skillset-Ausführungen und -Ausgaben dienlich, vorausgesetzt, dass ein Skillset definiert ist.
+Für jedes empfangene Dokument implementiert oder koordiniert der Indexer mehrere Schritte – vom Abrufen des Dokuments bis hin zur Übergabe an eine Suchmaschine für die Indizierung. Optional initiiert ein Indexer auch [Skillsetausführungen und -ausgaben](cognitive-search-concept-intro.md), vorausgesetzt, dass ein Skillset definiert ist.
 
 :::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="Indexerphasen" border="false":::
 
+<a name="document-cracking"></a>
+
 ### <a name="stage-1-document-cracking"></a>Phase 1: Dokumententschlüsselung
 
-Dokumententschlüsselung ist der Vorgang des Öffnens von Dateien und des Extrahierens von Inhalt. Abhängig vom Typ der Datenquelle versucht der Indexer, verschiedene Vorgänge auszuführen, um potenziell indizierbaren Inhalt zu extrahieren.  
+Dokumententschlüsselung ist der Vorgang des Öffnens von Dateien und des Extrahierens von Inhalt. Textbasierte Inhalte können aus Dateien in einem Dienst, Zeilen in einer Tabelle oder Elementen in Containern oder Sammlungen extrahiert werden. Wenn Sie einem Indexer ein Skillset und [Bildanalyseskills](cognitive-search-concept-image-scenarios.md) hinzufügen, kann die Dokumententschlüsselung auch Bilder extrahieren und zur Verarbeitung in die Warteschlange einreihen.
 
-Beispiele:  
+Abhängig von der Datenquelle führt der Indexer verschiedene Vorgänge aus, um potenziell indizierbare Inhalte zu extrahieren:
 
-+ Wenn es sich bei dem Dokument um einen Datensatz in einer [Azure SQL-Datenquelle](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) handelt, extrahiert der Indexer alle Felder für den Datensatz.
-+ Wenn das Dokument eine PDF-Datei in einer [Azure Blob Storage-Datenquelle](search-howto-indexing-azure-blob-storage.md) ist, extrahiert der Indexer Text, Bilder und Metadaten.
-+ Wenn das Dokument ein Datensatz in einer [Cosmos DB-Datenquelle](search-howto-index-cosmosdb.md) ist, extrahiert der Indexer die Felder und Unterfelder aus dem Cosmos DB-Dokument.
++ Wenn es sich bei dem Dokument um eine Datei handelt, z. B. eine PDF-Datei oder ein anderes in [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#supported-document-formats) unterstütztes Dateiformat, öffnet der Indexer die Datei und extrahiert Text, Bilder und Metadaten. Indexer können auch Dateien aus [SharePoint](search-howto-index-sharepoint-online.md#supported-document-formats) und [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md#supported-document-formats) öffnen.
+
++ Wenn es sich bei dem Dokument um einen Datensatz in [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) handelt, extrahiert der Indexer die nicht binären Inhalte aus jedem Feld in jedem Datensatz.
+
++ Handelt es sich bei dem Dokument um einen Datensatz in [Cosmos DB](search-howto-index-cosmosdb.md), extrahiert der Indexer die nicht binären Inhalte aus Feldern und Unterfeldern des Cosmos DB-Dokuments.
 
 ### <a name="stage-2-field-mappings"></a>Phase 2: Feldzuordnungen 
 

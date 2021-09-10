@@ -9,13 +9,14 @@ ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
-ms.date: 05/25/2021
-ms.openlocfilehash: bc1983a16ba2ec85dc943e10d7b2220b0de1dc88
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.custom: devplatv2
+ms.date: 06/17/2021
+ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408531"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447650"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Was sind Azure Machine Learning-Endpunkte (Vorschau)? 
 
@@ -28,23 +29,23 @@ In diesem Artikel lernen Sie Folgendes:
 > * Endpunkte
 > * Bereitstellungen
 > * Verwaltete Onlineendpunkte
-> * AKS-Onlineendpunkte
+> * AKS-Onlineendpunkte (Azure Kubernetes Service)
 > * Batchrückschluss-Endpunkte
 
 ## <a name="what-are-endpoints-and-deployments-preview"></a>Was sind Endpunkte und Bereitstellungen (Vorschau)?
 
-Nach dem Trainieren eines Machine Learning-Modells müssen Sie das Modell so bereitstellen, dass es von anderen Benutzern zum Durchführen von Rückschlussvorgängen genutzt werden kann. Bei Azure Machine Learning können Sie hierfür **Endpunkte** (Vorschau) und **Bereitstellungen** (Vorschau) verwenden.
+Nach dem Trainieren eines Machine Learning-Modells müssen Sie das Modell so bereitstellen, dass es von anderen Benutzern zum Durchführen von Rückschlussvorgängen genutzt werden kann. In Azure Machine Learning können Sie hierfür **Endpunkte** (Vorschau) und **Bereitstellungen** (Vorschau) verwenden.
 
 :::image type="content" source="media/concept-endpoints/endpoint-concept.png" alt-text="Diagramm: Endpunkt, bei dem Datenverkehr auf zwei Bereitstellungen aufgeteilt wird":::
 
-Ein **Endpunkt** ist ein HTTPS-Endpunkt, der von Clients aufgerufen werden kann, damit darüber die Rückschlussausgabe (Bewertung) eines trainierten Modells empfangen werden kann. Sie bietet: 
+Ein **Endpunkt** ist ein HTTPS-Endpunkt, der von Clients aufgerufen werden kann, um die Rückschlussausgabe (Bewertung) eines trainierten Modells zu empfangen. Sie bietet: 
 - Auf „Schlüssel und Token“ basierende Authentifizierung 
 - SSL-Terminierung 
 - Datenverkehrszuordnung zwischen Bereitstellungen 
 - Stabilen Bewertungs-URI (endpoint-name.region.inference.ml.azure.com)
 
 
-Eine **Bereitstellung** ist eine Gruppe mit Computeressourcen, von denen das Modell gehostet wird, das die eigentlichen Rückschlussvorgänge durchführt. Sie enthält folgende Elemente: 
+Eine **Bereitstellung** ist eine Gruppe von Computeressourcen, von denen das Modell gehostet wird, das die eigentlichen Rückschlussvorgänge durchführt. Sie enthält folgende Elemente: 
 - Modelldetails (Code, Modell, Umgebung) 
 - Einstellungen für Computeressourcen und Skalierung 
 - Erweiterte Einstellungen (z. B. Anforderungs- und Testeinstellungen)
@@ -56,11 +57,11 @@ Das Konzept der Endpunkte und Bereitstellungen wird von Azure Machine Learning g
 ### <a name="multiple-developer-interfaces"></a>Mehrere Entwicklerschnittstellen
 
 Erstellen und Verwalten von Batch- und Onlineendpunkten mit verschiedenen Entwicklertools:
-- Befehlszeilenschnittstelle (CLI)
+- Azure CLI
 - ARM/REST-API
 - Azure Machine Learning Studio-Webportal
 - Azure-Portal (IT/Administrator)
-- Unterstützung für CI/CD-MLOps-Pipelines über die CLI- und REST-/ARM-Schnittstelle
+- Unterstützung für CI/CD-MLOps-Pipelines über die Azure CLI- und REST-/ARM-Schnittstelle
 
 ## <a name="what-are-online-endpoints-preview"></a>Was sind Onlineendpunkte (Vorschau)?
 
@@ -109,7 +110,7 @@ Es gibt zwei Arten von Onlineendpunkten: **Verwaltete Onlineendpunkte** (Vorscha
 
 |  | Verwaltete Onlineendpunkte | AKS-Onlineendpunkte |
 |-|-|-|
-| **Empfohlene Benutzer** | Benutzer, die eine Bereitstellung eines verwalteten Modells und eine verbesserte MLOps-Benutzeroberfläche benötigen | Benutzer, die Azure Kubernetes Service (AKS) bevorzugen und Infrastrukturanforderungen verwalten können |
+| **Empfohlene Benutzer** | Benutzer, die eine Bereitstellung eines verwalteten Modells und eine verbesserte MLOps-Benutzeroberfläche benötigen | Benutzer, die Azure Kubernetes Service (AKS) bevorzugen und Infrastrukturanforderungen selbst verwalten können |
 | **Infrastrukturverwaltung** | Verwaltete Bereitstellung von Computeressourcen, Skalierung, Updates für Hostbetriebssystem-Images und Sicherheitshärtung | Benutzerverantwortung |
 | **Computetyp** | Verwaltet (AmlCompute) | AKS |
 | **Standardmäßige Überwachung** | [Azure-Überwachung](how-to-monitor-online-endpoints.md) <br> (Umfasst wichtige Metriken, z. B. Latenz und Durchsatz.) | Nicht unterstützt |
@@ -189,5 +190,7 @@ Geben Sie den Speicherausgabeort für einen beliebigen Datenspeicher und Pfad an
 - [Bereitstellen verwalteter Onlineendpunkte mit der Azure CLI](how-to-deploy-managed-online-endpoints.md)
 - [Bereitstellen von Batchendpunkten mit der Azure CLI](how-to-use-batch-endpoint.md)
 - [Verwenden von verwalteten Onlineendpunkten mit Studio](how-to-use-managed-online-endpoint-studio.md)
+- [Bereitstellen von Modellen per REST (Vorschau)](how-to-deploy-with-rest.md)
 - [Überwachen verwalteter Onlineendpunkte](how-to-monitor-online-endpoints.md)
 - [Anzeigen der Kosten für Onlineendpunkte](how-to-view-online-endpoints-costs.md)
+- [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

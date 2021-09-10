@@ -3,16 +3,16 @@ title: Verwenden von Azure Security Center zum Härten Ihrer Docker-Hosts und Sc
 description: Schützen Ihrer Docker-Hosts und Sicherstellen, dass sie mit dem CIS-Docker-Benchmark konform sind
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e421815fd962a62760c4d16106daa7f85fb1599
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339334"
 ---
 # <a name="harden-your-docker-hosts"></a>Härten Ihrer Docker-Hosts
 
@@ -32,7 +32,7 @@ Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlu
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Leser** in dem Arbeitsbereich, mit dem der Host verbunden wird|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Identifizieren und Beheben von Sicherheitsrisiken in der Docker-Konfiguration
@@ -43,18 +43,21 @@ Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlu
 
     Auf der Empfehlungsseite werden die betroffenen Ressourcen (Docker-Hosts) angezeigt. 
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="Empfehlung zum Beseitigen von Sicherheitsrisiken in Containersicherheitskonfigurationen":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="Empfehlung zum Beseitigen von Sicherheitsrisiken in Containersicherheitskonfigurationen.":::
+
+    > [!NOTE]
+    > Computer, auf denen Docker nicht ausgeführt wird, werden auf der Registerkarte **Nicht anwendbare Ressourcen** aufgeführt. Sie werden in Azure Policy als konform angezeigt. 
 
 1. Um die CIS-Steuerelemente für einen bestimmten Host, bei dem ein Fehler aufgetreten ist, anzuzeigen und zu beheben, wählen Sie den zu untersuchenden Host aus. 
 
     > [!TIP]
-    > Wenn Sie auf der Seite für den Ressourcenbestand begonnen haben und diese Empfehlung von dort aus erreicht haben, wählen Sie die Schaltfläche **Aktion ausführen** auf der Empfehlungsseite aus.
+    > Wenn Sie auf der Seite für den Ressourcenbestand begonnen und diese Empfehlung von dort aus erreicht haben, wählen Sie auf der Empfehlungsseite die Schaltfläche **Aktion ausführen** aus.
     >
     > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Schaltfläche „Aktion ausführen“ zum Starten von Log Analytics":::
 
     Log Analytics wird geöffnet und zeigt einen benutzerdefinierten Vorgang, der direkt ausgeführt werden kann. Die standardmäßige benutzerdefinierte Abfrage enthält eine Liste aller fehlerhaften Regeln, die bewertet wurden, sowie Anleitungen zum Beheben der Probleme.
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Log Analytics-Seite mit der Abfrage, mit der alle fehlerhaften CIS-Steuerelemente angezeigt werden":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Log Analytics-Seite mit der Abfrage zur Anzeige aller fehlerhaften CIS-Steuerelemente":::
 
 1. Optimieren Sie die Abfrageparameter bei Bedarf.
 

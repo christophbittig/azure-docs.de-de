@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3196233728bb7f6493bbc06234c62d261ac99254
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 90acf43471e0213b801e4d147fe4e8a8abbd0394
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338890"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -121,7 +121,7 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
     > [!NOTE]
     > Wenn Sie eine [Git-fähige App in PowerShell mithilfe von „New-AzWebApp“ erstellt haben](#create-a-git-enabled-app), wurde das Remoterepository bereits für Sie erstellt.
    
-1. Übertragen Sie mithilfe von Push mit `git push azure master` zum Azure-Remoterepository. 
+1. Führen Sie einen Pushvorgang an den Azure-Remotecomputer mit `git push azure master` durch. (Informationen hierzu finden Sie unter [Ändern des Bereitstellungsbranchs](#change-deployment-branch).) 
    
 1. Geben Sie im Fenster **Git Credential Manager** Ihre [Anmeldeinformationen für den Benutzerbereich oder den Anwendungsbereich](#configure-a-deployment-user) ein. Verwenden Sie hier nicht Ihre Anmeldeinformationen für die Azure-Anmeldung.
 
@@ -130,6 +130,23 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
 1. Überprüfen Sie die Ausgabe. Sie enthält möglicherweise eine laufzeitspezifische Automatisierung wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python. 
    
 1. Navigieren Sie im Azure-Portal zu Ihrer App, um zu überprüfen, ob der Inhalt bereitgestellt wurde.
+
+## <a name="change-deployment-branch"></a>Ändern des Bereitstellungsbranchs
+
+Wenn Sie Commits per Push an Ihr App Service-Repository übertragen, stellt App Service die Dateien standardmäßig im `master`-Branch bereit. Da viele Git-Repositorys von `master` in `main` verschoben werden, müssen Sie mit einer von zwei Methoden sicherstellen, dass der Pushvorgang in den richtigen Branch im App Service-Repository erfolgt:
+
+- Führen Sie die Bereitstellung in `master` explizit durch einen Befehl wie den folgenden durch:
+
+    ```bash
+    git push azure main:master
+    ```
+
+- Ändern Sie den Bereitstellungsbranch, indem Sie die App-Einstellung `DEPLOYMENT_BRANCH` festlegen und dann Commits per Push an den benutzerdefinierten Branch übertragen. Vorgehensweise über die Azure CLI:
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <group-name> --settings DEPLOYMENT_BRANCH='main'
+    git push azure main
+    ```
 
 ## <a name="troubleshoot-deployment"></a>Problembehandlung bei der Bereitstellung
 
@@ -140,7 +157,7 @@ Möglicherweise werden die folgenden häufigen Fehlermeldungen angezeigt, wenn S
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Die App wird nicht ordnungsgemäß ausgeführt.|Starten Sie die App im Azure-Portal. Die Git-Bereitstellung ist nicht verfügbar, wenn die Web-App beendet wurde.|
 |`Couldn't resolve host 'hostname'`|Die Adressinformationen für die ‚azure‘-Remotewebsite sind falsch.|Verwenden Sie den Befehl `git remote -v`, um alle Remotewebsites zusammen mit der jeweils zugehörigen URL aufzulisten. Überprüfen Sie, ob die URL für die 'azure'-Remotewebsite korrekt ist. Entfernen Sie diese Remote-Website bei Bedarf und erstellen Sie sie mit der korrekten URL neu.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Sie haben während `git push` keinen Branch angegeben, oder Sie haben den Wert `push.default` in `.gitconfig` nicht festgelegt.|Führen Sie `git push` erneut aus, und geben Sie dabei den Hauptbranch an: `git push azure main`.|
-|`Error - Changes committed to remote repository but deployment to website failed.`|Sie haben einen lokalen Branch gepusht, der nicht mit dem App-Bereitstellungsbranch auf „azure“ übereinstimmt.|Vergewissern Sie sich, dass Current Branch gleich `master` ist. Um den Standardbranch zu ändern, verwenden Sie die Anwendungseinstellung `DEPLOYMENT_BRANCH`.|
+|`Error - Changes committed to remote repository but deployment to website failed.`|Sie haben einen lokalen Branch gepusht, der nicht mit dem App-Bereitstellungsbranch auf „azure“ übereinstimmt.|Vergewissern Sie sich, dass Current Branch gleich `master` ist. Um den Standardbranch zu ändern, verwenden Sie die Anwendungseinstellung `DEPLOYMENT_BRANCH`. (Informationen hierzu finden Sie unter [Ändern des Bereitstellungsbranchs](#change-deployment-branch).) |
 |`src refspec [branchname] does not match any.`|Sie haben versucht, einen anderen Branch als den Hauptbranch mithilfe von Push in das „azure“-Remoterepository zu übertragen.|Führen Sie `git push` erneut aus, und geben Sie dabei den Hauptbranch an: `git push azure main`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Dieser Fehler kann auftreten, wenn Sie versuchen, ein großes Git-Repository über HTTPS mithilfe von Push zu übertragen.|Ändern Sie die Git-Konfiguration auf dem lokalen Computer, um den `postBuffer` zu vergrößern. Beispiel: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Sie haben eine Node.js-App mit einer Datei von Typ _package.json_ bereitgestellt, die zusätzliche erforderliche Module angibt.|Überprüfen Sie die Fehlermeldungen vom Typ `npm ERR!` vor diesem Fehler, um mehr Kontext zu erhalten. Es folgen die bekannten Ursachen für diesen Fehler und die entsprechenden Meldungen vom Typ `npm ERR!`:<br /><br />**Falsch formatierte „package.json“-Datei**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systemeigenes Modul verfügt über keine binäre Verteilung für Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />oder <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|

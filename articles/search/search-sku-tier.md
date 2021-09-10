@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 06/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e62f2a07b4266671bb055e6a672e13f69e2a0bab
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987881"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982814"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
-Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) müssen Sie auch einen Tarif (oder eine SKU) auswählen, der für die Lebensdauer des Diensts festgelegt wird. Die Preise (bzw. die geschätzten monatlichen Kosten für die Ausführung des Diensts) werden im Portal auf der Seite **Tarif auswählen** angezeigt, wenn Sie den Dienst erstellen. Falls Sie die Bereitstellung stattdessen mit PowerShell oder der Azure CLI durchführen, wird der Tarif mit dem Parameter **`-Sku`** angegeben. In diesem Fall sollten Sie sich unter [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/) über die geschätzten Kosten informieren.
+Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) müssen Sie auch einen Tarif (oder eine SKU) auswählen, der für die Lebensdauer des Diensts festgelegt wird. Im Portal wird der Tarif bei der Erstellung des Diensts auf der Seite **Tarif auswählen** angegeben. Wenn Sie die Bereitstellung stattdessen über PowerShell oder die Azure CLI durchführen, wird der Tarif durch den Parameter **`-Sku`** angegeben.
 
 Der ausgewählte Tarif bestimmt:
 
@@ -27,6 +27,8 @@ Der ausgewählte Tarif bestimmt:
 + Die abrechenbare Rate als eine festgelegte monatliche Gebühr, aber auch als inkrementelle Kosten, wenn Sie Kapazität hinzufügen
 
 In einigen Fällen bestimmt der von Ihnen gewählte Tarif die Verfügbarkeit von [Premium-Features](#premium-features).
+
+Die Preise (bzw. die geschätzten monatlichen Kosten für die Ausführung des Diensts) werden im Portal auf der Seite **Tarif auswählen** angezeigt. Informationen zu den geschätzten Kosten finden Sie bei den [Dienstpreisen](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
 > Suchen Sie nach Informationen zu „Azure-SKUs“? Beginnen Sie mit [Azure-Preise](https://azure.microsoft.com/pricing/), und scrollen Sie dann nach unten, um die Links zu den Preisseiten für die einzelnen Dienste anzuzeigen.
@@ -56,12 +58,13 @@ Die meisten Funktionen sind in allen Tarifen (einschließlich des Free-Tarifs) v
 | Funktion | Einschränkungen |
 |---------|-------------|
 | [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar.  |
-| [KI-Anreicherung](search-security-manage-encryption-keys.md) | Wird im Free-Tarif ausgeführt, aber nicht empfohlen. |
+| [KI-Anreicherung](cognitive-search-concept-intro.md) | Wird im Free-Tarif ausgeführt, aber nicht empfohlen. |
 | [Verwaltete oder vertrauenswürdige Identitäten für den ausgehenden Zugriff (Indexer)](search-howto-managed-identities-data-sources.md) | Im Free-Tarif nicht verfügbar.|
 | [Von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) | Im Free-Tarif nicht verfügbar. |
 | [IP-Firewallzugriff](service-configure-firewall.md) | Im Free-Tarif nicht verfügbar. |
 | [Privater Endpunkt (Integration mit Azure Private Link)](service-create-private-endpoint.md) | Für eingehende Verbindungen bei einem Suchdienst, nicht im Free-Tarif verfügbar. Für ausgehende Verbindungen von Indexern zu anderen Azure-Ressourcen, nicht verfügbar im Tarif „Free“ oder „S3 HD“. Für Indexer, die Skillsets verwenden, nicht verfügbar im Tarif „Free“, „Basic“, „S1“ oder „S3 HD“| 
 | [Verfügbarkeitszonen](search-performance-optimization.md) | In den Tarifen „Free“ und „Basic“ nicht verfügbar. |
+| [Semantische Suche (Vorschau)] | In den Tarifen „Free“ und „Basic“ nicht verfügbar. |
 
 Ressourcenintensive Funktionen funktionieren möglicherweise nicht gut, wenn Sie ihnen nicht genügend Kapazität zuweisen. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Skills mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 

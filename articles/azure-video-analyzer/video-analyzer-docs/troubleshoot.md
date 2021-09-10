@@ -1,14 +1,14 @@
 ---
 title: Fehlerbehebung bei Azure Video Analyzer - Azure
 description: Dieser Artikel beschreibt Schritte zur Fehlerbehebung für den Azure Video Analyzer.
-ms.topic: how-to
-ms.date: 05/04/2021
-ms.openlocfilehash: cd54386702c24065cccad4f7ede43c313a44886c
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.topic: troubleshooting
+ms.date: 07/15/2021
+ms.openlocfilehash: c3b95936eabfcaefa12b9271b152d196790841c4
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613662"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362644"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Fehlerbehebung beim Azure Video Analyzer
 
@@ -107,14 +107,14 @@ Wenn es weitere Probleme gibt, bei denen Sie Hilfe benötigen, **[erfassen Sie P
 
 ### <a name="video-analyzer-working-with-external-modules"></a>Der Azure Video Analyzer arbeitet mit externen Modulen
 
-Anhand der Pipeline-Erweiterungsprozessoren kann der Azure Video Analyzer die Pipeline zum Senden und Empfangen von Daten von anderen Azure IoT-Edge-Modulen mithilfe von HTTP- oder gRPC-Protokollen erweitern. Als [konkretes Beispiel]() kann diese Live-Pipeline Videobilder als Bilder an ein externes Inferenz-Modul wie Yolo v3 senden und JSON-basierte Analyseergebnisse über das HTTP-Protokoll empfangen. In einer solchen Topologie bildet in den meisten Fällen der IoT Hub das Ziel für die Ereignisse. In Situationen, in denen Sie keine Rückschlussereignisse auf dem Hub sehen können, prüfen Sie die folgenden Punkte:
+Anhand der Pipeline-Erweiterungsprozessoren kann der Azure Video Analyzer die Pipeline zum Senden und Empfangen von Daten von anderen Azure IoT-Edge-Modulen mithilfe von HTTP- oder gRPC-Protokollen erweitern. Als [konkretes Beispiel](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/httpExtension) kann diese Live-Pipeline Videobilder als Bilder an ein externes Inferenz-Modul wie Yolo v3 senden und JSON-basierte Analyseergebnisse über das HTTP-Protokoll empfangen. In einer solchen Topologie bildet in den meisten Fällen der IoT Hub das Ziel für die Ereignisse. In Situationen, in denen Sie keine Rückschlussereignisse auf dem Hub sehen können, prüfen Sie die folgenden Punkte:
 
 - Überprüfen Sie, ob es sich bei dem Hub, in dem die Live-Pipeline veröffentlicht, und dem Hub, den Sie untersuchen, um denselben Hub handelt. Wenn Sie mehrere Bereitstellungen erstellen, haben Sie es auch mit mehreren Hubs zu tun und suchen möglicherweise auf dem falschen nach Ereignissen.
 - Überprüfen Sie im Azure-Portal, ob das externe Modul bereitgestellt ist und ausgeführt wird. Im Beispielbild hier handelt es sich bei rtspsim, yolov3, tinyyolov3 und logAnalyticsAgent um IoT Edge-Module, die extern zum avaedge-Modul ausgeführt werden.
 
   [![Screenshot: Ausführungsstatus von Modulen in Azure IoT Hub](./media/troubleshoot/iot-hub-azure.png)](./media/troubleshoot/iot-hub-azure.png#lightbox)
 
-- Überprüfen Sie, ob Sie Ereignisse an den richtigen URL-Endpunkt senden. Der externe KI-Container macht eine URL und einen Port verfügbar, über die bzw. den er die Daten von POST-Anforderungen empfängt und zurückgibt. Diese URL wird als `endpoint: url`-Eigenschaft des HTTP-Erweiterungsprozessors angegeben. Wie Sie am Beispiel der [Topologie-URL]() sehen, ist der Endpunkt auf den Parameter für die Rückschluss-URL festgelegt. Vergewissern Sie sich, dass der Standardwert für den Parameter bzw. der übergebene Wert korrekt ist. Sie können die Funktionalität mithilfe der Client-URL (cURL) testen.
+- Überprüfen Sie, ob Sie Ereignisse an den richtigen URL-Endpunkt senden. Der externe KI-Container macht eine URL und einen Port verfügbar, über die bzw. den er die Daten von POST-Anforderungen empfängt und zurückgibt. Diese URL wird als `endpoint: url`-Eigenschaft des HTTP-Erweiterungsprozessors angegeben. Wie Sie am Beispiel der [Topologie-URL](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/httpExtension/topology.json) sehen, ist der Endpunkt auf den Parameter für die Rückschluss-URL festgelegt. Vergewissern Sie sich, dass der Standardwert für den Parameter bzw. der übergebene Wert korrekt ist. Sie können die Funktionalität mithilfe der Client-URL (cURL) testen.
 
   Im Folgenden finden Sie als Beispiel einen Yolo v3-Container, der auf einem lokalen Computer mit der IP-Adresse 172.17.0.3 ausgeführt wird.
 
@@ -152,8 +152,8 @@ Wenn die Probleme mit der Self-Service-Problembehandlung nicht gelöst werden k�
 
 Zum Sammeln der relevanten Protokolle, die dem Ticket hinzugefügt werden sollen, befolgen Sie die folgenden Anweisungen der Reihe nach, und laden Sie die Protokolldateien im Bereich **Details** der Supportanfrage hoch.
 
-1. [Konfigurieren Sie das Live Azure Video Analyzer-Moduls zum Sammeln ausführlicher Protokolle]()
-1. [Aktivieren Sie Debugprotokolle]().
+1. [Konfigurieren Sie das Live Azure Video Analyzer-Moduls zum Sammeln ausführlicher Protokolle](#configure-video-analyzer-module-to-collect-verbose-logs)
+1. [Aktivieren Sie Debugprotokolle](#video-analyzer-debug-logs).
 1. Reproduzieren Sie das Problem.
 1. Stellen Sie im Portal auf der Seite **IoT Hub** eine Verbindung mit dem virtuellen Computer her.
 
@@ -218,22 +218,8 @@ Gehen Sie wie folgt vor, um das Azure Video Analyzer-Modul für die Erstellung v
    ![Screenshot der Schaltfläche „Module festlegen“ im Azure-Portal](media/troubleshoot/set-modules.png)
 
 1. Suchen Sie im Abschnitt **IoT Edge Modules** nach **avaedge** und wählen Sie Letzteres aus.
-1. Klicken Sie auf **Optionen für Containererstellung**.
-1. Fügen Sie im Abschnitt **Bindungen** den folgenden Befehl hinzu:
-
-   `/var/local/videoanalyzer/logs:/var/lib/videoanalyzer/logs`
-
-   > [!NOTE]
-   > Dieser Befehl bindet die Protokollordner zwischen dem Edge-Gerät und dem Container. Wenn Sie die Protokolle an einem anderen Speicherort sammeln möchten, verwenden Sie den folgenden Befehl, und ersetzen Sie **$LOG_LOCATION_ON_EDGE_DEVICE** durch den gewünschten Speicherort: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/videoanalyzer/logs`
-
-1. Wählen Sie **Update** aus.
-1. Klicken Sie auf **Überprüfen + erstellen**. Unter einem grünen Banner wird eine Erfolgsmeldung angezeigt.
-1. Klicken Sie auf **Erstellen**.
-1. Aktualisieren Sie die Option **Zwilling der Modulkennung** so, dass diese auf den Parameter „DebugLogsDirectory“ verweist, der wiederum auf das Verzeichnis verweist, in dem die Protokolle gesammelt werden:
-
-   a. Wählen Sie in der **Modulen**-Tabelle das Modul **IvaEdge** aus.
-   b. Wählen Sie oben im Bereich die Option **Zwilling der Modulkennung** aus. Ein bearbeitbarer Bereich wird geöffnet.
-   c. Fügen Sie unter **desired key** das folgende Schlüssel-Wert-Paar hinzu:
+1. Wählen Sie **Zwilling der Modulkennung** aus. Ein bearbeitbarer Bereich wird geöffnet.
+1. Fügen Sie unter **desired key** das folgende Schlüssel-Wert-Paar hinzu:
 
    `"DebugLogsDirectory": "/var/lib/videoanalyzer/logs"`
 
@@ -243,7 +229,7 @@ Gehen Sie wie folgt vor, um das Azure Video Analyzer-Modul für die Erstellung v
    > 1. Erstellen Sie eine Bindung für den Speicherort des Debugprotokolls im Abschnitt **Binds**, wobei **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** und **$DEBUG_LOG_LOCATION** durch den von Ihnen gewünschten Speicherort ersetzt werden: `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
    > 2. Verwenden Sie den folgenden Befehl, wobei **$DEBUG_LOG_LOCATION** durch den im vorherigen Schritt verwendeten Speicherort ersetzt wird: `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`
 
-   d. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 1. Sie können die Protokollsammlung beenden, indem Sie den Wert unter **Zwilling der Modulkennung** auf _NULL_ festlegen. Wechseln Sie zurück zur Seite **Zwilling der Modulkennung**, und aktualisieren Sie den folgenden Parameter wie folgt:
 

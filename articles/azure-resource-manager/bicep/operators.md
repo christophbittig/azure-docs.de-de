@@ -4,31 +4,57 @@ description: Hier werden die für Azure Resource Manager-Bereitstellungen verfü
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 154a42d1bcdc78eee63241286e8f65ab7777bc6b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346811"
 ---
 # <a name="bicep-operators"></a>Bicep-Operatoren
 
-In diesem Artikel werden die Bicep-Operatoren beschrieben, die verfügbar sind, wenn Sie eine Bicep-Vorlage erstellen und Ressourcen mit Azure Resource Manager bereitstellen. Operatoren werden verwendet, um Werte zu berechnen, Werte zu vergleichen oder Bedingungen auszuwerten. Es gibt drei Typen von Bicep-Operatoren:
+In diesem Artikel werden die Bicep-Operatoren beschrieben. Operatoren werden verwendet, um Werte zu berechnen, Werte zu vergleichen oder Bedingungen auszuwerten. Es gibt vier Arten von Bicep-Operatoren:
 
+- [Accessor](#accessor)
 - [Vergleich](#comparison)
 - [Logisch](#logical)
 - [numeric](#numeric)
 
+## <a name="operator-precedence-and-associativity"></a>Operatorrangfolge und Assoziativität
+
+Die nachstehenden Operatoren sind in absteigender Rangfolge aufgeführt (je höher die Position, desto höher der Rang). Operatoren auf derselben Ebene haben den gleichen Rang.
+
+| Symbol | Vorgangstyp | Assoziativität |
+|:-|:-|:-|
+| `(` `)` `[` `]` `.` `::` | Klammern, Arrayindexer, Eigenschaftenaccessoren und Accessor für geschachtelter Ressourcen  | Von links nach rechts |
+| `!` `-` | Unär | Von rechts nach links |
+| `%` `*` `/` | Multiplikativ | Von links nach rechts |
+| `+` `-` | Additiv | Von links nach rechts |
+| `<=` `<` `>` `>=` | Relational | Von links nach rechts |
+| `==` `!=` `=~` `!~` | Gleichheit | Von links nach rechts |
+| `&&` | Logisches AND | Von links nach rechts |
+| `||` | Logisches OR | Von links nach rechts |
+| `?` `:` | Bedingter Ausdruck (ternär) | Von rechts nach links
+| `??` | Coalesce | Von links nach rechts
+
 Wenn Sie einen Ausdruck zwischen `(` und `)` einschließen, können Sie die Standardrangfolge des Bicep-Operators überschreiben. Beispielsweise wertet der Ausdruck x + y / z zuerst die Division und dann die Addition aus. Der Ausdruck (x + y) / z wertet jedoch die Addition zuerst und die Division danach aus.
 
-Informationen zum Zugreifen auf eine Ressource über den Operator `::` finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen in Bicep](child-resource-name-type.md).
+## <a name="accessor"></a>Accessor
+
+Die Accessoroperatoren werden verwendet, um auf geschachtelte Ressourcen und Eigenschaften von Objekten zuzugreifen.
+
+| Operator | Name | BESCHREIBUNG |
+| ---- | ---- | ---- |
+| `::` | [Accessor für geschachtelte Ressourcen](./operators-access.md#nested-resource-accessor) | Zugriff auf eine geschachtelte Ressource von außerhalb der übergeordneten Ressource |
+| `.` | [Eigenschaftenaccessor](./operators-access.md#property-accessor) | Zugriff auf Eigenschaften eines Objekts |
+| `.` | [Funktionsaccessor](./operators-access.md#function-accessor) | Aufruf einer Funktion für eine Ressource |
 
 ## <a name="comparison"></a>Vergleich
 
 Die Vergleichsoperatoren vergleichen Werte und geben entweder `true` oder `false` zurück.
 
-| Operator | Name | Beschreibung |
+| Operator | Name | BESCHREIBUNG |
 | ---- | ---- | ---- |
 | `>=` | [Größer oder gleich](./operators-comparison.md#greater-than-or-equal-) | Wertet aus, ob der erste Wert größer oder gleich dem zweiten Wert ist. |
 | `>`  | [Größer als](./operators-comparison.md#greater-than-) | Wertet aus, ob der erste Wert größer ist als der zweite Wert. |
@@ -43,7 +69,7 @@ Die Vergleichsoperatoren vergleichen Werte und geben entweder `true` oder `false
 
 Die logischen Operatoren werten boolesche Werte aus, geben Werte zurück, die ungleich NULL sind, oder werten einen bedingten Ausdruck aus.
 
-| Operator | Name | Beschreibung |
+| Operator | Name | BESCHREIBUNG |
 | ---- | ---- | ---- |
 | `&&` | [Und](./operators-logical.md#and-) | Gibt `true` zurück, wenn alle Werte WAHR sind. |
 | `||`| [Oder](./operators-logical.md#or-) | Gibt `true` zurück, wenn einer der beiden Werte WAHR ist. |
@@ -55,7 +81,7 @@ Die logischen Operatoren werten boolesche Werte aus, geben Werte zurück, die un
 
 Die numerischen Operatoren verwenden zur Ausführung von Berechnungen ganze Zahlen und geben ganzzahlige Werte zurück.
 
-| Operator | Name | Beschreibung |
+| Operator | Name | BESCHREIBUNG |
 | ---- | ---- | ---- |
 | `*` | [Multiplizieren](./operators-numeric.md#multiply-) | Multipliziert zwei ganze Zahlen. |
 | `/` | [Dividieren](./operators-numeric.md#divide-) | Dividiert eine ganze Zahl durch eine ganze Zahl. |
@@ -66,6 +92,7 @@ Die numerischen Operatoren verwenden zur Ausführung von Berechnungen ganze Zahl
 
 > [!NOTE]
 > Subtrahieren und Minus verwenden denselben Operator. Die Funktionalität ist unterschiedlich, weil Subtrahieren zwei Operanden und Minus einen Operanden verwendet.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

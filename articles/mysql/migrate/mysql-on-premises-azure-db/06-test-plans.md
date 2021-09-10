@@ -1,5 +1,5 @@
 ---
-title: 'Testpläne: Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL'
+title: 'Migrieren lokaler MySQL-Instanzen zu Azure Database for MySQL: Testpläne'
 description: WWI hat einen Testplan erstellt, der eine Reihe von IT- und Geschäftsaufgaben umfasst. Erfolgreiche Migrationen erfordern, dass alle Tests ausgeführt werden.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: ad8a0ef111368f81075acaf68fec9e653534f7e4
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: d13a6b63b297aff9504b00449f660f3ba55b6591
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082774"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084982"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-test-plans"></a>Testpläne: Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-test-plans"></a>Migrieren lokaler MySQL-Instanzen zu Azure Database for MySQL: Testpläne
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -186,6 +188,8 @@ Die Genauigkeit des Zielmigrationsobjekts wurde anhand der Schemainformationen d
 
   - Verfügen Sie über eine klar definierte Zeitachse von Ereignissen für die Migration.  
 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Leistungsbaselines](./07-performance-baselines.md)

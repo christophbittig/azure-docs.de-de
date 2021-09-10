@@ -6,19 +6,22 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728444"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217447"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
 
 > [!NOTE]
 > Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald dieser Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
-In diesem Artikel erfahren Sie, wie Sie den Pacemaker-Cluster in RHEL 7.6 konfigurieren, um ein SAP HANA-Datenbankfailover zu automatisieren. Sie müssen mit Linux, SAP HANA und Pacemaker vertraut sein, um die Schritte in dieser Anleitung ausführen zu können.
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
+In diesem Artikel erfahren Sie, wie Sie den Pacemaker-Cluster in RHEL 7 konfigurieren, um ein SAP HANA-Datenbankfailover zu automatisieren. Sie müssen mit Linux, SAP HANA und Pacemaker vertraut sein, um die Schritte in dieser Anleitung ausführen zu können.
 
 In der folgenden Tabelle sind die Hostnamen enthalten, die in diesem Artikel verwendet werden. Die Codeblöcke im Artikel zeigen die Befehle, die ausgeführt werden müssen, sowie die Ausgabe dieser Befehle. Achten Sie genau darauf, auf welchen Knoten in jedem Befehl verwiesen wird.
 
@@ -136,6 +139,7 @@ Bevor Sie mit der Konfiguration des Clusters beginnen können, richten Sie den S
 
 6. Aktualisieren des Systems
     1. Installieren Sie zunächst die neuesten Updates auf dem System, bevor Sie mit der Installation des SBD-Geräts beginnen.
+    1. Kunden müssen sicherstellen, dass mindestens Version 4.1.1-12.el7_6.26 des Pakets resource-agents-sap-hana installiert ist, wie unter [Supportrichtlinien für RHEL-Hochverfügbarkeitscluster – Verwaltung von SAP HANA in einem Cluster](https://access.redhat.com/articles/3397471) dokumentiert.
     1. Wenn Sie kein umfassendes Update des Systems wünschen, auch wenn es empfohlen wird, aktualisieren Sie mindestens die folgenden Pakete.
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
@@ -308,7 +312,7 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 ## <a name="sbd-configuration"></a>SBD-Konfiguration
 In diesem Abschnitt lernen Sie, SBD zu konfigurieren. In diesem Abschnitt werden die gleichen beiden Hosts `sollabdsm35` und `sollabdsm36` verwendet, auf die am Anfang dieses Artikels verwiesen wird.
 
-1.  Stellen Sie sicher, dass der iSCSI- oder FC-Datenträger auf beiden Knoten sichtbar ist. In diesem Beispiel wird ein FC-basiertes SBD-Gerät verwendet. Weitere Informationen zum SBD-Fencing finden Sie unter [Entwurfsanleitung für RHEL-Hochverfügbarkeitscluster – SBD-Überlegungen](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0).
+1.  Stellen Sie sicher, dass der iSCSI- oder FC-Datenträger auf beiden Knoten sichtbar ist. In diesem Beispiel wird ein FC-basiertes SBD-Gerät verwendet. Weitere Informationen zum SBD-Fencing finden Sie unter [Entwurfsanleitung für RHEL-Hochverfügbarkeitscluster – Überlegungen zu SBD](https://access.redhat.com/articles/2941601) und unter [Unterstützungsrichtlinien für RHEL-Hochverfügbarkeitscluster – sbd und fence_sbd](https://access.redhat.com/articles/2800691).
 2.  Die LUN-ID muss auf allen Knoten identisch sein.
   
 3.  Überprüfen Sie den Multipfadstatus des SBD-Geräts.
@@ -641,7 +645,7 @@ In diesem Abschnitt initialisieren Sie den Cluster. In diesem Abschnitt werden d
 
 In diesem Abschnitt integrieren Sie HANA in den Cluster. In diesem Abschnitt werden die gleichen beiden Hosts `sollabdsm35` und `sollabdsm36` verwendet, auf die am Anfang dieses Artikels verwiesen wird.
 
-Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine kostenoptimierte Lösung, bei der Sie das sekundäre System zum Ausführen des QAS-Systems verwenden können. Diese Methode wird nicht empfohlen, da es kein System zum Testen von Updates der Clustersoftware, des Betriebssystems oder von HANA gibt und Konfigurationsupdates zu ungeplanten Ausfallzeiten des PRD-Systems führen können. Außerdem muss der QAS auf dem sekundären Knoten heruntergefahren werden, wenn das PRD-System auf dem sekundären System aktiviert werden muss. Die zweite Option besteht darin, das QAS-System auf einem Cluster zu installieren und einen zweiten Cluster für das PRD-System zu verwenden. Mit dieser Option können Sie auch alle Komponenten testen, bevor sie in der Produktion eingesetzt werden. In diesem Artikel wird das Konfigurieren der zweiten Option veranschaulicht.
+Die standardmäßige und unterstützte Methode besteht darin, ein leistungsoptimiertes Szenario zu erstellen, das einen direkten Datenbankswitchover ermöglicht. Nur dieses Szenario wird in diesem Dokument beschrieben. In diesem Fall empfiehlt es sich, einen Cluster für das QAS-System und einen separaten Cluster für das PRD-System zu installieren. Nur in diesem Fall ist es möglich, alle Komponenten vor dem Übergang in die Produktion zu testen.
 
 
 * Dieser Prozess entspricht der RHEL-Beschreibung auf dieser Seite:
@@ -649,6 +653,12 @@ Es gibt zwei Optionen für die Integration von HANA. Die erste Option ist eine k
   * https://access.redhat.com/articles/3004101
 
  ### <a name="steps-to-follow-to-configure-hsr"></a>Schritte zum Konfigurieren von HSR
+
+ | **Protokollreplikationsmodus**            | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Synchron, In-Memory (Standard)** | „Synchron, In-Memory“ (Modus: syncmem) bedeutet, dass der Protokollschreibvorgang als erfolgreich betrachtet wird, wenn der Protokolleintrag auf das Protokollvolume des primären Systems geschrieben wurde und das Senden des Protokolls nach dem Kopieren in den Arbeitsspeicher von der sekundären Instanz bestätigt wurde. Wenn die Verbindung mit dem sekundären System unterbrochen wird, setzt das primäre System die Transaktionsverarbeitung fort und schreibt die Änderungen nur auf den lokalen Datenträger. Datenverluste können auftreten, wenn das primäre und das sekundäre System gleichzeitig ausfallen, während das sekundäre System verbunden ist, oder wenn eine Übernahme ausgeführt wird, während das sekundäre System getrennt ist. Diese Option bietet eine bessere Leistung, weil es nicht erforderlich ist, auf Datenträger-E/A auf der sekundären Instanz zu warten. Sie ist allerdings anfälliger für Datenverlust.                                                                                                                                                                                                                                                                                                                     |
+| **Synchron**                     | Synchron (Modus: sync) bedeutet, dass der Protokollschreibvorgang als erfolgreich betrachtet wird, wenn der Protokolleintrag auf das Protokollvolume der primären und der sekundären Instanz geschrieben wurde. Wenn die Verbindung mit dem sekundären System unterbrochen wird, setzt das primäre System die Transaktionsverarbeitung fort und schreibt die Änderungen nur auf den lokalen Datenträger. In diesem Szenario tritt kein Datenverlust auf, solange das sekundäre System verbunden ist. Datenverluste können auftreten, wenn eine Übernahme ausgeführt wird, während das sekundäre System getrennt ist. Darüber hinaus kann dieser Replikationsmodus mit einer Option zur vollständigen Synchronisierung ausgeführt werden. Dies bedeutet, dass der Protokollschreibvorgang erfolgreich ist, wenn der Protokollpuffer in die Protokolldatei der primären und der sekundären Instanz geschrieben wurde. Wenn das sekundäre System getrennt wird (z. B. aufgrund eines Netzwerkfehlers), hält das primäre System außerdem die Transaktionsverarbeitung an, bis die Verbindung mit dem sekundären System wiederhergestellt ist. In diesem Szenario tritt kein Datenverlust auf. Sie können die Option zur vollständigen Synchronisierung mit dem Parameter „\[system\_replication\]/enable\_full\_sync“ nur für die Systemreplikation festlegen. Weitere Informationen zum Aktivieren der Option zur vollständigen Synchronisierung finden Sie unter „Aktivieren der Option zur vollständigen Synchronisierung für die Systemreplikation“.                                                                                                                                                                                                                                                                                                              |
+| **Asynchron**                    | Asynchron (Modus: async) bedeutet, dass das primäre System asynchron Wiederholungsprotokollpuffer an das sekundäre System sendet. Das primäre System committet eine Transaktion, wenn sie in die Protokolldatei des primären Systems geschrieben und über das Netzwerk an das sekundäre System gesendet wurde. Es wartet nicht auf die Bestätigung des sekundären Systems. Diese Option bietet eine bessere Leistung, weil nicht auf Protokoll-E/A auf dem sekundären System gewartet werden muss. Die Datenbankkonsistenz ist für alle Dienste auf dem sekundären System garantiert. Diese Option ist jedoch anfälliger für Datenverluste. Datenänderungen können bei der Übernahme verloren gehen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 1.  Dies sind die Aktionen, die auf node1 (primär) ausgeführt werden.
     1. Stellen Sie sicher, dass der Datenbank-Protokollmodus auf „Normal“ festgelegt ist.
@@ -1052,7 +1062,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 3.  Erstellen einer geklonten SAPHanaTopology-Ressource.
     Die SAPHanaTopology-Ressource sammelt den Status und die Konfiguration SAP HANA-Systemreplikation auf jedem Knoten. Für SAPHanaTopology müssen die folgenden Attribute konfiguriert werden.
        ```
-       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 op start timeout=600 \
+       op stop timeout=300 \
+       op monitor interval=10 timeout=600 \
+       clone clone-max=2 clone-node-max=1 interleave=true
+
        ```
 
     | Attributname | Beschreibung  |
@@ -1064,26 +1078,15 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
        ```
        pcs resource show SAPHanaTopology_HR2_00
    
-       InstanceNumber 2-digit SAP Instance identifier.
-       pcs resource show SAPHanaTopology_HR2_00-clone
-   
        Clone: SAPHanaTopology_HR2_00-clone
-   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-   
-        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-       type=SAPHanaTopology)
-   
-        Attributes: InstanceNumber=00 SID=HR2
-   
-        Operations: monitor interval=60 timeout=60
-       (SAPHanaTopology_HR2_00-monitor-interval-60)
-   
-        start interval=0s timeout=180
-       (SAPHanaTopology_HR2_00-start-interval-0s)
-   
-        stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
-   
+        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat type=SAPHanaTopology)
+         Attributes: InstanceNumber=00 SID=HR2
+         Operations: monitor interval=60 timeout=60 (SAPHanaTopology_HR2_00-monitor-interval-60)
+                     start interval=0s timeout=180 (SAPHanaTopology_HR2_00-start-interval-0s)
+                     stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+       
+         
        ```
 
 4.  Erstellen einer primären/sekundären SAPHana-Ressource.
@@ -1100,39 +1103,32 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 5.  Erstellen der HANA-Ressource.
     ```
-    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
+    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=true op start timeout=3600 \
+    op stop timeout=3600 \
+    op monitor interval=61 role="Slave" timeout=700 \
+    op monitor interval=59 role="Master" timeout=700 \
+    op promote timeout=3600 \
+    op demote timeout=3600 \
+    master meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
 
     pcs resource show SAPHana_HR2_00-primary
 
 
     Primary: SAPHana_HR2_00-primary
-
-        Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
-
-        Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
-
-        Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200
-    InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
-
-        Operations: demote interval=0s timeout=320
-    (SAPHana_HR2_00-demote-interval-0s)
-
-        monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
-
-        monitor interval=121 role=Secondary timeout=60
-    (SAPHana_HR2_00-monitor-
-
-        interval-121)
-
-        monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
-
-        interval-119)
-
-        promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
-
-        start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
-
-        stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+     Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
+     Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
+      Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200 InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
+      Operations: demote interval=0s timeout=320 (SAPHana_HR2_00-demote-interval-0s)
+                  monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
+                  monitor interval=121 role=Secondary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-121)
+                  monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-119)
+                  promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
+                  start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
+                  stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+   
 
     
     
@@ -1318,3 +1314,10 @@ pcs cluster node clear node1
 ```
 
 Ob Sie die automatische Registrierung bevorzugen, hängt vom Kundenszenario ab. Das automatische erneute Registrieren des Knotens nach einer Übernahme ist für das Betriebsteam einfacher. Sie können den Knoten jedoch manuell registrieren, um zunächst zusätzliche Tests auszuführen, um sicherzustellen, dass alles wie erwartet funktioniert.
+
+##  <a name="references"></a>References
+
+1. [Automatisierte SAP HANA-Systemreplikation beim Hochskalieren im Pacemaker-Cluster](https://access.redhat.com/articles/3397471)
+2. [Unterstützungsrichtlinien für RHEL-Hochverfügbarkeitscluster – Verwaltung von SAP HANA in einem Cluster](https://access.redhat.com/articles/3397471)
+3. [Einrichten von Pacemaker unter RHEL in Azure – Azure Virtual Machines](high-availability-guide-rhel-pacemaker.md)
+4. [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal – Azure Virtual Machines](hana-li-portal.md)

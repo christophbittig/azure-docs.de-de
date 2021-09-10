@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 8bcd45ab1270d478b05b3929d7b8914976612294
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b81356c0a17315bbb614b4def5db90e4dbae9af3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645303"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450858"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-Images und deren Bereitstellung in Microsoft Azure
 
@@ -106,7 +106,7 @@ Diese Funktionen sind möglich, da Azure NetApp Files auf den vollständig auf F
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Lizenzieren von Oracle Database und Software in Azure
 
-Microsoft Azure ist eine autorisierte Cloudumgebung zum Ausführen von Oracle Database. Die Oracle Core Factor-Tabelle ist nicht anwendbar, wenn Sie Oracle-Datenbanken in der Cloud lizenzieren. Stattdessen können Sie, wenn Sie virtuelle Computer mit Hyperthreading-Technologie verwenden, die für Enterprise Edition-Datenbanken aktiviert ist, zwei vCPUs als gleichwertig zu einer Oracle Prozessor-Lizenz zählen, wenn Hyperthreading aktiviert ist (wie im Richtliniendokument angegeben). Die Richtliniendetails finden Sie [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
+Microsoft Azure ist eine autorisierte Cloudumgebung zum Ausführen von Oracle Database. Die Oracle Core Factor-Tabelle ist nicht anwendbar, wenn Sie Oracle-Datenbanken in der Cloud lizenzieren. Stattdessen können Sie, wenn Sie virtuelle Computer mit Hyperthreading-Technologie verwenden, die für Enterprise Edition-Datenbanken aktiviert ist, zwei vCPUs als gleichwertig zu einer Oracle Prozessor-Lizenz zählen, wenn Hyperthreading aktiviert ist (wie im Richtliniendokument angegeben). Einzelheiten zu den Richtlinien finden Sie unter [Licensing Oracle Software in the Cloud Computing Environment](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf) (Lizenzieren von Oracle-Software in der Cloud Computing-Umgebung).
 Oracle-Datenbanken erfordern grundsätzlich mehr Arbeitsspeicher und E/A. Aus diesem Grund werden für diese Workloads [virtuelle Computer mit optimierter Arbeitsspeichergröße](../../sizes-memory.md) empfohlen. Um die Workloads weiter zu optimieren, werden [vCPUs mit eingeschränkten Kerngrößen](../../constrained-vcpu.md) für Oracle Database-Workloads empfohlen, die viel Arbeitsspeicher, Speicher und E/A-Bandbreite beanspruchen, aber keine hohe Anzahl von Kernen erfordern.
 
 Wenn Oracle-Software und -Workloads aus einer lokalen Umgebung zu Microsoft Azure migriert werden, bietet Oracle Lizenzmobilität, wie sie unter [Oracle and Microsoft Azure: Frequently Asked Questions](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) beschrieben ist.

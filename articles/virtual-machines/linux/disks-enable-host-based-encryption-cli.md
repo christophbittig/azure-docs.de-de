@@ -2,18 +2,18 @@
 title: Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host – Azure CLI – verwaltete Datenträger
 description: Verwenden Sie Verschlüsselung auf dem Host, um die End-to-End-Verschlüsselung auf Ihren von Azure verwalteten Datenträgern zu aktivieren.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 10fe02b0deb505fcedc6fc3119150709b6613b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 752fef23b0acd2fe4722fb89720d6312699e49cf
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673021"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358343"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Verwenden der Azure CLI zum Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host
 
@@ -124,6 +124,20 @@ az vm show -n $vmName \
 --query [securityProfile.encryptionAtHost] -o tsv
 ```
 
+
+### <a name="update-a-vm-to-disable-encryption-at-host"></a>Aktualisieren einer VM zur Deaktivierung der Verschlüsselung auf dem Host 
+
+Sie müssen die Zuordnung Ihrer VM aufheben, damit Sie die Verschlüsselung auf dem Host deaktivieren können.
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Erstellen einer VM-Skalierungsgruppe mit aktivierter Verschlüsselung auf dem Host mit kundenseitig verwalteten Schlüsseln 
 
 Erstellen Sie eine VM-Skalierungsgruppe mit verwalteten Datenträgern mithilfe des Ressourcen-URIs der zuvor erstellten DiskEncryptionSet-Klasse, um einen Zwischenspeicher des Betriebssystems und Datenträger mit kundenseitig verwalteten Schlüsseln zu verschlüsseln. Temporäre Datenträger werden mit plattformseitig verwalteten Schlüsseln verschlüsselt. 
@@ -191,6 +205,19 @@ vmssName=yourVMName
 az vmss show -n $vmssName \
 -g $rgName \
 --query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>Aktualisieren einer VM-Skalierungsgruppe zur Deaktivierung der Verschlüsselung auf dem Host 
+
+Sie können die Verschlüsselung auf dem Host für Ihre VM-Skalierungsgruppe deaktivieren. Dies wirkt sich jedoch nur auf VMs aus, die nach dem Deaktivieren der Verschlüsselung auf dem Host erstellt wurden. Bei vorhandenen VMs müssen Sie die Zuordnung der VM aufheben, die [Verschlüsselung auf dem Host für diese jeweilige VM deaktivieren](#update-a-vm-to-disable-encryption-at-host) und dann die VM neu zuweisen.
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Ermitteln der unterstützten VM-Größen

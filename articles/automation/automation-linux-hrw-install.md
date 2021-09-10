@@ -3,15 +3,15 @@ title: Bereitstellen eines Hybrid Runbook Workers unter Linux in Azure Automatio
 description: In diesem Artikel erfahren Sie, wie Sie einen Azure Automation-Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Linux-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/06/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d60e4964ca9ce4de4b4d8e5545875f5c47f0f809
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1cd00a81717e95efe65402c2eb0912d2f43d89b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854394"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355695"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -45,11 +45,11 @@ Die Hybrid Runbook Worker-Funktion unterstützt die folgenden Distributionen. Be
 
 * Amazon Linux 2012.09 bis 2015.09
 * CentOS Linux 5, 6, 7 und 8
-* Oracle Linux 5, 6 und 7
+* Oracle Linux 6, 7 und 8
 * Red Hat Enterprise Linux Server 5, 6, 7 und 8
 * Debian GNU/Linux 6, 7 und 8
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS und 18.04 LTS
-* SUSE Linux Enterprise Server 12 und 15 (Von SUSE wurde keine Version mit der Nummer 13 oder 14 veröffentlicht.)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS, 18.04 und 20.04 LTS
+* SUSE Linux Enterprise Server 12, 15 und 15.1 (SUSE hat keine Versionen mit der Nummer 13 oder 14 veröffentlicht)
 
 > [!IMPORTANT]
 > Überprüfen Sie [hier](update-management/operating-system-requirements.md) die unterstützten Distributionen, bevor Sie das Updateverwaltungsfeature (abhängig von der Hybrid Runbook Worker-Systemrolle) aktivieren.
@@ -67,9 +67,11 @@ Die Mindestanforderungen für einen System- und Benutzer-Hybrid Runbook Worker u
 |Glibc |GNU C-Bibliothek| 2.5-12 |
 |Openssl| OpenSSL-Bibliotheken | 1.0 (TLS 1.1 und TLS 1.2 werden unterstützt)|
 |Curl | cURL-Webclient | 7.15.5|
-|Python-ctypes | Python 2.x oder Python 3.x erforderlich |
+|Python-ctypes | Fremdfunktionsbibliothek für Python| Python 2.x oder Python 3.x erforderlich |
 |PAM | Module für austauschbare Authentifizierung|
+
 | **Optionale Pakete** | **Beschreibung** | **Mindestversion**|
+|--------------------- | --------------------- | -------------------|
 | PowerShell Core | Um PowerShell-Runbooks auszuführen, muss PowerShell Core installiert sein. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/install/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell Core installieren. | 6.0.0 |
 
 ### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Hinzufügen eines Computers zu einer Hybrid Runbook Worker-Gruppe

@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 677158c69ef15508ff9fc00e83ff87678cf9f983
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d49adc0be837197126aed617900a4a7c25fb84c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443968"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339065"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- und Esv4-Serie
 
 Die Ev4- und Esv4-Serie werden auf den Prozessoren Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) in einer Hyperthreadingkonfiguration ausgeführt, eignen sich ideal für verschiedene arbeitsspeicherintensive Unternehmensanwendungen und unterstützen zu bis zu 504 GiB RAM. Sie verfügt über eine Turbo-Taktfrequenz von 3,4 GHz auf allen Kernen.
 
 > [!NOTE]
-> Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.md).
+> Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
 
 ## <a name="ev4-series"></a>Ev4-Serie
 
@@ -35,20 +35,22 @@ Speicher für Remotedatenträger wird separat zu virtuellen Computern abgerechne
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|
-| Standard_E2_v4  | 2 | 16   | Nur Remotespeicher | 4 | 2|1000  |
-| Standard_E4_v4  | 4 | 32  | Nur Remotespeicher | 8 | 2|2000  |
-| Standard_E8_v4  | 8 | 64 | Nur Remotespeicher | 16 | 4|4000 |
-| Standard_E16_v4 | 16 | 128 | Nur Remotespeicher | 32 | 8|8.000 |
+| Standard_E2_v4<sup>1</sup>  | 2 | 16   | Nur Remotespeicher | 4 | 2|5.000  |
+| Standard_E4_v4  | 4 | 32  | Nur Remotespeicher | 8 | 2|10000  |
+| Standard_E8_v4  | 8 | 64 | Nur Remotespeicher | 16 | 4|12500 |
+| Standard_E16_v4 | 16 | 128 | Nur Remotespeicher | 32 | 8|12500 |
 | Standard_E20_v4 | 20 | 160 | Nur Remotespeicher | 32 | 8|10000 |
 | Standard_E32_v4 | 32 | 256 | Nur Remotespeicher | 32 | 8|16000 |
 | Standard_E48_v4 | 48 | 384 | Nur Remotespeicher | 32 | 8|24.000 |
 | Standard_E64_v4 | 64 | 504 | Nur Remotespeicher | 32| 8|30.000 |
+
+<sup>1</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
 
 
 ## <a name="esv4-series"></a>Esv4-Serie
@@ -61,25 +63,28 @@ Die Größen der Esv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
-[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (*erfordert mindestens 4 vCPU*)<br>
+[Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt <br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
 <br>
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|---|
-| Standard_E2s_v4  | 2 | 16  | Nur Remotespeicher | 4 | 3200/48 | 2|1000  |
-| Standard_E4s_v4  | 4 | 32  | Nur Remotespeicher | 8 | 6400/96 | 2|2000  |
-| Standard_E8s_v4  | 8 | 64  | Nur Remotespeicher | 16 | 12800/192 | 4|4000 |
-| Standard_E16s_v4 | 16 | 128 | Nur Remotespeicher | 32 | 25600/384 | 8|8.000 |
-| Standard_E20s_v4 | 20 | 160 | Nur Remotespeicher | 32 | 32000/480  | 8|10000 |
-| Standard_E32s_v4 | 32 | 256 | Nur Remotespeicher | 32 | 51200/768  | 8|16000 |
-| Standard_E48s_v4 | 48 | 384 | Nur Remotespeicher | 32 | 76800/1152 | 8|24.000 |
-| Standard_E64s_v4 <sup>1</sup> | 64 | 504| Nur Remotespeicher | 32 | 80000/1200 | 8|30.000 |
-| Standard_E80is_v4 <sup>2</sup> | 80 | 504 | Nur Remotespeicher | 32 | 80.000/1.500 | 8|30.000 |
 
-<sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> |Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_E2s_v4<sup>4</sup>  | 2 | 16  | Nur Remotespeicher | 4 | 3200/48 | 4000/200 | 2|5.000  |
+| Standard_E4s_v4  | 4 | 32  | Nur Remotespeicher | 8 | 6400/96 | 8000/200 | 2|10000  |
+| Standard_E8s_v4  | 8 | 64  | Nur Remotespeicher | 16 | 12800/192 | 16000/400 | 4|12500 |
+| Standard_E16s_v4 | 16 | 128 | Nur Remotespeicher | 32 | 25600/384 | 32000/800 | 8|12500 |
+| Standard_E20s_v4 | 20 | 160 | Nur Remotespeicher | 32 | 32000/480  | 40000/1000 | 8|10000 |
+| Standard_E32s_v4 | 32 | 256 | Nur Remotespeicher | 32 | 51200/768  | 64000/1600 | 8|16000 |
+| Standard_E48s_v4 | 48 | 384 | Nur Remotespeicher | 32 | 76800/1152 | 80.000/2.000 | 8|24.000 |
+| Standard_E64s_v4 <sup>2</sup> | 64 | 504| Nur Remotespeicher | 32 | 80000/1200 | 80.000/2.000 | 8|30.000 |
+| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | Nur Remotespeicher | 32 | 80000/1200 | 80.000/2.000 | 8|30.000 |
 
-<sup>2</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+<sup>1</sup> VMs der Esv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.<br>
+<sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).<br>
+<sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.<br>
+<sup>4</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
+
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

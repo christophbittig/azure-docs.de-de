@@ -1,18 +1,18 @@
 ---
 title: Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
 description: Erfahren Sie, wie Sie Apps mit dem Spring Boot-Aktor verwalten und überwachen.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bfe5dc7c4f6fc40154a6fc9bc3a087873ba9eaef
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d9c24868fa847ef3b8be13ca0d7775e24b3116cc
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356177"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Verwalten und Überwachen einer App mit dem Azure Spring Boot-Aktor
 
@@ -21,10 +21,12 @@ ms.locfileid: "108129241"
 Nach der Bereitstellung einer neuen Binärdatei für Ihre App sollten Sie die Funktionalität prüfen und Informationen zu Ihrer ausgeführten Anwendung abrufen. In diesem Artikel wird erläutert, wie Sie über einen von Azure Spring Cloud bereitgestellten Testendpunkt auf die API zugreifen und die produktionsreifen Features für Ihre App zur Verfügung stellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Artikel wird vorausgesetzt, dass Sie über eine Spring Boot 2.x-Anwendung verfügen, die erfolgreich bereitgestellt und im Azure Spring Cloud-Dienst gestartet werden kann.  Weitere Informationen finden Sie unter [Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal](./quickstart.md).
 
 ## <a name="verify-app-through-test-endpoint"></a>Überprüfen der App über einen Testendpunkt
-1. Öffnen Sie das **Anwendungsdashboard**, und klicken Sie auf Ihre App, um zur App-Übersichtsseite zu gelangen.
+
+1. Wechseln Sie zum **Anwendungsdashboard**, und wählen Sie Ihre App aus, um zur App-Übersichtsseite zu gelangen.
 
 1. Im Bereich **Übersicht** sollte der **Testendpunkt** angezeigt werden.  Greifen Sie über die Befehlszeile oder einen Browser auf den Endpunkt zu, und beobachten Sie die API-Antwort.
 
@@ -50,24 +52,27 @@ Fügen Sie die Starter-Abhängigkeit hinzu, um den Aktor zu einem auf Maven basi
 Kompilieren Sie die Binärdatei, und stellen Sie sie für Ihre App bereit.
 
 ## <a name="enable-production-ready-features"></a>Aktivieren von produktionsreifen Features
+
 Mit Aktorendpunkten können Sie Ihre Anwendung überwachen und mit ihr interagieren. Die Spring Boot-Anwendung stellt standardmäßig die Endpunkte `health` und `info` zur Verfügung, um arbiträre Anwendungs- und Integritätsinformationen anzuzeigen.
 
 Sie müssen auch die Endpunkte `env` und `configgrops` aktivieren, um die Konfiguration und die konfigurierbare Umgebung zu beobachten.
 
-1. Öffnen Sie den Bereich **Übersicht** der App, klicken Sie im Einstellungsmenü auf **Konfiguration**, und öffnen Sie dann die Konfigurationsseite **Umgebungsvariablen**.
+1. Öffnen Sie den Bereich **Übersicht** der App, wählen Sie im Einstellungsmenü die Option **Konfiguration** aus, und öffnen Sie dann die Konfigurationsseite **Umgebungsvariablen**.
 1. Fügen Sie die folgenden Eigenschaften im Format „key:value“ hinzu. Diese Umgebung öffnet die Spring-Aktorendpunkte „env“, „health“ und „info“.
 
-   ```
+   ```properties
    management.endpoints.web.exposure.include: env,health,info
    ```
-1. Klicken Sie auf **Speichern**. Daraufhin wird Ihre Anwendung automatisch neu gestartet und die neuen Umgebungsvariablen werden geladen.
+
+1. Klicken Sie auf die Schaltfläche **Speichern**. Daraufhin wird Ihre Anwendung automatisch neu gestartet, und die neuen Umgebungsvariablen werden geladen.
 
 Sie können nun zur App-Übersicht zurückkehren und warten, bis der Bereitstellungsstatus in „Erfolgreich“ geändert wird.  Es werden mehr als nur eine Instanz ausgeführt.
 
-> [!Note] 
+> [!Note]
 > Sobald Sie die App öffentlich freigeben, werden diese Aktorendpunkte ebenfalls öffentlich zugänglich. Sie können alle Endpunkte ausblenden, indem Sie die Umgebungsvariable `management.endpoints.web.exposure.include` löschen und `management.endpoints.web.exposure.exclude=*` festlegen.
 
 ## <a name="view-the-actuator-endpoint-to-view-application-information"></a>Anzeigen des Aktorendpunkts zum Anzeigen von Anwendungsinformationen
+
 1. Sie können nun auf die URL `"<test-endpoint>/actuator/"` zugreifen, um alle Endpunkte anzuzeigen, die vom Spring Boot-Aktor zur Verfügung gestellt werden.
 1. Greifen Sie auf die URL `"<test-endpoint>/actuator/env"` zu. Dann werden die aktiven Profile angezeigt, die von der App verwendet werden, und alle Umgebungsvariablen werden geladen.
 1. Wenn Sie eine spezifische Umgebung suchen möchten, können Sie auf die URL `"<test-endpoint>/actuator/env/{toMatch}"` zugreifen, um sie anzuzeigen.

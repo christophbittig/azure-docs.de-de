@@ -157,7 +157,7 @@ Wenn Ihre Standardzahlungsmethode die Überweisung ist, überprüfen Sie Ihre Re
 > - [Norwegen](/legal/pay/norway)
 > - [Oman](/legal/pay/oman)
 > - [Pakistan](/legal/pay/pakistan)
-> - [Palästinensische Autonomiegebiete](/legal/pay/palestinian-authority)
+> - Palästinensische Behörde
 > - [Panama](/legal/pay/panama)
 > - [Paraguay](/legal/pay/paraguay)
 > - [Peru](/legal/pay/peru)

@@ -1,5 +1,5 @@
 ---
-title: 'Leistungsbaselines: Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL'
+title: 'Migrieren lokaler MySQL-Instanzen zu Azure Database for MySQL: Leistungsbaselines'
 description: Das Verständnis der vorhandenen MySQL-Workload ist eine der besten Investitionen in eine erfolgreiche Migration.
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9948eef759ff44468c8a9b70e790c8376b40ff16
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 2077ef62ddabf7910d5a634c07262c9d29905cf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082769"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084964"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-performance-baselines"></a>Leistungsbaselines: Leitfaden zur Migration einer lokalen MySQL-Instanz zu Azure Database for MySQL
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-performance-baselines"></a>Migrieren lokaler MySQL-Instanzen zu Azure Database for MySQL: Leistungsbaselines
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +62,7 @@ Eine Workload wird von standardmäßigen MySQL-Serverkonfigurationen möglicherw
 
   - **server\_id**: Diese Einstellung ist ein eindeutiger Wert für Identitätsserver in Replikationstopologien.
 
-  - **expire\_logs\_days**: Diese Einstellung steuert, an wie vielen Tagen die binären Protokolle automatisch gelöscht werden.
+  - **expire\_logs\_days**: Diese Einstellung steuert, nach wie vielen Tagen die binären Protokolle automatisch gelöscht werden.
 
   - **skip\_name\_resolve**: Benutzer zum Ausführen der Clienthostnamenauflösung. Wenn das DNS langsam ist, ist die Verbindung langsam. Beim Deaktivieren der Namensauflösung dürfen die GRANT-Anweisungen nur IP-Adressen verwenden. Alle zuvor ausgeführten GRANT-Anweisungen müssen erneut ausgeführt werden, um die IP-Adresse zu verwenden.
 
@@ -96,6 +98,8 @@ Für jedes entsprechende Datenmigrationstool und jeden Pfad müssen die MySQL-Se
 WWI hat die Workload der Konferenzdatenbank überprüft und festgestellt, dass die Last sehr gering ist. Obwohl ein Server der Basic-Ebene für das Unternehmen funktionieren würde, wollte es später keine Arbeit mit der Migration einer weiteren Ebene haben. Der bereitgestellte Server wird irgendwann die anderen MySQL-Datenworkloads hosten, und daher wählte WWI die Ebene `General Performance` aus.
 
 Bei der Überprüfung der MySQL-Datenbank wird der MySQL 5.5-Server mit den Standardserverparametern ausgeführt, die während der Erstinstallation festgelegt werden.
+
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Datenmigration](./08-data-migration.md)

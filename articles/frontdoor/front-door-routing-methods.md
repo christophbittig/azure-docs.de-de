@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c692c814bf3ae71b34f1c31c8ab29a4cda968f1f
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449147"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203811"
 ---
 # <a name="front-door-routing-methods"></a>Datenverkehrsrouting in Azure Front Door Service
 
@@ -26,7 +26,7 @@ Vier Methoden für das Datenverkehrsrouting sind in Front Door verfügbar:
 
 * **[Wartezeit](#latency):** Mit dem latenzbasierten Routing wird sichergestellt, dass Anforderungen an diejenigen Back-Ends gesendet werden, die innerhalb eines akzeptablen Empfindlichkeitsbereichs die niedrigste Latenz aufweisen. Benutzeranforderungen werden auf diese Weise unter Berücksichtigung der Netzwerklatenz an die nächstgelegenen Back-Ends gesendet.
 * **[Priorität:](#priority)** Sie können Ihren Back-Ends Prioritäten zuweisen, wenn Sie ein primäres Back-End konfigurieren möchten, das den gesamten Datenverkehr verarbeitet. Beim sekundären Back-End kann es sich um eine Sicherung handeln, falls das primäre Back-End nicht verfügbar ist.
-* **[Gewichtet:](#weighted)** Sie können Ihren Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr über eine Sammlung von Back-Ends verteilen möchten. Diese Option gibt an, ob Sie Datenverkehr gleichmäßig oder gemäß den Gewichtungskoeffizienten verteilen möchten.
+* **[Gewichtung](#weighted):** Sie können Ihren Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr gleichmäßig oder gemäß Gewichtungskoeffizienten auf eine Gruppe von Back-Ends verteilen möchten. Der Datenverkehr wird gemäß den Gewichtungen verteilt, wenn die Latenzen der Back-Ends innerhalb des akzeptablen Latenzempfindlichkeitsbereichs im Back-End-Pool liegen.
 * **[Sitzungsaffinität](#affinity):** Sie können die Sitzungsaffinität für Ihre Front-End-Hosts oder -Domänen konfigurieren, um sicherzustellen, dass Anforderungen desselben Endbenutzers an dasselbe Back-End gesendet werden.
 
 Alle Azure Front Door Service-Konfigurationen schließen die Überwachung der Back-End-Integrität und ein automatisiertes, sofortiges und globales Failover ein. Weitere Informationen finden Sie unter [Überwachen von Azure Front Door Service-Back-Ends](front-door-health-probes.md). Front Door kann basierend auf einer einzelnen Routingmethode ausgeführt werden. Abhängig von den Anforderungen Ihrer Anwendung können Sie jedoch auch mehrere Routingmethoden kombinieren, um eine optimale Routingtopologie zu erstellen.
@@ -44,7 +44,7 @@ Im Folgenden wird der allgemeine Ablauf zur Ermittlung der Back-Ends dargestellt
 | Zunächst werden alle aktivierten Back-Ends ausgewählt, die bei einem Integritätstest den Statuscode „200 OK“ zurückgeben und daher als fehlerfrei beurteilt werden. Es sind z. B. sechs Back-Ends A, B, C, D, E und F vorhanden. C ist fehlerhaft und E deaktiviert. Die Liste der verfügbaren Back-Ends umfasst damit A, B, D und F.  | Als Nächstes werden von den verfügbaren Back-Ends diejenigen mit der höchsten Priorität ausgewählt. Back-End A, B und D ist Priorität 1 und Back-End F Priorität 2 zugeordnet. Als Back-Ends werden dann A, B und D ausgewählt.| Alle Back-Ends innerhalb des Latenzbereichs (niedrigste Latenz und Latenzempfindlichkeit werden in ms angegeben) werden ausgewählt. Wenn Backend A 15 ms, B 30 ms und D 60 ms von der Front-Door-Umgebung entfernt ist, in der die Anforderung eingegangen ist, und die Latenzempfindlichkeit 30 ms beträgt, dann besteht der Pool mit der geringsten Latenz aus Backend A und B, da D mehr als 30 ms vom nächstgelegenen Backend A entfernt ist. | Abschließend führt Azure Front Door Service für den Datenverkehr der zuletzt ausgewählten Back-Ends einen Roundrobin entsprechend der festgelegten Gewichtungen durch. Angenommen, Back-End A wird eine Gewichtung von 5 und Back-End B eine Gewichtung von 8 zugeordnet. Der Datenverkehr wird dann im Verhältnis 5:8 auf die Back-Ends A und B aufgeteilt. |
 
 >[!NOTE]
-> Standardmäßig wird für die Eigenschaft der Latenzempfindlichkeit 0 ms festgelegt. Dadurch wird die Anforderung immer an das am schnellsten verfügbare Back-End weitergeleitet.
+> Standardmäßig ist die Eigenschaft der Latenzempfindlichkeit auf 0 ms festgelegt, d. h., die Anforderung wird immer an das schnellste verfügbare Back-End weitergeleitet, und Gewichtungen für die Back-Ends werden nur wirksam, wenn zwei Back-Ends dieselbe Netzwerklatenz aufweisen.
 
 ## <a name="priority-based-traffic-routing"></a><a name = "priority"></a>Prioritätsbasiertes Datenverkehrsrouting
 

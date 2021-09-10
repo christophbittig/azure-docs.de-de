@@ -11,30 +11,32 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2021
+ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: d8f7fff97a92a98fbcd0198ce601c88df914d9e2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c231840b6255ef693353d83323710cb3243efaef
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471482"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214297"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Threat Intelligence-Integration in Azure Sentinel
 
-> [!IMPORTANT]
-> Die Threat Intelligence-Datenconnectors in Azure Sentinel befinden sich aktuell in der Public Preview-Phase.
-> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure Sentinel bietet Ihnen verschiedene Möglichkeiten zur [Verwendung von Threat Intelligence-Feeds](work-with-threat-indicators.md), damit Ihre Sicherheitsanalysten besser in der Lage sind, bekannte Bedrohungen zu erkennen und zu priorisieren. 
 
-Azure Sentinel bietet Ihnen verschiedene Möglichkeiten zur [Verwendung von Threat Intelligence-Feeds](import-threat-intelligence.md), damit Ihre Sicherheitsanalysten besser in der Lage sind, bekannte Bedrohungen zu erkennen und zu priorisieren. 
+Sie können eines von vielen verfügbaren Produkten der integrierten [Threat Intelligence Platform (TIP)](connect-threat-intelligence-tip.md) verwenden, eine [Verbindung mit TAXII-Servern herstellen](connect-threat-intelligence-taxii.md), um von STIX-kompatiblen Threat Intelligence-Quellen zu profitieren, sowie benutzerdefinierte Lösungen nutzen, die direkt mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](/graph/api/resources/tiindicator) kommunizieren können. 
 
-Sie können eines von vielen verfügbaren Produkten der integrierten Threat Intelligence Platform (TIP) verwenden, eine Verbindung mit TAXII-Servern herstellen, um von STIX-kompatiblen Threat Intelligence-Quellen zu profitieren, sowie benutzerdefinierte Lösungen nutzen, die direkt mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](/graph/api/resources/tiindicator) kommunizieren können.
+Sie können auch über Playbooks eine Verbindung mit Threat Intelligence-Quellen herstellen, um Incidents mit TI-Informationen anzureichern, die direkte Untersuchungs- und Antwortaktionen unterstützen können.
 
-Sie können auch über Playbooks eine Verbindung mit Threat Intelligence-Quellen herstellen, um Incidents mit TI-Informationen anzureichern, die direkte Aktionen für Untersuchung und Reaktion unterstützen können.
+> [!TIP]
+> Wenn Sie über mehrere Arbeitsbereiche im selben Mandanten verfügen, z. B. für [Managed Service Providers (MSSPs)](mssp-protect-intellectual-property.md), kann es kostengünstiger sein, Bedrohungsindikatoren nur mit dem zentralisierten Arbeitsbereich zu verbinden.
+>
+> Wenn Sie in jeden separaten Arbeitsbereich denselben Satz von Bedrohungsindikatoren importiert haben, können Sie arbeitsbereichsübergreifende Abfragen ausführen, um Bedrohungsindikatoren in Ihren Arbeitsbereichen zu aggregieren. Korrelieren Sie sie innerhalb Ihrer MSSP-Incidenterkennung, -untersuchung und -suche.
+>
 
 ## <a name="taxii-threat-intelligence-feeds"></a>TAXII-Threat Intelligence-Feeds
 
-Verwenden Sie zum Herstellen einer Verbindung mit TAXII-Threat Intelligence-Feeds den Datenconnector [Threat Intelligence – TAXII](connect-threat-intelligence.md#connect-azure-sentinel-to-taxii-servers) zusammen mit den von den unten verlinkten Anbietern bereitgestellten Daten. Möglicherweise müssen Sie sich direkt an den Anbieter wenden, um die erforderlichen Daten für die Verwendung mit dem Connector zu erhalten.
+Um eine Verbindung mit TAXII Threat Intelligence-Feeds herzustellen, befolgen Sie die Anweisungen zum [Verbinden von Azure Sentinel mit STIX/TAXII-Threat Intelligence-Feeds](connect-threat-intelligence-taxii.md), zusammen mit den Daten, die von den einzelnen unten verknüpften Anbietern bereitgestellt werden. Möglicherweise müssen Sie sich direkt an den Anbieter wenden, um die erforderlichen Daten für die Verwendung mit dem Connector zu erhalten.
 
 ### <a name="anomali-limo"></a>Anomali Limo
 
@@ -69,7 +71,7 @@ Verwenden Sie zum Herstellen einer Verbindung mit TAXII-Threat Intelligence-Feed
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>Produkte der integrierten Threat Intelligence Platform
 
-Um eine Verbindung mit TIP-Feeds (Threat Intelligence Platform) herzustellen, befolgen Sie die Anweisungen zum [Herstellen einer Verbindung von Threat Intelligence Platform-Feeds](connect-threat-intelligence.md#connect-azure-sentinel-to-your-threat-intelligence-platform) zu Azure Sentinel. Im zweiten Teil dieser Anweisungen müssen Sie Informationen in Ihre TIP-Lösung eingeben. Unter den folgenden Links finden Sie weitere Informationen.
+Um eine Verbindung mit TIP-Feeds (Threat Intelligence Platform) herzustellen, befolgen Sie die Anweisungen zum [Verbinden Ihrer Threat Intelligence Platform mit Azure Sentinel](connect-threat-intelligence-tip.md). Im zweiten Teil dieser Anweisungen müssen Sie Informationen in Ihre TIP-Lösung eingeben. Unter den folgenden Links finden Sie weitere Informationen.
 
 ### <a name="agari-phishing-defense-and-brand-protection"></a>Agari Phishing Defense und Brand Protection
 
@@ -85,7 +87,7 @@ Um eine Verbindung mit TIP-Feeds (Threat Intelligence Platform) herzustellen, be
 
 ### <a name="eclecticiq-platform"></a>EclecticIQ Platform
 
-- Erfahren Sie mehr über [EclecticIQ Platform](https://www.eclecticiq.com/platform/).
+- EclecticIQ Platform kann in Azure Sentinel integriert werden, um Bedrohungserkennung, Bedrohungssuche und die Reaktion auf Bedrohungen zu verbessern. Erfahren Sie mehr über die [Vorteile und Anwendungsfälle](https://www.eclecticiq.com/resources/azure-sentinel-and-eclecticiq-intelligence-center) dieser bidirektionalen Integration.
 
 ### <a name="groupib-threat-intelligence-and-attribution"></a>GroupIB Threat Intelligence and Attribution
 
@@ -110,7 +112,7 @@ Um eine Verbindung mit TIP-Feeds (Threat Intelligence Platform) herzustellen, be
 
 ### <a name="threatquotient-threat-intelligence-platform"></a>ThreatQuotient Threat Intelligence Platform
 
-- Unter [Microsoft Sentinel-Connector für ThreatQ-Integration](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=DetailsAndSupport) finden Sie Supportinformationen und Anweisungen zum Verbinden von [ThreatQuotient TIP](https://www.threatq.com/) mit Azure Sentinel.
+- Unter [Microsoft Sentinel-Connector für ThreatQ-Integration](https://azuremarketplace.microsoft.com/marketplace/apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?tab=overview) finden Sie Supportinformationen und Anweisungen zum Verbinden von [ThreatQuotient TIP](https://www.threatq.com/) mit Azure Sentinel.
 
 ## <a name="incident-enrichment-sources"></a>Quellen für die Incidentanreicherung
 
@@ -128,7 +130,7 @@ Neben dem Import von Bedrohungsindikatoren können Threat-Intelligence-Feeds auc
 
 ### <a name="reversinglabs-titaniumcloud"></a>ReversingLabs TitaniumCloud
 
-- Suchen und aktivieren Sie Playbooks zur Incidentanreicherung für [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) im [GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information) von Azure Sentinel.
+- Suchen und aktivieren Sie Playbooks zur Incidentanreicherung für [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) im [GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/ReversingLabs/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information) von Azure Sentinel.
 - Weitere Informationen finden Sie in der [Dokumentation zum ReversingLabs Intelligence Logic App-Connector](/connectors/reversinglabsintelligence/).
 
 ### <a name="riskiq-passive-total"></a>RiskIQ Passive Total
@@ -146,5 +148,5 @@ Neben dem Import von Bedrohungsindikatoren können Threat-Intelligence-Feeds auc
 
 In diesem Artikel haben Sie gelernt, wie Sie Ihren Threat Intelligence-Anbieter mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln.
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).
