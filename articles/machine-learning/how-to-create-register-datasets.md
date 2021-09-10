@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/31/2020
-ms.openlocfilehash: 9bfe0ad6e94ea40ad5edc97e8b3259bb817df03f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 07/06/2021
+ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349896"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -38,7 +38,7 @@ Azure Machine Learning-Datasets ermöglichen Folgendes:
 
 Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
-* Ein Azure-Abonnement. Wenn Sie keines haben, erstellen Sie ein kostenloses Konto, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Wenn Sie keines haben, erstellen Sie ein kostenloses Konto, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -48,10 +48,13 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
     **OR**
 
-    * Arbeiten Sie an Ihrem eigenen Jupyter-Notebook, und installieren Sie selbst das SDK mit [diesen Anweisungen](/python/api/overview/azure/ml/install).
+    * Arbeiten Sie an Ihrem eigenen Jupyter-Notebook, und [installieren Sie das SDK selbst](/python/api/overview/azure/ml/install).
 
 > [!NOTE]
-> Einige Datasetklassen sind vom Paket [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) abhängig, das nur mit 64-Bit Python kompatibel ist. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux (7, 8), Ubuntu (14.04, 16.04, 18.04), Fedora (27, 28), Debian (8, 9) und CentOS (7). Wenn Sie nicht unterstützte Distributionen verwenden, befolgen Sie [diese Anleitung](/dotnet/core/install/linux), um .NET Core 2.1 zu installieren und fortzufahren. 
+> Einige Datasetklassen sind vom Paket [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) abhängig, das nur mit 64-Bit Python kompatibel ist. Wenn Sie unter __Linux__ entwickeln, basieren diese Klassen auf .NET Core 2.1 und werden nur von bestimmten Distributionen unterstützt. Weitere Informationen zu den unterstützten Distributionen finden Sie in der .NET Core 2.1-Spalte im Artikel [Installieren von .NET unter Linux](/dotnet/core/install/linux).
+
+> [!IMPORTANT]
+> Das Paket funktioniert zwar möglicherweise in älteren Versionen von Linux-Distributionen, sie sollten jedoch keine Distribution verwenden, die nicht vom grundlegenden Support unterstützt wird. Distributionen, die nicht vom grundlegenden Support unterstützt werden, können Sicherheitsrisiken aufweisen, da sie nicht die neuesten Updates erhalten. Sie sollten die neueste unterstützte Version Ihrer Distribution verwenden, die mit  kompatibel ist.
 
 ## <a name="compute-size-guidance"></a>Leitfaden für die Computegröße
 
@@ -85,7 +88,7 @@ Erstellen Sie ein TabularDataset mit dem [Python SDK](#create-a-tabulardataset) 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Zugreifen auf Datasets in einem virtuellen Netzwerk
 
-Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie das Dataset so konfigurieren, dass die Überprüfung übersprungen wird. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in einem virtuellen Netzwerk finden Sie unter [Sichern eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets).
+Wenn sich Ihr Arbeitsbereich in einem virtuellen Netzwerk befindet, müssen Sie das Dataset so konfigurieren, dass die Überprüfung übersprungen wird. Weitere Informationen zur Verwendung von Datenspeichern und Datasets in einem virtuellen Netzwerk finden Sie unter [Sichern eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken](how-to-secure-workspace-vnet.md#datastores-and-datasets).
 
 <a name="datasets-sdk"></a>
 
@@ -111,7 +114,7 @@ So erstellen Sie Datasets auf der Grundlage eines Datenspeichers mit dem Python�
 
 Verwenden Sie die Methode [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) für die Klasse `FileDatasetFactory`, um Dateien in einem beliebigen Format zu laden und ein nicht registriertes FileDataset-Objekt zu erstellen. 
 
-Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Informieren Sie sich über die [Verwendung von Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets).
+Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Informieren Sie sich über die [Verwendung von Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#datastores-and-datasets).
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -132,11 +135,11 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
-Verwenden Sie die Methode [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Zum Einlesen von Dateien im PARQUET-Format verwenden Sie die [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)-Methode. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
+Verwenden Sie die Methode [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Zum Einlesen von Dateien im PARQUET-Format verwenden Sie die [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-)-Methode. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
 
-Informationen zu den unterstützten Dateiformaten sowie zur Syntax und den Entwurfsmustern finden Sie in der [Referenzdokumentation von TabularDatasetFactory](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory). 
+Informationen zu den unterstützten Dateiformaten sowie zur Syntax und den Entwurfsmustern finden Sie in der [Referenzdokumentation von TabularDatasetFactory](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory), z. B. zur [Unterstützung mehrerer Zeilen](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--). 
 
-Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_delimited_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Erfahren Sie mehr über die Verwendung von [Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets).
+Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_delimited_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Erfahren Sie mehr über die Verwendung von [Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#datastores-and-datasets).
 
 Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der gewünschte Datenspeicher anhand des Namens abgerufen. Anschließend werden die Speicherorte von Datenspeicher und Datei dem `path`-Parameter übergeben, um ein neues TabularDataset `weather_ds` zu erstellen.
 
@@ -280,9 +283,6 @@ new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'
 partition_keys = new_dataset.partition_keys # ['country']
 ```
 
->[!IMPORTANT]
-> TabularDataset-Partitionen können auch in Azure Machine Learning-Pipelines als Eingabe für „ParallelRunStep“ in vielen Modellanwendungen angewendet werden. Ein Beispiel finden Sie in der [Dokumentation zum Accelerator für viele Modelle](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb).
-
 ## <a name="explore-data"></a>Durchsuchen von Daten
 
 Wenn Sie mit dem Data Wrangling fertig sind, können Sie Ihr Dataset [registrieren](#register-datasets) und anschließend zur Datenerkundung vor dem Modelltraining in Ihr Notebook laden.
@@ -362,7 +362,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Erstellen von Datasets mithilfe des Azure Resource Managers
 
-Unter [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) werden viele Vorlagen zur Verfügung gestellt, die zum Erstellen von Datasets verwendet werden können.
+Unter [https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) werden viele Vorlagen zur Verfügung gestellt, die zum Erstellen von Datasets verwendet werden können.
 
 Informationen zur Verwendung dieser Vorlagen finden Sie unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).
 

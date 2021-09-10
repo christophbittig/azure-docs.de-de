@@ -3,19 +3,19 @@ title: 'Übersicht über Speech Studio: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Speech Studio besteht aus einer Reihe von benutzeroberflächenbasierten Tools zum Erstellen und Integrieren von Features aus dem Azure Speech-Dienst in Ihre Anwendungen.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.author: trbye
-ms.openlocfilehash: ddf7b85f5775ee25a260f19ae81e43afff95facb
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.author: lajanuar
+ms.openlocfilehash: 6042a129308b7be478b2bd1a45379ad56f62aca6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356192"
 ---
 # <a name="what-is-speech-studio"></a>Was ist Speech Studio?
 
@@ -23,16 +23,12 @@ ms.locfileid: "111902335"
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
-Sie benötigen ein Azure-Konto und ein Abonnement für die Speech-Dienste, bevor Sie [Speech Studio](https://speech.microsoft.com) verwenden zu können. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free).
+Sie benötigen ein Azure-Konto und müssen eine Speech-Dienstressource hinzufügen, bevor Sie [Speech Studio](https://speech.microsoft.com) verwenden können. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](overview.md#try-the-speech-service-for-free).
 
-> [!NOTE]
-> Stellen Sie sicher, dass Sie ein Standard-Abonnement (S0) erstellen. Free-Abonnements (F0) werden nicht unterstützt.
+Nachdem Sie ein Azure-Konto und eine Speech-Dienstressource erstellt haben:
 
-Nachdem Sie ein Azure-Konto und ein Speech-Dienstabonnement erstellt haben:
-
-1. Melden Sie sich in [Speech Studio](https://speech.microsoft.com) an.
-1. Wählen Sie das Abonnement aus, das Sie bearbeiten möchten, und erstellen Sie ein Speech-Projekt.
-1. Wenn Sie Ihr Abonnement ändern möchten, klicken Sie im oberen Menü auf die Zahnradschaltfläche.
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Speech Studio](https://speech.microsoft.com) an.
+1. Wählen Sie die Speech-Dienstressource aus, die Sie für den Einstieg benötigen. (Sie können die Ressourcen jederzeit im obersten Menü in „Einstellungen“ ändern.)
 
 ## <a name="speech-studio-features"></a>Speech Studio-Features
 

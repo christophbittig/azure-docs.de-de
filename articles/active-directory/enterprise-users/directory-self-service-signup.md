@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/19/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1869c48e38bdaf56fe4bd428a7bcbd6d316b85
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 58f02ff10ab2eaee7460942e1ba98df1f9771bfc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535699"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426002"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 
@@ -61,10 +61,10 @@ Ein Administrator kann diese Funktionen mit den folgenden Parametern des Azure A
 
 Wenn die oben genannten Bedingungen erfüllt sind, wird ein Mitgliedsbenutzer im Basismandanten und ein B2B-Gastbenutzer im einladenden Mandanten erstellt.
 
-Weitere Informationen zu Testregistrierungen für Flow und PowerApps finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Testregistrierungen für Flow und Power Apps finden Sie in den folgenden Artikeln:
 
 * [Wie kann ich verhindern, dass vorhandene Benutzer mit der Nutzung von Power BI beginnen?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [Flow in Ihrer Organisation – häufig gestellte Fragen](/flow/organization-q-and-a)
+* [Flow in Ihrer Organisation – häufig gestellte Fragen](/power-automate/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Wie funktionieren diese Steuerungsmöglichkeiten zusammen?
 Diese beiden Parameter können zusammen verwendet werden, um eine präzisere Steuerung der Self-Service-Registrierung zu erreichen. Der folgende Befehl erlaubt Benutzern beispielsweise die Self-Service-Registrierung, jedoch nur, wenn die Benutzer bereits über ein Konto in Azure AD verfügen (d. h. Benutzern, für die zuerst ein über E-Mail verifiziertes Konto erstellt werden müsste, ist die Self-Service-Registrierung nicht erlaubt):

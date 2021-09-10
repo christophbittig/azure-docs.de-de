@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 025ab1ddd9a7b14ac75df762c54fe48e4f665e29
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 790d363a3bd0e961b184cc2511c39833f0eac3d7
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970135"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356528"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Hinzufügen eines Updates zu Device Update for IoT Hub
 Hier erfahren Sie, wie Sie in Device Update for IoT Hub ein neues Update hinzufügen.
@@ -62,7 +62,7 @@ Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Impo
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Als Kurzreferenz: Hier sind einige Beispielwerte für die vorstehenden Parameter. Sie können sich auch das vollständige [Importmanifestschema](import-schema.md) ansehen, um mehr Details zu erhalten.
+    Die folgende Tabelle ist eine Kurzreferenz zum Auffüllen der oben genannten Parameter. Sie können sich auch das vollständige [Importmanifestschema](import-schema.md) ansehen, um weitere Informationen zu erhalten.
 
     | Parameter | BESCHREIBUNG |
     | --------- | ----------- |
@@ -72,13 +72,13 @@ Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Impo
     | updateName | Hierbei handelt es sich um einen Bezeichner für eine Klasse von Updates. Die Klasse kann etwas von Ihnen Gewähltes sein. Oft ist es ein Geräte- oder Modellname.
     | updateVersion | Hierbei handelt es sich um die Versionsnummer, die dieses Update von anderen mit denselben Anbietern und Namen unterscheidet. Der Parameter entspricht nicht der Version einer einzelnen Softwarekomponente auf dem Gerät (kann jedoch ausgewählt werden).
     | updateType | <ul><li>`microsoft/swupdate:1` für Imageupdate angeben</li><li>`microsoft/apt:1` für Paketupdate angeben</li></ul>
-    | installedCriteria | <ul><li>Wert von „SWVersion“ für Updatetyp `microsoft/swupdate:1` angeben</li><li>Geben Sie **Name-Version** an, wobei _Name_ der Name des APT-Manifests und _Version_ die Version des APT-Manifests ist. Zum Beispiel: contoso-iot-edge-1.0.0.0.
-    | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer
+    | installedCriteria | Wird während der Bereitstellung verwendet, um die bereits auf dem Gerät installierte Version mit der Version des Updates zu vergleichen. Wenn das Update auf dem Gerät bereitgestellt wird, wird ein Fehler zurückgegeben, wenn der installedCriteria-Wert nicht mit der Version auf dem Gerät übereinstimmt.<ul><li>Geben Sie für den `microsoft/swupdate:1`-Updatetyp den Wert von SWVersion an. </li><li>Geben Sie für den `microsoft/apt:1`-Updatetyp **Name-Version** an, wobei _Name_ der Name des APT-Manifests und _Version_ die Version des APT-Manifests ist. Zum Beispiel: contoso-iot-edge-1.0.0.0.
+    | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer.
 
 
 ## <a name="review-the-generated-import-manifest"></a>Überprüfen des generierten Importmanifests
 
-Beispiel:
+Ein Beispiel einer Manifestausgabe sehen Sie unten. Wenn Sie Fragen zu einem der Elemente haben, sehen Sie sich das vollständige [Importmanifestschema](import-schema.md) an. 
 ```json
 {
   "updateId": {
@@ -122,7 +122,7 @@ Beispiel:
 ## <a name="import-an-update"></a>Importieren eines Updates
 
 > [!NOTE]
-> Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](/rest/api/deviceupdate/updates) verwenden, um ein Update zu importieren. 
+> Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können stattdessen auch das [Geräteupdate für IoT Hub-APIs](#if-youre-importing-via-apis-instead) verwenden, um ein Update zu importieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update.
 
@@ -138,7 +138,7 @@ Beispiel:
 
    :::image type="content" source="media/import-update/import-new-update-2.png" alt-text="Neues Update importieren" lightbox="media/import-update/import-new-update-2.png":::
 
-5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Importmanifest aus, das Sie zuvor mithilfe des PowerShell-Cmdlets erstellt haben. Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie Ihre Updatedatei(en) aus.
+5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Importmanifest aus, das Sie zuvor mithilfe des PowerShell-Cmdlets erstellt haben. Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie dieselben Updatedatei(en) aus, die Sie beim Erstellen des Importmanifests eingeschlossen haben.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Updatedateien auswählen" lightbox="media/import-update/select-update-files.png":::
 
@@ -161,6 +161,16 @@ Beispiel:
 10. Wenn in der Spalte „Status“ angezeigt wird, dass der Import erfolgreich war, wählen Sie den Header „Ready to Deploy“ (Bereit für die Bereitstellung) aus. Ihr importiertes Update sollte jetzt in der Liste angezeigt werden.
 
    :::image type="content" source="media/import-update/update-ready.png" alt-text="Auftragsstatus" lightbox="media/import-update/update-ready.png":::
+
+## <a name="if-youre-importing-via-apis-instead"></a>Wenn Sie stattdessen über APIs importieren
+
+Wenn Sie die oben genannten Schritte zum Importieren über das Azure-Portal abgeschlossen haben, fahren Sie im Folgenden mit den nächsten Schritten fort.
+
+Beachten Sie Folgendes, wenn Sie ein Update mit dem [Geräteupdate für IoT Hub-Update-APIs](/rest/api/deviceupdate/updates) anstatt über das Azure-Portal importieren möchten:
+  - Sie müssen Ihre Updatedatei(en) in einen Azure Blob Storage-Speicherort hochladen, bevor Sie die Update-APIs aufrufen.
+  - Sie können diesen [Beispiel-API-Aufruf](import-schema.md#example-import-request-body), der das oben von Ihnen erstellte Importmanifest verwendet, als Referenz nutzen.
+  - Wenn Sie beim Testen dieselbe SAS-URL erneut verwenden, treten möglicherweise Fehler auf, wenn das Token abläuft. Dies ist der Fall, wenn Sie das Importmanifest sowie den Updateinhalt selbst übermitteln.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,27 +1,27 @@
 ---
 title: Eigenschaften eines B2B-Gastbenutzers – Azure Active Directory | Microsoft-Dokumentation
-description: Eigenschaften und Zustände von Azure Active Directory B2B-Gastbenutzern vor und nach dem Einlösen der Einladung
+description: Eigenschaften und Zustände der von Azure Active Directory B2B eingeladenen Gastbenutzer vor und nach dem Einlösen der Einladung
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 08/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 954515335badba8e3ea649cb66bbc7d41e6328c0
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 8a10345851d80bf8903e2b7bcb7fd295e6656bc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110584959"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355756"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
-In diesem Artikel werden die Eigenschaften und Zustände beschrieben, die das B2B-Gastbenutzerobjekt in Azure Active Directory (Azure AD) vor und nach dem Einlösen der Einladung aufweisen kann. Ein Azure AD Business-to-Business (B2B) Collaboration-Benutzer ist ein Benutzer mit dem Benutzertyp „Gast“. Dieser Gastbenutzer ist ein der Regel ein Benutzer aus einer Partnerorganisation und verfügt standardmäßig über eingeschränkte Berechtigungen im einladenden Verzeichnis.
+In diesem Artikel werden die Eigenschaften und Zustände eines eingeladenen Azure Active Directory B2B-Zusammenarbeits-Benutzerobjekts (Azure AD B2B) vor und nach dem Einlösen der Einladung beschrieben. Ein Azure AD B2B-Zusammenarbeitsbenutzer ist ein externer Benutzer (in der Regel aus einer Partnerorganisation), den Sie einladen, sich mit seinen eigenen Anmeldeinformationen bei Ihrer Azure AD-Organisation anzumelden. Dieser B2B-Zusammenarbeitsbenutzer (auch allgemein als *Gastbenutzer* bezeichnet) kann dann auf die Apps und Ressourcen zugreifen, die Sie für ihn freigeben möchten. Ein Benutzerobjekt wird für den B2B-Zusammenarbeitsbenutzer im gleichen Verzeichnis wie für Ihre Mitarbeiter erstellt. Benutzerobjekte für die B2B-Zusammenarbeit verfügen standardmäßig über eingeschränkte Berechtigungen in Ihrem Verzeichnis und können wie Mitarbeiter verwaltet, Gruppen hinzugefügt werden usw.
 
 Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusammenarbeitsbenutzer einen der folgenden Kontozustände aufweisen:
 
@@ -59,7 +59,7 @@ Für Gastbenutzer mit dem Zustand 2 wird **Microsoft-Konto** als **Quelle** fest
 
 ![Gastbenutzer mit dem Zustand 2 nach dem Einlösen des Angebots](media/user-properties/after-redemption-state2.png)
 
-Für Gastbenutzer mit einem der Zustände 3 oder 4 wird die Eigenschaft **Quelle** auf **Azure Active Directory** bzw. **Windows Server Active Directory** festgelegt (siehe Beschreibung im nächsten Abschnitt).
+Für Gastbenutzer mit einem der Zustände 3 oder 4 wird die Eigenschaft **Quelle** auf **Azure Active Directory** bzw. **Windows Server AD** festgelegt (siehe Beschreibung im nächsten Abschnitt).
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Wichtige Eigenschaften von Azure AD B2B-Zusammenarbeitsbenutzern
 ### <a name="usertype"></a>UserType
@@ -82,7 +82,7 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 
 - Microsoft-Konto: Dieser Benutzer befindet sich in einem Microsoft-Konto und authentifiziert sich mit einem Microsoft-Konto. Diese Art der Anmeldung entspricht Zustand 2.
 
-- Windows Server Active Directory: Dieser Benutzer wird über ein lokales Active Directory angemeldet, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 3.
+- Windows Server AD: Dieser Benutzer wird aus einem lokalen Active Directory angemeldet, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 3.
 
 - Azure Active Directory: Dieser Benutzer authentifiziert sich mit einem Azure AD-Konto, das zu dieser Organisation gehört. Diese Art der Anmeldung entspricht Zustand 4.
   > [!NOTE]
@@ -96,7 +96,7 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 ![Screenshot mit dem Filter für Gastbenutzer](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konvertieren des Benutzertyps
-Mithilfe von PowerShell kann die Eigenschaft „UserType“ von „Mitglied“ in „Gast“ geändert werden und umgekehrt. Die Eigenschaft „UserType“ gibt jedoch die Beziehung eines Benutzers zu der Organisation an. Daher sollten Sie diese Eigenschaft nur ändern, wenn sich die Beziehung des Benutzers zur Organisation ändert. Wenn sich die Beziehung des Benutzers ändert, muss dann der Benutzerprinzipalname (UPN) geändert werden? Soll der Benutzer weiterhin Zugriff auf die gleichen Ressourcen haben? Muss ein Postfach zugewiesen werden? Es empfiehlt sich nicht, die Eigenschaft „UserType“ in PowerShell als alleinige Aktivität zu ändern. Wenn diese Eigenschaft durch die Verwendung von PowerShell unveränderlich wird, empfiehlt es sich nicht, Abhängigkeiten von diesem Wert einzurichten.
+Mithilfe von PowerShell kann die Eigenschaft „UserType“ von „Mitglied“ in „Gast“ geändert werden und umgekehrt. Die Eigenschaft „UserType“ gibt jedoch die Beziehung eines Benutzers zu der Organisation an. Daher sollten Sie diese Eigenschaft nur ändern, wenn sich die Beziehung des Benutzers zur Organisation ändert. Wenn sich die Beziehung des Benutzers ändert, muss dann der Benutzerprinzipalname (UPN) geändert werden? Soll der Benutzer weiterhin Zugriff auf die gleichen Ressourcen haben? Muss ein Postfach zugewiesen werden? 
 
 ## <a name="remove-guest-user-limitations"></a>Aufheben von Einschränkungen für Gastbenutzer
 Es gibt eine Vielzahl von Situationen, in denen Sie Ihren Gastbenutzern höhere Berechtigungen einräumen möchten. Sie können Gastbenutzer beliebigen Rollen hinzufügen und sogar die standardmäßigen Einschränkungen für Gastbenutzer im Verzeichnis aufheben, um diesen die gleichen Berechtigungen zu gewähren wie Mitgliedern.

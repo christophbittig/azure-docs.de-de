@@ -3,19 +3,19 @@ title: Erstellen einer benutzerdefinierten Stimme – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie zum Hochladen Ihrer Daten bereit sind, navigieren Sie zum Custom Voice-Portal. Erstellen Sie ein Custom Voice-Projekt, oder wählen Sie ein bereits vorhandenes Projekt aus. Das Projekt muss die gleiche Sprache/das gleiche Gebietsschema und die gleichen Geschlechtseigenschaften besitzen wie die Daten, die Sie für Ihr Stimmtraining verwenden möchten.
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 449975a6f0b5799ce93dcb31f42e1a43a1d183f3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: lajanuar
+ms.openlocfilehash: a380c66159304e8e5fabbc73c8a2c663f7d23c27
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350111"
 ---
 # <a name="create-and-use-your-voice-model"></a>Erstellen und Verwenden Ihres Sprachmodells
 
@@ -42,9 +42,9 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie die Dateien für di
 
 1. Navigieren Sie zu **Sprachsynthese** > **Custom Voice** > **Projekt auswählen** > **Sprecher einrichten**.
 
-2. Klicken Sie auf **Sprecher hinzufügen**.
+2. Wählen Sie **Sprecher hinzufügen** aus.
 
-3. Klicken Sie als nächstes zum Definieren von Stimmmerkmalen auf das zu verwendende **Zielszenario**. Beschreiben Sie dann Ihre **Stimmmerkmale**.
+3. Wählen Sie als Nächstes zum Definieren von Stimmmerkmalen das zu verwendende **Zielszenario** aus. Beschreiben Sie dann Ihre **Stimmmerkmale**.
 
 > [!NOTE]
 > Die von Ihnen bereitgestellten Szenarien müssen mit dem übereinstimmen, was Sie im Antragsformular beantragt haben.
@@ -54,119 +54,119 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie die Dateien für di
 > [!NOTE]
 > Stellen Sie sicher, dass die mündliche Aussage mit denselben Einstellungen wie Ihre Trainingsdaten aufgezeichnet wird, einschließlich der Aufzeichnungsumgebung und der Sprechweise.
 
-5. Wechseln Sie abschließend zu **Überprüfen und übermitteln**. Sie können die Einstellungen überprüfen und auf **Übermitteln** klicken.
+5. Wechseln Sie abschließend zu **Überprüfen und erstellen**. Sie können die Einstellungen überprüfen und **Übermitteln** auswählen.
 
-## <a name="upload-your-datasets"></a>Hochladen von Datasets
+## <a name="upload-your-data"></a>Hochladen Ihrer Daten
 
-Wenn Sie bereit sind, Ihre Daten hochzuladen, wechseln Sie zur Registerkarte zum **Vorbereiten von Trainingsdaten**, um Ihren ersten Trainingssatz hinzuzufügen und Daten hochzuladen.  Ein Trainingssatz besteht aus einer Reihe von Audioäußerungen und ihren Zuordnungsskripts, die zum Trainieren eines Stimmmodells verwendet werden. Sie können einen Trainingssatz verwenden, um Ihre Trainingsdaten zu organisieren. Die Überprüfung der Datenbereitschaft erfolgt pro Trainingssatz. Sie können mehrere Datasets in einen Trainingssatz importieren.
+Wenn Sie bereit sind, Ihre Daten hochzuladen, wechseln Sie zur Registerkarte zum **Vorbereiten von Trainingsdaten**, um Ihren ersten Trainingssatz hinzuzufügen und Daten hochzuladen.  Ein Trainingssatz besteht aus einer Reihe von Audioäußerungen und ihren Zuordnungsskripts, die zum Trainieren eines Stimmmodells verwendet werden. Sie können einen Trainingssatz verwenden, um Ihre Trainingsdaten zu organisieren. Die Überprüfung der Datenbereitschaft erfolgt pro Trainingssatz. Sie können mehrere Daten in einen Trainingssatz importieren.
 
 Gehen Sie wie folgt vor, um Ihre Trainingsdaten zu erstellen und zu überprüfen.
 
-1. Klicken Sie auf der Registerkarte **Trainingsdaten vorbereiten** auf **Trainingssatz hinzufügen** zum Eingeben von **Name** und **Beschreibung** > **Erstellen**, um einen neuen Trainingssatz hinzuzufügen.
+1. Wählen Sie auf der Registerkarte **Trainingsdaten vorbereiten** die Option **Trainingssatz hinzufügen** zum Eingeben von **Name** und **Beschreibung** > **Erstellen** zum Hinzufügen eines neuen Trainingssatzes aus.
 
    Wenn der Trainingssatz erfolgreich erstellt wurde, können Sie mit dem Hochladen Ihrer Daten beginnen. 
 
-2. Klicken Sie zum Hochladen von Daten auf **Daten hochladen** > **Datentyp auswählen** > **Daten hochladen** und **Zieltrainingssatz angeben** > Geben Sie **Name** und **Beschreibung** für Ihr Dataset ein > Überprüfen Sie die Einstellungen, und klicken Sie auf **Upload**.
+2. Wählen Sie zum Hochladen von Daten **Daten hochladen** > **Datentyp auswählen** > **Daten hochladen** und **Zieltrainingssatz angeben** aus. Geben Sie **Name** und **Beschreibung** für Ihre Daten ein. Überprüfen Sie die Einstellungen, und wählen Sie **Übermitteln** aus.
 
 > [!NOTE]
->- Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Datasets in der ZIP-Datei oder in mehreren ZIP-Dateien nicht die gleichen Audionamen enthalten. Wenn Äußerungs-IDs (entweder in Audio- oder Skriptdateien) doppelt vorhanden sind, werden sie abgelehnt.
->- Wenn Sie Datasets in der vorherigen Version von Speech Studio erstellt haben, müssen Sie einen Trainingssatz für Ihre Datasets angeben, bevor Sie sie verwenden. Andernfalls wird ein Ausrufezeichen an den Datasetnamen angefügt, und das Dataset konnte nicht verwendet werden.
+>- Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Daten in der ZIP-Datei oder in mehreren ZIP-Dateien nicht die gleichen Audionamen enthalten. Wenn Äußerungs-IDs (entweder in Audio- oder Skriptdateien) doppelt vorhanden sind, werden sie abgelehnt.
+>- Wenn Sie Datendateien in der vorherigen Version von Speech Studio erstellt haben, müssen Sie einen Trainingssatz für Ihre Daten angeben, bevor Sie sie verwenden. Andernfalls wird dem Datennamen ein Ausrufezeichen angefügt, und die Daten könnten nicht verwendet werden.
 
-Jedes hochgeladene Dataset muss den Anforderungen für den ausgewählten Datentyp entsprechen. Es ist wichtig, dass Sie Ihre Daten ordnungsgemäß formatieren, bevor sie hochgeladen werden. Dadurch wird sichergestellt, dass die Daten vom Dienst „Benutzerdefinierte neuronale Stimme“ verarbeitet werden. Wechseln Sie zu [Trainingsdaten vorbereiten](how-to-custom-voice-prepare-data.md), und stellen Sie sicher, dass Ihre Daten ordnungsgemäß formatiert sind.
+Alle Daten, die Sie hochladen, müssen den Anforderungen für den ausgewählten Datentyp entsprechen. Es ist wichtig, dass Sie Ihre Daten ordnungsgemäß formatieren, bevor sie hochgeladen werden. Dadurch wird sichergestellt, dass die Daten vom Dienst „Benutzerdefinierte neuronale Stimme“ verarbeitet werden. Wechseln Sie zu [Trainingsdaten vorbereiten](how-to-custom-voice-prepare-data.md), und stellen Sie sicher, dass Ihre Daten ordnungsgemäß formatiert sind.
 
 > [!NOTE]
-> - Benutzer mit einem Standard-Abonnement (S0) können fünf Datasets gleichzeitig hochladen. Wenn Sie das Limit erreicht wurde, warten Sie, bis der Importvorgang mindestens eines Datasets beendet wurde. Versuchen Sie es anschließend noch mal.
-> - Benutzer des kostenlosen Abonnements (F0) können maximal 10 ZIP-Dateien pro Abonnement als Datasets importieren. Bei Benutzern des Standardabonnements (S0) beträgt die Höchstzahl 500.
+> - Benutzer mit einem Standardabonnement (S0) können fünf Datendateien gleichzeitig hochladen. Wenn Sie das Limit erreichen, warten Sie, bis der Import mindestens einer Datendatei beendet ist. Versuchen Sie es anschließend noch mal.
+> - Benutzer des kostenlosen Abonnements (F0) können maximal 10 ZIP-Dateien pro Abonnement als Datendateien importieren. Bei Benutzern des Standardabonnements (S0) beträgt die Höchstzahl 500.
 
-Datasets werden nach dem Klicken auf **Hochladen** automatisch überprüft. Bei der Datenüberprüfung werden Format, Größe und Samplingrate der Audiodateien geprüft. Sollten Fehler vorliegen, beheben Sie sie, und übermitteln Sie die Daten erneut. 
+Datendateien werden nach dem Klicken auf die Schaltfläche **Übermitteln** automatisch überprüft. Bei der Datenüberprüfung werden Format, Größe und Samplingrate der Audiodateien geprüft. Sollten Fehler vorliegen, beheben Sie sie, und übermitteln Sie die Daten erneut. 
 
-Nachdem die Daten hochgeladen wurden, können Sie die Details in der Detailansicht des Trainingssatzes überprüfen. Auf der Registerkarte **Übersicht** können Sie die Aussprachebewertungen und den Rauschpegel der einzelnen Datasets genauer überprüfen. Die Aussprachebewertung liegt zwischen 0 und 100. Werte unter 70 deuten in der Regel auf einen Aussprachefehler oder auf einen Fehler bei der Skriptzuordnung hin. Ein starker Akzent kann die Aussprachebewertung verringern und die Qualität der erzeugten digitalen Stimme negativ beeinflussen.
+Nachdem die Daten hochgeladen wurden, können Sie die Details in der Detailansicht des Trainingssatzes überprüfen. Auf der Registerkarte **Übersicht** können Sie die Aussprachebewertungen und den Rauschpegel Ihrer jeweiligen Daten genauer überprüfen. Die Aussprachebewertung liegt zwischen 0 und 100. Werte unter 70 deuten in der Regel auf einen Aussprachefehler oder auf einen Fehler bei der Skriptzuordnung hin. Ein starker Akzent kann die Aussprachebewertung verringern und die Qualität der erzeugten digitalen Stimme negativ beeinflussen.
 
 Ein höheres Signal-Rausch-Verhältnis (SNR) deutet auf ein geringeres Rauschen in den Audioaufnahmen hin. Wenn Ihre Aufnahmen in einem professionellen Tonstudio vorgenommen wurden, können Sie SNR-Werte größer als 50 erzielen. Ein SNR-Wert unter 20 kann dazu führen, dass in der generierten Stimme das Rauschen deutlich zu hören ist.
 
-Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie die betroffenen Äußerungen erneut aufnehmen. Wenn die erneute Aufzeichnung nicht möglich ist, erwägen Sie den Ausschluss dieser Äußerungen aus dem Dataset.
+Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie die betroffenen Äußerungen erneut aufnehmen. Wenn die erneute Aufzeichnung nicht möglich ist, erwägen Sie den Ausschluss dieser Äußerungen aus Ihren Daten.
 
 Unter **Datendetails** können Sie die Datendetails des Trainingssatzes überprüfen. Befolgen Sie bei typischen Problemen mit den Daten die Anweisungen in der angezeigten Meldung, um sie vor dem Training zu beheben.
 
 Die Probleme sind in drei Typen unterteilt. Beziehen Sie sich auf die folgenden drei Tabellen, um die jeweiligen Fehlertypen zu überprüfen.
 
-Die erste Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, muss manuell behoben werden. Andernfalls werden die Daten mit diesen Fehlern während des Trainings ausgeschlossen. 
+Die erste Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, muss manuell behoben werden. Andernfalls werden die Daten mit diesen Fehlern während des Trainings ausgeschlossen.
 
-| Category | Name | BESCHREIBUNG | Vorschlag |
-| --------- | ----------- | ----------- | --------------------------- |
-| Skript | Ungültiges Trennzeichen| Diese Skriptzeilen weisen kein gültiges Trennzeichen auf (TAB: {}).| Verwenden Sie TAB, um ID und Inhalt zu trennen.|
-| Skript | Ungültige Skript-ID| Das Skript-ID-Format ist ungültig.| Die Skriptzeilen-ID sollte numerisch sein.|
-| Skript | Skriptinhalt dupliziert| Der Skriptinhalt von Zeile {} wird mit der Zeile {} dupliziert.| Der Inhalt der Skriptzeile sollte eindeutig sein.|
-| Skript | Skriptinhalt zu lang| Der Inhalt der Skriptzeile ist länger als maximal 1.000 Zeichen.| Die Länge des Skriptzeileninhalts sollte weniger als 1.000 Zeichen umfassen.|
-| Skript | Skript besitzt keine übereinstimmenden Audiodaten| Die Skriptzeilen-ID enthält keine übereinstimmenden Audiodaten.| Die Skriptzeilen-ID muss mit der Audio-ID übereinstimmen.|
-| Skript | Kein gültiges Skript| In diesem Dataset wurde kein gültiges Skript gefunden.| Korrigieren Sie die problematischen Skriptzeilen gemäß der detaillierten Problemliste.|
-| Audio | Audiodaten besitzen kein übereinstimmendes Skript| Die Audiodatei stimmt nicht mit der Skript-ID überein.| Der WAV-Dateiname sollte mit der ID in der Skriptdatei übereinstimmen.|
-| Audio | Ungültiges Audioformat| Die WAV-Datei weist ein ungültiges Format auf und kann nicht gelesen werden.| Überprüfen Sie das WAV-Dateiformat mit einem Audiotool wie sox.|
-| Audio | Niedrige Samplingrate| Die Audiosamplingrate ist niedriger als 16 KHz. | Die WAV-Dateisamplingrate sollte gleich oder höher als 16 KHz sein. |
-| Audio | Audiodauer zu lang| Die Audiodauer ist länger als 30 Sekunden.| Teilen Sie lange Audioinhalte in mehrere Dateien auf, um sicherzustellen, dass jede Datei weniger als 15 Sekunden lang ist.|
-| Audio | Keine gültigen Audiodaten| In diesem Dataset wurden keine gültigen Audiodaten gefunden.| Korrigieren Sie die problematischen Audiodaten gemäß der detaillierten Problemliste.|
+| Category | Name | BESCHREIBUNG |
+| --------- | ----------- | --------------------------- |
+| Skript | Ungültiges Trennzeichen| Sie müssen die Äußerungs-ID und den Skriptinhalt durch ein TAB-Zeichen trennen.|
+| Skript | Ungültige Skript-ID| Die Skriptzeilen-ID muss numerisch sein.|
+| Skript | Dupliziertes Skript|Jede Zeile des Skriptinhalts muss eindeutig sein. Die Zeile wird mit {} dupliziert.|
+| Skript | Skript zu lang| Das Skript darf 1.000 Zeichen nicht überschreiten.|
+| Skript | Keine Audioübereinstimmung| Die ID jeder Äußerung (jeder Zeile der Skriptdatei) muss mit der Audio-ID übereinstimmen.|
+| Skript | Kein gültiges Skript| In diesem Dataset wurde kein gültiges Skript gefunden. Korrigieren Sie die Skriptzeilen, die in der detaillierten Problemliste angezeigt werden.|
+| Audio | Keine Skriptübereinstimmung| Keine Audiodatei stimmt mit der Skript-ID überein. Der Name der WAV-Dateien muss mit den IDs in der Skriptdatei übereinstimmen.|
+| Audio | Ungültiges Audioformat| Das Audioformat der WAV-Dateien ist ungültig. Überprüfen Sie das WAV-Dateiformat mithilfe eines Audiotools wie [SoX](http://sox.sourceforge.net/).|
+| Audio | Niedrige Samplingrate| Die Samplingrate der WAV-Dateien darf nicht unter 16 KHz liegen.|
+| Audio | Zu lange Audioinhalte| Die Audiodauer ist länger als 30 Sekunden. Teilen Sie den langen Audioinhalt in mehrere Dateien auf. Äußerungen sollten kürzer als 15 Sekunden sein.|
+| Audio | Keine gültigen Audiodaten| In diesem Dataset wurden keine gültigen Audiodaten gefunden. Überprüfen Sie Ihre Audiodaten, und laden Sie sie erneut hoch.|
 
-Die zweite Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, wird automatisch behoben, aber es wird empfohlen, die korrigierten Daten zu überprüfen. 
+Die zweite Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, wird automatisch behoben, aber es wird empfohlen, die korrigierten Daten zu überprüfen.
 
-| Category | Name | BESCHREIBUNG | Vorschlag |
-| --------- | ----------- | ----------- | --------------------------- |
-| Audio | Stereo-Audio | Für das TTS-Modelltraining wird nur ein Kanal in Stereo-Audio verwendet.|     Verwenden Sie „Mono“ bei der TTS-Aufzeichnung oder Datenaufbereitung. Diese Audiodaten werden in Mono konvertiert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es.|
-| Volume | Lautstärkespitze außerhalb des Bereichs |Die Lautstärkespitze liegt nicht im Bereich von -3 dB (70 % der maximalen Lautstärke) bis -6 dB (50 %). Sie wird jetzt automatisch auf -4 dB (65 %) angepasst.|  Steuern Sie die Lautstärkespitze während der Aufzeichnung oder Datenaufbereitung im richtigen Bereich. Diese Audiodaten werden linear skaliert, um den Spitzenbereich zu entsprechen. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es.|
-|Konflikt | Lange Stille vor dem ersten Wort erkannt | Vor dem ersten Wort wurde eine lange Stille erkannt.| Die Startstille wird auf 200 ms gekürzt. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
-| Konflikt | Lange Stille nach dem letzten Wort erkannt | Nach dem letzten Wort wurde eine lange Stille erkannt. | Die Endstille wird auf 200 ms gekürzt. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
-| Konflikt |Startstille zu kurz | Die Startstille ist kürzer als 100 ms. | Die Startstille wird auf 100 ms erweitert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
-| Konflikt | Endstille zu kurz | Die Endstille ist kürzer als 100 ms. | Die Endstille wird auf 100 ms erweitert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
+| Category | Name | BESCHREIBUNG |
+| --------- | ----------- | --------------------------- |
+| Audio | Stereoaudio automatisch korrigiert | Verwenden Sie Mono in Ihren Audiobeispielaufzeichnungen. Stereoaudiokanäle werden automatisch in einem Monokanal zusammengeführt, was zu Inhaltsverlusten führen kann.  Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es.|
+| Lautstärke | Lautstärkespitze automatisch korrigiert |Die Lautstärkespitze sollte zwischen -3 dB (70 % der maximalen Lautstärke) und -6 dB (50 %) liegen. Steuern Sie die Lautstärkespitze während der Beispielaufzeichnung oder Datenvorbereitung. Diese Audiodaten werden automatisch gemäß dem Spitzenbereich (-4 dB oder 65 %) linear skaliert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es.|
+|Konflikt | Stille automatisch korrigiert| Es wurde erkannt, dass die Stille zu Beginn länger als 200 ms dauert, und sie wurde automatisch auf 200 ms gekürzt. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
+| Konflikt |Stille automatisch korrigiert | Es wurde erkannt, dass die Stille am Ende länger als 200 ms dauert, und sie wurde automatisch auf 200 ms gekürzt. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
+| Konflikt |Stille automatisch korrigiert |Es wurde erkannt, dass die Stille zu Beginn weniger als 100 ms dauert, und sie wurde automatisch auf 100 ms erweitert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es. |
+| Konflikt |Stille automatisch korrigiert | Es wurde erkannt, dass die Stille am Ende weniger als 100 ms dauert, und sie wurde automatisch auf 100 ms erweitert. Laden Sie das normalisierte Dataset herunter, und überprüfen Sie es.|
 
 Wenn die dritte Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, nicht behoben wird, obwohl die Daten mit diesen Fehlern während des Trainings nicht ausgeschlossen werden, wirkt sich dies auf die Qualität des Trainings aus. Für ein qualitativ hochwertigeres Training wird empfohlen, diese Fehler manuell zu beheben. 
 
-| Category | Name | BESCHREIBUNG | Vorschlag |
-| --------- | ----------- | ----------- | --------------------------- |
-| Skript | Ziffer 0-9 enthalten| Diese Skriptzeilen enthalten die Ziffer 0-9.| Die Skriptzeilen enthalten die Ziffer 0-9. Erweitern Sie sie zu normalisierten Wörtern, und gleichen Sie sie mit Audiodaten ab. Beispiel: „123“ zu „einhundertdreiundzwanzig“.|
-| Skript | Wort mit verwirrender Aussprache '{}' | Skript enthält Wort mit verwirrender Aussprache: '{}'.| Erweitern Sie das Wort auf seine tatsächliche Aussprache. Beispielsweise {}.|
-| Skript | Zu wenige Frageäußerungen| Frageskriptzeilen machen weniger als 1/6 der gesamten Skriptzeilen aus.| Frageskriptzeilen sollten mindestens 1/6 der Gesamtzeilen ausmachen, damit der Voicefont den Frageton richtig ausdrückt.|
-| Skript | Zu wenige Ausrufäußerungen| Ausrufskriptzeilen machen weniger als 1/6 der gesamten Skriptzeilen aus.| Ausrufskriptzeilen sollten mindestens 1/6 der Gesamtzeilen ausmachen, damit der Voicefont den Ausrufton richtig ausdrückt.|
-| Audio| Niedrige Samplingrate für neuronale Stimme | Die Audiosamplingrate ist niedriger als 24 KHz.|    Die Samplingrate der WAV-Datei sollte für eine hochwertige neuronale Stimme gleich oder höher als 24 KHz sein.|
-| Volume | Gesamtlautstärke zu niedrig | Die Lautstärke von {}-Stichproben ist kleiner als -18 dB (10 % der maximalen Lautstärke).|     Steuern Sie den durchschnittlichen Lautstärkepegel während der Aufzeichnung oder Datenaufbereitung im richtigen Bereich.|
-| Volume | Lautstärkeabbruch| Bei {}s wurde ein Lautstärkeabbruch erkannt.| Passen Sie die Aufzeichnungsgeräte an, um einen Lautstärkeabbruch beim Spitzenwert zu vermeiden.|
-| Volume | Startstille nicht bereinigt | Die ersten 100 ms der Stille sind nicht bereinigt. Erkennen Sie eine Lautstärke, die über -40 dB liegt (1 % der maximalen Lautstärke).|    Reduzieren Sie den Pegel des Aufzeichnungsrauschens, und belassen Sie die ersten 100 ms als Stille.|
-| Volume| Endstille nicht bereinigt| Die letzten 100 ms der Stille sind nicht bereinigt. Erkennen Sie eine Lautstärke, die über -40 dB liegt (1 % der maximalen Lautstärke).|     Reduzieren Sie den Pegel des Aufzeichnungsrauschens, und belassen Sie die letzten 100 ms als Stille.|
-| Konflikt | Konflikt zwischen Skript und Audiodaten erkannt| Es besteht ein Konflikt zwischen den Skript- und Audioinhalten. |     Überprüfen Sie die Skript- und Audioinhalte, um sicherzustellen, dass sie mit dem Rauschpegel übereinstimmen und diesen steuern. Reduzieren Sie die Länge der langen Stille, oder teilen Sie sie in mehrere Äußerungen auf.|
-| Konflikt | Zusätzliche Audioenergie vor dem ersten Wort erkannt |    Es wurde zusätzliche Audioenergie vor dem ersten Wort erkannt. Dies kann auch daran liegt, dass die Startstille vor dem ersten Wort zu kurz ist.|    Überprüfen Sie die Skript- und Audioinhalte, um sicherzustellen, dass sie mit dem Rauschpegel übereinstimmen und diesen steuern. Lassen Sie auch vor dem ersten Wort eine Stille von 100 ms.|
-| Konflikt | Zusätzliche Audioenergie nach dem letzten Wort erkannt| Es wurde zusätzliche Audioenergie nach dem letzten Wort erkannt. Dies kann auch daran liegen, dass die Stille nach dem letzten Wort zu kurz ist.|    Überprüfen Sie die Skript- und Audioinhalte, um sicherzustellen, dass sie mit dem Rauschpegel übereinstimmen und diesen steuern. Lassen Sie auch nach dem letzten Wort eine Stille von 100 ms.|
-| Konflikt | Niedriges Signal-Rausch-Verhältnis | Der Pegel des Signal-Rausch-Verhältnisses ist niedriger als {} dB.| Reduzieren Sie den Audiorauschpegel während der Aufzeichnung oder Datenaufbereitung.|
-| Konflikt | Fehler beim Erkennen von Sprachinhalten | Fehler bei der Spracherkennung für diese Audiodaten.|  Überprüfen Sie Audio- und Skriptinhalte, um sicherzustellen, dass die Audiodaten gültig sind und mit dem Skript übereinstimmen.|
+| Category | Name | BESCHREIBUNG |
+| --------- | ----------- | --------------------------- |
+| Skript | Nicht normalisierter Text|Dieses Skript enthält Ziffern von 0-9. Erweitern Sie sie zu normalisierten Wörtern, und gleichen Sie sie mit den Audiodaten ab. Beispiel: Normalisieren Sie „123“ zu „einhundertdreiundzwanzig“.|
+| Skript | Nicht normalisierter Text|Dieses Skript enthält Symbole {}. Normalisieren Sie die Symbole so, dass sie mit den Audiodaten übereinstimmen. Beispiel: „50 %“ in „fünfzig Prozent“.|
+| Skript | Zu wenige Frageäußerungen| Mindestens 10 % der gesamten Äußerungen sollten Fragesätze sein. Dies hilft dem Stimmmodell, eine richtige Fragenbetonung auszudrücken.|
+| Skript |Zu wenige Ausrufeäußerungen| Mindestens 10 % der gesamten Äußerungen sollten Ausrufesätze sein. Dies hilft dem Stimmmodell, einen aufgeregten Ton richtig auszudrücken.|
+| Audio| Niedrige Samplingrate für neuronale Stimme | Sie sollten für ihre WAV-Dateien eine Samplingrate von mindestens 24 KHz verwenden, um neuronale Stimmen zu erstellen. Wenn sie niedriger ist, wird sie automatisch auf 24 KHz upgesampelt.|
+| Volume |Gesamtlautstärke zu niedrig|Die Lautstärke sollte nicht unter -18 dB (10 % der maximalen Lautstärke) liegen. Halten Sie den durchschnittlichen Lautstärkepegel während der Beispielaufzeichnung oder Datenvorbereitung im richtigen Bereich.|
+| Lautstärke | Lautstärkeüberlauf| Ein Lautstärkeüberlauf wird unter {}s erkannt. Passen Sie die Aufzeichnungsgeräte an, um einen Lautstärkeüberlauf beim Spitzenwert zu vermeiden.|
+| Lautstärke | Problem mit der Stille zu Beginn | Die ersten 100 ms Stille sind nicht rein. Reduzieren Sie den Rauschpegel der Aufzeichnung, und lassen Sie die ersten 100 ms zu Beginn still.|
+| Lautstärke| Problem mit der Stille am Ende| Die letzten 100 ms Stille sind nicht rein.  Reduzieren Sie den Rauschpegel der Aufzeichnung, und lassen Sie die letzten 100 ms am Ende still.|
+| Konflikt | Niedrige Bewertung von Wörtern|Überprüfen Sie Skript- und Audioinhalte, um sicherzustellen, dass sie übereinstimmen, und steuern Sie den Rauschpegel. Reduzieren Sie die Dauer der langen Stille, oder teilen Sie die Audiodaten in mehrere Äußerungen auf, wenn sie zu lang ist.|
+| Konflikt | Problem mit der Stille zu Beginn |Zusätzliche Audioinhalte waren vor dem ersten Wort zu hören. Überprüfen Sie Skript- und Audioinhalte, um sicherzustellen, dass sie übereinstimmen, steuern Sie den Rauschpegel, und sorgen Sie für die ersten 100 ms Stille.|
+| Konflikt | Problem mit der Stille am Ende| Zusätzliche Audioinhalte waren nach dem letzten Wort zu hören. Überprüfen Sie Skript- und Audioinhalte, um sicherzustellen, dass sie übereinstimmen, steuern Sie den Rauschpegel, und sorgen Sie für die letzten 100 ms Stille.|
+| Konflikt | Niedriges Signal-Rausch-Verhältnis | Der Pegel des Signal-Rausch-Verhältnisses ist niedriger als 20 dB. Es werden mindestens 35 dB empfohlen.|
+| Konflikt | Keine Bewertung verfügbar |Fehler beim Erkennen von Sprachinhalten in diesem Audio. Überprüfen Sie Audio- und Skriptinhalte, um sicherzustellen, dass die Audiodaten gültig sind und mit dem Skript übereinstimmen.|
 
 ## <a name="train-your-custom-neural-voice-model"></a>Trainieren Ihres benutzerdefinierten neuronalen Stimmmodells
 
-Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes neuronales Stimmmodell erstellen.
+Nach der Überprüfung Ihrer Datendateien können Sie mit ihnen Ihr benutzerdefiniertes neuronales Stimmmodell erstellen.
 
-1. Klicken Sie auf der Registerkarte **Modell trainieren** auf **Modell trainieren**, um ein Stimmmodell mit den hochgeladenen Daten zu erstellen.
+1. Wählen Sie auf der Registerkarte **Modell trainieren** die Option **Modell trainieren** aus, um ein Stimmmodell mit den hochgeladenen Daten zu erstellen.
 
 2. Wählen Sie die neuronale Trainingsmethode für Ihr Modell und Ihre Zielsprache aus.
 
 Standardmäßig wird Ihr Stimmmodell in derselben Sprache wie Ihre Trainingsdaten trainiert. Sie können auch eine sekundäre Sprache (Vorschauversion) für Ihr Stimmmodell erstellen.  Überprüfen Sie die Sprachen, die für benutzerdefinierte neuronale Stimmen und sprachübergreifende Features unterstützt werden: [Sprache für die Anpassung](language-support.md#customization).
 
-3. Wählen Sie als nächstes das Dataset aus, das Sie für das Training verwenden möchten, und geben Sie eine Sprecherdatei an.
+3. Wählen Sie als Nächstes die Daten aus, die Sie für das Training verwenden möchten, und geben Sie eine Sprecherdatei an.
 
 >[!NOTE]
 >- Sie müssen mindestens 300 Äußerungen auswählen, um eine benutzerdefinierte neuronale Stimme zu erstellen.
 >- Um eine neuronale Stimme zu trainieren, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser der Verwendung seiner Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zustimmt. Das Feature „Benutzerdefinierte neuronale Stimme“ ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) kennen, und [fordern Sie hier den Zugriff an](https://aka.ms/customneural).
->- Auf dieser Seite können Sie auch Ihr Manuskript zum Testen hochladen. Das Testmanuskript muss eine TXT-Datei mit einer Größe von weniger als 1 MB sein. Unterstützte Codierungsformat sind z. B. ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Jeder Absatz der Äußerung ergibt eine separate Audiodatei. Wenn Sie alle Sätze in einer Audiodatei kombinieren möchten, fügen Sie sie zu einem einzigen Absatz zusammen.
+>- Auf dieser Seite können Sie auch Ihr Manuskript zum Testen hochladen. Das Testmanuskript muss eine TXT-Datei von höchstens 1 MB sein. Unterstützte Codierungsformat sind z. B. ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Jeder Absatz der Äußerung ergibt eine separate Audiodatei. Wenn Sie alle Sätze in einer Audiodatei kombinieren möchten, fügen Sie sie zu einem einzigen Absatz zusammen.
 
 4. Geben Sie dann unter **Name** einen Namen und unter **Beschreibung** eine Beschreibung ein, um dieses Modell identifizieren zu können.
 
-Wählen Sie den Namen sorgfältig aus. Der hier eingegebene Name ist der Name, der zur Festlegung der Stimme in der Sprachsyntheseanforderung als Teil der SSML-Eingabe verwendet wird. Zulässig sind nur Buchstaben, Zahlen und einige wenige Satzzeichen wie -, \_ und (', '). Verwenden Sie unterschiedliche Namen für unterschiedliche neuronale Stimmmodelle.
+Wählen Sie den Namen sorgfältig aus. Der hier eingegebene Name ist der Name, der zur Festlegung der Stimme in der Sprachsyntheseanforderung als Teil der SSML-Eingabe verwendet wird. Zulässig sind nur Buchstaben, Zahlen und einige wenige Satzzeichen wie -, _ und (', '). Verwenden Sie unterschiedliche Namen für unterschiedliche neuronale Stimmmodelle.
 
-Im Feld **Beschreibung** werden in der Regel die Namen der Datasets erfasst, die zur Erstellung des Modells verwendet wurden.
+Im Feld **Beschreibung** werden in der Regel die Namen der Daten erfasst, die zur Erstellung des Modells verwendet wurden.
 
-5. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Übermitteln**, um mit dem Trainieren des Modells zu beginnen.
+5. Überprüfen Sie die Einstellungen, und wählen Sie dann **Übermitteln** aus, um mit dem Trainieren des Modells zu beginnen.
 
 > [!NOTE]
-> Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Datasets in mehreren ZIP-Dateien nicht die gleichen Audionamen enthalten.
+> Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Daten nicht in mehreren ZIP-Dateien die gleichen Audionamen enthalten.
 
 In der Tabelle **Modell trainieren** wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an: „Verarbeitung“, „Erfolgreich“ oder „Fehler“.
 
-Der angezeigte Status gibt Aufschluss über die Konvertierung Ihres Datasets in ein Stimmmodell (wie hier gezeigt).
+Der angezeigte Status gibt Aufschluss über die Konvertierung Ihrer Daten in ein Stimmmodell (wie hier gezeigt).
 
 | State | Bedeutung |
 | ----- | ------- |
@@ -191,10 +191,10 @@ Nach dem erfolgreichen Erstellen und Testen des Sprachmodells können Sie es in 
 
 Gehen Sie wie folgt vor, um einen benutzerdefinierten Endpunkt für eine benutzerdefinierte neuronale Stimme zu erstellen.
 
-1. Klicken Sie auf der Registerkarte **Modell bereitstellen** auf **Modelle bereitstellen**. 
+1. Wählen Sie auf der Registerkarte **Modell bereitstellen** die Option **Modell bereitstellen** aus. 
 2. Geben Sie als nächstes einen **Namen** und eine **Beschreibung** für Ihren benutzerdefinierten Endpunkt ein.
 3. Wählen Sie ein Stimmmodell aus, das Sie diesem Endpunkt zuordnen möchten. 
-4. Klicken Sie abschließend auf **Bereitstellen**, um Ihren Endpunkt zu erstellen.
+4. Wählen Sie abschließend **Bereitstellen** aus, um Ihren Endpunkt zu erstellen.
 
 Nach dem Klicken auf die Schaltfläche **Bereitstellen** wird in der Endpunkttabelle ein Eintrag für Ihren neuen Endpunkt angezeigt. Das Instanziieren des neuen Endpunkts kann einige Minuten in Anspruch nehmen. Wenn als Bereitstellungsstatus **Erfolgreich** angezeigt wird, kann der Endpunkt verwendet werden.
 
