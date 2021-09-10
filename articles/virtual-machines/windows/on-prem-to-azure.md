@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e23b202957018ee80186dd28b6b2360698fc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68aaf58230ebadd7283e62baf232b84743bba535
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339702"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692414"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrieren von Amazon Web Services (AWS) und anderen Plattformen zu verwalteten Datenträgern in Azure
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 Sie können VHD-Dateien aus AWS oder lokalen Virtualisierungslösungen in Azure hochladen, um virtuelle Computer (VMs) zu erstellen, die verwaltete Datenträger nutzen. Dank verwalteter Azure-Datenträger ist es nicht mehr erforderlich, Speicherkonten für Azure-IaaS-VMs zu verwalten. Sie geben einfach den Typ und die Größe des erforderlichen Datenträgers an, und Azure erstellt und verwaltet den Datenträger für Sie. 
 

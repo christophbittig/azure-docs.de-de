@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe70ba544bb75cee7faf3a4eb3aa2f5ef440909e
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707301"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300608"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -20,13 +20,13 @@ Heute bietet Azure Backup eine Vielzahl von integrierten Richtlinien ( unter Ver
 
 Wenn Ihr Unternehmen über ein zentrales Sicherungsteam verfügt, das anwendungsübergreifende Sicherungen verwaltet, können Sie diese Richtlinie verwenden, um die Sicherung in einen vorhandenen zentralen Recovery Services-Tresor zu konfigurieren, der sich im selben Abonnement und am gleichen Ort befindet wie die zu verwaltenden VMs. Sie können wählen, VMs, die ein bestimmtes Tag enthalten, vom Bereich dieser Richtlinie **auszuschließen**.
 
-## <a name="policy-2---preview-configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Richtlinie 2: [Vorschau] Konfigurieren der Sicherung auf virtuellen Computern mit einem bestimmten Tag in einem vorhandenen Recovery Services-Tresor am selben Speicherort
+## <a name="policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Richtlinie 2: Sicherung für VMs mit angegebenem Tag in einem vorhandenen Recovery Services-Tresor am selben Standort konfigurieren
 Diese Richtlinie funktioniert genauso wie Richtlinie 1 oben, mit dem einzigen Unterschied, dass Sie diese Richtlinie verwenden können, um VMs, die ein bestimmtes Tag enthalten, in den Bereich dieser Richtlinie **einzuschließen**. 
 
-## <a name="policy-3---preview-configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Richtlinie 3: [Vorschau] Konfigurieren der Sicherung auf virtuellen Computern ohne ein bestimmtes Tag in einem neuen Recovery Services-Tresor mit einer Standardrichtlinie
+## <a name="policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Richtlinie 3: Sicherung für VMs ohne ein angegebenes Tag in einem neuen Recovery Services-Tresor mit einer Standardrichtlinie konfigurieren
 Wenn Sie Anwendungen in dedizierten Ressourcengruppen organisieren und diese von demselben Tresor sichern lassen möchten, können Sie diese Aktion mit dieser Richtlinie automatisch verwalten. Sie können wählen, VMs, die ein bestimmtes Tag enthalten, vom Bereich dieser Richtlinie **auszuschließen**.
 
-## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Richtlinie 4: [Vorschau] Konfigurieren der Sicherung auf virtuellen Computern mit einem bestimmten Tag in einem neuen Recovery Services-Tresor mit einer Standardrichtlinie
+## <a name="policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Richtlinie 4: Sicherung für VMs mit einem angegebenen Tag in einem neuen Recovery Services-Tresor mit einer Standardrichtlinie konfigurieren
 Diese Richtlinie funktioniert genauso wie Richtlinie 3 oben, mit dem einzigen Unterschied, dass Sie diese Richtlinie verwenden können, um VMs, die ein bestimmtes Tag enthalten, in den Bereich dieser Richtlinie **einzuschließen**. 
 
 Zusätzlich zu den oben genannten Möglichkeiten bietet Azure Backup auch eine [reine Überwachungsrichtlinie](../governance/policy/concepts/effects.md#audit) – **Azure Backup sollte für virtuelle Computer aktiviert sein**. Diese Richtlinie identifiziert, für welche virtuellen Computer keine Sicherung aktiviert ist, konfiguriert aber nicht automatisch Sicherungen für diese VMs. Dies ist nützlich, wenn Sie nur die allgemeine Konformität der VMs bewerten, aber nicht sofort Maßnahmen ergreifen möchten.
@@ -40,8 +40,6 @@ Zusätzlich zu den oben genannten Möglichkeiten bietet Azure Backup auch eine [
 * Für die Richtlinien 1 und 2 wird der Bereich „Verwaltungsgruppe“ derzeit nicht unterstützt.
 
 * Für die Richtlinien 1 und 2 können sich der angegebene Tresor und die für die Sicherung konfigurierten virtuellen Computer in verschiedenen Ressourcengruppen befinden.
-
-* Die Richtlinien 1, 2, 3 und 4 sind in nationalen Clouds zurzeit nicht verfügbar.
 
 * Die Richtlinien 3 und 4 können jeweils einem Abonnement (oder einer Ressourcengruppe innerhalb eines Abonnements) zugewiesen werden.
 

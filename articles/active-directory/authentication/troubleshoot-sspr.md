@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76b4469b9b0e6fcb23f9c12fa648a8204b06eb79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600861"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004950"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Problembehandlung bei der Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -49,6 +49,16 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Connect](..
 ## <a name="sspr-reporting"></a>SSPR-Berichterstellung
 
 Wenn Sie im Azure-Portal Probleme bei der SSPR-Berichterstellung haben, überprüfen Sie die folgenden Schritte zur Problembehandlung:
+
+### <a name="i-see-an-authentication-method-that-i-have-disabled-in-the-add-method-option-in-combined-registration"></a>Mir wird eine Authentifizierungsmethode angezeigt, die ich bei der kombinierten Registrierung in der Option „Methode hinzufügen“ deaktiviert habe.
+
+Bei der kombinierten Registrierung werden drei Richtlinien berücksichtigt, um die unter **Methode hinzufügen** angezeigten Methoden festzulegen: 
+
+- [Self-Service-Kennwortzurücksetzung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+- [MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)
+- [Authentifizierungsmethoden](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/AdminAuthMethods)
+
+Wenn Sie App-Benachrichtigungen in SSPR deaktivieren, aber in der MFA-Richtlinie aktivieren, wird diese Option in der kombinierten Registrierung angezeigt. Ein weiteres Beispiel: Wenn ein Benutzer **Telefon (geschäftlich)** in SSPR deaktiviert, wird diese Option weiterhin angezeigt, wenn für den Benutzer die Telefoneigenschaft **Telefon/Geschäftlich** festgelegt ist. 
 
 ### <a name="i-dont-see-any-password-management-activity-types-in-the-self-service-password-management-audit-event-category"></a>In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden keine Aktivitätstypen für die Kennwortverwaltung angezeigt.
 
@@ -98,6 +108,7 @@ Wenn Sie oder Ihre Benutzer Probleme bei der Verwendung von SSPR haben, überpr�
 | Ich habe eine Richtlinie für die Kennwortzurücksetzung eingerichtet, aber wenn ein Administrator die Kennwortzurücksetzung verwendet, wird diese Richtlinie nicht angewendet. | Microsoft verwaltet und kontrolliert die Richtlinie für das Zurücksetzen von Administratorkennwörtern, um höchste Sicherheit zu gewährleisten. |
 | Der Benutzer wird daran gehindert, ein Kennwort innerhalb eines Tages zu oft zurückzusetzen. | Mithilfe eines automatischen Drosselungsmechanismus werden Benutzer daran gehindert, ihre Kennwörter innerhalb eines kurzen Zeitraums zu oft zurückzusetzen. Die Drosselung erfolgt in den folgenden Szenarien: <br><ul><li>Der Benutzer versucht innerhalb einer Stunde fünfmal, eine Telefonnummer zu bestätigen.</li><li>Der Benutzer versucht innerhalb einer Stunde fünfmal, die Überprüfung mithilfe von Sicherheitsfragen zu verwenden.</li><li>Der Benutzer versucht innerhalb einer Stunde fünfmal, ein Kennwort für dasselbe Benutzerkonto zurückzusetzen.</li></ul>Wenn dieses Problem bei einem Benutzer auftritt, muss er nach dem letzten Versuch 24 Stunden warten. Danach kann der Benutzer sein Kennwort zurücksetzen. |
 | Der Benutzer erhält bei der Überprüfung seiner Telefonnummer eine Fehlermeldung. | Dieser Fehler tritt auf, wenn die eingegebene Telefonnummer nicht mit der registrierten Telefonnummer übereinstimmt. Stellen Sie sicher, dass der Benutzer beim Versuch, eine Telefonnummer für die Kennwortzurücksetzung zu verwenden, die vollständige Telefonnummer eingibt – einschließlich Landes- und Ortsvorwahl. |
+| Bei Verwendung der E-Mail-Adresse wird dem Benutzer ein Fehler angezeigt. | Wenn sich der UPN von der primären ProxyAddress/SMTPAddress des Benutzers unterscheidet, muss die Einstellung [Bei Azure AD mit E-Mail als alternative Anmelde-ID anmelden](howto-authentication-use-email-signin.md) für den Mandanten aktiviert sein. |
 | Beim Verarbeiten der Anforderung ist ein Fehler aufgetreten. | Generische Fehler bei der SSPR-Registrierung können verschiedene Ursachen haben, werden im Allgemeinen jedoch entweder durch einen Dienstausfall oder einen Konfigurationsfehler verursacht. Wenn der generische Fehler nach Wiederholung des SSPR-Registrierungsprozesses immer noch angezeigt wird, [wenden Sie sich an den Microsoft Support](#contact-microsoft-support), um weitere Unterstützung zu erhalten. |
 | Verletzung der lokalen Richtlinie | Das Kennwort entspricht nicht der lokalen Active Directory-Kennwortrichtlinie. Der Benutzer muss ein Kennwort definieren, das den Komplexitätsanforderungen bzw. den Anforderungen an die Kennwortsicherheit entspricht. |
 | Das Kennwort entspricht nicht der Fuzzyrichtlinie | Das verwendete Kennwort ist in der [Liste gesperrter Kennwörter](./concept-password-ban-bad.md#how-are-passwords-evaluated) enthalten und kann nicht verwendet werden. Der Benutzer muss ein Kennwort definieren, das der Richtlinie für die Liste gesperrter Kennwörter entspricht oder sicherer ist. |

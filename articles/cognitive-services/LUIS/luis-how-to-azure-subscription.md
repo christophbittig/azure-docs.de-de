@@ -9,13 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2021
-ms.openlocfilehash: 60e5d37f57d6a87d9190650f044a1ffc991e60fb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/12/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 4fe1e8cd4c78d4411a7cb9058648fc0e782cb0ee
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096017"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666301"
 ---
 # <a name="how-to-create-and-manage-luis-resources"></a>Erstellen und Verwalten von LUIS-Ressourcen
 
@@ -69,9 +70,9 @@ Zum Erstellen von LUIS-Ressourcen können Sie das LUIS-Portal, das [Azure-Portal
 
 [!INCLUDE [Create LUIS Prediction resource in LUIS portal](./includes/add-prediction-resource-portal.md)]
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+# <a name="without-luis-portal"></a>[Ohne LUIS-Portal](#tab/without-portal)
 
-### <a name="create-luis-resources-in-the-azure-cli"></a>Erstellen von LUIS-Ressourcen über die Azure CLI
+### <a name="create-luis-resources-without-using-the-luis-portal"></a>Erstellen von LUIS-Ressourcen ohne Verwendung des LUIS-Portals
 
 Verwenden Sie die [Azure CLI](/cli/azure/install-azure-cli), um die einzelnen Ressourcen individuell zu erstellen.
 
@@ -130,9 +131,9 @@ In der folgenden Vorgehensweise wird einer bestimmten App eine Ressource zugewie
 1. Wählen Sie auf der Registerkarte **Vorhersageressource** oder **Erstellungsressource** die Schaltfläche **Vorhersageressource hinzufügen** oder **Erstellungsressource hinzufügen** aus.
 1. Verwenden Sie die Felder im Formular, um die richtige Ressource zu finden, und wählen Sie dann **Speichern** aus.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+# <a name="without-luis-portal"></a>[Ohne LUIS-Portal](#tab/without-portal)
 
-## <a name="assign-prediction-resource-programmatically"></a>Programmgesteuertes Zuweisen einer Vorhersageressource 
+## <a name="assign-prediction-resource-without-using-the-luis-portal"></a>Zuweisen einer Vorhersageressource ohne Verwendung des LUIS-Portals
 
 Für automatisierte Prozesse wie CI/CD-Pipelines können Sie die Zuweisung einer LUIS-Ressource zu einer LUIS-App mit den folgenden Schritten automatisieren:
 
@@ -181,9 +182,9 @@ Wenn Sie die Zuweisung einer Ressource aufheben, wird diese nicht aus Azure gel�
 1. Wechseln Sie zu **Verwalten** > **Azure-Ressourcen**.
 1. Wählen Sie die Schaltfläche **Ressourcenzuweisung aufheben** für die Ressource aus.
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+# <a name="without-luis-portal"></a>[Ohne LUIS-Portal](#tab/without-portal)
 
-## <a name="unassign-prediction-resource-programmatically"></a>Programmgesteuertes Aufheben der Zuweisung einer Vorhersageressource
+## <a name="unassign-prediction-resource-without-using-the-luis-portal"></a>Aufheben der Zuweisung einer Vorhersageressource ohne Verwendung des LUIS-Portals
 
 1. Rufen Sie ein [Azure Resource Manager-Token](https://resources.azure.com/api/token?plaintext=true) ab, bei dem es sich um eine alphanumerische Zeichenfolge handelt. Dieses Token läuft ab, daher sollten Sie es sofort verwenden. Sie können auch den folgenden Azure CLI-Befehl verwenden:
 

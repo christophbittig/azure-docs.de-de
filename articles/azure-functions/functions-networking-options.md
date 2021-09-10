@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: e7c1c8532a3f77054755eb040fceff1bf8cf273e
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b998f2876e323ad224d4ecb8afddd4c4f7d5f118
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440230"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346822"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -89,13 +89,13 @@ Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network
 
 Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist. 
 
-Diese Funktion funktioniert zurzeit für alle von Windows Virtual Network unterstützten SKUs im Dedicated-(App Service)-Plan und beim Premium-Plan. Der Verbrauchsplan wird nicht unterstützt. Informationen zum Einrichten einer Funktion mit einem Speicherkonto, das auf ein privates Netzwerk beschränkt ist, finden Sie unter [Einschränken des Speicher Kontos für ein virtuelles Netzwerk](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
+Dieses Feature wird für alle von Windows Virtual Network unterstützten SKUs im Plan „Dedicated“ (App Service) und für die Premium-Pläne unterstützt. Es wird ebenfalls mit privatem DNS für SKUs unterstützt, die Linux-VNets unterstützen. Der Verbrauchstarif und benutzerdefiniertes DNS für Linux-Pläne werden nicht unterstützt. Informationen zum Einrichten einer Funktion mit einem Speicherkonto, das auf ein privates Netzwerk beschränkt ist, finden Sie unter [Einschränken des Speicher Kontos für ein virtuelles Netzwerk](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
 
 Sie können mithilfe von Azure Key Vault-Verweisen Geheimnisse aus Ihrer Azure Key Vault-Instanz in Ihrer Azure Functions-Anwendung verwenden, ohne dass Codeänderungen erforderlich sind. Azure Key Vault ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
 
-Derzeit funktionieren [Key Vault-Verweise](../app-service/app-service-key-vault-references.md) nicht, wenn Ihre Key Vault-Instanz mit Dienstendpunkten gesichert ist. Zum Herstellen einer Verbindung mit einer Key Vault-Instanz mithilfe der Integration von virtuellen Netzwerken müssen Sie Key Vault im Anwendungscode aufrufen.
+Wenn für die App die VNet-Integration konfiguriert ist, können [Key Vault-Verweise](../app-service/app-service-key-vault-references.md) zum Abrufen von Geheimnissen aus einem Tresor mit Netzwerkeinschränkung verwendet werden.
 
 ## <a name="virtual-network-triggers-non-http"></a>Trigger für virtuelle Netzwerke (nicht HTTP)
 
@@ -172,7 +172,7 @@ Die folgenden APIs ermöglichen es Ihnen, regionale Integrationen virtueller Net
 Weitere Informationen zum Netzwerk und zu Azure Functions:
 
 * [Tutorial zum Einstieg in die Integration des virtuellen Netzwerks](./functions-create-vnet.md)
-* [Häufig gestellte Fragen zu Netzwerken in Functions](./functions-networking-faq.md)
+* [Häufig gestellte Fragen zu Netzwerken in Functions](./functions-networking-faq.yml)
 * [Weitere Informationen zur Integration des virtuellen Netzwerks mit App Service und Functions](../app-service/web-sites-integrate-with-vnet.md)
 * [Weitere Informationen zu virtuellen Netzwerken in Azure](../virtual-network/virtual-networks-overview.md)
 * [Aktivieren weiterer Netzwerkfunktionen und Steuerung mit App Service-Umgebungen](../app-service/environment/intro.md)

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 08/05/2021
 tags: connectors
-ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 32638d71f2c700700be5eb1b2ad63f18969d82a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781557"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340216"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -91,11 +91,12 @@ In der folgenden Liste werden die wichtigsten SFTP-SSH-Funktionen beschrieben, d
 
 * Ihre SFTP-Serveradresse und Kontoanmeldeinformationen, sodass Ihr Workflow auf Ihr SFTP-Konto zugreifen kann. Außerdem benötigen Sie Zugriff auf einen privaten SSH-Schlüssel und das Kennwort für den privaten SSH-Schlüssel. Um große Dateien mit der Blockerstellung hochzuladen, benötigen Sie sowohl Lese- als auch Schreibzugriff auf den Stammordner auf Ihrem SFTP-Server. Andernfalls erhalten Sie einen Fehler „401 – Nicht autorisiert“.
 
-  Der SFTP-SSH-Connector unterstützt sowohl die Authentifizierung mit einem privaten Schlüssel als auch mit einem Kennwort. Der SFTP-SSH-Connector unterstützt jedoch *nur* diese privaten Schlüssel, Formate, Algorithmen und Fingerabdrücke:
+  Der SFTP-SSH-Connector unterstützt sowohl die Authentifizierung mit einem privaten Schlüssel als auch mit einem Kennwort. Der SFTP-SSH-Connector unterstützt jedoch *nur* diese privaten Schlüsselformate, Verschlüsselungsalgorithmen, Fingerabdrücke und Schlüsselaustauschalgorithmen:
 
   * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate. Wenn Ihr privater Schlüssel im PuTTY-Dateiformat (PPK) vorliegt, [konvertieren Sie den Schlüssel zuerst in das OpenSSH-Dateiformat (PEM)](#convert-to-openssh).
   * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
   * **Fingerabdruck**: MD5
+  * **Schlüsselaustauschalgorithmen**: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group-exchange-sha1, diffie-hellman-group16-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1, and diffie-hellman-group1-sha1
 
   Nach dem Hinzufügen eines SFTP-SSH-Triggers oder einer Aktion zu Ihrem Workflow müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, ***geben Sie den Schlüssel nicht manuell ein, noch bearbeiten Sie ihn manuell** _, da dies zu einem Fehler bei der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie den _*_Schlüssel aus Ihrer Datei für private SSH-Schlüssel_*_ kopieren und diesen Schlüssel in die Verbindungsdetails _ *_einfügen_**. Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung zu SFTP mit SSH](#connect) weiter unten in diesem Artikel.
 
@@ -259,9 +260,9 @@ In diesem Abschnitt werden mögliche Lösungen für häufige Fehler oder Problem
 
 Dieser Fehler kann auftreten, wenn Ihre Logik-App nicht in der Lage ist, erfolgreich eine Verbindung mit dem SFTP-Server herzustellen. Es gibt verschiedene mögliche Ursachen für dieses Problem. Probieren Sie daher die folgenden Optionen für die Problembehandlung aus:
 
-* Das Verbindungstimeout beträgt 20 Sekunden. Überprüfen Sie, ob die Leistung Ihres SFTP-Servers ausreicht und zwischengeschaltete Geräte (z. B. Firewalls) keinen Overhead erzeugen. 
+* Das Verbindungstimeout beträgt 20 Sekunden. Überprüfen Sie, ob die Leistung Ihres SFTP-Servers ausreicht und zwischengeschaltete Geräte (z. B. Firewalls) keinen Overhead erzeugen.
 
-* Wenn Sie eine Firewall eingerichtet haben, müssen Sie die **IP-Adresse des verwalteten Connectors** der Positivliste hinzufügen. Informationen zum Ermitteln der IP-Adressen für die Region Ihrer Logik-App finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses).
+* Wenn Sie eine Firewall eingerichtet haben, müssen Sie der Positivliste die **IP-Adresse des verwalteten Connectors** für Ihre Region hinzufügen. Informationen zum Ermitteln der IP-Adressen für die Region Ihrer Logik-App finden Sie unter [Ausgehende IP-Adressen des verwalteten Connectors: Azure Logic Apps](/connectors/common/outbound-ip-addresses).
 
 * Wenn dieser Fehler nur zeitweilig auftritt, ändern Sie die Einstellung für die **Wiederholungsrichtlinie** in der SFTP-SSH-Aktion in eine Wiederholungsanzahl, die höher als die standardmäßigen vier Wiederholungsversuche ist.
 

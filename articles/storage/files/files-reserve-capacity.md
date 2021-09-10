@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 918320cdb24442e551249e4e67d65e4ba85846c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 216ebdeb843f2faa76751f333e838c3cc32a6664
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027474"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539266"
 ---
 # <a name="optimize-costs-for-azure-files-with-reserved-capacity"></a>Optimieren der Kosten für Azure Files mit reservierter Kapazität
 Sie können Sie Geld bei den Speicherkosten für Azure-Dateifreigaben mit reservierter Kapazität sparen. Die reservierte Kapazität von Azure Files bietet Ihnen einen Rabatt auf die Speicherkosten, wenn Sie sich zu einer Reservierung für ein Jahr oder drei Jahre verpflichten. Eine Reservierung stellt eine feste Speicherkapazität für den Zeitraum der Reservierung zur Verfügung.
@@ -22,6 +22,13 @@ Sie können Sie Geld bei den Speicherkosten für Azure-Dateifreigaben mit reserv
 Reservierte Azure Files-Kapazität kann die Kapazitätskosten für das Speichern von Daten in ihren Azure-Dateifreigaben erheblich verringern. Wie viel Sie speichern, hängt von der Dauer Ihrer Reservierung, der Gesamtkapazität, die Sie reservieren möchten, und den Einstellungen für die Ebene und Redundanz ab, die Sie für Ihre Azure-Dateifreigaben ausgewählt haben. Die reservierte Kapazität ermöglicht lediglich einen Abrechnungsrabatt, der keine Auswirkungen auf den Zustand Ihrer Azure Dateifreigabe hat.
 
 Preisinformationen zur Reservierungskapazität für Azure Files finden Sie unter [Preise für Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="reservation-terms-for-azure-files"></a>Reservierungsbedingungen für Azure Files
 In den folgenden Abschnitten werden die Bedingungen einer Azure Files-Reservierung beschrieben.
@@ -35,9 +42,7 @@ Reservierte Azure Files-Kapazität ist für ein einzelnes Abonnement oder für m
 Eine Azure Files-Kapazitätsreservierung deckt nur die Menge der Daten ab, die in einem Abonnement oder einer freigegebenen Ressourcengruppe gespeichert werden. Gebühren für Transaktionen, Bandbreite und Datenübertragung sind nicht in der Reservierung enthalten. Sobald Sie eine Reservierung erworben haben, werden die Kapazitätsgebühren für die jeweiligen Reservierungsattribute rabattiert und nicht mehr als nutzungsbasierte Bezahlung abgerechnet. Weitere Informationen zu Azure-Reservierungen finden Sie unter [Was sind Azure-Reservierungen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md).
 
 ### <a name="supported-tiers-and-redundancy-options"></a>Unterstützte Tarife und Redundanzoptionen
-Reservierte Azure Files-Kapazität steht nur für Standard-Dateifreigaben zur Verfügung, die in allgemeinen Version 2-Speicherkonten (GPv2) bereitgestellt werden. Die reservierte Kapazität ist für Azure-Dateifreigaben in den Premium- oder transaktionsoptimierten Tarifen nicht verfügbar.
-
-Zurzeit unterstützen nur Azure-Dateifreigaben in den heißen und kalten Speicherebenen Reservierungen. Alle Speicherredundanzen unterstützen Reservierungen. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Files-Redundanz](storage-files-planning.md#redundancy).
+Reservierte Azure Files-Kapazität ist für Premium- sowie heiße und kalte Dateifreigaben verfügbar. Die reservierte Kapazität ist nicht für Azure-Dateifreigaben im transaktionsoptimierten Tarif verfügbar. Reservierungen werden von allen Speicherredundanzen unterstützt. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Files-Redundanz](storage-files-planning.md#redundancy).
 
 ### <a name="security-requirements-for-purchase"></a>Sicherheitsanforderungen für den Erwerb
 So erwerben Sie reservierte Kapazität:
@@ -64,12 +69,12 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
     ![Screenshot, der den Erwerb reservierter Kapazität veranschaulicht](./media/files-reserve-capacity/select-reserved-capacity.png)
 
-   |Feld  |Beschreibung  |
+   |Feld  |BESCHREIBUNG  |
    |---------|---------|
    |**Umfang**   |  Zeigt an, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Files-Kapazität in einem beliebigen Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Files-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, gilt der Reservierungsrabatt für die Azure File-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe in diesem Abonnement. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Files-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |
    | **Region** | Die Region, in der die Reservierung wirksam ist. |
-   | **Tier** | Die Ebene, für die die Reservierung wirksam ist. Die Optionen umfassen *heiße* und *kalte*. |
+   | **Tier** | Die Ebene, für die die Reservierung wirksam ist. Zu den Optionen gehören *Premium*, *Heiß* und *Kalt*. |
    | **Redundanz** | Die Redundanzoption für die Reservierung. Die Optionen umfassen *LRS*, *ZRS*, *GRS* und *RA-GZRS*. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Files-Redundanz](storage-files-planning.md#redundancy). |
    | **Fakturierungsintervall** | Gibt an, wie oft das Konto für die Reservierung belastet wird. Die Optionen umfassen *Monatlich* oder *Im Voraus*. |
    | **Größe** | Die Menge der zu reservierenden Kapazität |

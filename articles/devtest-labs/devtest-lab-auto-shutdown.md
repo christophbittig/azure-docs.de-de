@@ -3,12 +3,12 @@ title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTe
 description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfahren für ein Lab festlegen, sodass virtuelle Computer automatisch heruntergefahren werden, wenn sie nicht verwendet werden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93318975"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301994"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
 
@@ -112,7 +112,7 @@ Die Benachrichtigung wird an die Webhook-URL gesendet, wenn ein Webhook angegebe
 
 Wir empfehlen Ihnen die Verwendung von Webhooks, da diese von verschiedenen Apps wie Azure Logic Apps und Slack umfassend unterstützt werden.  Mit Webhooks können Sie eine eigene Methode zum Senden von Benachrichtigungen implementieren. Als Beispiel wird in diesem Artikel beschrieben, wie die Benachrichtigung zum automatischen Herunterfahren so konfiguriert wird, dass mithilfe von Azure Logic Apps eine E-Mail an den VM-Besitzer gesendet wird. Sehen Sie sich zunächst kurz die grundlegenden Schritte zum Aktivieren von Benachrichtigungen zum automatischen Herunterfahren in Ihrem Lab an.
 
-### <a name="create-a-logic-app-that-receives-email-notifications"></a>Erstellen einer Logik-App, die E-Mail-Benachrichtigungen empfängt
+### <a name="create-a-logic-app-that-sends-email-notifications"></a>Erstellen einer Logik-App, die E-Mail-Benachrichtigungen sendet
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) bietet viele Connectors, die es einfach machen, einen Dienst für andere Clients wie Office 365 und Twitter zu integrieren. Ganz allgemein können die Schritte zum Einrichten einer Logik-App für E-Mail-Benachrichtigungen in vier Phasen unterteilt werden:
 

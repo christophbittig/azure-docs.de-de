@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 05/06/2021
-ms.openlocfilehash: 450f4f8d93261412db4963579f8b8525c2028f46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0d5fb976bfeb496e6c69e7df401ed0a756985475
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482450"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113295882"
 ---
 # <a name="log-analytics-workspace-insights-preview"></a>Die Log Analytics-Arbeitsbereich Insights (Vorschau)
 
@@ -108,7 +108,7 @@ In unserem Demoarbeitsbereich sehen Sie deutlich, dass 3 Kuberbetes-Cluster weit
 
 ### <a name="health-tab"></a>Die Registerkarte „Integrität“
 
-Auf dieser Registerkarte werden der Integritätsstatus des Arbeitsbereichs und der Zeitpunkt der letzten Berichtmeldung sowie Betriebsfehler und Warnungen (aus der _LogOperation-Tabelle abgerufen) angezeigt.
+Auf dieser Registerkarte werden der Integritätsstatus des Arbeitsbereichs und der Zeitpunkt der letzten Meldung sowie operative [Fehler und Warnungen](../logs/monitor-workspace.md) (aus der _LogOperation-Tabelle abgerufen) angezeigt. Weitere Informationen zu den aufgeführten Problemen sowie Schritte zur Entschärfung finden Sie [hier](../logs/monitor-workspace.md#categories).
 
 :::image type="content" source="media/log-analytics-workspace-insights-overview/workspace-health.png" alt-text="Screenshot: Die Registerkarte „Integrität des Arbeitsbereichs“" lightbox="media/log-analytics-workspace-insights-overview/workspace-health.png":::
 
@@ -118,7 +118,7 @@ Diese Registerkarte enthält Informationen zu den Agents, die Protokolle an dies
 :::image type="content" source="media/log-analytics-workspace-insights-overview/workspace-agents.png" alt-text="Screenshot: Die Registerkarte „Arbeitsbereich-Agents“" lightbox="media/log-analytics-workspace-insights-overview/workspace-agents.png":::
 
 * Vorgangsfehler und Warnungen: Das sind die Fehler und Warnungen, die sich speziell auf die Agents beziehen. Sie sind nach dem Fehler-/Warnungstitel gruppiert, damit Sie einen genaueren Überblick über verschiedene Probleme erhalten, die auftreten können. Sie können aber erweitert werden, um die genauen Zeiten und Ressourcen anzuzeigen, auf die sie verweisen. Beachten Sie auch, dass Sie auf „Abfrage in Protokollen ausführen“ klicken können, um die _LogOperation-Tabelle über die Protokollierung abzufragen, die Rohdaten anzuzeigen und sie ggf. weiter zu analysieren.
-* Die Arbeitsbereich-Agents: Das sind die Agents, die während des ausgewählten Zeitraums Protokolle an den Arbeitsbereich gesendet haben. Sie können die Agents-Typen (Direct, Gateway, SCOM oder SCOM-Verwaltungsserver) und den Integritätsstatus anzeigen. Als fehlerfrei markierte Agents funktionieren nicht unbedingt gut. Die Markierung deutete nur darauf hin, dass sie in der letzten Stunde einen Heartbeat gesendet haben. Ein ausführlicherer Integritätsstatus wird im folgenden Raster beschrieben.
+* Die Arbeitsbereich-Agents: Das sind die Agents, die während des ausgewählten Zeitraums Protokolle an den Arbeitsbereich gesendet haben. Hier sehen Sie den Typ und den Integritätszustand der Agents. Als fehlerfrei markierte Agents funktionieren nicht unbedingt gut. Die Markierung deutete nur darauf hin, dass sie in der letzten Stunde einen Heartbeat gesendet haben. Ein ausführlicherer Integritätsstatus wird im folgenden Raster beschrieben.
 * Die Agents-Aktivität: In diesem Raster werden die Informationen zu allen Agents, unabhängig davon ob fehlerfrei oder fehlerhaft, angezeigt. Auch hier hat „Fehlerfrei“ nur daraufhin gedeutet, dass der Agent in der letzten Stunde einen Heartbeat gesendet hat. Um den Zustand besser zu verstehen, überprüfen Sie den im Raster angezeigten Trend. Er zeigt, wie viele Heartbeats dieser Agent im Laufe der Zeit gesendet hat. Der tatsächliche Integritätsstatus kann nur hergeleitet werden, wenn Sie wissen, wie die überwachte Ressource funktioniert. Wenn ein Computer beispielsweise absichtlich zu bestimmten Zeiten heruntergefahren wird, können Sie erwarten, dass die Agent-Heartbeats zeitweilig in einem Abgleichmuster angezeigt werden.
 
 

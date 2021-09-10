@@ -3,14 +3,14 @@ title: Integrieren der Azure Automation-Updateverwaltung mit Microsoft Endpoint 
 description: Dieser Artikel hilft Ihnen beim Konfigurieren von Microsoft Endpoint Configuration Manager mit der Updateverwaltung, um Softwareupdates auf Manager-Clients bereitzustellen.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6889d5058a7ca93e410afa0454e108d79bb70569
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575777"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203901"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Integrieren der Updateverwaltung mit Microsoft Endpoint Configuration Manager
 
@@ -34,9 +34,11 @@ Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Microsoft End
 
 Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin über Microsoft Endpoint Configuration Manager verwalten möchten. Azure Automation stellt eine Verbindung mit Microsoft Endpoint Configuration Manager her, um Updates auf Clientcomputer anzuwenden, die mit Ihrem Log Analytics-Arbeitsbereich verbunden sind. Die Updateinhalte sind so im Cache der Clientcomputer verfügbar, als würde die Bereitstellung von Microsoft Endpoint Configuration Manager verwaltet.
 
-1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](/configmgr/sum/deploy-use/deploy-software-updates) beschriebenen Vorgangs eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Microsoft Endpoint Configuration Manager-Hierarchie. Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der Updateverwaltung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.
+1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](/configmgr/sum/deploy-use/deploy-software-updates) beschriebenen Vorgangs eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Microsoft Endpoint Configuration Manager-Hierarchie. Die einzige Einstellung, die anders als eine Standardbereitstellung konfiguriert werden muss, ist die Option **Installationsstichtag** in Endpoint Configuration Manager. Sie muss auf ein zukünftiges Datum festgelegt werden, um sicherzustellen, dass die Updatebereitstellung nur von der Automation-Updateverwaltung initiiert wird. Diese Einstellung wird unter [Schritt 4, Bereitstellen der Softwareupdategruppe](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup) beschrieben.
 
-2. Wählen Sie in Azure Automation die Option **Updateverwaltung** aus. Erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](deploy-updates.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Microsoft Endpoint Configuration Manager-Sammlung auszuwählen. Berücksichtigen Sie dabei die folgenden wichtigen Punkte:
+2. Konfigurieren Sie in Endpoint Configuration Manager die Option **Benutzerbenachrichtigungen**, um das Anzeigen von Benachrichtigungen auf den Zielcomputern zu verhindern. Es wird empfohlen, die Option **In Softwarecenter und allen Benachrichtigungen ausblenden** festzulegen, um zu verhindern, dass ein angemeldeter Benutzer über eine geplante Updatebereitstellung benachrichtigt wird und diese Updates manuell bereitstellt. Diese Einstellung wird unter [Schritt 4, Bereitstellen der Softwareupdategruppe](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup) beschrieben.
+
+3. Wählen Sie in Azure Automation die Option **Updateverwaltung** aus. Erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](deploy-updates.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Microsoft Endpoint Configuration Manager-Sammlung auszuwählen. Berücksichtigen Sie dabei die folgenden wichtigen Punkte:
 
     a. Wenn in der ausgewählten Microsoft Endpoint Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster und nicht die Einstellung **Dauer**, die in der geplanten Bereitstellung definiert ist.
 

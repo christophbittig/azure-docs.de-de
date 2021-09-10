@@ -1,21 +1,21 @@
 ---
-title: Hinzufügen einer Vorschauzielgruppe zu Ihrem Angebot für verwaltete Dienste
-description: Erfahren Sie, wie Sie Ihrem Angebot für verwaltete Dienste in Microsoft Partner Center eine Vorschauzielgruppe hinzufügen.
+title: Hinzufügen einer Vorschauzielgruppe für ein Angebot für verwaltete Dienste
+description: Hinzufügen einer Vorschauzielgruppe für ein Angebot für verwaltete Dienste im Azure Marketplace
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: a30265f335dd279470e6de421f83e682a304788f
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 7/16/2021
+ms.openlocfilehash: 38fbf04f9e8f961cca99bd3e0b23e05e664f4848
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060505"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649715"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-managed-service-offer"></a>Hinzufügen einer Vorschauzielgruppe zu Ihrem Angebot für verwaltete Dienste
+# <a name="add-a-preview-audience-for-a-managed-service-offer"></a>Hinzufügen einer Vorschauzielgruppe für ein Angebot für verwaltete Dienste
 
 In diesem Artikel wird beschrieben, wie Sie mit Partner Center eine Vorschauzielgruppe eines Angebots für verwaltete Dienste im kommerziellen Marketplace konfigurieren. Die Vorschauzielgruppe kann Ihr Angebot überprüfen, bevor es online geschaltet wird.
 
@@ -43,7 +43,8 @@ Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 1
 5. Speichern Sie die Datei als CSV-Datei.
 6. Wählen Sie auf der Seite **Vorschauzielgruppe Audience** den Link **Zielgruppe importieren (CSV)** aus.
 7. Wählen Sie im Dialogfeld **Bestätigen** die Option **Ja** aus, und laden Sie dann die CSV-Datei hoch.
-8. Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte fortfahren.
+
+Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte, **Planübersicht**, fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

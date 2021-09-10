@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: f408a9182727d8e4395972f8d9f7025f8342b4eb
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 814bd3d143be5eb295fe8e354537de8fc1d2934b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635148"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005929"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -91,7 +91,7 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `gpu_index` | Zeichenfolge| Der GPU-Index, auf dem die Ausführung dieses Vorgangs basiert.|
 | `do_calibration` | Zeichenfolge | Gibt an, dass die Kalibrierung aktiviert ist. `do_calibration` muss auf „true“ festgelegt sein, damit **cognitiveservices.vision.spatialanalysis-persondistance** richtig funktioniert. Die Zeichenfolge „do_calibration“ ist standardmäßig auf TRUE festgelegt. |
@@ -184,10 +184,10 @@ Dies ist ein Beispiel für die Ausgabe der Kamerakalibrierung, sofern diese akti
 
 Unter [Ausgabe von Vorgängen der räumlichen Analyse](#spatial-analysis-operation-output) finden Sie weitere Details zu `source_info`.
 
-| ZonePlacementInfo-Feldname | Typ| BESCHREIBUNG|
+| ZonePlacementInfo-Feldname | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `optimalZonePolygon` | Objekt (object)| Ein Polygon im Kamerabild, in dem Linien oder Zonen für Ihre Vorgänge platziert werden können, damit Sie optimale Ergebnisse erzielen. <br/> Jedes Wertpaar stellt den x/y-Wert für die Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen nachverfolgt und gezählt werden. Die Punkte des Polygons basieren auf normalisierten Koordinaten (0 - 1), wobei die obere Linke Ecke die Werte (0,0, 0,0) und die untere rechte Ecke die Werte (1,0, 1,0) aufweist.|
-| `fairZonePolygon` | Objekt (object)| Ein Polygon im Kamerabild, in dem Linien oder Zonen für Ihre Vorgänge platziert werden können, damit Sie gute, aber möglicherweise nicht optimale Ergebnisse erzielen. <br/> Eine detaillierte Erläuterung der Inhalte finden Sie unter `optimalZonePolygon` weiter oben. |
+| `fairZonePolygon` | Objekt| Ein Polygon im Kamerabild, in dem Linien oder Zonen für Ihre Vorgänge platziert werden können, damit Sie gute, aber möglicherweise nicht optimale Ergebnisse erzielen. <br/> Eine detaillierte Erläuterung der Inhalte finden Sie unter `optimalZonePolygon` weiter oben. |
 | `uniformlySpacedPersonBoundingBoxes` | list | Eine Liste von Begrenzungsrahmen für Personen im Kamerabild, gleichmäßig verteilt im tatsächlichen Raum. Werte basieren auf normalisierten Koordinaten (0–1).|
 | `personBoundingBoxGroundPoints` | list | Eine Liste von Koordinaten auf Bodenebene relativ zur Kamera. Jede Koordinate entspricht der rechten unteren Ecke des Begrenzungsrahmens in `uniformlySpacedPersonBoundingBoxes` mit demselben Index. <br/> Weitere Informationen zur Berechnung von Koordinaten auf Bodenebene finden Sie im Abschnitt [JSON-Format für cognitiveservices.vision.spatialanalysis-persondistance: KI Insights](#json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights) im Feld `centerGroundPoint`. |
 
@@ -202,7 +202,7 @@ Sie können die Geschwindigkeitsberechnung über die Parametereinstellungen des 
 "enable_speed": true,
 }
 ```
-| Name | Typ| Beschreibung|
+| Name | type| Beschreibung|
 |---------|---------|---------|
 | `enable_speed` | bool | Gibt an, ob Sie die Geschwindigkeit für die erkannten Personen berechnen möchten. `enable_speed` ist standardmäßig auf „False“ festgelegt. Es wird dringend empfohlen, sowohl Geschwindigkeit als auch Ausrichtung zu aktivieren, um die besten Schätzwerte zu erhalten. |
 
@@ -228,7 +228,7 @@ Sie können die Geschwindigkeitsberechnung über die Parametereinstellungen des 
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
@@ -273,7 +273,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `lines` | list| Die Liste mit den Linien.|
 | `name` | Zeichenfolge| Der Anzeigename für diese Linie.|
@@ -319,7 +319,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
@@ -355,13 +355,13 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 }
 ```
 
-| Name | Typ| BESCHREIBUNG|
+| Name | type| BESCHREIBUNG|
 |---------|---------|---------|
 | `zones` | list| Die Liste mit den Zonen. |
 | `name` | Zeichenfolge| Der Anzeigename für diese Zone.|
 | `polygon` | list| Jedes Wertpaar stellt den x/y-Wert für Scheitelpunkte eines Polygons dar. Mit dem Polygon werden die Bereiche dargestellt, in denen Personen gezählt werden und der Abstand zwischen den Personen gemessen wird. Die Gleitkommawerte stellen die Position des Scheitelpunkts relativ zur oberen linken Ecke dar. Zum Berechnen der absoluten x/y-Werte multiplizieren Sie diese Werte mit der Framegröße. 
 | `threshold` | float| Ereignisse werden ausgegeben, wenn der Personenwert größer als diese Anzahl von Pixeln innerhalb der Zone ist. |
-| `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `persondistance` lauten.|
+| `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `people_distance` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
 | `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`.|
 | `minimum_distance_threshold` | float| Ein Abstand in Fuß, bei dem das Ereignis „TooClose“ ausgelöst wird, wenn Personen weniger als den angegebenen Abstand voneinander aufweisen.|
@@ -1160,7 +1160,7 @@ Um eine optimale Leistung und Auslastung der GPUs zu erzielen, können Sie belie
       }
   }
   ```
-| Name | Typ| Beschreibung|
+| Name | type| Beschreibung|
 |---------|---------|---------|
 | `batch_size` | INT | Wenn alle Kameras die gleiche Auflösung haben, legen Sie `batch_size` auf die Anzahl der Kameras fest, die in diesem Vorgang verwendet werden. Andernfalls legen Sie `batch_size` auf 1 fest oder belassen es beim Standardwert (1), was bedeutet, dass kein Batch unterstützt wird. |
 

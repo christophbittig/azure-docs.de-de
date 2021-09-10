@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 546537003d599dc66f77ace31471e04c8cef2d43
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: d7424b6ad88bc7e77a4b7d191feb54658f67ff21
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854826"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220675"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -254,9 +254,9 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -name "KeyVaultForWindows" `
+        az vmss extension set --name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -resource-group "<resourcegroup>" `
+         --resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -288,10 +288,16 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
 #### <a name="logs-and-configuration"></a>Protokolle und Konfiguration
+Die Key Vault-VM-Erweiterungsprotokolle sind nur lokal auf dem virtuellen Computer vorhanden und bei der Problembehandlung am informativsten.
 
-```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
-```
+|Standort|BESCHREIBUNG|
+|--|--|
+| C:\WindowsAzure\Logs\WaAppAgent.log | Zeigt an, wann ein Update der Erweiterung erfolgt ist. |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\ | Zeigt den Status des Zertifikatdownloads an. Der Speicherort für den Download ist immer der persönliche Windows-Speicher (certlm.msc) des Computers. |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\RuntimeSettings\ |   Die Key Vault-VM-Erweiterungsdienstprotokolle zeigen den Status des Diensts „akvvm_service“ an. |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\Status\  | Die Konfiguration und die Binärdateien für den Key Vault-VM-Erweiterungsdienst. |
+|||  
+
 
 ### <a name="support"></a>Support
 

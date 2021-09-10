@@ -7,12 +7,12 @@ ms.date: 06/17/2021
 author: ThomasWeiss
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fa99ba28bacd2132191679c614c2be73fc0a80a8
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 623d541b3b004bf7d85537674bf17aa89528e767
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123107852"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284637"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Rollenbasierte Azure-Zugriffssteuerung in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -70,7 +70,7 @@ Durch diese Einstellung werden sämtliche Cosmos-Ressourcenänderungen durch Cli
 
 - Ändern von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen
 
-Wenn Ihre Anwendungen (oder Benutzer über das Azure-Portal) eine dieser Aktionen ausführen, müssen sie für die Ausführung mithilfe von [ARM-Vorlagen](sql/manage-with-templates.md), per [PowerShell](sql/manage-with-powershell.md), über die [Azure CLI](sql/manage-with-cli.md), mithilfe von REST oder per [Azure-Verwaltungsbibliothek](https://github.com/Azure-Samples/cosmos-management-net) migriert werden. Beachten Sie, dass die Azure-Verwaltung in [mehreren Sprachen](/azure/?product=featured#languages-and-tools) verfügbar ist.
+Wenn Ihre Anwendungen (oder Benutzer über das Azure-Portal) eine dieser Aktionen ausführen, müssen sie für die Ausführung mithilfe von [ARM-Vorlagen](./manage-with-templates.md), per [PowerShell](manage-with-powershell.md), über die [Azure CLI](manage-with-cli.md), mithilfe von REST oder per [Azure-Verwaltungsbibliothek](https://github.com/Azure-Samples/cosmos-management-net) migriert werden. Beachten Sie, dass die Azure-Verwaltung in [mehreren Sprachen](/azure/index?product=featured#languages-and-tools) verfügbar ist.
 
 ### <a name="set-via-arm-template"></a>Festlegen per ARM-Vorlage
 

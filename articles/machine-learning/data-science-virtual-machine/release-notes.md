@@ -2,23 +2,48 @@
 title: Neuigkeiten für Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: Versionshinweise für Azure Data Science Virtual Machine
-author: timoklimmer
+author: michalmar
 ms.service: data-science-vm
-ms.author: tklimmer
-ms.date: 05/25/2021
+ms.author: mimarusa
+ms.date: 07/16/2021
 ms.topic: reference
-ms.openlocfilehash: a3bb8f3c7174fe301a8c81396bb46b6762e70796
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b74b535a6d6e00f83dd659728bb1ed930e1fb7dd
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409845"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371376"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine – Versionshinweise
 
 Dieser Artikel enthält Informationen zu Azure Data Science Virtual Machine-Releases. Eine vollständige Liste der enthaltenen Tools sowie Versionsnummern finden Sie auf [dieser Seite](./tools-included.md).
 
 In der [Liste mit bekannten Problemen](reference-known-issues.md) finden Sie Informationen zu bekannten Fehlern und Problemumgehungen.
+
+## <a name="2021-07-12"></a>2021-07-12
+
+Neues Image für [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)
+
+Hauptänderungen:
+
+- Update auf PyTorch 1.9.0
+- Update der Azure CLI auf 2.26.1
+- Update der Azure Machine Learning-Erweiterung der Azure CLI auf 1.29.0
+- Update der VS Code-Version auf 1.58.1
+- Verbesserung der Stabilität und kleinere Fehlerbehebungen 
+
+
+## <a name="2021-06-22"></a>2021-06-22
+
+Neues Image für [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)
+
+Version: 22.06.21
+
+Hauptänderungen:
+
+- Update auf PyTorch 1.9.0
+- Ein Fehler wurde behoben, bei dem Git nicht verfügbar war.
+
 
 ## <a name="2021-06-01"></a>2021-06-01
 
@@ -41,8 +66,6 @@ Mehrere Symbole wurden vom Desktop entfernt.
 ## <a name="2021-05-22"></a>2021-05-22
 
 Neues Image für [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview)
-
-Ausgewählte Versionsupdates:
 
 Version: 21.05.22
 
@@ -73,9 +96,6 @@ Firefox, Apache Drill und Microsoft Integration Runtime wurden entfernt.
 
 <br/>
 Dunkler Modus, geänderte Symbole auf dem Desktop, Änderung an den Hintergrundbildern.
-
-<br/>
-Das Image wurde für die Verwendung in einer Gen2-VM aktiviert.
 
 ## <a name="2021-05-12"></a>2021-05-12
 
