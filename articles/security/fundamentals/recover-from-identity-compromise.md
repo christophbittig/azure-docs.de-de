@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: 965de895cbe7e030ff009ba11a0947048ce8b4c1
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f2f99e7c9a901b6e76b3d4bbe87967527f836d1b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122350955"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864343"
 ---
 # <a name="recovering-from-systemic-identity-compromise"></a>Wiederherstellen nach kompromittierter Systemidentität
 
@@ -67,7 +67,7 @@ Das Reagieren auf systemische Identitätskompromittierungen sollte die Schritte 
 
 Bevor Sie reagieren, müssen Sie gewährleisten, dass Sie sicher kommunizieren können, ohne dass der Angreifer Sie abhört. Stellen Sie sicher, dass Sie alle Kommunikationen im Zusammenhang mit dem Vorfall isolieren, damit der Angreifer nicht von Ihren Ermittlungen erfährt und von Ihren Reaktionsmaßnahmen überrascht wird.
 
-Zum Beispiel:
+Beispiel:
 
 1. Für die erste 1:1 – und Gruppenkommunikation können Sie PSTN-Anrufe, Konferenz-Brücken, die nicht mit der Unternehmensinfrastruktur verbunden sind, und End-to-End-verschlüsselte Messaginglösungen verwenden.
 
@@ -150,14 +150,14 @@ Berücksichtigen Sie insbesondere alle diese Änderungen, die zusammen mit ander
 
 ### <a name="review-administrative-rights-in-your-environments"></a>Überprüfen Sie die Administratorrechte in Ihren Umgebungen
 
-Überprüfen Sie die Administratorrechte sowohl in Ihrer Cloudumgebung als auch in ihrer lokalen Umgebung. Zum Beispiel:
+Überprüfen Sie die Administratorrechte sowohl in Ihrer Cloudumgebung als auch in ihrer lokalen Umgebung. Beispiel:
 
 |Environment  |BESCHREIBUNG  |
 |---------|---------|
 |**Alle Cloudumgebungen**    |       – Überprüfen Sie alle privilegierten Zugriffsrechte in der Cloud und entfernen Sie alle unnötigen Berechtigungen<br>    – Implementieren Sie Azure AD Privileged Identity Management (PIM)<br>    – Richten Sie Richtlinien für bedingten Zugriff, um den Administratorzugriff während der Härtung zu beschränken, ein      |
 |**Alle lokalen Umgebungen**     |       – Überprüfen Sie den lokalen privilegierten Zugriff und Entfernen Sie unnötige Berechtigungen<br>   – Reduzieren Sie die Mitgliedschaft in den integrierten Gruppen<br>    – Überprüfen Sie die Active Directory-Delegationen<br>    – Härten Sie Ihre Ebene 0-Umgebung und beschränken Sie, wer Zugriff auf die Objekte der Ebene-0 hat      |
 |**Alle Unternehmensanwendungen**     | Überprüfen Sie, ob delegierte Berechtigungen und Zustimmungsberechtigungen erteilt wurden, die eine der folgenden Aktionen zulassen: <br><br>  – Ändern von privilegierten Benutzern und Rollen <br>– Lesen oder Zugreifen auf alle Postfächer <br>– Senden oder Weiterleiten von E-Mails im Namen anderer Benutzer <br>– Zugreifen auf alle OneDrive oder SharePoint Websiteinhalte <br>– Hinzufügen von Dienstprinzipals, die Lese-/Schreibzugriff auf das Verzeichnis haben      |
-|**Microsoft 365-Umgebungen**     |Überprüfen Sie die Zugriffs- und Konfigurationseinstellungen für Ihre Microsoft 365 Umgebung, einschließlich: <br>– SharePoint Online-Freigaben <br>– Microsoft Teams <br>– PowerApps <br>– Microsoft OneDrive for Business          |
+|**Microsoft 365-Umgebungen**     |Überprüfen Sie die Zugriffs- und Konfigurationseinstellungen für Ihre Microsoft 365 Umgebung, einschließlich: <br>– SharePoint Online-Freigaben <br>– Microsoft Teams <br>– Power Apps <br>– Microsoft OneDrive for Business          |
 | **Überprüfen von Benutzerkonten in Ihren Umgebungen**   |– Überprüfen und entfernen Sie Gastbenutzerkonten, die nicht mehr benötigt werden. <br>– Überprüfen Sie die E-Mail-Konfigurationen für Delegaten, Postfachordnerberechtigungen, Registrierungen mobiler ActiveSync-Geräte, Posteingangsregeln und Outlook Weboptionen. <br>– Überprüfen Sie die ApplicationImpersonation-Rechte, und reduzieren Sie die Verwendung der Legacyauthentifizierung so weit wie möglich. <br>– Überprüfen Sie, ob MFA erzwungen wird und ob die Kontaktinformationen für MFA und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) für alle Benutzer korrekt sind.         |
 |     |         |
 
@@ -338,7 +338,7 @@ Im Falle eines Angriffs, soll der Angreifer überhaupt keinen Zugriff behalten. 
     Get-MsolFederationProperty -DomainName <domain>
     ```
 
-    Zum Beispiel:
+    Beispiel:
 
     ```powershell
     ...

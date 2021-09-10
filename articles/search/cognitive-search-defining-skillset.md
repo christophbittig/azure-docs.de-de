@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/15/2021
-ms.openlocfilehash: 5f47eef6d3aeecd64cb3777b1d0858b4904d137d
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 4425a4b7c29bc0f4bc237c021610087c933631d8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356458"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224038"
 ---
 # <a name="create-a-skillset-in-azure-cognitive-search"></a>Erstellen eines Skillsets in Azure Cognitive Search
 
@@ -227,6 +227,14 @@ Nach dem Ausführen des Indexers können Sie mit dem [Such-Explorer](search-expl
 Das folgende Beispiel zeigt die Ergebnisse einer Entitätserkennungs-Fertigkeit, die Personen, Orte, Unternehmen und andere Entitäten in einem Textblock erkannt hat. Wenn Sie die Ergebnisse im Such-Explorer anzeigen, können Sie ermitteln, ob eine Fertigkeit ihrer Projektmappe einen Mehrwert für Ihre Lösung bietet.
 
 :::image type="content" source="media/cognitive-search-defining-skillset/doc-in-search-explorer.png" alt-text="Ein Screenshot, der ein Dokuments im Such-Explorer zeigt.":::
+
+## <a name="tips-for-a-first-skillset"></a>Tipps für ein erstes Skillset
+
++ Stellen Sie eine repräsentative Stichprobe Ihrer Inhalte in Blob Storage oder einer anderen unterstützten Indexerdatenquelle zusammen, und führen Sie den **Datenimport**-Assistenten aus, um das Skillset, den Index, den Indexer und das Datenquellenobjekt zu erstellen. 
+
+  Der Assistent automatisiert mehrere Schritte, die beim ersten Mal schwierig sein können, wie z. B. die Definition der Felder in einem Index, die Definition von Ausgabefeldzuordnungen in einem Indexer und Projektionen in einem Wissensspeicher, wenn Sie einen solchen verwenden. Für einige Skills, wie OCR oder Bildanalyse, fügt der Assistent Hilfsskills hinzu, die Bild- und Textinhalte zusammenführen, die bei der Dokumententschlüsselung getrennt wurden.
+
++ Alternativ können Sie Postman-Skillsammlungen importieren, die vollständige Beispiele für alle Objektdefinitionen bereitstellen, die zum Auswerten eines Skills erforderlich sind, vom Skillset bis hin zu einem Index, den Sie abfragen können, um die Ergebnisse einer Transformation anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

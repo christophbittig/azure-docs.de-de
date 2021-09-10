@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Übersicht über die Verwendungsmöglichkeiten von Azure Digital Twins.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 8/23/2021
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 519a64ac9e921624f4e8c03fc91f842eacd2672c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6dfb4faac6fd5bb11dfc1fbb928d9ba377ec1fe3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472953"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224385"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
@@ -40,7 +40,7 @@ Modelle werden mit der JSON-ähnlichen Sprache [Digital Twins Definition Languag
 * Darüber hinaus werden mit Modellen semantische **Beziehungen** zwischen ihren Entitäten definiert. Mit diesen Beziehungen lassen sich Zwillinge in einem Graphen verbinden, der Aufschluss über die Interaktionen der Zwillinge gibt. In einer Beschreibung Ihrer Umgebung können Modelle als Nomen und die Beziehungen als Verben betrachtet werden.
 * Außerdem lassen sich Zwillinge mithilfe der Modellvererbung spezialisieren. Ein Modell kann Informationen von einem anderen Modell erben.
 
-DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu zählen u. a. [IoT Plug & Play (PnP)](../iot-develop/overview-iot-plug-and-play.md) und [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Dadurch wird sichergestellt, dass Ihre Azure Digital Twins-Lösung mit anderen Bereichen des Azure-Ökosystems verbunden werden kann und kompatibel ist.
+DTDL wird auch in anderen Azure IoT-Diensten für Datenmodelle verwendet. Dazu zählen u. a. [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) und [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Diese Art der Gemeinsamkeit stellt sicher, dass Ihre Azure Digital Twins-Lösung mit anderen Bereichen des Azure-Ökosystems verbunden werden kann und kompatibel ist.
 
 ### <a name="live-execution-environment"></a>Liveausführungsumgebung
 
@@ -64,7 +64,7 @@ Darüber hinaus können Sie Azure Digital Twins über REST-APIs oder Connectors 
 
 ### <a name="output-to-adx-tsi-storage-and-analytics"></a>Ausgabe an ADX, TSI, Speicher- oder Analysedienste
 
-Die Daten in Ihrem Azure Digital Twins-Modell können für weitere Analysen oder zum Speichern an nachgelagerte Azure-Dienste weitergeleitet werden. Zu diesem Zweck werden **Ereignisrouten** verwendet, die für den gewünschten Datenfluss [Event Hub](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md) oder [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nutzen.
+Die Daten in Ihrem Azure Digital Twins-Modell können für weitere Analysen oder zum Speichern an nachgelagerte Azure-Dienste weitergeleitet werden. Diese Funktionalität wird durch **Ereignisrouten** bereitgestellt, die für den Datenfluss [Event Hub](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md) oder [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nutzen.
 
 Mit Ereignisrouten lassen sich u. a. folgende Aufgaben ausführen:
 * Senden von Daten digitaler Zwillinge an ADX zum Abfragen mit dem [Azure Digital Twins-Plug-In für Azure Data Explorer (ADX)](concepts-data-explorer-plugin.md)
@@ -74,14 +74,14 @@ Mit Ereignisrouten lassen sich u. a. folgende Aufgaben ausführen:
 * Analysieren von Azure Digital Twins-Daten mit [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) oder anderen Microsoft-Datenanalysetools
 * Integrieren umfangreicherer Workflows mit Logic Apps
 
-Auch auf diese Weise lässt sich Azure Digital Twins mit einer umfangreicheren Lösung verbinden, um Ihre individuellen Anforderungen bei der kontinuierlichen Arbeit mit diesen Erkenntnissen zu erfüllen.
+Diese Option stellt eine andere Möglichkeit dar, mit der sich Azure Digital Twins mit einer umfangreicheren Lösung verbinden kann, um Ihre individuellen Anforderungen bei der kontinuierlichen Arbeit mit diesen Erkenntnissen zu erfüllen.
 
 ## <a name="azure-digital-twins-in-a-solution-context"></a>Azure Digital Twins im Lösungskontext
 
 Azure Digital Twins wird häufig mit anderen Azure-Diensten in einer umfangreicheren IoT-Lösung eingesetzt. 
 
 Eine umfassende Lösung mit Azure Digital Twins könnte folgende Elemente beinhalten:
-* Die Azure Digital Twins-Dienstinstanz. Diese Instanz speichert Ihre Zwillingsmodelle sowie Ihr Zwillingsdiagramm mit dem jeweiligen Status und orchestriert die Ereignisverarbeitung.
+* Die Azure Digital Twins-Dienstinstanz. Dieser Dienst speichert Ihre Zwillingsmodelle sowie Ihr Zwillingsdiagramm mit dem jeweiligen Status und orchestriert die Ereignisverarbeitung.
 * Eine oder mehrere Client-Apps, die die Grundlage der Azure Digital Twins-Instanz bilden. Diese Apps werden zum Konfigurieren von Modellen, Erstellen der Topologie und Extrahieren von Erkenntnissen aus dem Zwillingsdiagramm verwendet.
 * Eine oder mehrere externe Computeressourcen zur Verarbeitung von Ereignissen, die von Azure Digital Twins generiert werden, oder verbundene Datenquellen (z. B. Geräte). Eine gängige Möglichkeit zur Bereitstellung von Computeressourcen ist die Verwendung von [Azure Functions](../azure-functions/functions-overview.md).
 * Ein IoT-Hub für Geräteverwaltung und zur Bereitstellung von IoT-Datenstromfunktionen.
@@ -93,7 +93,7 @@ Die folgende Abbildung zeigt, wie sich Azure Digital Twins im Kontext einer grö
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-Informationen zu den **Diensteinschränkungen** für Azure Digital Twins finden Sie unter [Einschränkungen des Azure Digital Twins-Diensts](reference-service-limits.md). Dies kann nützlich sein, wenn Sie mit dem Dienst zusammenarbeiten, um die Funktions-und Raten Einschränkungen zu verstehen, und welche Grenzwerte bei Bedarf angepasst werden können.
+Informationen zu den **Diensteinschränkungen** für Azure Digital Twins finden Sie unter [Einschränkungen des Azure Digital Twins-Diensts](reference-service-limits.md). Diese Ressource kann nützlich sein, wenn Sie mit dem Dienst zusammenarbeiten, um die Funktions-und Raten Einschränkungen zu verstehen, und welche Grenzwerte bei Bedarf angepasst werden können.
 
 ## <a name="terminology"></a>Begriff
 
@@ -103,4 +103,4 @@ Eine Liste **allgemeiner IoT-Begriffe** und ihrer Verwendung in den Azure IoT-D
 
 * Machen Sie sich mit der Arbeit mit Azure Digital Twins in der folgenden Schnellstartanleitung vertraut: [Erste Schritte mit dem Azure Digital Twins-Explorer](quickstart-azure-digital-twins-explorer.md).
 
-* Oder, Informieren Sie sich über Konzepte für Azure Digital Twins mit den [Benutzerdefinierten Modellen](concepts-models.md).
+* Oder, Informieren Sie sich über Konzepte für Azure Digital Twins mit [DTDL-Modellen](concepts-models.md).

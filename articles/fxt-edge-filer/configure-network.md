@@ -6,12 +6,12 @@ ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: fbbb9837a54d323b568e42c90132c799c3927c30
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414531"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867501"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Tutorial: Konfigurieren der Netzwerkeinstellungen des Clusters
 
@@ -108,8 +108,8 @@ Konfigurieren Sie Ihren DNS-Server so, dass er clientseitige Clusteradressen wie
 
 Auf der linken Seite wird ein virtueller Clusterserver und in der Mitte und auf der rechten Seite werden IP-Adressen angezeigt. Konfigurieren Sie die einzelnen Clientzugriffspunkte mit A-Einträgen und Zeigern, wie in der Abbildung gezeigt.
 
-![Diagramm: Roundrobin-DNS für einen Cluster; ein alternativer Textlink zu weiterführenden Informationen folgt im Anschluss an das Bild](media/fxt-cluster-config/fxt-rrdns-diagram.png)
-[Detaillierte Beschreibung in Textform](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="Diagramm der Cluster-Roundrobin-DNS-Konfiguration.":::
+   <Das Diagramm zeigt Verbindungen zwischen drei Kategorien von Elementen: einem einzelnen vServer (links), drei IP-Adressen (mittlere Spalte) und drei Clientschnittstellen (rechte Spalte). Ein einzelner Kreis auf der linken Seite mit der Bezeichnung „vserver1“ ist durch Pfeile verbunden, die auf drei Kreise zeigen, die mit den IP-Adressen 10.0.0.10, 10.0.0.11 und 10.0.0.12 bezeichnet sind. Die Pfeile vom vserver-Kreis zu den drei IP-Adressenkreisen haben die Beschriftung „A“. Jeder der IP-Adressenkreise ist durch zwei Pfeile mit einem Kreis verbunden, der als Clientschnittstelle bezeichnet ist. Der Kreis mit der IP-Adresse 10.0.0.10 ist mit „vs1-client-IP-10“ verbunden, der Kreis mit der IP-Adresse 10.0.0.11 ist mit „vs1-client-IP-11“ verbunden, und der Kreis mit der IP-Adresse 10.0.0.12 ist mit „vs1-client-IP-12“ verbunden. Die Verbindungen zwischen den IP-Adressenkreisen und den Clientschnittstellenkreisen sind zwei Pfeile: ein Pfeil mit der Bezeichnung „PTR“, der vom IP-Adressenkreis auf den Kreis der Clientschnittstelle zeigt, und ein Pfeil mit der Bezeichnung „A“, der vom Kreis der Clientschnittstelle auf den IP-Adressenkreis zeigt.> :::image-end:::
 
 Jede clientseitige IP-Adresse muss einen eindeutigen Namen für die interne Verwendung durch den Cluster aufweisen. (In diesem Diagramm werden die Client-IPs aus Gründen der Übersichtlichkeit mit „vs1-client-IP-*“ bezeichnet, aber in der Produktionsumgebung sollten Sie eine prägnantere Bezeichnung verwenden, z. B. „client*“.)
 

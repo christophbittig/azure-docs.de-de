@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.author: sharrai
 ms.date: 08/19/2021
-ms.openlocfilehash: a7bc8a1d2baedbe9c17ed2fac66f7c95015fb37c
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 356d81e93997922b0ae9b2e82bf7670449f168af
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445507"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258810"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -137,7 +137,7 @@ Einstellung | Details
 --- | ---
 Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Setupprotokolle | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
-`/Role` | Erforderlicher Installationsparameter. Gibt an, ob der Mobilitätsdienst oder das Masterziel installiert werden soll.
+`/Role` | Erforderlicher Installationsparameter. Gibt an, ob der Mobilitätsdienst (Agent) oder das Masterziel (MasterTarget) installiert werden soll.  Hinweis: In früheren Versionen waren Mobilitätsdienst (Mobility Service, MS) oder Masterziel (MasterTarget, MT) die richtigen Switches.
 `/InstallLocation`| Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
 `/Platform` | Erforderlich. Gibt die Plattform an, auf der der Mobilitätsdienst installiert wird: <br/> **VMware** für VMware-VMs/physische Server. <br/> **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
 `/Silent`| Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
@@ -159,10 +159,10 @@ Agent-Konfigurationsprotokolle | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConf
    tar -xvf Microsoft-ASR_UA_version_LinuxVersion_GA_date_release.tar.gz
    ```
 
-2. Führen Sie die Installation auf folgende Weise aus:
+2. Führen Sie die Installation wie folgt durch (das Stammkonto wird nicht benötigt, aber Stammberechtigungen sind erforderlich):
 
    ```shell
-   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   sudo ./install -d <Install Location> -r Agent -v VmWare -q
    ```
 
 3. Nach Abschluss der Installation muss der Mobilitätsdienst beim Konfigurationsserver registriert werden. Führen Sie den folgenden Befehl aus, um den Mobilitätsdienst beim Konfigurationsserver zu registrieren.

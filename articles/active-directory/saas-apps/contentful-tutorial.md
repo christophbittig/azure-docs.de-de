@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 300bde794afbd3c2db4e9049e28979933b19ac79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a5d3e8aa303527e7baaa465e911d3b869a975cf5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099942"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Contentful
 
@@ -39,6 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Contentful unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Contentful unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Contentful unterstützt die [automatisierte Benutzerbereitstellung](contentful-provisioning-tutorial.md).
 
 > [!NOTE]
 > Da der Bezeichner dieser Anwendung ein fester Zeichenfolgenwert ist, kann pro Mandant nur je eine Instanz konfiguriert werden.
@@ -146,6 +147,8 @@ Funktioniert das nicht, wenden Sie sich an das [Contentful-Supportteam](mailto:s
 ### <a name="create-contentful-test-user"></a>Erstellen eines Contentful-Testbenutzers
 
 In diesem Abschnitt wird in Contentful ein Benutzer namens B. Simon erstellt. Contentful unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Contentful vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+Außerdem unterstützt Contentful die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./contentful-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

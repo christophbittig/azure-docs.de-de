@@ -8,25 +8,27 @@ ms.author: aakande
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: cda66e72dac7e2adde5dbf2a59e13db5a236d37d
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 4b052e6ac5746d771e7725b39c13fd57b20facb8
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340403"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038462"
 ---
 # <a name="entity-linking-cognitive-skill"></a>Kognitiver Skill: Entitätsverknüpfung
 
-Der Skill **Entitätsverknüpfung** extrahiert verknüpfte Entitäten aus Text. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
+Der Skill **Entitätsverknüpfung** gibt eine Liste der erkannten Entitäten mit Links zu Artikeln in einer bekannten Wissensdatenbank (Wikipedia) zurück.
 
 > [!NOTE]
-> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
+> Dieser Skill ist an die Cognitive Services-[Textanalyse](../cognitive-services/text-analytics/overview.md) gebunden und erfordert eine [abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
 >
 
-## <a name="odatatype"></a>@odata.type  
+## <a name="odatatype"></a>@odata.type
+
 Microsoft.Skills.Text.V3.EntityLinkingSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
+
 Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](/dotnet/api/system.string.length)). Wenn Sie Ihre Daten vor dem Senden an den Skill „Entitätsverknüpfung“ aufteilen müssen, denken Sie daran, den [Skill „Textaufteilung“](cognitive-search-skill-textsplit.md) zu verwenden.
 
 ## <a name="skill-parameters"></a>Skillparameter
@@ -39,7 +41,6 @@ Bei den Parameternamen, die alle optional sind, muss die Groß-/Kleinschreibung 
 | `minimumPrecision` | Ein Wert zwischen 0 und 1 ein. Wenn die Zuverlässigkeitsbewertung (in der `entities`-Ausgabe) unter diesem Wert liegt, wird die Entität nicht zurückgegeben. Die Standardeinstellung ist 0. |
 | `modelVersion` | (Optional) Die Version des Modells, die beim Aufruf des Textanalysediensts verwendet werden soll. Wenn nichts angegeben ist, wird standardmäßig die neueste verfügbare Version verwendet. Es empfiehlt sich, diesen Wert nur anzugeben, wenn es unbedingt notwendig ist. Weitere Einzelheiten finden Sie unter [Versionsverwaltung der Modelle in der Textanalyse-API](../cognitive-services/text-analytics/concepts/model-versioning.md).|
 
-
 ## <a name="skill-inputs"></a>Skilleingaben
 
 | Eingabename      | BESCHREIBUNG                   |
@@ -49,13 +50,11 @@ Bei den Parameternamen, die alle optional sind, muss die Groß-/Kleinschreibung 
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-
 | Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | `entities` | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>name (der tatsächliche Entitätsname, wie er im Text angezeigt wird)</li> <li>id </li> <li>language (die Sprache des Texts, wie vom Skill ermittelt)</li> <li>url (die URL zu dieser Entität)</li> <li>bingId (die Bing-ID für dies verknüpfte Entität)</li> <li>dataSource (die der URL zugeordnete Datenquelle) </li> <li>matches (ein Array aus komplexen Typen, das `text`, `offset`, `length` und `confidenceScore` enthält)</li></ul>|
 
-
-##    <a name="sample-definition"></a>Beispieldefinition
+## <a name="sample-definition"></a>Beispieldefinition
 
 ```json
   {
@@ -81,7 +80,8 @@ Bei den Parameternamen, die alle optional sind, muss die Groß-/Kleinschreibung 
     ]
 }
 ```
-##    <a name="sample-input"></a>Beispieleingabe
+
+## <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -98,7 +98,7 @@ Bei den Parameternamen, die alle optional sind, muss die Groß-/Kleinschreibung 
 }
 ```
 
-##    <a name="sample-output"></a>Beispielausgabe
+## <a name="sample-output"></a>Beispielausgabe
 
 ```json
 {
@@ -134,6 +134,7 @@ Bei den Parameternamen, die alle optional sind, muss die Groß-/Kleinschreibung 
 Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](../cognitive-services/text-analytics/overview.md) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](/dotnet/api/system.globalization.stringinfo)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="warning-cases"></a>Warnungsfälle
+
 Wird der Sprachcode für das Dokument nicht unterstützt, wird eine Warnung zurückgegeben, und es werden keine Entitäten extrahiert.
 
 ## <a name="see-also"></a>Weitere Informationen

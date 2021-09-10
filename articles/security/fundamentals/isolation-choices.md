@@ -3,9 +3,8 @@ title: Isolation in der öffentlichen Azure-Cloud | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Azure die Isolation gegen bösartige und nicht bösartige Benutzer sicherstellt und Architekten eine Auswahl von Isolationsoptionen bietet.
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: TomSh
 manager: rkarlin
-editor: TomSh
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
-ms.author: TomSh
-ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.author: terrylan
+ms.openlocfilehash: 3ef9f5cb6e0175a501b05da6e79194da76b18dae
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842837"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257226"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -42,9 +41,9 @@ Die Bezeichnung „Azure-Mandant“ (Azure-Abonnement) bezieht sich auf eine Kun
 
 Benutzer, Gruppen und Anwendungen aus diesem Verzeichnis können Ressourcen im Azure-Abonnement verwalten. Sie können diese Zugriffsrechte mit dem Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zuweisen. Ein Azure AD-Mandant ist logisch isoliert und nutzt Sicherheitsgrenzen, sodass kein Kunde auf andere Mandanten zugreifen oder diese kompromittieren kann – weder in böswilliger Absicht noch versehentlich. Azure AD wird auf „Bare-Metal“-Servern ausgeführt, die in einem abgetrennten Netzwerksegment isoliert sind, für das per Paketfilterung auf Hostebene und über die Windows-Firewall unerwünschte Verbindungen und Datenübertragungen blockiert werden.
 
-- Zugriff auf Daten in Azure AD erfordert die Benutzerauthentifizierung über einen Sicherheitstokendienst (Security Token Service, STS). Informationen zu Vorhandensein, Aktivierungsstatus und Rolle des Benutzers verwendet das Autorisierungssystem, um festzustellen, ob der Benutzer in dieser Sitzung für den angeforderten Zugriff auf den Zielmandanten autorisiert ist.
+:::image type="content" source="media/isolation-choices/azure-isolation-fig-1.svg" alt-text="Diagramm des Azure-Mandanten." border="false":::
 
-![Azure-Mandant](./media/isolation-choices/azure-isolation-fig1.png)
+- Zugriff auf Daten in Azure AD erfordert die Benutzerauthentifizierung über einen Sicherheitstokendienst (Security Token Service, STS). Informationen zu Vorhandensein, Aktivierungsstatus und Rolle des Benutzers verwendet das Autorisierungssystem, um festzustellen, ob der Benutzer in dieser Sitzung für den angeforderten Zugriff auf den Zielmandanten autorisiert ist.
 
 - Mandanten sind diskrete Container, zwischen denen keine Beziehung besteht.
 
@@ -90,7 +89,7 @@ Weitere Beispiele für Azure Active Directory-Funktionen sind:
 
 - Azure AD bietet Identity-as-a-Service durch Verbund (unter Verwendung der [Active Directory-Verbunddienste](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)) sowie Synchronisierung und Replikation mit lokalen Verzeichnissen.
 
-- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ist der Dienst für die mehrstufige Authentifizierung, bei der Benutzer Anmeldevorgänge über eine mobile App, einen Telefonanruf oder per SMS bestätigen müssen. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Azure Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
+- Die [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) fordert Benutzer auf, ihre Anmeldung über eine mobile App, einen Telefonanruf oder eine SMS zu verifizieren. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
 
 - Mit [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) können Sie virtuelle Azure-Computer in eine Active Directory-Domäne einbinden, ohne Domänencontroller bereitzustellen. Sie können sich bei diesen virtuellen Computern mithilfe Ihrer Active Directory-Unternehmensanmeldeinformationen anmelden und in die Domäne eingebundene virtuelle Computer mithilfe von Gruppenrichtlinien verwalten, um Sicherheitsbaselines für alle Ihre virtuellen Azure-Computer zu erzwingen.
 
@@ -131,7 +130,7 @@ Darüber hinaus weist jeder Knoten eine spezielle Stamm-VM auf, auf der das Host
 
 Die Azure-Plattform verwendet eine virtualisierte Umgebung. Benutzerinstanzen werden als eigenständige virtuelle Computer ausgeführt, die keinen Zugriff auf einen physischen Hostserver haben.
 
-Der Hypervisor von Azure verhält sich wie ein Microkernel und übergibt alle Hardwarezugriffsanforderungen von virtuellen Gastcomputern an den Host, damit sie über eine Schnittstelle mit gemeinsam genutztem Speicherbereich namens VMBus verarbeitet werden. Dies verhindert, dass Benutzer RAW-Lese-, -Schreib- und -Ausführungszugriff auf das System erhalten, und verringert das Risiko der Freigabe von Systemressourcen.
+Der Hypervisor von Azure verhält sich wie ein Microkernel und übergibt alle Hardwarezugriffsanforderungen von virtuellen Gastcomputern an den Host, damit sie über eine Schnittstelle mit gemeinsam genutztem Speicherbereich namens „VM Bus“ verarbeitet werden. Dies verhindert, dass Benutzer RAW-Lese-, -Schreib- und -Ausführungszugriff auf das System erhalten, und verringert das Risiko der Freigabe von Systemressourcen.
 
 ### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>Erweiterter Algorithmus für VM-Anordnung und Schutz vor Seitenkanalangriffen
 
