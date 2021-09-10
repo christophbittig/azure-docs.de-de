@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 08/30/2021
+  ms.date: 09/01/2021
   ms.author: victorh
-  ms.openlocfilehash: 8e2a5c8dbdf22cadf68511cc0ced482728f12cf2
-  ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+  ms.openlocfilehash: 9eac926802af481d012d58e358b7d40776552049
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123213849"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123436084"
 title: Azure Firewall – Häufig gestellte Fragen
 summary: ''
 sections:
@@ -179,7 +179,7 @@ sections:
   - question: Muss ich bei der Konfiguration von DNAT für den eingehenden Internet-Netzwerkdatenverkehr auch eine entsprechende Netzwerkregel konfigurieren, um diesen Verkehr zu ermöglichen?
     answer: >
       Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
-  - question: Wie funktionieren Platzhalter in Ziel-URLs und Ziel-FQDNs?
+  - question: Wie funktionieren Platzhalter in Ziel-URLs und Ziel-FQDNs in Anwendungsregeln?
     answer: "- **URL**: Sternchen funktionieren, wenn sie ganz rechts oder ganz links platziert werden. Wenn sie sich auf der linken Seite befinden, können sie nicht Teil des FQDN sein.\n- **FQDN**: Sternchen funktionieren, wenn sie ganz links platziert werden.\n\nBeispiele:\n\n\n  |type  |Regel  |Unterstützt?  |Positive Beispiele  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Ja|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Ja|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Ja         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Ja|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Ja|`www.contoso.com/test/anything`<br>Hinweis: `www.contoso.com/test` wird **nicht** übereinstimmen (letzter Schrägstrich)|\n  |TargetURL  |`www.contoso.*/test/*`|Nein|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|Nein|         |\n  |TargetURL  |`www.contoso.*`|Nein|         |\n  |TargetURL  |`www.*contoso.com`|Nein|         |\n  |TargetURL   |`www.contoso.com:8080`|Nein|         |\n  |TargetURL   |`*.contoso.*`|Nein|         |\n  |TargetFQDN    |`www.contoso.com`|Ja|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Ja|`www.contoso.com`<br>`any.contoso.com`|\n  |TargetFQDN    |`*contoso.com`|Ja|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|Nein|         |\n  |TargetFQDN    |`*.contoso.*`|Nein|         |\n \n"
   - question: >
       Was bedeutet *Bereitstellungsstatus: Fehler*?

@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 974dba9d3770d7d5570896f24d31fc2378472ae2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138817"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697903"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Problembehandlung für Kataloge mit freigegebenen Images in Azure
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Wenn beim Ausführen von Vorgängen an Katalogen mit freigegebenen Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl noch mal im Debugmodus aus. Sie aktivieren den Debugmodus, indem Sie die `--debug`-Option mit der Azure CLI oder die `-Debug`-Option mit PowerShell übergeben. Nachdem Sie den Fehler gefunden haben, befolgen Sie diesen Artikel, um das Problem zu beheben.
 
