@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 8220afc8020e5a6a4ba77c46a98ee3c220c3f37e
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 709732e996e0ffda7c3ae7f2f1199522c0b22e51
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675314"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256628"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
 
@@ -279,6 +279,13 @@ Wenn Sie den Zustand des Pufferpools beim Herunterfahren des Servers speichern m
 ### <a name="time_zone"></a>time_zone
 
 Bei der ersten Bereitstellung enthält ein Azure for MySQL-Server Systemtabellen für Zeitzoneninformationen, aber diese Tabellen sind nicht gefüllt. Die Zeitzonentabellen können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden. Informationen zum Aufrufen der gespeicherten Prozedur und zum Festlegen der globalen Zeitzonen oder Zeitzonen auf Sitzungsebene finden Sie in den Artikeln für das [Azure-Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) und die [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter).
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+In Azure Database for MySQL gibt dieser Parameter die Anzahl der Sekunden an, die der Dienst wartet, bevor die binäre Protokolldatei gelöscht wird.
+
+Das binäre Protokoll enthält „Ereignisse“, die Datenbankänderungen beschreiben, z. B. Tabellenerstellungsvorgänge oder Änderungen an Tabellendaten. Es enthält auch Ereignisse für Anweisungen, die möglicherweise Änderungen vorgenommen haben. Das binäre Protokoll wird hauptsächlich zu zwei Zwecken verwendet: für Replikations- und Datenwiederherstellungsvorgänge.  In der Regel werden die binären Protokolle gelöscht, sobald das Handle von Dienst, Sicherung oder Replikatgruppe freigegeben wird. Bei mehreren Replikaten wird mit dem Löschen gewartet, bis das langsamste Replikat die Änderungen gelesen hat. Wenn binäre Protokolle für einen längeren Zeitraum beibehalten werden sollen, können Sie den Parameter „binlog_expire_logs_seconds“ konfigurieren. Wenn der Parameter „binlog_expire_logs_seconds“ auf 0 (Standardwert) festgelegt ist, erfolgt die Löschung, sobald das Handle für das binäre Protokoll freigegeben wird. Wenn „binlog_expire_logs_seconds“ > 0 ist, wird mit der Löschung gewartet, bis die konfigurierten Sekunden abgelaufen sind. Für Azure Database for MySQL werden verwaltete Features wie das Löschen von Binärdateien aus Sicherungen und Lesereplikaten intern behandelt. Wenn Sie die Daten aus dem Azure Database for MySQL-Dienst replizieren, muss dieser Parameter am primären Speicherort festgelegt werden, um zu vermeiden, dass binäre Protokolle gelöscht werden, bevor das Replikat die Änderungen des primären Speicherorts gelesen hat. Wenn Sie den Parameter „binlog_expire_logs_seconds“ auf einen höheren Wert festlegen, werden die binären Protokolle nicht schnell genug gelöscht und können zu einer Erhöhung der Speicherabrechnung führen. 
+
 
 ## <a name="non-configurable-server-parameters"></a>Nicht konfigurierbare Serverparameter
 
