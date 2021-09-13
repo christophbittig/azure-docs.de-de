@@ -4,19 +4,20 @@ description: Erfahren Sie, wie Sie Azure Kubernetes Service (AKS) und Azure Cont
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 01/08/2021
-ms.openlocfilehash: 850586db4edf721981315c67317790429dd67d64
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 62dd73e216b8b1ff1d9bb61210c90f8457b5a4fe
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465988"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105703"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
-Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) nutzen, ist es erforderlich, einen Authentifizierungsmechanismus einzurichten. Dieser Vorgang ist als Teil der Befehlszeilenschnittstelle und des Portals implementiert, indem ACR die erforderlichen Berechtigungen erteilt werden. In diesem Artikel werden Beispiele für die Konfiguration der Authentifizierung zwischen diesen beiden Azure-Diensten beschrieben. 
+Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) nutzen, ist es erforderlich, einen Authentifizierungsmechanismus einzurichten. Dieser Vorgang wird als Teil von Befehlszeilenschnittstelle, PowerShell und Portal implementiert, indem ACR die erforderlichen Berechtigungen erteilt werden. In diesem Artikel werden Beispiele für die Konfiguration der Authentifizierung zwischen diesen beiden Azure-Diensten beschrieben.
 
-Sie können die AKS- und ACR-Integration mit einigen einfachen Befehlen über die Azure-Befehlszeilenschnittstelle einrichten. Diese Integration weist der verwalteten Identität, die dem AKS-Cluster zugeordnet ist, die AcrPull-Rolle zu.
+Sie können die AKS- und ACR-Integration mit einigen einfachen Befehlen über die Azure-Befehlszeilenschnittstelle oder per Azure PowerShell einrichten. Diese Integration weist der verwalteten Identität, die dem AKS-Cluster zugeordnet ist, die AcrPull-Rolle zu.
 
 > [!NOTE]
 > In diesem Artikel wird die automatische Authentifizierung zwischen AKS und ACR beschrieben. Wenn Sie ein Image aus einer privaten externen Registrierung abrufen, verwenden Sie ein [Geheimnis für Imagepullvorgänge][Image Pull Secret].
@@ -25,14 +26,25 @@ Sie können die AKS- und ACR-Integration mit einigen einfachen Befehlen über di
 
 Voraussetzungen für diese Beispiele sind:
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 * Rolle **Besitzer**, **Azure-Kontoadministrator** oder **Azure Co-Administrator** im **Azure-Abonnement**
 * Azure-Befehlszeilenschnittstelle Version 2.7.0 oder höher
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+* Rolle **Besitzer**, **Azure-Kontoadministrator** oder **Azure Co-Administrator** im **Azure-Abonnement**
+* Azure PowerShell ab Version 5.9.0
+
+---
 
 Wenn Sie vermeiden möchten, dass die Rolle **Besitzer**, **Azure-Kontoadministrator** oder **Azure Co-Administrator** benötigt wird, können Sie eine vorhandene verwaltete Identität zur Authentifizierung von ACR aus AKS verwenden. Weitere Informationen finden Sie unter [Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung](../container-registry/container-registry-authentication-managed-identity.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Erstellen eines neuen AKS-Clusters mit ACR-Integration
 
-Sie können die AKS- und ACR-Integration während der erstmaligen Erstellung Ihres AKS-Clusters einrichten.  Damit ein AKS-Cluster mit ACR interagieren kann, wird eine **verwaltete Azure Active Directory-Identität** verwendet. Mit dem folgenden CLI-Befehl können Sie eine vorhandene ACR-Instanz in Ihrem Abonnement autorisieren und die entsprechende **ACRPull**-Rolle für die verwaltete Identität konfigurieren. Geben Sie gültige Werte für die unten stehenden Parameter an.
+Sie können die AKS- und ACR-Integration während der erstmaligen Erstellung Ihres AKS-Clusters einrichten.  Damit ein AKS-Cluster mit ACR interagieren kann, wird eine **verwaltete Azure Active Directory-Identität** verwendet. Mit dem folgenden Befehl können Sie eine vorhandene ACR-Instanz in Ihrem Abonnement autorisieren und die entsprechende Rolle **ACRPull** für die verwaltete Identität konfigurieren. Geben Sie gültige Werte für die unten stehenden Parameter an.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -56,9 +68,26 @@ Alternativ können Sie den ACR-Namen mithilfe einer ACR-Ressourcen-ID angeben, d
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+# set this to the name of your Azure Container Registry.  It must be globally unique
+$MYACR = 'myContainerRegistry'
+
+# Run the following line to create an Azure Container Registry if you do not already have one
+New-AzContainerRegistry -Name $MYACR -ResourceGroupName myContainerRegistryResourceGroup -Sku Basic
+
+# Create an AKS cluster with ACR integration
+New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup -GenerateSshKey -AcrNameToAttach $MYACR
+```
+
+---
+
 Dieser Schritt kann mehrere Minuten in Anspruch nehmen.
 
 ## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Konfigurieren der ACR-Integration für vorhandene AKS-Cluster
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Integrieren Sie eine vorhandene ACR-Instanz in vorhandene AKS-Cluster, indem Sie wie unten gezeigt gültige Werte für **acr-name** oder **acr-resource-id** angeben.
 
@@ -87,24 +116,62 @@ oder
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Integrieren Sie eine vorhandene ACR-Instanz in vorhandene AKS-Cluster, indem Sie wie unten gezeigt gültige Werte für **acr-name** angeben.
+
+```azurepowershell
+Set-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup -AcrNameToAttach <acr-name>
+```
+
+> [!NOTE]
+> Beim Ausführen von `Set-AzAksCluster -AcrNameToAttach` werden die Berechtigungen des Benutzers verwendet, der den Befehl zum Erstellen der ACR-Rollenzuweisung ausführt. Diese Rolle wird der verwalteten Kubelet-Identität zugewiesen. Weitere Informationen zu den verwalteten AKS-Identitäten finden Sie unter [Zusammenfassung der verwalteten Identitäten][summary-msi].
+
+Sie können die Integration zwischen einer ACR und einem AKS-Cluster auch folgendermaßen entfernen:
+
+```azurepowershell
+Set-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup -AcrNameToDetach <acr-name>
+```
+
+---
+
 ## <a name="working-with-acr--aks"></a>Arbeiten mit ACR und AKS
 
 ### <a name="import-an-image-into-your-acr"></a>Importieren eines Images in Ihre ACR
 
 Sie importieren ein Image aus dem Docker-Hub in Ihre ACR, indem Sie Folgendes ausführen:
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
 az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Import-AzContainerRegistryImage -RegistryName <acr-name> -ResourceGroupName myResourceGroup -SourceRegistryUri docker.io -SourceImage library/nginx:latest
+```
+
+---
+
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Bereitstellen des Beispielimages aus ACR in AKS
 
 Sicherstellen, dass Sie über die richtigen AKS-Anmeldeinformationen verfügen
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 ```azurecli
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Import-AzAksCredential -ResourceGroupName myResourceGroup -Name myAKSCluster
+```
+
+---
 
 Erstellen Sie eine Datei namens **acr-nginx.yaml**, die Folgendes enthält: Ersetzen Sie **acr-name** durch den Ressourcennamen Ihrer Registrierung. Beispiel: *myContainerRegistry*.
 

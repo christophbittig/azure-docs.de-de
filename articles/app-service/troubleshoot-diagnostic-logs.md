@@ -3,14 +3,14 @@ title: Aktivieren der Diagnoseprotokollierung
 description: Erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und Instrumentierung zu Ihrer Anwendung hinzufügen und wie Sie auf die von Azure protokollierten Informationen zugreifen.
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b12b3db9266284509e88cef85a33a1a43b500907
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346490"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -104,7 +104,9 @@ Um die Fehlerseite oder die Ablaufverfolgung fehlerhafter Anforderungen für Win
 
 Wählen Sie **Ausführliche Fehlerprotokollierung** oder **Ablaufverfolgung fehlerhafter Anforderungen** aus, wählen Sie **Ein** aus, und wählen Sie dann **Speichern** aus.
 
-Beide Typen von Protokollen werden im App Service-Dateisystem gespeichert. Bis zu 50 Fehler (Dateien/Ordner) werden aufbewahrt. Wenn die Anzahl der HTML-Dateien 50 überschreitet, werden die 26 ältesten Fehler automatisch gelöscht.
+Beide Typen von Protokollen werden im App Service-Dateisystem gespeichert. Bis zu 50 Fehler (Dateien/Ordner) werden aufbewahrt. Sind mehr als 50 HTML-Dateien vorhanden, werden die ältesten Fehlerdateien automatisch gelöscht.
+
+Von der Ablaufverfolgung für Anforderungsfehler wird standardmäßig ein Protokoll von Anforderungen erfasst, bei denen Fehler mit HTTP-Statuscodes zwischen 400 und 600 aufgetreten sind. Wenn Sie benutzerdefinierte Regeln angeben möchten, können Sie den Abschnitt `<traceFailedRequests>` in der Datei *web.config* überschreiben.
 
 ## <a name="add-log-messages-in-code"></a>Hinzufügen von Protokollmeldungen im Code
 
@@ -190,14 +192,14 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceEnvironmentPlatformLogs | Ja | – | Ja | Ja | App Service-Umgebung: Skalierung, Konfigurationsänderungen und Statusprotokolle|
 | AppServiceAuditLogs | Ja | Ja | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
 | AppServiceFileAuditLogs | Ja | Ja | Wird noch angekündigt | Wird noch angekündigt | Dateiänderungen am Websiteinhalt; **nur für Premium-Tarif und höher verfügbar** |
-| AppServiceAppLogs | ASP .NET & Tomcat <sup>1</sup> | ASP .NET & Tomcat <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Anwendungsprotokolle |
+| AppServiceAppLogs | ASP.NET und Tomcat<sup>1</sup> | ASP.NET und Tomcat<sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Anwendungsprotokolle |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Ja | Ja | Anforderungen von IP-Regeln |
 | AppServicePlatformLogs  | Wird noch angekündigt | Ja | Ja | Ja | Containervorgangsprotokolle |
 | AppServiceAntivirusScanAuditLogs | Ja | Ja | Ja | Ja | [Protokolle für Antivirenscans](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) mithilfe von Microsoft Defender; **nur verfügbar für Premium-Tarif** | 
 
-<sup>1</sup> Fügen Sie für Tomcat-Apps den App-Einstellungen „TOMCAT_USE_STARTUP_BAT“ hinzu, und legen Sie den zugehörigen Wert auf FALSE oder 0 fest. Sie müssen die *neueste* Tomcat-Version und *java.util.logging* verwenden.
+<sup>1</sup> Fügen Sie den App-Einstellungen für Tomcat-Apps `TOMCAT_USE_STARTUP_BAT` hinzu, und legen Sie den zugehörigen Wert auf `false` oder `0` fest. Sie müssen die *neueste* Tomcat-Version und *java.util.logging* verwenden.
 
-<sup>2</sup> Fügen Sie für Java SE-Apps den App-Einstellungen „$WEBSITE_AZMON_PREVIEW_ENABLED“ hinzu, und legen Sie den zugehörigen Wert auf TRUE oder 1 fest.
+<sup>2</sup> Fügen Sie den App-Einstellungen für Java SE-Apps `WEBSITE_AZMON_PREVIEW_ENABLED` hinzu, und legen Sie den zugehörigen Wert auf `true` oder `1` fest.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
 * [Abfrageprotokolle mit Azure Monitor](../azure-monitor/logs/log-query-overview.md)

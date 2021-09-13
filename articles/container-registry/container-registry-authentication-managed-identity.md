@@ -2,13 +2,13 @@
 title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 ms.topic: article
-ms.date: 01/16/2019
-ms.openlocfilehash: 88952a032b9c4439620de05f181402f29639a5b2
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 06/30/2021
+ms.openlocfilehash: 84f7d76eb763c8116390501dfbe2a6568849f10f
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440662"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286536"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -34,7 +34,7 @@ Nachdem Sie eine Azure-Ressource mit einer verwalteten Identität eingerichtet h
 Anschließend können die Identität für die Authentifizierung bei [jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Hierfür müssen keine Anmeldeinformationen in Ihrem Code enthalten sein. Wählen Sie je nach Szenario, wie die Authentifizierung mit der verwalteten Identität erfolgen soll. Um mithilfe der Identität von einer VM aus auf eine Azure Container Registry-Instanz zuzugreifen, authentifizieren Sie sich mit Azure Resource Manager. 
 
 > [!NOTE]
-> Derzeit können Dienste wie Azure Web App for Containers oder Azure Container Instanzen ihre verwaltete Identität nicht zur Authentifizierung bei Azure Container Registry verwenden, wenn sie ein Container-Image abrufen, um die Container-Ressource selbst bereitzustellen. Die Identität ist nur verfügbar, nachdem der Container ausgeführt wird. Zum Bereitstellen dieser Ressourcen mithilfe von Images aus Azure Container Registry wird eine andere Authentifizierungsmethode, wie z. b. ein [Dienst-Prinzipal](container-registry-auth-service-principal.md), empfohlen.
+> Aktuell kann keine verwaltete Identität in Azure Container Instances verwendet werden, um beim Erstellen einer Containergruppe ein Image aus Azure Container Registry zu pullen. Die Identität ist nur in einem ausgeführten Container verfügbar. Wenn Sie eine Containergruppe in Azure Container Instances mithilfe von Images aus Azure Container Registry bereitstellen möchten, empfiehlt sich die Verwendung einer anderen Authentifizierungsmethode (beispielsweise ein [Dienstprinzipal](container-registry-auth-service-principal.md)).
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
@@ -232,6 +232,7 @@ In diesem Artikel haben Sie mehr über die Verwendung verwalteter Identitäten m
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen
 
 * Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/index.yml).
+* Informieren Sie sich über die Verwendung einer [systemseitig](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_system-assigned_managed_identities.md) oder [benutzerseitig](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_user-assigned_managed_identities.md) zugewiesenen verwalteten Identität mit App Service und Azure Container Registry.
 
 
 <!-- LINKS - external -->

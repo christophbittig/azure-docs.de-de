@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: eeba36b200028d4e90e22cd32c9bab6dbe3799e0
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789495"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492863"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Referenz zur Azure Digital Twins-Abfragesprache: SELECT-Klausel
 
@@ -35,7 +35,7 @@ Verwenden Sie das Zeichen `*` in einer SELECT-Anweisung, um das digitale Zwillin
 
 ### <a name="returns"></a>Rückgabe
 
-Der Satz von Eigenschaften, die von der Abfrage zurückgegeben wird.
+Die von der Abfrage zurückgegebenen Eigenschaften.
 
 ### <a name="example"></a>Beispiel
 
@@ -93,7 +93,7 @@ Im Folgenden finden Sie eine Beispielabfrage, mit der eine Sammlung aus diesem D
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="SelectProjectCollectionExample":::
 
-Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
+Von dieser Abfrage werden die folgenden JSON-Nutzdaten zurückgegeben:
 
 ```json
 {
@@ -135,11 +135,11 @@ Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
 
 #### <a name="project-with-join-example"></a>Beispiel für das Projizieren mit JOIN
 
-Projektion wird häufig verwendet, um eine in einem `JOIN` angegebene Sammlung zurückzugeben. Die folgende Abfrage verwendet Projektion, um die Daten des Consumers, der Factory und der Beziehung zurückzugeben. Weitere Informationen zur im Beispiel verwendeten `JOIN`-Syntax finden Sie unter [Referenz zur Azure Digital Twins-Abfragesprache: JOIN-Klausel](reference-query-clause-join.md).
+Projektion wird häufig verwendet, um eine in einem `JOIN` angegebene Sammlung zurückzugeben. Bei der folgenden Abfrage wird eine Projektion verwendet, um die Daten des Consumers, der Factory und der Beziehung zurückzugeben. Weitere Informationen zur im Beispiel verwendeten `JOIN`-Syntax finden Sie unter [Referenz zur Azure Digital Twins-Abfragesprache: JOIN-Klausel](reference-query-clause-join.md).
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="SelectProjectJoinExample":::
 
-Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
+Von dieser Abfrage werden die folgenden JSON-Nutzdaten zurückgegeben:
 
 ```json
 {
@@ -187,11 +187,11 @@ Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
 
 #### <a name="project-property-example"></a>Beispiel für das Projizieren mit einer Eigenschaft
 
-Hier ist ein Beispiel, das eine Eigenschaft projiziert. Die folgende Abfrage verwendet Projektion, um die `name`-Eigenschaft des Consumerzwillings und die `managedBy`-Eigenschaft der Beziehung zurückzugeben.
+In diesem Beispiel wird eine Eigenschaft projiziert. Die folgende Abfrage verwendet Projektion, um die `name`-Eigenschaft des Consumerzwillings und die `managedBy`-Eigenschaft der Beziehung zurückzugeben.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="SelectProjectPropertyExample":::
 
-Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
+Von dieser Abfrage werden die folgenden JSON-Nutzdaten zurückgegeben:
 
 ```json
 {
@@ -213,13 +213,13 @@ Dies sind die JSON-Nutzdaten, die von dieser Abfrage zurückgegeben werden:
 
 Wenn eine in der Projektion enthaltene Eigenschaft für eine bestimmte Datenzeile nicht vorhanden ist, ist die Eigenschaft nicht im Resultset vorhanden.
 
-Nehmen Sie für dieses Beispiel eine Gruppe von Zwillingen an, die Personen darstellen. Einigen Zwillingen ist ein Alter zugeordnet, andere hingegen nicht.
+Nehmen Sie für dieses Beispiel eine Gruppe von Zwillingen an, die Personen darstellen. Einigen Zwillingen ist ein Alter zugeordnet, anderen nicht.
 
-Hier ist eine Abfrage, die die `name`- und `age`-Eigenschaften projiziert:
+In der folgenden Abfrage werden die Eigenschaften `name` und `age` projiziert:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="SelectProjectPropertyNotPresentExample":::
 
-Das Ergebnis könnte in etwa wie folgt aussehen, wobei die `age`-Eigenschaft für einige Zwillinge im Ergebnis fehlt, weil die betreffenden Zwillinge diese Eigenschaft nicht aufweisen.
+Das Ergebnis könnte in etwa wie folgt aussehen, wobei die Eigenschaft `age` für einige Zwillinge im Ergebnis fehlt, da die betreffenden Zwillinge nicht über diese Eigenschaft verfügen.
 
 ```json
 {
@@ -268,7 +268,7 @@ Die folgende Abfrage gibt die Anzahl aller Beziehungen in der Instanz zurück.
 
 ## <a name="select-top"></a>SELECT TOP
 
-Verwenden Sie diese Methode, um nur eine bestimmte Anzahl von obersten Elementen zurückzugeben, die die Abfrageanforderungen erfüllen.
+Verwenden Sie diese Methode, um nur einige der wichtigsten Elemente zurückzugeben, die die Abfrageanforderungen erfüllen.
 
 ### <a name="syntax"></a>Syntax
 

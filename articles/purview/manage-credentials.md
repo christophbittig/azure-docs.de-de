@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 61f10707231e88130cffbfffa1c06f33084bfbbd
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 14b11cca3eca6f3d0b89889a4eb1abf3f04f5715
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792138"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487649"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -77,7 +77,7 @@ Identifizieren Sie Ihr Azure Key Vault-Berechtigungsmodell unter den Key Vault-*
 
 :::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure Key Vault-Berechtigungsmodell"::: 
 
-### <a name="option-1---assign-access-using-using-key-vault-access-policy"></a>Option 1: Zuweisen des Zugriffs durch eine Key Vault-Zugriffsrichtlinie  
+### <a name="option-1---assign-access-using-key-vault-access-policy"></a>Option 1: Zuweisen des Zugriffs unter Verwendung einer Key Vault-Zugriffsrichtlinie  
 
 Führen Sie diese Schritte nur aus, wenn das Berechtigungsmodell in Ihrer Azure Key Vault Ressource als **Tresorzugriffsrichtlinie** festgelegt ist:
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5563ff1f57f6b3684834a2488fc0665ac5eddd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ead99d955fbd82099b4ad577e99026e8e66aea5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102610041"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442412"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>Verwenden von API-Connectors zum Anpassen und Erweitern der Self-Service-Registrierung 
 
@@ -35,18 +35,18 @@ Ein API-Connector stellt Azure Active Directory durch Definition der HTTP-Endpun
 
 Es gibt zwei Punkte in einem Benutzerflow, an denen Sie einen API-Connector aktivieren können:
 
-- Nach Anmeldung bei einem Identitätsanbieter
+- Nach dem Verbund mit einem Identitätsanbieter während der Registrierung
 - Vor dem Erstellen des Benutzers
 
 > [!IMPORTANT]
 > In beiden Fällen werden die API-Connectors bei der **Registrierung** und nicht bei der Anmeldung eines Benutzer aufgerufen.
 
-### <a name="after-signing-in-with-an-identity-provider"></a>Nach Anmeldung bei einem Identitätsanbieter
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>Nach dem Verbund mit einem Identitätsanbieter während der Registrierung
 
 Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der ***Seite zur Attributsammlung***  voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert. Im Folgenden finden Sie Beispiele für Szenarien mit API-Connectors, die Sie in diesem Schritt aktivieren können:
 
 - Verwenden Sie die E-Mail- oder Verbundidentität, die der Benutzer angegeben hat, um Ansprüche in einem bestehenden System nachzuschlagen. Geben Sie diese Ansprüche aus dem bestehenden System zurück, füllen Sie die Seite zur Attributsammlung vorab aus, und stellen Sie sie zur Rückgabe im Token zur Verfügung.
-- Implementieren Sie anhand der Social Media-Identität eine Zulassungs- oder Sperrliste.
+- Implementieren Sie eine Zulassungs- oder Sperrliste basierend auf der sozialen Identität.
 
 ### <a name="before-creating-the-user"></a>Vor dem Erstellen des Benutzers
 

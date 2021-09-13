@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 06/14/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6a31d32a4888e50cdfccf1bf609418fb31ef69e3
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 902704052524a396812e4d9d3848c754c3a7c4a3
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569587"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580870"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>Konfigurieren von Load Balancer für einen AG-VNN-Listener
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,6 +43,8 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
 
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
+
+Sie können entweder einen internen Lastenausgleich oder einen externen Lastenausgleich erstellen. Ein interner Lastenausgleich kann nur von privaten Ressourcen aus erfolgen, die sich innerhalb des Netzwerks befinden.  Ein externer Lastenausgleich kann den Datenverkehr von öffentlichen Ressourcen zu internen Ressourcen leiten. Wenn Sie einen internen Lastenausgleich konfigurieren, verwenden Sie bei der Konfiguration der Regeln für den Lastenausgleich dieselbe IP-Adresse wie die Verfügbarkeitsgruppenlistener-Ressource für die Front-End-IP-Adresse. Wenn Sie einen externen Lastenausgleich konfigurieren, können Sie nicht dieselbe IP-Adresse wie der Verfügbarkeitsgruppenlistener verwenden, da es sich bei der IP-Adresse des Listeners nicht um eine öffentliche IP-Adresse handeln darf. Um also einen externen Lastenausgleich zu verwenden, weisen Sie logischerweise eine IP-Adresse im gleichen Subnetz wie die Verfügbarkeitsgruppe zu, die mit keiner anderen IP-Adresse in Konflikt steht, und verwenden Sie diese Adresse als Front-End-IP-Adresse für die Lastenausgleichsregeln. 
 
 Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Lastenausgleichs:
 
@@ -77,7 +79,7 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 1. Ordnen Sie den Back-End-Pool der Verfügbarkeitsgruppe mit den virtuellen Computern zu.
 
-1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die FCI oder Verfügbarkeitsgruppe hosten.
+1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die Verfügbarkeitsgruppe hosten.
 
 1. Wählen Sie **OK** aus, um den Back-End-Pool zu erstellen.
 
@@ -99,6 +101,10 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 ## <a name="set-load-balancing-rules"></a>Festlegen von Lastenausgleichsregeln
 
+Legen Sie die Lastenausgleichsregeln für den Lastenausgleich fest. 
+
+# <a name="private-load-balancer"></a>[Privater Lastenausgleich](#tab/ilb)
+
 1. Wählen Sie im Bereich für den Lastenausgleich **Lastenausgleichsregeln** aus.
 
 1. Wählen Sie **Hinzufügen**.
@@ -106,7 +112,7 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 1. Legen Sie die Parameter für die Lastenausgleichsregeln fest:
 
    - **Name**: Ein Name für die Lastenausgleichsregeln.
-   - **Front-End-IP-Adresse**: Die IP-Adresse für die SQL Server-Failoverclusterinstanz oder die Clusternetzwerkressource des Verfügbarkeitsgruppenlisteners.
+   - **Front-End-IP-Adresse**: Die IP-Adresse für die Clusternetzwerkressource des Verfügbarkeitsgruppenlisteners.
    - **Port:** Der SQL Server-TCP-Port. Der Standardport der Instanz lautet 1433.
    - **Back-End-Port**: Der gleiche Port, den Sie als Wert für **Port** angeben, wenn Sie **Floating IP (Direct Server Return)** aktivieren.
    - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
@@ -117,9 +123,33 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen des Las
 
 1. Klicken Sie auf **OK**.
 
+# <a name="public-load-balancer"></a>[Öffentlicher Lastenausgleich](#tab/elb)
+
+1. Wählen Sie im Bereich für den Lastenausgleich **Lastenausgleichsregeln** aus.
+
+1. Wählen Sie **Hinzufügen**.
+
+1. Legen Sie die Parameter für die Lastenausgleichsregeln fest:
+
+   - **Name**: Ein Name für die Lastenausgleichsregeln.
+   - **Front-End-IP-Adresse**: Die öffentliche IP-Adresse, die Clients zum Herstellen einer Verbindung mit dem öffentlichen Endpunkt verwenden. 
+   - **Port:** Der SQL Server-TCP-Port. Der Standardport der Instanz lautet 1433.
+   - **Back-End-Port:** Derselbe Port, der vom Listener der Verfügbarkeitsgruppe verwendet wird. Die Standardeinstellung ist Port 1433. 
+   - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
+   - **Integritätstest**: Der Integritätstest, den Sie zuvor konfiguriert haben.
+   - **Sitzungspersistenz**: Keine.
+   - **Leerlaufzeitüberschreitung (Minuten)** : 4.
+   - **Floating IP (Direct Server Return)** : Deaktiviert.
+
+1. Klicken Sie auf **OK**.
+
+---
+
 ## <a name="configure-cluster-probe"></a>Konfigurieren des Clustertests
 
 Legen Sie den Parameter für den Clustertestport in PowerShell fest.
+
+# <a name="private-load-balancer"></a>[Privater Lastenausgleich](#tab/ilb)
 
 Aktualisieren Sie die Variablen im folgenden Skript mit Werten aus Ihrer Umgebung, um den Parameter für den Clustertestport festzulegen. Entfernen Sie die spitzen Klammern (`<` und `>`) aus dem Skript.
 
@@ -140,8 +170,8 @@ Die Werte, die Sie aktualisieren können, werden in der folgenden Tabelle beschr
 |**Wert**|**Beschreibung**|
 |---------|---------|
 |`Cluster Network Name`| Der Name des Windows Server-Failoverclusters für das Netzwerk. Klicken Sie in **Failovercluster-Manager** > **Netzwerke** mit der rechten Maustaste auf das Netzwerk, und wählen Sie **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
-|`AG listener IP Address Resource Name`|Der Ressourcenname für die IP-Adresse der SQL Server-FCI oder des Verfügbarkeitsgruppenlisteners. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
-|`ILBIP`|Die IP-Adresse des internen Load Balancers (ILB). Diese Adresse wird als Front-End-Adresse des ILB im Azure-Portal konfiguriert. Dies ist auch die FCI-IP-Adresse von SQL Server. Sie finden sie im **Failovercluster-Manager** auf der gleichen Eigenschaftenseite, auf der sich der `<AG listener IP Address Resource Name>` befindet.|
+|`AG listener IP Address Resource Name`|Der Ressourcenname für die IP-Adresse des Verfügbarkeitsgruppenlisteners. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „Verfügbarkeitsgruppe“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`ILBIP`|Die IP-Adresse des internen Load Balancers (ILB). Diese Adresse wird als Front-End-Adresse des ILB im Azure-Portal konfiguriert.  Dies ist auch die IP-Adresse des Verfügbarkeitsgruppenlisteners. Sie finden sie im **Failovercluster-Manager** auf der gleichen Eigenschaftenseite, auf der sich der `<AG listener IP Address Resource Name>` befindet.|
 |`nnnnn`|Der Testport, den Sie im Integritätstest des Lastenausgleichs konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig.|
 |„SubnetMask“| Die Subnetzmaske für den Clusterparameter. Dabei muss es sich um die TCP/IP-Broadcastadresse handeln: `255.255.255.255`.| 
 
@@ -151,6 +181,45 @@ Nach dem Festlegen des Clustertests werden in PowerShell alle Clusterparameter a
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
+
+# <a name="public-load-balancer"></a>[Öffentlicher Lastenausgleich](#tab/elb)
+
+Aktualisieren Sie die Variablen im folgenden Skript mit Werten aus Ihrer Umgebung, um den Parameter für den Clustertestport festzulegen. Entfernen Sie die spitzen Klammern (`<` und `>`) aus dem Skript.
+
+```powershell
+$ClusterNetworkName = "<Cluster Network Name>"
+$IPResourceName = "<Availability group Listener IP Address Resource Name>" 
+$ELBIP = "<n.n.n.n>" 
+[int]$ProbePort = <nnnnn>
+
+Import-Module FailoverClusters
+
+Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ELBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+```
+
+Die Werte, die Sie aktualisieren können, werden in der folgenden Tabelle beschrieben:
+
+
+|**Wert**|**Beschreibung**|
+|---------|---------|
+|`Cluster Network Name`| Der Name des Windows Server-Failoverclusters für das Netzwerk. Klicken Sie in **Failovercluster-Manager** > **Netzwerke** mit der rechten Maustaste auf das Netzwerk, und wählen Sie **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`AG listener IP Address Resource Name`|Der Ressourcenname für die IP-Adresse des Verfügbarkeitsgruppenlisteners. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „Verfügbarkeitsgruppe“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und wählen Sie dann **Eigenschaften** aus. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**.|
+|`ELBIP`|Die IP-Adresse des externen Lastenausgleichs (ELB). Diese Adresse wird im Azure-Portal als Front-End-Adresse des externen Lastenausgleichs konfiguriert und wird verwendet, um eine Verbindung mit dem öffentlichen Lastenausgleich von externen Ressourcen aus herzustellen.|
+|`nnnnn`|Der Testport, den Sie im Integritätstest des Lastenausgleichs konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig.|
+|„SubnetMask“| Die Subnetzmaske für den Clusterparameter. Dabei muss es sich um die TCP/IP-Broadcastadresse handeln: `255.255.255.255`.| 
+
+
+Nach dem Festlegen des Clustertests werden in PowerShell alle Clusterparameter angezeigt. Führen Sie dieses Skript aus:
+
+```powershell
+Get-ClusterResource $IPResourceName | Get-ClusterParameter
+```
+
+> [!NOTE]
+> Da es keine private IP-Adresse für den externen Lastenausgleich gibt, können die Benutzer den VNN-DNS-Namen nicht direkt verwenden, da er die IP-Adresse innerhalb des Subnetzes auflöst. Verwenden Sie entweder die öffentliche IP-Adresse des öffentlichen Lastenausgleichs, oder konfigurieren Sie eine andere DNS-Zuordnung auf dem DNS-Server. 
+
+
+---
 
 ## <a name="modify-connection-string"></a>Ändern der Verbindungszeichenfolge 
 
@@ -166,6 +235,7 @@ Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300
 ```
 
 Weitere Informationen finden Sie in der SQL Server-Dokumentation [Listenerverbindungstimeout](/troubleshoot/sql/availability-groups/listener-connection-times-out). 
+
 
 > [!TIP]
 > - Legen Sie den MultiSubnetFailover-Parameter in der Verbindungszeichenfolge auf true fest, auch für HADR-Lösungen, die sich über ein einzelnes Subnetz erstrecken, um die zukünftige Spanne von Subnetzen zu unterstützen, ohne dass Verbindungszeichenfolgen aktualisiert werden müssen.  
@@ -198,7 +268,7 @@ Nachdem der VNN erstellt wurde, sollten Sie die [Clustereinstellungen für SQL S
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

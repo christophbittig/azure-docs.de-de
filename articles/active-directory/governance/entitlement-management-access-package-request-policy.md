@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd3de1b05c416ea25f7636c683f887dccc76898
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713790"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491981"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -141,7 +141,7 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
 1. Nachdem Sie alle Ihre verbundenen Organisationen ausgewählt haben, klicken Sie auf **Auswählen**.
 
     > [!NOTE]
-    > Alle Benutzer aus den ausgewählten verbundenen Organisationen werden dieses Zugriffspaket anfordern können. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die der Organisation zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure B2B blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../external-identities/allow-deny-list.md).
+    > Alle Benutzer aus den ausgewählten verbundenen Organisationen werden dieses Zugriffspaket anfordern können. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die der Organisation zugeordnet sind, sofern diese Domänen nicht über die Positiv- oder Sperrliste von Azure B2B blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../external-identities/allow-deny-list.md).
 
 1. Wenn Sie eine Genehmigung anfordern möchten, folgen Sie den Schritten unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung](entitlement-management-access-package-approval-policy.md), um die Genehmigungseinstellungen zu konfigurieren.
  
@@ -198,11 +198,17 @@ Wenn Sie die Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket 
 
 1. Klicken Sie auf **Weiter**.
 
-1. Wenn Anforderer beim Anfordern des Zugriffs auf ein Zugriffspaket weitere Informationen bereitstellen sollen, verwenden Sie die unter [Ändern der Einstellungen für Genehmigungs- und Anfordererinformationen (Vorschau) für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) beschriebenen Schritte, um die Anfordererinformationen (Vorschau) zu konfigurieren.
+1. Wenn Anforderer beim Anfordern des Zugriffs auf ein Zugriffspaket weitere Informationen bereitstellen sollen, verwenden Sie die unter [Ändern Sie die Einstellungen zu Genehmigungs- und Anfordererinformationen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung.](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval) beschriebenen Schritte, um die Anfordererinformationen zu konfigurieren.
 
 1. Konfigurieren Sie Lebenszykluseinstellungen.
 
 1. Wenn Sie eine Richtlinie bearbeiten, klicken Sie auf **Aktualisieren**. Wenn Sie eine neue Richtlinie hinzufügen, klicken Sie auf **Erstellen**.
+
+## <a name="prevent-requests-from-users-with-incompatible-access-preview"></a>Verhindern von Anforderungen von Benutzern mit inkompatiblem Zugriff (Vorschau)
+
+Zusätzlich zu den Richtlinienüberprüfungen, die steuern, welche Benutzer Anforderungen übermitteln können, können Sie den Zugriff weiter einschränken, um zu verhindern, dass ein Benutzer, der bereits über gewisse Zugriffsberechtigungen (über eine Gruppe oder ein anderes Zugriffspaket) verfügt, übermäßigen Zugriff erhält.
+
+Wenn Sie möchten, dass ein Benutzer kein Zugriffspaket anfordern kann, wenn er bereits einem anderen Zugriffspaket zugewiesen ist oder einer Gruppe angehört, verwenden Sie die unter [Konfigurieren von Aufgabentrennungsprüfungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschau)](entitlement-management-access-package-incompatible.md) beschriebenen Schritte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

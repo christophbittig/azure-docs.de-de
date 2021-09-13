@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/22/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 924f7248733ee573cc68b137fccb829b2a79af31
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 06945efc6be8700955b1a475d00d21951102c214
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296403"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492791"
 ---
 # <a name="azure-digital-twins-query-language-reference-operators"></a>Referenz zur Azure Digital Twins-Abfragesprache: Operatoren
 
@@ -28,15 +28,15 @@ Die folgenden Operatoren aus der Vergleichsfamilie werden unterstützt.
 
 ### <a name="example"></a>Beispiel
 
-Hier ist ein Beispiel für die Verwendung von `=`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert gleich 80 ist.
+Hier sehen Sie ein Beispiel mit `=`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert gleich 80 ist.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="EqualityExample":::
 
-Hier ist ein Beispiel für die Verwendung von `<`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert kleiner als 80 ist.
+Hier sehen Sie ein Beispiel mit `<`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert kleiner als 80 ist.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="ComparisonExample":::
 
-Hier ist ein Beispiel für die Verwendung von `<=`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert kleiner als oder gleich 80 ist.
+Hier sehen Sie ein Beispiel mit `<=`. Die folgende Abfrage gibt Zwillinge zurück, deren Temperaturwert kleiner als oder gleich 80 ist.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrderedComparisonExample":::
 
@@ -49,28 +49,28 @@ Die folgenden Operatoren aus der „contains“-Familie werden unterstützt.
 
 ### <a name="example"></a>Beispiel
 
-Hier ist ein Beispiel für die Verwendung von `IN`. Die folgende Abfrage gibt Zwillinge zurück, deren `owner`-Eigenschaft eine von mehreren Optionen in einer Liste ist.
+Hier sehen Sie ein Beispiel mit `IN`. Die folgende Abfrage gibt Zwillinge zurück, deren `owner`-Eigenschaft eine von mehreren Optionen in einer Liste ist.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="InExample":::
 
 ## <a name="logical-operators"></a>Logische Operatoren
 
 Die folgenden Operatoren aus der logischen Familie werden unterstützt:
-* `AND`: Dient zum Verbinden zweier Ausdrücke und wird zu „true“ ausgewertet, wenn beide „true“ sind.
+* `AND`: Dient zum Verbinden zweier Ausdrücke und wird als „true“ ausgewertet, wenn beide „true“ sind.
 * `OR`: Dient zum Verbinden zweier Ausdrücke und wird zu „true“ ausgewertet, wenn mindestens einer von beiden „true“ ist.
-* `NOT`: Dient zum Negieren eines Ausdrucks und wird zu „true“ ausgewertet, wenn die Ausdrucksbedingung nicht erfüllt ist.
+* `NOT`: Dient zum Negieren eines Ausdrucks und wird als „true“ ausgewertet, wenn die Ausdrucksbedingung nicht erfüllt ist.
 
 ### <a name="example"></a>Beispiel
 
-Hier ist ein Beispiel für die Verwendung von `AND`. Die folgende Abfrage gibt Zwillinge zurück, die die beiden Bedingungen „Temperatur kleiner als 80“ und „Feuchtigkeit kleiner als 50“ erfüllen.
+Hier sehen Sie ein Beispiel mit `AND`. Die folgende Abfrage gibt Zwillinge zurück, die die beiden Bedingungen „Temperatur kleiner als 80“ und „Feuchtigkeit kleiner als 50“ erfüllen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="AndExample":::
 
-Hier ist ein Beispiel für die Verwendung von `OR`. Die folgende Abfrage gibt Zwillinge zurück, die mindestens eine der beiden Bedingungen „Temperatur kleiner als 80“ und „Feuchtigkeit kleiner als 50“ erfüllen.
+Hier sehen Sie ein Beispiel mit `OR`. Die folgende Abfrage gibt Zwillinge zurück, die mindestens eine der beiden Bedingungen „Temperatur kleiner als 80“ und „Feuchtigkeit kleiner als 50“ erfüllen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrExample":::
 
-Hier ist ein Beispiel für die Verwendung von `NOT`. Die folgende Abfrage gibt Zwillinge zurück, die die Bedingung „Temperatur kleiner als 80“ nicht erfüllen.
+Hier sehen Sie ein Beispiel mit `NOT`. Die folgende Abfrage gibt Zwillinge zurück, die die Bedingung „Temperatur kleiner als 80“ nicht erfüllen.
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="NotExample":::
 

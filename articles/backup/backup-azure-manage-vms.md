@@ -2,13 +2,13 @@
 title: Verwalten und Überwachen von Azure-VM-Sicherungen
 description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-Sicherungen mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 70ce8ababcb596c3eb804e429156000ff7d64ecc
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/27/2021
+ms.openlocfilehash: 015ce2a16359f3a99fcd71c8ea7f97142c2d54e6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372570"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346099"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -140,6 +140,10 @@ Sie erhalten einer Benachrichtigung, wenn die Sicherungsaufträge beendet wurden
 ### <a name="stop-protection-and-delete-backup-data"></a>Schutz beenden und Sicherungsdaten löschen
 
 So beenden Sie den Schutz eines virtuellen Computers und löschen die Daten
+
+>[!Note]
+>Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Zugriffsebene „Archiv“ befunden haben, verursacht das Löschen dieser Wiederherstellungspunkte Kosten für vorzeitiges Löschen. [Weitere Informationen](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)
+
 
 1. Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherung beenden** aus.
 2. Wählen Sie **Sicherungsdaten löschen** aus, und bestätigen Sie Ihre Auswahl bei Bedarf. Geben Sie den Namen des Sicherungselements ein, und fügen Sie gegebenenfalls einen Kommentar hinzu.

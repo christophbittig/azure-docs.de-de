@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 5f03ad4019a448d36ac43dee215a1d1b1bd06d23
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ee044e84992b606eab8194d782d755c0d4a9cc74
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791363"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033747"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements und Azure Active Directory-Mandanten
 
@@ -57,10 +57,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
     - **Standort**: *USA, Osten*
 4. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, wenn es in den Suchergebnissen angezeigt wird.
 5. Klicken Sie in der vertikalen Liste der Optionen auf der linken Seite auf **Zugriffssteuerung (IAM)** .
-6. Wählen Sie unter **myVnetA – Zugriffssteuerung (IAM)** die Option **+ Rollenzuweisung hinzufügen** aus.
-7. Wählen Sie im Feld **Rolle** die Option **Netzwerkmitwirkender** aus.
-8. Wählen Sie im Feld **Auswählen** die Option *UserB* aus, oder geben Sie die E-Mail-Adresse von UserB ein, um ihn zu suchen.
-9. Wählen Sie **Speichern** aus.
+6. Weisen Sie **UserB** mithilfe des unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md) beschriebenen Verfahrens die Rolle *Netzwerkmitwirkender* zu.
 10. Klicken Sie unter **myVnetA – Zugriffssteuerung (IAM)** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID Ausgabe sieht in etwa wie das folgende Beispiel aus: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 12. Führen Sie die Schritte 2-3 erneut aus, und geben Sie bei Schritt 3 die folgenden Werte an:
@@ -75,7 +72,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
 
 13. Geben Sie im oben im Portal *myVnetB* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetB**, wenn es in den Suchergebnissen angezeigt wird.
 14. Klicken Sie unter **myVnetB** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID Ausgabe sieht in etwa wie das folgende Beispiel aus: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
-15. Klicken Sie unter **myVnetB** auf **Zugriffssteuerung (IAM)** , und führen Sie dann die Schritte 5 bis 10 für myVnetB aus. Geben Sie dabei in Schritt 8 **UserA** ein.
+15. Wählen Sie unter **myVnetB** die Option **Zugriffssteuerung (IAM)** aus, und weisen Sie dann *UserA* mithilfe des unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md) beschriebenen Verfahrens die Rolle **Netzwerkmitwirkender** zu.
 16. Melden Sie sich als UserB vom Portal ab, und melden Sie sich als UserA an.
 17. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, wenn es in den Suchergebnissen angezeigt wird.
 18. Klicken Sie auf **myVnetA**.

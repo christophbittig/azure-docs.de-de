@@ -3,18 +3,18 @@ title: Zuweisen des Zugriffs auf Daten in Azure Cost Management
 description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Azure Cost Management für verschiedene Zugriffsbereiche.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 06/27/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645281"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988695"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -140,45 +140,24 @@ Nachdem die obigen Schritte ausgeführt wurden, wird das Benutzerkonto zu einem 
 
 Für den Zugriff zur Anzeige des Verwaltungsgruppenbereichs ist mindestens die Berechtigung „Cost Management-Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Verwaltungsgruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Verwaltungsgruppe, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
 
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Verwaltungsgruppen_, und wählen Sie dann **Verwaltungsgruppen** aus.
-3. Wählen Sie die Verwaltungsgruppe in der Hierarchie aus.
-4. Wählen Sie neben dem Namen Ihrer Verwaltungsgruppe **Details** aus.
-5. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-6. Wählen Sie **Hinzufügen**.
-7. Wählen Sie unter **Rolle** die Option **Cost Management-Leser** aus.
-8. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
-9. Um den Zugriff zuzuweisen, suchen Sie den Benutzer, und wählen Sie ihn aus.
-10. Wählen Sie **Speichern** aus.  
-    ![Beispielinformationen im Feld „Berechtigungen hinzufügen“ für eine Verwaltungsgruppe](./media/assign-access-acm-data/add-permissions.png)
+
+- Weisen Sie die Rolle „Kostenverwaltung: Leser“ (oder „Leser“) einem Benutzer im Verwaltungsgruppenbereich zu.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="assign-subscription-scope-access"></a>Zuweisen des Zugriffs auf den Abonnementbereich
 
 Der Zugriff auf ein Abonnement erfordert mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“). Sie können die Berechtigungen für ein Abonnement im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für das Abonnement, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
 
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Abonnements_, und wählen Sie dann **Abonnements** aus.
-3. Wählen Sie Ihr Abonnement aus.
-4. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-5. Wählen Sie **Hinzufügen**.
-6. Wählen Sie unter **Rolle** die Option **Cost Management-Leser** aus.
-7. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
-8. Um den Zugriff zuzuweisen, suchen Sie den Benutzer, und wählen Sie ihn aus.
-9. Wählen Sie **Speichern** aus.
+- Weisen Sie die Rolle „Kostenverwaltung: Leser“ (oder „Leser“) einem Benutzer im Abonnementbereich zu.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="assign-resource-group-scope-access"></a>Zuweisen des Zugriffs auf den Ressourcengruppenbereich
 
 Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigung „Kostenverwaltung: Leser“ (oder „Leser“) erforderlich. Sie können die Berechtigungen für eine Ressourcengruppe im Azure-Portal konfigurieren. Sie benötigen mindestens die Berechtigung „Benutzerzugriffsadministrator“ (oder „Besitzer“) für die Ressourcengruppe, um anderen Benutzern Zugriff zu gewähren. Für Azure EA-Konten muss zudem im EA-Portal die Einstellung **Kontobesitzer können Gebühren anzeigen** aktiviert sein.
 
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie auf der Seitenleiste **Alle Dienste** aus, suchen Sie _Ressourcengruppen_, und wählen Sie dann **Ressourcengruppen** aus.
-3. Wählen Sie Ihre Ressourcengruppe aus.
-4. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
-5. Wählen Sie **Hinzufügen**.
-6. Wählen Sie unter **Rolle** die Option **Cost Management-Leser** aus.
-7. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
-8. Um den Zugriff zuzuweisen, suchen Sie den Benutzer, und wählen Sie ihn aus.
-9. Wählen Sie **Speichern** aus.
+
+- Weisen Sie die Rolle „Kostenverwaltung: Leser“ (oder „Leser“) einem Benutzer im Ressourcengruppenbereich zu.  
+     Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="cross-tenant-authentication-issues"></a>Mandantenübergreifende Authentifizierungsprobleme
 

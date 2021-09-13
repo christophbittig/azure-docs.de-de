@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b671ae2c4c1f67ea8593d7564cb91b6057e96f3c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596296"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695408"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Zustandswerte und Abrechnung von Azure-VMs
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Azure-VMs durchlaufen verschiedene Zustände, die sich in die Kategorien *Bereitstellungszustände* und *Betriebszustände* unterteilen lassen. Im vorliegenden Artikel werden diese Zustände beschrieben, und zudem enthält er genaue Angaben dazu, wann die Instanznutzung Kunden in Rechnung gestellt wird. 
 
@@ -43,10 +45,10 @@ Die folgende Tabelle enthält eine Beschreibung der einzelnen Instanzzustände u
 
 | Betriebszustand | Beschreibung | Abrechnung |  
 |---|---|---|
-| Wird gestartet| Die VM wird hochgefahren. |Nicht in Rechnung gestellt* | 
+| Wird gestartet| Die VM wird hochgefahren. | In Rechnung gestellt | 
 | Wird ausgeführt | Die VM ist vollständig hochgefahren. Dies ist der standardmäßige Arbeitszustand. | In Rechnung gestellt | 
 | Wird beendet | Dies ist ein Übergangszustand zwischen „Wird ausgeführt“ und „Beendet“. | In Rechnung gestellt| 
-|Beendet | Die VM wurde über das Gastbetriebssystem oder mithilfe der PowerOff-APIs heruntergefahren. In diesem Zustand wird die Lease der zugrunde liegenden Hardware von der VM weiterhin genutzt. Dieser Zustand wird auch als *Beendet (zugeordnet)* bezeichnet. | In Rechnung gestellt | 
+|Beendet | Die VM wurde einem Host zugeordnet, aber nicht ausgeführt. Dieser Zustand wird auch als PoweredOff-Status oder als *Beendet (zugeordnet)* bezeichnet. Dieses Problem kann durch das Aufrufen des PowerOff-API-Vorgangs oder durch das Initiieren des Herunterfahrens von innerhalb des Gastbetriebssystems entstehen. Der Status „Beendet“ kann auch kurz während der VM-Erstellung oder beim Starten einer VM mit dem Status „Zuordnung aufgehoben“ angezeigt werden.  | In Rechnung gestellt | 
 | Zuordnung wird aufgehoben | Dies ist der Übergangszustand zwischen „Wird ausgeführt“ und „Zuordnung aufgehoben“. | Nicht in Rechnung gestellt* | 
 | Zuordnung aufgehoben | Die Lease für die zugrunde liegende Hardware auf der VM wurde freigegeben. Die VM ist vollständig ausgeschaltet. Dieser Zustand wird auch als *Beendet (Zuordnung aufgehoben)* bezeichnet. | Nicht in Rechnung gestellt* | 
 

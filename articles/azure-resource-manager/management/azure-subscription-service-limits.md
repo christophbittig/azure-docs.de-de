@@ -2,13 +2,13 @@
 title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 1831b103dc037b5f92f9ca53be1c71ce1bb3f558
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 07/29/2021
+ms.openlocfilehash: 952b5521a16ebc955e71319efe1f0b2bc48e47a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346104"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -174,6 +174,10 @@ Die aktuellen Werte für Azure Machine Learning Compute-Kontingente finden Sie a
 
 [!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
+## <a name="azure-netapp-files"></a>Azure NetApp Files
+
+[!INCLUDE [netapp-limits](../../../includes/netapp-service-limits.md)]
+
 ## <a name="azure-policy-limits"></a>Azure Policy-Grenzwerte
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
@@ -243,6 +247,10 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 ## <a name="database-migration-service-limits"></a>Grenzwerte für Database Migration Service
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
+
+## <a name="device-update-for-iot-hub--limits"></a>Grenzwerte für Device Update for IoT Hub
+
+[!INCLUDE [device-update-for-iot-hub-limits](../../../includes/device-update-for-iot-hub-limits.md)]
 
 ## <a name="digital-twins-limits"></a>Grenzwerte für Digital Twins
 

@@ -3,15 +3,15 @@ title: Diagnostizieren von Problemen mit Azure Virtual Desktop – Azure
 description: So verwenden Sie die Diagnosefunktion von Azure Virtual Desktop zum Diagnostizieren von Problemen.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/21/2020
+ms.date: 06/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: de140f83c4f00d92379b1ff0b70f627234480295
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0154bb61dcfbcf8024f09052d7a199ac63f71d8e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757875"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412539"
 ---
 # <a name="identify-and-diagnose-azure-virtual-desktop-issues"></a>Identifizieren und Diagnostizieren von Problemen mit Azure Virtual Desktop
 
@@ -34,18 +34,6 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 >[!NOTE]
 >Diese Liste enthält die häufigsten Fehler und wird in regelmäßigen Abständen aktualisiert. Damit Sie immer über die aktuellen Informationen verfügen, ist es ratsam, diesen Artikel mindestens einmal pro Monat aufzurufen.
 
-## <a name="management-errors"></a>Verwaltungsfehler
-
-|Fehlermeldung|Vorgeschlagene Lösung|
-|---|---|
-|Fehler beim Erstellen des Registrierungsschlüssels |Es konnte kein Registrierungstoken erstellt werden. Versuchen Sie, es mit einer kürzeren Ablaufzeit (zwischen 1 Stunde und 1 Monat) erneut zu erstellen. |
-|Fehler beim Löschen des Registrierungsschlüssels|Das Registrierungstoken konnte nicht gelöscht werden. Versuchen Sie, es erneut zu löschen. Wenn dies immer noch nicht funktioniert, überprüfen Sie mithilfe von PowerShell, ob das Token immer noch vorhanden ist. Wenn dies der Fall ist, löschen Sie es mit PowerShell.|
-|Fehler beim Ändern des Ausgleichsmodus für den Sitzungshost |Der Ausgleichsmodus für die VM konnte nicht geändert werden. Überprüfen Sie den VM-Status. Wenn die VM nicht verfügbar ist, kann der Ausgleichsmodus nicht geändert werden.|
-|Fehler beim Trennen von Benutzersitzungen |Die Verbindung des Benutzers mit der VM konnte nicht getrennt werden. Überprüfen Sie den VM-Status. Wenn die VM nicht verfügbar ist, kann die Benutzersitzung nicht getrennt werden. Wenn die VM verfügbar ist, überprüfen Sie den Status der Benutzersitzung, um festzustellen, ob sie getrennt ist. |
-|Fehler beim Abmelden aller Benutzer im Sitzungshost |Benutzer konnten nicht von der VM abgemeldet werden. Überprüfen Sie den VM-Status. Wenn sie nicht verfügbar ist, können Benutzer nicht abgemeldet werden. Prüfen Sie den Status der Benutzersitzung, um festzustellen, ob die Benutzer bereits abgemeldet sind. Sie können die Abmeldung mit PowerShell erzwingen. |
-|Fehler beim Aufheben der Zuweisung des Benutzers zur Anwendungsgruppe|Die Veröffentlichung einer App-Gruppe für einen Benutzer konnte nicht aufgehoben werden. Überprüfen Sie, ob der Benutzer in Azure AD verfügbar ist. Überprüfen Sie, ob der Benutzer einer Benutzergruppe angehört, in der die App-Gruppe veröffentlicht wurde. |
-|Fehler beim Abrufen der verfügbaren Standorte |Überprüfen Sie den Standort der VM, der im Assistenten zum Erstellen von Hostpools verwendet wurde. Wenn das Image an diesem Standort nicht verfügbar ist, fügen Sie dort ein Image hinzu oder wählen einen anderen VM-Standort aus. |
-
 ### <a name="connection-error-codes"></a>Verbindungsfehlercodes
 
 |Numerischer Code|Fehlercode|Vorgeschlagene Lösung|
@@ -60,14 +48,6 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |8|ConnectionBroken|Die Verbindung zwischen dem Client und dem Gateway oder Server wurde getrennt. Sofern dieser Vorgang nicht unerwartet auftritt, ist keine Aktion erforderlich.|
 |14|UnexpectedNetworkDisconnect|Die Verbindung mit dem Netzwerk wurde getrennt. Bitten Sie den Benutzer, die Verbindung wiederherzustellen.|
 |24|ReverseConnectFailed|Der virtuelle Hostcomputer verfügt nicht über eine direkte Sichtlinie zum RD-Gateway. Stellen Sie sicher, dass die IP-Adresse des Gateways aufgelöst werden kann.|
-
-## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Error: App-Gruppen können keine Benutzerzuweisungen hinzugefügt werden
-
-Nach dem Zuweisen eines Benutzers zu einer App-Gruppe zeigt das Azure-Portal die Warnung „Sitzungsende“ oder „Probleme bei der Authentifizierung – Erweiterung Microsoft_Azure_WVD“ an. Die Zuweisungsseite wird nicht geladen, und danach werden die Seiten im gesamten Azure-Portal nicht mehr geladen (z. B. Azure Monitor, Log Analytics, Service Health).
-
-**Ursache:** Es liegt ein Problem mit der Richtlinie für bedingten Zugriff vor. Das Azure-Portal versucht, ein Token für Microsoft Graph abzurufen, das von SharePoint Online abhängig ist. Der Kunde besitzt eine Richtlinie für bedingten Zugriff namens „Microsoft Office 365 Data Storage Terms of Use“ (Nutzungsbedingungen für den Microsoft Office 365-Datenspeicher), die voraussetzt, dass der Benutzer die Nutzungsbedingungen akzeptiert, um auf den Datenspeicher zugreifen zu können. Er ist jedoch noch nicht angemeldet, sodass das Azure-Portal das Token nicht abrufen kann.
-
-**Behebung:** Vor der Anmeldung beim Azure-Portal muss sich der Administrator zuerst bei SharePoint anmelden und die Nutzungsbedingungen akzeptieren. Danach sollte dieser sich wie gewohnt beim Azure-Portal anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

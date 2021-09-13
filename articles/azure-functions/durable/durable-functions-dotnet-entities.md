@@ -3,14 +3,14 @@ title: 'Entwicklerhandbuch für dauerhafte Entitäten in .NET: Azure Functions'
 description: Es wird beschrieben, wie Sie dauerhafte Entitäten in .NET nutzen, indem Sie die Durable Functions-Erweiterung für Azure Functions verwenden.
 author: sebastianburckhardt
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 06/30/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6927c0a276ffa58077ce258dc5fa4ce02eb8f43f
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740020"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108043"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Entwicklerhandbuch für dauerhafte Entitäten in .NET
 
@@ -264,10 +264,11 @@ Wenn nur der Entitätsschlüssel angegeben wird und zur Laufzeit keine eindeutig
 Alle Parameter und Rückgabetypen müssen JSON-serialisierbar sein. Andernfalls werden zur Laufzeit Serialisierungsausnahmen ausgelöst.
 
 Außerdem werden einige zusätzliche Regeln erzwungen:
+* Entitätsschnittstellen müssen in derselben Assembly wie die Entitätsklasse definiert werden.
 * Entitätsschnittstellen dürfen nur Methoden definieren.
 * Entitätsschnittstellen dürfen keine generischen Parameter enthalten.
 * Entitätsschnittstellenmethoden dürfen nicht mehr als einen Parameter enthalten.
-* Entitätsschnittstellenmethoden müssen `void`, `Task` oder `Task<T>` zurückgeben. 
+* Entitätsschnittstellenmethoden müssen `void`, `Task` oder `Task<T>` zurückgeben.
 
 Falls eine dieser Regeln verletzt wird, wird zur Laufzeit eine `InvalidOperationException` ausgelöst, wenn die Schnittstelle als Typargument für `SignalEntity` oder `CreateProxy` verwendet wird. In der Ausnahmemeldung ist beschrieben, welche Regel verletzt wurde.
 

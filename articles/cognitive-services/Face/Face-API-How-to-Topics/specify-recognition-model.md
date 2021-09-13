@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e51cb6faf51484944fc3f8fa739b76d50411feac
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 92e9c22712fdbfae5ab13a23cf72e282a225288a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745341"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346367"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -39,7 +39,7 @@ Sie sollten mit den Konzepten der KI-Gesichtserkennung und -identifikation vertr
 
 * [Konzepte der Gesichtserkennung](../concepts/face-detection.md)
 * [Konzepte der Gesichtserkennung](../concepts/face-recognition.md)
-* [Gewusst wie: Gesichtserkennung in Bildern](HowtoDetectFacesinImage.md)
+* [Aufrufen der Erkennungs-API](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>Erkennen von Gesichtern mit dem angegebenen Modell
 
@@ -116,7 +116,7 @@ Wenn Sie normalerweise einen Übereinstimmungsschwellenwert angeben (ein Wert zw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell für die Verwendung mit verschiedenen APIs für den Gesichtserkennungsdienst festlegen. Als nächstes befolgen Sie einen Schnellstart zu den ersten Schritten mit der Gesichtserkennung.
+In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell für die Verwendung mit verschiedenen APIs für den Gesichtserkennungsdienst festlegen. Durchlaufen Sie als Nächstes eine Schnellstartanleitung zu den ersten Schritten mit der Gesichtserkennung.
 
 * [.NET SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Python SDK zur Gesichtserkennung](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

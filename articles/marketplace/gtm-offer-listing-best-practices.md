@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 06/03/2021
-ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 12c3641597168ee7e76acf4a16984f4419d40555
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410241"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298833"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
-Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote für den kommerziellen Microsoft-Marketplace. In den folgenden Tabellen werden Best Practices für das Angeben von Angebotsinformationen in Partner Center erläutert. Eine Analyse der Beliebtheit Ihrer Angebote finden Sie im [Dashboard „Marketplace-Erkenntnisse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
+Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote für den kommerziellen Microsoft-Marketplace. In den folgenden Tabellen werden Best Practices für das Angeben von Angebotsinformationen in Partner Center erläutert. Eine Analyse der Beliebtheit Ihrer Angebote finden Sie im [Dashboard „Marketplace-Erkenntnisse“](https://go.microsoft.com/fwlink/?linkid=2165936) in Partner Center.
 
 ## <a name="online-store-offer-details"></a>Details zum Angebot im Onlineshop
 
@@ -139,10 +139,10 @@ Wenn Sie auf Ihrer Website einen Link vom AppSource- oder Azure Marketplace-Badg
 
 Die folgende Beispiel-URL enthält beide oben stehenden Abfrageparameter: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne im Analysedashboard in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/) überprüfen.
+Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne auf dem [Analysedashboard](https://go.microsoft.com/fwlink/?linkid=2165765) in Partner Center überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md).
 
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
+Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an, um Ihr Angebot zu erstellen und zu konfigurieren. Wenn Sie sich noch nicht bei Partner Center registriert haben, [erstellen Sie ein Konto](create-account.md).

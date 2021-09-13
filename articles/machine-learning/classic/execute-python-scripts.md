@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 374589212b230e6b3ce0abcadbad8aa3eb7271fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01a8ec38ac6a52a2181834c416431c73285ac191
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519982"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581626"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio (klassisch)
+# <a name="execute-python-machine-learning-scripts-in-machine-learning-studio-classic"></a>Ausführen von Python-Skripts für maschinelles Lernen in Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Python ist ein wertvolles Tool im Werkzeugkasten vieler Datenanalysten. Es wird in jeder Phase typischer Workflows beim maschinellen Lernen verwendet, einschließlich des Durchsuchens von Daten, der Featureextraktion, des Modelltrainings und der Modellvalidierung sowie der Bereitstellung.
 
-In diesem Artikel wird beschrieben, wie Sie das Modul „Execute Python Script“ nutzen können, um Python-Code in Ihren (klassischen) Azure Machine Learning Studio-Experimenten und -Webdiensten zu verwenden.
+In diesem Artikel erfahren Sie, wie Sie das Modul „Execute Python Script“ (Python-Skript ausführen) nutzen können, um Python-Code in Ihren Experimenten und Webdiensten mit Machine Learning Studio (Classic) zu verwenden.
 
 ## <a name="using-the-execute-python-script-module"></a>Verwenden des Execute Python Script-Moduls
 
@@ -155,7 +155,7 @@ Dies ist die Python-Funktion zum Berechnen der Wichtigkeitsbewertungen und zum S
 
 ![Funktion zum Klassifizieren von Features nach Bewertungen](./media/execute-python-scripts/figure8.png)
 
-Im folgenden Experiment werden dann die Wichtigkeitsbewertungen der Features berechnet und im Dataset „Pima Indian Diabetes“ in Azure Machine Learning Studio (Classic) ausgegeben:
+Im folgenden Experiment werden dann die Wichtigkeitsbewertungen der Features berechnet und im Dataset „Pima Indian Diabetes“ in Machine Learning Studio (Classic) ausgegeben:
 
 ![Versuch zum Klassifizieren von Features im Dataset „Pima Indian Diabetes“ mithilfe von Python](./media/execute-python-scripts/figure9a.png)
 

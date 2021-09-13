@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 06/02/2021
+ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: be9db68720f8af1fa3c00e3919b1acd7a63969c0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: af008e8f14e3df60f0ce48a23cb32d45716645d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410259"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346098"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -153,7 +153,8 @@ Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete vir
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
 [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt<br></br>Beim Wiederherstellen eines virtuellen Azure-Computers über die Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) kann der virtuelle Azure-Computer auf dem dedizierten Host nicht wiederhergestellt werden, obwohl die Wiederherstellung erfolgreich ist. Um dies zu erreichen, empfiehlt sich das Wiederherstellen als Datenträger. Erstellen Sie beim [Wiederherstellen als Datenträger](backup-azure-arm-restore-vms.md#restore-disks) mit der Vorlage einen virtuellen Computer auf einem dedizierten Host, und fügen Sie die Datenträger dann an.<br></br>Dies gilt nicht in der sekundären Region beim Ausführen einer [regionsübergreifenden Wiederherstellung](backup-azure-arm-restore-vms.md#cross-region-restore).
 Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt
-[Skaliersets für virtuelle Azure-Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Wird sowohl für einheitliche als auch flexible Orchestrierungsmodelle zum Sichern und Wiederherstellen einzelner virtueller Azure-Computer unterstützt.
+[Skaliersets für virtuelle Azure-Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Wird für das flexible Orchestrierungsmodell zum Sichern und Wiederherstellen einzelner virtueller Azure-Computer unterstützt.
+Wiederherstellen mit verwalteten Identitäten | Wird für verwaltete virtuelle Azure-Computer unterstützt, aber nicht für klassische und nicht verwaltete virtuelle Azure-Computer.  <br><br> Die regionsübergreifende Wiederherstellung (Cross Region Restore, CRR) wird bei verwalteten Identitäten nicht unterstützt. <br><br> Derzeit ist dies in allen öffentlichen und nationalen Azure-Cloudregionen verfügbar.   <br><br> [Weitere Informationen](backup-azure-arm-restore-vms.md#restore-vms-with-managed-identities)
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 
@@ -164,7 +165,7 @@ Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und m
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Seit dem 23. November 2020 wird dies nur in den Regionen „Südkorea, Mitte“ (KRC) und „Südafrika, Norden“ (SAN) für eine begrenzte Anzahl von Abonnements unterstützt (eingeschränkte Vorschau). Für diese unterstützten Abonnements sichert Azure Backup die VMs mit Datenträgern mit aktivierter Schreibbeschleunigung während der Sicherung.<br><br>Für die nicht unterstützten Regionen ist eine Internetverbindung auf der VM erforderlich, um Momentaufnahmen von virtuellen Computern mit aktivierter Schreibbeschleunigung zu erstellen.<br><br> **Wichtiger Hinweis**: In diesen nicht unterstützten Regionen benötigen VMs mit WA-Datenträgern eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
+Datenträger mit aktivierter Schreibbeschleunigung | Derzeit werden virtuelle Azure-Computer mit Datenträgersicherung mit Schreibbeschleunigung in allen öffentlichen Azure-Regionen als Vorschauversion bereitgestellt. <br><br> (Das Kontingent ist überschritten, und bis zur allgemeinen Verfügbarkeit ist keine weitere Änderung der genehmigten Liste möglich.) <br><br> Momentaufnahmen enthalten keine Datenträgermomentaufnahmen mit Schreibbeschleunigung für nicht unterstützte Abonnements, da der Datenträger mit Schreibbeschleunigung ausgeschlossen wird. <br><br>**Wichtig** <br> Virtuelle Computer mit Datenträgern mit Schreibbeschleunigung benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt die Deduplizierung nicht. Weitere Informationen finden Sie in [diesem Artikel](./backup-support-matrix.md#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wiederhergestellt werden, da der Tresor das Format nicht verarbeiten kann. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.

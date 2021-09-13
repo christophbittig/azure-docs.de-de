@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 529be70de61fe9adb025ee801bd417bc860ef5e6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630274"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346501"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML-Skill in einer Anreicherungspipeline von Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit wird das .NET SDK nicht unterstützt.
+> Dieser Skill befindet sich in der Public Preview-Phase und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt diesen Skill.
 
-Mit dem **AML**-Skill können Sie die KI-Anreicherung durch ein benutzerdefiniertes AML-Modell ([Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md)) erweitern. Nachdem ein AML-Modell [trainiert und bereitgestellt](../machine-learning/concept-azure-machine-learning-architecture.md#workspace) wurde, integriert ein **AML**-Skill dieses in die KI-Anreicherung.
+Mit dem **AML**-Skill können Sie die KI-Anreicherung durch ein benutzerdefiniertes AML-Modell ([Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md)) erweitern. Nachdem ein AML-Modell [trainiert und bereitgestellt](../machine-learning/concept-azure-machine-learning-architecture.md#workspace) wurde, integriert ein **AML**-Skill dieses in die KI-Anreicherung.
 
 Wie integrierte Skills weist ein **AML**-Skill Eingaben und Ausgaben auf. Die Eingaben werden als JSON-Objekt an den bereitgestellten AML-Dienst gesendet, das eine JSON-Nutzlast als Antwort zusammen mit einem Erfolgsstatuscode ausgibt. Es wird erwartet, dass die Antwort die von Ihrem Skill **AML** angegebenen Ergebnisse aufweist. Jede andere Antwort gilt als Fehler und es werden keine Anreicherung durchgeführt.
 

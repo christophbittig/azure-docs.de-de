@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel bietet eine konzeptionelle Übersicht über die Azure RBAC-Funktionalität auf Kubernetes mit Azure Arc-Unterstützung.
-ms.openlocfilehash: 7eb55ed819b6487697b5c2d64cdbabe2bbdae8a3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 126e85eb312b977eb90e27971e8e65180542b069
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450717"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679960"
 ---
 # <a name="azure-rbac-on-azure-arc-enabled-kubernetes"></a>Azure RBAC auf Kubernetes mit Azure Arc-Unterstützung
 
@@ -28,7 +28,7 @@ Um alle Autorisierungszugriffsüberprüfungen an den Autorisierungsdienst in Azu
 
 Der `apiserver` des Clusters ist so konfiguriert, dass eine [Webhooktokenauthentifizierung](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication) und eine [Webhookautorisierung](https://kubernetes.io/docs/reference/access-authn-authz/webhook/) verwendet werden, sodass `TokenAccessReview`- und `SubjectAccessReview`-Anforderungen an den Wächterwebhookserver weitergeleitet werden. Die `TokenAccessReview`- und `SubjectAccessReview`-Anforderungen werden durch Anforderungen an Kubernetes-Ressourcen ausgelöst, die an den `apiserver` gesendet werden.
 
-Der Wächter richtet dann einen `checkAccess`-Aufruf an den Autorisierungsdienst in Azure, um festzustellen, ob die anfordernde Azure AD-Entität Zugriff auf die betreffende Ressource hat. 
+Der Wächter richtet dann einen Aufruf vom Typ `checkAccess` an den Autorisierungsdienst in Azure, um festzustellen, ob die anfordernde Azure AD-Entität Zugriff auf die betreffende Ressource hat. 
 
 Wenn eine Rolle in der Zuweisung diesen Zugriff zulässt, wird vom Autorisierungsdienstwächter eine `allowed`-Antwort gesendet. Der Wächter sendet wiederum eine `allowed`-Antwort an den `apiserver`, sodass die aufrufende Entität auf die angeforderte Kubernetes-Ressource zugreifen kann.
 

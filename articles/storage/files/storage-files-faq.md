@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ff5d891b4374a61c8806666a48505a2ee4682a67
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47400f8e359f8f5f7a05119eb91106b318a0e798
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094472"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729576"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -200,7 +200,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. 
     
-    Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+    Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](../common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
     
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
@@ -330,7 +330,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="when-to-use-nfs"></a>
 **Wann sollte ich Azure Files NFS verwenden?**
 
-    Informationen hierzu finden Sie unter [NFS-Freigaben (Vorschau)](storage-files-compare-protocols.md#nfs-shares-preview).
+    Informationen hierzu finden Sie unter [NFS-Freigaben (Vorschau)](files-nfs-protocol.md).
 
 * <a id="backup-nfs-data"></a>
 **Wie sichere ich Daten, die in NFS-Freigaben gespeichert sind?**
@@ -451,7 +451,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="need-larger-share"></a>
 **Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
-    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB hochskaliert werden. Weitere Informationen finden Sie unter [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md).
 
 * <a id="lfs-performance-impact"></a>
 **Wirkt sich eine Erweiterung meines Dateifreigabekontingents auf meine Workloads oder die Azure-Dateisynchronisierung aus?**

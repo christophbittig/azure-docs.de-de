@@ -3,12 +3,12 @@ title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: 7b32752e368f9aac003a45f96f7c0477e9221481
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089612"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346103"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -16,7 +16,7 @@ Azure VMware Solution bietet VMware-basierte private Clouds in Azure. Hardware- 
 
 Eine private Cloud umfasst Cluster mit Folgendem:
 
-- Dedizierte Bare-Metal-Serverknoten, die mit VMware ESXi-Hypervisor bereitgestellt werden 
+- Dedizierte Bare-Metal-Serverhosts, die mit VMware ESXi-Hypervisor bereitgestellt werden 
 - vCenter Server für die Verwaltung von ESXi und vSAN 
 - Software-Defined Networking in VMware NSX-T für VMs für vSphere-Workloads  
 - VMware vSAN-Datenspeicher für virtuelle Computer für vSphere-Workloads  
@@ -27,7 +27,7 @@ Private Clouds werden wie andere Ressourcen innerhalb eines Azure-Abonnements in
 
 Die Abbildung zeigt ein einzelnes Azure-Abonnement mit zwei privaten Clouds, die für eine Entwicklungs- und eine Produktionsumgebung stehen. In jeder dieser privaten Clouds gibt es zwei Cluster. 
 
-:::image type="content" source="media/hosts-clusters-private-clouds-final.png" alt-text="Abbildung von zwei privaten Clouds in einem Kundenabonnement":::
+:::image type="content" source="media/concepts/hosts-clusters-private-clouds-final.png" alt-text="Diagramm: Einzelnes Azure-Abonnement mit zwei privaten Clouds, die eine Entwicklungs- und eine Produktionsumgebung darstellen" border="false":::
 
 ## <a name="hosts"></a>Hosts
 
@@ -85,7 +85,7 @@ Nachdem Sie jetzt die Konzepte der privaten Azure VMware Solution-Cloud kennenge
 
 - [Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte](concepts-networking.md)
 - [Speicherkonzepte von Azure VMware Solution](concepts-storage.md)
-- [So aktivieren Sie die Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [So aktivieren Sie die Azure VMware Solution-Ressource](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

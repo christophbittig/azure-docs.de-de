@@ -3,16 +3,18 @@ title: Computekontextoptionen für ML Services in HDInsight – Azure
 description: Informieren Sie sich über die verschiedenen Computekontextoptionen, die Benutzern mit ML Services in HDInsight zur Verfügung stehen.
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: efdf410ac566297668a06b0e7da457fcd49bfb59
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943956"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299337"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 ML Services für Azure HDInsight bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. In diesem Artikel werden die Optionen beschrieben, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden.
 
@@ -20,7 +22,7 @@ Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherste
 
 ## <a name="ml-services-on-azure-hdinsight"></a>ML Services in Azure HDInsight
 
-[ML Services in Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für R-basierte Analysen. Die verwendeten Daten sind in einem Apache Hadoop HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da ML Services auf Open-Source-R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open-Source-R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in ML Services enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
+[ML Services in Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für R-basierte Analysen. Die verwendeten Daten sind in einem Apache Hadoop HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure-BLOB-Speicher"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da ML Services auf Open-Source-R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open-Source-R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in ML Services enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Computekontexte für einen Edgeknoten
 
@@ -54,7 +56,7 @@ Welche der drei Optionen für die parallelisierte Ausführung ausgewählt werden
 
 Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die allgemeinen Regeln in den folgenden Abschnitten berücksichtigt werden.
 
-### <a name="local"></a>Lokal
+### <a name="local"></a>Lokales Gerät
 
 - Wenn die zu analysierende Datenmenge klein und keine wiederholte Analyse erforderlich ist, sollten Sie die Daten mit *local* oder *localpar* direkt in die Analyseroutine streamen.
 - Wenn die zu analysierende Datenmenge klein oder mittelgroß und eine wiederholte Analyse erforderlich ist, kopieren Sie die Daten in das lokale Dateisystem, importieren Sie sie in XDF, und führen Sie die Analyse mit *local* oder *localpar* durch.

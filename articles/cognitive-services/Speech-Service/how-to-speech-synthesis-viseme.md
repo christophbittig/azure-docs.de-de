@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 7ef3e07eb1585aaa87986fd682b4db00c53e66f3
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 3601cd6f7580a4d87dda7488826e25ca85b233c9
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810676"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654186"
 ---
 # <a name="get-facial-pose-events"></a>Abrufen von Gesichtsausdrucksereignissen
 
@@ -27,26 +27,36 @@ ms.locfileid: "109810676"
 Ein _Visem_ ist die visuelle Beschreibung eines Phonems in der gesprochenen Sprache.
 Es beschreibt die Position des Gesichts und Munds beim Sprechen eines Worts.
 Jedes Visem stellt die wichtigsten Gesichtsausdrücke für einen bestimmten Satz von Phonemen dar.
-Es besteht keine 1:1-Entsprechung zwischen Visemen und Phonemen.
-Oftmals entsprechen mehrere Phoneme einem einzelnen Visem, da mehrere Phoneme, z. B. `s` und `z`, mit dem gleichen Mundbild einhergehen.
-Weitere Informationen finden Sie in der [Tabelle der Zuordnungen zwischen Visemen und Phonemen](#map-phonemes-to-visemes).
+Mundbilder können verwendet werden, um die Bewegung von 2D- und 3D-Avatarmodellen zu steuern, mit perfekter Anpassung von Mundbewegungen an synthetische Sprache.
 
-Mit Visemen können Sie natürlicher wirkende und intelligentere Nachrichtensprecher, interaktivere Figuren in Spielen und Cartoons sowie intuitivere Sprachunterrichtsvideos erstellen. Hörgeschädigte können Töne auch visuell wahrnehmen und Sprachinhalte aus den Visemen in einem animierten Gesicht ableiten.
+Mit Mundbildern lassen sich Avatare einfacher nutzen und steuern. Mundbilder bieten folgende Möglichkeiten:
 
-## <a name="get-viseme-events-with-the-speech-sdk"></a>Abrufen von Visemereignissen mit dem Speech SDK
+ * Erstellen Sie einen **animierten virtuellen Sprachassistenten** für intelligente Kioske, um integrierte Mehrfachmodusdienste für Ihre Kunden zu entwickeln.
+ * Erstellen Sie **immersive Nachrichtensendungen**, und verbessern Sie das Zuschauererlebnis mit natürlichen Gesichts- und Mundbewegungen.
+ * Erstellen Sie **interaktivere Gaming-Avatare und Cartoon-Figuren**, die mit dynamischen Inhalten sprechen können.
+ * Erstellen Sie **effektivere Sprachlernvideos**, die Sprachlernenden helfen, das Mundverhalten der einzelnen Wörter und Phoneme zu verstehen.
+ * Hörgeschädigte können Töne auch visuell wahrnehmen und Sprachinhalte von den **„Lippen“** ablesen, die auf einem animierten Gesicht zu sehen sind.
 
-Zum Erstellen von Visemereignissen konvertiert der TTS-Dienst den Eingabetext in einen Satz von Phonemsequenzen und den entsprechenden Visemsequenzen.
-Dann wird die Startzeit jedes Visems in den Audiodaten der Sprachausgabe geschätzt.
-Visemereignisse enthalten eine Sequenz von Visem-IDs mit jeweils einem Offset zu der Sprachausgabe, in der das Visem vorhanden ist.
-Diese Ereignisse können Mundanimationen steuern, die eine Person simulieren, die den Eingabetext spricht.
+Sehen Sie sich das [Einführungsvideo](https://youtu.be/ui9XT47uwxs) des Mundbilds an.
+> [!VIDEO https://www.youtube.com/embed/ui9XT47uwxs]
+
+## <a name="azure-neural-tts-can-produce-visemes-with-speech"></a>Neuronales Text-to-Speech von Azure kann Mundbilder mit Sprache erzeugen.
+
+Eine neuronale Stimme wandelt eingegebenen Text oder SSML (Speech Synthesis Markup Language) in synthetisierte Sprache um. Die Audiosprachausgabe kann durch Mundbild-IDs und deren Versatzzeitstempel ergänzt werden. Jede Mundbild-ID gibt eine bestimmte Haltung in der beobachteten Sprache an, z. B. die Position der Lippen, des Kiefers und der Zunge bei der Erzeugung eines bestimmten Phonems. Mit einem 2D- oder 3D-Renderingmodul können Sie diese Mundbildereignisse nutzen, um Ihren Avatar zu animieren.
+
+Der gesamte Workflow eines Mundbilds ist im folgenden Flussdiagramm dargestellt.
+
+![Der gesamte Workflow eines Mundbilds](media/text-to-speech/viseme-structure.png)
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|
-| VisemeId | Eine ganze Zahl, die ein Visem angibt. In der Sprache „Englisch (USA)“ werden 22 verschiedene Viseme geboten, um die Mundformen für einen bestimmten Satz von Phonemen darzustellen. Weitere Informationen finden Sie in der [Tabelle der Zuordnungen zwischen Visem-IDs und Phonemen](#map-phonemes-to-visemes).  |
+| VisemeId | Eine ganze Zahl, die ein Visem angibt. In der Sprache „Englisch (USA)“ werden 22 verschiedene Viseme geboten, um die Mundformen für einen bestimmten Satz von Phonemen darzustellen. Es besteht keine 1:1-Entsprechung zwischen Visemen und Phonemen. Oftmals entsprechen mehrere Phoneme einem einzelnen Visem, da mehrere Phoneme, z. B. `s` und `z`, mit dem gleichen Mundbild einhergehen. Weitere Informationen finden Sie in der [Tabelle der Zuordnungen zwischen Visem-IDs und Phonemen](#map-phonemes-to-visemes).  |
 | AudioOffset | Die Startzeit jedes Visems in Takten (100 Nanosekunden) |
 
-Abonnieren Sie das `VisemeReceived`-Ereignis im Speech SDK, um Visemereignisse abzurufen.
-In den folgenden Codeausschnitten wird gezeigt, wie Sie das Visemereignis abonnieren.
+## <a name="get-viseme-events-with-the-speech-sdk"></a>Abrufen von Visemereignissen mit dem Speech SDK
+
+Abonnieren Sie das `VisemeReceived`-Ereignis im Speech SDK, um Mundbilder mit Ihrer synthetisierten Sprache zu erhalten.
+Der folgende Codeausschnitt zeigt das Abonnieren des Mundbildereignisses.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -148,6 +158,26 @@ SPXSpeechSynthesizer *synthesizer =
 ```
 
 ::: zone-end
+
+Hier ist ein Beispiel für die Mundbildausgabe.
+
+```text
+(Viseme), Viseme ID: 1, Audio offset: 200ms.
+
+(Viseme), Viseme ID: 5, Audio offset: 850ms.
+
+……
+
+(Viseme), Viseme ID: 13, Audio offset: 2350ms.
+```
+
+Nachdem Sie die Mundbildausgabe erhalten haben, können Sie diese Ereignisse zur Steuerung der Figurenanimation verwenden. Sie können Ihre eigenen Figuren erstellen und diese automatisch animieren.
+
+Für 2D-Figuren können Sie eine Figur entwerfen, die zu Ihrem Szenario passt, und Scalable Vector Graphics (SVG) für jede Mundbild-ID verwenden, um eine zeitbasierte Gesichtsposition zu erhalten. Mit temporalen Tags, die in einem Mundbildereignis bereitgestellt werden, werden diese gut gestalteten SVGs mit Glättungsmodifikationen verarbeitet und bieten den Benutzern stabile Animationen. Die folgende Abbildung zeigt zum Beispiel eine Figur mit roten Lippen, die zum Sprachenlernen konzipiert wurde.
+
+![2D-Renderbeispiel](media/text-to-speech/viseme-demo-2D.png)
+
+Bei 3D-Figuren können Sie sich die Figuren als Marionetten vorstellen. Der Puppenspieler zieht die Fäden von einem Zustand zum anderen, und die Gesetze der Physik erledigen den Rest und sorgen dafür, dass sich die Marionette fließend bewegt. Die Mundbildausgabe fungiert als Puppenspieler, der eine Aktionszeitleiste bereitstellt. Das Animationsmodul definiert die physischen Gesetze der Aktion. Durch die Interpolation von Frames mit Lockerungsalgorithmen kann das Modul außerdem hochwertige Animationen erzeugen.
 
 ## <a name="map-phonemes-to-visemes"></a>Zuordnen von Phonemen zu Visemen
 

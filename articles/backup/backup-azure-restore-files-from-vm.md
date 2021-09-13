@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: dd1a5ff9fbf85fbce4c4ae7a79b745589b3596e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339177"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -94,7 +94,7 @@ Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetrie
 |Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
@@ -133,13 +133,13 @@ Stellen Sie außerdem sicher, dass Sie über den [richtigen Computer zum Ausfüh
 
 Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
-- `download.microsoft.com` oder Diensttag `AzureFrontDoor.FirstParty` in NSG
-- Recovery Services-URLs („geo-name“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
+- Diensttag `download.microsoft.com` oder `AzureFrontDoor.FirstParty` in NSG an Port 443 (ausgehend)
+- Recovery Services-URLs („GEO-NAME“ bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet) an Port 3260 (ausgehend)
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (für öffentliche Azure-Regionen) oder Diensttag `AzureBackup` in NSG
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (für Azure China 21Vianet) oder Diensttag `AzureBackup` in NSG
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (für Azure US Government) oder Diensttag `AzureBackup` in NSG
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (für Azure Deutschland) oder Diensttag `AzureBackup` in NSG
-- Ausgehende Ports 53 (DNS), 443, 3260
+- Öffentliche DNS-Auflösung an Port 53 (ausgehend)
 
 > [!NOTE]
 >
@@ -159,6 +159,12 @@ Der Zugriff auf `download.microsoft.com` ist erforderlich, um die Komponenten f�
 Stellen Sie außerdem sicher, dass Sie über den [richtigen Computer zum Ausführen des ILR-Skripts](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) verfügen und die [Betriebssystemanforderungen](#step-3-os-requirements-to-successfully-run-the-script) erfüllen.
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>Schritt 5: Ausführen des Skripts und Identifizieren von Volumes
+
+> [!NOTE]
+>
+> Das Skript wird nur in englischer Sprache generiert und nicht lokalisiert. Daher kann es erforderlich sein, das Gebietsschema des Systems auf Englisch festzulegen, damit das Skript ordnungsgemäß ausgeführt wird.
+> 
+
 
 ### <a name="for-windows"></a>Für Windows
 

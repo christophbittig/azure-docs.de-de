@@ -4,12 +4,12 @@ description: Wichtige Referenzmaterialien für die Überwachung von Azure Event 
 ms.topic: reference
 ms.custom: subject-monitoring
 ms.date: 06/11/2021
-ms.openlocfilehash: 3d68f84c3c58cd29951c2d51cc8d89e3573b7f7a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 4dc40cef074a223a2cc34e3a87c9acae840f8dbf
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063654"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992043"
 ---
 # <a name="monitoring-azure-event-hubs-data-reference"></a>Referenz zum Überwachen von Azure Event Hubs-Daten
 Ausführliche Informationen zum Erfassen und Analysieren von Überwachungsdaten für Azure Event Hubs finden Sie unter [Überwachen von Azure Event Hubs](monitor-event-hubs.md).
@@ -68,6 +68,8 @@ Die beiden folgenden Arten von Fehlern werden als **Benutzerfehler** klassifizie
 |Benutzerfehler | Nein | Anzahl | Gesamt | Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum | Name der Entität<br/><br/>Ergebnis des Vorgangs|
 |Fehler aufgrund von Kontingentüberschreitung | Nein |Anzahl | Gesamt | Die Anzahl der Fehler, die durch das Überschreiten von Kontingenten in einem bestimmten Zeitraum verursacht werden. | Name der Entität<br/><br/>Ergebnis des Vorgangs|
 
+> [!NOTE]
+> Von Logic Apps werden Empfänger mit epoch-Wert erstellt, und Empfänger können je nach Dienstauslastung zwischen Knoten verschoben werden. Während dieser Verschiebungen können Ausnahmen vom Typ `ReceiverDisconnection` auftreten. Sie werden aufseiten des Event Hubs-Diensts als Benutzerfehler gezählt. Von Logic Apps werden unter Umständen Fehler von Event Hubs-Clients erfasst, sodass Sie sie sich in Benutzerprotokollen ansehen können.
 
 ## <a name="metric-dimensions"></a>Metrikdimensionen
 
@@ -78,7 +80,7 @@ Azure Event Hubs unterstützt folgende Dimensionen für Metriken in Azure Monito
 |Entitätsname| Name des Event Hubs.|
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
-[!INCLUDE [event-hubs-diagnostic-log-schema](../../includes/event-hubs-diagnostic-log-schema.md)]
+[!INCLUDE [event-hubs-diagnostic-log-schema](./includes/event-hubs-diagnostic-log-schema.md)]
 
 
 

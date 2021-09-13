@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die erweiterte Nutzung des Azure-Metrik-Exp
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 06/30/2020
 ms.author: vitalyg
-ms.openlocfilehash: 8564f96ad311a07ccf4582f274e44e6ebd1e0c85
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bd0fef05913c66f767cb81e3c999fda4edaa8c21
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758511"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456522"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Erweiterte Funktionen des Azure-Metrik-Explorers
 
@@ -113,7 +113,9 @@ Angenommen, ein Diagramm zeigt die Metrik *Serverantwortzeit*. Es verwendet den 
 - Wenn die Zeitgranularität auf 30 Minuten festlegt ist, wird das Diagramm aus 48 aggregierten Datenpunkten gezeichnet. Das heißt, das Liniendiagramm verbindet 48 Punkte in der Diagrammzeichnungsfläche (24 Stunden x 2 Datenpunkte pro Stunde). Jeder Datenpunkt stellt den *Durchschnitt* aller erfassten Antwortzeiten für Serveranforderungen dar, die während des jeweils relevanten 30-Minuten-Zeitraums aufgetreten sind.
 - Wenn Sie die Zeitgranularität auf 15 Minuten festlegen, erhalten Sie 96 aggregierte Datenpunkte.  Das heißt, Sie erhalten 24 Stunden x 4 Datenpunkte pro Stunde.
 
-Der Metrik-Explorer verfügt über fünf grundlegende statistische Aggregationstypen: „Sum“, „Count“, „Min“, „Max“ und „Average“. Der Aggregationstyp *Sum* wird manchmal auch *Total* genannt. Bei vielen Metriken blendet der Metrik-Explorer die Aggregationen aus, die irrelevant sind und nicht verwendet werden können.
+Der Metrik-Explorer verfügt über fünf grundlegende statistische Aggregationstypen: „Sum“, „Count“, „Min“, „Max“ und „Average“. Der Aggregationstyp *Sum* wird manchmal auch *Total* genannt. Bei vielen Metriken blendet der Metrik-Explorer die Aggregationen aus, die irrelevant sind und nicht verwendet werden können. 
+
+Eine eingehendere Erläuterung der Funktionsweise der Metrikaggregation finden Sie unter [Funktionsweise der Aggregation](metrics-aggregation-explained.md).
 
 * **Sum**: Die Summe aller Werte, die während des Aggregationsintervalls erfasst wurden.
 

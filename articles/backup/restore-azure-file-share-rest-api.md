@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigaben oder bestimmte Dateien aus einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7673379df250892671eb01fd2635cca651f69b04
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88761796"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457435"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 
@@ -33,7 +33,7 @@ In diesem Artikel verwenden Sie die folgenden Ressourcen:
 
 ## <a name="fetch-containername-and-protecteditemname"></a>Abrufen von „ContainerName“ und „ProtectedItemName“
 
-Für den größten Teil der API-Aufrufe im Zusammenhang mit der Wiederherstellung müssen Sie Werte für die URI-Parameter {containerName} und {protectedItemName} übergeben. Verwenden Sie das ID-Attribut im Antworttext des [GET backupprotectableitems](/rest/api/backup/protecteditems/get)-Vorgangs, um Werte für diese Parameter abzurufen. In unserem Beispiel lautet die ID der Dateifreigabe, die wir schützen wollen:
+Für den größten Teil der API-Aufrufe im Zusammenhang mit der Wiederherstellung müssen Sie Werte für die URI-Parameter {containerName} und {protectedItemName} übergeben. Verwenden Sie das ID-Attribut im Antworttext des [GET backupprotectableitems](/rest/api/backup/protected-items/get)-Vorgangs, um Werte für diese Parameter abzurufen. In unserem Beispiel lautet die ID der Dateifreigabe, die wir schützen wollen:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -58,7 +58,7 @@ Legen Sie die URI-Werte wie folgt fest:
 * {protectedItemName}: *azurefileshare;azurefiles*
 * {ResourceGroupName}: *azurefiles*
 
-Der GET-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforderungstext ist nicht erforderlich.
+Der GET-URI enthält alle erforderlichen Parameter. Weiterer Anforderungstext ist nicht erforderlich.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5b17df9e074375b8cdbe769c840aaf030eaff8af
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d1654a195f694b9ef8ab8150380939c0e647bcd1
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317431"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580672"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -297,6 +297,18 @@ Dies ist ein bekanntes VMware-Problem, bei dem die für die Momentaufnahme angeg
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Memory allocation failed. Out of memory] (Fehler bei der Speicherbelegung. Nicht genügend Arbeitsspeicher).
 
 Dies geschieht, wenn der NFC-Hostpuffer nicht über genügend Arbeitsspeicher verfügt. Um dieses Problem zu beheben, müssen Sie den virtuellen Computer (Compute vMotion) auf einen anderen Host mit freien Ressourcen verlagern.
+
+### <a name="error-message-an-internal-error-occurred-file-is-larger-than-maximum-file-size-supported-1012384"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [File is larger than maximum file size supported (1012384)] (Die Größe der Datei übersteigt die maximal unterstützte Dateigröße. (1012384))
+Dieser Fehler tritt auf, wenn die Dateigröße beim Erstellen der Momentaufnahme die maximal unterstützte Dateigröße übersteigt. Gehen Sie zur Lösung des Problems wie in [diesem VMware-KB-Artikel](https://kb.vmware.com/s/article/1012384) beschrieben vor.
+
+### <a name="error-message-an-internal-error-occurred-cannot-connect-to-the-host-1004109"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Cannot connect to the host (1004109)] (Mit dem Host konnte keine Verbindung hergestellt werden. (1004109))
+Dieser Fehler tritt auf, wenn von ESXi-Hosts keine Verbindung mit dem Netzwerk hergestellt werden kann. Befolgen Sie die im [VMware-KB](https://kb.vmware.com/s/article/1004109)-Artikel angegebenen Lösungsschritte.
+
+### <a name="error-message-an-error-occurred-while-saving-the-snapshot-invalid-change-tracker-error-code"></a>Fehlermeldung: „An error occurred while saving the snapshot: Invalid change tracker error code“ (Fehler beim Speichern der Momentaufnahme: Ungültiger Fehlercode der Änderungsnachverfolgung)
+Dieser Fehler tritt auf, wenn ein Problem mit dem zugrunde liegenden Datenspeicher vorliegt, in dem die Momentaufnahme gespeichert wird. Befolgen Sie die im [VMware-KB](https://kb.vmware.com/s/article/2042742)-Artikel angegebenen Lösungsschritte.
+
+### <a name="error-message-an-error-occurred-while-taking-a-snapshot-unable-to-open-the-snapshot-file"></a>Fehlermeldung: „An error occurred while taking a snapshot: Unable to open the snapshot file.“ (Fehler beim Erstellen einer Momentaufnahme: Die Momentaufnahmedatei konnte nicht geöffnet werden.)
+Dieser Fehler tritt auf, wenn die erstellte Momentaufnahmedatei größer ist als der verfügbare Speicherplatz des Datenspeichers, in dem sich der virtuelle Computer befindet. Gehen Sie zur Lösung des Problems wie in [diesem Dokument](https://go.microsoft.com/fwlink/?linkid=2166464) beschrieben vor.
 
 ## <a name="replication-cycle-failed"></a>Fehler bei Replikationszyklus
 

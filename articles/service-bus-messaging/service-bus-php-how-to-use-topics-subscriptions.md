@@ -1,17 +1,17 @@
 ---
 title: Verwenden von Azure Service Bus-Themen mit PHP
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Service Bus-Themen und -Abonnements über eine PHP-Anwendung verwenden.
+description: In diesem Artikel erfahren Sie, wie Sie Azure Service Bus-Themen und -Abonnements über eine PHP-Anwendung verwenden.
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 7cdb6ca30b2c9abf2c2525057a90888b2c5d1c78
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.topic: how-to
+ms.date: 07/27/2021
+ms.openlocfilehash: 0265b138b2f6f44961d085ca8492ba125b9a36b2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302534"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725110"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit PHP
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Verwenden von Service Bus-Themen und -Abonnements mit PHP
 
 In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure-SDK für PHP](https://github.com/Azure/azure-sdk-for-php). Folgende Szenarien werden behandelt:
 
@@ -26,11 +26,11 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Ein Azure-Abonnement. Für die Schritte in diesem Artikel wird ein Azure-Konto benötigt. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Befolgen Sie die Schritte im [Schnellstart: Verwenden Sie das Azure-Portal, um ein Service Bus-Thema und -Abonnements für das Thema](service-bus-quickstart-topics-subscriptions-portal.md) zu erstellen, um einen Service Bus-**Namespace** zu erstellen und die **Verbindungszeichenfolge** abzurufen.
 
     > [!NOTE]
-    > Sie erstellen ein **Thema** und ein **Abonnement** für das Thema, indem Sie **PHP** in dieser Schnellstartanleitung verwenden. 
+    > In diesem Artikel werden ein **Thema** und ein **Abonnement** für das Thema unter Verwendung von **PHP** erstellt. 
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung
 Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Blob-Dienst zugreift, ist das Verweisen auf Klassen im [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php) aus dem Code heraus. Sie können die Anwendung mit beliebigen Entwicklungstools oder mit Editor erstellen.

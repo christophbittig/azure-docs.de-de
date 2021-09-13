@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e9e233aa5a4d32a1f298889b0a98c3a85d9cf4e5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007260"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456315"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -127,7 +127,7 @@ Es gibt zwei Arten von Kontingenten, die beim Bereitstellen eines dedizierten Ho
 
 Erstellen Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), um eine Kontingenterhöhung anzufordern.
 
-Beim Bereitstellen eines dedizierten Hosts wird sowohl das vCPU-Kontingent des dedizierten Hosts als auch das vCPU-Kontingent der VM-Familie genutzt. Das regionale vCPU-Kontingent wird jedoch nicht genutzt.
+Beim Bereitstellen eines dedizierten Hosts wird sowohl das vCPU-Kontingent des dedizierten Hosts als auch das vCPU-Kontingent der VM-Familie genutzt. Das regionale vCPU-Kontingent wird jedoch nicht genutzt. Virtuelle Computer auf einem dedizierten Host werden nicht auf das vCPU-Kontingent der VM-Familie angerechnet. Wenn ein virtueller Computer von einem dedizierten Host in eine mehrinstanzenfähige Umgebung verschoben wird, beansprucht der virtuelle Computer das vCPU-Kontingent der VM-Familie.
 
 
 ![Screenshot der Seite für Verbrauch und Kontingente im Portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)

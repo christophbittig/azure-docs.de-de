@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f984eaa49539890b8ae4d5132f9a03594e2f19f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1c0a7768c0f5e30d9d5ab3b0fa32b0eb6f4946c3
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073790"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428415"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Verwenden der geplanten Wartung, um Wartungsfenster für AKS-Cluster (Azure Kubernetes Service) zu planen (Vorschau)
 
@@ -49,6 +49,8 @@ az extension update --name aks-preview
 Zum Hinzufügen eines Wartungsfensters können Sie den Befehl `az aks maintenanceconfiguration add` verwenden.
 
 > [!IMPORTANT]
+> Als Wert für `--name` muss `default` festgelegt werden. Bei einem anderen Namen wird das Wartungsfenster nicht ausgeführt.
+>
 > Geplante Wartungsfenster werden in koordinierter Weltzeit (UTC) angegeben.
 
 ```azurecli-interactive

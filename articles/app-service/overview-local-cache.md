@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fee408738c556686fbdc3f7935cc840c9e392b58
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346492"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -123,3 +123,7 @@ Bei dem Schritt, in dem der Speicherinhalt kopiert wird, werden alle Ordner mit 
 
 ### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Wie werden die Protokolle im lokalen Cache nach einem Standortverwaltungsvorgang geleert?
 Zum Leeren der Protokolle im lokalen Cache beenden Sie die App, und starten Sie sie erneut. Durch diese Aktion wird der alte Cache gelöscht. 
+
+## <a name="more-resources"></a>Weitere Ressourcen
+
+[Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

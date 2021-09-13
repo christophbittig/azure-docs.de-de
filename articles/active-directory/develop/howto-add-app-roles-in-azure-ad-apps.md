@@ -13,12 +13,12 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cf1ca72d7afaace847fb1b8321723f57fbe133f6
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 27c56804eeb3b27bfda9f581f13b853edc8e4b4e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802166"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453788"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Vorgehensweise: Hinzufügen von App-Rollen zu Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -58,7 +58,7 @@ So erstellen Sie eine App-Rolle mithilfe der Benutzeroberfläche des Azure-Porta
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Bereich „App-Rollen, Kontext erstellen“ einer App-Registrierung im Azure-Portal":::
 
-   | Feld                                    | Beschreibung                                                                                                                                                                                                                                                                                                       | Beispiel                       |
+   | Feld                                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                       | Beispiel                       |
    | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
    | **Anzeigename**                         | Anzeigename für die App-Rolle, die auf den Administratorbildschirmen für Zustimmung und App-Zuweisung angezeigt wird. Dieser Wert kann Leerzeichen enthalten.                                                                                                                                                                                    | `Survey Writer`               |
    | **Zulässige Mitgliedstypen**                 | Gibt an, ob diese App-Rolle Benutzern, Anwendungen oder beiden zugeordnet werden kann.<br/><br/>Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** einer App-Registrierung unter **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. | `Users/Groups`                |
@@ -203,7 +203,8 @@ In den folgenden Ressourcen erfahren Sie mehr über App-Rollen.
 
 - Codebeispiele auf GitHub
   - [Add authorization using groups and group claims to an ASP.NET Core web app that signs-in users with the Microsoft identity platform](https://aka.ms/groupssample) (Hinzufügen der Autorisierung mit Gruppen und Gruppenansprüchen zu einer ASP.NET Core-Web-App, die Benutzer mit der Microsoft Identity Platform anmeldet)
-  - [Angular Single-Page Application (SPA) calling a .NET Core Web API and using App Roles and Security Groups to implement Role-Based Access Control (RBAC)](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md) (Aufrufen einer .NET Core-Web-API durch eine Angular-SPA (Single-Page Application) und Verwenden von App-Rollen und Sicherheitsgruppen zum Implementieren rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC))
+  - [Angular Single-Page Application (SPA) calling a .NET Core Web API and using App Roles and Security Groups to implement Role-Based Access Control (RBAC)](https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/5-AccessControl) (Aufrufen einer .NET Core-Web-API durch eine Angular-SPA (Single-Page Application) und Verwenden von App-Rollen und Sicherheitsgruppen zum Implementieren rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC))
+  - [React-basierte Single-Page-Webanwendung (Single-Page Application, SPA), die eine Node.js-Web-API aufruft und App-Rollen und Sicherheitsgruppen verwendet](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/5-AccessControl)
 - Referenzdokumentation
   - [Azure AD-App-Manifest](./reference-app-manifest.md)
   - [Azure AD-Zugriffstoken](access-tokens.md)

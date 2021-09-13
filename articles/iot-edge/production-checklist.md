@@ -2,7 +2,6 @@
 title: Vorbereiten der Bereitstellung einer Lösung für die Produktion – Azure IoT Edge
 description: Lernen Sie den kompletten Lebenszyklus Ihrer Azure IoT Edge-Lösung kennen – von der Entwicklung bis zur Produktion, einschließlich der Einrichtung von Zertifikaten auf Ihren Geräten und der Erstellung eines Bereitstellungsplans für künftige Codeupdates.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 964c3f0bb346b3c2606af1227b558d06071bfe20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031128"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346084"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -144,33 +143,9 @@ Wenn Sie von Test- zu Produktionsszenarien wechseln, entfernen Sie die Debugkonf
 ## <a name="container-management"></a>Containerverwaltung
 
 * **Wichtig**
-  * Verwalten des Zugriffs auf die Containerregistrierung
   * Verwenden von Tags für die Versionsverwaltung
 * **Hilfreich**
   * Speichern von Runtimecontainern in Ihrer privaten Registrierung
-
-### <a name="manage-access-to-your-container-registry"></a>Verwalten des Zugriffs auf die Containerregistrierung
-
-Bevor Sie Module auf IoT Edge-Geräten in der Produktion bereitstellen, legen Sie den Zugriff auf Ihre Containerregistrierung so fest, dass Außenstehende nicht auf Ihre Containerimages zugreifen oder Änderungen vornehmen können. Verwenden Sie eine private, nicht öffentliche Containerregistrierung, um Containerimages zu verwalten.
-
-In den Tutorials und anderen Dokumentationen werden Sie dazu aufgefordert, für die Containerregistrierung auf Ihrem IoT Edge-Gerät die gleichen Anmeldeinformationen zu verwenden wie auf Ihrem Entwicklungscomputer. Dieses Vorgehen dient nur der vereinfachten Einrichtung von Test- und Entwicklungsumgebungen und soll nicht für Produktionsszenarien verwendet werden.
-
-Um den sicheren Zugriff auf Ihre Registrierung zu schützen, stehen Ihnen verschiedene [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) zur Verfügung. Eine verbreitete und empfohlene Authentifizierungsmethode ist die Verwendung eines Active Directory-Dienstprinzipals. Dieser eignet sich sehr gut für Anwendungen oder Dienste, die Containerimages automatisiert oder auf anderweitig unbeaufsichtigte Weise (ohne Monitor) pullen, wie etwa bei IoT Edge-Geräten.
-
-Um einen Dienstprinzipal zu erstellen, führen Sie die beiden Skripts wie in [Erstellen eines Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal) beschrieben aus. Diese Skripts führen folgende Aufgaben aus:
-
-* Mit dem ersten Skript wird der Dienstprinzipal erstellt. Es gibt die Dienstprinzipal-ID und das zugehörige Kennwort aus. Speichern Sie diese Werte.
-
-* Das zweite Skript erstellt Rollenzuweisungen für den Dienstprinzipal, die anschließend bei Bedarf ausgeführt werden können. Es wird empfohlen, für den Parameter `role` die Benutzerrolle **acrPull** anzuwenden. Eine Liste der Rollen finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](../container-registry/container-registry-roles.md).
-
-Geben Sie zum Authentifizieren mithilfe eines Dienstprinzipals die Dienstprinzipal-ID und das Dienstprinzipalkennwort ein, die Sie durch das erste Skript erhalten haben. Geben Sie diese Anmeldeinformationen im Bereitstellungsmanifest an.
-
-* Geben Sie als Benutzernamen oder Client-ID die Dienstprinzipal-ID an.
-
-* Geben Sie als Kennwort oder geheimen Clientschlüssel das Dienstprinzipalkennwort an.
-
-> [!NOTE]
-> Nachdem Sie eine erweiterte Sicherheitsauthentifizierung implementiert haben, deaktivieren Sie die Einstellung **Administratorbenutzer**, damit der Standardzugriff über Benutzername und Kennwort nicht mehr verfügbar ist. Wählen Sie in Ihrer Containerregistrierung im Azure-Portal im Menü im linken Bereich unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
 
 ### <a name="use-tags-to-manage-versions"></a>Verwenden von Tags für die Versionsverwaltung
 
@@ -257,6 +232,7 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 * **Hilfreich**
   * Einrichten von Protokollen und Diagnosen
+  * Begrenzen der Protokollgröße
   * Integration in Test- und CI/CD-Pipelines
 
 ### <a name="set-up-logs-and-diagnostics"></a>Einrichten von Protokollen und Diagnosen
@@ -373,6 +349,43 @@ Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispi
 ### <a name="consider-tests-and-cicd-pipelines"></a>Integration in Test- und CI/CD-Pipelines
 
 Für das effizienteste IoT Edge-Bereitstellungsszenario wird die Integration Ihrer Produktionsumgebung in Ihre Test- und CI/CD-Pipelines empfohlen. Azure IoT Edge unterstützt mehrere CI/CD-Plattformen, einschließlich Azure DevOps. Weitere Informationen finden Sie unter [Continuous Integration und Continuous Deployment für Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
+
+## <a name="security-considerations"></a>Sicherheitshinweise
+
+* **Wichtig**
+  * Verwalten des Zugriffs auf die Containerregistrierung
+  * Beschränken des Containerzugriffs auf Hostressourcen
+
+### <a name="manage-access-to-your-container-registry"></a>Verwalten des Zugriffs auf die Containerregistrierung
+
+Bevor Sie Module auf IoT Edge-Geräten in der Produktion bereitstellen, legen Sie den Zugriff auf Ihre Containerregistrierung so fest, dass Außenstehende nicht auf Ihre Containerimages zugreifen oder Änderungen vornehmen können. Verwenden Sie eine private Containerregistrierung, um Containerimages zu verwalten.
+
+In den Tutorials und anderen Dokumentationen werden Sie dazu aufgefordert, für die Containerregistrierung auf Ihrem IoT Edge-Gerät die gleichen Anmeldeinformationen zu verwenden wie auf Ihrem Entwicklungscomputer. Dieses Vorgehen dient nur der vereinfachten Einrichtung von Test- und Entwicklungsumgebungen und soll nicht für Produktionsszenarien verwendet werden.
+
+Um den sicheren Zugriff auf Ihre Registrierung zu schützen, stehen Ihnen verschiedene [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) zur Verfügung. Eine verbreitete und empfohlene Authentifizierungsmethode ist die Verwendung eines Active Directory-Dienstprinzipals. Dieser eignet sich sehr gut für Anwendungen oder Dienste, die Containerimages automatisiert oder auf anderweitig unbeaufsichtigte Weise (ohne Monitor) pullen, wie etwa bei IoT Edge-Geräten.
+
+Um einen Dienstprinzipal zu erstellen, führen Sie die beiden Skripts wie in [Erstellen eines Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal) beschrieben aus. Diese Skripts führen folgende Aufgaben aus:
+
+* Mit dem ersten Skript wird der Dienstprinzipal erstellt. Es gibt die Dienstprinzipal-ID und das zugehörige Kennwort aus. Speichern Sie diese Werte.
+
+* Das zweite Skript erstellt Rollenzuweisungen für den Dienstprinzipal, die anschließend bei Bedarf ausgeführt werden können. Es wird empfohlen, für den Parameter `role` die Benutzerrolle **acrPull** anzuwenden. Eine Liste der Rollen finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](../container-registry/container-registry-roles.md).
+
+Geben Sie zum Authentifizieren mithilfe eines Dienstprinzipals die Dienstprinzipal-ID und das Dienstprinzipalkennwort ein, die Sie durch das erste Skript erhalten haben. Geben Sie diese Anmeldeinformationen im Bereitstellungsmanifest an.
+
+* Geben Sie als Benutzernamen oder Client-ID die Dienstprinzipal-ID an.
+
+* Geben Sie als Kennwort oder geheimen Clientschlüssel das Dienstprinzipalkennwort an.
+
+> [!NOTE]
+> Nachdem Sie eine erweiterte Sicherheitsauthentifizierung implementiert haben, deaktivieren Sie die Einstellung **Administratorbenutzer**, damit der Standardzugriff über Benutzername und Kennwort nicht mehr verfügbar ist. Wählen Sie in Ihrer Containerregistrierung im Azure-Portal im Menü im linken Bereich unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+
+### <a name="limit-container-access-to-host-resources"></a>Beschränken des Containerzugriffs auf Hostressourcen
+
+Es empfiehlt sich, die Ressourcennutzung pro Modul zu beschränken, um bei gemeinsam genutzten Hostressourcen modulübergreifend ein ausgewogenes Verhältnis zu erzielen. Diese Grenzwerte stellen sicher, dass ein Modul nicht zu viel Arbeitsspeicher- oder CPU-Ressourcen beanspruchen und die Ausführung anderer Prozesse auf dem Gerät verhindern kann. Die Ressourcen für Module werden von der IoT Edge-Plattform standardmäßig nicht beschränkt, da Tests erforderlich sind, um zu ermitteln, wie viele Ressourcen für die optimale Ausführung eines Moduls erforderlich sind.
+
+Docker bietet einige Einschränkungen, mit denen Sie die Nutzung von Ressourcen wie Arbeitsspeicher und CPU beschränken können. Weitere Informationen finden Sie unter [Laufzeitoptionen mit Arbeitsspeicher, CPUs und GPUs](https://docs.docker.com/config/containers/resource_constraints/).
+
+Diese Einschränkungen können mithilfe von Erstellungsoptionen in Bereitstellungsmanifesten auf einzelne Module angewendet werden. Weitere Informationen finden Sie unter [Konfigurieren von Erstellungsoptionen für Container für IoT Edge-Module](how-to-use-create-options.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

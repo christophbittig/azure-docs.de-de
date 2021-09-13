@@ -1,22 +1,22 @@
 ---
-title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
+title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
 author: normesta
 ms.author: normesta
-ms.date: 05/17/2021
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: bd1738c0a5d63ad9eacaa1500a6ce10268a93b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c4ff918be67d74d536159ebbd3e707c1d7e68e8b
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664877"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730746"
 ---
-# <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
+# <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 
 Wenn der Umfang von Datasets zunimmt, kann die Suche nach einem bestimmten Objekt schwierig sein. Blobindextags verfügen über Funktionen für die Datenverwaltung und -ermittlung, indem Schlüssel-Wert-Indextagattribute verwendet werden. Sie können Objekte in einem einzelnen Container oder über alle Container Ihres Speicherkontos hinweg kategorisieren und suchen. Bei sich ändernden Datenanforderungen können Objekte dynamisch kategorisiert werden, indem die entsprechenden Indextags aktualisiert werden. Hierbei können die Objekte mit ihrer vorhandenen Containerorganisation an ihrem Ort bleiben.
 
@@ -28,9 +28,6 @@ Blobindextags ermöglichen Ihnen Folgendes:
 - Verwenden von Indextags für erweiterte Steuerungsmöglichkeiten bei Features wie der [Lebenszyklusverwaltung für Blobs](storage-lifecycle-management-concepts.md)
 
 Stellen Sie sich ein Szenario vor, bei dem Sie über Millionen von Blobs in Ihrem Speicherkonto verfügen, auf die von vielen verschiedenen Anwendungen zugegriffen wird. Sie möchten alle zugehörigen Daten eines einzelnen Projekts finden. Sie sind sich nicht sicher, was alles dazugehört, weil die Daten über mehrere Container mit unterschiedlichen Namenskonventionen verteilt sein können. Alle Daten werden von Ihren Anwendungen aber mit projektabhängigen Tags hochgeladen. Anstatt Millionen von Blobs zu durchsuchen, um Namen und Eigenschaften zu vergleichen, können Sie `Project = Contoso` als Kriterium für die Ermittlung verwenden. Per Blobindex werden alle Container innerhalb Ihres gesamten Speicherkontos gefiltert, um in kürzester Zeit nur die 50 Blobs aus `Project = Contoso` zurückzugeben.
-
-> [!IMPORTANT]
-> Blobindextags befinden sich zurzeit in der **VORSCHAU** und sind in allen öffentlichen Regionen verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 Beispiele für den Einstieg in die Verwendung des Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
@@ -118,7 +115,7 @@ Für die Filterung des Blobindex gelten folgende Kriterien:
 
 In der Tabelle unten sind alle zulässigen Operatoren für `Find Blobs by Tags` aufgeführt:
 
-|  Operator  |  Beschreibung  | Beispiel |
+|  Operator  |  BESCHREIBUNG  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     >      |  Größer als | `"Date" > '2018-06-18'` |
@@ -143,7 +140,7 @@ Der Header `x-ms-if-tags` kann mit den übrigen vorhandenen bedingten HTTP-Heade
 
 In der Tabelle unten sind die zulässigen Operatoren für bedingte Vorgänge aufgeführt:
 
-|  Operator  |  Beschreibung  | Beispiel |
+|  Operator  |  BESCHREIBUNG  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     <>     |   Ungleich   | `"Status" <> 'Done'` |
@@ -222,7 +219,7 @@ Die folgende Beispielregel für die Lebenszyklusverwaltung gilt für Blockblobs 
 
 Sie können Zugriffsberechtigungen für Blobindextags erteilen, indem Sie einen der folgenden Ansätze verwenden:
 
-- Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC), um Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal (Azure AD) zu erteilen. Verwenden Sie Azure AD, um eine höhere Sicherheit und Benutzerfreundlichkeit zu erzielen. Weitere Informationen zur Verwendung von Azure AD mit Blobvorgängen finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../common/storage-auth-aad.md).
+- Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC), um Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal (Azure AD) zu erteilen. Verwenden Sie Azure AD, um eine höhere Sicherheit und Benutzerfreundlichkeit zu erzielen. Weitere Informationen zur Verwendung von Azure AD mit Blobvorgängen finden Sie unter [Autorisieren des Zugriffs auf die Daten in Azure Storage](../common/authorize-data-access.md).
 - Verwenden Sie eine Shared Access Signature (SAS), um den Zugriff auf den Blobindex zu delegieren. Weitere Informationen zu SAS (Shared Access Signatures) finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md).
 - Verwenden Sie die Kontozugriffsschlüssel zur Autorisierung von Vorgängen mit gemeinsam verwendetem Schlüssel. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key).
 
@@ -230,7 +227,7 @@ Blobindextags sind eine Unterressource der Blobdaten. Ein Benutzer mit Berechtig
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Benutzern, die eine [Azure AD-Identität](../common/storage-auth-aad.md) verwenden, können die folgenden Berechtigungen für die Arbeit mit Blobindextags zugewiesen werden.
+Benutzern, die eine [Azure AD-Identität](../common/authorize-data-access.md) verwenden, können die folgenden Berechtigungen für die Arbeit mit Blobindextags zugewiesen werden.
 
 | Vorgänge von Blobindextags                                          | Azure RBAC-Aktion                                                             |
 |--------------------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -282,7 +279,7 @@ In der folgenden Tabelle werden die Unterschiede zwischen Metadaten und Blobinde
 
 ## <a name="pricing"></a>Preise
 
-Die Preise für Blobindizes gelten für die öffentliche Vorschauphase und können sich für die Phase der allgemeinen Verfügbarkeit ändern. Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines Speicherkontos berechnet. Für das Indizierungsmodul fallen keine Kosten an. Anforderungen zum Festlegen von Blobtags, Abrufen von Blobtags und Suchen von Blobtags werden zu den aktuellen jeweiligen Transaktionsraten berechnet. Beachten Sie, dass die Anzahl der Listentransaktionen, die beim Durchführen einer Transaktion vom Typ „Blobs nach Tag suchen“ genutzt werden, der Anzahl der Klauseln in der Anforderung entspricht. Beispielsweise besteht die Abfrage „(StoreID = 100)“ aus einer Listentransaktion.  Die Abfrage „(StoreID = 100 UND SKU = 10010)“ besteht aus zwei Listentransaktionen. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines Speicherkontos berechnet. Für das Indizierungsmodul fallen keine Kosten an. Anforderungen zum Festlegen von Blobtags, Abrufen von Blobtags und Suchen von Blobtags werden zu den aktuellen jeweiligen Transaktionsraten berechnet. Beachten Sie, dass die Anzahl der Listentransaktionen, die beim Durchführen einer Transaktion vom Typ „Blobs nach Tag suchen“ genutzt werden, der Anzahl der Klauseln in der Anforderung entspricht. Beispielsweise besteht die Abfrage „(StoreID = 100)“ aus einer Listentransaktion.  Die Abfrage „(StoreID = 100 UND SKU = 10010)“ besteht aus zwei Listentransaktionen. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionale Verfügbarkeit und Unterstützung von Speicherkonten
 
@@ -295,42 +292,20 @@ Blobindextags sind derzeit in allen öffentlichen Regionen verfügbar.
 Weitere Informationen zum Einstieg in Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
 > [!IMPORTANT]
-> Sie müssen Ihr Abonnement registrieren, bevor Sie die Blobindex-Vorschauversion für Ihre Speicherkonten verwenden können. Weitere Informationen finden Sie im Abschnitt [Bedingungen und bekannte Probleme](#conditions-and-known-issues) dieses Artikels.
-
-### <a name="register-your-subscription-preview"></a>Registrieren Ihres Abonnements (Vorschau)
-
-Da Blobindextags nur in der öffentlichen Vorschau verfügbar sind, müssen Sie Ihr Abonnement registrieren, um das Feature verwenden zu können. Um eine Anforderung zu senden, führen Sie die folgenden PowerShell- oder CLI-Befehle aus.
-
-#### <a name="register-by-using-powershell"></a>Registrieren über PowerShell
-
-```powershell
-Register-AzProviderFeature -FeatureName BlobIndex -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-#### <a name="register-by-using-azure-cli"></a>Registrieren mithilfe der Azure CLI
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name BlobIndex
-az provider register --namespace 'Microsoft.Storage'
-```
+> Sie müssen Ihr Abonnement registrieren, bevor Sie den Blobindex für Ihre Speicherkonten verwenden können. Weitere Informationen finden Sie im Abschnitt [Bedingungen und bekannte Probleme](#conditions-and-known-issues) dieses Artikels.
 
 ## <a name="conditions-and-known-issues"></a>Bedingungen und bekannte Probleme
 
-In diesem Abschnitt sind bekannte Probleme und Bedingungen der öffentlichen Vorschauversion von Blobindextags beschrieben. Dieses Feature sollte erst für Produktionsworkloads verwendet werden, wenn die Phase der allgemeinen Verfügbarkeit (General Availability, GA) erreicht ist, weil sich das Verhalten ggf. noch ändern kann.
+In diesem Abschnitt werden bekannte Probleme und Bedingungen beschrieben.
 
-- Damit Sie in der Vorschau Blobindex für Ihr Speicherkonto in den unterstützten Regionen verwenden können, müssen Sie zuerst Ihr Abonnement registrieren.
-- In der Vorschauversion werden nur Konten vom Typ „Universell V2“ unterstützt. Premium-Blockblobs, Legacyblobs und Konten mit aktiviertem hierarchischem Namespace werden nicht unterstützt. Konten vom Typ „Universell V1“ werden nicht unterstützt.
+- Nur Konten vom Typ „Allgemein v2“ werden unterstützt. Premium-Blockblobs, Legacyblobs und Konten mit aktiviertem hierarchischem Namespace werden nicht unterstützt. Konten vom Typ „Universell V1“ werden nicht unterstützt.
 - Beim Hochladen von Seitenblobs mit Indextags werden die Tags nicht beibehalten. Legen Sie die Tags nach dem Hochladen eines Seitenblobs fest.
 - Wenn die Filterung auf einen einzelnen Container beschränkt ist, kann `@container` nur übergeben werden, wenn alle Indextags im Filterausdruck Gleichheitsprüfungen sind (Schlüssel=Wert).
 - Wenn der Bereichsoperator mit der `AND`-Bedingung verwendet wird, muss derselbe Indextag-Schlüsselname angegeben werden (`"Age" > '013' AND "Age" < '100'`).
-- Die Versionsverwaltung und der Blobindex werden nicht unterstützt. Blobindextags werden für verschiedene Versionen beibehalten, aber nicht an das Blobindexmodul übermittelt.
+- Bei aktivierter Versionsverwaltung können weiterhin Indextags für die aktuelle Version verwendet werden. Für Vorgängerversionen werden Indextags werden für verschiedene Versionen beibehalten, aber nicht an das Blobindexmodul übermittelt. Indextags können nicht abgefragt werden, um frühere Versionen abzurufen.
 - Es gibt keine API, mit der Sie ermitteln können, ob Indextags indiziert wurden.
-- Ein Failover des Kontos wird nicht unterstützt. Der Blobindex wird nach einem Failover möglicherweise nicht ordnungsgemäß aktualisiert.
 - Die Lebenszyklusverwaltung unterstützt bei einem Blobindexabgleich nur Gleichheitsprüfungen.
 - Bei `Copy Blob` werden keine Blobindextags vom Quellblob in das neue Zielblob kopiert. Sie können während des Kopiervorgangs die Tags angeben, die auf das Zielblob angewendet werden sollen.
-- Der Vorgang `Copy Blob` (Async-Kopie) von einem anderen Speicherkonto mit angewendeten Tags auf den Zielblob bewirkt, dass das Blobindexmodul den Blob und seine Tags im Filtersatz nicht zurückgibt. Verwenden Sie `Copy Blob` aus der URL (Sync-Kopie).
-- Tags werden bei der Erstellung von Momentaufnahmen beibehalten. Das Höherstufen einer Momentaufnahme wird nicht unterstützt und kann zu einem leeren Tagsatz führen.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

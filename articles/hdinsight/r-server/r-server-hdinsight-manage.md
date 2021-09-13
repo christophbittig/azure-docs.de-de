@@ -2,17 +2,19 @@
 title: Verwalten eines ML Services-Clusters in HDInsight – Azure
 description: Erfahren Sie, wie Sie verschiedene Aufgaben auf einem ML Services-Cluster in Azure HDInsight verwalten.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: 476d108b7edcec30d38587ba128080c99ae04fd9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869471"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299319"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Verwalten eines ML Services-Clusters in Azure HDInsight
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Machine Learning Services-Cluster in Azure HDInsight verwalten, um Aufgaben wie das Hinzufügen mehrerer gleichzeitiger Benutzer, das Herstellen einer Remoteverbindung mit einem Machine Learning Services-Cluster, das Ändern des Computekontexts usw. auszuführen.
 

@@ -1,28 +1,23 @@
 ---
 title: Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB
-description: In diesem Artikel wird das Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB erläutert. Beschrieben werden die Parameter zur Unterstützung der fortlaufenden Sicherung und der Ressourcen, die in der Azure Cosmos DB-API für SQL- und MongoDB-Konten wiederhergestellt werden können.
+description: In diesem Artikel wird das Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB erläutert. Es werden die Parameter für die Unterstützung der fortlaufenden Sicherung sowie die Ressourcen beschrieben, die in der Azure Cosmos DB-API für SQL und in MongoDB-Konten wiederhergestellt werden können.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4cb6d818713bb083451bc11257f21a6f6146472a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e4fffd12b72b41c45b2718e96c34a03e28eeca29
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753465"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346336"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB (Vorschau)
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Das Feature „Zeitpunktwiederherstellung“ (fortlaufender Sicherungsmodus) für Azure Cosmos DB befindet sich zurzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Artikel wird das Ressourcenmodell für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB (Vorschau) erläutert. Beschrieben werden die Parameter zur Unterstützung der fortlaufenden Sicherung und der Ressourcen, die in der Azure Cosmos DB-API für SQL- und MongoDB-Konten wiederhergestellt werden können.
+Dieser Artikel enthält eine Beschreibung des Ressourcenmodells für das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB. Beschrieben werden die Parameter zur Unterstützung der fortlaufenden Sicherung und der Ressourcen, die in der Azure Cosmos DB-API für SQL- und MongoDB-Konten wiederhergestellt werden können.
 
 ## <a name="database-accounts-resource-model"></a>Ressourcenmodell des Datenbankkontos
 
@@ -30,10 +25,10 @@ Das Ressourcenmodell des Datenbankkontos wird mit einigen zusätzlichen Eigensch
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-Eine neue Eigenschaft in der Sicherungsrichtlinie auf Kontoebene mit dem Namen `Type` unter dem `backuppolicy`-Parameter aktiviert die Funktionen „Fortlaufende Sicherung“ „Zeitpunktwiederherstellung“. Dieser Modus wird als **fortlaufende Sicherung** bezeichnet. In der öffentlichen Vorschau können Sie diesen Modus nur beim Erstellen des Kontos festlegen. Nachdem er aktiviert wurde, sind bei allen in diesem Konto erstellten Container und Datenbanken die Funktionen „Fortlaufende Sicherung“ und „Zeitpunktwiederherstellung“ standardmäßig aktiviert.
+Eine neue Eigenschaft in der Sicherungsrichtlinie auf Kontoebene mit dem Namen `Type` unter dem `backuppolicy`-Parameter aktiviert die Funktionen „Fortlaufende Sicherung“ „Zeitpunktwiederherstellung“. Dieser Modus wird als **fortlaufende Sicherung** bezeichnet. Sie können diesen Modus beim Erstellen des Kontos oder beim [Migrieren eines Kontos vom regelmäßigen zum fortlaufenden Modus](migrate-continuous-backup.md) festlegen. Nach dem Aktivieren des fortlaufenden Modus sind bei allen in diesem Konto erstellten Containern und Datenbanken die Funktionen „Fortlaufende Sicherung“ und „Zeitpunktwiederherstellung“ standardmäßig aktiviert.
 
 > [!NOTE]
-> Das Feature „Zeitpunktwiederherstellung“ befindet sich zurzeit in der öffentlichen Vorschau und steht für Azure Cosmos DB-API für MongoDB- und SQL-Konten zur Verfügung. Nachdem Sie ein Konto mit fortlaufendem Modus erstellt haben, können Sie es nicht auf einen regelmäßigen Modus umstellen.
+> Das Feature „Zeitpunktwiederherstellung“ steht für die Azure Cosmos DB-API für MongoDB- und SQL-Konten zur Verfügung. Nachdem Sie ein Konto mit fortlaufendem Modus erstellt haben, können Sie es nicht auf einen regelmäßigen Modus umstellen.
 
 ### <a name="createmode"></a>CreateMode
 
@@ -48,14 +43,7 @@ Die Ressource `RestoreParameters` enthält die Details zum Wiederherstellungsvor
 |restoreMode  | Der Wiederherstellungsmodus sollte *PointInTime* lauten. |
 |restoreSource   |  Die InstanceId des Quellkontos, aus dem die Wiederherstellung eingeleitet wird.       |
 |restoreTimestampInUtc  | Die Zeit in UTC (koordinierte Weltzeit), zu der das Konto wiederhergestellt werden soll. |
-|databasesToRestore   | Eine Liste von `DatabaseRestoreSource`-Objekten zur Angabe, welche Datenbanken und Container wiederhergestellt werden sollen. Wenn dieser Wert leer ist, wird das gesamte Konto wiederhergestellt.   |
-
-**DatabaseRestoreResource-**  – Jede Ressource stellt eine einzelne Datenbank und alle Sammlungen in dieser Datenbank dar.
-
-|Eigenschaftenname |BESCHREIBUNG  |
-|---------|---------|
-|databaseName | den Namen der Datenbank |
-| collectionNames| Die Liste von Containern in dieser Datenbank |
+|databasesToRestore   | Eine Liste von `DatabaseRestoreResource`-Objekten zur Angabe, welche Datenbanken und Container wiederhergestellt werden sollen. Jede Ressource stellt eine einzelne Datenbank und alle Sammlungen in dieser Datenbank dar. Ausführlichere Informationen finden Sie im Abschnitt [Wiederherstellbare SQL-Ressourcen](#restorable-sql-resources). Wenn dieser Wert leer ist, wird das gesamte Konto wiederhergestellt.   |
 
 ### <a name="sample-resource"></a>Beispielressource
 
@@ -97,8 +85,7 @@ Der folgende JSON-Code ist ein Beispiel für eine Datenbankkontoressource mit ak
     },
     "backupPolicy": {
       "type": "Continuous"
-    },
-}
+    }
 }
 ```
 
@@ -115,20 +102,20 @@ Eine Reihe von neuen Ressourcen und APIs steht zur Verfügung. Damit können Sie
 
 Diese Ressource enthält eine Instanz eines Datenbankkontos, die wiederhergestellt werden kann. Das Datenbankkonto kann entweder ein gelöschtes oder ein aktives Konto sein. Es enthält Informationen, mit denen Sie das Quelldatenbankkonto suchen können, das Sie wiederherstellen möchten.
 
-|Eigenschaftenname |Beschreibung  |
+|Eigenschaftenname |BESCHREIBUNG  |
 |---------|---------|
 | id | Der eindeutige Bezeichner der Ressource. |
 | .<Name der Region | Der Name des globalen Datenbankkontos. |
-| creationTime | Die Zeit in UTC (koordinierte Weltzeit), zu der das Konto erstellt wurde.  |
+| creationTime | Die Zeit in UTC (koordinierte Weltzeit), zu der das Konto erstellt oder migriert wurde.  |
 | deletionTime | Die Zeit in UTC, zu der das Konto gelöscht wurde.  Dieser Wert ist leer, wenn das Konto aktiv ist. |
 | apiType | Der API-Typ des Azure Cosmos DB-Kontos. |
 | restorableLocations | Die Liste der Standorte, an denen das Konto vorhanden war. |
 | restorableLocations: locationName | Der Regionsname des regionalen Kontos. |
-| restorableLocations: regionalDatabaseAccountInstanceI | Der GUID des regionalen Kontos. |
-| restorableLocations: creationTime | Die Zeit in UTC, zu der das regionale Konto erstellt wurde.|
+| restorableLocations: regionalDatabaseAccountInstanceId | Der GUID des regionalen Kontos. |
+| restorableLocations: creationTime | Die Zeit in UTC, zu der das regionale Konto erstellt oder migriert wurde.|
 | restorableLocations: deletionTime | Die Zeit in UTC, zu der das regionale Konto gelöscht wurde. Dieser Wert ist leer, wenn das regionale Konto aktiv ist.|
 
-Eine Liste aller wiederherstellbaren Konten finden Sie in den Artikeln [Wiederherstellbare Datenbankkonten – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/list) oder [Wiederherstellbare Datenbankkonten – Auflisten nach Standort](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/listbylocation).
+Eine Liste aller wiederherstellbaren Konten finden Sie in den Artikeln [Wiederherstellbare Datenbankkonten – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-database-accounts/list) oder [Wiederherstellbare Datenbankkonten – Auflisten nach Standort](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-database-accounts/list-by-location).
 
 ### <a name="restorable-sql-database"></a>Wiederherstellbare SQL-Datenbank
 
@@ -142,7 +129,7 @@ Jede Ressource enthält Informationen zu einem Mutationsereignis, z. B. Erstell
 | operationType | Der Vorgangstyp dieses Datenbankereignisses. Die folgenden Werte sind möglich:<br/><ul><li>„Create“: Datenbankerstellungsereignis</li><li>„Delete“: Datenbanklöschungsereignis</li><li>„Replace“: Datenbankänderungsereignis</li><li>„SystemOperation“: Ein vom System ausgelöstes Datenbankänderungsereignis. Dieses Ereignis wird nicht durch den Benutzer eingeleitet.</li></ul> |
 | database |Die Eigenschaften der SQL-Datenbank zum Zeitpunkt des Ereignisses|
 
-Eine Liste aller Datenbankmutationen finden Sie im Artikel [Wiederherstellbare SQL-Datenbanken – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqldatabases/list).
+Eine Liste aller Datenbankmutationen finden Sie im Artikel [Wiederherstellbare SQL-Datenbanken – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-databases/list).
 
 ### <a name="restorable-sql-container"></a>Wiederherstellbare SQL-Container
 
@@ -156,7 +143,7 @@ Jede Ressource enthält Informationen zu einem Mutationsereignis, z. B. Erstell
 | operationType | Der Vorgangstyp dieses Containerereignisses. Die folgenden Werte sind möglich: <br/><ul><li>„Create“: Containererstellungsereignis</li><li>„Delete“: Containerlöschungsereignis</li><li>„Replace“: Containeränderungsereignis</li><li>„SystemOperation“: Ein vom System ausgelöstes Containeränderungsereignis. Dieses Ereignis wird nicht durch den Benutzer eingeleitet.</li></ul> |
 | Container | Die Eigenschaften des SQL-Containers zum Zeitpunkt des Ereignisses.|
 
-Eine Liste aller Containermutationen in derselben Datenbank finden Sie im Artikel [Wiederherstellbare SQL-Container – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlcontainers/list).
+Eine Liste aller Containermutationen in derselben Datenbank finden Sie im Artikel [Wiederherstellbare SQL-Container – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-containers/list).
 
 ### <a name="restorable-sql-resources"></a>Wiederherstellbare SQL-Ressourcen
 
@@ -167,7 +154,7 @@ Jede Ressource stellt eine einzelne Datenbank und alle Container in dieser Daten
 | databaseName  | Der Name der SQL-Datenbank
 | collectionNames   | Die Liste von SQL-Containern in dieser Datenbank.|
 
-Eine Liste von Kombinationen aus SQL-Datenbank und -Containern, die für das Konto zum angegebenen Zeitstempel und am angegebenen Standort vorhanden sind, finden Sie im Artikel [Wiederherstellbare SQL-Ressourcen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlresources/list).
+Eine Liste von Kombinationen aus SQL-Datenbank und -Containern, die für das Konto zum angegebenen Zeitstempel und am angegebenen Standort vorhanden sind, finden Sie im Artikel [Wiederherstellbare SQL-Ressourcen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-resources/list).
 
 ### <a name="restorable-mongodb-database"></a>Wiederherstellbare MongoDB-Datenbank
 
@@ -180,7 +167,7 @@ Jede Ressource enthält Informationen zu einem Mutationsereignis, z. B. Erstell
 | ownerResourceId   | Die Ressourcen-ID der MongoDB-Datenbank. |
 | operationType |   Der Vorgangstyp dieses Datenbankereignisses. Die folgenden Werte sind möglich:<br/><ul><li> „Create“: Datenbankerstellungsereignis</li><li> „Delete“: Datenbanklöschungsereignis</li><li> „Replace“: Datenbankänderungsereignis</li><li> „SystemOperation“: Ein vom System ausgelöstes Datenbankänderungsereignis. Dieses Ereignis wird nicht durch den Benutzer eingeleitet. </li></ul> |
 
-Eine Liste aller Datenbankmutationen finden Sie im Artikel [Wiederherstellbare MongoDB-Datenbanken – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbdatabases/list).
+Eine Liste aller Datenbankmutationen finden Sie im Artikel [Wiederherstellbare MongoDB-Datenbanken – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-databases/list).
 
 ### <a name="restorable-mongodb-collection"></a>Wiederherstellbare MongoDB-Sammlung
 
@@ -193,7 +180,7 @@ Jede Ressource enthält Informationen zu einem Mutationsereignis, z. B. Erstell
 | ownerResourceId   | Die Ressourcen-ID der MongoDB-Sammlung. |
 | operationType |Der Vorgangstyp dieses Sammlungsereignisses. Die folgenden Werte sind möglich:<br/><ul><li>„Create“: Sammlungserstellungsereignis</li><li>„Delete“: Sammlungslöschungsereignis</li><li>„Replace“: Sammlungsänderungsereignis</li><li>„SystemOperation“: Ein vom System ausgelöstes Sammlungsänderungsereignis. Dieses Ereignis wird nicht durch den Benutzer eingeleitet.</li></ul> |
 
-Eine Liste aller Containermutationen in derselben Datenbank finden Sie im Artikel [Wiederherstellbare MongoDB-Sammlungen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbcollections/list).
+Eine Liste aller Containermutationen in derselben Datenbank finden Sie im Artikel [Wiederherstellbare MongoDB-Sammlungen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-collections/list).
 
 ### <a name="restorable-mongodb-resources"></a>Wiederherstellbare MongoDB-Ressourcen
 
@@ -204,9 +191,11 @@ Jede Ressource stellt eine einzelne Datenbank und alle Sammlungen in dieser Date
 | databaseName  |Der Name der MongoDB-Datenbank. |
 | collectionNames | Die Liste der MongoDB-Sammlungen in dieser Datenbank. |
 
-Eine Liste aller Kombinationen aus MongoDB-Datenbank und -Sammlung, die für das Konto zum angegebenen Zeitstempel und am angegebenen Standort vorhanden sind, finden Sie im Artikel [Wiederherstellbare MongoDB-Ressourcen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbresources/list).
+Eine Liste aller Kombinationen aus MongoDB-Datenbank und -Sammlung, die für das Konto zum angegebenen Zeitstempel und am angegebenen Standort vorhanden sind, finden Sie im Artikel [Wiederherstellbare MongoDB-Ressourcen – Auflisten](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-resources/list).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren und verwalten Sie die fortlaufende Sicherung über das [Azure-Portal](continuous-backup-restore-portal.md) oder aber mithilfe von [PowerShell](continuous-backup-restore-powershell.md), [CLI](continuous-backup-restore-command-line.md) oder [Azure Resource Manager](continuous-backup-restore-template.md).
+* Stellen Sie die fortlaufende Sicherung über das [Azure-Portal](provision-account-continuous-backup.md#provision-portal), per [PowerShell](provision-account-continuous-backup.md#provision-powershell), über die [Befehlszeilenschnittstelle](provision-account-continuous-backup.md#provision-cli) oder mithilfe von [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) bereit.
+* Stellen Sie ein Konto über das [Azure-Portal](restore-account-continuous-backup.md#restore-account-portal), per [PowerShell](restore-account-continuous-backup.md#restore-account-powershell), über die [Befehlszeilenschnittstelle](restore-account-continuous-backup.md#restore-account-cli) oder mithilfe von [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) wieder her.
+* [Migrieren Sie ein Konto von der regelmäßigen Sicherung zur fortlaufenden Sicherung.](migrate-continuous-backup.md)
 * [Verwalten Sie Berechtigungen](continuous-backup-restore-permissions.md), die zum Wiederherstellen von Daten mit dem fortlaufenden Sicherungsmodus erforderlich sind.

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85e61536e04bd670cd49127f906c69727acc8e9
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726973"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134977"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Behandeln von Konnektivitätsproblemen und von Problemen bei der Nachrichtenübermittlung
 
@@ -27,9 +27,17 @@ In diesem Leitfaden werden verschiedene Methoden zur Selbstdiagnose vorgestellt,
 
 * Informationen zum Modus `Classic` finden Sie in der [Problembehandlung für den klassischen Modus](#classic_mode_tsg).
 
-<a name="default_mode_tsg"></a>
+Als Nächstes müssen Dienstablaufverfolgungen für die Problembehandlung erfasst werden. Informationen zum Erfassen von Ablaufverfolgungen finden Sie unter [Erfassen von Dienstablaufverfolgungen](#how-to-capture-service-traces).
 
 [Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
+
+## <a name="how-to-capture-service-traces"></a>Erfassen von Dienstablaufverfolgungen
+
+Zur Vereinfachung des Problembehandlungsprozesses bietet der Azure SignalR-Dienst ein **Tool für die Liveablaufverfolgung**, mit dem Dienstablaufverfolgungen für die Kategorien **Konnektivität** und **Messaging** verfügbar gemacht werden können. Die Ablaufverfolgungen umfassen unter anderem Ereignisse, die mit dem Herstellen/Trennen von Verbindungen bzw. mit empfangenen/ausgehenden Nachrichten zusammenhängen. Mit dem **Tool für die Liveablaufverfolgung** können Sie Liveablaufverfolgungen erfassen, anzeigen, sortieren, filtern und exportieren. Ausführlichere Informationen finden Sie unter [Verwenden des Tools für die Liveablaufverfolgung für den Azure SignalR-Dienst](./signalr-howto-troubleshoot-live-trace.md).
+
+[Haben Sie Probleme oder Feedback zu dieser Problembehandlung? Informieren Sie uns darüber.](https://aka.ms/asrs/survey/troubleshooting)
+
+<a name="default_mode_tsg"></a>
 
 ## <a name="default-mode-troubleshooting"></a>Problembehandlung für den Standardmodus
 

@@ -1,37 +1,35 @@
 ---
-title: Gewähren von rollenbasiertem Zugriff für Benutzer
+title: Gewähren von rollenbasiertem Zugriff für Benutzer in Microsoft Azure Maps
 titleSuffix: Azure Maps
 description: Verwenden der rollenbasierten Zugriffssteuerung, um Benutzern Autorisierung für Azure Maps zu gewähren
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 06/21/2021
 ms.topic: include
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 234c3358b98b7af677793fba58c1602a8bd976f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+custom.ms: subject-rbac-steps
+ms.openlocfilehash: 22b3eaaff0989718a781b29549b4fab102673273
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101102817"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802346"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Gewähren von rollenbasierter Zugriffssteuerung für Benutzer in Azure Maps
 
-Sie gewähren die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* , indem Sie mindestens einer Azure Maps-Rollendefinition eine Azure AD-Gruppe oder Sicherheitsprinzipale zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
+Sie können die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* verwenden, indem Sie mindestens einer Azure Maps-Rollendefinition eine Azure AD-Gruppe oder einen Sicherheitsprinzipal zuweisen.
 
-* Informationen zur effizienten Verwaltung des Zugriffs einer großen Menge von Benutzern auf Azure Maps finden Sie unter [Azure AD-Gruppen](../../active-directory/fundamentals/active-directory-manage-groups.md).
-* Damit Benutzer sich bei der Anwendung authentifizieren können, müssen die Benutzer in Azure AD erstellt werden. Siehe [Hinzufügen oder Löschen von Benutzern mithilfe von Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md).
+Die verfügbaren Azure-Rollendefinitionen für Azure Maps finden Sie unter [Anzeigen der integrierten Azure Maps-Rollendefinitionen](../how-to-manage-authentication.md#view-built-in-azure-maps-role-definitions).
 
-Weitere Informationen zum effektiven Verwalten eines Verzeichnisses für Benutzer finden Sie unter [Azure AD](../../active-directory/fundamentals/index.yml).
+Ausführliche Schritte zum Zuweisen einer verfügbaren Azure Maps-Rolle zur erstellten verwalteten Identität oder zum Dienstprinzipal finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
-1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
+Informationen zum effizienten Verwalten des Zugriffs auf Azure Maps-Apps und -Ressourcen für eine Vielzahl von Benutzern finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](../../active-directory/fundamentals/active-directory-manage-groups.md).
 
-    ![Gewähren von Zugriff mithilfe von Azure RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
+>[!IMPORTANT]
+>Damit Benutzer sich bei einer Anwendung authentifizieren können, müssen sie zuerst in Azure AD erstellt werden. Weitere Informationen finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern**.
-
-   * Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen](../../role-based-access-control/role-assignments-portal.md).
+Informationen zur effektiven Verwaltung eines großen Verzeichnisses für Benutzer finden Sie in der [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](../../active-directory/fundamentals/index.yml).
 
 > [!WARNING]
-> Integrierte Azure Maps-Rollendefinitionen bieten einen sehr umfangreichen Autorisierungszugriff auf viele Azure Maps-REST-APIs. Informationen, wie Sie APIs für Benutzer auf ein Mindestmaß beschränken, finden Sie unter [Erstellen einer benutzerdefinierten Rollendefinition und Zuweisen von Benutzern](../../role-based-access-control/custom-roles.md) zur benutzerdefinierten Rollendefinition. Dadurch werden Benutzer in die Lage versetzt, die geringsten Berechtigungen zu erhalten, die für die Anwendung erforderlich sind.
+> Integrierte Azure Maps-Rollendefinitionen bieten einen sehr umfangreichen Autorisierungszugriff auf viele Azure Maps-REST-APIs. Informationen, wie Sie den Zugriff auf APIs auf ein Mindestmaß beschränken, finden Sie unter [Erstellen einer benutzerdefinierten Rollendefinition und Zuweisen der systemseitig zugewiesenen Identität](../../role-based-access-control/custom-roles.md) zur benutzerdefinierten Rollendefinition. Dadurch wird die geringste Berechtigung aktiviert, die für den Zugriff der Anwendung auf Azure Maps erforderlich ist.

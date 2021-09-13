@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a3c76cb931a5683cf6fd52a806979c430f3f72
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745633"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580924"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Beispiel: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
@@ -31,7 +31,7 @@ Es werden zwei Datasets bereitgestellt. Wenn Sie das Modell selbst trainieren m�
 > * Erfassen der Ausgabe aus dem bereitgestellten Modell als benutzerdefinierter Skill
 
 > [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit wird das .NET SDK nicht unterstützt.
+> Dieser Skill befindet sich in der Public Preview-Phase und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt diesen Skill.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,7 +98,7 @@ Nachdem Sie das Skillset gespeichert haben, wechseln Sie zum Indexer, und wähle
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

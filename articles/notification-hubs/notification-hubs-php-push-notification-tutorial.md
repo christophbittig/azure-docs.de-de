@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46e0a74a97f46c317684f590f7d4462aec08fad2
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87076626"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586846"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Verwenden von Notification Hubs von PHP aus
 
@@ -280,7 +280,7 @@ Beim Ausführen des PHP-Codes sollte jetzt eine Benachrichtigung erstellt werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Thema haben wir gezeigt, wie Sie einen einfachen Java-REST-Client für Notification Hubs erstellen. Hier können Sie folgende Aktionen ausführen:
+In diesem Thema wurde gezeigt, wie Sie einen einfachen PHP-REST-Client für Notification Hubs erstellen. Hier können Sie folgende Aktionen ausführen:
 
 * Laden Sie das vollständige [PHP REST-Wrapper-Beispiel]herunter, das den gesamten vorstehenden Code enthält.
 * Erfahren Sie mehr über das Tagging-Feature von Notification Hubs im [Breaking News tutorial]

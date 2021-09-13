@@ -5,12 +5,12 @@ services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.openlocfilehash: 38bf9d41f81a76c4263952a94b5526984db0705f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: a59760378eef7412a963f661e80debc6a7af56d5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580941"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486551"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -51,9 +51,8 @@ Wenn Sie die Replikation für einen virtuellen Computer aktivieren, bietet Site 
 
 Sie können die Zielressourcen wie folgt verwalten:
 
-- Sie können Einstellungen für das Ziel ändern, während Sie die Replikation aktivieren.
-- Sie können Einstellungen für das Ziel ändern, nachdem die Replikation bereits ausgeführt wird. Beachten Sie, dass die Standard-SKU für die Zielregion-VM die gleiche ist wie die SKU der Quell-VM (oder die nächstbeste verfügbare SKU im Vergleich zur SKU der Quell-VM). Ähnlich wie andere Ressourcen, z. B. die Zielressourcengruppe, der Zielname und andere, kann auch die VM SKU der Zielregion nach der Beginn der Replikation aktualisiert werden. Eine Ressource, die nicht aktualisiert werden kann, ist der Verfügbarkeitstyp (Einzelinstanz, Satz oder Zone). Zum Ändern dieser Einstellung müssen Sie die Replikation deaktivieren, anschließend die Einstellung ändern und die Replikation dann wieder aktivieren. 
-
+- Sie können Einstellungen für das Ziel ändern, während Sie die Replikation aktivieren. Beachten Sie, dass die Standard-SKU für die Zielregion-VM die gleiche ist wie die SKU der Quell-VM (oder die nächstbeste verfügbare SKU im Vergleich zur SKU der Quell-VM). In der Dropdownliste werden nur relevante SKUs aus der Familie des virtuellen Quellcomputers (Gen 1 oder Gen 2) angezeigt.
+- Sie können Einstellungen für das Ziel ändern, nachdem die Replikation bereits ausgeführt wird. Ähnlich wie andere Ressourcen, z. B. die Zielressourcengruppe, der Zielname und andere, kann auch die VM SKU der Zielregion nach der Beginn der Replikation aktualisiert werden. Eine Ressource, die nicht aktualisiert werden kann, ist der Verfügbarkeitstyp (Einzelinstanz, Satz oder Zone). Zum Ändern dieser Einstellung müssen Sie die Replikation deaktivieren, anschließend die Einstellung ändern und die Replikation dann wieder aktivieren. 
 
 ## <a name="replication-policy"></a>Replikationsrichtlinie 
 

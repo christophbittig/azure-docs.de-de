@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffs
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2020
+ms.date: 06/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083798"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032559"
 ---
 # <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
@@ -26,7 +26,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 |:--- |:--- |
 | Besitzer |Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb eines Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
 | Mitwirkender |Die Rolle „Mitwirkender“ erlaubt Ihnen, fast alles zu verwalten. Das Einzige, was Sie nicht können, ist das Ändern der Zugriffsberechtigungen für ein Automation-Konto anderer Benutzer. |
-| Leser |Die Rolle „Leser“ erlaubt Ihnen, alle Ressourcen im Automation-Konto zu betrachten, aber Sie können keine Änderungen vornehmen. |
+| Leser |Mit der Rolle „Leser“ können Sie alle Ressourcen in einem Automation-Konto anzeigen, aber keine Änderungen vornehmen. |
 | Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht das Anzeigen des Namens und der Eigenschaften des Runbooks sowie das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen, Mitgliedern Ihrer Organisation aber dennoch ermöglichen möchten, diese Runbooks auszuführen. |
 |Automation-Auftragsoperator|Die Rolle „Automation-Auftragsoperator“ ermöglicht das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto.|
 |Automation-Runbookoperator|Die Rolle „Automation-Runbookoperator“ ermöglicht das Lesen des Namens und der Eigenschaften eines Runbooks.|
@@ -62,7 +62,7 @@ Ein Mitwirkender kann alles mit Ausnahme des Zugriffs verwalten. Die folgende Ta
 
 ### <a name="reader"></a>Leser
 
-Die Rolle „Leser“ ermöglicht Ihnen, alle Ressourcen im Automation-Konto anzuzeigen, aber Sie können keine Änderungen vornehmen.
+Ein Leser kann alle Ressourcen in einem Automation-Konto anzeigen, aber keine Änderungen vornehmen.
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -258,13 +258,93 @@ In den folgenden Abschnitten werden die minimal erforderlichen Berechtigungen be
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write           | Arbeitsbereich        |
 |Bereichskonfiguration erstellen/bearbeiten  | Microsoft.OperationalInsights/workspaces/write   | Arbeitsbereich|
 
-## <a name="update-management-permissions"></a>Aktualisieren von Verwaltungsberechtigungen
+## <a name="custom-azure-automation-contributor-role"></a>Benutzerdefinierte Rolle „Azure Automation-Mitwirkender“
 
-Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst bereitzustellen. Die folgende Tabelle zeigt die Berechtigungen, die zum Verwalten von Bereitstellungen der Updateverwaltung benötigt werden:
+Microsoft möchte die Rechte des Automation-Kontos aus der Rolle „Log Analytics-Mitwirkender“ entfernen. Derzeit kann die oben beschriebene integrierte Rolle [Log Analytics-Mitwirkender](#log-analytics-contributor) Berechtigungen an die Rolle [Mitwirkender](./../role-based-access-control/built-in-roles.md#contributor) des Abonnements eskalieren. Da für die ausführenden Konten des Automation-Kontos bereits die Rechte der Rolle „Mitwirkender“ für das Abonnement konfiguriert sind, kann es von einem Angreifer verwendet werden, um neue Runbooks zu erstellen und Code als Mitwirkender für das Abonnement auszuführen.
+
+Aufgrund dieses Sicherheitsrisikos wird empfohlen, die Rolle „Log Analytics-Mitwirkender“ nicht zum Ausführen von Automation-Aufträgen zu verwenden. Erstellen Sie stattdessen die benutzerdefinierte Rolle „Azure Automation-Mitwirkender“, und verwenden Sie diese für Aktionen im Zusammenhang mit dem Automation-Konto. Führen Sie die folgenden Schritte aus, um diese benutzerdefinierte Rolle zu erstellen:
+
+### <a name="create-using-the-azure-portal"></a>Erstellen mithilfe des Azure-Portals
+
+Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automation-Rolle im Azure-Portal zu erstellen. Weitere Informationen finden Sie unter [Benutzerdefinierte Azure-Rollen](./../role-based-access-control/custom-roles.md).
+
+1. Kopieren Sie die folgende JSON-Syntax, und fügen Sie sie in eine Datei ein: Speichern Sie die Datei auf Ihrem lokalen Computer oder in einem Azure-Speicherkonto. Ersetzen Sie in der JSON-Datei den Wert für die **assignableScopes**-Eigenschaft durch die Abonnement-GUID.
+
+   ```json
+   {
+    "properties": {
+        "roleName": "Automation account Contributor (custom)",
+        "description": "Allows access to manage Azure Automation and its resources",
+        "type": "CustomRole",
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Insights/metrics/read",
+                    "Microsoft.Insights/diagnosticSettings/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Automation/automationAccounts/*",
+                    "Microsoft.Support/*"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ],
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ]
+      }
+   }
+   ```
+
+1. Führen Sie die restlichen Schritte wie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal](../role-based-access-control/custom-roles-portal.md#start-from-json) beschrieben aus. Beachten Sie Folgendes für [Schritt 3:Grundlagen](../role-based-access-control/custom-roles-portal.md#step-3-basics):
+
+    -  Geben Sie im Feld **Name der benutzerdefinierten Rolle** den Namen **Mitwirkender für Automation-Konto (benutzerdefiniert)** oder einen Namen ein, der Ihren Benennungsstandards entspricht.
+    - Wählen Sie bei **Baselineberechtigungen** die Option **Von JSON aus starten** aus. Wählen Sie dann die benutzerdefinierte JSON-Datei aus, die Sie zuvor gespeichert haben.
+
+1. Führen Sie die verbleibenden Schritte aus, und überprüfen und erstellen Sie dann die benutzerdefinierte Rolle. Es kann einige Minuten dauern, bis Ihre benutzerdefinierte Rolle überall angezeigt wird.
+
+### <a name="create-using-powershell"></a>Erstellen mithilfe von PowerShell
+
+Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automation-Rolle mit PowerShell zu erstellen. Weitere Informationen finden Sie unter [Benutzerdefinierte Azure-Rollen](./../role-based-access-control/custom-roles.md).
+
+1. Kopieren Sie die folgende JSON-Syntax, und fügen Sie sie in eine Datei ein: Speichern Sie die Datei auf Ihrem lokalen Computer oder in einem Azure-Speicherkonto. Ersetzen Sie in der JSON-Datei den Wert für die **AssignableScopes**-Eigenschaft durch die Abonnement-GUID.
+
+    ```json
+    { 
+        "Name": "Automation account Contributor (custom)",
+        "Id": "",
+        "IsCustom": true,
+        "Description": "Allows access to manage Azure Automation and its resources",
+        "Actions": [
+            "Microsoft.Authorization/*/read",
+            "Microsoft.Insights/alertRules/*",
+            "Microsoft.Insights/metrics/read",
+            "Microsoft.Insights/diagnosticSettings/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/subscriptions/resourceGroups/read",
+            "Microsoft.Automation/automationAccounts/*",
+            "Microsoft.Support/*"
+        ],
+        "NotActions": [],
+        "AssignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ] 
+    } 
+    ```
+
+1. Führen Sie die restlichen Schritte wie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell](./../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template) beschrieben aus. Es kann einige Minuten dauern, bis Ihre benutzerdefinierte Rolle überall angezeigt wird.
+
+## <a name="update-management-permissions"></a>Berechtigungen für die Updateverwaltung
+
+Die Updateverwaltung kann verwendet werden, um Updatebereitstellungen auf Computern in mehreren Abonnements im gleichen Azure Active Directory-Mandanten (Azure AD) oder mandantenübergreifend mithilfe von Azure Lighthouse zu planen. In der folgenden Tabelle sind die zum Verwalten von Bereitstellungen der Updateverwaltung benötigten Berechtigungen aufgelistet.
 
 |**Ressource** |**Rolle** |**Umfang** |
 |---------|---------|---------|
-|Automation-Konto |Log Analytics-Mitwirkender |Automation-Konto |
+|Automation-Konto |[Benutzerdefinierte Rolle „Azure Automation-Mitwirkender“](#custom-azure-automation-contributor-role) |Automation-Konto |
 |Automation-Konto |Mitwirkender von virtuellen Computern  |Ressourcengruppe für das Konto  |
 |Log Analytics-Mitwirkender an Log Analytics-Arbeitsbereich|Log Analytics-Arbeitsbereich |
 |Log Analytics-Arbeitsbereich |Log Analytics-Leser|Subscription|
@@ -400,7 +480,7 @@ Ersetzen Sie im vorherigen Beispiel `sign-in ID of a user you wish to remove`, `
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Berechtigungen der Rolle „Operator für Automation“ – Automation-Konto
 
-Wenn ein Benutzer, dem im Automation-Kontobereich die Rolle „Operator für Automation“ zugewiesen wurde, das ihm zugewiesene Automation-Konto aufruft, kann er nur die Liste mit den Runbooks, Runbookaufträgen und Zeitplänen sehen, die im Automation-Konto erstellt wurden. Dieser Benutzer kann die Definitionen dieser Elemente nicht anzeigen. Der Benutzer kann den Runbookauftrag starten, beenden, unterbrechen, fortsetzen oder planen. Auf andere Automation-Ressourcen wie Konfigurationen, Hybrid Worker-Gruppen oder DSC-Knoten hat der Benutzer keinen Zugriff.
+Wenn ein Benutzer, dem im Automation-Kontobereich die Rolle „Operator für Automation“ zugewiesen wurde, das ihm zugewiesene Automation-Konto aufruft, kann er nur die Liste mit den Runbooks, Runbookaufträgen und Zeitplänen sehen, die im Automation-Konto erstellt wurden. Dieser Benutzer kann die Definitionen dieser Elemente nicht anzeigen. Der Benutzer kann den Runbookauftrag starten, beenden, unterbrechen, fortsetzen oder planen. Der Benutzer hat jedoch keinen Zugriff auf andere Automation-Ressourcen wie Konfigurationen, Hybrid Runbook Worker-Gruppen oder DSC-Knoten.
 
 ![Kein Zugriff auf Ressourcen](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 

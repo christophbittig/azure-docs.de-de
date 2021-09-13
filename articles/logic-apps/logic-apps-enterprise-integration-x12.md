@@ -1,47 +1,64 @@
 ---
-title: Senden und Empfangen von X12-Nachrichten für B2B
-description: Austauschen von X12-Nachrichten für Szenarien der B2B-Unternehmensintegration mithilfe von Azure Logic Apps mit Enterprise Integration Pack
+title: Austauschen von X12-Nachrichten für die B2B-Integration
+description: Senden, empfangen und verarbeiten Sie X12-Nachrichten beim Erstellen von B2B-Unternehmensintegrationslösungen mit Azure Logic Apps und dem Enterprise Integration Pack.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/29/2020
-ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.reviewer: estfan, divswa, azla
+ms.topic: how-to
+ms.date: 07/16/2021
+ms.openlocfilehash: 5328fad1530ee8dd7b4a2c79581d443488c44b28
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077469"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453839"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack
 
-Um mit X12-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den X12-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der X12-Kommunikation bereitstellt. Weitere Informationen zu EDIFACT-Nachrichten finden Sie unter [Austauschen von EDIFACT-Nachrichten](logic-apps-enterprise-integration-edifact.md).
+In Azure Logic Apps können Sie mithilfe von **X12**-Vorgängen Workflows erstellen, die X12-Nachrichten nutzen. Zu diesen Vorgängen gehören Trigger und Aktionen, die Sie in Ihrem Workflow verwenden können, um die X12-Kommunikation zu verarbeiten. Sie können X12-Trigger und -Aktionen auf die gleiche Weise wie alle anderen Trigger und Aktionen in einem Workflow hinzufügen. Um X12-Vorgänge verwenden zu können, müssen Sie jedoch zuvor einige zusätzliche Voraussetzungen erfüllen.
+
+In diesem Artikel werden die Anforderungen und Einstellungen für die Verwendung von X12-Triggern und -Aktionen in Ihrem Workflow beschrieben. Wenn Sie stattdessen EDIFACT-Nachrichten verwenden möchten, lesen Sie [Austauschen von EDIFACT-Nachrichten](logic-apps-enterprise-integration-edifact.md). Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zunächst [Was ist Azure Logic Apps?](logic-apps-overview.md) und [Schnellstart: Erstellen eines Integrationsworkflows mit Mandanten-fähigen Azure Logic Apps und dem Azure-Portal](quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Die Logik-App, von der aus Sie auf den X12-Connector zugreifen möchten, und einen Trigger, der den Workflow Ihre Logik-App startet. Der X12-Connector stellt nur Aktionen und keine Trigger bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Eine Logik-App-Ressource und ein Workflow, in dem Sie einen X12-Trigger oder eine X12-Aktion verwenden möchten. Zur Verwendung eines X12-Triggers benötigen Sie einen leeren Workflow. Für eine X12-Aktion benötigen Sie einen Workflow mit einem vorhandenen Trigger.
 
-* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das Ihrem Azure-Abonnement zugeordnet und mit der Logik-App verknüpft ist, in der Sie den X12-Connector verwenden möchten. Sowohl Ihre Logik-App als auch Ihr Integrationskonto müssen an demselben Standort oder in derselben Azure-Region vorhanden sein.
+* Ein mit Ihrer Logik-App-Ressource verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md). Ihre Logik-App und Ihr Integrationskonto müssen dasselbe Azure-Abonnement verwenden und sich in derselben Azure-Region oder am gleichen Azure-Standort befinden.
 
-* Mindestens zwei [Parteien](../logic-apps/logic-apps-enterprise-integration-partners.md), die Sie bereits in Ihrem Integrationskonto unter Verwendung des X12-Identitätsqualifizierers definiert haben.
+  Ihr Integrationskonto muss zudem die folgenden B2B-Artefakte enthalten:
 
-* Die [Schemas](../logic-apps/logic-apps-enterprise-integration-schemas.md), die für die XML-Überprüfung verwendet werden sollen, die Sie Ihrem Integrationskonto bereits hinzugefügt haben. Wenn Sie mit HIPAA-Schemas (Health Insurance Portability and Accountability Act) arbeiten, finden Sie Informationen unter [HIPAA-Schemas](#hipaa-schemas).
+  * Mindestens zwei [Handelspartner](logic-apps-enterprise-integration-partners.md), die den X12-Identitätsqualifizierer verwenden.
 
-* Bevor Sie den X12-Connector verwenden können, müssen Sie eine X12-[Vereinbarung](../logic-apps/logic-apps-enterprise-integration-agreements.md) zwischen den Parteien erstellen und diese Vereinbarung in Ihrem Integrationskonto speichern. Wenn Sie mit HIPAA-Schemas (Health Insurance Portability and Accountability Act) arbeiten, müssen Sie Ihrer Vereinbarung einen `schemaReferences`-Abschnitt hinzufügen. Weitere Informationen finden Sie unter [HIPAA-Schemas](#hipaa-schemas).
+  * Eine zwischen Ihren Handelspartnern definierte X12-[Vereinbarung](logic-apps-enterprise-integration-agreements.md). Informationen zu Einstellungen für das Empfangen und Senden von Nachrichten finden Sie unter [Empfangseinstellungen](#receive-settings) und [Sendeeinstellungen](#send-settings).
+
+    > [!IMPORTANT]
+    > Wenn Sie mit HIPAA-Schemas (Health Insurance Portability and Accountability Act) arbeiten, müssen Sie Ihrer Vereinbarung einen Abschnitt `schemaReferences` hinzufügen. Weitere Informationen finden Sie unter [HIPAA-Schemas und Nachrichtentypen](#hipaa-schemas).
+
+  * Die [Schemas](logic-apps-enterprise-integration-schemas.md) für die XML-Überprüfung.
+
+    > [!IMPORTANT]
+    > Lesen Sie unbedingt [HIPAA-Schemas und Nachrichtentypen](#hipaa-schemas), wenn Sie mit HIPAA-Schemas arbeiten.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Weitere technische Informationen zu diesem Connector (z. B. in der Swagger-Datei des Connectors beschriebene Trigger, Aktionen und Grenzwerte) finden Sie auf der [Referenzseite des Connectors](/connectors/x12/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
 
 <a name="receive-settings"></a>
 
 ## <a name="receive-settings"></a>Empfangseinstellungen
 
-Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung von Ihrem Partner empfangen.
+Nachdem Sie die Eigenschaften in Ihrer Vereinbarung festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifiziert und behandelt, die Sie im Rahmen dieser Vereinbarung von Ihrem Partner empfangen.
 
 1. Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
 
-1. Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die **Empfangseinstellungen** sind in diese Abschnitte unterteilt:
+1. Legen Sie basierend auf der Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht, die Eigenschaften im Bereich **Empfangseinstellungen** fest. Dieser Bereich ist in folgende Abschnitte unterteilt:
 
    * [Identifiers (Bezeichner)](#inbound-identifiers)
    * [Bestätigung ](#inbound-acknowledgement)
@@ -50,8 +67,6 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
    * [Kontrollnummern](#inbound-control-numbers)
    * [validations](#inbound-validations)
    * [Interne Einstellungen](#inbound-internal-settings)
-
-   Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
 
 1. Wählen Sie abschließend **OK** aus, um die Einstellungen zu speichern.
 
@@ -309,7 +324,7 @@ In der Zeile **Standard** werden die Überprüfungsregeln angezeigt, die für ei
 
 ## <a name="hipaa-schemas-and-message-types"></a>HIPAA-Schemas und Nachrichtentypen
 
-Wenn Sie mit HIPAA-Schemas und den Nachrichtentypen 277 oder 837 arbeiten, müssen Sie einige zusätzliche Schritte ausführen. Die [Dokumentversionsnummern (GS8)](#outbound-control-version-number) für diese Nachrichtentypen haben mehr als 9 Zeichen, z. B. „005010x222a1“. Außerdem sind einige Dokumentversionsnummern verschiedenen Nachrichtentypen zugeordnet. Wenn Sie in Ihrem Schema und in Ihrer Vereinbarung nicht auf den richtigen Nachrichtentyp verweisen, erhalten Sie die folgende Fehlermeldung:
+Wenn Sie mit HIPAA-Schemas und den Nachrichtentypen 277 oder 837 arbeiten, müssen Sie einige zusätzliche Schritte ausführen. Die [Dokumentversionsnummern (GS8)](#outbound-control-version-number) für diese Nachrichtentypen bestehen aus mehr als neun Zeichen, z. B. „005010x222a1“. Außerdem sind einige Dokumentversionsnummern verschiedenen Nachrichtentypen zugeordnet. Wenn Sie in Ihrem Schema und in Ihrer Vereinbarung nicht auf den richtigen Nachrichtentyp verweisen, erhalten Sie die folgende Fehlermeldung:
 
 `"The message has an unknown document type and did not resolve to any of the existing schemas configured in the agreement."`
 
@@ -378,13 +393,8 @@ Um diese Dokumentversionsnummern und Nachrichtentypen anzugeben, führen Sie die
 
    ![Überprüfung für alle Nachrichtentypen oder jeden Nachrichtentyp deaktivieren](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 
-## <a name="connector-reference"></a>Connector-Referenz
-
-Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/x12/).
-
-> [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über andere [Connectors für Logic Apps](../connectors/apis-list.md).
+* [X12: Technische TA1-Bestätigungen und Fehlercodes](logic-apps-enterprise-integration-x12-ta1-acknowledgment.md)
+* [X12: 997-Funktionsbestätigungen und Fehlercodes](logic-apps-enterprise-integration-x12-997-acknowledgment.md)
+* [Informationen zu Connectors in Azure Logic Apps](../connectors/apis-list.md)

@@ -5,20 +5,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_region
+ms.openlocfilehash: 83ad2245ec010bd91907ae27e077f86b4d6b1d5e
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586334"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122395"
 ---
-# <a name="data-collection-rules-in-azure-monitor-preview"></a>Datensammlungsregeln in Azure Monitor (Vorschau)
+# <a name="data-collection-rules-in-azure-monitor"></a>Datensammlungsregeln in Azure Monitor
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin die Daten gesendet bzw. wo sie gespeichert werden sollen. Dieser Artikel enthält eine Übersicht über die Datensammlungsregeln, z. B. zu Inhalt und Struktur und zur Erstellung und Nutzung.
 
 ## <a name="input-sources"></a>Eingabequellen
 Datensammlungsregeln unterstützen derzeit die folgenden Eingabequellen:
 
-- Virtueller Azure-Computer mit dem Azure Monitor-Agent. Weitere Informationen finden Sie unter [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](../agents/data-collection-rule-azure-monitor-agent.md).
+- Azure Monitor-Agent, der auf virtuellen Computern, in VM-Skalierungsgruppen und in Azure Arc für Server ausgeführt wird. Weitere Informationen finden Sie unter [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](../agents/data-collection-rule-azure-monitor-agent.md).
 
 
 
@@ -29,8 +30,10 @@ Eine Datensammlungsregel enthält die unten angegebenen Komponenten.
 |:---|:---|
 | Datenquellen | Eindeutige Quelle für Überwachungsdaten mit einem eigenen Format und einer eigenen Methode zum Verfügbarmachen der Daten. Beispiele für eine Datenquelle sind Windows-Ereignisprotokoll, Leistungsindikatoren und Syslog. Jede Datenquelle hat einen bestimmten Datenquellentyp (wie unten beschrieben). |
 | Datenströme | Eindeutiges Handle zur Beschreibung einer Gruppe von Datenquellen, die unter Verwendung eines gemeinsamen Typs transformiert und schematisiert werden. Für jede Datenquelle wird mindestens ein Datenstrom benötigt, und ein Datenstrom kann von mehreren Datenquellen verwendet werden. Für alle Datenquellen eines Datenstroms wird ein gemeinsames Schema genutzt. Verwenden Sie beispielsweise mehrere Datenströme, wenn Sie eine bestimmte Datenquelle an mehrere Tabellen in demselben Log Analytics-Arbeitsbereich senden möchten. |
-| Destinations | Eine Gruppe von Zielen, an die die Daten gesendet werden sollen. Beispiele hierfür sind Log Analytics-Arbeitsbereich, Azure Monitor-Metriken und Azure Event Hubs. | 
+| Destinations | Eine Gruppe von Zielen, an die die Daten gesendet werden sollen. Beispiele hierfür wären ein Log Analytics-Arbeitsbereich und Azure Monitor-Metriken. | 
 | Datenflüsse | Definition, welche Datenströme an welche Ziele gesendet werden sollen. | 
+
+Datensammlungsregeln werden regional gespeichert und sind in allen öffentlichen Regionen verfügbar, in denen Log Analytics unterstützt wird. Government-Regionen und -Clouds werden momentan nicht unterstützt.
 
 Im folgenden Diagramm sind die Komponenten einer Regel für die Datensammlung sowie deren Beziehungen dargestellt.
 
@@ -50,6 +53,10 @@ Jede Datenquelle hat einen Datenquellentyp. Mit jedem Typ wird eine eindeutige G
 ## <a name="limits"></a>Grenzwerte
 Informationen zu Grenzwerten, die für die einzelnen Datensammlungsregeln gelten, finden Sie unter [Azure Monitor-Diensteinschränkungen](../service-limits.md#data-collection-rules).
 
+## <a name="data-residency"></a>Datenresidenz 
+Datensammlungsregeln werden als Dienst regional bereitgestellt. Eine Regel wird in der von Ihnen angegebenen Region erstellt und gespeichert und in der [gekoppelten Region](../../best-practices-availability-paired-regions.md#azure-regional-pairs) innerhalb desselben geografischen Raums gesichert.  
+
+**Datenresidenz in einer Region**: Die Vorschaufunktion zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Die Residenz in einer einzelnen Region ist in diesen Regionen standardmäßig aktiviert.
 
 ## <a name="create-a-dcr"></a>Erstellen einer Datensammlungsregel
 Sie können eine Datensammlungsregel derzeit mit einer der folgenden Methoden erstellen:
@@ -68,7 +75,7 @@ Sie können eine Datensammlungsregel derzeit mit einer der folgenden Methoden er
   - [Remove-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRuleAssociation.md)
 
 ## <a name="sample-data-collection-rule"></a>Beispielregel für die Datensammlung
-Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Computer mit Azure-Verwaltungs-Agent und verfügt über die folgenden Details:
+Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Computer mit Azure Monitor-Agent und hat folgende Details:
 
 - Leistungsdaten
   - Sammelt alle 15 Sekunden spezifische Indikatordaten für Prozessor, Arbeitsspeicher, logischen Datenträger und physischen Datenträger und führt einmal pro Minute ein Upload durch.

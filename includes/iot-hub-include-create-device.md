@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: iot-hub
 author: robinsh
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78ad23713d1fc58d55696502dc9ff780847a8357
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "70049027"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414876"
 ---
 <!-- put the ## header in the file that includes this file -->
 
@@ -23,13 +23,15 @@ In diesem Abschnitt erstellen Sie eine Geräteidentität in der Identitätsregis
 
     ![Erstellen der Geräteidentität im Portal](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. Geben Sie in **Gerät erstellen** ein Namen für Ihr neues Gerät ein, z.B. **myDeviceId**, und wählen Sie **Speichern** aus. Mit dieser Aktion wird eine Geräteidentität für Ihren IoT-Hub erstellt.
+1. Geben Sie in **Gerät erstellen** ein Namen für Ihr neues Gerät ein, z.B. **myDeviceId**, und wählen Sie **Speichern** aus. Mit dieser Aktion wird eine Geräteidentität für Ihren IoT-Hub erstellt. Lassen Sie **Schlüssel automatisch generieren** aktiviert, damit die primären und sekundären Schlüssel automatisch generiert werden.
 
    ![Hinzufügen eines neuen Geräts](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-1. Öffnen Sie das Gerät nach der Erstellung in der Liste im Bereich **IoT-Geräte**. Kopieren Sie die **primäre Verbindungszeichenfolge** zur späteren Verwendung.
+1. Öffnen Sie das Gerät nach der Erstellung in der Liste im Bereich **IoT-Geräte**. Kopieren Sie die **primäre Verbindungszeichenfolge**. Diese Verbindungszeichenfolge wird vom Gerätecode verwendet, um mit dem Hub zu kommunizieren. 
+
+    Standardmäßig werden die Schlüssel und Verbindungszeichenfolgen maskiert, da es sich hierbei um vertrauliche Informationen handelt. Wenn Sie auf das Augensymbol klicken, werden sie wie in der folgenden Abbildung angezeigt. Sie können allerdings über die Kopierschaltfläche kopiert werden, ohne die Maskierung aufzuheben.
 
     ![Geräte-Verbindungszeichenfolge](./media/iot-hub-include-create-device/device-details-vs2019.png)
 

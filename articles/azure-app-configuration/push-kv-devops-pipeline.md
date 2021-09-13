@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: a3b3c8760c3bf7d6bf4bee444bef7ed77134fb5a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 61b50f8e3c5b32401b4f7339627b9b704a4b94fd
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748277"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122978"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Pushen von Einstellungen an App Configuration mit Azure Pipelines
 
@@ -99,6 +99,10 @@ Sollte ein unerwarteter Fehler auftreten, können Sie Debugprotokolle aktivieren
 **Wie kann ich mehrere Konfigurationsdateien hochladen?**
 
 Erstellen Sie innerhalb der gleichen Pipeline mehrere Instanzen der Aufgabe „Azure App Configuration Push“, um mehrere Konfigurationsdateien in den App Configuration-Speicher zu pushen.
+
+**Wie kann ich mithilfe dieser Aufgabe Key Vault-Verweise erstellen?**
+
+Legen Sie zum Erstellen von Key Vault-Verweisen den Parameter „Inhaltstyp“ auf *application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8* fest. Wenn es sich nicht bei allen Schlüsselwerten in einer Konfigurationsdatei um Key Vault-Verweise handelt, platzieren Sie Key Vault-Verweise und normale Schlüsselwerte in separaten Konfigurationsdateien, und pushen Sie sie separat.
 
 **Warum erhalte ich einen Fehler vom Typ 409, wenn ich versuche, Schlüsselwerte in meinen Konfigurationsspeicher zu pushen?**
 

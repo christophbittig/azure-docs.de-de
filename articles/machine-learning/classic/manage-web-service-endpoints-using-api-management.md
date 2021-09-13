@@ -9,20 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2897507270d5f87be01bc87173f48e713b1b791b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518027"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581374"
 ---
-# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von (klassischen) Azure Machine Learning Studio-Webdiensten mit API Management
+# <a name="manage-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von Machine Learning Studio (Classic)-Webdiensten mithilfe von API Management
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 ## <a name="overview"></a>Übersicht
-Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer (klassischen) Azure Machine Learning Studio-Webdienste mit API Management.
+In diesem Leitfaden werden die ersten Schritte für die Verwaltung Ihrer Machine Learning Studio (Classic)-Webdienste mit API Management beschrieben.
 
 ## <a name="what-is-azure-api-management"></a>Was ist Azure API Management?
 Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Weitere Informationen finden Sie auf der [API Management-Website](https://azure.microsoft.com/services/api-management/). Informationen zu den ersten Schritten mit Azure API Management finden Sie im [Leitfaden zum Importieren und Veröffentlichen](../../api-management/import-and-publish.md). In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
@@ -36,7 +36,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 ## <a name="create-an-api-management-instance"></a>Erstellen einer API Management-Instanz
 
-Sie können Ihren Azure Machine Learning-Webdienst mit einer API Management-Instanz verwalten.
+Sie können Ihren Machine Learning-Webdienst mit einer API Management-Instanz verwalten.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **+ Ressource erstellen**.

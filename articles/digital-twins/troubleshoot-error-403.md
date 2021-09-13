@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a5191533b336d9d0cbefcf9b58f56d6648a60df
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967907"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456152"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
 
@@ -86,12 +86,12 @@ Wählen Sie als Nächstes auf der Menüleiste *API-Berechtigungen* aus, um sich 
 
 #### <a name="fix-issues"></a>Beheben von Problemen
 
-Wenn etwas anders als beschrieben aussieht, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [Vorgehensweise: Erstellen einer App-Registrierung](./how-to-create-app-registration-portal.md).
+Sollte etwas nicht wie beschrieben aussehen, befolgen Sie die Anweisungen zum Einrichten einer App-Registrierung unter [Erstellen einer App-Registrierung für die Verwendung mit Azure Digital Twins (Portal)](./how-to-create-app-registration-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die Einrichtungsschritte zum Erstellen und Authentifizieren einer neuen Azure Digital Twins-Instanz:
-* [Verwenden Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md)
+* [Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md)
 
 Informieren Sie sich weiter über die Sicherheit und Berechtigungen in Azure Digital Twins:
-* [Konzepte: Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)
+* [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md)

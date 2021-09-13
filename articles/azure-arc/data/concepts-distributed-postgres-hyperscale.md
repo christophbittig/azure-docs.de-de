@@ -1,6 +1,6 @@
 ---
 title: Konzepte für die Verteilung von Daten und horizontales Hochskalieren mit der Arc-fähigen PostgreSQL Hyperscale-Servergruppe
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
@@ -10,41 +10,41 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 4698826a78afe816029288f2d5eda14834124904
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 69405ac6386587e6621c67532a8bd7f41450370e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407805"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729936"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Konzepte für die Verteilung von Daten mit einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
-In diesem Artikel werden Schlüsselkonzepte erläutert, die wichtig sind, um den größten Nutzen aus Azure Arc-aktivierten PostgreSQL Hyperscale-Servergruppen zu ziehen.
-Die Links zu den Artikeln unten verweisen auf die Konzepte, die für Azure Database for PostgreSQL Hyperscale (Citus) erläutert werden. Es handelt sich um dieselbe Technologie wie Azure Arc-fähige PostgreSQL Hyperscale-Servergruppen, sodass dieselben Konzepte und Perspektiven gelten.
+In diesem Artikel werden zentrale Konzepte erläutert, die wichtig sind, um den größtmöglichen Nutzen aus PostgreSQL Hyperscale mit Azure Arc-Unterstützung ziehen zu können.
+Die Links zu den Artikeln unten verweisen auf die Konzepte, die für Azure Database for PostgreSQL Hyperscale (Citus) erläutert werden. Es handelt sich um die gleiche Technologie wie bei PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung, sodass die gleichen Konzepte und Perspektiven gelten.
 
 **Worin besteht der Unterschied?**
 - _Azure Database for PostgreSQL Hyperscale (Citus)_
 
 Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der als Database-as-a-Service in Azure (PaaS) verfügbar ist. Er wird von der Citus-Erweiterung unterstützt, die die Hyperscale-Umgebung ermöglicht. In diesem Formfaktor wird der Dienst in den Microsoft-Rechenzentren ausgeführt und von Microsoft betrieben.
 
-- _PostgreSQL Hyperscale mit Azure Arc-Aktivierung_
+- _PostgreSQL Hyperscale mit Azure Arc-Unterstützung_
 
-Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der mit dem Azure Arc-fähigen Datendienst zur Verfügung gestellt wird. In diesem Formfaktor stellen unsere Kunden die Infrastruktur bereit, die die Systeme hostet, und betreiben sie.
+Dies ist der Hyperscale-Formfaktor der Postgres-Datenbank-Engine, der mit dem Datendienst mit Azure Arc-Unterstützung angeboten wird. In diesem Formfaktor stellen unsere Kunden die Infrastruktur bereit, die die Systeme hostet, und betreiben sie.
 
-Die wichtigsten Konzepte für Azure Arc-aktivierte PostgreSQL Hyperscale-Servergruppen werden unten zusammengefasst:
+Im Anschluss finden Sie eine Zusammenfassung der zentralen Konzepte für PostgreSQL Hyperscale mit Azure Arc-Unterstützung:
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="nodes-and-tables"></a>Knoten und Tabellen
-Es ist wichtig, mit den folgenden Konzepten vertraut zu sein, um den größten Nutzen aus Azure Arc-aktivierte PostgreSQL Hyperscale-Servergruppen zu ziehen:
-- Spezialisierte Postgres-Knoten in Azure Arc-aktivierten PostgreSQL Hyperscale-Servergruppen: Koordinator und Worker
+Es ist wichtig, mit den folgenden Konzepten vertraut zu sein, um den größtmöglichen Nutzen aus PostgreSQL Hyperscale mit Azure Arc-Unterstützung ziehen zu können:
+- Spezialisierte Postgres-Knoten in PostgreSQL Hyperscale mit Azure Arc-Unterstützung: Koordinator und Worker
 - Tabellentypen: verteilte Tabellen, Verweistabellen und lokale Tabellen
 - Shards
 
 Weitere Informationen finden Sie unter [Knoten und Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus)](../../postgresql/concepts-hyperscale-nodes.md). 
 
 ## <a name="determine-the-application-type"></a>Ermitteln des Anwendungstyps
-Die eindeutige Identifizierung des Anwendungstyps, den Sie erstellen, ist wichtig. Warum? Weil das Ausführen effizienter Abfragen für eine Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe erfordert, dass die Tabellen ordnungsgemäß auf die Server verteilt sind. Die empfohlene Verteilung variiert abhängig vom Anwendungstyp und den jeweiligen Abfragemustern. Es gibt im Wesentlichen zwei Arten von Anwendungen, die mit Azure Arc-fähigen Postgres Hyperscale-Servergruppen gut funktionieren:
+Die eindeutige Identifizierung des Anwendungstyps, den Sie erstellen, ist wichtig. Warum? Weil das Ausführen effizienter Abfragen für eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung erfordert, dass die Tabellen ordnungsgemäß auf die Server verteilt sind. Die empfohlene Verteilung variiert abhängig vom Anwendungstyp und den jeweiligen Abfragemustern. Es gibt im Wesentlichen zwei Arten von Anwendungen, die gut mit Postgres Hyperscale mit Azure Arc-Unterstützung funktionieren:
 - Mehrinstanzenfähige Anwendungen
 - Echtzeitanwendungen
 
@@ -56,7 +56,7 @@ Einzelheiten dazu finden Sie unter [Ermitteln des Anwendungstyps](../../postgres
 ## <a name="choose-a-distribution-column"></a>Auswählen einer Verteilungsspalte
 Warum sollte eine verteilte Spalte ausgewählt werden?
 
-Dies ist eine der wichtigsten Modellierungsentscheidungen, die Sie treffen. Azure Arc-fähige PostgreSQL Hyperscale-Servergruppen speichern Zeilen basierend auf dem Wert der Verteilungsspalte der Zeilen in Shards. Durch die richtige Wahl werden verwandte Daten in denselben physischen Knoten gruppiert, was zu schnellen Abfragen führt und Unterstützung für alle SQL-Funktionen hinzufügt. Durch eine falsche Auswahl wird das System langsam ausgeführt und unterstützt nicht alle SQL-Funktionen auf allen Knoten. In diesem Artikel erhalten Sie Tipps für die Verteilungsspalte für die beiden häufigsten Hyperscale-Szenarien.
+Dies ist eine der wichtigsten Modellierungsentscheidungen, die Sie treffen. PostgreSQL Hyperscale mit Azure Arc-Unterstützung speichert Zeilen basierend auf dem Wert der zugehörigen Verteilungsspalte in Shards. Durch die richtige Wahl werden verwandte Daten in denselben physischen Knoten gruppiert, was zu schnellen Abfragen führt und Unterstützung für alle SQL-Funktionen hinzufügt. Durch eine falsche Auswahl wird das System langsam ausgeführt und unterstützt nicht alle SQL-Funktionen auf allen Knoten. In diesem Artikel erhalten Sie Tipps für die Verteilungsspalte für die beiden häufigsten Hyperscale-Szenarien.
 
 Einzelheiten dazu finden Sie unter[Auswählen von Verteilungsspalten](../../postgresql/concepts-hyperscale-choose-distribution-column.md).
 
@@ -69,8 +69,8 @@ Weitere Informationen finden Sie unter [Tabellen Zusammenstellung](../../postgre
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Informationen zum Erstellen von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](create-postgresql-hyperscale-server-group.md)
-- [Erfahren Sie mehr über das Aufskalieren von Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen, die in Ihrem Arc-Datencontroller erstellt wurden](scale-out-in-postgresql-hyperscale-server-group.md).
-- [Weitere Informationen zu Azure Arc-fähigen Data Services](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+- [Informationen zum Erstellen von PostgreSQL Hyperscale mit Azure Arc-Unterstützung](create-postgresql-hyperscale-server-group.md)
+- [Informationen zum Aufskalieren von PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung, die in Ihrem Arc-Datencontroller erstellt wurden](scale-out-in-postgresql-hyperscale-server-group.md)
+- [Informationen zu Data Services mit Azure Arc-Unterstützung](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [Weitere Informationen zu Azure Arc](https://aka.ms/azurearc)
 

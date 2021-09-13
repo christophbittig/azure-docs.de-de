@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: c9ce9b7b0d739301e76abd43b265fe28195ed302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1042b33dd0e753b8706bed8ab77a57d65c63fb4b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518282"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583336"
 ---
-# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Aktivieren der Protokollierung für (klassische) Azure Machine Learning Studio-Webdienste
+# <a name="enable-logging-for-machine-learning-studio-classic-web-services"></a>Aktivieren der Protokollierung für (klassische) Machine Learning Studio-Webdienste
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -25,9 +25,9 @@ Dieses Dokument enthält Informationen zur Protokollierungsfunktion von (klassis
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Aktivieren der Protokollierung für einen Webdienst
 
-Aktivieren Sie die Protokollierung im [(klassischen) Azure Machine Learning Studio Web Services-Portal](https://services.azureml.net). 
+Aktivieren Sie die Protokollierung im Portal für [(klassische) Machine Learning Studio-Webdienste](https://services.azureml.net). 
 
-1. Melden Sie sich beim (klassischen) Azure Machine Learning Studio Web Services-Portal unter [https://services.azureml.net](https://services.azureml.net) an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie auf der Seite „Webdienst“ in Machine Learning Studio (klassisch) auf **Neue Webdienstfunktion** klicken.
+1. Melden Sie sich unter [https://services.azureml.net](https://services.azureml.net) beim Portal für (klassische) Machine Learning Studio-Webdienste an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie auf der Seite „Webdienst“ in Machine Learning Studio (klassisch) auf **Neue Webdienstfunktion** klicken.
 
    ![Link für neue Webdienstfunktion](./media/web-services-logging/new-web-services-experience-link.png)
 

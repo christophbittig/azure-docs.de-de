@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2021
+ms.date: 06/15/2021
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurepowershell
-ms.openlocfilehash: d41b443a076e303d96588a27285b671123593b57
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5f0d9c821a26d935544f67bca078a9cfdbe50c58
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556435"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112397175"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -23,7 +23,6 @@ Das hängt von der Gateway-SKU ab. Weitere Informationen zur Anzahl von unterst�
 
 Folgende Clientbetriebssysteme werden unterstützt:
 
-* Windows 7 (32 Bit und 64 Bit)
 * Windows Server 2008 R2 (nur 64 Bit)
 * Windows 8.1 (32 Bit und 64 Bit)
 * Windows Server 2012 (nur 64 Bit)
@@ -81,11 +80,13 @@ Ja. Navigieren Sie im Portal zur Seite **VPN Gateway -> Point-to-Site-Konfigurat
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Unterstützt Azure IKEv2-VPN unter Windows?
 
-IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Zur Verwendung von IKEv2 müssen Sie jedoch Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Betriebssystemversionen vor Windows 10 werden nicht unterstützt und können nur SSTP oder **OpenVPN® Protocol** verwenden.
+IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Bei bestimmten Betriebssystemversionen müssen Sie für die Verwendung von IKEv2 allerdings Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Beachten Sie, dass Betriebssystemversionen vor Windows 10 nicht unterstützt werden und nur SSTP oder **OpenVPN® Protocol** verwenden können.
+
+> HINWEIS: Bei Windows-Betriebssystembuilds, die neuer als Version 1709 (Windows 10) bzw. Version 1607 (Windows Server 2016) sind, sind diese Schritte nicht erforderlich.
 
 Vorbereitung von Windows 10 oder Server 2016 für IKEv2:
 
-1. Installieren Sie das Update.
+1. Installieren Sie das passende Update für Ihre Betriebssystemversion:
 
    | Betriebssystemversion | Date | Anzahl/Link |
    |---|---|---|

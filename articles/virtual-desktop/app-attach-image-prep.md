@@ -6,16 +6,18 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f80d123a96a24ef9e9402cc2b142e94448468ea1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745635"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707157"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Vorbereiten eines MSIX-Images für Azure Virtual Desktop
 
 MSIX App Attach ist eine Lösung für Anwendungsschichten, mit der Sie Apps aus einem MSIX-Paket dynamisch an eine Benutzersitzung anfügen können. Das MSIX-Paketsystem trennt Apps vom Betriebssystem und vereinfacht so das Erstellen von Images für VMs. Mit MSIX-Paketen haben Sie auch mehr Kontrolle darüber, auf welche Apps Benutzer auf ihren VMs zugreifen können. Sie können sogar Apps vom Masterimage abtrennen und erst später an die Benutzer übergeben.
+
+Eine Anleitung zum Konvertieren eines Desktopinstallationsprogramms (wie MSI, EXE, ClickOnce, App-V oder Skript) in MSIX finden Sie unter [Erstellen eines MSIX-Pakets über einen beliebigen Desktopinstaller (MSI, EXE, ClickOnce oder App-V)](/windows/msix/packaging-tool/create-app-package).
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>Erstellen von VHD- oder VHDX-Paketen für MSIX
 
@@ -99,11 +101,11 @@ Nachdem Sie das MSIX-Paket erstellt haben, müssen Sie die resultierende VHD-, V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Stellen Sie unserer Community unter [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Ihre Fragen zu dieser Funktion.
+Stellen Sie unserer [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) Fragen zu dieser Funktion.
 
-Sie können Ihr Feedback bezüglich Azure Virtual Desktop auch im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) hochladen.
+Sie können auch Feedback zu Azure Virtual Desktop im [Azure Virtual Desktop-Feedback-Hub](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app) bereitstellen.
 
 Folgende Artikel sind eventuell hilfreich:
 
 - [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md)
-- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.md)
+- [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.yml)

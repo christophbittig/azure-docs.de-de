@@ -5,25 +5,29 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575342"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729846"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
 Auf dieser Seite finden Sie allgemeine Probleme, die Azure Remote Rendering beeinträchtigen, sowie Möglichkeiten, diese zu beheben.
 
+## <a name="client-cant-connect-to-server"></a>Der Client kann keine Verbindung mit dem Server herstellen.
+
+Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, innerhalb von Routern usw.) die in den [Systemanforderungen](../overview/system-requirements.md#network-firewall) genannten Ports nicht blockieren.
+
+## <a name="failed-to-load-model"></a>Fehler beim Laden des Modells
+
+Wenn beim Laden eines Modells (z. B. über ein Unity-Beispiel) trotz korrekter Blobkonfiguration ein Fehler auftritt, ist der Blobspeicher wahrscheinlich nicht ordnungsgemäß verknüpft. Dies wird im Kapitel [Verknüpfen von Speicherkonten](../how-tos/create-an-account.md#link-storage-accounts) erläutert. Beachten Sie, dass es nach korrekter Verknüpfung bis zu 30 Minuten dauern kann, bis die Änderungen wirksam werden.
+
 ## <a name="cant-link-storage-account-to-arr-account"></a>Das Speicherkonto kann nicht mit dem ARR-Konto verknüpft werden.
 
 Manchmal wird während der [Verknüpfung eines Speicherkontos](../how-tos/create-an-account.md#link-storage-accounts) das Remote Rendering-Konto nicht aufgeführt. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zum ARR-Konto, und wählen Sie **Identität** unter der Gruppe **Einstellungen** auf der linken Seite aus. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist.
 ![Unity-Framedebugger](./media/troubleshoot-portal-identity.png)
-
-## <a name="client-cant-connect-to-server"></a>Der Client kann keine Verbindung mit dem Server herstellen.
-
-Stellen Sie sicher, dass Ihre Firewalls (auf dem Gerät, innerhalb von Routern usw.) die in den [Systemanforderungen](../overview/system-requirements.md#network-firewall) genannten Ports nicht blockieren.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Fehler „`Disconnected: VideoFormatNotAvailable`“
 
@@ -160,6 +164,8 @@ dann trifft der Renderer auf die [Polygongrenzwerte für die Standardkonfigurati
 Beachten Sie unbedingt das [Unity Tutorial: Anzeigen von Remotemodellen](../tutorials/unity/view-remote-models/view-remote-models.md) genau. Ein umgedrehtes Bild zeigt an, dass Unity erforderlich ist, um ein Renderziel außerhalb des Bildschirms zu erstellen. Dieses Verhalten wird derzeit nicht unterstützt und hat einen großen Einfluss auf die Leistung der HoloLens 2.
 
 Gründe für dieses Problem könnten MSAA, HDR oder die Aktivierung der Nachbearbeitung sein. Stellen Sie sicher, dass das Profil mit niedriger Qualität ausgewählt und in Unity als Standard festgelegt ist. Wechseln Sie dazu zu *Bearbeiten > Projekteinstellungen... > Qualität*.
+
+Wenn Sie das OpenXR-Plug-In in Unity 2020 verwenden, gibt es Versionen der universelle Renderpipeline (URP), die dieses zusätzliche Offscreen-Renderziel unabhängig vom Aktivierungsstatus der Nachverarbeitung erstellen. Daher ist es wichtig, ein manuelles Upgrade auf die URP-Version 10.5.1 (oder höher) durchzuführen. Dies wird in den [Systemanforderungen](../overview/system-requirements.md#unity-2020) beschrieben.
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Unity-Code, der die Remote Rendering-API verwendet, wird nicht kompiliert.
 

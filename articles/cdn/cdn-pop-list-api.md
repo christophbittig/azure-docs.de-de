@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 07/06/2021
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155f3817b913e38e503d0a8fcaa6083922067ebd
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376342"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487613"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Abrufen der aktuellen POP-IP-Liste für Azure CDN
 
@@ -36,11 +36,7 @@ Wenn Sie Ihre Anwendung so sperren möchten, dass nur Datenverkehr aus Azure CDN
 
 Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus dem Back-End-IP-Adressraum von Azure CDN von Microsoft und den Infrastrukturdiensten von Azure akzeptieren. 
 
-* IPv4-Back-End-IP-Adressraum von Azure CDN von Microsoft: 147.243.0.0/16
-* IPv6-Back-End-IP-Adressraum von Azure CDN von Microsoft: 2a01:111:2050::/44
-
-Um Diensttags mit Azure CDN von Microsoft zu verwenden, verwenden Sie das Azure Front Door-Tag. IP-Bereiche und Diensttags für Microsoft-Dienste finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519).
-
+Verwenden Sie [Diensttags](../virtual-network/service-tags-overview.md) von Azure Front Door mit Azure CDN von Microsoft, um die Back-End-IP-Adressbereiche von Microsoft zu konfigurieren. Eine vollständige Liste finden Sie unter [Azure-IP-Adressbereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/en-us/download/details.aspx?id=56519) für Microsoft-Dienste.
 
 ## <a name="typical-use-case"></a>Typischer Anwendungsfall
 

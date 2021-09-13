@@ -2,23 +2,26 @@
 title: Azure VMware Solution-Netzwerkbetrieb und -Konnektivität
 description: Beschreibung von Azure VMware Solution-Netzwerkbetrieb und -Konnektivität
 ms.topic: include
-ms.date: 05/28/2021
-ms.openlocfilehash: 66ea12565aa84661a4019e5685a5544792591b0c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/10/2021
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: d758d42ff1e5c77ddd1e17811e2eea24717878aa
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111350711"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070723"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
-Azure VMware Solution stellt eine private Cloudumgebung bereit, auf die aus lokalen und Azure-basierten Ressourcen aus zugegriffen werden kann. Dienste wie Azure ExpressRoute, VPN-Verbindungen oder Azure Virtual WAN stellen die Konnektivität bereit. Diese Dienste benötigen bestimmte Netzwerkadressbereiche und Firewallports für die Aktivierung der Dienste.
+Azure VMware Solution stellt eine private Cloudumgebung bereit, auf die aus lokalen und Azure-basierten Ressourcen aus zugegriffen werden kann. Die Konnektivität wird über Dienste wie Azure ExpressRoute, über VPN-Verbindungen oder über Azure Virtual WAN bereitgestellt. Diese Dienste benötigen jedoch bestimmte Netzwerkadressbereiche und Firewallports für die Aktivierung der Dienste.
 
-Wenn eine private Cloud bereitgestellt wird, werden private Netzwerke für Verwaltung, Bereitstellung und vMotion erstellt. Verwenden Sie diese privaten Netzwerke, um auf vCenter und NSX-T Manager zuzugreifen sowie vMotion oder Bereitstellung virtueller Computer umzusetzen.  
+Wenn eine private Cloud bereitgestellt wird, werden private Netzwerke für Verwaltung, Bereitstellung und vMotion erstellt. Diese privaten Netzwerke werden verwendet, um auf vCenter und NSX-T Manager sowie auf vMotion oder die Bereitstellung virtueller Computer zuzugreifen.
 
-ExpressRoute Global Reach wird verwendet, um private Clouds mit lokalen Umgebungen zu verbinden. Die Verbindung erfordert ein virtuelles Netzwerk mit einer ExpressRoute-Leitung zur lokalen Umgebung in Ihrem Abonnement.
+[!INCLUDE [expressroute-global-reach](expressroute-global-reach.md)]
 
-In der privaten Cloud bereitgestellte virtuelle Computer sind über die öffentliche IP-Adresse von Azure Virtual WAN für das Internet zugänglich.  Der Internetzugriff ist für neue private Clouds standardmäßig deaktiviert. Weitere Informationen finden Sie unter [Aktivieren des öffentlichen Internetzugriffs in Azure VMware Solution](../enable-public-internet-access.md).
+In der privaten Cloud bereitgestellte virtuelle Computer sind vom Internet aus über die [öffentliche IP-Adresse von Azure Virtual WAN](../enable-public-internet-access.md) zugänglich. Bei neuen privaten Clouds ist der Internetzugriff standardmäßig deaktiviert. 
 
 
 
