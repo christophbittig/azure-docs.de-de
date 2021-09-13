@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1d84a09ddd758f333ccb588ac341dce607509d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86231708"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349416"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
 Als gängiges Szenario müssen größere Azure-Kunden eine Anwendung mit zwei Ebenen bereitstellen, die über das Internet verfügbar ist und gleichzeitig den Zugriff auf die Back-End-Ebene über ein lokales Rechenzentrum ermöglicht. In diesem Dokument wird schrittweise ein Szenario mit benutzerdefinierten Routen (User Defined Routes, UDR), einem VPN-Gateway und virtuellen Netzwerkgeräten zum Bereitstellen einer Umgebung mit zwei Ebenen erläutert, die folgende Anforderungen erfüllt:
@@ -144,8 +144,12 @@ AZF1 stellt ein virtuelles Azure-Gerät dar, für das folgende Regeln definiert 
 ### <a name="azf2"></a>AZF2
 AZF2 stellt ein virtuelles Azure-Gerät dar, für das folgende Regeln definiert sind:
 
-* **Route**: Der gesamte Datenverkehr an 10.0.0.0/16 (**onpremvnet**) muss über **port1** an die IP-Adresse des Azure-Gateways (z.B. 10.0.0.1) geleitet werden.
 * **Richtlinie:** Zulassen des gesamten bidirektionalen Datenverkehrs zwischen **port1** und **port2**.
+
+### <a name="azf3"></a>AZF3
+AZF3 stellt ein virtuelles Azure-Gerät dar, für das folgende Regeln definiert sind:
+
+* **Route:** Der gesamte Datenverkehr an 192.168.0.0/16 (**onpremvnet**) muss über **port1** an die IP-Adresse des Azure-Gateways (z.B. 10.0.0.1) geleitet werden.
 
 ## <a name="network-security-groups-nsgs"></a>Netzwerksicherheitsgruppen
 In diesem Szenario werden keine Netzwerksicherheitsgruppen verwendet. Sie können jedoch Netzwerksicherheitsgruppen auf jedes Subnetz anwenden, um den ein- und ausgehenden Datenverkehr zu beschränken. So können Sie beispielsweise die folgende NSG-Regel auf das externe FW-Subnetz anwenden.
@@ -167,4 +171,3 @@ Führen Sie zum Bereitstellen dieses Szenarios die oben beschriebenen Schritte a
 3. Geben Sie die Ressourcen an, die zu **AZURERG** gehören.
 4. Geben Sie den Tunnel zwischen **onpremvnet** und **azurevnet** an.
 5. Nachdem Sie alle Ressourcen angegeben haben, melden Sie sich bei **onpremvm2** an, und pingen Sie 10.0.3.101, um die Verbindung zwischen **onpremsn2** und **azsn3** zu testen.
-

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 08/18/2021
 ms.author: b-juche
-ms.openlocfilehash: 46db9181657e5271f5aee567365e1f616caddc3f
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 954519f766c5c9f79fa0c8f61ed45f260743a0c2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061504"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445214"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -53,6 +53,10 @@ Nein. Die IP-Zuweisung zu Azure NetApp Files-Volumes ist dynamisch. Die statisch
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Unterstützt Azure NetApp Files Doppelstapel-VNet (IPv4 und IPv6)?
 
 Nein, Azure NetApp Files unterstützt derzeit kein Doppelstapel-VNet (IPv4 und IPv6).  
+
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>Ist die Anzahl der IP-Adressen, die Azure VMWare Solutions für Gastbetriebssystem-Einbindungen verwenden, [auf 1.000 beschränkt](azure-netapp-files-resource-limits.md#resource-limits)?
+
+Nein. Azure VMWare Solutions befindet sich hinter einem ER-Gateway. Dadurch verhält es sich ähnlich wie ein lokales System. Die Anzahl der AVS-„Hosts“ und -„Gäste“ ist für Azure NetApp Files nicht sichtbar und der Grenzwert von 1.000 IP-Adressen ist nicht anwendbar.
  
 ## <a name="security-faqs"></a>Häufig gestellte Fragen zur Sicherheit
 
@@ -101,6 +105,10 @@ Eine vollständige Liste der API-Vorgänge finden Sie unter [Azure NetApp File
 Ja. Sie können [benutzerdefinierte Azure-Richtlinien](../governance/policy/tutorials/create-custom-policy-definition.md) erstellen. 
 
 Sie können allerdings keine Azure-Richtlinien (benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle erstellen. Lesen Sie den Artikel mit den [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md#considerations).
+
+### <a name="when-i-delete-an-azure-netapp-files-volume-is-the-data-deleted-safely"></a>Werden die Daten sicher gelöscht, wenn ich ein Azure NetApp Files-Volume lösche? 
+
+Das Löschen eines Azure NetApp Files-Volumes erfolgt programmgesteuert mit sofortiger Wirkung im Back-End (physische Infrastrukturebene). Der Löschvorgang umfasst das Löschen von Schlüsseln, die zum Verschlüsseln der ruhenden Daten verwendet werden. Es gibt keine Möglichkeit, ein gelöschtes Volume wiederherzustellen, nachdem der Löschvorgang erfolgreich ausgeführt wurde (über Schnittstellen wie das Azure-Portal und die API).
 
 ## <a name="performance-faqs"></a>Häufig gestellte Fragen zur Leistung
 
@@ -227,6 +235,10 @@ Verwenden Sie den Link **JSON-Ansicht** im Bereich mit der Volumeübersicht, und
 Nein. Azure NetApp Files-SMB-Freigaben können jedoch als Ordnerziel für den DFS-Namespace (DFS-N) dienen.   
 Um eine Azure NetApp Files-SMB-Freigabe als DFS-N-Ordnerziel zu verwenden, geben Sie den UNC-Einbindungspfad (Universal Naming Convention) der Azure NetApp Files-SMB-Freigabe entsprechend den Schritten zum [Hinzufügen von Ordnerzielen](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target) an.  
 
+### <a name="can-the-smb-share-permissions-be-changed"></a>Können die SMB-Freigabeberechtigungen geändert werden?   
+
+Nein, die Freigabeberechtigungen können nicht geändert werden. Die NTFS-Berechtigungen des `root`-Volumes können jedoch mithilfe des [NTFS-Datei- und -Ordnerberechtigungsverfahrens](azure-netapp-files-create-volumes-smb.md#ntfs-file-and-folder-permissions) geändert werden. 
+
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Wie überwache ich die Nutzung für den Kapazitätspool und das Volume von Azure NetApp Files? 
@@ -333,11 +345,17 @@ Sie können NFS-Volumes von Azure NetApp Files auf Windows-VMs oder Linux-VMs vo
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Welche Regionen werden für die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit Azure VMware Solution (AVS) unterstützt?
 
-Die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit AVS wird in den folgenden Regionen unterstützt: „USA, Osten“, „USA, Westen“, „Europa, Westen“ und „Australien, Osten“.
+Die Nutzung von Azure NetApp Files-NFS- oder -SMB-Volumes mit AVS für *Gastbetriebssystem-Einbindungen* wird in [allen AVS- and ANF-fähigen Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware,netapp) unterstützt.
 
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Kann Azure NetApp Files mit Azure Policy verwendet werden?
 
 Ja. Azure NetApp Files ist ein Erstanbieterdienst. Er entspricht vollständig den Standards für Azure-Ressourcenanbieter. Somit kann Azure NetApp Files über *benutzerdefinierte Richtliniendefinitionen* in Azure Policy integriert werden. Informationen zum Implementieren von benutzerdefinierten Richtlinien für Azure NetApp Files finden Sie in der Microsoft Tech Community unter [Azure Policy now available for Azure NetApp Files](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258) (Azure Policy jetzt für Azure NetApp Files verfügbar). 
+
+### <a name="which-unicode-character-encoding-is-supported-by-azure-netapp-files-for-the-creation-and-display-of-file-and-directory-names"></a>Welche Unicode-Zeichencodierung wird von Azure NetApp Files für das Erstellen und Anzeigen von Datei- und Verzeichnisnamen unterstützt?   
+
+Azure NetApp Files unterstützt nur Datei- und Verzeichnisnamen, die mit der UTF-8-Zeichencodierung für NFS- und SMB-Volumes codiert sind.
+
+Wenn Sie versuchen, Dateien oder Verzeichnisse mit Namen zu erstellen, die ergänzende Zeichen oder Ersatzzeichenpaare verwenden (z. B. nicht reguläre Zeichen oder Emojis, die von UTF-8 nicht unterstützt werden), dann schlägt der Vorgang fehl. Eine Fehlermeldung des Windows-Client lautet in diesem Fall z. B.: „Der angegebene Dateiname ist ungültig oder zu lang. Geben Sie einen anderen Dateinamen an.” 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

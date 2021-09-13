@@ -5,20 +5,28 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 08/15/2021
 ms.author: memildin
-ms.openlocfilehash: 96cd715a16c06dd6e35d042a6938de083ec262a9
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ffa0970fe86ea832cb2c1df019bf5b0c65c70bba
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556782"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356422"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
 
 Security Center verwendet den Log Analytics-Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](./security-center-enable-data-collection.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Log Analytics-Agent vor.
+
+> [!TIP]
+> Ein dedizierter Bereich der Security Center-Seiten im Azure-Portal bietet einen sortierten, ständig wachsenden Satz von Selbsthilfematerialien zur Lösung gängiger Herausforderungen mit Security Center Azure Defender.
+> 
+> Wenn Sie ein Problem haben oder von unserem Supportteam Hilfe anfordern möchten, können Sie unter **Diagnose und Problemlösung** nach einer Lösung suchen:
+> 
+> :::image type="content" source="media/release-notes/solve-problems.png" alt-text="Security Center-Seite „Diagnose und Problembehandlung“":::
+
 
 ## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -59,11 +67,11 @@ Security Center verwendet den Log Analytics-Agent, um sicherheitsrelevante Daten
 
 Wenn Sie die Dienstverwaltungskonsole („services.msc“) öffnen, sehen Sie auch den Log Analytics-Agent als ausgeführten Dienst, wie unten dargestellt:
 
-![Dienste](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
+![bereitstellt.](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
 Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie den **Task-Manager**, und suchen Sie auf der Registerkarte **Prozesse** den **Log Analytics-Agent-Dienst**. Klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Eigenschaften**. Auf der Registerkarte **Details** wird die Dateiversion wie unten dargestellt angezeigt:
 
-![Datei](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![Datei.](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Szenarien für die Installation des Log Analytics-Agents
 
@@ -86,11 +94,11 @@ Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security
 | Energiezustand „Aus“ | Die VM wurde beendet.  Der Log Analytics-Agent kann nur auf einer VM installiert werden, die ausgeführt wird. | Starten Sie den virtuellen Computer neu. |
 | Azure-VM-Agent fehlt oder ist ungültig | Der Log Analytics-Agent ist noch nicht installiert.  Damit die Erweiterung von Security Center installiert werden kann, ist ein gültiger Azure-VM-Agent erforderlich. | Führen Sie für den Azure-VM-Agent auf der VM die Installation, Neuinstallation oder ein Upgrade durch. |
 | VM ist nicht zur Installation bereit  | Der Log Analytics-Agent ist noch nicht installiert, weil die VM nicht für die Installation bereit ist. Die VM ist aufgrund eines Problems mit dem VM-Agent oder der VM-Bereitstellung noch nicht für die Installation bereit. | Überprüfen Sie den Status der VM. Kehren Sie im Portal zu **Virtuelle Computer** zurück, und wählen Sie die VM aus, um Statusinformationen zu erhalten. |
-|Fehler bei der Installation – allgemeiner Fehler | Der Log Analytics-Agent wurde installiert, aber es ist ein Fehler aufgetreten. | [Führen Sie die Installation der Erweiterung manuell durch](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension), oder deinstallieren Sie die Erweiterung, damit Security Center versucht, die Installation erneut zu starten. |
-| Fehler bei der Installation – lokaler Agent ist bereits installiert | Fehler beim Installieren des Log Analytics-Agents. Von Security Center wurde ein lokaler Agent (Log Analytics oder System Center Operations Manager) identifiziert, der auf dem virtuellen Computer bereits installiert ist. Zur Vermeidung einer Multi-Homing-Konfiguration, bei der die VM an zwei separate Arbeitsbereiche berichtet, wurde die Installation des Log Analytics-Agents beendet. | Es gibt hierfür zwei Lösungsmöglichkeiten: [manuelle Installation der Erweiterung](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) und Herstellung einer Verbindung mit Ihrem gewünschten Arbeitsbereich. Oder Sie legen Ihren gewünschten Arbeitsbereich als Standardarbeitsbereich fest und aktivieren die automatische Bereitstellung des Agents.  Siehe [Aktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md). |
+|Fehler bei der Installation – allgemeiner Fehler | Der Log Analytics-Agent wurde installiert, aber es ist ein Fehler aufgetreten. | [Führen Sie die Installation der Erweiterung manuell durch](../azure-monitor/vm/monitor-virtual-machine.md#agents), oder deinstallieren Sie die Erweiterung, damit Security Center versucht, die Installation erneut zu starten. |
+| Fehler bei der Installation – lokaler Agent ist bereits installiert | Fehler beim Installieren des Log Analytics-Agents. Von Security Center wurde ein lokaler Agent (Log Analytics oder System Center Operations Manager) identifiziert, der auf dem virtuellen Computer bereits installiert ist. Zur Vermeidung einer Multi-Homing-Konfiguration, bei der die VM an zwei separate Arbeitsbereiche berichtet, wurde die Installation des Log Analytics-Agents beendet. | Es gibt hierfür zwei Lösungsmöglichkeiten: [manuelle Installation der Erweiterung](../azure-monitor/vm/monitor-virtual-machine.md#agents) und Herstellung einer Verbindung mit Ihrem gewünschten Arbeitsbereich. Oder Sie legen Ihren gewünschten Arbeitsbereich als Standardarbeitsbereich fest und aktivieren die automatische Bereitstellung des Agents.  Siehe [Aktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md). |
 | Agent kann keine Verbindung mit dem Arbeitsbereich herstellen | Der Log Analytics-Agent wurde installiert, aber es ist ein Fehler im Zusammenhang mit der Netzwerkkonnektivität aufgetreten.  Stellen Sie sicher, dass Internetzugriff besteht oder dass für den Agent ein gültiger HTTP-Proxy konfiguriert wurde. | Siehe die Netzwerkanforderungen für den Überwachungs-Agent. |
 | Verbindung des Agents mit fehlendem oder unbekanntem Arbeitsbereich | Security Center hat erkannt, dass der auf der VM installierte Log Analytics-Agent mit einem Arbeitsbereich verbunden ist, für den er keine Zugriffsberechtigung besitzt. | Dies kann in zwei Fällen vorkommen. Der Arbeitsbereich wurde gelöscht und ist nicht mehr vorhanden. Installieren Sie den Agent mit dem richtigen Arbeitsbereich neu, oder deinstallieren Sie den Agent, und lassen Sie für Security Center die Durchführung der automatischen Installation für die Bereitstellung zu. Im zweiten Fall ist der Arbeitsbereich Teil eines Abonnements, für das Security Center keine Berechtigungen besitzt. Für Security Center sind Abonnements erforderlich, um für die Microsoft-Sicherheitsressourcenanbieter den Zugriff zu ermöglichen. Registrieren Sie das Abonnement beim Microsoft-Sicherheitsressourcenanbieter, um dies zu aktivieren. Verwenden Sie hierfür die API, PowerShell oder das Portal, oder filtern Sie im Dashboard **Übersicht** von Security Center einfach nach dem Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Agent reagiert nicht oder ID fehlt | Security Center kann die von der VM gescannten Sicherheitsdaten nicht abrufen, obwohl der Agent installiert ist. | Der Agent meldet keine Daten, einschließlich Heartbeat. Unter Umständen ist der Agent beschädigt, oder der Datenverkehr ist aus einem bestimmten Grund blockiert. Es kann auch sein, dass der Agent zwar Daten meldet, aber eine Azure-Ressourcen-ID fehlt, sodass die Daten nicht der Azure-VM zugeordnet werden können. Informationen zur Problembehandlung für Linux finden Sie unter [Troubleshooting Guide for Log Analytics Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal) (Leitfaden zur Problembehandlung für den Log Analytics-Agent für Linux). Informationen zur Problembehandlung für Windows finden Sie unter [Troubleshooting Windows Virtual Machines](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support) (Problembehandlung für virtuelle Windows-Computer). |
+| Agent reagiert nicht oder ID fehlt | Security Center kann die von der VM gescannten Sicherheitsdaten nicht abrufen, obwohl der Agent installiert ist. | Der Agent meldet keine Daten, einschließlich Heartbeat. Unter Umständen ist der Agent beschädigt, oder der Datenverkehr ist aus einem bestimmten Grund blockiert. Es kann auch sein, dass der Agent zwar Daten meldet, aber eine Azure-Ressourcen-ID fehlt, sodass die Daten nicht der Azure-VM zugeordnet werden können. Informationen zur Problembehandlung für Linux finden Sie unter [Troubleshooting Guide for Log Analytics Agent for Linux](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal) (Leitfaden zur Problembehandlung für den Log Analytics-Agent für Linux). Informationen zur Problembehandlung für Windows finden Sie unter [Troubleshooting Windows Virtual Machines](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support) (Problembehandlung für virtuelle Windows-Computer). |
 | Agent nicht installiert | Die Datensammlung ist deaktiviert. | Aktivieren Sie die Datensammlung in der Sicherheitsrichtlinie, oder installieren Sie den Log Analytics-Agent manuell. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent <a name="mon-network-req"></a>
@@ -133,7 +141,7 @@ Wenn beim Laden des Security Center-Dashboards Probleme auftreten, stellen Sie s
 
 Einige Probleme können mit den Richtlinien in diesem Artikel identifiziert werden, während andere auf der öffentlichen [Microsoft Q&A-Seite](/answers/topics/azure-security-center.html) von Security Center dokumentiert sind. Falls Sie weitere Hilfe zur Problembehandlung benötigen, können Sie wie unten gezeigt über das **Azure-Portal** eine neue Supportanfrage erstellen:
 
-![Microsoft-Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Microsoft-Support.](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>Weitere Informationen
 

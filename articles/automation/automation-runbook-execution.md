@@ -3,15 +3,15 @@ title: Ausführen von Runbooks in Azure Automation
 description: Dieser Artikel enthält eine Übersicht über die Verarbeitung von Runbooks in Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2021
+ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5fcef44fed77b01e069129a160299f547340c346
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 454c59b5f5f5d0781f99f21b612ac2a3fc904fb9
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964556"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350232"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -21,7 +21,7 @@ Automation führt Ihre Runbooks auf der Grundlage der in ihnen definierten Logik
 
 Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt, bei dem es sich um eine einzelne Ausführungsinstanz des Runbooks handelt. Jeder Auftrag erhält Zugriff auf Azure-Ressourcen, indem er eine Verbindung mit Ihrem Azure-Abonnement herstellt. Der Auftrag hat nur Zugriff auf Ressourcen in Ihrem Rechenzentrum, wenn aus der öffentlichen Cloud auf diese Ressourcen zugegriffen werden kann.
 
-Azure Automation weist einen Worker zu, um jeden Auftrag während der Runbookausführung auszuführen. Wenngleich Worker von vielen Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Workerdienst Ihre Auftragsanforderung verarbeitet.
+Azure Automation weist einen Worker zu, um jeden Auftrag während der Runbookausführung auszuführen. Wenngleich Worker von vielen Automation-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Workerdienst Ihre Auftragsanforderung verarbeitet.
 
 Wenn Sie die Liste der Runbooks im Azure-Portal einsehen, wird der Status jedes Auftrags angezeigt, der für jedes Runbook gestartet wurde. Azure Automation speichert Auftragsprotokolle maximal 30 Tage.
 
@@ -35,10 +35,11 @@ Im folgenden Diagramm wird der Lebenszyklus eines Runbookauftrags für [PowerShe
 
 Runbooks in Azure Automation können entweder in einer Azure-Sandbox oder einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ausgeführt werden. 
 
-Wenn Runbooks für das Authentifizieren und Ausführen von Ressourcen in Azure entworfen sind, werden sie in einer Azure-Sandbox ausgeführt, einer freigegebenen Umgebung, die von mehreren Aufträgen verwendet werden kann. Aufträge, die die gleiche Sandbox verwenden, werden durch die Ressourceneinschränkungen der Sandbox gebunden. Interaktive Vorgänge werden von der Azure-Sandboxumgebung nicht unterstützt. Dadurch wird der Zugriff auf alle prozessexternen COM-Server verhindert. Ebenso wird die Ausführung von [WMI-Aufrufen](/windows/win32/wmisdk/wmi-architecture) an den Win32-Anbieter in Ihrem Runbook nicht unterstützt.  Diese Szenarios werden nur unterstützt, wenn das Runbook auf einer Instanz von Windows Hybrid Runbook Worker ausgeführt wird.
-
+Wenn Runbooks für das Authentifizieren und Ausführen von Ressourcen in Azure entworfen sind, werden sie in einer Azure-Sandbox ausgeführt. Azure Automation weist einen Worker zu, um jeden Auftrag während der Runbookausführung in der Sandbox auszuführen. Wenngleich Worker von vielen Automation-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert.  Aufträge, die die gleiche Sandbox verwenden, werden durch die Ressourceneinschränkungen der Sandbox gebunden. Interaktive Vorgänge werden von der Azure-Sandboxumgebung nicht unterstützt. Dadurch wird der Zugriff auf alle prozessexternen COM-Server verhindert. Ebenso wird die Ausführung von [WMI-Aufrufen](/windows/win32/wmisdk/wmi-architecture) an den Win32-Anbieter in Ihrem Runbook nicht unterstützt.  Diese Szenarios werden nur unterstützt, wenn das Runbook auf einer Instanz von Windows Hybrid Runbook Worker ausgeführt wird.
 
 Sie können auch einen [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) verwenden, um Runbooks direkt auf dem Computer, der die Rolle hostet, und mit lokalen Ressourcen in der Umgebung auszuführen. Azure Automation speichert und verwaltet Runbooks und übermittelt sie dann an einen oder mehrere zugewiesene Computer.
+
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht zur Liste der vertrauenswürdigen Dienste gehört. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNT-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 >[!NOTE]
 >Für die Ausführung auf einem Linux Hybrid Runbook Worker müssen Ihre Skripts signiert sein, und der Worker muss richtig konfiguriert sein. Alternativ können Sie auch die [Signaturüberprüfung deaktivieren](automation-linux-hrw-install.md#turn-off-signature-validation).

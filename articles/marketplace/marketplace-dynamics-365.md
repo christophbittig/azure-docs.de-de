@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: c0af6f3045a686f9ef73b7761b41e869d3ce9d6f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766383"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350263"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Planen eines Microsoft Dynamics 365-Angebots
 
 In diesem Artikel werden die verschiedenen Optionen und Features für Dynamics 365-Angebote in Microsoft AppSource im kommerziellen Marketplace erläutert. AppSource enthält Angebote, die auf Microsoft 365, Dynamics 365, Power Apps und Power BI aufbauen oder diese erweitern.
 
-Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace in [Partner Center](./partner-center-portal/create-account.md), und stellen Sie sicher, dass es für das kommerzielle Marketplace-Programm registriert ist. Lesen Sie außerdem die Informationen zum [Veröffentlichungsprozess und die Richtlinien](/office/dev/store/submit-to-appsource-via-partner-center).
+Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace in [Partner Center](./create-account.md), und stellen Sie sicher, dass es für das kommerzielle Marketplace-Programm registriert ist. Lesen Sie außerdem die Informationen zum [Veröffentlichungsprozess und die Richtlinien](/office/dev/store/submit-to-appsource-via-partner-center).
 
 ## <a name="licensing-options"></a>Lizenzierungsoptionen
 
@@ -31,7 +31,7 @@ Für Dynamics 365-Angebote sind die folgenden Lizenzierungsoptionen verfügbar:
 | Kontakt mit mir aufnehmen | Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren Ihres CRM finden Sie im Abschnitt **Kundenleads** auf der Seite **Angebotseinrichtung** Ihres Angebotstyps. |
 | Kostenlose Testversion (Listing) | Bieten Sie Ihren Kunden eine kostenlose ein-, drei- oder sechsmonatige Testversion an. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf. |
 | Jetzt abrufen (kostenlos) | Listen Sie Ihr Angebot für Kunden als kostenlos auf. |
-| Jetzt anfordern | Sie können Ihre Drittanbieterlizenzen in Partner Center verwalten.<br>Derzeit nur für den folgenden Angebotstyp verfügbar:<ul><li>Dynamics 365 for Customer Engagement und Power Apps</li></ul><br>Weitere Informationen zu dieser Option finden Sie unter [Verwaltung von Drittanbieter-App-Lizenzen über Microsoft](third-party-license.md). |
+| Jetzt anfordern | Sie können Ihre ISV app0-Lizenzen in Partner Center verwalten.<br>Derzeit nur für den folgenden Angebotstyp verfügbar:<ul><li>Dynamics 365 for Customer Engagement und Power Apps</li></ul><br>Weitere Informationen zu dieser Option finden Sie unter [Verwaltung von ISV-App-Lizenzen](isv-app-license.md). |
 |||
 
 ## <a name="test-drive"></a>Testversion
@@ -77,7 +77,7 @@ Um das Angebot einfacher zu gestalten, können Sie diese Elemente vorab vorberei
 
 ## <a name="additional-sales-opportunities"></a>Zusätzliche Verkaufschancen
 
-Sie haben die Möglichkeit, sich für von Microsoft unterstützte Marketing- und Vertriebskanäle zu entscheiden. Wenn Sie Ihr Angebot in Partner Center erstellen, wird gegen Ende des Prozesses eine Registerkarte **Co-Selling mit Microsoft** angezeigt. Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Evaluierung vorbereiten können, finden Sie unter [Co-Selling-Features im Partner Center](commercial-marketplace-co-sell.md).
+Sie haben die Möglichkeit, sich für von Microsoft unterstützte Marketing- und Vertriebskanäle zu entscheiden. Wenn Sie Ihr Angebot in Partner Center erstellen, wird gegen Ende des Prozesses eine Registerkarte **Co-Selling mit Microsoft** angezeigt. Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Evaluierung vorbereiten können, finden Sie unter [Co-Selling-Features im Partner Center](./co-sell-configure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -85,8 +85,7 @@ Nachdem Sie die oben beschriebenen Planungselemente berücksichtigt haben, wähl
 
 | Leitfaden zur Veröffentlichung    | Notizen  |
 | :------------------- | :-------------------|
-| [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) | Lesen Sie bei der Erstellung für die Enterprise Edition zunächst diese zusätzlichen Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source). |
-| [Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md) |   |
-| [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) | Sehen Sie sich zunächst diese zusätzlichen [Veröffentlichungsprozesse und Richtlinien](/dynamics365/customer-engagement/developer/publish-app-appsource) an. |
-| [Power BI](/azure/marketplace/partner-center-portal/create-power-bi-app-offer) | Sehen Sie sich zunächst diese zusätzlichen [Veröffentlichungsprozesse und Richtlinien](/power-bi/developer/office-store) an. |
-|||
+| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | Lesen Sie bei der Erstellung für die Enterprise Edition zunächst diese zusätzlichen Informationen zum [Veröffentlichungsprozess und den Richtlinien](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source). Zu den Produkttypen gehören Commerce, Finance, Human Resources, Project Operations und Supply Chain Management. |
+| [Dynamics 365 Business Central](dynamics-365-business-central-offer-setup.md) | – |
+| [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) | Sehen Sie sich zunächst diese zusätzlichen [Veröffentlichungsprozesse und Richtlinien](/dynamics365/customer-engagement/developer/publish-app-appsource) an. Zu den Produkttypen gehören: Customer Service, Customer Voice, Project Operations, Field Service, Marketing, Mixed Reality, Power Apps, Power Automate, Power Virtual Agents, Project Service Automation oder Sales. |
+|

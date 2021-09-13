@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/06/2021
+ms.date: 7/19/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dce2e30f5177a26229f6c20d9500bbf5c824c3e
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104279"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446385"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -51,24 +51,25 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 
 | Name                       |  BESCHREIBUNG   | Tokentyp | Benutzertyp | Notizen  |
 |----------------------------|----------------|------------|-----------|--------|
+| `acct`                | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
-| `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
+| `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Felds ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
+| `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in v2.0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|
+| `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
+| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
+| `idtyp`                    | Tokentyp   | JWT-Zugriffstoken | Besonderheit: Nur in Nur-App-Zugriffstoken |  Der Wert lautet `app`, wenn es sich beim Token um ein Nur-App-Token handelt. Dies ist der genaueste Weg für eine API, zu bestimmen, ob ein Token ein App-Token oder ein App- und Benutzertoken ist.|
+| `login_hint`               | Anmeldehinweis   | JWT | MSA, Azure AD | Ein nicht transparenter, zuverlässiger Anmeldehinweis-Anspruch.  Dieser Anspruch eignet sich am besten für die Nutzung als OAuth-Parameter `login_hint` in allen Flows, um das einmalige Anmelden (SSO) zu ermöglichen.  Er kann auch zwischen Anwendungen übergeben werden, um das SSO im Hintergrund zu unterstützen. Anwendung A kann z. B. einen Benutzer anmelden, den `login_hint`-Anspruch lesen und ihn dann zusammen mit dem aktuellen Mandantenkontext als Abfragezeichenfolge oder als Fragment an Anwendung B senden, wenn der Benutzer auf einen Link klickt, der ihn zu Anwendung B führt. Um Racebedingungen und Zuverlässigkeitsprobleme zu vermeiden, enthält der `login_hint`-Anspruch *nicht* den aktuellen Mandanten des Benutzers, sondern verwendet standardmäßig den Startmandanten des Benutzers.  Wenn Sie in einem Gastszenario arbeiten, in dem der Benutzer von einem anderen Mandanten stammt, müssen Sie in der Anmeldeanforderung trotzdem einen Mandantenbezeichner angeben und diesen an die Apps übergeben, mit denen Sie arbeiten. Dieser Anspruch ist für die Verwendung mit der `login_hint`-Funktionalität Ihres SDK vorgesehen, wurde jedoch verfügbar gemacht. |
 | `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird | JWT        |  Persönliche Konten und Azure AD-Konten   |         |
+| `tenant_ctry`              | Land/Region des Ressourcenmandanten | JWT | | Identisch mit `ctry`, wird jedoch auf Mandantenebene durch einen Administrator festgelegt.  Muss außerdem ein standardmäßiger Wert mit zwei Buchstaben sein. |
+| `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
+| `upn`                      | UserPrincipalName | JWT, SAML  |           | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen die folgenden ID-Tokenansprüche, um den Anmeldezustand für Benutzer anzuzeigen: `preferred_username` oder `unique_name` für v1-Token, `preferred_username` für v2-Token. Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. Sie sollten den `login_hint`-Anspruch für `login_hint` nutzen, denn lesbare Bezeichner wie UPN sind nicht zuverlässig.|
 | `verified_primary_email`   | Wird aus der „PrimaryAuthoritativeEmail“ des Benutzers abgerufen      | JWT        |           |         |
 | `verified_secondary_email` | Wird aus der „SecondaryAuthoritativeEmail“ des Benutzers abgerufen   | JWT        |           |        |
 | `vnet`                     | Informationen zum VNET-Spezifizierer | JWT        |           |      |
-| `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
-| `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Felds ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
-| `tenant_ctry`              | Land des Ressourcenmandanten | JWT | | Identisch mit `ctry`, wird jedoch auf Mandantenebene durch einen Administrator festgelegt.  Muss außerdem ein standardmäßiger Wert mit zwei Buchstaben sein. |
 | `xms_pdl`             | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist der bevorzugte Datenspeicherort ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Sie wird im Format Sprachkürzel-Länderkürzel angegeben (z. B. en-us). |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Sie wird in Form des Sprachkürzels angegeben (z. B.: en). |
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
-| `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in v2.0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|
-| `acct`                | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
-| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
-| `upn`                      | UserPrincipalName | JWT, SAML  |           | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen die folgenden ID-Tokenansprüche, um den Anmeldezustand für Benutzer anzuzeigen: `preferred_username` oder `unique_name` für v1-Token, `preferred_username` für v2-Token. Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen.  |
-| `idtyp`                    | Tokentyp   | JWT-Zugriffstoken | Besonderheit: Nur in Nur-App-Zugriffstoken |  Der Wert lautet `app`, wenn es sich beim Token um ein Nur-App-Token handelt. Dies ist der genaueste Weg für eine API, zu bestimmen, ob ein Token ein App-Token oder ein App- und Benutzertoken ist.|
 
 ## <a name="v20-specific-optional-claims-set"></a>v2.0-spezifischer optionaler Anspruchssatz
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie Ereignisse innerhalb von Azure Digital Twins und an andere Azure-Dienste weiterleiten.
 author: baanders
 ms.author: baanders
-ms.date: 10/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460325"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351172"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Weiterleiten von Ereignissen innerhalb und außerhalb von Azure Digital Twins
 
@@ -46,7 +46,7 @@ Alternativ enthält die Ereignisnachricht auch die ID des Quellzwillings, der di
 
 Darüber hinaus muss die Computeressource Sicherheits -und Zugriffsberechtigungen unabhängig einrichten.
 
-Eine Anleitung für das Einrichten einer Azure-Funktion zum Verarbeiten von Ereignissen für digitale Zwillinge finden Sie unter [ Einrichten einer Azure-Funktion zum Verarbeiten von Daten](how-to-create-azure-function.md).
+Eine Anleitung für das Einrichten einer Azure-Funktion zum Verarbeiten von Ereignissen für digitale Zwillinge finden Sie unter [Einrichten der Verarbeitung von Ereignissen zwischen Zwillingen](how-to-send-twin-to-twin-events.md).
 
 ## <a name="create-an-endpoint"></a>Erstellen eines Endpunkts
 
@@ -55,7 +55,7 @@ Entwickler müssen erst Endpunkte definieren, um eine Ereignisroute definieren z
 * Event Hub
 * Service Bus
 
-Sie können die [REST-APIs von Azure Digital Twins, CLI-Befehle](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins) oder das [Azure-Portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) verwenden, um einen Endpunkt zu erstellen.
+Sie können die REST-APIs von Azure Digital Twins, CLI-Befehle oder das Azure-Portal verwenden, um einen [Endpunkt zu erstellen](how-to-manage-routes.md#create-an-endpoint-for-azure-digital-twins).
 
 Beim Definieren eines Endpunkts müssen Sie Folgendes angeben:
 * Name des Endpunkts
@@ -71,7 +71,7 @@ In der Steuerungsebene sind Endpunkt-APIs für Folgendes verfügbar:
 
 ## <a name="create-an-event-route"></a>Erstellen einer Ereignisroute
  
-Sie können zum Erstellen einer Ereignisroute die [REST-APIs von Azure Digital Twins, CLI-Befehle](how-to-manage-routes-apis-cli.md#create-an-event-route) oder das [Azure-Portal](how-to-manage-routes-portal.md#create-an-event-route) verwenden.
+Sie können zum [Erstellen einer Ereignisroute](how-to-manage-routes.md#create-an-event-route) die REST-APIs von Azure Digital Twins, CLI-Befehle oder das Azure-Portal verwenden.
 
 Im Folgenden finden Sie ein Beispiel für das Erstellen einer Ereignisroute in einer Clientanwendung mithilfe des [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-Aufrufs `CreateOrReplaceEventRouteAsync`: 
 
@@ -79,7 +79,7 @@ Im Folgenden finden Sie ein Beispiel für das Erstellen einer Ereignisroute in e
 
 1. Zunächst wird ein `DigitalTwinsEventRoute`-Objekt erstellt, und der-Konstruktor nimmt den Namen eines Endpunkts an. Dieses Feld `endpointName` identifiziert einen Endpunkt, z. B. einen Event Hub, ein Event Grid oder einen Service Bus. Diese Endpunkte müssen vor diesem Registrierungsaufruf in Ihrem Abonnement erstellt und mithilfe von Steuerungsebenen-APIs an Azure Digital Twins angehängt werden.
 
-2. Das Ereignisroutenobjekt verwendet auch ein Feld [Filter](how-to-manage-routes-apis-cli.md#filter-events), das zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann. Ein Filter `true` aktiviert die Route ohne zusätzliche Filterung (ein Filter mit dem Wert `false` deaktiviert die Route). 
+2. Das Ereignisroutenobjekt verwendet auch ein Feld [Filter](how-to-manage-routes.md#filter-events), das zum Einschränken der Arten von Ereignissen für diese Route verwendet werden kann. Ein Filter `true` aktiviert die Route ohne zusätzliche Filterung (ein Filter mit dem Wert `false` deaktiviert die Route). 
 
 3. Dieses Ereignisroutenobjekt wird dann zusammen mit einem Namen für die Route an `CreateOrReplaceEventRouteAsync` übergeben.
 
@@ -99,7 +99,7 @@ Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, ben�
 
 Weitere Informationen zu SAS-Token finden Sie hier: [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md)
 
-Informationen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie unter [Vorgehensweise: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) .
+Informationen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie unter [Verwalten von Endpunkten und Routen in Azure Digital Twins](how-to-manage-routes.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Arten von Ereignisnachrichten
 
@@ -110,7 +110,7 @@ Verschiedene Arten von Ereignissen in IoT Hub und Azure Digital Twins führen zu
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Einrichten und Verwalten einer Ereignisroute finden Sie unter:
-* [Gewusst wie: Verwalten von Endpunkten und Routen](how-to-manage-routes-apis-cli.md)
+* [Verwalten von Endpunkten und Routen](how-to-manage-routes.md)
 
 Weitere Informationen zur Verwendung von Azure Functions zum Weiterleiten von Ereignissen innerhalb von Azure Digital Twins finden Sie unter:
-* [Gewusst wie: Herstellen einer Verbindung mit Azure Functions-Apps zum Verarbeiten von Daten](how-to-create-azure-function.md)
+* [Einrichten der Verarbeitung von Ereignissen zwischen Zwillingen](how-to-send-twin-to-twin-events.md)

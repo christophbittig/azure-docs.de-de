@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e26522130d98d5e2f706a6c48002ad75b537d32a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a9b12750ec16ee5fe79c91e4ed931426f8dbaa36
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964769"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445085"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimieren des Datenverkehrsflusses mit Azure Active Directory-Anwendungsproxy
 
@@ -27,7 +27,7 @@ In diesem Artikel geht um das Optimieren des Datenverkehrsflusses und Aspekte de
 Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fließt der gesamte Datenverkehr von den Benutzern zu den Anwendungen über drei Verbindungen:
 
 1. Vom Benutzer zum öffentlichen Endpunkt des Azure AD-Anwendungsproxydiensts in Azure
-1. Vom Anwendungsproxydienst zum Anwendungsproxyconnector
+1. Vom Anwendungsproxy-Connector zum Anwendungsproxydienst (ausgehend)
 1. Vom Anwendungsproxyconnector zur Zielanwendung
 
 :::image type="content" source="./media/application-proxy-network-topology/application-proxy-three-hops.png" alt-text="Diagramm mit dem Datenverkehrsfluss vom Benutzer zur Zielanwendung." lightbox="./media/application-proxy-network-topology/application-proxy-three-hops.png":::

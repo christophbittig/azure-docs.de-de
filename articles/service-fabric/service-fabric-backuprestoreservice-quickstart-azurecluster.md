@@ -3,12 +3,12 @@ title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: dbbeac5e5efad4e19561ba5f812e29d029de8317
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6a9eef80b78f95a4941b3795f86b44511ee8a50b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059768"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444959"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Regelmäßiges Sichern und Wiederherstellen in einem Azure Service Fabric-Cluster
 > [!div class="op_single_selector"]
@@ -119,7 +119,12 @@ Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihre
     }
     ```
 
-4. Nachdem Sie die Clustervorlage mit den vorhergehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer.
+    > [!NOTE]
+    > \[Fingerabdruck\] muss durch einen gültigen Zertifikatfingerabdruck ersetzt werden, der für die Verschlüsselung verwendet werden soll.
+    >
+    
+4. Nachdem Sie die Clustervorlage mit den vorhergehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors
 Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors. Diese Schritte setzen Folgendes voraus:

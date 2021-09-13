@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78468c9528c4502ce691dec183c261b9636325f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 34a6a353593d733cf50325049cd88034fb16c9ca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094328"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353684"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory
 
@@ -42,7 +42,9 @@ Sie können eine Verwaltungseinheit entweder über das Azure-Portal oder mithilf
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Wechseln Sie im Azure-Portal zu Azure AD. Anschließend können Sie im linken Bereich **Verwaltungseinheiten** auswählen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Verwaltungseinheiten** aus.
 
     ![Screenshot: Link „Verwaltungseinheiten“ in Azure AD](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -84,11 +86,15 @@ In Azure AD können Sie eine Verwaltungseinheit entfernen, die nicht mehr als B
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Navigieren Sie im Azure-Portal zu **Azure AD**, und wählen Sie **Verwaltungseinheiten** aus. 
-1. Wählen Sie die zu löschende Verwaltungseinheit und dann **Löschen** aus. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
+
+1. Wählen Sie **Azure Active Directory** > **Verwaltungseinheiten** aus.
+ 
+1. Wählen Sie die zu löschende Verwaltungseinheit und dann **Löschen** aus.
+
 1. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie die Verwaltungseinheit löschen möchten. Die Verwaltungseinheit wird gelöscht.
 
-![Screenshot: Schaltfläche „Löschen“ und Bestätigungsfenster für eine Verwaltungseinheit](./media/admin-units-manage/select-admin-unit-to-delete.png)
+    ![Screenshot: Schaltfläche „Löschen“ und Bestätigungsfenster für eine Verwaltungseinheit](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="powershell"></a>PowerShell
 

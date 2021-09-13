@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 545125877f8ef8e3b01aa24f6d65dbff6756c391
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601541"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445114"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Dateikomprimierung reduziert die Größe einer Datei, bevor sie vom Server gesendet wird, und ist eine einfache und effektive Methode zum Verbessern der Geschwindigkeit von Dateiübertragungen sowie der Seitenladeleistung. Die Dateikomprimierung reduziert die Bandbreitenkosten und steigert die Benutzerfreundlichkeit.
@@ -121,11 +121,8 @@ Diese Profile unterstützen die folgenden Komprimierungscodierungen:
 - GZIP (GNU Zip)
 - VERKLEINERN
 - BZIP2
-- Brotli 
 
-Falls die Anforderung mehrere Komprimierungstypen unterstützt, haben diese Komprimierungstypen Vorrang vor der Brotli-Komprimierung.
-
-Wenn in einer Anforderung für eine Ressource die Brotli-Komprimierung angegeben ist (HTTP-Header `Accept-Encoding: br`) und die Anforderung zu einem Cachefehler führt, wird die Brotli-Komprimierung der Ressource durch Azure CDN direkt auf dem POP-Server durchgeführt. Anschließend wird die komprimierte Datei aus dem Cache bereitgestellt.
+Die Brotli-Komprimierung wird durch Azure CDN von Verizon nicht unterstützt. Wenn die HTTP-Anforderung über den Header `Accept-Encoding: br` verfügt, antwortet das CDN mit einer unkomprimierten Antwort.
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard von Akamai-Profile
 

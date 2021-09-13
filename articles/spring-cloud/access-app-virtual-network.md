@@ -1,18 +1,18 @@
 ---
 title: 'Azure Spring Cloud: Zugreifen auf eine App im virtuellen Netzwerk'
 description: Zugreifen auf eine App in einer Azure Spring Cloud-Instanz im virtuellen Netzwerk.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 593065b200ab0dc98e5fa97299c137aedfd1be63
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 68cac51ba9d54abc6514cf493077740339ac56c5
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129313"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350075"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Zugreifen auf eine Anwendung im privaten Netzwerk
 
@@ -26,9 +26,12 @@ Mit dem folgenden Verfahren wird eine private DNS-Zone für eine Anwendung im pr
 
 1. Öffnen Sie das Azure-Portal. Suchen Sie im oberen Suchfeld nach **Private DNS-Zonen**, und wählen Sie im Ergebnis **Private DNS-Zonen** aus.
 
-2. Wählen Sie auf der Seite **Private DNS-Zonen** die Option **+ Hinzufügen** aus.
+2. Wählen Sie auf der Seite **Private DNS-Zonen** die Option **Hinzufügen** aus.
 
 3. Füllen Sie das Formular auf der Seite **Private DNS-Zone erstellen** aus. Geben Sie **<span>private.azuremicroservices.io</span>** als **Namen** der Zone ein.
+
+    >[!NOTE]
+    > Ersetzen Sie bei Verwendung von „Azure China“ `private.azuremicroservices.io` durch `private.microservices.azure.cn` in der gesamten Dokumentation. [Weitere Informationen](/azure/china/resources-developer-guide#check-endpoints-in-azure)
 
 4. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -40,7 +43,7 @@ Die Erstellung der Zone kann einige Minuten dauern.
 
 Um die private DNS-Zone mit dem virtuellen Netzwerk zu verknüpfen, müssen Sie eine virtuelle Netzwerkverknüpfung erstellen.
 
-1. Wählen Sie die oben erstellte private DNS-Zonenressource aus: **<span>private.azuremicroservices.io</span>** . 
+1. Wählen Sie die oben erstellte private DNS-Zonenressource aus: **<span>private.azuremicroservices.io</span>** .
 
 2. Wählen Sie im linken Bereich die Option **Virtual network links** (Virtuelle Netzwerkverknüpfungen) aus.
 
@@ -81,7 +84,7 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 4. Wählen Sie die oben erstellte private DNS-Zonenressource aus: **<span>private.azuremicroservices.io</span>** .
 
-5. Klicken Sie auf **+ Datensatzgruppe**.
+5. Wählen Sie **Ressourceneintragssatz**.
 
 6. Geben Sie in **Datensatzgruppe hinzufügen** diese Informationen ein, oder wählen Sie sie aus:
 

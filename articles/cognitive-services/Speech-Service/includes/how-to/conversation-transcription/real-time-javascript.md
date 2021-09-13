@@ -1,27 +1,29 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
-ms.author: trbye
-ms.openlocfilehash: d2fae1c08132c855f570750a4528a9a37343434e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: lajanuar
+ms.openlocfilehash: cdf9b7132b6509b936d7a3c4d0d41a23933ef389
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105105322"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350164"
 ---
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
 Zuallererst müssen Sie das <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK für JavaScript </a> installieren. Verwenden Sie dazu die folgenden plattformspezifischen Anleitungen:
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webbrowser </a>
 
 ## <a name="create-voice-signatures"></a>Erstellen von Stimmsignaturen
 
-Der erste Schritt besteht im Erstellen von Stimmsignaturen für die Teilnehmer der Unterhaltung, damit sie eindeutig als Sprecher erkannt werden können. Die Audioeingabedatei `.wav` zum Erstellen von Stimmsignaturen sollte in 16-Bit, mit einer Abtastrate von 16 kHz und im Monoformat (einzelner Kanal) vorliegen. Die empfohlene Länge der einzelnen Audiostichproben liegt zwischen 30 Sekunden und zwei Minuten. Bei der Datei `.wav` muss es sich um ein Beispiel für die Stimme **einer Person** handeln, damit ein eindeutiges Sprachprofil erstellt wird.
+(Sie können diesen Schritt überspringen, wenn Sie keine vorab registrierten Benutzerprofile für die Identifikation bestimmter Teilnehmer verwenden möchten.)
+
+Wenn Sie Benutzerprofile registrieren möchten, besteht der erste Schritt im Erstellen von Stimmsignaturen für die Teilnehmer der Unterhaltung, damit sie eindeutig als Sprecher erkannt werden können. Die Audioeingabedatei `.wav` zum Erstellen von Stimmsignaturen muss in 16-Bit, mit einer Abtastrate von 16 kHz im Monoformat (einzelner Kanal) vorliegen. Die empfohlene Länge der einzelnen Audiostichproben liegt zwischen 30 Sekunden und zwei Minuten. Ein zu kurzes Audiobeispiel kann bei der Sprechererkennung zu Ungenauigkeiten führen. Bei der Datei `.wav` muss es sich um ein Beispiel für die Stimme **einer Person** handeln, damit ein eindeutiges Sprachprofil erstellt wird.
 
 Das folgende Beispiel zeigt das Erstellen einer Stimmsignatur [mithilfe der REST-API](https://aka.ms/cts/signaturegenservice) in JavaScript. Beachten Sie, dass Sie `subscriptionKey`, `region` und den Pfad der `.wav`-Beispieldatei durch echte Informationen ersetzen müssen.
 
@@ -62,6 +64,11 @@ Beim Ausführen dieses Skripts wird eine Stimmsignatur-Zeichenfolge in der Varia
 ## <a name="transcribe-conversations"></a>Transkribieren von Konversationen
 
 Der folgende Beispielcode veranschaulicht das Transkribieren von Konversationen in Echtzeit für zwei Sprecher. Dabei wird davon ausgegangen, dass Sie bereits für alle Sprecher Stimmsignatur-Zeichenfolgen erstellt haben, wie oben gezeigt. Ersetzen Sie `subscriptionKey`, `region` und den Pfad `filepath` für das zu transkribierende Audiomaterial durch echte Informationen.
+
+Wenn Sie keine vorab registrierten Benutzerprofile verwenden, dauert es einige Sekunden, bis die erstmalige Erkennung eines unbekannten Benutzers als Speaker1, Speaker2 usw. abgeschlossen ist.
+
+> [!NOTE]
+> Stellen Sie sicher, dass derselbe `subscriptionKey` in Ihrer Anwendung für die Erstellung von Signaturen verwendet wird, da es sonst zu Fehlern kommen kann. 
 
 Der Beispielcode führt die folgenden Aufgaben aus:
 

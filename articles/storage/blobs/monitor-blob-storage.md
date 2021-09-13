@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bd9e8c2e71f69045078111bd5a4ae7c0edf567aa
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527368"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349428"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Überwachen von Azure Blob Storage
 
@@ -67,7 +67,7 @@ Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinste
 
 ## <a name="creating-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 
-Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage erstellen. 
+Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure CLI, eine Azure Resource Manager-Vorlage oder Azure Policy erstellen. 
 
 Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
@@ -159,7 +159,7 @@ Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/p
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
-Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Blobdiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
+Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Blobdiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Endpunkte** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
 
@@ -223,7 +223,7 @@ Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create]
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
-Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Blobspeicherdiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Eigenschaften** Ihres Speicherkontos öffnen.
+Ersetzen Sie den Platzhalter `<storage-service-resource--id>` in diesem Codeausschnitt durch die Ressourcen-ID des Blobspeicherdiensts. Sie finden die Ressourcen-ID im Azure-Portal, indem Sie die Seite **Endpunkte** Ihres Speicherkontos öffnen.
 
 Sie können `StorageRead`, `StorageWrite` und `StorageDelete` als Wert für den Parameter **Category** angeben.
 
@@ -269,6 +269,10 @@ Hier sehen Sie ein Beispiel:
 
 Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung finden Sie unter [Diagnoseeinstellung für Azure Storage](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+Sie können eine Diagnoseeinstellung mithilfe einer Richtliniendefinition erstellen. Auf diese Weise können Sie sicherstellen, dass für jedes erstellte oder aktualisierte Konto eine Diagnoseeinstellung erstellt wird. Siehe hierzu [Integrierte Azure Policy-Definitionen für Azure Storage](../common/policy-reference.md).
+
 ---
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
@@ -302,7 +306,7 @@ Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azur
 
 Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken.
  
-Ersetzen Sie in diesen Beispielen den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesen Beispielen den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
 Ersetzen Sie die Variable `<subscription-ID>` durch die ID Ihres Abonnements. Eine Anleitung zum Abrufen von Werten für `<tenant-ID>`, `<application-ID>`, und `<AccessKey>` finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
@@ -444,7 +448,7 @@ Im folgenden Beispiel wird gezeigt, wie Metrikdaten bei Metriken mit Unterstütz
 
 Sie können die Metrikdefinition Ihres Speicherkontos oder des Blobspeicherdiensts auflisten. Verwenden Sie das Cmdlet [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition).
 
-Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts.  Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts.  Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -466,7 +470,7 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Blo
 
 Sie können die Metrikdefinition Ihres Speicherkontos oder des Blobspeicherdiensts auflisten. Verwenden Sie den Befehl [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions).
  
-Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Eigenschaften** Ihres Speicherkontos.
+Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -480,6 +484,10 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Blobspeicherdiensts le
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 ### <a name="template"></a>[Vorlage](#tab/template)
+
+N/V.
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 N/V.
 
@@ -610,3 +618,4 @@ Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weit
 - Eine Referenz zu den von Azure Blob Storage erstellten Protokollen und Metriken finden Sie in der [Überwachungsdatenreferenz zu Azure Blob Storage](monitor-blob-storage-reference.md).
 - Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md).
 - Weitere Informationen zur Migration von Metriken finden Sie unter [Migration von Azure Storage-Metriken](../common/storage-metrics-migration.md).
+- Allgemeine Szenarien und bewährte Methoden finden Sie unter [Bewährte Methoden für die Überwachung von Azure Blob Storage](blob-storage-monitoring-scenarios.md).

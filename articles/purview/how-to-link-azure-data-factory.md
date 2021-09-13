@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/31/2021
-ms.openlocfilehash: 0f92a5313622ffafe5ea5cbe2fdedc77d685b0ab
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/10/2021
+ms.openlocfilehash: 0a5ab1b8e79c3cfacb2944369b5f9234355ba4c8
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792219"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350915"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -22,8 +22,8 @@ In diesem Dokument werden die Schritte erläutert, die zum Verbinden eines Azure
 
 Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Purview Data Catalog herstellen, um Herkunftsinformationen per Push zu übertragen. Gemäß den aktuellen Grenzwerten können Sie vom Purview-Verwaltungscenter eine Verbindung mit bis zu zehn Data Factory-Konten gleichzeitig herstellen. Um die Liste der mit Ihrem Purview Data Catalog verbundenen Data Factory-Konten anzuzeigen, gehen Sie folgendermaßen vor:
 
-1. Wählen Sie im linken Navigationsbereich **Verwaltungscenter** aus.
-2. Wählen Sie unter **Externe Verbindungen** die Option **Data Factory-Verbindung** aus.
+1. Wählen Sie im linken Navigationsbereich **Verwaltung** aus.
+2. Wählen Sie unter **Herkunftsverbindungen** **Data Factory** aus.
 3. Die Liste mit Data Factory-Verbindungen wird angezeigt.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="Screenshot einer Data Factory-Verbindungsliste" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
@@ -49,10 +49,10 @@ Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Pu
 >
 > Außerdem müssen die Benutzer „Besitzer“ oder „Mitwirkender“ der Data Factory sein. 
 
-Führen Sie die folgenden Schritte aus, um vorhandene Data Factory-Konten mit Ihrem Purview Data Catalog zu verbinden.
+Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihrem Purview Data Catalog zu verbinden.
 
-1. Wählen Sie im linken Navigationsbereich **Verwaltungscenter** aus.
-2. Wählen Sie unter **Externe Verbindungen** die Option **Data Factory-Verbindung** aus.
+1. Wählen Sie im linken Navigationsbereich **Verwaltung** aus.
+2. Wählen Sie unter **Herkunftsverbindungen** **Data Factory** aus.
 3. Wählen Sie auf der Seite **Data Factory-Verbindung** die Option **neu** aus.
 
 4. Wählen Sie Ihr Data Factory-Konto aus der Liste aus, und klicken Sie auf **OK**. Sie können die Liste auch nach Abonnementnamen filtern, um sie einzuschränken.
@@ -62,7 +62,6 @@ Führen Sie die folgenden Schritte aus, um vorhandene Data Factory-Konten mit Ih
     Einige Data Factory-Instanzen sind möglicherweise deaktiviert, wenn die Data Factory bereits mit dem aktuellen Purview-Konto verbunden ist oder nicht über eine verwaltete Identität verfügt.
 
     Es wird eine Warnmeldung angezeigt, wenn eine der ausgewählten Data Factorys bereits mit einem anderen Purview-Konto verbunden ist. Durch Klicken auf „OK“ wird die Data Factory-Verbindung mit dem anderen Purview-Konto getrennt. Es sind keine weiteren Bestätigungen erforderlich.
-
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Screenshot: Warnung vor dem Trennen einer Azure Data Factory-Verbindung" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
 
@@ -88,10 +87,6 @@ Um eine Data Factory-Verbindung zu entfernen, gehen Sie folgendermaßen vor:
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Screenshot: Auswählen der Data Factorys, deren Verbindung entfernt werden soll" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>Konfigurieren einer selbstgehosteten Integration Runtime zum Erfassen der Herkunft
-
-Die Erfassung der Herkunft für die Data Factory-Kopieraktivität ist für lokale Datenspeicher wie SQL-Datenbanken verfügbar. Wenn Sie eine selbstgehostete Integration Runtime (IR) für die Datenverschiebung mit Azure Data Factory ausführen und die Herkunft in Azure Purview erfassen möchten, stellen Sie sicher, dass Sie mindestens Version 5.0 verwenden. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
-
 ## <a name="supported-azure-data-factory-activities"></a>Unterstützte Azure Data Factory-Aktivitäten
 
 Azure Purview erfasst die Runtimeherkunft aus den folgenden Azure Data Factory-Aktivitäten:
@@ -105,55 +100,9 @@ Azure Purview erfasst die Runtimeherkunft aus den folgenden Azure Data Factory-A
 
 Die Integration zwischen Data Factory und Purview unterstützt nur eine Teilmenge der Datensysteme, die von Data Factory unterstützt werden. Dies wird in den folgenden Abschnitten beschrieben.
 
-### <a name="data-factory-copy-activity-support"></a>Unterstützung der Data Factory-Kopieraktivität
+[!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
 
-| Datenspeicher | Unterstützt | 
-| ------------------- | ------------------- | 
-| Azure Blob Storage | Ja |
-| Azure Cognitive Search | Ja | 
-| Azure Cosmos DB (SQL-API) \* | Ja | 
-| Azure Cosmos DB-API für MongoDB \* | Ja |
-| Azure Data Explorer \* | Ja | 
-| Azure Data Lake Storage Gen1 | Ja | 
-| Azure Data Lake Storage Gen2 | Ja | 
-| Azure Database for MariaDB \* | Ja | 
-| Azure Database for MySQL \* | Ja | 
-| Azure Database for PostgreSQL \* | Ja |
-| Azure File Storage | Ja | 
-| Azure SQL-Datenbank \* | Ja | 
-| Azure SQL Managed Instance \* | Ja | 
-| Azure Synapse Analytics \* | Ja | 
-| Azure Table Storage | Ja |
-| Amazon S3 | Ja | 
-| Hive \* | Ja | 
-| SAP ECC \* | Ja |
-| SAP-Tabelle | Ja |
-| SQL Server \* | Ja | 
-| Teradata \* | Ja |
-
-*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
-
-> [!Note]
-> Das Herkunftsfeature verursacht einen gewissen Leistungsoverhead in der Data Factory-Kopieraktivität. Wenn Sie Data Factory-Verbindungen in Purview einrichten, werden Sie möglicherweise feststellen, dass bestimmte Kopieraufträge länger dauern. Die Auswirkungen sind in den meisten Fällen zu vernachlässigen. Wenn Ihre Kopieraufträge deutlich länger dauern als üblich, wenden Sie sich mit einem Zeitvergleich an den Support.
-
-#### <a name="known-limitations-on-copy-activity-lineage"></a>Bekannte Einschränkungen der Herkunftserfassung für die Kopieraktivität
-
-Wenn Sie die folgenden Funktionen der Kopieraktivität verwenden, wird die Erfassung der Herkunft derzeit noch nicht unterstützt:
-
-- Kopieren von Daten in Azure Data Lake Storage Gen1 mithilfe des Binärformats
-- Kopieren von Daten in Azure Synapse Analytics mithilfe von PolyBase oder der COPY-Anweisung
-- Komprimierungseinstellung für Binärdateien, durch Trennzeichen getrennte Textdateien, Excel-, JSON- und XML-Dateien
-- Quellpartitionsoptionen für Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server und SAP-Tabelle
-- Option zur Quellpartitionsermittlung für dateibasierte Speicher
-- Kopieren von Daten in eine dateibasierte Senke mit Einstellung für maximale Zeilenanzahl pro Datei
-- Hinzufügen zusätzlicher Spalten während des Kopiervorgangs
-
-Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Objekte -> Schema) für die folgenden Konnektoren gemeldet:
-
-- CSV-und Parquet-Dateien in Azure BLOB, Azure File Storage, ADLS Gen1, ADLS Gen2 und Amazon S3
-- Azure Daten-Explorer, Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server, Teradata
-
-### <a name="data-factory-data-flow-support"></a>Data Factory – Unterstützung für Datenflüsse
+### <a name="data-flow-support"></a>Dataflow-Unterstützung
 
 | Datenspeicher | Unterstützt |
 | ------------------- | ------------------- | 
@@ -169,23 +118,13 @@ Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Ob
 
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
-### <a name="data-factory-execute-ssis-package-support"></a>Unterstützung für Data Factory-Aktivität zum Ausführen eines SSIS-Pakets
+### <a name="execute-ssis-package-support"></a>Unterstützung der Aktivität „SSIS-Paket ausführen“
 
-| Datenspeicher | Unterstützt |
-| ------------------- | ------------------- |
-| Azure Blob Storage | Ja |
-| Azure Data Lake Storage Gen1 | Ja |
-| Azure Data Lake Storage Gen2 | Ja |
-| Azure File Storage | Ja |
-| Azure SQL-Datenbank \* | Ja |
-| Azure SQL Managed Instance \*| Ja |
-| Azure Synapse Analytics \* | Ja |
-| SQL Server \* | Ja |
+Weitere Informationen finden Sie in der [Liste mit unterstützten Datenspeichern](how-to-lineage-sql-server-integration-services.md#supported-data-stores).
 
-*\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
+## <a name="bring-data-factory-lineage-into-purview"></a>Einbringen von Data Factory-Herkunftsdaten in Purview
 
-> [!Note]
-> Azure Data Lake Storage Gen2 ist jetzt allgemein verfügbar. Es wird empfohlen, ab sofort diese SKU zu verwenden. Weitere Informationen hierzu finden Sie auf der [Produktseite](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
+Eine exemplarische End-to-End-Vorgehensweise finden Sie im [Tutorial: Pushen von Data Factory-Herkunftsdaten an Azure Purview](../data-factory/turorial-push-lineage-to-purview.md).
 
 ## <a name="supported-lineage-patterns"></a>Unterstützte Herkunftsmuster
 
@@ -193,7 +132,7 @@ Azure Purview unterstützt verschiedene Herkunftsmuster. Die generierten Herkunf
 
 Informationen dazu, wie Sie Data Factory für das Senden von Herkunftsdaten konfigurieren, finden Sie unter [Erste Schritte mit der Datenherkunft](catalog-lineage-user-guide.md#get-started-with-lineage).
 
-Es gibt noch weitere Möglichkeiten, Informationen in der Herkunftsansicht zu suchen. Hierzu gehören u. a. die folgenden:
+Es gibt noch andere Möglichkeiten, Informationen in der Herkunftsansicht zu suchen. Hierzu gehören u. a. die folgenden:
 
 - Zeigen Sie auf der Registerkarte **Herkunft** auf Formen, um in der QuickInfo eine Vorschau zusätzlicher Informationen zur Ressource anzuzeigen.
 - Wählen Sie den Knoten oder Edge aus, um den zugehörigen Ressourcentyp anzuzeigen oder Ressourcen zu wechseln.
@@ -249,5 +188,8 @@ Im folgenden Beispiel wird aus einem Azure-Blob ein Azure Data Lake Gen2-Ressour
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Benutzerhandbuch zur Katalogherkunft](catalog-lineage-user-guide.md)
-- [Azure Data Share-Datenherkunft](how-to-link-azure-data-share.md)
+[Tutorial: Pushen von Data Factory-Herkunftsdaten an Azure Purview](../data-factory/turorial-push-lineage-to-purview.md)
+
+[Benutzerhandbuch zur Katalogherkunft](catalog-lineage-user-guide.md)
+
+[Azure Data Share-Datenherkunft](how-to-link-azure-data-share.md)

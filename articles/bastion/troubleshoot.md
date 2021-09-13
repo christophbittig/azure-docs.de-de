@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 740b228855a11623600d8724eeff7ad865538e74
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004185"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356197"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -68,6 +68,13 @@ The key's randomart image is:
 **F:** Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen, der in die Domäne eingebunden ist.
 
 **A:** Azure Bastion unterstützt die Anmeldung bei virtuellen, in die Domäne eingebundenen Computern nur für Domänenanmeldungen, die auf einem Benutzernamen und Kennwort basieren. Wenn Sie die Domänenanmeldeinformationen im Azure-Portal angeben, verwenden Sie das UPN-Format (username@domain) anstelle des *domain\username*-Formats, um sich anzumelden. Dies wird für in die Domäne oder in Hybridumgebungen eingebundene virtuelle Computer unterstützt (die sowohl in die Domäne als auch in Azure AD eingebunden sind). Virtuelle Computer, die nur in Azure AD eingebunden sind, werden nicht unterstützt.
+
+## <a name="unable-to-connect-to-virtual-machine"></a><a name="connectivity"></a> Herstellen der Verbindung mit der VM nicht möglich
+
+**F:** Ich kann keine Verbindung mit meiner VM herstellen (aber die oben genannten Probleme treten nicht auf).
+
+**A:** Sie können Ihre Konnektivitätsprobleme beheben, indem Sie zur Registerkarte **Problembehandlung für Verbindungen** (im Abschnitt **Überwachung**) Ihrer Azure Bastion-Ressource im Azure-Portal navigieren. Die Problembehandlung von Verbindungen von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einer VM mit einer anderen VM, einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Wählen Sie zu Beginn eine Quelle aus, von der aus die Verbindung gestartet werden soll, wählen Sie anschließend das Ziel aus, mit dem Sie eine Verbindung herstellen möchten, und wählen Sie dann „Überprüfen“ aus. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)
+
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Probleme bei der Dateiübertragung
 

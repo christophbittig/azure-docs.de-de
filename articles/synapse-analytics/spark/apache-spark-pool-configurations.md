@@ -9,18 +9,30 @@ ms.subservice: spark
 ms.date: 12/2/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 6422c33f17879aa8ec4844cc6de63411528a388b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3321fc2b581abd29a8f8089ad0c1083092666100
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606156"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446391"
 ---
 # <a name="apache-spark-pool-configurations-in-azure-synapse-analytics"></a>Konfigurationen von Apache Spark-Pools in Azure Synapse Analytics
 
 Ein Spark-Pool stellt eine Gruppe von Metadaten dar, die die Anforderungen an Computeressourcen und die zugehörigen Verhaltensmerkmale definiert, wenn eine Spark-Instanz instanziiert wird. Zu diesen Merkmalen zählen unter anderem der Name, die Anzahl der Knoten, die Knotengröße, das Skalierungsverhalten und die Gültigkeitsdauer. Ein Spark-Pool selbst beansprucht keine Ressourcen. Beim Erstellen von Spark-Pools fallen keine Kosten an. Gebühren fallen nur an, wenn ein Spark-Auftrag für den Spark-Zielpool ausgeführt wird und die Spark-Instanz bei Bedarf instanziiert wird.
 
 Informationen zum Erstellen eines Spark-Pools sowie alle verfügbaren Eigenschaften finden Sie unter [Erstellen eines Apache Spark-Pools](../quickstart-create-apache-spark-pool-portal.md).
+
+## <a name="isolated-compute"></a>Isolated Compute
+
+Die Option „Isolated Compute“ bietet zusätzliche Sicherheitsfeatures für Spark-Computeressourcen aus nicht vertrauenswürdigen Diensten, indem die physische Computeressource einem einzelnen Kunden zugeordnet wird.
+Die Option „Isolated Compute“ eignet sich am besten für Workloads, die ein hohes Maß an Isolation von den Workloads anderer Kunden erfordern, beispielsweise um Compliance zu erzielen und gesetzliche Anforderungen zu erfüllen.  
+Die Option „Isolate Compute“ ist nur mit der Knotengröße XXXLarge (80 vCPU/504 GB) und nur in den folgenden Regionen verfügbar.  Die Option „Isolate Compute“ kann nach der Poolerstellung aktiviert oder deaktiviert werden, dabei muss die Instanz allerdings ggf. neu gestartet werden.  Wenn Sie dieses Feature in Zukunft aktivieren möchten, stellen Sie sicher, dass Ihr Synapse-Arbeitsbereich in einer Region erstellt wird, die „Isolate Compute“ unterstützt.
+
+* East US
+* USA, Westen 2
+* USA Süd Mitte
+* US Gov Arizona
+* US Government, Virginia
 
 ## <a name="nodes"></a>Nodes
 
@@ -37,6 +49,7 @@ Ein Spark-Pool kann mit Knotengrößen definiert werden, die von einem Serverkno
 |Groß|16|128 GB|
 |Extra groß|32|256 GB|
 |XXLarge|64|432 GB|
+|XXX Large (Isolated Compute)|80|504 GB|
 
 ## <a name="autoscale"></a>Autoscale
 
