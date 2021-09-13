@@ -4,21 +4,18 @@ description: Hier werden Prozeduren und Einschränkungen bei der Verwendung des 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: d861a41d8cdeac548729ff341b3ffe27c0aa8152
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 70b1dc3e2de6c70a6b59aa739a9bed254295a4f9
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259909"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293437"
 ---
-# <a name="use-nfs-mounted-blob-storage-preview-with-azure-hpc-cache"></a>Verwenden von in NFS eingebundenem Blobspeicher (VORSCHAU) mit Azure HPC Cache
+# <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>Verwenden von in NFS eingebundenem Blobspeicher mit Azure HPC Cache
 
-Ab März 2021 können Sie in NFS eingebundene Blobcontainer mit Azure HPC Cache nutzen. Weitere Informationen zur [NFS 3.0-Protokollunterstützung in Azure Blobspeicher](../storage/blobs/network-file-system-protocol-support.md) finden Sie auf der Dokumentationswebsite zum Blobspeicher.
-
-> [!NOTE]
-> Die NFS 3.0-Protokollunterstützung in Azure Blob Storage ist in der Vorschau verfügbar und sollte nicht in Produktionsumgebungen verwendet werden. In der [Dokumentation zur NFS-Protokollunterstützung](../storage/blobs/network-file-system-protocol-support.md) finden Sie Updates und weitere Informationen.
+In NFS eingebundene Blobcontainer können mit Azure HPC Cache genutzt werden. Weitere Informationen zur [NFS 3.0-Protokollunterstützung in Azure Blobspeicher](../storage/blobs/network-file-system-protocol-support.md) finden Sie auf der Dokumentationswebsite zum Blobspeicher.
 
 Azure HPC Cache verwendet NFS-fähigen Blobspeicher im ADLS-NFS-Speicherzieltyp. Diese Speicherziele haben Ähnlichkeiten mit regulären NFS-Speicherzielen, aber auch mit regulären Azure-Blobzielen.
 
@@ -26,9 +23,9 @@ In diesem Artikel werden Strategien und Einschränkungen erläutert, die Sie ken
 
 Lesen Sie auch die Dokumentation zu NFS-Blobs, insbesondere die folgenden Abschnitte, in denen kompatible und inkompatible Szenarios beschrieben werden:
 
-* [Funktionsübersicht](../storage/blobs/network-file-system-protocol-support.md#applications-and-workloads-suited-for-this-feature)
-* [Features, die noch nicht unterstützt werden](../storage/blobs/network-file-system-protocol-support.md#azure-storage-features-not-yet-supported)
+* [Funktionsübersicht](../storage/blobs/network-file-system-protocol-support.md)
 * [Leistungsaspekte](../storage/blobs/network-file-system-protocol-support-performance.md)
+* [Einschränkungen und bekannte Probleme](../storage/blobs/network-file-system-protocol-known-issues.md)
 
 ## <a name="understand-consistency-requirements"></a>Grundlegendes zu Konsistenzanforderungen
 
@@ -38,9 +35,10 @@ Als Lösung deaktiviert Azure HPC Cache automatisch das NFS-Attributzwischenspei
 
 Diese Einstellung bleibt für die Lebensdauer des Containers erhalten, auch wenn Sie ihn aus dem Cache entfernen.
 
-## <a name="preload-data-with-nfs-protocol"></a>Im Voraus Laden von Daten mit dem NFS-Protokoll
+## <a name="pre-load-data-with-nfs-protocol"></a>Im Voraus Laden von Daten mit dem NFS-Protokoll
+<!-- cross-referenced from hpc-cache-ingest.md and here -->
 
-In einem NFS-fähigen Blobcontainer kann *eine Datei nur von dem Protokoll bearbeitet werden, das beim Erstellen verwendet wurde*. Wenn Sie also die Azure REST-API zum Auffüllen eines Containers verwenden, können Sie NFS nicht verwenden, um diese Dateien zu aktualisieren. Es können keine Dateien bearbeitet werden, die mit der Azure REST-API erstellt wurden, da Azure HPC Cache nur NFS verwendet.
+In einem NFS-fähigen Blobcontainer kann *eine Datei nur von dem Protokoll bearbeitet werden, das beim Erstellen verwendet wurde*. Wenn Sie also die Azure REST-API zum Auffüllen eines Containers verwenden, können Sie NFS nicht verwenden, um diese Dateien zu aktualisieren. Es können keine Dateien bearbeitet werden, die mit der Azure REST-API erstellt wurden, da Azure HPC Cache nur NFS verwendet. (Weitere Informationen finden Sie unter [Bekannte Probleme bei Blob-Storage-APIs](../storage/blobs/network-file-system-protocol-known-issues.md#blob-storage-apis))
 
 Es ist kein Problem für den Cache, wenn Ihr Container leer ist, oder wenn die Dateien mithilfe von NFS erstellt wurden.
 
@@ -52,7 +50,7 @@ Wenn die Dateien in Ihrem Container mit der REST-API des Azure-Blobs anstelle vo
 * Leeren der Datei (Kürzen auf 0)
 * Eine Kopie der Datei speichern Die Kopie wird als NFS-erstellte Datei markiert und kann mithilfe von NFS bearbeitet werden.
 
-Azure HPC Cache kann den Inhalt einer Datei, die mit REST erstellt wurde, **nicht** bearbeiten. Das bedeutet, dass Sie eine geänderte Datei nicht von einem Client wieder auf dem Speicherziel speichern können.
+**Azure HPC Cache kann den Inhalt einer Datei, die mit REST erstellt wurde, nicht bearbeiten.** Das bedeutet, dass im Cache eine geänderte Datei nicht von einem Client wieder auf dem Speicherziel speichern kann.
 
 Diese Einschränkungen müssen Sie sich merken, da sie zu Datenintegritätsproblemen führen kann, wenn Sie Zwischenspeicherungsmodelle für Lese-/Schreibzugriff für Dateien verwenden, die nicht mit NFS erstellt wurden.
 
@@ -68,7 +66,7 @@ Zu diesen Cachenutzungsmodellen gehört das Zwischenspeichern von Schreibvorgän
 * **Mehr als 15 % Schreibvorgänge, der Sicherungsserver wird alle 60 Sekunden auf Änderungen überprüft**
 * **Mehr als 15 % Schreibvorgänge, Zurückschreiben auf den Server alle 30 Sekunden**
 
-Verwenden Sie diese Nutzungsmodelle nur zum Bearbeiten von Dateien, die mit NFS erstellt wurden.
+Cachenutzungsmodelle für Schreibvorgänge sollten nur für Dateien verwendet werden, die mit NFS erstellt wurden.
 
 Wenn Sie versuchen, das Zwischenspeichern von Schreibvorgängen für mit REST erstellte Dateien zu verwenden, können Ihre Dateiänderungen verlorengehen. Das liegt daran, dass der Cache nicht versucht, Dateiänderungen sofort im Speichercontainer zu speichern.
 
@@ -100,13 +98,7 @@ NFS-fähige Blobcontainer unterstützen Network Lock Manager (NLM) nicht. Dabei 
 
 Wenn Ihr NFS-Workflow ursprünglich für Hardwarespeichersysteme geschrieben wurde, können Ihre Clientanwendungen NLM-Anforderungen enthalten. Sie können diese Einschränkung umgehen, wenn Sie Ihren Prozess in NFS-fähigen Blobspeicher verschieben. Stellen Sie dazu beim Einbinden des Caches durch Ihre Clients sicher, dass diese NLM deaktivieren.
 
-Verwenden Sie die Option ``-o nolock`` im Befehl ``mount`` Ihrer Clients, um NLM zu deaktivieren. Diese Option verhindert, dass Clients NLM-Sperren anfordern und Fehler als Antwort erhalten.
-
-In bestimmten Fällen bestätigt Azure HPC Cache selbst NLM-Anforderungen vom Client. Das Cachenutzungsmodell **Read heavy, infrequent writes** (Leseintensiv, unregelmäßige Schreibvorgänge) bestätigt NLM-Anforderungen im Auftrag seines Back-End-Speichers. Dieses System verhindert Fehler auf dem Client, erstellt jedoch keine Sperre für den ADLS-NFS-Container.
-
-Wenn Sie das Nutzungsmodell eines ADLS-NFS-Speicherziels auf oder von **Read heavy, infrequent writes** umstellen, müssen Sie alle Clients mithilfe der Option ``nolock`` erneut einbinden.
-
-Weitere Informationen zu NLM, HPC Cache und Nutzungsmodellen finden Sie unter [Verstehen von Cachenutzungsmodellen](cache-usage-models.md#know-when-to-remount-clients-for-nlm).
+Verwenden Sie die Option ``-o nolock`` im Befehl ``mount`` Ihrer Clients, um NLM zu deaktivieren. Diese Option verhindert, dass Clients NLM-Sperren anfordern und Fehler als Antwort erhalten. Die Option ``nolock`` ist in den verschiedenen Betriebssystemen unterschiedlich implementiert. Entsprechende Informationen finden Sie in der Dokumentation zum Clientbetriebssystem (man 5 nfs).
 
 ## <a name="streamline-writes-to-nfs-enabled-containers-with-hpc-cache"></a>Optimieren von Schreibvorgängen in NFS-fähige Container mit HPC Cache
 
@@ -117,9 +109,9 @@ Azure HPC Cache kann die Leistung einer Workload verbessern, die das Schreiben v
 
 Im [Artikel zu Überlegungen zur Leistung](../storage/blobs/network-file-system-protocol-support-performance.md) von NFS-fähigen Blobs wird unter anderem die Einschränkung beschrieben, dass ADLS-NFS-Speicher beim Überschreiben vorhandener Dateien nicht sehr effizient ist. Wenn Sie Azure HPC Cache mit NFS-eingebundenen Blobspeichern verwenden, verarbeitet der Cache zeitweilige Rewrites, wenn Clients eine aktive Datei ändern. Die Wartezeit beim Schreiben einer Datei in den Back-End-Container wird für die Clients ausgeblendet.
 
-Beachten Sie die Einschränkungen, die oben unter [Im Voraus Laden von Daten mit dem NFS-Protokoll](#preload-data-with-nfs-protocol) erläutert wurden.
+Beachten Sie die Einschränkungen, die oben unter [Im Voraus Laden von Daten mit dem NFS-Protokoll](#pre-load-data-with-nfs-protocol) erläutert wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sie können mehr über die [Voraussetzungen für ADLS-NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) lesen.
+* Sie können mehr über die [Voraussetzungen für ADLS-NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements) lesen.
 * Sie können einen [NFS-fähiges Blobspeicherkonto](../storage/blobs/network-file-system-protocol-support-how-to.md) erstellen.

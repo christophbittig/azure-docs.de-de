@@ -5,20 +5,20 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 288e1b9e361bd8c0cf41e4bb86fcfce15dda8ac9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 77bdfb4ed75b9287b911a6b0d2742c235b37e297
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166395"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356699"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS): Betriebszeit-SLA
 
-Betriebszeit-SLA ist ein optionales Feature, das eine finanziell abgesicherte, höhere SLA für einen Cluster ermöglicht. Betriebszeit-SLA garantiert eine Verfügbarkeit von 99,95 % des Kubernetes-API-Serverendpunkts für Cluster, die [Verfügbarkeitszonen][availability-zones] verwenden, und eine Verfügbarkeit von 99,9 % für Cluster, die keine Verfügbarkeitszonen verwenden. AKS verwendet Masterknotenreplikate über Update- und Fehlerdomänen hinweg, um sicherzustellen, dass die SLA-Anforderungen erfüllt werden.
+Bei Betriebszeit-SLA handelt es sich um einen Tarif, der eine finanziell abgesicherte, höhere SLA für ein AKS-Cluster ermöglicht. Cluster mit Betriebszeit-SLA, die in den AKS REST-APIs auch als kostenpflichtiger Tarif bezeichnet werden, verfügen über mehr Ressourcen auf Steuerungsebene und werden je nach Last des Clusters automatisch skaliert. Betriebszeit-SLA garantiert eine Verfügbarkeit von 99,95 % des Kubernetes-API-Serverendpunkts für Cluster, die [Verfügbarkeitszonen][availability-zones] verwenden, und eine Verfügbarkeit von 99,9 % für Cluster, die keine Verfügbarkeitszonen verwenden. AKS verwendet Masterknotenreplikate über Update- und Fehlerdomänen hinweg, um sicherzustellen, dass die SLA-Anforderungen erfüllt werden.
 
-Kunden, die eine SLA benötigen, um Complianceanforderungen zu erfüllen, oder die eine Erweiterung einer SLA auf ihre Endbenutzer erfordern, sollten dieses Feature aktivieren. Kunden mit kritischen Workloads, die von einer höheren Betriebszeit-SLA profitieren, haben möglicherweise ebenfalls Vorteile. Die Verwendung der Betriebszeit-SLA mit Verfügbarkeitszonen ermöglicht eine höhere Verfügbarkeit für die Betriebszeit des Kubernetes-API-Servers.
+AKS empfiehlt bei Produktionsworkloads zur Gewährleistung der Verfügbarkeit von Komponenten auf Steuerungsebene die Verwendung einer Betriebszeit-SLA. Cluster zum Free-Tarif verfügen dagegen über weniger Replikate und begrenzte Ressourcen für die Steuerungsebene und sind für Produktionsworkloads nicht geeignet.
 
-Kunden können nach wie vor unbegrenzt kostenlose Cluster mit einem Servicelevelziel (SLO) von 99,5 % erstellen und sich je nach Bedarf für die bevorzugte SLO- oder SLA-Betriebszeit entscheiden.
+Kunden können dennoch eine unbegrenzte Anzahl kostenloser Cluster mit einem Servicelevelziel (SLO) von 99,5 % erstellen und sich je nach Bedarf für die bevorzugte SLO entscheiden. 
 
 > [!IMPORTANT]
 > Für Cluster mit ausgehender Sperrung finden Sie unter [Einschränken des ausgehenden Datenverkehrs](limit-egress-traffic.md) Informationen zum Öffnen entsprechender Ports.

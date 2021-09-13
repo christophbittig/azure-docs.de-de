@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/17/2021
+ms.date: 08/16/2021
 tags: azure-synapse
-ms.openlocfilehash: d6b51d32b691919e0f0947d3ddb58d184424b9ad
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e61660a5c559012cbf4940356bd1a204f3203db6
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534408"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122350876"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Datenermittlung und -klassifizierung ist in Azure SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse Analytics integriert. Sie bietet grundlegende Funktionen zum Ermitteln, Klassifizieren und Bezeichnen vertraulicher Daten in Ihren Datenbanken und zum Erstellen von Berichten zu diesen Daten.
 
-Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und personenbezogene Informationen. Das Ermitteln und Klassifizieren dieser Daten kann eine entscheidende Rolle beim Ansatz Ihrer Organisation zum Schutz von Daten spielen. Sie kann für Folgendes als Infrastruktur gelten:
+Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und personenbezogene Informationen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Unterstützung bei der Einhaltung von Standards für den Datenschutz und von gesetzlichen Bestimmungen
 - Verschiedene Sicherheitsszenarien, z. B. Überwachung vertraulicher Daten
@@ -36,11 +36,11 @@ Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und per
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Was ist die Datenermittlung und -klassifizierung?
 
-Die Datenermittlung und -klassifizierung ist ein neues Paradigma für den Schutz von Informationen für SQL-Datenbank, SQL Managed Instance und Azure Synapse, das den Schutz der eigentlichen Daten und nicht nur der Datenbank zum Ziel hat. Derzeit werden die folgenden Funktionen unterstützt:
+Die Datenermittlung und -klassifizierung unterstützt derzeit die folgenden Funktionen:
 
 - **Ermittlung und Empfehlungen:** Das Klassifizierungsmodul scannt Ihre Datenbank und identifiziert Spalten, die unter Umständen vertrauliche Daten enthalten. Es bietet dann eine einfache Möglichkeit, die Ergebnisse zu überprüfen und die empfohlenen Klassifizierungen über das Azure-Portal anzuwenden.
 
-- **Bezeichnung:** Sie können Klassifizierungsbezeichnungen nach der Vertraulichkeit der Daten dauerhaft auf Spalten anwenden, indem Sie neue Metadatenattribute nutzen, die der SQL Server-Datenbank-Engine hinzugefügt wurden. Diese Metadaten können dann für Überwachungs- und Schutzszenarien auf Grundlage der Vertraulichkeit genutzt werden.
+- **Bezeichnung:** Sie können Klassifizierungsbezeichnungen nach der Vertraulichkeit der Daten dauerhaft auf Spalten anwenden, indem Sie neue Metadatenattribute nutzen, die der SQL Server-Datenbank-Engine hinzugefügt wurden. Diese Metadaten können dann für Überwachungsszenarien auf Grundlage der Vertraulichkeit genutzt werden.
 
 - **Vertraulichkeit von Abfrageergebnissen:** Die Vertraulichkeit von Abfrageergebnissen wird zu Überwachungszwecken in Echtzeit berechnet.
 
@@ -64,7 +64,7 @@ Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von 
 
 Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für die ganze Azure-Organisation. Diese Stelle befindet sich im [Azure Security Center](../../security-center/security-center-introduction.md) und ist Bestandteil Ihrer Sicherheitsrichtlinie. Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe der Organisation können diese Aufgabe ausführen.
 
-Im Rahmen der Verwaltung von Information Protection-Richtlinien können Sie benutzerdefinierte Bezeichnungen definieren, deren Rangfolge festlegen und sie einer ausgewählten Gruppe von Informationstypen zuordnen. Sie können auch eigene benutzerdefinierte Informationstypen hinzufügen und diese mit Zeichenfolgenmustern konfigurieren. Die Muster werden der Ermittlungslogik hinzugefügt, um diese Datentypen in Ihren Datenbanken zu identifizieren.
+Im Rahmen der Richtlinienverwaltung können Sie benutzerdefinierte Bezeichnungen definieren, deren Rangfolge festlegen und sie einer ausgewählten Gruppe von Informationstypen zuordnen. Sie können auch eigene benutzerdefinierte Informationstypen hinzufügen und diese mit Zeichenfolgenmustern konfigurieren. Die Muster werden der Ermittlungslogik hinzugefügt, um diese Datentypen in Ihren Datenbanken zu identifizieren.
 
 Weitere Informationen finden Sie unter [Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)](../../security-center/security-center-info-protection-policy.md).
 
@@ -112,7 +112,7 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Überwachen des Zugriffs auf vertrauliche Daten
 
-Ein wichtiger Aspekt des Paradigmas für den Schutz von Informationen ist die Möglichkeit, den Zugriff auf vertrauliche Daten zu überwachen. Die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) wurde erweitert, um ein neues Feld mit dem Namen `data_sensitivity_information` in das Überwachungsprotokoll zu integrieren. Dieses Feld protokolliert die Vertraulichkeitsklassifizierungen (Bezeichnungen) der Daten, die von einer Abfrage zurückgegeben wurden. Hier sehen Sie ein Beispiel:
+Ein wichtiger Aspekt der Klassifizierung ist die Möglichkeit, den Zugriff auf vertrauliche Daten zu überwachen. Die [Azure SQL-Überwachung](../../azure-sql/database/auditing-overview.md) wurde erweitert, um ein neues Feld mit dem Namen `data_sensitivity_information` in das Überwachungsprotokoll zu integrieren. Dieses Feld protokolliert die Vertraulichkeitsklassifizierungen (Bezeichnungen) der Daten, die von einer Abfrage zurückgegeben wurden. Hier sehen Sie ein Beispiel:
 
 ![Überwachungsprotokoll](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 

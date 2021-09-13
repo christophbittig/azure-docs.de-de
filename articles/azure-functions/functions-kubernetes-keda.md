@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: eamono
-ms.openlocfilehash: a1b7113c8d63163023baffa0abeb7d5cf7de7a6b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 736945109cd18bd7c6f3a6b9a16b6549f7c65652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481431"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346823"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions in Kubernetes mit KEDA
 
@@ -24,38 +24,37 @@ Die Kubernetes-basierte Version stellt die Functions-Runtime in einem [Docker-Co
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>Verwalten von KEDA und Functions in Kubernetes
 
-Um Functions in Ihrem Kubernetes-Cluster ausführen zu können, müssen Sie die KEDA-Komponenten installieren. Sie können diese Komponente mithilfe von [Azure Functions Core Tools](functions-run-local.md) installieren.
+Um Functions in Ihrem Kubernetes-Cluster ausführen zu können, müssen Sie die KEDA-Komponenten installieren. Sie können die Komponente auf eine der folgenden Arten installieren:
 
-### <a name="installing-with-helm"></a>Installieren mit Helm
++ Azure Functions Core Tools: mithilfe des [`func kubernetes install`-Befehls](functions-core-tools-reference.md#func-kubernetes-install)
 
-Es gibt verschiedene Möglichkeiten, KEDA in einem Kubernetes-Cluster, einschließlich Helm, zu installieren.  Bereitstellungsoptionen sind auf der [KEDA-Site ](https://keda.sh/docs/deploy/) dokumentiert.
++ Helm: Es gibt verschiedene Möglichkeiten, KEDA in einem Kubernetes-Cluster, einschließlich Helm, zu installieren.  Bereitstellungsoptionen sind auf der [KEDA-Site ](https://keda.sh/docs/deploy/) dokumentiert.
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Bereitstellen einer Funktions-App in Kubernetes
 
-Sie können jede beliebige Funktions-App in einem Kubernetes-Cluster bereitstellen, in dem KEDA ausgeführt wird.  Da Ihre Funktionen in einem Docker-Container ausgeführt werden, benötigt Ihr Projekt ein `Dockerfile`.  Wenn Sie noch nicht über ein Dockerfile verfügen, können Sie eins hinzufügen, indem Sie den folgenden Befehl im Stammverzeichnis Ihres Functions-Projekts ausführen:
+Sie können jede beliebige Funktions-App in einem Kubernetes-Cluster bereitstellen, in dem KEDA ausgeführt wird.  Da Ihre Funktionen in einem Docker-Container ausgeführt werden, benötigt Ihr Projekt ein Dockerfile.  Sie können das Dockerfile mithilfe der [`--docker`-Option][func init] erstellen, wenn Sie `func init` aufrufen, um das Projekt zu erstellen. Wenn Sie dies vergessen haben, können Sie `func init` erneut aus dem Stammverzeichnis Ihres Functions-Projekts aufrufen und dieses Mal die [`--docker-only`-Option][func init] verwenden (wie im folgenden Beispiel dargestellt). 
 
-> [!NOTE]
-> Die Core Tools erstellen automatisch das Dockerfile für Azure Functions in .NET, Node, Python oder PowerShell. Für Funktions-Apps, die in Java geschrieben sind, muss das Dockerfile manuell erstellt werden. Verwenden Sie die [Imageliste](https://github.com/Azure/azure-functions-docker) für Azure Functions, um das richtige Image als Basis für die Azure-Funktion zu finden.
-
-```cli
+```command
 func init --docker-only
 ```
 
+Weitere Informationen zur Generierung von Dockerfiles finden Sie in der [`func init`][func init]-Referenz. 
+
 Um ein Image zu erstellen und Ihre Funktionen in Kubernetes bereitzustellen, führen Sie den folgenden Befehl aus:
 
-> [!NOTE]
-> Die Core Tools verwenden die Docker-Befehlszeilenschnittstelle, um das Image zu erstellen und zu veröffentlichen. Stellen Sie sicher, dass bereits ein Docker installiert und über `docker login` mit Ihrem Konto verbunden ist.
-
-```cli
+```command
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> Ersetzen Sie `<name-of-function-deployment>` durch den Namen der Funktions-App.
+In diesem Beispiel ersetzen Sie `<name-of-function-deployment>` durch den Namen Ihrer Funktions-App.
 
-Der Bereitstellungsbefehl führt eine Reihe von Aktionen aus:
+Der Bereitstellungsbefehl bewirkt Folgendes:
+
 1. Das zuvor erstellte Dockerfile wird verwendet, um ein lokales Image für die Funktions-App zu erstellen.
-2. Das lokale Image wird markiert und an die Containerregistrierung gepusht, bei der der Benutzer angemeldet ist.
-3. Es wird ein Manifest erstellt und auf den Cluster angewandt. Dieses definiert eine Kubernetes-`Deployment`-Ressource, eine `ScaledObject`-Ressource und `Secrets`, einschließlich aus Ihrer Datei `local.settings.json` importierter Umgebungsvariablen.
+1. Das lokale Image wird markiert und an die Containerregistrierung gepusht, bei der der Benutzer angemeldet ist.
+1. Es wird ein Manifest erstellt und auf den Cluster angewandt. Dieses definiert eine Kubernetes-`Deployment`-Ressource, eine `ScaledObject`-Ressource und `Secrets`, einschließlich aus Ihrer Datei `local.settings.json` importierter Umgebungsvariablen.
+
+Weitere Informationen finden Sie unter dem [`func kubernetes deploy`-Befehl](functions-core-tools-reference.md#func-kubernetes-deploy).
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Bereitstellen einer Funktions-App aus einer privaten Registrierung
 
@@ -65,7 +64,7 @@ Der obige Flow funktioniert auch für private Registrierungen.  Wenn Sie Ihr Con
 
 Nach dem Bereitstellen können Sie eine Funktion entfernen, indem Sie die zugehörigen erstellten `Deployment`-, `ScaledObject`- und `Secrets`-Elemente entfernen.
 
-```cli
+```command
 kubectl delete deploy <name-of-function-deployment>
 kubectl delete ScaledObject <name-of-function-deployment>
 kubectl delete secret <name-of-function-deployment>
@@ -73,7 +72,11 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Deinstallieren von KEDA aus Kubernetes
 
-Schritte zur Deinstallation von KEDA sind auf der [KEDA-Site ](https://keda.sh/docs/deploy/) dokumentiert.
+Sie können KEDA auf eine der folgenden Arten aus Ihrem Cluster entfernen:
+
++ Azure Functions Core Tools: mithilfe des [`func kubernetes remove`-Befehls](functions-core-tools-reference.md#func-kubernetes-remove).
+
++ Helm: Befolgen Sie die Schritte zur Deinstallation [auf der KEDA-Seite](https://keda.sh/docs/deploy/).
 
 ## <a name="supported-triggers-in-keda"></a>Unterstützte Trigger in KEDA
 
@@ -95,3 +98,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Erstellen einer Funktion mit einem benutzerdefinierten Image](functions-create-function-linux-custom-image.md)
 * [Lokales Codieren und Testen von Azure Functions](functions-develop-local.md)
 * [So funktioniert der Azure Functions-Verbrauchstarif](functions-scale.md)
+
+[func init]: functions-core-tools-reference.md#func-init

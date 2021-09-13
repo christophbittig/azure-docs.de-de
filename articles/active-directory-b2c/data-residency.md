@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 2d4ecf925eadd00c40685fbee413df6fca0368d9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 92297e63739bca85a640120152ee864b85f0f640
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070855"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343291"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Regionale Verfügbarkeit und Datenresidenz
 
@@ -25,7 +25,7 @@ Azure AD B2C-Identitätsdaten werden an einem geografischen Standort gespeichert
 
 Regionale Verfügbarkeit und Datenresidenz sind zwei unterschiedliche Konzepte, die für Azure AD B2C gelten. In diesem Artikel werden die Unterschiede zwischen diesen beiden Konzepten erläutert und ihre Anwendung in Azure und Azure AD B2C miteinander verglichen.
 
-Azure AD B2C ist **grundsätzlich weltweit verfügbar**, mit der Option für **Datenresidenz** in den **USA, in Europa und in der Region „Asien-Pazifik“** . Azure AD B2C befindet sich in Australien in der **öffentlichen Vorschau**.
+Azure AD B2C ist **grundsätzlich weltweit verfügbar**, mit der Option für **Datenresidenz** in den **USA, in Europa, in der Region „Asien-Pazifik“ und in Australien**.
 
 [Regionale Verfügbarkeit](#region-availability) gibt an, wo ein Dienst für die Verwendung verfügbar ist.
 
@@ -37,7 +37,7 @@ Azure AD B2C ist über die öffentliche Azure-Cloud weltweit verfügbar. Beispie
 
 ## <a name="data-residency"></a>Datenresidenz
 
-Benutzerdaten von Azure AD B2C werden entweder in den USA, in Europa oder in der Region „Asien-Pazifik“ gespeichert.
+Azure AD B2C speichert Benutzerdaten in den USA, in Europa, in der Region „Asien-Pazifik“ oder in Australien.
 
 Die Datenresidenz wird durch das Land oder die Region bestimmt, das bzw. die Sie beim [Erstellen eines Azure AD B2C-Mandanten](tutorial-create-tenant.md) auswählen:
 
@@ -55,7 +55,7 @@ Für die folgenden Länder/Regionen werden die Daten in der Region **Asien-Pazif
 
 > Afghanistan (AF), Hongkong (SAR) (HK), Indien (IN), Indonesien (ID), Japan (JP), Südkorea (KR), Malaysia (MY), Philippinen (PH), Singapur (SG), Sri Lanka (LK), Taiwan (TW) und Thailand (TH)
 
-Für die folgenden Länder/Regionen werden die Daten in der Region **Australien** (Vorschau) gespeichert:
+Für die folgenden Länder bzw. Regionen werden die Daten in der Region **Australien** gespeichert:
 
 > Australien und Neuseeland
 

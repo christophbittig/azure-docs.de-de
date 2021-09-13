@@ -2,13 +2,13 @@
 title: Verwenden von Bicep zum Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: Beschreibt das Erstellen einer Bicep-Datei, die Ressourcen im Verwaltungsgruppenbereich bereitstellt.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 58fbed44045a90f4f344117fd76f7de8b0493771
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372192"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453598"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>Bereitstellung von Verwaltungsgruppen mit Bicep-Dateien
 
@@ -128,7 +128,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
 }
 ```
 
-Um eine andere Verwaltungsgruppe als Bereitstellungsziel zu verwenden, fügen Sie ein Modul hinzu. Verwenden Sie die [managementGroup-Funktion](bicep-functions-scope.md#managementgroup), um die Eigenschaft `scope` festzulegen. Geben Sie den Namen der Verwaltungsgruppe an.
+Wenn Sie eine andere Verwaltungsgruppe als Bereitstellungsziel verwenden möchten, können Sie ein [Modul](modules.md) hinzufügen. Verwenden Sie die [managementGroup-Funktion](bicep-functions-scope.md#managementgroup), um die Eigenschaft `scope` festzulegen. Geben Sie den Namen der Verwaltungsgruppe an.
 
 ```bicep
 targetScope = 'managementGroup'
@@ -137,7 +137,7 @@ param otherManagementGroupName string
 
 // module deployed at management group level but in a different management group
 module exampleModule 'module.bicep' = {
-  name: 'deployToDifferntMG'
+  name: 'deployToDifferentMG'
   scope: managementGroup(otherManagementGroupName)
 }
 ```
@@ -181,7 +181,7 @@ module exampleModule 'module.bicep' = {
 
 ### <a name="scope-to-tenant"></a>Bereich: Mandant
 
-Zum Erstellen von Ressourcen auf dem Mandanten fügen Sie ein Modul hinzu. Verwenden Sie die [tenant-Funktion](bicep-functions-scope.md#tenant), um die Eigenschaft `scope` festzulegen. Der Benutzer, der die Vorlage bereitstellt, muss über den [erforderlichen Zugriff zum Bereitstellen im Mandanten](deploy-to-tenant.md#required-access) verfügen.
+Zum Erstellen von Ressourcen im Mandanten fügen Sie ein Modul hinzu. Verwenden Sie die [tenant-Funktion](bicep-functions-scope.md#tenant), um die Eigenschaft `scope` festzulegen. Der Benutzer, der die Vorlage bereitstellt, muss über den [erforderlichen Zugriff zum Bereitstellen im Mandanten](deploy-to-tenant.md#required-access) verfügen.
 
 ```bicep
 targetScope = 'managementGroup'

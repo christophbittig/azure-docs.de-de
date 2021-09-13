@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 142c8b1439447da4d535dd97e191a0ada503fe94
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 14a357bf5f7fece43ce72b58142aa0047213bfab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632599"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346574"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungslisten (ACLs) in Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 implementiert ein Zugriffssteuerungsmodell, das sow
 
 ## <a name="about-acls"></a>Informationen zu ACLs
 
-Sie können einem [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Diese Zuordnungen werden in einer *Zugriffssteuerungsliste (ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste. Wenn ein Sicherheitsprinzipal einen Vorgang für eine Datei oder ein Verzeichnis durchführen möchte, wird per ACL-Überprüfung ermittelt, ob dieser Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) über die richtige Berechtigungsstufe für die Durchführung des Vorgangs verfügt.
+Sie können einem [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Jede Zuordnung wird als Eintrag in einer *Zugriffssteuerungsliste (Access Control List, ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste. Wenn ein Sicherheitsprinzipal einen Vorgang für eine Datei oder ein Verzeichnis durchführen möchte, wird per ACL-Überprüfung ermittelt, ob dieser Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) über die richtige Berechtigungsstufe für die Durchführung des Vorgangs verfügt.
 
 > [!NOTE]
 > ACLs gelten nur für Sicherheitsprinzipale auf demselben Mandanten und nicht für Benutzer, die die Authentifizierung per gemeinsam verwendetem Schlüssel oder SAS-Token (Shared Access Signature) nutzen. Dies liegt daran, dass dem Aufrufer keine Identität zugeordnet ist und daher keine berechtigungsbasierte Autorisierung per Sicherheitsprinzipal durchgeführt werden kann.  
@@ -94,7 +94,7 @@ Im von Data Lake Storage Gen2 verwendeten POSIX-basierten Modell werden Berechti
 
 Die folgende Tabelle enthält die ACL-Einträge, die benötigt werden, damit ein Sicherheitsprinzipal die in der Spalte **Vorgang** aufgeführten Vorgänge durchführen kann. 
 
-Diese Tabelle enthält eine Spalte, in der die einzelnen Ebenen einer fiktiven Verzeichnishierarchie dargestellt sind. Es gibt eine Spalte für das Stammverzeichnis des Containers (`\`), ein Unterverzeichnis mit dem Namen **Oregon**, ein Unterverzeichnis des Verzeichnisses „Oregon“ namens **Portland** und eine Textdatei im Verzeichnis „Portland“ mit dem Namen **Data.txt**. 
+Diese Tabelle enthält eine Spalte, in der die einzelnen Ebenen einer fiktiven Verzeichnishierarchie dargestellt sind. Es gibt eine Spalte für das Stammverzeichnis des Containers (`/`), ein Unterverzeichnis mit dem Namen **Oregon**, ein Unterverzeichnis des Verzeichnisses „Oregon“ namens **Portland** und eine Textdatei im Verzeichnis „Portland“ mit dem Namen **Data.txt**. 
 
 > [!IMPORTANT]
 > Für diese Tabelle gilt die Annahme, dass Sie **ausschließlich** ACLs ohne Azure-Rollenzuweisungen verwenden. Eine ähnliche Tabelle, in der Azure RBAC mit ACLs kombiniert ist, finden Sie unter [Berechtigungstabelle: Kombinieren von Azure RBAC und ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
@@ -154,11 +154,21 @@ Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 > [!NOTE]
 > Die zuständige Gruppe kann die ACLs einer Datei oder eines Verzeichnisses nicht ändern.  Im Fall des Stammordners (**Fall 1** weiter oben) wird die zuständige Gruppe zwar auf den Benutzer festgelegt, der das Konto erstellt hat, für die Bereitstellung von Berechtigungen über die zuständige Gruppe ist jedoch kein einzelnes Benutzerkonto zulässig. Sie können diese Berechtigung ggf. einer gültigen Benutzergruppe zuweisen.
 
-## <a name="access-check-algorithm"></a>Algorithmus für die Zugriffsüberprüfung
+## <a name="how-permissions-are-evaluated"></a>Auswerten von Berechtigungen
 
-Im folgenden Pseudocode wird der Zugriffsüberprüfungsalgorithmus für Speicherkonten veranschaulicht.
+Identitäten werden in der folgenden Reihenfolge ausgewertet: 
 
-```console
+1. Superuser
+2. zuständige Benutzer
+3. Benannter Benutzer, Dienstprinzipal oder verwaltete Identität
+4. Besitzende Gruppe oder benannte Gruppe
+5. Alle anderen Benutzer
+
+Wenn ein Sicherheitsprinzipal mehrere Identitäten innehat, wird die der ersten Identität zugeordnete Berechtigungsstufe zugewiesen. Wenn beispielsweise ein Sicherheitsprinzipal gleichzeitig der zuständige Benutzer und der benannte Benutzer ist, wird ihm die dem zuständigen Benutzer zugeordnete Berechtigungsstufe zugewiesen.
+
+Im folgenden Pseudocode wird der Zugriffsüberprüfungsalgorithmus für Speicherkonten veranschaulicht. Mit diesem Algorithmus wird die Reihenfolge angezeigt, in der die Identitäten ausgewertet werden.
+
+```python
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -206,7 +216,7 @@ Für einen neuen Data Lake Storage Gen2-Container wird die Maske für die Zugrif
 
 |Entität|Verzeichnisse|Dateien|
 |--|--|--|
-|zuständige Benutzer|`rwx`|`r-w`|
+|zuständige Benutzer|`rwx`|`rw-`|
 |zuständige Gruppe|`r-x`|`r--`|
 |Sonstiges|`---`|`---`|
 

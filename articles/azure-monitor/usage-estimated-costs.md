@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lagayhar
 ms.reviewer: Dale.Koetke
-ms.openlocfilehash: c4aded73334e38539e1c671831fe812a9525698c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540bed61d26b2387399230324db4373172a233a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048674"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346414"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Überwachen der Nutzung und geschätzten Kosten in Azure Monitor
 
@@ -25,7 +25,7 @@ ms.locfileid: "102048674"
 
 Das grundlegende Azure Monitor-Abrechnungsmodell ist eine für die Cloud optimierte, nutzungsorientierte Preisgestaltung (nutzungsbasierte Bezahlung). Sie bezahlen nur für das, was Sie tatsächlich nutzen. Preisdetails sind für [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar. 
 
-Zusätzlich zum Modell der nutzungsbasierten Bezahlung für Protokolldaten bietet Log Analytics eine Kapazitätsreservierung, mit der Sie Einsparungen von 25 % gegenüber der nutzungsbasierten Bezahlung erzielen können. Die Preise der Kapazitätsreservierung ermöglichen Ihnen den Kauf einer Reservierung ab 100 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/monitor/) über Preise der Kapazitätsreservierung.
+Zusätzlich zum Modell für nutzungsbasierte Bezahlung für Protokolldaten umfasst die Azure Monitor-Protokollanalyse Mindestabnahmen. Damit können Sie im Vergleich zur nutzungsbasierten Zahlung bis zu 30 Prozent sparen. Mindestabnahmen starten bei nur 100 GB/Tag. Wenn die Nutzung die Mindestabnahme übersteigt, wird pro GB derselbe Preis berechnet wie für die Mindestabnahme. Informieren Sie sich weiter über die [Mindestabnahmepreise](https://azure.microsoft.com/pricing/details/monitor/).
 
 Einige Kunden haben Zugriff auf [Legacytarife für Log Analytics](logs/manage-cost-storage.md#legacy-pricing-tiers) und den [älteren Enterprise-Tarif für Application Insights](app/pricing.md#legacy-enterprise-per-node-pricing-tier). 
 
@@ -66,7 +66,7 @@ Dies führt zu einer Ansicht, die folgender ähnelt:
 
 Von dieser Übersicht der akkumulierten Kosten können Sie einen Drilldown durchführen, um genauere Details in der Ansicht „Kosten nach Ressource“ anzuzeigen. Bei den aktuellen Tarifen werden Azure-Protokolldaten für die gleiche Gruppe von Verbrauchseinheiten abgerechnet, unabhängig davon, ob Sie von Log Analytics oder Application Insights stammt. Um die Kosten für die Nutzung von Log Analytics und Application Insights voneinander zu trennen, können Sie einen Filter für **Ressourcentyp** hinzufügen. Zum Anzeigen aller Kosten für Application Insights setzen Sie den Filter für den Ressourcentyp auf “microsoft.insights/components“ und für die Kosten für Log Analytics auf „microsoft.operationalinsights/workspaces“. 
 
-Weitere Details zur Nutzung erhalten Sie, wenn Sie [Ihre Nutzungsdaten aus dem Azure-Portal herunterladen](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). In der heruntergeladenen Tabelle ist der Verbrauch pro Azure-Ressource pro Tag aufgeführt. In dieser Excel-Tabelle können Sie den Verbrauch für Ihre Application Insights-Ressourcen ermitteln, indem Sie zuerst nach der Spalte „Kategorie der Verbrauchseinheit“ filtern, um „Application Insights“ und „Log Analytics“ anzuzeigen und dann in der Spalte „Instanz-ID“ einen Filter namens „contains microsoft.insights/components“ hinzufügen.  Die meiste Application Insights-Nutzung wird in Verbrauchseinheiten der entsprechenden Kategorie von Log Analytics gemeldet, da für alle Azure Monitor-Komponenten ein einzelnes Protokoll-Back-End vorhanden ist.  Nur Application Insights-Ressourcen zu Legacytarifen und mehrstufige Webtests werden in der Kategorie der Verbrauchseinheit von Application Insights gemeldet.  Der Verbrauch wird in der Spalte „Verbrauchte Menge“ aufgeführt, und die Einheit für jeden Eintrag wird in der Spalte „Maßeinheit“ angegeben.  Es sind weitere Einzelheiten verfügbar, anhand derer Sie [Ihre Microsoft Azure-Rechnung verstehen](../cost-management-billing/understand/review-individual-bill.md). 
+Weitere Details zur Nutzung erhalten Sie, wenn Sie [Ihre Nutzungsdaten aus dem Azure-Portal herunterladen](../cost-management-billing/understand/download-azure-daily-usage.md). In der heruntergeladenen Tabelle ist der Verbrauch pro Azure-Ressource pro Tag aufgeführt. In dieser Excel-Tabelle können Sie den Verbrauch für Ihre Application Insights-Ressourcen ermitteln, indem Sie zuerst nach der Spalte „Kategorie der Verbrauchseinheit“ filtern, um „Application Insights“ und „Log Analytics“ anzuzeigen und dann in der Spalte „Instanz-ID“ einen Filter namens „contains microsoft.insights/components“ hinzufügen.  Die meiste Application Insights-Nutzung wird in Verbrauchseinheiten der entsprechenden Kategorie von Log Analytics gemeldet, da für alle Azure Monitor-Komponenten ein einzelnes Protokoll-Back-End vorhanden ist.  Nur Application Insights-Ressourcen zu Legacytarifen und mehrstufige Webtests werden in der Kategorie der Verbrauchseinheit von Application Insights gemeldet.  Der Verbrauch wird in der Spalte „Verbrauchte Menge“ aufgeführt, und die Einheit für jeden Eintrag wird in der Spalte „Maßeinheit“ angegeben.  Es sind weitere Einzelheiten verfügbar, anhand derer Sie [Ihre Microsoft Azure-Rechnung verstehen](../cost-management-billing/understand/review-individual-bill.md). 
 
 > [!NOTE]
 > Die Verwendung von **Cost Management** im Hub **Azure Cost Management und Abrechnung** ist die bevorzugte Methode, um die Überwachungskosten grob zu verstehen.  Die Benutzeroberflächen **Nutzung und geschätzte Kosten** für [Log Analytics](logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs) und [Application Insights](app/pricing.md#understand-your-usage-and-estimate-costs) bieten tiefere Einblicke zur jeweiligen Komponente von Azure Monitor.

@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 1b7d1c1928425dca7e1924bca09f2cd21e0ea06a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 47097be22fc9c75d7c56c8cb4d1f384936f7033a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347124"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurieren von BGP auf Azure-VPN-Gateways mithilfe der Befehlszeilenschnittstelle
 
-In diesem Artikel wird das Aktivieren von BGP für eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) und eine VNET-zu-VNET-Verbindung (also zwischen virtuellen Netzwerken) mithilfe des Azure Resource Manager-Bereitstellungsmodells und der Azure-Befehlszeilenschnittstelle (CLI) beschrieben.
+In diesem Artikel wird das Aktivieren von BGP für eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) und eine VNet-zu-VNet-Verbindung (also zwischen virtuellen Netzwerken) mithilfe des [Azure Resource Manager-Bereitstellungsmodells](../azure-resource-manager/management/deployment-models.md) und der Azure-Befehlszeilenschnittstelle beschrieben.
 
 ## <a name="about-bgp"></a>Informationen zu BGP
 
@@ -46,7 +46,7 @@ Dieser Abschnitt ist erforderlich, bevor Sie Schritte in den anderen beiden Konf
 
 ![BGP-Gateway](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>Voraussetzungen
+### <a name="before-you-begin"></a>Vorbereitung
 
 Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 
@@ -92,7 +92,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Erstellen des VPN Gateway mit der AS-Nummer
 
-Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. Für BGP ist ein routenbasiertes VPN Gateway erforderlich. Außerdem benötigen Sie den zusätzlichen Parameter `-Asn` zum Festlegen der ASN (Nummer des autonomen Systems) für TestVNet1. Das Erstellen eines Gateways kann einige Zeit dauern (45 Minuten oder mehr). 
+Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. Für BGP ist ein routenbasiertes VPN Gateway erforderlich. Außerdem benötigen Sie den zusätzlichen Parameter `-Asn` zum Festlegen der ASN (Nummer des autonomen Systems) für TestVNet1. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
 Wenn Sie diesen Befehl mit dem Parameter `--no-wait` ausführen, werden kein Feedback und keine Ausgabe angezeigt. Der Parameter `--no-wait` ermöglicht die Erstellung des Gateways im Hintergrund. Das bedeutet nicht, dass die Erstellung des VPN-Gateways sofort abgeschlossen ist.
 

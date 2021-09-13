@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a369ed26ca91dbf951b28b99250c6307608c5eb3
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 75a6064ba44f803837719e0cb1f574d4295f8ac4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749076"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732888"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>Migrieren von Key Vault-Zugriffsrichtlinien zu einem Berechtigungsmodell für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -65,7 +65,7 @@ Die folgenden vordefinierten Berechtigungsvorlagen für Zugriffsrichtlinien sind
 - SharePoint Online-Kundenschlüssel
 - Azure Information-BYOK
 
-### <a name="access-policies-templates-to-azure-roles-mapping"></a>Vorlagen für Zugriffsrichtlinien für die Zuordnung von Azure-Rollen
+### <a name="access-policy-templates-to-azure-roles-mapping"></a>Vorlagen für Zugriffsrichtlinien für die Zuordnung von Azure-Rollen
 | Zugriffsrichtlinienvorlage | Operationen (Operations) | Azure-Rolle |
 | --- | --- | --- |
 | Verwaltung von Schlüsseln, Geheimnissen und Zertifikaten | Schlüssel: alle Vorgänge <br>Zertifikate: alle Vorgänge<br>Geheimnisse: alle Vorgänge | Key Vault-Administrator |
@@ -91,7 +91,7 @@ Mit Azure RBAC für Key Vault können Sie Rollen auf den folgenden Ebenen zuweis
 - Key Vault-Ressource
 - Einzelner Schlüssel, einzelnes Geheimnis, einzelnes Zertifikat
 
-Mit dem Berechtigungsmodell für Key Vault-Zugriffsrichtlinien können Richtlinien nur auf der Key Vault-Ressourcenebene zugewiesen werden. 
+Mit dem Berechtigungsmodell für Key Vault-Zugriffsrichtlinien können Richtlinien nur auf der Key Vault-Ressourcenebene zugewiesen werden.
 
 Es hat sich bewährt, ein Key Vault-Objekt pro Anwendung zu erstellen und den Zugriff auf der Key Vault-Ebene zu verwalten. In manchen Szenarios kann die Verwaltung des Zugriffs auf anderen Ebenen jedoch die Zugriffsverwaltung vereinfachen.
 

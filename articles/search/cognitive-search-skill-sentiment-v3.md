@@ -7,26 +7,21 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 1c74b716c6a22748a330fb3d325be3202ed89abc
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/12/2021
+ms.openlocfilehash: 4baadea0d78db64d97d1ae94317d7d506a141f41
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542451"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349895"
 ---
 # <a name="sentiment-cognitive-skill-v3"></a>Der kognitive Skill „Stimmung“ (V3)
 
-> [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
-
-Der V3-Skill **Stimmung** bewertet unstrukturierten Text und gibt für jeden Datensatz Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) basierend auf der höchsten Zuverlässigkeitsbewertung an, die vom Dienst auf Satz- und Dokumentebene gefunden wird. Bei diesem Skill werden die Machine Learning-Modelle verwendet, die in Cognitive Services von Version 3 der [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
+Der V3-Skill **Stimmung** bewertet unstrukturierten Text und gibt für jeden Datensatz Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) basierend auf der höchsten Zuverlässigkeitsbewertung an, die vom Dienst auf Satz- und Dokumentebene gefunden wird. Bei diesem Skill werden die Machine Learning-Modelle verwendet, die in Cognitive Services von Version 3 der [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden. Damit werden außerdem die [Opinion Mining-Funktionen der Textanalyse-API](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining) verfügbar gemacht. Diese liefert detailliertere Informationen zu den Meinungen in Bezug auf die Attribute von Produkten oder Dienstleistungen im Text.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Dieser Skill ist an Cognitive Services gebunden und erfordert [eine abrechenbare Ressource](cognitive-search-attach-cognitive-services.md) für Transaktionen, die 20 Dokumente pro Indexer und Tag überschreiten. Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/) angegeben.
-
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.V3.SentimentSkill

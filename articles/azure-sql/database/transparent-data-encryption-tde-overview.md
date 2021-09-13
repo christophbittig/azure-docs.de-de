@@ -11,28 +11,32 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 10/12/2020
-ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: 16886e185d27a67cdea64c4214ca6132e714e9d9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812802"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339747"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>TDE (Transparent Data Encryption) für SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) trägt durch die Verschlüsselung von ruhenden Daten zum Schutz von Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics vor der Bedrohung durch schädliche Offlineaktivitäten bei. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. TDE ist standardmäßig für alle neu bereitgestellten SQL-Datenbank-Instanzen aktiviert und muss für ältere Datenbanken in Azure SQL-Datenbank oder Azure SQL Managed Instance manuell aktiviert werden. Für Azure Synapse Analytics muss TDE manuell aktiviert werden.
+[Transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) trägt durch die Verschlüsselung von ruhenden Daten zum Schutz von Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics vor der Bedrohung durch schädliche Offlineaktivitäten bei. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind. TDE ist standardmäßig für alle neu bereitgestellten Azure SQL-Datenbank-Instanzen aktiviert und muss für ältere Datenbanken in Azure SQL-Datenbank manuell aktiviert werden. Bei Azure SQL Managed Instance ist TDE auf Instanzebene und in neu erstellten Datenbanken aktiviert. Für Azure Synapse Analytics muss TDE manuell aktiviert werden. 
+
+> [!NOTE]
+> Dieser Artikel gilt für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics (dedizierte SQL-Pools (vormals SQL DW)). Die Dokumentation zu Transparent Data Encryption für dedizierte SQL-Pools in Synapse-Arbeitsbereichen finden Sie unter [Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche](../../synapse-analytics/security/workspaces-encryption.md).
 
 Die TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten und auf Seitenebene durch. Jede Seite wird entschlüsselt, wenn sie in den Speicher gelesen wird, und dann verschlüsselt, bevor sie auf den Datenträger geschrieben wird. TDE verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbank-Verschlüsselungsschlüssel (Database Encryption Key, DEK) bezeichnet wird. Beim Datenbankstart wird der verschlüsselte DEK entschlüsselt und dann für die Entschlüsselung und erneute Verschlüsselung der Datenbankdateien im Prozess der SQL Server-Datenbank-Engine verwendet. Der DEK ist durch die TDE-Schutzvorrichtung geschützt. Beim TDE-Schutzvorrichtung handelt es sich entweder um ein von einem Dienst verwaltetes Zertifikat (dienstseitig verwaltete transparente Datenverschlüsselung) oder um einen asymmetrischen Schlüssel, der in [Azure Key Vault](../../key-vault/general/security-features.md) gespeichert ist (kundenseitig verwaltete transparente Datenverschlüsselung).
 
 Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Serverebene](logical-servers.md) festgelegt und wird von allen Datenbanken übernommen, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
 
 > [!IMPORTANT]
-> Alle neu erstellten Datenbanken in SQL-Datenbank werden standardmäßig mithilfe einer dienstseitig verwalteten transparenten Datenverschlüsselung verschlüsselt. Vorhandene SQL-Datenbanken, die vor Mai 2017 erstellt wurden, und SQL-Datenbanken, die durch Wiederherstellung, Georeplikation und Datenbankkopie erstellt wurden, sind standardmäßig nicht verschlüsselt. Vorhandene SQL Managed Instance-Datenbanken, die vor Februar 2019 erstellt wurden, sind standardmäßig nicht verschlüsselt. Azure SQL Managed Instance-Datenbanken, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus von der Quelle.
+> Alle neu erstellten Datenbanken in SQL-Datenbank werden standardmäßig mithilfe einer dienstseitig verwalteten transparenten Datenverschlüsselung verschlüsselt. Vorhandene SQL-Datenbanken, die vor Mai 2017 erstellt wurden, und SQL-Datenbanken, die durch Wiederherstellung, Georeplikation und Datenbankkopie erstellt wurden, sind standardmäßig nicht verschlüsselt. Vorhandene SQL Managed Instance-Datenbanken, die vor Februar 2019 erstellt wurden, sind standardmäßig nicht verschlüsselt. Azure SQL Managed Instance-Datenbanken, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus von der Quelle. Wenn Sie eine vorhandene verschlüsselte Datenbank wiederherstellen möchten, müssen Sie zunächst das erforderliche TDE-Zertifikat in SQL Managed Instance [importieren](../managed-instance/tde-certificate-migrate.md). 
 
 > [!NOTE]
 > TDE kann nicht zum Verschlüsseln von Systemdatenbanken wie die **Masterdatenbank** in Azure SQL-Datenbank und Azure SQL Managed Instance verwendet werden. Die **master**-Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind. Es wird empfohlen, keine vertraulichen Daten in den Systemdatenbanken zu speichern. Die [Infrastrukturverschlüsselung](transparent-data-encryption-byok-overview.md#doubleencryption), die Systemdatenbanken verschlüsselt (einschließlich der Masterdatenbank), wird jetzt eingeführt. 
+
 
 ## <a name="service-managed-transparent-data-encryption"></a>Von einem Dienst verwaltete transparente Datenverschlüsselung
 

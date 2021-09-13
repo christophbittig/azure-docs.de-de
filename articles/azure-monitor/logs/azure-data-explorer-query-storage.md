@@ -1,5 +1,5 @@
 ---
-title: Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer (Vorschau)
+title: Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer
 description: Verwenden Sie Azure Data Explorer, um Daten abzufragen, die aus Ihrem Log Analytics-Arbeitsbereich in ein Azure Storage-Konto exportiert wurden.
 author: osalzberg
 ms.author: bwren
@@ -7,14 +7,14 @@ ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ad938d15f8e21ed34014c0a743b5ba891f5476e0
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e3ab2a3bfc6e42e1cba479ee8dacb97d8f46305a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316837"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343691"
 ---
-# <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer (Vorschau)
+# <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer"></a>Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer
 Das Exportieren von Daten aus Azure Monitor in ein Azure Storage-Konto ermöglicht eine kostengünstige Aufbewahrung und bietet die Möglichkeit, Protokolle verschiedenen Regionen neu zuzuordnen. Verwenden Sie Azure Data Explorer, um Daten abzufragen, die aus Ihrem Log Analytics-Arbeitsbereich exportiert wurden. Nach der Konfiguration stehen unterstützte Tabellen, die von Ihren Arbeitsbereichen an ein Azure Storage-Konto gesendet werden, als Datenquelle für Azure Data Explorer bereit.
 
 Der Prozessablauf sieht folgendermaßen aus: 
@@ -80,6 +80,10 @@ $SecondCommand = @()
 foreach ($record in $output) {
     if ($record.DataType -eq 'System.DateTime') {
         $dataType = 'datetime'
+    } elseif ($record.DataType -eq 'System.Int32') {
+        $dataType = 'int32'
+    } elseif ($record.DataType -eq 'System.Double') {
+        $dataType = 'double'
     } else {
         $dataType = 'string'
     }

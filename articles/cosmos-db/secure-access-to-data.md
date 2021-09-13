@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 06/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 696d8c1a775f67271a7c7b4fa81789e7b0775bb1
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: a7b43f52fee66579beb0c91f0b76d313cd4bcdaa
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110654262"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112522207"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -128,7 +128,7 @@ User user = await database.CreateUserAsync("User 1");
 
 ### <a name="permissions"></a>Berechtigungen<a id="permissions"></a>
 
-Eine Berechtigungsressource ist einem Benutzer zugeordnet und sowohl auf der Container- als auch auf der Partitionsschlüsselebene zugewiesen. Jeder Benutzer kann null oder mehr Berechtigungen enthalten. Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf einen bestimmten Container oder bestimmte Daten in einem speziellen Partitionsschlüssel benötigt. Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werden:
+Eine Berechtigungsressource ist einem Benutzer zugeordnet und einer bestimmten Ressource zugewiesen. Jeder Benutzer kann null oder mehr Berechtigungen enthalten. Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf einen bestimmten Container oder bestimmte Daten in einem speziellen Partitionsschlüssel benötigt. Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werden:
 
 - Alle: Der Benutzer verfügt über Vollzugriff auf die Ressource.
 - Lesen: Der Benutzer kann die Inhalte der Ressource nur lesen und keine Schreib-, Aktualisierungs- oder Löschvorgänge für die Ressource vornehmen.
@@ -153,7 +153,7 @@ user.CreatePermissionAsync(
     new PermissionProperties(
         id: "permissionUser1Orders",
         permissionMode: PermissionMode.All,
-        container: benchmark.container,
+        container: container,
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 

@@ -3,12 +3,12 @@ title: Übersicht über die Benachrichtigung und Benachrichtigungsüberwachung i
 description: Übersicht über Warnungen in Azure Monitor
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0d6cd4c895bbcd78767776a86bd63cfa4f5242
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038049"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340105"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -180,26 +180,22 @@ Für die Nutzung und Verwaltung von Warnungsinstanzen muss der Benutzer über di
 
 Möglicherweise möchten Sie Warnungen, die für Ihr Abonnement generiert wurden, programmgesteuert abfragen. Beispielsweise können Sie mit Abfragen benutzerdefinierte Ansichten außerhalb des Azure-Portals erstellen oder Ihre Warnungen analysieren, um Muster und Trends zu erkennen.
 
-Sie können die für Ihre Abonnements generierten Warnungen mithilfe der [Warnungsverwaltung-REST-API](/rest/api/monitor/alertsmanagement/alerts) oder der [Azure Resource Graph-REST-API](../../governance/resource-graph/overview.md) und der [REST-API für Ressourcen](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) abfragen.
+Es empfiehlt sich, [Azure Resource Graph](../../governance/resource-graph/overview.md) mit dem `AlertsManagementResources`-Schema zum Abfragen von ausgelösten Warnungen zu verwenden. Resource Graph wird empfohlen, wenn Sie Warnungen verwalten müssen, die für mehrere Abonnements generiert werden.
 
-Die Resource Graph-REST-API für Ressourcen ermöglicht Ihnen das Abfragen von Warnungsinstanzen in beliebigem Umfang. Resource Graph wird empfohlen, wenn Sie Warnungen verwalten müssen, die für viele Abonnements generiert werden. 
-
-Die folgende Beispielanforderung an die Resource Graph-REST-API gibt die Anzahl der Warnungen in einem Abonnement zurück:
+Die folgende Beispielanforderung an die Resource Graph-REST-API gibt die Warnungen des letzten Tages in einem Abonnement zurück:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
+  "query": "alertsmanagementresources | where properties.essentials.lastModifiedDateTime > ago(1d) | project alertInstanceId = id, parentRuleId = tolower(tostring(properties['essentials']['alertRule'])), sourceId = properties['essentials']['sourceCreatedId'], alertName = name, severity = properties.essentials.severity, status = properties.essentials.monitorCondition, state = properties.essentials.alertState, affectedResource = properties.essentials.targetResourceName, monitorService = properties.essentials.monitorService, signalType = properties.essentials.signalType, firedTime = properties['essentials']['startDateTime'], lastModifiedDate = properties.essentials.lastModifiedDateTime, lastModifiedBy = properties.essentials.lastModifiedUserName"
 }
 ```
 
-Das Ergebnis dieser Resource Graph-Abfrage können Sie auch im Portal mit dem Azure Resource Graph-Tester sehen: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+Sie können das Ergebnis dieser Resource Graph-Abfrage im Portal mit dem Azure Resource Graph-Explorer anzeigen: [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/alertsmanagementresources%0A%7C%20where%20properties.essentials.lastModifiedDateTime%20%3E%20ago(1d)%0A%7C%20project%20alertInstanceId%20%3D%20id%2C%20parentRuleId%20%3D%20tolower(tostring(properties%5B 'essentials'%5D%5B'alertRule'%5D))%2C%20sourceId%20%3D%20properties%5B'essentials'%5D%5B'sourceCreatedId'%5D%2C%20alertName%20%3D%20name%2C%20severity%20%3D%20properties.essentials.severity%2C%20status%20%3D%20properties.essentials.monitorCondition%2C%20state%20%3D%20properties.essentials.alertState%2C%20affectedResource%20%3D%20properties.essentials.targetResourceName%2C%20monitorService%20%3D%20properties.essentials.monitorService%2C%20signalType%20%3D%20properties.essentials.signalType%2C%20firedTime%20%3D%20properties%5B'essentials'%5D%5B'startDateTime'%5D%2C%20lastModifiedDate%20%3D%20properties.essentials.lastModifiedDateTime%2C%20lastModifiedBy%20%3D%20properties.essentials.lastModifiedUserName)
 
-Sie können die Warnungen nach den Feldern in [essentials](../alerts/alerts-common-schema-definitions.md#essentials) (Zusammenfassung) abfragen.
-
-Mithilfe der [Warnungsverwaltung-REST-API](/rest/api/monitor/alertsmanagement/alerts) können weitere Informationen zu bestimmten Warnungen abgerufen werden, einschließlich der Felder in [alertContext](../alerts/alerts-common-schema-definitions.md#alert-context) (Warnungskontext).
+Sie können die [Warnungsverwaltungs-REST-API](/rest/api/monitor/alertsmanagement/alerts) auch in kleineren Abfrageszenarios verwenden oder zum Aktualisieren von ausgelösten Warnungen nutzen.
 
 ## <a name="smart-groups"></a>Intelligente Gruppen
 

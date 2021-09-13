@@ -252,7 +252,7 @@
 - name: Verweis
   items:
     - name: MFA-Benutzerhandbuch
-      href: ../user-help/multi-factor-authentication-end-user-first-time.md
+      href: 'https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc'
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-Cmdlets

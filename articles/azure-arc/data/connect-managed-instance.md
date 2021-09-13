@@ -7,35 +7,34 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 87d9ca35cbed711f8fad0faf4759e3f6c3833b86
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: c0a64d5756895f18cbb1285586570ac72dd1c12e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495996"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347110"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Herstellen einer Verbindung mit Azure Arc-fähigen SQL Managed Instance-Instanzen
 
 In diesem Artikel wird erläutert, wie Sie eine Verbindung mit Ihrer Azure Arc-fähigen SQL Managed Instance-Instanz herstellen können. 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="view-azure-arc-enabled-sql-managed-instances"></a>Anzeigen von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
 Verwenden Sie den folgenden Befehl, um die Azure Arc-fähige SQL Managed Instance-Instanz und die externen Endpunkte anzuzeigen:
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s -o table
 ```
 
 Das Ergebnis sollte wie folgt aussehen:
 
 ```console
-Name    Replicas    ExternalEndpoint    State
-------  ----------  ----------------  -------
-sqldemo 1/1         10.240.0.4:32023  Ready
+Name       PrimaryEndpoint      Replicas    State
+---------  -------------------  ----------  -------
+sqldemo    10.240.0.107,1433    1/1         Ready
 ```
 
 Wenn Sie z. B. AKS oder kubeadm oder OpenShift verwenden, können Sie die externe IP-Adresse und Portnummer hier kopieren und mithilfe eines Tools Ihrer Wahl für die Verbindungsherstellung mit einer SQL Server-/Azure SQL-Instanz wie Azure Data Studio oder SQL Server Management Studio verwenden.  Wenn Sie jedoch die Schnellstart-VM verwenden, finden Sie unten weitere Informationen zum Herstellen einer Verbindung mit der VM außerhalb von Azure. 
@@ -84,7 +83,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 Sobald Sie den Namen des Netzwerksicherheitsgateways kennen, können Sie mithilfe des folgenden Befehls eine Firewallregel hinzufügen. Mit den hier gezeigten Beispielwerten wird eine Netzwerksicherheitsgateway-Regel für Port 30913 erstellt und das Herstellen von Verbindungen über **beliebige** IP-Quelladressen zugelassen.  Dies ist keine bewährte Methode hinsichtlich der Sicherheit!  Sie können mehr Sicherheit gewährleisten, indem Sie einen Wert „-source-address-prefixes“ festlegen, der spezifisch für Ihre IP-Clientadresse oder einen IP-Adressbereich gilt, der die IP-Adressen Ihres Teams oder Ihrer Organisation umfasst.
 
-Ersetzen Sie den Wert des `--destination-port-ranges`-Parameters unten durch die Portnummer, die Sie aus dem Befehl `azdata sql instance list` oben abgerufen haben.
+Ersetzen Sie den Wert des `--destination-port-ranges`-Parameters unten durch die Portnummer, die Sie aus dem Befehl `az sql mi-arc list` oben abgerufen haben.
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'

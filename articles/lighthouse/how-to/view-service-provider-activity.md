@@ -1,21 +1,18 @@
 ---
-title: Anzeigen der Dienstanbieteraktivität
-description: Kunden können anhand von protokollierten Aktivitäten einsehen, welche Aktionen von Dienstanbietern über Azure Lighthouse durchgeführt wurden.
-ms.date: 05/11/2021
+title: Überwachen der Dienstanbieteraktivität
+description: Kunden können anhand von protokollierten Aktivitäten überwachen, welche Aktionen von Dienstanbietern über Azure Lighthouse durchgeführt wurden.
+ms.date: 07/16/2021
 ms.topic: how-to
-ms.openlocfilehash: ef9f8e76c9b6c2ab23c4075b81874816ff784f67
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9f24126bc8d3252de3926e72aea2915092206e38
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785955"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389150"
 ---
-# <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität
+# <a name="monitor-service-provider-activity"></a>Überwachen der Dienstanbieteraktivität
 
-Kunden, die delegierte Abonnements für [Azure Lighthouse](../overview.md) haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/essentials/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. Dadurch erhalten Kunden nicht nur einen umfassenden Einblick in Vorgänge, die von Dienstanbietern im Rahmen der [delegierten Azure-Ressourcenverwaltung](../concepts/architecture.md) ausgeführt werden, sondern auch in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten (Azure Active Directory) des Kunden ausgeführt werden.
-
-> [!TIP]
-> Wir bieten in Azure Policy integrierte Richtliniendefinitionen, um die [Delegierung an bestimmte verwaltende Mandanten einzuschränken](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) und die [Delegierung von Bereichen an einen verwaltenden Mandanten zu überwachen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Weitere Informationen finden Sie unter [Überwachen von Delegierungen in Ihrer Umgebung](view-manage-service-providers.md#audit-delegations-in-your-environment).
+Kunden, die delegierte Abonnements für [Azure Lighthouse](../overview.md) haben, können [Daten des Azure-Aktivitätsprotokolls anzeigen](../../azure-monitor/essentials/platform-logs-overview.md), um sich alle ausgeführten Aktionen anzusehen. So erhalten Kunden umfassende Einblicke in Vorgänge, die von Dienstanbietern ausgeführt werden, sowie in Vorgänge, die von Benutzern innerhalb des eigenen Azure AD-Mandanten des Kunden ausgeführt werden.
 
 ## <a name="view-activity-log-data"></a>Anzeigen von Aktivitätsprotokolldaten
 
@@ -39,17 +36,18 @@ Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Ak
 
 ## <a name="create-log-queries"></a>Erstellen von Protokollabfragen
 
-Sie können Abfragen erstellen, um Ihre protokollierten Aktivitäten zu analysieren oder sich auf bestimmte Elemente zu konzentrieren. Beispielsweise kann es vorkommen, dass im Rahmen einer Überprüfung ein Bericht mit sämtlichen Aktionen auf Administratorebene benötigt wird, die für ein Abonnement ausgeführt wurden. Sie können eine Abfrage erstellen, um nur nach diesen Aktionen zu filtern und die Ergebnisse nach Benutzer, Datum oder nach einem anderen Wert zu sortieren.
+Protokollabfragen können Ihnen dabei helfen, die protokollierten Aktivitäten zu analysieren oder sich auf bestimmte Elemente zu konzentrieren. Beispielsweise kann es vorkommen, dass im Rahmen einer Überprüfung ein Bericht mit sämtlichen Aktionen auf Administratorebene benötigt wird, die für ein Abonnement ausgeführt wurden. Sie können eine Abfrage erstellen, um nur nach diesen Aktionen zu filtern und die Ergebnisse nach Benutzer, Datum oder nach einem anderen Wert zu sortieren.
 
 Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="view-user-activity-across-domains"></a>Anzeigen von Benutzeraktivitäten in mehreren Domänen
 
-Mithilfe der Beispielarbeitsmappe [Aktivitätsprotokolle nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) können Sie die Aktivität einzelner Benutzer über mehrere Domänen hinweg anzeigen.
+Verwenden Sie die Beispielarbeitsmappe [Aktivitätsprotokolle nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain), um domänenübergreifende Aktivitäten einzelner Benutzer anzuzeigen.
 
 Die Ergebnisse können nach dem Domänennamen gefiltert werden. Sie können auch zusätzliche Filter anwenden, z. B. Kategorie, Ebene oder Ressourcengruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informieren Sie sich über das [Überwachen und Einschränken von Delegierungen in Ihrer Umgebung](view-manage-service-providers.md#audit-and-restrict-delegations-in-your-environment).
 - Weitere Informationen zu Azure Monitor finden Sie [hier](../../azure-monitor/index.yml).
 - Informationen zum Anzeigen und Verwalten von Dienstanbietern im Azure-Portal finden Sie [hier](view-manage-service-providers.md).

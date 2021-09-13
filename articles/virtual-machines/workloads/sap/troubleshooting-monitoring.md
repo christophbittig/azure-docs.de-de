@@ -1,6 +1,6 @@
 ---
-title: Überwachen von SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
-description: Informationen zur Überwachung von SAP HANA in Azure (große Instanzen)
+title: Überwachen von SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+description: Informieren Sie sich über die Überwachung von SAP HANA in Azure (große Instanzen).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -11,44 +11,75 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2dc38da0d474440b00a385c9841281b26a824e13
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 06/23/2021
+ms.author: madhukan
+ms.custom:
+- H1Hack27Feb2017
+- contperf-fy21q4
+ms.openlocfilehash: 3c77fe23b7ce058f31a216c5991b7129c3ac99fe
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578061"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579826"
 ---
-# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Überwachen von SAP HANA in Azure (große Instanzen)
+# <a name="monitor-sap-hana-large-instances-on-azure"></a>Überwachen von SAP HANA in Azure (große Instanzen)
 
-SAP HANA in Azure (große Instanzen) unterscheidet sich nicht von anderen IaaS-Bereitstellungen, d.h., Sie müssen die Aktivitäten von Betriebssystem und Anwendungen und deren Belegung der folgenden Ressourcenklassen überwachen:
+In diesem Artikel wird die Überwachung von SAP HANA in Azure (große Instanzen) – auch als BareMetal-Infrastruktur bezeichnet – beschrieben.
+
+SAP HANA in Azure (große Instanzen) unterscheidet sich nicht von anderen IaaS-Bereitstellungen. Die Überwachung des Betriebssystems und der Anwendung ist wichtig. Sie sollten wissen, wie die Anwendungen die folgenden Ressourcen nutzen:
 
 - CPU
 - Arbeitsspeicher
 - Netzwerkbandbreite
 - Speicherplatz
 
-Bei Azure Virtual Machines müssen Sie ermitteln, ob die genannten Ressourcenklassen ausreichend Kapazität bieten oder irgendwann erschöpft werden. Nachstehend werden die verschiedenen Klassen detailliert beschrieben:
+Überwachen Sie SAP HANA (große Instanzen), um festzustellen, ob die oben genannten Ressourcen ausreichend Kapazität bieten oder irgendwann erschöpft werden. In den folgenden Abschnitten finden Sie weitere Details zu diesen Ressourcen.
 
-**CPU-Ressourcenauslastung:** Das Verhältnis, das SAP für eine bestimmte Workload für HANA definiert hat, wird erzwungen, um sicherstellen, dass genügend CPU-Ressourcen verfügbar sind, um die im Arbeitsspeicher gespeicherten Daten zu verarbeiten. Trotzdem kann es Fälle geben, in denen HANA bei der Ausführung von Abfragen aufgrund fehlender Indizes oder ähnlicher Probleme viele CPU-Ressourcen belegt. Dies bedeutet, dass Sie die CPU-Ressourcenauslastung der HANA (große Instanzen)-Einheit sowie CPU-Ressourcen überwachen sollten, die von den verschiedenen HANA-Diensten genutzt werden.
+## <a name="cpu-resource-consumption"></a>CPU-Ressourcennutzung
 
-**Arbeitsspeicherauslastung:** Hierfür muss eine Überwachung sowohl innerhalb als auch außerhalb von HANA erfolgen. Überwachen Sie in HANA, wie die Daten für HANA reservierten Arbeitsspeicher nutzen, um die von SAP angeforderten Größenrichtlinien zu erfüllen. Sie sollten außerdem die Arbeitsspeichernutzung auf Ebene der „großen Instanz“ überwachen, um sicherzustellen, dass installierte Nicht-HANA-Software nicht zu viel Arbeitsspeicher belegt und aufgrund dessen mit HANA um Arbeitsspeicher konkurriert.
+SAP definiert einen maximalen Schwellenwert für die CPU-Nutzung der SAP HANA-Workload. Indem Sie unter diesem Schwellenwert bleiben, stellen Sie sicher, dass Sie über genügend CPU-Ressourcen zum Verarbeiten der im Arbeitsspeicher gespeicherten Daten verfügen. Eine hohe CPU-Nutzung kann auftreten, wenn SAP HANA-Dienste Abfragen aufgrund fehlender Indizes oder ähnlicher Probleme ausführen. Die Überwachung der CPU-Nutzung der Instanz von HANA (große Instanzen) und von bestimmten HANA-Diensten ist daher von entscheidender Bedeutung.
 
-**Netzwerkbandbreite:** Die Bandbreite des Azure VNet-Gateways ist für in das Azure VNet eingehende Daten begrenzt. Deshalb ist es hilfreich, die von allen Azure VMs in einem VNet empfangenen Daten zu überwachen, um zu bestimmen, wie nahe Sie an die Grenzwerte der ausgewählten Azure-Gateway-SKU herankommen. Auf der HANA (große Instanz)-Einheit ist es sinnvoll, auch den ein- und ausgehenden Netzwerkdatenverkehr zu überwachen und die Volumes nachzuverfolgen, die mit der Zeit verarbeitet werden.
+## <a name="memory-consumption"></a>Arbeitsspeicherverbrauch 
 
-**Speicherplatz:** Die Speicherplatzbelegung steigt in der Regel mit der Zeit. Die wichtigsten Gründe dafür sind: Zunahme der Datenmenge, Erstellung von Sicherungen von Transaktionsprotokollen, Speicherung von Ablaufverfolgungsdateien und Erstellung von Speichermomentaufnahmen. Aus diesem Grund ist es wichtig, die Speicherplatzbelegung zu überwachen und den Speicherplatz zu verwalten, der der HANA (große Instanz)-Einheit zugeordnet ist.
+Die Arbeitsspeichernutzung muss sowohl innerhalb als auch außerhalb von HANA auf der Instanz von SAP HANA (große Instanzen) überwacht werden. Überwachen Sie, wie die Daten den für HANA zugeordneten Arbeitsspeicher nutzen, damit Sie die SAP-Richtlinien zur Dimensionierung einhalten können. Überwachen Sie die Arbeitsspeichernutzung auf der großen Instanz, um sicherzustellen, dass nicht zu viel Arbeitsspeicher von anderer Software als HANA verbraucht wird. Sie müssen verhindern, dass solche Software mit HANA um Arbeitsspeicher konkurriert.
 
-Bei **SKUs von Typ II** großer HANA-Instanzen sind bereits Systemdiagnosetools auf dem Server geladen. Mit diesen Diagnosetools können Sie die Systemintegritätsprüfung durchführen. Führen Sie den folgenden Befehl aus, um die Systemdiagnose-Protokolldatei unter „/var/log/health_check“ zu generieren.
+## <a name="network-bandwidth"></a>Netzwerkbandbreite 
+
+Die Bandbreite des Azure Virtual Network-Gateways (VNet-Gateway) ist begrenzt. Daten können nur innerhalb dieser Grenzen in das Azure-VNet übertragen werden. Überwachen Sie die Daten, die von allen Azure-VMs in einem VNet empfangen werden. So wissen Sie, wann Sie sich den Grenzwerten der von Ihnen ausgewählten Azure-Gateway-SKU nähern. Es ist auch sinnvoll, ein- und ausgehenden Netzwerkdatenverkehr auf der Instanz von HANA (große Instanzen) zu überwachen, um die im Laufe der Zeit verarbeiteten Datenmengen nachzuverfolgen.
+
+## <a name="disk-space"></a>Speicherplatz
+
+Die Speicherplatzbelegung steigt in der Regel mit der Zeit. Häufige Ursachen sind:
+- Zunahme der Datenmenge im Laufe der Zeit
+- Ausführung von Transaktionsprotokollsicherungen
+- Speicherung von Ablaufverfolgungsdateien
+- Erstellung von Speichermomentaufnahmen 
+
+Aus diesem Grund ist es wichtig, die Speicherplatzbelegung zu überwachen und den Speicherplatz zu verwalten, der der Instanz von HANA (große Instanzen) zugeordnet ist.
+
+## <a name="preloaded-system-diagnostic-tools"></a>Im Voraus geladene Systemdiagnosetools
+
+Bei **SKUs von Typ II** großer HANA-Instanzen sind bereits Systemdiagnosetools auf dem Server geladen. Sie können diese Diagnosetools verwenden, um die Integrität des Systems zu überprüfen.
+ 
+Führen Sie den folgenden Befehl aus, um die Systemdiagnose-Protokolldatei unter „/var/log/health_check“ zu generieren.
+
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```
-Wenn Sie zur Behandlung eines Problems das Microsoft-Supportteam zurate ziehen, werden Sie eventuell auch dazu aufgefordert, die Protokolldateien mithilfe dieser Diagnosetools zu übermitteln. Sie können die Datei mithilfe des folgenden Befehls komprimieren:
+Wenn Sie zur Behandlung eines Problems das Microsoft-Supportteam zurate ziehen, werden Sie eventuell gebeten, die Protokolldateien mithilfe dieser Diagnosetools zu übermitteln. Sie können die Datei mit dem folgenden Befehl zippen:
+
 ```
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
-**Nächste Schritte**
+## <a name="azure-monitor-for-sap-solutions"></a>Azure Monitor für SAP-Lösungen
 
-- Lesen Sie [Überwachen von SAP HANA in Azure (große Instanzen)](./hana-monitor-troubleshoot.md).
+Sie können Azure Monitor für SAP-Lösungen verwenden, um alle der oben aufgeführten sowie weitere Ressourcen zu überwachen. Azure Monitor für SAP-Lösungen ist eine native Azure-Lösung. Sie ermöglicht es Ihnen, Daten aus der Azure-Infrastruktur sowie aus Datenbanken an einem zentralen Ort zu sammeln und die Daten zur schnelleren Problembehandlung visuell zu korrelieren. Weitere Informationen finden Sie unter [Azure Monitor für SAP-Lösungen](../../../virtual-machines/workloads/sap/azure-monitor-overview.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informieren Sie sich über die Überwachung und Problembehandlung in SAP HANA.
+
+> [!div class="nextstepaction"]
+> [Überwachung und Problembehandlung auf HANA-Seite](hana-monitor-troubleshoot.md)

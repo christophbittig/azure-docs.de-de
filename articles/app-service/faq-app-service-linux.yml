@@ -1,0 +1,259 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zum Ausführen integrierter Container
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zu den integrierten Linux-Containern in Azure App Service.
+  keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
+  author: msangapu-msft
+  ms.topic: article
+  ms.service: app-service
+  ms.date: 10/30/2018
+  ms.author: msangapu
+  ms.custom: seodec18
+  ms.openlocfilehash: b908a804041d2278be5e9f88b23c7fe160511fe6
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122351075"
+title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
+summary: >
+  Mit dem Release von App Service unter Linux erweitern wir unsere Plattform um Features und nehmen Verbesserungen an ihr vor. Dieser Artikel enthält Antworten auf Fragen, die uns kürzlich von Kunden gestellt wurden.
+
+
+  Wenn Sie eine Frage haben, schreiben Sie einen Kommentar zu diesem Artikel.
+sections:
+- name: Integrierte Images
+  questions:
+  - question: " Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich die Dateien?\n"
+    answer: "Sie finden alle Docker-Dateien auf [GitHub](https://github.com/Azure-App-Service/ImageBuilder).\n          \n"
+  - question: >
+      Welche Werte sind beim Konfigurieren des Laufzeitstapels im Abschnitt „Startdatei“ anzugeben?
+    answer: >
+      | Stapel           | Erwarteter Wert                                                                         |
+
+      |-----------------|----------------------------------------------------------------------------------------|
+
+      | Java SE         | der Befehl, mit dem Ihre JAR-App gestartet wird (z. B. `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
+
+      | Tomcat          | der Speicherort eines Skripts zum Ausführen aller erforderlichen Konfigurationen (z. B. `/home/site/deployments/tools/startup_script.sh`)          |
+
+      | Node.js         | die PM2-Konfigurationsdatei oder Ihre Skriptdatei                                |
+
+      | .NET Core       | der Name der kompilierten DLL-Datei als `dotnet <myapp>.dll`                                 |
+
+      | PHP             | optional [benutzerdefinierter Start](./configure-language-php.md?pivots=platform-linux#customize-start-up) |
+
+      | Python          | optional [Startskript](./configure-language-python.md#customize-startup-command) |
+
+      | Ruby            | das Ruby-Skript, mit dem Sie Ihre App initialisieren möchten                        |
+
+
+      Diese Befehle oder Skripts werden ausgeführt, nachdem der integrierte Docker-Container gestartet ist, aber bevor der Code Ihrer Anwendung gestartet wird.
+- name: Verwaltung
+  questions:
+  - question: >
+      Was geschieht, wenn ich auf die Schaltfläche „Neu starten“ im Azure-Portal klicke?
+    answer: >
+      Diese Aktion ist mit dem Docker-Neustart identisch.
+  - question: >
+      Kann ich über Secure Shell (SSH) eine Verbindung mit dem virtuellen Computer des App-Containers herstellen?
+    answer: >
+      Ja, Sie können dazu die Website für die Quellcodeverwaltung (Source Control Management, SCM) verwenden.
+
+
+      > [!NOTE]
+
+      > Sie können auch direkt über SSH, SFTP oder Visual Studio Code (zum Livedebuggen von Node.js-Apps) eine Verbindung vom lokalen Entwicklungscomputer zum App-Container herstellen. Weitere Informationen finden Sie unter [Remotedebuggen und SSH in App Service unter Linux](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html).
+
+      >
+  - question: >
+      Wie kann ich einen Linux-App Service-Plan über ein SDK oder eine Azure Resource Manager-Vorlage erstellen?
+    answer: >
+      Legen Sie das App-Dienstfeld **reserviert** auf *true* fest.
+- name: Continuous Integration und Continuous Deployment
+  questions:
+  - question: >
+      Meine Web-App verwendet nach dem Aktualisieren des Images auf Docker Hub noch ein altes Docker-Containerimage. Unterstützen Sie Continuous Integration/Deployment von benutzerdefinierten Containern?
+    answer: >
+      Ja. Informationen zum Einrichten von Continuous Integration/Continuous Deployment für Azure Container Registry oder DockerHub finden Sie unter [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md) (in englischer Sprache). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
+  - question: >
+      Werden Stagingumgebungen unterstützt?
+    answer: >
+      Ja.
+  - question: >
+      Kann ich „WebDeploy/MSDeploy“ zum Bereitstellen meiner Web-App verwenden?
+    answer: >
+      Ja, Sie müssen die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf *false* festlegen.
+  - question: >
+      Bei der Git-Bereitstellung meiner Anwendung tritt ein Fehler auf, wenn ich eine Linux-Web-App verwende. Wie kann ich dieses Problem umgehen?
+    answer: >
+      Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, stellen Sie Anwendungscodes wie folgt bereit:
+
+
+      - Verwenden Sie das Feature für Continuous Delivery (Vorschauversion): Sie können den Quellcode Ihrer App in einem Azure DevOps-Git-Repository oder -GitHub-Repository speichern, um Azure Continuous Delivery zu verwenden. Weitere Informationen finden Sie unter [Konfigurieren von Continuous Delivery für die Linux-Web-App](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/) (in englischer Sprache).
+
+
+      - Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file):Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](configure-linux-open-ssh-session.md) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie den folgenden Code aus:
+
+         ```bash
+         curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
+         ```
+
+         Wenn eine Fehlermeldung angezeigt wird, dass der Befehl `curl` nicht gefunden wird, müssen Sie curl unbedingt mithilfe von `apt-get install curl` installieren, bevor Sie den Befehl `curl` ausführen.
+- name: Sprachunterstützung
+  questions:
+  - question: >
+      Ich möchte in meiner Node.js-Anwendung Websockets verwenden. Muss ich bestimmte Einstellungen oder Konfigurationen festlegen?
+    answer: >
+      Ja, deaktivieren Sie in Ihrem serverseitigen Node.js-Code `perMessageDeflate`. Verwenden Sie beispielsweise den folgenden Code, wenn Sie socket.io nutzen:
+
+
+      ```nodejs
+
+      const io = require('socket.io')(server,{
+
+        perMessageDeflate :false
+
+      });
+
+      ```
+  - question: >
+      Unterstützen Sie nicht kompilierte .NET Core-Apps?
+    answer: >
+      Ja.
+  - question: >
+      Unterstützen Sie Composer als Abhängigkeits-Manager für PHP-Apps?
+    answer: >
+      Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung bereitstellen (weil eine composer.lock-Datei existiert), und löst eine Composerinstallation aus.
+- name: Benutzerdefinierte Container
+  questions:
+  - question: >
+      Kann ich beim Pullen von Images aus ACR verwaltete Identitäten mit App Service verwenden?
+    answer: >
+      Ja, diese Funktion ist über die Azure CLI verfügbar. Sie können [systemseitig](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_system-assigned_managed_identities.md) oder [benutzerseitig zugewiesene](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_user-assigned_managed_identities.md) Identitäten verwenden. Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
+  - question: >
+      Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte die Plattform in eine SMB-Freigabe im Verzeichnis `/home/` einbinden.
+    answer: >
+      Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *false* festgelegt ist, wird das Verzeichnis `/home/` **nicht über Skalierungsinstanzen freigegeben**, und geschriebene Dateien werden über Neustarts hinweg **nicht beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *true* aktiviert die Einbindung.
+  - question: >
+      Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.
+    answer: >
+      Sie können den Zeitraum konfigurieren, den die Plattform vor dem Neustarten Ihres Containers wartet. Legen Sie hierzu die App-Einstellung `WEBSITES_CONTAINER_START_TIME_LIMIT` auf den gewünschten Wert fest. Der Standardwert ist 230 Sekunden, und der Maximalwert ist 1800 Sekunden.
+  - question: >
+      Welches Format hat die Server-URL der privaten Registrierung?
+    answer: >
+      Geben Sie die vollständige Registrierungs-URL samt `http://` oder `https://` ein.
+  - question: >
+      Welches Format hat der Imagename in der Option zur privaten Registrierung?
+    answer: >
+      Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](/cli/azure/webapp/config/container#az_webapp_config_container_set)`az`, um `docker-custom-image-name` festzulegen.
+  - question: >
+      Kann ich mehr als einen Port in meinem benutzerdefinierten Containerimage verfügbar machen?
+    answer: >
+      Es kann nur ein Port verfügbar gemacht werden.
+  - question: >
+      Kann ich meinen eigenen Speicher verwenden?
+    answer: >
+      Ja, [Bring Your Own Storage](./configure-connect-to-azure-storage.md) ist als Vorschauversion verfügbar.
+  - question: >
+      Warum kann ich über die SCM-Website das Dateisystem meines benutzerdefinierten Containers nicht durchsuchen und keine Prozesse ausführen?
+    answer: >
+      Die SCM-Website wird in einem separaten Container ausgeführt. Sie können das Dateisystem oder aktive Prozesse des App-Containers nicht überprüfen.
+  - question: >
+      Mein benutzerdefinierter Container lauscht auf einen anderen Port als Port 80. Wie kann ich meine App so konfigurieren, dass Anforderungen an diesen Port weitergeleitet werden?
+    answer: >
+      Die Porterkennung erfolgt automatisch. Sie können auch eine Anwendungseinstellung mit dem Namen *WEBSITES_PORT* und für diese den Wert der erwarteten Portnummer angeben. Zuvor wurde von der Plattform die App-Einstellung *PORT* verwendet. Es ist geplant, diese App-Einstellung einzustellen und ausschließlich *WEBSITES_PORT* zu verwenden.
+  - question: >
+      Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?
+    answer: >
+      Nein. Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
+  - question: >
+      Muss ich die PORT-Variable im Code für integrierte Container verwenden?
+    answer: >
+      Nein. Die PORT-Variable ist aufgrund der automatischen Porterkennung nicht erforderlich. Sollte kein Port erkannt werden, wird standardmäßig Port 80 verwendet.
+
+      Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+  - question: >
+      Muss ich „WEBSITES_PORT“ für benutzerdefinierte Container verwenden?
+    answer: >
+      Ja. Diese Einstellung ist für benutzerdefinierte Container erforderlich. Wenn Sie manuell einen benutzerdefinierten Port konfigurieren möchten, können Sie die EXPOSE-Anweisung im Dockerfile sowie die App-Einstellung „WEBSITES_PORT“ mit einem Portwert verwenden, der für den Container gebunden werden soll.
+  - question: >
+      Kann ich „ASPNETCORE_URLS“ im Docker-Image verwenden?
+    answer: >
+      Ja. Überschreiben Sie die Umgebungsvariable vor dem Start der .NET Core-App.
+
+      Beispiel: Im Skript „init.sh“: export ASPNETCORE_URLS={Ihr Wert}
+- name: Mehrere Container mit Docker Compose
+  questions:
+  - question: >
+      Wie kann ich die Azure Container Registry (ACR) für die Verwendung mehrerer Container konfigurieren?
+    answer: >
+      Um ACR mit mehreren Containern zu verwenden, müssen **alle Containerimages** auf dem gleichen ACR-Registrierungsserver gehostet sein. Sobald sie sich auf dem gleichen Registrierungsserver befinden, müssen Sie Anwendungseinstellungen erstellen und dann die Konfigurationsdatei von Docker Compose mit den Namen der ACR-Images aktualisieren.
+
+
+      Erstellen Sie die folgenden Anwendungseinstellungen:
+
+
+      - DOCKER_REGISTRY_SERVER_USERNAME
+
+      - DOCKER_REGISTRY_SERVER_URL (vollständige URL, Bsp.: `https://<server-name>.azurecr.io`)
+
+      - DOCKER_REGISTRY_SERVER_PASSWORD (Aktivieren des Administratorzugriffs in den ACR-Einstellungen)
+
+
+      Verweisen Sie in der Konfigurationsdatei auf Ihr ACR-Image, wie im folgenden Beispiel:
+
+
+      ```yaml
+
+      image: <server-name>.azurecr.io/<image-name>:<tag>
+
+      ```
+  - question: >
+      Wie finde ich heraus, auf welchen Container aus dem Internet zugegriffen werden kann?
+    answer: >
+      - Nur ein Container kann für den Zugriff geöffnet sein
+
+      - Nur Port 80 und 8080 sind zugänglich (verfügbar gemachte Ports)
+
+
+      Anhand dieser Regeln können Sie bestimmen, auf welchen Container zugegriffen werden kann, anhand der Rangfolge aufgelistet:
+
+
+      - Die Anwendungseinstellung `WEBSITES_WEB_CONTAINER_NAME` ist auf den Containernamen festgelegt
+
+      - Der erste Container, der Port 80 oder 8080 definiert
+
+      - Wenn keiner der oben genannten Punkte zutrifft, kann auf den in der Datei zuerst definierten (verfügbar gemachten) Container zugegriffen werden
+
+
+      ## <a name="web-sockets"></a>Websockets
+
+
+      Websockets werden für Linux-Apps unterstützt.
+
+
+      > [!IMPORTANT]
+
+      > Bei Free-App Service-Plänen werden Websockets aktuell nicht für Linux-Apps unterstützt. Wir arbeiten daran, dass diese Einschränkung schon bald nicht mehr gilt. Bei Free-App Service-Plänen sollen in Zukunft bis zu fünf Websocketverbindungen unterstützt werden.
+- name: Preise und SLA
+  questions:
+  - question: >
+      Wie erfolgt die Abrechnung für den nun allgemein verfügbaren Dienst?
+    answer: >
+      Die Preise variieren abhängig von der SKU und Region. Einzelheiten finden Sie auf unserer Seite mit der Preisübersicht: [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/linux/)
+- name: Andere Fragen
+  questions:
+  - question: >
+      Kann ich eine dateibasierte Datenbank (wie SQLight) mit meiner Linux-Web-App verwenden?
+    answer: >
+      Das Dateisystem Ihrer Anwendung ist eine eingebundene Netzwerkfreigabe. Dadurch sind Aufskalierungsszenarios möglich, in denen Ihr Code auf mehreren Hosts ausgeführt werden muss. Leider wird so die Nutzung von dateibasierten Datenbankanbietern wie SQLite verhindert, da es nicht möglich ist, exklusive Sperren für die Datenbankdatei abzurufen. Es empfiehlt sich, einen der vollständig verwalteten Datenbankdienste in Azure zu verwenden: [Azure SQL](https://azure.microsoft.com/products/azure-sql/), [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) oder [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
+  - question: >
+      Welche Zeichen werden in den Namen von Anwendungseinstellungen unterstützt?
+    answer: >
+      Sie können nur Buchstaben (A-Z, a-Z), Zahlen (0-9) und Unterstrich (_) für Anwendungseinstellungen verwenden.
+  - question: >
+      Wo kann ich neue Funktionen beantragen?
+    answer: >
+      Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoice) einreichen. Fügen Sie im Titel Ihrer Idee „[Linux]“ hinzu.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Was ist Azure App Service unter Linux?](overview.md#app-service-on-linux)\n- [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md)\n- [Continuous Deployment mit Web-App für Container](./deploy-ci-cd-custom-container.md)\n- [Wissenswertes: Web-Apps und Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)\n- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)"

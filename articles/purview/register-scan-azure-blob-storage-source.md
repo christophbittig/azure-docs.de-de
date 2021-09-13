@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: a691c242cbe91ea4a3e76bd0b1a93f11a6dd7c8b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7b295fd67052d91c229977571056b3ea95d56773
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750582"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340553"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage registrieren und scannen
 
@@ -22,9 +22,15 @@ In diesem Artikel wird beschrieben, wie Sie ein Azure Blob Storage-Konto in Purv
 
 Für Azure Blob Storage werden vollständige und inkrementelle Überprüfungen zum Erfassen der Metadaten und des Schemas unterstützt. Darüber hinaus werden die Daten dabei basierend auf System- und benutzerdefinierten Klassifizierungsregeln automatisch klassifiziert.
 
+Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
+
+1. Werte in der ersten Zeile sind nicht leer.
+2. Werte in der ersten Zeile sind eindeutig.
+3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
+- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Azure Purview-Datenquellenadministrator sein.
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
@@ -45,7 +51,7 @@ Wenn Sie **Verwaltete Identität** auswählen, müssen Sie Ihrem Purview-Konto z
 1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** den Namen Ihres Azure Purview-Kontos ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
 
 > [!Note]
-> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md).
+> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md).
 
 ### <a name="account-key"></a>Kontoschlüssel
 
@@ -114,7 +120,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Blob Storage-Konto z
 1. Wählen Sie auf der Startseite von Purview Studio die Option **Quellen registrieren** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Blob Storage** aus.
-1. Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
 Gehen Sie auf dem Bildschirm **Register sources (Azure Blob Storage)** (Quellen registrieren (Azure Blob Storage)) wie folgt vor:
 

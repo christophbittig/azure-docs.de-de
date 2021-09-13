@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 7807659a30127f39bb79ad99bdb733c12eb1d25d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c5a3b9b312e093d7bee5c0c555e8e2eab0c531b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100548675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346222"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Überprüfungserkenntnisse über Ihre Daten in Azure Purview
 
@@ -62,7 +62,7 @@ Sie können in Azure Purview Quelltypen registrieren und überprüfen. Der Über
 
     :::image type="content" source="./media/scan-insights/main-graph.png" alt-text="Anzeigen des Überprüfungsstatus im Zeitverlauf":::
 
-4. Sie können eine bestimmte Überprüfung weiter untersuchen, indem Sie auf den **Überprüfungsnamen** klicken, wodurch Sie mit dem Überprüfungsverlauf in der Benutzeroberfläche **Quellen** von Azure Purview verbunden werden. Auf der Seite „Ausführungsverlauf“ können Sie die Ausführungs-ID abrufen, die Sie bei der weiteren Untersuchung von Fehlern unterstützt.
+4. Sie können eine bestimmte Überprüfung weiter untersuchen, indem Sie auf den **Überprüfungsnamen** klicken, wodurch Sie mit dem Überprüfungsverlauf in der Benutzeroberfläche **Data Map** von Azure Purview verbunden werden. Auf der Seite „Ausführungsverlauf“ können Sie die Ausführungs-ID abrufen, die Sie bei der weiteren Untersuchung von Fehlern unterstützt.
 
     :::image type="content" source="./media/scan-insights/scan-status.png" alt-text="Überprüfungsdetails anzeigen":::
 
@@ -74,4 +74,4 @@ Sie können in Azure Purview Quelltypen registrieren und überprüfen. Der Über
 
 * Weitere Informationen zu Azure Purview **Insights** mit [Data Insights](./concept-insights.md)
 
-* Weitere Informationen zur Benutzeroberfläche **Quellen** von Azure Purview mit [Verwalten von Datenquellen](./manage-data-sources.md)
+* Weitere Informationen zur Benutzeroberfläche **Data Map** von Azure Purview mit [Verwalten von Datenquellen](./manage-data-sources.md)

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 07/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 749829f641119273813d3c8ca826daf8b4dc4d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e2212171f0be8d754ac1a86567641c2bad8a9a0
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742662"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602778"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>Aktivieren von benutzerspezifischer Azure AD Multi-Factor Authentication zum Schutz von Anmeldeereignissen
 
@@ -27,7 +27,7 @@ Für kostenlose Azure AD-Mandanten ohne bedingten Zugriff können Sie [Sicherhei
 
 Bei Bedarf können Sie stattdessen für die einzelnen Konten Azure AD Multi-Factor Authentication pro Benutzer aktivieren. Wenn Benutzer individuell aktiviert werden, führen sie die mehrstufige Authentifizierung bei jeder Anmeldung durch (bis auf einige Ausnahmen, beispielsweise wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn das Feature zum _Speichern von MFA auf vertrauenswürdigen Geräten_ aktiviert ist).
 
-Das Ändern der Benutzerstatus wird nur empfohlen, wenn Ihre Azure AD Lizenzen keinen bedingten Zugriff enthalten und Sie keine Standardeinstellungen für die Sicherheit verwenden möchten. Weitere Informationen zu den verschiedenen Möglichkeiten zum Aktivieren von MFA finden Sie unter [Features und Lizenzen für Azure AD Multi-Factor Authentication](concept-mfa-licensing.md).
+Das Ändern der [Benutzerstatus](#azure-ad-multi-factor-authentication-user-states) wird nur empfohlen, wenn Ihre Azure AD-Lizenzen keinen bedingten Zugriff enthalten und Sie keine Standardeinstellungen für die Sicherheit verwenden möchten. Weitere Informationen zu den verschiedenen Möglichkeiten zum Aktivieren von MFA finden Sie unter [Features und Lizenzen für Azure AD Multi-Factor Authentication](concept-mfa-licensing.md).
 
 > [!IMPORTANT]
 >
@@ -79,76 +79,15 @@ Führen Sie die folgenden Schritte aus, um den Status der benutzerspezifischen A
 
 Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert haben. Teilen Sie den Benutzern mit, dass eine Aufforderung angezeigt wird, sich bei der nächsten Anmeldung zu registrieren. Und wenn Ihre Organisation auch nicht auf Browsern basierende Apps verwendet, die die moderne Authentifizierung nicht unterstützen, müssen die Benutzer App-Kennwörter erstellen. Weitere Informationen finden Sie im [Leitfaden zu Azure AD Multi-Factor Authentication für Endbenutzer](../user-help/multi-factor-authentication-end-user-first-time.md).
 
-## <a name="change-state-using-powershell"></a>Ändern des Status mithilfe von PowerShell
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konvertieren von Benutzern von „MFA pro Benutzer“ zu „MFA mit bedingtem Zugriff“
 
-Zum Ändern des Benutzerstatus mit [Azure AD PowerShell](/powershell/azure/) ändern Sie den Parameter`$st.State` für ein Benutzerkonto. Für ein Benutzerkonto gibt es drei mögliche Status:
+Wenn für Ihre Benutzer die Azure AD Multi-Factor Authentication pro Benutzer aktiviert und erzwungen wurde, können Sie mithilfe des folgenden PowerShell-Codes eine Konvertierung in die Azure AD Multi-Factor Authentication mit bedingtem Zugriff vornehmen.
 
-* *Aktiviert*
-* *Erzwungen*
-* *Disabled*  
-
-Im Allgemeinen sollte der Status von Benutzern nicht direkt in *Erzwungen* geändert werden, wenn sie nicht bereits für MFA registriert sind. Wenn Sie dies tun, funktionieren Apps mit Legacyauthentifizierung nicht mehr, weil der Benutzer die Azure AD Multi-Factor Authentication-Registrierung nicht durchlaufen und kein [App-Kennwort](howto-mfa-app-passwords.md) erhalten hat. In einigen Fällen ist dieses Verhalten möglicherweise erwünscht, es beeinträchtigt jedoch das Benutzererlebnis, bis der Benutzer registriert ist.
-
-Installieren Sie zunächst das Modul *MSOnline* mithilfe von [Install-Module](/powershell/module/powershellget/install-module) wie folgt:
-
-```PowerShell
-Install-Module MSOnline
-```
-
-Stellen Sie als Nächstes mithilfe von [Connect-MsolService](/powershell/module/msonline/connect-msolservice) eine Verbindung her:
-
-```PowerShell
-Connect-MsolService
-```
-
-Das folgende PowerShell-Beispielskript aktiviert MFA für einen einzelnen Benutzer namens *bsimon@contoso.com* :
-
-```PowerShell
-$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-$st.RelyingParty = "*"
-$st.State = "Enabled"
-$sta = @($st)
-
-# Change the following UserPrincipalName to the user you wish to change state
-Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
-```
-
-PowerShell ist eine gute Wahl für die Massenaktivierung von Benutzern. Das folgende Skript durchläuft eine Liste mit Benutzern und aktiviert MFA für ihre Konten. Legen Sie die Benutzerkonten in der ersten Zeile für `$users` wie folgt fest:
-
-   ```PowerShell
-   # Define your list of users to update state in bulk
-   $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
-
-   foreach ($user in $users)
-   {
-       $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-       $st.RelyingParty = "*"
-       $st.State = "Enabled"
-       $sta = @($st)
-       Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
-   }
-   ```
-
-Um MFA zu deaktivieren, ruft das folgende Beispiel einen Benutzer mit [Get-MsolUser](/powershell/module/msonline/get-msoluser) ab. Anschließend werden alle *StrongAuthenticationRequirements* entfernt, die für den definierten Benutzer mit [Set-MsolUser](/powershell/module/msonline/set-msoluser) festgelegt wurden:
-
-```PowerShell
-Get-MsolUser -UserPrincipalName bsimon@contoso.com | Set-MsolUser -StrongAuthenticationRequirements @()
-```
-
-Sie können MFA für einen Benutzer auch direkt deaktivieren, indem Sie [Set-MsolUser](/powershell/module/msonline/set-msoluser) wie folgt verwenden:
-
-```PowerShell
-Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
-```
-
-## <a name="convert-users-from-per-user-mfa-to-conditional-access"></a>Konvertieren von Benutzern von „MFA pro Benutzer“ zu „MFA mit bedingtem Zugriff“
-
-Das folgende PowerShell-Skript kann Ihnen bei der Konvertierung in Azure AD Multi-Factor Authentication mit bedingtem Zugriff helfen.
+Führen Sie diese PowerShell-Instanz in einem ISE-Fenster aus, oder speichern Sie sie zur lokalen Ausführung als `.PS1`-Datei. Der Vorgang kann nur mithilfe des Moduls [MSOnline](/powershell/module/msonline/?view=azureadps-1.0#msonline) ausgeführt werden. 
 
 ```PowerShell
 # Sets the MFA requirement state
 function Set-MfaState {
-
     [CmdletBinding()]
     param(
         [Parameter(ValueFromPipelineByPropertyName=$True)]
@@ -158,7 +97,6 @@ function Set-MfaState {
         [ValidateSet("Disabled","Enabled","Enforced")]
         $State
     )
-
     Process {
         Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
         $Requirements = @()
@@ -169,18 +107,13 @@ function Set-MfaState {
             $Requirement.State = $State
             $Requirements += $Requirement
         }
-
         Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
                      -StrongAuthenticationRequirements $Requirements
     }
 }
-
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
-
-> [!NOTE]
-> Wenn MFA für einen Benutzer erneut aktiviert wird und sich der Benutzer nicht erneut registriert, ändert sich der MFA-Status auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*. In diesem Fall muss der Administrator dem Benutzer den Status *Erzwungen* direkt zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

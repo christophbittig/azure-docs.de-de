@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1accce46358c360be83ebc3ea85f0f2257b567c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103384"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456539"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
@@ -37,7 +37,7 @@ Wenn Sie an diesem Programm teilnehmen möchten, müssen Sie den [Business Appl
 > [!NOTE]
 > Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um rechtliche Vereinbarungen unterzeichnen zu können.
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Wählen Sie **Einstellungen** (Zahnradsymbol) > **Kontoeinstellungen** aus.
 1. Wählen Sie **Vereinbarungen** aus.
 1. Klicken Sie auf den Versionslink, und sehen Sie sich die Vereinbarung an.
@@ -50,7 +50,7 @@ Richten Sie die Abrechnungsinformationen für das Business Applications ISV Conn
 > [!NOTE]
 > Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um Abrechnungsinformationen aktualisieren zu können.
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Wählen Sie **Einstellungen** (Zahnradsymbol) > **Kontoeinstellungen** aus.
 1. Wählen Sie unter **Organisationsprofil** die Option **Abrechnungsprofil** und anschließend die Registerkarte **Entwickler** aus.
 1. Überprüfen Sie die primären Kontakt- und Abrechnungsinformationen, die auf der Grundlage Ihrer juristischen Person aufgefüllt wurden.
@@ -77,8 +77,7 @@ Der letzte Schritt für die Registrierung beim Business Applications ISV Connect
 
 Wenden Sie sich an Ihren Account Manager oder an den [Support für Microsoft Partner](https://aka.ms/marketplacepublishersupport), um Unterstützung bei der Einrichtung Ihres Kontos zu erhalten. Allgemeine Informationen zum Business Applications ISV Connect Program finden Sie unter:
 
-- [ISV-Connect für Geschäftsanwendungen](https://partner.microsoft.com/solutions/business-applications/isv-overview) (Onlineartikel)
-- [Übersicht über das neue Business Applications-ISV-Programm](https://aka.ms/BizAppsISVProgram) (PDF)
-- [Häufig gestellte Fragen zum Business Applications ISV Connect Program](https://assetsprod.microsoft.com/faq-using-partner-center-isv-connect.pdf) (PDF)
-- [Geplantes Business Applications-ISV-Programm](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) (Blogbeitrag)
-- [Richtlinien für das ISV Connect-Programm](https://aka.ms/bizappsisvpolicies) (PDF)
+- [Informationen für Business Applications-Partner](https://aka.ms/bizappsisvWeb) (Website)
+- [Leitfaden für das ISV Connect-Programm](https://aka.ms/bizappsisvProgram) (PDF)
+- [Häufig gestellte Fragen für Partner des ISV Connect-Programms](https://powerplatformpartners.transform.microsoft.com/download?assetname=assets/ISV%20Connect%20Partner%20FAQ.pdf&download=1) (PDF)
+- [Änderungen für das ISV Connect-Programm](https://cloudblogs.microsoft.com/dynamics365/bdm/2021/07/14/innovate-and-grow-with-the-simplified-business-applications-isv-connect-program/) (Blogbeitrag)

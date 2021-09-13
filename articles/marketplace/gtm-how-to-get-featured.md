@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2021
-ms.openlocfilehash: 4ffbca8e4e70a5201b374d4fac9bdb136c860573
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7c3a2a00c0323bc9e80b1d94d445f873d5b86d34
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144959"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541336"
 ---
 # <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Azure Marketplace
 
@@ -38,7 +38,7 @@ Sie können die folgenden Maßnahmen ergreifen, um Ihre Punktzahl zu verbessern:
 Die „Ausgewählte Apps“-Höherstufungen erfolgen unabhängig vom Suchalgorithmus.
 
 >[!Note]
->Wenn Ihre Lösung in den Suchergebnissen nicht richtig angezeigt wird, reichen Sie über das Hilfemenü in [Partner Center](https://partner.microsoft.com/) ein Supportticket ein.
+>Wenn Ihre Lösung in den Suchergebnissen nicht richtig angezeigt wird, erstellen Sie in Partner Center ein **[Supportticket](https://go.microsoft.com/fwlink/?linkid=2165533)** .
 
 Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibliothek mit Vorlagen zur Selbsthilfe, Webinhalten, Trainings und Tools, die Ihnen helfen, Ihre Listungen und Ihr Unternehmen besser zu bewerben.
 
@@ -46,6 +46,4 @@ Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibl
 
 Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](gtm-your-marketplace-benefits.md).
 
-Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
-
----
+Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an, um Ihr Angebot zu erstellen und zu konfigurieren. Wenn Sie sich noch nicht bei Partner Center registriert haben, [erstellen Sie ein Konto](create-account.md).

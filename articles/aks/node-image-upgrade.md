@@ -5,16 +5,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: 4f6ac01c1d4df288c823142abbc93e981048d8db
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 05d957fac23f1fd9d33a44fa74642eb162550880
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767527"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340291"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
-AKS unterstützt Upgrades für Images auf einem Knoten, sodass Sie mit den aktuellsten Betriebssystem- und Laufzeitupdates auf dem neuesten Stand sind. AKS stellt ein neues Image pro Woche mit den neuesten Updates zur Verfügung. Es ist daher von Vorteil, die Images Ihres Knotens regelmäßig auf die neuesten Features, einschließlich Linux- oder Windows-Patches, zu aktualisieren. In diesem Artikel erfahren Sie, wie Sie ein Upgrade für AKS-Clusterknotenimages durchführen und Knotenpoolimages aktualisieren, ohne ein Upgrade der Kubernetes-Version durchzuführen.
+AKS unterstützt Upgrades für Images auf einem Knoten, sodass Sie mit den aktuellsten Betriebssystem- und Laufzeitupdates auf dem neuesten Stand sind. AKS stellt ein neues Image pro Woche mit den neuesten Updates zur Verfügung. Es ist daher von Vorteil, die Images Ihres Knotens regelmäßig auf die neuesten Features, einschließlich Linux- oder Windows-Patches, zu aktualisieren. Obwohl Kunden durch die AKS-Versionshinweise über Imageupgrades benachrichtigt werden, kann es bis zu einer Woche dauern, bis die Updates in allen Regionen veröffentlicht werden. In diesem Artikel erfahren Sie, wie Sie ein Upgrade für AKS-Clusterknotenimages durchführen und Knotenpoolimages aktualisieren, ohne ein Upgrade der Kubernetes-Version durchzuführen.
 
 Weitere Informationen zu den neuesten von AKS bereitgestellten Images finden Sie in den [Versionshinweisen zu AKS](https://github.com/Azure/AKS/releases).
 

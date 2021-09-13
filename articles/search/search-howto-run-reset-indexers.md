@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de17fface1a99e7e3832cf815eadda6915a707fd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667670"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583147"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Ausführen oder Zurücksetzen von Indexern, Kenntnissen oder Dokumenten
 
@@ -73,7 +73,7 @@ Ein Rücksetzflag wird nach Abschluss der Ausführung gelöscht. Jede reguläre 
 ## <a name="reset-skills-preview"></a>Zurücksetzen von Fertigkeiten (Vorschau)
 
 > [!IMPORTANT] 
-> Das [Zurücksetzen von Fertigkeiten](/rest/api/searchservice/preview-api/reset-skills) ist nur über die Vorschau-REST-API in der öffentlichen Vorschau verfügbar. Vorschaufeatures werden wie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) beschrieben im Ist-Zustand angeboten.
+> Das [Zurücksetzen von Skills](/rest/api/searchservice/preview-api/reset-skills) befindet sich in der Public Preview und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt dieses Feature.
 
 Für Indexer, die über Skillsets verfügen, können Sie bestimmte Fertigkeiten zurücksetzen, um die Verarbeitung dieser Fertigkeit und aller nachgelagerten Fertigkeiten zu erzwingen, die von ihrer Ausgabe abhängen. [Zwischengespeicherte Anreicherungen](search-howto-incremental-index.md) werden ebenfalls aktualisiert. Durch das Zurücksetzen von Fertigkeiten werden die zwischengespeicherten Fertigkeitenergebnisse ungültig, was nützlich ist, wenn eine neue Version einer Fertigkeit bereitgestellt wird und der Indexer diese Fertigkeit für alle Dokumente erneut ausführen soll. 
 

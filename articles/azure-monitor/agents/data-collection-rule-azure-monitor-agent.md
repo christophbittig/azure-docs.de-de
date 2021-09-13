@@ -4,22 +4,22 @@ description: In diesem Artikel wird beschrieben, wie Sie eine Datensammlungsrege
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/16/2021
-ms.openlocfilehash: c1c0c7c2bf312b636c5ed16223a6bf8865d44fd1
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.date: 07/16/2021
+ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070949"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386315"
 ---
-# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)
+# <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Konfigurieren der Datensammlung für den Azure Monitor-Agent
 
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin sie gesendet werden sollen. In diesem Artikel wird beschrieben, wie Sie eine Datensammlungsregel erstellen, um mit dem Azure Monitor-Agent Daten von virtuellen Computern zu sammeln.
 
-Eine vollständige Beschreibung der Datensammlungsregeln finden Sie unter [Datensammlungsregeln in Azure Monitor (Vorschau)](data-collection-rule-overview.md).
+Eine umfassende Beschreibung der Datensammlungsregeln finden Sie unter [Datensammlungsregeln in Azure Monitor](data-collection-rule-overview.md).
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Daten für virtuelle Computer mit dem Azure Monitor-Agent konfigurieren, der sich derzeit in der Vorschauphase befindet. Eine Beschreibung der allgemein verfügbaren Agents und ihrer Nutzung zum Sammeln von Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
+> In diesem Artikel wird beschrieben, wie Sie Daten für virtuelle Computer nur mit dem Azure Monitor-Agent konfigurieren.
 
 ## <a name="data-collection-rule-associations"></a>Zuordnungen zu Datensammlungsregeln
 
@@ -36,7 +36,9 @@ Angenommen, in einer Umgebung mit einer Gruppe von virtuellen Computern wird auf
 Sie können das Azure-Portal verwenden, um eine Datensammlungsregel zu erstellen und dieser Regel unter Ihrem Abonnement virtuelle Computer zuzuordnen. Der Azure Monitor-Agent wird automatisch installiert, und für alle virtuellen Computer wird eine verwaltete Identität erstellt (falls noch nicht geschehen).
 
 > [!IMPORTANT]
-> Derzeit besteht folgendes bekanntes Problem: Wenn die Datensammlungsregel eine verwaltete Identität auf einem virtuellen Computer erstellt, der bereits über eine benutzerseitig zugewiesene verwaltete Identität verfügt, wird die benutzerseitig zugewiesene Identität deaktiviert.
+> Beim Erstellen einer Datensammlungsregel über das Portal wird auf den Zielressourcen zusätzlich zu möglicherweise bereits vorhandenen benutzerseitig zugewiesenen Identitäten eine systemseitig zugewiesene verwaltete Identität aktiviert. Wenn die benutzerseitig zugewiesene Identität nicht extra angegeben wird, wird auf dem Computer für vorhandene Anwendungen standardmäßig die systemseitig zugewiesene Identität verwendet. [Weitere Informationen](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
+
+                    
 
 > [!NOTE]
 > Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
@@ -115,12 +117,12 @@ Führen Sie die folgenden Schritte aus, um mithilfe der REST-API eine Datensamml
 3. Erstellen Sie mithilfe der [REST-API](/rest/api/monitor/datacollectionruleassociations/create#examples) für jede VM eine Zuordnung zur Datensammlungsregel.
 
 
-## <a name="create-association-using-resource-manager-template"></a>Erstellen einer Zuordnung mithilfe einer Resource Manager-Vorlage
+## <a name="create-rule-and-association-using-resource-manager-template"></a>Erstellen einer Regel und einer Zuordnung mithilfe einer Resource Manager-Vorlage
 
 > [!NOTE]
 > Wenn Sie Daten an Log Analytics senden möchten, müssen Sie die Datensammlungsregel in **derselben Region** erstellen, in der sich auch Ihr Log Analytics-Arbeitsbereich befindet. Die Regel kann Computern in anderen unterstützten Regionen zugeordnet werden.
 
-Sie können eine Zuordnung zu einer Azure-VM oder einem Server mit Azure Arc-Unterstützung mithilfe einer Resource Manager-Vorlage erstellen. Beispielvorlagen finden Sie unter [Beispiele für Resource Manager-Vorlagen für Datensammlungsregeln in Azure Monitor](./resource-manager-data-collection-rules.md).
+Mithilfe einer Resource Manager-Vorlage können Sie eine Regel und eine Zuordnung für einen virtuellen Azure-Computer oder einen Server mit Azure Arc-Unterstützung erstellen. Beispielvorlagen finden Sie unter [Beispiele für Resource Manager-Vorlagen für Datensammlungsregeln in Azure Monitor](./resource-manager-data-collection-rules.md).
 
 
 ## <a name="manage-rules-and-association-using-powershell"></a>Verwalten von Regeln und Zuordnungen mithilfe von PowerShell

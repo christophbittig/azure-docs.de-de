@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6ad12ac3d06d9e0a6b4f1bf45344ece2819c1486
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 834caf50ca65fdbb4701ed3681546513785686c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140045"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340199"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
@@ -85,9 +85,9 @@ Die BCDR-Technologien Always On, aktive Georeplikation und Autofailover-Gruppen 
 
 [Erstellen Sie einen Wiederherstellungsplan](site-recovery-create-recovery-plans.md) mit Anwendungs- und Webebene auf virtuellen Computern. In den folgenden Schritten wird gezeigt, wie ein Failover der Datenbankebene hinzugefügt wird:
 
-1. Importieren Sie die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe sowohl auf einen [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) als auch einen [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Importieren Sie die Skripts in Ihr Azure Automation-Konto.
+1. Importieren Sie die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe sowohl auf einen [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) als auch einen [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Importieren Sie die Skripts in Ihr Azure Automation-Konto.
 
-    [![Bild eines „Bereitstellung in Azure“-Logos](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Logo „Bereitstellung in Azure“](../media/template-deployments/deploy-to-azure.svg)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Fügen Sie das ASR-SQL-FailoverAG-Skript als vorausgehende Aktion der ersten Gruppe des Wiederherstellungsplans hinzu.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d0d0bbd1cea6d1af016aa46569171bd2bcd8ac4f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6bead4346bdb23dd725fa474ef1bd8a982d2b61a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110720756"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336002"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -24,6 +24,9 @@ RADIUS-Authentifizierung wird für die SKUs „VpnGw1“, „VpnGw2“ und „Vp
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>Wird die RADIUS-Authentifizierung für das klassische Bereitstellungsmodell unterstützt?
  
 Nein. Die RADIUS-Authentifizierung wird für das klassische Bereitstellungsmodell nicht unterstützt.
+
+### <a name="what-is-the-timeout-period-for-radius-requests-sent-to-the-radius-server"></a>Welcher Timeoutwert gilt für RADIUS-Anforderungen, die an den RADIUS-Server gesendet werden?
+Für RADIUS-Anforderungen ist ein Timeoutwert von 30 Sekunden festgelegt. Benutzerdefinierte Timeoutwerte werden aktuell nicht unterstützt.
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>Werden RADIUS-Server von Drittanbietern unterstützt?
 

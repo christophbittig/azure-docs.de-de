@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a3ed2de24127f09a901fb5bcb06c84124751d74
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047042"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122343075"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](../essentials/monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
 
 > [!NOTE]
-> Dieser Artikel bietet einen umfassenden Überblick über die Konzepte und Optionen zum Überwachen virtueller Computer in Azure Monitor. Wie Sie die Überwachung Ihrer virtuellen Computer schnell starten können, ohne sich auf die zugrunde liegenden Konzepte zu konzentrieren, erfahren Sie unter [Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor](./quick-monitor-azure-vm.md).
+> Dieser Artikel bietet einen umfassenden Überblick über die Konzepte und Optionen zum Überwachen virtueller Computer in Azure Monitor. Wie Sie die Überwachung Ihrer virtuellen Computer schnell starten können, ohne sich auf die zugrunde liegenden Konzepte zu konzentrieren, erfahren Sie unter [Schnellstart: Überwachen eines virtuellen Azure-Computers mit Azure Monitor](./monitor-virtual-machine.md).
 
 
 ## <a name="differences-from-other-azure-resources"></a>Unterschiede zu anderen Azure-Ressourcen
@@ -85,7 +85,7 @@ Sie können die Konfiguration für den Arbeitsbereich direkt von VM Insights aus
 
 ![Arbeitsbereichskonfiguration](media/monitor-vm-azure/workspace-configuration.png)
 
-Wählen Sie im Arbeitsbereichsmenü **Erweiterte Einstellungen** aus und dann **Daten**, um Datenquellen zu konfigurieren. Wählen Sie für Windows-Agents **Windows-Ereignisprotokolle** aus, und fügen Sie gängige Ereignisprotokolle wie *System* und *Anwendung* hinzu. Wählen Sie für Linux-Agents **Syslog** aus, und fügen Sie allgemeine Funktionen wie *Kern* und *Daemon* hinzu. Eine Liste der verfügbaren Datenquellen und nähere Informationen zu ihrer Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](../agents/agent-data-sources.md). 
+Wählen Sie im Arbeitsbereichsmenü **Agent-Konfiguration** aus, um Datenquellen zu konfigurieren. Wählen Sie für Windows-Agents **Windows-Ereignisprotokolle** aus, und fügen Sie gängige Ereignisprotokolle wie *System* und *Anwendung* hinzu. Wählen Sie für Linux-Agents **Syslog** aus, und fügen Sie allgemeine Funktionen wie *Kern* und *Daemon* hinzu. Eine Liste der verfügbaren Datenquellen und nähere Informationen zu ihrer Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](../agents/agent-data-sources.md). 
 
 ![Konfigurieren von Ereignissen](media/monitor-vm-azure/configure-events.png)
 

@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f85a8d539c8f841bafaae9d877446c5e6ecb416
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673568"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351488"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Leitfaden zum Entwerfen von verteilten Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
-Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in dedizierten SQL-Pools
+Dieser Artikel enthält Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in dedizierten SQL-Pools
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung im dedizierten SQL-Pool vertraut sind.  Weitere Informationen finden Sie unter [Azure Synapse Analytics-Architektur](massively-parallel-processing-mpp-architecture.md).
 
@@ -28,7 +28,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenve
 
 Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich sind die Zeilen jedoch in 60 Verteilungen gespeichert. Die Zeilen werden mit einem Hash- oder Roundrobinalgorithmus verteilt.  
 
-**Tabellen mit Hashverteilung** verbessern die Abfrageleistung bei umfangreichen Faktentabellen und bilden den Schwerpunkt dieses Artikels. **Roundrobintabellen** ermöglichen die Verbesserung der Ladegeschwindigkeit. Durch diese Entwurfsentscheidungen lassen sich Abfrageleistung und Ladegeschwindigkeit erheblich verbessern.
+Die **Hashverteilung** verbessert die Abfrageleistung bei umfangreichen Faktentabellen und bildet den Schwerpunkt dieses Artikels. **Roundrobinverteilung** ermöglicht die Verbesserung der Ladegeschwindigkeit. Durch diese Entwurfsentscheidungen lassen sich Abfrageleistung und Ladegeschwindigkeit erheblich verbessern.
 
 Eine andere Tabellenspeicheroption besteht darin, eine kleine Tabelle auf allen Computeknoten zu replizieren. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md). Eine praktische Entscheidungshilfe für die Wahl einer der drei Optionen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md) unter „Verteilte Tabellen“.
 
@@ -107,7 +107,7 @@ Aus Leistungsgründen sollten alle Verteilungen ungefähr die gleiche Anzahl von
   
 Wählen Sie zur Erzielung einer ausgeglichenen parallelen Verarbeitung eine Verteilungsspalte, die folgende Kriterien erfüllt:
 
-- **Viele eindeutige Werte:** Die Spalte kann einige Duplikatwerte enthalten. Zeilen mit gleichem Wert werden jedoch alle der gleichen Verteilung zugewiesen. Da 60 Verteilungen vorhanden sind, sollte die Spalte mindestens 60 eindeutige Werte enthalten.  Die Anzahl eindeutiger Werte ist in der Regel deutlich höher.
+- **Viele eindeutige Werte:** Die Spalte kann Duplikatwerte enthalten.  Alle Zeilen mit gleichem Wert werden der gleichen Verteilung zugewiesen. Da es 60 Verteilungen gibt, können einige Verteilungen über mehrere eindeutige Werte verfügen, andere hingegen haben gar keine Werte.  
 - **Keine oder nur wenige NULL-Werte:** Stellen Sie sich als Extrembeispiel vor, alle Werte in der Spalte wären NULL-Werte. In diesem Fall würden alle Zeilen der gleichen Verteilung zugewiesen. Dadurch würde die gesamte Abfrageverarbeitung in einer einzelnen Verteilung stattfinden und nicht von der parallelen Verarbeitung profitieren.
 - **Keine Datumsspalte:** Alle Daten für das gleiche Datum werden der gleichen Verteilung zugewiesen. Wenn mehrere Benutzer nach dem gleichen Datum filtern, findet die Verarbeitung nur in einer der 60 Verteilungen statt.
 

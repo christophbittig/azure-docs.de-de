@@ -7,12 +7,12 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.date: 08/03/2020
-ms.openlocfilehash: e1b96293db0389201fdab3340d8f0e74fefc4c52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7a11dde69554ae732590ddf36f8cf65929197fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559714"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346568"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Erweiterungen und Features für virtuelle Azure-Computer
 Erweiterungen sind kleine Anwendungen, die Konfiguration und Automatisierung für virtuelle Azure-Computer nach der Bereitstellung bereitstellen. Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z. B. VM-Konfiguration, Überwachung, Sicherheit und Hilfsprogramme. Herausgeber nehmen eine Anwendung, umschließen diese in einer Erweiterung und vereinfachen die Installation. Sie müssen lediglich noch die obligatorischen Parameter angeben. 
@@ -33,7 +33,9 @@ Einige einzelne VM-Erweiterungsanwendungen verfügen ggf. über eigene Umgebungs
 
 ## <a name="troubleshoot-extensions"></a>Problembehandlung bei Erweiterungen
 
-Informationen zur Problembehandlung für jede Erweiterung finden Sie im Abschnitt **Problembehandlung und Support** in der Übersicht für die jeweilige Erweiterung. Es folgt eine Liste der verfügbaren Problembehandlungsinformatonen:
+Weitere Informationen zu allgemeinen Problembehandlungsschritten für Erweiterungen von Windows-VMs finden Sie unter [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](troubleshoot.md).
+
+Andernfalls finden Sie Informationen zur spezifischen Problembehandlung für jede Erweiterung im Abschnitt **Problembehandlung und Support** in der Übersicht für die jeweilige Erweiterung. Es folgt eine Liste der verfügbaren Problembehandlungsinformatonen:
 
 | Namespace | Problembehandlung |
 |-----------|-----------------|

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 012fdf6e35b0b0c27f8ad9afe10b5f70709fcc64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604514"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093557"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Anzeigen von Verkehrsdaten auf der Karte (Android SDK)
 
@@ -31,12 +31,12 @@ In Azure Maps sind zwei Arten von Verkehrsdaten verfügbar:
 - Vorfallsdaten: Punkt- und linienbasierte Daten, z. B. für Baustellen, Straßensperrungen und Unfälle.
 - Flussdaten: Stellt Metriken zum Verkehrsfluss auf Straßen bereit. Daten zum Verkehrsfluss werden häufig verwendet, um Straßen farbig zu markieren. Die Farben basieren auf dem Verkehrsaufkommen, das aufgrund einer Geschwindigkeitsbeschränkung oder anderen Metrik zu einer Verlangsamung des Verkehrsflusses führt. An die Verkehrsflussoption `flow` der Karte können vier Werte übergeben werden.
 
-    |Wert des Verkehrsflusses | BESCHREIBUNG|
+    |Flow-Enumeration | BESCHREIBUNG|
     | :-- | :-- |
-    | TrafficFlow.NONE | Zeigt keine Verkehrsdaten auf der Karte an. |
-    | TrafficFlow.RELATIVE | Zeigt Verkehrsdaten an, die relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße sind. |
-    | TrafficFlow.RELATIVE_DELAY | Zeigt Bereiche mit einer langsameren Geschwindigkeit als der durchschnittlichen erwarteten Verzögerung an. |
-    | TrafficFlow.ABSOLUTE | Zeigt die absolute Geschwindigkeit aller Fahrzeuge auf der Straße an. |
+    | `TrafficFlow.NONE` | Zeigt keine Verkehrsdaten auf der Karte an. |
+    | `TrafficFlow.RELATIVE` | Zeigt Verkehrsdaten an, die relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße sind. |
+    | `TrafficFlow.RELATIVE_DELAY` | Zeigt Bereiche mit einer langsameren Geschwindigkeit als der durchschnittlichen erwarteten Verzögerung an. |
+    | `TrafficFlow.ABSOLUTE` | Zeigt die absolute Geschwindigkeit aller Fahrzeuge auf der Straße an. |
 
 Der folgende Code verdeutlicht, wie Sie Verkehrsdaten auf der Karte anzeigen.
 
@@ -182,6 +182,77 @@ map.events.add(OnFeatureClick { features: List<Feature>? ->
 Der folgende Screenshot veranschaulicht, wie durch den oben aufgeführten Code Verkehrsinformationen in Echtzeit auf der Karte gerendert und eine Popupmeldung mit Details zur Störung angezeigt werden.
 
 ![Karte mit Verkehrsinformationen in Echtzeit und einer Popupmeldung, die Details zur Störung enthält](media/how-to-show-traffic-android/android-traffic-details.png)
+
+## <a name="filter-traffic-incidents"></a>Filtern von Verkehrsstörungen
+
+An einem gewöhnlichen Tag gibt es in den meisten Großstädten eine überwältigende Anzahl von Verkehrsstörungen. Je nach Szenario kann es jedoch wünschenswert sein, eine Teilmenge dieser Störungen zu filtern und anzuzeigen. Beim Festlegen von Datenverkehrsoptionen gibt es `incidentCategoryFilter`- und `incidentMagnitudeFilter`-Optionen, die ein Array von Incidentkategorien oder Größenenumeratoren oder Zeichenfolgenwerten enthalten.
+
+In der folgenden Tabelle sind alle Kategorien von Verkehrsstörungen aufgeführt, die innerhalb der Option `incidentCategoryFilter` verwendet werden können.
+
+| Kategorieenumeration | Zeichenfolgenwert | BESCHREIBUNG |
+|--------------------|--------------|-------------|
+| `IncidentCategory.UNKNOWN` | `"unknown"` | Eine Störung, die entweder nicht zu einer der definierten Kategorien passt oder noch nicht klassifiziert wurde. |
+| `IncidentCategory.ACCIDENT` | `"accident"` | Verkehrsunfall. |
+| `IncidentCategory.FOG` | `"fog"` | Nebel, der die Sicht einschränkt, den Verkehrsfluss behindert und möglicherweise das Unfallrisiko erhöht. |
+| `IncidentCategory.DANGEROUS_CONDITIONS` | `"dangerousConditions"` | Gefährliche Situation auf der Straße, z. B. ein Gegenstand auf der Fahrbahn. |
+| `IncidentCategory.RAIN` | `"rain"` | Starker Regen, der die Sicht beeinträchtigt, die Fahrbedingungen erschwert und möglicherweise das Unfallrisiko erhöht. |
+| `IncidentCategory.ICE` | `"ice"` | Vereiste Fahrbahnen, die das Fahren erschweren oder gefährlich machen können. |
+| `IncidentCategory.JAM` | `"jam"` | Stau, der zu einem langsameren Verkehrsfluss führt. |
+| `IncidentCategory.LANE_CLOSED` | `"laneClosed"` | Eine Fahrspur ist gesperrt. |
+| `IncidentCategory.ROAD_CLOSED` | `"roadClosed"` | Eine Straße ist gesperrt. |
+| `IncidentCategory.ROAD_WORKS` | `"roadWorks"` | Straßenarbeiten/Bauarbeiten in diesem Bereich. |
+| `IncidentCategory.WIND` | `"wind"` | Starker Wind, der das Fahren für Fahrzeuge mit einem großen Seitenprofil oder einem hohen Schwerpunkt erschweren kann. |
+| `IncidentCategory.FLOODING` | `"flooding"` | Überschwemmungen auf der Straße. |
+| `IncidentCategory.DETOUR` | `"detour"` | Verkehr wird über eine Umleitung geleitet. |
+| `IncidentCategory.CLUSTER` | `"cluster"` | Eine Ansammlung von Verkehrsstörungen verschiedener Kategorien. Beim Vergrößern der Karte wird der Cluster in die einzelnen Störungen aufgegliedert. |
+| `IncidentCategory.BROKEN_DOWN_VEHICLE` | `"brokenDownVehicle"` | Pannenfahrzeug auf oder neben der Straße. |
+
+In der folgenden Tabelle sind alle Größenordnungen von Verkehrsstörungen aufgeführt, die innerhalb der Option `incidentMagnitudeFilter` verwendet werden können.
+
+| Größenordnungsenumeration | Zeichenfolgenwert | BESCHREIBUNG |
+|--------------------|--------------|-------------|
+| `IncidentMagnitude.UNKNOWN` | `"unknown"` | Eine Störung, deren Größenordnung noch nicht klassifiziert wurde. |
+| `IncidentMagnitude.MINOR` | `"minor"` | Ein geringfügiges Verkehrsproblem, das oft nur der Information dient und nur minimale Auswirkungen auf den Verkehrsfluss hat. |
+| `IncidentMagnitude.MODERATE` | `"moderate"` | Ein mäßiges Verkehrsproblem, das sich etwas auf den Verkehrsfluss auswirkt. |
+| `IncidentMagnitude.MAJOR` | `"major"` |  Ein größeres Verkehrsproblem, das erhebliche Auswirkungen auf den Verkehrsfluss hat. |
+
+Im Folgenden werden Verkehrsstörungen so gefiltert, dass nur mäßige Staus und Störungen mit gefährlichen Bedingungen auf der Karte angezeigt werden.
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+map.setTraffic(
+    incidents(true),
+    incidentMagnitudeFilter(new String[] { IncidentMagnitude.MODERATE }),
+    incidentCategoryFilter(new String[] { IncidentCategory.DANGEROUS_CONDITIONS, IncidentCategory.JAM })              
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    incidentMagnitudeFilter(*arrayOf(IncidentMagnitude.MODERATE)),
+    incidentCategoryFilter(
+        *arrayOf(
+            IncidentCategory.DANGEROUS_CONDITIONS,
+            IncidentCategory.JAM
+        )
+    )
+)
+```
+
+::: zone-end
+
+Der folgende Screenshot zeigt eine Karte mit mäßigen Verkehrsstaus und Störungen mit gefährlichen Bedingungen.
+
+![Karte mit mäßigen Verkehrsstaus und Störungen mit gefährlichen Bedingungen.](media/how-to-show-traffic-android/android-traffic-incident-filters.jpg)
+
+> [!NOTE]
+> Einigen Verkehrsstörungen können mehrere Kategorien zugewiesen sein. Wenn eine Störung einer Kategorie angehört, die einer in `incidentCategoryFilter` übergebenen Option entspricht, wird sie angezeigt. Die primäre Störungskategorie kann sich von den im Filter angegebenen Kategorien unterscheiden und daher ein anderes Symbol anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 06/25/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7035cff720b7eee4467f355a533a19f059c4baa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101102936"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346105"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -33,6 +33,7 @@ ms.locfileid: "101102936"
 | Web Application Firewall – Länge des POST-Textparameternamens | 256 |
 | Web Application Firewall – Länge des HTTP-Headernamens | 256 |
 | Web Application Firewall – Länge des Cookienamens | 256 |
+| Ausschlussgrenzwert der Web Application Firewall | 100 |
 | Web Application Firewall – Größe des überprüften HTTP-Anforderungstexts | 128 KB |
 | Web Application Firewall – Länge des benutzerdefinierten Antworttexts | 2 KB |
 
@@ -51,6 +52,8 @@ ms.locfileid: "101102936"
 | Maximale Regeln pro Regelsatz | 100 | 100 |
 | Maximale Ursprünge pro Ursprungsgruppe | 50 | 50 |
 | Maximale Anzahl von Routen pro Endpunkt | 100 | 200 |
+| URLs in einem einzigen Cachebereinigungsaufruf | 100 | 100 |
+| Benutzerdefinierte Web Application Firewall-Regeln pro Richtlinie | 100 | 100 |
 | Web Application Firewall – Übereinstimmungsbedingungen pro benutzerdefinierter Regel | 10 | 10 |
 | Web Application Firewall – IP-Adressbereiche pro Übereinstimmungsbedingung | 600 | 600 |
 | Web Application Firewall – Zeichenfolgen-Übereinstimmungswerte pro Übereinstimmungsbedingung | 10 | 10 |
@@ -61,25 +64,28 @@ ms.locfileid: "101102936"
 | Web Application Firewall – Größe des überprüften HTTP-Anforderungstexts | 128 KB | 128 KB |
 | Web Application Firewall – Länge des benutzerdefinierten Antworttexts | 2 KB | 2 KB |
 
-### <a name="timeout-values"></a>Timeoutwerte
-#### <a name="client-to-front-door"></a>Client zu Front Door
+#### <a name="timeout-values"></a>Timeoutwerte
+##### <a name="client-to-front-door"></a>Client zu Front Door
 * Front Door verfügt über ein Timeout für eine TCP-Verbindung im Leerlauf von 61 Sekunden.
 
-#### <a name="front-door-to-application-back-end"></a>Front Door zum Anwendungs-Back-End
+##### <a name="front-door-to-application-back-end"></a>Front Door zum Anwendungs-Back-End
 * Wenn es sich bei der Antwort um eine segmentierte Antwort handelt, wird der Status 200 zurückgegeben, falls/wenn der erste Block empfangen wird.
 * Nach der Weiterleitung der HTTP-Anforderung an das Back-End wartet Front Door 30 Sekunden lang auf das erste Paket vom Back-End. Anschließend wird ein 503-Fehler an den Client zurückgegeben. Dieser Wert kann über das Feld „sendRecvTimeoutSeconds“ in der API konfiguriert werden.
-    * Bei Zwischenspeicherungsszenarien kann dieses Timeout nicht konfiguriert werden. Wenn also eine Anforderung zwischengespeichert wird und dieser Vorgang länger als 30 Sekunden für das erste Paket von Front Door oder vom Back-End dauert, wird ein 504-Fehler an den Client zurückgegeben. 
+    * Wenn eine Anforderung zwischengespeichert wird und dieser Vorgang länger als 30 Sekunden für das erste Paket von Front Door oder vom Back-End dauert, wird ein 504-Fehler an den Client zurückgegeben. 
 * Nach dem Empfang des ersten Pakets vom Back-End wartet Front Door 30 Sekunden in einem Leerlauftimeout. Anschließend wird ein 503-Fehler an den Client zurückgegeben. Dieser Timeoutwert ist nicht konfigurierbar.
 * Das Timeout für die Front Door-TCP-Sitzung mit dem Back-End beträgt 90 Sekunden.
 
-### <a name="upload-and-download-data-limit"></a>Datenlimit beim Hoch- und Herunterladen
+#### <a name="upload-and-download-data-limit"></a>Datenlimit beim Hoch- und Herunterladen
 
 |  | Mit Codierung für segmentierte Übertragung (Chunked Transfer Encoding, CTE) | Ohne HTTP-Segmentierung |
 | ---- | ------- | ------- |
 | **Download** | Es gibt keine Beschränkung für die Downloadgröße. | Es gibt keine Beschränkung für die Downloadgröße. |
 | **Upload** |    Es gibt keine Beschränkung, so lange jeder CTE-Upload kleiner als 2 GB ist. | Die Größe darf 2 GB nicht überschreiten. |
 
-### <a name="other-limits"></a>Andere Limits
+#### <a name="other-limits"></a>Andere Limits
 * Maximum URL size (Maximale Größe der URL) – 8.192 Byte: Hiermit wird die maximale Länge der Rohdaten-URL angegeben (Schema + Hostname + Port + Pfad + Abfragezeichenfolge der URL)
 * Maximum Query String size (Maximale Größe der Abfragezeichenfolge) – 4.096 Byte: Hiermit wird die maximale Länge der Abfragezeichenfolge in Byte angegeben.
 * Die maximale Headergröße für HTTP-Antworten von der Integritätstest-URL – 4.096 Bytes: Gibt die maximale Länge aller Antwortheader von Integritätstests an. 
+* Maximale Zeichenlänge des Headerwerts für Regel-Engine-Aktion: 640 Zeichen
+* Maximale Zeichenlänge des Headerwerts für Regel-Engine-Bedingung: 256 Zeichen
+* Maximale ETag-Headergröße: 128 Byte

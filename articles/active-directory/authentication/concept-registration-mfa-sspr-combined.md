@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 07/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c3d80a97b7be3127caaa4ce86dac8435dec1666
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 04f7b5a7757d402035e36aaf085de9033d046ba2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438448"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345820"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicher
 
 Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die [Benutzerdokumentation](../user-help/security-info-setup-signin.md) heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
 
-Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar. Sie ist jedoch für Azure US Government verfügbar.
+Die kombinierte Registrierung von Azure AD-Sicherheitsinformationen ist für Azure US Government, nicht aber für Azure Deutschland oder Azure China 21Vianet verfügbar.
 
 > [!IMPORTANT]
 > Benutzern, die für die ursprüngliche Vorschau und für die erweiterte kombinierte Registrierungsumgebung aktiviert sind, wird das neue Verhalten angezeigt. Benutzern, die für beide Umgebungen aktiviert sind, wird nur die Oberfläche „Mein Konto“ angezeigt. *Mein Konto* entspricht dem Aussehen und Verhalten der kombinierten Registrierung und bietet Benutzern eine einheitliche Oberfläche. Benutzer können „Mein Konto“ anzeigen, indem sie zu [https://myaccount.microsoft.com](https://myaccount.microsoft.com) navigieren.
@@ -69,12 +69,12 @@ Bei der kombinierten Registrierung werden die folgenden Authentifizierungsmethod
 
 Benutzer können eine der folgenden Optionen als Standardmethode für die mehrstufige Authentifizierung festlegen:
 
-- Microsoft Authenticator – Benachrichtigung
+- Microsoft Authenticator (Pushbenachrichtigung)
 - Authenticator-App oder Hardwaretoken – Code
 - Telefonanruf
 - Textnachricht
 
-Da wir weiterhin weitere Authentifizierungsmethoden zu Azure AD hinzufügen, werden dann auch diese Methoden bei der kombinierten Registrierung verfügbar sein.
+Authentifikator-Apps von Drittanbietern bieten keine Pushbenachrichtigungen. Da auch weiterhin Authentifizierungsmethoden zu Azure AD hinzugefügt werden, werden diese bei der kombinierten Registrierung verfügbar.
 
 ## <a name="combined-registration-modes"></a>Modi der kombinierten Registrierung
 
@@ -85,9 +85,11 @@ Zwei Modi der kombinierten Registrierung sind verfügbar: Interruptmodus und Ver
 
 In beiden Modi müssen Benutzer, die bereits eine Methode registriert haben, die für die mehrstufige Authentifizierung verwendet werden kann, eine mehrstufige Authentifizierung ausführen, bevor sie auf ihre Sicherheitsinformationen zugreifen können. Benutzer müssen ihre Informationen bestätigen, bevor sie ihre zuvor registrierten Methoden weiterhin verwenden können. 
 
+
+
 ### <a name="interrupt-mode"></a>Interruptmodus
 
-Bei der kombinierten Registrierung werden sowohl MFA- (Multi-Factor Authentication) als auch SSPR-Richtlinien eingehalten, wenn beide für Ihren Mandanten aktiviert sind. Über diese Richtlinien wird gesteuert, ob die Anmeldung eines Benutzers unterbrochen und dieser aufgefordert wird, die Registrierung durchzuführen, und welche Methoden für die Registrierung verfügbar sind.
+Bei der kombinierten Registrierung werden sowohl Richtlinien für die mehrstufige Authentifizierung als auch für die Self-Service-Kennwortzurücksetzung eingehalten, wenn beide für Ihren Mandanten aktiviert sind. Über diese Richtlinien wird gesteuert, ob die Anmeldung eines Benutzers unterbrochen und dieser aufgefordert wird, die Registrierung durchzuführen, und welche Methoden für die Registrierung verfügbar sind. Wenn nur eine SSPR-Richtlinie aktiviert ist, können Benutzer die Registrierungsunterbrechung überspringen und zu einem späteren Zeitpunkt abschließen.
 
 Im Folgenden sind mehrere Beispielszenarien aufgeführt, in denen Benutzer möglicherweise aufgefordert werden, ihre Sicherheitsinformationen zu registrieren oder zu aktualisieren:
 
@@ -101,8 +103,8 @@ Wenn die Registrierung erzwungen wird, wird den Benutzern die Mindestanzahl der 
 
 Betrachten Sie das folgende Beispielszenario:
 
-- Ein Benutzer ist für SSPR aktiviert. Die SSPR-Richtlinie erfordert zwei Methoden zum Zurücksetzen und aktiviert den Code der mobilen App sowie E-Mail und Telefon.
-- Der Benutzer muss zwei Methoden registrieren.
+- Ein Benutzer ist für SSPR aktiviert. Die SSPR-Richtlinie erfordert zwei Methoden für das Zurücksetzen, und die Authenticator-App sowie die E-Mail-Adresse und das Telefon sind aktiviert.
+- Wenn sich der Benutzer registrieren möchte, sind zwei Methoden erforderlich:
    - Standardmäßig werden dem Benutzer die Authenticator-App und das Telefon angezeigt.
    - Der Benutzer hat die Möglichkeit, statt der Authenticator-App oder des Telefons die E-Mail-Adresse zu registrieren.
 
@@ -139,6 +141,16 @@ Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, navigiert zu [
 ### <a name="change-the-default-method-from-my-account"></a>Ändern der Standardmethode unter „Mein Konto“
 
 Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die mehrstufige Authentifizierung verwendet werden kann, navigiert zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Der Benutzer ändert die aktuell verwendete Standardmethode in eine andere Standardmethode. Anschließend wird die neue Standardmethode auf der Seite „Sicherheitsinformation“ angezeigt.
+
+### <a name="switch-directory"></a>Wechseln des Verzeichnisses
+
+Eine externe Identität (z. B. ein B2B-Benutzer) muss das Verzeichnis wechseln, um die Sicherheitsregistrierungsinformationen für einen Drittanbietermandanten zu ändern. Außerdem sind Benutzer, die auf einen Ressourcenmandanten zugreifen, möglicherweise irritiert, wenn sie Änderungen in ihrem Basismandanten vornehmen, diese Änderungen aber nicht im Ressourcenmandanten angezeigt werden. 
+
+Beispielsweise legt ein Benutzer die Pushbenachrichtigung der Microsoft Authenticator-App als primäre Authentifizierungsmethode für die Anmeldung beim Basismandanten fest, hat aber auch die SMS/Text-Option eingerichtet. Dieser Benutzer hat auch die SMS/Text-Option für einen Ressourcenmandanten konfiguriert. Wenn er die SMS/Text-Option als eine der Authentifizierungsoptionen für den Basismandanten entfernt, ist er vermutlich irritiert, wenn er sich beim Zugriff auf den Ressourcenmandanten mit der SMS/Text-Option authentifizieren soll. 
+
+Klicken Sie auf den Benutzerkontonamen in der Ecke rechts oben und dann auf **Verzeichnis wechseln**, um das Verzeichnis im Azure-Portal zu wechseln.
+
+![Externe Benutzer können das Verzeichnis wechseln.](media/concept-registration-mfa-sspr-combined/switch-directory.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

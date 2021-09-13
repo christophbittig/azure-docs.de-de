@@ -4,12 +4,12 @@ description: Stellen Sie mithilfe einer Azure Resource Manager-Vorlage eine Anwe
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f2561b182689467598f2c939589295d9af72e4d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671218"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290148"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>Bereitstellen einer Anwendung in einem verwalteten Service Fabric-Cluster mithilfe einer ARM-Vorlage
 
@@ -55,7 +55,7 @@ Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen,
 Ressourcen in Ihrem Cluster können geschützt werden, indem die öffentliche Zugriffsebene auf **privat** festgelegt wird. Sie können auf verschiedene Arten Zugriff gewähren:
 
 * Autorisieren des Zugriffs auf Blobs und Warteschlangen mit [Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/blobs/assign-azure-role-data-access.md)
 * Delegieren des Zugriffs mithilfe einer [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 
 Das Beispiel im folgenden Screenshot verwendet den anonymen Lesezugriff für Blobs.
@@ -91,7 +91,7 @@ Die Beispielanwendung enthält [Azure Resource Manager-Vorlagen](https://github.
 >
 >
 
-| Parameter              | Beschreibung                                 | Beispiel                                                      | Kommentare                                                     |
+| Parameter              | BESCHREIBUNG                                 | Beispiel                                                      | Kommentare                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Der Name des Clusters, in dem die Bereitstellung erfolgt | sf-cluster123                                                |                                                              |
 | application            | Der Name der Anwendung.                 | Voting                                                       |
@@ -179,6 +179,17 @@ So löschen Sie eine Anwendung, die mithilfe des Anwendungsressourcenmodells in 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
+
+
+## <a name="migration-from-classic-to-managed-clusters"></a>Migration von klassischen zu verwalteten Clustern
+
+Wenn Sie Anwendungen von klassischen zu verwalteten Clustern migrieren, müssen Sie sicherstellen, dass die Typen richtig angegeben sind, da sonst Fehler auftreten. 
+
+Die folgenden Elemente werden aufgrund ihrer häufigen Verwendung besonders hervorgehoben, sind aber nicht als ausschließliche Liste von Unterschieden zu verstehen. 
+
+* „upgradeReplicaSetCheckTimeout“ ist jetzt eine ganze Zahl für verwaltete Cluster, jedoch eine Zeichenfolge im klassischen SFRP-Cluster. 
+
+Eine umfassende Liste mit Eigenschaften und Typen finden Sie unter [Ressourcentypen für Anwendungen für verwaltete Cluster](/azure/templates/microsoft.servicefabric/managedclusters/applications?tabs=json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

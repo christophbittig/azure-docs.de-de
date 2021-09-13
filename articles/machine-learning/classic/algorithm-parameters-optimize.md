@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (Classic): Optimieren von Algorithmen (Azure)'
-description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus in Azure Machine Learning Studio (klassisch) auswählen.
+description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus im Azure Machine Learning Studio (Classic) auswählen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a133f9b8d1ae22114a78be8e4d22d6293c94c7cd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519302"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582976"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (Classic)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning Studio (klassisch) beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
+In diesem Thema wird das Auswählen der richtigen Hyperparameter für einen Algorithmus im Azure Machine Learning Studio (Classic) beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
 
 
 
-Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in Azure Machine Learning Studio (klassisch). Da Azure Machine Learning Studio (klassisch) sowohl R als auch Python unterstützt, können Sie Ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
+Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl im Azure Machine Learning Studio (Classic). Da das Azure Machine Learning Studio (Classic) sowohl R als auch Python unterstützt, können Sie mithilfe von R oder Python Ihren eigenen Modellauswahlmechanismus implementieren.
 
 Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 
@@ -33,7 +33,7 @@ Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 3. **Definieren der Metrik**: Anschließend entscheiden Sie, welche Metrik zum Ermitteln des besten Parametersatzes verwendet werden soll, z.B. Richtigkeit, mittlere quadratische Abweichung, Genauigkeit, Sensitivität oder F-Maß.
 4. **Trainieren, Evaluieren und Vergleichen**: Für jede eindeutige Kombination der Parameterwerte wird eine Kreuzvalidierung anhand der von Ihnen definierten Fehlermetrik durchgeführt. Nach Auswertung und Vergleich können Sie das leistungsfähigste Modell auswählen.
 
-Die folgende Abbildung veranschaulicht, wie dies in Azure Machine Learning Studio (klassisch) erreicht werden kann.
+Die folgende Abbildung veranschaulicht, wie dies im Azure Machine Learning Studio (Classic) erreicht werden kann.
 
 ![Suchen des besten Parametersatzes](./media/algorithm-parameters-optimize/fig1.png)
 

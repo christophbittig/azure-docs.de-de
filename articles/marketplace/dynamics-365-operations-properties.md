@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 8dd5dc8223314894e04b060f7080ab5f3b0fdfba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/08/2021
+ms.openlocfilehash: f390f6126ce2e4e780fe98f9aa038b98893b341a
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482553"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566208"
 ---
 # <a name="configure-dynamics-365-for-operations-offer-properties"></a>Konfigurieren von Dynamics 365 for Operations-Angebotseigenschaften
 
@@ -30,9 +30,9 @@ Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Be
 
 ### <a name="industries"></a>Branchen
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)].
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-Wählen Sie die **Anwendbaren Produkte** in Dynamics 365, auf die sich dieses Angebot bezieht.
+Wählen Sie unter **Geeignete Produkte** die geeigneten Produkte für das Angebot aus: Handel, Finanzwesen, Personalwesen, Projektvorgänge und/oder Supply Chain Management. Anhand dieser Auswahl können Kunden Ihr Angebot über die Produktfilter von AppSource Dynamics 365 finden, unter denen es angezeigt wird.
 
 Geben Sie eine **App-Version** für Ihr Angebot ein. Für Kunden wird diese Nummer auf der Detailseite des Angebots aufgeführt.
 

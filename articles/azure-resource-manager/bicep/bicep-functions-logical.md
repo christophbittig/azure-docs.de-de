@@ -4,17 +4,19 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: e2b0f79b2d8e0bf1f00e4db108b7a5f33a1be9a7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 8fe09057ea293300754fc35614c00a9b808da247
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026365"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339951"
 ---
 # <a name="logical-functions-for-bicep"></a>Logische Funktionen für Bicep
 
-Resource Manager stellt eine `bool`-Funktion für Bicep bereit. Einige der logischen JSON-Funktionen in Azure Resource Manager werden durch [logische Bicep-Operatoren](./operators-logical.md) ersetzt.
+Resource Manager stellt eine `bool`-Funktion für Bicep bereit. 
+
+Die meisten Logikfunktionen in Resource Manager-Vorlagen werden in Bicep durch [logische Operatoren](./operators-logical.md) ersetzt.
 
 ## <a name="bool"></a>bool
 
@@ -24,7 +26,7 @@ Konvertiert den Parameter in einen booleschen Wert.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 
@@ -45,7 +47,7 @@ output falseInt bool = bool(0)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -54,4 +56,5 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Informationen zu den meisten logischen Operatoren finden Sie unter [Logische Bicep-Operatoren](./operators-logical.md).
 * Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).

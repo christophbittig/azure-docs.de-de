@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: bdf5f2708daee0a3dc05ec8bc3d861633a3b7b7f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 083a568f6fad664c59073e2f6858900302e9d971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590574"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339220"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>Verwenden von KI zum Verarbeiten und Analysieren von Blobinhalten in Azure Cognitive Search
 
@@ -62,7 +62,7 @@ KI-Anreicherung ist ein Add-On für eine Indizierungspipeline, und in Azure Cogn
 
 Blobs in Azure Storage werden mithilfe des [Blobindexers](search-howto-indexing-azure-blob-storage.md) indiziert. Sie können diesen Indexer mit dem Assistenten **Daten importieren**, mit einer REST-API oder einem SDK aufrufen. Ein Blobindexer wird aufgerufen, wenn es sich bei der vom Indexer verwendeten Datenquelle um einen Azure-Blobcontainer handelt. Sie können einen Teil Ihrer Blobs indizieren, indem Sie ein virtuelles Verzeichnis erstellen, das Sie dann als Parameter übergeben können, oder indem Sie nach einer Dateityperweiterung filtern.
 
-Ein Indexer übernimmt die Dokumententschlüsselung und öffnet ein Blob, um den Inhalt zu inspizieren. Nach dem Herstellen einer Verbindung mit der Datenquelle ist dies der erste Schritt in der Pipeline. Bei Blobdaten werden an dieser Stelle PDF-Dateien, Office-Dokumente, Bilder und andere Inhaltstypen erkannt. Die Dokumententschlüsselung mit Textextraktion erfolgt gebührenfrei. Dokumententschlüsselung mit Bildextraktion wird entsprechen den Gebühren berechnet, die Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/) finden.
+Ein Indexer [„entschlüsselt das Dokument“](search-indexer-overview.md#document-cracking) und öffnet ein Blob, um den Inhalt zu untersuchen. Nach dem Herstellen einer Verbindung mit der Datenquelle ist dies der erste Schritt in der Pipeline. Bei Blobdaten werden an dieser Stelle PDF-Dateien, Office-Dokumente, Bilder und andere Inhaltstypen erkannt. Die Dokumententschlüsselung mit Textextraktion erfolgt gebührenfrei. Dokumententschlüsselung mit Bildextraktion wird entsprechen den Gebühren berechnet, die Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/) finden.
 
 Obwohl alle Dokumente entschlüsselt werden, erfolgt die Anreicherung nur, wenn Sie die dazu erforderlichen Skills (Fähigkeiten) explizit bereitstellen. Wenn Ihre Pipeline beispielsweise ausschließlich aus Bildanalyse besteht, wird Text in Ihrem Container bzw. in den Dokumenten ignoriert.
 
@@ -82,7 +82,7 @@ Ein *Skillset* ist die Sammlung von Skills (Fertigkeiten), die in einer Pipeline
 
 Benutzerdefinierte Skills können komplex klingen, sind aber im Hinblick auf die Implementierung einfach und unkompliziert sein. Wenn Sie vorhandene Pakete besitzen, die Musterabgleichs- oder Klassifizierungsmodelle bereitstellen, kann der Inhalt, den Sie aus Blobs extrahieren, zur Verarbeitung an diese Modelle übergeben werden. Da die KI-Anreicherung Azure-basiert ist, sollte sich Ihr Modell ebenfalls in Azure befinden. Einige gängige Hostingmethoden umfassen unter anderem die Verwendung von [Azure Functions](cognitive-search-create-custom-skill-example.md) oder [Containern](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-Integrierte Skills, die von Cognitive Services unterstützt werden, erfordern einen [angefügten Cognitive Services](cognitive-search-attach-cognitive-services.md) All-in-One-Abonnementschlüssel, der Ihnen Zugriff auf die Ressource gewährt. Ein All-in-One-Schlüssel bietet Ihnen Bildanalyse, Spracherkennung, Textübersetzung und Textanalyse. Andere integrierte Skills sind Funktionen von Azure Cognitive Search und erfordern keinen zusätzlichen Dienst oder Schlüssel. Text Shaper, Textteilung und Textzusammenführung sind Beispiele für unterstützende Skills, die manchmal beim Entwerfen der Pipeline erforderlich sind.
+Integrierte Skills, die von Cognitive Services unterstützt werden, erfordern einen [angefügten Cognitive Services](cognitive-search-attach-cognitive-services.md) All-in-One-Abonnementschlüssel, der Ihnen Zugriff auf die Ressource gewährt. Ein All-in-One-Schlüssel bietet Ihnen Bildanalyse, Spracherkennung, Textübersetzung und Textanalyse. Andere integrierte Skills sind Funktionen von Azure Cognitive Search und erfordern keinen zusätzlichen Dienst oder Schlüssel. Shaper, Splitter und Merger sind Beispiele für unterstützende Skills, die manchmal beim Entwerfen der Pipeline erforderlich sind.
 
 Wenn Sie nur benutzerdefinierte Skills und integrierte Hilfsprogrammskills verwenden, besteht weder eine Abhängigkeit von Cognitive Services, noch gehen Kosten damit einher.
 

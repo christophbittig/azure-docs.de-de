@@ -2,7 +2,6 @@
 title: Steuern des Zugriffs auf IoT Hub mithilfe von SAS-Token | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Zugriff auf IoT Hub für Geräte-Apps und Back-End-Apps mithilfe von SAS-Token (Shared Access Signature) steuern.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -16,12 +15,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 27ab47be439b83af4297330c2b85fdc844bfcf3a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: aec64f22cf0af9de9b99c914d972f45f3dfefe1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339164"
 ---
 # <a name="control-access-to-iot-hub-using-shared-access-signatures-and-security-tokens"></a>Steuern des Zugriffs auf IoT Hub mit SAS- (Shared Access Signatures) und Sicherheitstoken
 
@@ -282,7 +281,7 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
 ### <a name="supported-x509-certificates"></a>Unterstützte X.509-Zertifikate
 
-Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](iot-hub-x509ca-overview.md). Informationen zum Hochladen und Überprüfen einer Zertifizierungsstelle bei Ihrem IoT Hub finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md).
+Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](iot-hub-x509ca-overview.md). Informationen zum Hochladen und Überprüfen einer Zertifizierungsstelle bei Ihrem IoT Hub finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](./tutorial-x509-scripts.md).
 
 ### <a name="use-sas-tokens-as-a-device"></a>Verwenden von SAS-Token als Gerät
 
@@ -362,13 +361,13 @@ Ein Protokollgateway könnte das gleiche Token für alle Geräte verwenden, inde
 
 Mit der [Identitätsregistrierung](iot-hub-devguide-identity-registry.md) von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung pro Gerät/Modul mithilfe von [Token](iot-hub-dev-guide-sas.md#security-tokens) konfigurieren. Wenn eine IoT-Lösung bereits über eine benutzerdefinierte Identitätsregistrierung und/oder über ein Authentifizierungsschema verfügt, können Sie diese Infrastruktur durch Erstellen eines *Tokendiensts* in IoT Hub integrieren. Auf diese Weise können Sie andere IoT-Features in der Lösung nutzen.
 
-Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit **DeviceConnect**- oder **ModuleConnect**-Berechtigungen, um Token mit *Gerätebereich* bzw. *Modulbereich* zu erstellen. Mit diesen Token kann ein Gerät oder ein Modul eine Verbindung mit Ihrer IoT Hub-Instanz herstellen.
+Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit der Berechtigung **DeviceConnect**, um Token für den *Gerätebereich* oder *Modulbereich* zu erstellen. Mit diesen Token kann ein Gerät oder ein Modul eine Verbindung mit Ihrer IoT Hub-Instanz herstellen.
 
 ![Schritte des Tokendienstmusters](./media/iot-hub-devguide-security/tokenservice.png)
 
 Hier sind die wichtigsten Schritte des Tokendienstmusters:
 
-1. Erstellen Sie eine IoT Hub-SAS-Richtlinie mit **DeviceConnect**- oder **ModuleConnect**-Berechtigungen für Ihre IoT Hub-Instanz. Sie können diese Richtlinie im [Azure-Portal](https://portal.azure.com) oder programmgesteuert erstellen. Diese Richtlinie wird vom Tokendienst zum Signieren der von ihm erstellten Token verwendet.
+1. Erstellen Sie eine IoT Hub-SAS-Richtlinie mit der Berechtigung **DeviceConnect** für Ihren IoT-Hub. Sie können diese Richtlinie im [Azure-Portal](https://portal.azure.com) oder programmgesteuert erstellen. Diese Richtlinie wird vom Tokendienst zum Signieren der von ihm erstellten Token verwendet.
 
 2. Wenn ein Gerät/Modul auf IoT Hub zugreifen muss, fordert es von Ihrem Tokendienst ein signiertes Token an. Das Gerät kann mit Ihrer benutzerdefinierten Identitätsregistrierung bzw. mit dem Authentifizierungsschema authentifiziert werden, um die Geräte- oder Modulidentität zu ermitteln, die der Tokendienst zum Erstellen des Tokens verwendet.
 
@@ -416,6 +415,6 @@ Nachdem Sie gelernt haben, wie Sie den Zugriff auf IoT Hub steuern, sind möglic
 
 Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, sehen Sie sich die folgenden IoT Hub-Tutorials an:
 
-* [Erste Schritte mit Azure IoT Hub](quickstart-send-telemetry-node.md)
+* [Erste Schritte mit Azure IoT Hub](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 * [Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md)
 * [Verarbeiten von Gerät-zu-Cloud-Nachrichten mit IoT Hub](tutorial-routing.md)

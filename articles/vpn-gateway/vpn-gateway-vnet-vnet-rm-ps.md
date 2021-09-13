@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6baf0342f5fea5ee4ec062c5eed07d9761e72c1d
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 87a2a658b37f199c8e5b6c92543cc9c70a8ae42c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289460"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355036"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet-zu-VNet-Verbindung herstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
 
-Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
+Die Schritte in diesem Artikel gelten für das [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
 > * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -80,7 +80,7 @@ Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünsch
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Da es bis zu 45 Minuten dauert, ein Gateway zu erstellen, kommt es während dieser Übung regelmäßig zu Timeouts bei Azure Cloud Shell. Sie können Cloud Shell neu starten, indem Sie auf die obere linke Ecke des Terminals klicken. Stellen Sie sicher, dass Sie alle Variablen erneut deklarieren, wenn Sie das Terminal neu starten.
+* Da es mindestens 45 Minuten dauert, ein Gateway zu erstellen, kommt es während dieser Übung regelmäßig zu Timeouts bei Azure Cloud Shell. Sie können Cloud Shell neu starten, indem Sie auf die obere linke Ecke des Terminals klicken. Stellen Sie sicher, dass Sie alle Variablen erneut deklarieren, wenn Sie das Terminal neu starten.
 
 * Wenn Sie lieber die neueste Version des Azure PowerShell-Moduls lokal installieren möchten, und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
@@ -204,7 +204,7 @@ In den Beispielen werden die folgenden Werte verwendet:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Nachdem Sie die Befehle fertig gestellt haben, dauert es bis zu 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminals klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
+Nachdem Sie die Befehle ausgeführt haben, dauert es mindestens 45 Minuten, um dieses Gateway zu erstellen. Wenn Sie Azure Cloud Shell verwenden, können Sie Ihre Cloud Shell-Sitzung neu starten, indem Sie auf die linke obere Ecke des Cloud Shell-Terminals klicken und dann „TestVNet4“ konfigurieren. Sie müssen nicht warten, bis das Gateway „TestVNet1“ fertig ist.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Schritt 3: Erstellen und Konfigurieren von TestVNet4
 

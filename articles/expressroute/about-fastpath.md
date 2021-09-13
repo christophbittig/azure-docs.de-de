@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions
+ms.openlocfilehash: b6483ef0e034f695da1e03475ca2a4b716773684
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654372"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349472"
 ---
 # <a name="about-expressroute-fastpath"></a>Informationen zu ExpressRoute FastPath
 
@@ -44,11 +45,19 @@ FastPath unterstützt zwar die meisten Konfigurationen, aber nicht die folgenden
 
 * UDR im gatewaysubnetz: Diese UDR hat keine Auswirkung auf den Netzwerkdatenverkehr, den FastPath direkt von Ihrem lokalen Netzwerk an die virtuellen Computer in Azure Virtual Network sendet. 
 
-* VNet-Peering: Wenn andere virtuelle Netzwerke per Peering mit dem Netzwerk verbunden sind, das mit ExpressRoute verbunden ist, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den anderen virtuellen Netzwerken (d. h. den sogenannten virtuellen „Spoke“-Netzwerken) weiterhin an das virtuelle Netzwerkgateway gesendet. Die Problemumgehung besteht darin, alle virtuellen Netzwerke direkt mit der ExpressRoute-Verbindung zu verbinden.
-
 * Basic-Load Balancer: Wenn Sie einen internen Basic-Load Balancer in Ihrem virtuellen Netzwerk bereitstellen oder der Azure-PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen, einen internen Basic-Load Balancer verwendet, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den virtuellen IP-Adressen, die auf dem Basic-Load Balancer gehostet werden, an das Gateway des virtuellen Netzwerks gesendet. Die Lösung besteht darin, den Basic-Load Balancer auf einen [Standard-Load Balancer](../load-balancer/load-balancer-overview.md) zu aktualisieren.
 
 * Private Link: Wenn Sie von Ihrem lokalen Netzwerk eine Verbindung mit einem [privaten Endpunkt](../private-link/private-link-overview.md) in Ihrem virtuellen Netzwerk herstellen, erfolgt die Verbindung über das Gateway für virtuelle Netzwerke.
+
+## <a name="public-preview"></a>Public Preview
+
+Die folgenden FastPath-Features befinden sich in der Public Preview:
+
+**VNET-Peering:** FastPath sendet Datenverkehr direkt an eine beliebige VM, die in einem virtuellen Netzwerk bereitgestellt ist, das per Peeringverbindung mit dem mit ExpressRoute verbundenen virtuellen Netzwerk verbunden ist. Auf diese Weise wir das virtuelle ExpressRoute-Netzwerkgateway umgangen.
+
+Weitere Informationen finden Sie unter [Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview).
+
+In allen Regionen verfügbar.
  
 ## <a name="next-steps"></a>Nächste Schritte
 

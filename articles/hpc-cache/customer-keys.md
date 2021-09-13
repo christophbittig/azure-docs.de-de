@@ -4,14 +4,14 @@ description: Vorgehensweise zum Verwenden von Azure Key Vault mit Azure HPC Cach
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: ae4c52ec1390166eccb0e73d6f81a8553c445b2e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1fb18deaa4a9cbb43aa75fb21ab8d58fd8976791
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813288"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293478"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache
 
@@ -25,10 +25,17 @@ Azure HPC Cache wird darüber hinaus durch [VM-Hostverschlüsselung](../virtual-
 Das Aktivieren der kundenseitig verwalteten Schlüsselverschlüsselung für Azure HPC Cache umfasst drei Schritte:
 
 1. Richten Sie einen Azure Key Vault zum Speichern der Schlüssel ein.
-1. Wählen Sie beim Erstellen des Azure HPC Cache die kundenseitig verwaltete Schlüsselverschlüsselung aus, und geben Sie den zu verwendenden Schlüsseltresor sowie den Schlüssel an.
-1. Nachdem der Cache erstellt wurde, autorisieren Sie ihn für den Zugriff auf den Schlüsseltresor.
+1. Wählen Sie beim Erstellen des Azure HPC Cache die kundenseitig verwaltete Schlüsselverschlüsselung aus, und geben Sie den zu verwendenden Schlüsseltresor sowie den Schlüssel an. Geben Sie optional eine verwaltete Identität an, die der Cache für den Zugriff auf den Schlüsseltresor verwenden soll.
 
-Die Verschlüsselung ist erst vollständig eingerichtet, nachdem Sie sie aus dem neu erstellten Cache heraus autorisiert haben (Schritt 3). Dies liegt daran, dass Sie die Identität des Caches an den Schlüsseltresor übergeben müssen, um sie zu einem autorisierten Benutzer zu machen. Sie können dies erst nach dem Erstellen des Caches vornehmen, da die Identität erst vorhanden ist, nachdem der Cache erstellt wurde.
+   Je nachdem, welche Entscheidungen Sie in diesem Schritt treffen, können Sie Schritt 3 ggf. überspringen. Weitere Informationen finden Sie unter [Auswählen einer Option für verwaltete Identitäten für den Cache](#choose-a-managed-identity-option-for-the-cache).
+
+1. Bei Verwendung einer **systemseitig zugewiesenen verwalteten Identität** oder einer **benutzerseitig zugewiesenen Identität ohne konfiguriertem Key Vault-Zugriff**: Wechseln Sie zum neu erstellten Cache, und autorisieren Sie ihn für den Zugriff auf den Schlüsseltresor.
+
+   Wenn die verwaltete Identität noch keinen Zugriff auf die Azure Key Vault-Instanz hat, wird Ihre Verschlüsselung erst vollständig eingerichtet, nachdem Sie sie über den neu erstellten Cache autorisiert haben (Schritt 3).
+
+   Bei Verwendung einer systemseitig verwalteten Identität wird die Identität beim Erstellen des Caches erstellt. Sie müssen die Identität des Caches nach der Cacheerstellung an den Schlüsseltresor übergeben, um sie zu einem autorisierten Benutzer zu machen.
+
+   Sie können diesen Schritt überspringen, wenn Sie eine benutzerseitig verwaltete Identität zuweisen, die bereits Zugriff auf den Schlüsseltresor hat.
 
 Nach dem Erstellen des Caches können Sie nicht mehr zwischen von Kunden und von Microsoft verwalteten Schlüsseln wechseln. Wenn Ihr Cache jedoch kundenseitig verwaltete Schlüssel verwendet, können Sie den Verschlüsselungsschlüssel, die Schlüsselversion und den Schlüsseltresor nach Bedarf [ändern](#update-key-settings).
 
@@ -58,6 +65,25 @@ Schlüsseltresor-Zugriffsberechtigungen:
 
   Weitere Informationen finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/security-features.md).
 
+## <a name="choose-a-managed-identity-option-for-the-cache"></a>Auswählen einer Option für verwaltete Identitäten für den Cache
+<!-- check for cross-references from here and create -->
+
+Ihre HPC Cache-Instanz verwendet die Anmeldeinformationen der verwalteten Identität, um eine Verbindung mit dem Schlüsseltresor herzustellen.
+
+Azure HPC Cache kann zwei Arten von verwalteten Identitäten verwenden:
+
+* **Systemseitig zugewiesene** verwaltete Identität: Eine automatisch erstellte, eindeutige Identität für Ihren Cache. Diese verwaltete Identität ist nur vorhanden, solange die HPC Cache-Instanz existiert, und kann nicht direkt verwaltet oder geändert werden.
+
+* **Benutzerseitig zugewiesene** verwaltete Identität: Anmeldeinformationen für eigenständige Identitäten, die Sie getrennt vom Cache verwalten. Sie können eine benutzerseitig zugewiesene verwaltete Identität konfigurieren, die genau den von Ihnen bestimmten Zugriff hat, und sie in mehreren HPC Cache-Instanzen verwenden.
+
+Wenn Sie dem Cache beim Erstellen keine verwaltete Identität zuweisen, erstellt Azure automatisch eine systemseitig zugewiesene verwaltete Identität für den Cache.
+
+Mit einer benutzerseitig zugewiesenen verwalteten Identität können Sie eine Identität bereitstellen, die bereits Zugriff auf Ihren Schlüsseltresor hat. (Sie wurde beispielsweise einer Key Vault-Zugriffsrichtlinie hinzugefügt oder verfügt über eine Azure RBAC-Rolle, die den Zugriff erlaubt.) Wenn Sie eine systemseitig zugewiesene Identität verwenden oder eine verwaltete Identität bereitstellen, die keinen Zugriff hat, müssen Sie nach der Erstellung Zugriff aus dem Cache anfordern. Dies ist ein manueller Schritt, der nachfolgend in [Schritt 3](#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed) beschrieben wird.
+
+* Weitere Informationen zu [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md)
+
+* Weitere Informationen zu [Grundlagen von Azure Key Vault](../key-vault/general/basic-concepts.md)
+
 ## <a name="1-set-up-azure-key-vault"></a>1. Einrichten von Azure Key Vault
 
 Sie können einen Schlüsseltresor und Schlüssel einrichten, bevor Sie den Cache erstellen, oder Sie machen dies im Rahmen der Erstellung des Caches. Stellen Sie sicher, dass diese Ressourcen den [oben](#understand-key-vault-and-key-requirements) angeführten Anforderungen entsprechen.
@@ -76,6 +102,8 @@ Sie müssen die Verschlüsselungsschlüsselquelle angeben, wenn Sie Ihren Azure 
 > [!TIP]
 > Wenn die Seite **Datenträgerverschlüsselungsschlüssel** nicht angezeigt wird, stellen Sie sicher, dass sich Ihr Cache in einer der [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault) befindet.
 
+![Screenshot des ausgefüllten Bildschirms der Schlüssel für die Datenträgerverschlüsselung, der Teil der Cacheerstellungsschnittstelle im Portal ist](media/customer-keys-populated.png)
+
 Der Benutzer, der den Cache erstellt, muss über Berechtigungen verfügen, die der Rolle [Key Vault-Mitwirkender](../role-based-access-control/built-in-roles.md#key-vault-contributor) oder höher entsprechen.
 
 1. Klicken Sie auf die Schaltfläche, um privat verwaltete Schlüssel zu aktivieren. Nachdem Sie diese Einstellung geändert haben, werden die Schlüsseltresoreinstellungen angezeigt.
@@ -92,19 +120,31 @@ Der Benutzer, der den Cache erstellt, muss über Berechtigungen verfügen, die d
 
 1. Geben Sie die Version für den ausgewählten Schlüssel an. Weitere Informationen zur Versionsverwaltung finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
 
+Diese Einstellungen sind optional.
+
+* Aktivieren Sie das Kontrollkästchen **Immer aktuelle Schlüsselversion verwenden**, wenn Sie [automatische Schlüsselrotation](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview) wünschen.
+
+* Wenn Sie eine bestimmte verwaltete Identität für diesen Cache verwenden möchten, wählen Sie im Abschnitt **Verwaltete Identitäten** die Option **Benutzerseitig zugewiesen** aus, und wählen Sie die zu verwendende Identität aus. Weitere Informationen finden Sie in der [Dokumentation zu verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
+
+  > [!TIP]
+  > Eine benutzerseitig zugewiesene verwaltete Identität kann die Cacheerstellung vereinfachen, wenn Sie eine Identität übergeben, die bereits für den Zugriff auf Ihren Schlüsseltresor konfiguriert ist. Bei einer systemseitig zugewiesenen verwalteten Identität müssen Sie nach dem Erstellen des Caches einen zusätzlichen Schritt ausführen, um die neu erstellte systemseitig zugewiesene Identität des Caches für die Verwendung Ihres Schlüsseltresors zu autorisieren.
+
+  > [!NOTE]
+  > Nach Erstellung des Caches können Sie die zugewiesene Identität nicht mehr ändern.
+
 Fahren Sie mit den restlichen Spezifikationen fort, und erstellen Sie den Cache, wie unter [Erstellen eines Azure HPC Cache](hpc-cache-create.md) beschrieben.
 
-## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Autorisieren der Azure Key Vault-Verschlüsselung aus dem Cache
+## <a name="3-authorize-azure-key-vault-encryption-from-the-cache-if-needed"></a>3. Autorisieren der Azure Key Vault-Verschlüsselung aus dem Cache (sofern erforderlich)
 <!-- header is linked from create article, update if changed -->
+
+> [!NOTE]
+> Dieser Schritt ist nicht erforderlich, wenn Sie beim Erstellen des Caches eine benutzerseitig zugewiesene verwaltete Identität mit Schlüsseltresorzugriff angegeben haben.
 
 Nach ein paar Minuten wird der neue Azure HPC Cache in Ihrem Azure-Portal angezeigt. Wechseln Sie zur Seite **Übersicht**, um ihn für den Zugriff auf Ihren Azure Key Vault zu autorisieren und die kundenseitig verwaltete Schlüsselverschlüsselung zu aktivieren.
 
 > [!TIP]
 > Der Cache wird möglicherweise in der Ressourcenliste angezeigt, bevor die „Bereitstellung läuft“-Nachrichten gelöscht werden. Überprüfen Sie die Ressourcenliste nach einer oder zwei Minuten, anstatt auf eine Erfolgsbenachrichtigung zu warten.
-
-Dieser zweistufige Prozess ist erforderlich, weil die Azure HPC Cache-Instanz eine Identität benötigt, die zur Autorisierung an den Azure Key Vault übergeben werden kann. Die Cacheidentität ist erst nach Abschluss der anfänglichen Erstellungsschritte vorhanden.
-
-> [!NOTE]
+>
 > Sie müssen die Verschlüsselung innerhalb von 90 Minuten nach dem Erstellen des Caches autorisieren. Wenn Sie diesen Schritt nicht abschließen, kommt es zum Timeout und Fehlschlagen des Caches. Ein fehlgeschlagener Cache muss neu erstellt werden, da er nicht repariert werden kann.
 
 Der Cache weist den Status **Warten auf Schlüssel** aus. Klicken Sie oben auf der Seite auf die Schaltfläche **Verschlüsselung aktivieren**, um den Cache für den Zugriff auf den angegebenen Schlüsseltresor zu autorisieren.
@@ -113,7 +153,7 @@ Der Cache weist den Status **Warten auf Schlüssel** aus. Klicken Sie oben auf d
 
 Klicken Sie auf **Verschlüsselung aktivieren**, und klicken Sie dann auf die Schaltfläche **Ja**, um den Cache für die Verwendung des Verschlüsselungsschlüssels zu autorisieren. Diese Aktion aktiviert außerdem vorläufiges Löschen und Löschschutz (falls nicht bereits aktiviert) für den Schlüsseltresor.
 
-![Screenshot der Seite „Cacheübersicht“ im Portal mit einer Bannermeldung am oberen Rand, die den Benutzer auffordert, die Verschlüsselung zu aktivieren, indem er auf „Ja“ klickt.](media/enable-keyvault.png)
+![Screenshot der Seite „Cacheübersicht“ im Portal mit einer Bannermeldung am oberen Rand, die den Benutzer auffordert, die Verschlüsselung zu aktivieren, indem er auf „Ja“ klickt](media/enable-keyvault.png)
 
 Nachdem der Cache den Zugriff auf den Schlüsseltresor angefordert hat, kann er die Datenträger, auf denen zwischengespeicherte Daten gespeichert werden, erstellen und verschlüsseln.
 
@@ -125,17 +165,17 @@ Sie können den Schlüsseltresor, den Schlüssel oder die Schlüsselversion für
 
 Sie können bei einem Cache nicht zwischen kundenseitig und systemseitig verwalteten Schlüsseln wechseln.
 
-![Screenshot der Seite „Kundenschlüsseleinstellungen“, die über das Klicken auf „Einstellungen“ > „Verschlüsselung“ auf der Seite „Cache“ im Azure-Portal angezeigt wurde.](media/change-key-click.png)
+![Screenshot der Seite „Kundenschlüsseleinstellungen“, die nach dem Klicken auf „Einstellungen“ > „Verschlüsselung“ auf der Seite „Cache“ im Azure-Portal angezeigt wurde](media/change-key-click.png)
 
 Klicken Sie auf den Link **Schlüssel ändern**, und klicken Sie dann auf **Schlüsseltresor, Schlüssel oder Version ändern**, um die Schlüsselauswahl zu öffnen.
 
-![Screenshot der Seite „Auswählen des Schlüssels aus Azure Key Vault“ mit drei Dropdown-Auswahlfeldern zur Auswahl von Schlüsseltresor, Schlüssel und Version.](media/select-new-key.png)
+![Screenshot der Seite „Auswählen des Schlüssels aus Azure Key Vault“ mit drei Dropdown-Auswahlfeldern zur Auswahl von Schlüsseltresor, Schlüssel und Version](media/select-new-key.png)
 
 Schlüsseltresore, die sich im selben Abonnement und in derselben Region wie dieser Cache befinden werden in der Liste angezeigt.
 
 Nachdem Sie die neuen Werte für die Verschlüsselungsschlüssel ausgewählt haben, klicken Sie auf **Auswählen**. Eine Bestätigungsseite mit den neuen Werten wird angezeigt. Klicken Sie auf **Speichern**, um die Auswahl abzuschließen.
 
-![Screenshot der Bestätigungsseite mit der Schaltfläche „Speichern“ oben links.](media/save-key-settings.png)
+![Screenshot der Bestätigungsseite mit der Schaltfläche „Speichern“ oben links](media/save-key-settings.png)
 
 ## <a name="read-more-about-customer-managed-keys-in-azure"></a>Weitere Informationen zu kundenseitig verwalteten Schlüsseln in Azure
 

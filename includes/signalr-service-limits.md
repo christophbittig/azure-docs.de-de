@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 328a3d088ea21ec55f5e06cfbfc307fca2b03afa
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83673542"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113644370"
 ---
 | Resource | Standardlimit | Maximales Limit | 
 | --- | --- | --- |
@@ -35,3 +35,4 @@ ms.locfileid: "83673542"
 
 Öffnen Sie ein Supportticket, um eine Aktualisierung der Standardgrenzwerte Ihres Abonnements anzufordern.
 
+Weitere Informationen zum Zählen von Verbindungen und Nachrichten finden Sie unter [Nachrichten und Verbindungen in Azure SignalR Service](../articles/azure-signalr/signalr-concept-messages-and-connections.md).

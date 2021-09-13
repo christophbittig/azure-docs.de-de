@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c731648c144d4b25896260e5cf276a97b9e731
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e21e22e231ea5998cf15c7b2982180da91fe49aa
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965765"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733428"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
 Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) zur langfristigen Aufbewahrung und Gewinnung von Erkenntnissen zu Daten an mehrere Endpunkte weiterleiten. Dieses Feature ermöglicht Folgendes:
 
 * Archivieren von Azure AD-Aktivitätsprotokollen in einem Azure-Speicherkonto, um die Daten für längere Zeit aufzubewahren
-* Streamen von Azure AD-Aktivitätsprotokollen zum Analysieren an einen Azure Event Hub mithilfe von beliebten SIEM-Tools (Security Information & Event Management) wie Splunk und QRadar
+* Streamen von Azure AD-Aktivitätsprotokollen zum Analysieren an einen Azure Event Hub mithilfe von beliebten SIEM-Tools (Security Information & Event Management) wie Splunk, QRadar und Azure Sentinel
 * Integrieren von Azure AD-Aktivitätsprotokollen in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen
 * Senden von Azure AD-Aktivitätsprotokollen an Azure Monitor-Protokolle, um funktionsreiche Visualisierungen, Überwachung und Benachrichtigungen für die verbundenen Daten zu aktivieren
 
@@ -53,10 +53,10 @@ Mit diesem Feature können Sie Azure AD-Überwachungsprotokolle und -Anmeldeprot
 Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 * Ein Azure-Abonnement. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/free/).
-* Eine Azure AD-[Lizenz](https://azure.microsoft.com/pricing/details/active-directory/) vom Typ „Free“, „Basic“, „Premium 1“ oder „Premium 2“, um auf die Azure AD-Überwachungsprotokolle im Azure-Portal zuzugreifen. 
+* Eine Azure AD-[Lizenz](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) vom Typ „Free“, „Basic“, „Premium 1“ oder „Premium 2“, um auf die Azure AD-Überwachungsprotokolle im Azure-Portal zuzugreifen. 
 * Einen Azure AD-Mandanten.
 * Einen Benutzer, der als **globaler Administrator** oder **Sicherheitsadministrator** für den Azure AD-Mandanten fungiert.
-* Eine Azure AD-[Lizenz](https://azure.microsoft.com/pricing/details/active-directory/) vom Typ „Premium 1“ oder „Premium 2“, um auf die Azure AD-Anmeldeprotokolle im Azure-Portal zuzugreifen. 
+* Eine Azure AD-[Lizenz](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) vom Typ „Premium 1“ oder „Premium 2“, um auf die Azure AD-Anmeldeprotokolle im Azure-Portal zuzugreifen. 
 
 Je nachdem, wohin die Überwachungsprotokolldaten weitergeleitet werden, benötigen Sie Folgendes:
 

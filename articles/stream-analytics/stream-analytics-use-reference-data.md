@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/25/2021
+ms.openlocfilehash: 828748a2702233bfdabf3dc627e46956bf436020
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99560218"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289365"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
@@ -118,7 +118,7 @@ Es wird empfohlen, Verweisdatasets zu verwenden, die kleiner als 300 MB sind, u
 |3   |150 MB oder weniger   |
 |6 und mehr   |5 GB oder weniger    |
 
-Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung.
+Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. Für Verweisdatasets mit einer Größe von über 300 MB wird empfohlen, Azure SQL-Datenbank als Quelle mit [Deltaabrageoption](./sql-reference-data.md#delta-query) für optimale Leistung zu verwenden. Wenn die Deltaabfrage in solchen Szenarios nicht verwendet wird, erkennen Sie dies anhand der Spitzen in den Grenzwertverzögerungsmetriken jedes Mal dann, wenn das Verweisdataset aktualisiert wird. 
 
 ## <a name="joining-multiple-reference-datasets-in-a-job"></a>Verknüpfen mehrerer Verweisdatasets in einem Auftrag
 In einem einzelnen Schritt der Abfrage können Sie nur eine Datenflusseingabe mit einer Verweisdateneingabe verknüpfen. Wenn Sie die Abfrage in mehrere Schritte aufteilen, können Sie jedoch auch mehrere Verweisdatasets verknüpfen. Ein entsprechendes Beispiel ist nachfolgend dargestellt.

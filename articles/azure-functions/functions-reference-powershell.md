@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 9877f50fe7bb06cb33a38f8ee89fa09ad12c0693
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 297d8af86f22cc588060cb90f327ad6dd335437d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672476"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339770"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -393,6 +393,8 @@ Die folgende Tabelle zeigt die PowerShell-Versionen, die für jede Hauptversion 
 
 Die aktuell von der Runtime verwendete Version sehen Sie in der Ausgabe `$PSVersionTable` einer Funktion.
 
+Weitere Informationen zur Azure Functions Runtime-Supportrichtlinie finden Sie in diesem [Artikel](./language-support-policy.md).
+
 ### <a name="running-local-on-a-specific-version"></a>Lokale Ausführung unter einer bestimmten Version
 
 Wenn Azure Functions lokal ausgeführt wird, verwendet die Runtime standardmäßig PowerShell Core 6. Um stattdessen PowerShell 7 bei lokaler Ausführung zu verwenden, müssen Sie die Einstellung `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` zum Array `Values` in der Datei „local.setting.json“ im Projektstamm hinzufügen. Wenn die Datei „local.settings.json“ lokal unter PowerShell 7 ausgeführt wird, sieht Ihre local.settings.json-Datei wie im folgenden Beispiel aus: 
@@ -411,6 +413,7 @@ Wenn Azure Functions lokal ausgeführt wird, verwendet die Runtime standardmäß
 ### <a name="changing-the-powershell-version"></a>Ändern der PowerShell-Version
 
 Ihre Funktions-App muss unter Version 3.x ausgeführt werden, um ein Upgrade von PowerShell Core 6 auf PowerShell 7 durchführen zu können. Informationen dazu finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
 
 Verwenden Sie die folgenden Schritte, um die von Ihrer Funktions-App verwendete PowerShell-Version zu ändern. Sie können dies entweder im Azure-Portal oder mithilfe von PowerShell erledigen.
 
@@ -568,7 +571,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Wenn App-Einstellungen lokal ausgeführt werden, werden sie über die Projektdatei [local.settings.json](functions-run-local.md#local-settings-file) gelesen.
+Wenn App-Einstellungen lokal ausgeführt werden, werden sie über die Projektdatei [local.settings.json](functions-develop-local.md#local-settings-file) gelesen.
 
 ## <a name="concurrency"></a>Parallelität
 

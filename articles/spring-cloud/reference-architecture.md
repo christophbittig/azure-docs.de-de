@@ -1,17 +1,17 @@
 ---
 ms.date: 02/16/2021
 ms.topic: reference-architecture
-author: kriation
+author: karlerickson
 title: Azure Spring Cloud-Referenzarchitektur
 ms.author: akaleshian
 ms.service: spring-cloud
 description: Diese Referenzarchitektur ist eine Grundlage unter Verwendung eines typischen Hub-and-Spoke-Designs für Unternehmen für den Einsatz von Azure Spring Cloud.
-ms.openlocfilehash: d45d70227be2d88ca69e8a88bbc116a7f8045e74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f0cc7a1345ff15a63c7cb9b0ebca51863fdf2791
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132681"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351203"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud-Referenzarchitektur
 
@@ -19,7 +19,7 @@ Diese Referenzarchitektur ist eine Grundlage unter Verwendung eines typischen Hu
 
 Eine Implementierung dieser Architektur finden Sie im [Azure Spring Cloud Reference Architecture][10]-Repository auf GitHub.
 
-Zu den Bereitstellungsoptionen für diese Architektur gehören Azure Resource Manager (ARM), Terraform und Azure CLI. Die Artefakte in diesem Repository bilden eine Grundlage, die Sie für Ihre Umgebung anpassen können. Sie können Ressourcen wie Azure Firewall oder Application Gateway in verschiedenen Ressourcengruppen oder Abonnements gruppieren. Diese Gruppierung hilft dabei, verschiedene Funktionen wie z. B. IT-Infrastruktur, Sicherheit, Geschäftsanwendungsteams usw. voneinander getrennt zu halten.
+Zu den Bereitstellungsoptionen für diese Architektur gehören Azure Resource Manager (ARM), Terraform, die Azure CLI und Bicep. Die Artefakte in diesem Repository bilden eine Grundlage, die Sie für Ihre Umgebung anpassen können. Sie können Ressourcen wie Azure Firewall oder Application Gateway in verschiedenen Ressourcengruppen oder Abonnements gruppieren. Diese Gruppierung hilft dabei, verschiedene Funktionen wie z. B. IT-Infrastruktur, Sicherheit, Geschäftsanwendungsteams usw. voneinander getrennt zu halten.
 
 ## <a name="planning-the-address-space"></a>Planen des Adressraums
 

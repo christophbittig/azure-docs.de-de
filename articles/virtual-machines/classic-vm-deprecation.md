@@ -9,16 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 2fb710bab03d595d6e54bc8dd8fbda38c57123e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eee11a2f50dbc0d3121d3ba603e85d3700e333bb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668197"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294014"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrieren Ihrer IaaS-Ressourcen zu Azure Resource Manager vor dem 1. März 2023 
 
-Im Jahr 2014 haben wir mit Infrastructure-as-a-Service (IaaS) auf [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) begonnen. Die zugehörigen Funktionen wurden seitdem ständig erweitert. Da Azure Resource Manager jetzt über vollständige IaaS-Funktionen und andere Erweiterungen verfügt, haben wir am 28. Februar 2020 begonnen, die Verwaltung von IaaS-VMs über [Azure Service Manager](./migration-classic-resource-manager-faq.md#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) einzustellen. Diese Funktionalität wird am 1. März 2023 vollständig eingestellt. 
+Im Jahr 2014 haben wir mit Infrastructure-as-a-Service (IaaS) auf [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) begonnen. Die zugehörigen Funktionen wurden seitdem ständig erweitert. Da Azure Resource Manager jetzt über vollständige IaaS-Funktionen und andere Erweiterungen verfügt, haben wir am 28. Februar 2020 begonnen, die Verwaltung von IaaS-VMs über [Azure Service Manager](/azure/virtual-machines/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) einzustellen. Diese Funktionalität wird am 1. März 2023 vollständig eingestellt. 
 
 Derzeit wird für etwa 90 Prozent der IaaS-VMs Azure Resource Manager verwendet. Wenn Sie IaaS-Ressourcen über ASM verwenden, sollten Sie jetzt mit der Planung der Migration beginnen. Schließen Sie die Planung bis zum 1. März 2023 ab, um [Azure Resource Manager](../azure-resource-manager/management/index.yml) zu nutzen.
 
@@ -56,7 +56,7 @@ Beginnen Sie noch heute mit der Planung Ihre Migration zu Azure Resource Manager
    - Sie können Azure Resource Graph auch über das [Portal](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) oder [PowerShell](../governance/resource-graph/concepts/work-with-data.md) abfragen, um die Liste aller mit „Virtueller Computer (klassisch)“ gekennzeichneten VMs und deren zugehörige Informationen für die ausgewählten Abonnements anzuzeigen. 
    - Am 8. Februar und 2. September 2020 haben wir an alle Abonnementbesitzer eine E-Mail gesendet, in der sie aufgefordert wurden, mit der Planung der IaaS-VM-Migration zu Azure Resource Manager zu beginnen. Die E-Mail enthält eine Liste aller Abonnements und der in diesen enthaltenen VMs (klassisch). Verwenden Sie sie zum Erstellen dieser Liste. 
 
-1. Weitere Informationen zur Migration Ihrer [Linux](./migration-classic-resource-manager-plan.md)- und [Windows](./migration-classic-resource-manager-plan.md)-VMs (klassisch) zu Azure Resource Manager finden Sie [hier](./migration-classic-resource-manager-overview.md). Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](./migration-classic-resource-manager-faq.md).
+1. Weitere Informationen zur Migration Ihrer [Linux](./migration-classic-resource-manager-plan.md)- und [Windows](./migration-classic-resource-manager-plan.md)-VMs (klassisch) zu Azure Resource Manager finden Sie [hier](./migration-classic-resource-manager-overview.md). Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](./migration-classic-resource-manager-faq.yml).
 
 1. Es empfiehlt sich, die Planung mit dem [plattformgestützten Migrationstool](./migration-classic-resource-manager-overview.md) zu beginnen, um Ihre vorhandenen VMs in drei einfachen Schritten zu migrieren: Überprüfen, Vorbereiten und Committen. Das Tool wurde entwickelt, um Ihre VMs mit minimaler bis gar keiner Ausfallzeit zu migrieren. 
 
@@ -66,6 +66,6 @@ Beginnen Sie noch heute mit der Planung Ihre Migration zu Azure Resource Manager
 
    Wenn das Migrationstool nicht für Ihre Migration geeignet ist, können Sie sich [weitere Computeangebote](/azure/architecture/guide/technology-choices/compute-decision-tree) für die Migration ansehen. Da es zahlreiche Azure-Computeangebote gibt und diese sich voneinander unterscheiden, ist es nicht möglich, einen plattformgestützten Migrationspfad für sie bereitzustellen.  
 
-1. Bei technischen Fragen und Problemen sowie für Unterstützung beim Hinzufügen von Abonnements zur Zulassungsliste [wenden Sie sich an den Support](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
+1. Bei technischen Fragen und Problemen sowie für Unterstützung beim Hinzufügen von Abonnements zur Zulassungsliste [können Sie sich an den Support wenden](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
 
-1. Schließen Sie die Migration so bald wie möglich ab, um Beeinträchtigungen Ihres Geschäftsbetriebs zu vermeiden und von der verbesserten Leistung und Sicherheit sowie den neuen Features von Azure Resource Manager zu profitieren. 
+1. Schließen Sie die Migration so bald wie möglich ab, um Beeinträchtigungen Ihres Geschäftsbetriebs zu vermeiden und von der verbesserten Leistung und Sicherheit sowie den neuen Features von Azure Resource Manager zu profitieren.

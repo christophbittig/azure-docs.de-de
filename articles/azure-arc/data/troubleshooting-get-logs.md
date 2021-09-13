@@ -1,59 +1,52 @@
 ---
-title: Abrufen von Protokollen für die Problembehandlung Azure Arc-fähiger Datendienste
-description: Erfahren Sie, wie Sie Protokolldateien von einem Datencontroller für die Problembehandlung Azure Arc-fähiger Datendienste abrufen.
+title: Abrufen von Protokollen für die Problembehandlung bei Azure Arc-fähigen Datendiensten
+description: Hier erfahren Sie, wie Sie Protokolldateien von einem Datencontroller für die Problembehandlung bei Azure Arc-fähigen Datendiensten abrufen.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82152756b5caf5bfbe0301a14185d8ffed1d1afe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93234041"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346058"
 ---
-# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Abrufen von Protokollen für die Problembehandlung Azure Arc-fähiger Datendienste
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Abrufen von Protokollen für die Problembehandlung bei Azure Arc-fähigen Datendiensten
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie fortfahren:
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. Weitere Informationen finden Sie unter [Installieren von Clienttools zum Bereitstellen und Verwalten von Azure Arc-fähigen Datendiensten](./install-client-tools.md).
-* Administratorkonto zum Anmelden beim Azure Arc-fähigen Datencontroller.
+* Azure CLI (`az`) mit der `arcdata`-Erweiterung. Weitere Informationen finden Sie unter [Installieren von Clienttools zum Bereitstellen und Verwalten von Azure Arc-fähigen Datendiensten](./install-client-tools.md).
+* Administratorkonto zum Anmelden beim Azure Arc-fähigen Datencontroller
 
 ## <a name="get-log-files"></a>Abrufen von Protokolldateien
 
-Zur Problembehandlung können Sie die Protokolle zu allen oder nur zu bestimmten Pods abrufen. Eine Möglichkeit besteht in der Verwendung von Kubernetes-Standardtools wie dem Befehl `kubectl logs`. In diesem Artikel verwenden Sie das [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]-Tool, das das gleichzeitige Abrufen aller Protokolle erleichtert.
+Zur Problembehandlung können Sie die Protokolle zu allen oder nur zu bestimmten Pods abrufen. Eine Möglichkeit besteht in der Verwendung von Kubernetes-Standardtools wie dem Befehl `kubectl logs`. In diesem Artikel verwenden Sie die Azure CLI (`az`) mit der `arcdata`-Erweiterung, die das gleichzeitige Abrufen aller Protokolle erleichtert.
 
-1. Melden Sie sich mit einem Administratorkonto beim Datencontroller an.
+Führen Sie den folgenden Befehl aus, um die Protokolle zu sichern:
 
-   ```console
-   azdata login
-   ```
-
-2. Führen Sie den folgenden Befehl aus, um die Protokolle zu sichern:
-
-   ```console
-   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```azurecli
+   az arcdata dc debug copy-logs --exclude-dumps --skip-compress
    ```
 
    Zum Beispiel:
 
-   ```console
-   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```azurecli
+   #az arcdata dc debug copy-logs --exclude-dumps --skip-compress
    ```
 
 Der Datencontroller erstellt die Protokolldateien im aktuellen Arbeitsverzeichnis in ein Unterverzeichnis namens `logs`. 
 
 ## <a name="options"></a>Optionen
 
-Der Befehl `azdata arc dc debug copy-logs` bietet die folgenden Optionen zum Verwalten der Ausgabe:
+Der Befehl `az arcdata dc debug copy-logs` bietet die folgenden Optionen zum Verwalten der Ausgabe:
 
 * Mithilfe des Parameters `--target-folder` geben Sie die Protokolldateien in ein anderes Verzeichnis aus.
 * Sie komprimieren die Dateien, indem Sie den Parameter `--skip-compress` weglassen.
@@ -63,14 +56,14 @@ Der Befehl `azdata arc dc debug copy-logs` bietet die folgenden Optionen zum Ver
 
 Mit diesen Parametern können Sie die `<parameters>` im folgenden Beispiel ersetzen: 
 
-```console
-azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```azurecli
+az arcdata dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name>
 ```
 
 Beispiel:
 
 ```console
-#azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
+#az arcdata dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 
 ```
 
 Die folgende Ordnerhierarchie ist ein Beispiel. Sie ist nach Podnamen, dann nach Containern und dann nach der Verzeichnishierarchie innerhalb des Containers organisiert.
@@ -194,6 +187,3 @@ Die folgende Ordnerhierarchie ist ein Beispiel. Sie ist nach Podnamen, dann nach
             └───openvpn
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
-
-[azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

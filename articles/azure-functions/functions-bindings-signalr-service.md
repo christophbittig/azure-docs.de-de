@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34460fb0076c4cb666242d996add913cc2b74d22
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97763488"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108637"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
@@ -53,6 +53,10 @@ Um die SignalR Service-Anmerkungen in Java-Funktionen verwenden zu können, mü
     <version>1.0.0</version>
 </dependency>
 ```
+
+## <a name="connection-string-settings"></a>Einstellungen für Verbindungszeichenfolgen
+
+Fügen Sie der Datei _host.json_, die mit Ihrer Verbindungszeichenfolge auf die Anwendungseinstellung zeigt, den `AzureSignalRConnectionString`-Schlüssel hinzu. Für die lokale Entwicklung ist dieser Wert möglicherweise in der Datei _local.settings.json_ enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

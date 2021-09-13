@@ -3,13 +3,13 @@ title: Einbinden eines virtuellen Dateisystems in einen Pool
 description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Pool einbinden.
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.date: 03/26/2021
-ms.openlocfilehash: 460501e30b5afd2eb7a1f67b1162b9820830454a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/18/2021
+ms.openlocfilehash: 7057a982fb3a4b59b8716a373c2ed5172e392cb2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968144"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444063"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -78,11 +78,16 @@ new PoolAddParameter
 
 ### <a name="azure-blob-container"></a>Azure-Blobcontainer
 
-Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md). Weitere Informationen und Tipps zur Verwendung von blobfuse finden Sie in den häufig gestellten Fragen zu blobfuse.
+Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey`, ein `SasKey` oder eine `Managed Identity` mit Zugriff auf Ihr Speicherkonto erforderlich.
+
+Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md), [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-sas-overview.md) und [Konfigurieren verwalteter Identitäten in Azure Batch-Pools](managed-identity-pools.md). Weitere Informationen und Tipps zur Verwendung von blobfuse erhalten Sie beim [blobfuse-Projekt](https://github.com/Azure/azure-storage-fuse).
 
 Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Weitere Informationen und Tipps zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Behandlung von Problemen](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) mit blobfuse. Informationen zu aktuellen blobfuse-Problemen und deren Lösungen finden Sie auch im Artikel zu [GitHub-Problemen im blobfuse-Repository](https://github.com/Azure/azure-storage-fuse/issues).
+
+> [!NOTE]
+> Das folgende Beispiel zeigt einen `AccountKey`, einen `SasKey` und eine `IdentityReference`, die sich aber gegenseitig ausschließen. Es kann nur eine dieser Optionen angegeben werden.
 
 ```csharp
 new PoolAddParameter
@@ -98,6 +103,7 @@ new PoolAddParameter
                 ContainerName = "containerName",
                 AccountKey = "StorageAccountKey",
                 SasKey = "SasKey",
+                IdentityReference = new ComputeNodeIdentityReference("/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name"),
                 RelativeMountPath = "RelativeMountPath",
                 BlobfuseOptions = "-o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 "
             },
@@ -105,6 +111,9 @@ new PoolAddParameter
     }
 }
 ```
+
+> [!TIP]
+>Wenn Sie eine verwaltete Identität verwenden, stellen Sie sicher, dass die Identität [dem Pool zugewiesen](managed-identity-pools.md) wurde, damit sie auf der VM verfügbar ist, die die Einbindung vornimmt. Die Identität muss über die Rolle `Storage Blob Data Contributor` verfügen, damit sie ordnungsgemäß funktioniert.
 
 ### <a name="network-file-system"></a>Network File System
 

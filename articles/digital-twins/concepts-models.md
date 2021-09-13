@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: In diesem Artikel erfahren Sie, wie Azure Digital Twins benutzerdefinierte Modelle verwendet, um Entitäten in Ihrer Umgebung zu beschreiben.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f99309302c594d407a0d65d0ab61a8ece860695b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8590f10f521841d0f483b82bd2e8e9e7d0b3528d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082323"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356503"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -28,7 +28,7 @@ Modelle für Azure Digital Twins werden mithilfe von DTDL (Digital Twins Definit
 
 Sie können die vollständigen Sprachspezifikationen für DTDL in GitHub anzeigen: [Digital Twins Definition Language (DTDL) – Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) (in englischer Sprache).
 
-DTDL basiert auf JSON-LD und ist von der Programmiersprache unabhängig. DTDL ist nicht ausschließlich für Azure Digital Twins bestimmt, sondern wird auch zur Darstellung von Gerätedaten in anderen IoT-Diensten wie [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) verwendet. Azure Digital Twins verwendet DTDL, **Version 2** (die Verwendung von DTDL, Version 1, für Azure Digital Twins wird nicht mehr unterstützt). 
+DTDL basiert auf JSON-LD und ist von der Programmiersprache unabhängig. DTDL ist nicht ausschließlich für Azure Digital Twins bestimmt, sondern wird auch zur Darstellung von Gerätedaten in anderen IoT-Diensten wie [IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) verwendet. Azure Digital Twins verwendet DTDL, **Version 2** (die Verwendung von DTDL, Version 1, für Azure Digital Twins wird nicht mehr unterstützt). 
 
 Der restliche Artikel bietet eine Übersicht über die Verwendung der Sprache in Azure Digital Twins.
 
@@ -94,6 +94,8 @@ Dieses Modell beschreibt ein Home-Objekt mit einer **Eigenschaft** für eine ID.
 
 In diesem Abschnitt werden **Eigenschaften** und **Telemetriedaten** in DTDL-Modellen ausführlicher erläutert.
 
+Eine umfassende Liste mit den Feldern, die im Rahmen einer Eigenschaft ggf. angezeigt werden, finden Sie im [Abschnitt „Eigenschaft“ in der DTDL v2-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property). Eine umfassende Liste mit den Feldern, die im Rahmen von Telemetriedaten ggf. angezeigt werden, finden Sie im [Abschnitt zu den „Telemetriedaten“ in der DTDL v2-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#telemetry).
+
 ### <a name="difference-between-properties-and-telemetry"></a>Unterschied zwischen Eigenschaften und Telemetrie
 
 Hier finden Sie einige zusätzliche Anleitungen zur konzeptionellen Unterscheidung zwischen den DTDL-Feldern **Eigenschaft** und **Telemetrie** in Azure Digital Twins.
@@ -152,11 +154,16 @@ Das folgende Beispiel zeigt ein Sensormodell mit einer Semantiktyptelemetrie fü
 
 In diesem Abschnitt werden **Beziehungen** in DTDL-Modellen ausführlicher erläutert.
 
+Eine umfassende Liste mit den Feldern, die im Rahmen einer Beziehung ggf. angezeigt werden, finden Sie im [Abschnitt „Beziehung“ in der DTDL v2-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#relationship).
+
 ### <a name="basic-relationship-example"></a>Beispiel für eine einfache Beziehung
 
 Hier sehen Sie ein einfaches Beispiel für eine Beziehung in einem DTDL-Modell. Dieses Beispiel zeigt eine Beziehung für ein Home-Modell, die es ihm erlaubt, eine Verbindung mit einem Floor-Modell herzustellen.
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json" highlight="12-18":::
+
+>[!NOTE]
+>Für Beziehungen ist `@id` ein optionales Feld. Wenn `@id` nicht angegeben wird, wird vom Prozessor der Schnittstelle für digitale Zwillinge eine ID zugewiesen.
 
 ### <a name="targeted-and-non-targeted-relationships"></a>Gezielte und nicht gezielte Beziehungen
 
@@ -180,14 +187,18 @@ Das folgende Beispiel zeigt eine andere Version des Home-Modells, bei der die `r
 
 In diesem Abschnitt werden **Komponenten** in DTDL-Modellen ausführlicher erläutert.
 
+Eine umfassende Liste mit den Feldern, die im Rahmen einer Komponente ggf. angezeigt werden, finden Sie im [Abschnitt „Komponente“ in der DTDL v2-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component).
+
 ### <a name="basic-component-example"></a>Beispiel für eine einfache Komponente
 
-Hier sehen Sie ein einfaches Beispiel für eine Komponente eines DTDL-Modells. Dieses Beispiel zeigt ein Room-Modell, das eine Thermostatkomponente verwendet.
+Hier sehen Sie ein einfaches Beispiel für eine Komponente eines DTDL-Modells. In diesem Beispiel wird ein Raummodell (Room) veranschaulicht, bei dem ein Thermostatmodell als Komponente verwendet wird.
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" highlight="15-19, 28-41":::
 
-> [!NOTE]
-> Beachten Sie, dass die Komponentenschnittstelle (Thermostatkomponente) im selben Array definiert ist wie die Schnittstelle, die sie verwendet (Room). Komponenten müssen auf diese Weise in API-Aufrufen definiert werden, damit die Schnittstelle gefunden werden kann.
+Falls andere Modelle bei dieser Lösung ebenfalls ein Thermostat enthalten sollen, kann in den entsprechenden eigenen Definitionen der Modelle genauso wie für den Raum auf dasselbe Thermostatmodell als Komponente verwiesen werden.
+
+> [!IMPORTANT]
+> Die Komponentenschnittstelle (im obigen Beispiel ein Thermostat) muss in demselben Array wie alle anderen Schnittstellen definiert sein, von denen diese verwendet wird (im obigen Beispiel der Raum), damit der Komponentenverweis gefunden werden kann.
 
 ## <a name="model-inheritance"></a>Vererbung im Modell
 
@@ -225,7 +236,7 @@ In diesem Abschnitt werden die aktuellen Beispiele ausführlicher beschrieben.
 
 ### <a name="model-uploader"></a>Modelluploader 
 
-Sobald Sie Ihre Modelle erstellt, erweitert oder ausgewählt haben, können Sie diese in Ihre Azure Digital Twins-Instanz hochladen, um sie zur Verwendung in Ihrer Lösung zur Verfügung zu stellen. Hierzu verwenden Sie die [Azure Digital Twins-APIs](concepts-apis-sdks.md) wie unter [Exemplarische Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md#upload-models) beschrieben.
+Sobald Sie Ihre Modelle erstellt, erweitert oder ausgewählt haben, können Sie diese in Ihre Azure Digital Twins-Instanz hochladen, um sie zur Verwendung in Ihrer Lösung zur Verfügung zu stellen. Hierzu verwenden Sie die [Azure Digital Twins-APIs](concepts-apis-sdks.md), wie dies im Abschnitt zur [Verwaltung von DTDL-Modellen](how-to-manage-model.md#upload-models) beschrieben ist.
 
 Wenn Sie jedoch viele Modelle hochladen müssen oder viele gegenseitige Abhängigkeiten vorliegen, die einzelne Uploads erschweren würden, können Sie das [Beispiel „Azure Digital Twins-Modelluploader“](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels) verwenden, um mehrere Modelle gleichzeitig hochzuladen. Befolgen Sie die im Beispiel bereitgestellten Anweisungen, um dieses Projekt zu konfigurieren und zum Hochladen von Modellen in Ihre eigene Instanz zu verwenden.
 
@@ -235,9 +246,9 @@ Nachdem Sie Modelle in Ihre Azure Digital Twins-Instanz hochgeladen haben, kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Hier erfahren Sie mehr über das Erstellen von Modellen basierend auf Branchenstandardontologien: [Konzepte: Was ist eine Ontologie?](concepts-ontologies.md) 
+* Informieren Sie sich über die Erstellung von Modellen basierend auf Branchenstandardontologien: [Was ist eine Ontologie?](concepts-ontologies.md).
 
-* Ausführliche Informationen zur Verwaltung von Modellen mit API-Vorgängen: [Vorgehensweise: Verwalten von DTDL-Modellen](how-to-manage-model.md)
+* Lesen Sie die ausführlicheren Informationen zur Verwaltung von Modellen mit API-Vorgängen: [Verwalten von DTDL-Modellen](how-to-manage-model.md).
 
-* Hier erfahren Sie, wie Modelle zum Erstellen digitaler Zwillinge verwendet werden: [Konzepte: Digital Twins und der Digital Twins-Graph](concepts-twins-graph.md)
+* Informieren Sie sich darüber, wie mit Modellen digitale Zwillinge erstellt werden: [Digitale Zwillinge und der Zwillingsgraph](concepts-twins-graph.md).
 

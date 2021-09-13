@@ -2,7 +2,6 @@
 title: Erste Schritte mit Azure IoT Hub-Gerätezwillingen (.NET/.NET) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Tags hinzufügen und eine IoT Hub-Abfrage verwenden. Sie verwenden das Azure IoT-Geräte-SDK für .NET, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App zu implementieren, die die Tags hinzufügt und die IoT Hub-Abfrage ausführt.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53a2d4ef83f20633c227c5d1a0e23de5bb45c81d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89013757"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346583"
 ---
 # <a name="get-started-with-device-twins-net"></a>Erste Schritte mit Gerätezwillingen (.NET)
 
@@ -250,8 +249,8 @@ In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert un
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Informationen zum Senden von Telemetriedaten von Geräten finden Sie im Tutorial [Senden von Telemetriedaten von einem Gerät an einen IoT-Hub](quickstart-send-telemetry-dotnet.md).
+* Informationen zum Senden von Telemetriedaten von Geräten finden Sie im Tutorial [Senden von Telemetriedaten von einem Gerät an einen IoT-Hub](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp).
 
 * Informationen zum Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings finden Sie im Tutorial [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten](tutorial-device-twins.md).
 
-* Informationen zum interaktiven Steuern von Geräten (z. B. Einschalten eines Lüfters über eine benutzergesteuerte App) finden Sie im Tutorial [Verwenden von direkten Methoden](quickstart-control-device-dotnet.md).
+* Informationen zum interaktiven Steuern von Geräten (z. B. Einschalten eines Lüfters über eine benutzergesteuerte App) finden Sie im Quickstart [Verwenden von direkten Methoden](./quickstart-control-device.md?pivots=programming-language-csharp).

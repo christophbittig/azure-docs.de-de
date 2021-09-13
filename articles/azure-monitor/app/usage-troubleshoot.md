@@ -1,17 +1,16 @@
 ---
-title: Problembehandlung in Tools zur Analyse von Benutzerverhalten – Azure Application Insights
+title: Problembehandlung in Tools zur Analyse von Benutzerverhalten – Application Insights
 description: Leitfaden zur Problembehandlung – Analysieren von Website- und Appnutzung mithilfe von Application Insights.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/11/2018
-ms.reviewer: mbullwin
-ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 8bd40f64a8c0e7bf0cbbdc427b44dd83965c52db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024743"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346814"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](usage-overview.md): [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](usage-flows.md), [Vermerkdauer](usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/15/2021
+ms.date: 07/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 183abae52d8b8dc4b78f48118866d6d667aaeaed
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8e17f6933695755a86c5d1e2fbcb7a14c183d0c4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061622"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602831"
 ---
 # <a name="mitigate-credential-attacks-in-azure-ad-b2c"></a>Entschärfen von Angriffen auf Anmeldeinformationen in Azure AD B2C
 
@@ -59,6 +59,9 @@ Die intelligente Sperre verwendet viele Faktoren, um zu bestimmen, wann ein Kont
 Verwenden Sie beim Testen der intelligenten Sperre ein differenziertes Muster für jedes eingegebene Kennwort. Erwägen Sie die Verwendung von Web-Apps zur Kennwortgenerierung, wie z. B. [https://passwordsgenerator.net/](https://passwordsgenerator.net/).
 
 Wenn der Schwellenwert der intelligenten Sperre erreicht wird, erhalten Sie die folgende Meldung, während das Konto gesperrt ist: **Ihr Konto ist vorübergehend gesperrt, um eine nicht autorisierte Verwendung zu verhindern. Versuchen Sie es später noch mal**. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#sign-up-or-sign-in-error-messages) werden.
+
+> [!NOTE]
+> Wenn Sie Smart Lockout testen, werden Ihre Anmeldeanforderungen möglicherweise von unterschiedlichen Rechenzentren verarbeitet, da der Azure AD-Authentifizierungsdienst geografisch verteilt ist und über einen Lastenausgleich verfügt. Da in diesem Szenario jedes Azure AD-Rechenzentrum die Sperre unabhängig nachverfolgt, kann es mehr Versuche erfordern, als durch den Sperrschwellenwert festgelegt sind, bis eine Sperre ausgelöst wird. Ein Benutzer hat eine maximale Anzahl (threshold_limit * datacenter_count) fehlerhafter Versuche, bevor er vollständig gesperrt wird.
 
 ## <a name="viewing-locked-out-accounts"></a>Anzeigen gesperrter Konten
 

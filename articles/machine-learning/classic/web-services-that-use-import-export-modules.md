@@ -10,14 +10,14 @@ ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bd35487bcd11aeacae019acf0b87e4e1e716a66
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520560"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583300"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von (klassischen) Azure Machine Learning Studio-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
+# <a name="deploy-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von Azure Machine Learning Studio-Webdiensten (Classic), die Module zum Importieren und Exportieren von Daten verwenden
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -77,7 +77,7 @@ Als Nächstes richten Sie das Vorhersageexperiment ein, über das Sie Ihren Webd
 9. Geben Sie in das Feld **Data table name**„dbo.ScoredLabels“ ein. Wenn die Tabelle nicht vorhanden ist, wird sie erstellt, wenn das Experiment ausgeführt oder der Webdienst aufgerufen wird.
 10. Geben Sie in das Feld **Comma separated list of datatable columns** „Scored Labels“ ein.
 
-Wenn Sie eine Anwendung schreiben, die den endgültigen Webdienst aufruft, möchten Sie vielleicht zur Laufzeit eine andere Eingabeabfrage oder Zieltabelle angeben. Um diese Eingaben und Ausgaben zu konfigurieren, legen Sie mit dem Feature „Web Service Parameters“ das Modul *Import Data*, die Eigenschaft *Data source* und die Modusdatenziel-Eigenschaft *Export Data* fest.  Weitere Informationen zu „Web Service Parameters“ finden Sie unter dem Eintrag [Azure Machine Learning Studio Web Service Parameters](/archive/blogs/machinelearning/azureml-web-service-parameters) im „Cortana Intelligence and Machine Learning Blog“.
+Wenn Sie eine Anwendung schreiben, die den endgültigen Webdienst aufruft, möchten Sie vielleicht zur Laufzeit eine andere Eingabeabfrage oder Zieltabelle angeben. Um diese Eingaben und Ausgaben zu konfigurieren, legen Sie mit dem Feature „Web Service Parameters“ das Modul *Import Data*, die Eigenschaft *Data source* und die Modusdatenziel-Eigenschaft *Export Data* fest.  Weitere Informationen zu „Web Service Parameters“ finden Sie im Eintrag zu [Web Service Parameters im Azure Machine Learning Studio (Classic)](/archive/blogs/machinelearning/azureml-web-service-parameters) im „Cortana Intelligence and Machine Learning Blog“.
 
 So konfigurieren Sie die Webdienstparameter für die Importabfrage und die Zieltabelle:
 
@@ -124,7 +124,7 @@ Nach Abschluss der Ausführung wird der Datenbank eine neue Tabelle mit den Bewe
 ### <a name="deploy-a-new-web-service"></a>Bereitstellen eines neuen Webdiensts
 
 > [!NOTE]
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Studio (klassisch) Web Services-Portal](manage-new-webservice.md).
 
 So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ihn verwendet:
 

@@ -4,21 +4,18 @@ description: Erfahren Sie, wie Sie Funktionen in Azure Functions deaktivieren un
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c4743603504639cba5c48af57046179a0680b371
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9563c0843c56d9eff43c826298295ff0aedb9da1
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829876"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487577"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Deaktivieren von Funktionen in Azure Functions
 
 In diesem Artikel wird erläutert, wie Sie eine Funktion in Azure Functions deaktivieren. Durch das *Deaktivieren* einer Funktion wird die Runtime angewiesen, den für die Funktion definierten automatischen Trigger zu ignorieren. Dadurch können Sie das Ausführen einer bestimmten Funktion verhindern, ohne die gesamte Funktions-App zu beenden.
 
 Es wird empfohlen, eine Funktion mithilfe einer App-Einstellung im Format `AzureWebJobs.<FUNCTION_NAME>.Disabled`, das auf `true` festgelegt ist, zu deaktivieren. Sie können diese Anwendungseinstellung auf verschiedene Weise erstellen und ändern, z. B. über die [Azure-Befehlszeilenschnittstelle](/cli/azure/) und im [Azure-Portal](https://portal.azure.com) auf der Registerkarte **Übersicht** der Funktion. 
-
-> [!NOTE]  
-> Wenn Sie eine durch HTTP ausgelöste Funktion mithilfe der in diesem Artikel beschriebenen Methoden deaktivieren, kann der Zugriff auf den Endpunkt bei Ausführung auf dem lokalen Computer weiterhin möglich sein.  
 
 ## <a name="disable-a-function"></a>Deaktivieren einer Funktion
 
@@ -174,6 +171,13 @@ Im zweiten Beispiel wird die Funktion deaktiviert, wenn eine App-Einstellung mit
 >[!IMPORTANT]  
 >Im Portal werden v1.x-Funktionen über Anwendungseinstellungen deaktiviert. Wenn eine Anwendungseinstellung mit der Datei „function.json“ in Konflikt steht, kann ein Fehler auftreten. Sie sollten die Eigenschaft `disabled` aus der Datei „function.json“ entfernen, um Fehler zu verhindern. 
 
+## <a name="considerations"></a>Weitere Überlegungen
+
+Berücksichtigen Sie beim Deaktivieren von Funktionen folgende Aspekte:
+
++ Wenn Sie eine durch HTTP ausgelöste Funktion mithilfe der in diesem Artikel beschriebenen Methoden deaktivieren, kann der Zugriff auf den Endpunkt bei Ausführung auf dem lokalen Computer weiterhin möglich sein.  
+
++ Derzeit können Funktionen mit Namen, die einen Bindestrich (`-`) enthalten, nicht deaktiviert werden, wenn sie unter Linux in einem dedizierten (App Service-)Plan ausgeführt werden. Falls Sie Ihre Funktionen bei Verwendung von Linux in einem dedizierten Plan deaktivieren müssen, verwenden Sie keine Bindestriche in Ihren Funktionsnamen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

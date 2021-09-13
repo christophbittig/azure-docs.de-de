@@ -12,15 +12,15 @@ ms.subservice: security
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/23/2018
+ms.date: 05/30/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0eca49f600855e3fa092ed45e2ee314284ec474
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 39ef6e17e07833fede323ace8d06fd8b767eafac
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079767"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435486"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Überlegungen zur Sicherheit von SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,29 @@ Dieses Thema enthält allgemeine Sicherheitsrichtlinien, die dazu beitragen soll
 
 Azure erfüllt mehrere Branchenvorgaben und Standards, mit denen Sie eine konforme Lösung mit SQL Server auf einem virtuellen Computer erstellen können. Weitere Informationen zur Einhaltung von Vorschriften durch Azure finden Sie unter [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).
 
+Neben den in diesem Artikel beschriebenen bewährten Methoden wird empfohlen, dass Sie auch die bewährten Methoden für lokale Sicherheit und VM-Sicherheit berücksichtigen und implementieren. 
+
+## <a name="azure-defender-for-sql"></a>Azure Defender für SQL 
+
+[Azure Defender für SQL](../../../security-center/defender-for-sql-introduction.md) ermöglicht Azure Security Center-Sicherheitsfeatures wie Sicherheitsrisikobewertungen und Sicherheitswarnungen. Weitere Informationen hierzu finden Sie unter [Aktivieren von Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md). 
+
+## <a name="portal-management"></a>Portalverwaltung
+
+Nachdem Sie [die SQL Server-VM bei der SQL-IaaS-Erweiterung registriert haben](sql-agent-extension-manually-register-single-vm.md), können Sie mithilfe der [Ressource „Virtuelle SQL-Computer“](manage-sql-vm-portal.md) im Azure-Portal verschiedene Sicherheitseinstellungen wie die Azure Key Vault-Integration oder die SQL-Authentifizierung konfigurieren. 
+
+Nachdem Sie [Azure Defender für SQL](../../../security-center/defender-for-sql-usage.md) aktiviert haben, können Sie zudem Security Center-Features wie Sicherheitsrisikobewertungen und Sicherheitswarnungen direkt in der [Ressource „Virtuelle SQL-Computer“](manage-sql-vm-portal.md) im Azure-Portal anzeigen. 
+
+Weitere Informationen hierzu finden Sie unter [Verwalten von SQL Server-VMs in Azure über das Azure-Portal](manage-sql-vm-portal.md). 
+
+## <a name="azure-key-vault-integration"></a>Azure-Schlüsseltresor-Integration 
+
+Es gibt mehrere SQL Server-Verschlüsselungsfeatures, z.B. Transparent Data Encryption (TDE), Column Level Encryption (CLE) und Sicherungsverschlüsselung. Bei diesen Arten der Verschlüsselung müssen Sie die kryptografischen Schlüssel verwalten und speichern, die Sie für die Verschlüsselung verwenden. Der Azure Key Vault-Dienst ist darauf ausgelegt, die Sicherheit und Verwaltung dieser Schlüssel an einem sicheren und hoch verfügbaren Speicherort zu verbessern. Mit dem SQL Server-Connector kann SQL Server diese Schlüssel aus Azure Key Vault verwenden.
 Ausführliche Informationen finden Sie in den anderen Artikeln dieser Reihe: [Checkliste](performance-guidelines-best-practices-checklist.md), [VM-Größe](performance-guidelines-best-practices-vm-size.md), [Speicher](performance-guidelines-best-practices-storage.md), [HADR-Konfiguration](hadr-cluster-best-practices.md) und [Baseline erfassen](performance-guidelines-best-practices-collect-baseline.md). 
 
-## <a name="control-access-to-the-sql-virtual-machine"></a>Steuern des Zugriffs auf die SQL-VM
+Weitere Informationen hierzu finden Sie unter [Azure Key Vault-Integration](azure-key-vault-integration-configure.md).
+
+
+## <a name="access-control"></a>Zugriffssteuerung 
 
 Wenn Sie Ihren virtuellen SQL Server-Computer erstellen, sollten Sie sorgfältig kontrollieren können, welche Personen Zugriff auf den Computer und SQL Server haben. Im Allgemeinen sind folgende Maßnahmen ratsam:
 
@@ -62,15 +82,13 @@ Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für
 
 Verwaltete Datenträger bieten serverseitige Verschlüsselung und Azure Disk Encryption. Die [serverseitige Verschlüsselung](../../../virtual-machines/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt entweder BitLocker- oder DM-Crypt-Technologie und lässt sich mit Azure Key Vault integrieren, um sowohl das Betriebssystem als auch die Datenträger zu verschlüsseln. 
 
-## <a name="use-a-non-default-port"></a>Verwenden eines Ports, der kein Standardport ist
+## <a name="non-default-port"></a>Nicht standardmäßige Ports
 
 Standardmäßig lauscht SQL Server über den bekannten Port 1433. Konfigurieren Sie für SQL Server das Lauschen über einen Port, der nicht dem Standard entspricht, z.B. 1401, um die Sicherheit zu erhöhen. Wenn Sie ein SQL Server-Katalogimage im Azure-Portal bereitstellen, können Sie diesen Port auf dem Blatt **SQL Server-Einstellungen** angeben.
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 Sie haben zwei Möglichkeiten, dies nach der Bereitstellung zu konfigurieren:
 
-- Wählen Sie für Resource Manager-VMs **Sicherheit** in der [SQL-VM-Ressource](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) aus. Sie finden dort eine Option zum Ändern des Ports.
+- Wählen Sie für Resource Manager-VMs **Sicherheit** in der [SQL-VM-Ressource](manage-sql-vm-portal.md#access-the-resource) aus. Sie finden dort eine Option zum Ändern des Ports.
 
   ![Änderung des TCP-Ports im Portal](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
@@ -98,16 +116,14 @@ Sie möchten verhindern, dass Angreifer Kontonamen oder Kennwörter leicht errat
 
   - Falls Sie die **SA**-Anmeldung verwenden müssen, sollten Sie die Anmeldung nach der Bereitstellung aktivieren und ein neues sicheres Kennwort zuweisen.
 
-## <a name="additional-best-practices"></a>Weitere Best Practices
-
-Neben den in diesem Artikel beschriebenen bewährten Methoden wird empfohlen, dass Sie auch die bewährten Methoden für lokale Sicherheit und VM-Sicherheit berücksichtigen und implementieren. 
-
-Weitere Informationen über lokale Sicherheitsmethoden finden Sie unter [Überlegungen zur Sicherheit bei SQL Server-Installationen](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) und im [Sicherheitscenter](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
-
-Weitere Informationen zur Sicherheit von VMs finden Sie in der [Sicherheitsübersicht über virtuelle Azure-Computer](../../../security/fundamentals/virtual-machines-overview.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu bewährten Methoden in Bezug auf die Leistung finden Sie unter [Bewährte Methoden für die Leistung von SQL Server auf virtuellen Azure-Computern](./performance-guidelines-best-practices-checklist.md).
+
+Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.
+
 
 Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
 
@@ -118,5 +134,4 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an, um mehr zu erfahren:
 - [HADR-Einstellungen](hadr-cluster-best-practices.md)
 - [Baseline auswählen](performance-guidelines-best-practices-collect-baseline.md)
 
-Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](sql-server-on-azure-vm-iaas-what-is-overview.md). Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](frequently-asked-questions-faq.yml) weitere Informationen.
 

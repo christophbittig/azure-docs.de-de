@@ -1,14 +1,14 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Azure Lighthouse unterstützt Sie dabei, Azure Monitor-Protokolle für alle Kundenmandanten auf skalierbare Weise zu verwenden.
-ms.date: 05/10/2021
+ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082305"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356700"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -31,7 +31,7 @@ Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstel
 Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md), über die [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) oder mit [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) erstellen.
 
 > [!IMPORTANT]
-> Selbst wenn alle Arbeitsbereiche im Mandanten des Kunden erstellt werden, muss der Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten registriert werden. Wenn Ihr Verwaltungsmandant nicht über ein vorhandenes Azure-Abonnement verfügt, können Sie den Ressourcenanbieter manuell registrieren, indem Sie die folgenden PowerShell-Befehle verwenden:
+> Wenn alle Arbeitsbereiche in den Mandanten von Kunden erstellt werden, müssen die Microsoft.Insights-Ressourcenanbieter auch für ein Abonnement im Verwaltungsmandanten [registriert](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) werden. Wenn Ihr Verwaltungsmandant nicht über ein vorhandenes Azure-Abonnement verfügt, können Sie den Ressourcenanbieter manuell registrieren, indem Sie die folgenden PowerShell-Befehle verwenden:
 >
 > ```powershell
 > $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
@@ -43,7 +43,6 @@ Sie können einen Log Analytics-Arbeitsbereich im [Azure-Portal](../../azure-mon
 > New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
 > New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
 > ```
->
 
 ## <a name="deploy-policies-that-log-data"></a>Bereitstellen von Richtlinien zum Protokollieren von Daten
 
@@ -56,6 +55,24 @@ Wenn Sie festgelegt haben, welche Richtlinien Sie bereitstellen möchten, könne
 ## <a name="analyze-the-gathered-data"></a>Analysieren der gesammelten Daten
 
 Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analytics-Arbeitsbereiche protokolliert, die Sie in den jeweiligen Kundenmandanten erstellt haben. Um Einblicke in alle verwalteten Kunden zu erhalten, können Sie mithilfe von Tools wie [Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) Informationen aus mehreren Datenquellen erfassen und analysieren.
+
+## <a name="query-data-across-customer-workspaces"></a>Abfragen von Daten in mehreren Benutzerarbeitsbereichen
+
+Sie können [Protokollabfragen](../../azure-monitor/logs/log-query-overview.md) ausführen, um Daten in Log Analytics-Arbeitsbereichen in verschiedenen Mandanten von Kunden abzurufen, indem Sie eine Union erstellen, die mehrere Arbeitsbereiche umfasst. Wenn Sie die TenantID-Spalte einschließen, sehen Sie, welche Ergebnisse zu welchen Mandanten gehören.
+
+Mit der folgenden Beispielabfrage wird arbeitsbereichsübergreifend eine Union für die AzureDiagnostics-Tabelle in zwei separaten Mandanten von Kunden erstellt. In den Ergebnissen werden die Spalten „Category“, „ResourceGroup“ und „TenantID“ angezeigt.
+
+``` Kusto
+union AzureDiagnostics,
+workspace("WS-customer-tenant-1").AzureDiagnostics,
+workspace("WS-customer-tenant-2").AzureDiagnostics
+| project Category, ResourceGroup, TenantId
+```
+
+Weitere Beispiele für Abfragen für mehrere Log Analytics-Arbeitsbereiche finden Sie unter [Ausführen arbeitsbereichs- und anwendungsübergreifender Protokollabfragen in Azure Monitor](../../azure-monitor/logs/cross-workspace-query.md).
+
+> [!IMPORTANT]
+> Wenn Sie ein Automationskonto verwenden, das zum Abfragen von Daten aus einem Log Analytics-Arbeitsbereich genutzt wird, muss dieses Automationskonto im gleichen Mandanten erstellt werden wie der Arbeitsbereich.
 
 ## <a name="view-alerts-across-customers"></a>Anzeigen von Warnungen für mehrere Kunden
 
@@ -78,5 +95,5 @@ alertsmanagementresources
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Testen Sie die [Arbeitsmappe mit Aktivitätsprotokollen nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) auf GitHub.
-- Erkunden Sie diese [von MVP erstellte Beispielarbeitsmappe](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), die die Berichterstellung für die Patchkompatibilität nachverfolgt, indem über mehrere Log Analytics-Arbeitsbereiche hinweg [Updateverwaltungsprotokolle abgefragt werden](../../automation/update-management/query-logs.md). 
+- Erkunden Sie diese [von MVP erstellte Beispielarbeitsmappe](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), die die Berichterstellung für die Patchkompatibilität nachverfolgt, indem über mehrere Log Analytics-Arbeitsbereiche hinweg [Updateverwaltungsprotokolle abgefragt werden](../../automation/update-management/query-logs.md).
 - Machen Sie sich mit weiteren [mandantenübergreifenden Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md) vertraut.

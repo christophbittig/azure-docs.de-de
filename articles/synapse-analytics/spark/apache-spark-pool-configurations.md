@@ -6,15 +6,15 @@ author: mlee3gsd
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 12/2/2020
+ms.date: 08/19/2021
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 3321fc2b581abd29a8f8089ad0c1083092666100
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: c674813aee7702e9887e909e4a8baf7ace074a2c
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446391"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597645"
 ---
 # <a name="apache-spark-pool-configurations-in-azure-synapse-analytics"></a>Konfigurationen von Apache Spark-Pools in Azure Synapse Analytics
 

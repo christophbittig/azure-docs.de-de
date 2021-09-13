@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: d061eed42280fffa1ff7f53e43adb7b85a94ae0d
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 3869b18f580d0a12b2581554acf63258cb08f64a
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813215"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380678"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>Überprüfen von Pull Requests in Präproduktionsumgebungen in Azure Static Web Apps
 
@@ -33,7 +33,7 @@ Die Verwendung von Präproduktionsumgebungen hat viele Vorteile. Beispielsweise 
 - Durchführen von Integritätsprüfungen vor der Bereitstellung in der Produktion
 
 > [!NOTE]
-> Es sind [maximal drei Stagingumgebungen](quotas.md) gleichzeitig zulässig.
+> Pull Requests und Präproduktionsumgebungen werden derzeit nur in GitHub Actions-Bereitstellungen unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -104,12 +104,16 @@ Beim Zusammenführen werden Ihre Änderungen in den nachverfolgten Branch („Pr
 
 ## <a name="limitations"></a>Einschränkungen
 
-Auf bereitgestellte Versionen Ihrer Anwendung besteht derzeit auch dann öffentlicher Zugriff über die entsprechende URL, wenn Ihr GitHub-Repository ein privates Repository ist.
+- Auf bereitgestellte Versionen Ihrer Anwendung besteht derzeit auch dann öffentlicher Zugriff über die entsprechende URL, wenn Ihr GitHub-Repository ein privates Repository ist.
 
-> [!WARNING]
-> Gehen Sie beim Veröffentlichen von vertraulichen Inhalten auf bereitgestellten Versionen mit Bedacht vor, da der Zugriff auf Präproduktionsumgebungen nicht eingeschränkt ist.
+    > [!WARNING]
+    > Gehen Sie beim Veröffentlichen von vertraulichen Inhalten auf bereitgestellten Versionen mit Bedacht vor, da der Zugriff auf Präproduktionsumgebungen nicht eingeschränkt ist.
 
-Die Anzahl von Präproduktionsumgebungen, die für jede mit Static Web Apps bereitgestellte App verfügbar ist, richtet sich nach dem von Ihnen gewählten SKU-Tarif. Beim Free-Tarif können Sie beispielsweise zusätzlich zur Produktionsumgebung drei Präproduktionsumgebungen nutzen.
+- Die Anzahl von Präproduktionsumgebungen, die für mit Static Web Apps bereitgestellte Apps verfügbar sind, richtet sich nach dem von Ihnen gewählten [Hostingplan](plans.md). Beim Free-Tarif können Sie beispielsweise zusätzlich zur Produktionsumgebung drei Präproduktionsumgebungen nutzen.
+
+- Präproduktionsumgebungen sind nicht geografisch verteilt.
+
+- Derzeit werden Präproduktionsumgebungen nur von GitHub Actions-Bereitstellungen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

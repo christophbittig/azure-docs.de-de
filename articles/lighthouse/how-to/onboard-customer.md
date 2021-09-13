@@ -1,15 +1,15 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Hier erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Benutzer in Ihrem Mandanten auf dessen Ressourcen zugreifen und sie verwalten können.
-ms.date: 05/25/2021
+ms.date: 08/16/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de0520f7ed8be24ac19b4738828890877456f734
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 533841e958d7873c4961814f7398ec539fd6a6fd
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078957"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351068"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -31,8 +31,8 @@ Der Onboardingprozess erfordert, dass Aktionen sowohl innerhalb des Mandanten de
 
 Für das Onboarding des Mandanten eines Kunden muss dieser ein aktives Azure-Abonnement besitzen. Sie müssen Folgendes wissen:
 
-- Die Mandanten-ID des Mandanten des Dienstanbieters (wo Sie die Ressourcen des Kunden verwalten werden)
-- Die Mandanten-ID des Mandanten des Kunden (der über Ressourcen verfügt, die vom Dienstanbieter verwaltet werden)
+- Die Mandanten-ID des Mandanten des Dienstanbieters (wo Sie die Ressourcen des Kunden verwalten werden). Wenn Sie die [Vorlage im Azure-Portal erstellen](#create-your-template-in-the-azure-portal), wird dieser Wert automatisch bereitgestellt.
+- Die Mandanten-ID des Mandanten des Kunden (der über Ressourcen verfügt, die vom Dienstanbieter verwaltet werden).
 - Die Abonnement-IDs für jedes einzelne Abonnement im Mandanten des Kunden, das vom Dienstanbieter verwaltet wird (oder das die Ressourcengruppen enthält, die vom Dienstanbieter verwaltet werden).
 
 Wenn Sie diese ID-Werte nicht schon besitzen, können Sie sie mit einer der folgenden Methoden abrufen. Achten Sie darauf, dass Sie diese genauen Werte in Ihrer Bereitstellung verwenden.
@@ -121,21 +121,48 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
 
-Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../azure-resource-manager/index.yml)-Vorlage für das Angebot erstellen, die folgende Informationen enthält: Die Werte **mspOfferName** und **mspOfferDescription** sind für den Kunden auf der Seite [Dienstanbieter](view-manage-service-providers.md) im Azure-Portal sichtbar.
+Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../azure-resource-manager/index.yml)-Vorlage für das Angebot erstellen, die folgende Informationen enthält: Die Werte **mspOfferName** und **mspOfferDescription** sind für den Kunden auf der Seite [Dienstanbieter](view-manage-service-providers.md) im Azure-Portal sichtbar, sobald die Vorlage im Mandanten des Kunden bereitgestellt wurde.
 
 |Feld  |Definition  |
 |---------|---------|
 |**mspOfferName**     |Ein Name, der diese Definition beschreibt. Dieser Wert wird dem Kunden als Titel des Angebots angezeigt und muss ein eindeutiger Wert sein.        |
-|**mspOfferDescription**     |Eine kurze Beschreibung Ihres Angebots (z. B. „Angebot für die Verwaltung von virtuellen Contoso-Computern“)      |
+|**mspOfferDescription**     |Eine kurze Beschreibung Ihres Angebots (z. B. „Angebot für die Verwaltung von virtuellen Contoso-Computern“) Dieses Feld ist optional, wird aber empfohlen, damit Kunden ein klares Bild von Ihrem Angebot erhalten.   |
 |**managedByTenantId**     |Ihre Mandanten-ID.          |
 |**authorizations**     |Die **principalId**-Werte für die Benutzer/Gruppen/SPNs Ihres Mandanten, jeweils mit einem **principalIdDisplayName**-Element, um Ihrem Kunden zu helfen, den Zweck der Autorisierung zu verstehen, und einem integrierten **roleDefinitionId**-Wert zugeordnet, um die Zugriffsebene anzugeben      |
 
-Der Onboardingvorgang erfordert eine Azure Resource Manager-Vorlage (die wir in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/) bereitstellen) und eine zugehörige Parameterdatei, die Sie so ändern müssen, dass sie Ihrer Konfiguration entspricht und Ihre Autorisierungen definiert.
+Sie können diese Vorlage im Azure-Portal erstellen, oder Sie können die in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/) bereitgestellten Vorlagen manuell ändern. 
 
 > [!IMPORTANT]
 > Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung. Dies gilt selbst dann, wenn Sie Abonnements im gleichen Kundenmandanten integrieren. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements im gleichen Kundenmandanten integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
 >
 > Separate Bereitstellungen sind auch erforderlich für mehrere Angebote, die auf dasselbe Abonnement (oder dieselben Ressourcengruppen in einem Abonnement) angewendet werden. Für jedes angewendete Angebot muss ein anderer **mspOfferName** verwendet werden.
+
+### <a name="create-your-template-in-the-azure-portal"></a>Erstellen der Vorlage im Azure-Portal
+
+Zum Erstellen der Vorlage im Azure-Portal navigieren Sie zu **Meine Kunden**, und wählen Sie dann auf der Übersichtsseite die Option **ARM-Vorlage erstellen** aus.
+
+Geben Sie auf der Seite **ARM-Vorlagenangebot erstellen** Ihren **Namen** und eine optionale **Beschreibung** ein. Diese Werte werden für **mspOfferName** und **mspOfferDescription** in der Vorlage verwendet. Der Wert **managedByTenantId** wird basierend auf dem Azure AD-Mandanten, bei dem Sie angemeldet sind, automatisch bereitgestellt.
+
+Wählen Sie als Nächstes entweder **Abonnement** oder **Ressourcengruppe** aus, je nach Kundenbereich, für den Sie ein Onboarding durchführen möchten. Wenn Sie **Ressourcengruppe** auswählen, müssen Sie den Namen der Ressourcengruppe angeben, für die Sie ein Onboarding durchführen möchten. Sie können das **+** -Symbol auswählen, um bei Bedarf zusätzliche Ressourcengruppen hinzuzufügen. (Alle Ressourcengruppen müssen sich in demselben Kundenabonnement befinden.)
+
+Zum Schluss erstellen Sie die Autorisierungen, indem Sie **+ Autorisierung hinzufügen** auswählen. Geben Sie für jede Autorisierung die folgenden Details an:
+
+1. Wählen Sie den **Prinzipaltyp** je nach Art des Kontos aus, das Sie in die Autorisierung einbeziehen möchten. Dabei kann es sich entweder um **Benutzer**, **Gruppe** oder **Dienstprinzipal** handeln. In diesem Beispiel wählen Sie **Benutzer** aus.
+1. Wählen Sie den Link **+ Benutzer auswählen** aus, um den Auswahlbereich zu öffnen. Mithilfe des Suchfelds können Sie nach dem Benutzer suchen, den Sie hinzufügen möchten. Anschließend klicken Sie auf **Auswählen**. Die **Prinzipal-ID** des Benutzers wird automatisch ausgefüllt.
+1. Überprüfen Sie das Feld **Anzeigename** (wird basierend auf dem von Ihnen ausgewählten Benutzer ausgefüllt), und nehmen Sie ggf. Änderungen vor.
+1. Wählen Sie die **Rolle** aus, die diesem Benutzer zugewiesen werden soll.
+1. Wählen Sie für **Zugriffstyp** die Option **Dauerhaft** oder **Berechtigt** aus. Wenn Sie **Berechtigt** wählen, müssen Sie Optionen für die maximale Dauer und die mehrstufige Authentifizierung festlegen und angeben, ob eine Genehmigung erforderlich ist. Weitere Informationen zu diesen Optionen finden Sie unter [Erstellen von berechtigten Autorisierungen](create-eligible-authorizations.md). Das Feature für berechtigte Autorisierungen befindet sich derzeit in der Public Preview und kann nicht mit Dienstprinzipalen verwendet werden.
+1. Wählen Sie **Hinzufügen** aus, um die Autorisierung zu erstellen.
+
+:::image type="content" source="../media/add-authorization.png" alt-text="Screenshot des Abschnitts „Autorisierung hinzufügen“ im Azure-Portal":::
+
+Nachdem Sie **Hinzufügen** ausgewählt haben, kehren Sie zum Bildschirm **ARM-Vorlagenangebot erstellen** zurück. Sie können **+ Autorisierung hinzufügen** erneut auswählen, um so viele Autorisierungen wie nötig hinzuzufügen.
+
+Wenn Sie alle Autorisierungen hinzugefügt haben, wählen Sie **Vorlage anzeigen** aus. Auf diesem Bildschirm wird eine JSON-Datei angezeigt, die den von Ihnen eingegebenen Werten entspricht. Wählen Sie **Herunterladen** aus, um eine Kopie dieser JSON-Datei zu speichern. Diese Vorlage kann dann [im Mandanten des Kunden bereitgestellt werden](#deploy-the-azure-resource-manager-template). Sie können sie auch manuell bearbeiten, wenn Sie Änderungen vornehmen müssen. Beachten Sie, dass die Datei nicht im Azure-Portal gespeichert wird.
+
+### <a name="create-your-template-manually"></a>Manuelles Erstellen der Vorlage
+
+Sie können die Vorlage mithilfe einer Azure Resource Manager-Vorlage (in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/) enthalten) und einer zugehörigen Parameterdatei erstellen, die Sie so ändern, dass sie Ihrer Konfiguration entspricht und Ihre Autorisierungen definiert. Sie können auf Wunsch auch alle Informationen direkt in die Vorlage eingeben, anstatt eine separate Parameterdatei zu verwenden.
 
 Die ausgewählte Vorlage hängt davon ab, ob Sie ein gesamtes Abonnement, eine Ressourcengruppe oder mehrere Ressourcengruppen innerhalb eines Abonnements integrieren. Wir stellen auch eine Vorlage bereit, die für Kunden verwendet werden kann, die ein Angebot für verwaltete Dienste gekauft haben, das Sie im Azure Marketplace veröffentlicht haben, wenn Sie deren Abonnement(s) lieber auf diese Weise integrieren möchten.
 
@@ -146,8 +173,10 @@ Die ausgewählte Vorlage hängt davon ab, ob Sie ein gesamtes Abonnement, eine R
 |Mehrere Ressourcengruppen in einem Abonnement   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonnement (bei Verwendung eines in Azure Marketplace veröffentlichten Angebots)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
+Wenn Sie [berechtigte Autorisierungen](create-eligible-authorizations.md#create-eligible-authorizations-using-azure-resource-manager-templates) (derzeit als Public Preview verfügbar) aufnehmen möchten, wählen Sie im Abschnitt [delegated-resource-management-eligible-authorizations](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-eligible-authorizations) des Beispielrepositorys die entsprechende Vorlage aus.
+
 > [!TIP]
-> Sie können zwar kein Onboarding für eine gesamte Verwaltungsgruppe in einer Bereitstellung durchführen, Sie können jedoch [eine Richtlinie auf Verwaltungsgruppenebene bereitstellen](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Die Richtlinie verwendet [deployIfNotExists effect](../../governance/policy/concepts/effects.md#deployifnotexists), um zu prüfen ob die einzelnen Abonnements in der Verwaltungsgruppe an den angegebenen Verwaltungsmandanten delegiert wurden. Ist dies nicht der Fall, wird die Zuweisung basierend auf den von Ihnen angegebenen Werten erstellt. Sie haben dann Zugriff auf alle Abonnements in der Verwaltungsgruppe, obwohl Sie diese als einzelne Abonnements bearbeiten müssen (anstatt Aktionen für die Verwaltungsgruppe als Ganzes durchzuführen).
+> Sie können zwar kein Onboarding für eine gesamte Verwaltungsgruppe in einer Bereitstellung durchführen, Sie können jedoch eine Richtlinie für das [Onboarding jedes Abonnements in einer Verwaltungsgruppe](onboard-management-group.md) bereitstellen. Sie haben dann Zugriff auf alle Abonnements in der Verwaltungsgruppe, obwohl Sie diese als einzelne Abonnements bearbeiten müssen (anstatt Aktionen für die Verwaltungsgruppenressource direkt durchzuführen).
 
 Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.parameters.json**, die für das Onboarding eines Abonnements verwendet werden kann. Die Ressourcengruppen-Parameterdateien (im Ordner [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management)) sind ähnlich, enthalten aber auch einen **rgName**-Parameter, um die spezifische(n) Ressourcengruppe(n) zu identifizieren, die integriert werden soll(en).
 
@@ -204,26 +233,38 @@ Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.
 
 Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der Rolle „Benutzerzugriffsadministrator“ hinzu (18d7d88d-d35e-4b5-a5c3-7773c20a72d9). Wenn Sie diese Rolle zuweisen, müssen Sie die **delegatedRoleDefinitionIds**-Eigenschaft und mindestens eine unterstützte integrierte Azure-Rolle einschließen. Der in dieser Autorisierung erstellte Benutzer kann diese Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](deploy-policy-remediation.md).  Der Benutzer kann außerdem Supportfälle erstellen. Für diese **principalId** gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
 
-## <a name="deploy-the-azure-resource-manager-templates"></a>Bereitstellen der Azure Resource Manager-Vorlagen
+## <a name="deploy-the-azure-resource-manager-template"></a>Stellen Sie die Azure Resource Manager-Vorlage bereit.
 
-Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
+Nachdem Sie die Vorlage erstellt haben, muss ein Benutzer im Mandanten des Kunden die Vorlage in seinem Mandanten bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
 
 > [!IMPORTANT]
 > Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die Rolle `Microsoft.Authorization/roleAssignments/write`, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um Benutzer aufzufinden, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 >
 > Wenn das Abonnement über das [CSP-Programm (Cloud Solution Provider)](../concepts/cloud-solution-provider.md) erstellt wurde, kann jeder Benutzer, der die Rolle [Administrator-Agent](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in Ihrem Dienstanbietermandanten ausübt, die Bereitstellung ausführen.
 
-Die Bereitstellung kann im Azure-Portal, mit PowerShell oder mit der Azure CLI erfolgen, wie unten dargestellt.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-1. Wählen Sie in unserem [GitHub-Repository](https://github.com/Azure/Azure-Lighthouse-samples/) die Schaltfläche **In Azure bereitstellen** aus, die neben der Vorlage angezeigt wird, die Sie verwenden möchten. Die Vorlage wird im Azure-Portal geöffnet.
-1. Geben Sie Ihre Werte für **Msp Offer Name** (MSP-Angebotsname), **Msp Offer Description** (MSP-Angebotsbeschreibung), **Managed by Tenant Id** (Verwaltet von Mandanten-ID) und **Authorizations** (Autorisierungen) ein. Wenn Sie es vorziehen, können Sie **Parameter bearbeiten** auswählen, um Werte für `mspOfferName`, `mspOfferDescription`, `managedbyTenantId` und `authorizations` direkt in die Parameterdatei einzugeben. Achten Sie darauf, diese Werte zu aktualisieren, anstatt die Standardwerte aus der Vorlage zu verwenden.
-1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.
-
-Nach einigen Minuten müsste eine Benachrichtigung angezeigt werden, dass die Bereitstellung abgeschlossen ist.
+Die Bereitstellung kann mit PowerShell, der Azure CLI oder im Azure-Portal erfolgen, wie unten dargestellt.
 
 ### <a name="powershell"></a>PowerShell
+
+So stellen Sie eine einzelne Vorlage bereit:
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateFile <pathToTemplateFile> `
+                 -Verbose
+
+# Deploy Azure Resource Manager template that is located externally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateUri <templateUri> `
+                 -Verbose
+```
+
+So stellen Sie eine Vorlage mit einer separaten Parameterdatei bereit:
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -245,6 +286,26 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
+So stellen Sie eine einzelne Vorlage bereit:
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-file <pathToTemplateFile> \
+                         --verbose
+
+# Deploy external Azure Resource Manager template, with local parameter file
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-uri <templateUri> \
+                         --verbose
+```
+
+So stellen Sie eine Vorlage mit einer separaten Parameterdatei bereit:
+
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
 
@@ -262,6 +323,16 @@ az deployment sub create --name <deploymentName> \
                          --parameters <parameterFile> \
                          --verbose
 ```
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Mit dieser Option können Sie die Vorlage direkt im Azure-Portal ändern und dann bereitstellen. Dies muss von einem Benutzer im Mandanten des Kunden durchgeführt werden.
+
+1. Wählen Sie in unserem [GitHub-Repository](https://github.com/Azure/Azure-Lighthouse-samples/) die Schaltfläche **In Azure bereitstellen** aus, die neben der Vorlage angezeigt wird, die Sie verwenden möchten. Die Vorlage wird im Azure-Portal geöffnet.
+1. Geben Sie Ihre Werte für **Msp Offer Name** (MSP-Angebotsname), **Msp Offer Description** (MSP-Angebotsbeschreibung), **Managed by Tenant Id** (Verwaltet von Mandanten-ID) und **Authorizations** (Autorisierungen) ein. Wenn Sie es vorziehen, können Sie **Parameter bearbeiten** auswählen, um Werte für `mspOfferName`, `mspOfferDescription`, `managedbyTenantId` und `authorizations` direkt in die Parameterdatei einzugeben. Achten Sie darauf, diese Werte zu aktualisieren, anstatt die Standardwerte aus der Vorlage zu verwenden.
+1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.
+
+Nach einigen Minuten müsste eine Benachrichtigung angezeigt werden, dass die Bereitstellung abgeschlossen ist.
 
 ## <a name="confirm-successful-onboarding"></a>Bestätigen des erfolgreichen Onboardings
 

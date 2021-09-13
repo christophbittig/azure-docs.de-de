@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
-ms.custom: aaddev
-ms.openlocfilehash: d17bd46d8036ff2535b0dede9ab95121ad3bf7a8
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713430"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579970"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
@@ -81,9 +81,7 @@ Wenn Ihre App nicht in einem Mandanten registriert ist, wird nur die Option zum 
    ```
 
 1. Ersetzen Sie den Platzhalter *{YOUR-APP-ID-HERE}* durch die Anwendungs-ID (Client-ID) Ihrer App.
-
 1. Hosten Sie die Datei unter: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Ersetzen Sie den Platzhalter *{YOUR-DOMAIN-HERE}* durch die überprüfte Domäne.
-
 1. Klicken Sie auf die Schaltfläche **Domäne überprüfen und speichern**.
 
 Sie müssen keine Ressourcen verwalten, die für die Überprüfung verwendet werden, nachdem eine Domäne überprüft wurde. Nach Abschluss der Überprüfung können Sie die gehostete Datei entfernen.
@@ -93,8 +91,8 @@ Sie müssen keine Ressourcen verwalten, die für die Überprüfung verwendet wer
 Wenn der Mandant über überprüfte Domänen verfügt, wählen Sie eine der Domänen in der Dropdownliste **Verifizierte Domäne auswählen** aus.
 
 > [!NOTE]
-> Der erwartete `Content-Type`-Header, der zurückgegeben werden soll, lautet `application/json`. Sie erhalten möglicherweise eine Fehlermeldung wie unten angegeben, wenn Sie etwas anderes als `application/json; charset=utf-8` verwenden:
-> 
+> Der erwartete `Content-Type`-Header, der zurückgegeben werden soll, lautet `application/json`. Sie erhalten möglicherweise eine Fehlermeldung, wenn Sie etwas anderes (beispielsweise `application/json; charset=utf-8`) verwenden:
+>
 > `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
@@ -112,7 +110,7 @@ Das Verhalten für neue Anwendungen, die nach dem 21. Mai 2019 erstellt werden,
 
 ## <a name="implications-on-redirect-uris"></a>Auswirkungen auf Umleitungs-URIs
 
-Für Anwendungen, bei denen sich Benutzer mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto anmelden ([mehrinstanzenfähig](single-and-multi-tenant-apps.md)), gelten einige Einschränkungen bei der Angabe von Umleitungs-URIs.
+Für Anwendungen, bei denen sich Benutzer mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto anmelden (mehrinstanzenfähig), gelten einige Einschränkungen bei der Angabe von Umleitungs-URIs.
 
 ### <a name="single-root-domain-restriction"></a>Beschränkung auf einzelne Stammdomäne
 

@@ -2,14 +2,14 @@
 title: Überwachen von geschützten Azure Backup-Workloads
 description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Benachrichtigungsfunktionen für Azure Backup-Workloads im Azure-Portal.
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4b20448896de05e888de33b2a680623b662b5e5a
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559212"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122340578"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -21,7 +21,7 @@ Azure Backup enthält mehrere Sicherheitslösungen, deren Einsatz von den Anford
 
 Sie können alle Ihre Sicherungselemente über einen Recovery Services-Tresor überwachen. Wenn Sie im Tresor zum Abschnitt **Sicherungselemente** navigieren, wird eine Ansicht geöffnet, die die Anzahl der mit dem Tresor verbundenen Sicherungselemente jedes Workloadtyps anzeigt. Wenn Sie auf eine beliebige Zeile klicken, wird eine detaillierte Ansicht geöffnet, in der alle Sicherungselemente des angegebenen Workloadtyps aufgelistet sind, mit Informationen zum letzten Sicherungsstatus für jedes Element, dem letzten verfügbaren Wiederherstellungspunkt und so weiter.
 
-![Sicherungselemente des Recovery Services-Tresors](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+![Screenshot: Anzeigen der Sicherungselemente im Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
 
 > [!NOTE]
 > Für Elemente, die mit DPM nach Azure gesichert wurden, zeigt die Liste alle mit dem DPM-Server geschützten Datenquellen an (sowohl auf dem Datenträger als auch online). Wird der Schutz für die Datenquelle unter Beibehaltung der Sicherungsdaten beendet, wird die Datenquelle weiterhin im Portal aufgeführt. Sie können zu den Details der Datenquelle navigieren, um zu sehen, ob die Wiederherstellungspunkte auf dem Datenträger, online oder an beiden Orten vorhanden sind. Auch für Datenquellen, deren Onlineschutz beendet wurde, deren Daten aber erhalten bleiben, wird die Abrechnung der Onlinewiederherstellungspunkte fortgesetzt, bis die Daten vollständig gelöscht werden.
@@ -32,7 +32,7 @@ Sie können alle Ihre Sicherungselemente über einen Recovery Services-Tresor ü
 
 Azure Backup bietet integrierte Überwachungs- und Warnungsfunktionen für durch Azure Backup geschützte Workloads. In den Einstellungen für den Recovery Services-Tresor finden Sie im Abschnitt **Überwachung** die integrierten Aufträge und Warnungen.
 
-![Integrierte Überwachung im Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
+![Screenshot: in den Recovery Services-Tresor integrierte Überwachung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
 
 Aufträge werden generiert, wenn Vorgänge wie das Konfigurieren der Sicherung, die Sicherung, Wiederherstellung oder das Löschen der Sicherung durchgeführt werden.
 
@@ -49,9 +49,6 @@ Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure
 > Azure-Workloads wie SQL- und SAP HANA-Sicherungen in Azure-VMs umfassen viele Sicherungsaufträge. Protokollsicherungen können beispielsweise alle 15 Minuten ausgeführt werden. Für solche Datenbankworkloads werden darum nur vom Benutzer ausgelöste Vorgänge angezeigt. Geplante Sicherungsvorgänge werden nicht angezeigt.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Sicherungswarnungen im Recovery Services-Tresor
-
-> [!NOTE]
-> Das Anzeigen von Warnungen für verschiedene Tresore wird in Backup Center derzeit nicht unterstützt. Sie müssen zu einem einzelnen Tresor navigieren, um Warnungen für diesen Tresor anzuzeigen.
 
 Bei Warnungen handelt es sich in erster Linie um Szenarios, in denen Benutzer benachrichtigt werden, damit Sie entsprechende Maßnahmen ergreifen können. Im Abschnitt **Sicherungswarnungen** werden die von Azure Backup generierten Warnungen angezeigt. Diese Warnungen werden vom Dienst definiert. Es können keine benutzerdefinierten Warnungen erstellt werden.
 
@@ -103,7 +100,7 @@ Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 
 Wenn eine Warnung ausgelöst wird, werden die Benutzer benachrichtigt. Azure Backup enthält einen Mechanismus, der Benachrichtigungen per E-Mail sendet. Sie können einzelne E-Mail-Adressen oder Verteilerlisten angeben, die benachrichtigt werden sollen, wenn eine Warnung generiert wurde. Sie können ebenfalls Benachrichtigungen für jede einzelne Warnung aktivieren oder diese in einer stündlichen Übersicht gruppieren.
 
-![Im Recovery Services-Tresor integrierte E-Mail-Benachrichtigung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+![Screenshot: in den Recovery Services-Tresor integrierte E-Mail-Benachrichtigung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
 Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßungs-E-Mail bzw. eine Einführungs-E-Mail. Dadurch wird bestätigt, dass Azure Backup E-Mails an diese Adressen senden kann, wenn eine Warnung ausgelöst wird.<br>
 
@@ -118,19 +115,105 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 
 Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie diese Schaltfläche auswählen, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
 
-![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+![Screenshot: Deaktivierung von Backup Center-Warnungen](media/backup-azure-monitoring-laworkspace/vault-alert-inactivate.png)
 
 ## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Monitor-Warnungen für Azure Backup (Vorschau)
 
-Azure Backup stellt über Azure Monitor auch Warnungen bereit, um Benutzern übergreifend über unterschiedliche Azure-Dienste (einschließlich Azure Backup) eine einheitliche Oberfläche für die Warnungsverwaltung zu bieten. Mit Azure Monitor-Warnungen können Sie Warnungen an jeden Benachrichtigungskanal weiterleiten, der von Azure Backup unterstützt wird (z. B. E-Mail, ITSM, Webhook, Logik-App usw.).
+Azure Backup stellt über Azure Monitor auch Warnungen bereit, um Benutzern übergreifend über unterschiedliche Azure-Dienste (einschließlich Azure Backup) eine einheitliche Oberfläche für die Warnungsverwaltung zu bieten. Mit Azure Monitor-Warnungen können Sie Warnungen an jeden Benachrichtigungskanal weiterleiten, der von Azure Monitor unterstützt wird, z. B. E-Mail, ITSM, Webhook, eine Logik-App usw.
 
-Diese Funktion ist derzeit für Azure Database for PostgreSQL-Server, Azure Blobs und Azure Managed Disks verfügbar. Warnungen werden für die folgenden Szenarien generiert (Sie können darauf zugreifen, indem Sie zu einem Sicherungstresor navigieren und auf das Menüelement **Warnungen** klicken):
+Derzeit stehen in Azure Backup zwei Haupttypen von integrierten Warnungen zur Verfügung:
 
-- Löschen von Sicherungsdaten
-- Sicherungsfehler (um Warnungen zu Sicherungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
-- Wiederherstellungsfehler (um Warnungen zu Wiederherstellungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
+* **Sicherheitswarnungen:** In Szenarios wie dem Löschen von Sicherungsdaten oder dem Deaktivieren des vorläufigen Löschens für einen Tresor werden Sicherheitswarnungen (mit dem Schweregrad 0) ausgelöst und im Azure-Portal angezeigt oder von anderen Clients (PowerShell, CLI und REST-API) verarbeitet. Sicherheitswarnungen werden standardmäßig generiert und können nicht deaktiviert werden. Sie können jedoch die Szenarios steuern, für die die Benachrichtigungen (z. B. E-Mails) ausgelöst werden sollen. Weitere Informationen zum Konfigurieren von Benachrichtigungen finden Sie unter [Aktionsregeln](../azure-monitor/alerts/alerts-action-rules.md).
+* **Auftragsfehlerwarnungen:** Für Szenarios wie Sicherungs- und Wiederherstellungsfehler stellt Azure Backup integrierte Warnungen über Azure Monitor (Schweregrad 1) bereit. Im Gegensatz zu Sicherheitswarnungen können Sie Azure Monitor-Warnungen für Auftragsfehlerszenarios deaktivieren, z. B. wenn Sie bereits über Log Analytics benutzerdefinierte Warnungsregeln für Auftragsfehler konfiguriert haben und nicht bei jedem Auftragsfehler integrierte Warnungen ausgelöst werden müssen. Warnungen zu Auftragsfehlern sind standardmäßig deaktiviert. Weitere Informationen finden Sie im Abschnitt zum [Aktivieren von Warnungen für diese Szenarios](#turning-on-azure-monitor-alerts-for-job-failure-scenarios).
+ 
+In der folgenden Tabelle werden die verschiedenen, derzeit über Azure Monitor (als Vorschau) verfügbaren Sicherungswarnungen und die unterstützten Workload-/Tresortypen zusammengefasst:
 
+| **Warnungskategorie** | **Name der Warnung** | **Unterstützte Workload-/Tresortypen** | **Beschreibung** | 
+| ------------------ | -------------  | ------------------------------------------ | -------- |
+| Sicherheit | Löschen von Sicherungsdaten | <li> Virtueller Azure-Computer <br><br> <li> SQL auf Azure-VMs (Szenarios ohne Verfügbarkeitsgruppen) <br><br> <li> SAP HANA in Azure-VM <br><br> <li> Azure Backup-Agent <br><br> <li> DPM <br><br> <li> Azure Backup Server <br><br> <li> Azure Database for PostgreSQL-Server <br><br> <li> Azure-Blobs <br><br> <li> Azure Managed Disks  | Diese Warnung wird ausgelöst, wenn ein Benutzer die Sicherung beendet und Sicherungsdaten löscht. (Hinweis: Wenn das Feature zum vorläufigen Löschen für den Tresor deaktiviert ist, wird die Warnung „Sicherungsdaten löschen“ nicht empfangen.) |
+| Sicherheit | Upcoming Purge (Anstehende Bereinigung) | <li> Virtueller Azure-Computer <br><br> <li> SQL auf Azure-VMs (Szenarios ohne Verfügbarkeitsgruppen) <br><br> <li> SAP HANA in Azure-VM | Diese Warnung wird für alle Workloads ausgelöst, die das vorläufige Löschen unterstützen, wenn Sicherungsdaten für ein Element in 2 Tagen dauerhaft von Azure Backup gelöscht werden. | 
+| Sicherheit | Der Löschvorgang ist abgeschlossen. | <li> Virtueller Azure-Computer <br><br> <li> SQL auf Azure-VMs (Szenarios ohne Verfügbarkeitsgruppen) <br><br> <li> SAP HANA in Azure-VM | Löschen von Sicherungsdaten |
+| Sicherheit | Vorläufiges Löschen für den Tresor deaktiviert | Recovery Services-Tresore | Diese Warnung wird ausgelöst, wenn die vorläufig gelöschten Sicherungsdaten eines Elements endgültig von Azure Backup gelöscht wurden. | 
+| Aufträge | Fehler bei der Sicherung. | <li> Virtueller Azure-Computer <br><br> <li> SQL auf Azure-VMs (Szenarios ohne Verfügbarkeitsgruppen) <br><br> <li> SAP HANA in Azure-VM <br><br> <li> Azure Backup-Agent <br><br> <li> Azure Files <br><br> <li> Azure Database for PostgreSQL-Server <br><br> <li> Azure Managed Disks | Diese Warnung wird ausgelöst, wenn bei einem Sicherungsauftrag ein Fehler aufgetreten ist. Warnungen zu Sicherungsfehlern sind standardmäßig deaktiviert. Weitere Informationen finden Sie im Abschnitt zum [Aktivieren von Warnungen für dieses Szenario](#turning-on-azure-monitor-alerts-for-job-failure-scenarios). | 
+| Aufträge | Fehler bei der Wiederherstellung. | <li> Virtueller Azure-Computer <br><br> <li> SQL auf Azure-VMs (Szenarios ohne Verfügbarkeitsgruppen) <br><br> <li> SAP HANA in Azure-VM <br><br> <li> Azure Backup-Agent <br><br> <li> Azure Files <br><br> <li> Azure Database for PostgreSQL-Server <br><br> <li> Azure-Blobs <br><br> <li> Azure Managed Disks| Diese Warnung wird ausgelöst, wenn bei einem Wiederherstellungsauftrag ein Fehler aufgetreten ist. Warnungen zu Wiederherstellungsfehlern sind standardmäßig deaktiviert. Weitere Informationen finden Sie im Abschnitt zum [Aktivieren von Warnungen für dieses Szenario](#turning-on-azure-monitor-alerts-for-job-failure-scenarios). | 
+
+### <a name="turning-on-azure-monitor-alerts-for-job-failure-scenarios"></a>Aktivieren von Azure Monitor-Warnungen für Szenarios mit Auftragsfehlern
+
+Führen Sie die folgenden Schritte aus, um Azure Monitor-Warnungen in Szenarios mit Sicherungs- und Wiederherstellungsfehlern zu aktivieren:
+
+1. Öffnen Sie das Azure-Portal, und suchen Sie nach **Previewfunktionen**.
+
+    ![Screenshot: Anzeigen der Previewfunktionen im Portal](media/backup-azure-monitoring-laworkspace/portal-preview-features.png)
+
+2. Sie können die Liste aller Previewfunktionen anzeigen, die Sie aktivieren können.
+
+    * Wenn Sie Auftragsfehlerwarnungen für Workloads erhalten möchten, die in Recovery Services-Tresoren gesichert sind, wählen Sie das Flag **EnableAzureBackupJobFailureAlertsToAzureMonitor** aus, das zu dem Anbieter „Microsoft.RecoveryServices“ (Spalte 3) gehört.
+    * Wenn Sie Auftragsfehlerwarnungen für Workloads erhalten möchten, die in Backup-Tresoren gesichert sind, wählen Sie das Flag **EnableAzureBackupJobFailureAlertsToAzureMonitor** aus, das zu dem Anbieter „Microsoft.DataProtection“ (Spalte 3) gehört.
+
+    ![Screenshot: Vorschau der Warnungsregistrierung](media/backup-azure-monitoring-laworkspace/alert-preview-feature-flags.png)
+
+3. Klicken Sie auf **Registrieren**, um dieses Feature für Ihr Abonnement zu aktivieren.
+    > [!NOTE]
+    > Es kann bis zu 24 Stunden dauern, bis die Registrierung wirksam wird. Wenn Sie dieses Feature für mehrere Abonnements aktivieren möchten, wiederholen Sie den obigen Vorgang, indem Sie das relevante Abonnement oben im Bildschirm auswählen. Es wird außerdem empfohlen, das Vorschauflag noch mal zu registrieren, um weiterhin Warnungen zu erhalten, wenn im Abonnement nach der ersten Registrierung eine neue Ressource erstellt wurde.
+
+### <a name="viewing-fired-alerts-in-the-azure-portal"></a>Anzeigen ausgelöster Warnungen im Azure-Portal 
+
+Sobald eine Warnung für einen Tresor ausgelöst wurde, können Sie die Warnung im Azure-Portal anzeigen, indem Sie zu Backup Center navigieren. Auf der Registerkarte **Überblick** wird eine Übersicht der aktiven Warnungen nach Schweregrad angezeigt. Es werden zwei Arten von Warnungen angezeigt:
+
+* **Datenquellenwarnungen:** Warnungen, die an eine bestimmte Datenquelle gebunden sind, die gerade gesichert wird (z. B. Sicherungs- oder Wiederherstellungsfehler auf einer VM, Löschen von Sicherungsdaten einer Datenbank usw.), werden im Abschnitt **Datenquellenwarnungen** angezeigt.
+* **Globale Warnungen:** Warnungen, die nicht an eine bestimmte Datenquelle gebunden sind (z. B. das Deaktivieren der Funktion eines Tresors für das vorläufige Löschen), werden im Abschnitt **Global Alerts** (Globale Warnungen) angezeigt.
+
+Alle oben genannten Warnungstypen werden weiter in Warnungen der Typen **Sicherheit** und **konfiguriert** unterteilt. Derzeit decken Sicherheitswarnungen Szenarios ab, in denen Sicherungsdaten gelöscht werden oder das vorläufige Löschen für einen Tresor (wie im obigen Abschnitt beschrieben für die infrage kommenden Workloads) deaktiviert wird. Konfigurierte Warnungen decken Sicherungs- und Wiederherstellungsfehler ab, da diese Warnungen erst nach der Registrierung des Features im Vorschauportal ausgelöst werden.
+
+![Screenshot: Anzeigen von Warnungen in Backup Center](media/backup-azure-monitoring-laworkspace/backup-center-azure-monitor-alerts.png)
+
+Wenn Sie auf eine der Zahlen (oder auf das Menüelement **Benachrichtigungen**) klicken, wird eine Liste aller aktiven Warnungen geöffnet, die unter Anwendung der relevanten Filter ausgelöst wurden. Sie können nach einer Reihe von Eigenschaften filtern, z. B. Abonnement, Ressourcengruppe, Tresor, Schweregrad, Status usw. Sie können auf jede der Warnungen klicken, um weitere Details zur Warnung zu erhalten, z. B. die betroffene Datenquelle, eine Warnungsbeschreibung und eine empfohlene Aktion usw.
+
+![Screenshot: Anzeigen von Warnungsdetails](media/backup-azure-monitoring-laworkspace/backup-center-alert-details.png) 
+
+Sie können den Status einer Warnung in **Bestätigt** oder **Geschlossen** ändern, indem Sie auf **Warnungsstatus ändern** klicken.
+
+![Screenshot: Ändern des Warnungsstatus](media/backup-azure-monitoring-laworkspace/backup-center-change-alert-state.png) 
+
+> [!NOTE]
+> - In Backup Center werden derzeit nur Warnungen für Azure-basierte Workloads angezeigt. Wenn Sie Warnungen zu lokalen Ressourcen anzeigen möchten, müssen Sie zum Recovery Services-Tresor navigieren und auf das Menüelement **Benachrichtigungen** klicken.
+> - In Backup Center werden nur Azure Monitor-Warnungen angezeigt. Warnungen, die von der älteren Warnungslösung ausgelöst wurden, (auf die über die Registerkarte [Sicherungswarnungen](#backup-alerts-in-recovery-services-vault) im Recovery Services-Tresor zugegriffen wird,) werden in Backup Center nicht angezeigt.
 Weitere Informationen zu Azure Monitor-Warnungen finden Sie unter [Überblick über Warnungen in Azure](../azure-monitor/alerts/alerts-overview.md).
+
+### <a name="configuring-notifications-for-alerts"></a>Konfigurieren von Benachrichtigungen für Warnungen
+
+Wenn Sie Benachrichtigungen für Azure Monitor-Warnungen konfigurieren möchten, müssen Sie eine Aktionsregel erstellen. Die folgenden Schritte veranschaulichen, wie Sie eine Aktionsregel erstellen, um E-Mail-Benachrichtigungen an eine bestimmte E-Mail-Adresse zu senden. Ähnliche Anweisungen gelten für das Weiterleiten dieser Warnungen an andere Benachrichtigungskanäle wie ITSM, Webhook, eine Logik-App usw.
+
+1. Navigieren Sie im Azure-Portal zu **Backup Center**. Klicken Sie auf das Menüelement **Benachrichtigungen**, und wählen Sie **Aktionen verwalten** aus.
+
+    ![Screenshot: „Aktionen verwalten“ in Backup Center](media/backup-azure-monitoring-laworkspace/backup-center-manage-actions.png) 
+
+2. Navigieren Sie zur Registerkarte **Aktionsregeln (Vorschau)** , und klicken Sie auf **Neue Aktionsregel**.
+
+    ![Screenshot: Erstellen einer neuen Aktionsregel](media/backup-azure-monitoring-laworkspace/azure-monitor-create-action-rule.png) 
+
+3. Wählen Sie den Bereich aus, auf den die Aktionsregel angewendet werden soll. Sie können die Aktionsregel auf alle Ressourcen innerhalb eines Abonnements anwenden. Optional können Sie auch Filter auf die Warnungen anwenden, um beispielsweise nur Benachrichtigungen für Warnungen mit einem bestimmten Schweregrad zu generieren.
+
+    ![Screenshot: Festlegen des Geltungsbereichs einer Aktionsregel](media/backup-azure-monitoring-laworkspace/azure-monitor-action-rule-scope.png) 
+
+4. Erstellen Sie eine Aktionsgruppe. Eine Aktionsgruppe ist das Ziel, an das die Warnungsbenachrichtigung gesendet werden soll, z. B. eine E-Mail-Adresse.
+ 
+    ![Screenshot: Erstellen einer neuen Aktionsgruppe](media/backup-azure-monitoring-laworkspace/azure-monitor-create-action-group.png) 
+
+5. Wählen Sie auf der Registerkarte **Allgemeine Informationen** den Namen der Aktionsgruppe sowie das Abonnement und die Ressourcengruppe aus, unter denen die Gruppe erstellt werden soll.
+
+    ![Screenshot: grundlegende Eigenschaften der Aktionsgruppe](media/backup-azure-monitoring-laworkspace/azure-monitor-action-groups-basic.png) 
+
+6. Wählen Sie auf der Registerkarte **Benachrichtigungen** die Option **Email/SMS message/Push/Voice** (E-Mail/SMS/Push/Sprachanruf) aus, und geben Sie die E-Mail-ID des Empfängers ein.
+
+    ![Screenshot: Festlegen von Benachrichtigungseigenschaften](media/backup-azure-monitoring-laworkspace/azure-monitor-email.png) 
+
+7. Klicken Sie zum Bereitstellen der Aktionsgruppe auf **Überprüfen und erstellen** und dann auf **Erstellen**.
+
+8. Speichern Sie abschließend die Aktionsregel.
+
+[Weitere Informationen zu Aktionsregeln in Azure Monitor](../azure-monitor/alerts/alerts-action-rules.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

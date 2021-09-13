@@ -2,13 +2,13 @@
 title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/25/2021
+ms.openlocfilehash: 6e068462cada0a324d646766574e05414ad92772
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346103"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968508"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -45,7 +45,7 @@ Die Abbildung zeigt ein einzelnes Azure-Abonnement mit zwei privaten Clouds, die
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Hostwartung und Lebenszyklusverwaltung
 
-Einer der Vorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird.  Microsoft ist für die Lebenszyklusverwaltung der VMware-Software (ESXi, vCenter und vSAN) zuständig. Außerdem ist Microsoft für die Lebenszyklusverwaltung von NSX-T-Appliances und das Bootstrapping der Netzwerkkonfiguration zuständig, z. B. die Erstellung des Gateways für Schicht 0 und die Aktivierung des Nord-Süd-Routings. Sie sind für die NSX-T-SDN-Konfiguration verantwortlich, also Netzwerksegmente, Regeln für verteilte Firewalls, Gateways für Schicht 1 und Lastenausgleich. 
+
 
 [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 

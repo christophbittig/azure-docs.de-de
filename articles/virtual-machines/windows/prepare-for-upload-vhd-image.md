@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 92b4b495944fb6180e669c495d61b4594f3e4daf
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450274"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697195"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
+
+**Gilt für**: :heavy_check_mark: Windows VMs 
 
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt VMs der Generationen 1 und 2, die das VHD-Dateiformat und einen Datenträger mit fester Größe aufweisen. Die maximal zulässige Größe für die Betriebssystem-VHD eines virtuellen Computers der Generation 1 beträgt 2 TB.
 
@@ -442,6 +444,9 @@ Sysprep erfordert insbesondere, dass die Laufwerke vor der Ausführung vollstän
 
 
 ### <a name="generalize-a-vhd"></a>Generalisieren einer VHD
+
+>[!NOTE]
+> Wenn Sie ein generalisiertes Image von einem vorhandenen virtuellen Azure-Computer erstellen, empfiehlt es sich, die VM-Erweiterungen vor dem Ausführen von „Sysprep“ zu entfernen.
 
 >[!NOTE]
 > Schalten Sie die VM nach der Ausführung von `sysprep.exe` in den folgenden Schritten aus. Schalten Sie sie erst wieder ein, nachdem Sie ein Image davon in Azure erstellt haben.

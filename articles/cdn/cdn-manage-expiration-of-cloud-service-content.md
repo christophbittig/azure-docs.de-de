@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78716b77492b146b076bfc31a71d12954f482114
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93240969"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445102"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
     ![Beispiel für benutzerdefinierte CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
-    Die erste benutzerdefinierte Cacheregel legt eine Cachedauer von vier Stunden für alle Dateien im Ordner `/webfolder1` auf dem Ursprungsserver fest, der durch Ihren Endpunkt angegeben wird. Die zweite Regel setzt für die Datei `file1.txt` die erste Regel außer Kraft und legt eine Cachedauer von zwei Stunden fest.
+    Die erste benutzerdefinierte Cacheregel legt eine Cachedauer von vier Tagen für alle Dateien im Ordner `/webfolder1` auf dem Ursprungsserver fest, der durch Ihren Endpunkt angegeben wird. Die zweite Regel setzt für die Datei `file1.txt` die erste Regel außer Kraft und legt eine Cachedauer von zwei Tagen fest.
 
 1. Wählen Sie **Speichern** aus.
 

@@ -3,12 +3,12 @@ title: Sichern von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal sichern können.
 ms.topic: conceptual
 ms.date: 05/27/2021
-ms.openlocfilehash: c47499c371a9eccfd97224344a48c166d0e1f811
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 9bbb29aa4741f71448876a0af947964f728b0fb0
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653629"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300734"
 ---
 # <a name="back-up-azure-managed-disks"></a>Sichern von Azure Managed Disks
 
@@ -121,7 +121,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
 
    - Beim Konfigurieren der Datenträgersicherung können Sie die Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, nicht ändern.
 
-   - Während eines Sicherungsvorgangs erstellt der Azure Backup-Dienst ein Speicherkonto in der Momentaufnahme-Ressourcengruppe, in der die Momentaufnahmen gespeichert werden. Pro Momentaufnahme-Ressourcengruppe wird nur ein Speicherkonto erstellt. Das Konto wird auf mehreren Datenträger-Sicherungsinstanzen wiederverwendet, die dieselbe Ressourcengruppe wie die Momentaufnahme-Ressourcengruppe verwenden.
+   - Azure Backup erstellt während eines Sicherungsvorgangs ein Speicherkonto in der Ressourcengruppe für Momentaufnahmen. Pro Momentaufnahme-Ressourcengruppe wird nur ein Speicherkonto erstellt. Das Konto wird auf mehreren Datenträger-Sicherungsinstanzen wiederverwendet, die dieselbe Ressourcengruppe wie die Momentaufnahme-Ressourcengruppe verwenden.
      
      - Momentaufnahmen werden nicht im Speicherkonto gespeichert. Inkrementelle Momentaufnahmen von verwalteten Datenträgern sind ARM-Ressourcen, die in der Ressourcengruppe und nicht in einem Speicherkonto erstellt werden. 
      
@@ -182,7 +182,7 @@ Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
    ![Zu sichernde Datenträger auswählen](./media/backup-managed-disks/select-disks-to-backup.png)
 
    >[!NOTE]
-   >Im Portal können Sie zwar mehrere Datenträger auswählen und die Sicherung konfigurieren, jeder Datenträger ist jedoch eine einzelne Sicherungsinstanz. Derzeit unterstützt Azure Disk Backup nur die Sicherung einzelner Datenträger. Zeitpunktsicherungen von mehreren an einen virtuellen Datenträger angefügten Datenträgern werden nicht unterstützt.
+   >Im Portal können Sie zwar mehrere Datenträger auswählen und die Sicherung konfigurieren, jeder Datenträger ist jedoch eine einzelne Sicherungsinstanz. Derzeit unterstützt Azure Disk Backup nur die Sicherung einzelner Datenträger. Zeitpunktsicherungen von mehreren an einen virtuellen Computer angefügten Datenträgern werden nicht unterstützt.
    >
    >Bei der Verwendung des Portals sind Sie auf die Auswahl der Datenträger innerhalb eines Abonnements beschränkt. Wenn Sie mehrere Datenträger sichern müssen oder die Datenträger auf verschiedene Abonnements verteilt sind, können Sie Skripts zur Automatisierung verwenden.
    >

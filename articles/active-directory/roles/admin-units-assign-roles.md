@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2b34eafac248bc0fd06076550e784a061573a712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792253"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346425"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit
 
@@ -52,7 +52,7 @@ Benutzeradministrator  |  Kann nur in der zugewiesenen Verwaltungseinheit alle A
 Die folgenden Sicherheitsprinzipale können einer Rolle im Bereich von Verwaltungseinheiten zugewiesen werden:
 
 * Benutzer
-* Cloudgruppen, die einer Rolle zugewiesen werden können (Vorschauversion)
+* Azure AD-Gruppen, denen Rollen zugewiesen werden können
 * Dienstprinzipalname (Service Principal Name, SPN)
 
 ## <a name="assign-a-scoped-role"></a>Zuweisen einer bereichsbezogenen Rolle
@@ -61,9 +61,9 @@ Eine bereichsbezogene Rolle kann über das Azure-Portal, mithilfe von PowerShell
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Navigieren Sie im Azure-Portal zu **Azure AD**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
-1. Wählen Sie **Verwaltungseinheiten** und anschließend die Verwaltungseinheit aus, der Sie einen Benutzerrollenbereich zuweisen möchten. 
+1. Klicken Sie auf **Azure Active Directory** > **Verwaltungseinheiten**, und wählen Sie dann die Verwaltungseinheit aus, der Sie einen Benutzerrollenbereich zuweisen möchten. 
 
 1. Wählen Sie im linken Bereich die Option **Rollen und Administratoren** aus, um alle verfügbaren Rollen aufzulisten.
 
@@ -118,9 +118,9 @@ Eine Liste mit bereichsbezogenen Administratoren kann über das Azure-Portal, mi
 
 Alle Rollenzuweisungen, die mit einem auf Verwaltungseinheiten bezogenen Bereich erstellt wurden, können im Abschnitt [Verwaltungseinheiten von Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit) angezeigt werden. 
 
-1. Navigieren Sie im Azure-Portal zu **Azure AD**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
-1. Wählen Sie im linken Bereich die Option **Verwaltungseinheiten** und dann die Verwaltungseinheit für die Liste mit den Rollenzuweisungen aus, die Sie anzeigen möchten. 
+1. Klicken Sie auf **Azure Active Directory** > **Verwaltungseinheiten**, und wählen Sie dann die Verwaltungseinheit für die Liste mit den Rollenzuweisungen aus, die Sie anzeigen möchten. 
 
 1. Wählen Sie **Rollen und Administratoren** aus, und öffnen Sie anschließend eine Rolle, um die Zuweisungen in der Verwaltungseinheit anzuzeigen.
 
@@ -149,5 +149,5 @@ Body
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen](groups-concept.md)
-- [Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind](groups-faq-troubleshooting.md)
+- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](groups-concept.md)
+- [Behandeln von Problemen bei Azure AD-Rollen mit Gruppenzuweisung](groups-faq-troubleshooting.yml)

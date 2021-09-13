@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 4a25d7a23d486c8ce22fa433cc1ead390726facc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b6cddc32b81f0e1bf915bfa09527a3ef395f744
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346479"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Power Automate
 Mit [Azure Logic Apps](../../logic-apps/index.yml) und [Power Automate](https://flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
@@ -20,8 +20,7 @@ Beispielsweise können Sie eine Logik-App zum Verwenden von Azure Monitor-Protok
 
 ## <a name="connector-limits"></a>Grenzwerte des Connectors
 Der Connector für Azure Monitor-Protokolle weist folgende Grenzwerte auf:
-* Maximale Datengröße: 16 MB
-* Maximale Größe von Antworten auf Abfragen: 100 MB
+* Maximale Größe von Antworten auf Abfragen: ca. 16,7 MB (16 MiB). Aufgrund der Connectorinfrastruktur muss dieser Grenzwert niedriger sein als der Grenzwert für die Abfrage-API.
 * Maximale Anzahl von Datensätzen: 500.000
 * Maximales Abfragetimeout: 110 Sekunden
 * Diagrammvisualisierungen könnten auf der Seite „Protokolle“ verfügbar sein und im Connector fehlen, da der Connector und die Seite „Protokolle“ derzeit nicht die gleichen Diagrammbibliotheken verwenden.

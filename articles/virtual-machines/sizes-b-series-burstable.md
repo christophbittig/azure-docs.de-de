@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: 54958eb6fa6d3ef855bdc3667921535ab47c7b29
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: cdfb44518c75dbb57d184fa72eb7639fd56f738c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339212"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
-Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, Proofs of Concept, kleine Datenbanken sowie Entwicklungsbuildumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, die Guthaben erstellen kann, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
+VMs der B-Serie können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden, sodass eine wettbewerbsfähige Bandbreitenzuteilung gegeben ist. Virtuelle Computer der B-Serie eignen sich ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, Proofs of Concept, kleine Datenbanken sowie Entwicklungsbuildumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Fragen Sie die virtuelle Hardware über die VM ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, die Guthaben erstellen kann, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 
 Die B-Serie ist in den folgenden VM-Größen erhältlich:
 
@@ -35,20 +35,23 @@ Die B-Serie ist in den folgenden VM-Größen erhältlich:
 <br>
 <br>
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
-| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
-| Standard_B1ms             | 1  | 2   | 4   | 20%  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
-| Standard_B2s              | 2  | 4   | 8   | 40%  | 200 %  | 60  | 24  | 576  | 4  | 1\.600/15   | 1\.280/15   | 3  |
-| Standard_B2ms             | 2  | 8   | 16  | 60%  | 200 %  | 60  | 36  | 864  | 4  | 2\.400/22,5 | 1\.920/22,5 | 3  |
-| Standard_B4ms             | 4  | 16  | 32  | 90%  | 400 %  | 120 | 54  | 1296 | 8  | 3\.600/35   | 2\.880/35   | 4  |
-| Standard_B8ms             | 8  | 32  | 64  | 135% | 800 %  | 240 | 81  | 1944 | 16 | 4\.320/50   | 4\.320/50   | 4  |
-| Standard_B12ms            | 12 | 48  | 96  | 202 % | 1200 % | 360 | 121 | 2909 | 16 | 6\.480/75   | 4\.320/50   | 6  |
-| Standard_B16ms            | 16 | 64  | 128 | 270 % | 1600 % | 480 | 162 | 3888 | 32 | 8\.640/100  | 4\.320/50   | 8  |
-| Standard_B20ms            | 20 | 80  | 160 | 337 % | 2000 % | 600 | 203 | 4860 | 32 | 10.800/125 | 4\.320/50   | 8  |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> |Maximale Anzahl NICs |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_B1ls<sup>2</sup> | 1  | 0.5 | 4   | 5 %   | 100 %  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 4000/100  | 2 |
+| Standard_B1s              | 1  | 1   | 4   | 10 %  | 100 %  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 4000/100  | 2 |
+| Standard_B1ms             | 1  | 2   | 4   | 20%  | 100 %  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 4000/100  | 2 |
+| Standard_B2s              | 2  | 4   | 8   | 40%  | 200 %  | 60  | 24  | 576  | 4  | 1\.600/15   | 1\.280/15   | 4000/100  | 3 |
+| Standard_B2ms             | 2  | 8   | 16  | 60%  | 200 %  | 60  | 36  | 864  | 4  | 2\.400/22,5 | 1\.920/22,5 | 4000/100  | 3 |
+| Standard_B4ms             | 4  | 16  | 32  | 90%  | 400 %  | 120 | 54  | 1296 | 8  | 3\.600/35   | 2\.880/35   | 8000/200  | 4 |
+| Standard_B8ms             | 8  | 32  | 64  | 135% | 800 %  | 240 | 81  | 1944 | 16 | 4\.320/50   | 4\.320/50   | 8000/200  | 4 |
+| Standard_B12ms            | 12 | 48  | 96  | 202 % | 1200 % | 360 | 121 | 2909 | 16 | 6\.480/75   | 4\.320/50   | 16000/400 | 6 |
+| Standard_B16ms            | 16 | 64  | 128 | 270 % | 1600 % | 480 | 162 | 3888 | 32 | 8\.640/100  | 4\.320/50   | 16000/400 | 8 |
+| Standard_B20ms            | 20 | 80  | 160 | 337 % | 2000 % | 600 | 203 | 4860 | 32 | 10.800/125 | 4\.320/50   | 16000/400 | 8 |
 
-<sup>1</sup> B1ls wird nur unter Linux unterstützt
+<sup>1</sup> VMs der B-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.
+
+<sup>2</sup> B1ls wird nur unter Linux unterstützt.
+
 
 ## <a name="workload-example"></a>Workloadbeispiel
 

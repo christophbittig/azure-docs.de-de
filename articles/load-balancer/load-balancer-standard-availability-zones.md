@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 3c18b6d8dc44762649a9c07b88af348a18888fb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfec3e6305b6b955cfb7b2cfd787507db36ff6ba
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699112"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213595"
 ---
 # <a name="load-balancer-and-availability-zones"></a>Load Balancer und Verfügbarkeitszonen
 
@@ -75,6 +75,12 @@ Zonenredundanz impliziert weder eine störungsfreie Datenebene noch eine störun
 Datenströme, die zum Zeitpunkt des Zonenausfalls eine Zone verwenden, können beeinträchtigt werden, aber Anwendungen können wiederhergestellt werden. Der Datenverkehr wird in den fehlerfreien Zonen innerhalb der Region nach nochmaliger Übertragung fortgesetzt, wenn Azure den Zonenausfall in den Griff bekommen hat.
 
 Informationen zur Verbesserung der Resilienz Ihrer Anwendung in Ausfallszenarien finden Sie unter [Cloudentwurfsmuster](/azure/architecture/patterns/).
+
+## <a name="limitations"></a>Einschränkungen
+
+* Zonen können nach der Erstellung nicht geändert, aktualisiert oder für die Ressource erstellt werden.
+
+* Nach der Erstellung kann für Ressourcen kein Update von der zonalen auf die zonenredundante Einstellung oder umgekehrt ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md)

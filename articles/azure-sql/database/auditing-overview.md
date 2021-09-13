@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/14/2021
+ms.date: 08/01/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: f7bdadaf8570fe06d7573ff622ed921137229ae1
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 9abb17c1be9c862cb0d67110c88386a9c0e7313d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061558"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338974"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -77,13 +77,14 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als [Stan
 
 - Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
 - Überwachungsprotokolle liegen im XEL-Format vor und können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) geöffnet werden.
-- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
+- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
 - Sie können Überwachungsprotokolle in ein Azure Storage-Konto hinter einem VNET oder einer Firewall schreiben. Spezielle Anweisungen finden Sie unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](./audit-log-format.md).
 - Die Überwachung von [schreibgeschützten Replikaten](read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
 - Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/concept-sign-ins.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
 - Anmeldungen werden vom Gateway an die bestimmte Instanz weitergeleitet, in der sich die Datenbank befindet.  Im Fall von AAD-Anmeldungen erfolgt die Überprüfung der Anmeldeinformationen vor dem Versuch, den Benutzer für die Anmeldung bei der angeforderten Datenbank zu verwenden.  Bei einem Fehler wird nie auf die angeforderte Datenbank zugegriffen, sodass keine Überwachung erfolgt.  Bei SQL-Anmeldungen werden die Anmeldeinformationen für die angeforderten Daten überprüft, sodass sie in diesem Fall überwacht werden können.  Erfolgreiche Anmeldungen, die die Datenbank offensichtlich erreichen, werden in beiden Fällen überwacht.
 - Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](threat-detection-overview.md).
+- Nachdem eine Datenbank mit aktivierter Überwachung auf einen anderen logischen Azure SQL-Server kopiert wurde, erhalten Sie möglicherweise eine E-Mail, die Sie darüber informiert, dass bei der Überwachung ein Fehler aufgetreten ist. Dabei handelt es sich um ein bekanntes Problem. Die Überwachung sollte bei der neu kopierten Datenbank wie erwartet funktionieren.
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Einrichten der Überwachung für Ihren Server
 
@@ -118,10 +119,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
 Mit der Überwachung von Microsoft-Supportvorgängen für Azure SQL Server können Sie die Vorgänge von Microsoft-Supporttechnikern überwachen, wenn diese während einer Supportanfrage auf Ihren Server zugreifen müssen. In Kombination mit der Überwachung sorgt diese Funktion für eine höhere Personaltransparenz und ermöglicht Anomalieerkennung, Trendvisualisierung und die Verhinderung von Datenverlusten.
 
-Navigieren Sie zum Aktivieren der Überwachung von Microsoft-Supportvorgängen im Bereich **Azure SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**, und legen Sie **Überwachung von Microsoft-Supportvorgängen** auf **EIN** fest.
-
-  > [!IMPORTANT]
-  > Die Überwachung von Microsoft-Supportvorgängen unterstützt keine Speicherkontoziele. Zum Aktivieren der Funktion muss ein Log Analytics-Arbeitsbereich oder ein Event Hub-Ziel konfiguriert werden.
+Navigieren Sie zum Aktivieren der Überwachung von Microsoft-Supportvorgängen im Bereich **Azure SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**, und legen Sie **Überwachung von Microsoft-Supportvorgängen aktivieren** auf **EIN** fest.
 
 ![Screenshot: Microsoft-Supportvorgänge](./media/auditing-overview/support-operations.png)
 
@@ -131,6 +129,10 @@ Mit der folgenden Abfrage können Sie die Überwachungsprotokolle von Microsoft-
 AzureDiagnostics
 | where Category == "DevOpsOperationsAudit"
 ```
+
+Sie können für dieses Überwachungsprotokoll ein anderes Speicherziel auswählen oder für Ihren Server die gleiche Überwachungskonfiguration verwenden.
+
+:::image type="content" source="media/auditing-overview/auditing-support-operation-log-destination.png" alt-text="Screenshot: Überwachungskonfiguration für die Überwachung von Supportvorgängen":::
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Überwachung in Speicherziel
 
@@ -296,3 +298,9 @@ Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resourc
 
 > [!NOTE]
 > Die verknüpften Beispiele befinden sich in einem externen öffentlichen Repository und werden wie besehen ohne Gewähr zur Verfügung gestellt und werden von keinem Microsoft-Supportprogramm/-dienst unterstützt.
+
+## <a name="see-also"></a>Weitere Informationen
+
+- Data Exposed-Folge [What's New in Azure SQL Auditing (Neuerungen in Azure SQL Auditing)](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing) auf Channel 9.
+- [Überwachung für SQL Managed Instance](../managed-instance/auditing-configure.md)
+- [Überwachung für SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

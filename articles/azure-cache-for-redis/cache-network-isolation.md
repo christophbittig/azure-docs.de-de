@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b47462a60e35200908592274a9e1c424eca5ab62
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 61865a38cfa96dae35a02b25a1f5025438e91816
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655365"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379742"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis: Netzwerkisolationsoptionen
 
@@ -31,7 +31,7 @@ Azure Private Link stellt eine private Verbindung zwischen einem virtuellen Netz
 ### <a name="limitations"></a>Einschränkungen
 
 * Netzwerksicherheitsgruppen (NSGs) sind für private Endpunkte deaktiviert. Wenn jedoch andere Ressourcen im Subnetz vorhanden sind, gilt die Netzwerksicherheitsgruppen-Erzwingung für diese Ressourcen.
-* Noch nicht unterstützt: Georeplikation, Firewallregeln, Unterstützung der Portalkonsole, mehrere Endpunkte pro gruppiertem Cache, Persistenz in der Firewall und in VNet eingefügte Caches
+* Derzeit werden Portalkonsole und Persistenz für Firewall-Speicherkonten nicht unterstützt. 
 * Zum Herstellen einer Verbindung mit einem gruppierten Cache muss `publicNetworkAccess` auf `Disabled` festgelegt werden, und es kann nur eine private Endpunktverbindung geben.
 
 > [!NOTE]

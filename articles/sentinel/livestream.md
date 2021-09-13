@@ -13,16 +13,21 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2020
+ms.date: 07/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a711cca01431346896ac5d0aee5dce8524ed721f
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84783162"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202494"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen
+
+> [!IMPORTANT]
+>
+> - Die ressourcenübergreifenden Abfragefunktionen (siehe im Folgenden erläuterte Elemente in Fettschrift) befinden sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 
 Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit denen Sie neu erstellte Abfragen beim Eintreten von Ereignissen testen, Benachrichtigungen von den Sitzungen bei einer Übereinstimmung erhalten und bei Bedarf Untersuchungen starten können. Sie können schnell mithilfe einer beliebigen Log Analytics-Abfrage eine Livestreamsitzung erstellen.
 
@@ -61,7 +66,10 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstell
 1. Im Bereich **Livestream**:
     
     - Wenn Sie den Livestream aus einer Abfrage gestartet haben, überprüfen Sie die Abfrage, und nehmen Sie die gewünschten Änderungen vor.
-    - Wenn Sie den Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage. 
+    - Wenn Sie den Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage.
+
+    > [!NOTE]
+    > Der Livestream unterstützt **ressourcenübergreifende Abfragen** (in der Vorschauphase) von Daten in Azure Data Explorer. Lesen Sie den Artikel zu [**übergreifenden Abfragen von Log Analytics- oder Application Insights-Ressourcen und Azure Data Explorer**](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer).
 
 1. Wählen Sie in der Befehlsleiste **Wiedergeben** aus.
     

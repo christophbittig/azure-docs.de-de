@@ -3,20 +3,18 @@ title: Versionshinweise – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie eine fortlaufende Liste der veröffentlichten Features, Verbesserungen, Fehlerbehebungen und bekannten Problemen des Speech-Diensts.
 services: cognitive-services
-author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
-ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: a3991645c747bf229acd5f320282663c41b03fe3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db2c4e50b4de7a680b114582baf1361ee4d75fb8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345876"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768814"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
@@ -60,7 +58,7 @@ ms.locfileid: "122345876"
 - **JavaScript**: Es wurde ein Problem behoben, aufgrund dessen das Erkennungsmodul bei der kontinuierlichen Erkennung erneut eine Verbindung mit einem Pushstream hergestellt hat. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/399).
 - **JavaScript**: Die Offsetberechnung auf Wortebene in detaillierten Erkennungsergebnissen wurde korrigiert. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/394).
 
-#### <a name="samples"></a>Beispiele
+#### <a name="samples"></a>Proben
 
 - Aktualisierte Java-Schnellstartbeispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java).
 - Die Beispiele zur JavaScript-Sprechererkennung wurden aktualisiert, um die neue Verwendung der `enrollProfileAsync()`-Methode zu veranschaulichen. Beispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/node).
@@ -221,7 +219,7 @@ Mit dem [Lesezeichenelement](speech-synthesis-markup.md#bookmark-element) könne
 - **C++/C#/Java/Python/Objective-C/Go**: Das Problem wurde behoben, dass gelegentlich ein Absturz erfolgt, wenn die Erkennung unmittelbar nach dem Starten einer Erkennung zerstört wurde.
 - **C++/C#/Java**: Das Problem wurde behoben, dass bei der Zerstörung der Sprechererkennung gelegentlich ein Absturz erfolgt.
 
-#### <a name="samples"></a>Beispiele
+#### <a name="samples"></a>Proben
 
 - **JavaScript**: [Browserbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/browser) erfordern nicht mehr einen speziellen Download von JavaScript-Bibliotheksdateien.
 

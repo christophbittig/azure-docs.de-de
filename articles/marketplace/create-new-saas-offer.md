@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/19/2021
-ms.openlocfilehash: 05512c247f26dc8e6d41876bc3a09acdd278caac
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/30/2021
+ms.openlocfilehash: 4a0ebea8d0fb8d5b9ae5fa78004c071a348615e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559266"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346226"
 ---
 # <a name="create-a-saas-offer"></a>Erstellen eines SaaS-Angebots
 
@@ -54,6 +54,9 @@ Auf der Registerkarte **Angebotseinrichtung** unter **Einrichtungsdetails** wäh
    + Um ein kostenloses Abonnement für Ihr Angebot bereitzustellen, wählen Sie **Jetzt abrufen (kostenlos)** aus. Geben Sie dann im eingeblendeten Feld **Angebots-URL** die (mit *http* oder *https* beginnende) URL ein, unter der Kunden per [1-Klick-Authentifizierung über Azure Active Directory (Azure AD)](azure-ad-saas.md) eine Testversion erhalten können. Beispiel: `https://contoso.com/saas-app`.
    + Um eine kostenlose 30-Tage-Testversion bereitzustellen, wählen Sie **Kostenlose Testversion** aus und geben dann im eingeblendeten Feld **Test-URL** die (mit *http* oder *https* beginnende) URL ein, unter der Kunden per [1-Klick-Authentifizierung über Azure Active Directory (Azure AD)](azure-ad-saas.md) auf Ihre kostenlose Testversion zugreifen können. Beispiel: `https://contoso.com/trial/saas-app`.
    + Wählen Sie **Kontakt mit mir aufnehmen** aus, wenn potenzielle Kunden Kontakt zu Ihnen aufnehmen und Ihr Angebot erwerben sollen.
+
+    > [!NOTE]
+    > Sollten sich Ihre Umstände ändern, können Sie ein veröffentlichtes Auflistungsangebot konvertieren, sodass es über den kommerziellen Marketplace vertrieben wird. Es ist jedoch nicht möglich ein veröffentlichtes transaktionsfähiges Angebot in ein Auflistungsangebot zu konvertieren. Stattdessen müssen Sie ein neues Auflistungsangebot erstellen und die Verteilung des veröffentlichten transaktionsfähigen Angebots stoppen.
 
 ## <a name="enable-a-test-drive-optional"></a>Aktivieren einer Testversion (optional)
 

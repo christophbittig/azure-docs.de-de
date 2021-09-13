@@ -1,20 +1,20 @@
 ---
-title: Fehlerbehebung bei Azure Percept DK
+title: Problembehandlung für das Azure Percept DK-Gerät
 description: Tipps zur Fehlerbehebung für einige der häufigeren Probleme mit dem Azure Percept DK und IoT Edge
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: caea6bbd8ebcf3dbe2d6f8b45174326a5ba4f169
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350127"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221088"
 ---
-# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK-Fehlerbehebung
+# <a name="troubleshoot-the-azure-percept-dk-device"></a>Problembehandlung für das Azure Percept DK-Gerät
 
 Der Zweck dieses Artikels zur Fehlerbehebung besteht darin, Azure Percept DK-Benutzern bei der schnellen Behebung von häufigen Problemen mit ihren Development Kits zu unterstützen. Außerdem erhalten Sie Anweisungen für das Sammeln von Protokollen, wenn ein zusätzlicher Support erforderlich ist.
 
@@ -47,7 +47,6 @@ In diesem Abschnitt erhalten Sie Anweisungen dazu, welche Protokolle auf welche 
 |*OOBE-Protokolle*: erfasst Details über die Setupfunktionalität.|Immer dann, wenn während des Setups Probleme auftreten.|```sudo journalctl -u oobe -b```|
 |*edgeAgent-Protokolle*: Zeichnet die Versionsnummern aller Module auf, die auf Ihrem Gerät ausgeführt werden.|Immer dann, wenn mindestens ein Modul nicht funktioniert.|```sudo iotedge logs edgeAgent```|
 |*Modulcontainerprotokolle*: Zeichnet Details zu bestimmten IoT Edge-Modulcontainern auf.|Immer dann, wenn Probleme mit einem Modul auftreten.|```sudo iotedge logs [container name]```|
-|*Protokolle des WLAN-Zugriffspunkts*: Zeichnet Details über den WLAN-Zugriffspunkt des Development Kits auf.|Immer dann, wenn beim Herstellen einer Verbindung mit dem WLAN-Zugriffspunkt des Development Kits Probleme auftreten.|```sudo journalctl -u hostapd.service```|
 |*Netzwerkprotokolle*: Eine Gruppe von Protokollen, die die WLAN-Dienste und den Netzwerkstapel abdecken.|Immer dann, wenn WLAN- oder Netzwerkprobleme auftreten.|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>Führen Sie beide Befehle aus. Mit jedem Befehl werden mehrere Protokolle gesammelt und in einer einzelnen Ausgabe abgelegt.|
 
 ## <a name="troubleshooting-commands"></a>Problembehandlung bei Befehlen
@@ -57,7 +56,7 @@ Weitere Informationen zu den Azure IoT Edge-Befehlen finden Sie in der [Proble
 
 |Funktion         |Verwendung                    |Befehl                 |
 |------------------|----------------------------|---------------------------|
-|Überprüft die Softwareversion im Development Kit|Immer dann, wenn Sie überprüfen müssen, welche Softwareversion in Ihrem Development Kit enthalten ist.|```cat /etc/adu-version```|
+|Überprüft die Softwareversion im Development Kit|Immer dann, wenn Sie überprüfen müssen, welche Softwareversion in Ihrem Development Kit enthalten ist.|```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version```|
 |Überprüft die Temperatur des Development Kits|Immer dann, wenn Sie der Meinung sind, dass das Development Kit überhitzen könnte.|```cat /sys/class/thermal/thermal_zone0/temp```|
 |Überprüft die Telemetrie-ID des Development Kits|Immer dann, wenn Sie die eindeutige Telemetrie-ID des Development Kits benötigen.|```sudo azure-device-health-id```|
 |Überprüft den Status von IoT Edge|Immer dann, wenn Probleme mit IoT Edge-Modulen beim Herstellen einer Verbindung mit der Cloud auftreten.|```sudo iotedge check```|

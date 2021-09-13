@@ -2,19 +2,19 @@
 title: Bewährte Methoden bei der Verwendung verwalteter HSMs von Azure Key Vault
 description: In diesem Dokument werden einige der bewährten Methoden zum Verwenden von Key Vault erläutert.
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.author: ambapat
-ms.openlocfilehash: a7cccecc47973d372453ce86d0d5d12c8d773b3a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/21/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 99a313f64e9f5bafd13dbbf45a6881e1c6e2f275
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413967"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459694"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Bewährte Methoden bei der Verwendung verwalteter HSMs
 
@@ -44,6 +44,13 @@ Verwaltetes HSM ist ein Clouddienst zum Schutz von Verschlüsselungsschlüsseln.
 
 - Standardmäßig ist das [vorläufige Löschen](soft-delete-overview.md) aktiviert. Sie können einen Aufbewahrungszeitraum von 7 bis 90 Tagen auswählen.
 - Aktivieren Sie den Löschschutz, um das sofortige dauerhafte Löschen von HSMs oder Schlüsseln zu verhindern. Ist der Löschschutz aktiviert, verbleiben das HSM oder die Schlüssel im gelöschten Zustand, bis der Aufbewahrungszeitraum abgelaufen sind.
+
+## <a name="generate-and-import-keys-from-on-premise-hsm"></a>Generieren und Importieren von Schlüsseln aus einem lokalen HSM
+
+> [!NOTE]
+> Schlüssel, die in einem verwalteten HSM erstellt oder in ein HSM importiert wurden, können nicht exportiert werden.
+
+- Generieren Sie Schlüssel in Ihrem lokalen HSM, und [importieren Sie diese in das verwaltete HSM](hsm-protected-keys-byok.md), um eine langfristige Portabilität und Schlüsseldauerhaftigkeit sicherzustellen. Sie verfügen über eine Kopie Ihrer Schlüssel, die für die zukünftige Verwendung sicher in Ihrem lokalen HSM gespeichert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

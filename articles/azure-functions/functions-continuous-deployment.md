@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Ihre Funktionen mithilfe der Continuous�
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0018f1c74708035206a8a2bb9a540f00f98f43a4
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83123669"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321022"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 
@@ -62,7 +62,7 @@ Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktions
 Nach Abschluss des Prozesses wird der gesamte Code aus der angegebenen Quelle für Ihre App bereitgestellt. An diesem Punkt lösen Änderungen in der Bereitstellungsquelle eine Bereitstellung dieser Änderungen in Ihrer Funktions-App in Azure aus.
 
 > [!NOTE]
-> Nach dem Konfigurieren von Continuous Integration können Sie Ihre Quelldateien im Functions-Portal nicht mehr bearbeiten.
+> Nach dem Konfigurieren von Continuous Integration können Sie Ihre Quelldateien im Functions-Portal nicht mehr bearbeiten. Wenn Sie Ihren Code ursprünglich über Ihren lokalen Computer veröffentlicht haben, müssen Sie möglicherweise die `WEBSITE_RUN_FROM_PACKAGE`-Einstellung in Ihrer Funktions-App in `0` ändern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

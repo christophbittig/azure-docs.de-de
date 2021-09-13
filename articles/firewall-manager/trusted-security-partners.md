@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 2e3dbc292108507793de0dd095e30ea2f63a7dab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966910"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346050"
 ---
 # <a name="what-are-security-partner-providers"></a>Was sind Sicherheitspartneranbieter?
 
@@ -25,6 +25,10 @@ Sie können geschützte, mithilfe eines Sicherheitspartners Ihrer Wahl konfiguri
 Die unterstützten Sicherheitspartner sind **Zscaler**, **[Check Point](check-point-overview.md)** und **iboss**.
 
 ![Sicherheitspartneranbieter](media/trusted-security-partners/trusted-security-partners.png)
+
+Sehen Sie sich das folgende Video von Jack Tracey an, um eine Übersicht über Zscaler zu erhalten:
+
+ > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4n8]
 
 ## <a name="key-scenarios"></a>Wichtige Szenarien
 

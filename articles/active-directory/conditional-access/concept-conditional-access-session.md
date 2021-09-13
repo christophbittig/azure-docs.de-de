@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81819fa99db4ff0171e96e5b2ba0ce3fc4604769
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90601808"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459537"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -42,8 +42,8 @@ Mit der App-Steuerung für bedingten Zugriff können Benutzerzugriffe auf Apps u
 - Datenexfiltration verhindern: Sie können das Herunterladen, Ausschneiden, Kopieren und Drucken von vertraulichen Dokumenten beispielsweise auf nicht verwalteten Geräten blockieren.
 - Beim Herunterladen schützen: Statt das Herunterladen von vertraulichen Dokumenten zu blockieren, können Sie festlegen, dass Dokumente mit Azure Information Protection bezeichnet und geschützt werden müssen. Durch diese Aktion wird sichergestellt, dass das Dokument geschützt ist und der Benutzerzugriff in einer potenziell riskanten Sitzung eingeschränkt ist.
 - Das Hochladen von Dateien ohne Bezeichnung verhindern: Bevor eine vertrauliche Datei hochgeladen, verteilt und von anderen Benutzern verwendet wird, müssen Sie unbedingt sicherstellen, dass die Datei über die richtige Bezeichnung und den richtigen Schutz verfügt. Sie können sicherstellen, dass unbezeichnete Dateien mit vertraulichen Inhalten erst hochgeladen werden, wenn der Benutzer den Inhalt klassifiziert hat.
-- Benutzersitzungen auf Compliance überwachen: Riskante Benutzer werden überwacht, wenn sie sich bei Apps anmelden, und ihre Aktionen innerhalb der Sitzung werden protokolliert. Sie können das Benutzerverhalten untersuchen und analysieren, um zu verstehen, wo und unter welchen Bedingungen Sitzungsrichtlinien in Zukunft angewendet werden sollen.
-- Zugriff blockieren: Sie können den Zugriff für bestimmte Apps und Benutzer abhängig von mehreren Risikofaktoren differenziert blockieren. Sie können sie z. B. blockieren, wenn sie Clientzertifikate als eine Form der Geräteverwaltung verwenden.
+- Benutzersitzungen auf Compliance überwachen (Vorschau): Riskante Benutzer werden überwacht, wenn sie sich bei Apps anmelden, und ihre Aktionen innerhalb der Sitzung werden protokolliert. Sie können das Benutzerverhalten untersuchen und analysieren, um zu verstehen, wo und unter welchen Bedingungen Sitzungsrichtlinien in Zukunft angewendet werden sollen.
+- Zugriff blockieren (Vorschau): Sie können den Zugriff für bestimmte Apps und Benutzer abhängig von mehreren Risikofaktoren differenziert blockieren. Sie können sie z. B. blockieren, wenn sie Clientzertifikate als eine Form der Geräteverwaltung verwenden.
 - Benutzerdefinierte Aktivitäten blockieren: Einige Apps werden in eindeutigen Szenarien verwendet, die Risiken bergen, wie z. B. das Senden von Nachrichten mit vertraulichen Inhalten in Apps wie Microsoft Teams oder Slack. In diesen Szenarien können Sie Nachrichten auf vertrauliche Inhalte überprüfen und in Echtzeit blockieren.
 
 Weitere Informationen finden Sie im Artikel [Bereitstellen der App-Steuerung für bedingten Zugriff für ausgewählte Apps](/cloud-app-security/proxy-deployment-aad).

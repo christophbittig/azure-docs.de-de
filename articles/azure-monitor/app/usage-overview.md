@@ -1,20 +1,19 @@
 ---
-title: Verwendungsanalyse mit Azure Application Insights | Microsoft Docs
+title: Verwendungsanalyse mit Application Insights | Azure Monitor
 description: Verstehen Sie Ihre Benutzer und wie sie Ihre App verwenden.
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 8be8f6ad5285819d2cdb7e369c98d6e9da9d76c8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/30/2021
+ms.openlocfilehash: 67739c94afeb841450eb465fe5cd5259093e2e78
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082340"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355021"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Verwendungsanalyse mit Application Insights
 
-Welche Funktionen Ihrer Web- oder mobilen App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Azure Application Insights](./app-insights-overview.md) erhalten Sie wertvolle Einblicke in die Nutzung Ihrer App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
+Welche Funktionen Ihrer Web- oder mobilen App sind die beliebtesten? Erreichen die Benutzer mit Ihrer App ihre Ziele? Brechen sie an bestimmten Stellen ab, und kehren sie später zurück?  Mit [Application Insights](./app-insights-overview.md) erhalten Sie wertvolle Erkenntnisse zur Nutzung Ihrer App durch die Benutzer. Bei jeder Aktualisierung Ihrer App können Sie beurteilen, wie gut sie für Benutzer funktioniert. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die nächsten Entwicklungszyklen treffen.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>Senden von Telemetriedaten aus der App
 
@@ -47,7 +46,7 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 
 3. **Code der mobilen App:** Verwenden Sie das App Center SDK, um Ereignisse aus Ihrer App zu erfassen, und senden Sie Kopien dieser Ereignisse zur Analyse an Application Insights. Eine entsprechende Anleitung finden Sie [hier](../app/mobile-center-quickstart.md).
 
-4. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Blatt „Übersicht“ von Application Insights nach Ergebnissen.
+4. **Abrufen von Telemetriedaten:** Führen Sie das Projekt einige Minuten lang im Debugmodus aus, und suchen Sie dann im Bereich „Übersicht“ von Application Insights nach Ergebnissen.
 
     Veröffentlichen Sie die App, um die Leistung der App zu überwachen und zu ermitteln, was die Benutzer mit Ihrer App tun.
 
@@ -56,7 +55,7 @@ Ermitteln Sie, wann Personen Ihre App verwenden, für welche Seiten sie sich am 
 
 In Benutzer- und Sitzungsberichte werden Ihre Daten nach Seiten oder benutzerdefinierten Ereignissen gefiltert und nach Eigenschaften wie Speicherort, Umgebung und Seite segmentiert. Sie können auch eigene Filter hinzufügen.
 
-![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
+:::image type="content" source="./media/usage-overview/users.png" alt-text="Screenshot der Registerkarte „Benutzer“ mit einem Balkendiagramm" lightbox="./media/usage-overview/users.png":::
 
 Aus den Informationen auf der rechten Seite gehen interessante Muster im Datensatz hervor.  
 
@@ -73,11 +72,11 @@ Anhand der Vermerkdauer können Sie basierend auf Kohorten von Benutzern, die w�
 - Bilden von Hypothesen basierend auf echten Benutzerdaten 
 - Bestimmen, ob die Vermerkdauer ein Problem in Ihrem Produkt darstellt 
 
-![Bildschirmaufnahme der Übersichtsseite „Aufbewahrung“, auf der Informationen darüber angezeigt werden, wie oft Benutzer zur Verwendung ihrer App zurückkehren](./media/usage-overview/retention.png) 
+:::image type="content" source="./media/usage-overview/retention.png" alt-text="Screenshot der Arbeitsmappe „Aufbewahrung“ mit Informationen darüber, wie oft Benutzer zur Verwendung ihrer App zurückkehren" lightbox="./media/usage-overview/retention.png":::
 
 Die Vermerkdauer-Steuerelemente oben ermöglichen Ihnen das Definieren bestimmter Ereignisse und des Zeitbereichs für die Berechnen der Vermerkdauer. Das Diagramm in der Mitte bietet eine visuelle Darstellung des Prozentsatzes der gesamten Vermerkdauer nach dem angegebenen Zeitbereichs. Im Diagramm unten wird eine einzelne Vermerkdauer in einem bestimmten Zeitraum dargestellt. Dank dieses Detaillierungsgrads können Sie mit höherer Granularität verstehen, was Ihre Benutzer tun und was sich auf zurückkehrende Benutzer auswirkt.  
 
-[Weitere Informationen zum Vermerkdauer-Tool](usage-retention.md)
+[Weitere Informationen zur Arbeitsmappe „Aufbewahrung“](usage-retention.md)
 
 ## <a name="custom-business-events"></a>Benutzerdefinierte Geschäftsereignisse
 
@@ -92,7 +91,6 @@ Mit bestimmten Geschäftsereignisse können Sie den Aufenthalt von Benutzern auf
 Ereignisse können von der Clientseite der App aus protokolliert werden:
 
 ```JavaScript
-
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
@@ -107,18 +105,19 @@ Oder von der Serverseite:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-Sie können diesen Ereignissen Eigenschaftswerte anfügen, damit Sie die Ereignisse beim Überprüfen im Portal filtern oder teilen können. Außerdem wird jedem Ereignis ein Standardsatz von Eigenschaften angefügt, z.B. eine anonyme Benutzer-ID, die Ihnen die Ablaufverfolgung der Sequenz von Aktivitäten eines einzelnen Benutzers ermöglicht.
+Sie können diesen Ereignissen Eigenschaftswerte anfügen, damit Sie die Ereignisse beim Überprüfen im Portal filtern oder teilen können. Jedem Ereignis wird ein Standardsatz von Eigenschaften angefügt, z. B. eine anonyme Benutzer-ID, die Ihnen die Ablaufverfolgung der Sequenz von Aktivitäten eines einzelnen Benutzers ermöglicht.
 
 Erfahren Sie mehr über [benutzerdefinierte Ereignisse](./api-custom-events-metrics.md#trackevent) und [Eigenschaften](./api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Aufteilen von Ereignissen
 
 In den Tools für Benutzer, Sitzungen und Ereignisse können Sie benutzerdefinierte Ereignisse nach Benutzer, Ereignisname und Eigenschaften aufteilen.
-![Bildschirmaufnahme der Übersichtsseite „Benutzer“ für ein fiktives Unternehmen](./media/usage-overview/users.png)  
+
+:::image type="content" source="./media/usage-overview/events.png" alt-text="Screenshot der Registerkarte „Ereignisse“, gefiltert nach AnalyticsItemsOperation und unterteilt nach AppID" lightbox="./media/usage-overview/events.png":::
   
 ## <a name="design-the-telemetry-with-the-app"></a>Entwerfen der Telemetrie mit der App
 
-Berücksichtigen Sie beim Entwerfen der einzelnen Funktionen Ihrer App, wie sie deren Erfolg bei den Benutzern messen werden. Entscheiden Sie, welche Geschäftsereignisse aufgezeichnet werden müssen, und codieren Sie die Aufrufnachverfolgung für diese Ereignisse von Anfang an in die App.
+Berücksichtigen Sie beim Entwerfen der einzelnen Funktionen Ihrer App, wie Sie deren Erfolg bei den Benutzern messen werden. Entscheiden Sie, welche Geschäftsereignisse aufgezeichnet werden müssen, und codieren Sie die Aufrufnachverfolgung für diese Ereignisse von Anfang an in die App.
 
 ## <a name="a--b-testing"></a>A-B-Tests
 Wenn Sie nicht wissen, welche Variante eines Features erfolgreicher sein wird, veröffentlichten Sie beide, und ermöglichen Sie verschiedenen Benutzern den Zugriff darauf. Messen Sie den jeweiligen Erfolg, und erstellen Sie anschließend eine vereinheitlichte Version.

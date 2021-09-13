@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15c4e2f269791dfce80d89edf22d5041be636b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704853"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346421"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -47,7 +47,7 @@ Preisinformationen zu App Service-Domänen finden Sie auf der Seite [App Service
 
 1. Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen anhand der folgenden Tabelle:  
 
-   | Einstellung  | Beschreibung |
+   | Einstellung  | BESCHREIBUNG |
    | -------- | ----------- |
    | **Abonnement** | Das Abonnement, das für den Kauf der Domäne verwendet werden soll. |
    | **Ressourcengruppe** | Die Ressourcengruppe, in der die Domäne eingefügt werden soll. Beispielsweise die Ressourcengruppe, in der sich Ihre App befindet. |
@@ -244,13 +244,11 @@ Nach dem Kauf der App Service-Domäne haben Sie fünf Tage Zeit, um Ihren Kauf z
 
 1. Wählen Sie im Abschnitt **App Service-Domänen** die Domäne aus, die Sie konfigurieren möchten.
 
-1. Wählen Sie im linken Navigationsbereich der Domäne die Option **Hostnamenbindungen** aus. Die Hostnamenbindungen aus allen Azure-Diensten werden hier aufgelistet.
+1. Klicken Sie im linken Navigationsbereich der Domäne auf **Sperren**. 
 
-    ![Screenshot der Seite „Hostnamenbindungen“](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+    Für Ihre Domäne wurde eine Löschsperre erstellt. Solange eine Löschsperre vorhanden ist, können Sie die App Service-Domäne nicht löschen.
 
-1. Löschen Sie jede Hostnamenbindung, indem Sie auf **...**  > **Delete** (Löschen) klicken. Nachdem alle Bindungen gelöscht worden sind, klicken Sie auf **Save** (Speichern).
-
-    <!-- ![Screenshot that shows where to delete the hostname bindings.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png) -->
+1. Klicken Sie auf **Löschen**, um die Sperre zu löschen.
 
 1. Wählen Sie im linken Navigationsbereich die Option **Übersicht** aus. 
 

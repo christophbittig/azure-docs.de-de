@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: ea256292510f662236fe8b9507009c8418849c5e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3a8ec174cb1be02389487c442b4e1b3ff35dbf27
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347151"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Was ist eine private Azure DNS-Zone?
 
@@ -21,7 +21,7 @@ Privates Azure-DNS bietet einen zuverlässigen, sicheren DNS-Dienst zum Verwalte
 Die in einer privaten DNS-Zone enthaltenen Einträge sind nicht aus dem Internet auflösbar. Die DNS-Auflösung für eine private DNS-Zone funktioniert nur aus virtuellen Netzwerken, die damit verknüpft sind.
 
 Sie können eine private DNS-Zone mit einem oder mehreren virtuellen Netzwerken verknüpfen, indem Sie [virtuelle Netzwerkverbindungen](./private-dns-virtual-network-links.md) erstellen.
-Sie können auch die [automatische Registrierung](./private-dns-autoregistration.md)sfunktion aktivieren, um den Lebenszyklus der DNS-Einträge für die virtuellen Computer, die in einem virtuellen Netzwerk bereitgestellt werden, automatisch zu verwalten.
+Sie können auch die Funktion für die [automatische Registrierung](./private-dns-autoregistration.md) aktivieren, um den Lebenszyklus der DNS-Einträge für die virtuellen Computer, die in einem virtuellen Netzwerk bereitgestellt werden, automatisch zu verwalten.
 
 ## <a name="limits"></a>Einschränkungen
 
@@ -29,7 +29,7 @@ Informationen dazu, wie viele private DNS-Zonen Sie in einem Abonnement erstelle
 
 ## <a name="restrictions"></a>Beschränkungen
 
-* Private DNS-Zonen mit einzelner Bezeichnung werden nicht unterstützt. Ihre private DNS-Zone muss über mindestens zwei Bezeichnungen verfügen. Beispielsweise besitzt „contoso.com“ zwei Bezeichnungen, die durch einen Punkt getrennt sind. Eine private DNS-Zone kann maximal 34 Bezeichnungen aufweisen.
+* Private DNS-Zonen mit einzelner Bezeichnung werden nicht unterstützt. Ihre private DNS-Zone muss über mindestens zwei Bezeichnungen verfügen. Beispielsweise besitzt „contoso.com“ zwei Bezeichnungen, die durch einen Punkt getrennt sind. Eine private DNS-Zone kann maximal 34 Bezeichnungen aufweisen.
 * Sie können keine Zonendelegierungen (NS-Einträge) in einer privaten DNS-Zone erstellen. Wenn Sie beabsichtigen, eine untergeordnete Domäne zu verwenden, können Sie die Domäne direkt als private DNS-Zone erstellen. Dann können Sie sie mit dem virtuellen Netzwerk verknüpfen, ohne eine Namenserverdelegierung aus der übergeordneten Zone einrichten zu müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte

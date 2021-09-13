@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 07/14/2021
 ms.author: egeaney
-ms.openlocfilehash: 3e2f4cbdf7f84f7b6cbd749225a2e0f7ed60cdd5
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: cdf8276904fda5098b3192779e0372b4a1bcc9d2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202873"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766622"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten des Speech-Diensts
 
@@ -39,7 +39,12 @@ In der Zwischenzeit können Sie Ihr Abonnement mit eigenen Verschlüsselungsschl
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Bring Your Own Storage (BYOS) für Anpassung und Protokollierung
 
-Um Zugriff auf Bring Your Own Storage anzufordern, füllen Sie das  [Formular zum Anfordern von Bring Your Own Storage (BYOS) für den Speech-Dienst](https://aka.ms/cogsvc-cmk) aus, und übermitteln Sie es. Nach der Genehmigung müssen Sie ein eigenes Speicherkonto erstellen, um die Daten zu speichern, die für die Anpassung und Protokollierung erforderlich sind. Wenn Sie ein Speicherkonto hinzufügen, aktiviert die Speech-Dienstressource eine vom System zugewiesene verwaltete Identität. Nachdem die vom System zugewiesene verwaltete Identität aktiviert ist, wird diese Ressource bei Azure Active Directory (AAD) registriert. Nach der Registrierung erhält die verwaltete Identität Zugriff auf das Speicherkonto. Hier erfahren Sie mehr zu verwalteten Identitäten. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten?](../../active-directory/managed-identities-azure-resources/overview.md).
+Um Zugriff auf Bring Your Own Storage anzufordern, füllen Sie das  [Formular zum Anfordern von Bring Your Own Storage (BYOS) für den Speech-Dienst](https://aka.ms/cogsvc-cmk) aus, und übermitteln Sie es. Nach der Genehmigung müssen Sie ein eigenes Speicherkonto erstellen, um die Daten zu speichern, die für die Anpassung und Protokollierung erforderlich sind. Wenn Sie ein Speicherkonto hinzufügen, aktiviert die Speech-Dienstressource eine vom System zugewiesene verwaltete Identität.
+
+> [!IMPORTANT]
+> Dem Benutzerkonto, das Sie zum Erstellen einer Speech-Ressource mit aktivierter BYOS-Funktion verwenden, sollte [für den Bereich des Azure-Abonnements die Rolle „Besitzer“ zugewiesen sein](../../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator). Andernfalls wird bei der Ressourcenbereitstellung ein Autorisierungsfehler angezeigt.
+
+Nachdem die vom System zugewiesene verwaltete Identität aktiviert ist, wird diese Ressource bei Azure Active Directory (AAD) registriert. Nach der Registrierung erhält die verwaltete Identität Zugriff auf das Speicherkonto. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
 > Wenn Sie vom System zugewiesene verwaltete Identitäten deaktivieren, wird der Zugriff auf das Speicherkonto entfernt. Dies führt dazu, dass die Teile des Speech-Diensts nicht mehr funktionieren, die Zugriff auf das Speicherkonto benötigen.  

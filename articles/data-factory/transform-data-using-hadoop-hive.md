@@ -1,18 +1,20 @@
 ---
 title: Transformieren von Daten mit der Hadoop Hive-Aktivität
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Erfahren Sie, wie Sie die Hive-Aktivität in Azure Data Factory verwenden können, um Hive-Abfragen in einem bedarfsgesteuerten/eigenen HDInsight-Cluster auszuführen.
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/08/2019
-ms.openlocfilehash: 7d312e4a00cdd2b62ee219df807f30c22f0c9790
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 337c7d15ba042a49031697e2bc6ea6a54101dbf3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773945"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122351183"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop Hive-Aktivität in Azure Data Factory
 
@@ -54,7 +56,7 @@ Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst de
 }
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
-| Eigenschaft            | Beschreibung                                                  | Erforderlich |
+| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | name                | Der Name der Aktivität                                         | Ja      |
 | description         | Ein Text, der beschreibt, wofür die Aktivität verwendet wird.                | Nein       |
@@ -79,5 +81,5 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batchausführungsaktivität für Azure Machine Learning Studio (klassisch)](transform-data-using-machine-learning.md)
+* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

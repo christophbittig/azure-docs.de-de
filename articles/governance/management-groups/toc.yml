@@ -50,9 +50,12 @@
       href: ./manage.md
     - name: Schützen der Ressourcenhierarchie
       href: ./how-to/protect-resource-hierarchy.md
+- name: Problembehandlung
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: /powershell/module/az.resources/#resources

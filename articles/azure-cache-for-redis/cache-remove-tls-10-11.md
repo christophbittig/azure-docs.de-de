@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 4fb4025d10990c0f499a16bbb6bc308eb74c00cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f9c6f8cc3c973d3172166514815018979f744173
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347003"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Entfernen der Verwendung von TLS 1.0 und 1.1 mit Azure Cache for Redis
 
@@ -23,7 +23,7 @@ Im Rahmen dieser Anstrengung nehmen wir die folgenden Änderungen an Azure Cache
 * **Phase 2:** Wir stellen die Unterstützung der TLS-Versionen 1.1 und 1.0 ein. Nach dieser Änderung muss Ihre Anwendung für die Kommunikation mit dem Cache TLS 1.2 oder höher verwenden. Es wird vorausgesetzt, dass der Dienst Azure Cache for Redis verfügbar ist, während wir ihn zur Unterstützung von TLS 1.2 oder höher migrieren.
 
   > [!NOTE]
-  > Phase 2 ist vorläufig so geplant, dass sie nicht vor dem 31. Dezember 2020 beginnt. Wir empfehlen Ihnen jedoch dringend, jetzt mit der Planung für diese Änderung zu beginnen und Clients zur Unterstützung von TLS 1.2 oder höher proaktiv zu aktualisieren. 
+  > Phase 2 wird aufgrund von COVID-19 verschoben. Es wird dringend empfohlen, jetzt mit der Planung für diese Änderung zu beginnen und Clients zur Unterstützung von TLS 1.2 oder höher proaktiv zu aktualisieren. 
   >
 
 Als Teil dieser Änderung entfernen wir auch die Unterstützung für ältere Verschlüsselungssammlungen, die nicht sicher sind. Die unterstützten Verschlüsselungsverfahren sind auf folgende beschränkt, wenn der Cache mit TLS 1.2 oder höher konfiguriert ist:
@@ -43,7 +43,7 @@ Die Daten, zu denen diese Änderungen wirksam werden sind:
 | Azure China 21Vianet |  13. März 2020    | Aufgrund von COVID-19 verschoben  |
 
 > [!NOTE]
-> Phase 2 ist vorläufig so geplant, dass sie nicht vor dem 31. Dezember 2020 beginnt. Dieser Artikel wird aktualisiert, sobald spezifische Termine festgelegt wurden.
+> Phase 2 wird aufgrund von COVID-19 verschoben. Dieser Artikel wird aktualisiert, sobald spezifische Termine festgelegt wurden.
 >
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Überprüfen, ob Ihre Anwendung bereits konform ist

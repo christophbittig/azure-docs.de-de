@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c6d8520938ffc859a7116d1dc9e61cb26534e4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f9ed7b31625275c808555534fcd49314444ab0ad
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030555"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388145"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
 
@@ -164,6 +164,10 @@ Sie können die Daten in einem Protokoll filtern, um sie gemäß Ihren Anforderu
 ![Client-App-Filter](./media/concept-sign-ins/client-app-filter.png)
 
 
+> [!NOTE]
+> Aufgrund von Datenschutzzusagen füllt Azure AD dieses Feld für den Basismandanten im Falle eines mandantenübergreifenden Szenarios nicht auf.
+
+
 |Name|Moderne Authentifizierung|BESCHREIBUNG|
 |---|:-:|---|
 |Authentifiziertes SMTP| |Wird von POP- und IMAP-Clients zum Senden von E-Mails verwendet.|
@@ -182,6 +186,10 @@ Sie können die Daten in einem Protokoll filtern, um sie gemäß Ihren Anforderu
 |POP3| |Älterer E-Mail-Client, der POP3 zum Abrufen von E-Mails verwendet.|
 |Reporting Web Services| |Wird zum Abrufen von Berichtsdaten in Exchange Online verwendet.|
 |Andere Clients| |Zeigt alle Anmeldeversuche von Benutzern, bei denen die Client-App nicht inbegriffen oder unbekannt ist.|
+
+
+
+
 
 
 
@@ -296,7 +304,7 @@ Wählen Sie beim Anzeigen des Anmeldeberichts die Registerkarte **Authentifizier
 >- Die Zeile **Primäre Authentifizierung** wird anfänglich nicht protokolliert. 
 
 
-## <a name="usage-of-managed-applications&quot;></a>Nutzung von verwalteten Anwendungen
+## <a name="usage-of-managed-applications"></a>Nutzung von verwalteten Anwendungen
 
 Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispielsweise folgende Fragen beantworten:
 
@@ -306,7 +314,7 @@ Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispiel
 
 Der Einstiegspunkt für diese Daten sind die drei wichtigsten Anwendungen in Ihrer Organisation. Die Daten sind im Bericht über die letzten 30 Tage im Abschnitt **Übersicht** unter **Unternehmensanwendungen** enthalten.
 
-![Der Screenshot zeigt, wo Sie die Übersicht auswählen können.](./media/concept-sign-ins/10.png &quot;Anmeldeaktivität")
+![Der Screenshot zeigt, wo Sie die Übersicht auswählen können.](./media/concept-sign-ins/10.png "Anmeldeaktivität")
 
 Der Graph zur App-Nutzung gibt die wöchentlichen Aggregationen von Anmeldungen für Ihre beliebtesten drei Anwendungen in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 

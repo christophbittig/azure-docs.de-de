@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbbb1ab30a9f49157951b95a7b33769c3cb2347e
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 4fe0354f3d8e4d2b3ac2938f1cd03baa2ca2ce4d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810264"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343651"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -149,8 +149,8 @@ Die Datei „resolv.conf“ wird normalerweise automatisch generiert und sollte 
   1. Fügen Sie *timeout:1 attempts:5* dem Parameter **NETCONFIG_DNS_RESOLVER_OPTIONS=""** in **/etc/sysconfig/network/config** hinzu.
   2. Führen Sie `netconfig update` zum Aktualisieren aus.
 * **CentOS** (verwendet NetworkManager):
-  1. Fügen Sie *echo "options timeout:1 attempts:5"* zu **/etc/NetworkManager/dispatcher.d/11-dhclient** hinzu.
-  2. Aktualisieren Sie mit `service network restart`.
+  1. Fügen Sie der Datei **/etc/sysconfig/network-scripts/ifcfg-eth0** die Zeile *RES_OPTIONS="options timeout:1 attempts:5"* hinzu.
+  2. Aktualisieren Sie mit `systemctl restart NetworkManager.service`.
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Namensauflösung mithilfe eines eigenen DNS-Servers.
 

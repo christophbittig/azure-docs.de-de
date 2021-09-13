@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2021
+ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: fed86c1982e78c527c211d4f4ec530386e13425a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3aefed370606b80249eabeac35123223b2ad5255
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339218"
 ---
 # <a name="collaborate-in-microsoft-teams-public-preview"></a>Zusammenarbeiten in Microsoft Teams (Public Preview)
 
@@ -39,6 +39,16 @@ Organisationen, die Microsoft Teams bereits für Kommunikation und Zusammenarbei
 
 Ein Azure Sentinel-Incidentteam verfügt immer über die aktuellen Daten aus Azure Sentinel. Dadurch wird sichergestellt, dass Ihre Teams stets die relevantesten Daten zur Hand haben.
 
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+
+Zum Erstellen von Teams über Azure Sentinel gilt Folgendes:
+
+- Der Benutzer, der das Team erstellt, muss in Azure Sentinel über Schreibberechtigungen für Incidents verfügen. Die Rolle [Azure Sentinel-Antwortender](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) ist beispielsweise die ideale mindestens erforderliche Rolle für diese Berechtigung.
+
+- Der Benutzer, der das Team erstellt, muss darüber hinaus auch über Berechtigungen zum Erstellen von Teams in Microsoft Teams verfügen.
+
+- Jeder Azure Sentinel-Benutzer, also Benutzer mit der Rolle [Leser](../role-based-access-control/built-in-roles.md#azure-sentinel-reader), [Antwortender](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) oder [Mitwirkender](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor), kann Zugriff auf das erstellte Team erhalten, indem er den Zugriff anfordert.
+
 ## <a name="use-an-incident-team-to-investigate"></a>Untersuchungen mithilfe eines Incidentteams
 
 Führen Sie Untersuchungen zusammen mit einem *Incidentteam* durch, indem Sie Microsoft Teams direkt aus dem betreffenden Incident integrieren.
@@ -55,7 +65,7 @@ Führen Sie Untersuchungen zusammen mit einem *Incidentteam* durch, indem Sie Mi
 
     - **Teamname**: Wird automatisch als der Name des betreffenden Incidents definiert. Ändern Sie den Namen nach Bedarf, damit er für Sie leicht identifizierbar ist.
     - **Beschreibung**: Geben Sie eine aussagekräftige Beschreibung für Ihr Incidentteam ein.
-    - **Gruppen hinzufügen**: Wählen Sie eine oder mehrere Azure AD-Gruppen aus, die dem Incidentteam hinzugefügt werden sollen. Einzelne Benutzer werden nicht unterstützt.
+    - **Gruppen hinzufügen**: Wählen Sie eine oder mehrere Azure AD-Gruppen aus, die dem Incidentteam hinzugefügt werden sollen. Einzelne Benutzer werden auf dieser Seite nicht unterstützt. Wenn Sie einzelne Benutzer hinzufügen müssen, [tun Sie dies in Microsoft Teams](#more-users), nachdem Sie das Team erstellt haben.
 
         > [!TIP]
         > Wenn Sie regelmäßig mit denselben Teams zusammenarbeiten, sollten Sie den Stern :::image type="icon" source="media/collaborate-in-microsoft-teams/save-as-favorite.png" border="false"::: auswählen, um sie als Favoriten zu speichern.
@@ -77,14 +87,14 @@ Führen Sie Untersuchungen zusammen mit einem *Incidentteam* durch, indem Sie Mi
 Setzen Sie die Konversation über die Untersuchung in Teams so lange wie nötig fort. Ihnen stehen sämtliche Details zum Incident in Teams zur Verfügung.
 
 > [!TIP]
-> Wenn Sie [einen Incident schließen](tutorial-investigate-cases.md#closing-an-incident), wird das zugehörige Incidentteam, das Sie in Microsoft Teams erstellt haben, archiviert.
+> - <a name="more-users"></a>Wenn Sie Ihrem Team einzelne Benutzer hinzufügen müssen, können Sie dies in Microsoft Teams über die Schaltfläche **Add more people** (Weitere Personen hinzufügen) auf der Registerkarte **Posts** (Beiträge) tun.
 >
-> Wenn der Incident jemals erneut geöffnet wird, wird auch das zugehörige Incidentteam erneut in Microsoft Teams geöffnet, sodass Sie Ihre Konversation direkt an der Stelle, an der Sie aufgehört haben, fortsetzen können.
+> - Wenn Sie [einen Incident schließen](investigate-cases.md#closing-an-incident), wird das zugehörige Incidentteam, das Sie in Microsoft Teams erstellt haben, archiviert. Wenn der Incident jemals erneut geöffnet wird, wird auch das zugehörige Incidentteam erneut in Microsoft Teams geöffnet, sodass Sie Ihre Konversation direkt an der Stelle, an der Sie aufgehört haben, fortsetzen können.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter:
 
-- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](tutorial-investigate-cases.md)
+- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md)
 - [Übersicht über Teams und Kanäle in Microsoft Teams](/microsoftteams/teams-channels-overview/)

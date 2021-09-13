@@ -5,38 +5,95 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/01/2021
+ms.date: 06/07/2021
 ms.author: victorh
-ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 30ae9e7bf915e558a806d9297fbcc35700b64ce1
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741360"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111571079"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurieren von Azure Firewall-Regeln
-Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall konfigurieren. Regelsammlungen werden entsprechend dem Regeltyp in Prioritätsreihenfolge verarbeitet – niedrigere Zahlen bis höhere Zahlen von 100 bis 65.000. Der Name einer Regelsammlung darf nur Buchstaben, Ziffern, Unterstriche, Punkte oder Bindestriche enthalten. Er muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Die maximale Namenslänge ist 80 Zeichen.
+Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall entweder mithilfe klassischer Regeln oder der Firewallrichtlinie konfigurieren. Azure Firewall verweigert standardmäßig jeglichen Datenverkehr, bis Regeln zum Zulassen von Datenverkehr manuell konfiguriert werden.
+
+## <a name="rule-processing-using-classic-rules"></a>Regelverarbeitung mithilfe klassischer Regeln
+
+Regelsammlungen werden entsprechend dem Regeltyp in Prioritätsreihenfolge verarbeitet – niedrigere Zahlen bis höhere Zahlen von 100 bis 65.000. Der Name einer Regelsammlung darf nur Buchstaben, Ziffern, Unterstriche, Punkte oder Bindestriche enthalten. Er muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Die maximale Namenslänge ist 80 Zeichen.
 
 Es empfiehlt sich, die Prioritätsnummern der Regelsammlung zunächst in Inkrementen von 100 (100, 200, 300 usw.) aufzuteilen, damit Sie bei Bedarf Platz zum Hinzufügen weiterer Regelsammlungen haben.
 
+## <a name="rule-processing-using-firewall-policy"></a>Regelverarbeitung mithilfe der Firewallrichtlinie
+
+Mit der Firewallrichtlinie werden Regeln in Regelsammlungen und Regelsammlungsgruppen organisiert. Regelsammlungsgruppen enthalten null oder mehr Regelsammlungen. Regelsammlungen sind vom Typ NAT, Netzwerk oder Anwendungen. Sie können mehrere Regelsammlungstypen innerhalb einer einzelnen Regelgruppe definieren. Sie können null oder mehr Regeln in einer Regelsammlung definieren. Regeln in einer Regelsammlung müssen denselben Typ (NAT, Netzwerk oder Anwendung) aufweisen.    
+
+Regeln werden basierend auf der Priorität der Regelsammlungsgruppe und der Priorität der Regelsammlung verarbeitet. Die Priorität ist eine beliebige Zahl zwischen 100 (höchste Priorität) und 65.000 (niedrigste Priorität). Regelsammlungsgruppen mit der höchsten Priorität werden zuerst verarbeitet. Innerhalb einer Regelsammlungsgruppe werden Regelsammlungen mit der höchsten Priorität (niedrigste Zahl) zuerst verarbeitet.  
+
+Wenn eine Firewallrichtlinie von einer übergeordneten Richtlinie geerbt wird, haben Regelsammlungsgruppen in der übergeordneten Richtlinie immer Vorrang und zwar unabhängig von der Priorität einer untergeordneten Richtlinie.  
+
 > [!NOTE]
-> Wenn Sie das Threat Intelligence-gestützte Filtern aktivieren, weisen diese Regeln die höchste Priorität auf und werden stets als Erstes verarbeitet. Threat Intelligence-gestütztes Filtern kann den Datenverkehr ablehnen, bevor konfigurierte Regeln verarbeitet werden. Weitere Informationen finden Sie unter [Threat Intelligence-gestütztes Filtern für Azure Firewall](threat-intel.md).
+> Anwendungsregeln werden immer nach Netzwerkregeln verarbeitet, die wiederum nach DNAT-Regeln verarbeitet werden, unabhängig von der Priorität der Regelsammlungsgruppe oder Regelsammlung und der Richtlinienvererbung.
+
+Nachfolgend ist eine Beispielrichtlinie aufgeführt:
+
+
+|Name  |type  |Priority  |Regeln  |Geerbt von
+|---------|---------|---------|---------|-------|
+|BaseRCG1      |Regelsammlungsgruppe           |200         |8         |Übergeordnete Richtlinie|
+|DNATRc1     |DNAT-Regelsammlung         |  600       |   7      |Übergeordnete Richtlinie|
+|NetworkRc1     |Netzwerkregelsammlung  | 800        |    1     |Übergeordnete Richtlinie|
+|BaseRCG2  |Regelsammlungsgruppe         |300         | 3        |Übergeordnete Richtlinie|
+|AppRCG2     |Anwendungsregelsammlung | 1200        |2         |Übergeordnete Richtlinie
+|NetworkRC2     |Netzwerkregelsammlung         |1300         |    1     |Übergeordnete Richtlinie|
+|ChildRCG1  | Regelsammlungsgruppe        | 300        |5         |-|
+|ChAppRC1     |Anwendungsregelsammlung         |  700       | 3        |-|
+|ChNetRC1       |   Netzwerkregelsammlung      |    900     |    2     |-|
+|ChildRCG2      |Regelsammlungsgruppe         | 650        |    9     |-|
+|ChNetRC2      |Netzwerkregelsammlung         |    1100     |  2       |-|
+|ChAppRC2      |     Anwendungsregelsammlung    |2000         |7         |-|
+|ChDNATRC3     | DNAT-Regelsammlung        | 3000        |  2       |-|
+
+Die Regeln werden in der folgenden Reihenfolge verarbeitet: DNATRC1, DNATRC3, ChDNATRC3, NetworkRC1, NetworkRC2, ChNetRC1, ChNetRC2, AppRC2, ChAppRC1, ChAppRC2
+
+### <a name="threat-intelligence"></a>Threat Intelligence
+
+Wenn Sie das Threat Intelligence-gestützte Filtern aktivieren, haben diese Regeln die höchste Priorität und werden immer zuerst verarbeitet (vor Netzwerk- und Anwendungsregeln). Threat Intelligence-gestütztes Filtern kann den Datenverkehr ablehnen, bevor konfigurierte Regeln verarbeitet werden. Weitere Informationen finden Sie unter [Threat Intelligence-gestütztes Filtern für Azure Firewall](threat-intel.md).
+
+### <a name="idps"></a>IDPS
+
+Wenn IDPS im *Warnmodus* konfiguriert ist, arbeitet die IDPS-Engine parallel zur Regelverarbeitungslogik und generiert Warnungen bei übereinstimmenden Signaturen sowohl für eingehende als auch für ausgehende Datenflüsse.Bei einer IDPS-Signaturübereinstimmung wird eine Warnung in den Firewallprotokollen erfasst. Da die IDPS-Engine jedoch parallel zur Regelverarbeitungs-Engine arbeitet, kann Datenverkehr, der durch Anwendungs-/Netzwerkregeln verweigert/zugelassen wird, dennoch einen weiteren Protokolleintrag generieren. 
+
+Wenn IDPS im *Warn- und Verweigerungsmodus* konfiguriert ist, ist die IDPS-Engine inline und wird nach der Regelverarbeitungs-Engine aktiviert. Daher generieren beide Engines Warnungen und können übereinstimmende Datenflüsse blockieren.  
+
+Sitzungen, die von IDPS verworfen werden, blockieren automatisch den Datenfluss. Daher wird kein RST auf TCP-Ebene gesendet.Da IDPS den Datenverkehr immer überprüft, nachdem die Netzwerk-/Anwendungsregel abgeglichen (Zulassen/Verweigern) und in Protokollen markiert wurde, kann eine weitere *Verwerfen*-Nachricht protokolliert werden, wenn IDPS entscheidet, die Sitzung aufgrund einer Signaturübereinstimmung zu verweigern. 
+
+Wenn die TLS-Überprüfung aktiviert ist, wird sowohl unverschlüsselter als auch verschlüsselter Datenverkehr überprüft.  
 
 ## <a name="outbound-connectivity"></a>Ausgehende Konnektivität
 
 ### <a name="network-rules-and-applications-rules"></a>Netzwerkregeln und Anwendungsregeln
 
-Wenn Sie Netzwerkregeln und Anwendungsregeln konfigurieren, werden die Netzwerkregeln in der Prioritätsreihenfolge vor den Anwendungsregeln angewendet. Die Regeln können zur Beendigung von Vorgängen führen. Wenn also eine Netzwerkregel gefunden wird, werden keine anderen Regeln mehr verarbeitet.  Wenn sich keine Übereinstimmung für eine Netzwerkregel ergibt und als Protokoll HTTP, HTTPS oder MSSQL verwendet wird, wird das Paket von den Anwendungsregeln in der Reihenfolge ihrer Priorität ausgewertet. Falls sich immer noch keine Übereinstimmung ergibt, wird das Paket von der [Regelsammlung der Infrastruktur](infrastructure-fqdns.md) ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt.
+Wenn Sie Netzwerkregeln und Anwendungsregeln konfigurieren, werden die Netzwerkregeln in der Prioritätsreihenfolge vor den Anwendungsregeln angewendet. Die Regeln können zur Beendigung von Vorgängen führen. Wenn also eine Übereinstimmung in einer Netzwerkregel gefunden wird, werden keine anderen Regeln mehr verarbeitet. Wenn IDPS konfiguriert ist, wird der gesamte übermittelte Datenverkehr überprüft, und bei einer Signaturübereinstimmung kann IDPS eine Warnung ausgeben und/oder verdächtigen Datenverkehr blockieren.  
 
-#### <a name="network-rule-protocol"></a>Netzwerkregelprotokoll
+Wenn sich keine Übereinstimmung für eine Netzwerkregel ergibt und als Protokoll HTTP, HTTPS oder MSSQL verwendet wird, wird das Paket von den Anwendungsregeln in der Reihenfolge ihrer Priorität ausgewertet.  
 
-Netzwerkregeln können für **TCP**, **UDP**, **ICMP** oder ein beliebiges IP-Protokoll (**Any**) konfiguriert werden. Dies bezieht sich auf alle im Dokument [Internet Assigned Numbers Authority (IANA) Protocol Numbers](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) (Internet Assigned Numbers Authority-Protokollnummern (IANA)) definierten IP-Protokolle. Wenn ein Zielport explizit konfiguriert ist, wird die Regel in eine TCP- und UDP-Regel übersetzt.
+Bei HTTP sucht Azure Firewall anhand des Hostheaders nach einer Übereinstimmung mit einer Anwendungsregel. Bei HTTPS sucht Azure Firewall nur anhand von SNI nach einer Übereinstimmung mit einer Anwendungsregel.  
 
-Vor dem 9. November 2020 bezog sich ein beliebiges IP-Protokoll (**Any**) auf **TCP**, **UDP** oder **ICMP**. Daher haben Sie möglicherweise vor diesem Datum eine Regel mit „Protocol = Any“ und „destination ports = '*'“ konfiguriert. Wenn kein beliebiges IP-Protokoll wie aktuell definiert zugelassen werden soll, ändern Sie die Regel so, dass die gewünschten Protokolle (TCP, UDP oder ICMP) explizit konfiguriert werden.
+Sowohl bei HTTP als auch bei TLS-überprüftem HTTPS ignoriert die Firewall die Ziel-IP-Adresse des Pakets und verwendet die vom DNS aufgelöste IP-Adresse aus dem Hostheader. Die Firewall erwartet die Portnummer im Hostheader, andernfalls wird der Standardport 80 angenommen. Wenn der tatsächliche TCP-Port nicht mit dem Port im Hostheader übereinstimmt, wird der Datenverkehr verworfen.Die DNS-Auflösung erfolgt durch Azure DNS oder durch ein benutzerdefiniertes DNS, wenn dies in der Firewall konfiguriert ist.  
+
+> [!NOTE]
+> Sowohl HTTP- als auch HTTPS-Protokolle (mit TLS-Überprüfung) werden von Azure Firewall immer mit XFF-Header (X-Forwarded-For) versehen, der der ursprünglichen Quell-IP-Adresse entspricht.  
+
+Wenn eine Anwendungsregel eine TLS-Überprüfung enthält, werden SNI, Hostheader und auch die URL von der Firewallregel-Engine verarbeitet, um der Regel zu entsprechen. 
+
+Falls sich innerhalb der Anwendungsregeln immer noch keine Übereinstimmung ergibt, wird das Paket anhand der Regelsammlung der Infrastruktur ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt. 
+
+> [!NOTE]
+> Netzwerkregeln können für  *TCP*,  *UDP*,  *ICMP* oder ein beliebiges IP-Protokoll ( *Any*) konfiguriert werden. Letzteres bezieht sich auf alle im Dokument zu IANA-Protokollnummern (Internet Assigned Numbers Authority) definierten IP-Protokolle. Wenn ein Zielport explizit konfiguriert ist, wird die Regel in eine TCP- und UDP-Regel übersetzt. Vor dem 9. November 2020 bezog sich ein beliebiges IP-Protokoll ( *Any*) auf TCP, UDP oder ICMP. Daher haben Sie möglicherweise vor diesem Datum eine Regel mit **Protocol = Any** und **destination ports = '*'** konfiguriert. Wenn kein IP-Protokoll wie aktuell definiert zugelassen werden soll, ändern Sie die Regel so, dass die gewünschten Protokolle (TCP, UDP oder ICMP) explizit konfiguriert werden. 
 
 ## <a name="inbound-connectivity"></a>Eingehende Konnektivität
 
-### <a name="nat-rules"></a>NAT-Regeln
+### <a name="dnat-rules-and-network-rules"></a>DNAT-Regeln und Netzwerkregeln
 
 Eingehende Internetkonnektivität kann aktiviert werden, indem DNAT (Destination Network Address Translation) konfiguriert wird. Die Vorgehensweise wird unter [Tutorial: Filtern von eingehendem Datenverkehr per Azure Firewall-DNAT im Azure-Portal](tutorial-firewall-dnat.md) beschrieben. NAT-Regeln werden in der Priorität vor Netzwerkregeln angewendet. Wenn sich eine Übereinstimmung ergibt, wird eine implizite entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Aus Sicherheitsgründen besteht die empfohlene Vorgehensweise darin, eine bestimmte Internetquelle hinzuzufügen, um DNAT-Zugriff auf das Netzwerk zu gewähren und die Verwendung von Platzhaltern zu vermeiden.
 

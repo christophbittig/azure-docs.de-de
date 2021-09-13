@@ -1,179 +1,237 @@
 ---
 title: Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
-description: Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen. Zu den Einstellungen gehören das Timeout inaktiver Sitzungen, die Standardansicht, der Menümodus, der Kontrast, das Design, Benachrichtigungen sowie Sprache und regionale Formate.
-keywords: Einstellungen, Timeout, Sprache, regional
-ms.date: 03/15/2021
+description: Hier erfahren Sie, wie Sie Einstellungen wie Standardabonnement/-verzeichnis, Timeouts, Menümodus, Kontrast, Design, Benachrichtigungen, Sprache/Region und vieles mehr im Azure-Portal ändern können.
+ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 067b9808a91b8e5e22fb940095779b099bad0d58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 285afaaf51f28b0fa53a9df2a9fa232b01d3fe24
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339762"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
-Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen. Die meisten Einstellungen stehen im Menü **Einstellungen** in der globalen Kopfzeile zur Verfügung.
+Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen.
 
-![Screenshot, der globale Kopfzeilensymbole mit hervorgehobenen Einstellungen zeigt](./media/set-preferences/header-settings.png)
+Die meisten Einstellungen stehen im Menü **Einstellungen** oben rechts in der globalen Kopfzeile zur Verfügung.
 
+:::image type="content" source="media/set-preferences/settings-top-header.png" alt-text="Screenshot: Symbol „Einstellungen“ in der globalen Kopfzeile":::
 
-## <a name="choose-your-default-subscription"></a>Auswählen Ihres Standardabonnements
+> [!NOTE]
+> Derzeit sind wir bemüht, alle Benutzer dazu zu bewegen, zur Benutzeroberfläche mit den neuen Einstellungen zu wechseln, die in diesem Thema beschrieben werden. Informationen zur älteren Benutzeroberfläche finden Sie unter [Verwalten von Einstellungen und Voreinstellungen im Azure-Portal (ältere Version)](original-preferences.md).
 
-Sie können das Abonnement ändern, das bei der Anmeldung beim Azure-Portal standardmäßig geöffnet wird. Dies ist nützlich, wenn Sie mit einem primären Abonnement arbeiten, aber gelegentlich andere verwenden. 
+## <a name="directories--subscriptions"></a>Verzeichnisse und Abonnements
 
-:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Filtern Sie die Ressourcenliste nach dem Abonnement.":::
+Auf der Seite **Verzeichnisse und Abonnements** können Sie Verzeichnisse verwalten und Abonnementfilter festlegen.
 
-1. Wählen Sie das Symbol für den Verzeichnis- und Abonnementfilter in der globalen Kopfzeile aus.
+### <a name="switch-and-manage-directories"></a>Wechseln und Verwalten von Verzeichnissen
 
-1. Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen. 
+Im Abschnitt **Verzeichnisse** wird das **aktuelle Verzeichnis** angezeigt (bei dem Sie derzeit angemeldet sind).
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen."::: 
+Im **Startverzeichnis** wird das Standardverzeichnis bei der Anmeldung beim Azure-Portal angezeigt. Wenn Sie ein anderes Startverzeichnis verwenden möchten, wählen Sie **Ändern** aus, um zur Seite [Appearance + startup views](#appearance--startup-views) (Ansichten „Darstellung“ und „Startup“) zu wechseln. Dort können Sie diese Option ändern.
 
+Wählen Sie **Alle Verzeichnisse** aus, um eine Liste aller Verzeichnisse anzuzeigen, auf die Sie Zugriff haben.
 
-## <a name="choose-your-default-view"></a>Auswählen der Standardansicht 
+Wenn Sie ein Verzeichnis als Favorit kennzeichnen möchten, wählen Sie das entsprechende Sternsymbol aus. Diese Verzeichnisse werden im Abschnitt **Favoriten** aufgeführt.
 
-Sie können die Seite ändern, die bei der Anmeldung beim Azure-Portal standardmäßig geöffnet wird.
+Wenn Sie zu einem anderen Verzeichnis wechseln möchten, wählen Sie zuerst das gewünschte Verzeichnis, dann die Schaltfläche **Switch** (Wechseln) in der entsprechenden Zeile aus.
 
-![Screenshot mit Azure-Portaleinstellungen mit hervorgehobener Standardansicht](./media/set-preferences/default-view.png)
+:::image type="content" source="media/set-preferences/settings-directories-subscriptions-default-filter.png" alt-text="Screenshot: Bereich mit Verzeichniseinstellungen":::
 
-- Die **Startseite** kann nicht angepasst werden.  Sie zeigt Verknüpfungen mit beliebten Azure-Diensten an und listet die Ressourcen auf, die Sie zuletzt verwendet haben. Außerdem werden nützliche Links zu Ressourcen wie Microsoft Learn und der Azure-Roadmap bereitgestellt.
+### <a name="subscription-filters"></a>Abonnementfilter
 
-- Dashboards können angepasst werden, um einen Arbeitsbereich zu erstellen, der nur für Sie konzipiert wurde. Beispielsweise können Sie ein Dashboard erstellen, das sich auf Projekte, Aufgaben oder Rollen konzentriert. Wenn Sie **Dashboard** auswählen, verwendet Ihre Standardansicht das zuletzt verwendete Dashboard. Weitere Informationen finden Sie unter [Erstellen und Freigeben von Dashboards im Azure-Portal](azure-portal-dashboards.md).
+Sie können die Abonnements auswählen, die standardmäßig gefiltert werden, wenn Sie sich beim Azure-Portal anmelden. Das kann nützlich sein, wenn Sie mit einem primären Liste mit Abonnements arbeiten, aber gelegentlich andere verwenden.
 
-## <a name="choose-a-portal-menu-mode"></a>Auswählen eines Portalmenümodus
+Wenn Sie angepasste Filter verwenden möchten, wählen Sie **Erweiterte Filter** aus. Sie werden aufgefordert, den Vorgang zu bestätigen, um fortfahren zu können.
 
-Der Standardmodus für das Portalmenü steuert, wie viel Platz das Portalmenü auf der Seite einnimmt.
+:::image type="content" source="media/set-preferences/settings-advanced-filters-enable.png" alt-text="Screenshot: Dialogfeld zur Bestätigung für „Erweiterte Filter“":::
 
-![Screenshot der Festlegung des Standardmodus für das Portalmenü](./media/set-preferences/menu-mode.png)
+Daraufhin wird die Seite **Erweiterte Filter** aktiviert, auf der Sie mehrere Abonnementfilter erstellen und verwalten können. Alle derzeit ausgewählten Abonnements werden als importierter Filter gespeichert, den Sie wiederverwenden können. Wenn Sie keine erweiterten Filter mehr verwenden möchten, wählen Sie die Umschaltfunktion erneut aus, um die Standardansicht des Abonnements wiederherzustellen. Alle benutzerdefinierten Filter, die Sie erstellt haben, werden gespeichert und sind verfügbar, wenn Sie in Zukunft **Erweiterte Filter** aktivieren.
 
-- Wenn sich das Portalmenü im **Flyoutmodus** befindet, wird es ausgeblendet, bis Sie es benötigen. Wählen Sie das Menüsymbol aus, um das Menü zu öffnen oder zu schließen.
+:::image type="content" source="media/set-preferences/settings-advanced-filters-disable.png" alt-text="Screenshot: Dialogfeld zur Bestätigung für die Deaktivierung von „Erweiterte Filter“":::
 
-- Wenn Sie für das Portalmenü den **angedockten Modus** auswählen, wird es immer angezeigt. Sie können das Menü reduzieren, um den Arbeitsbereich zu vergrößern.
+## <a name="advanced-filters"></a>Erweiterte Filter
 
-## <a name="choose-a-theme-or-enable-high-contrast"></a>Auswählen eines Designs oder Aktivieren des hohen Kontrasts
+Auf der Seite **Erweiterte Filter** können Sie Abonnementfilter erstellen, ändern oder löschen.
 
-Das Design, das Sie auswählen, wirkt sich auf die Hintergrund- und Schriftartfarben aus, die im Azure-Portal angezeigt werden. Sie können eines der vier vordefinierten Farbdesigns auswählen. Wählen Sie die einzelnen Miniaturansichten aus, um das Design zu ermitteln, das Ihnen am besten gefällt.
+:::image type="content" source="media/set-preferences/settings-advanced-filters.png" alt-text="Screenshot: Bildschirm „Erweiterte Filter“":::
 
-Alternativ können Sie eines der Designs mit hohem Kontrast auswählen. Die Designs mit hohem Kontrast verbessern die Lesbarkeit des Azure-Portals für Benutzer mit einer Sehbehinderung und haben Vorrang vor jeder anderen Designauswahl.
+Mit dem Filter **Standard** werden alle Abonnements angezeigt, auf die Sie Zugriff haben. Dieser Filter wird verwendet, wenn es keine anderen Filter gibt oder mit dem aktiven Filter keine Abonnements angezeigt werden.
 
-![Screenshot mit Azure-Portaleinstellungen mit hervorgehobenen Designs](./media/set-preferences/theme.png)
+Möglicherweise wird auch ein Filter mit dem Namen **Imported-filter** (Importierter-Filter) angezeigt. Mit diesem Filter werden alle bereits ausgewählten Abonnements angezeigt.
 
-## <a name="enable-or-disable-pop-up-notifications"></a>Aktivieren oder Deaktivieren von Popupbenachrichtigungen
+Wenn Sie den derzeit verwendeten Filter ändern möchten, wählen Sie diesen Filter im Dropdownfeld **Erweiterter Filter** aus. Sie können auch **Modify advanced filters** (Erweiterte Filter ändern) auswählen, um zur Seite **Erweiterte Filter** zu wechseln. Dort können Sie Filter erstellen, ändern und löschen.
 
-Benachrichtigungen sind Systemmeldungen, die sich auf Ihre aktuelle Sitzung beziehen. Sie enthalten Informationen wie Ihr aktuelles Guthaben, wann die von Ihnen aktuell erstellten Ressourcen verfügbar werden oder bestätigen beispielsweise Ihre letzte Aktion. Wenn Popupbenachrichtigungen aktiviert sind, werden die Meldungen kurzzeitig in der oberen Ecke des Bildschirms angezeigt. 
+### <a name="create-a-filter"></a>Erstellen eines Filters
 
-Wählen Sie **Popupbenachrichtigungen aktivieren** aus oder ab, um Popupbenachrichtigungen zu aktivieren oder zu deaktivieren.
+Wenn Sie einen neuen Filter erstellen möchten, wählen Sie **Create a filter** (Filter erstellen) aus. Sie können bis zu zehn Filter erstellen.
 
-![Screenshot mit Azure-Portaleinstellungen mit hervorgehobenen Popupbenachrichtigungen](./media/set-preferences/popup-notifications.png)
+Jeder Filter muss einen eindeutigen Namen haben, der zwischen 8 und 50 Zeichen lang ist und nur Buchstaben, Zahlen und Bindestriche enthält.
 
-Wenn Sie alle während der aktuellen Sitzung empfangenen Benachrichtigungen lesen möchten, wählen Sie **Benachrichtigungen** aus der globalen Kopfzeile aus.
+:::image type="content" source="media/set-preferences/azure-portal-settings-filtering-create.png" alt-text="Screenshot: Option „Create a filter“ (Filter erstellen)":::
 
-![Screenshot, der die globale Kopfzeile des Azure-Portals mit hervorgehobenen Benachrichtigungen zeigt](./media/set-preferences/read-notifications.png)
+Nachdem Sie Ihrem Filter einen Namen gegeben haben, geben Sie mindestens eine Bedingung ein. Wählen Sie hierzu im Feld **Filtertyp** entweder **Name des Abonnements**, **Abonnement-ID** oder **Abonnementstatus** aus. Wählen Sie anschließend einen Operator aus, und geben Sie einen Wert ein, nach dem gefiltert werden soll.
 
-Wenn Sie Benachrichtigungen aus vorherigen Sitzungen lesen möchten, suchen Sie nach Ereignissen im Aktivitätsprotokoll. Weitere Informationen finden Sie unter [Anzeigen des Aktivitätsprotokolls](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
+:::image type="content" source="media/set-preferences/azure-portal-settings-filtering-create-operators.png" alt-text="Screenshot: Liste mit Operatoren für die Filtererstellung":::
 
-## <a name="change-the-inactivity-timeout-setting"></a>Ändern der Einstellung für das Inaktivitätstimeout
+Wenn Sie alle gewünschten Bedingungen hinzugefügt haben, wählen Sie **Erstellen** aus. Daraufhin wird Ihr Filter in der Liste in **Active filters** (Aktive Filter) angezeigt.
+
+### <a name="modify-or-delete-a-filter"></a>Ändern oder Löschen eines Filters
+
+Sie können einen vorhandenen Filter ändern oder umbenennen, indem Sie das Bleistiftsymbol in der Zeile des jeweiligen Filters auswählen. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Übernehmen**.
+
+> [!NOTE]
+> Wenn Sie einen derzeit aktiven Filter ändern und die Änderungen dazu führen, dass keine Abonnements angezeigt werden, wird stattdessen der **Standardfilter** aktiv. Filter, mit denen keine Abonnements angezeigt werden, können nicht aktiviert werden.
+
+Wenn Sie einen Filter löschen möchten, wählen Sie das Papierkorbsymbol in der Zeile des jeweiligen Filters aus. Der **Standardfilter** kann ebenso wenig gelöscht werden wie der derzeit aktive Filter.
+
+## <a name="appearance--startup-views"></a>Appearance + startup views (Ansichten „Darstellung“ und „Startup“)
+
+Im Bereich **Appearance + startup views (Ansichten „Darstellung“ und „Startup“)** gibt es zwei Abschnitte. Im Abschnitt **Appearance** (Darstellung) können Sie das Menüverhalten, ein Farbschema sowie die Verwendung eines Designs mit hohem Kontrast festlegen. Im Abschnitt **Startup views** (Startup-Ansichten) können Sie Optionen für die Anzeige bei der ersten Anmeldung beim Azure-Portal festlegen.
+
+:::image type="content" source="media/set-preferences/azure-portal-settings-appearance.png" alt-text="Screenshot: Abschnitt „Appearance“ (Darstellung) von „Appearance + startup views“ (Ansichten „Darstellung“ und „Startup“)":::
+
+### <a name="set-menu-behavior"></a>Festlegen des Menüverhaltens
+
+Im Abschnitt **Menüverhalten** können Sie festlegen, wie sich das Standardmenü im Azure-Portal verhalten soll.
+
+- **Flyout**: Das Menü wird erst eingeblendet, wenn Sie es benötigen. Mit dem Menüsymbol in der oberen linken Ecke können Sie das Menü öffnen oder schließen.
+- **Angedockt**: Das Menü wird immer angezeigt. Sie können das Menü reduzieren, um den Arbeitsbereich zu vergrößern.
+
+### <a name="choose-a-theme-or-enable-high-contrast"></a>Auswählen eines Designs oder Aktivieren des hohen Kontrasts
+
+Das Design, das Sie auswählen, wirkt sich auf die Hintergrund- und Schriftartfarben aus, die im Azure-Portal angezeigt werden. Im Abschnitt **Design** können Sie eines von vier vordefinierten Farbdesigns auswählen. Wählen Sie die einzelnen Miniaturansichten aus, um das Design zu ermitteln, das Ihnen am besten gefällt.
+
+Alternativ können Sie auch im Abschnitt **Design mit hohem Kontrast** ein Design auswählen. Durch diese Designs wird das Azure-Portal übersichtlicher, insbesondere dann, wenn Sie eine Sehschwäche haben. Wenn Sie das weiße oder schwarze Design mit hohem Kontrast auswählen, wird die Auswahl aller anderen Designs außer Kraft gesetzt.
+
+### <a name="startup-page"></a>Startseite
+
+Wählen Sie eine der folgenden Optionen für die Seite aus, die angezeigt wird, wenn Sie sich zum ersten Mal beim Azure-Portal anmelden.
+
+- **Home**: Zeigt die Startseite mit Verknüpfungen zu beliebten Azure-Diensten, eine Liste mit zuletzt verwendeten Ressourcen und nützliche Links zu Tools, Dokumentationen und vieles mehr an.
+- **Dashboard**: Zeigt das zuletzt verwendete Dashboard an. Dashboards können angepasst werden, um einen Arbeitsbereich zu erstellen, der nur für Sie konzipiert wurde. Beispielsweise können Sie ein Dashboard erstellen, das sich auf Projekte, Aufgaben oder Rollen konzentriert. Weitere Informationen finden Sie unter [Erstellen und Freigeben von Dashboards im Azure-Portal](azure-portal-dashboards.md).
+
+### <a name="startup-directory"></a>Startverzeichnis
+
+Wählen Sie eine der folgenden Optionen für das Verzeichnis aus, das verwendet werden soll, wenn Sie sich zum ersten Mal beim Azure-Portal anmelden.
+
+- **Sign in to your last visited directory**(Beim zuletzt besuchten Verzeichnis anmelden): Wenn Sie sich beim Azure-Portal anmelden, gelangen Sie zu dem Verzeichnis, in dem Sie sich zuletzt befunden haben.
+- **Select a directory** (Verzeichnis auswählen): Wählen Sie diese Option aus, um ein Verzeichnis auszuwählen. Sie gelangen jedes Mal, wenn Sie sich beim Azure-Portal anmelden, zu diesem Verzeichnis, auch dann, wenn Sie sich zuletzt in einem anderen Verzeichnis befunden haben.
+
+:::image type="content" source="media/set-preferences/azure-portal-settings-startup-views.png" alt-text="Screenshot: Abschnitt „Startup“ (Startup) von „Appearance + startup views“ (Ansichten „Darstellung“ und „Startup“)":::
+
+## <a name="language--region"></a>Sprache und Region
+
+Wählen Sie Ihre Sprache und das regionale Format aus. Damit wird beeinflusst, wie Daten wie Datumsangaben und Währungen im Azure-Portal angezeigt werden.
+
+:::image type="content" source="media/set-preferences/azure-portal-settings-language-region.png" alt-text="Screenshot: Bereich für die Einstellungen „Sprache und Region“":::
+
+> [!NOTE]
+> Diese Einstellungen für Sprache und regionales Format wirken sich nur auf das Azure-Portal aus. Bei Dokumentationslinks, die in einer neuen Registerkarte oder in einem neuen Fenster geöffnet werden, werden die Einstellungen Ihres Browsers verwendet, um die anzuzeigende Sprache zu ermitteln.
+
+### <a name="language"></a>Sprache
+
+Verwenden Sie die Dropdownliste, um in der Liste eine verfügbare Sprache auszuwählen. Mit der Einstellung wird die Sprache festgelegt, in der Text im Azure-Portal angezeigt wird.
+
+### <a name="regional-format"></a>Regionales Format
+
+Wählen Sie eine Option aus, um die Anzeige von Datum, Uhrzeit, Zahlen und Währung im Azure-Portal festzulegen.
+
+Welche Optionen in der Dropdownliste **Regionales Format** angezeigt werden, hängt davon ab, welche Option Sie für **Sprache** auswählen. Wenn Sie beispielsweise **Englisch** als Sprache und dann **Englisch (USA)** als regionales Format auswählen, wird die Währung in US-Dollar angezeigt. Wenn Sie **Englisch** als Sprache und dann **Englisch (Europa)** als regionales Format auswählen, wird die Währung in Euro angezeigt.
+
+Wählen Sie **Anwenden** aus, um Ihre Sprache und die Einstellungen für das regionale Format zu aktualisieren.
+
+## <a name="my-information"></a>Eigene Informationen
+
+Auf der Seite **Eigene Informationen** können Sie die E-Mail-Adresse aktualisieren, die für Updates zu Azure-Diensten, Abrechnung, Support und Sicherheitsfragen verwendet wird. Sie können auch weitere E-Mails zu Microsoft Azure und anderen Produkten und Diensten abonnieren oder entsprechende Abonnements kündigen.
+
+Im oberen Bereich der Seite **Eigene Informationen** werden Optionen zum Exportieren, Wiederherstellen oder Löschen von Einstellungen angezeigt.
+
+:::image type="content" source="media/set-preferences/settings-my-information.png" alt-text="Screenshot: Seite mit Einstellungen zu „Eigene Informationen“":::
+
+### <a name="export-user-settings"></a>Exportieren von Benutzereinstellungen
+
+Die Informationen zu Ihren benutzerdefinierten Einstellungen werden in Azure gespeichert. Sie können folgende Benutzerdaten exportieren:
+
+- Private Dashboards im Azure-Portal
+- Benutzereinstellungen wie bevorzugte Abonnements oder Verzeichnisse
+- Designs und andere benutzerdefinierte Portaleinstellungen
+
+Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, falls Sie sie löschen möchten. Das Neuerstellen von Dashboards oder das erneute Einrichten von Einstellungen kann zeitaufwendig sein.
+
+Zum Exportieren Ihrer Portaleinstellungen wählen Sie oben im Einstellungsbereich **Übersicht** die Option **Einstellungen exportieren** aus. Daraufhin wird eine *JSON*-Datei erstellt, die die Daten zu Ihren Benutzereinstellungen enthält.
+
+Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON*-Datei importieren.
+
+### <a name="restore-default-settings"></a>Standardeinstellungen wiederherstellen
+
+Wenn Sie Änderungen an den Azure-Portaleinstellungen vorgenommen haben und diese verwerfen möchten, wählen Sie oben im Einstellungsbereich **Übersicht** die Option **Standardeinstellungen wiederherstellen** aus. Sie werden aufgefordert, diese Aktion zu bestätigen. Dabei gehen alle Änderungen verloren, die Sie an Ihren Azure-Portaleinstellungen vorgenommen haben. Diese Option wirkt sich nicht auf Dashboardanpassungen aus.
+
+### <a name="delete-user-settings-and-dashboards"></a>Löschen von Benutzereinstellungen und Dashboards
+
+Die Informationen zu Ihren benutzerdefinierten Einstellungen werden in Azure gespeichert. Sie können folgende Benutzerdaten löschen:
+
+- Private Dashboards im Azure-Portal
+- Benutzereinstellungen wie bevorzugte Abonnements oder Verzeichnisse
+- Designs und andere benutzerdefinierte Portaleinstellungen
+
+Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, bevor Sie sie löschen. Das Neuerstellen von [Dashboards](azure-portal-dashboards.md) oder das erneute Einrichten von benutzerdefinierten Einstellungen kann zeitaufwendig sein.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
+
+Zum Löschen Ihrer Portaleinstellungen wählen Sie im oberen Bereich der Seite **Eigene Informationen** die Option **Alle Einstellungen und private Dashboards löschen** aus. Sie werden aufgefordert, den Löschvorgang zu bestätigen. Dabei werden alle Einstellungsanpassungen auf die Standardeinstellungen zurückgesetzt, und alle Ihre privaten Dashboards gehen verloren.
+
+## <a name="signing-out--notifications"></a>Signing out + notifications (Abmeldung und Benachrichtigungen)
+
+In diesem Bereich können Sie Popupbenachrichtigungen und Sitzungstimeouts verwalten.
+
+:::image type="content" source="media/set-preferences/azure-portal-settings-sign-out-notifications.png" alt-text="Screenshot: Bereich „Signing out + notifications“ (Abmeldung und Benachrichtigungen)":::
+
+### <a name="signing-out"></a>Abmeldung
 
 Die Einstellung für das Inaktivitätstimeout schützt Ihre Ressourcen vor nicht autorisiertem Zugriff, wenn Sie vergessen, ihre Arbeitsstation abzusichern. Nachdem Sie eine Weile inaktiv waren, werden Sie automatisch von Ihrer Azure-Portalsitzung abgemeldet. Als Einzelbenutzer können Sie die Timeouteinstellung für sich selbst ändern. Wenn Sie ein Administrator sind, können Sie sie auf Verzeichnisebene für alle Benutzer im Verzeichnis festlegen.
 
 ### <a name="change-your-individual-timeout-setting-user"></a>Ändern der eigenen Timeouteinstellung (Benutzer)
 
-Wählen Sie die Dropdownliste unter **Bei Inaktivität abmelden** aus. Wählen Sie die Dauer aus, nach der die Azure-Portalsitzung abgemeldet wird, wenn Sie inaktiv sind.
+Wählen Sie im Dropdownmenü neben **Bei Inaktivität abmelden** die Dauer aus, nach der die Azure-Portalsitzung abgemeldet wird, wenn Sie inaktiv sind.
 
-![Screenshot der Portaleinstellungen mit hervorgehobenen Timeouteinstellungen bei Inaktivität](./media/set-preferences/inactive-signout-user.png)
+:::image type="content" source="media/set-preferences/azure-portal-settings-sign-out-inactive.png" alt-text="Screenshot: Option für Benutzertimeouteinstellungen":::
 
-Die Änderung wird automatisch gespeichert. Wenn Sie inaktiv sind, meldet sich Ihre Azure-Portalsitzung nach der von Ihnen festgelegten Dauer ab.
+Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern. Wenn Sie danach während der Portalsitzung inaktiv sind, werden Sie beim Azure-Portal nach der von Ihnen festgelegten Dauer abgemeldet.
 
-Wenn Ihr Administrator eine Richtlinie für das Inaktivitätstimeout aktiviert hat, können Sie trotzdem einen eigenen Wert festlegen, sofern dieser kleiner als die Einstellung auf Verzeichnisebene ist. Wählen Sie **Timeoutrichtlinie bei Verzeichnisinaktivität außer Kraft setzen** aus, und legen Sie dann ein Zeitintervall fest.
+Wenn Ihr Administrator eine Richtlinie für das Inaktivitätstimeout aktiviert hat, können Sie trotzdem einen eigenen Wert festlegen, sofern dieser kleiner als die Einstellung auf Verzeichnisebene ist. Wählen Sie hierzu **Timeoutrichtlinie bei Verzeichnisinaktivität außer Kraft setzen** aus, und geben Sie für den **Außerkraftsetzungswert** ein Zeitintervall ein.
 
-![Screenshot, der Portaleinstellungen mit hervorgehobener Option „Timeoutrichtlinie bei Verzeichnisinaktivität außer Kraft setzen“ zeigt](./media/set-preferences/inactive-signout-override.png)
+:::image type="content" source="media/set-preferences/azure-portal-settings-sign-out-inactive-user.png" alt-text="Screenshot: Einstellung zum Außerkraftsetzen des Timeouts bei Verzeichnisinaktivität":::
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Ändern der Timeouteinstellung auf Verzeichnisebene (Administrator)
 
-Administratoren in der [globalen Administratorrolle](../active-directory/roles/permissions-reference.md#global-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Administratoren mit der Rolle [Globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Diese Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewendet. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
-Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, führen Sie die folgenden Schritte aus:
+Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, wählen Sie **Enable directory level idle timeout** (Leerlauftimeout auf Verzeichnisebene aktivieren) aus, um die Einstellung zu aktivieren. Geben Sie als Nächstes die **Stunden** und **Minuten** ein, die ein Benutzer maximal inaktiv sein darf, bevor die Sitzung automatisch abgemeldet wird. Nachdem Sie **Übernehmen** ausgewählt haben, wird diese Einstellung für alle Benutzer im Verzeichnis übernommen.
 
-1. Wählen Sie den Linktext **Timeout auf Verzeichnisebene konfigurieren** aus.
+:::image type="content" source="media/set-preferences/azure-portal-settings-sign-out-inactive-admin.png" alt-text="Screenshot: Optionen für das Leerlauftimeout auf Verzeichnisebene":::
 
-    ![Screenshot der Portaleinstellungen mit hervorgehobenem Linktext](./media/set-preferences/settings-admin.png)
+Wenn Sie überprüfen möchten, ob die Richtlinie für das Inaktivitätstimeout ordnungsgemäß festgelegt ist, wählen Sie in der globalen Kopfzeile **Benachrichtigungen** aus, und vergewissern Sie sich, dass eine Erfolgsbenachrichtigung aufgeführt ist.
 
-1. Wählen Sie auf der Seite **Timeout für Inaktivität auf Verzeichnisebene konfigurieren** die Option **Leerlauftimeout auf Verzeichnisebene für Azure-Portal aktivieren** aus, um die Einstellung zu aktivieren.
+:::image type="content" source="media/set-preferences/confirmation.png" alt-text="Screenshot: Benachrichtigung über erfolgreiche Timeoutrichtlinie bei Inaktivität":::
 
-1. Geben Sie als Nächstes die **Stunden** und die **Minuten** für die maximale Zeit ein, die sich ein Benutzer im Leerlauf befinden darf, bevor die Sitzung automatisch abgemeldet wird.
+### <a name="enable-or-disable-pop-up-notifications"></a>Aktivieren oder Deaktivieren von Popupbenachrichtigungen
 
-1. Wählen Sie **Übernehmen**.
+Benachrichtigungen sind Systemmeldungen, die sich auf Ihre aktuelle Sitzung beziehen. Sie enthalten Informationen wie die Anzeige Ihres aktuellen Guthabens, die Bestätigung Ihrer letzten Aktion oder die Mitteilung, dass von Ihnen erstellte Ressourcen verfügbar werden. Wenn Popupbenachrichtigungen aktiviert sind, werden die Meldungen kurzzeitig in der oberen Ecke des Bildschirms angezeigt.
 
-    ![Screenshot der Seite zum Festlegen des Inaktivitätstimeouts auf Verzeichnisebene](./media/set-preferences/configure.png)
+Wählen Sie **Popupbenachrichtigungen aktivieren** aus oder ab, um Popupbenachrichtigungen zu aktivieren oder zu deaktivieren.
 
-Um zu überprüfen, ob die Richtlinie für das Inaktivitätstimeout ordnungsgemäß festgelegt ist, wählen Sie in der globalen Kopfzeile **Benachrichtigungen** aus. Vergewissern Sie sich, dass eine Erfolgsbenachrichtigung aufgeführt ist.
+Wenn Sie alle während der aktuellen Sitzung empfangenen Benachrichtigungen lesen möchten, wählen Sie **Benachrichtigungen** aus der globalen Kopfzeile aus.
 
-![Screenshot mit Meldung zur erfolgreichen Benachrichtigung für Inaktivitätstimeout auf Verzeichnisebene](./media/set-preferences/confirmation.png)
+:::image type="content" source="media/set-preferences/read-notifications.png" alt-text="Screenshot: Symbol „Benachrichtigungen“ in der globalen Kopfzeile":::
 
-## <a name="restore-default-settings"></a>Standardeinstellungen wiederherstellen
-
-Wenn Sie Änderungen an den Azure-Portaleinstellungen vorgenommen haben und diese verwerfen möchten, wählen Sie **Standardeinstellungen wiederherstellen** aus. Alle Änderungen, die Sie an Portaleinstellungen vorgenommen haben, gehen verloren. Diese Option wirkt sich nicht auf Dashboardanpassungen aus.
-
-![Screenshot: Wiederherstellen von Standardeinstellungen](./media/set-preferences/useful-links-restore-defaults.png)
-
-## <a name="export-user-settings"></a>Exportieren von Benutzereinstellungen
-
-Die Informationen zu Ihren benutzerdefinierten Einstellungen werden in Azure gespeichert. Sie können folgende Benutzerdaten exportieren:
-
-* Private Dashboards im Azure-Portal
-* Benutzereinstellungen wie bevorzugte Abonnements oder Verzeichnisse oder letztes Anmeldeverzeichnis
-* Designs und andere benutzerdefinierte Portaleinstellungen
-
-Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, falls Sie sie löschen möchten. Das Neuerstellen von Dashboards oder das erneute Einrichten von Einstellungen kann zeitaufwendig sein.
-
-Zum Exportieren Ihrer Portaleinstellungen wählen Sie **Alle Einstellungen exportieren** aus.
-
-![Screenshot: Exportieren von Einstellungen](./media/set-preferences/useful-links-export-settings.png)
-
-Beim Exportieren von Einstellungen wird eine *JSON*-Datei erstellt, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards. Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON*-Datei importieren.
-
-## <a name="delete-user-settings-and-dashboards"></a>Löschen von Benutzereinstellungen und Dashboards
-
-Die Informationen zu Ihren benutzerdefinierten Einstellungen werden in Azure gespeichert. Sie können folgende Benutzerdaten löschen:
-
-* Private Dashboards im Azure-Portal
-* Benutzereinstellungen wie bevorzugte Abonnements oder Verzeichnisse oder letztes Anmeldeverzeichnis
-* Designs und andere benutzerdefinierte Portaleinstellungen
-
-Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, bevor Sie sie löschen. Das Neuerstellen von Dashboards oder das erneute Einrichten von benutzerdefinierten Einstellungen kann zeitaufwendig sein.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
-
-Zum Löschen Ihrer Portaleinstellungen wählen Sie **Alle Einstellungen und private Dashboards löschen** aus.
-
-![Screenshot: Löschen von Einstellungen](./media/set-preferences/useful-links-delete-settings.png)
-
-## <a name="change-language-and-regional-settings"></a>Ändern der Sprache und der regionalen Einstellungen
-
-Es gibt zwei Einstellungen, mit denen gesteuert wird, wie der Text im Azure-Portal angezeigt wird: 
-- Mit der Einstellung **Sprache** wird die Sprache festgelegt, in der Text im Azure-Portal angezeigt wird. 
-
-- **Regionales Format** steuert, wie Datumsangaben, Uhrzeiten, Ziffern und Währungen angezeigt werden.
-
-Zum Ändern der Sprache, die im Azure-Portal verwendet wird, verwenden Sie die Dropdownliste, um aus den verfügbaren Sprachen auszuwählen.
-
-Die Auswahl des regionalen Formats ändert sich, um regionale Optionen nur für die Sprache anzuzeigen, die Sie ausgewählt haben. Um diese automatische Auswahl zu ändern, wählen Sie das gewünschte regionale Format mithilfe der Dropdownliste aus.
-
-Wenn Sie z.B. Englisch als Sprache und dann USA als regionales Format auswählen, wird die Währung in US-Dollar angezeigt. Wenn Sie Englisch als Sprache und dann Europa als regionales Format auswählen, wird die Währung in Euro angezeigt.
-
-Wählen Sie **Anwenden** aus, um Ihre Sprache und die Einstellungen für das regionale Format zu aktualisieren.
-
-   ![Screenshot mit Einstellungen für Sprache und regionales Format](./media/set-preferences/language.png)
-
->[!NOTE]
->Diese Einstellungen für Sprache und regionales Format wirken sich nur auf das Azure-Portal aus. Dokumentationslinks, die in einer neuen Registerkarte oder in einem neuen Fenster geöffnet werden, verwenden die Spracheinstellungen Ihres Browsers, um die anzuzeigende Sprache zu ermitteln.
->
+Wenn Sie Benachrichtigungen aus vorherigen Sitzungen anzeigen möchten, suchen Sie nach Ereignissen im Aktivitätsprotokoll. Weitere Informationen finden Sie unter [Anzeigen des Aktivitätsprotokolls](../azure-monitor/essentials/activity-log.md#view-the-activity-log).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tastenkombinationen im Azure-Portal](azure-portal-keyboard-shortcuts.md)
-- [Unterstützte Browser und Geräte](azure-portal-supported-browsers-devices.md)
+- [Erfahren Sie mehr über Tastenkombinationen im Azure-Portal](azure-portal-keyboard-shortcuts.md)
+- [Anzeigen von unterstützten Browsern und Geräten](azure-portal-supported-browsers-devices.md)
 - [Hinzufügen, Entfernen und Neuanordnen von Favoriten](azure-portal-add-remove-sort-favorites.md)
 - [Erstellen und Freigeben von benutzerdefinierten Dashboards](azure-portal-dashboards.md)
-- [Anleitungsvideos für das Azure-Portal](azure-portal-video-series.md)
+- [Ansehen der Anleitungsvideos für das Azure-Portal](azure-portal-video-series.md)

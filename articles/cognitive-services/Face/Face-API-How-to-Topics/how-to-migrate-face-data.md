@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea2a127ffbf966b024322ab5a908466dec1cc8a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: afedf72e1d6fa52bbcccefe5a3d15ec203251c51
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935633"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339945"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 
@@ -236,4 +236,4 @@ Sehen Sie sich als Nächstes die relevante API-Referenzdokumentation sowie eine 
 - [Referenzdokumentation zu Momentaufnahmen (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations)
 - [Momentaufnahmebeispiel für die Gesichtserkennung](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Hinzufügen von Gesichtern](how-to-add-faces.md)
-- [Gesichtserkennung in einem Bild](HowtoDetectFacesinImage.md)
+- [Aufrufen der Erkennungs-API](HowtoDetectFacesinImage.md)

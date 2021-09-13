@@ -5,33 +5,29 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a2af7a050ec0203c0be6f8919309d0c849e7214
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 9c6be388d02ebec99a3ec9ad105cff68c6e3f1bd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752227"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346483"
 ---
-# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)
-In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Azure Monitor autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
+# <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Vorschau)
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Sie erfahren, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden, um diese dann von Azure Monitor autorisieren zu lassen. Wir stellen Beispiele für Azure PowerShell, C# und Python bereit.
 
 > [!NOTE]
 > Die HTTP-Datensammler-API von Azure Monitor befindet sich in der Phase „Public Preview“.
 
 ## <a name="concepts"></a>Konzepte
-Mit der HTTP-Datensammler-API können Sie einem Log Analytics-Arbeitsbereich in Azure Monitor über jeden Client, der eine REST-API aufrufen kann, Protokolldaten senden.  Dabei kann es sich um ein Runbook in Azure Automation handeln, das Verwaltungsdaten aus Azure oder einer anderen Cloud sammelt, oder ein anderes Verwaltungssystem, das Azure Monitor zum Konsolidieren und Analysieren von Protokolldaten verwendet.
+Mit der HTTP-Datensammler-API können Sie einem Log Analytics-Arbeitsbereich in Azure Monitor über jeden Client, der eine REST-API aufrufen kann, Protokolldaten senden.  Bei diesem Client kann es sich um ein Runbook in Azure Automation handeln, das Verwaltungsdaten aus Azure oder einer anderen Cloud sammelt, oder ein anderes Verwaltungssystem, das Azure Monitor zum Konsolidieren und Analysieren von Protokolldaten verwendet.
 
-Alle Daten im Log Analytics-Arbeitsbereich werden als Datensätze mit einem bestimmten Datensatztyp gespeichert.  Formatieren Sie die Daten für das Senden die HTTP-Datensammler-API als mehrere Datensätze im JSON-Format.  Wenn Sie die Daten übermitteln, wird ein einzelner Datensatz im Repository für jeden Datensatz in der Anforderungsnutzlast erstellt.
+Alle Daten im Log Analytics-Arbeitsbereich werden als Datensätze mit einem bestimmten Datensatztyp gespeichert.  Sie formatieren die Daten zum Senden an die HTTP-Datensammler-API als mehrere Datensätze im JSON-Format (JavaScript Object Notation).  Wenn Sie die Daten übermitteln, wird ein einzelner Datensatz im Repository für jeden Datensatz in der Anforderungsnutzlast erstellt.
 
-
-![Übersicht über die HTTP-Datensammler-API](media/data-collector-api/overview.png)
-
-
+![Screenshot: Übersicht über den HTTP-Datensammler.](media/data-collector-api/overview.png)
 
 ## <a name="create-a-request"></a>Erstellen einer Anforderung
-Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung mit den zu sendenden Daten in JavaScript Object Notation (JSON).  Die nächsten drei Tabellen enthalten die Attribute, die für die einzelnen Anforderungen erforderlich sind. Jedes Attribut wird weiter unten in diesem Artikel ausführlicher beschrieben.
+Zum Verwenden der HTTP-Datensammler-API erstellen Sie eine POST-Anforderung mit den zu sendenden Daten im JSON-Format. Die nächsten drei Tabellen enthalten die Attribute, die für die einzelnen Anforderungen erforderlich sind. Jedes Attribut wird weiter unten in diesem Artikel ausführlicher beschrieben.
 
 ### <a name="request-uri"></a>Anforderungs-URI
 | attribute | Eigenschaft |
@@ -39,25 +35,28 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 | Methode |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Inhaltstyp |Anwendung/json |
+| | |
 
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
 | Parameter | BESCHREIBUNG |
 |:--- |:--- |
 | CustomerID |Eindeutiger Bezeichner für den Log Analytics-Arbeitsbereich |
 | Resource |Der Name der API-Ressource: /api/logs |
-| API-Version |Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version lautet 2016-04-01. |
+| API-Version |Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version ist 2016-04-01. |
+| | |
 
 ### <a name="request-headers"></a>Anforderungsheader
 | Header | BESCHREIBUNG |
 |:--- |:--- |
 | Authorization |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
-| Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Darf nur Buchstaben, Ziffern und Unterstriche (_) sowie höchstens 100 Zeichen enthalten. |
-| x-ms-date |Das Datum, zu dem die Anforderung verarbeitet wurde, im RFC 1123-Format |
-| x-ms-AzureResourceId | Ressourcen-ID der Azure-Ressource, der die Daten zugeordnet werden sollen. Dadurch wird die Eigenschaft [_ResourceId](./log-standard-columns.md#_resourceid) ausgefüllt, und es werden die Daten zugelassen, die in [resource-context](./design-logs-deployment.md#access-mode)-Abfragen einbezogen werden sollen. Wenn dieses Feld nicht angegeben wird, werden die Daten nicht in „resource-context“-Abfragen einbezogen. |
-| time-generated-field | Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird dessen Inhalt für **TimeGenerated** verwendet. Wenn dieses Feld nicht angegeben wurde, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
+| Log-Type |Geben Sie den Datensatztyp der Daten an, die übermittelt werden. Er darf ausschließlich Buchstaben, Zahlen und den Unterstrich (_) sowie maximal 100 Zeichen enthalten. |
+| x-ms-date |Das Datum, an dem die Anforderung verarbeitet wurde, im RFC 7234-Format. |
+| x-ms-AzureResourceId | Die Ressourcen-ID der Azure-Ressource, der die Daten zugeordnet werden sollen. Mit dieser ID wird die Eigenschaft [_ResourceId](./log-standard-columns.md#_resourceid) ausgefüllt, und es wird zugelassen, dass die Daten in [resource-context](./design-logs-deployment.md#access-mode)-Abfragen einbezogen werden können. Wenn dieses Feld nicht angegeben wird, werden die Daten nicht in „resource-context“-Abfragen einbezogen. |
+| time-generated-field | Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird der Inhalt für **TimeGenerated** verwendet. Wenn Sie dieses Feld nicht angeben, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
+| | |
 
 ## <a name="authorization"></a>Authorization
-Jede Anforderung an die HTTP-Datensammler-API von Azure Monitor muss einen „Authorization“-Header enthalten. Um eine Anforderung zu authentifizieren, müssen Sie die Anforderung mit dem primären oder sekundären Schlüssel für den Arbeitsbereich, der die Anforderung gesendet hat, signieren. Übergeben Sie anschließend diese Signatur als Teil der Anforderung.   
+Jede Anforderung an die HTTP-Datensammler-API von Azure Monitor muss einen „Authorization“-Header enthalten. Zum Authentifizieren einer Anforderung müssen Sie sie mit dem Primär- oder Sekundärschlüssel für den Arbeitsbereich signieren, der die Anforderung sendet. Übergeben Sie anschließend diese Signatur als Teil der Anforderung.   
 
 Dies ist das Format für den „Authorization“-Header:
 
@@ -92,7 +91,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 Die Beispiele in den nächsten Abschnitten enthalten Beispielcode, den Sie zum Erstellen eines „Authorization“-Headers verwenden können.
 
 ## <a name="request-body"></a>Anforderungstext
-Der Text der Nachricht muss das JSON-Format aufweisen. Er muss einen oder mehrere Datensätze mit Paaren aus Eigenschaftenname und -wert in im folgenden Format enthalten. Der Eigenschaftsname darf nur Buchstaben, Ziffern und Unterstriche (_) enthalten.
+Der Text der Nachricht muss das JSON-Format aufweisen. Er muss einen oder mehrere Datensätze mit Paaren aus Eigenschaftenname und -wert in im folgenden Format enthalten. Der Name der Eigenschaft darf ausschließlich Buchstaben, Zahlen und den Unterstrich (_) enthalten.
 
 ```json
 [
@@ -138,49 +137,50 @@ Um den Datentyp einer Eigenschaft festzulegen, fügt Azure Monitor ein Suffix an
 | Double |_d |
 | Datum/Uhrzeit |_t |
 | GUID (als Zeichenfolge gespeichert) |_g |
+| | |
 
 > [!NOTE]
-> Zeichenfolgenwerte, die als GUIDs erscheinen, erhalten das Suffix „_g“und werden als GUID formatiert, auch wenn der eingehende Wert keine Bindestriche enthält. Beispielsweise werden sowohl „8145d822-13a7-44ad-859c-36f31a84f6dd“ als auch „8145d82213a744ad859c36f31a84f6dd“ als „8145d822-13a7-44ad-859c-36f31a84f6dd“ gespeichert. Die einzigen Unterschiede zwischen dieser und einer anderen Zeichenfolge ist das „_g“ im Namen und das Einfügen von Bindestrichen, wenn diese nicht in der Eingabe enthalten sind. 
+> Zeichenfolgenwerte, die als GUIDs erscheinen, erhalten das Suffix „_g“ und werden als GUID formatiert, auch wenn der eingehende Wert keine Bindestriche enthält. Beispielsweise werden sowohl „8145d822-13a7-44ad-859c-36f31a84f6dd“ als auch „8145d82213a744ad859c36f31a84f6dd“ als „8145d822-13a7-44ad-859c-36f31a84f6dd“ gespeichert. Die einzigen Unterschiede zwischen dieser und einer anderen Zeichenfolge ist das Suffix „_g“ im Namen und das Einfügen von Bindestrichen, wenn diese nicht in der Eingabe enthalten sind. 
 
 Der Datentyp, den Azure Monitor für die einzelnen Eigenschaften verwendet, hängt davon ab, ob der Datensatztyp für den neuen Datensatz bereits vorhanden ist.
 
 * Wenn der Datensatztyp nicht vorhanden ist, erstellt Azure Monitor einen neuen und verwendet dabei den JSON-Typrückschluss, um den Datentyp für die einzelnen Eigenschaften des neuen Datensatzes zu ermitteln.
 * Wenn der Datensatztyp vorhanden ist, erstellt Azure Monitor einen neuen Datensatz basierend auf vorhandenen Eigenschaften. Wenn der Datentyp für eine Eigenschaft im neuen Datensatz nicht übereinstimmt und nicht in den vorhandenen Typ konvertiert werden kann oder wenn der Datensatz eine nicht vorhandene Eigenschaft enthält, erstellt Azure Monitor eine neue Eigenschaft mit dem relevanten Suffix.
 
-Bei diesem Übermittlungseintrag würde beispielsweise ein Datensatz mit den drei Eigenschaften **number_d**, **boolean_b** und **string_s** erstellt werden:
+Beim folgenden Übermittlungseintrag würde beispielsweise ein Datensatz mit den drei Eigenschaften **number_d**, **boolean_b** und **string_s** erstellt:
 
-![Beispieldatensatz 1](media/data-collector-api/record-01.png)
+![Screenshot des Beispieldatensatzes 1.](media/data-collector-api/record-01.png)
 
-Wenn Sie dann den folgenden Eintrag übermitteln, bei dem alle Werte als Zeichenfolgen formatiert sind, werden die Eigenschaften nicht geändert. Diese Werte können in vorhandene Datentypen konvertiert werden:
+Wenn Sie den folgenden Eintrag übermitteln, bei dem alle Werte als Zeichenfolgen formatiert sind, würden die Eigenschaften nicht geändert. Sie können die Werte in vorhandene Datentypen konvertieren.
 
-![Beispieldatensatz 2](media/data-collector-api/record-02.png)
+![Screenshot des Beispieldatensatzes 2.](media/data-collector-api/record-02.png)
 
-Wenn Sie dann aber diese weitere Übermittlung durchführen, erstellt Azure Monitor die neuen Eigenschaften **boolean_d** und **string_d**. Diese Werte können nicht konvertiert werden:
+Wenn Sie dann aber diese weitere Übermittlung durchführen, erstellt Azure Monitor die neuen Eigenschaften **boolean_d** und **string_d**. Diese Werte können nicht konvertiert werden.
 
-![Beispieldatensatz 3](media/data-collector-api/record-03.png)
+![Screenshot des Beispieldatensatzes 3.](media/data-collector-api/record-03.png)
 
 Wenn Sie dann den folgenden Eintrag übermitteln, bevor der Datensatztyp erstellt wurde, erstellt Azure Monitor einen Datensatz mit den drei Eigenschaften **number_s**, **boolean_s** und **string_s**. In diesem Eintrag sind alle Anfangswerte als Zeichenfolge formatiert:
 
-![Beispieldatensatz 4](media/data-collector-api/record-04.png)
+![Screenshot des Beispieldatensatzes 4.](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Reservierte Eigenschaften
-Die folgenden Eigenschaften sind reserviert und sollten nicht in einem benutzerdefinierten Datensatztyp verwendet werden. Es wird ein Fehler angezeigt, wenn Ihre Nutzlast einen dieser Eigenschaftennamen enthält.
+Die folgenden Eigenschaften sind reserviert und sollten nicht in einem benutzerdefinierten Datensatztyp verwendet werden. Wenn Ihre Nutzdaten einen dieser Eigenschaftennamen enthalten, wird ein Fehler angezeigt:
 
 - tenant
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Für die Daten, die an die Datensammlungs-API von Azure Monitor gesendet werden, gelten einige Einschränkungen.
+Für Daten, die an die Datensammlungs-API von Azure Monitor gesendet werden, gelten bestimmte Einschränkungen:
 
-* Maximal 30 MB pro Sendung an die Datensammlungs-API von Azure Monitor. Diese Größenbeschränkung gilt für eine einzelne Sendung. Wenn eine einzelne Sendung mehr als 30 MB Daten enthält, teilen Sie die Daten auf, und senden Sie kleinere Datenblöcke gleichzeitig.
-* Maximal 32 KB für Feldwerte. Wenn ein Feldwert größer ist als 32 KB, werden die Daten abgeschnitten.
-* Die empfohlene maximale Anzahl von Feldern eines bestimmten Typs beträgt 50. Dies ist aus Sicht der Benutzerfreundlichkeit und Suchleistung ein praktikabler Wert.  
-* Eine Tabelle in einem Log Analytics-Arbeitsbereich unterstützt nur bis zu 500 Spalten (in diesem Artikel als ein Feld bezeichnet). 
-* Die maximale Anzahl von Zeichen für den Spaltennamen ist 500.
+* Maximal 30 MB pro Sendung an die Datensammlungs-API von Azure Monitor. Diese Größenbeschränkung gilt für eine einzelne Sendung. Wenn eine einzelne Sendung mehr als 30 MB Daten enthält, teilen Sie die Daten auf, und senden Sie kleinere Datenblöcke gleichzeitig.
+* Maximal 32 KB für Feldwerte. Wenn ein Feldwert größer ist als 32 KB, werden die Daten abgeschnitten.
+* Es werden maximal 50 Felder pro Typ empfohlen. Dies ist aus Sicht der Benutzerfreundlichkeit und Suchleistung ein praktikabler Wert.  
+* Tabellen in Log Analytics-Arbeitsbereichen unterstützen maximal 500 Spalten (in diesem Artikel als Felder bezeichnet). 
+* Maximal 50 Zeichen für Spaltennamen.
 
 ## <a name="return-codes"></a>Rückgabecodes
-Der HTTP-Statuscode 200 bedeutet, dass die Anforderung für die Verarbeitung empfangen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
+Der HTTP-Statuscode 200 bedeutet, dass die Anforderung für die Verarbeitung empfangen wurde. Er zeigt an, dass der Vorgang erfolgreich abgeschlossen wurde.
 
-Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst zurückgegeben werden können:
+In der folgenden Tabelle sind sämtliche Statuscodes aufgeführt, die der Dienst möglicherweise zurückgibt:
 
 | Code | Status | Fehlercode | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
@@ -199,19 +199,20 @@ Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst z
 | 429 |Zu viele Anforderungen | | Der Dienst erwartet eine große Datenmenge von Ihrem Konto. Versuchen Sie die Anforderung später erneut. |
 | 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt. Versuchen Sie die Anforderung erneut. |
 | 503 |Dienst nicht verfügbar |ServiceUnavailable |Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
+| | |
 
 ## <a name="query-data"></a>Daten abfragen
-Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Azure Monitor übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht, und dem Suffix **_CL**. Wenn Sie z.B. **MyCustomLog** verwendet haben, werden alle Datensätze mit `MyCustomLog_CL` zurückgegeben.
+Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Azure Monitor übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht und das Suffix **_CL** aufweist. Wenn Sie z. B. **MyCustomLog** verwendet haben, werden alle Datensätze mit `MyCustomLog_CL` zurückgegeben.
 
 ## <a name="sample-requests"></a>Beispielanforderungen
 In den nächsten Abschnitten finden Sie Beispiele für das Senden von Daten an die HTTP-Datensammler-API von Azure Monitor in verschiedenen Programmiersprachen.
 
-Führen Sie für alle Beispiele folgende Schritte aus, um die Variablen für den „Authorization“-Header festzulegen:
+Legen Sie für jedes Beispiel die Variablen für den Autorisierungsheader wie folgt fest:
 
 1. Suchen Sie im Azure-Portal Ihren Log Analytics-Arbeitsbereich.
 2. Wählen Sie **Agent-Verwaltung** aus.
-2. Wählen Sie rechts neben **Arbeitsbereichs-ID** das Symbol „Kopieren“ aus, und fügen Sie die ID als Wert der Variablen für die **Kunden-ID** ein.
-3. Wählen Sie rechts neben **Primärschlüssel** das Symbol „Kopieren“ aus, und fügen Sie die ID als Wert der Variablen für den **gemeinsam verwendeten Schlüssel** ein.
+2. Wählen Sie rechts neben **Arbeitsbereichs-ID** das Symbol **Kopieren** aus, und fügen Sie die ID als Wert der Variable **Kunden-ID** ein.
+3. Wählen Sie rechts neben **Primärschlüssel** das Symbol **Kopieren** aus, und fügen Sie die ID als Wert der Variable **Gemeinsam verwendeter Schlüssel** ein.
 
 Sie können auch die Variablen für den Protokolltyp und die JSON-Daten ändern.
 
@@ -597,7 +598,7 @@ public class ApiExample {
     String stringToHash = String
         .join("\n", httpMethod, String.valueOf(json.getBytes(StandardCharsets.UTF_8).length), contentType,
             xmsDate , resource);
-    String hashedString = getHMAC254(stringToHash, sharedKey);
+    String hashedString = getHMAC256(stringToHash, sharedKey);
     String signature = "SharedKey " + workspaceId + ":" + hashedString;
 
     postData(signature, dateString, json);
@@ -605,7 +606,7 @@ public class ApiExample {
 
   private static String getServerTime() {
     Calendar calendar = Calendar.getInstance();
-    SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE);
+    SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE, Locale.US);
     dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
     return dateFormat.format(calendar.getTime());
   }
@@ -626,14 +627,14 @@ public class ApiExample {
     }
   }
 
-  private static String getHMAC254(String input, String key) throws InvalidKeyException, NoSuchAlgorithmException {
+  private static String getHMAC256(String input, String key) throws InvalidKeyException, NoSuchAlgorithmException {
     String hash;
-    Mac sha254HMAC = Mac.getInstance("HmacSHA256");
+    Mac sha256HMAC = Mac.getInstance("HmacSHA256");
     Base64.Decoder decoder = Base64.getDecoder();
     SecretKeySpec secretKey = new SecretKeySpec(decoder.decode(key.getBytes(StandardCharsets.UTF_8)), "HmacSHA256");
-    sha254HMAC.init(secretKey);
+    sha256HMAC.init(secretKey);
     Base64.Encoder encoder = Base64.getEncoder();
-    hash = new String(encoder.encode(sha254HMAC.doFinal(input.getBytes(StandardCharsets.UTF_8))));
+    hash = new String(encoder.encode(sha256HMAC.doFinal(input.getBytes(StandardCharsets.UTF_8))));
     return hash;
   }
 
@@ -644,16 +645,17 @@ public class ApiExample {
 
 
 ## <a name="alternatives-and-considerations"></a>Alternativen und Überlegungen
-Während die Datensammler-API die meisten Ihrer Anforderungen an die Erfassung von Freiformdaten in Azure-Protokollen erfüllen sollte, gibt es Fälle, in denen eine Alternative erforderlich sein könnte, um einige der Einschränkungen der API zu umgehen. Es gibt folgende Optionen, einschließlich der wichtigsten Überlegungen:
+
+Wenngleich die Datensammler-API die meisten Ihrer Anforderungen an die Erfassung von Freiformdaten in Azure-Protokollen erfüllen sollte, gibt es Fälle, in denen eine Alternative erforderlich sein könnte, um einige der Einschränkungen der API zu umgehen. Nachfolgend sind einige Möglichkeiten sowie wichtige Überlegungen in diesem Zusammenhang aufgeführt:
 
 | Alternative | BESCHREIBUNG | Am besten geeignet für |
 |---|---|---|
-| [Benutzerdefinierte Ereignisse](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Native SDK-basierte Erfassung in Application Insights | Application Insights, das in der Regel über ein SDK in Ihrer Anwendung instrumentiert wird, bietet die Möglichkeit, benutzerdefinierte Daten über benutzerdefinierte Ereignisse zu senden. | <ul><li> Daten, die innerhalb Ihrer Anwendung erzeugt, aber nicht vom SDK über einen der Standarddatentypen (Anforderungen, Abhängigkeiten, Ausnahmen usw.) abgeholt werden.</li><li> Daten, die am häufigsten mit anderen Anwendungsdaten in Application Insights korreliert werden </li></ul> |
-| Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und stehen in Protokollen zur Verfügung, um mit anderen Daten in Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien auf einen Azure Blob-Blob hochzuladen, von wo aus diese Dateien verarbeitet und an Log Analytics hochgeladen werden. Eine Beispielimplementierung einer derartigen Pipeline finden Sie in [diesem](./create-pipeline-datacollector-api.md) Artikel. | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.</li><li> Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Vorgesehen für Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Protokolldatentypen, Security Center, Container Insights/VMs usw.). </li></ul> |
-| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) ist die Datenplattform, die Application Insights Analytics und Azure Monitor Logs unterstützt. Jetzt „allgemein verfügbar“ (GA): Die Verwendung der Datenplattform im Rohformat bietet Ihnen die volle Flexibilität (erfordert aber den Verwaltungsmehraufwand) über den Cluster (Kubernetes RBAC, Bindungsrate, Schema usw.). ADX bietet viele [Erfassungsoptionen](/azure/data-explorer/ingest-data-overview#ingestion-methods) einschließlich [CSV-, TSV- und JSON-](/azure/kusto/management/mappings)Dateien. | <ul><li> Daten, die nicht mit anderen Daten unter Application Insights oder in Protokollen korreliert werden. </li><li> Daten, die erweiterte Erfassungs- oder Verarbeitungsfunktionen erfordern, die heute nicht in Azure Monitor Logs verfügbar sind. </li></ul> |
+| [Benutzerdefinierte Ereignisse](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Native SDK-basierte Erfassung in Application Insights | Application Insights (in der Regel über ein SDK in Ihrer Anwendung instrumentiert) bietet die Möglichkeit, benutzerdefinierte Daten über benutzerdefinierte Ereignisse zu senden. | <ul><li> Daten, die innerhalb Ihrer Anwendung generiert, aber nicht vom SDK über einen der Standarddatentypen (Anforderungen, Abhängigkeiten, Ausnahmen usw.) erkannt werden.</li><li> Daten, die meist mit anderen Anwendungsdaten in Application Insights korreliert sind. </li></ul> |
+| Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und in Monitor-Protokollen zur Verfügung gestellt, um mit anderen Daten in Monitor-Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien in einen Azure Blob Storage-Blob hochzuladen, von wo aus diese Dateien verarbeitet und in Log Analytics hochgeladen werden. Eine Beispielimplementierung finden Sie unter [Erstellen einer Datenpipeline mit der Datensammler-API](./create-pipeline-datacollector-api.md). | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.<br>Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Monitor-Protokolldatentypen, Security Center, Container Insights/VMs usw.). </li></ul> |
+| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (jetzt allgemein und öffentlich verfügbar) ist die Datenplattform, die Application Insights Analytics und Azure Monitor Logs zugrunde liegt. Die Verwendung der Datenplattform im Rohformat bietet volle Flexibilität (erfordert aber den Verwaltungsmehraufwand) für den Cluster (Kubernetes RBAC, Bindungsrate, Schema usw.). Azure Data Explorer bietet viele [Erfassungsoptionen](/azure/data-explorer/ingest-data-overview#ingestion-methods), wie z. B. [CSV-, TSV- und JSON-Dateien](/azure/kusto/management/mappings). | <ul><li> Daten, die nicht mit anderen Daten in Application Insights oder Monitor-Protokollen korreliert werden. </li><li> Daten, die erweiterte Erfassungs- oder Verarbeitungsfunktionen erfordern, die aktuell nicht in Azure Monitor-Protokollen verfügbar sind. </li></ul> |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden Sie zum Abrufen von Daten aus dem Log Analytics-Arbeitsbereich die [Protokollsuch-API](./log-query-overview.md).
 
-- Erfahren Sie mehr über das [Erstellen einer Datenpipeline mit der Datensammler-API](create-pipeline-datacollector-api.md) mithilfe des Logic Apps-Workflows für Azure Monitor.
+- Informieren Sie sich näher über das [Erstellen einer Datenpipeline mit der Datensammler-API](create-pipeline-datacollector-api.md) mithilfe eines Logic Apps-Workflows für Azure Monitor.
